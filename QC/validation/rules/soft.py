@@ -161,54 +161,6 @@ def _tree_language(tree: etree._ElementTree, path: Path,
     return tree.getroot().get(_XML_LANG) or ""
 
 
-def v144_M_less_W_in_parsed_sentence(
-    tree: etree._ElementTree,
-    path: Path,
-    index: CorpusIndex | None,
-) -> list[Finding]:
-    """V144 SOFT (POL-023): a morphologically parsed sentence with M-less Ws.
-
-    Ruling 2026-08-12 (re-scoped from per file to **per sentence**): the
-    unit of morphological analysis is the sentence, not the file. In a
-    sentence that carries *some* parsing every W needs at least one M (a
-    single M there reads "analyzed as monomorphemic"); a sentence the
-    author simply never analyzed carries no M tier at all, and demanding
-    M there would fake an analysis. The old file-scoped reading punished
-    exactly that honest mixed state — one parsed sentence made every
-    unparsed sentence in the file a finding.
-
-    Aggregated per file (one Finding, counting the M-less Ws inside
-    parsed sentences). SOFT because existing corpora trip this and need
-    fixing over time.
-    """
-    parsed = [ws for ws in _sentence_words(tree) if _carries_parsing(ws)]
-    if not parsed:
-        return []
-    missing = 0
-    sentences = 0
-    for ws in parsed:
-        m_less = sum(1 for w in ws if not _children(w, "M"))
-        if m_less:
-            missing += m_less
-            sentences += 1
-    if missing == 0:
-        return []
-    return [Finding(
-        rule_id="V144",
-        severity=Severity.SOFT,
-        message=(
-            f"V144 SOFT: {missing} W elements in {sentences} of "
-            f"{len(parsed)} morphologically parsed sentences have no M "
-            f"child (POL-023: within a parsed sentence every W gets at "
-            f"least one M; an unparsed sentence carries no M tier)"
-        ),
-        path=path,
-        count=missing,
-        language=_tree_language(tree, path, index),
-        character="",
-    )]
-
-
 def v145_degenerate_all_single_M_tier(
     tree: etree._ElementTree,
     path: Path,
@@ -501,11 +453,69 @@ def v151_S_TRANSL_has_no_kindOf(
     )]
 
 
+
+def v152_mirrored_M_tier(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V152 SOFT (POL-057): an M that merely mirrors its parent W.
+
+    A single M asserts "this word is analyzed as monomorphemic". That is a real
+    claim, and for a word carrying a gloss it is the RIGHT one: the source did
+    analyse it, as one morpheme with that gloss, and recording the M states
+    what the source says.
+
+    What this rule is for is the case where there is nothing to record -- an
+    UNGLOSSED word given a single M that repeats its empty-glossed parent. That
+    M carries no information at all, and its presence erases the difference
+    between "analysed as monomorphemic" and "never analysed".
+
+    Measured on the published NTU Sentences: 15,699 mirrored words are glossed
+    (and so conforming) against 4 that are not. A rule that flagged all of them
+    would report the corpus's normal, correct shape.
+    """
+    mirrored = 0
+    for w in tree.iter("W"):
+        ms = _children(w, "M")
+        if len(ms) != 1:
+            continue
+        m = ms[0]
+        w_forms = [(f.get("kindOf"), (f.text or "").strip()) for f in _children(w, "FORM")]
+        m_forms = [(f.get("kindOf"), (f.text or "").strip()) for f in _children(m, "FORM")]
+        if sorted(w_forms) != sorted(m_forms):
+            continue
+        key = lambda t: (t.get("{http://www.w3.org/XML/1998/namespace}lang"),
+                         (t.text or "").strip())
+        if sorted(map(key, _children(w, "TRANSL"))) != sorted(map(key, _children(m, "TRANSL"))):
+            continue
+        if any((t.text or "").strip() for t in _children(w, "TRANSL")):
+            # Glossed: the M records a real analysis, not a manufactured one.
+            continue
+        mirrored += 1
+    if not mirrored:
+        return []
+    return [Finding(
+        rule_id="V152",
+        severity=Severity.SOFT,
+        message=(
+            f"V152 SOFT: {mirrored} UNGLOSSED W elements carry a single M that "
+            f"repeats them (POL-057: an M records an analysis that was made; "
+            f"here there is no analysis to record)"
+        ),
+        path=path,
+        count=mirrored,
+        language=_tree_language(tree, path, index),
+        character="",
+    )]
+
+
 RULES: list = [
     v010_count_s_without_form,
     v014_count_missing_standard_form,
-    # POL-023 M-tier consistency (2026-08-10; V144 per-sentence 2026-08-12)
-    v144_M_less_W_in_parsed_sentence,
+    # POL-023 M-tier consistency (2026-08-10; V144 per-sentence 2026-08-12).
+    # V144 RETIRED 2026-09-09 by POL-057: an M-less W is not a defect, it
+    # records that the segmentation is not known. The id is not reused.
     v145_degenerate_all_single_M_tier,
     # POL-041 W-tier presence (2026-09-03), file-scoped
     v148_W_less_S_in_segmented_file,
@@ -514,5 +524,7 @@ RULES: list = [
     v157_legacy_alternate_kindOf,
     # POL-025 S-level TRANSL @kindOf (2026-09-08)
     v151_S_TRANSL_has_no_kindOf,
+    # POL-057 the M tier is evidence, never manufactured (2026-09-09)
+    v152_mirrored_M_tier,
 ]
 CROSS_FILE_RULES: list = []

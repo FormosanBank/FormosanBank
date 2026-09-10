@@ -1040,78 +1040,6 @@ def _soft_rows(tmp_path: Path, rule_id: str) -> list:
         return [r for r in _csv.DictReader(f) if r["rule_id"] == rule_id]
 
 
-def test_V144_M_less_W_in_parsed_sentence_flagged(tmp_path):
-    body = (
-        '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
-        + _w("W1", "ma-kaen", ["ma-", "kaen"])
-        + _w("W2", "kako", [])
-        + "</S>"
-    )
-    proc = _run_validate(_write_mtier(tmp_path, body))
-    assert _has_rule_finding(proc, ("v144",)), (
-        f"expected V144; stdout={proc.stdout!r} stderr={proc.stderr!r}"
-    )
-
-
-def test_V144_unparsed_sentence_beside_a_parsed_one_is_not_flagged(tmp_path):
-    """Per-sentence scope (2026-08-12): S2 was never analyzed, so it carries
-    no M tier — and S1's analysis must not make that a finding. Under the
-    old file-level rule this file reported two M-less Ws."""
-    body = (
-        '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
-        + _w("W1", "ma-kaen", ["ma-", "kaen"])
-        + _w("W2", "kako", ["kako"])
-        + "</S>"
-        '<S id="S2"><FORM kindOf="original">nga\'ay ho</FORM>'
-        + _w("W3", "nga'ay", [])
-        + _w("W4", "ho", [])
-        + "</S>"
-    )
-    proc = _run_validate(_write_mtier(tmp_path, body))
-    combined = combined_output(proc)
-    assert "v144" not in combined and "v145" not in combined, (
-        f"no M-tier findings expected; stdout={proc.stdout!r}"
-    )
-
-
-def test_V144_counts_only_M_less_Ws_inside_parsed_sentences(tmp_path):
-    """The finding must not leak across sentence boundaries: only S1's one
-    M-less W counts, not the three M-less Ws of the unparsed S2."""
-    body = (
-        '<S id="S1"><FORM kindOf="original">ma-kaen kako to hemay</FORM>'
-        + _w("W1", "ma-kaen", ["ma-", "kaen"])
-        + _w("W2", "kako", [])
-        + "</S>"
-        '<S id="S2"><FORM kindOf="original">nga\'ay ho kiso</FORM>'
-        + _w("W3", "nga'ay", [])
-        + _w("W4", "ho", [])
-        + _w("W5", "kiso", [])
-        + "</S>"
-    )
-    proc = _run_validate(_write_mtier(tmp_path, body))
-    rows = _soft_rows(tmp_path, "V144")
-    assert len(rows) == 1, f"expected one aggregated V144 row; got {rows!r}"
-    assert rows[0]["count"] == "1", (
-        f"only S1's M-less W should count; got {rows[0]!r}")
-
-
-def test_V144_M_form_differing_from_W_form_makes_a_sentence_parsed(tmp_path):
-    """Second clause of the parsing criterion: one M per W, but the M FORM
-    differs from its W FORM (the M carries a segmentation the W FORM does
-    not show), so the sentence carries analysis and its M-less W is a
-    finding."""
-    body = (
-        '<S id="S1"><FORM kindOf="original">malukut kako</FORM>'
-        + _w("W1", "malukut", ["ma-lukut"])
-        + _w("W2", "kako", [])
-        + "</S>"
-    )
-    proc = _run_validate(_write_mtier(tmp_path, body))
-    assert _has_rule_finding(proc, ("v144",)), (
-        f"expected V144; stdout={proc.stdout!r} stderr={proc.stderr!r}"
-    )
-
-
 def test_V144_single_M_in_parsed_sentence_is_fine(tmp_path):
     """A single-M W in a parsed sentence = analyzed as monomorphemic. Legal."""
     body = (
@@ -1125,6 +1053,48 @@ def test_V144_single_M_in_parsed_sentence_is_fine(tmp_path):
     assert "v144" not in combined and "v145" not in combined, (
         f"no M-tier findings expected; stdout={proc.stdout!r}"
     )
+
+
+def test_V152_mirror_M_tier_flagged(tmp_path):
+    """POL-057: a single M repeating its W's FORM and TRANSLs manufactures an
+    analysis. The sentence carries real parsing (W1), so this is not V145."""
+    body = (
+        '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
+        + _w("W1", "ma-kaen", ["ma-", "kaen"])
+        + _w("W2", "kako", ["kako"])
+        + "</S>"
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    assert _has_rule_finding(proc, ("v152",)), (
+        f"expected V152; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V152_M_that_shows_a_segmentation_is_not_a_mirror(tmp_path):
+    """The M FORM differs from the W FORM, so an analysis really was made."""
+    body = (
+        '<S id="S1"><FORM kindOf="original">malukut kako</FORM>'
+        + _w("W1", "malukut", ["ma-lukut"])
+        + _w("W2", "kako", ["kaku"])
+        + "</S>"
+    )
+    _run_validate(_write_mtier(tmp_path, body))
+    assert not _soft_rows(tmp_path, "V152"), "unexpected V152 finding"
+
+
+def test_V152_M_less_W_is_not_a_finding(tmp_path):
+    """POL-057 withdrew POL-023's presence requirement and retired V144: an
+    M-less W records that the segmentation is not known, and is never a
+    finding -- not even beside a parsed word in the same sentence."""
+    body = (
+        '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
+        + _w("W1", "ma-kaen", ["ma-", "kaen"])
+        + _w("W2", "kako", [])
+        + "</S>"
+    )
+    _run_validate(_write_mtier(tmp_path, body))
+    assert not _soft_rows(tmp_path, "V144"), "V144 was retired by POL-057"
+    assert not _soft_rows(tmp_path, "V152"), "an M-less W is not a mirror tier"
 
 
 def test_V145_all_single_M_tier_flagged(tmp_path):

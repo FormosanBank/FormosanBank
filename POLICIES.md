@@ -273,7 +273,7 @@ the corpus's CodeAndDocs declares a dedup step* — a leftover duplicate
 then signals a pipeline defect, not a content question. The within-file
 vs cross-file distinction survives as the finding's `scope`.
 
-### POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12)
+### POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12; **presence requirement withdrawn 2026-09-09 by POL-057**)
 **The unit of morphological analysis is the sentence, not the file.** In a
 sentence that carries *some* morphological parsing, **every W gets at least
 one M**; a W with exactly one M there is read as "analyzed as
@@ -1066,3 +1066,54 @@ Enforced by `tests/utilities/test_standardize_rule_application.py`, which assert
 that **every rule in every committed table produces exactly its own
 replacement** — the sweep that found the 17. Documented for users on the GitBook
 `standardize` page under "How rules are applied".
+
+### POL-057 · RULED · 2026-09-09 · the M tier is evidence, never manufactured
+
+An `M` records a morphological analysis that **was actually made**. It is
+never created to satisfy a structural expectation. Three consequences, which
+together supersede POL-023's presence requirement:
+
+- **A W with no M means the segmentation is not known.** That is honest
+  information about the source, not a defect, and it is never a finding.
+  A word we cannot segment and a word we have chosen not to segment look the
+  same from outside, and neither should be papered over.
+- **A W with exactly one M asserts that the word is analyzed as
+  monomorphemic.** That is a claim about the language, so it may only be
+  written where the analysis supports it -- and for a word that carries a
+  gloss and no segmentation markers, it *is* supported: the source analysed
+  it, as one morpheme with that gloss. Recording the M there states what the
+  source says, and withholding it would erase the very distinction this
+  policy protects, in the other direction. Of the 15,703 such words in the
+  published NTU Sentences, 15,699 are glossed.
+- **M elements without `TRANSL` mean there is no confirmed morphosyntactic
+  glossing for that word.** This is a legitimate, common state: the W may
+  itself be unglossed, the W's TRANSL may be a *semantic* gloss rather than a
+  morphosyntactic one, or the glossing may simply not be trusted. Segmentation
+  without glossing is real data and must be preserved --
+  YeddaPalemeqBlog publishes it for 3,906 glossed words.
+
+**Mirroring an UNGLOSSED word is therefore forbidden.** Creating an `M` that
+repeats a parent `W` carrying no gloss manufactures an analysis the source does
+not contain: the M states nothing the W did not already state, and its presence
+destroys the distinction between "analyzed as monomorphemic" and "not
+analyzed". A *glossed*, unsegmented word is the opposite case and keeps its
+single M. No pipeline step may add an M merely to satisfy tier presence.
+
+**Amends POL-023.** POL-023's rule that *within a parsed sentence every W gets
+at least one M* is withdrawn: it is precisely the requirement that motivated
+mirroring. What survives from POL-023 is the reading of a single M
+("analyzed as monomorphemic") and the rejection of a whole-corpus mirror tier
+(V145). **V144 is retired** and its id is not reused.
+
+Enforced as a SOFT finding in `validate_xml.py`:
+- **V152** — a W whose single M repeats the W's FORM and TRANSLs, i.e. a
+  manufactured tier.
+
+V064 (every M should have a TRANSL) remains SOFT and **reporting only**; under
+this policy an unglossed M is a legitimate state, so the finding is a prompt to
+look, never a defect to fix.
+
+**Existing corpora are not remediated by this ruling.** Corpora carrying mirror
+tiers become non-conforming on adoption and are tracked for a later sweep; this
+policy adds the rule and the vocabulary, not the corpus edits.
+
