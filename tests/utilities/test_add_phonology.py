@@ -290,7 +290,13 @@ def test_custom_profile_keeps_source_and_standard_phonology_distinct(tmp_path):
     assert _phon_texts(xml_path, "standard") == ["siŋsi"]
 
 
-def test_original_phonology_does_not_require_an_ortho113_table(tmp_path):
+def test_original_phonology_does_not_require_a_standard_orthography(tmp_path):
+    """Original PHON is generated for a language with no designated standard.
+
+    Pazeh's standards.csv cell is deliberately blank — the language has no
+    agreed standard orthography, so there is nothing to build standard PHON
+    from. Original PHON still comes from the source scheme passed in.
+    """
     xml_path = tmp_path / "pazeh.xml"
     xml_path.write_text(
         '<TEXT xml:lang="pzh" dialect="Pazeh"><S id="1">'
@@ -303,7 +309,7 @@ def test_original_phonology_does_not_require_an_ortho113_table(tmp_path):
     proc = _run(xml_path, orthography="Tsuchida")
 
     assert proc.returncode == 0, proc.stderr
-    assert "Standard orthography TSV not found for Pazeh" in proc.stdout
+    assert "no designated standard orthography for Pazeh" in proc.stdout
     assert _phon_texts(xml_path, "original") == ["pakizeħ"]
     assert _phon_texts(xml_path, "standard") == []
 
