@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="NTU_Stry_Bunun_bnNr-pear_Hanaivaz" xml:lang="bnn" source="NTU Corpus stories for Bunun, story: bnNr-pear_Hanaivaz" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Junqun">
     <S id="bnNr-pear_Hanaivaz_S_0">
         <FORM kindOf="original">mihumisang.</FORM>
@@ -7,7 +7,7 @@
         <PHON kindOf="standard">mix~χumisaŋ.</PHON>
         <TRANSL xml:lang="zho">你好</TRANSL>
         <TRANSL xml:lang="eng">Hello</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="6.2" end="7.16"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="6.2" end="7.16" />
         <W id="bnNr-pear_Hanaivaz_S_0_W0">
             <FORM kindOf="original">m-ihumis-ang</FORM>
             <PHON kindOf="original">mix~χumisaŋ</PHON>
@@ -40,7 +40,7 @@
                 <TRANSL xml:lang="zho">祈使</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6363636363636364</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_1">
         <FORM kindOf="original">natahu saikin mas pali'uni itu habasang mailantangus tu palihabasan.</FORM>
         <PHON kindOf="original">natax~χu saikin mas pal~ɬiʔuni itu x~χabasaŋ mail~ɬantaŋus tu pal~ɬix~χabasan.</PHON>
@@ -48,7 +48,7 @@
         <PHON kindOf="standard">natax~χu saikin mas pal~ɬiʔuni itu x~χabasaŋ mail~ɬantaŋus tu pal~ɬix~χabasan.</PHON>
         <TRANSL xml:lang="zho">我要說以前祖先的傳說故事.</TRANSL>
         <TRANSL xml:lang="eng">I am going to narrate, about the previous ancestral story.</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="7.16" end="14.42"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="7.16" end="14.42" />
         <W id="bnNr-pear_Hanaivaz_S_1_W0">
             <FORM kindOf="original">na=tahu</FORM>
             <PHON kindOf="original">na=tax~χu</PHON>
@@ -233,7 +233,7 @@
                 <TRANSL xml:lang="zho">處焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.736</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_2">
         <FORM kindOf="original">aiza tu tacini maza sia madaingaz supahan mas huma tu.</FORM>
         <PHON kindOf="original">aiða tu taʨini maða ɕia madaiŋað supax~χan mas x~χuma tu.</PHON>
@@ -241,7 +241,7 @@
         <PHON kindOf="standard">aiða tu taʨini maða ɕia madaiŋað supax~χan mas x~χuma tu.</PHON>
         <TRANSL xml:lang="zho">有一位老人種了很多的農作物.</TRANSL>
         <TRANSL xml:lang="eng">There is an old man, he planted various species of plants in many fields</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="14.42" end="22.08"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="14.42" end="22.08" />
         <W id="bnNr-pear_Hanaivaz_S_2_W0">
             <FORM kindOf="original">aiza</FORM>
             <PHON kindOf="original">aiða</PHON>
@@ -418,7 +418,7 @@
                 <TRANSL xml:lang="zho">致使&lt;重疊&gt;種植</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6126126126126126</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_3">
         <FORM kindOf="original">isaicia sinsusuaza maza isian huma mastaan tu kanaskalun saicia hai sia salvi.</FORM>
         <PHON kindOf="original">isaiʨia ɕinsusuaða maða iɕian x~χuma mastaan tu kanaskal~ɬun saiʨia x~χai ɕia sal~ɬvi.</PHON>
@@ -426,7 +426,7 @@
         <PHON kindOf="standard">isaiʨia ɕinsusuaða maða iɕian x~χuma mastaan tu kanaskal~ɬun saiʨia x~χai ɕia sal~ɬvi.</PHON>
         <TRANSL xml:lang="zho">他的農作物中,他最滿意的是梨子.</TRANSL>
         <TRANSL xml:lang="eng">What he planted the most satisfying one is the pear</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="22.08" end="28.66"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="22.08" end="28.66" />
         <W id="bnNr-pear_Hanaivaz_S_3_W0">
             <FORM kindOf="original">isaicia</FORM>
             <PHON kindOf="original">isaiʨia</PHON>
@@ -651,7 +651,7 @@
                 <TRANSL xml:lang="zho">梨子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6482758620689655</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_4">
         <FORM kindOf="original">masuaz saia mas salvi at masmuav tu mavis'ik a isaicia maza sinsuaz.</FORM>
         <PHON kindOf="original">masuað saia mas sal~ɬvi at masmuav tu mavisʔik a isaiʨia maða ɕinsuað.</PHON>
@@ -659,7 +659,7 @@
         <PHON kindOf="standard">masuað saia mas sal~ɬvi at masmuav tu mavisʔik a isaiʨia maða ɕinsuað.</PHON>
         <TRANSL xml:lang="zho">他所種的梨子結實纍纍.</TRANSL>
         <TRANSL xml:lang="eng">he planted pears, then the pears were fruitful</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="28.66" end="35.47"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="28.66" end="35.47" />
         <W id="bnNr-pear_Hanaivaz_S_4_W0">
             <FORM kindOf="original">ma-suaz</FORM>
             <PHON kindOf="original">masuað</PHON>
@@ -876,7 +876,7 @@
                 <TRANSL xml:lang="zho">種植</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5913043478260869</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_5">
         <FORM kindOf="original">aiza tu tas tu hanian miliskin saia tu nakudii matapul mas isaicia tu sinsuaz tu salvicia.</FORM>
         <PHON kindOf="original">aiða tu tas tu x~χanian mil~ɬiskin saia tu nakudii matapul~ɬ mas isaiʨia tu ɕinsuað tu sal~ɬviʨia.</PHON>
@@ -884,7 +884,7 @@
         <PHON kindOf="standard">aiða tu tas tu x~χanian mil~ɬiskin saia tu nakudii matapul~ɬ mas isaiʨia tu ɕinsuað tu sal~ɬviʨia.</PHON>
         <TRANSL xml:lang="zho">有一天他想著要去採收他所種的梨子.</TRANSL>
         <TRANSL xml:lang="eng">one day he thought of going to harvest the pears he planted</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="35.47" end="44.52"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="35.47" end="44.52" />
         <W id="bnNr-pear_Hanaivaz_S_5_W0">
             <FORM kindOf="original">aiza</FORM>
             <PHON kindOf="original">aiða</PHON>
@@ -1189,7 +1189,7 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.641025641025641</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_6">
         <FORM kindOf="original">at madas saia tu tau tu kalala mas isaicia tu napadangian mas adii tu salvicia.</FORM>
         <PHON kindOf="original">at madas saia tu tau tu kal~ɬal~ɬa mas isaiʨia tu napadaŋian mas adii tu sal~ɬviʨia.</PHON>
@@ -1197,7 +1197,7 @@
         <PHON kindOf="standard">at madas saia tu tau tu kal~ɬal~ɬa mas isaiʨia tu napadaŋian mas adii tu sal~ɬviʨia.</PHON>
         <TRANSL xml:lang="zho">然後,他帶著他的三個籃子要裝那裡的梨子.</TRANSL>
         <TRANSL xml:lang="eng">then, he carried his three baskets to load the pears</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="44.52" end="53.16"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="44.52" end="53.16" />
         <W id="bnNr-pear_Hanaivaz_S_6_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -1486,7 +1486,7 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.736842105263158</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_7">
         <FORM kindOf="original">tuza tu macingmut saia mudaan kusia saicia tu huma nasiza mas salvi.</FORM>
         <PHON kindOf="original">tuða tu maʨiŋmut saia mudaan kuɕia saiʨia tu x~χuma naɕiða mas sal~ɬvi.</PHON>
@@ -1494,7 +1494,7 @@
         <PHON kindOf="standard">tuða tu maʨiŋmut saia mudaan kuɕia saiʨia tu x~χuma naɕiða mas sal~ɬvi.</PHON>
         <TRANSL xml:lang="zho">他果然一大早出發去他的田裡要採梨子.</TRANSL>
         <TRANSL xml:lang="eng">as expected, he went to his field in early morning to harvest the pears</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="53.16" end="60.77"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="53.16" end="60.77" />
         <W id="bnNr-pear_Hanaivaz_S_7_W0">
             <FORM kindOf="original">tuza</FORM>
             <PHON kindOf="original">tuða</PHON>
@@ -1727,7 +1727,7 @@
                 <TRANSL xml:lang="zho">梨子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6829268292682926</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_8">
         <FORM kindOf="original">at manaskal saia matatapul macingmut maisi'um'um matatapul aiz(a)in dusa tu kalala matmuzin isaicia sintapul.</FORM>
         <PHON kindOf="original">at manaskal~ɬ saia matatapul~ɬ maʨiŋmut maiɕiʔumʔum matatapul~ɬ aið(a)in dusa tu kal~ɬal~ɬa matmuðin isaiʨia ɕintapul~ɬ.</PHON>
@@ -1735,7 +1735,7 @@
         <PHON kindOf="standard">at manaskal~ɬ saia matatapul~ɬ maʨiŋmut maiɕiʔumʔum matatapul~ɬ aið(a)in dusa tu kal~ɬal~ɬa matmuðin isaiʨia ɕintapul~ɬ.</PHON>
         <TRANSL xml:lang="zho">他高興地一直採收,從一大早一直採收了兩籃滿滿了 .</TRANSL>
         <TRANSL xml:lang="eng">He enthusiastically picking the pears from the early morning he gathered for two baskets the two baskets were full</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="60.77" end="72.1"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="60.77" end="72.1" />
         <W id="bnNr-pear_Hanaivaz_S_8_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -2040,7 +2040,7 @@
                 <TRANSL xml:lang="zho">採收</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6467661691542288</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_9">
         <FORM kindOf="original">ungat miliskin saia tu aizaang tu tasa ukaanang at napitmuzun amin saicia matapula mazasia tu isaicia salvi aupa masmuav tu mavis'ik a isaicia mazasia sinsuaz mazasia salvi.</FORM>
         <PHON kindOf="original">uŋat mil~ɬiskin saia tu aiðaaŋ tu tasa ukaanaŋ at napitmuðun amin saiʨia matapul~ɬa maðaɕia tu isaiʨia sal~ɬvi aupa masmuav tu mavisʔik a isaiʨia maðaɕia ɕinsuað maðaɕia sal~ɬvi.</PHON>
@@ -2048,7 +2048,7 @@
         <PHON kindOf="standard">uŋat mil~ɬiskin saia tu aiðaaŋ tu tasa ukaanaŋ at napitmuðun amin saiʨia matapul~ɬa maðaɕia tu isaiʨia sal~ɬvi aupa masmuav tu mavisʔik a isaiʨia maðaɕia ɕinsuað maðaɕia sal~ɬvi.</PHON>
         <TRANSL xml:lang="zho">然後他想到還有一個還沒有,要把他採收的梨子裝滿,因為他所種的梨子太豐收了.</TRANSL>
         <TRANSL xml:lang="eng">he thought there was still one basket hadn't filled yet it was better to also load it because the pears he planted was extremely fruitful</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="72.1" end="86.37"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="72.1" end="86.37" />
         <W id="bnNr-pear_Hanaivaz_S_9_W0">
             <FORM kindOf="original">ung=at</FORM>
             <PHON kindOf="original">uŋ=at</PHON>
@@ -2593,7 +2593,7 @@
                 <TRANSL xml:lang="zho">梨子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6234567901234568</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_10">
         <FORM kindOf="original">at miliskin saia tu muhnaang kudadaza matapul mas isaicia tu salvicia.</FORM>
         <PHON kindOf="original">at mil~ɬiskin saia tu mux~χnaaŋ kudadaða matapul~ɬ mas isaiʨia tu sal~ɬviʨia.</PHON>
@@ -2601,7 +2601,7 @@
         <PHON kindOf="standard">at mil~ɬiskin saia tu mux~χnaaŋ kudadaða matapul~ɬ mas isaiʨia tu sal~ɬviʨia.</PHON>
         <TRANSL xml:lang="zho">他想著再一次上去採他的梨子.</TRANSL>
         <TRANSL xml:lang="eng">he thought to climb up again to pick the pears</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="86.37" end="92.39"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="86.37" end="92.39" />
         <W id="bnNr-pear_Hanaivaz_S_10_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -2694,22 +2694,22 @@
                 <PHON kindOf="original">aŋ</PHON>
                 <FORM kindOf="standard">ang</FORM>
                 <PHON kindOf="standard">aŋ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="bnNr-pear_Hanaivaz_S_10_W4M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">again</TRANSL>
                 <TRANSL xml:lang="zho">再</TRANSL>
             </M>
             <M id="bnNr-pear_Hanaivaz_S_10_W4M4">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">still</TRANSL>
                 <TRANSL xml:lang="zho">還</TRANSL>
             </M>
@@ -2842,7 +2842,7 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6470588235294117</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_11">
         <FORM kindOf="original">idadaza saia sia lukis manaskal matatapul hai.</FORM>
         <PHON kindOf="original">idadaða saia ɕia l~ɬukis manaskal~ɬ matatapul~ɬ x~χai.</PHON>
@@ -2850,7 +2850,7 @@
         <PHON kindOf="standard">idadaða saia ɕia l~ɬukis manaskal~ɬ matatapul~ɬ x~χai.</PHON>
         <TRANSL xml:lang="zho">他在樹上很開心地一直採收.</TRANSL>
         <TRANSL xml:lang="eng">he was in the tree excitedly picking off the pears</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="92.39" end="97.32"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="92.39" end="97.32" />
         <W id="bnNr-pear_Hanaivaz_S_11_W0">
             <FORM kindOf="original">i-da-daza</FORM>
             <PHON kindOf="original">idadaða</PHON>
@@ -2995,7 +2995,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.8</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_12">
         <FORM kindOf="original">aiza tu tacini maza uvaaz minsuma tuntanpu anghaib sia isaicia tu huma tu cinapul tu salvicia.</FORM>
         <PHON kindOf="original">aiða tu taʨini maða uvaað minsuma tuntanpu aŋx~χaib ɕia isaiʨia tu x~χuma tu ʨinapul~ɬ tu sal~ɬviʨia.</PHON>
@@ -3003,7 +3003,7 @@
         <PHON kindOf="standard">aiða tu taʨini maða uvaað minsuma tuntanpu aŋx~χaib ɕia isaiʨia tu x~χuma tu ʨinapul~ɬ tu sal~ɬviʨia.</PHON>
         <TRANSL xml:lang="zho">有一個孩子騎腳踏車經過他採收梨子的農地.</TRANSL>
         <TRANSL xml:lang="eng">there was a kid coming up he rode a bicycle passing through the old man's baskets.</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="97.32" end="107.57"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="97.32" end="107.57" />
         <W id="bnNr-pear_Hanaivaz_S_12_W0">
             <FORM kindOf="original">aiza</FORM>
             <PHON kindOf="original">aiða</PHON>
@@ -3292,7 +3292,7 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6545454545454545</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_13">
         <FORM kindOf="original">sadu maza uvaaza tu ai uka maza sia madaingaza sia matatapula.</FORM>
         <PHON kindOf="original">sadu maða uvaaða tu ai uka maða ɕia madaiŋaða ɕia matatapul~ɬa.</PHON>
@@ -3300,7 +3300,7 @@
         <PHON kindOf="standard">sadu maða uvaaða tu ai uka maða ɕia madaiŋaða ɕia matatapul~ɬa.</PHON>
         <TRANSL xml:lang="zho">那個孩子沒有看到那個採梨子的老人.</TRANSL>
         <TRANSL xml:lang="eng">he didn't see that old man</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="107.57" end="115.48"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="107.57" end="115.48" />
         <W id="bnNr-pear_Hanaivaz_S_13_W0">
             <FORM kindOf="original">sadu</FORM>
             <PHON kindOf="original">sadu</PHON>
@@ -3525,7 +3525,7 @@
                 <TRANSL xml:lang="zho">遠距.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6415094339622642</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_14">
         <FORM kindOf="original">ung haitu mavia tu aiza matmuz sia nastu sia tanngadah lukistan a maza dusa tu kalala matmuzin a tin apul a maza sia tu.</FORM>
         <PHON kindOf="original">uŋ x~χaitu mavia tu aiða matmuð ɕia nastu ɕia tanŋadax~χ l~ɬukistan a maða dusa tu kal~ɬal~ɬa matmuðin a tin apul~ɬ a maða ɕia tu.</PHON>
@@ -3533,7 +3533,7 @@
         <PHON kindOf="standard">uŋ x~χaitu mavia tu aiða matmuð ɕia nastu ɕia tanŋadax~χ l~ɬukistan a maða dusa tu kal~ɬal~ɬa matmuðin a tin apul~ɬ a maða ɕia tu.</PHON>
         <TRANSL xml:lang="zho">為什麼樹下有兩個裝滿採下的梨子的籃子呢?</TRANSL>
         <TRANSL xml:lang="eng">why there was two full under this tree two baskets full of pears</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="115.48" end="126.35"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="115.48" end="126.35" />
         <W id="bnNr-pear_Hanaivaz_S_14_W0">
             <FORM kindOf="original">ung</FORM>
             <PHON kindOf="original">uŋ</PHON>
@@ -3950,15 +3950,15 @@
                 <TRANSL xml:lang="zho">梨子</TRANSL>
             </M>
             <M id="bnNr-pear_Hanaivaz_S_14_W23M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="zho">遠距.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.639269406392694</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_15">
         <FORM kindOf="original">at sadu uvaaza tu uat uka bunun sadu at miliskin saia tu natanghaiu tu dusa ung haitu sadu saia tu mais dusa hai kauman.</FORM>
         <PHON kindOf="original">at sadu uvaaða tu uat uka bunun sadu at mil~ɬiskin saia tu nataŋx~χaiu tu dusa uŋ x~χaitu sadu saia tu mais dusa x~χai kauman.</PHON>
@@ -3966,7 +3966,7 @@
         <PHON kindOf="standard">at sadu uvaaða tu uat uka bunun sadu at mil~ɬiskin saia tu nataŋx~χaiu tu dusa uŋ x~χaitu sadu saia tu mais dusa x~χai kauman.</PHON>
         <TRANSL xml:lang="zho">小孩看沒有人在看,他想要偷兩個,可是兩個太少.</TRANSL>
         <TRANSL xml:lang="eng" notes="the kid looked around he found no one (around) he wanted to steal two pears but two pears were too few">the kid looked around he found no one he wanted to steal two pears but two pears were too few</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="126.35" end="137.29"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="126.35" end="137.29" />
         <W id="bnNr-pear_Hanaivaz_S_15_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -4383,7 +4383,7 @@
                 <TRANSL xml:lang="zho">一些</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5490196078431373</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_16">
         <FORM kindOf="original">miliskin saia tu minsuuzta tanghaiu tu tas tu kalala.</FORM>
         <PHON kindOf="original">mil~ɬiskin saia tu minsuuðta taŋx~χaiu tu tas tu kal~ɬal~ɬa.</PHON>
@@ -4391,7 +4391,7 @@
         <PHON kindOf="standard">mil~ɬiskin saia tu minsuuðta taŋx~χaiu tu tas tu kal~ɬal~ɬa.</PHON>
         <TRANSL xml:lang="zho">他想著:「我們乾脆偷走一籃好了.」</TRANSL>
         <TRANSL xml:lang="eng">he thought it was better to steal a full basket</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="137.29" end="142.69"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="137.29" end="142.69" />
         <W id="bnNr-pear_Hanaivaz_S_16_W0">
             <FORM kindOf="original">m-iliskin</FORM>
             <PHON kindOf="original">mil~ɬiskin</PHON>
@@ -4552,15 +4552,15 @@
                 <TRANSL xml:lang="zho">籃子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6458333333333333</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_17">
         <FORM kindOf="original">at tuza tu masivit saia hai ukaang usaduan saicia a manaskal saia siza mas tas tu kalalacia.</FORM>
         <PHON kindOf="original">at tuða tu maɕivit saia x~χai ukaaŋ usaduan saiʨia a manaskal~ɬ saia ɕiða mas tas tu kal~ɬal~ɬaʨia.</PHON>
         <FORM kindOf="standard">at tuza tu masivit saia hai ukaang usaduan saicia a manaskal saia siza mas tas tu kalalacia.</FORM>
         <PHON kindOf="standard">at tuða tu maɕivit saia x~χai ukaaŋ usaduan saiʨia a manaskal~ɬ saia ɕiða mas tas tu kal~ɬal~ɬaʨia.</PHON>
         <TRANSL xml:lang="zho">然後他仔細觀察,老人沒有看到他,他開心地拿了一籃.</TRANSL>
-        <TRANSL xml:lang="eng"/>
-        <AUDIO file="bnNr-pear_Hanaivaz_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="142.69" end="153.99"/>
+        <TRANSL xml:lang="eng" />
+        <AUDIO file="bnNr-pear_Hanaivaz_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="142.69" end="153.99" />
         <W id="bnNr-pear_Hanaivaz_S_17_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -4701,8 +4701,8 @@
                 <PHON kindOf="original">aŋ</PHON>
                 <FORM kindOf="standard">ang</FORM>
                 <PHON kindOf="standard">aŋ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="bnNr-pear_Hanaivaz_S_17_W8">
@@ -4769,18 +4769,18 @@
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
             <M id="bnNr-pear_Hanaivaz_S_17_W10M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">old</TRANSL>
                 <TRANSL xml:lang="zho">老</TRANSL>
             </M>
             <M id="bnNr-pear_Hanaivaz_S_17_W10M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="zho">遠距.主格</TRANSL>
             </M>
@@ -4913,7 +4913,7 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6195652173913043</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_18">
         <FORM kindOf="original">antabanun saicia tas tu kalala pudazaun sia isaicia tu at patuntanpuun saicia mudaan.</FORM>
         <PHON kindOf="original">antabanun saiʨia tas tu kal~ɬal~ɬa pudaðaun ɕia isaiʨia tu at patuntanpuun saiʨia mudaan.</PHON>
@@ -4921,7 +4921,7 @@
         <PHON kindOf="standard">antabanun saiʨia tas tu kal~ɬal~ɬa pudaðaun ɕia isaiʨia tu at patuntanpuun saiʨia mudaan.</PHON>
         <TRANSL xml:lang="zho">他把這一籃拿走,放上他的腳踏車走了.</TRANSL>
         <TRANSL xml:lang="eng">stole that basket carried it off</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="153.99" end="161.65"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="153.99" end="161.65" />
         <W id="bnNr-pear_Hanaivaz_S_18_W0">
             <FORM kindOf="original">antaban-un</FORM>
             <PHON kindOf="original">antabanun</PHON>
@@ -5047,7 +5047,7 @@
                 <FORM kindOf="standard">un</FORM>
                 <PHON kindOf="standard">un</PHON>
                 <TRANSL xml:lang="eng">PF</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="bnNr-pear_Hanaivaz_S_18_W6">
@@ -5202,7 +5202,7 @@
                 <TRANSL xml:lang="zho">路</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6951219512195121</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_19">
         <FORM kindOf="original">miliskin saia tu ua madasik tu tas tu kalalacia salvitan kulumah.</FORM>
         <PHON kindOf="original">mil~ɬiskin saia tu ua madaɕik tu tas tu kal~ɬal~ɬaʨia sal~ɬvitan kul~ɬumax~χ.</PHON>
@@ -5210,7 +5210,7 @@
         <PHON kindOf="standard">mil~ɬiskin saia tu ua madaɕik tu tas tu kal~ɬal~ɬaʨia sal~ɬvitan kul~ɬumax~χ.</PHON>
         <TRANSL xml:lang="zho">他想著:「哇!我帶了一籃梨子回家.」</TRANSL>
         <TRANSL xml:lang="eng">he thought wow I brought back home a basket of pears</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="161.65" end="167.66"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="161.65" end="167.66" />
         <W id="bnNr-pear_Hanaivaz_S_19_W0">
             <FORM kindOf="original">m-iliskin</FORM>
             <PHON kindOf="original">mil~ɬiskin</PHON>
@@ -5435,7 +5435,7 @@
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6495726495726496</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_20">
         <FORM kindOf="original">manaskal saia antaban tanghaiu mas tas tu kalala tu salvicia.</FORM>
         <PHON kindOf="original">manaskal~ɬ saia antaban taŋx~χaiu mas tas tu kal~ɬal~ɬa tu sal~ɬviʨia.</PHON>
@@ -5443,7 +5443,7 @@
         <PHON kindOf="standard">manaskal~ɬ saia antaban taŋx~χaiu mas tas tu kal~ɬal~ɬa tu sal~ɬviʨia.</PHON>
         <TRANSL xml:lang="zho">他很興奮地偷拿走一籃梨子.</TRANSL>
         <TRANSL xml:lang="eng">he was so excited to bring the basket of pears that he had stolen</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="167.66" end="174.09"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="167.66" end="174.09" />
         <W id="bnNr-pear_Hanaivaz_S_20_W0">
             <FORM kindOf="original">ma-naskal</FORM>
             <PHON kindOf="original">manaskal~ɬ</PHON>
@@ -5616,11 +5616,11 @@
                 <PHON kindOf="original">ʨia</PHON>
                 <FORM kindOf="standard">cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
-    </S>
+    <SCORE>0.8108108108108107</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_21">
         <FORM kindOf="original">iskamishang sia daan hai mapalanduu saia mas manauaz tu binanauaz.</FORM>
         <PHON kindOf="original">iskamisx~χaŋ ɕia daan x~χai mapal~ɬanduu saia mas manauað tu binanauað.</PHON>
@@ -5628,7 +5628,7 @@
         <PHON kindOf="standard">iskamisx~χaŋ ɕia daan x~χai mapal~ɬanduu saia mas manauað tu binanauað.</PHON>
         <TRANSL xml:lang="zho">半路上,他遇見了漂亮的小姐.</TRANSL>
         <TRANSL xml:lang="eng">he met a pretty girl</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="174.09" end="180.52"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="174.09" end="180.52" />
         <W id="bnNr-pear_Hanaivaz_S_21_W0">
             <FORM kindOf="original">i-ska-mishang</FORM>
             <PHON kindOf="original">iskamisx~χaŋ</PHON>
@@ -5829,7 +5829,7 @@
                 <TRANSL xml:lang="zho">BI漂亮</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_22">
         <FORM kindOf="original">miliskin sadu saia tu ai manauaz a binanauaza palanduanan sakakiiv saia sadu hai mas binanauazcia nii tu haiap tu maza maltanangaus aiza batudaingaz.</FORM>
         <PHON kindOf="original">mil~ɬiskin sadu saia tu ai manauað a binanauaða pal~ɬanduanan sakakiiv saia sadu x~χai mas binanauaðʨia nii tu x~χaiap tu maða mal~ɬtanaŋaus aiða batudaiŋað.</PHON>
@@ -5837,7 +5837,7 @@
         <PHON kindOf="standard">mil~ɬiskin sadu saia tu ai manauað a binanauaða pal~ɬanduanan sakakiiv saia sadu x~χai mas binanauaðʨia nii tu x~χaiap tu maða mal~ɬtanaŋaus aiða batudaiŋað.</PHON>
         <TRANSL xml:lang="zho">他看到這個遇到的小姐很漂亮,他回頭看那個小姐,不知道前面有個大石頭.</TRANSL>
         <TRANSL xml:lang="eng">he found that the girl was so beautiful when he looked back at that girl there was a big stone in front of him</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="180.52" end="196.12"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="180.52" end="196.12" />
         <W id="bnNr-pear_Hanaivaz_S_22_W0">
             <FORM kindOf="original">m-iliskin</FORM>
             <PHON kindOf="original">mil~ɬiskin</PHON>
@@ -6058,8 +6058,8 @@
                 <PHON kindOf="original">kiiv</PHON>
                 <FORM kindOf="standard">kiiv</FORM>
                 <PHON kindOf="standard">kiiv</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="bnNr-pear_Hanaivaz_S_22_W10">
@@ -6126,10 +6126,10 @@
                 <TRANSL xml:lang="zho">BI&lt;重疊&gt;漂亮</TRANSL>
             </M>
             <M id="bnNr-pear_Hanaivaz_S_22_W13M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
@@ -6162,8 +6162,8 @@
                 <PHON kindOf="original">ʨia</PHON>
                 <FORM kindOf="standard">cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="bnNr-pear_Hanaivaz_S_22_W15">
@@ -6334,7 +6334,7 @@
                 <TRANSL xml:lang="zho">老</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5387453874538746</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_23">
         <FORM kindOf="original">paptuh isaicia maza tanpu a tauntauna sia batucia pantunghaz saia.</FORM>
         <PHON kindOf="original">paptux~χ isaiʨia maða tanpu a tauntauna ɕia batuʨia pantuŋx~χað saia.</PHON>
@@ -6342,7 +6342,7 @@
         <PHON kindOf="standard">paptux~χ isaiʨia maða tanpu a tauntauna ɕia batuʨia pantuŋx~χað saia.</PHON>
         <TRANSL xml:lang="zho">他的腳踏車的輪子撞到那個石頭倒了.</TRANSL>
         <TRANSL xml:lang="eng">his bicycle's wheel hit the stone he fell off his bicycle</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="196.12" end="201.92"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="196.12" end="201.92" />
         <W id="bnNr-pear_Hanaivaz_S_23_W0">
             <FORM kindOf="original">paptuh</FORM>
             <PHON kindOf="original">paptux~χ</PHON>
@@ -6439,10 +6439,10 @@
                 <TRANSL xml:lang="zho">圓圈</TRANSL>
             </M>
             <M id="bnNr-pear_Hanaivaz_S_23_W5M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="zho">遠距.主格</TRANSL>
             </M>
@@ -6451,16 +6451,16 @@
                 <PHON kindOf="original">taun</PHON>
                 <FORM kindOf="standard">taun</FORM>
                 <PHON kindOf="standard">taun</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="bnNr-pear_Hanaivaz_S_23_W5M4">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="bnNr-pear_Hanaivaz_S_23_W6">
@@ -6543,7 +6543,7 @@
                 <TRANSL xml:lang="zho">3SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5528455284552846</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_24">
         <FORM kindOf="original">musasu tu cin'uman isaicia tamuung.</FORM>
         <PHON kindOf="original">musasu tu ʨinʔuman isaiʨia tamuuŋ.</PHON>
@@ -6551,7 +6551,7 @@
         <PHON kindOf="standard">musasu tu ʨinʔuman isaiʨia tamuuŋ.</PHON>
         <TRANSL xml:lang="zho">他的帽子同時也落掉了.</TRANSL>
         <TRANSL xml:lang="eng">meanwhile his hat also fell off</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="201.92" end="205.25"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="201.92" end="205.25" />
         <W id="bnNr-pear_Hanaivaz_S_24_W0">
             <FORM kindOf="original">musasu</FORM>
             <PHON kindOf="original">musasu</PHON>
@@ -6640,7 +6640,7 @@
                 <TRANSL xml:lang="zho">帽子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_25">
         <FORM kindOf="original">masa pantunghaz saia hai mututu isaicia maza sia salvia tas tu kalalaa.</FORM>
         <PHON kindOf="original">masa pantuŋx~χað saia x~χai mututu isaiʨia maða ɕia sal~ɬvia tas tu kal~ɬal~ɬaa.</PHON>
@@ -6648,7 +6648,7 @@
         <PHON kindOf="standard">masa pantuŋx~χað saia x~χai mututu isaiʨia maða ɕia sal~ɬvia tas tu kal~ɬal~ɬaa.</PHON>
         <TRANSL xml:lang="zho">當他摔倒的時候,一籃的梨子也都撒出來了.</TRANSL>
         <TRANSL xml:lang="eng">when he fell off the bicycle pears in the basket also spilled out</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="205.25" end="212.45"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="205.25" end="212.45" />
         <W id="bnNr-pear_Hanaivaz_S_25_W0">
             <FORM kindOf="original">masa</FORM>
             <PHON kindOf="original">masa</PHON>
@@ -6873,7 +6873,7 @@
                 <TRANSL xml:lang="zho">遠距.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.7777777777777778</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_26">
         <FORM kindOf="original">isian saia daancia is'anuhu sadu isaicia tu malung tu milu'lu pishaidang.</FORM>
         <PHON kindOf="original">iɕian saia daanʨia isʔanux~χu sadu isaiʨia tu mal~ɬuŋ tu mil~ɬuʔl~ɬu pisx~χaidaŋ.</PHON>
@@ -6881,7 +6881,7 @@
         <PHON kindOf="standard">iɕian saia daanʨia isʔanux~χu sadu isaiʨia tu mal~ɬuŋ tu mil~ɬuʔl~ɬu pisx~χaidaŋ.</PHON>
         <TRANSL xml:lang="zho">他在路上蹲下來看他受傷流血的膝蓋.</TRANSL>
         <TRANSL xml:lang="eng" notes="he was on the road sitting down to see his bleeding knee bleeding (knee)">he was on the road sitting down to see his bleeding knee bleeding</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="212.45" end="221.19"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="212.45" end="221.19" />
         <W id="bnNr-pear_Hanaivaz_S_26_W0">
             <FORM kindOf="original">i-sian</FORM>
             <PHON kindOf="original">iɕian</PHON>
@@ -7090,7 +7090,7 @@
                 <TRANSL xml:lang="zho">流血</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6764705882352942</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_27">
         <FORM kindOf="original">mal'angkuzu saia masasamsam isaicia tu malung hai.</FORM>
         <PHON kindOf="original">mal~ɬʔaŋkuðu saia masasamsam isaiʨia tu mal~ɬuŋ x~χai.</PHON>
@@ -7098,7 +7098,7 @@
         <PHON kindOf="standard">mal~ɬʔaŋkuðu saia masasamsam isaiʨia tu mal~ɬuŋ x~χai.</PHON>
         <TRANSL xml:lang="zho">他蹲著,一直揉他的膝蓋.</TRANSL>
         <TRANSL xml:lang="eng">he squatted down and keep rubbing his knee</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="221.19" end="226.29"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="221.19" end="226.29" />
         <W id="bnNr-pear_Hanaivaz_S_27_W0">
             <FORM kindOf="original">m-al-'angkuzu</FORM>
             <PHON kindOf="original">mal~ɬʔaŋkuðu</PHON>
@@ -7235,7 +7235,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6804123711340206</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_28">
         <FORM kindOf="original">aiza andingalan sia daan tatau uvaaz sadu naicia sadu saicia tu.</FORM>
         <PHON kindOf="original">aiða andiŋal~ɬan ɕia daan tatau uvaað sadu naiʨia sadu saiʨia tu.</PHON>
@@ -7243,7 +7243,7 @@
         <PHON kindOf="standard">aiða andiŋal~ɬan ɕia daan tatau uvaað sadu naiʨia sadu saiʨia tu.</PHON>
         <TRANSL xml:lang="zho">在路的旁邊有三位小孩子看到他跌倒.</TRANSL>
         <TRANSL xml:lang="eng">there were three kids beside the road they saw he fell down</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="226.29" end="233.84"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="226.29" end="233.84" />
         <W id="bnNr-pear_Hanaivaz_S_28_W0">
             <FORM kindOf="original">aiza</FORM>
             <PHON kindOf="original">aiða</PHON>
@@ -7436,15 +7436,15 @@
                 <TRANSL xml:lang="zho">反身</TRANSL>
             </M>
             <M id="bnNr-pear_Hanaivaz_S_28_W10M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">to.trip</TRANSL>
                 <TRANSL xml:lang="zho">絆倒</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6615384615384615</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_29">
         <FORM kindOf="original">at masial naicia is'aang miliskin tu indangazav adii uvaaza mindia ii masmuav tu supahdaingaza tas tu kalala mututuan.</FORM>
         <PHON kindOf="original">at maɕial~ɬ naiʨia isʔaaŋ mil~ɬiskin tu indaŋaðav adii uvaaða mindia ii masmuav tu supax~χdaiŋaða tas tu kal~ɬal~ɬa mututuan.</PHON>
@@ -7452,7 +7452,7 @@
         <PHON kindOf="standard">at maɕial~ɬ naiʨia isʔaaŋ mil~ɬiskin tu indaŋaðav adii uvaaða mindia ii masmuav tu supax~χdaiŋaða tas tu kal~ɬal~ɬa mututuan.</PHON>
         <TRANSL xml:lang="zho">他們心地善良,想著說;「讓我們來幫那個孩子撿起來!」因為一籃全掉出來,太多了.</TRANSL>
         <TRANSL xml:lang="eng">they thought to help that kid picking up his pears but there were too many pears cause all of them fell off the road</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="233.84" end="243.36"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="233.84" end="243.36" />
         <W id="bnNr-pear_Hanaivaz_S_29_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -7821,7 +7821,7 @@
                 <TRANSL xml:lang="zho">中距.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6305418719211823</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_30">
         <FORM kindOf="original">tuza tu maza tatau uvaaza hai mindangaz kudii sia uvaazcia mindia mas inaicia minututu tu salvicia.</FORM>
         <PHON kindOf="original">tuða tu maða tatau uvaaða x~χai mindaŋað kudii ɕia uvaaðʨia mindia mas inaiʨia minututu tu sal~ɬviʨia.</PHON>
@@ -7829,7 +7829,7 @@
         <PHON kindOf="standard">tuða tu maða tatau uvaaða x~χai mindaŋað kudii ɕia uvaaðʨia mindia mas inaiʨia minututu tu sal~ɬviʨia.</PHON>
         <TRANSL xml:lang="zho">果然那三個孩子去孩子那邊幫忙撿他掉出來的梨子.</TRANSL>
         <TRANSL xml:lang="eng">but those three kids really helped that kid they helped him picked up the scattered pears</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="243.36" end="252.9"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="243.36" end="252.9" />
         <W id="bnNr-pear_Hanaivaz_S_30_W0">
             <FORM kindOf="original">tuza</FORM>
             <PHON kindOf="original">tuða</PHON>
@@ -8158,7 +8158,7 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6390532544378698</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_31">
         <FORM kindOf="original">indangazan amin uvaazcia ansahan mapundaza sia tanpucia sidangkazun uvaaza.</FORM>
         <PHON kindOf="original">indaŋaðan amin uvaaðʨia ansax~χan mapundaða ɕia tanpuʨia ɕidaŋkaðun uvaaða.</PHON>
@@ -8166,7 +8166,7 @@
         <PHON kindOf="standard">indaŋaðan amin uvaaðʨia ansax~χan mapundaða ɕia tanpuʨia ɕidaŋkaðun uvaaða.</PHON>
         <TRANSL xml:lang="zho">孩子也幫忙搬到他的腳踏車上,把孩子扶起來.</TRANSL>
         <TRANSL xml:lang="eng">gathered them in the basket and put it back on the bicycle they also help lift him up</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="252.9" end="259.91"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="252.9" end="259.91" />
         <W id="bnNr-pear_Hanaivaz_S_31_W0">
             <FORM kindOf="original">indangaz-an</FORM>
             <PHON kindOf="original">indaŋaðan</PHON>
@@ -8391,7 +8391,7 @@
                 <TRANSL xml:lang="zho">遠距.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.7234042553191489</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_32">
         <FORM kindOf="original">at maza tatau uvaaza hai tutuza tu masial mindangaz.</FORM>
         <PHON kindOf="original">at maða tatau uvaaða x~χai tutuða tu maɕial~ɬ mindaŋað.</PHON>
@@ -8399,7 +8399,7 @@
         <PHON kindOf="standard">at maða tatau uvaaða x~χai tutuða tu maɕial~ɬ mindaŋað.</PHON>
         <TRANSL xml:lang="zho">那三個孩子真的很好心地幫助他,</TRANSL>
         <TRANSL xml:lang="eng">those three kids were really nice helped him out</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="259.91" end="264.28"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="259.91" end="264.28" />
         <W id="bnNr-pear_Hanaivaz_S_32_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -8584,7 +8584,7 @@
                 <TRANSL xml:lang="zho">幫忙</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5376344086021505</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_33">
         <FORM kindOf="original">aiza tacini ansasuun naicia maza batua imishang sia daana paiptuhan mas isaicia tu tauntauna matakunav makunasia sila tu daan.</FORM>
         <PHON kindOf="original">aiða taʨini ansasuun naiʨia maða batua imisx~χaŋ ɕia daana paiptux~χan mas isaiʨia tu tauntauna matakunav makunaɕia ɕil~ɬa tu daan.</PHON>
@@ -8592,7 +8592,7 @@
         <PHON kindOf="standard">aiða taʨini ansasuun naiʨia maða batua imisx~χaŋ ɕia daana paiptux~χan mas isaiʨia tu tauntauna matakunav makunaɕia ɕil~ɬa tu daan.</PHON>
         <TRANSL xml:lang="zho">有一個孩子順便把路中間那顆車輪撞到的石頭丟在路邊.</TRANSL>
         <TRANSL xml:lang="eng">one of them at the same time throw the stone away throw it away across the street</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="264.28" end="275.15"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="264.28" end="275.15" />
         <W id="bnNr-pear_Hanaivaz_S_33_W0">
             <FORM kindOf="original">aiza</FORM>
             <PHON kindOf="original">aiða</PHON>
@@ -8977,7 +8977,7 @@
                 <TRANSL xml:lang="zho">路</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6724890829694323</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_34">
         <FORM kindOf="original">aupa miliskin naia tu mais aizaang a duma anghaip hai namaupacia tu mucingkul.</FORM>
         <PHON kindOf="original">aupa mil~ɬiskin naia tu mais aiðaaŋ a duma aŋx~χaip x~χai namaupaʨia tu muʨiŋkul~ɬ.</PHON>
@@ -8985,7 +8985,7 @@
         <PHON kindOf="standard">aupa mil~ɬiskin naia tu mais aiðaaŋ a duma aŋx~χaip x~χai namaupaʨia tu muʨiŋkul~ɬ.</PHON>
         <TRANSL xml:lang="zho">因為他們想萬一還有別人經過也會像那樣的跌倒.</TRANSL>
         <TRANSL xml:lang="eng" notes="they thought if there were other people passed through (this road) they might fall off like him">they thought if there were other people passed through they might fall off like him</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="275.15" end="280.85"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="275.15" end="280.85" />
         <W id="bnNr-pear_Hanaivaz_S_34_W0">
             <FORM kindOf="original">aupa</FORM>
             <PHON kindOf="original">aupa</PHON>
@@ -9234,7 +9234,7 @@
                 <TRANSL xml:lang="zho">絆倒</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6818181818181819</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_35">
         <FORM kindOf="original">tuza tu masial naia sia tatau uvaaza masial naicia is'aang at.</FORM>
         <PHON kindOf="original">tuða tu maɕial~ɬ naia ɕia tatau uvaaða maɕial~ɬ naiʨia isʔaaŋ at.</PHON>
@@ -9242,7 +9242,7 @@
         <PHON kindOf="standard">tuða tu maɕial~ɬ naia ɕia tatau uvaaða maɕial~ɬ naiʨia isʔaaŋ at.</PHON>
         <TRANSL xml:lang="zho">他們真的是好,那三個孩子的心地真好.</TRANSL>
         <TRANSL xml:lang="eng">those three kids were really nice, they were good persons indeed</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="280.85" end="285.01"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="280.85" end="285.01" />
         <W id="bnNr-pear_Hanaivaz_S_35_W0">
             <FORM kindOf="original">tuza</FORM>
             <PHON kindOf="original">tuða</PHON>
@@ -9451,7 +9451,7 @@
                 <TRANSL xml:lang="zho">然後</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5294117647058824</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_36">
         <FORM kindOf="original">maupacia naia mudaan mapacinpalavaaz hai manaskal amin a taininghaiu uvaaza macingna ma'unding mudaan.</FORM>
         <PHON kindOf="original">maupaʨia naia mudaan mapaʨinpal~ɬavaað x~χai manaskal~ɬ amin a tainiŋx~χaiu uvaaða maʨiŋna maʔundiŋ mudaan.</PHON>
@@ -9459,7 +9459,7 @@
         <PHON kindOf="standard">maupaʨia naia mudaan mapaʨinpal~ɬavaað x~χai manaskal~ɬ amin a tainiŋx~χaiu uvaaða maʨiŋna maʔundiŋ mudaan.</PHON>
         <TRANSL xml:lang="zho">他們就這樣分別了,那個偷過東西的孩子也很開心,再次騎車走了.</TRANSL>
         <TRANSL xml:lang="eng">and so they walked separately the one who stole the pears was also happy and left</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="285.01" end="293.64"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="285.01" end="293.64" />
         <W id="bnNr-pear_Hanaivaz_S_36_W0">
             <FORM kindOf="original">maupa=cia</FORM>
             <PHON kindOf="original">maupa=ʨia</PHON>
@@ -9748,10 +9748,10 @@
                 <TRANSL xml:lang="zho">AF</TRANSL>
             </M>
             <M id="bnNr-pear_Hanaivaz_S_36_W11M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">to.drive</TRANSL>
                 <TRANSL xml:lang="zho">駕駛</TRANSL>
             </M>
@@ -9788,7 +9788,7 @@
                 <TRANSL xml:lang="zho">路</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6994535519125683</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_37">
         <FORM kindOf="original">taunamishang hai sadu adii tatau uvaaza tu ai asia daan itu uvaaza tamuung kaungaan.</FORM>
         <PHON kindOf="original">taunamisx~χaŋ x~χai sadu adii tatau uvaaða tu ai aɕia daan itu uvaaða tamuuŋ kauŋaan.</PHON>
@@ -9796,7 +9796,7 @@
         <PHON kindOf="standard">taunamisx~χaŋ x~χai sadu adii tatau uvaaða tu ai aɕia daan itu uvaaða tamuuŋ kauŋaan.</PHON>
         <TRANSL xml:lang="zho">走到一半,那三個孩子看到:「哇!他的帽子忘在路上了.」</TRANSL>
         <TRANSL xml:lang="eng">in the half way those three kids yelled out "hey" they saw he forgot his hat, it was left on the road</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="293.64" end="301.82"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="293.64" end="301.82" />
         <W id="bnNr-pear_Hanaivaz_S_37_W0">
             <FORM kindOf="original">tauna=mishang</FORM>
             <PHON kindOf="original">tauna=misx~χaŋ</PHON>
@@ -10041,8 +10041,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="bnNr-pear_Hanaivaz_S_37_W12">
@@ -10061,10 +10061,10 @@
                 <TRANSL xml:lang="zho">遺失</TRANSL>
             </M>
             <M id="bnNr-pear_Hanaivaz_S_37_W12M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">LF</TRANSL>
                 <TRANSL xml:lang="zho">處焦</TRANSL>
             </M>
@@ -10089,11 +10089,11 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
-    </S>
+    <SCORE>0.6301369863013699</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_38">
         <FORM kindOf="original">pis'ulukan saicia sakakiiv hai askadaizadii saduanang at lalaun naicia tu pis'ulukan saicia mala'la tu iu ai saduava.</FORM>
         <PHON kindOf="original">pisʔul~ɬukan saiʨia sakakiiv x~χai askadaiðadii saduanaŋ at l~ɬal~ɬaun naiʨia tu pisʔul~ɬukan saiʨia mal~ɬaʔl~ɬa tu iu ai saduava.</PHON>
@@ -10101,7 +10101,7 @@
         <PHON kindOf="standard">pisʔul~ɬukan saiʨia sakakiiv x~χai askadaiðadii saduanaŋ at l~ɬal~ɬaun naiʨia tu pisʔul~ɬukan saiʨia mal~ɬaʔl~ɬa tu iu ai saduava.</PHON>
         <TRANSL xml:lang="zho">他回頭看,還看到他在那裡,他們吹口哨呼叫他:「呦!看這裡!」</TRANSL>
         <TRANSL xml:lang="eng" notes="he (one of the three kids) looked back and whistled they still could see him they yelled at the kid and whistled to him &quot;please see&quot;">he looked back and whistled they still could see him they yelled at the kid and whistled to him "please see"</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="301.82" end="313.04"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="301.82" end="313.04" />
         <W id="bnNr-pear_Hanaivaz_S_38_W0">
             <FORM kindOf="original">pis'uluk-an</FORM>
             <PHON kindOf="original">pisʔul~ɬukan</PHON>
@@ -10470,7 +10470,7 @@
                 <TRANSL xml:lang="zho">祈使</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.603448275862069</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_39">
         <FORM kindOf="original">at islunghu adii uvaaza tanghaiu sakakiiv hai tupa saia tu adii isu tamuung.</FORM>
         <PHON kindOf="original">at isl~ɬuŋx~χu adii uvaaða taŋx~χaiu sakakiiv x~χai tupa saia tu adii isu tamuuŋ.</PHON>
@@ -10478,7 +10478,7 @@
         <PHON kindOf="standard">at isl~ɬuŋx~χu adii uvaaða taŋx~χaiu sakakiiv x~χai tupa saia tu adii isu tamuuŋ.</PHON>
         <TRANSL xml:lang="zho">然後,那個偷東西的孩子停下來回頭看,他說「你的帽子在那裡.」</TRANSL>
         <TRANSL xml:lang="eng">the kid stopped and peeped out those three kids said: "here is your hat"</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="313.04" end="318.38"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="313.04" end="318.38" />
         <W id="bnNr-pear_Hanaivaz_S_39_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -10719,7 +10719,7 @@
                 <TRANSL xml:lang="zho">帽子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6451612903225806</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_40">
         <FORM kindOf="original">at suhaisun naicia masatu masaiv tamuung.</FORM>
         <PHON kindOf="original">at sux~χaisun naiʨia masatu masaiv tamuuŋ.</PHON>
@@ -10727,7 +10727,7 @@
         <PHON kindOf="standard">at sux~χaisun naiʨia masatu masaiv tamuuŋ.</PHON>
         <TRANSL xml:lang="zho">然後他們把帽子送還給他.</TRANSL>
         <TRANSL xml:lang="eng">they went back again to hand over his hat</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="318.38" end="321.25"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="318.38" end="321.25" />
         <W id="bnNr-pear_Hanaivaz_S_40_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -10848,7 +10848,7 @@
                 <TRANSL xml:lang="zho">帽子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6493506493506493</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_41">
         <FORM kindOf="original">at antalaun sia taininghaiu uvaazcia tamuung hai maza taininghaiu hai dangian amin is'aang miliskin tu at uninang at masaiv saicia tu tau mas salvicia mas uvaazcia.</FORM>
         <PHON kindOf="original">at antal~ɬaun ɕia tainiŋx~χaiu uvaaðʨia tamuuŋ x~χai maða tainiŋx~χaiu x~χai daŋian amin isʔaaŋ mil~ɬiskin tu at uninaŋ at masaiv saiʨia tu tau mas sal~ɬviʨia mas uvaaðʨia.</PHON>
@@ -10856,7 +10856,7 @@
         <PHON kindOf="standard">at antal~ɬaun ɕia tainiŋx~χaiu uvaaðʨia tamuuŋ x~χai maða tainiŋx~χaiu x~χai daŋian amin isʔaaŋ mil~ɬiskin tu at uninaŋ at masaiv saiʨia tu tau mas sal~ɬviʨia mas uvaaðʨia.</PHON>
         <TRANSL xml:lang="zho">那個偷東西的孩子拿到帽子後,心裡也覺得感激,他就給那孩子三個梨子.</TRANSL>
         <TRANSL xml:lang="eng">after getting the hat, that kid the kid who stole the pears he then felt grateful and gave them three pears</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="321.25" end="334.53"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="321.25" end="334.53" />
         <W id="bnNr-pear_Hanaivaz_S_41_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -11361,7 +11361,7 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6431095406360424</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_42">
         <FORM kindOf="original">manaskal naia maupacia mapacinpalavaaz.</FORM>
         <PHON kindOf="original">manaskal~ɬ naia maupaʨia mapaʨinpal~ɬavaað.</PHON>
@@ -11369,7 +11369,7 @@
         <PHON kindOf="standard">manaskal~ɬ naia maupaʨia mapaʨinpal~ɬavaað.</PHON>
         <TRANSL xml:lang="zho">他們很高興,就這樣分開了.</TRANSL>
         <TRANSL xml:lang="eng">and so they separated with joy</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="334.53" end="337.28"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="334.53" end="337.28" />
         <W id="bnNr-pear_Hanaivaz_S_42_W0">
             <FORM kindOf="original">ma-naskal</FORM>
             <PHON kindOf="original">manaskal~ɬ</PHON>
@@ -11482,7 +11482,7 @@
                 <TRANSL xml:lang="zho">分裂</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.64</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_43">
         <FORM kindOf="original">at maza sia tatau uvaaza hai maisidii naia mudaan tundadaan mapahainanhainan anghaib sia adii madaingaza maza sia tu u ai ungtu matatapul mas salvia.</FORM>
         <PHON kindOf="original">at maða ɕia tatau uvaaða x~χai maiɕidii naia mudaan tundadaan mapax~χainanx~χainan aŋx~χaib ɕia adii madaiŋaða maða ɕia tu u ai uŋtu matatapul~ɬ mas sal~ɬvia.</PHON>
@@ -11490,7 +11490,7 @@
         <PHON kindOf="standard">at maða ɕia tatau uvaaða x~χai maiɕidii naia mudaan tundadaan mapax~χainanx~χainan aŋx~χaib ɕia adii madaiŋaða maða ɕia tu u ai uŋtu matatapul~ɬ mas sal~ɬvia.</PHON>
         <TRANSL xml:lang="zho">那三個小孩子從那邊沿路邊走邊玩,經過那採梨子的那個老人.</TRANSL>
         <TRANSL xml:lang="eng">those three little kids they started walking from there</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="337.28" end="354.91"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="337.28" end="354.91" />
         <W id="bnNr-pear_Hanaivaz_S_43_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -12003,7 +12003,7 @@
                 <TRANSL xml:lang="zho">遠距.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6692015209125475</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_44">
         <FORM kindOf="original">sadu naia tu a aiza dii salvia isia kalalaan haitu nii naia miliskin tu natanghaiu.</FORM>
         <PHON kindOf="original">sadu naia tu a aiða dii sal~ɬvia iɕia kal~ɬal~ɬaan x~χaitu nii naia mil~ɬiskin tu nataŋx~χaiu.</PHON>
@@ -12011,7 +12011,7 @@
         <PHON kindOf="standard">sadu naia tu a aiða dii sal~ɬvia iɕia kal~ɬal~ɬaan x~χaitu nii naia mil~ɬiskin tu nataŋx~χaiu.</PHON>
         <TRANSL xml:lang="zho">他們看見籃子裡有梨子,但是沒想著要偷.</TRANSL>
         <TRANSL xml:lang="eng">They saw there are pears in the basket. However, they did not want to steal any.</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="354.91" end="363.03"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="354.91" end="363.03" />
         <W id="bnNr-pear_Hanaivaz_S_44_W0">
             <FORM kindOf="original">sadu</FORM>
             <PHON kindOf="original">sadu</PHON>
@@ -12292,7 +12292,7 @@
                 <TRANSL xml:lang="zho">偷</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6797385620915033</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_45">
         <FORM kindOf="original">mututusbut naia anghaib.</FORM>
         <PHON kindOf="original">mututusbut naia aŋx~χaib.</PHON>
@@ -12300,7 +12300,7 @@
         <PHON kindOf="standard">mututusbut naia aŋx~χaib.</PHON>
         <TRANSL xml:lang="zho">他們就直接走過去.</TRANSL>
         <TRANSL xml:lang="eng">They went through the way they were.</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="363.03" end="365.0"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="363.03" end="365.0" />
         <W id="bnNr-pear_Hanaivaz_S_45_W0">
             <FORM kindOf="original">mu&lt;tu&gt;tusbut</FORM>
             <PHON kindOf="original">mu&lt;tu&gt;tusbut</PHON>
@@ -12357,7 +12357,7 @@
                 <TRANSL xml:lang="zho">經過</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6956521739130435</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_46">
         <FORM kindOf="original">ungat munastuin a madaingaza tu namakankan isaicia tu sintapul tu ai ungtu salvi hai.</FORM>
         <PHON kindOf="original">uŋat munastuin a madaiŋaða tu namakankan isaiʨia tu ɕintapul~ɬ tu ai uŋtu sal~ɬvi x~χai.</PHON>
@@ -12365,7 +12365,7 @@
         <PHON kindOf="standard">uŋat munastuin a madaiŋaða tu namakankan isaiʨia tu ɕintapul~ɬ tu ai uŋtu sal~ɬvi x~χai.</PHON>
         <TRANSL xml:lang="zho">那個老人下來要裝他所採的那個梨子</TRANSL>
         <TRANSL xml:lang="eng">Then the old man went down to fill the pears he had picked.</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="365.0" end="373.77"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="365.0" end="373.77" />
         <W id="bnNr-pear_Hanaivaz_S_46_W0">
             <FORM kindOf="original">ung=at</FORM>
             <PHON kindOf="original">uŋ=at</PHON>
@@ -12670,7 +12670,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6967741935483871</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_47">
         <FORM kindOf="original">cinhuza saia tu ai mavia tu ukin tasa ii niibin dusa hai matmuzin.</FORM>
         <PHON kindOf="original">ʨinx~χuða saia tu ai mavia tu ukin tasa ii niibin dusa x~χai matmuðin.</PHON>
@@ -12678,7 +12678,7 @@
         <PHON kindOf="standard">ʨinx~χuða saia tu ai mavia tu ukin tasa ii niibin dusa x~χai matmuðin.</PHON>
         <TRANSL xml:lang="zho">他嚇一跳,「欸?怎麼一個不見了?不是兩個滿了嗎?」</TRANSL>
         <TRANSL xml:lang="eng">He was shocked: 'Why one of them is gone? Aren't there two filled up?'</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="373.77" end="380.91"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="373.77" end="380.91" />
         <W id="bnNr-pear_Hanaivaz_S_47_W0">
             <FORM kindOf="original">cin-huza</FORM>
             <PHON kindOf="original">ʨinx~χuða</PHON>
@@ -12919,7 +12919,7 @@
                 <TRANSL xml:lang="zho">改變狀態</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5321100917431192</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_48">
         <FORM kindOf="original">ka ukin tasa kalala ukin amin a cinapul a maza sia tu nasia ai salvia.</FORM>
         <PHON kindOf="original">ka ukin tasa kal~ɬal~ɬa ukin amin a ʨinapul~ɬ a maða ɕia tu naɕia ai sal~ɬvia.</PHON>
@@ -12927,7 +12927,7 @@
         <PHON kindOf="standard">ka ukin tasa kal~ɬal~ɬa ukin amin a ʨinapul~ɬ a maða ɕia tu naɕia ai sal~ɬvia.</PHON>
         <TRANSL xml:lang="zho">就一籃沒了,採過的梨子也不見了.</TRANSL>
         <TRANSL xml:lang="eng">A basket was gone, and all picked pears were also gone.</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="380.91" end="388.34"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="380.91" end="388.34" />
         <W id="bnNr-pear_Hanaivaz_S_48_W0">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
@@ -13144,10 +13144,10 @@
                 <TRANSL xml:lang="zho">梨子</TRANSL>
             </M>
             <M id="bnNr-pear_Hanaivaz_S_48_W11M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="zho">遠距.主格</TRANSL>
             </M>
@@ -13216,7 +13216,7 @@
                 <TRANSL xml:lang="zho">遠距.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6771653543307087</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_49">
         <FORM kindOf="original">at miliskin saia tu adii tu uvaaz tatautan anghaiba tanghaiu.</FORM>
         <PHON kindOf="original">at mil~ɬiskin saia tu adii tu uvaað tatautan aŋx~χaiba taŋx~χaiu.</PHON>
@@ -13224,7 +13224,7 @@
         <PHON kindOf="standard">at mil~ɬiskin saia tu adii tu uvaað tatautan aŋx~χaiba taŋx~χaiu.</PHON>
         <TRANSL xml:lang="zho">他在想會不會是這三個經過的孩子偷走了呢?</TRANSL>
         <TRANSL xml:lang="eng">He wondered if there was any chance these three kids who just passed had stolen the basket?</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="388.34" end="393.95"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="388.34" end="393.95" />
         <W id="bnNr-pear_Hanaivaz_S_49_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -13425,11 +13425,11 @@
                 <TRANSL xml:lang="zho">遠距</TRANSL>
             </M>
             <M id="bnNr-pear_Hanaivaz_S_49_W9M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
-                <TRANSL xml:lang="eng"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
@@ -13449,7 +13449,7 @@
                 <TRANSL xml:lang="zho">偷</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6785714285714286</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_50">
         <FORM kindOf="original">haitu saduan saicia uvaaza hai kui uka andikusun a uka maza sia tu kalala saduan at.</FORM>
         <PHON kindOf="original">x~χaitu saduan saiʨia uvaaða x~χai kui uka andikusun a uka maða ɕia tu kal~ɬal~ɬa saduan at.</PHON>
@@ -13457,7 +13457,7 @@
         <PHON kindOf="standard">x~χaitu saduan saiʨia uvaaða x~χai kui uka andikusun a uka maða ɕia tu kal~ɬal~ɬa saduan at.</PHON>
         <TRANSL xml:lang="zho">可是沒看到孩子拿著什麼,也沒看到籃子.</TRANSL>
         <TRANSL xml:lang="eng">But he didn't see the kids hold any, neither did he see the basket.</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S50.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="393.95" end="401.44"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S50.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="393.95" end="401.44" />
         <W id="bnNr-pear_Hanaivaz_S_50_W0">
             <FORM kindOf="original">haitu</FORM>
             <PHON kindOf="original">x~χaitu</PHON>
@@ -13754,7 +13754,7 @@
                 <TRANSL xml:lang="zho">然後</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5974025974025974</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_51">
         <FORM kindOf="original">kaz miliskin a madaingaz sadu sia uvaazcia tu tatau tu anghaib tu simabis tanghaiu mas inaak tu cinapul tu tas tu kalala tu salvitan.</FORM>
         <PHON kindOf="original">kað mil~ɬiskin a madaiŋað sadu ɕia uvaaðʨia tu tatau tu aŋx~χaib tu ɕimabis taŋx~χaiu mas inaak tu ʨinapul~ɬ tu tas tu kal~ɬal~ɬa tu sal~ɬvitan.</PHON>
@@ -13762,7 +13762,7 @@
         <PHON kindOf="standard">kað mil~ɬiskin a madaiŋað sadu ɕia uvaaðʨia tu tatau tu aŋx~χaib tu ɕimabis taŋx~χaiu mas inaak tu ʨinapul~ɬ tu tas tu kal~ɬal~ɬa tu sal~ɬvitan.</PHON>
         <TRANSL xml:lang="zho">老人看著孩子想著說:「到底是誰偷了我採收的一籃的梨子呢?」</TRANSL>
         <TRANSL xml:lang="eng">The old man looked at the kids and thought about who stole one of his harvest pears.</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S51.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="401.44" end="414.8"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S51.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="401.44" end="414.8" />
         <W id="bnNr-pear_Hanaivaz_S_51_W0">
             <FORM kindOf="original">kaz</FORM>
             <PHON kindOf="original">kað</PHON>
@@ -14203,7 +14203,7 @@
                 <TRANSL xml:lang="zho">中距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6609442060085837</SCORE></S>
     <S id="bnNr-pear_Hanaivaz_S_52">
         <FORM kindOf="original">maupacia.</FORM>
         <PHON kindOf="original">maupaʨia.</PHON>
@@ -14211,7 +14211,7 @@
         <PHON kindOf="standard">maupaʨia.</PHON>
         <TRANSL xml:lang="zho">就這樣</TRANSL>
         <TRANSL xml:lang="eng">That's it.</TRANSL>
-        <AUDIO file="bnNr-pear_Hanaivaz_S52.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="414.8" end="416.63"/>
+        <AUDIO file="bnNr-pear_Hanaivaz_S52.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Hanaivaz.mp3" start="414.8" end="416.63" />
         <W id="bnNr-pear_Hanaivaz_S_52_W0">
             <FORM kindOf="original">maupa=cia</FORM>
             <PHON kindOf="original">maupa=ʨia</PHON>
@@ -14236,5 +14236,5 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.7777777777777778</SCORE></S>
 </TEXT>

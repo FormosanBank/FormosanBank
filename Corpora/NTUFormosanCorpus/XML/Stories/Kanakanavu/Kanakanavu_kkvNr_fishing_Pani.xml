@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="NTU_Stry_Kanakanavu_kkvNr_fishing_Pani" xml:lang="xnb" source="NTU Corpus stories for Kanakanavu, story: kkvNr_fishing_Pani" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Kanakanavu">
     <S id="kkvNr_fishing_Pani_S_0">
         <FORM kindOf="original">'aa sua nganaimaku ia Pani.</FORM>
@@ -7,7 +7,7 @@
         <PHON kindOf="standard">ʔaa sua ŋanaimaku ia pani.</PHON>
         <TRANSL xml:lang="zho">嗯,我的名字是Pani.</TRANSL>
         <TRANSL xml:lang="eng">Well, my name is Pani.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="0.0" end="4.31"/>
+        <AUDIO file="kkvNr_fishing_Pani_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="0.0" end="4.31" />
         <W id="kkvNr_fishing_Pani_S_0_W0">
             <FORM kindOf="original">'aa</FORM>
             <PHON kindOf="original">ʔaa</PHON>
@@ -96,7 +96,7 @@
                 <TRANSL xml:lang="zho">專有名詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.7659574468085106</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_1">
         <FORM kindOf="original">teku poiisua PARIfish 'arasakai miana.</FORM>
         <PHON kindOf="original">teku poiisua par~ɾifish ʔar~ɾasakai miana.</PHON>
@@ -104,7 +104,7 @@
         <PHON kindOf="standard">teku poiisua par~ɾifish ʔar~ɾasakai miana.</PHON>
         <TRANSL xml:lang="zho" notes="我要說關於以前小時候捕魚、捕蝦(的事情).">我要說關於以前小時候捕魚、捕蝦 .</TRANSL>
         <TRANSL xml:lang="eng">I'm going to talk about catching fish and shirps in the childhood.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="4.31" end="14.18"/>
+        <AUDIO file="kkvNr_fishing_Pani_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="4.31" end="14.18" />
         <W id="kkvNr_fishing_Pani_S_1_W0">
             <FORM kindOf="original">te=ku</FORM>
             <PHON kindOf="original">te=ku</PHON>
@@ -173,7 +173,7 @@
                 <PHON kindOf="original">fish</PHON>
                 <FORM kindOf="standard">fish</FORM>
                 <PHON kindOf="standard">fish</PHON>
-                <TRANSL xml:lang="eng"/>
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">魚</TRANSL>
             </M>
         </W>
@@ -209,7 +209,7 @@
                 <TRANSL xml:lang="zho">以前</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5679012345679013</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_2">
         <FORM kindOf="original">'aa mia tati'iingpaku kipapakia mamarang.</FORM>
         <PHON kindOf="original">ʔaa mia tatiʔiiŋpaku kipapakia mamar~ɾaŋ.</PHON>
@@ -217,7 +217,7 @@
         <PHON kindOf="standard">ʔaa mia tatiʔiiŋpaku kipapakia mamar~ɾaŋ.</PHON>
         <TRANSL xml:lang="zho">我小時候跟隨著長輩們.</TRANSL>
         <TRANSL xml:lang="eng">I followed the seniors when I was little.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="14.18" end="23.39"/>
+        <AUDIO file="kkvNr_fishing_Pani_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="14.18" end="23.39" />
         <W id="kkvNr_fishing_Pani_S_2_W0">
             <FORM kindOf="original">'aa</FORM>
             <PHON kindOf="original">ʔaa</PHON>
@@ -338,7 +338,7 @@
                 <TRANSL xml:lang="zho">老人們</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6849315068493151</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_3">
         <FORM kindOf="original">iikita Kanakanavu ia miana ifweto makeCahouse makecabin nukai ka'umoo'uma manmaan mamarangmita tekiriim na aracan na cakʉran nukai nungnung.</FORM>
         <PHON kindOf="original">iikita kanakanavu ia miana ifweto makeʦahouse makeʦa*in nukai kaʔumooʔuma manmaan mamar~ɾaŋmita tekir~ɾiim na ar~ɾaʦan na ʦakɨr~ɾan nukai nuŋnuŋ.</PHON>
@@ -346,7 +346,7 @@
         <PHON kindOf="standard">iikita kanakanavu ia miana ifweto makeʦahouse makeʦa*in nukai kaʔumooʔuma manmaan mamar~ɾaŋmita tekir~ɾiim na ar~ɾaʦan na ʦakɨr~ɾan nukai nuŋnuŋ.</PHON>
         <TRANSL xml:lang="zho">我們Kanakanavu以前若要蓋房子、蓋工寮、或者是開墾田園,我們的老人家喜歡找接近河流或溪流的地方.</TRANSL>
         <TRANSL xml:lang="eng">In the past, if we Kanakanavu were to build houses, cabins and cultivate fields, our seniors liked to look for the places near a river or stream.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="23.39" end="49.04"/>
+        <AUDIO file="kkvNr_fishing_Pani_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="23.39" end="49.04" />
         <W id="kkvNr_fishing_Pani_S_3_W0">
             <FORM kindOf="original">iikita</FORM>
             <PHON kindOf="original">iikita</PHON>
@@ -427,19 +427,19 @@
                 <TRANSL xml:lang="zho">如果</TRANSL>
             </M>
             <M id="kkvNr_fishing_Pani_S_3_W4M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
-                <TRANSL xml:lang="eng"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">要</TRANSL>
             </M>
             <M id="kkvNr_fishing_Pani_S_3_W4M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
-                <TRANSL xml:lang="eng"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">我們</TRANSL>
             </M>
         </W>
@@ -463,7 +463,7 @@
                 <PHON kindOf="original">ʦa</PHON>
                 <FORM kindOf="standard">Ca</FORM>
                 <PHON kindOf="standard">ʦa</PHON>
-                <TRANSL xml:lang="eng"/>
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">Ca重疊</TRANSL>
             </M>
             <M id="kkvNr_fishing_Pani_S_3_W5M3">
@@ -471,7 +471,7 @@
                 <PHON kindOf="original">house</PHON>
                 <FORM kindOf="standard">house</FORM>
                 <PHON kindOf="standard">house</PHON>
-                <TRANSL xml:lang="eng"/>
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">房子</TRANSL>
             </M>
         </W>
@@ -495,7 +495,7 @@
                 <PHON kindOf="original">ʦa*in</PHON>
                 <FORM kindOf="standard">cabin</FORM>
                 <PHON kindOf="standard">ʦa*in</PHON>
-                <TRANSL xml:lang="eng"/>
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">寮屋</TRANSL>
             </M>
         </W>
@@ -699,7 +699,7 @@
                 <TRANSL xml:lang="zho">溪流</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5227272727272727</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_4">
         <FORM kindOf="original">vanai sii noo ka'aniin 'ituumuru putukikioa na 'umoo'uma ia iikita Kanakanavu tamna sasaronai ia manmaancu mookusa cakʉran nukai nungnung parivutuukuru 'arasakai 'apasʉ.</FORM>
         <PHON kindOf="original">vanai sii noo kaʔaniin ʔituumur~ɾu putukikioa na ʔumooʔuma ia iikita kanakanavu tamna sasar~ɾonai ia manmaanʦu mookusa ʦakɨr~ɾan nukai nuŋnuŋ par~ɾivutuukur~ɾu ʔar~ɾasakai ʔapasɨ.</PHON>
@@ -707,7 +707,7 @@
         <PHON kindOf="standard">vanai sii noo kaʔaniin ʔituumur~ɾu putukikioa na ʔumooʔuma ia iikita kanakanavu tamna sasar~ɾonai ia manmaanʦu mookusa ʦakɨr~ɾan nukai nuŋnuŋ par~ɾivutuukur~ɾu ʔar~ɾasakai ʔapasɨ.</PHON>
         <TRANSL xml:lang="zho">因為當農事的工作不很多的時候,我們Kanakanavu的男士們就非常喜歡去河流或者是溪谷裡面捕魚、捕蝦、補螃蟹.</TRANSL>
         <TRANSL xml:lang="eng">Because when the load of farming work is not heavy, Our Kanakanavu men like to go to rivers or streams to catch fish, shrimps, and crabs.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="49.04" end="77.05"/>
+        <AUDIO file="kkvNr_fishing_Pani_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="49.04" end="77.05" />
         <W id="kkvNr_fishing_Pani_S_4_W0">
             <FORM kindOf="original">vanai</FORM>
             <PHON kindOf="original">vanai</PHON>
@@ -776,8 +776,8 @@
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">in</FORM>
                 <PHON kindOf="standard">in</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_fishing_Pani_S_4_W4">
@@ -1116,7 +1116,7 @@
                 <TRANSL xml:lang="zho">螃蟹</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5942492012779552</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_5">
         <FORM kindOf="original">uturu iikita tamna Kanakanavu siarupaca mara vutuukuru.</FORM>
         <PHON kindOf="original">utur~ɾu iikita tamna kanakanavu siar~ɾupaʦa mar~ɾa vutuukur~ɾu.</PHON>
@@ -1124,7 +1124,7 @@
         <PHON kindOf="standard">utur~ɾu iikita tamna kanakanavu siar~ɾupaʦa mar~ɾa vutuukur~ɾu.</PHON>
         <TRANSL xml:lang="zho">我們kanakanavu捕魚蝦的工具有三種.</TRANSL>
         <TRANSL xml:lang="eng">We Kanakanavu have three ways of catching fish and shrimps.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="77.05" end="85.04"/>
+        <AUDIO file="kkvNr_fishing_Pani_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="77.05" end="85.04" />
         <W id="kkvNr_fishing_Pani_S_5_W0">
             <FORM kindOf="original">u-turu</FORM>
             <PHON kindOf="original">u-tur~ɾu</PHON>
@@ -1261,7 +1261,7 @@
                 <TRANSL xml:lang="zho">魚</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6238532110091743</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_6">
         <FORM kindOf="original">ucani ia pinaarupu pinarupuun sua vutuukuru.</FORM>
         <PHON kindOf="original">uʦani ia pinaar~ɾupu pinar~ɾupuun sua vutuukur~ɾu.</PHON>
@@ -1269,7 +1269,7 @@
         <PHON kindOf="standard">uʦani ia pinaar~ɾupu pinar~ɾupuun sua vutuukur~ɾu.</PHON>
         <TRANSL xml:lang="zho">第一個方式是垂釣,魚用吊的.</TRANSL>
         <TRANSL xml:lang="eng">One is angling, which hangs fish up.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="85.04" end="94.66"/>
+        <AUDIO file="kkvNr_fishing_Pani_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="85.04" end="94.66" />
         <W id="kkvNr_fishing_Pani_S_6_W0">
             <FORM kindOf="original">u-cani</FORM>
             <PHON kindOf="original">u-ʦani</PHON>
@@ -1382,7 +1382,7 @@
                 <TRANSL xml:lang="zho">魚</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6904761904761905</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_7">
         <FORM kindOf="original">ucani ia pusu'uriing.</FORM>
         <PHON kindOf="original">uʦani ia pusuʔur~ɾiiŋ.</PHON>
@@ -1390,7 +1390,7 @@
         <PHON kindOf="standard">uʦani ia pusuʔur~ɾiiŋ.</PHON>
         <TRANSL xml:lang="zho">第二種方式是用火把照明.</TRANSL>
         <TRANSL xml:lang="eng">Another is pusu'uriing.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="94.66" end="101.26"/>
+        <AUDIO file="kkvNr_fishing_Pani_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="94.66" end="101.26" />
         <W id="kkvNr_fishing_Pani_S_7_W0">
             <FORM kindOf="original">u-cani</FORM>
             <PHON kindOf="original">u-ʦani</PHON>
@@ -1447,7 +1447,7 @@
                 <TRANSL xml:lang="zho">火把照明</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.75</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_8">
         <FORM kindOf="original">sua pusu'uriing ia 'uruupaca noo mapitʉ'ʉcu taniara mavici 'uringi mookusa na cakʉran.</FORM>
         <PHON kindOf="original">sua pusuʔur~ɾiiŋ ia ʔur~ɾuupaʦa noo mapitɨʔɨʦu taniar~ɾa maviʦi ʔur~ɾiŋi mookusa na ʦakɨr~ɾan.</PHON>
@@ -1455,7 +1455,7 @@
         <PHON kindOf="standard">sua pusuʔur~ɾiiŋ ia ʔur~ɾuupaʦa noo mapitɨʔɨʦu taniar~ɾa maviʦi ʔur~ɾiŋi mookusa na ʦakɨr~ɾan.</PHON>
         <TRANSL xml:lang="zho" notes="所謂用火把照明是利用天暗之後,帶著芒草莖去河裡(溪裡).">所謂用火把照明是利用天暗之後,帶著芒草莖去河裡 .</TRANSL>
         <TRANSL xml:lang="eng">The so-called pusu'uriing is that one brings the stalks of Japanese silvergrass to rivers partucularly after it gets dark in the evening.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="101.26" end="119.08"/>
+        <AUDIO file="kkvNr_fishing_Pani_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="101.26" end="119.08" />
         <W id="kkvNr_fishing_Pani_S_8_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -1672,7 +1672,7 @@
                 <TRANSL xml:lang="zho">河</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5925925925925926</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_9">
         <FORM kindOf="original">'uru 'uruupaca nguain tamna sinaang cumacʉ'ʉra na nungnung nukai cakʉran tamna canuum.</FORM>
         <PHON kindOf="original">ʔur~ɾu ʔur~ɾuupaʦa ŋuain tamna sinaaŋ ʦumaʦɨʔɨr~ɾa na nuŋnuŋ nukai ʦakɨr~ɾan tamna ʦanuum.</PHON>
@@ -1680,7 +1680,7 @@
         <PHON kindOf="standard">ʔur~ɾu ʔur~ɾuupaʦa ŋuain tamna sinaaŋ ʦumaʦɨʔɨr~ɾa na nuŋnuŋ nukai ʦakɨr~ɾan tamna ʦanuum.</PHON>
         <TRANSL xml:lang="zho">利用他的亮光來看河流或者溪流的水.</TRANSL>
         <TRANSL xml:lang="eng" notes="And (He) uses his light to beam at the water of rivers.">And uses his light to beam at the water of rivers.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="119.08" end="131.15"/>
+        <AUDIO file="kkvNr_fishing_Pani_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="119.08" end="131.15" />
         <W id="kkvNr_fishing_Pani_S_9_W0">
             <FORM kindOf="original">'uru</FORM>
             <PHON kindOf="original">ʔur~ɾu</PHON>
@@ -1889,7 +1889,7 @@
                 <TRANSL xml:lang="zho">水</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5466666666666666</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_10">
         <FORM kindOf="original">noo 'esiin nia vutuukuru nukai 'arasakai ia maracukia caraa'acʉ sapuarʉ mara vutuukuru.</FORM>
         <PHON kindOf="original">noo ʔesiin nia vutuukur~ɾu nukai ʔar~ɾasakai ia mar~ɾaʦukia ʦar~ɾaaʔaʦɨ sapuar~ɾɨ mar~ɾa vutuukur~ɾu.</PHON>
@@ -1897,7 +1897,7 @@
         <PHON kindOf="standard">noo ʔesiin nia vutuukur~ɾu nukai ʔar~ɾasakai ia mar~ɾaʦukia ʦar~ɾaaʔaʦɨ sapuar~ɾɨ mar~ɾa vutuukur~ɾu.</PHON>
         <TRANSL xml:lang="zho">那裏若有魚蝦,我們就拿著魚叉或撈網來補魚.</TRANSL>
         <TRANSL xml:lang="eng">If there are fish and shrimps, we will takes fish spears and fishing nets to catch fish.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="131.15" end="148.3"/>
+        <AUDIO file="kkvNr_fishing_Pani_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="131.15" end="148.3" />
         <W id="kkvNr_fishing_Pani_S_10_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
@@ -2130,7 +2130,7 @@
                 <TRANSL xml:lang="zho">魚</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5731707317073171</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_11">
         <FORM kindOf="original">makai um maseen ia neen kusai vanai Kanakanavu maraa 'aancu pusukiriing.</FORM>
         <PHON kindOf="original">makai um maseen ia neen kusai vanai kanakanavu mar~ɾaa ʔaanʦu pusukir~ɾiiŋ.</PHON>
@@ -2138,7 +2138,7 @@
         <PHON kindOf="standard">makai um maseen ia neen kusai vanai kanakanavu mar~ɾaa ʔaanʦu pusukir~ɾiiŋ.</PHON>
         <TRANSL xml:lang="zho" notes="但是,究竟什麼原因,現在的kanakanavu人不再用火把照明來(捕魚)了?">但是,究竟什麼原因,現在的kanakanavu人不再用火把照明來 了?</TRANSL>
         <TRANSL xml:lang="eng">But, why on earth do Kanakanavu nowadays no longer pusukiriing?</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="148.3" end="162.81"/>
+        <AUDIO file="kkvNr_fishing_Pani_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="148.3" end="162.81" />
         <W id="kkvNr_fishing_Pani_S_11_W0">
             <FORM kindOf="original">makai</FORM>
             <PHON kindOf="original">makai</PHON>
@@ -2323,7 +2323,7 @@
                 <TRANSL xml:lang="zho">用火把照明</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5666666666666667</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_12">
         <FORM kindOf="original">ka'aanku kangvang tavarʉ'ʉ neen kusai.</FORM>
         <PHON kindOf="original">kaʔaanku kaŋvaŋ tavar~ɾɨʔɨ neen kusai.</PHON>
@@ -2331,7 +2331,7 @@
         <PHON kindOf="standard">kaʔaanku kaŋvaŋ tavar~ɾɨʔɨ neen kusai.</PHON>
         <TRANSL xml:lang="zho">我也不知道什麼原因.</TRANSL>
         <TRANSL xml:lang="eng">I don't know the reason, either.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="162.81" end="168.1"/>
+        <AUDIO file="kkvNr_fishing_Pani_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="162.81" end="168.1" />
         <W id="kkvNr_fishing_Pani_S_12_W0">
             <FORM kindOf="original">ka'aan=ku</FORM>
             <PHON kindOf="original">kaʔaan=ku</PHON>
@@ -2420,15 +2420,15 @@
                 <TRANSL xml:lang="zho">原因</TRANSL>
             </M>
             <M id="kkvNr_fishing_Pani_S_12_W4M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">3SG.POSS</TRANSL>
                 <TRANSL xml:lang="zho">3SG.所有格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5217391304347826</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_13">
         <FORM kindOf="original">makaasua.</FORM>
         <PHON kindOf="original">makaasua.</PHON>
@@ -2436,7 +2436,7 @@
         <PHON kindOf="standard">makaasua.</PHON>
         <TRANSL xml:lang="zho">那樣...</TRANSL>
         <TRANSL xml:lang="eng">In that way...</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="168.1" end="171.89"/>
+        <AUDIO file="kkvNr_fishing_Pani_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="168.1" end="171.89" />
         <W id="kkvNr_fishing_Pani_S_13_W0">
             <FORM kindOf="original">ma-kaa-sua</FORM>
             <PHON kindOf="original">ma-kaa-sua</PHON>
@@ -2469,7 +2469,7 @@
                 <TRANSL xml:lang="zho">那樣</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6666666666666667</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_14">
         <FORM kindOf="original">sua ucani ia tumatuuncu.</FORM>
         <PHON kindOf="original">sua uʦani ia tumatuunʦu.</PHON>
@@ -2477,7 +2477,7 @@
         <PHON kindOf="standard">sua uʦani ia tumatuunʦu.</PHON>
         <TRANSL xml:lang="zho">再來一種方式是毒魚.</TRANSL>
         <TRANSL xml:lang="eng">The other is tumatuuncu.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="171.89" end="177.84"/>
+        <AUDIO file="kkvNr_fishing_Pani_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="171.89" end="177.84" />
         <W id="kkvNr_fishing_Pani_S_14_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -2566,7 +2566,7 @@
                 <TRANSL xml:lang="zho">毒魚</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6382978723404256</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_15">
         <FORM kindOf="original">ka'aan tia upeen takananga vutuukuru mataa 'arasakai ia ka'aan mamacai nakai arapipining na canumu makai naturucu.</FORM>
         <PHON kindOf="original">kaʔaan tia upeen takanaŋa vutuukur~ɾu mataa ʔar~ɾasakai ia kaʔaan mamaʦai nakai ar~ɾapipiniŋ na ʦanumu makai natur~ɾuʦu.</PHON>
@@ -2574,7 +2574,7 @@
         <PHON kindOf="standard">kaʔaan tia upeen takanaŋa vutuukur~ɾu mataa ʔar~ɾasakai ia kaʔaan mamaʦai nakai ar~ɾapipiniŋ na ʦanumu makai natur~ɾuʦu.</PHON>
         <TRANSL xml:lang="zho">不用多久,魚跟蝦子不會死,但是會浮出水面上,很像呆癡了.</TRANSL>
         <TRANSL xml:lang="eng">Before long, fish and shrimps won't die but will float from the water, becoming dull.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="197.32" end="214.16"/>
+        <AUDIO file="kkvNr_fishing_Pani_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="197.32" end="214.16" />
         <W id="kkvNr_fishing_Pani_S_15_W0">
             <FORM kindOf="original">ka'aan</FORM>
             <PHON kindOf="original">kaʔaan</PHON>
@@ -2871,7 +2871,7 @@
                 <TRANSL xml:lang="zho">狀態改變</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6481481481481481</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_16">
         <FORM kindOf="original">meesua ia cau ia 'uruupaca kangvang caraa'acʉ mataa sapuarʉ umara vutuukuru.</FORM>
         <PHON kindOf="original">meesua ia ʦau ia ʔur~ɾuupaʦa kaŋvaŋ ʦar~ɾaaʔaʦɨ mataa sapuar~ɾɨ umar~ɾa vutuukur~ɾu.</PHON>
@@ -2879,7 +2879,7 @@
         <PHON kindOf="standard">meesua ia ʦau ia ʔur~ɾuupaʦa kaŋvaŋ ʦar~ɾaaʔaʦɨ mataa sapuar~ɾɨ umar~ɾa vutuukur~ɾu.</PHON>
         <TRANSL xml:lang="zho">在那個時候,人們就用魚叉或撈網來捕魚.</TRANSL>
         <TRANSL xml:lang="eng">At that time, people use fish spears amd fishing nets to catch fish.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="214.16" end="223.68"/>
+        <AUDIO file="kkvNr_fishing_Pani_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="214.16" end="223.68" />
         <W id="kkvNr_fishing_Pani_S_16_W0">
             <FORM kindOf="original">meesua</FORM>
             <PHON kindOf="original">meesua</PHON>
@@ -3064,7 +3064,7 @@
                 <TRANSL xml:lang="zho">魚</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5588235294117647</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_17">
         <FORM kindOf="original">nakai sua tumat tumatuncu ia tia tuturuun cau kangvang tia arakukun mookusa nia kangvang ka'aan tavarʉ'ʉ taciin maa mookusa nia tia arakuracʉ cau cau cucumeen.</FORM>
         <PHON kindOf="original">nakai sua tumat tumatunʦu ia tia tutur~ɾuun ʦau kaŋvaŋ tia ar~ɾakukun mookusa nia kaŋvaŋ kaʔaan tavar~ɾɨʔɨ taʦiin maa mookusa nia tia ar~ɾakur~ɾaʦɨ ʦau ʦau ʦuʦumeen.</PHON>
@@ -3072,7 +3072,7 @@
         <PHON kindOf="standard">nakai sua tumat tumatunʦu ia tia tutur~ɾuun ʦau kaŋvaŋ tia ar~ɾakukun mookusa nia kaŋvaŋ kaʔaan tavar~ɾɨʔɨ taʦiin maa mookusa nia tia ar~ɾakur~ɾaʦɨ ʦau ʦau ʦuʦumeen.</PHON>
         <TRANSL xml:lang="zho">但是用毒魚的方式來捕魚的話,必須通告所有的人來參與,不可以只有一個人去,其他人會生氣的.</TRANSL>
         <TRANSL xml:lang="eng" notes="but as to t&lt;um&gt;a-tuncu, (it) has to inform everyone to go. It is prohibited that a person goes alone. Other people will get angry.">but as to t&lt;um&gt;a-tuncu, has to inform everyone to go. It is prohibited that a person goes alone. Other people will get angry.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="223.68" end="237.5"/>
+        <AUDIO file="kkvNr_fishing_Pani_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="223.68" end="237.5" />
         <W id="kkvNr_fishing_Pani_S_17_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -3294,7 +3294,7 @@
                 <FORM kindOf="standard">ookusa</FORM>
                 <PHON kindOf="standard">ookusa</PHON>
                 <TRANSL xml:lang="eng">go</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_fishing_Pani_S_17_W12">
@@ -3529,7 +3529,7 @@
                 <TRANSL xml:lang="zho">其他的</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5755395683453237</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_18">
         <FORM kindOf="original">er manasʉ cenana ia makaan nukai makacusa maa cau tumatuncu miana arakukun kangvang mookusa 'inia.</FORM>
         <PHON kindOf="original">er~ɾ manasɨ ʦenana ia makaan nukai makaʦusa maa ʦau tumatunʦu miana ar~ɾakukun kaŋvaŋ mookusa ʔinia.</PHON>
@@ -3537,7 +3537,7 @@
         <PHON kindOf="standard">er~ɾ manasɨ ʦenana ia makaan nukai makaʦusa maa ʦau tumatunʦu miana ar~ɾakukun kaŋvaŋ mookusa ʔinia.</PHON>
         <TRANSL xml:lang="zho">嗯,以前或許一年一次或者兩次大家一起前往去毒魚.</TRANSL>
         <TRANSL xml:lang="eng">Well, in the past, all poeple t&lt;um&gt;a-tuncu together maybe once or twice a year.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="237.5" end="251.77"/>
+        <AUDIO file="kkvNr_fishing_Pani_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="237.5" end="251.77" />
         <W id="kkvNr_fishing_Pani_S_18_W0">
             <FORM kindOf="original">er</FORM>
             <PHON kindOf="original">er~ɾ</PHON>
@@ -3842,7 +3842,7 @@
                 <TRANSL xml:lang="zho">那裡</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6404494382022472</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_19">
         <FORM kindOf="original">sua mastaan ka'anmanamaku matipa ia pinaarupu.</FORM>
         <PHON kindOf="original">sua mastaan kaʔanmanamaku matipa ia pinaar~ɾupu.</PHON>
@@ -3850,7 +3850,7 @@
         <PHON kindOf="standard">sua mastaan kaʔanmanamaku matipa ia pinaar~ɾupu.</PHON>
         <TRANSL xml:lang="zho">我最喜歡參加的是釣魚.</TRANSL>
         <TRANSL xml:lang="eng">What I like to join most is fishing.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="251.77" end="260.96"/>
+        <AUDIO file="kkvNr_fishing_Pani_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="251.77" end="260.96" />
         <W id="kkvNr_fishing_Pani_S_19_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -3979,7 +3979,7 @@
                 <TRANSL xml:lang="zho">主焦.釣魚</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.651685393258427</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_20">
         <FORM kindOf="original">noo makasiin mamarang tuu Pani nura ia tekita pinaarupu misee iak! aranai meesuaku tecikia sii macangcangarʉ ia ah mariitarʉ miseen ka'aanpa aramia'ʉ tecukia mook mookusa 'inia.</FORM>
         <PHON kindOf="original">noo makasiin mamar~ɾaŋ tuu pani nur~ɾa ia tekita pinaar~ɾupu misee iak! ar~ɾanai meesuaku teʦikia sii maʦaŋʦaŋar~ɾɨ ia ah mar~ɾiitar~ɾɨ miseen kaʔaanpa ar~ɾamiaʔɨ teʦukia mook mookusa ʔinia.</PHON>
@@ -3987,7 +3987,7 @@
         <PHON kindOf="standard">noo makasiin mamar~ɾaŋ tuu pani nur~ɾa ia tekita pinaar~ɾupu misee iak! ar~ɾanai meesuaku teʦikia sii maʦaŋʦaŋar~ɾɨ ia ah mar~ɾiitar~ɾɨ miseen kaʔaanpa ar~ɾamiaʔɨ teʦukia mook mookusa ʔinia.</PHON>
         <TRANSL xml:lang="zho">如果有長輩說,Pani我們明天要釣魚,啊,我就在那裏非常開心,一直等待著怎麼還沒起床,因為想要去了.</TRANSL>
         <TRANSL xml:lang="eng">If there is a senior says "Pani, we will go fishing tomorrow," ah, I will be very happy at that time and keep waiting, thinking why we still don't get up because I've wanted to go.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="260.96" end="281.85"/>
+        <AUDIO file="kkvNr_fishing_Pani_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="260.96" end="281.85" />
         <W id="kkvNr_fishing_Pani_S_20_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
@@ -4484,7 +4484,7 @@
                 <TRANSL xml:lang="zho">那裡</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5696202531645569</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_21">
         <FORM kindOf="original">nakai noo pinarupiin ia tekita mati'araang peecapa narupu.</FORM>
         <PHON kindOf="original">nakai noo pinar~ɾupiin ia tekita matiʔar~ɾaaŋ peeʦapa nar~ɾupu.</PHON>
@@ -4492,7 +4492,7 @@
         <PHON kindOf="standard">nakai noo pinar~ɾupiin ia tekita matiʔar~ɾaaŋ peeʦapa nar~ɾupu.</PHON>
         <TRANSL xml:lang="zho">但是如果要釣魚,我們要準備吊桿、魚鉤.</TRANSL>
         <TRANSL xml:lang="eng">But if we want to fish, we need to prepare a fishing pole and hook.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="281.85" end="294.57"/>
+        <AUDIO file="kkvNr_fishing_Pani_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="281.85" end="294.57" />
         <W id="kkvNr_fishing_Pani_S_21_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -4645,7 +4645,7 @@
                 <TRANSL xml:lang="zho">鉤子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6140350877192983</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_22">
         <FORM kindOf="original">sua peecapa Kanakanavu miana ia 'uruupacakim ta'uici ta'uici tia mata'ʉ umara tikiriimkia ʉncoo maraa ma'inacʉ to'umaang arʉʉn tepa cunuun ti'iing.</FORM>
         <PHON kindOf="original">sua peeʦapa kanakanavu miana ia ʔur~ɾuupaʦakim taʔuiʦi taʔuiʦi tia mataʔɨ umar~ɾa tikir~ɾiimkia ɨnʦoo mar~ɾaa maʔinaʦɨ toʔumaaŋ ar~ɾɨɨn tepa ʦunuun tiʔiiŋ.</PHON>
@@ -4653,7 +4653,7 @@
         <PHON kindOf="standard">sua peeʦapa kanakanavu miana ia ʔur~ɾuupaʦakim taʔuiʦi taʔuiʦi tia mataʔɨ umar~ɾa tikir~ɾiimkia ɨnʦoo mar~ɾaa maʔinaʦɨ toʔumaaŋ ar~ɾɨɨn tepa ʦunuun tiʔiiŋ.</PHON>
         <TRANSL xml:lang="zho">以前Kanakanavu的釣竿是使用細的桂竹,要生鮮的,我們尋找比較直的竹子,拿了之後還要稍微用火烤.</TRANSL>
         <TRANSL xml:lang="eng">Kanavuravu is a kind of sinocalamus latiflorus. In fact, the one who goes fishing will use kapani.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="294.57" end="320.04"/>
+        <AUDIO file="kkvNr_fishing_Pani_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="294.57" end="320.04" />
         <W id="kkvNr_fishing_Pani_S_22_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -5030,7 +5030,7 @@
                 <TRANSL xml:lang="zho">稍微</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5367647058823529</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_23">
         <FORM kindOf="original">tia macici ta'iing noo macicicu ia tia suma'inacʉn makaasua ʉncoo capa ia mamanʉng.</FORM>
         <PHON kindOf="original">tia maʦiʦi taʔiiŋ noo maʦiʦiʦu ia tia sumaʔinaʦɨn makaasua ɨnʦoo ʦapa ia mamanɨŋ.</PHON>
@@ -5038,7 +5038,7 @@
         <PHON kindOf="standard">tia maʦiʦi taʔiiŋ noo maʦiʦiʦu ia tia sumaʔinaʦɨn makaasua ɨnʦoo ʦapa ia mamanɨŋ.</PHON>
         <TRANSL xml:lang="zho">要熱一點,熱了以後,要把它變直.像那樣的釣竿才是好的.</TRANSL>
         <TRANSL xml:lang="eng">The temperature should be a little higher. After it gets heated, one needs to straighten the bamboo. Such a fishing pole is good.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="320.04" end="334.29"/>
+        <AUDIO file="kkvNr_fishing_Pani_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="320.04" end="334.29" />
         <W id="kkvNr_fishing_Pani_S_23_W0">
             <FORM kindOf="original">tia</FORM>
             <PHON kindOf="original">tia</PHON>
@@ -5287,7 +5287,7 @@
                 <TRANSL xml:lang="zho">好.主焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5751633986928104</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_24">
         <FORM kindOf="original">tepakita mati'araang ʉ'ʉ neen sua kʉcʉ iihua? narupu narupu.</FORM>
         <PHON kindOf="original">tepakita matiʔar~ɾaaŋ ɨʔɨ neen sua kɨʦɨ iihua? nar~ɾupu nar~ɾupu.</PHON>
@@ -5295,7 +5295,7 @@
         <PHON kindOf="standard">tepakita matiʔar~ɾaaŋ ɨʔɨ neen sua kɨʦɨ iihua? nar~ɾupu nar~ɾupu.</PHON>
         <TRANSL xml:lang="zho">我們還要準備,那是什麼啊,對啦,魚鉤.</TRANSL>
         <TRANSL xml:lang="eng">We still need to prepare...what's that...yup, the hook.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="334.29" end="344.74"/>
+        <AUDIO file="kkvNr_fishing_Pani_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="334.29" end="344.74" />
         <W id="kkvNr_fishing_Pani_S_24_W0">
             <FORM kindOf="original">te=pa=kita</FORM>
             <PHON kindOf="original">te=pa=kita</PHON>
@@ -5464,7 +5464,7 @@
                 <TRANSL xml:lang="zho">驚嘆</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6603773584905661</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_25">
         <FORM kindOf="original">'unacu capa racee ʉn 'unacu cepa narupu hau tekita mo cʉmcʉm aramia'ʉ.</FORM>
         <PHON kindOf="original">ʔunaʦu ʦapa r~ɾaʦee ɨn ʔunaʦu ʦepa nar~ɾupu hau tekita mo ʦɨmʦɨm ar~ɾamiaʔɨ.</PHON>
@@ -5472,7 +5472,7 @@
         <PHON kindOf="standard">ʔunaʦu ʦapa r~ɾaʦee ɨn ʔunaʦu ʦepa nar~ɾupu hau tekita mo ʦɨmʦɨm ar~ɾamiaʔɨ.</PHON>
         <TRANSL xml:lang="zho">有了釣竿、魚鉤,我們要很早起床.</TRANSL>
         <TRANSL xml:lang="eng">There are fishing poles and hooks. We have to get up early.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="344.74" end="357.35"/>
+        <AUDIO file="kkvNr_fishing_Pani_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="344.74" end="357.35" />
         <W id="kkvNr_fishing_Pani_S_25_W0">
             <FORM kindOf="original">'una=cu</FORM>
             <PHON kindOf="original">ʔuna=ʦu</PHON>
@@ -5689,7 +5689,7 @@
                 <TRANSL xml:lang="zho">起床.主焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4732824427480916</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_26">
         <FORM kindOf="original">tia maica na ra ra ratakʉʉtakʉ sii 'inia ia 'una ngica'ʉ.</FORM>
         <PHON kindOf="original">tia maiʦa na r~ɾa r~ɾa r~ɾatakɨɨtakɨ sii ʔinia ia ʔuna ŋiʦaʔɨ.</PHON>
@@ -5697,7 +5697,7 @@
         <PHON kindOf="standard">tia maiʦa na r~ɾa r~ɾa r~ɾatakɨɨtakɨ sii ʔinia ia ʔuna ŋiʦaʔɨ.</PHON>
         <TRANSL xml:lang="zho">要經過泥濘的地方,因為那裏有蚯蚓.</TRANSL>
         <TRANSL xml:lang="eng" notes="(We) need to pass through the muddy area because there are earthworms.">need to pass through the muddy area because there are earthworms.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="357.35" end="369.67"/>
+        <AUDIO file="kkvNr_fishing_Pani_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="357.35" end="369.67" />
         <W id="kkvNr_fishing_Pani_S_26_W0">
             <FORM kindOf="original">tia</FORM>
             <PHON kindOf="original">tia</PHON>
@@ -5882,7 +5882,7 @@
                 <TRANSL xml:lang="zho">蚯蚓</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5567010309278351</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_27">
         <FORM kindOf="original">tia matisa'ʉ maan mataarava mapusan ngica'ʉ umaavici na cakʉran.</FORM>
         <PHON kindOf="original">tia matisaʔɨ maan mataar~ɾava mapusan ŋiʦaʔɨ umaaviʦi na ʦakɨr~ɾan.</PHON>
@@ -5890,7 +5890,7 @@
         <PHON kindOf="standard">tia matisaʔɨ maan mataar~ɾava mapusan ŋiʦaʔɨ umaaviʦi na ʦakɨr~ɾan.</PHON>
         <TRANSL xml:lang="zho">要抓十到二十條的蚯蚓,帶到河裡.</TRANSL>
         <TRANSL xml:lang="eng" notes="(We) need to catch ten to twelve earthworms and bring them to the river.">need to catch ten to twelve earthworms and bring them to the river.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="369.67" end="380.07"/>
+        <AUDIO file="kkvNr_fishing_Pani_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="369.67" end="380.07" />
         <W id="kkvNr_fishing_Pani_S_27_W0">
             <FORM kindOf="original">tia</FORM>
             <PHON kindOf="original">tia</PHON>
@@ -6083,7 +6083,7 @@
                 <TRANSL xml:lang="zho">河</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6086956521739131</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_28">
         <FORM kindOf="original">noo mookusacu cakʉran ia arʉʉncu ngica'ʉ iihua ʉsʉ'ʉn na narupu matiikusa na canumu.</FORM>
         <PHON kindOf="original">noo mookusaʦu ʦakɨr~ɾan ia ar~ɾɨɨnʦu ŋiʦaʔɨ iihua ɨsɨʔɨn na nar~ɾupu matiikusa na ʦanumu.</PHON>
@@ -6091,7 +6091,7 @@
         <PHON kindOf="standard">noo mookusaʦu ʦakɨr~ɾan ia ar~ɾɨɨnʦu ŋiʦaʔɨ iihua ɨsɨʔɨn na nar~ɾupu matiikusa na ʦanumu.</PHON>
         <TRANSL xml:lang="zho">到了河裡之後,就拿那個蚯蚓放在魚鉤上,拋向水裡.</TRANSL>
         <TRANSL xml:lang="eng" notes="After arriving in the river, we take that earthworm and put it on the hook and toss (the hook) toward the water.">After arriving in the river, we take that earthworm and put it on the hook and toss toward the water.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="380.07" end="393.69"/>
+        <AUDIO file="kkvNr_fishing_Pani_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="380.07" end="393.69" />
         <W id="kkvNr_fishing_Pani_S_28_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
@@ -6340,7 +6340,7 @@
                 <TRANSL xml:lang="zho">水</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5584415584415585</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_29">
         <FORM kindOf="original">tumatimanaku marang mamarang miana sua vutuukuru kaan ia sua maraa tatia ia monoon na ʉncoo mintasʉ canuum.</FORM>
         <PHON kindOf="original">tumatimanaku mar~ɾaŋ mamar~ɾaŋ miana sua vutuukur~ɾu kaan ia sua mar~ɾaa tatia ia monoon na ɨnʦoo mintasɨ ʦanuum.</PHON>
@@ -6348,7 +6348,7 @@
         <PHON kindOf="standard">tumatimanaku mar~ɾaŋ mamar~ɾaŋ miana sua vutuukur~ɾu kaan ia sua mar~ɾaa tatia ia monoon na ɨnʦoo mintasɨ ʦanuum.</PHON>
         <TRANSL xml:lang="zho">我聽以前的老人家說比較大的魚經常待在...那個...比較湍急的水.</TRANSL>
         <TRANSL xml:lang="eng">it is said that bigger fish often stay...well...in rapid currents.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="393.69" end="408.58"/>
+        <AUDIO file="kkvNr_fishing_Pani_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="393.69" end="408.58" />
         <W id="kkvNr_fishing_Pani_S_29_W0">
             <FORM kindOf="original">t&lt;um&gt;a-timana=ku</FORM>
             <PHON kindOf="original">t&lt;um&gt;a-timana=ku</PHON>
@@ -6653,7 +6653,7 @@
                 <TRANSL xml:lang="zho">水</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.631578947368421</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_30">
         <FORM kindOf="original">'apanapaku moon nia moon kangvang na mintasʉ canuum pinaarupu nakai ma'icʉpʉku noo matikocu canuum narupu na vatu ia ka'aancu tarʉ'ʉn arʉʉn mooncukia nia muru'inasʉ.</FORM>
         <PHON kindOf="original">ʔapanapaku moon nia moon kaŋvaŋ na mintasɨ ʦanuum pinaar~ɾupu nakai maʔiʦɨpɨku noo matikoʦu ʦanuum nar~ɾupu na vatu ia kaʔaanʦu tar~ɾɨʔɨn ar~ɾɨɨn moonʦukia nia mur~ɾuʔinasɨ.</PHON>
@@ -6661,7 +6661,7 @@
         <PHON kindOf="standard">ʔapanapaku moon nia moon kaŋvaŋ na mintasɨ ʦanuum pinaar~ɾupu nakai maʔiʦɨpɨku noo matikoʦu ʦanuum nar~ɾupu na vatu ia kaʔaanʦu tar~ɾɨʔɨn ar~ɾɨɨn moonʦukia nia mur~ɾuʔinasɨ.</PHON>
         <TRANSL xml:lang="zho">我也嘗試在湍急的河流釣魚,但是又擔心魚鉤鉤住石頭而拉不回來,我就會在那邊很困擾.</TRANSL>
         <TRANSL xml:lang="eng">I sometimes fish in more rapid water. But I'm afraid that the hook gets stuck among the stones and cannot be pulled back. I will be bothered there.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="408.58" end="429.2"/>
+        <AUDIO file="kkvNr_fishing_Pani_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="408.58" end="429.2" />
         <W id="kkvNr_fishing_Pani_S_30_W0">
             <FORM kindOf="original">'apanapa=ku</FORM>
             <PHON kindOf="original">ʔapanapa=ku</PHON>
@@ -7102,7 +7102,7 @@
                 <TRANSL xml:lang="zho">困擾.主焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5436893203883495</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_31">
         <FORM kindOf="original">imoo maraa manmaanku moon na niatumura ra canumu moon nia pinaarupu.</FORM>
         <PHON kindOf="original">imoo mar~ɾaa manmaanku moon na niatumur~ɾa r~ɾa ʦanumu moon nia pinaar~ɾupu.</PHON>
@@ -7110,7 +7110,7 @@
         <PHON kindOf="standard">imoo mar~ɾaa manmaanku moon na niatumur~ɾa r~ɾa ʦanumu moon nia pinaar~ɾupu.</PHON>
         <TRANSL xml:lang="zho">所以,我比較喜歡在深潭,待在那裡釣魚.</TRANSL>
         <TRANSL xml:lang="eng">So, I like to fish in deep water more.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="429.2" end="438.36"/>
+        <AUDIO file="kkvNr_fishing_Pani_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="429.2" end="438.36" />
         <W id="kkvNr_fishing_Pani_S_31_W0">
             <FORM kindOf="original">imoo</FORM>
             <PHON kindOf="original">imoo</PHON>
@@ -7295,7 +7295,7 @@
                 <TRANSL xml:lang="zho">釣魚.主焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6356589147286822</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_32">
         <FORM kindOf="original">nakai na niatumura canumu ia cucuru maraa ka'aan tatia sua vutuukuru 'inia.</FORM>
         <PHON kindOf="original">nakai na niatumur~ɾa ʦanumu ia ʦuʦur~ɾu mar~ɾaa kaʔaan tatia sua vutuukur~ɾu ʔinia.</PHON>
@@ -7303,7 +7303,7 @@
         <PHON kindOf="standard">nakai na niatumur~ɾa ʦanumu ia ʦuʦur~ɾu mar~ɾaa kaʔaan tatia sua vutuukur~ɾu ʔinia.</PHON>
         <TRANSL xml:lang="zho">但是在深潭那裏的魚的確比較不大.</TRANSL>
         <TRANSL xml:lang="eng">but the fish in deep water there truely are relatively not big.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="438.36" end="451.17"/>
+        <AUDIO file="kkvNr_fishing_Pani_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="438.36" end="451.17" />
         <W id="kkvNr_fishing_Pani_S_32_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -7504,7 +7504,7 @@
                 <TRANSL xml:lang="zho">那裡</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6619718309859155</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_33">
         <FORM kindOf="original">miana noo arakukunkim mamarurang pinaarupu noo mana'ʉcu vutuukuru na capamia ia manasʉ makasicu kimia marang Pani umara maringuna karu nukai to'umaang mosa na cikiiringa isa matupuru.</FORM>
         <PHON kindOf="original">miana noo ar~ɾakukunkim mamar~ɾur~ɾaŋ pinaar~ɾupu noo manaʔɨʦu vutuukur~ɾu na ʦapamia ia manasɨ makasiʦu kimia mar~ɾaŋ pani umar~ɾa mar~ɾiŋuna kar~ɾu nukai toʔumaaŋ mosa na ʦikiir~ɾiŋa isa matupur~ɾu.</PHON>
@@ -7512,7 +7512,7 @@
         <PHON kindOf="standard">miana noo ar~ɾakukunkim mamar~ɾur~ɾaŋ pinaar~ɾupu noo manaʔɨʦu vutuukur~ɾu na ʦapamia ia manasɨ makasiʦu kimia mar~ɾaŋ pani umar~ɾa mar~ɾiŋuna kar~ɾu nukai toʔumaaŋ mosa na ʦikiir~ɾiŋa isa matupur~ɾu.</PHON>
         <TRANSL xml:lang="zho">以前我們若跟著老一輩的人一起釣魚,當我們釣的魚已經到魚簍的一半的時候,通常我們的老人家就會呼喊著說:「Pani,你去拿乾材或者竹子到河流的邊邊上生火.」</TRANSL>
         <TRANSL xml:lang="eng">In the past, when we went fishing with our seniors and the fish can fill half of the creel, the seniors would say "Pani, go take the dry wood and go there to make a fire."</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="451.17" end="482.48"/>
+        <AUDIO file="kkvNr_fishing_Pani_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="451.17" end="482.48" />
         <W id="kkvNr_fishing_Pani_S_33_W0">
             <FORM kindOf="original">miana</FORM>
             <PHON kindOf="original">miana</PHON>
@@ -7985,7 +7985,7 @@
                 <TRANSL xml:lang="zho">生火.主焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6824925816023739</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_34">
         <FORM kindOf="original" notes="gloss-table column shift repaired from source; stray glosses belonged to untranscribed words; consult the NTU Formosan Corpus source">pasiinmaku tuu neen neen ka'aanpa ca'aania neen vanai tia matupuru, kisʉʉnmaku.</FORM>
         <PHON kindOf="original">pasiinmaku tuu neen neen kaʔaanpa ʦaʔaania neen vanai tia matupur~ɾu, kisɨɨnmaku.</PHON>
@@ -7993,7 +7993,7 @@
         <PHON kindOf="standard">pasiinmaku tuu neen neen kaʔaanpa ʦaʔaania neen vanai tia matupur~ɾu, kisɨɨnmaku.</PHON>
         <TRANSL xml:lang="zho">我跟他們說還沒到中午,為什麼要起火.</TRANSL>
         <TRANSL xml:lang="eng">I said to them "It isn't noon, why do we need to make a fire?"</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="482.48" end="491.65"/>
+        <AUDIO file="kkvNr_fishing_Pani_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="482.48" end="491.65" />
         <W id="kkvNr_fishing_Pani_S_34_W0">
             <FORM kindOf="original">pasi-in=maku</FORM>
             <PHON kindOf="original">pasi-in=maku</PHON>
@@ -8210,7 +8210,7 @@
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5112781954887218</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_35">
         <FORM kindOf="original">mariivari mamarang ka'aankasu cumacʉ'ʉra? curoon vutuukurumita tecukuratumuru na capamita tia capʉʉn cucumeen sii 'aan aa marua.</FORM>
         <PHON kindOf="original">mar~ɾiivar~ɾi mamar~ɾaŋ kaʔaankasu ʦumaʦɨʔɨr~ɾa? ʦur~ɾoon vutuukur~ɾumita teʦukur~ɾatumur~ɾu na ʦapamita tia ʦapɨɨn ʦuʦumeen sii ʔaan aa mar~ɾua.</PHON>
@@ -8218,7 +8218,7 @@
         <PHON kindOf="standard">mar~ɾiivar~ɾi mamar~ɾaŋ kaʔaankasu ʦumaʦɨʔɨr~ɾa? ʦur~ɾoon vutuukur~ɾumita teʦukur~ɾatumur~ɾu na ʦapamita tia ʦapɨɨn ʦuʦumeen sii ʔaan aa mar~ɾua.</PHON>
         <TRANSL xml:lang="zho">老人家回答:「你沒看到嗎?我們的魚要滿出魚簍了,一部分要烤起來,才不會腐爛.」</TRANSL>
         <TRANSL xml:lang="eng">The old people replied, "Don't you see it? The creel is so full that our fish are going to drop out. Some of the fish need to be roasted so that they won't rot."</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="491.65" end="504.89"/>
+        <AUDIO file="kkvNr_fishing_Pani_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="491.65" end="504.89" />
         <W id="kkvNr_fishing_Pani_S_35_W0">
             <FORM kindOf="original">mariivari</FORM>
             <PHON kindOf="original">mar~ɾiivar~ɾi</PHON>
@@ -8331,10 +8331,10 @@
                 <TRANSL xml:lang="zho">看</TRANSL>
             </M>
             <M id="kkvNr_fishing_Pani_S_35_W4M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">Imp.</TRANSL>
                 <TRANSL xml:lang="zho">祈使.</TRANSL>
             </M>
@@ -8555,7 +8555,7 @@
                 <TRANSL xml:lang="zho">腐爛.主焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5560165975103735</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_36">
         <FORM kindOf="original">'aa! tavarʉ'ʉcuku.</FORM>
         <PHON kindOf="original">ʔaa! tavar~ɾɨʔɨʦuku.</PHON>
@@ -8563,7 +8563,7 @@
         <PHON kindOf="standard">ʔaa! tavar~ɾɨʔɨʦuku.</PHON>
         <TRANSL xml:lang="zho">啊!我知道了.</TRANSL>
         <TRANSL xml:lang="eng">"Ah, I get it."</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="504.89" end="507.14"/>
+        <AUDIO file="kkvNr_fishing_Pani_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="504.89" end="507.14" />
         <W id="kkvNr_fishing_Pani_S_36_W0">
             <FORM kindOf="original">'aa!</FORM>
             <PHON kindOf="original">ʔaa!</PHON>
@@ -8612,7 +8612,7 @@
                 <TRANSL xml:lang="zho">1SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4285714285714286</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_37">
         <FORM kindOf="original">mooncukim na cikiiringa nia mamanu ta ti'iing matuapuru.</FORM>
         <PHON kindOf="original">moonʦukim na ʦikiir~ɾiŋa nia mamanu ta tiʔiiŋ matuapur~ɾu.</PHON>
@@ -8620,7 +8620,7 @@
         <PHON kindOf="standard">moonʦukim na ʦikiir~ɾiŋa nia mamanu ta tiʔiiŋ matuapur~ɾu.</PHON>
         <TRANSL xml:lang="zho">我們小朋友們就在河邊上升火.</TRANSL>
         <TRANSL xml:lang="eng">We little kids then made a fire over there.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="507.14" end="513.87"/>
+        <AUDIO file="kkvNr_fishing_Pani_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="507.14" end="513.87" />
         <W id="kkvNr_fishing_Pani_S_37_W0">
             <FORM kindOf="original">moon=cu=kim</FORM>
             <PHON kindOf="original">moon=ʦu=kim</PHON>
@@ -8773,7 +8773,7 @@
                 <TRANSL xml:lang="zho">生火.主焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6799999999999999</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_38">
         <FORM kindOf="original">mova kimia mamarang sua vutuukuru.</FORM>
         <PHON kindOf="original">mova kimia mamar~ɾaŋ sua vutuukur~ɾu.</PHON>
@@ -8781,7 +8781,7 @@
         <PHON kindOf="standard">mova kimia mamar~ɾaŋ sua vutuukur~ɾu.</PHON>
         <TRANSL xml:lang="zho">老人家就給我們魚.</TRANSL>
         <TRANSL xml:lang="eng">The old people gave us the fish.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="513.87" end="520.59"/>
+        <AUDIO file="kkvNr_fishing_Pani_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="513.87" end="520.59" />
         <W id="kkvNr_fishing_Pani_S_38_W0">
             <FORM kindOf="original">m-ova</FORM>
             <PHON kindOf="original">m-ova</PHON>
@@ -8878,7 +8878,7 @@
                 <TRANSL xml:lang="zho">魚</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6666666666666667</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_39">
         <FORM kindOf="original">sua maraa tatia ia arʉʉnmia nguain tamna siu singsingiinpa kangvang t'iing siu ʉsʉ'ʉn kangvang na vara iisua cumapa.</FORM>
         <PHON kindOf="original">sua mar~ɾaa tatia ia ar~ɾɨɨnmia ŋuain tamna siu siŋsiŋiinpa kaŋvaŋ tʔiiŋ siu ɨsɨʔɨn kaŋvaŋ na var~ɾa iisua ʦumapa.</PHON>
@@ -8886,7 +8886,7 @@
         <PHON kindOf="standard">sua mar~ɾaa tatia ia ar~ɾɨɨnmia ŋuain tamna siu siŋsiŋiinpa kaŋvaŋ tʔiiŋ siu ɨsɨʔɨn kaŋvaŋ na var~ɾa iisua ʦumapa.</PHON>
         <TRANSL xml:lang="zho">比較大的魚,我們取出牠的腸子,把腸子稍微洗一洗,拿到火炭上跟魚一起烤.</TRANSL>
         <TRANSL xml:lang="eng">The bigger fish, we take out their bowels, wash a little, and roast on the burning charcoal.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="520.59" end="537.85"/>
+        <AUDIO file="kkvNr_fishing_Pani_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="520.59" end="537.85" />
         <W id="kkvNr_fishing_Pani_S_39_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -9215,7 +9215,7 @@
                 <TRANSL xml:lang="zho">拷.主焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5851063829787234</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_40">
         <FORM kindOf="original">iak! meesua ʉncoo siu 'arasakai vutuukuru kʉneen 'ah cu curu sa'o'o!</FORM>
         <PHON kindOf="original">iak! meesua ɨnʦoo siu ʔar~ɾasakai vutuukur~ɾu kɨneen ʔah ʦu ʦur~ɾu saʔoʔo!</PHON>
@@ -9223,7 +9223,7 @@
         <PHON kindOf="standard">iak! meesua ɨnʦoo siu ʔar~ɾasakai vutuukur~ɾu kɨneen ʔah ʦu ʦur~ɾu saʔoʔo!</PHON>
         <TRANSL xml:lang="zho">啊!那當下腸子、蝦子、魚真是好吃啊!</TRANSL>
         <TRANSL xml:lang="eng">Ah, the bowels, shrimps, and fish tasted so awesome at that time.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="537.85" end="551.22"/>
+        <AUDIO file="kkvNr_fishing_Pani_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="537.85" end="551.22" />
         <W id="kkvNr_fishing_Pani_S_40_W0">
             <FORM kindOf="original">iak!</FORM>
             <PHON kindOf="original">iak!</PHON>
@@ -9341,7 +9341,7 @@
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">en</PHON>
                 <TRANSL xml:lang="eng">if</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_fishing_Pani_S_40_W7">
@@ -9408,7 +9408,7 @@
                 <TRANSL xml:lang="zho">好吃</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5123966942148761</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_41">
         <FORM kindOf="original">makai sua iisi ikim Kanakanavu sua tia parivutuukuru misee ia kacangcangaramia aa matipa arakukun 'inia.</FORM>
         <PHON kindOf="original">makai sua iisi ikim kanakanavu sua tia par~ɾivutuukur~ɾu misee ia kaʦaŋʦaŋar~ɾamia aa matipa ar~ɾakukun ʔinia.</PHON>
@@ -9416,7 +9416,7 @@
         <PHON kindOf="standard">makai sua iisi ikim kanakanavu sua tia par~ɾivutuukur~ɾu misee ia kaʦaŋʦaŋar~ɾamia aa matipa ar~ɾakukun ʔinia.</PHON>
         <TRANSL xml:lang="zho">我們kanakanavu提到像這些釣魚這件事是一件令人很愉悅的事情,都很樂於一同參加.</TRANSL>
         <TRANSL xml:lang="eng" notes="Such like that, for us Kanakanavu, it is a pleasing event to talk about fishing. (We) are willing to join in (this activity).">Such like that, for us Kanakanavu, it is a pleasing event to talk about fishing. are willing to join in .</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="551.22" end="567.75"/>
+        <AUDIO file="kkvNr_fishing_Pani_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="551.22" end="567.75" />
         <W id="kkvNr_fishing_Pani_S_41_W0">
             <FORM kindOf="original">makai</FORM>
             <PHON kindOf="original">makai</PHON>
@@ -9609,11 +9609,11 @@
                 <TRANSL xml:lang="zho">關係詞</TRANSL>
             </M>
             <M id="kkvNr_fishing_Pani_S_41_W10M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
-                <TRANSL xml:lang="eng"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">1PL.所有格.排除</TRANSL>
             </M>
             <M id="kkvNr_fishing_Pani_S_41_W10M4">
@@ -9622,7 +9622,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="eng">REL</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_fishing_Pani_S_41_W10M5">
                 <FORM kindOf="original">mia</FORM>
@@ -9630,7 +9630,7 @@
                 <FORM kindOf="standard">mia</FORM>
                 <PHON kindOf="standard">mia</PHON>
                 <TRANSL xml:lang="eng">1PL.POSS.EXCL</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_fishing_Pani_S_41_W11">
@@ -9705,7 +9705,7 @@
                 <TRANSL xml:lang="zho">那裡</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6124401913875598</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_42">
         <FORM kindOf="original">noo kana'amisan ia noo 'uneen canumu maraa mamanʉng kunaam ia marapakim 'uruupaca karu siuʉn 'inia umara ʉncoo kunaam.</FORM>
         <PHON kindOf="original">noo kanaʔamisan ia noo ʔuneen ʦanumu mar~ɾaa mamanɨŋ kunaam ia mar~ɾapakim ʔur~ɾuupaʦa kar~ɾu siuɨn ʔinia umar~ɾa ɨnʦoo kunaam.</PHON>
@@ -9713,7 +9713,7 @@
         <PHON kindOf="standard">noo kanaʔamisan ia noo ʔuneen ʦanumu mar~ɾaa mamanɨŋ kunaam ia mar~ɾapakim ʔur~ɾuupaʦa kar~ɾu siuɨn ʔinia umar~ɾa ɨnʦoo kunaam.</PHON>
         <TRANSL xml:lang="zho">當冬天的時候,如果水中有好的川苔,我們就會使用樹枝把川苔捲起來.</TRANSL>
         <TRANSL xml:lang="eng">When winter comes, if there is good moss in water, we will still pick the moss out with wood sticks.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="567.75" end="593.35"/>
+        <AUDIO file="kkvNr_fishing_Pani_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="567.75" end="593.35" />
         <W id="kkvNr_fishing_Pani_S_42_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
@@ -10058,7 +10058,7 @@
                 <TRANSL xml:lang="zho">青苔</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5674418604651164</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_43">
         <FORM kindOf="original">po'ocipikia 'aau noo musucikiicikicu canumu ia ʉsʉ'ʉn nia kunaam.</FORM>
         <PHON kindOf="original">poʔoʦipikia ʔaau noo musuʦikiiʦikiʦu ʦanumu ia ɨsɨʔɨn nia kunaam.</PHON>
@@ -10066,7 +10066,7 @@
         <PHON kindOf="standard">poʔoʦipikia ʔaau noo musuʦikiiʦikiʦu ʦanumu ia ɨsɨʔɨn nia kunaam.</PHON>
         <TRANSL xml:lang="zho">我們煮湯,當水沸騰了以後,我們就放入川苔.</TRANSL>
         <TRANSL xml:lang="eng">We cook soup. When the water is boiling, we put the moss in.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="593.35" end="602.83"/>
+        <AUDIO file="kkvNr_fishing_Pani_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="593.35" end="602.83" />
         <W id="kkvNr_fishing_Pani_S_43_W0">
             <FORM kindOf="original">po'ocipi=kia</FORM>
             <PHON kindOf="original">poʔoʦipi=kia</PHON>
@@ -10243,7 +10243,7 @@
                 <TRANSL xml:lang="zho">青苔</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.45669291338582674</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_44">
         <FORM kindOf="original">noo 'uneen 'arasakai ia mamanʉng sua maraa 'aan maraa ka'aanpa tatia tia ti'ingee 'arasakai kangvang 'apasʉ ti'ingee vutuukuru ʉsʉ'ʉn na ʉsʉ'ʉn na 'aau ii 'aau iisua.</FORM>
         <PHON kindOf="original">noo ʔuneen ʔar~ɾasakai ia mamanɨŋ sua mar~ɾaa ʔaan mar~ɾaa kaʔaanpa tatia tia tiʔiŋee ʔar~ɾasakai kaŋvaŋ ʔapasɨ tiʔiŋee vutuukur~ɾu ɨsɨʔɨn na ɨsɨʔɨn na ʔaau ii ʔaau iisua.</PHON>
@@ -10251,7 +10251,7 @@
         <PHON kindOf="standard">noo ʔuneen ʔar~ɾasakai ia mamanɨŋ sua mar~ɾaa ʔaan mar~ɾaa kaʔaanpa tatia tia tiʔiŋee ʔar~ɾasakai kaŋvaŋ ʔapasɨ tiʔiŋee vutuukur~ɾu ɨsɨʔɨn na ɨsɨʔɨn na ʔaau ii ʔaau iisua.</PHON>
         <TRANSL xml:lang="zho">如果有蝦子,最好是小的,還有螃蟹、小的魚,放進那鍋湯裡面.</TRANSL>
         <TRANSL xml:lang="eng" notes="If there are shrimps─small ones should be better, crabs, and small fish, (we) put (all) into that pot of soup.">If there are shrimps─small ones should be better, crabs, and small fish, put into that pot of soup.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="602.83" end="618.41"/>
+        <AUDIO file="kkvNr_fishing_Pani_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="602.83" end="618.41" />
         <W id="kkvNr_fishing_Pani_S_44_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
@@ -10592,8 +10592,8 @@
                 <PHON kindOf="original">ɨn</PHON>
                 <FORM kindOf="standard">ʉn</FORM>
                 <PHON kindOf="standard">ɨn</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_fishing_Pani_S_44_W19">
@@ -10716,7 +10716,7 @@
                 <TRANSL xml:lang="zho">那</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5413533834586466</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_45">
         <FORM kindOf="original">ia'ah! mamarang tumatimanaku marang miana arapipiningcu kariin makasi 'aa! kangvang na 'aau iisa isi mas taan sa'o'o misee.</FORM>
         <PHON kindOf="original">iaʔah! mamar~ɾaŋ tumatimanaku mar~ɾaŋ miana ar~ɾapipiniŋʦu kar~ɾiin makasi ʔaa! kaŋvaŋ na ʔaau iisa isi mas taan saʔoʔo misee.</PHON>
@@ -10724,7 +10724,7 @@
         <PHON kindOf="standard">iaʔah! mamar~ɾaŋ tumatimanaku mar~ɾaŋ miana ar~ɾapipiniŋʦu kar~ɾiin makasi ʔaa! kaŋvaŋ na ʔaau iisa isi mas taan saʔoʔo misee.</PHON>
         <TRANSL xml:lang="zho">「啊!」以前我聽到老人家說出這樣的話:「啊!所有的湯裡面,這個湯是最好的.」</TRANSL>
         <TRANSL xml:lang="eng" notes="&quot;Ah,&quot; I heard the old people say like this in the past, &quot;Ah, among all the kinds of soup, this (soup) is the best.&quot;">"Ah," I heard the old people say like this in the past, "Ah, among all the kinds of soup, this is the best."</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="618.41" end="634.26"/>
+        <AUDIO file="kkvNr_fishing_Pani_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="618.41" end="634.26" />
         <W id="kkvNr_fishing_Pani_S_45_W0">
             <FORM kindOf="original">ia'ah!</FORM>
             <PHON kindOf="original">iaʔah!</PHON>
@@ -11093,7 +11093,7 @@
                 <TRANSL xml:lang="zho">說</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6124401913875598</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_46">
         <FORM kindOf="original">'aa! cucuru pacʉpʉcʉpʉngʉn miana siacʉvʉrʉmita Kanakanavu kacangcangarʉnmaku pacʉpʉcʉpʉngʉn.</FORM>
         <PHON kindOf="original">ʔaa! ʦuʦur~ɾu paʦɨpɨʦɨpɨŋɨn miana siaʦɨvɨr~ɾɨmita kanakanavu kaʦaŋʦaŋar~ɾɨnmaku paʦɨpɨʦɨpɨŋɨn.</PHON>
@@ -11101,7 +11101,7 @@
         <PHON kindOf="standard">ʔaa! ʦuʦur~ɾu paʦɨpɨʦɨpɨŋɨn miana siaʦɨvɨr~ɾɨmita kanakanavu kaʦaŋʦaŋar~ɾɨnmaku paʦɨpɨʦɨpɨŋɨn.</PHON>
         <TRANSL xml:lang="zho">啊!想起來我們Kanakanavu以往的生活方式真的令我很快樂.</TRANSL>
         <TRANSL xml:lang="eng">Ah, We think that we Kanakanavu's way of living in the past is reminiscent whenever I recall.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="634.26" end="648.05"/>
+        <AUDIO file="kkvNr_fishing_Pani_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="634.26" end="648.05" />
         <W id="kkvNr_fishing_Pani_S_46_W0">
             <FORM kindOf="original">'aa!</FORM>
             <PHON kindOf="original">ʔaa!</PHON>
@@ -11318,7 +11318,7 @@
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.508108108108108</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_47">
         <FORM kindOf="original">imoo makai iisi 'aa! to'onaamita temita patimanʉngʉn sii mataarava nuari tia 'una kangvang manumita 'una maningcau 'ʉnai to'onain cumacʉvʉrʉ aratatia.</FORM>
         <PHON kindOf="original">imoo makai iisi ʔaa! toʔonaamita temita patimanɨŋɨn sii mataar~ɾava nuar~ɾi tia ʔuna kaŋvaŋ manumita ʔuna maniŋʦau ʔɨnai toʔonain ʦumaʦɨvɨr~ɾɨ ar~ɾatatia.</PHON>
@@ -11326,7 +11326,7 @@
         <PHON kindOf="standard">imoo makai iisi ʔaa! toʔonaamita temita patimanɨŋɨn sii mataar~ɾava nuar~ɾi tia ʔuna kaŋvaŋ manumita ʔuna maniŋʦau ʔɨnai toʔonain ʦumaʦɨvɨr~ɾɨ ar~ɾatatia.</PHON>
         <TRANSL xml:lang="zho">所以,像這些我們所住的地方,我們要把它弄得好好的,使我們的後代將來也有美好的地方可以生活成長.</TRANSL>
         <TRANSL xml:lang="eng">So, such like the places we live in, we have to keep them well so as to let our offspring have good places to grow up.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="648.05" end="671.83"/>
+        <AUDIO file="kkvNr_fishing_Pani_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="648.05" end="671.83" />
         <W id="kkvNr_fishing_Pani_S_47_W0">
             <FORM kindOf="original">imoo</FORM>
             <PHON kindOf="original">imoo</PHON>
@@ -11743,7 +11743,7 @@
                 <TRANSL xml:lang="zho">大</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6363636363636364</SCORE></S>
     <S id="kkvNr_fishing_Pani_S_48">
         <FORM kindOf="original">'aa! makaasua tia karimaku isi nguaci.</FORM>
         <PHON kindOf="original">ʔaa! makaasua tia kar~ɾimaku isi ŋuaʦi.</PHON>
@@ -11751,7 +11751,7 @@
         <PHON kindOf="standard">ʔaa! makaasua tia kar~ɾimaku isi ŋuaʦi.</PHON>
         <TRANSL xml:lang="zho">啊!我要說的就是這樣,僅此.</TRANSL>
         <TRANSL xml:lang="eng">Ah, this is what I want to say. That's it.</TRANSL>
-        <AUDIO file="kkvNr_fishing_Pani_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="671.83" end="679.16"/>
+        <AUDIO file="kkvNr_fishing_Pani_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_fishing_Pani.mp3" start="671.83" end="679.16" />
         <W id="kkvNr_fishing_Pani_S_48_W0">
             <FORM kindOf="original">'aa!</FORM>
             <PHON kindOf="original">ʔaa!</PHON>
@@ -11872,5 +11872,5 @@
                 <TRANSL xml:lang="zho">僅此</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6666666666666667</SCORE></S>
 </TEXT>

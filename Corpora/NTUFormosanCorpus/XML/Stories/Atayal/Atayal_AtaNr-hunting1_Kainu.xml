@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="NTU_Stry_Atayal_AtaNr-hunting1_Kainu" xml:lang="tay" source="NTU Corpus stories for Atayal, story: AtaNr-hunting1_Kainu" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Wenshui">
     <S id="AtaNr-hunting1_Kainu_S_0">
         <FORM kindOf="original">ti' kuing ga kainu' kung na hawving hawving na vaw.</FORM>
@@ -7,7 +7,7 @@
         <PHON kindOf="standard">tiʔ kuiŋ ɣa kainuʔ kuŋ na ħaw*iŋ ħaw*iŋ na *aw.</PHON>
         <TRANSL xml:lang="zho">我是Kainu',Hawvin的兒子,Hawvin是Vaw的兒子.</TRANSL>
         <TRANSL xml:lang="eng">I am Kainu', son of Hawvin, son of Vaw.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="0.0" end="5.19"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="0.0" end="5.19" />
         <W id="AtaNr-hunting1_Kainu_S_0_W0">
             <FORM kindOf="original">ti'</FORM>
             <PHON kindOf="original">tiʔ</PHON>
@@ -168,7 +168,7 @@
                 <TRANSL xml:lang="zho">人名</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5476190476190477</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_1">
         <FORM kindOf="original">sunga' su' musa' kuing i sumvu' su ngarux.</FORM>
         <PHON kindOf="original">s~ɕuŋaʔ s~ɕuʔ mus~ɕaʔ kuiŋ i s~ɕum*uʔ s~ɕu ŋarux.</PHON>
@@ -176,7 +176,7 @@
         <PHON kindOf="standard">s~ɕuŋaʔ s~ɕuʔ mus~ɕaʔ kuiŋ i s~ɕum*uʔ s~ɕu ŋarux.</PHON>
         <TRANSL xml:lang="zho">我以前會去獵熊.</TRANSL>
         <TRANSL xml:lang="eng">In the past, I went to shoot bears.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="5.19" end="14.17"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="5.19" end="14.17" />
         <W id="AtaNr-hunting1_Kainu_S_1_W0">
             <FORM kindOf="original">sunga'</FORM>
             <PHON kindOf="original">s~ɕuŋaʔ</PHON>
@@ -321,7 +321,7 @@
                 <TRANSL xml:lang="zho">熊</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47058823529411764</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_2">
         <FORM kindOf="original">anananu' ga ginalganmu i musa i sumvu su vawwak i lahulahu sunga'.</FORM>
         <PHON kindOf="original">anananuʔ ɣa ɣinalɣanmu i mus~ɕa i s~ɕum*u s~ɕu *awwak i laħulaħu s~ɕuŋaʔ.</PHON>
@@ -329,7 +329,7 @@
         <PHON kindOf="standard">anananuʔ ɣa ɣinalɣanmu i mus~ɕa i s~ɕum*u s~ɕu *awwak i laħulaħu s~ɕuŋaʔ.</PHON>
         <TRANSL xml:lang="zho" notes="以前我都有跟隨(人們)去森林裡射野豬.">以前我都有跟隨 去森林裡射野豬.</TRANSL>
         <TRANSL xml:lang="eng" notes="In the past, I followed (people) to the forest to shoot boars all the time.">In the past, I followed to the forest to shoot boars all the time.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="14.17" end="27.37"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="14.17" end="27.37" />
         <W id="AtaNr-hunting1_Kainu_S_2_W0">
             <FORM kindOf="original">ana-nanu'</FORM>
             <PHON kindOf="original">ana-nanuʔ</PHON>
@@ -570,7 +570,7 @@
                 <TRANSL xml:lang="zho">過去</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5166666666666666</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_3">
         <FORM kindOf="original">musa' kuing ru gi vali kia viru' na itaal sunga'.</FORM>
         <PHON kindOf="original">mus~ɕaʔ kuiŋ ru ɣi *ali kia *iruʔ na itaal s~ɕuŋaʔ.</PHON>
@@ -578,7 +578,7 @@
         <PHON kindOf="standard">mus~ɕaʔ kuiŋ ru ɣi *ali kia *iruʔ na itaal s~ɕuŋaʔ.</PHON>
         <TRANSL xml:lang="zho" notes="我去(那裏)因為以前沒有我們的書.">我去 因為以前沒有我們的書.</TRANSL>
         <TRANSL xml:lang="eng" notes="I went (there), because there were no books of us in the past.">I went , because there were no books of us in the past.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="27.37" end="35.01"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="27.37" end="35.01" />
         <W id="AtaNr-hunting1_Kainu_S_3_W0">
             <FORM kindOf="original">m-usa'</FORM>
             <PHON kindOf="original">m-us~ɕaʔ</PHON>
@@ -747,7 +747,7 @@
                 <TRANSL xml:lang="zho">過去</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.41975308641975306</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_4">
         <FORM kindOf="original">musa' ragiax ga mutux asi hakay ru.</FORM>
         <PHON kindOf="original">mus~ɕaʔ raɣiax ɣa mutux as~ɕi ħakaj ru.</PHON>
@@ -755,7 +755,7 @@
         <PHON kindOf="standard">mus~ɕaʔ raɣiax ɣa mutux as~ɕi ħakaj ru.</PHON>
         <TRANSL xml:lang="zho">如果我去山上,我會只用走的去.</TRANSL>
         <TRANSL xml:lang="eng">When I went to the mountain, I would just go on foot.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="35.01" end="39.84"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="35.01" end="39.84" />
         <W id="AtaNr-hunting1_Kainu_S_4_W0">
             <FORM kindOf="original">m-usa'</FORM>
             <PHON kindOf="original">m-us~ɕaʔ</PHON>
@@ -876,7 +876,7 @@
                 <TRANSL xml:lang="zho">連接詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5333333333333333</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_5">
         <FORM kindOf="original">yumiax i sa qutux su ragiax la ga.</FORM>
         <PHON kindOf="original">jumiax i s~ɕa qutux s~ɕu raɣiax la ɣa.</PHON>
@@ -884,7 +884,7 @@
         <PHON kindOf="standard">jumiax i s~ɕa qutux s~ɕu raɣiax la ɣa.</PHON>
         <TRANSL xml:lang="zho" notes="我從一(座山上)走下來.">我從一 走下來.</TRANSL>
         <TRANSL xml:lang="eng" notes="I went down from a (mountain).">I went down from a .</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="39.84" end="44.67"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="39.84" end="44.67" />
         <W id="AtaNr-hunting1_Kainu_S_5_W0">
             <FORM kindOf="original">y&lt;um&gt;iax</FORM>
             <PHON kindOf="original">j&lt;um&gt;iax</PHON>
@@ -1021,7 +1021,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_6">
         <FORM kindOf="original">ini' vaqi ku inuwahan.</FORM>
         <PHON kindOf="original">iniʔ *aqi ku inuwaħan.</PHON>
@@ -1029,7 +1029,7 @@
         <PHON kindOf="standard">iniʔ *aqi ku inuwaħan.</PHON>
         <TRANSL xml:lang="zho" notes="(我)不知道走過的路.">不知道走過的路.</TRANSL>
         <TRANSL xml:lang="eng" notes="(I) didn't know the road traveled.">didn't know the road traveled.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="44.67" end="46.75"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="44.67" end="46.75" />
         <W id="AtaNr-hunting1_Kainu_S_6_W0">
             <FORM kindOf="original">ini'</FORM>
             <PHON kindOf="original">iniʔ</PHON>
@@ -1118,7 +1118,7 @@
                 <TRANSL xml:lang="zho">處焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4864864864864865</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_7">
         <FORM kindOf="original">ini' vaqi i ku inuwahan la ga asiki kutan ku kahuniq gi naki vaqun ku inuwahan ru'.</FORM>
         <PHON kindOf="original">iniʔ *aqi i ku inuwaħan la ɣa as~ɕiki kutan ku kaħuniq ɣi naki *aqun ku inuwaħan ruʔ.</PHON>
@@ -1126,7 +1126,7 @@
         <PHON kindOf="standard">iniʔ *aqi i ku inuwaħan la ɣa as~ɕiki kutan ku kaħuniq ɣi naki *aqun ku inuwaħan ruʔ.</PHON>
         <TRANSL xml:lang="zho">如果不知道來的路,就必須要砍樹,這樣才會知道來的路.</TRANSL>
         <TRANSL xml:lang="eng" notes="If (you) did not know the road traveled, (you) needed to chop down the trees, so that you would know the road traveled.">If did not know the road traveled, needed to chop down the trees, so that you would know the road traveled.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="46.75" end="57.39"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="46.75" end="57.39" />
         <W id="AtaNr-hunting1_Kainu_S_7_W0">
             <FORM kindOf="original">ini'</FORM>
             <PHON kindOf="original">iniʔ</PHON>
@@ -1455,7 +1455,7 @@
                 <TRANSL xml:lang="zho">連接詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.45070422535211263</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_8">
         <FORM kindOf="original">naki ini' i putukari'.</FORM>
         <PHON kindOf="original">naki iniʔ i putukariʔ.</PHON>
@@ -1463,7 +1463,7 @@
         <PHON kindOf="standard">naki iniʔ i putukariʔ.</PHON>
         <TRANSL xml:lang="zho">你才不會迷路.</TRANSL>
         <TRANSL xml:lang="eng">This way you wouldn't get lost.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="57.39" end="59.75"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="57.39" end="59.75" />
         <W id="AtaNr-hunting1_Kainu_S_8_W0">
             <FORM kindOf="original">naki</FORM>
             <PHON kindOf="original">naki</PHON>
@@ -1536,7 +1536,7 @@
                 <TRANSL xml:lang="zho">迷路</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4571428571428572</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_9">
         <FORM kindOf="original">mutukari'su' la ga pasiquawsu' inu' ga qatsu' vavaqun.</FORM>
         <PHON kindOf="original">mutukariʔs~ɕuʔ la ɣa pas~ɕiquaws~ɕuʔ inuʔ ɣa qats~ɕuʔ *a*aqun.</PHON>
@@ -1544,7 +1544,7 @@
         <PHON kindOf="standard">mutukariʔs~ɕuʔ la ɣa pas~ɕiquaws~ɕuʔ inuʔ ɣa qats~ɕuʔ *a*aqun.</PHON>
         <TRANSL xml:lang="zho">如果你迷路的話,你不知道你會在哪裡出現.</TRANSL>
         <TRANSL xml:lang="eng">If you get lost, you don't know where you will appear.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="59.75" end="65.51"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="59.75" end="65.51" />
         <W id="AtaNr-hunting1_Kainu_S_9_W0">
             <FORM kindOf="original">m-utukari'=su'</FORM>
             <PHON kindOf="original">m-utukariʔ=s~ɕuʔ</PHON>
@@ -1729,7 +1729,7 @@
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3820224719101124</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_10">
         <FORM kindOf="original">qatsu' laluwan na squliq musa' kumiyum.</FORM>
         <PHON kindOf="original">qats~ɕuʔ laluwan na s~ɕquliq mus~ɕaʔ kumijum.</PHON>
@@ -1737,7 +1737,7 @@
         <PHON kindOf="standard">qats~ɕuʔ laluwan na s~ɕquliq mus~ɕaʔ kumijum.</PHON>
         <TRANSL xml:lang="zho">你不會被搜尋的人找到.</TRANSL>
         <TRANSL xml:lang="eng">You wouldn't be found by people who go for a search.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="65.51" end="69.04"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="65.51" end="69.04" />
         <W id="AtaNr-hunting1_Kainu_S_10_W0">
             <FORM kindOf="original">qat=su'</FORM>
             <PHON kindOf="original">qat=s~ɕuʔ</PHON>
@@ -1866,7 +1866,7 @@
                 <TRANSL xml:lang="zho">尋找</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3783783783783784</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_11">
         <FORM kindOf="original">ru' nanu' tiku kai'mu sawni' ka maha u asiki kutan tikay ku kahuniq gi naki vaqun su ku a 'usa.</FORM>
         <PHON kindOf="original">ruʔ nanuʔ tiku kaiʔmu s~ɕawniʔ ka maħa u as~ɕiki kutan tikaj ku kaħuniq ɣi naki *aqun s~ɕu ku a ʔus~ɕa.</PHON>
@@ -1874,7 +1874,7 @@
         <PHON kindOf="standard">ruʔ nanuʔ tiku kaiʔmu s~ɕawniʔ ka maħa u as~ɕiki kutan tikaj ku kaħuniq ɣi naki *aqun s~ɕu ku a ʔus~ɕa.</PHON>
         <TRANSL xml:lang="zho" notes="(像)我剛才說的,必須要砍一點樹才會知道要走哪裡.">我剛才說的,必須要砍一點樹才會知道要走哪裡.</TRANSL>
         <TRANSL xml:lang="eng" notes="(Like) what I just said, it's necessary to chop a little wood so that you know where to go.">what I just said, it's necessary to chop a little wood so that you know where to go.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="69.04" end="80.71"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="69.04" end="80.71" />
         <W id="AtaNr-hunting1_Kainu_S_11_W0">
             <FORM kindOf="original">ru'</FORM>
             <PHON kindOf="original">ruʔ</PHON>
@@ -2227,7 +2227,7 @@
                 <TRANSL xml:lang="zho">去</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5157232704402516</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_12">
         <FORM kindOf="original">ru musa' i i sumvu' su yapit ini' ga vawwak sunga' ga.</FORM>
         <PHON kindOf="original">ru mus~ɕaʔ i i s~ɕum*uʔ s~ɕu japit iniʔ ɣa *awwak s~ɕuŋaʔ ɣa.</PHON>
@@ -2235,7 +2235,7 @@
         <PHON kindOf="standard">ru mus~ɕaʔ i i s~ɕum*uʔ s~ɕu japit iniʔ ɣa *awwak s~ɕuŋaʔ ɣa.</PHON>
         <TRANSL xml:lang="zho">我以前去射飛鼠或山豬</TRANSL>
         <TRANSL xml:lang="eng">I went to shoot polatouches or boars in the past.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="80.71" end="92.1"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="80.71" end="92.1" />
         <W id="AtaNr-hunting1_Kainu_S_12_W0">
             <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
@@ -2444,7 +2444,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4285714285714286</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_13">
         <FORM kindOf="original">mutux i payux vay ku qasinu sunga' gi nanu' gi uwehti' ku lahulahu.</FORM>
         <PHON kindOf="original">mutux i pajux *aj ku qas~ɕinu s~ɕuŋaʔ ɣi nanuʔ ɣi uweħtiʔ ku laħulaħu.</PHON>
@@ -2452,7 +2452,7 @@
         <PHON kindOf="standard">mutux i pajux *aj ku qas~ɕinu s~ɕuŋaʔ ɣi nanuʔ ɣi uweħtiʔ ku laħulaħu.</PHON>
         <TRANSL xml:lang="zho">以前真的會有很多野獸,因為森林很寬廣.</TRANSL>
         <TRANSL xml:lang="eng">There would really be many beasts in the past, because the forest was widespread.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="92.1" end="103.98"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="92.1" end="103.98" />
         <W id="AtaNr-hunting1_Kainu_S_13_W0">
             <FORM kindOf="original">mutux</FORM>
             <PHON kindOf="original">mutux</PHON>
@@ -2661,7 +2661,7 @@
                 <TRANSL xml:lang="zho">森林</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5233644859813085</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_14">
         <FORM kindOf="original">ru anananu' ga kia.</FORM>
         <PHON kindOf="original">ru anananuʔ ɣa kia.</PHON>
@@ -2669,7 +2669,7 @@
         <PHON kindOf="standard">ru anananuʔ ɣa kia.</PHON>
         <TRANSL xml:lang="zho">什麼東西都有.</TRANSL>
         <TRANSL xml:lang="eng">There was everything.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="103.98" end="106.23"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="103.98" end="106.23" />
         <W id="AtaNr-hunting1_Kainu_S_14_W0">
             <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
@@ -2742,7 +2742,7 @@
                 <TRANSL xml:lang="zho">存在</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_15">
         <FORM kindOf="original">ngarux ru miit para ru kakavahniq ga.</FORM>
         <PHON kindOf="original">ŋarux ru miit para ru kaka*aħniq ɣa.</PHON>
@@ -2750,7 +2750,7 @@
         <PHON kindOf="standard">ŋarux ru miit para ru kaka*aħniq ɣa.</PHON>
         <TRANSL xml:lang="zho">像是有熊、山羊、山羌、還有鳥.</TRANSL>
         <TRANSL xml:lang="eng">Like bears, goats, muntjacs, and birds.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="106.23" end="113.85"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="106.23" end="113.85" />
         <W id="AtaNr-hunting1_Kainu_S_15_W0">
             <FORM kindOf="original">ngarux</FORM>
             <PHON kindOf="original">ŋarux</PHON>
@@ -2871,7 +2871,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.38095238095238093</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_16">
         <FORM kindOf="original">mutux i alun na nku nku navakis halan naha' sumvu'.</FORM>
         <PHON kindOf="original">mutux i alun na nku nku na*akis~ɕ ħalan naħaʔ s~ɕum*uʔ.</PHON>
@@ -2879,7 +2879,7 @@
         <PHON kindOf="standard">mutux i alun na nku nku na*akis~ɕ ħalan naħaʔ s~ɕum*uʔ.</PHON>
         <TRANSL xml:lang="zho" notes="老人會去打獵,把(獵物)拿回來.">老人會去打獵,把 拿回來.</TRANSL>
         <TRANSL xml:lang="eng" notes="Old men would go shooting and take (the prey) back.">Old men would go shooting and take back.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="113.85" end="118.9"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="113.85" end="118.9" />
         <W id="AtaNr-hunting1_Kainu_S_16_W0">
             <FORM kindOf="original">mutux</FORM>
             <PHON kindOf="original">mutux</PHON>
@@ -3064,7 +3064,7 @@
                 <TRANSL xml:lang="zho">射</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5111111111111111</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_17">
         <FORM kindOf="original">vuun naha' ru nanu' a mutux naha' sipanga ru rasun naha' imuag.</FORM>
         <PHON kindOf="original">*uun naħaʔ ru nanuʔ a mutux naħaʔ s~ɕipaŋa ru ras~ɕun naħaʔ imuaɣ.</PHON>
@@ -3072,7 +3072,7 @@
         <PHON kindOf="standard">*uun naħaʔ ru nanuʔ a mutux naħaʔ s~ɕipaŋa ru ras~ɕun naħaʔ imuaɣ.</PHON>
         <TRANSL xml:lang="zho" notes="他們去打獵,會把(獵物)用背的帶回家.">他們去打獵,會把 用背的帶回家.</TRANSL>
         <TRANSL xml:lang="eng" notes="They went shooting, and would bear (the prey) on their back home.">They went shooting, and would bear on their back home.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="118.9" end="126.56"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="118.9" end="126.56" />
         <W id="AtaNr-hunting1_Kainu_S_17_W0">
             <FORM kindOf="original">vu-un</FORM>
             <PHON kindOf="original">*u-un</PHON>
@@ -3289,7 +3289,7 @@
                 <TRANSL xml:lang="zho">房子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3829787234042553</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_18">
         <FORM kindOf="original">gi raranga' naha' cku qutuxnia' su'imuag gi.</FORM>
         <PHON kindOf="original">ɣi raraŋaʔ naħaʔ ʦ~ʨku qutuxniaʔ s~ɕuʔimuaɣ ɣi.</PHON>
@@ -3297,7 +3297,7 @@
         <PHON kindOf="standard">ɣi raraŋaʔ naħaʔ ʦ~ʨku qutuxniaʔ s~ɕuʔimuaɣ ɣi.</PHON>
         <TRANSL xml:lang="zho">他們要紓解一家人.</TRANSL>
         <TRANSL xml:lang="eng">They will relieve his family.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="126.56" end="131.87"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="126.56" end="131.87" />
         <W id="AtaNr-hunting1_Kainu_S_18_W0">
             <FORM kindOf="original">gi</FORM>
             <PHON kindOf="original">ɣi</PHON>
@@ -3426,7 +3426,7 @@
                 <TRANSL xml:lang="zho">房子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.45945945945945943</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_19">
         <FORM kindOf="original">ukas ku naniqun naha' sunga'.</FORM>
         <PHON kindOf="original">ukas~ɕ ku naniqun naħaʔ s~ɕuŋaʔ.</PHON>
@@ -3434,7 +3434,7 @@
         <PHON kindOf="standard">ukas~ɕ ku naniqun naħaʔ s~ɕuŋaʔ.</PHON>
         <TRANSL xml:lang="zho">因為他們過去沒有什麼東西吃.</TRANSL>
         <TRANSL xml:lang="eng">That's because they have little to eat in the past.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="131.87" end="134.72"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="131.87" end="134.72" />
         <W id="AtaNr-hunting1_Kainu_S_19_W0">
             <FORM kindOf="original">ukas</FORM>
             <PHON kindOf="original">ukas~ɕ</PHON>
@@ -3523,7 +3523,7 @@
                 <TRANSL xml:lang="zho">過去</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5185185185185186</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_20">
         <FORM kindOf="original">i vali kia ku slaq ka patuwawun naha'.</FORM>
         <PHON kindOf="original">i *ali kia ku s~ɕlaq ka patuwawun naħaʔ.</PHON>
@@ -3531,7 +3531,7 @@
         <PHON kindOf="standard">i *ali kia ku s~ɕlaq ka patuwawun naħaʔ.</PHON>
         <TRANSL xml:lang="zho">沒有農田讓他們耕作.</TRANSL>
         <TRANSL xml:lang="eng">There was no farming field for them to farm.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="134.72" end="140.55"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="134.72" end="140.55" />
         <W id="AtaNr-hunting1_Kainu_S_20_W0">
             <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
@@ -3668,7 +3668,7 @@
                 <TRANSL xml:lang="zho">3PL.中性格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_21">
         <FORM kindOf="original">asi qaniq su qaqasinu gi ukas ku' pintuawan naha' ka nanu pati' ru vuax.</FORM>
         <PHON kindOf="original">as~ɕi qaniq s~ɕu qaqas~ɕinu ɣi ukas~ɕ kuʔ pintuawan naħaʔ ka nanu patiʔ ru *uax.</PHON>
@@ -3676,7 +3676,7 @@
         <PHON kindOf="standard">as~ɕi qaniq s~ɕu qaqas~ɕinu ɣi ukas~ɕ kuʔ pintuawan naħaʔ ka nanu patiʔ ru *uax.</PHON>
         <TRANSL xml:lang="zho">他們只有吃獸肉因為沒有米的收成.</TRANSL>
         <TRANSL xml:lang="eng">They could only eat beasts because there was no harvest of rice.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="140.55" end="151.89"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="140.55" end="151.89" />
         <W id="AtaNr-hunting1_Kainu_S_21_W0">
             <FORM kindOf="original">asi</FORM>
             <PHON kindOf="original">as~ɕi</PHON>
@@ -3925,7 +3925,7 @@
                 <TRANSL xml:lang="zho">米</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5396825396825398</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_22">
         <FORM kindOf="original">ru yaku qasinu ku niqun naha'.</FORM>
         <PHON kindOf="original">ru jaku qas~ɕinu ku niqun naħaʔ.</PHON>
@@ -3933,7 +3933,7 @@
         <PHON kindOf="standard">ru jaku qas~ɕinu ku niqun naħaʔ.</PHON>
         <TRANSL xml:lang="zho">他們吃那個野獸.</TRANSL>
         <TRANSL xml:lang="eng">They ate that beast.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="151.89" end="155.15"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="151.89" end="155.15" />
         <W id="AtaNr-hunting1_Kainu_S_22_W0">
             <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
@@ -4038,7 +4038,7 @@
                 <TRANSL xml:lang="zho">3PL.中性格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5185185185185186</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_23">
         <FORM kindOf="original">ru' atu' na sumvu' ga rasun imuag rasun imuag ru.</FORM>
         <PHON kindOf="original">ruʔ atuʔ na s~ɕum*uʔ ɣa ras~ɕun imuaɣ ras~ɕun imuaɣ ru.</PHON>
@@ -4046,7 +4046,7 @@
         <PHON kindOf="standard">ruʔ atuʔ na s~ɕum*uʔ ɣa ras~ɕun imuaɣ ras~ɕun imuaɣ ru.</PHON>
         <TRANSL xml:lang="zho" notes="如果射獵完,(他們)把獵物帶回家.">如果射獵完, 把獵物帶回家.</TRANSL>
         <TRANSL xml:lang="eng">If after shooting, they bring back to house.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="177.29" end="186.94"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="177.29" end="186.94" />
         <W id="AtaNr-hunting1_Kainu_S_23_W0">
             <FORM kindOf="original">ru'</FORM>
             <PHON kindOf="original">ruʔ</PHON>
@@ -4231,7 +4231,7 @@
                 <TRANSL xml:lang="zho">連接詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.44705882352941173</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_24">
         <FORM kindOf="original">nial numaga' imuag ku kakanayril.</FORM>
         <PHON kindOf="original">nial numaɣaʔ imuaɣ ku kakanajril.</PHON>
@@ -4239,7 +4239,7 @@
         <PHON kindOf="standard">nial numaɣaʔ imuaɣ ku kakanajril.</PHON>
         <TRANSL xml:lang="zho">女人在家裡等.</TRANSL>
         <TRANSL xml:lang="eng">Women were waiting in the house.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="186.94" end="190.66"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="186.94" end="190.66" />
         <W id="AtaNr-hunting1_Kainu_S_24_W0">
             <FORM kindOf="original">nial</FORM>
             <PHON kindOf="original">nial</PHON>
@@ -4336,7 +4336,7 @@
                 <TRANSL xml:lang="zho">女人</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.339622641509434</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_25">
         <FORM kindOf="original">atu' na parux ku sinvu' ga nanu' u sitaku sikal sikaal cku a 'ulaqi' maha halayta' i mapanga gi.</FORM>
         <PHON kindOf="original">atuʔ na parux ku s~ɕin*uʔ ɣa nanuʔ u s~ɕitaku s~ɕikal s~ɕikaal ʦ~ʨku a ʔulaqiʔ maħa ħalajtaʔ i mapaŋa ɣi.</PHON>
@@ -4344,7 +4344,7 @@
         <PHON kindOf="standard">atuʔ na parux ku s~ɕin*uʔ ɣa nanuʔ u s~ɕitaku s~ɕikal s~ɕikaal ʦ~ʨku a ʔulaqiʔ maħa ħalajtaʔ i mapaŋa ɣi.</PHON>
         <TRANSL xml:lang="zho">如果他們射到許多,會告訴小孩,「我們去背回來」.</TRANSL>
         <TRANSL xml:lang="eng">If they shot much, they would tell the kids, "Let's go to bring back".</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="190.66" end="203.19"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="190.66" end="203.19" />
         <W id="AtaNr-hunting1_Kainu_S_25_W0">
             <FORM kindOf="original">atu'</FORM>
             <PHON kindOf="original">atuʔ</PHON>
@@ -4697,7 +4697,7 @@
                 <TRANSL xml:lang="zho">連接詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4814814814814815</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_26">
         <FORM kindOf="original">ini' vaqi mapanga' na saxa' gi payux ga.</FORM>
         <PHON kindOf="original">iniʔ *aqi mapaŋaʔ na s~ɕaxaʔ ɣi pajux ɣa.</PHON>
@@ -4705,7 +4705,7 @@
         <PHON kindOf="standard">iniʔ *aqi mapaŋaʔ na s~ɕaxaʔ ɣi pajux ɣa.</PHON>
         <TRANSL xml:lang="zho">一個人搬不動,因為太多.</TRANSL>
         <TRANSL xml:lang="eng">One man can't bear it, because it's too much.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="203.19" end="207.05"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="203.19" end="207.05" />
         <W id="AtaNr-hunting1_Kainu_S_26_W0">
             <FORM kindOf="original">ini'</FORM>
             <PHON kindOf="original">iniʔ</PHON>
@@ -4850,7 +4850,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.48</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_27">
         <FORM kindOf="original">ru nanu' rasun ku sinsining ru maha halayta' i magal ku sinvu'mu.</FORM>
         <PHON kindOf="original">ru nanuʔ ras~ɕun ku s~ɕins~ɕiniŋ ru maħa ħalajtaʔ i maɣal ku s~ɕin*uʔmu.</PHON>
@@ -4858,7 +4858,7 @@
         <PHON kindOf="standard">ru nanuʔ ras~ɕun ku s~ɕins~ɕiniŋ ru maħa ħalajtaʔ i maɣal ku s~ɕin*uʔmu.</PHON>
         <TRANSL xml:lang="zho">他們帶年輕人,說「我們去拿回我射的獵物」.</TRANSL>
         <TRANSL xml:lang="eng">They led the youngster, saying "Let's go bring back the prey I hunted'.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="207.05" end="217.47"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="207.05" end="217.47" />
         <W id="AtaNr-hunting1_Kainu_S_27_W0">
             <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
@@ -5107,7 +5107,7 @@
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4545454545454546</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_28">
         <FORM kindOf="original">gi parux ku sinvu' nanu rasun rasun ku sinsining ru.</FORM>
         <PHON kindOf="original">ɣi parux ku s~ɕin*uʔ nanu ras~ɕun ras~ɕun ku s~ɕins~ɕiniŋ ru.</PHON>
@@ -5115,7 +5115,7 @@
         <PHON kindOf="standard">ɣi parux ku s~ɕin*uʔ nanu ras~ɕun ras~ɕun ku s~ɕins~ɕiniŋ ru.</PHON>
         <TRANSL xml:lang="zho" notes="因為有太多要拿回來,所以(他們)帶年輕人.">因為有太多要拿回來,所以 帶年輕人.</TRANSL>
         <TRANSL xml:lang="eng" notes="Because there was too much to bring back, (they) brought the youngsters.">Because there was too much to bring back, brought the youngsters.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="217.47" end="223.53"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="217.47" end="223.53" />
         <W id="AtaNr-hunting1_Kainu_S_28_W0">
             <FORM kindOf="original">gi</FORM>
             <PHON kindOf="original">ɣi</PHON>
@@ -5300,7 +5300,7 @@
                 <TRANSL xml:lang="zho">連接詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5454545454545454</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_29">
         <FORM kindOf="original">sipanga' naha' ru rasun naha' imuag.</FORM>
         <PHON kindOf="original">s~ɕipaŋaʔ naħaʔ ru ras~ɕun naħaʔ imuaɣ.</PHON>
@@ -5308,7 +5308,7 @@
         <PHON kindOf="standard">s~ɕipaŋaʔ naħaʔ ru ras~ɕun naħaʔ imuaɣ.</PHON>
         <TRANSL xml:lang="zho">他們背在身上帶回家.</TRANSL>
         <TRANSL xml:lang="eng">They bore it on back and brought it home.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="223.53" end="226.16"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="223.53" end="226.16" />
         <W id="AtaNr-hunting1_Kainu_S_29_W0">
             <FORM kindOf="original">si-panga'</FORM>
             <PHON kindOf="original">s~ɕi-paŋaʔ</PHON>
@@ -5421,7 +5421,7 @@
                 <TRANSL xml:lang="zho">房子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4838709677419355</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_30">
         <FORM kindOf="original">rasun naha' imuaug ru talan kahavaw.</FORM>
         <PHON kindOf="original">ras~ɕun naħaʔ imuauɣ ru talan kaħa*aw.</PHON>
@@ -5429,7 +5429,7 @@
         <PHON kindOf="standard">ras~ɕun naħaʔ imuauɣ ru talan kaħa*aw.</PHON>
         <TRANSL xml:lang="zho">他們帶回家,所有人都看到.</TRANSL>
         <TRANSL xml:lang="eng">They brought it back home and everyone saw them.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="226.16" end="229.38"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="226.16" end="229.38" />
         <W id="AtaNr-hunting1_Kainu_S_30_W0">
             <FORM kindOf="original">ras-un</FORM>
             <PHON kindOf="original">ras~ɕ-un</PHON>
@@ -5542,7 +5542,7 @@
                 <TRANSL xml:lang="zho">全部</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_31">
         <FORM kindOf="original">nial imuaug ga paqasun naha' ru.</FORM>
         <PHON kindOf="original">nial imuauɣ ɣa paqas~ɕun naħaʔ ru.</PHON>
@@ -5550,7 +5550,7 @@
         <PHON kindOf="standard">nial imuauɣ ɣa paqas~ɕun naħaʔ ru.</PHON>
         <TRANSL xml:lang="zho">家人很開心.</TRANSL>
         <TRANSL xml:lang="eng">The family were happy.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="229.38" end="232.41"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="229.38" end="232.41" />
         <W id="AtaNr-hunting1_Kainu_S_31_W0">
             <FORM kindOf="original">nial</FORM>
             <PHON kindOf="original">nial</PHON>
@@ -5655,7 +5655,7 @@
                 <TRANSL xml:lang="zho">連接詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5084745762711864</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_32">
         <FORM kindOf="original">numaga' gi i panuvuwaw su quaw.</FORM>
         <PHON kindOf="original">numaɣaʔ ɣi i panu*uwaw s~ɕu quaw.</PHON>
@@ -5663,7 +5663,7 @@
         <PHON kindOf="standard">numaɣaʔ ɣi i panu*uwaw s~ɕu quaw.</PHON>
         <TRANSL xml:lang="zho" notes="(他們)準備酒喝.">準備酒喝.</TRANSL>
         <TRANSL xml:lang="eng" notes="(They) prepared wine for drinking.">prepared wine for drinking.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="232.41" end="237.24"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="232.41" end="237.24" />
         <W id="AtaNr-hunting1_Kainu_S_32_W0">
             <FORM kindOf="original">n&lt;um&gt;aga'</FORM>
             <PHON kindOf="original">n&lt;um&gt;aɣaʔ</PHON>
@@ -5776,7 +5776,7 @@
                 <TRANSL xml:lang="zho">酒</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_33">
         <FORM kindOf="original">manuvuaw su quaw la ru nanu' gi paqasun naha' la ga.</FORM>
         <PHON kindOf="original">manu*uaw s~ɕu quaw la ru nanuʔ ɣi paqas~ɕun naħaʔ la ɣa.</PHON>
@@ -5784,7 +5784,7 @@
         <PHON kindOf="standard">manu*uaw s~ɕu quaw la ru nanuʔ ɣi paqas~ɕun naħaʔ la ɣa.</PHON>
         <TRANSL xml:lang="zho">喝完酒之後,他們很開心.</TRANSL>
         <TRANSL xml:lang="eng">After they drank wine, they got happy.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="237.24" end="242.37"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="237.24" end="242.37" />
         <W id="AtaNr-hunting1_Kainu_S_33_W0">
             <FORM kindOf="original">ma-nuvuaw</FORM>
             <PHON kindOf="original">ma-nu*uaw</PHON>
@@ -5977,7 +5977,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.42500000000000004</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_34">
         <FORM kindOf="original">elev panyugi' la.</FORM>
         <PHON kindOf="original">ele* panjuɣiʔ la.</PHON>
@@ -5985,7 +5985,7 @@
         <PHON kindOf="standard">ele* panjuɣiʔ la.</PHON>
         <TRANSL xml:lang="zho" notes="(他們)跳舞.">跳舞.</TRANSL>
         <TRANSL xml:lang="eng" notes="(They) dance.">dance.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="242.37" end="246.78"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="242.37" end="246.78" />
         <W id="AtaNr-hunting1_Kainu_S_34_W0">
             <FORM kindOf="original">elev</FORM>
             <PHON kindOf="original">ele*</PHON>
@@ -6042,7 +6042,7 @@
                 <TRANSL xml:lang="zho">語助詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.33333333333333337</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_35">
         <FORM kindOf="original">ru niqun naha' ku tahkun naha' ku inaras ru niqun naha'.</FORM>
         <PHON kindOf="original">ru niqun naħaʔ ku taħkun naħaʔ ku inaras~ɕ ru niqun naħaʔ.</PHON>
@@ -6050,7 +6050,7 @@
         <PHON kindOf="standard">ru niqun naħaʔ ku taħkun naħaʔ ku inaras~ɕ ru niqun naħaʔ.</PHON>
         <TRANSL xml:lang="zho">他們就吃,烹煮和享用帶回來的東西.</TRANSL>
         <TRANSL xml:lang="eng">They ate, and cooked and ate the thing they brought back.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="246.78" end="254.15"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="246.78" end="254.15" />
         <W id="AtaNr-hunting1_Kainu_S_35_W0">
             <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
@@ -6259,7 +6259,7 @@
                 <TRANSL xml:lang="zho">3PL.中性格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4948453608247423</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_36">
         <FORM kindOf="original">sua' ana ku 'ulaqi' uwi ga.</FORM>
         <PHON kindOf="original">s~ɕuaʔ ana ku ʔulaqiʔ uwi ɣa.</PHON>
@@ -6267,7 +6267,7 @@
         <PHON kindOf="standard">s~ɕuaʔ ana ku ʔulaqiʔ uwi ɣa.</PHON>
         <TRANSL xml:lang="zho" notes="連小孩也(來吃).">連小孩也 .</TRANSL>
         <TRANSL xml:lang="eng" notes="Even children (ate), too.">Even children , too.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="254.15" end="256.97"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="254.15" end="256.97" />
         <W id="AtaNr-hunting1_Kainu_S_36_W0">
             <FORM kindOf="original">sua'</FORM>
             <PHON kindOf="original">s~ɕuaʔ</PHON>
@@ -6364,7 +6364,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.40909090909090906</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_37">
         <FORM kindOf="original">ini' i qavaq i sasalun qasinu ga.</FORM>
         <PHON kindOf="original">iniʔ i qa*aq i s~ɕas~ɕalun qas~ɕinu ɣa.</PHON>
@@ -6372,7 +6372,7 @@
         <PHON kindOf="standard">iniʔ i qa*aq i s~ɕas~ɕalun qas~ɕinu ɣa.</PHON>
         <TRANSL xml:lang="zho" notes="(小孩)不知道野獸的名稱.">不知道野獸的名稱.</TRANSL>
         <TRANSL xml:lang="eng" notes="(The children) didn't know the names of the beasts.">didn't know the names of the beasts.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="256.97" end="262.74"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="256.97" end="262.74" />
         <W id="AtaNr-hunting1_Kainu_S_37_W0">
             <FORM kindOf="original">ini'</FORM>
             <PHON kindOf="original">iniʔ</PHON>
@@ -6501,7 +6501,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_38">
         <FORM kindOf="original">sahahiya' naha' niqun gi qaat u minaniq su nak minukahul i lahulahu.</FORM>
         <PHON kindOf="original">s~ɕaħaħijaʔ naħaʔ niqun ɣi qaat u minaniq s~ɕu nak minukaħul i laħulaħu.</PHON>
@@ -6509,7 +6509,7 @@
         <PHON kindOf="standard">s~ɕaħaħijaʔ naħaʔ niqun ɣi qaat u minaniq s~ɕu nak minukaħul i laħulaħu.</PHON>
         <TRANSL xml:lang="zho">他們所吃的東西很美味,因為他們沒吃過來自森林的東西.</TRANSL>
         <TRANSL xml:lang="eng">What they ate was delicious. That's because they had never eaten things from the forest.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="262.74" end="270.89"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="262.74" end="270.89" />
         <W id="AtaNr-hunting1_Kainu_S_38_W0">
             <FORM kindOf="original">sahahiya'</FORM>
             <PHON kindOf="original">s~ɕaħaħijaʔ</PHON>
@@ -6742,7 +6742,7 @@
                 <TRANSL xml:lang="zho">森林</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4954128440366973</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_39">
         <FORM kindOf="original">nanu' yaku yani ku siqiyanux naha' ru sku hani la ga ini' paska la ga ku kinqiyanux la.</FORM>
         <PHON kindOf="original">nanuʔ jaku jani ku s~ɕiqijanux naħaʔ ru s~ɕku ħani la ɣa iniʔ pas~ɕka la ɣa ku kinqijanux la.</PHON>
@@ -6750,7 +6750,7 @@
         <PHON kindOf="standard">nanuʔ jaku jani ku s~ɕiqijanux naħaʔ ru s~ɕku ħani la ɣa iniʔ pas~ɕka la ɣa ku kinqijanux la.</PHON>
         <TRANSL xml:lang="zho">他們賴以生活的和現在不一樣.</TRANSL>
         <TRANSL xml:lang="eng">What they lived by was not the same as the present.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="270.89" end="283.25"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="270.89" end="283.25" />
         <W id="AtaNr-hunting1_Kainu_S_39_W0">
             <FORM kindOf="original">nanu'</FORM>
             <PHON kindOf="original">nanuʔ</PHON>
@@ -7063,7 +7063,7 @@
                 <TRANSL xml:lang="zho">助詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.49006622516556286</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_40">
         <FORM kindOf="original">kinqianux sawni' hiya' la ga anananu' ga kia la ru mutuxta' i kia tikay ku pila' ga.</FORM>
         <PHON kindOf="original">kinqianux s~ɕawniʔ ħijaʔ la ɣa anananuʔ ɣa kia la ru mutuxtaʔ i kia tikaj ku pilaʔ ɣa.</PHON>
@@ -7071,7 +7071,7 @@
         <PHON kindOf="standard">kinqianux s~ɕawniʔ ħijaʔ la ɣa anananuʔ ɣa kia la ru mutuxtaʔ i kia tikaj ku pilaʔ ɣa.</PHON>
         <TRANSL xml:lang="zho" notes="至於現在的生活,如果有一點錢,我們會去(做某事).">至於現在的生活,如果有一點錢,我們會去 .</TRANSL>
         <TRANSL xml:lang="eng" notes="As for the life now, if with a little money, we would (do something).">As for the life now, if with a little money, we would .</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="283.25" end="293.68"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="283.25" end="293.68" />
         <W id="AtaNr-hunting1_Kainu_S_40_W0">
             <FORM kindOf="original">k&lt;in&gt;qianux</FORM>
             <PHON kindOf="original">k&lt;in&gt;qianux</PHON>
@@ -7368,7 +7368,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.46153846153846156</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_41">
         <FORM kindOf="original">musa'mu vavaynay.</FORM>
         <PHON kindOf="original">mus~ɕaʔmu *a*ajnaj.</PHON>
@@ -7376,7 +7376,7 @@
         <PHON kindOf="standard">mus~ɕaʔmu *a*ajnaj.</PHON>
         <TRANSL xml:lang="zho">我會去買東西.</TRANSL>
         <TRANSL xml:lang="eng" notes="I will go to buy (something).">I will go to buy .</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="293.68" end="295.79"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="293.68" end="295.79" />
         <W id="AtaNr-hunting1_Kainu_S_41_W0">
             <FORM kindOf="original">m-usa'=mu</FORM>
             <PHON kindOf="original">m-us~ɕaʔ=mu</PHON>
@@ -7433,7 +7433,7 @@
                 <TRANSL xml:lang="zho">買</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3870967741935484</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_42">
         <FORM kindOf="original">musa' mavaynay hi' i ku ku tinqalangan nku saysayho.</FORM>
         <PHON kindOf="original">mus~ɕaʔ ma*ajnaj ħiʔ i ku ku tinqalaŋan nku s~ɕajs~ɕajħo.</PHON>
@@ -7441,7 +7441,7 @@
         <PHON kindOf="standard">mus~ɕaʔ ma*ajnaj ħiʔ i ku ku tinqalaŋan nku s~ɕajs~ɕajħo.</PHON>
         <TRANSL xml:lang="zho" notes="(我們)去漢人的聚落買肉.">去漢人的聚落買肉.</TRANSL>
         <TRANSL xml:lang="eng" notes="(We) go the Han people's village to buy meat.">go the Han people's village to buy meat.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="295.79" end="302.3"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="295.79" end="302.3" />
         <W id="AtaNr-hunting1_Kainu_S_42_W0">
             <FORM kindOf="original">m-usa'</FORM>
             <PHON kindOf="original">m-us~ɕaʔ</PHON>
@@ -7487,7 +7487,7 @@
                 <FORM kindOf="standard">vaynay</FORM>
                 <PHON kindOf="standard">*ajnaj</PHON>
                 <TRANSL xml:lang="eng">buy</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="AtaNr-hunting1_Kainu_S_42_W2">
@@ -7610,7 +7610,7 @@
                 <TRANSL xml:lang="zho">專名</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5185185185185186</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_43">
         <FORM kindOf="original">rasun naha' i imuag ru niqun naha' maska' cku.</FORM>
         <PHON kindOf="original">ras~ɕun naħaʔ i imuaɣ ru niqun naħaʔ mas~ɕkaʔ ʦ~ʨku.</PHON>
@@ -7618,7 +7618,7 @@
         <PHON kindOf="standard">ras~ɕun naħaʔ i imuaɣ ru niqun naħaʔ mas~ɕkaʔ ʦ~ʨku.</PHON>
         <TRANSL xml:lang="zho">他們把肉帶回來,還是以相同方式吃掉.</TRANSL>
         <TRANSL xml:lang="eng" notes="They bring (the meat) back, and eat it in the same way.">They bring back, and eat it in the same way.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="302.3" end="307.56"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="302.3" end="307.56" />
         <W id="AtaNr-hunting1_Kainu_S_43_W0">
             <FORM kindOf="original">ras-un</FORM>
             <PHON kindOf="original">ras~ɕ-un</PHON>
@@ -7787,7 +7787,7 @@
                 <TRANSL xml:lang="zho">受格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.46376811594202894</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_44">
         <FORM kindOf="original">musa' i ragiax sunga' ku kinqianux uwe la gi.</FORM>
         <PHON kindOf="original">mus~ɕaʔ i raɣiax s~ɕuŋaʔ ku kinqianux uwe la ɣi.</PHON>
@@ -7795,7 +7795,7 @@
         <PHON kindOf="standard">mus~ɕaʔ i raɣiax s~ɕuŋaʔ ku kinqianux uwe la ɣi.</PHON>
         <TRANSL xml:lang="zho">就像他們以前去山上的生活一樣.</TRANSL>
         <TRANSL xml:lang="eng">Just like the life where they went to the mountain in the past.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="307.56" end="311.76"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="307.56" end="311.76" />
         <W id="AtaNr-hunting1_Kainu_S_44_W0">
             <FORM kindOf="original">m-usa'</FORM>
             <PHON kindOf="original">m-us~ɕaʔ</PHON>
@@ -7956,7 +7956,7 @@
                 <TRANSL xml:lang="zho">連接詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.48</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_45">
         <FORM kindOf="original">tiku hani la ga pila' nku lawkah la.</FORM>
         <PHON kindOf="original">tiku ħani la ɣa pilaʔ nku lawkaħ la.</PHON>
@@ -7964,7 +7964,7 @@
         <PHON kindOf="standard">tiku ħani la ɣa pilaʔ nku lawkaħ la.</PHON>
         <TRANSL xml:lang="zho">錢現在很強勢.</TRANSL>
         <TRANSL xml:lang="eng">Money is strong now.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="311.76" end="317.51"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="311.76" end="317.51" />
         <W id="AtaNr-hunting1_Kainu_S_45_W0">
             <FORM kindOf="original">tiku</FORM>
             <PHON kindOf="original">tiku</PHON>
@@ -8093,7 +8093,7 @@
                 <TRANSL xml:lang="zho">語助詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.48275862068965514</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_46">
         <FORM kindOf="original">ru halan naha' i mavaynay ku vuax ru naniqun ru uahan naha' maniq imuag.</FORM>
         <PHON kindOf="original">ru ħalan naħaʔ i ma*ajnaj ku *uax ru naniqun ru uaħan naħaʔ maniq imuaɣ.</PHON>
@@ -8101,7 +8101,7 @@
         <PHON kindOf="standard">ru ħalan naħaʔ i ma*ajnaj ku *uax ru naniqun ru uaħan naħaʔ maniq imuaɣ.</PHON>
         <TRANSL xml:lang="zho">他們去買米和食物,回來在家吃.</TRANSL>
         <TRANSL xml:lang="eng">They go to buy rice and food back, and eat in the house.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="317.51" end="324.97"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="317.51" end="324.97" />
         <W id="AtaNr-hunting1_Kainu_S_46_W0">
             <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
@@ -8374,7 +8374,7 @@
                 <TRANSL xml:lang="zho">房子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5</SCORE></S>
     <S id="AtaNr-hunting1_Kainu_S_47">
         <FORM kindOf="original">maska' ku kinqianux sunga'.</FORM>
         <PHON kindOf="original">mas~ɕkaʔ ku kinqianux s~ɕuŋaʔ.</PHON>
@@ -8382,7 +8382,7 @@
         <PHON kindOf="standard">mas~ɕkaʔ ku kinqianux s~ɕuŋaʔ.</PHON>
         <TRANSL xml:lang="zho">生活和以前一樣.</TRANSL>
         <TRANSL xml:lang="eng">The life is the same as in the past.</TRANSL>
-        <AUDIO file="AtaNr-hunting1_Kainu_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="324.97" end="328.34"/>
+        <AUDIO file="AtaNr-hunting1_Kainu_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting1_Kainu.mp3" start="324.97" end="328.34" />
         <W id="AtaNr-hunting1_Kainu_S_47_W0">
             <FORM kindOf="original">m-aska'</FORM>
             <PHON kindOf="original">m-as~ɕkaʔ</PHON>
@@ -8463,5 +8463,5 @@
                 <TRANSL xml:lang="zho">過去</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5106382978723405</SCORE></S>
 </TEXT>

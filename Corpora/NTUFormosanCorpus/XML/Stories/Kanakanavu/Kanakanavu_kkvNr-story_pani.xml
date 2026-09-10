@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="NTU_Stry_Kanakanavu_kkvNr-story_pani" xml:lang="xnb" source="NTU Corpus stories for Kanakanavu, story: kkvNr-story_pani" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Kanakanavu">
     <S id="kkvNr-story_pani_S_0">
         <FORM kindOf="original">teku poisua niaranaikita Kanakanavu.</FORM>
@@ -7,7 +7,7 @@
         <PHON kindOf="standard">teku poisua niar~ɾanaikita kanakanavu.</PHON>
         <TRANSL xml:lang="zho">我要講關於我們Kanakanavu是從哪裡來的.</TRANSL>
         <TRANSL xml:lang="eng">I am talking about where we Kanakanavu are from.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="0.0" end="4.24"/>
+        <AUDIO file="kkvNr-story_pani_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="0.0" end="4.24" />
         <W id="kkvNr-story_pani_S_0_W0">
             <FORM kindOf="original">te=ku</FORM>
             <PHON kindOf="original">te=ku</PHON>
@@ -104,7 +104,7 @@
                 <TRANSL xml:lang="zho">PN</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5866666666666667</SCORE></S>
     <S id="kkvNr-story_pani_S_1">
         <FORM kindOf="original">eh sua tinimanamaku 'una mamarang makasi ikita Kanakanavu miana nimon kankita racʉnga misee.</FORM>
         <PHON kindOf="original">eh sua tinimanamaku ʔuna mamar~ɾaŋ makasi ikita kanakanavu miana nimon kankita r~ɾaʦɨŋa misee.</PHON>
@@ -112,7 +112,7 @@
         <PHON kindOf="standard">eh sua tinimanamaku ʔuna mamar~ɾaŋ makasi ikita kanakanavu miana nimon kankita r~ɾaʦɨŋa misee.</PHON>
         <TRANSL xml:lang="zho">有老人家說 我們卡族曾經住在Racʉnga這個地方.</TRANSL>
         <TRANSL xml:lang="eng">According to the old sayings, once we were living in Racʉnga.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="4.24" end="20.05"/>
+        <AUDIO file="kkvNr-story_pani_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="4.24" end="20.05" />
         <W id="kkvNr-story_pani_S_1_W0">
             <FORM kindOf="original">eh</FORM>
             <PHON kindOf="original">eh</PHON>
@@ -369,7 +369,7 @@
                 <TRANSL xml:lang="zho">說</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6327683615819208</SCORE></S>
     <S id="kkvNr-story_pani_S_2">
         <FORM kindOf="original">nakai kisonenmaku mamarang 'esi nanu sua racʉnga sua kari mamarang ia makasi maa ikua.</FORM>
         <PHON kindOf="original">nakai kisonenmaku mamar~ɾaŋ ʔesi nanu sua r~ɾaʦɨŋa sua kar~ɾi mamar~ɾaŋ ia makasi maa ikua.</PHON>
@@ -377,7 +377,7 @@
         <PHON kindOf="standard">nakai kisonenmaku mamar~ɾaŋ ʔesi nanu sua r~ɾaʦɨŋa sua kar~ɾi mamar~ɾaŋ ia makasi maa ikua.</PHON>
         <TRANSL xml:lang="zho">但是我請教長輩們Racʉnga在哪裡,老人家只這樣回答我.</TRANSL>
         <TRANSL xml:lang="eng">But, when I asked our elders where Racʉnga was, they just answered me like this.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="20.05" end="35.7"/>
+        <AUDIO file="kkvNr-story_pani_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="20.05" end="35.7" />
         <W id="kkvNr-story_pani_S_2_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -518,16 +518,16 @@
                 <PHON kindOf="original">ʦɨŋ</PHON>
                 <FORM kindOf="standard">cʉng</FORM>
                 <PHON kindOf="standard">ʦɨŋ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr-story_pani_S_2_W6M3">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr-story_pani_S_2_W7">
@@ -650,7 +650,7 @@
                 <TRANSL xml:lang="zho">1SG.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6622516556291391</SCORE></S>
     <S id="kkvNr-story_pani_S_3">
         <FORM kindOf="original">cʉroo tanairʉ sua tararakaua taniarʉ ia isua to'onaa racʉnga misee.</FORM>
         <PHON kindOf="original">ʦɨr~ɾoo tanair~ɾɨ sua tar~ɾar~ɾakaua taniar~ɾɨ ia isua toʔonaa r~ɾaʦɨŋa misee.</PHON>
@@ -658,7 +658,7 @@
         <PHON kindOf="standard">ʦɨr~ɾoo tanair~ɾɨ sua tar~ɾar~ɾakaua taniar~ɾɨ ia isua toʔonaa r~ɾaʦɨŋa misee.</PHON>
         <TRANSL xml:lang="zho">你看著太陽,太陽出現的地方,那裡就是Racʉnga的地方.</TRANSL>
         <TRANSL xml:lang="eng">Look, where the sun arises is the place where Racʉnga was.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="35.7" end="47.62"/>
+        <AUDIO file="kkvNr-story_pani_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="35.7" end="47.62" />
         <W id="kkvNr-story_pani_S_3_W0">
             <FORM kindOf="original">cʉr-oo</FORM>
             <PHON kindOf="original">ʦɨr~ɾ-oo</PHON>
@@ -843,7 +843,7 @@
                 <TRANSL xml:lang="zho">說.主焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6016260162601625</SCORE></S>
     <S id="kkvNr-story_pani_S_4">
         <FORM kindOf="original">ka'an tavar'ʉ'ʉ ʉngcoo tutuuru tumatuuturu sua 'esi nanu sua Racʉnga.</FORM>
         <PHON kindOf="original">kaʔan tavar~ɾʔɨʔɨ ɨŋʦoo tutuur~ɾu tumatuutur~ɾu sua ʔesi nanu sua r~ɾaʦɨŋa.</PHON>
@@ -851,7 +851,7 @@
         <PHON kindOf="standard">kaʔan tavar~ɾʔɨʔɨ ɨŋʦoo tutuur~ɾu tumatuutur~ɾu sua ʔesi nanu sua r~ɾaʦɨŋa.</PHON>
         <TRANSL xml:lang="zho">沒有辦法明確說出來Racʉnga究竟在哪個位子.</TRANSL>
         <TRANSL xml:lang="eng">He could not give me a clear answer about where Racʉnga was.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="47.62" end="55.61"/>
+        <AUDIO file="kkvNr-story_pani_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="47.62" end="55.61" />
         <W id="kkvNr-story_pani_S_4_W0">
             <FORM kindOf="original">ka'an</FORM>
             <PHON kindOf="original">kaʔan</PHON>
@@ -945,7 +945,7 @@
                 <FORM kindOf="standard">tuuturu</FORM>
                 <PHON kindOf="standard">tuutur~ɾu</PHON>
                 <TRANSL xml:lang="eng">say</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr-story_pani_S_4_W5">
@@ -1028,7 +1028,7 @@
                 <TRANSL xml:lang="zho">專名</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5573770491803278</SCORE></S>
     <S id="kkvNr-story_pani_S_5">
         <FORM kindOf="original">timanaku kangvang 'una Ra'arua nguani misee sua to'onaa nguani miana ia 'esi kani hlacʉna.</FORM>
         <PHON kindOf="original">timanaku kaŋvaŋ ʔuna r~ɾaʔar~ɾua ŋuani misee sua toʔonaa ŋuani miana ia ʔesi kani h*aʦɨna.</PHON>
@@ -1036,7 +1036,7 @@
         <PHON kindOf="standard">timanaku kaŋvaŋ ʔuna r~ɾaʔar~ɾua ŋuani misee sua toʔonaa ŋuani miana ia ʔesi kani h*aʦɨna.</PHON>
         <TRANSL xml:lang="zho">我也曾經聽過拉阿魯阿族的人說他們以前所住的地方叫就Hlacʉna.</TRANSL>
         <TRANSL xml:lang="eng">I also heard that Ra'arua had once lived in a place called Hlacʉna.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="55.61" end="67.77"/>
+        <AUDIO file="kkvNr-story_pani_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="55.61" end="67.77" />
         <W id="kkvNr-story_pani_S_5_W0">
             <FORM kindOf="original">timana=ku</FORM>
             <PHON kindOf="original">timana=ku</PHON>
@@ -1237,10 +1237,10 @@
                 <TRANSL xml:lang="zho">處所</TRANSL>
             </M>
             <M id="kkvNr-story_pani_S_5_W11M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">QUOT</TRANSL>
                 <TRANSL xml:lang="zho">引述</TRANSL>
             </M>
@@ -1277,7 +1277,7 @@
                 <TRANSL xml:lang="zho">地名</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6181818181818182</SCORE></S>
     <S id="kkvNr-story_pani_S_6">
         <FORM kindOf="original">'esiku pacʉpʉcʉpʉngʉ hlcʉna mataa nacʉnga matʉakara 'ʉnai isi.</FORM>
         <PHON kindOf="original">ʔesiku paʦɨpɨʦɨpɨŋɨ h*ʦɨna mataa naʦɨŋa matɨakar~ɾa ʔɨnai isi.</PHON>
@@ -1285,7 +1285,7 @@
         <PHON kindOf="standard">ʔesiku paʦɨpɨʦɨpɨŋɨ h*ʦɨna mataa naʦɨŋa matɨakar~ɾa ʔɨnai isi.</PHON>
         <TRANSL xml:lang="zho">我在思索著hlcʉna跟nacʉnga這兩個地名是同一個的地方嗎?</TRANSL>
         <TRANSL xml:lang="eng">I am thinking if the two locations mean the same place.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="67.77" end="76.6"/>
+        <AUDIO file="kkvNr-story_pani_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="67.77" end="76.6" />
         <W id="kkvNr-story_pani_S_6_W0">
             <FORM kindOf="original">'esi=ku</FORM>
             <PHON kindOf="original">ʔesi=ku</PHON>
@@ -1438,7 +1438,7 @@
                 <TRANSL xml:lang="zho">這個</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5789473684210527</SCORE></S>
     <S id="kkvNr-story_pani_S_7">
         <FORM kindOf="original">sua isi ia pacʉpʉngʉcumaku masini.</FORM>
         <PHON kindOf="original">sua isi ia paʦɨpɨŋɨʦumaku masini.</PHON>
@@ -1446,7 +1446,7 @@
         <PHON kindOf="standard">sua isi ia paʦɨpɨŋɨʦumaku masini.</PHON>
         <TRANSL xml:lang="zho">這些到現在我還在思索.</TRANSL>
         <TRANSL xml:lang="eng">Until now, I am still thinking about this question.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="76.6" end="81.35"/>
+        <AUDIO file="kkvNr-story_pani_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="76.6" end="81.35" />
         <W id="kkvNr-story_pani_S_7_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -1543,7 +1543,7 @@
                 <TRANSL xml:lang="zho">現在</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5084745762711864</SCORE></S>
     <S id="kkvNr-story_pani_S_8">
         <FORM kindOf="original">rancurunga ia 'esi na masini to'onaamita.</FORM>
         <PHON kindOf="original">r~ɾanʦur~ɾuŋa ia ʔesi na masini toʔonaamita.</PHON>
@@ -1551,7 +1551,7 @@
         <PHON kindOf="standard">r~ɾanʦur~ɾuŋa ia ʔesi na masini toʔonaamita.</PHON>
         <TRANSL xml:lang="zho">Rancurunga這個地方在現在我們所住的地方.</TRANSL>
         <TRANSL xml:lang="eng">Rancurunga is located at the place where we lived now.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="99.04" end="105.29"/>
+        <AUDIO file="kkvNr-story_pani_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="99.04" end="105.29" />
         <W id="kkvNr-story_pani_S_8_W0">
             <FORM kindOf="original">rancurunga</FORM>
             <PHON kindOf="original">r~ɾanʦur~ɾuŋa</PHON>
@@ -1656,7 +1656,7 @@
                 <TRANSL xml:lang="zho">1PL.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5915492957746479</SCORE></S>
     <S id="kkvNr-story_pani_S_9">
         <FORM kindOf="original">ʉncoo uh uh 'esi na masini Namasia.</FORM>
         <PHON kindOf="original">ɨnʦoo uh uh ʔesi na masini namasia.</PHON>
@@ -1664,7 +1664,7 @@
         <PHON kindOf="standard">ɨnʦoo uh uh ʔesi na masini namasia.</PHON>
         <TRANSL xml:lang="zho">現在那瑪夏區的…</TRANSL>
         <TRANSL xml:lang="eng">It is now at…</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="105.29" end="114.72"/>
+        <AUDIO file="kkvNr-story_pani_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="105.29" end="114.72" />
         <W id="kkvNr-story_pani_S_9_W0">
             <FORM kindOf="original">ʉncoo</FORM>
             <PHON kindOf="original">ɨnʦoo</PHON>
@@ -1777,7 +1777,7 @@
                 <TRANSL xml:lang="zho">PN</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47457627118644063</SCORE></S>
     <S id="kkvNr-story_pani_S_10">
         <FORM kindOf="original">ʉncoo amuseni kʉcʉ 'ʉnai isua?</FORM>
         <PHON kindOf="original">ɨnʦoo amuseni kɨʦɨ ʔɨnai isua?</PHON>
@@ -1785,7 +1785,7 @@
         <PHON kindOf="standard">ɨnʦoo amuseni kɨʦɨ ʔɨnai isua?</PHON>
         <TRANSL xml:lang="zho">那個地名究竟怎麼稱呼去了?</TRANSL>
         <TRANSL xml:lang="eng">What is the name of that place?</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="114.72" end="122.25"/>
+        <AUDIO file="kkvNr-story_pani_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="114.72" end="122.25" />
         <W id="kkvNr-story_pani_S_10_W0">
             <FORM kindOf="original">ʉncoo</FORM>
             <PHON kindOf="original">ɨnʦoo</PHON>
@@ -1866,7 +1866,7 @@
                 <TRANSL xml:lang="zho">那</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3870967741935484</SCORE></S>
     <S id="kkvNr-story_pani_S_11">
         <FORM kindOf="original">uh ah! 'esi na nangisarʉ tamna cimʉrʉ.</FORM>
         <PHON kindOf="original">uh ah! ʔesi na naŋisar~ɾɨ tamna ʦimɨr~ɾɨ.</PHON>
@@ -1874,7 +1874,7 @@
         <PHON kindOf="standard">uh ah! ʔesi na naŋisar~ɾɨ tamna ʦimɨr~ɾɨ.</PHON>
         <TRANSL xml:lang="zho">那個位置在屬於南沙魯里的山上.</TRANSL>
         <TRANSL xml:lang="eng">It is located at the mountain of Nangisarʉ.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="122.25" end="135.03"/>
+        <AUDIO file="kkvNr-story_pani_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="122.25" end="135.03" />
         <W id="kkvNr-story_pani_S_11_W0">
             <FORM kindOf="original">uh</FORM>
             <PHON kindOf="original">uh</PHON>
@@ -1987,7 +1987,7 @@
                 <TRANSL xml:lang="zho">山</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.7096774193548387</SCORE></S>
     <S id="kkvNr-story_pani_S_12">
         <FORM kindOf="original">'una 'ʉnai taca cacaruin ia tʉnʉkaiin ia 'una 'ʉnai rancurunga kisʉʉnmita Kanakanavu.</FORM>
         <PHON kindOf="original">ʔuna ʔɨnai taʦa ʦaʦar~ɾuin ia tɨnɨkaiin ia ʔuna ʔɨnai r~ɾanʦur~ɾuŋa kisɨɨnmita kanakanavu.</PHON>
@@ -1995,7 +1995,7 @@
         <PHON kindOf="standard">ʔuna ʔɨnai taʦa ʦaʦar~ɾuin ia tɨnɨkaiin ia ʔuna ʔɨnai r~ɾanʦur~ɾuŋa kisɨɨnmita kanakanavu.</PHON>
         <TRANSL xml:lang="zho">在他的頂端有一個地方卡那卡那富稱其為Rangurunga.</TRANSL>
         <TRANSL xml:lang="eng">At the crown layer of the trees, there is a place we call Rangurunga.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="135.03" end="147.01"/>
+        <AUDIO file="kkvNr-story_pani_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="135.03" end="147.01" />
         <W id="kkvNr-story_pani_S_12_W0">
             <FORM kindOf="original">'una</FORM>
             <PHON kindOf="original">ʔuna</PHON>
@@ -2220,7 +2220,7 @@
                 <TRANSL xml:lang="zho">地名</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5783132530120482</SCORE></S>
     <S id="kkvNr-story_pani_S_13">
         <FORM kindOf="original">nimoon 'inia sasarunai Kanakanvu 'uma'anupu aracakanʉ 'inia.</FORM>
         <PHON kindOf="original">nimoon ʔinia sasar~ɾunai kanakanvu ʔumaʔanupu ar~ɾaʦakanɨ ʔinia.</PHON>
@@ -2228,7 +2228,7 @@
         <PHON kindOf="standard">nimoon ʔinia sasar~ɾunai kanakanvu ʔumaʔanupu ar~ɾaʦakanɨ ʔinia.</PHON>
         <TRANSL xml:lang="zho">一個卡那卡那富男子帶著他的狗打獵.</TRANSL>
         <TRANSL xml:lang="eng">There was a Kanakanavu male hunting with his dog.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="147.01" end="158.04"/>
+        <AUDIO file="kkvNr-story_pani_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="147.01" end="158.04" />
         <W id="kkvNr-story_pani_S_13_W0">
             <FORM kindOf="original">ni-moon</FORM>
             <PHON kindOf="original">ni-moon</PHON>
@@ -2357,7 +2357,7 @@
                 <TRANSL xml:lang="zho">那裏</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5862068965517242</SCORE></S>
     <S id="kkvNr-story_pani_S_14">
         <FORM kindOf="original">sua nericeni tacau ia 'una kan nipivaru.</FORM>
         <PHON kindOf="original">sua ner~ɾiʦeni taʦau ia ʔuna kan nipivar~ɾu.</PHON>
@@ -2365,7 +2365,7 @@
         <PHON kindOf="standard">sua ner~ɾiʦeni taʦau ia ʔuna kan nipivar~ɾu.</PHON>
         <TRANSL xml:lang="zho">據說他所帶的狗有懷孕的.</TRANSL>
         <TRANSL xml:lang="eng">There were dogs who were having babies.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="158.04" end="166.29"/>
+        <AUDIO file="kkvNr-story_pani_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="158.04" end="166.29" />
         <W id="kkvNr-story_pani_S_14_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -2486,7 +2486,7 @@
                 <TRANSL xml:lang="zho">懷孕</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5822784810126582</SCORE></S>
     <S id="kkvNr-story_pani_S_15">
         <FORM kindOf="original">'una nikamanumanu tacau.</FORM>
         <PHON kindOf="original">ʔuna nikamanumanu taʦau.</PHON>
@@ -2494,7 +2494,7 @@
         <PHON kindOf="standard">ʔuna nikamanumanu taʦau.</PHON>
         <TRANSL xml:lang="zho">有生出小狗的母狗.</TRANSL>
         <TRANSL xml:lang="eng">There were dogs who have given birth.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="166.29" end="174.26"/>
+        <AUDIO file="kkvNr-story_pani_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="166.29" end="174.26" />
         <W id="kkvNr-story_pani_S_15_W0">
             <FORM kindOf="original">'una</FORM>
             <PHON kindOf="original">ʔuna</PHON>
@@ -2567,7 +2567,7 @@
                 <TRANSL xml:lang="zho">狗</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.7083333333333333</SCORE></S>
     <S id="kkvNr-story_pani_S_16">
         <FORM kindOf="original">mia turupangcu nguani aracakanʉ 'inia ia nevici nguani tacau isia isua pue'i na Racʉnga.</FORM>
         <PHON kindOf="original">mia tur~ɾupaŋʦu ŋuani ar~ɾaʦakanɨ ʔinia ia neviʦi ŋuani taʦau isia isua pueʔi na r~ɾaʦɨŋa.</PHON>
@@ -2575,7 +2575,7 @@
         <PHON kindOf="standard">mia tur~ɾupaŋʦu ŋuani ar~ɾaʦakanɨ ʔinia ia neviʦi ŋuani taʦau isia isua pueʔi na r~ɾaʦɨŋa.</PHON>
         <TRANSL xml:lang="zho">他們在那裡結束打獵之後,他們帶著那些狗回到Racʉnga.</TRANSL>
         <TRANSL xml:lang="eng">When they finished their hunting there, they brought those dogs back to Racʉnga.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="174.26" end="185.34"/>
+        <AUDIO file="kkvNr-story_pani_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="174.26" end="185.34" />
         <W id="kkvNr-story_pani_S_16_W0">
             <FORM kindOf="original">mia</FORM>
             <PHON kindOf="original">mia</PHON>
@@ -2808,7 +2808,7 @@
                 <TRANSL xml:lang="zho">地名</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5838509316770186</SCORE></S>
     <S id="kkvNr-story_pani_S_17">
         <FORM kindOf="original">nakai sua nikamanumanu tacau isua ia takacicin mavici tamtitu pue'i na rancurunga.</FORM>
         <PHON kindOf="original">nakai sua nikamanumanu taʦau isua ia takaʦiʦin maviʦi tamtitu pueʔi na r~ɾanʦur~ɾuŋa.</PHON>
@@ -2816,7 +2816,7 @@
         <PHON kindOf="standard">nakai sua nikamanumanu taʦau isua ia takaʦiʦin maviʦi tamtitu pueʔi na r~ɾanʦur~ɾuŋa.</PHON>
         <TRANSL xml:lang="zho">但是那隻生小孩的母狗獨自帶牠的小狗回到Rancurunga.</TRANSL>
         <TRANSL xml:lang="eng">However, the dog mother bought her doggies back to Rancurunga herself.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="185.34" end="198.41"/>
+        <AUDIO file="kkvNr-story_pani_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="185.34" end="198.41" />
         <W id="kkvNr-story_pani_S_17_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -3041,7 +3041,7 @@
                 <TRANSL xml:lang="zho">地名</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6666666666666667</SCORE></S>
     <S id="kkvNr-story_pani_S_18">
         <FORM kindOf="original">makasua kani popue'i manasʉ 'una makauturu.</FORM>
         <PHON kindOf="original">makasua kani popueʔi manasɨ ʔuna makautur~ɾu.</PHON>
@@ -3049,7 +3049,7 @@
         <PHON kindOf="standard">makasua kani popueʔi manasɨ ʔuna makautur~ɾu.</PHON>
         <TRANSL xml:lang="zho">據說那樣來來回回有三次</TRANSL>
         <TRANSL xml:lang="eng">It is said that the dog came and went like that for three times.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="198.41" end="205.86"/>
+        <AUDIO file="kkvNr-story_pani_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="198.41" end="205.86" />
         <W id="kkvNr-story_pani_S_18_W0">
             <FORM kindOf="original">makasua</FORM>
             <PHON kindOf="original">makasua</PHON>
@@ -3170,7 +3170,7 @@
                 <TRANSL xml:lang="zho">三次</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6896551724137931</SCORE></S>
     <S id="kkvNr-story_pani_S_19">
         <FORM kindOf="original">pacʉpʉcʉpʉngʉcu mamarang Kanakanavu 'unakara vanai neni popue'i sua ah tacau umavici tam tamtituin puei'i na rancurunga.</FORM>
         <PHON kindOf="original">paʦɨpɨʦɨpɨŋɨʦu mamar~ɾaŋ kanakanavu ʔunakar~ɾa vanai neni popueʔi sua ah taʦau umaviʦi tam tamtituin pueiʔi na r~ɾanʦur~ɾuŋa.</PHON>
@@ -3178,7 +3178,7 @@
         <PHON kindOf="standard">paʦɨpɨʦɨpɨŋɨʦu mamar~ɾaŋ kanakanavu ʔunakar~ɾa vanai neni popueʔi sua ah taʦau umaviʦi tam tamtituin pueiʔi na r~ɾanʦur~ɾuŋa.</PHON>
         <TRANSL xml:lang="zho">當時卡族的老人家就想著狗狗那樣來來回回究竟有什麼原因.</TRANSL>
         <TRANSL xml:lang="eng">The Kankanavu elders thought why the dog kept bringing her doggies to Rancurung and back again.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="205.86" end="222.23"/>
+        <AUDIO file="kkvNr-story_pani_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="205.86" end="222.23" />
         <W id="kkvNr-story_pani_S_19_W0">
             <FORM kindOf="original">pa&lt;cʉpʉ&gt;cʉpʉngʉ=cu</FORM>
             <PHON kindOf="original">pa&lt;ʦɨpɨ&gt;ʦɨpɨŋɨ=ʦu</PHON>
@@ -3491,7 +3491,7 @@
                 <TRANSL xml:lang="zho">地名</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5752212389380531</SCORE></S>
     <S id="kkvNr-story_pani_S_20">
         <FORM kindOf="original">makasuacu kan eh ʉncoo mamarang Kanakanavu manasʉ 'e tumatutuuru tikana tekita aravari 'inia.</FORM>
         <PHON kindOf="original">makasuaʦu kan eh ɨnʦoo mamar~ɾaŋ kanakanavu manasɨ ʔe tumatutuur~ɾu tikana tekita ar~ɾavar~ɾi ʔinia.</PHON>
@@ -3499,7 +3499,7 @@
         <PHON kindOf="standard">makasuaʦu kan eh ɨnʦoo mamar~ɾaŋ kanakanavu manasɨ ʔe tumatutuur~ɾu tikana tekita ar~ɾavar~ɾi ʔinia.</PHON>
         <TRANSL xml:lang="zho">因此,當時卡那卡那富老人家就想著或許狗狗是在告訴他們,他們該搬家了.</TRANSL>
         <TRANSL xml:lang="eng" notes="Therefore, elders at that time thought perhaps (those dogs) were telling them that they should move.">Therefore, elders at that time thought perhaps were telling them that they should move.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="222.23" end="232.15"/>
+        <AUDIO file="kkvNr-story_pani_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="222.23" end="232.15" />
         <W id="kkvNr-story_pani_S_20_W0">
             <FORM kindOf="original">makasua=cu</FORM>
             <PHON kindOf="original">makasua=ʦu</PHON>
@@ -3748,7 +3748,7 @@
                 <TRANSL xml:lang="zho">那裏</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5952380952380952</SCORE></S>
     <S id="kkvNr-story_pani_S_21">
         <FORM kindOf="original">makasuacu kani 'unacu ah upeni kani ah tanasa sasarunai mavici tacau mokusa Rancurunga nia nimon 'inia cumacʉvʉrʉ.</FORM>
         <PHON kindOf="original">makasuaʦu kani ʔunaʦu ah upeni kani ah tanasa sasar~ɾunai maviʦi taʦau mokusa r~ɾanʦur~ɾuŋa nia nimon ʔinia ʦumaʦɨvɨr~ɾɨ.</PHON>
@@ -3756,7 +3756,7 @@
         <PHON kindOf="standard">makasuaʦu kani ʔunaʦu ah upeni kani ah tanasa sasar~ɾunai maviʦi taʦau mokusa r~ɾanʦur~ɾuŋa nia nimon ʔinia ʦumaʦɨvɨr~ɾɨ.</PHON>
         <TRANSL xml:lang="zho">之後,就有不知道幾位卡族男士帶著狗搬到Rancurunga的地方定居.</TRANSL>
         <TRANSL xml:lang="eng">Afterwards, many Kanakanavu males moved Rancurunga with their dogs to live there.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="232.15" end="246.68"/>
+        <AUDIO file="kkvNr-story_pani_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="232.15" end="246.68" />
         <W id="kkvNr-story_pani_S_21_W0">
             <FORM kindOf="original">makasua=cu</FORM>
             <PHON kindOf="original">makasua=ʦu</PHON>
@@ -4085,7 +4085,7 @@
                 <TRANSL xml:lang="zho">生長</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5957446808510638</SCORE></S>
     <S id="kkvNr-story_pani_S_22">
         <FORM kindOf="original">nakai pacʉpʉcʉpʉng 'akia nannakʉ uh 'inia ah ka'an mamanʉng siacʉvʉrʉ.</FORM>
         <PHON kindOf="original">nakai paʦɨpɨʦɨpɨŋ ʔakia nannakɨ uh ʔinia ah kaʔan mamanɨŋ siaʦɨvɨr~ɾɨ.</PHON>
@@ -4093,7 +4093,7 @@
         <PHON kindOf="standard">nakai paʦɨpɨʦɨpɨŋ ʔakia nannakɨ uh ʔinia ah kaʔan mamanɨŋ siaʦɨvɨr~ɾɨ.</PHON>
         <TRANSL xml:lang="zho">但是又想沒有女人在那裡生活很不方便.</TRANSL>
         <TRANSL xml:lang="eng">However, they thought without females, they could not have good lives there.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="246.68" end="254.44"/>
+        <AUDIO file="kkvNr-story_pani_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="246.68" end="254.44" />
         <W id="kkvNr-story_pani_S_22_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -4278,7 +4278,7 @@
                 <TRANSL xml:lang="zho">生長</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.48062015503875966</SCORE></S>
     <S id="kkvNr-story_pani_S_23">
         <FORM kindOf="original">imo pui'i na racurunga umavici nanakʉin mamanu moncu 'inia cumacʉvʉrʉ mumʉkʉ ka'um'uma 'inia.</FORM>
         <PHON kindOf="original">imo puiʔi na r~ɾaʦur~ɾuŋa umaviʦi nanakɨin mamanu monʦu ʔinia ʦumaʦɨvɨr~ɾɨ mumɨkɨ kaʔumʔuma ʔinia.</PHON>
@@ -4286,7 +4286,7 @@
         <PHON kindOf="standard">imo puiʔi na r~ɾaʦur~ɾuŋa umaviʦi nanakɨin mamanu monʦu ʔinia ʦumaʦɨvɨr~ɾɨ mumɨkɨ kaʔumʔuma ʔinia.</PHON>
         <TRANSL xml:lang="zho">所以,他們回到nacʉnga要帶他們的女人和小孩到Racurunga那裏生活、墾地、種田.</TRANSL>
         <TRANSL xml:lang="eng">SO, they returned to nacʉnga to bring their women and children to Rancurunga to live and farm there.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="254.44" end="269.74"/>
+        <AUDIO file="kkvNr-story_pani_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="254.44" end="269.74" />
         <W id="kkvNr-story_pani_S_23_W0">
             <FORM kindOf="original">imo</FORM>
             <PHON kindOf="original">imo</PHON>
@@ -4543,7 +4543,7 @@
                 <TRANSL xml:lang="zho">那裏</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5604395604395604</SCORE></S>
     <S id="kkvNr-story_pani_S_24">
         <FORM kindOf="original">cumacʉ'ʉra cucumen kanakanavu makai mamanʉng aravari 'inia.</FORM>
         <PHON kindOf="original">ʦumaʦɨʔɨr~ɾa ʦuʦumen kanakanavu makai mamanɨŋ ar~ɾavar~ɾi ʔinia.</PHON>
@@ -4551,7 +4551,7 @@
         <PHON kindOf="standard">ʦumaʦɨʔɨr~ɾa ʦuʦumen kanakanavu makai mamanɨŋ ar~ɾavar~ɾi ʔinia.</PHON>
         <TRANSL xml:lang="zho">其他卡族人看到搬到那裡好像蠻好的.</TRANSL>
         <TRANSL xml:lang="eng">Other Kanakanavu saw it looked good to move there.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="269.74" end="276.61"/>
+        <AUDIO file="kkvNr-story_pani_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="269.74" end="276.61" />
         <W id="kkvNr-story_pani_S_24_W0">
             <FORM kindOf="original">c&lt;um&gt;acʉ'ʉra</FORM>
             <PHON kindOf="original">ʦ&lt;um&gt;aʦɨʔɨr~ɾa</PHON>
@@ -4576,10 +4576,10 @@
                 <TRANSL xml:lang="zho">Ca重疊</TRANSL>
             </M>
             <M id="kkvNr-story_pani_S_24_W0M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">see</TRANSL>
                 <TRANSL xml:lang="zho">看</TRANSL>
             </M>
@@ -4688,7 +4688,7 @@
                 <TRANSL xml:lang="zho">那裏</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4873949579831933</SCORE></S>
     <S id="kkvNr-story_pani_S_25">
         <FORM kindOf="original">makasuacu kangvang.</FORM>
         <PHON kindOf="original">makasuaʦu kaŋvaŋ.</PHON>
@@ -4696,7 +4696,7 @@
         <PHON kindOf="standard">makasuaʦu kaŋvaŋ.</PHON>
         <TRANSL xml:lang="zho">也都那樣.</TRANSL>
         <TRANSL xml:lang="eng">They also did that.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="276.61" end="278.14"/>
+        <AUDIO file="kkvNr-story_pani_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="276.61" end="278.14" />
         <W id="kkvNr-story_pani_S_25_W0">
             <FORM kindOf="original">makasua=cu</FORM>
             <PHON kindOf="original">makasua=ʦu</PHON>
@@ -4737,7 +4737,7 @@
                 <TRANSL xml:lang="zho">也</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6153846153846154</SCORE></S>
     <S id="kkvNr-story_pani_S_26">
         <FORM kindOf="original">moca kangvang 'inia.</FORM>
         <PHON kindOf="original">moʦa kaŋvaŋ ʔinia.</PHON>
@@ -4745,7 +4745,7 @@
         <PHON kindOf="standard">moʦa kaŋvaŋ ʔinia.</PHON>
         <TRANSL xml:lang="zho">也都搬去那裡.</TRANSL>
         <TRANSL xml:lang="eng">They also moved to that place.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="278.14" end="280.05"/>
+        <AUDIO file="kkvNr-story_pani_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="278.14" end="280.05" />
         <W id="kkvNr-story_pani_S_26_W0">
             <FORM kindOf="original">moca</FORM>
             <PHON kindOf="original">moʦa</PHON>
@@ -4794,7 +4794,7 @@
                 <TRANSL xml:lang="zho">那裏</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5882352941176471</SCORE></S>
     <S id="kkvNr-story_pani_S_27">
         <FORM kindOf="original">moncu na Rancurunga 'inia.</FORM>
         <PHON kindOf="original">monʦu na r~ɾanʦur~ɾuŋa ʔinia.</PHON>
@@ -4802,7 +4802,7 @@
         <PHON kindOf="standard">monʦu na r~ɾanʦur~ɾuŋa ʔinia.</PHON>
         <TRANSL xml:lang="zho">就在Rancurunga那個地方.</TRANSL>
         <TRANSL xml:lang="eng">They lived in Rangurunga.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="280.05" end="281.98"/>
+        <AUDIO file="kkvNr-story_pani_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="280.05" end="281.98" />
         <W id="kkvNr-story_pani_S_27_W0">
             <FORM kindOf="original">mon=cu</FORM>
             <PHON kindOf="original">mon=ʦu</PHON>
@@ -4875,7 +4875,7 @@
                 <TRANSL xml:lang="zho">那裏</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6666666666666667</SCORE></S>
     <S id="kkvNr-story_pani_S_28">
         <FORM kindOf="original">ka'umo'uma mon 'inia.</FORM>
         <PHON kindOf="original">kaʔumoʔuma mon ʔinia.</PHON>
@@ -4883,7 +4883,7 @@
         <PHON kindOf="standard">kaʔumoʔuma mon ʔinia.</PHON>
         <TRANSL xml:lang="zho">那裡開墾田園.</TRANSL>
         <TRANSL xml:lang="eng">They farmed that place.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="281.98" end="283.76"/>
+        <AUDIO file="kkvNr-story_pani_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="281.98" end="283.76" />
         <W id="kkvNr-story_pani_S_28_W0">
             <FORM kindOf="original">ka-'umo'uma</FORM>
             <PHON kindOf="original">ka-ʔumoʔuma</PHON>
@@ -4940,7 +4940,7 @@
                 <TRANSL xml:lang="zho">那裏</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5882352941176471</SCORE></S>
     <S id="kkvNr-story_pani_S_29">
         <FORM kindOf="original">katatanasa.</FORM>
         <PHON kindOf="original">katatanasa.</PHON>
@@ -4948,7 +4948,7 @@
         <PHON kindOf="standard">katatanasa.</PHON>
         <TRANSL xml:lang="zho">蓋房子.</TRANSL>
         <TRANSL xml:lang="eng">They built houses.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="283.76" end="285.25"/>
+        <AUDIO file="kkvNr-story_pani_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="283.76" end="285.25" />
         <W id="kkvNr-story_pani_S_29_W0">
             <FORM kindOf="original">ka-ta-tanasa</FORM>
             <PHON kindOf="original">ka-ta-tanasa</PHON>
@@ -4981,7 +4981,7 @@
                 <TRANSL xml:lang="zho">房子.主焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6</SCORE></S>
     <S id="kkvNr-story_pani_S_30">
         <FORM kindOf="original">mon 'inia macasU taniara.</FORM>
         <PHON kindOf="original">mon ʔinia maʦasu taniar~ɾa.</PHON>
@@ -4989,7 +4989,7 @@
         <PHON kindOf="standard">mon ʔinia maʦasu taniar~ɾa.</PHON>
         <TRANSL xml:lang="zho">他們在那邊待得很久.</TRANSL>
         <TRANSL xml:lang="eng">They had lived there for a long time.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="285.25" end="287.86"/>
+        <AUDIO file="kkvNr-story_pani_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="285.25" end="287.86" />
         <W id="kkvNr-story_pani_S_30_W0">
             <FORM kindOf="original">mon</FORM>
             <PHON kindOf="original">mon</PHON>
@@ -5054,7 +5054,7 @@
                 <TRANSL xml:lang="zho">日子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5490196078431373</SCORE></S>
     <S id="kkvNr-story_pani_S_31">
         <FORM kindOf="original">isi ia tinimana ʉncoo miana ikita kan kanakanavu ia nimon na rancʉrʉnga aravari na rancurunga 'inia.</FORM>
         <PHON kindOf="original">isi ia tinimana ɨnʦoo miana ikita kan kanakanavu ia nimon na r~ɾanʦɨr~ɾɨŋa ar~ɾavar~ɾi na r~ɾanʦur~ɾuŋa ʔinia.</PHON>
@@ -5118,10 +5118,10 @@
                 <TRANSL xml:lang="zho">聽</TRANSL>
             </M>
             <M id="kkvNr-story_pani_S_31_W2M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">1SG.GEN</TRANSL>
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
@@ -5350,7 +5350,7 @@
         <PHON kindOf="standard">nakai mia ar~ɾatatiaʦuku manasɨ masɨpatɨnɨʦu ʦenana ʔuna kanakanavu ʦau kanakanavu makasi miana kani kanakanavu ia nimon na tainan anpiŋ kisɨɨn masini niar~ɾakukun kan ɨnʦoo.</PHON>
         <TRANSL xml:lang="zho">但是當我長大之後,大約到了四十歲,有卡族人說以前卡族人曾經住在台南,現在叫做安平的地方,和平埔族一起生活.</TRANSL>
         <TRANSL xml:lang="eng">However, when I grew up, at about forty years old, I heard some Kanakanavu said once Kanakanavu lived with Pingpu tribes at An-Ping, Tainan.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="300.55" end="325.3"/>
+        <AUDIO file="kkvNr-story_pani_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="300.55" end="325.3" />
         <W id="kkvNr-story_pani_S_32_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -5799,7 +5799,7 @@
                 <TRANSL xml:lang="zho">平埔族</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5824175824175823</SCORE></S>
     <S id="kkvNr-story_pani_S_33">
         <FORM kindOf="original">maica na heto makasuacu mocacaca pui'i makasi na Nansi Meinon Cisan.</FORM>
         <PHON kindOf="original">maiʦa na heto makasuaʦu moʦaʦaʦa puiʔi makasi na nansi meinon ʦisan.</PHON>
@@ -5807,7 +5807,7 @@
         <PHON kindOf="standard">maiʦa na heto makasuaʦu moʦaʦaʦa puiʔi makasi na nansi meinon ʦisan.</PHON>
         <TRANSL xml:lang="zho">他們經過屏東,東那樣來來回回地走著往楠西、美濃、旗山的方向移動.</TRANSL>
         <TRANSL xml:lang="eng">They passed by Pingtong, going back and forth to the direction of Nanxi, Meinong, and Qishan.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="325.3" end="336.47"/>
+        <AUDIO file="kkvNr-story_pani_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="325.3" end="336.47" />
         <W id="kkvNr-story_pani_S_33_W0">
             <FORM kindOf="original">maica</FORM>
             <PHON kindOf="original">maiʦa</PHON>
@@ -5900,16 +5900,16 @@
                 <PHON kindOf="original">ʦaʦa</PHON>
                 <FORM kindOf="standard">caca</FORM>
                 <PHON kindOf="standard">ʦaʦa</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr-story_pani_S_33_W4M3">
                 <FORM kindOf="original">ca</FORM>
                 <PHON kindOf="original">ʦa</PHON>
                 <FORM kindOf="standard">ca</FORM>
                 <PHON kindOf="standard">ʦa</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr-story_pani_S_33_W5">
@@ -6008,7 +6008,7 @@
                 <TRANSL xml:lang="zho">PN</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6060606060606061</SCORE></S>
     <S id="kkvNr-story_pani_S_34">
         <FORM kindOf="original">mia 'esi na meinon mararuai kani cau.</FORM>
         <PHON kindOf="original">mia ʔesi na meinon mar~ɾar~ɾuai kani ʦau.</PHON>
@@ -6016,7 +6016,7 @@
         <PHON kindOf="standard">mia ʔesi na meinon mar~ɾar~ɾuai kani ʦau.</PHON>
         <TRANSL xml:lang="zho">當在美濃的時候,人們分道揚鑣.</TRANSL>
         <TRANSL xml:lang="eng">They went separate ways when they were in Meinong.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="336.47" end="346.21"/>
+        <AUDIO file="kkvNr-story_pani_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="336.47" end="346.21" />
         <W id="kkvNr-story_pani_S_34_W0">
             <FORM kindOf="original">mia</FORM>
             <PHON kindOf="original">mia</PHON>
@@ -6129,7 +6129,7 @@
                 <TRANSL xml:lang="zho">人</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5352112676056338</SCORE></S>
     <S id="kkvNr-story_pani_S_35">
         <FORM kindOf="original">sua 'una kani cau mutʉkʉtʉkʉ mokusa Uncoo meinon mokusa na riukue mokusa na masini tauien.</FORM>
         <PHON kindOf="original">sua ʔuna kani ʦau mutɨkɨtɨkɨ mokusa unʦoo meinon mokusa na r~ɾiukue mokusa na masini tauien.</PHON>
@@ -6137,7 +6137,7 @@
         <PHON kindOf="standard">sua ʔuna kani ʦau mutɨkɨtɨkɨ mokusa unʦoo meinon mokusa na r~ɾiukue mokusa na masini tauien.</PHON>
         <TRANSL xml:lang="zho">據說有的人直走去美濃,去六龜,去桃源.</TRANSL>
         <TRANSL xml:lang="eng">It is said that some people walked to Meinong, Liugue, and Tauyuen directly.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="346.21" end="360.03"/>
+        <AUDIO file="kkvNr-story_pani_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="346.21" end="360.03" />
         <W id="kkvNr-story_pani_S_35_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -6378,7 +6378,7 @@
                 <TRANSL xml:lang="zho">桃源</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5644171779141105</SCORE></S>
     <S id="kkvNr-story_pani_S_36">
         <FORM kindOf="original">'unacu kari makasi sua nguani kani ia nguai sua masini ra'arua misee.</FORM>
         <PHON kindOf="original">ʔunaʦu kar~ɾi makasi sua ŋuani kani ia ŋuai sua masini r~ɾaʔar~ɾua misee.</PHON>
@@ -6386,7 +6386,7 @@
         <PHON kindOf="standard">ʔunaʦu kar~ɾi makasi sua ŋuani kani ia ŋuai sua masini r~ɾaʔar~ɾua misee.</PHON>
         <TRANSL xml:lang="zho">就有這麼一說,他們就是現在的拉阿魯哇族.</TRANSL>
         <TRANSL xml:lang="eng">There is a word saying that they are Ra'arua that we know now.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="360.03" end="367.38"/>
+        <AUDIO file="kkvNr-story_pani_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="360.03" end="367.38" />
         <W id="kkvNr-story_pani_S_36_W0">
             <FORM kindOf="original">'una=cu</FORM>
             <PHON kindOf="original">ʔuna=ʦu</PHON>
@@ -6587,7 +6587,7 @@
                 <TRANSL xml:lang="zho">說</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6115702479338843</SCORE></S>
     <S id="kkvNr-story_pani_S_37">
         <FORM kindOf="original">'una kani cau cucumeni mon na cisan mararuai maica na namasia mokusa na masini to'onamita.</FORM>
         <PHON kindOf="original">ʔuna kani ʦau ʦuʦumeni mon na ʦisan mar~ɾar~ɾuai maiʦa na namasia mokusa na masini toʔonamita.</PHON>
@@ -6595,7 +6595,7 @@
         <PHON kindOf="standard">ʔuna kani ʦau ʦuʦumeni mon na ʦisan mar~ɾar~ɾuai maiʦa na namasia mokusa na masini toʔonamita.</PHON>
         <TRANSL xml:lang="zho">據說還有其他的人在旗山分道走了,經過那瑪夏,到達現在我們的地方.</TRANSL>
         <TRANSL xml:lang="eng">It is also said that some other people chose another way to go, passing Namasia to where we are living now.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="367.38" end="379.73"/>
+        <AUDIO file="kkvNr-story_pani_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="367.38" end="379.73" />
         <W id="kkvNr-story_pani_S_37_W0">
             <FORM kindOf="original">'una</FORM>
             <PHON kindOf="original">ʔuna</PHON>
@@ -6844,7 +6844,7 @@
                 <TRANSL xml:lang="zho">1PL.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6585365853658536</SCORE></S>
     <S id="kkvNr-story_pani_S_38">
         <FORM kindOf="original">sua isua kani ia nguai sua ikita kanakanavu.</FORM>
         <PHON kindOf="original">sua isua kani ia ŋuai sua ikita kanakanavu.</PHON>
@@ -6852,7 +6852,7 @@
         <PHON kindOf="standard">sua isua kani ia ŋuai sua ikita kanakanavu.</PHON>
         <TRANSL xml:lang="zho">那些也就是我們卡那卡那富族人.</TRANSL>
         <TRANSL xml:lang="eng">Those people are we Kanakanavu.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="379.73" end="383.87"/>
+        <AUDIO file="kkvNr-story_pani_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="379.73" end="383.87" />
         <W id="kkvNr-story_pani_S_38_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -6981,7 +6981,7 @@
                 <TRANSL xml:lang="zho">PN</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6923076923076923</SCORE></S>
     <S id="kkvNr-story_pani_S_39">
         <FORM kindOf="original">makasua tinimanamaku.</FORM>
         <PHON kindOf="original">makasua tinimanamaku.</PHON>
@@ -6989,7 +6989,7 @@
         <PHON kindOf="standard">makasua tinimanamaku.</PHON>
         <TRANSL xml:lang="zho">我所聽到的是那樣.</TRANSL>
         <TRANSL xml:lang="eng">What I've heard is like that.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="383.87" end="386.37"/>
+        <AUDIO file="kkvNr-story_pani_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="383.87" end="386.37" />
         <W id="kkvNr-story_pani_S_39_W0">
             <FORM kindOf="original">makasua</FORM>
             <PHON kindOf="original">makasua</PHON>
@@ -7030,7 +7030,7 @@
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6666666666666667</SCORE></S>
     <S id="kkvNr-story_pani_S_40">
         <FORM kindOf="original">nimon kim nimon na nimon kan kanakanavu 'inia macasU taniara.</FORM>
         <PHON kindOf="original">nimon kim nimon na nimon kan kanakanavu ʔinia maʦasu taniar~ɾa.</PHON>
@@ -7038,7 +7038,7 @@
         <PHON kindOf="standard">nimon kim nimon na nimon kan kanakanavu ʔinia maʦasu taniar~ɾa.</PHON>
         <TRANSL xml:lang="zho">據說我們卡族人待在那裡很長的日子.</TRANSL>
         <TRANSL xml:lang="eng">It is said that we Kanakanavu had stayed there for a very long time.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="386.37" end="392.78"/>
+        <AUDIO file="kkvNr-story_pani_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="386.37" end="392.78" />
         <W id="kkvNr-story_pani_S_40_W0">
             <FORM kindOf="original">nimon</FORM>
             <PHON kindOf="original">nimon</PHON>
@@ -7207,7 +7207,7 @@
                 <TRANSL xml:lang="zho">日子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6610169491525424</SCORE></S>
     <S id="kkvNr-story_pani_S_41">
         <FORM kindOf="original">'una kanicu niatuumura canumu.</FORM>
         <PHON kindOf="original">ʔuna kaniʦu niatuumur~ɾa ʦanumu.</PHON>
@@ -7215,7 +7215,7 @@
         <PHON kindOf="standard">ʔuna kaniʦu niatuumur~ɾa ʦanumu.</PHON>
         <TRANSL xml:lang="zho">據說有滿出來的水.</TRANSL>
         <TRANSL xml:lang="eng">It is also said there was overflowing water.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="392.78" end="398.08"/>
+        <AUDIO file="kkvNr-story_pani_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="392.78" end="398.08" />
         <W id="kkvNr-story_pani_S_41_W0">
             <FORM kindOf="original">'una</FORM>
             <PHON kindOf="original">ʔuna</PHON>
@@ -7304,7 +7304,7 @@
                 <TRANSL xml:lang="zho">水</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5142857142857142</SCORE></S>
     <S id="kkvNr-story_pani_S_42">
         <FORM kindOf="original">'una kani vʉrʉnga.</FORM>
         <PHON kindOf="original">ʔuna kani vɨr~ɾɨŋa.</PHON>
@@ -7312,7 +7312,7 @@
         <PHON kindOf="standard">ʔuna kani vɨr~ɾɨŋa.</PHON>
         <TRANSL xml:lang="zho">據說有鰻魚.</TRANSL>
         <TRANSL xml:lang="eng">And, an eel.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="398.08" end="400.13"/>
+        <AUDIO file="kkvNr-story_pani_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="398.08" end="400.13" />
         <W id="kkvNr-story_pani_S_42_W0">
             <FORM kindOf="original">'una</FORM>
             <PHON kindOf="original">ʔuna</PHON>
@@ -7361,7 +7361,7 @@
                 <TRANSL xml:lang="zho">鰻魚</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5454545454545454</SCORE></S>
     <S id="kkvNr-story_pani_S_43">
         <FORM kindOf="original">nimon kan na canumu isua tʉpʉnkee canumu.</FORM>
         <PHON kindOf="original">nimon kan na ʦanumu isua tɨpɨnkee ʦanumu.</PHON>
@@ -7369,7 +7369,7 @@
         <PHON kindOf="standard">nimon kan na ʦanumu isua tɨpɨnkee ʦanumu.</PHON>
         <TRANSL xml:lang="zho">據說他在水中堵住了水流.</TRANSL>
         <TRANSL xml:lang="eng">It is said that it stuck the water.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="400.13" end="408.9"/>
+        <AUDIO file="kkvNr-story_pani_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="400.13" end="408.9" />
         <W id="kkvNr-story_pani_S_43_W0">
             <FORM kindOf="original">ni-mon</FORM>
             <PHON kindOf="original">ni-mon</PHON>
@@ -7506,7 +7506,7 @@
                 <TRANSL xml:lang="zho">水</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5882352941176471</SCORE></S>
     <S id="kkvNr-story_pani_S_44">
         <FORM kindOf="original">ara'itumuru canumu.</FORM>
         <PHON kindOf="original">ar~ɾaʔitumur~ɾu ʦanumu.</PHON>
@@ -7514,7 +7514,7 @@
         <PHON kindOf="standard">ar~ɾaʔitumur~ɾu ʦanumu.</PHON>
         <TRANSL xml:lang="zho">水變多了.</TRANSL>
         <TRANSL xml:lang="eng">The water became much more.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="408.9" end="410.59"/>
+        <AUDIO file="kkvNr-story_pani_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="408.9" end="410.59" />
         <W id="kkvNr-story_pani_S_44_W0">
             <FORM kindOf="original">ara-'itumuru</FORM>
             <PHON kindOf="original">ar~ɾa-ʔitumur~ɾu</PHON>
@@ -7555,7 +7555,7 @@
                 <TRANSL xml:lang="zho">水</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5</SCORE></S>
     <S id="kkvNr-story_pani_S_45">
         <FORM kindOf="original">nipunarU kan kangvang Unco kanakanavu tamna 'umo'uma tanasa.</FORM>
         <PHON kindOf="original">nipunar~ɾu kan kaŋvaŋ unʦo kanakanavu tamna ʔumoʔuma tanasa.</PHON>
@@ -7563,7 +7563,7 @@
         <PHON kindOf="standard">nipunar~ɾu kan kaŋvaŋ unʦo kanakanavu tamna ʔumoʔuma tanasa.</PHON>
         <TRANSL xml:lang="zho">卡族的耕地以及家都被沖走.</TRANSL>
         <TRANSL xml:lang="eng">All the fields and houses of Kanakanavu are washed away.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="410.59" end="417.62"/>
+        <AUDIO file="kkvNr-story_pani_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="410.59" end="417.62" />
         <W id="kkvNr-story_pani_S_45_W0">
             <FORM kindOf="original">nipunarU</FORM>
             <PHON kindOf="original">nipunar~ɾu</PHON>
@@ -7692,7 +7692,7 @@
                 <TRANSL xml:lang="zho">家屋</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5932203389830508</SCORE></S>
     <S id="kkvNr-story_pani_S_46">
         <FORM kindOf="original">imua manguru kanakanavu mokusa tʉnʉkai ʉnco cimʉrʉ.</FORM>
         <PHON kindOf="original">imua maŋur~ɾu kanakanavu mokusa tɨnɨkai ɨnʦo ʦimɨr~ɾɨ.</PHON>
@@ -7700,7 +7700,7 @@
         <PHON kindOf="standard">imua maŋur~ɾu kanakanavu mokusa tɨnɨkai ɨnʦo ʦimɨr~ɾɨ.</PHON>
         <TRANSL xml:lang="zho">所以卡族人逃到山頂去.</TRANSL>
         <TRANSL xml:lang="eng">Therefore, Kanakanavu escaped their homes to the top of mountains.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="417.62" end="422.92"/>
+        <AUDIO file="kkvNr-story_pani_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="417.62" end="422.92" />
         <W id="kkvNr-story_pani_S_46_W0">
             <FORM kindOf="original">imua</FORM>
             <PHON kindOf="original">imua</PHON>
@@ -7813,7 +7813,7 @@
                 <TRANSL xml:lang="zho">山</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5684210526315789</SCORE></S>
     <S id="kkvNr-story_pani_S_47">
         <FORM kindOf="original">mesua kan ia 'akia kan apuru.</FORM>
         <PHON kindOf="original">mesua kan ia ʔakia kan apur~ɾu.</PHON>
@@ -7821,7 +7821,7 @@
         <PHON kindOf="standard">mesua kan ia ʔakia kan apur~ɾu.</PHON>
         <TRANSL xml:lang="zho">據說那個時候沒有火.</TRANSL>
         <TRANSL xml:lang="eng">At that time, there was no fire.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="422.92" end="427.39"/>
+        <AUDIO file="kkvNr-story_pani_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="422.92" end="427.39" />
         <W id="kkvNr-story_pani_S_47_W0">
             <FORM kindOf="original">mesua</FORM>
             <PHON kindOf="original">mesua</PHON>
@@ -7918,7 +7918,7 @@
                 <TRANSL xml:lang="zho">火</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6551724137931034</SCORE></S>
     <S id="kkvNr-story_pani_S_48">
         <FORM kindOf="original">nakai cumacʉ'ʉra cimʉrʉ cucumen na Tanʉ'ʉcʉ kan.</FORM>
         <PHON kindOf="original">nakai ʦumaʦɨʔɨr~ɾa ʦimɨr~ɾɨ ʦuʦumen na tanɨʔɨʦɨ kan.</PHON>
@@ -7926,7 +7926,7 @@
         <PHON kindOf="standard">nakai ʦumaʦɨʔɨr~ɾa ʦimɨr~ɾɨ ʦuʦumen na tanɨʔɨʦɨ kan.</PHON>
         <TRANSL xml:lang="zho">據說看到在Tanʉ'ʉcʉ的山.</TRANSL>
         <TRANSL xml:lang="eng">But, they saw another mountain in Tanʉ'ʉcʉ.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="427.39" end="434.33"/>
+        <AUDIO file="kkvNr-story_pani_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="427.39" end="434.33" />
         <W id="kkvNr-story_pani_S_48_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -8039,7 +8039,7 @@
                 <TRANSL xml:lang="zho">PN</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3711340206185567</SCORE></S>
     <S id="kkvNr-story_pani_S_49">
         <FORM kindOf="original">'una kan apuru.</FORM>
         <PHON kindOf="original">ʔuna kan apur~ɾu.</PHON>
@@ -8047,7 +8047,7 @@
         <PHON kindOf="standard">ʔuna kan apur~ɾu.</PHON>
         <TRANSL xml:lang="zho">據說有火.</TRANSL>
         <TRANSL xml:lang="eng">It is said that there had fire.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="434.33" end="435.81"/>
+        <AUDIO file="kkvNr-story_pani_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="434.33" end="435.81" />
         <W id="kkvNr-story_pani_S_49_W0">
             <FORM kindOf="original">'una</FORM>
             <PHON kindOf="original">ʔuna</PHON>
@@ -8096,7 +8096,7 @@
                 <TRANSL xml:lang="zho">火</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.64</SCORE></S>
     <S id="kkvNr-story_pani_S_50">
         <FORM kindOf="original">mesuakan ia cau mataa marukurakurapʉ ia tavarʉ'ʉ apakarikari akanangkan kari.</FORM>
         <PHON kindOf="original">mesuakan ia ʦau mataa mar~ɾukur~ɾakur~ɾapɨ ia tavar~ɾɨʔɨ apakar~ɾikar~ɾi akanaŋkan kar~ɾi.</PHON>
@@ -8104,7 +8104,7 @@
         <PHON kindOf="standard">mesuakan ia ʦau mataa mar~ɾukur~ɾakur~ɾapɨ ia tavar~ɾɨʔɨ apakar~ɾikar~ɾi akanaŋkan kar~ɾi.</PHON>
         <TRANSL xml:lang="zho">在那個時候,據說人類和動物可以互相溝通,聽得懂話.</TRANSL>
         <TRANSL xml:lang="eng">It is said that, at that time, people and animals can understand and communicate with each other.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S50.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="435.81" end="447.16"/>
+        <AUDIO file="kkvNr-story_pani_S50.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="435.81" end="447.16" />
         <W id="kkvNr-story_pani_S_50_W0">
             <FORM kindOf="original">mesua=kan</FORM>
             <PHON kindOf="original">mesua=kan</PHON>
@@ -8293,8 +8293,8 @@
                 <PHON kindOf="original">kan</PHON>
                 <FORM kindOf="standard">kan</FORM>
                 <PHON kindOf="standard">kan</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr-story_pani_S_50_W9">
@@ -8313,7 +8313,7 @@
                 <TRANSL xml:lang="zho">KAN</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5521472392638036</SCORE></S>
     <S id="kkvNr-story_pani_S_51">
         <FORM kindOf="original">'una kan to'urung.</FORM>
         <PHON kindOf="original">ʔuna kan toʔur~ɾuŋ.</PHON>
@@ -8321,7 +8321,7 @@
         <PHON kindOf="standard">ʔuna kan toʔur~ɾuŋ.</PHON>
         <TRANSL xml:lang="zho">有一隻山羌.</TRANSL>
         <TRANSL xml:lang="eng">There was a muntjac.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S51.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="447.16" end="450.2"/>
+        <AUDIO file="kkvNr-story_pani_S51.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="447.16" end="450.2" />
         <W id="kkvNr-story_pani_S_51_W0">
             <FORM kindOf="original">'una</FORM>
             <PHON kindOf="original">ʔuna</PHON>
@@ -8370,7 +8370,7 @@
                 <TRANSL xml:lang="zho">山羌</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5714285714285714</SCORE></S>
     <S id="kkvNr-story_pani_S_52">
         <FORM kindOf="original">makasi sua tia iku mokusa 'inia mokusa tana'ʉcʉ 'inia umara 'apuru misee.</FORM>
         <PHON kindOf="original">makasi sua tia iku mokusa ʔinia mokusa tanaʔɨʦɨ ʔinia umar~ɾa ʔapur~ɾu misee.</PHON>
@@ -8378,7 +8378,7 @@
         <PHON kindOf="standard">makasi sua tia iku mokusa ʔinia mokusa tanaʔɨʦɨ ʔinia umar~ɾa ʔapur~ɾu misee.</PHON>
         <TRANSL xml:lang="zho">山羌說:「我要去tana'ʉcʉ拿回火種.」</TRANSL>
         <TRANSL xml:lang="eng">The muntjac said, 'I will go to tana'ʉcʉ to get the fire.'</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S52.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="450.2" end="457.05"/>
+        <AUDIO file="kkvNr-story_pani_S52.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="450.2" end="457.05" />
         <W id="kkvNr-story_pani_S_52_W0">
             <FORM kindOf="original">makasi</FORM>
             <PHON kindOf="original">makasi</PHON>
@@ -8571,7 +8571,7 @@
                 <TRANSL xml:lang="zho">說</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.532258064516129</SCORE></S>
     <S id="kkvNr-story_pani_S_53">
         <FORM kindOf="original">nakai 'una kan 'apuru nisʉ'ʉkan na u'ungin nakai makananguru macai canumu musʉpʉrʉ ara'akia canumu.</FORM>
         <PHON kindOf="original">nakai ʔuna kan ʔapur~ɾu nisɨʔɨkan na uʔuŋin nakai makanaŋur~ɾu maʦai ʦanumu musɨpɨr~ɾɨ ar~ɾaʔakia ʦanumu.</PHON>
@@ -8579,7 +8579,7 @@
         <PHON kindOf="standard">nakai ʔuna kan ʔapur~ɾu nisɨʔɨkan na uʔuŋin nakai makanaŋur~ɾu maʦai ʦanumu musɨpɨr~ɾɨ ar~ɾaʔakia ʦanumu.</PHON>
         <TRANSL xml:lang="zho">他把火種放在頭角上游泳過水,結果火種被水浸泡了,火種就滅掉了.</TRANSL>
         <TRANSL xml:lang="eng">However, the fire was put out by water because the muntjac held the fire on its horns when it was swimming through the water.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S53.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="457.05" end="469.07"/>
+        <AUDIO file="kkvNr-story_pani_S53.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="457.05" end="469.07" />
         <W id="kkvNr-story_pani_S_53_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -8808,8 +8808,8 @@
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr-story_pani_S_53_W13">
@@ -8828,15 +8828,15 @@
                 <TRANSL xml:lang="zho">變</TRANSL>
             </M>
             <M id="kkvNr-story_pani_S_53_W13M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">NEG.EXIST</TRANSL>
                 <TRANSL xml:lang="zho">否定.存在</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5729729729729729</SCORE></S>
     <S id="kkvNr-story_pani_S_54">
         <FORM kindOf="original">marivivini 'una kan tapinange urune kisUUn tapinange isua.</FORM>
         <PHON kindOf="original">mar~ɾivivini ʔuna kan tapinaŋe ur~ɾune kisuun tapinaŋe isua.</PHON>
@@ -8844,7 +8844,7 @@
         <PHON kindOf="standard">mar~ɾivivini ʔuna kan tapinaŋe ur~ɾune kisuun tapinaŋe isua.</PHON>
         <TRANSL xml:lang="zho">最後,有隻鳥,被稱作urune</TRANSL>
         <TRANSL xml:lang="eng">At last, there was a bird, Urune.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S54.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="469.07" end="479.05"/>
+        <AUDIO file="kkvNr-story_pani_S54.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="469.07" end="479.05" />
         <W id="kkvNr-story_pani_S_54_W0">
             <FORM kindOf="original">marivivini</FORM>
             <PHON kindOf="original">mar~ɾivivini</PHON>
@@ -8981,7 +8981,7 @@
                 <TRANSL xml:lang="zho">那</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6440677966101696</SCORE></S>
     <S id="kkvNr-story_pani_S_55">
         <FORM kindOf="original">tapinange isua ia miana kani nguani nguani tamna ivici ia ka'an masinang.</FORM>
         <PHON kindOf="original">tapinaŋe isua ia miana kani ŋuani ŋuani tamna iviʦi ia kaʔan masinaŋ.</PHON>
@@ -8989,7 +8989,7 @@
         <PHON kindOf="standard">tapinaŋe isua ia miana kani ŋuani ŋuani tamna iviʦi ia kaʔan masinaŋ.</PHON>
         <TRANSL xml:lang="zho">那種鳥,據說以前他們的嘴巴不是紅色的.</TRANSL>
         <TRANSL xml:lang="eng">it is said that the pecks of those birds were not red.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S55.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="479.05" end="484.58"/>
+        <AUDIO file="kkvNr-story_pani_S55.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="479.05" end="484.58" />
         <W id="kkvNr-story_pani_S_55_W0">
             <FORM kindOf="original">tapinange</FORM>
             <PHON kindOf="original">tapinaŋe</PHON>
@@ -9182,7 +9182,7 @@
                 <TRANSL xml:lang="zho">紅色</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5619834710743802</SCORE></S>
     <S id="kkvNr-story_pani_S_56">
         <FORM kindOf="original">pasinkankee cau mesua tia nguainkan mokusa na a sipara isa umara 'apuru.</FORM>
         <PHON kindOf="original">pasinkankee ʦau mesua tia ŋuainkan mokusa na a sipar~ɾa isa umar~ɾa ʔapur~ɾu.</PHON>
@@ -9190,7 +9190,7 @@
         <PHON kindOf="standard">pasinkankee ʦau mesua tia ŋuainkan mokusa na a sipar~ɾa isa umar~ɾa ʔapur~ɾu.</PHON>
         <TRANSL xml:lang="zho">鳥對人說由他來去那個對岸拿火種.</TRANSL>
         <TRANSL xml:lang="eng">The bird said to human beings that he will go to the other side of the river to get the fire back'</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S56.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="484.58" end="494.51"/>
+        <AUDIO file="kkvNr-story_pani_S56.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="484.58" end="494.51" />
         <W id="kkvNr-story_pani_S_56_W0">
             <FORM kindOf="original">p-asi-n=kan=kee</FORM>
             <PHON kindOf="original">p-asi-n=kan=kee</PHON>
@@ -9423,7 +9423,7 @@
                 <TRANSL xml:lang="zho">火</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5801526717557253</SCORE></S>
     <S id="kkvNr-story_pani_S_57">
         <FORM kindOf="original">hao nevicikankee 'apuru mova kanakanavu nakai si macici curu nguain tamna ivici ia niaramasinang.</FORM>
         <PHON kindOf="original">hao neviʦikankee ʔapur~ɾu mova kanakanavu nakai si maʦiʦi ʦur~ɾu ŋuain tamna iviʦi ia niar~ɾamasinaŋ.</PHON>
@@ -9431,7 +9431,7 @@
         <PHON kindOf="standard">hao neviʦikankee ʔapur~ɾu mova kanakanavu nakai si maʦiʦi ʦur~ɾu ŋuain tamna iviʦi ia niar~ɾamasinaŋ.</PHON>
         <TRANSL xml:lang="zho">但是因為實在很熱,牠的鳥喙變成紅色.</TRANSL>
         <TRANSL xml:lang="eng">However, because it is too hot, his mouth became red.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S57.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="494.51" end="504.74"/>
+        <AUDIO file="kkvNr-story_pani_S57.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="494.51" end="504.74" />
         <W id="kkvNr-story_pani_S_57_W0">
             <FORM kindOf="original">hao</FORM>
             <PHON kindOf="original">hao</PHON>
@@ -9476,8 +9476,8 @@
                 <PHON kindOf="original">kee</PHON>
                 <FORM kindOf="standard">kee</FORM>
                 <PHON kindOf="standard">kee</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr-story_pani_S_57_W2">
@@ -9688,7 +9688,7 @@
                 <TRANSL xml:lang="zho">紅色</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6229508196721312</SCORE></S>
     <S id="kkvNr-story_pani_S_58">
         <FORM kindOf="original">pacʉpʉcʉpʉngʉ kanakanavu sua cucuruana mamanʉng urune tapinange isi.</FORM>
         <PHON kindOf="original">paʦɨpɨʦɨpɨŋɨ kanakanavu sua ʦuʦur~ɾuana mamanɨŋ ur~ɾune tapinaŋe isi.</PHON>
@@ -9696,7 +9696,7 @@
         <PHON kindOf="standard">paʦɨpɨʦɨpɨŋɨ kanakanavu sua ʦuʦur~ɾuana mamanɨŋ ur~ɾune tapinaŋe isi.</PHON>
         <TRANSL xml:lang="zho">Kanakanavu想著這個紅嘴黑鵯真正好啊!</TRANSL>
         <TRANSL xml:lang="eng">Kanakanavu thought this Himalayan Black Bulbul was a really good bird.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S58.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="504.74" end="514.92"/>
+        <AUDIO file="kkvNr-story_pani_S58.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="504.74" end="514.92" />
         <W id="kkvNr-story_pani_S_58_W0">
             <FORM kindOf="original">pacʉpʉcʉpʉngʉ</FORM>
             <PHON kindOf="original">paʦɨpɨʦɨpɨŋɨ</PHON>
@@ -9841,7 +9841,7 @@
                 <TRANSL xml:lang="zho">這個</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4963503649635036</SCORE></S>
     <S id="kkvNr-story_pani_S_59">
         <FORM kindOf="original">imo aranai meesua 'una canimita poisua urune isua.</FORM>
         <PHON kindOf="original">imo ar~ɾanai meesua ʔuna ʦanimita poisua ur~ɾune isua.</PHON>
@@ -9849,7 +9849,7 @@
         <PHON kindOf="standard">imo ar~ɾanai meesua ʔuna ʦanimita poisua ur~ɾune isua.</PHON>
         <TRANSL xml:lang="zho">所以從那時候起,我們有一首關於紅嘴黑鵯的歌.</TRANSL>
         <TRANSL xml:lang="eng">So from then on, we have a song singing about that Himalayan.Black.Bulbul.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S59.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="514.92" end="524.0"/>
+        <AUDIO file="kkvNr-story_pani_S59.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="514.92" end="524.0" />
         <W id="kkvNr-story_pani_S_59_W0">
             <FORM kindOf="original">imo</FORM>
             <PHON kindOf="original">imo</PHON>
@@ -9994,7 +9994,7 @@
                 <TRANSL xml:lang="zho">那個</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6458333333333333</SCORE></S>
     <S id="kkvNr-story_pani_S_60">
         <FORM kindOf="original">makasuacu mon na mon Kanakanavu na Namasia isi.</FORM>
         <PHON kindOf="original">makasuaʦu mon na mon kanakanavu na namasia isi.</PHON>
@@ -10002,7 +10002,7 @@
         <PHON kindOf="standard">makasuaʦu mon na mon kanakanavu na namasia isi.</PHON>
         <TRANSL xml:lang="zho">那般之後,卡那卡那富族人就住在那瑪夏這裡.</TRANSL>
         <TRANSL xml:lang="eng">Therefore, Kanakanavu resided there.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S60.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="524.0" end="528.88"/>
+        <AUDIO file="kkvNr-story_pani_S60.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="524.0" end="528.88" />
         <W id="kkvNr-story_pani_S_60_W0">
             <FORM kindOf="original">makasua=cu</FORM>
             <PHON kindOf="original">makasua=ʦu</PHON>
@@ -10139,7 +10139,7 @@
                 <TRANSL xml:lang="zho">這個</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5773195876288659</SCORE></S>
     <S id="kkvNr-story_pani_S_61">
         <FORM kindOf="original">iovutucu pakisia iovutucu 'oria iovutucu ripun arivarivarivari kan to'onaamita.</FORM>
         <PHON kindOf="original">iovutuʦu pakisia iovutuʦu ʔor~ɾia iovutuʦu r~ɾipun ar~ɾivar~ɾivar~ɾivar~ɾi kan toʔonaamita.</PHON>
@@ -10147,7 +10147,7 @@
         <PHON kindOf="standard">iovutuʦu pakisia iovutuʦu ʔor~ɾia iovutuʦu r~ɾipun ar~ɾivar~ɾivar~ɾivar~ɾi kan toʔonaamita.</PHON>
         <TRANSL xml:lang="zho">閩南人進來 平埔族也來了 日本人來了.據說我們所住的地方一直在移動著.</TRANSL>
         <TRANSL xml:lang="eng">Hoklo came first, Pingpu people came next, and then Japanese came. It is said that we kept moving our place.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S61.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="528.88" end="538.61"/>
+        <AUDIO file="kkvNr-story_pani_S61.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="528.88" end="538.61" />
         <W id="kkvNr-story_pani_S_61_W0">
             <FORM kindOf="original">iovutu=cu</FORM>
             <PHON kindOf="original">iovutu=ʦu</PHON>
@@ -10288,16 +10288,16 @@
                 <PHON kindOf="original">var~ɾivar~ɾi</PHON>
                 <FORM kindOf="standard">varivari</FORM>
                 <PHON kindOf="standard">var~ɾivar~ɾi</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr-story_pani_S_61_W6M3">
                 <FORM kindOf="original">vari</FORM>
                 <PHON kindOf="original">var~ɾi</PHON>
                 <FORM kindOf="standard">vari</FORM>
                 <PHON kindOf="standard">var~ɾi</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr-story_pani_S_61_W7">
@@ -10340,7 +10340,7 @@
                 <TRANSL xml:lang="zho">1PL.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5276073619631902</SCORE></S>
     <S id="kkvNr-story_pani_S_62">
         <FORM kindOf="original">nakai aranai meesua koocu arivari marivari arivari na cucumeni to'ona kanakanavu.</FORM>
         <PHON kindOf="original">nakai ar~ɾanai meesua kooʦu ar~ɾivar~ɾi mar~ɾivar~ɾi ar~ɾivar~ɾi na ʦuʦumeni toʔona kanakanavu.</PHON>
@@ -10348,7 +10348,7 @@
         <PHON kindOf="standard">nakai ar~ɾanai meesua kooʦu ar~ɾivar~ɾi mar~ɾivar~ɾi ar~ɾivar~ɾi na ʦuʦumeni toʔona kanakanavu.</PHON>
         <TRANSL xml:lang="zho">但是從那時候,我們就沒有再遷移到別的地方了.</TRANSL>
         <TRANSL xml:lang="eng">Since then, we did not move to any other places.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S62.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="538.61" end="548.79"/>
+        <AUDIO file="kkvNr-story_pani_S62.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="538.61" end="548.79" />
         <W id="kkvNr-story_pani_S_62_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -10533,7 +10533,7 @@
                 <TRANSL xml:lang="zho">PN</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5180722891566265</SCORE></S>
     <S id="kkvNr-story_pani_S_63">
         <FORM kindOf="original">sua kanakanavu moncu na Namasia isi.</FORM>
         <PHON kindOf="original">sua kanakanavu monʦu na namasia isi.</PHON>
@@ -10541,7 +10541,7 @@
         <PHON kindOf="standard">sua kanakanavu monʦu na namasia isi.</PHON>
         <TRANSL xml:lang="zho">卡那卡那富族人就一直待在那瑪夏這個地方.</TRANSL>
         <TRANSL xml:lang="eng">Kanakanavu stay at Namasia.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S63.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="548.79" end="554.91"/>
+        <AUDIO file="kkvNr-story_pani_S63.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="548.79" end="554.91" />
         <W id="kkvNr-story_pani_S_63_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -10646,7 +10646,7 @@
                 <TRANSL xml:lang="zho">這個</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5128205128205128</SCORE></S>
     <S id="kkvNr-story_pani_S_64">
         <FORM kindOf="original">nakai miana 'una cau cucumen noo makari kitana kanakanavu ia makasi sua ikita kan ia kisaa Sumukun taivuran misee.</FORM>
         <PHON kindOf="original">nakai miana ʔuna ʦau ʦuʦumen noo makar~ɾi kitana kanakanavu ia makasi sua ikita kan ia kisaa sumukun taivur~ɾan misee.</PHON>
@@ -10654,7 +10654,7 @@
         <PHON kindOf="standard">nakai miana ʔuna ʦau ʦuʦumen noo makar~ɾi kitana kanakanavu ia makasi sua ikita kan ia kisaa sumukun taivur~ɾan misee.</PHON>
         <TRANSL xml:lang="zho">但是,以前有其他人在跟我們卡族人談話時, 叫我們卡族Taivuran,布農族也那樣稱呼我們.</TRANSL>
         <TRANSL xml:lang="eng">However, in the past, there are some other people called us, as what Bunun called, Taivuran, when they were talking to us.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S64.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="554.91" end="575.6"/>
+        <AUDIO file="kkvNr-story_pani_S64.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="554.91" end="575.6" />
         <W id="kkvNr-story_pani_S_64_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -10967,7 +10967,7 @@
                 <TRANSL xml:lang="zho">說</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5855855855855856</SCORE></S>
     <S id="kkvNr-story_pani_S_65">
         <FORM kindOf="original">nakai ka'ankita manman nganai taivuran isi.</FORM>
         <PHON kindOf="original">nakai kaʔankita manman ŋanai taivur~ɾan isi.</PHON>
@@ -10975,7 +10975,7 @@
         <PHON kindOf="standard">nakai kaʔankita manman ŋanai taivur~ɾan isi.</PHON>
         <TRANSL xml:lang="zho">但是我們並不喜歡taivuran這個名字</TRANSL>
         <TRANSL xml:lang="eng">But we do not like taivuran, this name.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S65.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="575.6" end="580.12"/>
+        <AUDIO file="kkvNr-story_pani_S65.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="575.6" end="580.12" />
         <W id="kkvNr-story_pani_S_65_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -11012,8 +11012,8 @@
                 <PHON kindOf="original">kita</PHON>
                 <FORM kindOf="standard">kita</FORM>
                 <PHON kindOf="standard">kita</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr-story_pani_S_65_W2">
@@ -11080,7 +11080,7 @@
                 <TRANSL xml:lang="zho">PN</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6329113924050633</SCORE></S>
     <S id="kkvNr-story_pani_S_66">
         <FORM kindOf="original">makai aranai miana masiraru kita noo tumatuturu cau sua nganaimita ia kanakanavu misee.</FORM>
         <PHON kindOf="original">makai ar~ɾanai miana masir~ɾar~ɾu kita noo tumatutur~ɾu ʦau sua ŋanaimita ia kanakanavu misee.</PHON>
@@ -11088,7 +11088,7 @@
         <PHON kindOf="standard">makai ar~ɾanai miana masir~ɾar~ɾu kita noo tumatutur~ɾu ʦau sua ŋanaimita ia kanakanavu misee.</PHON>
         <TRANSL xml:lang="zho">從以前開始,我們在告訴別人時,我們都自稱為卡那卡那富族.</TRANSL>
         <TRANSL xml:lang="eng">Since a long time ago, when we were talking to other people, we always called ourselves Kanakanavu.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S66.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="580.12" end="589.47"/>
+        <AUDIO file="kkvNr-story_pani_S66.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="580.12" end="589.47" />
         <W id="kkvNr-story_pani_S_66_W0">
             <FORM kindOf="original">makai</FORM>
             <PHON kindOf="original">makai</PHON>
@@ -11153,10 +11153,10 @@
                 <TRANSL xml:lang="zho">原來</TRANSL>
             </M>
             <M id="kkvNr-story_pani_S_66_W3M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">1PL.NOM</TRANSL>
                 <TRANSL xml:lang="zho">1PL.主格</TRANSL>
             </M>
@@ -11193,10 +11193,10 @@
                 <TRANSL xml:lang="zho">T&lt;主焦&gt;A</TRANSL>
             </M>
             <M id="kkvNr-story_pani_S_66_W5M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">tell</TRANSL>
                 <TRANSL xml:lang="zho">告訴</TRANSL>
             </M>
@@ -11321,7 +11321,7 @@
                 <TRANSL xml:lang="zho">說</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6292134831460674</SCORE></S>
     <S id="kkvNr-story_pani_S_67">
         <FORM kindOf="original">makasuacu nimon manasu nimoncukita na namasia isi upeen kusai?</FORM>
         <PHON kindOf="original">makasuaʦu nimon manasu nimonʦukita na namasia isi upeen kusai?</PHON>
@@ -11329,7 +11329,7 @@
         <PHON kindOf="standard">makasuaʦu nimon manasu nimonʦukita na namasia isi upeen kusai?</PHON>
         <TRANSL xml:lang="zho">那樣,我們卡那卡那富族待在那瑪夏這裡究竟有多久了?</TRANSL>
         <TRANSL xml:lang="eng">Then, how long have we Kanakanavu lived here?</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S67.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="589.47" end="597.78"/>
+        <AUDIO file="kkvNr-story_pani_S67.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="589.47" end="597.78" />
         <W id="kkvNr-story_pani_S_67_W0">
             <FORM kindOf="original">makasua=cu</FORM>
             <PHON kindOf="original">makasua=ʦu</PHON>
@@ -11514,7 +11514,7 @@
                 <TRANSL xml:lang="zho">究竟</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6833333333333333</SCORE></S>
     <S id="kkvNr-story_pani_S_68">
         <FORM kindOf="original">manasʉ 'una usʉpatʉ nʉmʉ nokai 'una urima nʉmʉ nimonkita na namasia isi cumacʉvʉrʉ.</FORM>
         <PHON kindOf="original">manasɨ ʔuna usɨpatɨ nɨmɨ nokai ʔuna ur~ɾima nɨmɨ nimonkita na namasia isi ʦumaʦɨvɨr~ɾɨ.</PHON>
@@ -11522,7 +11522,7 @@
         <PHON kindOf="standard">manasɨ ʔuna usɨpatɨ nɨmɨ nokai ʔuna ur~ɾima nɨmɨ nimonkita na namasia isi ʦumaʦɨvɨr~ɾɨ.</PHON>
         <TRANSL xml:lang="zho">我們待在那瑪夏這裡生長大概有四百或五百年了.</TRANSL>
         <TRANSL xml:lang="eng">Perhaps We have lived in Namasia and grew up there for four hundred or five hundred years.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S68.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="597.78" end="607.67"/>
+        <AUDIO file="kkvNr-story_pani_S68.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="597.78" end="607.67" />
         <W id="kkvNr-story_pani_S_68_W0">
             <FORM kindOf="original">manasʉ</FORM>
             <PHON kindOf="original">manasɨ</PHON>
@@ -11779,7 +11779,7 @@
                 <TRANSL xml:lang="zho">生長</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.631578947368421</SCORE></S>
     <S id="kkvNr-story_pani_S_69">
         <FORM kindOf="original">makasia sua sua tia tuturuamaku sosomanpe.</FORM>
         <PHON kindOf="original">makasia sua sua tia tutur~ɾuamaku sosomanpe.</PHON>
@@ -11787,7 +11787,7 @@
         <PHON kindOf="standard">makasia sua sua tia tutur~ɾuamaku sosomanpe.</PHON>
         <TRANSL xml:lang="zho">我所要講的就是這樣.謝謝.</TRANSL>
         <TRANSL xml:lang="eng">This is all I want to tell you. Thank you.</TRANSL>
-        <AUDIO file="kkvNr-story_pani_S69.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="607.67" end="612.65"/>
+        <AUDIO file="kkvNr-story_pani_S69.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr-story_pani.mp3" start="607.67" end="612.65" />
         <W id="kkvNr-story_pani_S_69_W0">
             <FORM kindOf="original">makasia</FORM>
             <PHON kindOf="original">makasia</PHON>
@@ -11900,5 +11900,5 @@
                 <TRANSL xml:lang="zho">謝謝</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4878048780487805</SCORE></S>
 </TEXT>

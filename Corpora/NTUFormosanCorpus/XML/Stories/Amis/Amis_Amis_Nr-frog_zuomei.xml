@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="NTU_Stry_Amis_Amis_Nr-frog_zuomei" xml:lang="ami" source="NTU Corpus stories for Amis, story: Amis_Nr-frog_zuomei" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Coastal">
     <S id="Amis_Nr-frog_zuomei_S_0">
         <FORM kindOf="original">ira ku ccay a wawa su'lin maulah cingra tunini a wacu atu u takula'.</FORM>
@@ -7,7 +7,7 @@
         <PHON kindOf="standard">ira ku ʦʦaj a wawa suʡɾin mauɾaħ ʦiŋra tunini a waʦu atu u takuɾaʡ.</PHON>
         <TRANSL xml:lang="zho">有一個小孩,他真的喜歡這隻狗跟青蛙.</TRANSL>
         <TRANSL xml:lang="eng">There was a child who really liked the dog and the frog.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="0.0" end="6.74"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="0.0" end="6.74" />
         <W id="Amis_Nr-frog_zuomei_S_0_W0">
             <FORM kindOf="original">ira</FORM>
             <PHON kindOf="original">ira</PHON>
@@ -240,7 +240,7 @@
                 <TRANSL xml:lang="zho">青蛙</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5913043478260869</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_1">
         <FORM kindOf="original">su'lin miala cingra tuyanan a takula' paru'en nira i kureng nira.</FORM>
         <PHON kindOf="original">suʡɾin miaɾa ʦiŋra tujanan a takuɾaʡ paruʡən nira i kurəŋ nira.</PHON>
@@ -248,7 +248,7 @@
         <PHON kindOf="standard">suʡɾin miaɾa ʦiŋra tujanan a takuɾaʡ paruʡən nira i kurəŋ nira.</PHON>
         <TRANSL xml:lang="zho" notes="他真的想抓那隻青蛙,所以他(把青蛙)裝在他的甕裡.">他真的想抓那隻青蛙,所以他 裝在他的甕裡.</TRANSL>
         <TRANSL xml:lang="eng" notes="He really wanted to catch the frog, (so) he put (the frog) in his urn.">He really wanted to catch the frog, he put in his urn.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="6.74" end="12.07"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="6.74" end="12.07" />
         <W id="Amis_Nr-frog_zuomei_S_1_W0">
             <FORM kindOf="original">su'lin</FORM>
             <PHON kindOf="original">suʡɾin</PHON>
@@ -441,7 +441,7 @@
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5862068965517242</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_2">
         <FORM kindOf="original">manengneng nira kura takula' su'lin a lipahak cingra.</FORM>
         <PHON kindOf="original">manəŋnəŋ nira kura takuɾaʡ suʡɾin a ɾipaħak ʦiŋra.</PHON>
@@ -449,7 +449,7 @@
         <PHON kindOf="standard">manəŋnəŋ nira kura takuɾaʡ suʡɾin a ɾipaħak ʦiŋra.</PHON>
         <TRANSL xml:lang="zho">他看到那隻青蛙,真的他非常高興.</TRANSL>
         <TRANSL xml:lang="eng">Seeing the frog, he was really happy.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="12.07" end="15.96"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="12.07" end="15.96" />
         <W id="Amis_Nr-frog_zuomei_S_2_W0">
             <FORM kindOf="original">ma-nengneng</FORM>
             <PHON kindOf="original">ma-nəŋnəŋ</PHON>
@@ -586,7 +586,7 @@
                 <TRANSL xml:lang="zho">3SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6086956521739131</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_3">
         <FORM kindOf="original">ta alahan nira.</FORM>
         <PHON kindOf="original">ta aɾaħan nira.</PHON>
@@ -594,7 +594,7 @@
         <PHON kindOf="standard">ta aɾaħan nira.</PHON>
         <TRANSL xml:lang="zho" notes="他抓起(青蛙).">他抓起 .</TRANSL>
         <TRANSL xml:lang="eng" notes="He took (the frog).">He took .</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="15.96" end="17.85"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="15.96" end="17.85" />
         <W id="Amis_Nr-frog_zuomei_S_3_W0">
             <FORM kindOf="original">ta</FORM>
             <PHON kindOf="original">ta</PHON>
@@ -651,7 +651,7 @@
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.42105263157894735</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_4">
         <FORM kindOf="original">paru'han nira i kureng.</FORM>
         <PHON kindOf="original">paruʡħan nira i kurəŋ.</PHON>
@@ -659,7 +659,7 @@
         <PHON kindOf="standard">paruʡħan nira i kurəŋ.</PHON>
         <TRANSL xml:lang="zho">他放在甕裡.</TRANSL>
         <TRANSL xml:lang="eng" notes="He put (it) in the urn.">He put in the urn.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="17.85" end="19.25"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="17.85" end="19.25" />
         <W id="Amis_Nr-frog_zuomei_S_4_W0">
             <FORM kindOf="original">paru'-han</FORM>
             <PHON kindOf="original">paruʡ-ħan</PHON>
@@ -684,11 +684,11 @@
                 <TRANSL xml:lang="zho">HAN</TRANSL>
             </M>
             <M id="Amis_Nr-frog_zuomei_S_4_W0M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
-                <TRANSL xml:lang="eng"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
@@ -740,7 +740,7 @@
                 <TRANSL xml:lang="zho">甕</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6111111111111112</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_5">
         <FORM kindOf="original">maparu' nira i kureng haw.</FORM>
         <PHON kindOf="original">maparuʡ nira i kurəŋ ħaw.</PHON>
@@ -748,7 +748,7 @@
         <PHON kindOf="standard">maparuʡ nira i kurəŋ ħaw.</PHON>
         <TRANSL xml:lang="zho">他裝在甕裡.</TRANSL>
         <TRANSL xml:lang="eng" notes="He put (it) in the urn.">He put in the urn.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="19.25" end="21.04"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="19.25" end="21.04" />
         <W id="Amis_Nr-frog_zuomei_S_5_W0">
             <FORM kindOf="original">ma-paru'</FORM>
             <PHON kindOf="original">ma-paruʡ</PHON>
@@ -837,7 +837,7 @@
                 <TRANSL xml:lang="zho">語助詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5909090909090908</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_6">
         <FORM kindOf="original">ta mafuti'awtu sa mafuti' cingra.</FORM>
         <PHON kindOf="original">ta mafutiʡawtu sa mafutiʡ ʦiŋra.</PHON>
@@ -845,7 +845,7 @@
         <PHON kindOf="standard">ta mafutiʡawtu sa mafutiʡ ʦiŋra.</PHON>
         <TRANSL xml:lang="zho">他就睡覺了.</TRANSL>
         <TRANSL xml:lang="eng">He slept.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="21.04" end="24.04"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="21.04" end="24.04" />
         <W id="Amis_Nr-frog_zuomei_S_6_W0">
             <FORM kindOf="original">ta</FORM>
             <PHON kindOf="original">ta</PHON>
@@ -958,7 +958,7 @@
                 <TRANSL xml:lang="zho">3SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_7">
         <FORM kindOf="original">nengneng lumuwad satu tu dafak cingra nengnenghan nira awaaytu kuya takula' itiyatu cingra mararum.</FORM>
         <PHON kindOf="original">nəŋnəŋ ɾumuwaɬ~ɮ satu tu ɬ~ɮafak ʦiŋra nəŋnəŋħan nira awaajtu kuja takuɾaʡ itijatu ʦiŋra mararum.</PHON>
@@ -966,7 +966,7 @@
         <PHON kindOf="standard">nəŋnəŋ ɾumuwaɬ~ɮ satu tu ɬ~ɮafak ʦiŋra nəŋnəŋħan nira awaajtu kuja takuɾaʡ itijatu ʦiŋra mararum.</PHON>
         <TRANSL xml:lang="zho">他早上起床,看到那隻青蛙不見了.當時他非常難過.</TRANSL>
         <TRANSL xml:lang="eng">He got up in the morning and saw that the frog was gone. He was sad then.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="24.04" end="30.85"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="24.04" end="30.85" />
         <W id="Amis_Nr-frog_zuomei_S_7_W0">
             <FORM kindOf="original">nengneng</FORM>
             <PHON kindOf="original">nəŋnəŋ</PHON>
@@ -1247,7 +1247,7 @@
                 <TRANSL xml:lang="zho">難過</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.48863636363636365</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_8">
         <FORM kindOf="original">i cuwatu kiya mitelian aku itini tuya kureng ya takula'.</FORM>
         <PHON kindOf="original">i ʦuwatu kija mitəɾian aku itini tuja kurəŋ ja takuɾaʡ.</PHON>
@@ -1255,7 +1255,7 @@
         <PHON kindOf="standard">i ʦuwatu kija mitəɾian aku itini tuja kurəŋ ja takuɾaʡ.</PHON>
         <TRANSL xml:lang="zho">我放在甕裡的那一隻青蛙到哪裡去了?</TRANSL>
         <TRANSL xml:lang="eng">Where was the frog that I put in the urn?</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="30.85" end="34.86"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="30.85" end="34.86" />
         <W id="Amis_Nr-frog_zuomei_S_8_W0">
             <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
@@ -1440,7 +1440,7 @@
                 <TRANSL xml:lang="zho">青蛙</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_9">
         <FORM kindOf="original">sa ku rarum nu falucu' nira itiya mikilim tu cingra.</FORM>
         <PHON kindOf="original">sa ku rarum nu faɾuʦuʡ nira itija mikiɾim tu ʦiŋra.</PHON>
@@ -1448,7 +1448,7 @@
         <PHON kindOf="standard">sa ku rarum nu faɾuʦuʡ nira itija mikiɾim tu ʦiŋra.</PHON>
         <TRANSL xml:lang="zho" notes="當時他如此的傷心,他就去找(青蛙).">當時他如此的傷心,他就去找 .</TRANSL>
         <TRANSL xml:lang="eng" notes="He was so sad that he looked for (the frog).">He was so sad that he looked for .</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="34.86" end="38.78"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="34.86" end="38.78" />
         <W id="Amis_Nr-frog_zuomei_S_9_W0">
             <FORM kindOf="original">sa</FORM>
             <PHON kindOf="original">sa</PHON>
@@ -1617,7 +1617,7 @@
                 <TRANSL xml:lang="zho">3SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.46464646464646464</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_10">
         <FORM kindOf="original">nengnengitu cingra i salawacan nengnenghan nira awa matama itiyatu mararucu' su'lin a tata'ak a latek tayni i lutuk.</FORM>
         <PHON kindOf="original">nəŋnəŋitu ʦiŋra i saɾawaʦan nəŋnəŋħan nira awa matama itijatu mararuʦuʡ suʡɾin a tataʡak a ɾatək tajni i ɾutuk.</PHON>
@@ -1625,7 +1625,7 @@
         <PHON kindOf="standard">nəŋnəŋitu ʦiŋra i saɾawaʦan nəŋnəŋħan nira awa matama itijatu mararuʦuʡ suʡɾin a tataʡak a ɾatək tajni i ɾutuk.</PHON>
         <TRANSL xml:lang="zho">他開始在四周觀望,他看了也沒找到,可能去了山上.</TRANSL>
         <TRANSL xml:lang="eng" notes="He started to look around, but didn't find it; perhaps (the frog) went to the mountain.">He started to look around, but didn't find it; perhaps went to the mountain.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="38.78" end="48.0"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="38.78" end="48.0" />
         <W id="Amis_Nr-frog_zuomei_S_10_W0">
             <FORM kindOf="original">nengneng=itu</FORM>
             <PHON kindOf="original">nəŋnəŋ=itu</PHON>
@@ -1962,7 +1962,7 @@
                 <TRANSL xml:lang="zho">山上</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6169154228855722</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_11">
         <FORM kindOf="original">i cuwacuwa kiya sa'an.</FORM>
         <PHON kindOf="original">i ʦuwaʦuwa kija saʡan.</PHON>
@@ -1970,7 +1970,7 @@
         <PHON kindOf="standard">i ʦuwaʦuwa kija saʡan.</PHON>
         <TRANSL xml:lang="zho">究竟在哪裡呢?他這麼說.</TRANSL>
         <TRANSL xml:lang="eng">'Where is it?', he said.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="48.0" end="49.44"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="48.0" end="49.44" />
         <W id="Amis_Nr-frog_zuomei_S_11_W0">
             <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
@@ -2043,7 +2043,7 @@
                 <TRANSL xml:lang="zho">如此說</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4864864864864865</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_12">
         <FORM kindOf="original">su'lin taynitu cingra i lutuk a mikilim tuyanan a takula' ya kaulahan nira a takula'.</FORM>
         <PHON kindOf="original">suʡɾin tajnitu ʦiŋra i ɾutuk a mikiɾim tujanan a takuɾaʡ ja kauɾaħan nira a takuɾaʡ.</PHON>
@@ -2051,7 +2051,7 @@
         <PHON kindOf="standard">suʡɾin tajnitu ʦiŋra i ɾutuk a mikiɾim tujanan a takuɾaʡ ja kauɾaħan nira a takuɾaʡ.</PHON>
         <TRANSL xml:lang="zho">他真的來到山上找那隻青蛙,那一隻他最喜歡的青蛙</TRANSL>
         <TRANSL xml:lang="eng">He really came to the mountain to look for the frog, which he liked most.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="49.44" end="55.72"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="49.44" end="55.72" />
         <W id="Amis_Nr-frog_zuomei_S_12_W0">
             <FORM kindOf="original">su'lin</FORM>
             <PHON kindOf="original">suʡɾin</PHON>
@@ -2324,7 +2324,7 @@
                 <TRANSL xml:lang="zho">青蛙</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5477707006369427</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_13">
         <FORM kindOf="original">rumakattu cingra tayni i lalan i lutulutukan.</FORM>
         <PHON kindOf="original">rumakattu ʦiŋra tajni i ɾaɾan i ɾutuɾutukan.</PHON>
@@ -2332,7 +2332,7 @@
         <PHON kindOf="standard">rumakattu ʦiŋra tajni i ɾaɾan i ɾutuɾutukan.</PHON>
         <TRANSL xml:lang="zho">他開始走往山上的路.</TRANSL>
         <TRANSL xml:lang="eng">He walked on the road to the mountains.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="55.72" end="58.89"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="55.72" end="58.89" />
         <W id="Amis_Nr-frog_zuomei_S_13_W0">
             <FORM kindOf="original">r&lt;um&gt;akat=tu</FORM>
             <PHON kindOf="original">r&lt;um&gt;akat=tu</PHON>
@@ -2477,7 +2477,7 @@
                 <TRANSL xml:lang="zho">AN</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5789473684210527</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_14">
         <FORM kindOf="original">su'lin nengnenghan nira a latek itini i tepung nuna suta' unini kiya nasa ku harateng nira.</FORM>
         <PHON kindOf="original">suʡɾin nəŋnəŋħan nira a ɾatək itini i təpuŋ nuna sutaʡ unini kija nasa ku ħaratəŋ nira.</PHON>
@@ -2485,7 +2485,7 @@
         <PHON kindOf="standard">suʡɾin nəŋnəŋħan nira a ɾatək itini i təpuŋ nuna sutaʡ unini kija nasa ku ħaratəŋ nira.</PHON>
         <TRANSL xml:lang="zho">真的他看了之後,可能在這個土堆的洞裡,他覺得就是這樣.</TRANSL>
         <TRANSL xml:lang="eng" notes="He looked around and he thought that perhaps (the frog) was in the hole on the ground.">He looked around and he thought that perhaps was in the hole on the ground.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="58.89" end="65.36"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="58.89" end="65.36" />
         <W id="Amis_Nr-frog_zuomei_S_14_W0">
             <FORM kindOf="original">su'lin</FORM>
             <PHON kindOf="original">suʡɾin</PHON>
@@ -2750,7 +2750,7 @@
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6075949367088608</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_15">
         <FORM kindOf="original">anganghan nira miangang kuyanan a takula' nira miceli' nengnenghan nira sadak sa'an unini u ku u kulafaw.</FORM>
         <PHON kindOf="original">aŋaŋħan nira miaŋaŋ kujanan a takuɾaʡ nira miʦəɾiʡ nəŋnəŋħan nira saɬ~ɮak saʡan unini u ku u kuɾafaw.</PHON>
@@ -2758,7 +2758,7 @@
         <PHON kindOf="standard">aŋaŋħan nira miaŋaŋ kujanan a takuɾaʡ nira miʦəɾiʡ nəŋnəŋħan nira saɬ~ɮak saʡan unini u ku u kuɾafaw.</PHON>
         <TRANSL xml:lang="zho">他呼叫那隻青蛙,結果出來的是田鼠.</TRANSL>
         <TRANSL xml:lang="eng">He called the frog, and it turned out that a vole came out.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="65.36" end="76.12"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="65.36" end="76.12" />
         <W id="Amis_Nr-frog_zuomei_S_15_W0">
             <FORM kindOf="original">angang-han</FORM>
             <PHON kindOf="original">aŋaŋ-ħan</PHON>
@@ -3063,7 +3063,7 @@
                 <TRANSL xml:lang="zho">田鼠</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5759162303664922</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_16">
         <FORM kindOf="original">itira kacekuk nu falucu' nira a minengneng tuya kulafaw.</FORM>
         <PHON kindOf="original">itira kaʦəkuk nu faɾuʦuʡ nira a minəŋnəŋ tuja kuɾafaw.</PHON>
@@ -3071,7 +3071,7 @@
         <PHON kindOf="standard">itira kaʦəkuk nu faɾuʦuʡ nira a minəŋnəŋ tuja kuɾafaw.</PHON>
         <TRANSL xml:lang="zho">他看到那隻田鼠非常驚嚇.</TRANSL>
         <TRANSL xml:lang="eng">He was surprised to see the vole.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="76.12" end="80.38"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="76.12" end="80.38" />
         <W id="Amis_Nr-frog_zuomei_S_16_W0">
             <FORM kindOf="original">itira</FORM>
             <PHON kindOf="original">itira</PHON>
@@ -3232,7 +3232,7 @@
                 <TRANSL xml:lang="zho">田鼠</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5636363636363637</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_17">
         <FORM kindOf="original">su'lin a mapacekuk milaliwtu kiya wacu nira.</FORM>
         <PHON kindOf="original">suʡɾin a mapaʦəkuk miɾaɾiwtu kija waʦu nira.</PHON>
@@ -3240,7 +3240,7 @@
         <PHON kindOf="standard">suʡɾin a mapaʦəkuk miɾaɾiwtu kija waʦu nira.</PHON>
         <TRANSL xml:lang="zho">真的那隻狗也驚嚇到跑掉了.</TRANSL>
         <TRANSL xml:lang="eng">The dog was frightened and ran away.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="80.38" end="84.0"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="80.38" end="84.0" />
         <W id="Amis_Nr-frog_zuomei_S_17_W0">
             <FORM kindOf="original">su'lin</FORM>
             <PHON kindOf="original">suʡɾin</PHON>
@@ -3385,7 +3385,7 @@
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4722222222222222</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_18">
         <FORM kindOf="original">matira cakat sa cingra maru' tayra tuya kilang.</FORM>
         <PHON kindOf="original">matira ʦakat sa ʦiŋra maruʡ tajra tuja kiɾaŋ.</PHON>
@@ -3393,7 +3393,7 @@
         <PHON kindOf="standard">matira ʦakat sa ʦiŋra maruʡ tajra tuja kiɾaŋ.</PHON>
         <TRANSL xml:lang="zho">在這個狀況下,他上去坐在木頭上.</TRANSL>
         <TRANSL xml:lang="eng">Under such circumstances, he went up and sat on the wood.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="84.0" end="87.55"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="84.0" end="87.55" />
         <W id="Amis_Nr-frog_zuomei_S_18_W0">
             <FORM kindOf="original">ma-tira</FORM>
             <PHON kindOf="original">ma-tira</PHON>
@@ -3530,7 +3530,7 @@
                 <TRANSL xml:lang="zho">樹</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6075949367088608</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_19">
         <FORM kindOf="original">itira tiya kilang a latek ira tuna epung nuya kilang oya takula' aku nasa ku falucu' nira.</FORM>
         <PHON kindOf="original">itira tija kiɾaŋ a ɾatək ira tuna əpuŋ nuja kiɾaŋ o~uja takuɾaʡ aku nasa ku faɾuʦuʡ nira.</PHON>
@@ -3538,7 +3538,7 @@
         <PHON kindOf="standard">itira tija kiɾaŋ a ɾatək ira tuna əpuŋ nuja kiɾaŋ o~uja takuɾaʡ aku nasa ku faɾuʦuʡ nira.</PHON>
         <TRANSL xml:lang="zho" notes="(青蛙)可能在樹洞裡,他這麼認為.">可能在樹洞裡,他這麼認為.</TRANSL>
         <TRANSL xml:lang="eng" notes="Perhaps (the frog) was in the hole of the tree, he thought so.">Perhaps was in the hole of the tree, he thought so.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="87.55" end="94.22"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="87.55" end="94.22" />
         <W id="Amis_Nr-frog_zuomei_S_19_W0">
             <FORM kindOf="original">itira</FORM>
             <PHON kindOf="original">itira</PHON>
@@ -3811,7 +3811,7 @@
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5766871165644172</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_20">
         <FORM kindOf="original">nengnenghan nira a miceli' kuya takula' nira tiya epung niya kilang.</FORM>
         <PHON kindOf="original">nəŋnəŋħan nira a miʦəɾiʡ kuja takuɾaʡ nira tija əpuŋ nija kiɾaŋ.</PHON>
@@ -3819,7 +3819,7 @@
         <PHON kindOf="standard">nəŋnəŋħan nira a miʦəɾiʡ kuja takuɾaʡ nira tija əpuŋ nija kiɾaŋ.</PHON>
         <TRANSL xml:lang="zho" notes="他呼叫那隻青蛙,對著樹木的洞口(呼叫).">他呼叫那隻青蛙,對著樹木的洞口 .</TRANSL>
         <TRANSL xml:lang="eng" notes="He called the frog; (he called) towards the hole of the tree.">He called the frog; towards the hole of the tree.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="94.22" end="99.08"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="94.22" end="99.08" />
         <W id="Amis_Nr-frog_zuomei_S_20_W0">
             <FORM kindOf="original">nengneng-han</FORM>
             <PHON kindOf="original">nəŋnəŋ-ħan</PHON>
@@ -4012,7 +4012,7 @@
                 <TRANSL xml:lang="zho">樹</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5299145299145299</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_21">
         <FORM kindOf="original">sadak sa'an tiya XXXX ya miceli'an tiya epung nuya kilang sadak sa u anikak.</FORM>
         <PHON kindOf="original">saɬ~ɮak saʡan tija xxxx ja miʦəɾiʡan tija əpuŋ nuja kiɾaŋ saɬ~ɮak sa u anikak.</PHON>
@@ -4020,7 +4020,7 @@
         <PHON kindOf="standard">saɬ~ɮak saʡan tija xxxx ja miʦəɾiʡan tija əpuŋ nuja kiɾaŋ saɬ~ɮak sa u anikak.</PHON>
         <TRANSL xml:lang="zho">他對著樹洞裡呼叫,出來的是烏鴉.</TRANSL>
         <TRANSL xml:lang="eng">He shouted towards the tree hole, but a crow went out.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="99.08" end="105.61"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="99.08" end="105.61" />
         <W id="Amis_Nr-frog_zuomei_S_21_W0">
             <FORM kindOf="original">sadak</FORM>
             <PHON kindOf="original">saɬ~ɮak</PHON>
@@ -4261,7 +4261,7 @@
                 <TRANSL xml:lang="zho">烏鴉</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4285714285714286</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_22">
         <FORM kindOf="original">matalaw cingra matefad a malukelun a itira i suta' cingra.</FORM>
         <PHON kindOf="original">mataɾaw ʦiŋra matəfaɬ~ɮ a maɾukəɾun a itira i sutaʡ ʦiŋra.</PHON>
@@ -4269,7 +4269,7 @@
         <PHON kindOf="standard">mataɾaw ʦiŋra matəfaɬ~ɮ a maɾukəɾun a itira i sutaʡ ʦiŋra.</PHON>
         <TRANSL xml:lang="zho">他很害怕,翻滾著掉下來在地上.</TRANSL>
         <TRANSL xml:lang="eng">He was scared and fell down and tumbled onto the ground.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="105.61" end="110.76"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="105.61" end="110.76" />
         <W id="Amis_Nr-frog_zuomei_S_22_W0">
             <FORM kindOf="original">ma-talaw</FORM>
             <PHON kindOf="original">ma-taɾaw</PHON>
@@ -4454,7 +4454,7 @@
                 <TRANSL xml:lang="zho">3SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6226415094339622</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_23">
         <FORM kindOf="original">ya wacu sa nira su'lin matalawtu.</FORM>
         <PHON kindOf="original">ja waʦu sa nira suʡɾin mataɾawtu.</PHON>
@@ -4462,7 +4462,7 @@
         <PHON kindOf="standard">ja waʦu sa nira suʡɾin mataɾawtu.</PHON>
         <TRANSL xml:lang="zho">他那隻狗也是非常害怕.</TRANSL>
         <TRANSL xml:lang="eng">His dog was scared as well.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="110.76" end="112.94"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="110.76" end="112.94" />
         <W id="Amis_Nr-frog_zuomei_S_23_W0">
             <FORM kindOf="original">ya</FORM>
             <PHON kindOf="original">ja</PHON>
@@ -4575,7 +4575,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4666666666666667</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_24">
         <FORM kindOf="original">nengnenghan nira su'lin matalaw tiya mi angangan nira a anikak matalaw cangra.</FORM>
         <PHON kindOf="original">nəŋnəŋħan nira suʡɾin mataɾaw tija mi aŋaŋan nira a anikak mataɾaw ʦaŋra.</PHON>
@@ -4583,7 +4583,7 @@
         <PHON kindOf="standard">nəŋnəŋħan nira suʡɾin mataɾaw tija mi aŋaŋan nira a anikak mataɾaw ʦaŋra.</PHON>
         <TRANSL xml:lang="zho">他們真的很怕他呼叫的那隻烏鴉.</TRANSL>
         <TRANSL xml:lang="eng">They were really afraid of the crow that he shouted at.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="112.94" end="118.54"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="112.94" end="118.54" />
         <W id="Amis_Nr-frog_zuomei_S_24_W0">
             <FORM kindOf="original">nengneng-han</FORM>
             <PHON kindOf="original">nəŋnəŋ-ħan</PHON>
@@ -4808,7 +4808,7 @@
                 <TRANSL xml:lang="zho">3PL.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5323741007194245</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_25">
         <FORM kindOf="original">kaitinitu ku nga'ayay tuna fukeluh.</FORM>
         <PHON kindOf="original">kaitinitu ku ŋaʡajaj tuna fukəɾuħ.</PHON>
@@ -4816,7 +4816,7 @@
         <PHON kindOf="standard">kaitinitu ku ŋaʡajaj tuna fukəɾuħ.</PHON>
         <TRANSL xml:lang="zho">倒不如在這個磐石上.</TRANSL>
         <TRANSL xml:lang="eng">It would be better to stay on the rock.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="118.54" end="121.15"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="118.54" end="121.15" />
         <W id="Amis_Nr-frog_zuomei_S_25_W0">
             <FORM kindOf="original">ka-itini=tu</FORM>
             <PHON kindOf="original">ka-itini=tu</PHON>
@@ -4921,7 +4921,7 @@
                 <TRANSL xml:lang="zho">石頭</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6774193548387097</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_26">
         <FORM kindOf="original">itira kaku a ca'ay karawis sa'an.</FORM>
         <PHON kindOf="original">itira kaku a ʦaʡaj karawis saʡan.</PHON>
@@ -4929,7 +4929,7 @@
         <PHON kindOf="standard">itira kaku a ʦaʡaj karawis saʡan.</PHON>
         <TRANSL xml:lang="zho">我在磐石上又勾不住,他這麼說.</TRANSL>
         <TRANSL xml:lang="eng">'I couldn't keep a fast hold on the rock,' he said.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="121.15" end="123.14"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="121.15" end="123.14" />
         <W id="Amis_Nr-frog_zuomei_S_26_W0">
             <FORM kindOf="original">itira</FORM>
             <PHON kindOf="original">itira</PHON>
@@ -5034,7 +5034,7 @@
                 <TRANSL xml:lang="zho">如此說</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5862068965517242</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_27">
         <FORM kindOf="original">tayra tuya fukeluh cingra i tuya a tumireng.</FORM>
         <PHON kindOf="original">tajra tuja fukəɾuħ ʦiŋra i tuja a tumirəŋ.</PHON>
@@ -5042,7 +5042,7 @@
         <PHON kindOf="standard">tajra tuja fukəɾuħ ʦiŋra i tuja a tumirəŋ.</PHON>
         <TRANSL xml:lang="zho">倒不如站起來.</TRANSL>
         <TRANSL xml:lang="eng" notes="(I) would rather stand up.">would rather stand up.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="123.14" end="127.01"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="123.14" end="127.01" />
         <W id="Amis_Nr-frog_zuomei_S_27_W0">
             <FORM kindOf="original">tayra</FORM>
             <PHON kindOf="original">tajra</PHON>
@@ -5179,7 +5179,7 @@
                 <TRANSL xml:lang="zho">站</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.41025641025641024</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_28">
         <FORM kindOf="original">su'lin tumireng cingra maaraw nira kunini siri nu lutuk.</FORM>
         <PHON kindOf="original">suʡɾin tumirəŋ ʦiŋra maaraw nira kunini siri nu ɾutuk.</PHON>
@@ -5187,7 +5187,7 @@
         <PHON kindOf="standard">suʡɾin tumirəŋ ʦiŋra maaraw nira kunini siri nu ɾutuk.</PHON>
         <TRANSL xml:lang="zho">他真的站起來,看到一隻山羊.</TRANSL>
         <TRANSL xml:lang="eng">He really stood up, seeing a goat.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="127.01" end="131.2"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="127.01" end="131.2" />
         <W id="Amis_Nr-frog_zuomei_S_28_W0">
             <FORM kindOf="original">su'lin</FORM>
             <PHON kindOf="original">suʡɾin</PHON>
@@ -5348,7 +5348,7 @@
                 <TRANSL xml:lang="zho">山</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5688073394495412</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_29">
         <FORM kindOf="original">itirahu ku katalaw nu falucu' nira.</FORM>
         <PHON kindOf="original">itiraħu ku kataɾaw nu faɾuʦuʡ nira.</PHON>
@@ -5356,7 +5356,7 @@
         <PHON kindOf="standard">itiraħu ku kataɾaw nu faɾuʦuʡ nira.</PHON>
         <TRANSL xml:lang="zho">再一次,他感到害怕.</TRANSL>
         <TRANSL xml:lang="eng">He felt scared again.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="131.2" end="134.08"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="131.2" end="134.08" />
         <W id="Amis_Nr-frog_zuomei_S_29_W0">
             <FORM kindOf="original">itira=hu</FORM>
             <PHON kindOf="original">itira=ħu</PHON>
@@ -5469,7 +5469,7 @@
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5757575757575757</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_30">
         <FORM kindOf="original">cumikaytu tala cuwacuwatu mafukiltu cingra.</FORM>
         <PHON kindOf="original">ʦumikajtu taɾa ʦuwaʦuwatu mafukiɾtu ʦiŋra.</PHON>
@@ -5477,7 +5477,7 @@
         <PHON kindOf="standard">ʦumikajtu taɾa ʦuwaʦuwatu mafukiɾtu ʦiŋra.</PHON>
         <TRANSL xml:lang="zho" notes="快跑地(離開),他不知道往哪一個方向.">快跑地 ,他不知道往哪一個方向.</TRANSL>
         <TRANSL xml:lang="eng">Running away, he didn't know where he went.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="134.08" end="137.71"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="134.08" end="137.71" />
         <W id="Amis_Nr-frog_zuomei_S_30_W0">
             <FORM kindOf="original">c&lt;um&gt;ikay=tu</FORM>
             <PHON kindOf="original">ʦ&lt;um&gt;ikaj=tu</PHON>
@@ -5606,7 +5606,7 @@
                 <TRANSL xml:lang="zho">3SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5647058823529412</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_31">
         <FORM kindOf="original">hinamhan ta kefeng itini i i ranum itiratu cingra danguy satu a midanguy tuni katalaw tuyanan a siri.</FORM>
         <PHON kindOf="original">ħinamħan ta kəfəŋ itini i i ranum itiratu ʦiŋra ɬ~ɮaŋuj satu a miɬ~ɮaŋuj tuni kataɾaw tujanan a siri.</PHON>
@@ -5614,7 +5614,7 @@
         <PHON kindOf="standard">ħinamħan ta kəfəŋ itini i i ranum itiratu ʦiŋra ɬ~ɮaŋuj satu a miɬ~ɮaŋuj tuni kataɾaw tujanan a siri.</PHON>
         <TRANSL xml:lang="zho">結果他掉到水裡,他就在那邊游泳,因為怕那隻山羊.</TRANSL>
         <TRANSL xml:lang="eng">He fell into the water and swam there for fear of the goat.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="137.71" end="147.09"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="137.71" end="147.09" />
         <W id="Amis_Nr-frog_zuomei_S_31_W0">
             <FORM kindOf="original">hinam-han</FORM>
             <PHON kindOf="original">ħinam-ħan</PHON>
@@ -5943,7 +5943,7 @@
                 <TRANSL xml:lang="zho">羊</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5670103092783505</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_32">
         <FORM kindOf="original">su'lin maanen talahekaltu cingra na midanguy.</FORM>
         <PHON kindOf="original">suʡɾin maanən taɾaħəkaɾtu ʦiŋra na miɬ~ɮaŋuj.</PHON>
@@ -5951,7 +5951,7 @@
         <PHON kindOf="standard">suʡɾin maanən taɾaħəkaɾtu ʦiŋra na miɬ~ɮaŋuj.</PHON>
         <TRANSL xml:lang="zho">真的怎麼辦呢?他就游上岸.</TRANSL>
         <TRANSL xml:lang="eng">What could he do? He swam to the shore.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="147.09" end="149.98"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="147.09" end="149.98" />
         <W id="Amis_Nr-frog_zuomei_S_32_W0">
             <FORM kindOf="original">su'lin</FORM>
             <PHON kindOf="original">suʡɾin</PHON>
@@ -6080,7 +6080,7 @@
                 <TRANSL xml:lang="zho">游泳</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47887323943661975</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_33">
         <FORM kindOf="original">manengneng nira ku ccay a kilang mapuhedaytu a kilang maepung ku sifu' nira a latek itini kuya takula' aku.</FORM>
         <PHON kindOf="original">manəŋnəŋ nira ku ʦʦaj a kiɾaŋ mapuħəɬ~ɮajtu a kiɾaŋ maəpuŋ ku sifuʡ nira a ɾatək itini kuja takuɾaʡ aku.</PHON>
@@ -6088,7 +6088,7 @@
         <PHON kindOf="standard">manəŋnəŋ nira ku ʦʦaj a kiɾaŋ mapuħəɬ~ɮajtu a kiɾaŋ maəpuŋ ku sifuʡ nira a ɾatək itini kuja takuɾaʡ aku.</PHON>
         <TRANSL xml:lang="zho">他看到一塊木頭,已經腐朽的木頭中間有一個洞,我的青蛙可能在這裡.</TRANSL>
         <TRANSL xml:lang="eng">He saw a piece of wood, and there was a hole in the middle of the rotten wood. Perhaps my frog was here.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="149.98" end="158.73"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="149.98" end="158.73" />
         <W id="Amis_Nr-frog_zuomei_S_33_W0">
             <FORM kindOf="original">ma-nengneng</FORM>
             <PHON kindOf="original">ma-nəŋnəŋ</PHON>
@@ -6425,7 +6425,7 @@
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5608465608465609</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_34">
         <FORM kindOf="original">nasa ku hinatala nira tu karaheker nira a mikilim.</FORM>
         <PHON kindOf="original">nasa ku ħinataɾa nira tu karaħəkər nira a mikiɾim.</PHON>
@@ -6433,7 +6433,7 @@
         <PHON kindOf="standard">nasa ku ħinataɾa nira tu karaħəkər nira a mikiɾim.</PHON>
         <TRANSL xml:lang="zho">認為可能那隻青蛙可以找到,期盼的心情就放鬆了.</TRANSL>
         <TRANSL xml:lang="eng" notes="He felt relieved because he thought that he could find (his frog).">He felt relieved because he thought that he could find .</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="158.73" end="162.48"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="158.73" end="162.48" />
         <W id="Amis_Nr-frog_zuomei_S_34_W0">
             <FORM kindOf="original">nasa</FORM>
             <PHON kindOf="original">nasa</PHON>
@@ -6594,7 +6594,7 @@
                 <TRANSL xml:lang="zho">尋找</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5957446808510638</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_35">
         <FORM kindOf="original">nengnenghan nira ira ku tatusaay a takula' manengneng nira.</FORM>
         <PHON kindOf="original">nəŋnəŋħan nira ira ku tatusaaj a takuɾaʡ manəŋnəŋ nira.</PHON>
@@ -6602,7 +6602,7 @@
         <PHON kindOf="standard">nəŋnəŋħan nira ira ku tatusaaj a takuɾaʡ manəŋnəŋ nira.</PHON>
         <TRANSL xml:lang="zho">他看到有兩隻青蛙.</TRANSL>
         <TRANSL xml:lang="eng">He saw there were two frogs.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="162.48" end="166.13"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="162.48" end="166.13" />
         <W id="Amis_Nr-frog_zuomei_S_35_W0">
             <FORM kindOf="original">nengneng-han</FORM>
             <PHON kindOf="original">nəŋnəŋ-ħan</PHON>
@@ -6779,7 +6779,7 @@
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5471698113207547</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_36">
         <FORM kindOf="original">i iniitu sa cingra.</FORM>
         <PHON kindOf="original">i iniitu sa ʦiŋra.</PHON>
@@ -6787,7 +6787,7 @@
         <PHON kindOf="standard">i iniitu sa ʦiŋra.</PHON>
         <TRANSL xml:lang="zho">他說:「原來在這裡」.</TRANSL>
         <TRANSL xml:lang="eng">'It's here,' he said.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="166.13" end="168.42"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="166.13" end="168.42" />
         <W id="Amis_Nr-frog_zuomei_S_36_W0">
             <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
@@ -6860,7 +6860,7 @@
                 <TRANSL xml:lang="zho">3SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5517241379310345</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_37">
         <FORM kindOf="original">celi'han nira su'lin miceli'tu kiya takula' itini i cingranan.</FORM>
         <PHON kindOf="original">ʦəɾiʡħan nira suʡɾin miʦəɾiʡtu kija takuɾaʡ itini i ʦiŋranan.</PHON>
@@ -6868,7 +6868,7 @@
         <PHON kindOf="standard">ʦəɾiʡħan nira suʡɾin miʦəɾiʡtu kija takuɾaʡ itini i ʦiŋranan.</PHON>
         <TRANSL xml:lang="zho">他呼叫著,真的那隻青蛙也跟著呼叫他.</TRANSL>
         <TRANSL xml:lang="eng">He called, and the frog also called him.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="168.42" end="173.63"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="168.42" end="173.63" />
         <W id="Amis_Nr-frog_zuomei_S_37_W0">
             <FORM kindOf="original">celi'-han</FORM>
             <PHON kindOf="original">ʦəɾiʡ-ħan</PHON>
@@ -7037,7 +7037,7 @@
                 <TRANSL xml:lang="zho">3SG.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.543859649122807</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_38">
         <FORM kindOf="original">nengneng papinengneng hatu nira miceli' niya takula' cingra.</FORM>
         <PHON kindOf="original">nəŋnəŋ papinəŋnəŋ ħatu nira miʦəɾiʡ nija takuɾaʡ ʦiŋra.</PHON>
@@ -7045,7 +7045,7 @@
         <PHON kindOf="standard">nəŋnəŋ papinəŋnəŋ ħatu nira miʦəɾiʡ nija takuɾaʡ ʦiŋra.</PHON>
         <TRANSL xml:lang="zho">他看了又看,呼叫著那隻青蛙.</TRANSL>
         <TRANSL xml:lang="eng">He kept looking and called the frog.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="173.63" end="177.87"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="173.63" end="177.87" />
         <W id="Amis_Nr-frog_zuomei_S_38_W0">
             <FORM kindOf="original">nengneng</FORM>
             <PHON kindOf="original">nəŋnəŋ</PHON>
@@ -7198,7 +7198,7 @@
                 <TRANSL xml:lang="zho">3SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5225225225225225</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_39">
         <FORM kindOf="original">nengnenghan nira su'lin adihaytu ku wawa nira.</FORM>
         <PHON kindOf="original">nəŋnəŋħan nira suʡɾin aɬ~ɮiħajtu ku wawa nira.</PHON>
@@ -7206,7 +7206,7 @@
         <PHON kindOf="standard">nəŋnəŋħan nira suʡɾin aɬ~ɮiħajtu ku wawa nira.</PHON>
         <TRANSL xml:lang="zho" notes="真的很多孩子(小青蛙).">真的很多孩子 .</TRANSL>
         <TRANSL xml:lang="eng">There were many children.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="177.87" end="181.04"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="177.87" end="181.04" />
         <W id="Amis_Nr-frog_zuomei_S_39_W0">
             <FORM kindOf="original">nengneng-han</FORM>
             <PHON kindOf="original">nəŋnəŋ-ħan</PHON>
@@ -7335,7 +7335,7 @@
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4307692307692308</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_40">
         <FORM kindOf="original">anca widang nira hakini sa ku raheker nu falucu' nira nanuyantu i.</FORM>
         <PHON kindOf="original">anʦa wiɬ~ɮaŋ nira ħakini sa ku raħəkər nu faɾuʦuʡ nira nanujantu i.</PHON>
@@ -7343,7 +7343,7 @@
         <PHON kindOf="standard">anʦa wiɬ~ɮaŋ nira ħakini sa ku raħəkər nu faɾuʦuʡ nira nanujantu i.</PHON>
         <TRANSL xml:lang="zho">還是他的朋友呢?他就安心了.</TRANSL>
         <TRANSL xml:lang="eng">Or his friends? He felt relieved.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="181.04" end="186.23"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="181.04" end="186.23" />
         <W id="Amis_Nr-frog_zuomei_S_40_W0">
             <FORM kindOf="original">anca</FORM>
             <PHON kindOf="original">anʦa</PHON>
@@ -7560,7 +7560,7 @@
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.48062015503875966</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_41">
         <FORM kindOf="original">itiratu i tiya katefadan nira a tiya nanum itiraentu nira a palipahak kuyanan a takula'.</FORM>
         <PHON kindOf="original">itiratu i tija katəfaɬ~ɮan nira a tija nanum itiraəntu nira a paɾipaħak kujanan a takuɾaʡ.</PHON>
@@ -7568,7 +7568,7 @@
         <PHON kindOf="standard">itiratu i tija katəfaɬ~ɮan nira a tija nanum itiraəntu nira a paɾipaħak kujanan a takuɾaʡ.</PHON>
         <TRANSL xml:lang="zho">在他掉落的水裡,他就在那邊讓青蛙快樂.</TRANSL>
         <TRANSL xml:lang="eng">He made the frog happy there in the water where he fell.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="186.23" end="193.59"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="186.23" end="193.59" />
         <W id="Amis_Nr-frog_zuomei_S_41_W0">
             <FORM kindOf="original">itira=tu</FORM>
             <PHON kindOf="original">itira=tu</PHON>
@@ -7857,7 +7857,7 @@
                 <TRANSL xml:lang="zho">青蛙</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5433526011560694</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_42">
         <FORM kindOf="original">saka matiniay kuniniyan a sasuwalen aku anini saka.</FORM>
         <PHON kindOf="original">saka matiniaj kuninijan a sasuwaɾən aku anini saka.</PHON>
@@ -7865,7 +7865,7 @@
         <PHON kindOf="standard">saka matiniaj kuninijan a sasuwaɾən aku anini saka.</PHON>
         <TRANSL xml:lang="zho">我現在敘述的情形是如此.</TRANSL>
         <TRANSL xml:lang="eng">My description is like this.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="193.59" end="198.08"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="193.59" end="198.08" />
         <W id="Amis_Nr-frog_zuomei_S_42_W0">
             <FORM kindOf="original">saka</FORM>
             <PHON kindOf="original">saka</PHON>
@@ -8010,7 +8010,7 @@
                 <TRANSL xml:lang="zho">所以</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6105263157894737</SCORE></S>
     <S id="Amis_Nr-frog_zuomei_S_43">
         <FORM kindOf="original">malepuntu ku sasuwalen aku.</FORM>
         <PHON kindOf="original">maɾəpuntu ku sasuwaɾən aku.</PHON>
@@ -8018,7 +8018,7 @@
         <PHON kindOf="standard">maɾəpuntu ku sasuwaɾən aku.</PHON>
         <TRANSL xml:lang="zho">我說的結束了/我講完了.</TRANSL>
         <TRANSL xml:lang="eng">I'm done.</TRANSL>
-        <AUDIO file="Amis_Nr-frog_zuomei_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="198.08" end="200.14"/>
+        <AUDIO file="Amis_Nr-frog_zuomei_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Amis_Nr-frog_zuomei.mp3" start="198.08" end="200.14" />
         <W id="Amis_Nr-frog_zuomei_S_43_W0">
             <FORM kindOf="original">ma-lepun=tu</FORM>
             <PHON kindOf="original">ma-ɾəpun=tu</PHON>
@@ -8115,5 +8115,5 @@
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.43999999999999995</SCORE></S>
 </TEXT>

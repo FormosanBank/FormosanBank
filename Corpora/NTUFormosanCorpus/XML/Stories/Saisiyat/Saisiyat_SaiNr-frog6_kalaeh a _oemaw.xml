@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="NTU_Stry_Saisiyat_SaiNr-frog6_kalaeh a _oemaw" xml:lang="xsy" source="NTU Corpus stories for Saisiyat, story: SaiNr-frog6_kalaeh a _oemaw" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Saisiyat">
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_0">
         <FORM kindOf="original">hini' ka 'aehoe' kita' ka takem hiza'.</FORM>
@@ -7,7 +7,7 @@
         <PHON kindOf="standard">hiniʔ ka ʔæhœʔ kitaʔ ka takəm hiz~ðaʔ.</PHON>
         <TRANSL xml:lang="zho">這隻狗看著青蛙.</TRANSL>
         <TRANSL xml:lang="eng">This dog was looking at that frog.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="0.0" end="3.2"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="0.0" end="3.2" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_0_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -120,7 +120,7 @@
                 <TRANSL xml:lang="zho">那裡</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4482758620689655</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_1">
         <FORM kindOf="original">korkoring ka kitkita' ila ka 'aehoe'.</FORM>
         <PHON kindOf="original">korkoriŋ ka kitkitaʔ ila ka ʔæhœʔ.</PHON>
@@ -128,7 +128,7 @@
         <PHON kindOf="standard">korkoriŋ ka kitkitaʔ ila ka ʔæhœʔ.</PHON>
         <TRANSL xml:lang="zho">小孩一直看著狗.</TRANSL>
         <TRANSL xml:lang="eng">The child was looking intently at the dog.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="3.2" end="7.35"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="3.2" end="7.35" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_1_W0">
             <FORM kindOf="original">korkoring</FORM>
             <PHON kindOf="original">korkoriŋ</PHON>
@@ -233,7 +233,7 @@
                 <TRANSL xml:lang="zho">狗</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.46153846153846156</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_2">
         <FORM kindOf="original">kita' koSa kano' hiza k a kano' ka kita' ka takem.</FORM>
         <PHON kindOf="original">kitaʔ koʃa kanoʔ hiz~ða k a kanoʔ ka kitaʔ ka takəm.</PHON>
@@ -241,7 +241,7 @@
         <PHON kindOf="standard">kitaʔ koʃa kanoʔ hiz~ða k a kanoʔ ka kitaʔ ka takəm.</PHON>
         <TRANSL xml:lang="zho">小孩看著青蛙.</TRANSL>
         <TRANSL xml:lang="eng">The child was looking at the frog.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="7.35" end="12.27"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="7.35" end="12.27" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_2_W0">
             <FORM kindOf="original">kita'</FORM>
             <PHON kindOf="original">kitaʔ</PHON>
@@ -418,7 +418,7 @@
                 <TRANSL xml:lang="zho">青蛙</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.39583333333333337</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_3">
         <FORM kindOf="original">takem kas'oehaz ila.</FORM>
         <PHON kindOf="original">takəm kas~θʔœhaz~ð ila.</PHON>
@@ -426,7 +426,7 @@
         <PHON kindOf="standard">takəm kas~θʔœhaz~ð ila.</PHON>
         <TRANSL xml:lang="zho">青蛙跑了出來.</TRANSL>
         <TRANSL xml:lang="eng">The frog came out.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="12.27" end="18.05"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="12.27" end="18.05" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_3_W0">
             <FORM kindOf="original">takem</FORM>
             <PHON kindOf="original">takəm</PHON>
@@ -475,7 +475,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4571428571428572</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_4">
         <FORM kindOf="original">hini' korkoring ma'rem.</FORM>
         <PHON kindOf="original">hiniʔ korkoriŋ maʔrəm.</PHON>
@@ -483,7 +483,7 @@
         <PHON kindOf="standard">hiniʔ korkoriŋ maʔrəm.</PHON>
         <TRANSL xml:lang="zho">小孩去睡覺.</TRANSL>
         <TRANSL xml:lang="eng">The child went to sleep.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="18.05" end="22.63"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="18.05" end="22.63" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_4_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -532,7 +532,7 @@
                 <TRANSL xml:lang="zho">主焦&lt;完成&gt;休息</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.32558139534883723</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_5">
         <FORM kindOf="original">kano' kaybaeen nia hini' nia kaybaeen.</FORM>
         <PHON kindOf="original">kanoʔ kajβæən nia hiniʔ nia kajβæən.</PHON>
@@ -540,7 +540,7 @@
         <PHON kindOf="standard">kanoʔ kajβæən nia hiniʔ nia kajβæən.</PHON>
         <TRANSL xml:lang="zho">他的衣服.</TRANSL>
         <TRANSL xml:lang="eng">These were his clothes.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="22.63" end="31.75"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="22.63" end="31.75" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_5_W0">
             <FORM kindOf="original">kano'</FORM>
             <PHON kindOf="original">kanoʔ</PHON>
@@ -637,7 +637,7 @@
                 <TRANSL xml:lang="zho">衣服</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.34615384615384615</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_6">
         <FORM kindOf="original">haehoeway hini' ma hini' haehoeway.</FORM>
         <PHON kindOf="original">hæhœwaj hiniʔ ma hiniʔ hæhœwaj.</PHON>
@@ -645,7 +645,7 @@
         <PHON kindOf="standard">hæhœwaj hiniʔ ma hiniʔ hæhœwaj.</PHON>
         <TRANSL xml:lang="zho">也有他的鞋子.</TRANSL>
         <TRANSL xml:lang="eng">These were his shoes too.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="31.75" end="36.44"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="31.75" end="36.44" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_6_W0">
             <FORM kindOf="original">haehoeway</FORM>
             <PHON kindOf="original">hæhœwaj</PHON>
@@ -726,7 +726,7 @@
                 <TRANSL xml:lang="zho">鞋子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.2790697674418605</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_7">
         <FORM kindOf="original">nia haehoeway ilahini min'itol ila ka.</FORM>
         <PHON kindOf="original">nia hæhœwaj ilahini minʔitol ila ka.</PHON>
@@ -734,7 +734,7 @@
         <PHON kindOf="standard">nia hæhœwaj ilahini minʔitol ila ka.</PHON>
         <TRANSL xml:lang="zho">他的鞋子在這裡 ...</TRANSL>
         <TRANSL xml:lang="eng">His shoes were here ...</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="36.44" end="41.69"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="36.44" end="41.69" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_7_W0">
             <FORM kindOf="original">nia</FORM>
             <PHON kindOf="original">nia</PHON>
@@ -831,7 +831,7 @@
                 <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.37735849056603776</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_8">
         <FORM kindOf="original">korkoring kita' naehaen ila hini' ray krwaSekan noka takem ro takem 'oka' ila i kita'i.</FORM>
         <PHON kindOf="original">korkoriŋ kitaʔ næhæn ila hiniʔ raj krwaʃəkan noka takəm ro takəm ʔokaʔ ila i kitaʔi.</PHON>
@@ -839,7 +839,7 @@
         <PHON kindOf="standard">korkoriŋ kitaʔ næhæn ila hiniʔ raj krwaʃəkan noka takəm ro takəm ʔokaʔ ila i kitaʔi.</PHON>
         <TRANSL xml:lang="zho">當他起來後,他找不到青蛙.</TRANSL>
         <TRANSL xml:lang="eng">When he woke up, he couldn't find the frog in the container.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="41.69" end="49.38"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="41.69" end="49.38" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_8_W0">
             <FORM kindOf="original">korkoring</FORM>
             <PHON kindOf="original">korkoriŋ</PHON>
@@ -1104,7 +1104,7 @@
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4475524475524476</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_9">
         <FORM kindOf="original">hini' kaybaeen ma' ray ra ray rai' kabih 'askan ma pin pababoees.</FORM>
         <PHON kindOf="original">hiniʔ kajβæən maʔ raj ra raj raiʔ kaβih ʔas~θkan ma pin paβaβœəs~θ.</PHON>
@@ -1112,7 +1112,7 @@
         <PHON kindOf="standard">hiniʔ kajβæən maʔ raj ra raj raiʔ kaβih ʔas~θkan ma pin paβaβœəs~θ.</PHON>
         <TRANSL xml:lang="zho">衣服散佈在地上.</TRANSL>
         <TRANSL xml:lang="eng">The clothes were scattered all over the floor.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="49.38" end="55.71"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="49.38" end="55.71" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_9_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -1313,7 +1313,7 @@
                 <TRANSL xml:lang="zho">散佈</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.38834951456310685</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_10">
         <FORM kindOf="original">hini' 'aehae' korkoring mari' ka kano' hiza' XXXX nisia sisilin babaw.</FORM>
         <PHON kindOf="original">hiniʔ ʔæhæʔ korkoriŋ mariʔ ka kanoʔ hiz~ðaʔ **** nis~θia s~θis~θilin βaβaw.</PHON>
@@ -1321,7 +1321,7 @@
         <PHON kindOf="standard">hiniʔ ʔæhæʔ korkoriŋ mariʔ ka kanoʔ hiz~ðaʔ **** nis~θia s~θis~θilin βaβaw.</PHON>
         <TRANSL xml:lang="zho">小孩拿起什麼,舉起來.</TRANSL>
         <TRANSL xml:lang="eng">The child took his what-is-it and lifted it up.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="55.71" end="76.03"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="55.71" end="76.03" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_10_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -1506,7 +1506,7 @@
                 <TRANSL xml:lang="zho">上面</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3853211009174312</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_11">
         <FORM kindOf="original">hini' 'aehoe' haysia kita' ma moiti' ila o ray noka a takem ray krwaSekan kita' 'oka' ila ka takem.</FORM>
         <PHON kindOf="original">hiniʔ ʔæhœʔ hajs~θia kitaʔ ma moitiʔ ila o raj noka a takəm raj krwaʃəkan kitaʔ ʔokaʔ ila ka takəm.</PHON>
@@ -1514,7 +1514,7 @@
         <PHON kindOf="standard">hiniʔ ʔæhœʔ hajs~θia kitaʔ ma moitiʔ ila o raj noka a takəm raj krwaʃəkan kitaʔ ʔokaʔ ila ka takəm.</PHON>
         <TRANSL xml:lang="zho">狗還在看,把頭塞到養青蛙的瓶子裡,可是沒看到青蛙.</TRANSL>
         <TRANSL xml:lang="eng" notes="The dog was still watching and stuck (its head) into the container where the frog had been, but it saw that the frog was not there.">The dog was still watching and stuck into the container where the frog had been, but it saw that the frog was not there.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="76.03" end="87.99"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="76.03" end="87.99" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_11_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -1835,7 +1835,7 @@
                 <TRANSL xml:lang="zho">青蛙</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.46341463414634143</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_12">
         <FORM kindOf="original">raiw ila.</FORM>
         <PHON kindOf="original">raiw ila.</PHON>
@@ -1843,7 +1843,7 @@
         <PHON kindOf="standard">raiw ila.</PHON>
         <TRANSL xml:lang="zho">不見了.</TRANSL>
         <TRANSL xml:lang="eng" notes="(It) was gone.">was gone.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="87.99" end="90.46"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="87.99" end="90.46" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_12_W0">
             <FORM kindOf="original">raiw</FORM>
             <PHON kindOf="original">raiw</PHON>
@@ -1876,7 +1876,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5714285714285714</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_13">
         <FORM kindOf="original">hini' haysia ila ma pataboe' ray ka'alingo'an hiza' ka kapsaraloman a.</FORM>
         <PHON kindOf="original">hiniʔ hajs~θia ila ma pataβœʔ raj kaʔaliŋoʔan hiz~ðaʔ ka kaps~θaraloman a.</PHON>
@@ -1884,7 +1884,7 @@
         <PHON kindOf="standard">hiniʔ hajs~θia ila ma pataβœʔ raj kaʔaliŋoʔan hiz~ðaʔ ka kaps~θaraloman a.</PHON>
         <TRANSL xml:lang="zho">他的頭還是卡在裝水的地方.</TRANSL>
         <TRANSL xml:lang="eng">Its head was still stuck inside the bottle.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="90.46" end="97.37"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="90.46" end="97.37" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_13_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -2085,7 +2085,7 @@
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5263157894736843</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_14">
         <FORM kindOf="original">korkoring hini' haewaeh ka hinoehas.</FORM>
         <PHON kindOf="original">korkoriŋ hiniʔ hæwæh ka hinœhas~θ.</PHON>
@@ -2093,7 +2093,7 @@
         <PHON kindOf="standard">korkoriŋ hiniʔ hæwæh ka hinœhas~θ.</PHON>
         <TRANSL xml:lang="zho">小孩打開窗戶.</TRANSL>
         <TRANSL xml:lang="eng">The child opened the window.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="97.37" end="102.55"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="97.37" end="102.55" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_14_W0">
             <FORM kindOf="original">korkoring</FORM>
             <PHON kindOf="original">korkoriŋ</PHON>
@@ -2174,7 +2174,7 @@
                 <TRANSL xml:lang="zho">窗戶</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4285714285714286</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_15">
         <FORM kindOf="original">'oe'oe ka 'oe'oe ka mae'iyaeh raamen.</FORM>
         <PHON kindOf="original">ʔœʔœ ka ʔœʔœ ka mæʔijæh raamən.</PHON>
@@ -2182,7 +2182,7 @@
         <PHON kindOf="standard">ʔœʔœ ka ʔœʔœ ka mæʔijæh raamən.</PHON>
         <TRANSL xml:lang="zho">他叫,青蛙會知道.</TRANSL>
         <TRANSL xml:lang="eng" notes="And called out (the window). (The frog) will know by his calling.">And called out . will know by his calling.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="102.55" end="106.65"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="102.55" end="106.65" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_15_W0">
             <FORM kindOf="original">'oe'oe</FORM>
             <PHON kindOf="original">ʔœʔœ</PHON>
@@ -2287,7 +2287,7 @@
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.2264150943396226</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_16">
         <FORM kindOf="original">hini' ka 'aehoe' haysia 'ima pataboe' ray ka'askanan ka ralom.</FORM>
         <PHON kindOf="original">hiniʔ ka ʔæhœʔ hajs~θia ʔima pataβœʔ raj kaʔas~θkanan ka ralom.</PHON>
@@ -2295,7 +2295,7 @@
         <PHON kindOf="standard">hiniʔ ka ʔæhœʔ hajs~θia ʔima pataβœʔ raj kaʔas~θkanan ka ralom.</PHON>
         <TRANSL xml:lang="zho">狗的頭還是卡在放水的地方.</TRANSL>
         <TRANSL xml:lang="eng">The dog's head was still stuck inside the container.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="106.65" end="116.89"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="106.65" end="116.89" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_16_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -2480,7 +2480,7 @@
                 <TRANSL xml:lang="zho">水</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47058823529411764</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_17">
         <FORM kindOf="original">korkoring kas kita' yo 'oka' ka mae'iyaeh.</FORM>
         <PHON kindOf="original">korkoriŋ kas~θ kitaʔ jo ʔokaʔ ka mæʔijæh.</PHON>
@@ -2488,7 +2488,7 @@
         <PHON kindOf="standard">korkoriŋ kas~θ kitaʔ jo ʔokaʔ ka mæʔijæh.</PHON>
         <TRANSL xml:lang="zho">小孩沒有看到人.</TRANSL>
         <TRANSL xml:lang="eng">The boy saw that there was nobody.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="116.89" end="121.23"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="116.89" end="121.23" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_17_W0">
             <FORM kindOf="original">korkoring</FORM>
             <PHON kindOf="original">korkoriŋ</PHON>
@@ -2601,7 +2601,7 @@
                 <TRANSL xml:lang="zho">人</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.2784810126582279</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_18">
         <FORM kindOf="original">'insa'an nisia hiza' mlakay ila ka binbinisitan hiza' ka kap raloman.</FORM>
         <PHON kindOf="original">ʔins~θaʔan nis~θia hiz~ðaʔ mlakaj ila ka βinβinis~θitan hiz~ðaʔ ka kap raloman.</PHON>
@@ -2609,7 +2609,7 @@
         <PHON kindOf="standard">ʔins~θaʔan nis~θia hiz~ðaʔ mlakaj ila ka βinβinis~θitan hiz~ðaʔ ka kap raloman.</PHON>
         <TRANSL xml:lang="zho">被用來放水的瓶子破了</TRANSL>
         <TRANSL xml:lang="eng">The bottle that was used to contain water broke.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="121.23" end="128.95"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="121.23" end="128.95" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_18_W0">
             <FORM kindOf="original">'insa'an</FORM>
             <PHON kindOf="original">ʔins~θaʔan</PHON>
@@ -2802,7 +2802,7 @@
                 <TRANSL xml:lang="zho">名物化</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.41237113402061853</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_19">
         <FORM kindOf="original">hiza' ka 'aehoe' kayzaeh ila nisia mari'in 'aewpoe'oen ila.</FORM>
         <PHON kindOf="original">hiz~ðaʔ ka ʔæhœʔ kajz~ðæh ila nis~θia mariʔin ʔæwpœʔœn ila.</PHON>
@@ -2810,7 +2810,7 @@
         <PHON kindOf="standard">hiz~ðaʔ ka ʔæhœʔ kajz~ðæh ila nis~θia mariʔin ʔæwpœʔœn ila.</PHON>
         <TRANSL xml:lang="zho">狗沒事,小孩拿起狗帶著他.</TRANSL>
         <TRANSL xml:lang="eng">The dog was all right; the boy took him up and carried him.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="128.95" end="133.68"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="128.95" end="133.68" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_19_W0">
             <FORM kindOf="original">hiza'</FORM>
             <PHON kindOf="original">hiz~ðaʔ</PHON>
@@ -2971,7 +2971,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4301075268817204</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_20">
         <FORM kindOf="original">korkoring hiza' 'oe'oe 'aehoe' ma hiza' hinghae' 'oyae' ma tobong.</FORM>
         <PHON kindOf="original">korkoriŋ hiz~ðaʔ ʔœʔœ ʔæhœʔ ma hiz~ðaʔ hiŋhæʔ ʔojæʔ ma toβoŋ.</PHON>
@@ -2979,7 +2979,7 @@
         <PHON kindOf="standard">korkoriŋ hiz~ðaʔ ʔœʔœ ʔæhœʔ ma hiz~ðaʔ hiŋhæʔ ʔojæʔ ma toβoŋ.</PHON>
         <TRANSL xml:lang="zho">小孩叫,狗也吠叫.</TRANSL>
         <TRANSL xml:lang="eng">The child called out; the dog also barked along.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="133.68" end="145.45"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="133.68" end="145.45" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_20_W0">
             <FORM kindOf="original">korkoring</FORM>
             <PHON kindOf="original">korkoriŋ</PHON>
@@ -3140,7 +3140,7 @@
                 <TRANSL xml:lang="zho">&lt;主焦&gt;吠叫</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3695652173913043</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_21">
         <FORM kindOf="original">tobong hiza' 'am mwai' a hini' ray kaehoey hayza ka boya' mwai'.</FORM>
         <PHON kindOf="original">toβoŋ hiz~ðaʔ ʔam mwaiʔ a hiniʔ raj kæhœj hajz~ða ka βojaʔ mwaiʔ.</PHON>
@@ -3148,7 +3148,7 @@
         <PHON kindOf="standard">toβoŋ hiz~ðaʔ ʔam mwaiʔ a hiniʔ raj kæhœj hajz~ða ka βojaʔ mwaiʔ.</PHON>
         <TRANSL xml:lang="zho">狗在叫的時候,有蜂從樹那邊來.</TRANSL>
         <TRANSL xml:lang="eng">As the dog was barking, there were bees coming from the tree.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="145.45" end="154.75"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="145.45" end="154.75" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_21_W0">
             <FORM kindOf="original">tobong</FORM>
             <PHON kindOf="original">toβoŋ</PHON>
@@ -3357,7 +3357,7 @@
                 <TRANSL xml:lang="zho">來</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.33684210526315794</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_22">
         <FORM kindOf="original">hayap ila hini' isahiza hoema hayapen noka boya' ila hiza' hilasia 'oe'oe komoSa hiza' ka boya' XXXX isahini 'aehoe' kita' ka boya' twa'is tobong ka boya'.</FORM>
         <PHON kindOf="original">hajap ila hiniʔ is~θahiz~ða hœma hajapən noka βojaʔ ila hiz~ðaʔ hilas~θia ʔœʔœ komoʃa hiz~ðaʔ ka βojaʔ **** is~θahini ʔæhœʔ kitaʔ ka βojaʔ twaʔis~θ toβoŋ ka βojaʔ.</PHON>
@@ -3365,7 +3365,7 @@
         <PHON kindOf="standard">hajap ila hiniʔ is~θahiz~ða hœma hajapən noka βojaʔ ila hiz~ðaʔ hilas~θia ʔœʔœ komoʃa hiz~ðaʔ ka βojaʔ **** is~θahini ʔæhœʔ kitaʔ ka βojaʔ twaʔis~θ toβoŋ ka βojaʔ.</PHON>
         <TRANSL xml:lang="zho">當他們一直叫時,蜂在飛,狗繼續對蜂吠叫當他看到他們過來時.</TRANSL>
         <TRANSL xml:lang="eng" notes="The bees were hovering above while they kept on calling and the dog continued barking at the bees when it saw them (coming).">The bees were hovering above while they kept on calling and the dog continued barking at the bees when it saw them .</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="154.75" end="171.28"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="154.75" end="171.28" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_22_W0">
             <FORM kindOf="original">hayap</FORM>
             <PHON kindOf="original">hajap</PHON>
@@ -3790,7 +3790,7 @@
                 <TRANSL xml:lang="zho">蜜蜂</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4049586776859504</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_23">
         <FORM kindOf="original">a hiza' korkoring raam komoSa boya' a 'aseng ka mae'iyaeh sia masroko'.</FORM>
         <PHON kindOf="original">a hiz~ðaʔ korkoriŋ raam komoʃa βojaʔ a ʔas~θəŋ ka mæʔijæh s~θia mas~θrokoʔ.</PHON>
@@ -3798,7 +3798,7 @@
         <PHON kindOf="standard">a hiz~ðaʔ korkoriŋ raam komoʃa βojaʔ a ʔas~θəŋ ka mæʔijæh s~θia mas~θrokoʔ.</PHON>
         <TRANSL xml:lang="zho" notes="小孩知道蜂會叮人,(所以)他就彎下.">小孩知道蜂會叮人, 他就彎下.</TRANSL>
         <TRANSL xml:lang="eng">The child knew the bees sting, and he bent down.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="171.28" end="178.31"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="171.28" end="178.31" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_23_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -3991,7 +3991,7 @@
                 <TRANSL xml:lang="zho">主焦.彎下</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.38888888888888884</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_24">
         <FORM kindOf="original">hini' 'aehoe' rima' tete ka hini' ka kahoey ray tinonon noka boya' hiza'.</FORM>
         <PHON kindOf="original">hiniʔ ʔæhœʔ rimaʔ tətə ka hiniʔ ka kahœj raj tinonon noka βojaʔ hiz~ðaʔ.</PHON>
@@ -3999,7 +3999,7 @@
         <PHON kindOf="standard">hiniʔ ʔæhœʔ rimaʔ tətə ka hiniʔ ka kahœj raj tinonon noka βojaʔ hiz~ðaʔ.</PHON>
         <TRANSL xml:lang="zho">狗搖有蜂窩的樹.</TRANSL>
         <TRANSL xml:lang="eng">The dog shook the tree with the beehive.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="178.31" end="189.03"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="178.31" end="189.03" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_24_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -4208,7 +4208,7 @@
                 <TRANSL xml:lang="zho">那裡</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.40740740740740744</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_25">
         <FORM kindOf="original">boya' te'te'en mwai' ka kas'oehaz ka ka'ina'an.</FORM>
         <PHON kindOf="original">βojaʔ təʔtəʔən mwaiʔ ka kas~θʔœhaz~ð ka kaʔinaʔan.</PHON>
@@ -4216,7 +4216,7 @@
         <PHON kindOf="standard">βojaʔ təʔtəʔən mwaiʔ ka kas~θʔœhaz~ð ka kaʔinaʔan.</PHON>
         <TRANSL xml:lang="zho">搖了後,蜂跑出來了.</TRANSL>
         <TRANSL xml:lang="eng" notes="(After the dog) shook (the tree), the bees came out.">shook , the bees came out.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="189.03" end="193.64"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="189.03" end="193.64" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_25_W0">
             <FORM kindOf="original">boya'</FORM>
             <PHON kindOf="original">βojaʔ</PHON>
@@ -4345,7 +4345,7 @@
                 <TRANSL xml:lang="zho">雌蜂</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47058823529411764</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_26">
         <FORM kindOf="original">hini' ka 'aehae' ka korkoring ma mamtikot ka 'aseng hiza'.</FORM>
         <PHON kindOf="original">hiniʔ ka ʔæhæʔ ka korkoriŋ ma mamtikot ka ʔas~θəŋ hiz~ðaʔ.</PHON>
@@ -4353,7 +4353,7 @@
         <PHON kindOf="standard">hiniʔ ka ʔæhæʔ ka korkoriŋ ma mamtikot ka ʔas~θəŋ hiz~ðaʔ.</PHON>
         <TRANSL xml:lang="zho">小孩害怕蜂叮他</TRANSL>
         <TRANSL xml:lang="eng">The child was afraid that the bees might bit him.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="193.64" end="201.59"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="193.64" end="201.59" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_26_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -4522,7 +4522,7 @@
                 <TRANSL xml:lang="zho">那裡</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4819277108433735</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_27">
         <FORM kindOf="original">hihimi'an hini'.</FORM>
         <PHON kindOf="original">hihimiʔan hiniʔ.</PHON>
@@ -4530,7 +4530,7 @@
         <PHON kindOf="standard">hihimiʔan hiniʔ.</PHON>
         <TRANSL xml:lang="zho">他很安靜.</TRANSL>
         <TRANSL xml:lang="eng">He kept quiet.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="201.59" end="203.18"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="201.59" end="203.18" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_27_W0">
             <FORM kindOf="original">hihimi'an</FORM>
             <PHON kindOf="original">hihimiʔan</PHON>
@@ -4563,7 +4563,7 @@
                 <TRANSL xml:lang="zho">這裡</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.31999999999999995</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_28">
         <FORM kindOf="original">ka 'aewhaes kas'oehaz em ma kita' 'ima komoSa kano'.</FORM>
         <PHON kindOf="original">ka ʔæwhæs~θ kas~θʔœhaz~ð əm ma kitaʔ ʔima komoʃa kanoʔ.</PHON>
@@ -4571,7 +4571,7 @@
         <PHON kindOf="standard">ka ʔæwhæs~θ kas~θʔœhaz~ð əm ma kitaʔ ʔima komoʃa kanoʔ.</PHON>
         <TRANSL xml:lang="zho">老鼠跑出來,看到什麼.</TRANSL>
         <TRANSL xml:lang="eng">A mouse came out and saw what happened.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="203.18" end="210.92"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="203.18" end="210.92" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_28_W0">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
@@ -4716,7 +4716,7 @@
                 <TRANSL xml:lang="zho">什麼</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.430379746835443</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_29">
         <FORM kindOf="original">e kita' ka korkoring XXXX towa'isin te'te'en hini' ka boya' sahae' ila.</FORM>
         <PHON kindOf="original">ə kitaʔ ka korkoriŋ **** towaʔis~θin təʔtəʔən hiniʔ ka βojaʔ s~θahæʔ ila.</PHON>
@@ -4724,7 +4724,7 @@
         <PHON kindOf="standard">ə kitaʔ ka korkoriŋ **** towaʔis~θin təʔtəʔən hiniʔ ka βojaʔ s~θahæʔ ila.</PHON>
         <TRANSL xml:lang="zho" notes="(狗)繼續搖樹,蜂窩掉了下來.">繼續搖樹,蜂窩掉了下來.</TRANSL>
         <TRANSL xml:lang="eng" notes="(The dog continued to) shake (the tree), and the beehive fell down.">shake , and the beehive fell down.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="210.92" end="220.0"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="210.92" end="220.0" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_29_W0">
             <FORM kindOf="original">e</FORM>
             <PHON kindOf="original">ə</PHON>
@@ -4933,7 +4933,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4035087719298246</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_30">
         <FORM kindOf="original">kaina'an hini' kas'oehaz saboeh.</FORM>
         <PHON kindOf="original">kainaʔan hiniʔ kas~θʔœhaz~ð s~θaβœh.</PHON>
@@ -4941,7 +4941,7 @@
         <PHON kindOf="standard">kainaʔan hiniʔ kas~θʔœhaz~ð s~θaβœh.</PHON>
         <TRANSL xml:lang="zho">蜂全出來了.</TRANSL>
         <TRANSL xml:lang="eng">The bees all came out.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="220.0" end="222.55"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="220.0" end="222.55" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_30_W0">
             <FORM kindOf="original">kaina'an</FORM>
             <PHON kindOf="original">kainaʔan</PHON>
@@ -5006,7 +5006,7 @@
                 <TRANSL xml:lang="zho">全部</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.37735849056603776</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_31">
         <FORM kindOf="original">hini' ka 'aewhaes ma kas'oehaz hiza'.</FORM>
         <PHON kindOf="original">hiniʔ ka ʔæwhæs~θ ma kas~θʔœhaz~ð hiz~ðaʔ.</PHON>
@@ -5014,7 +5014,7 @@
         <PHON kindOf="standard">hiniʔ ka ʔæwhæs~θ ma kas~θʔœhaz~ð hiz~ðaʔ.</PHON>
         <TRANSL xml:lang="zho">老鼠也出來了.</TRANSL>
         <TRANSL xml:lang="eng">The mouse also got out.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="222.55" end="226.72"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="222.55" end="226.72" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_31_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -5111,7 +5111,7 @@
                 <TRANSL xml:lang="zho">那裡</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4285714285714286</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_32">
         <FORM kindOf="original">'iya paraiw ila hao hini' ka.</FORM>
         <PHON kindOf="original">ʔija paraiw ila hao hiniʔ ka.</PHON>
@@ -5119,7 +5119,7 @@
         <PHON kindOf="standard">ʔija paraiw ila hao hiniʔ ka.</PHON>
         <TRANSL xml:lang="zho">想要趕走 ...</TRANSL>
         <TRANSL xml:lang="eng">It wanted to shoo away the...</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="226.72" end="229.07"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="226.72" end="229.07" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_32_W0">
             <FORM kindOf="original">'iya</FORM>
             <PHON kindOf="original">ʔija</PHON>
@@ -5156,8 +5156,8 @@
                 <PHON kindOf="original">raiw</PHON>
                 <FORM kindOf="standard">raiw</FORM>
                 <PHON kindOf="standard">raiw</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_32_W2">
@@ -5224,7 +5224,7 @@
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3913043478260869</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_33">
         <FORM kindOf="original">korkoring rima' hosail ila hini' ray kaehoey ray roro' 'am rima' ila hao ray roro' o 'izo'.</FORM>
         <PHON kindOf="original">korkoriŋ rimaʔ hos~θail ila hiniʔ raj kæhœj raj roroʔ ʔam rimaʔ ila hao raj roroʔ o ʔiz~ðoʔ.</PHON>
@@ -5232,7 +5232,7 @@
         <PHON kindOf="standard">korkoriŋ rimaʔ hos~θail ila hiniʔ raj kæhœj raj roroʔ ʔam rimaʔ ila hao raj roroʔ o ʔiz~ðoʔ.</PHON>
         <TRANSL xml:lang="zho">小孩去躲在樹洞裡.</TRANSL>
         <TRANSL xml:lang="eng">The child went to hide up the hole in the tree.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="229.07" end="238.23"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="229.07" end="238.23" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_33_W0">
             <FORM kindOf="original">korkoring</FORM>
             <PHON kindOf="original">korkoriŋ</PHON>
@@ -5505,7 +5505,7 @@
                 <TRANSL xml:lang="zho">裡面</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3801652892561983</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_34">
         <FORM kindOf="original">rima' ila hao ray kaehoey ray roro.</FORM>
         <PHON kindOf="original">rimaʔ ila hao raj kæhœj raj roro.</PHON>
@@ -5513,7 +5513,7 @@
         <PHON kindOf="standard">rimaʔ ila hao raj kæhœj raj roro.</PHON>
         <TRANSL xml:lang="zho">他走向樹洞.</TRANSL>
         <TRANSL xml:lang="eng">He went toward the hole in the tree.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="238.23" end="249.6"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="238.23" end="249.6" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_34_W0">
             <FORM kindOf="original">rima'</FORM>
             <PHON kindOf="original">rimaʔ</PHON>
@@ -5626,7 +5626,7 @@
                 <TRANSL xml:lang="zho">洞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.30188679245283023</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_35">
         <FORM kindOf="original">kita' ka 'oewi' homses hini' korkoring sahae' ila.</FORM>
         <PHON kindOf="original">kitaʔ ka ʔœwiʔ homs~θəs~θ hiniʔ korkoriŋ s~θahæʔ ila.</PHON>
@@ -5634,7 +5634,7 @@
         <PHON kindOf="standard">kitaʔ ka ʔœwiʔ homs~θəs~θ hiniʔ korkoriŋ s~θahæʔ ila.</PHON>
         <TRANSL xml:lang="zho">小孩看到貓頭鷹,掉下去了.</TRANSL>
         <TRANSL xml:lang="eng">The child, seeing the owl, fell down.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="249.6" end="254.28"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="249.6" end="254.28" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_35_W0">
             <FORM kindOf="original">kita'</FORM>
             <PHON kindOf="original">kitaʔ</PHON>
@@ -5763,7 +5763,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3414634146341463</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_36">
         <FORM kindOf="original">hiza' kas'oehaz kitaen ka 'oewi'.</FORM>
         <PHON kindOf="original">hiz~ðaʔ kas~θʔœhaz~ð kitæn ka ʔœwiʔ.</PHON>
@@ -5771,7 +5771,7 @@
         <PHON kindOf="standard">hiz~ðaʔ kas~θʔœhaz~ð kitæn ka ʔœwiʔ.</PHON>
         <TRANSL xml:lang="zho">貓頭鷹出來了.</TRANSL>
         <TRANSL xml:lang="eng">The owl came out.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="254.28" end="257.13"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="254.28" end="257.13" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_36_W0">
             <FORM kindOf="original">hiza'</FORM>
             <PHON kindOf="original">hiz~ðaʔ</PHON>
@@ -5860,7 +5860,7 @@
                 <TRANSL xml:lang="zho">貓頭鷹</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3846153846153846</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_37">
         <FORM kindOf="original">hini' 'aehoe' sowawon noka boya' mamraiw ila.</FORM>
         <PHON kindOf="original">hiniʔ ʔæhœʔ s~θowawon noka βojaʔ mamraiw ila.</PHON>
@@ -5868,7 +5868,7 @@
         <PHON kindOf="standard">hiniʔ ʔæhœʔ s~θowawon noka βojaʔ mamraiw ila.</PHON>
         <TRANSL xml:lang="zho">蜂追狗,然後離開了.</TRANSL>
         <TRANSL xml:lang="eng">The bees chased the dog and it ran away.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="257.13" end="262.19"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="257.13" end="262.19" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_37_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -5997,7 +5997,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.375</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_38">
         <FORM kindOf="original">'ima asengen ila noka boya' isaa raiw ila.</FORM>
         <PHON kindOf="original">ʔima as~θəŋən ila noka βojaʔ is~θaa raiw ila.</PHON>
@@ -6005,7 +6005,7 @@
         <PHON kindOf="standard">ʔima as~θəŋən ila noka βojaʔ is~θaa raiw ila.</PHON>
         <TRANSL xml:lang="zho">蜂叮狗,然後離開了.</TRANSL>
         <TRANSL xml:lang="eng">The bees were stinging the dog, and it ran away.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="262.19" end="266.4"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="262.19" end="266.4" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_38_W0">
             <FORM kindOf="original">'ima</FORM>
             <PHON kindOf="original">ʔima</PHON>
@@ -6142,7 +6142,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5507246376811594</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_39">
         <FORM kindOf="original">hini' ka 'oewi' hiza' hayap.</FORM>
         <PHON kindOf="original">hiniʔ ka ʔœwiʔ hiz~ðaʔ hajap.</PHON>
@@ -6150,7 +6150,7 @@
         <PHON kindOf="standard">hiniʔ ka ʔœwiʔ hiz~ðaʔ hajap.</PHON>
         <TRANSL xml:lang="zho">貓頭鷹飛.</TRANSL>
         <TRANSL xml:lang="eng" notes="The owl flew (away).">The owl flew .</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="266.4" end="277.47"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="266.4" end="277.47" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_39_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -6231,7 +6231,7 @@
                 <TRANSL xml:lang="zho">&lt;主焦&gt;飛</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_40">
         <FORM kindOf="original">korkoring yo hini' homses ila.</FORM>
         <PHON kindOf="original">korkoriŋ jo hiniʔ homs~θəs~θ ila.</PHON>
@@ -6239,7 +6239,7 @@
         <PHON kindOf="standard">korkoriŋ jo hiniʔ homs~θəs~θ ila.</PHON>
         <TRANSL xml:lang="zho">小孩嚇到了.</TRANSL>
         <TRANSL xml:lang="eng">The child got surprised.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="277.47" end="281.33"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="277.47" end="281.33" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_40_W0">
             <FORM kindOf="original">korkoring</FORM>
             <PHON kindOf="original">korkoriŋ</PHON>
@@ -6320,7 +6320,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5283018867924528</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_41">
         <FORM kindOf="original">'ima komoSa kano' hini' mwai' tai'itol ray bato' babaw 'oe'oe ila.</FORM>
         <PHON kindOf="original">ʔima komoʃa kanoʔ hiniʔ mwaiʔ taiʔitol raj βatoʔ βaβaw ʔœʔœ ila.</PHON>
@@ -6328,7 +6328,7 @@
         <PHON kindOf="standard">ʔima komoʃa kanoʔ hiniʔ mwaiʔ taiʔitol raj βatoʔ βaβaw ʔœʔœ ila.</PHON>
         <TRANSL xml:lang="zho">他來到石頭上,在那裡叫.</TRANSL>
         <TRANSL xml:lang="eng">He got on top of the rock and called there.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="281.33" end="287.35"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="281.33" end="287.35" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_41_W0">
             <FORM kindOf="original">'ima</FORM>
             <PHON kindOf="original">ʔima</PHON>
@@ -6433,11 +6433,11 @@
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
             <M id="SaiNr-frog6_kalaeh a _oemaw_S_41_W5M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
-                <TRANSL xml:lang="eng"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">上去</TRANSL>
             </M>
         </W>
@@ -6521,7 +6521,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.42307692307692313</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_42">
         <FORM kindOf="original">'ima 'oe'oe a ka kano' ka 'aehoe' a kano' mwai' hiza' 'okik raam mwai ka wae'ae' ila hiza'.</FORM>
         <PHON kindOf="original">ʔima ʔœʔœ a ka kanoʔ ka ʔæhœʔ a kanoʔ mwaiʔ hiz~ðaʔ ʔokik raam mwai ka wæʔæʔ ila hiz~ðaʔ.</PHON>
@@ -6529,7 +6529,7 @@
         <PHON kindOf="standard">ʔima ʔœʔœ a ka kanoʔ ka ʔæhœʔ a kanoʔ mwaiʔ hiz~ðaʔ ʔokik raam mwai ka wæʔæʔ ila hiz~ðaʔ.</PHON>
         <TRANSL xml:lang="zho">他不知道鹿來了</TRANSL>
         <TRANSL xml:lang="eng">He did not know the deer was coming.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="287.35" end="299.08"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="287.35" end="299.08" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_42_W0">
             <FORM kindOf="original">'ima</FORM>
             <PHON kindOf="original">ʔima</PHON>
@@ -6834,7 +6834,7 @@
                 <TRANSL xml:lang="zho">那裡</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3779527559055118</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_43">
         <FORM kindOf="original">isahiza rima' papama' ray wae'ae' babaw.</FORM>
         <PHON kindOf="original">is~θahiz~ða rimaʔ papamaʔ raj wæʔæʔ βaβaw.</PHON>
@@ -6842,7 +6842,7 @@
         <PHON kindOf="standard">is~θahiz~ða rimaʔ papamaʔ raj wæʔæʔ βaβaw.</PHON>
         <TRANSL xml:lang="zho">小孩騎在鹿上.</TRANSL>
         <TRANSL xml:lang="eng">The child rode on top of the deer.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="299.08" end="303.1"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="299.08" end="303.1" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_43_W0">
             <FORM kindOf="original">isahiza</FORM>
             <PHON kindOf="original">is~θahiz~ða</PHON>
@@ -6939,7 +6939,7 @@
                 <TRANSL xml:lang="zho">上面</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4126984126984127</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_44">
         <FORM kindOf="original">a hiza' papama' ray wae'ae' babaw.</FORM>
         <PHON kindOf="original">a hiz~ðaʔ papamaʔ raj wæʔæʔ βaβaw.</PHON>
@@ -6947,7 +6947,7 @@
         <PHON kindOf="standard">a hiz~ðaʔ papamaʔ raj wæʔæʔ βaβaw.</PHON>
         <TRANSL xml:lang="zho">他騎在鹿上.</TRANSL>
         <TRANSL xml:lang="eng">He rode on top of the deer.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="303.1" end="308.45"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="303.1" end="308.45" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_44_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -7044,7 +7044,7 @@
                 <TRANSL xml:lang="zho">上面</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3928571428571429</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_45">
         <FORM kindOf="original">a ma'onhael a ki 'aehoe' lasia raiw ila.</FORM>
         <PHON kindOf="original">a maʔonhæl a ki ʔæhœʔ las~θia raiw ila.</PHON>
@@ -7052,7 +7052,7 @@
         <PHON kindOf="standard">a maʔonhæl a ki ʔæhœʔ las~θia raiw ila.</PHON>
         <TRANSL xml:lang="zho">鹿和狗一起離開了.</TRANSL>
         <TRANSL xml:lang="eng">Together with the dog, the deer left.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="308.45" end="311.96"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="308.45" end="311.96" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_45_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -7181,7 +7181,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4918032786885246</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_46">
         <FORM kindOf="original">hini' 'ima sia 'ae'aeaew ila longa'nga' rima' ray tangob.</FORM>
         <PHON kindOf="original">hiniʔ ʔima s~θia ʔæʔææw ila loŋaʔŋaʔ rimaʔ raj taŋoβ.</PHON>
@@ -7189,7 +7189,7 @@
         <PHON kindOf="standard">hiniʔ ʔima s~θia ʔæʔææw ila loŋaʔŋaʔ rimaʔ raj taŋoβ.</PHON>
         <TRANSL xml:lang="zho">他突然亂跑到懸崖邊.</TRANSL>
         <TRANSL xml:lang="eng">Then it suddenly ran away toward the cliff.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="311.96" end="323.73"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="311.96" end="323.73" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_46_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -7334,7 +7334,7 @@
                 <TRANSL xml:lang="zho">懸崖</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5054945054945055</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_47">
         <FORM kindOf="original">hiza' korkoring ki 'aehoe' hiza 'okik raam ma homses si'intani' hiza sahae' ila ilahini ray ray 'ataS.</FORM>
         <PHON kindOf="original">hiz~ðaʔ korkoriŋ ki ʔæhœʔ hiz~ða ʔokik raam ma homs~θəs~θ s~θiʔintaniʔ hiz~ða s~θahæʔ ila ilahini raj raj ʔataʃ.</PHON>
@@ -7342,7 +7342,7 @@
         <PHON kindOf="standard">hiz~ðaʔ korkoriŋ ki ʔæhœʔ hiz~ða ʔokik raam ma homs~θəs~θ s~θiʔintaniʔ hiz~ða s~θahæʔ ila ilahini raj raj ʔataʃ.</PHON>
         <TRANSL xml:lang="zho" notes="小孩和狗不知道(他們在哪裡),很害怕;鹿停了下來,他門掉到懸崖下.">小孩和狗不知道 ,很害怕;鹿停了下來,他門掉到懸崖下.</TRANSL>
         <TRANSL xml:lang="eng" notes="The child and the dog did not know (where they were) and were frightened; the deer stopped and they fell off the cliff.">The child and the dog did not know and were frightened; the deer stopped and they fell off the cliff.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="323.73" end="334.57"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="323.73" end="334.57" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_47_W0">
             <FORM kindOf="original">hiza'</FORM>
             <PHON kindOf="original">hiz~ðaʔ</PHON>
@@ -7623,7 +7623,7 @@
                 <TRANSL xml:lang="zho">懸崖</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4512195121951219</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_48">
         <FORM kindOf="original">ra 'aehoe' ma isaa losalaz a malobaz ila sahae' ila 'oyae'.</FORM>
         <PHON kindOf="original">ra ʔæhœʔ ma is~θaa los~θalaz~ð a maloβaz~ð ila s~θahæʔ ila ʔojæʔ.</PHON>
@@ -7631,7 +7631,7 @@
         <PHON kindOf="standard">ra ʔæhœʔ ma is~θaa los~θalaz~ð a maloβaz~ð ila s~θahæʔ ila ʔojæʔ.</PHON>
         <TRANSL xml:lang="zho">狗也重重地一起掉下去.</TRANSL>
         <TRANSL xml:lang="eng">The dog fell heavily and fell together with the child.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="334.57" end="339.23"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="334.57" end="339.23" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_48_W0">
             <FORM kindOf="original">ra</FORM>
             <PHON kindOf="original">ra</PHON>
@@ -7808,7 +7808,7 @@
                 <TRANSL xml:lang="zho">一起</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.35443037974683544</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_49">
         <FORM kindOf="original">mti' kano' ila hini' hini' kaehoey ila nonak ray hiza' ray 'ataS babaw.</FORM>
         <PHON kindOf="original">mtiʔ kanoʔ ila hiniʔ hiniʔ kæhœj ila nonak raj hiz~ðaʔ raj ʔataʃ βaβaw.</PHON>
@@ -7816,7 +7816,7 @@
         <PHON kindOf="standard">mtiʔ kanoʔ ila hiniʔ hiniʔ kæhœj ila nonak raj hiz~ðaʔ raj ʔataʃ βaβaw.</PHON>
         <TRANSL xml:lang="zho">在懸崖上有很多樹.</TRANSL>
         <TRANSL xml:lang="eng">There were many trees above the cliff.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="339.23" end="351.23"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="339.23" end="351.23" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_49_W0">
             <FORM kindOf="original">mti'</FORM>
             <PHON kindOf="original">mtiʔ</PHON>
@@ -8025,7 +8025,7 @@
                 <TRANSL xml:lang="zho">上面</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4040404040404041</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_50">
         <FORM kindOf="original">hini' wae'ae' 'ima paykosizaeh kita' ka ima sahae' ka mae'iyaeh ki 'ahoe'.</FORM>
         <PHON kindOf="original">hiniʔ wæʔæʔ ʔima pajkos~θiz~ðæh kitaʔ ka ima s~θahæʔ ka mæʔijæh ki ʔahœʔ.</PHON>
@@ -8033,7 +8033,7 @@
         <PHON kindOf="standard">hiniʔ wæʔæʔ ʔima pajkos~θiz~ðæh kitaʔ ka ima s~θahæʔ ka mæʔijæh ki ʔahœʔ.</PHON>
         <TRANSL xml:lang="zho">當小孩和狗掉下去時,鹿在上面看.</TRANSL>
         <TRANSL xml:lang="eng">The deer was on top of the cliff watching the boy and the dog fall down.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S50.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="351.23" end="364.9"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S50.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="351.23" end="364.9" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_50_W0">
             <FORM kindOf="original">hini'</FORM>
             <PHON kindOf="original">hiniʔ</PHON>
@@ -8226,7 +8226,7 @@
                 <TRANSL xml:lang="zho">狗</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4727272727272728</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_51">
         <FORM kindOf="original">a maylal'oz ka ray wasal lasia sahae' hiza' ila.</FORM>
         <PHON kindOf="original">a majlalʔoz~ð ka raj was~θal las~θia s~θahæʔ hiz~ðaʔ ila.</PHON>
@@ -8234,7 +8234,7 @@
         <PHON kindOf="standard">a majlalʔoz~ð ka raj was~θal las~θia s~θahæʔ hiz~ðaʔ ila.</PHON>
         <TRANSL xml:lang="zho">他們掉到下面.</TRANSL>
         <TRANSL xml:lang="eng">They fell down below.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S51.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="364.9" end="371.81"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S51.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="364.9" end="371.81" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_51_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -8379,7 +8379,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5070422535211268</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_52">
         <FORM kindOf="original">lalangoy ila ray ralom.</FORM>
         <PHON kindOf="original">lalaŋoj ila raj ralom.</PHON>
@@ -8387,7 +8387,7 @@
         <PHON kindOf="standard">lalaŋoj ila raj ralom.</PHON>
         <TRANSL xml:lang="zho">他們在水裡游泳.</TRANSL>
         <TRANSL xml:lang="eng">They swam in the water.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S52.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="371.81" end="374.35"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S52.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="371.81" end="374.35" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_52_W0">
             <FORM kindOf="original">la-langoy</FORM>
             <PHON kindOf="original">la-laŋoj</PHON>
@@ -8460,7 +8460,7 @@
                 <TRANSL xml:lang="zho">水</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5142857142857142</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_53">
         <FORM kindOf="original">hiza' 'aehoe' nisia mari'in pahangal palalangoy ila.</FORM>
         <PHON kindOf="original">hiz~ðaʔ ʔæhœʔ nis~θia mariʔin pahaŋal palalaŋoj ila.</PHON>
@@ -8468,7 +8468,7 @@
         <PHON kindOf="standard">hiz~ðaʔ ʔæhœʔ nis~θia mariʔin pahaŋal palalaŋoj ila.</PHON>
         <TRANSL xml:lang="zho">小孩拿著狗帶著他,使他游泳.</TRANSL>
         <TRANSL xml:lang="eng">The boy took the dog and carried it up. He made it swim.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S53.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="374.35" end="380.68"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S53.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="374.35" end="380.68" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_53_W0">
             <FORM kindOf="original">hiza'</FORM>
             <PHON kindOf="original">hiz~ðaʔ</PHON>
@@ -8605,7 +8605,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.55</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_54">
         <FORM kindOf="original">ni hayza 'aehae' ka kaehoey.</FORM>
         <PHON kindOf="original">ni hajz~ða ʔæhæʔ ka kæhœj.</PHON>
@@ -8613,7 +8613,7 @@
         <PHON kindOf="standard">ni hajz~ða ʔæhæʔ ka kæhœj.</PHON>
         <TRANSL xml:lang="zho">有一根木頭.</TRANSL>
         <TRANSL xml:lang="eng">There was a piece of wood.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S54.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="380.68" end="390.84"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S54.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="380.68" end="390.84" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_54_W0">
             <FORM kindOf="original">ni</FORM>
             <PHON kindOf="original">ni</PHON>
@@ -8694,7 +8694,7 @@
                 <TRANSL xml:lang="zho">樹</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.25</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_55">
         <FORM kindOf="original">rima' lasia ray langi kita' ka hini' ka kaehoey hini' a roro.</FORM>
         <PHON kindOf="original">rimaʔ las~θia raj laŋi kitaʔ ka hiniʔ ka kæhœj hiniʔ a roro.</PHON>
@@ -8702,7 +8702,7 @@
         <PHON kindOf="standard">rimaʔ las~θia raj laŋi kitaʔ ka hiniʔ ka kæhœj hiniʔ a roro.</PHON>
         <TRANSL xml:lang="zho">他們走去邊邊,看到樹裡有一個洞.</TRANSL>
         <TRANSL xml:lang="eng">They went to the side and saw a hole in the piece of wood.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S55.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="390.84" end="396.84"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S55.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="390.84" end="396.84" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_55_W0">
             <FORM kindOf="original">rima'</FORM>
             <PHON kindOf="original">rimaʔ</PHON>
@@ -8895,7 +8895,7 @@
                 <TRANSL xml:lang="zho">洞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4901960784313726</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_56">
         <FORM kindOf="original">a rima' ila papama' ray kaehoey babaw n tabaai.</FORM>
         <PHON kindOf="original">a rimaʔ ila papamaʔ raj kæhœj βaβaw n taβaai.</PHON>
@@ -8903,7 +8903,7 @@
         <PHON kindOf="standard">a rimaʔ ila papamaʔ raj kæhœj βaβaw n taβaai.</PHON>
         <TRANSL xml:lang="zho">他們走到枯木的上面.</TRANSL>
         <TRANSL xml:lang="eng">They went over the top of the piece of dead wood.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S56.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="396.84" end="404.32"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S56.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="396.84" end="404.32" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_56_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -9048,7 +9048,7 @@
                 <TRANSL xml:lang="zho">枯木</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4225352112676056</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_57">
         <FORM kindOf="original">na mwai' 'ima papama' ray atabai babaw ra yo kita' ila naehaen ka takem kamasal roSa' ila.</FORM>
         <PHON kindOf="original">na mwaiʔ ʔima papamaʔ raj ataβai βaβaw ra jo kitaʔ ila næhæn ka takəm kamas~θal roʃaʔ ila.</PHON>
@@ -9056,7 +9056,7 @@
         <PHON kindOf="standard">na mwaiʔ ʔima papamaʔ raj ataβai βaβaw ra jo kitaʔ ila næhæn ka takəm kamas~θal roʃaʔ ila.</PHON>
         <TRANSL xml:lang="zho">他們爬過枯木的上面,看到兩隻青蛙.</TRANSL>
         <TRANSL xml:lang="eng">They climbed over the top of the dead wood and saw two frogs below.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S57.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="404.32" end="420.45"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S57.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="404.32" end="420.45" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_57_W0">
             <FORM kindOf="original">na</FORM>
             <PHON kindOf="original">na</PHON>
@@ -9337,7 +9337,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5037037037037038</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_58">
         <FORM kindOf="original">hinap hini' 'aehae' korkoring ma 'iya rakep ka takem a 'ima ampowa' kita' ka 'ima.</FORM>
         <PHON kindOf="original">hinap hiniʔ ʔæhæʔ korkoriŋ ma ʔija rakəp ka takəm a ʔima ampowaʔ kitaʔ ka ʔima.</PHON>
@@ -9345,7 +9345,7 @@
         <PHON kindOf="standard">hinap hiniʔ ʔæhæʔ korkoriŋ ma ʔija rakəp ka takəm a ʔima ampowaʔ kitaʔ ka ʔima.</PHON>
         <TRANSL xml:lang="zho">小孩想要抓青蛙.</TRANSL>
         <TRANSL xml:lang="eng">The boy wanted to catch one frog.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S58.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="420.45" end="430.43"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S58.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="420.45" end="430.43" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_58_W0">
             <FORM kindOf="original">hinap</FORM>
             <PHON kindOf="original">hinap</PHON>
@@ -9586,7 +9586,7 @@
                 <TRANSL xml:lang="zho">進行</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4065040650406504</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_59">
         <FORM kindOf="original">raroton hiza' ka takem.</FORM>
         <PHON kindOf="original">raroton hiz~ðaʔ ka takəm.</PHON>
@@ -9594,7 +9594,7 @@
         <PHON kindOf="standard">raroton hiz~ðaʔ ka takəm.</PHON>
         <TRANSL xml:lang="zho">為什麼青蛙聚集在哪裡呢?</TRANSL>
         <TRANSL xml:lang="eng">Why did the frogs gather there.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S59.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="430.43" end="432.72"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S59.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="430.43" end="432.72" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_59_W0">
             <FORM kindOf="original">raroton</FORM>
             <PHON kindOf="original">raroton</PHON>
@@ -9659,7 +9659,7 @@
                 <TRANSL xml:lang="zho">青蛙</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4444444444444444</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_60">
         <FORM kindOf="original">kitkita' a ki 'aehoe' hiza' hini' 'aehoe' 'oe'oe ila ka.</FORM>
         <PHON kindOf="original">kitkitaʔ a ki ʔæhœʔ hiz~ðaʔ hiniʔ ʔæhœʔ ʔœʔœ ila ka.</PHON>
@@ -9667,7 +9667,7 @@
         <PHON kindOf="standard">kitkitaʔ a ki ʔæhœʔ hiz~ðaʔ hiniʔ ʔæhœʔ ʔœʔœ ila ka.</PHON>
         <TRANSL xml:lang="zho">狗叫.</TRANSL>
         <TRANSL xml:lang="eng">The dog barked.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S60.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="432.72" end="442.23"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S60.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="432.72" end="442.23" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_60_W0">
             <FORM kindOf="original">kit-kita'</FORM>
             <PHON kindOf="original">kit-kitaʔ</PHON>
@@ -9836,7 +9836,7 @@
                 <TRANSL xml:lang="zho">受格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3614457831325302</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_61">
         <FORM kindOf="original">korkoring hini' 'ima 'oe'oe ka hini' takem.</FORM>
         <PHON kindOf="original">korkoriŋ hiniʔ ʔima ʔœʔœ ka hiniʔ takəm.</PHON>
@@ -9844,7 +9844,7 @@
         <PHON kindOf="standard">korkoriŋ hiniʔ ʔima ʔœʔœ ka hiniʔ takəm.</PHON>
         <TRANSL xml:lang="zho">小孩在叫青蛙.</TRANSL>
         <TRANSL xml:lang="eng">The child called out to the frog.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S61.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="442.23" end="446.79"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S61.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="442.23" end="446.79" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_61_W0">
             <FORM kindOf="original">korkoring</FORM>
             <PHON kindOf="original">korkoriŋ</PHON>
@@ -9957,7 +9957,7 @@
                 <TRANSL xml:lang="zho">青蛙</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47457627118644063</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_62">
         <FORM kindOf="original">'ima komoSa hini' hayza naehaen nisia hiza' takem a 'aehae' rakepen ila.</FORM>
         <PHON kindOf="original">ʔima komoʃa hiniʔ hajz~ða næhæn nis~θia hiz~ðaʔ takəm a ʔæhæʔ rakəpən ila.</PHON>
@@ -9965,7 +9965,7 @@
         <PHON kindOf="standard">ʔima komoʃa hiniʔ hajz~ða næhæn nis~θia hiz~ðaʔ takəm a ʔæhæʔ rakəpən ila.</PHON>
         <TRANSL xml:lang="zho">有他的 ... 他抓了一隻青蛙.</TRANSL>
         <TRANSL xml:lang="eng">There was his ... he took one frog.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S62.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="446.79" end="452.6"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S62.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="446.79" end="452.6" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_62_W0">
             <FORM kindOf="original">'ima</FORM>
             <PHON kindOf="original">ʔima</PHON>
@@ -10166,7 +10166,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4247787610619469</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_63">
         <FORM kindOf="original">lasia hini' ma kakminitkita' koSa powa' iza 'oe'oe hiza'.</FORM>
         <PHON kindOf="original">las~θia hiniʔ ma kakminitkitaʔ koʃa powaʔ iz~ða ʔœʔœ hiz~ðaʔ.</PHON>
@@ -10174,7 +10174,7 @@
         <PHON kindOf="standard">las~θia hiniʔ ma kakminitkitaʔ koʃa powaʔ iz~ða ʔœʔœ hiz~ðaʔ.</PHON>
         <TRANSL xml:lang="zho">他們一直看,為什麼一直叫?</TRANSL>
         <TRANSL xml:lang="eng">They were watching, and asked why he kept calling.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S63.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="452.6" end="457.84"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S63.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="452.6" end="457.84" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_63_W0">
             <FORM kindOf="original">lasia</FORM>
             <PHON kindOf="original">las~θia</PHON>
@@ -10319,7 +10319,7 @@
                 <TRANSL xml:lang="zho">那裡</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4222222222222223</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_64">
         <FORM kindOf="original">sia 'ima bilis ka takem 'aehae'.</FORM>
         <PHON kindOf="original">s~θia ʔima βilis~θ ka takəm ʔæhæʔ.</PHON>
@@ -10327,7 +10327,7 @@
         <PHON kindOf="standard">s~θia ʔima βilis~θ ka takəm ʔæhæʔ.</PHON>
         <TRANSL xml:lang="zho">小孩拿走一隻青蛙.</TRANSL>
         <TRANSL xml:lang="eng">The child took one frog away.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S64.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="457.84" end="460.54"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S64.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="457.84" end="460.54" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_64_W0">
             <FORM kindOf="original">sia</FORM>
             <PHON kindOf="original">s~θia</PHON>
@@ -10424,7 +10424,7 @@
                 <TRANSL xml:lang="zho">一</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.30000000000000004</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_65">
         <FORM kindOf="original">lasia 'ima bazbazae' ila.</FORM>
         <PHON kindOf="original">las~θia ʔima βaz~ðβaz~ðæʔ ila.</PHON>
@@ -10432,7 +10432,7 @@
         <PHON kindOf="standard">las~θia ʔima βaz~ðβaz~ðæʔ ila.</PHON>
         <TRANSL xml:lang="zho">他們在聽.</TRANSL>
         <TRANSL xml:lang="eng">They were listening.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S65.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="460.54" end="462.93"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S65.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="460.54" end="462.93" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_65_W0">
             <FORM kindOf="original">lasia</FORM>
             <PHON kindOf="original">las~θia</PHON>
@@ -10505,7 +10505,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.43243243243243246</SCORE></S>
     <S id="SaiNr-frog6_kalaeh a _oemaw_S_66">
         <FORM kindOf="original">'oka' ila.</FORM>
         <PHON kindOf="original">ʔokaʔ ila.</PHON>
@@ -10513,7 +10513,7 @@
         <PHON kindOf="standard">ʔokaʔ ila.</PHON>
         <TRANSL xml:lang="zho">沒有了.</TRANSL>
         <TRANSL xml:lang="eng">It's finished.</TRANSL>
-        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S66.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="462.93" end="467.63"/>
+        <AUDIO file="SaiNr-frog6_kalaeh a _oemaw_S66.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-frog6_kalaeh a _oemaw.mp3" start="462.93" end="467.63" />
         <W id="SaiNr-frog6_kalaeh a _oemaw_S_66_W0">
             <FORM kindOf="original">'oka'</FORM>
             <PHON kindOf="original">ʔokaʔ</PHON>
@@ -10546,5 +10546,5 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3076923076923077</SCORE></S>
 </TEXT>

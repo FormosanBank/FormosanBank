@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="NTU_Stry_Saisiyat_SaiNr-kathethel_parain a _oemaw" xml:lang="xsy" source="NTU Corpus stories for Saisiyat, story: SaiNr-kathethel_parain a _oemaw" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Saisiyat">
     <S id="SaiNr-kathethel_parain a _oemaw_S_0">
         <FORM kindOf="original">e kakhayza'an saksaka SaiSiyat 'ima haSa' tnon.</FORM>
@@ -7,7 +7,7 @@
         <PHON kindOf="standard">ə kakhajz~ðaʔan s~θaks~θaka ʃaiʃijat ʔima haʃaʔ tnon.</PHON>
         <TRANSL xml:lang="zho" notes="從前賽夏人不會(用竹架子?)織布.">從前賽夏人不會 織布.</TRANSL>
         <TRANSL xml:lang="eng">The SaiSiyat people did not know how to weave before.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="0.0" end="5.51"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="0.0" end="5.51" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_0_W0">
             <FORM kindOf="original">e</FORM>
             <PHON kindOf="original">ə</PHON>
@@ -128,7 +128,7 @@
                 <TRANSL xml:lang="zho">&lt;主焦&gt;織布</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.33333333333333337</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_1">
         <FORM kindOf="original">koSa'en tnon ka kaybaeen mina noka a biwa' sa ina toertoeroe'.</FORM>
         <PHON kindOf="original">koʃaʔən tnon ka kajβæən mina noka a βiwaʔ s~θa ina tœrtœrœʔ.</PHON>
@@ -136,7 +136,7 @@
         <PHON kindOf="standard">koʃaʔən tnon ka kajβæən mina noka a βiwaʔ s~θa ina tœrtœrœʔ.</PHON>
         <TRANSL xml:lang="zho">據說織衣服是以前雷神教的.</TRANSL>
         <TRANSL xml:lang="eng" notes="It was Kathethel who taught (them) weaving.">It was Kathethel who taught weaving.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="5.51" end="11.36"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="5.51" end="11.36" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_1_W0">
             <FORM kindOf="original">koSa'en</FORM>
             <PHON kindOf="original">koʃaʔən</PHON>
@@ -317,11 +317,11 @@
                 <PHON kindOf="original">tœrœʔ</PHON>
                 <FORM kindOf="standard">toeroe'</FORM>
                 <PHON kindOf="standard">tœrœʔ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
-    </S>
+    <SCORE>0.4631578947368421</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_2">
         <FORM kindOf="original">biwa' 'inay rayno' mwai' kakhayzaehan sa.</FORM>
         <PHON kindOf="original">βiwaʔ ʔinaj rajnoʔ mwaiʔ kakhajz~ðæhan s~θa.</PHON>
@@ -329,7 +329,7 @@
         <PHON kindOf="standard">βiwaʔ ʔinaj rajnoʔ mwaiʔ kakhajz~ðæhan s~θa.</PHON>
         <TRANSL xml:lang="zho">為此雷神從哪兒來呢?</TRANSL>
         <TRANSL xml:lang="eng">Where does Kathethel come from?</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="11.36" end="14.43"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="11.36" end="14.43" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_2_W0">
             <FORM kindOf="original">biwa'</FORM>
             <PHON kindOf="original">βiwaʔ</PHON>
@@ -434,7 +434,7 @@
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3666666666666667</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_3">
         <FORM kindOf="original">koSa'en SaiSiya rima' kama'alep rima' ray 'oeS'oeSoe'an.</FORM>
         <PHON kindOf="original">koʃaʔən ʃaiʃija rimaʔ kamaʔaləp rimaʔ raj ʔœʃʔœʃœʔan.</PHON>
@@ -442,7 +442,7 @@
         <PHON kindOf="standard">koʃaʔən ʃaiʃija rimaʔ kamaʔaləp rimaʔ raj ʔœʃʔœʃœʔan.</PHON>
         <TRANSL xml:lang="zho">據說賽夏人去 ... ... 獵人去山上.</TRANSL>
         <TRANSL xml:lang="eng">The SaiSiyats go hunting in the woods.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="14.43" end="17.99"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="14.43" end="17.99" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_3_W0">
             <FORM kindOf="original">koSa'en</FORM>
             <PHON kindOf="original">koʃaʔən</PHON>
@@ -571,7 +571,7 @@
                 <TRANSL xml:lang="zho">名物化</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.32608695652173914</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_4">
         <FORM kindOf="original">lam lampez mae'iyaeh rima' 'alep ila 'aehae' hahila rima' 'alep.</FORM>
         <PHON kindOf="original">lam lampəz~ð mæʔijæh rimaʔ ʔaləp ila ʔæhæʔ hahila rimaʔ ʔaləp.</PHON>
@@ -579,7 +579,7 @@
         <PHON kindOf="standard">lam lampəz~ð mæʔijæh rimaʔ ʔaləp ila ʔæhæʔ hahila rimaʔ ʔaləp.</PHON>
         <TRANSL xml:lang="zho">有十個人去打一整天的獵.</TRANSL>
         <TRANSL xml:lang="eng">Ten persons went hunting. The hunt lasted for one day.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="17.99" end="23.33"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="17.99" end="23.33" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_4_W0">
             <FORM kindOf="original">lam</FORM>
             <PHON kindOf="original">lam</PHON>
@@ -748,7 +748,7 @@
                 <TRANSL xml:lang="zho">&lt;主焦&gt;打獵</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.36363636363636365</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_5">
         <FORM kindOf="original">lobihin kita'en ray 'inasal ka a pazay ray koloban ma' sizaeh ila talek.</FORM>
         <PHON kindOf="original">loβihin kitaʔən raj ʔinas~θal ka a paz~ðaj raj koloβan maʔ s~θiz~ðæh ila talək.</PHON>
@@ -756,7 +756,7 @@
         <PHON kindOf="standard">loβihin kitaʔən raj ʔinas~θal ka a paz~ðaj raj koloβan maʔ s~θiz~ðæh ila talək.</PHON>
         <TRANSL xml:lang="zho" notes="回到工寮(沒有人),卻看見鍋子裡有飯 ... ... 在鍋子裡也有燒好的飯.">回到工寮 ,卻看見鍋子裡有飯 ... ... 在鍋子裡也有燒好的飯.</TRANSL>
         <TRANSL xml:lang="eng">Upon their return, they saw the rice in the pot has been cooked.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="23.33" end="29.54"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="23.33" end="29.54" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_5_W0">
             <FORM kindOf="original">lobih-in</FORM>
             <PHON kindOf="original">loβih-in</PHON>
@@ -981,7 +981,7 @@
                 <TRANSL xml:lang="zho">&lt;完成&gt;煮飯</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.39669421487603307</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_6">
         <FORM kindOf="original">koSa ma' hini hiya' mwai' talek ray isason ka ka pazay hini.</FORM>
         <PHON kindOf="original">koʃa maʔ hini hijaʔ mwaiʔ talək raj is~θas~θon ka ka paz~ðaj hini.</PHON>
@@ -989,7 +989,7 @@
         <PHON kindOf="standard">koʃa maʔ hini hijaʔ mwaiʔ talək raj is~θas~θon ka ka paz~ðaj hini.</PHON>
         <TRANSL xml:lang="zho">就是說這個 ... ... 誰來到山上來煮這頓飯呢?</TRANSL>
         <TRANSL xml:lang="eng">Who came to cook the rice?</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="29.54" end="35.64"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="29.54" end="35.64" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_6_W0">
             <FORM kindOf="original">koSa</FORM>
             <PHON kindOf="original">koʃa</PHON>
@@ -1190,7 +1190,7 @@
                 <TRANSL xml:lang="zho">這個</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.32608695652173914</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_7">
         <FORM kindOf="original">lasia ray 'inasal ma' 'al'alihan bala' 'iyaralomon.</FORM>
         <PHON kindOf="original">las~θia raj ʔinas~θal maʔ ʔalʔalihan βalaʔ ʔijaralomon.</PHON>
@@ -1198,7 +1198,7 @@
         <PHON kindOf="standard">las~θia raj ʔinas~θal maʔ ʔalʔalihan βalaʔ ʔijaralomon.</PHON>
         <TRANSL xml:lang="zho">他們在工寮裡,很接近河川.</TRANSL>
         <TRANSL xml:lang="eng">Their workplace is close to the river.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="35.64" end="38.72"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="35.64" end="38.72" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_7_W0">
             <FORM kindOf="original">lasia</FORM>
             <PHON kindOf="original">las~θia</PHON>
@@ -1343,7 +1343,7 @@
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4444444444444444</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_8">
         <FORM kindOf="original">ka koSa'en kakita' So 'aehae' hahila kil 'aehae' hahila rim'an ila tatini' So'o 'aehae' honay hini 'iyalawa' kitkita' hiya' 'atomal mwai' ma' talek ka pazay 'inimita' isaa kama'alep haebaeaen rima' ila.</FORM>
         <PHON kindOf="original">ka koʃaʔən kakitaʔ ʃo ʔæhæʔ hahila kil ʔæhæʔ hahila rimʔan ila tatiniʔ ʃoʔo ʔæhæʔ honaj hini ʔijalawaʔ kitkitaʔ hijaʔ ʔatomal mwaiʔ maʔ talək ka paz~ðaj ʔinimitaʔ is~θaa kamaʔaləp hæβææn rimaʔ ila.</PHON>
@@ -1351,7 +1351,7 @@
         <PHON kindOf="standard">ka koʃaʔən kakitaʔ ʃo ʔæhæʔ hahila kil ʔæhæʔ hahila rimʔan ila tatiniʔ ʃoʔo ʔæhæʔ honaj hini ʔijalawaʔ kitkitaʔ hijaʔ ʔatomal mwaiʔ maʔ talək ka paz~ðaj ʔinimitaʔ is~θaa kamaʔaləp hæβææn rimaʔ ila.</PHON>
         <TRANSL xml:lang="zho">讓一個老人在這裡站崗,看看到底是誰來給獵人煮飯.</TRANSL>
         <TRANSL xml:lang="eng">One of the elders was left to guard the place and watch who would come to cook the rice. The hunters left.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="38.72" end="54.92"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="38.72" end="54.92" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_8_W0">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
@@ -1644,7 +1644,7 @@
                 <PHON kindOf="original">lawaʔ</PHON>
                 <FORM kindOf="standard">lawa'</FORM>
                 <PHON kindOf="standard">lawaʔ</PHON>
-                <TRANSL xml:lang="eng"/>
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">站崗</TRANSL>
             </M>
         </W>
@@ -1888,7 +1888,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3850931677018633</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_9">
         <FORM kindOf="original">'aehae' tatini' e pakitkita'en ri'sa isa 'aehae' 'ima roehaenaen ila sa'oewaz kita'en 'inaray waSal 'inaray ralom mwai' kakamehoera ka kabinao' 'al'alak 'atomal mwai' 'isaa rima' kita'en sa talek ila.</FORM>
         <PHON kindOf="original">ʔæhæʔ tatiniʔ ə pakitkitaʔən riʔs~θa is~θa ʔæhæʔ ʔima rœhænæn ila s~θaʔœwaz~ð kitaʔən ʔinaraj waʃal ʔinaraj ralom mwaiʔ kakaməhœra ka kaβinaoʔ ʔalʔalak ʔatomal mwaiʔ ʔis~θaa rimaʔ kitaʔən s~θa talək ila.</PHON>
@@ -1896,7 +1896,7 @@
         <PHON kindOf="standard">ʔæhæʔ tatiniʔ ə pakitkitaʔən riʔs~θa is~θa ʔæhæʔ ʔima rœhænæn ila s~θaʔœwaz~ð kitaʔən ʔinaraj waʃal ʔinaraj ralom mwaiʔ kakaməhœra ka kaβinaoʔ ʔalʔalak ʔatomal mwaiʔ ʔis~θaa rimaʔ kitaʔən s~θa talək ila.</PHON>
         <TRANSL xml:lang="zho">晚上的時候,果真看到一位非常年輕的女子,一下子從海 ... ... 從水裡出來,走來走去燒飯.</TRANSL>
         <TRANSL xml:lang="eng">In the evening, the elder saw a very young lady come out from the sea and saw her cook.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="54.92" end="70.68"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="54.92" end="70.68" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_9_W0">
             <FORM kindOf="original">'aehae'</FORM>
             <PHON kindOf="original">ʔæhæʔ</PHON>
@@ -2417,7 +2417,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.41520467836257313</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_10">
         <FORM kindOf="original">sizaeh ila talek mina Soka' 'am lobih ilahao 'am raiw ila.</FORM>
         <PHON kindOf="original">s~θiz~ðæh ila talək mina ʃokaʔ ʔam loβih ilahao ʔam raiw ila.</PHON>
@@ -2425,7 +2425,7 @@
         <PHON kindOf="standard">s~θiz~ðæh ila talək mina ʃokaʔ ʔam loβih ilahao ʔam raiw ila.</PHON>
         <TRANSL xml:lang="zho" notes="(那位女子)煮完了,準備要跑回去時.">煮完了,準備要跑回去時.</TRANSL>
         <TRANSL xml:lang="eng">When the lady finished cooking, she prepared to leave.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="70.68" end="74.34"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="70.68" end="74.34" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_10_W0">
             <FORM kindOf="original">sizaeh</FORM>
             <PHON kindOf="original">s~θiz~ðæh</PHON>
@@ -2610,7 +2610,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.37037037037037035</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_11">
         <FORM kindOf="original">noka 'isaa noka baki'? sipoti' noka hobak 'isaa 'oka' ila 'i sipoti' 'oka' ila i sahpiih ka isaa.</FORM>
         <PHON kindOf="original">noka ʔis~θaa noka βakiʔ? s~θipotiʔ noka hoβak ʔis~θaa ʔokaʔ ila ʔi s~θipotiʔ ʔokaʔ ila i s~θahpiih ka is~θaa.</PHON>
@@ -2618,7 +2618,7 @@
         <PHON kindOf="standard">noka ʔis~θaa noka βakiʔ? s~θipotiʔ noka hoβak ʔis~θaa ʔokaʔ ila ʔi s~θipotiʔ ʔokaʔ ila i s~θahpiih ka is~θaa.</PHON>
         <TRANSL xml:lang="zho" notes="老人用標槍擋住, (她就)無法通過那個.">老人用標槍擋住, 無法通過那個.</TRANSL>
         <TRANSL xml:lang="eng">The elder blocked her way and she was not able to pass through.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="74.34" end="81.75"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="74.34" end="81.75" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_11_W0">
             <FORM kindOf="original">noka</FORM>
             <PHON kindOf="original">noka</PHON>
@@ -2923,7 +2923,7 @@
                 <TRANSL xml:lang="zho">那個</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3851851851851852</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_12">
         <FORM kindOf="original">'inay risa' isaa paehraehraengen singozawen naehaen mwai' maehraehraeng.</FORM>
         <PHON kindOf="original">ʔinaj ris~θaʔ is~θaa pæhræhræŋən s~θiŋoz~ðawən næhæn mwaiʔ mæhræhræŋ.</PHON>
@@ -2931,7 +2931,7 @@
         <PHON kindOf="standard">ʔinaj ris~θaʔ is~θaa pæhræhræŋən s~θiŋoz~ðawən næhæn mwaiʔ mæhræhræŋ.</PHON>
         <TRANSL xml:lang="zho">老人跟她談話, 問她從哪裡來.</TRANSL>
         <TRANSL xml:lang="eng">The elder talked to her and asked her where she was from.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="81.75" end="86.91"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="81.75" end="86.91" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_12_W0">
             <FORM kindOf="original">'inay</FORM>
             <PHON kindOf="original">ʔinaj</PHON>
@@ -3065,7 +3065,7 @@
                 <FORM kindOf="standard">wai'</FORM>
                 <PHON kindOf="standard">waiʔ</PHON>
                 <TRANSL xml:lang="eng">come</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="SaiNr-kathethel_parain a _oemaw_S_12_W7">
@@ -3084,7 +3084,7 @@
                 <TRANSL xml:lang="zho">主焦.商量</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.39655172413793105</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_13">
         <FORM kindOf="original">nak'ini ila o 'isaa o roehaenaen ila o kama'alep lobih ila.</FORM>
         <PHON kindOf="original">nakʔini ila o ʔis~θaa o rœhænæn ila o kamaʔaləp loβih ila.</PHON>
@@ -3092,7 +3092,7 @@
         <PHON kindOf="standard">nakʔini ila o ʔis~θaa o rœhænæn ila o kamaʔaləp loβih ila.</PHON>
         <TRANSL xml:lang="zho">那天晚上,獵人回來了.</TRANSL>
         <TRANSL xml:lang="eng">At night, the hunters returned home.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="86.91" end="90.39"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="86.91" end="90.39" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_13_W0">
             <FORM kindOf="original">nak'ini</FORM>
             <PHON kindOf="original">nakʔini</PHON>
@@ -3269,7 +3269,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4086021505376344</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_14">
         <FORM kindOf="original">'aehae' ka 'aehoe' minsa'la' mwai' mwai' risaa isaa mwai' wawisawis potngor ila.</FORM>
         <PHON kindOf="original">ʔæhæʔ ka ʔæhœʔ mins~θaʔlaʔ mwaiʔ mwaiʔ ris~θaa is~θaa mwaiʔ wawis~θawis~θ potŋor ila.</PHON>
@@ -3277,7 +3277,7 @@
         <PHON kindOf="standard">ʔæhæʔ ka ʔæhœʔ mins~θaʔlaʔ mwaiʔ mwaiʔ ris~θaa is~θaa mwaiʔ wawis~θawis~θ potŋor ila.</PHON>
         <TRANSL xml:lang="zho">狗先來,來到那裡.</TRANSL>
         <TRANSL xml:lang="eng">The dog arrived home ahead and wagged its tail.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="90.39" end="96.51"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="90.39" end="96.51" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_14_W0">
             <FORM kindOf="original">'aehae'</FORM>
             <PHON kindOf="original">ʔæhæʔ</PHON>
@@ -3502,7 +3502,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.37606837606837606</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_15">
         <FORM kindOf="original">hiza 'aehoe' hiza ma' sebeten sebeten koSa.</FORM>
         <PHON kindOf="original">hiz~ða ʔæhœʔ hiz~ða maʔ s~θəβətən s~θəβətən koʃa.</PHON>
@@ -3510,7 +3510,7 @@
         <PHON kindOf="standard">hiz~ða ʔæhœʔ hiz~ða maʔ s~θəβətən s~θəβətən koʃa.</PHON>
         <TRANSL xml:lang="zho" notes="(獵人)拍拍那條狗,說道:">拍拍那條狗,說道:</TRANSL>
         <TRANSL xml:lang="eng">The hunters patted the dog and said,</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="96.51" end="101.43"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="96.51" end="101.43" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_15_W0">
             <FORM kindOf="original">hiza</FORM>
             <PHON kindOf="original">hiz~ða</PHON>
@@ -3639,7 +3639,7 @@
                 <TRANSL xml:lang="zho">&lt;主焦&gt;說</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.39473684210526316</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_16">
         <FORM kindOf="original">'ampowa' mwai' kaehngap.</FORM>
         <PHON kindOf="original">ʔampowaʔ mwaiʔ kæhŋap.</PHON>
@@ -3647,7 +3647,7 @@
         <PHON kindOf="standard">ʔampowaʔ mwaiʔ kæhŋap.</PHON>
         <TRANSL xml:lang="zho">怎麼這麼喘呢?</TRANSL>
         <TRANSL xml:lang="eng">What is the matter?</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="101.43" end="102.43"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="101.43" end="102.43" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_16_W0">
             <FORM kindOf="original">'ampowa'</FORM>
             <PHON kindOf="original">ʔampowaʔ</PHON>
@@ -3704,7 +3704,7 @@
                 <TRANSL xml:lang="zho">&lt;主焦&gt;亂竄</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_17">
         <FORM kindOf="original">'toet ka 'aehoe'.</FORM>
         <PHON kindOf="original">ʔtœt ka ʔæhœʔ.</PHON>
@@ -3712,7 +3712,7 @@
         <PHON kindOf="standard">ʔtœt ka ʔæhœʔ.</PHON>
         <TRANSL xml:lang="zho" notes="狗(被打到)放屁.">狗 放屁.</TRANSL>
         <TRANSL xml:lang="eng">The dog farted.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="102.43" end="104.27"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="102.43" end="104.27" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_17_W0">
             <FORM kindOf="original">'toet</FORM>
             <PHON kindOf="original">ʔtœt</PHON>
@@ -3761,7 +3761,7 @@
                 <TRANSL xml:lang="zho">狗</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.24</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_18">
         <FORM kindOf="original">isaa hiza ka minkoringan sawa' ila sawa ila isaa paehraehraengen ila siwa' ila singsingozawen ila.</FORM>
         <PHON kindOf="original">is~θaa hiz~ða ka minkoriŋan s~θawaʔ ila s~θawa ila is~θaa pæhræhræŋən ila s~θiwaʔ ila s~θiŋs~θiŋoz~ðawən ila.</PHON>
@@ -3769,7 +3769,7 @@
         <PHON kindOf="standard">is~θaa hiz~ða ka minkoriŋan s~θawaʔ ila s~θawa ila is~θaa pæhræhræŋən ila s~θiwaʔ ila s~θiŋs~θiŋoz~ðawən ila.</PHON>
         <TRANSL xml:lang="zho">那小姑娘笑了.大家跟她商量,她就答應了.</TRANSL>
         <TRANSL xml:lang="eng">The lady broke out laughing and agreed to talk.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="104.27" end="111.52"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="104.27" end="111.52" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_18_W0">
             <FORM kindOf="original">isaa</FORM>
             <PHON kindOf="original">is~θaa</PHON>
@@ -4034,7 +4034,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5294117647058824</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_19">
         <FORM kindOf="original">sa nak hini yao hini 'al'alak haysia.</FORM>
         <PHON kindOf="original">s~θa nak hini jao hini ʔalʔalak hajs~θia.</PHON>
@@ -4042,7 +4042,7 @@
         <PHON kindOf="standard">s~θa nak hini jao hini ʔalʔalak hajs~θia.</PHON>
         <TRANSL xml:lang="zho" notes="(她一直問)像我這樣還年輕.">像我這樣還年輕.</TRANSL>
         <TRANSL xml:lang="eng" notes="(She kept asking) I am still young.">I am still young.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="111.52" end="114.12"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="111.52" end="114.12" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_19_W0">
             <FORM kindOf="original">sa</FORM>
             <PHON kindOf="original">s~θa</PHON>
@@ -4155,7 +4155,7 @@
                 <TRANSL xml:lang="zho">還</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.37735849056603776</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_20">
         <FORM kindOf="original">a yao ni yaba' torongon koSa'en sa'ila ma' toertoroe' ka a tatnon nak hini isaa.</FORM>
         <PHON kindOf="original">a jao ni jaβaʔ toroŋon koʃaʔən s~θaʔila maʔ tœrtorœʔ ka a tatnon nak hini is~θaa.</PHON>
@@ -4163,7 +4163,7 @@
         <PHON kindOf="standard">a jao ni jaβaʔ toroŋon koʃaʔən s~θaʔila maʔ tœrtorœʔ ka a tatnon nak hini is~θaa.</PHON>
         <TRANSL xml:lang="zho">我爸爸叫我去教編織的方法.</TRANSL>
         <TRANSL xml:lang="eng">My father instructed me to teach people how to weave.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="114.12" end="120.75"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="114.12" end="120.75" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_20_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -4412,7 +4412,7 @@
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3495145631067961</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_21">
         <FORM kindOf="original">'oka ila sa' mwai' ila ka imahabaan kama'alep.</FORM>
         <PHON kindOf="original">ʔoka ila s~θaʔ mwaiʔ ila ka imahaβaan kamaʔaləp.</PHON>
@@ -4420,7 +4420,7 @@
         <PHON kindOf="standard">ʔoka ila s~θaʔ mwaiʔ ila ka imahaβaan kamaʔaləp.</PHON>
         <TRANSL xml:lang="zho">來很多人.</TRANSL>
         <TRANSL xml:lang="eng">There came more hunters.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="120.75" end="123.82"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="120.75" end="123.82" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_21_W0">
             <FORM kindOf="original">'oka</FORM>
             <PHON kindOf="original">ʔoka</PHON>
@@ -4557,7 +4557,7 @@
                 <TRANSL xml:lang="zho">獵人</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4347826086956522</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_22">
         <FORM kindOf="original">mwai' a' papnabih koSa hini kabinao' hayza' ka 'al'alak e pakray'aboe ila lasia.</FORM>
         <PHON kindOf="original">mwaiʔ aʔ papnaβih koʃa hini kaβinaoʔ hajz~ðaʔ ka ʔalʔalak ə pakrajʔaβœ ila las~θia.</PHON>
@@ -4565,7 +4565,7 @@
         <PHON kindOf="standard">mwaiʔ aʔ papnaβih koʃa hini kaβinaoʔ hajz~ðaʔ ka ʔalʔalak ə pakrajʔaβœ ila las~θia.</PHON>
         <TRANSL xml:lang="zho">打獵的人回來,談論說,這個小姐和年輕的男生,要讓他們結婚.</TRANSL>
         <TRANSL xml:lang="eng">The hunters wanted a young man to marry the young lady.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="123.82" end="130.01"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="123.82" end="130.01" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_22_W0">
             <FORM kindOf="original">m-wai'</FORM>
             <PHON kindOf="original">m-waiʔ</PHON>
@@ -4790,7 +4790,7 @@
                 <TRANSL xml:lang="zho">3PL.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5190839694656488</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_23">
         <FORM kindOf="original">a 'in'alay isaza siwa' hayza' 'aehae' 'al'alak 'ima 'i'ini' rwasek i isaa lasia pakrwaseken ila.</FORM>
         <PHON kindOf="original">a ʔinʔalaj is~θaz~ða s~θiwaʔ hajz~ðaʔ ʔæhæʔ ʔalʔalak ʔima ʔiʔiniʔ rwas~θək i is~θaa las~θia pakrwas~θəkən ila.</PHON>
@@ -4798,7 +4798,7 @@
         <PHON kindOf="standard">a ʔinʔalaj is~θaz~ða s~θiwaʔ hajz~ðaʔ ʔæhæʔ ʔalʔalak ʔima ʔiʔiniʔ rwas~θək i is~θaa las~θia pakrwas~θəkən ila.</PHON>
         <TRANSL xml:lang="zho">允許他們的婚事.</TRANSL>
         <TRANSL xml:lang="eng">The young man who has not yet married agreed to get married with her.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="130.01" end="136.24"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="130.01" end="136.24" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_23_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -5055,7 +5055,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3921568627450981</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_24">
         <FORM kindOf="original">isaa rwasek ila isaa hN koza ila kin honahnge hiza ma'.</FORM>
         <PHON kindOf="original">is~θaa rwas~θək ila is~θaa hn koz~ða ila kin honahŋə hiz~ða maʔ.</PHON>
@@ -5063,7 +5063,7 @@
         <PHON kindOf="standard">is~θaa rwas~θək ila is~θaa hn koz~ða ila kin honahŋə hiz~ða maʔ.</PHON>
         <TRANSL xml:lang="zho">結婚後過了很久.</TRANSL>
         <TRANSL xml:lang="eng">It has been a long time after they got married.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="136.24" end="141.36"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="136.24" end="141.36" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_24_W0">
             <FORM kindOf="original">isaa</FORM>
             <PHON kindOf="original">is~θaa</PHON>
@@ -5240,7 +5240,7 @@
                 <TRANSL xml:lang="zho">也</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.46341463414634143</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_25">
         <FORM kindOf="original">ka hiza minkoringan 'am lobih kosa 'am rima' kala yaba nahan nisia rima' ray 'inkahoelan.</FORM>
         <PHON kindOf="original">ka hiz~ða minkoriŋan ʔam loβih kos~θa ʔam rimaʔ kala jaβa nahan nis~θia rimaʔ raj ʔinkahœlan.</PHON>
@@ -5248,7 +5248,7 @@
         <PHON kindOf="standard">ka hiz~ða minkoriŋan ʔam loβih kos~θa ʔam rimaʔ kala jaβa nahan nis~θia rimaʔ raj ʔinkahœlan.</PHON>
         <TRANSL xml:lang="zho">結婚後很久,想要回娘家.</TRANSL>
         <TRANSL xml:lang="eng">After getting married for a long time, the woman asked to go home to her parents' house.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="141.36" end="148.47"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="141.36" end="148.47" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_25_W0">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
@@ -5489,7 +5489,7 @@
                 <TRANSL xml:lang="zho">娘家</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5068493150684932</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_26">
         <FORM kindOf="original">'am rima' hiza ka 'al'alak rima' oyae ta tanisowaw.</FORM>
         <PHON kindOf="original">ʔam rimaʔ hiz~ða ka ʔalʔalak rimaʔ ojæ ta tanis~θowaw.</PHON>
@@ -5497,7 +5497,7 @@
         <PHON kindOf="standard">ʔam rimaʔ hiz~ða ka ʔalʔalak rimaʔ ojæ ta tanis~θowaw.</PHON>
         <TRANSL xml:lang="zho">那個年輕人也要跟著去.</TRANSL>
         <TRANSL xml:lang="eng">Her husband wanted to go with her.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="148.47" end="152.08"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="148.47" end="152.08" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_26_W0">
             <FORM kindOf="original">'am</FORM>
             <PHON kindOf="original">ʔam</PHON>
@@ -5642,7 +5642,7 @@
                 <TRANSL xml:lang="zho">主焦.跟隨</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.430379746835443</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_27">
         <FORM kindOf="original">rima' isaa kita'en sa' haw ray ralom izo' kayzaeh taew'an.</FORM>
         <PHON kindOf="original">rimaʔ is~θaa kitaʔən s~θaʔ haw raj ralom iz~ðoʔ kajz~ðæh tæwʔan.</PHON>
@@ -5650,7 +5650,7 @@
         <PHON kindOf="standard">rimaʔ is~θaa kitaʔən s~θaʔ haw raj ralom iz~ðoʔ kajz~ðæh tæwʔan.</PHON>
         <TRANSL xml:lang="zho">看到在水裡有很漂亮的家.</TRANSL>
         <TRANSL xml:lang="eng">They saw her beautiful house under the water.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="152.08" end="157.09"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="152.08" end="157.09" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_27_W0">
             <FORM kindOf="original">rima'</FORM>
             <PHON kindOf="original">rimaʔ</PHON>
@@ -5819,7 +5819,7 @@
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47058823529411764</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_28">
         <FORM kindOf="original">o toon akoy atomal o 'ima raam tnon koSa sarara' koSa hini ay 'ima raam tnon.</FORM>
         <PHON kindOf="original">o toon akoj atomal o ʔima raam tnon koʃa s~θararaʔ koʃa hini aj ʔima raam tnon.</PHON>
@@ -5827,7 +5827,7 @@
         <PHON kindOf="standard">o toon akoj atomal o ʔima raam tnon koʃa s~θararaʔ koʃa hini aj ʔima raam tnon.</PHON>
         <TRANSL xml:lang="zho" notes="那女人已經織了很多衣服, 因為她知道如何編織.(那男生)說我很欣賞很會編織的年輕女孩子.">那女人已經織了很多衣服, 因為她知道如何編織. 說我很欣賞很會編織的年輕女孩子.</TRANSL>
         <TRANSL xml:lang="eng">The woman had weaved many kinds of clothes for she knew how to weave. The man said he liked girls who knew how to weave.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="157.09" end="164.07"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="157.09" end="164.07" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_28_W0">
             <FORM kindOf="original">o</FORM>
             <PHON kindOf="original">o</PHON>
@@ -6084,7 +6084,7 @@
                 <TRANSL xml:lang="zho">&lt;主焦&gt;編織</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4347826086956522</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_29">
         <FORM kindOf="original">SaiSiyat nao raam tnon ma' kayzaeh.</FORM>
         <PHON kindOf="original">ʃaiʃijat nao raam tnon maʔ kajz~ðæh.</PHON>
@@ -6092,7 +6092,7 @@
         <PHON kindOf="standard">ʃaiʃijat nao raam tnon maʔ kajz~ðæh.</PHON>
         <TRANSL xml:lang="zho">賽夏族假如會編織的話是最好不過.</TRANSL>
         <TRANSL xml:lang="eng">It would have been good if the SaiSiyat people learned to weave.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="164.07" end="166.91"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="164.07" end="166.91" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_29_W0">
             <FORM kindOf="original">SaiSiyat</FORM>
             <PHON kindOf="original">ʃaiʃijat</PHON>
@@ -6189,7 +6189,7 @@
                 <TRANSL xml:lang="zho">主焦.好</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4285714285714286</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_30">
         <FORM kindOf="original">isaa lobih naehaen ray ila hao ray SaiSiyat ila.</FORM>
         <PHON kindOf="original">is~θaa loβih næhæn raj ila hao raj ʃaiʃijat ila.</PHON>
@@ -6197,7 +6197,7 @@
         <PHON kindOf="standard">is~θaa loβih næhæn raj ila hao raj ʃaiʃijat ila.</PHON>
         <TRANSL xml:lang="zho">回去賽夏族那邊.</TRANSL>
         <TRANSL xml:lang="eng">They returned to the SaiSiyat tribe.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="166.91" end="170.5"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="166.91" end="170.5" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_30_W0">
             <FORM kindOf="original">isaa</FORM>
             <PHON kindOf="original">is~θaa</PHON>
@@ -6342,7 +6342,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4375</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_31">
         <FORM kindOf="original">ray ima haebaeaen ila isaa rima' sa tatoeroe ila tatoeroe' ka tatnon.</FORM>
         <PHON kindOf="original">raj ima hæβææn ila is~θaa rimaʔ s~θa tatœrœ ila tatœrœʔ ka tatnon.</PHON>
@@ -6350,7 +6350,7 @@
         <PHON kindOf="standard">raj ima hæβææn ila is~θaa rimaʔ s~θa tatœrœ ila tatœrœʔ ka tatnon.</PHON>
         <TRANSL xml:lang="zho">去教導編織的方法.</TRANSL>
         <TRANSL xml:lang="eng">And she taught them how to weave.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="170.5" end="174.93"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="170.5" end="174.93" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_31_W0">
             <FORM kindOf="original">ray</FORM>
             <PHON kindOf="original">raj</PHON>
@@ -6559,7 +6559,7 @@
                 <TRANSL xml:lang="zho">編織</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3132530120481928</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_32">
         <FORM kindOf="original">toertoeroe'en ka tatnon minsa'la isaa raam ila hayza' 'ima haebaeaen.</FORM>
         <PHON kindOf="original">tœrtœrœʔən ka tatnon mins~θaʔla is~θaa raam ila hajz~ðaʔ ʔima hæβææn.</PHON>
@@ -6567,7 +6567,7 @@
         <PHON kindOf="standard">tœrtœrœʔən ka tatnon mins~θaʔla is~θaa raam ila hajz~ðaʔ ʔima hæβææn.</PHON>
         <TRANSL xml:lang="zho">先教編織法, 有很多人學會了.</TRANSL>
         <TRANSL xml:lang="eng">She taught the first batch of weavers and they learned how to weave.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="174.93" end="180.94"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="174.93" end="180.94" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_32_W0">
             <FORM kindOf="original">toertoeroe'-en</FORM>
             <PHON kindOf="original">tœrtœrœʔ-ən</PHON>
@@ -6736,7 +6736,7 @@
                 <TRANSL xml:lang="zho">很多人</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.32558139534883723</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_33">
         <FORM kindOf="original">ra raam ila 'isahiza ka kathethel a kathethel koSa'en kathethel isaa makakreng naehaen tortoroe' sizaeh ila hayza' naehaen a e 'ima aroma' towa toertoeroe'en naehaen.</FORM>
         <PHON kindOf="original">ra raam ila ʔis~θahiz~ða ka kathəthəl a kathəthəl koʃaʔən kathəthəl is~θaa makakrəŋ næhæn tortorœʔ s~θiz~ðæh ila hajz~ðaʔ næhæn a ə ʔima aromaʔ towa tœrtœrœʔən næhæn.</PHON>
@@ -6744,7 +6744,7 @@
         <PHON kindOf="standard">ra raam ila ʔis~θahiz~ða ka kathəthəl a kathəthəl koʃaʔən kathəthəl is~θaa makakrəŋ næhæn tortorœʔ s~θiz~ðæh ila hajz~ðaʔ næhæn a ə ʔima aromaʔ towa tœrtœrœʔən næhæn.</PHON>
         <TRANSL xml:lang="zho">她教完他們編織後, 還有其他人要教.</TRANSL>
         <TRANSL xml:lang="eng">After she taught them weaving, there was another batch of students and she taught them to weave also.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="180.94" end="192.66"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="180.94" end="192.66" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_33_W0">
             <FORM kindOf="original">ra</FORM>
             <PHON kindOf="original">ra</PHON>
@@ -7153,7 +7153,7 @@
                 <TRANSL xml:lang="zho">仍</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.45493562231759654</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_34">
         <FORM kindOf="original">hiza minsa'la toertoeroe' lasia hayza sail ka 'oka'i 'am tortoroe' ka hayza maybiil.</FORM>
         <PHON kindOf="original">hiz~ða mins~θaʔla tœrtœrœʔ las~θia hajz~ða s~θail ka ʔokaʔi ʔam tortorœʔ ka hajz~ða majβiil.</PHON>
@@ -7161,7 +7161,7 @@
         <PHON kindOf="standard">hiz~ða mins~θaʔla tœrtœrœʔ las~θia hajz~ða s~θail ka ʔokaʔi ʔam tortorœʔ ka hajz~ða majβiil.</PHON>
         <TRANSL xml:lang="zho">先學過的人有隱藏技術,沒教後學的人.</TRANSL>
         <TRANSL xml:lang="eng">The first batch of learners did not teach the next batch of learners some skills.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="192.66" end="199.98"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="192.66" end="199.98" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_34_W0">
             <FORM kindOf="original">hiza</FORM>
             <PHON kindOf="original">hiz~ða</PHON>
@@ -7370,7 +7370,7 @@
                 <TRANSL xml:lang="zho">&lt;完成&gt;主焦.後</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3846153846153846</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_35">
         <FORM kindOf="original">hayza' sail ka a tatnon isaa tatnon noka hiza ka biwa' ka hiza ka kabinao' a 'a'inola' ila pak'a'inola'en ila nihia' kayzaeh tinon.</FORM>
         <PHON kindOf="original">hajz~ðaʔ s~θail ka a tatnon is~θaa tatnon noka hiz~ða ka βiwaʔ ka hiz~ða ka kaβinaoʔ a ʔaʔinolaʔ ila pakʔaʔinolaʔən ila nihiaʔ kajz~ðæh tinon.</PHON>
@@ -7378,7 +7378,7 @@
         <PHON kindOf="standard">hajz~ðaʔ s~θail ka a tatnon is~θaa tatnon noka hiz~ða ka βiwaʔ ka hiz~ða ka kaβinaoʔ a ʔaʔinolaʔ ila pakʔaʔinolaʔən ila nihiaʔ kajz~ðæh tinon.</PHON>
         <TRANSL xml:lang="zho">用雷女神編織的技術,先給學的人測驗,再比賽.</TRANSL>
         <TRANSL xml:lang="eng">They hid some weaving skills from the students, so they held a competition to see who had better weaving skills.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="199.98" end="212.16"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="199.98" end="212.16" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_35_W0">
             <FORM kindOf="original">hayza'</FORM>
             <PHON kindOf="original">hajz~ðaʔ</PHON>
@@ -7763,7 +7763,7 @@
                 <TRANSL xml:lang="zho">編織</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.427860696517413</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_36">
         <FORM kindOf="original">tnon kita'en hini minsa'la' ka toertoeroe' sia 'oka'i i toertoeroe' ka saboeh.</FORM>
         <PHON kindOf="original">tnon kitaʔən hini mins~θaʔlaʔ ka tœrtœrœʔ s~θia ʔokaʔi i tœrtœrœʔ ka s~θaβœh.</PHON>
@@ -7771,7 +7771,7 @@
         <PHON kindOf="standard">tnon kitaʔən hini mins~θaʔlaʔ ka tœrtœrœʔ s~θia ʔokaʔi i tœrtœrœʔ ka s~θaβœh.</PHON>
         <TRANSL xml:lang="zho">第一批的學生沒有把所有的技巧教給第二批的學生.</TRANSL>
         <TRANSL xml:lang="eng">The first batch of students did not teach everything to the second batch of students.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="212.16" end="218.66"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="212.16" end="218.66" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_36_W0">
             <FORM kindOf="original">tnon</FORM>
             <PHON kindOf="original">tnon</PHON>
@@ -7972,7 +7972,7 @@
                 <TRANSL xml:lang="zho">全部</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4307692307692308</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_37">
         <FORM kindOf="original">nisia hayza sailin.</FORM>
         <PHON kindOf="original">nis~θia hajz~ða s~θailin.</PHON>
@@ -7980,7 +7980,7 @@
         <PHON kindOf="standard">nis~θia hajz~ða s~θailin.</PHON>
         <TRANSL xml:lang="zho">他們有把技術藏起來.</TRANSL>
         <TRANSL xml:lang="eng">They hid some techniques.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="218.66" end="220.01"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="218.66" end="220.01" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_37_W0">
             <FORM kindOf="original">nisia</FORM>
             <PHON kindOf="original">nis~θia</PHON>
@@ -8037,7 +8037,7 @@
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.41666666666666663</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_38">
         <FORM kindOf="original">sirae'aew.</FORM>
         <PHON kindOf="original">s~θiræʔæw.</PHON>
@@ -8045,7 +8045,7 @@
         <PHON kindOf="standard">s~θiræʔæw.</PHON>
         <TRANSL xml:lang="zho">他們沒有把所有的技術教給他們.</TRANSL>
         <TRANSL xml:lang="eng">They did not teach them all the techniques.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="220.01" end="220.87"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="220.01" end="220.87" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_38_W0">
             <FORM kindOf="original">sirae'aew</FORM>
             <PHON kindOf="original">s~θiræʔæw</PHON>
@@ -8062,7 +8062,7 @@
                 <TRANSL xml:lang="zho">主焦.隱瞞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.19999999999999996</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_39">
         <FORM kindOf="original">on 'insa'an noka ila ka a sapang pak'aynola'en ila.</FORM>
         <PHON kindOf="original">on ʔins~θaʔan noka ila ka a s~θapaŋ pakʔajnolaʔən ila.</PHON>
@@ -8070,7 +8070,7 @@
         <PHON kindOf="standard">on ʔins~θaʔan noka ila ka a s~θapaŋ pakʔajnolaʔən ila.</PHON>
         <TRANSL xml:lang="zho">裁判希望他們正式比賽.</TRANSL>
         <TRANSL xml:lang="eng">The competition director wanted them to compete with each other.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="220.87" end="227.44"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="220.87" end="227.44" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_39_W0">
             <FORM kindOf="original">on</FORM>
             <PHON kindOf="original">on</PHON>
@@ -8231,7 +8231,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5128205128205128</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_40">
         <FORM kindOf="original">kita' takita' raam ila isaa.</FORM>
         <PHON kindOf="original">kitaʔ takitaʔ raam ila is~θaa.</PHON>
@@ -8239,7 +8239,7 @@
         <PHON kindOf="standard">kitaʔ takitaʔ raam ila is~θaa.</PHON>
         <TRANSL xml:lang="zho">看看學會了嗎?</TRANSL>
         <TRANSL xml:lang="eng">To see if they have learned how to weave.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="227.44" end="229.63"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="227.44" end="229.63" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_40_W0">
             <FORM kindOf="original">kita'</FORM>
             <PHON kindOf="original">kitaʔ</PHON>
@@ -8328,7 +8328,7 @@
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_41">
         <FORM kindOf="original">a a kita'en hiza minsa'la' toertoeroe'oen yo So hayza sail 'oka' i papiko'amet.</FORM>
         <PHON kindOf="original">a a kitaʔən hiz~ða mins~θaʔlaʔ tœrtœrœʔœn jo ʃo hajz~ða s~θail ʔokaʔ i papikoʔamət.</PHON>
@@ -8336,7 +8336,7 @@
         <PHON kindOf="standard">a a kitaʔən hiz~ða mins~θaʔlaʔ tœrtœrœʔœn jo ʃo hajz~ða s~θail ʔokaʔ i papikoʔamət.</PHON>
         <TRANSL xml:lang="zho">第一批的學生沒有把所有的技巧教給第二批的學生, 他們有把技術藏起來.</TRANSL>
         <TRANSL xml:lang="eng">The first batch of students did not teach everything to the second batch of students and concealed the techniques from them.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="229.63" end="237.59"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="229.63" end="237.59" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_41_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -8569,7 +8569,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4078947368421053</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_42">
         <FORM kindOf="original">hiza koSa'en hini mi maybiil 'ima tatoeroe' raam hiza koSa 'isa hiza koSa'en minsa'la' ao sahoewiS ka 'isaa kathethel.</FORM>
         <PHON kindOf="original">hiz~ða koʃaʔən hini mi majβiil ʔima tatœrœʔ raam hiz~ða koʃa ʔis~θa hiz~ða koʃaʔən mins~θaʔlaʔ ao s~θahœwiʃ ka ʔis~θaa kathəthəl.</PHON>
@@ -8577,7 +8577,7 @@
         <PHON kindOf="standard">hiz~ða koʃaʔən hini mi majβiil ʔima tatœrœʔ raam hiz~ða koʃa ʔis~θa hiz~ða koʃaʔən mins~θaʔlaʔ ao s~θahœwiʃ ka ʔis~θaa kathəthəl.</PHON>
         <TRANSL xml:lang="zho">先學的人開始記恨雷女.</TRANSL>
         <TRANSL xml:lang="eng">The first batch of students hated Kathethel.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="237.59" end="248.32"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="237.59" end="248.32" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_42_W0">
             <FORM kindOf="original">hiza</FORM>
             <PHON kindOf="original">hiz~ða</PHON>
@@ -8890,7 +8890,7 @@
                 <TRANSL xml:lang="zho">人名</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.40217391304347827</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_43">
         <FORM kindOf="original">hiza ka kathethel ni yaba' nisia torongon koSa'en sa'ila.</FORM>
         <PHON kindOf="original">hiz~ða ka kathəthəl ni jaβaʔ nis~θia toroŋon koʃaʔən s~θaʔila.</PHON>
@@ -8898,7 +8898,7 @@
         <PHON kindOf="standard">hiz~ða ka kathəthəl ni jaβaʔ nis~θia toroŋon koʃaʔən s~θaʔila.</PHON>
         <TRANSL xml:lang="zho">那個雷女被爸爸叫去.</TRANSL>
         <TRANSL xml:lang="eng" notes="Kathethel was ordered by her father to go (to teach Atayal).">Kathethel was ordered by her father to go .</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="248.32" end="251.88"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="248.32" end="251.88" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_43_W0">
             <FORM kindOf="original">hiza</FORM>
             <PHON kindOf="original">hiz~ða</PHON>
@@ -9059,7 +9059,7 @@
                 <TRANSL xml:lang="zho">主焦.去</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4631578947368421</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_44">
         <FORM kindOf="original">toertoeroe' 'ana SaypapaaS ma' toertoeroe'.</FORM>
         <PHON kindOf="original">tœrtœrœʔ ʔana ʃajpapaaʃ maʔ tœrtœrœʔ.</PHON>
@@ -9067,7 +9067,7 @@
         <PHON kindOf="standard">tœrtœrœʔ ʔana ʃajpapaaʃ maʔ tœrtœrœʔ.</PHON>
         <TRANSL xml:lang="zho" notes="(說她連)泰雅族也可以教.">泰雅族也可以教.</TRANSL>
         <TRANSL xml:lang="eng" notes="(She could) even teach Saypapa:as (Atayal).">even teach Saypapa:as .</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="251.88" end="254.92"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="251.88" end="254.92" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_44_W0">
             <FORM kindOf="original">toertoeroe'</FORM>
             <PHON kindOf="original">tœrtœrœʔ</PHON>
@@ -9148,7 +9148,7 @@
                 <TRANSL xml:lang="zho">主焦.教</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.34375</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_45">
         <FORM kindOf="original">SaiSiyat hini toertoeroe' ka tnon kayzaeh a raam saboeh.</FORM>
         <PHON kindOf="original">ʃaiʃijat hini tœrtœrœʔ ka tnon kajz~ðæh a raam s~θaβœh.</PHON>
@@ -9156,7 +9156,7 @@
         <PHON kindOf="standard">ʃaiʃijat hini tœrtœrœʔ ka tnon kajz~ðæh a raam s~θaβœh.</PHON>
         <TRANSL xml:lang="zho" notes="雷女被她爸爸派去教泰雅族以及賽夏族, (這樣)他們就可以都全部學會.">雷女被她爸爸派去教泰雅族以及賽夏族, 他們就可以都全部學會.</TRANSL>
         <TRANSL xml:lang="eng">Kathethel was instructed by her father to teach the Atayals as well as the SaiSiyats so they could learn the techniques of weaving.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="254.92" end="258.7"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="254.92" end="258.7" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_45_W0">
             <FORM kindOf="original">SaiSiyat</FORM>
             <PHON kindOf="original">ʃaiʃijat</PHON>
@@ -9301,7 +9301,7 @@
                 <TRANSL xml:lang="zho">全部</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.367816091954023</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_46">
         <FORM kindOf="original">hiza taykayzaeh mat ma' tnon sizaeh ila.</FORM>
         <PHON kindOf="original">hiz~ða tajkajz~ðæh mat maʔ tnon s~θiz~ðæh ila.</PHON>
@@ -9309,7 +9309,7 @@
         <PHON kindOf="standard">hiz~ða tajkajz~ðæh mat maʔ tnon s~θiz~ðæh ila.</PHON>
         <TRANSL xml:lang="zho">他們編織結束.</TRANSL>
         <TRANSL xml:lang="eng">They have finished weaving.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="258.7" end="262.47"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="258.7" end="262.47" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_46_W0">
             <FORM kindOf="original">hiza</FORM>
             <PHON kindOf="original">hiz~ða</PHON>
@@ -9342,11 +9342,11 @@
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
             <M id="SaiNr-kathethel_parain a _oemaw_S_46_W1M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
-                <TRANSL xml:lang="eng"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">最後有結果</TRANSL>
             </M>
         </W>
@@ -9430,7 +9430,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.33333333333333337</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_47">
         <FORM kindOf="original">a 'aynola' sizaeh ila.</FORM>
         <PHON kindOf="original">a ʔajnolaʔ s~θiz~ðæh ila.</PHON>
@@ -9438,7 +9438,7 @@
         <PHON kindOf="standard">a ʔajnolaʔ s~θiz~ðæh ila.</PHON>
         <TRANSL xml:lang="zho">他們比賽結束.</TRANSL>
         <TRANSL xml:lang="eng">They finished competing.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="262.47" end="264.26"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="262.47" end="264.26" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_47_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -9503,7 +9503,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3783783783783784</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_48">
         <FORM kindOf="original">hiza isaa ka ina minsa'la' toertoeroe' hayza sail rae'aew ka anasia ka tatnon.</FORM>
         <PHON kindOf="original">hiz~ða is~θaa ka ina mins~θaʔlaʔ tœrtœrœʔ hajz~ða s~θail ræʔæw ka anas~θia ka tatnon.</PHON>
@@ -9511,7 +9511,7 @@
         <PHON kindOf="standard">hiz~ða is~θaa ka ina mins~θaʔlaʔ tœrtœrœʔ hajz~ða s~θail ræʔæw ka anas~θia ka tatnon.</PHON>
         <TRANSL xml:lang="zho">第一批的學生不希望第二批的學生學會織布的秘訣.</TRANSL>
         <TRANSL xml:lang="eng">The first batch did not want the second batch of students to learn the secrets of weaving.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="264.26" end="270.3"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="264.26" end="270.3" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_48_W0">
             <FORM kindOf="original">hiza</FORM>
             <PHON kindOf="original">hiz~ða</PHON>
@@ -9720,7 +9720,7 @@
                 <TRANSL xml:lang="zho">織布的方法</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47619047619047616</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_49">
         <FORM kindOf="original">isaa lasia sa sa'aewhaey ila sahoewisin ila noka a hiza 'ima 'ima minsa'la'.</FORM>
         <PHON kindOf="original">is~θaa las~θia s~θa s~θaʔæwhæj ila s~θahœwis~θin ila noka a hiz~ða ʔima ʔima mins~θaʔlaʔ.</PHON>
@@ -9728,7 +9728,7 @@
         <PHON kindOf="standard">is~θaa las~θia s~θa s~θaʔæwhæj ila s~θahœwis~θin ila noka a hiz~ða ʔima ʔima mins~θaʔlaʔ.</PHON>
         <TRANSL xml:lang="zho" notes="(雷女)被先學的人討厭.">被先學的人討厭.</TRANSL>
         <TRANSL xml:lang="eng" notes="(Kathethel was) hated by the first batch of students.">hated by the first batch of students.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="270.3" end="277.13"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="270.3" end="277.13" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_49_W0">
             <FORM kindOf="original">isaa</FORM>
             <PHON kindOf="original">is~θaa</PHON>
@@ -9945,7 +9945,7 @@
                 <TRANSL xml:lang="zho">主焦.先</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47457627118644063</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_50">
         <FORM kindOf="original">sahoewisin.</FORM>
         <PHON kindOf="original">s~θahœwis~θin.</PHON>
@@ -9953,7 +9953,7 @@
         <PHON kindOf="standard">s~θahœwis~θin.</PHON>
         <TRANSL xml:lang="zho">他們討厭雷女.</TRANSL>
         <TRANSL xml:lang="eng">They hated that Kathethel.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S50.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="277.13" end="278.09"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S50.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="277.13" end="278.09" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_50_W0">
             <FORM kindOf="original">sahoewis-in</FORM>
             <PHON kindOf="original">s~θahœwis~θ-in</PHON>
@@ -9978,7 +9978,7 @@
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_51">
         <FORM kindOf="original">hiza ka koSa'en kathethel sia ma ahoewis ila ka'inaz'azem sa yao lobih ila.</FORM>
         <PHON kindOf="original">hiz~ða ka koʃaʔən kathəthəl s~θia ma ahœwis~θ ila kaʔinaz~ðʔaz~ðəm s~θa jao loβih ila.</PHON>
@@ -9986,7 +9986,7 @@
         <PHON kindOf="standard">hiz~ða ka koʃaʔən kathəthəl s~θia ma ahœwis~θ ila kaʔinaz~ðʔaz~ðəm s~θa jao loβih ila.</PHON>
         <TRANSL xml:lang="zho">雷女心情不好, 想要回家了.</TRANSL>
         <TRANSL xml:lang="eng">Kathethel felt bad and she wanted to go home.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S51.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="278.09" end="282.96"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S51.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="278.09" end="282.96" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_51_W0">
             <FORM kindOf="original">hiza</FORM>
             <PHON kindOf="original">hiz~ða</PHON>
@@ -10195,7 +10195,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4193548387096774</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_52">
         <FORM kindOf="original">lasia 'ima sasaboeh too' ila tinal'oemaeh ri'saa hayza ila 'aehae' korkoring.</FORM>
         <PHON kindOf="original">las~θia ʔima s~θas~θaβœh tooʔ ila tinalʔœmæh riʔs~θaa hajz~ða ila ʔæhæʔ korkoriŋ.</PHON>
@@ -10203,7 +10203,7 @@
         <PHON kindOf="standard">las~θia ʔima s~θas~θaβœh tooʔ ila tinalʔœmæh riʔs~θaa hajz~ða ila ʔæhæʔ korkoriŋ.</PHON>
         <TRANSL xml:lang="zho">雷女和她的先生在一起三年了, 他們有一個小孩.</TRANSL>
         <TRANSL xml:lang="eng">Kathethel and her husband had been together for three years and they had a child.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S52.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="282.96" end="287.8"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S52.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="282.96" end="287.8" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_52_W0">
             <FORM kindOf="original">lasia</FORM>
             <PHON kindOf="original">las~θia</PHON>
@@ -10388,7 +10388,7 @@
                 <TRANSL xml:lang="zho">小孩子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_53">
         <FORM kindOf="original">a koSa yao 'am lobih ila kayni' ila honayhini.</FORM>
         <PHON kindOf="original">a koʃa jao ʔam loβih ila kajniʔ ila honajhini.</PHON>
@@ -10396,7 +10396,7 @@
         <PHON kindOf="standard">a koʃa jao ʔam loβih ila kajniʔ ila honajhini.</PHON>
         <TRANSL xml:lang="zho">我要回家了. 我不要留在這裡了.</TRANSL>
         <TRANSL xml:lang="eng">I wanted to go home. I don't want to stay here.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S53.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="287.8" end="289.97"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S53.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="287.8" end="289.97" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_53_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -10541,7 +10541,7 @@
                 <TRANSL xml:lang="zho">留在這裡</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_54">
         <FORM kindOf="original">ma'an moyo toertoeroe'oen raam ila saboeh.</FORM>
         <PHON kindOf="original">maʔan mojo tœrtœrœʔœn raam ila s~θaβœh.</PHON>
@@ -10549,7 +10549,7 @@
         <PHON kindOf="standard">maʔan mojo tœrtœrœʔœn raam ila s~θaβœh.</PHON>
         <TRANSL xml:lang="zho">我已經全部教你們學會了.</TRANSL>
         <TRANSL xml:lang="eng">I have taught you and you have learned to weave.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S54.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="289.97" end="292.96"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S54.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="289.97" end="292.96" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_54_W0">
             <FORM kindOf="original">ma'an</FORM>
             <PHON kindOf="original">maʔan</PHON>
@@ -10654,7 +10654,7 @@
                 <TRANSL xml:lang="zho">全部</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3870967741935484</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_55">
         <FORM kindOf="original">yao 'am lobih ila.</FORM>
         <PHON kindOf="original">jao ʔam loβih ila.</PHON>
@@ -10662,7 +10662,7 @@
         <PHON kindOf="standard">jao ʔam loβih ila.</PHON>
         <TRANSL xml:lang="zho">我現在要回家了.</TRANSL>
         <TRANSL xml:lang="eng">I will now return home.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S55.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="292.96" end="294.22"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S55.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="292.96" end="294.22" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_55_W0">
             <FORM kindOf="original">yao</FORM>
             <PHON kindOf="original">jao</PHON>
@@ -10727,7 +10727,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.33333333333333337</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_56">
         <FORM kindOf="original">o hini korkoring poa'aw ila 'ita' tatiroSa'.</FORM>
         <PHON kindOf="original">o hini korkoriŋ poaʔaw ila ʔitaʔ tatiroʃaʔ.</PHON>
@@ -10735,7 +10735,7 @@
         <PHON kindOf="standard">o hini korkoriŋ poaʔaw ila ʔitaʔ tatiroʃaʔ.</PHON>
         <TRANSL xml:lang="zho">這個小孩我們要怎麼辦? 我們把他切成兩半吧.</TRANSL>
         <TRANSL xml:lang="eng">What shall we do with this child? Let's cut him in half.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S56.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="294.22" end="297.06"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S56.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="294.22" end="297.06" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_56_W0">
             <FORM kindOf="original">o</FORM>
             <PHON kindOf="original">o</PHON>
@@ -10856,15 +10856,15 @@
                 <TRANSL xml:lang="zho">切</TRANSL>
             </M>
             <M id="SaiNr-kathethel_parain a _oemaw_S_56_W6M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">two</TRANSL>
                 <TRANSL xml:lang="zho">兩</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.49350649350649356</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_57">
         <FORM kindOf="original">lasia kamamanraan lasia haehaeih ila isaa koSa So'o ka kamanraan ma' spong ila.</FORM>
         <PHON kindOf="original">las~θia kamamanraan las~θia hæhæih ila is~θaa koʃa ʃoʔo ka kamanraan maʔ s~θpoŋ ila.</PHON>
@@ -10872,7 +10872,7 @@
         <PHON kindOf="standard">las~θia kamamanraan las~θia hæhæih ila is~θaa koʃa ʃoʔo ka kamanraan maʔ s~θpoŋ ila.</PHON>
         <TRANSL xml:lang="zho">丈夫被要求作決定, 想辦法.</TRANSL>
         <TRANSL xml:lang="eng">The husband was asked to make a decision.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S57.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="297.06" end="303.85"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S57.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="297.06" end="303.85" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_57_W0">
             <FORM kindOf="original">lasia</FORM>
             <PHON kindOf="original">las~θia</PHON>
@@ -11081,7 +11081,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.42647058823529416</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_58">
         <FORM kindOf="original">taka'ino'on 'am 'a'apol sa tatiroSa'.</FORM>
         <PHON kindOf="original">takaʔinoʔon ʔam ʔaʔapol s~θa tatiroʃaʔ.</PHON>
@@ -11089,7 +11089,7 @@
         <PHON kindOf="standard">takaʔinoʔon ʔam ʔaʔapol s~θa tatiroʃaʔ.</PHON>
         <TRANSL xml:lang="zho">要怎麼分成兩份?</TRANSL>
         <TRANSL xml:lang="eng">How do we cut him in half?</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S58.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="303.85" end="306.69"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S58.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="303.85" end="306.69" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_58_W0">
             <FORM kindOf="original">taka'ino'on</FORM>
             <PHON kindOf="original">takaʔinoʔon</PHON>
@@ -11178,15 +11178,15 @@
                 <TRANSL xml:lang="zho">切</TRANSL>
             </M>
             <M id="SaiNr-kathethel_parain a _oemaw_S_58_W4M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">two</TRANSL>
                 <TRANSL xml:lang="zho">兩</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5151515151515151</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_59">
         <FORM kindOf="original">tiroSa'an ta'oeloeh noka 'isaa minkoringan.</FORM>
         <PHON kindOf="original">tiroʃaʔan taʔœlœh noka ʔis~θaa minkoriŋan.</PHON>
@@ -11194,7 +11194,7 @@
         <PHON kindOf="standard">tiroʃaʔan taʔœlœh noka ʔis~θaa minkoriŋan.</PHON>
         <TRANSL xml:lang="zho" notes="那個小孩子的頭被(雷)女切成兩半.">那個小孩子的頭被 女切成兩半.</TRANSL>
         <TRANSL xml:lang="eng">Kathethel cut his head in two.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S59.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="306.69" end="309.4"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S59.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="306.69" end="309.4" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_59_W0">
             <FORM kindOf="original">ti-roSa'-an</FORM>
             <PHON kindOf="original">ti-roʃaʔ-an</PHON>
@@ -11291,7 +11291,7 @@
                 <TRANSL xml:lang="zho">女人</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47619047619047616</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_60">
         <FORM kindOf="original">mari'in la ho ray ralom sitakopok.</FORM>
         <PHON kindOf="original">mariʔin la ho raj ralom s~θitakopok.</PHON>
@@ -11299,7 +11299,7 @@
         <PHON kindOf="standard">mariʔin la ho raj ralom s~θitakopok.</PHON>
         <TRANSL xml:lang="zho">然後丟到水中.</TRANSL>
         <TRANSL xml:lang="eng">And tossed the head into the water.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S60.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="309.4" end="311.93"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S60.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="309.4" end="311.93" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_60_W0">
             <FORM kindOf="original">mari'-in</FORM>
             <PHON kindOf="original">mariʔ-in</PHON>
@@ -11412,7 +11412,7 @@
                 <TRANSL xml:lang="zho">噗嗵一聲</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.43333333333333335</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_61">
         <FORM kindOf="original">isaa basang ila noka kamanraan ma.</FORM>
         <PHON kindOf="original">is~θaa βas~θaŋ ila noka kamanraan ma.</PHON>
@@ -11420,7 +11420,7 @@
         <PHON kindOf="standard">is~θaa βas~θaŋ ila noka kamanraan ma.</PHON>
         <TRANSL xml:lang="zho">那個身體就給男人.</TRANSL>
         <TRANSL xml:lang="eng">The child's body was given to the husband.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S61.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="311.93" end="314.25"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S61.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="311.93" end="314.25" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_61_W0">
             <FORM kindOf="original">isaa</FORM>
             <PHON kindOf="original">is~θaa</PHON>
@@ -11517,7 +11517,7 @@
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4482758620689655</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_62">
         <FORM kindOf="original">maehraehrang koSa 'aehae' sinangayan o mwai' ila 'ita' tapkakita' na mwai' 'aehae' sinangayan.</FORM>
         <PHON kindOf="original">mæhræhraŋ koʃa ʔæhæʔ s~θinaŋajan o mwaiʔ ila ʔitaʔ tapkakitaʔ na mwaiʔ ʔæhæʔ s~θinaŋajan.</PHON>
@@ -11525,7 +11525,7 @@
         <PHON kindOf="standard">mæhræhraŋ koʃa ʔæhæʔ s~θinaŋajan o mwaiʔ ila ʔitaʔ tapkakitaʔ na mwaiʔ ʔæhæʔ s~θinaŋajan.</PHON>
         <TRANSL xml:lang="zho">過了一星期之後就來碰面.</TRANSL>
         <TRANSL xml:lang="eng">They decided to meet after a week.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S62.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="314.25" end="320.27"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S62.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="314.25" end="320.27" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_62_W0">
             <FORM kindOf="original">maehraehrang</FORM>
             <PHON kindOf="original">mæhræhraŋ</PHON>
@@ -11766,7 +11766,7 @@
                 <TRANSL xml:lang="zho">星期</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4285714285714286</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_63">
         <FORM kindOf="original">mwai' kakita' oN kita'en noka minkoringan hiza ta'oeloeh pa'apol hini basang 'oka' ila kita'en ibabaw ila.</FORM>
         <PHON kindOf="original">mwaiʔ kakitaʔ on kitaʔən noka minkoriŋan hiz~ða taʔœlœh paʔapol hini βas~θaŋ ʔokaʔ ila kitaʔən iβaβaw ila.</PHON>
@@ -11774,7 +11774,7 @@
         <PHON kindOf="standard">mwaiʔ kakitaʔ on kitaʔən noka minkoriŋan hiz~ða taʔœlœh paʔapol hini βas~θaŋ ʔokaʔ ila kitaʔən iβaβaw ila.</PHON>
         <TRANSL xml:lang="zho">給女人的小孩頭沒有身體, 可是它有長高.</TRANSL>
         <TRANSL xml:lang="eng">The child's head given to the woman doesn't have a body anymore, but it has grown taller.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S63.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="320.27" end="328.51"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S63.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="320.27" end="328.51" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_63_W0">
             <FORM kindOf="original">m-wai'</FORM>
             <PHON kindOf="original">m-waiʔ</PHON>
@@ -12071,7 +12071,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4393063583815029</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_64">
         <FORM kindOf="original">hiza noka kamamanraan pa'apol ila naw basang nanaw 'oka' ka ta'oeloeh.</FORM>
         <PHON kindOf="original">hiz~ða noka kamamanraan paʔapol ila naw βas~θaŋ nanaw ʔokaʔ ka taʔœlœh.</PHON>
@@ -12079,7 +12079,7 @@
         <PHON kindOf="standard">hiz~ða noka kamamanraan paʔapol ila naw βas~θaŋ nanaw ʔokaʔ ka taʔœlœh.</PHON>
         <TRANSL xml:lang="zho">給男人的小孩身體沒有頭.</TRANSL>
         <TRANSL xml:lang="eng">The man was given the child's body without a head.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S64.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="328.51" end="332.9"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S64.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="328.51" end="332.9" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_64_W0">
             <FORM kindOf="original">hiza</FORM>
             <PHON kindOf="original">hiz~ða</PHON>
@@ -12264,7 +12264,7 @@
                 <TRANSL xml:lang="zho">頭</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4130434782608695</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_65">
         <FORM kindOf="original">book ila 'oka' ila ka bori masay ila.</FORM>
         <PHON kindOf="original">βook ila ʔokaʔ ila ka βori mas~θaj ila.</PHON>
@@ -12272,7 +12272,7 @@
         <PHON kindOf="standard">βook ila ʔokaʔ ila ka βori mas~θaj ila.</PHON>
         <TRANSL xml:lang="zho">身體腐爛了; 沒有肉, 已經死了.</TRANSL>
         <TRANSL xml:lang="eng">The body has rotted; it did not have any flesh, and was already dead.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S65.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="332.9" end="335.27"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S65.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="332.9" end="335.27" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_65_W0">
             <FORM kindOf="original">book</FORM>
             <PHON kindOf="original">βook</PHON>
@@ -12401,7 +12401,7 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4516129032258065</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_66">
         <FORM kindOf="original">koSa'en e ka tatnon wa inoka ka SaiSiyat a ka ino inoka biwa' minkoringan mwai' toertoeroe' ma' isaza.</FORM>
         <PHON kindOf="original">koʃaʔən ə ka tatnon wa inoka ka ʃaiʃijat a ka ino inoka βiwaʔ minkoriŋan mwaiʔ tœrtœrœʔ maʔ is~θaz~ða.</PHON>
@@ -12409,7 +12409,7 @@
         <PHON kindOf="standard">koʃaʔən ə ka tatnon wa inoka ka ʃaiʃijat a ka ino inoka βiwaʔ minkoriŋan mwaiʔ tœrtœrœʔ maʔ is~θaz~ða.</PHON>
         <TRANSL xml:lang="zho">織布法是雷女教的.</TRANSL>
         <TRANSL xml:lang="eng">Weaving was taught by Biwa'.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S66.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="335.27" end="345.51"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S66.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="335.27" end="345.51" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_66_W0">
             <FORM kindOf="original">koSa'en</FORM>
             <PHON kindOf="original">koʃaʔən</PHON>
@@ -12706,7 +12706,7 @@
                 <TRANSL xml:lang="zho">那</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3529411764705882</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_67">
         <FORM kindOf="original">ta noka 'isaza tabin isaza hini raam ila 'al'alak haysani koSa'en.</FORM>
         <PHON kindOf="original">ta noka ʔis~θaz~ða taβin is~θaz~ða hini raam ila ʔalʔalak hajs~θani koʃaʔən.</PHON>
@@ -12714,7 +12714,7 @@
         <PHON kindOf="standard">ta noka ʔis~θaz~ða taβin is~θaz~ða hini raam ila ʔalʔalak hajs~θani koʃaʔən.</PHON>
         <TRANSL xml:lang="zho">年輕人知道如何織布是因為雷女教的.</TRANSL>
         <TRANSL xml:lang="eng">The young people knew how to weave because Biwa' taught them.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S67.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="345.51" end="348.45"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S67.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="345.51" end="348.45" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_67_W0">
             <FORM kindOf="original">ta</FORM>
             <PHON kindOf="original">ta</PHON>
@@ -12899,7 +12899,7 @@
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3055555555555556</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_68">
         <FORM kindOf="original">'ana SaypapaaS SaiSiyat ma' raam tnon hiza.</FORM>
         <PHON kindOf="original">ʔana ʃajpapaaʃ ʃaiʃijat maʔ raam tnon hiz~ða.</PHON>
@@ -12907,7 +12907,7 @@
         <PHON kindOf="standard">ʔana ʃajpapaaʃ ʃaiʃijat maʔ raam tnon hiz~ða.</PHON>
         <TRANSL xml:lang="zho">泰雅族和賽夏族都學會了織布的方法.</TRANSL>
         <TRANSL xml:lang="eng">Both Atayals and SaiSiyats learned how to weave.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S68.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="348.45" end="351.48"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S68.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="348.45" end="351.48" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_68_W0">
             <FORM kindOf="original">'ana</FORM>
             <PHON kindOf="original">ʔana</PHON>
@@ -13020,7 +13020,7 @@
                 <TRANSL xml:lang="zho">那個</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.38596491228070173</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_69">
         <FORM kindOf="original">'a'aringan Sa biwa' 'ima tnon ina toertoeroe' ka tatnon.</FORM>
         <PHON kindOf="original">ʔaʔariŋan ʃa βiwaʔ ʔima tnon ina tœrtœrœʔ ka tatnon.</PHON>
@@ -13028,7 +13028,7 @@
         <PHON kindOf="standard">ʔaʔariŋan ʃa βiwaʔ ʔima tnon ina tœrtœrœʔ ka tatnon.</PHON>
         <TRANSL xml:lang="zho">是雷神最早教人們織布的方法.</TRANSL>
         <TRANSL xml:lang="eng">It was at first Kathethel who taught the people how to weave.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S69.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="351.48" end="356.39"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S69.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="351.48" end="356.39" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_69_W0">
             <FORM kindOf="original">'a'aringan</FORM>
             <PHON kindOf="original">ʔaʔariŋan</PHON>
@@ -13173,7 +13173,7 @@
                 <TRANSL xml:lang="zho">織布的方法</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.38834951456310685</SCORE></S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_70">
         <FORM kindOf="original">papay 'isaa ma' payakai.</FORM>
         <PHON kindOf="original">papaj ʔis~θaa maʔ pajakai.</PHON>
@@ -13181,7 +13181,7 @@
         <PHON kindOf="standard">papaj ʔis~θaa maʔ pajakai.</PHON>
         <TRANSL xml:lang="zho">我的故事就到這裡.</TRANSL>
         <TRANSL xml:lang="eng">My story ends here.</TRANSL>
-        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S70.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="356.39" end="358.69"/>
+        <AUDIO file="SaiNr-kathethel_parain a _oemaw_S70.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="356.39" end="358.69" />
         <W id="SaiNr-kathethel_parain a _oemaw_S_70_W0">
             <FORM kindOf="original">papay</FORM>
             <PHON kindOf="original">papaj</PHON>
@@ -13246,5 +13246,5 @@
                 <TRANSL xml:lang="zho">&lt;完成&gt;講</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.40740740740740744</SCORE></S>
 </TEXT>

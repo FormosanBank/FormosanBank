@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import os
 import shutil
+import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -59,6 +60,16 @@ def is_lfs_pointer(path: Path) -> bool:
     if path.stat().st_size > 1024:
         return False
     return path.read_bytes().startswith(b"version https://git-lfs.github.com/spec/")
+
+
+def _rmtree_onerror(func, path, exc_info):
+    # Git writes objects/packs read-only; clear that before retrying the delete.
+    os.chmod(path, stat.S_IWRITE)
+    func(path)
+
+
+def rmtree(path: Path) -> None:
+    shutil.rmtree(path, onerror=_rmtree_onerror)
 
 
 def move_audio_files(
@@ -125,16 +136,18 @@ def download_datasets(datasets: list[dict], workers: int = 64) -> None:
             dataset["repo_id"].replace("/", "__") + "-" + dataset["revision"][:12]
         )
         checkout = cache_root / cache_name
-        checkout.mkdir(parents=True, exist_ok=True)
-        if not (checkout / ".git").is_dir():
-            run_git(checkout, "init", "--quiet")
-            run_git(
-                checkout,
-                "remote",
-                "add",
-                "origin",
-                f"https://huggingface.co/datasets/{dataset['repo_id']}",
-            )
+        if checkout.is_dir():
+            # A prior interrupted run may have left a partial/corrupt checkout.
+            rmtree(checkout)
+        checkout.mkdir(parents=True)
+        run_git(checkout, "init", "--quiet")
+        run_git(
+            checkout,
+            "remote",
+            "add",
+            "origin",
+            f"https://huggingface.co/datasets/{dataset['repo_id']}",
+        )
         run_git(
             checkout,
             "config",
@@ -156,7 +169,7 @@ def download_datasets(datasets: list[dict], workers: int = 64) -> None:
             destination,
             expected_count=dataset["expected_audio_files"],
         )
-        shutil.rmtree(checkout)
+        rmtree(checkout)
         if cache_root.is_dir() and not any(cache_root.iterdir()):
             cache_root.rmdir()
         print(f"Installed {moved} new or changed audio files.")

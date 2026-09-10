@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="NTU_Stry_Kanakanavu_kkvNr_farming_Muu" xml:lang="xnb" source="NTU Corpus stories for Kanakanavu, story: kkvNr_farming_Muu" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Kanakanavu">
     <S id="kkvNr_farming_Muu_S_0">
         <FORM kindOf="original">sua makasin ia tecuku una kari poisua.</FORM>
@@ -7,7 +7,7 @@
         <PHON kindOf="standard">sua makasin ia teʦuku una kar~ɾi poisua.</PHON>
         <TRANSL xml:lang="zho">現在,我有話要說.</TRANSL>
         <TRANSL xml:lang="eng">Now, I have something to say.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="0.0" end="5.65"/>
+        <AUDIO file="kkvNr_farming_Muu_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="0.0" end="5.65" />
         <W id="kkvNr_farming_Muu_S_0_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -144,7 +144,7 @@
                 <TRANSL xml:lang="zho">那個</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6153846153846154</SCORE></S>
     <S id="kkvNr_farming_Muu_S_1">
         <FORM kindOf="original">ikita nimʉ nimʉmʉkʉmita miana.</FORM>
         <PHON kindOf="original">ikita nimɨ nimɨmɨkɨmita miana.</PHON>
@@ -152,7 +152,7 @@
         <PHON kindOf="standard">ikita nimɨ nimɨmɨkɨmita miana.</PHON>
         <TRANSL xml:lang="zho">我們以前種東西.</TRANSL>
         <TRANSL xml:lang="eng">We planted crops in the past.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="5.65" end="10.46"/>
+        <AUDIO file="kkvNr_farming_Muu_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="5.65" end="10.46" />
         <W id="kkvNr_farming_Muu_S_1_W0">
             <FORM kindOf="original">ikita</FORM>
             <PHON kindOf="original">ikita</PHON>
@@ -189,8 +189,8 @@
                 <PHON kindOf="original">mɨ</PHON>
                 <FORM kindOf="standard">mʉ</FORM>
                 <PHON kindOf="standard">mɨ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_1_W2">
@@ -241,7 +241,7 @@
                 <TRANSL xml:lang="zho">以前</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.65625</SCORE></S>
     <S id="kkvNr_farming_Muu_S_2">
         <FORM kindOf="original">mehua ia matirupangcu ikita ʉ taiuan isi aceicu ngʉco lipʉn.</FORM>
         <PHON kindOf="original">mehua ia matir~ɾupaŋʦu ikita ɨ taiuan isi aʦeiʦu ŋɨʦo *ipɨn.</PHON>
@@ -249,7 +249,7 @@
         <PHON kindOf="standard">mehua ia matir~ɾupaŋʦu ikita ɨ taiuan isi aʦeiʦu ŋɨʦo *ipɨn.</PHON>
         <TRANSL xml:lang="zho">我們在台灣,完成了,日本就走了.</TRANSL>
         <TRANSL xml:lang="eng">We were in Taiwan. It was finished. Japan had gone.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="10.46" end="26.75"/>
+        <AUDIO file="kkvNr_farming_Muu_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="10.46" end="26.75" />
         <W id="kkvNr_farming_Muu_S_2_W0">
             <FORM kindOf="original">mehua</FORM>
             <PHON kindOf="original">mehua</PHON>
@@ -434,7 +434,7 @@
                 <TRANSL xml:lang="zho">日本</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4873949579831933</SCORE></S>
     <S id="kkvNr_farming_Muu_S_3">
         <FORM kindOf="original">makasua mosaci kia na rʉmʉra mavici kakamarʉ nʉman pʉrʉcʉng mata nononoman tia avicin kavang.</FORM>
         <PHON kindOf="original">makasua mosaʦi kia na r~ɾɨmɨr~ɾa maviʦi kakamar~ɾɨ nɨman pɨr~ɾɨʦɨŋ mata nononoman tia aviʦin kavaŋ.</PHON>
@@ -442,7 +442,7 @@
         <PHON kindOf="standard">makasua mosaʦi kia na r~ɾɨmɨr~ɾa maviʦi kakamar~ɾɨ nɨman pɨr~ɾɨʦɨŋ mata nononoman tia aviʦin kavaŋ.</PHON>
         <TRANSL xml:lang="zho">去山上那邊帶鐮刀帶番刀帶東西,都要帶.</TRANSL>
         <TRANSL xml:lang="eng">Then, to go to the mountains, we would have to bring sickles, knives, chops etc.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="26.75" end="56.34"/>
+        <AUDIO file="kkvNr_farming_Muu_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="26.75" end="56.34" />
         <W id="kkvNr_farming_Muu_S_3_W0">
             <FORM kindOf="original">ma-ka-sua</FORM>
             <PHON kindOf="original">ma-ka-sua</PHON>
@@ -464,7 +464,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="eng">do</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_farming_Muu_S_3_W0M3">
                 <FORM kindOf="original">sua</FORM>
@@ -472,7 +472,7 @@
                 <FORM kindOf="standard">sua</FORM>
                 <PHON kindOf="standard">sua</PHON>
                 <TRANSL xml:lang="eng">that</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_3_W1">
@@ -503,8 +503,8 @@
                 <PHON kindOf="original">ʦi</PHON>
                 <FORM kindOf="standard">ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_3_W2">
@@ -523,12 +523,12 @@
                 <TRANSL xml:lang="zho">那邊</TRANSL>
             </M>
             <M id="kkvNr_farming_Muu_S_3_W2M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">COS</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_3_W3">
@@ -739,7 +739,7 @@
                 <TRANSL xml:lang="zho">都</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5608465608465609</SCORE></S>
     <S id="kkvNr_farming_Muu_S_4">
         <FORM kindOf="original">makasuacu tumatakʉtakʉci kia capuku tia ka'umo'uma.</FORM>
         <PHON kindOf="original">makasuaʦu tumatakɨtakɨʦi kia ʦapuku tia kaʔumoʔuma.</PHON>
@@ -747,7 +747,7 @@
         <PHON kindOf="standard">makasuaʦu tumatakɨtakɨʦi kia ʦapuku tia kaʔumoʔuma.</PHON>
         <TRANSL xml:lang="zho">就那樣,我們砍芒草做田.</TRANSL>
         <TRANSL xml:lang="eng">Then, we cut miscanthus to make fields.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="56.34" end="67.68"/>
+        <AUDIO file="kkvNr_farming_Muu_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="56.34" end="67.68" />
         <W id="kkvNr_farming_Muu_S_4_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -820,10 +820,10 @@
                 <TRANSL xml:lang="zho">重疊</TRANSL>
             </M>
             <M id="kkvNr_farming_Muu_S_4_W1M4">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">COS</TRANSL>
                 <TRANSL xml:lang="zho">COS</TRANSL>
             </M>
@@ -832,16 +832,16 @@
                 <PHON kindOf="original">takɨ</PHON>
                 <FORM kindOf="standard">takʉ</FORM>
                 <PHON kindOf="standard">takɨ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_farming_Muu_S_4_W1M6">
                 <FORM kindOf="original">ci</FORM>
                 <PHON kindOf="original">ʦi</PHON>
                 <FORM kindOf="standard">ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_4_W2">
@@ -916,7 +916,7 @@
                 <TRANSL xml:lang="zho">田</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4736842105263158</SCORE></S>
     <S id="kkvNr_farming_Muu_S_5">
         <FORM kindOf="original">nuu ninamaranci ia mosa ci 'inia mavici tarimu tuku kamarʉ mata numan.</FORM>
         <PHON kindOf="original">nuu ninamar~ɾanʦi ia mosa ʦi ʔinia maviʦi tar~ɾimu tuku kamar~ɾɨ mata numan.</PHON>
@@ -924,7 +924,7 @@
         <PHON kindOf="standard">nuu ninamar~ɾanʦi ia mosa ʦi ʔinia maviʦi tar~ɾimu tuku kamar~ɾɨ mata numan.</PHON>
         <TRANSL xml:lang="zho">當它們被燒完了以後,我們就去那邊,帶著大小鋤頭、鐮刀和刀子.</TRANSL>
         <TRANSL xml:lang="eng">After the miscanthus had been burned out, we went there with hoes, sickles, and knives.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="76.0" end="98.03"/>
+        <AUDIO file="kkvNr_farming_Muu_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="76.0" end="98.03" />
         <W id="kkvNr_farming_Muu_S_5_W0">
             <FORM kindOf="original">nuu</FORM>
             <PHON kindOf="original">nuu</PHON>
@@ -1157,7 +1157,7 @@
                 <TRANSL xml:lang="zho">番刀</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6074074074074074</SCORE></S>
     <S id="kkvNr_farming_Muu_S_6">
         <FORM kindOf="original">makasuaci ia sua nguco ra'ʉvʉmaku ia mʉmʉkʉcu tammi tanʉkʉ tʉvʉsʉ mata tangtang.</FORM>
         <PHON kindOf="original">makasuaʦi ia sua ŋuʦo r~ɾaʔɨvɨmaku ia mɨmɨkɨʦu tammi tanɨkɨ tɨvɨsɨ mata taŋtaŋ.</PHON>
@@ -1165,7 +1165,7 @@
         <PHON kindOf="standard">makasuaʦi ia sua ŋuʦo r~ɾaʔɨvɨmaku ia mɨmɨkɨʦu tammi tanɨkɨ tɨvɨsɨ mata taŋtaŋ.</PHON>
         <TRANSL xml:lang="zho">就這樣,我的太太呢, 種地瓜、芋頭、甘蔗和南瓜.</TRANSL>
         <TRANSL xml:lang="eng">Then, my wife started planting sweet potatoes, taros, sugar canes, and pumpkins.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="98.03" end="129.25"/>
+        <AUDIO file="kkvNr_farming_Muu_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="98.03" end="129.25" />
         <W id="kkvNr_farming_Muu_S_6_W0">
             <FORM kindOf="original">ma-ka-sua=ci</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦi</PHON>
@@ -1398,7 +1398,7 @@
                 <TRANSL xml:lang="zho">南瓜</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5205479452054795</SCORE></S>
     <S id="kkvNr_farming_Muu_S_7">
         <FORM kindOf="original">kavang nimʉmʉkʉ kavang mehua nenen vanaita makasua? mumumuku ngʉco sua nononoman manasi 'an kia tia mooravu.</FORM>
         <PHON kindOf="original">kavaŋ nimɨmɨkɨ kavaŋ mehua nenen vanaita makasua? mumumuku ŋɨʦo sua nononoman manasi ʔan kia tia moor~ɾavu.</PHON>
@@ -1406,7 +1406,7 @@
         <PHON kindOf="standard">kavaŋ nimɨmɨkɨ kavaŋ mehua nenen vanaita makasua? mumumuku ŋɨʦo sua nononoman manasi ʔan kia tia moor~ɾavu.</PHON>
         <TRANSL xml:lang="zho">為什麼我們要這樣種東西,因為以後不會餓.</TRANSL>
         <TRANSL xml:lang="eng">Why we planted things this way? It is because we wouldn't get hungry.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="129.25" end="147.73"/>
+        <AUDIO file="kkvNr_farming_Muu_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="129.25" end="147.73" />
         <W id="kkvNr_farming_Muu_S_7_W0">
             <FORM kindOf="original">kavang</FORM>
             <PHON kindOf="original">kavaŋ</PHON>
@@ -1727,7 +1727,7 @@
                 <TRANSL xml:lang="zho">餓.主焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5833333333333333</SCORE></S>
     <S id="kkvNr_farming_Muu_S_8">
         <FORM kindOf="original">makasuacu mumukucu noo acanci vuan urucincu vuan teencu kʉnʉʉn.</FORM>
         <PHON kindOf="original">makasuaʦu mumukuʦu noo aʦanʦi vuan ur~ɾuʦinʦu vuan teenʦu kɨnɨɨn.</PHON>
@@ -1735,7 +1735,7 @@
         <PHON kindOf="standard">makasuaʦu mumukuʦu noo aʦanʦi vuan ur~ɾuʦinʦu vuan teenʦu kɨnɨɨn.</PHON>
         <TRANSL xml:lang="zho">種下去過一個月兩個月就可以吃了.</TRANSL>
         <TRANSL xml:lang="eng">After one to two months, we could eat them.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="147.73" end="159.31"/>
+        <AUDIO file="kkvNr_farming_Muu_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="147.73" end="159.31" />
         <W id="kkvNr_farming_Muu_S_8_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -1772,7 +1772,7 @@
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="eng"/>
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">COS</TRANSL>
             </M>
         </W>
@@ -1872,10 +1872,10 @@
                 <TRANSL xml:lang="zho">兩</TRANSL>
             </M>
             <M id="kkvNr_farming_Muu_S_8_W5M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">COS</TRANSL>
                 <TRANSL xml:lang="zho">COS</TRANSL>
             </M>
@@ -1884,16 +1884,16 @@
                 <PHON kindOf="original">r~ɾuʦin</PHON>
                 <FORM kindOf="standard">rucin</FORM>
                 <PHON kindOf="standard">r~ɾuʦin</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_farming_Muu_S_8_W5M4">
                 <FORM kindOf="original">cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_8_W6">
@@ -1960,7 +1960,7 @@
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4655172413793104</SCORE></S>
     <S id="kkvNr_farming_Muu_S_9">
         <FORM kindOf="original">mesua tammi ia tatia pa macacasʉ pa.</FORM>
         <PHON kindOf="original">mesua tammi ia tatia pa maʦaʦasɨ pa.</PHON>
@@ -1968,7 +1968,7 @@
         <PHON kindOf="standard">mesua tammi ia tatia pa maʦaʦasɨ pa.</PHON>
         <TRANSL xml:lang="zho">那時候地瓜會很大很長.</TRANSL>
         <TRANSL xml:lang="eng">At that time, sweet potatoes will become big and long.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="159.31" end="166.62"/>
+        <AUDIO file="kkvNr_farming_Muu_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="159.31" end="166.62" />
         <W id="kkvNr_farming_Muu_S_9_W0">
             <FORM kindOf="original">mesua</FORM>
             <PHON kindOf="original">mesua</PHON>
@@ -2077,8 +2077,8 @@
                 <PHON kindOf="original">ʦasɨ</PHON>
                 <FORM kindOf="standard">casʉ</FORM>
                 <PHON kindOf="standard">ʦasɨ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_9_W6">
@@ -2097,7 +2097,7 @@
                 <TRANSL xml:lang="zho">還</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5846153846153845</SCORE></S>
     <S id="kkvNr_farming_Muu_S_10">
         <FORM kindOf="original">mamanʉng pa akia tʉnua.</FORM>
         <PHON kindOf="original">mamanɨŋ pa akia tɨnua.</PHON>
@@ -2105,7 +2105,7 @@
         <PHON kindOf="standard">mamanɨŋ pa akia tɨnua.</PHON>
         <TRANSL xml:lang="zho">那時候地瓜還很好,沒有蟲蟲.</TRANSL>
         <TRANSL xml:lang="eng">At that time, sweet potatoes were well-planted. There were no worms.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="166.62" end="170.2"/>
+        <AUDIO file="kkvNr_farming_Muu_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="166.62" end="170.2" />
         <W id="kkvNr_farming_Muu_S_10_W0">
             <FORM kindOf="original">ma-manʉng</FORM>
             <PHON kindOf="original">ma-manɨŋ</PHON>
@@ -2127,7 +2127,7 @@
                 <FORM kindOf="standard">manʉng</FORM>
                 <PHON kindOf="standard">manɨŋ</PHON>
                 <TRANSL xml:lang="eng">good</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_10_W1">
@@ -2178,7 +2178,7 @@
                 <TRANSL xml:lang="zho">蟲蟲</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6122448979591837</SCORE></S>
     <S id="kkvNr_farming_Muu_S_11">
         <FORM kindOf="original">mesua ia vo'ura pa 'ʉnai.</FORM>
         <PHON kindOf="original">mesua ia voʔur~ɾa pa ʔɨnai.</PHON>
@@ -2186,7 +2186,7 @@
         <PHON kindOf="standard">mesua ia voʔur~ɾa pa ʔɨnai.</PHON>
         <TRANSL xml:lang="zho">那時候田還新的.</TRANSL>
         <TRANSL xml:lang="eng">At that time, fields were still new.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="170.2" end="175.54"/>
+        <AUDIO file="kkvNr_farming_Muu_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="170.2" end="175.54" />
         <W id="kkvNr_farming_Muu_S_11_W0">
             <FORM kindOf="original">mesua</FORM>
             <PHON kindOf="original">mesua</PHON>
@@ -2267,7 +2267,7 @@
                 <TRANSL xml:lang="zho">田</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4897959183673469</SCORE></S>
     <S id="kkvNr_farming_Muu_S_12">
         <FORM kindOf="original">noo akeen ngʉco sua akeen tia kʉna manu ia 'una seritung una navatʉ una tʉvʉsʉ.</FORM>
         <PHON kindOf="original">noo akeen ŋɨʦo sua akeen tia kɨna manu ia ʔuna ser~ɾituŋ una navatɨ una tɨvɨsɨ.</PHON>
@@ -2275,7 +2275,7 @@
         <PHON kindOf="standard">noo akeen ŋɨʦo sua akeen tia kɨna manu ia ʔuna ser~ɾituŋ una navatɨ una tɨvɨsɨ.</PHON>
         <TRANSL xml:lang="zho">如果小朋友沒有吃東西的時候,還好有木瓜、芭樂,和甘蔗.</TRANSL>
         <TRANSL xml:lang="eng">If kids had nothing to eat, thankfully there were papayas, guavas, and sugarcane.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="175.54" end="194.93"/>
+        <AUDIO file="kkvNr_farming_Muu_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="175.54" end="194.93" />
         <W id="kkvNr_farming_Muu_S_12_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
@@ -2524,7 +2524,7 @@
                 <TRANSL xml:lang="zho">甘蔗</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5359477124183006</SCORE></S>
     <S id="kkvNr_farming_Muu_S_13">
         <FORM kindOf="original">maacancangarʉ mamanu noo ivatuci mamarurang muatanasʉ nimavici navatʉ tʉvʉsʉ siaritung.</FORM>
         <PHON kindOf="original">maaʦanʦaŋar~ɾɨ mamanu noo ivatuʦi mamar~ɾur~ɾaŋ muatanasɨ nimaviʦi navatɨ tɨvɨsɨ siar~ɾituŋ.</PHON>
@@ -2532,7 +2532,7 @@
         <PHON kindOf="standard">maaʦanʦaŋar~ɾɨ mamanu noo ivatuʦi mamar~ɾur~ɾaŋ muatanasɨ nimaviʦi navatɨ tɨvɨsɨ siar~ɾituŋ.</PHON>
         <TRANSL xml:lang="zho">父母回家的時候帶了芭樂,甘蔗,木瓜,小孩子都很開心快樂.</TRANSL>
         <TRANSL xml:lang="eng">Parents went home with guava, sugarcane, and papayas. That made kids very happy.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="194.93" end="212.75"/>
+        <AUDIO file="kkvNr_farming_Muu_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="194.93" end="212.75" />
         <W id="kkvNr_farming_Muu_S_13_W0">
             <FORM kindOf="original">maa-can-cangarʉ</FORM>
             <PHON kindOf="original">maa-ʦan-ʦaŋar~ɾɨ</PHON>
@@ -2561,8 +2561,8 @@
                 <PHON kindOf="original">ʦaŋar~ɾɨ</PHON>
                 <FORM kindOf="standard">cangarʉ</FORM>
                 <PHON kindOf="standard">ʦaŋar~ɾɨ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_13_W1">
@@ -2657,16 +2657,16 @@
                 <PHON kindOf="original">r~ɾu</PHON>
                 <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">r~ɾu</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_farming_Muu_S_13_W4M4">
                 <FORM kindOf="original">rang</FORM>
                 <PHON kindOf="original">r~ɾaŋ</PHON>
                 <FORM kindOf="standard">rang</FORM>
                 <PHON kindOf="standard">r~ɾaŋ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_13_W5">
@@ -2773,7 +2773,7 @@
                 <TRANSL xml:lang="zho">木瓜</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.576271186440678</SCORE></S>
     <S id="kkvNr_farming_Muu_S_14">
         <FORM kindOf="original">makasuacu po'ocipin ngʉco rʉ'ʉvʉmaku tammi mata tanʉkʉ.</FORM>
         <PHON kindOf="original">makasuaʦu poʔoʦipin ŋɨʦo r~ɾɨʔɨvɨmaku tammi mata tanɨkɨ.</PHON>
@@ -2781,7 +2781,7 @@
         <PHON kindOf="standard">makasuaʦu poʔoʦipin ŋɨʦo r~ɾɨʔɨvɨmaku tammi mata tanɨkɨ.</PHON>
         <TRANSL xml:lang="zho">就那樣,我的太太煮地瓜和芋頭.</TRANSL>
         <TRANSL xml:lang="eng">My wife cooked sweet potatoes and taros.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="212.75" end="224.37"/>
+        <AUDIO file="kkvNr_farming_Muu_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="212.75" end="224.37" />
         <W id="kkvNr_farming_Muu_S_14_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -2934,7 +2934,7 @@
                 <TRANSL xml:lang="zho">芋頭</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5208333333333333</SCORE></S>
     <S id="kkvNr_farming_Muu_S_15">
         <FORM kindOf="original">noo macuruci ia aricaancikee na na toomarʉ masii maraa mara mataturicang.</FORM>
         <PHON kindOf="original">noo maʦur~ɾuʦi ia ar~ɾiʦaanʦikee na na toomar~ɾɨ masii mar~ɾaa mar~ɾa matatur~ɾiʦaŋ.</PHON>
@@ -2942,7 +2942,7 @@
         <PHON kindOf="standard">noo maʦur~ɾuʦi ia ar~ɾiʦaanʦikee na na toomar~ɾɨ masii mar~ɾaa mar~ɾa matatur~ɾiʦaŋ.</PHON>
         <TRANSL xml:lang="zho" notes="她撈起(地瓜)放在簸箕裡,使比較涼.">她撈起 放在簸箕裡,使比較涼.</TRANSL>
         <TRANSL xml:lang="eng">When they were well-cooked, she scooped up and put them on a scoop to cool them.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="224.37" end="250.7"/>
+        <AUDIO file="kkvNr_farming_Muu_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="224.37" end="250.7" />
         <W id="kkvNr_farming_Muu_S_15_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
@@ -3167,7 +3167,7 @@
                 <TRANSL xml:lang="zho">涼了</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6370370370370371</SCORE></S>
     <S id="kkvNr_farming_Muu_S_16">
         <FORM kindOf="original">nuu matarang mataturicangci ia monci nia mamarurang xx apakʉn maman mamanuin.</FORM>
         <PHON kindOf="original">nuu matar~ɾaŋ matatur~ɾiʦaŋʦi ia monʦi nia mamar~ɾur~ɾaŋ ** apakɨn maman mamanuin.</PHON>
@@ -3175,7 +3175,7 @@
         <PHON kindOf="standard">nuu matar~ɾaŋ matatur~ɾiʦaŋʦi ia monʦi nia mamar~ɾur~ɾaŋ ** apakɨn maman mamanuin.</PHON>
         <TRANSL xml:lang="zho">當涼了以後,餵養她的小孩.</TRANSL>
         <TRANSL xml:lang="eng">After the food were cooled, the parent fed her kids.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="250.7" end="266.24"/>
+        <AUDIO file="kkvNr_farming_Muu_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="250.7" end="266.24" />
         <W id="kkvNr_farming_Muu_S_16_W0">
             <FORM kindOf="original">nuu</FORM>
             <PHON kindOf="original">nuu</PHON>
@@ -3404,27 +3404,27 @@
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">in</FORM>
                 <PHON kindOf="standard">in</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_farming_Muu_S_16_W10M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">kid</TRANSL>
                 <TRANSL xml:lang="zho">小孩</TRANSL>
             </M>
             <M id="kkvNr_farming_Muu_S_16_W10M4">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">3SG.GEN</TRANSL>
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.46590909090909094</SCORE></S>
     <S id="kkvNr_farming_Muu_S_17">
         <FORM kindOf="original">mehua ia cucuru miarinasʉkia akia nupasʉ suai mehua ia.</FORM>
         <PHON kindOf="original">mehua ia ʦuʦur~ɾu miar~ɾinasɨkia akia nupasɨ suai mehua ia.</PHON>
@@ -3432,7 +3432,7 @@
         <PHON kindOf="standard">mehua ia ʦuʦur~ɾu miar~ɾinasɨkia akia nupasɨ suai mehua ia.</PHON>
         <TRANSL xml:lang="zho">那時,我非常困苦,沒有錢財.</TRANSL>
         <TRANSL xml:lang="eng">At that time, my life was really hard. I didn't have much money.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="266.24" end="283.45"/>
+        <AUDIO file="kkvNr_farming_Muu_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="266.24" end="283.45" />
         <W id="kkvNr_farming_Muu_S_17_W0">
             <FORM kindOf="original">mehua</FORM>
             <PHON kindOf="original">mehua</PHON>
@@ -3593,7 +3593,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4528301886792453</SCORE></S>
     <S id="kkvNr_farming_Muu_S_18">
         <FORM kindOf="original">nakai tamu'iarʉ mamarurang umʉʉmʉkʉ sua ngʉco ta kʉna mamanu ia kan ta merinasʉ mamanmita.</FORM>
         <PHON kindOf="original">nakai tamuʔiar~ɾɨ mamar~ɾur~ɾaŋ umɨɨmɨkɨ sua ŋɨʦo ta kɨna mamanu ia kan ta mer~ɾinasɨ mamanmita.</PHON>
@@ -3601,7 +3601,7 @@
         <PHON kindOf="standard">nakai tamuʔiar~ɾɨ mamar~ɾur~ɾaŋ umɨɨmɨkɨ sua ŋɨʦo ta kɨna mamanu ia kan ta mer~ɾinasɨ mamanmita.</PHON>
         <TRANSL xml:lang="zho" notes="但是若長輩(父母親)很勤勞地的種植,要給小孩吃的話,我們的小孩就不會困苦了">但是若長輩 很勤勞地的種植,要給小孩吃的話,我們的小孩就不會困苦了</TRANSL>
         <TRANSL xml:lang="eng">But if parents worked diligently to care their children, children would not have hard lives.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="283.45" end="297.91"/>
+        <AUDIO file="kkvNr_farming_Muu_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="283.45" end="297.91" />
         <W id="kkvNr_farming_Muu_S_18_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -3882,7 +3882,7 @@
                 <TRANSL xml:lang="zho">1PL.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6322580645161291</SCORE></S>
     <S id="kkvNr_farming_Muu_S_19">
         <FORM kindOf="original">makasuacu unacu arane na cau karanana nimavici pusiam.</FORM>
         <PHON kindOf="original">makasuaʦu unaʦu ar~ɾane na ʦau kar~ɾanana nimaviʦi pusiam.</PHON>
@@ -3890,7 +3890,7 @@
         <PHON kindOf="standard">makasuaʦu unaʦu ar~ɾane na ʦau kar~ɾanana nimaviʦi pusiam.</PHON>
         <TRANSL xml:lang="zho">就那樣,有了從外地來的人攜帶了稻米.</TRANSL>
         <TRANSL xml:lang="eng">Then, some people outside world brought rice in.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="297.91" end="320.05"/>
+        <AUDIO file="kkvNr_farming_Muu_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="297.91" end="320.05" />
         <W id="kkvNr_farming_Muu_S_19_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -4067,7 +4067,7 @@
                 <TRANSL xml:lang="zho">稻米</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5094339622641509</SCORE></S>
     <S id="kkvNr_farming_Muu_S_20">
         <FORM kindOf="original">sua pusiam ihua ia tavarʉ'ʉn kumakare na kariupupang na 'ʉne.</FORM>
         <PHON kindOf="original">sua pusiam ihua ia tavar~ɾɨʔɨn kumakar~ɾe na kar~ɾiupupaŋ na ʔɨne.</PHON>
@@ -4075,7 +4075,7 @@
         <PHON kindOf="standard">sua pusiam ihua ia tavar~ɾɨʔɨn kumakar~ɾe na kar~ɾiupupaŋ na ʔɨne.</PHON>
         <TRANSL xml:lang="zho">這個稻米可以種植在旱地</TRANSL>
         <TRANSL xml:lang="eng">Rice could be planted in dry land.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="320.05" end="334.49"/>
+        <AUDIO file="kkvNr_farming_Muu_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="320.05" end="334.49" />
         <W id="kkvNr_farming_Muu_S_20_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -4260,7 +4260,7 @@
                 <TRANSL xml:lang="zho">土壤</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5357142857142857</SCORE></S>
     <S id="kkvNr_farming_Muu_S_21">
         <FORM kindOf="original">tavarʉ'ʉn cumancu.</FORM>
         <PHON kindOf="original">tavar~ɾɨʔɨn ʦumanʦu.</PHON>
@@ -4268,7 +4268,7 @@
         <PHON kindOf="standard">tavar~ɾɨʔɨn ʦumanʦu.</PHON>
         <TRANSL xml:lang="zho" notes="(稻子)可以被插秧.">可以被插秧.</TRANSL>
         <TRANSL xml:lang="eng">Rice seedlings can be transplanted.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="334.49" end="336.87"/>
+        <AUDIO file="kkvNr_farming_Muu_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="334.49" end="336.87" />
         <W id="kkvNr_farming_Muu_S_21_W0">
             <FORM kindOf="original">tavarʉ-'ʉn</FORM>
             <PHON kindOf="original">tavar~ɾɨ-ʔɨn</PHON>
@@ -4317,7 +4317,7 @@
                 <TRANSL xml:lang="zho">插秧</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47058823529411764</SCORE></S>
     <S id="kkvNr_farming_Muu_S_22">
         <FORM kindOf="original">aranecu mehua kumakare pusiam nakai aka miana itumuru tapuroo.</FORM>
         <PHON kindOf="original">ar~ɾaneʦu mehua kumakar~ɾe pusiam nakai aka miana itumur~ɾu tapur~ɾoo.</PHON>
@@ -4325,7 +4325,7 @@
         <PHON kindOf="standard">ar~ɾaneʦu mehua kumakar~ɾe pusiam nakai aka miana itumur~ɾu tapur~ɾoo.</PHON>
         <TRANSL xml:lang="zho">從那個時候開始,在旱地種稻米,但是以前很麻煩,有很多麻雀.</TRANSL>
         <TRANSL xml:lang="eng">Since then, we planted rice on dry lands. However, it was bad that there were a lot of sparrows.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="336.87" end="354.59"/>
+        <AUDIO file="kkvNr_farming_Muu_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="336.87" end="354.59" />
         <W id="kkvNr_farming_Muu_S_22_W0">
             <FORM kindOf="original">arane=cu</FORM>
             <PHON kindOf="original">ar~ɾane=ʦu</PHON>
@@ -4486,7 +4486,7 @@
                 <TRANSL xml:lang="zho">麻雀</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.43410852713178294</SCORE></S>
     <S id="kkvNr_farming_Muu_S_23">
         <FORM kindOf="original">nukai iname ia tia kovangvangʉn ma tapuroo sua ngʉco pusiam.</FORM>
         <PHON kindOf="original">nukai iname ia tia kovaŋvaŋɨn ma tapur~ɾoo sua ŋɨʦo pusiam.</PHON>
@@ -4494,7 +4494,7 @@
         <PHON kindOf="standard">nukai iname ia tia kovaŋvaŋɨn ma tapur~ɾoo sua ŋɨʦo pusiam.</PHON>
         <TRANSL xml:lang="zho">若不驅趕過鳥,稻米就只有被麻雀吃光光.</TRANSL>
         <TRANSL xml:lang="eng">If we did not drive them away, all the rice would be eaten out.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="354.59" end="363.43"/>
+        <AUDIO file="kkvNr_farming_Muu_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="354.59" end="363.43" />
         <W id="kkvNr_farming_Muu_S_23_W0">
             <FORM kindOf="original">nukai</FORM>
             <PHON kindOf="original">nukai</PHON>
@@ -4671,7 +4671,7 @@
                 <TRANSL xml:lang="zho">稻米</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5510204081632653</SCORE></S>
     <S id="kkvNr_farming_Muu_S_24">
         <FORM kindOf="original">moncu nia mamarurang minʉna makasi na noo aratanavikarʉci a pusiam.</FORM>
         <PHON kindOf="original">monʦu nia mamar~ɾur~ɾaŋ minɨna makasi na noo ar~ɾatanavikar~ɾɨʦi a pusiam.</PHON>
@@ -4679,7 +4679,7 @@
         <PHON kindOf="standard">monʦu nia mamar~ɾur~ɾaŋ minɨna makasi na noo ar~ɾatanavikar~ɾɨʦi a pusiam.</PHON>
         <TRANSL xml:lang="zho">老人家在那邊驅趕鳥,一直到稻田變成黃色的時候.</TRANSL>
         <TRANSL xml:lang="eng">The elders drove birds away there until the color of the fields turned yellow.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="363.43" end="382.07"/>
+        <AUDIO file="kkvNr_farming_Muu_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="363.43" end="382.07" />
         <W id="kkvNr_farming_Muu_S_24_W0">
             <FORM kindOf="original">m-on=cu</FORM>
             <PHON kindOf="original">m-on=ʦu</PHON>
@@ -4896,7 +4896,7 @@
                 <TRANSL xml:lang="zho">稻米</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.631578947368421</SCORE></S>
     <S id="kkvNr_farming_Muu_S_25">
         <FORM kindOf="original">noo tani tani tanavikarʉci pusiam ia tecu paripusiamʉn.</FORM>
         <PHON kindOf="original">noo tani tani tanavikar~ɾɨʦi pusiam ia teʦu par~ɾipusiamɨn.</PHON>
@@ -4904,7 +4904,7 @@
         <PHON kindOf="standard">noo tani tani tanavikar~ɾɨʦi pusiam ia teʦu par~ɾipusiamɨn.</PHON>
         <TRANSL xml:lang="zho" notes="當稻田變成黃色的時候, 要去使(稻米)被收割.">當稻田變成黃色的時候, 要去使 被收割.</TRANSL>
         <TRANSL xml:lang="eng">When the color of the fields turned yellow, it's time to harvest the rice.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="382.07" end="396.46"/>
+        <AUDIO file="kkvNr_farming_Muu_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="382.07" end="396.46" />
         <W id="kkvNr_farming_Muu_S_25_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
@@ -5029,8 +5029,8 @@
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_25_W7">
@@ -5049,10 +5049,10 @@
                 <TRANSL xml:lang="zho">非實現</TRANSL>
             </M>
             <M id="kkvNr_farming_Muu_S_25_W7M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">COS</TRANSL>
                 <TRANSL xml:lang="zho">COS</TRANSL>
             </M>
@@ -5061,27 +5061,27 @@
                 <PHON kindOf="original">ar~ɾi</PHON>
                 <FORM kindOf="standard">ari</FORM>
                 <PHON kindOf="standard">ar~ɾi</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_farming_Muu_S_25_W7M4">
                 <FORM kindOf="original">pusiam</FORM>
                 <PHON kindOf="original">pusiam</PHON>
                 <FORM kindOf="standard">pusiam</FORM>
                 <PHON kindOf="standard">pusiam</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_farming_Muu_S_25_W7M5">
                 <FORM kindOf="original">ʉn</FORM>
                 <PHON kindOf="original">ɨn</PHON>
                 <FORM kindOf="standard">ʉn</FORM>
                 <PHON kindOf="standard">ɨn</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
-    </S>
+    <SCORE>0.46031746031746035</SCORE></S>
     <S id="kkvNr_farming_Muu_S_26">
         <FORM kindOf="original">nakai paripusiamʉn akia ta ngʉco tia tasʉ'a nia.</FORM>
         <PHON kindOf="original">nakai par~ɾipusiamɨn akia ta ŋɨʦo tia tasɨʔa nia.</PHON>
@@ -5089,7 +5089,7 @@
         <PHON kindOf="standard">nakai par~ɾipusiamɨn akia ta ŋɨʦo tia tasɨʔa nia.</PHON>
         <TRANSL xml:lang="zho">但是,收割稻米之後,卻沒有存放它們的場所.</TRANSL>
         <TRANSL xml:lang="eng">However, having harvested them, we did not have the places to store.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="396.46" end="406.52"/>
+        <AUDIO file="kkvNr_farming_Muu_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="396.46" end="406.52" />
         <W id="kkvNr_farming_Muu_S_26_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -5258,7 +5258,7 @@
                 <TRANSL xml:lang="zho">那裏</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5116279069767442</SCORE></S>
     <S id="kkvNr_farming_Muu_S_27">
         <FORM kindOf="original">tavarʉ' pacʉpʉcʉpʉng mamarurang a te ta pakʉnnanʉn una pusiam akia a tasʉ'a nia ta.</FORM>
         <PHON kindOf="original">tavar~ɾɨʔ paʦɨpɨʦɨpɨŋ mamar~ɾur~ɾaŋ a te ta pakɨnnanɨn una pusiam akia a tasɨʔa nia ta.</PHON>
@@ -5266,7 +5266,7 @@
         <PHON kindOf="standard">tavar~ɾɨʔ paʦɨpɨʦɨpɨŋ mamar~ɾur~ɾaŋ a te ta pakɨnnanɨn una pusiam akia a tasɨʔa nia ta.</PHON>
         <TRANSL xml:lang="zho">有稻米,卻沒有存放它們的場所.老人家會去想要怎麼辦.</TRANSL>
         <TRANSL xml:lang="eng">Despite having no place to store the rice, elders would make a way out.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="406.52" end="418.15"/>
+        <AUDIO file="kkvNr_farming_Muu_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="406.52" end="418.15" />
         <W id="kkvNr_farming_Muu_S_27_W0">
             <FORM kindOf="original">tavarʉ'</FORM>
             <PHON kindOf="original">tavar~ɾɨʔ</PHON>
@@ -5343,16 +5343,16 @@
                 <PHON kindOf="original">r~ɾu</PHON>
                 <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">r~ɾu</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_farming_Muu_S_27_W2M4">
                 <FORM kindOf="original">rang</FORM>
                 <PHON kindOf="original">r~ɾaŋ</PHON>
                 <FORM kindOf="standard">rang</FORM>
                 <PHON kindOf="standard">r~ɾaŋ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_27_W3">
@@ -5547,7 +5547,7 @@
                 <TRANSL xml:lang="zho">FS</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.49350649350649356</SCORE></S>
     <S id="kkvNr_farming_Muu_S_28">
         <FORM kindOf="original">tia pakʉnnanʉn ngʉco umiriki ngʉco pusiam sua mamarurang miana ia tavarʉ'ʉn.</FORM>
         <PHON kindOf="original">tia pakɨnnanɨn ŋɨʦo umir~ɾiki ŋɨʦo pusiam sua mamar~ɾur~ɾaŋ miana ia tavar~ɾɨʔɨn.</PHON>
@@ -5555,7 +5555,7 @@
         <PHON kindOf="standard">tia pakɨnnanɨn ŋɨʦo umir~ɾiki ŋɨʦo pusiam sua mamar~ɾur~ɾaŋ miana ia tavar~ɾɨʔɨn.</PHON>
         <TRANSL xml:lang="zho">要怎樣把稻米收堆起來,以前的老人家是知道的.</TRANSL>
         <TRANSL xml:lang="eng">elders in the past knew how to gather the rice.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="418.15" end="429.83"/>
+        <AUDIO file="kkvNr_farming_Muu_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="418.15" end="429.83" />
         <W id="kkvNr_farming_Muu_S_28_W0">
             <FORM kindOf="original">tia</FORM>
             <PHON kindOf="original">tia</PHON>
@@ -5624,8 +5624,8 @@
                 <PHON kindOf="original">ir~ɾiki</PHON>
                 <FORM kindOf="standard">iriki</FORM>
                 <PHON kindOf="standard">ir~ɾiki</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_28_W4">
@@ -5704,16 +5704,16 @@
                 <PHON kindOf="original">r~ɾu</PHON>
                 <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">r~ɾu</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_farming_Muu_S_28_W7M4">
                 <FORM kindOf="original">rang</FORM>
                 <PHON kindOf="original">r~ɾaŋ</PHON>
                 <FORM kindOf="standard">rang</FORM>
                 <PHON kindOf="standard">r~ɾaŋ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_28_W8">
@@ -5769,10 +5769,10 @@
                 <FORM kindOf="standard">ʉn</FORM>
                 <PHON kindOf="standard">ɨn</PHON>
                 <TRANSL xml:lang="eng">PF</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
-    </S>
+    <SCORE>0.484375</SCORE></S>
     <S id="kkvNr_farming_Muu_S_29">
         <FORM kindOf="original">una ngʉco niarʉra kamanʉngkee satu'u kamanʉngkee satu'u kamanʉngkee ngʉco tarʉ.</FORM>
         <PHON kindOf="original">una ŋɨʦo niar~ɾɨr~ɾa kamanɨŋkee satuʔu kamanɨŋkee satuʔu kamanɨŋkee ŋɨʦo tar~ɾɨ.</PHON>
@@ -5780,7 +5780,7 @@
         <PHON kindOf="standard">una ŋɨʦo niar~ɾɨr~ɾa kamanɨŋkee satuʔu kamanɨŋkee satuʔu kamanɨŋkee ŋɨʦo tar~ɾɨ.</PHON>
         <TRANSL xml:lang="zho" notes="那裏有被鋸過的(木材),他們用以製成木箱,製作成床.">那裏有被鋸過的 ,他們用以製成木箱,製作成床.</TRANSL>
         <TRANSL xml:lang="eng" notes="There were what have been sawed. They used those (sawed woods) to make wooden boxes and beds.">There were what have been sawed. They used those to make wooden boxes and beds.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="429.83" end="444.23"/>
+        <AUDIO file="kkvNr_farming_Muu_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="429.83" end="444.23" />
         <W id="kkvNr_farming_Muu_S_29_W0">
             <FORM kindOf="original">una</FORM>
             <PHON kindOf="original">una</PHON>
@@ -5842,7 +5842,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="eng">REL</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_29_W3">
@@ -5981,7 +5981,7 @@
                 <TRANSL xml:lang="zho">床</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4782608695652174</SCORE></S>
     <S id="kkvNr_farming_Muu_S_30">
         <FORM kindOf="original">moca nia marivuraʉ marivuraʉ sua ngʉco pusiam ia mataparipari'i na satu'u makasuacu turupangci ngʉco maripusiam ia mo avicincu na tapininga pari.</FORM>
         <PHON kindOf="original">moʦa nia mar~ɾivur~ɾaɨ mar~ɾivur~ɾaɨ sua ŋɨʦo pusiam ia matapar~ɾipar~ɾiʔi na satuʔu makasuaʦu tur~ɾupaŋʦi ŋɨʦo mar~ɾipusiam ia mo aviʦinʦu na tapiniŋa par~ɾi.</PHON>
@@ -5989,7 +5989,7 @@
         <PHON kindOf="standard">moʦa nia mar~ɾivur~ɾaɨ mar~ɾivur~ɾaɨ sua ŋɨʦo pusiam ia matapar~ɾipar~ɾiʔi na satuʔu makasuaʦu tur~ɾupaŋʦi ŋɨʦo mar~ɾipusiam ia mo aviʦinʦu na tapiniŋa par~ɾi.</PHON>
         <TRANSL xml:lang="zho" notes="就那樣,稻米收割完之後,就帶著(稻米)到廣場曝曬.">就那樣,稻米收割完之後,就帶著 到廣場曝曬.</TRANSL>
         <TRANSL xml:lang="eng">Then, after reaping the rice, we dried them in the yard.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="444.23" end="477.77"/>
+        <AUDIO file="kkvNr_farming_Muu_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="444.23" end="477.77" />
         <W id="kkvNr_farming_Muu_S_30_W0">
             <FORM kindOf="original">mo-ca</FORM>
             <PHON kindOf="original">mo-ʦa</PHON>
@@ -6011,7 +6011,7 @@
                 <FORM kindOf="standard">ca</FORM>
                 <PHON kindOf="standard">ʦa</PHON>
                 <TRANSL xml:lang="eng">go</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_30_W1">
@@ -6422,7 +6422,7 @@
                 <TRANSL xml:lang="zho">曝曬</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5147058823529411</SCORE></S>
     <S id="kkvNr_farming_Muu_S_31">
         <FORM kindOf="original">nuu parinci ia nuu maringunaaci ia m m una ngʉco pangi una ngʉco tarʉkʉra moncu nia mioru nukai tassa ia taturu.</FORM>
         <PHON kindOf="original">nuu par~ɾinʦi ia nuu mar~ɾiŋunaaʦi ia m m una ŋɨʦo paŋi una ŋɨʦo tar~ɾɨkɨr~ɾa monʦu nia mior~ɾu nukai tassa ia tatur~ɾu.</PHON>
@@ -6430,7 +6430,7 @@
         <PHON kindOf="standard">nuu par~ɾinʦi ia nuu mar~ɾiŋunaaʦi ia m m una ŋɨʦo paŋi una ŋɨʦo tar~ɾɨkɨr~ɾa monʦu nia mior~ɾu nukai tassa ia tatur~ɾu.</PHON>
         <TRANSL xml:lang="zho">在曝曬過之後,那邊有杵和臼,兩位到三位會在那邊舂搗.</TRANSL>
         <TRANSL xml:lang="eng">After drying them, there were pestle and mortar. Two or three people would pound the rice there.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="477.77" end="498.29"/>
+        <AUDIO file="kkvNr_farming_Muu_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="477.77" end="498.29" />
         <W id="kkvNr_farming_Muu_S_31_W0">
             <FORM kindOf="original">nuu</FORM>
             <PHON kindOf="original">nuu</PHON>
@@ -6807,7 +6807,7 @@
                 <TRANSL xml:lang="zho">三個</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6030150753768844</SCORE></S>
     <S id="kkvNr_farming_Muu_S_32">
         <FORM kindOf="original">ioruuncukee makasi na akia tʉʉ.</FORM>
         <PHON kindOf="original">ior~ɾuunʦukee makasi na akia tɨɨ.</PHON>
@@ -6815,7 +6815,7 @@
         <PHON kindOf="standard">ior~ɾuunʦukee makasi na akia tɨɨ.</PHON>
         <TRANSL xml:lang="zho">他們會舂稻穀直到沒有稻殼.</TRANSL>
         <TRANSL xml:lang="eng">They would pound until husks disappeared.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="498.29" end="506.09"/>
+        <AUDIO file="kkvNr_farming_Muu_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="498.29" end="506.09" />
         <W id="kkvNr_farming_Muu_S_32_W0">
             <FORM kindOf="original">ioru-un=cu=kee</FORM>
             <PHON kindOf="original">ior~ɾu-un=ʦu=kee</PHON>
@@ -6920,7 +6920,7 @@
                 <TRANSL xml:lang="zho">稻殼</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4642857142857143</SCORE></S>
     <S id="kkvNr_farming_Muu_S_33">
         <FORM kindOf="original">nuu makasuaci ia patakoruuncu vura ihua umʉsʉ'ʉ na 'uia.</FORM>
         <PHON kindOf="original">nuu makasuaʦi ia patakor~ɾuunʦu vur~ɾa ihua umɨsɨʔɨ na ʔuia.</PHON>
@@ -6928,7 +6928,7 @@
         <PHON kindOf="standard">nuu makasuaʦi ia patakor~ɾuunʦu vur~ɾa ihua umɨsɨʔɨ na ʔuia.</PHON>
         <TRANSL xml:lang="zho">那樣之後,就把那個米撈出來,放在鐵製的容器.</TRANSL>
         <TRANSL xml:lang="eng">After that, rice will be scooped out and placed in iron containers.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="506.09" end="523.64"/>
+        <AUDIO file="kkvNr_farming_Muu_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="506.09" end="523.64" />
         <W id="kkvNr_farming_Muu_S_33_W0">
             <FORM kindOf="original">nuu</FORM>
             <PHON kindOf="original">nuu</PHON>
@@ -7129,7 +7129,7 @@
                 <TRANSL xml:lang="zho">鐵製容器</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5567010309278351</SCORE></S>
     <S id="kkvNr_farming_Muu_S_34">
         <FORM kindOf="original">siminsin po'ocipi.</FORM>
         <PHON kindOf="original">siminsin poʔoʦipi.</PHON>
@@ -7137,7 +7137,7 @@
         <PHON kindOf="standard">siminsin poʔoʦipi.</PHON>
         <TRANSL xml:lang="zho">會被拿去沖洗和蒸煮.</TRANSL>
         <TRANSL xml:lang="eng">the rice will be washed and cooked.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="523.64" end="527.93"/>
+        <AUDIO file="kkvNr_farming_Muu_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="523.64" end="527.93" />
         <W id="kkvNr_farming_Muu_S_34_W0">
             <FORM kindOf="original">siminsi-n</FORM>
             <PHON kindOf="original">siminsi-n</PHON>
@@ -7178,7 +7178,7 @@
                 <TRANSL xml:lang="zho">煮</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5405405405405406</SCORE></S>
     <S id="kkvNr_farming_Muu_S_35">
         <FORM kindOf="original">nuu macuru ci akia camai.</FORM>
         <PHON kindOf="original">nuu maʦur~ɾu ʦi akia ʦamai.</PHON>
@@ -7186,7 +7186,7 @@
         <PHON kindOf="standard">nuu maʦur~ɾu ʦi akia ʦamai.</PHON>
         <TRANSL xml:lang="zho">當煮熟之後,沒有菜餚.</TRANSL>
         <TRANSL xml:lang="eng">The rice was cooked, but there was no dish.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="527.93" end="537.2"/>
+        <AUDIO file="kkvNr_farming_Muu_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="527.93" end="537.2" />
         <W id="kkvNr_farming_Muu_S_35_W0">
             <FORM kindOf="original">nuu</FORM>
             <PHON kindOf="original">nuu</PHON>
@@ -7219,28 +7219,28 @@
                 <TRANSL xml:lang="zho">煮熟</TRANSL>
             </M>
             <M id="kkvNr_farming_Muu_S_35_W1M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
-                <TRANSL xml:lang="eng"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">COS</TRANSL>
             </M>
             <M id="kkvNr_farming_Muu_S_35_W1M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">cooked</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_farming_Muu_S_35_W1M4">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">COS</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_farming_Muu_S_35_W2">
@@ -7291,7 +7291,7 @@
                 <TRANSL xml:lang="zho">菜餚</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5581395348837209</SCORE></S>
     <S id="kkvNr_farming_Muu_S_36">
         <FORM kindOf="original">nakai sua mamarurang miana ia tavarʉ'ʉ una kunamʉ una apasʉ una arasakai.</FORM>
         <PHON kindOf="original">nakai sua mamar~ɾur~ɾaŋ miana ia tavar~ɾɨʔɨ una kunamɨ una apasɨ una ar~ɾasakai.</PHON>
@@ -7299,7 +7299,7 @@
         <PHON kindOf="standard">nakai sua mamar~ɾur~ɾaŋ miana ia tavar~ɾɨʔɨ una kunamɨ una apasɨ una ar~ɾasakai.</PHON>
         <TRANSL xml:lang="zho">以前的老人家知道有川苔、螃蟹、蝦子.</TRANSL>
         <TRANSL xml:lang="eng">Elders in the past knew there were moss, crabs and shrimps.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="537.2" end="547.98"/>
+        <AUDIO file="kkvNr_farming_Muu_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="537.2" end="547.98" />
         <W id="kkvNr_farming_Muu_S_36_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -7516,7 +7516,7 @@
                 <TRANSL xml:lang="zho">蝦子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6141732283464567</SCORE></S>
     <S id="kkvNr_farming_Muu_S_37">
         <FORM kindOf="original">ihua ia camai miana ngʉco ihua ngʉco sua tia siakʉn ngʉco uru.</FORM>
         <PHON kindOf="original">ihua ia ʦamai miana ŋɨʦo ihua ŋɨʦo sua tia siakɨn ŋɨʦo ur~ɾu.</PHON>
@@ -7524,7 +7524,7 @@
         <PHON kindOf="standard">ihua ia ʦamai miana ŋɨʦo ihua ŋɨʦo sua tia siakɨn ŋɨʦo ur~ɾu.</PHON>
         <TRANSL xml:lang="zho">這些川苔螃蟹蝦子就用來配飯.</TRANSL>
         <TRANSL xml:lang="eng">These moss, crabs, and shrimps would be taken to be garnishes.</TRANSL>
-        <AUDIO file="kkvNr_farming_Muu_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="547.98" end="562.01"/>
+        <AUDIO file="kkvNr_farming_Muu_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_farming_Muu.mp3" start="547.98" end="562.01" />
         <W id="kkvNr_farming_Muu_S_37_W0">
             <FORM kindOf="original">ihua</FORM>
             <PHON kindOf="original">ihua</PHON>
@@ -7725,5 +7725,5 @@
                 <TRANSL xml:lang="zho">米</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.509090909090909</SCORE></S>
 </TEXT>

@@ -6,7 +6,7 @@ import subprocess
 import tempfile
 import xml.etree.ElementTree as ET
 import urllib.request
-from urllib.parse import unquote, urlparse
+from urllib.parse import unquote, urlparse, urlunparse, quote
 import torchaudio
 import torch
 
@@ -51,14 +51,16 @@ def is_published_xml_path(file_path):
     return "xml" in parts and "codeanddocs" not in parts
 
 
-def download_audio_from_url(audio_url, destination_dir):
+def download_audio_from_url(audio_url: str, destination_dir):
     parsed = urlparse(audio_url)
     filename = os.path.basename(parsed.path)
     if not filename:
         filename = "downloaded_audio"
     local_name = os.path.join(destination_dir, unquote(filename))
+    # Percent-encode raw spaces/apostrophes etc.; safe="/%" avoids double-encoding.
+    encoded_url = urlunparse(parsed._replace(path=quote(parsed.path, safe="/%")))
     request = urllib.request.Request(
-        audio_url,
+        encoded_url,
         headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"},
     )
     with urllib.request.urlopen(request) as response, open(local_name, "wb") as out_file:
@@ -173,29 +175,24 @@ def resolve_local_audio_path(xml_path, audio_filename, language_name, dialect):
     if os.path.isabs(audio_filename) and os.path.isfile(audio_filename):
         return audio_filename
 
-    xml_dir = os.path.dirname(xml_path)
     corpus_dir = get_corpus_dir_from_xml_path(xml_path)
-    subdir = f"{dialect}_{language_name}" if dialect else language_name
-
-    candidates = [
-        os.path.join(xml_dir, audio_filename),
-        os.path.join(xml_dir, "Audio", audio_filename),
-        os.path.join(xml_dir, "audio", audio_filename),
-    ]
-
     if corpus_dir:
-        candidates.extend(
-            [
-                os.path.join(corpus_dir, "Audio", audio_filename),
-                os.path.join(corpus_dir, "audio", audio_filename),
-                os.path.join(corpus_dir, "Audio", language_name, subdir, audio_filename),
-                os.path.join(corpus_dir, "audio", language_name, subdir, audio_filename),
-            ]
-        )
+        audio_dir = os.path.join(corpus_dir, "Audio")
+        direct_candidate = os.path.join(audio_dir, audio_filename)
+        if os.path.isfile(direct_candidate):
+            return direct_candidate
 
-    for candidate in candidates:
-        if os.path.isfile(candidate):
-            return candidate
+        matches = []
+        for directory, _, filenames in os.walk(audio_dir):
+            if audio_filename in filenames:
+                matches.append(os.path.join(directory, audio_filename))
+        if len(matches) == 1:
+            return matches[0]
+        if len(matches) > 1:
+            print(
+                f"Warning: multiple local audio files named {audio_filename} "
+                f"found under {audio_dir}"
+            )
     return None
 
 
@@ -307,7 +304,7 @@ def process_xml_file(xml_path, run_temp_dir):
                     audio_file = download_audio_from_url(audio_url, run_temp_dir)
                     downloaded_audio = True
                     downloaded_url_cache[audio_url] = audio_file
-                except OSError as exc:
+                except (OSError, ValueError) as exc:
                     downloaded_url_cache[audio_url] = None
                     print(f"Warning: failed to download audio from {audio_url}: {exc}")
                     continue
@@ -372,20 +369,75 @@ def find_corpus_dirs_with_download_script(corpora_path):
         return corpus_dirs
     for name in sorted(os.listdir(corpora_path)):
         corpus_dir = os.path.join(corpora_path, name)
-        if os.path.isfile(os.path.join(corpus_dir, "download_audio_data.sh")):
+        if (
+            os.path.isfile(os.path.join(corpus_dir, "download_audio_data.sh"))
+            and corpus_needs_scores(corpus_dir)
+        ):
             corpus_dirs.append(corpus_dir)
     return corpus_dirs
 
 
+def corpus_needs_scores(corpus_dir):
+    """Return whether a scoreable published XML file has no PDM scores yet."""
+    if FORCE_RECOMPUTE_SCORES:
+        return True
+
+    for root, _, files in os.walk(corpus_dir):
+        for filename in files:
+            if not filename.endswith(".xml"):
+                continue
+            xml_path = os.path.join(root, filename)
+            if not is_published_xml_path(xml_path):
+                continue
+            try:
+                tree_root = ET.parse(xml_path).getroot()
+            except ET.ParseError as exc:
+                print(f"Warning: treating malformed XML as unscored {xml_path}: {exc}")
+                return True
+            sentences = tree_root.findall(".//S")
+            has_audio = any(sentence_elem.find("AUDIO") is not None for sentence_elem in sentences)
+            has_score = any(
+                score_elem is not None and (score_elem.text or "").strip()
+                for sentence_elem in sentences
+                for score_elem in [sentence_elem.find("SCORE")]
+            )
+            if has_audio and not has_score:
+                return True
+    return False
+
+
+def find_bash_executable():
+    """Resolve a real Bash, preferring Git for Windows' own bash over WSL's
+    C:\\Windows\\System32\\bash.exe, which resolves first on PATH but runs
+    scripts inside an unrelated WSL environment (no git-lfs, different PATH)."""
+    if os.name == "nt":
+        for candidate in (
+            os.environ.get("PROGRAMFILES", r"C:\Program Files") + r"\Git\bin\bash.exe",
+            os.environ.get("PROGRAMFILES(X86)", r"C:\Program Files (x86)") + r"\Git\bin\bash.exe",
+        ):
+            if os.path.isfile(candidate):
+                return candidate
+    return shutil.which("bash") or "bash"
+
+
 def run_download_audio_script(corpus_dir):
     script_path = os.path.join(corpus_dir, "download_audio_data.sh")
-    # Strip CRLF line endings on the fly; some scripts are checked out with CRLF and bash
-    # chokes on the trailing \r (e.g. "$'\r': command not found").
-    subprocess.run(
-        ["bash", "-c", "tr -d '\\r' < download_audio_data.sh | bash"],
-        cwd=corpus_dir,
-        check=True,
-    )
+    # Execute a file rather than a stdin pipeline so scripts can use BASH_SOURCE[0].
+    with open(script_path, "rb") as source_file:
+        normalized_script = source_file.read().replace(b"\r\n", b"\n")
+    with tempfile.NamedTemporaryFile(
+        mode="wb", prefix="download_audio_", suffix=".sh", delete=False, dir=corpus_dir
+    ) as temp_script:
+        temp_script.write(normalized_script)
+        normalized_script_path = temp_script.name
+    try:
+        subprocess.run(
+            [find_bash_executable(), os.path.basename(normalized_script_path)],
+            cwd=corpus_dir,
+            check=True,
+        )
+    finally:
+        os.remove(normalized_script_path)
     return script_path
 
 

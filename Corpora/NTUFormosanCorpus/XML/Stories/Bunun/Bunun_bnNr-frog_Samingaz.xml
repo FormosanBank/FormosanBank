@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="NTU_Stry_Bunun_bnNr-frog_Samingaz" xml:lang="bnn" source="NTU Corpus stories for Bunun, story: bnNr-frog_Samingaz" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Junqun">
     <S id="bnNr-frog_Samingaz_S_0">
         <FORM kindOf="original">aiza tu tasa uvaaz uh inkaduan masia sisiuh izaun saicia saipuk at.</FORM>
@@ -7,7 +7,7 @@
         <PHON kindOf="standard">aiða tu tasa uvaað ux~χ inkaduan maɕia ɕiɕiux~χ iðaun saiʨia saipuk at.</PHON>
         <TRANSL xml:lang="zho">有一個孩子撿到一隻青蛙,他把他抓起來養.</TRANSL>
         <TRANSL xml:lang="eng">There is a kid who found a frog and kept it.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="1.2" end="7.53"/>
+        <AUDIO file="bnNr-frog_Samingaz_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="1.2" end="7.53" />
         <W id="bnNr-frog_Samingaz_S_0_W0">
             <FORM kindOf="original">aiza</FORM>
             <PHON kindOf="original">aiða</PHON>
@@ -216,7 +216,7 @@
                 <TRANSL xml:lang="zho">然後</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4363636363636364</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_1">
         <FORM kindOf="original">aiza amin saicia asu.</FORM>
         <PHON kindOf="original">aiða amin saiʨia asu.</PHON>
@@ -224,7 +224,7 @@
         <PHON kindOf="standard">aiða amin saiʨia asu.</PHON>
         <TRANSL xml:lang="zho">然後他也有狗.</TRANSL>
         <TRANSL xml:lang="eng">He also has a dog.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="7.53" end="9.49"/>
+        <AUDIO file="bnNr-frog_Samingaz_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="7.53" end="9.49" />
         <W id="bnNr-frog_Samingaz_S_1_W0">
             <FORM kindOf="original">aiza</FORM>
             <PHON kindOf="original">aiða</PHON>
@@ -289,7 +289,7 @@
                 <TRANSL xml:lang="zho">狗</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.2777777777777778</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_2">
         <FORM kindOf="original">a min'unin mas isaicia tu tas tu lumah.</FORM>
         <PHON kindOf="original">a minʔunin mas isaiʨia tu tas tu l~ɬumax~χ.</PHON>
@@ -297,7 +297,7 @@
         <PHON kindOf="standard">a minʔunin mas isaiʨia tu tas tu l~ɬumax~χ.</PHON>
         <TRANSL xml:lang="zho">他們成了一家人.</TRANSL>
         <TRANSL xml:lang="eng">They became a family.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="9.49" end="11.91"/>
+        <AUDIO file="bnNr-frog_Samingaz_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="9.49" end="11.91" />
         <W id="bnNr-frog_Samingaz_S_2_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -442,7 +442,7 @@
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.38235294117647056</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_3">
         <FORM kindOf="original">a maupacia naia tu madaidaz mas sisiuhcin a pin'uni mas naicia tu tas tu lumah ungat aiza tu sanavan naia hai masabah.</FORM>
         <PHON kindOf="original">a maupaʨia naia tu madaidað mas ɕiɕiux~χʨin a pinʔuni mas naiʨia tu tas tu l~ɬumax~χ uŋat aiða tu sanavan naia x~χai masabax~χ.</PHON>
@@ -450,7 +450,7 @@
         <PHON kindOf="standard">a maupaʨia naia tu madaidað mas ɕiɕiux~χʨin a pinʔuni mas naiʨia tu tas tu l~ɬumax~χ uŋat aiða tu sanavan naia x~χai masabax~χ.</PHON>
         <TRANSL xml:lang="zho">他們那樣疼愛這個青蛙,使他們成為一家人.然後有一個晚上,他們在睡覺.</TRANSL>
         <TRANSL xml:lang="eng">They love the frog so much. They are a family. One night they are sleeping.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="11.91" end="20.47"/>
+        <AUDIO file="bnNr-frog_Samingaz_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="11.91" end="20.47" />
         <W id="bnNr-frog_Samingaz_S_3_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -859,7 +859,7 @@
                 <TRANSL xml:lang="zho">睡覺</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3857868020304569</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_4">
         <FORM kindOf="original">a nii tu haiaphaiap sia masabah tu sia labiancin hai sisiuha hai kikilim mas isaicia tu sia dangian tu 'asang.</FORM>
         <PHON kindOf="original">a nii tu x~χaiapx~χaiap ɕia masabax~χ tu ɕia l~ɬabianʨin x~χai ɕiɕiux~χa x~χai kikil~ɬim mas isaiʨia tu ɕia daŋian tu ʔasaŋ.</PHON>
@@ -867,7 +867,7 @@
         <PHON kindOf="standard">a nii tu x~χaiapx~χaiap ɕia masabax~χ tu ɕia l~ɬabianʨin x~χai ɕiɕiux~χa x~χai kikil~ɬim mas isaiʨia tu ɕia daŋian tu ʔasaŋ.</PHON>
         <TRANSL xml:lang="zho">不知不覺,在睡覺的這個晚上,那隻青蛙正在找他的住的故鄉.</TRANSL>
         <TRANSL xml:lang="eng">That night, when they are asleep and unaware, the frog is seeking its hometown.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="20.47" end="29.36"/>
+        <AUDIO file="bnNr-frog_Samingaz_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="20.47" end="29.36" />
         <W id="bnNr-frog_Samingaz_S_4_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -1236,7 +1236,7 @@
                 <TRANSL xml:lang="zho">部落</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.37037037037037035</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_5">
         <FORM kindOf="original">a maupacia tu kanakanak saia a mindangkaz a sisbai sia amunucia a mudaan kilim mas isaicia tu a tuksisia.</FORM>
         <PHON kindOf="original">a maupaʨia tu kanakanak saia a mindaŋkað a ɕisbai ɕia amunuʨia a mudaan kil~ɬim mas isaiʨia tu a tukɕiɕia.</PHON>
@@ -1244,7 +1244,7 @@
         <PHON kindOf="standard">a maupaʨia tu kanakanak saia a mindaŋkað a ɕisbai ɕia amunuʨia a mudaan kil~ɬim mas isaiʨia tu a tukɕiɕia.</PHON>
         <TRANSL xml:lang="zho">就那樣他自行站起來,離開那個水缸去尋找他的同類.</TRANSL>
         <TRANSL xml:lang="eng">So it stands up, leave the vat, and go finding its countrymen.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="29.36" end="40.17"/>
+        <AUDIO file="bnNr-frog_Samingaz_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="29.36" end="40.17" />
         <W id="bnNr-frog_Samingaz_S_5_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -1597,7 +1597,7 @@
                 <TRANSL xml:lang="zho">同類</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.41758241758241754</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_6">
         <FORM kindOf="original">ungat minkailasin mazasia tu uvaaza.</FORM>
         <PHON kindOf="original">uŋat minkail~ɬaɕin maðaɕia tu uvaaða.</PHON>
@@ -1605,7 +1605,7 @@
         <PHON kindOf="standard">uŋat minkail~ɬaɕin maðaɕia tu uvaaða.</PHON>
         <TRANSL xml:lang="zho">然後那個孩子醒來了.</TRANSL>
         <TRANSL xml:lang="eng">Then the kid wakes up.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="40.17" end="43.69"/>
+        <AUDIO file="bnNr-frog_Samingaz_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="40.17" end="43.69" />
         <W id="bnNr-frog_Samingaz_S_6_W0">
             <FORM kindOf="original">ung=at</FORM>
             <PHON kindOf="original">uŋ=at</PHON>
@@ -1734,7 +1734,7 @@
                 <TRANSL xml:lang="zho">遠距.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.39344262295081966</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_7">
         <FORM kindOf="original">ai saduas saicia tu is'uka.</FORM>
         <PHON kindOf="original">ai saduas saiʨia tu isʔuka.</PHON>
@@ -1742,7 +1742,7 @@
         <PHON kindOf="standard">ai saduas saiʨia tu isʔuka.</PHON>
         <TRANSL xml:lang="zho">他看到,不見了.</TRANSL>
         <TRANSL xml:lang="eng">He sees it is no longer there.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="43.69" end="46.36"/>
+        <AUDIO file="bnNr-frog_Samingaz_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="43.69" end="46.36" />
         <W id="bnNr-frog_Samingaz_S_7_W0">
             <FORM kindOf="original">ai</FORM>
             <PHON kindOf="original">ai</PHON>
@@ -1847,7 +1847,7 @@
                 <TRANSL xml:lang="zho">否定.存在</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4782608695652174</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_8">
         <FORM kindOf="original">a usa maza sisiuha maupacia amin asua tu kikilim a lalunglung tu isa maza sisiuh.</FORM>
         <PHON kindOf="original">a usa maða ɕiɕiux~χa maupaʨia amin asua tu kikil~ɬim a l~ɬal~ɬuŋl~ɬuŋ tu isa maða ɕiɕiux~χ.</PHON>
@@ -1855,7 +1855,7 @@
         <PHON kindOf="standard">a usa maða ɕiɕiux~χa maupaʨia amin asua tu kikil~ɬim a l~ɬal~ɬuŋl~ɬuŋ tu isa maða ɕiɕiux~χ.</PHON>
         <TRANSL xml:lang="zho">「青蛙在哪裡?」狗也那樣地一直邊吠叫地找.</TRANSL>
         <TRANSL xml:lang="eng">"Where is the frog?", the dog keeps searching and barking.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="46.36" end="52.41"/>
+        <AUDIO file="bnNr-frog_Samingaz_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="46.36" end="52.41" />
         <W id="bnNr-frog_Samingaz_S_8_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -2152,7 +2152,7 @@
                 <TRANSL xml:lang="zho">青蛙</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.45070422535211263</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_9">
         <FORM kindOf="original">unghai a miliskin naia tu ai nakuisa dii sisiuha maupacia tu mapatualiba naia.</FORM>
         <PHON kindOf="original">uŋx~χai a mil~ɬiskin naia tu ai nakuisa dii ɕiɕiux~χa maupaʨia tu mapatual~ɬiba naia.</PHON>
@@ -2160,7 +2160,7 @@
         <PHON kindOf="standard">uŋx~χai a mil~ɬiskin naia tu ai nakuisa dii ɕiɕiux~χa maupaʨia tu mapatual~ɬiba naia.</PHON>
         <TRANSL xml:lang="zho">然後他們想著「咦?青蛙會去哪裡?」他們那樣互相抱著.</TRANSL>
         <TRANSL xml:lang="eng">They hug each other and consider where the frog went.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="52.41" end="59.13"/>
+        <AUDIO file="bnNr-frog_Samingaz_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="52.41" end="59.13" />
         <W id="bnNr-frog_Samingaz_S_9_W0">
             <FORM kindOf="original">ung=hai</FORM>
             <PHON kindOf="original">uŋ=x~χai</PHON>
@@ -2433,7 +2433,7 @@
                 <TRANSL xml:lang="zho">3PL.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5354330708661417</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_10">
         <FORM kindOf="original">tupaun saicia asua tu nakudiip kata kilim mas tu sisiuhcia nii tu haipun tu ka aiza antaban mikua.</FORM>
         <PHON kindOf="original">tupaun saiʨia asua tu nakudiip kata kil~ɬim mas tu ɕiɕiux~χʨia nii tu x~χaipun tu ka aiða antaban mikua.</PHON>
@@ -2441,7 +2441,7 @@
         <PHON kindOf="standard">tupaun saiʨia asua tu nakudiip kata kil~ɬim mas tu ɕiɕiux~χʨia nii tu x~χaipun tu ka aiða antaban mikua.</PHON>
         <TRANSL xml:lang="zho">他跟狗說:「我們要去找那個青蛙吧?不知道有沒有被拿走還是怎麼了.」</TRANSL>
         <TRANSL xml:lang="eng">He says to the dog: 'We are going to look for the frog. I have no idea if it is taken away.'</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="59.13" end="67.42"/>
+        <AUDIO file="bnNr-frog_Samingaz_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="59.13" end="67.42" />
         <W id="bnNr-frog_Samingaz_S_10_W0">
             <FORM kindOf="original">tupa-un</FORM>
             <PHON kindOf="original">tupaun</PHON>
@@ -2826,7 +2826,7 @@
                 <TRANSL xml:lang="zho">怎麼</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_11">
         <FORM kindOf="original">at mudaan naia maupacia tu kikilim massia sisiuh.</FORM>
         <PHON kindOf="original">at mudaan naia maupaʨia tu kikil~ɬim masɕia ɕiɕiux~χ.</PHON>
@@ -2834,7 +2834,7 @@
         <PHON kindOf="standard">at mudaan naia maupaʨia tu kikil~ɬim masɕia ɕiɕiux~χ.</PHON>
         <TRANSL xml:lang="zho">他們出發,那樣一直尋找著青蛙.</TRANSL>
         <TRANSL xml:lang="eng">Then they went away, looking for the frog like that.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="67.42" end="71.9"/>
+        <AUDIO file="bnNr-frog_Samingaz_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="67.42" end="71.9" />
         <W id="bnNr-frog_Samingaz_S_11_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -3003,7 +3003,7 @@
                 <TRANSL xml:lang="zho">青蛙</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3448275862068966</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_12">
         <FORM kindOf="original">iskanata a iskaisaisa iskavahlas.</FORM>
         <PHON kindOf="original">iskanata a iskaisaisa iskavax~χl~ɬas.</PHON>
@@ -3011,7 +3011,7 @@
         <PHON kindOf="standard">iskanata a iskaisaisa iskavax~χl~ɬas.</PHON>
         <TRANSL xml:lang="zho">他們到外面,到每個地方,到河流.</TRANSL>
         <TRANSL xml:lang="eng">They went outside, went everywhere, went to the river</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="71.9" end="76.01"/>
+        <AUDIO file="bnNr-frog_Samingaz_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="71.9" end="76.01" />
         <W id="bnNr-frog_Samingaz_S_12_W0">
             <FORM kindOf="original">i-ska-nata</FORM>
             <PHON kindOf="original">iskanata</PHON>
@@ -3124,7 +3124,7 @@
                 <TRANSL xml:lang="zho">河流</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5588235294117647</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_13">
         <FORM kindOf="original">aiza tu tasa dangian naicia lukis.</FORM>
         <PHON kindOf="original">aiða tu tasa daŋian naiʨia l~ɬukis.</PHON>
@@ -3132,7 +3132,7 @@
         <PHON kindOf="standard">aiða tu tasa daŋian naiʨia l~ɬukis.</PHON>
         <TRANSL xml:lang="zho">他們住的地方有樹.</TRANSL>
         <TRANSL xml:lang="eng">there is a tree where they live</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="76.01" end="79.29"/>
+        <AUDIO file="bnNr-frog_Samingaz_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="76.01" end="79.29" />
         <W id="bnNr-frog_Samingaz_S_13_W0">
             <FORM kindOf="original">aiza</FORM>
             <PHON kindOf="original">aiða</PHON>
@@ -3237,7 +3237,7 @@
                 <TRANSL xml:lang="zho">樹</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4545454545454546</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_14">
         <FORM kindOf="original">aizaang maisia laak at maupacia uvaaza miliskin tu haipa nii tu tungnangadah saia laakcia.</FORM>
         <PHON kindOf="original">aiðaaŋ maiɕia l~ɬaak at maupaʨia uvaaða mil~ɬiskin tu x~χaipa nii tu tuŋnaŋadax~χ saia l~ɬaakʨia.</PHON>
@@ -3245,7 +3245,7 @@
         <PHON kindOf="standard">aiðaaŋ maiɕia l~ɬaak at maupaʨia uvaaða mil~ɬiskin tu x~χaipa nii tu tuŋnaŋadax~χ saia l~ɬaakʨia.</PHON>
         <TRANSL xml:lang="zho">那裡有洞,孩子想他不知道是不是到洞裡面了.</TRANSL>
         <TRANSL xml:lang="eng">There is a hole there. Then the child thinks if it hid in the hole.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="79.29" end="85.25"/>
+        <AUDIO file="bnNr-frog_Samingaz_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="79.29" end="85.25" />
         <W id="bnNr-frog_Samingaz_S_14_W0">
             <FORM kindOf="original">aiza=ang</FORM>
             <PHON kindOf="original">aiða=aŋ</PHON>
@@ -3550,7 +3550,7 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.36363636363636365</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_15">
         <FORM kindOf="original">idii saia malala'la tu sisiuh isa kasu.</FORM>
         <PHON kindOf="original">idii saia mal~ɬal~ɬaʔl~ɬa tu ɕiɕiux~χ isa kasu.</PHON>
@@ -3558,7 +3558,7 @@
         <PHON kindOf="standard">idii saia mal~ɬal~ɬaʔl~ɬa tu ɕiɕiux~χ isa kasu.</PHON>
         <TRANSL xml:lang="zho">那裡他一直叫呼:青蛙你在哪裡?</TRANSL>
         <TRANSL xml:lang="eng">Over there he keeps calling: "Frog where are you?"</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="85.25" end="88.15"/>
+        <AUDIO file="bnNr-frog_Samingaz_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="85.25" end="88.15" />
         <W id="bnNr-frog_Samingaz_S_15_W0">
             <FORM kindOf="original">i-dii</FORM>
             <PHON kindOf="original">idii</PHON>
@@ -3687,7 +3687,7 @@
                 <TRANSL xml:lang="zho">2SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47887323943661975</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_16">
         <FORM kindOf="original">ungat maza asu hai usaduan mas isia lukis tu sia itu bahusaz tu sia lumah.</FORM>
         <PHON kindOf="original">uŋat maða asu x~χai usaduan mas iɕia l~ɬukis tu ɕia itu bax~χusað tu ɕia l~ɬumax~χ.</PHON>
@@ -3695,7 +3695,7 @@
         <PHON kindOf="standard">uŋat maða asu x~χai usaduan mas iɕia l~ɬukis tu ɕia itu bax~χusað tu ɕia l~ɬumax~χ.</PHON>
         <TRANSL xml:lang="zho">然後,狗看到樹上的虎頭蜂窩.</TRANSL>
         <TRANSL xml:lang="eng">Then, that dog sees the hornet's nest in the tree.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="88.15" end="94.42"/>
+        <AUDIO file="bnNr-frog_Samingaz_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="88.15" end="94.42" />
         <W id="bnNr-frog_Samingaz_S_16_W0">
             <FORM kindOf="original">ung=at</FORM>
             <PHON kindOf="original">uŋ=at</PHON>
@@ -3976,7 +3976,7 @@
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4251968503937008</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_17">
         <FORM kindOf="original">miliskin saia tu isaincia amin a sisiuh at.</FORM>
         <PHON kindOf="original">mil~ɬiskin saia tu isainʨia amin a ɕiɕiux~χ at.</PHON>
@@ -3984,7 +3984,7 @@
         <PHON kindOf="standard">mil~ɬiskin saia tu isainʨia amin a ɕiɕiux~χ at.</PHON>
         <TRANSL xml:lang="zho">他想,青蛙是否也在那邊?</TRANSL>
         <TRANSL xml:lang="eng">He wonders, is the frog in there, too?</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="94.42" end="97.67"/>
+        <AUDIO file="bnNr-frog_Samingaz_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="94.42" end="97.67" />
         <W id="bnNr-frog_Samingaz_S_17_W0">
             <FORM kindOf="original">m-iliskin</FORM>
             <PHON kindOf="original">mil~ɬiskin</PHON>
@@ -4153,7 +4153,7 @@
                 <TRANSL xml:lang="zho">就</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3561643835616438</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_18">
         <FORM kindOf="original">maupacia saia tu malalunglung massia saitu bahusaz tu sia.</FORM>
         <PHON kindOf="original">maupaʨia saia tu mal~ɬal~ɬuŋl~ɬuŋ masɕia saitu bax~χusað tu ɕia.</PHON>
@@ -4161,7 +4161,7 @@
         <PHON kindOf="standard">maupaʨia saia tu mal~ɬal~ɬuŋl~ɬuŋ masɕia saitu bax~χusað tu ɕia.</PHON>
         <TRANSL xml:lang="zho">他就這樣對著虎頭蜂窩吠叫.</TRANSL>
         <TRANSL xml:lang="eng">It barks at the hornet's nest like that.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="97.67" end="103.19"/>
+        <AUDIO file="bnNr-frog_Samingaz_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="97.67" end="103.19" />
         <W id="bnNr-frog_Samingaz_S_18_W0">
             <FORM kindOf="original">maupa=cia</FORM>
             <PHON kindOf="original">maupa=ʨia</PHON>
@@ -4242,11 +4242,11 @@
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
             <M id="bnNr-frog_Samingaz_S_18_W3M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
-                <TRANSL xml:lang="eng"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">&lt;重疊&gt;吠</TRANSL>
             </M>
         </W>
@@ -4346,15 +4346,15 @@
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
             <M id="bnNr-frog_Samingaz_S_18_W8M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3846153846153846</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_19">
         <FORM kindOf="original">at vuhvuhun a maza sia tu lukisa at nii tu haiap tu bahusaza hai mais vuhvuhun naia hai namun'apav macisbai.</FORM>
         <PHON kindOf="original">at vux~χvux~χun a maða ɕia tu l~ɬukisa at nii tu x~χaiap tu bax~χusaða x~χai mais vux~χvux~χun naia x~χai namunʔapav maʨisbai.</PHON>
@@ -4362,7 +4362,7 @@
         <PHON kindOf="standard">at vux~χvux~χun a maða ɕia tu l~ɬukisa at nii tu x~χaiap tu bax~χusaða x~χai mais vux~χvux~χun naia x~χai namunʔapav maʨisbai.</PHON>
         <TRANSL xml:lang="zho">樹就搖了,他就不知道搖了後虎頭蜂會逃出來.</TRANSL>
         <TRANSL xml:lang="eng">Then the tree was shaken. He didn't know the hornets will fly out when being shaken.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="103.19" end="112.22"/>
+        <AUDIO file="bnNr-frog_Samingaz_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="103.19" end="112.22" />
         <W id="bnNr-frog_Samingaz_S_19_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -4755,7 +4755,7 @@
                 <TRANSL xml:lang="zho">脫逃</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4301075268817204</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_20">
         <FORM kindOf="original">isia mavuhvuh tu sia asucin hai kalinastuun kaliumanun maza sia tu bahusaza lananastu at.</FORM>
         <PHON kindOf="original">iɕia mavux~χvux~χ tu ɕia asuʨin x~χai kal~ɬinastuun kal~ɬiumanun maða ɕia tu bax~χusaða l~ɬananastu at.</PHON>
@@ -4763,7 +4763,7 @@
         <PHON kindOf="standard">iɕia mavux~χvux~χ tu ɕia asuʨin x~χai kal~ɬinastuun kal~ɬiumanun maða ɕia tu bax~χusaða l~ɬananastu at.</PHON>
         <TRANSL xml:lang="zho">狗把虎頭蜂打落到地上.</TRANSL>
         <TRANSL xml:lang="eng">The dog hits the hornets to the ground.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="112.22" end="120.02"/>
+        <AUDIO file="bnNr-frog_Samingaz_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="112.22" end="120.02" />
         <W id="bnNr-frog_Samingaz_S_20_W0">
             <FORM kindOf="original">i-sia</FORM>
             <PHON kindOf="original">iɕia</PHON>
@@ -5076,7 +5076,7 @@
                 <TRANSL xml:lang="zho">然後</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4484848484848485</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_21">
         <FORM kindOf="original">maza sia tu bahusaza hai minaskun.</FORM>
         <PHON kindOf="original">maða ɕia tu bax~χusaða x~χai minaskun.</PHON>
@@ -5084,7 +5084,7 @@
         <PHON kindOf="standard">maða ɕia tu bax~χusaða x~χai minaskun.</PHON>
         <TRANSL xml:lang="zho">那些虎頭蜂聚在一起.</TRANSL>
         <TRANSL xml:lang="eng">Those hornets were gathering.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="120.02" end="125.06"/>
+        <AUDIO file="bnNr-frog_Samingaz_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="120.02" end="125.06" />
         <W id="bnNr-frog_Samingaz_S_21_W0">
             <FORM kindOf="original">maz=a</FORM>
             <PHON kindOf="original">mað=a</PHON>
@@ -5205,7 +5205,7 @@
                 <TRANSL xml:lang="zho">一起</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5573770491803278</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_22">
         <FORM kindOf="original">hum miliskin tu naizaun asuan kalat.</FORM>
         <PHON kindOf="original">x~χum mil~ɬiskin tu naiðaun asuan kal~ɬat.</PHON>
@@ -5213,7 +5213,7 @@
         <PHON kindOf="standard">x~χum mil~ɬiskin tu naiðaun asuan kal~ɬat.</PHON>
         <TRANSL xml:lang="zho">我想,狗會被拿去咬.</TRANSL>
         <TRANSL xml:lang="eng">I think the dog would be taken and bitten.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="125.06" end="128.6"/>
+        <AUDIO file="bnNr-frog_Samingaz_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="125.06" end="128.6" />
         <W id="bnNr-frog_Samingaz_S_22_W0">
             <FORM kindOf="original">hum</FORM>
             <PHON kindOf="original">x~χum</PHON>
@@ -5342,7 +5342,7 @@
                 <TRANSL xml:lang="zho">咬</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.36363636363636365</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_23">
         <FORM kindOf="original">maupacia tu hum mudaan maza sia tu bahusaza namasinap mas sia tu asucia ungat maza uvaaza hai tungnasia lukis dadaza.</FORM>
         <PHON kindOf="original">maupaʨia tu x~χum mudaan maða ɕia tu bax~χusaða namaɕinap mas ɕia tu asuʨia uŋat maða uvaaða x~χai tuŋnaɕia l~ɬukis dadaða.</PHON>
@@ -5350,7 +5350,7 @@
         <PHON kindOf="standard">maupaʨia tu x~χum mudaan maða ɕia tu bax~χusaða namaɕinap mas ɕia tu asuʨia uŋat maða uvaaða x~χai tuŋnaɕia l~ɬukis dadaða.</PHON>
         <TRANSL xml:lang="zho">虎頭蜂就那樣出來追狗,孩子就躲在樹上.</TRANSL>
         <TRANSL xml:lang="eng">The hornets move that way to chase the dog, and then the child hides at the tree.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="128.6" end="139.34"/>
+        <AUDIO file="bnNr-frog_Samingaz_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="128.6" end="139.34" />
         <W id="bnNr-frog_Samingaz_S_23_W0">
             <FORM kindOf="original">maupa=cia</FORM>
             <PHON kindOf="original">maupa=ʨia</PHON>
@@ -5783,7 +5783,7 @@
                 <TRANSL xml:lang="zho">上面</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.45410628019323673</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_24">
         <FORM kindOf="original">aupa aiza laak miliskin saia tu isaincia.</FORM>
         <PHON kindOf="original">aupa aiða l~ɬaak mil~ɬiskin saia tu isainʨia.</PHON>
@@ -5791,7 +5791,7 @@
         <PHON kindOf="standard">aupa aiða l~ɬaak mil~ɬiskin saia tu isainʨia.</PHON>
         <TRANSL xml:lang="zho">因為有洞,所以他想會不會在裡面.</TRANSL>
         <TRANSL xml:lang="eng">Because there is a hole he wonders if it is in there.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="139.34" end="142.33"/>
+        <AUDIO file="bnNr-frog_Samingaz_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="139.34" end="142.33" />
         <W id="bnNr-frog_Samingaz_S_24_W0">
             <FORM kindOf="original">aupa</FORM>
             <PHON kindOf="original">aupa</PHON>
@@ -5960,7 +5960,7 @@
                 <TRANSL xml:lang="zho">I</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4918032786885246</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_25">
         <FORM kindOf="original">idii saia inkaduan isainsianastu tu sia batu tu sia laakcia kudadaza saia lukis tu laakcia malala'la tu isa kasu sisiuh.</FORM>
         <PHON kindOf="original">idii saia inkaduan isainɕianastu tu ɕia batu tu ɕia l~ɬaakʨia kudadaða saia l~ɬukis tu l~ɬaakʨia mal~ɬal~ɬaʔl~ɬa tu isa kasu ɕiɕiux~χ.</PHON>
@@ -5968,7 +5968,7 @@
         <PHON kindOf="standard">idii saia inkaduan isainɕianastu tu ɕia batu tu ɕia l~ɬaakʨia kudadaða saia l~ɬukis tu l~ɬaakʨia mal~ɬal~ɬaʔl~ɬa tu isa kasu ɕiɕiux~χ.</PHON>
         <TRANSL xml:lang="zho">他在那裡找到在下面的石洞,爬上樹洞去,一直叫:「青蛙你在哪裡?」</TRANSL>
         <TRANSL xml:lang="eng">He founds a stone hole below and climbed up the tree and yelled: "Where are you, frog?"</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="142.33" end="150.55"/>
+        <AUDIO file="bnNr-frog_Samingaz_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="142.33" end="150.55" />
         <W id="bnNr-frog_Samingaz_S_25_W0">
             <FORM kindOf="original">i-dii</FORM>
             <PHON kindOf="original">idii</PHON>
@@ -6361,7 +6361,7 @@
                 <TRANSL xml:lang="zho">青蛙</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47058823529411764</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_26">
         <FORM kindOf="original">nii tu haiap tu isian isaicia tu malala'la hai ingadah maza sia tu a it'huua.</FORM>
         <PHON kindOf="original">nii tu x~χaiap tu iɕian isaiʨia tu mal~ɬal~ɬaʔl~ɬa x~χai iŋadax~χ maða ɕia tu a itʔx~χuua.</PHON>
@@ -6369,7 +6369,7 @@
         <PHON kindOf="standard">nii tu x~χaiap tu iɕian isaiʨia tu mal~ɬal~ɬaʔl~ɬa x~χai iŋadax~χ maða ɕia tu a itʔx~χuua.</PHON>
         <TRANSL xml:lang="zho">他不知道,他一直在叫的是裡面的貓頭鷹.</TRANSL>
         <TRANSL xml:lang="eng">He didn't know what he kept shouting at is the owl inside.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="150.55" end="159.52"/>
+        <AUDIO file="bnNr-frog_Samingaz_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="150.55" end="159.52" />
         <W id="bnNr-frog_Samingaz_S_26_W0">
             <FORM kindOf="original">nii</FORM>
             <PHON kindOf="original">nii</PHON>
@@ -6646,11 +6646,11 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
-    </S>
+    <SCORE>0.3970588235294118</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_27">
         <FORM kindOf="original">patahusngian a minkailas saia uh minkailas saia mun'apav hai cinhuza uvaaza muhalhal isnanastucia maisnasialukiscia.</FORM>
         <PHON kindOf="original">patax~χusŋian a minkail~ɬas saia ux~χ minkail~ɬas saia munʔapav x~χai ʨinx~χuða uvaaða mux~χal~ɬx~χal~ɬ isnanastuʨia maisnaɕial~ɬukisʨia.</PHON>
@@ -6658,7 +6658,7 @@
         <PHON kindOf="standard">patax~χusŋian a minkail~ɬas saia ux~χ minkail~ɬas saia munʔapav x~χai ʨinx~χuða uvaaða mux~χal~ɬx~χal~ɬ isnanastuʨia maisnaɕial~ɬukisʨia.</PHON>
         <TRANSL xml:lang="zho">他被吵醒後出來,小孩子被嚇到,從樹上掉下來到地上.</TRANSL>
         <TRANSL xml:lang="eng">He is waken up and then comes out. The child is shocked, falling from the tree to the ground.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="159.52" end="170.69"/>
+        <AUDIO file="bnNr-frog_Samingaz_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="159.52" end="170.69" />
         <W id="bnNr-frog_Samingaz_S_27_W0">
             <FORM kindOf="original">pa-tahusngi-an</FORM>
             <PHON kindOf="original">patax~χusŋian</PHON>
@@ -7003,7 +7003,7 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.38222222222222224</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_28">
         <FORM kindOf="original">makitmananu tu namasinap maisia asucin maza asu hai maupacia amin tu macisbai sisinapun mas bahusazcia.</FORM>
         <PHON kindOf="original">makitmananu tu namaɕinap maiɕia asuʨin maða asu x~χai maupaʨia amin tu maʨisbai ɕiɕinapun mas bax~χusaðʨia.</PHON>
@@ -7011,7 +7011,7 @@
         <PHON kindOf="standard">makitmananu tu namaɕinap maiɕia asuʨin maða asu x~χai maupaʨia amin tu maʨisbai ɕiɕinapun mas bax~χusaðʨia.</PHON>
         <TRANSL xml:lang="zho">那些虎頭蜂一窩蜂地要追那隻狗,然而狗就那樣跑給虎頭蜂追.</TRANSL>
         <TRANSL xml:lang="eng">All the way, those hornets will chase that dog. The dog just runs away like that and is being chased by the hornets.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="170.69" end="179.17"/>
+        <AUDIO file="bnNr-frog_Samingaz_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="170.69" end="179.17" />
         <W id="bnNr-frog_Samingaz_S_28_W0">
             <FORM kindOf="original">makitmananu</FORM>
             <PHON kindOf="original">makitmananu</PHON>
@@ -7332,7 +7332,7 @@
                 <TRANSL xml:lang="zho">遠距.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4245810055865922</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_29">
         <FORM kindOf="original">ungat aupa maza uvaaza hai muhalhal hai cinhuza cinpising.</FORM>
         <PHON kindOf="original">uŋat aupa maða uvaaða x~χai mux~χal~ɬx~χal~ɬ x~χai ʨinx~χuða ʨinpiɕiŋ.</PHON>
@@ -7340,7 +7340,7 @@
         <PHON kindOf="standard">uŋat aupa maða uvaaða x~χai mux~χal~ɬx~χal~ɬ x~χai ʨinx~χuða ʨinpiɕiŋ.</PHON>
         <TRANSL xml:lang="zho">然後小朋友掉下而驚嚇害怕.</TRANSL>
         <TRANSL xml:lang="eng">Then the child is shocked and afraid because he falls down.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="179.17" end="183.24"/>
+        <AUDIO file="bnNr-frog_Samingaz_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="179.17" end="183.24" />
         <W id="bnNr-frog_Samingaz_S_29_W0">
             <FORM kindOf="original">ung=at</FORM>
             <PHON kindOf="original">uŋ=at</PHON>
@@ -7533,7 +7533,7 @@
                 <TRANSL xml:lang="zho">害怕</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4516129032258065</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_30">
         <FORM kindOf="original">kudadaza saia sia batu miliskin tu at ana tupa tu maupacia hai nakilimang saia mas sisiuhcia.</FORM>
         <PHON kindOf="original">kudadaða saia ɕia batu mil~ɬiskin tu at ana tupa tu maupaʨia x~χai nakil~ɬimaŋ saia mas ɕiɕiux~χʨia.</PHON>
@@ -7541,7 +7541,7 @@
         <PHON kindOf="standard">kudadaða saia ɕia batu mil~ɬiskin tu at ana tupa tu maupaʨia x~χai nakil~ɬimaŋ saia mas ɕiɕiux~χʨia.</PHON>
         <TRANSL xml:lang="zho">他爬到石頭上,想著無論如何,他還是要繼續找那隻青蛙.</TRANSL>
         <TRANSL xml:lang="eng">He moves on the top of the rock and thinks that he will still keep on looking for that frog even if it is like that.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="183.24" end="190.36"/>
+        <AUDIO file="bnNr-frog_Samingaz_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="183.24" end="190.36" />
         <W id="bnNr-frog_Samingaz_S_30_W0">
             <FORM kindOf="original">ku-da-daza</FORM>
             <PHON kindOf="original">kudadaða</PHON>
@@ -7854,7 +7854,7 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5333333333333333</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_31">
         <FORM kindOf="original">kudadaza saia sia batucia hai makas'aang saia tu hum aiza maza tu ngabul.</FORM>
         <PHON kindOf="original">kudadaða saia ɕia batuʨia x~χai makasʔaaŋ saia tu x~χum aiða maða tu ŋabul~ɬ.</PHON>
@@ -7862,7 +7862,7 @@
         <PHON kindOf="standard">kudadaða saia ɕia batuʨia x~χai makasʔaaŋ saia tu x~χum aiða maða tu ŋabul~ɬ.</PHON>
         <TRANSL xml:lang="zho">他爬到石頭上,他期待著鹿.</TRANSL>
         <TRANSL xml:lang="eng">He climbs up the rock and anticipates the deer.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="190.36" end="202.75"/>
+        <AUDIO file="bnNr-frog_Samingaz_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="190.36" end="202.75" />
         <W id="bnNr-frog_Samingaz_S_31_W0">
             <FORM kindOf="original">ku-da-daza</FORM>
             <PHON kindOf="original">kudadaða</PHON>
@@ -8135,7 +8135,7 @@
                 <TRANSL xml:lang="zho">鹿</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.43200000000000005</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_32">
         <FORM kindOf="original">tusia adii vahaa hai makas'aang tu lukis.</FORM>
         <PHON kindOf="original">tuɕia adii vax~χaa x~χai makasʔaaŋ tu l~ɬukis.</PHON>
@@ -8143,7 +8143,7 @@
         <PHON kindOf="standard">tuɕia adii vax~χaa x~χai makasʔaaŋ tu l~ɬukis.</PHON>
         <TRANSL xml:lang="zho">說到那隻鹿,他以為是樹木.</TRANSL>
         <TRANSL xml:lang="eng">As for that antler, he thinks it is a tree.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="202.75" end="205.62"/>
+        <AUDIO file="bnNr-frog_Samingaz_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="202.75" end="205.62" />
         <W id="bnNr-frog_Samingaz_S_32_W0">
             <FORM kindOf="original">tu=sia</FORM>
             <PHON kindOf="original">tu=ɕia</PHON>
@@ -8296,7 +8296,7 @@
                 <TRANSL xml:lang="zho">樹木</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.46376811594202894</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_33">
         <FORM kindOf="original">at talidamuan saicia minnadadaza batucia malala'la tu ai sisiuh isa kasu.</FORM>
         <PHON kindOf="original">at tal~ɬidamuan saiʨia minnadadaða batuʨia mal~ɬal~ɬaʔl~ɬa tu ai ɕiɕiux~χ isa kasu.</PHON>
@@ -8304,7 +8304,7 @@
         <PHON kindOf="standard">at tal~ɬidamuan saiʨia minnadadaða batuʨia mal~ɬal~ɬaʔl~ɬa tu ai ɕiɕiux~χ isa kasu.</PHON>
         <TRANSL xml:lang="zho">他緊抓著,站在石頭上面,一直叫喊:「嘿,青蛙你在哪裡?」</TRANSL>
         <TRANSL xml:lang="eng">Then he holds it, standing on the rock and yelling out "where are you, frog?"</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="205.62" end="210.66"/>
+        <AUDIO file="bnNr-frog_Samingaz_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="205.62" end="210.66" />
         <W id="bnNr-frog_Samingaz_S_33_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -8537,7 +8537,7 @@
                 <TRANSL xml:lang="zho">2SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.38095238095238093</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_34">
         <FORM kindOf="original">at maza asua hai makilavi amin mas sia tu uvaazcin tungnangadah sia a batucia a sisbai sia itu bahusaz tusia sinsinapcia.</FORM>
         <PHON kindOf="original">at maða asua x~χai makil~ɬavi amin mas ɕia tu uvaaðʨin tuŋnaŋadax~χ ɕia a batuʨia a ɕisbai ɕia itu bax~χusað tuɕia ɕinɕinapʨia.</PHON>
@@ -8545,7 +8545,7 @@
         <PHON kindOf="standard">at maða asua x~χai makil~ɬavi amin mas ɕia tu uvaaðʨin tuŋnaŋadax~χ ɕia a batuʨia a ɕisbai ɕia itu bax~χusað tuɕia ɕinɕinapʨia.</PHON>
         <TRANSL xml:lang="zho">然後那隻狗也跟著這個小孩躲到石頭裡面,逃離虎頭蜂的追趕.</TRANSL>
         <TRANSL xml:lang="eng">Then that dog follows this kid hide beneath the stone, refraining from being chased by hornets.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="210.66" end="220.45"/>
+        <AUDIO file="bnNr-frog_Samingaz_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="210.66" end="220.45" />
         <W id="bnNr-frog_Samingaz_S_34_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -8970,7 +8970,7 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4752475247524752</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_35">
         <FORM kindOf="original">at maupacia naia tu malala'la at nii tu haiap tu maza ngabula hai talidamuan maza sia tu a isaicia vahaa hai.</FORM>
         <PHON kindOf="original">at maupaʨia naia tu mal~ɬal~ɬaʔl~ɬa at nii tu x~χaiap tu maða ŋabul~ɬa x~χai tal~ɬidamuan maða ɕia tu a isaiʨia vax~χaa x~χai.</PHON>
@@ -8978,7 +8978,7 @@
         <PHON kindOf="standard">at maupaʨia naia tu mal~ɬal~ɬaʔl~ɬa at nii tu x~χaiap tu maða ŋabul~ɬa x~χai tal~ɬidamuan maða ɕia tu a isaiʨia vax~χaa x~χai.</PHON>
         <TRANSL xml:lang="zho">他們就這樣一直叫,不知道他抓著的那個是鹿角.</TRANSL>
         <TRANSL xml:lang="eng">They keep yelling like that, unaware that what they are holding onto are antlers.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="220.45" end="228.95"/>
+        <AUDIO file="bnNr-frog_Samingaz_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="220.45" end="228.95" />
         <W id="bnNr-frog_Samingaz_S_35_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -9379,7 +9379,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5029940119760479</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_36">
         <FORM kindOf="original">a macindangkaz saia a miliskin tu ana mudaanta ua aiza maza pais namadamu siatu mamita hai nii tu haiap tu maza uvaaz hai ka talinadadaza sia isaicia tu lutbucia.</FORM>
         <PHON kindOf="original">a maʨindaŋkað saia a mil~ɬiskin tu ana mudaanta ua aiða maða pais namadamu ɕiatu mamita x~χai nii tu x~χaiap tu maða uvaað x~χai ka tal~ɬinadadaða ɕia isaiʨia tu l~ɬutbuʨia.</PHON>
@@ -9387,7 +9387,7 @@
         <PHON kindOf="standard">a maʨindaŋkað saia a mil~ɬiskin tu ana mudaanta ua aiða maða pais namadamu ɕiatu mamita x~χai nii tu x~χaiap tu maða uvaað x~χai ka tal~ɬinadadaða ɕia isaiʨia tu l~ɬutbuʨia.</PHON>
         <TRANSL xml:lang="zho" notes="他(鹿)突然站起來,認為「因為有敵人要抓我們,我們要趕快走.」不知道那個孩子就扶在他的身體上.">他 突然站起來,認為「因為有敵人要抓我們,我們要趕快走.」不知道那個孩子就扶在他的身體上.</TRANSL>
         <TRANSL xml:lang="eng" notes="It (the deer) suddenly stands up and leaves because it thinking there are rivals going to catch us, without knowing the kid is still on its back.">It suddenly stands up and leaves because it thinking there are rivals going to catch us, without knowing the kid is still on its back.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="228.95" end="240.3"/>
+        <AUDIO file="bnNr-frog_Samingaz_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="228.95" end="240.3" />
         <W id="bnNr-frog_Samingaz_S_36_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -9972,7 +9972,7 @@
                 <TRANSL xml:lang="zho">遠距.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47482014388489213</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_37">
         <FORM kindOf="original">ki'ama'amaun saicia macisbai maza ngabula.</FORM>
         <PHON kindOf="original">kiʔamaʔamaun saiʨia maʨisbai maða ŋabul~ɬa.</PHON>
@@ -9980,7 +9980,7 @@
         <PHON kindOf="standard">kiʔamaʔamaun saiʨia maʨisbai maða ŋabul~ɬa.</PHON>
         <TRANSL xml:lang="zho">他背著他們逃跑了</TRANSL>
         <TRANSL xml:lang="eng">It runs away with them on its back.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="240.3" end="243.18"/>
+        <AUDIO file="bnNr-frog_Samingaz_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="240.3" end="243.18" />
         <W id="bnNr-frog_Samingaz_S_37_W0">
             <FORM kindOf="original">ki&lt;'ama&gt;'ama-un</FORM>
             <PHON kindOf="original">ki&lt;ʔama&gt;ʔamaun</PHON>
@@ -10101,7 +10101,7 @@
                 <TRANSL xml:lang="zho">遠距.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.49230769230769234</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_38">
         <FORM kindOf="original">a makilavi amin sia tu asua a kinkikinuz mas isain sia isaicia tu am a ai bununcia maupacia tu maza ngabula hai mudaan hai.</FORM>
         <PHON kindOf="original">a makil~ɬavi amin ɕia tu asua a kinkikinuð mas isain ɕia isaiʨia tu am a ai bununʨia maupaʨia tu maða ŋabul~ɬa x~χai mudaan x~χai.</PHON>
@@ -10109,7 +10109,7 @@
         <PHON kindOf="standard">a makil~ɬavi amin ɕia tu asua a kinkikinuð mas isain ɕia isaiʨia tu am a ai bununʨia maupaʨia tu maða ŋabul~ɬa x~χai mudaan x~χai.</PHON>
         <TRANSL xml:lang="zho">那隻狗跟在他的主人後面,就這樣,鹿就這樣走了.</TRANSL>
         <TRANSL xml:lang="eng">The dog follows its master and the deer leaves.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="243.18" end="253.51"/>
+        <AUDIO file="bnNr-frog_Samingaz_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="243.18" end="253.51" />
         <W id="bnNr-frog_Samingaz_S_38_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -10582,7 +10582,7 @@
                 <TRANSL xml:lang="zho">主題</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5434782608695652</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_39">
         <FORM kindOf="original">sadu mas tanangaus tu nais'ukin a daan at.</FORM>
         <PHON kindOf="original">sadu mas tanaŋaus tu naisʔukin a daan at.</PHON>
@@ -10590,7 +10590,7 @@
         <PHON kindOf="standard">sadu mas tanaŋaus tu naisʔukin a daan at.</PHON>
         <TRANSL xml:lang="zho">鹿看到他的前面已經沒有路了</TRANSL>
         <TRANSL xml:lang="eng">The deer sees there is no more roads in front.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="253.51" end="256.58"/>
+        <AUDIO file="bnNr-frog_Samingaz_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="253.51" end="256.58" />
         <W id="bnNr-frog_Samingaz_S_39_W0">
             <FORM kindOf="original">an</FORM>
             <PHON kindOf="original">an</PHON>
@@ -10775,7 +10775,7 @@
                 <TRANSL xml:lang="zho">然後</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.33333333333333337</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_40">
         <FORM kindOf="original">a isian sia mangdavan hai pan'utung a saia hai nii tu haiap tu maza uvaaza hai istaibiskav aupa uka massia mahunduh tu talinadaan.</FORM>
         <PHON kindOf="original">a iɕian ɕia maŋdavan x~χai panʔutuŋ a saia x~χai nii tu x~χaiap tu maða uvaaða x~χai istaibiskav aupa uka masɕia max~χundux~χ tu tal~ɬinadaan.</PHON>
@@ -10783,7 +10783,7 @@
         <PHON kindOf="standard">a iɕian ɕia maŋdavan x~χai panʔutuŋ a saia x~χai nii tu x~χaiap tu maða uvaaða x~χai istaibiskav aupa uka masɕia max~χundux~χ tu tal~ɬinadaan.</PHON>
         <TRANSL xml:lang="zho">鹿在懸崖停了下來,不知道孩子因為沒抓緊被甩出去了.</TRANSL>
         <TRANSL xml:lang="eng">The deers stops at the cliff, without knowing that kid is cast away because he does not hold tightly.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="256.58" end="265.92"/>
+        <AUDIO file="bnNr-frog_Samingaz_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="256.58" end="265.92" />
         <W id="bnNr-frog_Samingaz_S_40_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -11224,7 +11224,7 @@
                 <TRANSL xml:lang="zho">處焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4236453201970444</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_41">
         <FORM kindOf="original">istaibiskav hai muhalhal naia lanangadah sia 'ung'ung.</FORM>
         <PHON kindOf="original">istaibiskav x~χai mux~χal~ɬx~χal~ɬ naia l~ɬanaŋadax~χ ɕia ʔuŋʔuŋ.</PHON>
@@ -11232,7 +11232,7 @@
         <PHON kindOf="standard">istaibiskav x~χai mux~χal~ɬx~χal~ɬ naia l~ɬanaŋadax~χ ɕia ʔuŋʔuŋ.</PHON>
         <TRANSL xml:lang="zho">他們被丟落到溪谷裡面了.</TRANSL>
         <TRANSL xml:lang="eng">Being cast, they drops into the gully.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="265.92" end="269.66"/>
+        <AUDIO file="bnNr-frog_Samingaz_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="265.92" end="269.66" />
         <W id="bnNr-frog_Samingaz_S_41_W0">
             <FORM kindOf="original">is-tai-biskav</FORM>
             <PHON kindOf="original">istaibiskav</PHON>
@@ -11385,7 +11385,7 @@
                 <TRANSL xml:lang="zho">山谷</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.39534883720930236</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_42">
         <FORM kindOf="original">isian sia maupa tu aupa isia kalapatancin hai tanngadah hai aiza siatu vahlas at uvaaza mas asucia hai lanangadah sia danum.</FORM>
         <PHON kindOf="original">iɕian ɕia maupa tu aupa iɕia kal~ɬapatanʨin x~χai tanŋadax~χ x~χai aiða ɕiatu vax~χl~ɬas at uvaaða mas asuʨia x~χai l~ɬanaŋadax~χ ɕia danum.</PHON>
@@ -11393,7 +11393,7 @@
         <PHON kindOf="standard">iɕian ɕia maupa tu aupa iɕia kal~ɬapatanʨin x~χai tanŋadax~χ x~χai aiða ɕiatu vax~χl~ɬas at uvaaða mas asuʨia x~χai l~ɬanaŋadax~χ ɕia danum.</PHON>
         <TRANSL xml:lang="zho">在這樣的懸崖,因為底下有河流,孩子和狗就掉到水裡.</TRANSL>
         <TRANSL xml:lang="eng">At this kind of cliff, because there is river below, the kid and dog drop into the water.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="269.66" end="280.12"/>
+        <AUDIO file="bnNr-frog_Samingaz_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="269.66" end="280.12" />
         <W id="bnNr-frog_Samingaz_S_42_W0">
             <FORM kindOf="original">i-sian</FORM>
             <PHON kindOf="original">iɕian</PHON>
@@ -11466,10 +11466,10 @@
                 <TRANSL xml:lang="zho">岩壁</TRANSL>
             </M>
             <M id="bnNr-frog_Samingaz_S_42_W3M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">LF</TRANSL>
                 <TRANSL xml:lang="zho">處焦</TRANSL>
             </M>
@@ -11818,7 +11818,7 @@
                 <TRANSL xml:lang="zho">水</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47457627118644063</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_43">
         <FORM kindOf="original">a maupacia naia tu a sungkat.</FORM>
         <PHON kindOf="original">a maupaʨia naia tu a suŋkat.</PHON>
@@ -11826,7 +11826,7 @@
         <PHON kindOf="standard">a maupaʨia naia tu a suŋkat.</PHON>
         <TRANSL xml:lang="zho">他們就這樣過河</TRANSL>
         <TRANSL xml:lang="eng">They cross the river.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="280.12" end="284.68"/>
+        <AUDIO file="bnNr-frog_Samingaz_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="280.12" end="284.68" />
         <W id="bnNr-frog_Samingaz_S_43_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -11947,7 +11947,7 @@
                 <TRANSL xml:lang="zho">過河</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.38095238095238093</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_44">
         <FORM kindOf="original">a minnasian sia sisila a usaduan massia lukis tu sia a minunhanu tu mahalivin.</FORM>
         <PHON kindOf="original">a minnaɕian ɕia ɕiɕil~ɬa a usaduan masɕia l~ɬukis tu ɕia a minunx~χanu tu max~χal~ɬivin.</PHON>
@@ -11955,7 +11955,7 @@
         <PHON kindOf="standard">a minnaɕian ɕia ɕiɕil~ɬa a usaduan masɕia l~ɬukis tu ɕia a minunx~χanu tu max~χal~ɬivin.</PHON>
         <TRANSL xml:lang="zho" notes="(他們)到了河邊看到乾了的漂流木.">到了河邊看到乾了的漂流木.</TRANSL>
         <TRANSL xml:lang="eng" notes="(They) arrive at the riverside and see a drift wood.">arrive at the riverside and see a drift wood.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="284.68" end="290.62"/>
+        <AUDIO file="bnNr-frog_Samingaz_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="284.68" end="290.62" />
         <W id="bnNr-frog_Samingaz_S_44_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -12252,7 +12252,7 @@
                 <TRANSL xml:lang="zho">改變狀態</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.3875968992248062</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_45">
         <FORM kindOf="original">at aupa tupaun saicia asua tu a kaain matahusing aupa mais muhna kasu mutmang lalunglung hai a namaupacia tu a usupahan mas isian sia painladuan maupacia tu sia a cinhuzaun ma'ita mahtu inkaduan mas sisiuhcia hai maupacia naia tu.</FORM>
         <PHON kindOf="original">at aupa tupaun saiʨia asua tu a kaain matax~χuɕiŋ aupa mais mux~χna kasu mutmaŋ l~ɬal~ɬuŋl~ɬuŋ x~χai a namaupaʨia tu a usupax~χan mas iɕian ɕia painl~ɬaduan maupaʨia tu ɕia a ʨinx~χuðaun maʔita max~χtu inkaduan mas ɕiɕiux~χʨia x~χai maupaʨia naia tu.</PHON>
@@ -12260,7 +12260,7 @@
         <PHON kindOf="standard">at aupa tupaun saiʨia asua tu a kaain matax~χuɕiŋ aupa mais mux~χna kasu mutmaŋ l~ɬal~ɬuŋl~ɬuŋ x~χai a namaupaʨia tu a usupax~χan mas iɕian ɕia painl~ɬaduan maupaʨia tu ɕia a ʨinx~χuðaun maʔita max~χtu inkaduan mas ɕiɕiux~χʨia x~χai maupaʨia naia tu.</PHON>
         <TRANSL xml:lang="zho">他叫狗不要吵鬧,因為你再亂叫的話就會那樣,會遇到很多我們在找青蛙時遇到的事情那樣.</TRANSL>
         <TRANSL xml:lang="eng">He tells the dog 'Be quiet! If you bark again as you want, bad things like what we came across when we were seeking the frog will happen.'</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="290.62" end="308.08"/>
+        <AUDIO file="bnNr-frog_Samingaz_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="290.62" end="308.08" />
         <W id="bnNr-frog_Samingaz_S_45_W0">
             <FORM kindOf="original">at</FORM>
             <PHON kindOf="original">at</PHON>
@@ -13053,7 +13053,7 @@
                 <TRANSL xml:lang="zho">補語詞</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4375</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_46">
         <FORM kindOf="original">tungnadadaza sia lukiscia hai isnadadaza naia sia lukiscia islunghu hai ais usaduan naia tu a supahdaingaz hangsia sisiuh isaincinin.</FORM>
         <PHON kindOf="original">tuŋnadadaða ɕia l~ɬukisʨia x~χai isnadadaða naia ɕia l~ɬukisʨia isl~ɬuŋx~χu x~χai ais usaduan naia tu a supax~χdaiŋað x~χaŋɕia ɕiɕiux~χ isainʨinin.</PHON>
@@ -13061,7 +13061,7 @@
         <PHON kindOf="standard">tuŋnadadaða ɕia l~ɬukisʨia x~χai isnadadaða naia ɕia l~ɬukisʨia isl~ɬuŋx~χu x~χai ais usaduan naia tu a supax~χdaiŋað x~χaŋɕia ɕiɕiux~χ isainʨinin.</PHON>
         <TRANSL xml:lang="zho">他們躲到枯木上休息時,看到原來有很多青蛙在這裡了.</TRANSL>
         <TRANSL xml:lang="eng">When they hide and rest on the deadwood, they see so many frogs there.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="308.08" end="317.42"/>
+        <AUDIO file="bnNr-frog_Samingaz_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="308.08" end="317.42" />
         <W id="bnNr-frog_Samingaz_S_46_W0">
             <FORM kindOf="original">tung-na-da-daza</FORM>
             <PHON kindOf="original">tuŋnadadaða</PHON>
@@ -13478,7 +13478,7 @@
                 <TRANSL xml:lang="zho">改變狀態</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.48</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_47">
         <FORM kindOf="original">a manaskal naia sadu sisiuh tu supahdaingaz musasu saduan naicia hai ai avadii inaicia sinaipuk tu sisiuha.</FORM>
         <PHON kindOf="original">a manaskal~ɬ naia sadu ɕiɕiux~χ tu supax~χdaiŋað musasu saduan naiʨia x~χai ai avadii inaiʨia ɕinaipuk tu ɕiɕiux~χa.</PHON>
@@ -13486,7 +13486,7 @@
         <PHON kindOf="standard">a manaskal~ɬ naia sadu ɕiɕiux~χ tu supax~χdaiŋað musasu saduan naiʨia x~χai ai avadii inaiʨia ɕinaipuk tu ɕiɕiux~χa.</PHON>
         <TRANSL xml:lang="zho">當他們正高興看到很多青蛙時,他們看到了他們養的那隻青蛙.</TRANSL>
         <TRANSL xml:lang="eng">While they are happy for seeing so many frogs, the find the frog they kept.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="317.42" end="324.46"/>
+        <AUDIO file="bnNr-frog_Samingaz_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="317.42" end="324.46" />
         <W id="bnNr-frog_Samingaz_S_47_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -13815,7 +13815,7 @@
                 <TRANSL xml:lang="zho">遠距.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.38383838383838387</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_48">
         <FORM kindOf="original">a suii aupahasia izaun naicia a mazasia tu inaicia sathasan naicia sadu tu avadii sisiuh sinaipuk naicia hai izaun naicia at aupa.</FORM>
         <PHON kindOf="original">a suii aupax~χaɕia iðaun naiʨia a maðaɕia tu inaiʨia satx~χasan naiʨia sadu tu avadii ɕiɕiux~χ ɕinaipuk naiʨia x~χai iðaun naiʨia at aupa.</PHON>
@@ -13823,7 +13823,7 @@
         <PHON kindOf="standard">a suii aupax~χaɕia iðaun naiʨia a maðaɕia tu inaiʨia satx~χasan naiʨia sadu tu avadii ɕiɕiux~χ ɕinaipuk naiʨia x~χai iðaun naiʨia at aupa.</PHON>
         <TRANSL xml:lang="zho">所以他們把那隻青蛙拿起來看青楚,是他們養的那隻青蛙.</TRANSL>
         <TRANSL xml:lang="eng">So they take the frog and look at it. That is the frog they kept.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="324.46" end="335.65"/>
+        <AUDIO file="bnNr-frog_Samingaz_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="324.46" end="335.65" />
         <W id="bnNr-frog_Samingaz_S_48_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -14264,7 +14264,7 @@
                 <TRANSL xml:lang="zho">因為</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.44067796610169496</SCORE></S>
     <S id="bnNr-frog_Samingaz_S_49">
         <FORM kindOf="original">masi'aupa massia dangian mas supah tu sisiuhcin tupa tu uninang naadasunku dii sisiuhin a maupacia tu mudaanin naia kulumah.</FORM>
         <PHON kindOf="original">maɕiʔaupa masɕia daŋian mas supax~χ tu ɕiɕiux~χʨin tupa tu uninaŋ naadasunku dii ɕiɕiux~χin a maupaʨia tu mudaanin naia kul~ɬumax~χ.</PHON>
@@ -14272,7 +14272,7 @@
         <PHON kindOf="standard">maɕiʔaupa masɕia daŋian mas supax~χ tu ɕiɕiux~χʨin tupa tu uninaŋ naadasunku dii ɕiɕiux~χin a maupaʨia tu mudaanin naia kul~ɬumax~χ.</PHON>
         <TRANSL xml:lang="zho">他們對著青蛙棲地說著謝謝,就這樣帶著那隻青蛙離開回家了.</TRANSL>
         <TRANSL xml:lang="eng">'Thank you' to the frogs they say, and take the frog home.</TRANSL>
-        <AUDIO file="bnNr-frog_Samingaz_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="335.65" end="344.54"/>
+        <AUDIO file="bnNr-frog_Samingaz_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-frog_Samingaz.mp3" start="335.65" end="344.54" />
         <W id="bnNr-frog_Samingaz_S_49_W0">
             <FORM kindOf="original">masi'aupa</FORM>
             <PHON kindOf="original">maɕiʔaupa</PHON>
@@ -14621,22 +14621,22 @@
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">in</FORM>
                 <PHON kindOf="standard">in</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="bnNr-frog_Samingaz_S_49_W16M4">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">road</TRANSL>
                 <TRANSL xml:lang="zho">路</TRANSL>
             </M>
             <M id="bnNr-frog_Samingaz_S_49_W16M5">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">COS</TRANSL>
                 <TRANSL xml:lang="zho">改變狀態</TRANSL>
             </M>
@@ -14681,5 +14681,5 @@
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4104803493449781</SCORE></S>
 </TEXT>

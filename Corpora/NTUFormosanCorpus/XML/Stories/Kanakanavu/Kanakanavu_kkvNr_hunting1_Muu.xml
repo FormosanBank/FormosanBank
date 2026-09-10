@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="NTU_Stry_Kanakanavu_kkvNr_hunting1_Muu" xml:lang="xnb" source="NTU Corpus stories for Kanakanavu, story: kkvNr_hunting1_Muu" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Kanakanavu">
     <S id="kkvNr_hunting1_Muu_S_0">
         <FORM kindOf="original">iku ia kanamasiaku.</FORM>
@@ -7,7 +7,7 @@
         <PHON kindOf="standard">iku ia kanamasiaku.</PHON>
         <TRANSL xml:lang="zho">我是那瑪夏的人.</TRANSL>
         <TRANSL xml:lang="eng">I live in Namasia.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="0.0" end="3.72"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="0.0" end="3.72" />
         <W id="kkvNr_hunting1_Muu_S_0_W0">
             <FORM kindOf="original">iku</FORM>
             <PHON kindOf="original">iku</PHON>
@@ -72,7 +72,7 @@
                 <TRANSL xml:lang="zho">1SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5853658536585367</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_1">
         <FORM kindOf="original">sua iku ngʉco pinipining 'ʉnai ia Ka'angiana Ka'angiana Mu'u iku.</FORM>
         <PHON kindOf="original">sua iku ŋɨʦo pinipiniŋ ʔɨnai ia kaʔaŋiana kaʔaŋiana muʔu iku.</PHON>
@@ -80,7 +80,7 @@
         <PHON kindOf="standard">sua iku ŋɨʦo pinipiniŋ ʔɨnai ia kaʔaŋiana kaʔaŋiana muʔu iku.</PHON>
         <TRANSL xml:lang="zho">我在家族的地裡,我叫Ka'angiana Mu'u.</TRANSL>
         <TRANSL xml:lang="eng">In my family, my name is Ka'angiana Mu'u.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="3.72" end="15.72"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="3.72" end="15.72" />
         <W id="kkvNr_hunting1_Muu_S_1_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -205,16 +205,16 @@
                 <PHON kindOf="original">ʔaŋia</PHON>
                 <FORM kindOf="standard">'angia</FORM>
                 <PHON kindOf="standard">ʔaŋia</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_hunting1_Muu_S_1_W6M3">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_hunting1_Muu_S_1_W7">
@@ -233,18 +233,18 @@
                 <TRANSL xml:lang="zho">KA</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_1_W7M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">'angai</TRANSL>
                 <TRANSL xml:lang="zho">'angai</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_1_W7M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">NA</TRANSL>
                 <TRANSL xml:lang="zho">NA</TRANSL>
             </M>
@@ -281,7 +281,7 @@
                 <TRANSL xml:lang="zho">1SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6434782608695653</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_2">
         <FORM kindOf="original">makasuacu niarapipiningku nesi niarapipiningku nesi makasa xx.</FORM>
         <PHON kindOf="original">makasuaʦu niar~ɾapipiniŋku nesi niar~ɾapipiniŋku nesi makasa **.</PHON>
@@ -289,7 +289,7 @@
         <PHON kindOf="standard">makasuaʦu niar~ɾapipiniŋku nesi niar~ɾapipiniŋku nesi makasa **.</PHON>
         <TRANSL xml:lang="zho">就這樣我是在這裡出生的.</TRANSL>
         <TRANSL xml:lang="eng">That's it. I was born here.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="15.72" end="28.24"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="15.72" end="28.24" />
         <W id="kkvNr_hunting1_Muu_S_2_W0">
             <FORM kindOf="original">makasua=cu</FORM>
             <PHON kindOf="original">makasua=ʦu</PHON>
@@ -458,7 +458,7 @@
                 <TRANSL xml:lang="zho">XXXX</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4727272727272728</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_3">
         <FORM kindOf="original">aratatiacuku mohacuku na takitutura takitutura.</FORM>
         <PHON kindOf="original">ar~ɾatatiaʦuku mohaʦuku na takitutur~ɾa takitutur~ɾa.</PHON>
@@ -466,7 +466,7 @@
         <PHON kindOf="standard">ar~ɾatatiaʦuku mohaʦuku na takitutur~ɾa takitutur~ɾa.</PHON>
         <TRANSL xml:lang="zho">後來長大了,我有去上學.</TRANSL>
         <TRANSL xml:lang="eng">Later, I grew up. I went to school.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="28.24" end="44.51"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="28.24" end="44.51" />
         <W id="kkvNr_hunting1_Muu_S_3_W0">
             <FORM kindOf="original">ara-tatia=cu=ku</FORM>
             <PHON kindOf="original">ar~ɾa-tatia=ʦu=ku</PHON>
@@ -595,7 +595,7 @@
                 <TRANSL xml:lang="zho">學校</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5360824742268041</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_4">
         <FORM kindOf="original">mehua ia campeku marisinatʉ.</FORM>
         <PHON kindOf="original">mehua ia ʦampeku mar~ɾisinatɨ.</PHON>
@@ -603,7 +603,7 @@
         <PHON kindOf="standard">mehua ia ʦampeku mar~ɾisinatɨ.</PHON>
         <TRANSL xml:lang="zho">那時候剛剛開始寫字.</TRANSL>
         <TRANSL xml:lang="eng">At that time, I just started to learn writing.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="44.51" end="52.66"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="44.51" end="52.66" />
         <W id="kkvNr_hunting1_Muu_S_4_W0">
             <FORM kindOf="original">me-hua</FORM>
             <PHON kindOf="original">me-hua</PHON>
@@ -700,7 +700,7 @@
                 <TRANSL xml:lang="zho">字</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5263157894736843</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_5">
         <FORM kindOf="original">i nianci.</FORM>
         <PHON kindOf="original">i nianʦi.</PHON>
@@ -708,7 +708,7 @@
         <PHON kindOf="standard">i nianʦi.</PHON>
         <TRANSL xml:lang="zho">一年級.</TRANSL>
         <TRANSL xml:lang="eng">First grade.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="52.66" end="58.48"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="52.66" end="58.48" />
         <W id="kkvNr_hunting1_Muu_S_5_W0">
             <FORM kindOf="original" notes="code-switch">i</FORM>
             <PHON kindOf="original">i</PHON>
@@ -741,7 +741,7 @@
                 <TRANSL xml:lang="zho">年級</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_6">
         <FORM kindOf="original">mehua ia pue'iku tanasa.</FORM>
         <PHON kindOf="original">mehua ia pueʔiku tanasa.</PHON>
@@ -749,7 +749,7 @@
         <PHON kindOf="standard">mehua ia pueʔiku tanasa.</PHON>
         <TRANSL xml:lang="zho">那時候,我回家.</TRANSL>
         <TRANSL xml:lang="eng">At that time, I went home.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="58.48" end="65.72"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="58.48" end="65.72" />
         <W id="kkvNr_hunting1_Muu_S_6_W0">
             <FORM kindOf="original">me-hua</FORM>
             <PHON kindOf="original">me-hua</PHON>
@@ -830,7 +830,7 @@
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5652173913043479</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_7">
         <FORM kindOf="original">'esi 'inia cinamaku tinpuru.</FORM>
         <PHON kindOf="original">ʔesi ʔinia ʦinamaku tinpur~ɾu.</PHON>
@@ -838,7 +838,7 @@
         <PHON kindOf="standard">ʔesi ʔinia ʦinamaku tinpur~ɾu.</PHON>
         <TRANSL xml:lang="zho">我媽媽在那邊坐下</TRANSL>
         <TRANSL xml:lang="eng">My mother sat there.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="65.72" end="69.26"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="65.72" end="69.26" />
         <W id="kkvNr_hunting1_Muu_S_7_W0">
             <FORM kindOf="original">'esi</FORM>
             <PHON kindOf="original">ʔesi</PHON>
@@ -919,7 +919,7 @@
                 <TRANSL xml:lang="zho">坐</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6511627906976745</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_8">
         <FORM kindOf="original">makacangku maritakarʉ ngʉco nakʉvin uvungngungku.</FORM>
         <PHON kindOf="original">makaʦaŋku mar~ɾitakar~ɾɨ ŋɨʦo nakɨvin uvuŋŋuŋku.</PHON>
@@ -927,7 +927,7 @@
         <PHON kindOf="standard">makaʦaŋku mar~ɾitakar~ɾɨ ŋɨʦo nakɨvin uvuŋŋuŋku.</PHON>
         <TRANSL xml:lang="zho">我馬上把衣服拿起來又藏起來</TRANSL>
         <TRANSL xml:lang="eng">I immediately took those clothes up and hide them.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="69.26" end="77.72"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="69.26" end="77.72" />
         <W id="kkvNr_hunting1_Muu_S_8_W0">
             <FORM kindOf="original">makacang=ku</FORM>
             <PHON kindOf="original">makaʦaŋ=ku</PHON>
@@ -1040,7 +1040,7 @@
                 <TRANSL xml:lang="zho">1SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4943820224719101</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_9">
         <FORM kindOf="original">aratakarʉku cinamaku nakʉvʉ uvungngungku na mumuin.</FORM>
         <PHON kindOf="original">ar~ɾatakar~ɾɨku ʦinamaku nakɨvɨ uvuŋŋuŋku na mumuin.</PHON>
@@ -1048,7 +1048,7 @@
         <PHON kindOf="standard">ar~ɾatakar~ɾɨku ʦinamaku nakɨvɨ uvuŋŋuŋku na mumuin.</PHON>
         <TRANSL xml:lang="zho">我就把衣服捆在媽媽的胸部.</TRANSL>
         <TRANSL xml:lang="eng">I tucked thoes clothes into my mother's breast.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="77.72" end="91.05"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="77.72" end="91.05" />
         <W id="kkvNr_hunting1_Muu_S_9_W0">
             <FORM kindOf="original">ara-takarʉ=ku</FORM>
             <PHON kindOf="original">ar~ɾa-takar~ɾɨ=ku</PHON>
@@ -1065,10 +1065,10 @@
                 <TRANSL xml:lang="zho">起身.主焦</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_9_W0M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
                 <TRANSL xml:lang="zho">1SG.主格</TRANSL>
             </M>
@@ -1077,16 +1077,16 @@
                 <PHON kindOf="original">takar~ɾɨ</PHON>
                 <FORM kindOf="standard">takarʉ</FORM>
                 <PHON kindOf="standard">takar~ɾɨ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_hunting1_Muu_S_9_W0M4">
                 <FORM kindOf="original">ku</FORM>
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_hunting1_Muu_S_9_W1">
@@ -1193,7 +1193,7 @@
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.45999999999999996</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_10">
         <FORM kindOf="original">makasuacu.</FORM>
         <PHON kindOf="original">makasuaʦu.</PHON>
@@ -1201,7 +1201,7 @@
         <PHON kindOf="standard">makasuaʦu.</PHON>
         <TRANSL xml:lang="zho">就這樣.</TRANSL>
         <TRANSL xml:lang="eng">That's all</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="91.05" end="92.81"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="91.05" end="92.81" />
         <W id="kkvNr_hunting1_Muu_S_10_W0">
             <FORM kindOf="original">makasua=cu</FORM>
             <PHON kindOf="original">makasua=ʦu</PHON>
@@ -1226,7 +1226,7 @@
                 <TRANSL xml:lang="zho">COS</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_11">
         <FORM kindOf="original">cʉmʉvʉrʉcuku aratatiacuku maripapa nacumamaku moha na nʉmʉra.</FORM>
         <PHON kindOf="original">ʦɨmɨvɨr~ɾɨʦuku ar~ɾatatiaʦuku mar~ɾipapa naʦumamaku moha na nɨmɨr~ɾa.</PHON>
@@ -1234,7 +1234,7 @@
         <PHON kindOf="standard">ʦɨmɨvɨr~ɾɨʦuku ar~ɾatatiaʦuku mar~ɾipapa naʦumamaku moha na nɨmɨr~ɾa.</PHON>
         <TRANSL xml:lang="zho">我已經增長了,長大了,我過去的爸爸帶著我到山上.</TRANSL>
         <TRANSL xml:lang="eng">I had grown up, my father who has passed away took me into the mountains.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="92.81" end="110.29"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="92.81" end="110.29" />
         <W id="kkvNr_hunting1_Muu_S_11_W0">
             <FORM kindOf="original">c&lt;ʉm&gt;ʉvʉrʉ=cu=ku</FORM>
             <PHON kindOf="original">ʦ&lt;ɨm&gt;ɨvɨr~ɾɨ=ʦu=ku</PHON>
@@ -1427,7 +1427,7 @@
                 <TRANSL xml:lang="zho">多樹之地</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6507936507936508</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_12">
         <FORM kindOf="original">makasuacu maripapakua nacumamaku moha nʉmʉra.</FORM>
         <PHON kindOf="original">makasuaʦu mar~ɾipapakua naʦumamaku moha nɨmɨr~ɾa.</PHON>
@@ -1435,7 +1435,7 @@
         <PHON kindOf="standard">makasuaʦu mar~ɾipapakua naʦumamaku moha nɨmɨr~ɾa.</PHON>
         <TRANSL xml:lang="zho">那個時候我爸爸一直帶我去山上.</TRANSL>
         <TRANSL xml:lang="eng">At that time, my father always took me to the mountains.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="110.29" end="119.34"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="110.29" end="119.34" />
         <W id="kkvNr_hunting1_Muu_S_12_W0">
             <FORM kindOf="original">makasua=cu</FORM>
             <PHON kindOf="original">makasua=ʦu</PHON>
@@ -1564,7 +1564,7 @@
                 <TRANSL xml:lang="zho">多樹之地</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5609756097560976</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_13">
         <FORM kindOf="original">misen nacumamaku 'tupura nesi cʉmʉ'ʉra ngʉco ta sikamanʉngmaku ringee.</FORM>
         <PHON kindOf="original">misen naʦumamaku ʔtupur~ɾa nesi ʦɨmɨʔɨr~ɾa ŋɨʦo ta sikamanɨŋmaku r~ɾiŋee.</PHON>
@@ -1572,7 +1572,7 @@
         <PHON kindOf="standard">misen naʦumamaku ʔtupur~ɾa nesi ʦɨmɨʔɨr~ɾa ŋɨʦo ta sikamanɨŋmaku r~ɾiŋee.</PHON>
         <TRANSL xml:lang="zho">我爸爸叫我在這邊坐下,說:「注意看我怎麼做大野獸的陷阱.」</TRANSL>
         <TRANSL xml:lang="eng">My father said 'Sit here. See how I make the traps for big animals.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="119.34" end="128.9"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="119.34" end="128.9" />
         <W id="kkvNr_hunting1_Muu_S_13_W0">
             <FORM kindOf="original">mise-n</FORM>
             <PHON kindOf="original">mise-n</PHON>
@@ -1773,7 +1773,7 @@
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5401459854014599</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_14">
         <FORM kindOf="original">mon nia topuru kamanʉng cumaku ringee.</FORM>
         <PHON kindOf="original">mon nia topur~ɾu kamanɨŋ ʦumaku r~ɾiŋee.</PHON>
@@ -1781,7 +1781,7 @@
         <PHON kindOf="standard">mon nia topur~ɾu kamanɨŋ ʦumaku r~ɾiŋee.</PHON>
         <TRANSL xml:lang="zho">我一直在那邊坐很久,我爸爸一直在做陷阱.</TRANSL>
         <TRANSL xml:lang="eng">I sat there for a while. My father kept making traps.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="128.9" end="135.57"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="128.9" end="135.57" />
         <W id="kkvNr_hunting1_Muu_S_14_W0">
             <FORM kindOf="original">m-on</FORM>
             <PHON kindOf="original">m-on</PHON>
@@ -1894,7 +1894,7 @@
                 <TRANSL xml:lang="zho">陷阱</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_15">
         <FORM kindOf="original">sintun pue'ikim 'inia 'ia'a 'inia ta'urong kai kai kai misen ta'urong.</FORM>
         <PHON kindOf="original">sintun pueʔikim ʔinia ʔiaʔa ʔinia taʔur~ɾoŋ kai kai kai misen taʔur~ɾoŋ.</PHON>
@@ -1902,7 +1902,7 @@
         <PHON kindOf="standard">sintun pueʔikim ʔinia ʔiaʔa ʔinia taʔur~ɾoŋ kai kai kai misen taʔur~ɾoŋ.</PHON>
         <TRANSL xml:lang="zho">在那邊住三天,我們回到那邊. 哎呀! 一隻山羌.「嘎、嘎、嘎」山羌這樣叫.</TRANSL>
         <TRANSL xml:lang="eng">We stayed there for three days. As we came back to there, 'Wow! One muntjac.' The muntjac bleated.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="135.57" end="145.88"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="135.57" end="145.88" />
         <W id="kkvNr_hunting1_Muu_S_15_W0">
             <FORM kindOf="original">s&lt;in&gt;-tun</FORM>
             <PHON kindOf="original">s&lt;in&gt;-tun</PHON>
@@ -2092,7 +2092,7 @@
                 <FORM kindOf="standard">n</FORM>
                 <PHON kindOf="standard">n</PHON>
                 <TRANSL xml:lang="eng">PF</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_hunting1_Muu_S_15_W10">
@@ -2111,7 +2111,7 @@
                 <TRANSL xml:lang="zho">山羌</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.39682539682539686</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_16">
         <FORM kindOf="original">makasuacu macangcangarʉ cʉpʉngmaku 'ah unava ngʉco nimuringee.</FORM>
         <PHON kindOf="original">makasuaʦu maʦaŋʦaŋar~ɾɨ ʦɨpɨŋmaku ʔah unava ŋɨʦo nimur~ɾiŋee.</PHON>
@@ -2119,7 +2119,7 @@
         <PHON kindOf="standard">makasuaʦu maʦaŋʦaŋar~ɾɨ ʦɨpɨŋmaku ʔah unava ŋɨʦo nimur~ɾiŋee.</PHON>
         <TRANSL xml:lang="zho" notes="就這樣,我心裡很高興還有套到的(山羌).">就這樣,我心裡很高興還有套到的 .</TRANSL>
         <TRANSL xml:lang="eng">Then I was happy for catching a muntjac.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="145.88" end="153.84"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="145.88" end="153.84" />
         <W id="kkvNr_hunting1_Muu_S_16_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -2188,16 +2188,16 @@
                 <PHON kindOf="original">ʦaŋ</PHON>
                 <FORM kindOf="standard">cang</FORM>
                 <PHON kindOf="standard">ʦaŋ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_hunting1_Muu_S_16_W1M4">
                 <FORM kindOf="original">cangarʉ</FORM>
                 <PHON kindOf="original">ʦaŋar~ɾɨ</PHON>
                 <FORM kindOf="standard">cangarʉ</FORM>
                 <PHON kindOf="standard">ʦaŋar~ɾɨ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_hunting1_Muu_S_16_W2">
@@ -2312,7 +2312,7 @@
                 <TRANSL xml:lang="zho">陷阱</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5396825396825398</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_17">
         <FORM kindOf="original">araneen nacumamaku tumatukutuku navungin mepacai.</FORM>
         <PHON kindOf="original">ar~ɾaneen naʦumamaku tumatukutuku navuŋin mepaʦai.</PHON>
@@ -2320,7 +2320,7 @@
         <PHON kindOf="standard">ar~ɾaneen naʦumamaku tumatukutuku navuŋin mepaʦai.</PHON>
         <TRANSL xml:lang="zho">爸爸一直打他的頭,直到打死.</TRANSL>
         <TRANSL xml:lang="eng">Dad was kept attacking its head until it died.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="153.84" end="162.11"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="153.84" end="162.11" />
         <W id="kkvNr_hunting1_Muu_S_17_W0">
             <FORM kindOf="original">arane-en</FORM>
             <PHON kindOf="original">ar~ɾane-en</PHON>
@@ -2417,12 +2417,12 @@
                 <TRANSL xml:lang="zho">打</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_17_W2M5">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">hit</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_hunting1_Muu_S_17_W3">
@@ -2473,7 +2473,7 @@
                 <TRANSL xml:lang="zho">死</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5263157894736843</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_18">
         <FORM kindOf="original">makasuacu pue'ikim tanasa.</FORM>
         <PHON kindOf="original">makasuaʦu pueʔikim tanasa.</PHON>
@@ -2481,7 +2481,7 @@
         <PHON kindOf="standard">makasuaʦu pueʔikim tanasa.</PHON>
         <TRANSL xml:lang="zho">就這樣,我們就回家.</TRANSL>
         <TRANSL xml:lang="eng">Then, we went home.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="162.11" end="169.37"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="162.11" end="169.37" />
         <W id="kkvNr_hunting1_Muu_S_18_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -2562,7 +2562,7 @@
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5306122448979591</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_19">
         <FORM kindOf="original">sua ikim miana Kanakanavu ia nuu niaracakanci ia pue'ici tanasa ia arasusurʉn kangvang ngʉco pinipining ivatacu kumakʉn kumakʉn nguai nivatucu kangvang pinipining kangvang mamanu mau'ura kumakʉn ngʉcoo aramu nipuringe nacumamaku.</FORM>
         <PHON kindOf="original">sua ikim miana kanakanavu ia nuu niar~ɾaʦakanʦi ia pueʔiʦi tanasa ia ar~ɾasusur~ɾɨn kaŋvaŋ ŋɨʦo pinipiniŋ ivataʦu kumakɨn kumakɨn ŋuai nivatuʦu kaŋvaŋ pinipiniŋ kaŋvaŋ mamanu mauʔur~ɾa kumakɨn ŋɨʦoo ar~ɾamu nipur~ɾiŋe naʦumamaku.</PHON>
@@ -2570,7 +2570,7 @@
         <PHON kindOf="standard">sua ikim miana kanakanavu ia nuu niar~ɾaʦakanʦi ia pueʔiʦi tanasa ia ar~ɾasusur~ɾɨn kaŋvaŋ ŋɨʦo pinipiniŋ ivataʦu kumakɨn kumakɨn ŋuai nivatuʦu kaŋvaŋ pinipiniŋ kaŋvaŋ mamanu mauʔur~ɾa kumakɨn ŋɨʦoo ar~ɾamu nipur~ɾiŋe naʦumamaku.</PHON>
         <TRANSL xml:lang="zho">以前我們Kanakanavu人,當打獵完回家的時候,我們叫每一個家都來吃一吃我過去的爸爸套到的.</TRANSL>
         <TRANSL xml:lang="eng">In the past, after we Kanakanavu people finished hunting, we went home calling our neighbors to come to eat the meat my father had caught.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="169.37" end="197.69"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="169.37" end="197.69" />
         <W id="kkvNr_hunting1_Muu_S_19_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -2911,8 +2911,8 @@
                 <PHON kindOf="original">kɨn</PHON>
                 <FORM kindOf="standard">kʉn</FORM>
                 <PHON kindOf="standard">kɨn</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_hunting1_Muu_S_19_W17">
@@ -3219,7 +3219,7 @@
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.572072072072072</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_20">
         <FORM kindOf="original">makasuacu aratavarʉ'ʉcuku.</FORM>
         <PHON kindOf="original">makasuaʦu ar~ɾatavar~ɾɨʔɨʦuku.</PHON>
@@ -3227,7 +3227,7 @@
         <PHON kindOf="standard">makasuaʦu ar~ɾatavar~ɾɨʔɨʦuku.</PHON>
         <TRANSL xml:lang="zho">我比較懂了.</TRANSL>
         <TRANSL xml:lang="eng">Then, I more understood the things.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="197.69" end="202.54"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="197.69" end="202.54" />
         <W id="kkvNr_hunting1_Muu_S_20_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -3308,7 +3308,7 @@
                 <TRANSL xml:lang="zho">1SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.625</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_21">
         <FORM kindOf="original">pakanangcuku.</FORM>
         <PHON kindOf="original">pakanaŋʦuku.</PHON>
@@ -3316,7 +3316,7 @@
         <PHON kindOf="standard">pakanaŋʦuku.</PHON>
         <TRANSL xml:lang="zho">我懂了.</TRANSL>
         <TRANSL xml:lang="eng">I understood.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="202.54" end="204.67"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="202.54" end="204.67" />
         <W id="kkvNr_hunting1_Muu_S_21_W0">
             <FORM kindOf="original">pakanang=cu=ku</FORM>
             <PHON kindOf="original">pakanaŋ=ʦu=ku</PHON>
@@ -3349,7 +3349,7 @@
                 <TRANSL xml:lang="zho">1SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5517241379310345</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_22">
         <FORM kindOf="original">mehua ia maraa marangcu nacumamaku.</FORM>
         <PHON kindOf="original">mehua ia mar~ɾaa mar~ɾaŋʦu naʦumamaku.</PHON>
@@ -3357,7 +3357,7 @@
         <PHON kindOf="standard">mehua ia mar~ɾaa mar~ɾaŋʦu naʦumamaku.</PHON>
         <TRANSL xml:lang="zho">當我比較懂事了,我的爸爸就比較老一點.</TRANSL>
         <TRANSL xml:lang="eng">At that time, as I know things more, my father became aged.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="204.67" end="211.89"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="204.67" end="211.89" />
         <W id="kkvNr_hunting1_Muu_S_22_W0">
             <FORM kindOf="original">me-hua</FORM>
             <PHON kindOf="original">me-hua</PHON>
@@ -3478,7 +3478,7 @@
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.64</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_23">
         <FORM kindOf="original">mehua ia maracicinku mohan nʉmʉra rumaringe maracicin mosa nʉmʉra rumaringe.</FORM>
         <PHON kindOf="original">mehua ia mar~ɾaʦiʦinku mohan nɨmɨr~ɾa r~ɾumar~ɾiŋe mar~ɾaʦiʦin mosa nɨmɨr~ɾa r~ɾumar~ɾiŋe.</PHON>
@@ -3486,7 +3486,7 @@
         <PHON kindOf="standard">mehua ia mar~ɾaʦiʦinku mohan nɨmɨr~ɾa r~ɾumar~ɾiŋe mar~ɾaʦiʦin mosa nɨmɨr~ɾa r~ɾumar~ɾiŋe.</PHON>
         <TRANSL xml:lang="zho">那時候就自己去山上做套.</TRANSL>
         <TRANSL xml:lang="eng">I went mountains making traps by myself.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="211.89" end="225.65"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="211.89" end="225.65" />
         <W id="kkvNr_hunting1_Muu_S_23_W0">
             <FORM kindOf="original">me-hua</FORM>
             <PHON kindOf="original">me-hua</PHON>
@@ -3631,10 +3631,10 @@
                 <TRANSL xml:lang="zho">RM</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_23_W5M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">trap</TRANSL>
                 <TRANSL xml:lang="zho">陷阱</TRANSL>
             </M>
@@ -3735,15 +3735,15 @@
                 <TRANSL xml:lang="zho">RA</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_23_W9M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">trap</TRANSL>
                 <TRANSL xml:lang="zho">陷阱</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5534591194968553</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_24">
         <FORM kindOf="original">sinsipatʉn pue'iku 'inia 'e 'inia takuisi nimuringe.</FORM>
         <PHON kindOf="original">sinsipatɨn pueʔiku ʔinia ʔe ʔinia takuisi nimur~ɾiŋe.</PHON>
@@ -3751,7 +3751,7 @@
         <PHON kindOf="standard">sinsipatɨn pueʔiku ʔinia ʔe ʔinia takuisi nimur~ɾiŋe.</PHON>
         <TRANSL xml:lang="zho">過了十天以後,我回去那,在那邊我套到山羊.</TRANSL>
         <TRANSL xml:lang="eng">After ten days, I went back there. I caught a goat there!</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="225.65" end="232.41"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S24.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="225.65" end="232.41" />
         <W id="kkvNr_hunting1_Muu_S_24_W0">
             <FORM kindOf="original">s&lt;in&gt;-sipatʉn</FORM>
             <PHON kindOf="original">s&lt;in&gt;-sipatɨn</PHON>
@@ -3904,7 +3904,7 @@
                 <TRANSL xml:lang="zho">陷阱</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6382978723404256</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_25">
         <FORM kindOf="original">a a a misee ngʉcoo takuisi makasuacu vura'ekua navungin.</FORM>
         <PHON kindOf="original">a a a misee ŋɨʦoo takuisi makasuaʦu vur~ɾaʔekua navuŋin.</PHON>
@@ -3912,7 +3912,7 @@
         <PHON kindOf="standard">a a a misee ŋɨʦoo takuisi makasuaʦu vur~ɾaʔekua navuŋin.</PHON>
         <TRANSL xml:lang="zho">然後我打他的頭.</TRANSL>
         <TRANSL xml:lang="eng">Then I hit its head.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="232.41" end="246.48"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S25.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="232.41" end="246.48" />
         <W id="kkvNr_hunting1_Muu_S_25_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -4113,7 +4113,7 @@
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.37168141592920356</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_26">
         <FORM kindOf="original">vura'ekua navungin.</FORM>
         <PHON kindOf="original">vur~ɾaʔekua navuŋin.</PHON>
@@ -4121,7 +4121,7 @@
         <PHON kindOf="standard">vur~ɾaʔekua navuŋin.</PHON>
         <TRANSL xml:lang="zho">我打他的頭.</TRANSL>
         <TRANSL xml:lang="eng">I hit its head.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="246.48" end="249.29"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S26.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="246.48" end="249.29" />
         <W id="kkvNr_hunting1_Muu_S_26_W0">
             <FORM kindOf="original">vura-'e=kua</FORM>
             <PHON kindOf="original">vur~ɾa-ʔe=kua</PHON>
@@ -4178,7 +4178,7 @@
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4516129032258065</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_27">
         <FORM kindOf="original">ha'uni ikua ka'anku tatʉkʉvʉ.</FORM>
         <PHON kindOf="original">haʔuni ikua kaʔanku tatɨkɨvɨ.</PHON>
@@ -4186,7 +4186,7 @@
         <PHON kindOf="standard">haʔuni ikua kaʔanku tatɨkɨvɨ.</PHON>
         <TRANSL xml:lang="zho">我背不動.</TRANSL>
         <TRANSL xml:lang="eng">I could not carry it.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="249.29" end="253.54"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S27.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="249.29" end="253.54" />
         <W id="kkvNr_hunting1_Muu_S_27_W0">
             <FORM kindOf="original">ha'uni</FORM>
             <PHON kindOf="original">haʔuni</PHON>
@@ -4259,7 +4259,7 @@
                 <TRANSL xml:lang="zho">背.主焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.41509433962264153</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_28">
         <FORM kindOf="original">nakai temaku temaku patiuruun putukava mamanʉng ngʉco ha'unun na takicu.</FORM>
         <PHON kindOf="original">nakai temaku temaku patiur~ɾuun putukava mamanɨŋ ŋɨʦo haʔunun na takiʦu.</PHON>
@@ -4267,7 +4267,7 @@
         <PHON kindOf="standard">nakai temaku temaku patiur~ɾuun putukava mamanɨŋ ŋɨʦo haʔunun na takiʦu.</PHON>
         <TRANSL xml:lang="zho">那時候我知道我要先剝皮, 這樣的話比較好用背網背.</TRANSL>
         <TRANSL xml:lang="eng">However, I knew that I had to askave the hide of the boar first, so that I could carry it with the mesh bag easily.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="253.54" end="275.98"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S28.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="253.54" end="275.98" />
         <W id="kkvNr_hunting1_Muu_S_28_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -4304,8 +4304,8 @@
                 <PHON kindOf="original">maku</PHON>
                 <FORM kindOf="standard">maku</FORM>
                 <PHON kindOf="standard">maku</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_hunting1_Muu_S_28_W2">
@@ -4500,7 +4500,7 @@
                 <TRANSL xml:lang="zho">網袋</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4713375796178344</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_29">
         <FORM kindOf="original">makasuacu pue'cuku tanasa macangcangarʉ nacinamaku nacumamaku nipue'icu makasuacu takuisi.</FORM>
         <PHON kindOf="original">makasuaʦu pueʔʦuku tanasa maʦaŋʦaŋar~ɾɨ naʦinamaku naʦumamaku nipueʔiʦu makasuaʦu takuisi.</PHON>
@@ -4508,7 +4508,7 @@
         <PHON kindOf="standard">makasuaʦu pueʔʦuku tanasa maʦaŋʦaŋar~ɾɨ naʦinamaku naʦumamaku nipueʔiʦu makasuaʦu takuisi.</PHON>
         <TRANSL xml:lang="zho">打到一個山羊,把皮先拿掉,就這樣回家了,他的爸媽看到他說,你打到了他們很高興.</TRANSL>
         <TRANSL xml:lang="eng">I caught a goat. I took off its hide firstly. Then I went home. 'You caught a goat!' my parents said to me happily.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="275.98" end="290.72"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="275.98" end="290.72" />
         <W id="kkvNr_hunting1_Muu_S_29_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -4781,7 +4781,7 @@
                 <TRANSL xml:lang="zho">山羊</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5882352941176471</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_30">
         <FORM kindOf="original">makasuacu nimosaku na na ngʉcoo hetai.</FORM>
         <PHON kindOf="original">makasuaʦu nimosaku na na ŋɨʦoo hetai.</PHON>
@@ -4789,7 +4789,7 @@
         <PHON kindOf="standard">makasuaʦu nimosaku na na ŋɨʦoo hetai.</PHON>
         <TRANSL xml:lang="zho">就這樣我就去部隊.</TRANSL>
         <TRANSL xml:lang="eng">Then I entered the army.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="290.72" end="303.74"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S30.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="290.72" end="303.74" />
         <W id="kkvNr_hunting1_Muu_S_30_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -4934,7 +4934,7 @@
                 <TRANSL xml:lang="zho">軍隊</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5142857142857142</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_31">
         <FORM kindOf="original">mosaku na hetai pue'icu mintasʉcuku makasua ngʉcoo tina'anmaku.</FORM>
         <PHON kindOf="original">mosaku na hetai pueʔiʦu mintasɨʦuku makasua ŋɨʦoo tinaʔanmaku.</PHON>
@@ -4942,7 +4942,7 @@
         <PHON kindOf="standard">mosaku na hetai pueʔiʦu mintasɨʦuku makasua ŋɨʦoo tinaʔanmaku.</PHON>
         <TRANSL xml:lang="zho" notes="我的身體就那樣(有力氣).">我的身體就那樣 .</TRANSL>
         <TRANSL xml:lang="eng">Then I became strong.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="303.74" end="315.75"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S31.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="303.74" end="315.75" />
         <W id="kkvNr_hunting1_Muu_S_31_W0">
             <FORM kindOf="original">m-osa=ku</FORM>
             <PHON kindOf="original">m-osa=ku</PHON>
@@ -5031,10 +5031,10 @@
                 <TRANSL xml:lang="zho">COS</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_31_W3M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
                 <TRANSL xml:lang="zho">1SG.主格</TRANSL>
             </M>
@@ -5143,7 +5143,7 @@
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4657534246575342</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_32">
         <FORM kindOf="original">makasuacuku na ngʉnco cakʉran Namasia ihi na ngʉnco ikita Kanakanavu ia pakasin toliu.</FORM>
         <PHON kindOf="original">makasuaʦuku na ŋɨnʦo ʦakɨr~ɾan namasia ihi na ŋɨnʦo ikita kanakanavu ia pakasin to*iu.</PHON>
@@ -5151,7 +5151,7 @@
         <PHON kindOf="standard">makasuaʦuku na ŋɨnʦo ʦakɨr~ɾan namasia ihi na ŋɨnʦo ikita kanakanavu ia pakasin to*iu.</PHON>
         <TRANSL xml:lang="zho">就這樣,我們在楠梓仙溪這邊,我們卡那卡那富,就被叫做六溪.</TRANSL>
         <TRANSL xml:lang="eng">Just like this, we Kanakanavu are called liuxi because of the river.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="315.75" end="338.7"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S32.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="315.75" end="338.7" />
         <W id="kkvNr_hunting1_Muu_S_32_W0">
             <FORM kindOf="original">ma-ka-sua=cu=ku</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu=ku</PHON>
@@ -5424,7 +5424,7 @@
                 <TRANSL xml:lang="zho">六溪</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4565217391304348</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_33">
         <FORM kindOf="original">moku 'inia rumaringee pusuringee ikua vutun.</FORM>
         <PHON kindOf="original">moku ʔinia r~ɾumar~ɾiŋee pusur~ɾiŋee ikua vutun.</PHON>
@@ -5432,7 +5432,7 @@
         <PHON kindOf="standard">moku ʔinia r~ɾumar~ɾiŋee pusur~ɾiŋee ikua vutun.</PHON>
         <TRANSL xml:lang="zho">我就套了山鹿.</TRANSL>
         <TRANSL xml:lang="eng">Then I caught a deer.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="338.7" end="346.87"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S33.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="338.7" end="346.87" />
         <W id="kkvNr_hunting1_Muu_S_33_W0">
             <FORM kindOf="original">m-o=ku</FORM>
             <PHON kindOf="original">m-o=ku</PHON>
@@ -5505,10 +5505,10 @@
                 <TRANSL xml:lang="zho">RA</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_33_W2M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">trap</TRANSL>
                 <TRANSL xml:lang="zho">陷阱</TRANSL>
             </M>
@@ -5569,7 +5569,7 @@
                 <TRANSL xml:lang="zho">鹿</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5301204819277108</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_34">
         <FORM kindOf="original">wow siree vutun tatia! mʉkʉn makai cacane ikua vutun!</FORM>
         <PHON kindOf="original">wow sir~ɾee vutun tatia! mɨkɨn makai ʦaʦane ikua vutun!</PHON>
@@ -5577,7 +5577,7 @@
         <PHON kindOf="standard">wow sir~ɾee vutun tatia! mɨkɨn makai ʦaʦane ikua vutun!</PHON>
         <TRANSL xml:lang="zho">哇塞!山鹿很大!</TRANSL>
         <TRANSL xml:lang="eng">Oops! The deer was quite big!</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="346.87" end="354.7"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="346.87" end="354.7" />
         <W id="kkvNr_hunting1_Muu_S_34_W0">
             <FORM kindOf="original">wow</FORM>
             <PHON kindOf="original">wow</PHON>
@@ -5722,7 +5722,7 @@
                 <TRANSL xml:lang="zho">山鹿</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5192307692307692</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_35">
         <FORM kindOf="original">ka'anku tavara'ʉ ngʉnco pusaan 'inia pepacare kua.</FORM>
         <PHON kindOf="original">kaʔanku tavar~ɾaʔɨ ŋɨnʦo pusaan ʔinia pepaʦar~ɾe kua.</PHON>
@@ -5730,7 +5730,7 @@
         <PHON kindOf="standard">kaʔanku tavar~ɾaʔɨ ŋɨnʦo pusaan ʔinia pepaʦar~ɾe kua.</PHON>
         <TRANSL xml:lang="zho">不知道要怎麼樣搬,就用殺的.</TRANSL>
         <TRANSL xml:lang="eng">I did not know how to move it, so I killed it.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="354.7" end="362.26"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S35.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="354.7" end="362.26" />
         <W id="kkvNr_hunting1_Muu_S_35_W0">
             <FORM kindOf="original">ka'an=ku</FORM>
             <PHON kindOf="original">kaʔan=ku</PHON>
@@ -5875,7 +5875,7 @@
                 <TRANSL xml:lang="zho">1SG.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6046511627906976</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_36">
         <FORM kindOf="original">mucanku mokusa tanasa pokarikari cau.</FORM>
         <PHON kindOf="original">muʦanku mokusa tanasa pokar~ɾikar~ɾi ʦau.</PHON>
@@ -5883,7 +5883,7 @@
         <PHON kindOf="standard">muʦanku mokusa tanasa pokar~ɾikar~ɾi ʦau.</PHON>
         <TRANSL xml:lang="zho">我就回家去跟人說.</TRANSL>
         <TRANSL xml:lang="eng">Then I went home and told people that.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="362.26" end="367.97"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S36.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="362.26" end="367.97" />
         <W id="kkvNr_hunting1_Muu_S_36_W0">
             <FORM kindOf="original">m-ucan=ku</FORM>
             <PHON kindOf="original">m-uʦan=ku</PHON>
@@ -6004,7 +6004,7 @@
                 <TRANSL xml:lang="zho">人</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.49275362318840576</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_37">
         <FORM kindOf="original">sua cau ihua ia nivuamaku kimparaa nivuamaku kimparaa si 'anku pua'an ku 'anku tavara'ʉ ngʉnco ma'un vutun.</FORM>
         <PHON kindOf="original">sua ʦau ihua ia nivuamaku kimpar~ɾaa nivuamaku kimpar~ɾaa si ʔanku puaʔan ku ʔanku tavar~ɾaʔɨ ŋɨnʦo maʔun vutun.</PHON>
@@ -6012,7 +6012,7 @@
         <PHON kindOf="standard">sua ʦau ihua ia nivuamaku kimpar~ɾaa nivuamaku kimpar~ɾaa si ʔanku puaʔan ku ʔanku tavar~ɾaʔɨ ŋɨnʦo maʔun vutun.</PHON>
         <TRANSL xml:lang="zho">那個人我給他零錢,因為我背不動山鹿.</TRANSL>
         <TRANSL xml:lang="eng">I gave money to that person because I could not carry it.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="367.97" end="387.04"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="367.97" end="387.04" />
         <W id="kkvNr_hunting1_Muu_S_37_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -6209,8 +6209,8 @@
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_hunting1_Muu_S_37_W10">
@@ -6333,7 +6333,7 @@
                 <TRANSL xml:lang="zho">山鹿</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4636363636363636</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_38">
         <FORM kindOf="original">makasuacu pue'ikim tanasa.</FORM>
         <PHON kindOf="original">makasuaʦu pueʔikim tanasa.</PHON>
@@ -6341,7 +6341,7 @@
         <PHON kindOf="standard">makasuaʦu pueʔikim tanasa.</PHON>
         <TRANSL xml:lang="zho">就這樣,我們回家.</TRANSL>
         <TRANSL xml:lang="eng">Then we went home.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="387.04" end="391.72"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S38.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="387.04" end="391.72" />
         <W id="kkvNr_hunting1_Muu_S_38_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -6422,7 +6422,7 @@
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.49056603773584906</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_39">
         <FORM kindOf="original">mehua ia una pa ngʉnco pu'a ngʉnco aram mehua ia mamanʉngpa ngʉnco mehua kimparaa mara tatiapa.</FORM>
         <PHON kindOf="original">mehua ia una pa ŋɨnʦo puʔa ŋɨnʦo ar~ɾam mehua ia mamanɨŋpa ŋɨnʦo mehua kimpar~ɾaa mar~ɾa tatiapa.</PHON>
@@ -6430,7 +6430,7 @@
         <PHON kindOf="standard">mehua ia una pa ŋɨnʦo puʔa ŋɨnʦo ar~ɾam mehua ia mamanɨŋpa ŋɨnʦo mehua kimpar~ɾaa mar~ɾa tatiapa.</PHON>
         <TRANSL xml:lang="zho">那個時候還好錢還比較大.</TRANSL>
         <TRANSL xml:lang="eng">It was good that money was big.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="391.72" end="413.23"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="391.72" end="413.23" />
         <W id="kkvNr_hunting1_Muu_S_39_W0">
             <FORM kindOf="original">me-hua</FORM>
             <PHON kindOf="original">me-hua</PHON>
@@ -6735,7 +6735,7 @@
                 <TRANSL xml:lang="zho">還</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5433526011560694</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_40">
         <FORM kindOf="original">makasuacu sinsʉpatʉn pue'iku nia sʉmasʉrʉcʉ poringee iikua mangʉrisi.</FORM>
         <PHON kindOf="original">makasuaʦu sinsɨpatɨn pueʔiku nia sɨmasɨr~ɾɨʦɨ por~ɾiŋee iikua maŋɨr~ɾisi.</PHON>
@@ -6743,7 +6743,7 @@
         <PHON kindOf="standard">makasuaʦu sinsɨpatɨn pueʔiku nia sɨmasɨr~ɾɨʦɨ por~ɾiŋee iikua maŋɨr~ɾisi.</PHON>
         <TRANSL xml:lang="zho">然後四天後,我套到公山豬.</TRANSL>
         <TRANSL xml:lang="eng">After four days, I went back there to see the traps. I caught a male boar.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="413.23" end="430.23"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S40.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="413.23" end="430.23" />
         <W id="kkvNr_hunting1_Muu_S_40_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -6928,7 +6928,7 @@
                 <TRANSL xml:lang="zho">公山豬</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4429530201342282</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_41">
         <FORM kindOf="original">poringee ikua mangʉrisi kaicʉpʉn!</FORM>
         <PHON kindOf="original">por~ɾiŋee ikua maŋɨr~ɾisi kaiʦɨpɨn!</PHON>
@@ -6936,7 +6936,7 @@
         <PHON kindOf="standard">por~ɾiŋee ikua maŋɨr~ɾisi kaiʦɨpɨn!</PHON>
         <TRANSL xml:lang="zho">我套到一隻公山豬.牠非常嚇人.</TRANSL>
         <TRANSL xml:lang="eng">I caught a male boar. It looks frightening!</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="430.23" end="441.78"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S41.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="430.23" end="441.78" />
         <W id="kkvNr_hunting1_Muu_S_41_W0">
             <FORM kindOf="original">po-ringee</FORM>
             <PHON kindOf="original">po-r~ɾiŋee</PHON>
@@ -7013,19 +7013,19 @@
                 <PHON kindOf="original">iʦɨpɨ</PHON>
                 <FORM kindOf="standard">icʉpʉ</FORM>
                 <PHON kindOf="standard">iʦɨpɨ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_hunting1_Muu_S_41_W3M3">
                 <FORM kindOf="original">n!</FORM>
                 <PHON kindOf="original">n!</PHON>
                 <FORM kindOf="standard">n!</FORM>
                 <PHON kindOf="standard">n!</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
-    </S>
+    <SCORE>0.33766233766233766</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_42">
         <FORM kindOf="original">nenen vanein kaicʉpʉn sua ngʉnco.</FORM>
         <PHON kindOf="original">nenen vanein kaiʦɨpɨn sua ŋɨnʦo.</PHON>
@@ -7033,7 +7033,7 @@
         <PHON kindOf="standard">nenen vanein kaiʦɨpɨn sua ŋɨnʦo.</PHON>
         <TRANSL xml:lang="zho">我為什麼會怕?</TRANSL>
         <TRANSL xml:lang="eng">Why I felt afraid?</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="441.78" end="445.93"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="441.78" end="445.93" />
         <W id="kkvNr_hunting1_Muu_S_42_W0">
             <FORM kindOf="original">ne-nen</FORM>
             <PHON kindOf="original">ne-nen</PHON>
@@ -7138,7 +7138,7 @@
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_43">
         <FORM kindOf="original">vavuru ia noo nimakurivi ipucʉn ia an ka'icʉpʉn.</FORM>
         <PHON kindOf="original">vavur~ɾu ia noo nimakur~ɾivi ipuʦɨn ia an kaʔiʦɨpɨn.</PHON>
@@ -7146,7 +7146,7 @@
         <PHON kindOf="standard">vavur~ɾu ia noo nimakur~ɾivi ipuʦɨn ia an kaʔiʦɨpɨn.</PHON>
         <TRANSL xml:lang="zho">如果山豬的牙齒往外翻,那它不可怕.</TRANSL>
         <TRANSL xml:lang="eng">If the teeth of the boar grow outward, it will not be terrifying.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="445.93" end="452.98"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S43.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="445.93" end="452.98" />
         <W id="kkvNr_hunting1_Muu_S_43_W0">
             <FORM kindOf="original">vavuru</FORM>
             <PHON kindOf="original">vavur~ɾu</PHON>
@@ -7299,7 +7299,7 @@
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.46341463414634143</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_44">
         <FORM kindOf="original">noo musutuviki mamia ia niarapapining na ivici nia iihua ia.</FORM>
         <PHON kindOf="original">noo musutuviki mamia ia niar~ɾapapiniŋ na iviʦi nia iihua ia.</PHON>
@@ -7307,7 +7307,7 @@
         <PHON kindOf="standard">noo musutuviki mamia ia niar~ɾapapiniŋ na iviʦi nia iihua ia.</PHON>
         <TRANSL xml:lang="zho">如果牙齒只有在嘴巴那裏凸出來,那個最可怕</TRANSL>
         <TRANSL xml:lang="eng">If the teeth of the boar protruded out around its mouth, that will be the most horrible one.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="452.98" end="460.14"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S44.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="452.98" end="460.14" />
         <W id="kkvNr_hunting1_Muu_S_44_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
@@ -7372,18 +7372,18 @@
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_44_W3M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">become</TRANSL>
                 <TRANSL xml:lang="zho">變</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_44_W3M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">out</TRANSL>
                 <TRANSL xml:lang="zho">外面</TRANSL>
             </M>
@@ -7408,16 +7408,16 @@
                 <PHON kindOf="original">ar~ɾa</PHON>
                 <FORM kindOf="standard">ara</FORM>
                 <PHON kindOf="standard">ar~ɾa</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_hunting1_Muu_S_44_W4M3">
                 <FORM kindOf="original">papining</FORM>
                 <PHON kindOf="original">papiniŋ</PHON>
                 <FORM kindOf="standard">papining</FORM>
                 <PHON kindOf="standard">papiniŋ</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_hunting1_Muu_S_44_W5">
@@ -7500,23 +7500,23 @@
                 <TRANSL xml:lang="zho">狀態</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_44_W9M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">fear</TRANSL>
                 <TRANSL xml:lang="zho">怕</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_44_W9M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4727272727272728</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_45">
         <FORM kindOf="original">makasuacu pepacarʉ akua vavura ihua.</FORM>
         <PHON kindOf="original">makasuaʦu pepaʦar~ɾɨ akua vavur~ɾa ihua.</PHON>
@@ -7524,7 +7524,7 @@
         <PHON kindOf="standard">makasuaʦu pepaʦar~ɾɨ akua vavur~ɾa ihua.</PHON>
         <TRANSL xml:lang="zho">就那樣,我刺那山豬.</TRANSL>
         <TRANSL xml:lang="eng">Then I stabbed that boar.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="460.14" end="466.91"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="460.14" end="466.91" />
         <W id="kkvNr_hunting1_Muu_S_45_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -7629,7 +7629,7 @@
                 <TRANSL xml:lang="zho">那</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.34285714285714286</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_46">
         <FORM kindOf="original">cakʉpu iikua vavura iihua.</FORM>
         <PHON kindOf="original">ʦakɨpu iikua vavur~ɾa iihua.</PHON>
@@ -7637,7 +7637,7 @@
         <PHON kindOf="standard">ʦakɨpu iikua vavur~ɾa iihua.</PHON>
         <TRANSL xml:lang="zho">我刺那山豬.</TRANSL>
         <TRANSL xml:lang="eng">I stabbed that boar.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="466.91" end="470.68"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S46.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="466.91" end="470.68" />
         <W id="kkvNr_hunting1_Muu_S_46_W0">
             <FORM kindOf="original">cakʉpu</FORM>
             <PHON kindOf="original">ʦakɨpu</PHON>
@@ -7702,7 +7702,7 @@
                 <TRANSL xml:lang="zho">那</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.2727272727272727</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_47">
         <FORM kindOf="original">macaicu mamia.</FORM>
         <PHON kindOf="original">maʦaiʦu mamia.</PHON>
@@ -7710,7 +7710,7 @@
         <PHON kindOf="standard">maʦaiʦu mamia.</PHON>
         <TRANSL xml:lang="zho">就死了.</TRANSL>
         <TRANSL xml:lang="eng">Then it died.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="470.68" end="473.39"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="470.68" end="473.39" />
         <W id="kkvNr_hunting1_Muu_S_47_W0">
             <FORM kindOf="original">macai=cu</FORM>
             <PHON kindOf="original">maʦai=ʦu</PHON>
@@ -7731,22 +7731,22 @@
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_hunting1_Muu_S_47_W0M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">die</TRANSL>
                 <TRANSL xml:lang="zho">死</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_47_W0M4">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">COS</TRANSL>
                 <TRANSL xml:lang="zho">COS</TRANSL>
             </M>
@@ -7767,7 +7767,7 @@
                 <TRANSL xml:lang="zho">只有</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6206896551724138</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_48">
         <FORM kindOf="original">makasuacu 'anku tatʉkʉvʉ.</FORM>
         <PHON kindOf="original">makasuaʦu ʔanku tatɨkɨvɨ.</PHON>
@@ -7775,7 +7775,7 @@
         <PHON kindOf="standard">makasuaʦu ʔanku tatɨkɨvɨ.</PHON>
         <TRANSL xml:lang="zho">我又搬不動.</TRANSL>
         <TRANSL xml:lang="eng">I could not carry it.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="473.39" end="479.13"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S48.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="473.39" end="479.13" />
         <W id="kkvNr_hunting1_Muu_S_48_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -7856,7 +7856,7 @@
                 <TRANSL xml:lang="zho">搬</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4642857142857143</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_49">
         <FORM kindOf="original">mocancuku tanasa.</FORM>
         <PHON kindOf="original">moʦanʦuku tanasa.</PHON>
@@ -7864,7 +7864,7 @@
         <PHON kindOf="standard">moʦanʦuku tanasa.</PHON>
         <TRANSL xml:lang="zho">我又回家了.</TRANSL>
         <TRANSL xml:lang="eng">I went home.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="479.13" end="481.7"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="479.13" end="481.7" />
         <W id="kkvNr_hunting1_Muu_S_49_W0">
             <FORM kindOf="original">m-ocan=cu=ku</FORM>
             <PHON kindOf="original">m-oʦan=ʦu=ku</PHON>
@@ -7921,7 +7921,7 @@
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.6486486486486487</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_50">
         <FORM kindOf="original">pokari cau apo'un nia.</FORM>
         <PHON kindOf="original">pokar~ɾi ʦau apoʔun nia.</PHON>
@@ -7929,7 +7929,7 @@
         <PHON kindOf="standard">pokar~ɾi ʦau apoʔun nia.</PHON>
         <TRANSL xml:lang="zho">我和人說話,叫他背.</TRANSL>
         <TRANSL xml:lang="eng">I talked to a person and had him carry the boar.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S50.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="481.7" end="484.78"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S50.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="481.7" end="484.78" />
         <W id="kkvNr_hunting1_Muu_S_50_W0">
             <FORM kindOf="original">po-kari</FORM>
             <PHON kindOf="original">po-kar~ɾi</PHON>
@@ -8018,7 +8018,7 @@
                 <TRANSL xml:lang="zho">3SG.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5128205128205128</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_51">
         <FORM kindOf="original">apu'ʉnaku ngʉnco vavuru ihua vʉnmaku kimpara vantuku ngʉnco nima'un nia.</FORM>
         <PHON kindOf="original">apuʔɨnaku ŋɨnʦo vavur~ɾu ihua vɨnmaku kimpar~ɾa vantuku ŋɨnʦo nimaʔun nia.</PHON>
@@ -8026,7 +8026,7 @@
         <PHON kindOf="standard">apuʔɨnaku ŋɨnʦo vavur~ɾu ihua vɨnmaku kimpar~ɾa vantuku ŋɨnʦo nimaʔun nia.</PHON>
         <TRANSL xml:lang="zho">山豬拿去賣,然後我把錢給背的人.</TRANSL>
         <TRANSL xml:lang="eng">I sold the boar, and I gave money to the person who carried it.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S51.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="484.78" end="492.8"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S51.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="484.78" end="492.8" />
         <W id="kkvNr_hunting1_Muu_S_51_W0">
             <FORM kindOf="original">ap-u'-ʉn=aku</FORM>
             <PHON kindOf="original">ap-uʔ-ɨn=aku</PHON>
@@ -8135,22 +8135,22 @@
                 <PHON kindOf="original">maku</PHON>
                 <FORM kindOf="standard">maku</FORM>
                 <PHON kindOf="standard">maku</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_hunting1_Muu_S_51_W4M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_51_W4M4">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">1SG.GEN</TRANSL>
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
@@ -8227,10 +8227,10 @@
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_51_W8M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">carry</TRANSL>
                 <TRANSL xml:lang="zho">背</TRANSL>
             </M>
@@ -8251,7 +8251,7 @@
                 <TRANSL xml:lang="zho">3SG.斜格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.49295774647887325</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_52">
         <FORM kindOf="original">makasuacu sinsʉpatʉn pue'iku 'inia mohaku inia cʉmʉ' ʉra ringeemaku.</FORM>
         <PHON kindOf="original">makasuaʦu sinsɨpatɨn pueʔiku ʔinia mohaku inia ʦɨmɨʔ ɨr~ɾa r~ɾiŋeemaku.</PHON>
@@ -8259,7 +8259,7 @@
         <PHON kindOf="standard">makasuaʦu sinsɨpatɨn pueʔiku ʔinia mohaku inia ʦɨmɨʔ ɨr~ɾa r~ɾiŋeemaku.</PHON>
         <TRANSL xml:lang="zho">就這樣,過四天我又回去那邊,去看我的套.</TRANSL>
         <TRANSL xml:lang="eng">After four days, I went back there again to see my traps.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S52.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="492.8" end="510.7"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S52.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="492.8" end="510.7" />
         <W id="kkvNr_hunting1_Muu_S_52_W0">
             <FORM kindOf="original">ma-ka-sua=cu</FORM>
             <PHON kindOf="original">ma-ka-sua=ʦu</PHON>
@@ -8460,10 +8460,10 @@
                 <TRANSL xml:lang="zho">套</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_52_W7M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">1SG.GEN</TRANSL>
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
@@ -8488,19 +8488,19 @@
                 <PHON kindOf="original">maku</PHON>
                 <FORM kindOf="standard">maku</FORM>
                 <PHON kindOf="standard">maku</PHON>
-                <TRANSL xml:lang="eng"/>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" />
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_hunting1_Muu_S_52_W8M3">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">see</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
-    </S>
+    <SCORE>0.4475524475524476</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_53">
         <FORM kindOf="original">ucancu ma nikamanʉngmaku ringee.</FORM>
         <PHON kindOf="original">uʦanʦu ma nikamanɨŋmaku r~ɾiŋee.</PHON>
@@ -8508,7 +8508,7 @@
         <PHON kindOf="standard">uʦanʦu ma nikamanɨŋmaku r~ɾiŋee.</PHON>
         <TRANSL xml:lang="zho">只有一個我做的套.</TRANSL>
         <TRANSL xml:lang="eng">There was only one trap I made.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S53.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="510.7" end="518.83"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S53.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="510.7" end="518.83" />
         <W id="kkvNr_hunting1_Muu_S_53_W0">
             <FORM kindOf="original">u-can=cu</FORM>
             <PHON kindOf="original">u-ʦan=ʦu</PHON>
@@ -8605,7 +8605,7 @@
                 <TRANSL xml:lang="zho">套</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5357142857142857</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_54">
         <FORM kindOf="original">tarakusaku 'inia akia vunʉnga.</FORM>
         <PHON kindOf="original">tar~ɾakusaku ʔinia akia vunɨŋa.</PHON>
@@ -8613,7 +8613,7 @@
         <PHON kindOf="standard">tar~ɾakusaku ʔinia akia vunɨŋa.</PHON>
         <TRANSL xml:lang="zho">我那裏到處看,沒有山豬套.</TRANSL>
         <TRANSL xml:lang="eng">I saw around, but I didn't see the boar trap.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S54.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="518.83" end="523.43"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S54.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="518.83" end="523.43" />
         <W id="kkvNr_hunting1_Muu_S_54_W0">
             <FORM kindOf="original">tara-kusa=ku</FORM>
             <PHON kindOf="original">tar~ɾa-kusa=ku</PHON>
@@ -8694,7 +8694,7 @@
                 <TRANSL xml:lang="zho">山豬套</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5555555555555556</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_55">
         <FORM kindOf="original">nimangʉtʉnku karu.</FORM>
         <PHON kindOf="original">nimaŋɨtɨnku kar~ɾu.</PHON>
@@ -8702,7 +8702,7 @@
         <PHON kindOf="standard">nimaŋɨtɨnku kar~ɾu.</PHON>
         <TRANSL xml:lang="zho">我砍樹.</TRANSL>
         <TRANSL xml:lang="eng">I cut the tree.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S55.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="523.43" end="531.03"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S55.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="523.43" end="531.03" />
         <W id="kkvNr_hunting1_Muu_S_55_W0">
             <FORM kindOf="original">ni-mangʉtʉn=ku</FORM>
             <PHON kindOf="original">ni-maŋɨtɨn=ku</PHON>
@@ -8751,7 +8751,7 @@
                 <TRANSL xml:lang="zho">樹</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.47058823529411764</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_56">
         <FORM kindOf="original">nimangʉtʉnku karu patacʉkʉcʉkʉʉnku nia ngʉnco pangarʉmaku nakai sua to'onamaku ia nimuriva'ʉku.</FORM>
         <PHON kindOf="original">nimaŋɨtɨnku kar~ɾu pataʦɨkɨʦɨkɨɨnku nia ŋɨnʦo paŋar~ɾɨmaku nakai sua toʔonamaku ia nimur~ɾivaʔɨku.</PHON>
@@ -8759,7 +8759,7 @@
         <PHON kindOf="standard">nimaŋɨtɨnku kar~ɾu pataʦɨkɨʦɨkɨɨnku nia ŋɨnʦo paŋar~ɾɨmaku nakai sua toʔonamaku ia nimur~ɾivaʔɨku.</PHON>
         <TRANSL xml:lang="zho">我砍樹,我把矛刺在地下,但是我走錯地方了.</TRANSL>
         <TRANSL xml:lang="eng">I cut the tree, and tucked the spear into the earth. But I got the wrong way.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S56.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="44.51" end="553.91"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S56.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="44.51" end="553.91" />
         <W id="kkvNr_hunting1_Muu_S_56_W0">
             <FORM kindOf="original">ni-mangʉtʉn=ku</FORM>
             <PHON kindOf="original">ni-maŋɨtɨn=ku</PHON>
@@ -8840,11 +8840,11 @@
                 <TRANSL xml:lang="zho">刺</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_56_W2M4">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
-                <TRANSL xml:lang="eng"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
+                <TRANSL xml:lang="eng" />
                 <TRANSL xml:lang="zho">1SG.主焦</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_56_W2M5">
@@ -8853,7 +8853,7 @@
                 <FORM kindOf="standard">ʉn</FORM>
                 <PHON kindOf="standard">ɨn</PHON>
                 <TRANSL xml:lang="eng">PF</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
             <M id="kkvNr_hunting1_Muu_S_56_W2M6">
                 <FORM kindOf="original">ku</FORM>
@@ -8861,7 +8861,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="zho" />
             </M>
         </W>
         <W id="kkvNr_hunting1_Muu_S_56_W3">
@@ -9016,7 +9016,7 @@
                 <TRANSL xml:lang="zho">1SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.054162487462387165</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_57">
         <FORM kindOf="original">cucuru na teku moon na amacara si amurucu ngʉnco vavuru.</FORM>
         <PHON kindOf="original">ʦuʦur~ɾu na teku moon na amaʦar~ɾa si amur~ɾuʦu ŋɨnʦo vavur~ɾu.</PHON>
@@ -9024,7 +9024,7 @@
         <PHON kindOf="standard">ʦuʦur~ɾu na teku moon na amaʦar~ɾa si amur~ɾuʦu ŋɨnʦo vavur~ɾu.</PHON>
         <TRANSL xml:lang="zho">其實說真的,我本來在上面,因為山豬在下面.</TRANSL>
         <TRANSL xml:lang="eng">Actually, I was above the boar, because the boar was below.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S57.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="553.91" end="562.68"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S57.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="553.91" end="562.68" />
         <W id="kkvNr_hunting1_Muu_S_57_W0">
             <FORM kindOf="original">cucuru</FORM>
             <PHON kindOf="original">ʦuʦur~ɾu</PHON>
@@ -9201,7 +9201,7 @@
                 <TRANSL xml:lang="zho">山豬</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4528301886792453</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_58">
         <FORM kindOf="original">makai cʉ'rʉʉnmaku tarisi takʉpucu mamia.</FORM>
         <PHON kindOf="original">makai ʦɨʔr~ɾɨɨnmaku tar~ɾisi takɨpuʦu mamia.</PHON>
@@ -9209,7 +9209,7 @@
         <PHON kindOf="standard">makai ʦɨʔr~ɾɨɨnmaku tar~ɾisi takɨpuʦu mamia.</PHON>
         <TRANSL xml:lang="zho">我去看套.是圓圓的了.</TRANSL>
         <TRANSL xml:lang="eng">I went to see the trap. It became round.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S58.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="562.68" end="571.31"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S58.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="562.68" end="571.31" />
         <W id="kkvNr_hunting1_Muu_S_58_W0">
             <FORM kindOf="original">makai</FORM>
             <PHON kindOf="original">makai</PHON>
@@ -9306,7 +9306,7 @@
                 <TRANSL xml:lang="zho">只</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.4390243902439024</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_59">
         <FORM kindOf="original">arasʉrʉcʉ mamia vavuru cakʉpe kua.</FORM>
         <PHON kindOf="original">ar~ɾasɨr~ɾɨʦɨ mamia vavur~ɾu ʦakɨpe kua.</PHON>
@@ -9314,7 +9314,7 @@
         <PHON kindOf="standard">ar~ɾasɨr~ɾɨʦɨ mamia vavur~ɾu ʦakɨpe kua.</PHON>
         <TRANSL xml:lang="zho">山豬出現,我刺牠.</TRANSL>
         <TRANSL xml:lang="eng">The boar showed up. I stabbed it.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S59.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="571.31" end="577.58"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S59.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="571.31" end="577.58" />
         <W id="kkvNr_hunting1_Muu_S_59_W0">
             <FORM kindOf="original">ara-sʉrʉcʉ</FORM>
             <PHON kindOf="original">ar~ɾa-sɨr~ɾɨʦɨ</PHON>
@@ -9403,7 +9403,7 @@
                 <TRANSL xml:lang="zho">1SG.主格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.44067796610169496</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_60">
         <FORM kindOf="original">koo koo macai rangngʉtʉn tarisi makasua rangngʉtʉn tarisi rangngʉtʉn tarisi.</FORM>
         <PHON kindOf="original">koo koo maʦai r~ɾaŋŋɨtɨn tar~ɾisi makasua r~ɾaŋŋɨtɨn tar~ɾisi r~ɾaŋŋɨtɨn tar~ɾisi.</PHON>
@@ -9411,7 +9411,7 @@
         <PHON kindOf="standard">koo koo maʦai r~ɾaŋŋɨtɨn tar~ɾisi makasua r~ɾaŋŋɨtɨn tar~ɾisi r~ɾaŋŋɨtɨn tar~ɾisi.</PHON>
         <TRANSL xml:lang="zho">就這樣,繩子斷了.</TRANSL>
         <TRANSL xml:lang="eng">Then, the rope broke.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S60.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="577.58" end="595.2"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S60.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="577.58" end="595.2" />
         <W id="kkvNr_hunting1_Muu_S_60_W0">
             <FORM kindOf="original">koo</FORM>
             <PHON kindOf="original">koo</PHON>
@@ -9460,10 +9460,10 @@
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
             <M id="kkvNr_hunting1_Muu_S_60_W2M2">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+                <FORM kindOf="original" />
+                <PHON kindOf="original" />
+                <FORM kindOf="standard" />
+                <PHON kindOf="standard" />
                 <TRANSL xml:lang="eng">die</TRANSL>
                 <TRANSL xml:lang="zho">死</TRANSL>
             </M>
@@ -9612,7 +9612,7 @@
                 <TRANSL xml:lang="zho">繩子</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.45390070921985815</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_61">
         <FORM kindOf="original">maica na ngʉnco pesimaku.</FORM>
         <PHON kindOf="original">maiʦa na ŋɨnʦo pesimaku.</PHON>
@@ -9620,7 +9620,7 @@
         <PHON kindOf="standard">maiʦa na ŋɨnʦo pesimaku.</PHON>
         <TRANSL xml:lang="zho">經過我的腿.</TRANSL>
         <TRANSL xml:lang="eng">The rope passed by my leg.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S61.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="595.2" end="601.52"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S61.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="595.2" end="601.52" />
         <W id="kkvNr_hunting1_Muu_S_61_W0">
             <FORM kindOf="original">ma-ica</FORM>
             <PHON kindOf="original">ma-iʦa</PHON>
@@ -9701,7 +9701,7 @@
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.52</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_62">
         <FORM kindOf="original">nakai mamanʉng akia ngʉnco niaratu'usukee tina'anmaku kapepe vangkavukamaku.</FORM>
         <PHON kindOf="original">nakai mamanɨŋ akia ŋɨnʦo niar~ɾatuʔusukee tinaʔanmaku kapepe vaŋkavukamaku.</PHON>
@@ -9709,7 +9709,7 @@
         <PHON kindOf="standard">nakai mamanɨŋ akia ŋɨnʦo niar~ɾatuʔusukee tinaʔanmaku kapepe vaŋkavukamaku.</PHON>
         <TRANSL xml:lang="zho" notes="還好沒有(受傷).只是碰到我的身體,我的褲子.">還好沒有 .只是碰到我的身體,我的褲子.</TRANSL>
         <TRANSL xml:lang="eng">Luckily, I was not injured. It just touched my body and my pants.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S62.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="601.52" end="615.95"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S62.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="601.52" end="615.95" />
         <W id="kkvNr_hunting1_Muu_S_62_W0">
             <FORM kindOf="original">nakai</FORM>
             <PHON kindOf="original">nakai</PHON>
@@ -9878,7 +9878,7 @@
                 <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5899280575539568</SCORE></S>
     <S id="kkvNr_hunting1_Muu_S_63">
         <FORM kindOf="original">ni niararesikee.</FORM>
         <PHON kindOf="original">ni niar~ɾar~ɾesikee.</PHON>
@@ -9886,7 +9886,7 @@
         <PHON kindOf="standard">ni niar~ɾar~ɾesikee.</PHON>
         <TRANSL xml:lang="zho">褲子破了.</TRANSL>
         <TRANSL xml:lang="eng">The pants was torn.</TRANSL>
-        <AUDIO file="kkvNr_hunting1_Muu_S63.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="615.95" end="619.26"/>
+        <AUDIO file="kkvNr_hunting1_Muu_S63.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_hunting1_Muu.mp3" start="615.95" end="619.26" />
         <W id="kkvNr_hunting1_Muu_S_63_W0">
             <FORM kindOf="original">ni</FORM>
             <PHON kindOf="original">ni</PHON>
@@ -9935,5 +9935,5 @@
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
-    </S>
+    <SCORE>0.5333333333333333</SCORE></S>
 </TEXT>
