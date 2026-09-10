@@ -21,9 +21,9 @@ The current public corpus contains 260 XML files from 16 speakers across Norther
 
 | | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>Northern | Paiwan<br>Southern |
 | --- | --- | --- | --- | --- |
-| Word count | 3,632 | 20,512 | 27,735 | 5,554 |
+| Word count | 3,632 | 20,513 | 27,652 | 5,554 |
 | Total audio | 1.5h | 6.6h | 8.1h | 1.5h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0.9h | 4.8h | 6.3h | 0.9h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0.9h | 4.8h | 6.2h | 0.9h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0.5h | 1.9h | 1.9h | 0.6h |
 | Translated words |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 | 0 |
