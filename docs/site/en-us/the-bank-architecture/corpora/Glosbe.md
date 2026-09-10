@@ -19,6 +19,7 @@ This corpus contains dictionary and translation-memory entries collected from th
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 59,287 | 577 | 116 | 600 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 30,622 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 |
 | Morphologically segmented | 0 | 0 | 0 | 0 |
 | Glossed words | 0 | 0 | 0 | 0 |
 
