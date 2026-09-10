@@ -43,7 +43,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 
 #### By language
 
-| | Truku | Amis | Bunun | bzg | Kavalan | Rukai | Siraya | Paiwan | Puyuma | Pazeh | Thao | Saaroa | Sakizaya | Yami | Atayal | Seediq | Tsou | Kanakanavu | Saisiyat |
+| | Truku | Amis | Bunun | Babuza-Favorlang | Kavalan | Rukai | Siraya | Paiwan | Puyuma | Pazeh | Thao | Saaroa | Sakizaya | Yami | Atayal | Seediq | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Word count | 87,457 | 2,576,608 | 249,946 | 22,107 | 127,016 | 275,642 | 43,195 | 422,746 | 230,655 | 356 | 102,042 | 63,050 | 1,751,644 | 119,295 | 887,478 | 1,009,622 | 88,015 | 114,294 | 101,824 |
 | Total audio | 84.4h | 121.6h | 125.4h | 0 | 53.8h | 154.3h | 0 | 168.9h | 119.9h | 0 | 41.4h | 45.9h | 49.0h | 40.5h | 171.2h | 92.2h | 41.0h | 65.1h | 47.0h |
@@ -59,7 +59,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 
 #### By dialect
 
-| | Amis<br>Coastal | Amis<br>Hengchun | Amis<br>Malan | Amis<br>Southern | Amis<br>Xiuguluan | Amis<br>unknown | Bunun<br>Junqun | Bunun<br>Kaqun | Bunun<br>Luanqun | Bunun<br>Tanqun | Bunun<br>Zhuoqun | bzg<br>Favorlang | Rukai<br>Dawu | Rukai<br>Dona | Rukai<br>Eastern | Rukai<br>Maolin | Rukai<br>Wanshan | Rukai<br>Wutai | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>Northern | Paiwan<br>Southern | Paiwan<br>unknown | Puyuma<br>Jianhe | Puyuma<br>Nanwang | Puyuma<br>Xiqun | Puyuma<br>Zhiben | Pazeh<br>unknown | Atayal<br>FourSeasons | Atayal<br>Sekolik | Atayal<br>Wanda | Atayal<br>Wenshui | Atayal<br>YilanZeaol | Atayal<br>Zeaol | Atayal<br>unknown | Seediq<br>DeluValley | Seediq<br>Duda | Seediq<br>Tegudaya | Seediq<br>unknown |
+| | Amis<br>Coastal | Amis<br>Hengchun | Amis<br>Malan | Amis<br>Southern | Amis<br>Xiuguluan | Amis<br>unknown | Bunun<br>Junqun | Bunun<br>Kaqun | Bunun<br>Luanqun | Bunun<br>Tanqun | Bunun<br>Zhuoqun | Babuza-Favorlang<br>Favorlang | Rukai<br>Dawu | Rukai<br>Dona | Rukai<br>Eastern | Rukai<br>Maolin | Rukai<br>Wanshan | Rukai<br>Wutai | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>Northern | Paiwan<br>Southern | Paiwan<br>unknown | Puyuma<br>Jianhe | Puyuma<br>Nanwang | Puyuma<br>Xiqun | Puyuma<br>Zhiben | Pazeh<br>unknown | Atayal<br>FourSeasons | Atayal<br>Sekolik | Atayal<br>Wanda | Atayal<br>Wenshui | Atayal<br>YilanZeaol | Atayal<br>Zeaol | Atayal<br>unknown | Seediq<br>DeluValley | Seediq<br>Duda | Seediq<br>Tegudaya | Seediq<br>unknown |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Word count | 310,051 | 36,726 | 35,979 | 36,318 | 85,137 | 2,072,397 | 131,540 | 29,637 | 30,240 | 29,700 | 28,829 | 22,107 | 29,959 | 28,651 | 30,129 | 27,713 | 24,434 | 134,756 | 44,069 | 60,270 | 134,637 | 58,923 | 124,847 | 35,216 | 118,867 | 37,017 | 39,555 | 356 | 38,123 | 140,278 | 30,977 | 42,774 | 40,168 | 39,189 | 555,969 | 39,565 | 41,166 | 136,271 | 792,620 |
 | Total audio | 29.0h | 20.4h | 16.8h | 18.5h | 36.6h | 0.4h | 60.3h | 15.9h | 15.8h | 17.1h | 16.2h | 0 | 18.9h | 17.8h | 18.8h | 17.5h | 16.8h | 64.5h | 21.7h | 33.4h | 62.5h | 26.6h | 24.7h | 18.9h | 59.6h | 19.8h | 21.6h | 0 | 18.3h | 72.7h | 17.5h | 21.2h | 20.6h | 19.8h | 1.1h | 23.3h | 20.2h | 48.6h | 0.1h |

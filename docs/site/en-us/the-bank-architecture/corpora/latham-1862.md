@@ -7,7 +7,7 @@ This corpus contains the Formosan lexical data from Robert Gordon Latham's 1862 
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | bzg<br>Favorlang | Siraya |
+| | Babuza-Favorlang<br>Favorlang | Siraya |
 | --- | --- | --- |
 | Word count | 26 | 38 |
 | Total audio | 0 | 0 |
