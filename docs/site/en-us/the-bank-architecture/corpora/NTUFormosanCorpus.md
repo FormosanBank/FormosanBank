@@ -24,7 +24,6 @@ It consists of three main sections:
 | Translated words |  |  |  |  |  |  |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,486 | 23,404 | 16,225 | 17,963 | 8,993 | 5,859 | 20,369 | 10,206 | 15,169 | 10,837 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,531 | 23,396 | 16,288 | 17,961 | 14,036 | 5,859 | 25,298 | 10,206 | 20,334 | 10,837 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Morphologically segmented | 7,528 | 23,463 | 16,286 | 17,292 | 12,968 | 5,861 | 22,803 | 10,200 | 18,854 | 10,849 |
 | Glossed words | 7,528 | 23,463 | 16,286 | 17,292 | 12,968 | 5,861 | 22,803 | 10,195 | 18,847 | 10,848 |
 
