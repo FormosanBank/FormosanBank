@@ -15,7 +15,25 @@ Notes and Issues. No audio is included.
 ***
 
 <!-- CORPUS STATS START -->
+## Corpus Statistics
+
+| | Pazeh<br>unknown |
+| --- | --- |
+| Word count | 356 |
+| Total audio | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
+| Translated words |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 351 |
+| Morphologically segmented | 0 |
+| Glossed words | 0 |
+
+***
+
 <!-- CORPUS STATS END -->
+
 
 ## **Notes and Issues**
 

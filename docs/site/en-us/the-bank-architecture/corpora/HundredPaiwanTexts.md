@@ -17,6 +17,7 @@
 | Translated words |  |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 |
 | Morphologically segmented | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
 | Glossed words | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
 
