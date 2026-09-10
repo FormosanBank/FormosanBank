@@ -34,6 +34,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Campbell-Favorlang](campbell-favorlang.md) (text, English)
 * [Utrecht Manuscript Word List](utrecht-manuscript-word-list.md) (text, English, Dutch)
 * [Huteson (2003) Rukai Survey](huteson-rukai-survey.md) (text, English, Rukai, word and morpheme glosses)
+* [Sato Pazeh Songs](sato-pazeh-songs.md) (text, Japanese)
 
 ***
 
