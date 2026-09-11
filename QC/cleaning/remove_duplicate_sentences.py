@@ -49,7 +49,10 @@ if str(_THIS.parents[2]) not in sys.path:
     sys.path.insert(0, str(_THIS.parents[2]))
 from QC.corpus_counts import is_reproduction_path  # noqa: E402
 from QC.xml_forms import find_base_form  # noqa: E402
-from validate_duplicate_sentences import normalize_for_comparison  # noqa: E402
+from validate_duplicate_sentences import (  # noqa: E402
+    normalize_for_comparison,
+    normalize_gloss_for_comparison,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -173,10 +176,20 @@ def _s_id_sort_key(sid: str):
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
 
-def _transl_key(transl) -> tuple[str, str]:
+def _transl_key(transl) -> tuple[str, tuple[str, ...]]:
+    """This TRANSL's identity for equivalence, never for output.
+
+    The gloss is keyed on its bag of words, so the same gloss typeset twice -
+    a space after a slash, the alternates listed the other way round - is one
+    key. See ``normalize_gloss_for_comparison`` for what that costs.
+
+    Used twice, and both uses want the loose key: deciding whether two S are
+    the same sentence, and deciding whether a removed S carried a gloss the
+    survivor lacks. A survivor glossed ``move slightly, stir`` should not
+    collect ``stir, move slightly`` as a ver="alt" variant of itself.
+    """
     lang = (transl.get(_XML_LANG) or "").strip().lower()
-    text = " ".join("".join(transl.itertext()).split())
-    return (lang, text)
+    return (lang, normalize_gloss_for_comparison("".join(transl.itertext())))
 
 
 def apply_removals(removals):
