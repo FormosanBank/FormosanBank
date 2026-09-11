@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT xml:lang="ami" citation="Wu, Joy. 2006. The analysis of pa- verbs in Amis. Paper presented at the Tenth International Conference on Austronesian Linguistics, 17-20 January 2006, Puerto Princesa City, Palawan, Philippines." BibTeX_citation="@inproceedings{wu2006pa, author={Wu, Joy}, title={The analysis of pa- verbs in Amis}, booktitle={Tenth International Conference on Austronesian Linguistics}, year={2006}, address={Puerto Princesa City, Palawan, Philippines}}" copyright="CC BY-NC-SA 4.0" id="wu-2006-amis-pa-verbs" dialect="Coastal">
+<TEXT xml:lang="ami" citation="Wu, Joy. 2006. The analysis of pa- verbs in Amis. Paper presented at the Tenth International Conference on Austronesian Linguistics, 17-20 January 2006, Puerto Princesa City, Palawan, Philippines." BibTeX_citation="@inproceedings{wu2006pa, author={Wu, Joy}, title={The analysis of pa- verbs in Amis}, booktitle={Tenth International Conference on Austronesian Linguistics}, year={2006}, address={Puerto Princesa City, Palawan, Philippines}}" copyright="CC BY-NC-SA 4.0" source="https://sil-philippines-languages.org/ical/papers/wu_joy-pa%20verbs.pdf; source PDF sha256 9ba94321d9c8e926cf8cca3b0b81814400d2bb7194ba48574d77ad54490308f5" id="wu-2006-amis-pa-verbs" dialect="Coastal">
     <S id="s18a">
         <FORM kindOf="original">Papinanum ∅-ci ina ci mamaan.</FORM>
         <PHON kindOf="original">papinanum ʦi ina ʦi mamaan</PHON>
@@ -1575,7 +1575,7 @@
             <FORM kindOf="standard">Ma-pa-fli</FORM>
             <PHON kindOf="standard">mapafɾi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">UV-CaU-give</TRANSL>
-            <TRANSL xml:lang="eng" ver="alt" kindOf="standard">UV-CAU-give</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">UV-CAU-give</TRANSL>
             <M id="s32bw0m0">
                 <FORM kindOf="original">Ma</FORM>
                 <PHON kindOf="original">ma</PHON>
@@ -1589,7 +1589,7 @@
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">CaU</TRANSL>
-                <TRANSL xml:lang="eng" ver="alt" kindOf="standard">CAU</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="standard">CAU</TRANSL>
             </M>
             <M id="s32bw0m2">
                 <FORM kindOf="original">fli</FORM>
@@ -2295,15 +2295,15 @@
     </S>
     <S id="s36a">
         <FORM kindOf="original">Mana'ay kaku pananum tu sayta.</FORM>
-        <PHON kindOf="original">manaʔaj kaku pananum tu sajta</PHON>
-        <FORM kindOf="standard">Mana^ay kako pananom to sayta.</FORM>
-        <PHON kindOf="standard">manaʔaj kak[o|u] panan[o|u]m t[o|u] sajta</PHON>
+        <PHON kindOf="original">manaʡaj kaku pananum tu sajta</PHON>
+        <FORM kindOf="standard">Mana'ay kako pananom to sayta.</FORM>
+        <PHON kindOf="standard">manaʡaj kak[o|u] panan[o|u]m t[o|u] sajta</PHON>
         <TRANSL xml:lang="eng">I don't want to add water into the soda.</TRANSL>
         <W id="s36aw0">
             <FORM kindOf="original">Ma-na'ay</FORM>
-            <PHON kindOf="original">manaʔaj</PHON>
-            <FORM kindOf="standard">Ma-na^ay</FORM>
-            <PHON kindOf="standard">manaʔaj</PHON>
+            <PHON kindOf="original">manaʡaj</PHON>
+            <FORM kindOf="standard">Ma-na'ay</FORM>
+            <PHON kindOf="standard">manaʡaj</PHON>
             <TRANSL xml:lang="eng">MA-reluctant</TRANSL>
             <M id="s36aw0m0">
                 <FORM kindOf="original">Ma</FORM>
@@ -2314,9 +2314,9 @@
             </M>
             <M id="s36aw0m1">
                 <FORM kindOf="original">na'ay</FORM>
-                <PHON kindOf="original">naʔaj</PHON>
-                <FORM kindOf="standard">na^ay</FORM>
-                <PHON kindOf="standard">naʔaj</PHON>
+                <PHON kindOf="original">naʡaj</PHON>
+                <FORM kindOf="standard">na'ay</FORM>
+                <PHON kindOf="standard">naʡaj</PHON>
                 <TRANSL xml:lang="eng">reluctant</TRANSL>
             </M>
         </W>
@@ -2391,40 +2391,40 @@
             </M>
         </W>
     </S>
-    <S id="s36aalt">
+    <S id="s36a-opt">
         <FORM kindOf="original">Mana'ay kaku pananum i sayta.</FORM>
-        <PHON kindOf="original">manaʔaj kaku pananum i sajta</PHON>
-        <FORM kindOf="standard">Mana^ay kako pananom i sayta.</FORM>
-        <PHON kindOf="standard">manaʔaj kak[o|u] panan[o|u]m i sajta</PHON>
+        <PHON kindOf="original">manaʡaj kaku pananum i sajta</PHON>
+        <FORM kindOf="standard">Mana'ay kako pananom i sayta.</FORM>
+        <PHON kindOf="standard">manaʡaj kak[o|u] panan[o|u]m i sajta</PHON>
         <TRANSL xml:lang="eng">I don't want to add water into the soda.</TRANSL>
-        <W id="s36aaltw0">
+        <W id="s36a-optw0">
             <FORM kindOf="original">Ma-na'ay</FORM>
-            <PHON kindOf="original">manaʔaj</PHON>
-            <FORM kindOf="standard">Ma-na^ay</FORM>
-            <PHON kindOf="standard">manaʔaj</PHON>
+            <PHON kindOf="original">manaʡaj</PHON>
+            <FORM kindOf="standard">Ma-na'ay</FORM>
+            <PHON kindOf="standard">manaʡaj</PHON>
             <TRANSL xml:lang="eng">MA-reluctant</TRANSL>
-            <M id="s36aaltw0m0">
+            <M id="s36a-optw0m0">
                 <FORM kindOf="original">Ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">Ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="eng">MA</TRANSL>
             </M>
-            <M id="s36aaltw0m1">
+            <M id="s36a-optw0m1">
                 <FORM kindOf="original">na'ay</FORM>
-                <PHON kindOf="original">naʔaj</PHON>
-                <FORM kindOf="standard">na^ay</FORM>
-                <PHON kindOf="standard">naʔaj</PHON>
+                <PHON kindOf="original">naʡaj</PHON>
+                <FORM kindOf="standard">na'ay</FORM>
+                <PHON kindOf="standard">naʡaj</PHON>
                 <TRANSL xml:lang="eng">reluctant</TRANSL>
             </M>
         </W>
-        <W id="s36aaltw1">
+        <W id="s36a-optw1">
             <FORM kindOf="original">kaku</FORM>
             <PHON kindOf="original">kaku</PHON>
             <FORM kindOf="standard">kako</FORM>
             <PHON kindOf="standard">kak[o|u]</PHON>
             <TRANSL xml:lang="eng">1S.NOM</TRANSL>
-            <M id="s36aaltw1m0">
+            <M id="s36a-optw1m0">
                 <FORM kindOf="original">kaku</FORM>
                 <PHON kindOf="original">kaku</PHON>
                 <FORM kindOf="standard">kako</FORM>
@@ -2432,20 +2432,20 @@
                 <TRANSL xml:lang="eng">1S.NOM</TRANSL>
             </M>
         </W>
-        <W id="s36aaltw2">
+        <W id="s36a-optw2">
             <FORM kindOf="original">pa-nanum</FORM>
             <PHON kindOf="original">pananum</PHON>
             <FORM kindOf="standard">pa-nanom</FORM>
             <PHON kindOf="standard">panan[o|u]m</PHON>
             <TRANSL xml:lang="eng">CAU-water</TRANSL>
-            <M id="s36aaltw2m0">
+            <M id="s36a-optw2m0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="eng">CAU</TRANSL>
             </M>
-            <M id="s36aaltw2m1">
+            <M id="s36a-optw2m1">
                 <FORM kindOf="original">nanum</FORM>
                 <PHON kindOf="original">nanum</PHON>
                 <FORM kindOf="standard">nanom</FORM>
@@ -2453,13 +2453,13 @@
                 <TRANSL xml:lang="eng">water</TRANSL>
             </M>
         </W>
-        <W id="s36aaltw3">
+        <W id="s36a-optw3">
             <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
             <FORM kindOf="standard">i</FORM>
             <PHON kindOf="standard">i</PHON>
             <TRANSL xml:lang="eng">PREP</TRANSL>
-            <M id="s36aaltw3m0">
+            <M id="s36a-optw3m0">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
@@ -2467,13 +2467,13 @@
                 <TRANSL xml:lang="eng">PREP</TRANSL>
             </M>
         </W>
-        <W id="s36aaltw4">
+        <W id="s36a-optw4">
             <FORM kindOf="original">sayta</FORM>
             <PHON kindOf="original">sajta</PHON>
             <FORM kindOf="standard">sayta</FORM>
             <PHON kindOf="standard">sajta</PHON>
             <TRANSL xml:lang="eng">soda</TRANSL>
-            <M id="s36aaltw4m0">
+            <M id="s36a-optw4m0">
                 <FORM kindOf="original">sayta</FORM>
                 <PHON kindOf="original">sajta</PHON>
                 <FORM kindOf="standard">sayta</FORM>
