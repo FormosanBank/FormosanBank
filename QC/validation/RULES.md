@@ -44,7 +44,7 @@ the validator names on its `Details:` line, never to the terminal.
 | V073 | `phon_non_empty` | HARD | file | PHON must have non-empty text content. |
 | V081 | `text_id_unique_across_published_corpora` | HARD | corpus | a TEXT/@id in the corpus-under-test must not collide with any TEXT/@id in published Corpora/. Cross-file rule; consults the CorpusIndex's published_ids. |
 | V084 | `transl_ver_value_in_allowlist` | HARD | file | when TRANSL/@ver is set, its value must be in the project allowlist. |
-| V085 | `multi_same_lang_transl_requires_ver` | HARD | file | when a parent has multiple TRANSL children sharing the same xml:lang, at least one must carry a `ver` attribute to discriminate them. |
+| V085 | `multi_same_lang_transl_requires_ver` | HARD | file | when a parent has multiple TRANSL children sharing the same xml:lang *and* the same `kindOf`, at least one must carry a `ver` attribute to discriminate them. |
 | V144 | `M_less_W_in_parsed_sentence` | SOFT | file | a morphologically parsed sentence with M-less Ws. |
 | V145 | `degenerate_all_single_M_tier` | SOFT | file | M level present but the file carries no parsing. |
 | V148 | `W_less_S_in_segmented_file` | SOFT | file | a partially word-segmented file. |
