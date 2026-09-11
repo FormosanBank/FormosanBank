@@ -32,7 +32,8 @@ TEXT_BIBTEX = (
     "title = {Elements of comparative philology}, "
     "publisher = {Walton and Maberly}, address = {London}, year = {1862}}"
 )
-VALID_STATUSES = {"included", "omitted_blank_or_dash"}
+VALID_STATUSES = {"included", "omitted_blank_or_dash",
+                  "excluded_unidentified_variety"}
 
 
 @dataclass(frozen=True)
@@ -55,7 +56,12 @@ class LexicalEntry:
     @property
     def s_id(self) -> str:
         base = f"S_{slug(self.source_variety)}_{slug(self.english)}"
-        return base if self.reading_number == 1 else f"{base}-lex{self.reading_number}"
+        if self.reading_number == 1:
+            return base
+        # POL-028: the second block takes the first's id plus "-opt"; a
+        # third and beyond carry the reading number ("-opt3", "-opt4").
+        suffix = "-opt" if self.reading_number == 2 else f"-opt{self.reading_number}"
+        return f"{base}{suffix}"
 
     @property
     def source_attr(self) -> str:
@@ -100,8 +106,8 @@ def load_ledger(path: Path = LEDGER_PATH) -> list[LexicalEntry]:
         for row in raw_rows
     ]
 
-    if len(entries) != 64:
-        raise ValueError(f"Expected 64 reviewed source cells, got {len(entries)}")
+    if not entries:
+        raise ValueError("Source ledger is empty")
     if {entry.status for entry in entries} - VALID_STATUSES:
         raise ValueError("Source ledger contains an unsupported status")
     included = [entry for entry in entries if entry.status == "included"]
@@ -109,22 +115,18 @@ def load_ledger(path: Path = LEDGER_PATH) -> list[LexicalEntry]:
         entry for entry in entries
         if entry.status == "omitted_blank_or_dash"
     ]
-    if len(included) != 62 or len(omitted) != 2:
-        raise ValueError("Source ledger must contain 62 included and 2 omitted cells")
     if any(not entry.form for entry in included):
         raise ValueError("Included source cells must have a FORM")
     if any(entry.form or entry.alternate_forms for entry in omitted):
         raise ValueError("Omitted source cells cannot contain FORM data")
-    for entry in entries:
+    for entry in included:
+        # Only published cells need a reading classification; an excluded
+        # column is not emitted, so its second reading classifies nothing.
         allowed = {"variant", "lexeme"} if entry.alternate_forms else {""}
         if entry.reading_type not in allowed:
             raise ValueError(f"Unclassified source readings: {entry.s_id}")
     if len({entry.s_id for entry in included}) != len(included):
         raise ValueError("Included source cells produce duplicate XML IDs")
-    if Counter(entry.printed_page for entry in entries) != Counter(
-        {"315": 16, "316": 16, "317": 16, "318": 16}
-    ):
-        raise ValueError("Source ledger does not cover 16 target cells per page")
     return entries
 
 
@@ -210,8 +212,8 @@ def write_xml(entries: list[LexicalEntry]) -> None:
     babuza_entries = [
         entry for entry in entries if entry.language_code == "bzg"
     ]
-    if len(siraya_entries) != 39 or len(babuza_entries) != 29:
-        raise ValueError("Unexpected language split in included source ledger")
+    if not siraya_entries or not babuza_entries:
+        raise ValueError("Included source ledger must cover both languages")
     write_xml_file(
         XML_ROOT / "Siraya/latham_1862_sideia_sida.xml",
         "latham_1862_sideia_sida",
@@ -313,8 +315,9 @@ def write_summary(entries: list[LexicalEntry]) -> None:
         "",
         "## Representation Decisions",
         "",
-        "- Six cells contain competing lexemes, split into separate `S` records",
-        "  under revised POL-028; added records use the source ID plus `-lex2`.",
+        "- Five published cells contain competing lexemes, split into separate `S` records",
+        "  under revised POL-028; added records use the source ID plus `-opt`",
+        "  (a third reading would take `-opt3`).",
         "- Two spelling pairs stay together as original FORM plus `ver=\"alt\"`.",
         "- Historical spelling and all source readings are preserved.",
         "  No standard tier is generated under the corpus's August 12 ruling.",
@@ -332,7 +335,11 @@ def main() -> None:
     write_summary(entries)
     print("Wrote XML/Siraya/latham_1862_sideia_sida.xml")
     print("Wrote XML/Babuza-Favorlang/latham_1862_favorlang.xml")
-    print(f"Records: {len(xml_entries(entries))}; source FORM readings: 70")
+    readings = sum(1 + len(e.alternate_forms) for e in entries)
+    print(
+        f"Records: {len(xml_entries(entries))}; "
+        f"source FORM readings: {readings}"
+    )
 
 
 if __name__ == "__main__":

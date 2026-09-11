@@ -14,6 +14,11 @@ sys.path.insert(0, str(ROOT / "CodeAndDocs"))
 
 import build_lexical_xml as build  # noqa: E402
 
+_BANK = ROOT.parents[1]
+if str(_BANK) not in sys.path:
+    sys.path.insert(0, str(_BANK))
+from QC.xml_forms import base_form_text  # noqa: E402
+
 
 SOURCE_CHECKS = ROOT / "CodeAndDocs" / "source_checks.tsv"
 REVIEWER_FEEDBACK = ROOT / "CodeAndDocs" / "reviewer_feedback.tsv"
@@ -35,10 +40,13 @@ class SourceLedgerTests(unittest.TestCase):
 
     def test_source_ledger_has_complete_target_grid(self) -> None:
         self.assertEqual(len(self.ledger), 64)
-        self.assertEqual(len(self.included), 62)
+        # The Gabelentz "Sida" column -- 22 occupied cells and 2 dashes --
+        # is excluded rather than deleted: the ledger still records every
+        # cell of the printed grid, and says why each is not published.
+        self.assertEqual(len(self.included), 40)
         self.assertEqual(
             Counter(entry.status for entry in self.ledger),
-            Counter({"included": 62, "omitted_blank_or_dash": 2}),
+            Counter({"included": 40, "excluded_unidentified_variety": 24}),
         )
         self.assertEqual(
             Counter(entry.printed_page for entry in self.ledger),
@@ -58,7 +66,7 @@ class SourceLedgerTests(unittest.TestCase):
         for entry in records:
             sentence = self.sentences[entry.s_id]
             self.assertEqual(
-                sentence.findtext("FORM[@kindOf='original']"),
+                base_form_text(sentence, "original"),
                 entry.form,
             )
             self.assertIsNone(sentence.find("FORM[@kindOf='standard']"))
@@ -81,14 +89,24 @@ class SourceLedgerTests(unittest.TestCase):
             )
             self.assertEqual(sentence.get("source"), entry.source_attr)
 
-    def test_dash_cells_are_terminally_omitted(self) -> None:
-        omitted = {
+    def test_the_sida_column_is_excluded_whole(self) -> None:
+        """Gabelentz prints the column as "Sida"; identifying it with the
+        "Sideia" of the Klaproth/Vander Vlis table is an assumption
+        FormosanBank does not make, so none of it is published under
+        fos. The two dash cells are inside that column."""
+        excluded = {
             entry.s_id
             for entry in self.ledger
-            if entry.status == "omitted_blank_or_dash"
+            if entry.status == "excluded_unidentified_variety"
         }
-        self.assertEqual(omitted, {"S_sida_forehead", "S_sida_beard"})
-        self.assertTrue(omitted.isdisjoint(self.sentences))
+        self.assertEqual(len(excluded), 24)
+        self.assertTrue(all(e.startswith("S_sida_") for e in excluded))
+        self.assertIn("S_sida_forehead", excluded)
+        self.assertIn("S_sida_beard", excluded)
+        self.assertTrue(excluded.isdisjoint(self.sentences))
+        self.assertFalse(
+            [s for s in self.sentences if s.startswith("S_sida_")]
+        )
 
     def test_source_spelling_variants_keep_their_tier(self) -> None:
         alternates = [
@@ -100,7 +118,7 @@ class SourceLedgerTests(unittest.TestCase):
         self.assertEqual({form.text for form in alternates}, {"soa", "tutta"})
         self.assertEqual(
             sum(1 + len(entry.alternate_forms) for entry in self.included),
-            70,
+            47,
         )
         for sentence in self.sentences.values():
             self.assertIsNone(sentence.find("FORM[@kindOf='alternate']"))
@@ -113,7 +131,10 @@ class SourceLedgerTests(unittest.TestCase):
             self.assertIsNone(sentence.find("W"))
             self.assertIsNone(sentence.find("M"))
 
-    def test_twelve_independent_source_checks_match_xml(self) -> None:
+    def test_independent_source_checks_match_xml(self) -> None:
+        """The twelve spot checks stay in the file as transcription
+        evidence even where their cell is no longer published -- three
+        are Sida. XML is asserted for the nine that are."""
         with SOURCE_CHECKS.open(encoding="utf-8", newline="") as handle:
             checks = list(csv.DictReader(handle, delimiter="\t"))
         self.assertEqual(len(checks), 12)
@@ -121,21 +142,23 @@ class SourceLedgerTests(unittest.TestCase):
             {check["printed_page"] for check in checks},
             {"315", "316", "317", "318"},
         )
-        for check in checks:
+        published = [c for c in checks if not c["xml_id"].startswith("S_sida_")]
+        self.assertEqual(len(published), 9)
+        for check in published:
             sentence = self.sentences[check["xml_id"]]
             alternates = " | ".join(
                 form.text or ""
                 for form in sentence.findall("FORM[@kindOf='original'][@ver='alt']")
             )
             self.assertEqual(
-                sentence.findtext("FORM[@kindOf='original']"),
+                base_form_text(sentence, "original"),
                 check["expected_original_form"],
             )
             self.assertEqual(
                 alternates,
                 check["expected_alternate_forms"],
             )
-            lexeme = self.sentences.get(check["xml_id"] + "-lex2")
+            lexeme = self.sentences.get(check["xml_id"] + "-opt")
             self.assertEqual(
                 lexeme.findtext("FORM") if lexeme is not None else "",
                 check["expected_lexeme_forms"],
@@ -152,60 +175,60 @@ class SourceLedgerTests(unittest.TestCase):
             "S_favorlang_hair": ("tâu", ("ratta",)),
             "S_favorlang_ear": ("chárrina", ()),
             "S_favorlang_mouth": ("ranied", ("sabbacha",)),
-            "S_sida_mouth": ("motaus", ()),
             "S_favorlang_neck": ("bokkir", ("arribórribon",)),
             "S_favorlang_breast": ("arrabis", ("zido",)),
             "S_favorlang_belly": ("cháan", ()),
             "S_favorlang_heart": ("totto", ("tutta",)),
-            "S_sida_foot": ("rahpal", ("tiltil",)),
         }
         for record_id, (original, alternates) in expected.items():
             sentence = self.sentences[record_id]
             self.assertEqual(
-                sentence.findtext("FORM[@kindOf='original']"),
+                base_form_text(sentence, "original"),
                 original,
             )
             readings = [form.text for form in sentence.findall("FORM[@ver='alt']")]
-            lexeme = self.sentences.get(record_id + "-lex2")
+            lexeme = self.sentences.get(record_id + "-opt")
             if lexeme is not None:
                 readings.append(lexeme.findtext("FORM"))
             self.assertEqual(tuple(readings), alternates)
 
-    def test_six_source_lexemes_have_separate_records(self) -> None:
-        # Printed pp. 316-318; revised POL-028 supersedes the old FORM grouping.
+    def test_five_source_lexemes_have_separate_records(self) -> None:
+        # Printed pp. 316-318. POL-028: a competing lexeme is its own S
+        # block, the second taking the first's id plus "-opt". The sixth
+        # case, Sida Foot, left with the Sida column.
         expected = {
             "S_favorlang_man": ("bahosa", "sjam", "man"),
             "S_favorlang_hair": ("tâu", "ratta", "hair"),
             "S_favorlang_mouth": ("ranied", "sabbacha", "mouth"),
             "S_favorlang_neck": ("bokkir", "arribórribon", "neck"),
             "S_favorlang_breast": ("arrabis", "zido", "breast"),
-            "S_sida_foot": ("rahpal", "tiltil", "foot"),
         }
-        self.assertEqual(len(self.sentences), 68)
+        self.assertEqual(len(self.sentences), 45)
         self.assertEqual(
-            {key for key in self.sentences if "-lex" in key},
-            {key + "-lex2" for key in expected},
+            {key for key in self.sentences if "-opt" in key},
+            {key + "-opt" for key in expected},
         )
+        self.assertFalse([k for k in self.sentences if "-lex" in k])
         for record_id, (base, second, translation) in expected.items():
-            for suffix, form in [("", base), ("-lex2", second)]:
+            for suffix, form in [("", base), ("-opt", second)]:
                 sentence = self.sentences[record_id + suffix]
                 self.assertEqual(len(sentence.findall("FORM")), 1)
                 self.assertEqual(sentence.find("FORM").attrib, {"kindOf": "original"})
-                self.assertEqual(sentence.findtext("FORM"), form)
+                self.assertEqual(base_form_text(sentence, "original"), form)
                 self.assertEqual(sentence.findtext("TRANSL"), translation)
                 self.assertEqual(sentence.get("source"), self.sentences[record_id].get("source"))
 
     def test_correcting_a_reading_does_not_change_its_identifier(self) -> None:
-        entry = next(row for row in self.included if row.s_id == "S_sida_mouth")
+        entry = next(row for row in self.included if row.s_id == "S_favorlang_ear")
         self.assertEqual(
             replace(entry, form="corrected reading").s_id,
-            "S_sida_mouth",
+            "S_favorlang_ear",
         )
         entry = next(row for row in self.included if row.s_id == "S_favorlang_neck")
         corrected = replace(entry, alternate_forms=("corrected reading",))
         self.assertEqual(
             [row.s_id for row in build.xml_entries([corrected])],
-            ["S_favorlang_neck", "S_favorlang_neck-lex2"],
+            ["S_favorlang_neck", "S_favorlang_neck-opt"],
         )
 
     def test_generator_does_not_restore_prohibited_derived_tiers(self) -> None:
@@ -237,9 +260,17 @@ class SourceLedgerTests(unittest.TestCase):
                 }
             ),
         )
+        # Boese's review covered cells that are no longer published --
+        # the Sida column left under a later ruling. The rows stay: they
+        # record what a reviewer found in the source, which does not stop
+        # being true when a column is withdrawn. Only published records
+        # are asserted against the XML.
         for row in feedback:
-            self.assertIn(row["xml_id"], self.sentences)
             self.assertTrue(row["resolution"].startswith("Resolved:"))
+            if row["xml_id"].startswith("S_sida_"):
+                self.assertNotIn(row["xml_id"], self.sentences)
+                continue
+            self.assertIn(row["xml_id"], self.sentences)
 
 
 if __name__ == "__main__":

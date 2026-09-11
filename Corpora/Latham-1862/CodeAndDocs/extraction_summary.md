@@ -14,9 +14,9 @@ omitted.
 
 ## Counts
 
-- Lexical records emitted: 68
-- Source FORM readings emitted: 70
-- Source varieties represented: 4
+- Lexical records emitted: 45
+- Source FORM readings emitted: 47
+- Source varieties represented: 3
 
 ## Counts By Source Variety
 
@@ -24,7 +24,6 @@ omitted.
 | --- | --- |
 | Favorlang | 29 |
 | Klaproth Formosan Sideia | 8 |
-| Sida | 23 |
 | Vander Vlis Sideia | 8 |
 
 ## Counts By Language
@@ -32,12 +31,13 @@ omitted.
 | Language | Records |
 | --- | --- |
 | Babuza-Favorlang | 29 |
-| Siraya | 39 |
+| Siraya | 16 |
 
 ## Representation Decisions
 
-- Six cells contain competing lexemes, split into separate `S` records
-  under revised POL-028; added records use the source ID plus `-lex2`.
+- Five published cells contain competing lexemes, split into separate `S` records
+  under revised POL-028; added records use the source ID plus `-opt`
+  (a third reading would take `-opt3`).
 - Two spelling pairs stay together as original FORM plus `ver="alt"`.
 - Historical spelling and all source readings are preserved.
   No standard tier is generated under the corpus's August 12 ruling.

@@ -13,6 +13,11 @@ from lxml import etree
 
 from build_lexical_xml import LexicalEntry, included_entries, load_ledger, xml_entries
 
+_BANK = Path(__file__).resolve().parents[3]
+if str(_BANK) not in sys.path:
+    sys.path.insert(0, str(_BANK))
+from QC.xml_forms import iter_base_forms  # noqa: E402
+
 
 ROOT = Path(__file__).resolve().parents[1]
 EXTRACTION_REPORT = ROOT / "CodeAndDocs" / "extraction_report.csv"
@@ -30,19 +35,23 @@ PAGE_SCOPE = [
     ),
     (
         "315",
-        "Sideia comparison table: all 16 Formosan cells included.",
+        "Sideia comparison table: all 16 Formosan cells published "
+        "(Klaproth Sideia 8, Vander Vlis Sideia 8).",
     ),
     (
         "316",
-        "Gabelentz table: 15 Formosan cells included; Sida Forehead dash omitted.",
+        "Gabelentz table: 8 Favorlang cells published; the 8 Sida cells "
+        "excluded (one a dash).",
     ),
     (
         "317",
-        "Gabelentz table: 15 Formosan cells included; Sida Beard dash omitted.",
+        "Gabelentz table: 8 Favorlang cells published; the 8 Sida cells "
+        "excluded (one a dash).",
     ),
     (
         "318",
-        "Gabelentz table: all 16 Formosan cells included.",
+        "Gabelentz table: 8 Favorlang cells published; the 8 Sida cells "
+        "excluded.",
     ),
     (
         "319",
@@ -67,10 +76,7 @@ def read_xml() -> dict[str, dict[str, object]]:
         root = etree.parse(path).getroot()
         for sentence in root.findall("S"):
             record_id = sentence.get("id", "")
-            originals = [
-                form for form in sentence.findall("FORM[@kindOf='original']")
-                if form.get("ver") is None
-            ]
+            originals = list(iter_base_forms(sentence, "original"))
             standards = sentence.findall("FORM[@kindOf='standard']")
             alternates = sentence.findall("FORM[@kindOf='original'][@ver='alt']")
             translations = sentence.findall("TRANSL")
@@ -279,7 +285,7 @@ def write_csv(rows: list[dict[str, str]]) -> None:
         writer.writerows(rows)
 
 
-def write_markdown(counts: Counter[str]) -> None:
+def write_markdown(counts: Counter[str], published: int, excluded: int) -> None:
     unresolved = sum(
         count
         for status, count in counts.items()
@@ -296,10 +302,9 @@ def write_markdown(counts: Counter[str]) -> None:
         "",
         "## Result",
         "",
-        "- Expected included Formosan cells: 62",
+        f"- Published Formosan cells: {published}",
         f"- Included cells matching ledger, report, and XML: {counts['PASS']}",
-        "- Blank/dash Formosan cells intentionally omitted: "
-        f"{counts['OMITTED_BLANK_OR_DASH']}",
+        f"- Cells excluded with the Sida column: {excluded}",
         f"- Unresolved mismatches or extras: {unresolved}",
         "- Exact independent spot checks: 12 in `source_checks.tsv`",
         f"- CSV detail: `{AUDIT_CSV.relative_to(ROOT)}`",
@@ -331,16 +336,18 @@ def main() -> int:
     )
     args = parser.parse_args()
     rows, counts = audit_rows()
+    ledger = load_ledger()
+    included = included_entries(ledger)
     if args.write_reports:
         write_csv(rows)
-        write_markdown(counts)
+        write_markdown(counts, len(included), len(ledger) - len(included))
     unresolved = sum(
         count
         for status, count in counts.items()
         if status not in {"PASS", "OMITTED_BLANK_OR_DASH"}
     )
-    print(f"PASS source cells: {counts['PASS']}/62")
-    print(f"OMITTED blank/dash cells: {counts['OMITTED_BLANK_OR_DASH']}")
+    print(f"PASS source cells: {counts['PASS']}/{len(included)}")
+    print(f"EXCLUDED (Sida column, not published): {len(ledger) - len(included)}")
     print(f"Unresolved mismatches/extras: {unresolved}")
     if args.write_reports:
         print(f"Wrote {AUDIT_CSV.relative_to(ROOT)}")

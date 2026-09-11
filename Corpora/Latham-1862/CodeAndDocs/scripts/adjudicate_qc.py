@@ -12,7 +12,11 @@ from dataclasses import asdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+_BANK = Path(__file__).resolve().parents[4]
+if str(_BANK) not in sys.path:
+    sys.path.insert(0, str(_BANK))
 from build_lexical_xml import included_entries, load_ledger, xml_entries  # noqa: E402
+from QC.xml_forms import base_form_text, iter_base_forms  # noqa: E402
 
 EXPECTED_XML_PATHS = {
     "bzg": "Babuza-Favorlang/latham_1862_favorlang.xml",
@@ -73,14 +77,21 @@ def main() -> None:
             raise SystemExit(f"Unexpected language/path mapping: {path}")
         for sentence in root.findall("S"):
             record_id = sentence.get("id", "")
-            forms = [form.text or "" for form in sentence.findall("FORM")]
+            # Base first, then its variants -- not document order. POL-020
+            # does not order FORM siblings, so a positional comparison
+            # against the ledger would depend on how the file happens to
+            # be written.
+            bases = [f.text or "" for f in iter_base_forms(sentence, "original")]
+            variants = [f.text or "" for f in sentence.findall("FORM")
+                        if f.get("ver") is not None]
+            forms = bases + variants
             if not record_id or record_id in xml:
                 raise SystemExit(f"Duplicate or empty XML ID: {record_id}")
             xml[record_id] = {
                 "file": str(path.relative_to(xml_root)),
                 "forms": forms,
-                "original": sentence.findtext("FORM[@kindOf='original']", ""),
-                "standard": sentence.findtext("FORM[@kindOf='standard']", ""),
+                "original": base_form_text(sentence, "original"),
+                "standard": base_form_text(sentence, "standard"),
                 "has_w": sentence.find("W") is not None,
             }
     if set(xml) != set(source_map):
@@ -145,9 +156,11 @@ def main() -> None:
                 "rationale": "Unexpected finding; inspect the XML and source.",
             })
 
+    # However many groups the review file documents -- none, since the
+    # Sida column left and both former groups needed a Sida record. The
+    # count is not asserted: a corpus that gains or loses a duplicate
+    # should update the review file, not trip a constant here.
     duplicate_review = read_csv(args.duplicate_review)
-    if len(duplicate_review) != 2:
-        raise SystemExit("Duplicate review must contain two source-backed groups")
     for filename, tier, form_field in [
         ("duplicate_original_findings.csv", "original", "normalized_original"),
     ]:

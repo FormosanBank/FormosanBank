@@ -48,11 +48,11 @@ run glosses "$PY" "$FB/QC/validation/validate_glosses.py" by_path \
 run dialect "$PY" "$FB/QC/validation/validate_dialect.py" --path "$ROOT/XML"
 run duplicates "$PY" "$FB/QC/validation/validate_duplicate_sentences.py" by_path \
     --path "$ROOT/XML" --tier original --output "$OUTPUT_DIR/duplicate_original_findings.csv"
-run orthography_extract "$PY" "$HERE/scripts/extract_orthography_profiles.py" \
-    --extractor "$FB/QC/orthography/orthography_extract.py" \
-    --xml-root "$ROOT/XML" --output-dir "$OUTPUT_DIR/orthography"
-run orthography "$PY" "$FB/QC/validation/validate_orthography.py" \
-    --o_info "$OUTPUT_DIR/orthography" --reference "$FB/QC/validation/reference"
+# No orthography extraction or comparison: POL-058. standards.csv leaves
+# standard_orthography blank for both Babuza-Favorlang and Siraya, and
+# neither has an inventory under QC/validation/reference/, so
+# validate_orthography.py had nothing to compare against and skipped
+# both. The extraction before it wrote profiles nothing read.
 run registries "$PY" "$FB/QC/validation/validate_registries.py" \
     --repo-root "$FB" --csv "$OUTPUT_DIR/validate_registries.csv"
 run port "$PY" "$FB/QC/validation/validate_port_readiness.py" \
@@ -61,5 +61,5 @@ run review "$PY" "$HERE/scripts/adjudicate_qc.py" \
     --run-dir "$OUTPUT_DIR" --source-ledger "$HERE/source_ledger.tsv" \
     --duplicate-review "$HERE/duplicate_group_review.csv" --xml-root "$ROOT/XML"
 
-# No audio, standard orthography, or standard vocabulary tier exists to validate.
+# No audio, and no standard orthography or vocabulary tier to validate.
 exit "$failed"
