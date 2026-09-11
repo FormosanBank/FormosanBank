@@ -1091,3 +1091,33 @@ Enforced by `tests/utilities/test_standardize_rule_application.py`, which assert
 that **every rule in every committed table produces exactly its own
 replacement** — the sweep that found the 17. Documented for users on the GitBook
 `standardize` page under "How rules are applied".
+
+### POL-058 · RULED · 2026-09-11 · orthography checks need a standard
+**A language with no standard orthography gets no orthography check.** Where
+`standards.csv` leaves `standard_orthography` blank, a build neither extracts an
+orthography profile nor compares one, and a corpus README says so instead.
+
+Three languages are blank today — **Babuza-Favorlang, Pazeh and Siraya** — and
+they are exactly the three with no inventory under `QC/validation/reference/`,
+which holds the other sixteen. That is not a coincidence to be fixed: there is
+nothing to compare these varieties against, because the project has not
+standardized them. `validate_orthography.py` already behaves correctly, skipping
+each with `WARNING: No reference orthographic info found ... Skipping`, and
+producing no findings.
+
+What the rule removes is the step before it. Extraction still runs, writing an
+`orthographic_info` pickle and six PNGs per dialect that nothing then reads —
+cost with no verdict at the end of it, and a QC report whose "orthography"
+section means only that the question was not asked.
+
+**This is a judgement about the language, not about the tooling**, which is why
+it lives here and not in a build convention: whoever ports a historical variety
+already knows there is no standard to check against, and the answer should not
+depend on their remembering to omit a step. A corpus that skips the check states
+it in its `Notes and Issues` section (POL-055), because a user comparing corpora
+needs to know the difference between *checked and clean* and *not checked*.
+
+The rule follows the registry, so it needs no maintenance: give a language a
+standard orthography in `standards.csv` and build its reference inventory, and
+its corpora start being checked. Raised by Latham-1862, whose build ran
+extraction for both its varieties and got two skips for it.
