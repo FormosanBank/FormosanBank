@@ -15,8 +15,10 @@
 
 The Institute of Linguistics (Preparatory Office), Academia Sinica — the
 publisher and economic rights holder of Blust's 2003 *Thao Dictionary* —
-authorized FormosanBank to reprint, reproduce and adapt the work's interlinear
-texts and example sentences under CC BY-NC. The operative terms and the
+authorized FormosanBank to reprint, reproduce and adapt **the linguistic
+material in the book** under CC BY-NC. That wording is the grant's own, and is
+what puts the dictionary's headwords and definitions in scope alongside the
+interlinear texts and example sentences (maintainer's ruling, 2026-09-11). The operative terms and the
 checksum of the authorization document are recorded in
 `CodeAndDocs/rights-evidence.json`; the document itself stays in ignored
 `Private/` storage. Per POL-042 the XML's `@copyright` carries the licence
@@ -186,12 +188,12 @@ Known limitations, all open:
   the shared cleaner.
 - **`Tongpú`.** The `g` -> `ng` conversion rewrites the `g` inside the existing
   digraph `ng`, so this Sinitic place name becomes `Tonngpu` in the standard
-  tier of `blust-text-t05-s065`, `-s067`, `blust-dict-p1024-e008` and
+  tier of `blust-text-t05-s065`, `-s067`, `blust-ex-p1024-e008` and
   `-p1038-e004`, with standard PHON `t*nŋpu`. Left as found: loanwords are not
   standardization's business, and the alternative was a bank-wide rule change.
 - **Quotation marks.** Blust's quotations sometimes run past the sentence the
   text was split at, so eight sentences carry an unpaired mark
-  (`blust-dict-p0772-e005`, `-p0804-e019`, `-p1018-e013`, `blust-text-t05-s033`,
+  (`blust-ex-p0772-e005`, `-p0804-e019`, `-p1018-e013`, `blust-text-t05-s033`,
   `-s049`, `-s097` open without closing; `blust-text-t05-s018`, `-s051` close
   without opening). Separately, 22 English translations begin mid-quotation
   because the opening glyph is absent from the PDF's text layer -- the closing
@@ -199,7 +201,7 @@ Known limitations, all open:
 - **Slash alternatives.** The 92 slash-bearing records are expanded from a
   hand-curated scope file. Eight of those scopes were wrong — they gave shared
   material to only one reading — and were corrected on the maintainer's ruling
-  of 2026-09-10: `blust-dict-p0446-e019`, `-p0727-e001`, `-p0848-e005`,
+  of 2026-09-10: `blust-ex-p0446-e019`, `-p0727-e001`, `-p0848-e005`,
   `-p0881-e009`, `-p0924-e006`, `-p0925-e005`, `-p0996-e003`, `-p1027-e009`.
   `CodeAndDocs/test_expansion.py::test_maintainer_ruled_slash_scopes` holds all
   eight, and FormosanBank's
@@ -215,9 +217,9 @@ Known limitations, all open:
   readings still share one translation that itself contains a slash, which
   remains open.
 - **One translation is spliced with text from a later page.**
-  `blust-dict-p0399-e015` ends `... her husband shau-na-hazish as`. It is the
+  `blust-ex-p0399-e015` ends `... her husband shau-na-hazish as`. It is the
   only one left: every other translation's last six words are on the page its
-  record claims. (`blust-dict-p0290-e012` was the other, and was a symptom of
+  record claims. (`blust-ex-p0290-e012` was the other, and was a symptom of
   the printed p. 291 problem, now fixed.)
 - **Printed p. 291 is typeset in a different family** — Book Antiqua with
   Courier hyphens, not the Type 3 faces the rest of the book uses.
@@ -249,11 +251,24 @@ Known limitations, all open:
   optional records have no translation parenthetical to split, so both readings
   correctly share one English.
 
-- **The entry apparatus is extracted but not published.**
-  `CodeAndDocs/extract_entries.py` recovers 1,873 main entries, 14,836 sub-entry
-  headwords, 16,927 definitions, 7,695 grammatical labels and 256 PAN/PMP
-  etymologies into `entry-records.json`. Nothing in `XML/` uses it, and
-  `source-lock.json` still records the authorized scope as excluding dictionary
-  definitions.
+- **The dictionary entries carry Blust's morpheme boundaries, and the
+  interlinear texts carry word glosses.** The five texts have a TRANSL on 2,517
+  of their 2,542 W; the 16,000-odd dictionary sentences are segmented into W and
+  M but glossed only as wholes, because that is how the book glosses them. A
+  tool that expects a gloss on every W will find most of this corpus empty at
+  that tier.
 
-No porting or publication has been performed.
+- **Bound roots and the optional `(don't)` are not published.** Blust writes
+  `(don't) give it` to tell the reader a bound form takes either polarity; it is
+  notation, not a translation, and the 395 senses whose whole gloss was that are
+  omitted, along with the 34 senses that are themselves a root printed in bars.
+  A bar-marked header that is its own entry's only sense is a word the book
+  decorated oddly rather than a bound root, and those nine are kept
+  (`|Rariku|`, the lineage names `|Lhqapamumu|`, `|Lhqatafatu|`,
+  `|Lhqashna'wanan|`, and five more).
+
+- **62 pairs share a FORM and differ in gloss**, and every one has been read and
+  ruled a genuine homophone — Blust's `a` the future marker beside `a` the
+  linking particle. `validate_duplicate_sentences` reports them SOFT by design.
+  The verdicts are in `CodeAndDocs/same-form-rulings.json` with the words they
+  were given with.
