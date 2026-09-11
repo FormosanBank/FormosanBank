@@ -36,6 +36,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Huteson (2003) Rukai Survey](huteson-rukai-survey.md) (text, English, Rukai, word and morpheme glosses)
 * [Sato Pazeh Songs](sato-pazeh-songs.md) (text, Japanese)
 * [Wu: Amis Pa-Verbs](wu-amis-pa-verbs.md) (text, English, glossing)
+* [Blust (2003) Thao Dictionary](blust-thao-dictionary.md) (text, English, segmented)
 
 ***
 
@@ -46,16 +47,16 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 
 | | Truku | Amis | Bunun | Babuza-Favorlang | Kavalan | Rukai | Siraya | Paiwan | Puyuma | Pazeh | Thao | Saaroa | Sakizaya | Yami | Atayal | Seediq | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 87,457 | 2,576,762 | 249,946 | 22,112 | 127,016 | 275,642 | 43,173 | 422,746 | 230,655 | 356 | 102,042 | 63,050 | 1,751,644 | 119,295 | 887,478 | 1,009,622 | 88,015 | 114,294 | 101,824 |
+| Word count | 87,457 | 2,576,762 | 249,946 | 22,112 | 127,016 | 275,642 | 43,173 | 422,746 | 230,655 | 356 | 165,361 | 63,050 | 1,751,644 | 119,295 | 887,478 | 1,009,622 | 88,015 | 114,294 | 101,824 |
 | Total audio | 84.4h | 121.6h | 125.4h | 0 | 53.8h | 154.3h | 0 | 168.9h | 119.9h | 0 | 41.4h | 45.9h | 49.0h | 40.5h | 171.2h | 92.2h | 41.0h | 65.1h | 47.0h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 41.6h | 121.2h | 125.4h | 0 | 53.8h | 154.3h | 0 | 134.1h | 119.9h | 0 | 41.4h | 45.9h | 49.0h | 40.5h | 160.0h | 92.1h | 41.0h | 65.1h | 47.0h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 42.8h | 0.4h | 0 | 0 | 0 | 0 | 0 | 34.8h | 0 | 0 | 0 | 0 | 0 | 0 | 11.2h | 0.1h | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 11,370 | 126,324 | 66,402 | 9,561 | 27,300 | 65,067 | 43,161 | 74,111 | 40,780 | 0 | 11,383 | 8,760 | 19,888 | 25,478 | 67,520 | 50,350 | 21,413 | 24,418 | 22,156 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 11,370 | 126,324 | 66,402 | 9,561 | 27,300 | 65,067 | 43,161 | 74,111 | 40,780 | 0 | 74,694 | 8,760 | 19,888 | 25,478 | 67,520 | 50,350 | 21,413 | 24,418 | 22,156 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 87,325 | 533,075 | 249,762 | 0 | 126,985 | 274,819 | 41,851 | 210,690 | 230,491 | 0 | 101,796 | 63,034 | 101,445 | 118,409 | 307,673 | 217,319 | 87,978 | 114,252 | 101,160 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 351 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 | 0 | 0 | 42,913 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Morphologically segmented | 1,130 | 7,682 | 23,463 | 0 | 16,286 | 17,344 | 2 | 29,031 | 0 | 0 | 211 | 0 | 12,968 | 14,167 | 5,861 | 22,803 | 10,200 | 22,853 | 10,849 |
+| Morphologically segmented | 1,130 | 7,682 | 23,463 | 0 | 16,286 | 17,344 | 2 | 29,031 | 0 | 0 | 56,656 | 0 | 12,968 | 14,167 | 5,861 | 22,803 | 10,200 | 22,853 | 10,849 |
 | Glossed words | 1,047 | 7,682 | 23,463 | 0 | 16,286 | 17,344 | 0 | 24,556 | 0 | 0 | 211 | 0 | 12,968 | 14,166 | 5,861 | 22,803 | 10,195 | 22,846 | 10,848 |
 
 #### By dialect
