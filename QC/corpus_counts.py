@@ -245,6 +245,26 @@ def is_published_xml(path) -> bool:
     )
 
 
+def is_reproduction_path(path) -> bool:
+    """Does this path sit inside a corpus's CodeAndDocs/ directory?
+
+    The narrow half of `is_published_xml`, split out because every tool
+    that reads corpus XML needs it while only counters need the rest.
+    `CodeAndDocs/` holds reproduction infrastructure -- build scripts, raw
+    scrapes, and POL-035 pre-correction snapshots -- never published data.
+    A snapshot is a byte-for-byte ancestor of the corpus beside it, so a
+    tool that walks a corpus root without this check reads the same text
+    twice, and a tool that writes will rewrite a baseline that exists
+    precisely to stay untouched.
+
+    Deliberately does NOT require an `XML` path segment the way
+    `is_published_xml` does: tools that build into a staging directory
+    (`Final_XML/`) must keep working.
+    """
+    parts = Path(path).parts if not isinstance(path, str) else tuple(path.split("/"))
+    return "CodeAndDocs" in parts
+
+
 def corpus_xml_dirs(corpus_path) -> list[Path]:
     """Every XML/ directory of a corpus, at ANY depth (Corpora/.../XML —
     some corpora nest folders between the corpus root and XML/), skipping

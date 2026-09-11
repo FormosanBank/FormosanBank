@@ -8,7 +8,7 @@ from pathlib import Path as _Path
 _REPO_ROOT = _Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
-from QC.corpus_counts import LANGUAGE_NAMES  # noqa: E402
+from QC.corpus_counts import LANGUAGE_NAMES, is_reproduction_path  # noqa: E402
 from QC.xml_forms import find_base_form  # noqa: E402
 import collections
 import regex as re
@@ -49,7 +49,15 @@ def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False
         raise ValueError(f"corpus {to_check_path} doesn't exist")
     for root, dirs, files in os.walk(to_check_path):
         for file in files:
-            if file.endswith(".xml") and re.findall(language_to_process, os.path.join(root)): # and 'Final_XML' in os.path.join(root, file) 
+            if not file.endswith(".xml"):
+                continue
+            # CodeAndDocs/ is reproduction material, not published data.
+            # Without this, pointing the tool at a corpus root reads the
+            # POL-035 snapshot as well as the corpus and counts every
+            # character twice.
+            if is_reproduction_path(os.path.join(root, file)):
+                continue
+            if re.findall(language_to_process, os.path.join(root)):
                 tree = ET.parse(os.path.join(root, file))
                 root_to_read = tree.getroot()
                 
