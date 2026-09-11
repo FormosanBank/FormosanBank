@@ -360,6 +360,13 @@ def _write_phonology(
     parent_map = {child: parent for parent in root.iter() for child in parent}
     changed = 0
     for form in root.findall(f'.//FORM[@kindOf="{form_kind}"]'):
+        # POL-028: a tier is a base FORM plus zero or more ver="alt"
+        # variants, but PHON_Type carries no @ver — a tier has exactly one
+        # PHON, and it spells the base. Without this guard every FORM of the
+        # kind wrote into that one PHON, so the last in document order (the
+        # variant) silently overwrote the base's phonology.
+        if form.get("ver") is not None:
+            continue
         parent = parent_map.get(form)
         if parent is None:
             continue
