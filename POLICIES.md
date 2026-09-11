@@ -1121,3 +1121,51 @@ The rule follows the registry, so it needs no maintenance: give a language a
 standard orthography in `standards.csv` and build its reference inventory, and
 its corpora start being checked. Raised by Latham-1862, whose build ran
 extraction for both its varieties and got two skips for it.
+
+### POL-059 · RULED · 2026-09-11 · published corpus layout
+**Published XML lives under `XML/` at the corpus root, in a directory named for
+its language.**
+
+```
+Corpora/<CorpusName>/
+  XML/                      <- the only place published data lives
+    <Language>/             <- the languages.csv `Language` value, not the ISO code
+      *.xml
+```
+
+Two rules, and both are about being findable:
+
+- **`XML/` is a directory at the corpus root.** Everything else under the corpus
+  — scripts, raw scrapes, POL-035 snapshots — is `CodeAndDocs/`, which no tool
+  reading published data may enter (POL-035, and
+  `corpus_counts.is_reproduction_path`).
+- **Every published XML has a directory named for its language somewhere on its
+  path below `XML/`.** The name is the `Language` column of `languages.csv`
+  (POL-040) — `Babuza-Favorlang`, not `bzg`; `Truku` and `Seediq` as separate
+  directories, since the ISO code `trv` does not distinguish them.
+
+**Extra levels are fine, above or below.** A corpus with sub-corpora puts them
+above — `ePark/XML/qing_jing_zu_yu.../Saaroa/`, `NTUFormosanCorpus/XML/Stories/`
+— and a corpus that subdivides a language puts that below —
+`Safolu-Amis-Dictionary/XML/Amis/Safolu/`, `Siraya_Gospels/XML/Siraya/Matthew/`.
+What is required is that the language directory is *on the path*, not that it is
+the immediate child of `XML/` or the immediate parent of the files.
+
+**Why a convention and not just a preference.** `orthography_extract` selects
+files by matching the language name against the **directory path**, so the
+layout is already load-bearing: a corpus that departs from it is silently
+skipped rather than reported. The convention is otherwise kept exactly — across
+all 14,571 published files, every path that names a language agrees with that
+file's `xml:lang` and `dialect`, with no exceptions.
+
+**Non-conforming today (2026-09-11), 108 files in two corpora:**
+
+| corpus | files | how it departs |
+|---|---:|---|
+| `HundredPaiwanStories` | 100 | XML sits directly in `XML/`, with no language directory at all |
+| `Glosbe` | 8 | uses ISO codes — `XML/ami/`, `XML/tay/`, `XML/trv/`, `XML/xsy/` |
+
+Both are to be corrected when those corpora are next ported or rebuilt; Glosbe's
+re-port is open as PR #180 and still carries the old layout. A new or re-ported
+corpus conforms — there is no pending list here, because the rule costs a
+`mkdir` and a `git mv`.
