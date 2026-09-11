@@ -55,25 +55,25 @@ step "1. clean_xml (Unicode cleanup + quote/glottal correction)"
 #    stress marks) are stripped from the standard tier only. Tables and
 #    columns per the README's source-orthography assumptions.
 step "2a. standardize Amis (Ortho94 -> Ortho113, Coastal column)"
-"$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CT/Amis_94_113.tsv"      --target_column Coastal  --corpora_path "$XML/ami"
+"$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CT/Amis_94_113.tsv"      --target_column Coastal  --corpora_path "$XML/Amis"
 step "2b. standardize Atayal (Church -> Ortho113)"
-"$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CT/Atayal_Church_113.tsv" --target_column standard --corpora_path "$XML/tay"
+"$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CT/Atayal_Church_113.tsv" --target_column standard --corpora_path "$XML/Atayal"
 step "2c. standardize Truku (Ortho94 -> Ortho113, Truku column)"
-"$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CT/Seediq_94_113.tsv"     --target_column Truku    --corpora_path "$XML/trv"
+"$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CT/Seediq_94_113.tsv"     --target_column Truku    --corpora_path "$XML/Truku"
 step "2d. standardize Saisiyat (Ortho94 -> Ortho113)"
-"$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CT/Saisiyat_94_113.tsv"   --target_column standard --corpora_path "$XML/xsy"
+"$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CT/Saisiyat_94_113.tsv"   --target_column standard --corpora_path "$XML/Saisiyat"
 
 # 3. Regenerate IPA on both tiers: standard-tier PHON from
 #    Orthographies/Ortho113/<Language>.tsv, original-tier PHON from the
 #    source orthography named by --orthography (the `default` column
 #    supplies IPA for the unknown-dialect Amis and Atayal originals).
 step "3a. add_phonology Amis (original tier: Ortho94/Coastal)"
-"$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Ortho94 --target_column Coastal --corpora_path "$XML/ami"
+"$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Ortho94 --target_column Coastal --corpora_path "$XML/Amis"
 step "3b. add_phonology Atayal (original tier: Church)"
-"$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Church                          --corpora_path "$XML/tay"
+"$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Church                          --corpora_path "$XML/Atayal"
 step "3c. add_phonology Truku (original tier: Ortho94)"
-"$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Ortho94                         --corpora_path "$XML/trv"
+"$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Ortho94                         --corpora_path "$XML/Truku"
 step "3d. add_phonology Saisiyat (original tier: Ortho94)"
-"$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Ortho94                         --corpora_path "$XML/xsy"
+"$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Ortho94                         --corpora_path "$XML/Saisiyat"
 
 step "Done. Review + delete XML/cleaner_warnings.csv (POL-033); commit CodeAndDocs/quote_corrections.csv if new rows were appended."

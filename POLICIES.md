@@ -1158,14 +1158,19 @@ skipped rather than reported. The convention is otherwise kept exactly — acros
 all 14,571 published files, every path that names a language agrees with that
 file's `xml:lang` and `dialect`, with no exceptions.
 
-**Non-conforming today (2026-09-11), 108 files in two corpora:**
+**Every published corpus conforms.** Two did not when this was written, and
+both were corrected in the same pull request — 108 pure renames, no file
+content touched:
 
-| corpus | files | how it departs |
-|---|---:|---|
-| `HundredPaiwanStories` | 100 | XML sits directly in `XML/`, with no language directory at all |
-| `Glosbe` | 8 | uses ISO codes — `XML/ami/`, `XML/tay/`, `XML/trv/`, `XML/xsy/` |
+| corpus | files | how it departed | now |
+|---|---:|---|---|
+| `HundredPaiwanStories` | 100 | XML sat directly in `XML/`, no language directory | `XML/Paiwan/` |
+| `Glosbe` | 8 | ISO codes — `XML/{ami,tay,trv,xsy}/` | `XML/{Amis,Atayal,Truku,Saisiyat}/` |
 
-Both are to be corrected when those corpora are next ported or rebuilt; Glosbe's
-re-port is open as PR #180 and still carries the old layout. A new or re-ported
-corpus conforms — there is no pending list here, because the rule costs a
-`mkdir` and a `git mv`.
+Note `trv` → `Truku`, not `Seediq`: the ISO code covers both and the `dialect`
+attribute on that file says Truku. Reading the code alone would have filed it
+wrongly.
+
+There is no pending list here, unlike POL-047 and POL-052, because the rule
+costs a `mkdir` and a `git mv`. **Glosbe's open re-port, PR #180, still carries
+the ISO-code layout and must be rebased onto this.**
