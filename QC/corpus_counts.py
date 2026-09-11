@@ -48,8 +48,9 @@ def load_language_codes(path: Path | None = None) -> dict[str, str]:
 
 LANG_CODE_TO_NAME = load_language_codes()
 
-# All display names a record can resolve to (the 16 codes plus Truku,
-# which is distinguished from Seediq by dialect rather than ISO code).
+# All display names a record can resolve to (every code in
+# languages.csv, plus Truku, which is distinguished from Seediq by
+# dialect rather than by ISO code).
 LANGUAGE_NAMES = sorted(set(LANG_CODE_TO_NAME.values()) | {"Truku"})
 
 ENG_CODES = {"eng", "en"}
@@ -242,6 +243,40 @@ def is_published_xml(path) -> bool:
         and "XML" in parts
         and "CodeAndDocs" not in parts
     )
+
+
+def is_reproduction_path(path, root=None) -> bool:
+    """Does this path sit inside a corpus's CodeAndDocs/ directory?
+
+    The narrow half of `is_published_xml`, split out because every tool
+    that reads corpus XML needs it while only counters need the rest.
+    `CodeAndDocs/` holds reproduction infrastructure -- build scripts, raw
+    scrapes, and POL-035 pre-correction snapshots -- never published data.
+    A snapshot is a byte-for-byte ancestor of the corpus beside it, so a
+    tool that walks a corpus root without this check reads the same text
+    twice, and a tool that writes will rewrite a baseline that exists
+    precisely to stay untouched.
+
+    `root` is the directory the caller was pointed at, and it matters:
+    several builds stage into `<corpus>/CodeAndDocs/Final_XML/` and clean
+    there before installing into `XML/` (NTUFormosanCorpus does exactly
+    this). When the root is itself inside CodeAndDocs the caller meant
+    that tree, and refusing to process what it was explicitly handed
+    would turn the build into a silent no-op. So the rule is "do not
+    wander into CodeAndDocs", not "refuse to touch CodeAndDocs".
+
+    Deliberately does NOT require an `XML` path segment the way
+    `is_published_xml` does, for the same staging-directory reason.
+    """
+    parts = Path(path).parts if not isinstance(path, str) else tuple(path.split("/"))
+    if "CodeAndDocs" not in parts:
+        return False
+    if root is not None:
+        root_parts = (Path(root).parts if not isinstance(root, str)
+                      else tuple(root.split("/")))
+        if "CodeAndDocs" in root_parts:
+            return False
+    return True
 
 
 def corpus_xml_dirs(corpus_path) -> list[Path]:
