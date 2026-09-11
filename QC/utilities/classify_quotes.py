@@ -68,6 +68,97 @@ def translation_confirms_glottal(form_text, transl_texts):
     return tq == fq
 
 
+# A source whose quotation marks are a backtick/apostrophe pair (Blust's Thao
+# Dictionary is the worked case) prints the same quotation in the Thao and in
+# its English translation, so the translation is a witness for the FORM. Two
+# things follow, and both are evidence the per-apostrophe classifier does not
+# otherwise have.
+OPENING_MARKS = "`\u2018\u201c"
+CLOSING_MARKS = "\u2019\u201d"
+
+
+def _closing_apostrophes(text: str, dict_cf: set | None = None) -> int:
+    """Apostrophes used as a closing quotation mark, not as a letter.
+
+    A closing mark follows a letter, digit or sentence punctuation and is not
+    followed by a letter. A glottal-stop apostrophe can look identical at the
+    end of a word, so when a dictionary is available the word is checked
+    against it first: an attested `qriu'` is a glottal, not a closing mark.
+    """
+    total = 0
+    for match in re.finditer(r"(?<=[\w.,;:?!])'(?![\w])", text):
+        if dict_cf:
+            start = match.start()
+            while start > 0 and text[start - 1].isalpha():
+                start -= 1
+            word = text[start : match.start() + 1]
+            if word and word.casefold() in dict_cf:
+                continue
+        total += 1
+    return total
+
+
+def quote_parity(form_text, transl_texts, dictionary=None):
+    """Compare the quotation marks in a FORM with those in its translations.
+
+    Returns a dict with the opener and closer counts on each side and a verdict:
+
+    ``balanced``        both sides agree and each side's own marks pair up;
+    ``form_unclosed``   the FORM opens a quotation it never closes -- the usual
+                        cause is a quotation that runs past the sentence the
+                        text was split at;
+    ``form_unopened``   the FORM closes a quotation it never opened -- the same
+                        cause, seen from the other end, or an apostrophe that is
+                        really a glottal stop;
+    ``transl_unopened`` the translation closes a quotation it never opened,
+                        which in a scraped source usually means the opening
+                        glyph is missing from the PDF's text layer;
+    ``transl_unclosed`` the mirror of that;
+    ``count_mismatch``  both sides are internally balanced but disagree on how
+                        many quotations there are -- often a translator
+                        splitting one quotation in two, so the weakest signal
+                        of the six.
+
+    ``dictionary`` is the language's attested single words, as ``classify``
+    takes it; without one, a word-final glottal stop counts as a closing mark.
+
+    It is deliberately a report and not a repair: which side is wrong is a
+    judgement about the source, and the counts are what make it decidable.
+    """
+    transl_texts = list(transl_texts or [])
+    # The dictionary applies to the FORM only: it is the Formosan language's
+    # word list, and a translation is English.
+    dict_cf = _casefold_dict(dictionary) if dictionary else None
+    form_open = sum(ch in OPENING_MARKS for ch in form_text)
+    form_close = sum(ch in CLOSING_MARKS for ch in form_text) + _closing_apostrophes(
+        form_text, dict_cf
+    )
+    transl_open = sum(ch in OPENING_MARKS for t in transl_texts for ch in t)
+    transl_close = sum(
+        ch in CLOSING_MARKS for t in transl_texts for ch in t
+    ) + sum(_closing_apostrophes(t) for t in transl_texts)
+
+    if form_open == form_close == transl_open == transl_close:
+        verdict = "balanced"
+    elif form_open > form_close:
+        verdict = "form_unclosed"
+    elif form_close > form_open:
+        verdict = "form_unopened"
+    elif transl_open > transl_close:
+        verdict = "transl_unclosed"
+    elif transl_close > transl_open:
+        verdict = "transl_unopened"
+    else:
+        verdict = "count_mismatch"
+    return {
+        "form_open": form_open,
+        "form_close": form_close,
+        "transl_open": transl_open,
+        "transl_close": transl_close,
+        "verdict": verdict,
+    }
+
+
 def _is_letter(ch) -> bool:
     return ch is not None and ch.isalpha()
 
