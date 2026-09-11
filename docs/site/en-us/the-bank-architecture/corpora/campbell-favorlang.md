@@ -18,7 +18,7 @@ the current FormosanBank tooling and completed sermon-review evidence.
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | bzg<br>Favorlang |
+| | Babuza-Favorlang<br>Favorlang |
 | --- | --- |
 | Word count | 22,081 |
 | Total audio | 0 |
@@ -27,6 +27,8 @@ the current FormosanBank tooling and completed sermon-review evidence.
 | Translated words |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 9,530 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 |
 | Morphologically segmented | 0 |
 | Glossed words | 0 |
 

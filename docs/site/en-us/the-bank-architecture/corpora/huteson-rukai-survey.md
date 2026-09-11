@@ -16,15 +16,17 @@ marked as inferred in the data. No audio is included.
 
 | | Rukai<br>Dona | Rukai<br>Maolin |
 | --- | --- | --- |
-| Word count | 54 | 48 |
+| Word count | 55 | 48 |
 | Total audio | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 |
 | Translated words |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 54 | 48 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 55 | 48 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 |
-| Morphologically segmented | 28 | 23 |
-| Glossed words | 28 | 23 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 |
+| Morphologically segmented | 29 | 23 |
+| Glossed words | 29 | 23 |
 
 ***
 

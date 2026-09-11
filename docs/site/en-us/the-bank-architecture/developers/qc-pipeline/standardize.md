@@ -68,10 +68,23 @@ written back, longest source first. Two consequences, and they are the point:
 
 Generalizing the placeholder corrected **17 rules across five tables** —
 `Amis_Church` `ng`, `Puyuma_Cauquelin` `L`/`ɭ`, `Puyuma_MinEd` `ll`,
-`Rukai_Church` `lh`, and `Rukai_Li` `ə:`. None was in use by a published corpus,
-so no published data changed. `tests/utilities/test_standardize_rule_application.py`
-now asserts that every rule in every committed table produces exactly its own
+`Rukai_Church` `lh`, and `Rukai_Li` `ə:`. None of those five was in use by a
+published corpus. `tests/utilities/test_standardize_rule_application.py` now
+asserts that every rule in every committed table produces exactly its own
 replacement.
+
+> **Corrected 2026-09-11.** This section, and POL-056 itself, said that *no
+> published data changed*. That is not right. The check behind it swept the 342
+> individual **symbols** in the committed tables, which cannot see a rule whose
+> source another rule *produces*. `Yami_Wakelin_113` has both `ch → c` and
+> `cy → ci`, and WakelinTexts — published, and table-driven — relied on the
+> first feeding the second, so `chya` used to reach `cia` and afterwards stopped
+> at `cya`. 29 standard FORMs and their 29 `PHON` values changed silently. The
+> table now carries its own `chy → ci` row, which is what a set-of-rules table
+> requires: every rule must say what it means on its own. When auditing a
+> conversion table, test **chained** rules — does rule A's output match rule B's
+> source? — and re-run the corpus's `generate_xml.sh`, since a symbol sweep will
+> not catch it.
 
 Two cell values are read specially, and they mean different things:
 
