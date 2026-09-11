@@ -26,6 +26,9 @@ None of the audio are transcribed. There is slightly more meta-data at Paradisec
 - `CodeAndDocs/generate_xml.sh` — the build entry point
 - `CodeAndDocs/make_xml.py` — writes the XML from that metadata
 - `CodeAndDocs/provenance.json` — the FormosanBank commit the published XML was built against
+- `CodeAndDocs/audio_manifest.json` — byte size and SHA-256 of each published recording, pinned to a Hugging Face revision
+- `CodeAndDocs/verify_sources.py` — checks that manifest (see Audio)
+- `CodeAndDocs/tests/` — tests for the manifest checks
 - `CodeAndDocs/upload_hf_datasets.sh` — uploads `Audio/` to the Hugging Face dataset repo
 - `download_audio_data.sh` — downloads `Audio/` from the Hugging Face dataset repo
 
@@ -55,7 +58,7 @@ The one non-audio part, `AIT1-001-2df.pdf`, is held in no form here. It may be w
 
 ### Known deviation: the source cannot be verified from this repository
 
-There is **no `refresh_source.sh`**, no committed hash of the extract, and nothing that checks it against the Paradisec catalogue. The extract is the only witness to Paradisec that FormosanBank holds, and a reader cannot confirm from here that it faithfully represents the archive's records.
+The **audio** is covered — `audio_manifest.json` and `verify_sources.py` pin and check it (see Audio below). The **metadata extract** is not. There is no `refresh_source.sh`, no committed hash of it, and nothing that checks it against the Paradisec catalogue. It is the only witness to Paradisec that FormosanBank holds, and a reader cannot confirm from here that it faithfully represents the archive's records.
 
 This is accepted deliberately (maintainer, 2026-09-07). The AIT1 deposit is a **closed archival item** — recorded in 1997, deposited and published in 2016, and not going to change — so a refresh path would add fetching machinery without adding assurance: re-downloading an immutable record only tells you it is still the record you already have. POL-047 makes `refresh_source.sh` optional, *"only where the source can be re-fetched"* to useful effect; this is a case where it cannot.
 
@@ -73,7 +76,26 @@ The commit the published XML was built against is recorded in [CodeAndDocs/prove
 Corpora/TangRecordingsOfTaroko/download_audio_data.sh
 ```
 
-Fetches the 30 recordings from the Hugging Face revision pinned in [audio_sources.json](../../audio_sources.json). Strict reproduction from Paradisec itself is possible but requires the collection's access paperwork, which would put unnecessary work on everyone downstream; the Hugging Face copy is the same audio.
+Fetches the 30 recordings from the Hugging Face revision pinned in [audio_sources.json](../../audio_sources.json) — signed 16-bit PCM, 44.1 kHz, stereo, as deposited. Nothing is resampled or converted: what you get is what is published. Strict reproduction from Paradisec itself is possible but requires the collection's access paperwork, which would put unnecessary work on everyone downstream; the Hugging Face copy is the same audio.
+
+### Checking that you got the right audio
+
+`CodeAndDocs/audio_manifest.json` records the byte size and SHA-256 of every recording against an immutable Hugging Face revision, and `verify_sources.py` checks it three ways:
+
+```bash
+cd Corpora/TangRecordingsOfTaroko/CodeAndDocs
+python3 verify_sources.py            # manifest vs the committed metadata and the downloader's pin
+python3 verify_sources.py --live     # manifest vs the pinned Hugging Face revision
+python3 verify_sources.py --local    # manifest vs the WAVs you have downloaded
+```
+
+`--live` costs one API call and no download: Hugging Face stores each LFS object under its SHA-256, so the hashes can be compared without transferring 13.6 GB. Use it to detect the one thing `audio_sources.json` cannot — that revision records a file *count*, so audio replaced under the same names would pass every other check in the repository.
+
+This is verification, not build. `generate_xml.sh` does not run it and the corpus reproduces without it (POL-047: build only). The tests are not collected by the repository's pytest run, matching the other corpora that ship their own:
+
+```bash
+cd Corpora/TangRecordingsOfTaroko/CodeAndDocs && python3 -m unittest discover -s tests
+```
 
 ***
 
