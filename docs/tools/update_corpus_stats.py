@@ -154,6 +154,7 @@ CSV_TO_MD = {
     'Huteson-Rukai-Survey_corpora_stats.csv': 'huteson-rukai-survey.md',
     'Sato-Pazeh-Songs_corpora_stats.csv': 'sato-pazeh-songs.md',
     'Amis-Pa-Verbs_corpora_stats.csv': 'wu-amis-pa-verbs.md',
+    'Blust-Thao-Dictionary_corpora_stats.csv': 'blust-thao-dictionary.md',
 }
 
 # ---------------------------------------------------------------------------
