@@ -940,36 +940,53 @@ def v085_multi_same_lang_transl_requires_ver(
     index: CorpusIndex | None,
 ) -> list[Finding]:
     """V085: when a parent has multiple TRANSL children sharing the same
-    xml:lang, at least one must carry a `ver` attribute to discriminate them.
+    xml:lang *and* the same `kindOf`, at least one must carry a `ver`
+    attribute to discriminate them.
 
     Per the Bril Amis Basecamp card (Mar 3, 2026): "If there are multiple
     translations in the same language, mark one with a `ver=\"alt\"` attribute."
     The convention is one canonical TRANSL (bare) plus one or more alternatives
     marked with `ver`. Two bare same-language TRANSLs on the same parent are
     ambiguous about which one is canonical and which is the alternative.
+
+    `kindOf` joins the grouping key (2026-09-11) because it is an independent
+    axis, not a competing spelling of `ver` (POL-025). At W/M level a gloss
+    carries `kindOf="original"` for the source's own gloss and
+    `kindOf="standard"` for a standardized one, and POL-036 requires the
+    standardized gloss to be recorded *alongside* the original rather than
+    replacing it. Grouping on xml:lang alone made that pair indistinguishable
+    from two competing readings, so the only way to publish POL-036's
+    prescribed shape was to add a `ver="alt"` that asserts "alternative
+    reading" about something that is not one. A gloss pair already
+    discriminated by `kindOf` needs no `ver`; two TRANSLs sharing *both*
+    attributes are still ambiguous and still flag.
     """
     findings: list[Finding] = []
     for parent in tree.iter():
-        # Group this parent's direct TRANSL children by xml:lang.
-        by_lang: dict[str, list] = {}
+        # Group this parent's direct TRANSL children by (xml:lang, kindOf).
+        by_key: dict[tuple[str, str], list] = {}
         for child in parent:
             if child.tag != "TRANSL":
                 continue
             lang = child.get(_XML_LANG_ATTR) or ""
-            by_lang.setdefault(lang, []).append(child)
-        for lang, group in by_lang.items():
+            kind_of = child.get("kindOf") or ""
+            by_key.setdefault((lang, kind_of), []).append(child)
+        for (lang, kind_of), group in by_key.items():
             if len(group) < 2:
                 continue
             if any(t.get("ver") for t in group):
                 continue
             p_id = parent.get("id")
             p_tag = parent.tag
+            shared = f"xml:lang={lang!r}"
+            if kind_of:
+                shared += f" and kindOf={kind_of!r}"
             findings.append(Finding(
                 rule_id="V085",
                 severity=Severity.HARD,
                 message=(
                     f"{p_tag} id={p_id!r} has {len(group)} TRANSL children with "
-                    f"xml:lang={lang!r}; at least one must carry a ver attribute "
+                    f"{shared}; at least one must carry a ver attribute "
                     "to discriminate them"
                 ),
                 path=path,
