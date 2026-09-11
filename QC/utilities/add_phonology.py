@@ -18,6 +18,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
+from QC.corpus_counts import is_reproduction_path  # noqa: E402
 from QC.utilities._accents import (  # noqa: E402
     ACCENTS_TO_STRIP,
     accented_letters,
@@ -64,11 +65,24 @@ class PhonologyProfile:
 from QC.utilities._prettify import prettify  # noqa: E402,F401  (shared, mixed-content-safe, idempotent)
 
 
-def get_files(path: str, language: str | None) -> list[str]:
+def get_files(path: str, language: str | None, root_path: str | None = None) -> list[str]:
+    """Every .xml under `path`, skipping CodeAndDocs.
+
+    `root_path` is what the caller was originally pointed at, which is not
+    always `path`: get_exploration_targets expands a corpora directory
+    into its children, and one child of a corpus root is CodeAndDocs
+    itself. Judging "did the caller mean this tree?" against the expanded
+    child would answer yes for every corpus root; judging it against the
+    original argument answers correctly, and still lets a build that
+    targets <corpus>/CodeAndDocs/Final_XML/ directly be processed.
+    """
+    root_path = path if root_path is None else root_path
     files = []
     for root, _dirs, filenames in os.walk(path):
         for filename in filenames:
             candidate = os.path.join(root, filename)
+            if is_reproduction_path(candidate, root_path):
+                continue
             if filename.endswith(".xml") and (
                 not language or re.search(language, candidate)
             ):
@@ -463,7 +477,7 @@ def main(args: argparse.Namespace) -> int:
         files = (
             [corpus]
             if os.path.isfile(corpus) and corpus.endswith(".xml")
-            else get_files(corpus, args.language)
+            else get_files(corpus, args.language, args.corpora_path)
         )
         for path in files:
             try:
