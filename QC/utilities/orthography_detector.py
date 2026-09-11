@@ -21,6 +21,7 @@ from typing import Dict, List, Set, Tuple, Optional
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
+from QC.corpus_counts import is_reproduction_path
 from QC.utilities._accents import accented_letters, strip_accents
 
 
@@ -582,8 +583,16 @@ def analyze_xml_files(directory: str, orthographies_dir: str, ignore_dialect: bo
     xml_files = []
     for root, dirs, files in os.walk(directory):
         for file in files:
+            candidate = os.path.join(root, file)
+            # CodeAndDocs/ is reproduction material -- scripts, raw
+            # scrapes and POL-035 snapshots -- never published data. A
+            # snapshot is a byte-for-byte ancestor of the corpus beside
+            # it, so walking a corpus root without this reads the same
+            # text twice and doubles every character count.
+            if is_reproduction_path(candidate, directory):
+                continue
             if file.endswith('.xml'):
-                xml_files.append(os.path.join(root, file))
+                xml_files.append(candidate)
     
     total_files = len(xml_files)
     if total_files == 0:
@@ -879,8 +888,16 @@ def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_di
     xml_files = []
     for root, dirs, files in os.walk(directory):
         for file in files:
+            candidate = os.path.join(root, file)
+            # CodeAndDocs/ is reproduction material -- scripts, raw
+            # scrapes and POL-035 snapshots -- never published data. A
+            # snapshot is a byte-for-byte ancestor of the corpus beside
+            # it, so walking a corpus root without this reads the same
+            # text twice and doubles every character count.
+            if is_reproduction_path(candidate, directory):
+                continue
             if file.endswith('.xml'):
-                xml_files.append(os.path.join(root, file))
+                xml_files.append(candidate)
     
     total_files = len(xml_files)
     if total_files == 0:

@@ -182,3 +182,37 @@ def test_add_phonology_actually_does_something_with_this_fixture(corpus, tmp_pat
         "case above proves nothing. Give the fixture a language it can "
         "phonologise."
     )
+
+
+def test_orthography_detector_skips_the_snapshot(corpus, tmp_path):
+    """`orthography_detector` only reads, so it damages nothing -- it just
+    answers the wrong question. Both of its analysis entry points walk a
+    directory the caller names, and the POL-035 snapshot beside a corpus
+    is a byte-for-byte ancestor of it, so an unguarded walk counts every
+    character twice.
+
+    Asserted on file count rather than on any statistic, because that is
+    what the guard controls and it cannot pass vacuously: the fixture has
+    one published file and one snapshot of it.
+    """
+    from QC.utilities.orthography_detector import (
+        analyze_xml_files,
+        analyze_xml_files_combined,
+    )
+
+    published = list((corpus / "XML").rglob("*.xml"))
+    snapshots = list((corpus / "CodeAndDocs").rglob("*.xml"))
+    assert len(published) == 1 and len(snapshots) == 1, "fixture changed"
+
+    orthographies = str(REPO_ROOT / "Orthographies")
+    records = analyze_xml_files(str(corpus), orthographies)
+    assert len(records) == 1, (
+        f"read {len(records)} files from a corpus root holding 1 published "
+        f"file and 1 snapshot; the snapshot was counted"
+    )
+
+    # combined is keyed by dialect, and each value is one result dict --
+    # so assert on the group's own file count, not on dict sizes.
+    combined = analyze_xml_files_combined(str(corpus), orthographies)
+    assert list(combined) == ["Coastal"], combined
+    assert "(1 files)" in combined["Coastal"]["file"], combined["Coastal"]["file"]
