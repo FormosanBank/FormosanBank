@@ -36,7 +36,7 @@ DECOMPOSED = "oená"
 
 TEXT = """<?xml version='1.0' encoding='UTF-8'?>
 <TEXT id="{tid}" citation="c" BibTeX_citation="b" copyright="public domain"
-      dialect="Favorlang" xml:lang="bzg">
+      dialect="Coastal" xml:lang="ami">
   <S id="S1"><FORM kindOf="original">bahosa</FORM>
     <TRANSL xml:lang="eng">man</TRANSL></S>
   <S id="S2"><FORM kindOf="original">{extra}</FORM>
@@ -52,8 +52,8 @@ def corpus(tmp_path):
     The snapshot carries the decomposed character so that a tool which
     reads it has something to rewrite.
     """
-    published = tmp_path / "XML" / "Babuza-Favorlang"
-    snapshot = tmp_path / "CodeAndDocs" / "pre_correction_snapshot" / "Babuza-Favorlang"
+    published = tmp_path / "XML" / "Amis"
+    snapshot = tmp_path / "CodeAndDocs" / "pre_correction_snapshot" / "Amis"
     published.mkdir(parents=True)
     snapshot.mkdir(parents=True)
     (published / "corpus.xml").write_text(
@@ -68,7 +68,7 @@ def corpus(tmp_path):
 def _snapshot(corpus: Path) -> Path:
     return (
         corpus / "CodeAndDocs" / "pre_correction_snapshot"
-        / "Babuza-Favorlang" / "corpus.xml"
+        / "Amis" / "corpus.xml"
     )
 
 
@@ -128,7 +128,7 @@ def test_a_staging_tree_inside_codeanddocs_is_still_processed(tmp_path):
     exactly that, with an absolute path. A tool that skipped what it was
     explicitly handed would turn those builds into a silent no-op, which
     is worse than the bug this guard exists to fix."""
-    staging = tmp_path / "CodeAndDocs" / "Final_XML" / "Babuza-Favorlang"
+    staging = tmp_path / "CodeAndDocs" / "Final_XML" / "Amis"
     staging.mkdir(parents=True)
     staged = staging / "corpus.xml"
     staged.write_text(TEXT.format(tid="staged", extra=DECOMPOSED), encoding="utf-8")
@@ -152,7 +152,7 @@ def test_a_staging_tree_inside_codeanddocs_is_still_processed(tmp_path):
 def test_published_data_is_still_processed(corpus, tmp_path):
     """The exclusion must not turn into 'skip everything'. Pointed at the
     corpus root, a cleaner still has to reach the published file."""
-    published = corpus / "XML" / "Babuza-Favorlang" / "corpus.xml"
+    published = corpus / "XML" / "Amis" / "corpus.xml"
     result = _run(
         "QC/cleaning/clean_xml.py",
         "--corpora_path", str(corpus),
@@ -161,3 +161,58 @@ def test_published_data_is_still_processed(corpus, tmp_path):
     assert result.returncode == 0, result.stderr
     assert published.is_file()
     assert "corpus.xml" in result.stdout, result.stdout
+
+
+def test_add_phonology_actually_does_something_with_this_fixture(corpus, tmp_path):
+    """Non-vacuity guard for the add_phonology case above.
+
+    The fixture was Babuza-Favorlang, which has no orthography profile, so
+    add_phonology wrote nothing at all and its snapshot case passed for
+    free -- it could not have caught the bug it exists to catch, and did
+    not. Amis/Ortho113 gives it real work, and this asserts it does it.
+    """
+    published = corpus / "XML" / "Amis" / "corpus.xml"
+    assert "PHON" not in published.read_text(encoding="utf-8")
+
+    _run("QC/utilities/add_phonology.py",
+         "--orthography", "Ortho113", "--corpora_path", str(corpus))
+
+    assert "PHON" in published.read_text(encoding="utf-8"), (
+        "add_phonology made no change to published data, so the snapshot "
+        "case above proves nothing. Give the fixture a language it can "
+        "phonologise."
+    )
+
+
+def test_orthography_detector_skips_the_snapshot(corpus, tmp_path):
+    """`orthography_detector` only reads, so it damages nothing -- it just
+    answers the wrong question. Both of its analysis entry points walk a
+    directory the caller names, and the POL-035 snapshot beside a corpus
+    is a byte-for-byte ancestor of it, so an unguarded walk counts every
+    character twice.
+
+    Asserted on file count rather than on any statistic, because that is
+    what the guard controls and it cannot pass vacuously: the fixture has
+    one published file and one snapshot of it.
+    """
+    from QC.utilities.orthography_detector import (
+        analyze_xml_files,
+        analyze_xml_files_combined,
+    )
+
+    published = list((corpus / "XML").rglob("*.xml"))
+    snapshots = list((corpus / "CodeAndDocs").rglob("*.xml"))
+    assert len(published) == 1 and len(snapshots) == 1, "fixture changed"
+
+    orthographies = str(REPO_ROOT / "Orthographies")
+    records = analyze_xml_files(str(corpus), orthographies)
+    assert len(records) == 1, (
+        f"read {len(records)} files from a corpus root holding 1 published "
+        f"file and 1 snapshot; the snapshot was counted"
+    )
+
+    # combined is keyed by dialect, and each value is one result dict --
+    # so assert on the group's own file count, not on dict sizes.
+    combined = analyze_xml_files_combined(str(corpus), orthographies)
+    assert list(combined) == ["Coastal"], combined
+    assert "(1 files)" in combined["Coastal"]["file"], combined["Coastal"]["file"]
