@@ -102,8 +102,20 @@ def extract_sentences(xml_path: str, kind_of: str = "standard"):
         if form is not None:
             text = form.text or ""
             if normalize_for_comparison(text):
-                out.append((sid, text))
+                out.append((sid, text, sentence_meaning(s)))
     return out
+
+
+_XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
+
+
+def sentence_meaning(s) -> tuple:
+    """Every TRANSL on this S, as a comparable, order-independent key."""
+    return tuple(sorted(
+        ((t.get(_XML_LANG) or "").strip().lower(),
+         " ".join("".join(t.itertext()).split()))
+        for t in s.findall("TRANSL")
+    ))
 
 
 @dataclass(frozen=True)
@@ -195,20 +207,33 @@ def find_duplicates(root_path: str, kind_of: str = "standard",
     else:
         rel_base = root_p
 
-    index: dict[str, list[Occurrence]] = defaultdict(list)
+    # Keyed on the FORM alone, so that a repeated spelling is still reported;
+    # the MEANING decides how loudly (maintainer, 2026-09-11):
+    #
+    #   same FORM and same TRANSL  the sentence really is there twice. In a
+    #                              corpus whose pipeline dedups, that is HARD -
+    #                              the dedup step should have removed it.
+    #   same FORM, different TRANSL  two words that happen to be spelt alike, or
+    #                              one word whose glosses should be merged into
+    #                              one S with ver="alt" (POL-025). Never
+    #                              deletable without a human, so always SOFT.
+    index: dict[str, list[tuple[Occurrence, tuple]]] = defaultdict(list)
     for xml_path in _collect_xml_files(str(root_p)):
         rel = os.path.relpath(str(xml_path), str(rel_base))
-        for sid, raw in extract_sentences(str(xml_path), kind_of=kind_of):
+        for sid, raw, meaning in extract_sentences(str(xml_path), kind_of=kind_of):
             norm = normalize_for_comparison(raw)
             if not norm:
                 continue
-            index[norm].append(Occurrence(file=rel, s_id=sid, raw_text=raw))
+            index[norm].append(
+                (Occurrence(file=rel, s_id=sid, raw_text=raw), meaning))
 
-    severity = "HARD" if dedup_expected else "SOFT"
     findings: list[Finding] = []
-    for norm_text, occs in index.items():
-        if len(occs) < 2:
+    for norm_text, entries in index.items():
+        if len(entries) < 2:
             continue
+        occs = [o for o, _m in entries]
+        same_meaning = len({m for _o, m in entries}) == 1
+        severity = "HARD" if (dedup_expected and same_meaning) else "SOFT"
         files = {o.file for o in occs}
         scope = "within-file" if len(files) == 1 else "cross-file"
         findings.append(Finding(severity=severity, normalized_text=norm_text,
