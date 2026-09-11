@@ -407,8 +407,18 @@ allowlist (V084 for TRANSL, V156 for FORM).
   changing inside a longer word. Nothing requires the variation to be
   word-internal.
 - A competing **lexeme** for the same meaning, or a different gloss, is not
-  a variant; per POL-027 it becomes its own `S` block. Latham-1862
-  currently carries 6 such cases; they are tracked for remediation.
+  a variant; per POL-027 it becomes its own `S` block, named the same way
+  as the optional-material case below. Latham-1862 carries 5 such cases,
+  all Babuza-Favorlang; they are tracked for remediation.
+
+  **Whether a second reading is a competing lexeme is a judgement about
+  the source, not a string-similarity test** (maintainer, 2026-09-10).
+  V150 measures overlap and proportion, and it is a useful prompt — it
+  flagged exactly the six Latham pairs a human then classified, and none
+  of the two it left alone — but it decides nothing. Two readings a source
+  offers as alternative pronunciations of one word stay a variant however
+  little they overlap; two words for one meaning become separate blocks
+  however much they do.
 - Variants may sit at S, W or M, and belong on the node that actually
   varies. A word-list corpus whose `S` is a word is the S-level case.
 - **Optional material is resolved by scope.** What forces a separate `S`
@@ -421,6 +431,21 @@ allowlist (V084 for TRANSL, V156 for FORM).
   a `ver="alt"` variant FORM on the word that varies, never a second
   sentence.
   Neither mechanism leaves parentheses in a published FORM.
+- **Naming the extra blocks.** Wherever one source cell or sentence yields
+  more than one `S` — optional material above, or a competing lexeme — the
+  first block keeps its published id and the second takes that id plus
+  `-opt`. A **third** reading and beyond carry their reading number:
+  `-opt3`, `-opt4`, and so on (maintainer, 2026-09-10). There is no
+  `-opt2`: the second block is the common case and stays unnumbered, so
+  the ids already published do not move. One convention covers both
+  mechanisms because the question a reader asks of the id is the same —
+  *which block of a split is this?* — and not *why was it split?*, which
+  the FORMs and glosses answer.
+
+  These are published identifiers the moment they merge, so POL-037
+  applies to them: an `-opt` id is never renumbered afterwards, and a
+  later-discovered third reading takes `-opt3` rather than shifting
+  anything.
 
 ---
 
@@ -1066,3 +1091,86 @@ Enforced by `tests/utilities/test_standardize_rule_application.py`, which assert
 that **every rule in every committed table produces exactly its own
 replacement** — the sweep that found the 17. Documented for users on the GitBook
 `standardize` page under "How rules are applied".
+
+### POL-058 · RULED · 2026-09-11 · orthography checks need a standard
+**A language with no standard orthography gets no orthography check.** Where
+`standards.csv` leaves `standard_orthography` blank, a build neither extracts an
+orthography profile nor compares one, and a corpus README says so instead.
+
+Three languages are blank today — **Babuza-Favorlang, Pazeh and Siraya** — and
+they are exactly the three with no inventory under `QC/validation/reference/`,
+which holds the other sixteen. That is not a coincidence to be fixed: there is
+nothing to compare these varieties against, because the project has not
+standardized them. `validate_orthography.py` already behaves correctly, skipping
+each with `WARNING: No reference orthographic info found ... Skipping`, and
+producing no findings.
+
+What the rule removes is the step before it. Extraction still runs, writing an
+`orthographic_info` pickle and six PNGs per dialect that nothing then reads —
+cost with no verdict at the end of it, and a QC report whose "orthography"
+section means only that the question was not asked.
+
+**This is a judgement about the language, not about the tooling**, which is why
+it lives here and not in a build convention: whoever ports a historical variety
+already knows there is no standard to check against, and the answer should not
+depend on their remembering to omit a step. A corpus that skips the check states
+it in its `Notes and Issues` section (POL-055), because a user comparing corpora
+needs to know the difference between *checked and clean* and *not checked*.
+
+The rule follows the registry, so it needs no maintenance: give a language a
+standard orthography in `standards.csv` and build its reference inventory, and
+its corpora start being checked. Raised by Latham-1862, whose build ran
+extraction for both its varieties and got two skips for it.
+
+### POL-059 · RULED · 2026-09-11 · published corpus layout
+**Published XML lives under `XML/` at the corpus root, in a directory named for
+its language.**
+
+```
+Corpora/<CorpusName>/
+  XML/                      <- the only place published data lives
+    <Language>/             <- the languages.csv `Language` value, not the ISO code
+      *.xml
+```
+
+Two rules, and both are about being findable:
+
+- **`XML/` is a directory at the corpus root.** Everything else under the corpus
+  — scripts, raw scrapes, POL-035 snapshots — is `CodeAndDocs/`, which no tool
+  reading published data may enter (POL-035, and
+  `corpus_counts.is_reproduction_path`).
+- **Every published XML has a directory named for its language somewhere on its
+  path below `XML/`.** The name is the `Language` column of `languages.csv`
+  (POL-040) — `Babuza-Favorlang`, not `bzg`; `Truku` and `Seediq` as separate
+  directories, since the ISO code `trv` does not distinguish them.
+
+**Extra levels are fine, above or below.** A corpus with sub-corpora puts them
+above — `ePark/XML/qing_jing_zu_yu.../Saaroa/`, `NTUFormosanCorpus/XML/Stories/`
+— and a corpus that subdivides a language puts that below —
+`Safolu-Amis-Dictionary/XML/Amis/Safolu/`, `Siraya_Gospels/XML/Siraya/Matthew/`.
+What is required is that the language directory is *on the path*, not that it is
+the immediate child of `XML/` or the immediate parent of the files.
+
+**Why a convention and not just a preference.** `orthography_extract` selects
+files by matching the language name against the **directory path**, so the
+layout is already load-bearing: a corpus that departs from it is silently
+skipped rather than reported. The convention is otherwise kept exactly — across
+all 14,571 published files, every path that names a language agrees with that
+file's `xml:lang` and `dialect`, with no exceptions.
+
+**Every published corpus conforms.** Two did not when this was written, and
+both were corrected in the same pull request — 108 pure renames, no file
+content touched:
+
+| corpus | files | how it departed | now |
+|---|---:|---|---|
+| `HundredPaiwanStories` | 100 | XML sat directly in `XML/`, no language directory | `XML/Paiwan/` |
+| `Glosbe` | 8 | ISO codes — `XML/{ami,tay,trv,xsy}/` | `XML/{Amis,Atayal,Truku,Saisiyat}/` |
+
+Note `trv` → `Truku`, not `Seediq`: the ISO code covers both and the `dialect`
+attribute on that file says Truku. Reading the code alone would have filed it
+wrongly.
+
+There is no pending list here, unlike POL-047 and POL-052, because the rule
+costs a `mkdir` and a `git mv`. **Glosbe's open re-port, PR #180, still carries
+the ISO-code layout and must be rebased onto this.**
