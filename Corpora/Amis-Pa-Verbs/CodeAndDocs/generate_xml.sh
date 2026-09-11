@@ -7,8 +7,16 @@ PY="${PYTHON:-python3}"
 test -f "$FB/QC/cleaning/clean_xml.py"
 "$PY" "$HERE/build_xml.py"
 "$PY" "$FB/QC/cleaning/apply_manual_edits.py" --corpora_path "$ROOT/XML"
-"$PY" "$FB/QC/cleaning/clean_xml.py" --corpora_path "$ROOT/XML"
+# --warnings_dir keeps the per-run cleaner report out of published XML/
+# (POL-033); without it the default lands it inside the data.
+"$PY" "$FB/QC/cleaning/clean_xml.py" --corpora_path "$ROOT/XML" \
+    --warnings_dir "$HERE/reports"
+# The conversion table and the source orthography are registered under
+# Orthographies/ (POL-056), not kept corpus-local: a table outside
+# ConversionTables/ escapes the rule-application sweep and derives no
+# capital-letter variants.
 "$PY" "$FB/QC/utilities/standardize.py" --corpora_path "$ROOT/XML" \
-    --tsv_path "$HERE/wu_source_to_ortho113.tsv" --target_column standard
+    --tsv_path "$FB/Orthographies/ConversionTables/Amis_Wu_113.tsv" \
+    --target_column standard
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$ROOT/XML" \
-    --language Amis --orthography "$HERE/source_orthography"
+    --language Amis --orthography "$FB/Orthographies/Wu"
