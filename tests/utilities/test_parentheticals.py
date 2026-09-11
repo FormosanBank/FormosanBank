@@ -5,6 +5,7 @@ import pytest
 from QC.utilities.parentheticals import (
     INLINE,
     NOTE,
+    NOTE_MARKERS,
     PAIRED,
     classify,
     pairs_with_source,
@@ -51,6 +52,26 @@ class TestPairing:
             ["polite invitation to someone to eat"],
         )
         assert split_in_step(source, translation) is None
+
+    def test_a_marker_may_follow_one_clause_of_its_own(self):
+        # Printed p.280 of Blust's Thao dictionary: `modern` qualifies the
+        # headword, and the literal translation follows it behind a semicolon.
+        # Anchoring the marker to the very start left the whole thing in the
+        # gloss, so a published TRANSL read `cemetery (modern; lit. "burial
+        # meadow")`.
+        source = "m-in-acay a buqan"
+        translation = 'cemetery (modern; lit. "burial meadow")'
+        assert [s.kind for s in classify(source, translation)] == [NOTE]
+        assert take_notes(source, translation) == (
+            "cemetery", ['modern; lit. "burial meadow"'])
+
+    def test_the_marker_allows_one_clause_and_no_more(self):
+        # One clause before the marker, not any number of them; and a
+        # semicolon on its own is not a marker.
+        assert NOTE_MARKERS.match("lit. x")
+        assert NOTE_MARKERS.match('modern; lit. "y"')
+        assert not NOTE_MARKERS.match("one; two; lit. z")
+        assert not NOTE_MARKERS.match("a cat; a dog")
 
     def test_one_source_word_still_pairs_with_a_short_gloss(self):
         # The scale rule is about a note's worth of English, not about every

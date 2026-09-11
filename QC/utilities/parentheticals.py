@@ -54,8 +54,13 @@ DEFAULT_NOTE_WORDS = 5
 #: (maintainer's ruling, 2026-09-11).
 ETCETERA = re.compile(r"\betc\.", re.IGNORECASE)
 
+# A marker may sit behind one clause of its own: Blust's Thao dictionary prints
+# `cemetery (modern; lit. `burial meadow')`, where `modern` qualifies the
+# headword and the literal translation follows it. One leading clause and a
+# semicolon are allowed before the marker; anything more and the bracket is
+# prose that happens to contain the word.
 NOTE_MARKERS = re.compile(
-    r"""^(
+    r"""^(?:[^;()]*;\s*)?(
         lit\.|literally|viz\.|e\.g\.|i\.e\.|cf\.
       | said\b | answer\b | reply\b | asking\b | statement\b | advice\b
       | as\ (when|to|in|if|opposed|a\ polite)
