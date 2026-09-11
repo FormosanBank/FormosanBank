@@ -407,8 +407,18 @@ allowlist (V084 for TRANSL, V156 for FORM).
   changing inside a longer word. Nothing requires the variation to be
   word-internal.
 - A competing **lexeme** for the same meaning, or a different gloss, is not
-  a variant; per POL-027 it becomes its own `S` block. Latham-1862
-  currently carries 6 such cases; they are tracked for remediation.
+  a variant; per POL-027 it becomes its own `S` block, named the same way
+  as the optional-material case below. Latham-1862 carries 5 such cases,
+  all Babuza-Favorlang; they are tracked for remediation.
+
+  **Whether a second reading is a competing lexeme is a judgement about
+  the source, not a string-similarity test** (maintainer, 2026-09-10).
+  V150 measures overlap and proportion, and it is a useful prompt — it
+  flagged exactly the six Latham pairs a human then classified, and none
+  of the two it left alone — but it decides nothing. Two readings a source
+  offers as alternative pronunciations of one word stay a variant however
+  little they overlap; two words for one meaning become separate blocks
+  however much they do.
 - Variants may sit at S, W or M, and belong on the node that actually
   varies. A word-list corpus whose `S` is a word is the S-level case.
 - **Optional material is resolved by scope.** What forces a separate `S`
@@ -421,6 +431,21 @@ allowlist (V084 for TRANSL, V156 for FORM).
   a `ver="alt"` variant FORM on the word that varies, never a second
   sentence.
   Neither mechanism leaves parentheses in a published FORM.
+- **Naming the extra blocks.** Wherever one source cell or sentence yields
+  more than one `S` — optional material above, or a competing lexeme — the
+  first block keeps its published id and the second takes that id plus
+  `-opt`. A **third** reading and beyond carry their reading number:
+  `-opt3`, `-opt4`, and so on (maintainer, 2026-09-10). There is no
+  `-opt2`: the second block is the common case and stays unnumbered, so
+  the ids already published do not move. One convention covers both
+  mechanisms because the question a reader asks of the id is the same —
+  *which block of a split is this?* — and not *why was it split?*, which
+  the FORMs and glosses answer.
+
+  These are published identifiers the moment they merge, so POL-037
+  applies to them: an `-opt` id is never renumbered afterwards, and a
+  later-discovered third reading takes `-opt3` rather than shifting
+  anything.
 
 ---
 
