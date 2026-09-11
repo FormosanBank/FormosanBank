@@ -4,6 +4,15 @@ This corpus contains 29 Coastal Amis sentence variants from Joy Wu's 2006 paper,
 
 All 13 source pages were reviewed. The corpus covers the sentence examples on pages 6–10; lexical tables and theory discussion are outside this sentence-example scope. The recorded exclusions cover repeated earlier examples, ungrammatical and questionable examples, forbidden alternatives and one starred translation. Person/car readings in 20c and both case forms of 36a remain separate, fully aligned variants. `TEXT/@source` carries the paper's URL and the SHA-256 of the transcribed PDF.
 
+## Notes and Issues
+
+The source segments `Pa-fli` but gives only the whole-word gloss `give`; its two morphemes therefore have no individual glosses. Source form/gloss mismatches and analytic nulls are preserved. Original and standard PHON use different vowel and lateral inventories, so the tiers do not imply strict phonemic equivalence — in particular the standard tier merges Wu's `u`/`o` distinction, because Ortho113 Coastal writes one `o` for /o~u/. The source paper supplies no audio.
+
+Wu prints example 36a in two case forms. They are two sentences, `s36a` and `s36a-opt`, because the alternation is a competing lexeme with a different gloss (`t-u`/DAT-NCM against `i`/PREP) rather than a spelling variant.
+
+The corpus carries its own build test suite under `CodeAndDocs/tests/`, which pins the reviewed source decisions — exact sentence and morpheme IDs, counts, the unglossed `Pa-fli` boundary and the retained exclusions — so neither a shared-tool change nor a transcription edit can move them silently. It runs as the `source-tests` check of `CodeAndDocs/validate.sh`, and is not part of the repository-wide test run.
+
+
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
@@ -16,20 +25,14 @@ All 13 source pages were reviewed. The corpus covers the sentence examples on pa
 | Translated words |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 154 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 |
 | Morphologically segmented | 154 |
 | Glossed words | 154 |
 
 ***
 
 <!-- CORPUS STATS END -->
-
-## Notes and Issues
-
-The source segments `Pa-fli` but gives only the whole-word gloss `give`; its two morphemes therefore have no individual glosses. Source form/gloss mismatches and analytic nulls are preserved. Original and standard PHON use different vowel and lateral inventories, so the tiers do not imply strict phonemic equivalence — in particular the standard tier merges Wu's `u`/`o` distinction, because Ortho113 Coastal writes one `o` for /o~u/. The source paper supplies no audio.
-
-Wu prints example 36a in two case forms. They are two sentences, `s36a` and `s36a-opt`, because the alternation is a competing lexeme with a different gloss (`t-u`/DAT-NCM against `i`/PREP) rather than a spelling variant.
-
-The corpus carries its own build test suite under `CodeAndDocs/tests/`, which pins the reviewed source decisions — exact sentence and morpheme IDs, counts, the unglossed `Pa-fli` boundary and the retained exclusions — so neither a shared-tool change nor a transcription edit can move them silently. It runs as the `source-tests` check of `CodeAndDocs/validate.sh`, and is not part of the repository-wide test run.
 
 ## Access Details
 
