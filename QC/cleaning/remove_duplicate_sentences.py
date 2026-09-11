@@ -57,8 +57,20 @@ from validate_duplicate_sentences import normalize_for_comparison  # noqa: E402
 # ---------------------------------------------------------------------------
 
 def _extract_sentences_lxml(xml_path: str, kind_of: str):
-    """Return [(s_id, normalized_text), ...].  Uses lxml so apply() can reuse
-    the same parse without round-tripping."""
+    """Return [(s_id, key), ...] where the key is (FORM text, TRANSLs).
+
+    Two sentences are the same sentence only when they say the same thing AND
+    mean the same thing. Keying on the FORM alone deletes homophones: Blust's
+    Thao dictionary has `a` the future marker and `a` the linking particle, one
+    spelling and two words, and FORM-only equivalence silently merged them. In a
+    dictionary that is the common case, not the corner case (maintainer,
+    2026-09-11).
+
+    Where the FORM matches and the TRANSL does not, this returns two different
+    keys and neither is removed - validate_duplicate_sentences reports it SOFT,
+    for a human to decide whether it is a homophone or one entry that should
+    carry both glosses as ver="alt" (POL-025).
+    """
     out = []
     try:
         root = etree.parse(xml_path).getroot()
@@ -73,8 +85,13 @@ def _extract_sentences_lxml(xml_path: str, kind_of: str):
         if child is not None:
             norm = normalize_for_comparison(child.text or "")
             if norm:
-                out.append((sid, norm))
+                out.append((sid, (norm, sentence_meaning(s))))
     return out
+
+
+def sentence_meaning(s) -> tuple:
+    """Every TRANSL on this S, as a comparable, order-independent key."""
+    return tuple(sorted(_transl_key(t) for t in s.findall("TRANSL")))
 
 
 def _collect_xml_files(root_path: str):
@@ -108,7 +125,7 @@ def plan_removals(root_path: str, scope: str = "file",
 
     if scope == "file":
         for xml_path in xml_files:
-            by_text: dict[str, list[str]] = defaultdict(list)
+            by_text: dict[tuple, list[str]] = defaultdict(list)
             for sid, norm in _extract_sentences_lxml(str(xml_path), tier):
                 by_text[norm].append(sid)
             for norm, sids in by_text.items():
@@ -121,7 +138,7 @@ def plan_removals(root_path: str, scope: str = "file",
                     removals.append((abs_path, sid, abs_path, sorted_sids[0]))
     else:
         # corpus scope: build (norm_text -> [(file, sid), ...]) over all files.
-        by_text: dict[str, list[tuple[str, str]]] = defaultdict(list)
+        by_text: dict[tuple, list[tuple[str, str]]] = defaultdict(list)
         for xml_path in xml_files:
             abs_path = str(xml_path.resolve())
             for sid, norm in _extract_sentences_lxml(str(xml_path), tier):
@@ -307,7 +324,7 @@ def main(argv=None) -> int:
         print(f"[dry-run] Would remove {len(plan)} duplicate <S> element(s):")
         for f, sid, keep_f, keep_sid in plan:
             where = keep_sid if keep_f == f else f"{keep_f}#{keep_sid}"
-            print(f"  - {f}#{sid}  (duplicate of {where}; distinct TRANSLs merge into it as ver=\"alt\")")
+            print(f"  - {f}#{sid}  (duplicate of {where})")
         print("[dry-run] Re-run with --apply to actually modify files.")
         return 0
 

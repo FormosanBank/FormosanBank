@@ -79,10 +79,12 @@ def test_extract_sentences_returns_only_chosen_tier(tmp_path):
         ("S_1", [("original", "Halo"), ("standard", "halo")]),
         ("S_2", [("original", "Yes"), ("standard", "yes")]),
     ])
-    forms = vds.extract_sentences(str(f), kind_of="standard")
+    forms = [(sid, raw) for sid, raw, _m in
+             vds.extract_sentences(str(f), kind_of="standard")]
     assert forms == [("S_1", "halo"), ("S_2", "yes")]
 
-    orig = vds.extract_sentences(str(f), kind_of="original")
+    orig = [(sid, raw) for sid, raw, _m in
+            vds.extract_sentences(str(f), kind_of="original")]
     assert orig == [("S_1", "Halo"), ("S_2", "Yes")]
 
 
@@ -94,7 +96,7 @@ def test_extract_sentences_skips_empty(tmp_path):
         ("S_3", [("standard", "bye")]),
     ])
     forms = vds.extract_sentences(str(f), kind_of="standard")
-    assert [sid for sid, _ in forms] == ["S_1", "S_3"]
+    assert [sid for sid, _raw, _meaning in forms] == ["S_1", "S_3"]
 
 
 # ---------------------------------------------------------------------------
@@ -264,3 +266,40 @@ def test_dedup_detection_survives_missing_codeanddocs(tmp_path):
     xml_dir.mkdir()
     _write_xml(xml_dir / "a.xml", [("S_1", [("standard", "x y")])])
     assert not vds.dedup_in_pipeline(str(xml_dir))
+
+
+def _write_xml_with_transls(path, sentences):
+    """sentences: [(s_id, form_text, [(lang, transl_text), ...])]"""
+    body = []
+    for sid, form, transls in sentences:
+        ts = "".join(
+            f'<TRANSL xml:lang="{lang}">{text}</TRANSL>'
+            for lang, text in transls)
+        body.append(
+            f'<S id="{sid}"><FORM kindOf="standard">{form}</FORM>{ts}</S>')
+    path.write_text(
+        '<?xml version="1.0" ?>\n<TEXT id="t" xml:lang="ami">'
+        + "".join(body) + "</TEXT>", encoding="utf-8")
+
+
+def test_same_form_different_transl_is_soft_even_when_dedup_is_declared(tmp_path):
+    """A homophone is not a leftover duplicate (maintainer, 2026-09-11).
+
+    Blust's Thao dictionary has `a` the future marker and `a` the linking
+    particle: one spelling, two words, two glosses. A corpus that declares dedup
+    should still be told about the pair - it might be one entry whose glosses
+    belong together as ver="alt" - but it is not a failure of the dedup step, so
+    it stays SOFT. Only same words AND same meaning is HARD.
+    """
+    f = tmp_path / "a.xml"
+    _write_xml_with_transls(f, [
+        ("S_1", "a", [("en", "future marker")]),
+        ("S_2", "a", [("en", "linking particle")]),
+        ("S_3", "b", [("en", "same")]),
+        ("S_4", "b", [("en", "same")]),
+    ])
+    findings = vds.find_duplicates(str(tmp_path), kind_of="standard",
+                                   dedup_expected=True)
+    by_text = {f_.normalized_text: f_ for f_ in findings}
+    assert by_text["a"].severity == "SOFT"
+    assert by_text["b"].severity == "HARD"

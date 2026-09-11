@@ -93,9 +93,12 @@ def test_find_duplicate_sentences_extracts_the_base(tmp_path):
 
 def test_validate_duplicate_sentences_extracts_the_base(tmp_path):
     path = _write(tmp_path, _VARIANT_FIRST_S)
-    assert validate_duplicate_sentences.extract_sentences(
-        str(path), "standard"
-    ) == [("S1", "base text")]
+    assert [
+        (sid, raw)
+        for sid, raw, _meaning in validate_duplicate_sentences.extract_sentences(
+            str(path), "standard"
+        )
+    ] == [("S1", "base text")]
 
 
 def test_remove_duplicate_sentences_extracts_the_base(tmp_path):
@@ -103,8 +106,10 @@ def test_remove_duplicate_sentences_extracts_the_base(tmp_path):
     got = remove_duplicate_sentences._extract_sentences_lxml(
         str(path), "standard"
     )
+    # The key is (FORM, TRANSLs); this fixture carries no TRANSL.
     assert got == [
-        ("S1", remove_duplicate_sentences.normalize_for_comparison("base text"))
+        ("S1",
+         (remove_duplicate_sentences.normalize_for_comparison("base text"), ()))
     ]
 
 
