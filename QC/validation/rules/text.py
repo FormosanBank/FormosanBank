@@ -232,13 +232,38 @@ def _direct_form_by_kind(elem: etree._Element, kind: str) -> str | None:
     return (form.text or "") if form is not None else None
 
 
+def _iter_standard_texts(s: etree._Element):
+    """Yield the text of every standard FORM of ``s`` -- base and variants.
+
+    The character-level rules below ask "is this published text clean?",
+    and a POL-028 ``ver="alt"`` variant is published text: standardize
+    derives it from the original-tier variant exactly as it derives the
+    base, so it is machine-owned and held to the same standard.
+
+    That is the opposite of what most consumers want. A rule that asks
+    "what does this sentence say?" -- alignment, duplicate detection,
+    tier-vs-tier comparison -- must take the base alone, because a
+    variant is a secondary reading and substituting it changes the
+    question. Those rules keep using ``find_base_form`` and are listed in
+    QC/xml_forms.py's docstring. The split is per rule, deliberately, and
+    was drawn after two defects were found sitting in variants that no
+    validator looked at (NTUFormosanCorpus, 2026-09-11).
+
+    Document order, base first where one exists. A tier with only
+    variants still yields them: V149 (HARD) reports the missing base, and
+    suppressing the text here would hide a second defect behind the first.
+    """
+    for form in s.findall("FORM"):
+        if form.get("kindOf") != "standard":
+            continue
+        yield "".join(form.itertext())
+
+
 def _s_standard_pairs(tree: etree._ElementTree):
     """Yield (s_id, standard_text) for each S whose standard FORM exists."""
     for s in tree.iter("S"):
-        text = _s_standard_form_text(s)
-        if text is None:
-            continue
-        yield s.get("id") or "", text
+        for text in _iter_standard_texts(s):
+            yield s.get("id") or "", text
 
 
 def _s_standard_triples(tree: etree._ElementTree):
@@ -249,10 +274,8 @@ def _s_standard_triples(tree: etree._ElementTree):
     (sourceline). Added 2026-06-01 alongside the SOFT-CSV upgrade.
     """
     for s in tree.iter("S"):
-        text = _s_standard_form_text(s)
-        if text is None:
-            continue
-        yield s, s.get("id") or "", text
+        for text in _iter_standard_texts(s):
+            yield s, s.get("id") or "", text
 
 
 def _location_for(elem: etree._Element) -> str:
@@ -577,22 +600,21 @@ def v120_null_in_S_standard(
     """
     findings: list[Finding] = []
     for s in tree.iter("S"):
-        text = _s_standard_form_text(s)
-        if text is not None:
+        for text in _iter_standard_texts(s):
             text = _RECONSTRUCTION_NULL_RE.sub("", text)
-        if text is None or NULL_SYMBOL not in text:
-            continue
-        s_id = s.get("id") or ""
-        findings.append(Finding(
-            rule_id="V120",
-            severity=Severity.SOFT,
-            message=(
-                f"V120 SOFT: null symbol '{NULL_SYMBOL}' in S-level standard FORM "
-                f"(null in s-level standard); S id={s_id!r}"
-            ),
-            path=path,
-            location=f"S={s_id}" if s_id else "S",
-        ))
+            if NULL_SYMBOL not in text:
+                continue
+            s_id = s.get("id") or ""
+            findings.append(Finding(
+                rule_id="V120",
+                severity=Severity.SOFT,
+                message=(
+                    f"V120 SOFT: null symbol '{NULL_SYMBOL}' in S-level standard "
+                    f"FORM (null in s-level standard); S id={s_id!r}"
+                ),
+                path=path,
+                location=f"S={s_id}" if s_id else "S",
+            ))
     return findings
 
 

@@ -216,3 +216,32 @@ def test_orthography_detector_skips_the_snapshot(corpus, tmp_path):
     combined = analyze_xml_files_combined(str(corpus), orthographies)
     assert list(combined) == ["Coastal"], combined
     assert "(1 files)" in combined["Coastal"]["file"], combined["Coastal"]["file"]
+
+
+def test_clean_filepaths_does_not_rename_inside_codeanddocs(tmp_path):
+    """`clean_filepaths` renames files on disk, so an unguarded walk does
+    not merely miscount -- it moves a POL-035 snapshot out from under the
+    path that references it.
+
+    The fixture needs a name the sanitiser will actually change, or the
+    case passes whatever the guard does.
+    """
+    dirty = 'bad:name*.xml'
+    published = tmp_path / "XML" / "Amis"
+    snapshot = tmp_path / "CodeAndDocs" / "pre_correction_snapshot" / "Amis"
+    for d in (published, snapshot):
+        d.mkdir(parents=True)
+        (d / dirty).write_text(TEXT.format(tid="t", extra="oeno"), encoding="utf-8")
+
+    result = _run("QC/cleaning/clean_filepaths.py", "--corpora_path", str(tmp_path))
+    assert result.returncode == 0, result.stderr
+
+    assert (snapshot / dirty).is_file(), (
+        "clean_filepaths renamed a file inside CodeAndDocs/; the snapshot no "
+        "longer sits where the ledger and README reference it"
+    )
+    # ...and the guard must not have turned into "skip everything".
+    assert not (published / dirty).is_file(), (
+        "published file was not sanitised, so this test proves nothing"
+    )
+    assert list(published.glob("*.xml")), "published file vanished entirely"
