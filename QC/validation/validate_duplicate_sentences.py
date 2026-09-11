@@ -62,6 +62,7 @@ _DISC_HERE = Path(__file__).resolve()
 if str(_DISC_HERE.parents[2]) not in sys.path:
     sys.path.insert(0, str(_DISC_HERE.parents[2]))
 from QC.validation._discovery import discover_xml_files as _discover_xml_files  # noqa: E402
+from QC.xml_forms import find_base_form  # noqa: E402
 
 
 # ---------------------------------------------------------------------------
@@ -95,12 +96,13 @@ def extract_sentences(xml_path: str, kind_of: str = "standard"):
         return out
     for s in root.iter("S"):
         sid = s.get("id", "")
-        for form in s:  # only direct children
-            if form.tag == "FORM" and form.get("kindOf") == kind_of:
-                text = form.text or ""
-                if normalize_for_comparison(text):
-                    out.append((sid, text))
-                break  # at most one matching FORM per S
+        # The tier's BASE form, never a ver="alt" variant: two sentences
+        # whose variants coincide are not duplicates of each other.
+        form = find_base_form(s, kind_of)
+        if form is not None:
+            text = form.text or ""
+            if normalize_for_comparison(text):
+                out.append((sid, text))
     return out
 
 

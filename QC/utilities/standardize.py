@@ -15,6 +15,7 @@ from lxml import etree
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
+from QC.corpus_counts import is_reproduction_path  # noqa: E402
 from QC.utilities._accents import (  # noqa: E402
     standard_orthography_accents,
     strip_accents,
@@ -209,19 +210,34 @@ def _apply_standard_hyphens(element, lang_code, ortho_path, hard_remove,
 from QC.utilities._prettify import prettify  # noqa: E402,F401  (shared, mixed-content-safe, idempotent)
 
 
-def get_files(path, language):
+def get_files(path, language, root=None):
+    """Every .xml under `path`, skipping CodeAndDocs.
+
+    `root` is what the caller was originally pointed at, which is not
+    always `path`: get_exploration_targets expands a corpora directory
+    into its children, and one of those children is CodeAndDocs itself.
+    Judging "did the caller mean this tree?" against the expanded child
+    would answer yes for every corpus root. Judging it against the
+    original argument answers correctly, and still lets a build that
+    targets <corpus>/CodeAndDocs/Final_XML/ directly be processed.
+    """
+    root = path if root is None else root
     to_check = []
     if language:
-        for root, dirs, files in os.walk(path):
+        for dirpath, dirs, files in os.walk(path):
             for file in files:
-                if file.endswith(".xml") and re.findall(language, os.path.join(root)): # and 'Final_XML' in os.path.join(root, file)
-                    to_check.append(os.path.join(root, file))
+                if is_reproduction_path(os.path.join(dirpath, file), root):
+                    continue
+                if file.endswith(".xml") and re.findall(language, dirpath):
+                    to_check.append(os.path.join(dirpath, file))
         return to_check
     
-    for root, dirs, files in os.walk(path):
+    for dirpath, dirs, files in os.walk(path):
         for file in files:
-            if file.endswith(".xml"): # and 'Final_XML' in os.path.join(root, file)
-                to_check.append(os.path.join(root, file))
+            if is_reproduction_path(os.path.join(dirpath, file), root):
+                continue
+            if file.endswith(".xml"):
+                to_check.append(os.path.join(dirpath, file))
 
     return to_check
 
@@ -377,15 +393,21 @@ def _copy_mixed_content(src, dst):
 
 
 def create_standard(element, file_path=None):
-    # Find the <FORM> child within each <S> element
-    original_form = element.find("FORM[@kindOf='original']")
-    standard_form = element.find("FORM[@kindOf='standard']")
+    # Bases lack ver; _sync_standard_variants handles the variant FORMs.
+    original_form = next(
+        (f for f in element.findall("FORM[@kindOf='original']") if f.get("ver") is None),
+        None,
+    )
+    standard_form = next(
+        (f for f in element.findall("FORM[@kindOf='standard']") if f.get("ver") is None),
+        None,
+    )
 
     if original_form is None:
         s_id = element.get('id', '<unknown>')
         location = f" in {file_path}" if file_path else ""
         print(
-            f"Error: S id={s_id!r}{location} has no original tier (kindOf='original'). "
+            f"Error: S id={s_id!r}{location} has no original base (kindOf='original' without ver). "
             f"Cannot create standard tier.",
             file=sys.stderr,
         )
@@ -503,7 +525,7 @@ def main(args):
         if os.path.isfile(corpus) and corpus.endswith('.xml'):
             files = [corpus]
         else:
-            files = get_files(corpus, args.language)
+            files = get_files(corpus, args.language, args.corpora_path)
             
         if files:
             for file in files:

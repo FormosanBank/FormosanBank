@@ -1218,17 +1218,19 @@
     <S id="01-1_S_10">
         <FORM kindOf="original">ka kauman tu cilas i-sia amunu=cia.</FORM>
         <PHON kindOf="original">ka kauman tu ʨi[l|ɬ]as isia amunuʨia</PHON>
+        <FORM kindOf="original" ver="alt">kaz kauman tu cilas i-sia amunu=cia.</FORM>
         <FORM kindOf="standard">ka kauman tu cilas i-sia amunucia.</FORM>
         <PHON kindOf="standard">ka kauman tu ʨi[l|ɬ]as iɕia amunuʨia</PHON>
-        <FORM kindOf="alternate">kaz kauman tu cilas i-sia amunu=cia.</FORM>
+        <FORM kindOf="standard" ver="alt">kaz kauman tu cilas i-sia amunucia.</FORM>
         <TRANSL xml:lang="zho">米缸裡只有一點點米。</TRANSL>
         <TRANSL xml:lang="eng">There's only a bit of rice in the rice vat.</TRANSL>
         <W id="01-1_S_10_W0">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
+            <FORM kindOf="original" ver="alt">kaz</FORM>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
-            <FORM kindOf="alternate">kaz</FORM>
+            <FORM kindOf="standard" ver="alt">kaz</FORM>
             <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">just</TRANSL>
             <M id="01-1_S_10_W0M0">
@@ -3941,17 +3943,19 @@
     <S id="01-4_S_1">
         <FORM kindOf="original">an-dii=an hai inak.</FORM>
         <PHON kindOf="original">andiian [x|χ]ai inak</PHON>
+        <FORM kindOf="original" ver="alt">an-diip=an hai inak.</FORM>
         <FORM kindOf="standard">an-diian hai inak.</FORM>
         <PHON kindOf="standard">andiian [x|χ]ai inak</PHON>
-        <FORM kindOf="alternate">an-diip=an hai inak.</FORM>
+        <FORM kindOf="standard" ver="alt">an-diipan hai inak.</FORM>
         <TRANSL xml:lang="zho" notes="那個(東西) 是我的。">那個 是我的。</TRANSL>
         <TRANSL xml:lang="eng" notes="That (thing) is mine.">That is mine.</TRANSL>
         <W id="01-4_S_1_W0">
             <FORM kindOf="original">an-dii=an</FORM>
             <PHON kindOf="original">andiian</PHON>
+            <FORM kindOf="original" ver="alt">an-diip=an</FORM>
             <FORM kindOf="standard">an-dii=an</FORM>
             <PHON kindOf="standard">andiian</PHON>
-            <FORM kindOf="alternate">an-diip=an</FORM>
+            <FORM kindOf="standard" ver="alt">an-diip=an</FORM>
             <TRANSL xml:lang="zho" kindOf="original">可見.中距-那裡=中距.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.MED-there=MED.NOM</TRANSL>
             <M id="01-4_S_1_W0M0">
@@ -4015,17 +4019,19 @@
     <S id="01-4_S_2">
         <FORM kindOf="original" notes="*an-dii(p)=tan hai inak. 語法不合哦！">an-dii=tan inak.</FORM>
         <PHON kindOf="original">andiitan inak</PHON>
+        <FORM kindOf="original" ver="alt">an-diip=tan inak.</FORM>
         <FORM kindOf="standard">an-diitan inak.</FORM>
         <PHON kindOf="standard">andiitan inak</PHON>
-        <FORM kindOf="alternate">an-diip=tan inak.</FORM>
+        <FORM kindOf="standard" ver="alt">an-diiptan inak.</FORM>
         <TRANSL xml:lang="zho">我的是這個。</TRANSL>
         <TRANSL xml:lang="eng" notes="That (thing) is (specifically) mine.">That is mine.</TRANSL>
         <W id="01-4_S_2_W0">
             <FORM kindOf="original">an-dii=tan</FORM>
             <PHON kindOf="original">andiitan</PHON>
+            <FORM kindOf="original" ver="alt">an-diip=tan</FORM>
             <FORM kindOf="standard">an-dii=tan</FORM>
             <PHON kindOf="standard">andiitan</PHON>
-            <FORM kindOf="alternate">an-diip=tan</FORM>
+            <FORM kindOf="standard" ver="alt">an-diip=tan</FORM>
             <TRANSL xml:lang="zho" kindOf="original">可見.中距-那裡=中距.斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.MED-there=MED.OBL</TRANSL>
             <M id="01-4_S_2_W0M0">
@@ -44128,9 +44134,10 @@
     <S id="12_S_2">
         <FORM kindOf="original" notes="saiv=ik  &lt; saiv-av=ik (give-IMP=1SG.NOM)的縮寫">hanaivaz aiv=ik tu tasa kamasia.</FORM>
         <PHON kindOf="original">[x|χ]anaivað aivik tu tasa kamasia</PHON>
+        <FORM kindOf="original" ver="alt">hanaivaz saiv=ik tu tasa kamasia.</FORM>
         <FORM kindOf="standard">hanaivaz aivik tu tasa kamasia.</FORM>
         <PHON kindOf="standard">[x|χ]anaivað aivik tu tasa kamaɕia</PHON>
-        <FORM kindOf="alternate">hanaivaz saiv=ik tu tasa kamasia.</FORM>
+        <FORM kindOf="standard" ver="alt">hanaivaz saivik tu tasa kamasia.</FORM>
         <TRANSL xml:lang="zho">Hanaivaz，給我一顆糖果。</TRANSL>
         <TRANSL xml:lang="eng">Hanaivaz, give me a piece of candy.</TRANSL>
         <W id="12_S_2_W0">
@@ -44152,9 +44159,10 @@
         <W id="12_S_2_W1">
             <FORM kindOf="original">aiv=ik</FORM>
             <PHON kindOf="original">aivik</PHON>
+            <FORM kindOf="original" ver="alt">saiv=ik</FORM>
             <FORM kindOf="standard">aiv=ik</FORM>
             <PHON kindOf="standard">aivik</PHON>
-            <FORM kindOf="alternate">saiv=ik</FORM>
+            <FORM kindOf="standard" ver="alt">saiv=ik</FORM>
             <TRANSL xml:lang="zho" kindOf="original">給.祈使=1SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PF.give.IMP=1SG.NOM</TRANSL>
             <M id="12_S_2_W1M0">
@@ -68596,9 +68604,10 @@
     <S id="26_S_4">
         <FORM kindOf="original">ma-s&lt;na&gt;nava hai nautu ma-hansiap malas-bunun.</FORM>
         <PHON kindOf="original">masnanava [x|χ]ai nautu ma[x|χ]ansiap ma[l|ɬ]asbunun</PHON>
+        <FORM kindOf="original" ver="alt">ma-s&lt;na&gt;nava hai nautu na=ma-hansiap malas-bunun.</FORM>
         <FORM kindOf="standard">ma-s&lt;na&gt;nava hai nautu ma-hansiap malas-bunun.</FORM>
         <PHON kindOf="standard">masnanava [x|χ]ai nautu ma[x|χ]anɕiap ma[l|ɬ]asbunun</PHON>
-        <FORM kindOf="alternate">ma-s&lt;na&gt;nava hai nautu na=ma-hansiap malas-bunun.</FORM>
+        <FORM kindOf="standard" ver="alt">ma-s&lt;na&gt;nava hai nautu nama-hansiap malas-bunun.</FORM>
         <TRANSL xml:lang="zho">老師一定會講布農語。</TRANSL>
         <TRANSL xml:lang="eng">The teacher definitely knows how to speak Bunun.</TRANSL>
         <W id="26_S_4_W0">
@@ -68662,9 +68671,10 @@
         <W id="26_S_4_W3">
             <FORM kindOf="original">ma-hansiap</FORM>
             <PHON kindOf="original">ma[x|χ]ansiap</PHON>
+            <FORM kindOf="original" ver="alt">na=ma-hansiap</FORM>
             <FORM kindOf="standard">ma-hansiap</FORM>
             <PHON kindOf="standard">ma[x|χ]anɕiap</PHON>
-            <FORM kindOf="alternate">na=ma-hansiap</FORM>
+            <FORM kindOf="standard" ver="alt">na=ma-hansiap</FORM>
             <TRANSL xml:lang="zho" kindOf="original">(非實現=)主焦-知識</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">(IRR=)AF-knowledge</TRANSL>
             <M id="26_S_4_W3M0">
@@ -72246,17 +72256,19 @@
     <S id="28_S_6">
         <FORM kindOf="original" notes="加上LOC–an語意較明確，但省略也可以">kangavas hai mahtu=in kaun-un=su.</FORM>
         <PHON kindOf="original">kaŋavas [x|χ]ai ma[x|χ]tuin kaununsu</PHON>
+        <FORM kindOf="original" ver="alt">kangavas=an hai mahtu=in kaun-un=su.</FORM>
         <FORM kindOf="standard">kangavas hai mahtuin kaun-unsu.</FORM>
         <PHON kindOf="standard">kaŋavas [x|χ]ai ma[x|χ]tuin kaununsu</PHON>
-        <FORM kindOf="alternate">kangavas=an hai mahtu=in kaun-un=su.</FORM>
+        <FORM kindOf="standard" ver="alt">kangavasan hai mahtuin kaun-unsu.</FORM>
         <TRANSL xml:lang="zho">芒果, 你可以吃了。</TRANSL>
         <TRANSL xml:lang="eng">The mango, you can eat it.</TRANSL>
         <W id="28_S_6_W0">
             <FORM kindOf="original">kangavas</FORM>
             <PHON kindOf="original">kaŋavas</PHON>
+            <FORM kindOf="original" ver="alt">kangavas=an</FORM>
             <FORM kindOf="standard">kangavas</FORM>
             <PHON kindOf="standard">kaŋavas</PHON>
-            <FORM kindOf="alternate">kangavas=an</FORM>
+            <FORM kindOf="standard" ver="alt">kangavas=an</FORM>
             <TRANSL xml:lang="zho" kindOf="original">芒果(=近距.主格)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mango(=MED.NOM)</TRANSL>
             <M id="28_S_6_W0M0">
@@ -72344,17 +72356,19 @@
     <S id="28_S_7">
         <FORM kindOf="original">kangavas hai mahtu=in kaun-un=ta.</FORM>
         <PHON kindOf="original">kaŋavas [x|χ]ai ma[x|χ]tuin kaununta</PHON>
+        <FORM kindOf="original" ver="alt">kangavas=an hai mahtu=in kaun-un=ta.</FORM>
         <FORM kindOf="standard">kangavas hai mahtuin kaun-unta.</FORM>
         <PHON kindOf="standard">kaŋavas [x|χ]ai ma[x|χ]tuin kaununta</PHON>
-        <FORM kindOf="alternate">kangavas=an hai mahtu=in kaun-un=ta.</FORM>
+        <FORM kindOf="standard" ver="alt">kangavasan hai mahtuin kaun-unta.</FORM>
         <TRANSL xml:lang="zho">芒果, 我們可以吃了。</TRANSL>
         <TRANSL xml:lang="eng">The mango, we can eat it.</TRANSL>
         <W id="28_S_7_W0">
             <FORM kindOf="original">kangavas</FORM>
             <PHON kindOf="original">kaŋavas</PHON>
+            <FORM kindOf="original" ver="alt">kangavas=an</FORM>
             <FORM kindOf="standard">kangavas</FORM>
             <PHON kindOf="standard">kaŋavas</PHON>
-            <FORM kindOf="alternate">kangavas=an</FORM>
+            <FORM kindOf="standard" ver="alt">kangavas=an</FORM>
             <TRANSL xml:lang="zho" kindOf="original">芒果(=近距.主格)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mango(=MED.NOM)</TRANSL>
             <M id="28_S_7_W0M0">
@@ -75354,9 +75368,10 @@
     <S id="30_S_5">
         <FORM kindOf="original" notes="maklang-daingaz 特別熱。Daingaz 非常。Ma-daingaz 老人。省略 irrealis na= 意思為「隨口說說」，不強調預測的天氣狀況">nau tu ma-klang i-nata.</FORM>
         <PHON kindOf="original">nau tu mak[l|ɬ]aŋ inata</PHON>
+        <FORM kindOf="original" ver="alt">nau tu na=ma-klang i-nata.</FORM>
         <FORM kindOf="standard">nau tu ma-klang i-nata.</FORM>
         <PHON kindOf="standard">nau tu mak[l|ɬ]aŋ inata</PHON>
-        <FORM kindOf="alternate">nau tu na=ma-klang i-nata.</FORM>
+        <FORM kindOf="standard" ver="alt">nau tu nama-klang i-nata.</FORM>
         <TRANSL xml:lang="zho">外面一定很熱；外面本來就很熱</TRANSL>
         <TRANSL xml:lang="eng">It must be hot outside.</TRANSL>
         <W id="30_S_5_W0">
@@ -75394,9 +75409,10 @@
         <W id="30_S_5_W2">
             <FORM kindOf="original">ma-klang</FORM>
             <PHON kindOf="original">mak[l|ɬ]aŋ</PHON>
+            <FORM kindOf="original" ver="alt">na=ma-klang</FORM>
             <FORM kindOf="standard">ma-klang</FORM>
             <PHON kindOf="standard">mak[l|ɬ]aŋ</PHON>
-            <FORM kindOf="alternate">na=ma-klang</FORM>
+            <FORM kindOf="standard" ver="alt">na=ma-klang</FORM>
             <TRANSL xml:lang="zho" kindOf="original">(非實現=)主焦-熱</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">(IRR=)AF-hot</TRANSL>
             <M id="30_S_5_W2M0">
@@ -80679,17 +80695,19 @@
     <S id="34_S_7">
         <FORM kindOf="original" notes="kalin-‘iv’iv-na-lumah 風吹到家 (blow-breeze-to-house)">kalin-lumah=in 'iv'iv=a.</FORM>
         <PHON kindOf="original">ka[l|ɬ]in[l|ɬ]uma[x|χ]in iviva</PHON>
+        <FORM kindOf="original" ver="alt">kalin-na-lumah=in 'iv'iv=a.</FORM>
         <FORM kindOf="standard">kalin-lumahin 'iv'iva.</FORM>
         <PHON kindOf="standard">ka[l|ɬ]in[l|ɬ]uma[x|χ]in ʔivʔiva</PHON>
-        <FORM kindOf="alternate">kalin-na-lumah=in 'iv'iv=a.</FORM>
+        <FORM kindOf="standard" ver="alt">kalin-na-lumahin 'iv'iva.</FORM>
         <TRANSL xml:lang="zho">風吹進屋子了。</TRANSL>
         <TRANSL xml:lang="eng">The wind blew into the house.</TRANSL>
         <W id="34_S_7_W0">
             <FORM kindOf="original">kalin-lumah=in</FORM>
             <PHON kindOf="original">ka[l|ɬ]in[l|ɬ]uma[x|χ]in</PHON>
+            <FORM kindOf="original" ver="alt">kalin-na-lumah=in</FORM>
             <FORM kindOf="standard">kalin-lumah=in</FORM>
             <PHON kindOf="standard">ka[l|ɬ]in[l|ɬ]uma[x|χ]in</PHON>
-            <FORM kindOf="alternate">kalin-na-lumah=in</FORM>
+            <FORM kindOf="standard" ver="alt">kalin-na-lumah=in</FORM>
             <TRANSL xml:lang="zho" kindOf="original">吹(-到)-家=改變狀態</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">blow(-to)-house=COS</TRANSL>
             <M id="34_S_7_W0M0">
@@ -83947,9 +83965,10 @@
     <S id="36_S_1">
         <FORM kindOf="original">i-sia ku'pu davus=an hai mais sak-un hai ma-'ansum.</FORM>
         <PHON kindOf="original">isia kupu davusan [x|χ]ai mais sakun [x|χ]ai maansum</PHON>
+        <FORM kindOf="original" ver="alt">i-sia ku'pu davus=an hai mais sak-un hai ma-'ansum=dau.</FORM>
         <FORM kindOf="standard">i-sia ku'pu davusan hai mais sak-un hai ma-'ansum.</FORM>
         <PHON kindOf="standard">iɕia kuʔpu davusan [x|χ]ai mais sakun [x|χ]ai maʔansum</PHON>
-        <FORM kindOf="alternate">i-sia ku'pu davus=an hai mais sak-un hai ma-'ansum=dau.</FORM>
+        <FORM kindOf="standard" ver="alt">i-sia ku'pu davusan hai mais sak-un hai ma-'ansumdau.</FORM>
         <TRANSL xml:lang="zho">這杯酒聞起來說是很香。</TRANSL>
         <TRANSL xml:lang="eng">This wine smells good.</TRANSL>
         <W id="36_S_1_W0">
@@ -84091,9 +84110,10 @@
         <W id="36_S_1_W7">
             <FORM kindOf="original">ma-'ansum.</FORM>
             <PHON kindOf="original">maansum</PHON>
+            <FORM kindOf="original" ver="alt">ma-'ansum=dau.</FORM>
             <FORM kindOf="standard">ma-'ansum.</FORM>
             <PHON kindOf="standard">maʔansum</PHON>
-            <FORM kindOf="alternate">ma-'ansum=dau.</FORM>
+            <FORM kindOf="standard" ver="alt">ma-'ansum=dau.</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-味道(=知識詞)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-taste(=EVI)</TRANSL>
             <M id="36_S_1_W7M0">
@@ -84341,9 +84361,10 @@
     <S id="36_S_3">
         <FORM kindOf="original">ta&lt;i&gt;'aza tu 'utung=an hai cis'uni ma-simuav tu bunun min-'utung.</FORM>
         <PHON kindOf="original">taiaða tu utuŋan [x|χ]ai ʨisuni masimuav tu bunun minutuŋ</PHON>
+        <FORM kindOf="original" ver="alt">ta&lt;i&gt;'aza tu 'utung=an=dau hai cis'uni ma-simuav tu bunun min-'utung.</FORM>
         <FORM kindOf="standard">ta&lt;i&gt;'aza tu 'utungan hai cis'uni ma-simuav tu bunun min-'utung.</FORM>
         <PHON kindOf="standard">taiʔaða tu ʔutuŋan [x|χ]ai ʨisʔuni maɕimuav tu bunun minʔutuŋ</PHON>
-        <FORM kindOf="alternate">ta&lt;i&gt;'aza tu 'utung=an=dau hai cis'uni ma-simuav tu bunun min-'utung.</FORM>
+        <FORM kindOf="standard" ver="alt">ta&lt;i&gt;'aza tu 'utungandau hai cis'uni ma-simuav tu bunun min-'utung.</FORM>
         <TRANSL xml:lang="zho">聽說猴子是貪吃的人變的。</TRANSL>
         <TRANSL xml:lang="eng">It is said that monkeys are transformed by gluttonous people.</TRANSL>
         <W id="36_S_3_W0">
@@ -84385,9 +84406,10 @@
         <W id="36_S_3_W2">
             <FORM kindOf="original">'utung=an</FORM>
             <PHON kindOf="original">utuŋan</PHON>
+            <FORM kindOf="original" ver="alt">'utung=an=dau</FORM>
             <FORM kindOf="standard">'utung=an</FORM>
             <PHON kindOf="standard">ʔutuŋan</PHON>
-            <FORM kindOf="alternate">'utung=an=dau</FORM>
+            <FORM kindOf="standard" ver="alt">'utung=an=dau</FORM>
             <TRANSL xml:lang="zho" kindOf="original">猴子=中距.主格(=知識詞)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">monkey=MED.NOM(=EVI)</TRANSL>
             <M id="36_S_3_W2M0">
@@ -87155,17 +87177,19 @@
     <S id="36_S_15">
         <FORM kindOf="original">tupa cina tu ma-si-tuhas hai na=ku-sia Tainan kuzakuza.</FORM>
         <PHON kindOf="original">tupa ʨina tu masitu[x|χ]as [x|χ]ai nakusia tainan kuðakuða</PHON>
+        <FORM kindOf="original" ver="alt">tupa=dau cina tu ma-si-tuhas hai na=ku-sia Tainan kuzakuza.</FORM>
         <FORM kindOf="standard">tupa cina tu ma-si-tuhas hai naku-sia Tainan kuzakuza.</FORM>
         <PHON kindOf="standard">tupa ʨina tu maɕitu[x|χ]as [x|χ]ai nakuɕia tainan kuðakuða</PHON>
-        <FORM kindOf="alternate">tupa=dau cina tu ma-si-tuhas hai na=ku-sia Tainan kuzakuza.</FORM>
+        <FORM kindOf="standard" ver="alt">tupadau cina tu ma-si-tuhas hai naku-sia Tainan kuzakuza.</FORM>
         <TRANSL xml:lang="zho">媽媽說哥哥明天會去台南工作。</TRANSL>
         <TRANSL xml:lang="eng">Mother says that my brother will go to work in Tainan tomorrow.</TRANSL>
         <W id="36_S_15_W0">
             <FORM kindOf="original">tupa</FORM>
             <PHON kindOf="original">tupa</PHON>
+            <FORM kindOf="original" ver="alt">tupa=dau</FORM>
             <FORM kindOf="standard">tupa</FORM>
             <PHON kindOf="standard">tupa</PHON>
-            <FORM kindOf="alternate">tupa=dau</FORM>
+            <FORM kindOf="standard" ver="alt">tupa=dau</FORM>
             <TRANSL xml:lang="zho" kindOf="original">說(=知識詞)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">to.say(=EVI)</TRANSL>
             <M id="36_S_15_W0M0">
@@ -87325,17 +87349,19 @@
     <S id="36_S_16">
         <FORM kindOf="original" notes="mikua……指對方有跌倒機率100%；mikua dau指對方有跌倒機率80%。mikua dau指「是為什麼」；mikua指「怎樣」。mikua dau 是幫別人問的。">mi-kua kasu tu mu-cingkul?</FORM>
         <PHON kindOf="original">mikua kasu tu muʨiŋku[l|ɬ]</PHON>
+        <FORM kindOf="original" ver="alt">mi-kua=dau kasu tu mu-cingkul?</FORM>
         <FORM kindOf="standard">mi-kua kasu tu mu-cingkul?</FORM>
         <PHON kindOf="standard">mikua kasu tu muʨiŋku[l|ɬ]</PHON>
-        <FORM kindOf="alternate">mi-kua=dau kasu tu mu-cingkul?</FORM>
+        <FORM kindOf="standard" ver="alt">mi-kuadau kasu tu mu-cingkul?</FORM>
         <TRANSL xml:lang="zho">你是什麼原因跌倒/你為什麼跌倒？</TRANSL>
         <TRANSL xml:lang="eng">What makes you fall?</TRANSL>
         <W id="36_S_16_W0">
             <FORM kindOf="original">mi-kua</FORM>
             <PHON kindOf="original">mikua</PHON>
+            <FORM kindOf="original" ver="alt">mi-kua=dau</FORM>
             <FORM kindOf="standard">mi-kua</FORM>
             <PHON kindOf="standard">mikua</PHON>
-            <FORM kindOf="alternate">mi-kua=dau</FORM>
+            <FORM kindOf="standard" ver="alt">mi-kua=dau</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-怎麼(=知識詞)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-how(=EVI)</TRANSL>
             <M id="36_S_16_W0M0">
@@ -96363,17 +96389,19 @@
     <S id="39_S_42">
         <FORM kindOf="original">papi=in itu Subali=cia 'uvaaz?</FORM>
         <PHON kindOf="original">papiin itu suba[l|ɬ]iʨia uvaað</PHON>
+        <FORM kindOf="original" ver="alt">papia=in itu Subali=cia 'uvaaz?</FORM>
         <FORM kindOf="standard">papiin itu Subalicia 'uvaaz?</FORM>
         <PHON kindOf="standard">papiin itu suba[l|ɬ]iʨia ʔuvaað</PHON>
-        <FORM kindOf="alternate">papia=in itu Subali=cia 'uvaaz?</FORM>
+        <FORM kindOf="standard" ver="alt">papiain itu Subalicia 'uvaaz?</FORM>
         <TRANSL xml:lang="zho">Subali有幾個孩子?</TRANSL>
         <TRANSL xml:lang="eng">How many children does Subali have?</TRANSL>
         <W id="39_S_42_W0">
             <FORM kindOf="original">papi=in</FORM>
             <PHON kindOf="original">papiin</PHON>
+            <FORM kindOf="original" ver="alt">papia=in</FORM>
             <FORM kindOf="standard">papi=in</FORM>
             <PHON kindOf="standard">papiin</PHON>
-            <FORM kindOf="alternate">papia=in</FORM>
+            <FORM kindOf="standard" ver="alt">papia=in</FORM>
             <TRANSL xml:lang="zho" kindOf="original">多少=改變狀態</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">how.many=COS</TRANSL>
             <M id="39_S_42_W0M0">
@@ -97821,9 +97849,10 @@
     <S id="39_S_54">
         <FORM kindOf="original">pia sakut= pac-is-halcis-un mas Subali=cia takna'?</FORM>
         <PHON kindOf="original">pia sakut paʦis[x|χ]a[l|ɬ]ʨisun mas suba[l|ɬ]iʨia takna</PHON>
+        <FORM kindOf="original" ver="alt">pia sakut=a pac-is-halcis-un mas Subali=cia takna'?</FORM>
         <FORM kindOf="standard">pia sakut pac-is-halcis-un mas Subalicia takna'?</FORM>
         <PHON kindOf="standard">pia sakut paʨis[x|χ]a[l|ɬ]ʨisun mas suba[l|ɬ]iʨia taknaʔ</PHON>
-        <FORM kindOf="alternate">pia sakut=a pac-is-halcis-un mas Subali=cia takna'?</FORM>
+        <FORM kindOf="standard" ver="alt">pia sakuta pac-is-halcis-un mas Subalicia takna'?</FORM>
         <TRANSL xml:lang="zho">昨天有幾隻山羌被Subali夾住?</TRANSL>
         <TRANSL xml:lang="eng">How many muntjacs were trapped by Subali yesterday?</TRANSL>
         <W id="39_S_54_W0">
@@ -97845,9 +97874,10 @@
         <W id="39_S_54_W1">
             <FORM kindOf="original">sakut=</FORM>
             <PHON kindOf="original">sakut</PHON>
+            <FORM kindOf="original" ver="alt">sakut=a</FORM>
             <FORM kindOf="standard">sakut=</FORM>
             <PHON kindOf="standard">sakut</PHON>
-            <FORM kindOf="alternate">sakut=a</FORM>
+            <FORM kindOf="standard" ver="alt">sakut=a</FORM>
             <TRANSL xml:lang="zho" kindOf="original">山羌=(遠距.主格)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">muntjac=(DIST.NOM)</TRANSL>
         </W>
@@ -97951,9 +97981,10 @@
     <S id="39_S_55">
         <FORM kindOf="original">pia sakut= panah-un mas Subali=cia takna'?</FORM>
         <PHON kindOf="original">pia sakut pana[x|χ]un mas suba[l|ɬ]iʨia takna</PHON>
+        <FORM kindOf="original" ver="alt">pia sakut=a panah-un mas Subali=cia takna'?</FORM>
         <FORM kindOf="standard">pia sakut panah-un mas Subalicia takna'?</FORM>
         <PHON kindOf="standard">pia sakut pana[x|χ]un mas suba[l|ɬ]iʨia taknaʔ</PHON>
-        <FORM kindOf="alternate">pia sakut=a panah-un mas Subali=cia takna'?</FORM>
+        <FORM kindOf="standard" ver="alt">pia sakuta panah-un mas Subalicia takna'?</FORM>
         <TRANSL xml:lang="zho">昨天有幾隻山羌被Subali射到?</TRANSL>
         <TRANSL xml:lang="eng">How many muntjacs were shot by Subali yesterday?</TRANSL>
         <W id="39_S_55_W0">
@@ -97975,9 +98006,10 @@
         <W id="39_S_55_W1">
             <FORM kindOf="original">sakut=</FORM>
             <PHON kindOf="original">sakut</PHON>
+            <FORM kindOf="original" ver="alt">sakut=a</FORM>
             <FORM kindOf="standard">sakut=</FORM>
             <PHON kindOf="standard">sakut</PHON>
-            <FORM kindOf="alternate">sakut=a</FORM>
+            <FORM kindOf="standard" ver="alt">sakut=a</FORM>
             <TRANSL xml:lang="zho" kindOf="original">山羌=(遠距.主格)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">muntjac=(DIST.NOM)</TRANSL>
         </W>
@@ -114175,17 +114207,19 @@
     <S id="48_S_22">
         <FORM kindOf="original">cis-maz kasu ma-subnuh</FORM>
         <PHON kindOf="original">ʨismað kasu masubnu[x|χ]</PHON>
+        <FORM kindOf="original" ver="alt">cis-maz=a kasu ma-subnuh</FORM>
         <FORM kindOf="standard">cis-maz kasu ma-subnuh</FORM>
         <PHON kindOf="standard">ʨismað kasu masubnu[x|χ]</PHON>
-        <FORM kindOf="alternate">cis-maz=a kasu ma-subnuh</FORM>
+        <FORM kindOf="standard" ver="alt">cis-maza kasu ma-subnuh</FORM>
         <TRANSL xml:lang="zho">你為了什麼生氣?</TRANSL>
         <TRANSL xml:lang="eng">Why are you angry?</TRANSL>
         <W id="48_S_22_W0">
             <FORM kindOf="original">cis-maz</FORM>
             <PHON kindOf="original">ʨismað</PHON>
+            <FORM kindOf="original" ver="alt">cis-maz=a</FORM>
             <FORM kindOf="standard">cis-maz</FORM>
             <PHON kindOf="standard">ʨismað</PHON>
-            <FORM kindOf="alternate">cis-maz=a</FORM>
+            <FORM kindOf="standard" ver="alt">cis-maz=a</FORM>
             <TRANSL xml:lang="zho" kindOf="original">為了-什麼(=遠距.主格)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">for-what(=DIST.NOM)</TRANSL>
             <M id="48_S_22_W0M0">
@@ -158018,17 +158052,19 @@
     <S id="63_S_18">
         <FORM kindOf="original">ka kauman tu cilas i-sia amunu=cia.</FORM>
         <PHON kindOf="original">ka kauman tu ʨi[l|ɬ]as isia amunuʨia</PHON>
+        <FORM kindOf="original" ver="alt">kaz kauman tu cilas i-sia amunu=cia.</FORM>
         <FORM kindOf="standard">ka kauman tu cilas i-sia amunucia.</FORM>
         <PHON kindOf="standard">ka kauman tu ʨi[l|ɬ]as iɕia amunuʨia</PHON>
-        <FORM kindOf="alternate">kaz kauman tu cilas i-sia amunu=cia.</FORM>
+        <FORM kindOf="standard" ver="alt">kaz kauman tu cilas i-sia amunucia.</FORM>
         <TRANSL xml:lang="zho">米缸裡只有一點點米。</TRANSL>
         <TRANSL xml:lang="eng">There's only a bit of rice in the rice vat.</TRANSL>
         <W id="63_S_18_W0">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
+            <FORM kindOf="original" ver="alt">kaz</FORM>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
-            <FORM kindOf="alternate">kaz</FORM>
+            <FORM kindOf="standard" ver="alt">kaz</FORM>
             <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">just</TRANSL>
             <M id="63_S_18_W0M0">
@@ -160740,17 +160776,19 @@
     <S id="63_S_41">
         <FORM kindOf="original">an-dii=an hai inak.</FORM>
         <PHON kindOf="original">andiian [x|χ]ai inak</PHON>
+        <FORM kindOf="original" ver="alt">an-diip=an hai inak.</FORM>
         <FORM kindOf="standard">an-diian hai inak.</FORM>
         <PHON kindOf="standard">andiian [x|χ]ai inak</PHON>
-        <FORM kindOf="alternate">an-diip=an hai inak.</FORM>
+        <FORM kindOf="standard" ver="alt">an-diipan hai inak.</FORM>
         <TRANSL xml:lang="zho" notes="那個(東西) 是我的。">那個 是我的。</TRANSL>
         <TRANSL xml:lang="eng" notes="That (thing) is mine.">That is mine.</TRANSL>
         <W id="63_S_41_W0">
             <FORM kindOf="original">an-dii=an</FORM>
             <PHON kindOf="original">andiian</PHON>
+            <FORM kindOf="original" ver="alt">an-diip=an</FORM>
             <FORM kindOf="standard">an-dii=an</FORM>
             <PHON kindOf="standard">andiian</PHON>
-            <FORM kindOf="alternate">an-diip=an</FORM>
+            <FORM kindOf="standard" ver="alt">an-diip=an</FORM>
             <TRANSL xml:lang="zho" kindOf="original">可見.中距-那裡=中距.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.MED-there=MED.NOM</TRANSL>
             <M id="63_S_41_W0M0">
@@ -160814,17 +160852,19 @@
     <S id="63_S_42">
         <FORM kindOf="original" notes="*an-dii(p)=tan hai inak. 語法不合哦！">an-dii=tan inak.</FORM>
         <PHON kindOf="original">andiitan inak</PHON>
+        <FORM kindOf="original" ver="alt">an-diip=tan inak.</FORM>
         <FORM kindOf="standard">an-diitan inak.</FORM>
         <PHON kindOf="standard">andiitan inak</PHON>
-        <FORM kindOf="alternate">an-diip=tan inak.</FORM>
+        <FORM kindOf="standard" ver="alt">an-diiptan inak.</FORM>
         <TRANSL xml:lang="zho">我的是這個。</TRANSL>
         <TRANSL xml:lang="eng" notes="That (thing) is (specifically) mine.">That is mine.</TRANSL>
         <W id="63_S_42_W0">
             <FORM kindOf="original">an-dii=tan</FORM>
             <PHON kindOf="original">andiitan</PHON>
+            <FORM kindOf="original" ver="alt">an-diip=tan</FORM>
             <FORM kindOf="standard">an-dii=tan</FORM>
             <PHON kindOf="standard">andiitan</PHON>
-            <FORM kindOf="alternate">an-diip=tan</FORM>
+            <FORM kindOf="standard" ver="alt">an-diip=tan</FORM>
             <TRANSL xml:lang="zho" kindOf="original">可見.中距-那裡=中距.斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.MED-there=MED.OBL</TRANSL>
             <M id="63_S_42_W0M0">
@@ -197638,9 +197678,10 @@
     <S id="63_S_294">
         <FORM kindOf="original" notes="saiv=ik  &lt; saiv-av=ik (give-IMP=1SG.NOM)的縮寫">hanaivaz aiv=ik tu tasa kamasia.</FORM>
         <PHON kindOf="original">[x|χ]anaivað aivik tu tasa kamasia</PHON>
+        <FORM kindOf="original" ver="alt">hanaivaz saiv=ik tu tasa kamasia.</FORM>
         <FORM kindOf="standard">hanaivaz aivik tu tasa kamasia.</FORM>
         <PHON kindOf="standard">[x|χ]anaivað aivik tu tasa kamaɕia</PHON>
-        <FORM kindOf="alternate">hanaivaz saiv=ik tu tasa kamasia.</FORM>
+        <FORM kindOf="standard" ver="alt">hanaivaz saivik tu tasa kamasia.</FORM>
         <TRANSL xml:lang="zho">Hanaivaz，給我一顆糖果。</TRANSL>
         <TRANSL xml:lang="eng">Hanaivaz, give me a piece of candy.</TRANSL>
         <W id="63_S_294_W0">
@@ -197662,9 +197703,10 @@
         <W id="63_S_294_W1">
             <FORM kindOf="original">aiv=ik</FORM>
             <PHON kindOf="original">aivik</PHON>
+            <FORM kindOf="original" ver="alt">saiv=ik</FORM>
             <FORM kindOf="standard">aiv=ik</FORM>
             <PHON kindOf="standard">aivik</PHON>
-            <FORM kindOf="alternate">saiv=ik</FORM>
+            <FORM kindOf="standard" ver="alt">saiv=ik</FORM>
             <TRANSL xml:lang="zho" kindOf="original">給.祈使=1SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PF.give.IMP=1SG.NOM</TRANSL>
             <M id="63_S_294_W1M0">
@@ -222090,9 +222132,10 @@
     <S id="63_S_460">
         <FORM kindOf="original">ma-s&lt;na&gt;nava hai nautu ma-hansiap malas-bunun.</FORM>
         <PHON kindOf="original">masnanava [x|χ]ai nautu ma[x|χ]ansiap ma[l|ɬ]asbunun</PHON>
+        <FORM kindOf="original" ver="alt">ma-s&lt;na&gt;nava hai nautu na=ma-hansiap malas-bunun.</FORM>
         <FORM kindOf="standard">ma-s&lt;na&gt;nava hai nautu ma-hansiap malas-bunun.</FORM>
         <PHON kindOf="standard">masnanava [x|χ]ai nautu ma[x|χ]anɕiap ma[l|ɬ]asbunun</PHON>
-        <FORM kindOf="alternate">ma-s&lt;na&gt;nava hai nautu na=ma-hansiap malas-bunun.</FORM>
+        <FORM kindOf="standard" ver="alt">ma-s&lt;na&gt;nava hai nautu nama-hansiap malas-bunun.</FORM>
         <TRANSL xml:lang="zho">老師一定會講布農語。</TRANSL>
         <TRANSL xml:lang="eng">The teacher definitely knows how to speak Bunun.</TRANSL>
         <W id="63_S_460_W0">
@@ -222156,9 +222199,10 @@
         <W id="63_S_460_W3">
             <FORM kindOf="original">ma-hansiap</FORM>
             <PHON kindOf="original">ma[x|χ]ansiap</PHON>
+            <FORM kindOf="original" ver="alt">na=ma-hansiap</FORM>
             <FORM kindOf="standard">ma-hansiap</FORM>
             <PHON kindOf="standard">ma[x|χ]anɕiap</PHON>
-            <FORM kindOf="alternate">na=ma-hansiap</FORM>
+            <FORM kindOf="standard" ver="alt">na=ma-hansiap</FORM>
             <TRANSL xml:lang="zho" kindOf="original">(非實現=)主焦-知識</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">(IRR=)AF-knowledge</TRANSL>
             <M id="63_S_460_W3M0">
@@ -225742,17 +225786,19 @@
     <S id="63_S_478">
         <FORM kindOf="original" notes="加上LOC–an語意較明確，但省略也可以">kangavas hai mahtu=in kaun-un=su.</FORM>
         <PHON kindOf="original">kaŋavas [x|χ]ai ma[x|χ]tuin kaununsu</PHON>
+        <FORM kindOf="original" ver="alt">kangavas=an hai mahtu=in kaun-un=su.</FORM>
         <FORM kindOf="standard">kangavas hai mahtuin kaun-unsu.</FORM>
         <PHON kindOf="standard">kaŋavas [x|χ]ai ma[x|χ]tuin kaununsu</PHON>
-        <FORM kindOf="alternate">kangavas=an hai mahtu=in kaun-un=su.</FORM>
+        <FORM kindOf="standard" ver="alt">kangavasan hai mahtuin kaun-unsu.</FORM>
         <TRANSL xml:lang="zho">芒果, 你可以吃了。</TRANSL>
         <TRANSL xml:lang="eng">The mango, you can eat it.</TRANSL>
         <W id="63_S_478_W0">
             <FORM kindOf="original">kangavas</FORM>
             <PHON kindOf="original">kaŋavas</PHON>
+            <FORM kindOf="original" ver="alt">kangavas=an</FORM>
             <FORM kindOf="standard">kangavas</FORM>
             <PHON kindOf="standard">kaŋavas</PHON>
-            <FORM kindOf="alternate">kangavas=an</FORM>
+            <FORM kindOf="standard" ver="alt">kangavas=an</FORM>
             <TRANSL xml:lang="zho" kindOf="original">芒果(=近距.主格)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mango(=MED.NOM)</TRANSL>
             <M id="63_S_478_W0M0">
@@ -225840,17 +225886,19 @@
     <S id="63_S_479">
         <FORM kindOf="original">kangavas hai mahtu=in kaun-un=ta.</FORM>
         <PHON kindOf="original">kaŋavas [x|χ]ai ma[x|χ]tuin kaununta</PHON>
+        <FORM kindOf="original" ver="alt">kangavas=an hai mahtu=in kaun-un=ta.</FORM>
         <FORM kindOf="standard">kangavas hai mahtuin kaun-unta.</FORM>
         <PHON kindOf="standard">kaŋavas [x|χ]ai ma[x|χ]tuin kaununta</PHON>
-        <FORM kindOf="alternate">kangavas=an hai mahtu=in kaun-un=ta.</FORM>
+        <FORM kindOf="standard" ver="alt">kangavasan hai mahtuin kaun-unta.</FORM>
         <TRANSL xml:lang="zho">芒果, 我們可以吃了。</TRANSL>
         <TRANSL xml:lang="eng">The mango, we can eat it.</TRANSL>
         <W id="63_S_479_W0">
             <FORM kindOf="original">kangavas</FORM>
             <PHON kindOf="original">kaŋavas</PHON>
+            <FORM kindOf="original" ver="alt">kangavas=an</FORM>
             <FORM kindOf="standard">kangavas</FORM>
             <PHON kindOf="standard">kaŋavas</PHON>
-            <FORM kindOf="alternate">kangavas=an</FORM>
+            <FORM kindOf="standard" ver="alt">kangavas=an</FORM>
             <TRANSL xml:lang="zho" kindOf="original">芒果(=近距.主格)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mango(=MED.NOM)</TRANSL>
             <M id="63_S_479_W0M0">
@@ -228850,9 +228898,10 @@
     <S id="63_S_499">
         <FORM kindOf="original" notes="maklang-daingaz 特別熱。Daingaz 非常。Ma-daingaz 老人">nau tu ma-klang i-nata.</FORM>
         <PHON kindOf="original">nau tu mak[l|ɬ]aŋ inata</PHON>
+        <FORM kindOf="original" ver="alt">nau tu na=ma-klang i-nata.</FORM>
         <FORM kindOf="standard">nau tu ma-klang i-nata.</FORM>
         <PHON kindOf="standard">nau tu mak[l|ɬ]aŋ inata</PHON>
-        <FORM kindOf="alternate">nau tu na=ma-klang i-nata.</FORM>
+        <FORM kindOf="standard" ver="alt">nau tu nama-klang i-nata.</FORM>
         <TRANSL xml:lang="zho">外面一定很熱；外面本來就很熱</TRANSL>
         <TRANSL xml:lang="eng">It must be hot outside.</TRANSL>
         <W id="63_S_499_W0">
@@ -228890,9 +228939,10 @@
         <W id="63_S_499_W2">
             <FORM kindOf="original">ma-klang</FORM>
             <PHON kindOf="original">mak[l|ɬ]aŋ</PHON>
+            <FORM kindOf="original" ver="alt">na=ma-klang</FORM>
             <FORM kindOf="standard">ma-klang</FORM>
             <PHON kindOf="standard">mak[l|ɬ]aŋ</PHON>
-            <FORM kindOf="alternate">na=ma-klang</FORM>
+            <FORM kindOf="standard" ver="alt">na=ma-klang</FORM>
             <TRANSL xml:lang="zho" kindOf="original">(非實現=)主焦-熱</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">(IRR=)AF-hot</TRANSL>
             <M id="63_S_499_W2M0">
@@ -234175,17 +234225,19 @@
     <S id="63_S_537">
         <FORM kindOf="original" notes="kalin-‘iv’iv-na-lumah 風吹到家 (blow-breeze-to-house)">kalin-lumah=in 'iv'iv=a.</FORM>
         <PHON kindOf="original">ka[l|ɬ]in[l|ɬ]uma[x|χ]in iviva</PHON>
+        <FORM kindOf="original" ver="alt">kalin-na-lumah=in 'iv'iv=a.</FORM>
         <FORM kindOf="standard">kalin-lumahin 'iv'iva.</FORM>
         <PHON kindOf="standard">ka[l|ɬ]in[l|ɬ]uma[x|χ]in ʔivʔiva</PHON>
-        <FORM kindOf="alternate">kalin-na-lumah=in 'iv'iv=a.</FORM>
+        <FORM kindOf="standard" ver="alt">kalin-na-lumahin 'iv'iva.</FORM>
         <TRANSL xml:lang="zho">風吹進屋子了。</TRANSL>
         <TRANSL xml:lang="eng">The wind blew into the house.</TRANSL>
         <W id="63_S_537_W0">
             <FORM kindOf="original">kalin-lumah=in</FORM>
             <PHON kindOf="original">ka[l|ɬ]in[l|ɬ]uma[x|χ]in</PHON>
+            <FORM kindOf="original" ver="alt">kalin-na-lumah=in</FORM>
             <FORM kindOf="standard">kalin-lumah=in</FORM>
             <PHON kindOf="standard">ka[l|ɬ]in[l|ɬ]uma[x|χ]in</PHON>
-            <FORM kindOf="alternate">kalin-na-lumah=in</FORM>
+            <FORM kindOf="standard" ver="alt">kalin-na-lumah=in</FORM>
             <TRANSL xml:lang="zho" kindOf="original">吹(-到)-家=改變狀態</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">blow(-to)-house=COS</TRANSL>
             <M id="63_S_537_W0M0">
@@ -237443,9 +237495,10 @@
     <S id="63_S_552">
         <FORM kindOf="original">i-sia ku'pu davus=an hai mais sak-un hai ma-'ansum.</FORM>
         <PHON kindOf="original">isia kupu davusan [x|χ]ai mais sakun [x|χ]ai maansum</PHON>
+        <FORM kindOf="original" ver="alt">i-sia ku'pu davus=an hai mais sak-un hai ma-'ansum=dau.</FORM>
         <FORM kindOf="standard">i-sia ku'pu davusan hai mais sak-un hai ma-'ansum.</FORM>
         <PHON kindOf="standard">iɕia kuʔpu davusan [x|χ]ai mais sakun [x|χ]ai maʔansum</PHON>
-        <FORM kindOf="alternate">i-sia ku'pu davus=an hai mais sak-un hai ma-'ansum=dau.</FORM>
+        <FORM kindOf="standard" ver="alt">i-sia ku'pu davusan hai mais sak-un hai ma-'ansumdau.</FORM>
         <TRANSL xml:lang="zho">這杯酒聞起來說是很香。</TRANSL>
         <TRANSL xml:lang="eng">This wine smells good.</TRANSL>
         <W id="63_S_552_W0">
@@ -237587,9 +237640,10 @@
         <W id="63_S_552_W7">
             <FORM kindOf="original">ma-'ansum.</FORM>
             <PHON kindOf="original">maansum</PHON>
+            <FORM kindOf="original" ver="alt">ma-'ansum=dau.</FORM>
             <FORM kindOf="standard">ma-'ansum.</FORM>
             <PHON kindOf="standard">maʔansum</PHON>
-            <FORM kindOf="alternate">ma-'ansum=dau.</FORM>
+            <FORM kindOf="standard" ver="alt">ma-'ansum=dau.</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-味道(=知識詞)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-taste(=EVI)</TRANSL>
             <M id="63_S_552_W7M0">
@@ -237837,9 +237891,10 @@
     <S id="63_S_554">
         <FORM kindOf="original">ta&lt;i&gt;'aza tu 'utung=an hai cis'uni ma-simuav tu bunun min-'utung.</FORM>
         <PHON kindOf="original">taiaða tu utuŋan [x|χ]ai ʨisuni masimuav tu bunun minutuŋ</PHON>
+        <FORM kindOf="original" ver="alt">ta&lt;i&gt;'aza tu 'utung=an=dau hai cis'uni ma-simuav tu bunun min-'utung.</FORM>
         <FORM kindOf="standard">ta&lt;i&gt;'aza tu 'utungan hai cis'uni ma-simuav tu bunun min-'utung.</FORM>
         <PHON kindOf="standard">taiʔaða tu ʔutuŋan [x|χ]ai ʨisʔuni maɕimuav tu bunun minʔutuŋ</PHON>
-        <FORM kindOf="alternate">ta&lt;i&gt;'aza tu 'utung=an=dau hai cis'uni ma-simuav tu bunun min-'utung.</FORM>
+        <FORM kindOf="standard" ver="alt">ta&lt;i&gt;'aza tu 'utungandau hai cis'uni ma-simuav tu bunun min-'utung.</FORM>
         <TRANSL xml:lang="zho">聽說猴子是貪吃的人變的。</TRANSL>
         <TRANSL xml:lang="eng">It is said that monkeys are transformed by gluttonous people.</TRANSL>
         <W id="63_S_554_W0">
@@ -237881,9 +237936,10 @@
         <W id="63_S_554_W2">
             <FORM kindOf="original">'utung=an</FORM>
             <PHON kindOf="original">utuŋan</PHON>
+            <FORM kindOf="original" ver="alt">'utung=an=dau</FORM>
             <FORM kindOf="standard">'utung=an</FORM>
             <PHON kindOf="standard">ʔutuŋan</PHON>
-            <FORM kindOf="alternate">'utung=an=dau</FORM>
+            <FORM kindOf="standard" ver="alt">'utung=an=dau</FORM>
             <TRANSL xml:lang="zho" kindOf="original">猴子=中距.主格(=知識詞)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">monkey=MED.NOM(=EVI)</TRANSL>
             <M id="63_S_554_W2M0">
@@ -240651,17 +240707,19 @@
     <S id="63_S_566">
         <FORM kindOf="original">tupa cina tu ma-si-tuhas hai na=ku-sia Tainan kuzakuza.</FORM>
         <PHON kindOf="original">tupa ʨina tu masitu[x|χ]as [x|χ]ai nakusia tainan kuðakuða</PHON>
+        <FORM kindOf="original" ver="alt">tupa=dau cina tu ma-si-tuhas hai na=ku-sia Tainan kuzakuza.</FORM>
         <FORM kindOf="standard">tupa cina tu ma-si-tuhas hai naku-sia Tainan kuzakuza.</FORM>
         <PHON kindOf="standard">tupa ʨina tu maɕitu[x|χ]as [x|χ]ai nakuɕia tainan kuðakuða</PHON>
-        <FORM kindOf="alternate">tupa=dau cina tu ma-si-tuhas hai na=ku-sia Tainan kuzakuza.</FORM>
+        <FORM kindOf="standard" ver="alt">tupadau cina tu ma-si-tuhas hai naku-sia Tainan kuzakuza.</FORM>
         <TRANSL xml:lang="zho">媽媽說哥哥明天會去台南工作。</TRANSL>
         <TRANSL xml:lang="eng">Mother says that my brother will go to work in Tainan tomorrow.</TRANSL>
         <W id="63_S_566_W0">
             <FORM kindOf="original">tupa</FORM>
             <PHON kindOf="original">tupa</PHON>
+            <FORM kindOf="original" ver="alt">tupa=dau</FORM>
             <FORM kindOf="standard">tupa</FORM>
             <PHON kindOf="standard">tupa</PHON>
-            <FORM kindOf="alternate">tupa=dau</FORM>
+            <FORM kindOf="standard" ver="alt">tupa=dau</FORM>
             <TRANSL xml:lang="zho" kindOf="original">說(=知識詞)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">to.say(=EVI)</TRANSL>
             <M id="63_S_566_W0M0">
@@ -240821,17 +240879,19 @@
     <S id="63_S_567">
         <FORM kindOf="original" notes="mikua……指對方有跌倒機率100%；mikua dau指對方有跌倒機率80%。mikua dau指「是為什麼」；mikua指「怎樣」。mikua dau 是幫別人問的">mi-kua kasu tu mu-cingkul?</FORM>
         <PHON kindOf="original">mikua kasu tu muʨiŋku[l|ɬ]</PHON>
+        <FORM kindOf="original" ver="alt">mi-kua=dau kasu tu mu-cingkul?</FORM>
         <FORM kindOf="standard">mi-kua kasu tu mu-cingkul?</FORM>
         <PHON kindOf="standard">mikua kasu tu muʨiŋku[l|ɬ]</PHON>
-        <FORM kindOf="alternate">mi-kua=dau kasu tu mu-cingkul?</FORM>
+        <FORM kindOf="standard" ver="alt">mi-kuadau kasu tu mu-cingkul?</FORM>
         <TRANSL xml:lang="zho">你是什麼原因跌倒/你為什麼跌倒？</TRANSL>
         <TRANSL xml:lang="eng">What makes you fall?</TRANSL>
         <W id="63_S_567_W0">
             <FORM kindOf="original">mi-kua</FORM>
             <PHON kindOf="original">mikua</PHON>
+            <FORM kindOf="original" ver="alt">mi-kua=dau</FORM>
             <FORM kindOf="standard">mi-kua</FORM>
             <PHON kindOf="standard">mikua</PHON>
-            <FORM kindOf="alternate">mi-kua=dau</FORM>
+            <FORM kindOf="standard" ver="alt">mi-kua=dau</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-怎麼(=知識詞)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-how(=EVI)</TRANSL>
             <M id="63_S_567_W0M0">
@@ -249856,17 +249916,19 @@
     <S id="63_S_625">
         <FORM kindOf="original">papi=in itu Subali=cia 'uvaaz?</FORM>
         <PHON kindOf="original">papiin itu suba[l|ɬ]iʨia uvaað</PHON>
+        <FORM kindOf="original" ver="alt">papia=in itu Subali=cia 'uvaaz?</FORM>
         <FORM kindOf="standard">papiin itu Subalicia 'uvaaz?</FORM>
         <PHON kindOf="standard">papiin itu suba[l|ɬ]iʨia ʔuvaað</PHON>
-        <FORM kindOf="alternate">papia=in itu Subali=cia 'uvaaz?</FORM>
+        <FORM kindOf="standard" ver="alt">papiain itu Subalicia 'uvaaz?</FORM>
         <TRANSL xml:lang="zho">Subali有幾個孩子?</TRANSL>
         <TRANSL xml:lang="eng">How many children does Subali have?</TRANSL>
         <W id="63_S_625_W0">
             <FORM kindOf="original">papi=in</FORM>
             <PHON kindOf="original">papiin</PHON>
+            <FORM kindOf="original" ver="alt">papia=in</FORM>
             <FORM kindOf="standard">papi=in</FORM>
             <PHON kindOf="standard">papiin</PHON>
-            <FORM kindOf="alternate">papia=in</FORM>
+            <FORM kindOf="standard" ver="alt">papia=in</FORM>
             <TRANSL xml:lang="zho" kindOf="original">多少=改變狀態</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">how.many=COS</TRANSL>
             <M id="63_S_625_W0M0">
@@ -251311,9 +251373,10 @@
     <S id="63_S_637">
         <FORM kindOf="original">pia sakut= pac-is-halcis-un mas Subali=cia takna'?</FORM>
         <PHON kindOf="original">pia sakut paʦis[x|χ]a[l|ɬ]ʨisun mas suba[l|ɬ]iʨia takna</PHON>
+        <FORM kindOf="original" ver="alt">pia sakut=a pac-is-halcis-un mas Subali=cia takna'?</FORM>
         <FORM kindOf="standard">pia sakut pac-is-halcis-un mas Subalicia takna'?</FORM>
         <PHON kindOf="standard">pia sakut paʨis[x|χ]a[l|ɬ]ʨisun mas suba[l|ɬ]iʨia taknaʔ</PHON>
-        <FORM kindOf="alternate">pia sakut=a pac-is-halcis-un mas Subali=cia takna'?</FORM>
+        <FORM kindOf="standard" ver="alt">pia sakuta pac-is-halcis-un mas Subalicia takna'?</FORM>
         <TRANSL xml:lang="zho">昨天有幾隻山羌被Subali夾住?</TRANSL>
         <TRANSL xml:lang="eng">How many muntjacs were trapped by Subali yesterday?</TRANSL>
         <W id="63_S_637_W0">
@@ -251335,9 +251398,10 @@
         <W id="63_S_637_W1">
             <FORM kindOf="original">sakut=</FORM>
             <PHON kindOf="original">sakut</PHON>
+            <FORM kindOf="original" ver="alt">sakut=a</FORM>
             <FORM kindOf="standard">sakut=</FORM>
             <PHON kindOf="standard">sakut</PHON>
-            <FORM kindOf="alternate">sakut=a</FORM>
+            <FORM kindOf="standard" ver="alt">sakut=a</FORM>
             <TRANSL xml:lang="zho" kindOf="original">山羌=(遠距.主格)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">muntjac=(DIST.NOM)</TRANSL>
         </W>
@@ -251441,9 +251505,10 @@
     <S id="63_S_638">
         <FORM kindOf="original">pia sakut= panah-un mas Subali=cia takna'?</FORM>
         <PHON kindOf="original">pia sakut pana[x|χ]un mas suba[l|ɬ]iʨia takna</PHON>
+        <FORM kindOf="original" ver="alt">pia sakut=a panah-un mas Subali=cia takna'?</FORM>
         <FORM kindOf="standard">pia sakut panah-un mas Subalicia takna'?</FORM>
         <PHON kindOf="standard">pia sakut pana[x|χ]un mas suba[l|ɬ]iʨia taknaʔ</PHON>
-        <FORM kindOf="alternate">pia sakut=a panah-un mas Subali=cia takna'?</FORM>
+        <FORM kindOf="standard" ver="alt">pia sakuta panah-un mas Subalicia takna'?</FORM>
         <TRANSL xml:lang="zho">昨天有幾隻山羌被Subali射到?</TRANSL>
         <TRANSL xml:lang="eng">How many muntjacs were shot by Subali yesterday?</TRANSL>
         <W id="63_S_638_W0">
@@ -251465,9 +251530,10 @@
         <W id="63_S_638_W1">
             <FORM kindOf="original">sakut=</FORM>
             <PHON kindOf="original">sakut</PHON>
+            <FORM kindOf="original" ver="alt">sakut=a</FORM>
             <FORM kindOf="standard">sakut=</FORM>
             <PHON kindOf="standard">sakut</PHON>
-            <FORM kindOf="alternate">sakut=a</FORM>
+            <FORM kindOf="standard" ver="alt">sakut=a</FORM>
             <TRANSL xml:lang="zho" kindOf="original">山羌=(遠距.主格)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">muntjac=(DIST.NOM)</TRANSL>
         </W>
@@ -256706,17 +256772,19 @@
     <S id="63_S_686">
         <FORM kindOf="original">cis-maz kasu ma-subnuh?</FORM>
         <PHON kindOf="original">ʨismað kasu masubnu[x|χ]</PHON>
+        <FORM kindOf="original" ver="alt">cis-maz=a kasu ma-subnuh?</FORM>
         <FORM kindOf="standard">cis-maz kasu ma-subnuh?</FORM>
         <PHON kindOf="standard">ʨismað kasu masubnu[x|χ]</PHON>
-        <FORM kindOf="alternate">cis-maz=a kasu ma-subnuh?</FORM>
+        <FORM kindOf="standard" ver="alt">cis-maza kasu ma-subnuh?</FORM>
         <TRANSL xml:lang="zho">你為了什麼生氣?</TRANSL>
         <TRANSL xml:lang="eng">Why/for what are you angry?</TRANSL>
         <W id="63_S_686_W0">
             <FORM kindOf="original">cis-maz</FORM>
             <PHON kindOf="original">ʨismað</PHON>
+            <FORM kindOf="original" ver="alt">cis-maz=a</FORM>
             <FORM kindOf="standard">cis-maz</FORM>
             <PHON kindOf="standard">ʨismað</PHON>
-            <FORM kindOf="alternate">cis-maz=a</FORM>
+            <FORM kindOf="standard" ver="alt">cis-maz=a</FORM>
             <TRANSL xml:lang="zho" kindOf="original">為了-什麼(=遠距.主格)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">for-what(=DIST.NOM)</TRANSL>
             <M id="63_S_686_W0M0">
@@ -290617,9 +290685,10 @@
     <S id="64_S_3">
         <FORM kindOf="original" notes="‘refrigerator’ bingxiang / haku / piskatav-an">an-dii bingxiang=a hai uka mahtu huud-an.</FORM>
         <PHON kindOf="original">andii biŋxiaŋa [x|χ]ai uka ma[x|χ]tu [x|χ]uudan</PHON>
+        <FORM kindOf="original" ver="alt">an-dii bingxiang=a hai ukan mahtu huud-an.</FORM>
         <FORM kindOf="standard">an-dii bingxianga hai uka mahtu huud-an.</FORM>
         <PHON kindOf="standard">andii biŋxiaŋa [x|χ]ai uka ma[x|χ]tu [x|χ]uudan</PHON>
-        <FORM kindOf="alternate">an-dii bingxiang=a hai ukan mahtu huud-an.</FORM>
+        <FORM kindOf="standard" ver="alt">an-dii bingxianga hai ukan mahtu huud-an.</FORM>
         <TRANSL xml:lang="zho">這個冰箱沒什麼喝的。</TRANSL>
         <TRANSL xml:lang="eng">There is nothing to drink in this refrigerator.</TRANSL>
         <W id="64_S_3_W0">
@@ -290689,9 +290758,10 @@
         <W id="64_S_3_W3">
             <FORM kindOf="original">uka</FORM>
             <PHON kindOf="original">uka</PHON>
+            <FORM kindOf="original" ver="alt">ukan</FORM>
             <FORM kindOf="standard">uka</FORM>
             <PHON kindOf="standard">uka</PHON>
-            <FORM kindOf="alternate">ukan</FORM>
+            <FORM kindOf="standard" ver="alt">ukan</FORM>
             <TRANSL xml:lang="zho" kindOf="original">否定.存在</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NEG.EXIST</TRANSL>
             <M id="64_S_3_W3M0">
@@ -290747,17 +290817,19 @@
     <S id="64_S_4">
         <FORM kindOf="original">uka=ik sui.</FORM>
         <PHON kindOf="original">ukaik sui</PHON>
+        <FORM kindOf="original" ver="alt">ukan=ik sui.</FORM>
         <FORM kindOf="standard">ukaik sui.</FORM>
         <PHON kindOf="standard">ukaik sui</PHON>
-        <FORM kindOf="alternate">ukan=ik sui.</FORM>
+        <FORM kindOf="standard" ver="alt">ukanik sui.</FORM>
         <TRANSL xml:lang="zho">我沒有錢。</TRANSL>
         <TRANSL xml:lang="eng">I don't have money.</TRANSL>
         <W id="64_S_4_W0">
             <FORM kindOf="original">uka=ik</FORM>
             <PHON kindOf="original">ukaik</PHON>
+            <FORM kindOf="original" ver="alt">ukan=ik</FORM>
             <FORM kindOf="standard">uka=ik</FORM>
             <PHON kindOf="standard">ukaik</PHON>
-            <FORM kindOf="alternate">ukan=ik</FORM>
+            <FORM kindOf="standard" ver="alt">ukan=ik</FORM>
             <TRANSL xml:lang="zho" kindOf="original">否定.存在=1SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NEG.EXIST=1SG.NOM</TRANSL>
             <M id="64_S_4_W0M0">
@@ -296389,9 +296461,10 @@
     <S id="64_S_49">
         <FORM kindOf="original">m-aun tamaku hai ma-pi-kuang lutbu.</FORM>
         <PHON kindOf="original">maun tamaku [x|χ]ai mapikuaŋ [l|ɬ]utbu</PHON>
+        <FORM kindOf="original" ver="alt">m-aun tamaku hai ma-pin-kuang lutbu.</FORM>
         <FORM kindOf="standard">m-aun tamaku hai ma-pi-kuang lutbu.</FORM>
         <PHON kindOf="standard">maun tamaku [x|χ]ai mapikuaŋ [l|ɬ]utbu</PHON>
-        <FORM kindOf="alternate">m-aun tamaku hai ma-pin-kuang lutbu.</FORM>
+        <FORM kindOf="standard" ver="alt">m-aun tamaku hai ma-pin-kuang lutbu.</FORM>
         <TRANSL xml:lang="zho">抽菸傷害身體。</TRANSL>
         <TRANSL xml:lang="eng">Smoking hurts the body.</TRANSL>
         <W id="64_S_49_W0">
@@ -296453,9 +296526,10 @@
         <W id="64_S_49_W3">
             <FORM kindOf="original">ma-pi-kuang</FORM>
             <PHON kindOf="original">mapikuaŋ</PHON>
+            <FORM kindOf="original" ver="alt">ma-pin-kuang</FORM>
             <FORM kindOf="standard">ma-pi-kuang</FORM>
             <PHON kindOf="standard">mapikuaŋ</PHON>
-            <FORM kindOf="alternate">ma-pin-kuang</FORM>
+            <FORM kindOf="standard" ver="alt">ma-pin-kuang</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-使役-壞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-CAU-bad</TRANSL>
             <M id="64_S_49_W3M0">

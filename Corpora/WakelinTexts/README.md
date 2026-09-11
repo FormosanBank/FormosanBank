@@ -248,6 +248,14 @@ The whole pipeline is one script (POL-047):
 
 It rebuilds `XML/` from the snapshot using the QC scripts of the FormosanBank checkout the corpus lives in (pass a path, or set `FORMOSANBANK_ROOT`, to use another checkout; set `PYTHON` to override the interpreter). Nothing outside this checkout is required (POL-048). It is idempotent: a re-run over a clean checkout leaves `git status` empty.
 
+**POL-047 deviation:** the build interleaves two corpus-local steps with the shared ones, and one of them sits where POL-047 does not contemplate. The numbering below is this script's own; POL-047's canonical sequence is 1 `generate_xml.py`, 2 `apply_manual_edits.py`, 3 `clean_xml.py`, 4 `standardize.py`, 5 `add_phonology.py`, so POL-047 step 3 is local step 2, POL-047 step 4 is local step 4 (coincidence), and POL-047 step 5 is local step 6.
+
+- **Step 3, `resolve_parentheses.py`**, runs between clean and standardize so every derived tier is built from an original carrying no parenthesis (POL-028). Detail in step 3 below.
+- **Step 5, `apply_r_caron_words.py`**, runs *between* POL-047 steps 4 and 5 — before `add_phonology.py`, where POL-047 says a corpus-local corrections script "belongs after step 5". It must run before, because PHON is generated from the standard tier and has to reflect the corrected words. It also edits the standard tier outside `standardize.py`, which POL-002 otherwise reserves to that tool, on the maintainer ruling of 2026-09-07. Detail and accepted cost in step 5 below.
+- **POL-047 step 2, `apply_manual_edits.py`, is absent**: the corpus has no `manual_edits.xml`. Hand corrections belong in the snapshot, which is the source of record.
+
+*Superseded 2026-09-10 (POL-050).* `generate_xml.sh`'s header previously declared a different deviation — that POL-047 steps 4 and 5 (`standardize.py`, `add_phonology.py`) were absent because the 1958 orthography had never been identified, so the corpus published only the original tier. True until `282c49e31` (2026-09-08) profiled the orthography and added both tiers; the corpus now publishes 2189 standard FORMs and 4378 PHONs, and that deviation no longer exists.
+
 1. **Generate the original tier** — `CodeAndDocs/generate_xml.py`. Reads the snapshot, applies `alternative_decisions.json` and the gloss rules, writes `XML/`. This is the corpus-local parsing step POL-046 exempts from "shared tools first".
 2. **Clean** — `QC/cleaning/clean_xml.py`. Unicode NFC, entity decoding, typographic look-alikes. The hand-typed text is near-ASCII (only `ř` and `ǥ`), so this currently changes nothing; it is the guarantee that it stays that way.
 3. **Resolve the article's parentheses in the original tier** — `CodeAndDocs/resolve_parentheses.py`, run **before** `standardize.py` so every derived tier is built from an original that already carries none. The article's key gives `( )` two jobs and they need opposite treatment; POL-028 requires that neither survives into any published FORM.

@@ -15,7 +15,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from QC.corpus_counts import resolve_language, XML_LANG
+from QC.corpus_counts import resolve_language, XML_LANG, is_reproduction_path
 from QC.utilities.classify_quotes import QUOTE, apply_quote_corrections
 
 _DEFAULT_REFERENCE_DIR = _REPO_ROOT / "QC" / "validation" / "reference"
@@ -25,6 +25,7 @@ XML_LANG_ATTR = "{http://www.w3.org/XML/1998/namespace}lang"
 _CHINESE_LANGS = frozenset({
     "zho", "zh", "cmn", "yue", "wuu", "hak", "nan",
 })
+_JAPANESE_LANGS = frozenset({"jpn", "ja"})
 _TRANSL_LANG_ALIASES = {
     "en": "eng",
     "zh": "zho",
@@ -59,6 +60,13 @@ def _is_chinese(lang: str | None) -> bool:
     if lang is None:
         return False
     return lang.lower() in _CHINESE_LANGS or lang.lower().startswith("zh")
+
+
+def _is_japanese(lang: str | None) -> bool:
+    """Return True when lang matches a known Japanese variant."""
+    if lang is None:
+        return False
+    return lang.lower() in _JAPANESE_LANGS
 
 
 def normalize_translation_language_metadata(
@@ -591,6 +599,10 @@ def clean_trans(
            double-quote variants to U+FF02 (full-width straight double quote)
            and emits c002 warning rows for single-quote variants and ASCII
            apostrophes (left unchanged).
+         - Japanese (C002 Branch C): punctuation is left untouched. Japanese
+           uses the same CJK punctuation Branch B protects, but 「」 are its
+           real quotation marks, so Branch B's collapse to U+FF02 does not
+           apply either.
       3. normalize_whitespace — collapse runs of whitespace.
       4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
 
@@ -605,6 +617,15 @@ def clean_trans(
     text = normalize_caret_variants(text)
     if _is_chinese(lang):
         text = _clean_trans_chinese(text, xml_file, s_id, warnings)
+    elif _is_japanese(lang):
+        # C002 Branch C: leave the punctuation alone. Japanese shares the CJK
+        # repertoire that Branch B exists to protect — 、 is the ideographic
+        # comma and （） the full-width parens — so swap_punctuation would
+        # ASCII-ify real source punctuation exactly as it would in Chinese.
+        # Branch B's own quote canonicalization is NOT applied: 「」 are
+        # Japanese quotation marks in their own right, not variants to
+        # collapse onto U+FF02.
+        pass
     else:
         # Emit c002b warning for U+02C8 before swap.
         if warnings is not None:
@@ -659,6 +680,9 @@ def analyze_and_modify_xml_file(
         _attestation_cache = {}
     for droot, dirs, files in os.walk(xml_dir):
         for file in files:
+            # CodeAndDocs/ is reproduction material, never published data.
+            if is_reproduction_path(os.path.join(droot, file), xml_dir):
+                continue
             if file.endswith(".xml"):
                 print(f"Processing file: {file}")
 
@@ -816,9 +840,25 @@ def _quote_log_path(corpora_path) -> Path:
     return p / "quote_corrections.csv"
 
 
+def _warnings_path(corpora_path, warnings_dir) -> Path:
+    """Where the per-run cleaner_warnings.csv goes (POL-033).
+
+    Defaults to <corpora_path>/cleaner_warnings.csv, which for a corpus built
+    with --corpora_path <corpus>/XML lands the report inside published data.
+    --warnings_dir moves it out without changing any existing caller: a corpus
+    passes its CodeAndDocs, and the file never touches XML/.
+    """
+    if warnings_dir:
+        directory = Path(warnings_dir)
+        directory.mkdir(parents=True, exist_ok=True)
+        return directory / "cleaner_warnings.csv"
+    return Path(corpora_path) / "cleaner_warnings.csv"
+
+
 def main(args):
     print(f"Processing XML files in directory: {args.corpora_path}")
-    warnings_path = Path(args.corpora_path) / "cleaner_warnings.csv"
+    warnings_path = _warnings_path(args.corpora_path,
+                                   getattr(args, "warnings_dir", None))
     warnings = CleanerWarnings(warnings_path)
     # Durable quote-correction log (POL-035): append-mode, committed.
     corrections = CleanerWarnings(_quote_log_path(args.corpora_path),
@@ -849,6 +889,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--corpora_path', help='the path to the corpus')
+    parser.add_argument('--warnings_dir', default=None,
+                        help='directory for the per-run cleaner_warnings.csv '
+                             '(POL-033). Default: --corpora_path itself, which '
+                             'writes the report into published XML/ when that '
+                             'is the target; pass a CodeAndDocs to keep it out.')
     parser.add_argument('--reference_dir', default=None,
                         help='dir holding <Language>/attestation.txt '
                              '(default: QC/validation/reference)')
