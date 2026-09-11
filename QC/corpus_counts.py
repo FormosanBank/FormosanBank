@@ -245,7 +245,7 @@ def is_published_xml(path) -> bool:
     )
 
 
-def is_reproduction_path(path) -> bool:
+def is_reproduction_path(path, root=None) -> bool:
     """Does this path sit inside a corpus's CodeAndDocs/ directory?
 
     The narrow half of `is_published_xml`, split out because every tool
@@ -257,12 +257,26 @@ def is_reproduction_path(path) -> bool:
     twice, and a tool that writes will rewrite a baseline that exists
     precisely to stay untouched.
 
+    `root` is the directory the caller was pointed at, and it matters:
+    several builds stage into `<corpus>/CodeAndDocs/Final_XML/` and clean
+    there before installing into `XML/` (NTUFormosanCorpus does exactly
+    this). When the root is itself inside CodeAndDocs the caller meant
+    that tree, and refusing to process what it was explicitly handed
+    would turn the build into a silent no-op. So the rule is "do not
+    wander into CodeAndDocs", not "refuse to touch CodeAndDocs".
+
     Deliberately does NOT require an `XML` path segment the way
-    `is_published_xml` does: tools that build into a staging directory
-    (`Final_XML/`) must keep working.
+    `is_published_xml` does, for the same staging-directory reason.
     """
     parts = Path(path).parts if not isinstance(path, str) else tuple(path.split("/"))
-    return "CodeAndDocs" in parts
+    if "CodeAndDocs" not in parts:
+        return False
+    if root is not None:
+        root_parts = (Path(root).parts if not isinstance(root, str)
+                      else tuple(root.split("/")))
+        if "CodeAndDocs" in root_parts:
+            return False
+    return True
 
 
 def corpus_xml_dirs(corpus_path) -> list[Path]:

@@ -15,7 +15,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from QC.corpus_counts import resolve_language, XML_LANG
+from QC.corpus_counts import resolve_language, XML_LANG, is_reproduction_path
 from QC.utilities.classify_quotes import QUOTE, apply_quote_corrections
 
 _DEFAULT_REFERENCE_DIR = _REPO_ROOT / "QC" / "validation" / "reference"
@@ -680,6 +680,9 @@ def analyze_and_modify_xml_file(
         _attestation_cache = {}
     for droot, dirs, files in os.walk(xml_dir):
         for file in files:
+            # CodeAndDocs/ is reproduction material, never published data.
+            if is_reproduction_path(os.path.join(droot, file), xml_dir):
+                continue
             if file.endswith(".xml"):
                 print(f"Processing file: {file}")
 

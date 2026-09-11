@@ -55,7 +55,7 @@ def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False
             # Without this, pointing the tool at a corpus root reads the
             # POL-035 snapshot as well as the corpus and counts every
             # character twice.
-            if is_reproduction_path(os.path.join(root, file)):
+            if is_reproduction_path(os.path.join(root, file), to_check_path):
                 continue
             if re.findall(language_to_process, os.path.join(root)):
                 tree = ET.parse(os.path.join(root, file))
