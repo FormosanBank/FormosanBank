@@ -281,11 +281,16 @@ def _write_csv(findings, output_path: str):
 def _summarize(findings, dedup_expected: bool = False):
     n_within = sum(1 for f in findings if f.scope == "within-file")
     n_cross = sum(1 for f in findings if f.scope == "cross-file")
-    severity = "HARD" if dedup_expected else "SOFT"
-    note = (" (corpus pipeline declares dedup — leftovers are pipeline "
-            "defects)" if dedup_expected else
+    # Severity is per finding now, not per run: a group whose glosses differ is
+    # SOFT even where the pipeline dedups, because it may be two words rather
+    # than one sentence twice (maintainer, 2026-09-11).
+    hard = sum(1 for f in findings if f.severity == "HARD")
+    soft = len(findings) - hard
+    note = (" (corpus pipeline declares dedup — a same-gloss leftover is a "
+            "pipeline defect)" if dedup_expected else
             " (no dedup step declared — maintainer's call per POL-022)")
-    print(f"Duplicate sentence findings [{severity}]{note}: "
+    print(f"Duplicate sentence findings{note}: "
+          f"HARD={hard} (same gloss), SOFT={soft} (gloss differs); "
           f"within-file={n_within} groups, cross-file={n_cross} groups")
 
 
