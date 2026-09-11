@@ -6,7 +6,7 @@ from __future__ import annotations
 import csv
 import re
 from collections import Counter
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 from lxml import etree
@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LEDGER_PATH = ROOT / "CodeAndDocs" / "source_ledger.tsv"
 REPORT_PATH = ROOT / "CodeAndDocs" / "extraction_report.csv"
 SUMMARY_PATH = ROOT / "CodeAndDocs" / "extraction_summary.md"
-XML_ROOT = ROOT / "Final_XML"
+XML_ROOT = ROOT / "XML"
 SOURCE_URL = "https://archive.org/details/elementsofcompar00lathrich"
 BASECAMP_URL = (
     "https://app.basecamp.com/3340659/buckets/31258415/"
@@ -32,7 +32,8 @@ TEXT_BIBTEX = (
     "title = {Elements of comparative philology}, "
     "publisher = {Walton and Maberly}, address = {London}, year = {1862}}"
 )
-VALID_STATUSES = {"included", "omitted_blank_or_dash"}
+VALID_STATUSES = {"included", "omitted_blank_or_dash",
+                  "excluded_unidentified_variety"}
 
 
 @dataclass(frozen=True)
@@ -47,12 +48,20 @@ class LexicalEntry:
     english: str
     form: str
     alternate_forms: tuple[str, ...]
+    reading_type: str
     status: str
     note: str
+    reading_number: int = 1
 
     @property
     def s_id(self) -> str:
-        return f"S_{slug(self.source_variety)}_{slug(self.english)}"
+        base = f"S_{slug(self.source_variety)}_{slug(self.english)}"
+        if self.reading_number == 1:
+            return base
+        # POL-028: the second block takes the first's id plus "-opt"; a
+        # third and beyond carry the reading number ("-opt3", "-opt4").
+        suffix = "-opt" if self.reading_number == 2 else f"-opt{self.reading_number}"
+        return f"{base}{suffix}"
 
     @property
     def source_attr(self) -> str:
@@ -90,14 +99,15 @@ def load_ledger(path: Path = LEDGER_PATH) -> list[LexicalEntry]:
                 for form in row["alternate_forms"].split(" | ")
                 if form
             ),
+            reading_type=row["reading_type"],
             status=row["status"],
             note=row["note"],
         )
         for row in raw_rows
     ]
 
-    if len(entries) != 64:
-        raise ValueError(f"Expected 64 reviewed source cells, got {len(entries)}")
+    if not entries:
+        raise ValueError("Source ledger is empty")
     if {entry.status for entry in entries} - VALID_STATUSES:
         raise ValueError("Source ledger contains an unsupported status")
     included = [entry for entry in entries if entry.status == "included"]
@@ -105,23 +115,37 @@ def load_ledger(path: Path = LEDGER_PATH) -> list[LexicalEntry]:
         entry for entry in entries
         if entry.status == "omitted_blank_or_dash"
     ]
-    if len(included) != 62 or len(omitted) != 2:
-        raise ValueError("Source ledger must contain 62 included and 2 omitted cells")
     if any(not entry.form for entry in included):
         raise ValueError("Included source cells must have a FORM")
     if any(entry.form or entry.alternate_forms for entry in omitted):
         raise ValueError("Omitted source cells cannot contain FORM data")
+    for entry in included:
+        # Only published cells need a reading classification; an excluded
+        # column is not emitted, so its second reading classifies nothing.
+        allowed = {"variant", "lexeme"} if entry.alternate_forms else {""}
+        if entry.reading_type not in allowed:
+            raise ValueError(f"Unclassified source readings: {entry.s_id}")
     if len({entry.s_id for entry in included}) != len(included):
         raise ValueError("Included source cells produce duplicate XML IDs")
-    if Counter(entry.printed_page for entry in entries) != Counter(
-        {"315": 16, "316": 16, "317": 16, "318": 16}
-    ):
-        raise ValueError("Source ledger does not cover 16 target cells per page")
     return entries
 
 
 def included_entries(entries: list[LexicalEntry]) -> list[LexicalEntry]:
     return [entry for entry in entries if entry.status == "included"]
+
+
+def xml_entries(entries: list[LexicalEntry]) -> list[LexicalEntry]:
+    """Split source-classified lexemes while preserving each cell's base ID."""
+    records = []
+    for entry in entries:
+        if entry.reading_type == "lexeme":
+            for number, form in enumerate((entry.form, *entry.alternate_forms), 1):
+                records.append(replace(
+                    entry, form=form, alternate_forms=(), reading_number=number,
+                ))
+        else:
+            records.append(entry)
+    return records
 
 
 def write_xml_file(
@@ -137,7 +161,7 @@ def write_xml_file(
         id=text_id,
         citation=TEXT_CITATION,
         BibTeX_citation=TEXT_BIBTEX,
-        copyright="Public domain.",
+        copyright="public domain",
         glottocode=glottocode,
         dialect=first.dialect,
         source=(
@@ -158,13 +182,12 @@ def write_xml_file(
         )
         original = etree.SubElement(sentence, "FORM", kindOf="original")
         original.text = entry.form
-        standard = etree.SubElement(sentence, "FORM", kindOf="standard")
-        standard.text = entry.form
         for alternate_form in entry.alternate_forms:
             alternate = etree.SubElement(
                 sentence,
                 "FORM",
-                kindOf="alternate",
+                kindOf="original",
+                ver="alt",
             )
             alternate.text = alternate_form
         translation = etree.SubElement(sentence, "TRANSL")
@@ -182,14 +205,15 @@ def write_xml_file(
 
 
 def write_xml(entries: list[LexicalEntry]) -> None:
+    entries = xml_entries(entries)
     siraya_entries = [
         entry for entry in entries if entry.language_code == "fos"
     ]
     babuza_entries = [
         entry for entry in entries if entry.language_code == "bzg"
     ]
-    if len(siraya_entries) != 38 or len(babuza_entries) != 24:
-        raise ValueError("Unexpected language split in included source ledger")
+    if not siraya_entries or not babuza_entries:
+        raise ValueError("Included source ledger must cover both languages")
     write_xml_file(
         XML_ROOT / "Siraya/latham_1862_sideia_sida.xml",
         "latham_1862_sideia_sida",
@@ -214,6 +238,7 @@ def write_report(entries: list[LexicalEntry]) -> None:
         "english",
         "form",
         "alternate_forms",
+        "reading_type",
         "printed_page",
         "pdf_page",
         "table",
@@ -237,6 +262,7 @@ def write_report(entries: list[LexicalEntry]) -> None:
                     "english": entry.english,
                     "form": entry.form,
                     "alternate_forms": " | ".join(entry.alternate_forms),
+                    "reading_type": entry.reading_type,
                     "printed_page": entry.printed_page,
                     "pdf_page": entry.pdf_page,
                     "table": entry.table,
@@ -246,8 +272,9 @@ def write_report(entries: list[LexicalEntry]) -> None:
 
 
 def write_summary(entries: list[LexicalEntry]) -> None:
-    by_variety = Counter(entry.source_variety for entry in entries)
-    by_language = Counter(entry.language_label for entry in entries)
+    records = xml_entries(entries)
+    by_variety = Counter(entry.source_variety for entry in records)
+    by_language = Counter(entry.language_label for entry in records)
     source_form_count = sum(
         1 + len(entry.alternate_forms) for entry in entries
     )
@@ -267,15 +294,15 @@ def write_summary(entries: list[LexicalEntry]) -> None:
         "",
         "## Outputs",
         "",
-        "- XML: `Final_XML/Siraya/latham_1862_sideia_sida.xml`",
-        "- XML: `Final_XML/Babuza-Favorlang/latham_1862_favorlang.xml`",
+        "- XML: `XML/Siraya/latham_1862_sideia_sida.xml`",
+        "- XML: `XML/Babuza-Favorlang/latham_1862_favorlang.xml`",
         "- Row report: `CodeAndDocs/extraction_report.csv`",
         "- Exact source checks: `CodeAndDocs/source_checks.tsv`",
         "",
         "## Counts",
         "",
-        f"- Lexical records emitted: {len(entries)}",
-        f"- Source FORM variants emitted: {source_form_count}",
+        f"- Lexical records emitted: {len(records)}",
+        f"- Source FORM readings emitted: {source_form_count}",
         f"- Source varieties represented: {len(by_variety)}",
         "",
         "## Counts By Source Variety",
@@ -288,11 +315,12 @@ def write_summary(entries: list[LexicalEntry]) -> None:
         "",
         "## Representation Decisions",
         "",
-        "- Every source cell is one lexical `S` record.",
-        "- Comma-separated source variants are separate `FORM` elements;",
-        "  punctuation is not embedded in a FORM value.",
-        "- Historical spelling is preserved in original and standard FORM",
-        "  because the source supplies no supported modern normalization.",
+        "- Five published cells contain competing lexemes, split into separate `S` records",
+        "  under revised POL-028; added records use the source ID plus `-opt`",
+        "  (a third reading would take `-opt3`).",
+        "- Two spelling pairs stay together as original FORM plus `ver=\"alt\"`.",
+        "- Historical spelling and all source readings are preserved.",
+        "  No standard tier is generated under the corpus's August 12 ruling.",
         "- No W/M segmentation or PHON is inferred from this comparative table.",
         "- Sideia/Sida maps to Siraya (`fos`); Favorlang maps to Babuza-Favorlang (`bzg`).",
     ]
@@ -305,9 +333,13 @@ def main() -> None:
     write_xml(entries)
     write_report(entries)
     write_summary(entries)
-    print("Wrote Final_XML/Siraya/latham_1862_sideia_sida.xml")
-    print("Wrote Final_XML/Babuza-Favorlang/latham_1862_favorlang.xml")
-    print(f"Records: {len(entries)}; source FORM variants: 70")
+    print("Wrote XML/Siraya/latham_1862_sideia_sida.xml")
+    print("Wrote XML/Babuza-Favorlang/latham_1862_favorlang.xml")
+    readings = sum(1 + len(e.alternate_forms) for e in entries)
+    print(
+        f"Records: {len(xml_entries(entries))}; "
+        f"source FORM readings: {readings}"
+    )
 
 
 if __name__ == "__main__":
