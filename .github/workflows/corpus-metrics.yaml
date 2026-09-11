@@ -62,7 +62,14 @@ jobs:
         run: cat corpus-metrics/corpus_metrics.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commit updated statistics
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        # workflow_dispatch counts: a manual run is how a lost or skipped
+        # auto-commit gets recovered, and gating this step on 'push' alone
+        # made every dispatch a silent no-op — it regenerated the CSVs,
+        # uploaded them as an artifact, skipped this step, and reported
+        # success.
+        if: >-
+          (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+          && github.ref == 'refs/heads/main'
         run: |
           mkdir -p statistics
           cp corpus-metrics/corpus_size_history.csv statistics/corpus_size_history.csv
@@ -85,7 +92,28 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Update corpus statistics and growth graph"
-          git push
+
+          # Rebase and retry rather than push once. This job takes minutes —
+          # it regenerates every per-corpus CSV, then walks history for
+          # --history-extend — so anything landing on main meanwhile makes a
+          # bare push fail non-fast-forward and drops the statistics commit on
+          # the floor. Worse, the trigger is path-filtered, so a later merge
+          # that touches no Corpora/** path never retries it: on 2026-09-11
+          # the Amis-Pa-Verbs stats CSV was lost this way to a merge that
+          # landed 15 seconds after the one that started this job.
+          #
+          # Rebasing is safe here because the commit only ever touches
+          # generated files under statistics/, which this job owns.
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "push rejected (attempt $attempt); rebasing onto origin/main"
+            git fetch origin main || exit 1
+            git rebase origin/main || { git rebase --abort || true; exit 1; }
+          done
+          echo "still could not push after 3 attempts" >&2
+          exit 1
 
       - name: Upload corpus metrics artifacts
         uses: actions/upload-artifact@v4
