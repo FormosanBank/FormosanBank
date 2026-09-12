@@ -1,16 +1,20 @@
 # Paiwan Stories
 
-### Overview
+## Overview
 
-The Paiwan Stories corpus is a small collection of children’s stories told in Eastern Paiwan. Drawn from three storybooks, these narratives provide valuable cultural and linguistic insights into the Paiwan language as it is used in accessible, community-oriented contexts. Their inclusion in FormosanBank broadens the range of available materials, offering a glimpse into traditional knowledge, everyday life, and childhood learning in a Paiwan-speaking environment.
+Three children's stories in Eastern Paiwan with Chinese translations:
+*Dingding*, *Kavatjes ni vuvu* and *Maljialjian a qaciljay*.
 
-Three whole-story WAV recordings are available through FormosanBank’s public Hugging Face audio contract and can be retrieved with the corpus download script. Each XML root links to its recording. The statistics table reports zero audio because its duration metric counts sentence-level `AUDIO` elements, and these whole-story recordings do not have sentence timing.
+### Source Materials
 
-#### Source Materials
+* Gesi Giling (2020), *Dingding* and *Kavatjes ni vuvu*, illustrated by
+  Tjaiwan Giling. Both PDF colophons date the first printing to November 2020.
+* *Maljialjian a qaciljay*, an undated bilingual Word document.
 
-* giling, gesi & giling tjaiwan (2020) _vuvu 的寶物 / kavatjes ni vuvu_
-* giling, gesi & giling tjaiwan (2021) _dingding蝸牛_
-* giling, gesi & giling tjaiwan (2022) _maljialjian a qaciljay_
+Three whole-story WAV recordings are available through the corpus download
+script and FormosanBank's published Hugging Face audio contract. Each XML root
+names its recording. The duration metric below counts `AUDIO` elements;
+these whole-story references have no sentence timings and therefore report zero.
 
 ***
 
@@ -26,6 +30,8 @@ Three whole-story WAV recordings are available through FormosanBank’s public H
 | Translated words |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 574 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 |
 | Morphologically segmented | 0 |
 | Glossed words | 0 |
 
@@ -33,34 +39,44 @@ Three whole-story WAV recordings are available through FormosanBank’s public H
 
 <!-- CORPUS STATS END -->
 
+## Corpus Processing
 
-### **Corpus Processing**
+The corpus contains 46 bilingual passages reconstructed from the committed,
+reviewed transcription and source metadata. Source locators cover the text in
+the two PDFs and all 15 Word-table rows; one row contains two passages.
+Paratext and illustration-only material are identified separately.
 
-The reviewed release contains 46 bilingual sentence records across three XML files. All 66 pages of the two illustrated PDFs and bilingual Word source were reviewed, with four paratext or illustration-only exclusions recorded in the source ledger.
+The [build entrypoint](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Paiwan_Stories/CodeAndDocs/generate_xml.sh)
+generates source tiers, then runs shared cleaning, copy standardization and
+phonology. It uses current FormosanBank tools; the actual build revision is
+recorded in [provenance.json](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Paiwan_Stories/CodeAndDocs/provenance.json).
+Source documents are not fetched during reproduction.
 
-#### Processing Notes
+## Notes and Issues
 
-* **Source-aligned generation:** The public builder regenerates the XML deterministically from 46 reviewed, page-addressed records and a complete inclusion/exclusion ledger.
-* **Reviewed corrections:** One complete bilingual sentence omitted from the legacy `Maljialjian` XML was restored. Omitted or shifted Chinese translations in `Kavatjes` and `Maljialjian` were also repaired from the source.
-* **Tier ownership:** The generator emits source-owned original Paiwan forms and Chinese translations. The shared FormosanBank pipeline alone creates standard forms and original and standard phonology.
-* **Validation:** The 2026-08-22 release has no unresolved source-audit findings, no XML or text findings, live hosted-audio parity, and 0 hard findings and 0 warnings for port readiness. The 46 soft gloss findings are expected because the stories have no source-supported word or morpheme analysis.
+The recovered Maljialjian passage uses `S6a`, preserving every published TEXT
+and sentence ID. Omitted or shifted Chinese translations are restored from
+the sources. Published quotation corrections and documented typography are
+retained. There is no source word or morpheme analysis.
 
-***
+Historical sentence-alignment files are unavailable. The three published WAVs
+are preserved without resampling or inferred timings. Full illustrated sources
+are not redistributed because they contain separate illustration and publisher rights.
 
-### Access Details
+## Access Details
 
-* The [FormosanBank corpus directory](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Paiwan_Stories) contains the XML, reviewed source transcription and ledger, deterministic build script, and audio download script. The illustrated source documents are not redistributed because they contain separate rights notices.
+The [corpus directory](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Paiwan_Stories)
+contains the XML, reviewed transcription, metadata, build code and audio downloader.
 
-***
+## Copyright
 
-### Copyrights
+CC BY-NC 4.0. Joshua Hartshorne recorded direct permission from the
+Indigenous-text author, Gesi Giling (阮翠芳), on 2024-04-13; evidence: ask maintainer.
+The central FormosanBank terms and AI-use addendum also apply.
 
-The Indigenous-language text is published with direct author permission under CC BY-NC. The central FormosanBank terms and AI-use addendum also apply.
+## Citation
 
-***
+In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md),
+if you use this corpus or a derived product in a publication, cite FormosanBank and:
 
-### Citation
-
-In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
-
-* Juan, T. F., & Ruan, X. (2024). _Corpus of Paiwan stories_ \[Electronic resource].
+* Juan, T. F., & Ruan, X. (2024). *Corpus of Paiwan stories* [Electronic resource].
