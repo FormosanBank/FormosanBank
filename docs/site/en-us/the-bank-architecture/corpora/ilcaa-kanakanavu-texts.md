@@ -48,17 +48,17 @@ lists the remaining decisions. A successful build or XML check does not settle t
 
 ## Access Details
 
-The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/66369c634eb5e6803c5b24a21d6ceee5913c1759/Corpora/ILCAA-Kanakanavu-Texts/)
+The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/a8fda54a3e55752f80b10e6444950803f02029a2/Corpora/ILCAA-Kanakanavu-Texts/)
 match the reviewed private development commit. This proposal has not been merged.
 
 ## Corpus Processing
 
-The revised parser uses the committed CC BY 4.0 PDF and source decisions. It emits 1,449 numbered-example S, 57 footnote S and 100 introduction/title S, totalling 1,606 source records. Historical table columns and Saaroa remain separate; three analyzed prose examples supply W/M tiers. The parser also repairs gloss columns, stacked infixes and four pseudo-clefts. These changes have not reached retained final XML. Five additional profiles need supported routes, and the difference between canonical standard PHON and the earlier private override remains under review. Existing shared flags already support the committed narrative source tables. Provenance identifies the actual earlier final build.
+The revised parser uses the committed CC BY 4.0 PDF and source decisions. It emits 1,449 numbered-example S, 57 footnote S and 100 introduction/title S, totalling 1,606 source records. Historical table columns and Saaroa remain separate; three analyzed prose examples supply W/M tiers. The parser also repairs gloss columns, stacked infixes and four pseudo-clefts. These changes have not reached retained final XML. Five additional profiles need supported routes, and the difference between canonical standard PHON and the earlier private override remains under review. The entry point passes the committed narrative tables directly to the shared tools, so generation needs no missing Asai files in the shared checkout. Provenance identifies the actual earlier final build.
 
 Run `bash Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/generate_xml.sh` in the candidate
-FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/66369c634eb5e6803c5b24a21d6ceee5913c1759/Corpora/ILCAA-Kanakanavu-Texts/README.md) documents dependencies,
+FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/a8fda54a3e55752f80b10e6444950803f02029a2/Corpora/ILCAA-Kanakanavu-Texts/README.md) documents dependencies,
 source coverage and any scoped pipeline deviations. The
-[build provenance](https://github.com/FormosanBank/FormosanBank/blob/66369c634eb5e6803c5b24a21d6ceee5913c1759/Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/provenance.json) records the actual
+[build provenance](https://github.com/FormosanBank/FormosanBank/blob/a8fda54a3e55752f80b10e6444950803f02029a2/Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/provenance.json) records the actual
 tools used for the retained output; it does not select or pin tools for later builds.
 
 ## Copyright
