@@ -17,15 +17,17 @@ It consists of three main sections:
 
 | | Amis<br>Coastal | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Sakizaya | Atayal<br>Wenshui | Seediq<br>Tegudaya | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 7,561 | 23,283 | 16,244 | 17,985 | 13,999 | 5,856 | 23,341 | 10,128 | 20,352 | 10,816 |
+| Word count | 7,531 | 23,486 | 16,290 | 17,978 | 14,038 | 5,864 | 25,298 | 10,206 | 20,354 | 10,853 |
 | Total audio | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,516 | 23,204 | 16,179 | 17,969 | 8,949 | 5,851 | 18,427 | 10,128 | 15,176 | 10,800 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,561 | 23,193 | 16,242 | 17,968 | 13,997 | 5,851 | 23,341 | 10,128 | 20,336 | 10,800 |
-| Morphologically segmented | 7,561 | 23,214 | 16,244 | 17,944 | 13,001 | 5,855 | 21,931 | 10,128 | 18,948 | 10,816 |
-| Glossed words | 7,561 | 23,214 | 16,244 | 17,944 | 13,001 | 5,855 | 21,931 | 10,128 | 18,948 | 10,816 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,486 | 23,404 | 16,225 | 17,963 | 8,993 | 5,859 | 20,369 | 10,206 | 15,169 | 10,837 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,531 | 23,396 | 16,288 | 17,961 | 14,036 | 5,859 | 25,298 | 10,206 | 20,334 | 10,837 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Morphologically segmented | 7,528 | 23,463 | 16,286 | 17,292 | 12,968 | 5,861 | 22,803 | 10,200 | 18,854 | 10,849 |
+| Glossed words | 7,528 | 23,463 | 16,286 | 17,292 | 12,968 | 5,861 | 22,803 | 10,195 | 18,847 | 10,848 |
 
 ***
 
@@ -100,7 +102,7 @@ The original corpus has a great deal of discourse coding for Sentences and Stori
 
 * The repo containing this corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/NTUFormosanCorpus).
 
-* The corpus is fully regenerable from the archived source data: `CodeAndDocs/make.sh` runs the entire pipeline (parsing, cleaning, orthography standardization, phonology, and every recorded repair — including the one-off hand-verified corrections, which are stored as script tables so they survive regeneration) in order. The step-by-step documentation is in the corpus [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/NTUFormosanCorpus/readme.md).
+* The corpus is fully regenerable from the archived source data. The JSONs under `CodeAndDocs/{grammar,sentence,story}` are the source — nothing is scraped, so there is no refresh step — and `CodeAndDocs/pipeline/build.sh` takes them to the published XML: a per-subcorpus builder, a chain of repair scripts, then tier construction (alternate readings, morpheme pruning, id alignment, and the standard and phonemic tiers against Ortho94). Each subcorpus is built from scratch in a temporary directory and installed only on success, so a rebuild reproduces the same bytes. `CodeAndDocs/make.sh` wraps that build with the source-coverage audit, re-application of recorded hand edits, validation and a regression check against the recorded QA baseline. The one-off hand-verified corrections are stored as data tables rather than in code, so they survive regeneration. The source JSONs used are the ones this corpus has always published; an alternative revision of 207 of them exists on a feature branch but is not produced by any script in the repository, so it is neither auditable nor reproducible and is not used. Step-by-step documentation is in [CodeAndDocs/pipeline/README.md](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/NTUFormosanCorpus/CodeAndDocs/pipeline/README.md) and the corpus [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/NTUFormosanCorpus/readme.md).
 
 ***
 
@@ -120,7 +122,7 @@ The original corpus has a great deal of discourse coding for Sentences and Stori
 
 * There are a number of cases where, in the glosses, the wordform and syntactic glosses differ in the number of segments. Many of these cases appear to be due to failing to segment the wordform. Others may be due to the wordforms and syntactic glosses being out of alignment. Known examples are recorded in [validation_m_mismatches.csv](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/NTUFormosanCorpus/validation_m_mismatches.csv) (current count: 1,476).
 
-* The original data often contains transcriber notes or translation notes in the text. These have been removed from the text and placed in a `notes` attribute in the corresponding `FORM`. However, such information may not always be included (it was complicated to extract), so users who are interested in the notes and parentheticals should consult the online version of the NTU Formosan Corpus, which is meant to be read by a human. The `id` of the XML file (check the `TEXT` header element) tells you what the file is on NTU Formosan Corpus. The `id` of the `S` element tells you which line in the NTU Formosan Corpus.
+* The original data often contains transcriber notes or translation notes inline, in parentheses. These are removed from the text and preserved in a `notes` attribute: commentary inside a free translation goes to `TRANSL/@notes` (5,911 sentences), and commentary in the sentence text itself goes to `FORM/@notes` (5,542 sentences, plus 1,298 at the word level). Every parenthetical span is extracted, whether the source wrote ASCII `(...)` or fullwidth `（...）` and wherever in the string it sits; the `notes` attribute holds the source string as written, so nothing is lost. Word- and morpheme-level glosses are left exactly as the source wrote them, since those are glosses rather than commentary. A small residue survives: 28 free translations still carry a parenthetical inline (23 of them with no `notes` attribute, so those are not recorded anywhere else), and 16 have unbalanced parentheses that cannot be resolved automatically. The online version of the NTU Formosan Corpus is meant to be read by a human and remains the better place to browse the annotations: the `id` of the XML file (check the `TEXT` header element) tells you what the file is there, and the `id` of the `S` element tells you which line.
 
 * The original data also has notes written below the free translation. Many of these simply state the source of the information, but others are useful and relevant. These are NOT included in FormosanBank. (Not because they aren't interesting, but because it's harder than you'd think to extract them and figure out where to put them.)
 
@@ -145,6 +147,26 @@ The original corpus has a great deal of discourse coding for Sentences and Stori
 * In the Kanakanavu texts, "tia'apacangcangarʉʉn" was often written as one word, whereas it appears that "tia 'apacangcangarʉʉn" is more likely based on glossing. We made this change in parse_grammar.py.
 
 * The Kanakanavu sentence subcorpus writes "∅" inside some words (31 occurrences), and the Sakizaya grammar writes a null prefix slot "ø". These are the linguists' null-morpheme annotation: a morpheme that is present in the analysis but has no phonological content (e.g. a phonologically empty relativizer, glossed REL). FormosanBank's convention (per the 2026-08 null-morpheme specification) canonicalizes the marker glyph to `∅` (U+2205) and keeps it in the original tier and on the word/morpheme tiers — where the morphological analysis lives — while removing it from sentence-level standard FORMs; in the PHON tier null morphemes are silent (a wholly-null morpheme carries PHON `∅` so the tier is never empty). The currently published XML predates parts of this convention (e.g. Sakizaya still shows `ø`); it is applied fully at the next regeneration. See the corpus [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/NTUFormosanCorpus/readme.md) for details.
+
+***
+
+## Orthography
+
+The NTU source is written in **Ortho94**, the orthography released in ROC year 94 which Ortho113 later revised. The corpus is processed as Ortho94 throughout: the original phonemic tier is generated from Ortho94's letter-to-sound rules, and the standard tier is produced by converting 94 → 113 per language, since Ortho113 is FormosanBank's common orthography.
+
+This is a change from earlier processing, which declared the original tier to be Ortho113 and produced the standard tier by stripping accents without any letter conversion — describing the source as an orthography it was not written in.
+
+Three of the corpus's ten languages carry an empty conversion table. Bunun and Tsou need no letter conversion, their Ortho94 and Ortho113 spellings agreeing; Kanakanavu genuinely differs but cannot be converted in this direction, because Ortho113 introduced letters Ortho94 did not have. Accents are removed and capital variants derived in all cases regardless.
+
+***
+
+## Quality checks
+
+FormosanBank's validators decide whether a corpus's XML is *legal*. This corpus additionally carries a suite that measures how well it holds together as a **glossed** corpus — whether the word tier accounts for the sentence, whether every morpheme a word's form implies actually has a morpheme element, and whether the glosses sit in the right language slots. A file can be perfectly valid and still score poorly on these.
+
+Almost none of those tests can honestly reach 100%: the source contains sentences nobody segmented and words nobody glossed, and suppressing that fact would be worse than reporting it. So the recorded score is the specification — a baseline file holds what each test achieves on the corpus as published, and any rebuild is compared against it, with drops reported as regressions and rises reported so the baseline can be moved deliberately.
+
+The suite and its baseline live in the corpus's `CodeAndDocs/qa/` directory in the [FormosanBank repository](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/NTUFormosanCorpus/CodeAndDocs/qa).
 
 ***
 

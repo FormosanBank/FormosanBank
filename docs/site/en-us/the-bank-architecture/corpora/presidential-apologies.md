@@ -1,27 +1,23 @@
 # Presidential Apologies
 
-### **Overview**
+This corpus contains 524 aligned sentence sections in 16 Formosan languages from the official presidential apology translations. It preserves the government PDFs, transcript snapshots, source corrections and Mandarin readings. No audio is included.
 
-On **August 1, 2016**, President Tsai Ing-wen delivered a historic apology to Taiwan's indigenous peoples on behalf of the government during **Indigenous Peoples' Day**. The apology addressed the pain and mistreatment endured by indigenous communities over four centuries and marked the establishment of the **Presidential Office Indigenous Historical Justice and Transitional Justice Committee (Indigenous Justice Committee)**.&#x20;
-
-This apology text, as part of the effort to promote **historical justice**, has been translated into the 16 officially recognized Formosan languages: **Amis**, **Atayal**, **Saisiyat**, **Thao**, **Seediq**, **Bunun**, **Paiwan**, **Rukai**, **Truku**, **Kavalan**, **Tsou**, **Kanakanavu**, **Saaroa**, **Puyuma**, **Yami**, and **Sakizaya**. The translated apologies are the main texts forming the corpus described here. This corpus consists exclusively of **text data.** The apology text is also available in **English** and **Chinese**.
-
-The current release contains 16 texts and 524 aligned sentence sections. Every sentence has original and standard Formosan-language tiers, generated IPA tiers, and Mandarin and English translations. The source does not provide word or morpheme analysis, and the corpus has no audio.
-
-***
+This candidate remains under review. The statistics below describe the checked-in candidate XML.
 
 <!-- CORPUS STATS START -->
-### Corpus Statistics
+## Corpus Statistics
 
 | | Amis<br>Xiuguluan | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Paiwan<br>Central | Puyuma<br>Nanwang | Thao | Saaroa | Sakizaya | Yami | Atayal<br>Sekolik | Seediq<br>Tegudaya | Truku | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 1,929 | 1,548 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,114 | 1,735 | 1,640 | 2,445 | 1,508 | 1,853 | 2,070 | 1,543 | 1,639 |
+| Word count | 1,936 | 1,554 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,117 | 1,735 | 1,640 | 2,449 | 1,508 | 1,853 | 2,084 | 1,544 | 1,640 |
 | Total audio | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 1,929 | 1,548 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,114 | 1,735 | 1,640 | 2,445 | 1,508 | 1,853 | 2,070 | 1,543 | 1,639 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 1,929 | 1,548 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,114 | 1,735 | 1,640 | 2,445 | 1,508 | 1,853 | 2,070 | 1,543 | 1,639 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 1,936 | 1,554 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,117 | 1,735 | 1,640 | 2,449 | 1,508 | 1,853 | 2,084 | 1,544 | 1,640 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 1,936 | 1,554 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,117 | 1,735 | 1,640 | 2,449 | 1,508 | 1,853 | 2,084 | 1,544 | 1,640 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Glossed words | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
@@ -29,77 +25,45 @@ The current release contains 16 texts and 524 aligned sentence sections. Every s
 
 <!-- CORPUS STATS END -->
 
+## Notes and Issues
 
-### **Corpus Processing**
+- The source repeats Saaroa S22/S23 on physical PDF pages 22/23 beside different translations. Both records are intentional and retained.
+- Some source notation still needs interpretation under POL-027/POL-028: Puyuma S28 `parubalruk(pasenkin)` and Tsou S2/S9 `taa’uzva(taa’uiva)`, `esmiza(esmia)`, `mahiz’o(mahi’o)`. The PDFs provide no legend distinguishing lexical alternatives, spelling variants or explanatory notation. These existing readings remain intact pending that decision; the corpus is not yet ready to port.
+- Mandarin code-switching, explanatory quotations and numbers are source content. CJK-only parenthetical annotations follow the scoped handling in the corpus README. Do not treat every parenthesis as optional spoken material.
+- English has no bilingual-PDF witness, and the PDFs do not establish the inherited dialect labels.
+- Existing source caveats are retained: Amis quotes Atayal Balay/Sbalay; Kanakanavu keeps its controversial h/f spellings; Puyuma keeps ē in yēncumin and sēhu; some Sakizaya f spellings may be loans. Letters unsupported by the declared dialect profile remain marked with `*` in generated PHON. These markers are not source transcriptions.
 
-The corpus uses the officially released translations in 16 Formosan languages, Mandarin, and English. Its public build follows these steps:
+The [corpus PR #171](https://github.com/FormosanBank/FormosanBank/pull/171)
+lists the remaining decisions. A successful build or XML check does not settle them.
 
-1. **Source inventory and PDF alignment**\
-   The 36-file source manifest records 16 official bilingual PDFs and the corresponding transcript snapshots. Fifteen language texts contain 33 aligned sections; Kanakanavu contains 29. The source audit matches all 524 Formosan-language sections and all 524 Mandarin sections to the PDFs after only documented layout and typography equivalences. English is checked for file integrity, section count, and deterministic XML mapping because it is not printed in the bilingual PDFs.
+## Access Details
 
-   <figure><img src="../../.gitbook/assets/Screenshot 2024-12-08 at 9.41.01 PM.png" alt="Example of aligned Formosan-language and Mandarin apology sections"><figcaption>Example of the aligned source layout.</figcaption></figure>
-2. **Reviewed source corrections**\
-   The rebuild records three source decisions: Kavalan section 6 preserves public word boundaries after two Mandarin annotations; Saaroa section 0 corrects `mualiuhlʉ` to the PDF spelling `mualiuhlu`; and Truku section 25 replaces a semicolon with the apostrophe printed in the PDF. The repeated Saaroa sections 22 and 23 remain because the official PDF prints the same Formosan-language paragraph on both corresponding pages beside different Mandarin sections.
-3. **Stable XML generation**\
-   A single external mapping records source files, language codes, dialect labels, stable text IDs, and section counts. Generation preserves all 16 published text IDs and all 524 sentence IDs. Each sentence receives Formosan-language `FORM` tiers and Mandarin and English `TRANSL` elements.
-4. **Cleaning, standardization, and IPA**\
-   The XML is cleaned with the current FormosanBank tooling. The standard `FORM` tier is copied from the cleaned original tier, and both `PHON` tiers are generated from Ortho113 using the declared dialect. CJK-only parenthetical annotations in Tsou and Kavalan remain in the original tier but are removed from the standard tier and masked from IPA. Inline Mandarin content remains on both tiers.
-5. **Reproduction and validation**\
-   The [public pipeline and QC record](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Presidential_Apologies/CodeAndDocs) pin the FormosanBank tooling authority, rebuild all XML in a temporary directory, repeat the source audit, run the XML, text, gloss, duplicate, and port-readiness validators, and compare the result with the committed corpus. The release reproduces exactly and has no hard validation findings.
+The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/fa63bbf8dd7bb4d889d07332db853c3292e9b23a/Corpora/Presidential_Apologies/)
+match the reviewed private development commit. This proposal has not been merged.
 
-***
+## Corpus Processing
 
-### **Corpus Notes**
+The build reconstructs the source tiers from the committed transcripts and correction records, then uses current shared cleaning, standardization and phonology. The 36-file source inventory and alignment checks retain intentional repetition and identify the limits of the available PDF witnesses.
 
-* **Amis**: The presidential apology in Amis has several occurrences of the letter `b`, which is not part of the standard orthography. All occurrences are in the quoted Atayal words `Balay` and `Sbalay`.
-* **Kanakanavu**: This corpus uses a small number of h's and f's, which are controversial. None of the words involving h's or f's appear in the reference ILRDF Dictionary corpus, with or without the h's and f's. Thus, we have chosen to leave them in.
-* **Puyuma**: This corpus has a number of appearances of ē. Almost all of these are due to yēncumin (which is marked as a foreign word) and sēhu. Thus, this has not been homogenized.
-* **Sakizaya**: A small number of f's appear to be foreign words.
-* **Starred IPA**: Letters outside the declared dialect's orthography — the Amis 'b' and Puyuma ē/loanword letters above, and bare Mandarin terms — appear as `*` in the `PHON` tiers. This is intentional: `*` marks a letter the dialect's orthography tables cannot transcribe.
+Run `bash Corpora/Presidential_Apologies/CodeAndDocs/generate_xml.sh` in the candidate
+FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/fa63bbf8dd7bb4d889d07332db853c3292e9b23a/Corpora/Presidential_Apologies/README.md) documents dependencies,
+source coverage and any scoped pipeline deviations. The
+[build provenance](https://github.com/FormosanBank/FormosanBank/blob/fa63bbf8dd7bb4d889d07332db853c3292e9b23a/Corpora/Presidential_Apologies/CodeAndDocs/provenance.json) records the actual
+tools used for the retained output; it does not select or pin tools for later builds.
 
-***
+## Copyright
 
-### **Significance of the Apology Corpus**
+The retained XML copyright field is:
 
-1. **Preserving Indigenous Languages**\
-   Translating the apology into these languages ensures that it remains accessible to all indigenous groups, contributing to the preservation and revitalization of their languages.
-2. **Uniform Text for Linguistic Comparison**\
-   Having the same text available across multiple languages provides a unique opportunity to study and compare linguistic structures, vocabulary, and syntax across Formosan languages.
-3. **Cultural and Linguistic Identity**\
-   This corpus demonstrates the importance of indigenous languages in addressing historical events and acknowledging their role in Taiwan's cultural heritage.
+public domain
 
-This corpus represents a critical step in preserving linguistic diversity and making significant historical events accessible in the native languages of Taiwan’s indigenous communities.
+**License:** public domain
 
-***
+**Rights source:** Wael Mohamed (recorded source status), 2024-10-16; evidence: ask maintainer
 
-### **Access Details**
+This retains the published corpus's public-domain status. The dated source coordination record confirms that status; it is not a new licence grant by the compiler. The committed PDFs and transcript snapshots are the recorded public build inputs.
 
-* The Office of the President provides the [official English apology](https://english.president.gov.tw/NEWS/4950), and the Council of Indigenous Peoples provides the [16 Formosan-language versions](https://www.cip.gov.tw/zh-tw/news/data-list/01F6453A792735EC/index.html?cumid=01F6453A792735EC).
-* The corpus XML and retained processing code are available [in FormosanBank](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Presidential_Apologies).
-
-***
-
-### **Copyright**
-
-According to [Copyright rules by territory/Taiwan](https://commons.wikimedia.org/wiki/Commons:Copyright_rules_by_territory/Taiwan), transcriptions of presidential speeches are not copyrighted as they are listed under public domain.
-
-> ### Not protected <a href="#not_protected" id="not_protected"></a>
->
-> See also: [Commons:Unprotected works](https://commons.wikimedia.org/wiki/Commons:Unprotected_works)
->
-> According to the _Copyright Act as amended on 15 June 2022_, The following items shall not be the subject matter of copyright, to which [\{{PD-ROC-exempt\}}](https://commons.wikimedia.org/wiki/Template:PD-ROC-exempt) applied:\[2022 Art.9]
->
-> 1. The constitution, acts, regulations, or official documents.
-> 2. Translations or compilations by central or local government agencies of works referred to in the preceding subparagraph.
-> 3. Slogans and common symbols, terms, formulas, numerical charts, forms, notebooks, or almanacs.
-> 4. Oral and literary works for news reports that are intended strictly to communicate facts.
-> 5. Test questions and alternative test questions from all kinds of examinations held pursuant to acts or regulations.
->
-> The term "official documents" in the first subparagraph of the preceding paragraph includes proclamations, text of speeches, news releases, and other documents prepared by civil servants in the course of carrying out their duties.\[2022 Art.9]
-
-***
-
-### Citation
+## Citation
 
 In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
 
