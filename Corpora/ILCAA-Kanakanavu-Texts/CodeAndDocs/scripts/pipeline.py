@@ -23,6 +23,7 @@ from typing import Any
 import fitz  # PyMuPDF
 from lxml import etree
 
+import footnote_lexemes
 
 CODEDOCS = Path(__file__).resolve().parents[1]
 ROOT = CODEDOCS / ".build"
@@ -2338,7 +2339,7 @@ def expand_xml_units() -> tuple[list[dict[str, Any]], list[dict[str, Any]], list
     return xml_units, xml_words, xml_morphs
 
 
-def build_xml() -> tuple[list[Path], list[dict[str, Any]], list[dict[str, Any]]]:
+def build_xml(footnotes: list[dict[str, Any]]) -> tuple[list[Path], list[dict[str, Any]], list[dict[str, Any]]]:
     texts = segment_texts()
     units, words, morphs = expand_xml_units()
     words_by_unit: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -2426,6 +2427,28 @@ def build_xml() -> tuple[list[Path], list[dict[str, Any]], list[dict[str, Any]]]
         out = draft_dir / xml_filename(text["global_text_order"], text["title_english_clean"])
         etree.ElementTree(root).write(str(out), encoding="UTF-8", xml_declaration=True, pretty_print=True)
         paths.append(out)
+    records_path = CODEDOCS / "footnote_lexemes.jsonl"
+    paths.append(footnote_lexemes.write_xml(draft_dir, records_path, footnotes, dict(root.attrib)))
+    for record, note in footnote_lexemes.load_records(records_path, footnotes):
+        sid = f"{footnote_lexemes.TEXT_ID}_{record['id']}"
+        xml_index.append({
+            "xml_file": footnote_lexemes.FILENAME,
+            "text_id": footnote_lexemes.TEXT_ID,
+            "sentence_id": sid, "unit_id": sid,
+            "source_unit_id": note["footnote_id"],
+            "title_english": "Explanatory footnote lexemes",
+            "source_sentence_label": note["footnote_number"],
+            "physical_page_start": note["physical_page"],
+            "physical_page_end": note["physical_page"],
+            "printed_page_start": note["printed_page"],
+            "printed_page_end": note["printed_page"],
+            "source_pdf_path": f"data/raw/pdf/{PDF_NAME}",
+            "source_pdf_sha256": EXPECTED_SHA256,
+            "source_text_sha256": hashlib.sha256(record["form"].encode()).hexdigest(),
+            "word_tier_included": False, "morpheme_tier_included": False,
+            "footnote_refs": [note["footnote_id"]],
+            "quality_status": "source_lexical_record",
+        })
     write_csv(ROOT / "data/processed/xml_index.csv", xml_index, [
         "xml_file", "text_id", "sentence_id", "unit_id", "source_unit_id",
         "variant_label", "variant_order", "variant_count", "global_text_order",
@@ -2713,14 +2736,14 @@ def main() -> int:
     parse_toc()
     segment_texts()
     units, _, _, _ = parse_sentence_units()
-    extract_footnotes()
+    footnotes = extract_footnotes()
     extract_style_spans()
     filter_units()
     dedupe_units()
-    paths, _, _ = build_xml()
+    paths, _, _ = build_xml(footnotes)
     write_source_unit_coverage(units)
     write_source_notation_audit(units)
-    print(f"Extracted {len(units)} source units into {len(paths)} source-only XML files.")
+    print(f"Extracted {len(units)} numbered source units plus footnote lexemes into {len(paths)} source-only XML files.")
     return 0
 
 

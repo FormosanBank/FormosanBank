@@ -23,6 +23,7 @@ from xml.etree import ElementTree as ET
 import fitz
 
 import pipeline
+import footnote_lexemes
 
 
 CODEDOCS = Path(__file__).resolve().parents[1]
@@ -937,6 +938,10 @@ def main() -> int:
     sentences = load_xml()
 
     sentence_mismatches = compare_sentences(units, xml_index, sentences)
+    lexical_notes = read_jsonl(ROOT / "data/processed/footnotes.jsonl")
+    lexical_records = footnote_lexemes.load_records(CODEDOCS / "footnote_lexemes.jsonl", lexical_notes)
+    lexical_mismatches = footnote_lexemes.audit_xml(XML_DIR, CODEDOCS / "footnote_lexemes.jsonl", lexical_notes)
+    sentence_mismatches.extend(lexical_mismatches)
     wm_mismatches = compare_words_and_morphemes(units, words, morphs, xml_index, sentences)
     scans = artifact_scan(sentences)
     suspicious_translations = suspicious_sentence_translations(sentences)
@@ -994,7 +999,8 @@ def main() -> int:
         "",
         "## Full Comparison",
         "",
-        f"- Final S elements checked: {len(units)}.",
+        f"- Numbered-example S elements checked: {len(units)}.",
+        f"- Footnote lexical S elements checked: {len(lexical_records)}; mismatches: {len(lexical_mismatches)}.",
         f"- S expected-vs-actual mismatches: {len(sentence_mismatches)}.",
         f"- W/M expected-vs-actual mismatches: {len(wm_mismatches)}.",
         f"- Suspicious S-level translation artifacts: {len(suspicious_translations)}.",

@@ -18,10 +18,12 @@ has SHA-256 `785058bad6a8495f8b5fb51ed3d0eaf7da1736e791b308611d9442c010d93c03`.
 The parser accounts for 44 narratives and 40 numbered introduction examples
 (48 introduction units), totalling 1,431 source units. Of 24 parenthetical
 constructions, six use W/M FORM variants and 18 retain separate S readings,
-producing 1,449 source-stage S records. The 45 retained final XML files still
-have 1,455 S records and await regeneration.
-Unnumbered introduction forms, comparison tables and footnote lexical material
-still need coverage review. The numbered-unit count is not a whole-book verdict.
+producing 1,449 numbered-example S records. Another source file contains 57
+lexical records from 49 explanatory footnotes, for 1,506 source-stage S records.
+The 45 retained final XML files still have 1,455 S and await regeneration.
+The [footnote ledger](CodeAndDocs/footnote_lexemes.jsonl) accounts for all 87
+notes. Introduction prose/tables and the title-linked form in footnote 29 still
+need intake work. These counts are not a whole-book coverage verdict.
 The source parser repairs a misplaced interjection gloss in Naparamaci example
 68, omits empty gloss padding, restores the aligned W/M tiers of introduction
 examples 23a-d and separates eight stacked infix pairs. Final XML awaits the
@@ -63,8 +65,9 @@ KANAKANAVU_WORKSPACE=/tmp/kanakanavu-review python3 -m pytest -q
 ```
 
 The comparison checks extracted text, source sidecars and the selected XML,
-including W/M FORM variants. Source-only output has no derived tiers, so the
-report still fails its completeness checks. It never certifies a visual review.
+including W/M FORM variants and footnote forms, meanings and context. Source-only
+output has no derived tiers, so the report still fails its completeness checks.
+It never certifies a visual review.
 Use the installed gloss audit, corpus audit
 and current QC workflow after the outstanding source and tool work is resolved.
 
@@ -94,7 +97,9 @@ None supplied with this source.
   Four parenthetical classifications still need resolution under POL-028.
   Clause brackets remain at S; the shared PHON step must handle them as
   analytical notation.
-- Unnumbered lexical material uses several source orthographies. Its coverage
+- Introduction lexical material uses several source orthographies. Its coverage
   and routing must be resolved without applying the narrative profile blindly.
+  Footnote records preserve printed readings and omit unsupplied translations
+  and W/M analysis; they remain source-stage output pending the full build.
 - The earlier ten-page expert review and historical samples cover those records
   only. They do not establish a current visual review of every page or reading.

@@ -83,8 +83,21 @@ Preserve the 16 short sentences whose 57 M mirror their W. Equal forms alone
 do not establish an invented tier; the source supplies aligned word/gloss rows,
 and POL-023 permits monomorphemic words in otherwise parsed narratives.
 
-The 87 footnotes, four introduction tables and unnumbered lexical examples
-need explicit coverage accounting. Table 1 uses three historical orthographies;
+The [footnote ledger](footnote_lexemes.jsonl) anchors all 87 notes by source
+hash. It emits 57 lexical records from 49 notes, with the full note as context
+and page/note IDs in the source index. Note 21 explicitly supplies variants;
+note 35 describes a shortened form; note 52 distinguishes general variants
+from an archaic word. Separate readings use base/-opt/-opt3 IDs (POL-028).
+Printed English/Chinese meanings are retained, including both readings in
+notes 53 and 56. No translation or aligned W/M analysis is invented.
+Grammar explanations, bound forms, other-language comparisons and editorial
+notes remain in the ledger. Note 37's correction is preserved in the narratives,
+not emitted as its rejected field-note reading. Note 29 identifies the title
+ʔənnaŋ on physical page 146; that title-linked lexical intake remains pending.
+The new source file does not alter the 45 numbered-example source files or
+retained final XML. Introduction prose and tables still need intake review.
+
+Table 1 uses three historical orthographies;
 the other tables mix pronouns, affixes and schematic stems. Page 20 also cites
 Saaroa forms. Preserve these distinctions instead of applying the narrative
 Kanakanavu profile to every item.

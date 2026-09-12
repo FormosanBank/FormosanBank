@@ -177,7 +177,8 @@ def test_every_generated_sentence_indexed():
         xml_ids.update(s.attrib["id"] for s in root.findall("S"))
     assert xml_ids
     assert xml_ids == index_ids
-    assert len(xml_ids) == 1449  # 1431 source units plus 18 separate S readings.
+    # Numbered source units retain 1,449 readings; explanatory notes add 57.
+    assert len(xml_ids) == 1449 + 57
 
 
 def test_grammar_introduction_examples_in_final_xml():
