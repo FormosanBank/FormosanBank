@@ -1,112 +1,65 @@
 # Presidential Apologies
 
-This FormosanBank corpus builds the Presidential Apologies collection from the official 2016 apology translations. It contains 16 Indigenous-language texts aligned with Mandarin and English translations.
+**Basecamp card:** [6991940238](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/6991940238)
 
-| Field | Value |
-| --- | --- |
-| Source | [Presidential Office Indigenous Historical Justice and Transitional Justice Committee](https://indigenous-justice.president.gov.tw/) |
-| Source type | Official bilingual PDF translations and transcript snapshots |
-| Rights | Public domain in the recorded FormosanBank source authority |
-| Languages | 16 Formosan languages |
-| Canonical output | `XML/` |
-| TEXT elements | 16 |
-| Sentence elements | 524 |
-| Audio | None |
-| FormosanBank tooling commit | `3a3c47c220520113f747e6a2d441494000e13c4b` |
+The official 2016 presidential apology in 16 Indigenous languages, aligned with Mandarin and English. The corpus contains 16 TEXT records and 524 paragraph-sized S records; it has no word or morpheme analysis. The [Presidential Office Indigenous Historical Justice project](https://indigenous-justice.president.gov.tw/) provided the bilingual publications.
 
-## License and AI Use
+## Rights
 
-The source is recorded as public domain. This corpus is also subject to the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+**License:** public domain
+
+**Rights source:** Wael Mohamed (recorded source status), 2024-10-16; evidence: ask maintainer
+
+This retains the published corpus's public-domain status. The dated source coordination record confirms that status; it is not a new licence grant by the compiler. The committed PDFs and transcript snapshots are the recorded public build inputs.
 
 ## Source and alignment
 
-`CodeAndDocs/Apologies/` contains one official PDF and one native transcript for each language. The PDFs place the Indigenous-language translation beside Mandarin. Fifteen texts have 33 aligned sections. Kanakanavu has 29 sections and its own Mandarin and English transcript files.
+`CodeAndDocs/Apologies/` contains one bilingual PDF and one native transcript per language, shared Mandarin and English transcripts, and separate Kanakanavu translations. The 36 files are checksummed in `CodeAndDocs/data/source_manifest.csv`. Fifteen texts have 33 aligned sections; Kanakanavu has 29. Sections can combine source paragraphs to align the translations.
 
-The source audit matches all 524 native sections and all 524 Mandarin sections to the official PDFs. It removes layout whitespace and treats typographic width variants, quote styles, and ellipsis styles as equivalent. The title and closing section may differ only by an added terminal period in the transcript. No letters or words are normalized for alignment. See `CodeAndDocs/SOURCE_AUDIT.md`, `CodeAndDocs/data/source_alignment.csv`, and `CodeAndDocs/QC_SUMMARY.md`.
+The source audit compares all 524 native and 524 Mandarin sections with their PDF pages. It checks native body coverage and embedded word spaces, excluding synthetic layout spacing. Alignment allows documented typography differences and an added terminal period in titles or closings, without folding case, letters or diacritics. English is absent from the bilingual PDFs: its committed snapshots are checked for integrity, section counts and mapping, without claiming PDF verification.
 
-The shared English file and Kanakanavu English file are preserved official transcript snapshots. English is not printed in the bilingual PDFs, so it is checked for file integrity, section count, and deterministic XML mapping rather than PDF alignment.
+Earlier corrections in `CodeAndDocs/data/source_corrections.csv` preserve Kavalan S6 word boundaries, Saaroa S0 `mualiuhlu`, and the Truku S25 text-layer apostrophe. The Truku PDF font displays a missing glyph, while its embedded text identifies U+FF07. Nine further paragraph repairs have PDF locators in the same correction ledger and are applied from `manual_edits.xml`. Shared tooling regenerates [manual_edits.md](CodeAndDocs/manual_edits.md) as the readable correction changelog.
 
-Two source-content corrections and one published word-boundary reconciliation are recorded in `CodeAndDocs/data/source_corrections.csv`:
+## Language, dialect and IDs
 
-- Kavalan section `6`: spaces after two CJK annotations preserve the published lexical boundaries.
-- Saaroa section `0`: `mualiuhlʉ` was corrected to the PDF's `mualiuhlu`.
-- Truku section `25`: a semicolon was corrected to the PDF's fullwidth apostrophe after `tnpusu`.
+`CodeAndDocs/data/dialect_authority.tsv` records source files, section counts, language codes, dialects, TEXT IDs and the Seediq glottocode. Dialects come from the cited published baseline, not from labels in the PDFs. That baseline is historical evidence, not a tools version pin.
 
-## Language and dialect authority
+Published TEXT IDs `PA_<Language>` and zero-based S IDs remain unchanged: `0` through `32`, or `0` through `28` for Kanakanavu. The tests compare source tiers, translations and IDs with a supplied published baseline.
 
-`CodeAndDocs/data/dialect_authority.tsv` is the single mapping for language codes, source files, section counts, stable TEXT IDs, dialects, and the published Seediq glottocode. The PDFs do not identify dialects. The dialect labels are carried forward from the current published FormosanBank corpus at the pinned tooling commit so this rebuild does not introduce an unsupported reinterpretation.
+The [published orthography decision](https://github.com/FormosanBank/FormosanBank/commit/9608caee5) uses `standardize.py --copy` and original PHON profile `Ortho113`, including the previously reviewed Thao choice. PHON follows the declared dialect column. Kanakanavu `h`/`f`, Puyuma `ē`, and Sakizaya loan `f` remain in source FORM. Current shared tools own accent handling in derived PHON; unavailable dialect sound values remain `*` without borrowing another dialect's values.
 
-The source orthography is processed as Ortho113. The standard FORM tier is copied from the cleaned original FORM tier. PHON is generated with each TEXT element's declared dialect column.
+## Reproduce
 
-## Stable IDs
-
-Published identifiers are preserved:
-
-- TEXT IDs are `PA_<Language>`.
-- Sentence IDs are zero-based decimal strings in source order.
-- The 15 full translations use sentence IDs `0` through `32`.
-- Kanakanavu uses sentence IDs `0` through `28`.
-
-The tests compare every identifier with the pinned published baseline. Regeneration does not renumber the corpus.
-
-## Reproduce and verify
-
-Create an isolated environment and install both the corpus audit dependencies and the FormosanBank dependencies:
+Use a current FormosanBank checkout with its dependencies installed. From this repository root:
 
 ```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python -m pip install -r Corpora/Presidential_Apologies/CodeAndDocs/requirements.txt
+FORMOSANBANK_ROOT=/path/to/FormosanBank PYTHON=python3 \
+  CodeAndDocs/generate_xml.sh
 ```
 
-Rebuild the canonical XML and run the complete audit and QC sequence:
+The build generates fresh source XML, applies recorded edits, cleans, copies standard FORM, generates PHON with `Ortho113`, then applies the scoped annotation handling below. It replaces only `XML/`; it does not fetch sources or run validators. Optional `QC_OUTPUT_DIR` selects an external warning directory. [provenance.json](CodeAndDocs/provenance.json) records the actual FormosanBank tools commit and never selects or pins the tools checkout. A Git-free export retains this provenance record.
+
+**POL-047 deviation:** The [published annotation handling](https://github.com/FormosanBank/FormosanBank/commit/f73f24a78) runs `remove_standard_cjk_annotations.py` after phonology. It removes only CJK-only parenthetical annotations from standard FORM and regenerates PHON with those annotations masked. Original FORM, bare inline Mandarin and Latin parentheticals remain intact. This retains the corpus-specific ruling while shared tools supply the sound values.
+
+Source auditing and tests are separate from generation:
 
 ```bash
-PRESIDENTIAL_PYTHON=.venv/bin/python \
-  Corpora/Presidential_Apologies/CodeAndDocs/scripts/reproduce.sh --write \
-  --formosanbank-root .
+python3 -m pip install -r CodeAndDocs/requirements.txt
+python3 CodeAndDocs/scripts/audit_source_alignment.py \
+  --xml-dir XML --report /path/outside/repository/source_alignment.csv
+PRESIDENTIAL_PUBLIC_XML_ROOT=/path/to/FormosanBank/Corpora/Presidential_Apologies/XML \
+  python3 -m pytest CodeAndDocs/tests
 ```
 
-Use `--check` to rebuild in a temporary directory and compare the result with committed `XML/` and source-alignment evidence:
+Run current FormosanBank QC separately and review its findings. Compare two fresh builds byte-for-byte; source-audit scores and unchanged record counts alone do not establish correctness. Keep audit/QC reports outside the repository. `XML/<Language>/` is the sole final-output tree.
 
-```bash
-PRESIDENTIAL_PYTHON=.venv/bin/python \
-  Corpora/Presidential_Apologies/CodeAndDocs/scripts/reproduce.sh --check \
-  --formosanbank-root .
-```
+## Audio
 
-The script verifies the pinned FormosanBank commit and object hashes before it runs:
+None.
 
-1. Source manifest and native/Mandarin PDF alignment audit.
-2. Deterministic source-tier XML generation.
-3. `clean_xml.py`.
-4. `standardize.py --copy`.
-5. `add_phonology.py --orthography Ortho113` with declared dialects.
-6. Reproducible removal of CJK-only parenthetical annotations from the standard tier.
-7. XML, text, gloss, duplicate, and port-readiness validation.
-8. Corpus tests and comparison with published stable IDs.
+## Notes and Issues
 
-`CodeAndDocs/data/provenance.json` records the FormosanBank commit this corpus was built against. It is documentation: nothing in the build reads it. The build runs against the current state of the bank, so a rebuild picks up later tooling improvements rather than pinning them — if a rebuild changes the XML, review the diff against the prior published baseline.
-
-## Corpus-specific processing
-
-Tsou and Kavalan include Mandarin annotations in parentheses. These remain in `FORM kindOf="original"` for source fidelity. `remove_standard_cjk_annotations.py` removes only CJK-only parenthetical groups from the standard tier and masks them from generated PHON. Bare inline Mandarin and parenthetical Latin alternatives remain untouched.
-
-The declared dialect tables contain `NA` entries for some letters found mainly in loans. Those letters remain `*` in PHON. This preserves the current maintainer ruling and does not borrow values from another dialect column.
-
-The existing orthographic notes remain applicable:
-
-- Kanakanavu `h` and `f` are retained.
-- Puyuma `ē` is retained, including `yēncumin` and `sēhu`.
-- Sakizaya `f` in apparent loans is retained.
-
-## Layout
-
-- `XML/`: final generated FormosanBank XML.
-- `CodeAndDocs/Apologies/`: approved public source PDFs and transcripts.
-- `CodeAndDocs/main.py`: deterministic source-tier generator.
-- `CodeAndDocs/data/`: source, dialect, authority, correction, and alignment evidence.
-- `CodeAndDocs/scripts/`: source audit and full reproduction scripts.
-- `CodeAndDocs/tests/`: pipeline, stable-ID, source, and tier checks.
-
-Run all commands from the FormosanBank repository root. `XML/` is the canonical corpus output; do not use a legacy `Final_XML/` path.
+- The source repeats Saaroa S22/S23 on physical PDF pages 22/23 beside different translations. Both records are intentional and retained.
+- Some source notation still needs interpretation under POL-027/POL-028: Puyuma S28 `parubalruk(pasenkin)` and Tsou S2/S9 `taa’uzva(taa’uiva)`, `esmiza(esmia)`, `mahiz’o(mahi’o)`. The PDFs provide no legend distinguishing lexical alternatives, spelling variants or explanatory notation. These existing readings remain intact pending that decision; the corpus is not yet ready to port.
+- Mandarin code-switching, explanatory quotations and numbers are source content. CJK-only parenthetical annotations follow the scoped handling above. Do not treat every parenthesis as optional spoken material.
+- English has no bilingual-PDF witness, and the PDFs do not establish the inherited dialect labels.

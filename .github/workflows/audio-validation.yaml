@@ -55,9 +55,13 @@ jobs:
         id: changed
         run: |
           # List unique corpus dirs whose XML changed in this PR.
+          # :(glob) so '*' stops at '/' and only the canonical
+          # Corpora/<name>/XML/ tree matches -- not the POL-035 snapshots
+          # under CodeAndDocs/pre_correction_snapshot/XML/. See the same
+          # note in xml-validation.yaml.
           git diff --name-only --diff-filter=AM \
             "origin/${{ github.base_ref }}...HEAD" \
-            -- 'Corpora/**/XML/**/*.xml' \
+            -- ':(glob)Corpora/*/XML/**/*.xml' \
             | awk -F/ '{ print "Corpora/" $2 }' \
             | sort -u > changed_corpora.txt
           count=$(wc -l < changed_corpora.txt)

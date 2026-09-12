@@ -9,6 +9,7 @@ import hashlib
 import re
 import sys
 import unicodedata
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -24,7 +25,6 @@ from CodeAndDocs.main import LanguageSpec, load_specs, read_sections  # noqa: E4
 
 DATA_ROOT = CODE_ROOT / "data"
 DEFAULT_MANIFEST = DATA_ROOT / "source_manifest.csv"
-DEFAULT_REPORT = DATA_ROOT / "source_alignment.csv"
 
 _TYPOGRAPHY = str.maketrans(
     {
@@ -39,9 +39,20 @@ _TYPOGRAPHY = str.maketrans(
         "」": '"',
         "﹁": '"',
         "﹂": '"',
+        "『": '"',
+        "』": '"',
+        "《": '"',
+        "》": '"',
+        "[": "(",
+        "]": ")",
+        "【": "(",
+        "】": ")",
+        "〔": "(",
+        "〕": ")",
         "（": "(",
         "）": ")",
         "，": ",",
+        "、": ",",
         "；": ";",
         "：": ":",
         "！": "!",
@@ -100,7 +111,8 @@ def extract_blocks(pdf_path: Path) -> tuple[dict[str, list[TextBlock]], int]:
     with fitz.open(pdf_path) as document:
         page_count = len(document)
         for page_index, page in enumerate(document, start=1):
-            for block in page.get_text("dict")["blocks"]:
+            flags = fitz.TEXTFLAGS_DICT | fitz.TEXT_INHIBIT_SPACES
+            for block in page.get_text("dict", flags=flags)["blocks"]:
                 if "lines" not in block:
                     continue
                 spans = [span for line in block["lines"] for span in line["spans"]]
@@ -187,18 +199,67 @@ def pdf_for_spec(spec: LanguageSpec) -> Path:
     return paths[0]
 
 
-def alignment_rows(specs: tuple[LanguageSpec, ...]) -> tuple[list[dict[str, str]], list[str]]:
+def native_sections(spec: LanguageSpec, xml_dir: Path | None) -> list[str]:
+    if xml_dir is None:
+        return read_sections(spec.source_file, spec.sections)
+    root = ET.parse(xml_dir / spec.language / f"{spec.language}.xml").getroot()
+    sentences = root.findall("S")
+    if [s.get("id") for s in sentences] != [str(i) for i in range(spec.sections)]:
+        raise ValueError(f"{spec.language}: changed source-section identifiers")
+    return [s.findtext('FORM[@kindOf="original"]', default="") for s in sentences]
+
+
+def uncovered_text(block: str, sections: list[str]) -> str:
+    """Detect omitted body content even when each section matches a substring."""
+    value = normalize_for_alignment(block, True)
+    normalized = [normalize_for_alignment(section, True) for section in sections]
+    if any(value in section for section in normalized):
+        return ""
+    for section in sorted(normalized, key=len, reverse=True):
+        if section:
+            value = value.replace(section, "")
+    return "" if any(value in section for section in normalized) else value
+
+
+def missing_word_boundaries(source: str, candidate: str) -> list[str]:
+    """Compare embedded PDF spaces at word boundaries, ignoring CJK layout."""
+    target = normalize_for_alignment(source, True)
+    witness = normalize_for_alignment(candidate, True)
+    start = witness.find(target)
+    if start < 0:
+        return []  # The section-alignment check reports this mismatch.
+    source_spaces = {
+        len(normalize_for_alignment(source[:match.start()]))
+        for match in re.finditer(r"\s+", source)
+    }
+    missing = []
+    for match in re.finditer(r"(?<=\S)\s+(?=\S)", candidate):
+        left = candidate[match.start() - 1].translate(_TYPOGRAPHY)
+        right = candidate[match.end()].translate(_TYPOGRAPHY)
+        if not (left.isalpha() or left in "’‘'＇),.;:!?"):
+            continue
+        if "LATIN" not in unicodedata.name(right, "") and right not in "’‘'＇":
+            continue
+        offset = len(normalize_for_alignment(candidate[:match.start()])) - start
+        if 0 < offset < len(target) and offset not in source_spaces:
+            missing.append(f"{target[max(0, offset - 16):offset]} | {target[offset:offset + 16]}")
+    return missing
+
+
+def alignment_rows(
+    specs: tuple[LanguageSpec, ...], xml_dir: Path | None = None
+) -> tuple[list[dict[str, str]], list[str]]:
     rows: list[dict[str, str]] = []
     errors: list[str] = []
     for spec in specs:
         pdf_path = pdf_for_spec(spec)
         blocks, _ = extract_blocks(pdf_path)
-        native_sections = read_sections(spec.source_file, spec.sections)
+        native_source_sections = native_sections(spec, xml_dir)
         chinese_sections = read_sections(spec.chinese_file, spec.sections)
         native_candidates = build_candidates(blocks["native"])
         chinese_candidates = build_candidates(blocks["chinese"])
         for section_id, (native_source, chinese_source) in enumerate(
-            zip(native_sections, chinese_sections, strict=True)
+            zip(native_source_sections, chinese_sections, strict=True)
         ):
             terminal_section = section_id in {0, spec.sections - 1}
             chinese_candidate, chinese_score = match_section(
@@ -221,6 +282,12 @@ def alignment_rows(specs: tuple[LanguageSpec, ...]) -> tuple[list[dict[str, str]
                 page_coherent_native,
                 ignore_terminal_period=terminal_section,
             )
+            if native_score == 100.0:
+                for boundary in missing_word_boundaries(native_source, native_candidate.text):
+                    errors.append(
+                        f"{spec.language} native section {section_id}: "
+                        f"missing PDF word boundary {boundary!r}"
+                    )
             matches = (
                 (
                     "native",
@@ -253,7 +320,18 @@ def alignment_rows(specs: tuple[LanguageSpec, ...]) -> tuple[list[dict[str, str]
                         f"{spec.language} {channel} section {section_id}: "
                         f"PDF alignment score {score:.3f}"
                     )
-        print(f"{spec.language}: {spec.sections * 2} source sections matched", flush=True)
+        native_rows = [
+            row for row in rows
+            if row["language"] == spec.language and row["channel"] == "native"
+        ]
+        first_page = min(int(row["pdf_page_start"]) for row in native_rows)
+        last_page = max(int(row["pdf_page_end"]) for row in native_rows)
+        for block in blocks["native"]:
+            if first_page <= block.page <= last_page:
+                remaining = uncovered_text(block.text, native_source_sections)
+                if any(character.isalpha() for character in remaining):
+                    errors.append(f"{spec.language} page {block.page}: uncovered native text {remaining!r}")
+        print(f"{spec.language}: checked {spec.sections * 2} sections and native body coverage", flush=True)
     return rows, errors
 
 
@@ -336,7 +414,8 @@ def verify_manifest(path: Path, current: list[dict[str, str]]) -> list[str]:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
-    parser.add_argument("--report", type=Path, default=DEFAULT_REPORT)
+    parser.add_argument("--report", type=Path, required=True, help="external audit CSV destination")
+    parser.add_argument("--xml-dir", type=Path, help="check regenerated original FORMs including recorded corrections")
     parser.add_argument("--refresh-manifest", action="store_true")
     return parser.parse_args()
 
@@ -357,7 +436,7 @@ def main() -> int:
         write_csv(args.manifest, current_manifest, manifest_fields)
     manifest_errors = verify_manifest(args.manifest, current_manifest)
 
-    rows, alignment_errors = alignment_rows(load_specs())
+    rows, alignment_errors = alignment_rows(load_specs(), args.xml_dir)
     write_csv(
         args.report,
         rows,

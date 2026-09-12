@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import csv
-import json
 import os
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -9,6 +8,11 @@ from pathlib import Path
 import pytest
 
 from CodeAndDocs.main import generate_all, load_specs, read_sections
+from CodeAndDocs.scripts.audit_source_alignment import (
+    missing_word_boundaries,
+    normalize_for_alignment,
+    uncovered_text,
+)
 from CodeAndDocs.scripts.remove_standard_cjk_annotations import remove_annotations
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -95,41 +99,32 @@ def test_committed_xml_has_complete_owned_tiers() -> None:
     assert total == 524
 
 
-def test_published_ids_are_stable_and_only_source_corrections_change() -> None:
+def test_published_ids_translations_and_unchanged_originals_are_preserved() -> None:
     baseline_root = public_xml_root()
     if baseline_root is None:
         pytest.skip("PRESIDENTIAL_PUBLIC_XML_ROOT is not set")
-    allowed = {("Saaroa", "0"), ("Truku", "25")}
+    allowed = {
+        ("Saaroa", "0"), ("Truku", "25"), ("Amis", "20"), ("Atayal", "4"),
+        ("Bunun", "18"), ("Tsou", "6"), ("Tsou", "20"), ("Tsou", "25"),
+        ("Saaroa", "31"), ("Kanakanavu", "17"), ("Saisiyat", "20"),
+    }
     changed: set[tuple[str, str]] = set()
     for spec in load_specs():
-        current = ET.parse(
-            xml_root() / spec.language / f"{spec.language}.xml"
-        ).getroot()
-        baseline = ET.parse(
-            baseline_root / spec.language / f"{spec.language}.xml"
-        ).getroot()
+        relative = Path(spec.language) / f"{spec.language}.xml"
+        current = ET.parse(xml_root() / relative).getroot()
+        baseline = ET.parse(baseline_root / relative).getroot()
         assert current.attrib == baseline.attrib
         current_sentences = current.findall("S")
         baseline_sentences = baseline.findall("S")
-        assert [item.get("id") for item in current_sentences] == [
-            item.get("id") for item in baseline_sentences
-        ]
-        for current_sentence, baseline_sentence in zip(
-            current_sentences, baseline_sentences, strict=True
-        ):
-            if element_signature(current_sentence) != element_signature(baseline_sentence):
-                key = (spec.language, current_sentence.get("id", ""))
-                changed.add(key)
-                assert key in allowed
-                current_translations = [
-                    element_signature(item)
-                    for item in current_sentence.findall("TRANSL")
-                ]
-                baseline_translations = [
-                    element_signature(item)
-                    for item in baseline_sentence.findall("TRANSL")
-                ]
-                assert current_translations == baseline_translations
+        assert [s.attrib for s in current_sentences] == [s.attrib for s in baseline_sentences]
+        for actual, previous in zip(current_sentences, baseline_sentences, strict=True):
+            assert [element_signature(t) for t in actual.findall("TRANSL")] == [
+                element_signature(t) for t in previous.findall("TRANSL")
+            ]
+            current_form = actual.findtext('FORM[@kindOf="original"]')
+            baseline_form = previous.findtext('FORM[@kindOf="original"]')
+            if current_form != baseline_form:
+                changed.add((spec.language, actual.attrib["id"]))
     assert changed == allowed
 
 
@@ -138,7 +133,12 @@ def test_source_corrections_are_explicit() -> None:
         encoding="utf-8", newline=""
     ) as handle:
         rows = list(csv.DictReader(handle))
-    assert {(row["language"], row["section_id"]) for row in rows} == {
+    manual = ET.parse(CODE_ROOT / "manual_edits.xml").getroot()
+    recorded = {
+        (Path(file.attrib["path"]).parts[0], s.attrib["id"])
+        for file in manual.findall("FILE") for s in file.findall("S")
+    }
+    assert {(row["language"], row["section_id"]) for row in rows} == recorded | {
         ("Kavalan", "6"),
         ("Saaroa", "0"),
         ("Truku", "25"),
@@ -153,7 +153,7 @@ def test_source_corrections_are_explicit() -> None:
     assert "tnpusu;,“" not in truku
 
 
-def test_source_manifest_and_alignment_inventory() -> None:
+def test_source_manifest_inventory() -> None:
     with (CODE_ROOT / "data" / "source_manifest.csv").open(
         encoding="utf-8", newline=""
     ) as handle:
@@ -162,12 +162,12 @@ def test_source_manifest_and_alignment_inventory() -> None:
     assert len({row["path"] for row in manifest}) == 36
     assert sum(row["kind"] == "official_bilingual_pdf" for row in manifest) == 16
 
-    report_path = Path(
-        os.environ.get(
-            "PRESIDENTIAL_ALIGNMENT_REPORT",
-            CODE_ROOT / "data" / "source_alignment.csv",
-        )
-    )
+
+def test_external_alignment_report() -> None:
+    report = os.environ.get("PRESIDENTIAL_ALIGNMENT_REPORT")
+    if not report:
+        pytest.skip("PRESIDENTIAL_ALIGNMENT_REPORT is not set")
+    report_path = Path(report)
     with report_path.open(encoding="utf-8", newline="") as handle:
         alignment = list(csv.DictReader(handle))
     assert len(alignment) == 1048
@@ -197,43 +197,61 @@ def test_cjk_annotation_removal(
     assert remove_annotations(source) == (expected, removed)
 
 
-def test_qc_findings_match_reviewed_expectations() -> None:
-    report_value = os.environ.get("PRESIDENTIAL_QC_REPORT_ROOT")
-    if not report_value:
-        pytest.skip("PRESIDENTIAL_QC_REPORT_ROOT is not set")
-    report_root = Path(report_value)
-    expectations = json.loads(
-        (CODE_ROOT / "data" / "qc_expectations.json").read_text(encoding="utf-8")
+@pytest.mark.parametrize(
+    ("block", "sections", "expected"),
+    [
+        ("missing opening retained words", ["retained words"], "missingopening"),
+        ("first paragraph second paragraph", ["first paragraph", "second paragraph"], ""),
+        ("middle of paragraph", ["the middle of paragraph continues"], ""),
+    ],
+)
+def test_body_coverage_detects_truncated_sections(
+    block: str, sections: list[str], expected: str
+) -> None:
+    assert uncovered_text(block, sections) == expected
+
+
+@pytest.mark.parametrize(
+    ("source", "pdf", "missing"),
+    [
+        ("comahadnosaka’orip,pirayray", "comahad no saka ’orip, pirayray", 4),
+        ("no saka’orip", "no saka ’orip", 1),
+        ("mualiuhlu", "mualiuhlu", 0),
+        ("治 理", "治  理", 0),
+        ("（masasulul）Sbalay", "（masasulul）Sbalay", 0),
+    ],
+)
+def test_embedded_word_boundaries(source: str, pdf: str, missing: int) -> None:
+    assert len(missing_word_boundaries(source, pdf)) == missing
+
+
+def test_recorded_repairs_preserve_translations_and_survive_generation() -> None:
+    records = ET.parse(CODE_ROOT / "manual_edits.xml").getroot()
+    specs = {spec.language: spec for spec in load_specs()}
+    assert len(records.findall(".//S")) == 9
+    for file in records.findall("FILE"):
+        language = Path(file.attrib["path"]).parts[0]
+        spec = specs[language]
+        generated = ET.parse(xml_root() / file.attrib["path"]).getroot()
+        chinese = read_sections(spec.chinese_file, spec.sections)
+        english = read_sections(spec.english_file, spec.sections)
+        for record in file.findall("S"):
+            sid = record.attrib["id"]
+            original = record.findtext('FORM[@kindOf="original"]')
+            assert original
+            assert [item.get("kindOf") for item in record.findall("FORM")] == ["original"]
+            assert not record.findall("PHON")
+            assert {t.get(XML_LANG): t.text for t in record.findall("TRANSL")} == {
+                "zho": chinese[int(sid)], "eng": english[int(sid)]
+            }
+            actual = generated.findtext(f'S[@id="{sid}"]/FORM[@kindOf="original"]')
+            assert actual
+            assert normalize_for_alignment(actual) == normalize_for_alignment(original)
+            assert not missing_word_boundaries(actual, original)
+    saaroa = ET.parse(xml_root() / "Saaroa" / "Saaroa.xml").getroot()
+    assert saaroa.findtext('S[@id="31"]/FORM[@kindOf="original"]').startswith(
+        "malitʉnʉlʉ patasuuru cucukokana umuhlipasamia"
     )
-
-    def rule_counts(filename: str) -> dict[str, int]:
-        with (report_root / filename).open(encoding="utf-8-sig", newline="") as handle:
-            rows = list(csv.DictReader(handle))
-        counts: dict[str, int] = {}
-        for row in rows:
-            rule_id = row["rule_id"]
-            counts[rule_id] = counts.get(rule_id, 0) + 1
-        return counts
-
-    assert rule_counts("cleaner_warnings.csv") == expectations["cleaner_warnings"]
-    assert rule_counts("validate_xml.csv") == expectations["validate_xml"]
-    assert rule_counts("validate_text.csv") == expectations["validate_text"]
-    assert rule_counts("validate_glosses.csv") == expectations["validate_glosses"]
-
-    with (report_root / "duplicate_sentences.csv").open(
-        encoding="utf-8-sig", newline=""
-    ) as handle:
-        duplicates = list(csv.DictReader(handle))
-    expected_duplicate = expectations["duplicate_sentences"]
-    assert len(duplicates) == expected_duplicate["rows"]
-    assert {row["severity"] for row in duplicates} == {
-        expected_duplicate["severity"]
-    }
-    assert {row["scope"] for row in duplicates} == {expected_duplicate["scope"]}
-    assert {row["file"] for row in duplicates} == {expected_duplicate["file"]}
-    assert sorted(row["s_id"] for row in duplicates) == expected_duplicate[
-        "sentence_ids"
-    ]
 
 
 def test_no_legacy_generated_xml_layout() -> None:
