@@ -75,13 +75,13 @@ class SourceTests(unittest.TestCase):
         self.assertIn("k-u-ra wacu", example("Amis", "25a").printed)
 
     def test_optional_constituents_have_aligned_variants(self):
-        keys = {("Kavalan", "24a"), ("Kavalan", "24b"), ("Kavalan", "48a"), ("Kavalan", "48b"),
+        keys = {("Kavalan", "48a"), ("Kavalan", "48b"),
                 ("Amis", "49a"), ("Amis", "49b"), ("Amis", "57b"), ("Amis", "57d")}
         actual = {(e.language, e.source_id) for e in build.admitted_examples() if len(build.form_variants(e)) == 2}
         self.assertEqual(actual, keys)
         for key in keys:
             variants = build.form_variants(example(*key))
-            self.assertEqual([v.id_suffix for v in variants], ["", "_OPT0"])
+            self.assertEqual([v.id_suffix for v in variants], ["", "-opt"])
             for variant in variants:
                 self.assertEqual(build.alignment_words(variant)[1], "")
         included, omitted = build.form_variants(example("Amis", "49a"))
@@ -89,6 +89,25 @@ class SourceTests(unittest.TestCase):
         self.assertNotIn("pateli", omitted.form)
         self.assertIn("put", included.gloss)
         self.assertNotIn("put", omitted.gloss)
+
+    def test_optional_prefix_varies_only_the_word_and_root(self):
+        # Printed p.266: (na)quni-an-su has one word and one unchanged gloss.
+        for label, meaning in (("24a", "do.what"), ("24b", "do.how")):
+            item = example("Kavalan", label)
+            self.assertEqual(len(build.form_variants(item)), 1)
+            root = build.make_text("Kavalan", [item])
+            self.assertEqual(len(root.findall("S")), 1)
+            word = root.find("S/W")
+            self.assertEqual([(f.text, f.get("ver")) for f in word.findall("FORM")],
+                             [("naquni-an-su", None), ("quni-an-su", "alt")])
+            morphemes = word.findall("M")
+            self.assertEqual([(f.text, f.get("ver")) for f in morphemes[0].findall("FORM")],
+                             [("naquni", None), ("quni", "alt")])
+            self.assertEqual([m.findtext("FORM") for m in morphemes[1:]], ["an", "su"])
+            self.assertEqual([m.findtext("TRANSL") for m in morphemes],
+                             [meaning, "PV", "2SG.ERG"])
+            self.assertEqual(len(root.findall("S/TRANSL")), 1)
+            self.assertEqual(root.find("S").get("id"), item.xml_id)
 
     def test_source_infix_gap_and_clitic_are_preserved(self):
         self.assertEqual(build.aligned_morphemes("q<um>uni", "<AV>do.what"),
@@ -120,12 +139,14 @@ class SourceTests(unittest.TestCase):
                          build.prettify(build.make_text("Amis", list(reversed(items)))))
 
     def test_protected_corpus_inventory_and_machine_tier_ownership(self):
-        for language, words, morphemes in (("Amis", 179, 254), ("Kavalan", 168, 252)):
+        # Kavalan's two redundant 24a/b spellings now share their existing W/M.
+        for language, sentences, words, morphemes in (("Amis", 38, 179, 254), ("Kavalan", 36, 157, 236)):
             root = generated(language)
-            self.assertEqual(len(root.findall("S")), 38)
+            self.assertEqual(len(root.findall("S")), sentences)
             self.assertEqual(len(root.findall(".//W")), words)
             self.assertEqual(len(root.findall(".//M")), morphemes)
             self.assertEqual(root.get("copyright"), "CC BY 4.0")
+            self.assertEqual(root.get("glottocode"), {"Amis": "cent2104", "Kavalan": "kava1241"}[language])
             self.assertEqual(root.findall(".//FORM[@kindOf='standard']"), [])
             self.assertEqual(root.findall(".//PHON"), [])
 

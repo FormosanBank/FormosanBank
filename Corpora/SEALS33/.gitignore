@@ -1,0 +1,13 @@
+# Per-run reports and local caches. Nothing here is ever committed.
+#
+# POL-033: cleaner_warnings.csv / standardize_warnings.csv are per-run reports.
+# generate_xml.sh deliberately leaves them on disk for review instead of
+# deleting them, so they have to be ignored or every rebuild leaves the tree
+# dirty. This file lives at the corpus root, not in XML/, because
+# scripts/build_xml.py rebuilds XML/ from scratch on every run and would
+# delete a .gitignore placed inside it.
+XML/*_warnings.csv
+CodeAndDocs/.pytest_cache/
+CodeAndDocs/.ruff_cache/
+CodeAndDocs/**/__pycache__/
+CodeAndDocs/**/*.pyc

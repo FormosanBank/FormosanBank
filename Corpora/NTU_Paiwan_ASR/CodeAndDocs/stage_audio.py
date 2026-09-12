@@ -35,7 +35,7 @@ def main():
     ])
     args = ap.parse_args()
 
-    staged = {}        # target_relpath -> source path (first wins; dedup)
+    staged = {}        # target_relpath -> source path (first copy wins)
     unresolved = []
     for root in args.sources:
         for wav in glob.glob(root + "/**/*.wav", recursive=True):

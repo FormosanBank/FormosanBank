@@ -18,3 +18,16 @@ fi
     --orthography "$HERE/Orthographies/LinAmis"
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$ROOT/XML/Kavalan" --orthography Ortho113
 "$PY" "$HERE/build_xml.py" --restore-brackets
+"$PY" - "$FB" "$HERE/provenance.json" <<'PROVENANCE_PY'
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+root, destination = Path(sys.argv[1]).resolve(), Path(sys.argv[2])
+if (root / ".git").exists():
+    commit = subprocess.check_output(["git", "-C", str(root), "rev-parse", "HEAD"], text=True).strip()
+    destination.write_text(json.dumps({"formosanbank_commit": commit}, indent=2) + "\n")
+elif not destination.is_file():
+    raise SystemExit("The export must retain CodeAndDocs/provenance.json.")
+PROVENANCE_PY

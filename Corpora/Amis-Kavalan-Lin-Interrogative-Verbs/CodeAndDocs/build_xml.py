@@ -48,7 +48,7 @@ LANGUAGES = {
     "Amis": {
         "xml_lang": "ami",
         "dialect": "Xiuguluan",
-        "glottocode": "nat1254",
+        "glottocode": "cent2104",
         "source_dialect": "Central Amis, Changpin village, Taitung County",
     },
     "Kavalan": {
@@ -89,6 +89,7 @@ class FormVariant:
     form: str
     aligned_form: str
     gloss: str
+    word_variant: tuple[int, str] | None = None
 
 
 def read_source() -> tuple[list[Example], dict[tuple[str, str], str]]:
@@ -202,7 +203,7 @@ def normalize_source_form(text: str, *, preserve_infix: bool = False) -> str:
 
 
 def form_variants(example: Example) -> tuple[FormVariant, ...]:
-    """Expand one optional source constituent into aligned S variants."""
+    """Resolve optional words as S records and optional spelling within a word."""
     source = example.printed.removeprefix("* ").removeprefix("? ")
     optional = re.search(r"\(([^()]*)\)", source)
     if optional is None:
@@ -242,6 +243,13 @@ def form_variants(example: Example) -> tuple[FormVariant, ...]:
         raise ValueError(
             f"Unsupported optional form shape for {example.language} {example.source_id}"
         )
+    else:
+        changed = [(index, shorter) for index, (longer, shorter) in enumerate(
+            zip(included_words, omitted_words, strict=True)) if longer != shorter]
+        if len(changed) != 1:
+            raise ValueError(f"Expected one optional spelling: {example.language} {example.source_id}")
+        return (FormVariant("", "optional spelling under POL-028", included,
+                            included_aligned, example.gloss, changed[0]),)
 
     return (
         FormVariant(
@@ -252,7 +260,7 @@ def form_variants(example: Example) -> tuple[FormVariant, ...]:
             example.gloss,
         ),
         FormVariant(
-            "_OPT0",
+            "-opt",
             "optional material omitted",
             omitted,
             omitted_aligned,
@@ -350,6 +358,13 @@ def add_word_tiers(sentence: ET.Element, variant: FormVariant) -> str:
             {"id": f"{sentence.attrib['id']}_W{word_index:02d}"},
         )
         ET.SubElement(word, "FORM", {"kindOf": "original"}).text = form_word
+        alternate_morphemes = []
+        if variant.word_variant and variant.word_variant[0] == word_index - 1:
+            alternate_word = variant.word_variant[1]
+            alternate_morphemes, alternate_glosses = aligned_morphemes(alternate_word, gloss_word)
+            if len(alternate_morphemes) != len(form_morphemes) or alternate_glosses != gloss_morphemes:
+                raise ValueError(f"Optional spelling changes source analysis: {word.attrib['id']}")
+            ET.SubElement(word, "FORM", {"kindOf": "original", "ver": "alt"}).text = alternate_word
         ET.SubElement(
             word,
             "TRANSL",
@@ -372,6 +387,8 @@ def add_word_tiers(sentence: ET.Element, variant: FormVariant) -> str:
                 {"id": f"{word.attrib['id']}_M{morph_index:02d}"},
             )
             ET.SubElement(morph, "FORM", {"kindOf": "original"}).text = form_morph
+            if alternate_morphemes and alternate_morphemes[morph_index - 1] != form_morph:
+                ET.SubElement(morph, "FORM", {"kindOf": "original", "ver": "alt"}).text = alternate_morphemes[morph_index - 1]
             ET.SubElement(
                 morph,
                 "TRANSL",
@@ -425,6 +442,8 @@ def make_text(language: str, examples: list[Example]) -> ET.Element:
             variant_note = note
             if len(variants) > 1:
                 variant_note = f"{note}; {variant.label} under POL-026"
+            elif variant.word_variant:
+                variant_note = f"{note}; {variant.label}"
             sentence = ET.SubElement(
                 root,
                 "S",

@@ -804,7 +804,7 @@
             <PHON kindOf="original">jananiaəp</PHON>
             <FORM kindOf="standard">yana-ni-aep</FORM>
             <PHON kindOf="standard">jananiaəp</PHON>
-            <TRANSL xml:lang="eng">unan-past(unctn)-takes</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">unan-past-takes</TRANSL>
             <M id="S12W1M1">
                 <FORM kindOf="original">yana</FORM>
                 <PHON kindOf="original">jana</PHON>
@@ -816,7 +816,7 @@
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="eng">past(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">past</TRANSL>
             </M>
             <M id="S12W1M3">
                 <FORM kindOf="original">aep</FORM>
@@ -935,7 +935,7 @@
             <PHON kindOf="original">nananiaəp</PHON>
             <FORM kindOf="standard">nana-ni-aep</FORM>
             <PHON kindOf="standard">nananiaəp</PHON>
-            <TRANSL xml:lang="eng">unan-past(unctn)-takes</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">unan-past-takes</TRANSL>
             <M id="S13W4M1">
                 <FORM kindOf="original">nana</FORM>
                 <PHON kindOf="original">nana</PHON>
@@ -947,7 +947,7 @@
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="eng">past(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">past</TRANSL>
             </M>
             <M id="S13W4M3">
                 <FORM kindOf="original">aep</FORM>
@@ -1138,7 +1138,7 @@
         </W>
     </S>
     <S id="S18">
-        <FORM kindOf="original">mengep su kan(u) kanen-da</FORM>
+        <FORM kindOf="original">mengep su kanu kanen-da</FORM>
         <PHON kindOf="original">məŋəp ʂo kano kanənɖa</PHON>
         <FORM kindOf="standard">mengep so kano kanenda</FORM>
         <PHON kindOf="standard">məŋəp ʂ[o|u] kan[o|u] kanənɖa</PHON>
@@ -1160,10 +1160,11 @@
         <W id="S18W3">
             <FORM kindOf="original">kan</FORM>
             <PHON kindOf="original">kan</PHON>
+            <FORM kindOf="original" ver="alt">kan-u</FORM>
             <FORM kindOf="standard">kan</FORM>
             <PHON kindOf="standard">kan</PHON>
-            <FORM kindOf="alternate">kan-u</FORM>
-            <TRANSL xml:lang="eng">much(unctn)</TRANSL>
+            <FORM kindOf="standard" ver="alt">kan-o</FORM>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">much</TRANSL>
         </W>
         <W id="S18W4">
             <FORM kindOf="original">kanen-da</FORM>
@@ -2136,13 +2137,13 @@
             <PHON kindOf="original">niʂaləpnaimo</PHON>
             <FORM kindOf="standard">ni-salep-na-imo</FORM>
             <PHON kindOf="standard">niʂaləpnaim[o|u]</PHON>
-            <TRANSL xml:lang="eng">past(unctn)-take-he-you</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">past-take-he-you</TRANSL>
             <M id="S31W4M1">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="eng">past(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">past</TRANSL>
             </M>
             <M id="S31W4M2">
                 <FORM kindOf="original">salep</FORM>
@@ -2545,13 +2546,13 @@
             <PHON kindOf="original">tanoɖimoʂkəm</PHON>
             <FORM kindOf="standard">tano-di-moskem</FORM>
             <PHON kindOf="standard">tan[o|u]ɖim[o|u]ʂkəm</PHON>
-            <TRANSL xml:lang="eng">if(unctn)-not-killed.with.boiling.water</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">if-not-killed.with.boiling.water</TRANSL>
             <M id="S33bW1M1">
                 <FORM kindOf="original">tanu</FORM>
                 <PHON kindOf="original">tano</PHON>
                 <FORM kindOf="standard">tano</FORM>
                 <PHON kindOf="standard">tan[o|u]</PHON>
-                <TRANSL xml:lang="eng">if(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">if</TRANSL>
             </M>
             <M id="S33bW1M2">
                 <FORM kindOf="original">di</FORM>
@@ -2619,7 +2620,7 @@
         </W>
     </S>
     <S id="S34">
-        <FORM kindOf="original">sidikangusem puken-ku(a)anak-imu</FORM>
+        <FORM kindOf="original">sidikangusem puken-kuaanak-imu</FORM>
         <PHON kindOf="original">ʂiɖikaŋoʂəm pokənkoaanakimo</PHON>
         <FORM kindOf="standard">sidikangosem pokenkoaanakimo</FORM>
         <PHON kindOf="standard">ɕiɖikaŋ[o|u]ʂəm p[o|u]kənk[o|u]aanakim[o|u]</PHON>
@@ -2631,11 +2632,12 @@
             <PHON kindOf="standard">ɕiɖikaŋ[o|u]ʂəm</PHON>
         </W>
         <W id="S34W2">
-            <FORM kindOf="original">puken-ku(a)</FORM>
+            <FORM kindOf="original">puken-kua</FORM>
             <PHON kindOf="original">pokənkoa</PHON>
+            <FORM kindOf="original" ver="alt">puken-ku</FORM>
             <FORM kindOf="standard">poken-koa</FORM>
             <PHON kindOf="standard">p[o|u]kənk[o|u]a</PHON>
-            <FORM kindOf="alternate">poken-ko</FORM>
+            <FORM kindOf="standard" ver="alt">poken-ko</FORM>
         </W>
         <W id="S34W3">
             <FORM kindOf="original">anak-imu</FORM>
@@ -3312,7 +3314,7 @@
         <PHON kindOf="original">maiɻana lo kaŋkaŋəm apwapwaʂəna o atəjna lo faɰajta</PHON>
         <FORM kindOf="standard">mairana lo kangkangem apoapoasena o ateyna lo vahayta</FORM>
         <PHON kindOf="standard">maiɻana l[o|u] kaŋkaŋəm ap[o|u]ap[o|u]aʂəna [o|u] atəjna l[o|u] faɰajta</PHON>
-        <TRANSL xml:lang="eng">They went to the rooster's house and took stones from his house to their house (unctn).</TRANSL>
+        <TRANSL xml:lang="eng" notes="source annotation: (unctn)">They went to the rooster's house and took stones from his house to their house .</TRANSL>
         <W id="S42W1">
             <FORM kindOf="original">mai-rana</FORM>
             <PHON kindOf="original">maiɻana</PHON>
