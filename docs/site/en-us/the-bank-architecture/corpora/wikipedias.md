@@ -11,15 +11,17 @@ After scraping the articles, they have been preprocessed to remove elements like
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | Amis<br>unspecified | Paiwan<br>unspecified | Sakizaya | Atayal<br>unspecified | Seediq<br>unspecified |
+| | Amis<br>unknown | Paiwan<br>unknown | Sakizaya | Atayal<br>unknown | Seediq<br>unknown |
 | --- | --- | --- | --- | --- | --- |
-| Word count | 1,984,068 | 123,727 | 1,656,403 | 555,482 | 792,387 |
+| Word count | 1,982,130 | 123,725 | 1,649,981 | 555,392 | 792,060 |
 | Total audio | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 | 0 |
 | Morphologically segmented | 0 | 0 | 0 | 0 | 0 |
 | Glossed words | 0 | 0 | 0 | 0 | 0 |
 

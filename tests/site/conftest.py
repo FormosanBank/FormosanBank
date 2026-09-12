@@ -1,7 +1,30 @@
+import sys
 import textwrap
 from pathlib import Path
 
 import pytest
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import update_corpus_stats as _ucs
+
+
+@pytest.fixture(autouse=True)
+def language_names():
+    """Pin LANG_NAMES to a committed registry fixture.
+
+    update_corpus_stats reads language names from FormosanBank's
+    languages.csv. Letting the unit tests fall back to whatever checkout
+    happens to sit beside this one makes them pass or fail on ambient
+    filesystem state -- they failed the first time they were run from a
+    git worktree. main() resolves the real registry and errors if it is
+    missing; these tests only need col_header to have names.
+    """
+    original = _ucs.LANG_NAMES
+    _ucs.LANG_NAMES = _ucs.load_language_names(
+        Path(__file__).parent / "fixtures_languages.csv"
+    )
+    yield _ucs.LANG_NAMES
+    _ucs.LANG_NAMES = original
 
 
 SUMMARY_TEMPLATE = """\

@@ -31,6 +31,12 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Latham 1862](latham-1862.md) (text, English)
 * [Song (2018) Kanakanavu Grammar](song-kanakanavu-grammar.md) text, glossing, Mandarin
 * [Li (2014) Conjunction in Thao](li-conjunction-thao.md) (text, glossing, English)
+* [Campbell-Favorlang](campbell-favorlang.md) (text, English)
+* [Utrecht Manuscript Word List](utrecht-manuscript-word-list.md) (text, English, Dutch)
+* [Huteson (2003) Rukai Survey](huteson-rukai-survey.md) (text, English, Rukai, word and morpheme glosses)
+* [Sato Pazeh Songs](sato-pazeh-songs.md) (text, Japanese)
+* [Wu: Amis Pa-Verbs](wu-amis-pa-verbs.md) (text, English, glossing)
+* [Blust (2003) Thao Dictionary](blust-thao-dictionary.md) (text, English, segmented)
 
 ***
 
@@ -39,31 +45,35 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 
 #### By language
 
-| | Truku | Amis | Bunun | bzg | Kavalan | Rukai | Siraya | Paiwan | Puyuma | Thao | Saaroa | Sakizaya | Yami | Atayal | Seediq | Tsou | Kanakanavu | Saisiyat |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 87,383 | 2,548,358 | 249,743 | 26 | 126,970 | 275,546 | 41,990 | 422,601 | 230,655 | 102,042 | 63,050 | 1,758,027 | 119,261 | 887,196 | 1,007,992 | 87,939 | 109,036 | 101,687 |
-| Total audio | 84.4h | 121.6h | 125.3h | 0 | 53.8h | 154.2h | 0 | 168.9h | 119.9h | 41.4h | 45.9h | 49.0h | 40.5h | 171.2h | 92.2h | 41.0h | 65.1h | 47.0h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 41.6h | 121.2h | 125.3h | 0 | 53.8h | 154.2h | 0 | 134.1h | 119.9h | 41.4h | 45.9h | 49.0h | 40.5h | 160.0h | 92.1h | 41.0h | 65.1h | 47.0h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 42.8h | 0.4h | 0 | 0 | 0 | 0 | 0 | 34.8h | 0 | 0 | 0 | 0 | 0 | 11.2h | 0.1h | 0 | 0 | 0 |
-| Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 11,273 | 126,226 | 66,202 | 26 | 27,254 | 64,970 | 41,990 | 73,867 | 40,780 | 11,383 | 8,760 | 19,844 | 25,444 | 67,148 | 48,408 | 21,337 | 24,425 | 22,020 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 87,348 | 502,898 | 249,559 | 0 | 126,939 | 274,826 | 41,851 | 210,538 | 230,491 | 101,796 | 63,034 | 101,406 | 118,409 | 307,665 | 215,362 | 87,902 | 108,998 | 101,115 |
-| Morphologically segmented | 1,153 | 7,561 | 23,214 | 0 | 16,244 | 17,944 | 0 | 30,119 | 0 | 211 | 0 | 13,001 | 14,135 | 5,855 | 21,931 | 10,128 | 18,948 | 10,816 |
-| Glossed words | 1,070 | 7,561 | 23,214 | 0 | 16,244 | 17,944 | 0 | 24,478 | 0 | 211 | 0 | 13,001 | 14,135 | 5,855 | 21,931 | 10,128 | 18,948 | 10,816 |
+| | Truku | Amis | Bunun | Babuza-Favorlang | Kavalan | Rukai | Siraya | Paiwan | Puyuma | Pazeh | Thao | Saaroa | Sakizaya | Yami | Atayal | Seediq | Tsou | Kanakanavu | Saisiyat |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Word count | 87,457 | 2,576,762 | 249,946 | 22,112 | 127,016 | 275,642 | 43,173 | 422,746 | 230,655 | 356 | 165,361 | 63,050 | 1,751,644 | 119,295 | 887,478 | 1,009,622 | 88,015 | 114,294 | 101,824 |
+| Total audio | 84.4h | 121.6h | 125.4h | 0 | 53.8h | 154.3h | 0 | 168.9h | 119.9h | 0 | 41.4h | 45.9h | 49.0h | 40.5h | 171.2h | 92.2h | 41.0h | 65.1h | 47.0h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 41.6h | 121.2h | 125.4h | 0 | 53.8h | 154.3h | 0 | 134.1h | 119.9h | 0 | 41.4h | 45.9h | 49.0h | 40.5h | 160.0h | 92.1h | 41.0h | 65.1h | 47.0h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 42.8h | 0.4h | 0 | 0 | 0 | 0 | 0 | 34.8h | 0 | 0 | 0 | 0 | 0 | 0 | 11.2h | 0.1h | 0 | 0 | 0 |
+| Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 11,370 | 126,324 | 66,402 | 9,561 | 27,300 | 65,067 | 43,161 | 74,111 | 40,780 | 0 | 74,694 | 8,760 | 19,888 | 25,478 | 67,520 | 50,350 | 21,413 | 24,418 | 22,156 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 87,325 | 533,075 | 249,762 | 0 | 126,985 | 274,819 | 41,851 | 210,690 | 230,491 | 0 | 101,796 | 63,034 | 101,445 | 118,409 | 307,673 | 217,319 | 87,978 | 114,252 | 101,160 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 351 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 | 0 | 0 | 42,913 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Morphologically segmented | 1,130 | 7,682 | 23,463 | 0 | 16,286 | 17,344 | 2 | 29,031 | 0 | 0 | 56,656 | 0 | 12,968 | 14,167 | 5,861 | 22,803 | 10,200 | 22,853 | 10,849 |
+| Glossed words | 1,047 | 7,682 | 23,463 | 0 | 16,286 | 17,344 | 0 | 24,556 | 0 | 0 | 211 | 0 | 12,968 | 14,166 | 5,861 | 22,803 | 10,195 | 22,846 | 10,848 |
 
 #### By dialect
 
-| | Amis<br>Coastal | Amis<br>Hengchun | Amis<br>Malan | Amis<br>Southern | Amis<br>Xiuguluan | Amis<br>unknown | Amis<br>unspecified | Bunun<br>Junqun | Bunun<br>Kaqun | Bunun<br>Luanqun | Bunun<br>Tanqun | Bunun<br>Zhuoqun | bzg<br>Favorlang | Rukai<br>Dawu | Rukai<br>Dona | Rukai<br>Eastern | Rukai<br>Maolin | Rukai<br>Wanshan | Rukai<br>Wutai | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>Northern | Paiwan<br>Southern | Paiwan<br>unknown | Paiwan<br>unspecified | Puyuma<br>Jianhe | Puyuma<br>Nanwang | Puyuma<br>Xiqun | Puyuma<br>Zhiben | Atayal<br>FourSeasons | Atayal<br>Sekolik | Atayal<br>Wanda | Atayal<br>Wenshui | Atayal<br>YilanZeaol | Atayal<br>Zeaol | Atayal<br>unknown | Atayal<br>unspecified | Seediq<br>DeluValley | Seediq<br>Duda | Seediq<br>Tegudaya | Seediq<br>unknown | Seediq<br>unspecified |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 310,081 | 36,726 | 35,979 | 36,318 | 85,174 | 60,012 | 1,984,068 | 131,337 | 29,637 | 30,240 | 29,700 | 28,829 | 26 | 29,959 | 28,596 | 30,129 | 27,665 | 24,434 | 134,763 | 44,064 | 60,117 | 134,716 | 58,872 | 1,105 | 123,727 | 35,216 | 118,867 | 37,017 | 39,555 | 38,123 | 140,278 | 30,977 | 42,766 | 40,168 | 39,189 | 213 | 555,482 | 39,565 | 41,166 | 134,314 | 560 | 792,387 |
-| Total audio | 29.0h | 20.4h | 16.8h | 18.5h | 36.6h | 0.4h | 0 | 60.3h | 15.9h | 15.8h | 17.1h | 16.2h | 0 | 18.9h | 17.8h | 18.8h | 17.5h | 16.8h | 64.5h | 21.7h | 33.4h | 78.3h | 26.6h | 8.9h | 0 | 18.9h | 59.6h | 19.8h | 21.6h | 18.3h | 72.7h | 17.5h | 21.2h | 20.6h | 19.8h | 1.1h | 0 | 23.3h | 20.2h | 48.6h | 0.1h | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 29.0h | 20.4h | 16.8h | 18.5h | 36.6h | 0 | 0 | 60.3h | 15.9h | 15.8h | 17.1h | 16.2h | 0 | 18.9h | 17.8h | 18.8h | 17.5h | 16.8h | 64.5h | 20.6h | 29.6h | 58.8h | 25.2h | 0 | 0 | 18.9h | 59.6h | 19.8h | 21.6h | 18.3h | 62.5h | 17.5h | 21.2h | 20.6h | 19.8h | 0 | 0 | 23.3h | 20.2h | 48.6h | 0 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0.4h | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1.1h | 3.8h | 19.5h | 1.5h | 8.9h | 0 | 0 | 0 | 0 | 0 | 0 | 10.1h | 0 | 0 | 0 | 0 | 1.1h | 0 | 0 | 0 | 0 | 0.1h | 0 |
-| Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 17,243 | 9,425 | 9,306 | 10,323 | 20,295 | 59,634 | 0 | 32,827 | 8,106 | 8,611 | 8,121 | 8,537 | 26 | 7,576 | 7,940 | 8,183 | 7,272 | 6,537 | 27,462 | 16,246 | 12,356 | 19,023 | 25,137 | 1,105 | 0 | 9,218 | 11,536 | 9,887 | 10,139 | 9,456 | 12,665 | 9,145 | 16,456 | 9,497 | 9,716 | 213 | 0 | 9,356 | 10,044 | 28,872 | 136 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 309,046 | 36,710 | 35,979 | 35,968 | 84,817 | 378 | 0 | 131,239 | 29,621 | 30,224 | 29,684 | 28,791 | 0 | 29,935 | 28,262 | 30,061 | 27,485 | 24,367 | 134,716 | 36,702 | 38,200 | 97,721 | 37,915 | 0 | 0 | 35,182 | 118,777 | 36,993 | 39,539 | 38,073 | 116,617 | 30,913 | 42,737 | 40,152 | 39,173 | 0 | 0 | 39,428 | 41,085 | 134,289 | 560 | 0 |
-| Morphologically segmented | 7,561 | 0 | 0 | 0 | 0 | 0 | 0 | 23,214 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 17,944 | 3,714 | 1,198 | 9,017 | 15,085 | 1,105 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5,855 | 0 | 0 | 0 | 0 | 0 | 0 | 21,931 | 0 | 0 |
-| Glossed words | 7,561 | 0 | 0 | 0 | 0 | 0 | 0 | 23,214 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 17,944 | 3,714 | 1,198 | 9,017 | 9,444 | 1,105 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5,855 | 0 | 0 | 0 | 0 | 0 | 0 | 21,931 | 0 | 0 |
+| | Amis<br>Coastal | Amis<br>Hengchun | Amis<br>Malan | Amis<br>Southern | Amis<br>Xiuguluan | Amis<br>unknown | Bunun<br>Junqun | Bunun<br>Kaqun | Bunun<br>Luanqun | Bunun<br>Tanqun | Bunun<br>Zhuoqun | Babuza-Favorlang<br>Favorlang | Rukai<br>Dawu | Rukai<br>Dona | Rukai<br>Eastern | Rukai<br>Maolin | Rukai<br>Wanshan | Rukai<br>Wutai | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>Northern | Paiwan<br>Southern | Paiwan<br>unknown | Puyuma<br>Jianhe | Puyuma<br>Nanwang | Puyuma<br>Xiqun | Puyuma<br>Zhiben | Pazeh<br>unknown | Atayal<br>FourSeasons | Atayal<br>Sekolik | Atayal<br>Wanda | Atayal<br>Wenshui | Atayal<br>YilanZeaol | Atayal<br>Zeaol | Atayal<br>unknown | Seediq<br>DeluValley | Seediq<br>Duda | Seediq<br>Tegudaya | Seediq<br>unknown |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Word count | 310,205 | 36,726 | 35,979 | 36,318 | 85,137 | 2,072,397 | 131,540 | 29,637 | 30,240 | 29,700 | 28,829 | 22,112 | 29,959 | 28,651 | 30,129 | 27,713 | 24,434 | 134,756 | 44,069 | 60,270 | 134,637 | 58,923 | 124,847 | 35,216 | 118,867 | 37,017 | 39,555 | 356 | 38,123 | 140,278 | 30,977 | 42,774 | 40,168 | 39,189 | 555,969 | 39,565 | 41,166 | 136,271 | 792,620 |
+| Total audio | 29.0h | 20.4h | 16.8h | 18.5h | 36.6h | 0.4h | 60.3h | 15.9h | 15.8h | 17.1h | 16.2h | 0 | 18.9h | 17.8h | 18.8h | 17.5h | 16.8h | 64.5h | 21.7h | 33.4h | 62.5h | 26.6h | 24.7h | 18.9h | 59.6h | 19.8h | 21.6h | 0 | 18.3h | 72.7h | 17.5h | 21.2h | 20.6h | 19.8h | 1.1h | 23.3h | 20.2h | 48.6h | 0.1h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 29.0h | 20.4h | 16.8h | 18.5h | 36.6h | 0 | 60.3h | 15.9h | 15.8h | 17.1h | 16.2h | 0 | 18.9h | 17.8h | 18.8h | 17.5h | 16.8h | 64.5h | 20.6h | 29.6h | 58.7h | 25.1h | 0 | 18.9h | 59.6h | 19.8h | 21.6h | 0 | 18.3h | 62.5h | 17.5h | 21.2h | 20.6h | 19.8h | 0 | 23.3h | 20.2h | 48.6h | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0.4h | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1.1h | 3.8h | 3.8h | 1.5h | 24.7h | 0 | 0 | 0 | 0 | 0 | 0 | 10.1h | 0 | 0 | 0 | 0 | 1.1h | 0 | 0 | 0 | 0.1h |
+| Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 17,367 | 9,425 | 9,306 | 10,323 | 20,258 | 59,645 | 33,027 | 8,106 | 8,611 | 8,121 | 8,537 | 9,561 | 7,576 | 7,995 | 8,183 | 7,320 | 6,537 | 27,456 | 16,251 | 12,508 | 19,027 | 25,203 | 1,122 | 9,218 | 11,536 | 9,887 | 10,139 | 0 | 9,456 | 12,665 | 9,145 | 16,464 | 9,497 | 9,716 | 577 | 9,356 | 10,044 | 30,814 | 136 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 309,016 | 36,710 | 35,979 | 35,968 | 84,780 | 30,622 | 131,442 | 29,621 | 30,224 | 29,684 | 28,791 | 0 | 29,935 | 28,262 | 30,061 | 27,485 | 24,367 | 134,709 | 36,702 | 38,352 | 97,721 | 37,915 | 0 | 35,182 | 118,777 | 36,993 | 39,539 | 0 | 38,073 | 116,617 | 30,913 | 42,745 | 40,152 | 39,173 | 0 | 39,428 | 41,085 | 136,246 | 560 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 351 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Morphologically segmented | 7,682 | 0 | 0 | 0 | 0 | 0 | 23,463 | 0 | 0 | 0 | 0 | 0 | 0 | 29 | 0 | 23 | 0 | 17,292 | 3,719 | 1,198 | 9,021 | 13,971 | 1,122 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5,861 | 0 | 0 | 0 | 0 | 0 | 22,803 | 0 |
+| Glossed words | 7,682 | 0 | 0 | 0 | 0 | 0 | 23,463 | 0 | 0 | 0 | 0 | 0 | 0 | 29 | 0 | 23 | 0 | 17,292 | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5,861 | 0 | 0 | 0 | 0 | 0 | 22,803 | 0 |
 
 ***
 
