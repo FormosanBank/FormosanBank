@@ -86,8 +86,10 @@ None supplied with this source.
 
 ## Notes and Issues
 
-- The Asai2026 profile, conversion and reviewed conditioned phonology need a
-  shared implementation reviewed separately from this corpus (POL-049).
+- Current Ortho113 does not reproduce the reviewed conditioned standard PHON.
+  Existing CLI flags can read the committed source profile and conversion;
+  their location is not the phonology limitation. The standard-tier decision
+  still needs separate review (POL-003/POL-049).
 - The source parser resolves six spelling variants and the old V1/V2 IDs.
   Four parenthetical classifications still need resolution under POL-028.
   Clause brackets remain at S; the shared PHON step must handle them as

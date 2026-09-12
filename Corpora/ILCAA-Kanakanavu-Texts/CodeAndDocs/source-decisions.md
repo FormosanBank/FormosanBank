@@ -37,8 +37,14 @@ The old wrapper supplied its own Asai2026 profile, removed analytical brackets
 from four S-only readings and added standard palatalization by replacing shared
 functions. Current canonical Ortho113 does not reproduce those conditioned
 standard PHON values. Do not silently revert the reviewed output or restore the
-private override to make a current build pass. The retained mapping files are
-historical evidence for separate shared-tool work, not build inputs.
+private override to make a current build pass. The existing `--tsv_path` and
+`--orthography` flags can read the committed source tables directly. With those
+flags, current tools produce source PHON `ʂiʂiʔinamaku` and `taʔitʂikikani`,
+but standard PHON `sisiʔinamaku` and `taʔiʦikikani` for the reviewer's examples.
+The source rules work; the unresolved choice concerns canonical standard PHON.
+Changing the table paths alone therefore does not make the build ready. The
+entry point keeps its current dependency guard and retains final XML pending
+that decision. The mapping files remain review evidence until then.
 
 ## Representation and coverage review
 
