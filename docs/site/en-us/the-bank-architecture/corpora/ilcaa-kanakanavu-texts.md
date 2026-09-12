@@ -36,8 +36,10 @@ This candidate remains under review. The statistics below describe the retained 
   Clause brackets remain at S; the shared PHON step must handle them as
   analytical notation.
 - Introduction lexical material has six transcription groups, including Saaroa.
-  Five need reviewed routes; the narrative profile cannot be applied to them.
-  Two phonetic representations and two pronoun pairs remain open in the ledger.
+  Four historical groups need reviewed routes. The Saaroa comparison has a
+  source-backed `ɫ` -> `hl` conversion and the corrected Saaroa code `sxr`,
+  separate from the narrative profile.
+  Two phonetic representations remain open in the ledger.
   Supplemental records preserve printed readings; only three analyzed prose
   examples supply W/M tiers. They remain source-stage output pending the full build.
 - The earlier ten-page expert review and historical samples cover those records
@@ -48,17 +50,17 @@ lists the remaining decisions. A successful build or XML check does not settle t
 
 ## Access Details
 
-The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/a8fda54a3e55752f80b10e6444950803f02029a2/Corpora/ILCAA-Kanakanavu-Texts/)
+The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/827ab943954c716f448b549acda2a2a75e25327b/Corpora/ILCAA-Kanakanavu-Texts/)
 match the reviewed private development commit. This proposal has not been merged.
 
 ## Corpus Processing
 
-The revised parser uses the committed CC BY 4.0 PDF and source decisions. It emits 1,449 numbered-example S, 57 footnote S and 100 introduction/title S, totalling 1,606 source records. Historical table columns and Saaroa remain separate; three analyzed prose examples supply W/M tiers. The parser also repairs gloss columns, stacked infixes and four pseudo-clefts. These changes have not reached retained final XML. Five additional profiles need supported routes, and the difference between canonical standard PHON and the earlier private override remains under review. The entry point passes the committed narrative tables directly to the shared tools, so generation needs no missing Asai files in the shared checkout. Provenance identifies the actual earlier final build.
+The revised parser uses the committed CC BY 4.0 PDF and source decisions. It emits 1,449 numbered-example S, 57 footnote S and 100 introduction/title S, totalling 1,606 source records. Historical columns stay separate; three analyzed prose examples supply W/M tiers. Source repairs cover gloss alignment, stacked infixes, four pseudo-clefts and the Saaroa language code. The Saaroa comparison uses its own source-backed conversion, and ordinary/vocative pronouns keep separate records. These repairs have not reached retained final XML. Four historical profiles need routes, and canonical standard PHON versus the earlier private override remains under review. The build passes committed source tables to shared tools separately by language. Provenance identifies the actual earlier final build.
 
 Run `bash Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/generate_xml.sh` in the candidate
-FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/a8fda54a3e55752f80b10e6444950803f02029a2/Corpora/ILCAA-Kanakanavu-Texts/README.md) documents dependencies,
+FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/827ab943954c716f448b549acda2a2a75e25327b/Corpora/ILCAA-Kanakanavu-Texts/README.md) documents dependencies,
 source coverage and any scoped pipeline deviations. The
-[build provenance](https://github.com/FormosanBank/FormosanBank/blob/a8fda54a3e55752f80b10e6444950803f02029a2/Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/provenance.json) records the actual
+[build provenance](https://github.com/FormosanBank/FormosanBank/blob/827ab943954c716f448b549acda2a2a75e25327b/Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/provenance.json) records the actual
 tools used for the retained output; it does not select or pin tools for later builds.
 
 ## Copyright
