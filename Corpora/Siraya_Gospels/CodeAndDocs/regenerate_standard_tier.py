@@ -23,6 +23,7 @@ files is touched. Idempotent.
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import re
 from pathlib import Path
@@ -30,8 +31,6 @@ from pathlib import Path
 from lxml import etree
 
 CORPUS_ROOT = Path(__file__).resolve().parents[1]          # Corpora/Siraya_Gospels
-XML_DIRS = [CORPUS_ROOT / "XML" / "Siraya" / "John",
-            CORPUS_ROOT / "XML" / "Siraya" / "Matthew"]
 CSV_PATH = Path(__file__).resolve().parent / "hyphen_removals.csv"
 
 _LETTER = r"A-Za-zÀ-ɏ"                            # Latin + Latin-1/Ext-A/B
@@ -59,16 +58,16 @@ def apply_merges(text: str, repl: dict[str, str]) -> str:
     return _WORD.sub(_repl, text)
 
 
-def iter_files():
-    for d in XML_DIRS:
+def iter_files(xml_dir: Path):
+    for d in (xml_dir / "John", xml_dir / "Matthew"):
         yield from sorted(d.glob("chapter*.xml"),
                           key=lambda p: int(p.stem.replace("chapter", "")))
 
 
-def main() -> None:
+def main(xml_dir: Path) -> None:
     repl = load_replacements()
     updated = 0
-    for f in iter_files():
+    for f in iter_files(xml_dir):
         raw = f.read_bytes()
         trailing_nl = raw.endswith(b"\n")
         tree = etree.parse(str(f))
@@ -102,4 +101,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--xml-dir", type=Path, default=CORPUS_ROOT / "XML" / "Siraya")
+    main(parser.parse_args().xml_dir)
