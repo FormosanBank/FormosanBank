@@ -21,6 +21,7 @@ from typing import Dict, List, Set, Tuple, Optional
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
+from QC.corpus_counts import is_reproduction_path
 from QC.utilities._accents import accented_letters, strip_accents
 
 
@@ -196,9 +197,32 @@ def extract_text_from_xml(xml_file: str, use_standard: bool = False, orthography
         # Combine all extracted text snippets into one string for analysis
         combined_text = ' '.join(texts)
 
-        # Clean the text: remove numbers, commas, and exclamation marks
-        # Keep letters, apostrophes, hyphens, and other characters that might be linguistically significant
-        cleaned_text = re.sub(r'[0-9",!]', ' ', combined_text)
+        # Clean the text: remove numbers, commas, exclamation marks, and the
+        # null-morpheme marker.
+        #
+        # '\u2205' is analytic notation, not a letter: POL-012 makes it the
+        # canonical null-morpheme marker on every tier, and it is a letter in
+        # none of the orthography tables (checked across all of
+        # Orthographies/*/*.tsv). Scoring it as an unexpected token penalised
+        # every orthography equally and depressed the match for any corpus
+        # that analyses nulls — Amis-Pa-Verbs' seven nulls cost it about ten
+        # points against Ortho94 without telling anyone anything.
+        #
+        # Deliberately NOT stripped, though they look like punctuation:
+        # '?' is a letter in four tables (Ferrell/Paiwan, Montgomery/Amis,
+        # Tsuchida/Pazeh, Wakelin/Yami), and '.', ':' and '_' appear inside
+        # multi-character letters ('l.h'/'t.h' in Ortho113/Thao, 'a:e'/'o:e'
+        # in Ortho113/Saisiyat, 'n_g' in the Atayal tables). Keep letters,
+        # apostrophes, hyphens, and anything else that might be
+        # linguistically significant.
+        # Remove the null *unit* — the marker plus its bridging hyphen(s) —
+        # not just the glyph. POL-012 defines the unit that way, and dropping
+        # the marker alone would leave a stray '-' behind ('\u2205-ci' -> '-ci'),
+        # which is itself an unexpected token for most orthographies and would
+        # simply move the penalty rather than remove it. A hyphen not adjacent
+        # to a null is untouched: '-' is a letter in the Bunun and Thao tables.
+        cleaned_text = re.sub(r'-?\u2205-?', ' ', combined_text)
+        cleaned_text = re.sub(r'[0-9",!]', ' ', cleaned_text)
 
         # Strip accents so a prosodic accent (e.g. Glosbe stress marks) scores
         # as its bare vowel instead of an unexpected token. Accents that this
@@ -559,8 +583,16 @@ def analyze_xml_files(directory: str, orthographies_dir: str, ignore_dialect: bo
     xml_files = []
     for root, dirs, files in os.walk(directory):
         for file in files:
+            candidate = os.path.join(root, file)
+            # CodeAndDocs/ is reproduction material -- scripts, raw
+            # scrapes and POL-035 snapshots -- never published data. A
+            # snapshot is a byte-for-byte ancestor of the corpus beside
+            # it, so walking a corpus root without this reads the same
+            # text twice and doubles every character count.
+            if is_reproduction_path(candidate, directory):
+                continue
             if file.endswith('.xml'):
-                xml_files.append(os.path.join(root, file))
+                xml_files.append(candidate)
     
     total_files = len(xml_files)
     if total_files == 0:
@@ -856,8 +888,16 @@ def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_di
     xml_files = []
     for root, dirs, files in os.walk(directory):
         for file in files:
+            candidate = os.path.join(root, file)
+            # CodeAndDocs/ is reproduction material -- scripts, raw
+            # scrapes and POL-035 snapshots -- never published data. A
+            # snapshot is a byte-for-byte ancestor of the corpus beside
+            # it, so walking a corpus root without this reads the same
+            # text twice and doubles every character count.
+            if is_reproduction_path(candidate, directory):
+                continue
             if file.endswith('.xml'):
-                xml_files.append(os.path.join(root, file))
+                xml_files.append(candidate)
     
     total_files = len(xml_files)
     if total_files == 0:

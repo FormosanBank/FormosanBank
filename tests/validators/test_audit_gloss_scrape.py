@@ -117,6 +117,16 @@ def test_gloss_units_counts_infix_plus_segments():
     assert gloss_scrape._gloss_units("car") == 1
 
 
+def test_cjk_object_placeholder_tilde_is_not_segmentation():
+    xml = """<TEXT><S id="s"><W id="w">
+        <FORM kindOf="original">Lepelen</FORM>
+        <TRANSL kindOf="original" xml:lang="zho">把~抓住</TRANSL>
+    </W></S></TEXT>"""
+    assert _run(gloss_scrape.g001_marker_skeleton_parity, xml) == []
+    assert _run(gloss_scrape.g002_M_count_matches_gloss_units, xml) == []
+    assert gloss_scrape._gloss_units("CAU~walk") == 2
+
+
 def test_edit_distance_le_1():
     assert gloss_scrape._edit_distance_le_1("NCM", "NOM")
     assert gloss_scrape._edit_distance_le_1("NOM", "NOMS")
@@ -162,15 +172,19 @@ def test_g002_allows_monomorphemic_word_without_M():
     assert _run(gloss_scrape.g002_M_count_matches_gloss_units, xml) == []
 
 
-def test_g003_fires_on_internal_dash_but_not_infix_or_affix():
+def test_g003_fires_on_internal_dash_but_not_infix_gap_or_affix():
     xml = """<TEXT><S id="s"><W id="w"><FORM kindOf="original">x</FORM>
         <M id="m0"><FORM kindOf="original">k-uda</FORM></M>
         <M id="m1"><FORM kindOf="original">-em-</FORM></M>
         <M id="m2"><FORM kindOf="original">-en</FORM></M>
         <M id="m3"><FORM kindOf="original">=cu</FORM></M>
+    </W><W id="infix"><FORM kindOf="original">t&lt;um&gt;a-ta&#x14B;i</FORM>
+        <M id="gap-root"><FORM kindOf="original">t-a</FORM></M>
+        <M id="infix-m"><FORM kindOf="original">-um-</FORM></M>
+        <M id="wrong-root"><FORM kindOf="original">t-i</FORM></M>
     </W></S></TEXT>"""
     findings = _run(gloss_scrape.g003_internal_dash_in_M_FORM, xml)
-    assert [f.location for f in findings] == ["W=w M=m0"]
+    assert [f.location for f in findings] == ["W=w M=m0", "W=infix M=wrong-root"]
 
 
 def test_g004_fires_when_infix_root_not_rejoined():

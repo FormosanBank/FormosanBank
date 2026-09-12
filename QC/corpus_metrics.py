@@ -30,7 +30,19 @@ COUNT_FIELDS = (
     "glossed_words",
 )
 
-XML_HISTORY_PATHSPEC = ":(glob)Corpora/**/XML/**/*.xml"
+# Published corpus XML, for `git log`/`git show`. Two pathspecs, both needed:
+# the first allows a corpus to nest folders between its root and XML/, the
+# second keeps CodeAndDocs out. `**` crosses directories even under :(glob),
+# so without the exclusion this also matched
+# Corpora/<name>/CodeAndDocs/pre_correction_snapshot/XML/ -- POL-035
+# baselines, which are byte-for-byte ancestors of the corpus beside them.
+# Counting one inflates a history row and makes a commit that touched only a
+# snapshot look like an XML-changing commit. Mirrors
+# corpus_counts.is_published_xml, which is the same rule for path walking.
+XML_HISTORY_PATHSPECS = [
+    ":(glob)Corpora/**/XML/**/*.xml",
+    ":(exclude,glob)Corpora/**/CodeAndDocs/**",
+]
 ZERO_OID = "0" * 40
 PLOT_BG = "#fbfbf8"
 PLOT_TEXT = "#24292f"
@@ -118,11 +130,14 @@ def git_metadata(corpora_path: Path) -> dict[str, str | None]:
 
 
 def find_xml_files(corpora_path: Path) -> list[Path]:
-    xml_files = []
-    for xml_file in corpora_path.rglob("*.xml"):
-        if "XML" in xml_file.parts:
-            xml_files.append(xml_file)
-    return sorted(xml_files)
+    """Published corpus XML under `corpora_path`, by the shared predicate.
+
+    Delegates to corpus_counts so this walk and get_corpus_stats' cannot
+    disagree about what counts -- notably POL-035 snapshots under
+    CodeAndDocs/, which are ancestors of the corpus beside them.
+    """
+    return sorted(f for f in corpora_path.rglob("*.xml")
+                  if corpus_counts.is_published_xml(f))
 
 
 def source_for(corpora_path: Path, xml_file: Path) -> str:
@@ -607,7 +622,7 @@ def history_commits(repo_root: Path, max_commits: int) -> list[str]:
     args = ["log", "--first-parent", "--no-renames", "--diff-filter=ADM", "--format=%H"]
     if max_commits > 0:
         args.append(f"--max-count={max_commits}")
-    args.extend(["HEAD", "--", XML_HISTORY_PATHSPEC])
+    args.extend(["HEAD", "--", *XML_HISTORY_PATHSPECS])
     raw = git_value(args, repo_root)
     return list(reversed(raw.splitlines())) if raw else []
 
@@ -671,7 +686,7 @@ def changed_xml_files(repo_root: Path, commit: str) -> list[XmlChange]:
             "--diff-filter=ADM",
             commit,
             "--",
-            XML_HISTORY_PATHSPEC,
+            *XML_HISTORY_PATHSPECS,
         ],
         repo_root,
     )
@@ -813,7 +828,10 @@ def snapshot_records(
     """Analyze every tracked XML file as it existed at `commit`, returning the
     per-path record/parse-error maps — the seed state for an incremental walk."""
     # ls-tree does not accept :(glob) pathspec magic (unlike git show), so list
-    # everything under Corpora/ and filter to the same .../XML/.../*.xml set.
+    # everything under Corpora/ and filter with the same shared predicate the
+    # filesystem walk uses -- otherwise a history row counts POL-035 snapshots
+    # that the HEAD row (built from the per-corpus CSVs) does not, and the
+    # growth graph gets a spike that returns.
     result = run_git_bytes(
         ["ls-tree", "-r", "-z", commit, "--", "Corpora"],
         repo_root,
@@ -827,8 +845,7 @@ def snapshot_records(
         if len(fields) < 3 or fields[1] != "blob":
             continue
         path = raw_path.decode("utf-8", errors="replace")
-        parts = path.split("/")
-        if not path.endswith(".xml") or "XML" not in parts:
+        if not corpus_counts.is_published_xml(path):
             continue
         oid_by_path[path] = fields[2]
 
@@ -858,7 +875,7 @@ def commits_after(repo_root: Path, base_commit: str, max_commits: int) -> list[s
     args = ["log", "--first-parent", "--no-renames", "--diff-filter=ADM", "--format=%H"]
     if max_commits > 0:
         args.append(f"--max-count={max_commits}")
-    args.extend([f"{base_commit}..HEAD", "--", XML_HISTORY_PATHSPEC])
+    args.extend([f"{base_commit}..HEAD", "--", *XML_HISTORY_PATHSPECS])
     raw = git_value(args, repo_root)
     return list(reversed(raw.splitlines())) if raw else []
 

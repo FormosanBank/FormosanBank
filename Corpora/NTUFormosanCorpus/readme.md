@@ -69,45 +69,113 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 
 * Six source JSONs in the sentence subcorpus assign the same record id to two *different* sentences (e.g. `sentence/Bunun_Isbukun/46.json` numbers its records 1,2,3,3,4,...). Because S ids embed the record id, both sentences would receive the same S id (and identical W/M ids below it). The second occurrence (in document order) is disambiguated with a `-2` suffix: `46_S_3` and `46_S_3-2`. For those sentences the NTU line-number provenance is inherently ambiguous — the collision is in the NTU backend itself. Affected: `46_S_3`, `03-4_S_15`, `43_S_2` (Bunun); `3_S_201` (Kanakanavu); `20200530-FW-Andrea-1_S_6`, `20200530-FW-Yongfu-1_S_13` (Rukai).
 
+* **Variant readings use the POL-028 `ver="alt"` spelling.** Where the source
+records a second acceptable reading of a word or sentence — word-internal
+optional material (`ka(z)`, `kangavas(=an)`) or a slash alternation the readings
+of which are spelling variants of one another — the node carries its tier's base
+FORM plus a sibling `FORM[@kindOf="original" ver="alt"]`, and `standardize.py`
+derives the matching `FORM[@kindOf="standard" ver="alt"]`. **191 variants**, in
+21 files across all three subcorpora.
+
+  Until 2026-09-10 these were written `kindOf="alternate"`, the spelling POL-028
+  deprecated on 2026-09-09 (one day after this corpus was first published here).
+  That spelling names no tier, so a variant could not say which base it varied
+  from and `standardize.py` could not derive its standard counterpart — which is
+  why the standard tier previously had no variants at all. The migration changed
+  attributes only: no FORM text, PHON, TRANSL or W/M structure differs from the
+  previously published XML, and all 55 tests in `CodeAndDocs/qa` scored
+  identically to their baseline. Competing *lexemes* are not variants; they keep
+  the first reading and record the rest in `@notes` for a POL-027 pass.
+
 ***
+
+## Orthography: the source is Ortho94
+
+The NTU source documentation states its orthography, and it is **Ortho94** —
+the standard released in ROC year 94, which Ortho113 later revised. The corpus
+is therefore processed as Ortho94 throughout:
+
+- `add_phonology.py --orthography Ortho94` generates the **original** PHON from
+  Ortho94's letter-to-sound rules. The **standard** PHON continues to use
+  Ortho113, which is FormosanBank's common orthography.
+- `standardize.py --tsv_path Orthographies/ConversionTables/<Language>_94_113.tsv`
+  produces the standard tier by converting 94 → 113 per language.
+
+**This is a change.** Earlier processing declared the original tier to be
+Ortho113 and produced the standard tier with `--remove_accents` — a copy with
+accents stripped and no letter conversion. That mis-described the source: the
+phonology generated for the original tier used the rules of an orthography the
+source was not written in.
+
+Three of the corpus's ten languages have an **empty** conversion table
+(headers only): **Bunun**, **Kanakanavu** and **Tsou**. Bunun and Tsou need no
+letter conversion — their 94 and 113 spellings agree. Kanakanavu genuinely
+differs, but is not convertible in this direction: Ortho113 introduced letters
+Ortho94 did not have, so no mapping exists. An empty table is not a no-op:
+`standardize` still resolves the source profile through the naming convention
+(`<Language>_<Scheme>_113.tsv` → `Orthographies/Ortho94/<Language>.tsv`), so
+**accents are still removed and capital variants still derived** in every case.
+
+## Quality checks and regressions
+
+The validators in `QC/validation/` decide whether this corpus's XML is *legal*.
+A separate suite in [CodeAndDocs/qa/](CodeAndDocs/qa/) measures how well it holds
+together as a **glossed** corpus — whether the word tier accounts for the
+sentence, whether every morpheme a form implies has an `M`, whether the glosses
+sit in the right language slots. A file can be perfectly valid and still score
+badly there.
+
+Because almost none of those tests can honestly reach 100% (the source has
+sentences nobody segmented and words nobody glossed), the recorded score is the
+specification: [CodeAndDocs/qa/baseline.tsv](CodeAndDocs/qa/baseline.tsv) holds
+what each test achieves on the corpus as published, and a rebuild is compared
+against it. See [CodeAndDocs/qa/README.md](CodeAndDocs/qa/README.md).
+
+```bash
+python CodeAndDocs/qa/check_regressions.py --subcorpus stories \
+    --xml XML/Stories --json CodeAndDocs/story
+```
 
 ## Processing
 
-All steps below are wrapped by [CodeAndDocs/make.sh](CodeAndDocs/make.sh), which runs
-them in order against a fresh parse (audio download only with `--with-audio`), then
-finishes with a corpus-wide `add_phonology.py` refresh, re-application of recorded
-hand edits (`QC/cleaning/apply_manual_edits.py`, if `CodeAndDocs/manual_edits.xml`
-exists), and a `validate_text.py` summary. The step-by-step documentation below is
-the reference; `make.sh` is the executable form.
+The JSONs under `CodeAndDocs/{grammar,sentence,story}` are this corpus's
+source. Nothing is scraped, so there is no refresh step: those JSONs are the
+starting point, and everything in `XML/` is derived from them.
 
-Note on per-step PHON regeneration: steps 5, 9, 11 and 12 regenerate PHON through
-a witness check (`scripts/_phon_regen.py`, `borrow_segmentation.py`). Since
-2026-08-10 both helpers are thin wrappers over `add_phonology.py`'s own
-`load_profile`/`phonologize` (dialect-aware, contextual rules, current
-marker/punctuation policy), so the witness passes on any file whose PHON the
-current pipeline generated; files carrying an older PHON vintage fail it and are
-conservatively skipped. Either way `make.sh` ends with a corpus-wide
-`add_phonology.py` refresh that regenerates every PHON canonically.
+```bash
+source ../../.venv/bin/activate
+./CodeAndDocs/make.sh              # build + audit + validate + regression check
+```
 
-Note on serialization: the corpus has two serialization conventions — the parsers'
-minidom style and the published lxml style (`<?xml version='1.0' encoding='UTF-8'?>`)
-— and every repair script refuses to rewrite a file it cannot first reproduce
-byte-for-byte (the "round-trip guard", which guarantees a script never introduces
-incidental reformatting). `make.sh` converts between the conventions at each
-boundary via `scripts/normalize_serialization.py` (minidom for step 4, lxml for
-steps 5–20, and lxml again after the final `add_phonology.py` refresh). Until the
-next regeneration, nine *published* files are outside the lxml convention (the
-seven Tsou Stories files rewritten by the 2026 Tsou-PHON regeneration, plus
-`Grammar/Seediq` and `Grammar/Sakizaya`) and are therefore skipped by post-hoc
-repair scripts.
+`make.sh` is a thin wrapper. The build itself is
+[CodeAndDocs/pipeline/build.sh](CodeAndDocs/pipeline/build.sh), which takes each
+subcorpus from JSON to XML in three phases — a per-subcorpus **builder**
+(`pipeline_grammar.py`, `pipeline_sentences.py`, `pipeline_stories.py`), a chain
+of **repairs** (`QC/cleaning/clean_xml.py` plus the scripts in
+`CodeAndDocs/scripts/`), and **tier construction** (alternate-reading
+resolution, M pruning per POL-054, id alignment per POL-037, then the standard
+and PHON tiers against Ortho94). Each subcorpus is built from scratch in a temp
+directory and installed into `XML/` only on success, so rerunning is safe and
+should reproduce the same bytes. The steps, the data tables that carry the
+item-specific corrections, and the environment overrides are documented in
+[CodeAndDocs/pipeline/README.md](CodeAndDocs/pipeline/README.md).
 
-**Regeneration status (2026-08-10):** a full from-scratch `make.sh` run was
-verified sentence-by-sentence against the published corpus — zero data loss; all
-14,663 AUDIO references byte-identical; the differences are intentional pipeline
-changes (TRANSL quote/notes normalization, `ø`/`Ø` → `∅`, dash canonicalization,
-new-style PHON and standard tier) plus improvements (12 additional borrowed
-segmentations, 4 recovered source words including Rukai `malra`). Full triage:
-[claudeplans/2026-08-10-ntu-rerun-diff-audit.md](../../claudeplans/2026-08-10-ntu-rerun-diff-audit.md).
+Note on serialization: the corpus has two serialization conventions — the
+parsers' minidom style and the published lxml style (`<?xml version='1.0'
+encoding='UTF-8'?>`) — and every repair script refuses to rewrite a file it
+cannot first reproduce byte-for-byte (the "round-trip guard", which guarantees a
+script never introduces incidental reformatting). `build.sh` normalizes to the
+lxml convention immediately after the builder, so the guard holds for the whole
+repair chain.
+
+### Superseded: the earlier post-processing chain
+
+The numbered steps below document the **previous** build, in which the parsers
+under `scripts/` produced `Final_XML/` and a long chain of repair scripts was
+applied to the installed `XML/`. `build.sh` replaces that path: it calls a
+subset of the same repair scripts, but the parse and the tier construction are
+different, and `Final_XML/` is no longer produced. The list is retained because
+it is the reference for what each individual repair script does.
 
 * **1. Parse original files**
 
