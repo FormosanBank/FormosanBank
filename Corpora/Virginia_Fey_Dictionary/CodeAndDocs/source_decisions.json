@@ -317,8 +317,15 @@
     {"source_row": 6504, "lang": "eng", "tokens": ["with"], "reason": "Corrects source transcription typo withme."}
   ],
   "historical_merges_note": "These FORM-only merges predate the 2026-09-11 shared meaning-aware dedup repair. Rebuild their distinct source attestations and keep every published translation in the source record it came from; do not enforce the old removal count.",
+  "source_profile": {
+    "name": "FeyDigital",
+    "evidence_url": "https://new-amis.moedict.tw/files/方敏英阿美語字典-阿美字典用法指引.pdf",
+    "evidence_sha256": "e0dc22de8bf39abc49603e181192954f4ce4f1cb03a93f18d077752bbae5fa61",
+    "evidence_pdf_page": 6,
+    "evidence_printed_page": 20,
+    "scope": "The guide identifies g as the ng sound. Preserve original G in S3846; convert g/G to ng/Ng only in standard FORM and map both spellings to /ŋ/ in PHON. Guard existing ng digraphs. Other source-profile values retain the prior Ortho113 Xiuguluan mappings and their uncertainty; this is not a phonetic transcription or recovery of missing source contrasts."
+  },
   "pending_source_review": [
-    "S3846 retains published Ga'ayto. The printed guide (page 20) defines g as the ng sound, but the mixed digital spelling still needs a supported source-profile treatment; Ortho113 does not cover G.",
     "Confirm whether the new kalatolo/kalitolo reading is a competing lexeme or a pronunciation variant before publication."
   ],
   "source_field_evidence_note": "The 2015 upstream stemmer loses prefixes in deduplication(); its 2016 fix is 23b6efd42fe3e73c0d3cd249c14587ca6349af9f. Replaying the old converter reproduces 512 of 519 sheet losses, including all 145 raw/Word disagreement rows. source_field_repairs.tsv retains exact source excerpts and file:line locators at the pinned upstream commit. Lowercase g to ng matches that digital edition's moedict.py; this is never run on the XML. Full raw and corrected Word witnesses were compared separately before recording these repairs."

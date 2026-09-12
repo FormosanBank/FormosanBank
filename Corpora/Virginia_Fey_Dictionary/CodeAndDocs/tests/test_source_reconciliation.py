@@ -55,6 +55,17 @@ def test_unconfirmed_spelling_does_not_replace_publication(reconciled):
     )
 
 
+def test_generated_g_follows_source_guide():
+    # Guide page 20: g is the ng sound. Only derived spelling changes.
+    sentence = etree.parse(str(CODE.parent / "XML/Amis/Amis.xml")).find('.//S[@id="S3846"]')
+    assert sentence.findtext('FORM[@kindOf="original"]') == "Manga'ay kako a tayra haw? Ga'ayto."
+    assert sentence.findtext('FORM[@kindOf="standard"]') == "Manga'ay kako a tayra haw? Nga'ayto."
+    for kind in ("original", "standard"):
+        assert sentence.findtext(f'PHON[@kindOf="{kind}"]') == (
+            "maŋaʡaj kak[o|u] a tajra ħaw ŋaʡajt[o|u]"
+        )
+
+
 def test_distinct_source_meanings_survive(reconciled):
     readings = {}
     for sid in ("S1899", "S1900"):

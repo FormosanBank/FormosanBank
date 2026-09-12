@@ -53,9 +53,12 @@ An embedded `Corpora/Virginia_Fey_Dictionary` checkout is detected automatically
 interpreter. The build uses committed inputs and performs no source download.
 
 The entry point restores the snapshot, checks historical duplicate IDs,
-reconciles source fields, runs shared cleaning, standardizes with
-`--remove_accents`, generates PHON with `--orthography Ortho113`, and runs
-shared deduplication. Validation runs separately. The source audit checks the
+reconciles source fields, runs shared cleaning, then standardizes and generates
+PHON with the committed `CodeAndDocs/Orthographies/` tables before shared
+deduplication. These retain the existing Xiuguluan mappings and add the guide's
+`g` → `ng` spelling and /ŋ/ sound; existing `ng` digraphs are preserved.
+Standard PHON still uses the current shared standard. Validation runs separately.
+The source audit checks the
 recorded inventory and corrections; passing it does not resolve the remaining
 source questions. Run the full FormosanBank audit and QC workflow separately.
 
@@ -93,10 +96,9 @@ No audio is supplied.
 
 - The digital source was checked against raw text, corrected Word files and
   conversion history. This is not a complete review of the printed dictionary.
-- S3846 retains the published source spelling `Ga'ayto`. The printed guide
-  identifies g as the ng sound, but G is absent from the selected profile and
-  its generated PHON contains `*`. Source-profile treatment remains unresolved;
-  do not change the original spelling merely to clear that result.
+- S3846 retains the source spelling `Ga'ayto`; the derived standard is
+  `Nga'ayto`. Both PHON tiers use /ŋ/, following the printed guide (page 20).
+  This narrow mapping does not recover phonemic contrasts absent from the source.
 - The proposed `kalatolo` / `kalitolo` reading still needs classification as
   competing words or pronunciation variants.
 - Li, Joby and Zeitoun (2024) note that Fey misses some phonemic contrasts,
