@@ -69,7 +69,7 @@ def expand_optional_23c() -> None:
     root = tree.getroot()
     sid = "AKIW_SZY_2012_EX_023C"
     sentence = root.find(f"S[@id='{sid}']")
-    if sentence is None or root.find(f"S[@id='{sid}_SHORT']") is not None:
+    if sentence is None or root.find(f"S[@id='{sid}-opt']") is not None:
         raise ValueError("Expand 23c only from the fresh expert transcription")
     words = sentence.findall("W")
     if ([word.findtext("FORM[@kindOf='original']") for word in words]
@@ -81,12 +81,48 @@ def expand_optional_23c() -> None:
         short.remove(word)
     for node in short.iter():
         if node.get("id"):
-            node.set("id", node.get("id").replace(sid, sid + "_SHORT", 1))
+            node.set("id", node.get("id").replace(sid, sid + "-opt", 1))
     short.set("source", "PDF page 55; example 23c, without optional kiya hemay")
     short.find("FORM[@kindOf='original']").text = "ha-min han mu-kan."
     short.find("TRANSL").text = "全部都吃掉。"
     sentence.find("TRANSL").text = "飯全部都吃掉。"
     root.insert(list(root).index(sentence) + 1, short)
+    ET.indent(root, space="    ")
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+
+
+def add_supplemental_examples() -> None:
+    """Recover scan-located footnote/prose examples after the expert transcription."""
+    metadata = json.loads((CODE / "source_data/text_metadata.json").read_text())
+    path = CODE.parent / "XML" / metadata["examples"]["file"]
+    tree = ET.parse(path)
+    root = tree.getroot()
+    data = json.loads((CODE / "source_data/supplemental_examples.json").read_text())
+    for row in data["sentences"]:
+        if root.find(f"S[@id='{row['id']}']") is not None:
+            raise ValueError(f"Supplement must run on fresh transcription: {row['id']}")
+        anchor = root.find(f"S[@id='{row['after']}']")
+        if anchor is None:
+            raise ValueError(f"Missing source-order anchor: {row['after']}")
+        sentence = ET.Element("S", {"id": row["id"], "source": row["source"]})
+        ET.SubElement(sentence, "FORM", {"kindOf": "original"}).text = row["form"]
+        ET.SubElement(sentence, "TRANSL", {XML_LANG: "zho"}).text = row["translation"]
+        for wi, (form, gloss, morphs) in enumerate(row.get("words", []), 1):
+            word = ET.SubElement(sentence, "W", {"id": f"{row['id']}W{wi}"})
+            ET.SubElement(word, "FORM", {"kindOf": "original"}).text = form
+            ET.SubElement(word, "TRANSL", {XML_LANG: "zho"}).text = gloss
+            for mi, (mform, mgloss) in enumerate(morphs, 1):
+                morph = ET.SubElement(word, "M", {"id": f"{row['id']}W{wi}M{mi}"})
+                ET.SubElement(morph, "FORM", {"kindOf": "original"}).text = mform
+                ET.SubElement(morph, "TRANSL", {XML_LANG: "zho"}).text = mgloss
+        root.insert(list(root).index(anchor) + 1, sentence)
+    for row in data["alternative_translations"]:
+        sentence = root.find(f"S[@id='{row['id']}']")
+        if sentence is None or sentence.findtext("FORM[@kindOf='original']") != row["form"]:
+            raise ValueError(f"Alternative no longer matches its source sentence: {row['id']}")
+        ET.SubElement(sentence, "TRANSL", {
+            XML_LANG: "zho", "ver": "alt", "notes": row["source"],
+        }).text = row["translation"]
     ET.indent(root, space="    ")
     tree.write(path, encoding="utf-8", xml_declaration=True)
 
@@ -110,11 +146,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     action = parser.add_mutually_exclusive_group()
     action.add_argument("--record-provenance", type=Path)
-    action.add_argument("--expand-optionals", action="store_true")
+    action.add_argument("--complete-transcription", action="store_true")
     args = parser.parse_args()
     if args.record_provenance:
         record_provenance(args.record_provenance)
-    elif args.expand_optionals:
+    elif args.complete_transcription:
         expand_optional_23c()
+        add_supplemental_examples()
     else:
         build()

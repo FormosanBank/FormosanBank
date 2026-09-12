@@ -14,7 +14,7 @@ not apply automatically. Each alternation is classified by hand in
 `alternative_decisions.json` (POL-039 — the table is data, not code):
 
   variant  a spelling variant: overlapping letters, same gloss. Emitted as
-           FORM[@kindOf="alternate"] on the node that varies and on each of
+           FORM[@kindOf="original" ver="alt"] on the node that varies and on each of
            its ancestors, so no published FORM keeps a slash.
   split    anything else — different lexemes, different glosses, or a word
            against a phrase. Emitted as separate S blocks. The first keeps the
@@ -55,13 +55,43 @@ def text_of(node, kind="original"):
     return (f.text or "") if f is not None else ""
 
 
+def normalize_variant_spelling(root):
+    """Translate the snapshot's kindOf="alternate" to the current spelling.
+
+    Most variants are rewritten by apply_variant, but a node the alternation
+    rules do not touch has its FORMs copied from the POL-035 snapshot
+    verbatim, legacy spelling and all. The snapshot is a frozen baseline and
+    does not change, so the translation happens here, on output: this script
+    builds the original tier, so a variant it emits is an original-tier one
+    (POL-028, revised 2026-09-09). Returns the number rewritten.
+    """
+    count = 0
+    for form in root.iter("FORM"):
+        if form.get("kindOf") == "alternate":
+            form.set("kindOf", "original")
+            form.set("ver", "alt")
+            count += 1
+    return count
+
+
+def _is_variant(form):
+    """True for a variant FORM in either spelling.
+
+    The POL-035 snapshot this script reads predates POL-028's 2026-09-09
+    revision and still writes kindOf="alternate"; the snapshot is a frozen
+    baseline and does not change. Output uses the current spelling — see
+    add_alternate — so the reader accepts both and the writer emits one.
+    """
+    return form.get("ver") is not None or form.get("kindOf") == "alternate"
+
+
 def alternates(node):
-    return [(f.text or "") for f in node.findall("FORM") if f.get("kindOf") == "alternate"]
+    return [(f.text or "") for f in node.findall("FORM") if _is_variant(f)]
 
 
 def drop_alternates(node):
     for f in list(node.findall("FORM")):
-        if f.get("kindOf") == "alternate":
+        if _is_variant(f):
             node.remove(f)
 
 
@@ -74,8 +104,13 @@ def set_form(node, value, kind="original"):
 
 
 def add_alternate(node, value):
-    """Append FORM[@kindOf='alternate'] after the last FORM."""
-    f = ET.Element("FORM", {"kindOf": "alternate"})
+    """Append a variant FORM after the last FORM.
+
+    POL-028 (revised 2026-09-09): a variant names the tier it varies from.
+    This script builds the original tier, so its variants are original-tier
+    ones; standardize.py derives the matching standard-tier variants.
+    """
+    f = ET.Element("FORM", {"kindOf": "original", "ver": "alt"})
     f.text = value
     last = max((i for i, c in enumerate(node) if c.tag == "FORM"), default=-1)
     node.insert(last + 1, f)
@@ -487,6 +522,7 @@ def main() -> int:
 
         dest = out_root / src.relative_to(snapshot)
         dest.parent.mkdir(parents=True, exist_ok=True)
+        normalize_variant_spelling(root)
         dest.write_text(prettify(root), encoding="utf-8")
         print(f"  {dest.relative_to(out_root.parent)}: {len(rebuilt)} S")
 

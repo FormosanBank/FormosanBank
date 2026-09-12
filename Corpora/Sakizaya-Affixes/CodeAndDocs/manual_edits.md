@@ -1,6 +1,6 @@
 # Manual edits changelog
 
-## szy/akiw_2012_sakizaya_affixes_examples.xml
+## Sakizaya/akiw_2012_sakizaya_affixes_examples.xml
 
 ### AKIW_SZY_2012_EX_001 — changed
 - before: mi-pa-baybay ci Taydung. / [zho] Taydung 在掛蚊帳。
@@ -954,7 +954,7 @@
 - before: ta-amis-en ku pa-culil tu wawelwel! / [zho] 機車騎向北方！
 - after:  ta-amis-en ku pa-culil tu wawelwel! / [zho] 機車騎向北方！
 
-## szy/akiw_2012_sakizaya_affixes_table_rows.xml
+## Sakizaya/akiw_2012_sakizaya_affixes_table_rows.xml
 
 ### AKIW_SZY_2012_TABLE_ROW_001 — changed
 - before: a-mumul / [zho] 即將出發

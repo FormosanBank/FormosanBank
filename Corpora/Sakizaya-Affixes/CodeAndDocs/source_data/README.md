@@ -7,6 +7,9 @@ TSV. The other CSVs document the earlier extraction and remain source evidence.
 
 - `text_metadata.json`: the two existing TEXT headers and output paths; the
   permission prose remains unresolved under POL-042.
+- `supplemental_examples.json`: six scan-transcribed footnote/prose examples
+  and four alternative Chinese readings, with stable IDs and page locators.
+  These supplement the expert transcription without replacing its readings.
 
 - `numbered_source_decisions.csv`: seeded examples, OCR corrections, reviewed gloss alignments, and numbered-example exclusions.
 - `gloss_cell_replacements.csv`: verified recurrent OCR substitutions in interlinear gloss cells.
@@ -17,7 +20,8 @@ TSV. The other CSVs document the earlier extraction and remain source evidence.
   tests require those exact readings and reject any newly unreviewed G001 case.
   Physical scan pages 33, 37–39, 61, 73, 120, 128, 135 and 140–141 verify the
   distinct example conventions, including the restored null. This fixture does
-  not waive other rules or establish complete source coverage.
+  not waive other rules or establish complete source coverage. The supplemental
+  footnote 15 composite prefix has its own scan-based regression fixture.
 - `affix_analyses.csv`: source table ranges, affix forms, functions, and table numbers.
 - `table_row_fixes.csv`: page-image-verified inventory-row corrections and the documented row 313 form mismatch.
 - `late_table_rows.csv`: complete rows 435 through 547 with source pages, table numbers, forms, meanings, and unique linguistic fields where no earlier inventory row supplies them.

@@ -1,5 +1,19 @@
 name: hf-audio-parity
 
+# Validates the public audio contract against Hugging Face.
+#
+# Scope (added 2026-09-11): the job takes no corpus argument — it checks the
+# WHOLE organisation — so it used to gate a pull request that touched a corpus
+# with no audio at all on the state of an external service that PR could not
+# affect. WakelinTexts (0 AUDIO elements, no download script, absent from
+# audio_sources.json) was blocked by an anonymous HF 429. The `scope` job now
+# decides from audio_sources.json, which already names each dataset's corpus,
+# so a new audio corpus is covered the moment it is manifested — no edit here.
+#
+# The decision is deliberately one-sided: it only ever skips when every changed
+# path is inside a corpus known to have no audio. A change to the contract
+# itself, an unclassifiable path, schedule and workflow_dispatch all run.
+
 on:
   pull_request:
     paths:
@@ -9,6 +23,7 @@ on:
       - 'audio_permissions.json'
       - 'AUDIO-PERMISSIONS.md'
       - 'QC/validation/validate_hf_audio.py'
+      - 'QC/validation/hf_audio_scope.py'
       - '.github/workflows/hf-audio-parity.yaml'
   push:
     branches: [main]
@@ -19,6 +34,7 @@ on:
       - 'audio_permissions.json'
       - 'AUDIO-PERMISSIONS.md'
       - 'QC/validation/validate_hf_audio.py'
+      - 'QC/validation/hf_audio_scope.py'
       - '.github/workflows/hf-audio-parity.yaml'
   schedule:
     - cron: '17 8 * * *'
@@ -28,8 +44,39 @@ permissions:
   contents: read
 
 jobs:
+  scope:
+    name: Does this change touch audio?
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # needed to diff against the PR base
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Decide
+        id: decide
+        run: |
+          # Only a pull request is scoped. A push to main, the nightly run and
+          # a manual dispatch always validate: they are the longitudinal signal
+          # on the Hub's actual state, not a check on a diff.
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "${{ github.event_name }}: always validates."
+            exit 0
+          fi
+          git diff --name-only "origin/${{ github.base_ref }}...HEAD" > changed.txt
+          echo "Changed files:"; cat changed.txt
+          python QC/validation/hf_audio_scope.py --changed-files changed.txt \
+            | tee decision.txt
+          grep '^run=' decision.txt >> "$GITHUB_OUTPUT"
+
   validate:
     name: Validate public Hugging Face audio
+    needs: scope
+    if: needs.scope.outputs.run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -43,6 +90,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Check anonymous audio permissions and parity
+        # Anonymous by design: this tests the PUBLIC contract, which is what an
+        # unauthenticated user gets. That is also what the Hub rate limits, so
+        # validate_hf_audio.py retries 429 and 5xx with exponential backoff
+        # rather than failing the run on a throttle.
         env:
           HF_TOKEN: ''
         run: python QC/validation/validate_hf_audio.py
