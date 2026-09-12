@@ -15,7 +15,7 @@ INPUT = CODE / "raw_data" / "reviewed_examples.tsv"
 MORPHEME_INPUT = CODE / "raw_data" / "reviewed_morpheme_alignments.tsv"
 VARIANT_INPUT = CODE / "raw_data" / "reviewed_variants.tsv"
 XML_NAME = "tsukida_2014_correlative_clauses_in_seediq.xml"
-XML_PATH = ROOT / "XML" / "Seediq" / XML_NAME
+XML_PATH = ROOT / "XML" / "Truku" / XML_NAME
 SOURCE_LEDGER = CODE / "intermediate" / "source_ledger.csv"
 PAGE_INVENTORY = CODE / "intermediate" / "page_inventory.csv"
 NOTATION_AUDIT = CODE / "intermediate" / "source_notation_audit.csv"
@@ -89,6 +89,9 @@ def read_morpheme_alignments(
 def read_variants(path: Path = VARIANT_INPUT) -> dict[str, list[dict[str, str]]]:
     variants: dict[str, list[dict[str, str]]] = {}
     for row in read_tsv(path):
+        # POL-028: migrate the two unpublished optional-record suffixes.
+        if row["variant_id"] == row["source_id"] + "v2":
+            row["variant_id"] = row["source_id"] + "-opt"
         variants.setdefault(row["source_id"], []).append(row)
     expected = {"tsukida2014_seediq_S005", "tsukida2014_seediq_S008"}
     if set(variants) != expected or any(len(rows) != 2 for rows in variants.values()):
@@ -281,7 +284,7 @@ def add_word_structure(
             ET.SubElement(
                 word_element,
                 "TRANSL",
-                {"xml:lang": "eng", "kindOf": "standard", "ver": "alt"},
+                {"xml:lang": "eng", "kindOf": "standard"},
             ).text = canonical_gloss
         for morpheme_index, (form_part, gloss_part) in enumerate(
             morphemes, start=1

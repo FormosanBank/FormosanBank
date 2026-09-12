@@ -15,7 +15,7 @@ import build_xml
 CODE = Path(__file__).resolve().parent
 ROOT = CODE.parent
 DIRECT_CHECKS = CODE / "intermediate" / "direct_source_checks.csv"
-UNPARSED = {"tsukida2014_seediq_S002", "tsukida2014_seediq_S005", "tsukida2014_seediq_S005v2"}
+UNPARSED = {"tsukida2014_seediq_S002", "tsukida2014_seediq_S005", "tsukida2014_seediq_S005-opt"}
 REVIEWER_FLAGGED_SENTENCE_IDS = {
     "tsukida2014_seediq_S005",
     "tsukida2014_seediq_S006",
@@ -284,7 +284,7 @@ def main() -> None:
         for path in (ROOT / "XML").rglob("*.xml")
     )
     require(
-        xml_files == ["XML/Seediq/tsukida_2014_correlative_clauses_in_seediq.xml"],
+        xml_files == ["XML/Truku/tsukida_2014_correlative_clauses_in_seediq.xml"],
         "Unexpected development XML layout",
     )
 

@@ -42,7 +42,7 @@ def corpus_model():
 
 def test_development_output_path_is_canonical_xml():
     assert build_xml.XML_PATH == (
-        ROOT / "XML/Seediq/tsukida_2014_correlative_clauses_in_seediq.xml"
+        ROOT / "XML/Truku/tsukida_2014_correlative_clauses_in_seediq.xml"
     )
     assert not (ROOT / "Final_XML").exists()
 
@@ -77,7 +77,7 @@ def test_every_included_sentence_has_source_aligned_words():
     assert no_words == set()
     assert len(tree.getroot().findall(".//W")) == 201
     assert len(tree.getroot().findall(".//M")) == 254
-    unparsed = {"tsukida2014_seediq_S002", "tsukida2014_seediq_S005", "tsukida2014_seediq_S005v2"}
+    unparsed = {"tsukida2014_seediq_S002", "tsukida2014_seediq_S005", "tsukida2014_seediq_S005-opt"}
     assert {s.get("id") for s in tree.getroot().findall("S") if not s.findall("W/M")} == unparsed
     assert all(w.findall("M") for s in tree.getroot().findall("S")
                if s.get("id") not in unparsed for w in s.findall("W"))
@@ -109,7 +109,7 @@ def test_reviewed_infixes_have_reconstructable_morphemes():
         "original",
         "standard",
     ]
-    assert word.findall("TRANSL")[1].get("ver") == "alt"
+    assert all(gloss.get("ver") is None for gloss in word.findall("TRANSL"))
     double_infix = root.find(
         "S[@id='tsukida2014_seediq_S020']/W[@id='tsukida2014_seediq_S020W1']"
     )
@@ -180,13 +180,13 @@ def test_optional_constituents_are_expanded_with_aligned_glosses():
     assert by_id["tsukida2014_seediq_S005"].find("FORM").text == (
         "Laqi gaga 'u, malu."
     )
-    assert by_id["tsukida2014_seediq_S005v2"].find("FORM").text == (
+    assert by_id["tsukida2014_seediq_S005-opt"].find("FORM").text == (
         "Laqi gaga 'u, malu ka hiya."
     )
     assert len(by_id["tsukida2014_seediq_S005"].findall("W")) == 4
-    assert len(by_id["tsukida2014_seediq_S005v2"].findall("W")) == 6
+    assert len(by_id["tsukida2014_seediq_S005-opt"].findall("W")) == 6
     assert len(by_id["tsukida2014_seediq_S008"].findall("W")) == 9
-    assert len(by_id["tsukida2014_seediq_S008v2"].findall("W")) == 12
+    assert len(by_id["tsukida2014_seediq_S008-opt"].findall("W")) == 12
     assert not any(
         marker in (sentence.find("FORM").text or "")
         for sentence in by_id.values()

@@ -60,10 +60,23 @@ def check_table(table: Path, repo_root: Path) -> tuple:
     if proc.stderr.strip() and "Traceback" in proc.stderr:
         last = proc.stderr.strip().splitlines()[-1]
         return ("structural", table.name, f"CRASH: {last}")
+    # A deletion the output *could* have written is a phoneme-level item to
+    # review; one it could not write is the only answer available and is fine
+    # (POL-056). Deletions never block, so without this they would be audited
+    # in the per-table report and invisible in the aggregate — including on a
+    # table that already fails for unrelated reasons, where the tail below
+    # would scroll them away.
+    questionable = [
+        line.strip("- ").strip()
+        for line in proc.stdout.splitlines()
+        if "(deleted)" in line and "the output writes" in line
+    ]
     if proc.returncode != 0:
         # Blocking verdicts from the validator = unresolved mismatches.
         tail = [line for line in proc.stdout.splitlines() if line.strip()][-3:]
-        return ("phoneme", table.name, " | ".join(tail))
+        return ("phoneme", table.name, " | ".join(questionable + tail))
+    if questionable:
+        return ("phoneme", table.name, " | ".join(questionable))
     return ("ok", table.name, "")
 
 

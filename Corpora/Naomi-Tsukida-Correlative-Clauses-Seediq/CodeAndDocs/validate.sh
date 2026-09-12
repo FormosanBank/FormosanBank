@@ -30,23 +30,17 @@ run gloss-structure "$PY" "$FB/QC/validation/audit_gloss_scrape.py" \
 run gloss-source "$PY" "$FB/QC/validation/audit_gloss_scrape.py" \
     --repo "$ROOT" --source "$HERE/intermediate/article_pages_074_084_plain.txt" \
     --csv "$REPORT/gloss-source.csv"
-# The legacy extractor nests trv/Truku under Seediq; use the actual Truku reference.
-mkdir -p "$REPORT/reference/Seediq/Truku"
-cp "$FB/QC/validation/reference/Truku/Truku/orthographic_info" \
-    "$REPORT/reference/Seediq/Truku/orthographic_info"
-cmp "$FB/QC/validation/reference/Truku/Truku/orthographic_info" \
-    "$REPORT/reference/Seediq/Truku/orthographic_info"
 for tier in original standard; do
     run "duplicates-$tier" "$PY" "$FB/QC/validation/validate_duplicate_sentences.py" \
         by_path --path "$ROOT/XML" --tier "$tier" --output "$REPORT/duplicates-$tier.csv"
     run "extract-$tier" "$PY" "$FB/QC/orthography/orthography_extract.py" \
-        --corpora_path "$ROOT/XML" --corpus all --language All --kindOf "$tier" \
+        --corpora_path "$ROOT/XML" --corpus all --language Truku --kindOf "$tier" \
         --by_dialect true --output_dir "$REPORT/orthography-$tier"
     run "orthography-$tier" "$PY" "$FB/QC/validation/validate_orthography.py" \
-        --o_info "$REPORT/orthography-$tier" --reference "$REPORT/reference" --language Seediq
+        --o_info "$REPORT/orthography-$tier" --reference "$FB/QC/validation/reference" --language Truku
 done
 run vocabulary "$PY" "$FB/QC/validation/validate_vocabulary.py" \
-    --o_info "$REPORT/orthography-standard" --reference "$REPORT/reference" --language Seediq
+    --o_info "$REPORT/orthography-standard" --reference "$FB/QC/validation/reference" --language Truku
 run conversion-Truku "$PY" "$FB/QC/validation/validate_conversion_table.py" \
     "$HERE/source_orthography/Seediq.tsv" "$FB/Orthographies/Ortho113/Seediq.tsv" \
     "$HERE/raw_data/source_to_ortho113.tsv" --dialect Truku \

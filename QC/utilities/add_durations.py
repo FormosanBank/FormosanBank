@@ -1,6 +1,13 @@
 import xml.etree.ElementTree as ET
 import os
+import sys
 import argparse
+from pathlib import Path as _Path
+
+_REPO_ROOT = _Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.corpus_counts import is_reproduction_path  # noqa: E402
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from mutagen.mp3 import MP3
 import wave
@@ -75,6 +82,9 @@ def main(corpus_path):
     to_process = list()
     for root, dirs, files in os.walk(corpus_path):
         for file in files:
+            # CodeAndDocs/ is reproduction material, never published data.
+            if is_reproduction_path(os.path.join(root, file), corpus_path):
+                continue
             if (file.endswith(".xml")):
                 to_process.append([root, file])
     
