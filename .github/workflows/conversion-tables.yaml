@@ -48,6 +48,13 @@ jobs:
         with:
           python-version: "3.13"
       - name: Report registry consistency (SOFT; POL-034)
+        # `shell: bash` adds -o pipefail, which the default `bash -e {0}`
+        # does NOT. Without it this pipeline reports tee's status (always
+        # 0) and validate_registries.py's `return 1` on an unreadable
+        # registry is discarded — the structural gate this job documents
+        # never fires. SOFT content findings still never block: that is
+        # the script's own unconditional `return 0`.
+        shell: bash
         run: |
           python QC/validation/validate_registries.py \
             --csv "$RUNNER_TEMP/registry_findings.csv" \

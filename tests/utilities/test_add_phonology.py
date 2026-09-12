@@ -290,7 +290,13 @@ def test_custom_profile_keeps_source_and_standard_phonology_distinct(tmp_path):
     assert _phon_texts(xml_path, "standard") == ["siŋsi"]
 
 
-def test_original_phonology_does_not_require_an_ortho113_table(tmp_path):
+def test_original_phonology_does_not_require_a_standard_orthography(tmp_path):
+    """Original PHON is generated for a language with no designated standard.
+
+    Pazeh's standards.csv cell is deliberately blank — the language has no
+    agreed standard orthography, so there is nothing to build standard PHON
+    from. Original PHON still comes from the source scheme passed in.
+    """
     xml_path = tmp_path / "pazeh.xml"
     xml_path.write_text(
         '<TEXT xml:lang="pzh" dialect="Pazeh"><S id="1">'
@@ -303,7 +309,7 @@ def test_original_phonology_does_not_require_an_ortho113_table(tmp_path):
     proc = _run(xml_path, orthography="Tsuchida")
 
     assert proc.returncode == 0, proc.stderr
-    assert "Standard orthography TSV not found for Pazeh" in proc.stdout
+    assert "no designated standard orthography for Pazeh" in proc.stdout
     assert _phon_texts(xml_path, "original") == ["pakizeħ"]
     assert _phon_texts(xml_path, "standard") == []
 
@@ -507,22 +513,74 @@ def test_unknown_characters_star_marks_survive_punctuation_dropped(
     unmapped punctuation — ASCII and Unicode P* alike — is dropped (the
     2026-08-09 null-morpheme/punctuation spec; previously punctuation was
     copied through to PHON)."""
+    # Kanakanavu, not Yami: Yami's reference orthography attests 'á', so its
+    # acute is orthographic and is deliberately NOT folded (see
+    # test_reference_orthography_accents_are_kept). This test is about
+    # unknown-character starring, so it needs a language that attests none.
     scheme = _write_profile(
         monkeypatch,
         tmp_path,
-        language="Yami",
+        language="Kanakanavu",
         tsv="letter\tIPA\na\tɑ\n",
     )
-    profile = load_profile(scheme, "Yami", "Yami")
+    profile = load_profile(scheme, "Kanakanavu", "Kanakanavu")
 
     # a -> ɑ; `…` (Po) dropped; space survives; `卐` (Lo) and `◇` (So) -> `*`.
     assert phonologize("a… 卐◇", profile) == "ɑ **"
-    # a combining acute (Mn, U+0301) rides through rather than being starred,
-    # whereas a precomposed accented letter (a base Ll not in the table) is
-    # unknown and becomes `*`. (Use the escape sequences verbatim — NFC
-    # á and NFD a+combining are visually identical in source code.)
-    assert phonologize("a\u0301", profile) == "\u0251\u0301"
-    assert phonologize("\u00e1", profile) == "*"
+    # A stress acute is prosody, not a segment (POL-003), and no profile maps a
+    # stressed vowel, so it is folded to its base letter before mapping — in
+    # both the NFD and the precomposed spelling. (Use the escape sequences
+    # verbatim — NFC á and NFD a+combining are visually identical in source.)
+    assert phonologize("a\u0301", profile) == "\u0251"
+    assert phonologize("\u00e1", profile) == "\u0251"
+    # A combining mark that is NOT a stress accent still rides through.
+    assert phonologize("a\u0303", profile) == "\u0251\u0303"
+
+
+def test_keep_set_comes_from_the_designated_standard_orthography():
+    """The accent keep set is the language's designated standard orthography
+    (standards.csv -> Orthographies/<scheme>/<Language>.tsv), NOT the generated
+    reference character inventories.
+
+    Those inventories list every character observed in sample text — digits and
+    punctuation included — so they cannot tell an orthographic letter from a
+    prosodic diacritic that merely occurs. Rukai's 'e-acute' is a real letter
+    with a table row and is kept; Puyuma, Yami and Thao carry accents in their
+    reference samples but their standard tables list none, so those fold."""
+    from QC.utilities._accents import standard_orthography_accents
+
+    assert standard_orthography_accents("Rukai") == frozenset({"\u00e9"})
+    for language in ("Puyuma", "Yami", "Thao", "Kanakanavu", "Amis"):
+        assert standard_orthography_accents(language) == frozenset(), language
+    # Blank standards.csv entry -> nothing derivable, so every accent folds.
+    # Verified safe: neither corpus runs standardize.py or has any PHON.
+    for language in ("Siraya", "Babuza-Favorlang"):
+        assert standard_orthography_accents(language) == frozenset(), language
+    assert standard_orthography_accents("NotALanguage") == frozenset()
+
+
+def test_unmapped_accents_fold_instead_of_starring():
+    """A kept letter is always a mappable one, so folding can never be why a
+    PHON tier shows '*'. Puyuma 'e-macron' and Yami 'a-acute' used to star."""
+    from QC.utilities.add_phonology import load_profile, phonologize
+
+    assert phonologize("\u0113", load_profile("Ortho113", "Puyuma", "Nanwang")) == "\u0259"
+    assert "*" not in phonologize("m\u00e1duk", load_profile("Ortho113", "Yami", "Yami"))
+
+
+def test_profile_attested_accented_letter_is_not_folded(tmp_path, monkeypatch):
+    """An accented letter the language's own profile attests (Rukai 'é') is a
+    real grapheme, so it survives folding and maps normally — only unattested
+    stress accents are folded (QC/utilities/_accents.strip_accents `keep`)."""
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Rukai",
+        tsv="letter\tIPA\ne\tɛ\né\te\n",
+    )
+    profile = load_profile(scheme, "Rukai", "Rukai")
+    assert phonologize("\u00e9", profile) == "e"   # attested é -> its own IPA
+    assert phonologize("e", profile) == "\u025b"    # plain e unaffected
 
 
 def test_unmapped_punctuation_dropped_from_phon(tmp_path, monkeypatch):
@@ -710,3 +768,55 @@ def test_escaped_bracket_rule_resolves_variant_contextually(
     profile = load_profile(scheme, "Bunun", "Zhuoqun")
     assert phonologize("ci", profile) == "ʨi"
     assert phonologize("ca", profile) == "ʦa"
+
+
+def test_phonology_is_generated_from_the_base_form_not_a_variant(tmp_path):
+    """POL-028: a tier has one base plus ver="alt" variants, but PHON_Type
+    carries no @ver — so a tier has exactly one PHON, and it must spell the
+    BASE. Before the fix, add_phonology looped over every FORM of the kind
+    and each wrote into that one PHON, so the last one in document order —
+    the variant — silently overwrote the base's phonology.
+    """
+    corpus = tmp_path / "corpus"
+    xml_path = _write_corpus(
+        corpus,
+        "Yami",
+        "y.xml",
+        '<TEXT xml:lang="tao" dialect="Yami">'
+        '<S id="1">'
+        '<FORM kindOf="original">ngaro</FORM>'
+        '<FORM kindOf="original" ver="alt">rakep</FORM>'
+        '<FORM kindOf="standard">ngaro</FORM>'
+        '<FORM kindOf="standard" ver="alt">rakep</FORM>'
+        "</S></TEXT>",
+    )
+    proc = _run(corpus)
+    combined = proc.stdout + proc.stderr
+    assert "Error" not in combined, f"unexpected error: {combined!r}"
+
+    for kind in ("original", "standard"):
+        phons = _phon_texts(xml_path, kind)
+        assert len(phons) == 1, f"{kind}: expected one PHON, got {phons!r}"
+        # 'ngaro' -> ŋ...; the variant 'rakep' contains no ng at all.
+        assert "ŋ" in phons[0], (
+            f"{kind} PHON {phons[0]!r} does not spell the base 'ngaro' "
+            "— it was overwritten by the ver='alt' variant"
+        )
+
+
+def test_a_variant_form_gets_no_phon_of_its_own(tmp_path):
+    """PHON_Type has no @ver, so a variant cannot carry its own PHON."""
+    corpus = tmp_path / "corpus"
+    xml_path = _write_corpus(
+        corpus,
+        "Yami",
+        "y.xml",
+        '<TEXT xml:lang="tao" dialect="Yami">'
+        '<S id="1">'
+        '<FORM kindOf="original">ngaro</FORM>'
+        '<FORM kindOf="original" ver="alt">rakep</FORM>'
+        "</S></TEXT>",
+    )
+    _run(corpus)
+    root = ET.parse(xml_path).getroot()
+    assert [p.get("ver") for p in root.findall(".//PHON")] == [None]

@@ -34,7 +34,13 @@ lxml exactly like clean_xml.py so the diff shows only the text/element changes.
 
 import argparse
 import re
+import sys
 from pathlib import Path
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.corpus_counts import is_reproduction_path  # noqa: E402
 
 from lxml import etree
 
@@ -130,7 +136,9 @@ def main():
     root_dir = Path(args.corpora_path)
     if not root_dir.exists():
         raise SystemExit(f"Error: {root_dir} does not exist")
-    files = sorted(root_dir.rglob('*.xml'))
+    # CodeAndDocs/ is reproduction material, never published data.
+    files = sorted(x for x in root_dir.rglob('*.xml')
+                   if not is_reproduction_path(x, root_dir))
     print(f"{'APPLY' if args.apply else 'DRY RUN'}: {len(files)} files; "
           f"{len(sup)} suppression strings; empty-policy={args.empty_policy}")
 

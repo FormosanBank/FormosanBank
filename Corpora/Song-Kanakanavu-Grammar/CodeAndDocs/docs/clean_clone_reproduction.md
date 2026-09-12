@@ -1,31 +1,55 @@
-# Clean-clone reproduction
+# Current reproduction evidence
 
-Private `main` commit `5361d797ae4833ae278c255e3ad1103cb670cb34` was cloned into an empty temporary directory. The rebuild used the clean, pinned FormosanBank validator checkout at `a20f81b470ed141c12425f3d827227b22d9f9ece` through an explicit `FORMOSANBANK_PATH`.
+The readiness rebuild on 2026-08-22 used the clean FormosanBank authority at
+`3a3c47c220520113f747e6a2d441494000e13c4b` through an explicit
+`FORMOSANBANK_PATH`. The pipeline regenerated the dictionary and interlinear
+ledgers, then rebuilt both canonical `XML/` files with the current cleaning,
+standardization, and shared Ortho113 phonology tools.
 
-The clean clone regenerated the dictionary and interlinear ledgers and both XML files byte-for-byte. It applied 128 exact direct-sentence decisions and two exact analysis-tier decisions, emitted 140 dictionary alternates, omitted the unsupported standard tier for all 11 bound dictionary citation forms, folded source stress outside original tiers, and delegated both PHON tiers to the shared Ortho113 utility.
-
-Reproduced hashes of that build:
-
-| Artifact | SHA-256 |
-|---|---|
-| Grammar XML | `3b79637d62576b8ad66b7f7ea765a83583b1d28d91a67fb6fe3a07624779a543` |
-| Dictionary XML | `dc6c58f0d3ed98a3c6f1eddfab10175c34cf53e4eb348610a7ef0d00ad8f6324` |
-| Exact decision manifest | `b3d94c4fff5e1b0af3e8eb14f8aab022f5780164900a61bf8260a98bc2333914` |
-
-The published XML has since been rebuilt against a newer FormosanBank checkout,
-which changed only the machine-generated PHON tiers (phonemic variants are now
-written `[x|y]`, and punctuation is dropped from PHON). The ledgers and every
-FORM/TRANSL value reproduced unchanged, and the decision manifest hash is
-unchanged. Current hashes, from two consecutive `scripts/make_xml.sh` runs that
-produced identical bytes:
+The rebuild applied 128 exact direct-sentence decisions and two exact
+analysis-tier decisions, emitted 114 retained split variants after removing 26
+cross-record duplicates, omitted 11 unsupported bound citation forms, and
+preserved the source stress only in original FORM tiers. Two source analytic
+translation parentheticals were moved from primary text to `TRANSL/@notes`
+under POL-024.
 
 | Artifact | SHA-256 |
-|---|---|
-| Grammar XML | `2eaed1dcecd6fc1570b5a90ad5a1a327349f2816e56df1dd3eba3a9ff38e8a22` |
+| --- | --- |
+| Grammar XML | `d65875e63f85abae0e74b2e0c98998760881e5f5223768e0bfb37f507ef9fc72` |
 | Dictionary XML | `c5926593971fbbbd4df7f9d88c1629400ef2f7390797b5e932f6709da5736750` |
+| Interlinear ledger | `edb604881218eaaa21a69df58762aca3c8478aa554f3f6ef32d59fa16a2a4799` |
+| Source ledger | `92ba3601407427cf827076e90286891724235c6e71281499de4f4610159f771b` |
+| Exact decision manifest | `1e30387a07b771b8e758b567de3345accd144642a7b201fe5c7a53089359c1ca` |
 
-All 17 regression tests passed in the clean clone. The rebuilt clone had no tracked or untracked changes. The pinned FormosanBank checkout also remained clean.
+Two consecutive complete rebuilds produced the same two XML hashes and
+interlinear-ledger hash above. All 21
+regression tests passed. The current XML validator reported no findings against
+an update view that excludes only the existing intended target
+`Song-Kanakanavu-Grammar`. Text and gloss validation reported no HARD findings.
+The remaining SOFT findings were reviewed as follows:
 
-Canonical validation of these exact XML hashes reported zero hard XML, text, or gloss findings. Full findings and adjudication are retained in `qc-output/20260806T033701Z_goal_completion/`.
+- V060 (1,296): all 870 dictionary entries intentionally have no W tier, and 426
+  grammar analyses differ from the natural sentence surface in source-printed
+  spacing or clitic attachment. The source does not supply dictionary analyses,
+  and both printed grammar tiers are preserved.
+- V061 (3): pages 68, 128, and 248 print segmented forms with an unsegmented or
+  only partially aligned gloss. No segmentation or gloss was invented.
+- V064 (4): pages 182, 248, and 258 omit a separately aligned gloss for those M
+  units. Their W glosses remain complete.
+- V122 (4 rows for one S): S0456 is a complete translated prose parenthetical,
+  not optional material. Both variants of the source sentence are not implied.
+- V133 (2): S0469 and S0472 use the source-defined break-punctuation dash. Each
+  exact decision is recorded in `intermediate/standard_surface_decisions.tsv`.
 
-The Basecamp evidence records the author's (Li-May Sung's) permission to publish this corpus under CC BY-NC 4.0 (Creative Commons Attribution–NonCommercial).
+The source PDF is image-only, so the generic gloss-scrape source extractor
+reported zero matchable lines. Direct image checks confirm the 26 G001 and 22
+G002 cases are printed form/gloss segmentation mismatches, not extraction
+changes. G004 is zero after the POL-014/POL-015 repair. G003 is also zero with
+the current shared rule, which accepts a hyphenated M root only when that exact
+spelling is derived from its parent W's inline infix. The earlier authority
+reported 113 false positives on these required gap roots. The single G005 `RA`
+label is printed verbatim on reader page 165. These specialized findings are
+triage signals and do not override the canonical validator results.
+
+The Basecamp evidence records the author's permission to publish this corpus
+under CC BY-NC 4.0.
