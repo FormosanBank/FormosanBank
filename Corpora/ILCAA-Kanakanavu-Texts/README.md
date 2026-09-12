@@ -25,8 +25,10 @@ The 45 retained final XML files still have 1,455 S and await regeneration.
 The [footnote ledger](CodeAndDocs/footnote_lexemes.jsonl) accounts for all 87
 notes. The [introduction ledger](CodeAndDocs/introduction_lexemes.json) keeps
 historical transcription columns and the Saaroa comparison in separate files.
-It records bound morphology/templates as context and unresolved phonetic and
-pronoun representations explicitly. These counts are not a whole-book coverage verdict.
+It records bound morphology/templates as context and unresolved phonetic
+representations explicitly. Tsuchida's source distinguishes the two vocatives
+from ordinary pronouns; all four forms keep separate records. These counts are
+not a whole-book coverage verdict.
 The source parser repairs a misplaced interjection gloss in Naparamaci example
 68, omits empty gloss padding, restores the aligned W/M tiers of introduction
 examples 23a-d and separates eight stacked infix pairs. Final XML awaits the
@@ -50,15 +52,15 @@ PYTHON=python3 CodeAndDocs/generate_xml.sh /path/to/current/FormosanBank
 The build stages source extraction, shared cleaning, standardization and PHON,
 then installs successful output. It performs no QC or source refresh. Narrative
 deduplication is not a build step. Generation stops before changing XML until
-the five additional source profiles have reviewed conversion routes and the
+the four remaining historical profiles have reviewed conversion routes and the
 remaining standard-phonology differences have been resolved.
 
 The [provenance record](CodeAndDocs/provenance.json) describes the retained
 historical XML. It does not select or pin tools for a new build. The previous
 private phonology override and count-based QC acceptance wrapper are retired.
-The entry point passes the committed narrative profile and conversion under
-`CodeAndDocs/scripts/orthographies/` directly to the shared tools. It does not
-require those source-specific files to be installed in FormosanBank.
+The entry point passes the committed narrative and Saaroa comparison tables
+under `CodeAndDocs/scripts/orthographies/` directly to the shared tools, with
+separate language routing. These tables need no installation in FormosanBank.
 
 For source investigation without producing final derived tiers:
 
@@ -103,8 +105,10 @@ None supplied with this source.
   Clause brackets remain at S; the shared PHON step must handle them as
   analytical notation.
 - Introduction lexical material has six transcription groups, including Saaroa.
-  Five need reviewed routes; the narrative profile cannot be applied to them.
-  Two phonetic representations and two pronoun pairs remain open in the ledger.
+  Four historical groups need reviewed routes. The Saaroa comparison has a
+  source-backed `ɫ` -> `hl` conversion and the corrected Saaroa code `sxr`,
+  separate from the narrative profile.
+  Two phonetic representations remain open in the ledger.
   Supplemental records preserve printed readings; only three analyzed prose
   examples supply W/M tiers. They remain source-stage output pending the full build.
 - The earlier ten-page expert review and historical samples cover those records

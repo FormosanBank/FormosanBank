@@ -43,7 +43,7 @@ def load_records(path: Path, workspace: Path) -> list[dict]:
 
 
 def identity(record: dict) -> tuple[str, str, str]:
-    language = "Saaroa" if record["language"] == "xsr" else "Kanakanavu"
+    language = "Saaroa" if record["language"] == "sxr" else "Kanakanavu"
     text_id = "ILCAA_KANAKANAVU_TEXTS_INTRO_" + record["profile"].upper()
     file = f"{language}/ILCAA_KanakanavuTexts_intro_{record['profile']}.xml"
     return text_id, f"{text_id}_{record['id']}", file

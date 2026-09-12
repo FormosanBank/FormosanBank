@@ -49,6 +49,16 @@ entry point passes the committed narrative tables through those flags, without
 requiring copies in FormosanBank. It retains final XML pending the standard-tier
 decision and reviewed routes for the additional introduction profiles.
 
+The Saaroa comparison `iɫakia` has a separate, four-grapheme source profile.
+The cited [Saaroa Texts (2023)](https://doi.org/10.15026/125201), section 2,
+printed page 3 (PDF page 16), identifies its `ɫ` as a voiceless lateral fricative;
+the form itself appears on printed page 6. Preserve `ɫ` in original FORM and
+derive IPA `ɬ` and Ortho113 `hl`: `iɫakia` -> `ihlakia`, with `iɬakia` in
+both PHON tiers (POL-001/002/003). This profile covers only that comparison,
+not Saaroa generally. The build processes its language directory separately.
+The Tsuchida 1969/1976, Szakos 1999 and Basic Vocabulary 2007 groups still need
+their own routes; the narrative profile does not cover their sound descriptions.
+
 ## Representation and coverage review
 
 All 24 parenthetical source examples were checked against the PDF on 2026-09-12.
@@ -108,16 +118,27 @@ Table 2 supplies 16 distinct free-pronoun forms from 17 cells; repeated íikia
 and the prose reuse of kumakaɨn share reference records with both contexts
 retained (POL-022). Stress is preserved and row labels are not invented English
 translations. Bound pronouns, affix templates, phoneme inventories and Table 4
-remain context. The Saaroa comparison iɫakia has its own xsr file.
+remain context. The Saaroa comparison iɫakia has its own sxr file (languages.csv). The prior
+xsr tag identified Sherpa and caused shared phonology to skip it; correct the
+source language code while preserving its Saaroa path and IDs (POL-039).
+
+The pronoun distinction is resolved by Tsuchida's *Reconstruction of Proto-Tsouic
+Phonology*, 1975 Yale dissertation, section 2.1.2.2, printed pages 37–38
+(PDF pages 71–72): iimukásu and iimukámu are vocatives; the other independent
+pronouns occur in noun positions. Keep íikasu/iimukásu and íikamu/iimukámu as
+four separate S records, not spelling variants (POL-027/028). The inspected
+copy is the 1975 dissertation, not the 1976 published edition cited by the
+2026 book; its Figure 5 contains the same four forms. This resolves their
+classification without changing source spellings, IDs or translations.
 
 On physical page 24, mu-caanə/AV-go, um-avici/AV-bring and
 k<um>a-kili/RED<AV>-tie supply three W and seven M, including the k-a gap root
 and -um- infix. No free S translation is supplied or invented (POL-014/023/036).
-The remaining phonetic representations on pages 15–16 and the relationships
-of íikasu/iimukásu and íikamu/iimukámu on page 20 stay explicit decisions.
-Five non-narrative profiles require separate conversion review. The full build
-rejects unsupported profile routing before touching final XML. All 46 earlier
-source XML files, retained final XML and provenance remain unchanged.
+The two phonetic representations on pages 15–16 stay explicit decisions.
+Four historical profiles require separate conversion review. The full build
+rejects unsupported profile routing before touching final XML. Source changes
+affect four pronoun notes and the Saaroa language tag; forms, IDs, retained
+final XML and provenance remain unchanged.
 
 ## Review evidence
 

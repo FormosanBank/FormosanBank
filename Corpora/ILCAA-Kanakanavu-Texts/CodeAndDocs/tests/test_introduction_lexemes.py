@@ -51,8 +51,20 @@ def test_free_pronouns_preserve_stress_and_row_context():
 
 def test_saaroa_comparison_keeps_its_language():
     root, s = sentence("SaaroaComparison", "P020_SAAROA", "Saaroa")
-    assert root.get(intro.XML_LANG) == "xsr" and root.get("dialect") == "Saaroa"
+    assert root.get(intro.XML_LANG) == "sxr" and root.get("dialect") == "Saaroa"
     assert s.findtext("FORM") == "iɫakia"
+
+
+@pytest.mark.parametrize("key,ordinary,vocative", [
+    ("T2_03", "íikasu", "iimukásu"), ("T2_09", "íikamu", "iimukámu"),
+])
+def test_vocatives_remain_separate_from_ordinary_pronouns(key, ordinary, vocative):
+    for suffix, form in (("", ordinary), ("-opt", vocative)):
+        _, s = sentence("Tsuchida1976", key + suffix)
+        assert [(f.text, f.get("ver")) for f in s.findall("FORM")] == [(form, None)]
+        assert "Tsuchida (1975: 37)" in s.find("FORM").get("notes")
+        assert "vocative" in s.find("FORM").get("notes")
+        assert not s.findall("TRANSL")
 
 
 def test_title_and_footnote_supply_the_same_lexeme():
@@ -77,7 +89,8 @@ def test_templates_and_unresolved_phonetic_strings_are_not_sentences():
     assert len(records) == 100
     assert not any("STEM" in r["form"] or r["form"] in ("M-type", "kɔ:", "kɅɨnɨ") for r in records)
     data = json.loads((CODE / "introduction_lexemes.json").read_text())
-    assert len(data["pending"]) == 3 and len(data["profile_review_required"]) == 5
+    assert {r["kind"] for r in data["pending"]} == {"phonetic comparison", "phonemic/phonetic pair"}
+    assert set(data["profile_review_required"]) == {"Tsuchida1969", "Szakos1999", "BasicVocabulary2007", "Tsuchida1976"}
 
 
 def test_changed_source_page_requires_review(tmp_path):
