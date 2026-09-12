@@ -48,7 +48,7 @@ for tier in original standard; do
     run "duplicates-$tier" "$PY" "$FB/QC/validation/validate_duplicate_sentences.py" by_path \
         --path "$ROOT/XML" --tier "$tier" --output "$OUTPUT_DIR/duplicates-$tier.csv"
     run "extract-$tier" "$PY" "$FB/QC/orthography/orthography_extract.py" \
-        --corpora_path "$ROOT/XML" --corpus all --language All --kindOf "$tier" \
+        --corpora_path "$ROOT/XML" --corpus all --language Thao --kindOf "$tier" \
         --by_dialect true --output_dir "$OUTPUT_DIR/orthography-$tier"
     run "orthography-$tier" "$PY" "$FB/QC/validation/validate_orthography.py" \
         --o_info "$OUTPUT_DIR/orthography-$tier" --reference "$FB/QC/validation/reference"

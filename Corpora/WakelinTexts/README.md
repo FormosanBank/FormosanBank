@@ -15,15 +15,17 @@ This corpus is also subject to the central FormosanBank terms in [LICENSE.md](..
 
 Six Yami (`xml:lang="tao"`, `dialect="Yami"`) narrative texts, collected on Orchid Island between 1955 and 1957 and published in the 1958 SIL Work Papers article reproduced at [`CodeAndDocs/Original.pdf`](CodeAndDocs/Original.pdf). Each sentence carries an English free translation; the texts are fully segmented into words and morphemes, with English glosses on both tiers. There is no audio.
 
-> **Before you use this corpus: it has an `original` tier and nothing else.**
-> Every `<FORM>` in it is `kindOf="original"` — the text as the 1958 article
-> prints it. There is **no `standard` tier** and **no `PHON` (IPA) tier**,
-> at the sentence, word or morpheme level. That is deliberate: the article's
-> orthography has never been identified and we have no trustworthy way to
-> convert it (see [Orthography](#orthography) below). Tooling and analyses
-> that expect a standard tier will find none here; read the original tier
-> instead, and treat its spelling as the article's own, not as
-> FormosanBank's common orthography.
+> **This corpus now has a `standard` tier and a `PHON` tier, and both are new.**
+> Until September 2026 it published the `original` tier alone, because the 1958
+> article's writing system had never been identified. It has since been worked
+> out — see [Orthography](#orthography) — and the corpus now carries the
+> article's text, that text transliterated into Ortho113, and IPA for both.
+> Two things to know before relying on the derived tiers: the letter `ř` is a
+> phoneme we cannot resolve, so it is carried through unconverted and stars
+> in 56 `PHON` values (41 original, 15 standard); and Ortho113 does not write a word-final glottal
+> stop, so the `standard` tier drops a distinction the `original` tier keeps.
+> The `original` tier remains the authoritative record of what the article
+> prints.
 
 | File | Text in the article | Informant | Sentences | Words | Morphemes |
 |---|---|---|---|---|---|
@@ -40,7 +42,11 @@ Text F was given by Saman Sunagu, not by Saman Kalaku. It was published as `Suna
 
 ## Orthography
 
-**The orthography of these texts has not been identified, and no orthographic conversion is applied to them.** The article gives no statement of its writing system, and the transcription does not match any orthography currently profiled in [`Orthographies/`](../../Orthographies/): it uses `u` where modern Yami spelling uses `o`, `e` for a vowel the article describes only as fluctuating with `a`, and it has no `'`, `j`, or `z`.
+**The article states no writing system, but it has been worked out and is now profiled.** The transcription matched no existing profile: it uses `u` where modern Yami spelling uses `o`, `e` for a vowel the article describes only as fluctuating with `a`, and it has no `'`, `j`, or `z`. The reconstruction is recorded in **[`Orthographies/Wakelin/README.md`](../../Orthographies/Wakelin/README.md)**, with the phoneme table in `Orthographies/Wakelin/Yami.tsv` and the conversion to Ortho113 in `Orthographies/ConversionTables/Yami_Wakelin_113.tsv`.
+
+**Where those tables come from.** They were not inherited from anywhere — the 1958 article names no writing system, and no previous profile for it existed. They were derived in September 2026 from three kinds of evidence: the article's own key and its Errata Addenda; the internal distribution of the letters (`c` occurs only in `ch`; `o` occurs in four word types against 510 tokens of `u`); and **attestation testing against every other Yami corpus in FormosanBank** — 12,831 word types over 135,435 tokens from RauDong, ePark, ILRDF_Dicts and Presidential_Apologies — preferring candidate readings whose glosses agree on both sides. Each rule's evidence is set out individually in the orthography README, along with what the tables do *not* fix. An earlier note in this file that `Yami_Wakelin_113.tsv` "should not be taken seriously" referred to a **different, long-deleted** table of the same name, whose single rule deleted hyphens and mapped no letters; nothing of it survives here.
+
+In short: `u` is the phoneme Ortho113 writes `o` (worth 28 points of attestation on its own, and the article's own errata correct `o`→`u` twice); `ch` is the digraph for /ʨ/; `ǥ` is a barred g and equals modern `h` [ɰ]; `?` is a glottal stop; `r` is [ɻ] and covers both modern `r` and `z`; and a consonant followed by `w` or `y` corresponds to modern `Co`/`Ci`. Under those rules **78.7% of the corpus's morph tokens** reach a form attested in FormosanBank's other Yami data, against a 45.9% baseline. The one letter left unresolved is `ř` — see below.
 
 It does have three symbols worth knowing about before using the data:
 
@@ -58,18 +64,36 @@ It does have three symbols worth knowing about before using the data:
 
   That the errata delete the segment in some words and rewrite it `ng` in others, while leaving `vaǥay` and `laǥet` standing, is what one expects of a weak velar approximant the team was unsure how to treat. Modern orthography writes `h` throughout.
 
-### Why there is no standard tier and no IPA
+### `ř`, and what the derived tiers do not claim
 
-A `standard` FORM is a claim that a passage has been transliterated into FormosanBank's single common orthography, and a `PHON` is a claim about how it was pronounced. Making either claim requires knowing which letters the source is using and what they stand for. Here we do not, so the corpus makes neither claim: **the published XML carries only the `original` tier.**
+`ř` is a third liquid, distinct from `r` and `l`, and it is **not one modern
+phoneme**. Of the eleven words containing it, five reach an attested modern form
+and they do so three different ways — `ařwa` → `adoa` 'two' and `kařwan` →
+`kadoan` 'other' via `d`, `ařima` → `alima` 'five' via `l`, `vařit` → `vazit`
+and `sipřutan` → `sipzotan` via `z` — and the other six reach nothing. A
+letter-to-letter conversion row would assert a correspondence that does not
+exist, so there is none.
 
-The `ǥ` finding narrows the gap without closing it. Two of the transcription's puzzles now have good answers — `ǥ` is modern `h` [ɰ], and `?` is most plausibly a glottal stop — but the second is still unconfirmed, no conversion table exists, and nobody has checked the remaining letters against a profile. A partial mapping is not an orthography, so the tiers stay absent until someone does that work.
+Instead those five words are standardized **one word at a time**, by
+`CodeAndDocs/r_caron_words.tsv` and the pipeline step that applies it.
+Everywhere else `ř` is carried into the standard tier unchanged and maps to `*`
+in PHON. That is deliberate: `*` is `add_phonology`'s marker for a letter the
+profile cannot map, and it is the honest signal. **15 PHON values contain a
+`*`** for this reason, 6 of them in the standard tier.
 
-Concretely:
+Two further limits worth stating plainly:
 
-- **No orthographic conversion exists for this text.** The only table that ever purported to convert it, `Yami_Wakelin_113.tsv`, had a single rule — delete `-` — and mapped no letters at all; its source profile `Orthographies/Wakelin/Yami.tsv` was never written, so the table could not even be validated. It has been deleted from the repo. Earlier releases of this corpus did ship a standard tier produced by that table; it was the original text with its hyphens removed, and it asserted nothing. It is gone.
-- **No phonology can be generated.** This was tested, not assumed. Running `add_phonology` with `Ortho113` — the profile Yami is assigned in [`standards.csv`](../../standards.csv) — yields 4240 IPA values and **zero** `*` uncertainty markers, i.e. it fails silently rather than loudly. It deletes every one of the 47 `?` letters (`tau?` → `tau`), and it invents sound values the article never claimed: `su` → `ʂu` (retroflex), `s-ina-na` → `ɕinana` (alveolo-palatal), `-em` → `-əm` (schwa, for the very vowel the article calls unstable). That is a fabricated pronunciation, so no phonology step is run.
-
-If the orthography is later identified — starting with a confirmation of what `?` writes — a standard tier and a PHON tier can be generated by adding steps to the pipeline below. Until then their absence is the honest state of the data.
+- **The standard tier cannot represent the word-final glottal stop.** `?` is a
+  glottal stop (see below), but modern Yami writes `’` medially and initially
+  and essentially never word-finally — 8 occurrences in 135,435 tokens of the
+  bank's other Yami data, all apparent typos. The conversion therefore deletes
+  it, and a distinction the article records is lost in transliteration. This is
+  a property of the target orthography, not a judgement about the source.
+- **`e` is mapped to /ə/ following Ortho113, and that is the least settled
+  letter.** The article says /e/ and /a/ "fluctuate freely", `pengsu`
+  corresponds to modern `pongso`, and the `-em` suffix corresponds to modern
+  `am` — so some `e` is not a schwa. No conditioning rule tested better than
+  leaving it alone.
 
 ## Source notation preserved in the original tier
 
@@ -104,6 +128,9 @@ The article also notes that the 'narration' suffix `-em`/`-m` occurs throughout 
   - `generate_xml.py` — step 1, the corpus-local parser.
   - `alternative_decisions.json` — how each printed alternation is published.
   - `source_discrepancies.md` — snapshot-vs-article findings that are still open.
+  - `r_caron_words.tsv` — the `ř` words whose modern equivalent is known.
+  - `apply_r_caron_words.py` — pipeline step 5; applies that list to the standard tier.
+  - `resolve_parentheses.py` — pipeline step 3; resolves the article's `( )` notation in the standard tier.
   - `gloss_alignment_review.tsv` — the 52 words whose `M` tier was dropped, for review.
   - [`provenance.json`](CodeAndDocs/provenance.json) — the FormosanBank commit `XML/` was built against (POL-052).
 
@@ -125,7 +152,7 @@ The article prints 18 alternations with a slash, plus one with parentheses, — 
 
 Each alternation is therefore classified by hand in `CodeAndDocs/alternative_decisions.json`, which records the printed string, the decision and the reason for all 19 (POL-039 — the table is data, not code). Two rules:
 
-- **A clear spelling variant** — mostly overlapping letters, and the same gloss — is published as a `FORM[@kindOf="alternate"]` sibling **on the node that varies and on its word**, never on the sentence. A sentence-level alternate for a one-morpheme spelling difference is noise, and where one sentence carries two independent alternations (`Kalaku1/S17`) it is worse than noise: it can only show one of them, which reads as a claim that the other did not vary. The sentence FORM therefore carries the primary reading and the variation sits on the W and M that vary. 11 alternations: `nipi/niripi`, the `nem ~ namen` pronoun (six times), `mi-kalakala/mi-karakara`, the purely hyphenational `mikabak-abay-u/mikabakabayu`, and `pipangn-epen/pipangungn-epen/pipangengne-eben`, which is three-way.
+- **A clear spelling variant** — mostly overlapping letters, and the same gloss — is published as a `FORM` with `ver="alt"` sibling **on the node that varies and on its word**, never on the sentence. A sentence-level alternate for a one-morpheme spelling difference is noise, and where one sentence carries two independent alternations (`Kalaku1/S17`) it is worse than noise: it can only show one of them, which reads as a claim that the other did not vary. The sentence FORM therefore carries the primary reading and the variation sits on the W and M that vary. 11 alternations: `nipi/niripi`, the `nem ~ namen` pronoun (six times), `mi-kalakala/mi-karakara`, the purely hyphenational `mikabak-abay-u/mikabakabayu`, and `pipangn-epen/pipangungn-epen/pipangengne-eben`, which is three-way.
 - **Everything else** — different lexemes, different glosses, or a word against a phrase — becomes **separate sentences**. 8 alternations. A reading that replaces a whole word rather than one morpheme inside it inherits no morphemes: `Kalaku1/S6b`'s `namen-em` gets none, because the source's `ngaran` and `amn` are not in it. The first branch keeps the printed sentence number and the rest take `b`, `c`, …: `Kwaway/S48` and `Kwaway/S48b`. POL-037 forbids renumbering an already-published bare id, so there is no `S48a`.
 
 Every call in the table has been reviewed. The two that were once borderline are settled: `Kalaku1/S6` becomes two sentences, `ngaran-amn` and `namen-em`, both glossed `name-we`; and `Kwaway/S2`'s single-vowel `a`/`u` stays a spelling variant, because the alternation is one vowel and not one word.
@@ -219,34 +246,38 @@ The whole pipeline is one script (POL-047):
 ./CodeAndDocs/generate_xml.sh [FORMOSANBANK_ROOT]
 ```
 
-It rebuilds `XML/` from the snapshot using the QC scripts of the FormosanBank checkout the corpus lives in (pass a path, or set `FORMOSANBANK_ROOT`, to use another checkout; set `PYTHON` to override the interpreter, which defaults to that checkout's `.venv`). Nothing outside this checkout is required (POL-048). It is idempotent: a re-run over a clean checkout leaves `git status` empty.
+It rebuilds `XML/` from the snapshot using the QC scripts of the FormosanBank checkout the corpus lives in (pass a path, or set `FORMOSANBANK_ROOT`, to use another checkout; set `PYTHON` to override the interpreter). Nothing outside this checkout is required (POL-048). It is idempotent: a re-run over a clean checkout leaves `git status` empty.
 
-1. **Generate the original tier**
+**POL-047 deviation:** the build interleaves two corpus-local steps with the shared ones, and one of them sits where POL-047 does not contemplate. The numbering below is this script's own; POL-047's canonical sequence is 1 `generate_xml.py`, 2 `apply_manual_edits.py`, 3 `clean_xml.py`, 4 `standardize.py`, 5 `add_phonology.py`, so POL-047 step 3 is local step 2, POL-047 step 4 is local step 4 (coincidence), and POL-047 step 5 is local step 6.
 
-   ```bash
-   python Corpora/WakelinTexts/CodeAndDocs/generate_xml.py
-   ```
+- **Step 3, `resolve_parentheses.py`**, runs between clean and standardize so every derived tier is built from an original carrying no parenthesis (POL-028). Detail in step 3 below.
+- **Step 5, `apply_r_caron_words.py`**, runs *between* POL-047 steps 4 and 5 — before `add_phonology.py`, where POL-047 says a corpus-local corrections script "belongs after step 5". It must run before, because PHON is generated from the standard tier and has to reflect the corrected words. It also edits the standard tier outside `standardize.py`, which POL-002 otherwise reserves to that tool, on the maintainer ruling of 2026-09-07. Detail and accepted cost in step 5 below.
+- **POL-047 step 2, `apply_manual_edits.py`, is absent**: the corpus has no `manual_edits.xml`. Hand corrections belong in the snapshot, which is the source of record.
 
-   Reads the snapshot, applies `alternative_decisions.json` and the gloss rules above — narration suffix first, then the alignment checks — and writes `XML/` plus `CodeAndDocs/gloss_alignment_review.tsv`. This is the corpus-local parsing step POL-046 exempts from "shared tools first": turning *this* hand-typed source into the original tier is inherently source-specific. It fails loudly if the snapshot ever acquires a derived tier, and if any published FORM still contains a slash.
+*Superseded 2026-09-10 (POL-050).* `generate_xml.sh`'s header previously declared a different deviation — that POL-047 steps 4 and 5 (`standardize.py`, `add_phonology.py`) were absent because the 1958 orthography had never been identified, so the corpus published only the original tier. True until `282c49e31` (2026-09-08) profiled the orthography and added both tiers; the corpus now publishes 2189 standard FORMs and 4378 PHONs, and that deviation no longer exists.
 
-2. **Clean the XML**
+1. **Generate the original tier** — `CodeAndDocs/generate_xml.py`. Reads the snapshot, applies `alternative_decisions.json` and the gloss rules, writes `XML/`. This is the corpus-local parsing step POL-046 exempts from "shared tools first".
+2. **Clean** — `QC/cleaning/clean_xml.py`. Unicode NFC, entity decoding, typographic look-alikes. The hand-typed text is near-ASCII (only `ř` and `ǥ`), so this currently changes nothing; it is the guarantee that it stays that way.
+3. **Resolve the article's parentheses in the original tier** — `CodeAndDocs/resolve_parentheses.py`, run **before** `standardize.py` so every derived tier is built from an original that already carries none. The article's key gives `( )` two jobs and they need opposite treatment; POL-028 requires that neither survives into any published FORM.
 
-   ```bash
-   python QC/cleaning/clean_xml.py --corpora_path Corpora/WakelinTexts/XML
-   ```
+   **Optional material** (`puken-(en)`, `(u)m-lavi`, `ku(a)`) is a real alternation: the word reads with the bracketed letters or without. Choosing either silently asserts what the article declines to say, so **the word gets both**, through the POL-028 variant mechanism — the original tier's base FORM takes the fuller reading, closest to the printed letter sequence, and a `ver="alt"` FORM of the same tier takes the reading without. `standardize.py` then derives the matching pair in the standard tier. **7 words.** The variant sits on the word and only there: not on the morpheme, where a wholly-optional morpheme would have to alternate with nothing, and not on the sentence, for the same reason the slash alternates stop at the word. Morphemes simply lose the brackets and keep their letters (**6**).
 
-   Removes empty elements, normalizes Unicode to NFC, decodes HTML escapes, and canonicalizes typographic look-alikes (curly quotes, dashes, tildes) and null-morpheme glyphs. The hand-typed text is near-ASCII — the only non-ASCII letters are `ř` and `ǥ`, both NFC-stable and untouched by the look-alike table — so this step currently changes nothing; it is the guarantee that it stays that way.
+   **The uncertainty marker `(unctn)`** (also `(onctn)`, `(unan)`) is not text — it is the article's note that a reading is doubtful. Deleting it would lose a judgement the article deliberately recorded, so it moves to `@notes`: on the **word** it qualifies (**1**), and on each **TRANSL** that carries it (**101**). Where the same marker also appeared on the enclosing sentence FORM it is deleted there (**1**) — the annotation belongs to the word, and repeating it up the tree says nothing extra. One gloss whose entire text is the marker (`Kalaku1.xml S2`) is left alone and reported: emptying a TRANSL is invalid, and choosing a replacement gloss is a human's call.
 
-**Steps 4 and 5 of the POL-047 shape — `standardize.py` and `add_phonology.py` — are deliberately absent**, and this is the deviation POL-047 requires a corpus to state. See "Why there is no standard tier and no IPA" above. There is also no `apply_manual_edits.py` step: this corpus has no `manual_edits.xml`, because hand corrections belong in the snapshot, which is its source.
+   **POL-050 note.** Until 2026-09-09 this step ran *after* `standardize.py` and touched the standard tier only, on the ruling in commit `694bbc903`: *"the optional material is handled with the alternative FORM mechanism, in the standard tier only… The original tier keeps all of this notation untouched."* POL-028, ruled the next day, requires that no published FORM keeps a parenthesis, and the maintainer resolved the conflict on 2026-09-09 in POL-028's favour — the tiers are handled the same way. Moving the step also removed an inconsistency: the seven variants this script used to create were the only ones in the bank spelled in the *standard* orthography, because they were made after `standardize.py` had run.
 
-Validators do not run inside the build (POL-047, "build only"); run them from `QC/` separately.
+4. **Standardize** — `QC/utilities/standardize.py --tsv_path Orthographies/ConversionTables/Yami_Wakelin_113.tsv --segmented-without-m-tier`. Builds the `standard` tier. The `--segmented-without-m-tier` opt-in is needed because C012 uses the presence of an `M` tier as its proxy for "this sentence is segmented", and some sentences here print segmentation hyphens while publishing no morphemes — `Kangkang/S34` by ruling, and words whose gloss does not align. Without it those sentences keep a segmentation hyphen in the S-level standard FORM.
+5. **Apply the `ř` word list** — `CodeAndDocs/apply_r_caron_words.py`. Standardizes the five `ř` words whose modern equivalent is known, one word at a time.
 
-Any `cleaner_warnings.csv` file a run leaves behind is a per-run report: read it, then delete it. Never commit it. This corpus currently produces none.
+   ⚠️ **This step edits the `standard` tier outside `standardize.py`**, which POL-002 otherwise reserves to that tool. It does so on a maintainer ruling of 2026-09-07, taken with the cost understood, because `ř` is not a single correspondence and cannot be a conversion-table row. The cost is concrete and worth stating: **a standalone `standardize.py` run over this corpus silently reverts these five words**, since it regenerates the standard tier from the original. Anyone re-standardizing WakelinTexts must re-run this step — which is why it lives inside `generate_xml.sh` rather than being something a person is expected to remember. The step is strict: every row must match, and a row that matches nothing fails the build.
+6. **Add phonology** — `QC/utilities/add_phonology.py --orthography Wakelin`. Generates PHON for both tiers: the `Orthographies/Wakelin/Yami.tsv` profile supplies the **original** tier's IPA, and `Orthographies/Ortho113/Yami.tsv` — selected from `standards.csv`, which maps Yami to Ortho113 — supplies the **standard** tier's.
+
+Validators do not run inside the build (POL-047, "build only"); run them from `QC/` separately. Any `*_warnings.csv` a run leaves behind is a per-run report (POL-033): read it, then delete it. This corpus currently produces none.
 
 ## Known caveats
 
 - **Three source discrepancies are still open**, listed with evidence in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md). Each is an erratum applied to some tiers of a sentence but not others: `Kangkang/S39` reads `ana-na-m` where errata A39 prints `ama-na-m`; `Kalaku2/S8W1` still reads `ap-en-mu-rana` under a sentence that reads `aep-en-mu-rana`; `Kwaway/S4W2M2` still reads `agep` inside a word that reads `tunanal-aep-an`. The other findings from that audit have been ruled on and are fixed.
 - **`Kangkang/S34` publishes no word or morpheme glosses.** The article gives three gloss units for two printed words, so nothing can be aligned; only the sentence-level free translation is published.
-- **14 `V121` findings are HARD and are accepted, not defects.** They are parentheses inside word and morpheme FORMs, in eight words: `(n)aku-yakuyab-yab`, `puken-(en)`, `manuyung-(e)`, `(n)u-kipung`, `(u)m-lavi`, `chi-ka-(y)bubu`, `puken-ku(a)` and `sira(unctn)`. `V121` assumes a parenthesis marks **optional material**, which POL-026 would expand into two sentences. Here it does not: the article's own key defines `( )` as *"in data, probable discrepancy"* — an **uncertainty marker on the transcription**, not an optional word. Expanding it would manufacture readings the transcriber never proposed, so the notation stands and the findings are left standing with it. (`V121` was 28 before this rebuild. `Kangkang/S18`'s `kan(u)` is the one parenthesis in the corpus that really is an alternation, and it has been resolved as one.)
+- **14 `V121` findings are HARD and are accepted, not defects.** They are all on the **original** tier, where the article's `( )` notation is preserved deliberately. The standard tier carries none: step 5 of the pipeline resolves them. They are parentheses inside word and morpheme FORMs, in eight words: `(n)aku-yakuyab-yab`, `puken-(en)`, `manuyung-(e)`, `(n)u-kipung`, `(u)m-lavi`, `chi-ka-(y)bubu`, `puken-ku(a)` and `sira(unctn)`. `V121` assumes a parenthesis marks **optional material**, which POL-026 would expand into two sentences. Here it does not: the article's own key defines `( )` as *"in data, probable discrepancy"* — an **uncertainty marker on the transcription**, not an optional word. Expanding it would manufacture readings the transcriber never proposed, so the notation stands and the findings are left standing with it. (`V121` was 28 on the original tier before the 2026-09 rebuild halved it. `Kangkang/S18`'s `kan(u)` is the one parenthesis in the corpus that really is an alternation, and it has been resolved as one.)
 - Many words carry no morpheme tier. That is the article's own selective analysis plus the two gloss rules above, not a conversion loss: 52 words had a mis-aligned `M` tier removed (listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv)), and every gloss reading only `unan` was dropped because the article uses it to mean "unanalyzed".
 - `Kwaway.xml` S36 and S40 are the same sentence. This is a narrative, and the repetition is in the article; both are retained under POL-022.

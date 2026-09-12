@@ -2,7 +2,7 @@
 
 Paul Jen-Kuei Li's article in *Papers from 12-ICAL, Volume 2*, pp. 401–409, supplies this Thao (`ssf`, dialect `Thao`) corpus. The [official ANU volume](https://openresearch-repository.anu.edu.au/items/8bfb8bf0-2f58-4eae-947c-bf9af50faf9f) uses Li's scholarly transcription and aligned English glosses.
 
-`XML/Thao/li_2014_conjunction_in_thao.xml` contains 28 sentences: examples 1–24, the inline example in footnote 5, and the three examples in footnote 7. There are 211 W and 169 M elements, with 408 original and 408 standard FORMs and the same numbers of original and standard PHONs. The four unglossed footnote examples remain sentence-only. There is no audio.
+`XML/Thao/li_2014_conjunction_in_thao.xml` contains 28 sentences: examples 1–24, the inline example in footnote 5, and the three examples in footnote 7. There are 211 W and 169 M elements, with 408 original and 408 standard FORMs and the same numbers of original and standard PHONs. The four unglossed footnote examples remain sentence-only.
 
 ## Source and corrections
 
@@ -10,7 +10,15 @@ Paul Jen-Kuei Li's article in *Papers from 12-ICAL, Volume 2*, pp. 401–409, su
 
 [The coverage ledger](CodeAndDocs/source_ledger.csv) accounts for 28 included units and four pages without utterances across all nine article pages (PDF 394–402). The footnote-5 addition was recovered by `CodeAndDocs/scripts/recover_footnote5.py` from the volume identified in [source_manifest.json](CodeAndDocs/source_manifest.json). Its existing source text and translation are retained without new glosses or segmentation. Existing TEXT/S/W/M IDs and source associations remain unchanged; the addition uses `li2014_thao_fn5_1`.
 
-**M coverage remains partial:** 140 of 211 W elements have no M child. The [merged corpus decision](https://github.com/FormosanBank/FormosanBank/commit/64654b68a) requires a linguistic ruling before adding those analyses. This rebuild preserves the published partial structure and does not resolve [issue #102](https://github.com/FormosanBank/FormosanBank/issues/102). Its V144 findings remain visible. Source W/M glosses remain lone, untiered TRANSL elements under POL-036.
+Source W/M glosses remain lone, untiered TRANSL elements under POL-036.
+
+## Audio
+
+None supplied by the source.
+
+## Notes and Issues
+
+Morphology remains partial: 140 of 211 W elements have no M child, and the four unglossed footnote examples have no W tier. These produce SOFT V144 and V148 findings. The [merged corpus decision](https://github.com/FormosanBank/FormosanBank/commit/64654b68a) requires a linguistic ruling before adding the missing M analyses. [Issue #102](https://github.com/FormosanBank/FormosanBank/issues/102) was closed as not planned on September 9, 2026, without a replacement ruling. The published partial analysis is preserved.
 
 ## Rights
 
@@ -32,7 +40,7 @@ The entry point builds fresh original tiers from the reviewed records and exact 
 
 **POL-047 deviation:** No `apply_manual_edits.py` step is needed: the documented corrections are applied to fresh source records in the builder. The merged Li-specific S-standard bracket finalizer remains between standardization and phonology; shared `--hard-remove-segmentation` now owns hyphens and clitics. Original and W/M analysis notation stays intact. This preserves the scope of the existing corpus ruling while shared standardization lacks the S-infix option.
 
-[provenance.json](CodeAndDocs/provenance.json) records the tools used for the committed build. Update it to the actual FormosanBank commit after a rebuild with newer tools; it never selects or requires an older checkout. Source recovery is separate: `python3 CodeAndDocs/scripts/recover_footnote5.py /path/to/official-volume.pdf` verifies the manifest before reproducing the one-time footnote recovery.
+[provenance.json](CodeAndDocs/provenance.json) records the tools used for the committed build. The entry point updates it from the supplied FormosanBank Git checkout; a Git-free export retains that record. It never selects or requires an older checkout. Source recovery is separate: `python3 CodeAndDocs/scripts/recover_footnote5.py /path/to/official-volume.pdf` verifies the manifest before reproducing the one-time footnote recovery.
 
 ## Review and validation
 
@@ -44,4 +52,4 @@ SOURCE_PDF=/path/to/official-volume.pdf ./CodeAndDocs/validate.sh
 
 `SOURCE_PDF` is optional for validation. Without it, the script explicitly skips PDF verification and Group C source alignment; it still checks the committed records and output. With it, Poppler verifies the PDF and extracts only the article pages. Validation is separate from generation and reports remain outside the corpus. Review every CSV and warning; a successful command is not a source-fidelity verdict.
 
-Focused tests protect the reviewed corrections, infix shape, footnote coverage, stable IDs, partial M decision, and derived-tier boundaries. The source audit checks all output anchors against the records and corrections. It supplements direct page review, not independent evidence for linguistic analysis. No morphology-completion or issue-closure claim is made while the ruling remains outstanding.
+Focused tests protect the reviewed corrections, infix shape, footnote coverage, stable IDs, partial M decision, and derived-tier boundaries. The source audit checks all output anchors against the records and corrections. It supplements direct page review and does not establish new linguistic analysis.

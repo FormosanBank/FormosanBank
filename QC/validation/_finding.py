@@ -16,6 +16,11 @@ class Severity(Enum):
     HARD = "HARD"
     SOFT = "SOFT"
     WARN = "WARN"
+    #: A HARD finding a human dispositioned in the corpus's
+    #: CodeAndDocs/qc_waivers.tsv (QC.validation._waivers). Still reported and
+    #: still written to the CSV -- it just no longer fails the build. No rule
+    #: emits WAIVED directly; _report.py rewrites HARD findings into it.
+    WAIVED = "WAIVED"
 
 
 @dataclass(frozen=True)
@@ -55,7 +60,7 @@ def summarize(findings: Iterable[Finding]) -> dict[Severity, dict[str, int]]:
     the terminal summary.
     """
     out: dict[Severity, dict[str, int]] = {
-        Severity.HARD: {}, Severity.SOFT: {}, Severity.WARN: {},
+        severity: {} for severity in Severity
     }
     for f in findings:
         bucket = out[f.severity]

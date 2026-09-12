@@ -29,6 +29,11 @@ from pathlib import Path
 
 from lxml import etree
 
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.xml_forms import iter_base_forms  # noqa: E402
+
 
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
@@ -41,7 +46,10 @@ FORM_KINDS = ("original", "standard", "alternate")
 def _collect_forms(elem) -> dict[str, str]:
     """Return {kindOf: text} for FORM children of `elem`. Unknown kinds dropped."""
     out: dict[str, str] = {}
-    for form in elem.findall("FORM"):
+    # Bases only. This dict is keyed by kindOf, so including a ver="alt"
+    # variant would overwrite its own base and show the reviewer the
+    # secondary reading as though it were the form.
+    for form in iter_base_forms(elem):
         kind = form.get("kindOf") or ""
         if kind not in FORM_KINDS:
             continue
