@@ -45,8 +45,9 @@ flags, current tools produce source PHON `ʂiʂiʔinamaku` and `taʔitʂikikani`
 but standard PHON `sisiʔinamaku` and `taʔiʦikikani` for the reviewer's examples.
 The source rules work; the unresolved choice concerns canonical standard PHON.
 Changing the table paths alone therefore does not make the build ready. The
-entry point retains final XML pending that decision and reviewed routes for the
-additional introduction profiles. The mapping files remain review evidence.
+entry point passes the committed narrative tables through those flags, without
+requiring copies in FormosanBank. It retains final XML pending the standard-tier
+decision and reviewed routes for the additional introduction profiles.
 
 ## Representation and coverage review
 

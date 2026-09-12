@@ -20,10 +20,11 @@ if unsupported:
     print("Final generation needs reviewed per-source routes for: " + ", ".join(unsupported), file=sys.stderr)
     sys.exit(2)
 PY
-CONVERSION="$BANK/Orthographies/ConversionTables/Kanakanavu_Asai2026_113.tsv"
-for required in "$BANK/Orthographies/Asai2026/Kanakanavu.tsv" "$CONVERSION"; do
+SOURCE_ORTHOGRAPHY="$CODEDOCS/scripts/orthographies/Asai2026"
+CONVERSION="$CODEDOCS/scripts/orthographies/ConversionTables/Kanakanavu_Asai2026_113.tsv"
+for required in "$SOURCE_ORTHOGRAPHY/Kanakanavu.tsv" "$SOURCE_ORTHOGRAPHY/Kanakanavu.rules.tsv" "$CONVERSION"; do
     if [[ ! -f "$required" ]]; then
-        echo "Missing shared Kanakanavu orthography input: $required; see README Notes and Issues." >&2
+        echo "Missing committed Kanakanavu orthography input: $required" >&2
         exit 2
     fi
 done
@@ -35,7 +36,7 @@ XML_STAGE="$STAGE/build/xml_drafts"
 "$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$XML_STAGE"
 "$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CONVERSION" \
     --target_column standard --corpora_path "$XML_STAGE"
-"$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Asai2026 --corpora_path "$XML_STAGE"
+"$PY" "$BANK/QC/utilities/add_phonology.py" --orthography "$SOURCE_ORTHOGRAPHY" --corpora_path "$XML_STAGE"
 
 "$PY" - "$BANK" "$STAGE/provenance.json" "$CODEDOCS/provenance.json" <<'PY'
 import json

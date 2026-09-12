@@ -56,8 +56,9 @@ remaining standard-phonology differences have been resolved.
 The [provenance record](CodeAndDocs/provenance.json) describes the retained
 historical XML. It does not select or pin tools for a new build. The previous
 private phonology override and count-based QC acceptance wrapper are retired.
-The tables under `CodeAndDocs/scripts/orthographies/` retain the earlier
-reviewed mapping as evidence; generation does not load them.
+The entry point passes the committed narrative profile and conversion under
+`CodeAndDocs/scripts/orthographies/` directly to the shared tools. It does not
+require those source-specific files to be installed in FormosanBank.
 
 For source investigation without producing final derived tiers:
 
