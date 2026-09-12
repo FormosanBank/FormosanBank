@@ -37,3 +37,23 @@
 ### HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011L — changed
 - before: Patas gaga o n-tama. / [zho] 那本書是爸爸的。
 - after:  Patas gaga o ntama. / [zho] 那本書是爸爸的。
+
+### HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026B_0080_01 — changed
+- before: Emp-tgsa laqi ka Lowking. / [zho] Lowking 將要教小孩。
+- after:  Emp-tgsa laqi ka Lowking. / [zho] Lowking 將要教小孩。 / [zho] Lowking 將要教小孩
+
+### HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E039C — changed
+- before: Ini =ku patas niya na! / [zho] 我還沒有讀書！
+- after:  Ini =ku patas niya na! / [zho] 我還沒有讀書！
+
+### HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E037A_0206_01 — changed
+- before: Ini =ku patas niya na. / [zho] 我還沒有寫。
+- after:  Ini =ku patas niya na. / [zho] 我還沒有寫。
+
+### HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E007B — changed
+- before: Ini s-huda ka sayang. / [zho] 現在沒有下雪。
+- after:  Ini s-huda ka sayang. / [zho] 現在沒有下雪。
+
+### HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E030B — changed
+- before: S-bgihur da. / [zho] 起風了。
+- after:  S-bgihur da. / [zho] 起風了。

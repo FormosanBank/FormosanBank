@@ -2058,9 +2058,9 @@
         <PHON kindOf="standard">ɣməaɮu baɮaj ɮqean nija ka ɮokiŋ nii</PHON>
         <TRANSL xml:lang="zho">Lowking 非常愛他的小孩。</TRANSL>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011GW1">
-            <FORM kindOf="original">G-m-ealu</FORM>
+            <FORM kindOf="original">G&lt;m&gt;ealu</FORM>
             <PHON kindOf="original">gməalu</PHON>
-            <FORM kindOf="standard">G-m-ealu</FORM>
+            <FORM kindOf="standard">G&lt;m&gt;ealu</FORM>
             <PHON kindOf="standard">ɣməaɮu</PHON>
             <TRANSL xml:lang="zho">愛&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011GW1M1">
@@ -2709,9 +2709,9 @@
         <PHON kindOf="standard">smaɮu ɮukus ka kujoħ mu</PHON>
         <TRANSL xml:lang="zho">我的太太要做衣服。</TRANSL>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E014AW1">
-            <FORM kindOf="original">S-m-alu</FORM>
+            <FORM kindOf="original">S&lt;m&gt;alu</FORM>
             <PHON kindOf="original">smalu</PHON>
-            <FORM kindOf="standard">S-m-alu</FORM>
+            <FORM kindOf="standard">S&lt;m&gt;alu</FORM>
             <PHON kindOf="standard">smaɮu</PHON>
             <TRANSL xml:lang="zho">製作&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E014AW1M1">
@@ -2797,7 +2797,7 @@
             <PHON kindOf="original">smħuda</PHON>
             <FORM kindOf="standard">S-m-huda</FORM>
             <PHON kindOf="standard">smħoda</PHON>
-            <TRANSL xml:lang="zho">s-AF-雪</TRANSL>
+            <TRANSL xml:lang="zho">s-&lt;AF&gt;-雪</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E014BW1M1">
                 <FORM kindOf="original">S</FORM>
                 <PHON kindOf="original">s</PHON>
@@ -3124,9 +3124,9 @@
         <TRANSL xml:lang="zho">爸爸叫我起床。</TRANSL>
         <TRANSL xml:lang="zho" ver="alt">爸爸叫醒我</TRANSL>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E016BW1">
-            <FORM kindOf="original">T-m-utuy</FORM>
+            <FORM kindOf="original">T&lt;m&gt;utuy</FORM>
             <PHON kindOf="original">tmutuj</PHON>
-            <FORM kindOf="standard">T-m-utuy</FORM>
+            <FORM kindOf="standard">T&lt;m&gt;utuy</FORM>
             <PHON kindOf="standard">tmutuj</PHON>
             <TRANSL xml:lang="zho">起來&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E016BW1M1">
@@ -3264,9 +3264,9 @@
         <PHON kindOf="standard">ħmidaw ku ɮukus ŋaŋut</PHON>
         <TRANSL xml:lang="zho">我正在外面曬衣服。</TRANSL>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E017BW1">
-            <FORM kindOf="original">H-m-idaw</FORM>
+            <FORM kindOf="original">H&lt;m&gt;idaw</FORM>
             <PHON kindOf="original">ħmidaw</PHON>
-            <FORM kindOf="standard">H-m-idaw</FORM>
+            <FORM kindOf="standard">H&lt;m&gt;idaw</FORM>
             <PHON kindOf="standard">ħmidaw</PHON>
             <TRANSL xml:lang="zho">曬&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E017BW1M1">
@@ -3810,6 +3810,7 @@
             <PHON kindOf="original">snluan</PHON>
             <FORM kindOf="standard">S-n-lu-an</FORM>
             <PHON kindOf="standard">snɮuan</PHON>
+            <TRANSL xml:lang="zho">製作-n-LF</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E021DW1M1">
                 <FORM kindOf="original">S</FORM>
                 <PHON kindOf="original">s</PHON>
@@ -3840,11 +3841,13 @@
             <PHON kindOf="original">kujuħ</PHON>
             <FORM kindOf="standard">kuyuh</FORM>
             <PHON kindOf="standard">kujoħ</PHON>
+            <TRANSL xml:lang="zho">太太</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E021DW2M1">
                 <FORM kindOf="original">kuyuh</FORM>
                 <PHON kindOf="original">kujuħ</PHON>
                 <FORM kindOf="standard">kuyuh</FORM>
                 <PHON kindOf="standard">kujoħ</PHON>
+                <TRANSL xml:lang="zho">太太</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E021DW3">
@@ -3852,11 +3855,13 @@
             <PHON kindOf="original">mu</PHON>
             <FORM kindOf="standard">=mu</FORM>
             <PHON kindOf="standard">mu</PHON>
+            <TRANSL xml:lang="zho">我</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E021DW3M1">
                 <FORM kindOf="original">=mu</FORM>
                 <PHON kindOf="original">mu</PHON>
                 <FORM kindOf="standard">=mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
+                <TRANSL xml:lang="zho">我</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E021DW4">
@@ -3864,11 +3869,13 @@
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E021DW4M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E021DW5">
@@ -3876,11 +3883,13 @@
             <PHON kindOf="original">lukus</PHON>
             <FORM kindOf="standard">lukus</FORM>
             <PHON kindOf="standard">ɮukus</PHON>
+            <TRANSL xml:lang="zho">衣服</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E021DW5M1">
                 <FORM kindOf="original">lukus</FORM>
                 <PHON kindOf="original">lukus</PHON>
                 <FORM kindOf="standard">lukus</FORM>
                 <PHON kindOf="standard">ɮukus</PHON>
+                <TRANSL xml:lang="zho">衣服</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E021DW6">
@@ -3888,11 +3897,13 @@
             <PHON kindOf="original">nii</PHON>
             <FORM kindOf="standard">nii</FORM>
             <PHON kindOf="standard">nii</PHON>
+            <TRANSL xml:lang="zho">這</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E021DW6M1">
                 <FORM kindOf="original">nii</FORM>
                 <PHON kindOf="original">nii</PHON>
                 <FORM kindOf="standard">nii</FORM>
                 <PHON kindOf="standard">nii</PHON>
+                <TRANSL xml:lang="zho">這</TRANSL>
             </M>
         </W>
     </S>
@@ -4670,6 +4681,7 @@
             <PHON kindOf="original">tntakan</PHON>
             <FORM kindOf="standard">T-n-tak-an</FORM>
             <PHON kindOf="standard">tntakan</PHON>
+            <TRANSL xml:lang="zho">砍-LF</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023EW1M1">
                 <FORM kindOf="original">T</FORM>
                 <PHON kindOf="original">t</PHON>
@@ -4700,11 +4712,13 @@
             <PHON kindOf="original">mu</PHON>
             <FORM kindOf="standard">=mu</FORM>
             <PHON kindOf="standard">mu</PHON>
+            <TRANSL xml:lang="zho">我</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023EW2M1">
                 <FORM kindOf="original">=mu</FORM>
                 <PHON kindOf="original">mu</PHON>
                 <FORM kindOf="standard">=mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
+                <TRANSL xml:lang="zho">我</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023EW3">
@@ -4712,11 +4726,13 @@
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023EW3M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023EW4">
@@ -4724,11 +4740,13 @@
             <PHON kindOf="original">spɾiq</PHON>
             <FORM kindOf="standard">spriq</FORM>
             <PHON kindOf="standard">spɾeq</PHON>
+            <TRANSL xml:lang="zho">草</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023EW4M1">
                 <FORM kindOf="original">spriq</FORM>
                 <PHON kindOf="original">spɾiq</PHON>
                 <FORM kindOf="standard">spriq</FORM>
                 <PHON kindOf="standard">spɾeq</PHON>
+                <TRANSL xml:lang="zho">草</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023EW5">
@@ -4736,11 +4754,13 @@
             <PHON kindOf="original">nii</PHON>
             <FORM kindOf="standard">nii</FORM>
             <PHON kindOf="standard">nii</PHON>
+            <TRANSL xml:lang="zho">這</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023EW5M1">
                 <FORM kindOf="original">nii</FORM>
                 <PHON kindOf="original">nii</PHON>
                 <FORM kindOf="standard">nii</FORM>
                 <PHON kindOf="standard">nii</PHON>
+                <TRANSL xml:lang="zho">這</TRANSL>
             </M>
         </W>
     </S>
@@ -4826,6 +4846,7 @@
             <PHON kindOf="original">ħnpujan</PHON>
             <FORM kindOf="standard">H-n-puy-an</FORM>
             <PHON kindOf="standard">ħnpujan</PHON>
+            <TRANSL xml:lang="zho">煮-LF</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E024BW1M1">
                 <FORM kindOf="original">H</FORM>
                 <PHON kindOf="original">ħ</PHON>
@@ -4856,11 +4877,13 @@
             <PHON kindOf="original">idaw</PHON>
             <FORM kindOf="standard">idaw</FORM>
             <PHON kindOf="standard">idaw</PHON>
+            <TRANSL xml:lang="zho">飯</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E024BW2M1">
                 <FORM kindOf="original">idaw</FORM>
                 <PHON kindOf="original">idaw</PHON>
                 <FORM kindOf="standard">idaw</FORM>
                 <PHON kindOf="standard">idaw</PHON>
+                <TRANSL xml:lang="zho">飯</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E024BW3">
@@ -4868,11 +4891,13 @@
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E024BW3M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E024BW4">
@@ -4880,11 +4905,13 @@
             <PHON kindOf="original">bubu</PHON>
             <FORM kindOf="standard">bubu</FORM>
             <PHON kindOf="standard">bubu</PHON>
+            <TRANSL xml:lang="zho">媽媽</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E024BW4M1">
                 <FORM kindOf="original">bubu</FORM>
                 <PHON kindOf="original">bubu</PHON>
                 <FORM kindOf="standard">bubu</FORM>
                 <PHON kindOf="standard">bubu</PHON>
+                <TRANSL xml:lang="zho">媽媽</TRANSL>
             </M>
         </W>
     </S>
@@ -5247,9 +5274,9 @@
         <PHON kindOf="standard">mnkan ku idaw</PHON>
         <TRANSL xml:lang="zho">我吃過飯。</TRANSL>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026AW1">
-            <FORM kindOf="original">M-n-kan</FORM>
+            <FORM kindOf="original">M&lt;n&gt;kan</FORM>
             <PHON kindOf="original">mnkan</PHON>
-            <FORM kindOf="standard">M-n-kan</FORM>
+            <FORM kindOf="standard">M&lt;n&gt;kan</FORM>
             <PHON kindOf="standard">mnkan</PHON>
             <TRANSL xml:lang="zho">吃&lt;n&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026AW1M1">
@@ -5303,9 +5330,9 @@
         <PHON kindOf="standard">mnkan ku idaw da</PHON>
         <TRANSL xml:lang="zho">我吃過飯了。</TRANSL>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026AbW1">
-            <FORM kindOf="original">M-n-kan</FORM>
+            <FORM kindOf="original">M&lt;n&gt;kan</FORM>
             <PHON kindOf="original">mnkan</PHON>
-            <FORM kindOf="standard">M-n-kan</FORM>
+            <FORM kindOf="standard">M&lt;n&gt;kan</FORM>
             <PHON kindOf="standard">mnkan</PHON>
             <TRANSL xml:lang="zho">吃&lt;n&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026AbW1M1">
@@ -6285,6 +6312,7 @@
                 <FORM kindOf="standard">S</FORM>
                 <PHON kindOf="standard">s</PHON>
                 <TRANSL xml:lang="zho">IF</TRANSL>
+                <TRANSL xml:lang="zho" ver="alt" notes="Source reading in PDF page 83, example (18b).">s</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E030BW1M2">
                 <FORM kindOf="original">bgihur</FORM>
@@ -6293,6 +6321,7 @@
                 <PHON kindOf="standard">bɣeħoɾ</PHON>
                 <TRANSL xml:lang="zho">風</TRANSL>
             </M>
+            <TRANSL xml:lang="zho" ver="alt" notes="Source reading in PDF page 83, example (18b).">s-風</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E030BW2">
             <FORM kindOf="original">da</FORM>
@@ -6642,11 +6671,13 @@
             <PHON kindOf="original">asu</PHON>
             <FORM kindOf="standard">asu</FORM>
             <PHON kindOf="standard">asu</PHON>
+            <TRANSL xml:lang="zho">船</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E001DW1M1">
                 <FORM kindOf="original">asu</FORM>
                 <PHON kindOf="original">asu</PHON>
                 <FORM kindOf="standard">asu</FORM>
                 <PHON kindOf="standard">asu</PHON>
+                <TRANSL xml:lang="zho">船</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E001DW2">
@@ -6654,6 +6685,7 @@
             <PHON kindOf="original">skija</PHON>
             <FORM kindOf="standard">skiya</FORM>
             <PHON kindOf="standard">skija</PHON>
+            <TRANSL xml:lang="zho">∅-飛</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E001DW2M1">
                 <FORM kindOf="original">skiya</FORM>
                 <PHON kindOf="original">skija</PHON>
@@ -7303,11 +7335,13 @@
             <PHON kindOf="original">ɟijax</PHON>
             <FORM kindOf="standard">jiyax</FORM>
             <PHON kindOf="standard">ɟijax</PHON>
+            <TRANSL xml:lang="zho">日子</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004AW1M1">
                 <FORM kindOf="original">jiyax</FORM>
                 <PHON kindOf="original">ɟijax</PHON>
                 <FORM kindOf="standard">jiyax</FORM>
                 <PHON kindOf="standard">ɟijax</PHON>
+                <TRANSL xml:lang="zho">日子</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004AW2">
@@ -7315,17 +7349,20 @@
             <PHON kindOf="original">məudus</PHON>
             <FORM kindOf="standard">m-eudus</FORM>
             <PHON kindOf="standard">məudus</PHON>
+            <TRANSL xml:lang="zho">AF-活</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004AW2M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho">AF</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004AW2M2">
                 <FORM kindOf="original">eudus</FORM>
                 <PHON kindOf="original">əudus</PHON>
                 <FORM kindOf="standard">eudus</FORM>
                 <PHON kindOf="standard">əudus</PHON>
+                <TRANSL xml:lang="zho">活</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004AW3">
@@ -7333,11 +7370,13 @@
             <PHON kindOf="original">paaħ</PHON>
             <FORM kindOf="standard">paah</FORM>
             <PHON kindOf="standard">paaħ</PHON>
+            <TRANSL xml:lang="zho">從</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004AW3M1">
                 <FORM kindOf="original">paah</FORM>
                 <PHON kindOf="original">paaħ</PHON>
                 <FORM kindOf="standard">paah</FORM>
                 <PHON kindOf="standard">paaħ</PHON>
+                <TRANSL xml:lang="zho">從</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004AW4">
@@ -7345,6 +7384,7 @@
             <PHON kindOf="original">ħnqilan</PHON>
             <FORM kindOf="standard">h-n-qil-an</FORM>
             <PHON kindOf="standard">ħnqeɮan</PHON>
+            <TRANSL xml:lang="zho">死-n-LF</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004AW4M1">
                 <FORM kindOf="original">h</FORM>
                 <PHON kindOf="original">ħ</PHON>
@@ -7382,11 +7422,13 @@
             <PHON kindOf="original">patas</PHON>
             <FORM kindOf="standard">patas</FORM>
             <PHON kindOf="standard">patas</PHON>
+            <TRANSL xml:lang="zho">書</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004BW1M1">
                 <FORM kindOf="original">patas</FORM>
                 <PHON kindOf="original">patas</PHON>
                 <FORM kindOf="standard">patas</FORM>
                 <PHON kindOf="standard">patas</PHON>
+                <TRANSL xml:lang="zho">書</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004BW2">
@@ -7394,17 +7436,20 @@
             <PHON kindOf="original">pgkla</PHON>
             <FORM kindOf="standard">pg-kla</FORM>
             <PHON kindOf="standard">pɣkɮa</PHON>
+            <TRANSL xml:lang="zho">pg-知道</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004BW2M1">
                 <FORM kindOf="original">pg</FORM>
                 <PHON kindOf="original">pg</PHON>
                 <FORM kindOf="standard">pg</FORM>
                 <PHON kindOf="standard">pɣ</PHON>
+                <TRANSL xml:lang="zho">pg</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004BW2M2">
                 <FORM kindOf="original">kla</FORM>
                 <PHON kindOf="original">kla</PHON>
                 <FORM kindOf="standard">kla</FORM>
                 <PHON kindOf="standard">kɮa</PHON>
+                <TRANSL xml:lang="zho">知道</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004BW3">
@@ -7412,6 +7457,7 @@
             <PHON kindOf="original">nħdaan</PHON>
             <FORM kindOf="standard">n-hda-an</FORM>
             <PHON kindOf="standard">nħdaan</PHON>
+            <TRANSL xml:lang="zho">完成</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004BW3M1">
                 <FORM kindOf="original">n</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -7436,17 +7482,20 @@
             <PHON kindOf="original">matas</PHON>
             <FORM kindOf="standard">m-atas</FORM>
             <PHON kindOf="standard">matas</PHON>
+            <TRANSL xml:lang="zho">AF-書寫</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004BW4M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho">AF</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E004BW4M2">
                 <FORM kindOf="original">atas</FORM>
                 <PHON kindOf="original">atas</PHON>
                 <FORM kindOf="standard">atas</FORM>
                 <PHON kindOf="standard">atas</PHON>
+                <TRANSL xml:lang="zho">書寫</TRANSL>
             </M>
         </W>
     </S>
@@ -7534,9 +7583,9 @@
         <PHON kindOf="standard">ɣmaɾaŋ kaɾi</PHON>
         <TRANSL xml:lang="zho">傳教、傳話</TRANSL>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E005CW1">
-            <FORM kindOf="original">g-m-arang</FORM>
+            <FORM kindOf="original">g&lt;m&gt;arang</FORM>
             <PHON kindOf="original">gmaɾaŋ</PHON>
-            <FORM kindOf="standard">g-m-arang</FORM>
+            <FORM kindOf="standard">g&lt;m&gt;arang</FORM>
             <PHON kindOf="standard">ɣmaɾaŋ</PHON>
             <TRANSL xml:lang="zho">散播&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C02_E005CW1M1">
@@ -7762,6 +7811,7 @@
             <PHON kindOf="original">nnita</PHON>
             <FORM kindOf="standard">Nnita</FORM>
             <PHON kindOf="standard">nnita</PHON>
+            <TRANSL xml:lang="zho">屬-我們</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003AW1M1">
                 <FORM kindOf="original">Nnita</FORM>
                 <PHON kindOf="original">nnita</PHON>
@@ -7774,11 +7824,13 @@
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003AW2M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003AW3">
@@ -7786,11 +7838,13 @@
             <PHON kindOf="original">ajus</PHON>
             <FORM kindOf="standard">ayus</FORM>
             <PHON kindOf="standard">ajus</PHON>
+            <TRANSL xml:lang="zho">界線</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003AW3M1">
                 <FORM kindOf="original">ayus</FORM>
                 <PHON kindOf="original">ajus</PHON>
                 <FORM kindOf="standard">ayus</FORM>
                 <PHON kindOf="standard">ajus</PHON>
+                <TRANSL xml:lang="zho">界線</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003AW4">
@@ -7798,11 +7852,13 @@
             <PHON kindOf="original">nii</PHON>
             <FORM kindOf="standard">nii</FORM>
             <PHON kindOf="standard">nii</PHON>
+            <TRANSL xml:lang="zho">這</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003AW4M1">
                 <FORM kindOf="original">nii</FORM>
                 <PHON kindOf="original">nii</PHON>
                 <FORM kindOf="standard">nii</FORM>
                 <PHON kindOf="standard">nii</PHON>
+                <TRANSL xml:lang="zho">這</TRANSL>
             </M>
         </W>
     </S>
@@ -7817,17 +7873,20 @@
             <PHON kindOf="original">gəajus</PHON>
             <FORM kindOf="standard">Ge-ayus</FORM>
             <PHON kindOf="standard">ɣəajus</PHON>
+            <TRANSL xml:lang="zho">g-界線</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW1M1">
                 <FORM kindOf="original">Ge</FORM>
                 <PHON kindOf="original">gə</PHON>
                 <FORM kindOf="standard">Ge</FORM>
                 <PHON kindOf="standard">ɣə</PHON>
+                <TRANSL xml:lang="zho">g</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW1M2">
                 <FORM kindOf="original">ayus</FORM>
                 <PHON kindOf="original">ajus</PHON>
                 <FORM kindOf="standard">ayus</FORM>
                 <PHON kindOf="standard">ajus</PHON>
+                <TRANSL xml:lang="zho">界線</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW2">
@@ -7835,11 +7894,13 @@
             <PHON kindOf="original">nħaɾi</PHON>
             <FORM kindOf="standard">nhari</FORM>
             <PHON kindOf="standard">nħaɾi</PHON>
+            <TRANSL xml:lang="zho">快點</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW2M1">
                 <FORM kindOf="original">nhari</FORM>
                 <PHON kindOf="original">nħaɾi</PHON>
                 <FORM kindOf="standard">nhari</FORM>
                 <PHON kindOf="standard">nħaɾi</PHON>
+                <TRANSL xml:lang="zho">快點</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW3">
@@ -7847,41 +7908,41 @@
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW3M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW4">
-            <FORM kindOf="original">q-m-pah-an</FORM>
+            <FORM kindOf="original">q&lt;m&gt;pah-an</FORM>
             <PHON kindOf="original">qmpaħan</PHON>
-            <FORM kindOf="standard">q-m-pah-an</FORM>
+            <FORM kindOf="standard">q&lt;m&gt;pah-an</FORM>
             <PHON kindOf="standard">qmpaħan</PHON>
+            <TRANSL xml:lang="zho">工作&lt;AF&gt;-LF</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW4M1">
-                <FORM kindOf="original">q</FORM>
-                <PHON kindOf="original">q</PHON>
-                <FORM kindOf="standard">q</FORM>
-                <PHON kindOf="standard">q</PHON>
+                <FORM kindOf="original">q-pah</FORM>
+                <PHON kindOf="original">qpaħ</PHON>
+                <FORM kindOf="standard">q-pah</FORM>
+                <PHON kindOf="standard">qpaħ</PHON>
+                <TRANSL xml:lang="zho">工作</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW4M2">
-                <FORM kindOf="original">m</FORM>
+                <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
+                <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-            </M>
-            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW4M3">
-                <FORM kindOf="original">pah</FORM>
-                <PHON kindOf="original">paħ</PHON>
-                <FORM kindOf="standard">pah</FORM>
-                <PHON kindOf="standard">paħ</PHON>
+                <TRANSL xml:lang="zho">AF</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW4M4">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="zho">LF</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW5">
@@ -7889,11 +7950,13 @@
             <PHON kindOf="original">su</PHON>
             <FORM kindOf="standard">=su</FORM>
             <PHON kindOf="standard">su</PHON>
+            <TRANSL xml:lang="zho">你</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E003BW5M1">
                 <FORM kindOf="original">=su</FORM>
                 <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">=su</FORM>
                 <PHON kindOf="standard">su</PHON>
+                <TRANSL xml:lang="zho">你</TRANSL>
             </M>
         </W>
     </S>
@@ -8118,20 +8181,27 @@
             <PHON kindOf="original">gmbħŋil</PHON>
             <FORM kindOf="standard">G-m-bhngil</FORM>
             <PHON kindOf="standard">ɣmbħŋiɮ</PHON>
-            <TRANSL xml:lang="zho">g&lt;AF&gt;</TRANSL>
+            <TRANSL xml:lang="zho">g-AF-芒草</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E005BW1M1">
-                <FORM kindOf="original">G-bhngil</FORM>
-                <PHON kindOf="original">gbħŋil</PHON>
-                <FORM kindOf="standard">G-bhngil</FORM>
-                <PHON kindOf="standard">ɣbħŋiɮ</PHON>
+                <FORM kindOf="original">G</FORM>
+                <PHON kindOf="original">g</PHON>
+                <FORM kindOf="standard">G</FORM>
+                <PHON kindOf="standard">ɣ</PHON>
                 <TRANSL xml:lang="zho">g</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E005BW1M2">
-                <FORM kindOf="original">-m-</FORM>
+                <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">-m-</FORM>
+                <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL xml:lang="zho">AF</TRANSL>
+            </M>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E005BW1M3">
+                <FORM kindOf="original">bhngil</FORM>
+                <PHON kindOf="original">bħŋil</PHON>
+                <FORM kindOf="standard">bhngil</FORM>
+                <PHON kindOf="standard">bħŋiɮ</PHON>
+                <TRANSL xml:lang="zho">芒草</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E005BW2">
@@ -8139,40 +8209,33 @@
             <PHON kindOf="original">mniq</PHON>
             <FORM kindOf="standard">mniq</FORM>
             <PHON kindOf="standard">mneq</PHON>
-            <TRANSL xml:lang="zho">芒草</TRANSL>
+            <TRANSL xml:lang="zho">在</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E005BW2M1">
                 <FORM kindOf="original">mniq</FORM>
                 <PHON kindOf="original">mniq</PHON>
                 <FORM kindOf="standard">mniq</FORM>
                 <PHON kindOf="standard">mneq</PHON>
-                <TRANSL xml:lang="zho">芒草</TRANSL>
+                <TRANSL xml:lang="zho">在</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E005BW3">
-            <FORM kindOf="original">q-m-pah-an</FORM>
+            <FORM kindOf="original">q&lt;m&gt;pah-an</FORM>
             <PHON kindOf="original">qmpaħan</PHON>
-            <FORM kindOf="standard">q-m-pah-an</FORM>
+            <FORM kindOf="standard">q&lt;m&gt;pah-an</FORM>
             <PHON kindOf="standard">qmpaħan</PHON>
-            <TRANSL xml:lang="zho">在-工作-AF-LF</TRANSL>
+            <TRANSL xml:lang="zho">工作&lt;AF&gt;-LF</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E005BW3M1">
-                <FORM kindOf="original">q</FORM>
-                <PHON kindOf="original">q</PHON>
-                <FORM kindOf="standard">q</FORM>
-                <PHON kindOf="standard">q</PHON>
-                <TRANSL xml:lang="zho">在</TRANSL>
-            </M>
-            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E005BW3M2">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
+                <FORM kindOf="original">q-pah</FORM>
+                <PHON kindOf="original">qpaħ</PHON>
+                <FORM kindOf="standard">q-pah</FORM>
+                <PHON kindOf="standard">qpaħ</PHON>
                 <TRANSL xml:lang="zho">工作</TRANSL>
             </M>
-            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E005BW3M3">
-                <FORM kindOf="original">pah</FORM>
-                <PHON kindOf="original">paħ</PHON>
-                <FORM kindOf="standard">pah</FORM>
-                <PHON kindOf="standard">paħ</PHON>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E005BW3M2">
+                <FORM kindOf="original">-m-</FORM>
+                <PHON kindOf="original">m</PHON>
+                <FORM kindOf="standard">-m-</FORM>
+                <PHON kindOf="standard">m</PHON>
                 <TRANSL xml:lang="zho">AF</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E005BW3M4">
@@ -8363,7 +8426,7 @@
             <PHON kindOf="original">gməlug</PHON>
             <FORM kindOf="standard">g-m-elug</FORM>
             <PHON kindOf="standard">ɣməɮuɣ</PHON>
-            <TRANSL xml:lang="zho">g-AF-路</TRANSL>
+            <TRANSL xml:lang="zho">g-&lt;AF&gt;路</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006BW3M1">
                 <FORM kindOf="original">g</FORM>
                 <PHON kindOf="original">g</PHON>
@@ -8398,20 +8461,27 @@
             <PHON kindOf="original">kməlug</PHON>
             <FORM kindOf="standard">K-m-elug</FORM>
             <PHON kindOf="standard">kməɮuɣ</PHON>
-            <TRANSL xml:lang="zho">k&lt;AF&gt;</TRANSL>
+            <TRANSL xml:lang="zho">k-&lt;AF&gt;路</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW1M1">
-                <FORM kindOf="original">K-elug</FORM>
-                <PHON kindOf="original">kəlug</PHON>
-                <FORM kindOf="standard">K-elug</FORM>
-                <PHON kindOf="standard">kəɮuɣ</PHON>
+                <FORM kindOf="original">K</FORM>
+                <PHON kindOf="original">k</PHON>
+                <FORM kindOf="standard">K</FORM>
+                <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho">k</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW1M2">
-                <FORM kindOf="original">-m-</FORM>
+                <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">-m-</FORM>
+                <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL xml:lang="zho">AF</TRANSL>
+            </M>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW1M3">
+                <FORM kindOf="original">elug</FORM>
+                <PHON kindOf="original">əlug</PHON>
+                <FORM kindOf="standard">elug</FORM>
+                <PHON kindOf="standard">əɮuɣ</PHON>
+                <TRANSL xml:lang="zho">路</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW2">
@@ -8419,13 +8489,13 @@
             <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">=ku</FORM>
             <PHON kindOf="standard">ku</PHON>
-            <TRANSL xml:lang="zho">路</TRANSL>
+            <TRANSL xml:lang="zho">我</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW2M1">
                 <FORM kindOf="original">=ku</FORM>
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="zho">路</TRANSL>
+                <TRANSL xml:lang="zho">我</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW3">
@@ -8433,40 +8503,33 @@
             <PHON kindOf="original">minq</PHON>
             <FORM kindOf="standard">minq</FORM>
             <PHON kindOf="standard">minq</PHON>
-            <TRANSL xml:lang="zho">我</TRANSL>
+            <TRANSL xml:lang="zho">在</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW3M1">
                 <FORM kindOf="original">minq</FORM>
                 <PHON kindOf="original">minq</PHON>
                 <FORM kindOf="standard">minq</FORM>
                 <PHON kindOf="standard">minq</PHON>
-                <TRANSL xml:lang="zho">我</TRANSL>
+                <TRANSL xml:lang="zho">在</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW4">
-            <FORM kindOf="original">q-m-pah-an</FORM>
+            <FORM kindOf="original">q&lt;m&gt;pah-an</FORM>
             <PHON kindOf="original">qmpaħan</PHON>
-            <FORM kindOf="standard">q-m-pah-an</FORM>
+            <FORM kindOf="standard">q&lt;m&gt;pah-an</FORM>
             <PHON kindOf="standard">qmpaħan</PHON>
-            <TRANSL xml:lang="zho">在-工作-AF-LF</TRANSL>
+            <TRANSL xml:lang="zho">工作&lt;AF&gt;-LF</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW4M1">
-                <FORM kindOf="original">q</FORM>
-                <PHON kindOf="original">q</PHON>
-                <FORM kindOf="standard">q</FORM>
-                <PHON kindOf="standard">q</PHON>
-                <TRANSL xml:lang="zho">在</TRANSL>
-            </M>
-            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW4M2">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
+                <FORM kindOf="original">q-pah</FORM>
+                <PHON kindOf="original">qpaħ</PHON>
+                <FORM kindOf="standard">q-pah</FORM>
+                <PHON kindOf="standard">qpaħ</PHON>
                 <TRANSL xml:lang="zho">工作</TRANSL>
             </M>
-            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW4M3">
-                <FORM kindOf="original">pah</FORM>
-                <PHON kindOf="original">paħ</PHON>
-                <FORM kindOf="standard">pah</FORM>
-                <PHON kindOf="standard">paħ</PHON>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW4M2">
+                <FORM kindOf="original">-m-</FORM>
+                <PHON kindOf="original">m</PHON>
+                <FORM kindOf="standard">-m-</FORM>
+                <PHON kindOf="standard">m</PHON>
                 <TRANSL xml:lang="zho">AF</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E006CW4M4">
@@ -8609,6 +8672,7 @@
                 <FORM kindOf="standard">s</FORM>
                 <PHON kindOf="standard">s</PHON>
                 <TRANSL xml:lang="zho">IF</TRANSL>
+                <TRANSL xml:lang="zho" ver="alt" notes="Source reading in PDF page 83, example (17b).">s</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E007BW2M2">
                 <FORM kindOf="original">huda</FORM>
@@ -8617,6 +8681,7 @@
                 <PHON kindOf="standard">ħoda</PHON>
                 <TRANSL xml:lang="zho">雪</TRANSL>
             </M>
+            <TRANSL xml:lang="zho" ver="alt" notes="Source reading in PDF page 83, example (17b).">s-雪</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E007BW3">
             <FORM kindOf="original">ka</FORM>
@@ -8906,9 +8971,9 @@
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E009AW2">
-            <FORM kindOf="original">t-m-abug</FORM>
+            <FORM kindOf="original">t&lt;m&gt;abug</FORM>
             <PHON kindOf="original">tmabug</PHON>
-            <FORM kindOf="standard">t-m-abug</FORM>
+            <FORM kindOf="standard">t&lt;m&gt;abug</FORM>
             <PHON kindOf="standard">tmabuɣ</PHON>
             <TRANSL xml:lang="zho">飼養&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E009AW2M1">
@@ -9309,6 +9374,7 @@
             <PHON kindOf="original">snɾus</PHON>
             <FORM kindOf="standard">S-n-rus</FORM>
             <PHON kindOf="standard">snɾus</PHON>
+            <TRANSL xml:lang="zho">擦-n</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E012AW1M1">
                 <FORM kindOf="original">S</FORM>
                 <PHON kindOf="original">s</PHON>
@@ -9333,11 +9399,13 @@
             <PHON kindOf="original">mu</PHON>
             <FORM kindOf="standard">=mu</FORM>
             <PHON kindOf="standard">mu</PHON>
+            <TRANSL xml:lang="zho">我</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E012AW2M1">
                 <FORM kindOf="original">=mu</FORM>
                 <PHON kindOf="original">mu</PHON>
                 <FORM kindOf="standard">=mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
+                <TRANSL xml:lang="zho">我</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E012AW3">
@@ -9345,11 +9413,13 @@
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E012AW3M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E012AW4">
@@ -9357,11 +9427,13 @@
             <PHON kindOf="original">liħaw</PHON>
             <FORM kindOf="standard">lihaw</FORM>
             <PHON kindOf="standard">ɮeħaw</PHON>
+            <TRANSL xml:lang="zho">鏡子</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E012AW4M1">
                 <FORM kindOf="original">lihaw</FORM>
                 <PHON kindOf="original">liħaw</PHON>
                 <FORM kindOf="standard">lihaw</FORM>
                 <PHON kindOf="standard">ɮeħaw</PHON>
+                <TRANSL xml:lang="zho">鏡子</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E012AW5">
@@ -9369,11 +9441,13 @@
             <PHON kindOf="original">nii</PHON>
             <FORM kindOf="standard">nii</FORM>
             <PHON kindOf="standard">nii</PHON>
+            <TRANSL xml:lang="zho">這</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E012AW5M1">
                 <FORM kindOf="original">nii</FORM>
                 <PHON kindOf="original">nii</PHON>
                 <FORM kindOf="standard">nii</FORM>
                 <PHON kindOf="standard">nii</PHON>
+                <TRANSL xml:lang="zho">這</TRANSL>
             </M>
         </W>
     </S>
@@ -9948,7 +10022,7 @@
             <PHON kindOf="original">smħalus</PHON>
             <FORM kindOf="standard">S-m-halus</FORM>
             <PHON kindOf="standard">smħaɮus</PHON>
-            <TRANSL xml:lang="zho">s-AF-口水</TRANSL>
+            <TRANSL xml:lang="zho">s-&lt;AF&gt;-口水</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E016CW1M1">
                 <FORM kindOf="original">S</FORM>
                 <PHON kindOf="original">s</PHON>
@@ -10617,9 +10691,9 @@
         <PHON kindOf="standard">ɮmiŋis kdɟijax ka ɮaqe ɮokiŋ</PHON>
         <TRANSL xml:lang="zho">Lowking 的小孩常常在哭。</TRANSL>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E022AW1">
-            <FORM kindOf="original">L-m-ingis</FORM>
+            <FORM kindOf="original">L&lt;m&gt;ingis</FORM>
             <PHON kindOf="original">lmiŋis</PHON>
-            <FORM kindOf="standard">L-m-ingis</FORM>
+            <FORM kindOf="standard">L&lt;m&gt;ingis</FORM>
             <PHON kindOf="standard">ɮmiŋis</PHON>
             <TRANSL xml:lang="zho">哭&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E022AW1M1">
@@ -10803,7 +10877,7 @@
             <PHON kindOf="original">tmqɾŋul</PHON>
             <FORM kindOf="standard">t-m-qrngul</FORM>
             <PHON kindOf="standard">tmqɾŋuɮ</PHON>
-            <TRANSL xml:lang="zho">t-AF-煙</TRANSL>
+            <TRANSL xml:lang="zho">t-&lt;AF&gt;-煙</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E023BW2M1">
                 <FORM kindOf="original">t</FORM>
                 <PHON kindOf="original">t</PHON>
@@ -11013,7 +11087,7 @@
             <PHON kindOf="original">tmbowjak</PHON>
             <FORM kindOf="standard">t-m-bowyak</FORM>
             <PHON kindOf="standard">tmbojak</PHON>
-            <TRANSL xml:lang="zho">t-AF-山豬</TRANSL>
+            <TRANSL xml:lang="zho">t-&lt;AF&gt;-山豬</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E025BW2M1">
                 <FORM kindOf="original">t</FORM>
                 <PHON kindOf="original">t</PHON>
@@ -11090,7 +11164,7 @@
             <PHON kindOf="original">tmɟijal</PHON>
             <FORM kindOf="standard">t-m-jiyal</FORM>
             <PHON kindOf="standard">tmɟijaɮ</PHON>
-            <TRANSL xml:lang="zho">t-AF-捕抓</TRANSL>
+            <TRANSL xml:lang="zho">t-捕抓&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E025CW2M1">
                 <FORM kindOf="original">t</FORM>
                 <PHON kindOf="original">t</PHON>
@@ -11198,9 +11272,9 @@
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E026AW3">
-            <FORM kindOf="original">t-m-abug</FORM>
+            <FORM kindOf="original">t&lt;m&gt;abug</FORM>
             <PHON kindOf="original">tmabug</PHON>
-            <FORM kindOf="standard">t-m-abug</FORM>
+            <FORM kindOf="standard">t&lt;m&gt;abug</FORM>
             <PHON kindOf="standard">tmabuɣ</PHON>
             <TRANSL xml:lang="zho">養&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E026AW3M1">
@@ -11279,7 +11353,7 @@
             <PHON kindOf="original">tmkaʦiŋ</PHON>
             <FORM kindOf="standard">t-m-kacing</FORM>
             <PHON kindOf="standard">tmkaciŋ</PHON>
-            <TRANSL xml:lang="zho">t-AF-牛</TRANSL>
+            <TRANSL xml:lang="zho">t-&lt;AF&gt;-牛</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E026BW3M1">
                 <FORM kindOf="original">t</FORM>
                 <PHON kindOf="original">t</PHON>
@@ -11408,9 +11482,9 @@
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E027BW3">
-            <FORM kindOf="original">s-m-alu</FORM>
+            <FORM kindOf="original">s&lt;m&gt;alu</FORM>
             <PHON kindOf="original">smalu</PHON>
-            <FORM kindOf="standard">s-m-alu</FORM>
+            <FORM kindOf="standard">s&lt;m&gt;alu</FORM>
             <PHON kindOf="standard">smaɮu</PHON>
             <TRANSL xml:lang="zho">製作&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E027BW3M1">
@@ -11482,7 +11556,7 @@
             <PHON kindOf="original">tmpuʦiŋ</PHON>
             <FORM kindOf="standard">t-m-pucing</FORM>
             <PHON kindOf="standard">tmpuciŋ</PHON>
-            <TRANSL xml:lang="zho">t-AF-番刀</TRANSL>
+            <TRANSL xml:lang="zho">t-&lt;AF&gt;-番刀</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E027CW3M1">
                 <FORM kindOf="original">t</FORM>
                 <PHON kindOf="original">t</PHON>
@@ -11587,7 +11661,7 @@
             <PHON kindOf="original">tmbqlit</PHON>
             <FORM kindOf="standard">T-m-bqlit</FORM>
             <PHON kindOf="standard">tmbqɮit</PHON>
-            <TRANSL xml:lang="zho">t-AF-膝蓋</TRANSL>
+            <TRANSL xml:lang="zho">t-&lt;AF&gt;-膝蓋</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E028BW1M1">
                 <FORM kindOf="original">T</FORM>
                 <PHON kindOf="original">t</PHON>
@@ -11755,7 +11829,7 @@
             <PHON kindOf="original">tmsinaw</PHON>
             <FORM kindOf="standard">t-m-sinaw</FORM>
             <PHON kindOf="standard">tmsinaw</PHON>
-            <TRANSL xml:lang="zho">t-AF-酒</TRANSL>
+            <TRANSL xml:lang="zho">t-&lt;AF&gt;-酒</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E029BW3M1">
                 <FORM kindOf="original">t</FORM>
                 <PHON kindOf="original">t</PHON>
@@ -12557,9 +12631,9 @@
         <PHON kindOf="standard">tmɣsa kaɾi tɾuku ka tusi</PHON>
         <TRANSL xml:lang="zho">Tusi 在教太魯閣語。</TRANSL>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E035AW1">
-            <FORM kindOf="original">T-m-gsa</FORM>
+            <FORM kindOf="original">T&lt;m&gt;gsa</FORM>
             <PHON kindOf="original">tmgsa</PHON>
-            <FORM kindOf="standard">T-m-gsa</FORM>
+            <FORM kindOf="standard">T&lt;m&gt;gsa</FORM>
             <PHON kindOf="standard">tmɣsa</PHON>
             <TRANSL xml:lang="zho">教&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E035AW1M1">
@@ -12725,9 +12799,9 @@
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036AW2">
-            <FORM kindOf="original">t-m-xiluy</FORM>
+            <FORM kindOf="original">t&lt;m&gt;xiluy</FORM>
             <PHON kindOf="original">tmxiluj</PHON>
-            <FORM kindOf="standard">t-m-xiluy</FORM>
+            <FORM kindOf="standard">t&lt;m&gt;xiluy</FORM>
             <PHON kindOf="standard">tmxiɮuj</PHON>
             <TRANSL xml:lang="zho">打鐵&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036AW2M1">
@@ -12949,9 +13023,9 @@
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038AW2">
-            <FORM kindOf="original">q-m-pah</FORM>
+            <FORM kindOf="original">q&lt;m&gt;pah</FORM>
             <PHON kindOf="original">qmpaħ</PHON>
-            <FORM kindOf="standard">q-m-pah</FORM>
+            <FORM kindOf="standard">q&lt;m&gt;pah</FORM>
             <PHON kindOf="standard">qmpaħ</PHON>
             <TRANSL xml:lang="zho">工作&lt;m&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038AW2M1">
@@ -13024,17 +13098,20 @@
             <PHON kindOf="original">nniqan</PHON>
             <FORM kindOf="standard">N-niqan</FORM>
             <PHON kindOf="standard">nneqan</PHON>
+            <TRANSL xml:lang="zho">n-有</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038BW1M1">
                 <FORM kindOf="original">N</FORM>
                 <PHON kindOf="original">n</PHON>
                 <FORM kindOf="standard">N</FORM>
                 <PHON kindOf="standard">n</PHON>
+                <TRANSL xml:lang="zho">n</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038BW1M2">
                 <FORM kindOf="original">niqan</FORM>
                 <PHON kindOf="original">niqan</PHON>
                 <FORM kindOf="standard">niqan</FORM>
                 <PHON kindOf="standard">neqan</PHON>
+                <TRANSL xml:lang="zho">有</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038BW2">
@@ -13042,11 +13119,13 @@
             <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">=ku</FORM>
             <PHON kindOf="standard">ku</PHON>
+            <TRANSL xml:lang="zho">我</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038BW2M1">
                 <FORM kindOf="original">=ku</FORM>
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
+                <TRANSL xml:lang="zho">我</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038BW3">
@@ -13054,41 +13133,41 @@
             <PHON kindOf="original">kiŋal</PHON>
             <FORM kindOf="standard">kingal</FORM>
             <PHON kindOf="standard">kiŋaɮ</PHON>
+            <TRANSL xml:lang="zho">一</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038BW3M1">
                 <FORM kindOf="original">kingal</FORM>
                 <PHON kindOf="original">kiŋal</PHON>
                 <FORM kindOf="standard">kingal</FORM>
                 <PHON kindOf="standard">kiŋaɮ</PHON>
+                <TRANSL xml:lang="zho">一</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038BW4">
-            <FORM kindOf="original">q-m-pah-an</FORM>
+            <FORM kindOf="original">q&lt;m&gt;pah-an</FORM>
             <PHON kindOf="original">qmpaħan</PHON>
-            <FORM kindOf="standard">q-m-pah-an</FORM>
+            <FORM kindOf="standard">q&lt;m&gt;pah-an</FORM>
             <PHON kindOf="standard">qmpaħan</PHON>
+            <TRANSL xml:lang="zho">工作&lt;AF&gt;-LF</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038BW4M1">
-                <FORM kindOf="original">q</FORM>
-                <PHON kindOf="original">q</PHON>
-                <FORM kindOf="standard">q</FORM>
-                <PHON kindOf="standard">q</PHON>
+                <FORM kindOf="original">q-pah</FORM>
+                <PHON kindOf="original">qpaħ</PHON>
+                <FORM kindOf="standard">q-pah</FORM>
+                <PHON kindOf="standard">qpaħ</PHON>
+                <TRANSL xml:lang="zho">工作</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038BW4M2">
-                <FORM kindOf="original">m</FORM>
+                <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
+                <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-            </M>
-            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038BW4M3">
-                <FORM kindOf="original">pah</FORM>
-                <PHON kindOf="original">paħ</PHON>
-                <FORM kindOf="standard">pah</FORM>
-                <PHON kindOf="standard">paħ</PHON>
+                <TRANSL xml:lang="zho">AF</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E038BW4M4">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="zho">LF</TRANSL>
             </M>
         </W>
     </S>
@@ -13191,7 +13270,7 @@
         </W>
     </S>
     <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E039C">
-        <FORM kindOf="original">Ini =ku patas niya na!</FORM>
+        <FORM kindOf="original" notes="Source gloss 尚未 covers the two words niya na jointly (PDF page 100).">Ini =ku patas niya na!</FORM>
         <PHON kindOf="original">ini ku patas nija na</PHON>
         <FORM kindOf="standard">Ini ku patas niya na!</FORM>
         <PHON kindOf="standard">ini ku patas nija na</PHON>
@@ -13206,7 +13285,9 @@
                 <PHON kindOf="original">ini</PHON>
                 <FORM kindOf="standard">Ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
+                <TRANSL xml:lang="zho">不</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">不</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E039CW2">
             <FORM kindOf="original">=ku</FORM>
@@ -13218,7 +13299,9 @@
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
+                <TRANSL xml:lang="zho">我</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">我</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E039CW3">
             <FORM kindOf="original">patas</FORM>
@@ -13230,7 +13313,9 @@
                 <PHON kindOf="original">patas</PHON>
                 <FORM kindOf="standard">patas</FORM>
                 <PHON kindOf="standard">patas</PHON>
+                <TRANSL xml:lang="zho">讀書</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">讀書</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E039CW4">
             <FORM kindOf="original">niya</FORM>
@@ -13816,7 +13901,7 @@
         </W>
     </S>
     <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E037A_0206_01">
-        <FORM kindOf="original">Ini =ku patas niya na.</FORM>
+        <FORM kindOf="original" notes="Source gloss 尚未 covers the two words niya na jointly (PDF page 116).">Ini =ku patas niya na.</FORM>
         <PHON kindOf="original">ini ku patas nija na</PHON>
         <FORM kindOf="standard">Ini ku patas niya na.</FORM>
         <PHON kindOf="standard">ini ku patas nija na</PHON>
@@ -13831,7 +13916,9 @@
                 <PHON kindOf="original">ini</PHON>
                 <FORM kindOf="standard">Ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
+                <TRANSL xml:lang="zho">不</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">不</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E037A_0206_01W2">
             <FORM kindOf="original">=ku</FORM>
@@ -13843,7 +13930,9 @@
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
+                <TRANSL xml:lang="zho">我</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">我</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E037A_0206_01W3">
             <FORM kindOf="original">patas</FORM>
@@ -13855,7 +13944,9 @@
                 <PHON kindOf="original">patas</PHON>
                 <FORM kindOf="standard">patas</FORM>
                 <PHON kindOf="standard">patas</PHON>
+                <TRANSL xml:lang="zho">書寫</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">書寫</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E037A_0206_01W4">
             <FORM kindOf="original">niya</FORM>
@@ -14737,9 +14828,9 @@
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E002BW2">
-            <FORM kindOf="original">s-m-rus</FORM>
+            <FORM kindOf="original">s&lt;m&gt;rus</FORM>
             <PHON kindOf="original">smɾus</PHON>
-            <FORM kindOf="standard">s-m-rus</FORM>
+            <FORM kindOf="standard">s&lt;m&gt;rus</FORM>
             <PHON kindOf="standard">smɾus</PHON>
             <TRANSL xml:lang="zho">擦&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E002BW2M1">
@@ -14938,6 +15029,7 @@
             <PHON kindOf="original">bnaɾig</PHON>
             <FORM kindOf="standard">B-n-arig</FORM>
             <PHON kindOf="standard">bnaɾiɣ</PHON>
+            <TRANSL xml:lang="zho">買-n</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E003BW1M1">
                 <FORM kindOf="original">B</FORM>
                 <PHON kindOf="original">b</PHON>
@@ -14962,11 +15054,13 @@
             <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">=ku</FORM>
             <PHON kindOf="standard">ku</PHON>
+            <TRANSL xml:lang="zho">我</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E003BW2M1">
                 <FORM kindOf="original">=ku</FORM>
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
+                <TRANSL xml:lang="zho">我</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E003BW3">
@@ -14974,11 +15068,13 @@
             <PHON kindOf="original">kiŋal</PHON>
             <FORM kindOf="standard">kingal</FORM>
             <PHON kindOf="standard">kiŋaɮ</PHON>
+            <TRANSL xml:lang="zho">一</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E003BW3M1">
                 <FORM kindOf="original">kingal</FORM>
                 <PHON kindOf="original">kiŋal</PHON>
                 <FORM kindOf="standard">kingal</FORM>
                 <PHON kindOf="standard">kiŋaɮ</PHON>
+                <TRANSL xml:lang="zho">一</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E003BW4">
@@ -14986,11 +15082,13 @@
             <PHON kindOf="original">qɾquɾ</PHON>
             <FORM kindOf="standard">qrqur</FORM>
             <PHON kindOf="standard">qɾqoɾ</PHON>
+            <TRANSL xml:lang="zho">鑽洞機</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E003BW4M1">
                 <FORM kindOf="original">qrqur</FORM>
                 <PHON kindOf="original">qɾquɾ</PHON>
                 <FORM kindOf="standard">qrqur</FORM>
                 <PHON kindOf="standard">qɾqoɾ</PHON>
+                <TRANSL xml:lang="zho">鑽洞機</TRANSL>
             </M>
         </W>
     </S>
@@ -15177,9 +15275,9 @@
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004BW6">
-            <FORM kindOf="original">t-m-alang</FORM>
+            <FORM kindOf="original">t&lt;m&gt;alang</FORM>
             <PHON kindOf="original">tmalaŋ</PHON>
-            <FORM kindOf="standard">t-m-alang</FORM>
+            <FORM kindOf="standard">t&lt;m&gt;alang</FORM>
             <PHON kindOf="standard">tmaɮaŋ</PHON>
             <TRANSL xml:lang="zho">跑&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004BW6M1">
@@ -15831,9 +15929,9 @@
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E009BW2">
-            <FORM kindOf="original">g-m-riq</FORM>
+            <FORM kindOf="original">g&lt;m&gt;riq</FORM>
             <PHON kindOf="original">gmɾiq</PHON>
-            <FORM kindOf="standard">g-m-riq</FORM>
+            <FORM kindOf="standard">g&lt;m&gt;riq</FORM>
             <PHON kindOf="standard">ɣmɾeq</PHON>
             <TRANSL xml:lang="zho">轉動&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E009BW2M1">
@@ -16829,17 +16927,20 @@
             <PHON kindOf="original">mlatat</PHON>
             <FORM kindOf="standard">M-latat</FORM>
             <PHON kindOf="standard">mɮatat</PHON>
+            <TRANSL xml:lang="zho">AF-出去</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW1M1">
                 <FORM kindOf="original">M</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">M</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho">AF</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW1M2">
                 <FORM kindOf="original">latat</FORM>
                 <PHON kindOf="original">latat</PHON>
                 <FORM kindOf="standard">latat</FORM>
                 <PHON kindOf="standard">ɮatat</PHON>
+                <TRANSL xml:lang="zho">出去</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW2">
@@ -16847,11 +16948,13 @@
             <PHON kindOf="original">paaħ</PHON>
             <FORM kindOf="standard">paah</FORM>
             <PHON kindOf="standard">paaħ</PHON>
+            <TRANSL xml:lang="zho">從</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW2M1">
                 <FORM kindOf="original">paah</FORM>
                 <PHON kindOf="original">paaħ</PHON>
                 <FORM kindOf="standard">paah</FORM>
                 <PHON kindOf="standard">paaħ</PHON>
+                <TRANSL xml:lang="zho">從</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW3">
@@ -16859,17 +16962,20 @@
             <PHON kindOf="original">ptasan</PHON>
             <FORM kindOf="standard">ptas-an</FORM>
             <PHON kindOf="standard">ptasan</PHON>
+            <TRANSL xml:lang="zho">書寫-LF</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW3M1">
                 <FORM kindOf="original">ptas</FORM>
                 <PHON kindOf="original">ptas</PHON>
                 <FORM kindOf="standard">ptas</FORM>
                 <PHON kindOf="standard">ptas</PHON>
+                <TRANSL xml:lang="zho">書寫</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW3M2">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="zho">LF</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW4">
@@ -16877,17 +16983,20 @@
             <PHON kindOf="original">tgpaɾu</PHON>
             <FORM kindOf="standard">tg-paru</FORM>
             <PHON kindOf="standard">tɣpaɾu</PHON>
+            <TRANSL xml:lang="zho">tg-大</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW4M1">
                 <FORM kindOf="original">tg</FORM>
                 <PHON kindOf="original">tg</PHON>
                 <FORM kindOf="standard">tg</FORM>
                 <PHON kindOf="standard">tɣ</PHON>
+                <TRANSL xml:lang="zho">tg</TRANSL>
             </M>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW4M2">
                 <FORM kindOf="original">paru</FORM>
                 <PHON kindOf="original">paɾu</PHON>
                 <FORM kindOf="standard">paru</FORM>
                 <PHON kindOf="standard">paɾu</PHON>
+                <TRANSL xml:lang="zho">大</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW5">
@@ -16895,6 +17004,7 @@
             <PHON kindOf="original">tuŋxuwa</PHON>
             <FORM kindOf="standard">Tung-Xuwa</FORM>
             <PHON kindOf="standard">tuŋxuwa</PHON>
+            <TRANSL xml:lang="zho">東華</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW5M1">
                 <FORM kindOf="original">Tung</FORM>
                 <PHON kindOf="original">tuŋ</PHON>
@@ -16913,11 +17023,13 @@
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW6M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW7">
@@ -16925,11 +17037,13 @@
             <PHON kindOf="original">lowkiŋ</PHON>
             <FORM kindOf="standard">Lowking</FORM>
             <PHON kindOf="standard">ɮokiŋ</PHON>
+            <TRANSL xml:lang="zho">人名</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E015BW7M1">
                 <FORM kindOf="original">Lowking</FORM>
                 <PHON kindOf="original">lowkiŋ</PHON>
                 <FORM kindOf="standard">Lowking</FORM>
                 <PHON kindOf="standard">ɮokiŋ</PHON>
+                <TRANSL xml:lang="zho">人名</TRANSL>
             </M>
         </W>
     </S>
@@ -17524,6 +17638,313 @@
             </M>
         </W>
     </S>
+    <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036B_P095">
+        <FORM kindOf="original">Tama Lowking ka emp-txiluy nii.</FORM>
+        <PHON kindOf="original">tama lowkiŋ ka əmptxiluj nii</PHON>
+        <FORM kindOf="standard">Tama Lowking ka emptxiluy nii.</FORM>
+        <PHON kindOf="standard">tama ɮokiŋ ka əmptxiɮuj nii</PHON>
+        <TRANSL xml:lang="zho">這個鐵匠是 Lowking 的爸爸。</TRANSL>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036B_P095W1">
+            <FORM kindOf="original">Tama</FORM>
+            <PHON kindOf="original">tama</PHON>
+            <FORM kindOf="standard">Tama</FORM>
+            <PHON kindOf="standard">tama</PHON>
+            <TRANSL xml:lang="zho">爸爸</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036B_P095W1M1">
+                <FORM kindOf="original">Tama</FORM>
+                <PHON kindOf="original">tama</PHON>
+                <FORM kindOf="standard">Tama</FORM>
+                <PHON kindOf="standard">tama</PHON>
+                <TRANSL xml:lang="zho">爸爸</TRANSL>
+            </M>
+        </W>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036B_P095W2">
+            <FORM kindOf="original">Lowking</FORM>
+            <PHON kindOf="original">lowkiŋ</PHON>
+            <FORM kindOf="standard">Lowking</FORM>
+            <PHON kindOf="standard">ɮokiŋ</PHON>
+            <TRANSL xml:lang="zho">人名</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036B_P095W2M1">
+                <FORM kindOf="original">Lowking</FORM>
+                <PHON kindOf="original">lowkiŋ</PHON>
+                <FORM kindOf="standard">Lowking</FORM>
+                <PHON kindOf="standard">ɮokiŋ</PHON>
+                <TRANSL xml:lang="zho">人名</TRANSL>
+            </M>
+        </W>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036B_P095W3">
+            <FORM kindOf="original">ka</FORM>
+            <PHON kindOf="original">ka</PHON>
+            <FORM kindOf="standard">ka</FORM>
+            <PHON kindOf="standard">ka</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036B_P095W3M1">
+                <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
+                <FORM kindOf="standard">ka</FORM>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
+            </M>
+        </W>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036B_P095W4">
+            <FORM kindOf="original">emp-txiluy</FORM>
+            <PHON kindOf="original">əmptxiluj</PHON>
+            <FORM kindOf="standard">emp-txiluy</FORM>
+            <PHON kindOf="standard">əmptxiɮuj</PHON>
+            <TRANSL xml:lang="zho">emp-打鐵</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036B_P095W4M1">
+                <FORM kindOf="original">emp</FORM>
+                <PHON kindOf="original">əmp</PHON>
+                <FORM kindOf="standard">emp</FORM>
+                <PHON kindOf="standard">əmp</PHON>
+                <TRANSL xml:lang="zho">emp</TRANSL>
+            </M>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036B_P095W4M2">
+                <FORM kindOf="original">txiluy</FORM>
+                <PHON kindOf="original">txiluj</PHON>
+                <FORM kindOf="standard">txiluy</FORM>
+                <PHON kindOf="standard">txiɮuj</PHON>
+                <TRANSL xml:lang="zho">打鐵</TRANSL>
+            </M>
+        </W>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036B_P095W5">
+            <FORM kindOf="original">nii</FORM>
+            <PHON kindOf="original">nii</PHON>
+            <FORM kindOf="standard">nii</FORM>
+            <PHON kindOf="standard">nii</PHON>
+            <TRANSL xml:lang="zho">這</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E036B_P095W5M1">
+                <FORM kindOf="original">nii</FORM>
+                <PHON kindOf="original">nii</PHON>
+                <FORM kindOf="standard">nii</FORM>
+                <PHON kindOf="standard">nii</PHON>
+                <TRANSL xml:lang="zho">這</TRANSL>
+            </M>
+        </W>
+    </S>
+    <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E019A_P037">
+        <FORM kindOf="original">imah</FORM>
+        <PHON kindOf="original">imaħ</PHON>
+        <FORM kindOf="standard">imah</FORM>
+        <PHON kindOf="standard">imaħ</PHON>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E019A_P037W1">
+            <FORM kindOf="original">imah</FORM>
+            <PHON kindOf="original">imaħ</PHON>
+            <FORM kindOf="standard">imah</FORM>
+            <PHON kindOf="standard">imaħ</PHON>
+            <TRANSL xml:lang="zho">喝</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E019A_P037W1M1">
+                <FORM kindOf="original">imah</FORM>
+                <PHON kindOf="original">imaħ</PHON>
+                <FORM kindOf="standard">imah</FORM>
+                <PHON kindOf="standard">imaħ</PHON>
+                <TRANSL xml:lang="zho">喝</TRANSL>
+            </M>
+        </W>
+    </S>
+    <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E019B_P037">
+        <FORM kindOf="original">mah-un</FORM>
+        <PHON kindOf="original">maħun</PHON>
+        <FORM kindOf="standard">mahun</FORM>
+        <PHON kindOf="standard">maħon</PHON>
+        <TRANSL xml:lang="zho">飲料</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">喝的東西</TRANSL>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E019B_P037W1">
+            <FORM kindOf="original">mah-un</FORM>
+            <PHON kindOf="original">maħun</PHON>
+            <FORM kindOf="standard">mah-un</FORM>
+            <PHON kindOf="standard">maħon</PHON>
+            <TRANSL xml:lang="zho">喝-PF</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E019B_P037W1M1">
+                <FORM kindOf="original">mah</FORM>
+                <PHON kindOf="original">maħ</PHON>
+                <FORM kindOf="standard">mah</FORM>
+                <PHON kindOf="standard">maħ</PHON>
+                <TRANSL xml:lang="zho">喝</TRANSL>
+            </M>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E019B_P037W1M2">
+                <FORM kindOf="original">un</FORM>
+                <PHON kindOf="original">un</PHON>
+                <FORM kindOf="standard">un</FORM>
+                <PHON kindOf="standard">un</PHON>
+                <TRANSL xml:lang="zho">PF</TRANSL>
+            </M>
+        </W>
+    </S>
+    <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E020A_P038">
+        <FORM kindOf="original">patas</FORM>
+        <PHON kindOf="original">patas</PHON>
+        <FORM kindOf="standard">patas</FORM>
+        <PHON kindOf="standard">patas</PHON>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E020A_P038W1">
+            <FORM kindOf="original">patas</FORM>
+            <PHON kindOf="original">patas</PHON>
+            <FORM kindOf="standard">patas</FORM>
+            <PHON kindOf="standard">patas</PHON>
+            <TRANSL xml:lang="zho">書寫</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E020A_P038W1M1">
+                <FORM kindOf="original">patas</FORM>
+                <PHON kindOf="original">patas</PHON>
+                <FORM kindOf="standard">patas</FORM>
+                <PHON kindOf="standard">patas</PHON>
+                <TRANSL xml:lang="zho">書寫</TRANSL>
+            </M>
+        </W>
+    </S>
+    <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E020B_P038">
+        <FORM kindOf="original">ptas-un</FORM>
+        <PHON kindOf="original">ptasun</PHON>
+        <FORM kindOf="standard">ptasun</FORM>
+        <PHON kindOf="standard">ptasun</PHON>
+        <TRANSL xml:lang="zho">作業</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">要寫的東西</TRANSL>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E020B_P038W1">
+            <FORM kindOf="original">ptas-un</FORM>
+            <PHON kindOf="original">ptasun</PHON>
+            <FORM kindOf="standard">ptas-un</FORM>
+            <PHON kindOf="standard">ptasun</PHON>
+            <TRANSL xml:lang="zho">寫-PF</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E020B_P038W1M1">
+                <FORM kindOf="original">ptas</FORM>
+                <PHON kindOf="original">ptas</PHON>
+                <FORM kindOf="standard">ptas</FORM>
+                <PHON kindOf="standard">ptas</PHON>
+                <TRANSL xml:lang="zho">寫</TRANSL>
+            </M>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E020B_P038W1M2">
+                <FORM kindOf="original">un</FORM>
+                <PHON kindOf="original">un</PHON>
+                <FORM kindOf="standard">un</FORM>
+                <PHON kindOf="standard">un</PHON>
+                <TRANSL xml:lang="zho">PF</TRANSL>
+            </M>
+        </W>
+    </S>
+    <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079">
+        <FORM kindOf="original">Malu uq-un ka n-hapuy nii.</FORM>
+        <PHON kindOf="original">malu uqun ka nħapuj nii</PHON>
+        <FORM kindOf="standard">Malu uqun ka nhapuy nii.</FORM>
+        <PHON kindOf="standard">maɮu oqon ka nħapuj nii</PHON>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079W1">
+            <FORM kindOf="original">Malu</FORM>
+            <PHON kindOf="original">malu</PHON>
+            <FORM kindOf="standard">Malu</FORM>
+            <PHON kindOf="standard">maɮu</PHON>
+            <TRANSL xml:lang="zho">好</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079W1M1">
+                <FORM kindOf="original">Malu</FORM>
+                <PHON kindOf="original">malu</PHON>
+                <FORM kindOf="standard">Malu</FORM>
+                <PHON kindOf="standard">maɮu</PHON>
+                <TRANSL xml:lang="zho">好</TRANSL>
+            </M>
+        </W>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079W2">
+            <FORM kindOf="original">uq-un</FORM>
+            <PHON kindOf="original">uqun</PHON>
+            <FORM kindOf="standard">uq-un</FORM>
+            <PHON kindOf="standard">oqon</PHON>
+            <TRANSL xml:lang="zho">吃-PF</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079W2M1">
+                <FORM kindOf="original">uq</FORM>
+                <PHON kindOf="original">uq</PHON>
+                <FORM kindOf="standard">uq</FORM>
+                <PHON kindOf="standard">oq</PHON>
+                <TRANSL xml:lang="zho">吃</TRANSL>
+            </M>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079W2M2">
+                <FORM kindOf="original">un</FORM>
+                <PHON kindOf="original">un</PHON>
+                <FORM kindOf="standard">un</FORM>
+                <PHON kindOf="standard">un</PHON>
+                <TRANSL xml:lang="zho">PF</TRANSL>
+            </M>
+        </W>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079W3">
+            <FORM kindOf="original">ka</FORM>
+            <PHON kindOf="original">ka</PHON>
+            <FORM kindOf="standard">ka</FORM>
+            <PHON kindOf="standard">ka</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079W3M1">
+                <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
+                <FORM kindOf="standard">ka</FORM>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
+            </M>
+        </W>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079W4">
+            <FORM kindOf="original">n-hapuy</FORM>
+            <PHON kindOf="original">nħapuj</PHON>
+            <FORM kindOf="standard">n-hapuy</FORM>
+            <PHON kindOf="standard">nħapuj</PHON>
+            <TRANSL xml:lang="zho">n-煮</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079W4M1">
+                <FORM kindOf="original">n</FORM>
+                <PHON kindOf="original">n</PHON>
+                <FORM kindOf="standard">n</FORM>
+                <PHON kindOf="standard">n</PHON>
+                <TRANSL xml:lang="zho">n</TRANSL>
+            </M>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079W4M2">
+                <FORM kindOf="original">hapuy</FORM>
+                <PHON kindOf="original">ħapuj</PHON>
+                <FORM kindOf="standard">hapuy</FORM>
+                <PHON kindOf="standard">ħapuj</PHON>
+                <TRANSL xml:lang="zho">煮</TRANSL>
+            </M>
+        </W>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079W5">
+            <FORM kindOf="original">nii</FORM>
+            <PHON kindOf="original">nii</PHON>
+            <FORM kindOf="standard">nii</FORM>
+            <PHON kindOf="standard">nii</PHON>
+            <TRANSL xml:lang="zho">這</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E011B_P079W5M1">
+                <FORM kindOf="original">nii</FORM>
+                <PHON kindOf="original">nii</PHON>
+                <FORM kindOf="standard">nii</FORM>
+                <PHON kindOf="standard">nii</PHON>
+                <TRANSL xml:lang="zho">這</TRANSL>
+            </M>
+        </W>
+    </S>
+    <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E005B_P127">
+        <FORM kindOf="original">btunux qurug</FORM>
+        <PHON kindOf="original">btunux quɾug</PHON>
+        <FORM kindOf="standard">btunux qurug</FORM>
+        <PHON kindOf="standard">btunux qoɾuɣ</PHON>
+        <TRANSL xml:lang="zho">圓的石頭。</TRANSL>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E005B_P127W1">
+            <FORM kindOf="original">btunux</FORM>
+            <PHON kindOf="original">btunux</PHON>
+            <FORM kindOf="standard">btunux</FORM>
+            <PHON kindOf="standard">btunux</PHON>
+            <TRANSL xml:lang="zho">石頭</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E005B_P127W1M1">
+                <FORM kindOf="original">btunux</FORM>
+                <PHON kindOf="original">btunux</PHON>
+                <FORM kindOf="standard">btunux</FORM>
+                <PHON kindOf="standard">btunux</PHON>
+                <TRANSL xml:lang="zho">石頭</TRANSL>
+            </M>
+        </W>
+        <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E005B_P127W2">
+            <FORM kindOf="original">qurug</FORM>
+            <PHON kindOf="original">quɾug</PHON>
+            <FORM kindOf="standard">qurug</FORM>
+            <PHON kindOf="standard">qoɾuɣ</PHON>
+            <TRANSL xml:lang="zho">圓的</TRANSL>
+            <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E005B_P127W2M1">
+                <FORM kindOf="original">qurug</FORM>
+                <PHON kindOf="original">quɾug</PHON>
+                <FORM kindOf="standard">qurug</FORM>
+                <PHON kindOf="standard">qoɾuɣ</PHON>
+                <TRANSL xml:lang="zho">圓的</TRANSL>
+            </M>
+        </W>
+    </S>
     <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E006C2">
         <FORM kindOf="original">S-m-ipaq laqi =na ka Lowking nii.</FORM>
         <PHON kindOf="original">smipaq laqi na ka lowkiŋ nii</PHON>
@@ -17531,9 +17952,9 @@
         <PHON kindOf="standard">smipaq ɮaqe na ka ɮokiŋ nii</PHON>
         <TRANSL xml:lang="zho">Lowking在打小孩。</TRANSL>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E006C2W1">
-            <FORM kindOf="original">S-m-ipaq</FORM>
+            <FORM kindOf="original">S&lt;m&gt;ipaq</FORM>
             <PHON kindOf="original">smipaq</PHON>
-            <FORM kindOf="standard">S-m-ipaq</FORM>
+            <FORM kindOf="standard">S&lt;m&gt;ipaq</FORM>
             <PHON kindOf="standard">smipaq</PHON>
             <TRANSL xml:lang="zho">打&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E006C2W1M1">
@@ -18152,7 +18573,6 @@
             <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">=ku</FORM>
             <PHON kindOf="standard">ku</PHON>
-            <TRANSL xml:lang="zho">我</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011DW2M1">
                 <FORM kindOf="original">=ku</FORM>
                 <PHON kindOf="original">ku</PHON>
@@ -18160,13 +18580,13 @@
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL xml:lang="zho">我</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">我</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011DW3">
             <FORM kindOf="original">pila</FORM>
             <PHON kindOf="original">pila</PHON>
             <FORM kindOf="standard">pila</FORM>
             <PHON kindOf="standard">piɮa</PHON>
-            <TRANSL xml:lang="zho">錢</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011DW3M1">
                 <FORM kindOf="original">pila</FORM>
                 <PHON kindOf="original">pila</PHON>
@@ -18174,13 +18594,13 @@
                 <PHON kindOf="standard">piɮa</PHON>
                 <TRANSL xml:lang="zho">錢</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">錢</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011DW4">
             <FORM kindOf="original">sunan</FORM>
             <PHON kindOf="original">sunan</PHON>
             <FORM kindOf="standard">sunan</FORM>
             <PHON kindOf="standard">sunan</PHON>
-            <TRANSL xml:lang="zho">你</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011DW4M1">
                 <FORM kindOf="original">sunan</FORM>
                 <PHON kindOf="original">sunan</PHON>
@@ -18188,13 +18608,13 @@
                 <PHON kindOf="standard">sunan</PHON>
                 <TRANSL xml:lang="zho">你</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">你</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011DW5">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
-            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011DW5M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
@@ -18202,13 +18622,13 @@
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">主格</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011DW6">
             <FORM kindOf="original">yaku</FORM>
             <PHON kindOf="original">jaku</PHON>
             <FORM kindOf="standard">yaku</FORM>
             <PHON kindOf="standard">jaku</PHON>
-            <TRANSL xml:lang="zho">我</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011DW6M1">
                 <FORM kindOf="original">yaku</FORM>
                 <PHON kindOf="original">jaku</PHON>
@@ -18216,6 +18636,7 @@
                 <PHON kindOf="standard">jaku</PHON>
                 <TRANSL xml:lang="zho">我</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">我</TRANSL>
         </W>
     </S>
     <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E011E">
@@ -18291,7 +18712,6 @@
             <PHON kindOf="original">mtaqi</PHON>
             <FORM kindOf="standard">M-taqi</FORM>
             <PHON kindOf="standard">mtaqe</PHON>
-            <TRANSL xml:lang="zho">AF-睡覺</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E009CW1M1">
                 <FORM kindOf="original">M</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -18306,13 +18726,13 @@
                 <PHON kindOf="standard">taqe</PHON>
                 <TRANSL xml:lang="zho">睡覺</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">AF-睡覺</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E009CW2">
             <FORM kindOf="original">=ku</FORM>
             <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">=ku</FORM>
             <PHON kindOf="standard">ku</PHON>
-            <TRANSL xml:lang="zho">我</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E009CW2M1">
                 <FORM kindOf="original">=ku</FORM>
                 <PHON kindOf="original">ku</PHON>
@@ -18320,13 +18740,13 @@
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL xml:lang="zho">我</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">我</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E009CW3">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
-            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E009CW3M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
@@ -18334,13 +18754,13 @@
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">主格</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E009CW4">
             <FORM kindOf="original">yaku</FORM>
             <PHON kindOf="original">jaku</PHON>
             <FORM kindOf="standard">yaku</FORM>
             <PHON kindOf="standard">jaku</PHON>
-            <TRANSL xml:lang="zho">我</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E009CW4M1">
                 <FORM kindOf="original">yaku</FORM>
                 <PHON kindOf="original">jaku</PHON>
@@ -18348,6 +18768,7 @@
                 <PHON kindOf="standard">jaku</PHON>
                 <TRANSL xml:lang="zho">我</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">我</TRANSL>
         </W>
     </S>
     <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E009D2">
@@ -18525,9 +18946,9 @@
         <PHON kindOf="standard">smipaq ħeja na ka ɮokiŋ nii</PHON>
         <TRANSL xml:lang="zho">Lowking在打他。</TRANSL>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E006C1W1">
-            <FORM kindOf="original">S-m-ipaq</FORM>
+            <FORM kindOf="original">S&lt;m&gt;ipaq</FORM>
             <PHON kindOf="original">smipaq</PHON>
-            <FORM kindOf="standard">S-m-ipaq</FORM>
+            <FORM kindOf="standard">S&lt;m&gt;ipaq</FORM>
             <PHON kindOf="standard">smipaq</PHON>
             <TRANSL xml:lang="zho">打&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E006C1W1M1">
@@ -18628,7 +19049,6 @@
             <PHON kindOf="original">tmkaʦiŋ</PHON>
             <FORM kindOf="standard">T-m-kacing</FORM>
             <PHON kindOf="standard">tmkaciŋ</PHON>
-            <TRANSL xml:lang="zho">t-AF-牛</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E026CW1M1">
                 <FORM kindOf="original">T</FORM>
                 <PHON kindOf="original">t</PHON>
@@ -18650,13 +19070,13 @@
                 <PHON kindOf="standard">kaciŋ</PHON>
                 <TRANSL xml:lang="zho">牛</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">t-&lt;AF&gt;-牛</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E026CW2">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
-            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E026CW2M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
@@ -18664,13 +19084,13 @@
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">主格</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E026CW3">
             <FORM kindOf="original">qpah-un</FORM>
             <PHON kindOf="original">qpaħun</PHON>
             <FORM kindOf="standard">qpah-un</FORM>
             <PHON kindOf="standard">qpaħon</PHON>
-            <TRANSL xml:lang="zho">工作-PF</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E026CW3M1">
                 <FORM kindOf="original">qpah</FORM>
                 <PHON kindOf="original">qpaħ</PHON>
@@ -18685,13 +19105,13 @@
                 <PHON kindOf="standard">un</PHON>
                 <TRANSL xml:lang="zho">PF</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">工作-PF</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E026CW4">
             <FORM kindOf="original">seejiq</FORM>
             <PHON kindOf="original">səəɟiq</PHON>
             <FORM kindOf="standard">seejiq</FORM>
             <PHON kindOf="standard">səʔəɟeq</PHON>
-            <TRANSL xml:lang="zho">人</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E026CW4M1">
                 <FORM kindOf="original">seejiq</FORM>
                 <PHON kindOf="original">səəɟiq</PHON>
@@ -18699,13 +19119,13 @@
                 <PHON kindOf="standard">səʔəɟeq</PHON>
                 <TRANSL xml:lang="zho">人</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">人</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E026CW5">
             <FORM kindOf="original">gaga</FORM>
             <PHON kindOf="original">gaga</PHON>
             <FORM kindOf="standard">gaga</FORM>
             <PHON kindOf="standard">ɣaɣa</PHON>
-            <TRANSL xml:lang="zho">那</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E026CW5M1">
                 <FORM kindOf="original">gaga</FORM>
                 <PHON kindOf="original">gaga</PHON>
@@ -18713,6 +19133,7 @@
                 <PHON kindOf="standard">ɣaɣa</PHON>
                 <TRANSL xml:lang="zho">那</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">那</TRANSL>
         </W>
     </S>
     <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E018B">
@@ -18727,7 +19148,6 @@
             <PHON kindOf="original">ma</PHON>
             <FORM kindOf="standard">Ma</FORM>
             <PHON kindOf="standard">ma</PHON>
-            <TRANSL xml:lang="zho">為什麼</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E018BW1M1">
                 <FORM kindOf="original">Ma</FORM>
                 <PHON kindOf="original">ma</PHON>
@@ -18735,19 +19155,22 @@
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="zho">為什麼</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">為什麼</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E018BW2">
             <FORM kindOf="original">pahung</FORM>
             <PHON kindOf="original">paħuŋ</PHON>
             <FORM kindOf="standard">pahung</FORM>
             <PHON kindOf="standard">paħoŋ</PHON>
-            <TRANSL xml:lang="zho">生氣/膽大</TRANSL>
+            <TRANSL xml:lang="zho">生氣</TRANSL>
+            <TRANSL xml:lang="zho" ver="alt">膽大</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E018BW2M1">
                 <FORM kindOf="original">pahung</FORM>
                 <PHON kindOf="original">paħuŋ</PHON>
                 <FORM kindOf="standard">pahung</FORM>
                 <PHON kindOf="standard">paħoŋ</PHON>
-                <TRANSL xml:lang="zho">生氣/膽大</TRANSL>
+                <TRANSL xml:lang="zho">生氣</TRANSL>
+                <TRANSL xml:lang="zho" ver="alt">膽大</TRANSL>
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E018BW3">
@@ -18755,7 +19178,6 @@
             <PHON kindOf="original">bi</PHON>
             <FORM kindOf="standard">bi</FORM>
             <PHON kindOf="standard">bi</PHON>
-            <TRANSL xml:lang="zho">很</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E018BW3M1">
                 <FORM kindOf="original">bi</FORM>
                 <PHON kindOf="original">bi</PHON>
@@ -18763,13 +19185,13 @@
                 <PHON kindOf="standard">bi</PHON>
                 <TRANSL xml:lang="zho">很</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">很</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E018BW4">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
-            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E018BW4M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
@@ -18777,13 +19199,13 @@
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">主格</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E018BW5">
             <FORM kindOf="original">Lowking</FORM>
             <PHON kindOf="original">lowkiŋ</PHON>
             <FORM kindOf="standard">Lowking</FORM>
             <PHON kindOf="standard">ɮokiŋ</PHON>
-            <TRANSL xml:lang="zho">人名</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E018BW5M1">
                 <FORM kindOf="original">Lowking</FORM>
                 <PHON kindOf="original">lowkiŋ</PHON>
@@ -18791,6 +19213,7 @@
                 <PHON kindOf="standard">ɮokiŋ</PHON>
                 <TRANSL xml:lang="zho">人名</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">人名</TRANSL>
         </W>
     </S>
     <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E015B">
@@ -18806,7 +19229,6 @@
             <PHON kindOf="original">ga</PHON>
             <FORM kindOf="standard">Ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
-            <TRANSL xml:lang="zho">正在</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E015BW1M1">
                 <FORM kindOf="original">Ga</FORM>
                 <PHON kindOf="original">ga</PHON>
@@ -18814,13 +19236,13 @@
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho">正在</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">正在</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E015BW2">
             <FORM kindOf="original">musa</FORM>
             <PHON kindOf="original">musa</PHON>
             <FORM kindOf="standard">musa</FORM>
             <PHON kindOf="standard">musa</PHON>
-            <TRANSL xml:lang="zho">去</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E015BW2M1">
                 <FORM kindOf="original">musa</FORM>
                 <PHON kindOf="original">musa</PHON>
@@ -18828,13 +19250,13 @@
                 <PHON kindOf="standard">musa</PHON>
                 <TRANSL xml:lang="zho">去</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">去</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E015BW3">
             <FORM kindOf="original">p-sari</FORM>
             <PHON kindOf="original">psaɾi</PHON>
             <FORM kindOf="standard">p-sari</FORM>
             <PHON kindOf="standard">psaɾi</PHON>
-            <TRANSL xml:lang="zho">p-芋頭</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E015BW3M1">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
@@ -18849,13 +19271,13 @@
                 <PHON kindOf="standard">saɾi</PHON>
                 <TRANSL xml:lang="zho">芋頭</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">p-芋頭</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E015BW4">
             <FORM kindOf="original">wa</FORM>
             <PHON kindOf="original">wa</PHON>
             <FORM kindOf="standard">wa</FORM>
             <PHON kindOf="standard">wa</PHON>
-            <TRANSL xml:lang="zho">語助詞</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C03_E015BW4M1">
                 <FORM kindOf="original">wa</FORM>
                 <PHON kindOf="original">wa</PHON>
@@ -18863,6 +19285,7 @@
                 <PHON kindOf="standard">wa</PHON>
                 <TRANSL xml:lang="zho">語助詞</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">語助詞</TRANSL>
         </W>
     </S>
     <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026D1">
@@ -18886,9 +19309,9 @@
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026D1W2">
-            <FORM kindOf="original">m-n-kan</FORM>
+            <FORM kindOf="original">m&lt;n&gt;kan</FORM>
             <PHON kindOf="original">mnkan</PHON>
-            <FORM kindOf="standard">m-n-kan</FORM>
+            <FORM kindOf="standard">m&lt;n&gt;kan</FORM>
             <PHON kindOf="standard">mnkan</PHON>
             <TRANSL xml:lang="zho">吃&lt;n&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026D1W2M1">
@@ -18991,9 +19414,9 @@
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026D2W2">
-            <FORM kindOf="original">m-n-kan</FORM>
+            <FORM kindOf="original">m&lt;n&gt;kan</FORM>
             <PHON kindOf="original">mnkan</PHON>
-            <FORM kindOf="standard">m-n-kan</FORM>
+            <FORM kindOf="standard">m&lt;n&gt;kan</FORM>
             <PHON kindOf="standard">mnkan</PHON>
             <TRANSL xml:lang="zho">吃&lt;n&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026D2W2M1">
@@ -19096,9 +19519,9 @@
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026D3W2">
-            <FORM kindOf="original">m-n-kan</FORM>
+            <FORM kindOf="original">m&lt;n&gt;kan</FORM>
             <PHON kindOf="original">mnkan</PHON>
-            <FORM kindOf="standard">m-n-kan</FORM>
+            <FORM kindOf="standard">m&lt;n&gt;kan</FORM>
             <PHON kindOf="standard">mnkan</PHON>
             <TRANSL xml:lang="zho">吃&lt;n&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026D3W2M1">
@@ -19201,9 +19624,9 @@
             </M>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026D4W2">
-            <FORM kindOf="original">m-n-kan</FORM>
+            <FORM kindOf="original">m&lt;n&gt;kan</FORM>
             <PHON kindOf="original">mnkan</PHON>
-            <FORM kindOf="standard">m-n-kan</FORM>
+            <FORM kindOf="standard">m&lt;n&gt;kan</FORM>
             <PHON kindOf="standard">mnkan</PHON>
             <TRANSL xml:lang="zho">吃&lt;n&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026D4W2M1">
@@ -19296,7 +19719,6 @@
             <PHON kindOf="original">ma</PHON>
             <FORM kindOf="standard">Ma</FORM>
             <PHON kindOf="standard">ma</PHON>
-            <TRANSL xml:lang="zho">為什麼</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004CW1M1">
                 <FORM kindOf="original">Ma</FORM>
                 <PHON kindOf="original">ma</PHON>
@@ -19304,13 +19726,13 @@
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="zho">為什麼</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">為什麼</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004CW2">
             <FORM kindOf="original">m-klaway</FORM>
             <PHON kindOf="original">mklawaj</PHON>
             <FORM kindOf="standard">m-klaway</FORM>
             <PHON kindOf="standard">mkɮawaj</PHON>
-            <TRANSL xml:lang="zho">AF-燕子</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004CW2M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -19325,13 +19747,13 @@
                 <PHON kindOf="standard">kɮawaj</PHON>
                 <TRANSL xml:lang="zho">燕子</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">AF-燕子</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004CW3">
             <FORM kindOf="original">bi</FORM>
             <PHON kindOf="original">bi</PHON>
             <FORM kindOf="standard">bi</FORM>
             <PHON kindOf="standard">bi</PHON>
-            <TRANSL xml:lang="zho">很</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004CW3M1">
                 <FORM kindOf="original">bi</FORM>
                 <PHON kindOf="original">bi</PHON>
@@ -19339,13 +19761,13 @@
                 <PHON kindOf="standard">bi</PHON>
                 <TRANSL xml:lang="zho">很</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">很</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004CW4">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
-            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004CW4M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
@@ -19353,13 +19775,13 @@
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">主格</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004CW5">
             <FORM kindOf="original">seejiq</FORM>
             <PHON kindOf="original">səəɟiq</PHON>
             <FORM kindOf="standard">seejiq</FORM>
             <PHON kindOf="standard">səʔəɟeq</PHON>
-            <TRANSL xml:lang="zho">人</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004CW5M1">
                 <FORM kindOf="original">seejiq</FORM>
                 <PHON kindOf="original">səəɟiq</PHON>
@@ -19367,13 +19789,13 @@
                 <PHON kindOf="standard">səʔəɟeq</PHON>
                 <TRANSL xml:lang="zho">人</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">人</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004CW6">
             <FORM kindOf="original">gaga</FORM>
             <PHON kindOf="original">gaga</PHON>
             <FORM kindOf="standard">gaga</FORM>
             <PHON kindOf="standard">ɣaɣa</PHON>
-            <TRANSL xml:lang="zho">那</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004CW6M1">
                 <FORM kindOf="original">gaga</FORM>
                 <PHON kindOf="original">gaga</PHON>
@@ -19381,6 +19803,7 @@
                 <PHON kindOf="standard">ɣaɣa</PHON>
                 <TRANSL xml:lang="zho">那</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">那</TRANSL>
         </W>
     </S>
     <S id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C04_E004C2">
@@ -19567,11 +19990,10 @@
         <PHON kindOf="standard">tmatak ska qmpaħan ka jaku</PHON>
         <TRANSL xml:lang="zho">我在田地裡砍草。</TRANSL>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023BW1">
-            <FORM kindOf="original">T-m-atak</FORM>
+            <FORM kindOf="original">T&lt;m&gt;atak</FORM>
             <PHON kindOf="original">tmatak</PHON>
-            <FORM kindOf="standard">T-m-atak</FORM>
+            <FORM kindOf="standard">T&lt;m&gt;atak</FORM>
             <PHON kindOf="standard">tmatak</PHON>
-            <TRANSL xml:lang="zho">砍&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023BW1M1">
                 <FORM kindOf="original">T-atak</FORM>
                 <PHON kindOf="original">tatak</PHON>
@@ -19586,13 +20008,13 @@
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL xml:lang="zho">AF</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">砍&lt;AF&gt;</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023BW2">
             <FORM kindOf="original">ska</FORM>
             <PHON kindOf="original">ska</PHON>
             <FORM kindOf="standard">ska</FORM>
             <PHON kindOf="standard">ska</PHON>
-            <TRANSL xml:lang="zho">在</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023BW2M1">
                 <FORM kindOf="original">ska</FORM>
                 <PHON kindOf="original">ska</PHON>
@@ -19600,13 +20022,13 @@
                 <PHON kindOf="standard">ska</PHON>
                 <TRANSL xml:lang="zho">在</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">在</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023BW3">
-            <FORM kindOf="original">q-m-pah-an</FORM>
+            <FORM kindOf="original">q&lt;m&gt;pah-an</FORM>
             <PHON kindOf="original">qmpaħan</PHON>
-            <FORM kindOf="standard">q-m-pah-an</FORM>
+            <FORM kindOf="standard">q&lt;m&gt;pah-an</FORM>
             <PHON kindOf="standard">qmpaħan</PHON>
-            <TRANSL xml:lang="zho">工作-LF&lt;AF&gt;</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023BW3M1">
                 <FORM kindOf="original">q-pah</FORM>
                 <PHON kindOf="original">qpaħ</PHON>
@@ -19628,13 +20050,13 @@
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL xml:lang="zho">LF</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">工作&lt;AF&gt;-LF</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023BW4">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
-            <TRANSL xml:lang="zho">主格</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023BW4M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
@@ -19642,13 +20064,13 @@
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">主格</TRANSL>
         </W>
         <W id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023BW5">
             <FORM kindOf="original">yaku</FORM>
             <PHON kindOf="original">jaku</PHON>
             <FORM kindOf="standard">yaku</FORM>
             <PHON kindOf="standard">jaku</PHON>
-            <TRANSL xml:lang="zho">我</TRANSL>
             <M id="HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023BW5M1">
                 <FORM kindOf="original">yaku</FORM>
                 <PHON kindOf="original">jaku</PHON>
@@ -19656,6 +20078,7 @@
                 <PHON kindOf="standard">jaku</PHON>
                 <TRANSL xml:lang="zho">我</TRANSL>
             </M>
+            <TRANSL xml:lang="zho">我</TRANSL>
         </W>
     </S>
 </TEXT>
