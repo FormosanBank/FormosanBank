@@ -1,0 +1,16 @@
+# Per-record free-translation repairs that cannot be inferred from shape alone.
+# POL-039: the data lives here, not in python.
+#
+# action = note     the SECOND same-language line is metalinguistic commentary,
+#                   not a translation: it moves to @notes on the first.
+# action = drop_all every translation is removed from the sentence -- the record's
+#                   translations belong to a larger span than this S covers.
+#
+# file_stem	record	lang	action
+Amis_Nr-frog_ofad	24	zho	note
+bnNr-frog_Laniahu	43	zho	note
+KavCon-weaving_abas_ipay3	149	eng	note
+skzyNr-frog_sinay	49	zho	note
+skzyNr-frog_sinay	68	zho	note
+skzyNr-frog_sinay	108	zho	note
+AtaNr-weaving_Kagaw	100	*	drop_all
