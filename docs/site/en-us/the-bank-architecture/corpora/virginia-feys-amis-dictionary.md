@@ -29,10 +29,9 @@ This candidate remains under review. The statistics below describe the checked-i
 
 - The digital source was checked against raw text, corrected Word files and
   conversion history. This is not a complete review of the printed dictionary.
-- S3846 retains the published source spelling `Ga'ayto`. The printed guide
-  identifies g as the ng sound, but G is absent from the selected profile and
-  its generated PHON contains `*`. Source-profile treatment remains unresolved;
-  do not change the original spelling merely to clear that result.
+- S3846 retains the source spelling `Ga'ayto`; the derived standard is
+  `Nga'ayto`. Both PHON tiers use /ŋ/, following the printed guide (page 20).
+  This narrow mapping does not recover phonemic contrasts absent from the source.
 - The proposed `kalatolo` / `kalitolo` reading still needs classification as
   competing words or pronunciation variants.
 - Li, Joby and Zeitoun (2024) note that Fey misses some phonemic contrasts,
@@ -47,17 +46,17 @@ lists the remaining decisions. A successful build or XML check does not settle t
 
 ## Access Details
 
-The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/449e42384fa5b0be9454a071026dc53e1bd95bd3/Corpora/Virginia_Fey_Dictionary/)
+The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/13d6237a9e992a23fc3e582adcb67227c50e87a2/Corpora/Virginia_Fey_Dictionary/)
 match the reviewed private development commit. This proposal has not been merged.
 
 ## Corpus Processing
 
-The build starts from the preserved hand-corrected baseline and pinned digital source, applies source-located repairs, and runs the current shared tools. It accounts for 2,012 complete source rows while retaining all 2,040 published sentence IDs. Distinct source readings are preserved. The remaining G and kalatolo/kalitolo decisions are not resolved by a deterministic build.
+The build starts from the preserved hand-corrected baseline and pinned digital source, applies source-located repairs, and runs the current shared tools. It accounts for 2,012 complete source rows while retaining all 2,040 published sentence IDs. Distinct source readings are preserved. Source-specific tables preserve original G while deriving ng and /ŋ/ from the printed guide. The kalatolo/kalitolo reading still needs classification.
 
 Run `bash Corpora/Virginia_Fey_Dictionary/CodeAndDocs/generate_xml.sh` in the candidate
-FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/449e42384fa5b0be9454a071026dc53e1bd95bd3/Corpora/Virginia_Fey_Dictionary/README.md) documents dependencies,
+FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/13d6237a9e992a23fc3e582adcb67227c50e87a2/Corpora/Virginia_Fey_Dictionary/README.md) documents dependencies,
 source coverage and any scoped pipeline deviations. The
-[build provenance](https://github.com/FormosanBank/FormosanBank/blob/449e42384fa5b0be9454a071026dc53e1bd95bd3/Corpora/Virginia_Fey_Dictionary/CodeAndDocs/provenance.json) records the actual
+[build provenance](https://github.com/FormosanBank/FormosanBank/blob/13d6237a9e992a23fc3e582adcb67227c50e87a2/Corpora/Virginia_Fey_Dictionary/CodeAndDocs/provenance.json) records the actual
 tools used for the retained output; it does not select or pin tools for later builds.
 
 ## Copyright
