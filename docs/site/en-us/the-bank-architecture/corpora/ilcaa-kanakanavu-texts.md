@@ -27,8 +27,10 @@ This candidate remains under review. The statistics below describe the retained 
 
 ## Notes and Issues
 
-- The Asai2026 profile, conversion and reviewed conditioned phonology need a
-  shared implementation reviewed separately from this corpus (POL-049).
+- Current Ortho113 does not reproduce the reviewed conditioned standard PHON.
+  Existing CLI flags can read the committed source profile and conversion;
+  their location is not the phonology limitation. The standard-tier decision
+  still needs separate review (POL-003/POL-049).
 - The source parser resolves six spelling variants and the old V1/V2 IDs.
   Four parenthetical classifications still need resolution under POL-028.
   Clause brackets remain at S; the shared PHON step must handle them as
@@ -43,17 +45,17 @@ lists the remaining decisions. A successful build or XML check does not settle t
 
 ## Access Details
 
-The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/fdc98a5f71ba181f5fe08c941a365db6300e1c08/Corpora/ILCAA-Kanakanavu-Texts/)
+The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/b2850caf7a9eee77929eaf2b9c8515923f485f9a/Corpora/ILCAA-Kanakanavu-Texts/)
 match the reviewed private development commit. This proposal has not been merged.
 
 ## Corpus Processing
 
-The revised parser uses the committed CC BY 4.0 PDF, source-specific decisions and current shared tools. Its selected source inventory covers 1,431 units and emits 1,449 source S records. Source repairs include spelling variants, gloss columns, stacked infixes and four pseudo-clefts. These changes are not yet reflected in the retained final XML: shared source profiles and conditioned phonology are still missing. Provenance continues to identify the actual earlier final build.
+The revised parser uses the committed CC BY 4.0 PDF, source-specific decisions and current shared tools. Its selected source inventory covers 1,431 units and emits 1,449 source S records. Source repairs include spelling variants, gloss columns, stacked infixes and four pseudo-clefts. These changes are not yet reflected in the retained final XML: canonical standard PHON does not reproduce the reviewed conditioned sounds. Existing CLI flags can load the committed source tables, but that alone does not resolve the standard-tier decision. Provenance continues to identify the actual earlier final build.
 
 Run `bash Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/generate_xml.sh` in the candidate
-FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/fdc98a5f71ba181f5fe08c941a365db6300e1c08/Corpora/ILCAA-Kanakanavu-Texts/README.md) documents dependencies,
+FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/b2850caf7a9eee77929eaf2b9c8515923f485f9a/Corpora/ILCAA-Kanakanavu-Texts/README.md) documents dependencies,
 source coverage and any scoped pipeline deviations. The
-[build provenance](https://github.com/FormosanBank/FormosanBank/blob/fdc98a5f71ba181f5fe08c941a365db6300e1c08/Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/provenance.json) records the actual
+[build provenance](https://github.com/FormosanBank/FormosanBank/blob/b2850caf7a9eee77929eaf2b9c8515923f485f9a/Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/provenance.json) records the actual
 tools used for the retained output; it does not select or pin tools for later builds.
 
 ## Copyright
