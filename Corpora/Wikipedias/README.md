@@ -1,119 +1,172 @@
 # Wikipedias
 
-Wikipedia articles in the five Formosan languages that have a Wikipedia:
+Articles from the Wikipedia editions for
 Amis (ami), Atayal (tay), Paiwan (pwn), Sakizaya (szy), and Seediq (trv),
 scraped 2026-06 and structured into the FormosanBank XML format. One XML
-file per article (13,238 articles), sentence tier only (no word
+file per article (12,748 articles), sentence tier only (no word
 segmentation, no translations).
 
-## License and AI Use
+## Rights
 
-This corpus is subject to its source license and the central FormosanBank
-terms in [LICENSE.md](../../LICENSE.md) and
-[AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is
-prohibited without prior written permission. Wikipedia text is CC BY-SA.
+**License:** CC BY-SA 4.0
+**Rights source:** Wikipedia contributors, 2023-06-07; evidence: ask maintainer
+
+Wikipedia text uses CC BY-SA 4.0 under section 7 of the
+[Wikimedia Terms of Use](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use/en),
+effective June 7, 2023, before this June 2026 scrape. The corpus's previous
+`CC BY-SA` value now includes the version required by the rights vocabulary.
+Attribute the contributors through each article and its history, preserve
+additional attribution notices, and identify modifications. `TEXT/@source`
+identifies the article title; its language's Wikipedia and article history
+provide the contributor record. The per-language citation is retained.
+
+The corpus is also subject to the central FormosanBank notices in
+[LICENSE.md](https://github.com/FormosanBank/FormosanBank/blob/main/LICENSE.md)
+and [AI-USE-ADDENDUM.md](https://github.com/FormosanBank/FormosanBank/blob/main/AI-USE-ADDENDUM.md).
+Commercial AI Use is prohibited without prior written permission.
 
 ## Reproducing `XML/`
 
-The corpus is **not re-scraped**: the live wikis have moved on since the
-2026-06 scrape, so the published XML is the baseline. The pristine
-pre-correction XML is snapshotted in `CodeAndDocs/pre_correction_snapshot/`
-(POL-035), and `CodeAndDocs/make_xml.sh` regenerates `XML/` from it:
+The live wikis have changed since the June 2026 scrape. Rebuild from the
+preserved 13,278-file [POL-035 snapshot](CodeAndDocs/pre_correction_snapshot/),
+not a fresh scrape. Use the current shared FormosanBank environment:
 
 ```bash
-cd Corpora/Wikipedias
-PYTHON=/path/to/python ./CodeAndDocs/make_xml.sh [path-to-FormosanBank-root]
+PYTHON=python3 ./CodeAndDocs/generate_xml.sh [path-to-FormosanBank-root]
+```
+
+The optional root selects the current tools for a private development build.
+In the published layout the default is the containing FormosanBank checkout.
+The build reports differences from [tool provenance](CodeAndDocs/provenance.json)
+and continues with the current tools. After reviewing a build intended for
+commit, record its actual tools with:
+
+```bash
+python3 CodeAndDocs/generate_xml.py --record-provenance /path/to/FormosanBank
 ```
 
 Steps, in order:
 
-1. **Restore** `XML/` from `CodeAndDocs/pre_correction_snapshot/`
-   (13,278 files).
-2. **`QC/cleaning/apply_manual_edits.py`** — re-applies the recorded hand
-   edits in `CodeAndDocs/manual_edits.xml` (POL-030); it runs before
-   `clean_xml`. One edit is recorded: `Sakizaya/miladlad_tu_udip.xml`
-   `S id="0"`, whose original FORM began with a stray `? ` from the scrape
-   (V142). It is not a grammaticality marker — the article body simply
-   starts after it — so the `? ` is dropped (maintainer ruling
-   2026-08-12); the standard tier and PHON regenerate from the corrected
-   original in later steps. `CodeAndDocs/manual_edits.md` is the readable
-   changelog.
-3. **`delete_duplicate_articles.py`** — the scrape saved 29 articles
-   twice (duplicate downloads named `<name> (1).xml` / `(2)`), giving 58
-   files with colliding `TEXT/@id`. One file per id is kept — the
-   canonically-named one, or the lowest counter when the group has no
-   counter-less file — and the other copy is deleted (29 files). Every
-   group is byte-identical across its copies, so no content is lost.
-4. **`delete_nonlatin_articles.py`** — deletes the 11 articles whose
-   FORMs contain no Latin letter at all (punctuation only, leftover
-   `== ... ==` heading markup, or Chinese editorial remarks/headings).
-   They are not language data.
-5. **`add_dialect_attrs.py`** — sets `dialect="unknown"` on every TEXT.
-   No Wikipedia article identifies its own dialect; the wikis are
-   community-written with mixed dialect backgrounds.
-6. **`normalize_seediq_quotes.py`** — Seediq only, before `clean_xml`;
-   see "Apostrophe handling" below.
-7. **`QC/cleaning/clean_xml.py`** — punctuation/Unicode canonicalization
-   (NFC, HTML entities, typographic quotes/dashes, non-breaking spaces).
-   Writes a per-run `XML/cleaner_warnings.csv`: review, then delete —
-   it is never committed (POL-033).
-8. **`QC/utilities/standardize.py --remove_accents`** — standard tier =
-   copy of the original tier with accents/stray combining marks removed.
-   No conversion table is applied (dialect unknown).
-9. **`QC/utilities/add_phonology.py --orthography Ortho113`** — PHON
-   tiers from the default (dialect-unknown) IPA columns. Sounds that
-   differ by dialect appear as `[x|y]` variant groups; punctuation is
-   not carried into PHON.
+1. `generate_xml.py` restores the unchanged snapshot and spells its licence
+   `CC BY-SA 4.0`; article text, IDs and citations remain source-owned.
+2. Shared `apply_manual_edits.py` reapplies the recorded leading-`?` correction
+   to Sakizaya/miladlad_tu_udip.xml, S=0 (August 12, 2026 ruling).
+   [The original correction record](CodeAndDocs/manual_edits.md) is preserved.
+3. `delete_duplicate_articles.py` removes 29 byte-identical repeat downloads
+   of the same article ID. All groups are checked before deletion; differing
+   content stops the build for review. Keep the counter-less filename, or the
+   lowest counter where both names have counters.
+4. `delete_nonlatin_articles.py` removes the 11 ruled non-content pages.
+   The [40 exclusions](CodeAndDocs/source_exclusions.csv) name every source
+   file, reason and retained duplicate counterpart.
+5. `add_dialect_attrs.py` supplies `dialect="unknown"` for all five languages.
+6. `normalize_seediq_quotes.py` applies the scoped quotation rulings below.
+7. Shared `clean_xml.py` canonicalizes punctuation and Unicode.
+8. `drop_redirect_copies.py` removes 490 repeat downloads through source
+   redirects. The [source manifest](CodeAndDocs/source_redirects.csv) records
+   each removed ID, retained article, historical revision or log evidence,
+   and reviewed text hash. Every alias must match its retained article's
+   original FORM exactly before any removal occurs (POL-022, POL-051).
+9. Shared `standardize.py --remove_accents` regenerates standard FORM.
+   It removes acute, breve and macron from Latin vowels while protecting
+   registered standard letters. No conversion table is used.
+10. Shared `add_phonology.py --orthography Ortho113` regenerates both PHON
+   tiers using the corpus-wide orthography ruling below.
 
-The published corpus is the 13,238 files this leaves.
+**POL-047 deviation:** After snapshot restoration and manual edits, the build
+retains the approved duplicate-download removal, non-content removal, dialect
+metadata and Seediq quotation steps before cleaning. These implement the
+August 11–12, 2026 corpus decisions, not additional general cleaning rules.
+The subsequent redirect-copy check runs after cleaning so it compares the
+approved corrected originals; its manifest retains the historical source
+evidence and a surviving counterpart for each excluded alias.
 
-The pipeline is deterministic and idempotent: consecutive runs produce
-byte-identical output.
+The result contains 12,748 articles: 1,892 Amis, 2,935 Atayal, 455 Paiwan,
+5,498 Sakizaya and 1,968 Seediq. Each has one S with original and standard
+FORM and PHON. Warning CSVs remain available in `XML/` for review;
+copy them to an external report directory and do not commit them (POL-033).
+The build does not download sources or run validators. Test the reviewed
+source inventory, exact V129/V146 exceptions and protected corrections with:
 
-### Historical scrape provenance (not part of the pipeline)
+```bash
+PYTHONPATH=/path/to/FormosanBank python3 -m pytest CodeAndDocs/test_source.py
+```
 
-The original scrape-and-clean scripts and their logs are kept in
-`CodeAndDocs/` for provenance only: `download.py` (Wikipedia API scrape;
-article lists in `Titles/`), `clean_articles.py` (TXT → XML; link/citation
-removal), `remove_other_langs.py` (strips non-Formosan text),
-`delete_empty_forms.py` (drops articles left empty),
-`consolidate_citations.py` (one shared citation per language Wikipedia),
-and the `*.log` files recording exactly what those steps removed. Their
-input (the live wikis of 2026-06) no longer exists in that state, so they
-are not re-run.
+The [exception fixtures](CodeAndDocs/source_exceptions.csv) identify each
+ruled record and its independently reviewed original FORM, not a shared
+validator exemption. Current validators continue to report those findings.
+
+### Historical scrape provenance
+
+`download.py`, `clean_articles.py`, `remove_other_langs.py`,
+`delete_empty_forms.py`, `consolidate_citations.py`, `Titles/` and their
+existing logs in `CodeAndDocs/` document the historical acquisition and
+filtering. Their former `Final_XML/` paths describe that obsolete process;
+none runs in the current build. The POL-035 snapshot preserves the reviewed
+result and subsequent manual corrections remain separate.
 
 ## Notes for data users
 
+- **Recovered source sections**: the historical citation cutter stopped at
+  an early reference heading in 25 Seediq articles and lost 28 later body
+  sections. The manual edits restore those sections from verified historical
+  revisions, preserving repeated sections in Gluban and Tkijig. Five other
+  articles recover their author credits in source FORM notes. The 322 Chinese
+  section labels also remain in notes beside their native headings; ten exact
+  URL strings are excluded without dropping adjacent text. Source revisions
+  and protected published readings are recorded in
+  [citation_restorations.csv](CodeAndDocs/citation_restorations.csv).
+  Existing article text and IDs are preserved. This covers the 30 identified
+  cases; the remaining historical citation cuts are still under review.
+  Restored punctuation follows the same shared cleaning and Seediq quotation
+  steps. Original forms with notes receive those corrections too; note text
+  and word-internal apostrophes remain unchanged.
+- **Language review remains open**: nine retained Amis-labeled biographies
+  appear to contain substantial Ilocano passages: George Harrison, Joe Biden,
+  Grover Cleveland, George Washington, Barack Obama, John Lennon, Ringo Starr,
+  John F. Kennedy and Charles III. Their original text is preserved pending
+  source-language review. Obama's article also contains Amis text, so a
+  blanket article exclusion would lose relevant content. The two Seediq
+  QSAN pages also retain predominantly English text and need the same review.
 - **`dialect="unknown"` everywhere**: Wikipedia articles carry no dialect
   identification. For Seediq this means the corpus counts as Seediq, not
   Truku, under FormosanBank counting rules (trv counts as Truku only with
   an explicit `dialect="Truku"`).
-- **One file per article**: the 29 twice-downloaded articles now have a
-  single file each (pipeline step 3). Two of them keep a `(1)` in the
-  filename (`Atayal/msin (1).xml`, `Sakizaya/Oro’raw (1).xml`) because
-  the scrape never wrote a counter-less copy; the file names carry no
-  meaning, the `TEXT/@id` does. Sentence-level duplication *across*
-  articles (wiki boilerplate) is still reported SOFT by the
-  duplicate-sentence validator — this corpus declares no dedup step.
+- **One file per article**: the 29 same-ID repeat downloads are removed
+  in pipeline step 3. `Sakizaya/Oro’raw (1).xml` retains its counter because
+  the scrape never wrote a counter-less copy. The earlier retained
+  `Atayal/msin (1).xml` and the Sakizaya African Union alias are now among
+  the source-confirmed redirects; their final counterparts are recorded in
+  the redirect manifest. A further 490 alias downloads point to
+  retained source articles (step 8): 108 Amis, 81 Atayal, 17 Paiwan,
+  194 Sakizaya and 90 Seediq. These removals do not deduplicate distinct
+  source articles or different article readings merely because they match.
+  Remaining cross-article repetition is reported by the duplicate validator.
 - **PHON is provisional**: with dialect unknown, IPA uses default columns;
   dialect-dependent sounds appear as `[x|y]` variant groups. The corpus
   is phonologized under a blanket Ortho113 assumption, which the source
   text does not state. Characters with no IPA value (mostly digits, plus
   loanword letters and CJK) appear as `*`. What that assumption is worth,
-  and what it costs, is documented in full in "Appendix — the orthography
+  and what it costs, is documented in full in "Appendix - the orthography
   behind PHON" at the end of this file.
   **Decision (maintainer ruling, 2026-08-12): Ortho113 is used
   corpus-wide, for the reasons given in that appendix.** The one material
-  divergence — Atayal `e` (Ortho113 `e` vs Church `ə`, 35,336
-  occurrences) — is known, quantified there, and accepted as
+  divergence - Atayal `e` (Ortho113 `e` vs Church `ə`, 35,336
+  occurrences in the August 12 inventory) - is known, quantified there, and accepted as
   unadjudicable: the articles state no orthography and carry no
   translations, so no evidence could settle which value their authors
   intended.
-- **Wiki-markup residue**: some articles retain asterisks (list markup),
-  literal `|` from table/citation lines, and similar artifacts of the
-  source pages. This residue is deliberately **retained as-is**
-  (maintainer ruling 2026-08-12): it is audit-flagged (c022 / V129 / the
-  `|` share of V146) but never silently edited out of the FORMs.
+- **Wiki-markup residue**: some articles retain asterisks (list markup,
+  reconstruction and footnote markers, separators, and multiplication),
+  literal `|` from table/citation lines, and similar source-page artifacts.
+  The August 12, 2026 ruling retains these characters as-is. After excluding
+  verified redirect copies, 92 ASCII asterisks remain in 30 original and 30
+  standard FORMs (60 V129 findings); literal pipes remain in 35 source
+  articles (70 V146 PHON findings). The eight fewer V129 findings reflect
+  four excluded alias copies, whose article text remains under its canonical
+  source title. The abandoned
+  `*` to `∗` substitution changed source text merely to avoid a validator.
+  It is removed. These exact exceptions remain audit-visible and tested.
 
 ## Apostrophe (`'`) handling
 
@@ -125,8 +178,8 @@ articles carry no translations, so FormosanBank's quote/glottal classifier
 cannot confirm most cases; ambiguous `'` are accepted as glottal and not
 warned on. This should be revisited when a better language model can do
 reliable automatic correction. (Wikipedia authors also mix straight/curly
-punctuation inconsistently — e.g. Sakizaya articles write a word-final
-glottal `'` followed by a curly `’` closing quote — so codepoint
+punctuation inconsistently - e.g. Sakizaya articles write a word-final
+glottal `'` followed by a curly `’` closing quote - so codepoint
 distinctions in the source cannot be trusted as signal.)
 
 **Seediq only**: Seediq orthography does not use `'` as a letter (no `'`
@@ -141,20 +194,24 @@ in `XML/Seediq/` only:
 1. literal `''` → `"`;
 2. every remaining `'` → `"`, with two exceptions that keep `'`:
    - **word-internal apostrophes** (a letter on both sides, e.g. `b'anux`,
-     `hla'alua`, `mu'izzaddin`) — elided-vowel spellings and romanized
+     `hla'alua`, `mu'izzaddin`) - elided-vowel spellings and romanized
      names, not quotation marks;
    - the words `knita'` and `brbiru'`, which keep a genuine glottal `'`.
      These two occur in the article-stub boilerplate `cinkhulan sa knita'
      sa brbiru'` (≈ "source: seen in the writings/documents") and are
-     Atayal vocabulary (`knita'` "view/seen", `biru'` "book/writing" —
+     Atayal vocabulary (`knita'` "view/seen", `biru'` "book/writing" -
      both attested only in Atayal corpora; Seediq uses *patas*), spelled
      with the Atayal glottal apostrophe.
 
-## Appendix — the orthography behind PHON
+## Appendix - the orthography behind PHON
+
+This preserved August 12, 2026 analysis covers the previous 13,238-file
+inventory, before redirect-copy exclusions. Its counts and percentages are
+historical evidence for the unchanged corpus-wide Ortho113 ruling.
 
 **Short version.** The `PHON` tiers in this corpus are generated by mapping
-each letter of the `FORM` text to IPA through **one** orthography table —
-`Orthographies/Ortho113/`, dialect-agnostic column — for all five languages
+each letter of the `FORM` text to IPA through **one** orthography table -
+`Orthographies/Ortho113/`, dialect-agnostic column - for all five languages
 and all 13,238 articles. Wikipedia articles do not state which orthography
 their author used, so this is an assumption, not a fact recovered from the
 source. This appendix gives the evidence for it and the size of the residual
@@ -180,7 +237,7 @@ corpus, combined per language (original tier):
 | Seediq | **Ortho113** | 87.9% | 1st (Ortho94 4th, 87.9%) |
 
 So Ortho113 is the best-supported table for Paiwan, Sakizaya and Seediq. For
-Amis and Atayal another table scores higher — and the reason is *not* that
+Amis and Atayal another table scores higher - and the reason is *not* that
 those wikis spell differently; see "Where the tables disagree" below.
 
 ### Is the orthography uniform across articles?
@@ -204,7 +261,7 @@ not evidence that different articles follow different spelling conventions.**
 Nothing in the data supports phonologizing article by article, which is why a
 single table is applied corpus-wide.
 
-### Where the tables disagree — and why it mostly costs ambiguity, not accuracy
+### Where the tables disagree - and why it mostly costs ambiguity, not accuracy
 
 For nearly every letter where Ortho113 and a rival table differ, Ortho113's
 value is a **variant group** rather than a competing single value: it records
@@ -217,11 +274,11 @@ not as silently wrong segments:
 | Amis | 51.4% | `[o\|u]`, `[ɬ\|ɮ]`, `[b\|v]` |
 | Atayal | 24.8% | `[s\|ɕ]`, `[ʦ\|ʨ]` |
 | Sakizaya | 19.0% | `[r\|ɾ]`, `[ʔ\|ʡ]` |
-| Paiwan | 0% | — |
-| Seediq | 0% | — |
+| Paiwan | 0% | - |
+| Seediq | 0% | - |
 
-Genuinely *conflicting* single values — where Ortho113 commits to one IPA
-value and a plausible rival table commits to a different one — are few and
+Genuinely *conflicting* single values - where Ortho113 commits to one IPA
+value and a plausible rival table commits to a different one - are few and
 enumerable:
 
 | language | letter | Ortho113 | rival | occurrences |
@@ -252,7 +309,7 @@ Any character with no IPA value in the table is written as `*` in `PHON`:
 come from digits (dates, population figures, footnote numbers); most of the
 rest are CJK quotations and loanword letters (`f`, `v`, `g`, `q`, `z`, `x`,
 `J`, `R`) that no Formosan orthography table maps. Choosing Ortho94 or Church
-instead would not change them — those tables have the same or smaller letter
+instead would not change them - those tables have the same or smaller letter
 inventories.
 
 ### Summary for users of `PHON`
