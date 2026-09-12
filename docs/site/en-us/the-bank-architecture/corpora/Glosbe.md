@@ -11,13 +11,15 @@ This corpus contains dictionary and translation-memory entries collected from th
 
 | | Amis<br>unknown | Atayal<br>unknown | Truku | Saisiyat |
 | --- | --- | --- | --- | --- |
-| Word count | 59,654 | 213 | 19 | 508 |
+| Word count | 89,909 | 577 | 116 | 600 |
 | Total audio | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 59,276 | 213 | 19 | 508 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 378 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 59,287 | 577 | 116 | 600 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 30,622 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 |
 | Morphologically segmented | 0 | 0 | 0 | 0 |
 | Glossed words | 0 | 0 | 0 | 0 |
 
