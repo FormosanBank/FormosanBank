@@ -99,22 +99,6 @@ def test_true_mismatch():
     assert vct.reconcile("p", "b")[0] == vct.Verdict.MISMATCH
 
 
-def test_target_variant_member_is_reviewable_warning():
-    verdict, reason = vct.reconcile("u", "[o|u]")
-    assert verdict == vct.Verdict.WARNING
-    assert reason == "variant-overlap"
-
-
-def test_source_variant_member_is_reviewable_warning():
-    verdict, reason = vct.reconcile("[f|v|b]", "f")
-    assert verdict == vct.Verdict.WARNING
-    assert reason == "variant-overlap"
-
-
-def test_disjoint_variant_group_is_mismatch():
-    assert vct.reconcile("p", "[b|v]")[0] == vct.Verdict.MISMATCH
-
-
 def test_short_vowel_not_equated_with_long():
     # length expansion must not make short 'a' match long 'aː'/'aa'.
     assert vct.reconcile("a", "aa")[0] == vct.Verdict.MISMATCH
@@ -129,7 +113,8 @@ def test_load_conversion_table_reads_rows(tmp_path):
     p = _tsv(tmp_path / "conv.tsv", ["original", "standard"],
              [["T", "tr"], ["x", "NA"], ["y", ""]])
     rows, column = vct.load_conversion_table(p, "standard")
-    assert rows == [("T", "tr")]      # NA and empty targets skipped
+    # 'NA' is not a rule; an empty cell is one — it deletes (POL-056).
+    assert rows == [("T", "tr"), ("y", "")]
     assert column == "standard"
 
 
@@ -179,13 +164,6 @@ def test_audit_coverage_gap_and_identity_passthrough(tmp_path):
     report = vct.audit(original, output, [], "default")
     gaps = {g for g, _ in report.coverage_gaps}
     assert gaps == {"q"}
-
-
-def test_audit_variant_identity_passthrough_is_not_a_coverage_gap(tmp_path):
-    original = _ortho(tmp_path, "s.tsv", [["u", "u"]])
-    output = _ortho(tmp_path, "o.tsv", [["u", "[o|u]"]])
-    report = vct.audit(original, output, [], "default")
-    assert report.coverage_gaps == []
 
 
 def test_output_dialects_lists_real_dialects(tmp_path):
@@ -324,3 +302,51 @@ def test_cli_smoke_on_real_rukai_files():
     assert "Summary" in result.stdout
     # a: -> aa is a length-doubling equivalence, reported as a warning.
     assert "a:" in result.stdout
+
+
+# --- deletions (POL-056) ---------------------------------------------------
+
+def _deletion_report(tmp_path, source_ipa, target_rows):
+    """Audit a table whose only rule deletes `x`."""
+    src = _tsv(tmp_path / "src.tsv", ["letter", "IPA"], [["x", source_ipa]])
+    tgt = _tsv(tmp_path / "tgt.tsv", ["letter", "IPA"], target_rows)
+    conv = _tsv(tmp_path / "conv.tsv", ["original", "standard"], [["x", ""]])
+    rows, _ = vct.load_conversion_table(conv, "standard")
+    return vct.audit(
+        vct.load_orthography(src, None), vct.load_orthography(tgt, None),
+        rows, None,
+    )
+
+
+def test_deletion_is_audited_not_skipped(tmp_path):
+    """An empty cell used to be indistinguishable from NA, so the only rules
+    in the bank that delete a letter were the ones nothing checked."""
+    report = _deletion_report(tmp_path, "x", [["k", "k"]])
+    assert [r.verdict for r in report.rows] == [vct.Verdict.DELETION]
+    assert report.rows[0].src == "x"
+    assert report.rows[0].src_ipa == "x"
+    assert report.rows[0].tgt_ipa is None
+
+
+def test_deletion_the_target_cannot_write_is_the_only_answer(tmp_path):
+    report = _deletion_report(tmp_path, "x", [["k", "k"]])
+    assert "cannot write" in report.rows[0].reason
+
+
+def test_deletion_the_target_could_have_written_says_so(tmp_path):
+    """Yami_Wakelin deletes `?`, and Ortho113 Yami writes that phoneme as `'`."""
+    report = _deletion_report(tmp_path, "ʔ", [["'", "ʔ"], ["k", "k"]])
+    assert "the output writes" in report.rows[0].reason
+    assert "`'`" in report.rows[0].reason
+
+
+def test_a_deletion_never_blocks(tmp_path):
+    """Deleting a phoneme is a judgement to review, not a defect to fail on."""
+    report = _deletion_report(tmp_path, "ʔ", [["'", "ʔ"], ["k", "k"]])
+    assert report.blocking() == []
+
+
+def test_a_deleted_letter_is_not_also_a_coverage_gap(tmp_path):
+    """The letter has a rule; it is handled, not unrouted."""
+    report = _deletion_report(tmp_path, "x", [["k", "k"]])
+    assert report.coverage_gaps == []

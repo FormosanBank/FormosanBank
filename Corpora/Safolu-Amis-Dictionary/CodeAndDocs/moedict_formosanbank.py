@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import json
 import re
-import subprocess
 import xml.etree.ElementTree as ET
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -59,6 +58,7 @@ class ExampleRecord:
     translations: list[Translation]
     raw_example: str
     notes: dict[str, Any]
+    variants: tuple[str, ...] = ()
 
     def to_metadata(self) -> dict[str, Any]:
         payload = asdict(self)
@@ -80,28 +80,6 @@ class Corpus:
     # FormosanBank requires TEXT/@dialect (validate_xml V036). "unknown" is the
     # honest default; individual corpora can set a documented source dialect.
     dialect: str = "unknown"
-
-
-def git_commit(path: Path) -> str:
-    if not (path / ".git").exists():
-        return "unknown"
-    proc = subprocess.run(
-        ["git", "rev-parse", "HEAD"],
-        cwd=path,
-        check=True,
-        text=True,
-        capture_output=True,
-    )
-    return proc.stdout.strip()
-
-
-def relative_to_root(path: Path) -> str:
-    if "_sources" in path.parts:
-        return str(Path(*path.parts[path.parts.index("_sources") :]))
-    try:
-        return str(path.resolve().relative_to(ROOT))
-    except ValueError:
-        return str(path)
 
 
 def collapse_space(text: str) -> str:
@@ -149,25 +127,6 @@ def iter_moedict_json_files(directory: Path) -> Iterable[Path]:
         yield path
 
 
-def assign_sentence_ids(text_id: str, records: Iterable[ExampleRecord]) -> list[ExampleRecord]:
-    assigned: list[ExampleRecord] = []
-    for index, record in enumerate(records, 1):
-        assigned.append(
-            ExampleRecord(
-                sentence_id=f"S{index:05d}",
-                source_file=record.source_file,
-                source_line=record.source_line,
-                entry_title=record.entry_title,
-                definition=record.definition,
-                form=record.form,
-                translations=record.translations,
-                raw_example=record.raw_example,
-                notes={**record.notes, "text_id": text_id},
-            )
-        )
-    return assigned
-
-
 def build_text_tree(corpus: Corpus, records: list[ExampleRecord]) -> ET.ElementTree:
     root = ET.Element(
         "TEXT",
@@ -186,6 +145,8 @@ def build_text_tree(corpus: Corpus, records: list[ExampleRecord]) -> ET.ElementT
     for record in records:
         sentence = ET.SubElement(root, "S", {"id": record.sentence_id})
         ET.SubElement(sentence, "FORM", FORM_ORIGINAL_ATTR).text = record.form
+        for variant in record.variants:
+            ET.SubElement(sentence, "FORM", {"kindOf": "original", "ver": "alt"}).text = variant
         for translation in record.translations:
             attributes = {f"{{{XML_NS}}}lang": translation.lang}
             if translation.notes:
@@ -224,18 +185,5 @@ def write_metadata(
         "example_count": len(records),
         "rejected_example_count": len(rejected_records or []),
         "examples": [record.to_metadata() for record in records],
-    }
-    output_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-
-def write_rejected_records(rejected_records: list[dict[str, Any]], output_path: Path) -> None:
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    payload = {
-        "description": (
-            "Source example fields that were parsed but excluded from XML because they do not have "
-            "the non-empty Amis FORM and translation required by FormosanBank."
-        ),
-        "rejected_example_count": len(rejected_records),
-        "examples": rejected_records,
     }
     output_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

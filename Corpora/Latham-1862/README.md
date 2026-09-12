@@ -1,181 +1,153 @@
-# Latham 1862 Comparative Philology (Formosan lexical tables)
+# Latham 1862 comparative wordlist
 
-FormosanBank corpus of the Formosan lexical tables in Robert Gordon Latham's
-1862 *Elements of comparative philology* (London: Walton and Maberly),
-printed pp. 315–318.
+The Formosan lexical tables in Robert Gordon Latham's *Elements of comparative
+philology* (London: Walton and Maberly, 1862), printed pp. 315-318.
 
-## Repository At A Glance
+| Language | Source varieties | Records | XML |
+| --- | --- | ---: | --- |
+| Siraya (`fos`) | Klaproth Sideia, Vander Vlis Sideia | 16 | `XML/Siraya/latham_1862_sideia_sida.xml` |
+| Babuza-Favorlang (`bzg`, dialect `Favorlang`) | Favorlang | 29 | `XML/Babuza-Favorlang/latham_1862_favorlang.xml` |
 
-| Field | Value |
-| --- | --- |
-| Type | Historical comparative wordlist |
-| Languages | Siraya (`fos`, glottocode `sira1267`); Babuza-Favorlang (`bzg`, dialect `Favorlang`, glottocode `favo1235`) |
-| Source | Latham 1862, printed pp. 314–319 |
-| Size | 62 lexical `S` records; 70 source `FORM` tiers |
-| Copyright | Public domain |
-| Tiers | `original` only — no `standard` tier, no `PHON` |
-| XML | `XML/Siraya/latham_1862_sideia_sida.xml`; `XML/Babuza-Favorlang/latham_1862_favorlang.xml` |
+The printed grid has 64 Formosan cells. **40 are published**; the 24 of the
+Gabelentz "Sida" column are not — see *Notes and Issues*. Five published cells
+supply two competing lexemes each, producing 45 records; two spelling variants
+bring the source FORM count to 47. English headings supply the translations.
+Neighbouring comparison languages are outside this corpus.
 
-## What you get: the original tier only
+## Rights
 
-**This corpus carries only a `FORM kindOf="original"` tier** (plus
-`FORM kindOf="alternate"` where the source cell lists a variant, and English
-`TRANSL` glosses). There is **no `standard` tier and no IPA/`PHON`**, and this
-is deliberate.
+**License:** public domain
 
-A `standard` FORM is a claim that the text has been transliterated into
-FormosanBank's single common orthography, and a `PHON` is a claim about
-pronunciation. Neither claim can be supported here. How — or whether — to
-standardize a 19th-century comparative wordlist in Babuza-Favorlang and Siraya
-is an open question: Siraya is under a standing FormosanBank ruling not to be
-standardized to Ortho113 or anything else for now, both varieties'
-`standard_orthography` cells in the repo-root `standards.csv` are
-correspondingly blank, and no living pronunciation reference exists for either
-variety as Latham records them. Rather than ship a
-tier that asserts a standardization nobody performed, the corpus ships what
-Latham prints.
+**Rights source:** Internet Archive / Mark Graves (status confirmation), 2008-07-23; evidence: ask maintainer
 
-Practical consequences for a data user:
+This is the existing public-domain work, not a new permission grant. The
+[public scan record](https://archive.org/details/elementsofcompar00lathrich)
+records the 1862 publication and its public-domain status. The normalized XML
+value `public domain` preserves the prior `Public domain.` claim; the exact
+spelling change remains subject to maintainer merge review.
 
-- Query `FORM[@kindOf="original"]`; do not expect `FORM[@kindOf="standard"]`.
-- Tools that default to `--kindOf standard` will find nothing here. FormosanBank's
-  token counting is unaffected: it falls back to the original tier, so this
-  corpus's word counts are the same as they always were.
-- `validate_xml` reports 62 SOFT `V014 count_missing_standard_form` findings
-  against this corpus. That is the intended signal that the corpus has no
-  standard tier, not a defect to fix.
-- The historical spelling, including Latham's diacritics (`â á ó é à`), is
-  preserved exactly in the original tier.
+## Source and preserved corrections
 
-If the standardization question is ever settled, the tier can be regenerated
-from the pre-correction snapshot by changing the pipeline (see "Maintenance
-pipeline"); no source data was discarded.
+[The source ledger](CodeAndDocs/source_ledger.tsv) is the reviewed manual
+transcription and build input. It preserves historical spelling, including
+`â á ó é à`, source-variety and page locators, and distinct repeated
+attestations of `rahpal` and `rima`. Its `reading_type` column distinguishes
+competing lexemes from spelling variants under revised POL-028. Favorlang Man,
+Hair, Mouth, Neck and Breast each have two S records: the first keeps its
+published ID, the second adds `-opt` (POL-028; a third reading would take
+`-opt3`). The pairs `so`/`soa` and `totto`/`tutta` stay in one record as an
+original FORM plus `ver="alt"`.
 
-## Source And Scope
+**Whether a second reading is a competing lexeme or a variant is a judgement
+about the source, not a similarity test** (POL-028). The two kept together are
+not kept because they look alike: Latham presents the Klaproth and Vander Vlis
+Sideia columns as readings of the same material, and FormosanBank takes no
+position on whether its two Siraya sources are distinct dialects. They are
+published as **pronunciation variation within Siraya**, with the source's own
+suggestion that they may be two dialects recorded here rather than asserted in
+the XML.
 
-The source is the six-page scan of Latham 1862 (public scan:
-https://archive.org/details/elementsofcompar00lathrich). The scan has no text
-layer, so the lexical table was transcribed by hand from the page renders into
-`CodeAndDocs/source_ledger.tsv`, the authoritative, page-addressed
-transcription.
+This supersedes the former all-FORM grouping and `kindOf="alternate"` spelling
+(POL-050), preserving every published source reading.
 
-The extraction covers the Formosan cells on printed pp. 315–318:
+[The review record](CodeAndDocs/reviewer_feedback.tsv) preserves Madeline
+Boese's July 25 and 27 corrections. Some concern the Sida column, which is
+no longer published; the rows stay, because what a reviewer found in the source
+does not stop being true when a column is withdrawn. For published cells:
+corrected
+accents, the wrapped word `arribórribon`, and `(so)` corrected to `so` with
+alternate `soa`. [Independent fixtures](CodeAndDocs/source_checks.tsv) and
+[tests](CodeAndDocs/tests/test_source_ledger.py) protect these readings.
+The published [pre-correction snapshot](CodeAndDocs/pre_correction_snapshot/)
+is retained unchanged as historical evidence; current generation reads the
+ledger, not the final XML.
 
-- Sideia and Sida are represented as Siraya (`fos`).
-- Favorlang is represented as Babuza-Favorlang (`bzg`), dialect `Favorlang`.
-- Philippine, Bashi, Malay, and Micronesian comparison data are out of scope.
-- The 64-cell target grid contains 62 lexical cells and two printed dashes
-  (Sida Forehead and Beard), which are terminally omitted.
+The six-page review excerpt covers printed pp. 314-319. SHA-256:
+`e7b34a4063c5f552b288f2e97568d13387ffad471713e3191c644a2ec40ead7b`
+(1,195,720 bytes). It can be reviewed against the public scan; it is not a build
+dependency. The book's Addenda and Corrigenda, pp. 753-757, contain no correction
+to these Formosan tables.
 
-## Extraction Decisions
+## Reproduction
 
-- Each source cell becomes one lexical `S` record.
-- A comma-separated source variant becomes a separate `FORM kindOf="alternate"`
-  in the same record.
-- `FORM kindOf="original"` preserves the reviewed historical spelling exactly,
-  including Latham's diacritics (`â á ó é à`). There is **no orthographic
-  standard** for these historical varieties, so no transliteration table
-  exists and the published corpus carries no `standard` tier at all (see
-  "What you get" above). The build still emits a `standard` tier — a verbatim
-  copy of `original` — into the pre-correction snapshot, which is never edited
-  (POL-035/POL-038); the maintenance pipeline removes it on the way to `XML/`.
-- Lexical meanings are given as `TRANSL xml:lang="eng"`.
-- No `PHON`, `W`, or `M` content is inferred: this is a lexical table with no
-  phonology, segmentation, or morphology in the source.
-
-## Reproduce
-
-Requires Python 3 with `lxml` and `openpyxl` (FormosanBank's `.venv` has both).
-The build reads `CodeAndDocs/source_ledger.tsv`; the original source PDF is
-**not** required.
+Use the Python environment installed for the current FormosanBank checkout:
 
 ```bash
-# 1. Rebuild the XML from the reviewed source ledger.
-python CodeAndDocs/build_lexical_xml.py
-
-# Independently verify every emitted XML field against the ledger
-# (62/62 source cells; 2 dash cells omitted; 0 unresolved).
-python CodeAndDocs/audit_source_coverage.py
-
-# 2. Verify the build against the pre-correction snapshot (expected: no diff),
-#    then run the maintenance pipeline (see below), which restores XML/ from
-#    the snapshot and produces the published state from it.
-diff -r Final_XML CodeAndDocs/pre_correction_snapshot
-bash CodeAndDocs/make_xml.sh
+./CodeAndDocs/generate_xml.sh
 ```
 
-`build_lexical_xml.py` writes to a scratch `Final_XML/` tree that is
-byte-identical to `CodeAndDocs/pre_correction_snapshot/` (the pre-pipeline
-baseline). The published `XML/` is that snapshot **plus** the maintenance
-pipeline, which removes the derived `standard` tier and re-serializes the
-files in the pipeline's output format (`<?xml version="1.0" ?>`, 4-space
-indent, no trailing newline). Original- and alternate-tier text content is
-identical in build, snapshot, and published XML.
+For a standalone development clone, set `FORMOSANBANK_ROOT` to the current
+FormosanBank checkout and, if needed, `PYTHON` to its Python executable. In the
+public corpus layout the surrounding checkout is used automatically. No
+network fetch, private source, or historical tool checkout is required.
 
-## Maintenance pipeline
+The build regenerates XML from the ledger and runs shared `clean_xml.py`.
+[Build provenance](CodeAndDocs/provenance.json) records the tools used for the
+reviewed output; it does not select or constrain future tools. Repeating a
+build with unchanged inputs must leave the XML and extraction summaries
+unchanged.
 
-`CodeAndDocs/make_xml.sh [FORMOSANBANK_ROOT]` rebuilds the published `XML/`
-from the pre-correction snapshot, in order (the script's comments explain each
-step; interpreter override via the `PYTHON` env var). It is **idempotent**:
-every run starts by restoring the snapshot, so re-running it is a no-op on the
-published bytes.
+**POL-058:** No orthography profile is extracted and none is compared.
+`standards.csv` leaves `standard_orthography` blank for both Babuza-Favorlang
+and Siraya, and neither has a reference inventory, so there is nothing to check
+against.
 
-0. Restore `XML/` from `CodeAndDocs/pre_correction_snapshot/`. The pipeline
-   regenerates published data from the fixed baseline rather than editing
-   `XML/` in place (POL-038).
-1. `QC/cleaning/clean_xml.py` — character-level cleaning of the original
-   tier. A verified no-op on this corpus (transcription is already clean;
-   zero apostrophes, no `bzg`/`fos` attestation dictionaries, so quote
-   correction never arms).
-2. `CodeAndDocs/drop_derived_tiers.py` — deletes every
-   `FORM[@kindOf="standard"]` and every `PHON`, at `S`, `W` and `M` level,
-   leaving the original and alternate tiers untouched. On the current data
-   this removes 62 S-level standard FORMs (24 Babuza-Favorlang, 38 Siraya)
-   and 0 PHON. See "What you get" above for why, and
-   `Corpora/WakelinTexts/CodeAndDocs/drop_derived_tiers.py`, the corpus this
-   step is modeled on.
+**POL-047 deviation:** No manual-edits file exists. Standard FORM and PHON are
+omitted under the [August 12 corpus ruling](https://github.com/FormosanBank/FormosanBank/commit/be579c6b0fb4818ae90bedbbf7c0dc4d58145ac6): neither historical variety has an
+approved standardization or pronunciation profile. No W/M analysis is
+inferred. Query original FORM; token counting falls back to that tier.
 
-There is **no `standardize.py` step**: it was removed when the standard tier
-was dropped, and re-adding it would put the tier straight back.
+## Validation
 
-No `add_phonology` step either, **by design**: a historical lexical table with
-no living pronunciation reference gets no `PHON` tier. Step 2 enforces that as
-an invariant rather than leaving it to hold by accident — no `PHON` has ever
-existed in this corpus, at any tier, in build, snapshot, or published XML.
+After building, write checks to a new directory outside the corpus:
 
-### Pre-correction snapshot
+```bash
+OUTPUT_DIR=/path/to/new/review ./CodeAndDocs/validate.sh
+```
 
-`CodeAndDocs/pre_correction_snapshot/` is a byte-identical copy of the
-pristine `XML/` taken before the corpus's first pipeline run, kept as the
-fixed pre-pipeline baseline (this corpus is hand-transcribed, hence
-non-regenerable from any upstream source other than the ledger). It is never
-edited.
+The source audit is read-only by default. After an authorized ledger change,
+`python CodeAndDocs/audit_source_coverage.py --write-reports` refreshes its
+committed summaries. The validator runs every applicable check and rejects
+unreviewed findings; [QC notes](CodeAndDocs/qc_summary.md) explain accepted
+findings and unavailable comparisons.
 
-## QC Notes
+The existing extraction wrapper calls the shared orthography API because its
+CLI omits registered Babuza-Favorlang. Neither historical variety has a
+reference inventory for automatic comparison. No shared code is changed here.
 
-- Structural XML validation: 62 SOFT (V014 `count_missing_standard_form`;
-  24 `bzg` + 38 `fos`) — one per `S`, the designed signal that this corpus has
-  no standard tier. 0 HARD, 0 WARN.
-- Text: 1 SOFT finding (V116 non-ASCII) — the `ó` in the alternate-tier
-  `arribórribon` (`S_favorlang_neck`). V116 skips the original tier by policy,
-  so the other eight of the former nine findings were the *same* diacritics
-  seen through the duplicate standard tier and went away with it. Latham's
-  historical diacritics (`â á ó é à`) remain intact in the original tier.
-- Gloss: 62 SOFT (V060) — expected; a lexical table has no `W`/`M` tiers.
-  Unchanged by the tier removal.
-- Token counts are unchanged by the tier removal (26 `bzg`, 38 `fos`):
-  `QC/corpus_counts.py` counts the standard `FORM` if present and otherwise
-  falls back to the original.
-- Duplicates: `rahpal` (Foot) and `rima` (Hand) are genuine, distinct source
-  attestations across varieties/pages and are retained (see
-  `CodeAndDocs/duplicate_group_review.csv`).
-- No orthography/vocabulary reference profile exists for these historical
-  varieties, so those comparisons are unavailable; verification here is
-  fidelity of the XML to the transcribed source (`CodeAndDocs/source_checks.tsv`,
-  `CodeAndDocs/source_coverage_audit.md`).
+## Audio
 
-## Citation
+This written source supplies no audio.
 
-Latham, Robert Gordon. 1862. *Elements of comparative philology*. London:
-Walton and Maberly. Public scan:
-https://archive.org/details/elementsofcompar00lathrich
+## Notes and Issues
+
+**The Gabelentz "Sida" column is not published.** Its 24 cells on printed
+pp. 316–318 are transcribed in `source_ledger.tsv` with status
+`excluded_unidentified_variety`, and are emitted to no XML. Gabelentz heads the
+column "Sida"; publishing it under `fos` would assert that Sida is the "Sideia"
+of the Klaproth/Vander Vlis table on p. 315, and FormosanBank does not make that
+identification. The transcription is kept so the decision can be revisited
+without redoing the work — if the identification is ever settled, flipping 24
+ledger rows republishes them under their original IDs.
+
+**The two Sideia readings are published as pronunciation variation within
+Siraya**, not as distinct dialects. Latham's presentation suggests they may be
+two dialects; the corpus records that here and does not encode it.
+
+**The file name says more than the file contains.** `latham_1862_sideia_sida.xml`
+and its `TEXT/@id` both carry "sida", from when the Sida column was published in
+it. POL-037 forbids renaming a published `TEXT/@id`, so both stay.
+
+Historical spellings have no approved standardization or pronunciation profile;
+use original FORM (POL-058). English headings are lexical glosses, not sentence
+translations. `rahpal` and `rima` no longer repeat across records: both former
+duplicate pairs needed a Sida record.
+
+## Publication packaging
+
+The complete public file set is `README.md`, `CodeAndDocs/` and `XML/` from one
+verified private commit. Export those paths with `git archive` and install them
+at `Corpora/Latham-1862/`; paths inside the corpus and all file bytes remain
+unchanged. Replace superseded build files rather than overlaying competing
+entry points. Both XML files are included; there are no private-only XML
+exclusions. The preserved snapshot is a build-history input, not published XML.

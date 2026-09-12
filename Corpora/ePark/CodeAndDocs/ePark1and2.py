@@ -6,6 +6,9 @@ import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm 
 
+from learning_vocabulary_audio_urls import normalize_audio_url
+
+
 def prettify(elem):
     """Return a pretty-printed XML string for the Element."""
     rough_string = tostring(elem, 'utf-8')  # Convert the Element to a byte string
@@ -99,7 +102,10 @@ def create_xml(curr_ePark, out_ePark, file, dialect, lang, lang_code, dir, ePark
         last_sent, s_id = None, -1
         for row_id, row in enumerate(reader):
             # Extract data from each row
-            audio_url = row[-1]
+            # The learning-vocabulary CSVs preserve the provider's retired
+            # ilrdc.tw route. Normalize it during generation while leaving the
+            # historical source snapshot untouched.
+            audio_url = normalize_audio_url(row[-1])
             if ePark == "ePark1" and 'C' in audio_url.split('/')[-1]:
                 form_word, chinese_word = row[:2]
                 

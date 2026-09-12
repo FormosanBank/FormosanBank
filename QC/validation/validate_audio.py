@@ -50,6 +50,7 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 from QC.validation._finding import Finding, Severity, summarize  # noqa: E402
+from QC.xml_forms import find_base_form  # noqa: E402
 
 
 # -----------------------------------------------------------------------------
@@ -269,7 +270,7 @@ def collect_sentence_refs(xml_root):
                     text_audio_filename = root_elem.get('audio') if root_elem.tag == 'TEXT' else None
                     for elem in root_elem.findall('.//S') + root_elem.findall('.//W'):
                         audio_elem = elem.find('AUDIO')
-                        form_elem = elem.find("FORM[@kindOf='original']")
+                        form_elem = find_base_form(elem, "original")
                         if (audio_elem is not None
                                 and form_elem is not None):
                             audio_filename = audio_elem.attrib.get('file') or text_audio_filename
