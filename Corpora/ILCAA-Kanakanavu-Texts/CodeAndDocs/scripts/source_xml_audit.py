@@ -9,6 +9,7 @@ generated XML matches that expectation.
 
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import random
@@ -24,14 +25,15 @@ import fitz
 import pipeline
 
 
-ROOT = Path(__file__).resolve().parents[1]
-PDF = ROOT / "data/raw/pdf/B602_KanakanavuText.pdf"
+CODEDOCS = Path(__file__).resolve().parents[1]
+ROOT = CODEDOCS / ".build"
+PDF = CODEDOCS / "data/raw/pdf/B602_KanakanavuText.pdf"
 OUT_DIR = ROOT / "build/source_audit"
 REPORT = ROOT / "data/processed/source_xml_comparison_report.md"
 SPOTCHECK_REPORT = ROOT / "data/processed/pdf_xml_spotchecks.csv"
 RANDOM_SAMPLE_REPORT = ROOT / "data/processed/random_source_xml_audit.csv"
 XML_NS = "{http://www.w3.org/XML/1998/namespace}"
-XML_DIR = ROOT / "XML/xnb"
+XML_DIR = CODEDOCS.parent / "XML/Kanakanavu"
 
 RANDOM_SAMPLE_SEED = 20260810
 RANDOM_SAMPLE_SIZE = 30
@@ -274,6 +276,8 @@ def direct_text(elem: ET.Element, tag: str, *, kind: str | None = None, lang: st
         if child.tag != tag:
             continue
         if kind is not None and child.attrib.get("kindOf") != kind:
+            continue
+        if tag == "FORM" and child.attrib.get("ver") is not None:
             continue
         if lang is not None and child.attrib.get(f"{XML_NS}lang") != lang:
             continue
@@ -526,6 +530,10 @@ def compare_words_and_morphemes(
             ]:
                 if expected != actual:
                     mismatches.append(f"{expected_wid}: {key} expected={expected!r} actual={actual!r}")
+            expected_alts = expected_word.get("form_alternatives", [])
+            actual_alts = ["".join(form.itertext()).strip() for form in actual_word.findall('./FORM[@kindOf="original"][@ver="alt"]')]
+            if expected_alts != actual_alts:
+                mismatches.append(f"{expected_wid}: W variants expected={expected_alts!r} actual={actual_alts!r}")
             expected_morphs = sorted(morphs_by_word.get(expected_word["word_id"], []), key=lambda r: r["morpheme_order"])
             actual_morphs = actual_word.findall("M")
             if len(expected_morphs) != len(actual_morphs):
@@ -545,6 +553,10 @@ def compare_words_and_morphemes(
                 ]:
                     if expected != actual:
                         mismatches.append(f"{expected_mid}: {key} expected={expected!r} actual={actual!r}")
+                expected_alts = expected_morph.get("form_alternatives", [])
+                actual_alts = ["".join(form.itertext()).strip() for form in actual_morph.findall('./FORM[@kindOf="original"][@ver="alt"]')]
+                if expected_alts != actual_alts:
+                    mismatches.append(f"{expected_mid}: M variants expected={expected_alts!r} actual={actual_alts!r}")
     return mismatches
 
 
@@ -629,7 +641,7 @@ def looks_like_gloss_leader(token: str) -> bool:
 def update_manifest() -> None:
     rows = []
     manifest_path = ROOT / "data/processed/manifest.csv"
-    for path in sorted((ROOT / "data").rglob("*")) + sorted((ROOT / "XML").rglob("*")):
+    for path in sorted((ROOT / "data").rglob("*")):
         if path.is_file() and path != manifest_path:
             rows.append({
                 "path": str(path.relative_to(ROOT)),
@@ -740,7 +752,7 @@ def write_spotchecks(
             "source_token_support": (
                 f"{support['found']}/{support['tokens']} ({float(support['ratio']):.3f})"
             ),
-            "visual_review": "PASS; rendered source inspected during completion audit",
+            "visual_review": "NOT RUN; automatic comparison does not establish visual review",
             "focus": check["focus"],
             "status": "PASS" if not findings else "FAIL",
             "findings": "; ".join(findings),
@@ -773,7 +785,7 @@ def write_random_source_checks(
             source_population, RANDOM_SAMPLE_SIZE
         )
     )
-    sample_is_reviewed = sample_ids == REVIEWED_RANDOM_SAMPLE_UNIT_IDS
+    matches_historical_sample = sample_ids == REVIEWED_RANDOM_SAMPLE_UNIT_IDS
     by_id = {unit["unit_id"]: unit for unit in units}
     for unit in units:
         by_id.setdefault(unit.get("source_unit_id", unit["unit_id"]), unit)
@@ -800,11 +812,6 @@ def write_random_source_checks(
                 [unit], words, morphs, xml_index, sentences
             )
         )
-        if not sample_is_reviewed:
-            findings.append(
-                "seeded sample differs from the recorded visual-review sample; "
-                "render and review the new source entries"
-            )
 
         page_text = page_text_for_unit(unit, pages)
         source = text_support(unit.get("source_line_clean", ""), page_text)
@@ -887,9 +894,9 @@ def write_random_source_checks(
             ),
             "expected_xml_theory": RANDOM_SAMPLE_THEORY,
             "visual_review": (
-                "PASS; rendered PDF crop inspected 2026-08-10"
-                if sample_is_reviewed
-                else "REVIEW REQUIRED; seeded sample changed"
+                "NOT RUN; same IDs as the historical 2026-08-10 sample"
+                if matches_historical_sample
+                else "NOT RUN; different IDs from the historical sample"
             ),
             "status": "PASS" if not findings else "FAIL",
             "findings": "; ".join(findings),
@@ -910,6 +917,18 @@ def write_random_source_checks(
 
 
 def main() -> int:
+    global ROOT, OUT_DIR, REPORT, SPOTCHECK_REPORT, RANDOM_SAMPLE_REPORT, XML_DIR
+    parser = argparse.ArgumentParser(description="Mechanical PDF/sidecar/XML comparison; visual review is separate")
+    parser.add_argument("--workspace", type=Path, required=True)
+    parser.add_argument("--xml", type=Path, default=XML_DIR)
+    args = parser.parse_args()
+    ROOT = args.workspace.resolve()
+    XML_DIR = args.xml.resolve()
+    OUT_DIR = ROOT / "build/source_audit"
+    REPORT = ROOT / "data/processed/source_xml_comparison_report.md"
+    SPOTCHECK_REPORT = ROOT / "data/processed/pdf_xml_spotchecks.csv"
+    RANDOM_SAMPLE_REPORT = ROOT / "data/processed/random_source_xml_audit.csv"
+    pipeline.source_pdf()
     _, pages = extract_pdf_text()
     units = read_jsonl(ROOT / "data/processed/xml_sentence_units.jsonl")
     words = read_jsonl(ROOT / "data/processed/xml_word_units.jsonl")
@@ -961,15 +980,15 @@ def main() -> int:
         "",
         "## Extraction",
         "",
-        f"- Source PDF: `{PDF.relative_to(ROOT)}`.",
+        f"- Source PDF: `CodeAndDocs/data/raw/pdf/{PDF.name}`.",
         "- Fresh extraction engines: `pdftotext -layout -enc UTF-8` and PyMuPDF `page.get_text(\"text\")`.",
         "- OCR was not used for this final pass because every audited page has an extractable text layer and the project source policy prefers text-layer extraction for this born-digital PDF.",
-        f"- The audit script writes temporary fresh extraction artifacts under `{OUT_DIR.relative_to(ROOT)}/`; rerun `python scripts/source_xml_audit.py` to regenerate them.",
+        f"- The audit script writes temporary fresh extraction artifacts under `{OUT_DIR.relative_to(ROOT)}/`; rerun this script with the same --workspace and --xml paths to regenerate them.",
         "",
         "## Expected XML Model",
         "",
-        "- Each ordinary source unit manifests as one S. Twenty-four reviewed parenthetical units manifest as two complete variants under POL-026/POL-027.",
-        "- Standard FORM and both PHON tiers are regenerated with the reviewed route and the pinned shared tools.",
+        "- Each ordinary source unit manifests as one S. Six reviewed spelling pairs use W/M FORM variants; eighteen other parenthetical units retain two aligned S readings with base/-opt IDs.",
+        "- This comparison does not establish the provenance or correctness of derived FORM/PHON tiers.",
         "- Every source-published free English translation should appear as the S-level `TRANSL xml:lang=\"eng\"`. Meaningful parenthetical, CJK, dash, and ellipsis material stays in the text; nine trailing source editorial labels or citations are represented in `TRANSL@notes`.",
         "- W/M tiers should preserve source-published interlinear glossing. W forms keep source segmentation; M infixes use `-X-`; W/M `TRANSL` uses `kindOf=\"original\"`; direct S `TRANSL` has no `kindOf`.",
         "",
@@ -1003,7 +1022,7 @@ def main() -> int:
         "",
         "## Visual and Regression Audit",
         "",
-        "- All 252 physical pages were reviewed during the completion audit. The stable rows below cover difficult interlinear cases and all 12 page-bottom translation recoveries.",
+        "- Visual review was not performed by this script. The rows below retain historical sample locators and check their current data mechanically.",
         f"- Machine-verifiable page/XML rows: {len(spotcheck_rows)}; passed: {len(spotcheck_rows) - len(failed_spotchecks)}; failed: {len(failed_spotchecks)}.",
         f"- Detailed stable locators and tier anchors: `{SPOTCHECK_REPORT.relative_to(ROOT)}`.",
         "",
@@ -1022,7 +1041,7 @@ def main() -> int:
         f"- Unique texts: {len({row['text_id'] for row in random_rows})}; unique physical pages: {len({row['physical_page'] for row in random_rows})}.",
         f"- S/W/M source-to-XML rows passed: {len(random_rows) - len(failed_random_rows)}; failed: {len(failed_random_rows)}.",
         f"- W elements checked: {sum(int(row['actual_w_count']) for row in random_rows)}; M elements checked: {sum(int(row['actual_m_count']) for row in random_rows)}.",
-        "- Every sampled source form, interlinear gloss, and free translation was checked against a rendered PDF crop. The CSV records the expected XML model and actual S/W/M manifestation for each entry.",
+        "- The CSV records automatic source-token and S/W/M comparisons. Reusing sample IDs does not revalidate an earlier visual review.",
         f"- Detailed random audit: `{RANDOM_SAMPLE_REPORT.relative_to(ROOT)}`.",
         "",
     ]
@@ -1060,14 +1079,14 @@ def main() -> int:
         report.extend([
             "## Findings",
             "",
-            "No source-to-XML remediation findings were found. Fresh PDF extraction supports the source units, and the manifested XML matches the expected S/W/M model.",
+            "No mechanical comparison mismatches were found. Source-token support and agreement with the parser model do not establish source completeness, linguistic correctness, or current policy compliance.",
         ])
         verdict = "PASS"
-    report.extend(["", f"Final status: {verdict}", ""])
+    report.extend(["", f"Mechanical comparison: {verdict}; visual review and QC readiness are separate.", ""])
     REPORT.write_text("\n".join(report), encoding="utf-8")
     update_manifest()
     print(f"Wrote {REPORT}")
-    print(f"Final status: {verdict}")
+    print(f"Mechanical comparison: {verdict}; visual review and QC readiness are separate.")
     return 0 if verdict == "PASS" else 1
 
 

@@ -10,12 +10,11 @@ clean_punctuation(text)
     Normalise full-width / curly punctuation to ASCII equivalents.
 
 extract_notes(text)
-    Remove parenthetical commentary from a translation string and
-    return it separately as a notes string.
+    Legacy helper for exact, reviewed source-field repairs. General parser
+    paths preserve parenthetical translation content in place.
 
-add_transl_element(parent, lang, text)
-    Create a <TRANSL> child element, hoisting any parenthetical
-    commentary into a ``notes`` attribute.
+add_transl_element(parent, lang, text, notes=None, ver=None)
+    Create a source-faithful <TRANSL> child element.
 
 expand_infixes(form, en_gloss, zh_gloss)
     If *form* contains infix notation ``<xyz>``, split it into a list
@@ -30,10 +29,46 @@ import xml.etree.ElementTree as ET
 # used to normalize unintelligible-speech markers (X, XX, XXXX…) to XXXX.
 _XXXX_TOKEN_RE = re.compile(r'(?<!\S)X+(?!\S)')
 
+# XML 1.0 permits tab, line feed, carriage return, and the ordinary Unicode
+# scalar ranges. Source snapshots occasionally contain escaped editor control
+# characters such as U+0008; those have no linguistic content and cannot be
+# serialized in FormosanBank XML.
+_XML10_INVALID_RE = re.compile(
+    r"[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\U00010000-\U0010FFFF]"
+)
+
 # Matches code-switching bracket markers used in the NTU corpus:
 #   <L2M  – opening tag (sometimes <L2E, <L2J, etc.)
 #   L2M>  – closing tag
-_L2M_RE = re.compile(r'<L2[A-Za-z]|L2[A-Za-z]>')
+# NTU code-switch markers. The language letter is always upper case (M
+# Mandarin, J Japanese, T Taiwanese, C Chinese) and is sometimes absent, so
+# matching it case-sensitively is what keeps a word-initial letter safe:
+# '<L2haiya' is a bare '<L2' plus the word, not '<L2h' plus 'aiya'.
+# The source writes the pair several ways, all attested:
+#   <L2Mword   wordL2M>    fully bracketed, letter after L2
+#   <L2word    wordL2>     no language letter
+#   <L2Tword   wordTL2>    closing transposed, letter before L2
+#   L2M<word   >L2M        brackets on the inside
+#   <L2M>word<L2M>         both tags fully bracketed
+# Where the language letter sits between 'L2' and a bracket it cannot be
+# confused with word material, so any case is accepted there -- the source
+# has at least one lower-case typo, '<L2JyakubaL2j>'. Where the letter abuts
+# the word it must be upper case, or a word-initial/final letter would be
+# eaten ('<L2haiya' is '<L2' + 'haiya', not '<L2h' + 'aiya').
+_L2M_RE = re.compile(
+    r'<L2[A-Za-z]?>'   # fully bracketed marker, no content: <L2M>, <L2>
+    r'|L2[A-Za-z]?>'   # closing: L2M>, L2j>, L2>
+    r'|L2[A-Za-z]?<'   # bracket-outside opening: L2M<
+    r'|<L2[A-Z]?'      # opening: <L2M, <L2J, or bare <L2
+    r'|[A-Z]L2>'       # transposed closing: ML2>, TL2>
+    r'|>L2[A-Z]?'      # bracket-outside closing: >L2M
+    # The `ori` stream drops the brackets altogether and leaves the tag
+    # glued to the word: 'hikokiL2J', 'jidenshaL2J', 'ke.yi.maML2'. Only an
+    # upper-case tag at a word edge qualifies, so ordinary text is safe.
+    r'|[A-Z]L2(?![A-Za-z])'   # bare transposed: maML2
+    r'|(?<![A-Za-z])L2[A-Z](?=[A-Za-z])'  # bare opener: L2Jmaemotte
+    r'|L2[A-Z]?(?![A-Za-z])'  # bare closing: hikokiL2J, luL2M
+)
 
 # Matches infix morpheme notation: <n>, <m>, <PF.PFV>, etc.
 # Angle-bracket spans whose content is NOT an L2 code-switch marker.
@@ -49,12 +84,16 @@ _PROSODIC_MARKER_RE = re.compile(
     r'|\\/'                  # \/  prosodic boundary
     r'|<[@Y|X]'              # <@  <Y  <|  <X   annotation span openers
     r'|[@Y|X]>'              # @>  Y>  |>  X>   annotation span closers
-    r'|<WH'                  # <WH  whisper span opener
-    r'|WH>'                  # WH>  whisper span closer
+    # Named delivery spans. The content is language and is kept; only the
+    # tags go. Spelled out rather than matched as any <UPPERCASE> span, so
+    # that infix notation such as <PF.PFV> is never mistaken for one.
+    r'|<(?:WH|HIGH\.PITCH|LOW\.VOLUME)'   # span openers
+    r'|(?:WH|HIGH\.PITCH|LOW\.VOLUME)>'   # span closers
     r'|--'                   # --  double-dash break marker
     r'|[\\^@`;_|&:\[\]]'    # single-char markers: \ ^ @ ` ; _ | & : [ ]
     r'|…'                   # U+2026 HORIZONTAL ELLIPSIS
-    r'|\((?:CAUGH(?:ING)?|COUGH(?:ING|S)?|THROAT|THRAOT|TSK|IHI|HICCUPING)\)'  # vocal noises
+    r'|[(<]?\b(?:CAUGH(?:ING)?|COUGH(?:ING|S)?|THROAT|THRAOT|TSK|IHI'
+    r'|HICCUPING|BREATH)\b[)>]?'   # vocal noises, bracketed or bare
 )
 
 
@@ -76,7 +115,9 @@ def strip_prosodic_markers(text):
     ``<|`` ``|>``                   annotation span
     ``<X`` ``X>``                   uncertain-text span (content is kept)
     ``<WH`` ``WH>``                 whisper span (content is kept)
-    ``(COUGH)`` ``(THROAT)`` etc.   vocal-noise tokens (whole token removed)
+    ``<HIGH.PITCH`` ``HIGH.PITCH>`` pitch span (content is kept)
+    ``<LOW.VOLUME`` ``LOW.VOLUME>`` volume span (content is kept)
+    ``(COUGH)`` ``<BREATH>`` etc.   vocal-noise tokens (whole token removed)
     ``--``                          double-dash break marker
     ``\\ ^ @ ` ; _ | & : [ ]``     individual annotation characters
     """
@@ -213,6 +254,22 @@ def strip_speaker_labels_from_translation(text: str) -> str:
     return _INLINE_SPEAKER_LABEL_RE.sub('', text).strip()
 
 
+# A speaker label whose gloss cell merely repeats the label is still a label:
+# the source writes rows such as ['D:', 'D:...', 'D:...'] or ['E', 'E', 'E'].
+# The echo may carry punctuation (colon, period, ellipsis) and a parenthesised
+# transcription annotation such as a pause duration, e.g. 'P:...(1.1)'.
+_LABEL_ECHO_RE = re.compile(r"^\s*([A-Z])\s*[:.\u2026]*\s*(?:\([^)]*\))?\s*[.\u2026]*\s*$")
+
+
+def gloss_echoes_label(form: str, gloss: str) -> bool:
+    """Return True when *gloss* merely restates the speaker label in *form*."""
+    letter = (form or "").strip().rstrip(":.\u2026 ")
+    if len(letter) != 1 or not letter.isupper():
+        return False
+    match = _LABEL_ECHO_RE.match((gloss or "").strip())
+    return bool(match) and match.group(1) == letter
+
+
 def is_speaker_token(form: str, zh: str = '', en: str = '') -> bool:
     """Return True when *form* is a speaker-role label that should be suppressed.
 
@@ -222,7 +279,12 @@ def is_speaker_token(form: str, zh: str = '', en: str = '') -> bool:
     """
     if not _SPEAKER_TOKEN_RE.match(form):
         return False
-    if zh or en:
+    # '_' is the source's absent-gloss placeholder, not a gloss. Treating it as
+    # one lets a labelled turn such as ['D:', '_', '_'] escape suppression.
+    def _absent(value: str) -> bool:
+        return (value or "").strip() in ("", "_") or gloss_echoes_label(form, value)
+
+    if not _absent(zh) or not _absent(en):
         return False   # has a gloss → not a bare speaker label
     return True
 
@@ -415,6 +477,11 @@ _SINGLE_QUOTE_CHARS = frozenset(
     '\u2032'   # U+2032 PRIME                        ′
 )
 
+# Internal parser sentinel for a source token explicitly transcribed as
+# unknown (``??`` or longer). Consumers convert it to ``<UNCLEAR/>`` before
+# XML serialization, so it must never appear in generated output.
+UNCLEAR_SENTINEL = "\ufffc"
+
 
 def is_punct_only(form):
     """Return True if *form* consists entirely of punctuation / whitespace.
@@ -431,6 +498,8 @@ def is_punct_only(form):
     s = form or ""
     if not s:
         return True
+    if s == UNCLEAR_SENTINEL:
+        return False
     if _HAS_ALNUM_RE.search(s):
         return False  # contains a letter or digit — definitely not punct-only
     # No alnum: exempt only if EVERY character is a single-quote script marker.
@@ -548,12 +617,15 @@ def clean_punctuation(text):
     Returns:
         str: The cleaned text.
     """
-    cleaned_text = text.replace("，", ",")
+    cleaned_text = _XML10_INVALID_RE.sub("", text)
+    cleaned_text = cleaned_text.replace("，", ",")
     cleaned_text = cleaned_text.replace("。", ".")
     cleaned_text = cleaned_text.replace("！", "!")
     cleaned_text = cleaned_text.replace("？", "?")
     cleaned_text = cleaned_text.replace("；", ";")
     cleaned_text = cleaned_text.replace("：", ":")
+    cleaned_text = cleaned_text.replace("＝", "=")
+    cleaned_text = cleaned_text.replace("／", "/")
     cleaned_text = cleaned_text.replace("（", "(")
     cleaned_text = cleaned_text.replace("）", ")")
     cleaned_text = cleaned_text.replace("【", "[")
@@ -696,12 +768,14 @@ def strip_form_parens(text):
     return text, None
 
 
-def add_transl_element(parent, lang, text):
+def add_transl_element(parent, lang, text, *, notes=None, ver=None):
     """
     Create a ``<TRANSL>`` child element on *parent*.
 
-    Any parenthetical commentary found in *text* is removed from the
-    element's text content and stored in a ``notes`` attribute instead.
+    Translation text is preserved in place. Parentheses may encode natural
+    elaboration, agreement notation, or source-authored alternatives, so a
+    generic parser cannot safely classify or delete them. Reviewed callers
+    may supply a source-backed ``notes`` value or ``ver="alt"`` explicitly.
 
     Parameters
     ----------
@@ -719,8 +793,41 @@ def add_transl_element(parent, lang, text):
     """
     elem = ET.SubElement(parent, "TRANSL")
     elem.set("xml:lang", lang)
-    cleaned, notes = extract_notes(text or "")
-    elem.text = cleaned if cleaned else (text or "")
+    if ver:
+        elem.set("ver", ver)
+    elem.text = text or ""
     if notes:
         elem.set("notes", notes)
     return elem
+
+
+def source_notes_from_free(free_entries):
+    """Return ordered, unique ``#n`` source annotations.
+
+    The NTU JSON uses ``#n`` lines for source-authored linguistic and
+    editorial notes.  They are evidence, not free translations, so callers
+    store the returned string on the owning original FORM rather than emit a
+    TRANSL element.  Apart from removing the two-character field marker and
+    surrounding whitespace, the source text is preserved verbatim.
+    """
+    notes = []
+    seen = set()
+    for entry in free_entries or []:
+        if not isinstance(entry, str) or entry[:2] != "#n":
+            continue
+        note = entry[2:].strip()
+        if note and note not in seen:
+            seen.add(note)
+            notes.append(f"source note: {note}")
+    return " | ".join(notes) or None
+
+
+def merge_notes(*notes):
+    """Join non-empty note strings without duplicating identical values."""
+    merged = []
+    seen = set()
+    for note in notes:
+        if note and note not in seen:
+            seen.add(note)
+            merged.append(note)
+    return " | ".join(merged) or None

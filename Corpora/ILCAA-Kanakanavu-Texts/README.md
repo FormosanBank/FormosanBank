@@ -1,69 +1,98 @@
-# Asai et al. (2026) Kanakanavu Texts
+# Kanakanavu Texts
 
-**Languages:** Kanakanavu (`xnb`)
-**Dialects:** Kanakanavu
-**Source:** Asai, Mei, Li, and Tsuchida's 2026 *Kanakanavu Texts*
-**License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
-**Source orthography:** Asai 2026, standardized to Ortho113
-**FormosanBank tooling commit:** `3a3c47c220520113f747e6a2d441494000e13c4b`
+Asai, Mei, Li and Tsuchida (2026), *Kanakanavu texts*, edited by Paul Jen-kuei
+Li and published by ILCAA, Tokyo University of Foreign Studies.
 
-This corpus contains the grammatical introduction examples and 44 narratives
-from the source volume. Its 1,455 sentence records preserve English
-translations and source-aligned word and morpheme analyses. Twenty-four
-reviewed optional or alternative constructions are represented as complete,
-aligned variants. Four square-bracket source-analysis constructions remain
-sentence-only to avoid inventing an analysis.
+**Status:** needs remediation before QC. The retained XML is the previous
+1,455-sentence output, moved into `XML/Kanakanavu/` without changing its bytes.
+Passing the source comparison or regression tests does not establish readiness.
 
-## Citation
+[Basecamp card](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/10012922283),
+[corpus PR #155](https://github.com/FormosanBank/FormosanBank/pull/155),
+and [GitBook PR #51](https://github.com/FormosanBank/FormosanBankGitbook/pull/51).
 
-Asai, E., Mei, K., Li, P. J.-k., & Tsuchida, S. 2026. *Kanakanavu Texts*
-(P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and
-Africa, Tokyo University of Foreign Studies.
+## Source and coverage
 
-## Reproducibility
+The committed [252-page PDF](CodeAndDocs/data/raw/pdf/B602_KanakanavuText.pdf)
+has SHA-256 `785058bad6a8495f8b5fb51ed3d0eaf7da1736e791b308611d9442c010d93c03`.
+The parser accounts for 44 narratives and 40 numbered introduction examples
+(48 introduction units), totalling 1,431 source units. Of 24 parenthetical
+constructions, six use W/M FORM variants and 18 retain separate S readings,
+producing 1,449 source-stage S records. The 45 retained final XML files still
+have 1,455 S records and await regeneration.
+Unnumbered introduction forms, comparison tables and footnote lexical material
+still need coverage review. The numbered-unit count is not a whole-book verdict.
+The source parser repairs a misplaced interjection gloss in Naparamaci example
+68, omits empty gloss padding, restores the aligned W/M tiers of introduction
+examples 23a-d and separates eight stacked infix pairs. Final XML awaits the
+shared build below.
 
-`CodeAndDocs/` contains the CC BY 4.0 source PDF, extraction pipeline, reviewed
-orthography and conversion files, source-audit tools, tests, and deterministic
-two-pass reproduction wrapper. The wrapper regenerates a working XML tree under
-`CodeAndDocs/XML/` and verifies that it is byte-identical to the published
-corpus-level `XML/` tree.
+Source W/M glosses and free translations remain separate. Source narrative
+repetitions, publisher corrections, Japanese name characters, and meaningful
+translation parentheses are preserved. See [source decisions](CodeAndDocs/source-decisions.md).
 
-To rebuild from source:
+## Reproduction
 
-1. Prepare a separate clean FormosanBank checkout at commit
-   `3a3c47c220520113f747e6a2d441494000e13c4b`.
-2. From `CodeAndDocs/`, create a Python environment and install
-   `requirements.txt`.
-3. Run:
+Install [the declared dependencies](CodeAndDocs/requirements.txt). The executable
+entry point reads committed inputs and uses the supplied current FormosanBank
+checkout, or the containing checkout when this package is under `Corpora/`:
 
-   ```bash
-   FORMOSANBANK_PATH=/path/to/pinned/FormosanBank \
-   make reproduce PYTHON=.venv/bin/python
-   ```
+```sh
+python3 -m pip install -r CodeAndDocs/requirements.txt
+PYTHON=python3 CodeAndDocs/generate_xml.sh /path/to/current/FormosanBank
+```
 
-**Stable ID scheme:** Each `TEXT` ID is derived from the fixed source text
-number and title. Sentence IDs derive from stable source-unit identifiers, with
-deterministic suffixes for expanded variants. Word and morpheme IDs derive from
-their parent sentence and aligned position.
+The build stages source extraction, shared cleaning, standardization and PHON,
+then installs successful output. It performs no QC or source refresh. Narrative
+deduplication is not a build step. Current main lacks the shared Asai2026 source
+profile and conversion table, so generation stops before changing XML.
 
-**POL-035 baseline evidence:** The regenerable pipeline verifies the tracked
-252-page source PDF at SHA-256
-`785058bad6a8495f8b5fb51ed3d0eaf7da1736e791b308611d9442c010d93c03` and
-accounts for all 45 texts and 1,431 extracted source units.
+The [provenance record](CodeAndDocs/provenance.json) describes the retained
+historical XML. It does not select or pin tools for a new build. The previous
+private phonology override and count-based QC acceptance wrapper are retired.
+The tables under `CodeAndDocs/scripts/orthographies/` retain the earlier
+reviewed mapping as evidence; generation does not load them.
 
-**POL-030 correction mechanism:** Reviewed extraction, source-notation,
-variant, standardization, and phonology decisions are enforced by committed
-pipeline code and generated audit ledgers. No manual-edit file is required.
+For source investigation without producing final derived tiers:
 
-## QC status
+```sh
+python3 CodeAndDocs/scripts/pipeline.py --workspace /tmp/kanakanavu-review
+python3 CodeAndDocs/scripts/source_xml_audit.py --workspace /tmp/kanakanavu-review \
+  --xml /tmp/kanakanavu-review/build/xml_drafts/Kanakanavu
+KANAKANAVU_WORKSPACE=/tmp/kanakanavu-review python3 -m pytest -q
+```
 
-- Last QC run: 2026-08-22
-- Status: ready to port
-- Development source: `Formosan-Kanakanavu-Texts` commit
-  `a5a514d3dac2e362739121d7c9d1af5992a10faf`
-- Development audit: full-source current-authority refresh passed with verdict `ready to port`
-- Gloss audit: 673 source-assisted findings fully reconciled, with 0 unresolved
-- Residual warning dispositions: four intentional sentence-only analyses, 17
-  source-required duplicate groups, 77 visible foreign-loan PHON markers, and
-  three expert-reviewed conversion mismatches
-- Audio: none
+The comparison checks extracted text, source sidecars and the selected XML,
+including W/M FORM variants. Source-only output has no derived tiers, so the
+report still fails its completeness checks. It never certifies a visual review.
+Use the installed gloss audit, corpus audit
+and current QC workflow after the outstanding source and tool work is resolved.
+
+## Rights
+
+**License:** CC BY 4.0, stated on source PDF physical page 3.
+
+**Rights source:** Paul Jen-kuei Li, Yi-Chun Chen, Hsiu-min Huang and Amy
+Ming-luan Chen, 2026; exact grant date not stated; evidence: ask maintainer.
+
+The source PDF may be redistributed under that licence with attribution.
+Source generation writes the canonical licence value `CC BY 4.0` (POL-042),
+with attribution retained here. The retained XML still carries its old
+copyright prose and awaits final regeneration.
+
+## Audio
+
+None supplied with this source.
+
+## Notes and Issues
+
+- The Asai2026 profile, conversion and reviewed conditioned phonology need a
+  shared implementation reviewed separately from this corpus (POL-049).
+- The source parser resolves six spelling variants and the old V1/V2 IDs.
+  Four parenthetical classifications still need resolution under POL-028.
+  Clause brackets remain at S; the shared PHON step must handle them as
+  analytical notation.
+- Unnumbered lexical material uses several source orthographies. Its coverage
+  and routing must be resolved without applying the narrative profile blindly.
+- The earlier ten-page expert review and historical samples cover those records
+  only. They do not establish a current visual review of every page or reading.
