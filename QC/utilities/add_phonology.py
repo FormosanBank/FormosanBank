@@ -18,6 +18,12 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
+from QC.corpus_counts import is_reproduction_path  # noqa: E402
+from QC.utilities._accents import (  # noqa: E402
+    ACCENTS_TO_STRIP,
+    accented_letters,
+    strip_accents,
+)
 from QC.validation._dialect_inventory import (  # noqa: E402
     ISO_TO_LANGUAGE,
     STANDARD_ORTHOGRAPHY_MAP,
@@ -27,6 +33,11 @@ from QC.validation._dialect_inventory import (  # noqa: E402
 
 
 ORTHOGRAPHIES_PATH = _REPO_ROOT / "Orthographies"
+
+def _has_strip_mark(text: str) -> bool:
+    """True if ``text`` carries a combining mark that strip_accents removes."""
+    return any(ch in ACCENTS_TO_STRIP for ch in unicodedata.normalize("NFD", text))
+
 
 NULL_MARKER = "∅"
 # A null unit is the marker plus one bridging segmentation hyphen, removed
@@ -48,16 +59,30 @@ class PhonologyProfile:
     mappings: tuple[tuple[str, str], ...]
     ipa_characters: frozenset[str]
     rules: tuple[PhonologyRule, ...]
+    accented_letters: frozenset[str] = frozenset()
 
 
 from QC.utilities._prettify import prettify  # noqa: E402,F401  (shared, mixed-content-safe, idempotent)
 
 
-def get_files(path: str, language: str | None) -> list[str]:
+def get_files(path: str, language: str | None, root_path: str | None = None) -> list[str]:
+    """Every .xml under `path`, skipping CodeAndDocs.
+
+    `root_path` is what the caller was originally pointed at, which is not
+    always `path`: get_exploration_targets expands a corpora directory
+    into its children, and one child of a corpus root is CodeAndDocs
+    itself. Judging "did the caller mean this tree?" against the expanded
+    child would answer yes for every corpus root; judging it against the
+    original argument answers correctly, and still lets a build that
+    targets <corpus>/CodeAndDocs/Final_XML/ directly be processed.
+    """
+    root_path = path if root_path is None else root_path
     files = []
     for root, _dirs, filenames in os.walk(path):
         for filename in filenames:
             candidate = os.path.join(root, filename)
+            if is_reproduction_path(candidate, root_path):
+                continue
             if filename.endswith(".xml") and (
                 not language or re.search(language, candidate)
             ):
@@ -231,6 +256,13 @@ def load_profile(
         mappings=tuple(mappings),
         ipa_characters=frozenset(ipa_characters),
         rules=rules,
+        # Keep only the accented letters THIS table maps: a kept letter is
+        # then always a mappable one, so folding can never be the reason a
+        # PHON tier shows '*'. For the standard tier this table is the
+        # language's designated standard orthography, the same source
+        # standardize.py keeps by; for --orthography it is that source
+        # orthography, whose accented letters it likewise maps.
+        accented_letters=accented_letters(letter for letter, _ in mappings),
     )
 
 
@@ -292,6 +324,15 @@ def phonologize(text: str, profile: PhonologyProfile) -> str:
     stripped = _NULL_UNIT_RE.sub("", text)
     if stripped != text:
         text = re.sub(r" {2,}", " ", stripped).strip()
+    # Stress/prosody diacritics are not segments: PHON is a segmental tier
+    # (POL-003), and no profile maps a stressed vowel, so an unfolded acute
+    # would surface as '*'. Accented letters the language's own profile
+    # attests (Rukai 'é') are kept and mapped normally. Guarded on the marks
+    # we actually strip, because strip_accents NFC-composes what it touches:
+    # an unrelated decomposed cluster (a + combining tilde) must stay
+    # decomposed so its base letter still matches a profile row.
+    if _has_strip_mark(text):
+        text = strip_accents(text, keep=profile.accented_letters)
     result = apply_phonology_mappings(
         text,
         profile.mappings,
@@ -333,6 +374,13 @@ def _write_phonology(
     parent_map = {child: parent for parent in root.iter() for child in parent}
     changed = 0
     for form in root.findall(f'.//FORM[@kindOf="{form_kind}"]'):
+        # POL-028: a tier is a base FORM plus zero or more ver="alt"
+        # variants, but PHON_Type carries no @ver — a tier has exactly one
+        # PHON, and it spells the base. Without this guard every FORM of the
+        # kind wrote into that one PHON, so the last in document order (the
+        # variant) silently overwrote the base's phonology.
+        if form.get("ver") is not None:
+            continue
         parent = parent_map.get(form)
         if parent is None:
             continue
@@ -429,7 +477,7 @@ def main(args: argparse.Namespace) -> int:
         files = (
             [corpus]
             if os.path.isfile(corpus) and corpus.endswith(".xml")
-            else get_files(corpus, args.language)
+            else get_files(corpus, args.language, args.corpora_path)
         )
         for path in files:
             try:

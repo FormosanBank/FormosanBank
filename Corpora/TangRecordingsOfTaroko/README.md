@@ -1,52 +1,81 @@
 # Tang Recordings of Taroko
 
-## License and AI use
+**Basecamp card:** [8253692022](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/8253692022)
 
-This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI use is prohibited without prior written permission.
+## Rights
 
-The published source license is CC BY-NC 4.0. Prof. Apay Tang gave FormosanBank permission to use these PARADISEC recordings.
+**License:** CC BY-NC 4.0
 
-## Source and contents
+**Rights source:** Prof. Apay Tang, 2025-05-04; evidence: ask maintainer
 
-The source is the [PARADISEC AIT1 collection](https://catalog.paradisec.org.au/collections/AIT1), items `AIT1-001` through `AIT1-004`. The corpus contains 30 untranscribed Truku recordings totaling 76,976.624 seconds, or 21.382396 hours.
+Prof. Tang granted FormosanBank permission to include these Truku recordings, permanently archived in the PARADISEC AIT1 collection. The earlier XML value `CC BY-NC` means 4.0 under POL-042; spelling out the version retains the published licence.
 
-Use the project-approved corpus citation:
+The central [FormosanBank terms](https://github.com/FormosanBank/FormosanBank/blob/main/LICENSE.md) and [AI Use Addendum](https://github.com/FormosanBank/FormosanBank/blob/main/AI-USE-ADDENDUM.md) also apply.
 
-> Apay Tang (collector), Apay Tang (recorder), 1997. traditional Truku stories. MPEG/WAV/PDF. AIT1-001 at catalog.paradisec.org.au. https://dx.doi.org/10.4225/72/56EC22110B85A
+## Contents
 
-Each XML file also contains its PARADISEC item-specific citation and DOI.
+Thirty untranscribed recordings from PARADISEC items `AIT1-001` through `AIT1-004`, about 21.4 hours. Each file under `XML/Truku/` contains one stable `AIT1-*` TEXT and its AUDIO reference, with `xml:lang="trv"` and `dialect="Truku"`. No transcription, translation, gloss or pronunciation tier is invented.
 
-## Audio and identifiers
+- `CodeAndDocs/Metadata/`: four unchanged source metadata extracts.
+- `CodeAndDocs/generate_xml.sh`: the XML build entry point.
+- `CodeAndDocs/audio_manifest.json`: sizes and SHA-256 hashes of all 30 original WAVs at an immutable Hugging Face revision.
+- `CodeAndDocs/verify_sources.py`: separate metadata, remote-identity and local-byte checks.
 
-The source dataset is pinned to an immutable Hugging Face revision recorded in the manifest. Its 30 source WAV files are signed 16-bit PCM, 44.1 kHz, stereo. The recorded preparation decision converts each file to signed 16-bit PCM, 16 kHz, mono with ffmpeg 8.0.1. `CodeAndDocs/audio_manifest.json` pins the source and prepared byte sizes, SHA-256 values, frames, durations, and exact ffmpeg arguments.
+## Reproduction
 
-The downloader performs this verified conversion automatically:
-
-```bash
-Corpora/TangRecordingsOfTaroko/download_audio_data.sh
-```
-
-The 30 stable `AIT1-*` TEXT IDs and matching AUDIO filenames are preserved under POL-037. No FORM, TRANSL, PHON, W, or M tier is invented for these untranscribed recordings.
-
-## Reproduction and QC
-
-The four source metadata records, complete audio manifest, generator, verifier, and tests are under `CodeAndDocs/`. Reproduce all 30 XML files with:
+Python 3.9 or later is sufficient for the build. From a FormosanBank checkout:
 
 ```bash
-PYTHON=python3 Corpora/TangRecordingsOfTaroko/CodeAndDocs/reproduce.sh
+Corpora/TangRecordingsOfTaroko/CodeAndDocs/generate_xml.sh
 ```
 
-Verify the source inventory against the pinned public revision with:
+From this private repository, select the current FormosanBank checkout explicitly:
 
 ```bash
-python3 Corpora/TangRecordingsOfTaroko/CodeAndDocs/verify_sources.py --live
+export FORMOSANBANK_ROOT=/path/to/FormosanBank
+./CodeAndDocs/generate_xml.sh
 ```
 
-Run the focused pipeline tests with:
+The build reads only the four committed metadata extracts and writes all 30 XML files. Audio, credentials and source downloads are not inputs. A second build must reproduce the same XML. The actual tools commit is recorded in [CodeAndDocs/provenance.json](CodeAndDocs/provenance.json); it records the build and never selects or requires an older checkout. A Git-free export retains that provenance record.
+
+**POL-047 deviation:** Only source-to-XML generation runs. These recordings have no text tiers or recorded manual edits, so manual-edit application, cleaning, standardization and phonology have nothing to act on. Verification stays outside the build.
+
+The four metadata files are flattened extracts wrapped as `{"metadata": {...}}`, not complete RO-Crates. They contain 61 source parts and archival fields absent from our XML, and have been unchanged since the corpus's first commit. The XML follows from those extracts plus the separately granted licence. Unresolved graph references, including the extract's licence pointer, do not supply additional rights evidence.
+
+Joshua accepted two source limits on 2026-09-07 in [#197](https://github.com/FormosanBank/FormosanBank/pull/197): the 30 matching MP3s are treated as delivery copies of the WAV masters, and no metadata refresh mechanism is required for this closed archival deposit. Reproduction does not independently verify the extract against PARADISEC. The remaining source part, `AIT1-001-2df.pdf`, has not been inspected or included.
+
+## Audio
 
 ```bash
-python3 -m unittest discover \
-  -s Corpora/TangRecordingsOfTaroko/CodeAndDocs/tests -v
+./download_audio_data.sh --dry-run
+./download_audio_data.sh
+python3 CodeAndDocs/verify_sources.py --live
+python3 CodeAndDocs/verify_sources.py --local
 ```
 
-The private reconciliation completed audit and canonical QC on 2026-08-23 using FormosanBank tooling commit `3a3c47c220520113f747e6a2d441494000e13c4b`. Two complete source downloads and conversions produced identical prepared identities. XML regeneration is deterministic and byte-identical to the published identifiers and metadata. All applicable corpus validators report zero HARD findings, and all 30 prepared files pass silence-aware audio validation.
+For a private checkout, keep `FORMOSANBANK_ROOT` set as above. Downloading needs the shared FormosanBank Python dependencies. The wrapper uses the shared audio contract and parity helpers with this repository's `Audio/` destination; the shared download CLI otherwise targets the published checkout. It preserves the original 44.1 kHz stereo WAVs and verifies their size and SHA-256. It does not resample or upload audio.
+
+The default verifier checks the manifest against the committed metadata and the downloader's pin. `--live` compares the pinned remote WAV paths, sizes and LFS SHA-256 object IDs without downloading the recordings. `--local` hashes every named local WAV. Remote listing checks do not independently verify PARADISEC or read the full audio contents.
+
+If local verification fails, move the differing copies aside before downloading and checking again. Earlier private builds produced 16 kHz mono derivatives; those must not be mistaken for the originals. Any future ASR derivative needs its own reviewed output, as Joshua specified in [#168](https://github.com/FormosanBank/FormosanBank/pull/168#issuecomment-5565082860). Authorized uploads use the shared `QC/utilities/upload_to_hf.py`, after source-byte verification.
+
+## Notes and Issues
+
+The recordings are untranscribed. Metadata provenance and MP3/WAV equivalence retain the accepted limits described above; the source PDF remains uninspected. The source verifier is corpus-specific, and its remote listing is suitable for this 30-WAV inventory rather than a general large-dataset audit.
+
+## Validation
+
+```bash
+python3 -m unittest discover -s CodeAndDocs/tests -v
+python3 CodeAndDocs/verify_sources.py --live
+```
+
+Run the current FormosanBank XML, text, dialect, registry, audio-parity and port-readiness checks separately from generation. Text orthography and gloss checks are inapplicable because there are no text tiers. Local acoustic validation requires the original WAVs.
+
+## Citation
+
+Cite FormosanBank and:
+
+> Tang, Apay. (1997). Traditional Truku stories. Paradisec. https://dx.doi.org/10.4225/72/56EC22110B85A
+
+Each XML file carries its item-specific citation and BibTeX value from the committed `creditText`.

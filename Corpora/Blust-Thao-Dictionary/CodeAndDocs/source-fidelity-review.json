@@ -1,0 +1,162 @@
+{
+  "review_date": "2026-08-29",
+  "source_pdf_sha256": "bd769bc6e625f53a631cc51f7dba87dfb90f4ac87039ea01f581fde991d22f95",
+  "method": "Rendered locked PDF pages at 180 dpi and compared source forms, translations, line continuations, inline italic terms, and interlinear alignment with extracted-records.json.",
+  "samples": [
+    {
+      "section": "interlinear text 1",
+      "printed_page": 246,
+      "pdf_page": 256,
+      "sentence": 1,
+      "result": "match"
+    },
+    {
+      "section": "interlinear text 3",
+      "printed_page": 255,
+      "pdf_page": 265,
+      "sentence": 1,
+      "result": "match"
+    },
+    {
+      "section": "dictionary",
+      "printed_page": 280,
+      "pdf_page": 290,
+      "record_ids": [
+        "blust-dict-p0280-e002",
+        "blust-dict-p0280-e021",
+        "blust-dict-p0280-e024"
+      ],
+      "result": "match"
+    },
+    {
+      "section": "dictionary",
+      "printed_page": 458,
+      "pdf_page": 468,
+      "record_ids": [
+        "blust-dict-p0458-e005"
+      ],
+      "result": "match"
+    },
+    {
+      "section": "dictionary",
+      "printed_page": 952,
+      "pdf_page": 962,
+      "record_ids": [
+        "blust-dict-p0952-e004"
+      ],
+      "result": "match"
+    },
+    {
+      "section": "dictionary custom em-dash glyph",
+      "printed_pages": [
+        293,
+        385
+      ],
+      "pdf_pages": [
+        303,
+        395
+      ],
+      "record_ids": [
+        "blust-dict-p0293-e015",
+        "blust-dict-p0385-e008"
+      ],
+      "result": "match after decoding"
+    },
+    {
+      "section": "dictionary source-note boundary",
+      "printed_pages": [
+        431,
+        460
+      ],
+      "pdf_pages": [
+        441,
+        470
+      ],
+      "record_ids": [
+        "blust-dict-p0431-e003",
+        "blust-dict-p0460-e009"
+      ],
+      "result": "source note preserved separately from Thao form"
+    },
+    {
+      "section": "dictionary quotation glyphs",
+      "printed_page": 631,
+      "pdf_page": 641,
+      "record_ids": [
+        "blust-dict-p0631-e008"
+      ],
+      "result": "match after decoding"
+    },
+    {
+      "section": "dictionary slash-alternative scope",
+      "printed_pages": [
+        822,
+        881,
+        924
+      ],
+      "pdf_pages": [
+        832,
+        891,
+        934
+      ],
+      "record_ids": [
+        "blust-dict-p0822-e005",
+        "blust-dict-p0881-e009",
+        "blust-dict-p0924-e006"
+      ],
+      "result": "slash-delimited alternatives and their shared material match print"
+    },
+    {
+      "section": "generic source-audit unmatched sample",
+      "printed_pages": [
+        255,
+        280,
+        385,
+        876,
+        1038
+      ],
+      "pdf_pages": [
+        265,
+        290,
+        395,
+        886,
+        1048
+      ],
+      "record_ids": [
+        "blust-text-t03-s007",
+        "blust-dict-p0280-e011",
+        "blust-dict-p0385-e008",
+        "blust-dict-p0876-e001",
+        "blust-dict-p1038-e001"
+      ],
+      "result": "all five records are visibly present and match the reviewed extraction"
+    },
+    {
+      "section": "interlinear text 5 Type3 A restoration",
+      "printed_pages": [
+        266,
+        269
+      ],
+      "pdf_pages": [
+        276,
+        279
+      ],
+      "sentence_numbers": [
+        66,
+        69,
+        95
+      ],
+      "result": "printed opening quote plus A matches the aligned FUT or A gloss"
+    }
+  ],
+  "notes": [
+    "The source en dash marks morpheme boundaries; an ASCII hyphen at a line ending is print hyphenation and is removed during reassembly.",
+    "Italic Thao terms embedded in English translations remain part of the translation and do not start new records.",
+    "Separately indented notes and dictionary definitions are excluded from the corpus scope.",
+    "The parenthetical placement notes in dictionary examples blust-dict-p0431-e003 and blust-dict-p0460-e009 are retained as source_note and excluded from the Thao FORM.",
+    "Custom vertical-bar and backslash glyph codes are decoded as the printed em dash and opening double quotation mark.",
+    "Twenty-seven printed source-word positions have no independently aligned gloss; they remain null rather than receiving inferred glosses.",
+    "Three text 5 positions where Type3 extraction dropped a printed A after an opening quote are restored from the rendered page and aligned gloss.",
+    "The generic pdfplumber audit matched 8,614 of 8,802 generated sentences but found zero numbered example regions; five rendered samples from its unmatched bucket all matched the source."
+  ]
+}

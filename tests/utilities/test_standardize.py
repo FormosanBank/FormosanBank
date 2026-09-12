@@ -608,6 +608,49 @@ def test_copy_mode_retains_null_units_in_S_standard(tmp_path):
     assert (
         root.findtext("./S/FORM[@kindOf='standard']") == "∅-sitangah kero-∅ ∅ misa"
     )
+
+
+_RECONSTRUCTION_XML = (
+    '<TEXT id="T_RECON" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+    'xml:lang="trv" dialect="unknown">'
+    '<S id="1"><FORM kindOf="original">tgbukuy *-ʔ, *-h, ma *-∅ kero-∅</FORM>'
+    "</S></TEXT>"
+)
+
+
+def test_remove_null_units_keeps_asterisked_reconstruction_labels(tmp_path):
+    """'*-∅' is a reconstruction label, not a null morpheme.
+
+    The asterisk marks a Neogrammarian reconstruction and the '∅' names the
+    reconstructed segment, so the pair is the label's content. Stripping it
+    left a bare '*' that means nothing (SEALS33 S25). A real null unit in
+    the same sentence must still go, and the reconstruction hyphen must
+    survive C012, which skips '∅'-adjacent hyphens.
+    """
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "r.xml", _RECONSTRUCTION_XML)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    assert (
+        root.findtext("./S/FORM[@kindOf='standard']")
+        == "tgbukuy *-ʔ, *-h, ma *-∅ kero"
+    )
+
+
+def test_remove_null_units_keeps_asterisked_null_without_hyphen(tmp_path):
+    """The guard covers '*∅' as well as '*-∅'."""
+    corpus = tmp_path / "corpus"
+    xml = (
+        '<TEXT id="T_RECON2" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+        'xml:lang="trv" dialect="unknown">'
+        '<S id="1"><FORM kindOf="original">*∅ ∅ x</FORM></S></TEXT>'
+    )
+    work = _write_corpus_xml(corpus, "r2.xml", xml)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    assert root.findtext("./S/FORM[@kindOf='standard']") == "*∅ x"
 # --- C012: hyphen handling in S-level standard FORM ---------------------------
 #
 # standardize.py applies C012 to the S-level standard FORM in all modes EXCEPT
@@ -750,6 +793,58 @@ def test_standardize_skips_c012_for_unsegmented_sentence(tmp_path):
     assert _std_text(root) == "Proto-Austronesian ka-en"
 
 
+# --- C012: --segmented-without-m-tier (opt-in, off by default) ----------------
+#
+# The M tier is C012's proxy for "this sentence is morpheme-segmented". A
+# corpus can be segmented and publish no M analysis (MontgomeryTexts,
+# Nowbucyang-Truku-Thesis); the flag is the opt-in for that shape. It must
+# stay off by default -- an S-level hyphen is not always segmentation.
+
+UNSEGMENTED_AMIS = (
+    '<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+    '<S id="S1"><FORM kindOf="original">na-romoal tangsor</FORM>'
+    '<W id="W1"><FORM kindOf="original">na-romoal</FORM></W></S></TEXT>')
+
+
+def test_segmented_without_m_tier_strips_hyphens_when_asked(tmp_path):
+    """With the flag, C012 fires on an M-less S that carries segmentation."""
+    root = _write_collection(tmp_path, UNSEGMENTED_AMIS)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents",
+                             "--segmented-without-m-tier"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "naromoal tangsor"
+
+
+def test_segmented_without_m_tier_is_off_by_default(tmp_path):
+    """Same input, no flag: the hyphen survives, as it does on main."""
+    root = _write_collection(tmp_path, UNSEGMENTED_AMIS)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "na-romoal tangsor"
+
+
+def test_segmented_without_m_tier_leaves_W_segmentation_alone(tmp_path):
+    """C012 is S-level only; the flag does not change that."""
+    root = _write_collection(tmp_path, UNSEGMENTED_AMIS)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents",
+                             "--segmented-without-m-tier"])
+    assert proc.returncode == 0, proc.stderr
+    tree = ET.parse(root / "XML" / "t.xml")
+    assert tree.find(".//W/FORM[@kindOf='standard']").text == "na-romoal"
+
+
+def test_segmented_without_m_tier_still_honours_hyphen_as_letter(tmp_path):
+    """Bunun writes '-' as a letter, so the flag must not override C011."""
+    xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="bnn">'
+           '<S id="S1"><FORM kindOf="original">ma-baliv-an</FORM></S></TEXT>')
+    root = _write_collection(tmp_path, xml)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents",
+                             "--segmented-without-m-tier"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "ma-baliv-an"
+    assert "c012" in _warnings_csv(root)
+
+
 def test_copy_mode_is_pure_duplication_no_C012(tmp_path):
     """--copy performs NO cleaning at all (2026-08-09 ruling): segmentation
     hyphens survive in the S-level standard FORM verbatim. V133/V120 flag
@@ -759,3 +854,121 @@ def test_copy_mode_is_pure_duplication_no_C012(tmp_path):
     assert proc.returncode == 0, proc.stderr
     assert _std_text(root) == "mkan-ku-nhapuy"
 
+
+
+# --- POL-028 variants: the standard tier derives its own (2026-09-09) --------
+
+_VARIANT_XML = (
+    '<TEXT id="T_VAR" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+    'xml:lang="tay" dialect="unknown">'
+    '<S id="1">'
+    '<FORM kindOf="original">náku-yakuyab</FORM>'
+    '<FORM kindOf="original" ver="alt">áku-yakuyab</FORM>'
+    "</S></TEXT>"
+)
+
+
+def _forms(work):
+    root = ET.parse(work).getroot()
+    return [
+        (f.get("kindOf"), f.get("ver"), f.text)
+        for f in root.find("./S").findall("FORM")
+    ]
+
+
+@pytest.mark.parametrize("original_variant_first", [False, True])
+@pytest.mark.parametrize("standard_order", ["missing", "base-first", "variant-first"])
+def test_standard_variant_is_derived_from_the_original_variant(
+    tmp_path, original_variant_first, standard_order
+):
+    """A ver="alt" original gets a ver="alt" standard, transliterated.
+
+    POL-028 (revised 2026-09-09): variants exist for both tiers, and the
+    standard tier is derived (POL-002), so its variants are derived too.
+    """
+    root = ET.fromstring(_VARIANT_XML)
+    sentence = root.find("S")
+    if original_variant_first:
+        base = sentence[0]
+        sentence.remove(base)
+        sentence.append(base)
+    if standard_order != "missing":
+        versions = [None, "alt"] if standard_order == "base-first" else ["alt", None]
+        for version in versions:
+            form = ET.SubElement(sentence, "FORM", kindOf="standard")
+            if version is not None:
+                form.set("ver", version)
+            form.text = "stale"
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "v.xml", ET.tostring(root, encoding="unicode"))
+    originals = _original_forms(work)
+    expected = [
+        ("original", None, "náku-yakuyab"),
+        ("original", "alt", "áku-yakuyab"),
+        ("standard", None, "naku-yakuyab"),
+        ("standard", "alt", "aku-yakuyab"),
+    ]
+    for _ in range(2):
+        proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+        assert proc.returncode == 0, proc.stderr
+        assert _original_forms(work) == originals
+        assert sorted(_forms(work), key=lambda f: (f[0], f[1] or "")) == expected
+
+
+def test_variant_without_original_base_cannot_supply_the_standard_base(tmp_path):
+    root = ET.fromstring(_VARIANT_XML)
+    sentence = root.find("S")
+    sentence.remove(sentence[0])
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "v.xml", ET.tostring(root, encoding="unicode"))
+    before = work.read_bytes()
+    proc = _run_standardize(["--copy", "--corpora_path", str(corpus)])
+    assert proc.returncode == 1
+    assert "no original" in proc.stderr
+    assert work.read_bytes() == before
+
+
+def test_standard_variants_are_regenerated_not_accumulated(tmp_path):
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "v.xml", _VARIANT_XML)
+    for _ in range(3):
+        proc = _run_standardize(
+            ["--remove_accents", "--corpora_path", str(corpus)])
+        assert proc.returncode == 0, proc.stderr
+    kinds = [(k, v) for k, v, _ in _forms(work)]
+    assert kinds.count(("standard", "alt")) == 1
+
+
+def test_surplus_standard_variant_is_removed(tmp_path):
+    """A standard variant the original no longer has varies from nothing."""
+    xml = (
+        '<TEXT id="T_VAR2" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+        'xml:lang="tay" dialect="unknown">'
+        '<S id="1">'
+        '<FORM kindOf="original">naku</FORM>'
+        '<FORM kindOf="standard">naku</FORM>'
+        '<FORM kindOf="standard" ver="alt">stale</FORM>'
+        "</S></TEXT>"
+    )
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "v.xml", xml)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, proc.stderr
+    assert ("standard", "alt") not in [(k, v) for k, v, _ in _forms(work)]
+
+
+def test_legacy_alternate_kindOf_is_left_alone(tmp_path):
+    """The deprecated spelling is migration's business, not standardize's."""
+    xml = (
+        '<TEXT id="T_VAR3" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+        'xml:lang="tay" dialect="unknown">'
+        '<S id="1">'
+        '<FORM kindOf="original">naku</FORM>'
+        '<FORM kindOf="alternate">aku</FORM>'
+        "</S></TEXT>"
+    )
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "v.xml", xml)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, proc.stderr
+    assert ("alternate", None, "aku") in _forms(work)
