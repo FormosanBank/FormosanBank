@@ -85,10 +85,10 @@ def test_lexical_xml_preserves_distinct_targets_as_alternates():
         translations.extend(root.findall(".//TRANSL"))
 
     assert len(lexical_files) == 4
-    assert len(sentences) == 1156
-    assert len(translations) == 1305
+    assert len(sentences) == 1158
+    assert len(translations) == 1307
     assert Counter(translation.get("ver", "primary") for translation in translations) == {
-        "primary": 1156,
+        "primary": 1158,
         "alt": 149,
     }
     for sentence in sentences:
