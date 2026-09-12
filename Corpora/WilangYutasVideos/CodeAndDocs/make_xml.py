@@ -3,10 +3,12 @@
 
 from __future__ import annotations
 
+import argparse
 import csv
+import json
 import hashlib
 import re
-import shutil
+import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -14,7 +16,6 @@ from lxml import etree
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_ROOT = ROOT / "CodeAndDocs"
 MANIFEST = ROOT / "CodeAndDocs" / "video_manifest.tsv"
 XML_ROOT = ROOT / "XML"
 XML_NS = "http://www.w3.org/XML/1998/namespace"
@@ -76,7 +77,7 @@ def load_manifest(path: Path = MANIFEST) -> list[ManifestRow]:
         rows = list(csv.DictReader(handle, delimiter="\t"))
     manifest: list[ManifestRow] = []
     for row in rows:
-        source = SOURCE_ROOT / row["source_path"] if row["source_path"] else None
+        source = ROOT / row["source_path"] if row["source_path"] else None
         manifest.append(
             ManifestRow(
                 output_path=ROOT / row["output_path"],
@@ -222,7 +223,9 @@ def set_mixed_text(element: etree._Element, text: str) -> None:
     element.text = parts[0]
     for part in parts[1:]:
         unclear = etree.SubElement(element, "UNCLEAR")
-        unclear.tail = part
+        # These transcript gaps separate speech units. Preserve the published
+        # boundary in the tail: the shared cleaner strips the preceding text.
+        unclear.tail = " " + part.lstrip() if part.strip() else part
 
 
 def create_root(output_stem: str, video_id: str) -> etree._Element:
@@ -232,7 +235,7 @@ def create_root(output_stem: str, video_id: str) -> etree._Element:
     root.set("dialect", "Sekolik")
     root.set("audio", f"https://www.youtube.com/watch?v={video_id}")
     root.set("source", "Wilang Yutas Atayal Videos")
-    root.set("copyright", "CC-BY-NC")
+    root.set("copyright", "CC BY-NC 4.0")
     root.set("citation", CITATION)
     root.set("BibTeX_citation", BIBTEX)
     return root
@@ -267,11 +270,10 @@ def build_transcript(row: ManifestRow) -> tuple[etree._Element, SourceStats]:
                 else None
             ),
         )
-        for kind in ("original", "standard"):
-            form = etree.SubElement(sentence, "FORM", kindOf=kind)
-            if form_note:
-                form.set("notes", form_note)
-            set_mixed_text(form, normalized)
+        form = etree.SubElement(sentence, "FORM", kindOf="original")
+        if form_note:
+            form.set("notes", form_note)
+        set_mixed_text(form, normalized)
         if translation:
             transl = etree.SubElement(sentence, "TRANSL")
             transl.set(f"{{{XML_NS}}}lang", "zho")
@@ -300,9 +302,40 @@ def write_xml(root: etree._Element, path: Path) -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--output-dir", type=Path)
+    mode.add_argument("--record-provenance", type=Path)
+    mode.add_argument("--copy-form-notes", type=Path)
+    args = parser.parse_args()
+    if args.copy_form_notes:
+        for path in sorted(args.copy_form_notes.rglob("*.xml")):
+            tree = etree.parse(str(path))
+            for sentence in tree.getroot().findall("S"):
+                original = sentence.find("FORM[@kindOf='original']")
+                standard = sentence.find("FORM[@kindOf='standard']")
+                if original is None or standard is None:
+                    raise ValueError(f"Missing FORM tier: {path}:{sentence.get('id')}")
+                if original.get("notes"):
+                    standard.set("notes", original.get("notes"))
+            write_xml(tree.getroot(), path)
+        return
+    if args.record_provenance:
+        provenance = ROOT / "CodeAndDocs/provenance.json"
+        result = subprocess.run(
+            ["git", "-C", str(args.record_provenance), "rev-parse", "HEAD"],
+            capture_output=True, text=True,
+        )
+        if result.returncode:
+            if not provenance.exists():
+                raise SystemExit("No Git metadata or existing exported provenance record")
+            print("No Git metadata: retaining exported provenance; using the supplied tools.")
+        else:
+            provenance.write_text(json.dumps({"formosanbank_commit": result.stdout.strip()}, indent=2) + "\n")
+        return
     manifest = load_manifest()
-    if XML_ROOT.exists():
-        shutil.rmtree(XML_ROOT)
+    if args.output_dir.exists() and any(args.output_dir.iterdir()):
+        raise SystemExit("Source output directory must be empty; use generate_xml.sh for rebuilding")
     totals = SourceStats(0, 0, 0, 0, 0)
     transcript_files = 0
     for row in manifest:
@@ -318,8 +351,8 @@ def main() -> None:
             )
         else:
             root = build_audio_only(row)
-        write_xml(root, row.output_path)
-    print(f"Wrote {len(manifest)} XML files under XML/")
+        write_xml(root, args.output_dir / row.output_path.relative_to(XML_ROOT))
+    print(f"Wrote {len(manifest)} XML files under {args.output_dir}")
     print(f"Transcript files: {transcript_files}; audio-only files: 48")
     print(
         f"Source timestamps: {totals.timestamp_lines}; "

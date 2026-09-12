@@ -15,7 +15,6 @@ from lxml import etree
 ROOT = Path(__file__).resolve().parents[1]
 BUILDER = ROOT / "CodeAndDocs" / "make_xml.py"
 ISSUE_REVIEW = ROOT / "CodeAndDocs" / "issue_1_review.tsv"
-SUMMARY = ROOT / "CodeAndDocs" / "source_alignment_summary.md"
 
 
 def load_builder():
@@ -79,7 +78,7 @@ def main() -> None:
         for sentence in actual.findall("S"):
             sentence_index[(str(row.output_path.relative_to(ROOT)), sentence.get("id", ""))] = sentence
 
-    expected_totals = builder.SourceStats(6455, 3014, 3441, 237, 5)
+    expected_totals = builder.SourceStats(3014, 3014, 0, 237, 5)
     if totals != expected_totals:
         raise SystemExit(f"Unexpected source totals: {totals}")
 
@@ -96,34 +95,11 @@ def main() -> None:
             if "(再確認)" not in notes:
                 raise SystemExit("Issue #1 finding 21 lost its editorial source marker")
 
-    summary = """# Source alignment summary
+    print("PASS: 82/82 pre-clean XML files match the source builder")
+    print("Source accounting: 3,014 timestamp rows; 237 translation lines; 5 continuations")
+    print("Issue #1 evidence: all 21 recorded source locations exist")
+    print("This mechanical check does not replace independent source and final-output review.")
 
-- Pinned transcript files: 34
-- Manifested XML outputs: 82
-- Transcript outputs: 34
-- Audio-only outputs: 48
-- Timestamped source rows: 6,455
-- Included non-empty source rows: 3,014
-- Explicitly omitted blank source rows: 3,441
-- Translation lines: 237
-- Wrapped source continuations restored: 5
-- Generated pre-clean XML mismatches: 0
-- Issue #1 findings reviewed: 21/21
-- Unresolved issue #1 findings: 0
-
-The audit verifies every generated pre-clean XML element against the pinned
-source manifest and fails on missing, extra, reclassified, or changed input.
-The current FormosanBank cleaning, standardization, and phonology stages run
-only after this exact source-alignment gate passes.
-"""
-    SUMMARY.write_text(summary, encoding="utf-8")
-    print("PASS: 82/82 generated XML files match pinned source inputs")
-    print(
-        "PASS: 3,014 included rows; 3,441 blank rows omitted; "
-        "237 translations; 5 continuations"
-    )
-    print("PASS: issue #1 review is complete with 0 unresolved findings")
-    print(f"Wrote {SUMMARY}")
 
 
 if __name__ == "__main__":

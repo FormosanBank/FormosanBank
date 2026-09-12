@@ -1,130 +1,68 @@
 # Wilang Yutas Videos
 
-FormosanBank publication corpus for Wilang Yutas's Atayal video transcripts
-and audio-only recording inventory.
+Wilang Yutas and his collaborator 劉宇陽 recorded these [Atayal videos](https://www.youtube.com/@wilangyutas9297). The corpus contains Sekolik Atayal (`tay`), with some Mandarin translations: 82 XML files, 34 transcripts, 48 audio-only files and 3,014 sentences.
 
-## Repository At A Glance
+## Rights
 
-| Field | Value |
-| --- | --- |
-| Language | Atayal (`tay`), Sekolik dialect |
-| Source | [Wilang Yutas YouTube channel](https://www.youtube.com/@wilangyutas9297) |
-| Permission | Republish permission provided by collaborator 劉宇陽; XML records use `CC-BY-NC` |
-| Canonical output | 82 XML files under `XML/Atayal/` |
-| Current content | 34 transcript files, 48 audio-only files, 3,014 sentence records |
-| Status | Reconciled publication candidate under current-authority QC |
+**License:** CC BY-NC 4.0
 
-Wilang Yutas was an Atayal elder who recorded these materials with 劉宇陽.
-Some videos are fully or partly transcribed, while others have no transcript.
-An audio-only XML file preserves every recording without inventing text.
+**Rights source:** 劉宇陽, 2024-12-26; evidence: ask maintainer
 
-## License and AI Use
+The grant specifies CC By-NC; POL-042 supplies the canonical 4.0 spelling. The corpus remains subject to FormosanBank's [central terms](https://github.com/FormosanBank/FormosanBank/blob/main/LICENSE.md) and [AI use addendum](https://github.com/FormosanBank/FormosanBank/blob/main/AI-USE-ADDENDUM.md).
 
-This corpus is subject to its source license and the central FormosanBank
-terms in [LICENSE.md](../../LICENSE.md) and
-[AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI use is
-prohibited without prior written permission.
+## Reproduction
 
-## Pinned Source Model
-
-The 34 files under `CodeAndDocs/raw_scrape/` are the tracked transcript inputs.
-`CodeAndDocs/video_manifest.tsv` pins each input by path, byte count, and
-SHA256 and declares all 82 output paths. It also records the 48 audio-only
-files and their YouTube video IDs, so rebuilding never depends on a live
-channel listing.
-
-Every non-empty timestamped source row becomes one `S`. Empty timestamp rows
-are explicitly omitted while their recording remains represented by audio.
-Unindented follow-up lines are Mandarin translations, including two source
-translations whose complete text is the name `Wilang`. Five wrapped source
-lines are continuations and are restored to their preceding timestamp.
-
-Source parentheses mark multiple speakers but lack separate timestamps. Their
-content is retained in the FORM text and `notes="multiple speakers"` records
-the source convention. Strings of three or more question marks become
-`UNCLEAR` markers.
-
-## Rebuild
-
-From the FormosanBank repository root, install the corpus requirements and run
-the public two-pass rebuild:
+Required inputs, source hashes, build code and tests are under `CodeAndDocs/`. The canonical output is `XML/Atayal/`. Install the current FormosanBank requirements and `CodeAndDocs/requirements.txt`, then run:
 
 ```bash
-python -m pip install -r Corpora/WilangYutasVideos/CodeAndDocs/requirements.txt
-PYTHON=python Corpora/WilangYutasVideos/CodeAndDocs/reproduce.sh
+./CodeAndDocs/generate_xml.sh
 ```
 
-The rebuild performs these fail-closed stages:
+From a separate development checkout, select the current tools explicitly:
 
-1. Verify all source hashes and regenerate all 82 XML files from the manifest.
-2. Match every pre-clean XML element to the pinned source inputs.
-3. Run the current FormosanBank cleaner.
-4. Copy the reviewed historical transcription into the standard tier.
-5. Regenerate original Ortho94 and current standard phonology tiers.
-6. Run the nine repository regression tests.
+```bash
+FORMOSANBANK_ROOT=/path/to/FormosanBank PYTHON=python3 \
+  QC_OUTPUT_DIR=/path/to/external/reports ./CodeAndDocs/generate_xml.sh
+```
 
-`CodeAndDocs/reproduce.sh` runs two complete rebuilds, byte-compares the
-canonical XML before and after each pass, and verifies that the required
-FormosanBank tool files still match tooling commit
-`3a3c47c220520113f747e6a2d441494000e13c4b`. Network access is not used.
+The build starts from the committed transcripts in a fresh staging directory, then runs the shared cleaner, `standardize.py --remove_accents`, and `add_phonology.py --orthography Ortho94`. Ortho94 and accent removal retain the published processing decision. The standard tier follows current `standards.csv`. Code-switched Japanese and Mandarin are retained; the Atayal phonology profile does not transcribe those languages correctly.
 
-The cleaner emits one reviewed C007 warning for the source-authentic `ㄇ` in
-`Atayal_28`. The build requires that exact warning, verifies that the character
-survives in both FORM tiers, and discards the ephemeral warning CSV.
+**POL-047 deviation:** After standardization, copy source FORM notes onto standard FORM to preserve the published speaker qualifications. This changes notes only; shared tools still generate all standard text and PHON.
 
-Live upstream refresh is intentionally outside the pinned rebuild. The corpus
-root audio-download script retrieves the reviewed public Hugging Face dataset.
+The build uses the selected checkout's tools and records their actual revision in [provenance.json](CodeAndDocs/provenance.json). That record is informational, not a tool pin. A Git-free export retains its supplied provenance. Warnings are saved outside the corpus; the printed directory must be reviewed. Source refresh, validators and audio acquisition are separate from the XML build.
 
-## Issue 1 Review
+Run the corpus regression checks separately:
 
-All 21 MT quality findings are dispositioned in
-`CodeAndDocs/issue_1_review.tsv` with exact XML and source evidence.
+```bash
+python3 -m unittest discover -s CodeAndDocs/tests -v
+```
 
-- Findings 1 through 20 are source-authentic Mandarin or Japanese
-  code-switching, annotations, speech, and song lyrics. They remain in FORM
-  instead of being deleted as MT noise.
-- Finding 21 is a real typing defect. The source line `(再確認)` is an editorial
-  recheck marker, not a free translation. The marker is retained in FORM
-  notes and no `TRANSL` is emitted. The other pure recheck marker is handled
-  the same way. Two recheck annotations attached to real translations move to
-  `TRANSL/@notes` while the translation text remains intact.
+`CodeAndDocs/audit_source_alignment.py --xml-root /path/to/pre-clean/XML` checks a separate pre-clean build from `CodeAndDocs/make_xml.py --output-dir /path/to/empty/XML`. This checks parser coverage, not independent source fidelity or final QC. Current FormosanBank validators and source review are still required; historical test counts are not a readiness gate.
 
-## Current QC Result
+## Source processing
 
-The August 23 run against the pinned current authority reports:
+[video_manifest.tsv](CodeAndDocs/video_manifest.tsv) lists every output, video ID and source hash. The 34 committed transcripts preserve Joshua Hartshorne's published corrections from [the June source repair](https://github.com/FormosanBank/FormosanBank/commit/5dbd832e245ff1f34078aa2c8e8bb314957556b8). `CodeAndDocs/import_reviewed_sources.py` performed this one-time import and updated the hashes. It is not called by regeneration.
 
-- source alignment: 82/82 output files, 3,014/3,014 included rows, 3,441
-  explicit blank-row omissions, 237 translation lines, and five wrapped
-  continuations, with zero mismatches;
-- regression tests: 9 passed;
-- update-mode structural XML: zero findings after excluding only the existing
-  `WilangYutasVideos` publication target;
-- text: 183 source-authentic or current-authority SOFT findings, zero HARD;
-- gloss structure: 3,010 expected V060 SOFT findings because the source has no
-  token-aligned W/M analysis, zero HARD;
-- duplicates: 11 reviewed source-backed narrative groups in each tier, all
-  SOFT under the current policy;
-- exact adjudication: 3,215 accepted finding occurrences or groups, zero
-  unresolved;
-- private development-layout port readiness: zero HARD and one expected P005
-  warning because audio statistics are keyed to the published corpus name;
-- published-layout port readiness: zero HARD and zero warnings. All 3,062
-  AUDIO references are unchanged from the current published target, and the
-  stored duration statistics remain anchored to the current 3,014 transcribed
-  and 48 untranscribed AUDIO counts.
+The reviewed inputs contain 3,014 non-empty timestamp rows, 237 translation lines and five wrapped caption continuations. The earlier development scrape's 3,441 empty timestamps are absent from the reviewed inputs. Restoring those empty rows would change 22 published audio endpoints. All published TEXT/S IDs, recording filenames, audio-only entries and endpoints are retained.
 
-The 48 audio-only files have no text for orthography analysis. The detector
-therefore analyzes the 34 transcript files and identifies Atayal Sekolik as
-the best profile; the empty files are expected non-text inputs.
+Each timestamped caption becomes one S. An indented continuation, or a continuation of an open speaker parenthesis, belongs to that caption. Unindented translation lines stay translations, including two instances of the name `Wilang`. Parentheses identify a second speaker in this source; their content is retained and the speaker boundary becomes punctuation. They do not indicate optional words.
 
-## Audio Notes
+Transcription gaps retain the published word boundary after `UNCLEAR`, so regeneration cannot join the words on either side. The gap supplies no invented text or phonemes.
 
-Many videos have only partial transcripts. A companion `_untranscribed.xml`
-file references the remaining recording without creating empty sentences.
-Downloaded or segmented WAV files are ignored by Git. Subtitle timestamps are
-source-provided and may not align perfectly with the recording.
+The [issue #1 source review](CodeAndDocs/issue_1_review.tsv) retains all 20 flagged instances of source-authentic Japanese/Mandarin content. Two pure `(再確認)` recheck markers are recorded in FORM notes rather than emitted as translations. Two similar annotations attached to real translations move to translation notes. No spoken text is deleted. The complete earlier acquisition and processing versions remain in Git history; the development-only scripts under `scripts/` are not reproduction entrypoints.
+
+## Audio
+
+`download_audio_data.sh` downloads the published audio revision selected by FormosanBank's shared manifest and checks its XML inventory. It preserves the published files without resampling or segmentation. It is optional for text regeneration; `--dry-run` checks the remote inventory without downloading. Use the same `FORMOSANBANK_ROOT` and `PYTHON` settings from a private development checkout.
+
+## Notes and Issues
+
+- Many videos have no transcript. Their XML points to audio without inventing S records. Partly transcribed recordings retain their `_untranscribed` companions.
+- Subtitle timestamps are not guaranteed to align perfectly with the recording. Multi-speaker passages have no separate speaker timestamps.
+- Source question-mark runs mark attempted but unrecoverable transcription and become `UNCLEAR`. There is no word or morpheme analysis.
+- Japanese songs, Mandarin speech and annotations, and the Bopomofo fragment `ㄇ` are intentional source content. Orthography, vocabulary and phonology warnings involving them need source-aware review.
+- Repeated utterances are narrative evidence. Do not deduplicate them for corpus publication.
 
 ## Citation
 
-Wilang Yutas. 2019. *Wilang Yutas YouTube Channel*. YouTube.
-https://www.youtube.com/@wilangyutas9297.
+Wilang Yutas. 2019. *Wilang Yutas YouTube Channel*. YouTube. https://www.youtube.com/@wilangyutas9297.

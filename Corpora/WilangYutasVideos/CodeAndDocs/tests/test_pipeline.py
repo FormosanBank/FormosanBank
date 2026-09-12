@@ -9,7 +9,7 @@ from pathlib import Path
 from lxml import etree
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 BUILDER_PATH = ROOT / "CodeAndDocs" / "make_xml.py"
 SPEC = importlib.util.spec_from_file_location("wilang_make_xml_tests", BUILDER_PATH)
 if SPEC is None or SPEC.loader is None:
@@ -56,7 +56,7 @@ class WilangPipelineTests(unittest.TestCase):
                 totals.translation_lines + stats.translation_lines,
                 totals.continuation_lines + stats.continuation_lines,
             )
-        self.assertEqual(totals, builder.SourceStats(6455, 3014, 3441, 237, 5))
+        self.assertEqual(totals, builder.SourceStats(3014, 3014, 0, 237, 5))
 
     def test_sentence_and_audio_mapping_matches_pinned_sources(self) -> None:
         total_sentences = 0
@@ -91,6 +91,19 @@ class WilangPipelineTests(unittest.TestCase):
                 )
         self.assertEqual(total_sentences, 3014)
 
+    def test_published_timing_corrections_survive(self) -> None:
+        checks = (
+            ("20180723_fangwenYutas_Wilan_02buluolingxiu", "Atayal_3", None),
+            ("20190209_YutasWilang_ki_Yagu_03_disanduan", "Atayal_2", "15.0"),
+            ("20190209_YutasWilang_ki_Yagu_05_diwuduan", "Atayal_137", "641.68"),
+            ("20190209_YutasWilang_ki_Yagu_07_diqiduan_yakidege", "Atayal_4", "46.5"),
+            ("muqianxianzuozhepian_20160525_binkafeifangtan_Yutas_Wilang_muqianxianzuozhepian", "Atayal_196", "862.72"),
+        )
+        for name, sid, end in checks:
+            with self.subTest(name=name, sid=sid):
+                audio = self.xml[f"XML/Atayal/{name}.xml"].find(f"S[@id='{sid}']/AUDIO")
+                self.assertEqual(audio.get("end"), end)
+
     def test_original_and_standard_forms_are_parallel(self) -> None:
         for root in self.xml.values():
             for sentence in root.findall("S"):
@@ -101,6 +114,20 @@ class WilangPipelineTests(unittest.TestCase):
                 self.assertEqual(etree.tostring(original), etree.tostring(standard).replace(b'standard', b'original', 1))
                 self.assertEqual(len(sentence.findall("PHON")), 2)
                 self.assertIsNone(sentence.find("W"))
+
+    def test_transcript_gaps_keep_word_boundaries_after_qc(self) -> None:
+        cases = (
+            ("20181228_yutasWilang_01_kinhulan_zuyuzimuwancheng", "Atayal_532", "nyux Hayun", "njux ħajun"),
+            ("20190209_YutasWilang_ki_Yagu_07_dibaduan_yakidege", "Atayal_10", "lman mwah", "lman mwaħ"),
+            ("20190407_Yutas_Wilang_di4duan_Lowsing_Watan_MVI_1702_yiwancheng", "Atayal_11", "swan, son", "swan son"),
+        )
+        for name, sid, form_boundary, phon_boundary in cases:
+            with self.subTest(name=name, sid=sid):
+                sentence = self.xml[f"XML/Atayal/{name}.xml"].find(f"S[@id='{sid}']")
+                for kind in ("original", "standard"):
+                    form = sentence.find(f"FORM[@kindOf='{kind}']")
+                    self.assertIn(form_boundary, "".join(form.itertext()))
+                self.assertIn(phon_boundary, sentence.find("PHON[@kindOf='original']").text)
 
     def test_wrapped_source_continuations_are_retained(self) -> None:
         retained = (
