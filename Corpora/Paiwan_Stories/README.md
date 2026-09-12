@@ -1,61 +1,63 @@
 # Paiwan Stories
 
-Three Eastern Paiwan stories with Chinese translations and whole-story audio:
+Three Eastern Paiwan stories with Chinese translations: *Dingding*,
+*Kavatjes ni vuvu* and *Maljialjian a qaciljay*. The corpus contains 46
+bilingual passages, with whole-story audio and no word or morpheme analysis.
 
-- `Dingding`
-- `Kavatjes ni vuvu`
-- `Maljialjian a qaciljay`
+## Rights
 
-## License and AI use
+**License:** CC BY-NC 4.0
 
-The author granted FormosanBank direct CC BY-NC permission for the Indigenous-language text. The corpus is also subject to the central terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI use is prohibited without prior written permission.
+**Rights source:** Gesi Giling (阮翠芳), 2024-04-13; evidence: ask maintainer
 
-The illustrated source documents contain separate rights notices for illustrations, adaptation, and publication. Those documents and their redundant MP3 files were used for a private source audit but are not distributed here.
+Joshua Hartshorne recorded permission directly from the Indigenous-text
+author. The illustrated books also carry separate illustration, adaptation
+and publisher rights. Full source documents are not redistributed here.
+The central FormosanBank terms and AI-use addendum also apply.
 
-## Contents
+## Sources and reproduction
 
-- 3 XML files
-- 46 reviewed sentence records
-- 46 source-owned original Paiwan forms
-- 46 source-owned original Chinese translations
-- 3 whole-story WAV recordings available through the public audio contract
+The two illustrated PDFs credit Gesi Giling for the Indigenous text and
+Tjaiwan Giling for illustrations; both colophons date their first printing
+to November 2020. The third source is a bilingual Word document.
 
-The reviewed data restore one complete bilingual sentence omitted from the legacy `Maljialjian` XML. They also repair omitted or shifted Chinese translations in `Kavatjes` and `Maljialjian`.
+`CodeAndDocs/data/reviewed_records.tsv` is the committed transcription
+baseline, with stable IDs, source locators and correction notes.
+`texts.tsv` supplies TEXT metadata; `source_exclusions.tsv` identifies
+paratext and illustration-only material. The source documents and original
+recordings are identified by SHA-256 in `source_manifest.json`.
 
-## Source authority and scope
-
-The published XML comes from reviewed private development revision `9a7eafb186de`. All 66 pages in the two illustrated PDFs and bilingual Word source were reviewed. The source ledger retains 46 bilingual records and documents four paratext or illustration-only exclusions.
-
-`CodeAndDocs/data/reviewed_records.tsv` is the public, page-addressed source transcription used by the generator. `source_ledger.csv` records every retained and excluded item. `source_manifest.json` pins the six private audit inputs and the three published recordings by filename, size, and SHA-256 without distributing the restricted source files.
-
-## Reproduce
-
-From this corpus directory, use a current FormosanBank Python environment:
+The build reconstructs XML from this transcription, without fetching or
+re-extracting the restricted documents. With current FormosanBank dependencies:
 
 ```bash
-PYTHON=/path/to/FormosanBank/.venv/bin/python ./CodeAndDocs/make_xml.sh
+FORMOSANBANK_ROOT=/path/to/FormosanBank PYTHON=python3 ./CodeAndDocs/generate_xml.sh
+python3 -m unittest discover -s CodeAndDocs/tests -v
 ```
 
-The build regenerates the three original-tier XML files from the reviewed records, applies the shared cleaner, creates standard forms with `standardize.py --copy`, generates original and standard phonology with the reviewed Paiwan Ortho94 profile, and runs structural validation. Repeated builds are byte-identical.
-
-`CodeAndDocs/data/provenance.json` records the FormosanBank commit this corpus was built against. It is documentation: nothing in the build reads it, and the build runs against the current state of the bank, so a rebuild picks up later tooling improvements rather than pinning them.
+Inside `Corpora/Paiwan_Stories`, the shared checkout is found automatically.
+The build generates fresh source tiers, runs shared cleaning, copies original
+FORM to standard with `standardize.py --copy`, and derives PHON with Ortho94
+for originals and the registered standard for standard FORM. Ortho94 and
+Ortho113 Eastern values agree for this corpus's letters. Actual build tools
+are recorded in [provenance.json](CodeAndDocs/provenance.json), without a tools pin.
+QC is separate from generation. Set `QC_OUTPUT_DIR` to retain build warnings.
 
 ## Audio
 
-Audio is not committed to Git. Download the three pinned public recordings with:
+`./download_audio_data.sh` retrieves the three published WAVs into ignored
+`Audio/`, using the revision in FormosanBank's `audio_sources.json`.
+Use `--dry-run` to check the remote inventory without downloading.
+The recordings retain their published 16 kHz mono representation; no
+resampling or channel conversion is performed. Each TEXT names its whole-story
+recording. Sentence timings are not included.
 
-```bash
-./download_audio_data.sh
-```
+## Notes and Issues
 
-The XML roots reference `DingDing.wav`, `kavatjes_ni_vuvu.wav`, and `maljialjian_a_qaciljay.wav`. The public Hugging Face copies are byte-identical to the reviewed development WAV files.
-
-## Validation status
-
-The 2026-08-22 current-authority review passed source coverage, 8 repository tests, XML, text, gloss, duplicate, audio, dialect, orthography, vocabulary, registry, and port-readiness checks. It adjudicated 51 expected soft findings with none unresolved and reported 0 hard findings and 0 warnings for port readiness.
-
-The 46 V060 gloss findings are expected because these narrative sources contain no source-supported word or morpheme analysis.
-
-## Citation
-
-Juan, T. F., and X. Ruan. 2024. *Corpus of Paiwan Stories*. Electronic resource.
+The restored Maljialjian passage uses `S6a`, between the existing S6 and S7;
+all published TEXT and sentence IDs remain stable. Chinese translations
+omitted or shifted in the earlier corpus are restored from the sources.
+Published quotation corrections and comma/exclamation typography are retained
+in the transcription; `repair_records.py` records the ID and locator repair.
+The Word source has 15 table rows containing 16 passages; row 4 holds two units.
+Historical alignment files are unavailable, so no sentence timings are inferred.

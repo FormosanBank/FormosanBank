@@ -5,9 +5,57 @@ touches one of these questions, **cite the entry (e.g. POL-012) instead of
 re-deciding it**. Open questions carry status UNRESOLVED — ask the maintainer
 once, record the answer here, and the question is closed everywhere.
 
-**DRAFT — every ruling below is a restatement of decisions found in code,
-specs, the GitBook, or audit sign-offs. Rulings the maintainer has not
-actually made are marked UNRESOLVED with a recommendation. Please review.**
+Most entries restate a decision already made in code, in a spec, in the
+GitBook, or in an audit sign-off; the later ones record a maintainer ruling
+directly, and each says which. **Anything the maintainer has not actually
+ruled on is marked UNRESOLVED with a recommendation — those entries are
+proposals awaiting review, not rules.**
+
+## Highlights
+
+If you read nothing else, read these ten. They have the broadest reach, and
+almost every review question that gets re-litigated is settled by one of them.
+
+**The data**
+
+| Policy | The rule |
+| --- | --- |
+| **POL-001** | The `original` tier is the **actual source text**, not a raw scrape. Fixing an OCR misread or a dropped period makes it *more* faithful; changing the source's spelling is the error to catch. |
+| **POL-002** | The `standard` tier is the same content in FormosanBank's one common orthography. It is derived, never hand-edited. |
+| **POL-037** | Published identifiers are **stable**. `TEXT/@id` is never reused; S/W/M ids are never renumbered once published. External users cite them. |
+| **POL-038** | XML and raw scrape files change **only via committed code** — a pipeline script, `manual_edits.xml`, or a one-off script in `CodeAndDocs/`. Never a hand edit, not even during an audit. |
+
+**Rights**
+
+| Policy | The rule |
+| --- | --- |
+| **POL-042** | Every `TEXT/@copyright` is exactly one value from `rights_vocabulary.csv`. No exceptions, no free text. |
+| **POL-043** | An existing rights claim is **never weakened because a reviewer could not find its evidence.** The evidence lives with the maintainer, not in this repository. Escalate; do not downgrade. |
+
+**Building and reviewing**
+
+| Policy | The rule |
+| --- | --- |
+| **POL-031** | New corpora are built in per-corpus dev repos and ported into `Corpora/` only after QC. |
+| **POL-046** | **Shared tools first.** Extend a shared tool before writing a corpus-specific one. Corpus-specific processing code is a last resort and a fork risk. |
+| **POL-047** | One entry point, one step order: `generate_xml.sh` runs generate → manual edits → clean → standardize → add_phonology. Deviation is allowed but must be justified at merge. |
+| **POL-048** | A published corpus rebuilds from a **FormosanBank checkout alone.** Dev repos are permanently private and are never a build input. |
+
+**How the file is organised**
+
+| Section | Governs |
+| --- | --- |
+| 1. Tier semantics | what each tier means |
+| 2. Characters and typography | which characters may appear, and how |
+| 3. Structure | how S/W/M and their children are arranged |
+| 4. Process | what may be done to the data |
+| 5. Rights | licensing and permission |
+| 6. Development | the code that does all of the above, and how changes to it are reviewed |
+
+Entries carry status **RULED** (decided) or **UNRESOLVED** (open, with a
+recommendation). Cite the ID rather than re-deciding the question.
+
+---
 
 ## Where this file lives and how it syncs
 
@@ -15,10 +63,10 @@ This file (`FormosanBank/POLICIES.md`) is **canonical** — it versions together
 with the code that implements the rulings, and entries cite rule IDs and
 scripts by name. A rendered copy is published in the GitBook at
 `en-us/the-bank-architecture/policies.md` with a header marking it as synced;
-the GitBook repo's test suite gains a drift check (byte-comparison against a
-FormosanBank checkout, alongside the existing `update_corpus_stats.py`
-tooling) so the copy cannot silently diverge. The GitBook's
-[FormosanBank XML Format](../FormosanBankGitbook/en-us/the-bank-architecture/formosanbank-xml-format.md)
+the GitBook repo regenerates it with `python sync_upstream_docs.py`, and its
+`tests/test_upstream_doc_sync.py` drift check (a byte-comparison against a
+FormosanBank checkout) fails when the copy diverges. The GitBook's
+[FormosanBank XML Format](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/formosanbank-xml-format)
 page remains the narrative description of the format; where it states a
 convention, the matching POL entry cites it rather than duplicating prose.
 
@@ -131,6 +179,16 @@ pipeline, so there is no per-corpus opt-out of `∅` in published data. Spec:
    WAVE DASH. Implemented in `clean_xml`'s `swap_punctuation` (C029),
    pure typography per the POL-010 rationale. Chinese TRANSL is
    unaffected (that branch never calls `swap_punctuation`).
+3. **CJK context — RULED (2026-09-03).** A `~` **between two CJK
+   characters** is not gloss notation and carries no morphological
+   meaning. Chinese glosses and translations use it for an open semantic
+   argument (`把~抓住`, "catch ~"), for prosodic lengthening after an
+   interjection (`哇~真漂亮`), and for numeric ranges (`五~六`). The
+   gloss-scrape rules therefore strip it before parsing morpheme
+   structure, so it neither contributes a morpheme slot nor enters a
+   marker skeleton. The exception requires CJK on *both* sides, which
+   leaves Leipzig-style `CAU~walk` untouched. Implemented in
+   `gloss_scrape._gloss_notation_text` (consumed by G001, G002, G007).
 
 ### POL-014 · RULED · GitBook · infixes on W/M tiers
 W-tier FORMs mark an infix with ASCII angle brackets (`k<um>a'en`); S-level
@@ -264,10 +322,22 @@ Two different things, treated differently:
 ### POL-025 · RULED · 2026-08-10 · alternative translations
 When a source gives more than one translation of a sentence into the same
 language, they all live **in the same `<S>` block** as multiple TRANSL
-elements, with all but one carrying `ver="alt"`. (The XSD already requires
-a `ver` when a parent has two same-language TRANSLs.) Do not drop the
-extra readings (Puyuma-Teng audit found 7 lost) and do not create
+elements, with all but one carrying `ver="alt"`. V085 enforces this and V084
+restricts the value; the XSD does not and cannot express either. Do not drop
+the extra readings (Puyuma-Teng audit found 7 lost) and do not create
 duplicate S blocks for them.
+
+`ver="alt"` is **not** confined to the S level — MontgomeryTexts, RauDong and
+WakelinTexts use it on W and M, which is correct.
+
+**`kindOf` on a TRANSL is a different axis and is not interchangeable with
+`ver`.** It is meaningful only at W and M level, where a TRANSL carries a
+gloss: `original` is the source's own gloss, `standard` a standardized one.
+On an S-level TRANSL — a free translation — there is no such axis and the
+attribute carries no information (V151). Glosbe currently carries 4,157
+such S-level `kindOf` attributes; V151 ships SOFT rather than HARD until
+they are remediated (see `claudeplans/2026-09-08-alternate-form-worklist.md`).
+Amended 2026-09-08.
 
 ### POL-026 · RULED · 2026-08-10 · optional material in examples
 A source sentence with optional words — `x y (z)` — becomes **two S
@@ -282,6 +352,100 @@ retained. Same care as POL-026: each block's glosses, W/M tier, and
 translation reflect only its own option. (V121/V122 flag leftover
 parens/slashes; unresolved slash alternatives in published FORMs are the
 symptom of skipping this rule.)
+
+### POL-028 · RULED · 2026-09-08 · variant FORMs
+
+**Revised 2026-09-09.** A **variant reading** is written `ver="alt"` on a FORM
+whose `kindOf` names its tier — `kindOf="original" ver="alt"` is a variant of
+the original tier, `kindOf="standard" ver="alt"` of the standard. This is the
+same shape TRANSL has used since POL-025, and the allowed values share one
+allowlist (V084 for TRANSL, V156 for FORM).
+
+**This supersedes two earlier rulings** (POL-050):
+
+1. This entry's own original text, which said a variant was
+   `kindOf="alternate"` and "the only marking for this: **not `ver`**". That
+   spelling names no tier, so a node carrying two variants could not say which
+   base each varied from, and a variant could not be transliterated because
+   nothing knew which tier it belonged to. `alternate` is deprecated: still
+   schema-valid, flagged by V157 (SOFT), removed from the enumeration once the
+   published FORMs using it are migrated.
+2. The ruling recorded in commit `694bbc903` (2026-09-07) — *"the optional
+   material is handled with the alternative FORM mechanism, in the standard
+   tier only… The original tier keeps all of this notation untouched."* That
+   left WakelinTexts' original tier carrying source parentheses, which
+   contradicts this entry's closing rule that no published FORM keeps them.
+   Variants exist for both tiers; the original tier is resolved like the
+   standard one.
+
+- A tier carrying any variant must carry **exactly one FORM of that `kindOf`
+  without `ver`** — the base the variants vary from (V149 HARD). **A tier may
+  carry several variants**; it may not carry several bases, because then no
+  variant knows what it varies from. Each variant must satisfy two independent
+  conditions against its own tier's base (V150 SOFT):
+  1. **Overlap** — it must overlap the sibling highly, or, where both forms
+     are too short for overlap to be measurable, simply be short.
+  2. **Proportion** — neither form may be more than twice the length of the
+     other. A spelling variant does not double a word's length.
+
+  Proportion is a separate test because overlap alone cannot catch it: a
+  short form paired with a long one shares a short member, and a short-form
+  exemption written against the shorter string would wave it through.
+  Proportion catches *disproportionate* pairs specifically — it does not
+  close every hole the short-form exemption opens. Very short pairs (the
+  shorter form at or under 2 characters, the longer at most twice that) are
+  exempt from both conditions by design and rely on review, not on either
+  test, to catch a mismatched pair. The operative thresholds live in V150,
+  deliberately not here, so they can be tuned from evidence without a
+  re-ruling.
+- **Variants are derived along with their tier.** `standardize.py` produces the
+  standard tier's base from the original tier's base and each standard variant
+  from the corresponding original variant, so a variant is machine-owned on the
+  standard side exactly as the base is (POL-002).
+- **The variation may span the whole form.** A one-letter word alternating
+  `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid a variant as a letter
+  changing inside a longer word. Nothing requires the variation to be
+  word-internal.
+- A competing **lexeme** for the same meaning, or a different gloss, is not
+  a variant; per POL-027 it becomes its own `S` block, named the same way
+  as the optional-material case below. Latham-1862 carries 5 such cases,
+  all Babuza-Favorlang; they are tracked for remediation.
+
+  **Whether a second reading is a competing lexeme is a judgement about
+  the source, not a string-similarity test** (maintainer, 2026-09-10).
+  V150 measures overlap and proportion, and it is a useful prompt — it
+  flagged exactly the six Latham pairs a human then classified, and none
+  of the two it left alone — but it decides nothing. Two readings a source
+  offers as alternative pronunciations of one word stay a variant however
+  little they overlap; two words for one meaning become separate blocks
+  however much they do.
+- Variants may sit at S, W or M, and belong on the node that actually
+  varies. A word-list corpus whose `S` is a word is the S-level case.
+- **Optional material is resolved by scope.** What forces a separate `S`
+  block is not whether the variation sits inside a word, but whether the
+  **sentence's word inventory changes**. A whole optional *word* —
+  `x y (z)` — changes the W tier and the gloss alignment, so it becomes two
+  `S` blocks (POL-026), the second taking the first's id plus `-opt`.
+  Optional material that leaves the word count unchanged — `puken-(en)`,
+  `(u)m-lavi`, and equally a whole short word alternating `a`/`u` — becomes
+  a `ver="alt"` variant FORM on the word that varies, never a second
+  sentence.
+  Neither mechanism leaves parentheses in a published FORM.
+- **Naming the extra blocks.** Wherever one source cell or sentence yields
+  more than one `S` — optional material above, or a competing lexeme — the
+  first block keeps its published id and the second takes that id plus
+  `-opt`. A **third** reading and beyond carry their reading number:
+  `-opt3`, `-opt4`, and so on (maintainer, 2026-09-10). There is no
+  `-opt2`: the second block is the common case and stays unnumbered, so
+  the ids already published do not move. One convention covers both
+  mechanisms because the question a reader asks of the id is the same —
+  *which block of a split is this?* — and not *why was it split?*, which
+  the FORMs and glosses answer.
+
+  These are published identifiers the moment they merge, so POL-037
+  applies to them: an `-opt` id is never renumbered afterwards, and a
+  later-discovered third reading takes `-opt3` rather than shifting
+  anything.
 
 ---
 
@@ -401,3 +565,612 @@ SOFT per POL-034). Adding a language = one `languages.csv` row, plus a
 `standards.csv` row (blank scheme until a standard is designated) and
 `dialects.csv` rows if multi-dialect. Documented for end users on the
 GitBook "Formosan Dialects" page.
+
+### POL-041 · RULED · 2026-09-03 · W-tier presence
+The W tier asks the same question as the M tier (POL-023) one level up,
+and gets the same answer at the level of the file: a corpus with **no**
+word segmentation has **no W level at all**, which is the normal state
+for most of the bank and never a finding. But a file where *some*
+sentences carry a W tier and others do not is an **incomplete
+segmentation pass**, and the unsegmented sentences are reported.
+
+An `S` with no `FORM` is never counted: an untranscribed-audio shell has
+no text to segment, and V010 already reports it.
+
+**Why the file, not the sentence** — the opposite of the POL-023
+amendment, deliberately. V144 can be per sentence because a parsed
+sentence announces itself (a W with two or more M children, or an M FORM
+differing from its parent W FORM). A sentence with **no W announces
+nothing at all**: there is no per-sentence signal that distinguishes
+"not segmented yet" from "not segmented, by design". Only the presence
+of segmented siblings in the same file makes the omission legible, so
+the file is the unit of judgement.
+
+Enforced as SOFT finding **V148** (`v148_W_less_S_in_segmented_file`) in
+`validate_xml.py`, aggregated per file. SOFT because a partly segmented
+file is a work-in-progress, not a defect in what it does contain.
+
+Scope consequence for **V060** (W-count vs word-count, `validate_glosses.py`):
+V060 compares counts, so it now applies only where a W tier exists — it
+skips a file with no W anywhere, and skips an individual `S` with no W
+inside a partially segmented file. Whether a sentence *ought* to have a W
+tier is this policy's question, not V060's. Previously V060 fired once per
+sentence on every sentence-only corpus, reporting a missing tier as a
+count mismatch "due to normalization or spelling". Raised by:
+`codex/qc-sentence-only-gloss-noise` (2026-06-25), which fixed the
+sentence-only half but not the partially segmented half.
+
+---
+
+## 5. Rights
+
+### POL-042 · RULED · 2026-09-05 · every published TEXT
+Every published `TEXT/@copyright` is **exactly one of the values in
+`rights_vocabulary.csv`** (repo root, joining `languages.csv`, `dialects.csv`
+and `standards.csv` as a registry per POL-039): a Creative Commons licence, or
+`public domain`. Exact match, not a pattern — a sentence that *mentions* a
+licence is not a licence declaration, and free text admits errors no reader
+catches (`CC NC-BY` shipped in RauDong across 20 files). Where a value names no
+version it is 4.0.
+
+**No exceptions.** A corpus whose rights cannot be expressed as one of these
+values is not published in FormosanBank, however genuine the permission behind
+it. Permission that does not amount to a licence is recorded in the corpus
+README (POL-044), not in `@copyright`.
+
+**One licence per corpus.** Per-item rights variation within a corpus is not
+representable and is deliberately not designed for; the case does not exist
+today. Implemented by: V160 (`copyright_present`) and V161
+(`copyright_in_vocabulary`), both HARD, in `QC/validation/rules/rights.py`.
+Spec: `docs/superpowers/specs/2026-09-05-rights-enforcement-design.md`.
+
+### POL-043 · RULED · 2026-09-05 · existing rights claims
+An existing rights claim in published XML is **never removed or weakened on the
+grounds that the reviewer could not find its evidence.** Permission evidence is
+held by the maintainer, not in this repository, so its absence here proves
+nothing. A reviewer who doubts a claim escalates to the maintainer; only a
+*positive* finding — the source says otherwise, or the grant is known not to
+exist — justifies a change.
+
+Rationale: in the August 2026 RE-PORT batch five pull requests replaced a
+Creative Commons licence with bespoke permission prose, each reasoning from an
+absence (#165, #167, #174, #179, #181). #167 was overturned by the maintainer,
+who held the correspondence the reviewer could not see. A single cautious
+judgement propagates to every `TEXT` in the corpus — 100 files for #167, 16 for
+#179 — and is expensive to reverse.
+
+### POL-044 · RULED · 2026-09-05 · rights documentation and merge review
+**Documented.** Each corpus README carries a `## Rights` section with two
+structured lines and prose beneath:
+
+```
+**License:** CC BY-NC 4.0
+**Rights source:** <grantor>, <YYYY-MM-DD>; evidence: ask maintainer
+```
+
+The licence must equal the corpus's `@copyright`; the date is when permission
+was granted or last confirmed. `evidence: ask maintainer` rather than naming a
+system — the evidence store may change, the instruction to a reader will not.
+The prose explains where the right came from and is required but unchecked. The
+GitBook corpus page carries the same licence in its `## Copyright` section.
+
+**Interrogated at merge.** Any change to a corpus's licence, in either
+direction, fails `.github/workflows/rights-comparison.yaml`, which compares the
+head against the base ref exactly as `token-comparison.yaml` does. There is no
+committed baseline — a baseline is redundant state that can itself drift, and a
+merge check already has both sides available. A legitimate change lands by
+explicit maintainer override, which is deliberately the hardest step in the
+mechanism. There is no label-based bypass; the friction is the control
+(maintainer, 2026-09-05).
+Implemented by: `QC/validation/rights_delta.py`,
+`tests/corpora/test_rights_documentation.py`, and the GitBook repo's
+`manage_corpus_pages.py check --strict`.
+
+### POL-045 · RULED · 2026-09-05 · audio rights
+**Audio inherits the XML licence.** Audio published for a corpus carries that
+corpus's `@copyright`; audio for a corpus that is not published in
+`Corpora/` is not licensed for reuse. The licence is therefore **never recorded
+separately**: `audio_permissions.json` stores only what cannot be derived —
+repositories, `access`, `status`, corpus mapping, and the approval pointer —
+and a loader resolves the licence from the corpus XML and the Hugging Face slug
+from `rights_vocabulary.csv`.
+
+Rationale: the rule was already stated in two places (`AUDIO-PERMISSIONS.md`,
+and `publication_rule` in the JSON) and already true in fact — all 22 audio
+sources matched their corpus XML, the only exceptions being the two private
+development repositories, which correctly carry no licence. Storing the derived
+value meant every rights change had to be made twice, and
+`validate_hf_audio.py` needed a `license_family()` helper to paper over the two
+spellings. Absorbs the policy text formerly in `AUDIO-PERMISSIONS.md`.
+
+---
+
+## 6. Development
+
+Section 4 governs what may be done to the data. This section governs **the code
+that does it, and how changes to that code are reviewed.** Its recurring theme
+is that thirty-odd corpora built thirty-odd different ways cost more than they
+save: every fork of a shared behaviour is a rule that has to be re-audited,
+re-explained, and re-fixed once per corpus.
+
+Rights entries with a development bearing live in section 5 and are not
+repeated here: **POL-043** (never weaken an existing rights claim from absence
+of evidence) and **POL-044** (licence changes are interrogated at merge).
+
+### POL-046 · RULED · 2026-09-05 · processing code
+**Shared tools first; corpus-specific processing code is a last resort.**
+The order of preference for any cleaning, standardization, phonology, or
+repair step is:
+
+1. **Use the existing shared tool as it is** (`QC/cleaning/*`,
+   `QC/utilities/*`). If an existing flag does the job, use the flag.
+2. **Extend the shared tool.** If the behaviour is right for the bank but the
+   tool cannot yet express it, change the tool — and add the test. A behaviour
+   that one corpus needs, several usually need.
+3. **Write corpus-specific code only when the behaviour is genuinely unique to
+   that corpus.**
+
+**Initial parsing is the standing exception.** Turning a particular PDF, DOCX,
+scrape, or database dump into the original tier is inherently
+source-specific; `generate_xml.py` is expected to be corpus-local and needs no
+justification. Everything downstream of it does.
+
+Rationale — this is a guard against forking, not a style preference. The
+2026-09-05 pipeline audit found the same downstream behaviours reimplemented
+per corpus: five mutually incompatible ways of invoking `standardize.py`, three
+ways of passing an orthography to `add_phonology.py` (including omitting it),
+and corpus-local reimplementations of cleaning that the shared cleaner already
+performs. Each fork is a place where a bank-wide ruling silently fails to apply.
+
+**At merge**, corpus-specific code that duplicates shared behaviour is a
+review finding: either fold it into the shared tool, or record in the corpus
+README why the shared tool cannot serve.
+
+### POL-047 · RULED · 2026-09-05 · reproduction pipeline
+Every published corpus has **one entry point, with one name and one canonical
+step order.**
+
+```
+CodeAndDocs/
+  refresh_source.sh     # optional — scrapes/fetches source into CodeAndDocs/.
+                        #   Only where the source can be re-fetched. Never
+                        #   invoked by generate_xml.sh.
+  generate_xml.sh       # THE entry point: source -> published XML/.
+    1. generate_xml.py            # corpus-local; builds the original tier
+    2. QC/cleaning/apply_manual_edits.py   # optional; no-op when absent
+    3. QC/cleaning/clean_xml.py
+    4. QC/utilities/standardize.py
+    5. QC/utilities/add_phonology.py
+```
+
+**Where manual edits sit relative to the cleaner is not forced** (maintainer,
+2026-09-05). Both orders are in use and both are fine; before is mildly
+preferable, because the cleaner then normalizes the hand-entered text along with
+everything else. Two things about step 2 *are* constraints, and they are what the
+order has to respect:
+
+- **It runs on fresh pre-manual build output.** `apply_manual_edits.py` is not
+  idempotent — re-run over already-applied XML it prunes its own records as
+  no-ops (`QC/README.md`, "Discipline"). Whatever the position, nothing before
+  it may have already applied the edits.
+- **It runs before `standardize.py` and `add_phonology.py`.** An edit record
+  carries no standard FORM and no PHON, so both are regenerated from the edited
+  original. A corpus that repairs the original tier late must re-run steps 4 and
+  5 afterwards, as NTUFormosanCorpus does.
+
+`apply_manual_edits.py` (shared, POL-030) is for one-off human judgement; a
+corpus-local `apply_manual_corrections.py` is for *systematic, source-derived*
+rules and belongs after step 5, not in place of it.
+
+Four properties the entry point must have:
+
+- **Idempotent.** Re-running over a clean checkout leaves `git status` empty.
+  Achieve it by restoring a POL-035 snapshot or by building into a staging
+  directory and installing — never by mutating published `XML/` in place with
+  no baseline. This is also what lets a non-idempotent step like
+  `apply_manual_edits.py` sit inside an idempotent pipeline: it never sees its
+  own previous output, because the run starts from a fresh baseline.
+- **Self-contained** — see POL-048, and POL-052 for recording which
+  tool version built the published bytes.
+- **Build only.** Validators do not run inside `generate_xml.sh`. Put them in a
+  separate `validate.sh` if the corpus wants a committed QC run; a build that
+  cannot complete because a validator fails cannot be used to investigate the
+  failure.
+- **Complete.** A corpus whose XML changes but which ships no script that
+  produces that XML violates POL-038.
+
+**Deviation is permitted, but is not silent.** Extra steps, a missing step, or
+a different order are all legitimate for real reasons — several corpora
+correctly have no `standard` tier and therefore no steps 4–5. The requirement is
+that the deviation is **stated in the corpus README and interrogated at merge**,
+not discovered later by an auditor. State it with a line beginning
+`**POL-047 deviation:**` so it is findable; `Corpora/HundredPaiwanStories` is
+the worked example (its QC reports are published artifacts and its build gates
+on them, so its validators stay inside the build by design).
+
+**Enforced, in part**, by `tests/corpora/test_generate_xml.py`: the entry point
+exists under the canonical name and is executable, no older entry point survives
+beside it, it is self-contained (POL-048, no deviation clause), it runs no
+`QC/validation/`, and the shared steps it does call are in canonical relative
+order — all static, all cheap. Corpora that predate this entry are listed in
+`generate_xml_pending.txt` at the repo root; the list only shrinks, and a new or
+re-ported corpus is never added to it. **Idempotency is not covered** — that
+needs the build actually run, which is too expensive for every corpus on every
+pull request, so for now it is a reviewer's job.
+
+Raised by the 2026-09-05 pipeline audit: across 33 corpora on `main` and in open
+PRs there were eight entry-point conventions (`make_xml.sh` ×16,
+`reproduce.sh` ×11, two corpora with no build script at all) and twelve
+distinct step orderings, with nothing in this file, in `QC/README.md`, or in CI
+constraining any of it. The shape above is the existing plurality, not a new
+invention.
+
+### POL-048 · RULED · 2026-09-03 · reproduction inputs
+**A published corpus rebuilds from a FormosanBank checkout alone.**
+Dev repos are permanently private and inaccessible to everyone but the
+maintainer, so a build that reads one is not reproducible by anybody who has the
+published data. The pinned `Formosan-*` dev-repo commit is **provenance
+metadata, never a build input.**
+
+Concretely, `generate_xml.sh` must not require: a second clone pinned to a
+particular commit, a private reference repository, a gitignored `Private/`
+directory, or environment variables naming any of those. Everything the build
+reads is committed under that corpus's `CodeAndDocs/` or in the shared repo.
+
+Maintainer ruling, 2026-09-03: *"We want to retain the reproducibility **within**
+the main FormosanBank repo. Dev repos are permanently private so not accessible
+to others."* Raised by the RE-PORT batch, where builds required
+`FORMOSANBANK_AUTHORITY` pinned to a specific commit, `VALIDATOR_ROOT`,
+`FORMOSANBANK_QC_ROOT`, and in one case a private reference repository — and by
+a build that hard-exited without a `CodeAndDocs/Private/` source file.
+A commit pin also self-invalidates: it refuses to run against the repository it
+lives in as soon as `main` advances.
+
+**Recording a commit is not the same as depending on one.** POL-052 requires
+every corpus to record the FormosanBank commit its published XML was built
+against; what this entry forbids is treating that record as a build input.
+
+### POL-049 · RULED · 2026-09-05 · pull-request scope
+A pull request that ports or reworks one corpus **does not change shared
+code.** Changes to `QC/`, `tests/`, `POLICIES.md`, repo-root
+registries, `requirements.txt`, or `.github/workflows/` belong in their own pull
+request, reviewed on their own merits and merged first.
+
+Rationale: a shared-code change buried in a 3,000-file corpus diff is not
+reviewed, and it silently couples merge order. In the RE-PORT batch one PR was
+the sole carrier of a new `standardize.py` flag that its own build script
+depended on; another was the sole carrier of a `corpus_counts.py` change; a
+third carried a policy entry, a data-loss fix, its test, and a dependency pin
+that would all have been lost had the competing PR for the same corpus landed
+instead. Repo-wide edits were bundled into single-corpus PRs at least five times.
+
+**This does not conflict with POL-046 step 2.** Extending a shared tool because
+one corpus needs it is encouraged — it just happens in its own pull request,
+merged first, so the extension is reviewed as a shared-tool change and the
+corpus PR that depends on it cannot become its sole carrier.
+
+### POL-050 · RULED · 2026-09-05 · superseding a ruling
+A merged decision is reversed **explicitly or not at all.**
+A change that undoes something previously ruled and merged must say so, cite
+the commit or POL entry it supersedes, and give the reason. Rediscovering the
+old behaviour and reinstating it as though it were new is not a reversal, it is
+drift.
+
+Rationale: two pull requests reintroduced `standard` tiers that merged commits
+had deliberately removed, neither mentioning the earlier decision. Separately,
+two merged rulings on where `apply_manual_edits.py` runs contradicted each
+other for three weeks, and five corpora implemented one and two the other —
+resolved only by POL-047 above.
+
+### POL-051 · RULED · 2026-09-05 · removing published content
+Removing published content — sentences, words, morphemes, translations, audio
+elements — is **disclosed in the pull request with a count and a reason**, and is
+interrogated at merge. Silence is the finding, not the
+deletion: deletions are often correct, and several were.
+
+The mechanism already half exists. `.github/workflows/token-comparison.yaml`
+compares token counts across a merge and `rights-comparison.yaml` compares
+licences (POL-044); the same shape extended to element counts would make this
+checkable rather than a review convention. In the RE-PORT batch one PR removed
+144,436 `AUDIO` elements, 126,239 `W` elements, and every original `PHON` tier;
+another removed 1,968 translations. Three of the batch's twenty-four PRs
+disclosed their removals.
+
+In force now as a review convention; extending the comparison workflows to
+element counts is the mechanism that would make it checkable rather than
+remembered.
+
+### POL-052 · RULED · 2026-09-05 · tool provenance
+**Record which tools built the published XML; rebuild with the current ones.**
+
+Each corpus records the FormosanBank commit its published `XML/` was last built
+against, in **`CodeAndDocs/provenance.json`** — one fixed path, one fixed shape,
+so the record is machine-readable and can be checked:
+
+```json
+{
+  "_note": "The FormosanBank commit this corpus was built against. Provenance only — the build does not read this file.",
+  "formosanbank_commit": "3a3c47c220520113f747e6a2d441494000e13c4b",
+  "built": "2026-09-05"
+}
+```
+
+`formosanbank_commit` (a full 40-character SHA) is required; `_note` and `built`
+are optional. The corpus README's reproduction section **links to the file**
+rather than repeating the SHA, so there is one copy to keep current; the GitBook
+page's `## Corpus Processing` section does the same. A SHA transcribed into
+prose is a second copy that drifts.
+
+**Enforced** by `tests/corpora/test_provenance.py`: the file must exist, parse,
+and carry a well-formed commit, and the README must link it. Corpora that
+predate this entry are listed in `provenance_pending.txt` at the repo root — a
+list that only ever shrinks, and that a new or rebuilt corpus is never added to.
+
+**The record is documentation, never a gate.** `generate_xml.sh` runs with the
+tools in the checkout it is invoked from — normally `main` at HEAD — not with
+the recorded commit. On a mismatch it **notes the difference and continues**;
+it does not refuse to run, and it does not go looking for another checkout.
+A build that exits because the surrounding repository is not at the recorded
+commit violates this entry and POL-048, and self-invalidates the moment `main`
+advances. `Corpora/Song-Kanakanavu-Grammar` has the intended shape — one
+`git rev-parse HEAD`, one note to stderr, and the build proceeds. A build script
+that reads `provenance.json` to compare against, rather than hard-coding the SHA
+a second time, is better still.
+
+**Why record it at all, if it does not constrain the build.** Because it is what
+makes a rerun's diff readable. Shared tools change, and when they do, every
+corpus built before the change will produce a diff on its next rebuild that has
+nothing to do with why it was rebuilt. The 2026-09-04 `add_phonology.py` stress-
+accent fold left **9,355 committed PHON tiers across nine corpora** that no
+longer match what a rebuild produces; nothing is wrong with any of them, but the
+next person to rerun one of those pipelines meets a large unexplained diff. The
+recorded commit answers the question that diff raises — *did I cause this, or did
+the tools move underneath me?* — and turns it into a `git log` on `QC/`.
+
+**Reproducing the exact published bytes** at the tool version that produced them
+is always possible by checking out the recorded commit; that is the record's
+other use. It is deliberately not the default, because pinning corpora to the
+tool versions they were born with is how a bank of thirty-odd corpora ends up
+with thirty-odd behaviours (POL-046).
+
+**Consequence for review:** `provenance.json` is updated in the same pull
+request that rebuilds the corpus. A rebuild that leaves the old commit in place
+is a stale record, which is worse than none — it asserts a correspondence
+between the tools and the bytes that no longer holds.
+
+### POL-053 · RULED · 2026-09-08 · XML attributes are a closed, documented set
+Every attribute a FormosanBank XML file may carry is declared in
+`QC/validation/xml_template.xsd` and carries an `xs:annotation/xs:documentation`
+stating its meaning and allowed values.
+
+The schema declares no `anyAttribute`, so an undeclared attribute already
+fails `validate_xml.py`. This policy names that as a deliberate guarantee
+rather than an accident of the schema: **the attribute set is a whitelist.**
+
+`QC/validation/ATTRIBUTES.md` is generated from the XSD by
+`attributes_catalogue.py` and is never hand-edited, on the same terms as
+`RULES.md` (POL-039 — derived, not retyped).
+
+**Adding an attribute requires four things:** an XSD declaration, an
+`xs:documentation` annotation, a regenerated catalogue, and a policy entry.
+`tests/validators/test_attributes_catalogue.py` enforces the first three;
+review enforces the fourth. No attribute is added ad hoc.
+
+### POL-054 · RULED · 2026-09-09 · waiving a HARD finding
+A HARD finding that a human has read and accepted is recorded in the
+corpus's **`CodeAndDocs/qc_waivers.tsv`** — one fixed path, tab-separated,
+columns `rule_id`, `file` (relative to the corpus `XML/`), `location`,
+`reason`. A waiver reclassifies the finding HARD → **WAIVED**: it stays in
+the findings CSV and in the printed summary, and stops failing the build.
+Nothing is ever hidden.
+
+Four constraints, and they are the entry:
+
+- **A reason is mandatory.** Empty, whitespace, or a leftover `TODO` is
+  rejected. The reason is the only part a tool cannot generate, which is
+  exactly why it is the part that counts.
+- **A waiver that matches nothing does not fail the run.** Fixing a finding
+  must never cost a second edit to the waiver file: the risk this mechanism
+  guards against is a *new* HARD finding, not a disappearing one, and a check
+  that fails the build when you repair data is a barrier pointed the wrong
+  way (maintainer, 2026-09-09). Spent rows are tidied on request with
+  `waivers.py prune`, the POL-030 `--prune` shape — an explicit human action,
+  never a gate. The residual risk is narrow and accepted: a spent waiver
+  would silently cover a *different* finding arriving later at the same
+  `(rule, file, location)`.
+- **No wildcards.** Exact `(rule_id, file, location)` only.
+- **Only judgement rules may be waived** — `WAIVABLE_RULES` in
+  `QC/validation/_waivers.py`, today `{V129}`. A structural finding (schema,
+  ids, tier relationships) states a fact about the XML that is fixable by
+  definition, so a waiver there is always the wrong tool. Adding an id to
+  that set is a policy decision made in its own pull request.
+
+`python QC/validation/waivers.py propose --csv <findings.csv>` appends the
+mechanical half (rule, file, location) as `TODO` rows for a human to justify;
+there is deliberately no flag that supplies a reason. `waivers.py prune`
+drops rows whose finding is gone, scoped to the files the run covered.
+`waivers.py report` prints every waiver in the bank, because waivers scattered
+across thirty `CodeAndDocs/` directories are invisible in aggregate.
+
+**Adopting waivers blocks nothing.** A corpus with no `qc_waivers.tsv` is
+untouched: same findings, same severities, same exit code. Waivers are opt-in
+per corpus and only ever move a finding *out* of HARD, so merging the
+mechanism cannot turn an existing pull request red.
+
+**Why this rather than a smarter rule.** The founding case is V129: POL-016
+excludes source-ungrammatical examples at intake, so a `*` surviving into a
+published FORM is notation — usually a Neogrammarian reconstruction label.
+Teaching the validator to tell the two apart was considered and rejected: the
+only available signal is position, and a reconstructed *word* (`*qaCay`) is
+shaped exactly like the ungrammaticality marker in the NTU Rukai `*(malra)`
+incident (POL-017). Only a human reading the source can separate them, so the
+mechanism records the human's decision instead of guessing at it.
+
+**Relationship to `compare_findings.py`.** That gate is relative — on a pull
+request it blocks only HARD fingerprints absent from the changed file's base
+version, so a pre-existing finding is invisible forever with no record that
+anyone looked. Waivers are the absolute complement: they say *why* a finding
+is accepted. As corpora adopt them, the "block only new" scoping can give way
+to "block anything unwaived", which is the goal stated in that workflow's own
+header.
+Implemented by: `QC/validation/_waivers.py` (applied in `_report.py`, so all
+finding-based validators get it), `QC/validation/waivers.py`,
+`tests/validators/test_waivers.py`. First user: `Corpora/SEALS33`, whose
+corpus-local `check_hard_findings.py` this replaces (POL-046).
+
+### POL-055 · RULED · 2026-09-09 · corpus documentation
+Every corpus README and every GitBook corpus page carries a
+**`Notes and Issues`** section: the known limitations, source defects,
+unresolved data problems and caveats a user needs *before* using the corpus —
+OCR artifacts left in place, missing audio, hand edits, orthography assumptions.
+Write `None known.` when there are none; the section is never simply absent.
+
+**One name.** The section is `Notes and Issues` in both places. Seven GitBook
+pages currently say `Corpus Notes`, one says `Notes` and one `Minor notes`;
+those are legacy spellings to migrate, not alternatives. Nothing lints the name
+today, which is why fixing it needs an entry rather than a convention.
+
+**Where it goes.** On a GitBook page, immediately after the statistics block and
+before `Access Details` — a caveat a reader meets after the numbers and before
+the download link. In a corpus README, after `Audio`.
+
+**What it is not.** Not process history, not a changelog, not the QC findings
+list. It is the short set of things that would mislead someone who compared this
+corpus with another without knowing them. `Corpora/Huteson-Rukai-Survey` is the
+worked example: a dialect whose source does not record schwa, a source that
+writes word-final vowels double, an unglossed particle, and one gloss inferred
+rather than transcribed.
+
+Implemented by: the `port-corpus-in` templates
+(`README.template.md`, `corpus_page.template.md`) and their `{{NOTES_AND_ISSUES}}`
+placeholder. Not yet linted; `manage_corpus_pages.py check` verifies the four
+integration points and not page structure.
+
+### POL-056 · RULED · 2026-09-09 · conversion tables
+A conversion table (`Orthographies/ConversionTables/<Language>_<Scheme>_113.tsv`)
+is a **set** of rules, not a sequence. `standardize.py` stages every rule through
+a placeholder, longest source first, so **the order of rows does not matter** and
+**a rule's output is never matched by another rule.**
+
+This is what makes the digraph-first idiom hold: `Puyuma_MinEd` writes
+`ll → ll` to shield `ll` from `l → lr`, and that now works whichever row comes
+first. Before, sequential replacement re-scanned the output and produced
+`lrlr`. Generalizing the placeholder corrected **12 misconversions across four tables**
+(`Puyuma_Cauquelin` `L`/`ɭ`, `Puyuma_MinEd` `ll`, `Rukai_Church` `lh`,
+`Rukai_Li` `ə:`); none was in use by a published corpus, so no published data
+changed.
+
+**The escape-and-restore idiom is retired.** A table that wanted `g → ng`
+without turning `ng` into `nng` used to hop through a spare symbol —
+`ng → ɟ`, `g → ng`, `ɟ → ng` — because ordering was the only tool it had.
+`Amis_Church_113` did exactly that. Shielding says it directly (`ng → ng`
+ahead of `g → ng`) and the hop is neither needed nor available, since a rule's
+output is never revisited. That table was migrated with the change and its
+output is unchanged; a future table must use the shield.
+
+**Two cell values are read specially and mean different things.** `NA` means the
+letter does not occur in that dialect and is **not a rule**; an **empty** cell is
+a rule that **deletes** the matched string (Bunun `w`/`j`, Sakizaya `x`,
+Saisiyat `’`, Tsou `w`, Wakelin `?`). `standardize.py` previously read `NA` as
+the literal replacement text "NA", which was harmless only for as long as the
+NA'd letter never occurred; eight cells across two Rukai tables would have
+spliced `NA` into a word.
+
+**Both consumers now read an empty cell the same way** (ruled 2026-09-09).
+`validate_conversion_table.py` used to treat empty and `NA` alike as "no rule",
+so the six rules in the bank that delete a letter were the only ones nothing
+audited. It now reports each as a `deletion`, and distinguishes the two cases
+that matter: a deletion the target orthography **cannot** write is the only
+answer available, while one it **could** have written is a real loss to review.
+The distinction found one — `Yami_Wakelin_113` deletes `?`, and Ortho113 Yami
+writes that phoneme as `'`. Deletions never block, and
+`run_conversion_table_checks.py` surfaces the reviewable ones in its
+phoneme-level section so a deletion is not invisible in aggregate.
+
+Enforced by `tests/utilities/test_standardize_rule_application.py`, which asserts
+that **every rule in every committed table produces exactly its own
+replacement** — the sweep that found the 17. Documented for users on the GitBook
+`standardize` page under "How rules are applied".
+
+### POL-058 · RULED · 2026-09-11 · orthography checks need a standard
+**A language with no standard orthography gets no orthography check.** Where
+`standards.csv` leaves `standard_orthography` blank, a build neither extracts an
+orthography profile nor compares one, and a corpus README says so instead.
+
+Three languages are blank today — **Babuza-Favorlang, Pazeh and Siraya** — and
+they are exactly the three with no inventory under `QC/validation/reference/`,
+which holds the other sixteen. That is not a coincidence to be fixed: there is
+nothing to compare these varieties against, because the project has not
+standardized them. `validate_orthography.py` already behaves correctly, skipping
+each with `WARNING: No reference orthographic info found ... Skipping`, and
+producing no findings.
+
+What the rule removes is the step before it. Extraction still runs, writing an
+`orthographic_info` pickle and six PNGs per dialect that nothing then reads —
+cost with no verdict at the end of it, and a QC report whose "orthography"
+section means only that the question was not asked.
+
+**This is a judgement about the language, not about the tooling**, which is why
+it lives here and not in a build convention: whoever ports a historical variety
+already knows there is no standard to check against, and the answer should not
+depend on their remembering to omit a step. A corpus that skips the check states
+it in its `Notes and Issues` section (POL-055), because a user comparing corpora
+needs to know the difference between *checked and clean* and *not checked*.
+
+The rule follows the registry, so it needs no maintenance: give a language a
+standard orthography in `standards.csv` and build its reference inventory, and
+its corpora start being checked. Raised by Latham-1862, whose build ran
+extraction for both its varieties and got two skips for it.
+
+### POL-059 · RULED · 2026-09-11 · published corpus layout
+**Published XML lives under `XML/` at the corpus root, in a directory named for
+its language.**
+
+```
+Corpora/<CorpusName>/
+  XML/                      <- the only place published data lives
+    <Language>/             <- the languages.csv `Language` value, not the ISO code
+      *.xml
+```
+
+Two rules, and both are about being findable:
+
+- **`XML/` is a directory at the corpus root.** Everything else under the corpus
+  — scripts, raw scrapes, POL-035 snapshots — is `CodeAndDocs/`, which no tool
+  reading published data may enter (POL-035, and
+  `corpus_counts.is_reproduction_path`).
+- **Every published XML has a directory named for its language somewhere on its
+  path below `XML/`.** The name is the `Language` column of `languages.csv`
+  (POL-040) — `Babuza-Favorlang`, not `bzg`; `Truku` and `Seediq` as separate
+  directories, since the ISO code `trv` does not distinguish them.
+
+**Extra levels are fine, above or below.** A corpus with sub-corpora puts them
+above — `ePark/XML/qing_jing_zu_yu.../Saaroa/`, `NTUFormosanCorpus/XML/Stories/`
+— and a corpus that subdivides a language puts that below —
+`Safolu-Amis-Dictionary/XML/Amis/Safolu/`, `Siraya_Gospels/XML/Siraya/Matthew/`.
+What is required is that the language directory is *on the path*, not that it is
+the immediate child of `XML/` or the immediate parent of the files.
+
+**Why a convention and not just a preference.** `orthography_extract` selects
+files by matching the language name against the **directory path**, so the
+layout is already load-bearing: a corpus that departs from it is silently
+skipped rather than reported. The convention is otherwise kept exactly — across
+all 14,571 published files, every path that names a language agrees with that
+file's `xml:lang` and `dialect`, with no exceptions.
+
+**Every published corpus conforms.** Two did not when this was written, and
+both were corrected in the same pull request — 108 pure renames, no file
+content touched:
+
+| corpus | files | how it departed | now |
+|---|---:|---|---|
+| `HundredPaiwanStories` | 100 | XML sat directly in `XML/`, no language directory | `XML/Paiwan/` |
+| `Glosbe` | 8 | ISO codes — `XML/{ami,tay,trv,xsy}/` | `XML/{Amis,Atayal,Truku,Saisiyat}/` |
+
+Note `trv` → `Truku`, not `Seediq`: the ISO code covers both and the `dialect`
+attribute on that file says Truku. Reading the code alone would have filed it
+wrongly.
+
+There is no pending list here, unlike POL-047 and POL-052, because the rule
+costs a `mkdir` and a `git mv`. **Glosbe's open re-port, PR #180, still carries
+the ISO-code layout and must be rebased onto this.**

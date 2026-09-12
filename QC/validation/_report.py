@@ -26,9 +26,12 @@ from QC.validation._finding import (
     write_findings_csv,
 )
 from QC.validation._rule_titles import RULE_TITLES
+from QC.validation._waivers import WaiverError, apply_waivers
 
-# Order severities appear in the summary.
-_SECTION_ORDER = (Severity.HARD, Severity.SOFT, Severity.WARN)
+# Order severities appear in the summary. WAIVED sits directly under HARD:
+# it is the "a human already looked at these" bucket, and burying it below
+# SOFT would hide the thing a reviewer most needs to see.
+_SECTION_ORDER = (Severity.HARD, Severity.WAIVED, Severity.SOFT, Severity.WARN)
 
 
 def report_findings(
@@ -48,10 +51,28 @@ def report_findings(
       header line. Files-with-issues is derived from the findings.
     - ``out``: stream to print the summary to (default stderr).
 
-    Returns True if any HARD finding was present.
+    Returns True if any HARD finding survived.
+
+    HARD findings dispositioned in a corpus's CodeAndDocs/qc_waivers.tsv are
+    rewritten to WAIVED before the summary is built, so they stay in the CSV
+    and in the printed summary but stop failing the build.
+
+    A waiver that matches nothing does NOT fail: fixing a finding must never
+    cost you a second edit to the waiver file (maintainer, 2026-09-09). The
+    risk this mechanism guards against is a *new* HARD finding, not a
+    disappearing one. Clean the leftover rows when convenient with
+    ``waivers.py prune``.
     """
     if titles is None:
         titles = RULE_TITLES
+
+    try:
+        findings, _stale = apply_waivers(findings)
+    except WaiverError as exc:
+        # A malformed or unjustified waiver file is a failure of the run, not
+        # a crash: print it the way a finding is printed and exit non-zero.
+        print(f"=== Waiver file rejected ===\n{exc}", file=out)
+        return True
 
     files_with_issues = len({str(f.path) for f in findings})
     print(
