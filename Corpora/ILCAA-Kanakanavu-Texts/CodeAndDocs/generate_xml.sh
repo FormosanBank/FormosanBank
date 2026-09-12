@@ -15,7 +15,8 @@ import json
 import sys
 from pathlib import Path
 profiles = {r["profile"] for r in json.loads(Path(sys.argv[1]).read_text())["records"]}
-unsupported = sorted(profiles - {"Asai2026", "SaaroaComparison"})
+# Table 2's 16 Tsuchida1976 pronouns use the reviewed Asai2026 grapheme subset.
+unsupported = sorted(profiles - {"Asai2026", "SaaroaComparison", "Tsuchida1976"})
 if unsupported:
     print("Final generation needs reviewed per-source routes for: " + ", ".join(unsupported), file=sys.stderr)
     sys.exit(2)

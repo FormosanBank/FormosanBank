@@ -52,15 +52,16 @@ PYTHON=python3 CodeAndDocs/generate_xml.sh /path/to/current/FormosanBank
 The build stages source extraction, shared cleaning, standardization and PHON,
 then installs successful output. It performs no QC or source refresh. Narrative
 deduplication is not a build step. Generation stops before changing XML until
-the four remaining historical profiles have reviewed conversion routes and the
-remaining standard-phonology differences have been resolved.
+the three remaining historical profiles have reviewed conversion routes.
 
 The [provenance record](CodeAndDocs/provenance.json) describes the retained
 historical XML. It does not select or pin tools for a new build. The previous
 private phonology override and count-based QC acceptance wrapper are retired.
 The entry point passes the committed narrative and Saaroa comparison tables
 under `CodeAndDocs/scripts/orthographies/` directly to the shared tools, with
-separate language routing. These tables need no installation in FormosanBank.
+separate language routing. Table 2's 16 historical pronouns use the reviewed
+subset of the existing Kanakanavu route. These tables need no installation in
+FormosanBank.
 
 For source investigation without producing final derived tiers:
 
@@ -96,17 +97,18 @@ None supplied with this source.
 
 ## Notes and Issues
 
-- Current Ortho113 differs from the previous private conditioned standard PHON.
-  Existing CLI flags can read the committed source profile and conversion;
-  their location is not the phonology limitation. The standard-tier decision
-  still needs separate review (POL-003/POL-049).
+- Standard PHON follows Ortho113 (POL-003). The source's conditioned c/s
+  pronunciation stays in original PHON; the former private standard override
+  is retired. The two tiers therefore differ in those environments.
 - The source parser resolves eight spelling/pronunciation variants and the old
   V1/V2 IDs. Tsuchida's notation key resolves ha/sua in two passages;
   two parenthetical classifications still need resolution under POL-028.
-  Clause brackets remain at S; the shared PHON step must handle them as
-  analytical notation.
+  Clause grouping stays at S; shared cleaning normalizes its brackets to
+  parentheses and PHON omits them. These clauses are not optional material.
 - Introduction lexical material has six transcription groups, including Saaroa.
-  Four historical groups need reviewed routes. The Saaroa comparison has a
+  Three historical groups need reviewed routes. Table 2's 16 pronouns have a
+  verified segmental route; their stress marks remain in original FORM.
+  The Saaroa comparison has a
   source-backed `ɫ` -> `hl` conversion and the corrected Saaroa code `sxr`,
   separate from the narrative profile.
   Two phonetic representations remain open in the ledger.

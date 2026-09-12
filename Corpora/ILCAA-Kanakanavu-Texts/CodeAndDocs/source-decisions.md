@@ -25,7 +25,7 @@ Use printed example numbers and physical PDF pages below as stable locators.
   reading/exclusion, retained with the raw source in the notation report:
   page 24 example 23b and page 25 example 26a (POL-016/POL-017).
 
-## Phonology dependency
+## Derived phonology
 
 The source key on physical pages 16–17 states that c and s palatalize before i.
 Madeline's 2026-08-12 Basecamp review supplies the source-to-Ortho113 mapping;
@@ -33,21 +33,20 @@ its examples demonstrate that environment despite the message saying "after".
 It also accepts l/r merging to standard r and ə mapping to standard e.
 Those scoped decisions do not authorize arbitrary new conversion mismatches.
 
-The old wrapper supplied its own Asai2026 profile, removed analytical brackets
-from four S-only readings and added standard palatalization by replacing shared
-functions. Current canonical Ortho113 does not reproduce those conditioned
-standard PHON values. The earlier review does not explicitly distinguish source
-from standard PHON, so this difference alone does not establish a shared-tool
-defect. Do not silently revert the previous output or restore the
-private override to make a current build pass. The existing `--tsv_path` and
-`--orthography` flags can read the committed source tables directly. With those
-flags, current tools produce source PHON `ʂiʂiʔinamaku` and `taʔitʂikikani`,
-but standard PHON `sisiʔinamaku` and `taʔiʦikikani` for the reviewer's examples.
-The source rules work; the unresolved choice concerns canonical standard PHON.
-Changing the table paths alone therefore does not make the build ready. The
-entry point passes the committed narrative tables through those flags, without
-requiring copies in FormosanBank. It retains final XML pending the standard-tier
-decision and reviewed routes for the additional introduction profiles.
+POL-003 and `standards.csv` select Ortho113 for standard PHON. The August 12
+review gives source pronunciation rules without directing a standard-tier
+override; preserve those rules in original PHON. The former private wrapper's
+standard palatalization is retired. Current shared tools produce original PHON
+`ʂiʂiʔinamaku` / `taʔitʂikikani` and standard PHON
+`sisiʔinamaku` / `taʔiʦikikani` for the reviewer's examples. These differences
+follow the ruled tier ownership, so they do not require another maintainer
+decision or a shared-tool change. The earlier open question is resolved on that
+basis (POL-003/050), while the source pronunciation and scoped l/r and ə/e
+decisions remain preserved.
+The entry point reads committed tables through `--tsv_path` and `--orthography`,
+without installing copies in FormosanBank. It retains final XML until the
+remaining historical profiles have supported routes; the complete regenerated
+output still needs review before QC.
 
 The Saaroa comparison `iɫakia` has a separate, four-grapheme source profile.
 The cited [Saaroa Texts (2023)](https://doi.org/10.15026/125201), section 2,
@@ -56,8 +55,18 @@ the form itself appears on printed page 6. Preserve `ɫ` in original FORM and
 derive IPA `ɬ` and Ortho113 `hl`: `iɫakia` -> `ihlakia`, with `iɬakia` in
 both PHON tiers (POL-001/002/003). This profile covers only that comparison,
 not Saaroa generally. The build processes its language directory separately.
-The Tsuchida 1969/1976, Szakos 1999 and Basic Vocabulary 2007 groups still need
-their own routes; the narrative profile does not cover their sound descriptions.
+Table 2's 16 free pronouns (physical page 20, Tsuchida1976 group) use only
+a, i, k, m, n, s, t, u, ʔ and ŋ, plus source stress accents. Tsuchida's 1975
+dissertation, section 2.1.1.1, printed pages 27–28 (PDF pages 61–62), identifies
+these phonemes. Their broad segmental values are covered by the existing
+Asai2026 profile, and none triggers its c/s-before-i rules. Reuse that route:
+ʔ -> ' and ŋ -> ng in standard FORM; canonical tools remove stress from
+standard FORM and segmental PHON while preserving it in original FORM
+(POL-001/002/003). This is a phonemic rendering, without the dissertation's
+narrow vowel allophones. The source table, its 16 records and IDs remain
+unchanged. This scope does not approve the full historical transcription system.
+The Tsuchida 1969, Szakos 1999 and Basic Vocabulary 2007 groups still need
+their own reviewed routes.
 
 ## Representation and coverage review
 
@@ -91,6 +100,8 @@ clauses. Source generation preserves those brackets at S and restores the
 15 aligned W and 24 M previously omitted. In 23b the starred kaən-ən=musu
 and its 2SG.GEN gloss stay excluded; the admitted kaən-a keeps eat-NMLZ.UV.
 This is scoped to the four printed rows, not a general bracket-removal rule.
+Shared cleaning changes their square brackets to parentheses; shared PHON
+omits that grouping. These are clause delimiters, not optional words (POL-028).
 
 The affixation section on physical pages 18–19 identifies PFV and AV as separate
 infixes. Eight narrative words use `<in-um>`, `<in-əm>` or `<in-m>` with `<PFV-AV>`:
@@ -144,7 +155,7 @@ On physical page 24, mu-caanə/AV-go, um-avici/AV-bring and
 k<um>a-kili/RED<AV>-tie supply three W and seven M, including the k-a gap root
 and -um- infix. No free S translation is supplied or invented (POL-014/023/036).
 The two phonetic representations on pages 15–16 stay explicit decisions.
-Four historical profiles require separate conversion review. The full build
+Three historical profiles require separate conversion review. The full build
 rejects unsupported profile routing before touching final XML. Retained final
 XML and provenance remain unchanged.
 

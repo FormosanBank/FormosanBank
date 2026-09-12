@@ -43,7 +43,11 @@ def test_free_pronouns_preserve_stress_and_row_context():
     assert len(root.findall("S")) == 16
     assert not root.findall(".//TRANSL")  # Row headings are not free translations.
     forms = [s.findtext("FORM") for s in root.findall("S")]
-    assert "íiku" in forms and "ʔisua" in forms
+    # PDF p20: these exact forms are the reviewed subset of the existing route.
+    assert forms == [
+        "íiku", "íikia", "ʔikúa", "íikasu", "iimukásu", "kasúa", "íikita", "kitána",
+        "íikimi", "kimía", "íikamu", "iimukámu", "kamúa", "ŋuaini", "ʔinía", "ʔisua",
+    ]
     assert not any(f.startswith(("=", "-")) or f == "ø" for f in forms)
     iikia = next(s for s in root.findall("S") if s.findtext("FORM") == "íikia")
     assert "1EXCL" in iikia.find("FORM").get("notes")
@@ -90,7 +94,7 @@ def test_templates_and_unresolved_phonetic_strings_are_not_sentences():
     assert not any("STEM" in r["form"] or r["form"] in ("M-type", "kɔ:", "kɅɨnɨ") for r in records)
     data = json.loads((CODE / "introduction_lexemes.json").read_text())
     assert {r["kind"] for r in data["pending"]} == {"phonetic comparison", "phonemic/phonetic pair"}
-    assert set(data["profile_review_required"]) == {"Tsuchida1969", "Szakos1999", "BasicVocabulary2007", "Tsuchida1976"}
+    assert set(data["profile_review_required"]) == {"Tsuchida1969", "Szakos1999", "BasicVocabulary2007"}
 
 
 def test_changed_source_page_requires_review(tmp_path):
