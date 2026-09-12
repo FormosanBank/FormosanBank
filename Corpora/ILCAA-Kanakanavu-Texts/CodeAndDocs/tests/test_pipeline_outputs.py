@@ -178,7 +178,7 @@ def test_every_generated_sentence_indexed():
     assert xml_ids
     assert xml_ids == index_ids
     # Preserve the numbered readings and footnotes; introduction/title adds 100.
-    assert len(xml_ids) == 1449 + 57 + 100
+    assert len(xml_ids) == 1447 + 57 + 100
 
 
 def test_grammar_introduction_examples_in_final_xml():
@@ -383,8 +383,8 @@ def test_numbered_source_units_and_notation_are_accounted_for():
     assert all(row["xml_translation"] for row in coverage)
     assert all(row["source_translation"] for row in coverage)
     assert sum(row["word_morpheme_action"] == "clause_brackets_at_s_aligned_w_m" for row in coverage) == 4
-    assert sum(row["word_morpheme_action"] == "expanded_variants_with_aligned_w_m" for row in coverage) == 18
-    assert sum(row["word_morpheme_action"] == "same_tier_form_variants" for row in coverage) == 6
+    assert sum(row["word_morpheme_action"] == "expanded_variants_with_aligned_w_m" for row in coverage) == 16
+    assert sum(row["word_morpheme_action"] == "same_tier_form_variants" for row in coverage) == 8
 
     with (WORKSPACE / "data/processed/source_notation_audit.csv").open(encoding="utf-8") as handle:
         notation = list(csv.DictReader(handle))

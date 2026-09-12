@@ -31,7 +31,7 @@ ROOT = CODEDOCS / ".build"
 PDF_NAME = "B602_KanakanavuText.pdf"
 EXPECTED_SHA256 = "785058bad6a8495f8b5fb51ed3d0eaf7da1736e791b308611d9442c010d93c03"
 EXPECTED_SOURCE_UNIT_COUNT = 1431
-EXPECTED_SENTENCE_COUNT = 1449
+EXPECTED_SENTENCE_COUNT = 1447
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 NSMAP = {"xml": "http://www.w3.org/XML/1998/namespace"}
 

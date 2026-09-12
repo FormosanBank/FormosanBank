@@ -17,10 +17,10 @@ The committed [252-page PDF](CodeAndDocs/data/raw/pdf/B602_KanakanavuText.pdf)
 has SHA-256 `785058bad6a8495f8b5fb51ed3d0eaf7da1736e791b308611d9442c010d93c03`.
 The parser accounts for 44 narratives and 40 numbered introduction examples
 (48 introduction units), totalling 1,431 source units. Of 24 parenthetical
-constructions, six use W/M FORM variants and 18 retain separate S readings,
-producing 1,449 numbered-example S records. Another source file contains 57
+constructions, eight use W/M FORM variants and 16 retain separate S readings,
+producing 1,447 numbered-example S records. Another source file contains 57
 lexical records from 49 explanatory footnotes. Introduction tables/prose and
-the title linked to footnote 29 add 100 S, for 1,606 source-stage S records.
+the title linked to footnote 29 add 100 S, for 1,604 source-stage S records.
 The 45 retained final XML files still have 1,455 S and await regeneration.
 The [footnote ledger](CodeAndDocs/footnote_lexemes.jsonl) accounts for all 87
 notes. The [introduction ledger](CodeAndDocs/introduction_lexemes.json) keeps
@@ -100,8 +100,9 @@ None supplied with this source.
   Existing CLI flags can read the committed source profile and conversion;
   their location is not the phonology limitation. The standard-tier decision
   still needs separate review (POL-003/POL-049).
-- The source parser resolves six spelling variants and the old V1/V2 IDs.
-  Four parenthetical classifications still need resolution under POL-028.
+- The source parser resolves eight spelling/pronunciation variants and the old
+  V1/V2 IDs. Tsuchida's notation key resolves ha/sua in two passages;
+  two parenthetical classifications still need resolution under POL-028.
   Clause brackets remain at S; the shared PHON step must handle them as
   analytical notation.
 - Introduction lexical material has six transcription groups, including Saaroa.

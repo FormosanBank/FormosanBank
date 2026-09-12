@@ -66,12 +66,21 @@ Six retain the same W/M inventory and gloss and now use same-tier FORM variants:
 page 53 example 4, page 55 example 1 (tee/tia, explicitly a variation in footnote
 14), page 71 example 14, page 93 example 88, page 95 example 102, and page 231
 example 9. Both readings remain on the affected W and M in source output;
-the retained final XML awaits regeneration. The locators and decisions are in
+the retained final XML awaits regeneration. Two more cases, page 64 example 31
+and page 189 example 13, use ha/sua variants on the aligned NOM word and morpheme.
+[Tsuchida's 2003 Kanakanavu Texts](https://tufs.repo.nii.ac.jp/records/7466),
+section 3.1.11, printed page 6 (PDF page 10), explicitly describes the marker's
+pronunciation variants. Both 2026 passages have the same word inventory and
+gloss alignment. Keep the base S IDs and both W/M readings under POL-028;
+the two separate -opt S copies are no longer needed. This preserves both
+source readings, not a deletion of narrative repetition.
+The locators and decisions are in
 [notation_decisions.tsv](notation_decisions.tsv). Nine cases have optional whole
 words and five have different glosses or analyses; these retain two S readings.
-Four classifications remain open: page 64 example 31 (ha/sua), page 65 example
-42 (mu-usa/mu-kusa), page 189 example 13 (ha/sua), and page 200 example 35
-(ha/sua and iihaa/iisua). Preserve their two readings pending resolution.
+Two classifications remain open: page 65 example 42 (mu-usa/mu-kusa), and
+page 200 example 35 (ha/sua and iihaa/iisua). The marker evidence does not
+establish the demonstrative relationship or whether both substitutions vary
+together; preserve those two S readings pending resolution.
 Source generation now uses base IDs and -opt instead of V1/V2; the corpus is
 not yet published (POL-028/037).
 The tee/tia root triggers V150 SOFT for low overlap; footnote 14 establishes
@@ -136,9 +145,8 @@ k<um>a-kili/RED<AV>-tie supply three W and seven M, including the k-a gap root
 and -um- infix. No free S translation is supplied or invented (POL-014/023/036).
 The two phonetic representations on pages 15–16 stay explicit decisions.
 Four historical profiles require separate conversion review. The full build
-rejects unsupported profile routing before touching final XML. Source changes
-affect four pronoun notes and the Saaroa language tag; forms, IDs, retained
-final XML and provenance remain unchanged.
+rejects unsupported profile routing before touching final XML. Retained final
+XML and provenance remain unchanged.
 
 ## Review evidence
 

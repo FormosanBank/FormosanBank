@@ -27,6 +27,8 @@ def readings(parent):
     (11, 88, 5, 4, ["tia=ma-ʔanivi-ni", "tia=ma-ʔanivi-ini"], ["ni", "ini"], "3.GEN"),  # p93
     (11, 102, 4, 1, ["va=ʔai", "ava=ʔai"], ["va", "ava"], "in.fact"),  # p95
     (40, 9, 1, 1, ["aan=ci", "haan=ci"], ["aan", "haan"], "Where.gone"),  # p231
+    (9, 31, 3, 1, ["ha", "sua"], ["ha", "sua"], "NOM"),  # p64; Tsuchida 2003, p6
+    (31, 13, 6, 1, ["ha", "sua"], ["ha", "sua"], "NOM"),  # p189; same marker
 ])
 def test_same_word_readings_share_sentence(text, number, word, morph, word_forms, morph_forms, gloss):
     source = sentence(text, number)
@@ -62,6 +64,17 @@ def test_different_source_glosses_do_not_collapse_to_form_variants():
     assert second.findtext("TRANSL") == "AV-IRR-go.toward"
     assert len(first.findall("M")) == 2
     assert len(second.findall("M")) == 3
+
+
+def test_marker_evidence_does_not_resolve_the_paired_demonstrative_reading():
+    # p200 example 35 also varies iihaa/iisua; their relationship remains open.
+    base, alternate = sentence(32, 35), sentence(32, 35, "-opt")
+    assert base is not None and alternate is not None
+    for source, forms in ((base, ["ha", "iihaa"]), (alternate, ["sua", "iisua"])):
+        words = source.findall("W")
+        assert [readings(words[i])[0] for i in (2, 4)] == forms
+        assert [words[i].findtext("TRANSL") for i in (2, 4)] == ["NOM", "that"]
+        assert not source.findall('.//FORM[@ver="alt"]')
 
 
 @pytest.mark.parametrize("number,words,glosses,analyzed_morphs", [
