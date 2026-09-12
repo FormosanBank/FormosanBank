@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Welcome](README.md)
+* [Kakarayan](kakarayan.md)
 
 ## Background
 
@@ -12,6 +13,7 @@
 ## The Bank Architecture
 
 * [FormosanBank XML Format](the-bank-architecture/formosanbank-xml-format.md)
+* [FormosanBank Policies](the-bank-architecture/policies.md)
 * [Formosan Dialects](the-bank-architecture/formosan-dialects.md)
 * [Known Issues](the-bank-architecture/known-issues.md)
 * [Corpora](the-bank-architecture/corpora/README.md)
@@ -40,11 +42,27 @@
   * [Latham 1862](the-bank-architecture/corpora/latham-1862.md)
   * [Song (2018) Kanakanavu Grammar](the-bank-architecture/corpora/song-kanakanavu-grammar.md)
   * [Li (2014) Conjunction in Thao](the-bank-architecture/corpora/li-conjunction-thao.md)
+  * [Campbell-Favorlang](the-bank-architecture/corpora/campbell-favorlang.md)
+  * [Utrecht Manuscript Word List](the-bank-architecture/corpora/utrecht-manuscript-word-list.md)
+  * [Huteson (2003) Rukai Survey](the-bank-architecture/corpora/huteson-rukai-survey.md)
+  * [Sato Pazeh Songs](the-bank-architecture/corpora/sato-pazeh-songs.md)
+  * [Wu: Amis Pa-Verbs](the-bank-architecture/corpora/wu-amis-pa-verbs.md)
+  * [Blust (2003) Thao Dictionary](the-bank-architecture/corpora/blust-thao-dictionary.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Formosan MT Toolkit](the-bank-architecture/developers/formosan-mt-toolkit.md)
   * [Folder structure](the-bank-architecture/developers/folder-structure.md)
+  * [Repository Contracts](the-bank-architecture/developers/repository-contracts/README.md)
+    * [Hugging Face audio parity](the-bank-architecture/developers/repository-contracts/hugging-face-audio-parity.md)
+    * [Audio manifests](the-bank-architecture/developers/repository-contracts/audio-manifests.md)
+    * [Audio publication policy](the-bank-architecture/developers/repository-contracts/audio-publication-policy.md)
+    * [CI workflows](the-bank-architecture/developers/repository-contracts/ci-workflows.md)
+    * [Generated files](the-bank-architecture/developers/repository-contracts/generated-files.md)
+    * [Single sources of truth](the-bank-architecture/developers/repository-contracts/single-sources-of-truth.md)
+    * [Language reference data](the-bank-architecture/developers/repository-contracts/language-reference-data.md)
+    * [Synced pages](the-bank-architecture/developers/repository-contracts/synced-pages.md)
   * [QC Pipeline](the-bank-architecture/developers/qc-pipeline/README.md)
+    * [The rule catalogue](the-bank-architecture/developers/qc-pipeline/rule-catalogue.md)
     * [validate\_xml.py](the-bank-architecture/developers/qc-pipeline/validate-xml.md)
     * [validate\_dialect.py](the-bank-architecture/developers/qc-pipeline/validate-dialect.md)
     * [validate\_text.py](the-bank-architecture/developers/qc-pipeline/validate-text.md)
@@ -53,6 +71,7 @@
     * [validate\_vocabulary.py](the-bank-architecture/developers/qc-pipeline/validate-vocabulary.md)
     * [validate\_duplicate\_sentences.py](the-bank-architecture/developers/qc-pipeline/validate-duplicate-sentences.md)
     * [validate\_audio.py](the-bank-architecture/developers/qc-pipeline/validate-audio.md)
+    * [validate\_hf\_audio.py](the-bank-architecture/developers/qc-pipeline/validate-hf-audio.md)
     * [validate\_port\_readiness.py](the-bank-architecture/developers/qc-pipeline/validate-port-readiness.md)
     * [Manual edits](the-bank-architecture/developers/qc-pipeline/manual-edits.md)
     * [clean\_xml.py](the-bank-architecture/developers/qc-pipeline/clean-xml.md)
