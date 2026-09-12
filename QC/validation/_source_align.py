@@ -24,6 +24,8 @@ from pathlib import Path
 
 from lxml import etree
 
+from QC.xml_forms import find_base_form
+
 from QC.validation._finding import Finding, Severity
 
 # Default fuzzy-match acceptance, on a 0-100 scale.
@@ -215,12 +217,17 @@ def _s_text_for_matching(s: etree._Element) -> str:
     The W tier is the fallback because a scrape that leaves the S-level FORM
     empty still carries the sentence, just distributed across its words.
     """
-    form = s.find('./FORM[@kindOf="original"]')
+    form = find_base_form(s, "original")
     if form is not None and form.text and form.text.strip():
         return form.text.strip()
     words = []
     for w in s.iter("W"):
-        wf = w.find('./FORM[@kindOf="original"]') or w.find("./FORM")
+        # `a or b` is wrong here: lxml gives a childless element a False
+        # truth value (with a FutureWarning), so the kindOf filter was
+        # discarded and the first FORM of any tier won.
+        wf = find_base_form(w, "original")
+        if wf is None:
+            wf = find_base_form(w)
         if wf is not None and wf.text:
             words.append(wf.text.strip())
     return " ".join(words)

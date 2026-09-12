@@ -15,7 +15,11 @@ from lxml import etree
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
-from QC.utilities._accents import strip_accents  # noqa: E402
+from QC.corpus_counts import is_reproduction_path  # noqa: E402
+from QC.utilities._accents import (  # noqa: E402
+    standard_orthography_accents,
+    strip_accents,
+)
 from QC.utilities._case_variants import (  # noqa: E402
     derive_case_variants,
     load_profile_graphemes,
@@ -159,48 +163,81 @@ def _process_standard_hyphens(
 
 
 def _apply_standard_hyphens(element, lang_code, ortho_path, hard_remove,
-                            warnings, file_path):
+                            warnings, file_path, segmented_without_m=False):
     """Apply C012 to an S element's standard FORM. No-op for W/M (they keep
     segmentation) and for elements without a standard FORM.
+
+    The M tier is C012's proxy for "this sentence is morpheme-segmented", and
+    for almost every corpus it is the right one. It is a proxy, though, not the
+    property itself: a corpus can print segmentation hyphens in its FORMs and
+    publish no M analysis at all (MontgomeryTexts, Nowbucyang-Truku-Thesis),
+    and there C012 declines to fire on a sentence that plainly is segmented.
+
+    `segmented_without_m` (CLI `--segmented-without-m-tier`) is the opt-in for
+    exactly that shape. It is off by default and must stay off by default: an
+    S-level standard FORM can carry a hyphen for reasons that are not
+    segmentation -- hyphenated proper nouns in Wikipedias, the morpheme and
+    orthographic hyphens Siraya_Gospels deliberately keeps -- and 15,855
+    sentences across 12 corpora would be caught by a blanket widening of the
+    guard (measured 2026-09-07). Whether a corpus's hyphens are segmentation is
+    a per-corpus judgement, so it is a per-corpus flag.
 
     After C012, emits c022 for any '*' character found in the resulting
     standard FORM text.
     """
     if element.tag != "S":
         return
-    if element.find(".//M") is None:
+    if element.find(".//M") is None and not segmented_without_m:
         return  # C012 only on morpheme-segmented sentences (has an <M> tier)
-    form = element.find("FORM[@kindOf='standard']")
-    if form is None or not form.text:
-        return
-    new_text = _process_standard_hyphens(
-        form.text, file_path, element.get("id"), lang_code,
-        warnings, hard_remove, ortho_path,
-    )
-    if new_text != form.text:
-        form.text = new_text
-    if warnings is not None and form.text and "*" in form.text:
-        for i, ch in enumerate(form.text):
-            if ch == "*":
-                warnings.add("c022", file_path, element.get("id"), ch, i)
+    # Every standard-tier FORM: the tier's base and each ver="alt" variant
+    # (POL-028). findall returns one element for data without variants, so
+    # this is a no-op change for a corpus that has none.
+    for form in element.findall("FORM[@kindOf='standard']"):
+        if not form.text:
+            continue
+        new_text = _process_standard_hyphens(
+            form.text, file_path, element.get("id"), lang_code,
+            warnings, hard_remove, ortho_path,
+        )
+        if new_text != form.text:
+            form.text = new_text
+        if warnings is not None and form.text and "*" in form.text:
+            for i, ch in enumerate(form.text):
+                if ch == "*":
+                    warnings.add("c022", file_path, element.get("id"), ch, i)
 
 
 from QC.utilities._prettify import prettify  # noqa: E402,F401  (shared, mixed-content-safe, idempotent)
 
 
-def get_files(path, language):
+def get_files(path, language, root=None):
+    """Every .xml under `path`, skipping CodeAndDocs.
+
+    `root` is what the caller was originally pointed at, which is not
+    always `path`: get_exploration_targets expands a corpora directory
+    into its children, and one of those children is CodeAndDocs itself.
+    Judging "did the caller mean this tree?" against the expanded child
+    would answer yes for every corpus root. Judging it against the
+    original argument answers correctly, and still lets a build that
+    targets <corpus>/CodeAndDocs/Final_XML/ directly be processed.
+    """
+    root = path if root is None else root
     to_check = []
     if language:
-        for root, dirs, files in os.walk(path):
+        for dirpath, dirs, files in os.walk(path):
             for file in files:
-                if file.endswith(".xml") and re.findall(language, os.path.join(root)): # and 'Final_XML' in os.path.join(root, file)
-                    to_check.append(os.path.join(root, file))
+                if is_reproduction_path(os.path.join(dirpath, file), root):
+                    continue
+                if file.endswith(".xml") and re.findall(language, dirpath):
+                    to_check.append(os.path.join(dirpath, file))
         return to_check
     
-    for root, dirs, files in os.walk(path):
+    for dirpath, dirs, files in os.walk(path):
         for file in files:
-            if file.endswith(".xml"): # and 'Final_XML' in os.path.join(root, file)
-                to_check.append(os.path.join(root, file))
+            if is_reproduction_path(os.path.join(dirpath, file), root):
+                continue
+            if file.endswith(".xml"):
+                to_check.append(os.path.join(dirpath, file))
 
     return to_check
 
@@ -212,37 +249,115 @@ def get_exploration_targets(corpora_path, corpus=None):
         return [corpora_path]
     return [os.path.join(corpora_path, x) for x in os.listdir(corpora_path)]
 
-def apply_standard(s_element, standard):
-    form = s_element.find("FORM[@kindOf='standard']")
-    if form.text:
-        # Protect explicitly mapped diacritic-bearing letters before the
-        # general stress-mark cleanup. This lets a table distinguish a true
-        # orthographic letter such as ä from an otherwise unlisted stressed á.
-        protected = []
-        remaining = []
+def _attested_accents(lang_code, dialect=None):
+    """Accented letters this language's designated standard orthography lists.
+
+    Thin wrapper over _accents.standard_orthography_accents, resolving the
+    ISO code to a language name first. ``dialect`` is accepted and ignored:
+    an orthography table's ``letter`` column is shared across its dialect
+    value columns, so the letter inventory does not vary by dialect.
+    """
+    language = _ISO_TO_LANG_NAME.get((lang_code or "").strip())
+    return standard_orthography_accents(language) if language else frozenset()
+
+
+# Conversion rules are staged through Private Use Area placeholders so that no
+# rule can rewrite another rule's output. The range is far larger than any
+# table (6,400 code points against fewer than a hundred rules) and no Formosan
+# orthography uses it.
+_PUA_FIRST = 0xE000
+_PUA_LAST = 0xF8FF
+
+
+def _marker(index):
+    codepoint = _PUA_FIRST + index
+    if codepoint > _PUA_LAST:
+        raise ValueError(
+            f"conversion table needs {index + 1} placeholders; only "
+            f"{_PUA_LAST - _PUA_FIRST + 1} are available"
+        )
+    return chr(codepoint)
+
+
+def apply_standard(s_element, standard, keep=frozenset()):
+    """Transliterate every standard-tier FORM on this node.
+
+    Covers the tier's base and each ver="alt" variant (POL-028): a variant is
+    a reading of the standard tier and is transliterated like one, so the pair
+    stays in the same orthography. Before variants existed this was a single
+    FORM, and findall still returns exactly one for data without them.
+
+    Within each FORM, every rule is staged through a placeholder, longest
+    source first, so a rule's *output* is never matched by another rule.
+    Without that, a table written in the usual digraph-first idiom silently
+    misconverts: with ``ll -> ll`` guarding ``l -> lr``, sequential replacement
+    turns ``ll`` into ``lrlr``. Longest-first is what makes the idiom hold even
+    when the table lists the short rule first.
+
+    Diacritic-bearing sources are staged in a first pass, before the general
+    stress-mark cleanup, so a table can distinguish a real orthographic letter
+    such as ä from an otherwise unlisted stressed á. Everything else is staged
+    after that cleanup, because a rule source is bare by definition and must
+    see the text the cleanup produced.
+    """
+    for form in s_element.findall("FORM[@kindOf='standard']"):
+        if not form.text:
+            continue
+        if any(_PUA_FIRST <= ord(char) <= _PUA_LAST for char in form.text):
+            raise ValueError(
+                f"{s_element.get('id')}: standard FORM contains a Private Use "
+                f"Area character, which collides with conversion placeholders"
+            )
+
+        staged = []
+        deferred = []
         for original, replacement in standard:
             decomposed = unicodedata.normalize("NFD", original)
             if any(unicodedata.category(char).startswith("M") for char in decomposed):
-                marker = chr(0xE000 + len(protected))
+                marker = _marker(len(staged))
                 form.text = form.text.replace(original, marker)
-                protected.append((marker, replacement))
+                staged.append((marker, replacement))
             else:
-                remaining.append((original, replacement))
+                deferred.append((original, replacement))
 
         # The original tier is never touched here. Unprotected diacritics are
         # treated as source stress/prosody and removed from the standard tier.
-        form.text = strip_accents(form.text)
-        for original, replacement in remaining:
-            form.text = form.text.replace(original, replacement)
-        for marker, replacement in protected:
+        form.text = strip_accents(form.text, keep=keep)
+
+        for original, replacement in sorted(deferred, key=lambda rule: -len(rule[0])):
+            if original and original in form.text:
+                marker = _marker(len(staged))
+                form.text = form.text.replace(original, marker)
+                staged.append((marker, replacement))
+
+        for marker, replacement in staged:
             form.text = form.text.replace(marker, replacement)
+
 
 # Null-morpheme units in an S-level standard FORM: the canonical marker
 # '∅' (U+2205) plus one bridging segmentation hyphen. Removed as a unit
 # so no dangling hyphen is left (matters where '-' is a letter: Bunun,
 # Thao). Must run BEFORE any hyphen stripping elsewhere in the pipeline,
 # while units are still recognizable.
-_NULL_UNIT_RE = re.compile(r"∅-|-∅|∅")
+#
+# A '∅' introduced by an asterisk is a *reconstruction label*, not a null
+# morpheme: in '*-∅' the asterisk marks a Neogrammarian reconstruction and
+# the '∅' names the reconstructed segment — it is the content of the label,
+# not the absence of a morpheme. Stripping it leaves a bare '*' that means
+# nothing (SEALS33 S25, 'tgbukuy *-ʔ, *-h, ma *-∅', where the third label
+# became 'ma *'). The reconstruction alternative is listed first so an
+# asterisked label is consumed whole and kept, before the plain null-unit
+# alternatives can match its '∅'.
+#
+# This is the only reading of '*' that survives into a published FORM:
+# POL-016 excludes source-ungrammatical examples at intake, so a '*' left
+# in the bank is notation, not a grammaticality judgement.
+_NULL_UNIT_RE = re.compile(r"\*-?∅|∅-|-∅|∅")
+
+
+def _drop_unless_reconstruction(match):
+    """Keep an asterisked reconstruction label; drop a real null unit."""
+    return match.group(0) if match.group(0).startswith("*") else ""
 
 
 def remove_null_units(element):
@@ -250,13 +365,14 @@ def remove_null_units(element):
 
     Called for S elements only (never W/M — the morpheme tier is where a
     null is meaningful) and never in --copy mode (pure duplication).
+    Asterisked reconstruction labels ('*-∅') are left intact.
     """
-    form = element.find("FORM[@kindOf='standard']")
-    if form is None or not form.text:
-        return
-    stripped = _NULL_UNIT_RE.sub("", form.text)
-    if stripped != form.text:
-        form.text = re.sub(r" {2,}", " ", stripped).strip()
+    for form in element.findall("FORM[@kindOf='standard']"):
+        if not form.text:
+            continue
+        stripped = _NULL_UNIT_RE.sub(_drop_unless_reconstruction, form.text)
+        if stripped != form.text:
+            form.text = re.sub(r" {2,}", " ", stripped).strip()
 
 
 def _copy_mixed_content(src, dst):
@@ -277,15 +393,21 @@ def _copy_mixed_content(src, dst):
 
 
 def create_standard(element, file_path=None):
-    # Find the <FORM> child within each <S> element
-    original_form = element.find("FORM[@kindOf='original']")
-    standard_form = element.find("FORM[@kindOf='standard']")
+    # Bases lack ver; _sync_standard_variants handles the variant FORMs.
+    original_form = next(
+        (f for f in element.findall("FORM[@kindOf='original']") if f.get("ver") is None),
+        None,
+    )
+    standard_form = next(
+        (f for f in element.findall("FORM[@kindOf='standard']") if f.get("ver") is None),
+        None,
+    )
 
     if original_form is None:
         s_id = element.get('id', '<unknown>')
         location = f" in {file_path}" if file_path else ""
         print(
-            f"Error: S id={s_id!r}{location} has no original tier (kindOf='original'). "
+            f"Error: S id={s_id!r}{location} has no original base (kindOf='original' without ver). "
             f"Cannot create standard tier.",
             file=sys.stderr,
         )
@@ -294,15 +416,65 @@ def create_standard(element, file_path=None):
     if standard_form is not None:
         # Standard form exists, replace its content with original's
         _copy_mixed_content(original_form, standard_form)
-        return
+    else:
+        # No standard form exists, create one
+        original_form.set("kindOf", "original")
 
-    # No standard form exists, create one
-    original_form.set("kindOf", "original")
+        new_form = ET.Element("FORM")
+        new_form.set("kindOf", "standard")
+        _copy_mixed_content(original_form, new_form)
+        # Directly after the last original-tier FORM, so the tiers stay
+        # grouped once variants exist (POL-028). For a node with a single
+        # original FORM — every node in every corpus that has not migrated —
+        # that index is 1, exactly where this always inserted.
+        last_original = element.findall("FORM[@kindOf='original']")[-1]
+        element.insert(list(element).index(last_original) + 1, new_form)
 
-    new_form = ET.Element("FORM")
-    new_form.set("kindOf", "standard")
-    _copy_mixed_content(original_form, new_form)
-    element.insert(1, new_form)
+    _sync_standard_variants(element)
+
+
+def _sync_standard_variants(element):
+    """Mirror the original tier's ver="alt" variants into the standard tier.
+
+    POL-028 (revised 2026-09-09): a variant reading is a FORM whose ``kindOf``
+    names its tier plus ``ver="alt"``, and variants exist for both tiers. The
+    standard tier is derived (POL-002), so its variants are derived too — one
+    standard variant per original variant, in the original's order, seeded
+    with the original's text for the caller's transliteration pass to rewrite.
+
+    Surplus standard variants are deleted rather than left: a variant the
+    original no longer has is a variant of nothing, and leaving it would make
+    the standard tier something other than a function of the original.
+
+    A corpus with no ``ver`` FORMs has no original variants and no standard
+    ones, so both loops are empty and the element is untouched — which is why
+    this is a no-op for every corpus that has not migrated yet.
+    """
+    originals = [
+        f for f in element.findall("FORM[@kindOf='original']")
+        if f.get("ver") is not None
+    ]
+    standards = [
+        f for f in element.findall("FORM[@kindOf='standard']")
+        if f.get("ver") is not None
+    ]
+
+    for surplus in standards[len(originals):]:
+        element.remove(surplus)
+
+    for index, source in enumerate(originals):
+        if index < len(standards):
+            target = standards[index]
+            target.set("ver", source.get("ver"))
+            _copy_mixed_content(source, target)
+            continue
+        target = ET.Element("FORM")
+        target.set("kindOf", "standard")
+        target.set("ver", source.get("ver"))
+        _copy_mixed_content(source, target)
+        # After the last standard-tier FORM, so the tier stays contiguous.
+        anchor = element.findall("FORM[@kindOf='standard']")[-1]
+        element.insert(list(element).index(anchor) + 1, target)
 
 def main(args):
     # Handle copy mode vs normal standardization mode
@@ -353,7 +525,7 @@ def main(args):
         if os.path.isfile(corpus) and corpus.endswith('.xml'):
             files = [corpus]
         else:
-            files = get_files(corpus, args.language)
+            files = get_files(corpus, args.language, args.corpora_path)
             
         if files:
             for file in files:
@@ -366,6 +538,10 @@ def main(args):
                         or root.get("xml:lang")
                         or root.get("lang")
                     )
+                    # Accented letters this language's reference orthography
+                    # attests are real letters, not source prosody, so they
+                    # survive the standard-tier accent cleanup.
+                    keep_accents = _attested_accents(lang_code, root.get("dialect"))
 
                     if args.copy:
                         # In copy mode, just copy original to standard.
@@ -384,10 +560,11 @@ def main(args):
                             create_standard(element, file_path=file)
                             if element.tag == "S":
                                 remove_null_units(element)
-                            apply_standard(element, [])
+                            apply_standard(element, [], keep=keep_accents)
                             _apply_standard_hyphens(
                                 element, lang_code, args.ortho_path,
-                                args.hard_remove_segmentation, warnings, file)
+                                args.hard_remove_segmentation, warnings, file,
+                                args.segmented_without_m_tier)
                     else:
                         # Normal standardization mode
                         assert available_columns is not None  # loaded in non-copy branch above
@@ -454,9 +631,12 @@ def main(args):
                                 if target_column in row:
                                     original_value = row.get('original', '').strip()
                                     standard_value = row.get(target_column, '').strip()
-                                    # Only include mappings where the original value exists
-                                    # Empty standard value means "remove the original character"
-                                    if original_value:  # Only process if there's something to replace
+                                    # 'NA' means the letter does not occur in this dialect,
+                                    # so the row is not a rule at all — the same reading
+                                    # validate_conversion_table.py uses. An *empty* cell is
+                                    # a rule: it deletes the matched string (Bunun 'w',
+                                    # Sakizaya 'x', Wakelin '?').
+                                    if original_value and standard_value != 'NA':
                                         standard.append((original_value, standard_value))
 
                         if profile_graphemes is not None:
@@ -467,10 +647,11 @@ def main(args):
                             create_standard(element, file_path=file)
                             if element.tag == "S":
                                 remove_null_units(element)
-                            apply_standard(element, standard)
+                            apply_standard(element, standard, keep=keep_accents)
                             _apply_standard_hyphens(
                                 element, lang_code, args.ortho_path,
-                                args.hard_remove_segmentation, warnings, file)
+                                args.hard_remove_segmentation, warnings, file,
+                                args.segmented_without_m_tier)
                         
                     try:
                         xml_string = prettify(root)
@@ -505,6 +686,11 @@ if __name__ == "__main__":
     parser.add_argument("--hard-remove-segmentation", dest="hard_remove_segmentation",
                         action="store_true", default=False,
                         help="strip '-' from standard even where it is a letter (Bunun/Thao)")
+    parser.add_argument("--segmented-without-m-tier", dest="segmented_without_m_tier",
+                        action="store_true", default=False,
+                        help="apply C012 hyphen handling to S-level standard FORMs in a "
+                             "corpus that is segmented but publishes no M tier "
+                             "(MontgomeryTexts, Nowbucyang-Truku-Thesis)")
     parser.add_argument("--ortho-path", dest="ortho_path", default=None,
                         help="orthography dir for the hyphen-is-letter check (default Ortho113)")
     args = parser.parse_args()

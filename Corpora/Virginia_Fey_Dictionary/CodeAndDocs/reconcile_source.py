@@ -70,6 +70,26 @@ def load_sheet(path: Path) -> tuple[list[str], dict[int, list[str]]]:
     return header, rows
 
 
+def load_decisions(path: Path) -> dict:
+    decisions = json.loads(path.read_text(encoding="utf-8"))
+    decided = {row["source_row"] for row in decisions["single_form_decisions"]}
+    decided.update(row["source_row"] for row in decisions["form_variants"])
+    repairs_path = path.parent / decisions["source_field_repairs"]
+    with repairs_path.open(encoding="utf-8", newline="") as source:
+        for repair in csv.DictReader(source, delimiter="\t"):
+            repair["source_row"] = int(repair["source_row"])
+            if repair["source_row"] in decided:
+                fail(f"duplicate source decision for row {repair['source_row']}")
+            decided.add(repair["source_row"])
+            raw = repair.pop("raw_form")
+            # This is the upstream digital edition's existing spelling
+            # conversion, checked against a recorded repair, never applied to XML.
+            if normalize(raw.replace("g", "ng")) != normalize(repair["form"]):
+                fail(f"source field repair differs from evidence: {repair['evidence']}")
+            decisions["single_form_decisions"].append(repair)
+    return decisions
+
+
 def original_form(sentence: etree._Element) -> etree._Element:
     forms = sentence.xpath('./FORM[@kindOf="original"]')
     if len(forms) != 1:
@@ -298,7 +318,7 @@ def main() -> int:
     xml_path = Path(args.path).resolve()
     decisions_path = Path(args.decisions).resolve()
     code_docs = decisions_path.parent
-    decisions = json.loads(decisions_path.read_text(encoding="utf-8"))
+    decisions = load_decisions(decisions_path)
     rows = validate_inputs(code_docs, decisions)
 
     if sha256(xml_path) != decisions["baseline"]["sha256"]:

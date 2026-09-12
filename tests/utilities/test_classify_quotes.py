@@ -258,3 +258,40 @@ def test_rules34_require_complete_transl_pair():
     assert new_text == text and corrected == []
     # two quotes (a complete pair) -> fires
     assert aqc(text, ['said "y done"'], DICT)[0] == 'x: "zzq mid wqx"'
+
+
+# ---------------------------------------------------------------------------
+# POL-028: quote classification reads the tier's base, not a variant
+# ---------------------------------------------------------------------------
+
+def test_sentence_records_read_the_original_base_not_a_variant(tmp_path):
+    """`for form in s.findall("FORM"): ... break` took the first
+    kindOf="original" in document order, which is a ver="alt" variant
+    whenever one is written first."""
+    import xml.etree.ElementTree as ET
+    from QC.utilities.classify_quotes import _sentence_records
+
+    path = tmp_path / "a.xml"
+    path.write_text(
+        '<TEXT xml:lang="ami" dialect="Coastal">'
+        '<S id="1">'
+        '<FORM kindOf="original" ver="alt">variant reading</FORM>'
+        '<FORM kindOf="original">base reading</FORM>'
+        "</S></TEXT>",
+        encoding="utf-8",
+    )
+    records = _sentence_records(str(path), "ami")
+    assert [text for text, _transls in records] == ["base reading"]
+
+
+def test_sentence_records_skip_a_variant_only_sentence(tmp_path):
+    from QC.utilities.classify_quotes import _sentence_records
+
+    path = tmp_path / "a.xml"
+    path.write_text(
+        '<TEXT xml:lang="ami" dialect="Coastal">'
+        '<S id="1"><FORM kindOf="original" ver="alt">variant reading</FORM></S>'
+        "</TEXT>",
+        encoding="utf-8",
+    )
+    assert _sentence_records(str(path), "ami") == []

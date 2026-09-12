@@ -30,10 +30,11 @@
   "dialect": {
     "xml_value": "Xiuguluan",
     "registry_other_name": "Central",
-    "evidence_url": "https://arts-sciences.buffalo.edu/content/dam/arts-sciences/linguistics/AlumniDissertations/Wu%20dissertation.pdf",
-    "evidence_pdf_page": 27,
-    "evidence_printed_page": 7,
-    "evidence_summary": "Wu identifies Fey 1986 as a dictionary of the Standard Central Dialect from Fuyuan to Fuli and Fengbin to Yiwan. FormosanBank dialects.csv maps Central to Xiuguluan."
+    "evidence_url": "https://new-amis.moedict.tw/files/%E6%96%B9%E6%95%8F%E8%8B%B1%E9%98%BF%E7%BE%8E%E8%AA%9E%E5%AD%97%E5%85%B8-%E5%B0%81%E9%9D%A2%E5%BA%8F%E5%89%8D%E8%A8%80%E5%B0%8E%E8%AB%96.pdf",
+    "evidence_sha256": "def0ee9785797aecd090efb02c5b5509af5d96e0ed6624b5cc75f649344b1c84",
+    "evidence_pdf_page": 14,
+    "evidence_printed_page": 13,
+    "evidence_summary": "Fey identifies the main text as Standard Central Dialect, Fuyuan to Fuli and Fengbin to Iwan; dialects.csv maps Central to Xiuguluan."
   },
   "header_updates": {
     "source": "https://github.com/miaoski/amis-data/tree/494e5e4bc276c4d2b8b7b827a2c737597239a73b",
@@ -70,13 +71,17 @@
     },
     {
       "source_row": 2547,
-      "source_form": "makimaday / rakimaday a tamdaw",
-      "variants": [{"id": "S2547", "form": "makimaday a tamdaw"}, {"id": "S6905", "form": "rakimaday a tamdaw"}]
+      "source_form": "makimaday / karakimaday a tamdaw",
+      "sheet_defect": "The historical upstream stemmer dropped source prefixes; replay reproduces the sheet text.",
+      "evidence": "source/upstream/k.txt:2109",
+      "variants": [{"id": "S2547", "form": "makimaday a tamdaw"}, {"id": "S6905", "form": "karakimaday a tamdaw"}]
     },
     {
       "source_row": 2591,
-      "source_form": "ric / mikeric ko nanom to sera.",
-      "variants": [{"id": "S2591", "form": "ric ko nanom to sera."}, {"id": "S6904", "form": "mikeric ko nanom to sera."}]
+      "source_form": "Mikiric / mikeric ko nanom to sera.",
+      "sheet_defect": "The historical upstream stemmer dropped source prefixes; replay reproduces the sheet text.",
+      "evidence": "source/upstream/k.txt:2294",
+      "variants": [{"id": "S2591", "form": "Mikiric ko nanom to sera."}, {"id": "S6904", "form": "mikeric ko nanom to sera."}]
     },
     {
       "source_row": 2592,
@@ -85,8 +90,10 @@
     },
     {
       "source_row": 2761,
-      "source_form": "ken a kowa' / cacoscosen a kowa' / ceco.",
-      "variants": [{"id": "S2761", "form": "ken a kowa'."}, {"id": "S6907", "form": "cacoscosen a kowa'."}, {"id": "S6908", "form": "ceco."}]
+      "source_form": "sasoken a kowa' / cacoscosen a kowa' / ceco.",
+      "sheet_defect": "The historical upstream stemmer dropped source prefixes; replay reproduces the sheet text.",
+      "evidence": "source/upstream/k.txt:3227",
+      "variants": [{"id": "S2761", "form": "sasoken a kowa'."}, {"id": "S6907", "form": "cacoscosen a kowa'."}, {"id": "S6908", "form": "ceco."}]
     },
     {
       "source_row": 2804,
@@ -95,8 +102,10 @@
     },
     {
       "source_row": 2857,
-      "source_form": "la' / mafolad cingra.",
-      "variants": [{"id": "S2857", "form": "la' cingra."}, {"id": "S6910", "form": "mafolad cingra."}]
+      "source_form": "Malala' / mafolad cingra.",
+      "variants": [{"id": "S2857", "form": "Malala' cingra."}, {"id": "S6910", "form": "mafolad cingra."}],
+      "sheet_defect": "The maintenance sheet loses part of the source example; restored from the pinned text witness.",
+      "evidence": "source/upstream/l.txt:503"
     },
     {
       "source_row": 3148,
@@ -110,23 +119,31 @@
     },
     {
       "source_row": 3425,
-      "source_form": "o manikaway / yocay.",
-      "variants": [{"id": "S3425", "form": "o manikaway."}, {"id": "S6913", "form": "o yocay."}]
+      "source_form": "o manikaway / pakoyocay.",
+      "variants": [{"id": "S3425", "form": "o manikaway."}, {"id": "S6913", "form": "o pakoyocay."}],
+      "sheet_defect": "The maintenance sheet loses part of the source example; restored from the pinned text witness.",
+      "evidence": "source/upstream/n.txt:451"
     },
     {
       "source_row": 3646,
-      "source_form": "Cimira ko mafana'ay / ngra ko mafana'ay.",
-      "variants": [{"id": "S3646", "form": "Cimira ko mafana'ay."}, {"id": "S6914", "form": "Ngra ko mafana'ay."}]
+      "source_form": "Cimira ko mafana'ay / Cingra ko mafana'ay.",
+      "sheet_defect": "The historical upstream stemmer dropped source prefixes; replay reproduces the sheet text.",
+      "evidence": "source/upstream/m.txt:633",
+      "variants": [{"id": "S3646", "form": "Cimira ko mafana'ay."}, {"id": "S6914", "form": "Cingra ko mafana'ay."}]
     },
     {
       "source_row": 3797,
-      "source_form": "kananaman / namanan a demak",
-      "variants": [{"id": "S3797", "form": "kananaman a demak"}, {"id": "S3797b", "form": "namanan a demak"}]
+      "source_form": "kananaman / nanamanan a demak",
+      "variants": [{"id": "S3797", "form": "kananaman a demak"}, {"id": "S3797b", "form": "nanamanan a demak"}],
+      "sheet_defect": "The maintenance sheet loses part of the source example; restored from the pinned text witness.",
+      "evidence": "source/upstream/n.txt:131"
     },
     {
       "source_row": 3811,
-      "source_form": "O na / nao loma' niyam konini.",
-      "variants": [{"id": "S3811", "form": "O na loma' niyam konini."}, {"id": "S6915", "form": "O nao loma' niyam konini."}]
+      "source_form": "O nana / nao loma' niyam konini.",
+      "sheet_defect": "The historical upstream stemmer dropped source prefixes; replay reproduces the sheet text.",
+      "evidence": "source/upstream/n.txt:192",
+      "variants": [{"id": "S3811", "form": "O nana loma' niyam konini."}, {"id": "S6915", "form": "O nao loma' niyam konini."}]
     },
     {
       "source_row": 3833,
@@ -136,8 +153,10 @@
     },
     {
       "source_row": 3942,
-      "source_form": "Alangoyos / langoyos cingra.",
-      "variants": [{"id": "S3942", "form": "Alangoyos cingra."}, {"id": "S6917", "form": "langoyos cingra."}]
+      "source_form": "Alangoyos / kalangoyos cingra.",
+      "variants": [{"id": "S3942", "form": "Alangoyos cingra."}, {"id": "S6917", "form": "kalangoyos cingra."}],
+      "sheet_defect": "The maintenance sheet loses part of the source example; restored from the pinned text witness.",
+      "evidence": "source/upstream/g.txt:473"
     },
     {
       "source_row": 3948,
@@ -146,8 +165,10 @@
     },
     {
       "source_row": 3969,
-      "source_form": "yniyaniyah / itemek kita a mitolon",
-      "variants": [{"id": "S3969", "form": "yniyaniyah kita a mitolon"}, {"id": "S6919", "form": "itemek kita a mitolon"}]
+      "source_form": "Payniyaniyah / Paitemek kita a mitolon",
+      "sheet_defect": "The historical upstream stemmer dropped source prefixes; replay reproduces the sheet text.",
+      "evidence": "source/upstream/n.txt:520",
+      "variants": [{"id": "S3969", "form": "Payniyaniyah kita a mitolon"}, {"id": "S6919", "form": "Paitemek kita a mitolon"}]
     },
     {
       "source_row": 4563,
@@ -161,8 +182,10 @@
     },
     {
       "source_row": 4659,
-      "source_form": "Kinapina / kinapinapina kako a milicay ngraan",
-      "variants": [{"id": "S4659", "form": "Kinapina kako a milicay ngraan"}, {"id": "S6922", "form": "Kinapinapina kako a milicay ngraan"}]
+      "source_form": "Kinapina / kinapinapina kako a milicay cingraan",
+      "sheet_defect": "The historical upstream stemmer dropped source prefixes; replay reproduces the sheet text.",
+      "evidence": "source/upstream/p.txt:1947",
+      "variants": [{"id": "S4659", "form": "Kinapina kako a milicay cingraan"}, {"id": "S6922", "form": "Kinapinapina kako a milicay cingraan"}]
     },
     {
       "source_row": 4901,
@@ -196,15 +219,17 @@
     },
     {
       "source_row": 5525,
-      "source_form": "Paseneng / sngi kita to fana' ita",
-      "variants": [{"id": "S5525", "form": "Paseneng kita to fana' ita"}, {"id": "S6932", "form": "sngi kita to fana' ita"}]
+      "source_form": "Paseneng / pasngi kita to fana' ita",
+      "sheet_defect": "The historical upstream stemmer dropped source prefixes; replay reproduces the sheet text.",
+      "evidence": "source/upstream/s.txt:2147",
+      "variants": [{"id": "S5525", "form": "Paseneng kita to fana' ita"}, {"id": "S6932", "form": "pasngi kita to fana' ita"}]
     },
     {
       "source_row": 5991,
       "source_form": "talakal / tilo ni Idek.",
       "sheet_defect": "The sheet omits ni and reads the proper name Idek as ldek.",
       "evidence": "source/upstream/t.txt:1071; source/upstream/t.txt:2900",
-      "variants": [{"id": "S5991", "form": "talakal ni Idek."}, {"id": "S5991b", "form": "tilo ni Idek."}]
+      "variants": [{"id": "S5991", "form": "talakal ni Idek."}, {"id": "S5991-opt", "form": "tilo ni Idek."}]
     },
     {
       "source_row": 6306,
@@ -214,8 +239,10 @@
     },
     {
       "source_row": 6402,
-      "source_form": "itemek / pitemek kita a minokay",
-      "variants": [{"id": "S6402", "form": "itemek kita a minokay"}, {"id": "S6934", "form": "pitemek kita a minokay"}]
+      "source_form": "Paitemek / pitemek kita a minokay",
+      "variants": [{"id": "S6402", "form": "Paitemek kita a minokay"}, {"id": "S6934", "form": "pitemek kita a minokay"}],
+      "sheet_defect": "The maintenance sheet loses part of the source example; restored from the pinned text witness.",
+      "evidence": "source/upstream/t.txt:3551"
     },
     {
       "source_row": 6469,
@@ -230,9 +257,9 @@
     {
       "source_row": 6717,
       "source_form": "O kalatolo / kalitolo konini.",
-      "sheet_defect": "The sheet drops the initial ka from both alternatives.",
+      "sheet_defect": "The maintenance sheet loses part of the source example; restored from the pinned text witness.",
       "evidence": "source/upstream/t.txt:4253",
-      "variants": [{"id": "S6717", "form": "O kalatolo konini."}, {"id": "S6717b", "form": "O kalitolo konini."}]
+      "variants": [{"id": "S6717", "form": "O kalatolo konini."}, {"id": "S6717-opt", "form": "O kalitolo konini."}]
     }
   ],
   "single_form_decisions": [
@@ -244,18 +271,11 @@
       "evidence": "source/upstream/d.txt:615"
     },
     {
-      "source_row": 3846,
-      "source_form": "Manga'ay kako a tayra haw? Ga'ayto.",
-      "form": "Manga'ay kako a tayra haw? Nga'ayto.",
-      "reason": "Restore the omitted initial n in nga'ay. The pinned sheet's entry headword and its other maintained examples consistently use nga'ay.",
-      "evidence": "source/virginia_fey_source.csv:3845-3852"
-    },
-    {
       "source_row": 4934,
       "source_form": "Ga'ayho han  r a paratoh.",
-      "form": "Nga'ayho han r a paratoh.",
-      "reason": "Restore the omitted initial n in nga'ay. The pinned sheet's entry headword and its other maintained examples consistently use nga'ay.",
-      "evidence": "source/virginia_fey_source.csv:3845-3852"
+      "form": "Nga'ayho han ci nikar a paratoh.",
+      "reason": "The corrected Word source supplies Nga'ayho and ci nikar; the sheet lost most of the name and its preceding particle.",
+      "evidence": "https://github.com/miaoski/amis-data/blob/494e5e4bc276c4d2b8b7b827a2c737597239a73b/ramoh/R.doc; table 1, row 166; SHA256 8b6564d4c394aa1d2a0521e9fbaba364659456cd1014f6b0dcd5ad5079c74dc3"
     }
   ],
   "translation_repairs": [
@@ -272,7 +292,8 @@
     {"id": "S1117", "tail_text": "、", "reason": "Remove a converter delimiter stranded as character content between the two Mandarin TRANSL elements."}
   ],
   "expected_duplicate_translations_removed": 1,
-  "expected_deduplications": [
+  "source_field_repairs": "source_field_repairs.tsv",
+  "historical_merges": [
     {"removed": "S1900", "survivor": "S1899"},
     {"removed": "S2843", "survivor": "S1862"},
     {"removed": "S3026", "survivor": "S3025"},
@@ -294,5 +315,11 @@
     {"source_row": 6209, "lang": "eng", "tokens": ["an"], "reason": "Article added while reconstructing the ambassador alternative."},
     {"source_row": 6315, "lang": "eng", "tokens": ["reputation"], "reason": "Corrects source transcription typo reputatioin."},
     {"source_row": 6504, "lang": "eng", "tokens": ["with"], "reason": "Corrects source transcription typo withme."}
-  ]
+  ],
+  "historical_merges_note": "These FORM-only merges predate the 2026-09-11 shared meaning-aware dedup repair. Rebuild their distinct source attestations and keep every published translation in the source record it came from; do not enforce the old removal count.",
+  "pending_source_review": [
+    "S3846 retains published Ga'ayto. The printed guide (page 20) defines g as the ng sound, but the mixed digital spelling still needs a supported source-profile treatment; Ortho113 does not cover G.",
+    "Confirm whether the new kalatolo/kalitolo reading is a competing lexeme or a pronunciation variant before publication."
+  ],
+  "source_field_evidence_note": "The 2015 upstream stemmer loses prefixes in deduplication(); its 2016 fix is 23b6efd42fe3e73c0d3cd249c14587ca6349af9f. Replaying the old converter reproduces 512 of 519 sheet losses, including all 145 raw/Word disagreement rows. source_field_repairs.tsv retains exact source excerpts and file:line locators at the pinned upstream commit. Lowercase g to ng matches that digital edition's moedict.py; this is never run on the XML. Full raw and corrected Word witnesses were compared separately before recording these repairs."
 }

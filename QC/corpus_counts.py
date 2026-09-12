@@ -16,6 +16,7 @@ Rules (decided 2026-06-10):
 from __future__ import annotations
 
 import csv
+import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Any
@@ -23,6 +24,13 @@ from typing import Any
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
 _REPO_ROOT = Path(__file__).resolve().parents[1]
+
+# This module is imported both as `QC.corpus_counts` and, by callers that
+# put QC/ itself on sys.path, as bare `corpus_counts`. Make the repo root
+# importable so the shared FORM selector resolves either way.
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.xml_forms import find_base_form, iter_base_forms  # noqa: E402
 
 
 def load_language_codes(path: Path | None = None) -> dict[str, str]:
@@ -40,12 +48,15 @@ def load_language_codes(path: Path | None = None) -> dict[str, str]:
 
 LANG_CODE_TO_NAME = load_language_codes()
 
-# All display names a record can resolve to (the 16 codes plus Truku,
-# which is distinguished from Seediq by dialect rather than ISO code).
+# All display names a record can resolve to (every code in
+# languages.csv, plus Truku, which is distinguished from Seediq by
+# dialect rather than by ISO code).
 LANGUAGE_NAMES = sorted(set(LANG_CODE_TO_NAME.values()) | {"Truku"})
 
 ENG_CODES = {"eng", "en"}
 ZHO_CODES = {"zho", "zh", "zh-hant", "zh-hans"}
+JPN_CODES = {"jpn", "ja"}
+NLD_CODES = {"nld", "nl"}
 
 
 def count_words(text: str | None) -> int:
@@ -58,10 +69,15 @@ def count_words(text: str | None) -> int:
 def select_sentence_form(sentence) -> str | None:
     """Return the text to count for one <S>: standard tier, else original.
 
-    Only direct FORM children of S are considered (S-tier rule)."""
+    Only direct FORM children of S are considered (S-tier rule), and only
+    each tier's *base* FORM — a POL-028 ``ver="alt"`` variant is a second
+    reading of the same sentence, so counting one would double-count a
+    reading the corpus never asserts as primary. A tier with variants but
+    no base counts as absent (maintainer ruling 2026-09-10); V149 (HARD)
+    reports that shape."""
     for kind in ("standard", "original"):
-        for form in sentence.findall("FORM"):
-            if form.get("kindOf") == kind and form.text and form.text.strip():
+        for form in iter_base_forms(sentence, kind):
+            if form.text and form.text.strip():
                 return form.text
     return None
 
@@ -94,6 +110,12 @@ COUNT_FIELDS = (
     "translation_elements",
     "audio_elements",
     "file_count",
+    # Appended 2026-09-10: the bank's first Japanese material (Sato-Pazeh-Songs)
+    # was reported as untranslated because only eng and zho were counted.
+    "jpn_transl_count",
+    # Appended 2026-09-10: same gap, older. Siraya_Gospels and
+    # UtrechtManuscriptWordList have carried Dutch translations all along.
+    "nld_transl_count",
 )
 
 
@@ -124,7 +146,7 @@ def analyze_root(root) -> dict:
         record["sentences"] += 1
         text = select_sentence_form(sentence)
         if text is None:
-            if sentence.find("FORM") is None:
+            if find_base_form(sentence) is None:
                 warnings.append(
                     f"sentence {sentence.get('id', '?')} has no countable FORM at the S level"
                 )
@@ -142,6 +164,10 @@ def analyze_root(root) -> dict:
             record["eng_transl_count"] += n
         if transl_langs & ZHO_CODES:
             record["zho_transl_count"] += n
+        if transl_langs & JPN_CODES:
+            record["jpn_transl_count"] += n
+        if transl_langs & NLD_CODES:
+            record["nld_transl_count"] += n
         if sentence.find(".//M") is not None:
             record["segmented_words"] += n
         if sentence.find(".//M/TRANSL") is not None:
@@ -193,6 +219,65 @@ def collect_records(xml_dir) -> tuple[list[dict], list[dict]]:
 # statistics must go through these helpers so that no two counting scripts
 # can ever arrive at different file sets (maintainer ruling 2026-08-11).
 # ---------------------------------------------------------------------------
+
+def is_published_xml(path) -> bool:
+    """Is this path a published corpus XML file?
+
+    The one predicate every counter must agree on (maintainer ruling
+    2026-08-11). Two conditions, both load-bearing:
+
+    - a path segment `XML`, because some corpora nest folders between the
+      corpus root and `XML/`; and
+    - no path segment `CodeAndDocs`, because that folder holds reproduction
+      infrastructure -- scripts, raw scrapes, and POL-035 pre-correction
+      snapshots -- never published data. A snapshot is a byte-for-byte
+      ancestor of the corpus beside it, so counting one doubles that
+      corpus's apparent size.
+
+    Accepts a Path or a `/`-joined string, so callers walking the filesystem
+    and callers reading `git ls-tree` output can share it.
+    """
+    parts = Path(path).parts if not isinstance(path, str) else tuple(path.split("/"))
+    return (
+        str(path).endswith(".xml")
+        and "XML" in parts
+        and "CodeAndDocs" not in parts
+    )
+
+
+def is_reproduction_path(path, root=None) -> bool:
+    """Does this path sit inside a corpus's CodeAndDocs/ directory?
+
+    The narrow half of `is_published_xml`, split out because every tool
+    that reads corpus XML needs it while only counters need the rest.
+    `CodeAndDocs/` holds reproduction infrastructure -- build scripts, raw
+    scrapes, and POL-035 pre-correction snapshots -- never published data.
+    A snapshot is a byte-for-byte ancestor of the corpus beside it, so a
+    tool that walks a corpus root without this check reads the same text
+    twice, and a tool that writes will rewrite a baseline that exists
+    precisely to stay untouched.
+
+    `root` is the directory the caller was pointed at, and it matters:
+    several builds stage into `<corpus>/CodeAndDocs/Final_XML/` and clean
+    there before installing into `XML/` (NTUFormosanCorpus does exactly
+    this). When the root is itself inside CodeAndDocs the caller meant
+    that tree, and refusing to process what it was explicitly handed
+    would turn the build into a silent no-op. So the rule is "do not
+    wander into CodeAndDocs", not "refuse to touch CodeAndDocs".
+
+    Deliberately does NOT require an `XML` path segment the way
+    `is_published_xml` does, for the same staging-directory reason.
+    """
+    parts = Path(path).parts if not isinstance(path, str) else tuple(path.split("/"))
+    if "CodeAndDocs" not in parts:
+        return False
+    if root is not None:
+        root_parts = (Path(root).parts if not isinstance(root, str)
+                      else tuple(root.split("/")))
+        if "CodeAndDocs" in root_parts:
+            return False
+    return True
+
 
 def corpus_xml_dirs(corpus_path) -> list[Path]:
     """Every XML/ directory of a corpus, at ANY depth (Corpora/.../XML —

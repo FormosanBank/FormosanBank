@@ -158,6 +158,21 @@ def test_unknown_rules_sidecar_dialect_is_soft(tmp_path):
     assert "V153" in proc.stdout
 
 
+def test_rules_sidecar_language_valued_dialect_is_clean(tmp_path):
+    """Truku is a canonical trv variety even though it is a Language row."""
+    root = _mini_repo(tmp_path)
+    with open(root / "dialects.csv", "a", encoding="utf-8") as f:
+        f.write("Truku,,,,\n")
+    (root / "Orthographies" / "Ortho113" / "Seediq.rules.tsv").write_text(
+        "pattern\treplacement\tdescription\tdialect\n"
+        "x\ty\tTruku-specific\tTruku\n",
+        encoding="utf-8")
+    out = tmp_path / "f.csv"
+    proc = _run(root, out)
+    assert proc.returncode == 0
+    assert "V153" not in proc.stdout
+
+
 def test_unreadable_registry_is_hard_exit(tmp_path):
     root = _mini_repo(tmp_path)
     (root / "standards.csv").unlink()

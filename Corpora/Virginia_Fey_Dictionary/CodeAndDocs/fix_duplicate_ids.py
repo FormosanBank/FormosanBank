@@ -25,7 +25,7 @@ snapshot is fixed ONLY by running this script against it — never by hand:
 
     python fix_duplicate_ids.py --path CodeAndDocs/pre_correction_snapshot
 
-The published pipeline (``make_xml.sh``) also runs it over ``XML/`` as its
+The published pipeline (``generate_xml.sh``) also runs it over ``XML/`` as its
 first step; because the snapshot the pipeline restores from already carries
 the fix, that run is an idempotent no-op guard. The edit is textual and
 touches only the ``id`` attribute of the duplicated ``<S>`` opening tags —

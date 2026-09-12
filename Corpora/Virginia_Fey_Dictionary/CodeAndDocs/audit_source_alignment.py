@@ -13,7 +13,7 @@ from pathlib import Path
 
 from lxml import etree
 
-from reconcile_source import XML_LANG, normalize, validate_inputs
+from reconcile_source import XML_LANG, load_decisions, normalize, validate_inputs
 
 
 def english_tokens(text: str | None) -> set[str]:
@@ -154,7 +154,6 @@ def validate_translation_shape(
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--path", required=True, help="XML file to audit")
-    parser.add_argument("--stage", choices=("pre-dedup", "canonical"), required=True)
     parser.add_argument(
         "--decisions",
         default=str(Path(__file__).with_name("source_decisions.json")),
@@ -163,7 +162,7 @@ def main() -> int:
     args = parser.parse_args()
 
     decisions_path = Path(args.decisions).resolve()
-    decisions = json.loads(decisions_path.read_text(encoding="utf-8"))
+    decisions = load_decisions(decisions_path)
     rows = validate_inputs(decisions_path.parent, decisions)
     row_by_id, form_by_id, form_note_by_id = build_expected(decisions, rows)
     exceptions = translation_exceptions(decisions)
@@ -185,45 +184,17 @@ def main() -> int:
         findings.append("duplicate S ids remain")
 
     expected_ids = set(row_by_id)
-    dedup_map = {
-        item["removed"]: item["survivor"]
-        for item in decisions["expected_deduplications"]
-    }
-    if args.stage == "pre-dedup":
-        wanted_ids = expected_ids
-    else:
-        wanted_ids = expected_ids - set(dedup_map)
-    if set(by_id) != wanted_ids:
+    if set(by_id) != expected_ids:
         findings.append(
             "S inventory mismatch: "
-            f"missing={sorted(wanted_ids - set(by_id))}, "
-            f"extra={sorted(set(by_id) - wanted_ids)}"
+            f"missing={sorted(expected_ids - set(by_id))}, "
+            f"extra={sorted(set(by_id) - expected_ids)}"
         )
-
-    for removed, survivor in dedup_map.items():
-        if args.stage == "pre-dedup":
-            if removed not in by_id or survivor not in by_id:
-                findings.append(
-                    f"dedup pair absent before dedup: {removed} -> {survivor}"
-                )
-            elif normalize(
-                by_id[removed].findtext('./FORM[@kindOf="standard"]')
-            ) != normalize(by_id[survivor].findtext('./FORM[@kindOf="standard"]')):
-                findings.append(f"declared dedup forms differ: {removed} -> {survivor}")
-        elif removed in by_id or survivor not in by_id:
-            findings.append(f"canonical dedup state is wrong: {removed} -> {survivor}")
-
-    rows_by_actual_id: dict[str, list[int]] = defaultdict(list)
-    for sentence_id, row in row_by_id.items():
-        actual_id = (
-            dedup_map.get(sentence_id, sentence_id)
-            if args.stage == "canonical"
-            else sentence_id
-        )
-        rows_by_actual_id[actual_id].append(row)
 
     for sentence_id, sentence in by_id.items():
-        source_rows = sorted(set(rows_by_actual_id[sentence_id]))
+        if sentence_id not in row_by_id:
+            continue
+        source_rows = [row_by_id[sentence_id]]
         if sentence.text and sentence.text.strip():
             findings.append(
                 f"{sentence_id}: stray S character content {sentence.text!r}"
@@ -239,37 +210,23 @@ def main() -> int:
         except ValueError as error:
             findings.append(str(error))
             continue
-        if args.stage == "pre-dedup":
-            expected_form = form_by_id[sentence_id]
-            if normalize(tier_text(form)) != normalize(expected_form):
-                findings.append(
-                    f"{sentence_id}: original FORM differs: "
-                    f"{tier_text(form)!r} != {expected_form!r}"
-                )
-            expected_note = form_note_by_id.get(sentence_id)
-            if expected_note is not None and form.get("notes") != expected_note:
-                findings.append(
-                    f"{sentence_id}: source FORM note is missing or changed"
-                )
+        expected_form = form_by_id[sentence_id]
+        if normalize(tier_text(form)) != normalize(expected_form):
+            findings.append(
+                f"{sentence_id}: original FORM differs: "
+                f"{tier_text(form)!r} != {expected_form!r}"
+            )
+        expected_note = form_note_by_id.get(sentence_id)
+        if expected_note is not None and form.get("notes") != expected_note:
+            findings.append(f"{sentence_id}: source FORM note is missing or changed")
         if "/" in tier_text(form):
             findings.append(f"{sentence_id}: unresolved slash remains in original FORM")
         validate_translation_shape(sentence, source_rows, rows, exceptions, findings)
 
-    standard_forms = [
-        normalize(sentence.findtext('./FORM[@kindOf="standard"]'))
-        for sentence in sentences
-    ]
-    if args.stage == "canonical" and len(standard_forms) != len(set(standard_forms)):
-        findings.append(
-            "canonical reference resource still has duplicate standard FORMs"
-        )
-
     summary = {
-        "stage": args.stage,
         "source_rows": len(rows),
         "expected_source_units": len(expected_ids),
         "sentences": len(sentences),
-        "deduplications": len(dedup_map) if args.stage == "canonical" else 0,
         "findings": findings,
     }
     if args.json:
@@ -283,7 +240,7 @@ def main() -> int:
         print(f"Source alignment failed with {len(findings)} finding(s).")
         return 1
     print(
-        f"Source alignment passed ({args.stage}): {len(rows)} source rows, "
+        f"Source alignment passed: {len(rows)} source rows, "
         f"{len(expected_ids)} source units, {len(sentences)} S records."
     )
     return 0

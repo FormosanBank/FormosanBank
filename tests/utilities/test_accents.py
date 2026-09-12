@@ -11,7 +11,7 @@ import unicodedata
 
 import pytest
 
-from QC.utilities._accents import ACCENTS_TO_STRIP, accented_letters, strip_accents
+from QC.utilities._accents import ALWAYS_KEEP, ACCENTS_TO_STRIP, accented_letters, strip_accents
 
 # Korean strings written the way a source text has them (precomposed / NFC).
 SEOUL = "서울"
@@ -31,6 +31,9 @@ def _has_combining(text: str) -> bool:
     ("ó", "o"),
     ("ú", "u"),
     ("ŭ", "u"),
+    ("ā", "a"),
+    ("ē", "e"),
+    ("ō", "o"),
     ("máduk", "maduk"),
     ("dálix búyas", "dalix buyas"),
 ])
@@ -38,7 +41,7 @@ def test_latin_strip_marks_are_removed(accented, plain):
     assert strip_accents(accented) == plain
 
 
-@pytest.mark.parametrize("letter", ["ê", "ō", "ñ", "ä", "ü", "ç"])
+@pytest.mark.parametrize("letter", ["ê", "ñ", "ä", "ü", "ç"])
 def test_latin_marks_outside_the_strip_set_are_kept_composed(letter):
     """Only ACCENTS_TO_STRIP is removed; other Latin diacritics survive, NFC."""
     out = strip_accents(letter)
@@ -160,3 +163,64 @@ def test_idempotent_with_keep():
 def test_no_strip_mark_survives_on_latin_text():
     out = unicodedata.normalize("NFD", strip_accents("máduk dálix dourŭk"))
     assert not any(mark in out for mark in ACCENTS_TO_STRIP)
+
+
+
+# --- macron ---------------------------------------------------------------
+# The macron is prosodic or loanword notation in most of the bank (Saisiyat,
+# Amis, Truku, Atayal, Paiwan all carry macrons while attesting no macron
+# letter) but is a real letter in Puyuma, Siraya and Favorlang. It is therefore
+# only safe to strip alongside a keep set.
+
+def test_macron_is_stripped_by_default():
+    # Mandarin kin terms quoted in Paiwan; Paiwan attests no macron letter.
+    assert strip_accents("āyí") == "ayi"
+    assert strip_accents("yípó") == "yipo"
+
+
+def test_attested_macron_letter_survives():
+    # Puyuma's reference orthography lists 'ē' beside plain 'e'.
+    assert strip_accents("sēhu", keep={"ē"}) == "sēhu"
+    assert strip_accents("sēhu") == "sehu"
+
+
+def test_no_unconditional_keep_set():
+    """There is no hardcoded exception list, and none is needed.
+
+    ALWAYS_KEEP held Siraya's 'ae-ligature-macron' and Favorlang's 'g-macron'
+    because neither language has a designated standard orthography. The
+    vowels-only rule protects the Favorlang letter structurally -- 'g' is a
+    consonant -- and neither corpus is standardized by the shared tool anyway.
+    When either language gains a standards.csv orthography, that table will
+    list its letters and standard_orthography_accents will keep them."""
+    assert ALWAYS_KEEP == frozenset()
+    assert strip_accents("pa\u1e21a") == "pa\u1e21a"      # consonant: never stripped
+    assert strip_accents("\u01e3uh") == "\u00e6uh"        # vowel: stripped, absent a table
+    assert strip_accents("\u01e3uh", keep={"\u01e3"}) == "\u01e3uh"
+
+
+def test_only_vowels_are_stripped():
+    """A prosodic mark sits on a vowel; a diacritic on a consonant is part of
+    the letter. This is what keeps Slavic, Turkish and transcription letters
+    intact without an exception list."""
+    assert strip_accents("t\u00faturu") == "tuturu"        # vowel + acute
+    assert strip_accents("dour\u016dk") == "douruk"        # vowel + breve
+    assert strip_accents("\u0101y\u00ed") == "ayi"        # vowel + macron, vowel + acute
+    for consonant_word in ("Nikoli\u0107", "i\u0159a", "\u011fa", "\u015bin", "\u0144a"):
+        assert strip_accents(consonant_word) == consonant_word, consonant_word
+    # 'y' and 'w' are glides in these orthographies, not vowels.
+    assert strip_accents("\u00fdnna") == "\u00fdnna"
+
+
+def test_bare_bases_are_untouched():
+    """A base letter carries no strip-mark, so it is never rewritten."""
+    assert strip_accents("æ") == "æ"
+    assert strip_accents("g") == "g"
+
+
+def test_macron_on_non_latin_is_untouched():
+    assert strip_accents("稲葉浩志") == "稲葉浩志"
+
+
+def test_accented_letters_reports_macron_letters():
+    assert accented_letters({"e", "ē", "a"}) == frozenset({"ē"})

@@ -117,6 +117,49 @@ def test_V060_no_FORM_at_all_emits_nothing():
     assert findings == [], f"expected no V060 finding; got {findings!r}"
 
 
+def test_V060_sentence_only_file_emits_nothing():
+    """A file with no W tier anywhere is not word-segmented, so a W-count
+    of zero is the intended state, not a mismatch. Without this guard the
+    rule fired once per sentence on every sentence-only corpus."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+      </S>
+      <S id="S2">
+        <FORM kindOf="original">d e</FORM>
+      </S>""")
+    findings = _findings_for(gloss_rules.v060_W_count_matches_word_count, xml)
+    assert findings == [], f"expected no V060 finding; got {findings!r}"
+
+
+def test_V060_skips_unsegmented_S_in_a_partially_segmented_file():
+    """S2 has no W at all. That is a W-tier *presence* question, owned by
+    V148 (POL-041); V060 only compares counts where a W tier exists, so it
+    must not also report S2 as a count mismatch."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a b</FORM>
+        <W id="W1"><FORM kindOf="original">a</FORM></W>
+        <W id="W2"><FORM kindOf="original">b</FORM></W>
+      </S>
+      <S id="S2">
+        <FORM kindOf="original">d e</FORM>
+      </S>""")
+    findings = _findings_for(gloss_rules.v060_W_count_matches_word_count, xml)
+    assert findings == [], f"expected no V060 finding; got {findings!r}"
+
+
+def test_V060_still_flags_a_real_mismatch_in_a_segmented_S():
+    """The guards must not silence the rule's actual job."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+        <W id="W1"><FORM kindOf="original">a</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v060_W_count_matches_word_count, xml)
+    assert len(findings) == 1, f"expected one V060 finding; got {findings!r}"
+
+
 # ---------------------------------------------------------------------------
 # V061: M-count vs. implied-morpheme-count (SOFT)
 # ---------------------------------------------------------------------------
@@ -1431,3 +1474,111 @@ def test_V070_ordinary_and_lookalike_forms_stay_silent():
       </S>""")
     findings = _findings_for(gloss_rules.v070_gloss_code_as_FORM, xml)
     assert findings == [], f"expected silence; got {findings!r}"
+
+
+# ---------------------------------------------------------------------------
+# V153/V154/V155 — glossing quality for corpora that carry glosses (2026-09-09)
+# ---------------------------------------------------------------------------
+
+def _w(w_id: str, form: str, glosses: dict) -> str:
+    """A W with a FORM and one TRANSL per language in `glosses`."""
+    tr = "".join(
+        f'<TRANSL xml:lang="{lang}">{text}</TRANSL>'
+        for lang, text in glosses.items()
+    )
+    return f'<W id="{w_id}"><FORM kindOf="original">{form}</FORM>{tr}</W>'
+
+
+def test_V153_gloss_with_too_few_pieces_flagged(tmp_path):
+    """'ka-kaun-un' is three morphemes; a two-piece gloss has lost one."""
+    body = ('<S id="S1"><FORM kindOf="original">ka-kaun-un</FORM>'
+            + _w("W1", "ka-kaun-un", {"zho": "使動-吃"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V153" in proc.stdout + proc.stderr
+
+
+def test_V153_infix_gloss_counts_as_its_own_morpheme(tmp_path):
+    """The form side counts '<um>' as a morpheme, so the gloss side must count
+    '<AV>' the same way -- otherwise every infixed word looks broken."""
+    body = ('<S id="S1"><FORM kindOf="original">t&lt;um&gt;a-tang</FORM>'
+            + _w("W1", "t&lt;um&gt;a-tang", {"zho": "重疊&lt;主事焦點&gt;-哭"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V153" not in proc.stdout + proc.stderr
+
+
+def test_V154_a_run_of_english_in_the_mandarin_slot_is_flagged(tmp_path):
+    """A shifted gloss column shows up as several neighbouring words all
+    carrying the wrong script -- that agreement is the evidence."""
+    body = ('<S id="S1"><FORM kindOf="original">a b c</FORM>'
+            + _w("W1", "a", {"zho": "then"})
+            + _w("W2", "b", {"zho": "say"})
+            + _w("W3", "c", {"zho": "this"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V154" in proc.stdout + proc.stderr
+
+
+def test_V154_one_isolated_untranslated_word_is_not_flagged(tmp_path):
+    """A single wrong-script gloss among well-formed neighbours is an
+    untranslated word, not a swapped column, and reporting it is noise."""
+    body = ('<S id="S1"><FORM kindOf="original">a b c</FORM>'
+            + _w("W1", "a", {"zho": "然後"})
+            + _w("W2", "b", {"zho": "then"})
+            + _w("W3", "c", {"zho": "這個"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V154" not in proc.stdout + proc.stderr
+
+
+def test_V154_leipzig_code_and_proper_name_are_not_wrong_script(tmp_path):
+    """A category code is written the same way in any gloss language, and a
+    proper name stays in Latin script. Neither is evidence of a swap."""
+    body = ('<S id="S1"><FORM kindOf="original">kaen kako</FORM>'
+            + _w("W1", "kaen", {"zho": "3SG.GEN"})
+            + _w("W2", "kako", {"zho": "Kanakanavu"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V154" not in proc.stdout + proc.stderr
+
+
+def test_V155_half_glossed_word_in_a_two_language_file_flagged(tmp_path):
+    body = ('<S id="S1"><FORM kindOf="original">a b c d</FORM>'
+            + _w("W1", "a", {"zho": "一", "eng": "one"})
+            + _w("W2", "b", {"zho": "二", "eng": "two"})
+            + _w("W3", "c", {"zho": "三", "eng": "three"})
+            + _w("W4", "d", {"zho": "四"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V155" in proc.stdout + proc.stderr
+
+
+def test_V155_single_language_corpus_never_trips(tmp_path):
+    """A file glossing only in Mandarin must not be asked for English -- and one
+    stray English gloss must not make it a two-language file."""
+    body = ('<S id="S1"><FORM kindOf="original">a b c</FORM>'
+            + _w("W1", "a", {"zho": "一"})
+            + _w("W2", "b", {"zho": "二"})
+            + _w("W3", "c", {"zho": "三", "eng": "three"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V155" not in proc.stdout + proc.stderr
+
+
+def test_V154_leipzig_code_is_normal_in_an_english_gloss(tmp_path):
+    """A bare category code IS what an English gloss looks like, so it is never
+    evidence of a swap there -- even when the Mandarin slot says something
+    different, which it always does ('3SG.GEN' vs '3SG.屬格')."""
+    body = ('<S id="S1"><FORM kindOf="original">a b c</FORM>'
+            + _w("W1", "a", {"zho": "3SG.屬格", "eng": "3SG.GEN"})
+            + _w("W2", "b", {"zho": "1SG.主格", "eng": "1SG.NOM"})
+            + _w("W3", "c", {"zho": "遠距.主格", "eng": "DIST.NOM"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V154" not in proc.stdout + proc.stderr
+
+
+def test_V154_leipzig_code_in_the_mandarin_slot_is_suspicious(tmp_path):
+    """This corpus writes Mandarin glosses in Chinese, so a bare code there is
+    an untranslated gloss -- unless the English slot carries the very same
+    label, which makes it one shared transcription category."""
+    body = ('<S id="S1"><FORM kindOf="original">a b c d</FORM>'
+            + _w("W1", "a", {"zho": "3SG.GEN", "eng": "3SG.GEN"})   # shared label: fine
+            + _w("W2", "b", {"zho": "1SG.NOM", "eng": "one"})       # untranslated
+            + _w("W3", "c", {"zho": "DIST.NOM", "eng": "that"})
+            + _w("W4", "d", {"zho": "AUX.AF", "eng": "aux"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V154" in proc.stdout + proc.stderr
