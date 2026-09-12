@@ -2,6 +2,7 @@
 
 import importlib.util
 import json
+import os
 from pathlib import Path
 
 import pytest
@@ -83,9 +84,9 @@ def test_source_quotes_keep_the_adjacent_glottal_letter():
     from lxml import etree
 
     for file, sid, phrase in [
-        ("ami/Glosbe_ami_eng_tmem.xml", "GLOSBE_ami_eng_TMEM_U000271", '"\'acaaw to toki"'),
-        ("ami/Glosbe_ami_zho_tmem.xml", "GLOSBE_ami_zho_TMEM_U001790", '"\'odingaray a pasalat"'),
-        ("ami/Glosbe_ami_zho_tmem.xml", "GLOSBE_ami_zho_TMEM_U000293", '3 "Itini'),
+        ("Amis/Glosbe_ami_eng_tmem.xml", "GLOSBE_ami_eng_TMEM_U000271", '"\'acaaw to toki"'),
+        ("Amis/Glosbe_ami_zho_tmem.xml", "GLOSBE_ami_zho_TMEM_U001790", '"\'odingaray a pasalat"'),
+        ("Amis/Glosbe_ami_zho_tmem.xml", "GLOSBE_ami_zho_TMEM_U000293", '3 "Itini'),
     ]:
         tree = etree.parse(HERE.parent / "XML" / file)
         assert phrase in tree.findtext(f'S[@id="{sid}"]/FORM[@kindOf="original"]')
@@ -125,7 +126,7 @@ def test_source_labels_and_date_are_retained_in_the_snapshot():
 def test_standard_collisions_preserve_distinct_source_entries(first, second, spellings, translations):
     from lxml import etree
 
-    tree = etree.parse(HERE.parent / "XML/tay/Glosbe_tay_eng_lexical.xml")
+    tree = etree.parse(HERE.parent / "XML/Atayal/Glosbe_tay_eng_lexical.xml")
     entries = [tree.find(f'S[@id="GLOSBE_tay_eng_LEXICAL_U{n:06}"]')
                for n in (first, second)]
     assert [s.findtext('FORM[@kindOf="original"]') for s in entries] == spellings
@@ -137,8 +138,8 @@ def test_parallel_translation_witnesses_and_language_homographs_survive():
     from lxml import etree
 
     pairs = [
-        ("ami/Glosbe_ami_eng_tmem.xml", "GLOSBE_ami_eng_TMEM_U000012", "eng"),
-        ("ami/Glosbe_ami_zho_tmem.xml", "GLOSBE_ami_zho_TMEM_U000143", "zho"),
+        ("Amis/Glosbe_ami_eng_tmem.xml", "GLOSBE_ami_eng_TMEM_U000012", "eng"),
+        ("Amis/Glosbe_ami_zho_tmem.xml", "GLOSBE_ami_zho_TMEM_U000143", "zho"),
     ]
     forms = []
     for file, sid, language in pairs:
@@ -146,8 +147,49 @@ def test_parallel_translation_witnesses_and_language_homographs_survive():
         assert s.find('TRANSL').get(SOURCE.XML_LANG) == language
         forms.append(s.findtext('FORM[@kindOf="original"]'))
     assert forms[0] == forms[1]
-    for language, number, meaning in [("ami", 23, "father"), ("tay", 149, "uncle")]:
-        tree = etree.parse(HERE.parent / f"XML/{language}/Glosbe_{language}_eng_lexical.xml")
+    for language, folder, number, meaning in [("ami", "Amis", 23, "father"), ("tay", "Atayal", 149, "uncle")]:
+        tree = etree.parse(HERE.parent / f"XML/{folder}/Glosbe_{language}_eng_lexical.xml")
         s = tree.find(f'S[@id="GLOSBE_{language}_eng_LEXICAL_U{number:06}"]')
         assert s.findtext('FORM[@kindOf="original"]') == "mama"
         assert s.findtext('TRANSL') == meaning
+
+
+@pytest.mark.parametrize("number,reading", [
+    (900, "How would Jehovah's counsel benefit Job long after his trials?"),
+    (2543, "What goals might you set for yourself?"),
+    (2597, "How can you plan to be a full-time Christian minister?"),
+    (2829, 'Give Success to All Your Plans"'),
+    (3376, "What will we consider?"),
+    (4033, "How can baptized brothers be courageous?"),
+])
+def test_reviewed_alias_readings_survive_current_dedup(number, reading):
+    from lxml import etree
+
+    tree = etree.parse(HERE.parent / "XML/Amis/Glosbe_ami_eng_tmem.xml")
+    sentence = tree.find(f'S[@id="GLOSBE_ami_eng_TMEM_U{number:06}"]')
+    assert reading in [t.text for t in sentence.findall('TRANSL[@ver="alt"]')]
+
+
+def test_alias_replay_does_not_merge_unreviewed_homographs(tmp_path, monkeypatch):
+    from lxml import etree
+
+    docs = tmp_path / "CodeAndDocs"
+    docs.mkdir()
+    (tmp_path / "XML").mkdir()
+    (docs / "source_aliases.csv").write_text("omitted_id,retained_id,reason\nb,a,reviewed\n")
+    path = tmp_path / "XML/test.xml"
+    tree = SOURCE.render([row("word", "one", "a"), row("word", "two", "b"),
+                          row("word", "three", "c")], {"id": "test"})
+    etree.ElementTree(tree).write(path)
+    monkeypatch.setattr(SOURCE, "HERE", docs)
+    bank = Path(os.environ.get("FORMOSANBANK_ROOT", HERE.parents[2]))
+    SOURCE.apply_reviewed_aliases(bank)
+    result = etree.parse(path)
+    assert [s.get("id") for s in result.findall("S")] == ["a", "c"]
+    assert result.findtext('S[@id="a"]/TRANSL[@ver="alt"]') == "two"
+    assert result.findtext('S[@id="c"]/TRANSL') == "three"
+
+    tree.find('S[@id="b"]/FORM').text = "different word"
+    etree.ElementTree(tree).write(path)
+    with pytest.raises(ValueError, match="Reviewed alias no longer matches"):
+        SOURCE.apply_reviewed_aliases(bank)

@@ -15,16 +15,8 @@ from lxml import etree, html
 
 HERE = Path(__file__).resolve().parent
 # Reviewed editorial references, not grammaticality judgments (POL-016).
-FOOTNOTES = set("""
--9055083716929697662 5561549434751373153 4152954214610827164
--8467921657356303223 7714158969104563635 -4279270056711368794
--7089215574849225995 1338443367742399637 2847328851538302988
--1720621937088298967 -420769233553124876 -2549490206512744912
--2710101757663670539 -2843798765591159758 -404273330122891605
-1189409324491627555 7163146386201006553 Amis_98 Amis_224 Amis_623
-Amis_2534 Amis_4097 Amis_4252 Amis_5288
-""".split())
-HIGHLIGHTS = {"-9025460731714621310", "-2048213809273906060", "430035664398188329"}
+with (HERE / "source_markers.csv").open(encoding="utf-8", newline="") as stream:
+    MARKERS = {row["source_key"]: row["role"] for row in csv.DictReader(stream)}
 
 
 def csv_rows(path):
@@ -111,11 +103,8 @@ def capture(dev):
             locator = cache + "#" + source_key
         asterisks = ""
         if "*" in source or "*" in target:
-            if source_key in FOOTNOTES:
-                asterisks = "footnote"
-            elif source_key in HIGHLIGHTS:
-                asterisks = "highlight"
-            else:
+            asterisks = MARKERS.get(source_key, "")
+            if asterisks not in {"footnote", "highlight"}:
                 raise ValueError(f"Unreviewed asterisk in {record}")
         output.append({
             "file": entry["xml_file"].removeprefix("XML/"),

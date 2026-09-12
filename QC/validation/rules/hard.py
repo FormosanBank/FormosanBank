@@ -432,15 +432,23 @@ def v015_S_at_most_one_original_FORM(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V015: each S must have at most one direct-child FORM with kindOf='original'.
+    """V015: each S must have at most one direct-child *base* FORM kindOf='original'.
 
-    Duplicate kindOf on sibling FORMs under the same S is forbidden.
+    Duplicate kindOf on sibling FORMs under the same S is forbidden — but
+    since POL-028's 2026-09-09 revision a tier may legitimately carry variant
+    readings alongside its base, all sharing that tier's ``kindOf`` and
+    discriminated by ``ver="alt"``. So the count is of FORMs *without* ``ver``,
+    exactly as V085 lets several same-language TRANSLs coexist when all but
+    one carry ``ver``. That there is exactly one base per tier is V149's job;
+    this rule is the "no two bases" half of it for the original tier.
     """
     findings: list[Finding] = []
     for s in tree.iter("S"):
         originals = [
             child for child in s
-            if child.tag == "FORM" and child.get("kindOf") == "original"
+            if child.tag == "FORM"
+            and child.get("kindOf") == "original"
+            and child.get("ver") is None
         ]
         if len(originals) > 1:
             s_id = s.get("id")
@@ -538,8 +546,16 @@ def v026_M_transl_kindof_enum(
 ) -> list[Finding]:
     """V026: TRANSL/@kindOf at M level must be 'original' or 'standard' when set.
 
-    Free-form values (e.g., 'DeepL', 'freeform') are only valid at the
-    sentence/text tier. M-level TRANSL kindOf is strictly enumerated.
+    Free-form values (e.g., 'DeepL', 'freeform') are not valid anywhere as
+    of 2026-09-08 (TRANSL_kindOf_Type); S-level TRANSL/@kindOf is forbidden
+    outright (V151). M-level TRANSL kindOf is strictly enumerated, as it
+    always was.
+
+    Partly redundant since 2026-09-08: the XSD's TRANSL_kindOf_Type now
+    restricts this value at every level, so a bad value fails V000 first.
+    Kept because a named rule reports the offending element far more
+    legibly than an XSD error, and because V026 is M-scoped by design
+    while the schema type is shared by S, W and M.
     """
     _ALLOWED = {"original", "standard"}
     findings: list[Finding] = []
@@ -924,41 +940,163 @@ def v085_multi_same_lang_transl_requires_ver(
     index: CorpusIndex | None,
 ) -> list[Finding]:
     """V085: when a parent has multiple TRANSL children sharing the same
-    xml:lang, at least one must carry a `ver` attribute to discriminate them.
+    xml:lang *and* the same `kindOf`, at least one must carry a `ver`
+    attribute to discriminate them.
 
     Per the Bril Amis Basecamp card (Mar 3, 2026): "If there are multiple
     translations in the same language, mark one with a `ver=\"alt\"` attribute."
     The convention is one canonical TRANSL (bare) plus one or more alternatives
     marked with `ver`. Two bare same-language TRANSLs on the same parent are
     ambiguous about which one is canonical and which is the alternative.
+
+    `kindOf` joins the grouping key (2026-09-11) because it is an independent
+    axis, not a competing spelling of `ver` (POL-025). At W/M level a gloss
+    carries `kindOf="original"` for the source's own gloss and
+    `kindOf="standard"` for a standardized one, and POL-036 requires the
+    standardized gloss to be recorded *alongside* the original rather than
+    replacing it. Grouping on xml:lang alone made that pair indistinguishable
+    from two competing readings, so the only way to publish POL-036's
+    prescribed shape was to add a `ver="alt"` that asserts "alternative
+    reading" about something that is not one. A gloss pair already
+    discriminated by `kindOf` needs no `ver`; two TRANSLs sharing *both*
+    attributes are still ambiguous and still flag.
     """
     findings: list[Finding] = []
     for parent in tree.iter():
-        # Group this parent's direct TRANSL children by xml:lang.
-        by_lang: dict[str, list] = {}
+        # Group this parent's direct TRANSL children by (xml:lang, kindOf).
+        by_key: dict[tuple[str, str], list] = {}
         for child in parent:
             if child.tag != "TRANSL":
                 continue
             lang = child.get(_XML_LANG_ATTR) or ""
-            by_lang.setdefault(lang, []).append(child)
-        for lang, group in by_lang.items():
+            kind_of = child.get("kindOf") or ""
+            by_key.setdefault((lang, kind_of), []).append(child)
+        for (lang, kind_of), group in by_key.items():
             if len(group) < 2:
                 continue
             if any(t.get("ver") for t in group):
                 continue
             p_id = parent.get("id")
             p_tag = parent.tag
+            shared = f"xml:lang={lang!r}"
+            if kind_of:
+                shared += f" and kindOf={kind_of!r}"
             findings.append(Finding(
                 rule_id="V085",
                 severity=Severity.HARD,
                 message=(
                     f"{p_tag} id={p_id!r} has {len(group)} TRANSL children with "
-                    f"xml:lang={lang!r}; at least one must carry a ver attribute "
+                    f"{shared}; at least one must carry a ver attribute "
                     "to discriminate them"
                 ),
                 path=path,
                 location=f"{p_tag}={p_id}" if p_id else p_tag,
             ))
+    return findings
+
+
+def v149_alternate_FORM_requires_base_sibling(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V149: a variant FORM must have exactly one base FORM in its own tier.
+
+    Per POL-028 a variant is a spelling variant *of something*, and since
+    2026-09-09 it says which tier it varies from: `kindOf` names the tier
+    and `ver="alt"` marks the variant, so `kindOf="original" ver="alt"`
+    varies from the tier's one FORM without `ver`. A tier may carry several
+    variants; it may not carry several bases, because then no variant knows
+    what it varies from.
+
+    The deprecated pre-2026-09-09 spelling, `kindOf="alternate"`, carries no
+    tier at all. It is still checked the old way — it needs some
+    non-alternate sibling — until the published FORMs using it are migrated
+    (V157 counts them).
+    """
+    findings: list[Finding] = []
+    for parent in tree.iter("S", "W", "M"):
+        forms = [child for child in parent if child.tag == "FORM"]
+        if not forms:
+            continue
+        p_id = parent.get("id")
+        location = f"{parent.tag}={p_id}" if p_id else parent.tag
+
+        # Current spelling: ver="alt" on a tier value.
+        tiers: dict[str, list[etree._Element]] = {}
+        for form in forms:
+            kind = form.get("kindOf")
+            if kind == "alternate":
+                continue                      # legacy, handled below
+            tiers.setdefault(kind, []).append(form)
+        for kind, group in sorted(tiers.items()):
+            variants = [f for f in group if f.get("ver") is not None]
+            bases = [f for f in group if f.get("ver") is None]
+            if not variants:
+                continue
+            if len(bases) == 1:
+                continue
+            findings.append(Finding(
+                rule_id="V149",
+                severity=Severity.HARD,
+                message=(
+                    f"{parent.tag} id={p_id!r}: kindOf={kind!r} has "
+                    f"{len(variants)} variant FORM(s) with @ver but "
+                    f"{len(bases)} base FORM(s) without it; a tier carrying "
+                    "variants must carry exactly one base for them to vary "
+                    "from (POL-028)"
+                ),
+                path=path,
+                location=location,
+            ))
+
+        # Deprecated spelling: kindOf="alternate", which names no tier.
+        alternates = [f for f in forms if f.get("kindOf") == "alternate"]
+        if alternates and all(f.get("kindOf") == "alternate" for f in forms):
+            findings.append(Finding(
+                rule_id="V149",
+                severity=Severity.HARD,
+                message=(
+                    f"{parent.tag} id={p_id!r} has {len(alternates)} "
+                    "FORM[@kindOf='alternate'] but no non-alternate FORM to "
+                    "vary from (POL-028)"
+                ),
+                path=path,
+                location=location,
+            ))
+    return findings
+
+
+def v156_form_ver_value_in_allowlist(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V156: when FORM/@ver is set, its value must be in the project allowlist.
+
+    The FORM counterpart of V084, sharing `_ALLOWED_VER_VALUES` so the two
+    elements cannot drift apart on what a version marker may say. POL-028
+    adopted TRANSL's `ver="alt"` shape for FORM on 2026-09-09; the allowlist
+    is the same one place to update.
+    """
+    findings: list[Finding] = []
+    for form in tree.iter("FORM"):
+        ver = form.get("ver")
+        if ver is None or ver in _ALLOWED_VER_VALUES:
+            continue
+        parent = form.getparent()
+        p_id = parent.get("id") if parent is not None else None
+        p_tag = parent.tag if parent is not None else "?"
+        findings.append(Finding(
+            rule_id="V156",
+            severity=Severity.HARD,
+            message=(
+                f"FORM has ver={ver!r}; not in the allowed set "
+                f"{sorted(_ALLOWED_VER_VALUES)!r}"
+            ),
+            path=path,
+            location=f"{p_tag}={p_id}" if p_id else p_tag,
+        ))
     return findings
 
 
@@ -1020,5 +1158,8 @@ RULES: list = [
     v073_phon_non_empty,
     v084_transl_ver_value_in_allowlist,
     v085_multi_same_lang_transl_requires_ver,
+    # POL-028 alternate FORMs (2026-09-08)
+    v149_alternate_FORM_requires_base_sibling,
+    v156_form_ver_value_in_allowlist,
 ]
 CROSS_FILE_RULES: list = [v081_text_id_unique_across_published_corpora]

@@ -475,7 +475,7 @@
             <PHON kindOf="original">mapaʂalaʂala</PHON>
             <FORM kindOf="standard">mapasalasala</FORM>
             <PHON kindOf="standard">mapaʂalaʂala</PHON>
-            <TRANSL xml:lang="eng">obedient(unctn)</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">obedient</TRANSL>
         </W>
         <W id="S6W3">
             <FORM kindOf="original">lu</FORM>
@@ -521,7 +521,7 @@
         </W>
     </S>
     <S id="S7">
-        <FORM kindOf="original">anu kapi-k-ali-namen lu tukun-em atu-namen (n)aku-yakuyab-yab</FORM>
+        <FORM kindOf="original">anu kapi-k-ali-namen lu tukun-em atu-namen naku-yakuyab-yab</FORM>
         <PHON kindOf="original">ano kapikalinamən lo tokonəm atonamən nakojakojabjab</PHON>
         <FORM kindOf="standard">ano kapikalinamen lo tokonem atonamen nakoyakoyabyab</FORM>
         <PHON kindOf="standard">an[o|u] kapikalinamən l[o|u] t[o|u]k[o|u]nəm at[o|u]namən nak[o|u]jak[o|u]jabjab</PHON>
@@ -615,14 +615,15 @@
             </M>
         </W>
         <W id="S7W6">
-            <FORM kindOf="original">(n)aku-yakuyab-yab</FORM>
+            <FORM kindOf="original">naku-yakuyab-yab</FORM>
             <PHON kindOf="original">nakojakojabjab</PHON>
+            <FORM kindOf="original" ver="alt">aku-yakuyab-yab</FORM>
             <FORM kindOf="standard">nako-yakoyab-yab</FORM>
             <PHON kindOf="standard">nak[o|u]jak[o|u]jabjab</PHON>
-            <FORM kindOf="alternate">ako-yakoyab-yab</FORM>
+            <FORM kindOf="standard" ver="alt">ako-yakoyab-yab</FORM>
             <TRANSL xml:lang="eng">rdpl-afternoon-rdpl</TRANSL>
             <M id="S7W6M1">
-                <FORM kindOf="original">(n)aku</FORM>
+                <FORM kindOf="original">naku</FORM>
                 <PHON kindOf="original">nako</PHON>
                 <FORM kindOf="standard">nako</FORM>
                 <PHON kindOf="standard">nak[o|u]</PHON>
@@ -766,7 +767,7 @@
             <PHON kindOf="original">akakaəpan</PHON>
             <FORM kindOf="standard">akak-aep-an</FORM>
             <PHON kindOf="standard">akakaəpan</PHON>
-            <TRANSL xml:lang="eng">every-night-intrg(unctn)</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">every-night-intrg</TRANSL>
             <M id="S8W7M1">
                 <FORM kindOf="original">akak</FORM>
                 <PHON kindOf="original">akak</PHON>
@@ -786,7 +787,7 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="eng">intrg(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">intrg</TRANSL>
             </M>
         </W>
     </S>
@@ -961,7 +962,7 @@
             <PHON kindOf="original">atoɖanalafii</PHON>
             <FORM kindOf="standard">a-to-da-na-lavi-i</FORM>
             <PHON kindOf="standard">at[o|u]ɖanalafii</PHON>
-            <TRANSL xml:lang="eng">unan-unan-they(unctn)-unan-cry-unan</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">unan-unan-they-unan-cry-unan</TRANSL>
             <M id="S9W1M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -979,7 +980,7 @@
                 <PHON kindOf="original">ɖa</PHON>
                 <FORM kindOf="standard">da</FORM>
                 <PHON kindOf="standard">ɖa</PHON>
-                <TRANSL xml:lang="eng">they(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">they</TRANSL>
             </M>
             <M id="S9W1M4">
                 <FORM kindOf="original">na</FORM>
@@ -1031,17 +1032,18 @@
         </W>
     </S>
     <S id="S10">
-        <FORM kindOf="original">puken-(en) lavi u anan-anak</FORM>
+        <FORM kindOf="original">puken-en lavi u anan-anak</FORM>
         <PHON kindOf="original">pokənən lafi o anananak</PHON>
         <FORM kindOf="standard">pokenen lavi o anananak</FORM>
         <PHON kindOf="standard">p[o|u]kənən lafi [o|u] anananak</PHON>
         <TRANSL xml:lang="eng">But don't cry.</TRANSL>
         <W id="S10W1">
-            <FORM kindOf="original">puken-(en)</FORM>
+            <FORM kindOf="original">puken-en</FORM>
             <PHON kindOf="original">pokənən</PHON>
+            <FORM kindOf="original" ver="alt">puken</FORM>
             <FORM kindOf="standard">poken-en</FORM>
             <PHON kindOf="standard">p[o|u]kənən</PHON>
-            <FORM kindOf="alternate">poken</FORM>
+            <FORM kindOf="standard" ver="alt">poken</FORM>
             <TRANSL xml:lang="eng">not-unan</TRANSL>
             <M id="S10W1M1">
                 <FORM kindOf="original">puken</FORM>
@@ -1051,7 +1053,7 @@
                 <TRANSL xml:lang="eng">not</TRANSL>
             </M>
             <M id="S10W1M2">
-                <FORM kindOf="original">(en)</FORM>
+                <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">ən</PHON>

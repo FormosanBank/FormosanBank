@@ -28,6 +28,8 @@ labels are preserved. Parenthetical elaborations, dates written with slashes and
 navigation symbols remain intact. `CodeAndDocs/source_notes.csv` moves sixteen
 matching journal-citation suffixes into FORM/TRANSL notes, preserving their wording
 without passing the references to PHON. Other source text is unchanged.
+`CodeAndDocs/source_markers.csv` records the reviewed footnote and highlight roles
+used during source capture; it does not authorize stripping unreviewed markers.
 
 There are 1,307 lexical translations in 1,158 S, including 149 alternate readings.
 Twelve candidates are excluded: one numeric-only entry, nine explicit invalid
@@ -89,6 +91,19 @@ the supported profile defaults. Standard PHON follows Ortho113, and original PHO
 uses the source profile. Accents remain in originals and follow current shared
 vowel-folding rules in derived tiers. Saisiyat S and s remain distinct.
 
+## Audio
+
+No Formosan audio is included.
+
+## Notes and Issues
+
+Glosbe is crowdsourced and contains incorrect or incomplete translations and
+language labels; religious/JW examples dominate. Amis and Atayal dialects are
+unknown, and the approved Amis conversion does not resolve every o/u pronunciation.
+Recorded quotation repairs preserve reviewed readings, but automatic quotation
+classification can still miss errors. Parallel English/Chinese witnesses and
+distinct source spellings remain separate even when their standard forms coincide.
+
 ## Reproduction
 
 Use the current FormosanBank Python environment and shared checkout:
@@ -100,23 +115,32 @@ FORMOSANBANK_ROOT=/path/to/FormosanBank \
 ```
 
 The entry point starts from committed source records, applies recorded edits,
-cleans, deduplicates original forms within each file, standardizes with the tables
-above, and generates both PHON tiers. It uses no network, private sibling or
+cleans, replays reviewed source aliases, deduplicates within each file, standardizes
+with the tables above, and generates both PHON tiers. It uses no network, private sibling or
 historical tools checkout. Run validation separately using the current QC tools.
+Run `python -m pytest tests` from `CodeAndDocs/` with the same
+`FORMOSANBANK_ROOT`; root-level tests exercise the historical acquisition code.
 Cleaner and standardizer warning CSVs are disposable per-run reports; the quote
-ledger is durable. Review the full generated diff after changing any input or tool.
+ledger is durable. Set `QC_OUTPUT_DIR` to put cleaner warnings outside the repository.
+Review the full generated diff after changing any input or tool.
 
-**POL-047 deviation:** Glosbe is a reference collection. Shared deduplication runs
-on original FORM after cleaning and before standardization; standard spelling
-collisions do not authorize deletion of distinct source spellings.
+Final XML uses the shared registry's Amis, Atayal, Truku and Saisiyat directories
+(POL-059). Frozen source locators and the pristine baseline retain their historical
+ISO paths. Unexpected XML outside the declared output paths stops a rebuild.
 
-The duplicate checker ignores this tier/file scope and translation languages when
-upgrading findings to HARD. The reviewed output has no within-file original
-duplicates. Its 1,225 English/Chinese parallel groups preserve Joseph's separate
-witness and translations (merged PR #72; POL-022/025). Four original-tier and five
-standard-tier groups compare different source languages. Three Atayal standard
-collisions retain distinct original spellings. Source fixtures protect these
-cases; the raw findings remain visible for review rather than driving deletions.
+**POL-047 deviation:** After cleaning, the shared removal helper applies the exact
+associations in `source_aliases.csv`, preserving distinct translations as alternate
+readings (POL-025). Ordinary shared deduplication then compares original FORM and
+translations within each file, before standardization; standard spelling collisions
+do not authorize deletion of distinct source spellings.
+
+The reviewed output has no within-file original duplicates. Its 1,225
+English/Chinese parallel groups preserve Joseph's separate witness and translations
+(merged PR #72; POL-022/025). The current checker treats differing translations as
+SOFT. Standard-tier checks also flag three Atayal spelling collisions, two with the
+same translation, although this pipeline deduplicates original forms only. Source
+language is not part of the checker's key, so Saisiyat and Truku `yako` also match.
+Fixtures protect these distinct originals; findings remain visible for review.
 
 [Build provenance](CodeAndDocs/provenance.json) records the actual shared checkout
 commit without selecting or requiring that version. A Git-free export can supply

@@ -26,7 +26,7 @@ the validator names on its `Details:` line, never to the terminal.
 | V012 | `M_must_have_FORM` | HARD | file | every <M> element must have at least one FORM child. |
 | V013 | `S_must_have_original_FORM` | HARD | file | every S that HAS at least one FORM must have one with kindOf='original'. |
 | V014 | `count_missing_standard_form` | SOFT | file | count S/W/M elements that have FORM children but none with kindOf='standard'. |
-| V015 | `S_at_most_one_original_FORM` | HARD | file | each S must have at most one direct-child FORM with kindOf='original'. |
+| V015 | `S_at_most_one_original_FORM` | HARD | file | each S must have at most one direct-child *base* FORM kindOf='original'. |
 | V017 | `form_must_have_content` | HARD | file | every <FORM> element must have non-empty text content. |
 | V022 | `M_originals_distinct_lang` | HARD | file | on an M element, multiple TRANSL kindOf='original' must have distinct xml:lang. |
 | V023 | `transl_must_have_xml_lang` | HARD | file | every TRANSL element must have an xml:lang attribute. |
@@ -44,10 +44,15 @@ the validator names on its `Details:` line, never to the terminal.
 | V073 | `phon_non_empty` | HARD | file | PHON must have non-empty text content. |
 | V081 | `text_id_unique_across_published_corpora` | HARD | corpus | a TEXT/@id in the corpus-under-test must not collide with any TEXT/@id in published Corpora/. Cross-file rule; consults the CorpusIndex's published_ids. |
 | V084 | `transl_ver_value_in_allowlist` | HARD | file | when TRANSL/@ver is set, its value must be in the project allowlist. |
-| V085 | `multi_same_lang_transl_requires_ver` | HARD | file | when a parent has multiple TRANSL children sharing the same xml:lang, at least one must carry a `ver` attribute to discriminate them. |
+| V085 | `multi_same_lang_transl_requires_ver` | HARD | file | when a parent has multiple TRANSL children sharing the same xml:lang *and* the same `kindOf`, at least one must carry a `ver` attribute to discriminate them. |
 | V144 | `M_less_W_in_parsed_sentence` | SOFT | file | a morphologically parsed sentence with M-less Ws. |
 | V145 | `degenerate_all_single_M_tier` | SOFT | file | M level present but the file carries no parsing. |
 | V148 | `W_less_S_in_segmented_file` | SOFT | file | a partially word-segmented file. |
+| V149 | `alternate_FORM_requires_base_sibling` | HARD | file | a variant FORM must have exactly one base FORM in its own tier. |
+| V150 | `alternate_FORM_low_overlap` | SOFT | file | an alternate FORM that does not look like a spelling variant of its sibling. |
+| V151 | `S_TRANSL_has_no_kindOf` | SOFT | file | an S-level TRANSL must not carry @kindOf. |
+| V156 | `form_ver_value_in_allowlist` | HARD | file | when FORM/@ver is set, its value must be in the project allowlist. |
+| V157 | `legacy_alternate_kindOf` | SOFT | file | FORM[@kindOf='alternate'] is the deprecated variant spelling. |
 
 ## `validate_text.py` — text and typography
 
@@ -102,6 +107,9 @@ the validator names on its `Details:` line, never to the terminal.
 | V068 | `M_reconstructs_W` | SOFT | file | the M FORMs of a W should spell the W FORM. |
 | V069 | `null_morpheme_in_W_requires_null_M` | HARD | file | if a W's preferred FORM contains a standalone null-morpheme marker '∅' (bordered by string edges, whitespace, or segmentation '-') and the W has at least one child M, then at least one child M FORM (any kindOf) must be exactly '∅'. |
 | V070 | `gloss_code_as_FORM` | WARN | file | a W- or M-level FORM that is a bare gloss code. |
+| V153 | `gloss_pieces_match_morphemes` | SOFT | file | a word's gloss should claim as many morphemes as its form does. |
+| V154 | `gloss_script_matches_language` | SOFT | file | a gloss whose script its neighbours agree is wrong. |
+| V155 | `gloss_language_set_incomplete` | SOFT | file | a glossed word should carry every gloss language the file uses. |
 
 ## `audit_gloss_scrape.py` — scrape-vs-source audit
 
@@ -118,4 +126,4 @@ the validator names on its `Details:` line, never to the terminal.
 | G011 | `unsplit_slash_alternate` | SOFT | file | '/' in an S-original whose W tier also carries '/'. |
 | G012 | `trailing_paren_note_in_TRANSL` | SOFT | file | a trailing '(...)' in a TRANSL belongs in the notes attribute. |
 
-83 rules.
+91 rules.
