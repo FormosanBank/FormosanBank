@@ -31,8 +31,9 @@ This candidate remains under review. The statistics below describe the retained 
   Existing CLI flags can read the committed source profile and conversion;
   their location is not the phonology limitation. The standard-tier decision
   still needs separate review (POL-003/POL-049).
-- The source parser resolves six spelling variants and the old V1/V2 IDs.
-  Four parenthetical classifications still need resolution under POL-028.
+- The source parser resolves eight spelling/pronunciation variants and the old
+  V1/V2 IDs. Tsuchida's notation key resolves ha/sua in two passages;
+  two parenthetical classifications still need resolution under POL-028.
   Clause brackets remain at S; the shared PHON step must handle them as
   analytical notation.
 - Introduction lexical material has six transcription groups, including Saaroa.
@@ -50,17 +51,17 @@ lists the remaining decisions. A successful build or XML check does not settle t
 
 ## Access Details
 
-The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/827ab943954c716f448b549acda2a2a75e25327b/Corpora/ILCAA-Kanakanavu-Texts/)
+The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/d6f450dbe0f920933ab6bd06cbe9d3cbf2d85693/Corpora/ILCAA-Kanakanavu-Texts/)
 match the reviewed private development commit. This proposal has not been merged.
 
 ## Corpus Processing
 
-The revised parser uses the committed CC BY 4.0 PDF and source decisions. It emits 1,449 numbered-example S, 57 footnote S and 100 introduction/title S, totalling 1,606 source records. Historical columns stay separate; three analyzed prose examples supply W/M tiers. Source repairs cover gloss alignment, stacked infixes, four pseudo-clefts and the Saaroa language code. The Saaroa comparison uses its own source-backed conversion, and ordinary/vocative pronouns keep separate records. These repairs have not reached retained final XML. Four historical profiles need routes, and canonical standard PHON versus the earlier private override remains under review. The build passes committed source tables to shared tools separately by language. Provenance identifies the actual earlier final build.
+The revised parser uses the committed CC BY 4.0 PDF and source decisions. It emits 1,447 numbered-example S, 57 footnote S and 100 introduction/title S, totalling 1,604 source records. Historical columns stay separate; three analyzed prose examples supply W/M tiers. Source repairs cover gloss alignment, stacked infixes, four pseudo-clefts and the Saaroa language code. Eight source spelling/pronunciation pairs use W/M FORM variants; Tsuchida’s notation key resolves ha/sua in two passages. Two notation cases remain open. The Saaroa comparison uses its own source-backed conversion, and ordinary/vocative pronouns keep separate records. These repairs have not reached retained final XML. Four historical profiles need routes, and canonical standard PHON versus the earlier private override remains under review. The build passes committed source tables to shared tools separately by language. Provenance identifies the actual earlier final build.
 
 Run `bash Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/generate_xml.sh` in the candidate
-FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/827ab943954c716f448b549acda2a2a75e25327b/Corpora/ILCAA-Kanakanavu-Texts/README.md) documents dependencies,
+FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/d6f450dbe0f920933ab6bd06cbe9d3cbf2d85693/Corpora/ILCAA-Kanakanavu-Texts/README.md) documents dependencies,
 source coverage and any scoped pipeline deviations. The
-[build provenance](https://github.com/FormosanBank/FormosanBank/blob/827ab943954c716f448b549acda2a2a75e25327b/Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/provenance.json) records the actual
+[build provenance](https://github.com/FormosanBank/FormosanBank/blob/d6f450dbe0f920933ab6bd06cbe9d3cbf2d85693/Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/provenance.json) records the actual
 tools used for the retained output; it does not select or pin tools for later builds.
 
 ## Copyright
