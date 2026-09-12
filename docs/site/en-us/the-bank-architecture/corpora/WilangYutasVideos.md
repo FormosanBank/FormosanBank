@@ -35,7 +35,7 @@ records and 48 audio-only files.
 <!-- CORPUS STATS END -->
 
 
-# Notes
+## Notes and Issues
 
 * Many of the videos lack transcripts. These have XML files that point to the audio file, but there are no `<S>` elements.
 * Many other videos have only partial transcripts. In these cases, the main XML contains only the transcribed part of the audio. A second XML with the postfix `_untranscribed` has no `<S>` elements and references the remaining audio.
@@ -48,21 +48,13 @@ records and 48 audio-only files.
 
 ## Corpus Processing
 
-The text rebuild is pinned and does not scrape the live YouTube channel:
+`CodeAndDocs/generate_xml.sh` rebuilds all 82 XML files from the committed transcripts and [video manifest](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WilangYutasVideos/CodeAndDocs/video_manifest.tsv), without scraping YouTube. It uses the current FormosanBank cleaner, accent-removal standardization and Ortho94 phonology. The actual tool revision is recorded in [provenance.json](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WilangYutasVideos/CodeAndDocs/provenance.json); it is not a required checkout pin. Source speaker notes remain attached to both FORM tiers.
 
-1. `CodeAndDocs/video_manifest.tsv` pins all 34 public transcript inputs by path, byte count, and SHA-256. It also declares all 82 XML outputs and the 48 audio-only records.
-2. `CodeAndDocs/make_xml.py` accounts for every source line, omits only explicitly blank timestamp rows, and generates the complete XML tree.
-3. `CodeAndDocs/audit_source_alignment.py` compares every generated pre-clean element to the pinned sources and requires a complete disposition for the 21 prior MT-quality findings.
-4. `CodeAndDocs/reproduce.sh` runs source verification, cleaning, standard-tier generation, Ortho94 phonology, and nine corpus regression tests twice. Both passes must be byte-identical to the committed XML.
+The reviewed inputs preserve the published corrections and contain 3,014 timestamped captions, 237 translation lines and five wrapped caption continuations. All recording filenames, audio endpoints and TEXT/S IDs are preserved. Repeated utterances, code-switching and transcription gaps remain part of the corpus. Pure editorial recheck markers are retained in notes, and real translations retain their text.
 
-The reviewed source accounting covers 6,455 timestamp rows: 3,014 non-empty
-rows are included and 3,441 blank rows are omitted. All 237 source translation
-lines and five wrapped source continuations are accounted for. Source-authentic
-Mandarin, Japanese, and Bopomofo content is retained.
+Source checks and regression tests run separately from regeneration. Two unchanged-input builds must reproduce the same output, and final QC still requires source review. The [corpus README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WilangYutasVideos/README.md) gives the commands and processing caveats.
 
-End users can run `download_audio_data.sh` to retrieve the reviewed audio from
-Hugging Face. Audio is outside the text rebuild and is never committed to the
-FormosanBank repository.
+`download_audio_data.sh` retrieves the reviewed published audio revision from Hugging Face and checks the XML inventory. It does not resample or resegment the recordings; `--dry-run` checks the remote inventory without downloading audio.
 
 ***
 
@@ -74,7 +66,9 @@ FormosanBank repository.
 
 ## **Copyright**
 
-CC BY-NC
+CC BY-NC 4.0
+
+Permission was provided by 劉宇陽 on 2024-12-26; evidence: ask maintainer.
 
 ***
 
