@@ -1,0 +1,35 @@
+finding	rule	audited_s_id	source_ordinal	current_s_ids	resolution	evidence
+1	target_copied_source_clause	S00726	726	S00726	fixed_repeated_amis_prefix	The pinned target starts with the second Amis clause; it is retained in TRANSL notes and removed from Chinese text.
+2	target_copied_source_clause	S01666	1666	S01666	fixed_repeated_amis_prefix	The pinned target repeats the Amis predicate before a complete Chinese translation.
+3	target_copied_source_clause	S01667	1667	S01667	fixed_repeated_amis_prefix	The pinned target repeats the Amis predicate before a complete Chinese translation.
+4	target_copied_source_clause	S01705	1705	S01705	fixed_repeated_amis_prefix	The source Chinese field supplies only the interjection; the repeated Amis remains documented in notes.
+5	target_copied_source_clause	S01710	1710	S01710	fixed_repeated_amis_prefix	The source Chinese field supplies only the interjection; the repeated Amis remains documented in notes.
+6	target_copied_source_clause	S01774	1774	S01774	fixed_repeated_amis_prefix	The pinned target repeats the Amis predicate before the Chinese translation.
+7	target_copied_source_clause	S02128	2128	S02128	fixed_repeated_amis_prefix	The pinned target repeats the Amis predicate before the Chinese translation.
+8	target_copied_source_clause	S06703	6703	S06703	fixed_repeated_amis_prefix	The pinned target repeats the second Amis clause before the Chinese translation.
+9	target_copied_source_clause	S07095	7095	S07095	fixed_repeated_amis_prefix	The pinned target repeats the second Amis clause before the Chinese translation.
+10	extreme_fertility	S07201	7201	S07201	accepted_source_lexical_entry	The pinned field is a source-marked Amis lexical form with its Chinese definition.
+11	target_copied_source_clause	S09418	9418	S09418	fixed_repeated_amis_prefix	The pinned target repeats the second Amis clause before the Chinese translation.
+12	target_copied_source_clause	S09448	9448	S09448	fixed_repeated_amis_prefix	The Amis narration and displaced quote are removed from Chinese text; the complete Chinese quotation is restored.
+13	extreme_fertility	S11312	11312	S11312	accepted_source_lexical_entry	The pinned field explicitly marks lineknek as the example and follows it with a Chinese definition.
+14	target_copied_source_clause	S14824	14824	S14824	fixed_repeated_amis_prefix	The pinned target repeats the Amis name before the Chinese translation.
+15	target_copied_source_clause	S17870	17870	S17870	fixed_repeated_amis_prefix	The pinned target repeats the Amis predicate before the Chinese translation.
+16	extreme_fertility	S28235	28235	S28235	fixed_digitization_alignment	A stray Chinese character split the source-marked Amis sentence; the full Amis sentence and adjacent Chinese translation are restored.
+17	target_copied_source_clause	S32404	32404	S32404	fixed_repeated_amis_prefix	The Amis narration and displaced quote are removed from Chinese text; the complete Chinese quotation is restored.
+18	extreme_fertility	S32825	32825	S32825	accepted_source_lexical_entry	The pinned source gives one circumfixed Amis form and two Chinese definition readings.
+19	extreme_fertility	S32826	32826	S32826	accepted_source_lexical_entry	The pinned source gives one circumfixed Amis form and two Chinese definition readings.
+20	extreme_fertility	S32827	32827	S32827	accepted_source_lexical_entry	The pinned source gives one circumfixed Amis form and two Chinese definition readings.
+21	target_copied_source_clause	S35656	35656	S35656	fixed_repeated_amis_prefix	The pinned target repeats the second Amis clause before the Chinese translation.
+22	target_copied_source_clause	S37250	37250	S37250	fixed_repeated_amis_prefix	The pinned target repeats the second Amis clause before the Chinese translation.
+23	extreme_fertility	S39558	39558	S39558	accepted_source_lexical_entry	The pinned field is the Amis consonant s followed by its Chinese pronunciation note.
+24	target_copied_source_clause	S39991	39991	S39991	fixed_repeated_amis_prefix	The pinned target repeats the second Amis clause before the Chinese translation.
+25	target_copied_source_clause	S40721	40721	S40721	fixed_repeated_amis_prefix	The pinned target repeats the second Amis clause before the Chinese translation.
+26	extreme_fertility	S41674	41674	S41674_1;S41674_2;S41674_3	split_source_pairs	The pinned field contains three explicitly marked Amis and Chinese lexical pairs; each now has its own S record.
+27	extreme_fertility	S42031	42031	S42031_1;S42031_2;S42031_3	split_source_pairs	The pinned field contains three explicitly marked Amis and Chinese lexical pairs; each now has its own S record.
+28	extreme_fertility	S43449	43449	S43449	accepted_source_lexical_entry	The pinned field is an Amis lexical form with a valid Chinese usage restriction.
+29	target_copied_source_clause	S44773	44773	S44773	fixed_repeated_amis_prefix	The pinned target repeats the second Amis clause before the Chinese translation.
+30	mt_standard:unresolved_slash_notation	S46482	46482	S46482	fixed_stray_terminal_slash	The slash is terminal and introduces no alternative; it is repaired as sentence punctuation.
+31	extreme_fertility	S47051	47051	S47051	accepted_source_lexical_entry	The pinned field is the Amis consonant t followed by its Chinese pronunciation note.
+32	extreme_fertility	S47106	47106	S47106	accepted_source_lexical_entry	The pinned field explicitly marks Takokong as an Amis example with its Chinese definition.
+33	target_copied_source_clause	S47755	47755	S47755	fixed_repeated_amis_prefix	The pinned target repeats the second Amis clause before the Chinese translation.
+34	target_copied_source_clause	S48080	48080	S48080	fixed_repeated_amis_prefix	The pinned target repeats the second Amis clause before the Chinese translation.
