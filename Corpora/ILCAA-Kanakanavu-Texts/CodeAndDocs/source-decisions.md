@@ -36,15 +36,17 @@ Those scoped decisions do not authorize arbitrary new conversion mismatches.
 The old wrapper supplied its own Asai2026 profile, removed analytical brackets
 from four S-only readings and added standard palatalization by replacing shared
 functions. Current canonical Ortho113 does not reproduce those conditioned
-standard PHON values. Do not silently revert the reviewed output or restore the
+standard PHON values. The earlier review does not explicitly distinguish source
+from standard PHON, so this difference alone does not establish a shared-tool
+defect. Do not silently revert the previous output or restore the
 private override to make a current build pass. The existing `--tsv_path` and
 `--orthography` flags can read the committed source tables directly. With those
 flags, current tools produce source PHON `ʂiʂiʔinamaku` and `taʔitʂikikani`,
 but standard PHON `sisiʔinamaku` and `taʔiʦikikani` for the reviewer's examples.
 The source rules work; the unresolved choice concerns canonical standard PHON.
 Changing the table paths alone therefore does not make the build ready. The
-entry point keeps its current dependency guard and retains final XML pending
-that decision. The mapping files remain review evidence until then.
+entry point retains final XML pending that decision and reviewed routes for the
+additional introduction profiles. The mapping files remain review evidence.
 
 ## Representation and coverage review
 
@@ -93,14 +95,28 @@ notes 53 and 56. No translation or aligned W/M analysis is invented.
 Grammar explanations, bound forms, other-language comparisons and editorial
 notes remain in the ledger. Note 37's correction is preserved in the narratives,
 not emitted as its rejected field-note reading. Note 29 identifies the title
-ʔənnaŋ on physical page 146; that title-linked lexical intake remains pending.
-The new source file does not alter the 45 numbered-example source files or
-retained final XML. Introduction prose and tables still need intake review.
+ʔənnaŋ on physical page 146; the introduction ledger now admits the title's
+English reading and the note's Chinese meaning together.
 
-Table 1 uses three historical orthographies;
-the other tables mix pronouns, affixes and schematic stems. Page 20 also cites
-Saaroa forms. Preserve these distinctions instead of applying the narrative
-Kanakanavu profile to every item.
+The [introduction ledger](introduction_lexemes.json) admits 100 S from 101
+page-anchored entries, with six files separated by transcription group.
+Table 1's Tsuchida 1969, Szakos 1999 and Basic Vocabulary 2007 columns stay
+separate. The printed Tsuchida cells ta’ɨ́lɨmɨ and ranɨ́ngɨ correct the PDF text
+layer's v́ to ɨ́ in those two cells only (physical page 16, POL-001).
+Table 2 supplies 16 distinct free-pronoun forms from 17 cells; repeated íikia
+and the prose reuse of kumakaɨn share reference records with both contexts
+retained (POL-022). Stress is preserved and row labels are not invented English
+translations. Bound pronouns, affix templates, phoneme inventories and Table 4
+remain context. The Saaroa comparison iɫakia has its own xsr file.
+
+On physical page 24, mu-caanə/AV-go, um-avici/AV-bring and
+k<um>a-kili/RED<AV>-tie supply three W and seven M, including the k-a gap root
+and -um- infix. No free S translation is supplied or invented (POL-014/023/036).
+The remaining phonetic representations on pages 15–16 and the relationships
+of íikasu/iimukásu and íikamu/iimukámu on page 20 stay explicit decisions.
+Five non-narrative profiles require separate conversion review. The full build
+rejects unsupported profile routing before touching final XML. All 46 earlier
+source XML files, retained final XML and provenance remain unchanged.
 
 ## Review evidence
 

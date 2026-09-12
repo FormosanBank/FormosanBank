@@ -38,6 +38,21 @@ def load_records(path: Path, notes: list[dict]) -> list[tuple[dict, dict]]:
     return records
 
 
+def append_sentence(root, sid: str, source: str, record: dict, context: str):
+    sentence = etree.SubElement(root, "S", id=sid, source=source)
+    etree.SubElement(sentence, "FORM", kindOf="original", notes=context).text = record["form"]
+    for variant in record["variants"]:
+        etree.SubElement(sentence, "FORM", kindOf="original", ver="alt").text = variant
+    languages = Counter()
+    for translation in record["translations"]:
+        attrs = {XML_LANG: translation["lang"]}
+        if languages[translation["lang"]]:
+            attrs["ver"] = "alt"
+        etree.SubElement(sentence, "TRANSL", attrib=attrs).text = translation["text"]
+        languages[translation["lang"]] += 1
+    return sentence
+
+
 def write_xml(folder: Path, records_path: Path, notes: list[dict], attributes: dict) -> Path:
     root = etree.Element("TEXT", attrib={
         **attributes,
@@ -45,18 +60,9 @@ def write_xml(folder: Path, records_path: Path, notes: list[dict], attributes: d
         "source": "Kanakanavu Texts (2026), explanatory footnotes; each S identifies its PDF page and note.",
     })
     for record, note in load_records(records_path, notes):
-        sentence = etree.SubElement(root, "S", id=f"{TEXT_ID}_{record['id']}",
-                                    source=f"PDF page {note['physical_page']}, footnote {note['footnote_number']}")
-        etree.SubElement(sentence, "FORM", kindOf="original", notes=note["footnote_clean"]).text = record["form"]
-        for variant in record["variants"]:
-            etree.SubElement(sentence, "FORM", kindOf="original", ver="alt").text = variant
-        languages = Counter()
-        for translation in record["translations"]:
-            attrs = {XML_LANG: translation["lang"]}
-            if languages[translation["lang"]]:
-                attrs["ver"] = "alt"
-            etree.SubElement(sentence, "TRANSL", attrib=attrs).text = translation["text"]
-            languages[translation["lang"]] += 1
+        append_sentence(root, f"{TEXT_ID}_{record['id']}",
+                        f"PDF page {note['physical_page']}, footnote {note['footnote_number']}",
+                        record, note["footnote_clean"])
     path = folder / FILENAME
     etree.ElementTree(root).write(str(path), encoding="UTF-8", xml_declaration=True, pretty_print=True)
     return path

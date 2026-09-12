@@ -24,6 +24,7 @@ import fitz
 
 import pipeline
 import footnote_lexemes
+import introduction_lexemes
 
 
 CODEDOCS = Path(__file__).resolve().parents[1]
@@ -34,7 +35,7 @@ REPORT = ROOT / "data/processed/source_xml_comparison_report.md"
 SPOTCHECK_REPORT = ROOT / "data/processed/pdf_xml_spotchecks.csv"
 RANDOM_SAMPLE_REPORT = ROOT / "data/processed/random_source_xml_audit.csv"
 XML_NS = "{http://www.w3.org/XML/1998/namespace}"
-XML_DIR = CODEDOCS.parent / "XML/Kanakanavu"
+XML_DIR = CODEDOCS.parent / "XML"
 
 RANDOM_SAMPLE_SEED = 20260810
 RANDOM_SAMPLE_SIZE = 30
@@ -421,7 +422,7 @@ def text_support(text: str, page_text: str) -> dict[str, float | int | bool]:
 
 def load_xml() -> dict[str, ET.Element]:
     sentences: dict[str, ET.Element] = {}
-    for path in sorted(XML_DIR.glob("*.xml")):
+    for path in sorted(XML_DIR.rglob("*.xml")):
         root = ET.parse(path).getroot()
         for sentence in root.findall("S"):
             sid = sentence.attrib["id"]
@@ -940,8 +941,12 @@ def main() -> int:
     sentence_mismatches = compare_sentences(units, xml_index, sentences)
     lexical_notes = read_jsonl(ROOT / "data/processed/footnotes.jsonl")
     lexical_records = footnote_lexemes.load_records(CODEDOCS / "footnote_lexemes.jsonl", lexical_notes)
-    lexical_mismatches = footnote_lexemes.audit_xml(XML_DIR, CODEDOCS / "footnote_lexemes.jsonl", lexical_notes)
+    lexical_mismatches = footnote_lexemes.audit_xml(XML_DIR / "Kanakanavu", CODEDOCS / "footnote_lexemes.jsonl", lexical_notes)
     sentence_mismatches.extend(lexical_mismatches)
+    attributes = ET.parse(next(XML_DIR.rglob("ILCAA_KanakanavuTexts_000_*.xml"))).getroot().attrib
+    intro_records = introduction_lexemes.load_records(CODEDOCS / "introduction_lexemes.json", ROOT)
+    intro_mismatches = introduction_lexemes.audit_xml(XML_DIR, CODEDOCS / "introduction_lexemes.json", ROOT, attributes)
+    sentence_mismatches.extend(intro_mismatches)
     wm_mismatches = compare_words_and_morphemes(units, words, morphs, xml_index, sentences)
     scans = artifact_scan(sentences)
     suspicious_translations = suspicious_sentence_translations(sentences)
@@ -1001,6 +1006,7 @@ def main() -> int:
         "",
         f"- Numbered-example S elements checked: {len(units)}.",
         f"- Footnote lexical S elements checked: {len(lexical_records)}; mismatches: {len(lexical_mismatches)}.",
+        f"- Introduction/title lexical S elements checked: {len(intro_records)}; mismatches: {len(intro_mismatches)}.",
         f"- S expected-vs-actual mismatches: {len(sentence_mismatches)}.",
         f"- W/M expected-vs-actual mismatches: {len(wm_mismatches)}.",
         f"- Suspicious S-level translation artifacts: {len(suspicious_translations)}.",

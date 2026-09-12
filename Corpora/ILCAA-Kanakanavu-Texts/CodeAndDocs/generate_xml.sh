@@ -10,6 +10,16 @@ else
     BANK="$(cd "$CORPUS/../FormosanBank" && pwd)"
 fi
 PY="${PYTHON:-python3}"
+"$PY" - "$CODEDOCS/introduction_lexemes.json" <<'PY'
+import json
+import sys
+from pathlib import Path
+profiles = {r["profile"] for r in json.loads(Path(sys.argv[1]).read_text())["records"]}
+unsupported = sorted(profiles - {"Asai2026"})
+if unsupported:
+    print("Final generation needs reviewed per-source routes for: " + ", ".join(unsupported), file=sys.stderr)
+    sys.exit(2)
+PY
 CONVERSION="$BANK/Orthographies/ConversionTables/Kanakanavu_Asai2026_113.tsv"
 for required in "$BANK/Orthographies/Asai2026/Kanakanavu.tsv" "$CONVERSION"; do
     if [[ ! -f "$required" ]]; then

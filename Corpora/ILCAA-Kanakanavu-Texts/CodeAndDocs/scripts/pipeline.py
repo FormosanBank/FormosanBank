@@ -24,6 +24,7 @@ import fitz  # PyMuPDF
 from lxml import etree
 
 import footnote_lexemes
+import introduction_lexemes
 
 CODEDOCS = Path(__file__).resolve().parents[1]
 ROOT = CODEDOCS / ".build"
@@ -2449,6 +2450,11 @@ def build_xml(footnotes: list[dict[str, Any]]) -> tuple[list[Path], list[dict[st
             "footnote_refs": [note["footnote_id"]],
             "quality_status": "source_lexical_record",
         })
+    extra_paths, extra_index, extra_tokens = introduction_lexemes.write_xml(
+        ROOT / "build/xml_drafts", CODEDOCS / "introduction_lexemes.json", ROOT, dict(root.attrib))
+    paths.extend(extra_paths)
+    xml_index.extend(extra_index)
+    token_index.extend(extra_tokens)
     write_csv(ROOT / "data/processed/xml_index.csv", xml_index, [
         "xml_file", "text_id", "sentence_id", "unit_id", "source_unit_id",
         "variant_label", "variant_order", "variant_count", "global_text_order",
@@ -2743,7 +2749,7 @@ def main() -> int:
     paths, _, _ = build_xml(footnotes)
     write_source_unit_coverage(units)
     write_source_notation_audit(units)
-    print(f"Extracted {len(units)} numbered source units plus footnote lexemes into {len(paths)} source-only XML files.")
+    print(f"Extracted {len(units)} numbered source units plus supplemental lexemes into {len(paths)} source-only XML files.")
     return 0
 
 

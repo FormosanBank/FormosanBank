@@ -172,13 +172,13 @@ def test_every_generated_sentence_indexed():
     with (WORKSPACE / "data/processed/xml_index.csv").open(encoding="utf-8") as f:
         index_ids = {row["sentence_id"] for row in csv.DictReader(f)}
     xml_ids = set()
-    for path in (WORKSPACE / "build/xml_drafts/Kanakanavu").glob("*.xml"):
+    for path in (WORKSPACE / "build/xml_drafts").rglob("*.xml"):
         root = ET.parse(path).getroot()
         xml_ids.update(s.attrib["id"] for s in root.findall("S"))
     assert xml_ids
     assert xml_ids == index_ids
-    # Numbered source units retain 1,449 readings; explanatory notes add 57.
-    assert len(xml_ids) == 1449 + 57
+    # Preserve the numbered readings and footnotes; introduction/title adds 100.
+    assert len(xml_ids) == 1449 + 57 + 100
 
 
 def test_grammar_introduction_examples_in_final_xml():

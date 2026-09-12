@@ -19,11 +19,14 @@ The parser accounts for 44 narratives and 40 numbered introduction examples
 (48 introduction units), totalling 1,431 source units. Of 24 parenthetical
 constructions, six use W/M FORM variants and 18 retain separate S readings,
 producing 1,449 numbered-example S records. Another source file contains 57
-lexical records from 49 explanatory footnotes, for 1,506 source-stage S records.
+lexical records from 49 explanatory footnotes. Introduction tables/prose and
+the title linked to footnote 29 add 100 S, for 1,606 source-stage S records.
 The 45 retained final XML files still have 1,455 S and await regeneration.
 The [footnote ledger](CodeAndDocs/footnote_lexemes.jsonl) accounts for all 87
-notes. Introduction prose/tables and the title-linked form in footnote 29 still
-need intake work. These counts are not a whole-book coverage verdict.
+notes. The [introduction ledger](CodeAndDocs/introduction_lexemes.json) keeps
+historical transcription columns and the Saaroa comparison in separate files.
+It records bound morphology/templates as context and unresolved phonetic and
+pronoun representations explicitly. These counts are not a whole-book coverage verdict.
 The source parser repairs a misplaced interjection gloss in Naparamaci example
 68, omits empty gloss padding, restores the aligned W/M tiers of introduction
 examples 23a-d and separates eight stacked infix pairs. Final XML awaits the
@@ -46,8 +49,9 @@ PYTHON=python3 CodeAndDocs/generate_xml.sh /path/to/current/FormosanBank
 
 The build stages source extraction, shared cleaning, standardization and PHON,
 then installs successful output. It performs no QC or source refresh. Narrative
-deduplication is not a build step. Current main lacks the shared Asai2026 source
-profile and conversion table, so generation stops before changing XML.
+deduplication is not a build step. Generation stops before changing XML until
+the five additional source profiles have reviewed conversion routes and the
+remaining standard-phonology differences have been resolved.
 
 The [provenance record](CodeAndDocs/provenance.json) describes the retained
 historical XML. It does not select or pin tools for a new build. The previous
@@ -60,12 +64,12 @@ For source investigation without producing final derived tiers:
 ```sh
 python3 CodeAndDocs/scripts/pipeline.py --workspace /tmp/kanakanavu-review
 python3 CodeAndDocs/scripts/source_xml_audit.py --workspace /tmp/kanakanavu-review \
-  --xml /tmp/kanakanavu-review/build/xml_drafts/Kanakanavu
+  --xml /tmp/kanakanavu-review/build/xml_drafts
 KANAKANAVU_WORKSPACE=/tmp/kanakanavu-review python3 -m pytest -q
 ```
 
 The comparison checks extracted text, source sidecars and the selected XML,
-including W/M FORM variants and footnote forms, meanings and context. Source-only
+including W/M FORM variants and supplemental forms, meanings and context. Source-only
 output has no derived tiers, so the report still fails its completeness checks.
 It never certifies a visual review.
 Use the installed gloss audit, corpus audit
@@ -89,7 +93,7 @@ None supplied with this source.
 
 ## Notes and Issues
 
-- Current Ortho113 does not reproduce the reviewed conditioned standard PHON.
+- Current Ortho113 differs from the previous private conditioned standard PHON.
   Existing CLI flags can read the committed source profile and conversion;
   their location is not the phonology limitation. The standard-tier decision
   still needs separate review (POL-003/POL-049).
@@ -97,9 +101,10 @@ None supplied with this source.
   Four parenthetical classifications still need resolution under POL-028.
   Clause brackets remain at S; the shared PHON step must handle them as
   analytical notation.
-- Introduction lexical material uses several source orthographies. Its coverage
-  and routing must be resolved without applying the narrative profile blindly.
-  Footnote records preserve printed readings and omit unsupplied translations
-  and W/M analysis; they remain source-stage output pending the full build.
+- Introduction lexical material has six transcription groups, including Saaroa.
+  Five need reviewed routes; the narrative profile cannot be applied to them.
+  Two phonetic representations and two pronoun pairs remain open in the ledger.
+  Supplemental records preserve printed readings; only three analyzed prose
+  examples supply W/M tiers. They remain source-stage output pending the full build.
 - The earlier ten-page expert review and historical samples cover those records
   only. They do not establish a current visual review of every page or reading.
