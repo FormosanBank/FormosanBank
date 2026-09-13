@@ -32,8 +32,9 @@ This candidate remains under review. The statistics below describe the checked-i
 - S3846 retains the source spelling `Ga'ayto`; the derived standard is
   `Nga'ayto`. Both PHON tiers use /ŋ/, following the printed guide (page 20).
   This narrow mapping does not recover phonemic contrasts absent from the source.
-- The proposed `kalatolo` / `kalitolo` reading still needs classification as
-  competing words or pronunciation variants.
+- [Printed page 345](https://drive.google.com/file/d/1eNMbHjQfC-ZR77ha17S_441hx9ZcsDhm/view)
+  confirms `O kalatolo / kalitolo konini.` The page does not classify the pair
+  as competing words or pronunciation variants; that decision remains open.
 - Li, Joby and Zeitoun (2024) note that Fey misses some phonemic contrasts,
   including glottal versus pharyngealized stops. Wu Ming-yi modernized the
   digital spelling, but this does not establish that the distinction was
@@ -46,7 +47,7 @@ lists the remaining decisions. A successful build or XML check does not settle t
 
 ## Access Details
 
-The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/13d6237a9e992a23fc3e582adcb67227c50e87a2/Corpora/Virginia_Fey_Dictionary/)
+The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/0d16294ebed17d070dbc220cc2f09475e3b32bc1/Corpora/Virginia_Fey_Dictionary/)
 match the reviewed private development commit. This proposal has not been merged.
 
 ## Corpus Processing
@@ -54,9 +55,9 @@ match the reviewed private development commit. This proposal has not been merged
 The build starts from the preserved hand-corrected baseline and pinned digital source, applies source-located repairs, and runs the current shared tools. It accounts for 2,012 complete source rows while retaining all 2,040 published sentence IDs. Distinct source readings are preserved. Source-specific tables preserve original G while deriving ng and /ŋ/ from the printed guide. The kalatolo/kalitolo reading still needs classification.
 
 Run `bash Corpora/Virginia_Fey_Dictionary/CodeAndDocs/generate_xml.sh` in the candidate
-FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/13d6237a9e992a23fc3e582adcb67227c50e87a2/Corpora/Virginia_Fey_Dictionary/README.md) documents dependencies,
+FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/0d16294ebed17d070dbc220cc2f09475e3b32bc1/Corpora/Virginia_Fey_Dictionary/README.md) documents dependencies,
 source coverage and any scoped pipeline deviations. The
-[build provenance](https://github.com/FormosanBank/FormosanBank/blob/13d6237a9e992a23fc3e582adcb67227c50e87a2/Corpora/Virginia_Fey_Dictionary/CodeAndDocs/provenance.json) records the actual
+[build provenance](https://github.com/FormosanBank/FormosanBank/blob/0d16294ebed17d070dbc220cc2f09475e3b32bc1/Corpora/Virginia_Fey_Dictionary/CodeAndDocs/provenance.json) records the actual
 tools used for the retained output; it does not select or pin tools for later builds.
 
 ## Copyright
@@ -69,10 +70,12 @@ CC BY-NC 3.0
 
 **Rights source:** Taiwan Bible Society, grant date not recorded; evidence: ask maintainer.
 
-The pinned upstream README and licence state this licence and acknowledge the
-Taiwan Bible Society's permission to digitize the dictionary. The exact grant
-date still needs confirmation. Published XML previously said CC BY-SA, so the
-change requires explicit maintainer rights review before publication.
+The pinned upstream README and licence state CC BY-NC 3.0. The publisher links
+[Taiwan Bible Society correspondence dated 2008-10-07](https://drive.google.com/file/d/1s2_xzc_ZFbInk9wGXfVeUmvktJDZI5cb/view)
+welcoming digitization, but that message does not specify a Creative Commons
+licence or its grant date. CC BY-NC 3.0 is absent from the current rights
+vocabulary, and published XML previously said CC BY-SA. The representation,
+licence change and grant date still require maintainer review before publication.
 
 The corpus is also subject to the central FormosanBank
 [licence](https://github.com/FormosanBank/FormosanBank/blob/main/LICENSE.md) and
