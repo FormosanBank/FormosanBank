@@ -1,0 +1,132 @@
+"""Printed table columns, lexical examples and protected grammatical context."""
+
+import csv
+import json
+import os
+import shutil
+import sys
+from pathlib import Path
+
+import pytest
+from lxml import etree
+
+CODE = Path(__file__).resolve().parents[1]
+WORKSPACE = Path(os.environ.get("KANAKANAVU_WORKSPACE", CODE / ".build"))
+sys.path.insert(0, str(CODE / "scripts"))
+import introduction_lexemes as intro
+
+
+def sentence(profile, key, language="Kanakanavu"):
+    file = WORKSPACE / f"build/xml_drafts/{language}/ILCAA_KanakanavuTexts_intro_{profile}.xml"
+    root = etree.parse(str(file)).getroot()
+    return root, root.find(f"S[@id='ILCAA_KANAKANAVU_TEXTS_INTRO_{profile.upper()}_{key}']")
+
+
+def test_historical_columns_are_separate_and_glyphs_follow_print():
+    for profile, form in (("Tsuchida1969", "tarikúuka"), ("Szakos1999", "tarikuka"), ("BasicVocabulary2007", "tarakuka")):
+        _, s = sentence(profile, f"T1_{profile}_R01")
+        assert s.findtext("FORM") == form
+    assert sentence("Tsuchida1969", "T1_Tsuchida1969_R05")[1].findtext("FORM") == "ta’ɨ́lɨmɨ"
+    assert sentence("Tsuchida1969", "T1_Tsuchida1969_R09")[1].findtext("FORM") == "ranɨ́ngɨ"
+
+
+def test_explicit_echo_vowel_and_comma_variants():
+    root, s = sentence("Tsuchida1969", "T1_Tsuchida1969_R03")
+    assert [(f.text, f.get("ver")) for f in s.findall("FORM")] == [("kumakaɨn", None), ("kumakaɨnɨ", "alt")]
+    assert len(root.findall("S")) == 10  # Prose reuses this exact example.
+    _, s = sentence("Szakos1999", "T1_Szakos1999_R08")
+    assert [f.text for f in s.findall("FORM")] == ["meecun", "me’ecun"]
+
+
+def test_free_pronouns_preserve_stress_and_row_context():
+    root, _ = sentence("Tsuchida1976", "T2_01")
+    assert len(root.findall("S")) == 16
+    assert not root.findall(".//TRANSL")  # Row headings are not free translations.
+    forms = [s.findtext("FORM") for s in root.findall("S")]
+    # PDF p20: these exact forms are the reviewed subset of the existing route.
+    assert forms == [
+        "íiku", "íikia", "ʔikúa", "íikasu", "iimukásu", "kasúa", "íikita", "kitána",
+        "íikimi", "kimía", "íikamu", "iimukámu", "kamúa", "ŋuaini", "ʔinía", "ʔisua",
+    ]
+    assert not any(f.startswith(("=", "-")) or f == "ø" for f in forms)
+    iikia = next(s for s in root.findall("S") if s.findtext("FORM") == "íikia")
+    assert "1EXCL" in iikia.find("FORM").get("notes")
+
+
+def test_saaroa_comparison_keeps_its_language():
+    root, s = sentence("SaaroaComparison", "P020_SAAROA", "Saaroa")
+    assert root.get(intro.XML_LANG) == "sxr" and root.get("dialect") == "Saaroa"
+    assert s.findtext("FORM") == "iɫakia"
+
+
+@pytest.mark.parametrize("key,ordinary,vocative", [
+    ("T2_03", "íikasu", "iimukásu"), ("T2_09", "íikamu", "iimukámu"),
+])
+def test_vocatives_remain_separate_from_ordinary_pronouns(key, ordinary, vocative):
+    for suffix, form in (("", ordinary), ("-opt", vocative)):
+        _, s = sentence("Tsuchida1976", key + suffix)
+        assert [(f.text, f.get("ver")) for f in s.findall("FORM")] == [(form, None)]
+        assert "Tsuchida (1975: 37)" in s.find("FORM").get("notes")
+        assert "vocative" in s.find("FORM").get("notes")
+        assert not s.findall("TRANSL")
+
+
+def test_title_and_footnote_supply_the_same_lexeme():
+    _, s = sentence("Asai2026", "TITLE_FN029")
+    assert s.findtext("FORM") == "ʔənnaŋ"
+    assert [(t.get(intro.XML_LANG), t.text) for t in s.findall("TRANSL")] == [
+        ("eng", "Fruit of the bird lime plant"), ("zho", "破布子")]
+
+
+def test_printed_analysis_keeps_infix_gap_and_source_gloss():
+    _, s = sentence("Asai2026", "P024_03")
+    assert s.find("TRANSL") is None
+    assert s.findtext("W/TRANSL") == "RED<AV>-tie"
+    assert [m.findtext("FORM") for m in s.findall("W/M")] == ["k-a", "-um-", "kili"]
+    with (WORKSPACE / "data/processed/xml_token_index.csv").open() as f:
+        indexed = {r["element_id"] for r in csv.DictReader(f)}
+    assert {x.get("id") for x in s.xpath(".//W | .//M")} <= indexed
+
+
+def test_templates_and_unresolved_phonetic_strings_are_not_sentences():
+    records = intro.load_records(CODE / "introduction_lexemes.json", WORKSPACE)
+    assert len(records) == 101
+    assert not any("STEM" in r["form"] or r["form"] in ("M-type", "kɔ:", "kɅɨnɨ") for r in records)
+    data = json.loads((CODE / "introduction_lexemes.json").read_text())
+    assert {r["kind"] for r in data["pending"]} == {"phonetic comparison"}
+    assert set(data["profile_review_required"]) == {"Szakos1999"}
+
+
+def test_phonemic_form_and_source_phonetics_remain_distinct():
+    _, s = sentence("PhonemicComparison", "P016_RAISED_A")
+    assert s.findtext("FORM") == "kaɨnɨ"
+    assert s.findtext("PHON[@kindOf='original']") == "kɅɨnɨ"
+    assert s.findtext("TRANSL") == "to eat"
+    assert not s.findall("W")
+
+
+@pytest.mark.parametrize("remove", [False, True])
+def test_source_audit_detects_changed_or_missing_source_phon(tmp_path, remove):
+    target = tmp_path / "XML"
+    shutil.copytree(WORKSPACE / "build/xml_drafts", target)
+    file = target / "Kanakanavu/ILCAA_KanakanavuTexts_intro_PhonemicComparison.xml"
+    tree = etree.parse(str(file))
+    attrs = dict(tree.getroot().attrib)
+    assert not intro.audit_xml(target, CODE / "introduction_lexemes.json", WORKSPACE, attrs)
+    phon = tree.find("S/PHON")
+    if remove:
+        phon.getparent().remove(phon)
+    else:
+        phon.text = "kaɨnɨ"  # Broad phonemic text loses the printed raised vowel.
+    tree.write(str(file), encoding="UTF-8", xml_declaration=True, pretty_print=True)
+    findings = intro.audit_xml(target, CODE / "introduction_lexemes.json", WORKSPACE, attrs)
+    assert len(findings) == 1 and "PhonemicComparison" in findings[0]
+
+
+def test_changed_source_page_requires_review(tmp_path):
+    target = tmp_path / "data/raw/text/pages"
+    shutil.copytree(WORKSPACE / "data/raw/text/pages", target)
+    with (target / "page_0016.txt").open("a") as f:
+        f.write("changed")
+    with pytest.raises(ValueError, match="Changed introduction source page: 16"):
+        intro.load_records(CODE / "introduction_lexemes.json", tmp_path)
