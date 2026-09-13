@@ -35,6 +35,8 @@ def load_records(path: Path, workspace: Path) -> list[dict]:
                 raise ValueError(f"Reading absent from source: {r['id']}: {value}")
         if r.get("word_gloss") and r["word_gloss"] not in page:
             raise ValueError(f"Analyzed gloss absent from source: {r['id']}")
+        if r.get("source_phon") and r["source_phon"] not in page:
+            raise ValueError(f"Phonetic transcription absent from source: {r['id']}")
         if "same_as" in r:
             target = by_id[r["same_as"]]
             if any(r[k] != target[k] for k in ("form", "variants", "translations", "profile", "language")):
@@ -60,6 +62,8 @@ def build_trees(records: list[dict], attributes: dict) -> dict[str, etree._Eleme
                 "source": f"Kanakanavu Texts (2026), supplementary examples; source transcription group {record['profile']}.",
             })
         sentence = append_sentence(trees[file], sid, f"PDF page {record['page']}; {record['id']}", record, record["notes"])
+        if record.get("source_phon"):
+            etree.SubElement(sentence, "PHON", kindOf="original").text = record["source_phon"]
         if record.get("word_gloss"):
             word = etree.SubElement(sentence, "W", id=sid + "W001")
             etree.SubElement(word, "FORM", kindOf="original").text = record["form"]
@@ -111,8 +115,12 @@ def audit_xml(folder: Path, data_path: Path, workspace: Path, attributes: dict) 
         actual = etree.parse(str(path), etree.XMLParser(remove_blank_text=True)).getroot()
         # Compare source structure only. Derived tiers, if present, belong to
         # shared tools and need their separate final-output review.
-        for elem in actual.xpath(".//PHON | .//FORM[@kindOf='standard']"):
+        for elem in actual.xpath(".//FORM[@kindOf='standard']"):
             elem.getparent().remove(elem)
+        source_phon_parents = {p.getparent().get("id") for p in expected.xpath(".//PHON[@kindOf='original']")}
+        for elem in actual.xpath(".//PHON"):
+            if elem.get("kindOf") != "original" or elem.getparent().get("id") not in source_phon_parents:
+                elem.getparent().remove(elem)
         if etree.tostring(actual, method="c14n") != etree.tostring(expected, method="c14n"):
             findings.append(f"Introduction source readings or metadata differ: {file}")
     return findings

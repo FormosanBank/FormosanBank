@@ -65,8 +65,25 @@ standard FORM and segmental PHON while preserving it in original FORM
 (POL-001/002/003). This is a phonemic rendering, without the dissertation's
 narrow vowel allophones. The source table, its 16 records and IDs remain
 unchanged. This scope does not approve the full historical transcription system.
-The Tsuchida 1969, Szakos 1999 and Basic Vocabulary 2007 groups still need
-their own reviewed routes.
+
+Table 1 and its explanation on physical page 16 explicitly identify Tsuchida's
+ɨ and Basic Vocabulary's ʉ as the high central vowel. Ortho113 writes ʉ for
+IPA ɨ. The separate Table1 profile therefore routes these two columns with
+ɨ -> ʉ, ng -> /ŋ/, apostrophe -> /ʔ/, and the reviewed l -> r mapping.
+Its c-before-i source rule follows the same page's phonology description.
+Keep doubled vowels, diphthongs and echo-vowel variants as printed; do not
+modernize historical words or apply the narrative ə -> e rule to ɨ.
+Stress remains in original FORM and is removed by the canonical derived-tier
+tools. Szakos y is also identified as ɨ, but cöön still lacks a supported
+sound mapping for ö; its group remains blocked (POL-001/002/003/056).
+
+The same page directly gives phonemic /kaɨnɨ/, phonetic [kɅɨnɨ] and 'to eat'.
+Keep original FORM kaɨnɨ and the literal source PHON kɅɨnɨ in their own
+PhonemicComparison file. Preserve the printed uppercase turned-v codepoint.
+The shared --preserve-existing-original flag keeps that authoritative source
+transcription; standard FORM/PHON still follow the Table1 conversion and
+Ortho113. This does not infer narrow allophones for other forms, W/M analysis
+or a dialect. The source audit checks the retained PHON as source evidence.
 
 ## Representation and coverage review
 
@@ -129,8 +146,8 @@ not emitted as its rejected field-note reading. Note 29 identifies the title
 ʔənnaŋ on physical page 146; the introduction ledger now admits the title's
 English reading and the note's Chinese meaning together.
 
-The [introduction ledger](introduction_lexemes.json) admits 100 S from 101
-page-anchored entries, with six files separated by transcription group.
+The [introduction ledger](introduction_lexemes.json) admits 101 S from 102
+page-anchored entries, with seven files separated by transcription group.
 Table 1's Tsuchida 1969, Szakos 1999 and Basic Vocabulary 2007 columns stay
 separate. The printed Tsuchida cells ta’ɨ́lɨmɨ and ranɨ́ngɨ correct the PDF text
 layer's v́ to ɨ́ in those two cells only (physical page 16, POL-001).
@@ -154,8 +171,9 @@ classification without changing source spellings, IDs or translations.
 On physical page 24, mu-caanə/AV-go, um-avici/AV-bring and
 k<um>a-kili/RED<AV>-tie supply three W and seven M, including the k-a gap root
 and -um- infix. No free S translation is supplied or invented (POL-014/023/036).
-The two phonetic representations on pages 15–16 stay explicit decisions.
-Three historical profiles require separate conversion review. The full build
+The village-labelled [kau]/[kɔ:]/[kaa] comparison on page 15 remains unresolved;
+the source supplies no separate orthographic forms for it. The Szakos group
+still requires its source sound mapping for ö. The full build
 rejects unsupported profile routing before touching final XML. Retained final
 XML and provenance remain unchanged.
 

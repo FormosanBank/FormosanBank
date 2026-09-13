@@ -90,11 +90,37 @@ def test_printed_analysis_keeps_infix_gap_and_source_gloss():
 
 def test_templates_and_unresolved_phonetic_strings_are_not_sentences():
     records = intro.load_records(CODE / "introduction_lexemes.json", WORKSPACE)
-    assert len(records) == 100
+    assert len(records) == 101
     assert not any("STEM" in r["form"] or r["form"] in ("M-type", "kɔ:", "kɅɨnɨ") for r in records)
     data = json.loads((CODE / "introduction_lexemes.json").read_text())
-    assert {r["kind"] for r in data["pending"]} == {"phonetic comparison", "phonemic/phonetic pair"}
-    assert set(data["profile_review_required"]) == {"Tsuchida1969", "Szakos1999", "BasicVocabulary2007"}
+    assert {r["kind"] for r in data["pending"]} == {"phonetic comparison"}
+    assert set(data["profile_review_required"]) == {"Szakos1999"}
+
+
+def test_phonemic_form_and_source_phonetics_remain_distinct():
+    _, s = sentence("PhonemicComparison", "P016_RAISED_A")
+    assert s.findtext("FORM") == "kaɨnɨ"
+    assert s.findtext("PHON[@kindOf='original']") == "kɅɨnɨ"
+    assert s.findtext("TRANSL") == "to eat"
+    assert not s.findall("W")
+
+
+@pytest.mark.parametrize("remove", [False, True])
+def test_source_audit_detects_changed_or_missing_source_phon(tmp_path, remove):
+    target = tmp_path / "XML"
+    shutil.copytree(WORKSPACE / "build/xml_drafts", target)
+    file = target / "Kanakanavu/ILCAA_KanakanavuTexts_intro_PhonemicComparison.xml"
+    tree = etree.parse(str(file))
+    attrs = dict(tree.getroot().attrib)
+    assert not intro.audit_xml(target, CODE / "introduction_lexemes.json", WORKSPACE, attrs)
+    phon = tree.find("S/PHON")
+    if remove:
+        phon.getparent().remove(phon)
+    else:
+        phon.text = "kaɨnɨ"  # Broad phonemic text loses the printed raised vowel.
+    tree.write(str(file), encoding="UTF-8", xml_declaration=True, pretty_print=True)
+    findings = intro.audit_xml(target, CODE / "introduction_lexemes.json", WORKSPACE, attrs)
+    assert len(findings) == 1 and "PhonemicComparison" in findings[0]
 
 
 def test_changed_source_page_requires_review(tmp_path):

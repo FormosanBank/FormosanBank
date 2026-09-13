@@ -20,13 +20,14 @@ The parser accounts for 44 narratives and 40 numbered introduction examples
 constructions, eight use W/M FORM variants and 16 retain separate S readings,
 producing 1,447 numbered-example S records. Another source file contains 57
 lexical records from 49 explanatory footnotes. Introduction tables/prose and
-the title linked to footnote 29 add 100 S, for 1,604 source-stage S records.
+the title linked to footnote 29 add 101 S, for 1,605 source-stage S records.
 The 45 retained final XML files still have 1,455 S and await regeneration.
 The [footnote ledger](CodeAndDocs/footnote_lexemes.jsonl) accounts for all 87
 notes. The [introduction ledger](CodeAndDocs/introduction_lexemes.json) keeps
 historical transcription columns and the Saaroa comparison in separate files.
-It records bound morphology/templates as context and unresolved phonetic
-representations explicitly. Tsuchida's source distinguishes the two vocatives
+It records bound morphology/templates as context and the unresolved village
+phonetics explicitly. The printed /kaɨnɨ/ and [kɅɨnɨ] pair keeps its source
+FORM and source-supplied PHON separately. Tsuchida's source distinguishes the two vocatives
 from ordinary pronouns; all four forms keep separate records. These counts are
 not a whole-book coverage verdict.
 The source parser repairs a misplaced interjection gloss in Naparamaci example
@@ -52,16 +53,18 @@ PYTHON=python3 CodeAndDocs/generate_xml.sh /path/to/current/FormosanBank
 The build stages source extraction, shared cleaning, standardization and PHON,
 then installs successful output. It performs no QC or source refresh. Narrative
 deduplication is not a build step. Generation stops before changing XML until
-the three remaining historical profiles have reviewed conversion routes.
+the remaining Szakos group has a supported conversion route for ö.
 
 The [provenance record](CodeAndDocs/provenance.json) describes the retained
 historical XML. It does not select or pin tools for a new build. The previous
 private phonology override and count-based QC acceptance wrapper are retired.
-The entry point passes the committed narrative and Saaroa comparison tables
+The entry point passes the committed narrative, Table 1 and Saaroa tables
 under `CodeAndDocs/scripts/orthographies/` directly to the shared tools, with
-separate language routing. Table 2's 16 historical pronouns use the reviewed
-subset of the existing Kanakanavu route. These tables need no installation in
-FormosanBank.
+separate file/language routing. Table 1's Tsuchida 1969 and 2007 vocabulary
+columns map source ɨ/ʉ to standard ʉ, preserving their historical forms.
+Table 2's 16 pronouns use the narrative route's reviewed subset. Shared PHON
+preserves the one explicit source transcription and derives all other PHON.
+These tables need no installation in FormosanBank.
 
 For source investigation without producing final derived tiers:
 
@@ -105,13 +108,14 @@ None supplied with this source.
   two parenthetical classifications still need resolution under POL-028.
   Clause grouping stays at S; shared cleaning normalizes its brackets to
   parentheses and PHON omits them. These clauses are not optional material.
-- Introduction lexical material has six transcription groups, including Saaroa.
-  Three historical groups need reviewed routes. Table 2's 16 pronouns have a
+- Introduction lexical material has seven transcription groups, including Saaroa
+  and the explicit phonemic/phonetic pair. Szakos ö still needs a supported sound
+  mapping. Table 2's 16 pronouns have a
   verified segmental route; their stress marks remain in original FORM.
   The Saaroa comparison has a
   source-backed `ɫ` -> `hl` conversion and the corrected Saaroa code `sxr`,
   separate from the narrative profile.
-  Two phonetic representations remain open in the ledger.
+  The village-labelled phonetic comparison remains open in the ledger.
   Supplemental records preserve printed readings; only three analyzed prose
   examples supply W/M tiers. They remain source-stage output pending the full build.
 - The earlier ten-page expert review and historical samples cover those records
