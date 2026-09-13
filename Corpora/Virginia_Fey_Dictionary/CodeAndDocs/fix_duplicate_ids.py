@@ -25,12 +25,13 @@ snapshot is fixed ONLY by running this script against it — never by hand:
 
     python fix_duplicate_ids.py --path CodeAndDocs/pre_correction_snapshot
 
-The published pipeline (``make_xml.sh``) also runs it over ``XML/`` as its
+The published pipeline (``generate_xml.sh``) also runs it over ``XML/`` as its
 first step; because the snapshot the pipeline restores from already carries
 the fix, that run is an idempotent no-op guard. The edit is textual and
 touches only the ``id`` attribute of the duplicated ``<S>`` opening tags —
 no reserialization, so every other byte of the file is untouched.
 """
+
 import argparse
 import os
 import re
@@ -91,7 +92,7 @@ def fix_file(path):
         for m in pattern.finditer(text):
             seen += 1
             if seen == occurrence:
-                out.append(text[last:m.start()])
+                out.append(text[last : m.start()])
                 out.append(m.group(1) + new_id + m.group(2))
                 last = m.end()
                 replaced = True
