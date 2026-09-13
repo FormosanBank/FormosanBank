@@ -127,55 +127,58 @@ def item_recordings(meta):
         if str(part.get("@id", "")).lower().endswith(".wav")
     )
 
-metadata = load_metadata()
+def main():
+    """Write one XML file per recording. Import-safe: nothing runs on import."""
+    metadata = load_metadata()
+    XML_DIR.mkdir(parents=True, exist_ok=True)
 
-# ── Create output directory if needed ─────────────────────────────────────────
-XML_DIR.mkdir(parents=True, exist_ok=True)
+    # ── Discover the recordings from the committed metadata ───────────────────────
+    recordings = sorted(
+        (wav_name, prefix)
+        for prefix, meta in metadata.items()
+        for wav_name in item_recordings(meta)
+    )
 
-# ── Discover the recordings from the committed metadata ───────────────────────
-recordings = sorted(
-    (wav_name, prefix)
-    for prefix, meta in metadata.items()
-    for wav_name in item_recordings(meta)
-)
+    if not recordings:
+        raise SystemExit("No recordings enumerated in Metadata/")
 
-if not recordings:
-    raise SystemExit("No recordings enumerated in Metadata/")
+    expected = {Path(wav_name).with_suffix(".xml").name for wav_name, _ in recordings}
+    stale = {path.name for path in XML_DIR.glob("*.xml")} - expected
+    if stale:
+        raise SystemExit(f"XML/Truku/ holds files the metadata does not list: {sorted(stale)}")
 
-expected = {Path(wav_name).with_suffix(".xml").name for wav_name, _ in recordings}
-stale = {path.name for path in XML_DIR.glob("*.xml")} - expected
-if stale:
-    raise SystemExit(f"XML/Truku/ holds files the metadata does not list: {sorted(stale)}")
+    for wav_name, prefix in recordings:
+        stem     = Path(wav_name).stem                  # e.g. AIT1-001-1
+        xml_path = XML_DIR / f"{stem}.xml"
+        meta     = metadata[prefix]
 
-for wav_name, prefix in recordings:
-    stem     = Path(wav_name).stem                  # e.g. AIT1-001-1
-    xml_path = XML_DIR / f"{stem}.xml"
-    meta     = metadata[prefix]
+        # Build the XML tree
+        text_elem = ET.Element("TEXT", attrib={
+            "id":             stem,
+            "xml:lang":       "trv",
+            "dialect":        "Truku",
+            "audio":          wav_name,
+            "source":         meta["@id"],
+            "copyright":      COPYRIGHT,
+            "citation":       format_citation(meta["creditText"]),
+            "BibTeX_citation": format_bibtex(meta["creditText"]),
+        })
+        text_elem.text = "\n    "                       # indent before AUDIO
 
-    # Build the XML tree
-    text_elem = ET.Element("TEXT", attrib={
-        "id":             stem,
-        "xml:lang":       "trv",
-        "dialect":        "Truku",
-        "audio":          wav_name,
-        "source":         meta["@id"],
-        "copyright":      COPYRIGHT,
-        "citation":       format_citation(meta["creditText"]),
-        "BibTeX_citation": format_bibtex(meta["creditText"]),
-    })
-    text_elem.text = "\n    "                       # indent before AUDIO
+        audio_elem = ET.SubElement(text_elem, "AUDIO", file=wav_name)
+        audio_elem.tail = "\n"                          # newline after AUDIO
 
-    audio_elem = ET.SubElement(text_elem, "AUDIO", file=wav_name)
-    audio_elem.tail = "\n"                          # newline after AUDIO
+        tree = ET.ElementTree(text_elem)
+        ET.indent(tree, space="    ")                   # pretty-print (Python ≥ 3.9)
 
-    tree = ET.ElementTree(text_elem)
-    ET.indent(tree, space="    ")                   # pretty-print (Python ≥ 3.9)
+        with open(xml_path, "w", encoding="utf-8") as fh:
+            fh.write("<?xml version='1.0' encoding='UTF-8'?>\n")
+            tree.write(fh, encoding="unicode", xml_declaration=False)
+            fh.write("\n")
 
-    with open(xml_path, "w", encoding="utf-8") as fh:
-        fh.write("<?xml version='1.0' encoding='UTF-8'?>\n")
-        tree.write(fh, encoding="unicode", xml_declaration=False)
-        fh.write("\n")
+        print(f"  wrote {xml_path.relative_to(CORPUS_ROOT)}")
 
-    print(f"  wrote {xml_path.relative_to(CORPUS_ROOT)}")
+    print(f"\nDone — {len(recordings)} XML file(s) written to XML/Truku/")
 
-print(f"\nDone — {len(recordings)} XML file(s) written to XML/Truku/")
+if __name__ == "__main__":
+    main()
