@@ -1,0 +1,208 @@
+from collections import Counter
+import unittest
+
+from ilrdf_source import (
+    extract_sentences,
+    is_published,
+    normalize_source_text,
+    normalize_source_form,
+    repair_question_token,
+    sentence_id,
+)
+
+
+class SourceExtractionTests(unittest.TestCase):
+    def test_source_normalization_is_nfc_and_layout_whitespace_only(self):
+        self.assertEqual(
+            normalize_source_text("  e\u0301\u00a0x  \nnext\t \n  "),
+            "é\u00a0x\nnext",
+        )
+
+    def test_form_normalization_applies_current_spacing_and_quote_rules(self):
+        self.assertEqual(
+            normalize_source_form("  “a\u00a0  b”  "),
+            '"a b"',
+        )
+
+    def test_publication_filter_matches_live_dictionary_flag(self):
+        self.assertTrue(is_published({"frequency": 1, "sources": []}))
+        self.assertTrue(is_published({"frequency": 0, "sources": ["線上辭典"]}))
+        self.assertFalse(is_published({"frequency": 0, "sources": []}))
+
+    def test_question_repair_requires_an_attested_clean_word(self):
+        vocabulary = Counter({"cʉnʉ": 3})
+        self.assertEqual(repair_question_token("c?nʉ.", vocabulary), ("cʉnʉ.", True))
+        self.assertEqual(repair_question_token("x?y.", vocabulary), ("x?y.", False))
+        self.assertEqual(repair_question_token("what?", vocabulary), ("what?", False))
+
+    def test_duplicates_merge_translations_and_audio(self):
+        audio_a = "https://example.test/Data/api/Storage/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/download"
+        audio_b = "https://example.test/Data/api/Storage/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/download"
+        sentence_a = {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "originalSentence": "Form.",
+            "chineseSentence": "翻譯一。",
+            "audioItems": [{"audioUrl": audio_a}],
+        }
+        sentence_b = {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "originalSentence": "Form.",
+            "chineseSentence": "翻譯二。",
+            "audioItems": [{"audioUrl": audio_b}],
+        }
+        snapshot = {
+            "responses": [
+                {
+                    "query": "a",
+                    "words": [
+                        {
+                            "frequency": 1,
+                            "sources": [],
+                            "explanationItems": [{"sentenceItems": [sentence_a, sentence_b]}],
+                        }
+                    ],
+                },
+                {
+                    "query": "b",
+                    "words": [
+                        {
+                            "frequency": 0,
+                            "sources": ["線上辭典"],
+                            "explanationItems": [{"sentenceItems": [sentence_a]}],
+                        }
+                    ],
+                },
+            ]
+        }
+        sentences, stats = extract_sentences(
+            "Amis",
+            snapshot,
+            {"bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"},
+            {},
+            set(),
+        )
+        self.assertEqual(len(sentences), 1)
+        self.assertEqual(
+            sentences[0].translations,
+            [("zho", "翻譯一。"), ("zho", "翻譯二。")],
+        )
+        self.assertEqual(sentences[0].audio_urls, [audio_a])
+        self.assertEqual(
+            sentences[0].source_ids,
+            {"11111111-1111-4111-8111-111111111111",
+             "22222222-2222-4222-8222-222222222222"},
+        )
+        # The merged record's id is the lowest GUID in the group.
+        self.assertEqual(
+            sentences[0].identifier,
+            "Amis_11111111-1111-4111-8111-111111111111",
+        )
+        self.assertEqual(stats.excluded_audio, 1)
+
+    def test_documented_bad_translation_is_excluded_without_losing_source(self):
+        snapshot = {
+            "responses": [
+                {
+                    "query": "x",
+                    "words": [
+                        {
+                            "frequency": 1,
+                            "explanationItems": [
+                                {
+                                    "sentenceItems": [
+                                        {
+                                            "id": "33333333-3333-4333-8333-333333333333",
+                                            "originalSentence": "Source.",
+                                            "chineseSentence": "10",
+                                            "audioItems": [
+                                                {"audioUrl": "https://example.test/a.mp3"}
+                                            ],
+                                        }
+                                    ]
+                                }
+                            ],
+                        }
+                    ],
+                }
+            ]
+        }
+        exclusion = {("Amis", "Source.", "10")}
+        used: set[tuple[str, str, str]] = set()
+        sentences, stats = extract_sentences(
+            "Amis", snapshot, set(), {}, set(), exclusion, used
+        )
+        self.assertEqual(sentences[0].translations, [])
+        self.assertEqual(sentences[0].audio_urls, ["https://example.test/a.mp3"])
+        self.assertEqual(used, exclusion)
+        self.assertEqual(stats.excluded_translation, 1)
+
+    def test_punctuation_only_source_is_not_a_sentence(self):
+        snapshot = {
+            "responses": [
+                {
+                    "query": "x",
+                    "words": [
+                        {
+                            "frequency": 1,
+                            "explanationItems": [
+                                {
+                                    "sentenceItems": [
+                                        {
+                                            "originalSentence": ".",
+                                            "chineseSentence": "句號",
+                                        }
+                                    ]
+                                }
+                            ],
+                        }
+                    ],
+                }
+            ]
+        }
+        sentences, stats = extract_sentences("Amis", snapshot, set(), {}, set())
+        self.assertEqual(sentences, [])
+        self.assertEqual(stats.skipped_source, 1)
+
+    def test_sentence_id_carries_the_source_guid(self):
+        """Ids come from the source GUID, never from the sentence text.
+
+        A text-derived id retires itself on every correction, which is
+        backwards for a corpus whose purpose is progressive source-fidelity
+        correction, and it orphans manual_edits.xml records. See
+        docs/id_scheme.md.
+        """
+        self.assertEqual(sentence_id("Amis", "11111111-1111-4111-8111-111111111111"), "Amis_11111111-1111-4111-8111-111111111111")
+        self.assertEqual(
+            sentence_id("Amis", "11111111-1111-4111-8111-111111111111"), sentence_id("Amis", "11111111-1111-4111-8111-111111111111"))
+        self.assertNotEqual(
+            sentence_id("Amis", "11111111-1111-4111-8111-111111111111"), sentence_id("Amis", "22222222-2222-4222-8222-222222222222"))
+        with self.assertRaises(ValueError):
+            sentence_id("Amis", "A.")
+
+
+class RightsTests(unittest.TestCase):
+    def test_root_declares_cc_by_nc(self):
+        """FormosanBank publishes this corpus under CC BY-NC; the source's own
+        terms allow research and teaching use, and RIGHTS.md records them."""
+        from ilrdf_source import root_attributes
+        self.assertEqual(root_attributes("Amis", "2026-08-21")["copyright"],
+                         "CC BY-NC 4.0")
+
+
+class StandardTierOwnershipTests(unittest.TestCase):
+    """The standard tier belongs to standardize.py and the canonical
+    Orthographies/ConversionTables/ -- never to a corpus-local table."""
+
+    def test_no_corpus_local_standardization_table(self):
+        from pathlib import Path
+        base = Path(__file__).resolve().parents[1]
+        stray = base / "source_data" / "standardization.tsv"
+        self.assertFalse(
+            stray.exists(),
+            "standard-tier construction belongs to standardize.py; a "
+            "corpus-local table hides orthographic decisions from review",
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()
