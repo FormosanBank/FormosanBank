@@ -1,0 +1,12 @@
+_sources
+__pycache__/
+.DS_Store
+qc-output/
+qc-logs/
+logs/
+data/formosanbank_audit/cleaner_warnings.csv
+data/formosanbank_audit/coverage_audit.json
+data/formosanbank_audit/manifest.json
+data/formosanbank_audit/qc_findings_review.json
+data/formosanbank_audit/validate_*_findings.csv
+data/formosanbank_audit/issue_1_summary.md
