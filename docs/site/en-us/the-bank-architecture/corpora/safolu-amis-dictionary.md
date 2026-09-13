@@ -30,7 +30,7 @@ This candidate remains under review. The statistics below describe the retained 
 - The Safolu PHON profile and conversion table remain unmerged shared inputs.
   Current conversion checking reports an unresolved `u → o` mapping and `d`/`o`
   routing questions. Preserve the source's distinct vowel spellings and mixed
-  `g`/`ng`; see [orthography evidence](https://github.com/FormosanBank/FormosanBank/blob/1da4a90f307630cec81fb7fe5d0cbdd70bef32cc/Corpora/Safolu-Amis-Dictionary/docs/orthography_evidence.md).
+  `g`/`ng`; see [orthography evidence](https://github.com/FormosanBank/FormosanBank/blob/b77b8f57fd664a31fec812cfcc2904631930ae5d/Corpora/Safolu-Amis-Dictionary/docs/orthography_evidence.md).
 - Forty-two original-FORM parenthesis/slash cases still need source-specific
   interpretation. The revised parser resolves only directly supported cases,
   including the explicit pronunciation examples in the `e` and `i` entries.
@@ -46,7 +46,7 @@ lists the remaining decisions. A successful build or XML check does not settle t
 
 ## Access Details
 
-The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/1da4a90f307630cec81fb7fe5d0cbdd70bef32cc/Corpora/Safolu-Amis-Dictionary/)
+The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/b77b8f57fd664a31fec812cfcc2904631930ae5d/Corpora/Safolu-Amis-Dictionary/)
 match the reviewed private development commit. This proposal has not been merged.
 
 ## Corpus Processing
@@ -54,9 +54,9 @@ match the reviewed private development commit. This proposal has not been merged
 The revised parser reads a committed public snapshot of 49,419 source fields, applies exact field corrections and stages 49,455 source records before shared deduplication. The complete build currently stops because the shared Safolu profile and conversion are unavailable. Its new source repairs are not yet in final XML. The retained provenance describes the old final build, not a new successful regeneration.
 
 Run `bash Corpora/Safolu-Amis-Dictionary/CodeAndDocs/generate_xml.sh` in the candidate
-FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/1da4a90f307630cec81fb7fe5d0cbdd70bef32cc/Corpora/Safolu-Amis-Dictionary/README.md) documents dependencies,
+FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/b77b8f57fd664a31fec812cfcc2904631930ae5d/Corpora/Safolu-Amis-Dictionary/README.md) documents dependencies,
 source coverage and any scoped pipeline deviations. The
-[build provenance](https://github.com/FormosanBank/FormosanBank/blob/1da4a90f307630cec81fb7fe5d0cbdd70bef32cc/Corpora/Safolu-Amis-Dictionary/CodeAndDocs/provenance.json) records the actual
+[build provenance](https://github.com/FormosanBank/FormosanBank/blob/b77b8f57fd664a31fec812cfcc2904631930ae5d/Corpora/Safolu-Amis-Dictionary/CodeAndDocs/provenance.json) records the actual
 tools used for the retained output; it does not select or pin tools for later builds.
 
 ## Copyright
@@ -69,10 +69,14 @@ CC BY-NC according to the frozen amis-safolu README; current data source is g0v/
 
 **Rights source:** Safolu Kacaw Lalanges, date unconfirmed; evidence: ask maintainer.
 
-The frozen upstream README says the author allowed g0v Amis Moedict to use the
-dictionary under CC BY-NC, without a verified version/date. This does not justify
-choosing a vocabulary value by assumption. The XML and companion GitBook rights
-claim need an explicit maintainer review before publication (POL-042 through POL-045).
+The frozen upstream README says CC BY-NC without a version. The
+[publisher README](https://github.com/g0v/amis-moedict-new/blob/20d9718b362e046c8a79454d3710efa4fe404afe/README.md#license-授權)
+identifies Tsai Chung-Han's dictionary as CC BY-NC-SA 3.0 TW and links his
+[signed licence deed](https://drive.google.com/file/d/1IQykXGWtaWAL0pH0xlE0pi5My0Onlji2/view),
+which names that licence. Its printed footer says 2015/4/9; this does not establish
+the signature or grant date. CC BY-NC-SA 3.0 TW is absent from the current rights
+vocabulary. The final XML licence and grant date still need maintainer review
+before publication (POL-042 through POL-045).
 
 ## Citation
 
