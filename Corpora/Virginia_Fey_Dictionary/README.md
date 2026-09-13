@@ -78,10 +78,12 @@ any `CodeAndDocs/quote_corrections.csv` is durable correction evidence.
 
 **Rights source:** Taiwan Bible Society, grant date not recorded; evidence: ask maintainer.
 
-The pinned upstream README and licence state this licence and acknowledge the
-Taiwan Bible Society's permission to digitize the dictionary. The exact grant
-date still needs confirmation. Published XML previously said CC BY-SA, so the
-change requires explicit maintainer rights review before publication.
+The pinned upstream README and licence state CC BY-NC 3.0. The publisher links
+[Taiwan Bible Society correspondence dated 2008-10-07](https://drive.google.com/file/d/1s2_xzc_ZFbInk9wGXfVeUmvktJDZI5cb/view)
+welcoming digitization, but that message does not specify a Creative Commons
+licence or its grant date. CC BY-NC 3.0 is absent from the current rights
+vocabulary, and published XML previously said CC BY-SA. The representation,
+licence change and grant date still require maintainer review before publication.
 
 The corpus is also subject to the central FormosanBank
 [licence](https://github.com/FormosanBank/FormosanBank/blob/main/LICENSE.md) and
@@ -99,8 +101,9 @@ No audio is supplied.
 - S3846 retains the source spelling `Ga'ayto`; the derived standard is
   `Nga'ayto`. Both PHON tiers use /ŋ/, following the printed guide (page 20).
   This narrow mapping does not recover phonemic contrasts absent from the source.
-- The proposed `kalatolo` / `kalitolo` reading still needs classification as
-  competing words or pronunciation variants.
+- [Printed page 345](https://drive.google.com/file/d/1eNMbHjQfC-ZR77ha17S_441hx9ZcsDhm/view)
+  confirms `O kalatolo / kalitolo konini.` The page does not classify the pair
+  as competing words or pronunciation variants; that decision remains open.
 - Li, Joby and Zeitoun (2024) note that Fey misses some phonemic contrasts,
   including glottal versus pharyngealized stops. Wu Ming-yi modernized the
   digital spelling, but this does not establish that the distinction was

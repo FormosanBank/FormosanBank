@@ -259,6 +259,7 @@
       "source_form": "O kalatolo / kalitolo konini.",
       "sheet_defect": "The maintenance sheet loses part of the source example; restored from the pinned text witness.",
       "evidence": "source/upstream/t.txt:4253",
+      "printed_evidence": "Fey (1986), page 345: https://drive.google.com/file/d/1eNMbHjQfC-ZR77ha17S_441hx9ZcsDhm/view confirms both forms and the slash, without classifying the pair.",
       "variants": [{"id": "S6717", "form": "O kalatolo konini."}, {"id": "S6717-opt", "form": "O kalitolo konini."}]
     }
   ],
@@ -326,7 +327,7 @@
     "scope": "The guide identifies g as the ng sound. Preserve original G in S3846; convert g/G to ng/Ng only in standard FORM and map both spellings to /ŋ/ in PHON. Guard existing ng digraphs. Other source-profile values retain the prior Ortho113 Xiuguluan mappings and their uncertainty; this is not a phonetic transcription or recovery of missing source contrasts."
   },
   "pending_source_review": [
-    "Confirm whether the new kalatolo/kalitolo reading is a competing lexeme or a pronunciation variant before publication."
+    "Confirm whether kalatolo/kalitolo represents competing lexemes or pronunciation variants before publication. Printed page 345 confirms both forms, but does not settle this classification."
   ],
   "source_field_evidence_note": "The 2015 upstream stemmer loses prefixes in deduplication(); its 2016 fix is 23b6efd42fe3e73c0d3cd249c14587ca6349af9f. Replaying the old converter reproduces 512 of 519 sheet losses, including all 145 raw/Word disagreement rows. source_field_repairs.tsv retains exact source excerpts and file:line locators at the pinned upstream commit. Lowercase g to ng matches that digital edition's moedict.py; this is never run on the XML. Full raw and corrected Word witnesses were compared separately before recording these repairs."
 }
