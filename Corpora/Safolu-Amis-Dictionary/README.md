@@ -72,10 +72,14 @@ have been retired.
 
 **Rights source:** Safolu Kacaw Lalanges, date unconfirmed; evidence: ask maintainer.
 
-The frozen upstream README says the author allowed g0v Amis Moedict to use the
-dictionary under CC BY-NC, without a verified version/date. This does not justify
-choosing a vocabulary value by assumption. The XML and companion GitBook rights
-claim need an explicit maintainer review before publication (POL-042 through POL-045).
+The frozen upstream README says CC BY-NC without a version. The
+[publisher README](https://github.com/g0v/amis-moedict-new/blob/20d9718b362e046c8a79454d3710efa4fe404afe/README.md#license-授權)
+identifies Tsai Chung-Han's dictionary as CC BY-NC-SA 3.0 TW and links his
+[signed licence deed](https://drive.google.com/file/d/1IQykXGWtaWAL0pH0xlE0pi5My0Onlji2/view),
+which names that licence. Its printed footer says 2015/4/9; this does not establish
+the signature or grant date. CC BY-NC-SA 3.0 TW is absent from the current rights
+vocabulary. The final XML licence and grant date still need maintainer review
+before publication (POL-042 through POL-045).
 
 ## Audio
 
