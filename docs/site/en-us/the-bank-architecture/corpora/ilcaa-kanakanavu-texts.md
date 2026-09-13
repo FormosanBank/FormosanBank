@@ -35,13 +35,14 @@ This candidate remains under review. The statistics below describe the retained 
   two parenthetical classifications still need resolution under POL-028.
   Clause grouping stays at S; shared cleaning normalizes its brackets to
   parentheses and PHON omits them. These clauses are not optional material.
-- Introduction lexical material has six transcription groups, including Saaroa.
-  Three historical groups need reviewed routes. Table 2's 16 pronouns have a
+- Introduction lexical material has seven transcription groups, including Saaroa
+  and the explicit phonemic/phonetic pair. Szakos ö still needs a supported sound
+  mapping. Table 2's 16 pronouns have a
   verified segmental route; their stress marks remain in original FORM.
   The Saaroa comparison has a
   source-backed `ɫ` -> `hl` conversion and the corrected Saaroa code `sxr`,
   separate from the narrative profile.
-  Two phonetic representations remain open in the ledger.
+  The village-labelled phonetic comparison remains open in the ledger.
   Supplemental records preserve printed readings; only three analyzed prose
   examples supply W/M tiers. They remain source-stage output pending the full build.
 - The earlier ten-page expert review and historical samples cover those records
@@ -52,17 +53,17 @@ lists the remaining decisions. A successful build or XML check does not settle t
 
 ## Access Details
 
-The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/276f3b9cec00573b9c48da890d379844f1c1e0e7/Corpora/ILCAA-Kanakanavu-Texts/)
+The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/c8362f07b3de5cbb0dade0c6a93bde3859a21f80/Corpora/ILCAA-Kanakanavu-Texts/)
 match the reviewed private development commit. This proposal has not been merged.
 
 ## Corpus Processing
 
-The revised parser reads the committed CC BY 4.0 PDF and source decisions. It emits 1,447 numbered-example S, 57 footnote S and 100 introduction/title S, totalling 1,604 source records. Historical columns stay separate; three analyzed prose examples supply W/M tiers. Repairs preserve source corrections and narrative repetition while fixing gloss alignment, stacked infixes, four pseudo-clefts and the Saaroa language code. Eight pronunciation pairs use W/M FORM variants. Table 2’s 16 pronouns use the reviewed subset of the existing Kanakanavu route, and Saaroa has a separate conversion. Shared tools derive original PHON from the source profile and standard PHON from Ortho113 (POL-003). Two notation cases, two phonetic representations and three historical conversion routes remain unresolved. These repairs have not reached retained final XML. Provenance identifies its actual earlier build.
+The parser reads the committed CC BY 4.0 PDF and source decisions. It emits 1,447 numbered-example S, 57 footnote S and 101 introduction/title S, totalling 1,605 source records. Historical columns stay separate. Repairs preserve prior corrections and narrative repetition while fixing gloss alignment, infixes, pseudo-clefts and reading variants. Table 1's Tsuchida 1969 and 2007 vocabulary columns use a separate source route; Table 2's 16 pronouns use the reviewed narrative-profile subset. Saaroa has its own conversion. The explicit /kaɨnɨ/[kɅɨnɨ] pair preserves source FORM and PHON separately. Shared tools derive other original PHON from source profiles and standard PHON from Ortho113 (POL-003). Szakos ö, one village phonetic comparison and two narrative classifications remain unresolved. These repairs have not reached retained final XML; provenance identifies its actual earlier build.
 
 Run `bash Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/generate_xml.sh` in the candidate
-FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/276f3b9cec00573b9c48da890d379844f1c1e0e7/Corpora/ILCAA-Kanakanavu-Texts/README.md) documents dependencies,
+FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/c8362f07b3de5cbb0dade0c6a93bde3859a21f80/Corpora/ILCAA-Kanakanavu-Texts/README.md) documents dependencies,
 source coverage and any scoped pipeline deviations. The
-[build provenance](https://github.com/FormosanBank/FormosanBank/blob/276f3b9cec00573b9c48da890d379844f1c1e0e7/Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/provenance.json) records the actual
+[build provenance](https://github.com/FormosanBank/FormosanBank/blob/c8362f07b3de5cbb0dade0c6a93bde3859a21f80/Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/provenance.json) records the actual
 tools used for the retained output; it does not select or pin tools for later builds.
 
 ## Copyright
