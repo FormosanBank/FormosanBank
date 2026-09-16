@@ -4,6 +4,7 @@ import os
 import shutil
 import subprocess
 import tempfile
+import wave
 import xml.etree.ElementTree as ET
 import urllib.request
 from urllib.parse import unquote, urlparse, urlunparse, quote
@@ -155,6 +156,15 @@ def convert_audio_to_wav(audio_path, destination_dir):
         return None
 
 
+def _is_pcm_wav(audio_path):
+    """allosaurus reads wav via Python's wave module, which only supports PCM (format 1)."""
+    try:
+        with wave.open(audio_path, "rb") as wav_file:
+            return wav_file.getcomptype() == "NONE"
+    except (wave.Error, EOFError, OSError):
+        return False
+
+
 def get_corpus_dir_from_xml_path(xml_path):
     parts = os.path.normpath(xml_path).split(os.sep)
     parts_lower = [part.lower() for part in parts]
@@ -288,14 +298,9 @@ def process_xml_file(xml_path, run_temp_dir):
         if audio_elem is None:
             print(f"Warning: no AUDIO element found for sentence in {xml_path} for id {s.attrib.get('id', 'unknown')}")
             continue
-        audio_filename = audio_elem.get("file") or (audio_elem.text or "").strip()
-        if audio_filename in audio_path_cache:
-            audio_file = audio_path_cache[audio_filename]
-        else:
-            audio_file = resolve_local_audio_path(xml_path, audio_filename, language_name, dialect)
-            audio_path_cache[audio_filename] = audio_file
         audio_url = audio_elem.get("url")
-        if audio_file is None and audio_url:
+        audio_filename = audio_elem.get("file") or (audio_elem.text or "").strip()
+        if audio_url:
             if audio_url in downloaded_url_cache:
                 audio_file = downloaded_url_cache[audio_url]
                 downloaded_audio = bool(audio_file)
@@ -307,9 +312,16 @@ def process_xml_file(xml_path, run_temp_dir):
                 except (OSError, ValueError) as exc:
                     downloaded_url_cache[audio_url] = None
                     print(f"Warning: failed to download audio from {audio_url}: {exc}")
-                    continue
+        if audio_file is None:
+            if audio_filename in audio_path_cache:
+                audio_file = audio_path_cache[audio_filename]
+            else:
+                audio_file = resolve_local_audio_path(xml_path, audio_filename, language_name, dialect)
+                audio_path_cache[audio_filename] = audio_file
+        if audio_file is None:
+            continue
         if audio_file and os.path.isfile(audio_file):
-            if not audio_file.lower().endswith(".wav"):
+            if not audio_file.lower().endswith(".wav") or not _is_pcm_wav(audio_file):
                 if audio_file in converted_audio_cache:
                     converted_wav = converted_audio_cache[audio_file]
                 else:
@@ -340,7 +352,7 @@ def process_xml_file(xml_path, run_temp_dir):
         tree.write(xml_path, encoding="utf-8", xml_declaration=True)
         print(f"Updated XML file: {xml_path}")
     else:
-        print(f"Skipped writing {xml_path} because file_changed was False")
+        print(f"Skipped writing {xml_path} dbecause file_changed was False")
 
     return file_changed, written_scores
 
@@ -486,8 +498,7 @@ def process_corpora_via_download_script(corpora_path):
 
 
 def process_corpora_using_existing_audio(corpora_path):
-    """Walk the whole corpora tree, using whatever audio is already present locally or
-    reachable via URL. This is the original, non-default behavior."""
+    """Walk the corpora tree, downloading audio from each XML URL when available."""
     temp_root_path = os.path.abspath(TEMP_ROOT_DIR)
     os.makedirs(temp_root_path, exist_ok=True)
     run_temp_dir = tempfile.mkdtemp(prefix="pdm_", dir=temp_root_path)
@@ -513,10 +524,14 @@ def parse_args():
         "--existing-audio",
         action="store_true",
         help=(
-            "Use whatever audio is already present locally or reachable via URL, instead of "
-            "running each corpus's download_audio_data.sh. This walks the whole Corpora tree "
-            "in one pass (previous default behavior)."
+            "Use audio from the XML URL (falling back to local audio), instead of running "
+            "each corpus's download_audio_data.sh. This is the default."
         ),
+    )
+    parser.add_argument(
+        "--download-corpus-audio",
+        action="store_true",
+        help="Run each corpus's download_audio_data.sh instead of downloading XML audio URLs.",
     )
     return parser.parse_args()
 
@@ -524,10 +539,10 @@ def parse_args():
 def main():
     args = parse_args()
 
-    if args.existing_audio:
-        updated_xml_files, written_scores = process_corpora_using_existing_audio(CORPORA_PATH)
-    else:
+    if args.download_corpus_audio:
         updated_xml_files, written_scores = process_corpora_via_download_script(CORPORA_PATH)
+    else:
+        updated_xml_files, written_scores = process_corpora_using_existing_audio(CORPORA_PATH)
 
     print(f"Updated XML files: {updated_xml_files}")
     print(f"Scores written: {written_scores}")
