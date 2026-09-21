@@ -115,6 +115,38 @@ def _load_audio_with_torchaudio(audio_path):
     return None, None, errors
 
 
+def _convert_audio_with_ffmpeg(audio_path, wav_path):
+    if not shutil.which("ffmpeg"):
+        print("Warning: ffmpeg is required to convert encoded audio such as MP3")
+        return False
+    try:
+        subprocess.run(
+            [
+                "ffmpeg",
+                "-y",
+                "-v",
+                "error",
+                "-i",
+                audio_path,
+                "-ar",
+                "16000",
+                "-ac",
+                "1",
+                "-c:a",
+                "pcm_s16le",
+                wav_path,
+            ],
+            check=True,
+        )
+        if _is_pcm_wav(wav_path):
+            return True
+        print(f"Warning: ffmpeg produced a non-PCM WAV for {audio_path}")
+        return False
+    except (OSError, subprocess.CalledProcessError) as exc:
+        print(f"Warning: ffmpeg conversion failed for {audio_path}: {exc}")
+        return False
+
+
 def convert_audio_to_wav(audio_path, destination_dir):
     stem = os.path.splitext(os.path.basename(audio_path))[0] or "audio"
     with tempfile.NamedTemporaryFile(
@@ -123,15 +155,25 @@ def convert_audio_to_wav(audio_path, destination_dir):
         wav_path = tmp.name
 
     try:
+        if os.path.splitext(audio_path)[1].lower() == ".mp3":
+            if _convert_audio_with_ffmpeg(audio_path, wav_path):
+                return wav_path
+            if os.path.exists(wav_path):
+                os.remove(wav_path)
+            return None
+
         waveform, sample_rate, errors = _load_audio_with_torchaudio(audio_path)
         if waveform is None or sample_rate is None:
             signature = _guess_binary_signature(audio_path)
             backend_info = ", ".join(AVAILABLE_AUDIO_BACKENDS) or "none"
             last_error = errors[-1] if errors else "unknown decode error"
             print(
-                f"Warning: torchaudio could not decode {audio_path} "
-                f"(signature={signature}, backends={backend_info}). Last error: {last_error}"
+                f"Info: torchaudio could not decode {audio_path} "
+                f"(signature={signature}, backends={backend_info}); using ffmpeg fallback. "
+                f"Last error: {last_error}"
             )
+            if _convert_audio_with_ffmpeg(audio_path, wav_path):
+                return wav_path
             if os.path.exists(wav_path):
                 os.remove(wav_path)
             return None
