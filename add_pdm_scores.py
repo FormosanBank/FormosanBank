@@ -17,6 +17,7 @@ FORCE_RECOMPUTE_SCORES = os.environ.get("PDM_FORCE_RECOMPUTE", "0") == "1"
 TEMP_ROOT_DIR = "temp"
 
 AVAILABLE_AUDIO_BACKENDS = tuple(torchaudio.list_audio_backends())
+_WARNED_NO_TORCHAUDIO_BACKEND = False
 
 ISO_TO_LANGUAGE: dict[str, str] = {
     "ami": "Amis",
@@ -164,14 +165,17 @@ def convert_audio_to_wav(audio_path, destination_dir):
 
         waveform, sample_rate, errors = _load_audio_with_torchaudio(audio_path)
         if waveform is None or sample_rate is None:
-            signature = _guess_binary_signature(audio_path)
-            backend_info = ", ".join(AVAILABLE_AUDIO_BACKENDS) or "none"
-            last_error = errors[-1] if errors else "unknown decode error"
-            print(
-                f"Info: torchaudio could not decode {audio_path} "
-                f"(signature={signature}, backends={backend_info}); using ffmpeg fallback. "
-                f"Last error: {last_error}"
-            )
+            global _WARNED_NO_TORCHAUDIO_BACKEND
+            if not _WARNED_NO_TORCHAUDIO_BACKEND:
+                signature = _guess_binary_signature(audio_path)
+                backend_info = ", ".join(AVAILABLE_AUDIO_BACKENDS) or "none"
+                last_error = errors[-1] if errors else "unknown decode error"
+                print(
+                    f"Info: torchaudio could not decode {audio_path} "
+                    f"(signature={signature}, backends={backend_info}); using ffmpeg fallback "
+                    f"for this and subsequent files. Last error: {last_error}"
+                )
+                _WARNED_NO_TORCHAUDIO_BACKEND = True
             if _convert_audio_with_ffmpeg(audio_path, wav_path):
                 return wav_path
             if os.path.exists(wav_path):
@@ -578,8 +582,27 @@ def parse_args():
     return parser.parse_args()
 
 
+def _check_audio_decode_capability():
+    """One-time diagnostic so a missing decoder shows up as one clear message, not per-file spam."""
+    has_ffmpeg = shutil.which("ffmpeg") is not None
+    if not AVAILABLE_AUDIO_BACKENDS:
+        if not has_ffmpeg:
+            raise SystemExit(
+                "torchaudio has no audio backend (list_audio_backends() is empty) and "
+                "ffmpeg is not on PATH, so no audio file can be decoded. On the VM, install "
+                "one of: `apt-get install -y libsndfile1 && pip install soundfile` "
+                "(preferred, avoids a subprocess per file) or `apt-get install -y ffmpeg`."
+            )
+        print(
+            "Warning: torchaudio has no audio backend installed; every file will be "
+            "decoded via a slower ffmpeg subprocess fallback. For faster runs, install "
+            "libsndfile1 and the `soundfile` pip package on the VM."
+        )
+
+
 def main():
     args = parse_args()
+    _check_audio_decode_capability()
 
     if args.download_corpus_audio:
         updated_xml_files, written_scores = process_corpora_via_download_script(CORPORA_PATH)
