@@ -20,7 +20,7 @@
                 <PHON kindOf="original">ħaŋ</PHON>
                 <FORM kindOf="standard">hang,</FORM>
                 <PHON kindOf="standard">ħaŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是的</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             </M>
         </W>
@@ -45,7 +45,7 @@
                 <FORM kindOf="standard">lingatu</FORM>
                 <PHON kindOf="standard">[r|ɾ]iŋatu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">開始</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">start</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">begin</TRANSL>
             </M>
         </W>
         <W id="skzyNr-tribalhistory_sinay_S_1_W2">
@@ -76,8 +76,8 @@
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">介系詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PREP</TRANSL>
             </M>
         </W>
         <W id="skzyNr-tribalhistory_sinay_S_1_W4">
@@ -100,8 +100,8 @@
                 <PHON kindOf="original">ħini</PHON>
                 <FORM kindOf="standard">hini</FORM>
                 <PHON kindOf="standard">ħini</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這樣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">this.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這裡</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">here</TRANSL>
             </M>
         </W>
         <W id="skzyNr-tribalhistory_sinay_S_1_W5">
@@ -164,7 +164,7 @@
                 <PHON kindOf="original">ini</PHON>
                 <FORM kindOf="standard">ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這裏</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這裡</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">here</TRANSL>
             </M>
             <M id="skzyNr-tribalhistory_sinay_S_1_W6M2">
@@ -188,8 +188,8 @@
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i,</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">介系詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PREP</TRANSL>
             </M>
         </W>
         <W id="skzyNr-tribalhistory_sinay_S_1_W8">
@@ -204,8 +204,8 @@
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">介系詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PREP</TRANSL>
             </M>
         </W>
         <W id="skzyNr-tribalhistory_sinay_S_1_W9">
@@ -215,6 +215,14 @@
             <PHON kindOf="standard">tawja</PHON>
             <TRANSL xml:lang="zho" kindOf="original">當時</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+            <M id="skzyNr-tribalhistory_sinay_S_1_W9M0">
+                <FORM kindOf="original">tawya</FORM>
+                <PHON kindOf="original">tawja</PHON>
+                <FORM kindOf="standard">tawya</FORM>
+                <PHON kindOf="standard">tawja</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">當時</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+            </M>
         </W>
         <W id="skzyNr-tribalhistory_sinay_S_1_W10">
             <FORM kindOf="original">ay</FORM>
@@ -228,8 +236,8 @@
                 <PHON kindOf="original">aj</PHON>
                 <FORM kindOf="standard">ay</FORM>
                 <PHON kindOf="standard">aj</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">表事實</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FAC</TRANSL>
             </M>
         </W>
         <W id="skzyNr-tribalhistory_sinay_S_1_W11">
@@ -15341,7 +15349,7 @@
                 <PHON kindOf="original">ħiza</PHON>
                 <FORM kindOf="standard">hiza</FORM>
                 <PHON kindOf="standard">ħiza</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那樣子</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">that.way</TRANSL>
             </M>
             <M id="skzyNr-tribalhistory_sinay_S_176_W0M2">
@@ -15381,8 +15389,8 @@
                 <PHON kindOf="original">kuju</PHON>
                 <FORM kindOf="standard">kuyu</FORM>
                 <PHON kindOf="standard">kuju</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格.這個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM.this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格.那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM.that</TRANSL>
             </M>
         </W>
         <W id="skzyNr-tribalhistory_sinay_S_176_W3">
@@ -15408,6 +15416,14 @@
             <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="zho" kindOf="original">有-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">have-</TRANSL>
+            <M id="skzyNr-tribalhistory_sinay_S_176_W4M0">
+                <FORM kindOf="original">si</FORM>
+                <PHON kindOf="original">si</PHON>
+                <FORM kindOf="standard">si</FORM>
+                <PHON kindOf="standard">si</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">有</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">have</TRANSL>
+            </M>
         </W>
         <W id="skzyNr-tribalhistory_sinay_S_176_W5">
             <FORM kindOf="original">kalisiw-ay.</FORM>
@@ -27354,8 +27370,8 @@
                 <PHON kindOf="original">ħiza</PHON>
                 <FORM kindOf="standard">hiza</FORM>
                 <PHON kindOf="standard">ħiza</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這樣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">this.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣子</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.way</TRANSL>
             </M>
         </W>
         <W id="skzyNr-tribalhistory_sinay_S_318_W1">
@@ -27402,12 +27418,16 @@
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">NI</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NI</TRANSL>
             </M>
             <M id="skzyNr-tribalhistory_sinay_S_318_W3M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
             </M>
         </W>
         <W id="skzyNr-tribalhistory_sinay_S_318_W4">

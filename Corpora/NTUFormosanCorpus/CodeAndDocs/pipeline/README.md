@@ -47,13 +47,55 @@ ASCII or fullwidth, anywhere in the string. The ~60 "naturalistic elaborations"
 that review chose to keep inline are not preserved; that is accepted.
 
 **C. Tiers.** `resolve_slash_alternatives.py` (competing readings →
-`kindOf="alternate"`), `apply_prune_and_mirror.py --only prune` (drop
-M elements that carry no morphological evidence, per POL-054),
-`borrow_missing_morphemes.py`, `align_ids.py` (keep ids stable against the
+`kindOf="alternate"`), `drop_punctuation_morphemes.py` and
+`apply_prune_and_mirror.py` (see "Word and morpheme tiers" below),
+`mark_original_glosses.py`, `align_ids.py` (keep ids stable against the
 published corpus, per POL-037), then `run_standard_and_phon.sh`, which
 builds the standard tier and both PHON tiers against **Ortho94** — the
 orthography the NTU source documentation declares. (Earlier processing
 declared Ortho113; see the header of that script.)
+
+## Word and morpheme tiers
+
+What the build does when the word or morpheme tier cannot stand, and why. All
+three rules are maintainer rulings, recorded in the decision log.
+
+- **Punctuation-only morphemes** (`drop_punctuation_morphemes.py`, ruling
+  2026-09-28). A false start written with its punctuation (`ta-,`) splits into a
+  morpheme whose form is `,`. In a multimorphemic word, an unglossed
+  punctuation-only morpheme is deleted. A glossed one, when fewer segments are
+  glossed than there are segments, is deleted and its gloss shifted onto the
+  segment after it. If no segment follows it, or no unglossed segment follows to
+  absorb the shift, it is left and reported in
+  `logs/punctuation_morpheme_escalations_<subcorpus>.tsv`. The word's FORM keeps
+  its punctuation: that is source text.
+- **Word tier withdrawn** (`apply_prune_and_mirror.py`, ruling 2026-09-08). A
+  sentence whose word tier does not account for its sentence form loses its W
+  elements.
+- **Unreconcilable morphemes rebuilt, unglossed** (`apply_prune_and_mirror.py`,
+  ruling 2026-09-09: "regenerate the Ms from the W's segmentation and do not
+  include glosses in the Ms"). This is judged word by word. A word whose
+  morphemes cannot be reconciled with its form and gloss gets one M per piece of
+  its own segmented FORM, with no glosses: the segmentation is real data, but no
+  confirmed morphosyntactic glossing exists. A word of one piece gets no M ("a
+  lack of Ms indicates no clear segmentation"). Every other word keeps its Ms; a
+  glossed one-morpheme word keeps its own single M. **No morpheme is ever copied
+  from another word.** Until 2026-09-28 this step, and the separate
+  `borrow_missing_morphemes.py` (now deleted), copied glossed morphemes from the
+  first occurrence of the same word form anywhere in the subcorpus, in any
+  language. That was never ruled.
+- **A word left bare by a gloss-shift repair** (`borrow_shift_blank_glosses.py`,
+  ruling 2026-09-28) may borrow a gloss. It does so only from the same language,
+  only when at least 5 other occurrences exist and one gloss accounts for at
+  least 90% of them (placeholders such as `FIL` and `XX` don't count), and it
+  marks the gloss with a `notes` attribute. Words that were already bare in the
+  source are never filled. Declined cases are reported in
+  `logs/gloss_shift_borrowed_<subcorpus>.tsv`.
+
+The policy behind the morpheme rules is "the M tier is evidence, never
+manufactured": POL-057 on the unmerged `policy/m-tier-is-evidence` branch. It
+was numbered POL-054 before 2026-09-10; POL-054 on `main` is now the waivers
+policy.
 
 ## Data tables
 
@@ -113,10 +155,10 @@ accepted.
 `../qa/try_gloss_shift_repairs.sh` builds the subcorpus twice into scratch
 directories (never `XML/`): once without the repairs and once with them. Both
 builds stop at `build.sh`'s pre-cleanup checkpoint (`NTU_BUILD_CHECKPOINT`).
-The clean-up steps (prune, borrow, empty-translation removal) deal with what
+The clean-up steps (prune and empty-translation removal) deal with what
 could not be fixed, so they count neither for nor against a fix. Measured after
 them, the 245 Stories proposals of 2026-09-28 appeared to change 26 unrelated
-sentences, all through prune's donor morphemes, and 6 targets disappeared
+sentences, all through prune's donor morphemes (since removed), and 6 targets disappeared
 because prune withdrew their word tier. `../qa/gloss_shift_blast_radius.py`
 compares the two builds by (language, sentence id) and fails if anything
 outside the targets changed.
@@ -162,7 +204,7 @@ QA score is not evidence of better glossing.
 | `CTABLES` | `<bank>/Orthographies/ConversionTables` | testing an unmerged conversion table |
 | `FB_DIALECTS` | `<bank>/dialects.csv` | testing an unmerged dialect/alias row |
 | `NTU_BUILD_OUT` | `../../XML` | installing a trial build somewhere else (XML/ untouched) |
-| `NTU_BUILD_CHECKPOINT` | unset | `pre-cleanup` skips prune, borrow and empty-translation removal, for trialling a fix; never publish it |
+| `NTU_BUILD_CHECKPOINT` | unset | `pre-cleanup` skips prune and empty-translation removal, for trialling a fix; never publish it |
 | `NTU_GLOSS_SHIFT_STATUSES` | `accepted` | `accepted,proposed` trials proposed gloss-shift rows |
 | `NTU_GLOSS_SHIFT_TABLE` | `gloss_shift_repairs.tsv` | trialling another repairs table |
 

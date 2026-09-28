@@ -245,8 +245,8 @@
                 <PHON kindOf="original">ŋajaw</PHON>
                 <FORM kindOf="standard">ngayaw</FORM>
                 <PHON kindOf="standard">ŋajaw</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">前面</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">front</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">之前</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">before</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_9_W1">
@@ -301,8 +301,8 @@
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa,</FORM>
                 <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">SA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">SA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_9_W4">
@@ -312,6 +312,14 @@
             <PHON kindOf="standard">sa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">未來-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FUT-</TRANSL>
+            <M id="kavCon-speech_buya_syulan_S_9_W4M0">
+                <FORM kindOf="original">sa</FORM>
+                <PHON kindOf="original">sa</PHON>
+                <FORM kindOf="standard">sa</FORM>
+                <PHON kindOf="standard">sa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
+            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_9_W5">
             <FORM kindOf="original" notes="code-switch">bisay-an</FORM>
@@ -349,8 +357,8 @@
                 <PHON kindOf="original">atu</PHON>
                 <FORM kindOf="standard">atu</FORM>
                 <PHON kindOf="standard">atu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_9_W7">
@@ -365,8 +373,8 @@
                 <PHON kindOf="original">iza</PHON>
                 <FORM kindOf="standard">iza</FORM>
                 <PHON kindOf="standard">i[z|r]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某事</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">something</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_9_W8">
@@ -477,7 +485,7 @@
                 <PHON kindOf="original">zata</PHON>
                 <FORM kindOf="standard">zata</FORM>
                 <PHON kindOf="standard">[z|r]ata</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1IPL.POSS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1IPL.所有格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1IPL.POSS</TRANSL>
             </M>
             <M id="kavCon-speech_buya_syulan_S_9_W13M1">
@@ -501,7 +509,7 @@
                 <PHON kindOf="original">zata</PHON>
                 <FORM kindOf="standard">zata</FORM>
                 <PHON kindOf="standard">[z|r]ata</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1IPL.POSS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1IPL.所有格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1IPL.POSS</TRANSL>
             </M>
             <M id="kavCon-speech_buya_syulan_S_9_W14M1">
@@ -1533,14 +1541,6 @@
             <PHON kindOf="original">əh</PHON>
             <FORM kindOf="standard">eh,</FORM>
             <PHON kindOf="standard">əh</PHON>
-            <M id="kavCon-speech_buya_syulan_S_36_W0M0">
-                <FORM kindOf="original">eh,</FORM>
-                <PHON kindOf="original">əh</PHON>
-                <FORM kindOf="standard">eh,</FORM>
-                <PHON kindOf="standard">əh</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_36_W1">
             <FORM kindOf="original">nianu</FORM>
@@ -1565,6 +1565,14 @@
             <PHON kindOf="standard">sa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">未來-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FUT-</TRANSL>
+            <M id="kavCon-speech_buya_syulan_S_36_W2M0">
+                <FORM kindOf="original">sa</FORM>
+                <PHON kindOf="original">sa</PHON>
+                <FORM kindOf="standard">sa</FORM>
+                <PHON kindOf="standard">sa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
+            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_36_W3">
             <FORM kindOf="original">iza-an</FORM>
@@ -1578,16 +1586,16 @@
                 <PHON kindOf="original">iza</PHON>
                 <FORM kindOf="standard">iza</FORM>
                 <PHON kindOf="standard">i[z|r]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">某物</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">something</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某事</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">do.something</TRANSL>
             </M>
             <M id="kavCon-speech_buya_syulan_S_36_W3M1">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">名物化</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NMZ</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_36_W4">
@@ -1602,8 +1610,8 @@
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u,</FORM>
                 <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">CN</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">或</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">or</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_36_W5">
@@ -2266,7 +2274,7 @@
                 <PHON kindOf="original">zuma</PHON>
                 <FORM kindOf="standard">zuma</FORM>
                 <PHON kindOf="standard">[z|r]uma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">不同</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">不一樣</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">different</TRANSL>
             </M>
         </W>
@@ -2301,6 +2309,14 @@
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
+            <M id="kavCon-speech_buya_syulan_S_56_W2M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_56_W3">
             <FORM kindOf="original">pateRungan</FORM>
@@ -3328,8 +3344,8 @@
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta,</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_80_W3">
@@ -3379,6 +3395,14 @@
             <PHON kindOf="standard">ni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">完成-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PFV-</TRANSL>
+            <M id="kavCon-speech_buya_syulan_S_80_W5M0">
+                <FORM kindOf="original">ni</FORM>
+                <PHON kindOf="original">ni</PHON>
+                <FORM kindOf="standard">ni</FORM>
+                <PHON kindOf="standard">ni</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_80_W6">
             <FORM kindOf="original">iza-an</FORM>
@@ -3392,16 +3416,16 @@
                 <PHON kindOf="original">iza</PHON>
                 <FORM kindOf="standard">iza</FORM>
                 <PHON kindOf="standard">i[z|r]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">某物</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">something</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">做某事</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">do.something</TRANSL>
             </M>
             <M id="kavCon-speech_buya_syulan_S_80_W6M1">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">名物化</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NMZ</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_80_W7">
@@ -3416,8 +3440,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_80_W8">
@@ -3432,8 +3456,8 @@
                 <PHON kindOf="original">βaqi</PHON>
                 <FORM kindOf="standard">baqi</FORM>
                 <PHON kindOf="standard">βaqi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">男性祖先</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">male.ancestor</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">老人</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">elder</TRANSL>
             </M>
             <M id="kavCon-speech_buya_syulan_S_80_W8M1">
                 <FORM kindOf="original">an.</FORM>
@@ -3488,8 +3512,8 @@
                 <PHON kindOf="original">wawaj</PHON>
                 <FORM kindOf="standard">waway</FORM>
                 <PHON kindOf="standard">wawaj</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">生活</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">way.of.life</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">行為</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">behavior</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_80_W12">
@@ -3504,8 +3528,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_80_W13">
@@ -3545,14 +3569,6 @@
             <PHON kindOf="original">m</PHON>
             <FORM kindOf="standard">m,</FORM>
             <PHON kindOf="standard">m</PHON>
-            <M id="kavCon-speech_buya_syulan_S_80_W15M0">
-                <FORM kindOf="original">m,</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m,</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
-            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_80_W16">
             <FORM kindOf="original">'nay</FORM>
@@ -3606,8 +3622,8 @@
                 <PHON kindOf="original">kawka</PHON>
                 <FORM kindOf="standard">kawka</FORM>
                 <PHON kindOf="standard">kawka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">KAWKA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">KAWKA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">才</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">just</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_80_W19">
@@ -7494,6 +7510,14 @@
             <PHON kindOf="standard">ti</PHON>
             <TRANSL xml:lang="zho" kindOf="original">NCM-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NCM-</TRANSL>
+            <M id="kavCon-speech_buya_syulan_S_186_W0M0">
+                <FORM kindOf="original">ti</FORM>
+                <PHON kindOf="original">ti</PHON>
+                <FORM kindOf="standard">ti</FORM>
+                <PHON kindOf="standard">ti</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">NCM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NCM</TRANSL>
+            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_186_W1">
             <FORM kindOf="original">uci.</FORM>
@@ -7560,6 +7584,14 @@
             <PHON kindOf="standard">ti</PHON>
             <TRANSL xml:lang="zho" kindOf="original">NCM-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NCM-</TRANSL>
+            <M id="kavCon-speech_buya_syulan_S_189_W0M0">
+                <FORM kindOf="original">ti</FORM>
+                <PHON kindOf="original">ti</PHON>
+                <FORM kindOf="standard">ti</FORM>
+                <PHON kindOf="standard">ti</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">NCM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NCM</TRANSL>
+            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_189_W1">
             <FORM kindOf="original">cinRu.</FORM>
@@ -7993,6 +8025,14 @@
             <PHON kindOf="standard">qa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">QA-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">QA-</TRANSL>
+            <M id="kavCon-speech_buya_syulan_S_202_W0M0">
+                <FORM kindOf="original">qa</FORM>
+                <PHON kindOf="original">qa</PHON>
+                <FORM kindOf="standard">qa</FORM>
+                <PHON kindOf="standard">qa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">QA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">QA</TRANSL>
+            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_202_W1">
             <FORM kindOf="original">singsi</FORM>
@@ -8022,8 +8062,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_202_W3">
@@ -8038,8 +8078,8 @@
                 <PHON kindOf="original">iza</PHON>
                 <FORM kindOf="standard">iza</FORM>
                 <PHON kindOf="standard">i[z|r]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某事</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">something</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_202_W4">
@@ -8054,7 +8094,7 @@
                 <PHON kindOf="original">quni</PHON>
                 <FORM kindOf="standard">quni</FORM>
                 <PHON kindOf="standard">quni</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">如何</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">怎麼</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">how</TRANSL>
             </M>
             <M id="kavCon-speech_buya_syulan_S_202_W4M1">
@@ -8079,7 +8119,7 @@
                 <FORM kindOf="standard">Rayngu</FORM>
                 <PHON kindOf="standard">ʁajŋu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">不會</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">unable</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cannot</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_202_W6">
@@ -8094,8 +8134,8 @@
                 <PHON kindOf="original">qaja</PHON>
                 <FORM kindOf="standard">qaya,</FORM>
                 <PHON kindOf="standard">qaja</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">也</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">also</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
     </S>
@@ -8619,7 +8659,7 @@
                 <FORM kindOf="standard">azu,</FORM>
                 <PHON kindOf="standard">a[z|r]u</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">好像</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">like</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">seem</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_218_W1">
@@ -8634,8 +8674,8 @@
                 <PHON kindOf="original">β</PHON>
                 <FORM kindOf="standard">B</FORM>
                 <PHON kindOf="standard">β</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">好啊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">okay</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">好像</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">seem</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_218_W2">
@@ -8645,14 +8685,6 @@
             <PHON kindOf="standard">a[z|r]u</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-瞎</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-blind</TRANSL>
-            <M id="kavCon-speech_buya_syulan_S_218_W2M0">
-                <FORM kindOf="original">azu</FORM>
-                <PHON kindOf="original">azu</PHON>
-                <FORM kindOf="standard">azu</FORM>
-                <PHON kindOf="standard">a[z|r]u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">好像</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">seem</TRANSL>
-            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_218_W3">
             <FORM kindOf="original">m-puqaw</FORM>
@@ -8686,8 +8718,8 @@
                 <PHON kindOf="original">qaja</PHON>
                 <FORM kindOf="standard">qaya</FORM>
                 <PHON kindOf="standard">qaja</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">也</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">also</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_218_W5">
@@ -8695,14 +8727,6 @@
             <PHON kindOf="original">ʔnaj</PHON>
             <FORM kindOf="standard">'nay.</FORM>
             <PHON kindOf="standard">ʔnaj</PHON>
-            <M id="kavCon-speech_buya_syulan_S_218_W5M0">
-                <FORM kindOf="original">'nay.</FORM>
-                <PHON kindOf="original">ʔnaj</PHON>
-                <FORM kindOf="standard">'nay.</FORM>
-                <PHON kindOf="standard">ʔnaj</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
-            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_218_W6">
             <FORM kindOf="original">m-iza=ay</FORM>
@@ -8724,8 +8748,8 @@
                 <PHON kindOf="original">iza</PHON>
                 <FORM kindOf="standard">iza</FORM>
                 <PHON kindOf="standard">i[z|r]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">IZA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IZA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">做某事</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">do.something</TRANSL>
             </M>
             <M id="kavCon-speech_buya_syulan_S_218_W6M2">
                 <FORM kindOf="original">=ay</FORM>
@@ -8796,7 +8820,7 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
@@ -8831,6 +8855,14 @@
             <PHON kindOf="standard">ni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">完成-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PFV-</TRANSL>
+            <M id="kavCon-speech_buya_syulan_S_218_W11M0">
+                <FORM kindOf="original">ni</FORM>
+                <PHON kindOf="original">ni</PHON>
+                <FORM kindOf="standard">ni</FORM>
+                <PHON kindOf="standard">ni</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_218_W12">
             <FORM kindOf="original" notes="code-switch">kaoshi-an-numi</FORM>
@@ -10596,8 +10628,8 @@
                 <PHON kindOf="original">qawman</PHON>
                 <FORM kindOf="standard">qawman</FORM>
                 <PHON kindOf="standard">qawman</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">絕對</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">definitely</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">當然</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">certainly</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_261_W2">
@@ -10660,8 +10692,8 @@
                 <PHON kindOf="original">amawaʁ</PHON>
                 <FORM kindOf="standard">amawaR</FORM>
                 <PHON kindOf="standard">amawaʁ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">明天</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">tomorrow</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">以後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">afterwards</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_261_W5">
@@ -10676,8 +10708,8 @@
                 <PHON kindOf="original">haw</PHON>
                 <FORM kindOf="standard">haw.</FORM>
                 <PHON kindOf="standard">haw</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">HAW</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">HAW</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_261_W6">
@@ -10708,16 +10740,16 @@
                 <PHON kindOf="original">iza</PHON>
                 <FORM kindOf="standard">iza</FORM>
                 <PHON kindOf="standard">i[z|r]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">某物</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">something</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">做某事</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">do.something</TRANSL>
             </M>
             <M id="kavCon-speech_buya_syulan_S_261_W7M1">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">名物化</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NMZ</TRANSL>
             </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_261_W8">
@@ -10743,6 +10775,14 @@
             <PHON kindOf="standard">ni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">完成-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PFV-</TRANSL>
+            <M id="kavCon-speech_buya_syulan_S_261_W9M0">
+                <FORM kindOf="original">ni</FORM>
+                <PHON kindOf="original">ni</PHON>
+                <FORM kindOf="standard">ni</FORM>
+                <PHON kindOf="standard">ni</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+            </M>
         </W>
         <W id="kavCon-speech_buya_syulan_S_261_W10">
             <FORM kindOf="original" notes="code-switch">bisai-an</FORM>
@@ -10780,7 +10820,7 @@
                 <PHON kindOf="original">tajan</PHON>
                 <FORM kindOf="standard">tayan</FORM>
                 <PHON kindOf="standard">tajan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那裡</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那邊</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
             </M>
         </W>

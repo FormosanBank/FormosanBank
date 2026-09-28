@@ -269,8 +269,8 @@
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m,</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">M</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">M</TRANSL>
             </M>
         </W>
         <W id="KacCon-Teaching Weaving_abas_ipay_S_3_W1">
@@ -285,8 +285,8 @@
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="KacCon-Teaching Weaving_abas_ipay_S_3_W2">
@@ -528,6 +528,14 @@
             <PHON kindOf="standard">sa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            <M id="KacCon-Teaching Weaving_abas_ipay_S_3_W16M0">
+                <FORM kindOf="original">sa</FORM>
+                <PHON kindOf="original">sa</PHON>
+                <FORM kindOf="standard">sa</FORM>
+                <PHON kindOf="standard">sa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            </M>
         </W>
         <W id="KacCon-Teaching Weaving_abas_ipay_S_3_W17">
             <FORM kindOf="original">sa-spaw-an,</FORM>
@@ -6042,14 +6050,6 @@
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">SA-使役-看-名物化</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SA-CAU-see-NMZ</TRANSL>
-            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W1M0">
-                <FORM kindOf="original">tu</FORM>
-                <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
-                <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
-            </M>
         </W>
         <W id="KacCon-Teaching Weaving_abas_ipay_S_75_W2">
             <FORM kindOf="original">nazau=ay</FORM>
@@ -6063,16 +6063,12 @@
                 <PHON kindOf="original">nazau</PHON>
                 <FORM kindOf="standard">nazau</FORM>
                 <PHON kindOf="standard">na[z|r]au</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這樣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">this.way</TRANSL>
             </M>
             <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W2M1">
                 <FORM kindOf="original">=ay</FORM>
                 <PHON kindOf="original">aj</PHON>
                 <FORM kindOf="standard">=ay</FORM>
                 <PHON kindOf="standard">aj</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
             </M>
         </W>
         <W id="KacCon-Teaching Weaving_abas_ipay_S_75_W3">
@@ -6082,14 +6078,6 @@
             <PHON kindOf="standard">βənina</PHON>
             <TRANSL xml:lang="zho" kindOf="original">這樣=關係詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">this.way=REL</TRANSL>
-            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W3M0">
-                <FORM kindOf="original">benina</FORM>
-                <PHON kindOf="original">βənina</PHON>
-                <FORM kindOf="standard">benina</FORM>
-                <PHON kindOf="standard">βənina</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">香蕉</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">banana</TRANSL>
-            </M>
         </W>
         <W id="KacCon-Teaching Weaving_abas_ipay_S_75_W4">
             <FORM kindOf="original">tizi</FORM>
@@ -6119,8 +6107,8 @@
                 <PHON kindOf="original">ʁaw</PHON>
                 <FORM kindOf="standard">Raw.</FORM>
                 <PHON kindOf="standard">ʁaw</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">感嘆</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">原來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">actually</TRANSL>
             </M>
         </W>
         <W id="KacCon-Teaching Weaving_abas_ipay_S_75_W6">
@@ -6130,17 +6118,21 @@
             <PHON kindOf="standard">tmnun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;編織</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;weave</TRANSL>
-            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W6M0">
+            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W6M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W6M1">
-                <FORM kindOf="original">tnun</FORM>
+            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W6M0_1">
+                <FORM kindOf="original">t-nun</FORM>
                 <PHON kindOf="original">tnun</PHON>
-                <FORM kindOf="standard">tnun</FORM>
+                <FORM kindOf="standard">t-nun</FORM>
                 <PHON kindOf="standard">tnun</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">編織</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">weave</TRANSL>
             </M>
         </W>
         <W id="KacCon-Teaching Weaving_abas_ipay_S_75_W7">
@@ -6166,17 +6158,21 @@
             <PHON kindOf="standard">tmnun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;編織</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;weave</TRANSL>
-            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W8M0">
+            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W8M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W8M1">
-                <FORM kindOf="original">tnun</FORM>
+            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W8M0_1">
+                <FORM kindOf="original">t-nun</FORM>
                 <PHON kindOf="original">tnun</PHON>
-                <FORM kindOf="standard">tnun</FORM>
+                <FORM kindOf="standard">t-nun</FORM>
                 <PHON kindOf="standard">tnun</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">編織</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">weave</TRANSL>
             </M>
         </W>
         <W id="KacCon-Teaching Weaving_abas_ipay_S_75_W9">
@@ -6250,17 +6246,21 @@
             <PHON kindOf="standard">tmnun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;編織</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;weave</TRANSL>
-            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W12M0">
+            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W12M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W12M1">
-                <FORM kindOf="original">tnun</FORM>
+            <M id="KacCon-Teaching Weaving_abas_ipay_S_75_W12M0_1">
+                <FORM kindOf="original">t-nun</FORM>
                 <PHON kindOf="original">tnun</PHON>
-                <FORM kindOf="standard">tnun</FORM>
+                <FORM kindOf="standard">t-nun</FORM>
                 <PHON kindOf="standard">tnun</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">編織</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">weave</TRANSL>
             </M>
         </W>
         <W id="KacCon-Teaching Weaving_abas_ipay_S_75_W13">
@@ -6291,8 +6291,8 @@
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             </M>
         </W>
         <W id="KacCon-Teaching Weaving_abas_ipay_S_75_W15">

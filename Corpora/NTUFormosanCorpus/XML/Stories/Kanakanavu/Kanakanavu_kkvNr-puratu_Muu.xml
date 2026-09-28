@@ -624,8 +624,8 @@
                 <PHON kindOf="original">kan</PHON>
                 <FORM kindOf="standard">kan</FORM>
                 <PHON kindOf="standard">kan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">年</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">year</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KAN</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">KAN</TRANSL>
             </M>
         </W>
         <W id="kkvNr-puratu_Muu_S_16_W2">
@@ -720,12 +720,16 @@
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CAUS</TRANSL>
             </M>
             <M id="kkvNr-puratu_Muu_S_16_W6M1">
                 <FORM kindOf="original">ra</FORM>
                 <PHON kindOf="original">ra</PHON>
                 <FORM kindOf="standard">ra</FORM>
                 <PHON kindOf="standard">[r|ɾ]a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">RA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RA</TRANSL>
             </M>
         </W>
         <W id="kkvNr-puratu_Muu_S_16_W7">
@@ -773,7 +777,7 @@
                 <FORM kindOf="standard">cau</FORM>
                 <PHON kindOf="standard">ʦau</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">people</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
             </M>
         </W>
         <W id="kkvNr-puratu_Muu_S_16_W10">
@@ -804,8 +808,8 @@
                 <PHON kindOf="original">misa</PHON>
                 <FORM kindOf="standard">misa</FORM>
                 <PHON kindOf="standard">misa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">剛才</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">just.now</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">說.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">say.AF</TRANSL>
             </M>
         </W>
         <W id="kkvNr-puratu_Muu_S_16_W12">
@@ -4056,7 +4060,7 @@
                 <PHON kindOf="original">nakai</PHON>
                 <FORM kindOf="standard">nakai</FORM>
                 <PHON kindOf="standard">nakai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">但</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">但是</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">but</TRANSL>
             </M>
         </W>
@@ -4096,8 +4100,8 @@
                 <PHON kindOf="original">ʦi</PHON>
                 <FORM kindOf="standard">=ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">狀態改變</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">CI</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CI</TRANSL>
             </M>
         </W>
         <W id="kkvNr-puratu_Muu_S_84_W3">
@@ -4219,17 +4223,21 @@
             <PHON kindOf="standard">ʦɨmɨɨ[r|ɾ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">看&lt;主焦&gt;看</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">look&lt;AF&gt;look</TRANSL>
-            <M id="kkvNr-puratu_Muu_S_84_W8M0">
+            <M id="kkvNr-puratu_Muu_S_84_W8M0_0">
                 <FORM kindOf="original">-ʉm-</FORM>
                 <PHON kindOf="original">*m</PHON>
                 <FORM kindOf="standard">-ʉm-</FORM>
                 <PHON kindOf="standard">ɨm</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="kkvNr-puratu_Muu_S_84_W8M1">
-                <FORM kindOf="original">cʉʉra</FORM>
+            <M id="kkvNr-puratu_Muu_S_84_W8M0_1">
+                <FORM kindOf="original">c-ʉʉra</FORM>
                 <PHON kindOf="original">ʦ**ra</PHON>
-                <FORM kindOf="standard">cʉʉra</FORM>
+                <FORM kindOf="standard">c-ʉʉra</FORM>
                 <PHON kindOf="standard">ʦɨɨ[r|ɾ]a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">看看</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">looklook</TRANSL>
             </M>
         </W>
         <W id="kkvNr-puratu_Muu_S_84_W9">
@@ -4260,7 +4268,7 @@
                 <PHON kindOf="original">nak*</PHON>
                 <FORM kindOf="standard">nakʉ</FORM>
                 <PHON kindOf="standard">nakɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">女人</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">哪人</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">woman</TRANSL>
             </M>
         </W>
@@ -4348,8 +4356,8 @@
                 <PHON kindOf="original">kan</PHON>
                 <FORM kindOf="standard">kan</FORM>
                 <PHON kindOf="standard">kan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">年</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">year</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KAN</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">KAN</TRANSL>
             </M>
         </W>
         <W id="kkvNr-puratu_Muu_S_84_W15">
@@ -12988,6 +12996,14 @@
             <PHON kindOf="standard">a[r|ɾ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變成</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become</TRANSL>
+            <M id="kkvNr-puratu_Muu_S_259_W4M0">
+                <FORM kindOf="original">ara</FORM>
+                <PHON kindOf="original">ara</PHON>
+                <FORM kindOf="standard">ara</FORM>
+                <PHON kindOf="standard">a[r|ɾ]a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">變成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">become</TRANSL>
+            </M>
         </W>
         <W id="kkvNr-puratu_Muu_S_259_W5">
             <FORM kindOf="original">nure-en=cu.</FORM>
@@ -20089,7 +20105,7 @@
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua</FORM>
                 <PHON kindOf="standard">sua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
@@ -20100,6 +20116,14 @@
             <PHON kindOf="standard">ni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">完成-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PFV-</TRANSL>
+            <M id="kkvNr-puratu_Muu_S_400_W4M0">
+                <FORM kindOf="original">ni</FORM>
+                <PHON kindOf="original">ni</PHON>
+                <FORM kindOf="standard">ni</FORM>
+                <PHON kindOf="standard">ni</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+            </M>
         </W>
         <W id="kkvNr-puratu_Muu_S_400_W5">
             <FORM kindOf="original">ni-mi-kaarU</FORM>
@@ -20685,8 +20709,8 @@
                 <PHON kindOf="original">ʔ[e|ə]si</PHON>
                 <FORM kindOf="standard">'esi,</FORM>
                 <PHON kindOf="standard">ʔesi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
             </M>
         </W>
         <W id="kkvNr-puratu_Muu_S_414_W3">

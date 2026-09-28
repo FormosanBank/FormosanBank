@@ -1522,8 +1522,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Samingaz_S_25_W2">
@@ -1538,8 +1538,8 @@
                 <PHON kindOf="original">taʨini</PHON>
                 <FORM kindOf="standard">tacini</FORM>
                 <PHON kindOf="standard">taʨini</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">人量詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CLF.HUM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">一.人量詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">one.HUM.CLF</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Samingaz_S_25_W3">
@@ -1555,7 +1555,7 @@
                 <FORM kindOf="standard">bunun,</FORM>
                 <PHON kindOf="standard">bunun</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">peopple</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">people</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Samingaz_S_25_W4">
@@ -1610,8 +1610,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Samingaz_S_25_W7">
@@ -1651,7 +1651,7 @@
                 <FORM kindOf="standard">anghaib</FORM>
                 <PHON kindOf="standard">aŋ[x|χ]aib</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">經過</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">pass</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">pass.by</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Samingaz_S_25_W9">
@@ -1714,8 +1714,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Samingaz_S_25_W13">
@@ -1738,9 +1738,9 @@
                 <PHON kindOf="standard">skuðakuða</PHON>
             </M>
             <M id="bnNr-pear_Samingaz_S_25_W13M2">
-                <FORM kindOf="original">cin</FORM>
+                <FORM kindOf="original">=cin</FORM>
                 <PHON kindOf="original">ʨin</PHON>
-                <FORM kindOf="standard">cin</FORM>
+                <FORM kindOf="standard">=cin</FORM>
                 <PHON kindOf="standard">ʨin</PHON>
             </M>
         </W>
@@ -1812,8 +1812,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Samingaz_S_25_W18">
@@ -9871,6 +9871,14 @@
             <PHON kindOf="standard">na</PHON>
             <TRANSL xml:lang="zho" kindOf="original">非實現=</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IRR=</TRANSL>
+            <M id="bnNr-pear_Samingaz_S_108_W0M0">
+                <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
+                <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+            </M>
         </W>
         <W id="bnNr-pear_Samingaz_S_108_W1">
             <FORM kindOf="original">tutu-un</FORM>
@@ -9988,8 +9996,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Samingaz_S_108_W7">
@@ -10021,7 +10029,7 @@
                 <FORM kindOf="standard">cin</FORM>
                 <PHON kindOf="standard">ʨin</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">突然</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">sudden</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">suddenly</TRANSL>
             </M>
             <M id="bnNr-pear_Samingaz_S_108_W8M1">
                 <FORM kindOf="original">liskin</FORM>
@@ -10060,8 +10068,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Samingaz_S_108_W11">
@@ -10132,8 +10140,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu.</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">疑問詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
             </M>
         </W>
     </S>

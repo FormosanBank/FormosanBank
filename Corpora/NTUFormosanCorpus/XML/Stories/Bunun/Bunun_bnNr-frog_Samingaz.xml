@@ -4206,8 +4206,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-frog_Samingaz_S_39_W3">
@@ -4217,17 +4217,21 @@
             <PHON kindOf="standard">ma[l|ɬ]a[l|ɬ]uŋ[l|ɬ]uŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦&lt;重疊&gt;吠</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF&lt;RED&gt;bark</TRANSL>
-            <M id="bnNr-frog_Samingaz_S_39_W3M0">
+            <M id="bnNr-frog_Samingaz_S_39_W3M0_0">
                 <FORM kindOf="original">-la-</FORM>
                 <PHON kindOf="original">[l|ɬ]a</PHON>
                 <FORM kindOf="standard">-la-</FORM>
                 <PHON kindOf="standard">[l|ɬ]a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="bnNr-frog_Samingaz_S_39_W3M1">
-                <FORM kindOf="original">malunglung</FORM>
+            <M id="bnNr-frog_Samingaz_S_39_W3M0_1">
+                <FORM kindOf="original">ma-lunglung</FORM>
                 <PHON kindOf="original">ma[l|ɬ]uŋ[l|ɬ]uŋ</PHON>
-                <FORM kindOf="standard">malunglung</FORM>
+                <FORM kindOf="standard">ma-lunglung</FORM>
                 <PHON kindOf="standard">ma[l|ɬ]uŋ[l|ɬ]uŋ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">主焦吠</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AFbark</TRANSL>
             </M>
         </W>
         <W id="bnNr-frog_Samingaz_S_39_W4">
@@ -4306,8 +4310,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-frog_Samingaz_S_39_W8">
@@ -4317,14 +4321,6 @@
             <PHON kindOf="standard">ɕia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">家=遠距.斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">house=DIST.OBL</TRANSL>
-            <M id="bnNr-frog_Samingaz_S_39_W8M0">
-                <FORM kindOf="original">sia</FORM>
-                <PHON kindOf="original">sia</PHON>
-                <FORM kindOf="standard">sia</FORM>
-                <PHON kindOf="standard">ɕia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
-            </M>
         </W>
         <W id="bnNr-frog_Samingaz_S_39_W9">
             <FORM kindOf="original">lumah=cia.</FORM>
@@ -4338,9 +4334,9 @@
                 <PHON kindOf="standard">[l|ɬ]uma[x|χ]</PHON>
             </M>
             <M id="bnNr-frog_Samingaz_S_39_W9M1">
-                <FORM kindOf="original">cia.</FORM>
+                <FORM kindOf="original">=cia.</FORM>
                 <PHON kindOf="original">ʨia</PHON>
-                <FORM kindOf="standard">cia.</FORM>
+                <FORM kindOf="standard">=cia.</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
             </M>
         </W>

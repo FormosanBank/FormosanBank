@@ -2305,8 +2305,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Ciang_S_39_W4">
@@ -2321,8 +2321,8 @@
                 <PHON kindOf="original">ai</PHON>
                 <FORM kindOf="standard">ai,</FORM>
                 <PHON kindOf="standard">ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">感嘆詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Ciang_S_39_W5">
@@ -2332,17 +2332,21 @@
             <PHON kindOf="standard">ɕin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">工焦&lt;完成貌&gt;-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IS&lt;PFV&gt;-</TRANSL>
-            <M id="bnNr-pear_Ciang_S_39_W5M0">
+            <M id="bnNr-pear_Ciang_S_39_W5M0_0">
                 <FORM kindOf="original">-in-</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">-in-</FORM>
                 <PHON kindOf="standard">in</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
             </M>
-            <M id="bnNr-pear_Ciang_S_39_W5M1">
+            <M id="bnNr-pear_Ciang_S_39_W5M0_1">
                 <FORM kindOf="original">s</FORM>
                 <PHON kindOf="original">s</PHON>
                 <FORM kindOf="standard">s</FORM>
                 <PHON kindOf="standard">s</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">工焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IS</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Ciang_S_39_W6">
@@ -2352,17 +2356,21 @@
             <PHON kindOf="standard">ɕin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">工焦&lt;完成貌&gt;-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IS&lt;PFV&gt;-</TRANSL>
-            <M id="bnNr-pear_Ciang_S_39_W6M0">
+            <M id="bnNr-pear_Ciang_S_39_W6M0_0">
                 <FORM kindOf="original">-in-</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">-in-</FORM>
                 <PHON kindOf="standard">in</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
             </M>
-            <M id="bnNr-pear_Ciang_S_39_W6M1">
+            <M id="bnNr-pear_Ciang_S_39_W6M0_1">
                 <FORM kindOf="original">s</FORM>
                 <PHON kindOf="original">s</PHON>
                 <FORM kindOf="standard">s</FORM>
                 <PHON kindOf="standard">s</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">工焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IS</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Ciang_S_39_W7">
@@ -2409,8 +2417,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Ciang_S_39_W10">
@@ -2489,8 +2497,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Ciang_S_39_W14">
@@ -2500,29 +2508,37 @@
             <PHON kindOf="standard">daiŋias</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;放置-處焦=斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;to.place-LF=OBL</TRANSL>
-            <M id="bnNr-pear_Ciang_S_39_W14M0">
+            <M id="bnNr-pear_Ciang_S_39_W14M0_0">
                 <FORM kindOf="original">-i-</FORM>
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">-i-</FORM>
                 <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
+            </M>
+            <M id="bnNr-pear_Ciang_S_39_W14M0_1">
+                <FORM kindOf="original">da-ngi</FORM>
+                <PHON kindOf="original">daŋi</PHON>
+                <FORM kindOf="standard">da-ngi</FORM>
+                <PHON kindOf="standard">daŋi</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">放置</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">to.place</TRANSL>
             </M>
             <M id="bnNr-pear_Ciang_S_39_W14M1">
-                <FORM kindOf="original">dangi</FORM>
-                <PHON kindOf="original">daŋi</PHON>
-                <FORM kindOf="standard">dangi</FORM>
-                <PHON kindOf="standard">daŋi</PHON>
-            </M>
-            <M id="bnNr-pear_Ciang_S_39_W14M2">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
             </M>
-            <M id="bnNr-pear_Ciang_S_39_W14M3">
-                <FORM kindOf="original">s,</FORM>
+            <M id="bnNr-pear_Ciang_S_39_W14M2">
+                <FORM kindOf="original">=s,</FORM>
                 <PHON kindOf="original">s</PHON>
-                <FORM kindOf="standard">s,</FORM>
+                <FORM kindOf="standard">=s,</FORM>
                 <PHON kindOf="standard">s</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Ciang_S_39_W15">
@@ -3173,8 +3189,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Ciang_S_53_W5">
@@ -3200,14 +3216,6 @@
             <PHON kindOf="standard">i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">躲藏</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-state-hide</TRANSL>
-            <M id="bnNr-pear_Ciang_S_53_W6M0">
-                <FORM kindOf="original">i</FORM>
-                <PHON kindOf="original">i</PHON>
-                <FORM kindOf="standard">i</FORM>
-                <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
-            </M>
         </W>
         <W id="bnNr-pear_Ciang_S_53_W7">
             <FORM kindOf="original">m-al-habin.</FORM>

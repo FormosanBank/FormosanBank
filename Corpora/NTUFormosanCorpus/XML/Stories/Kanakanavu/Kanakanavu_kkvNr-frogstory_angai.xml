@@ -7130,8 +7130,8 @@
                 <PHON kindOf="original">a*</PHON>
                 <FORM kindOf="standard">ah</FORM>
                 <PHON kindOf="standard">ah</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">感嘆</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">INTJ</TRANSL>
             </M>
         </W>
         <W id="kkvNr-frogstory_angai_S_155_W3">
@@ -7234,16 +7234,16 @@
                 <PHON kindOf="original">ara</PHON>
                 <FORM kindOf="standard">ara</FORM>
                 <PHON kindOf="standard">a[r|ɾ]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">ARA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">ARA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">變成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">become</TRANSL>
             </M>
             <M id="kkvNr-frogstory_angai_S_155_W7M1">
                 <FORM kindOf="original">pipining</FORM>
                 <PHON kindOf="original">pipiniŋ</PHON>
                 <FORM kindOf="standard">pipining</FORM>
                 <PHON kindOf="standard">pipiniŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">外面</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">outside</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">外面.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">outside.AF</TRANSL>
             </M>
         </W>
         <W id="kkvNr-frogstory_angai_S_155_W8">
@@ -13802,7 +13802,7 @@
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">COS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">狀態改變</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -13818,7 +13818,7 @@
                 <PHON kindOf="original">ŋuain</PHON>
                 <FORM kindOf="standard">nguain,</FORM>
                 <PHON kindOf="standard">ŋuain</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
             </M>
         </W>
@@ -13962,8 +13962,8 @@
                 <PHON kindOf="original">ʔ[e|ə]si</PHON>
                 <FORM kindOf="standard">'esi</FORM>
                 <PHON kindOf="standard">ʔesi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             </M>
         </W>
         <W id="kkvNr-frogstory_angai_S_304_W12">
@@ -14010,8 +14010,8 @@
                 <PHON kindOf="original">ʔ[e|ə]si</PHON>
                 <FORM kindOf="standard">'esi</FORM>
                 <PHON kindOf="standard">ʔesi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             </M>
         </W>
         <W id="kkvNr-frogstory_angai_S_304_W15">
@@ -14037,23 +14037,29 @@
             <PHON kindOf="standard">tiki[r|ɾ]iki[r|ɾ]iminkee</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;尋找.受焦=3SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;look.for.PF=3SG.GEN</TRANSL>
-            <M id="kkvNr-frogstory_angai_S_304_W16M0">
+            <M id="kkvNr-frogstory_angai_S_304_W16M0_0">
                 <FORM kindOf="original">-kiri-</FORM>
                 <PHON kindOf="original">kiri</PHON>
                 <FORM kindOf="standard">-kiri-</FORM>
                 <PHON kindOf="standard">ki[r|ɾ]i</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
+            </M>
+            <M id="kkvNr-frogstory_angai_S_304_W16M0_1">
+                <FORM kindOf="original">ti-kirimin</FORM>
+                <PHON kindOf="original">tikirimin</PHON>
+                <FORM kindOf="standard">ti-kirimin</FORM>
+                <PHON kindOf="standard">tiki[r|ɾ]imin</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">尋找.受焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">look.for.PF</TRANSL>
             </M>
             <M id="kkvNr-frogstory_angai_S_304_W16M1">
-                <FORM kindOf="original">tikirimin</FORM>
-                <PHON kindOf="original">tikirimin</PHON>
-                <FORM kindOf="standard">tikirimin</FORM>
-                <PHON kindOf="standard">tiki[r|ɾ]imin</PHON>
-            </M>
-            <M id="kkvNr-frogstory_angai_S_304_W16M2">
-                <FORM kindOf="original">kee</FORM>
+                <FORM kindOf="original">=kee</FORM>
                 <PHON kindOf="original">k[e|ə][e|ə]</PHON>
-                <FORM kindOf="standard">kee</FORM>
+                <FORM kindOf="standard">=kee</FORM>
                 <PHON kindOf="standard">kee</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
             </M>
         </W>
         <W id="kkvNr-frogstory_angai_S_304_W17">
@@ -14120,9 +14126,9 @@
                 <PHON kindOf="standard">ʦɨvɨ[r|ɾ]a</PHON>
             </M>
             <M id="kkvNr-frogstory_angai_S_304_W19M4">
-                <FORM kindOf="original">kee</FORM>
+                <FORM kindOf="original">=kee</FORM>
                 <PHON kindOf="original">k[e|ə][e|ə]</PHON>
-                <FORM kindOf="standard">kee</FORM>
+                <FORM kindOf="standard">=kee</FORM>
                 <PHON kindOf="standard">kee</PHON>
             </M>
         </W>
@@ -17693,8 +17699,8 @@
                 <PHON kindOf="original">makasua</PHON>
                 <FORM kindOf="standard">makasua</FORM>
                 <PHON kindOf="standard">makasua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">like.that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">in.that.way.AF</TRANSL>
             </M>
         </W>
         <W id="kkvNr-frogstory_angai_S_385_W5">
@@ -17798,7 +17804,7 @@
                 <FORM kindOf="standard">manu</FORM>
                 <PHON kindOf="standard">manu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">小孩</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">child</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">kid</TRANSL>
             </M>
         </W>
         <W id="kkvNr-frogstory_angai_S_385_W11">
@@ -17829,8 +17835,8 @@
                 <PHON kindOf="original">kis*</PHON>
                 <FORM kindOf="standard">kisʉ</FORM>
                 <PHON kindOf="standard">kisɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">稱作</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">call</TRANSL>
             </M>
             <M id="kkvNr-frogstory_angai_S_385_W12M1">
                 <FORM kindOf="original">ʉn.</FORM>
@@ -17838,7 +17844,7 @@
                 <FORM kindOf="standard">ʉn.</FORM>
                 <PHON kindOf="standard">ɨn</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PV</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
         </W>
         <W id="kkvNr-frogstory_angai_S_385_W13">
@@ -17848,14 +17854,6 @@
             <PHON kindOf="standard">ɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FIL說-那個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            <M id="kkvNr-frogstory_angai_S_385_W13M0">
-                <FORM kindOf="original">ʉ</FORM>
-                <PHON kindOf="original">*</PHON>
-                <FORM kindOf="standard">ʉ</FORM>
-                <PHON kindOf="standard">ɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            </M>
         </W>
         <W id="kkvNr-frogstory_angai_S_385_W14">
             <FORM kindOf="original">po-isua</FORM>

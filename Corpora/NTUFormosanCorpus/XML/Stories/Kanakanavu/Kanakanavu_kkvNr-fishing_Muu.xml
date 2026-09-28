@@ -1863,7 +1863,7 @@
                 <FORM kindOf="standard">pinarupu</FORM>
                 <PHON kindOf="standard">pina[r|ɾ]upu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">釣魚</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">fishing</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go.fishing</TRANSL>
             </M>
         </W>
         <W id="kkvNr-fishing_Muu_S_51_W3">
@@ -2022,8 +2022,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na,</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">地方</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="kkvNr-fishing_Muu_S_51_W12">
@@ -19703,8 +19703,8 @@
                 <PHON kindOf="original">aratakar*</PHON>
                 <FORM kindOf="standard">aratakarʉ</FORM>
                 <PHON kindOf="standard">a[r|ɾ]ataka[r|ɾ]ɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">站立</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">stand.up</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">站</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">stand</TRANSL>
             </M>
         </W>
         <W id="kkvNr-fishing_Muu_S_419_W1">
@@ -19802,17 +19802,21 @@
             <PHON kindOf="standard">ʦɨmɨ[r|ɾ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;看</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AV&gt;see</TRANSL>
-            <M id="kkvNr-fishing_Muu_S_419_W6M0">
+            <M id="kkvNr-fishing_Muu_S_419_W6M0_0">
                 <FORM kindOf="original">-ʉm-</FORM>
                 <PHON kindOf="original">*m</PHON>
                 <FORM kindOf="standard">-ʉm-</FORM>
                 <PHON kindOf="standard">ɨm</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AV&gt;</TRANSL>
             </M>
-            <M id="kkvNr-fishing_Muu_S_419_W6M1">
-                <FORM kindOf="original">cʉra</FORM>
+            <M id="kkvNr-fishing_Muu_S_419_W6M0_1">
+                <FORM kindOf="original">c-ʉra</FORM>
                 <PHON kindOf="original">ʦ*ra</PHON>
-                <FORM kindOf="standard">cʉra</FORM>
+                <FORM kindOf="standard">c-ʉra</FORM>
                 <PHON kindOf="standard">ʦɨ[r|ɾ]a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
         </W>
         <W id="kkvNr-fishing_Muu_S_419_W7">
@@ -19875,8 +19879,8 @@
                 <PHON kindOf="original">aka</PHON>
                 <FORM kindOf="standard">aka</FORM>
                 <PHON kindOf="standard">aka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">祈使.否定</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IMP.NEG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">不好</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">not.good</TRANSL>
             </M>
         </W>
         <W id="kkvNr-fishing_Muu_S_419_W11">
@@ -19995,8 +19999,8 @@
                 <PHON kindOf="original">kan</PHON>
                 <FORM kindOf="standard">kan</FORM>
                 <PHON kindOf="standard">kan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">年</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">year</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KAN</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">KAN</TRANSL>
             </M>
         </W>
         <W id="kkvNr-fishing_Muu_S_419_W18">
@@ -20006,6 +20010,14 @@
             <PHON kindOf="standard">api</PHON>
             <TRANSL xml:lang="zho" kindOf="original">CAU=</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU=</TRANSL>
+            <M id="kkvNr-fishing_Muu_S_419_W18M0">
+                <FORM kindOf="original">api</FORM>
+                <PHON kindOf="original">api</PHON>
+                <FORM kindOf="standard">api</FORM>
+                <PHON kindOf="standard">api</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">CAU</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
+            </M>
         </W>
         <W id="kkvNr-fishing_Muu_S_419_W19">
             <FORM kindOf="original">pusia,</FORM>

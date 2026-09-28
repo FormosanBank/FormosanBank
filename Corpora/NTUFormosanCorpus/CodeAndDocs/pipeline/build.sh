@@ -14,8 +14,8 @@
 #   FB_DIALECTS  dialects.csv to resolve dialect/glottocode (default: <bank>/dialects.csv)
 #   NTU_BUILD_OUT  install here instead of ../../XML (trial builds; XML/ untouched)
 #   NTU_BUILD_CHECKPOINT=pre-cleanup
-#              skip the clean-up steps -- remove_empty_translations, the prune
-#              of unsupported W/M tiers, and borrow_missing_morphemes. They exist
+#              skip the clean-up steps -- remove_empty_translations and the prune
+#              of unsupported W/M tiers. They exist
 #              to deal with what could not be fixed, so a trial of a *fix* is
 #              compared before them (qa/try_gloss_shift_repairs.sh does this).
 #              Never publish a checkpoint build.
@@ -23,7 +23,7 @@
 # Each subcorpus runs the same three phases:
 #   A. builder      pipeline_{grammar,sentences,stories}.py: JSON -> XML
 #   B. repairs      shared FormosanBank cleaning + the corpus repair scripts
-#   C. tiers        prune/borrow, id alignment, standard tier + PHON (Ortho94)
+#   C. tiers        punctuation morphemes, prune, id alignment, standard tier + PHON (Ortho94)
 #
 # Every phase is idempotent; rerunning is safe.
 
@@ -62,15 +62,20 @@ common_repairs() {   # $1 = work dir
   run "clean_xml"              "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$W"
   TAIL=0 run "normalize_serialization (lxml)" "$SCR/normalize_serialization.py" --style lxml "$W"
   run "repair_s_gloss_shift"   "$PIPE/repair_s_gloss_shift.py" --xml_dir "$W"
+  run "borrow_shift_blank_glosses" "$PIPE/borrow_shift_blank_glosses.py" --xml_dir "$W" \
+      --codedocs "$CODEDOCS" --report "$CORPUS/logs/gloss_shift_borrowed_Grammar.tsv"
 }
 
 # ---------------------------------------------------------------- phase C
 # Tier construction, shared by all three subcorpora.
-finish_tiers() {     # $1 = work dir
-  local W="$1"
+finish_tiers() {     # $1 = work dir, $2 = subcorpus name (for report file names)
+  local W="$1" SUB="$2"
   run "resolve_slash_alternatives" "$PIPE/resolve_slash_alternatives.py" --xml_dir "$W"
-  cleanup "prune non-conforming M"     "$PIPE/apply_prune_and_mirror.py" --xml_dir "$W" --only prune
-  cleanup "borrow_missing_morphemes"   "$PIPE/borrow_missing_morphemes.py" --xml_dir "$W"
+  # Punctuation-only morphemes (ruling 2026-09-28): a repair, not clean-up.
+  # Escalations -- cases the rule does not resolve -- go to logs/ for review.
+  run "drop_punctuation_morphemes" "$PIPE/drop_punctuation_morphemes.py" --xml_dir "$W" \
+      --report "$CORPUS/logs/punctuation_morpheme_escalations_${SUB}.tsv"
+  cleanup "prune non-conforming W/M"   "$PIPE/apply_prune_and_mirror.py" --xml_dir "$W"
   run_opt "mark_original_glosses"   "$SCR/mark_original_glosses.py" --xml-dir "$W"
   run "align_ids"                  "$PIPE/align_ids.py" --xml_dir "$W"
   step "standard tier + PHON (Ortho94)"
@@ -110,7 +115,7 @@ build_grammar() {
   run "resolve_inline_parentheticals"   "$SCR/resolve_inline_parentheticals.py" --xml_dir "$W"
   cleanup "remove_empty_translations"   "$SCR/remove_empty_translations.py" --xml-dir "$W"
   run "propagate_clitic_boundaries"     "$SCR/propagate_clitic_boundaries.py" --xml_dir "$W"
-  finish_tiers "$W"
+  finish_tiers "$W" Grammar
   install_into "$W" Grammar
 }
 
@@ -131,6 +136,8 @@ build_flat() {       # $1 = sentences|stories
   run "repair_l2_markers"      "$SCR/repair_l2_markers.py" --xml_dir "$W"
   run "borrow_segmentation"    "$SCR/borrow_segmentation.py" --xml_dir "$W" --source_dir "$CODEDOCS"
   run "repair_s_gloss_shift"   "$PIPE/repair_s_gloss_shift.py" --xml_dir "$W"
+  run "borrow_shift_blank_glosses" "$PIPE/borrow_shift_blank_glosses.py" --xml_dir "$W" \
+      --codedocs "$CODEDOCS" --report "$CORPUS/logs/gloss_shift_borrowed_${out}.tsv"
   run "uniquify_sentence_ids"  "$SCR/uniquify_sentence_ids.py" --xml_dir "$W"
   run "remove_annotation_codes" "$SCR/remove_annotation_codes.py" --xml_dir "$W" --source_dir "$CODEDOCS"
   run "fix_double_encoded_glosses"      "$SCR/fix_double_encoded_glosses.py" --xml_dir "$W"
@@ -140,7 +147,7 @@ build_flat() {       # $1 = sentences|stories
   run "split_optional_parentheticals"   "$SCR/split_optional_parentheticals.py" --xml_dir "$W"
   cleanup "remove_empty_translations"   "$SCR/remove_empty_translations.py" --xml-dir "$W"
   run "propagate_clitic_boundaries"      "$SCR/propagate_clitic_boundaries.py" --xml_dir "$W"
-  finish_tiers "$W"
+  finish_tiers "$W" "$out"
   install_into "$W" "$out"
 }
 

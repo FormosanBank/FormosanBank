@@ -2281,8 +2281,8 @@
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_49_W2">
@@ -2292,6 +2292,14 @@
             <PHON kindOf="standard">ti</PHON>
             <TRANSL xml:lang="zho" kindOf="original">NCM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NCM</TRANSL>
+            <M id="KavCon-marriage_abas_pilaw_S_49_W2M0">
+                <FORM kindOf="original">ti</FORM>
+                <PHON kindOf="original">ti</PHON>
+                <FORM kindOf="standard">ti</FORM>
+                <PHON kindOf="standard">ti</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">NCM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NCM</TRANSL>
+            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_49_W3">
             <FORM kindOf="original">kingciang</FORM>
@@ -2337,8 +2345,8 @@
                 <PHON kindOf="original">mana</PHON>
                 <FORM kindOf="standard">mana</FORM>
                 <PHON kindOf="standard">mana</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">或許</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">perhaps</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">為什麼</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">why</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_49_W6">
@@ -3405,14 +3413,6 @@
             <PHON kindOf="standard">p</PHON>
             <TRANSL xml:lang="zho" kindOf="original">結婚-處焦=完成</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">marry-LF=PFV</TRANSL>
-            <M id="KavCon-marriage_abas_pilaw_S_82_W0M0">
-                <FORM kindOf="original">P</FORM>
-                <PHON kindOf="original">p</PHON>
-                <FORM kindOf="standard">P</FORM>
-                <PHON kindOf="standard">p</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">可能</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">possible</TRANSL>
-            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_82_W1">
             <FORM kindOf="original">sinapaw-an=ti</FORM>
@@ -3434,9 +3434,9 @@
                 <PHON kindOf="standard">an</PHON>
             </M>
             <M id="KavCon-marriage_abas_pilaw_S_82_W1M2">
-                <FORM kindOf="original">ti</FORM>
+                <FORM kindOf="original">=ti</FORM>
                 <PHON kindOf="original">ti</PHON>
-                <FORM kindOf="standard">ti</FORM>
+                <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
             </M>
         </W>
@@ -7074,7 +7074,7 @@
                 <PHON kindOf="original">ara</PHON>
                 <FORM kindOf="standard">ala</FORM>
                 <PHON kindOf="standard">ara</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">想要</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
             </M>
         </W>
@@ -7170,7 +7170,7 @@
                 <PHON kindOf="original">tama</PHON>
                 <FORM kindOf="standard">tama</FORM>
                 <PHON kindOf="standard">tama</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">爸爸</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">父親</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">father</TRANSL>
             </M>
             <M id="KavCon-marriage_abas_pilaw_S_166_W6M1">
@@ -7194,8 +7194,8 @@
                 <PHON kindOf="original">kjami</PHON>
                 <FORM kindOf="standard">kyami.</FORM>
                 <PHON kindOf="standard">kjami</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">疑惑</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">wonder</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this.way</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_166_W8">
@@ -7242,8 +7242,8 @@
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_166_W11">
@@ -7258,7 +7258,7 @@
                 <PHON kindOf="original">tama</PHON>
                 <FORM kindOf="standard">tama</FORM>
                 <PHON kindOf="standard">tama</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">爸爸</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">父親</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">father</TRANSL>
             </M>
             <M id="KavCon-marriage_abas_pilaw_S_166_W11M1">
@@ -7282,8 +7282,8 @@
                 <PHON kindOf="original">kjami</PHON>
                 <FORM kindOf="standard">kyami,</FORM>
                 <PHON kindOf="standard">kjami</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this.way</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_166_W13">
@@ -7298,8 +7298,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">A</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.way</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_166_W14">
@@ -7309,14 +7309,6 @@
             <PHON kindOf="standard">najau</PHON>
             <TRANSL xml:lang="zho" kindOf="original">交互-拉</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">REC-pull</TRANSL>
-            <M id="KavCon-marriage_abas_pilaw_S_166_W14M0">
-                <FORM kindOf="original">nayau</FORM>
-                <PHON kindOf="original">najau</PHON>
-                <FORM kindOf="standard">nayau</FORM>
-                <PHON kindOf="standard">najau</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that.way</TRANSL>
-            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_166_W15">
             <FORM kindOf="original">sim-tebes,</FORM>
@@ -7728,8 +7720,8 @@
                 <PHON kindOf="original">*</PHON>
                 <FORM kindOf="standard">o,</FORM>
                 <PHON kindOf="standard">*</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">喔</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">oh</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">感嘆</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_186_W1">
@@ -7768,8 +7760,8 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma,</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">MA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">MA</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_186_W3">
@@ -7811,6 +7803,14 @@
             <PHON kindOf="standard">sa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">往-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">to-</TRANSL>
+            <M id="KavCon-marriage_abas_pilaw_S_186_W5M0">
+                <FORM kindOf="original">sa</FORM>
+                <PHON kindOf="original">sa</PHON>
+                <FORM kindOf="standard">sa</FORM>
+                <PHON kindOf="standard">sa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">往</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">to</TRANSL>
+            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_186_W6">
             <FORM kindOf="original">iza</FORM>
@@ -7824,8 +7824,8 @@
                 <PHON kindOf="original">iza</PHON>
                 <FORM kindOf="standard">iza</FORM>
                 <PHON kindOf="standard">i[z|r]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某物</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">something</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_186_W7">
@@ -7840,8 +7840,8 @@
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u,</FORM>
                 <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">CN</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_186_W8">
@@ -7851,6 +7851,14 @@
             <PHON kindOf="standard">sa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">往-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">to-</TRANSL>
+            <M id="KavCon-marriage_abas_pilaw_S_186_W8M0">
+                <FORM kindOf="original">sa</FORM>
+                <PHON kindOf="original">sa</PHON>
+                <FORM kindOf="standard">sa</FORM>
+                <PHON kindOf="standard">sa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">往</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">to</TRANSL>
+            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_186_W9">
             <FORM kindOf="original">lalu'ung</FORM>
@@ -8292,8 +8300,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_201_W1">
@@ -8364,8 +8372,8 @@
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta,</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_201_W4">
@@ -8399,6 +8407,14 @@
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
+            <M id="KavCon-marriage_abas_pilaw_S_201_W5M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_201_W6">
             <FORM kindOf="original">inpan-an</FORM>
@@ -8436,8 +8452,8 @@
                 <PHON kindOf="original">ju</PHON>
                 <FORM kindOf="standard">yu,</FORM>
                 <PHON kindOf="standard">ju</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
     </S>
@@ -12814,6 +12830,14 @@
             <PHON kindOf="standard">ti</PHON>
             <TRANSL xml:lang="zho" kindOf="original">NCM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NCM</TRANSL>
+            <M id="KavCon-marriage_abas_pilaw_S_307_W2M0">
+                <FORM kindOf="original">ti</FORM>
+                <PHON kindOf="original">ti</PHON>
+                <FORM kindOf="standard">ti</FORM>
+                <PHON kindOf="standard">ti</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">NCM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NCM</TRANSL>
+            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_307_W3">
             <FORM kindOf="original">pilaw,</FORM>
@@ -12939,8 +12963,8 @@
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m,</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">M</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">M</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_307_W9">
@@ -16848,8 +16872,8 @@
                 <PHON kindOf="original">pasi</PHON>
                 <FORM kindOf="standard">pasi</FORM>
                 <PHON kindOf="standard">pasi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">可能</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">possible</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_410_W2">
@@ -16859,14 +16883,6 @@
             <PHON kindOf="standard">ai[z|r]ipna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">煮=關係詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">cook=REL</TRANSL>
-            <M id="KavCon-marriage_abas_pilaw_S_410_W2M0">
-                <FORM kindOf="original">aizipna</FORM>
-                <PHON kindOf="original">aizipna</PHON>
-                <FORM kindOf="standard">aizipna</FORM>
-                <PHON kindOf="standard">ai[z|r]ipna</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
-            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_410_W3">
             <FORM kindOf="original">Ramaz=ay,</FORM>
@@ -16880,9 +16896,9 @@
                 <PHON kindOf="standard">ʁama[z|r]</PHON>
             </M>
             <M id="KavCon-marriage_abas_pilaw_S_410_W3M1">
-                <FORM kindOf="original">ay,</FORM>
+                <FORM kindOf="original">=ay,</FORM>
                 <PHON kindOf="original">aj</PHON>
-                <FORM kindOf="standard">ay,</FORM>
+                <FORM kindOf="standard">=ay,</FORM>
                 <PHON kindOf="standard">aj</PHON>
             </M>
         </W>
@@ -18078,6 +18094,14 @@
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
+            <M id="KavCon-marriage_abas_pilaw_S_436_W2M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_436_W3">
             <FORM kindOf="original">iza-an</FORM>
@@ -18158,6 +18182,14 @@
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
+            <M id="KavCon-marriage_abas_pilaw_S_436_W6M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_436_W7">
             <FORM kindOf="original">qidis-an</FORM>
@@ -18283,7 +18315,7 @@
                 <PHON kindOf="original">tajan</PHON>
                 <FORM kindOf="standard">tayan</FORM>
                 <PHON kindOf="standard">tajan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那裡</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那邊</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
             </M>
         </W>
@@ -18585,23 +18617,29 @@
             <PHON kindOf="standard">smisupama</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;哺乳=還</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;breast.feed=still</TRANSL>
-            <M id="KavCon-marriage_abas_pilaw_S_448_W3M0">
+            <M id="KavCon-marriage_abas_pilaw_S_448_W3M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+            </M>
+            <M id="KavCon-marriage_abas_pilaw_S_448_W3M0_1">
+                <FORM kindOf="original">s-isu</FORM>
+                <PHON kindOf="original">sisu</PHON>
+                <FORM kindOf="standard">s-isu</FORM>
+                <PHON kindOf="standard">sisu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">哺乳</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">breast.feed</TRANSL>
             </M>
             <M id="KavCon-marriage_abas_pilaw_S_448_W3M1">
-                <FORM kindOf="original">sisu</FORM>
-                <PHON kindOf="original">sisu</PHON>
-                <FORM kindOf="standard">sisu</FORM>
-                <PHON kindOf="standard">sisu</PHON>
-            </M>
-            <M id="KavCon-marriage_abas_pilaw_S_448_W3M2">
-                <FORM kindOf="original">pama</FORM>
+                <FORM kindOf="original">=pama</FORM>
                 <PHON kindOf="original">pama</PHON>
-                <FORM kindOf="standard">pama</FORM>
+                <FORM kindOf="standard">=pama</FORM>
                 <PHON kindOf="standard">pama</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">還</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">still</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_448_W4">
@@ -18635,6 +18673,14 @@
             <PHON kindOf="standard">ti</PHON>
             <TRANSL xml:lang="zho" kindOf="original">NCM-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NCM-</TRANSL>
+            <M id="KavCon-marriage_abas_pilaw_S_448_W5M0">
+                <FORM kindOf="original">ti</FORM>
+                <PHON kindOf="original">ti</PHON>
+                <FORM kindOf="standard">ti</FORM>
+                <PHON kindOf="standard">ti</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">NCM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NCM</TRANSL>
+            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_448_W6">
             <FORM kindOf="original">kimlan.</FORM>
@@ -18813,6 +18859,14 @@
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
+            <M id="KavCon-marriage_abas_pilaw_S_458_W1M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_458_W2">
             <FORM kindOf="original">ta-qumut-an</FORM>
@@ -18858,8 +18912,8 @@
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si.</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
     </S>
@@ -23594,8 +23648,8 @@
                 <PHON kindOf="original">mana</PHON>
                 <FORM kindOf="standard">mana</FORM>
                 <PHON kindOf="standard">mana</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">或許</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">perhaps</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">為什麼</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">why</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_587_W2">
@@ -23610,8 +23664,8 @@
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_587_W3">
@@ -23714,8 +23768,8 @@
                 <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_587_W8">
@@ -23741,6 +23795,14 @@
             <PHON kindOf="standard">ti</PHON>
             <TRANSL xml:lang="zho" kindOf="original">NCM-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NCM-</TRANSL>
+            <M id="KavCon-marriage_abas_pilaw_S_587_W9M0">
+                <FORM kindOf="original">ti</FORM>
+                <PHON kindOf="original">ti</PHON>
+                <FORM kindOf="standard">ti</FORM>
+                <PHON kindOf="standard">ti</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">NCM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NCM</TRANSL>
+            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_587_W10">
             <FORM kindOf="original">beliR.</FORM>
@@ -24873,8 +24935,7 @@
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">P</FORM>
                 <PHON kindOf="standard">p</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">可能</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">possible</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_620_W1">
@@ -24884,14 +24945,6 @@
             <PHON kindOf="standard">**</PHON>
             <TRANSL xml:lang="zho" kindOf="original">苞-1IPL.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="KavCon-marriage_abas_pilaw_S_620_W1M0">
-                <FORM kindOf="original">XX</FORM>
-                <PHON kindOf="original">**</PHON>
-                <FORM kindOf="standard">XX</FORM>
-                <PHON kindOf="standard">**</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_620_W2">
             <FORM kindOf="original">mulay-ta</FORM>
@@ -24928,8 +24981,8 @@
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_620_W4">
@@ -24937,14 +24990,6 @@
             <PHON kindOf="original">unaj</PHON>
             <FORM kindOf="standard">unay,</FORM>
             <PHON kindOf="standard">unaj</PHON>
-            <M id="KavCon-marriage_abas_pilaw_S_620_W4M0">
-                <FORM kindOf="original">unay,</FORM>
-                <PHON kindOf="original">unaj</PHON>
-                <FORM kindOf="standard">unay,</FORM>
-                <PHON kindOf="standard">unaj</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
-            </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_620_W5">
             <FORM kindOf="original">yus=ti</FORM>
@@ -24998,8 +25043,8 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma,</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">MA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">MA</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_620_W8">
@@ -25054,8 +25099,8 @@
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya,</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="KavCon-marriage_abas_pilaw_S_620_W10">
@@ -25118,8 +25163,8 @@
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en.</FORM>
                 <PHON kindOf="standard">ən</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">EN</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">EN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">對</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             </M>
         </W>
     </S>

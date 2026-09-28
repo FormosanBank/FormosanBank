@@ -2708,23 +2708,28 @@
             <PHON kindOf="standard">numanama[r|ɾ]ɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;-燒</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">N&lt;AF&gt;A-burn,</TRANSL>
-            <M id="kkvNr_sowing_Paicu_S_37_W0M0">
+            <M id="kkvNr_sowing_Paicu_S_37_W0M0_0">
                 <FORM kindOf="original">-um-</FORM>
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
                 <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+            </M>
+            <M id="kkvNr_sowing_Paicu_S_37_W0M0_1">
+                <FORM kindOf="original">n-a</FORM>
+                <PHON kindOf="original">na</PHON>
+                <FORM kindOf="standard">n-a</FORM>
+                <PHON kindOf="standard">na</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">NA</TRANSL>
             </M>
             <M id="kkvNr_sowing_Paicu_S_37_W0M1">
-                <FORM kindOf="original">na</FORM>
-                <PHON kindOf="original">na</PHON>
-                <FORM kindOf="standard">na</FORM>
-                <PHON kindOf="standard">na</PHON>
-            </M>
-            <M id="kkvNr_sowing_Paicu_S_37_W0M2">
                 <FORM kindOf="original">namarʉ,</FORM>
                 <PHON kindOf="original">namar*</PHON>
                 <FORM kindOf="standard">namarʉ,</FORM>
                 <PHON kindOf="standard">nama[r|ɾ]ɨ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">燒</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">burn,</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sowing_Paicu_S_37_W1">
@@ -2783,8 +2788,8 @@
                 <PHON kindOf="original">u*</PHON>
                 <FORM kindOf="standard">UH</FORM>
                 <PHON kindOf="standard">uh</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sowing_Paicu_S_37_W4">
@@ -2807,8 +2812,8 @@
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">狀態改變</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sowing_Paicu_S_37_W5">
@@ -5385,7 +5390,7 @@
                 <PHON kindOf="original">ʦau</PHON>
                 <FORM kindOf="standard">cau</FORM>
                 <PHON kindOf="standard">ʦau</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">人們</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">people</TRANSL>
             </M>
         </W>
@@ -5454,24 +5459,18 @@
                 <PHON kindOf="original">moʦa</PHON>
                 <FORM kindOf="standard">moca</FORM>
                 <PHON kindOf="standard">moʦa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">走</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">walk</TRANSL>
             </M>
             <M id="kkvNr_sowing_Paicu_S_81_W1M1">
                 <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">ʦi</PHON>
                 <FORM kindOf="standard">=ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PST</TRANSL>
             </M>
             <M id="kkvNr_sowing_Paicu_S_81_W1M2">
                 <FORM kindOf="original">=kia</FORM>
                 <PHON kindOf="original">kia</PHON>
                 <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sowing_Paicu_S_81_W2">
@@ -5486,8 +5485,8 @@
                 <PHON kindOf="original">tanasa</PHON>
                 <FORM kindOf="standard">tanasa.</FORM>
                 <PHON kindOf="standard">tanasa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">家</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">home</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">家屋</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
             </M>
         </W>
     </S>

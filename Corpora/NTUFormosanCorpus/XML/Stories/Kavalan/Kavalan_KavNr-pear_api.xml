@@ -2946,8 +2946,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
             </M>
         </W>
         <W id="KavNr-pear_api_S_61_W2">
@@ -2981,17 +2981,21 @@
             <PHON kindOf="standard">smapun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;一個一個撿</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;pick.one.by.one</TRANSL>
-            <M id="KavNr-pear_api_S_61_W3M0">
+            <M id="KavNr-pear_api_S_61_W3M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KavNr-pear_api_S_61_W3M1">
-                <FORM kindOf="original">sapun</FORM>
+            <M id="KavNr-pear_api_S_61_W3M0_1">
+                <FORM kindOf="original">s-apun</FORM>
                 <PHON kindOf="original">sapun</PHON>
-                <FORM kindOf="standard">sapun</FORM>
+                <FORM kindOf="standard">s-apun</FORM>
                 <PHON kindOf="standard">sapun</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">一個一個撿</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">pick.one.by.one</TRANSL>
             </M>
         </W>
         <W id="KavNr-pear_api_S_61_W4">
@@ -3017,6 +3021,14 @@
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
+            <M id="KavNr-pear_api_S_61_W5M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
         </W>
         <W id="KavNr-pear_api_S_61_W6">
             <FORM kindOf="original">qeRawas-an</FORM>
@@ -3119,8 +3131,8 @@
                 <PHON kindOf="original">uman</PHON>
                 <FORM kindOf="standard">uman</FORM>
                 <PHON kindOf="standard">uman</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">也</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">also</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">再</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">again</TRANSL>
             </M>
         </W>
         <W id="KavNr-pear_api_S_64_W2">
@@ -3130,6 +3142,14 @@
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
+            <M id="KavNr-pear_api_S_64_W2M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
         </W>
         <W id="KavNr-pear_api_S_64_W3">
             <FORM kindOf="original">iza-an</FORM>
@@ -3167,8 +3187,8 @@
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u,</FORM>
                 <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">CN</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
         <W id="KavNr-pear_api_S_64_W5">
@@ -3178,6 +3198,14 @@
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
+            <M id="KavNr-pear_api_S_64_W5M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
         </W>
         <W id="KavNr-pear_api_S_64_W6">
             <FORM kindOf="original">qitun-an-na,</FORM>

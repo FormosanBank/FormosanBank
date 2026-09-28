@@ -6859,17 +6859,21 @@
             <PHON kindOf="standard">[s|ɕ]umkuʔ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;放</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;put</TRANSL>
-            <M id="AtaNr-proposal_Takun_S_82_W0M0">
+            <M id="AtaNr-proposal_Takun_S_82_W0M0_0">
                 <FORM kindOf="original">-um-</FORM>
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
                 <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="AtaNr-proposal_Takun_S_82_W0M1">
-                <FORM kindOf="original">sku'</FORM>
+            <M id="AtaNr-proposal_Takun_S_82_W0M0_1">
+                <FORM kindOf="original">s-ku'</FORM>
                 <PHON kindOf="original">skuʔ</PHON>
-                <FORM kindOf="standard">sku'</FORM>
+                <FORM kindOf="standard">s-ku'</FORM>
                 <PHON kindOf="standard">[s|ɕ]kuʔ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">放</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">put</TRANSL>
             </M>
         </W>
         <W id="AtaNr-proposal_Takun_S_82_W1">
@@ -6900,8 +6904,8 @@
                 <PHON kindOf="original">riax</PHON>
                 <FORM kindOf="standard">riax</FORM>
                 <PHON kindOf="standard">riax</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">日子</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">day</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">日期</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">date</TRANSL>
             </M>
         </W>
         <W id="AtaNr-proposal_Takun_S_82_W3">
@@ -6916,7 +6920,7 @@
                 <PHON kindOf="original">ru</PHON>
                 <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">ru</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">且</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             </M>
         </W>
@@ -6927,6 +6931,14 @@
             <PHON kindOf="standard">mu[s|ɕ]</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            <M id="AtaNr-proposal_Takun_S_82_W4M0">
+                <FORM kindOf="original">mus</FORM>
+                <PHON kindOf="original">mus</PHON>
+                <FORM kindOf="standard">mus</FORM>
+                <PHON kindOf="standard">mu[s|ɕ]</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            </M>
         </W>
         <W id="AtaNr-proposal_Takun_S_82_W5">
             <FORM kindOf="original">maka-piya'</FORM>
@@ -7012,8 +7024,8 @@
                 <PHON kindOf="original">maħa</PHON>
                 <FORM kindOf="standard">maha</FORM>
                 <PHON kindOf="standard">maħa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="AtaNr-proposal_Takun_S_82_W10">
@@ -7044,8 +7056,8 @@
                 <PHON kindOf="original">ɣi</PHON>
                 <FORM kindOf="standard">gi</FORM>
                 <PHON kindOf="standard">ɣi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">因為</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             </M>
         </W>
         <W id="AtaNr-proposal_Takun_S_82_W12">
@@ -7092,8 +7104,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="AtaNr-proposal_Takun_S_82_W15">
@@ -7140,8 +7152,8 @@
                 <PHON kindOf="original">itaal</PHON>
                 <FORM kindOf="standard">itaal</FORM>
                 <PHON kindOf="standard">itaal</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">泰雅</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">Atayal</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">專名</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
             </M>
         </W>
         <W id="AtaNr-proposal_Takun_S_82_W18">

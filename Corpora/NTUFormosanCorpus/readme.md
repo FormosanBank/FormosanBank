@@ -153,7 +153,8 @@ subcorpus from JSON to XML in three phases — a per-subcorpus **builder**
 (`pipeline_grammar.py`, `pipeline_sentences.py`, `pipeline_stories.py`), a chain
 of **repairs** (`QC/cleaning/clean_xml.py` plus the scripts in
 `CodeAndDocs/scripts/`), and **tier construction** (alternate-reading
-resolution, M pruning per POL-054, id alignment per POL-037, then the standard
+resolution, word/morpheme-tier rules (see the pipeline README's "Word and morpheme
+tiers"), id alignment per POL-037, then the standard
 and PHON tiers against Ortho94). Each subcorpus is built from scratch in a temp
 directory and installed into `XML/` only on success, so rerunning is safe and
 should reproduce the same bytes. The steps, the data tables that carry the

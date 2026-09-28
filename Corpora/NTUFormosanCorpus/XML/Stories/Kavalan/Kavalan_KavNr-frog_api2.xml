@@ -383,8 +383,8 @@
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             </M>
         </W>
         <W id="KavNr-frog_api2_S_8_W1">
@@ -399,8 +399,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a,</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="KavNr-frog_api2_S_8_W2">
@@ -455,8 +455,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
             </M>
         </W>
         <W id="KavNr-frog_api2_S_8_W5">
@@ -466,6 +466,14 @@
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
+            <M id="KavNr-frog_api2_S_8_W5M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
         </W>
         <W id="KavNr-frog_api2_S_8_W6">
             <FORM kindOf="original">puduq-an</FORM>
@@ -1205,8 +1213,8 @@
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             </M>
         </W>
         <W id="KavNr-frog_api2_S_26_W1">
@@ -1221,8 +1229,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="KavNr-frog_api2_S_26_W2">
@@ -1256,17 +1264,21 @@
             <PHON kindOf="standard">tmaita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;看</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;see</TRANSL>
-            <M id="KavNr-frog_api2_S_26_W3M0">
+            <M id="KavNr-frog_api2_S_26_W3M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KavNr-frog_api2_S_26_W3M1">
-                <FORM kindOf="original">taita,</FORM>
+            <M id="KavNr-frog_api2_S_26_W3M0_1">
+                <FORM kindOf="original">t-aita,</FORM>
                 <PHON kindOf="original">taita</PHON>
-                <FORM kindOf="standard">taita,</FORM>
+                <FORM kindOf="standard">t-aita,</FORM>
                 <PHON kindOf="standard">taita</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
         </W>
         <W id="KavNr-frog_api2_S_26_W4">
@@ -1308,6 +1320,14 @@
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
+            <M id="KavNr-frog_api2_S_26_W6M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
         </W>
         <W id="KavNr-frog_api2_S_26_W7">
             <FORM kindOf="original">puduq-an,</FORM>
@@ -10648,8 +10668,8 @@
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="KavNr-frog_api2_S_191_W2">
@@ -10723,6 +10743,14 @@
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
+            <M id="KavNr-frog_api2_S_191_W6M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
         </W>
         <W id="KavNr-frog_api2_S_191_W7">
             <FORM kindOf="original">zena-an,</FORM>
@@ -17927,6 +17955,14 @@
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
+            <M id="KavNr-frog_api2_S_322_W1M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
         </W>
         <W id="KavNr-frog_api2_S_322_W2">
             <FORM kindOf="original">uRu-an-na,</FORM>
@@ -17996,8 +18032,8 @@
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="KavNr-frog_api2_S_322_W5">

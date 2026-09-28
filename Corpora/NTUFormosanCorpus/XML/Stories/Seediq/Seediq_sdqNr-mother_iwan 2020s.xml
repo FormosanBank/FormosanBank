@@ -23297,16 +23297,16 @@
                 <PHON kindOf="original">maħa</PHON>
                 <FORM kindOf="standard">maha</FORM>
                 <PHON kindOf="standard">maħa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去.未來</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go.FUT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">助動詞.未來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AUX.FUT</TRANSL>
             </M>
             <M id="sdqNr-mother_iwan 2020s_S_395_W0M1">
                 <FORM kindOf="original">=namu</FORM>
                 <PHON kindOf="original">namu</PHON>
                 <FORM kindOf="standard">=namu</FORM>
                 <PHON kindOf="standard">namu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">2PL.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">2PL.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">2PL.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2PL.GEN</TRANSL>
             </M>
         </W>
         <W id="sdqNr-mother_iwan 2020s_S_395_W1">
@@ -23322,7 +23322,7 @@
                 <FORM kindOf="standard">naq</FORM>
                 <PHON kindOf="standard">naq</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">自己</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">seld</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">self</TRANSL>
             </M>
         </W>
         <W id="sdqNr-mother_iwan 2020s_S_395_W2">
@@ -23361,8 +23361,8 @@
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="sdqNr-mother_iwan 2020s_S_395_W4">
@@ -23377,8 +23377,8 @@
                 <PHON kindOf="original">so</PHON>
                 <FORM kindOf="standard">so</FORM>
                 <PHON kindOf="standard">so</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">像這樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">be.like.this</TRANSL>
             </M>
         </W>
         <W id="sdqNr-mother_iwan 2020s_S_395_W5">
@@ -23460,17 +23460,21 @@
             <PHON kindOf="standard">ɾmeŋo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;說</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;say</TRANSL>
-            <M id="sdqNr-mother_iwan 2020s_S_395_W8M0">
+            <M id="sdqNr-mother_iwan 2020s_S_395_W8M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="sdqNr-mother_iwan 2020s_S_395_W8M1">
-                <FORM kindOf="original">rengo</FORM>
+            <M id="sdqNr-mother_iwan 2020s_S_395_W8M0_1">
+                <FORM kindOf="original">r-engo</FORM>
                 <PHON kindOf="original">ɾeŋo</PHON>
-                <FORM kindOf="standard">rengo</FORM>
+                <FORM kindOf="standard">r-engo</FORM>
                 <PHON kindOf="standard">ɾeŋo</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
             </M>
         </W>
         <W id="sdqNr-mother_iwan 2020s_S_395_W9">
@@ -23509,9 +23513,9 @@
                 <PHON kindOf="standard">aħa</PHON>
             </M>
             <M id="sdqNr-mother_iwan 2020s_S_395_W10M2">
-                <FORM kindOf="original">namu</FORM>
+                <FORM kindOf="original">=namu</FORM>
                 <PHON kindOf="original">namu</PHON>
-                <FORM kindOf="standard">namu</FORM>
+                <FORM kindOf="standard">=namu</FORM>
                 <PHON kindOf="standard">namu</PHON>
             </M>
         </W>
@@ -23528,7 +23532,7 @@
                 <FORM kindOf="standard">naq</FORM>
                 <PHON kindOf="standard">naq</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">自己</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">seld</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">self</TRANSL>
             </M>
         </W>
         <W id="sdqNr-mother_iwan 2020s_S_395_W12">
@@ -23552,7 +23556,7 @@
                 <FORM kindOf="standard">kela.</FORM>
                 <PHON kindOf="standard">kela</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">知道</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">know</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">knowf</TRANSL>
             </M>
         </W>
     </S>

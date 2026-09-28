@@ -6805,7 +6805,7 @@
             <PHON kindOf="standard">[l|ɬ]a[l|ɬ]aʔ[l|ɬ]aun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;叫-受焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;cry-PF</TRANSL>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_40_W0M0">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_40_W0M0_0">
                 <FORM kindOf="original">-la-</FORM>
                 <PHON kindOf="original">[l|ɬ]a</PHON>
                 <FORM kindOf="standard">-la-</FORM>
@@ -6813,15 +6813,15 @@
                 <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_40_W0M1">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_40_W0M0_1">
                 <FORM kindOf="original">la'la</FORM>
                 <PHON kindOf="original">[l|ɬ]a[l|ɬ]a</PHON>
                 <FORM kindOf="standard">la'la</FORM>
                 <PHON kindOf="standard">[l|ɬ]aʔ[l|ɬ]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">叫喊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">call</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">叫</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cry</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_40_W0M2">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_40_W0M1">
                 <FORM kindOf="original">un</FORM>
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">un</FORM>
@@ -6842,8 +6842,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_40_W2">
@@ -6888,9 +6888,9 @@
                 <PHON kindOf="standard">[l|ɬ]uma[x|χ]</PHON>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_40_W3M3">
-                <FORM kindOf="original">a.</FORM>
+                <FORM kindOf="original">=a.</FORM>
                 <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">a.</FORM>
+                <FORM kindOf="standard">=a.</FORM>
                 <PHON kindOf="standard">a</PHON>
             </M>
         </W>
@@ -6957,8 +6957,8 @@
                 <PHON kindOf="original">isu</PHON>
                 <FORM kindOf="standard">isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">2SG.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">2SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">2SG.所有格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2SG.POSS</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_41_W3">
@@ -6973,8 +6973,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_41_W4">
@@ -6984,17 +6984,21 @@
             <PHON kindOf="standard">pinitʔia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;煮</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;cook</TRANSL>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_41_W4M0">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_41_W4M0_0">
                 <FORM kindOf="original">-in-</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">-in-</FORM>
                 <PHON kindOf="standard">in</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_41_W4M1">
-                <FORM kindOf="original">pit'ia</FORM>
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_41_W4M0_1">
+                <FORM kindOf="original">p-it'ia</FORM>
                 <PHON kindOf="original">pitia</PHON>
-                <FORM kindOf="standard">pit'ia</FORM>
+                <FORM kindOf="standard">p-it'ia</FORM>
                 <PHON kindOf="standard">pitʔia</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">煮</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cook</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_41_W5">
@@ -7029,8 +7033,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_41_W7">
@@ -8509,24 +8513,18 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_50_W2M1">
                 <FORM kindOf="original">=maz</FORM>
                 <PHON kindOf="original">mað</PHON>
                 <FORM kindOf="standard">=maz</FORM>
                 <PHON kindOf="standard">mað</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">什麼</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_50_W2M2">
                 <FORM kindOf="original">=a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_50_W3">
@@ -8536,17 +8534,21 @@
             <PHON kindOf="standard">pinitʔia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;煮</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;cook</TRANSL>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_50_W3M0">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_50_W3M0_0">
                 <FORM kindOf="original">-in-</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">-in-</FORM>
                 <PHON kindOf="standard">in</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_50_W3M1">
-                <FORM kindOf="original">pit'ia.</FORM>
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_50_W3M0_1">
+                <FORM kindOf="original">p-it'ia.</FORM>
                 <PHON kindOf="original">pitia</PHON>
-                <FORM kindOf="standard">pit'ia.</FORM>
+                <FORM kindOf="standard">p-it'ia.</FORM>
                 <PHON kindOf="standard">pitʔia</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">煮</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cook</TRANSL>
             </M>
         </W>
     </S>
@@ -8565,7 +8567,7 @@
             <PHON kindOf="standard">[l|ɬ]a[l|ɬ]aʔ[l|ɬ]aun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;叫-受焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;call-PF</TRANSL>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_51_W0M0">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_51_W0M0_0">
                 <FORM kindOf="original">-la-</FORM>
                 <PHON kindOf="original">[l|ɬ]a</PHON>
                 <FORM kindOf="standard">-la-</FORM>
@@ -8573,15 +8575,15 @@
                 <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_51_W0M1">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_51_W0M0_1">
                 <FORM kindOf="original">la'la</FORM>
                 <PHON kindOf="original">[l|ɬ]a[l|ɬ]a</PHON>
                 <FORM kindOf="standard">la'la</FORM>
                 <PHON kindOf="standard">[l|ɬ]aʔ[l|ɬ]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">叫喊</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">叫</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">call</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_51_W0M2">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_51_W0M1">
                 <FORM kindOf="original">un</FORM>
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">un</FORM>
@@ -8602,8 +8604,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_51_W2">
@@ -8658,8 +8660,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_51_W5">
@@ -8700,8 +8702,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_51_W7">
@@ -8716,8 +8718,8 @@
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_51_W8">
@@ -9289,8 +9291,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_56_W4">
@@ -9305,24 +9307,18 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_56_W4M1">
                 <FORM kindOf="original">=maz</FORM>
                 <PHON kindOf="original">mað</PHON>
                 <FORM kindOf="standard">=maz</FORM>
                 <PHON kindOf="standard">mað</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">什麼</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_56_W4M2">
                 <FORM kindOf="original">=a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_56_W5">
@@ -9475,8 +9471,8 @@
                 <PHON kindOf="original">saiʨia</PHON>
                 <FORM kindOf="standard">saicia</FORM>
                 <PHON kindOf="standard">saiʨia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_58_W2">
@@ -9529,9 +9525,9 @@
                 <PHON kindOf="standard">[l|ɬ]uma[x|χ]</PHON>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_58_W3M3">
-                <FORM kindOf="original">a</FORM>
+                <FORM kindOf="original">=a</FORM>
                 <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">a</FORM>
+                <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
             </M>
         </W>
@@ -9547,8 +9543,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu.</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_58_W5">
@@ -9667,8 +9663,8 @@
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">動</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">move</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_58_W8M2">
                 <FORM kindOf="original">daan.</FORM>
@@ -13081,8 +13077,8 @@
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">動</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">move</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_96_W4M2">
                 <FORM kindOf="original">daan</FORM>
@@ -13105,8 +13101,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_96_W6">
@@ -13121,8 +13117,8 @@
                 <PHON kindOf="original">aupa</PHON>
                 <FORM kindOf="standard">aupa</FORM>
                 <PHON kindOf="standard">aupa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">Q</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">因為</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_96_W7">
@@ -13138,7 +13134,7 @@
                 <FORM kindOf="standard">avun</FORM>
                 <PHON kindOf="standard">avun</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">趕走</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">drive.away</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">?</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_96_W7M1">
                 <FORM kindOf="original">un</FORM>
@@ -13146,7 +13142,6 @@
                 <FORM kindOf="standard">un</FORM>
                 <PHON kindOf="standard">un</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_96_W8">
@@ -13161,8 +13156,8 @@
                 <PHON kindOf="original">mas</PHON>
                 <FORM kindOf="standard">mas,</FORM>
                 <PHON kindOf="standard">mas</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_96_W9">
@@ -13215,8 +13210,8 @@
                 <PHON kindOf="original">saiʨia</PHON>
                 <FORM kindOf="standard">saicia</FORM>
                 <PHON kindOf="standard">saiʨia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_96_W11">
@@ -13231,7 +13226,7 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at.</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
@@ -13482,8 +13477,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_102_W3">
@@ -13514,8 +13509,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_102_W5">
@@ -13530,24 +13525,18 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_102_W5M1">
                 <FORM kindOf="original">=m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">=m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_102_W5M2">
                 <FORM kindOf="original">udaan</FORM>
                 <PHON kindOf="original">udaan</PHON>
                 <FORM kindOf="standard">udaan</FORM>
                 <PHON kindOf="standard">udaan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">離開</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">leave</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_102_W6">
@@ -13571,7 +13560,7 @@
                 <FORM kindOf="standard">lumah</FORM>
                 <PHON kindOf="standard">[l|ɬ]uma[x|χ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">家</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">home</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_102_W7">
@@ -13586,8 +13575,8 @@
                 <PHON kindOf="original">ii</PHON>
                 <FORM kindOf="standard">ii.</FORM>
                 <PHON kindOf="standard">ii</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">II</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">II</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">疑問</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_102_W8">
@@ -13597,29 +13586,37 @@
             <PHON kindOf="standard">pinkaðʔavaŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役&lt;完成貌&gt;-害羞=還</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU&lt;PFV&gt;-shame=still</TRANSL>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_102_W8M0">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_102_W8M0_0">
                 <FORM kindOf="original">-in-</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">-in-</FORM>
                 <PHON kindOf="standard">in</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_102_W8M1">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_102_W8M0_1">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_102_W8M2">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_102_W8M1">
                 <FORM kindOf="original">kaz'av</FORM>
                 <PHON kindOf="original">kaðav</PHON>
                 <FORM kindOf="standard">kaz'av</FORM>
                 <PHON kindOf="standard">kaðʔav</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">害羞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">shame</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_102_W8M3">
-                <FORM kindOf="original">ang</FORM>
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_102_W8M2">
+                <FORM kindOf="original">=ang</FORM>
                 <PHON kindOf="original">aŋ</PHON>
-                <FORM kindOf="standard">ang</FORM>
+                <FORM kindOf="standard">=ang</FORM>
                 <PHON kindOf="standard">aŋ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">還</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">still</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_102_W9">
@@ -13634,8 +13631,8 @@
                 <PHON kindOf="original">aupa</PHON>
                 <FORM kindOf="standard">aupa</FORM>
                 <PHON kindOf="standard">aupa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">Q</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">因為</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_102_W10">
@@ -13682,8 +13679,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_102_W12">
@@ -13972,8 +13969,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_108_W2">
@@ -14052,16 +14049,12 @@
                 <PHON kindOf="original">mað</PHON>
                 <FORM kindOf="standard">maz</FORM>
                 <PHON kindOf="standard">mað</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">什麼</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_108_W5M1">
                 <FORM kindOf="original">=a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_108_W6">
@@ -14076,8 +14069,8 @@
                 <PHON kindOf="original">tama</PHON>
                 <FORM kindOf="standard">tama</FORM>
                 <PHON kindOf="standard">tama</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">找到</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">find</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_108_W7">
@@ -14092,8 +14085,8 @@
                 <PHON kindOf="original">mas</PHON>
                 <FORM kindOf="standard">mas</FORM>
                 <PHON kindOf="standard">mas</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">媽媽</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_108_W8">
@@ -14108,8 +14101,8 @@
                 <PHON kindOf="original">ʨina</PHON>
                 <FORM kindOf="standard">cina</FORM>
                 <PHON kindOf="standard">ʨina</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">母親</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_108_W9">
@@ -14117,14 +14110,6 @@
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_108_W9M0">
-                <FORM kindOf="original">tu</FORM>
-                <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
-                <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
-            </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_108_W10">
             <FORM kindOf="original">na=tantungu</FORM>
@@ -14204,9 +14189,9 @@
                 <PHON kindOf="standard">[l|ɬ]uma[x|χ]</PHON>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_108_W12M5">
-                <FORM kindOf="original">cia</FORM>
+                <FORM kindOf="original">=cia</FORM>
                 <PHON kindOf="original">ʨia</PHON>
-                <FORM kindOf="standard">cia</FORM>
+                <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
             </M>
         </W>
@@ -14247,7 +14232,7 @@
                 <FORM kindOf="standard">amin</FORM>
                 <PHON kindOf="standard">amin</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">也</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">also</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">all</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_108_W15">
@@ -14286,8 +14271,8 @@
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">疑問</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_108_W17">
@@ -14302,8 +14287,8 @@
                 <PHON kindOf="original">aupa</PHON>
                 <FORM kindOf="standard">aupa</FORM>
                 <PHON kindOf="standard">aupa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">Q</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">因為</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_108_W18">
@@ -14375,8 +14360,8 @@
                 <PHON kindOf="original">uŋat</PHON>
                 <FORM kindOf="standard">ungat.</FORM>
                 <PHON kindOf="standard">uŋat</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_111_W1">
@@ -14463,9 +14448,9 @@
                 <PHON kindOf="standard">an</PHON>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_111_W3M6">
-                <FORM kindOf="original">cia</FORM>
+                <FORM kindOf="original">=cia</FORM>
                 <PHON kindOf="original">ʨia</PHON>
-                <FORM kindOf="standard">cia</FORM>
+                <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
             </M>
         </W>
@@ -14481,8 +14466,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai.</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
     </S>
@@ -14542,46 +14527,60 @@
             <TRANSL xml:lang="zho" kindOf="original">擁有-做&lt;完成貌&gt;-使役&lt;完成貌&gt;在-家=遠距.斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">own-do&lt;PFV&gt;-CAU&lt;PFV&gt;be.at-house=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M0">
-                <FORM kindOf="original">-i-</FORM>
-                <PHON kindOf="original">i</PHON>
-                <FORM kindOf="standard">-i-</FORM>
-                <PHON kindOf="standard">i</PHON>
-            </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M1">
-                <FORM kindOf="original">-in-</FORM>
-                <PHON kindOf="original">in</PHON>
-                <FORM kindOf="standard">-in-</FORM>
-                <PHON kindOf="standard">in</PHON>
-            </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M2">
                 <FORM kindOf="original">taini</FORM>
                 <PHON kindOf="original">taini</PHON>
                 <FORM kindOf="standard">taini</FORM>
                 <PHON kindOf="standard">taini</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">擁有</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">own</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M3">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M1_0">
+                <FORM kindOf="original">-i-</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">-i-</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
+            </M>
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M1_1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">做</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">do</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M4">
-                <FORM kindOf="original">pi</FORM>
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M2_0">
+                <FORM kindOf="original">-in-</FORM>
+                <PHON kindOf="original">in</PHON>
+                <FORM kindOf="standard">-in-</FORM>
+                <PHON kindOf="standard">in</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
+            </M>
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M2_1">
+                <FORM kindOf="original">p-i</FORM>
                 <PHON kindOf="original">pi</PHON>
-                <FORM kindOf="standard">pi</FORM>
+                <FORM kindOf="standard">p-i</FORM>
                 <PHON kindOf="standard">pi</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">使役在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CAUbe.at</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M5">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M3">
                 <FORM kindOf="original">lumah</FORM>
                 <PHON kindOf="original">[l|ɬ]uma[x|χ]</PHON>
                 <FORM kindOf="standard">lumah</FORM>
                 <PHON kindOf="standard">[l|ɬ]uma[x|χ]</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">家</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M6">
-                <FORM kindOf="original">cia.</FORM>
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M4">
+                <FORM kindOf="original">=cia.</FORM>
                 <PHON kindOf="original">ʨia</PHON>
-                <FORM kindOf="standard">cia.</FORM>
+                <FORM kindOf="standard">=cia.</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_114_W3">
@@ -14680,8 +14679,8 @@
                 <PHON kindOf="original">isu</PHON>
                 <FORM kindOf="standard">isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">2SG.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">2SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">2SG.所有格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2SG.POSS</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_114_W7">
@@ -15279,14 +15278,6 @@
             <PHON kindOf="standard">masa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">當時</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_123_W0M0">
-                <FORM kindOf="original">masa</FORM>
-                <PHON kindOf="original">masa</PHON>
-                <FORM kindOf="standard">masa</FORM>
-                <PHON kindOf="standard">masa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
-            </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_123_W1">
             <FORM kindOf="original">ta'aza</FORM>
@@ -15340,7 +15331,7 @@
                 <PHON kindOf="original">ʨina</PHON>
                 <FORM kindOf="standard">cina</FORM>
                 <PHON kindOf="standard">ʨina</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">母親</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">媽媽</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             </M>
         </W>
@@ -15356,8 +15347,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_123_W5">
@@ -15397,7 +15388,7 @@
                 <FORM kindOf="standard">is'aang.</FORM>
                 <PHON kindOf="standard">isʔaaŋ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">心靈</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">mind</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">spirit</TRANSL>
             </M>
         </W>
     </S>
@@ -15671,8 +15662,8 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at.</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_127_W1">
@@ -15727,8 +15718,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai.</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_127_W4">
@@ -15794,7 +15785,7 @@
                 <PHON kindOf="original">sadu</PHON>
                 <FORM kindOf="standard">sadu</FORM>
                 <PHON kindOf="standard">sadu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">看見</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
         </W>
@@ -15931,7 +15922,7 @@
                 <FORM kindOf="standard">sia</FORM>
                 <PHON kindOf="standard">ɕia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_130_W9">
@@ -15947,7 +15938,7 @@
                 <FORM kindOf="standard">ludun</FORM>
                 <PHON kindOf="standard">[l|ɬ]udun</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">山</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_130_W10">
@@ -15957,14 +15948,6 @@
             <PHON kindOf="standard">at</PHON>
             <TRANSL xml:lang="zho" kindOf="original">然後在-途中-半路</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.at-way-halfway</TRANSL>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_130_W10M0">
-                <FORM kindOf="original">at</FORM>
-                <PHON kindOf="original">at</PHON>
-                <FORM kindOf="standard">at</FORM>
-                <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
-            </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_130_W11">
             <FORM kindOf="original">i-ska-mishang</FORM>
@@ -15978,24 +15961,18 @@
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">在</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">be.at</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_130_W11M1">
                 <FORM kindOf="original">ska</FORM>
                 <PHON kindOf="original">ska</PHON>
                 <FORM kindOf="standard">ska</FORM>
                 <PHON kindOf="standard">ska</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">途中</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">way</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_130_W11M2">
                 <FORM kindOf="original">mishang</FORM>
                 <PHON kindOf="original">mis[x|χ]aŋ</PHON>
                 <FORM kindOf="standard">mishang</FORM>
                 <PHON kindOf="standard">mis[x|χ]aŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">中間</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">halfway</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_130_W12">
@@ -16003,14 +15980,6 @@
             <PHON kindOf="original">[x|χ]ai</PHON>
             <FORM kindOf="standard">hai.</FORM>
             <PHON kindOf="standard">[x|χ]ai</PHON>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_130_W12M0">
-                <FORM kindOf="original">hai.</FORM>
-                <PHON kindOf="original">[x|χ]ai</PHON>
-                <FORM kindOf="standard">hai.</FORM>
-                <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
-            </M>
         </W>
     </S>
     <S id="bnNr-lazy-daughter_Hanaivaz_S_132">
@@ -17442,8 +17411,8 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_150_W1">
@@ -17466,7 +17435,7 @@
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">un</FORM>
                 <PHON kindOf="standard">un</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
         </W>
@@ -17482,8 +17451,8 @@
                 <PHON kindOf="original">saiʨia</PHON>
                 <FORM kindOf="standard">saicia</FORM>
                 <PHON kindOf="standard">saiʨia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_150_W3">
@@ -17498,8 +17467,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_150_W4">
@@ -17514,8 +17483,8 @@
                 <PHON kindOf="original">maupa</PHON>
                 <FORM kindOf="standard">maupa</FORM>
                 <PHON kindOf="standard">maupa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">像</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">do.like</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">如此</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">be.like</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_150_W5">
@@ -17530,8 +17499,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_150_W6">
@@ -17546,8 +17515,8 @@
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">Q</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_150_W7">
@@ -17578,8 +17547,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_150_W9">
@@ -17602,8 +17571,8 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at.</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
     </S>
@@ -17643,8 +17612,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_151_W2">
@@ -17675,8 +17644,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_151_W4">
@@ -17711,8 +17680,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_151_W6">
@@ -17751,8 +17720,8 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at.</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
     </S>
@@ -18017,8 +17986,8 @@
                 <PHON kindOf="original">uŋat</PHON>
                 <FORM kindOf="standard">ungat.</FORM>
                 <PHON kindOf="standard">uŋat</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_154_W1">
@@ -18033,7 +18002,7 @@
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
                 <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">看見</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_154_W1M1">
@@ -18042,7 +18011,7 @@
                 <FORM kindOf="standard">mangha</FORM>
                 <PHON kindOf="standard">maŋ[x|χ]a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">抬頭</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">raise.one's.head</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">raise.head</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_154_W2">
@@ -18081,8 +18050,8 @@
                 <PHON kindOf="original">sivit</PHON>
                 <FORM kindOf="standard">sivit</FORM>
                 <PHON kindOf="standard">ɕivit</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">覺察</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">inspect</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">觀察</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">observe</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_154_W4">
@@ -18097,8 +18066,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_154_W5">
@@ -18116,14 +18085,6 @@
             <PHON kindOf="standard">isa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">MU-掉</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">MU-fall</TRANSL>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_154_W6M0">
-                <FORM kindOf="original">isa</FORM>
-                <PHON kindOf="original">isa</PHON>
-                <FORM kindOf="standard">isa</FORM>
-                <PHON kindOf="standard">isa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">哪裡</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">where</TRANSL>
-            </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_154_W7">
             <FORM kindOf="original">sain</FORM>
@@ -18137,8 +18098,8 @@
                 <PHON kindOf="original">sain</PHON>
                 <FORM kindOf="standard">sain</FORM>
                 <PHON kindOf="standard">sain</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格.近距</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC.PROX</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">疑問詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_154_W8">
@@ -18151,16 +18112,12 @@
                 <PHON kindOf="original">mu</PHON>
                 <FORM kindOf="standard">mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">MU</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">MU</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_154_W8M1">
                 <FORM kindOf="original">halhal</FORM>
                 <PHON kindOf="original">[x|χ]a[l|ɬ][x|χ]a[l|ɬ]</PHON>
                 <FORM kindOf="standard">halhal</FORM>
                 <PHON kindOf="standard">[x|χ]a[l|ɬ][x|χ]a[l|ɬ]</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">掉落</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">drop</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_154_W9">
@@ -18168,14 +18125,6 @@
             <PHON kindOf="original">ii</PHON>
             <FORM kindOf="standard">ii.</FORM>
             <PHON kindOf="standard">ii</PHON>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_154_W9M0">
-                <FORM kindOf="original">ii.</FORM>
-                <PHON kindOf="original">ii</PHON>
-                <FORM kindOf="standard">ii.</FORM>
-                <PHON kindOf="standard">ii</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">II</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">II</TRANSL>
-            </M>
         </W>
     </S>
     <S id="bnNr-lazy-daughter_Hanaivaz_S_156">
@@ -18351,8 +18300,8 @@
                 <PHON kindOf="original">tuða</PHON>
                 <FORM kindOf="standard">tuza</FORM>
                 <PHON kindOf="standard">tuða</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">真的</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">real</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">真是的</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">genuine</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_158_W1">
@@ -18367,8 +18316,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_158_W2">
@@ -18399,8 +18348,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_158_W4">
@@ -18431,8 +18380,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_158_W6">
@@ -18467,8 +18416,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_158_W8">
@@ -18507,8 +18456,8 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at.</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
     </S>
@@ -18527,17 +18476,21 @@
             <PHON kindOf="standard">ma[l|ɬ]a[l|ɬ]aʔ[l|ɬ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦&lt;重疊&gt;叫</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF&lt;RED&gt;call</TRANSL>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_159_W0M0">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_159_W0M0_0">
                 <FORM kindOf="original">-la-</FORM>
                 <PHON kindOf="original">[l|ɬ]a</PHON>
                 <FORM kindOf="standard">-la-</FORM>
                 <PHON kindOf="standard">[l|ɬ]a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_159_W0M1">
-                <FORM kindOf="original">mala'la</FORM>
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_159_W0M0_1">
+                <FORM kindOf="original">ma-la'la</FORM>
                 <PHON kindOf="original">ma[l|ɬ]a[l|ɬ]a</PHON>
-                <FORM kindOf="standard">mala'la</FORM>
+                <FORM kindOf="standard">ma-la'la</FORM>
                 <PHON kindOf="standard">ma[l|ɬ]aʔ[l|ɬ]a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">主焦叫</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AFcall</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_159_W1">
@@ -18584,8 +18537,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_159_W4">
@@ -18616,8 +18569,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_159_W6">
@@ -18632,8 +18585,8 @@
                 <PHON kindOf="original">kui</PHON>
                 <FORM kindOf="standard">kui</FORM>
                 <PHON kindOf="standard">kui</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">但是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">but</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">為何</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">why</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_159_W7">
@@ -18680,8 +18633,8 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後否定.存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG.EXIST</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_159_W10">
@@ -18691,14 +18644,6 @@
             <PHON kindOf="standard">uka</PHON>
             <TRANSL xml:lang="zho" kindOf="original">看見-處焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">see.LF</TRANSL>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_159_W10M0">
-                <FORM kindOf="original">uka</FORM>
-                <PHON kindOf="original">uka</PHON>
-                <FORM kindOf="standard">uka</FORM>
-                <PHON kindOf="standard">uka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">否定.存在</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NEG.EXIST</TRANSL>
-            </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_159_W11">
             <FORM kindOf="original">sadu-an.</FORM>
@@ -19052,8 +18997,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_162_W3">
@@ -19068,8 +19013,8 @@
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_162_W4">
@@ -19092,15 +19037,15 @@
                 <PHON kindOf="standard">un</PHON>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_162_W4M2">
-                <FORM kindOf="original">ku</FORM>
+                <FORM kindOf="original">=ku</FORM>
                 <PHON kindOf="original">ku</PHON>
-                <FORM kindOf="standard">ku</FORM>
+                <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_162_W4M3">
-                <FORM kindOf="original">as</FORM>
+                <FORM kindOf="original">=as</FORM>
                 <PHON kindOf="original">as</PHON>
-                <FORM kindOf="standard">as</FORM>
+                <FORM kindOf="standard">=as</FORM>
                 <PHON kindOf="standard">as</PHON>
             </M>
         </W>
@@ -19116,16 +19061,12 @@
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_162_W5M1">
                 <FORM kindOf="original">lumah.</FORM>
                 <PHON kindOf="original">[l|ɬ]uma[x|χ]</PHON>
                 <FORM kindOf="standard">lumah.</FORM>
                 <PHON kindOf="standard">[l|ɬ]uma[x|χ]</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">家</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
             </M>
         </W>
     </S>
@@ -20025,8 +19966,8 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_176_W1">
@@ -20065,8 +20006,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_176_W3">
@@ -20089,8 +20030,8 @@
                 <PHON kindOf="original">bi</PHON>
                 <FORM kindOf="standard">=bi</FORM>
                 <PHON kindOf="standard">bi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">到底</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">on.earth</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_176_W3M2">
                 <FORM kindOf="original">=s</FORM>
@@ -20153,9 +20094,9 @@
                 <PHON kindOf="standard">unʔapav</PHON>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_176_W6M2">
-                <FORM kindOf="original">a</FORM>
+                <FORM kindOf="original">=a</FORM>
                 <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">a</FORM>
+                <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
             </M>
         </W>
@@ -20385,17 +20326,21 @@
             <PHON kindOf="standard">antata[l|ɬ]am</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;回答</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;answer</TRANSL>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_179_W0M0">
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_179_W0M0_0">
                 <FORM kindOf="original">-ta-</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">-ta-</FORM>
                 <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_179_W0M1">
-                <FORM kindOf="original">antalam</FORM>
+            <M id="bnNr-lazy-daughter_Hanaivaz_S_179_W0M0_1">
+                <FORM kindOf="original">an-talam</FORM>
                 <PHON kindOf="original">anta[l|ɬ]am</PHON>
-                <FORM kindOf="standard">antalam</FORM>
+                <FORM kindOf="standard">an-talam</FORM>
                 <PHON kindOf="standard">anta[l|ɬ]am</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">回答</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">answer</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_179_W1">
@@ -20418,8 +20363,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_179_W2">
@@ -20434,8 +20379,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_179_W3">
@@ -20483,7 +20428,7 @@
                 <FORM kindOf="standard">is'aang,</FORM>
                 <PHON kindOf="standard">isʔaaŋ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">心靈</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">mind</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">spirit</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_179_W5">
@@ -20507,7 +20452,7 @@
                 <FORM kindOf="standard">is'aang.</FORM>
                 <PHON kindOf="standard">isʔaaŋ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">心靈</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">mind</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">spirit</TRANSL>
             </M>
         </W>
     </S>
@@ -22177,9 +22122,9 @@
                 <PHON kindOf="standard">[l|ɬ]uma[x|χ]</PHON>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_202_W4M3">
-                <FORM kindOf="original">a</FORM>
+                <FORM kindOf="original">=a</FORM>
                 <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">a</FORM>
+                <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
             </M>
         </W>
@@ -22195,8 +22140,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai,</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_202_W6">
@@ -22235,8 +22180,8 @@
                 <PHON kindOf="original">mas</PHON>
                 <FORM kindOf="standard">mas,</FORM>
                 <PHON kindOf="standard">mas</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_202_W8">
@@ -22267,8 +22212,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_202_W10">
@@ -22339,8 +22284,8 @@
                 <PHON kindOf="original">bunun</PHON>
                 <FORM kindOf="standard">bunun</FORM>
                 <PHON kindOf="standard">bunun</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">布農</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Bunun</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_202_W14">
@@ -22355,8 +22300,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_202_W15">
@@ -22364,14 +22309,6 @@
             <PHON kindOf="original">[l|ɬ]apus</PHON>
             <FORM kindOf="standard">"lapus</FORM>
             <PHON kindOf="standard">[l|ɬ]apus</PHON>
-            <M id="bnNr-lazy-daughter_Hanaivaz_S_202_W15M0">
-                <FORM kindOf="original">"lapus</FORM>
-                <PHON kindOf="original">[l|ɬ]apus</PHON>
-                <FORM kindOf="standard">"lapus</FORM>
-                <PHON kindOf="standard">[l|ɬ]apus</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">?</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">?</TRANSL>
-            </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_202_W16">
             <FORM kindOf="original">'ang'ang".</FORM>
@@ -23025,9 +22962,9 @@
                 <PHON kindOf="standard">[l|ɬ]uma[x|χ]</PHON>
             </M>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_216_W2M3">
-                <FORM kindOf="original">cia</FORM>
+                <FORM kindOf="original">=cia</FORM>
                 <PHON kindOf="original">ʨia</PHON>
-                <FORM kindOf="standard">cia</FORM>
+                <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
             </M>
         </W>
@@ -23043,8 +22980,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_216_W4">
@@ -23107,8 +23044,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_216_W7">
@@ -23149,7 +23086,7 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at,</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
