@@ -127,6 +127,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "qa"))
 from utils import (expand_infixes, strip_l2m, strip_prosodic_markers,  # noqa: E402
                    resolve_ungrammatical_parens)
+from gloss_shift import apply_to_records as apply_shift_repairs  # noqa: E402
+from gloss_shift import load_table as load_shift_repairs  # noqa: E402
 
 ET.register_namespace("xml", "http://www.w3.org/XML/1998/namespace")
 
@@ -909,11 +911,14 @@ def main() -> int:
         shutil.rmtree(args.out)
     args.out.mkdir(parents=True, exist_ok=True)
     by_language: dict = {}
+    shift_repairs = load_shift_repairs()
     for path in sorted(args.json.rglob("*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         recs = data if isinstance(data, list) else (list(data.values())[0] if data else [])
         if not isinstance(recs, list):
             continue
+        # Undo recorded gloss shifts in memory; the source JSON is never written.
+        recs = apply_shift_repairs(recs, "/".join(path.parts[-3:]), shift_repairs, stats)
         root = build(recs, path.stem, steps, stats, attested, malformed, language=language_for(path), dialect=dialect_for(path))
         language = path.parent.name.split("_")[0]
         merged = by_language.get(language)

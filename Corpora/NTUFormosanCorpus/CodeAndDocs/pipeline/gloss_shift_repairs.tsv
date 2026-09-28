@@ -1,0 +1,21 @@
+# Gloss-shift repairs for the NTU source JSONs. Read by gloss_shift.load_table and
+# applied at load time by pipeline_{grammar,sentences,stories}.py -- the JSONs are
+# never written. Only rows whose status is 'accepted' take effect; set
+# NTU_GLOSS_SHIFT_STATUSES=accepted,proposed to trial the rest in a scratch build.
+# record_sha256 pins the targeted record(s): a drifted source fails the build.
+# i/j index rows of the targeted record(s), apparatus rows included. 'fill' is
+# refused unless 'reviewer' is set. Proposals come from find_gloss_shifts.py.
+# Statuses: proposed (detector output, unreviewed), accepted (applied),
+# withdrawn (kept for the record, never applied).
+source_file	record_ids	record_sha256	tier	op	i	j	sep	value	status	reviewer	rationale
+story/Atayal_Mayrinax/AtaNr-dailylife3_Tauyu.json	6	d4f9caee2af3a44851609d4977f7a6124f74d6cc3f45c8d13f9fb607673c2fbe	gloss	shift_right	4	5			proposed		As proposed (window from runis) this gives runis=bare, ku=NOM but leaves kung='here'. kung is 1SG.NEU in 71% of its corpus uses, so the span most likely starts at kung (i=3: kung=bare, runis=here, ku=NOM); the detector prefers the shorter window because kung/here is attested once elsewhere. Needs a reader's call on i.
+story/Atayal_Mayrinax/AtaNr-dailylife3_Tauyu.json	36	16d1e51f0fe0dda7edf36d6f21ffc791cbdd7597a432d910e62eb6f506fcbe90	gloss	shift_right	5	6			proposed		ragiax (mountain) is bare and 'mountain' sits on imu. Span start is uncertain: ku=in / nian=house may also be displaced (3 alternatives score).
+story/Atayal_Mayrinax/AtaNr-dailylife3_Tauyu.json	47	0991d392b4959c87f5c0797b6f4b406a70d9d713f393d2c194ba0993131dc64a	gloss	split	3	6	=		proposed		al-an's gloss absorbed the separately written clitic niam (=1EPL.GEN), so niam took su's ACC and su took tumuk's 'chief'. Split at '=' restores all four.
+story/Atayal_Mayrinax/AtaNr-hunting3_Takun.json	15	bb5deeeeef0945b4710e836ecd1d729828f10a235bfe874c06b4c9c756936226	gloss	shift_right	3	7			proposed		The audit's test case: climb-LF=1SG.GEN belongs to rakiyas-an=mu, not ku. Span START is uncertain: source note says 'hani yaku' = turned out; review whether hani or yaku lost the gloss.
+story/Atayal_Mayrinax/AtaNr-moving_Kainu.json	28	cb7731203eba7442351878c5eb0707894a0174c80cd3637c1a38b2a6d1d399b1	gloss	split	1	4	=		proposed		nukah-an's gloss absorbed the clitic sami (=1PL.NOM); sami=PN, papak=CONJ, ru bare. Split at '=' gives sami=1PL.NOM, papak=PN, ru=CONJ.
+story/Atayal_Mayrinax/AtaNr-moving_Kainu.json	205	2a8673a9e5e589c82776b622ea996323d653b0563f878458bd1e0b4dd0fee634	gloss	split	1	3	=		proposed		m<in>-ukahul's gloss absorbed the clitic sami (=1PL.NOM); sami=LOC and i bare. Split gives sami=1PL.NOM, i=LOC.
+story/Atayal_Mayrinax/AtaNr-moving_Takun.json	21	ecc674193283c2377ff4dfac6ce2e54540f397a8498a2c815fa4bbedaebde11f	gloss	shift_left	4	6			withdrawn		WITHDRAWN: the shift is real (the unintelligible X's gloss X/?? sits on la, la's PART on ru), but not expressible as a move. The build treats a bare 'X' as a speaker label and drops it, so its gloss has no legal destination; the correct published result (la=PART, ru bare) needs a gloss deleted, which is an edit. Needs a human decision.
+story/Atayal_Mayrinax/AtaNr-moving_Takun.json	31	dfc9a6410bcc253da1436b1cb69f779f2c71e5bdf12e6330c18d4f9d5a5c17b0	gloss	shift_right	6	8			proposed		Same sentence repeats 'kia ku ruma' ga' correctly glossed (EXIST NOM some TOP) in record 33; in record 31 ku's NOM is missing and some/TOP slid left.
+story/Atayal_Mayrinax/AtaNr-sowing_Kainu.json	57	ed93d275101ead87e8e9d190988feb1763fcd1f8416bfb2b4b8025d25cc5bb57	gloss	shift_right	2	3			proposed		su lost ACC; 'bear' slid onto su and ngarux (bear) is bare. Record 56's bare 'i' is a separate omission, not repaired.
+story/Atayal_Mayrinax/AtaNr-sowing_Kainu.json	71	36509091483fcb497cbaba94b6651c2efcb33fc5e6b970fcc5ca6e1ffd9769ef	gloss	shift_right	3	6			proposed		nha' lost 3PL.NEU; LNK, <AF>harvest, TOP each slid one word left. After: k<um>loh=<AF>harvest (the <um> infix matches <AF>), ga=TOP.
+story/Atayal_Mayrinax/AtaNr-sowing_Kainu.json	115	82291e1416dcc280d37902de79fea188149f1d9b50e5eb93da648cb6a5c67c82	gloss	shift_right	7	9			proposed		i lost its gloss; AF-work and ACC slid left onto i and ma-tawwaw. After: ma-tawwaw=AF-work, sku=ACC.

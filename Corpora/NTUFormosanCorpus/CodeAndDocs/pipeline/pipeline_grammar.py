@@ -1381,6 +1381,8 @@ def main() -> int:
         steps = {int(x) for x in args.steps.split(",") if x.strip()}
 
     repairs = load_record_repairs(Path(__file__).with_name("p2_source_repairs.xml"))
+    from gloss_shift import apply_to_records as apply_shift_repairs, load_table
+    shift_repairs = load_table()
     attested = build_attestation(args.json, _attestation_clean) if 7 in steps else {}
     malformed = load_malformed_translations(args.json) if 19 in steps else {}
     stats: dict = {}
@@ -1400,6 +1402,10 @@ def main() -> int:
         if not isinstance(recs, list):
             continue
         src_key = "/".join(path.parts[-3:])
+        # Undo recorded gloss shifts in memory; the source JSON is never written.
+        # A shift repair on a record p2_source_repairs.xml also replaces fails
+        # closed there: that record's pinned digest no longer matches.
+        recs = apply_shift_repairs(recs, src_key, shift_repairs, stats)
         root = build(recs, path.stem, steps, stats, src_key, repairs, attested,
                      malformed, language=language_for(path), dialect=dialect_for(path))
         language = path.parent.name.split("_")[0]

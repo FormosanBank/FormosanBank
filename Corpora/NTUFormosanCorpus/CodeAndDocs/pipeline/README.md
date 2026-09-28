@@ -63,8 +63,53 @@ Per POL-039, item-specific corrections live in data files, not in code:
 - `audio_overrides.tsv` — AUDIO suppression beyond the `沒有音檔` sentinel
 - `p2_source_repairs.xml` — recorded whole-record source repairs, each pinned to
   a SHA-256 of the record it replaces so a drifting source fails the build
-- `p2_source_repairs.xml` — recorded whole-record source repairs, each pinned to
-  a SHA-256 of the record it replaces so a drifting source fails the build
+- `gloss_shift_repairs.tsv` — gloss-shift corrections (see below), applied at
+  load time by all three builders; only rows with status `accepted` take effect
+
+## Gloss shifts
+
+Some source records carry their word glosses one word away from the words they
+belong to: a gloss went missing (or was fused with a separately written
+clitic's), every later gloss in the intonation unit slid one word left, and the
+unit's last word was left bare. In Atayal `hunting3_Takun` record 15 the case
+marker `ku` carries `climb-LF=1SG.GEN` and the verb `rakiyas-an=mu` has nothing.
+The displacement is in NTU's JSON itself, not introduced by this build.
+
+The source JSONs are never edited. A correction is a row in
+`gloss_shift_repairs.tsv`, pinned to the SHA-256 of the record(s) it targets,
+naming one of a closed set of operations — `shift_right` (a cell is missing),
+`shift_left` (a spurious blank), `split` (two glosses fused into one cell),
+`merge` (one gloss cut in two), `swap` (the two gloss columns exchanged), and
+`fill` (the only operation that writes text, refused without a named
+reviewer). Every operation except `fill` is checked mechanically to have moved
+cells without changing their content. See `gloss_shift.py`.
+
+```bash
+# propose repairs (nothing is applied; output is for review)
+python find_gloss_shifts.py --language Atayal --out-dir /tmp/shifts
+# trial the proposals in a scratch build and check the blast radius
+../qa/try_gloss_shift_repairs.sh stories accepted,proposed /tmp/blast.md
+```
+
+`find_gloss_shifts.py` scores each candidate against the rest of the language,
+leave-one-out: a repair is proposed only if it raises the number of
+(word, gloss) pairs attested elsewhere and does not lower morpheme-count
+agreement, plain-text reconstruction, the number of glossed words, the number
+of uncontradicted glosses, or the number of words whose English and Chinese
+glosses are a pair seen elsewhere. Rows the build drops as apparatus (speaker
+labels, pauses, punctuation — the same patterns as `pipeline_stories.py` step
+15) never receive a gloss.
+
+`../qa/gloss_shift_blast_radius.py` then checks the result where users see it,
+in the published XML. It has caught what source-level scoring cannot: a repair
+changes *other* sentences' morpheme glosses whenever it changes which occurrence
+of a word `apply_prune_and_mirror.py` borrows its morphemes from (26 sentences,
+all M-tier only, when all 245 Stories proposals were trialled together on
+2026-09-28), and a repair can be invisible because prune withdraws the
+sentence's word tier altogether (6 of those 245). It picks the *shortest* window among equally
+good ones, so where a span's start is ambiguous it may start too late — the
+report lists the competing candidates, and every row needs a reader of the
+language before it is accepted.
 
 ## Which source JSONs
 

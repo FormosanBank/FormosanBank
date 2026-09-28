@@ -60,6 +60,8 @@ anything.
 | `baseline.tsv` | the recorded score per subcorpus and test |
 | `grammar_xml_tests.py` | the suite for the one-gloss Grammar subcorpus |
 | `sentence_xml_tests.py` | the suite for the two-gloss Sentences and Stories |
+| `gloss_shift_blast_radius.py` | compares two builds and fails if a gloss-shift repair changed any sentence it did not target |
+| `try_gloss_shift_repairs.sh` | builds one subcorpus with proposed gloss-shift repairs in force, runs the blast-radius check, restores the committed XML |
 
 ## Reading a result
 

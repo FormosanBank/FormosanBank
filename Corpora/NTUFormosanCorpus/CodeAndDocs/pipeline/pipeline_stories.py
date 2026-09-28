@@ -52,6 +52,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "qa"))
 from utils import (expand_infixes, strip_l2m, strip_prosodic_markers,  # noqa: E402
                    resolve_ungrammatical_parens)
+from gloss_shift import apply_to_records as apply_shift_repairs  # noqa: E402
+from gloss_shift import load_table as load_shift_repairs  # noqa: E402
 
 STEPS = {
     0: "rebuild the sentence form from the gloss forms",
@@ -992,11 +994,14 @@ def main() -> int:
         shutil.rmtree(args.out)
     args.out.mkdir(parents=True, exist_ok=True)
     count = 0
+    shift_repairs = load_shift_repairs()
     for path in sorted(args.json.rglob("*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         recs = data if isinstance(data, list) else (list(data.values())[0] if data else [])
         if not isinstance(recs, list):
             continue
+        # Undo recorded gloss shifts in memory; the source JSON is never written.
+        recs = apply_shift_repairs(recs, "/".join(path.parts[-3:]), shift_repairs, stats)
         # The story's zero point is taken from the SOURCE units, before any
         # merging: it must not depend on how a sentence reduces its units'
         # spans, or changing that reduction silently re-times whole stories.
