@@ -200,3 +200,29 @@ def test_split_evidence_is_reported_not_borrowed(tmp_path, monkeypatch):
     w, report = _run_borrow(monkeypatch, cd, table, xmldir, tmp_path)
     assert w.find("TRANSL") is None
     assert "not borrowed" in report
+
+
+def test_blanks_are_found_through_chained_rows_over_overlapping_records(tmp_path):
+    """Two rows on one sentence, the second over a subset of the first's
+    records: the blanks must be computed on the composed result."""
+    import borrow_shift_blank_glosses as b
+    import gloss_shift as gs
+    cd = tmp_path / "cd"
+    (cd / "story" / "Kanakanavu_X").mkdir(parents=True)
+    recs = [[1, {"gloss": [["a", "", ""], ["b", "X", "甲"]], "s_end": False}],
+            [2, {"gloss": [["c", "Y", "乙"], ["d", "", ""]], "s_end": True}]]
+    (cd / "story" / "Kanakanavu_X" / "st.json").write_text(json.dumps({"glosses": recs}, ensure_ascii=False),
+                                                             encoding="utf-8")
+    row = lambda **kw: {**{f: "" for f in gs.TABLE_FIELDS}, "source_file": "story/Kanakanavu_X/st.json",
+                        "tier": "gloss", "status": "accepted", **kw}
+    rows = [row(record_ids="1+2", record_sha256=gs.record_digest(recs), op="shift_left", i="0", j="2"),
+            row(record_ids="2", record_sha256=gs.record_digest([recs[1]]), op="shift_right", i="0", j="1")]
+    blanks = b.created_blanks(cd, rows)
+    # after both rows: a=X, b=Y, c blank (was Y), d blank -> c is a shift blank in both columns
+    assert sorted(blanks) == [("Kanakanavu", "st_S_1", "c", "eng"), ("Kanakanavu", "st_S_1", "c", "zho")]
+
+
+def test_detector_skips_records_replaced_whole_by_p2_source_repairs():
+    import find_gloss_shifts as fgs
+    replaced = fgs.replaced_records(CODEDOCS)
+    assert ("grammar/Kanakanavu_Kanakanavu/ap1.json", "78") in replaced

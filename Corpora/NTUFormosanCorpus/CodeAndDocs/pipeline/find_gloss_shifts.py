@@ -150,13 +150,31 @@ def fmt_rows(rows: list, lo: int, hi: int) -> list:
             for k, r in enumerate(rows) if lo <= k <= hi]
 
 
+def replaced_records(codedocs: Path) -> set:
+    """(source file, record id) of records p2_source_repairs.xml replaces whole.
+
+    Such a record is repaired by replacement, and pinned to its source bytes: a
+    gloss-shift row on it would change those bytes and fail the build closed.
+    """
+    import re
+    xml = (codedocs / "pipeline" / "p2_source_repairs.xml")
+    if not xml.exists():
+        return set()
+    return {(m.group(1), m.group(2)) for m in
+            re.finditer(r'<CASE sourceFile="([^"]+)" recordId="(\d+)"', xml.read_text(encoding="utf-8"))}
+
+
 def scan(codedocs: Path, language: str, stats: Counter):
     paths = source_files(codedocs, language)
     lex = build_lexicon(paths)
+    replaced = replaced_records(codedocs)
     for path in paths:
         rel = path.relative_to(codedocs).as_posix()
         per_record = rel.startswith(("grammar/", "sentence/"))
         for group in groups(records_of(path), per_record):
+            if any((rel, str(r[0])) in replaced for r in group):
+                stats["sentences skipped: record replaced by p2_source_repairs.xml"] += 1
+                continue
             bounds, rows, ori = [], [], []
             for rec in group:
                 g = [list(r) for r in (rec[1].get("gloss") or [])]

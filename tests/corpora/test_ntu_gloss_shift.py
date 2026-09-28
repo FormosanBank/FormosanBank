@@ -380,3 +380,32 @@ def test_morpheme_agreement_is_gated_per_gloss_language():
          "contradicted": 0, "paired": 0}
     a = dict(b, attested=2, morph_eng=1, morph_zho=3)
     assert not gs.improves(b, a)
+
+
+def test_blast_radius_leave_one_out_drops_the_whole_split_family(tmp_path, monkeypatch):
+    """TsouConv-typhoon_S_302 and its '-opt' split carry the same shifted
+    glosses. Leaving out only the sentence being scored lets its twin attest
+    the shifted pairs, so a correct repair scored as attested 14 -> 12."""
+    sys.path.insert(0, str(CODEDOCS / "qa"))
+    import gloss_shift_blast_radius as br
+    src = tmp_path / "cd" / "story" / "Atayal_X"
+    src.mkdir(parents=True)
+    (src / "st.json").write_text('{"glosses": [[1, {"gloss": [["ku", "GEN", ""]], "s_end": true}],'
+                                 ' [3, {"gloss": [["ku", "NOM", ""]], "s_end": true}]]}', encoding="utf-8")
+    table = _table_row(tmp_path, source_file="story/Atayal_X/st.json", record_ids="1",
+                       status="accepted")
+    other = {"st_S_3": ("ku", "NOM", "NOM")}
+    for name, g in (("base", "GEN"), ("cand", "NOM")):
+        d = tmp_path / name / "Atayal"
+        d.mkdir(parents=True)
+        (d / "a.xml").write_text(_xml({"st_S_1": ("ku", g, g), "st_S_1-opt": ("ku", g, g), **other}),
+                                 encoding="utf-8")
+    monkeypatch.setattr(sys, "argv", ["br", "--baseline", str(tmp_path / "base"),
+                                      "--candidate", str(tmp_path / "cand"),
+                                      "--codedocs", str(tmp_path / "cd"), "--table", str(table),
+                                      "--report", str(tmp_path / "r.md")])
+    assert br.main() == 0
+    report = (tmp_path / "r.md").read_text(encoding="utf-8")
+    assert "| `Atayal/st_S_1` | 0 → 1 |" in report
+    assert "| `Atayal/st_S_1-opt` | 0 → 1 |" in report
+    assert br.family(("Tsou", "TsouConv-typhoon_S_302-opt")) == ("Tsou", "TsouConv-typhoon_S_302")

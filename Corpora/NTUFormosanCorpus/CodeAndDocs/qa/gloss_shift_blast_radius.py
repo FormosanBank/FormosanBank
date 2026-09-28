@@ -14,11 +14,14 @@ into one of two bins:
   the run exits 1.
 
 Collateral changes are further split by whether they are confined to the
-morpheme tier. That split exists because of one known mechanism:
-``apply_prune_and_mirror.py --only prune`` rebuilds a flagged sentence's M tier
-from a corpus-wide donor pool keyed on word form, taking the *first* occurrence
-in file order. Change the glosses of a word early in that order and the M
-glosses of the same word in unrelated sentences change with it.
+morpheme tier. (Until 2026-09-28 ``apply_prune_and_mirror.py`` rebuilt a flagged
+sentence's M tier from a corpus-wide donor pool keyed on word form, so a repair
+could change the M glosses of unrelated sentences. That path is gone; an
+M-only collateral change now points at something new.)
+
+Memory: the two builds are compared one file pair at a time, and only the
+sentences that differ are kept, so a whole Stories build (~110 MB of XML per
+side) never sits in memory twice.
 
 Scoring of targeted sentences uses the word tier of the published XML, the
 evidence a user of the corpus sees:
@@ -79,6 +82,7 @@ def sentences(root: Path) -> dict:
 
     Keyed on the language too: Grammar S ids are only unique within one
     language's file (05_S_13 exists for Kanakanavu, Sakizaya and Seediq).
+    Holds the whole build in memory; ``compare_builds`` does not.
     """
     out = {}
     for path in sorted(root.rglob("*.xml")):
@@ -88,9 +92,57 @@ def sentences(root: Path) -> dict:
     return out
 
 
-def text_attrs(root: Path) -> dict:
-    return {p.relative_to(root).as_posix(): dict(etree.parse(str(p)).getroot().attrib)
-            for p in sorted(root.rglob("*.xml"))}
+def family(key: tuple) -> tuple:
+    """A sentence and the ones the build split from it share a family.
+
+    'TsouConv-typhoon_S_302-opt' belongs to (Tsou, 'TsouConv-typhoon_S_302').
+    """
+    lang, sid = key
+    m = re.match(r"(.*_S_\d+)", sid)
+    return (lang, m.group(1) if m else sid)
+
+
+def _file_sentences(root: Path, rel: str) -> tuple:
+    path = root / rel
+    if not path.exists():
+        return {}, None
+    tree = etree.parse(str(path))
+    lang = path.parent.name
+    return ({(lang, s.get("id")): (lang, rel, s) for s in tree.getroot().iter("S")},
+            dict(tree.getroot().attrib))
+
+
+def compare_builds(baseline: Path, candidate: Path) -> tuple:
+    """Walk both builds one file pair at a time.
+
+    Returns (differing, n_compared, lex, fam, attr_diff): ``differing`` maps
+    each sentence key whose canonical XML differs to (baseline entry or None,
+    candidate entry or None), the elements detached copies; ``lex`` is the
+    baseline's word-tier lexicon and ``fam`` its (form, gloss) pairs per
+    sentence family, for leave-one-out.
+    """
+    rels = sorted({p.relative_to(baseline).as_posix() for p in baseline.rglob("*.xml")}
+                  | {p.relative_to(candidate).as_posix() for p in candidate.rglob("*.xml")})
+    differing, keys, attr_diff = {}, set(), []
+    lex, fam = defaultdict(Counter), defaultdict(Counter)
+    for rel in rels:
+        base, b_attrs = _file_sentences(baseline, rel)
+        cand, c_attrs = _file_sentences(candidate, rel)
+        if b_attrs != c_attrs:
+            attr_diff.append(rel)
+        for key, (lang, _, s) in base.items():
+            pairs = _pairs(s)
+            lex[lang].update(pairs)
+            fam[family(key)].update(pairs)
+        for key in set(base) | set(cand):
+            keys.add(key)
+            b, c = base.get(key), cand.get(key)
+            if b is not None and c is not None and canon(b[2]) == canon(c[2]):
+                continue
+            keep = lambda e: None if e is None else (e[0], e[1], copy.deepcopy(e[2]))
+            differing[key] = (keep(b), keep(c))
+        del base, cand
+    return differing, len(keys), lex, fam, attr_diff
 
 
 def canon(el) -> bytes:
@@ -161,16 +213,13 @@ def _pairs(s) -> Counter:
     return out
 
 
-def lexicon(sents: dict) -> dict:
-    lex = defaultdict(Counter)
-    for lang, _, s in sents.values():
-        lex[lang].update(_pairs(s))
-    return lex
+def w_score(s, lang: str, lex: dict, mine: Counter) -> Counter:
+    """Word-tier evidence, per gloss cell (English and Chinese), leave-one-out.
 
-
-def w_score(s, lang: str, lex: dict, own) -> Counter:
-    """Word-tier evidence, per gloss cell (English and Chinese), leave-one-out."""
-    mine = _pairs(own) if own is not None else Counter()
+    ``mine`` is what to leave out: the baseline pairs of the sentence's whole
+    family. Leaving out only the sentence itself would let its own ``-opt``
+    split, which carries the same (possibly shifted) glosses, attest them.
+    """
     c = Counter(words=0, attested=0, morph_match=0, unglossed=0)
     for w in s.findall("W"):
         c["words"] += 1
@@ -214,29 +263,25 @@ def main() -> int:
     if sub:
         rows = [r for r in rows if r["source_file"].startswith(sub)]
     prefixes = targeted_prefixes(args.codedocs, rows)
-    base, cand = sentences(args.baseline), sentences(args.candidate)
-    lex = lexicon(base)
+    differing, n_compared, lex, fam, attr_diff = compare_builds(args.baseline, args.candidate)
+    base = {k: b for k, (b, _) in differing.items() if b is not None}
+    cand = {k: c for k, (_, c) in differing.items() if c is not None}
 
     changed_t, changed_c, m_only = [], [], []
-    for sid in sorted(set(base) | set(cand)):   # sid is (language dir, S id)
+    for sid in sorted(differing):   # sid is (language dir, S id)
         b, c = base.get(sid), cand.get(sid)
-        if b is not None and c is not None and canon(b[2]) == canon(c[2]):
-            continue
         if is_targeted(sid, prefixes):
             changed_t.append(sid)
         else:
             changed_c.append(sid)
             if b is not None and c is not None and without_m(b[2]) == without_m(c[2]):
                 m_only.append(sid)
-    base_attrs, cand_attrs = text_attrs(args.baseline), text_attrs(args.candidate)
-    attr_diff = sorted(f for f in set(base_attrs) | set(cand_attrs)
-                       if base_attrs.get(f) != cand_attrs.get(f))
     untouched = ["/".join(p) for p in prefixes if not any(is_targeted(s, {p: 0}) for s in changed_t)]
 
     out = [f"# Gloss-shift blast radius", "",
            f"- repair rows in force ({args.statuses}): {len(rows)}, "
            f"aimed at {len(prefixes)} sentence(s)",
-           f"- sentences compared: {len(set(base) | set(cand))}",
+           f"- sentences compared: {n_compared}",
            f"- targeted sentences that changed: {len(changed_t)}",
            f"- targeted sentences that did NOT change: {len(untouched)} {untouched[:10]}",
            f"- **collateral sentences changed: {len(changed_c)}** "
@@ -251,8 +296,9 @@ def main() -> int:
         for sid in changed_t:
             b, c = base.get(sid), cand.get(sid)
             lang = (b or c)[0]
-            sb = w_score(b[2], lang, lex, b[2]) if b else Counter()
-            sc = w_score(c[2], lang, lex, b[2] if b else None) if c else Counter()
+            mine = fam[family(sid)]
+            sb = w_score(b[2], lang, lex, mine) if b else Counter()
+            sc = w_score(c[2], lang, lex, mine) if c else Counter()
             total_b += sb
             total_c += sc
             flag = "" if (sc["attested"] > sb["attested"] and sc["morph_match"] >= sb["morph_match"]) else " ⚠"

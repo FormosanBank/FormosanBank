@@ -40,8 +40,9 @@ from pathlib import Path
 from lxml import etree
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from gloss_shift import (PLACEHOLDER_GLOSSES, REPAIRS_TSV, apply_op, blank,  # noqa: E402
-                         is_word, load_table, norm_form, op_from_row, records_of)
+from gloss_shift import (PLACEHOLDER_GLOSSES, REPAIRS_TSV,  # noqa: E402
+                         apply_to_records, blank, is_word, load_table, norm_form,
+                         records_of)
 
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 HAN = re.compile(r"[㐀-䶿一-鿿豈-﫿]")
@@ -64,22 +65,20 @@ def evidence_gloss(g: str) -> bool:
 
 
 def created_blanks(codedocs: Path, rows: list) -> list:
-    """(language dir, S id, source form, gloss lang) for every cell a row blanked."""
+    """(language dir, S id, source form, gloss lang) for every cell a row blanked.
+
+    The rows are applied exactly as the builders apply them (``apply_to_records``:
+    every row for a file, in table order, each pinned to the source), so chained
+    rows over the same or overlapping records compose the same way here.
+    """
     out = []
-    by_target = defaultdict(list)
+    by_file = defaultdict(list)
     for row in rows:
-        by_target[(row["source_file"], row["record_ids"])].append(row)
-    for (src, target), trows in by_target.items():
+        by_file[row["source_file"]].append(row)
+    for src, frows in by_file.items():
         path = codedocs / src
         recs = records_of(path)
-        ids = target.split("+")
-        ks = [k for k, r in enumerate(recs) if str(r[0]) in ids]
-        before = [list(g) for k in ks for g in (recs[k][1].get("gloss") or [])]
-        after = before
-        for row in trows:
-            after = apply_op(after, op_from_row(row))
-        # the sentence each record belongs to (Stories: first record of its
-        # s_end group; Grammar/Sentences: the record itself)
+        fixed = apply_to_records(recs, src, frows, {})
         per_record = src.startswith(("grammar/", "sentence/"))
         first_of, start = {}, None
         for r in recs:
@@ -88,17 +87,21 @@ def created_blanks(codedocs: Path, rows: list) -> list:
             first_of[str(r[0])] = start
             if r[1].get("s_end", True):
                 start = None
-        owner = [str(recs[k][0]) for k in ks for _ in (recs[k][1].get("gloss") or [])]
+        targeted = {rid for row in frows for rid in row["record_ids"].split("+")}
         language = path.parent.name.split("_")[0]
-        for b, a, rid in zip(before, after, owner):
-            if not is_word(b[0]):
+        for before, after in zip(recs, fixed):
+            rid = str(before[0])
+            if rid not in targeted:
                 continue
-            for c in (1, 2):
-                old = b[c] if c < len(b) else ""
-                new = a[c] if c < len(a) else ""
-                if not blank(old) and blank(new):
-                    lang = "zho" if HAN.search(old) else "eng"
-                    out.append((language, f"{path.stem}_S_{first_of[rid]}", b[0], lang))
+            for b, a in zip(before[1].get("gloss") or [], after[1].get("gloss") or []):
+                if not is_word(b[0]):
+                    continue
+                for c in (1, 2):
+                    old = b[c] if c < len(b) else ""
+                    new = a[c] if c < len(a) else ""
+                    if not blank(old) and blank(new):
+                        lang = "zho" if HAN.search(old) else "eng"
+                        out.append((language, f"{path.stem}_S_{first_of[rid]}", b[0], lang))
     return out
 
 
