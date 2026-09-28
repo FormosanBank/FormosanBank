@@ -1,0 +1,389 @@
+# NTU source release adopted by this corpus. Read by scripts/fetch_source_release.py
+# (via ../refresh_source.sh). Upstream: github.com/liao961120/glossParser, branch gh-pages,
+# commit 48b9e0b8ad9ef32b6e016aae44bd424a4ae51f91 (2026-01-10), served at https://yongfu.name/glossParser/<upstream_path>.
+# One row per local source file (local_path <- the upstream file it is taken from), plus
+# 'excluded' rows for upstream files deliberately not used, with the reason.
+local_path	upstream_path	sha256	records	relation	note
+grammar/Kanakanavu_Kanakanavu/03.json	grammar/Kanakanavu_Kanakanavu/03.json	1b268c1da5434b368acc8a4e29b45a4a0ac632a7291ad0cee828896e1f41d0c2	6	same	
+grammar/Kanakanavu_Kanakanavu/04.json	grammar/Kanakanavu_Kanakanavu/04.json	cf3b294866419472bb77578ed150c47cede9e5dbdbe224860a567482abff8273	40	same	
+grammar/Kanakanavu_Kanakanavu/05.json	grammar/Kanakanavu_Kanakanavu/05.json	a143755092eb9d1ab792533289110e782bb503b682d8b3566e690247bfd280a7	31	same	
+grammar/Kanakanavu_Kanakanavu/06.json	grammar/Kanakanavu_Kanakanavu/06.json	e100532f84d5b3ccc808bf80bc373a8121d32fd704940cfbaab4ce60756a5f14	55	same	
+grammar/Kanakanavu_Kanakanavu/07.json	grammar/Kanakanavu_Kanakanavu/07.json	5a05d599c60c8ad8a5838b822e5cb2c7a0697403eab21d8e1862b5c4e4843ce2	9	same	
+grammar/Kanakanavu_Kanakanavu/08.json	grammar/Kanakanavu_Kanakanavu/08.json	e9f8e56a675e5598a7c33e931d1c2d2c99468a421ca8c3fac727ebdc5e5d9c06	17	same	
+grammar/Kanakanavu_Kanakanavu/09.json	grammar/Kanakanavu_Kanakanavu/09.json	12dbc8d0f8b6541d93247234d902e200acfafc96f20dadc4740cbdcda1a3a86c	17	same	
+grammar/Kanakanavu_Kanakanavu/10.json	grammar/Kanakanavu_Kanakanavu/10.json	d179866c3c2a61d6cf9f3e458568e0dba5bc5fd4b0cbbc4049157a4cf48be0b0	31	same	
+grammar/Kanakanavu_Kanakanavu/11.json	grammar/Kanakanavu_Kanakanavu/11.json	49c9ea5e6c43c9a2d27a258611add9e514396882c49bb8ff8729dadc2447e27e	60	same	
+grammar/Kanakanavu_Kanakanavu/12.json	grammar/Kanakanavu_Kanakanavu/12.json	7f171454a5043668ebe5f697899f0cad31073d701fedcfbca75a17304076bf7a	20	same	
+grammar/Kanakanavu_Kanakanavu/13.json	grammar/Kanakanavu_Kanakanavu/13.json	8c69e1ff5fc4fd0ad546704584e53528b78ea244614e111b713cfb65fac32902	45	same	
+grammar/Kanakanavu_Kanakanavu/14.json	grammar/Kanakanavu_Kanakanavu/14.json	fcee8342de5ccdf62907269737a38eb777fe58dc06b0be7d50ae6b72aba3cffd	32	same	
+grammar/Kanakanavu_Kanakanavu/15.json	grammar/Kanakanavu_Kanakanavu/15.json	f47ac1e1598b262f13a6144da997aaf180d9517fb9138c6d6cbabba90532de65	32	same	
+grammar/Kanakanavu_Kanakanavu/A1.json	grammar/Kanakanavu_Kanakanavu/A1.json	e8bfb97fd15b2be2ca4762ffb2b7b61bc1aff7a758f7a0409cd5f8ea7cb31126	36	same	
+grammar/Kanakanavu_Kanakanavu/A2.json	grammar/Kanakanavu_Kanakanavu/A2.json	3ea05bcbda0109e5db89a0807665acb38448216b69cc29499a82f64eb7bfa269	895	same	
+grammar/Kanakanavu_Kanakanavu/ap1.json	grammar/Kanakanavu_Kanakanavu/ap1.json	7ba48eabd72a0c71c09da4a171e29c62cc9cfc8fa6b17fd5c01c94627c341472	100	same	
+grammar/Kanakanavu_Kanakanavu/ap2.json	grammar/Kanakanavu_Kanakanavu/ap2.json	4b1cb2aa5e4db34ba49faa0ccdf679c8f3616d0e9b154a627b850999859e1d3a	57	same	
+grammar/Kanakanavu_Kanakanavu/ap3.json	grammar/Kanakanavu_Kanakanavu/ap3.json	3a88eb9191fa7007e7aad968e27324a7a647899c85b8fcaf58f678c5e4ce12db	58	same	
+grammar/Sakizaya_Sakizaya/03.json	grammar/Sakizaya_Sakizaya/03.json	6ba7b263a393bb7fa5c2580fdf643d25f4665dac1ac57498f4a033be2476d787	5	same	
+grammar/Sakizaya_Sakizaya/04.json	grammar/Sakizaya_Sakizaya/04.json	de8f816946e8d6b918a04fb28ae92f8a0c4a62ec74108f0ce1e5b0a5b6c4e119	44	same	
+grammar/Sakizaya_Sakizaya/05.json	grammar/Sakizaya_Sakizaya/05.json	10ffa553cf79c808fd32fed79d629d5d58bd5b4630fbe8bbed2933dacb3d05f8	63	same	
+grammar/Sakizaya_Sakizaya/06.json	grammar/Sakizaya_Sakizaya/06.json	b2a256d491ab8ec78b24f47ed3c960382a13334391331a0af8a765b9ad682c5c	63	same	
+grammar/Sakizaya_Sakizaya/07.json	grammar/Sakizaya_Sakizaya/07.json	fcb7432638b6608256d36fe494e5d7cc5cb44c161bb61878cf63d483a83336a6	10	same	
+grammar/Sakizaya_Sakizaya/08.json	grammar/Sakizaya_Sakizaya/08.json	528d0420955ffb54d99a52f9e10bcf8318fc65861477b7c1a21c57882fbc7f0b	22	same	
+grammar/Sakizaya_Sakizaya/09.json	grammar/Sakizaya_Sakizaya/09.json	5b97e9208ac9328b74fd4203384f29ba13d2158345c0550710b23fe6d1663081	29	same	
+grammar/Sakizaya_Sakizaya/10.json	grammar/Sakizaya_Sakizaya/10.json	f2dae502a07a49569a0651f414476e98dbf08c0c004108f9baca4a2c8caaf69e	46	same	
+grammar/Sakizaya_Sakizaya/11.json	grammar/Sakizaya_Sakizaya/11.json	2d77c54cb1d4b93cc420e98c8d7d43a6a10d26530eded6bf84f366eae0f9ae99	67	same	
+grammar/Sakizaya_Sakizaya/12.json	grammar/Sakizaya_Sakizaya/12.json	76c8423acde0ef9ce35e44495c88febeaab2a81cc06340404a37c4ec84da30ed	19	same	
+grammar/Sakizaya_Sakizaya/13.json	grammar/Sakizaya_Sakizaya/13.json	ce229e4fa6f140ddaf5ad0846f0d49559fec60f143331fb5b68be5bd5fd0c622	48	same	
+grammar/Sakizaya_Sakizaya/14.json	grammar/Sakizaya_Sakizaya/14.json	1bb70afe7c61593844795519b61e3bfb28b089e07db6228f9da0fcd06314a6e2	29	same	
+grammar/Sakizaya_Sakizaya/15.json	grammar/Sakizaya_Sakizaya/15.json	1dbca177447735345cac826d95213ceb513db1dde16d473468a03fbbfa273bea	17	same	
+grammar/Sakizaya_Sakizaya/A1.json	grammar/Sakizaya_Sakizaya/A1.json	51ed05a19334a91754c5657f1cc25f38894c69b6fa9e0119705f9b29f6bb2652	36	same	
+grammar/Sakizaya_Sakizaya/A2.json	grammar/Sakizaya_Sakizaya/A2.json	6c4c3fac3b1c85b837ef0fc2d5459323ac418eb01ed77a8b542359cbd3265954	500	same	
+grammar/Sakizaya_Sakizaya/ap1.json	grammar/Sakizaya_Sakizaya/ap1.json	168d5d4b4d562bef726fce9a12545e875d1797725fa83fe47c9990e96f957c48	78	same	
+grammar/Sakizaya_Sakizaya/ap2.json	grammar/Sakizaya_Sakizaya/ap2.json	76ab20c5ece5b0f25902bdd7c43fc188fb9cf2fcd2cd99125cb48c154256cce9	68	same	
+grammar/Seediq_Tgdaya/03.json	grammar/Seediq_Tgdaya/03.json	c88c7b84fa33f9c0a504aa404c51075c9d1e0a03774d7973d7a4913fe53b7b06	6	same	
+grammar/Seediq_Tgdaya/04.json	grammar/Seediq_Tgdaya/04.json	5339cfe3e68b2c1d48938769eeb58d47b1fdedd56473846bac43a01a8077f891	41	same	
+grammar/Seediq_Tgdaya/05.json	grammar/Seediq_Tgdaya/05.json	92396f7d3e09c45288bdc8c018001a13fc883eddea73386b56f00767edff91bd	36	same	
+grammar/Seediq_Tgdaya/06.json	grammar/Seediq_Tgdaya/06.json	dc141d9230f8b536c2d30c9e0167c552e86ca6c593010b4cb22fc87ab553477a	50	same	
+grammar/Seediq_Tgdaya/07.json	grammar/Seediq_Tgdaya/07.json	ace977f1be906f0458236b65cab488182ba6dc49ce8fda8c9da48ed34fa1a65f	15	same	
+grammar/Seediq_Tgdaya/08.json	grammar/Seediq_Tgdaya/08.json	2eccb59c440ef9b46b61b0aaf41528973d43063b0021bf03603665e987e5f584	24	same	
+grammar/Seediq_Tgdaya/09.json	grammar/Seediq_Tgdaya/09.json	6020fd9b023904e1f6dc8063d5d3f39b8034fa0853a54102c36e25309e5c78c1	27	same	
+grammar/Seediq_Tgdaya/10.json	grammar/Seediq_Tgdaya/10.json	38085d9a0ae1af9c6db34df854269c84926dae8a4a9de5fae1c059bb4b94f62e	34	same	
+grammar/Seediq_Tgdaya/11.json	grammar/Seediq_Tgdaya/11.json	e26fea42126349e364d5b7ba8e722ab888b7a63f5b99a36e061841aca22f2418	63	same	
+grammar/Seediq_Tgdaya/12.json	grammar/Seediq_Tgdaya/12.json	7a93d7cf22ebbff6871b9aadb8c6392dce1172b97fdccc0a6c014a64c430694c	20	same	
+grammar/Seediq_Tgdaya/13.json	grammar/Seediq_Tgdaya/13.json	1b9b76e6fc46347f474986f206f5e2dc1e1ebc0873bed120de3210e4c41aaeb8	44	same	
+grammar/Seediq_Tgdaya/14.json	grammar/Seediq_Tgdaya/14.json	cfad3b555b3fd2f95698bd444cecf09217d83e7bde3ade0134f88c190a56a904	23	same	
+grammar/Seediq_Tgdaya/15.json	grammar/Seediq_Tgdaya/15.json	5d32ecc1afa53e5a5de38cc0db0e3d2ac42852a00b6e02244f22cca4c6e7072d	18	same	
+grammar/Seediq_Tgdaya/A1.json	grammar/Seediq_Tgdaya/A1.json	d1374443ec94d1865321cf22724a9f08178b759e9c37d1cf05f8203308f165c2	34	same	
+grammar/Seediq_Tgdaya/A2.json	grammar/Seediq_Tgdaya/A2.json	799524d481bcfeada605d97c83dbf8f088dce7a0070ee31da4c67e94ae41f16a	641	same	
+grammar/Seediq_Tgdaya/ap1.json	grammar/Seediq_Tgdaya/ap1.json	31707216cc3d7e0d37754b77f0adf405a5525ca640cdccd8d8385e140a2e08f4	54	same	
+grammar/Seediq_Tgdaya/ap2.json	grammar/Seediq_Tgdaya/ap2.json	e6f4f404f997520d81ebbc3ebdd4c734adc09888ebbb917ad343d595c7ddf6ab	54	same	
+sentence/Bunun_Isbukun/01-1.json	sentence/Bunun_Isbukun/01-1.json	fa9105093afebbe74907aef232fc516817d2c59bb2ebcc462913ec563983ee7e	11	same	
+sentence/Bunun_Isbukun/01-2.json	sentence/Bunun_Isbukun/01-2_revised.json	6ce725454a4ea3d8087e0cbc782a828c37569965cb4e0c61fe42080879a48572	6	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/01-3.json	sentence/Bunun_Isbukun/01-3_revised.json	cc6a31db87e90dd22e3f27c8ce0a758e3bdc03893cc11c05e0ae2345f7e56912	15	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/01-4.json	sentence/Bunun_Isbukun/01-4.json	aae15fe61c6f83588069d8abfd325dc1e6a445df7a87eef96f4ac3da4fda3a4c	12	same	
+sentence/Bunun_Isbukun/01-5.json	sentence/Bunun_Isbukun/01-5_revised.json	1bd579f707fba3c7750f20675c31c810e29dc0b3159b75522ba2a41824b4fa12	10	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/01.json	sentence/Bunun_Isbukun/01.json	75b2e0710a7847c454b0fb1d14924ebbad2bc68c9bce8926441f2e5a18e7e0c6	8	same	
+sentence/Bunun_Isbukun/02.json	sentence/Bunun_Isbukun/02_revised.json	bd667b78270d2bbe61ffd7625f7c537ab46fead4cf888c034dc8cddac8b916ec	30	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/03-2.json	sentence/Bunun_Isbukun/03-2.json	6f1a7d11d39ac8a9516c84f014e5d8b4b3f0c3d857e50baa0613df624e96aadc	14	same	
+sentence/Bunun_Isbukun/03-3.json	sentence/Bunun_Isbukun/03-3_revised.json	b08258fe8bcae781a14475ccd664b249d2f5ab4796a02932b9ea2796111c70c8	14	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/03-4.json	sentence/Bunun_Isbukun/03-4.json	e3fc03234610c3b218bc1df33adf092acff3d93cd5e1a60c49524e612524bd11	18	same	
+sentence/Bunun_Isbukun/03-5.json	sentence/Bunun_Isbukun/03-5_revised.json	f08a6880f8fde58a27bb9405ad1f2254fc317b50b786067aae34bb1cadafc3b7	14	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/03-6.json	sentence/Bunun_Isbukun/03-6_revised.json	4cb4253eeec7719a5ae584ae205396e1ecdfbfe185a00eeb37a7a4b69d01b193	10	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/03-7.json	sentence/Bunun_Isbukun/03-7.json	6c329e43aedf2ac763fa4d146eb2034f0a4a002e7b8a7c77f97f0a16073615a6	23	same	
+sentence/Bunun_Isbukun/03.json	sentence/Bunun_Isbukun/03_revised.json	810b78cc07d592abfeb882709fb9bd6dcb633f9b36319d77b99ad3bbb77a6c9b	6	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/04.json	sentence/Bunun_Isbukun/04_revised.json	b4db442d9030976af0477a3fb76d0c4783fc424efaa8a19b7d56bd194bb63110	8	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/05.json	sentence/Bunun_Isbukun/05_revised.json	ce94126c497cf7dc51940bf5946e74d11406c3b0fa7c473f1d74e1ae726edc7c	12	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/06.json	sentence/Bunun_Isbukun/06.json	1bca7712f7e5a8e7dc6e2be144dc8692f87857871a31079c27823135267bec80	8	same	
+sentence/Bunun_Isbukun/07.json	sentence/Bunun_Isbukun/07.json	65debb6e7ad9c9670550b31aaf82fdfda9b8dd547f4702bcaccfd004bc79b09a	5	same	
+sentence/Bunun_Isbukun/08.json	sentence/Bunun_Isbukun/08.json	c314ec78dac584649e65558d8a05cec6afac8bbbc92575abe2e2546827bdbdd9	4	same	
+sentence/Bunun_Isbukun/09.json	sentence/Bunun_Isbukun/09.json	d2bc558bf59bb6ce4f5221d82602b3f194d33c809c7315f308505498f6cfca4b	8	same	
+sentence/Bunun_Isbukun/10-2.json	sentence/Bunun_Isbukun/10-2_revised.json	5d49a5e2d5ab6502dd44e4694eb88de540acda691f26d59bee15bc38ad8b469a	12	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/10-3.json	sentence/Bunun_Isbukun/10-3_revised.json	12b9a2339090e21adaef8780079c0eb03883e3aafea3509b644231476d38117d	14	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/10-4.json	sentence/Bunun_Isbukun/10-4.json	dd9266653434b35edcb357b8548c831a6205c4c3cb9f2117e196d6b8596f0202	5	same	
+sentence/Bunun_Isbukun/10-5.json	sentence/Bunun_Isbukun/10-5.json	436be90b335276c22b1e19fd3951075a5c25a38b6d5dbe91b1871c25695166b2	9	same	
+sentence/Bunun_Isbukun/10-6.json	sentence/Bunun_Isbukun/10-6.json	1fbea172d019a7ee838f49c4938b129ecc28d9433d9a575f2e916b9f21b02956	11	same	
+sentence/Bunun_Isbukun/10-7.json	sentence/Bunun_Isbukun/10-7.json	eed727aa5eda60b4ba1d254ce52163d62e21c3bdf2dd3ce2e742c683764356bf	4	same	
+sentence/Bunun_Isbukun/10.json	sentence/Bunun_Isbukun/10.json	3c1fe779879f45541b62123262fbc47753445f08bbbce0f3fb8b25698b3eeab4	4	same	
+sentence/Bunun_Isbukun/11.json	sentence/Bunun_Isbukun/11_revised.json	936ee579b06db77ae0753ba2463de45e0f09759cddc899fdc12b07960bfc40cc	10	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/12.json	sentence/Bunun_Isbukun/12_revised.json	26ef67ff3e0e324a9e5157470fb83f5975103aaa9751eedd986ea6aecf46b572	17	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/13.json	sentence/Bunun_Isbukun/13_revised.json	24068cf196f4c7d01f7f987fd487e884d4f9621abcc000315fd0ce44dd0dbd69	17	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/14.json	sentence/Bunun_Isbukun/14_revised.json	c98e4b6b2db1a40a921b4cb9cda6dc97a892c98b802873e024d5398bb3afdaad	8	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/15.json	sentence/Bunun_Isbukun/15.json	072c59a27d5a3b689aab76c7ca9b5f7f860f5806dec83c4b74ab01a7be9a2429	11	same	
+sentence/Bunun_Isbukun/16.json	sentence/Bunun_Isbukun/16_revised.json	583b71be556395348fa8ee9dbe7decef97093d7a9e7021412fe2e97f6103768c	17	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/17.json	sentence/Bunun_Isbukun/17_revised.json	765cc15e75f096f12619c9c81206bb7925aee377d9680225676ea8c7c07906d3	31	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/18.json	sentence/Bunun_Isbukun/18_revised.json	9c92b45dd0a8dcc7d1c3bbc4ece04b016a24f9724196fbd0a86d760cdfc16dc1	7	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/19.json	sentence/Bunun_Isbukun/19.json	54ed7f91645bb5b70691ba710d8bedfaf15eaf9d8c62f35a4710410c6180e1c1	5	same	
+sentence/Bunun_Isbukun/20.json	sentence/Bunun_Isbukun/20_revised.json	c89966d18bcb82b655026ebf30e2756e11b05db3fccf2fc7a71b15991490409c	15	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/21.json	sentence/Bunun_Isbukun/21.json	fb47234634b90a1ed991bc103ac1e11f6fb3a34382481b79c1bf1dba098dcbc2	5	same	
+sentence/Bunun_Isbukun/22.json	sentence/Bunun_Isbukun/22.json	b7552d3087324396420eecbe5c519e057e464a3481f7288a52fd70e8bac37985	7	same	
+sentence/Bunun_Isbukun/23.json	sentence/Bunun_Isbukun/23.json	031c299ce801c00fc94beb12a3a7cf3ff428ecd7ea3aa17d00d5dea64928dcc7	7	same	
+sentence/Bunun_Isbukun/24.json	sentence/Bunun_Isbukun/24_revised.json	cf2285e3bf84f4b60fad438569314c77c3604fae35031c713ce59b9dcc86365f	11	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/25.json	sentence/Bunun_Isbukun/25.json	48d0a6c2f2babd42aca35c3b5225d5caaff77097cc2db3e5552a4fe36b8cf2a0	6	same	
+sentence/Bunun_Isbukun/26.json	sentence/Bunun_Isbukun/26_revised.json	40389a3a686a3e6e2ea45d5e5a14eddf4b4c04f963bb3a7c8b218c7d52dfc6bd	11	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/27.json	sentence/Bunun_Isbukun/27.json	76dd55ce03fb00fed528f95150225d4df5f53b85f09dd064932588f3ac11f1a7	5	same	
+sentence/Bunun_Isbukun/28.json	sentence/Bunun_Isbukun/28.json	140d654e907cb66fbdb2ec39471ce4f73a824f9fd2060aa3413b5c411ac3987d	13	same	
+sentence/Bunun_Isbukun/29.json	sentence/Bunun_Isbukun/29_revised.json	3f2cd014c9883b2f0f3ea241598f1db50a4b10b975f38daee28097a7ce98333f	9	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/30.json	sentence/Bunun_Isbukun/30_revised.json	faa244f06b34d01b36782c6db347fe18c82a8cc21360c38c1e84a31cc24ab239	8	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/31.json	sentence/Bunun_Isbukun/31.json	4d43e6fa272d4b89b2a1bc718b1e91c62bdbb3a1cb24347a7b104f16aadf99de	12	same	
+sentence/Bunun_Isbukun/32.json	sentence/Bunun_Isbukun/32.json	7eedb51fd6063eea443972101487a0857f6aba2d77718da2d546b7d0ded3ff65	11	same	
+sentence/Bunun_Isbukun/33.json	sentence/Bunun_Isbukun/33_revised.json	98f36df8508370dcfe2100d0874fb27236197196d0c64bc40338f2120bc38e05	5	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/34.json	sentence/Bunun_Isbukun/34_revised.json	6f566a68eabd35d2f2cfdb3e122260dbf17d01a84c4809e80e77de8b352c38ec	17	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/35.json	sentence/Bunun_Isbukun/35.json	eeaec346e5baf73cfe433b088a9f5f741c6c7e5b892356fa8b76b77fa8f825ea	4	same	
+sentence/Bunun_Isbukun/36.json	sentence/Bunun_Isbukun/36.json	7508aeda8892d23367754878af0eeff33311e0675eeb45faa5714a81261d1107	16	same	
+sentence/Bunun_Isbukun/37.json	sentence/Bunun_Isbukun/37_revised.json	715ccc6469207b26fab08a2bbd5e2de798611bafb4123d242ef35e61a1bf4286	10	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/38.json	sentence/Bunun_Isbukun/38.json	79acc62db1a7fc5470565a693e1626ed54f589b91e9cc4a3cf47c6053f78caed	6	same	
+sentence/Bunun_Isbukun/39.json	sentence/Bunun_Isbukun/39.json	8dc10a41c8952f5d2ceef4b855f151a69aad7b85b08f7cb60a299cb388ea6e2f	66	same	
+sentence/Bunun_Isbukun/40.json	sentence/Bunun_Isbukun/40.json	ecbe6921323777d6e1fddfcd646a3404fb6bc5c203828a14f87ccd1c942b6339	7	same	
+sentence/Bunun_Isbukun/41.json	sentence/Bunun_Isbukun/41.json	309fe4ce05ceb9d7012d7acc8f8c7c38b7e4fcc00d3b454a7773c58c9e7b80d4	9	same	
+sentence/Bunun_Isbukun/42.json	sentence/Bunun_Isbukun/42.json	75c0e3c00bb595b35eff209764d17cffe920028c526f975bea39e3209c3bf001	7	same	
+sentence/Bunun_Isbukun/43.json	sentence/Bunun_Isbukun/43.json	70f790eca37e883cf9d413ee8018d6c0795a05566e4d830cc3e0273bd6d783f9	9	same	
+sentence/Bunun_Isbukun/44.json	sentence/Bunun_Isbukun/44.json	1cc915201c4e57f267b956fd57c4a17e48114982a232a65102abde5cc62a7cac	3	same	
+sentence/Bunun_Isbukun/45.json	sentence/Bunun_Isbukun/45.json	e21b99774384ea2b0128e194006505537f7805a24eb95f45c3c4957038837449	4	same	
+sentence/Bunun_Isbukun/46.json	sentence/Bunun_Isbukun/46_revised.json	b7cbf0e26f7837c09d028e2de2a18ed5f6639af62e7b2cf123b730a8ff172616	12	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/47.json	sentence/Bunun_Isbukun/47_revised.json	398073d5a2986adc010d8d7370510cb5f2b05020e055b26eda972881187d6229	15	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/48.json	sentence/Bunun_Isbukun/48_revised.json	31d2b87c8e672baf2201390caf4d5b1901a220bc896d9fd56104a92e248dd35e	23	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/49.json	sentence/Bunun_Isbukun/49_revised.json	f808d48267c60059ed34a4dfb0dd58086603c0ef3caa6f30a24074de3331ac7d	11	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/50.json	sentence/Bunun_Isbukun/50_revised.json	bacdf72459ae5e2b28814e03bc8ac3b3be6ba3fbbc0f69f3fff38ff335e47ec0	19	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/51.json	sentence/Bunun_Isbukun/51_revised.json	2990be4fde9c92a0034445263e36c006f459f4e09eb07cc75ba6a096c39e8678	22	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/52.json	sentence/Bunun_Isbukun/52_revised.json	bea33fc29a2794aa3e2bc3ab3cfc72cdc8ce5a5096da700c042444aca1faa234	17	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/53.json	sentence/Bunun_Isbukun/53_revised.json	9d5accb74b15070aa8db52accb09fd9e00b6ea438c24c1fbc414a0f5247772c4	15	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/54.json	sentence/Bunun_Isbukun/54_revised.json	9992f0ce0ea599d12620a7c00bff1e79af52d86dd4f7c4d753916aa9737bf0fa	29	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/55.json	sentence/Bunun_Isbukun/55_revised.json	291ac5b99a6dd31cef16d2f03e443bebb03cf510f3890a56a92cd2f3f2638251	36	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/56.json	sentence/Bunun_Isbukun/56.json	0ee304411804335fad448fc6c35c89f4e545c1f50d1e85c31a1f020ce6c587aa	19	same	
+sentence/Bunun_Isbukun/57.json	sentence/Bunun_Isbukun/57_revised.json	e0e35bc72541632387954627534d74fe670a271df399561aaf5fdbcf0aa5a53f	29	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/59.json	sentence/Bunun_Isbukun/59_revised.json	be256eb0ee2cabdc6551719d2a38fed4daa057be259ee4c92668662784a04368	16	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/60.json	sentence/Bunun_Isbukun/60_revised.json	f6a35e54f7a8d6f0d8f8b3bfa347f2357665a187384e0d8bb518af965a133010	21	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/61.json	sentence/Bunun_Isbukun/61_revised.json	4922a6d2435c005f360197e2def439d532b3ba58aa705097c4bff1e73837c397	10	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/62.json	sentence/Bunun_Isbukun/62_revised.json	cef238ffb4aff2cd49c36b19b6a3c1aaa27dc40664a10419d5351da3ac92f40b	43	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/63.json	sentence/Bunun_Isbukun/63_revised.json	841c4d1215ff1322599baa70ff5836c945136b0b85a7a0b0ff41e93aa7cd43aa	920	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Bunun_Isbukun/64.json	sentence/Bunun_Isbukun/64_revised.json	b5017695f44f2fb2734b96048dd7001eaa89d96db9abf05a989465c3194b3cf8	74	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+sentence/Kanakanavu_Kanakanavu/1.json	sentence/Kanakanavu_Kanakanavu/1.json	6da3a7c1eec1a6bde053735592e086c6a3c8943278b5f969d6b77aa436f9f412	492	same	
+sentence/Kanakanavu_Kanakanavu/2.json	sentence/Kanakanavu_Kanakanavu/2.json	d7c9f3dfdbcfa72d22eef2da83654e43cb6eeab2dda8abc21f51cafcf23a9dd5	16	same	
+sentence/Kanakanavu_Kanakanavu/3.json	sentence/Kanakanavu_Kanakanavu/3.json	d9d2fccd3b907bba0c1673bb16da47130cd21a54877686b8b2dce99fdefd1599	524	same	
+sentence/Kanakanavu_Kanakanavu/4.json	sentence/Kanakanavu_Kanakanavu/4.json	3668639af135c752554bb72d3bd9e1607bc4cd2d30d47943afb23978d775a269	181	same	
+sentence/Kanakanavu_Kanakanavu/5.json	sentence/Kanakanavu_Kanakanavu/5.json	91917abb6fcb972599bf8b22ab38af2d3529bbe27998b44a982b5db2fb7f7ab5	73	same	
+sentence/Rukai_Vedai/20200318-CL-1.json	sentence/Rukai_Vedai/20200318-CL-1.json	12a42486246a70cf68342a81674542eba44cb383c5b74a4b80d1d5ef2c1c68ca	10	same	
+sentence/Rukai_Vedai/20200325-CL-2.json	sentence/Rukai_Vedai/20200325-CL-2.json	601d4f5e4e185f5daee08a8243b351b3727746bc6cb3d1c1b96e4e4531a6623b	23	same	
+sentence/Rukai_Vedai/20200408-CL-3.json	sentence/Rukai_Vedai/20200408-CL-3.json	52b9e9eedf7aa3faa51b282881295212010a99f1aed69afe53a7d45588e073e5	17	same	
+sentence/Rukai_Vedai/20200415-CL-4.json	sentence/Rukai_Vedai/20200415-CL-4.json	6faa2e953b980b878c33fb674b4f375051a9c93f4b583e61723997f0d7162c46	19	same	
+sentence/Rukai_Vedai/20200422-CL-5.json	sentence/Rukai_Vedai/20200422-CL-5.json	f58ea307e21c2389f0b8d02052835816da5e8fb68e5bf5800db80aa850ab0825	19	same	
+sentence/Rukai_Vedai/20200429-CL-6.json	sentence/Rukai_Vedai/20200429-CL-6.json	2ffab5e02b5bc9e2dd8325c24a119faefbf791172532a7715da669fa052d09b6	19	same	
+sentence/Rukai_Vedai/20200508-CL-7.json	sentence/Rukai_Vedai/20200508-CL-7.json	9b420e9e951fe968462ec70ceff11553df1fc659c7eeea4ff3e1817efa85e6bb	23	same	
+sentence/Rukai_Vedai/20200513-CL-8.json	sentence/Rukai_Vedai/20200513-CL-8.json	d4c18a084fb47d95929fb438fd4794b2383ccfabdaa86742fbfe644eac8a63ce	24	same	
+sentence/Rukai_Vedai/20200528-FW-Andrea.json	sentence/Rukai_Vedai/20200528-FW-Andrea.json	41ee7b9e8ac427a7c4c644a0e6515d1f53caeb4cc313d926ca4659122b6ffff7	19	same	
+sentence/Rukai_Vedai/20200528-FW-Ingrid.json	sentence/Rukai_Vedai/20200528-FW-Ingrid.json	f6da41455059c4c0cef767589c2f4544a6935a08ccd0116694aab3eca5f5473f	36	same	
+sentence/Rukai_Vedai/20200528-FW-Jess.json	sentence/Rukai_Vedai/20200528-FW-Jess.json	bb7d2c964602d9e804bfc46443cc3aa79377951401793cc812197385794f4722	10	same	
+sentence/Rukai_Vedai/20200528-FW-Jimmy.json	sentence/Rukai_Vedai/20200528-FW-Jimmy.json	9b9818f040071d1e9c14169d838b3875738f55bb90213dbc64d7600e9e5be1b9	16	same	
+sentence/Rukai_Vedai/20200528-FW-Ken.json	sentence/Rukai_Vedai/20200528-FW-Ken.json	6352d8f630c6071227bfd1f870dbebd6d777b68b05483ff2e665013f8c44071b	23	same	
+sentence/Rukai_Vedai/20200528-FW-Ludwig.json	sentence/Rukai_Vedai/20200528-FW-Ludwig.json	12d9590747d2cf134f94b56a192f9b36cfeffb27e3d09bc46732c382574aef4d	26	same	
+sentence/Rukai_Vedai/20200528-FW-Ryan.json	sentence/Rukai_Vedai/20200528-FW-Ryan.json	964256d7e97f00049520329aca918b0ea3de03213ae62b23aa0a95f26694d38c	24	same	
+sentence/Rukai_Vedai/20200528-FW-Yongfu.json	sentence/Rukai_Vedai/20200528-FW-Yongfu.json	60e4cd0900e3caffc4bd476c933fa821cf48c9eda7934f642bbca2c95eb4b985	26	same	
+sentence/Rukai_Vedai/20200528-FW-yuki.json	sentence/Rukai_Vedai/20200528-FW-yuki.json	9835366009ad5a6d497b1a526a72542fc5b0abc0ab6693d1608bc1dc28e4f772	24	same	
+sentence/Rukai_Vedai/20200529-FW-Andrea-1.json	sentence/Rukai_Vedai/20200529-FW-Andrea-1.json	8e7ed0821057f90cfdb70344c96cdd511a53ca4744d4cc2f9e2dee2200e475df	17	same	
+sentence/Rukai_Vedai/20200529-FW-Andrea-2.json	sentence/Rukai_Vedai/20200529-FW-Andrea-2.json	fb8ac95c5c40b0eaf716df1b4b8cf37d4f3dbf7c0de554f2fc4eaefcd84b38e4	35	same	
+sentence/Rukai_Vedai/20200529-FW-Ingrid.json	sentence/Rukai_Vedai/20200529-FW-Ingrid.json	c7da76494f152caaaccf7fd54b2c9b779734d21d273e01fbf64d594666cd5c60	13	same	
+sentence/Rukai_Vedai/20200529-FW-Jess.json	sentence/Rukai_Vedai/20200529-FW-Jess.json	10438b13fca6f0f0de507c0dc8647a8dc303394f0c3e7f8ee28116eb9ffb83b2	19	same	
+sentence/Rukai_Vedai/20200529-FW-Jimmy-1.json	sentence/Rukai_Vedai/20200529-FW-Jimmy-1.json	d0afe85c4f882a5164f18bafce47c354195fc40651cb61cff7723060d1b0ab55	11	same	
+sentence/Rukai_Vedai/20200529-FW-Jimmy-2.json	sentence/Rukai_Vedai/20200529-FW-Jimmy-2.json	0a82c204e9e5f16c698153de99004affccf060e4e1bba532ddceca252020e4ca	14	same	
+sentence/Rukai_Vedai/20200529-FW-Ken-1.json	sentence/Rukai_Vedai/20200529-FW-Ken-1.json	dcc8adb6c6900aac1491d6fa59a55cce3cc84e248c269f7a3b66d6edc2284b98	17	same	
+sentence/Rukai_Vedai/20200529-FW-Ken-2.json	sentence/Rukai_Vedai/20200529-FW-Ken-2.json	c048cc4fbc2d0a6eec44393ed4bf4bad077f25dfcf5c54a62dba9fcb2ecec48e	11	same	
+sentence/Rukai_Vedai/20200529-FW-Lixing-1.json	sentence/Rukai_Vedai/20200529-FW-Lixing-1.json	0e40189c9275484a3b9128e2fe8add8a6f4dcddc4bbdf8f63d0df1a764c1154d	20	same	
+sentence/Rukai_Vedai/20200529-FW-Lixing-2.json	sentence/Rukai_Vedai/20200529-FW-Lixing-2.json	93f26d70e617bf463a6a064e8a825c8778b54e237fbc7efdb45dcd86c535577c	17	same	
+sentence/Rukai_Vedai/20200529-FW-Ludwig.json	sentence/Rukai_Vedai/20200529-FW-Ludwig.json	89595e2700aa4355b3faeddf57fc341c7cac3f711b307f9d2b0047301494bd57	23	same	
+sentence/Rukai_Vedai/20200529-FW-Ryan.json	sentence/Rukai_Vedai/20200529-FW-Ryan.json	50a8e7d375a2018fdfcbd9bed11a6b34a5c7f3e2bf9d3d0700d3f8dab99e0ed8	38	same	
+sentence/Rukai_Vedai/20200529-FW-Yongfu-1.json	sentence/Rukai_Vedai/20200529-FW-Yongfu-1.json	84a669c726d90d6bbc6322e7b182df02404337d902759a04e320449489cd4daa	37	same	
+sentence/Rukai_Vedai/20200529-FW-Yongfu-2.json	sentence/Rukai_Vedai/20200529-FW-Yongfu-2.json	e6481fe4b34dd5e288e5de9c2e41e72a6cedce37bc42d49d3cfe1191b68a763c	19	same	
+sentence/Rukai_Vedai/20200529-FW-yuki-1.json	sentence/Rukai_Vedai/20200529-FW-yuki-1.json	ac8f3aa85e76f87659f4ce92fa7573797e5d6b2168bdcd39b2e577707f3e90ad	14	same	
+sentence/Rukai_Vedai/20200529-FW-yuki-2.json	sentence/Rukai_Vedai/20200529-FW-yuki-2.json	e2dd25f54ffede91218399331651e1a8756ea3040591bfb81f7bf9fc403445ca	28	same	
+sentence/Rukai_Vedai/20200530-FW-Andrea-1.json	sentence/Rukai_Vedai/20200530-FW-Andrea-1.json	b468a7b98bc29eaf99ac145410f15d183075e45c85cbfc181bdbe7a78f33c915	9	same	
+sentence/Rukai_Vedai/20200530-FW-Andrea-2.json	sentence/Rukai_Vedai/20200530-FW-Andrea-2.json	9855d634874e65fc2a678f566cfdd9630608139c2ca624d0fe3bfbf7d02a5dc7	10	same	
+sentence/Rukai_Vedai/20200530-FW-Ingrid.json	sentence/Rukai_Vedai/20200530-FW-Ingrid.json	bceb958a15b892fbf4cd14029c1b161a10678899e28c34611e009c99c1d22b46	19	same	
+sentence/Rukai_Vedai/20200530-FW-Jess.json	sentence/Rukai_Vedai/20200530-FW-Jess.json	d76219cb00e2069b8f904e9092256ed813f54c584aaa98093cdb8067bab2e96c	26	same	
+sentence/Rukai_Vedai/20200530-FW-Jimmy-1.json	sentence/Rukai_Vedai/20200530-FW-Jimmy-1.json	46b6d24c9deb276879c64c3986e94bd59ea16f6e8ddef8518a2390c93db03bdd	21	same	
+sentence/Rukai_Vedai/20200530-FW-Jimmy-2.json	sentence/Rukai_Vedai/20200530-FW-Jimmy-2.json	7acc9473eb65c6988cce8083a1cf98fa6de9ccaa277cd1561314f223c623fbff	5	same	
+sentence/Rukai_Vedai/20200530-FW-Ken-1.json	sentence/Rukai_Vedai/20200530-FW-Ken-1.json	3da1b5021c3e90a85f850c09261d4037cdd80d551d0a3a5aa4ac6060c122a622	17	same	
+sentence/Rukai_Vedai/20200530-FW-Ken-2.json	sentence/Rukai_Vedai/20200530-FW-Ken-2.json	c2186ddc9fa9b8eac99bad7f24629387fc14e3852570f73665db9a763d55c8d4	26	same	
+sentence/Rukai_Vedai/20200530-FW-Lixing-1.json	sentence/Rukai_Vedai/20200530-FW-Lixing-1.json	562e4bc02ca4b2f619fc9e268e28cac359ae337bace69298e5251b4e3f16bb23	19	same	
+sentence/Rukai_Vedai/20200530-FW-Lixing-2.json	sentence/Rukai_Vedai/20200530-FW-Lixing-2.json	303c9fe28fe0a3bf8fb299091af550c2b11ec977ebf144e1a3a5c4e789126f75	6	same	
+sentence/Rukai_Vedai/20200530-FW-Ludwig.json	sentence/Rukai_Vedai/20200530-FW-Ludwig.json	84fbd5b4c196e82fb0f0453f890ae1efbf4e428f8a244dc841c65f96642f980f	11	same	
+sentence/Rukai_Vedai/20200530-FW-Ryan.json	sentence/Rukai_Vedai/20200530-FW-Ryan.json	699dd6c16896a210ec4d7f81e998e5a43f1e71dfac639265903aacf691216983	46	same	
+sentence/Rukai_Vedai/20200530-FW-Yongfu-1.json	sentence/Rukai_Vedai/20200530-FW-Yongfu-1.json	c908d66fe487ad32c7581538ab92cb356a6a2fa17b5544b4a60dbdab0d726f39	23	same	
+sentence/Rukai_Vedai/20200530-FW-Yongfu-2.json	sentence/Rukai_Vedai/20200530-FW-Yongfu-2.json	5d75b3b7ec13aa5f3b0a22c36904b8ad8218e1c41ec444978bd655a52a0264de	16	same	
+sentence/Rukai_Vedai/20200530-FW-yuki.json	sentence/Rukai_Vedai/20200530-FW-yuki.json	452e1eda43a378c4c25c0e19de030dafa2b31eaa38271de685916d240e12c6fb	16	same	
+sentence/Rukai_Vedai/20200531-FW-Ingrid.json	sentence/Rukai_Vedai/20200531-FW-Ingrid.json	66f4eac67be1b7246d98e6e42e4b2a5db7760adfcd15e316c17ea5923fdda84a	25	same	
+sentence/Rukai_Vedai/20200531-FW-Jimmy.json	sentence/Rukai_Vedai/20200531-FW-Jimmy.json	2a9ef5d70a0a1b74a304ef67977c9396a1b4a1410443453ef982d4fd561ee1df	11	same	
+sentence/Rukai_Vedai/20200531-FW-Lixing.json	sentence/Rukai_Vedai/20200531-FW-Lixing.json	7a34216248cc0adf75869133a169e6bcca0859d8e2159d526a13c1027521fc0e	21	same	
+sentence/Rukai_Vedai/20200531-FW-Yongfu-1.json	sentence/Rukai_Vedai/20200531-FW-Yongfu-1.json	8af304ea8a61194b3331099d040edf0ac6d3bb39b195a41bdad89296d0962721	30	same	
+sentence/Rukai_Vedai/20200531-FW-Yongfu-2.json	sentence/Rukai_Vedai/20200531-FW-Yongfu-2.json	adf8002d40b81836a601a6a7d00730c885bc81b2447609abd35152e9aca23e7d	16	same	
+sentence/Rukai_Vedai/20200531-FW-yuki.json	sentence/Rukai_Vedai/20200531-FW-yuki.json	27d21ca93fdb399258132a533a18fba22fdc22ad5c1aa735bd57cdadd7257a8f	48	same	
+story/Amis_Ciwkangan/Amis_Conv-farming_marang_furayang.json	story/Amis_Ciwkangan/Amis_Conv-farming_marang_furayang.json	0e8803873ebb116a8001f2978cdc8eebb834d298403ddecde17554e426e6d2c4	231	same	
+story/Amis_Ciwkangan/Amis_Conv-talking_tamih_panay.json	story/Amis_Ciwkangan/Amis_Conv-talking_tamih_panay.json	deb013ef2dbeadc21a6c5e1d4e8cf4a6e036cf3b2a0c3c84675ebd0bd30b0d41	197	same	
+story/Amis_Ciwkangan/Amis_Nr-crab_panay.json	story/Amis_Ciwkangan/Amis_Nr-crab_panay.json	fe680ca2c237f840179e1e22d269d622e135ab84eb530f0260090bfcfa0e7c2d	85	same	
+story/Amis_Ciwkangan/Amis_Nr-custom_Liu.json	story/Amis_Ciwkangan/Amis_Nr-custom_Liu.json	19a8eb428339ec0cc0722d40c076085d8fdc89c988b1784d33db3a80096ec6e6	289	same	
+story/Amis_Ciwkangan/Amis_Nr-frog_cinhua.json	story/Amis_Ciwkangan/Amis_Nr-frog_cinhua.json	4496bf9e0fc3a79509f4331cdbc86cd98bb99eaec46c1e45189be28c18db224f	175	same	
+story/Amis_Ciwkangan/Amis_Nr-frog_minzhu.json	story/Amis_Ciwkangan/Amis_Nr-frog_minzhu.json	ba35e1568561fd75aecfc42cd854129b7337ad63e4abbfe4a9b97fd88a225f84	169	same	
+story/Amis_Ciwkangan/Amis_Nr-frog_ofad.json	story/Amis_Ciwkangan/Amis_Nr-frog_ofad.json	8c0c4d8a31a823f387e60ab19fa498b394826d99f36476ca3e0b69d90c28b4c4	166	same	
+story/Amis_Ciwkangan/Amis_Nr-frog_zuomei.json	story/Amis_Ciwkangan/Amis_Nr-frog_zuomei.json	8d770fbbeed8e8d0c84e2f082d1f299c15041cd0506fec39ae95d48ba955bcae	150	same	
+story/Amis_Ciwkangan/Amis_Nr-intro_Panay.json	story/Amis_Ciwkangan/Amis_Nr-intro_Panay.json	f5bff2688e812747b4c42c7f8885724e8ad88ed789fad29cbbc4e53f81257dc7	46	same	
+story/Amis_Ciwkangan/Amis_Nr-intro_ofad.json	story/Amis_Ciwkangan/Amis_Nr-intro_ofad.json	73554cb6127ec46115bca1563a7ad030d48e259f339c7c4b61aab85a50e34db1	136	same	
+story/Amis_Ciwkangan/Amis_Nr-intro_tamih.json	story/Amis_Ciwkangan/Amis_Nr-intro_tamih.json	08dc2a19f27376de6fb6cec5a2fbde2750a3b55998616189670b872f747ec418	405	same	
+story/Amis_Ciwkangan/Amis_Nr-peanut_panay.json	story/Amis_Ciwkangan/Amis_Nr-peanut_panay.json	0fcab8bc433a9b82858a02e47002d50d9a6763d8305ad50affd4429b2ca3089e	64	same	
+story/Amis_Ciwkangan/Amis_Nr-pear_cinhua.json	story/Amis_Ciwkangan/Amis_Nr-pear_cinhua.json	8c8cc2d6d29f479ee842e8c9c83c546d04c01601a36e474b579cf3abaa764981	134	same	
+story/Amis_Ciwkangan/Amis_Nr-pear_lungi.json	story/Amis_Ciwkangan/Amis_Nr-pear_lungi.json	f819b08ddfc9e9c09e667bf79d0b6ef80484854c14c6f4026e5b8659df13b62e	132	same	
+story/Amis_Ciwkangan/Amis_Nr-pear_minzhu.json	story/Amis_Ciwkangan/Amis_Nr-pear_minzhu.json	a4967e3028bb093702a074bb16a62b46ab096e1fb9a7d75da4a24893b510cee2	187	same	
+story/Amis_Ciwkangan/Amis_Nr-pear_panay.json	story/Amis_Ciwkangan/Amis_Nr-pear_panay.json	e8f1d7109e0324c1ef93ea46e2ede6f4536f34ae83e8e7a69a9e5b1b1a6d5b80	163	same	
+story/Amis_Ciwkangan/Amis_Nr-pear_tamih.json	story/Amis_Ciwkangan/Amis_Nr-pear_tamih.json	c12bc8f1f0040bd91bd355a6a0d0443bb3ccdd4f952f36703d9b1b317f337fd5	39	same	
+story/Amis_Ciwkangan/Amis_Nr-pear_zuomei.json	story/Amis_Ciwkangan/Amis_Nr-pear_zuomei.json	90d0daaaf6a0576e39f6802718b0aa84874ffe0b7397877c0ac70a0e4d9e192a	147	same	
+story/Atayal_Mayrinax/AtaNr-dailylife1_Iwan.json	story/Atayal_Mayrinax/AtaNr-dailylife1_Iwan.json	351e9635aab196441027d3ce8f4c7d647345dc50d8f42204458accd100b013c6	79	same	
+story/Atayal_Mayrinax/AtaNr-dailylife2_Iwan.json	story/Atayal_Mayrinax/AtaNr-dailylife2_Iwan.json	3068ea024f49938de3d691cfc0f6eba648b1cba96285f2654c639860d2add75c	43	same	
+story/Atayal_Mayrinax/AtaNr-dailylife3_Tauyu.json	story/Atayal_Mayrinax/AtaNr-dailylife3_Tauyu.json	d4d31c863fa5b8814592d2141153ce699bd9859407274d02b12b99c95a4d2dbc	98	same	
+story/Atayal_Mayrinax/AtaNr-hunting1_Kainu.json	story/Atayal_Mayrinax/AtaNr-hunting1_Kainu.json	42ef1f9f6df240d449beec5c63c0a9ddfe7f3e5bd0f8eba0fc2df3dd1123fed9	122	same	
+story/Atayal_Mayrinax/AtaNr-hunting2_Buyung.json	story/Atayal_Mayrinax/AtaNr-hunting2_Buyung.json	de76a9a00fa830c71d7c6f43cfd4ea202c9d1858c95b176cded97b61f4758cb7	85	same	
+story/Atayal_Mayrinax/AtaNr-hunting3_Takun.json	story/Atayal_Mayrinax/AtaNr-hunting3_Takun .json	939a0e4d654f2b7fa0de5ce3a20f77ee9dfe80c38b85fb8b9ffe29724ce3b127	116	edited_variant	NTU re-published its 2026-01-10 edit under a name ending in a space; the old name keeps the 2025-07-11 text. The edit realigns records 15 and 68.
+story/Atayal_Mayrinax/AtaNr-moving_Kainu.json	story/Atayal_Mayrinax/AtaNr-moving_Kainu .json	9d2438a1c98bb54e3725f96273688a70915e491a7c3c510831df1f4a2b8d09bb	207	edited_variant	NTU re-published its 2026-01-10 edit under a name ending in a space; the old name keeps the 2024-02-14 text. The edit rejoins clitics in records 28 and 205.
+story/Atayal_Mayrinax/AtaNr-moving_Takun.json	story/Atayal_Mayrinax/AtaNr-moving_Takun.json	11c271ec2d51980e7e4e92f9e4ef979edba9755c9f11897bb4b5d36b715e4dda	180	same	
+story/Atayal_Mayrinax/AtaNr-proposal_Takun.json	story/Atayal_Mayrinax/AtaNr-proposal_Takun.json	d555a8dccf13deb8ce6bc2efafedcc75f61286e3724c19d291d3e79f14b43f3e	150	same	
+story/Atayal_Mayrinax/AtaNr-sowing_Kainu.json	story/Atayal_Mayrinax/AtaNr-sowing_Kainu.json	e945d7091f344b311ac629a66351f863b35b2cc333614fd7868283423ea61a0b	167	same	
+story/Atayal_Mayrinax/AtaNr-weaving_Kagaw.json	story/Atayal_Mayrinax/AtaNr-weaving_Kagaw.json	6285d765dfe27885c8628d30fd36fb1edb2a6bdc859ad7f94bb46e1deec3d2f1	152	same	
+story/Bunun_Isbukun/bnNr-frog_Adus.json	story/Bunun_Isbukun/bnNr-frog_Adus.json	38f2c9e40156529dad69a1e93b7cff554b5288f08a4fef427f5d1e6d22c07086	197	same	
+story/Bunun_Isbukun/bnNr-frog_Ciang.json	story/Bunun_Isbukun/bnNr-frog_Ciang.json	45cc16d2d96d1d82b1c24cac0ba75575dc04211eb7b132390f7124685eac0cc0	179	same	
+story/Bunun_Isbukun/bnNr-frog_Hanaivaz.json	story/Bunun_Isbukun/bnNr-frog_Hanaivaz.json	ed79a1d95d5bebfcacd38185d7ecae9c713e9e88585f41317c70b3c7a934cee4	305	same	
+story/Bunun_Isbukun/bnNr-frog_Laniahu.json	story/Bunun_Isbukun/bnNr-frog_Laniahu.json	cdd2c5445723ac6e5985c7d707d8cd770e3408927c5e331b10413bb9bac076e5	466	same	
+story/Bunun_Isbukun/bnNr-frog_Samingaz.json	story/Bunun_Isbukun/bnNr-frog_Samingaz.json	557b0efdb981f9455346a8f03b837388a635754f435ab702551752354d66fb19	149	same	
+story/Bunun_Isbukun/bnNr-frog_Talum.json	story/Bunun_Isbukun/bnNr-frog_Talum.json	c70b71e7e06f0fcd0a629df2dd085b22351b63218eb5f35dff8bde6660e3789d	116	same	
+story/Bunun_Isbukun/bnNr-hunter-becominig-a-bird_Hanaivaz.json	story/Bunun_Isbukun/bnNr-hunter-becominig-a-bird_Hanaivaz.json	ea6842d16d5dd6572a0836d8a7a9fdc7fd0f688d8d38ca78f7d50ab8bfdaecba	298	same	
+story/Bunun_Isbukun/bnNr-lazy-daughter_Hanaivaz.json	story/Bunun_Isbukun/bnNr-lazy-daughter_Hanaivaz.json	48e4b545b83b013a1f26e13281e4ce014c92002bd281f89583013adf30363950	222	same	
+story/Bunun_Isbukun/bnNr-pear_Ciang.json	story/Bunun_Isbukun/bnNr-pear_Ciang.json	7ab995dd078fcd8f0afaf73baa14ccf6f249ce68df59942ce60c65d2d3e214b4	127	same	
+story/Bunun_Isbukun/bnNr-pear_Hanaivaz.json	story/Bunun_Isbukun/bnNr-pear_Hanaivaz.json	9bb336c817f2178b0c924c4a518bb744d7f5707bf58c1c27404826371894b414	161	same	
+story/Bunun_Isbukun/bnNr-pear_Laniahu.json	story/Bunun_Isbukun/bnNr-pear_Laniahu.json	e777bfb5a5884bc28da461d7ee17bd1b25436fa9b8dc4a9d04f6ce016728f5e3	181	same	
+story/Bunun_Isbukun/bnNr-pear_Samingaz.json	story/Bunun_Isbukun/bnNr-pear_Samingaz.json	4662b571b8b434dd8b3ca56d39866e36194cda68bb145fece8f7d7366a5ca691	120	same	
+story/Bunun_Isbukun/bnNr-pear_Talum.json	story/Bunun_Isbukun/bnNr-pear_Talum.json	5498414fe526e8ecf51ed39907a17c1e68b16c21f903062a857139c6c93bd3d4	57	same	
+story/Kanakanavu_Kanakanavu/kkvNr-fishing_Muu.json	story/Kanakanavu_Kanakanavu/kkvNr-fishing_Muu.json	c4d879f7c7ca3f1b236bf0de2920cfa0546b2c384b045224b8246cd17a46a651	497	same	
+story/Kanakanavu_Kanakanavu/kkvNr-frogstory_angai.json	story/Kanakanavu_Kanakanavu/kkvNr-frogstory_angai.json	84aa904ea8269dc96fa6baf9fa8ef628dafeabd2d4ac5a9b79e8ce95f02ffbe1	400	same	
+story/Kanakanavu_Kanakanavu/kkvNr-puratu_Muu.json	story/Kanakanavu_Kanakanavu/kkvNr-puratu_Muu.json	7ae1982bffc9048053d8485a3c80ff9da171716b4eb00299f72e8a16a5871f8a	481	same	
+story/Kanakanavu_Kanakanavu/kkvNr-story_pani.json	story/Kanakanavu_Kanakanavu/kkvNr-story_pani.json	9a7565b31d3d9d2aac36a81b3f2a3f14b5f52bdbe16e125ee832e50545c23870	144	same	
+story/Kanakanavu_Kanakanavu/kkvNr_dailylife_Angai.json	story/Kanakanavu_Kanakanavu/kkvNr_dailylife_Angai.json	a9e49c12504a9cfc5f6e92cd4861f80650a16791bf0e520c4f1d19d00ca1647f	21	same	
+story/Kanakanavu_Kanakanavu/kkvNr_domestic_troubles_Muu.json	story/Kanakanavu_Kanakanavu/kkvNr_domestic_troubles_Muu.json	f3c8b8b5b6b5f9e493889747eb39afce722e773159d9310b203776c2fec6e762	277	same	
+story/Kanakanavu_Kanakanavu/kkvNr_family_Paicu.json	story/Kanakanavu_Kanakanavu/kkvNr_family_Paicu.json	216dba97d3079ab6fc55e569acda5ae2a82a1ff9875b2c46bd660c311a1430f3	57	same	
+story/Kanakanavu_Kanakanavu/kkvNr_farming_Muu.json	story/Kanakanavu_Kanakanavu/kkvNr_farming_Muu.json	72702e432166baaa1b0edf1548889a66fbfe0a5cef9d07c9054f452829a9b6dc	151	same	
+story/Kanakanavu_Kanakanavu/kkvNr_fishing_Pani.json	story/Kanakanavu_Kanakanavu/kkvNr_fishing_Pani.json	e8c0e96d13c1d5c8c815fb3db66b9ece40ed5a8e960ba79c1447e28e119df09f	318	same	
+story/Kanakanavu_Kanakanavu/kkvNr_frog_Uva.json	story/Kanakanavu_Kanakanavu/kkvNr_frog_Uva.json	e65fb73a3f50439e59115080c5a7163518a3971d2e6c27204a2e594d5eb10dbc	153	same	
+story/Kanakanavu_Kanakanavu/kkvNr_hunting1_Muu.json	story/Kanakanavu_Kanakanavu/kkvNr_hunting1_Muu.json	2e0adb90d8a8aedbf2278808008ee461689f01300e92dc34bfe9ebf41a188e0d	118	same	
+story/Kanakanavu_Kanakanavu/kkvNr_hunting_taboos_Angai.json	story/Kanakanavu_Kanakanavu/kkvNr_hunting_taboos_Angai.json	1b7127690d56fe8dd158d4addf7498808800eab8f3c60cc5a285cb216103eb2d	138	same	
+story/Kanakanavu_Kanakanavu/kkvNr_life_Kuatu.json	story/Kanakanavu_Kanakanavu/kkvNr_life_Kuatu.json	ef2ee621db201533c824392aa71aacd9901d1a97f70b1e757895c763102a0c7a	54	same	
+story/Kanakanavu_Kanakanavu/kkvNr_mikon_Kuatu.json	story/Kanakanavu_Kanakanavu/kkvNr_mikon_Kuatu.json	cfc20c922be6b20bf4ee3cc2d4e29702d01c5e6ee184c764378061ae723b1daa	33	same	
+story/Kanakanavu_Kanakanavu/kkvNr_millet_Muu.json	story/Kanakanavu_Kanakanavu/kkvNr_millet_Muu.json	ec12871c14e340461014b6e9ff4941cec38be8540d2d3179844d467e7d781ff0	207	same	
+story/Kanakanavu_Kanakanavu/kkvNr_sad_song_Muu.json	story/Kanakanavu_Kanakanavu/kkvNr_sad_song_Muu.json	e7ba11fa20304e2fe92ea97b79cc7b44b427a4dffa7f54facd695afecf32c56a	15	same	
+story/Kanakanavu_Kanakanavu/kkvNr_sowing_Kuatu.json	story/Kanakanavu_Kanakanavu/kkvNr_sowing_Kuatu.json	45b274ec9cb708d0b906e571f154e96423e5ea794176fa9acd662856912c3303	62	same	
+story/Kanakanavu_Kanakanavu/kkvNr_sowing_Paicu.json	story/Kanakanavu_Kanakanavu/kkvNr_sowing_Paicu.json	7388bdb76c7b5d266faaa2e90759b5aaf4303df0d6b4a678855174328eacac6b	83	same	
+story/Kanakanavu_Kanakanavu/kkvNr_the man from china_Pani.json	story/Kanakanavu_Kanakanavu/kkvNr_the man from china_Pani.json	d193093cb02b9d4cc3771a215c1c7bada894b53210432a92694ef064d027f476	268	same	
+story/Kavalan_Xinshe/KacCon-Teaching Weaving_abas_ipay.json	story/Kavalan_Xinshe/KacCon-Teaching Weaving_abas_ipay.json	a75e3ba279c672480cffdd1639a9fb9a9230386f95c0db94212b1d9844ee85f3	139	same	
+story/Kavalan_Xinshe/KavCon-angry_pilaw_abas.json	story/Kavalan_Xinshe/KavCon-angry_pilaw_abas.json	7dc717b9a20287eb7bbf5bb2b61cdbc35e2f41c497a34eae665627c99a6a2d17	297	same	
+story/Kavalan_Xinshe/KavCon-banana trees_abas_ipay2.json	story/Kavalan_Xinshe/KavCon-banana trees_abas_ipay2.json	f357b03f63d172667ba4c60ef17923df89ca35077a1a894b33d8aba0074d1f6a	53	same	
+story/Kavalan_Xinshe/KavCon-earthquake_abas_haciang.json	story/Kavalan_Xinshe/KavCon-earthquake_abas_haciang.json	8a411246dd2de2b777f6ab363993fa1fe8185817225cbde984bd7cf60f0abad6	995	same	
+story/Kavalan_Xinshe/KavCon-home_buya_imuy.json	story/Kavalan_Xinshe/KavCon-home_buya_imuy.json	88385b479a264c4f5025c64bbe355fe125cdf11e4e7da691d35690857c4d7b23	287	same	
+story/Kavalan_Xinshe/KavCon-marriage_abas_pilaw.json	story/Kavalan_Xinshe/KavCon-marriage_abas_pilaw.json	02e92202a8ba02c6d9f39c38c3a3e0a158c669ef7339d233508a4b911f404119	624	same	
+story/Kavalan_Xinshe/KavCon-relatives_buya_ngengi.json	story/Kavalan_Xinshe/KavCon-relatives_buya_ngengi.json	327c6c73301422b41bd93a604ebe522419aec0873fa3a4895c473b45aed576d1	1090	same	
+story/Kavalan_Xinshe/KavCon-weaving_abas_ipay3.json	story/Kavalan_Xinshe/KavCon-weaving_abas_ipay3.json	08af0927274fad2e600d81f5f2053b6b0541f29d70e5d1acacac16c3a6367789	212	same	
+story/Kavalan_Xinshe/KavNr-ancestor_buya.json	story/Kavalan_Xinshe/KavNr-ancestor_buya.json	a55c3f8a556786da3be69a3c0793cd1a98305158b2039305bc700de3d2a0ee7f	180	same	
+story/Kavalan_Xinshe/KavNr-ancestor_ngengi.json	story/Kavalan_Xinshe/KavNr-ancestor_ngengi.json	9f08543a9ca3a1cc5c7c0e958830582debceda53e50f4f2af173c85e00691c03	110	same	
+story/Kavalan_Xinshe/KavNr-frog_Haciang.json	story/Kavalan_Xinshe/KavNr-frog_Haciang.json	95441f0ba108c6a3dfd3ca3e66721945c67cc51d3bfa4ba214196b792ba3f000	214	same	
+story/Kavalan_Xinshe/KavNr-frog_abas.json	story/Kavalan_Xinshe/KavNr-frog_abas.json	8202ab1e0326f5a60e358b17446b8c859f895ad9ece2e737a22b008b76cb71ca	139	same	
+story/Kavalan_Xinshe/KavNr-frog_api2.json	story/Kavalan_Xinshe/KavNr-frog_api2.json	feeef1f344d8289fc8b8fced40a6553e16d68e95633c35d3b09dfee4ff24f27c	395	same	
+story/Kavalan_Xinshe/KavNr-frog_banday.json	story/Kavalan_Xinshe/KavNr-frog_banday.json	398fcf71c95f5895b27f5a407e3b61370fe8f0b8eccd88352d4c1c03bef5ef29	123	same	
+story/Kavalan_Xinshe/KavNr-frog_buya.json	story/Kavalan_Xinshe/KavNr-frog_buya.json	3bebcc95f9ab34f6c762e28f77108cc5764f7bc8e44f4025706a8aebd010cb68	186	same	
+story/Kavalan_Xinshe/KavNr-frog_imuy2.json	story/Kavalan_Xinshe/KavNr-frog_imuy2.json	faedba98f39ef5218e8c085c31d6a0aea0f22e0af2c355726d6f97ce10d82d61	245	same	
+story/Kavalan_Xinshe/KavNr-frog_imuy_longversion.json	story/Kavalan_Xinshe/KavNr-frog_imuy_longversion.json	68617c63b401dc490c97440f130838cabc13e042a11d43e9c0a207b716596874	362	same	
+story/Kavalan_Xinshe/KavNr-frog_syulan.json	story/Kavalan_Xinshe/KavNr-frog_syulan.json	20625ecd4f98689b6a01f0c007a346da2f6128bb180ad89a86e7ea22f3c05330	150	same	
+story/Kavalan_Xinshe/KavNr-map_buya.json	story/Kavalan_Xinshe/KavNr-map_buya.json	462c7590aeebb743dcc37d8a26348d1ab6dcdf66151e2431d5b85a2f12d34d79	52	same	
+story/Kavalan_Xinshe/KavNr-map_imuy.json	story/Kavalan_Xinshe/KavNr-map_imuy.json	c67b287816d94c180da7a7fba3e5fc6229ad65e4c4c9b365d910510f4c81ef74	53	same	
+story/Kavalan_Xinshe/KavNr-map_syulan.json	story/Kavalan_Xinshe/KavNr-map_syulan.json	3de1f890964fbee19dc298131231dbdf106a7e879cd9fdfe0befe4c12979228c	42	same	
+story/Kavalan_Xinshe/KavNr-pear_Haciang.json	story/Kavalan_Xinshe/KavNr-pear_Haciang.json	7414a0c8edaa535d34bc0cc9d75f4afe4702c28a3d7a54006dbd01ee0a9f21fc	154	same	
+story/Kavalan_Xinshe/KavNr-pear_abas.json	story/Kavalan_Xinshe/KavNr-pear_abas.json	e9dfb2f3390650dc6fa35344893cf3a83b3773b0ac60127b0f2aa232cf073a8a	111	same	
+story/Kavalan_Xinshe/KavNr-pear_api.json	story/Kavalan_Xinshe/KavNr-pear_api.json	b6ed72d1d3da873cad1aaace2b9dc3efd07fa55b2edfc6e007d1234433f71fae	108	same	
+story/Kavalan_Xinshe/KavNr-pear_banday.json	story/Kavalan_Xinshe/KavNr-pear_banday.json	b096c2bf9e9d93f56e2d3b40f5a1521e6f36f0ac6575c36083f1d1add7906198	69	same	
+story/Kavalan_Xinshe/KavNr-pear_buya.json	story/Kavalan_Xinshe/KavNr-pear_buya.json	9f490b06b3bc209dbb118089f17d42fe9bf865a167ef35fac940f30c26116c43	86	same	
+story/Kavalan_Xinshe/KavNr-pear_imuy.json	story/Kavalan_Xinshe/KavNr-pear_imuy.json	01195e7a963afd6bc435df561892d151bfc43f733e5534261c51f4c94fb752e3	93	same	
+story/Kavalan_Xinshe/KavNr-pear_ipay.json	story/Kavalan_Xinshe/KavNr-pear_ipay.json	b1c76edf383525cb29b76e3a92517b8472ae517e5387c4156a5cd4784e49a7b9	52	same	
+story/Kavalan_Xinshe/KavNr-pear_syulan.json	story/Kavalan_Xinshe/KavNr-pear_syulan.json	93ec5b37c1da2b32fda13353452e4d1bdb9cf770fe93bddfaaef08133bc7786d	90	same	
+story/Kavalan_Xinshe/KavNr-sea_buya.json	story/Kavalan_Xinshe/KavNr-sea_buya.json	7fc34e73e51eebc3abbe54ab99e1bb23ecbea8c9d138bb0b72ee224b1fa0d1aa	47	same	
+story/Kavalan_Xinshe/kavCon-speech_buya_syulan.json	story/Kavalan_Xinshe/kavCon-speech_buya_syulan.json	4774c6a51aaf17e1ac75b1f8ae64b84aed72883ff1762b8f700f16d5947703ed	269	same	
+story/Rukai_Vedai/RukaiNr-becenge_tagas.json	story/Rukai_Vedai/RukaiNr-becenge_tagas_edited.json	886a388a2c06aae9f0ae305b6e0078afbaee351487f2e57cc4d75bd7cf1e9c51	65	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+story/Rukai_Vedai/RukaiNr-childhood_balenge.json	story/Rukai_Vedai/RukaiNr-childhood_balenge_edited.json	043565229f4b0d73edb2ea1a590d13228d0f84e9573fd2ba3c807724d9d42f4f	184	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+story/Rukai_Vedai/RukaiNr-frog_Bajiaying.json	story/Rukai_Vedai/RukaiNr-frog_Bajiaying.json	bf90b58f74dc601d4eb93018f5c06ae63c5428580b2b9fb982e1ec9ccb5184cb	69	same	
+story/Rukai_Vedai/RukaiNr-frog_Baqingyi.json	story/Rukai_Vedai/RukaiNr-frog_Baqingyi.json	dc15850daff7661f6ea50d5fbc8e8412a08b5bcf572c303dfda900c60860f628	69	same	
+story/Rukai_Vedai/RukaiNr-frog_Kainguane.json	story/Rukai_Vedai/RukaiNr-frog_Kainguane.json	7feefc78b2a8db65aee0f51a797ccd80fad21abdce4e0a70e150ef8f15b7d870	228	same	
+story/Rukai_Vedai/RukaiNr-frog_Legeai.json	story/Rukai_Vedai/RukaiNr-frog_Legeai.json	10c9b4bb335ce515612a54fc5a0211df5563a2e52b41112ca9f5e8d7041a68e3	181	same	
+story/Rukai_Vedai/RukaiNr-frog_Tuku.json	story/Rukai_Vedai/RukaiNr-frog_Tuku.json	d895a3e8cd2070252551d266697f82b90bd047ccda193ef45f843e8885d98607	159	same	
+story/Rukai_Vedai/RukaiNr-frog_Waecacane.json	story/Rukai_Vedai/RukaiNr-frog_Waecacane_edited.json	300347be1c8996a476519375d4ed57c0931ecec803173137cdd62211b8a8d2dd	97	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+story/Rukai_Vedai/RukaiNr-frog_salrabu.json	story/Rukai_Vedai/RukaiNr-frog_salrabu.json	878b26b7219d02fd555a8192c8cc19a67fcf0d67604681232659ca2cfc798171	146	same	
+story/Rukai_Vedai/RukaiNr-ghost lake_Balenge.json	story/Rukai_Vedai/RukaiNr-ghost lake_Balenge_edited.json	32a06d299453932db99d9b4e2a7bf1dc7902092bf03b6de60886185c903479d4	72	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+story/Rukai_Vedai/RukaiNr-marriage ceremony_taugadha.json	story/Rukai_Vedai/RukaiNr-marriage ceremony_taugadha_edited.json	0895299ce1274f15846c6efb35425540d357db9094a6197abf6566dfa8a98a9f	276	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+story/Rukai_Vedai/RukaiNr-naming_taugadhu.json	story/Rukai_Vedai/RukaiNr-naming_taugadhu_edited.json	a74f3c608c7f2cb9ced73a84ea851dfaf6d731548868d79023ae6902934b6389	314	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+story/Rukai_Vedai/RukaiNr-pear_Balenge.json	story/Rukai_Vedai/RukaiNr-pear_Balenge.json	70b0d6765dba7d5a427eb7f837912cf015f61058ad7a691247d94c14cf1f158f	143	same	
+story/Rukai_Vedai/RukaiNr-pear_Kainguane.json	story/Rukai_Vedai/RukaiNr-pear_Kainguane.json	be1ffe299d406ab737a81a99fba3999a70a060ae68ecb5f0fc47db89ca5d5b51	69	same	
+story/Rukai_Vedai/RukaiNr-pear_Legeai.json	story/Rukai_Vedai/RukaiNr-pear_Legeai_edited.json	f27a966dc4fc73ea80f6c33c25ef0e2b27f2946a6b848a3ac02546b3e10738cc	102	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+story/Rukai_Vedai/RukaiNr-pear_ba ching-i.json	story/Rukai_Vedai/RukaiNr-pear_ba ching-i.json	897f7aa409f62a535b92741e3956fb961d6576f72316a3b1f8aa86d69cf87854	37	same	
+story/Rukai_Vedai/RukaiNr-pear_salrabu.json	story/Rukai_Vedai/RukaiNr-pear_salrabu.json	0178e2f4e888ff83d52d6ea3a3e1fa551c0bbb49cb5ee3e5287fa24f9f455e88	59	same	
+story/Rukai_Vedai/RukaiNr-pear_tagas.json	story/Rukai_Vedai/RukaiNr-pear_tagas.json	6f90253ce23f63a224746b6a1f30649505ad8647931224a418d9a63d623d252d	42	same	
+story/Rukai_Vedai/RukaiNr-pear_wauki.json	story/Rukai_Vedai/RukaiNr-pear_wauki.json	33b4eb3fa11debb1c4a7d25e1f6110038ba4b220e970b8fb11b9bd17c1450f9c	71	same	
+story/Rukai_Vedai/RukaiNr-princess balenge_balenge.json	story/Rukai_Vedai/RukaiNr-princess balenge_balenge_edited.json	2acc7d3ff105bf9920d04bfa114a3396330ac0740d17b1267ed5cc0eec610bfa	213	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+story/Rukai_Vedai/RukaiNr-swing_taugadhu.json	story/Rukai_Vedai/RukaiNr-swing_taugadhu_edited.json	bbd0f3dc3256336d1507f0b9cdb6291c3bacea0158f133311adcba8945707553	232	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+story/Rukai_Vedai/RukaiNr-work by men and women_taugadhu.json	story/Rukai_Vedai/RukaiNr-work by men and women_taugadhu_edited.json	8146e92d6159a58d1dafd9590ab8b0219037a59edc03529ddbd00b954cd4abd1	241	renamed	NTU renamed the file on 2026-01-10 and revised its content.
+story/Saisiyat_Tong-he/SaiNr-Molaw.json	story/Saisiyat_Tong-he/SaiNr-Molaw.json	bdb5dcbccfef2c02363dd4c129cb155356ec0d1f8f2b9b8b208507e9eed71097	97	same	
+story/Saisiyat_Tong-he/SaiNr-anhi.json	story/Saisiyat_Tong-he/SaiNr-anhi.json	6579f13aa9110961bb74ae2300814bb961731b18bd6dcb477d74228c07077fbe	26	same	
+story/Saisiyat_Tong-he/SaiNr-election_lahi_ a taro_ babay.json	story/Saisiyat_Tong-he/SaiNr-election_lahi_ a taro_ babay.json	5dee63cf7a12ef9dda87c72c272ca63173ce5df3be2b6eb46c5836d8943ce9e4	115	same	
+story/Saisiyat_Tong-he/SaiNr-flood_waon a boong.json	story/Saisiyat_Tong-he/SaiNr-flood_waon a boong.json	e4be75d50cb677d315998322e471256e1644e50807d05283594513db6be1b987	160	same	
+story/Saisiyat_Tong-he/SaiNr-frog1_bownay a tahes.json	story/Saisiyat_Tong-he/SaiNr-frog1_bownay a tahes.json	fa6834ad6affc01d9cfafd97082957769ebdcf00ab31446b876495cfd8774ecb	119	same	
+story/Saisiyat_Tong-he/SaiNr-frog2_waon a boong.json	story/Saisiyat_Tong-he/SaiNr-frog2_waon a boong.json	a7c48dd2fbd6762d4be90b3495a1204c27122b7bc03ab8b6e620616f8a8e66f1	92	same	
+story/Saisiyat_Tong-he/SaiNr-frog3_'oemaw_a_basi'.json	story/Saisiyat_Tong-he/SaiNr-frog3_oemaw_a_basi.json	8cf675496984b1136132ec09f49afdb8dcfa444f4737467b65e56f80ccb34cff	181	renamed	NTU dropped the quotes from the file name (2025-03-11).
+story/Saisiyat_Tong-he/SaiNr-frog5__awi_ a basi_.json	story/Saisiyat_Tong-he/SaiNr-frog5__awi_ a basi_.json	56a2907d01c6991fd817e03c3d5330b9aac975994f5c7b076d8ef6a462d678f3	279	same	
+story/Saisiyat_Tong-he/SaiNr-frog6_kalaeh a _oemaw.json	story/Saisiyat_Tong-he/SaiNr-frog6_kalaeh a _oemaw.json	9ace72bbab6fb42849cb3c8a2edc0ee1658b28281801bcbd0ab0b417c68a06dd	179	same	
+story/Saisiyat_Tong-he/SaiNr-frog7_kalaeh a taro_.json	story/Saisiyat_Tong-he/SaiNr-frog7_kalaeh a taro_.json	af23d7068f1ce9bd4fdf1144170404ee2623c98d931a473a1e3372ebca385175	109	same	
+story/Saisiyat_Tong-he/SaiNr-frog8_parain a _oemaw.json	story/Saisiyat_Tong-he/SaiNr-frog8_parain a _oemaw.json	5303cc9bd5e81fbb32b3e2c46fbeba3d82163102f7533c9cf2f7f703b5114534	89	same	
+story/Saisiyat_Tong-he/SaiNr-holiday_kalaeh a _oemaw.json	story/Saisiyat_Tong-he/SaiNr-holiday_kalaeh a _oemaw.json	2d3f9c46252b658fb94ecc3085854b0c4e3933ebb510929a18dd66032143063b	282	same	
+story/Saisiyat_Tong-he/SaiNr-kathethel2_kalaeh a oemaw.json	story/Saisiyat_Tong-he/SaiNr-kathethel2_kalaeh a oemaw.json	7da2b70f3eeb6d527d0badb48c39c144975432132c0dc4b56e3af8af7bea7c6d	546	same	
+story/Saisiyat_Tong-he/SaiNr-kathethel_parain a _oemaw.json	story/Saisiyat_Tong-he/SaiNr-kathethel_parain a _oemaw.json	b745b4f80dd2caa2d62385655b50db61dafcce2dcb2a71bd151946fc8d3b2ef3	203	same	
+story/Saisiyat_Tong-he/SaiNr-life_waon a boong.json	story/Saisiyat_Tong-he/SaiNr-life_waon a boong.json	9c95a2c47b1cf5ffe34ad11a9b0ed9951b1ce7c5be566ada2bb1a3caabfc25ba	288	same	
+story/Saisiyat_Tong-he/SaiNr-pear1__oemaw a _obay.json	story/Saisiyat_Tong-he/SaiNr-pear1__oemaw a _obay.json	1d7ff4384e57cbe9e633e9799d6b2992b58f31f689ea0a18bcd6d07ad05e19db	122	same	
+story/Saisiyat_Tong-he/SaiNr-pear3_kalaeh a taro_.json	story/Saisiyat_Tong-he/SaiNr-pear3_kalaeh a taro_.json	504fd4a1e7436c6526837e5f532e4e80f176059d3f84ae52e1cbca966e605333	50	same	
+story/Saisiyat_Tong-he/SaiNr-pear4_tosi_ masin.json	story/Saisiyat_Tong-he/SaiNr-pear4_tosi_ masin.json	054ed43136c6fc289775360acca8e1e655b56085dbe10bd3d139aa43c690f447	89	same	
+story/Saisiyat_Tong-he/SaiNr-pear5__awi_ a basi_.json	story/Saisiyat_Tong-he/SaiNr-pear5__awi_ a basi_.json	93b02eca81311cd20daf9c88d045ef2cd3b60cd7bca5cd220d7924eae60b11df	105	same	
+story/Saisiyat_Tong-he/Sainr-frog4_lalo a tahaeS.json	story/Saisiyat_Tong-he/Sainr-frog4_lalo a tahaeS.json	4695ab5a828799f8fa94fcd9ddd32658ab0cd5fc59021e70721519db2eae76c9	128	same	
+story/Sakizaya_Sakizaya/skzyNr-class_sinay.json	story/Sakizaya_Sakizaya/skzyNr-class_sinay.json	db4ca48a10478c24d530f9b7569a34710ce3060733d7e2871914b13703eca0b5	198	same	
+story/Sakizaya_Sakizaya/skzyNr-frog_bunuk.json	story/Sakizaya_Sakizaya/skzyNr-frog_bunuk.json	5794740f807197a48616aa9c88c8888c336eaa23fe045632edb2372f64e3dc5d	143	same	
+story/Sakizaya_Sakizaya/skzyNr-frog_dungi.json	story/Sakizaya_Sakizaya/skzyNr-frog_dungi.json	0635694bba6faf11e22e27cf68e04e8a887d9acee4b49a960d49309239e56eaf	129	same	
+story/Sakizaya_Sakizaya/skzyNr-frog_panay.json	story/Sakizaya_Sakizaya/skzyNr-frog_panay.json	c3e2be244304052d6f4a4869dd80deef9211972318114d74094b660c48a52742	106	same	
+story/Sakizaya_Sakizaya/skzyNr-frog_sinay.json	story/Sakizaya_Sakizaya/skzyNr-frog_sinay.json	2010ff03c2b3133a079d34c22e232ada805fbf2ee90a1988e4d3421f283d556e	108	same	
+story/Sakizaya_Sakizaya/skzyNr-hunting_kaniw.json	story/Sakizaya_Sakizaya/skzyNr-hunting_kaniw.json	d5b66fff7e206bae925f10a4828003cd15626f2d98deddc75cc00461f1f33ca3	129	same	
+story/Sakizaya_Sakizaya/skzyNr-maibol_Panay.json	story/Sakizaya_Sakizaya/skzyNr-maibol_Panay.json	788a8564b09c2887dd086755603e982cb6758513d7b8d467bcaa2b3b66ab234d	39	same	
+story/Sakizaya_Sakizaya/skzyNr-palamal_kaniw.json	story/Sakizaya_Sakizaya/skzyNr-palamal_kaniw.json	919be016219a70ee0c89abbf8cc726507a087836c5fec064082e5cc72a9de8ab	262	same	
+story/Sakizaya_Sakizaya/skzyNr-pear_bunuk.json	story/Sakizaya_Sakizaya/skzyNr-pear_bunuk.json	7cee7c65767415c06cda9acde1f7ec31895cc86c8152ab3d0fcf796eab9828e7	120	same	
+story/Sakizaya_Sakizaya/skzyNr-pear_dungi.json	story/Sakizaya_Sakizaya/skzyNr-pear_dungi.json	d510f183e9d7b7ff8644fc164bc4db1594803b9f7464783b33cf22770a4199c4	94	same	
+story/Sakizaya_Sakizaya/skzyNr-pear_panay.json	story/Sakizaya_Sakizaya/skzyNr-pear_panay.json	ec81e8eab8bca498893be09de1059e24c89137e52b7116e94cb1a07d0d2b4666	44	same	
+story/Sakizaya_Sakizaya/skzyNr-rain-kaniw.json	story/Sakizaya_Sakizaya/skzyNr-rain-kaniw.json	e6d0a082128da7311553e8292ec415a3ff590d61d9abd1f0e1a654083e0e5562	124	same	
+story/Sakizaya_Sakizaya/skzyNr-sapat_Panay.json	story/Sakizaya_Sakizaya/skzyNr-sapat_Panay.json	a43a9372be6f9478ba6028b5884513ff4f178503a076ccd36a0ee5d98f892e1f	60	same	
+story/Sakizaya_Sakizaya/skzyNr-school_Panay.json	story/Sakizaya_Sakizaya/skzyNr-school_Panay.json	6efc7dc3968f71faf83458bf179f5655612769548e212558d570b12810837bf0	51	same	
+story/Sakizaya_Sakizaya/skzyNr-tribalhistory_sinay.json	story/Sakizaya_Sakizaya/skzyNr-tribalhistory_sinay.json	3bb130843a49d0a8c3cc5f1035e8cbc9fd1f7aa14f30a0c3ef525fc31fbe20c1	480	same	
+story/Seediq_Tgdaya/sdqCon-dialog1_ciwas_tiwas 2021s.json	story/Seediq_Tgdaya/sdqCon-dialog1_ciwas_tiwas 2021s.json	72dc0519f308bbeea7f73470f92316a38a5e7365e51c02f7758356dad3cc1f14	316	same	
+story/Seediq_Tgdaya/sdqCon-dialog2_ciwas_tiwas 2021s.json	story/Seediq_Tgdaya/sdqCon-dialog2_ciwas_tiwas 2021s.json	fe767cd93d421e577259dd559647dda5d8070be94d4fbb3370248467182642e4	339	same	
+story/Seediq_Tgdaya/sdqCon-dialog3_robo_bakan 2021s.json	story/Seediq_Tgdaya/sdqCon-dialog3_robo_bakan 2021s.json	7681529c9894d8dc8f4587f55b0d1f7c50856f067cf68a7f406cde48ff4f3f00	68	same	
+story/Seediq_Tgdaya/sdqCon-dialog4_robo_bakan_ape 2020s.json	story/Seediq_Tgdaya/sdqCon-dialog4_robo_bakan_ape 2020s.json	cd1fb665ee642186861626d6499f17afd3505c5583937670e727a4d9b18523b5	143	same	
+story/Seediq_Tgdaya/sdqCon-dialog5_dakis_takun 2020s.json	story/Seediq_Tgdaya/sdqCon-dialog5_dakis_takun 2020s.json	026a69fd2248ef0b11514dfec3204084e43158fc6f2f76a1ed2ada5e516cd527	303	same	
+story/Seediq_Tgdaya/sdqCon-plum_uma_robo 2020s.json	story/Seediq_Tgdaya/sdqCon-plum_uma_robo 2020s.json	1b45b5a0daf900ea1b281643115de6bd9cc3529f75d64d28cbf44e66c04964ad	106	same	
+story/Seediq_Tgdaya/sdqNr-childhood_micang 2020s.json	story/Seediq_Tgdaya/sdqNr-childhood_micang 2020s.json	1dedf74724e6868111d7b40d512be8cc1aa42d5711ae590d21dc0d468e0a2ec2	268	same	
+story/Seediq_Tgdaya/sdqNr-frog_aking 2020s.json	story/Seediq_Tgdaya/sdqNr-frog_aking 2020s.json	51320cd27fd9223a4527aee6818674e1714002199b65ac955eb3c75d8642f04c	190	same	
+story/Seediq_Tgdaya/sdqNr-frog_lubi 2020s.json	story/Seediq_Tgdaya/sdqNr-frog_lubi 2020s.json	8a3ec792076275d6edd21f8019b4f85faff4685e318827f8e383e5860e0533bf	267	same	
+story/Seediq_Tgdaya/sdqNr-frog_temi.json	story/Seediq_Tgdaya/sdqNr-frog_temi.json	a4b664fec3a37aba2f800c65fd5b6db8a73f9a69b23556bb57af8cd009e4bb5e	426	same	
+story/Seediq_Tgdaya/sdqNr-medicine_robo pihu 2020s.json	story/Seediq_Tgdaya/sdqNr-medicine_robo pihu 2020s.json	538914b243690eed41935f8a05ef0dffcaf0607f9707ab2293431fbbe2605932	53	same	
+story/Seediq_Tgdaya/sdqNr-mother_iwan 2020s.json	story/Seediq_Tgdaya/sdqNr-mother_iwan 2020s.json	1577d10c09645e4e42532c6471f7509b6dc7b8f810f4c3066c92196ec6abe454	400	same	
+story/Seediq_Tgdaya/sdqNr-pear-dakis 2020s.json	story/Seediq_Tgdaya/sdqNr-pear-dakis 2020s.json	da6c25264e2047c1af2c89d9389734ac8f5ca1794a7f9392e7338815843b957f	251	same	
+story/Seediq_Tgdaya/sdqNr-pear_aking 2020s.json	story/Seediq_Tgdaya/sdqNr-pear_aking 2020s.json	595177c1d0411da69b3623ed6bb8310aeca937de3317dc2965e9c832d1e27a64	96	same	
+story/Seediq_Tgdaya/sdqNr-pear_lubi 2020s.json	story/Seediq_Tgdaya/sdqNr-pear_lubi 2020s.json	f5dd30662353a5ca133a3acc029fba08f701fb40913cb0b62171e7c0c02bc224	87	same	
+story/Seediq_Tgdaya/sdqNr-pear_pawan 2020s.json	story/Seediq_Tgdaya/sdqNr-pear_pawan 2020s.json	1a32eb80b16fdc3a8613bad37df1a658f25f95eac3022073e53172ba97752ca7	84	same	
+story/Seediq_Tgdaya/sdqNr-pear_temi 2020s.json	story/Seediq_Tgdaya/sdqNr-pear_temi 2020s.json	08e2345ffa8bd46e45e178d5ef283d54739554669a549817b7a15d05a4c07ef0	128	same	
+story/Seediq_Tgdaya/sdqNr-rain_pawan 2020s.json	story/Seediq_Tgdaya/sdqNr-rain_pawan 2020s.json	a606c9a5bf72f6714ac2249154c909bef72c98bb52396840a7bc77967fbc5e45	32	same	
+story/Seediq_Tgdaya/sdqNr-ricah_uma 2021s.json	story/Seediq_Tgdaya/sdqNr-ricah_uma 2021s.json	1d8c7f8a6a6a2222d054eceda7540a5bf047540f45ae6d22e7847fe561070a85	54	same	
+story/Seediq_Tgdaya/sdqNr-seediq_dakis 2020s.json	story/Seediq_Tgdaya/sdqNr-seediq_dakis 2020s.json	00266ad62d65252b0c0d0497a3eb02b3ad0e9aa595d0cee1c2a9a456490ecf2e	136	same	
+story/Seediq_Tgdaya/sdqNr-sinobale_uma 2021s.json	story/Seediq_Tgdaya/sdqNr-sinobale_uma 2021s.json	c0ab825dbb5a06efd7a538983ed5afcfcb88cdb929b844aae764e54f06d5f0cf	32	same	
+story/Seediq_Tgdaya/sdqNr-sisin_dakis 2020s.json	story/Seediq_Tgdaya/sdqNr-sisin_dakis 2020s.json	cbe3b12727aba2fcaf839d09e15fb3852d3671d6d7b951db91001c992863ae6b	574	same	
+story/Seediq_Tgdaya/sdqNr-south_pawan 2021s.json	story/Seediq_Tgdaya/sdqNr-south_pawan 2021s.json	8581bda950556d86172cc0840e337f8bbde925ea5b4cc21e6c40158754257c46	112	same	
+story/Seediq_Tgdaya/sdqNr-taboo_pawan 2021s.json	story/Seediq_Tgdaya/sdqNr-taboo_pawan 2021s.json	e28d8d02218d0b8105cb893b5e3b5577a16e132c921c5724a44ca7bec18756a9	119	same	
+story/Seediq_Tgdaya/sdqNr-tattoo2_pawan 2020s.json	story/Seediq_Tgdaya/sdqNr-tattoo2_pawan 2020s.json	9e8f98056bd0745bc6c07a8f454b6a2bb45962c62f5641c365bacca68c8450ae	21	same	
+story/Seediq_Tgdaya/sdqNr-tradition_dakis 2021s.json	story/Seediq_Tgdaya/sdqNr-tradition_dakis 2021s.json	e60389eb3ae31cadd4c11e226a12245893a31265c4e1388c24a54b40d157441a	232	same	
+story/Tsou_Tsou/None-1.json	story/Tsou_Tsou/None-1.json	fe202760eabee1049fdbc02fce8bd5c1ebb2c740422a1c820cc57c5bb3ddea5e	569	same	
+story/Tsou_Tsou/Tsou-frog-story-wang-1.json	story/Tsou_Tsou/Tsou-frog-story-wang-1.json	b0737a9fe2b16c9a2795f076add44092a53a0c1946156f57ca16041fa0cf0356	183	same	
+story/Tsou_Tsou/TsouConv-informants.json	story/Tsou_Tsou/TsouConv-informants.json	6254bc520eda1b0246f11461a2eddfc47bf4d9af6d5db903f83e14e79ef25be1	298	same	
+story/Tsou_Tsou/TsouConv-typhoon.json	story/Tsou_Tsou/TsouConv-typhoon.json	a4928db37ca5eee66e1c5fd34bcdc9357080cd2bd39fd793cf90a9c4634bac04	576	same	
+story/Tsou_Tsou/TsouNr-frog-story-shi.json	story/Tsou_Tsou/TsouNr-frog-story-shi.json	88d511dd5234ca5ca32b69e935f67392a14c493af7d8bf43b92f794036da3329	198	same	
+story/Tsou_Tsou/TsouNr-frog-story-tu.json	story/Tsou_Tsou/TsouNr-frog-story-tu.json	7edcb8641d468269cc627d78f0fcd7d3070b1aa264ded91725987a110b89e96f	102	same	
+story/Tsou_Tsou/TsouNr-love-story-zhuang.json	story/Tsou_Tsou/TsouNr-love-story-zhuang.json	6d0a5e973b35e0e3865851a373ffbf2784133863f7c11b72e1c2a258cc6ecba6	58	same	
+story/Tsou_Tsou/TsouNr-lovestory-zheng.json	story/Tsou_Tsou/TsouNr-lovestory-zheng.json	684a4416c35151281663307049f2eea6a62e3a219727736975b1322230c95024	102	same	
+story/Tsou_Tsou/TsouNr-pear-An.json	story/Tsou_Tsou/TsouNr-pear-An.json	33d70bfe17a9a954b19d9dc75ecf305dbf4ffefbd3c80c564a58e1d95558d3b9	109	same	
+story/Tsou_Tsou/TsouNr-pear-story-3.json	story/Tsou_Tsou/TsouNr-pear-story-3.json	eeb3f9884cbb3ddf77cdbfa2174689be18bf37b42c495a254badb6273478f6e4	124	same	
+story/Tsou_Tsou/TsouNr-pear-wang-3.json	story/Tsou_Tsou/TsouNr-pear-wang-3.json	3e56a899aff011620a2a14f951f2b6b777551af9a8c61db765a7aa38c34b3709	158	same	
+story/Tsou_Tsou/TsouNr_lovestry_wang-2.json	story/Tsou_Tsou/TsouNr_lovestry_wang-2.json	38ffba1a0b1bacd18db15bd574cd049990b211f78b5ed20b97a2bdfdba749b7c	85	same	
+-	story/Atayal_Mayrinax/AtaNr-hunting3_Takun.json	5fcc5b846b8fdd939a1bb97895e585dcb3453e95b59772fe986b238080daf05f	116	excluded	superseded: NTU's edited version of this text is the space-suffixed file
+-	story/Atayal_Mayrinax/AtaNr-moving_Kainu.json	672ba40b8fadfbebf39d27c6f56bd37e389ab1e81a892c5f3529b035eb04ce3d	207	excluded	superseded: NTU's edited version of this text is the space-suffixed file
+-	story/Seediq_Tgdaya/sdqNr-taboo_pawan.json	eaa0d11acd198a5e34a885759faafa2a70420153f26340840bc3d451abf0bff0	119	excluded	alternative transcription (revised 2013, with audio spans) of the text taken as 'sdqNr-taboo_pawan 2021s' (revised 2021); OPEN
+-	story/Seediq_Tgdaya/sdqNr-tattoo2_pawan.json	04a232fb64a47b0625934298f3768d65db6db3a42307f854322e0a5d39158499	21	excluded	alternative transcription (revised 2008, with audio spans) of the text taken as 'sdqNr-tattoo2_pawan 2020s' (revised 2021); OPEN
+-	story/Tsou_Tsou/TsouNr-pear-zheng-2.json	0fcc5131c1947bbc67491c614d5792a02ff364ef9b3cd5f52afca2b70c931fe3	124	excluded	same transcription as TsouNr-pear-story-3 plus audio alignment (8 gloss / 18 translation records differ); adopting it needs 33 new audio clips on Hugging Face; OPEN

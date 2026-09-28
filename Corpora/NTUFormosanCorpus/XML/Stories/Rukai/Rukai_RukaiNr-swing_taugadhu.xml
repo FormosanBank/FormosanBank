@@ -303,14 +303,14 @@
             <PHON kindOf="original">talaisita</PHON>
             <FORM kindOf="standard">talaisi=ta</FORM>
             <PHON kindOf="standard">talaisita</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">鞦韆第一人稱複數(包含).附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">鞦韆=第一人稱複數(包含).附著屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">swing=1P(IN).BG</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_4_W1M0">
                 <FORM kindOf="original">talaisi</FORM>
                 <PHON kindOf="original">talaisi</PHON>
                 <FORM kindOf="standard">talaisi</FORM>
                 <PHON kindOf="standard">talaisi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">鞦韆第一人稱複數(包含).附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">鞦韆</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">swing</TRANSL>
             </M>
             <M id="RukaiNr-swing_taugadhu_S_4_W1M1">
@@ -318,6 +318,7 @@
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">第一人稱複數(包含).附著屬格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1P(IN).BG</TRANSL>
             </M>
         </W>
@@ -4312,15 +4313,15 @@
             <PHON kindOf="original">madu</PHON>
             <FORM kindOf="standard">madu,</FORM>
             <PHON kindOf="standard">madu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_54_W9M0">
                 <FORM kindOf="original">madu,</FORM>
                 <PHON kindOf="original">madu</PHON>
                 <FORM kindOf="standard">madu,</FORM>
                 <PHON kindOf="standard">madu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_54_W10">
@@ -4416,15 +4417,15 @@
             <PHON kindOf="original">madu</PHON>
             <FORM kindOf="standard">madu.</FORM>
             <PHON kindOf="standard">madu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_54_W14M0">
                 <FORM kindOf="original">madu.</FORM>
                 <PHON kindOf="original">madu</PHON>
                 <FORM kindOf="standard">madu.</FORM>
                 <PHON kindOf="standard">madu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             </M>
         </W>
     </S>
@@ -4679,12 +4680,12 @@
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_71_W1">
-            <FORM kindOf="original">ngi-akalrimadu-madu</FORM>
+            <FORM kindOf="original">ngi-akalri&lt;madu&gt;madu</FORM>
             <PHON kindOf="original">ŋiakaɭimadumadu</PHON>
-            <FORM kindOf="standard">ngi-akalrimadu-madu</FORM>
+            <FORM kindOf="standard">ngi-akalri&lt;madu&gt;madu</FORM>
             <PHON kindOf="standard">ŋiakaɭimadumadu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">反身-錯誤-重疊</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">REFL-wrong-RED</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">反身-&lt;重疊&gt;錯誤</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">REFL-&lt;RED&gt;wrong</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_71_W1M0">
                 <FORM kindOf="original">ngi</FORM>
                 <PHON kindOf="original">ŋi</PHON>
@@ -4693,21 +4694,21 @@
                 <TRANSL xml:lang="zho" kindOf="original">反身</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REFL</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_71_W1M1">
-                <FORM kindOf="original">akalrimadu</FORM>
+            <M id="RukaiNr-swing_taugadhu_S_71_W1M1_0">
+                <FORM kindOf="original">-madu-</FORM>
+                <PHON kindOf="original">madu</PHON>
+                <FORM kindOf="standard">-madu-</FORM>
+                <PHON kindOf="standard">madu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
+            </M>
+            <M id="RukaiNr-swing_taugadhu_S_71_W1M1_1">
+                <FORM kindOf="original">akalri-madu</FORM>
                 <PHON kindOf="original">akaɭimadu</PHON>
-                <FORM kindOf="standard">akalrimadu</FORM>
+                <FORM kindOf="standard">akalri-madu</FORM>
                 <PHON kindOf="standard">akaɭimadu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">錯誤</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">wrong</TRANSL>
-            </M>
-            <M id="RukaiNr-swing_taugadhu_S_71_W1M2">
-                <FORM kindOf="original">madu</FORM>
-                <PHON kindOf="original">madu</PHON>
-                <FORM kindOf="standard">madu</FORM>
-                <PHON kindOf="standard">madu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_71_W2">
@@ -4916,7 +4917,7 @@
         <PHON kindOf="original">amamama sivavaɭau ŋiakaɭimadumadumadu la ija</PHON>
         <FORM kindOf="standard">amamama sivavalrau, ngiakalrimadumadumadu la iya.</FORM>
         <PHON kindOf="standard">amamama sivavaɭau ŋiakaɭimadumadumadu la ija</PHON>
-        <TRANSL xml:lang="zho">糾纏是自己的錯誤。</TRANSL>
+        <TRANSL xml:lang="zho">這種糾纏是自己犯的錯誤。</TRANSL>
         <TRANSL xml:lang="eng">The tangling is a mistake of oneself.</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/RukaiNr-swing_taugadhu.mp3" start="172.88" end="177.93" file="RukaiNr-swing_taugadhu_S24.mp3"/>
         <W id="RukaiNr-swing_taugadhu_S_73_W0">
@@ -4968,12 +4969,12 @@
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_73_W2">
-            <FORM kindOf="original">ngi-akalrimadu-madu-madu</FORM>
+            <FORM kindOf="original">ngi-akalri&lt;madu&gt;&lt;madu&gt;madu</FORM>
             <PHON kindOf="original">ŋiakaɭimadumadumadu</PHON>
-            <FORM kindOf="standard">ngi-akalrimadu-madu-madu</FORM>
+            <FORM kindOf="standard">ngi-akalri&lt;madu&gt;&lt;madu&gt;madu</FORM>
             <PHON kindOf="standard">ŋiakaɭimadumadumadu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">反身-錯誤-重疊-重疊</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">REFL-wrong-RED-RED</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">反身-&lt;重疊&gt;&lt;重疊&gt;錯誤</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">REFL-&lt;RED&gt;&lt;RED&gt;wrong</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_73_W2M0">
                 <FORM kindOf="original">ngi</FORM>
                 <PHON kindOf="original">ŋi</PHON>
@@ -4982,29 +4983,29 @@
                 <TRANSL xml:lang="zho" kindOf="original">反身</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REFL</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_73_W2M1">
-                <FORM kindOf="original">akalrimadu</FORM>
+            <M id="RukaiNr-swing_taugadhu_S_73_W2M1_0">
+                <FORM kindOf="original">-madu-</FORM>
+                <PHON kindOf="original">madu</PHON>
+                <FORM kindOf="standard">-madu-</FORM>
+                <PHON kindOf="standard">madu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
+            </M>
+            <M id="RukaiNr-swing_taugadhu_S_73_W2M1_1">
+                <FORM kindOf="original">-madu-</FORM>
+                <PHON kindOf="original">madu</PHON>
+                <FORM kindOf="standard">-madu-</FORM>
+                <PHON kindOf="standard">madu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
+            </M>
+            <M id="RukaiNr-swing_taugadhu_S_73_W2M1_2">
+                <FORM kindOf="original">akalri-madu</FORM>
                 <PHON kindOf="original">akaɭimadu</PHON>
-                <FORM kindOf="standard">akalrimadu</FORM>
+                <FORM kindOf="standard">akalri-madu</FORM>
                 <PHON kindOf="standard">akaɭimadu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">錯誤</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">wrong</TRANSL>
-            </M>
-            <M id="RukaiNr-swing_taugadhu_S_73_W2M2">
-                <FORM kindOf="original">madu</FORM>
-                <PHON kindOf="original">madu</PHON>
-                <FORM kindOf="standard">madu</FORM>
-                <PHON kindOf="standard">madu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
-            </M>
-            <M id="RukaiNr-swing_taugadhu_S_73_W2M3">
-                <FORM kindOf="original">madu</FORM>
-                <PHON kindOf="original">madu</PHON>
-                <FORM kindOf="standard">madu</FORM>
-                <PHON kindOf="standard">madu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_73_W3">
@@ -5958,10 +5959,10 @@
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_85_W3">
-            <FORM kindOf="original">la-kamani</FORM>
-            <PHON kindOf="original">lakamani</PHON>
-            <FORM kindOf="standard">la-kamani</FORM>
-            <PHON kindOf="standard">lakamani</PHON>
+            <FORM kindOf="original">la</FORM>
+            <PHON kindOf="original">la</PHON>
+            <FORM kindOf="standard">la</FORM>
+            <PHON kindOf="standard">la</PHON>
             <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_85_W3M0">
@@ -5969,34 +5970,46 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_85_W3M1">
+        </W>
+        <W id="RukaiNr-swing_taugadhu_S_85_W4">
+            <FORM kindOf="original">kamani</FORM>
+            <PHON kindOf="original">kamani</PHON>
+            <FORM kindOf="standard">kamani</FORM>
+            <PHON kindOf="standard">kamani</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">就是</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">it.is.exactly</TRANSL>
+            <M id="RukaiNr-swing_taugadhu_S_85_W4M0">
                 <FORM kindOf="original">kamani</FORM>
                 <PHON kindOf="original">kamani</PHON>
                 <FORM kindOf="standard">kamani</FORM>
                 <PHON kindOf="standard">kamani</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">be</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-swing_taugadhu_S_85_W4">
+        <W id="RukaiNr-swing_taugadhu_S_85_W5">
             <FORM kindOf="original">kaw-a-rarubu.</FORM>
             <PHON kindOf="original">kawararubu</PHON>
             <FORM kindOf="standard">kaw-a-rarubu.</FORM>
             <PHON kindOf="standard">kawararubu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">就是</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">it.is.exactly</TRANSL>
-            <M id="RukaiNr-swing_taugadhu_S_85_W4M0">
+            <TRANSL xml:lang="zho" kindOf="original">KA-主動-實現-幫忙</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">KA-ACT.RLS-help</TRANSL>
+            <M id="RukaiNr-swing_taugadhu_S_85_W5M0">
                 <FORM kindOf="original">kaw</FORM>
                 <PHON kindOf="original">kaw</PHON>
                 <FORM kindOf="standard">kaw</FORM>
                 <PHON kindOf="standard">kaw</PHON>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_85_W4M1">
+            <M id="RukaiNr-swing_taugadhu_S_85_W5M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_85_W4M2">
+            <M id="RukaiNr-swing_taugadhu_S_85_W5M2">
                 <FORM kindOf="original">rarubu.</FORM>
                 <PHON kindOf="original">rarubu</PHON>
                 <FORM kindOf="standard">rarubu.</FORM>
@@ -6602,8 +6615,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">NA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NA</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_96_W5">
@@ -6634,8 +6647,8 @@
                 <PHON kindOf="original">ə</PHON>
                 <FORM kindOf="standard">e,</FORM>
                 <PHON kindOf="standard">ə</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">e</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">e</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_96_W7">
@@ -6646,22 +6659,28 @@
             <TRANSL xml:lang="zho" kindOf="original">然後-&lt;重疊&gt;說</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">then-&lt;RED&gt;talk</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_96_W7M0">
-                <FORM kindOf="original">-ela-</FORM>
-                <PHON kindOf="original">əla</PHON>
-                <FORM kindOf="standard">-ela-</FORM>
-                <PHON kindOf="standard">əla</PHON>
-            </M>
-            <M id="RukaiNr-swing_taugadhu_S_96_W7M1">
                 <FORM kindOf="original">la</FORM>
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_96_W7M2">
-                <FORM kindOf="original">pela</FORM>
+            <M id="RukaiNr-swing_taugadhu_S_96_W7M1_0">
+                <FORM kindOf="original">-ela-</FORM>
+                <PHON kindOf="original">əla</PHON>
+                <FORM kindOf="standard">-ela-</FORM>
+                <PHON kindOf="standard">əla</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
+            </M>
+            <M id="RukaiNr-swing_taugadhu_S_96_W7M1_1">
+                <FORM kindOf="original">p-ela</FORM>
                 <PHON kindOf="original">pəla</PHON>
-                <FORM kindOf="standard">pela</FORM>
+                <FORM kindOf="standard">p-ela</FORM>
                 <PHON kindOf="standard">pəla</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">talk</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_96_W8">
@@ -6692,8 +6711,8 @@
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
                 <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_96_W10">
@@ -6777,29 +6796,19 @@
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_96_W13">
-            <FORM kindOf="original">ta-ngi-ta,</FORM>
+            <FORM kindOf="original">tangita,</FORM>
             <PHON kindOf="original">taŋita</PHON>
-            <FORM kindOf="standard">ta-ngi-ta,</FORM>
+            <FORM kindOf="standard">tangita,</FORM>
             <PHON kindOf="standard">taŋita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_96_W13M0">
-                <FORM kindOf="original">ta</FORM>
-                <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">ta</FORM>
-                <PHON kindOf="standard">ta</PHON>
-            </M>
-            <M id="RukaiNr-swing_taugadhu_S_96_W13M1">
-                <FORM kindOf="original">ngi</FORM>
-                <PHON kindOf="original">ŋi</PHON>
-                <FORM kindOf="standard">ngi</FORM>
-                <PHON kindOf="standard">ŋi</PHON>
-            </M>
-            <M id="RukaiNr-swing_taugadhu_S_96_W13M2">
-                <FORM kindOf="original">ta,</FORM>
-                <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">ta,</FORM>
-                <PHON kindOf="standard">ta</PHON>
+                <FORM kindOf="original">tangita,</FORM>
+                <PHON kindOf="original">taŋita</PHON>
+                <FORM kindOf="standard">tangita,</FORM>
+                <PHON kindOf="standard">taŋita</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_96_W14">
@@ -6870,8 +6879,8 @@
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
                 <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_96_W17">
@@ -6892,10 +6901,10 @@
         </W>
     </S>
     <S id="RukaiNr-swing_taugadhu_S_100">
-        <FORM kindOf="original">kudra tangitalaisaneini, ngimiyaiya kudra taki dremedremaneini.</FORM>
-        <PHON kindOf="original">kuɖa taŋitalaisanəini ŋimijaija kuɖa taki ɖəməɖəmanəini</PHON>
-        <FORM kindOf="standard">kudra tangitalaisaneini, ngimiyaiya kudra taki dremedremaneini.</FORM>
-        <PHON kindOf="standard">kuɖa taŋitalaisanəini ŋimijaija kuɖa taki ɖəməɖəmanəini</PHON>
+        <FORM kindOf="original">kudra tangitalaisaneini, ngimiyaiya kudra takidremedremaneini.</FORM>
+        <PHON kindOf="original">kuɖa taŋitalaisanəini ŋimijaija kuɖa takiɖəməɖəmanəini</PHON>
+        <FORM kindOf="standard">kudra tangitalaisaneini, ngimiyaiya kudra takidremedremaneini.</FORM>
+        <PHON kindOf="standard">kuɖa taŋitalaisanəini ŋimijaija kuɖa takiɖəməɖəmanəini</PHON>
         <TRANSL xml:lang="zho">她那盪鞦韆的樣子呈現她的性格。</TRANSL>
         <TRANSL xml:lang="eng">That way she swing reveals her personality.</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/RukaiNr-swing_taugadhu.mp3" start="230.17" end="234.67" file="RukaiNr-swing_taugadhu_S34.mp3"/>
@@ -7012,41 +7021,43 @@
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_100_W4">
-            <FORM kindOf="original">taki</FORM>
-            <PHON kindOf="original">taki</PHON>
-            <FORM kindOf="standard">taki</FORM>
-            <PHON kindOf="standard">taki</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">看-重疊-名物化=第三人稱單數.附著屬格.</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">see-RED-NMLZ=3S.BG</TRANSL>
-        </W>
-        <W id="RukaiNr-swing_taugadhu_S_100_W5">
-            <FORM kindOf="original">dreme-dreme-ane=ini.</FORM>
-            <PHON kindOf="original">ɖəməɖəməanəini</PHON>
-            <FORM kindOf="standard">dreme-dreme-ane=ini.</FORM>
-            <PHON kindOf="standard">ɖəməɖəməanəini</PHON>
-            <M id="RukaiNr-swing_taugadhu_S_100_W5M0">
-                <FORM kindOf="original">dreme</FORM>
-                <PHON kindOf="original">ɖəmə</PHON>
-                <FORM kindOf="standard">dreme</FORM>
-                <PHON kindOf="standard">ɖəmə</PHON>
+            <FORM kindOf="original">ta-kidremedreme-ane=ini.</FORM>
+            <PHON kindOf="original">takiɖəməɖəməanəini</PHON>
+            <FORM kindOf="standard">ta-kidremedreme-ane=ini.</FORM>
+            <PHON kindOf="standard">takiɖəməɖəməanəini</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">處所-心智-名物化=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC-mind-NMLZ=3S.BG</TRANSL>
+            <M id="RukaiNr-swing_taugadhu_S_100_W4M0">
+                <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
+                <FORM kindOf="standard">ta</FORM>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_100_W5M1">
-                <FORM kindOf="original">dreme</FORM>
-                <PHON kindOf="original">ɖəmə</PHON>
-                <FORM kindOf="standard">dreme</FORM>
-                <PHON kindOf="standard">ɖəmə</PHON>
+            <M id="RukaiNr-swing_taugadhu_S_100_W4M1">
+                <FORM kindOf="original">kidremedreme</FORM>
+                <PHON kindOf="original">kiɖəməɖəmə</PHON>
+                <FORM kindOf="standard">kidremedreme</FORM>
+                <PHON kindOf="standard">kiɖəməɖəmə</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">心智</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">mind</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_100_W5M2">
+            <M id="RukaiNr-swing_taugadhu_S_100_W4M2">
                 <FORM kindOf="original">ane</FORM>
                 <PHON kindOf="original">anə</PHON>
                 <FORM kindOf="standard">ane</FORM>
                 <PHON kindOf="standard">anə</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">名物化</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NMLZ</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_100_W5M3">
-                <FORM kindOf="original">ini.</FORM>
+            <M id="RukaiNr-swing_taugadhu_S_100_W4M3">
+                <FORM kindOf="original">=ini.</FORM>
                 <PHON kindOf="original">ini</PHON>
-                <FORM kindOf="standard">ini.</FORM>
+                <FORM kindOf="standard">=ini.</FORM>
                 <PHON kindOf="standard">ini</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
             </M>
         </W>
     </S>
@@ -7132,7 +7143,7 @@
         </W>
     </S>
     <S id="RukaiNr-swing_taugadhu_S_103">
-        <FORM kindOf="original">la kamani kudra lungitalaisi kay lamaliali, wathingale madu ma=sulraulrapele, wathingale madu ku malilisi, wathingale madu ku maupupungu.</FORM>
+        <FORM kindOf="original">la kamani kudra lungitalaisi kay lamaliali, wathingale madu masulraulrapele, wathingale madu ku malilisi, wathingale madu ku maupupungu.</FORM>
         <PHON kindOf="original">la kamani kuɖa luŋitalaisi kaj lamaliali waθiŋalə madu masuɭauɭapələ waθiŋalə madu ku malilisi waθiŋalə madu ku maupupuŋu</PHON>
         <FORM kindOf="standard">la kamani kudra lungitalaisi kay lamaliali, wathingale madu masulraulrapele, wathingale madu ku malilisi, wathingale madu ku maupupungu.</FORM>
         <PHON kindOf="standard">la kamani kuɖa luŋitalaisi kaj lamaliali waθiŋalə madu masuɭauɭapələ waθiŋalə madu ku malilisi waθiŋalə madu ku maupupuŋu</PHON>
@@ -7151,8 +7162,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_103_W1">
@@ -7167,8 +7178,8 @@
                 <PHON kindOf="original">kamani</PHON>
                 <FORM kindOf="standard">kamani</FORM>
                 <PHON kindOf="standard">kamani</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就是</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">it.is.exactly</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">be</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_103_W2">
@@ -7231,8 +7242,8 @@
                 <PHON kindOf="original">kaj</PHON>
                 <FORM kindOf="standard">kay</FORM>
                 <PHON kindOf="standard">kaj</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_103_W5">
@@ -7296,21 +7307,21 @@
             <PHON kindOf="original">madu</PHON>
             <FORM kindOf="standard">madu</FORM>
             <PHON kindOf="standard">madu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_103_W7M0">
                 <FORM kindOf="original">madu</FORM>
                 <PHON kindOf="original">madu</PHON>
                 <FORM kindOf="standard">madu</FORM>
                 <PHON kindOf="standard">madu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_103_W8">
-            <FORM kindOf="original">ma=-sulraulrapele,</FORM>
+            <FORM kindOf="original">ma-sulraulrapele,</FORM>
             <PHON kindOf="original">masuɭauɭapələ</PHON>
-            <FORM kindOf="standard">ma=-sulraulrapele,</FORM>
+            <FORM kindOf="standard">ma-sulraulrapele,</FORM>
             <PHON kindOf="standard">masuɭauɭapələ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.實現-溫柔</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.RLS-gentle</TRANSL>
@@ -7323,9 +7334,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">STAT.RLS</TRANSL>
             </M>
             <M id="RukaiNr-swing_taugadhu_S_103_W8M1">
-                <FORM kindOf="original">=sulraulrapele,</FORM>
+                <FORM kindOf="original">sulraulrapele,</FORM>
                 <PHON kindOf="original">suɭauɭapələ</PHON>
-                <FORM kindOf="standard">=sulraulrapele,</FORM>
+                <FORM kindOf="standard">sulraulrapele,</FORM>
                 <PHON kindOf="standard">suɭauɭapələ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">溫柔</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">gentle</TRANSL>
@@ -7336,15 +7347,15 @@
             <PHON kindOf="original">waθiŋalə</PHON>
             <FORM kindOf="standard">wa-thingale</FORM>
             <PHON kindOf="standard">waθiŋalə</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主動.實現-知道</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主動-實現-知道</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">ACT.RLS-know</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_103_W9M0">
                 <FORM kindOf="original">wa</FORM>
                 <PHON kindOf="original">wa</PHON>
                 <FORM kindOf="standard">wa</FORM>
                 <PHON kindOf="standard">wa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主動.實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">ACT.RLS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             </M>
             <M id="RukaiNr-swing_taugadhu_S_103_W9M1">
                 <FORM kindOf="original">thingale</FORM>
@@ -7360,15 +7371,15 @@
             <PHON kindOf="original">madu</PHON>
             <FORM kindOf="standard">madu</FORM>
             <PHON kindOf="standard">madu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_103_W10M0">
                 <FORM kindOf="original">madu</FORM>
                 <PHON kindOf="original">madu</PHON>
                 <FORM kindOf="standard">madu</FORM>
                 <PHON kindOf="standard">madu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_103_W11">
@@ -7383,8 +7394,8 @@
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_103_W12">
@@ -7402,7 +7413,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">狀態.實現</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.RLS</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_103_W12M1_0">
+            <M id="RukaiNr-swing_taugadhu_S_103_W12M1">
                 <FORM kindOf="original">-li-</FORM>
                 <PHON kindOf="original">li</PHON>
                 <FORM kindOf="standard">-li-</FORM>
@@ -7410,7 +7421,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_103_W12M1_1">
+            <M id="RukaiNr-swing_taugadhu_S_103_W12M2">
                 <FORM kindOf="original">li-si,</FORM>
                 <PHON kindOf="original">lisi</PHON>
                 <FORM kindOf="standard">li-si,</FORM>
@@ -7424,15 +7435,15 @@
             <PHON kindOf="original">waθiŋalə</PHON>
             <FORM kindOf="standard">wa-thingale</FORM>
             <PHON kindOf="standard">waθiŋalə</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主動.實現-知道</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主動-實現-知道</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">ACT.RLS-know</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_103_W13M0">
                 <FORM kindOf="original">wa</FORM>
                 <PHON kindOf="original">wa</PHON>
                 <FORM kindOf="standard">wa</FORM>
                 <PHON kindOf="standard">wa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主動.實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">ACT.RLS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             </M>
             <M id="RukaiNr-swing_taugadhu_S_103_W13M1">
                 <FORM kindOf="original">thingale</FORM>
@@ -7448,15 +7459,15 @@
             <PHON kindOf="original">madu</PHON>
             <FORM kindOf="standard">madu</FORM>
             <PHON kindOf="standard">madu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_103_W14M0">
                 <FORM kindOf="original">madu</FORM>
                 <PHON kindOf="original">madu</PHON>
                 <FORM kindOf="standard">madu</FORM>
                 <PHON kindOf="standard">madu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_103_W15">
@@ -7471,8 +7482,8 @@
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_103_W16">
@@ -7483,28 +7494,22 @@
             <TRANSL xml:lang="zho" kindOf="original">狀態.實現-&lt;重疊&gt;急躁</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.RLS-&lt;RED&gt;impatient</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_103_W16M0">
-                <FORM kindOf="original">ma</FORM>
-                <PHON kindOf="original">ma</PHON>
-                <FORM kindOf="standard">ma</FORM>
-                <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">狀態.實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">STAT.RLS</TRANSL>
-            </M>
-            <M id="RukaiNr-swing_taugadhu_S_103_W16M1_0">
                 <FORM kindOf="original">-pu-</FORM>
                 <PHON kindOf="original">pu</PHON>
                 <FORM kindOf="standard">-pu-</FORM>
                 <PHON kindOf="standard">pu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_103_W16M1_1">
-                <FORM kindOf="original">upu-ngu.</FORM>
+            <M id="RukaiNr-swing_taugadhu_S_103_W16M1">
+                <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
+                <FORM kindOf="standard">ma</FORM>
+                <PHON kindOf="standard">ma</PHON>
+            </M>
+            <M id="RukaiNr-swing_taugadhu_S_103_W16M2">
+                <FORM kindOf="original">upungu.</FORM>
                 <PHON kindOf="original">upuŋu</PHON>
-                <FORM kindOf="standard">upu-ngu.</FORM>
+                <FORM kindOf="standard">upungu.</FORM>
                 <PHON kindOf="standard">upuŋu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">急躁</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">impatient</TRANSL>
             </M>
         </W>
     </S>
@@ -11843,8 +11848,8 @@
                 <PHON kindOf="original">lu</PHON>
                 <FORM kindOf="standard">lu</FORM>
                 <PHON kindOf="standard">lu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_160_W1">
@@ -11852,15 +11857,15 @@
             <PHON kindOf="original">ŋi</PHON>
             <FORM kindOf="standard">ngi</FORM>
             <PHON kindOf="standard">ŋi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">如果</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_160_W1M0">
                 <FORM kindOf="original">ngi</FORM>
                 <PHON kindOf="original">ŋi</PHON>
                 <FORM kindOf="standard">ngi</FORM>
                 <PHON kindOf="standard">ŋi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">如果</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_160_W2">
@@ -11868,15 +11873,15 @@
             <PHON kindOf="original">lu</PHON>
             <FORM kindOf="standard">lu</FORM>
             <PHON kindOf="standard">lu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">反身-盪鞦韆=第二人稱單數.附著主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">REFL-swing2S.BN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">如果</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_160_W2M0">
                 <FORM kindOf="original">lu</FORM>
                 <PHON kindOf="original">lu</PHON>
                 <FORM kindOf="standard">lu</FORM>
                 <PHON kindOf="standard">lu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">如果</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_160_W3">
@@ -11884,8 +11889,8 @@
             <PHON kindOf="original">ŋitalaisisu</PHON>
             <FORM kindOf="standard">ngi-talaisi=su</FORM>
             <PHON kindOf="standard">ŋitalaisisu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">反身-盪鞦韆=第二人稱單數.附著主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">REFL-swing=2S.BN</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_160_W3M0">
                 <FORM kindOf="original">ngi</FORM>
                 <PHON kindOf="original">ŋi</PHON>
@@ -11907,8 +11912,8 @@
                 <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">=su</FORM>
                 <PHON kindOf="standard">su</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">第二人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">2S.BG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">第二人稱單數.附著主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2S.BN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_160_W4">
@@ -11916,8 +11921,8 @@
             <PHON kindOf="original">lu</PHON>
             <FORM kindOf="standard">lu</FORM>
             <PHON kindOf="standard">lu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_160_W4M0">
                 <FORM kindOf="original">lu</FORM>
                 <PHON kindOf="original">lu</PHON>
@@ -11932,15 +11937,15 @@
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">MAU</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">MAU</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_160_W5M0">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_160_W6">
@@ -11948,6 +11953,16 @@
             <PHON kindOf="original">mau</PHON>
             <FORM kindOf="standard">mau,</FORM>
             <PHON kindOf="standard">mau</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">MAU</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">MAU</TRANSL>
+            <M id="RukaiNr-swing_taugadhu_S_160_W6M0">
+                <FORM kindOf="original">mau,</FORM>
+                <PHON kindOf="original">mau</PHON>
+                <FORM kindOf="standard">mau,</FORM>
+                <PHON kindOf="standard">mau</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">MAU</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">MAU</TRANSL>
+            </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_160_W7">
             <FORM kindOf="original">um</FORM>
@@ -11961,8 +11976,8 @@
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">um</FORM>
                 <PHON kindOf="standard">um</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_160_W8">
@@ -12088,8 +12103,8 @@
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si,</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">因此</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">therefore</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_160_W13">
@@ -12104,8 +12119,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_160_W14">
@@ -12120,8 +12135,8 @@
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_160_W15">
@@ -12804,14 +12819,14 @@
             <PHON kindOf="original">wakəla</PHON>
             <FORM kindOf="standard">w-a-kela</FORM>
             <PHON kindOf="standard">wakəla</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">實現-來</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主動-實現-來</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">ACT-RLS-come</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_169_W15M0">
                 <FORM kindOf="original">w</FORM>
                 <PHON kindOf="original">w</PHON>
                 <FORM kindOf="standard">w</FORM>
                 <PHON kindOf="standard">w</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主動</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">ACT</TRANSL>
             </M>
             <M id="RukaiNr-swing_taugadhu_S_169_W15M1">
@@ -12819,7 +12834,7 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">來</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             </M>
             <M id="RukaiNr-swing_taugadhu_S_169_W15M2">
@@ -12827,6 +12842,7 @@
                 <PHON kindOf="original">kəla</PHON>
                 <FORM kindOf="standard">kela</FORM>
                 <PHON kindOf="standard">kəla</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">來</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">come</TRANSL>
             </M>
         </W>
@@ -13043,8 +13059,8 @@
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_177_W1">
@@ -13059,8 +13075,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_177_W2">
@@ -13080,39 +13096,53 @@
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_177_W3">
-            <FORM kindOf="original">la-mia-ia</FORM>
-            <PHON kindOf="original">lamiaia</PHON>
-            <FORM kindOf="standard">la-mia-ia</FORM>
-            <PHON kindOf="standard">lamiaia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">then</TRANSL>
+            <FORM kindOf="original">la</FORM>
+            <PHON kindOf="original">la</PHON>
+            <FORM kindOf="standard">la</FORM>
+            <PHON kindOf="standard">la</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_177_W3M0">
                 <FORM kindOf="original">la</FORM>
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_177_W3M1">
+        </W>
+        <W id="RukaiNr-swing_taugadhu_S_177_W4">
+            <FORM kindOf="original">mia-ia</FORM>
+            <PHON kindOf="original">miaia</PHON>
+            <FORM kindOf="standard">mia-ia</FORM>
+            <PHON kindOf="standard">miaia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">像-重疊</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">look.like-RED</TRANSL>
+            <M id="RukaiNr-swing_taugadhu_S_177_W4M0">
                 <FORM kindOf="original">mia</FORM>
                 <PHON kindOf="original">mia</PHON>
                 <FORM kindOf="standard">mia</FORM>
                 <PHON kindOf="standard">mia</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">像</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">look.like</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_177_W3M2">
+            <M id="RukaiNr-swing_taugadhu_S_177_W4M1">
                 <FORM kindOf="original">ia</FORM>
                 <PHON kindOf="original">ia</PHON>
                 <FORM kindOf="standard">ia</FORM>
                 <PHON kindOf="standard">ia</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-swing_taugadhu_S_177_W4">
+        <W id="RukaiNr-swing_taugadhu_S_177_W5">
             <FORM kindOf="original">kuini.</FORM>
             <PHON kindOf="original">kuini</PHON>
             <FORM kindOf="standard">kuini.</FORM>
             <PHON kindOf="standard">kuini</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">像-重疊</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">look.like-RED</TRANSL>
-            <M id="RukaiNr-swing_taugadhu_S_177_W4M0">
+            <TRANSL xml:lang="zho" kindOf="original">那.可見.近指</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that.VIS.PROX</TRANSL>
+            <M id="RukaiNr-swing_taugadhu_S_177_W5M0">
                 <FORM kindOf="original">kuini.</FORM>
                 <PHON kindOf="original">kuini</PHON>
                 <FORM kindOf="standard">kuini.</FORM>
@@ -13548,9 +13578,9 @@
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_183_W2">
-            <FORM kindOf="original">a-thingale-ane-ta</FORM>
+            <FORM kindOf="original">a-thingale-ane=ta</FORM>
             <PHON kindOf="original">aθiŋaləanəta</PHON>
-            <FORM kindOf="standard">a-thingale-ane-ta</FORM>
+            <FORM kindOf="standard">a-thingale-ane=ta</FORM>
             <PHON kindOf="standard">aθiŋaləanəta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">名物化-要知道的-名物化=第一人稱複數(包含).附著屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NMLZ-think-NMLZ=1P(IN).BG</TRANSL>
@@ -13579,9 +13609,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">NMLZ</TRANSL>
             </M>
             <M id="RukaiNr-swing_taugadhu_S_183_W2M3">
-                <FORM kindOf="original">ta</FORM>
+                <FORM kindOf="original">=ta</FORM>
                 <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">ta</FORM>
+                <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第一人稱複數(包含).附著屬格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1P(IN).BG</TRANSL>
@@ -15291,15 +15321,15 @@
             <PHON kindOf="original">madu</PHON>
             <FORM kindOf="standard">madu.</FORM>
             <PHON kindOf="standard">madu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_197_W17M0">
                 <FORM kindOf="original">madu.</FORM>
                 <PHON kindOf="original">madu</PHON>
                 <FORM kindOf="standard">madu.</FORM>
                 <PHON kindOf="standard">madu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_197_W18">
@@ -15484,15 +15514,15 @@
             <PHON kindOf="original">madu</PHON>
             <FORM kindOf="standard">madu</FORM>
             <PHON kindOf="standard">madu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_202_W4M0">
                 <FORM kindOf="original">madu</FORM>
                 <PHON kindOf="original">madu</PHON>
                 <FORM kindOf="standard">madu</FORM>
                 <PHON kindOf="standard">madu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_202_W5">
@@ -15548,15 +15578,15 @@
             <PHON kindOf="original">madu</PHON>
             <FORM kindOf="standard">madu</FORM>
             <PHON kindOf="standard">madu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_202_W7M0">
                 <FORM kindOf="original">madu</FORM>
                 <PHON kindOf="original">madu</PHON>
                 <FORM kindOf="standard">madu</FORM>
                 <PHON kindOf="standard">madu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_202_W8">
@@ -15612,8 +15642,8 @@
                 <PHON kindOf="original">kaj</PHON>
                 <FORM kindOf="standard">kay</FORM>
                 <PHON kindOf="standard">kaj</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_204_W1">
@@ -15665,29 +15695,27 @@
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_204_W4">
-            <FORM kindOf="original">na-drua-druma</FORM>
+            <FORM kindOf="original">na&lt;drua&gt;druma</FORM>
             <PHON kindOf="original">naɖuaɖuma</PHON>
-            <FORM kindOf="standard">na-drua-druma</FORM>
+            <FORM kindOf="standard">na&lt;drua&gt;druma</FORM>
             <PHON kindOf="standard">naɖuaɖuma</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;古時</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;ancient.time</TRANSL>
-            <M id="RukaiNr-swing_taugadhu_S_204_W4M0">
-                <FORM kindOf="original">na</FORM>
-                <PHON kindOf="original">na</PHON>
-                <FORM kindOf="standard">na</FORM>
-                <PHON kindOf="standard">na</PHON>
-            </M>
-            <M id="RukaiNr-swing_taugadhu_S_204_W4M1">
-                <FORM kindOf="original">drua</FORM>
+            <M id="RukaiNr-swing_taugadhu_S_204_W4M0_0">
+                <FORM kindOf="original">-drua-</FORM>
                 <PHON kindOf="original">ɖua</PHON>
-                <FORM kindOf="standard">drua</FORM>
+                <FORM kindOf="standard">-drua-</FORM>
                 <PHON kindOf="standard">ɖua</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="RukaiNr-swing_taugadhu_S_204_W4M2">
-                <FORM kindOf="original">druma</FORM>
-                <PHON kindOf="original">ɖuma</PHON>
-                <FORM kindOf="standard">druma</FORM>
-                <PHON kindOf="standard">ɖuma</PHON>
+            <M id="RukaiNr-swing_taugadhu_S_204_W4M0_1">
+                <FORM kindOf="original">na-druma</FORM>
+                <PHON kindOf="original">naɖuma</PHON>
+                <FORM kindOf="standard">na-druma</FORM>
+                <PHON kindOf="standard">naɖuma</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">古時</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">ancient.time</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_204_W5">
@@ -15751,15 +15779,15 @@
             <PHON kindOf="original">madu</PHON>
             <FORM kindOf="standard">madu</FORM>
             <PHON kindOf="standard">madu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">need</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_204_W8M0">
                 <FORM kindOf="original">madu</FORM>
                 <PHON kindOf="original">madu</PHON>
                 <FORM kindOf="standard">madu</FORM>
                 <PHON kindOf="standard">madu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">要</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">should</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">某人要</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">somebody.should</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_204_W9">
@@ -15854,8 +15882,8 @@
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki,</FORM>
                 <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_204_W13">
@@ -15870,8 +15898,8 @@
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
                 <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_204_W14">
@@ -15902,8 +15930,8 @@
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_204_W16">
@@ -16768,9 +16796,9 @@
             </M>
         </W>
         <W id="RukaiNr-swing_taugadhu_S_218_W1">
-            <FORM kindOf="original">kai-su</FORM>
+            <FORM kindOf="original">kai=su</FORM>
             <PHON kindOf="original">kaisu</PHON>
-            <FORM kindOf="standard">kai-su</FORM>
+            <FORM kindOf="standard">kai=su</FORM>
             <PHON kindOf="standard">kaisu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">不=第二人稱單數.附著主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NEG=2S.BN</TRANSL>
@@ -16783,9 +16811,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
             </M>
             <M id="RukaiNr-swing_taugadhu_S_218_W1M1">
-                <FORM kindOf="original">su</FORM>
+                <FORM kindOf="original">=su</FORM>
                 <PHON kindOf="original">su</PHON>
-                <FORM kindOf="standard">su</FORM>
+                <FORM kindOf="standard">=su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第二人稱單數.附著主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">2S.BN</TRANSL>
@@ -17623,7 +17651,7 @@
             <PHON kindOf="original">tuaɭəpəŋəaku</PHON>
             <FORM kindOf="standard">tu-a-lrepenge=aku.</FORM>
             <PHON kindOf="standard">tuaɭəpəŋəaku</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">TU-實現=完成=第一人稱單數.附著主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">TU-實現-完成=第一人稱單數.附著主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TU-RLS-finish=1S.BN</TRANSL>
             <M id="RukaiNr-swing_taugadhu_S_232_W0M0">
                 <FORM kindOf="original">tu</FORM>

@@ -163,19 +163,32 @@ def test_only_accepted_rows_apply_by_default(tmp_path, monkeypatch):
     assert len(gs.load_table(path)) == 1
 
 
-def test_audit_test_case_lands_climb_lf_on_rakiyas(tmp_path):
-    recs, rec = _takun_15()
-    path = _table_row(tmp_path, source_file=TAKUN, record_ids="15",
-                      record_sha256=gs.record_digest([rec]), tier="gloss",
-                      op="shift_right", i=3, j=7, status="accepted")
+def test_the_audit_test_case_is_fixed_in_the_adopted_release():
+    """S_15 (hunting3_Takun record 15): NTU's 2026-01-10 release puts
+    climb-LF=1SG.GEN on rakiyas-an=mu itself, so no table row is needed."""
+    _, rec = _takun_15()
+    glosses = {r[0]: r[1] for r in rec[1]["gloss"]}
+    assert glosses["rakiyas-an=mu.\\"] == "climb-LF=1SG.GEN"
+    assert glosses["ku"] == "NOM"
+
+
+def test_a_remaining_shift_lands_the_infix_gloss_on_the_infixed_verb(tmp_path):
+    """sowing_Kainu record 71: <AF>harvest belongs on k<um>loh, not on i."""
+    path = CODEDOCS / "story/Atayal_Mayrinax/AtaNr-sowing_Kainu.json"
+    recs = gs.records_of(path)
+    rec = next(r for r in recs if r[0] == 71)
+    table = _table_row(tmp_path, source_file="story/Atayal_Mayrinax/AtaNr-sowing_Kainu.json",
+                       record_ids="71", record_sha256=gs.record_digest([rec]), tier="gloss",
+                       op="shift_right", i=3, j=6, status="accepted")
     stats: dict = {}
-    out = gs.apply_to_records(recs, TAKUN, gs.load_table(path, {"accepted"}), stats)
-    fixed = {r[0]: r[1] for r in next(r for r in out if r[0] == 15)[1]["gloss"]}
-    assert fixed["rakiyas-an=mu.\\"] == "climb-LF=1SG.GEN"
-    assert fixed["ku"] == "NOM"
+    out = gs.apply_to_records(recs, "story/Atayal_Mayrinax/AtaNr-sowing_Kainu.json",
+                              gs.load_table(table, {"accepted"}), stats)
+    fixed = {r[0]: r[1] for r in next(r for r in out if r[0] == 71)[1]["gloss"]}
+    assert fixed["k<um>loh"] == "<AF>harvest"
+    assert fixed["i"] == "LNK"
     assert stats["gloss-shift repairs applied"] == 1
     # The source records themselves are untouched.
-    assert next(r for r in recs if r[0] == 15)[1]["gloss"][6][1] == "climb-LF=1SG.GEN"
+    assert next(r for r in recs if r[0] == 71)[1]["gloss"][4][1] == "<AF>harvest"
 
 
 def test_a_drifted_source_fails_the_build(tmp_path):
@@ -197,13 +210,15 @@ def test_the_published_table_pins_the_current_source():
 
 # ------------------------------------------------------------ the detector
 
-def test_detector_finds_the_clitic_absorption_split():
+def test_detector_finds_remaining_atayal_shifts_and_not_placeholders():
     stats = fgs.Counter()
     found = {(Path(rel).stem, group[0][0]): chain
              for rel, group, _, chain in fgs.scan(CODEDOCS, "Atayal", stats)}
-    chain = found[("AtaNr-dailylife3_Tauyu", 47)]
-    op = chain[0][0]
-    assert (op.op, op.tier, op.sep) == ("split", "gloss", "=")
+    op = found[("AtaNr-sowing_Kainu", 71)][0][0]
+    assert (op.op, op.tier, op.i, op.j) == ("shift_right", "gloss", 3, 6)
+    # The Chinese-column slide NTU's 2026 release introduced, one column only.
+    op = found[("AtaNr-weaving_Kagaw", 75)][0][0]
+    assert (op.op, op.tier) == ("shift_right", "col2")
     # And it proposes nothing for a sentence whose only gap is an unglossed 'XX'.
     assert ("AtaNr-hunting3_Takun", 22) not in found
 

@@ -125,28 +125,29 @@ outside the targets changed.
 
 The JSONs are NTU's own published output. `liao961120/glossParser` builds them
 from the linguists' gloss files and publishes every release to its public
-`gh-pages` branch, served at https://yongfu.name/glossParser/.
+`gh-pages` branch, served at https://yongfu.name/glossParser/. NTU's corpus
+site (https://corpus.linguistics.ntu.edu.tw/) reads the same store.
 
-- The JSONs under `../grammar`, `../sentence` and `../story` are **NTU's release
-  of 2024-04-08** (gh-pages `3571fd6`): 372 of 378 files match it byte for byte.
-  The other 6 carry hand edits made before they were first committed, and never
-  recorded: four Sakizaya stories with every `\b` escape deleted, Kanakanavu
-  `05.json` record 4, and `ap1.json` record 78.
-- PR #161 (`b28bac1cd`) replaced 207 of them with **NTU's release of
-  2026-01-10** (`48b9e0b`, what the live site serves), plus one local
-  audio-timestamp fix. `source_snapshot.json` records those bytes.
-  `2b738f947` put the 2024 files back before either change reached `main`.
-  That commit called the 2026 revision "unauditable" because no script produces
-  it. In fact it can be audited against NTU's public history file by file. The
-  snapshot was not updated, so `../scripts/verify_source_snapshot.py` now fails.
+This corpus builds from **NTU's release of 2026-01-10** (gh-pages `48b9e0b`),
+adopted 2026-09-28 by maintainer ruling. `../source_release.tsv` maps every
+local file to the upstream file it comes from. NTU renames files between
+releases (54 are now `*_revised`/`*_edited`), and re-published its edits of two
+Atayal stories under names ending in a space. Five upstream files are
+deliberately excluded, each with its reason: two superseded old names, and three
+alternative transcriptions of texts we already have (open questions).
+`../refresh_source.sh` fetches exactly that release and verifies every file's
+SHA-256 (`--check` compares, `--latest` reports whether NTU has released since).
+It also rewrites `../source_snapshot.json`, which
+`../scripts/verify_source_snapshot.py` checks.
 
-Which release to build from is an open decision. Adjudicating the contested
-gloss rows against a lexicon of 32,417 wordforms drawn only from uncontested
-records, the 2024 release carries the attested gloss 1,154 times against the
-2026 release's 682 (margin 84,140 vs 56,165). The 2026 release blanks about
-1,320 glosses to `_` and has its own off-by-one shifts: `ila` PFV (attested
-363x) becomes empty, `a` FIL (305x) becomes `IRR`. It also fixes some shifts
-the 2024 release has (Atayal `dailylife3_Tauyu` S_47 and `sowing_Kainu` S_114).
+History: until 2026-09-28 the corpus built from NTU's release of 2024-04-08
+(`3571fd6`). Six of those files carried unrecorded hand edits: four Sakizaya
+stories with their backspace characters deleted (the builders strip those
+anyway), Kanakanavu `05.json` record 4, and `ap1.json` record 78. The last two
+are also fixed, better, by the pinned replacements in `p2_source_repairs.xml`,
+which are now re-pinned to NTU's own records. PR #161 had adopted the 2026
+release on 2026-08-22, and `2b738f947` reverted it as "unauditable". It is in
+fact auditable against NTU's gh-pages history.
 
 Note that the QA suite in [`../qa/`](../qa/) **cannot detect this**. Its tests
 measure structural completeness (both glosses present, morpheme counts
