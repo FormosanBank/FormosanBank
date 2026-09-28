@@ -92,48 +92,66 @@ python find_gloss_shifts.py --language Atayal --out-dir /tmp/shifts
 ```
 
 `find_gloss_shifts.py` scores each candidate against the rest of the language,
-leave-one-out: a repair is proposed only if it raises the number of
-(word, gloss) pairs attested elsewhere and does not lower morpheme-count
-agreement, plain-text reconstruction, the number of glossed words, the number
+leave-one-out. A repair is proposed only if it raises the number of
+(word, gloss) pairs attested elsewhere (placeholder glosses such as `XX`, `??`,
+`FIL`, `FS` and `BC` are not evidence). It must also not lower morpheme-count
+agreement (checked per gloss language), plain-text reconstruction, the number
 of uncontradicted glosses, or the number of words whose English and Chinese
-glosses are a pair seen elsewhere. Rows the build drops as apparatus (speaker
-labels, pauses, punctuation — the same patterns as `pipeline_stories.py` step
-15) never receive a gloss.
+glosses are a pair seen elsewhere. Words a repair leaves bare are reported, not
+refused. For each one the report shows how the same word is glossed elsewhere
+*in the same language*, as a suggestion for a reviewer to turn into a `fill`
+row. Apparatus never receives a gloss: pauses, punctuation, `(LAUGH)`-style
+notes, lone `<L2J` tags and speaker labels with a colon (`F:`, `S,G,W:`). The
+patterns are `pipeline_stories.py` step 15's own. A lone capital with no colon
+(`E==`, `X`) is a word slot, because the builder keeps it once it is glossed.
+Grammar and Sentences are scanned one sentence per record, as their builders
+publish them. Where equally good windows compete, the detector picks the
+*shortest*, so the start of a span may be too late. The report lists the
+competing windows, and every row needs a reader of the language before it is
+accepted.
 
-`../qa/gloss_shift_blast_radius.py` then checks the result where users see it,
-in the published XML. It has caught what source-level scoring cannot: a repair
-changes *other* sentences' morpheme glosses whenever it changes which occurrence
-of a word `apply_prune_and_mirror.py` borrows its morphemes from (26 sentences,
-all M-tier only, when all 245 Stories proposals were trialled together on
-2026-09-28), and a repair can be invisible because prune withdraws the
-sentence's word tier altogether (6 of those 245). It picks the *shortest* window among equally
-good ones, so where a span's start is ambiguous it may start too late — the
-report lists the competing candidates, and every row needs a reader of the
-language before it is accepted.
+`../qa/try_gloss_shift_repairs.sh` builds the subcorpus twice into scratch
+directories (never `XML/`): once without the repairs and once with them. Both
+builds stop at `build.sh`'s pre-cleanup checkpoint (`NTU_BUILD_CHECKPOINT`).
+The clean-up steps (prune, borrow, empty-translation removal) deal with what
+could not be fixed, so they count neither for nor against a fix. Measured after
+them, the 245 Stories proposals of 2026-09-28 appeared to change 26 unrelated
+sentences, all through prune's donor morphemes, and 6 targets disappeared
+because prune withdrew their word tier. `../qa/gloss_shift_blast_radius.py`
+compares the two builds by (language, sentence id) and fails if anything
+outside the targets changed.
 
 ## Which source JSONs
 
-The JSONs under `../grammar`, `../sentence` and `../story` are the ones this
-corpus has always published. An "audited source output" revision of 207 of them
-exists on the `fix/ntu-gloss-placeholder` branch, but **no script in the
-repository produces it**: every `json.dumps` in `../scripts/` computes a SHA-256
-digest, and nothing reads a source JSON and writes it back. That revision is
-therefore unauditable and unreproducible, and this build does not use it.
+The JSONs are NTU's own published output. `liao961120/glossParser` builds them
+from the linguists' gloss files and publishes every release to its public
+`gh-pages` branch, served at https://yongfu.name/glossParser/.
 
-It also is not simply better. Adjudicating the contested gloss rows against
-glosses from records both versions agree on (a lexicon of 32,417 wordforms drawn
-only from uncontested records), the published source carries the attested gloss
-1,154 times against that revision's 682, with a larger margin (84,140 vs 56,165).
-Its characteristic error is an off-by-one gloss shift: `ila` PFV (attested 363x)
-becomes empty, `a` FIL (305x) becomes `IRR` (0x), `yau` EXIST (256x) becomes
-`one` (0x).
+- The JSONs under `../grammar`, `../sentence` and `../story` are **NTU's release
+  of 2024-04-08** (gh-pages `3571fd6`): 372 of 378 files match it byte for byte.
+  The other 6 carry hand edits made before they were first committed, and never
+  recorded: four Sakizaya stories with every `\b` escape deleted, Kanakanavu
+  `05.json` record 4, and `ap1.json` record 78.
+- PR #161 (`b28bac1cd`) replaced 207 of them with **NTU's release of
+  2026-01-10** (`48b9e0b`, what the live site serves), plus one local
+  audio-timestamp fix. `source_snapshot.json` records those bytes.
+  `2b738f947` put the 2024 files back before either change reached `main`.
+  That commit called the 2026 revision "unauditable" because no script produces
+  it. In fact it can be audited against NTU's public history file by file. The
+  snapshot was not updated, so `../scripts/verify_source_snapshot.py` now fails.
+
+Which release to build from is an open decision. Adjudicating the contested
+gloss rows against a lexicon of 32,417 wordforms drawn only from uncontested
+records, the 2024 release carries the attested gloss 1,154 times against the
+2026 release's 682 (margin 84,140 vs 56,165). The 2026 release blanks about
+1,320 glosses to `_` and has its own off-by-one shifts: `ila` PFV (attested
+363x) becomes empty, `a` FIL (305x) becomes `IRR`. It also fixes some shifts
+the 2024 release has (Atayal `dailylife3_Tauyu` S_47 and `sowing_Kainu` S_114).
 
 Note that the QA suite in [`../qa/`](../qa/) **cannot detect this**. Its tests
-measure structural completeness — both glosses present, morpheme counts matching
-— so a gloss shifted onto the wrong word passes all of them. A higher QA score
-is not evidence of better glossing.
-
-
+measure structural completeness (both glosses present, morpheme counts
+matching), so a gloss shifted onto the wrong word passes all of them. A higher
+QA score is not evidence of better glossing.
 
 ## Environment
 
@@ -142,6 +160,10 @@ is not evidence of better glossing.
 | `PYTHON` | `<bank>/.venv/bin/python` | building from a git worktree, which has no `.venv` |
 | `CTABLES` | `<bank>/Orthographies/ConversionTables` | testing an unmerged conversion table |
 | `FB_DIALECTS` | `<bank>/dialects.csv` | testing an unmerged dialect/alias row |
+| `NTU_BUILD_OUT` | `../../XML` | installing a trial build somewhere else (XML/ untouched) |
+| `NTU_BUILD_CHECKPOINT` | unset | `pre-cleanup` skips prune, borrow and empty-translation removal, for trialling a fix; never publish it |
+| `NTU_GLOSS_SHIFT_STATUSES` | `accepted` | `accepted,proposed` trials proposed gloss-shift rows |
+| `NTU_GLOSS_SHIFT_TABLE` | `gloss_shift_repairs.tsv` | trialling another repairs table |
 
 ## Audio clip names are keyed by span, not by sentence id
 

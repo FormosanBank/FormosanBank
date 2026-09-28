@@ -288,7 +288,6 @@ def test_apparatus_patterns_match_the_builders():
     for name in ("_SPEAKER", "_PUNCT_ONLY", "_PAUSE", "_NONVERBAL"):
         assert getattr(gs, name).pattern == getattr(ps, name).pattern, name
     assert not gs.is_word("D:..")
-    assert not gs.is_word("P:...(0.9)")
 
 
 def test_a_single_column_repair_may_not_tear_a_known_pair_apart():
@@ -297,3 +296,72 @@ def test_a_single_column_repair_may_not_tear_a_known_pair_apart():
     before = rows(["pistunghaz", "hide", "躲藏"], ["i,", "", ""])
     after = gs.apply_op(before, gs.Op("col2", "shift_right", 0, 1))
     assert not gs.improves(gs.score(before, lex), gs.score(after, lex))
+
+
+def test_colon_labels_are_apparatus_but_a_lone_capital_is_a_word_slot():
+    """A colon marks a real speaker label: a gloss moved onto one is kept as a
+    word the sentence form lacks, and prune withdraws the word tier. A lone
+    capital is a slot: Sakizaya 'E==' is a lengthened filler glossed FIL, and
+    the builder keeps it once glossed (it drops it only when blank or when the
+    gloss merely echoes the letter)."""
+    for label in ("F:", "D:..", "P:...(0.9)", "M："):
+        assert not gs.is_word(label), label
+    for slot in ("E==", "X", "XX", "XX--"):
+        assert gs.is_word(slot), slot
+    import pipeline_stories as ps
+    # As the builder sees the rows after step 5 strips the lengthening:
+    assert ps.apparatus_class(["E", "FIL", "FIL"]) is None          # kept as a word
+    assert ps.apparatus_class(["E", "", ""]) is not None            # dropped when bare
+    assert ps.apparatus_class(["X", "X", "??"]) is not None
+
+
+def test_grammar_and_sentences_are_one_sentence_per_record():
+    recs = [[28, {"gloss": [], "s_end": False}], [29, {"gloss": [], "s_end": True}]]
+    assert [[r[0] for r in g] for g in fgs.groups(recs, per_record=True)] == [[28], [29]]
+    assert [[r[0] for r in g] for g in fgs.groups(recs)] == [[28, 29]]
+
+
+def test_blast_radius_does_not_confuse_same_id_sentences_in_two_languages(tmp_path, monkeypatch):
+    """Grammar S ids repeat across language files. A repair in one language
+    must not make the other language's same-id sentence count as targeted."""
+    sys.path.insert(0, str(CODEDOCS / "qa"))
+    import gloss_shift_blast_radius as br
+    src = tmp_path / "cd" / "grammar" / "Atayal_X"
+    src.mkdir(parents=True)
+    (src / "st.json").write_text('{"glosses": [[1, {"gloss": [["ku", "NOM", ""]]}]]}', encoding="utf-8")
+    table = _table_row(tmp_path, source_file="grammar/Atayal_X/st.json", record_ids="1",
+                       status="accepted")
+    for name, other in (("base", "ACC"), ("cand", "GEN")):
+        for lang, g in (("Atayal", "NOM"), ("Seediq", other)):
+            d = tmp_path / name / lang
+            d.mkdir(parents=True)
+            (d / "a.xml").write_text(_xml({"st_S_1": ("su", g, g)}), encoding="utf-8")
+    monkeypatch.setattr(sys, "argv", ["br", "--baseline", str(tmp_path / "base"),
+                                      "--candidate", str(tmp_path / "cand"),
+                                      "--codedocs", str(tmp_path / "cd"), "--table", str(table),
+                                      "--report", str(tmp_path / "r.md")])
+    assert br.main() == 1
+    assert "collateral sentences changed: 1" in (tmp_path / "r.md").read_text(encoding="utf-8")
+
+
+def test_multi_speaker_labels_are_apparatus():
+    for label in ("S,G,W:", "Y,M:", "W,S:"):
+        assert not gs.is_word(label), label
+
+
+def test_placeholder_glosses_are_not_evidence():
+    """Moving 'XX' onto an 'XX' row must not count as an attested repair."""
+    lex = gs.Lexicon()
+    lex.add_rows(rows(["XX", "XX", "XX"], ["XX", "XX", "XX"]))
+    before = rows(["XX", "", ""], ["hbaro", "XX", "XX"])
+    after = gs.apply_op(before, gs.Op("gloss", "shift_left", 0, 1))
+    assert gs.score(after, lex)["attested"] == gs.score(before, lex)["attested"] == 0
+
+
+def test_morpheme_agreement_is_gated_per_gloss_language():
+    """A three-piece English gloss landing on a one-morpheme word is not
+    excused by a one-piece Chinese gloss."""
+    b = {"attested": 1, "morph_eng": 2, "morph_zho": 2, "reconstruct": 0,
+         "contradicted": 0, "paired": 0}
+    a = dict(b, attested=2, morph_eng=1, morph_zho=3)
+    assert not gs.improves(b, a)

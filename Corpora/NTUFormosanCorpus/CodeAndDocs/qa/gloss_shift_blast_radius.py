@@ -23,11 +23,11 @@ glosses of the same word in unrelated sentences change with it.
 Scoring of targeted sentences uses the word tier of the published XML, the
 evidence a user of the corpus sees:
 
-``attested``     W elements whose (form, English gloss) pair occurs on some other
-                 W of the same language in the baseline (leave-one-out);
-``morph_match``  W elements whose form and English gloss imply the same number
-                 of morphemes;
-``unglossed``    W elements with no English gloss.
+``attested``     gloss cells (English and Chinese) whose (form, gloss) pair occurs
+                 on some other W of the same language in the baseline
+                 (leave-one-out);
+``morph_match``  gloss cells whose gloss implies as many morphemes as the form;
+``unglossed``    W elements with no gloss in either language.
 
 A repair should raise ``attested``, and not lower ``morph_match``.
 
@@ -60,20 +60,31 @@ def form_text(el) -> str:
     return "".join(node.itertext()).strip() if node is not None else ""
 
 
-def eng(el) -> str:
+def gloss(el, lang: str) -> str:
     for t in el.findall("TRANSL"):
-        if t.get(XML_LANG) == "eng" and t.get("ver") is None:
+        if t.get(XML_LANG) == lang and t.get("ver") is None:
             return (t.text or "").strip()
     return ""
 
 
+def eng(el) -> str:
+    return gloss(el, "eng")
+
+
+LANGS = ("eng", "zho")   # Grammar glosses in Chinese only; score both
+
+
 def sentences(root: Path) -> dict:
-    """{S id: (language dir, file, element)} for a subcorpus build."""
+    """{(language dir, S id): (language dir, file, element)} for a subcorpus build.
+
+    Keyed on the language too: Grammar S ids are only unique within one
+    language's file (05_S_13 exists for Kanakanavu, Sakizaya and Seediq).
+    """
     out = {}
     for path in sorted(root.rglob("*.xml")):
         tree = etree.parse(str(path))
         for s in tree.getroot().iter("S"):
-            out[s.get("id")] = (path.parent.name, path.relative_to(root).as_posix(), s)
+            out[(path.parent.name, s.get("id"))] = (path.parent.name, path.relative_to(root).as_posix(), s)
     return out
 
 
@@ -105,57 +116,75 @@ def without_m(el) -> bytes:
 
 
 def targeted_prefixes(codedocs: Path, rows: list) -> dict:
-    """{S-id prefix: [table rows]} -- the sentence each repair row lands in.
+    """{(language dir, S-id prefix): [table rows]} -- where each repair lands.
 
-    A sentence takes the id of the first record in its s_end group; a record
-    split later in the build (``-opt``, ``-alt2``, ...) keeps that prefix.
+    In Stories a sentence takes the id of the first record in its s_end group;
+    Grammar and Sentences publish one sentence per record. A sentence split
+    later in the build (``-opt``, ``-alt2``, ...) keeps its prefix. A repair
+    spanning records names every sentence it touches.
     """
     out = defaultdict(list)
     for row in rows:
         path = codedocs / row["source_file"]
+        language = path.parent.name.split("_")[0]
+        per_record = row["source_file"].startswith(("grammar/", "sentence/"))
         first_of = {}
         start = None
         for rec in records_of(path):
-            if start is None:
+            if start is None or per_record:
                 start = rec[0]
             first_of[str(rec[0])] = start
             if rec[1].get("s_end", True):
                 start = None
-        rid = row["record_ids"].split("+")[0]
-        out[f"{path.stem}_S_{first_of[rid]}"].append(row)
+        for rid in row["record_ids"].split("+"):
+            key = (language, f"{path.stem}_S_{first_of[rid]}")
+            if row not in out[key]:
+                out[key].append(row)
     return out
 
 
-def is_targeted(sid: str, prefixes: dict) -> str | None:
-    for p in prefixes:
-        if re.fullmatch(re.escape(p) + r"(-[A-Za-z0-9]+)*", sid):
-            return p
+def is_targeted(key: tuple, prefixes: dict):
+    language, sid = key
+    for lang, p in prefixes:
+        if lang == language and re.fullmatch(re.escape(p) + r"(-[A-Za-z0-9]+)*", sid):
+            return (lang, p)
     return None
+
+
+def _pairs(s) -> Counter:
+    out = Counter()
+    for w in s.findall("W"):
+        for gl in LANGS:
+            g = gloss(w, gl)
+            if g and g != "_":
+                out[(norm_form(form_text(w)), gl, g)] += 1
+    return out
 
 
 def lexicon(sents: dict) -> dict:
     lex = defaultdict(Counter)
     for lang, _, s in sents.values():
-        for w in s.findall("W"):
-            g = eng(w)
-            if g and g != "_":
-                lex[lang][(norm_form(form_text(w)), g)] += 1
+        lex[lang].update(_pairs(s))
     return lex
 
 
 def w_score(s, lang: str, lex: dict, own) -> Counter:
-    mine = Counter((norm_form(form_text(w)), eng(w)) for w in own.findall("W")) if own is not None else Counter()
+    """Word-tier evidence, per gloss cell (English and Chinese), leave-one-out."""
+    mine = _pairs(own) if own is not None else Counter()
     c = Counter(words=0, attested=0, morph_match=0, unglossed=0)
     for w in s.findall("W"):
         c["words"] += 1
-        f, g = form_text(w), eng(w)
-        if not g or g == "_":
+        f = form_text(w)
+        cells = [(gl, gloss(w, gl)) for gl in LANGS]
+        cells = [(gl, g) for gl, g in cells if g and g != "_"]
+        if not cells:
             c["unglossed"] += 1
             continue
-        key = (norm_form(f), g)
-        if lex[lang][key] - mine[key] > 0:
-            c["attested"] += 1
-        c["morph_match"] += int(morpheme_count(f) == gloss_pieces(g))
+        for gl, g in cells:
+            key = (norm_form(f), gl, g)
+            if lex[lang][key] - mine[key] > 0:
+                c["attested"] += 1
+            c["morph_match"] += int(morpheme_count(f) == gloss_pieces(g))
     return c
 
 
@@ -178,12 +207,18 @@ def main() -> int:
     args = ap.parse_args()
 
     rows = load_table(args.table, {s.strip() for s in args.statuses.split(",")})
+    # Only rows for the subcorpus being compared: a Stories build cannot show a
+    # Grammar repair, and listing it as "did not change" would be noise.
+    sub = {"grammar": "grammar/", "sentences": "sentence/", "stories": "story/"}.get(
+        args.baseline.name.lower())
+    if sub:
+        rows = [r for r in rows if r["source_file"].startswith(sub)]
     prefixes = targeted_prefixes(args.codedocs, rows)
     base, cand = sentences(args.baseline), sentences(args.candidate)
     lex = lexicon(base)
 
     changed_t, changed_c, m_only = [], [], []
-    for sid in sorted(set(base) | set(cand)):
+    for sid in sorted(set(base) | set(cand)):   # sid is (language dir, S id)
         b, c = base.get(sid), cand.get(sid)
         if b is not None and c is not None and canon(b[2]) == canon(c[2]):
             continue
@@ -196,7 +231,7 @@ def main() -> int:
     base_attrs, cand_attrs = text_attrs(args.baseline), text_attrs(args.candidate)
     attr_diff = sorted(f for f in set(base_attrs) | set(cand_attrs)
                        if base_attrs.get(f) != cand_attrs.get(f))
-    untouched = [p for p in prefixes if not any(is_targeted(s, {p: 0}) for s in changed_t)]
+    untouched = ["/".join(p) for p in prefixes if not any(is_targeted(s, {p: 0}) for s in changed_t)]
 
     out = [f"# Gloss-shift blast radius", "",
            f"- repair rows in force ({args.statuses}): {len(rows)}, "
@@ -221,9 +256,9 @@ def main() -> int:
             total_b += sb
             total_c += sc
             flag = "" if (sc["attested"] > sb["attested"] and sc["morph_match"] >= sb["morph_match"]) else " ⚠"
-            out.append(f"| `{sid}`{flag} | {sb['attested']} → {sc['attested']} | "
+            out.append(f"| `{sid[0]}/{sid[1]}`{flag} | {sb['attested']} → {sc['attested']} | "
                        f"{sb['morph_match']} → {sc['morph_match']} | {sb['unglossed']} → {sc['unglossed']} |")
-            detail += [f"### `{sid}`", "", "| W | form | eng before |", "|---|---|---|",
+            detail += [f"### `{sid[0]}/{sid[1]}`", "", "| W | form | eng before |", "|---|---|---|",
                        *(w_table(b[2]) if b else []), "",
                        "| W | form | eng after |", "|---|---|---|", *(w_table(c[2]) if c else []), ""]
         out += [f"| **total** | {total_b['attested']} → {total_c['attested']} | "
@@ -236,7 +271,7 @@ def main() -> int:
             b, c = base.get(sid), cand.get(sid)
             where = (b or c)[1]
             state = "added" if b is None else "removed" if c is None else ("yes" if sid in m_only else "NO")
-            out.append(f"| `{sid}` | {where} | {state} |")
+            out.append(f"| `{sid[1]}` | {where} | {state} |")
         if len(changed_c) > 200:
             out.append(f"| ... {len(changed_c) - 200} more | | |")
         out.append("")

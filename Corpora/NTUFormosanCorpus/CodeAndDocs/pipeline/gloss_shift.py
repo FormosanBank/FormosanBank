@@ -48,12 +48,17 @@ What counts as better
 
 ``attested``      (word, gloss) pairs seen elsewhere in the same language. A word
                   glossed the way it is glossed nowhere else is the shift's
-                  signature, so a real repair raises this.
+                  signature, so a real repair raises this. Placeholder glosses
+                  (XX, ??, FIL, FS, BC, ...) do not count: they mark no meaning.
 ``contradicted``  a word seen >= CONTRADICT_MIN times elsewhere, never with this
                   gloss.
 ``morph_match``   cells whose gloss has as many morphemes as the word's form
-                  (``rakiyas-an=mu`` / ``climb-LF=1SG.GEN``: 3 = 3).
-``unglossed``     word rows with no gloss in any column.
+                  (``rakiyas-an=mu`` / ``climb-LF=1SG.GEN``: 3 = 3). Gated per
+                  gloss language, so a good Chinese cell cannot hide a bad
+                  English one.
+``unglossed``     word rows with no gloss in any column. Reported, not gated:
+                  a repair may leave a word bare (a gloss really was lost),
+                  and the report suggests a same-language gloss for it.
 ``reconstruct``   words whose form, with its segmentation removed, is the
                   corresponding token of the plain-text sentence (the ``ori``
                   field), where the source has one.
@@ -69,6 +74,7 @@ from __future__ import annotations
 
 import copy
 import csv
+import functools
 import hashlib
 import json
 import math
@@ -102,6 +108,14 @@ _PAUSE = re.compile(r"^\s*[（(]?\d+(?:\.\d+)?[）)]?\s*$|^\.{2,}$|^=+$")
 _NONVERBAL = re.compile(r"^\s*[（(]\s*[A-Z]{2,}\s*[）)]\s*$")
 # And a bare '<L2J' / 'L2J>', a code-switch tag the source put on a row of its own.
 _LONE_L2_TAG = re.compile(r"^(<L2[A-Z]?|L2[A-Z]?>)$")
+# A speaker label names who is talking, with a colon: 'F:', 'D:..', and the
+# multi-speaker 'S,G,W:' / 'Y,M:' of the Tsou conversations.
+_COLON_LABEL = re.compile(r"^\s*[A-Z]\d?(\s*,\s*[A-Z]\d?)*\s*[:：]")
+# Glosses that mark something other than a meaning -- a filler, a false start,
+# unintelligible speech, backchannel -- are not evidence about a word: 'XX'
+# glossed 'XX' is "attested" everywhere, and would reward moving it anywhere.
+PLACEHOLDER_GLOSSES = {"XX", "XXX", "XXXX", "X", "??", "?", "FIL", "FS", "UH", "UU",
+                       "AH", "BC", "@@", "@@@"}
 # NTU_GLOSS_SHIFT_TABLE points a trial build at another table.
 REPAIRS_TSV = Path(os.environ.get("NTU_GLOSS_SHIFT_TABLE")
                    or Path(__file__).with_name("gloss_shift_repairs.tsv"))
@@ -129,19 +143,39 @@ def norm_form(form: str) -> str:
     return unicodedata.normalize("NFC", text).lower()
 
 
+@functools.lru_cache(maxsize=None)
+def _builder_clean(raw: str) -> str:
+    """The form as pipeline_stories step 5 leaves it (prosody, lengthening
+    '==', IU '/', pause dots and code-switch tags stripped). Imported lazily:
+    pipeline_stories imports this module."""
+    from pipeline_stories import step5_strip_markup
+    return step5_strip_markup(raw)[0]
+
+
+@functools.lru_cache(maxsize=None)
 def is_word(form: str) -> bool:
     """True for a row that can carry a gloss, rather than transcription apparatus.
 
-    An unintelligible stretch (``XX``, ``XX--``) counts: it is a slot in the
-    utterance, and the build keeps it as a word. A *single* capital (``X``) does
-    not: the builder reads it as a speaker label and drops it.
+    Tested on the form as written and as the builder sees it after step 5, so a
+    row the builder empties ('(Hx)') or reads as a pause is apparatus.
+
+    Speaker labels need care. The builder's pattern matches any lone capital,
+    but drops such a row only when its gloss is blank or merely echoes the
+    letter (step 15, classes 1 and 2); glossed, it is kept as a word. A label
+    with a colon ('F:', 'D:..', 'P:...(0.9)') is a real speaker label, and a
+    gloss moved onto it would be kept as a word the sentence form does not
+    contain -- prune then withdraws the whole word tier -- so it is apparatus.
+    A lone capital without one is a word slot: Sakizaya 'E==' is a lengthened
+    filler glossed FIL, and 'X' marks an unintelligible word; if the gloss that
+    lands on it is only an echo, the builder drops the row, as it should.
+    An unintelligible stretch ('XX', 'XX--') is always a word slot.
     """
     raw = (form or "").strip()
-    # Tested on the form as written and as the builder sees it once prosody is
-    # stripped: 'P:...(0.9)' is a speaker label once its pause marker goes.
-    shapes = {raw, strip_prosodic_markers(raw).strip()}
-    if any(p.match(x) for p in (_SPEAKER, _PUNCT_ONLY, _PAUSE, _NONVERBAL, _LONE_L2_TAG)
+    shapes = {raw, strip_prosodic_markers(raw).strip(), _builder_clean(raw)}
+    if any(p.match(x) for p in (_PUNCT_ONLY, _PAUSE, _NONVERBAL, _LONE_L2_TAG)
            for x in shapes):
+        return False
+    if any(_COLON_LABEL.match(x) for x in shapes):
         return False
     text = norm_form(raw)
     return bool(text) and substantive(text)
@@ -374,8 +408,8 @@ def build_lexicon(paths: list) -> Lexicon:
 
 def score(rows: list, lex: Lexicon, ori: list | None = None) -> dict:
     """Evidence for one alignment of *rows*. *lex* must already exclude them."""
-    s = Counter(attested=0, contradicted=0, morph_match=0, unglossed=0,
-                reconstruct=0, paired=0, support=0.0)
+    s = Counter(attested=0, contradicted=0, morph_match=0, morph_eng=0, morph_zho=0,
+                unglossed=0, reconstruct=0, paired=0, support=0.0)
     words = [r for r in rows if r and is_word(_cell([r], 0, 0))]
     for row in words:
         w = norm_form(row[0])
@@ -390,14 +424,17 @@ def score(rows: list, lex: Lexicon, ori: list | None = None) -> dict:
             if g in BLANK:
                 continue
             lang = gloss_lang(g)
+            if morpheme_count(w) == gloss_pieces(g):
+                s["morph_match"] += 1
+                s[f"morph_{lang}"] += 1
+            if g.rstrip("=").upper() in PLACEHOLDER_GLOSSES:
+                continue    # not evidence either way (see PLACEHOLDER_GLOSSES)
             n = lex.pairs.get((w, lang, g), 0)
             if n > 0:
                 s["attested"] += 1
                 s["support"] += math.log1p(n)
             elif lex.words.get((w, lang), 0) >= CONTRADICT_MIN:
                 s["contradicted"] += 1
-            if morpheme_count(w) == gloss_pieces(g):
-                s["morph_match"] += 1
     if ori:
         tokens = [bare(norm_form(t)) for t in ori if is_word(t)]
         for tok, row in zip(tokens, words):
@@ -407,13 +444,38 @@ def score(rows: list, lex: Lexicon, ori: list | None = None) -> dict:
 
 
 def improves(before: dict, after: dict) -> bool:
-    """The acceptance rule: more attested, and nothing else gets worse."""
+    """The acceptance rule: more attested, and nothing else gets worse.
+
+    ``unglossed`` is reported, not gated. Inserting a blank is a legitimate
+    repair -- a gloss really was lost -- and a repair that leaves a word bare
+    but makes the rest of the sentence line up is worth seeing; the word left
+    bare gets a same-language suggestion (``suggest``) for a reviewer to fill.
+    """
     return (after["attested"] > before["attested"]
-            and after["morph_match"] >= before["morph_match"]
+            and after["morph_eng"] >= before["morph_eng"]
+            and after["morph_zho"] >= before["morph_zho"]
             and after["reconstruct"] >= before["reconstruct"]
-            and after["unglossed"] <= before["unglossed"]
             and after["contradicted"] <= before["contradicted"]
             and after["paired"] >= before["paired"])
+
+
+def suggest(form: str, lex: "Lexicon", top: int = 2) -> str:
+    """How the same word is glossed elsewhere in the same language.
+
+    For a word a repair leaves bare. *lex* must be the leave-one-out lexicon of
+    that language only -- never another language's. A suggestion, for a
+    reviewer; nothing applies it.
+    """
+    w = norm_form(form)
+    parts = []
+    for lang in ("eng", "zho"):
+        total = lex.words.get((w, lang), 0)
+        if total <= 0:
+            continue
+        ranked = sorted(((n, g) for (ww, ll, g), n in lex.pairs.items()
+                         if ww == w and ll == lang and n > 0), reverse=True)[:top]
+        parts.append(", ".join(f"{g} ({n}/{total})" for n, g in ranked))
+    return " | ".join(parts) or "no other occurrence"
 
 
 # ------------------------------------------------------------------ the table
