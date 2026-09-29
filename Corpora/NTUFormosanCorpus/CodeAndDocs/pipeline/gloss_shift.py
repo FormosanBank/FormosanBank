@@ -171,6 +171,8 @@ def is_word(form: str) -> bool:
     An unintelligible stretch ('XX', 'XX--') is always a word slot.
     """
     raw = (form or "").strip()
+    if raw and not _builder_clean(raw).strip():
+        return False                      # the builder drops the row
     shapes = {raw, strip_prosodic_markers(raw).strip(), _builder_clean(raw)}
     if any(p.match(x) for p in (_PUNCT_ONLY, _PAUSE, _NONVERBAL, _LONE_L2_TAG)
            for x in shapes):

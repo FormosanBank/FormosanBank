@@ -249,3 +249,25 @@ def test_detector_skips_records_replaced_whole_by_p2_source_repairs():
     import find_gloss_shifts as fgs
     replaced = fgs.replaced_records(CODEDOCS)
     assert ("grammar/Kanakanavu_Kanakanavu/ap1.json", "78") in replaced
+
+
+# ------------------------------------------------------------ rulings of 2026-09-29
+
+def test_one_letter_bracket_markers_are_stripped_but_code_switch_tags_and_infixes_kept():
+    import pipeline_stories as ps
+    import pipeline_sentences as pse
+    for strip in (ps.step5_strip_markup, pse.step5_strip_markup):
+        assert strip("<A")[0] == "" and strip("M>")[0] == "" and strip("<X<A")[0] == ""
+        assert strip("‘nay==(0.6)A>X>,_")[0] == "‘nay,"          # glued to a word
+        assert strip("<L2Jding’ua")[0] == "ding’ua"               # code-switch tag: as before
+        assert strip("s<en>aqay")[0] == "s<en>aqay"               # infix kept
+        assert strip("<AF>climb", gloss=True)[0] == "<AF>climb"   # glosses untouched
+
+
+def test_a_bc_restoration_stops_the_build_if_the_source_changed():
+    from pipeline_grammar import apply_cell_restorations
+    table = {"story/X/a.json": [(7, 0, 1, "M", "BC")]}
+    recs = [[7, {"gloss": [["m", "M", "M"]]}]]
+    assert apply_cell_restorations(recs, "story/X/a.json", table, {})[0][1]["gloss"][0][1] == "BC"
+    with pytest.raises(RuntimeError, match="source drifted"):
+        apply_cell_restorations([[7, {"gloss": [["m", "OH", "OH"]]}]], "story/X/a.json", table, {})

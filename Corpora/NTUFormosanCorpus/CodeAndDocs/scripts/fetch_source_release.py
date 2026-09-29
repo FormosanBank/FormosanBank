@@ -90,7 +90,7 @@ def main() -> int:
     local_rows = [r for r in rows if r["local_path"] != "-"]
     problems, entries = [], []
     for r in local_rows:
-        data = fetch(commit, r["upstream_path"])
+        data = fetch(r.get("commit") or commit, r["upstream_path"])   # a row may pin its own commit
         if sha256(data) != r["sha256"]:
             problems.append(f"{r['upstream_path']}: upstream bytes differ from the table's sha256")
             continue
@@ -103,7 +103,8 @@ def main() -> int:
             dest.write_bytes(data)
         entries.append({"path": r["local_path"], "status": r["relation"],
                         "upstream_path": r["upstream_path"], "sha256": r["sha256"],
-                        "records": int(r["records"])})
+                        "records": int(r["records"]),
+                        **({"upstream_commit": r["commit"]} if r.get("commit") else {})})
     listed = {r["local_path"] for r in local_rows}
     stray = sorted(p.relative_to(CODEDOCS).as_posix() for d in SOURCE_DIRS
                    for p in (CODEDOCS / d).rglob("*.json")

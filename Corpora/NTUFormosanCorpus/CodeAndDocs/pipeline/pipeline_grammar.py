@@ -185,6 +185,7 @@ import argparse
 import copy
 import sys
 import hashlib
+import csv
 import json
 import os
 import re
@@ -639,6 +640,39 @@ def apply_record_repairs(records: list, src_key: str, repairs: dict, stats: dict
         out[i] = copy.deepcopy(repair["replacement"])
         stats["3 pinned records repaired"] = stats.get("3 pinned records repaired", 0) + 1
     return out
+
+
+def load_cell_restorations(path: Path) -> dict:
+    """{source file: [(record id, row, column, value found, value to write)]}.
+
+    A pinned list of single gloss cells to rewrite at load time. Each row names
+    the value it expects to find, so a changed source fails the build instead
+    of being overwritten blindly. Used for ruling 2026-09-29: NTU's 2026 release
+    replaced the backchannel gloss 'BC' with the sound in capitals ('M', 'OH').
+    """
+    out: dict = {}
+    if not path.exists():
+        return out
+    lines = [l for l in path.read_text(encoding="utf-8").splitlines() if l and not l.startswith("#")]
+    for row in csv.DictReader(lines, delimiter="\t"):
+        out.setdefault(row["source_file"], []).append(
+            (int(row["record_id"]), int(row["row"]), int(row["column"]), row["found"], row["restore"]))
+    return out
+
+
+def apply_cell_restorations(records: list, src_key: str, table: dict, stats: dict) -> list:
+    cells = [c for f, cs in table.items() if src_key.endswith(f) for c in cs]
+    if not cells:
+        return records
+    by_id = {r[0]: r for r in records if isinstance(r, list) and len(r) > 1}
+    for rid, k, col, found, restore in cells:
+        row = by_id[rid][1]["gloss"][k]
+        if str(row[col]).strip() != found:
+            raise RuntimeError(f"source drifted for {src_key}:{rid} row {k} column {col}; "
+                               f"expected {found!r}, found {row[col]!r}")
+        row[col] = restore
+        stats["cells restored (BC)"] = stats.get("cells restored (BC)", 0) + 1
+    return records
 
 
 def has_han(text: str | None) -> bool:

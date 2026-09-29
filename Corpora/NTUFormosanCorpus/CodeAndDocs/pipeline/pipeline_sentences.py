@@ -328,6 +328,15 @@ _PAUSE_DOTS = re.compile(r"\.{2,}")
 _BRACKET_NOTE = re.compile(r"\[[^\]]*\]")
 
 
+# A one-letter bracket marker ('<A' ... 'A>', '<F' ... 'F>', '<M' ... 'M>')
+# brackets a stretch of speech in NTU's transcription. It is apparatus, like
+# '<L2J' (ruling 2026-09-29): removed from the text, letter included, so a
+# marker-only row is dropped and the sentence form never shows a stray 'A'.
+# Markers can be stacked ('<X<A') or glued to a word ("'nay==(0.6)A>X>"). The
+# lookarounds keep '<L2J...L2J>' tags and infixes like 's<en>aqay' intact.
+_BRACKET_MARKER = re.compile(r"<[A-Z]\d?(?![A-Za-z0-9])|(?<![A-Za-z0-9<])[A-Z]\d?>")
+
+
 def step5_strip_markup(text: str, gloss: bool = False) -> tuple:
     """Return (cleaned text, whether a code-switch tag was removed).
 
@@ -344,6 +353,8 @@ def step5_strip_markup(text: str, gloss: bool = False) -> tuple:
     text = html.unescape(text or "")
     if gloss:
         text = _BRACKET_NOTE.sub("", text)
+    else:
+        text = _BRACKET_MARKER.sub("", text)
     clean, is_code_switch = strip_l2m(strip_prosodic_markers(text))
     # Strip the IU terminal only when it sits against a word, at either end. A
     # form that is nothing but "/" is the sentence-split separator step 2 keys
@@ -493,6 +504,12 @@ def build(records: list, text_id: str, steps: set, stats: dict,
             for r in all_rows:
                 form, is_cs = step5_strip_markup(str(r[0]))
                 if not form.strip():
+                    if (_BRACKET_MARKER.search(str(r[0]))
+                            and any(str(c).strip() not in ("", "_") for c in r[1:])):
+                        # Dropped with its row; a gloss NTU put on a marker is
+                        # lost, so count it (none after the 2026 repairs).
+                        stats["5   glossed bracket-marker rows dropped"] = stats.get(
+                            "5   glossed bracket-marker rows dropped", 0) + 1
                     continue
                 if is_cs:
                     code_switch.add(form)

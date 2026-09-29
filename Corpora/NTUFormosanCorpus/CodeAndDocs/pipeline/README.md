@@ -107,7 +107,11 @@ Per POL-039, item-specific corrections live in data files, not in code:
 - `free_translation_repairs.tsv` — free-translation fixes keyed by sentence id
 - `audio_overrides.tsv` — AUDIO suppression beyond the `沒有音檔` sentinel
 - `p2_source_repairs.xml` — recorded whole-record source repairs, each pinned to
-  a SHA-256 of the record it replaces so a drifting source fails the build
+  a SHA-256 of the record it replaces so a drifting source fails the build. Read
+  by the Grammar and Stories builders.
+- `bc_restorations.tsv` — gloss cells set back to `BC` (ruling 2026-09-29): NTU's
+  2026 release replaced the backchannel gloss `BC` with the sound in capitals
+  (`M`, `OH`, `HAY`), 404 cells. Each row names the value it expects to find.
 - `gloss_shift_repairs.tsv` — gloss-shift corrections (see below), applied at
   load time by all three builders; only rows with status `accepted` take effect
 
@@ -146,7 +150,7 @@ glosses are a pair seen elsewhere. Words a repair leaves bare are reported, not
 refused. For each one the report shows how the same word is glossed elsewhere
 *in the same language*, as a suggestion for a reviewer to turn into a `fill`
 row. Apparatus never receives a gloss: pauses, punctuation, `(LAUGH)`-style
-notes, lone `<L2J` tags and speaker labels with a colon (`F:`, `S,G,W:`). The
+notes, lone `<L2J` tags, one-letter bracket markers (`<A` … `A>`: dropped with their letter by step 5, ruling 2026-09-29) and speaker labels with a colon (`F:`, `S,G,W:`). The
 patterns are `pipeline_stories.py` step 15's own. A lone capital with no colon
 (`E==`, `X`) is a word slot, because the builder keeps it once it is glossed.
 Grammar and Sentences are scanned one sentence per record, as their builders
@@ -180,6 +184,14 @@ releases (54 are now `*_revised`/`*_edited`), and re-published its edits of two
 Atayal stories under names ending in a space. Five upstream files are
 deliberately excluded, each with its reason: two superseded old names, and three
 alternative transcriptions of texts we already have (open questions).
+Three Saisiyat stories (`SaiNr-election`, `SaiNr-life`, `SaiNr-holiday`) are
+pinned to NTU's release of 2024-04-08 instead (ruling 2026-09-29; a row's
+`commit` column in `source_release.tsv`): NTU's 2025 and 2026 releases slide
+their glosses one word, so that 57.9% of the 2024 word-gloss pairs recur in the
+other Saisiyat stories against 9.9% in 2026. The 20 small transcription fixes
+NTU made to them in 2026 (mostly `=` → `==` on fillers) are ported at load time
+by `p2_source_repairs.xml`, as are the glosses of 5 records that the 2026
+release moved onto one-letter bracket markers.
 `../refresh_source.sh` fetches exactly that release and verifies every file's
 SHA-256 (`--check` compares, `--latest` reports whether NTU has released since).
 It also rewrites `../source_snapshot.json`, which

@@ -62,7 +62,7 @@ common_repairs() {   # $1 = work dir
   run "clean_xml"              "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$W"
   TAIL=0 run "normalize_serialization (lxml)" "$SCR/normalize_serialization.py" --style lxml "$W"
   run "repair_s_gloss_shift"   "$PIPE/repair_s_gloss_shift.py" --xml_dir "$W"
-  run "borrow_shift_blank_glosses" "$PIPE/borrow_shift_blank_glosses.py" --xml_dir "$W" \
+  TAIL=40 run "borrow_shift_blank_glosses" "$PIPE/borrow_shift_blank_glosses.py" --xml_dir "$W" \
       --codedocs "$CODEDOCS" --subcorpus grammar --report "$CORPUS/logs/gloss_shift_borrowed_Grammar.tsv"
 }
 
@@ -138,7 +138,7 @@ build_flat() {       # $1 = sentences|stories
   run "repair_l2_markers"      "$SCR/repair_l2_markers.py" --xml_dir "$W"
   run "borrow_segmentation"    "$SCR/borrow_segmentation.py" --xml_dir "$W" --source_dir "$CODEDOCS"
   run "repair_s_gloss_shift"   "$PIPE/repair_s_gloss_shift.py" --xml_dir "$W"
-  run "borrow_shift_blank_glosses" "$PIPE/borrow_shift_blank_glosses.py" --xml_dir "$W" \
+  TAIL=40 run "borrow_shift_blank_glosses" "$PIPE/borrow_shift_blank_glosses.py" --xml_dir "$W" \
       --codedocs "$CODEDOCS" --subcorpus "$(basename "$json")" --report "$CORPUS/logs/gloss_shift_borrowed_${out}.tsv"
   run "uniquify_sentence_ids"  "$SCR/uniquify_sentence_ids.py" --xml_dir "$W"
   run "remove_annotation_codes" "$SCR/remove_annotation_codes.py" --xml_dir "$W" --source_dir "$CODEDOCS"
