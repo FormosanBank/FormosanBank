@@ -62,6 +62,7 @@ anything.
 | `sentence_xml_tests.py` | the suite for the two-gloss Sentences and Stories |
 | `gloss_shift_blast_radius.py` | compares two builds and fails if a gloss-shift repair changed any sentence it did not target |
 | `try_gloss_shift_repairs.sh` | builds one subcorpus twice into scratch dirs (without and with the proposed gloss-shift repairs), both at build.sh's pre-cleanup checkpoint, and runs the blast-radius check; never writes XML/ |
+| `compare_release_builds.py` | compares builds of two NTU source releases made with the same code: sorts every sentence into source_changed / code_reacted (XML changed although its own source did not: a misfire) / masked / added / removed, and names the source fields that changed |
 
 ## Reading a result
 

@@ -68,7 +68,10 @@ three rules are maintainer rulings, recorded in the decision log.
   segment after it. If no segment follows it, or no unglossed segment follows to
   absorb the shift, it is left and reported in
   `logs/punctuation_morpheme_escalations_<subcorpus>.tsv`. The word's FORM keeps
-  its punctuation: that is source text.
+  its punctuation: that is source text. A `=` in front of the deleted piece stays
+  in the morpheme tier, on the morpheme before it: `na=,` (a clitic whose host
+  was cut off) keeps the morpheme `na=`, as the corpus writes such a clitic, and
+  V066 (a W's `=` must reach one of its Ms) holds.
 - **Word tier withdrawn** (`apply_prune_and_mirror.py`, ruling 2026-09-08). A
   sentence whose word tier does not account for its sentence form loses its W
   elements.
