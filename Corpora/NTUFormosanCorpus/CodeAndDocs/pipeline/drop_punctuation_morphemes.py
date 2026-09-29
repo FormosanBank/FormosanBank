@@ -20,6 +20,8 @@ segments": fewer of the word's Ms carry a non-trivial gloss than there are Ms.
 The shift moves the punctuation segment's glosses (every language together) to
 the next M, whose own glosses move on in turn, until an M with no gloss absorbs
 the chain. The W's FORM is left as written: its punctuation is source text.
+A '=' in front of the deleted piece stays in the M tier, on the M before it
+('na=,' -> 'na='), as the corpus writes a clitic whose host is absent.
 
 Escalated (left unchanged, and reported in ``--report``):
   * the punctuation segment is glossed but is the last M;
@@ -32,6 +34,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -69,6 +72,41 @@ def put_glosses(m, transls: list) -> None:
         m.append(t)
 
 
+def separators_before(w_form: str) -> list:
+    """The separator in front of each piece of a W FORM, in order ('' for the first).
+
+    Pieces are what the builder cuts at '-' and '=', after infixes are taken
+    out, punctuation-only pieces included: 'na=,' -> ['', '='].
+    """
+    rest = re.sub(r"<[^>]+>", "", (w_form or "").strip())
+    out, sep = [], ""
+    for part in re.split(r"([-=])", rest):
+        if part in ("-", "="):
+            sep = part
+        elif part.strip():
+            out.append(sep)
+            sep = ""
+    return out
+
+
+def keep_clitic_boundary(w, ms: list, k: int, stats: Counter) -> None:
+    """Deleting piece k must not delete the '=' in front of it.
+
+    'na=,' is a proclitic whose host was cut off; the builder writes it as the
+    Ms 'na' and ','. The '=' belongs to 'na', which the corpus writes 'na='
+    when it has no host (and '=na' when it is an enclitic). Dropping ',' alone
+    would leave no M carrying the W's '=' (V066, HARD).
+    """
+    seps = separators_before(form_text(w))
+    if len(seps) != len(ms) or seps[k] != "=" or k == 0:
+        return
+    node = ms[k - 1].find("FORM[@kindOf='original']")
+    if node is None or (node.text or "").rstrip().endswith("="):
+        return
+    node.text = (node.text or "").rstrip() + "="
+    stats["  '=' kept on the preceding M (clitic whose host was cut off)"] += 1
+
+
 def repair_word(w, stats: Counter, escalate: list) -> bool:
     changed = False
     while True:
@@ -85,6 +123,7 @@ def repair_word(w, stats: Counter, escalate: list) -> bool:
         k = punct[0]
         m = ms[k]
         if not glossed(m):
+            keep_clitic_boundary(w, ms, k, stats)
             w.remove(m)
             stats["punctuation-only M, unglossed: deleted"] += 1
             changed = True
@@ -112,6 +151,7 @@ def repair_word(w, stats: Counter, escalate: list) -> bool:
             held = take_glosses(ms[j])
             put_glosses(ms[j], carried)
             carried = held
+        keep_clitic_boundary(w, ms, k, stats)
         w.remove(m)
         stats["punctuation-only M, glossed: deleted, gloss shifted right"] += 1
         changed = True

@@ -79,6 +79,29 @@ def test_punctuation_segment_when_every_segment_is_glossed_is_escalated():
     assert "every segment is glossed" in esc[0]["reason"]
 
 
+def test_a_clitic_whose_host_was_cut_off_keeps_its_boundary():
+    """'na=,' (IRR=, its host cut off): the builder writes Ms 'na' and ','.
+    Deleting ',' must leave 'na=' -- the corpus's form for a hostless clitic --
+    or no M carries the W's '=' (V066, HARD). 12 Stories words hit this."""
+    stats = Counter()
+    w = parse(W("na=,", M("na", "IRR"), M(","), eng="IRR="))
+    assert dpm.repair_word(w, stats, [])
+    assert m_view(w) == [("na=", "IRR")]
+    assert dpm.separators_before("na=,") == ["", "="]
+
+
+def test_a_hyphen_before_the_punctuation_is_not_carried_over():
+    w = parse(W("ta-,", M("ta", "LOC"), M(",")))
+    assert dpm.repair_word(w, Counter(), [])
+    assert m_view(w) == [("ta", "LOC")]
+
+
+def test_the_boundary_is_kept_when_the_gloss_is_shifted_too():
+    w = parse(W("x=.-ta-an", M("x"), M(".", "LOC"), M("ta", "see"), M("an")))
+    assert dpm.repair_word(w, Counter(), [])
+    assert m_view(w) == [("x=", None), ("ta", "LOC"), ("an", "see")]
+
+
 def test_an_empty_form_shell_is_not_punctuation():
     """A form-less M is a shell from a surplus gloss piece; prune owns it."""
     esc = []
