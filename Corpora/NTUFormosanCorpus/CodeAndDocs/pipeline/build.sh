@@ -63,7 +63,7 @@ common_repairs() {   # $1 = work dir
   TAIL=0 run "normalize_serialization (lxml)" "$SCR/normalize_serialization.py" --style lxml "$W"
   run "repair_s_gloss_shift"   "$PIPE/repair_s_gloss_shift.py" --xml_dir "$W"
   run "borrow_shift_blank_glosses" "$PIPE/borrow_shift_blank_glosses.py" --xml_dir "$W" \
-      --codedocs "$CODEDOCS" --report "$CORPUS/logs/gloss_shift_borrowed_Grammar.tsv"
+      --codedocs "$CODEDOCS" --subcorpus grammar --report "$CORPUS/logs/gloss_shift_borrowed_Grammar.tsv"
 }
 
 # ---------------------------------------------------------------- phase C
@@ -73,9 +73,11 @@ finish_tiers() {     # $1 = work dir, $2 = subcorpus name (for report file names
   run "resolve_slash_alternatives" "$PIPE/resolve_slash_alternatives.py" --xml_dir "$W"
   # Punctuation-only morphemes (ruling 2026-09-28): a repair, not clean-up.
   # Escalations -- cases the rule does not resolve -- go to logs/ for review.
-  run "drop_punctuation_morphemes" "$PIPE/drop_punctuation_morphemes.py" --xml_dir "$W" \
+  # These two print every counter (TAIL=40): the 2026-09-08 ruling asks for
+  # the numbers withdrawn or rebuilt to be reported, and tail -2 hid them.
+  TAIL=40 run "drop_punctuation_morphemes" "$PIPE/drop_punctuation_morphemes.py" --xml_dir "$W" \
       --report "$CORPUS/logs/punctuation_morpheme_escalations_${SUB}.tsv"
-  cleanup "prune non-conforming W/M"   "$PIPE/apply_prune_and_mirror.py" --xml_dir "$W"
+  TAIL=40 cleanup "prune non-conforming W/M"   "$PIPE/apply_prune_and_mirror.py" --xml_dir "$W"
   run_opt "mark_original_glosses"   "$SCR/mark_original_glosses.py" --xml-dir "$W"
   run "align_ids"                  "$PIPE/align_ids.py" --xml_dir "$W"
   step "standard tier + PHON (Ortho94)"
@@ -137,7 +139,7 @@ build_flat() {       # $1 = sentences|stories
   run "borrow_segmentation"    "$SCR/borrow_segmentation.py" --xml_dir "$W" --source_dir "$CODEDOCS"
   run "repair_s_gloss_shift"   "$PIPE/repair_s_gloss_shift.py" --xml_dir "$W"
   run "borrow_shift_blank_glosses" "$PIPE/borrow_shift_blank_glosses.py" --xml_dir "$W" \
-      --codedocs "$CODEDOCS" --report "$CORPUS/logs/gloss_shift_borrowed_${out}.tsv"
+      --codedocs "$CODEDOCS" --subcorpus "$(basename "$json")" --report "$CORPUS/logs/gloss_shift_borrowed_${out}.tsv"
   run "uniquify_sentence_ids"  "$SCR/uniquify_sentence_ids.py" --xml_dir "$W"
   run "remove_annotation_codes" "$SCR/remove_annotation_codes.py" --xml_dir "$W" --source_dir "$CODEDOCS"
   run "fix_double_encoded_glosses"      "$SCR/fix_double_encoded_glosses.py" --xml_dir "$W"

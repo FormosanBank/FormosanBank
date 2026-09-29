@@ -115,10 +115,15 @@ def main() -> int:
                     help="repairs table (default: the build's, honouring NTU_GLOSS_SHIFT_TABLE)")
     ap.add_argument("--min-count", type=int, default=5)
     ap.add_argument("--min-share", type=float, default=0.9)
+    ap.add_argument("--subcorpus", choices=("grammar", "sentence", "story"),
+                    help="only rows whose source_file is in this subcorpus: a build of one "
+                         "subcorpus cannot hold another's sentences")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
     rows = load_table(args.table)
+    if args.subcorpus:
+        rows = [r for r in rows if r["source_file"].startswith(args.subcorpus + "/")]
     blanks = created_blanks(args.codedocs, rows)
     stats, report = Counter(), []
     if not blanks:
