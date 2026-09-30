@@ -275209,7 +275209,7 @@
             <PHON kindOf="original">namataðin</PHON>
             <FORM kindOf="standard">na=ma-taz=in</FORM>
             <PHON kindOf="standard">namataðin</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">非實現=</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-死=改變狀態</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IRR=AF-die=COS</TRANSL>
             <M id="63_S_801_W0M0">
                 <FORM kindOf="original">na</FORM>
@@ -275224,6 +275224,7 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">=ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="63_S_801_W0M2">
@@ -275231,6 +275232,7 @@
                 <PHON kindOf="original">tað</PHON>
                 <FORM kindOf="standard">taz</FORM>
                 <PHON kindOf="standard">tað</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">死</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">die</TRANSL>
             </M>
             <M id="63_S_801_W0M3">
@@ -275238,6 +275240,7 @@
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -275246,8 +275249,16 @@
             <PHON kindOf="original">saiia</PHON>
             <FORM kindOf="standard">saiia.</FORM>
             <PHON kindOf="standard">saiia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-死=改變狀態</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
+            <M id="63_S_801_W1M0">
+                <FORM kindOf="original">saiia.</FORM>
+                <PHON kindOf="original">saiia</PHON>
+                <FORM kindOf="standard">saiia.</FORM>
+                <PHON kindOf="standard">saiia</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" notes="gloss borrowed: 'saiia.' is glossed this way in 54 of its 56 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">3SG.主格</TRANSL>
+            </M>
+            <TRANSL xml:lang="zho" notes="gloss borrowed: 'saiia.' is glossed this way in 54 of its 56 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">3SG.主格</TRANSL>
         </W>
     </S>
     <S id="63_S_802">

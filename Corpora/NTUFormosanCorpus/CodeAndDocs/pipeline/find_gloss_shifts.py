@@ -85,8 +85,17 @@ def candidates(rows: list, bounds: list):
     for n, (lo, hi) in enumerate(bounds):
         for k in range(lo, hi):
             rec_of[k] = n
+    marks = [k for k, r in enumerate(rows) if r and not is_word(r[0]) and not _glossless(r)]
     for tier in ("gloss", "col1", "col2"):
         cols = TIERS[tier]
+        # A transcription mark carrying a gloss ('H:', '(H)') can start a right
+        # shift: its gloss is the first one displaced (see gloss_shift.apply_op).
+        for i in marks:
+            if _blank_on(rows[i], cols):
+                continue
+            for j in [w for w in words if w > i][:MAX_WINDOW - 1]:
+                if _blank_on(rows[j], cols):
+                    yield Op(tier, "shift_right", i, j), rec_of[i] != rec_of[j]
         for a, i in enumerate(words):
             for j in words[a + 1:a + MAX_WINDOW]:
                 cross = rec_of[i] != rec_of[j]

@@ -421,3 +421,15 @@ def test_blast_radius_leave_one_out_drops_the_whole_split_family(tmp_path, monke
     assert "| `Atayal/st_S_1` | 0 → 1 |" in report
     assert "| `Atayal/st_S_1-opt` | 0 → 1 |" in report
     assert br.family(("Tsou", "TsouConv-typhoon_S_302-opt")) == ("Tsou", "TsouConv-typhoon_S_302")
+
+
+def test_a_right_shift_may_start_at_a_glossed_transcription_mark():
+    # Maintainer, 2026-09-30: "(H) shouldn't be glossed. Shift starts there."
+    before = rows(["(H)", "that", "那"], ["ka", "go", "去"], ["mi", "", ""])
+    op = gs.Op("gloss", "shift_right", 0, 2)
+    after = gs.apply_op(before, op)
+    assert after == [["(H)", "", ""], ["ka", "that", "那"], ["mi", "go", "去"]]
+    gs.check_moved_not_edited(before, after, op)
+    # a mark inside the window still may not carry a gloss
+    with pytest.raises(gs.RepairError, match="apparatus"):
+        gs.apply_op(rows(["ka", "go", "去"], ["(H)", "x", "x"], ["mi", "", ""]), gs.Op("gloss", "shift_right", 0, 2))

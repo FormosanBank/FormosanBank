@@ -277,6 +277,13 @@ def apply_op(rows: list, op: Op) -> list:
         return out
 
     slots = word_slots(out, op.i, op.j)
+    # A right shift may START at a transcription mark that carries a gloss --
+    # a speaker label 'H:', a breath '(H)' -- when that gloss is the first one
+    # displaced (maintainer, 2026-09-30: "(H) shouldn't be glossed. Shift starts
+    # there."). The mark is left bare; the build drops it anyway.
+    if (op.op == "shift_right" and op.tier != "form" and slots and slots[0] != op.i
+            and any(not blank(_cell(out, op.i, c)) for c in cols)):
+        slots = [op.i] + slots
     if len(slots) < 2 or slots[0] != op.i or slots[-1] != op.j:
         raise RepairError(f"window {op.i}..{op.j} must start and end on a word")
     # Apparatus rows inside the window are stepped over; they must not be
