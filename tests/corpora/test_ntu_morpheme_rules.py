@@ -283,8 +283,8 @@ def test_each_gloss_goes_to_the_slot_of_its_own_language():
     assert step1_realign("bring-PF", "") == ("", "bring-PF")                               # lone English
     assert step1_realign("<RED>-go", "") == ("", "<RED>-go")
     assert step1_realign("go", "去") == ("去", "go")                                        # whole-row swap, as before
-    assert step1_realign("說-no.wonder=知識詞", "say-難怪=EVI") == ("說-難怪=知識詞", "say-no.wonder=EVI")   # one piece
-    assert step1_realign("重複-女人=1EPL.GEN", "RED-woman=1EPL.屬格") == ("重複-女人=1EPL.屬格", "RED-woman=1EPL.GEN")
+    # a piece is never moved on its own, only whole words (maintainer, 2026-09-30)
+    assert step1_realign("說-no.wonder=知識詞", "say-難怪=EVI") == ("說-no.wonder=知識詞", "say-難怪=EVI")
     # left alone: already right, a shared code, a name, a mostly-Chinese cell
     for z, e in [("主格", "NOM"), ("DM", "DM"), ("Saupu", "_"), ("PN", ""), ("長期-坐", "whole.time-坐"), ("3SG.屬格", "3SG.GEN")]:
         assert step1_realign(z, e) == (z, e), (z, e)
