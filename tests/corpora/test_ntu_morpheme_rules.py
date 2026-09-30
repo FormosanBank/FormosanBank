@@ -307,8 +307,12 @@ def test_a_reversal_against_its_line_needs_a_run_of_three_or_unmixed_glosses():
     assert realign([ok] * 4 + [mixed, ("NOM", "主格"), ("go", "去")])[4] == mixed[::-1]   # run of 3
     assert realign([ok] * 5 + [mixed, ("NOM", "主格"), ok, ("go", "去")])[5] == mixed      # a word in line order ends a run
     assert realign([ok] * 4 + [mixed, ("", ""), ("NOM", "主格"), ("go", "去")])[4] == mixed[::-1]  # a bare word does not
-    # English-first line, one mixed word written Chinese first: it follows the line
-    assert realign([("NOM", "主格"), ("go", "去"), ("see", "看"), ("3SG.主格", "3SG.NOM")])[3] == ("3SG.NOM", "3SG.主格")
+    # English-first line, one word written Chinese first. A label such as 3SG in the
+    # Chinese gloss is not mixing (maintainer, 2026-09-30): it goes to its own slots.
+    eng_first = [("NOM", "主格"), ("go", "去"), ("see", "看")]
+    assert realign(eng_first + [("3SG.主格", "3SG.NOM")])[3] == ("3SG.主格", "3SG.NOM")
+    # an English WORD in the Chinese gloss is mixing: the word follows its line
+    assert realign(eng_first + [("that.可見.遠指", "that.VIS.DIST")])[3] == ("that.VIS.DIST", "that.可見.遠指")
     assert realign([("鉛", "鉛")]) == [("鉛", "")]                                   # duplicate: not a move
 
 
@@ -317,7 +321,10 @@ def test_one_crossed_piece_is_exchanged_only_if_that_cleans_both_glosses():
     assert realign([("說-no.wonder=知識詞", "say-難怪=EVI")]) == [("說-難怪=知識詞", "say-no.wonder=EVI")]
     two = ("去-no.wonder=EVI-看-吃", "go-難怪=知識詞-see-eat")                  # two pieces crossed: left alone
     assert realign([("主格", "NOM"), two]) == [("主格", "NOM"), two]
-    assert realign([("3SG.屬格-去", "3SG.GEN-去")]) == [("3SG.屬格-去", "3SG.GEN-去")]  # would leave Latin in the Chinese
+    # would leave an English word in the Chinese gloss
+    assert realign([("說-no.wonder=知識詞.that", "say-難怪=EVI")]) == [("說-no.wonder=知識詞.that", "say-難怪=EVI")]
+    # a label in the crossed piece is fine (3_S_189 koo=pa=maku, once in its own slots)
+    assert realign([("否定=持續=1SG.GEN", "NEG=CONT=1SG.屬格")]) == [("否定=持續=1SG.屬格", "NEG=CONT=1SG.GEN")]
 
 
 def test_a_hyphen_inside_an_infix_bracket_joins_two_infixes():

@@ -102,9 +102,11 @@ three rules are maintainer rulings, recorded in the decision log.
   fixed columns, so step 1 decides per sentence. A line's majority column order
   is followed. A word written in the opposite order (a reversal) goes to the
   slots its own glosses say only if it is in a run of 3+ reversals or neither of
-  its glosses mixes the two scripts; otherwise it follows its line (ruling
+  its glosses mixes the two languages; otherwise it follows its line (ruling
   2026-09-30). One crossed piece is exchanged only when that leaves no Chinese in
-  the English gloss and no Latin letter in the Chinese one.
+  the English gloss and no English word in the Chinese one. A Latin label in a
+  Chinese gloss (3SG, 1IPL, FS: any run with a capital or a digit) is not mixing
+  (ruling 2026-09-30); an all-lower-case run (`that`) is.
 - **An infix bracket holding a hyphen** (`la<in-i>haib`, glossed `<PFV-PFV>`) is
   that many infixes, `-in-` and `-i-`, each with its own gloss (ruling
   2026-09-30). Every step that counts or cuts morphemes reads it that way: the

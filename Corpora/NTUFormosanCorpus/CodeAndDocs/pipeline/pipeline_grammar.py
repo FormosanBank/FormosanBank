@@ -744,30 +744,44 @@ def _orientation(zho: str, eng: str) -> int:
     return 0
 
 
+def _english_words(text: str) -> list:
+    """The runs of Latin letters in a gloss that are English words: all lower
+    case ('that', 'no', 'wonder'). A run with a capital or a digit is a label
+    or code ('3SG', '1IPL', 'FS', 'Ca' in 'Ca重疊', a name); NTU writes those in
+    its Chinese glosses routinely (14,263 Chinese cells hold one; about 170 a
+    lower-case word). Maintainer, 2026-09-30: "latin labels like 3SG that
+    routinely are written in the Chinese glosses in NTU should not count as
+    code-mixing for purposes of switching."
+    """
+    return [r for r in re.findall(r"[A-Za-z0-9]+", text or "") if re.fullmatch(r"[a-z]+", r)]
+
+
 def _unmixed(zho: str, eng: str) -> bool:
-    """Neither gloss mixes the two scripts: the Chinese gloss holds no Latin
-    letters and the English gloss no Chinese."""
-    return not LATIN.search(zho or "") and not HAN.search(eng or "")
+    """Neither gloss mixes the two languages: the Chinese gloss holds no English
+    word (labels such as 3SG are allowed) and the English gloss no Chinese."""
+    return not _english_words(zho) and not HAN.search(eng or "")
 
 
 def swap_single_piece(zho: str, eng: str) -> tuple:
-    """Exchange ONE piece between the two glosses when that alone makes the
+    """Exchange ONE piece between the two glosses when that alone leaves the
     English all Latin and the Chinese all Chinese ('say-難怪=EVI' /
     '說-no.wonder=知識詞'). Maintainer, 2026-09-30: "where there is a single
     morpheme in a word where swapping would make the English gloss all-Latin
-    and the Chinese gloss all-Chinese. You can do that swap." Both glosses
-    must cut into the same pieces at the same separators."""
+    and the Chinese gloss all-Chinese. You can do that swap." Labels such as
+    3SG count as neither (see _english_words). Both glosses must cut into the
+    same pieces at the same separators; a piece is crossed when the English
+    one is Chinese and the Chinese one is Latin with no Chinese in it."""
     zp, ep = re.split(r"([-=](?![^<>]*>))", zho or ""), re.split(r"([-=](?![^<>]*>))", eng or "")
     if len(zp) != len(ep) or len(zp) < 3 or zp[1::2] != ep[1::2]:
         return zho, eng
-    wrong = [k for k in range(0, len(zp), 2) if HAN.search(ep[k]) or LATIN.search(zp[k])]
-    if len(wrong) != 1:
+    crossed = [k for k in range(0, len(zp), 2)
+               if HAN.search(ep[k]) and LATIN.search(zp[k]) and not HAN.search(zp[k])]
+    if len(crossed) != 1:
         return zho, eng
-    k = wrong[0]
-    if not (HAN.search(ep[k]) and LATIN.search(zp[k]) and _unmixed(ep[k], zp[k])):
-        return zho, eng
+    k = crossed[0]
     zp[k], ep[k] = ep[k], zp[k]
-    return "".join(zp), "".join(ep)
+    new = "".join(zp), "".join(ep)
+    return new if _unmixed(*new) else (zho, eng)
 
 
 def step1_realign_sentence(pairs: list, stats: dict | None = None) -> list:
