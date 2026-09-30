@@ -348,3 +348,27 @@ def test_a_hyphen_inside_an_infix_bracket_joins_two_infixes():
     from lxml import etree
     m = etree.fromstring('<M><FORM kindOf="original">&lt;in&gt;</FORM></M>')
     assert cin._is_infix_m(m, "la<in-i>haib-an") is None
+
+
+def test_the_same_english_in_both_slots_empties_the_chinese_slot():
+    # Maintainer, 2026-09-30, on the 49 such words: "drop the copy". Labels,
+    # placeholders and copies of the word itself are not English glosses.
+    from pipeline_grammar import step1_realign_sentence as realign
+    pairs = [("exhort-go", "exhort-go"), ("DM", "DM"), ("la", "la"), ("XX", "XX"), ("鉛", "鉛")]
+    out = realign(pairs, forms=["ta-ila", "a", "la", "ma", "x"])
+    assert out == [("", "exhort-go"), ("DM", "DM"), ("la", "la"), ("XX", "XX"), ("鉛", "")]
+    assert realign(pairs[:1]) == [("exhort-go", "exhort-go")]      # no forms, no rule
+
+
+def test_a_non_verbal_event_split_across_two_rows_is_dropped_whole():
+    # Maintainer, 2026-09-30: "treat both halves as a mark".
+    sys.path.insert(0, str(CODEDOCS / "pipeline"))
+    import gloss_shift as gs
+    from pipeline_stories import drop_split_events
+    rows = [["...", "", ""], ["(PHONE", "_", "_"], ["RINGS)._", "", ""], ["at", "then", "然後"],
+            ["((CLEAR", "", ""], ["THROAT)).\\", "", ""]]
+    assert drop_split_events(rows, {}) == [["...", "", ""], ["._", "", ""], ["at", "then", "然後"], [".\\", "", ""]]
+    # the transcript line writes the same event as two tokens
+    assert drop_split_events(["..", "(WHITE", "NOISE).\\"], {}, tokens=True) == ["..", ".\\"]
+    assert drop_split_events(["(COUGH)", "at"], {}, tokens=True) == ["(COUGH)", "at"]
+    assert not any(gs.is_word(f) for f in ("(PHONE", "RINGS)._", "((CLEARS", "THROAT))"))

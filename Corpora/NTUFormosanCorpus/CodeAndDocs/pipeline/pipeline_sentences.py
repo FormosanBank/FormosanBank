@@ -765,7 +765,8 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
         # Step 1 decides per sentence: whether a word's glosses may change
         # slots depends on its neighbours (see step1_realign_sentence).
         if 1 in steps:
-            realigned = step1_realign_sentence([(z, e) for _, z, e in cells], stats)
+            realigned = step1_realign_sentence([(z, e) for _, z, e in cells], stats,
+                                               forms=[f for f, _, _ in cells])
             cells = [(f, z, e) for (f, _, _), (z, e) in zip(cells, realigned)]
 
         for i, (row, (w_form, zho, eng)) in enumerate(zip(rows, cells)):

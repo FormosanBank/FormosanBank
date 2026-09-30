@@ -183,6 +183,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import difflib
 import sys
 import hashlib
 import csv
@@ -803,7 +804,7 @@ def _exchange_one_subpiece(zho: str, eng: str) -> tuple:
     return "".join(zp), "".join(ep)
 
 
-def step1_realign_sentence(pairs: list, stats: dict | None = None) -> list:
+def step1_realign_sentence(pairs: list, stats: dict | None = None, forms: list | None = None) -> list:
     """step1_realign for one sentence's (zho, eng) pairs, with the licence the
     maintainer set for a word that goes against its own line.
 
@@ -822,7 +823,11 @@ def step1_realign_sentence(pairs: list, stats: dict | None = None) -> list:
     run; a word in its line's order ends one. A line with no majority order has
     no reversals: each word follows its own glosses. Then swap_single_piece.
     The duplicate rule (the same Chinese in both slots empties the English slot)
-    is not a move and always applies.
+    is not a move and always applies. Given the words' *forms*, so does its
+    mirror: the same English word gloss in both slots empties the Chinese slot
+    (maintainer, 2026-09-30, on the 49 such words: "drop the copy"). A label
+    (NOM, DM: no lower-case letter), a placeholder, a number and a copy of the
+    word itself are not English glosses and are left as they are.
     """
     stats = {} if stats is None else stats
 
@@ -874,8 +879,27 @@ def step1_realign_sentence(pairs: list, stats: dict | None = None) -> list:
         piece = swap_single_piece(*new)
         if piece != new:
             count("1 single piece exchanged")
+        if forms is not None and _same_english(*piece, forms[k]):
+            piece = ("", piece[1])
+            count("1 same English in both slots: Chinese slot emptied")
         out.append(piece)
     return out
+
+
+# What the review page's census counted as a real English gloss (2026-09-30).
+_NOT_ENGLISH = {"", "_", "??", "?", "X", "XX", "XXX", "FIL", "FS", "BC", "UH", "UM", "EH", "AH"}
+
+
+def _same_english(zho: str, eng: str, form: str) -> bool:
+    """The same English word gloss written in both slots."""
+    z, e = (zho or "").strip(), (eng or "").strip()
+    if not e or z != e or HAN.search(e) or not re.search(r"[a-z]", e):
+        return False
+    if e.strip(".,;:!?()[]<>").upper() in _NOT_ENGLISH or re.fullmatch(r"[\d.]+", e):
+        return False
+    squash = lambda s: re.sub(r"[^\w]", "", (s or "").replace("’", "'")).lower()
+    a, b = squash(e), squash(form)
+    return not (a and (a == b or difflib.SequenceMatcher(None, a, b).ratio() >= 0.8))
 
 
 def has_han(text: str | None) -> bool:

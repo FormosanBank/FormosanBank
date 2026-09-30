@@ -56,6 +56,7 @@ from utils import (expand_infixes, strip_l2m, strip_prosodic_markers,  # noqa: E
                    resolve_ungrammatical_parens)
 from gloss_shift import apply_to_records as apply_shift_repairs  # noqa: E402
 from gloss_shift import load_table as load_shift_repairs  # noqa: E402
+from gloss_shift import EVENT_CLOSE, EVENT_OPEN  # noqa: E402
 
 STEPS = {
     0: "rebuild the sentence form from the gloss forms",
@@ -107,6 +108,39 @@ def apparatus_class(row: list):
     if _NONVERBAL.match(form):
         return "6 non-verbal annotation"
     return None
+
+
+def drop_split_events(rows: list, stats: dict, tokens: bool = False) -> list:
+    """Drop a non-verbal event NTU wrote across two rows, both halves at once.
+
+    '((CLEARS' + 'THROAT))', '(PHONE' + 'RINGS)._': read row by row, step 5
+    keeps the opening half as a word (published '(PHONE', '((CLEAR') while
+    the closing half goes as punctuation. The pair is one transcription mark
+    (maintainer, 2026-09-30: "treat both halves as a mark"), so both rows go,
+    with any gloss on them ('(CLEAR' XX | XX); punctuation after the closing
+    bracket stays as a row of its own. All 9 such openers in NTU's gloss rows
+    are followed by their closer, and no closer stands alone.
+
+    With *tokens*, the same for a transcript line's tokens: NTU writes the
+    event there too ('(WHITE' 'NOISE).', 3 lines), and a sentence whose
+    transcript kept the half its words dropped would lose its word tier.
+    """
+    form = (lambda r: str(r)) if tokens else (lambda r: str(r[0]))
+    out, k = [], 0
+    while k < len(rows):
+        m = (k + 1 < len(rows) and EVENT_OPEN.match(form(rows[k]))
+             and EVENT_CLOSE.match(form(rows[k + 1])))
+        if not m:
+            out.append(rows[k])
+            k += 1
+            continue
+        key = "15 dropped: 7 non-verbal event split across two " + ("transcript tokens" if tokens else "rows")
+        stats[key] = stats.get(key, 0) + 1
+        punct = m.group(1).strip()
+        if punct:
+            out.append(punct if tokens else [punct] + [""] * (len(rows[k + 1]) - 1))
+        k += 2
+    return out
 
 # Optional material written INSIDE a word: 'ka(z)', '(s)aiv=ik', 'kangavas(=an)',
 # '(na=)ma-hansiap'. Distinguished from a free-standing optional word by having
@@ -408,6 +442,11 @@ def build(records: list, text_id: str, steps: set, stats: dict,
             all_rows = resolved_rows
             all_ori = [t for t in (resolve_ungrammatical_parens(str(t)) for t in all_ori)
                        if t.strip()]
+
+        if 15 in steps:
+            # Before step 5, which would keep the opening half as a word.
+            all_rows = drop_split_events(all_rows, stats)
+            all_ori = drop_split_events(all_ori, stats, tokens=True)
 
         if 5 in steps:
             before = (list(all_ori), [list(r) for r in all_rows])
@@ -723,7 +762,8 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
         # Step 1 decides per sentence: whether a word's glosses may change
         # slots depends on its neighbours (see step1_realign_sentence).
         if 1 in steps:
-            realigned = step1_realign_sentence([(z, e) for _, z, e in cells], stats)
+            realigned = step1_realign_sentence([(z, e) for _, z, e in cells], stats,
+                                               forms=[f for f, _, _ in cells])
             cells = [(f, z, e) for (f, _, _), (z, e) in zip(cells, realigned)]
 
         for i, (row, (w_form, zho, eng)) in enumerate(zip(rows, cells)):

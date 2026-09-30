@@ -106,7 +106,17 @@ three rules are maintainer rulings, recorded in the decision log.
   2026-09-30). One crossed piece is exchanged only when that leaves no Chinese in
   the English gloss and no English word in the Chinese one. A Latin label in a
   Chinese gloss (3SG, 1IPL, FS: any run with a capital or a digit) is not mixing
-  (ruling 2026-09-30); an all-lower-case run (`that`) is.
+  (ruling 2026-09-30); an all-lower-case run (`that`) is. The same English word
+  gloss written in both slots (`say` / `say`) empties the Chinese slot (ruling
+  2026-09-30: "drop the copy"); labels (`NOM` / `NOM`), placeholders and copies
+  of the word itself are left as they are.
+- **A non-verbal event written across two rows** (`((CLEARS` + `THROAT))`,
+  `(PHONE` + `RINGS)._`; `pipeline_stories.drop_split_events`) is one
+  transcription mark: both rows are dropped with any gloss on them, and so are
+  the two tokens when a transcript line writes the event the same way (ruling
+  2026-09-30: "treat both halves as a mark"). Punctuation after the closing
+  bracket is kept. NTU has 9 such events in gloss rows and 3 in transcript
+  lines, all in the stories.
 - **An infix bracket holding a hyphen** (`la<in-i>haib`, glossed `<PFV-PFV>`) is
   that many infixes, `-in-` and `-i-`, each with its own gloss (ruling
   2026-09-30). Every step that counts or cuts morphemes reads it that way: the

@@ -109,6 +109,11 @@ _SPEAKER = re.compile(r"^\s*[A-Z]\s*[:.：]*\s*$")
 _PUNCT_ONLY = re.compile(r"^[^\w’'ʉ]+$")
 _PAUSE = re.compile(r"^\s*[（(]?\d+(?:\.\d+)?[）)]?\s*$|^\.{2,}$|^=+$")
 _NONVERBAL = re.compile(r"^\s*[（(]\s*[A-Z]{2,}\s*[）)]\s*$")
+# A non-verbal event written across two rows, '((CLEARS' + 'THROAT))' or '(PHONE' +
+# 'RINGS)._': the builder drops both halves (pipeline_stories.drop_split_events).
+# Group 1 of EVENT_CLOSE is the punctuation after the bracket, which it keeps.
+EVENT_OPEN = re.compile(r"^\s*[（(]{1,2}[A-Z]{2,}\s*$")
+EVENT_CLOSE = re.compile(r"^\s*[A-Z]{2,}[）)]{1,2}([^A-Za-z0-9]*)$")
 # And a bare '<L2J' / 'L2J>', a code-switch tag the source put on a row of its own.
 _LONE_L2_TAG = re.compile(r"^(<L2[A-Z]?|L2[A-Z]?>)$")
 # A speaker label names who is talking, with a colon: 'F:', 'D:..', and the
@@ -180,6 +185,8 @@ def is_word(form: str) -> bool:
     if any(p.match(x) for p in (_PUNCT_ONLY, _PAUSE, _NONVERBAL, _LONE_L2_TAG)
            for x in shapes):
         return False
+    if EVENT_OPEN.match(raw) or EVENT_CLOSE.match(raw):
+        return False                      # half of a split event
     if any(_COLON_LABEL.match(x) for x in shapes):
         return False
     text = norm_form(raw)
