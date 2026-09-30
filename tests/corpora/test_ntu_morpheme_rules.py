@@ -311,8 +311,13 @@ def test_a_reversal_against_its_line_needs_a_run_of_three_or_unmixed_glosses():
     # Chinese gloss is not mixing (maintainer, 2026-09-30): it goes to its own slots.
     eng_first = [("NOM", "主格"), ("go", "去"), ("see", "看")]
     assert realign(eng_first + [("3SG.主格", "3SG.NOM")])[3] == ("3SG.主格", "3SG.NOM")
-    # an English WORD in the Chinese gloss is mixing: the word follows its line
-    assert realign(eng_first + [("that.可見.遠指", "that.VIS.DIST")])[3] == ("that.VIS.DIST", "that.可見.遠指")
+    # an English word in the Chinese gloss is mixing, but the English itself is clean, so the
+    # word goes to its own slots (maintainer, 2026-09-30, "Use the alternative": kavay)
+    assert realign(eng_first + [("that.可見.遠指", "that.VIS.DIST")])[3] == ("that.可見.遠指", "that.VIS.DIST")
+    # one crossed piece: exchanged, then to its own slots (3_S_28)
+    assert realign([ok, ok, ("放-受焦=1SG.GEN", "put-PF=1SG.屬格")])[2] == ("放-受焦=1SG.屬格", "put-PF=1SG.GEN")
+    # a Chinese piece in the English with no English counterpart to exchange: still follows its line
+    assert realign([ok, ok, mixed])[2] == mixed
     assert realign([("鉛", "鉛")]) == [("鉛", "")]                                   # duplicate: not a move
 
 

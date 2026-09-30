@@ -784,6 +784,25 @@ def swap_single_piece(zho: str, eng: str) -> tuple:
     return new if _unmixed(*new) else (zho, eng)
 
 
+def _exchange_one_subpiece(zho: str, eng: str) -> tuple:
+    """Exchange the one crossed piece, cutting also at '.' inside a label bundle
+    ('1SG.屬格' / '1SG.GEN'): exactly one piece of the English is Chinese and
+    its counterpart is Latin; nothing else is touched."""
+    cut = r"([-=.](?![^<>]*>))"
+    zp, ep = re.split(cut, zho or ""), re.split(cut, eng or "")
+    if len(zp) != len(ep) or zp[1::2] != ep[1::2]:
+        return zho, eng
+    wrong = [k for k in range(0, len(zp), 2) if HAN.search(ep[k]) or
+             (LATIN.search(zp[k]) and not HAN.search(zp[k]) and zp[k] != ep[k])]
+    if len(wrong) != 1:
+        return zho, eng
+    k = wrong[0]
+    if not (HAN.search(ep[k]) and LATIN.search(zp[k]) and not HAN.search(zp[k]) and not LATIN.search(ep[k])):
+        return zho, eng
+    zp[k], ep[k] = ep[k], zp[k]
+    return "".join(zp), "".join(ep)
+
+
 def step1_realign_sentence(pairs: list, stats: dict | None = None) -> list:
     """step1_realign for one sentence's (zho, eng) pairs, with the licence the
     maintainer set for a word that goes against its own line.
@@ -837,6 +856,13 @@ def step1_realign_sentence(pairs: list, stats: dict | None = None) -> list:
                 count("1 reversal against its line: run of 3+, to its own slots")
             elif _unmixed(*new):
                 count("1 reversal against its line: unmixed, to its own slots")
+            elif not HAN.search(_exchange_one_subpiece(*new)[1]):
+                # Maintainer, 2026-09-30, on each of the five words this decided
+                # ("Use the alternative"): a reversal also goes to its own slots
+                # when, after at most one crossed piece is exchanged, its English
+                # holds no Chinese (put-PF=1SG.屬格 -> put-PF=1SG.GEN).
+                new = _exchange_one_subpiece(*new)
+                count("1 reversal against its line: one crossed piece, to its own slots")
             else:
                 count("1 reversal against its line: mixed, run of 1-2, follows its line")
                 new = (zho, eng) if line == 1 else (eng, zho)
