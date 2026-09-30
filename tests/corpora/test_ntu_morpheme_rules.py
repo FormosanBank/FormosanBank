@@ -271,3 +271,20 @@ def test_a_bc_restoration_stops_the_build_if_the_source_changed():
     assert apply_cell_restorations(recs, "story/X/a.json", table, {})[0][1]["gloss"][0][1] == "BC"
     with pytest.raises(RuntimeError, match="source drifted"):
         apply_cell_restorations([[7, {"gloss": [["m", "OH", "OH"]]}]], "story/X/a.json", table, {})
+
+
+def test_each_gloss_goes_to_the_slot_of_its_own_language():
+    """Found reviewing 2026-09-30: the old test (any Han in the English slot,
+    none in the Chinese one) missed a cell with one stray piece of the other
+    language, a Chinese gloss written in both slots, and a lone English gloss."""
+    from pipeline_grammar import step1_realign
+    assert step1_realign("IRR=go-處格", "非實現=移動-在") == ("非實現=移動-在", "IRR=go-處格")   # 34_S_8
+    assert step1_realign("鉛", "鉛") == ("鉛", "")                                         # English slot emptied
+    assert step1_realign("bring-PF", "") == ("", "bring-PF")                               # lone English
+    assert step1_realign("<RED>-go", "") == ("", "<RED>-go")
+    assert step1_realign("go", "去") == ("去", "go")                                        # whole-row swap, as before
+    assert step1_realign("說-no.wonder=知識詞", "say-難怪=EVI") == ("說-難怪=知識詞", "say-no.wonder=EVI")   # one piece
+    assert step1_realign("重複-女人=1EPL.GEN", "RED-woman=1EPL.屬格") == ("重複-女人=1EPL.屬格", "RED-woman=1EPL.GEN")
+    # left alone: already right, a shared code, a name, a mostly-Chinese cell
+    for z, e in [("主格", "NOM"), ("DM", "DM"), ("Saupu", "_"), ("PN", ""), ("長期-坐", "whole.time-坐"), ("3SG.屬格", "3SG.GEN")]:
+        assert step1_realign(z, e) == (z, e), (z, e)

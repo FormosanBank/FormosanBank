@@ -675,6 +675,61 @@ def apply_cell_restorations(records: list, src_key: str, table: dict, stats: dic
     return records
 
 
+def han_share(text: str | None) -> float:
+    """The share of a gloss's pieces (split at - = . and spaces) that are Chinese."""
+    pieces = [p for p in re.split(r"[-=.\s]+", text or "") if re.search(r"\w", p)]
+    return sum(1 for p in pieces if HAN.search(p)) / len(pieces) if pieces else 0.0
+
+
+def swap_stray_pieces(zho: str, eng: str) -> tuple:
+    """Exchange single pieces that sit in the other language's gloss."""
+    zp, ep = re.split(r"([-=])", zho), re.split(r"([-=])", eng)
+    if len(zp) != len(ep) or zp[1::2] != ep[1::2]:
+        return zho, eng
+    for k in range(0, len(zp), 2):
+        if HAN.search(ep[k]) and not HAN.search(zp[k]) and re.search(r"[A-Za-z]", zp[k]):
+            zp[k], ep[k] = ep[k], zp[k]
+    return "".join(zp), "".join(ep)
+
+
+def step1_realign(zho: str, eng: str) -> tuple:
+    """Put each gloss in the slot of its own language.
+
+    The source's column order is not fixed: Kanakanavu writes Chinese first,
+    Rukai English first, and Bunun is mixed WITHIN the language (6820 rows one
+    way, 6450 the other), so the decision is per row.
+    Three cases, each seen in NTU's source:
+    * Both slots filled: the slot whose pieces are MORE Chinese is Chinese.
+      A cell can hold one stray piece of the other language ('IRR=go-處格'
+      beside '非實現=移動-在', 57 rows); testing for any Han at all, as this
+      step did until 2026-09-30, left those rows reversed.
+    * Then, piece by piece: where both glosses cut into the same pieces and a
+      piece of the English one is Chinese while its counterpart is not, the
+      two pieces are exchanged ('say-難怪=EVI' / '說-no.wonder=知識詞').
+    * The same Chinese text in both slots ('鉛' / '鉛', 15 rows): it is not an
+      English gloss, so the English slot is emptied.
+    * One slot filled: placed by its script, so a lone English gloss never
+      publishes as Chinese (names and codes stay where they are).
+    Identical Latin pairs (DM, TOP, PN) and names stay as they are. Idempotent.
+    """
+    z, e = (zho or "").strip(), (eng or "").strip()
+    blank = lambda s: s in ("", "_")
+    if not blank(z) and not blank(e):
+        if z == e and HAN.search(z):
+            return zho, ""
+        if han_share(e) > han_share(z):
+            zho, eng = eng, zho
+        return swap_stray_pieces(zho, eng)
+    if blank(z) and not blank(e) and HAN.search(e):
+        return eng, zho
+    # A lone gloss starting in lower case is English ('bring-PF', 'that.way');
+    # names ('Saupu') and codes ('DM') belong to neither language and stay.
+    if blank(e) and not blank(z) and not HAN.search(z) and any(
+            re.match(r"[^A-Za-z]*[a-z]", piece) for piece in re.split(r"[-=.\s]+", z) if piece):
+        return eng, zho
+    return zho, eng
+
+
 def has_han(text: str | None) -> bool:
     return bool(HAN.search(text or ""))
 

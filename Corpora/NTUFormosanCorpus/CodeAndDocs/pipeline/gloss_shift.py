@@ -188,8 +188,10 @@ def norm_gloss(gloss: str) -> str:
 
 
 def gloss_lang(gloss: str) -> str:
-    """'zho' or 'eng', by script. Columns are not trusted to be in order."""
-    return "zho" if HAN.search(gloss or "") else "eng"
+    """'zho' or 'eng', by script: Chinese when at least half its pieces are.
+    Columns are not trusted to be in order ('IRR=go-處格' is English)."""
+    from pipeline_grammar import han_share
+    return "zho" if han_share(gloss) >= 0.5 else "eng"
 
 
 def bare(text: str) -> str:

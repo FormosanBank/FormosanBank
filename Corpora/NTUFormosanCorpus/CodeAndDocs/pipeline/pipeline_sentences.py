@@ -119,7 +119,7 @@ from pipeline_grammar import (SPLIT, XML_LANG, add_transl as _add_transl, step1_
                    load_free_repairs,
                    conform_sentence, build_attestation,
                        load_malformed_translations, unglossed_optional,
-                       prune_unsupported, _OPTIONAL)
+                       prune_unsupported, _OPTIONAL, step1_realign)
 from QC.cleaning.clean_xml import swap_punctuation  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 # The gloss/word test helpers live in qa/, which is their single home;
@@ -285,21 +285,6 @@ _CONTROL = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]")
 
 def clean_text(text):
     return _CONTROL.sub("", text) if isinstance(text, str) else text
-
-
-def step1_realign(zho: str, eng: str) -> tuple:
-    """Swap when the English slot carries Han and the Chinese slot does not.
-
-    The source's column order is not fixed: Kanakanavu writes Chinese first,
-    Rukai English first, and Bunun is mixed WITHIN the language (6820 rows one
-    way, 6450 the other), so the decision has to be per row rather than per
-    file or per language. The gate is idempotent -- after a swap it no longer
-    holds -- and it leaves alone both identical pairs (DM, TOP, PN) and rows
-    where only one slot is filled.
-    """
-    if HAN.search(eng or "") and not HAN.search(zho or ""):
-        return eng, zho
-    return zho, eng
 
 
 def gloss_rows(body: dict) -> list:
