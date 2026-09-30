@@ -49,7 +49,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "qa"))
 from sentence_xml_tests import (substantive as _substantive,  # noqa: E402
                                 clitic_alignment, form_text,
-                                morpheme_count, MARKERS)
+                                morpheme_count, MARKERS, split_joined_infixes)
 
 
 def segment_from_form(form: str) -> list:
@@ -60,7 +60,7 @@ def segment_from_form(form: str) -> list:
     after removing the infixes splits on '-' and '='. So 'h<m>uwa' -> ['-m-',
     'huwa'], 'ka-kaun-un' -> ['ka', 'kaun', 'un'], 'kai=ta' -> ['kai', '=ta'].
     """
-    stripped = (form or "").strip()
+    stripped = split_joined_infixes(form).strip()
     if not stripped:
         return []
     infixes = re.findall(r"<[^>]+>", stripped)

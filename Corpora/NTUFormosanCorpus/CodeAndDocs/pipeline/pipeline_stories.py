@@ -46,7 +46,7 @@ from pipeline_grammar import (SPLIT, XML_LANG, add_transl as _add_transl,  # noq
                        build_attestation, load_malformed_translations,
                        unglossed_optional, prune_unsupported, _OPTIONAL,
                        load_record_repairs, apply_record_repairs,
-                       load_cell_restorations, apply_cell_restorations, step1_realign)
+                       load_cell_restorations, apply_cell_restorations, step1_realign_sentence)
 from QC.cleaning.clean_xml import swap_punctuation  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 # The gloss/word test helpers live in qa/, which is their single home;
@@ -690,7 +690,8 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                     stats["10 truncated translations repaired"] = stats.get(
                         "10 truncated translations repaired", 0) + 1
 
-        for i, row in enumerate(rows):
+        cells = []
+        for row in rows:
             w_form = str(row[0])
             zho = str(row[1]) if len(row) > 1 else ""
             eng = str(row[2]) if len(row) > 2 else ""
@@ -717,13 +718,15 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                         if nm == "z": zho = new
                         else: eng = new
 
-            if 1 in steps:
-                new_zho, new_eng = step1_realign(zho, eng)
-                if (new_zho, new_eng) != (zho, eng):
-                    stats["1 gloss columns realigned"] = stats.get(
-                        "1 gloss columns realigned", 0) + 1
-                zho, eng = new_zho, new_eng
+            cells.append((w_form, zho, eng))
 
+        # Step 1 decides per sentence: whether a word's glosses may change
+        # slots depends on its neighbours (see step1_realign_sentence).
+        if 1 in steps:
+            realigned = step1_realign_sentence([(z, e) for _, z, e in cells], stats)
+            cells = [(f, z, e) for (f, _, _), (z, e) in zip(cells, realigned)]
+
+        for i, (row, (w_form, zho, eng)) in enumerate(zip(rows, cells)):
             w = ET.SubElement(s, "W")
             w.set("id", f"{text_id}_S_{sid}_W{i}")
             w_alt = None

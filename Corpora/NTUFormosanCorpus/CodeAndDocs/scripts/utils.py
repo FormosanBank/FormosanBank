@@ -682,6 +682,18 @@ def expand_infixes(form, en_gloss, zh_gloss):
     en_infixes = _INFIX_RE.findall(en_gloss)
     zh_infixes = _INFIX_RE.findall(zh_gloss)
 
+    # A bracket can hold infixes joined by '-': 'la<in-i>haib' glossed
+    # '<PFV-PFV>pass' is -in- PFV and -i- PFV (maintainer, 2026-09-30). It is
+    # split only where each gloss's bracket splits into as many pieces, so
+    # every infix keeps a gloss of its own.
+    fp, ep, zp = ([x.split('-') for x in xs] for xs in (form_infixes, en_infixes, zh_infixes))
+    shape = [len(x) for x in fp]
+    if (max(shape) > 1 and all(all(x) for x in fp)
+            and all(not g or [len(x) for x in g] == shape for g in (ep, zp))):
+        form_infixes = [p for x in fp for p in x]
+        en_infixes = [p for x in ep for p in x]
+        zh_infixes = [p for x in zp for p in x]
+
     # Replace each run of consecutive infix spans with '-' to mark the
     # embedding point, then strip leading/trailing '-' for word-initial/final
     # infixes (e.g. '<n>apa' → 'apa', 'q<n>qda' → 'q-qda').

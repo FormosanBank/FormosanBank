@@ -288,3 +288,51 @@ def test_each_gloss_goes_to_the_slot_of_its_own_language():
     # left alone: already right, a shared code, a name, a mostly-Chinese cell
     for z, e in [("主格", "NOM"), ("DM", "DM"), ("Saupu", "_"), ("PN", ""), ("長期-坐", "whole.time-坐"), ("3SG.屬格", "3SG.GEN")]:
         assert step1_realign(z, e) == (z, e), (z, e)
+
+
+def test_a_reversal_against_its_line_needs_a_run_of_three_or_unmixed_glosses():
+    """Maintainer, 2026-09-30: an isolated reversal (or a run of 2) is swapped
+    only if neither gloss mixes the scripts; otherwise it takes a run of 3. A
+    reversal is a word whose column order is the opposite of its line's."""
+    from pipeline_grammar import step1_realign_sentence as realign
+    ok, mixed = ("主格", "NOM"), ("IRR=go-處格", "非實現=移動-在")     # Chinese first; English first, mixed
+    # an English-first line is the line's own order: every word exchanged
+    assert realign([("NOM", "主格"), ("3SG.NOM", "3SG.主格")]) == [ok, ("3SG.主格", "3SG.NOM")]
+    # 3.json record 22 (Kanakanavu): two against two, no majority -- each word by its own glosses
+    line = [("CAUS-good-IMP", "使役-好-祈使"), ("水瓢", "bailer"), ("IRR", "非實現"), ("主焦-掉", "AF-fall")]
+    assert realign(line) == [("使役-好-祈使", "CAUS-good-IMP"), ("水瓢", "bailer"),
+                             ("非實現", "IRR"), ("主焦-掉", "AF-fall")]
+    assert realign([ok, ok, mixed])[2] == mixed                                   # isolated, mixed: follows its line
+    assert realign([ok, ok, ("NOM", "主格")])[2] == ok                             # isolated, unmixed: exchanged
+    assert realign([ok] * 4 + [mixed, ("NOM", "主格"), ("go", "去")])[4] == mixed[::-1]   # run of 3
+    assert realign([ok] * 5 + [mixed, ("NOM", "主格"), ok, ("go", "去")])[5] == mixed      # a word in line order ends a run
+    assert realign([ok] * 4 + [mixed, ("", ""), ("NOM", "主格"), ("go", "去")])[4] == mixed[::-1]  # a bare word does not
+    # English-first line, one mixed word written Chinese first: it follows the line
+    assert realign([("NOM", "主格"), ("go", "去"), ("see", "看"), ("3SG.主格", "3SG.NOM")])[3] == ("3SG.NOM", "3SG.主格")
+    assert realign([("鉛", "鉛")]) == [("鉛", "")]                                   # duplicate: not a move
+
+
+def test_one_crossed_piece_is_exchanged_only_if_that_cleans_both_glosses():
+    from pipeline_grammar import step1_realign_sentence as realign
+    assert realign([("說-no.wonder=知識詞", "say-難怪=EVI")]) == [("說-難怪=知識詞", "say-no.wonder=EVI")]
+    two = ("去-no.wonder=EVI-看-吃", "go-難怪=知識詞-see-eat")                  # two pieces crossed: left alone
+    assert realign([("主格", "NOM"), two]) == [("主格", "NOM"), two]
+    assert realign([("3SG.屬格-去", "3SG.GEN-去")]) == [("3SG.屬格-去", "3SG.GEN-去")]  # would leave Latin in the Chinese
+
+
+def test_a_hyphen_inside_an_infix_bracket_joins_two_infixes():
+    """Maintainer, 2026-09-30: '<in-i>' glossed '<PFV-PFV>' is two infixes."""
+    from pipeline_grammar import SPLIT, _gloss_pieces, morpheme_count
+    from utils import expand_infixes
+    assert SPLIT.split("la<in-i>haib-an") == ["la<in-i>haib", "an"]
+    assert morpheme_count("la<in-i>haib-an") == _gloss_pieces("<PFV-PFV>pass-LF") == 4
+    assert apm.segment_from_form("la<in-i>haib-an") == ["-in-", "-i-", "lahaib", "an"]
+    assert expand_infixes("la<in-i>haib", "<PFV-PFV>pass", "<完成貌-完成貌>經過") == [
+        ("<in>", "<PFV>", "<完成貌>"), ("<i>", "<PFV>", "<完成貌>"), ("la-haib", "pass", "經過")]
+    # a gloss bracket that does not split the same way keeps the bracket whole
+    assert expand_infixes("la<in-i>haib", "<PFV>pass", "<完成貌>經過")[0] == ("<in-i>", "<PFV>", "<完成貌>")
+    # and the later notation step converts each one to '-X-' (V067), reading the word the same way
+    import convert_infix_notation as cin
+    from lxml import etree
+    m = etree.fromstring('<M><FORM kindOf="original">&lt;in&gt;</FORM></M>')
+    assert cin._is_infix_m(m, "la<in-i>haib-an") is None

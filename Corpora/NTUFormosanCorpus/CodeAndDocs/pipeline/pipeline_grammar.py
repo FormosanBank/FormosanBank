@@ -205,10 +205,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "qa"))
 from utils import (resolve_ungrammatical_parens, expand_infixes,
                    strip_l2m, strip_prosodic_markers, extract_notes)
 from grammar_xml_tests import clitic_alignment, morpheme_count, MARKERS
+from sentence_xml_tests import split_joined_infixes
 
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 ET.register_namespace("xml", "http://www.w3.org/XML/1998/namespace")
-SPLIT = re.compile(r"[-=]")
+# A morpheme boundary; a '-' inside an infix bracket ('la<in-i>haib',
+# '<PFV-PFV>pass') is not one -- utils.expand_infixes reads the bracket.
+SPLIT = re.compile(r"[-=](?![^<>]*>)")
 HAN = re.compile(r"[㐀-䶿一-鿿豈-﫿]")
 
 # Grammatical role labels attested as trailing annotations in the form column.
@@ -567,8 +570,9 @@ _INFIX_GLOSS = re.compile(r"<[^>]+>")
 
 def _gloss_pieces(gloss: str) -> int:
     """Morphemes a gloss claims: [-=] pieces plus one per infix gloss."""
+    gloss = split_joined_infixes(gloss)
     return (len([x for x in SPLIT.split(gloss) if x])
-            + len(_INFIX_GLOSS.findall(gloss or "")))
+            + len(_INFIX_GLOSS.findall(gloss)))
 
 
 def step7_align_separator(form: str, gloss: str, attested: dict) -> str:
@@ -714,6 +718,124 @@ def step1_realign(zho: str, eng: str) -> tuple:
             re.match(r"[^A-Za-z]*[a-z]", piece) for piece in re.split(r"[-=.\s]+", z) if piece):
         return eng, zho
     return zho, eng
+
+
+LATIN = re.compile(r"[A-Za-z]")
+
+
+def _blank(s: str) -> bool:
+    return (s or "").strip() in ("", "_")
+
+
+def _orientation(zho: str, eng: str) -> int:
+    """+1 the glosses sit in their own slots, -1 step1_realign would move
+    them to the other slots, 0 no evidence either way (blank, names, codes,
+    the same Chinese in both)."""
+    z, e = (zho or "").strip(), (eng or "").strip()
+    moved = step1_realign(zho, eng)
+    if moved == (eng, zho) and z != e:
+        return -1
+    if not _blank(z) and not _blank(e):
+        return 1 if han_share(z) > han_share(e) else 0
+    if not _blank(z):
+        return 1 if HAN.search(z) else 0
+    if not _blank(e):
+        return 1 if LATIN.search(e) and not HAN.search(e) else 0
+    return 0
+
+
+def _unmixed(zho: str, eng: str) -> bool:
+    """Neither gloss mixes the two scripts: the Chinese gloss holds no Latin
+    letters and the English gloss no Chinese."""
+    return not LATIN.search(zho or "") and not HAN.search(eng or "")
+
+
+def swap_single_piece(zho: str, eng: str) -> tuple:
+    """Exchange ONE piece between the two glosses when that alone makes the
+    English all Latin and the Chinese all Chinese ('say-難怪=EVI' /
+    '說-no.wonder=知識詞'). Maintainer, 2026-09-30: "where there is a single
+    morpheme in a word where swapping would make the English gloss all-Latin
+    and the Chinese gloss all-Chinese. You can do that swap." Both glosses
+    must cut into the same pieces at the same separators."""
+    zp, ep = re.split(r"([-=](?![^<>]*>))", zho or ""), re.split(r"([-=](?![^<>]*>))", eng or "")
+    if len(zp) != len(ep) or len(zp) < 3 or zp[1::2] != ep[1::2]:
+        return zho, eng
+    wrong = [k for k in range(0, len(zp), 2) if HAN.search(ep[k]) or LATIN.search(zp[k])]
+    if len(wrong) != 1:
+        return zho, eng
+    k = wrong[0]
+    if not (HAN.search(ep[k]) and LATIN.search(zp[k]) and _unmixed(ep[k], zp[k])):
+        return zho, eng
+    zp[k], ep[k] = ep[k], zp[k]
+    return "".join(zp), "".join(ep)
+
+
+def step1_realign_sentence(pairs: list, stats: dict | None = None) -> list:
+    """step1_realign for one sentence's (zho, eng) pairs, with the licence the
+    maintainer set for a word that goes against its own line.
+
+    A line (sentence) writes most of its words in one column order: English
+    first or Chinese first. Following that order is not in question -- the
+    builder reads row[1] as Chinese, so an English-first line has every word
+    exchanged. A REVERSAL is a word whose order is the opposite of its line's.
+    Ruling, 2026-09-30: "Isolated reversals (or runs of 2 words with possible
+    swaps) should only be swapped if we they contain only English and only
+    Chinese (no swapping if there is a mix within a gloss). Otherwise, should be
+    a run of at least 3 to license swapping."
+    So a reversal in a run of 3 or more consecutive reversals, or one whose two
+    glosses are each in a single script, goes to the slots its own glosses say.
+    Any other reversal follows its line's order. Words that show no order (blank,
+    names, codes, the same Chinese in both slots) neither end nor count toward a
+    run; a word in its line's order ends one. A line with no majority order has
+    no reversals: each word follows its own glosses. Then swap_single_piece.
+    The duplicate rule (the same Chinese in both slots empties the English slot)
+    is not a move and always applies.
+    """
+    stats = {} if stats is None else stats
+
+    def count(key):
+        stats[key] = stats.get(key, 0) + 1
+
+    signs = [_orientation(z, e) for z, e in pairs]
+    ahead = signs.count(1) - signs.count(-1)
+    line = (ahead > 0) - (ahead < 0)            # +1 Chinese first, -1 English first, 0 no majority
+    rev = [bool(line) and s == -line for s in signs]
+    run = [0] * len(pairs)
+    k = 0
+    while k < len(pairs):
+        if not rev[k]:
+            k += 1
+            continue
+        members, j = [], k
+        while j < len(pairs) and signs[j] != line:
+            if rev[j]:
+                members.append(j)
+            j += 1
+        for m in members:
+            run[m] = len(members)
+        k = j
+
+    out = []
+    for k, (zho, eng) in enumerate(pairs):
+        new = step1_realign(zho, eng)
+        if rev[k]:
+            if run[k] >= 3:
+                count("1 reversal against its line: run of 3+, to its own slots")
+            elif _unmixed(*new):
+                count("1 reversal against its line: unmixed, to its own slots")
+            else:
+                count("1 reversal against its line: mixed, run of 1-2, follows its line")
+                new = (zho, eng) if line == 1 else (eng, zho)
+        elif signs[k] == -1:
+            count("1 gloss columns exchanged (the line's order)" if line else
+                  "1 gloss columns exchanged (line has no majority order)")
+        elif new != (zho, eng):
+            count("1 same Chinese in both slots: English slot emptied")
+        piece = swap_single_piece(*new)
+        if piece != new:
+            count("1 single piece exchanged")
+        out.append(piece)
+    return out
 
 
 def has_han(text: str | None) -> bool:

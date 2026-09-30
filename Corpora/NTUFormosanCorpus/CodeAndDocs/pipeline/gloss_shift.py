@@ -24,7 +24,10 @@ over, and must carry no gloss:
 ``split``        two cells were FUSED into i (``take-LF=1EPL.GEN`` holding the
                  host's gloss and a separately written clitic's): cut it at its
                  last ``sep``, the second half goes to the next word, the rest
-                 moves right, and the blank at j is consumed.
+                 moves right, and the blank at j is consumed. A ``=`` stays
+                 with the clitic it marks (``=1EPL.GEN``; maintainer,
+                 2026-09-30: "please don't lose the clitic marker!"); a ``-``
+                 is the host's own boundary and is dropped.
 ``merge``        one cell was SPLIT across i and the next word (``take-LF`` /
                  ``=1EPL.GEN``): rejoin them at i, the rest moves left, j is
                  left blank. Only offered where a marker at the seam shows the
@@ -299,7 +302,8 @@ def apply_op(rows: list, op: Op) -> list:
             cut = head.rfind(op.sep)
             if cut <= 0 or cut + len(op.sep) >= len(head):
                 raise RepairError(f"row {op.i} col {c}: {head!r} has no inner {op.sep!r}")
-            new = [head[:cut], head[cut + len(op.sep):]] + cells[1:-1]
+            tail = head[cut:] if op.sep == "=" else head[cut + len(op.sep):]
+            new = [head[:cut], tail] + cells[1:-1]
         elif op.op == "merge":
             a, b = cells[0], cells[1]
             if blank(a) or blank(b):

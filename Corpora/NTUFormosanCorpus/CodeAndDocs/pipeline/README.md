@@ -93,7 +93,24 @@ three rules are maintainer rulings, recorded in the decision log.
   least 90% of them (placeholders such as `FIL` and `XX` don't count), and it
   marks the gloss with a `notes` attribute. Words that were already bare in the
   source are never filled. Declined cases are reported in
-  `logs/gloss_shift_borrowed_<subcorpus>.tsv`.
+  `logs/gloss_shift_borrowed_<subcorpus>.tsv`. The same step also takes the
+  English slot of a word whose source writes the same Chinese gloss in both
+  slots, which step 1 empties (ruling 2026-09-30: "Drop the English. This
+  becomes a potential target for gloss-borrowing.").
+- **Which gloss is English and which Chinese** (step 1,
+  `pipeline_grammar.step1_realign_sentence`). The source does not keep the two in
+  fixed columns, so step 1 decides per sentence. A line's majority column order
+  is followed. A word written in the opposite order (a reversal) goes to the
+  slots its own glosses say only if it is in a run of 3+ reversals or neither of
+  its glosses mixes the two scripts; otherwise it follows its line (ruling
+  2026-09-30). One crossed piece is exchanged only when that leaves no Chinese in
+  the English gloss and no Latin letter in the Chinese one.
+- **An infix bracket holding a hyphen** (`la<in-i>haib`, glossed `<PFV-PFV>`) is
+  that many infixes, `-in-` and `-i-`, each with its own gloss (ruling
+  2026-09-30). Every step that counts or cuts morphemes reads it that way: the
+  builder's cut at `-`/`=` skips hyphens inside brackets, the separator vote and
+  the prune count two morphemes (`qa/sentence_xml_tests.split_joined_infixes`),
+  and `convert_infix_notation.py` converts both.
 
 The policy behind the morpheme rules is "the M tier is evidence, never
 manufactured": POL-057 on the unmerged `policy/m-tier-is-evidence` branch. It
@@ -127,7 +144,8 @@ The displacement is in NTU's JSON itself, not introduced by this build.
 The source JSONs are never edited. A correction is a row in
 `gloss_shift_repairs.tsv`, pinned to the SHA-256 of the record(s) it targets,
 naming one of a closed set of operations — `shift_right` (a cell is missing),
-`shift_left` (a spurious blank), `split` (two glosses fused into one cell),
+`shift_left` (a spurious blank), `split` (two glosses fused into one cell; a
+`=` stays with the clitic it marks, a `-` is dropped),
 `merge` (one gloss cut in two), `swap` (the two gloss columns exchanged), and
 `fill` (the only operation that writes text, refused without a named
 reviewer). Every operation except `fill` is checked mechanically to have moved

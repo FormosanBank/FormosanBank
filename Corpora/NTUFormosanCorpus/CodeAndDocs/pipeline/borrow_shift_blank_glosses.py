@@ -10,7 +10,10 @@ Which words: the build applies the repair rows in force (see gloss_shift.py) to
 the source records when it loads them. This step replays those rows and takes
 exactly the cells a row blanked -- a word that had a gloss in the source and has
 none after the shift. Words that were already bare in the source are not
-touched: that is an omission, not something we did.
+touched: that is an omission, not something we did. Also the English slot of a
+word whose source writes the same Chinese gloss in both slots, which
+step1_realign empties (maintainer, 2026-09-30: "Drop the English. This becomes
+a potential target for gloss-borrowing.").
 
 The borrowed gloss: among the other W elements of the SAME language (never the
 sentence itself) whose form is the same word, the most frequent gloss in that
@@ -105,6 +108,34 @@ def created_blanks(codedocs: Path, rows: list) -> list:
     return out
 
 
+DISPLACED = "the source gloss was displaced (gloss-shift repair)"
+DUPLICATE = "the source wrote this word's Chinese gloss in the English slot too"
+
+
+def duplicate_blanks(codedocs: Path, subcorpus: str | None) -> list:
+    """(language dir, S id, source form, 'eng') for every word whose two gloss
+    cells hold the same Chinese text: step1_realign empties its English slot.
+    Grammar never runs step1_realign, so only sentence and story count."""
+    out = []
+    for sub in ("sentence", "story"):
+        if subcorpus and sub != subcorpus:
+            continue
+        for path in sorted((codedocs / sub).rglob("*.json")):
+            start = None
+            for r in records_of(path):
+                rid, rec = str(r[0]), r[1]
+                if start is None or sub == "sentence":
+                    start = rid
+                for row in rec.get("gloss") or []:
+                    a, b = (str(row[c]).strip() if c < len(row) else "" for c in (1, 2))
+                    if is_word(str(row[0])) and a == b and HAN.search(a):
+                        out.append((path.parent.name.split("_")[0], f"{path.stem}_S_{start}",
+                                    str(row[0]), "eng", DUPLICATE))
+                if rec.get("s_end", True):
+                    start = None
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -124,10 +155,12 @@ def main() -> int:
     rows = load_table(args.table)
     if args.subcorpus:
         rows = [r for r in rows if r["source_file"].startswith(args.subcorpus + "/")]
-    blanks = created_blanks(args.codedocs, rows)
+    blanks = [b + (DISPLACED,) for b in created_blanks(args.codedocs, rows)]
+    blanks += duplicate_blanks(args.codedocs, args.subcorpus)
     stats, report = Counter(), []
     if not blanks:
-        print("no gloss-shift repair in force left a word bare")
+        print("no gloss-shift repair in force left a word bare, and no word has the same "
+              "Chinese in both slots")
         return 0
     # Index the build: per language dir, every S and every W's glosses.
     trees, sents, lex = {}, {}, defaultdict(Counter)
@@ -143,7 +176,7 @@ def main() -> int:
                     if evidence_gloss(g):
                         lex[(lang_dir, norm_form(form_text(w)), gl)][g] += 1
     changed_files = set()
-    for language, sid, src_form, gl in blanks:
+    for language, sid, src_form, gl, why in blanks:
         base = {"language": language, "sentence": sid, "word": src_form, "gloss_lang": gl}
         hit = sents.get((language, sid))
         if hit is None:
@@ -168,7 +201,7 @@ def main() -> int:
             stats["not borrowed (evidence too thin or split)"] += 1
             continue
         note = (f"gloss borrowed: '{src_form}' is glossed this way in {k} of its {n} other "
-                f"occurrences in this language; the source gloss was displaced (gloss-shift repair)")
+                f"occurrences in this language; {why}")
         t = etree.SubElement(w, "TRANSL")
         t.set(XML_LANG, gl)
         t.set("notes", note)

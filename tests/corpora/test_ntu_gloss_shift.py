@@ -71,12 +71,24 @@ def test_shift_left_removes_a_spurious_blank():
     assert [r[1] for r in after] == ["A", "B", ""]
 
 
-def test_split_cuts_a_fused_gloss_and_drops_only_the_separator():
+def test_split_cuts_a_fused_gloss_and_keeps_the_clitic_marker():
+    # '=' marks the clitic and goes with it (maintainer, 2026-09-30: "please
+    # don't lose the clitic marker!"); split is then the inverse of merge.
     before = rows(["al-an", "take-LF=1EPL.GEN", ""], ["niam", "ACC", ""],
                   ["su", "chief", ""], ["tumuk", "", ""])
     op = gs.Op("col1", "split", 0, 3, sep="=")
     after = gs.apply_op(before, op)
-    assert [r[1] for r in after] == ["take-LF", "1EPL.GEN", "ACC", "chief"]
+    assert [r[1] for r in after] == ["take-LF", "=1EPL.GEN", "ACC", "chief"]
+    gs.check_moved_not_edited(before, after, op)
+
+
+def test_split_at_a_hyphen_drops_the_hosts_boundary():
+    # 63_S_860: '重疊-水' held hu-huud's '重疊' and danum's '水'; '-水' would
+    # make danum a suffix.
+    before = rows(["hu-huud", "重疊-水", ""], ["danum", "然後", ""], ["at", "", ""])
+    op = gs.Op("col1", "split", 0, 2, sep="-")
+    after = gs.apply_op(before, op)
+    assert [r[1] for r in after] == ["重疊", "水", "然後"]
     gs.check_moved_not_edited(before, after, op)
 
 

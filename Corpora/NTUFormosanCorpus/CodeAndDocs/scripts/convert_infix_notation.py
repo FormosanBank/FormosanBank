@@ -32,9 +32,10 @@ orthography mapping because the transformation is purely notational --
 surveyed 2026-06: PHON is bracket-shaped wherever FORM is, both tiers).
 W-level FORMs and all TRANSL glosses are never touched. Ms left
 unconverted are reported with reasons; the residue is the handful of
-word-level markers above plus bracket groups split across a morpheme
-boundary by the parsers (``la<in`` / ``i>haib`` from ``la<in-i>haib-an``),
-which need structural repair, not notation conversion.
+word-level markers above. A bracket holding infixes joined by ``-``
+(``la<in-i>haib``) is that many infixes, ``<in>`` and ``<i>``, as
+utils.expand_infixes emits them (maintainer, 2026-09-30), so condition 2
+also reads the W FORM that way.
 
 A file is rewritten only if its unmodified tree first re-serializes
 byte-identically (lxml, xml declaration, UTF-8). Idempotent.
@@ -70,7 +71,9 @@ def _is_infix_m(m, w_form):
     mo = _PURE.match(_original_form(m))
     if not mo:
         return "M FORM not a single bracket group"
-    if mo.group(0) not in w_form:
+    joined = re.sub(r"<([^<>]*-[^<>]*)>",
+                    lambda g: "".join(f"<{p}>" for p in g.group(1).split("-")), w_form)
+    if mo.group(0) not in w_form and mo.group(0) not in joined:
         return "bracket group absent from W FORM (word-level marker)"
     rest = _GROUP.sub("", w_form)
     host = re.sub(r"=[^=]*", "", rest)  # drop clitic chunks

@@ -90,6 +90,8 @@ from pathlib import Path
 
 from lxml import etree
 
+from sentence_xml_tests import split_joined_infixes
+
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 INFIX_GLOSS = re.compile(r"<[^>]+>")
 HAN = re.compile(r"[㐀-䶿一-鿿豈-﫿]")
@@ -276,7 +278,7 @@ def morpheme_count(form: str) -> int:
 
     'kʉnʉ-ʉn' -> 2; 'h<m>uwa' -> 2 (infix + root); a bare word -> 1.
     """
-    stripped = form.strip()
+    stripped = split_joined_infixes(form).strip()
     if not stripped:
         return 0
     infixes = len(re.findall(r"<[^>]+>", stripped))

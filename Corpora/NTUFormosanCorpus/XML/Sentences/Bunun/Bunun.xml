@@ -26805,22 +26805,23 @@
             <PHON kindOf="original">kasu</PHON>
             <FORM kindOf="standard">kasu</FORM>
             <PHON kindOf="standard">kasu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">1SG.受格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">1SG.ACC</TRANSL>
-            <M id="03_S_3_W5M0">
-                <FORM kindOf="original">kasu</FORM>
-                <PHON kindOf="original">kasu</PHON>
-                <FORM kindOf="standard">kasu</FORM>
-                <PHON kindOf="standard">kasu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1SG.受格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1SG.ACC</TRANSL>
-            </M>
+            <TRANSL xml:lang="eng" notes="gloss borrowed: 'kasu' is glossed this way in 45 of its 50 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">2SG.NOM</TRANSL>
         </W>
         <W id="03_S_3_W6">
             <FORM kindOf="original">mazaku.</FORM>
             <PHON kindOf="original">maðaku</PHON>
             <FORM kindOf="standard">mazaku.</FORM>
             <PHON kindOf="standard">maðaku</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">1SG.受格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1SG.ACC</TRANSL>
+            <M id="03_S_3_W6M0">
+                <FORM kindOf="original">mazaku.</FORM>
+                <PHON kindOf="original">maðaku</PHON>
+                <FORM kindOf="standard">mazaku.</FORM>
+                <PHON kindOf="standard">maðaku</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.受格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.ACC</TRANSL>
+            </M>
         </W>
     </S>
     <S id="03_S_4">
@@ -140055,21 +140056,29 @@
             <PHON kindOf="standard">tainiŋ[x|χ]aiu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌-完成貌&gt;偷</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;PFV-PFV&gt;steal</TRANSL>
-            <M id="57_S_2_W1M0">
-                <FORM kindOf="original">ta&lt;in</FORM>
-                <PHON kindOf="original">tain</PHON>
-                <FORM kindOf="standard">ta&lt;in</FORM>
-                <PHON kindOf="standard">tain</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV</TRANSL>
+            <M id="57_S_2_W1M0_0">
+                <FORM kindOf="original">-in-</FORM>
+                <PHON kindOf="original">in</PHON>
+                <FORM kindOf="standard">-in-</FORM>
+                <PHON kindOf="standard">in</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
             </M>
-            <M id="57_S_2_W1M1">
-                <FORM kindOf="original">i&gt;nghaiu</FORM>
-                <PHON kindOf="original">iŋ[x|χ]aiu</PHON>
-                <FORM kindOf="standard">i&gt;nghaiu</FORM>
-                <PHON kindOf="standard">iŋ[x|χ]aiu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">完成貌&gt;偷</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PFV&gt;steal</TRANSL>
+            <M id="57_S_2_W1M0_1">
+                <FORM kindOf="original">-i-</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">-i-</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
+            </M>
+            <M id="57_S_2_W1M0_2">
+                <FORM kindOf="original">ta-nghaiu</FORM>
+                <PHON kindOf="original">taŋ[x|χ]aiu</PHON>
+                <FORM kindOf="standard">ta-nghaiu</FORM>
+                <PHON kindOf="standard">taŋ[x|χ]aiu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">偷</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">steal</TRANSL>
             </M>
         </W>
         <W id="57_S_2_W2">
@@ -178696,9 +178705,9 @@
                 <FORM kindOf="standard">pandian.</FORM>
                 <PHON kindOf="standard">pandian</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">cuisine</TRANSL>
-                <TRANSL xml:lang="zho" notes="gloss borrowed: 'pandian.' is glossed this way in 28 of its 31 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">菜餚</TRANSL>
+                <TRANSL xml:lang="zho" notes="gloss borrowed: 'pandian.' is glossed this way in 28 of its 30 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">菜餚</TRANSL>
             </M>
-            <TRANSL xml:lang="zho" notes="gloss borrowed: 'pandian.' is glossed this way in 28 of its 31 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">菜餚</TRANSL>
+            <TRANSL xml:lang="zho" notes="gloss borrowed: 'pandian.' is glossed this way in 28 of its 30 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">菜餚</TRANSL>
         </W>
     </S>
     <S id="63_S_156">
@@ -221713,7 +221722,7 @@
             <PHON kindOf="original">namaanat</PHON>
             <FORM kindOf="standard">na=ma-'anat</FORM>
             <PHON kindOf="standard">namaʔanat</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-煮</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IRR=AF-cook</TRANSL>
             <M id="63_S_457_W11M0">
                 <FORM kindOf="original">na</FORM>
@@ -221736,6 +221745,7 @@
                 <PHON kindOf="original">anat</PHON>
                 <FORM kindOf="standard">'anat</FORM>
                 <PHON kindOf="standard">ʔanat</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">煮</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">cook</TRANSL>
             </M>
         </W>
@@ -221744,14 +221754,14 @@
             <PHON kindOf="original">saia</PHON>
             <FORM kindOf="standard">saia</FORM>
             <PHON kindOf="standard">saia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">煮</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
             <M id="63_S_457_W12M0">
                 <FORM kindOf="original">saia</FORM>
                 <PHON kindOf="original">saia</PHON>
                 <FORM kindOf="standard">saia</FORM>
                 <PHON kindOf="standard">saia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">煮</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
             </M>
         </W>
@@ -221760,16 +221770,16 @@
             <PHON kindOf="original">pandian</PHON>
             <FORM kindOf="standard">pandian.</FORM>
             <PHON kindOf="standard">pandian</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">cuisine</TRANSL>
             <M id="63_S_457_W13M0">
                 <FORM kindOf="original">pandian.</FORM>
                 <PHON kindOf="original">pandian</PHON>
                 <FORM kindOf="standard">pandian.</FORM>
                 <PHON kindOf="standard">pandian</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">cuisine</TRANSL>
+                <TRANSL xml:lang="zho" notes="gloss borrowed: 'pandian.' is glossed this way in 28 of its 30 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">菜餚</TRANSL>
             </M>
+            <TRANSL xml:lang="zho" notes="gloss borrowed: 'pandian.' is glossed this way in 28 of its 30 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">菜餚</TRANSL>
         </W>
     </S>
     <S id="63_S_457-opt">
@@ -221984,7 +221994,7 @@
             <PHON kindOf="original">namaanat</PHON>
             <FORM kindOf="standard">na=ma-'anat</FORM>
             <PHON kindOf="standard">namaʔanat</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-煮</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IRR=AF-cook</TRANSL>
             <M id="63_S_457-opt_W11M0">
                 <FORM kindOf="original">na</FORM>
@@ -222007,6 +222017,7 @@
                 <PHON kindOf="original">anat</PHON>
                 <FORM kindOf="standard">'anat</FORM>
                 <PHON kindOf="standard">ʔanat</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">煮</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">cook</TRANSL>
             </M>
         </W>
@@ -222015,14 +222026,14 @@
             <PHON kindOf="original">saia</PHON>
             <FORM kindOf="standard">saia</FORM>
             <PHON kindOf="standard">saia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">煮</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
             <M id="63_S_457-opt_W12M0">
                 <FORM kindOf="original">saia</FORM>
                 <PHON kindOf="original">saia</PHON>
                 <FORM kindOf="standard">saia</FORM>
                 <PHON kindOf="standard">saia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">煮</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
             </M>
         </W>
@@ -222031,16 +222042,16 @@
             <PHON kindOf="original">pandian</PHON>
             <FORM kindOf="standard">pandian.</FORM>
             <PHON kindOf="standard">pandian</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">cuisine</TRANSL>
             <M id="63_S_457-opt_W13M0">
                 <FORM kindOf="original">pandian.</FORM>
                 <PHON kindOf="original">pandian</PHON>
                 <FORM kindOf="standard">pandian.</FORM>
                 <PHON kindOf="standard">pandian</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">cuisine</TRANSL>
+                <TRANSL xml:lang="zho" notes="gloss borrowed: 'pandian.' is glossed this way in 28 of its 30 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">菜餚</TRANSL>
             </M>
+            <TRANSL xml:lang="zho" notes="gloss borrowed: 'pandian.' is glossed this way in 28 of its 30 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">菜餚</TRANSL>
         </W>
     </S>
     <S id="63_S_458">
@@ -260958,8 +260969,8 @@
             <PHON kindOf="original">namu[l|ɬ]us[x|χ]u</PHON>
             <FORM kindOf="standard">na=mu-lushu</FORM>
             <PHON kindOf="standard">namu[l|ɬ]us[x|χ]u</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-change.place</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">IRR=AF-移位</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-移位</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR=AF-change.place</TRANSL>
             <M id="63_S_705_W0M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
@@ -260981,8 +260992,8 @@
                 <PHON kindOf="original">[l|ɬ]us[x|χ]u</PHON>
                 <FORM kindOf="standard">lushu</FORM>
                 <PHON kindOf="standard">[l|ɬ]us[x|χ]u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">change.place</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">移位</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">移位</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">change.place</TRANSL>
             </M>
         </W>
         <W id="63_S_705_W1">
@@ -283320,12 +283331,14 @@
             <FORM kindOf="standard">m-a&lt;sa&gt;sabah.</FORM>
             <PHON kindOf="standard">masasaba[x|χ]</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-&lt;重疊&gt;睡覺</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-&lt;RED&gt;sleep</TRANSL>
             <M id="63_S_860_W9M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="63_S_860_W9M1_0">
                 <FORM kindOf="original">-sa-</FORM>
@@ -283333,7 +283346,7 @@
                 <FORM kindOf="standard">-sa-</FORM>
                 <PHON kindOf="standard">sa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;sa&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
             <M id="63_S_860_W9M1_1">
                 <FORM kindOf="original">a-sabah.</FORM>
@@ -283341,6 +283354,7 @@
                 <FORM kindOf="standard">a-sabah.</FORM>
                 <PHON kindOf="standard">asaba[x|χ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">睡覺</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">sleep</TRANSL>
             </M>
         </W>
     </S>
@@ -298614,22 +298628,22 @@
             <PHON kindOf="original">tuia</PHON>
             <FORM kindOf="standard">tu'ia</FORM>
             <PHON kindOf="standard">tuʔia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">聲音</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">sound</TRANSL>
-            <M id="64_S_59_W6M0">
-                <FORM kindOf="original">tu'ia</FORM>
-                <PHON kindOf="original">tuia</PHON>
-                <FORM kindOf="standard">tu'ia</FORM>
-                <PHON kindOf="standard">tuʔia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">聲音</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">sound</TRANSL>
-            </M>
         </W>
         <W id="64_S_59_W7">
             <FORM kindOf="original">sing'av.</FORM>
             <PHON kindOf="original">siŋav</PHON>
             <FORM kindOf="standard">sing'av.</FORM>
             <PHON kindOf="standard">ɕiŋʔav</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">聲音</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">sound</TRANSL>
+            <M id="64_S_59_W7M0">
+                <FORM kindOf="original">sing'av.</FORM>
+                <PHON kindOf="original">siŋav</PHON>
+                <FORM kindOf="standard">sing'av.</FORM>
+                <PHON kindOf="standard">ɕiŋʔav</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">聲音</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">sound</TRANSL>
+            </M>
         </W>
     </S>
     <S id="64_S_60">
