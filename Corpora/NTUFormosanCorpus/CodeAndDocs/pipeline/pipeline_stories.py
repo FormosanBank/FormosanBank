@@ -57,6 +57,7 @@ from utils import (expand_infixes, strip_l2m, strip_prosodic_markers,  # noqa: E
 from gloss_shift import apply_to_records as apply_shift_repairs  # noqa: E402
 from gloss_shift import load_table as load_shift_repairs  # noqa: E402
 from gloss_shift import EVENT_CLOSE, EVENT_OPEN  # noqa: E402
+import gloss_shift as gs  # noqa: E402
 
 STEPS = {
     0: "rebuild the sentence form from the gloss forms",
@@ -119,18 +120,26 @@ _OVERLAP_INDEX_ROW = re.compile(r"^\s*(\[\d+|\d+\])[.,!?;:\\/_\s]*$")
 
 
 def drop_overlap_indices(rows: list, stats: dict) -> list:
-    """Drop the index and bracket of a row that holds nothing else (and no
-    gloss); punctuation after them is source text and stays as a row of its own
-    ('2].\\' -> '.\\'), as for a split event."""
+    """Drop a row that holds only an overlap index and its bracket (and no
+    gloss). Punctuation after the bracket ends the utterance before it, so it
+    goes onto the preceding word ('maiseng' + '2].' -> 'maiseng.'; maintainer,
+    2026-10-14: "isn't that exactly where the period should go? Isn't "ala"
+    starting a new utterance?"), ahead of any source markup that word ends with."""
     out = []
     for r in rows:
         m = _OVERLAP_INDEX_ROW.match(str(r[0]))
         if m and all(str(c).strip() in ("", "_") for c in r[1:]):
             stats["15 dropped: 8 overlap index alone on a row"] = stats.get(
                 "15 dropped: 8 overlap index alone on a row", 0) + 1
-            rest = str(r[0])[m.end(1):].strip()
-            if rest.strip("\\/_"):
-                out.append([rest] + [""] * (len(r) - 1))
+            punct = re.sub(r"[\\/_\s]", "", str(r[0])[m.end(1):])
+            prev = next((p for p in reversed(out) if gs.is_word(str(p[0]))), None)
+            if punct and prev is not None:
+                form = str(prev[0])
+                core = form.rstrip("\\/_ ")
+                if not core.endswith(tuple(".,!?;:")):
+                    prev[0] = core + punct + form[len(core):]
+                    stats["15   overlap punctuation moved onto the word before"] = stats.get(
+                        "15   overlap punctuation moved onto the word before", 0) + 1
             continue
         out.append(r)
     return out
