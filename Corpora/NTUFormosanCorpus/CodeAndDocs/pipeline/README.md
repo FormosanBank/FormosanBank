@@ -151,7 +151,9 @@ policy.
 
 Per POL-039, item-specific corrections live in data files, not in code:
 
-- `free_translation_repairs.tsv` — free-translation fixes keyed by sentence id
+- `free_translation_repairs.tsv` — free-translation fixes keyed by sentence id,
+  or by `*` for a whole story (`unwrap`: the four Saisiyat stories whose
+  translator wrapped every English translation in quotation marks)
 - `audio_overrides.tsv` — AUDIO suppression beyond the `沒有音檔` sentinel
 - `p2_source_repairs.xml` — recorded whole-record source repairs, each pinned to
   a SHA-256 of the record it replaces so a drifting source fails the build. Read

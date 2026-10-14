@@ -5,6 +5,14 @@
 #                   not a translation: it moves to @notes on the first.
 # action = drop_all every translation is removed from the sentence -- the record's
 #                   translations belong to a larger span than this S covers.
+# action = unwrap   (record *, lang eng) every English translation in the story
+#                   that is wrapped whole in one pair of quotation marks loses
+#                   the pair. The story's translator wrapped (almost) every
+#                   translation -- anhi 7 of 7, frog5 92 of 92, frog1 56 of 57,
+#                   holiday 103 of 105 -- so the marks say nothing, but the
+#                   quote cleaner read them as evidence of a quotation
+#                   (maintainer, 2026-10-14). Elsewhere a wrapped translation
+#                   is the speaker's own words and is left alone.
 #
 # file_stem	record	lang	action
 Amis_Nr-frog_ofad	24	zho	note
@@ -14,3 +22,7 @@ skzyNr-frog_sinay	49	zho	note
 skzyNr-frog_sinay	68	zho	note
 skzyNr-frog_sinay	108	zho	note
 AtaNr-weaving_Kagaw	100	*	drop_all
+SaiNr-anhi	*	eng	unwrap
+SaiNr-frog1_bownay a tahes	*	eng	unwrap
+SaiNr-frog5__awi_ a basi_	*	eng	unwrap
+SaiNr-holiday_kalaeh a _oemaw	*	eng	unwrap

@@ -1046,6 +1046,23 @@ def drop_starred_readings(text: str) -> str:
 _FINAL_PUNCT = re.compile(r"[.!?。！？]\s*$")
 _LIT = re.compile(r"^\s*[(（]\s*lit\.?\s*[)）]\s*", re.I)
 
+def unwrap_english(text: str) -> str:
+    """Drop the one pair of quotation marks around a whole translation
+    ('" dog also came to see ."' -> 'dog also came to see .'; sentence-final
+    punctuation after the closing mark stays). A translation with any other
+    quotation mark inside is left as it is. Applied where
+    free_translation_repairs.tsv says `unwrap` (maintainer, 2026-10-14: "remove
+    the quotations from the English in an earlier step")."""
+    if not text:
+        return text
+    s = text.strip()
+    k = len(s) - 1
+    while k > 0 and s[k] in ".!?":
+        k -= 1
+    if k <= 0 or s[0] not in '"“' or s[k] not in '"”' or any(c in '"“”' for c in s[1:k]):
+        return text
+    return (s[1:k].strip() + s[k + 1:]).strip()
+
 
 def load_free_repairs(path=None) -> dict:
     """{(file_stem, record, lang): action} from free_translation_repairs.tsv."""
@@ -1136,7 +1153,10 @@ def free_entries(free: list, stem: str, rid: str, repairs: dict) -> list:
         if line.startswith("#c"):
             by_lang["zho"].append(line[2:].strip())
         elif line.startswith("#e"):
-            by_lang["eng"].append(line[2:].strip())
+            text = line[2:].strip()
+            if repairs.get((stem, "*", "eng")) == "unwrap":
+                text = unwrap_english(text)
+            by_lang["eng"].append(text)
         elif line.startswith("#n"):
             notes.append(line[2:].strip())
 
