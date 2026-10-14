@@ -111,6 +111,31 @@ def apparatus_class(row: list):
     return None
 
 
+# A numbered overlap marker's index standing alone on a row: '[1', '1],\\',
+# '2].\\' (the Kavalan conversations number overlaps so the two speakers'
+# halves pair up). remove_annotation_codes cleans the index off a word, but a
+# row with nothing else would publish as the word '1,' or '2.'.
+_OVERLAP_INDEX_ROW = re.compile(r"^\s*(\[\d+|\d+\])[.,!?;:\\/_\s]*$")
+
+
+def drop_overlap_indices(rows: list, stats: dict) -> list:
+    """Drop the index and bracket of a row that holds nothing else (and no
+    gloss); punctuation after them is source text and stays as a row of its own
+    ('2].\\' -> '.\\'), as for a split event."""
+    out = []
+    for r in rows:
+        m = _OVERLAP_INDEX_ROW.match(str(r[0]))
+        if m and all(str(c).strip() in ("", "_") for c in r[1:]):
+            stats["15 dropped: 8 overlap index alone on a row"] = stats.get(
+                "15 dropped: 8 overlap index alone on a row", 0) + 1
+            rest = str(r[0])[m.end(1):].strip()
+            if rest.strip("\\/_"):
+                out.append([rest] + [""] * (len(r) - 1))
+            continue
+        out.append(r)
+    return out
+
+
 def drop_split_events(rows: list, stats: dict, tokens: bool = False) -> list:
     """Drop a non-verbal event NTU wrote across two rows, both halves at once.
 
@@ -448,6 +473,7 @@ def build(records: list, text_id: str, steps: set, stats: dict,
             # Before step 5, which would keep the opening half as a word.
             all_rows = drop_split_events(all_rows, stats)
             all_ori = drop_split_events(all_ori, stats, tokens=True)
+            all_rows = drop_overlap_indices(all_rows, stats)
 
         if 5 in steps:
             before = (list(all_ori), [list(r) for r in all_rows])
