@@ -372,3 +372,25 @@ def test_a_non_verbal_event_split_across_two_rows_is_dropped_whole():
     assert drop_split_events(["..", "(WHITE", "NOISE).\\"], {}, tokens=True) == ["..", ".\\"]
     assert drop_split_events(["(COUGH)", "at"], {}, tokens=True) == ["(COUGH)", "at"]
     assert not any(gs.is_word(f) for f in ("(PHONE", "RINGS)._", "((CLEARS", "THROAT))"))
+
+
+def test_x_glosses_become_x_and_mis_cased_labels_are_capitalized():
+    # Maintainer, 2026-10-14: x/xx/XX (and XXX/XXXX) -> X; a gloss with a capital
+    # letter that is an attested gloss (20+ in NTU) when fully capitalized -> capitals.
+    from pipeline_grammar import normalize_gloss_cell as n
+    assert [n(v) for v in ("x", "xx", "XX", "XXX", "XXXX", "X")] == ["X"] * 6
+    assert n("XXXXX") == "XXXXX"                       # not covered by the ruling
+    assert n("FiL") == "FIL" and n("Ncm") == "Ncm"     # NCM is not attested 20 times
+    assert n("fil") == "fil"                           # no capital letter: left alone
+    assert n("Han") == "Han"                           # held back: the ethnonym (payrange 漢人)
+
+
+def test_a_stray_punctuation_token_is_joined_only_when_that_lines_the_words_up():
+    from xml.etree import ElementTree as ET
+    from pipeline_grammar import aligned_or_joined
+    s = ET.fromstring('<S><FORM kindOf="original">gei ta chuanzhe .</FORM></S>')
+    assert aligned_or_joined(s, ["gei", "ta", "chuanzhe"])
+    assert s.find("FORM").text == "gei ta chuanzhe."
+    s = ET.fromstring('<S><FORM kindOf="original">gei ta chuanzhe .</FORM></S>')
+    assert not aligned_or_joined(s, ["gei", "chuanzhe"])
+    assert s.find("FORM").text == "gei ta chuanzhe ."     # left as it was

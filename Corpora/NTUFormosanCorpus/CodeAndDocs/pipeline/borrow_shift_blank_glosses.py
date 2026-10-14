@@ -13,7 +13,12 @@ none after the shift. Words that were already bare in the source are not
 touched: that is an omission, not something we did. Also the English slot of a
 word whose source writes the same Chinese gloss in both slots, which
 step1_realign empties (maintainer, 2026-09-30: "Drop the English. This becomes
-a potential target for gloss-borrowing.").
+a potential target for gloss-borrowing."), and the Chinese slot of a word whose
+source writes the same English word gloss in both slots, which step1_realign
+empties too (maintainer, 2026-10-14, card same-english-borrow: "pair"). For those
+the evidence is narrower: only the other uses of the same word WITH THE SAME
+ENGLISH GLOSS count, so a word's commonest Chinese for another sense is never
+borrowed (Tsou ci "why" would otherwise get 關係詞, its relative-marker gloss).
 
 The borrowed gloss: among the other W elements of the SAME language (never the
 sentence itself) whose form is the same word, the most frequent gloss in that
@@ -110,6 +115,8 @@ def created_blanks(codedocs: Path, rows: list) -> list:
 
 DISPLACED = "the source gloss was displaced (gloss-shift repair)"
 DUPLICATE = "the source wrote this word's Chinese gloss in the English slot too"
+SAME_ENGLISH = ("the source wrote this word's English gloss in the Chinese slot too; counted only "
+                "over the uses with the same English gloss")
 
 
 def duplicate_blanks(codedocs: Path, subcorpus: str | None) -> list:
@@ -136,6 +143,31 @@ def duplicate_blanks(codedocs: Path, subcorpus: str | None) -> list:
     return out
 
 
+def same_english_blanks(codedocs: Path, subcorpus: str | None) -> list:
+    """(language dir, S id, source form, 'zho', SAME_ENGLISH) for every word whose two
+    gloss cells hold the same English word gloss: step1_realign empties its Chinese
+    slot (pipeline_grammar._same_english decides, as in the build)."""
+    from pipeline_grammar import _same_english
+    out = []
+    for sub in ("sentence", "story"):
+        if subcorpus and sub != subcorpus:
+            continue
+        for path in sorted((codedocs / sub).rglob("*.json")):
+            start = None
+            for r in records_of(path):
+                rid, rec = str(r[0]), r[1]
+                if start is None or sub == "sentence":
+                    start = rid
+                for row in rec.get("gloss") or []:
+                    a, b = (str(row[c]).strip() if c < len(row) else "" for c in (1, 2))
+                    if is_word(str(row[0])) and _same_english(a, b, str(row[0])):
+                        out.append((path.parent.name.split("_")[0], f"{path.stem}_S_{start}",
+                                    str(row[0]), "zho", SAME_ENGLISH))
+                if rec.get("s_end", True):
+                    start = None
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -157,13 +189,14 @@ def main() -> int:
         rows = [r for r in rows if r["source_file"].startswith(args.subcorpus + "/")]
     blanks = [b + (DISPLACED,) for b in created_blanks(args.codedocs, rows)]
     blanks += duplicate_blanks(args.codedocs, args.subcorpus)
+    blanks += same_english_blanks(args.codedocs, args.subcorpus)
     stats, report = Counter(), []
     if not blanks:
         print("no gloss-shift repair in force left a word bare, and no word has the same "
               "Chinese in both slots")
         return 0
     # Index the build: per language dir, every S and every W's glosses.
-    trees, sents, lex = {}, {}, defaultdict(Counter)
+    trees, sents, lex, pair = {}, {}, defaultdict(Counter), defaultdict(Counter)
     for path in sorted(args.xml_dir.rglob("*.xml")):
         lang_dir = path.parent.name
         tree = etree.parse(str(path))
@@ -175,6 +208,8 @@ def main() -> int:
                     g = gloss(w, gl)
                     if evidence_gloss(g):
                         lex[(lang_dir, norm_form(form_text(w)), gl)][g] += 1
+                if gloss(w, "eng") and evidence_gloss(gloss(w, "zho")):
+                    pair[(lang_dir, norm_form(form_text(w)), gloss(w, "eng"))][gloss(w, "zho")] += 1
     changed_files = set()
     for language, sid, src_form, gl, why in blanks:
         base = {"language": language, "sentence": sid, "word": src_form, "gloss_lang": gl}
@@ -190,9 +225,15 @@ def main() -> int:
             stats["not located"] += 1
             continue
         w = cands[0]
-        own = Counter(gloss(x, gl) for x in s.findall("W")
-                      if norm_form(form_text(x)) == key and evidence_gloss(gloss(x, gl)))
-        counts = lex[(language, key, gl)] - own
+        if why == SAME_ENGLISH:
+            eng = gloss(w, "eng")
+            own = Counter(gloss(x, gl) for x in s.findall("W") if norm_form(form_text(x)) == key
+                          and gloss(x, "eng") == eng and evidence_gloss(gloss(x, gl)))
+            counts = pair[(language, key, eng)] - own
+        else:
+            own = Counter(gloss(x, gl) for x in s.findall("W")
+                          if norm_form(form_text(x)) == key and evidence_gloss(gloss(x, gl)))
+            counts = lex[(language, key, gl)] - own
         n = sum(counts.values())
         top, k = (counts.most_common(1)[0] if counts else ("", 0))
         dist = ", ".join(f"{g} {c}" for g, c in counts.most_common(4)) or "none"

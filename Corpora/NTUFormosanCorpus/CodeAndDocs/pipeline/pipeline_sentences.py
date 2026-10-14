@@ -119,7 +119,8 @@ from pipeline_grammar import (SPLIT, XML_LANG, add_transl as _add_transl, step1_
                    load_free_repairs,
                    conform_sentence, build_attestation,
                        load_malformed_translations, unglossed_optional,
-                       prune_unsupported, _OPTIONAL, step1_realign_sentence)
+                       prune_unsupported, _OPTIONAL, step1_realign_sentence, normalize_gloss_cell,
+                       load_cell_restorations, apply_cell_restorations)
 from QC.cleaning.clean_xml import swap_punctuation  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 # The gloss/word test helpers live in qa/, which is their single home;
@@ -153,6 +154,7 @@ STEPS = {
    14: "record word-internal optional material as an alternate form",
    15: "drop rows that are transcription apparatus, not words",
    18: "reassign glosses stranded on a form-less morpheme, then drop the shell",
+   19: "write x/xx/XX/XXX/XXXX glosses as X; fully capitalize a mis-cased label (rulings 2026-10-14)",
 }
 
 # The six agreed classes of gloss row that carry no word. A "_" is the sources'
@@ -760,6 +762,8 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                         if nm == "z": zho = new
                         else: eng = new
 
+            if 19 in steps:
+                zho, eng = normalize_gloss_cell(zho, stats), normalize_gloss_cell(eng, stats)
             cells.append((w_form, zho, eng))
 
         # Step 1 decides per sentence: whether a word's glosses may change
@@ -918,6 +922,8 @@ def main() -> int:
     args.out.mkdir(parents=True, exist_ok=True)
     by_language: dict = {}
     shift_repairs = load_shift_repairs()
+    # The maintainer's per-cell decisions on the review page, applied after the shifts.
+    cell_decisions = load_cell_restorations(Path(__file__).resolve().parent / "gloss_cell_decisions.tsv")
     for path in sorted(args.json.rglob("*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         recs = data if isinstance(data, list) else (list(data.values())[0] if data else [])
@@ -925,6 +931,8 @@ def main() -> int:
             continue
         # Undo recorded gloss shifts in memory; the source JSON is never written.
         recs = apply_shift_repairs(recs, "/".join(path.parts[-3:]), shift_repairs, stats)
+        recs = apply_cell_restorations(recs, "/".join(path.parts[-3:]), cell_decisions, stats,
+                                       label="cells set by the maintainer's decisions")
         root = build(recs, path.stem, steps, stats, attested, malformed, language=language_for(path), dialect=dialect_for(path))
         language = path.parent.name.split("_")[0]
         merged = by_language.get(language)

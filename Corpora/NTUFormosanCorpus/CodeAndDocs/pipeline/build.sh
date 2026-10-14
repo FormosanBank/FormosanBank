@@ -110,7 +110,7 @@ build_grammar() {
   local W; W="$(mktemp -d)"; trap 'rm -rf "$W"' RETURN
   step "GRAMMAR: builder (pipeline_grammar.py)"
   "$PY" "$PIPE/pipeline_grammar.py" --json "$CODEDOCS/grammar" --out "$W" \
-        --steps 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,21,22 2>&1 | tail -3
+        --steps 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,21,22,23,24 2>&1 | tail -3
   common_repairs "$W"
   run "convert_infix_notation"          "$SCR/convert_infix_notation.py" --xml_dir "$W"
   run "split_optional_parentheticals"   "$SCR/split_optional_parentheticals.py" --xml_dir "$W"
@@ -127,9 +127,9 @@ build_flat() {       # $1 = sentences|stories
   W="$(mktemp -d)"; trap 'rm -rf "$W"' RETURN
   case "$kind" in
     sentences) json="$CODEDOCS/sentence"; out=Sentences; builder=pipeline_sentences.py
-               steps=0,1,2,3,4,5,7,8,9,10,11,14,15,18 ;;
+               steps=0,1,2,3,4,5,7,8,9,10,11,14,15,18,19 ;;
     stories)   json="$CODEDOCS/story";    out=Stories;  builder=pipeline_stories.py
-               steps=0,1,2,3,4,5,7,8,9,10,11,14,15,16,18 ;;
+               steps=0,1,2,3,4,5,7,8,9,10,11,14,15,16,18,19 ;;
   esac
   step "${out^^}: builder ($builder)"
   "$PY" "$PIPE/$builder" --json "$json" --out "$W" --steps "$steps" 2>&1 | tail -3

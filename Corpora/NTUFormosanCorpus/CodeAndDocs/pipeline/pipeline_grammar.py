@@ -183,6 +183,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+from collections import Counter
 import difflib
 import sys
 import hashlib
@@ -274,12 +275,39 @@ STEPS = {
    20: "withdraw a word or morpheme analysis the tiers do not support",
    21: "strip transcription markup from forms",
    22: "reassign glosses stranded on a form-less morpheme, then drop the shell",
+   23: "write x/xx/XX/XXX/XXXX glosses as X; fully capitalize a mis-cased label (rulings 2026-10-14)",
+   24: "drop the '_' English placeholder (ruling 2026-10-14)",
 }
 
 # The corpus's own repair table is the single source of truth; p3 reads it
 # rather than copying the cases. main applies it via repair_source_fields.py,
 # which is fail-closed on the whole-corpus file layout and so cannot run
 # against a grammar-only tree.
+_STRAY_PUNCT = re.compile(r"\s+([.,!?;:…]+)(?=\s|$)")
+
+
+def aligned_or_joined(sentence, forms: list, stats: dict | None = None) -> bool:
+    """clitic_alignment, and failing that the same test with every stray
+    punctuation token joined to the word before it ('chuanzhe .' ->
+    'chuanzhe.'). When only the joined text lines up, the sentence form is
+    rewritten that way: a punctuation normalization, no letter changes
+    (maintainer, 2026-10-14, card stray-punct: "join them (all)")."""
+    node = sentence.find("FORM[@kindOf='original']")
+    s_form = "".join(node.itertext()) if node is not None else ""
+    if clitic_alignment(s_form, forms):
+        return True
+    joined = _STRAY_PUNCT.sub(r"\1", s_form)
+    if joined == s_form or not clitic_alignment(joined, forms):
+        return False
+    for child in list(node):
+        node.remove(child)
+    node.text = joined
+    if stats is not None:
+        stats["20 stray punctuation joined so the words line up"] = stats.get(
+            "20 stray punctuation joined so the words line up", 0) + 1
+    return True
+
+
 def prune_unsupported(sentence, stats: dict) -> None:
     """Withdraw an analysis the sentence's own tiers do not support.
 
@@ -306,7 +334,7 @@ def prune_unsupported(sentence, stats: dict) -> None:
     s_form = orig(sentence)
     forms = [orig(w) for w in words]
 
-    if not clitic_alignment(s_form, forms):
+    if not aligned_or_joined(sentence, forms, stats):
         for w in words:
             sentence.remove(w)
         stats["20 sentences whose W tier was withdrawn"] = stats.get(
@@ -665,7 +693,8 @@ def load_cell_restorations(path: Path) -> dict:
     return out
 
 
-def apply_cell_restorations(records: list, src_key: str, table: dict, stats: dict) -> list:
+def apply_cell_restorations(records: list, src_key: str, table: dict, stats: dict,
+                            label: str = "cells restored (BC)") -> list:
     cells = [c for f, cs in table.items() if src_key.endswith(f) for c in cs]
     if not cells:
         return records
@@ -675,9 +704,63 @@ def apply_cell_restorations(records: list, src_key: str, table: dict, stats: dic
         if str(row[col]).strip() != found:
             raise RuntimeError(f"source drifted for {src_key}:{rid} row {k} column {col}; "
                                f"expected {found!r}, found {row[col]!r}")
+        while len(row) <= col:
+            row.append("")
         row[col] = restore
-        stats["cells restored (BC)"] = stats.get("cells restored (BC)", 0) + 1
+        stats[label] = stats.get(label, 0) + 1
     return records
+
+
+# Gloss-cell rulings, 2026-10-14 (maintainer, review page round 4).
+# "convert all glosses that consist solely of "x", "xx", or "XX" to "X". Both in
+# English and Chinese." and "change glosses that consist entirely of "XXXX" and
+# "XXX" to "X" everywhere."
+X_GLOSSES = {"x", "xx", "XX", "XXX", "XXXX"}
+# "if something would be an attested gloss (at least 20 attestations in NTU) if
+# all letters were capitalized AND at least one letter is capitalized, then fully
+# capitalize." Held back pending a ruling: 'Han' (Rukai payrange, Chinese 漢人) is
+# the ethnonym; HAN is attested only as the gloss of the particle han.
+CAPS_MIN = 20
+CAPS_HELD = {"Han"}
+_CELL_COUNTS: Counter | None = None
+
+
+def ntu_gloss_counts() -> Counter:
+    """Whole-cell counts of every gloss value in NTU's source, all three subcorpora."""
+    global _CELL_COUNTS
+    if _CELL_COUNTS is None:
+        _CELL_COUNTS = Counter()
+        codedocs = Path(__file__).resolve().parent.parent
+        for sub in ("grammar", "sentence", "story"):
+            for path in (codedocs / sub).rglob("*.json"):
+                data = json.loads(path.read_text(encoding="utf-8"))
+                recs = data if isinstance(data, list) else (list(data.values())[0] if data else [])
+                for rec in recs:
+                    if not (isinstance(rec, list) and len(rec) > 1 and isinstance(rec[1], dict)):
+                        continue
+                    for row in rec[1].get("gloss") or []:
+                        for cell in row[1:3]:
+                            if str(cell).strip():
+                                _CELL_COUNTS[str(cell).strip()] += 1
+    return _CELL_COUNTS
+
+
+def normalize_gloss_cell(text: str, stats: dict | None = None) -> str:
+    """Apply the 2026-10-14 X and capitalization rulings to one gloss cell."""
+    v = (text or "").strip()
+    new = None
+    if v in X_GLOSSES:
+        new = "X"
+        key = "x glosses written X"
+    elif (v != v.upper() and re.search(r"[A-Z]", v) and v not in CAPS_HELD
+          and ntu_gloss_counts().get(v.upper(), 0) >= CAPS_MIN):
+        new = v.upper()
+        key = "labels fully capitalized"
+    if new is None:
+        return text
+    if stats is not None:
+        stats[f"gloss ruling 2026-10-14: {key}"] = stats.get(f"gloss ruling 2026-10-14: {key}", 0) + 1
+    return new
 
 
 def han_share(text: str | None) -> float:
@@ -1514,6 +1597,15 @@ def build(records: list, text_id: str, steps: set[int], stats: dict,
                         if name == "form": w_form = canon
                         elif name == "zho": zho = canon
                         else: eng = canon
+
+            if 23 in steps:
+                zho, eng = normalize_gloss_cell(zho, stats), normalize_gloss_cell(eng, stats)
+            if 24 in steps and eng.strip() == "_":
+                # The grammar books give only a Chinese gloss and put '_' in the
+                # English column; Stories and Sentences already drop it.
+                eng = ""
+                stats["24 '_' English placeholders dropped"] = stats.get(
+                    "24 '_' English placeholders dropped", 0) + 1
 
             w = ET.SubElement(s, "W")
             w.set("id", f"{text_id}_S_{rid}_W{i}")

@@ -46,7 +46,7 @@ from pipeline_grammar import (SPLIT, XML_LANG, add_transl as _add_transl,  # noq
                        build_attestation, load_malformed_translations,
                        unglossed_optional, prune_unsupported, _OPTIONAL,
                        load_record_repairs, apply_record_repairs,
-                       load_cell_restorations, apply_cell_restorations, step1_realign_sentence)
+                       load_cell_restorations, apply_cell_restorations, step1_realign_sentence, normalize_gloss_cell)
 from QC.cleaning.clean_xml import swap_punctuation  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 # The gloss/word test helpers live in qa/, which is their single home;
@@ -75,6 +75,7 @@ STEPS = {
    14: "record word-internal optional material as an alternate form",
    15: "drop rows that are transcription apparatus, not words",
    18: "reassign glosses stranded on a form-less morpheme, then drop the shell",
+   19: "write x/xx/XX/XXX/XXXX glosses as X; fully capitalize a mis-cased label (rulings 2026-10-14)",
 }
 
 # The six agreed classes of gloss row that carry no word. A "_" is the sources'
@@ -757,6 +758,8 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                         if nm == "z": zho = new
                         else: eng = new
 
+            if 19 in steps:
+                zho, eng = normalize_gloss_cell(zho, stats), normalize_gloss_cell(eng, stats)
             cells.append((w_form, zho, eng))
 
         # Step 1 decides per sentence: whether a word's glosses may change
@@ -1045,6 +1048,8 @@ def main() -> int:
     here = Path(__file__).resolve().parent
     record_repairs = load_record_repairs(here / "p2_source_repairs.xml")
     cell_restorations = load_cell_restorations(here / "bc_restorations.tsv")
+    # The maintainer's per-cell decisions on the review page, applied after the shifts.
+    cell_decisions = load_cell_restorations(here / "gloss_cell_decisions.tsv")
     for path in sorted(args.json.rglob("*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         recs = data if isinstance(data, list) else (list(data.values())[0] if data else [])
@@ -1056,6 +1061,8 @@ def main() -> int:
         recs = apply_record_repairs(recs, src_key, record_repairs, stats)
         recs = apply_cell_restorations(recs, src_key, cell_restorations, stats)
         recs = apply_shift_repairs(recs, src_key, shift_repairs, stats)
+        recs = apply_cell_restorations(recs, src_key, cell_decisions, stats,
+                                       label="cells set by the maintainer's decisions")
         # The story's zero point is taken from the SOURCE units, before any
         # merging: it must not depend on how a sentence reduces its units'
         # spans, or changing that reduction silently re-times whole stories.

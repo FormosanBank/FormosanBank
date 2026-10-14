@@ -117,6 +117,24 @@ three rules are maintainer rulings, recorded in the decision log.
   2026-09-30: "treat both halves as a mark"). Punctuation after the closing
   bracket is kept. NTU has 9 such events in gloss rows and 3 in transcript
   lines, all in the stories.
+- **Gloss-cell rulings of 2026-10-14** (`pipeline_grammar.normalize_gloss_cell`;
+  step 19 in Stories/Sentences, 23 in Grammar). A gloss that is solely `x`, `xx`,
+  `XX`, `XXX` or `XXXX` is written `X`, in both languages. A gloss with at least
+  one capital letter is fully capitalized when the capitalized form is a gloss
+  attested at least 20 times in NTU's source (`FIl` → `FIL`, `Part` → `PART`);
+  `Han` (Rukai payrange, 漢人, the ethnonym) is held back pending a ruling.
+- **Grammar's `_`** (step 24): the grammar books put `_` in the English column; it
+  is no longer published as an English gloss (ruling 2026-10-14: "drop").
+- **Per-cell decisions** (`gloss_cell_decisions.tsv`): the maintainer's answers
+  on the review page that set a word's cells (which cell is English, a label in
+  both slots, a sentence's glosses removed), applied after the shift repairs and
+  pinned to the value each cell must hold.
+- **A stray punctuation token** in the sentence form (`chuanzhe .`) is joined to
+  the word before it when, and only when, that lets the word tier account for
+  the sentence (`pipeline_grammar.aligned_or_joined`; ruling 2026-10-14: "join").
+- **Borrowing for the same English in both slots**: the emptied Chinese slot may
+  borrow, counting only the uses of the word with the same English gloss
+  (ruling 2026-10-14: "pair").
 - **An infix bracket holding a hyphen** (`la<in-i>haib`, glossed `<PFV-PFV>`) is
   that many infixes, `-in-` and `-i-`, each with its own gloss (ruling
   2026-09-30). Every step that counts or cuts morphemes reads it that way: the

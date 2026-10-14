@@ -50,6 +50,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "qa"))
 from sentence_xml_tests import (substantive as _substantive,  # noqa: E402
                                 clitic_alignment, form_text,
                                 morpheme_count, MARKERS, split_joined_infixes)
+from pipeline_grammar import aligned_or_joined  # noqa: E402
 
 
 def segment_from_form(form: str) -> list:
@@ -128,7 +129,7 @@ def prune(sentence, stats: Counter) -> bool:
     words = sentence.findall("W")
     if not words:
         return False
-    if not clitic_alignment(form_text(sentence), [form_text(w) for w in words]):
+    if not aligned_or_joined(sentence, [form_text(w) for w in words], stats):
         for w in words:
             sentence.remove(w)
         stats["sentences whose W tier was withdrawn"] += 1
