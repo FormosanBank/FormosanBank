@@ -52,8 +52,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 # The gloss/word test helpers live in qa/, which is their single home;
 # the builders reuse them rather than carrying a second copy.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "qa"))
-from utils import (expand_infixes, strip_l2m, strip_prosodic_markers,  # noqa: E402
-                   resolve_ungrammatical_parens)
+from utils import (code_switch_gloss, expand_infixes, l2_letter, strip_l2m,  # noqa: E402
+                   strip_prosodic_markers, resolve_ungrammatical_parens)
 from gloss_shift import apply_to_records as apply_shift_repairs  # noqa: E402
 from gloss_shift import load_table as load_shift_repairs  # noqa: E402
 from gloss_shift import EVENT_CLOSE, EVENT_OPEN  # noqa: E402
@@ -306,6 +306,8 @@ _PAUSE_DOTS = re.compile(r"\.{2,}")
 
 
 _BRACKET_NOTE = re.compile(r"\[[^\]]*\]")
+# A transcriber's note: Han characters (no Latin letters) in parentheses.
+_SOURCE_NOTE = re.compile(r"[（(][^()（）A-Za-z]*[\u3400-\u9fff][^()（）A-Za-z]*[)）][.,]?")
 # The one bracketed note a gloss keeps: the code-switch label, spelled out
 # (rulings 2026-10-15: "Let's rewrite them as [Mandarin] and [Japanese]";
 # Saisiyat's Hakka labels "spell out as [Hakka]"; gloss_cell_decisions.tsv does
@@ -346,6 +348,11 @@ def step5_strip_markup(text: str, gloss: bool = False) -> tuple:
         text = text[len(head):len(text) - len(tail)]
         text = _BRACKET_NOTE.sub("", text)
     else:
+        # '<日' ... '日>' is how two Saisiyat records mark a Japanese word (日 =
+        # Japanese; kathethel_parain glosses the same span '<JapwaJap>'). It is
+        # read as NTU's own tag, so the marker leaves the form and the word is a
+        # Japanese code-switch (review page round 9, card nichi: approve).
+        text = text.replace("<日", "<L2J").replace("日>", "L2J>")
         text = _BRACKET_MARKER.sub("", text)
     clean, is_code_switch = strip_l2m(strip_prosodic_markers(text))
     # Lengthening first: in 'putu<vaka>va^kaan/==' the IU terminal is only
@@ -471,7 +478,7 @@ def build(records: list, text_id: str, steps: set, stats: dict,
         all_rows = gloss_rows(body)
         all_ori = list(body.get("ori") or [])
 
-        code_switch = set()
+        code_switch = {}          # word form -> its code-switch tag letter (None if the tag had none)
         if 7 in steps:
             # BOTH tiers, and before step 0 rebuilds the sentence form from the
             # gloss forms -- otherwise the rebuilt sentence keeps '(*sua)' while
@@ -514,7 +521,7 @@ def build(records: list, text_id: str, steps: set, stats: dict,
                             "5   glossed bracket-marker rows dropped", 0) + 1
                     continue
                 if is_cs:
-                    code_switch.add(form)
+                    code_switch[form] = l2_letter(str(r[0]))
                     stats["5   code-switched words marked"] = stats.get(
                         "5   code-switched words marked", 0) + 1
                 # The glosses carry the tags too -- repair_l2_markers notes that
@@ -648,7 +655,7 @@ def reassign_glosses(sentence, stats: dict) -> None:
 
 
 def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
-                  code_switch=frozenset(), attested=None, malformed=None,
+                  code_switch=None, attested=None, malformed=None,
                   language="", audio_shift=None):
         attested = attested or {}
         malformed = malformed or {}
@@ -656,6 +663,16 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
         s.set("id", f"{text_id}_S_{sid}")
         form = ET.SubElement(s, "FORM")
         form.set("kindOf", "original")
+        # A transcriber's note in Han characters inside parentheses ('(需再確認)',
+        # "needs re-checking") is not speech: it leaves the sentence text and is
+        # kept on the FORM as the source's note (review page round 9, card note:
+        # "Put it in the notes attribute, ascribe to original source.").
+        source_notes = [str(t).strip() for t in ori if _SOURCE_NOTE.fullmatch(str(t).strip())]
+        if source_notes:
+            ori = [t for t in ori if not _SOURCE_NOTE.fullmatch(str(t).strip())]
+            form.set("notes", "NTU source note: " + " ".join(source_notes))
+            stats["0 source notes moved from the text to notes"] = stats.get(
+                "0 source notes moved from the text to notes", 0) + len(source_notes)
         s_form = " ".join(str(t) for t in ori)
         # The source withholds the running sentence in two ways: 'ori' absent
         # (1039 records) and 'ori' holding nothing but punctuation, typically a
@@ -858,8 +875,9 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                 wa.set("kindOf", "original")
                 wa.set("ver", "alt")
                 wa.text = w_alt
-            if w_form in code_switch:
+            if w_form in (code_switch or {}):
                 wf.set("notes", "code-switch")
+            zho, eng = code_switch_gloss(w_form, (code_switch or {}).get(w_form), zho, eng)
             add_transl(w, "zho", zho)
             add_transl(w, "eng", eng)
 

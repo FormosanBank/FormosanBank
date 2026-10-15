@@ -130,8 +130,16 @@ def _drop_groups(text):
     return _tidy(_PAREN_GROUP.sub("", text)) if text else text
 
 
+# A code-switch label is a gloss, not optional material: its parentheses stay
+# ("(Mandarin)" -- review page round 9; the word 較好 in Sentences 3_S_459).
+_LANGUAGE_LABEL = re.compile(r"\((Mandarin|Japanese|Chinese|Hakka)\)")
+
+
 def _strip_parens(text):
-    return text.replace("(", "").replace(")", "") if text else text
+    if not text:
+        return text
+    held = _LANGUAGE_LABEL.sub(lambda m: "\x00" + m.group(1) + "\x01", text)
+    return held.replace("(", "").replace(")", "").replace("\x00", "(").replace("\x01", ")")
 
 
 def make_without(s, whole):

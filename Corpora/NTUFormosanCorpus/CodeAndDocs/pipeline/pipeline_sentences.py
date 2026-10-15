@@ -127,8 +127,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 # The gloss/word test helpers live in qa/, which is their single home;
 # the builders reuse them rather than carrying a second copy.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "qa"))
-from utils import (expand_infixes, strip_l2m, strip_prosodic_markers,  # noqa: E402
-                   resolve_ungrammatical_parens)
+from utils import (code_switch_gloss, expand_infixes, l2_letter, strip_l2m,  # noqa: E402
+                   strip_prosodic_markers, resolve_ungrammatical_parens)
 from gloss_shift import apply_to_records as apply_shift_repairs  # noqa: E402
 from gloss_shift import load_table as load_shift_repairs  # noqa: E402
 
@@ -463,7 +463,7 @@ def build(records: list, text_id: str, steps: set, stats: dict,
         all_rows = gloss_rows(body)
         all_ori = list(body.get("ori") or [])
 
-        code_switch = set()
+        code_switch = {}          # word form -> its code-switch tag letter (None if the tag had none)
         if 7 in steps:
             # BOTH tiers, and before step 0 rebuilds the sentence form from the
             # gloss forms -- otherwise the rebuilt sentence keeps '(*sua)' while
@@ -500,7 +500,7 @@ def build(records: list, text_id: str, steps: set, stats: dict,
                             "5   glossed bracket-marker rows dropped", 0) + 1
                     continue
                 if is_cs:
-                    code_switch.add(form)
+                    code_switch[form] = l2_letter(str(r[0]))
                     stats["5   code-switched words marked"] = stats.get(
                         "5   code-switched words marked", 0) + 1
                 # The glosses carry the tags too -- repair_l2_markers notes that
@@ -634,7 +634,7 @@ def reassign_glosses(sentence, stats: dict) -> None:
 
 
 def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
-                  code_switch=frozenset(), attested=None, malformed=None):
+                  code_switch=None, attested=None, malformed=None):
         attested = attested or {}
         malformed = malformed or {}
         s = ET.SubElement(root, "S")
@@ -813,8 +813,9 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                 wa.set("kindOf", "original")
                 wa.set("ver", "alt")
                 wa.text = w_alt
-            if w_form in code_switch:
+            if w_form in (code_switch or {}):
                 wf.set("notes", "code-switch")
+            zho, eng = code_switch_gloss(w_form, (code_switch or {}).get(w_form), zho, eng)
             add_transl(w, "zho", zho)
             add_transl(w, "eng", eng)
 

@@ -442,3 +442,24 @@ def test_a_gloss_keeps_its_language_label_and_loses_other_bracketed_notes():
     assert gloss("[Hakka]宣布") == "[Hakka]宣布"
     assert gloss("[Man]") == "" and gloss("[TVH1][u2]talk") == "talk"
     assert step5_strip_markup("[Mandarin]")[0] == "Mandarin"   # a form is not a gloss
+
+
+def test_a_code_switched_word_without_english_is_glossed_with_its_language():
+    # Review page round 9, cards unglossed ("approve") and cs-zho ("itself").
+    sys.path.insert(0, str(CODEDOCS / "scripts"))
+    from utils import code_switch_gloss, l2_letter
+    from split_optional_parentheticals import _strip_parens
+    assert l2_letter("<L2JkikayL2J>") == "J" and l2_letter("wei") is None
+    assert code_switch_gloss("那我就", None, "", "") == ("那我就", "(Mandarin)")
+    assert code_switch_gloss("wei", "M", "", "") == ("", "(Mandarin)")
+    assert code_switch_gloss("明天", None, "明天", "tomorrow") == ("明天", "tomorrow")
+    assert code_switch_gloss("cayna", "T", "", "") == ("", "")      # a tag the ruling did not name
+    assert _strip_parens("(Mandarin)") == "(Mandarin)" and _strip_parens("(較好)") == "較好"
+
+
+def test_a_transcribers_note_leaves_the_text_and_the_marker_of_japanese_is_a_tag():
+    # Round 9, cards note ("Put it in the notes attribute") and nichi ("approve").
+    from pipeline_stories import _SOURCE_NOTE, step5_strip_markup
+    assert _SOURCE_NOTE.fullmatch("(需再確認)") and not _SOURCE_NOTE.fullmatch("(H)")
+    assert step5_strip_markup("<日wa日>,\\") == ("wa,", True)
+    assert step5_strip_markup("<日")[0] == "" and step5_strip_markup("日>")[0] == ""
