@@ -50,7 +50,7 @@ Two of the source's own conventions are preserved rather than normalized away. W
 
 For eleven consecutive entries, beginning at the manuscript's own page 12, the source table fills its two van der Vlis columns in the opposite order to the rest of the table. The build restores the intended order. This is worth recording because the earlier published version of this corpus reproduced the anomaly, printing the Siraya form as its own Dutch translation.
 
-One entry, `pasagoualalingaua ng` 'mirror', carries a space that both other witnesses set solid. It is published as the source has it.
+One entry, `pasagoualalingauang` 'mirror', is published as one word: Joby's table cell wraps it across two lines, which reads as a space in the text layer, and van der Vlis sets it solid. For `vougot` 'to bind', van der Vlis gives a second spelling, `vuxot`, published as its variant.
 
 ***
 
