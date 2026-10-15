@@ -47,6 +47,11 @@ done
 #    BEFORE clean_xml). Other languages: ' is glottal by fiat (README).
 "$PYTHON" "$HERE/normalize_seediq_quotes.py" --corpora_path "$XML"
 
+# 5b. The other four languages: '' (two apostrophes typed for a double quote;
+#     the download was plain text, so these are not italics markup) -> ";
+#     runs of three or more are left alone (maintainer ruling 2026-10-14).
+"$PYTHON" "$HERE/normalize_double_apostrophes.py" --corpora_path "$XML"
+
 # 6. Punctuation/Unicode cleanup (writes per-run cleaner_warnings.csv next
 #    to XML/ — review then delete per POL-033; any quote_corrections.csv
 #    row here is unexpected: this corpus has no TRANSLs).
