@@ -5,12 +5,13 @@ The article's key defines `( )` one way only: "in data, probable discrepancy".
 The transcriber was unsure of the bracketed letters. Ruled 2026-10-15
 (maintainer): "Not variants. The parentheses should be retained in the
 original tier, removed in the standard tier. ... The reason is that while the
-author was uncertain, we do not have anything else to go on." So:
+author was uncertain, we do not have anything else to go on." And, on where
+in the original tier: "sentence FORM only, not the Ws or Ms." So:
 
   --tier original  (step 3, after clean_xml, before standardize)
-      The parentheses stay, as printed: `puken-(en)`, `(u)m-lavi`, `ku(a)`.
-      No reading is chosen and no variant is made. Only the uncertainty
-      marker is handled (below).
+      The sentence FORM keeps the parentheses as printed: `puken-(en) lavi u
+      anan-anak`. Word and morpheme FORMs drop them and keep the letters
+      (`puken-en`, M `en`). No reading is chosen and no variant is made.
   --tier standard  (step 5b, after standardize)
       The parentheses are removed and the bracketed letters kept, so the
       standard tier reads the fuller form: `puken-en`, `um-lavi`, `kua`.
@@ -121,10 +122,32 @@ def main() -> int:
     for name, pid in whole_marker:
         print(f"  .. left alone, whole gloss is the marker: {name} {pid}")
 
+    # --- the article's ( ): sentence FORM keeps them, W and M do not -------
+    unbracketed = 0
+    for path in sorted(Path(args.xml_dir).rglob("*.xml")):
+        root = ET.parse(path).getroot()
+        touched = False
+        for node in [*root.iter("W"), *root.iter("M")]:
+            for form in node.findall("FORM"):
+                if form.get("kindOf") == "original" and "(" in (form.text or ""):
+                    form.text = with_material(form.text)
+                    unbracketed += 1
+                    touched = True
+        if touched:
+            path.write_text(prettify(root), encoding="utf-8")
     kept = sum(1 for path in sorted(Path(args.xml_dir).rglob("*.xml"))
-               for form in ET.parse(path).getroot().iter("FORM")
+               for s in ET.parse(path).getroot().iter("S")
+               for form in s.findall("FORM")
                if form.get("kindOf") == "original" and "(" in (form.text or ""))
-    print(f"  original-tier FORMs keeping the article's ( ) : {kept}")
+    print(f"  W/M FORMs with the article's ( ) removed    : {unbracketed}")
+    print(f"  sentence FORMs keeping the article's ( )    : {kept}")
+    left = [(path.name, f.text) for path in sorted(Path(args.xml_dir).rglob("*.xml"))
+            for node in [*ET.parse(path).getroot().iter("W"), *ET.parse(path).getroot().iter("M")]
+            for f in node.findall("FORM") if any(c in (f.text or "") for c in "()")]
+    if left:
+        for name, text in left:
+            print(f"  !! parenthesis survives in a word or morpheme in {name}: {text}")
+        raise SystemExit("parentheses remain in a W or M FORM")
     return 0
 
 

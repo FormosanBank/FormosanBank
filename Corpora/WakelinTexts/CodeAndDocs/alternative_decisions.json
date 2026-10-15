@@ -361,11 +361,13 @@
       "file": "Kwaway",
       "sentence": "S51",
       "printed": "mikabak-abay-u/mikabakabayu",
-      "mode": "variant",
+      "mode": "keep_primary",
       "carriers": [
         "S51W1"
       ],
-      "note": "pure hyphenation variant - the clearest spelling-variant case in the corpus. The snapshot now keeps the printed slash like every other alternation, so this needs no special handling."
+      "note": "pure hyphenation variant - the clearest spelling-variant case in the corpus. The snapshot now keeps the printed slash like every other alternation, so this needs no special handling. Superseded 2026-10-15: keep_primary (see ruling).",
+      "ruling": "maintainer 2026-10-15, on the article glossing the two readings differently (unan-waste-unan(unctn) / wails): \"Remove the unglossed version entirely, put in a note with an explanation.\" ... \"I meant the unsegmented version.\"",
+      "published_note": "The article prints this word as mikabak-abay-u/mikabakabayu, glossing the unsegmented mikabakabayu only as \"wails\"; that reading is not published."
     }
   ]
 }

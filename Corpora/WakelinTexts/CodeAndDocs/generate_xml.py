@@ -19,6 +19,8 @@ not apply automatically. Each alternation is classified by hand in
   split    anything else — different lexemes, different glosses, or a word
            against a phrase. Emitted as separate S blocks. The first keeps the
            printed sentence number; the rest take suffixes b, c, ...
+  keep_primary  publish only the first reading; the other is described in a
+           note on the word (maintainer, 2026-10-15, Kwaway/S51).
            POL-037 forbids renumbering the already-published bare id to `a`.
 
 No standard tier and no PHON are produced: this text's orthography has never
@@ -195,6 +197,33 @@ def apply_variant(sentence, carriers):
                 continue
             for alt in alts:
                 add_alternate(ancestor, resolve(base, readings, alt))
+
+
+def apply_keep_primary(sentence, decision):
+    """Publish only the carrier's primary reading; record the other in a note.
+
+    For an alternation the maintainer ruled should not be published as a
+    variant: the carrier's alternate FORMs and alternate glosses are removed,
+    its FORM gets the decision's `published_note`, and every ancestor is
+    rewritten to the primary reading.
+    """
+    for carrier_id in decision["carriers"]:
+        chain = ancestors_of(sentence, carrier_id)
+        carrier = chain[-1]
+        original = text_of(carrier)
+        alts = alternates(carrier)
+        if not alts:
+            raise SystemExit(f"{carrier_id}: mode=keep_primary but no alternate FORM")
+        readings = [original] + alts
+        drop_alternates(carrier)
+        for t in list(carrier.findall("TRANSL")):
+            if t.get("ver") is not None:
+                carrier.remove(t)
+        form(carrier).set("notes", decision["published_note"])
+        for ancestor in chain[:-1]:
+            base = text_of(ancestor)
+            drop_alternates(ancestor)
+            set_form(ancestor, resolve(base, readings, original))
 
 
 UNAN = "unan"
@@ -519,7 +548,7 @@ def main() -> int:
         Path(args.print_corrections).read_text(encoding="utf-8"))["corrections"]
     snapshot = Path(args.snapshot)
     out_root = Path(args.xml_dir)
-    total = {"S": 0, "variant": 0, "split": 0, "corrected": 0}
+    total = {"S": 0, "variant": 0, "split": 0, "keep_primary": 0, "corrected": 0}
     gloss_report: dict[str, list] = {}
     narration_report: dict[str, list] = {}
     for src in sorted(snapshot.rglob("*.xml")):
@@ -539,6 +568,10 @@ def main() -> int:
                 apply_variant(sentence, decision["carriers"])
                 rebuilt.append(sentence)
                 total["variant"] += 1
+            elif decision["mode"] == "keep_primary":
+                apply_keep_primary(sentence, decision)
+                rebuilt.append(sentence)
+                total["keep_primary"] += 1
             else:
                 rebuilt.extend(apply_split(sentence, decision))
                 total["split"] += 1
@@ -592,7 +625,8 @@ def main() -> int:
               f"-> {args.gloss_report}")
 
     print(f"\n{total['S']} S written "
-          f"({total['variant']} variant, {total['split']} split alternations, "
+          f"({total['variant']} variant, {total['split']} split, "
+          f"{total['keep_primary']} keep-primary alternations, "
           f"{total['corrected']} nodes corrected to the print); "
           f"{leftover} unresolved slash FORMs")
     return 1 if leftover else 0
