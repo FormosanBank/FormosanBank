@@ -50,7 +50,7 @@ def ensure_dirs() -> None:
         "data/scripts",
         "scripts",
         "logs",
-        "Final_XML",
+        "XML",
     ]:
         (ROOT / rel).mkdir(parents=True, exist_ok=True)
 
