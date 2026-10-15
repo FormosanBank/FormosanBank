@@ -18,6 +18,19 @@ derived from the original (POL-028), so it is not listed separately.
 (`Corpora/WakelinTexts/README.md` line 102; line 263 of the same README calls
 it optional material). Whether the amendment reaches that notation is open.
 
+## Rulings (maintainer, 2026-10-15, decision page round 3)
+
+Each corpus was traced to its source and build code first (22 NTU source examples, 8 Blust,
+7 Utrecht, 4 Wakelin). Under the amendment as refined — split only where the optional
+morpheme is glossed and the readings would be glossed differently:
+
+| corpus | ruling | maintainer's words |
+|---|---|---|
+| NTUFormosanCorpus | **split** the optional-morpheme cases, including the Saisiyat "inaudible" ones; done by the agent working on NTU (branch `analysis/ntu-residual-gloss-shift`) | "I want to split into two sentences. But the agent that is currently working with NTU should handle that." |
+| Blust-Thao-Dictionary | **keep** all 8 as variants (example words carry no glosses) | "keep" ×3 cards |
+| UtrechtManuscriptWordList | **keep** the 6 variants (no word tier); 2 suspected defects (W121, W1054) await a look at the page | "keep" ×2 cards; "I need you to show me what's going on, with screenshots." |
+| WakelinTexts | **not variants**: `( )` kept in the original tier, removed in the standard tier | "Not variants. The parentheses should be retained in the original tier, removed in the standard tier." |
+
 **80 candidates:**
 
 | corpus | node | count |
