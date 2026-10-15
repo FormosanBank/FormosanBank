@@ -673,6 +673,10 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
             form.set("notes", "NTU source note: " + " ".join(source_notes))
             stats["0 source notes moved from the text to notes"] = stats.get(
                 "0 source notes moved from the text to notes", 0) + len(source_notes)
+        if body.get("code_switch_sentence"):
+            # No translation: the source gives this speech none (round 10, card mzho: "none").
+            form.set("notes", ((form.get("notes") or "") + " Mandarin speech (code-switch), split from the "
+                               "sentence it was transcribed in: the source's translation does not cover it").strip())
         s_form = " ".join(str(t) for t in ori)
         # The source withholds the running sentence in two ways: 'ori' absent
         # (1039 records) and 'ori' holding nothing but punctuation, typically a
@@ -970,17 +974,132 @@ def _first_span(records: list) -> float:
     return 0.0
 
 
-def merge_groups(records: list, stats: dict) -> list:
-    """Merge each s_end group of intonation units into one record."""
+def merge_groups(records: list, stats: dict, stem: str = "") -> list:
+    """Merge each s_end group of intonation units into one record.
+
+    A unit that carries its own translation also closes a sentence (maintainer,
+    2026-10-15: "A unit that has its own translation should be treated as its own S
+    and not combined with another"): the untranslated units before it are what its
+    translation renders (RukaiNr-frog_Baqingyi units 59-62, "when... when seeing
+    that... when going to the dry land, (they) then saw the wood floating.").
+    """
     out, group = [], []
     for rec in records:
         group.append(rec)
         body = rec[1] if isinstance(rec, list) and len(rec) > 1 else {}
-        if isinstance(body, dict) and body.get("s_end"):
-            out.append(_merge(group, stats))
+        if not isinstance(body, dict):
+            continue
+        own = _has_translation(rec, stem) and not body.get("s_end")
+        if body.get("s_end") or own:
+            if own:
+                stats["16 sentences closed at a unit with its own translation"] = stats.get(
+                    "16 sentences closed at a unit with its own translation", 0) + 1
+            out.extend(_merge_pieces(group, stem, stats))
             group = []
     if group:
-        out.append(_merge(group, stats))
+        out.extend(_merge_pieces(group, stem, stats))
+    return out
+
+
+# A '#e' line that is a note, not a translation (it explains two words).
+NOT_A_TRANSLATION = {("sdqNr-mother_iwan 2020s", "224")}
+
+
+def _has_translation(rec, stem: str) -> bool:
+    if (stem, str(rec[0])) in NOT_A_TRANSLATION:
+        return False
+    return any(str(l)[:2] in ("#e", "#c") and str(l)[2:].strip()
+               for l in rec[1].get("free") or [])
+
+
+# Code-switched speech the translation does not cover (maintainer 2026-10-15: "these
+# really should go into distinct <S> blocks, since otherwise the translations
+# mismatches the text"; review page round 10, card split: approve). An all-Mandarin
+# unit whose Mandarin the sentence's Chinese translation does not contain (fewer than
+# half of its character pairs) is a sentence of its own; consecutive such units by one
+# speaker stay together, and the stretches between them are sentences too. Mid-utterance
+# code-switching stays whole (card whole: "yes").
+_HAN_CS = re.compile(r"[\u3400-\u9fff\uf900-\ufaff]")
+_SPEAKER_RAW = re.compile(r"^\s*([A-Z])\s*[:：]")
+_LATIN_WORD = re.compile(r"[A-Za-z]{2,}")
+KEEP_WHOLE = {("sdqCon-plum_uma_robo 2020s", "7"), ("sdqCon-dialog5_dakis_takun 2020s", "98"),
+              ("sdqCon-dialog5_dakis_takun 2020s", "212"), ("sdqCon-dialog5_dakis_takun 2020s", "296")}
+
+
+def _speaker(rec) -> str:
+    for t in rec[1].get("ori") or []:
+        m = _SPEAKER_RAW.match(str(t))
+        if m:
+            return m.group(1)
+    return ""
+
+
+def _all_mandarin(rec) -> bool:
+    toks = [str(t) for t in rec[1].get("ori") or [] if not _SPEAKER_RAW.match(str(t))]
+    return (any(_HAN_CS.search(t) for t in toks)
+            and not any(not _HAN_CS.search(t) and _LATIN_WORD.search(t) for t in toks))
+
+
+def _covered(rec, zho: str) -> bool:
+    han = "".join(c for t in rec[1].get("ori") or [] for c in str(t) if _HAN_CS.match(c))
+    pairs = {han[i:i + 2] for i in range(len(han) - 1)} or {han}
+    return sum(1 for p in pairs if p in zho) / len(pairs) >= 0.5
+
+
+def _mandarin_rows(rec, stats: dict):
+    """An all-Mandarin unit with no gloss rows, inside a sentence that stays whole, gets a
+    word per Mandarin stretch: mid-utterance code-switching (maintainer 2026-10-15: "can be
+    treated as complete <S>-blocks with mid-utterance code-switching"), glossed by
+    code_switch_gloss like every other code-switched word."""
+    body = rec[1]
+    if body.get("gloss") or not _all_mandarin(rec):
+        return rec
+    rows = [[str(t), "", ""] for t in body.get("ori") or []
+            if _HAN_CS.search(str(t)) and not _SPEAKER_RAW.match(str(t))]
+    stats["16   words given to Mandarin units of a whole sentence"] = stats.get(
+        "16   words given to Mandarin units of a whole sentence", 0) + len(rows)
+    return [rec[0], dict(body, gloss=rows)]
+
+
+def _merge_pieces(group: list, stem: str, stats: dict) -> list:
+    """The sentence(s) one group of units becomes."""
+    pieces = [(False, group)]
+    if group and (stem, str(group[0][0])) not in KEEP_WHOLE:
+        free = next((r[1]["free"] for r in reversed(group) if r[1].get("free")), [])
+        zho = " ".join(str(l)[2:] for l in free if str(l).startswith("#c"))
+        cut = [_all_mandarin(r) and not _covered(r, zho) for r in group]
+        if any(cut):
+            pieces = []
+            for r, c in zip(group, cut):
+                if pieces and pieces[-1][0] == c and (not c or _speaker(pieces[-1][1][-1]) == _speaker(r)):
+                    pieces[-1][1].append(r)
+                else:
+                    pieces.append((c, [r]))
+            stats["16 sentences split at code-switched speech"] = stats.get(
+                "16 sentences split at code-switched speech", 0) + 1
+    out = []
+    for is_cs, piece in pieces:
+        if not is_cs:
+            piece = [_mandarin_rows(r, stats) for r in piece]
+        merged = _merge(piece, stats)
+        body = merged[1]
+        # A speaker label (capital + colon) is not speech, whether or not the gloss
+        # table has a row for it (review page round 10, card labels: approve). Only the
+        # label comes off: 'D:wada' keeps its word.
+        kept, n = [], 0
+        for t in body["ori"]:
+            if _SPEAKER_RAW.match(str(t)):
+                t, n = _SPEAKER_RAW.sub("", str(t), count=1).strip(), n + 1
+            if str(t).strip():
+                kept.append(t)
+        if n:
+            stats["16   speaker labels taken out of the text"] = stats.get(
+                "16   speaker labels taken out of the text", 0) + n
+        body["ori"] = kept
+        if is_cs:
+            body["code_switch_sentence"] = True
+            stats["16   Mandarin sentences split out"] = stats.get("16   Mandarin sentences split out", 0) + 1
+        out.append(merged)
     return out
 
 
@@ -1172,7 +1291,7 @@ def main() -> int:
         # spans, or changing that reduction silently re-times whole stories.
         shift = _first_span(recs)
         if 16 in steps:
-            recs = merge_groups(recs, stats)
+            recs = merge_groups(recs, stats, path.stem)
         root = build(recs, path.stem, steps, stats, attested, malformed, language=language_for(path), dialect=dialect_for(path),
                      audio_shift=shift)
         language = path.parent.name.split("_")[0]

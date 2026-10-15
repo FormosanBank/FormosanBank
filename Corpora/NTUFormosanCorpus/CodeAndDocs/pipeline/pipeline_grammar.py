@@ -1141,6 +1141,9 @@ def apply_gloss_restorations(records: list, src_key: str, table: dict, stats: di
             stats["gloss cells restored"] = stats.get("gloss cells restored", 0) + 1
 
 
+_EMBEDDED_TAG = re.compile(r"(?=#[ecn](?![A-Za-z]))")
+
+
 def free_entries(free: list, stem: str, rid: str, repairs: dict) -> list:
     """Resolve a record's free-translation lines into (lang, text, ver, note).
 
@@ -1159,7 +1162,13 @@ def free_entries(free: list, stem: str, rid: str, repairs: dict) -> list:
     """
     by_lang: dict = {"zho": [], "eng": []}
     notes: list = []
-    for line in free or []:
+    # One source line can hold several tagged lines ('#e He gets called at.#c 他被叫。',
+    # '#c 熊使山豬害怕。#n mapinpising ...') or repeat its tag ('#e #e All wishes ...').
+    # Each tag starts a line of its own; read whole, the second tag and its text were
+    # published inside the first line's translation or note (18 places).
+    free = [part.strip() for line in free or []
+            for part in _EMBEDDED_TAG.split(str(line)) if part.strip() not in ("", "#e", "#c", "#n")]
+    for line in free:
         if line.startswith("#c"):
             text = line[2:].strip()
             if repairs.get((stem, "*", "zho")) == "unwrap":

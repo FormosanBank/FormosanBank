@@ -463,3 +463,40 @@ def test_a_transcribers_note_leaves_the_text_and_the_marker_of_japanese_is_a_tag
     assert _SOURCE_NOTE.fullmatch("(需再確認)") and not _SOURCE_NOTE.fullmatch("(H)")
     assert step5_strip_markup("<日wa日>,\\") == ("wa,", True)
     assert step5_strip_markup("<日")[0] == "" and step5_strip_markup("日>")[0] == ""
+
+
+def test_a_unit_with_its_own_translation_closes_its_sentence():
+    # Maintainer 2026-10-15: "A unit that has its own translation should be treated
+    # as its own S and not combined with another."
+    from pipeline_stories import merge_groups
+    u = lambda i, ori, free=None, end=False: [i, {"ori": ori, "gloss": [], "free": free or [], "s_end": end}]
+    recs = [u(59, ["sa", "dreele"]), u(62, ["ala"], ["#e when seeing that, (they) then saw the wood."]),
+            u(63, ["la", "mua"], ["#e Then (they) went to that tree."], True)]
+    out = merge_groups(recs, {}, "story")
+    assert [r[0] for r in out] == [59, 63]
+    assert out[0][1]["ori"] == ["sa", "dreele", "ala"]
+
+
+def test_mandarin_speech_the_translation_does_not_cover_is_its_own_sentence():
+    # Round 10, cards split/labels/whole; the label alone comes off ('D:wada').
+    from pipeline_stories import merge_groups
+    u = lambda i, ori, free=None, end=False, gloss=None: [i, {"ori": ori, "gloss": [["x", "", ""]] if gloss is None else gloss, "free": free or [], "s_end": end}]
+    recs = [u(117, ["D:", "maanu", "patis"]), u(118, ["T:", "喔你那邊有行程表嘛ho."], gloss=[]),
+            u(119, ["D:wada", "un", "niqan."], ["#e Yes, I have it.", "#c 有。"], True)]
+    out = merge_groups(recs, {}, "story")
+    assert [r[0] for r in out] == [117, 118, 119]
+    assert out[1][1].get("code_switch_sentence") and out[1][1]["ori"] == ["喔你那邊有行程表嘛ho."]
+    assert out[2][1]["ori"] == ["wada", "un", "niqan."] and out[2][1]["free"][0] == "#e Yes, I have it."
+    # covered by the translation: one sentence, and its Mandarin unit gets a word
+    recs = [u(212, ["T:", "法國"], gloss=[]), u(214, ["T:", "法國", "ma"], ["#c 他們在法國。"], True)]
+    out = merge_groups(recs, {}, "story")
+    assert len(out) == 1 and out[0][1]["gloss"][0] == ["法國", "", ""]
+
+
+def test_every_tag_in_a_free_translation_line_starts_its_own_line():
+    from pipeline_grammar import free_entries
+    entries, notes = free_entries(["#e He gets called at.#c 他被叫。"], "s", "1", {})
+    assert ("eng", "He gets called at.", "", "") in entries and ("zho", "他被叫。", "", "") in entries
+    entries, notes = free_entries(["#c 熊使山豬害怕。#n mapinpising tumaz"], "s", "1", {})
+    assert entries == [("zho", "熊使山豬害怕。", "", "")] and notes == ["mapinpising tumaz"]
+    assert free_entries(["#e #e All wishes."], "s", "1", {})[0] == [("eng", "All wishes.", "", "")]
