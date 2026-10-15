@@ -307,6 +307,48 @@ corpora trip these and will need fixing over time:
 (Resolves the Bunun-Topic-Focus degenerate-single-M question: its 51
 single-M Ws are conforming as long as no W lacks an M.)
 
+### POL-060 · RULED · 2026-10-14 · words that share one gloss
+**Words the source glosses as one unit are one `W`.** When a source prints a
+single gloss under two or more words, those words form a single `W`: its FORM
+is the words as printed, space-separated, and it carries the gloss once.
+Chang's Seediq grammar, for example, glosses `ani naq` as 雖然, `di ge` as
+的時候 and `kiya ka` as 所以 — each is one `W`. The words are not split into a
+`W` apiece with the gloss on the first and a `∅` placeholder on the rest.
+
+**Why:** the gloss is the source's unit of analysis. Splitting asserts a word
+boundary the analysis does not draw, and the `∅` placeholder looks exactly
+like a word the source leaves unglossed, so a reader cannot tell "this word
+has no gloss" from "this word's gloss is on its neighbour". Maintainer
+(2026-10-14): *"when two words share the same gloss, they get a single <W>
+block. That's a general rule."*
+
+**Consequences.** Within a parsed sentence (POL-023) such a `W` still needs at
+least one `M`; its `M` children follow whatever segmentation the source prints
+inside the unit, and where it prints none, one `M` spans the same words.
+**V060** (`W_count_matches_word_count`, SOFT) compares the number of `W` with
+the number of whitespace-delimited words in the sentence, so it reports every
+multi-word `W`. That is intended: the SOFT finding asks whoever reviews the
+corpus to confirm each multi-word `W` is deliberate. Raised by: the 2026-10 student review of the Chang 2000 Seediq
+grammar dev repo, where 40 such units had been split.
+
+### POL-061 · RULED · 2026-10-15 · a word with no gloss
+**A word or morpheme the source leaves unglossed is glossed `?`.** When a
+source prints no gloss under a word — and the word does not share its
+neighbour's gloss (POL-060) — its W gloss is `?`, not `∅` and not a missing
+TRANSL. Inside a segmented gloss the missing piece is `?` too: `yee-su`, where
+the source glosses only the pronoun, is `?-你`, and its M `yee` is `?`.
+
+**Why:** `∅` is the null-morpheme marker (POL-012) and asserts a silent
+morpheme, which an unglossed word is not. `?` is already how corpora carry a
+gloss the source itself leaves uncertain (HundredPaiwanStories 356 `?`,
+NTUFormosanCorpus 63 `?`, YeddaPalemeqBlog 2), and for a user the two cases
+read the same: the source does not give this word's meaning. A source's own
+`??` or `?` marker is kept as written (POL-036). Maintainer (2026-10-15):
+*"Where a gloss is missing entirely (not one of the shared cases), we insert
+the gloss `?`, and then treat accordingly. I _think_ ? is used elsewhere for
+uncertain glosses (most likely NTU). If this is confirmed, then make sure it's
+in a policy."* First applied in the Chang Seediq grammar dev repo.
+
 ### POL-024 · RULED · 2026-08-10 · parentheticals in translations
 Two different things, treated differently:
 - **Literal translations / analytic paraphrases** (`(Lit. the money that
