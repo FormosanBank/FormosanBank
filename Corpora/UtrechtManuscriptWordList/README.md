@@ -79,7 +79,8 @@ The build verifies the source ledger's hash, regenerates the source-to-predecess
 ## Known source anomalies
 
 - **Rows 223–233** fill the two van der Vlis columns in the opposite order, a run that begins at manuscript page marker 12 and spans PDF pages 16–17. Confirmed against the source; the published predecessor reproduced the same anomaly, publishing the Siraya form as its own Dutch translation. The build swaps them back.
-- Row 122's `pasagoualalingaua ng` carries a space that both other witnesses set solid; it is published as the source has it.
+- Row 122 is published as one word, `pasagoualalingauang`. Joby's table cell wraps it across two lines (`pasagoualalingaua` / `ng`, PDF p. 9), which the text layer reads as a space; van der Vlis sets it solid, so there is no variant (maintainer, 2026-10-15). The FORM's `notes` says so.
+- Row 1060's van der Vlis cell has two lines, `vougot` and `vuxot` (PDF p. 75). Only `vuxot`, the second spelling, is published as the variant (maintainer, 2026-10-15).
 
 ## QC status
 
