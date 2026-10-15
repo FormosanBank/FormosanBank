@@ -336,13 +336,16 @@ def step5_strip_markup(text: str, gloss: bool = False) -> tuple:
     else:
         text = _BRACKET_MARKER.sub("", text)
     clean, is_code_switch = strip_l2m(strip_prosodic_markers(text))
+    # Lengthening first: in 'putu<vaka>va^kaan/==' the IU terminal is only
+    # trailing once the '==' is gone (otherwise the '/' survived into the
+    # morpheme the infix expansion builds -- V121, kkvNr_millet_Muu S_138).
+    clean = _LENGTHENING.sub("", clean)
     # Strip the IU terminal only when it sits against a word, at either end. A
     # form that is nothing but "/" is the sentence-split separator step 2 keys
     # on, and step 5 runs first -- removing it silently disabled splitting.
     if clean.strip().strip("/"):
         clean = _IU_TERMINAL.sub("", clean)
         clean = _IU_LEADING.sub("", clean)
-    clean = _LENGTHENING.sub("", clean)
     clean = _PAUSE_DOTS.sub("", clean)
     clean = drop_starred_alternatives(clean)
     return clean.strip(), is_code_switch
@@ -956,9 +959,41 @@ def _merge(group: list, stats: dict) -> list:
     first_id = group[0][0]
     merged = {"ori": [], "gloss": [], "free": [], "s_end": True}
     spans = []
+    # A record with no transcript line (none, or punctuation only) would leave
+    # its words out of the sentence text, and the whole sentence would then
+    # publish no words. When another record of the sentence has a line, such a
+    # record contributes its own word cells instead, segmentation marks off, as
+    # a sentence built entirely from word cells does (review page round 6, card
+    # noori: "apply the rule").
+    # A line holding nothing but sound annotations ((H), (COUGHS), (WHITE NOISE)),
+    # sounds without letters ([@@]) and speaker labels (M:) is not a transcript line.
+    def annotations_off(tokens):
+        return re.sub(r"\([^()]*\)", " ", " ".join(map(str, tokens))).split()
+
+    def wordy_line(tokens):
+        return any(WORDY.search(tok) for tok in annotations_off(tokens)
+                   if not re.fullmatch(r"[^\s:]+:", tok))
+
+    has_line = any(wordy_line(r[1].get("ori") or []) for r in group)
     for rec in group:
         body = rec[1]
-        merged["ori"].extend(body.get("ori") or [])
+        ori = body.get("ori") or []
+        cells = []
+        if has_line and not wordy_line(ori):
+            raw = [str(row[0]).strip() for row in body.get("gloss") or []
+                   if isinstance(row, list) and row and str(row[0]).strip()]
+            if wordy_line(raw):
+                # Cleaned as one string, as the word cells are (step 5), before the
+                # segmentation marks come off: markup can span cells (<Xta n'a
+                # aʉmtaX>), and taking '<' '>' off first would break <X..X>, <L2M..L2M>.
+                joined = step5_strip_markup(" ".join(annotations_off(raw)))[0]
+                cells = _SEG_MARKERS.sub("", joined).split()
+        if cells:
+            merged["ori"].extend(cells)
+            stats["16   transcript-less record's word cells joined to the sentence text"] = stats.get(
+                "16   transcript-less record's word cells joined to the sentence text", 0) + 1
+        else:
+            merged["ori"].extend(ori)
         merged["gloss"].extend(body.get("gloss") or [])
         if body.get("free"):
             merged["free"] = list(body["free"])

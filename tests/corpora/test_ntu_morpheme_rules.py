@@ -408,3 +408,24 @@ def test_a_translation_wrapped_whole_in_one_quote_pair_is_unwrapped():
     assert u('"A" and "B"') == '"A" and "B"'                 # two quotations: left alone
     assert u("「他說『走』」") == "「他說『走』」"              # a quotation inside: left alone
     assert u('He said "go".') == 'He said "go".'
+
+
+def test_the_iu_terminal_is_stripped_once_the_lengthening_is_gone():
+    # kkvNr_millet_Muu S_138: 'putu<vaka>va^kaan/==' left a '/' in the morpheme
+    # the infix expansion built (V121).
+    from pipeline_stories import step5_strip_markup
+    assert step5_strip_markup("putu<vaka>va^kaan/==")[0] == "putu<vaka>vakaan"
+    assert step5_strip_markup("/")[0] == "/"          # the split separator stays
+
+
+def test_a_record_without_a_transcript_line_contributes_its_words():
+    # Review page round 6, card noori: "apply the rule".
+    from pipeline_stories import _merge
+    rec = lambda i, ori, rows, end=False: [i, {"ori": ori, "gloss": rows, "s_end": end}]
+    g = [rec(9, ["sa", "ka", "maungu"], [["sa", "", ""], ["ka", "", ""], ["maungu", "", ""]]),
+         rec(10, [], [["...", "", ""], ["sa-pece", "", ""], ["<XkikayX>,_", "", ""]]),
+         rec(11, ["..", "(COUGHS)"], [], True)]
+    assert _merge(g, {})[1]["ori"] == ["sa", "ka", "maungu", "sapece", "kikay,", "..", "(COUGHS)"]
+    # a line of annotations and labels alone is not a transcript line: nothing changes
+    g = [rec(1, ["M:", "[@@]"], []), rec(2, [], [["ho", "", ""]], True)]
+    assert _merge(g, {})[1]["ori"] == ["M:", "[@@]"]
