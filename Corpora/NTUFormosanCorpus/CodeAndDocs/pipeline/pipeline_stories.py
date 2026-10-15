@@ -40,7 +40,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[4]   # <bank>/Corpora/<C>/CodeAndD
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 from pipeline_grammar import (SPLIT, XML_LANG, add_transl as _add_transl,  # noqa: E402
-                       step1_brackets, step7_align_separator, drop_starred_alternatives, drop_starred_readings, free_entries, unwrap_english,
+                       step1_brackets, step7_align_separator, drop_starred_alternatives, drop_starred_readings, free_entries, unwrap_translation,
                    load_free_repairs,
                    conform_sentence,
                        build_attestation, load_malformed_translations,
@@ -751,9 +751,11 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                 vform.set("kindOf", "original")
                 vform.text = _resolve(source_form, keep=True)
                 for line in body.get("free") or []:
-                    if line.startswith("#c"): add_transl(variant, "zho", drop_starred_readings(line[2:]))
+                    if line.startswith("#c"): add_transl(variant, "zho", drop_starred_readings(
+                        unwrap_translation(line[2:].strip())
+                        if FREE_REPAIRS.get((text_id, "*", "zho")) == "unwrap" else line[2:]))
                     elif line.startswith("#e"): add_transl(variant, "eng", drop_starred_readings(
-                        unwrap_english(line[2:].strip())
+                        unwrap_translation(line[2:].strip())
                         if FREE_REPAIRS.get((text_id, "*", "eng")) == "unwrap" else line[2:]))
                 stats["11 unglossed optional parentheticals split"] = stats.get(
                     "11 unglossed optional parentheticals split", 0) + 1

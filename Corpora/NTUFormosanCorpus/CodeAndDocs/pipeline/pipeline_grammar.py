@@ -1046,20 +1046,27 @@ def drop_starred_readings(text: str) -> str:
 _FINAL_PUNCT = re.compile(r"[.!?。！？]\s*$")
 _LIT = re.compile(r"^\s*[(（]\s*lit\.?\s*[)）]\s*", re.I)
 
-def unwrap_english(text: str) -> str:
+_WRAP_OPEN = '"“＂「'
+_WRAP_CLOSE = '"”＂」'
+_ANY_QUOTE = '"“”＂「」『』'
+
+
+def unwrap_translation(text: str) -> str:
     """Drop the one pair of quotation marks around a whole translation
-    ('" dog also came to see ."' -> 'dog also came to see .'; sentence-final
-    punctuation after the closing mark stays). A translation with any other
-    quotation mark inside is left as it is. Applied where
-    free_translation_repairs.tsv says `unwrap` (maintainer, 2026-10-14: "remove
-    the quotations from the English in an earlier step")."""
+    ('" dog also came to see ."' -> 'dog also came to see .', '「從墓地帶回祭品。」'
+    -> '從墓地帶回祭品。'; sentence-final punctuation after the closing mark
+    stays). A translation with any other quotation mark inside is left as it is.
+    Applied where free_translation_repairs.tsv says `unwrap` (maintainer,
+    2026-10-14: "remove the quotations from the English in an earlier step";
+    then "unwrap the Chinese using the same rules we've used for English")."""
     if not text:
         return text
     s = text.strip()
     k = len(s) - 1
-    while k > 0 and s[k] in ".!?":
+    while k > 0 and s[k] in ".!?。！？":
         k -= 1
-    if k <= 0 or s[0] not in '"“' or s[k] not in '"”' or any(c in '"“”' for c in s[1:k]):
+    if k <= 0 or s[0] not in _WRAP_OPEN or s[k] not in _WRAP_CLOSE \
+            or any(c in _ANY_QUOTE for c in s[1:k]):
         return text
     return (s[1:k].strip() + s[k + 1:]).strip()
 
@@ -1151,11 +1158,14 @@ def free_entries(free: list, stem: str, rid: str, repairs: dict) -> list:
     notes: list = []
     for line in free or []:
         if line.startswith("#c"):
-            by_lang["zho"].append(line[2:].strip())
+            text = line[2:].strip()
+            if repairs.get((stem, "*", "zho")) == "unwrap":
+                text = unwrap_translation(text)
+            by_lang["zho"].append(text)
         elif line.startswith("#e"):
             text = line[2:].strip()
             if repairs.get((stem, "*", "eng")) == "unwrap":
-                text = unwrap_english(text)
+                text = unwrap_translation(text)
             by_lang["eng"].append(text)
         elif line.startswith("#n"):
             notes.append(line[2:].strip())
