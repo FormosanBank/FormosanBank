@@ -118,6 +118,22 @@ python add_dialects.py --dialects_csv dialects.csv --final_xml_dir Final_XML
 **_Output_**
 This edits the XML in the `Final_XML` directory to update the id attribute for <TEXT> tags.
 
+5a. **Re-apply recorded hand edits**
+
+One-off source corrections that no rule should make are recorded in
+`CodeAndDocs/manual_edits.xml` (changelog: `CodeAndDocs/manual_edits.md`) and
+re-applied here, before any cleaning:
+
+   ```bash
+   python path/to/FormosanBankRepo/QC/cleaning/apply_manual_edits.py --corpora_path Final_XML --manual_file path/to/FormosanBankRepo/Corpora/ePark/CodeAndDocs/manual_edits.xml
+   ```
+
+Currently one record: `wen_hua_pian_cultural_section/Puyuma/Jianhe_Puyuma.xml`
+S 246, where the source typed two of its four quotation marks as `''`
+(`vavayan''`, `''imu''`); the next sentence, S 247, is the same template typed
+with `"` throughout (maintainer, 2026-10-14: "a one-off that should not have a
+rule").
+
 6. **Clean XML and standardize punctuation**
 
    ```bash
