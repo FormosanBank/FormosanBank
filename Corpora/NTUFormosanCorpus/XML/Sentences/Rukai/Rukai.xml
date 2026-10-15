@@ -60574,33 +60574,73 @@
         </W>
     </S>
     <S id="20200529-FW-Ludwig_S_15">
-        <FORM kindOf="original">apiapakisaalraku musuane kay hungu. 想要實現使役借第一人稱單數.附著主格 第二人稱單數.自由斜格.</FORM>
-        <PHON kindOf="original">apiapakisaaɭaku musuanə kaj huŋu ***************** **********</PHON>
-        <FORM kindOf="standard">apiapakisaalraku musuane kay hungu. 想要實現使役借第一人稱單數.附著主格 第二人稱單數.自由斜格.</FORM>
-        <PHON kindOf="standard">apiapakisaaɭaku musuanə kaj huŋu ***************** **********</PHON>
+        <FORM kindOf="original">apiapakisaalraku musuane kay hungu.</FORM>
+        <PHON kindOf="original">apiapakisaaɭaku musuanə kaj huŋu</PHON>
+        <FORM kindOf="standard">apiapakisaalraku musuane kay hungu.</FORM>
+        <PHON kindOf="standard">apiapakisaaɭaku musuanə kaj huŋu</PHON>
         <TRANSL xml:lang="zho">我想借書給你</TRANSL>
         <TRANSL xml:lang="eng">I want to lend a book to you.</TRANSL>
         <W id="20200529-FW-Ludwig_S_15_W0">
-            <FORM kindOf="original">apiapakisaalraku</FORM>
-            <PHON kindOf="original">apiapakisaaɭaku</PHON>
-            <FORM kindOf="standard">apiapakisaalraku</FORM>
-            <PHON kindOf="standard">apiapakisaaɭaku</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">api-a-pa-kisaalru=aku</TRANSL>
+            <FORM kindOf="original">api-a-pa-kisaalru=aku</FORM>
+            <PHON kindOf="original">apiapakisaaɭuaku</PHON>
+            <FORM kindOf="standard">api-a-pa-kisaalru=aku</FORM>
+            <PHON kindOf="standard">apiapakisaaɭuaku</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">想要-實現-使役-借=第一人稱單數.附著主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">want-RLS-CAUS-borrow=1S.BN</TRANSL>
+            <M id="20200529-FW-Ludwig_S_15_W0M0">
+                <FORM kindOf="original">api</FORM>
+                <PHON kindOf="original">api</PHON>
+                <FORM kindOf="standard">api</FORM>
+                <PHON kindOf="standard">api</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">想要</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">want</TRANSL>
+            </M>
+            <M id="20200529-FW-Ludwig_S_15_W0M1">
+                <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
+            </M>
+            <M id="20200529-FW-Ludwig_S_15_W0M2">
+                <FORM kindOf="original">pa</FORM>
+                <PHON kindOf="original">pa</PHON>
+                <FORM kindOf="standard">pa</FORM>
+                <PHON kindOf="standard">pa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CAUS</TRANSL>
+            </M>
+            <M id="20200529-FW-Ludwig_S_15_W0M3">
+                <FORM kindOf="original">kisaalru</FORM>
+                <PHON kindOf="original">kisaaɭu</PHON>
+                <FORM kindOf="standard">kisaalru</FORM>
+                <PHON kindOf="standard">kisaaɭu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">借</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">borrow</TRANSL>
+            </M>
+            <M id="20200529-FW-Ludwig_S_15_W0M4">
+                <FORM kindOf="original">=aku</FORM>
+                <PHON kindOf="original">aku</PHON>
+                <FORM kindOf="standard">=aku</FORM>
+                <PHON kindOf="standard">aku</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">第一人稱單數.附著主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1S.BN</TRANSL>
+            </M>
         </W>
         <W id="20200529-FW-Ludwig_S_15_W1">
             <FORM kindOf="original">musuane</FORM>
             <PHON kindOf="original">musuanə</PHON>
             <FORM kindOf="standard">musuane</FORM>
             <PHON kindOf="standard">musuanə</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">musuane</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">第二人稱單數.自由斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">2S.FO</TRANSL>
             <M id="20200529-FW-Ludwig_S_15_W1M0">
                 <FORM kindOf="original">musuane</FORM>
                 <PHON kindOf="original">musuanə</PHON>
                 <FORM kindOf="standard">musuane</FORM>
                 <PHON kindOf="standard">musuanə</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">musuane</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">第二人稱單數.自由斜格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">2S.FO</TRANSL>
             </M>
         </W>
@@ -60610,14 +60650,12 @@
             <FORM kindOf="standard">kay</FORM>
             <PHON kindOf="standard">kaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">kay</TRANSL>
             <M id="20200529-FW-Ludwig_S_15_W2M0">
                 <FORM kindOf="original">kay</FORM>
                 <PHON kindOf="original">kaj</PHON>
                 <FORM kindOf="standard">kay</FORM>
                 <PHON kindOf="standard">kaj</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">kay</TRANSL>
             </M>
         </W>
         <W id="20200529-FW-Ludwig_S_15_W3">
@@ -60626,57 +60664,13 @@
             <FORM kindOf="standard">hungu.</FORM>
             <PHON kindOf="standard">huŋu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">書</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">hungu.</TRANSL>
             <M id="20200529-FW-Ludwig_S_15_W3M0">
                 <FORM kindOf="original">hungu.</FORM>
                 <PHON kindOf="original">huŋu</PHON>
                 <FORM kindOf="standard">hungu.</FORM>
                 <PHON kindOf="standard">huŋu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">書</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">hungu.</TRANSL>
             </M>
-        </W>
-        <W id="20200529-FW-Ludwig_S_15_W4">
-            <FORM kindOf="original">想要-實現-使役-借=第一人稱單數.附著主格</FORM>
-            <PHON kindOf="original">*****************</PHON>
-            <FORM kindOf="standard">想要-實現-使役-借=第一人稱單數.附著主格</FORM>
-            <PHON kindOf="standard">*****************</PHON>
-            <M id="20200529-FW-Ludwig_S_15_W4M0">
-                <FORM kindOf="original">想要</FORM>
-                <PHON kindOf="original">**</PHON>
-                <FORM kindOf="standard">想要</FORM>
-                <PHON kindOf="standard">**</PHON>
-            </M>
-            <M id="20200529-FW-Ludwig_S_15_W4M1">
-                <FORM kindOf="original">實現</FORM>
-                <PHON kindOf="original">**</PHON>
-                <FORM kindOf="standard">實現</FORM>
-                <PHON kindOf="standard">**</PHON>
-            </M>
-            <M id="20200529-FW-Ludwig_S_15_W4M2">
-                <FORM kindOf="original">使役</FORM>
-                <PHON kindOf="original">**</PHON>
-                <FORM kindOf="standard">使役</FORM>
-                <PHON kindOf="standard">**</PHON>
-            </M>
-            <M id="20200529-FW-Ludwig_S_15_W4M3">
-                <FORM kindOf="original">借</FORM>
-                <PHON kindOf="original">*</PHON>
-                <FORM kindOf="standard">借</FORM>
-                <PHON kindOf="standard">*</PHON>
-            </M>
-            <M id="20200529-FW-Ludwig_S_15_W4M4">
-                <FORM kindOf="original">=第一人稱單數.附著主格</FORM>
-                <PHON kindOf="original">**********</PHON>
-                <FORM kindOf="standard">=第一人稱單數.附著主格</FORM>
-                <PHON kindOf="standard">**********</PHON>
-            </M>
-        </W>
-        <W id="20200529-FW-Ludwig_S_15_W5">
-            <FORM kindOf="original">第二人稱單數.自由斜格</FORM>
-            <PHON kindOf="original">**********</PHON>
-            <FORM kindOf="standard">第二人稱單數.自由斜格</FORM>
-            <PHON kindOf="standard">**********</PHON>
         </W>
     </S>
     <S id="20200529-FW-Ludwig_S_16">

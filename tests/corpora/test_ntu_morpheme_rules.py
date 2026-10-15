@@ -379,7 +379,9 @@ def test_x_glosses_become_x_and_mis_cased_labels_are_capitalized():
     # letter that is an attested gloss (20+ in NTU) when fully capitalized -> capitals.
     from pipeline_grammar import normalize_gloss_cell as n
     assert [n(v) for v in ("x", "xx", "XX", "XXX", "XXXX", "X")] == ["X"] * 6
-    assert n("XXXXX") == "XXXXX"                       # not covered by the ruling
+    # card xlong (2026-10-14, "yes, all of them"): runs of five or more, and [XXXX]
+    assert [n(v) for v in ("XXXXX", "XXXXXXXX", "[XXXX]")] == ["X"] * 3
+    assert n("[XX]") == "[XX]" and n("XXXXa") == "XXXXa"   # not covered by either ruling
     assert n("FiL") == "FIL" and n("Ncm") == "Ncm"     # NCM is not attested 20 times
     assert n("fil") == "fil"                           # no capital letter: left alone
     assert n("Han") == "Han"                           # held back: the ethnonym (payrange 漢人)
@@ -394,3 +396,15 @@ def test_a_stray_punctuation_token_is_joined_only_when_that_lines_the_words_up()
     s = ET.fromstring('<S><FORM kindOf="original">gei ta chuanzhe .</FORM></S>')
     assert not aligned_or_joined(s, ["gei", "chuanzhe"])
     assert s.find("FORM").text == "gei ta chuanzhe ."     # left as it was
+
+
+def test_a_translation_wrapped_whole_in_one_quote_pair_is_unwrapped():
+    # Maintainer, 2026-10-14: the four Saisiyat stories' habitual quotes come off
+    # the English, and holiday's off the Chinese ("the same rules").
+    from pipeline_grammar import unwrap_translation as u
+    assert u('" dog also came to see ."') == "dog also came to see ."
+    assert u('"The dog fell down".') == "The dog fell down."
+    assert u("「從墓地帶回祭品。」") == "從墓地帶回祭品。"
+    assert u('"A" and "B"') == '"A" and "B"'                 # two quotations: left alone
+    assert u("「他說『走』」") == "「他說『走』」"              # a quotation inside: left alone
+    assert u('He said "go".') == 'He said "go".'

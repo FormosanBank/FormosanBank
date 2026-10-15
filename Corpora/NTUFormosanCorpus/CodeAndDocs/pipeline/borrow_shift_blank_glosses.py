@@ -30,7 +30,10 @@ its provenance and the counts, so a reader can tell it from a gloss NTU wrote. A
 word whose single M mirrors it gets the same gloss on the M.
 
 Anything not borrowed -- no occurrences, evidence split, or the word could not
-be located unambiguously -- is written to ``--report`` for review.
+be located unambiguously -- is written to ``--report`` for review. For a
+same-English slot the rule leaves empty, same_english_rulings.tsv may name the
+Chinese the maintainer chose for that word and English gloss (review page,
+2026-10-14: "write"); it is written with a note saying so.
 
     python borrow_shift_blank_glosses.py --xml_dir <dir> --codedocs <CodeAndDocs> \\
         [--report out.tsv] [--min-count 5] [--min-share 0.9]
@@ -168,6 +171,16 @@ def same_english_blanks(codedocs: Path, subcorpus: str | None) -> list:
     return out
 
 
+def load_rulings(path: Path) -> dict:
+    """{(language dir, normalized word, English gloss): (Chinese, rationale)}."""
+    out = {}
+    if path.exists():
+        lines = [l for l in path.read_text(encoding="utf-8").splitlines() if l and not l.startswith("#")]
+        for row in csv.DictReader(lines, delimiter="\t"):
+            out[(row["language"], norm_form(row["word"]), row["english"])] = (row["chinese"], row["rationale"])
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -185,6 +198,7 @@ def main() -> int:
     args = ap.parse_args()
 
     rows = load_table(args.table)
+    rulings = load_rulings(Path(__file__).resolve().parent / "same_english_rulings.tsv")
     if args.subcorpus:
         rows = [r for r in rows if r["source_file"].startswith(args.subcorpus + "/")]
     blanks = [b + (DISPLACED,) for b in created_blanks(args.codedocs, rows)]
@@ -211,6 +225,8 @@ def main() -> int:
                 if gloss(w, "eng") and evidence_gloss(gloss(w, "zho")):
                     pair[(lang_dir, norm_form(form_text(w)), gloss(w, "eng"))][gloss(w, "zho")] += 1
     changed_files = set()
+    filled = set()   # (W, gloss language) written in this run: a W whose source left an empty
+                     # TRANSL still reads as bare to gloss(), and must not be filled twice
     for language, sid, src_form, gl, why in blanks:
         base = {"language": language, "sentence": sid, "word": src_form, "gloss_lang": gl}
         hit = sents.get((language, sid))
@@ -219,7 +235,14 @@ def main() -> int:
             continue
         path, s = hit
         key = norm_form(src_form)
-        cands = [w for w in s.findall("W") if norm_form(form_text(w)) == key and not gloss(w, gl)]
+        cands = [w for w in s.findall("W") if norm_form(form_text(w)) == key and not gloss(w, gl)
+                 and (w.get("id"), gl) not in filled]
+        if (len(cands) > 1 and why == SAME_ENGLISH and len({gloss(w, "eng") for w in cands}) == 1
+                and (language, key, gloss(cands[0], "eng")) in rulings):
+            # Identical bare words with the same English and a ruling (Bunun S_344 has
+            # via "why" twice): either assignment gives the same result, so the ruling
+            # fills them one at a time.
+            cands = cands[:1]
         if len(cands) != 1:
             report.append({**base, "outcome": f"{len(cands)} bare W with this form; not located"})
             stats["not located"] += 1
@@ -237,12 +260,23 @@ def main() -> int:
         n = sum(counts.values())
         top, k = (counts.most_common(1)[0] if counts else ("", 0))
         dist = ", ".join(f"{g} {c}" for g, c in counts.most_common(4)) or "none"
-        if n < args.min_count or k / max(n, 1) < args.min_share:
+        ruled = rulings.get((language, key, gloss(w, "eng"))) if why == SAME_ENGLISH else None
+        if (n < args.min_count or k / max(n, 1) < args.min_share) and ruled:
+            top = ruled[0]
+            note = (f"gloss set by the maintainer's ruling (review page, 2026-10-14); "
+                    f"'{src_form}' '{gloss(w, 'eng')}' is glossed {dist} elsewhere in this language")
+            stats["written by the maintainer's ruling"] += 1
+            outcome = f"ruled '{top}' (evidence: {dist}, n={n})"
+        elif n < args.min_count or k / max(n, 1) < args.min_share:
             report.append({**base, "outcome": f"not borrowed: {dist} (n={n})"})
             stats["not borrowed (evidence too thin or split)"] += 1
             continue
-        note = (f"gloss borrowed: '{src_form}' is glossed this way in {k} of its {n} other "
-                f"occurrences in this language; {why}")
+        else:
+            note = (f"gloss borrowed: '{src_form}' is glossed this way in {k} of its {n} other "
+                    f"occurrences in this language; {why}")
+            outcome = f"borrowed '{top}' ({k}/{n})"
+            stats["borrowed"] += 1
+        filled.add((w.get("id"), gl))
         t = etree.SubElement(w, "TRANSL")
         t.set(XML_LANG, gl)
         t.set("notes", note)
@@ -250,8 +284,7 @@ def main() -> int:
         ms = w.findall("M")
         if len(ms) == 1 and norm_form(form_text(ms[0])) == key and not gloss(ms[0], gl):
             ms[0].append(copy.deepcopy(t))
-        report.append({**base, "outcome": f"borrowed '{top}' ({k}/{n})"})
-        stats["borrowed"] += 1
+        report.append({**base, "outcome": outcome})
         changed_files.add(path)
     if not args.dry_run:
         for path in changed_files:

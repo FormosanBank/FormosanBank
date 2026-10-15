@@ -3695,10 +3695,10 @@
         </W>
     </S>
     <S id="kkvNr_sowing_Paicu_S_55">
-        <FORM kindOf="original" notes="po’ocipi uru煮飯">kumakʉʉnkia nipo'ocipa tanʉkʉ, mima , pava'atʉ mima canumu.</FORM>
-        <PHON kindOf="original">kumak**nkia nipoʔoʦipa tan*k* mima  pavaʔat* mima ʦanumu</PHON>
-        <FORM kindOf="standard">kumakʉʉnkia nipo'ocipa tanʉkʉ, mima , pava'atʉ mima canumu.</FORM>
-        <PHON kindOf="standard">kumakɨɨnkia nipoʔoʦipa tanɨkɨ mima  pavaʔatɨ mima ʦanumu</PHON>
+        <FORM kindOf="original" notes="po’ocipi uru煮飯">kumakʉʉnkia nipo'ocipa tanʉkʉ, mima pava'atʉ mima canumu.</FORM>
+        <PHON kindOf="original">kumak**nkia nipoʔoʦipa tan*k* mima pavaʔat* mima ʦanumu</PHON>
+        <FORM kindOf="standard">kumakʉʉnkia nipo'ocipa tanʉkʉ, mima pava'atʉ mima canumu.</FORM>
+        <PHON kindOf="standard">kumakɨɨnkia nipoʔoʦipa tanɨkɨ mima pavaʔatɨ mima ʦanumu</PHON>
         <TRANSL xml:lang="zho">我們吃所煮的芋頭,喝...配著喝水。</TRANSL>
         <TRANSL xml:lang="eng">we ate the taro that we cooked, drink… and accompanied with water.</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sowing_Paicu.mp3" start="210.77" end="222.07" file="kkvNr_sowing_Paicu_S29.mp3"/>
@@ -3707,6 +3707,8 @@
             <PHON kindOf="original">kumak**nkia</PHON>
             <FORM kindOf="standard">k&lt;um&gt;a-kʉʉn=kia</FORM>
             <PHON kindOf="standard">kumakɨɨnkia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">Ca重疊&lt;主焦&gt;-吃=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Ca&lt;AF&gt;-eat=1SG.NOM</TRANSL>
             <M id="kkvNr_sowing_Paicu_S_55_W0M0_0">
                 <FORM kindOf="original">-um-</FORM>
                 <PHON kindOf="original">um</PHON>
@@ -3739,14 +3741,14 @@
                 <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
             </M>
-            <TRANSL xml:lang="zho" kindOf="original">Ca重疊&lt;主焦&gt;-吃=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">Ca&lt;AF&gt;-eat=1SG.NOM</TRANSL>
         </W>
         <W id="kkvNr_sowing_Paicu_S_55_W1">
             <FORM kindOf="original">ni-po'ocip-a</FORM>
             <PHON kindOf="original">nipoʔoʦipa</PHON>
             <FORM kindOf="standard">ni-po'ocip-a</FORM>
             <PHON kindOf="standard">nipoʔoʦipa</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">完成-煮-關係詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PFV-cook-REL</TRANSL>
             <M id="kkvNr_sowing_Paicu_S_55_W1M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
@@ -3771,14 +3773,14 @@
                 <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
             </M>
-            <TRANSL xml:lang="zho" kindOf="original">完成-煮-關係詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PFV-cook-REL</TRANSL>
         </W>
         <W id="kkvNr_sowing_Paicu_S_55_W2">
             <FORM kindOf="original">tanʉkʉ,</FORM>
             <PHON kindOf="original">tan*k*</PHON>
             <FORM kindOf="standard">tanʉkʉ,</FORM>
             <PHON kindOf="standard">tanɨkɨ</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">芋頭</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">taro</TRANSL>
             <M id="kkvNr_sowing_Paicu_S_55_W2M0">
                 <FORM kindOf="original">tanʉkʉ,</FORM>
                 <PHON kindOf="original">tan*k*</PHON>
@@ -3787,14 +3789,14 @@
                 <TRANSL xml:lang="zho" kindOf="original">芋頭</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">taro</TRANSL>
             </M>
-            <TRANSL xml:lang="zho" kindOf="original">芋頭</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">taro</TRANSL>
         </W>
         <W id="kkvNr_sowing_Paicu_S_55_W3">
             <FORM kindOf="original">mima</FORM>
             <PHON kindOf="original">mima</PHON>
             <FORM kindOf="standard">mima</FORM>
             <PHON kindOf="standard">mima</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">喝</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">drink</TRANSL>
             <M id="kkvNr_sowing_Paicu_S_55_W3M0">
                 <FORM kindOf="original">mima</FORM>
                 <PHON kindOf="original">mima</PHON>
@@ -3803,23 +3805,31 @@
                 <TRANSL xml:lang="zho" kindOf="original">喝</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">drink</TRANSL>
             </M>
-            <TRANSL xml:lang="zho" kindOf="original">喝</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">drink</TRANSL>
         </W>
-        <W id="kkvNr_sowing_Paicu_S_55_W5">
+        <W id="kkvNr_sowing_Paicu_S_55_W4">
             <FORM kindOf="original">pava'atʉ</FORM>
             <PHON kindOf="original">pavaʔat*</PHON>
             <FORM kindOf="standard">pava'atʉ</FORM>
             <PHON kindOf="standard">pavaʔatɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">配著</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">accompany</TRANSL>
+            <M id="kkvNr_sowing_Paicu_S_55_W4M0">
+                <FORM kindOf="original">pava'atʉ</FORM>
+                <PHON kindOf="original">pavaʔat*</PHON>
+                <FORM kindOf="standard">pava'atʉ</FORM>
+                <PHON kindOf="standard">pavaʔatɨ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">配著</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">accompany</TRANSL>
+            </M>
         </W>
-        <W id="kkvNr_sowing_Paicu_S_55_W6">
+        <W id="kkvNr_sowing_Paicu_S_55_W5">
             <FORM kindOf="original">mima</FORM>
             <PHON kindOf="original">mima</PHON>
             <FORM kindOf="standard">mima</FORM>
             <PHON kindOf="standard">mima</PHON>
-            <M id="kkvNr_sowing_Paicu_S_55_W6M0">
+            <TRANSL xml:lang="zho" kindOf="original">喝</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">drink</TRANSL>
+            <M id="kkvNr_sowing_Paicu_S_55_W5M0">
                 <FORM kindOf="original">mima</FORM>
                 <PHON kindOf="original">mima</PHON>
                 <FORM kindOf="standard">mima</FORM>
@@ -3827,15 +3837,15 @@
                 <TRANSL xml:lang="zho" kindOf="original">喝</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">drink</TRANSL>
             </M>
-            <TRANSL xml:lang="zho" kindOf="original">喝</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">drink</TRANSL>
         </W>
-        <W id="kkvNr_sowing_Paicu_S_55_W7">
+        <W id="kkvNr_sowing_Paicu_S_55_W6">
             <FORM kindOf="original">canumu.</FORM>
             <PHON kindOf="original">ʦanumu</PHON>
             <FORM kindOf="standard">canumu.</FORM>
             <PHON kindOf="standard">ʦanumu</PHON>
-            <M id="kkvNr_sowing_Paicu_S_55_W7M0">
+            <TRANSL xml:lang="zho" kindOf="original">水</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">water</TRANSL>
+            <M id="kkvNr_sowing_Paicu_S_55_W6M0">
                 <FORM kindOf="original">canumu.</FORM>
                 <PHON kindOf="original">ʦanumu</PHON>
                 <FORM kindOf="standard">canumu.</FORM>
@@ -3843,8 +3853,6 @@
                 <TRANSL xml:lang="zho" kindOf="original">水</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">water</TRANSL>
             </M>
-            <TRANSL xml:lang="zho" kindOf="original">水</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">water</TRANSL>
         </W>
     </S>
     <S id="kkvNr_sowing_Paicu_S_57">

@@ -119,16 +119,18 @@ three rules are maintainer rulings, recorded in the decision log.
   lines, all in the stories.
 - **Gloss-cell rulings of 2026-10-14** (`pipeline_grammar.normalize_gloss_cell`;
   step 19 in Stories/Sentences, 23 in Grammar). A gloss that is solely `x`, `xx`,
-  `XX`, `XXX` or `XXXX` is written `X`, in both languages. A gloss with at least
+  `XX`, `XXX` or `XXXX` is written `X`, in both languages; so are runs of five or
+  more X and `[XXXX]` (card xlong, 2026-10-14: "yes, all of them"). A gloss with at least
   one capital letter is fully capitalized when the capitalized form is a gloss
   attested at least 20 times in NTU's source (`FIl` → `FIL`, `Part` → `PART`);
-  `Han` (Rukai payrange, 漢人, the ethnonym) is held back pending a ruling.
+  `Han` (Rukai payrange, 漢人, the ethnonym) stays `Han` (card han, 2026-10-14: "keep").
 - **Grammar's `_`** (step 24): the grammar books put `_` in the English column; it
   is no longer published as an English gloss (ruling 2026-10-14: "drop").
 - **Per-cell decisions** (`gloss_cell_decisions.tsv`): the maintainer's answers
   on the review page that set a word's cells (which cell is English, a label in
   both slots, a sentence's glosses removed), applied after the shift repairs and
-  pinned to the value each cell must hold.
+  pinned to the value each cell must hold. All three builders apply them (the
+  Grammar builder since round 6 of the review page).
 - **A stray punctuation token** in the sentence form (`chuanzhe .`) is joined to
   the word before it when, and only when, that lets the word tier account for
   the sentence (`pipeline_grammar.aligned_or_joined`; ruling 2026-10-14: "join").
@@ -155,10 +157,15 @@ Per POL-039, item-specific corrections live in data files, not in code:
   or by `*` for a whole story (`unwrap`: the four Saisiyat stories whose
   translator wrapped every English translation in quotation marks, and
   holiday's Chinese)
+- `same_english_rulings.tsv` — the Chinese gloss the maintainer chose for a word
+  whose source wrote the same English gloss in both slots, where the borrowing
+  rule's evidence was too thin (review page, 2026-10-14: "write"); read by
+  `borrow_shift_blank_glosses.py`
 - `audio_overrides.tsv` — AUDIO suppression beyond the `沒有音檔` sentinel
 - `p2_source_repairs.xml` — recorded whole-record source repairs, each pinned to
   a SHA-256 of the record it replaces so a drifting source fails the build. Read
-  by the Grammar and Stories builders.
+  by all three builders (Sentences since round 6 of the review page: Rukai
+  20200529-FW-Ludwig record 15).
 - `bc_restorations.tsv` — gloss cells set back to `BC` (ruling 2026-09-29): NTU's
   2026 release replaced the backchannel gloss `BC` with the sound in capitals
   (`M`, `OH`, `HAY`), 404 cells. Each row names the value it expects to find.

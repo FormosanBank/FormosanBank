@@ -716,6 +716,9 @@ def apply_cell_restorations(records: list, src_key: str, table: dict, stats: dic
 # English and Chinese." and "change glosses that consist entirely of "XXXX" and
 # "XXX" to "X" everywhere."
 X_GLOSSES = {"x", "xx", "XX", "XXX", "XXXX"}
+# ... and, card xlong (2026-10-14, "yes, all of them"): XXXXX, XXXXXX, XXXXXXX,
+# XXXXXXXX (any run of five or more) and [XXXX].
+X_LONG = re.compile(r"X{5,}|\[XXXX\]")
 # "if something would be an attested gloss (at least 20 attestations in NTU) if
 # all letters were capitalized AND at least one letter is capitalized, then fully
 # capitalize." Held back pending a ruling: 'Han' (Rukai payrange, Chinese 漢人) is
@@ -749,7 +752,7 @@ def normalize_gloss_cell(text: str, stats: dict | None = None) -> str:
     """Apply the 2026-10-14 X and capitalization rulings to one gloss cell."""
     v = (text or "").strip()
     new = None
-    if v in X_GLOSSES:
+    if v in X_GLOSSES or X_LONG.fullmatch(v):
         new = "X"
         key = "x glosses written X"
     elif (v != v.upper() and re.search(r"[A-Z]", v) and v not in CAPS_HELD
@@ -1766,6 +1769,8 @@ def main() -> int:
     repairs = load_record_repairs(Path(__file__).with_name("p2_source_repairs.xml"))
     from gloss_shift import apply_to_records as apply_shift_repairs, load_table
     shift_repairs = load_table()
+    # The maintainer's per-cell decisions on the review page, applied after the shifts.
+    cell_decisions = load_cell_restorations(Path(__file__).with_name("gloss_cell_decisions.tsv"))
     attested = build_attestation(args.json, _attestation_clean) if 7 in steps else {}
     malformed = load_malformed_translations(args.json) if 19 in steps else {}
     stats: dict = {}
@@ -1789,6 +1794,8 @@ def main() -> int:
         # A shift repair on a record p2_source_repairs.xml also replaces fails
         # closed there: that record's pinned digest no longer matches.
         recs = apply_shift_repairs(recs, src_key, shift_repairs, stats)
+        recs = apply_cell_restorations(recs, src_key, cell_decisions, stats,
+                                       label="cells set by the maintainer's decisions")
         root = build(recs, path.stem, steps, stats, src_key, repairs, attested,
                      malformed, language=language_for(path), dialect=dialect_for(path))
         language = path.parent.name.split("_")[0]

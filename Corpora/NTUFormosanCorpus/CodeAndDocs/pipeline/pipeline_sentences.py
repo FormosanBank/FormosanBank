@@ -120,7 +120,8 @@ from pipeline_grammar import (SPLIT, XML_LANG, add_transl as _add_transl, step1_
                    conform_sentence, build_attestation,
                        load_malformed_translations, unglossed_optional,
                        prune_unsupported, _OPTIONAL, step1_realign_sentence, normalize_gloss_cell,
-                       load_cell_restorations, apply_cell_restorations)
+                       load_cell_restorations, apply_cell_restorations,
+                       load_record_repairs, apply_record_repairs)
 from QC.cleaning.clean_xml import swap_punctuation  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 # The gloss/word test helpers live in qa/, which is their single home;
@@ -926,6 +927,9 @@ def main() -> int:
     args.out.mkdir(parents=True, exist_ok=True)
     by_language: dict = {}
     shift_repairs = load_shift_repairs()
+    # Pinned whole-record repairs (p2_source_repairs.xml), applied first as in the
+    # other two builders.
+    record_repairs = load_record_repairs(Path(__file__).resolve().parent / "p2_source_repairs.xml")
     # The maintainer's per-cell decisions on the review page, applied after the shifts.
     cell_decisions = load_cell_restorations(Path(__file__).resolve().parent / "gloss_cell_decisions.tsv")
     for path in sorted(args.json.rglob("*.json")):
@@ -933,6 +937,7 @@ def main() -> int:
         recs = data if isinstance(data, list) else (list(data.values())[0] if data else [])
         if not isinstance(recs, list):
             continue
+        recs = apply_record_repairs(recs, "/".join(path.parts[-3:]), record_repairs, stats)
         # Undo recorded gloss shifts in memory; the source JSON is never written.
         recs = apply_shift_repairs(recs, "/".join(path.parts[-3:]), shift_repairs, stats)
         recs = apply_cell_restorations(recs, "/".join(path.parts[-3:]), cell_decisions, stats,
