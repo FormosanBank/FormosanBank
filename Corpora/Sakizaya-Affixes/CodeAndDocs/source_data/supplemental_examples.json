@@ -1,0 +1,87 @@
+{
+  "sentences": [
+    {
+      "id": "AKIW_SZY_2012_FN_009A",
+      "after": "AKIW_SZY_2012_EX_004",
+      "source": "PDF page 33; footnote 9, first example",
+      "form": "u singsi kaku",
+      "translation": "我是老師"
+    },
+    {
+      "id": "AKIW_SZY_2012_FN_009B",
+      "after": "AKIW_SZY_2012_FN_009A",
+      "source": "PDF page 33; footnote 9, second example",
+      "form": "ci Panay kaku",
+      "translation": "我是Panay"
+    },
+    {
+      "id": "AKIW_SZY_2012_FN_010",
+      "after": "AKIW_SZY_2012_FN_009B",
+      "source": "PDF page 33; footnote 10",
+      "form": "kaku kusa balakiy-ay i niyazu'",
+      "translation": "我在部落是比較年長的"
+    },
+    {
+      "id": "AKIW_SZY_2012_FN_014",
+      "after": "AKIW_SZY_2012_EX_016",
+      "source": "PDF page 37; footnote 14",
+      "form": "kuwang han ni Kacaw ku ayam",
+      "translation": "Kacaw 射擊飛鳥"
+    },
+    {
+      "id": "AKIW_SZY_2012_FN_015",
+      "after": "AKIW_SZY_2012_EX_020B",
+      "source": "PDF page 39; footnote 15",
+      "form": "sa-pa-lamel ni ina tu buting ku banlay.",
+      "translation": "九層塔是媽媽配魚用的。",
+      "words": [
+        ["sa-pa-lamel", "工焦-混", [["sa-pa-", "工焦"], ["lamel", "混"]]],
+        ["ni", "屬格", [["ni", "屬格"]]],
+        ["ina", "媽媽", [["ina", "媽媽"]]],
+        ["tu", "斜格", [["tu", "斜格"]]],
+        ["buting", "魚", [["buting", "魚"]]],
+        ["ku", "主格", [["ku", "主格"]]],
+        ["banlay", "九層塔", [["banlay", "九層塔"]]]
+      ]
+    },
+    {
+      "id": "AKIW_SZY_2012_P130_PROSE",
+      "after": "AKIW_SZY_2012_EX_100B",
+      "source": "PDF pages 130-131; prose example following example 100",
+      "form": "tayza kaku i Taypak",
+      "translation": "我去臺北",
+      "words": [
+        ["tayza", "去", []],
+        ["kaku", "我", []],
+        ["i", "處所格", []],
+        ["Taypak", "臺北", []]
+      ]
+    }
+  ],
+  "alternative_translations": [
+    {
+      "id": "AKIW_SZY_2012_EX_099A",
+      "form": "kapah ku demiad i sadingsing.",
+      "source": "PDF page 130; footnote 98",
+      "translation": "春天天氣好"
+    },
+    {
+      "id": "AKIW_SZY_2012_EX_099B",
+      "form": "mu-celak ku balu nu kilang i sadingsing-an.",
+      "source": "PDF page 130; footnote 99",
+      "translation": "樹的花在春天的時候開"
+    },
+    {
+      "id": "AKIW_SZY_2012_EX_100B",
+      "form": "ma-taba-tabal kaku mu-lekal tu sananal-an.",
+      "source": "PDF page 130; footnote 100",
+      "translation": "我清晨的時候起床得很早"
+    },
+    {
+      "id": "AKIW_SZY_2012_EX_100A",
+      "form": "pay-sananal mi-yatayat tu uzip kaku.",
+      "source": "PDF page 131; explanatory prose for example 100a",
+      "translation": "我每天清晨會運動身體"
+    }
+  ]
+}
