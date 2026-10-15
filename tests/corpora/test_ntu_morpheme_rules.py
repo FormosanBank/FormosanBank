@@ -429,3 +429,15 @@ def test_a_record_without_a_transcript_line_contributes_its_words():
     # a line of annotations and labels alone is not a transcript line: nothing changes
     g = [rec(1, ["M:", "[@@]"], []), rec(2, [], [["ho", "", ""]], True)]
     assert _merge(g, {})[1]["ori"] == ["M:", "[@@]"]
+
+
+def test_a_gloss_keeps_its_language_label_and_loses_other_bracketed_notes():
+    # Review page round 7, card codeswitch: "Let's rewrite them as [Mandarin]
+    # and [Japanese] though." Every other bracketed note still comes off.
+    from pipeline_stories import step5_strip_markup
+    gloss = lambda s: step5_strip_markup(s, gloss=True)[0]
+    assert gloss("[Mandarin]") == "[Mandarin]"
+    assert gloss("[Mandarin]matter") == "[Mandarin]matter"
+    assert gloss("anyway[Japanese]") == "anyway[Japanese]"
+    assert gloss("[Man]") == "" and gloss("[TVH1][u2]talk") == "talk"
+    assert step5_strip_markup("[Mandarin]")[0] == "Mandarin"   # a form is not a gloss

@@ -306,6 +306,12 @@ _PAUSE_DOTS = re.compile(r"\.{2,}")
 
 
 _BRACKET_NOTE = re.compile(r"\[[^\]]*\]")
+# The one bracketed note a gloss keeps: the code-switch label, spelled out
+# (ruling 2026-10-15, "Let's rewrite them as [Mandarin] and [Japanese]";
+# gloss_cell_decisions.tsv does the respelling). It stands at either end of
+# the gloss ('[Mandarin]matter', 'anyway[Japanese]').
+_LANGUAGE_LABEL_HEAD = re.compile(r"^(?:\[(?:Mandarin|Japanese)\])+")
+_LANGUAGE_LABEL_TAIL = re.compile(r"(?:\[(?:Mandarin|Japanese)\])+$")
 
 
 # A one-letter bracket marker ('<A' ... 'A>', '<F' ... 'F>', '<M' ... 'M>')
@@ -331,7 +337,12 @@ def step5_strip_markup(text: str, gloss: bool = False) -> tuple:
     constituent bracketing that other steps resolve.
     """
     text = html.unescape(text or "")
+    head = tail = ""
     if gloss:
+        # A language label is set aside, or the two passes below would remove it.
+        head = "".join(_LANGUAGE_LABEL_HEAD.findall(text))
+        tail = "".join(_LANGUAGE_LABEL_TAIL.findall(text[len(head):]))
+        text = text[len(head):len(text) - len(tail)]
         text = _BRACKET_NOTE.sub("", text)
     else:
         text = _BRACKET_MARKER.sub("", text)
@@ -348,7 +359,7 @@ def step5_strip_markup(text: str, gloss: bool = False) -> tuple:
         clean = _IU_LEADING.sub("", clean)
     clean = _PAUSE_DOTS.sub("", clean)
     clean = drop_starred_alternatives(clean)
-    return clean.strip(), is_code_switch
+    return head + clean.strip() + tail, is_code_switch
 
 
 # Only the MARKERS come off, never the material between them: an infix is
