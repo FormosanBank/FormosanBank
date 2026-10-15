@@ -465,14 +465,43 @@ allowlist (V084 for TRANSL, V156 for FORM).
   varies. A word-list corpus whose `S` is a word is the S-level case.
 - **Optional material is resolved by scope.** What forces a separate `S`
   block is not whether the variation sits inside a word, but whether the
-  **sentence's word inventory changes**. A whole optional *word* —
-  `x y (z)` — changes the W tier and the gloss alignment, so it becomes two
-  `S` blocks (POL-026), the second taking the first's id plus `-opt`.
-  Optional material that leaves the word count unchanged — `puken-(en)`,
-  `(u)m-lavi`, and equally a whole short word alternating `a`/`u` — becomes
-  a `ver="alt"` variant FORM on the word that varies, never a second
-  sentence.
-  Neither mechanism leaves parentheses in a published FORM.
+  **sentence's word inventory changes, or the glossing does**. A whole
+  optional *word* — `x y (z)` — changes the W tier and the gloss alignment,
+  so it becomes two `S` blocks (POL-026), the second taking the first's id
+  plus `-opt`. An optional *morpheme* becomes separate `S` blocks **when the
+  source glosses it, so the two readings would be glossed differently**:
+  Seediq-Chang's `h-(um)-uwa` is `huwa` 怎樣 or `h-um-uwa` 怎樣-AF, and NTU
+  Bunun's `kangavas(=an)` is `kangavas` 'mango' or `kangavas=an`
+  'mango=MED.NOM'. A variant FORM has no W or M tier of its own, so it
+  cannot carry the second gloss. In the maintainer's words (2026-10-15):
+  *"differences in morphemes necessitate different sentence blocks only if
+  they are glossed and would result in different glossing. Basically, I
+  want the glossing to be clear."* Everything else — optional letters inside
+  a single morpheme, a whole short word alternating `a`/`u`, and an optional
+  morpheme in data whose words carry no glosses (Blust's Thao dictionary
+  examples, the Utrecht word list) — becomes a `ver="alt"` variant FORM on
+  the node that varies, never a second sentence. Neither mechanism leaves
+  parentheses in a published FORM, except as below.
+
+  **Amended 2026-10-15; this supersedes** (POL-050) this bullet's wording as
+  revised 2026-09-09, under which optional material that "leaves the word
+  count unchanged" was always a variant. Raised by the Seediq-Chang audit,
+  where `h-(um)-uwa` (R275) had been made obligatory rather than resolved.
+  Per-corpus rulings on the variants already published are recorded in
+  `claudeplans/2026-10-15-segmentation-variant-worklist.md`.
+
+  **WakelinTexts' parentheses are not optional material** (maintainer,
+  2026-10-15). The article's key defines `( )` only as "in data, probable
+  discrepancy", so `puken-(en)`, `manuyung-(e)`, `(u)m-lavi` and the rest
+  are neither split nor variants: *"The parentheses should be retained in
+  the original tier, removed in the standard tier. ... The reason is that
+  while the author was uncertain, we do not have anything else to go on."*
+  Retained in the **sentence FORM only**: *"sentence FORM only, not the Ws
+  or Ms."* Words, morphemes and the standard tier keep the bracketed
+  letters without the brackets. This supersedes, for this notation only,
+  item 2 of the 2026-09-09 revision above (which resolved Wakelin's
+  original tier like the standard one) and the rule that no published FORM
+  keeps parentheses.
 - **Naming the extra blocks.** Wherever one source cell or sentence yields
   more than one `S` — optional material above, or a competing lexeme — the
   first block keeps its published id and the second takes that id plus
