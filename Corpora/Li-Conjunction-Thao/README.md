@@ -1,172 +1,55 @@
 # Li (2014), *Conjunction in Thao*
 
-- Language/dialect: Thao (`ssf`, `dialect="Thao"`)
-- Source: Paul Jen-Kuei Li, “Conjunction in Thao,” pp. 401–409
-- Canonical source: <https://openresearch-repository.anu.edu.au/items/8bfb8bf0-2f58-4eae-947c-bf9af50faf9f>
-- Scope: all 24 numbered Thao examples and three additional Thao examples in footnote 7
-- Status: expert W/M and standard-form review implemented and validated; published XML in `XML/Thao/`
-- Development history: initial processing in the `Formosan-Paul-Jen-Kuei-Li-Conjunction-Thao` dev repo ([Basecamp card 8244168564](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/8244168564)); everything needed to reproduce the XML is under `CodeAndDocs/`
+Paul Jen-Kuei Li's article in *Papers from 12-ICAL, Volume 2*, pp. 401–409, supplies this Thao (`ssf`, dialect `Thao`) corpus. The [official ANU volume](https://openresearch-repository.anu.edu.au/items/8bfb8bf0-2f58-4eae-947c-bf9af50faf9f) uses Li's scholarly transcription and aligned English glosses.
 
-The source uses Li's scholarly (IPA-style) transcription and aligned gloss lines.
-The `original` tier preserves that transcription; the `standard` tier is Li's
-transcription mapped to FormosanBank's common Thao orthography (Ortho113).
-Examples (1)–(24) have source-aligned W tiers and M tiers wherever the printed
-form/gloss explicitly marks morpheme boundaries. The three unglossed footnote
-examples remain sentence-only.
+`XML/Thao/li_2014_conjunction_in_thao.xml` contains 28 sentences: examples 1–24, the inline example in footnote 5, and the three examples in footnote 7. There are 211 W and 169 M elements, with 408 original and 408 standard FORMs and the same numbers of original and standard PHONs. The four unglossed footnote examples remain sentence-only.
 
-**Note for users — M-tier coverage is partial.** The corpus has 211 W elements,
-and **140 of them carry no M child** (the source does not segment those words),
-which `validate_xml` reports as 140 SOFT V144 findings. The glosses that *do*
-exist are sound: `validate_glosses` reports **0 HARD findings** (only 3 SOFT
-V060). Completing the M tier per POL-023 is an open **linguistic** worklist item
-([issue #102](https://github.com/FormosanBank/FormosanBank/issues/102)); no M
-elements are added until the maintainer rules on the analysis.
+## Source and corrections
 
-## The standard tier: Ortho113, with sentence-level segmentation flattened
+[Reviewed records](CodeAndDocs/reviewed_examples.tsv) preserve the printed readings; [source corrections](CodeAndDocs/source_corrections.tsv) record the exact before/after fields applied before W/M generation. They retain Joshua's reviewed `S → ʃ` and `D → ð` repairs from [the original port](https://github.com/FormosanBank/FormosanBank/commit/541fa53e8), plus the published English corrections (`firewood on`, `person`, `wild animals`) and sentence punctuation. Corrections never apply to gloss codes or metadata. Infix roots retain the gap hyphen, with the infix represented separately (POL-014).
 
-`make_xml.sh` finalizes the `standard` tier by running FormosanBank's
-`standardize.py` with the `Thao_Li_113` conversion table
-(`Orthographies/ConversionTables/Thao_Li_113.tsv`), which maps Li's transcription
-to Ortho113 (`ð→z`, `ʃ→sh`, `θ→th`, `ŋ→ng`, `ɬ→lh`, `ʔ→'`) and strips stress
-accents. It is not a standard tier unless it is Ortho113. (Because the pipeline
-converts via this TSV, `standardize.py` runs in TSV mode — not `--copy`, not
-`--remove_accents`; the table itself strips the accents.) The table was verified
-with `QC/validation/validate_conversion_table.py` (Li/Thao vs Ortho113/Thao) on
-2026-08-12: PASS, all 8 rows confirmed, no warnings, mismatches, or coverage
-gaps.
+[The coverage ledger](CodeAndDocs/source_ledger.csv) accounts for 28 included units and four pages without utterances across all nine article pages (PDF 394–402). The footnote-5 addition was recovered by `CodeAndDocs/scripts/recover_footnote5.py` from the volume identified in [source_manifest.json](CodeAndDocs/source_manifest.json). Its existing source text and translation are retained without new glosses or segmentation. Existing TEXT/S/W/M IDs and source associations remain unchanged; the addition uses `li2014_thao_fn5_1`.
 
-`standardize.py` rebuilds the standard tier from the original, so it re-introduces
-the source segmentation notation (`-`, `=`, `<`, `>`). `scripts/flatten_standard_segmentation.py`
-then removes those markers from the **sentence-level** `FORM[@kindOf="standard"]`.
+Source W/M glosses remain lone, untiered TRANSL elements under POL-036.
 
-Since 2026-08, `standardize.py` itself applies the C012 rule (segmentation `-` and
-clitic `=` stripped from S-level standard FORMs of morpheme-segmented sentences),
-but flatten remains required for two reasons:
+## Audio
 
-1. Thao is one of the two languages whose reference orthography lists `-` as a
-   letter, so C012 deliberately *preserves* Thao hyphens and only emits `c012`
-   warnings (`standardize_warnings.csv`; 88 of them for this corpus — transient,
-   since flatten strips the hyphens immediately after). That exemption exists to
-   protect a `-` that is a real orthographic letter; in this source the hyphens
-   only ever mark morpheme boundaries in Li's interlinear analysis (the glottal
-   stop is written `ʔ`, never `-`), with no evidence Li uses `-` otherwise — so
-   the exemption does not apply here.
-2. C012 does not touch the infix markers `<` `>` (10 pairs in this corpus's
-   sentence FORMs); no shared QC code strips those from the S-level standard tier
-   (validate_text V134 merely flags them SOFT).
+None supplied by the source.
 
-The markers are still preserved in the `original` sentence tier and in the W/M
-tiers (both `original` and `standard`), where they carry the morphological
-analysis.
+## Notes and Issues
 
-Phonology is then added with `add_phonology.py --orthography Li`: standard `PHON`
-from the Ortho113 standard tier, original `PHON` from `Orthographies/Li`. Because
-`standardize.py` strips accents from the standard tier, the standard `PHON` is
-clean IPA; the original `PHON` renders Li's stress accents `á`/`ú` as `*` (they
-are not phonemic and have no orthographic mapping), which is accepted.
+Morphology remains partial: 140 of 211 W elements have no M child, and the four unglossed footnote examples have no W tier. These produce SOFT V144 and V148 findings. The [merged corpus decision](https://github.com/FormosanBank/FormosanBank/commit/64654b68a) requires a linguistic ruling before adding the missing M analyses. [Issue #102](https://github.com/FormosanBank/FormosanBank/issues/102) was closed as not planned on September 9, 2026, without a replacement ruling. The published partial analysis is preserved.
 
-**Regenerated under the shared-source-phonology pipeline (2026-08-12 sweep):**
-the published `XML/` is the output of `make_xml.sh` run against the current QC
-code. Relative to the pre-sweep publication the only change was in sentence-level
-`PHON`, where unmapped punctuation (sentence-internal/final `.`/`,`) is dropped —
-the pipeline's "punctuation is not sound" policy. All FORM tiers, glosses, and
-the W/M structure are unchanged; the source-fidelity audit and the draft/final
-byte-match both pass, and a rerun is byte-idempotent.
+## Rights
 
-## Corrected source transcription typos (capital `S` and `D`)
+**License:** CC BY 4.0
 
-The printed source contains two capital-letter transcription typos, both inherited
-from Blust's *Thao Dictionary* (2003), which Li quotes. They were checked against
-Blust's original and are **corrected in code** by `correct_source_typos()` in
-[`scripts/build_xml.py`](scripts/build_xml.py), applied to the Thao *original*
-field at the earliest step — before the original text is used to build the
-standard, W, or M tiers — so the fix propagates uniformly to every tier. The raw
-transcription in [`raw_data/reviewed_examples.tsv`](raw_data/reviewed_examples.tsv)
-is left exactly as printed; only the generated XML carries the correction.
+**Rights source:** Paul Jen-Kuei Li, confirmed by Joshua Hartshorne, 2025-06-04; evidence: ask maintainer
 
-| Printed | Correct grapheme | Count | Where | Basis |
-|---|---|---:|---|---|
-| `S` | `ʃ` | 1 | example (21), `ɬpaðiSan` → `ɬpaðiʃan` | typo in Blust's dictionary for /ʃ/ |
-| `D` | `ð` | 6 | footnote-7 examples (S025–S027): `iDa` (×2), `saqaDi`, `waDaqan`, `aDaDak` (×2) | typo in Blust's dictionary for /ð/ |
+The article's first page explicitly releases the work under CC BY 4.0. The source records and generated text derive from that licensed article. XML uses the exact rights-vocabulary value, preserving the published licence claim. The spelling change from the previous prose value still requires the normal maintainer rights review at merge (POL-042–044).
 
-The correction touches **only** the Thao `original` field, never the gloss or
-metadata columns, where capital `D`/`S` legitimately occur (`DET`, `RED`, `STA`,
-`CAUS`, and the `PDF p. …` locators). After correction the corpus contains no
-unknown/uninterpretable graphemes: every letter maps cleanly through the Li
-orthography table (`Orthographies/Li/Thao.tsv`) and the Li→Ortho113 conversion
-table (`Orthographies/ConversionTables/Thao_Li_113.tsv`) in FormosanBank.
+## Rebuild
 
-## Reproduce
-
-The corpus is fully regenerable from the committed reviewed records
-(`raw_data/reviewed_examples.tsv`) — no pre-correction snapshot is needed.
-From `CodeAndDocs/`, using Python 3.11 or newer, with `FORMOSANBANK_PATH` set to
-a FormosanBank checkout (it supplies `standardize.py`, `add_phonology.py`, and the
-`Li`/`Ortho113` orthography tables, and its Python env must have `lxml`):
+Use Python 3.11 or newer and the current FormosanBank Python dependencies. All required corpus inputs are committed under `CodeAndDocs/`; neither the PDF, a private repository, nor historical Git objects are required for generation.
 
 ```bash
-FORMOSANBANK_PATH=/path/to/FormosanBank ./make_xml.sh
+FORMOSANBANK_ROOT=/path/to/FormosanBank PYTHON=python3 ./CodeAndDocs/generate_xml.sh
 ```
 
-`make_xml.sh` is the **only** script needed; it is the whole pipeline, not a
-wrapper around another one:
+The entry point builds fresh original tiers from the reviewed records and exact corrections, runs shared cleaning, standardizes through `Orthographies/ConversionTables/Thao_Li_113.tsv` with `--hard-remove-segmentation`, finalizes S-standard infix brackets, then runs `add_phonology.py --orthography Li`. Ortho113 is the standard tier; Li is the original PHON profile. Current shared phonology strips nonsegmental stress accents, fixing 20 published original-PHON placeholder values while preserving the accented original FORMs (POL-003).
 
-1. `scripts/build_xml.py` — draft `XML/` and `Final_XML/` from the reviewed TSV,
-   including the scripted Blust-typo corrections
-2. `scripts/audit_source_fidelity.py` — source-fidelity audit, while the tiers
-   are still in Li's transcription
-3. `QC/cleaning/clean_xml.py` — the shared character-level cleaning of the
-   original tier (see below)
-4. `standardize.py` in TSV mode (Thao_Li_113 → Ortho113)
-5. `scripts/flatten_standard_segmentation.py` — strips `- = < >` from the
-   S-level standard FORMs
-6. `add_phonology.py --orthography Li`
-7. draft/final byte-match, then install `Final_XML` into the corpus-level `XML/`
-   and clear the scratch outputs (`CodeAndDocs/XML/`, `Final_XML/`,
-   `intermediate/`, and the `standardize_warnings.csv` sidecars, whose expected
-   content is exactly the 88 Thao `c012` hyphen warnings — see above; per-run
-   reports, never committed)
+**POL-047 deviation:** No `apply_manual_edits.py` step is needed: the documented corrections are applied to fresh source records in the builder. The merged Li-specific S-standard bracket finalizer remains between standardization and phonology; shared `--hard-remove-segmentation` now owns hyphens and clitics. Original and W/M analysis notation stays intact. This preserves the scope of the existing corpus ruling while shared standardization lacks the S-infix option.
 
-`clean_xml` (step 3) runs where every other corpus runs it — after the build,
-**before** `standardize`, so the standard tier is rebuilt from an already-clean
-original tier. It does far more than quote correction: dash/tilde/quote
-canonicalization, HTML-entity and double-encoded-entity decoding, null-glyph
-canonicalization, Unicode flattening, empty-element removal, and
-translation-metadata normalization. On this corpus it is **currently a no-op —
-because the XML is born clean from the reviewed TSV**, not because any of that
-machinery is inapplicable; `make_xml.sh` prints whether that still holds on
-every run. Thao's letter `-` is not at risk: the dash rule maps only dash
-*look-alikes* (en dash, em dash, minus sign, …) onto ASCII `-`, and never
-touches an ASCII `-` that is already there.
+[provenance.json](CodeAndDocs/provenance.json) records the tools used for the committed build. The entry point updates it from the supplied FormosanBank Git checkout; a Git-free export retains that record. It never selects or requires an older checkout. Source recovery is separate: `python3 CodeAndDocs/scripts/recover_footnote5.py /path/to/official-volume.pdf` verifies the manifest before reproducing the one-time footnote recovery.
 
-There is no `apply_manual_edits` step: the corpus has no `manual_edits.xml`
-(the only hand-checked fixes are the scripted typo corrections in
-`build_xml.py`).
-
-To reacquire the official source bundle for visual review, run
-`./download_source_data.sh`; downloads stay under ignored `Private/`.
-
-## QC
-
-From the FormosanBank root, against this corpus's `XML/`:
+## Review and validation
 
 ```bash
-python QC/validation/validate_xml.py     by_path --path Corpora/Li-Conjunction-Thao/XML
-python QC/validation/validate_text.py    by_path --path Corpora/Li-Conjunction-Thao/XML
-python QC/validation/validate_glosses.py by_path --path Corpora/Li-Conjunction-Thao/XML
+FORMOSANBANK_ROOT=/path/to/FormosanBank PYTHON=python3 \
+OUTPUT_DIR=/path/to/new-external-report-directory \
+SOURCE_PDF=/path/to/official-volume.pdf ./CodeAndDocs/validate.sh
 ```
 
-Current baseline (2026-08-12): **no HARD findings from any of the three.** SOFT
-findings, all accepted source-specific characteristics:
+`SOURCE_PDF` is optional for validation. Without it, the script explicitly skips PDF verification and Group C source alignment; it still checks the committed records and output. With it, Poppler verifies the PDF and extracts only the article pages. Validation is separate from generation and reports remain outside the corpus. Review every CSV and warning; a successful command is not a source-fidelity verdict.
 
-- `validate_xml` — 140 × V144 (M-less W; see the M-coverage note above)
-- `validate_text` — 44 × V122 (English parentheses/slashes in translations),
-  20 × V134 (source infix notation `<...>` in original S FORMs), 22 × V136
-  (scholarly non-ASCII transcription confusables)
-- `validate_glosses` — 3 × V060 only, **0 HARD**
-
-On [issue #102](https://github.com/FormosanBank/FormosanBank/issues/102): its
-gloss-validator concern is **satisfied** — `validate_glosses` is HARD-clean. Its
-M-coverage concern is **not** satisfied — 140 of 211 W still have no M (V144
-SOFT ×140), and that remains an unruled linguistic worklist item. Do not add M
-elements to close it without a maintainer ruling on the analysis.
+Focused tests protect the reviewed corrections, infix shape, footnote coverage, stable IDs, partial M decision, and derived-tier boundaries. The source audit checks all output anchors against the records and corrections. It supplements direct page review and does not establish new linguistic analysis.
