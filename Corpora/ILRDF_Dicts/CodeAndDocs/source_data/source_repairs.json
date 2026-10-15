@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "note": "Source-fidelity repairs to the ORIGINAL tier, applied through manual_edits.xml (POL-030). Each removes material the ILRDF API emitted that is not Formosan text. Bracketed Chinese glosses of place names -- 'takaw(高雄)', 'makazayazaya(瑪家村)' -- are deliberately NOT repaired: those are source annotation, not leaked text.",
+  "repairs": [
+    {
+      "guid": "9ad0db8f-e90a-f011-bd65-00155db40116",
+      "language": "Kavalan",
+      "class": "trailing-chinese",
+      "before": "nikisasan na tangayaw ay mawtu zau.這",
+      "after": "nikisasan na tangayaw ay mawtu zau.",
+      "evidence": "Chinese editorial text welded onto the end of the Formosan sentence. In every case the Chinese is either a copy of the record's own translation or an editor's note; none of it is Formosan."
+    },
+    {
+      "guid": "4379e175-8b33-f011-8fad-000d3a8250a0",
+      "language": "Puyuma",
+      "class": "trailing-chinese",
+      "before": "adawilr na puatraiyan. ulraya kandriyu na kawi i saninin. 錄音後無法存檔，白做工啊！",
+      "after": "adawilr na puatraiyan. ulraya kandriyu na kawi i saninin.",
+      "evidence": "Chinese editorial text welded onto the end of the Formosan sentence. In every case the Chinese is either a copy of the record's own translation or an editor's note; none of it is Formosan."
+    },
+    {
+      "guid": "fab15643-d00a-f011-bd65-00155db40116",
+      "language": "Puyuma",
+      "class": "embedded-label",
+      "before": "sagar mi mabareturetuk dratu buwa dra gamut. 請刪除",
+      "after": "sagar mi mabareturetuk dratu buwa dra gamut.",
+      "evidence": "The ILRDF API returned a part-of-speech category label in place of the word itself. '數詞' is the label for 'numeral'; the replacement is the numeral the sentence needs, attested elsewhere in the same language snapshot. '請刪除' is Chinese for 'please delete' -- an editor instruction, not language data."
+    },
+    {
+      "guid": "0b29120a-f70a-f011-bd65-00155db40116",
+      "language": "Saaroa",
+      "class": "embedded-label",
+      "before": "u數詞u paapuhla ualuia laihla upatu.",
+      "after": "ʉnʉmʉ paapuhla ualuia laihla upatu.",
+      "evidence": "The ILRDF API returned a part-of-speech category label in place of the word itself. '數詞' is the label for 'numeral'; the replacement is the numeral the sentence needs, attested elsewhere in the same language snapshot. '請刪除' is Chinese for 'please delete' -- an editor instruction, not language data. 18 Saaroa sentences attest the intact token 'ʉnʉmʉ'."
+    },
+    {
+      "guid": "3823120a-f70a-f011-bd65-00155db40116",
+      "language": "Saaroa",
+      "class": "embedded-label",
+      "before": "apuau數詞u cucuana ʼasaruna.",
+      "after": "apuaʉnʉmʉ cucuana ʼasaruna.",
+      "evidence": "The ILRDF API returned a part-of-speech category label in place of the word itself. '數詞' is the label for 'numeral'; the replacement is the numeral the sentence needs, attested elsewhere in the same language snapshot. '請刪除' is Chinese for 'please delete' -- an editor instruction, not language data. 18 Saaroa sentences attest the intact token 'ʉnʉmʉ'."
+    },
+    {
+      "guid": "6c27120a-f70a-f011-bd65-00155db40116",
+      "language": "Saaroa",
+      "class": "embedded-label",
+      "before": "hlaʼalua maci kapita數詞ia ihlaisa macahlia malialualu.",
+      "after": "hlaʼalua maci kapitanʉia ihlaisa macahlia malialualu.",
+      "evidence": "The ILRDF API returned a part-of-speech category label in place of the word itself. '數詞' is the label for 'numeral'; the replacement is the numeral the sentence needs, attested elsewhere in the same language snapshot. '請刪除' is Chinese for 'please delete' -- an editor instruction, not language data. 'kapitanʉ' is a Saaroa dictionary headword and appears in 16 sentences."
+    },
+    {
+      "guid": "8a2e120a-f70a-f011-bd65-00155db40116",
+      "language": "Saaroa",
+      "class": "embedded-label",
+      "before": "marua au數詞u tapuhlacungu mucukuhlu tapikakua miararuma.",
+      "after": "marua aʉnʉmʉ tapuhlacungu mucukuhlu tapikakua miararuma.",
+      "evidence": "The ILRDF API returned a part-of-speech category label in place of the word itself. '數詞' is the label for 'numeral'; the replacement is the numeral the sentence needs, attested elsewhere in the same language snapshot. '請刪除' is Chinese for 'please delete' -- an editor instruction, not language data. 18 Saaroa sentences attest the intact token 'ʉnʉmʉ'."
+    },
+    {
+      "guid": "9827120a-f70a-f011-bd65-00155db40116",
+      "language": "Saaroa",
+      "class": "embedded-label",
+      "before": "kukicumia tu數詞ua saliaisa hlakanaʼana.",
+      "after": "kukicumia tʉnʉmʉa saliaisa hlakanaʼana.",
+      "evidence": "The ILRDF API returned a part-of-speech category label in place of the word itself. '數詞' is the label for 'numeral'; the replacement is the numeral the sentence needs, attested elsewhere in the same language snapshot. '請刪除' is Chinese for 'please delete' -- an editor instruction, not language data. 18 Saaroa sentences attest the intact token 'ʉnʉmʉ'."
+    },
+    {
+      "guid": "257e7f58-e70a-f011-bd65-00155db40116",
+      "language": "Thao",
+      "class": "trailing-chinese",
+      "before": "finlhuqiza ihu buut? ua! finlhuqiza iaku, finlhuqiza mani ihu?你",
+      "after": "finlhuqiza ihu buut? ua! finlhuqiza iaku, finlhuqiza mani ihu?",
+      "evidence": "Chinese editorial text welded onto the end of the Formosan sentence. In every case the Chinese is either a copy of the record's own translation or an editor's note; none of it is Formosan."
+    },
+    {
+      "guid": "30797f58-e70a-f011-bd65-00155db40116",
+      "language": "Thao",
+      "class": "trailing-chinese",
+      "before": "uka mihu a patatash, haya naak a patatash arahu( ara uhu) matash.你",
+      "after": "uka mihu a patatash, haya naak a patatash arahu( ara uhu) matash.",
+      "evidence": "Chinese editorial text welded onto the end of the Formosan sentence. In every case the Chinese is either a copy of the record's own translation or an editor's note; none of it is Formosan."
+    },
+    {
+      "guid": "333b8752-e70a-f011-bd65-00155db40116",
+      "language": "Thao",
+      "class": "trailing-chinese",
+      "before": "palanhaha ita! iatunaw makaruza! 我們衝！用力划！",
+      "after": "palanhaha ita! iatunaw makaruza!",
+      "evidence": "Chinese editorial text welded onto the end of the Formosan sentence. In every case the Chinese is either a copy of the record's own translation or an editor's note; none of it is Formosan."
+    },
+    {
+      "guid": "403b8752-e70a-f011-bd65-00155db40116",
+      "language": "Thao",
+      "class": "trailing-chinese",
+      "before": "inanuru! aʼishwuaqan.要注意!會燙到.",
+      "after": "inanuru! aʼishwuaqan.",
+      "evidence": "Chinese editorial text welded onto the end of the Formosan sentence. In every case the Chinese is either a copy of the record's own translation or an editor's note; none of it is Formosan."
+    },
+    {
+      "guid": "69ee8e4c-e70a-f011-bd65-00155db40116",
+      "language": "Thao",
+      "class": "trailing-chinese",
+      "before": "haya wa pruq maqa sa Thau a tinulhanaz zain Sulikhiin, numa sa Shpuut muntal mzai 水裏坑.",
+      "after": "haya wa pruq maqa sa Thau a tinulhanaz zain Sulikhiin, numa sa Shpuut muntal mzai",
+      "evidence": "Chinese editorial text welded onto the end of the Formosan sentence. In every case the Chinese is either a copy of the record's own translation or an editor's note; none of it is Formosan."
+    },
+    {
+      "guid": "cf787f58-e70a-f011-bd65-00155db40116",
+      "language": "Thao",
+      "class": "trailing-chinese",
+      "before": "mataqaz yaku sa pazay.我",
+      "after": "mataqaz yaku sa pazay.",
+      "evidence": "Chinese editorial text welded onto the end of the Formosan sentence. In every case the Chinese is either a copy of the record's own translation or an editor's note; none of it is Formosan."
+    },
+    {
+      "guid": "010f2b00-e50a-f011-bd65-00155db40116",
+      "language": "Yami",
+      "class": "trailing-chinese",
+      "before": "rarayan mo si wari mo no takzes.在你妹妹旁邊擺上刀子保平安用。",
+      "after": "rarayan mo si wari mo no takzes.",
+      "evidence": "Chinese editorial text welded onto the end of the Formosan sentence. In every case the Chinese is either a copy of the record's own translation or an editor's note; none of it is Formosan."
+    }
+  ]
+}
