@@ -494,8 +494,9 @@ def append_note_sentences(root, text_id: str, stats: dict) -> None:
         for lang in ("zho", "eng"):
             if row[lang].strip():
                 add_transl(s, lang, row[lang])
-        if row["eng_alt"].strip():
-            add_transl(s, "eng", row["eng_alt"]).set("ver", "alt")
+        for lang in ("zho", "eng"):
+            if (row.get(f"{lang}_alt") or "").strip():
+                add_transl(s, lang, row[f"{lang}_alt"]).set("ver", "alt")
         stats["0 example sentences from NTU's notes appended"] = stats.get(
             "0 example sentences from NTU's notes appended", 0) + 1
 
