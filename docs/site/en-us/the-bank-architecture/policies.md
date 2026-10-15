@@ -342,6 +342,24 @@ multi-word `W`. That is intended: the SOFT finding asks whoever reviews the
 corpus to confirm each multi-word `W` is deliberate. Raised by: the 2026-10 student review of the Chang 2000 Seediq
 grammar dev repo, where 40 such units had been split.
 
+### POL-061 · RULED · 2026-10-15 · a word with no gloss
+**A word or morpheme the source leaves unglossed is glossed `?`.** When a
+source prints no gloss under a word — and the word does not share its
+neighbour's gloss (POL-060) — its W gloss is `?`, not `∅` and not a missing
+TRANSL. Inside a segmented gloss the missing piece is `?` too: `yee-su`, where
+the source glosses only the pronoun, is `?-你`, and its M `yee` is `?`.
+
+**Why:** `∅` is the null-morpheme marker (POL-012) and asserts a silent
+morpheme, which an unglossed word is not. `?` is already how corpora carry a
+gloss the source itself leaves uncertain (HundredPaiwanStories 356 `?`,
+NTUFormosanCorpus 63 `?`, YeddaPalemeqBlog 2), and for a user the two cases
+read the same: the source does not give this word's meaning. A source's own
+`??` or `?` marker is kept as written (POL-036). Maintainer (2026-10-15):
+*"Where a gloss is missing entirely (not one of the shared cases), we insert
+the gloss `?`, and then treat accordingly. I _think_ ? is used elsewhere for
+uncertain glosses (most likely NTU). If this is confirmed, then make sure it's
+in a policy."* First applied in the Chang Seediq grammar dev repo.
+
 ### POL-024 · RULED · 2026-08-10 · parentheticals in translations
 Two different things, treated differently:
 - **Literal translations / analytic paraphrases** (`(Lit. the money that
