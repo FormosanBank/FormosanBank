@@ -307,11 +307,12 @@ _PAUSE_DOTS = re.compile(r"\.{2,}")
 
 _BRACKET_NOTE = re.compile(r"\[[^\]]*\]")
 # The one bracketed note a gloss keeps: the code-switch label, spelled out
-# (ruling 2026-10-15, "Let's rewrite them as [Mandarin] and [Japanese]";
-# gloss_cell_decisions.tsv does the respelling). It stands at either end of
-# the gloss ('[Mandarin]matter', 'anyway[Japanese]').
-_LANGUAGE_LABEL_HEAD = re.compile(r"^(?:\[(?:Mandarin|Japanese)\])+")
-_LANGUAGE_LABEL_TAIL = re.compile(r"(?:\[(?:Mandarin|Japanese)\])+$")
+# (rulings 2026-10-15: "Let's rewrite them as [Mandarin] and [Japanese]";
+# Saisiyat's Hakka labels "spell out as [Hakka]"; gloss_cell_decisions.tsv does
+# the respelling). It stands at either end of the gloss ('[Mandarin]matter',
+# 'anyway[Japanese]'). clean_xml then writes the brackets as parentheses.
+_LANGUAGE_LABEL_HEAD = re.compile(r"^(?:\[(?:Mandarin|Japanese|Hakka)\])+")
+_LANGUAGE_LABEL_TAIL = re.compile(r"(?:\[(?:Mandarin|Japanese|Hakka)\])+$")
 
 
 # A one-letter bracket marker ('<A' ... 'A>', '<F' ... 'F>', '<M' ... 'M>')

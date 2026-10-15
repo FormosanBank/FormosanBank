@@ -439,5 +439,6 @@ def test_a_gloss_keeps_its_language_label_and_loses_other_bracketed_notes():
     assert gloss("[Mandarin]") == "[Mandarin]"
     assert gloss("[Mandarin]matter") == "[Mandarin]matter"
     assert gloss("anyway[Japanese]") == "anyway[Japanese]"
+    assert gloss("[Hakka]宣布") == "[Hakka]宣布"
     assert gloss("[Man]") == "" and gloss("[TVH1][u2]talk") == "talk"
     assert step5_strip_markup("[Mandarin]")[0] == "Mandarin"   # a form is not a gloss

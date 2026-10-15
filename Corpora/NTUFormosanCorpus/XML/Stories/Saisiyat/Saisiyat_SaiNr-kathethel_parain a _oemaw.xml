@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" ?>
 <TEXT id="NTU_Stry_Saisiyat_SaiNr-kathethel_parain a _oemaw" citation="NTU Corpus of Formosan Languages" BibTeX_citation="" copyright="CC BY-NC 4.0" xml:lang="xsy" dialect="Saisiyat">
     <S id="SaiNr-kathethel_parain a _oemaw_S_1">
         <FORM kindOf="original">e kakhayza'an saksaka, SaiSiyat, 'ima haSa' tnon.</FORM>
@@ -2628,10 +2628,10 @@
         </W>
     </S>
     <S id="SaiNr-kathethel_parain a _oemaw_S_35">
-        <FORM kindOf="original">noka 'isaa noka baki' ?, sipoti' noka hobak 'isaa 'oka' ila, 'i, sipoti' 'oka' ila i, sahpiih ka isaa.</FORM>
-        <PHON kindOf="original">noka ʔi[s|θ]aa noka βakiʔ  [s|θ]ipotiʔ noka hoβak ʔi[s|θ]aa ʔokaʔ ila ʔi [s|θ]ipotiʔ ʔokaʔ ila i [s|θ]ahpiih ka i[s|θ]aa</PHON>
-        <FORM kindOf="standard">noka 'isaa noka baki' ?, sipoti' noka hobak 'isaa 'oka' ila, 'i, sipoti' 'oka' ila i, sahpiih ka isaa.</FORM>
-        <PHON kindOf="standard">noka ʔi[s|θ]aa noka βakiʔ  [s|θ]ipotiʔ noka hoβak ʔi[s|θ]aa ʔokaʔ ila ʔi [s|θ]ipotiʔ ʔokaʔ ila i [s|θ]ahpiih ka i[s|θ]aa</PHON>
+        <FORM kindOf="original">noka 'isaa noka baki' X, sipoti' noka hobak 'isaa 'oka' ila, 'i, sipoti' 'oka' ila i, sahpiih ka isaa.</FORM>
+        <PHON kindOf="original">noka ʔi[s|θ]aa noka βakiʔ * [s|θ]ipotiʔ noka hoβak ʔi[s|θ]aa ʔokaʔ ila ʔi [s|θ]ipotiʔ ʔokaʔ ila i [s|θ]ahpiih ka i[s|θ]aa</PHON>
+        <FORM kindOf="standard">noka 'isaa noka baki' X, sipoti' noka hobak 'isaa 'oka' ila, 'i, sipoti' 'oka' ila i, sahpiih ka isaa.</FORM>
+        <PHON kindOf="standard">noka ʔi[s|θ]aa noka βakiʔ * [s|θ]ipotiʔ noka hoβak ʔi[s|θ]aa ʔokaʔ ila ʔi [s|θ]ipotiʔ ʔokaʔ ila i [s|θ]ahpiih ka i[s|θ]aa</PHON>
         <TRANSL xml:lang="zho" notes="老人用標槍擋住, (她就)無法通過那個。">老人用標槍擋住, 無法通過那個。</TRANSL>
         <TRANSL xml:lang="eng">The elder blocked her way and she was not able to pass through.</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/SaiNr-kathethel_parain a _oemaw.mp3" start="74.34" end="81.75" file="SaiNr-kathethel_parain a _oemaw_S11.mp3"/>
@@ -2700,13 +2700,17 @@
             </M>
         </W>
         <W id="SaiNr-kathethel_parain a _oemaw_S_35_W4">
-            <FORM kindOf="original">?,</FORM>
-            <FORM kindOf="standard">?,</FORM>
+            <FORM kindOf="original">X,</FORM>
+            <PHON kindOf="original">*</PHON>
+            <FORM kindOf="standard">X,</FORM>
+            <PHON kindOf="standard">*</PHON>
             <TRANSL xml:lang="zho" kindOf="original">爸爸</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">father</TRANSL>
             <M id="SaiNr-kathethel_parain a _oemaw_S_35_W4M0">
-                <FORM kindOf="original">?,</FORM>
-                <FORM kindOf="standard">?,</FORM>
+                <FORM kindOf="original">X,</FORM>
+                <PHON kindOf="original">*</PHON>
+                <FORM kindOf="standard">X,</FORM>
+                <PHON kindOf="standard">*</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">爸爸</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">father</TRANSL>
             </M>
