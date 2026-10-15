@@ -29,7 +29,7 @@ morpheme is glossed and the readings would be glossed differently:
 | NTUFormosanCorpus | **split** the optional-morpheme cases, including the Saisiyat "inaudible" ones; done by the agent working on NTU (branch `analysis/ntu-residual-gloss-shift`) | "I want to split into two sentences. But the agent that is currently working with NTU should handle that." |
 | Blust-Thao-Dictionary | **keep** all 8 as variants (example words carry no glosses) | "keep" ×3 cards |
 | UtrechtManuscriptWordList | **keep** the 6 variants (no word tier); 2 suspected defects (W121, W1054) await a look at the page | "keep" ×2 cards; "I need you to show me what's going on, with screenshots." |
-| WakelinTexts | **not variants**: `( )` kept in the original tier, removed in the standard tier | "Not variants. The parentheses should be retained in the original tier, removed in the standard tier." |
+| WakelinTexts | **not variants**: `( )` kept in the original tier's sentence FORM only, removed from words, morphemes and the standard tier; `mikabak-abay-u/mikabakabayu` publishes the segmented reading only, with a note | "Not variants. The parentheses should be retained in the original tier, removed in the standard tier." · "sentence FORM only, not the Ws or Ms." · "I meant the unsegmented version." |
 
 **80 candidates:**
 

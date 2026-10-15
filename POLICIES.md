@@ -496,11 +496,12 @@ allowlist (V084 for TRANSL, V156 for FORM).
   are neither split nor variants: *"The parentheses should be retained in
   the original tier, removed in the standard tier. ... The reason is that
   while the author was uncertain, we do not have anything else to go on."*
-  This supersedes, for this notation only, item 2 of the 2026-09-09
-  revision above (which resolved Wakelin's original tier like the standard
-  one) and the rule that no published FORM keeps parentheses. The V121
-  findings it leaves on Wakelin's original tier are waived for that reason
-  (POL-054).
+  Retained in the **sentence FORM only**: *"sentence FORM only, not the Ws
+  or Ms."* Words, morphemes and the standard tier keep the bracketed
+  letters without the brackets. This supersedes, for this notation only,
+  item 2 of the 2026-09-09 revision above (which resolved Wakelin's
+  original tier like the standard one) and the rule that no published FORM
+  keeps parentheses.
 - **Naming the extra blocks.** Wherever one source cell or sentence yields
   more than one `S` — optional material above, or a competing lexeme — the
   first block keeps its published id and the second takes that id plus
