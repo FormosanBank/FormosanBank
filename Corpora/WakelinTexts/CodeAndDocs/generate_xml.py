@@ -471,9 +471,38 @@ def apply_split(sentence, decision):
     return [primary, other]
 
 
+def apply_print_corrections(root, name, corrections):
+    """Make the snapshot match the printed article where it does not.
+
+    The snapshot is a frozen hand-typed baseline (POL-035), so a typing error
+    in it is fixed here, by data in print_corrections.json, never by editing
+    the snapshot. Each node's expected snapshot text is checked first, so a
+    correction cannot silently apply to text it was not written for.
+    """
+    nodes = {n.get("id"): n for n in root.iter() if n.get("id")}
+    applied = 0
+    for entry in corrections:
+        if entry["file"] != name:
+            continue
+        for spec in entry["nodes"]:
+            node = nodes.get(spec["id"])
+            if node is None:
+                raise SystemExit(f"{name} {spec['id']}: print correction names no node")
+            if text_of(node) != spec["expect"]:
+                raise SystemExit(f"{name} {spec['id']}: snapshot reads {text_of(node)!r}, "
+                                 f"correction expects {spec['expect']!r}")
+            set_form(node, spec["form"])
+            if spec.get("drop_variants"):
+                drop_alternates(node)
+            applied += 1
+    return applied
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--snapshot", default=str(CODE_ROOT / "pre_correction_snapshot"))
+    ap.add_argument("--print-corrections",
+                    default=str(CODE_ROOT / "print_corrections.json"))
     ap.add_argument("--decisions", default=str(CODE_ROOT / "alternative_decisions.json"))
     ap.add_argument("--xml-dir", default=str(CODE_ROOT.parent / "XML"))
     ap.add_argument("--gloss-report", default=None,
@@ -486,9 +515,11 @@ def main() -> int:
     for d in table:
         by_sentence.setdefault(d["file"], {})[d["sentence"]] = d
 
+    corrections = json.loads(
+        Path(args.print_corrections).read_text(encoding="utf-8"))["corrections"]
     snapshot = Path(args.snapshot)
     out_root = Path(args.xml_dir)
-    total = {"S": 0, "variant": 0, "split": 0}
+    total = {"S": 0, "variant": 0, "split": 0, "corrected": 0}
     gloss_report: dict[str, list] = {}
     narration_report: dict[str, list] = {}
     for src in sorted(snapshot.rglob("*.xml")):
@@ -497,6 +528,7 @@ def main() -> int:
         root = tree.getroot()
         if root.findall(".//FORM[@kindOf='standard']") or root.findall(".//PHON"):
             raise SystemExit(f"{src}: snapshot must carry no derived tiers")
+        total["corrected"] += apply_print_corrections(root, name, corrections)
         decisions = by_sentence.get(name, {})
         rebuilt = []
         for sentence in root.findall("S"):
@@ -560,7 +592,8 @@ def main() -> int:
               f"-> {args.gloss_report}")
 
     print(f"\n{total['S']} S written "
-          f"({total['variant']} variant, {total['split']} split alternations); "
+          f"({total['variant']} variant, {total['split']} split alternations, "
+          f"{total['corrected']} nodes corrected to the print); "
           f"{leftover} unresolved slash FORMs")
     return 1 if leftover else 0
 
