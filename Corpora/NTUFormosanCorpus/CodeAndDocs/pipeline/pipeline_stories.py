@@ -28,6 +28,7 @@ import argparse
 import json
 import os
 import html
+import csv
 import re
 import unicodedata
 import shutil
@@ -458,6 +459,46 @@ def language_code(name: str) -> str:
 
 FREE_REPAIRS = load_free_repairs()
 
+
+def load_note_sentences(path=None) -> dict:
+    """Story stem -> its rows of note_sentences.tsv, in file order."""
+    p = Path(path) if path else Path(__file__).with_name("note_sentences.tsv")
+    if not p.exists():
+        return {}
+    lines = [l for l in p.read_text(encoding="utf-8").splitlines() if l and not l.startswith("#")]
+    out: dict = {}
+    for row in csv.DictReader(lines, delimiter="\t"):
+        out.setdefault(row["story"], []).append(row)
+    return out
+
+
+NOTE_SENTENCES = load_note_sentences()
+
+
+def append_note_sentences(root, text_id: str, stats: dict) -> None:
+    """Example sentences NTU wrote in a sentence's notes, as sentences of their own at
+    the end of the story (maintainer, review page round 13: "Add to the end of the file
+    new sentence blocks ..."). The text drops the segmentation marks, as every sentence
+    text does; NTU's segmented form is kept in the FORM's notes."""
+    for row in NOTE_SENTENCES.get(text_id, []):
+        s = ET.SubElement(root, "S")
+        s.set("id", f"{text_id}_S_{row['from_sentence']}-note{row['seq']}")
+        form = ET.SubElement(s, "FORM")
+        form.set("kindOf", "original")
+        text = " ".join(_SEG_MARKERS.sub("", row["form"]).split())
+        form.text = clean_text(text)
+        note = f"An example from NTU's notes on S_{row['from_sentence']}, not part of the recording."
+        if text != row["form"]:
+            note += f" NTU's segmented form: {row['form']}"
+        form.set("notes", note)
+        for lang in ("zho", "eng"):
+            if row[lang].strip():
+                add_transl(s, lang, row[lang])
+        if row["eng_alt"].strip():
+            add_transl(s, "eng", row["eng_alt"]).set("ver", "alt")
+        stats["0 example sentences from NTU's notes appended"] = stats.get(
+            "0 example sentences from NTU's notes appended", 0) + 1
+
 def build(records: list, text_id: str, steps: set, stats: dict,
           attested: dict | None = None, malformed: dict | None = None, language: str = "", dialect: str = "unknown",
           audio_shift: float | None = None) -> ET.Element:
@@ -592,6 +633,7 @@ def build(records: list, text_id: str, steps: set, stats: dict,
                 continue
             emit_sentence(root, text_id, rid + suffix, body, rows, ori, steps, stats,
                           code_switch, attested, malformed, language=language, audio_shift=audio_shift)
+    append_note_sentences(root, text_id, stats)
     # POL-053: the closed attribute surface, plus V017/V085 conformance.
     conform_sentence(root, stats)
     return root

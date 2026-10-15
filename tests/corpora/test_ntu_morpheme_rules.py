@@ -508,3 +508,16 @@ def test_notes_on_a_sentences_earlier_units_are_kept_once_and_in_order():
     u = lambda i, free, end=False: [i, {"ori": ["w"], "gloss": [], "free": free, "s_end": end}]
     g = [u(1, ["#n same note"]), u(2, ["#n same note", "#ma的標記不確定。"]), u(3, ["#e Done.", "#c 好。", "#n last"], True)]
     assert _merge(g, {}, "s")[1]["free"] == ["#n same note", "#n a的標記不確定。", "#e Done.", "#c 好。", "#n last"]
+
+
+def test_example_sentences_from_ntus_notes_are_appended_to_their_story():
+    # Review page round 13: "Add to the end of the file new sentence blocks ...".
+    import xml.etree.ElementTree as ET
+    from pipeline_stories import NOTE_SENTENCES, append_note_sentences
+    assert len(NOTE_SENTENCES["KavCon-relatives_buya_ngengi"]) == 5
+    root = ET.Element("TEXT"); ET.SubElement(root, "S").set("id", "KavNr-frog_buya_S_1")
+    append_note_sentences(root, "KavNr-frog_buya", {})
+    last = root.findall("S")[-1]
+    assert last.get("id") == "KavNr-frog_buya_S_154-note2"
+    assert last.find("FORM").text == "tmitaiku yau biat ’nay takinilan"
+    assert "t<m>ita=iku" in last.find("FORM").get("notes")
