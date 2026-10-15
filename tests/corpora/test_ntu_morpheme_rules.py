@@ -500,3 +500,11 @@ def test_every_tag_in_a_free_translation_line_starts_its_own_line():
     entries, notes = free_entries(["#c 熊使山豬害怕。#n mapinpising tumaz"], "s", "1", {})
     assert entries == [("zho", "熊使山豬害怕。", "", "")] and notes == ["mapinpising tumaz"]
     assert free_entries(["#e #e All wishes."], "s", "1", {})[0] == [("eng", "All wishes.", "", "")]
+
+
+def test_notes_on_a_sentences_earlier_units_are_kept_once_and_in_order():
+    # Review page round 12, card notes: "keep".
+    from pipeline_stories import _merge
+    u = lambda i, free, end=False: [i, {"ori": ["w"], "gloss": [], "free": free, "s_end": end}]
+    g = [u(1, ["#n same note"]), u(2, ["#n same note", "#ma的標記不確定。"]), u(3, ["#e Done.", "#c 好。", "#n last"], True)]
+    assert _merge(g, {}, "s")[1]["free"] == ["#n same note", "#n a的標記不確定。", "#e Done.", "#c 好。", "#n last"]

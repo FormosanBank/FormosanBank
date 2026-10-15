@@ -1081,7 +1081,7 @@ def _merge_pieces(group: list, stem: str, stats: dict) -> list:
     for is_cs, piece in pieces:
         if not is_cs:
             piece = [_mandarin_rows(r, stats) for r in piece]
-        merged = _merge(piece, stats)
+        merged = _merge(piece, stats, stem)
         body = merged[1]
         # A speaker label (capital + colon) is not speech, whether or not the gloss
         # table has a row for it (review page round 10, card labels: approve). Only the
@@ -1103,10 +1103,11 @@ def _merge_pieces(group: list, stem: str, stats: dict) -> list:
     return out
 
 
-def _merge(group: list, stats: dict) -> list:
+def _merge(group: list, stats: dict, stem: str = "") -> list:
     """One record from a group: gloss rows concatenated, free translation kept."""
     first_id = group[0][0]
     merged = {"ori": [], "gloss": [], "free": [], "s_end": True}
+    notes_kept = []
     spans = []
     # A record with no transcript line (none, or punctuation only) would leave
     # its words out of the sentence text, and the whole sentence would then
@@ -1145,7 +1146,26 @@ def _merge(group: list, stats: dict) -> list:
             merged["ori"].extend(ori)
         merged["gloss"].extend(body.get("gloss") or [])
         if body.get("free"):
+            # The last unit's lines are the sentence's translation and notes. An
+            # earlier unit's notes join them, in order (review page round 12, card
+            # notes: "keep"); 1,066 were dropped. A unit with its own translation
+            # already ends its sentence (merge_groups), so an earlier unit holds
+            # notes only. Two notes are under another tag: '#ma的標記不確定。'
+            # (dialog4 unit 56) and mother_iwan unit 224's '#e' line.
+            if merged["free"]:
+                earlier = []
+                for line in merged["free"]:
+                    line = str(line)
+                    if line.startswith("#m") or (stem, str(merged.get("_free_unit"))) in NOT_A_TRANSLATION:
+                        line = "#n " + line[2:].strip()
+                    if line.startswith("#n"):
+                        earlier.append(line)
+                notes_kept.extend(earlier)
+                if earlier:
+                    stats["16 notes kept from a sentence's earlier units"] = stats.get(
+                        "16 notes kept from a sentence's earlier units", 0) + len(earlier)
             merged["free"] = list(body["free"])
+            merged["_free_unit"] = rec[0]
         span = body.get("iu_a_span") or []
         # 18 source units give only one endpoint ([18.56, None] or
         # [None, 20.94]). Requiring both would discard them, and with them
@@ -1174,6 +1194,20 @@ def _merge(group: list, stats: dict) -> list:
         ends = [b for _, b in spans if b is not None]
         if starts and ends:
             merged["iu_a_span"] = [starts[0], ends[-1]]
+    merged.pop("_free_unit", None)
+    if notes_kept:
+        # NTU often repeats a note on several units of a sentence (and sometimes twice
+        # on one unit); an exact repeat is kept once, where it first appears.
+        seen, lines = set(), []
+        for line in notes_kept + merged["free"]:
+            key = str(line).strip() if str(line).startswith("#n") else None
+            if key is not None and key in seen:
+                stats["16   repeated notes kept once"] = stats.get("16   repeated notes kept once", 0) + 1
+                continue
+            if key is not None:
+                seen.add(key)
+            lines.append(line)
+        merged["free"] = lines
     if len(group) > 1:
         stats["16 intonation units merged into a sentence"] = stats.get(
             "16 intonation units merged into a sentence", 0) + len(group) - 1
