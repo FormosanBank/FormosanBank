@@ -1032,20 +1032,21 @@ def test_V083_schema_validation_negative(tmp_path, fixtures_dir, copy_fixture):
 
 
 # -----------------------------------------------------------------------------
-# V144/V145 SOFT — M-tier consistency (POL-023, ruled 2026-08-10;
-# V144 re-scoped to the SENTENCE 2026-08-12)
+# V144 SOFT / V145 HARD — M-tier consistency (POL-023, ruled 2026-08-10;
+# V144 re-scoped to the SENTENCE 2026-08-12; POL-057 2026-10-17)
 #
-# V144 (per sentence): in a sentence that carries some morphological
-# parsing, every W must have at least one M; a single-M W there reads as
-# "analyzed as monomorphemic". A sentence the author never analyzed
-# carries no M tier at all and is NOT a finding — even when a sibling
-# sentence in the same file is fully parsed.
+# V144 (per sentence, SOFT, a prompt not a defect): in a sentence that
+# carries some morphological parsing, a W with no M is reported so the
+# reviewer can confirm it is deliberately unsegmented (POL-057: no M =
+# segmentation unknown, which is legitimate). A sentence the author never
+# analyzed carries no M tier at all and is NOT a finding — even when a
+# sibling sentence in the same file is fully parsed.
 # "Carries some parsing" = some W has 2+ M, or some M's FORM differs from
 # its parent W's FORM (the criterion in YeddaPalemeqBlog's fix_m_tier.py).
 #
-# V145 (per file, deliberately): a file where no sentence carries any
-# parsing should have no M level at all (an all-single-M mirror tier adds
-# no information — the Yedda case).
+# V145 (per file, deliberately; HARD since 2026-10-17): a file where no
+# sentence carries any parsing must have no M level at all (an
+# all-single-M mirror tier adds no information — the Yedda case).
 # -----------------------------------------------------------------------------
 
 _MT_OPEN = (
@@ -1179,14 +1180,19 @@ def test_V145_all_single_M_tier_flagged(tmp_path):
     assert _has_rule_finding(proc, ("v145",)), (
         f"expected V145; stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
+    # HARD since 2026-10-17: the run fails and the finding says HARD.
+    assert proc.returncode == 1, f"V145 is HARD; expected exit 1, got {proc.returncode}"
+    rows = _soft_rows(tmp_path, "V145")
+    assert rows and all(r["severity"] == "HARD" for r in rows), (
+        f"expected HARD V145 rows in the findings CSV; got {rows!r}")
 
 
 def test_V145_stays_file_scoped_beside_a_parsed_sentence(tmp_path):
     """Deliberate 2026-08-12 choice: V145 keeps FILE scope while V144 went
     per sentence. S2's mirror M tier is indistinguishable from a genuine
-    "all words monomorphemic" analysis at sentence scale, and POL-023
-    blesses single-M Ws — so a file that carries parsing anywhere is not a
-    V145 finding."""
+    "all words monomorphemic" analysis at sentence scale, and POL-057 reads
+    single-M Ws as "monomorphemic" — so a file that carries parsing anywhere
+    is not a V145 finding."""
     body = (
         '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
         + _w("W1", "ma-kaen", ["ma-", "kaen"])

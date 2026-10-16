@@ -14,6 +14,7 @@ from lxml import etree
 from QC.validation._corpus_index import CorpusIndex
 from QC.validation._dialect_inventory import valid_dialects
 from QC.validation._finding import Finding, Severity
+from QC.validation.rules.soft import _carries_parsing, _children, _sentence_words, _tree_language
 
 
 _XSD_PATH = Path(__file__).resolve().parents[1] / "xml_template.xsd"
@@ -1134,7 +1135,54 @@ def v081_text_id_unique_across_published_corpora(
     )]
 
 
+
+def v145_degenerate_all_single_M_tier(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V145 HARD (POL-023, POL-057): M level present but the file carries no parsing.
+
+    HARD since 2026-10-17. Maintainer: "V145 can be retained. That's a HARD
+    validator, please. Formosan languages are not monomorphemic, so if there
+    is an M tier but no split words anywhere, that's weird."
+
+    Ruling 2026-08-10: corpora without morpheme segmentation should have
+    no M level at all — an M tier where every M-bearing W has exactly
+    one M identical in role to its W adds no information (historically:
+    ~100 spurious M shells shipped in YeddaPalemeqBlog).
+
+    Deliberately kept **file-scoped** when V144 went per-sentence
+    (2026-08-12). "Every M mirrors its W" is only evidence of a fake
+    tier in bulk: a single sentence whose handful of words really are
+    monomorphemic is indistinguishable from a mirror tier, and POL-023
+    explicitly blesses single-M Ws as "analyzed as monomorphemic". A
+    whole file with no multi-morphemic word anywhere is the reliable
+    signal; one sentence is not.
+    """
+    sentences = _sentence_words(tree)
+    if not sentences or any(_carries_parsing(ws) for ws in sentences):
+        return []
+    singles = sum(1 for ws in sentences for w in ws if _children(w, "M"))
+    if singles == 0:
+        return []
+    return [Finding(
+        rule_id="V145",
+        severity=Severity.HARD,
+        message=(
+            f"V145 HARD: M level present but no sentence in the file "
+            f"carries any morphological parsing ({singles} mirror single-M "
+            f"Ws) — an M tier needs some segmented word (POL-023, POL-057)"
+        ),
+        path=path,
+        count=singles,
+        language=_tree_language(tree, path, index),
+        character="",
+    )]
+
+
 RULES: list = [
+    v145_degenerate_all_single_M_tier,  # POL-023/POL-057, HARD since 2026-10-17
     v000_schema_validation,
     v001_root_must_be_TEXT,
     v013_S_must_have_original_FORM,

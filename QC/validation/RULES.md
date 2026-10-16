@@ -46,7 +46,7 @@ the validator names on its `Details:` line, never to the terminal.
 | V084 | `transl_ver_value_in_allowlist` | HARD | file | when TRANSL/@ver is set, its value must be in the project allowlist. |
 | V085 | `multi_same_lang_transl_requires_ver` | HARD | file | when a parent has multiple TRANSL children sharing the same xml:lang *and* the same `kindOf`, at least one must carry a `ver` attribute to discriminate them. |
 | V144 | `M_less_W_in_parsed_sentence` | SOFT | file | a morphologically parsed sentence with M-less Ws. |
-| V145 | `degenerate_all_single_M_tier` | SOFT | file | M level present but the file carries no parsing. |
+| V145 | `degenerate_all_single_M_tier` | HARD | file | M level present but the file carries no parsing. |
 | V148 | `W_less_S_in_segmented_file` | SOFT | file | a partially word-segmented file. |
 | V149 | `alternate_FORM_requires_base_sibling` | HARD | file | a variant FORM must have exactly one base FORM in its own tier. |
 | V150 | `alternate_FORM_low_overlap` | SOFT | file | an alternate FORM that does not look like a spelling variant of its sibling. |
