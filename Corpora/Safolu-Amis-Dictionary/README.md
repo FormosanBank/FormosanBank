@@ -25,8 +25,11 @@ by maintainer ruling 2026-10-16 rather than mapped to 4.0 (POL-042). Until
 2026-10-16 each `TEXT/@copyright` held the prose "CC BY-NC according to the
 frozen amis-safolu README; current data source is g0v/amis-moedict docs/s.";
 POL-042 allows only a vocabulary value there, so that statement is preserved
-here. The frozen [miaoski/amis-safolu](https://github.com/miaoski/amis-safolu)
-README's licence line reads: 蔡中涵委員 g0v 阿美語萌典計劃使用本字典，以 CC BY-NC 授權宣告。
+here. The grant itself (CC BY-NC-SA 3.0 Taiwan, from Tsai Chung-Han) is held in
+FormosanBank's records; ask the maintainer for it. For comparison, the frozen
+[miaoski/amis-safolu](https://github.com/miaoski/amis-safolu) README's licence line
+reads 蔡中涵委員 g0v 阿美語萌典計劃使用本字典，以 CC BY-NC 授權宣告。 (CC BY-NC, no version);
+the grant held by FormosanBank is the authority.
 The same one-attribute change was made in the POL-035 snapshot
 (`CodeAndDocs/pre_correction_snapshot/`), because `make_xml.sh` copies that
 snapshot into `XML/` and a rebuild must reproduce the new value.

@@ -9,7 +9,7 @@ This repository contains code and data for processing and structuring the ePark 
 ## Rights
 
 **License:** CC BY-NC-SA 4.0
-**Rights source:** grantor and date not recorded in this repository; evidence: ask maintainer
+**Rights source:** the ePark source site, which publishes these materials under this licence; date not recorded in this repository; evidence: ask maintainer
 
 The `@copyright` value was recorded without a version (`CC-BY-NC-SA`) until
 2026-10-16, when it was normalized to `CC BY-NC-SA 4.0` under POL-042 (a value
