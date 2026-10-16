@@ -15,6 +15,7 @@ test -f "$FB/QC/cleaning/clean_xml.py"
     --manual_file "$HERE/manual_edits.xml"
 "$PY" "$FB/QC/cleaning/clean_xml.py" --corpora_path "$STAGE/XML" --warnings_dir "$REPORTS"
 "$PY" "$FB/QC/utilities/standardize.py" --corpora_path "$STAGE/XML" --copy
+"$PY" "$HERE/scripts/apply_standard_corrections.py" --xml-dir "$STAGE/XML"
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$STAGE/XML" --orthography Ortho113
 "$PY" "$HERE/scripts/remove_standard_cjk_annotations.py" \
     --formosanbank-root "$FB" --xml-dir "$STAGE/XML"

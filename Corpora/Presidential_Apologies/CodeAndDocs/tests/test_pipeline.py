@@ -13,6 +13,7 @@ from CodeAndDocs.scripts.audit_source_alignment import (
     normalize_for_alignment,
     uncovered_text,
 )
+from CodeAndDocs.scripts.apply_standard_corrections import load_corrections
 from CodeAndDocs.scripts.remove_standard_cjk_annotations import remove_annotations
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -107,6 +108,8 @@ def test_published_ids_translations_and_unchanged_originals_are_preserved() -> N
         ("Saaroa", "0"), ("Truku", "25"), ("Amis", "20"), ("Atayal", "4"),
         ("Bunun", "18"), ("Tsou", "6"), ("Tsou", "20"), ("Tsou", "25"),
         ("Saaroa", "31"), ("Kanakanavu", "17"), ("Saisiyat", "20"),
+        # Base reading = the one outside the parentheses (ruling 2026-10-16).
+        ("Puyuma", "28"), ("Tsou", "2"), ("Tsou", "9"),
     }
     changed: set[tuple[str, str]] = set()
     for spec in load_specs():
@@ -151,6 +154,24 @@ def test_source_corrections_are_explicit() -> None:
     truku = read_sections(CODE_ROOT / "Apologies" / "Truku" / "Truku.txt", 33)[25]
     assert "mualiuhlʉ" in saaroa
     assert "tnpusu;,“" in truku
+
+
+def test_standard_corrections_change_only_the_standard_tier() -> None:
+    rows = load_corrections(CODE_ROOT / "data" / "standard_corrections.tsv")
+    # Tsou x printed for ʉ: standard tier only (maintainer ruling 2026-10-16).
+    assert len(rows) == 7
+    root = ET.parse(xml_root() / "Tsou" / "Tsou.xml").getroot()
+    for row in rows:
+        sentence = root.find(f'S[@id="{row["section_id"]}"]')
+        original = sentence.findtext('FORM[@kindOf="original"]')
+        standard = sentence.findtext('FORM[@kindOf="standard"]')
+        assert row["printed"] in original
+        assert row["printed"] not in standard
+        assert row["standard"] in standard
+        # The corrected word no longer has an untranscribable letter.
+        assert sentence.findtext('PHON[@kindOf="standard"]').count("*") < sentence.findtext(
+            'PHON[@kindOf="original"]'
+        ).count("*")
 
 
 def test_source_manifest_inventory() -> None:
