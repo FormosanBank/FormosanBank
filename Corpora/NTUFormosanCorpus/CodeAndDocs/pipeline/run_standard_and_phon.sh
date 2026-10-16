@@ -47,6 +47,17 @@ done
 # exists, which add_phonology handles itself.
 "$PY" "$ROOT/QC/utilities/add_phonology.py" --corpora_path "$XML" --orthography Ortho94 2>&1 | tail -3
 
+# Except Kanakanavu (ruling 2026-10-16, "A"): NTU writes it in Ortho113
+# spelling -- ʉ 5,207 times, which Ortho94 has no letter for in Kanakanavu
+# (Ortho94.pdf p. 15: the central high vowel is written for Tsou only), and r
+# 5,342 times against l 34 (mostly loans). Its original PHON is regenerated
+# from Ortho113's rules; under Ortho94's every ʉ became '*'. The 34 l, which
+# Ortho113 lacks, stay '*' in PHON.
+if [[ -d "$XML/Kanakanavu" ]]; then
+  "$PY" "$ROOT/QC/utilities/add_phonology.py" --corpora_path "$XML" --orthography Ortho113 \
+      --language Kanakanavu 2>&1 | tail -1
+fi
+
 # A form with no letters has no phonology: punctuation ',', '.', and the '?'
 # uncertain-transcription placeholder (which the analyst may still gloss, e.g.
 # NMLZ). add_phonology writes an empty PHON for those, and V073 HARD requires a

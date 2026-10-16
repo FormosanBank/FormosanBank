@@ -152,6 +152,15 @@ build_flat() {       # $1 = sentences|stories
   cleanup "remove_empty_translations"   "$SCR/remove_empty_translations.py" --xml-dir "$W"
   run "propagate_clitic_boundaries"      "$SCR/propagate_clitic_boundaries.py" --xml_dir "$W"
   finish_tiers "$W" "$out"
+  if [[ "$kind" == sentences ]]; then
+    # A translation written as two renderings 'A / B' becomes a translation and
+    # an alternative (ruling 2026-10-16; split_two_renderings.py).
+    run "split_two_renderings" "$PIPE/split_two_renderings.py" --xml_dir "$W"
+    # 63.json is NTU's revised copy of the Bunun sentences: publish each sentence
+    # once, comparing the copies as cleaned (rulings 2026-10-16; dedupe_bunun63.py).
+    TAIL=20 run "dedupe_bunun63" "$PIPE/dedupe_bunun63.py" --xml_dir "$W" \
+        --report "$CORPUS/logs/bunun63_dedupe.tsv"
+  fi
   install_into "$W" "$out"
 }
 

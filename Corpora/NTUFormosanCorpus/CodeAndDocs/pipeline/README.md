@@ -31,6 +31,17 @@ with `pipeline_grammar.py`:
 description of each. The numbers are *creation* order, not application
 order; `--steps` selects which run, and `build.sh` pins the sets above.
 
+**Readings (POL-028, POL-026).** Inside the Sentences and Stories builders, `pol028.py` turns a record with
+a glossed optional morpheme (`kangavas(=an)`) or an optional phrase (`(nau tu)`) into one sentence per
+reading — base id, `-opt`, and `-opt3`/`-opt4` when a record has both — each with its own word and
+morpheme tiers; per-reading translations and notes ruled by the maintainer are in `pol028_readings.tsv`.
+Optional letters inside a morpheme stay one sentence with a `ver="alt"` FORM (step 14).
+
+**Audio timing grafts.** `audio_timing_grafts.tsv` (written by `make_audio_timing_grafts.py`) gives three
+stories whose text NTU publishes untimed the time spans of NTU's timed transcription of the same text;
+the Stories builder applies it before the story's zero point is computed, and fails if a record
+already has timing.
+
 **B. Repairs.** `QC/cleaning/clean_xml.py` from the bank (for Sentences and
 Stories followed by `restore_quote_exemptions.py`, which puts back glottal
 letters the shared quote cleaner took for quotation marks, listed in

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" ?>
 <TEXT id="NTU_Stry_Kavalan_KavNr-frog_abas" citation="NTU Corpus of Formosan Languages" BibTeX_citation="" copyright="CC BY-NC 4.0" xml:lang="ckv" dialect="Kavalan">
     <S id="KavNr-frog_abas_S_1">
         <FORM kindOf="original">sikawmapaiku haw pakunku tu zana qmudu tu biat.</FORM>
@@ -17848,13 +17848,37 @@
         </W>
     </S>
     <S id="KavNr-frog_abas_S_138">
-        <FORM kindOf="original">().</FORM>
-        <FORM kindOf="original" ver="alt">(VOICEOVERmai=ti).</FORM>
-        <FORM kindOf="standard">().</FORM>
-        <FORM kindOf="standard" ver="alt">(VOICEOVERmai=ti).</FORM>
+        <FORM kindOf="original" notes="NTU transcriber's label: VOICEOVER (these words were spoken by a voice-over, not the narrator)">maiti.</FORM>
+        <PHON kindOf="original">maiti</PHON>
+        <FORM kindOf="standard">maiti.</FORM>
+        <PHON kindOf="standard">maiti</PHON>
         <TRANSL xml:lang="zho">沒了嗎?</TRANSL>
         <TRANSL xml:lang="eng">Is it over?</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-frog_abas.mp3" start="649.3" end="651.24" file="KavNr-frog_abas_S80.mp3"/>
+        <W id="KavNr-frog_abas_S_138_W0">
+            <FORM kindOf="original">mai=ti.</FORM>
+            <PHON kindOf="original">maiti</PHON>
+            <FORM kindOf="standard">mai=ti.</FORM>
+            <PHON kindOf="standard">maiti</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">否定=完成</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG=PFV</TRANSL>
+            <M id="KavNr-frog_abas_S_138_W0M0">
+                <FORM kindOf="original">mai</FORM>
+                <PHON kindOf="original">mai</PHON>
+                <FORM kindOf="standard">mai</FORM>
+                <PHON kindOf="standard">mai</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+            </M>
+            <M id="KavNr-frog_abas_S_138_W0M1">
+                <FORM kindOf="original">=ti.</FORM>
+                <PHON kindOf="original">ti</PHON>
+                <FORM kindOf="standard">=ti.</FORM>
+                <PHON kindOf="standard">ti</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+            </M>
+        </W>
     </S>
     <S id="KavNr-frog_abas_S_139">
         <FORM kindOf="original">maiti haw.</FORM>
