@@ -15,6 +15,25 @@ project, converted into valid FormosanBank XML.
 | Published XML | `XML/Amis/Safolu/amis_safolu_examples.xml` |
 | Reproduction | `CodeAndDocs/make_xml.sh` — the single entry point (add `--from-source` to rebuild from upstream instead of the committed baseline) |
 
+## Rights
+
+**License:** CC BY-NC-SA 3.0 TW
+**Rights source:** Tsai Chung-Han (蔡中涵), date not recorded in this repository; evidence: ask maintainer
+
+The licence is the version as granted (CC BY-NC-SA 3.0 Taiwan), kept as granted
+by maintainer ruling 2026-10-16 rather than mapped to 4.0 (POL-042). Until
+2026-10-16 each `TEXT/@copyright` held the prose "CC BY-NC according to the
+frozen amis-safolu README; current data source is g0v/amis-moedict docs/s.";
+POL-042 allows only a vocabulary value there, so that statement is preserved
+here. The grant itself (CC BY-NC-SA 3.0 Taiwan, from Tsai Chung-Han) is held in
+FormosanBank's records; ask the maintainer for it. For comparison, the frozen
+[miaoski/amis-safolu](https://github.com/miaoski/amis-safolu) README's licence line
+reads 蔡中涵委員 g0v 阿美語萌典計劃使用本字典，以 CC BY-NC 授權宣告。 (CC BY-NC, no version);
+the grant held by FormosanBank is the authority.
+The same one-attribute change was made in the POL-035 snapshot
+(`CodeAndDocs/pre_correction_snapshot/`), because `make_xml.sh` copies that
+snapshot into `XML/` and a rebuild must reproduce the new value.
+
 ## Data shape
 
 A single `TEXT` root with **49,181** `S` children (example sentences). Each
