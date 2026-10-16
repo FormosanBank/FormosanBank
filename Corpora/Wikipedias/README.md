@@ -129,6 +129,20 @@ punctuation inconsistently — e.g. Sakizaya articles write a word-final
 glottal `'` followed by a curly `’` closing quote — so codepoint
 distinctions in the source cannot be trusted as signal.)
 
+**Two apostrophes (`''`), Amis / Atayal / Paiwan / Sakizaya** (maintainer
+ruling, 2026-10-14): the articles were downloaded as Wikipedia's plain-text
+extracts (`download.py` uses `wikipediaapi`'s default `ExtractFormat.WIKI`,
+i.e. TextExtracts with `explaintext=1`), in which MediaWiki has already
+rendered `''italic''` markup away. A `''` that survives is a character the
+page shows — two apostrophes typed for a double quotation mark, as found for
+Seediq below. `CodeAndDocs/normalize_double_apostrophes.py` (pipeline step 5b,
+before `clean_xml`) rewrites every run of exactly two apostrophes in original
+FORMs to `"` (380 runs in 97 articles). Runs of three or more are left alone,
+since they can contain a glottal letter; the one such run that is a glottal
+plus a closing quote, Sakizaya `Luxembourg` `''a puyuay nubuyu'''` →
+`"a puyuay nubuyu'"`, is corrected by a `CodeAndDocs/manual_edits.xml`
+record.
+
 **Seediq only**: Seediq orthography does not use `'` as a letter (no `'`
 row in `Orthographies/Ortho113/Seediq.tsv`), and inspection of the trv
 wikitext showed the corpus's apostrophes are quotation usage: literal `''`

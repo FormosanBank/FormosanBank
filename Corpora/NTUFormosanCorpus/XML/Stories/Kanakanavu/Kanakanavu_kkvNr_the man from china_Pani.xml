@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <TEXT id="NTU_Stry_Kanakanavu_kkvNr_the man from china_Pani" citation="NTU Corpus of Formosan Languages" BibTeX_citation="" copyright="CC BY-NC 4.0" xml:lang="xnb" dialect="Kanakanavu">
     <S id="kkvNr_the man from china_Pani_S_1">
-        <FORM kindOf="original" notes="kocisinse為日語，指校長。">teku, tumatuturu, poisua, tacin, niaranai, tauruu, kocisinse.</FORM>
+        <FORM kindOf="original" notes="po-isua即為「講關於（某某主題）」的意思。 po-kari-kari 說話(kari話語)、講話。 po-kari 呼叫。 tacin 一定是用來計算人。 arainai 有「開始」、「從」的意思。 ai經常音變為ee，因此也會念成aranee。 tauru 指外省人(大陸人)。 kocisinse為日語，指校長。">teku, tumatuturu, poisua, tacin, niaranai, tauruu, kocisinse.</FORM>
         <PHON kindOf="original">t[e|ə]ku tumatuturu poisua taʦin niaranai tauruu koʦisins[e|ə]</PHON>
         <FORM kindOf="standard">teku, tumatuturu, poisua, tacin, niaranai, tauruu, kocisinse.</FORM>
         <PHON kindOf="standard">teku tumatutu[r|ɾ]u poisua taʦin nia[r|ɾ]anai tau[r|ɾ]uu koʦisinse</PHON>
@@ -436,7 +436,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_20">
-        <FORM kindOf="original">'akia pakangvang, tanasa mocaca, cau mesua na. noten, mocaca, mokusa, maraa, aracen makai, kasanpo, aupoo, 'uru, kʉkʉ, kangvang mokusa 'inia.</FORM>
+        <FORM kindOf="original" notes="此處，pa-有「仍然」的意思，其他的否定詞包含:’akia 沒有,ka’aan 不是,’akuni 不要,aaka 不好,koo 未曾 tanasa mocaca指車子。 noten由noo-tia簡化而來。 大埔在嘉義，緊鄰納瑪夏。 ’uru-表使用(’urupacan) ’uru-kʉkʉ意思指(使用腿)徒步。">'akia pakangvang, tanasa mocaca, cau mesua na. noten, mocaca, mokusa, maraa, aracen makai, kasanpo, aupoo, 'uru, kʉkʉ, kangvang mokusa 'inia.</FORM>
         <PHON kindOf="original">ʔakia pakaŋvaŋ tanasa moʦaʦa ʦau m[e|ə]sua na not[e|ə]n moʦaʦa mokusa maraa araʦ[e|ə]n makai kasanpo aupoo ʔuru k*k* kaŋvaŋ mokusa ʔinia</PHON>
         <FORM kindOf="standard">'akia pakangvang, tanasa mocaca, cau mesua na. noten, mocaca, mokusa, maraa, aracen makai, kasanpo, aupoo, 'uru, kʉkʉ, kangvang mokusa 'inia.</FORM>
         <PHON kindOf="standard">ʔakia pakaŋvaŋ tanasa moʦaʦa ʦau mesua na noten moʦaʦa mokusa ma[r|ɾ]aa a[r|ɾ]aʦen makai kasanpo aupoo ʔu[r|ɾ]u kɨkɨ kaŋvaŋ mokusa ʔinia</PHON>
@@ -455,8 +455,8 @@
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">否定.存在</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NEG.EXIST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_20_W1">
@@ -495,7 +495,7 @@
                 <PHON kindOf="original">tanasa</PHON>
                 <FORM kindOf="standard">tanasa</FORM>
                 <PHON kindOf="standard">tanasa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">家屋</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">房子</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
             </M>
         </W>
@@ -536,7 +536,7 @@
                 <FORM kindOf="standard">cau</FORM>
                 <PHON kindOf="standard">ʦau</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">people</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_20_W5">
@@ -679,8 +679,8 @@
                 <PHON kindOf="original">makai</PHON>
                 <FORM kindOf="standard">makai,</FORM>
                 <PHON kindOf="standard">makai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">好像</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">like</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">好像.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">be.like.AF</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_20_W13">
@@ -722,6 +722,14 @@
             <PHON kindOf="standard">ʔu[r|ɾ]u</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使用-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">use-</TRANSL>
+            <M id="kkvNr_the man from china_Pani_S_20_W15M0">
+                <FORM kindOf="original">'uru</FORM>
+                <PHON kindOf="original">ʔuru</PHON>
+                <FORM kindOf="standard">'uru</FORM>
+                <PHON kindOf="standard">ʔu[r|ɾ]u</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">使用</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">use</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_20_W16">
             <FORM kindOf="original">kʉkʉ,</FORM>
@@ -751,7 +759,7 @@
                 <PHON kindOf="original">kaŋvaŋ</PHON>
                 <FORM kindOf="standard">kangvang</FORM>
                 <PHON kindOf="standard">kaŋvaŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">全部</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">都</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">all</TRANSL>
             </M>
         </W>
@@ -791,13 +799,13 @@
                 <PHON kindOf="original">ʔinia</PHON>
                 <FORM kindOf="standard">'inia.</FORM>
                 <PHON kindOf="standard">ʔinia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那裡</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那裏</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_33">
-        <FORM kindOf="original" notes="to’omang此為竹類的總稱。">'akia tenki, kangvang siarupaca, sinʉng, po'ocipi, 'urupaca, kangvang, karu, to'omang.</FORM>
+        <FORM kindOf="original" notes="tenki為日語借字，電器，在此指電燈。 原形為’urupaca 使用。 老師認為此字發音應是sinang，此為語誤。 sinʉng(語誤) 從sinangʉn 簡化而來。 mari-sinan 照射、發光。 karu通稱樹木、材火，木製品或與木頭有關的產品。 to’omang此為竹類的總稱。">'akia tenki, kangvang siarupaca, sinʉng, po'ocipi, 'urupaca, kangvang, karu, to'omang.</FORM>
         <PHON kindOf="original">ʔakia t[e|ə]nki kaŋvaŋ siarupaʦa sin*ŋ poʔoʦipi ʔurupaʦa kaŋvaŋ karu toʔomaŋ</PHON>
         <FORM kindOf="standard">'akia tenki, kangvang siarupaca, sinʉng, po'ocipi, 'urupaca, kangvang, karu, to'omang.</FORM>
         <PHON kindOf="standard">ʔakia tenki kaŋvaŋ sia[r|ɾ]upaʦa sinɨŋ poʔoʦipi ʔu[r|ɾ]upaʦa kaŋvaŋ ka[r|ɾ]u toʔomaŋ</PHON>
@@ -1087,7 +1095,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_43">
-        <FORM kindOf="original">mesia, cau na, Namasia, Kanakanavu ia, matʉtʉa kangvang, maraa, muru'inasʉ.</FORM>
+        <FORM kindOf="original" notes="miana以前。 mia’enan 以往，但現在說法為me’enan。 mamisa 最近。 cau可指人、人類、別人。 matʉa 相同，matʉtʉa拉長中間音節表強調。 matʉtʉtʉa 也表強調。 mara 拿取。">mesia, cau na, Namasia, Kanakanavu ia, matʉtʉa kangvang, maraa, muru'inasʉ.</FORM>
         <PHON kindOf="original">m[e|ə]sia ʦau na namasia kanakanavu ia mat*t*a kaŋvaŋ maraa muruʔinas*</PHON>
         <FORM kindOf="standard">mesia, cau na, Namasia, Kanakanavu ia, matʉtʉa kangvang, maraa, muru'inasʉ.</FORM>
         <PHON kindOf="standard">mesia ʦau na namasia kanakanavu ia matɨtɨa kaŋvaŋ ma[r|ɾ]aa mu[r|ɾ]uʔinasɨ</PHON>
@@ -1131,7 +1139,7 @@
                 <FORM kindOf="standard">cau</FORM>
                 <PHON kindOf="standard">ʦau</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">people</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_43_W2">
@@ -1146,8 +1154,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na,</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_43_W3">
@@ -1178,7 +1186,7 @@
                 <PHON kindOf="original">kanakanavu</PHON>
                 <FORM kindOf="standard">Kanakanavu</FORM>
                 <PHON kindOf="standard">kanakanavu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">卡那卡那富</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">卡那卡那富人</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">Kanakanavu</TRANSL>
             </M>
         </W>
@@ -1199,29 +1207,27 @@
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_43_W6">
-            <FORM kindOf="original">ma-tʉ-tʉa</FORM>
+            <FORM kindOf="original">ma&lt;tʉ&gt;tʉa</FORM>
             <PHON kindOf="original">mat*t*a</PHON>
-            <FORM kindOf="standard">ma-tʉ-tʉa</FORM>
+            <FORM kindOf="standard">ma&lt;tʉ&gt;tʉa</FORM>
             <PHON kindOf="standard">matɨtɨa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">重疊-一樣.主焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">RED-be.the.same.AF</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_43_W6M0">
-                <FORM kindOf="original">ma</FORM>
-                <PHON kindOf="original">ma</PHON>
-                <FORM kindOf="standard">ma</FORM>
-                <PHON kindOf="standard">ma</PHON>
-            </M>
-            <M id="kkvNr_the man from china_Pani_S_43_W6M1">
-                <FORM kindOf="original">tʉ</FORM>
+            <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;一樣.主焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;be.the.same.AF</TRANSL>
+            <M id="kkvNr_the man from china_Pani_S_43_W6M0_0">
+                <FORM kindOf="original">-tʉ-</FORM>
                 <PHON kindOf="original">t*</PHON>
-                <FORM kindOf="standard">tʉ</FORM>
+                <FORM kindOf="standard">-tʉ-</FORM>
                 <PHON kindOf="standard">tɨ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_43_W6M2">
-                <FORM kindOf="original">tʉa</FORM>
-                <PHON kindOf="original">t*a</PHON>
-                <FORM kindOf="standard">tʉa</FORM>
-                <PHON kindOf="standard">tɨa</PHON>
+            <M id="kkvNr_the man from china_Pani_S_43_W6M0_1">
+                <FORM kindOf="original">ma-tʉa</FORM>
+                <PHON kindOf="original">mat*a</PHON>
+                <FORM kindOf="standard">ma-tʉa</FORM>
+                <PHON kindOf="standard">matɨa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">一樣.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">be.the.same.AF</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_43_W7">
@@ -1274,7 +1280,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_50">
-        <FORM kindOf="original" notes="這裡的其他人是指別族的人。">imo, maraa ka'an, kim, cumacʉ'ʉra, cau cucumen.</FORM>
+        <FORM kindOf="original" notes="mimo喝.主焦。 imoo 喝.祈使受焦。 這裡的其他人是指別族的人。">imo, maraa ka'an, kim, cumacʉ'ʉra, cau cucumen.</FORM>
         <PHON kindOf="original">imo maraa kaʔan kim ʦumaʦ*ʔ*ra ʦau ʦuʦum[e|ə]n</PHON>
         <FORM kindOf="standard">imo, maraa ka'an, kim, cumacʉ'ʉra, cau cucumen.</FORM>
         <PHON kindOf="standard">imo ma[r|ɾ]aa kaʔan kim ʦumaʦɨʔɨ[r|ɾ]a ʦau ʦuʦumen</PHON>
@@ -1411,7 +1417,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_55">
-        <FORM kindOf="original" notes="manamanarʉ 指平地，跟原住民的居住地區分開來，但ningning特別指平原。">matʉa, sii, aracen, cucumen, ka'an kangvangkim, mokusa na, aracen, manamanarʉ.</FORM>
+        <FORM kindOf="original" notes="tara-ceni 眺望，tara-有「大」的意思。 ni-alaceni曾經從遠方。 manamanarʉ 指平地，跟原住民的居住地區分開來，但ningning特別指平原。">matʉa, sii, aracen, cucumen, ka'an kangvangkim, mokusa na, aracen, manamanarʉ.</FORM>
         <PHON kindOf="original">mat*a sii araʦ[e|ə]n ʦuʦum[e|ə]n kaʔan kaŋvaŋkim mokusa na araʦ[e|ə]n manamanar*</PHON>
         <FORM kindOf="standard">matʉa, sii, aracen, cucumen, ka'an kangvangkim, mokusa na, aracen, manamanarʉ.</FORM>
         <PHON kindOf="standard">matɨa sii a[r|ɾ]aʦen ʦuʦumen kaʔan kaŋvaŋkim mokusa na a[r|ɾ]aʦen manamana[r|ɾ]ɨ</PHON>
@@ -1527,7 +1533,7 @@
             <PHON kindOf="original">mokusa</PHON>
             <FORM kindOf="standard">m-o-kusa</FORM>
             <PHON kindOf="standard">mokusa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-去</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-去-朝向</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-go-toward</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_55_W6M0">
                 <FORM kindOf="original">m</FORM>
@@ -1550,6 +1556,7 @@
                 <PHON kindOf="original">kusa</PHON>
                 <FORM kindOf="standard">kusa</FORM>
                 <PHON kindOf="standard">kusa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">朝向</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">toward</TRANSL>
             </M>
         </W>
@@ -1603,7 +1610,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_63">
-        <FORM kindOf="original" notes="tavarʉ’ʉ 可以解釋成「會、懂、可以、能」。 tavarʉ’ʉ有些人會說成tavʉrʉ’ʉ。 masii sumukun說布農話。 makari tacau跟狗說話。">surumo, 'una can taniara, nivatu, tacin, nanmarua. ka'an tavarʉ'ʉ masii Kanakanavu.</FORM>
+        <FORM kindOf="original" notes="cani 一，通常在正式書面上會完整寫出來。 taniarʉ 太陽。 makanaru taniara soni 今天天氣如何?/今天如何? ivata 來。 ivatan 來來看。 te=ku iovutu nura我明天會來。 nanmarua通常指15~20出頭的青少男女。 manu 小朋友(12歲前) 。 tavarʉ’ʉ 可以解釋成「會、懂、可以、能」。 tavarʉ’ʉ有些人會說成tavʉrʉ’ʉ。 masii sumukun說布農話。 makari tacau跟狗說話。">surumo, 'una can taniara, nivatu, tacin, nanmarua. ka'an tavarʉ'ʉ masii Kanakanavu.</FORM>
         <PHON kindOf="original">surumo ʔuna ʦan taniara nivatu taʦin nanmarua kaʔan tavar*ʔ* masii kanakanavu</PHON>
         <FORM kindOf="standard">surumo, 'una can taniara, nivatu, tacin, nanmarua. ka'an tavarʉ'ʉ masii Kanakanavu.</FORM>
         <PHON kindOf="standard">su[r|ɾ]umo ʔuna ʦan tania[r|ɾ]a nivatu taʦin nanma[r|ɾ]ua kaʔan tava[r|ɾ]ɨʔɨ masii kanakanavu</PHON>
@@ -1796,7 +1803,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_69">
-        <FORM kindOf="original">mesua, mamarangmia ia, maraa ka'an pa, tavarʉ'ʉ, masii, nakasaiana.</FORM>
+        <FORM kindOf="original" notes="marangʉ老人，後簡化成marang。 mamarurang有資格參加長老會議的長者(通常50歲以上) 。">mesua, mamarangmia ia, maraa ka'an pa, tavarʉ'ʉ, masii, nakasaiana.</FORM>
         <PHON kindOf="original">m[e|ə]sua mamaraŋmia ia maraa kaʔan pa tavar*ʔ* masii nakasaiana</PHON>
         <FORM kindOf="standard">mesua, mamarangmia ia, maraa ka'an pa, tavarʉ'ʉ, masii, nakasaiana.</FORM>
         <PHON kindOf="standard">mesua mama[r|ɾ]aŋmia ia ma[r|ɾ]aa kaʔan pa tava[r|ɾ]ɨʔɨ masii nakasaiana</PHON>
@@ -1973,7 +1980,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_75">
-        <FORM kindOf="original">kacaua pa cau mesua, masii ripun.</FORM>
+        <FORM kindOf="original" notes="’itumuru (物質/動物，不含人)多。 miiriki’ 水(液體)滿/多。 kuratumuru  (容器)多、滿。 macakuarʉ (人可吃的東西)多。">kacaua pa cau mesua, masii ripun.</FORM>
         <PHON kindOf="original">kaʦaua pa ʦau m[e|ə]sua masii ripun</PHON>
         <FORM kindOf="standard">kacaua pa cau mesua, masii ripun.</FORM>
         <PHON kindOf="standard">kaʦaua pa ʦau mesua masii [r|ɾ]ipun</PHON>
@@ -2078,7 +2085,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_77">
-        <FORM kindOf="original" notes="isi 這。 isua那/些(很明確的地點)。 ’isa 那/些(比較不明確的地點)。 nesi 這裡。 nesa 那裏。 sana 那裏(當下未必看得到) 。 nesua 那裏(說話者其中一人看得到)。">cumacʉ'ʉra, namarua isua iovutu.</FORM>
+        <FORM kindOf="original" notes="cʉ’ʉroo 看(祈使受焦)。 cʉ’ʉrʉ-ʉn 看.受焦。 isi 這。 isua那/些(很明確的地點)。 ’isa 那/些(比較不明確的地點)。 nesi 這裡。 nesa 那裏。 sana 那裏(當下未必看得到) 。 nesua 那裏(說話者其中一人看得到)。">cumacʉ'ʉra, namarua isua iovutu.</FORM>
         <PHON kindOf="original">ʦumaʦ*ʔ*ra namarua isua iovutu</PHON>
         <FORM kindOf="standard">cumacʉ'ʉra, namarua isua iovutu.</FORM>
         <PHON kindOf="standard">ʦumaʦɨʔɨ[r|ɾ]a nama[r|ɾ]ua isua iovutu</PHON>
@@ -2167,7 +2174,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_79">
-        <FORM kindOf="original" notes="nan/nanu哪裡。 kisʉ-ʉn原形為kisa「所謂/稱為」。">pasin mamarangmia, niaranaikasunan iovutu kisʉʉn.</FORM>
+        <FORM kindOf="original" notes="te=ku makari kasua 我要跟你說話。 te=ku po-kari-kari 我要說話。 nan/nanu哪裡。 kisʉ-ʉn原形為kisa「所謂/稱為」。">pasin mamarangmia, niaranaikasunan iovutu kisʉʉn.</FORM>
         <PHON kindOf="original">pasin mamaraŋmia niaranaikasunan iovutu kis**n</PHON>
         <FORM kindOf="standard">pasin mamarangmia, niaranaikasunan iovutu kisʉʉn.</FORM>
         <PHON kindOf="standard">pasin mama[r|ɾ]aŋmia nia[r|ɾ]anaikasunan iovutu kisɨɨn</PHON>
@@ -2312,7 +2319,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_81">
-        <FORM kindOf="original">marivari, nguain, makasi, niaranaiku, tauru.</FORM>
+        <FORM kindOf="original" notes="'inia 可以指「他那裏」。 makasia 如此這般。 孔老師認為makasi和masii很有可能是同一個詞根，但是要表達說語言時會用masii，但引述內容時，則會用makasi。">marivari, nguain, makasi, niaranaiku, tauru.</FORM>
         <PHON kindOf="original">marivari ŋuain makasi niaranaiku tauru</PHON>
         <FORM kindOf="standard">marivari, nguain, makasi, niaranaiku, tauru.</FORM>
         <PHON kindOf="standard">ma[r|ɾ]iva[r|ɾ]i ŋuain makasi nia[r|ɾ]anaiku tau[r|ɾ]u</PHON>
@@ -2372,14 +2379,14 @@
             <PHON kindOf="original">niaranaiku</PHON>
             <FORM kindOf="standard">ni-aranai=ku,</FORM>
             <PHON kindOf="standard">nia[r|ɾ]anaiku</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">從.主焦=1SG.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">過去-從.主焦=1SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PFV-from.AF=1SG.NOM</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_81_W3M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">從.主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_81_W3M1">
@@ -2387,7 +2394,7 @@
                 <PHON kindOf="original">aranai</PHON>
                 <FORM kindOf="standard">aranai</FORM>
                 <PHON kindOf="standard">a[r|ɾ]anai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">從.主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">from.AF</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_81_W3M2">
@@ -2395,6 +2402,7 @@
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">=ku,</FORM>
                 <PHON kindOf="standard">ku</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
             </M>
         </W>
@@ -2416,7 +2424,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_86">
-        <FORM kindOf="original" notes="urima五; usʉpatu四，用在數物。">mesua, cʉ'ʉrʉn kan mamarangmia ia, nguain tamna cenana manasʉ, mapusan, uturu nukai, usʉpatʉ.</FORM>
+        <FORM kindOf="original" notes="kan從kani簡化而來，kani使用於轉述別人說的話或是轉述無參與的經驗的事情。 iku tamna tanasa 我的房子。 turu 三，uturu用來指數量三。 taturu 三(數人)。 urima五; usʉpatu四，用在數物。">mesua, cʉ'ʉrʉn kan mamarangmia ia, nguain tamna cenana manasʉ, mapusan, uturu nukai, usʉpatʉ.</FORM>
         <PHON kindOf="original">m[e|ə]sua ʦ*ʔ*r*n kan mamaraŋmia ia ŋuain tamna ʦ[e|ə]nana manas* mapusan uturu nukai us*pat*</PHON>
         <FORM kindOf="standard">mesua, cʉ'ʉrʉn kan mamarangmia ia, nguain tamna cenana manasʉ, mapusan, uturu nukai, usʉpatʉ.</FORM>
         <PHON kindOf="standard">mesua ʦɨʔɨ[r|ɾ]ɨn kan mama[r|ɾ]aŋmia ia ŋuain tamna ʦenana manasɨ mapusan utu[r|ɾ]u nukai usɨpatɨ</PHON>
@@ -2660,14 +2668,14 @@
             <PHON kindOf="original">us*pat*</PHON>
             <FORM kindOf="standard">u-sʉpatʉ.</FORM>
             <PHON kindOf="standard">usɨpatɨ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">四</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非人-四</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NHUM-four</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_86_W12M0">
                 <FORM kindOf="original">u</FORM>
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">四</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非人</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">NHUM</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_86_W12M1">
@@ -2675,12 +2683,13 @@
                 <PHON kindOf="original">s*pat*</PHON>
                 <FORM kindOf="standard">sʉpatʉ.</FORM>
                 <PHON kindOf="standard">sɨpatɨ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">四</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">four</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_92">
-        <FORM kindOf="original" notes="arakukun指人或動物聚在一起。 ʉtʉmʉkʉnʉ (兩人以上在一起相處比較長的時間，可能長久居住下來) 。 muru’ucangʉ結婚。 ’ucangʉ 用來稱呼配偶。 saronai=maku 我的先生。 nanakʉ=maku 我的女人。 rʉ’ʉvʉ=maku 我的伴侶/夥伴。 tuma-tiuru 做-攪拌 「做攪拌的動作」。">arakicacʉ mamarangmia sii, tavarʉ'ʉ, masii ripun, arakukukuncu kanakanavu.</FORM>
+        <FORM kindOf="original" notes="ara-變成，無法單獨成字，後面須接一情緒詞。 arakukun指人或動物聚在一起。 ʉtʉmʉkʉnʉ (兩人以上在一起相處比較長的時間，可能長久居住下來) 。 muru’ucangʉ結婚。 ’ucangʉ 用來稱呼配偶。 saronai=maku 我的先生。 nanakʉ=maku 我的女人。 rʉ’ʉvʉ=maku 我的伴侶/夥伴。 tuma-tiuru 做-攪拌 「做攪拌的動作」。">arakicacʉ mamarangmia sii, tavarʉ'ʉ, masii ripun, arakukukuncu kanakanavu.</FORM>
         <PHON kindOf="original">arakiʦaʦ* mamaraŋmia sii tavar*ʔ* masii ripun arakukukunʦu kanakanavu</PHON>
         <FORM kindOf="standard">arakicacʉ mamarangmia sii, tavarʉ'ʉ, masii ripun, arakukukuncu kanakanavu.</FORM>
         <PHON kindOf="standard">a[r|ɾ]akiʦaʦɨ mama[r|ɾ]aŋmia sii tava[r|ɾ]ɨʔɨ masii [r|ɾ]ipun a[r|ɾ]akukukunʦu kanakanavu</PHON>
@@ -2865,7 +2874,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_96">
-        <FORM kindOf="original">tumatuturucu nguain, makasi, tekan mon na minshengguoxiao, toisua, kocisinse.</FORM>
+        <FORM kindOf="original" notes="年長的族人會cu、ci混用。 mon 處在….地方。 na 表示方向、時間。 'esi 表存在。 'esi=kara nesi pani Pani在這裡嗎? 對孔老師來說，to-有表示「跟你一樣、模仿」的意思 toisua有成為、擔任的意思。 taka-isua 假裝。">tumatuturucu nguain, makasi, tekan mon na minshengguoxiao, toisua, kocisinse.</FORM>
         <PHON kindOf="original">tumatuturuʦu ŋuain makasi t[e|ə]kan mon na mins*[e|ə]ŋ*uo*iao toisua koʦisins[e|ə]</PHON>
         <FORM kindOf="standard">tumatuturucu nguain, makasi, tekan mon na minshengguoxiao, toisua, kocisinse.</FORM>
         <PHON kindOf="standard">tumatutu[r|ɾ]uʦu ŋuain makasi tekan mon na minsheŋ*uo*iao toisua koʦisinse</PHON>
@@ -3331,7 +3340,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_104">
-        <FORM kindOf="original">mesua, tati'ing pakim, ka'ankim tavarʉ'ʉ, ah nen tia vu, vuren, sua marisinatʉ misee, sii cucuru, 'akia tavara'amia.</FORM>
+        <FORM kindOf="original" notes="ta-ti’ing從 ta-ti’ingi變化而來。 ah通常對一件事不屑時會發出的感嘆詞。 nen 從neni變化而來。 原本是vureni (vura指剝殼的米、果實的肉)，指的是植物的果實，但在此是指成果。 sinatʉ 有「文字、紙張、書本」的意思。 mari- 做動作，無法單獨成字，後接一名詞，使其成為動作。 misee 本意是「說」，但這裡是指「想」。">mesua, tati'ing pakim, ka'ankim tavarʉ'ʉ, ah nen tia vu, vuren, sua marisinatʉ misee, sii cucuru, 'akia tavara'amia.</FORM>
         <PHON kindOf="original">m[e|ə]sua tatiʔiŋ pakim kaʔankim tavar*ʔ* a* n[e|ə]n tia vu vur[e|ə]n sua marisinat* mis[e|ə][e|ə] sii ʦuʦuru ʔakia tavaraʔamia</PHON>
         <FORM kindOf="standard">mesua, tati'ing pakim, ka'ankim tavarʉ'ʉ, ah nen tia vu, vuren, sua marisinatʉ misee, sii cucuru, 'akia tavara'amia.</FORM>
         <PHON kindOf="standard">mesua tatiʔiŋ pakim kaʔankim tava[r|ɾ]ɨʔɨ ah nen tia vu vu[r|ɾ]en sua ma[r|ɾ]isinatɨ misee sii ʦuʦu[r|ɾ]u ʔakia tava[r|ɾ]aʔamia</PHON>
@@ -3547,21 +3556,29 @@
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_104_W11">
-            <FORM kindOf="original">mari-sinatʉ</FORM>
+            <FORM kindOf="original">m-ari-sinatʉ</FORM>
             <PHON kindOf="original">marisinat*</PHON>
-            <FORM kindOf="standard">mari-sinatʉ</FORM>
+            <FORM kindOf="standard">m-ari-sinatʉ</FORM>
             <PHON kindOf="standard">ma[r|ɾ]isinatɨ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦.拿-紙張</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF.take-paper</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-拿-紙張</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-take-paper</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_104_W11M0">
-                <FORM kindOf="original">mari</FORM>
-                <PHON kindOf="original">mari</PHON>
-                <FORM kindOf="standard">mari</FORM>
-                <PHON kindOf="standard">ma[r|ɾ]i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦.拿</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF.take</TRANSL>
+                <FORM kindOf="original">m</FORM>
+                <PHON kindOf="original">m</PHON>
+                <FORM kindOf="standard">m</FORM>
+                <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_104_W11M1">
+                <FORM kindOf="original">ari</FORM>
+                <PHON kindOf="original">ari</PHON>
+                <FORM kindOf="standard">ari</FORM>
+                <PHON kindOf="standard">a[r|ɾ]i</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
+            </M>
+            <M id="kkvNr_the man from china_Pani_S_104_W11M2">
                 <FORM kindOf="original">sinatʉ</FORM>
                 <PHON kindOf="original">sinat*</PHON>
                 <FORM kindOf="standard">sinatʉ</FORM>
@@ -3668,7 +3685,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_112">
-        <FORM kindOf="original">ka'ankim tavarʉ'ʉ marisinatʉ, nakasaiana, ka'ankim tavarʉ'ʉ pokarikari.</FORM>
+        <FORM kindOf="original" notes="mari-sinatʉ 書寫。 sumasʉpʉrʉ 數數。 sumasʉpʉrʉ sinatʉ 則指朗讀。">ka'ankim tavarʉ'ʉ marisinatʉ, nakasaiana, ka'ankim tavarʉ'ʉ pokarikari.</FORM>
         <PHON kindOf="original">kaʔankim tavar*ʔ* marisinat* nakasaiana kaʔankim tavar*ʔ* pokarikari</PHON>
         <FORM kindOf="standard">ka'ankim tavarʉ'ʉ marisinatʉ, nakasaiana, ka'ankim tavarʉ'ʉ pokarikari.</FORM>
         <PHON kindOf="standard">kaʔankim tava[r|ɾ]ɨʔɨ ma[r|ɾ]isinatɨ nakasaiana kaʔankim tava[r|ɾ]ɨʔɨ poka[r|ɾ]ika[r|ɾ]i</PHON>
@@ -3837,7 +3854,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_115">
-        <FORM kindOf="original">tenoman, mokusa na tarisinata, mesua cʉpʉngmia.</FORM>
+        <FORM kindOf="original" notes="te=noman由tia nomani簡化而來。 nomani 什麼，在此指「有什麼用處」，但可能也有「誰」的意思。 sinatʉ 書本。 ta----a 指場所。">tenoman, mokusa na tarisinata, mesua cʉpʉngmia.</FORM>
         <PHON kindOf="original">t[e|ə]noman mokusa na tarisinata m[e|ə]sua ʦ*p*ŋmia</PHON>
         <FORM kindOf="standard">tenoman, mokusa na tarisinata, mesua cʉpʉngmia.</FORM>
         <PHON kindOf="standard">tenoman mokusa na ta[r|ɾ]isinata mesua ʦɨpɨŋmia</PHON>
@@ -4287,7 +4304,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_124">
-        <FORM kindOf="original" notes="mocʉmcʉm 指趕早的行動。 paira 這裡是指每天。">makasuacu, mon nguain na, tarisinata si'icʉpʉ, paira mocʉmcʉm aramia'ʉ.</FORM>
+        <FORM kindOf="original" notes="ta-ri-sinita si’icʉpʉ指住在學校裡。 mocʉmcʉm 指趕早的行動。 paira 這裡是指每天。">makasuacu, mon nguain na, tarisinata si'icʉpʉ, paira mocʉmcʉm aramia'ʉ.</FORM>
         <PHON kindOf="original">makasuaʦu mon ŋuain na tarisinata siʔiʦ*p* paira moʦ*mʦ*m aramiaʔ*</PHON>
         <FORM kindOf="standard">makasuacu, mon nguain na, tarisinata si'icʉpʉ, paira mocʉmcʉm aramia'ʉ.</FORM>
         <PHON kindOf="standard">makasuaʦu mon ŋuain na ta[r|ɾ]isinata siʔiʦɨpɨ pai[r|ɾ]a moʦɨmʦɨm a[r|ɾ]amiaʔɨ</PHON>
@@ -4472,7 +4489,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_128">
-        <FORM kindOf="original" notes="孔老師原本要說mururu (擦拭)，此為用詞錯誤。">takacicin nguain, marisiki, mo'uru'uru ngʉcoo pangka.</FORM>
+        <FORM kindOf="original" notes="takacicin 由詞根tacin (一位)而來。 iisua takacicin 我自己來。 takacicin=ku k&lt;um&gt;akʉn-ʉn 我獨自吃。 takacicin=ku k&lt;um&gt;akʉn-ʉn 我獨自吃。 根據孔老師，詞根siki沒特別意思。 sia-risiki 掃把 (也有族人說se-risiki) 孔老師原本要說mururu (擦拭)，此為用詞錯誤。">takacicin nguain, marisiki, mo'uru'uru ngʉcoo pangka.</FORM>
         <PHON kindOf="original">takaʦiʦin ŋuain marisiki moʔuruʔuru ŋ*ʦoo paŋka</PHON>
         <FORM kindOf="standard">takacicin nguain, marisiki, mo'uru'uru ngʉcoo pangka.</FORM>
         <PHON kindOf="standard">takaʦiʦin ŋuain ma[r|ɾ]isiki moʔu[r|ɾ]uʔu[r|ɾ]u ŋɨʦoo paŋka</PHON>
@@ -4491,8 +4508,8 @@
                 <PHON kindOf="original">takaʦiʦin</PHON>
                 <FORM kindOf="standard">takacicin</FORM>
                 <PHON kindOf="standard">takaʦiʦin</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">獨自</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">oneself</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">自己</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">by.oneself</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_128_W1">
@@ -4507,31 +4524,40 @@
                 <PHON kindOf="original">ŋuain</PHON>
                 <FORM kindOf="standard">nguain,</FORM>
                 <PHON kindOf="standard">ŋuain</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_128_W2">
-            <FORM kindOf="original">mari-siki,</FORM>
+            <FORM kindOf="original">m-ari-siki,</FORM>
             <PHON kindOf="original">marisiki</PHON>
-            <FORM kindOf="standard">mari-siki,</FORM>
+            <FORM kindOf="standard">m-ari-siki,</FORM>
             <PHON kindOf="standard">ma[r|ɾ]isiki</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">打掃.主焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">take-clean.AF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-拿-打掃</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-take-clean</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_128_W2M0">
-                <FORM kindOf="original">mari</FORM>
-                <PHON kindOf="original">mari</PHON>
-                <FORM kindOf="standard">mari</FORM>
-                <PHON kindOf="standard">ma[r|ɾ]i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">打掃.主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
+                <FORM kindOf="original">m</FORM>
+                <PHON kindOf="original">m</PHON>
+                <FORM kindOf="standard">m</FORM>
+                <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_128_W2M1">
+                <FORM kindOf="original">ari</FORM>
+                <PHON kindOf="original">ari</PHON>
+                <FORM kindOf="standard">ari</FORM>
+                <PHON kindOf="standard">a[r|ɾ]i</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
+            </M>
+            <M id="kkvNr_the man from china_Pani_S_128_W2M2">
                 <FORM kindOf="original">siki,</FORM>
                 <PHON kindOf="original">siki</PHON>
                 <FORM kindOf="standard">siki,</FORM>
                 <PHON kindOf="standard">siki</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">clean.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">打掃</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">clean</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_128_W3">
@@ -4588,7 +4614,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_131">
-        <FORM kindOf="original" notes="mari-sinitʉ指讀書。">patimanʉngʉnkee, sua, tia to'onaa, a seto, marisinitʉ.</FORM>
+        <FORM kindOf="original" notes="manʉʉng指「好的」。 to’onaa指位置或所在的位置。 mari-sinitʉ指讀書。">patimanʉngʉnkee, sua, tia to'onaa, a seto, marisinitʉ.</FORM>
         <PHON kindOf="original">patiman*ŋ*nk[e|ə][e|ə] sua tia toʔonaa a s[e|ə]to marisinit*</PHON>
         <FORM kindOf="standard">patimanʉngʉnkee, sua, tia to'onaa, a seto, marisinitʉ.</FORM>
         <PHON kindOf="standard">patimanɨŋɨnkee sua tia toʔonaa a seto ma[r|ɾ]isinitɨ</PHON>
@@ -4600,7 +4626,7 @@
             <PHON kindOf="original">patiman*ŋ*nk[e|ə][e|ə]</PHON>
             <FORM kindOf="standard">pati-manʉng-ʉn=kee,</FORM>
             <PHON kindOf="standard">patimanɨŋɨnkee</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">致使-好.受焦=3SG.屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">致使-好-受焦=3SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-good-PF=3SG.GEN</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_131_W0M0">
                 <FORM kindOf="original">pati</FORM>
@@ -4615,7 +4641,7 @@
                 <PHON kindOf="original">man*ŋ</PHON>
                 <FORM kindOf="standard">manʉng</FORM>
                 <PHON kindOf="standard">manɨŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">好.受焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">好</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">good</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_131_W0M2">
@@ -4623,7 +4649,7 @@
                 <PHON kindOf="original">*n</PHON>
                 <FORM kindOf="standard">ʉn</FORM>
                 <PHON kindOf="standard">ɨn</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_131_W0M3">
@@ -4631,6 +4657,7 @@
                 <PHON kindOf="original">k[e|ə][e|ə]</PHON>
                 <FORM kindOf="standard">=kee,</FORM>
                 <PHON kindOf="standard">kee</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
             </M>
         </W>
@@ -4748,7 +4775,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_137">
-        <FORM kindOf="original">turupangcu, marisiki, mokusa XX na, si'inʉva, tarisinatʉ, maritarʉ, tecu iovutu seto.</FORM>
+        <FORM kindOf="original" notes="turupangʉ 完成/完工。 ta-sinʉva 指窗戶。 此處應是語誤，正確為tari-sinatat-ari-sinat-a。 此處詞根tarʉ(床)跟詞語沒有關聯。">turupangcu, marisiki, mokusa XX na, si'inʉva, tarisinatʉ, maritarʉ, tecu iovutu seto.</FORM>
         <PHON kindOf="original">turupaŋʦu marisiki mokusa ** na siʔin*va tarisinat* maritar* t[e|ə]ʦu iovutu s[e|ə]to</PHON>
         <FORM kindOf="standard">turupangcu, marisiki, mokusa XX na, si'inʉva, tarisinatʉ, maritarʉ, tecu iovutu seto.</FORM>
         <PHON kindOf="standard">tu[r|ɾ]upaŋʦu ma[r|ɾ]isiki mokusa ** na siʔinɨva ta[r|ɾ]isinatɨ ma[r|ɾ]ita[r|ɾ]ɨ teʦu iovutu seto</PHON>
@@ -4824,7 +4851,7 @@
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AVAF</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_137_W2M1">
                 <FORM kindOf="original">okusa</FORM>
@@ -4832,7 +4859,7 @@
                 <FORM kindOf="standard">okusa</FORM>
                 <PHON kindOf="standard">okusa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go.toward</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_137_W3">
@@ -4840,13 +4867,15 @@
             <PHON kindOf="original">**</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">**</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_137_W3M0">
                 <FORM kindOf="original">XX</FORM>
                 <PHON kindOf="original">**</PHON>
                 <FORM kindOf="standard">XX</FORM>
                 <PHON kindOf="standard">**</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_137_W4">
@@ -4861,8 +4890,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na,</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_137_W5">
@@ -4886,25 +4915,31 @@
             <PHON kindOf="original">tarisinat*</PHON>
             <FORM kindOf="standard">ta-ri-sinatʉ,</FORM>
             <PHON kindOf="standard">ta[r|ɾ]isinatɨ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">TA-拿-書-A學校</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">TA-take-book-Aschool</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">TA-拿-書</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TA-take-book</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_137_W6M0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">TA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TA</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_137_W6M1">
                 <FORM kindOf="original">ri</FORM>
                 <PHON kindOf="original">ri</PHON>
                 <FORM kindOf="standard">ri</FORM>
                 <PHON kindOf="standard">[r|ɾ]i</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_137_W6M2">
                 <FORM kindOf="original">sinatʉ,</FORM>
                 <PHON kindOf="original">sinat*</PHON>
                 <FORM kindOf="standard">sinatʉ,</FORM>
                 <PHON kindOf="standard">sinatɨ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">書</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">book</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_137_W7">
@@ -4935,7 +4970,7 @@
                 <PHON kindOf="original">t[e|ə]</PHON>
                 <FORM kindOf="standard">te</FORM>
                 <PHON kindOf="standard">te</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">未實現</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_137_W8M1">
@@ -4943,7 +4978,7 @@
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">狀態改變</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -4959,8 +4994,8 @@
                 <PHON kindOf="original">iovutu</PHON>
                 <FORM kindOf="standard">iovutu</FORM>
                 <PHON kindOf="standard">iovutu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">來</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">come</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">來.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">come.AF</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_137_W10">
@@ -4981,7 +5016,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_144">
-        <FORM kindOf="original" notes="在此孔老師又把「小朋友早」翻成族語再說一遍。 musu’ʉvʉ點頭致意、敬禮，引申為早安。">noo cumacʉ'ʉra na seto, mokusa ana ngʉcoo, si'inʉva ia, manasʉ kariin ia, siaupʉngiu cau misee, musu'ʉvʉ kamua.</FORM>
+        <FORM kindOf="original" notes="manasʉ在這裡拉長聲音強調推測的正確性。 在此孔老師又把「小朋友早」翻成族語再說一遍。 musu’ʉvʉ點頭致意、敬禮，引申為早安。">noo cumacʉ'ʉra na seto, mokusa ana ngʉcoo, si'inʉva ia, manasʉ kariin ia, siaupʉngiu cau misee, musu'ʉvʉ kamua.</FORM>
         <PHON kindOf="original">noo ʦumaʦ*ʔ*ra na s[e|ə]to mokusa ana ŋ*ʦoo siʔin*va ia manas* kariin ia siaup*ŋiu ʦau mis[e|ə][e|ə] musuʔ*v* kamua</PHON>
         <FORM kindOf="standard">noo cumacʉ'ʉra na seto, mokusa ana ngʉcoo, si'inʉva ia, manasʉ kariin ia, siaupʉngiu cau misee, musu'ʉvʉ kamua.</FORM>
         <PHON kindOf="standard">noo ʦumaʦɨʔɨ[r|ɾ]a na seto mokusa ana ŋɨʦoo siʔinɨva ia manasɨ ka[r|ɾ]iin ia siaupɨŋiu ʦau misee musuʔɨvɨ kamua</PHON>
@@ -5423,7 +5458,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_151">
-        <FORM kindOf="original">ketuturu nen, amusenkamu noo, cauan misee.</FORM>
+        <FORM kindOf="original" notes="這裡為語誤，整句話無法達意。 misen指為什麼。">ketuturu nen, amusenkamu noo, cauan misee.</FORM>
         <PHON kindOf="original">k[e|ə]tuturu n[e|ə]n amus[e|ə]nkamu noo ʦauan mis[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">ketuturu nen, amusenkamu noo, cauan misee.</FORM>
         <PHON kindOf="standard">ketutu[r|ɾ]u nen amusenkamu noo ʦauan misee</PHON>
@@ -5431,23 +5466,19 @@
         <TRANSL xml:lang="eng" notes="If you say “Good morning,” how (can I) say it?">If you say "Good morning," how say it?</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_the man from china_Pani.mp3" start="340.99" end="347.62" file="kkvNr_the man from china_Pani_S29.mp3"/>
         <W id="kkvNr_the man from china_Pani_S_151_W0">
-            <FORM kindOf="original">ke-tuturu</FORM>
+            <FORM kindOf="original">ketuturu</FORM>
             <PHON kindOf="original">k[e|ə]tuturu</PHON>
-            <FORM kindOf="standard">ke-tuturu</FORM>
+            <FORM kindOf="standard">ketuturu</FORM>
             <PHON kindOf="standard">ketutu[r|ɾ]u</PHON>
             <TRANSL xml:lang="zho" kindOf="original">學習</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">learn</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_151_W0M0">
-                <FORM kindOf="original">ke</FORM>
-                <PHON kindOf="original">k[e|ə]</PHON>
-                <FORM kindOf="standard">ke</FORM>
-                <PHON kindOf="standard">ke</PHON>
-            </M>
-            <M id="kkvNr_the man from china_Pani_S_151_W0M1">
-                <FORM kindOf="original">tuturu</FORM>
-                <PHON kindOf="original">tuturu</PHON>
-                <FORM kindOf="standard">tuturu</FORM>
-                <PHON kindOf="standard">tutu[r|ɾ]u</PHON>
+                <FORM kindOf="original">ketuturu</FORM>
+                <PHON kindOf="original">k[e|ə]tuturu</PHON>
+                <FORM kindOf="standard">ketuturu</FORM>
+                <PHON kindOf="standard">ketutu[r|ɾ]u</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">學習</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">learn</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_151_W1">
@@ -5534,13 +5565,13 @@
                 <PHON kindOf="original">mis[e|ə][e|ə]</PHON>
                 <FORM kindOf="standard">misee.</FORM>
                 <PHON kindOf="standard">misee</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">說.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">say.AF</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_154">
-        <FORM kindOf="original" notes="孔老師認為taku- 有「形成」或是表示「從不懂到懂」的過程。">tuturuʉnmia, musu'ʉvʉ tasiarʉ kisʉʉnmia, takutavarʉ'ʉcu,</FORM>
+        <FORM kindOf="original" notes="tasiarʉ 從to-tasiarʉ(早上)簡化而來。 孔老師認為taku- 有「形成」或是表示「從不懂到懂」的過程。">tuturuʉnmia, musu'ʉvʉ tasiarʉ kisʉʉnmia, takutavarʉ'ʉcu,</FORM>
         <PHON kindOf="original">tuturu*nmia musuʔ*v* tasiar* kis**nmia takutavar*ʔ*ʦu</PHON>
         <FORM kindOf="standard">tuturuʉnmia, musu'ʉvʉ tasiarʉ kisʉʉnmia, takutavarʉ'ʉcu,</FORM>
         <PHON kindOf="standard">tutu[r|ɾ]uɨnmia musuʔɨvɨ tasia[r|ɾ]ɨ kisɨɨnmia takutava[r|ɾ]ɨʔɨʦu</PHON>
@@ -5677,7 +5708,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_157">
-        <FORM kindOf="original" notes="musu’ʉvʉ tasiarʉ 意思為早安。 misee 如此說，前面會加上說了的內容。">noo cumacʉ'ra kimia ia totasiarʉ ia, makahicu, musu'ʉvʉ tasiarʉ misee kimia.</FORM>
+        <FORM kindOf="original" notes="孔老師補充以下時間的說法: vʉrʉʉngana深夜, maupurupoo 天將亮而未亮, ara-ciasʉ 天亮(開始變亮), ararakau taniarʉ 太陽出現, totasiarʉ 上午(大約到十一點左右), matAFʉsʉke taniarʉ 中午, ca’aania 日間，通常指下午, matarai taniarʉ 太陽下山, maupurupoo 天將暗而未暗, rovana 晚間, mapitʉ’ʉ 天暗 口誤，原本發音人要說makasi=cu (就是說)，有些族人會用h但替s音。 musu’ʉvʉ tasiarʉ 意思為早安。 misee 如此說，前面會加上說了的內容。">noo cumacʉ'ra kimia ia totasiarʉ ia, makahicu, musu'ʉvʉ tasiarʉ misee kimia.</FORM>
         <PHON kindOf="original">noo ʦumaʦ*ʔra kimia ia totasiar* ia maka*iʦu musuʔ*v* tasiar* mis[e|ə][e|ə] kimia</PHON>
         <FORM kindOf="standard">noo cumacʉ'ra kimia ia totasiarʉ ia, makahicu, musu'ʉvʉ tasiarʉ misee kimia.</FORM>
         <PHON kindOf="standard">noo ʦumaʦɨʔ[r|ɾ]a kimia ia totasia[r|ɾ]ɨ ia makahiʦu musuʔɨvɨ tasia[r|ɾ]ɨ misee kimia</PHON>
@@ -5886,7 +5917,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_160">
-        <FORM kindOf="original">marivarikim, musu'ʉvʉ tasiarʉ, misee.</FORM>
+        <FORM kindOf="original" notes="詞根為rivari。">marivarikim, musu'ʉvʉ tasiarʉ, misee.</FORM>
         <PHON kindOf="original">marivarikim musuʔ*v* tasiar* mis[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">marivarikim, musu'ʉvʉ tasiarʉ, misee.</FORM>
         <PHON kindOf="standard">ma[r|ɾ]iva[r|ɾ]ikim musuʔɨvɨ tasia[r|ɾ]ɨ misee</PHON>
@@ -5967,7 +5998,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_163">
-        <FORM kindOf="original" notes="tarisinata 學校 由詞根 ta-ari-sinatʉ-a所組成，字面意義為拿書的地方。 para- 無法單獨成字，使…成動作; para-cani唱歌。">eh pacʉpʉcʉpʉngʉkim, mamanʉngana mokusa na, taarisinita, tavarʉ'ʉ, tumututuru kimia marisinatʉ, paracani.</FORM>
+        <FORM kindOf="original" notes="pa-cʉpʉng 想、測量。 cʉpʉng 心。 cʉpʉng重複表示一直想。 mamanʉng好。 -ana表示驚嘆的語氣，特別用在凸顯有好壞、長短、高低的對比字。 tarisinata 學校 由詞根 ta-ari-sinatʉ-a所組成，字面意義為拿書的地方。 para- 無法單獨成字，使…成動作; para-cani唱歌。">eh pacʉpʉcʉpʉngʉkim, mamanʉngana mokusa na, taarisinita, tavarʉ'ʉ, tumututuru kimia marisinatʉ, paracani.</FORM>
         <PHON kindOf="original">[e|ə]* paʦ*p*ʦ*p*ŋ*kim maman*ŋana mokusa na taarisinita tavar*ʔ* tumututuru kimia marisinat* paraʦani</PHON>
         <FORM kindOf="standard">eh pacʉpʉcʉpʉngʉkim, mamanʉngana mokusa na, taarisinita, tavarʉ'ʉ, tumututuru kimia marisinatʉ, paracani.</FORM>
         <PHON kindOf="standard">eh paʦɨpɨʦɨpɨŋɨkim mamanɨŋana mokusa na taa[r|ɾ]isinita tava[r|ɾ]ɨʔɨ tumututu[r|ɾ]u kimia ma[r|ɾ]isinatɨ pa[r|ɾ]aʦani</PHON>
@@ -6264,7 +6295,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_170">
-        <FORM kindOf="original">nakai noo, itumuru, 'umo'uma tamna, putukikioia, kacauacu seto mesua ka'ancu mosa na, taarisinata sii, tia moran mamarang, a, mo'uma.</FORM>
+        <FORM kindOf="original" notes="這裡發音人將putukikioa ia簡化成putukikioia。 kamanʉngʉ 製作。 mo’uma 做農事。 mosa應為mokusa。 moran 為moranʉ簡化字尾並拉長中間母音而得。">nakai noo, itumuru, 'umo'uma tamna, putukikioia, kacauacu seto mesua ka'ancu mosa na, taarisinata sii, tia moran mamarang, a, mo'uma.</FORM>
         <PHON kindOf="original">nakai noo itumuru ʔumoʔuma tamna putukikioia kaʦauaʦu s[e|ə]to m[e|ə]sua kaʔanʦu mosa na taarisinata sii tia moran mamaraŋ a moʔuma</PHON>
         <FORM kindOf="standard">nakai noo, itumuru, 'umo'uma tamna, putukikioia, kacauacu seto mesua ka'ancu mosa na, taarisinata sii, tia moran mamarang, a, mo'uma.</FORM>
         <PHON kindOf="standard">nakai noo itumu[r|ɾ]u ʔumoʔuma tamna putukikioia kaʦauaʦu seto mesua kaʔanʦu mosa na taa[r|ɾ]isinata sii tia mo[r|ɾ]an mama[r|ɾ]aŋ a moʔuma</PHON>
@@ -6657,7 +6688,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_179">
-        <FORM kindOf="original" notes="acuu 指去了。 nan 是 nanu 的簡化。">noo, takutavarʉ'ʉ, kosicinse isua, mokusacu na, taira, mokusa na 'umo'umamia, tikirim seto acuu nankamu misen 'an iovutu misee.</FORM>
+        <FORM kindOf="original" notes="’umo’uma田園之外沒有耕作的地方稱為taira。 acuu 指去了。 nan 是 nanu 的簡化。">noo, takutavarʉ'ʉ, kosicinse isua, mokusacu na, taira, mokusa na 'umo'umamia, tikirim seto acuu nankamu misen 'an iovutu misee.</FORM>
         <PHON kindOf="original">noo takutavar*ʔ* kosiʦins[e|ə] isua mokusaʦu na taira mokusa na ʔumoʔumamia tikirim s[e|ə]to aʦuu nankamu mis[e|ə]n ʔan iovutu mis[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">noo, takutavarʉ'ʉ, kosicinse isua, mokusacu na, taira, mokusa na 'umo'umamia, tikirim seto acuu nankamu misen 'an iovutu misee.</FORM>
         <PHON kindOf="standard">noo takutava[r|ɾ]ɨʔɨ kosiʦinse isua mokusaʦu na tai[r|ɾ]a mokusa na ʔumoʔumamia tiki[r|ɾ]im seto aʦuu nankamu misen ʔan iovutu misee</PHON>
@@ -7002,47 +7033,60 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_186">
-        <FORM kindOf="original" notes="tarisinita一詞由ta-ari-sinitʉ-a所組成。">matisa'ʉkimia ah, avicin, mavici ʉngcoo oh manu tati'ing, umavici na, taarisinita.</FORM>
-        <PHON kindOf="original">matisaʔ*kimia a* aviʦin maviʦi *ŋʦoo o* manu tatiʔiŋ umaviʦi na taarisinita</PHON>
-        <FORM kindOf="standard">matisa'ʉkimia ah, avicin, mavici ʉngcoo oh manu tati'ing, umavici na, taarisinita.</FORM>
-        <PHON kindOf="standard">matisaʔɨkimia ah aviʦin maviʦi ɨŋʦoo oh manu tatiʔiŋ umaviʦi na taa[r|ɾ]isinita</PHON>
+        <FORM kindOf="original" notes="mavici 帶.主焦。 u表示當下進行的行為時，動詞後面會加u-。 u-m’ara karu 正拿著木條。 tarisinita一詞由ta-ari-sinitʉ-a所組成。">matisa'ʉ kimia ah, avicin, mavici ʉngcoo oh manu tati'ing, umavici na, taarisinita.</FORM>
+        <PHON kindOf="original">matisaʔ* kimia a* aviʦin maviʦi *ŋʦoo o* manu tatiʔiŋ umaviʦi na taarisinita</PHON>
+        <FORM kindOf="standard">matisa'ʉ kimia ah, avicin, mavici ʉngcoo oh manu tati'ing, umavici na, taarisinita.</FORM>
+        <PHON kindOf="standard">matisaʔɨ kimia ah aviʦin maviʦi ɨŋʦoo oh manu tatiʔiŋ umaviʦi na taa[r|ɾ]isinita</PHON>
         <TRANSL xml:lang="zho">抓著我們喔，帶著小朋友到學校。</TRANSL>
         <TRANSL xml:lang="eng" notes="grabbing us (the little kids), he brought the little kids to school.">grabbing us , he brought the little kids to school.</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_the man from china_Pani.mp3" start="415.56" end="426.36" file="kkvNr_the man from china_Pani_S36.mp3"/>
         <W id="kkvNr_the man from china_Pani_S_186_W0">
-            <FORM kindOf="original">m-atisa'ʉ=kimia</FORM>
-            <PHON kindOf="original">matisaʔ*kimia</PHON>
-            <FORM kindOf="standard">m-atisa'ʉ=kimia</FORM>
-            <PHON kindOf="standard">matisaʔɨkimia</PHON>
+            <FORM kindOf="original">m-atisa'ʉ</FORM>
+            <PHON kindOf="original">matisaʔ*</PHON>
+            <FORM kindOf="standard">m-atisa'ʉ</FORM>
+            <PHON kindOf="standard">matisaʔɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">抓.主焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-grab.</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-grab</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_186_W0M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">抓.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_186_W0M1">
                 <FORM kindOf="original">atisa'ʉ</FORM>
                 <PHON kindOf="original">atisaʔ*</PHON>
                 <FORM kindOf="standard">atisa'ʉ</FORM>
                 <PHON kindOf="standard">atisaʔɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">grab</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W0M2">
+        </W>
+        <W id="kkvNr_the man from china_Pani_S_186_W1">
+            <FORM kindOf="original">kimia</FORM>
+            <PHON kindOf="original">kimia</PHON>
+            <FORM kindOf="standard">kimia</FORM>
+            <PHON kindOf="standard">kimia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">1PL.斜格.排除</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1PL.OBL.EXCL</TRANSL>
+            <M id="kkvNr_the man from china_Pani_S_186_W1M0">
                 <FORM kindOf="original">kimia</FORM>
                 <PHON kindOf="original">kimia</PHON>
                 <FORM kindOf="standard">kimia</FORM>
                 <PHON kindOf="standard">kimia</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">1PL.斜格.排除</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1PL.OBL.EXCL</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W1">
+        <W id="kkvNr_the man from china_Pani_S_186_W2">
             <FORM kindOf="original">ah,</FORM>
             <PHON kindOf="original">a*</PHON>
             <FORM kindOf="standard">ah,</FORM>
             <PHON kindOf="standard">ah</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">1PL.斜格.排除</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">1PL.OBL.EXCL</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W1M0">
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            <M id="kkvNr_the man from china_Pani_S_186_W2M0">
                 <FORM kindOf="original">ah,</FORM>
                 <PHON kindOf="original">a*</PHON>
                 <FORM kindOf="standard">ah,</FORM>
@@ -7051,14 +7095,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W2">
+        <W id="kkvNr_the man from china_Pani_S_186_W3">
             <FORM kindOf="original">avic-in,</FORM>
             <PHON kindOf="original">aviʦin</PHON>
             <FORM kindOf="standard">avic-in,</FORM>
             <PHON kindOf="standard">aviʦin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">帶-受焦.過去</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">bring-PF.PAST</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W2M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W3M0">
                 <FORM kindOf="original">avic</FORM>
                 <PHON kindOf="original">aviʦ</PHON>
                 <FORM kindOf="standard">avic</FORM>
@@ -7066,7 +7110,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">帶</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">bring</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W2M1">
+            <M id="kkvNr_the man from china_Pani_S_186_W3M1">
                 <FORM kindOf="original">in,</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">in,</FORM>
@@ -7075,54 +7119,54 @@
                 <TRANSL xml:lang="eng" kindOf="original">PF.PAST</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W3">
+        <W id="kkvNr_the man from china_Pani_S_186_W4">
             <FORM kindOf="original">m-avici</FORM>
             <PHON kindOf="original">maviʦi</PHON>
             <FORM kindOf="standard">m-avici</FORM>
             <PHON kindOf="standard">maviʦi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-帶</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-bring</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W3M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W4M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W3M1">
+            <M id="kkvNr_the man from china_Pani_S_186_W4M1">
                 <FORM kindOf="original">avici</FORM>
                 <PHON kindOf="original">aviʦi</PHON>
                 <FORM kindOf="standard">avici</FORM>
                 <PHON kindOf="standard">aviʦi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">攜帶</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">帶</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">bring</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W4">
+        <W id="kkvNr_the man from china_Pani_S_186_W5">
             <FORM kindOf="original">ʉngcoo</FORM>
             <PHON kindOf="original">*ŋʦoo</PHON>
             <FORM kindOf="standard">ʉngcoo</FORM>
             <PHON kindOf="standard">ɨŋʦoo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W4M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W5M0">
                 <FORM kindOf="original">ʉngcoo</FORM>
                 <PHON kindOf="original">*ŋʦoo</PHON>
                 <FORM kindOf="standard">ʉngcoo</FORM>
                 <PHON kindOf="standard">ɨŋʦoo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W5">
+        <W id="kkvNr_the man from china_Pani_S_186_W6">
             <FORM kindOf="original">oh</FORM>
             <PHON kindOf="original">o*</PHON>
             <FORM kindOf="standard">oh</FORM>
             <PHON kindOf="standard">oh</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W5M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W6M0">
                 <FORM kindOf="original">oh</FORM>
                 <PHON kindOf="original">o*</PHON>
                 <FORM kindOf="standard">oh</FORM>
@@ -7131,54 +7175,54 @@
                 <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W6">
+        <W id="kkvNr_the man from china_Pani_S_186_W7">
             <FORM kindOf="original">manu</FORM>
             <PHON kindOf="original">manu</PHON>
             <FORM kindOf="standard">manu</FORM>
             <PHON kindOf="standard">manu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">小孩</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">kid</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W6M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W7M0">
                 <FORM kindOf="original">manu</FORM>
                 <PHON kindOf="original">manu</PHON>
                 <FORM kindOf="standard">manu</FORM>
                 <PHON kindOf="standard">manu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">小孩</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">child</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">kid</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W7">
+        <W id="kkvNr_the man from china_Pani_S_186_W8">
             <FORM kindOf="original">ta-ti'ing,</FORM>
             <PHON kindOf="original">tatiʔiŋ</PHON>
             <FORM kindOf="standard">ta-ti'ing,</FORM>
             <PHON kindOf="standard">tatiʔiŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">Ca重疊-小的</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">Ca-little</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W7M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W8M0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">Ca重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Ca</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W7M1">
+            <M id="kkvNr_the man from china_Pani_S_186_W8M1">
                 <FORM kindOf="original">ti'ing,</FORM>
                 <PHON kindOf="original">tiʔiŋ</PHON>
                 <FORM kindOf="standard">ti'ing,</FORM>
                 <PHON kindOf="standard">tiʔiŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">小</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">小的</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">little</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W8">
+        <W id="kkvNr_the man from china_Pani_S_186_W9">
             <FORM kindOf="original">u-mavici</FORM>
             <PHON kindOf="original">umaviʦi</PHON>
             <FORM kindOf="standard">u-mavici</FORM>
             <PHON kindOf="standard">umaviʦi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">PROG-帶.主焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PROG-bring.AF</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W8M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W9M0">
                 <FORM kindOf="original">u</FORM>
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
@@ -7186,7 +7230,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">PROG</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W8M1">
+            <M id="kkvNr_the man from china_Pani_S_186_W9M1">
                 <FORM kindOf="original">mavici</FORM>
                 <PHON kindOf="original">maviʦi</PHON>
                 <FORM kindOf="standard">mavici</FORM>
@@ -7195,30 +7239,30 @@
                 <TRANSL xml:lang="eng" kindOf="original">bring.AF</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W9">
+        <W id="kkvNr_the man from china_Pani_S_186_W10">
             <FORM kindOf="original">na,</FORM>
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na,</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W9M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W10M0">
                 <FORM kindOf="original">na,</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na,</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W10">
+        <W id="kkvNr_the man from china_Pani_S_186_W11">
             <FORM kindOf="original">ta-ari-sinit-a.</FORM>
             <PHON kindOf="original">taarisinita</PHON>
             <FORM kindOf="standard">ta-ari-sinit-a.</FORM>
             <PHON kindOf="standard">taa[r|ɾ]isinita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">TA-拿-書-A</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TA-take-book-A</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W10M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W11M0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
@@ -7226,7 +7270,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">TA</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TA</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W10M1">
+            <M id="kkvNr_the man from china_Pani_S_186_W11M1">
                 <FORM kindOf="original">ari</FORM>
                 <PHON kindOf="original">ari</PHON>
                 <FORM kindOf="standard">ari</FORM>
@@ -7234,7 +7278,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W10M2">
+            <M id="kkvNr_the man from china_Pani_S_186_W11M2">
                 <FORM kindOf="original">sinit</FORM>
                 <PHON kindOf="original">sinit</PHON>
                 <FORM kindOf="standard">sinit</FORM>
@@ -7242,7 +7286,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">書</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">book</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W10M3">
+            <M id="kkvNr_the man from china_Pani_S_186_W11M3">
                 <FORM kindOf="original">a.</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a.</FORM>
@@ -8001,7 +8045,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_204">
-        <FORM kindOf="original" notes="taku-tavarʉ’ʉ 有暗示從不明白到明白的過程，taku-形成。">makasuacu macasʉcu XX niarakukunmia, takutavarʉ'ʉ mamarangmia.</FORM>
+        <FORM kindOf="original" notes="macasʉ在這裡要解釋成「久」。 taku-tavarʉ’ʉ 有暗示從不明白到明白的過程，taku-形成。">makasuacu macasʉcu XX niarakukunmia, takutavarʉ'ʉ mamarangmia.</FORM>
         <PHON kindOf="original">makasuaʦu maʦas*ʦu ** niarakukunmia takutavar*ʔ* mamaraŋmia</PHON>
         <FORM kindOf="standard">makasuacu macasʉcu XX niarakukunmia, takutavarʉ'ʉ mamarangmia.</FORM>
         <PHON kindOf="standard">makasuaʦu maʦasɨʦu ** nia[r|ɾ]akukunmia takutava[r|ɾ]ɨʔɨ mama[r|ɾ]aŋmia</PHON>
@@ -8061,6 +8105,16 @@
             <PHON kindOf="original">**</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">**</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+            <M id="kkvNr_the man from china_Pani_S_204_W2M0">
+                <FORM kindOf="original">XX</FORM>
+                <PHON kindOf="original">**</PHON>
+                <FORM kindOf="standard">XX</FORM>
+                <PHON kindOf="standard">**</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_204_W3">
             <FORM kindOf="original">ni-arakukun=mia,</FORM>
@@ -8152,7 +8206,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_206">
-        <FORM kindOf="original" notes="nakasaiana 中國人，漢語，中文。">cucuruava, mokusa na taarisinata mamanmita, niarakaranana ti'ingcu, tavarʉ'ʉcu sumasʉpʉrʉ, ah ti'ing, tavarʉ'ʉ ti'ing masii, Nakasaiana.</FORM>
+        <FORM kindOf="original" notes="-ava表示驚訝或恍然大悟。 -ana 有類似的用法，mamanʉng-ana真好啊! sa’o’o-ana真好吃啊! sosomanpe curu 非常感謝。 ma-man原本是ma-manu 學生(複數)。 mari-sinatʉ 指寫字，後有讀書之義。 sumasʉpʉrʉ 指念書。 tavarʉ’ʉ重音在ta表示會這個會又那個。 nakasaiana 中國人，漢語，中文。">cucuruava, mokusa na taarisinata mamanmita, niarakaranana ti'ingcu, tavarʉ'ʉcu sumasʉpʉrʉ, ah ti'ing, tavarʉ'ʉ ti'ing masii, Nakasaiana.</FORM>
         <PHON kindOf="original">ʦuʦuruava mokusa na taarisinata mamanmita niarakaranana tiʔiŋʦu tavar*ʔ*ʦu sumas*p*r* a* tiʔiŋ tavar*ʔ* tiʔiŋ masii nakasaiana</PHON>
         <FORM kindOf="standard">cucuruava, mokusa na taarisinata mamanmita, niarakaranana ti'ingcu, tavarʉ'ʉcu sumasʉpʉrʉ, ah ti'ing, tavarʉ'ʉ ti'ing masii, Nakasaiana.</FORM>
         <PHON kindOf="standard">ʦuʦu[r|ɾ]uava mokusa na taa[r|ɾ]isinata mamanmita nia[r|ɾ]aka[r|ɾ]anana tiʔiŋʦu tava[r|ɾ]ɨʔɨʦu sumasɨpɨ[r|ɾ]ɨ ah tiʔiŋ tava[r|ɾ]ɨʔɨ tiʔiŋ masii nakasaiana</PHON>
@@ -8504,7 +8558,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_213">
-        <FORM kindOf="original" notes="’ʉna 故事。 po-ʉna 說故事。 po-’ʉ’ʉna 一直說故事。 對Kanakanavu人來說，聊天就是講古。">makasuacu, pairacu nguain, rorovana ia mokusa na, tanasʉn arakukun mamarang, parʉ'ʉna.</FORM>
+        <FORM kindOf="original" notes="根據孔老師，makasua=cu在卡那富語有「如此這般之後」的意思，中文翻譯成「之後」即可。 隨著語境的音調makasua的拼法會改變，在這裡會拼成makasua。 重複表示經常，因此ro-rovana翻成「每個晚上」。 tanasʉn部落，也可擴大解釋為「社」、「群」。 ’ʉna 故事。 po-ʉna 說故事。 po-’ʉ’ʉna 一直說故事。 對Kanakanavu人來說，聊天就是講古。">makasuacu, pairacu nguain, rorovana ia mokusa na, tanasʉn arakukun mamarang, parʉ'ʉna.</FORM>
         <PHON kindOf="original">makasuaʦu pairaʦu ŋuain rorovana ia mokusa na tanas*n arakukun mamaraŋ par*ʔ*na</PHON>
         <FORM kindOf="standard">makasuacu, pairacu nguain, rorovana ia mokusa na, tanasʉn arakukun mamarang, parʉ'ʉna.</FORM>
         <PHON kindOf="standard">makasuaʦu pai[r|ɾ]aʦu ŋuain [r|ɾ]o[r|ɾ]ovana ia mokusa na tanasɨn a[r|ɾ]akukun mama[r|ɾ]aŋ pa[r|ɾ]ɨʔɨna</PHON>
@@ -8616,12 +8670,12 @@
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_213_W5">
-            <FORM kindOf="original">m-okusa</FORM>
+            <FORM kindOf="original">m-o-kusa</FORM>
             <PHON kindOf="original">mokusa</PHON>
-            <FORM kindOf="standard">m-okusa</FORM>
+            <FORM kindOf="standard">m-o-kusa</FORM>
             <PHON kindOf="standard">mokusa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-去</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-go.toward</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-去-朝向</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-go-toward</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_213_W5M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -8631,12 +8685,20 @@
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_213_W5M1">
-                <FORM kindOf="original">okusa</FORM>
-                <PHON kindOf="original">okusa</PHON>
-                <FORM kindOf="standard">okusa</FORM>
-                <PHON kindOf="standard">okusa</PHON>
+                <FORM kindOf="original">o</FORM>
+                <PHON kindOf="original">o</PHON>
+                <FORM kindOf="standard">o</FORM>
+                <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go.toward</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
+            </M>
+            <M id="kkvNr_the man from china_Pani_S_213_W5M2">
+                <FORM kindOf="original">kusa</FORM>
+                <PHON kindOf="original">kusa</PHON>
+                <FORM kindOf="standard">kusa</FORM>
+                <PHON kindOf="standard">kusa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">朝向</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">toward</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_213_W6">
@@ -8745,7 +8807,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_218">
-        <FORM kindOf="original" notes="c&lt;um&gt;acʉvʉrʉ在這裡指一起生活。">ah, macasʉ taniarʉ, makaicu nguain, mamarangmia, kinvavarangmia, arakukun kimia kavang, cumacʉvʉrʉ.</FORM>
+        <FORM kindOf="original" notes="kakangca 天空。 taniara 日子。 孔老師在這裡要表達的是「日子久了」。 此處應翻成長輩。 vai 兄弟姊妹。 kin-varang 兄弟姊妹關係。 kin-na’ucanga 配偶關係。 kin-caucauwa 親戚關係。 c&lt;um&gt;acʉvʉrʉ在這裡指一起生活。">ah, macasʉ taniarʉ, makaicu nguain, mamarangmia, kinvavarangmia, arakukun kimia kavang, cumacʉvʉrʉ.</FORM>
         <PHON kindOf="original">a* maʦas* taniar* makaiʦu ŋuain mamaraŋmia kinvavaraŋmia arakukun kimia kavaŋ ʦumaʦ*v*r*</PHON>
         <FORM kindOf="standard">ah, macasʉ taniarʉ, makaicu nguain, mamarangmia, kinvavarangmia, arakukun kimia kavang, cumacʉvʉrʉ.</FORM>
         <PHON kindOf="standard">ah maʦasɨ tania[r|ɾ]ɨ makaiʦu ŋuain mama[r|ɾ]aŋmia kinvava[r|ɾ]aŋmia a[r|ɾ]akukun kimia kavaŋ ʦumaʦɨvɨ[r|ɾ]ɨ</PHON>
@@ -9299,7 +9361,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_230">
-        <FORM kindOf="original" notes="因為「知識」無法測量，所以用「變大變多」來說明獲得很多知識。">makasuacu, 'unacu, cau mokusa na namanamarʉ marisinitʉ, aratatia nguain tamna, takutavara'a, araitumuru nguain tamna takutavara'a.</FORM>
+        <FORM kindOf="original" notes="taku-tavara-’a指所學會的/所了解的。 因為「知識」無法測量，所以用「變大變多」來說明獲得很多知識。">makasuacu, 'unacu, cau mokusa na namanamarʉ marisinitʉ, aratatia nguain tamna, takutavara'a, araitumuru nguain tamna takutavara'a.</FORM>
         <PHON kindOf="original">makasuaʦu ʔunaʦu ʦau mokusa na namanamar* marisinit* aratatia ŋuain tamna takutavaraʔa araitumuru ŋuain tamna takutavaraʔa</PHON>
         <FORM kindOf="standard">makasuacu, 'unacu, cau mokusa na namanamarʉ marisinitʉ, aratatia nguain tamna, takutavara'a, araitumuru nguain tamna takutavara'a.</FORM>
         <PHON kindOf="standard">makasuaʦu ʔunaʦu ʦau mokusa na namanama[r|ɾ]ɨ ma[r|ɾ]isinitɨ a[r|ɾ]atatia ŋuain tamna takutava[r|ɾ]aʔa a[r|ɾ]aitumu[r|ɾ]u ŋuain tamna takutava[r|ɾ]aʔa</PHON>
@@ -9636,7 +9698,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_236">
-        <FORM kindOf="original" notes="manʉngʉ 好。">poi'i na tanasʉmia moran cau, pakamamanʉng.</FORM>
+        <FORM kindOf="original" notes="poi’i 指回來或回去。 cau 在這裡指族人。 manʉngʉ 好。">poi'i na tanasʉmia moran cau, pakamamanʉng.</FORM>
         <PHON kindOf="original">poiʔi na tanas*mia moran ʦau pakamaman*ŋ</PHON>
         <FORM kindOf="standard">poi'i na tanasʉmia moran cau, pakamamanʉng.</FORM>
         <PHON kindOf="standard">poiʔi na tanasɨmia mo[r|ɾ]an ʦau pakamamanɨŋ</PHON>
@@ -9773,7 +9835,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_238">
-        <FORM kindOf="original">pacʉpʉcʉcʉngmia, ah, 'unava, kocisinse makasia tumatuturu kimia pakamamanʉng, tanasʉmia.</FORM>
+        <FORM kindOf="original" notes="’esi單獨表達「存在」;’una表示「所有」。 ’una kara=kasu vantuku 你有錢嗎? ; vantuku指錢、元、紙。">pacʉpʉcʉcʉngmia, ah, 'unava, kocisinse makasia tumatuturu kimia pakamamanʉng, tanasʉmia.</FORM>
         <PHON kindOf="original">paʦ*p*ʦ*ʦ*ŋmia a* ʔunava koʦisins[e|ə] makasia tumatuturu kimia pakamaman*ŋ tanas*mia</PHON>
         <FORM kindOf="standard">pacʉpʉcʉcʉngmia, ah, 'unava, kocisinse makasia tumatuturu kimia pakamamanʉng, tanasʉmia.</FORM>
         <PHON kindOf="standard">paʦɨpɨʦɨʦɨŋmia ah ʔunava koʦisinse makasia tumatutu[r|ɾ]u kimia pakamamanɨŋ tanasɨmia</PHON>
@@ -9998,7 +10060,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_243">
-        <FORM kindOf="original">imo, miaranaucu, kocisinse iisi, aratʉkʉn na tanasʉn, niaraaka, kacaua cau ikim kanakanavu pacʉpʉcʉpʉng 'inia.</FORM>
+        <FORM kindOf="original" notes="marairuai 指兩個人分開。 ara-tʉkʉn pani mataa na’u  Pani和Na’u離婚。 manguru 逃走。 詞根aka指不好、壞掉。 這裡很有可能指親人死亡，非親人或動物死亡則會用mamacai。">imo, miaranaucu, kocisinse iisi, aratʉkʉn na tanasʉn, niaraaka, kacaua cau ikim kanakanavu pacʉpʉcʉpʉng 'inia.</FORM>
         <PHON kindOf="original">imo miaranauʦu koʦisins[e|ə] iisi arat*k*n na tanas*n niaraaka kaʦaua ʦau ikim kanakanavu paʦ*p*ʦ*p*ŋ ʔinia</PHON>
         <FORM kindOf="standard">imo, miaranaucu, kocisinse iisi, aratʉkʉn na tanasʉn, niaraaka, kacaua cau ikim kanakanavu pacʉpʉcʉpʉng 'inia.</FORM>
         <PHON kindOf="standard">imo mia[r|ɾ]anauʦu koʦisinse iisi a[r|ɾ]atɨkɨn na tanasɨn nia[r|ɾ]aaka kaʦaua ʦau ikim kanakanavu paʦɨpɨʦɨpɨŋ ʔinia</PHON>
@@ -10271,7 +10333,7 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_249">
-        <FORM kindOf="original" notes="mama’ari sia-cʉvʉrʉ=maku 我的生活還不錯。mama’ari稍好/不錯。">tiavakita ketuturu 'inia makasua, moran na cau, pakamamunʉng na cau, masii, aramamanʉng kangvang, cau tamna, siacʉvʉrʉ.</FORM>
+        <FORM kindOf="original" notes="tiava 指「原來要」。 此處paka-mamunʉng為語誤，應為paka-mamanʉng。 此處指族人。 mama’ari sia-cʉvʉrʉ=maku 我的生活還不錯。mama’ari稍好/不錯。">tiavakita ketuturu 'inia makasua, moran na cau, pakamamunʉng na cau, masii, aramamanʉng kangvang, cau tamna, siacʉvʉrʉ.</FORM>
         <PHON kindOf="original">tiavakita k[e|ə]tuturu ʔinia makasua moran na ʦau pakamamun*ŋ na ʦau masii aramaman*ŋ kaŋvaŋ ʦau tamna siaʦ*v*r*</PHON>
         <FORM kindOf="standard">tiavakita ketuturu 'inia makasua, moran na cau, pakamamunʉng na cau, masii, aramamanʉng kangvang, cau tamna, siacʉvʉrʉ.</FORM>
         <PHON kindOf="standard">tiavakita ketutu[r|ɾ]u ʔinia makasua mo[r|ɾ]an na ʦau pakamamunɨŋ na ʦau masii a[r|ɾ]amamanɨŋ kaŋvaŋ ʦau tamna siaʦɨvɨ[r|ɾ]ɨ</PHON>

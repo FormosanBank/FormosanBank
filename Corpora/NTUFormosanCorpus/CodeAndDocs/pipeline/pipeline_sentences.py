@@ -115,18 +115,22 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 from pipeline_grammar import (SPLIT, XML_LANG, add_transl as _add_transl, step1_brackets,  # noqa: E402
-                       step7_align_separator, drop_starred_alternatives, drop_starred_readings, free_entries,
+                       step7_align_separator, drop_starred_alternatives, drop_starred_readings, free_entries, unwrap_translation,
                    load_free_repairs,
                    conform_sentence, build_attestation,
                        load_malformed_translations, unglossed_optional,
-                       prune_unsupported, _OPTIONAL)
+                       prune_unsupported, _OPTIONAL, step1_realign_sentence, normalize_gloss_cell,
+                       load_cell_restorations, apply_cell_restorations,
+                       load_record_repairs, apply_record_repairs)
 from QC.cleaning.clean_xml import swap_punctuation  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 # The gloss/word test helpers live in qa/, which is their single home;
 # the builders reuse them rather than carrying a second copy.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "qa"))
-from utils import (expand_infixes, strip_l2m, strip_prosodic_markers,  # noqa: E402
-                   resolve_ungrammatical_parens)
+from utils import (code_switch_gloss, expand_infixes, l2_letter, strip_l2m,  # noqa: E402
+                   strip_prosodic_markers, resolve_ungrammatical_parens)
+from gloss_shift import apply_to_records as apply_shift_repairs  # noqa: E402
+from gloss_shift import load_table as load_shift_repairs  # noqa: E402
 
 ET.register_namespace("xml", "http://www.w3.org/XML/1998/namespace")
 
@@ -151,6 +155,7 @@ STEPS = {
    14: "record word-internal optional material as an alternate form",
    15: "drop rows that are transcription apparatus, not words",
    18: "reassign glosses stranded on a form-less morpheme, then drop the shell",
+   19: "write x/xx/XX/XXX/XXXX glosses as X; fully capitalize a mis-cased label (rulings 2026-10-14)",
 }
 
 # The six agreed classes of gloss row that carry no word. A "_" is the sources'
@@ -285,21 +290,6 @@ def clean_text(text):
     return _CONTROL.sub("", text) if isinstance(text, str) else text
 
 
-def step1_realign(zho: str, eng: str) -> tuple:
-    """Swap when the English slot carries Han and the Chinese slot does not.
-
-    The source's column order is not fixed: Kanakanavu writes Chinese first,
-    Rukai English first, and Bunun is mixed WITHIN the language (6820 rows one
-    way, 6450 the other), so the decision has to be per row rather than per
-    file or per language. The gate is idempotent -- after a swap it no longer
-    holds -- and it leaves alone both identical pairs (DM, TOP, PN) and rows
-    where only one slot is filled.
-    """
-    if HAN.search(eng or "") and not HAN.search(zho or ""):
-        return eng, zho
-    return zho, eng
-
-
 def gloss_rows(body: dict) -> list:
     return [r for r in (body.get("gloss") or []) if isinstance(r, list) and r]
 
@@ -326,6 +316,15 @@ _PAUSE_DOTS = re.compile(r"\.{2,}")
 _BRACKET_NOTE = re.compile(r"\[[^\]]*\]")
 
 
+# A one-letter bracket marker ('<A' ... 'A>', '<F' ... 'F>', '<M' ... 'M>')
+# brackets a stretch of speech in NTU's transcription. It is apparatus, like
+# '<L2J' (ruling 2026-09-29): removed from the text, letter included, so a
+# marker-only row is dropped and the sentence form never shows a stray 'A'.
+# Markers can be stacked ('<X<A') or glued to a word ("'nay==(0.6)A>X>"). The
+# lookarounds keep '<L2J...L2J>' tags and infixes like 's<en>aqay' intact.
+_BRACKET_MARKER = re.compile(r"<[A-Z]\d?(?![A-Za-z0-9])|(?<![A-Za-z0-9<])[A-Z]\d?>")
+
+
 def step5_strip_markup(text: str, gloss: bool = False) -> tuple:
     """Return (cleaned text, whether a code-switch tag was removed).
 
@@ -342,6 +341,8 @@ def step5_strip_markup(text: str, gloss: bool = False) -> tuple:
     text = html.unescape(text or "")
     if gloss:
         text = _BRACKET_NOTE.sub("", text)
+    else:
+        text = _BRACKET_MARKER.sub("", text)
     clean, is_code_switch = strip_l2m(strip_prosodic_markers(text))
     # Strip the IU terminal only when it sits against a word, at either end. A
     # form that is nothing but "/" is the sentence-split separator step 2 keys
@@ -462,7 +463,7 @@ def build(records: list, text_id: str, steps: set, stats: dict,
         all_rows = gloss_rows(body)
         all_ori = list(body.get("ori") or [])
 
-        code_switch = set()
+        code_switch = {}          # word form -> its code-switch tag letter (None if the tag had none)
         if 7 in steps:
             # BOTH tiers, and before step 0 rebuilds the sentence form from the
             # gloss forms -- otherwise the rebuilt sentence keeps '(*sua)' while
@@ -491,9 +492,15 @@ def build(records: list, text_id: str, steps: set, stats: dict,
             for r in all_rows:
                 form, is_cs = step5_strip_markup(str(r[0]))
                 if not form.strip():
+                    if (_BRACKET_MARKER.search(str(r[0]))
+                            and any(str(c).strip() not in ("", "_") for c in r[1:])):
+                        # Dropped with its row; a gloss NTU put on a marker is
+                        # lost, so count it (none after the 2026 repairs).
+                        stats["5   glossed bracket-marker rows dropped"] = stats.get(
+                            "5   glossed bracket-marker rows dropped", 0) + 1
                     continue
                 if is_cs:
-                    code_switch.add(form)
+                    code_switch[form] = l2_letter(str(r[0]))
                     stats["5   code-switched words marked"] = stats.get(
                         "5   code-switched words marked", 0) + 1
                 # The glosses carry the tags too -- repair_l2_markers notes that
@@ -627,7 +634,7 @@ def reassign_glosses(sentence, stats: dict) -> None:
 
 
 def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
-                  code_switch=frozenset(), attested=None, malformed=None):
+                  code_switch=None, attested=None, malformed=None):
         attested = attested or {}
         malformed = malformed or {}
         s = ET.SubElement(root, "S")
@@ -714,8 +721,12 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                 vform.set("kindOf", "original")
                 vform.text = _resolve(source_form, keep=True)
                 for line in body.get("free") or []:
-                    if line.startswith("#c"): add_transl(variant, "zho", drop_starred_readings(line[2:]))
-                    elif line.startswith("#e"): add_transl(variant, "eng", drop_starred_readings(line[2:]))
+                    if line.startswith("#c"): add_transl(variant, "zho", drop_starred_readings(
+                        unwrap_translation(line[2:].strip())
+                        if FREE_REPAIRS.get((text_id, "*", "zho")) == "unwrap" else line[2:]))
+                    elif line.startswith("#e"): add_transl(variant, "eng", drop_starred_readings(
+                        unwrap_translation(line[2:].strip())
+                        if FREE_REPAIRS.get((text_id, "*", "eng")) == "unwrap" else line[2:]))
                 stats["11 unglossed optional parentheticals split"] = stats.get(
                     "11 unglossed optional parentheticals split", 0) + 1
 
@@ -728,7 +739,8 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                     stats["10 truncated translations repaired"] = stats.get(
                         "10 truncated translations repaired", 0) + 1
 
-        for i, row in enumerate(rows):
+        cells = []
+        for row in rows:
             w_form = str(row[0])
             zho = str(row[1]) if len(row) > 1 else ""
             eng = str(row[2]) if len(row) > 2 else ""
@@ -755,13 +767,18 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                         if nm == "z": zho = new
                         else: eng = new
 
-            if 1 in steps:
-                new_zho, new_eng = step1_realign(zho, eng)
-                if (new_zho, new_eng) != (zho, eng):
-                    stats["1 gloss columns realigned"] = stats.get(
-                        "1 gloss columns realigned", 0) + 1
-                zho, eng = new_zho, new_eng
+            if 19 in steps:
+                zho, eng = normalize_gloss_cell(zho, stats), normalize_gloss_cell(eng, stats)
+            cells.append((w_form, zho, eng))
 
+        # Step 1 decides per sentence: whether a word's glosses may change
+        # slots depends on its neighbours (see step1_realign_sentence).
+        if 1 in steps:
+            realigned = step1_realign_sentence([(z, e) for _, z, e in cells], stats,
+                                               forms=[f for f, _, _ in cells])
+            cells = [(f, z, e) for (f, _, _), (z, e) in zip(cells, realigned)]
+
+        for i, (row, (w_form, zho, eng)) in enumerate(zip(rows, cells)):
             w = ET.SubElement(s, "W")
             w.set("id", f"{text_id}_S_{sid}_W{i}")
             w_alt = None
@@ -796,8 +813,9 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                 wa.set("kindOf", "original")
                 wa.set("ver", "alt")
                 wa.text = w_alt
-            if w_form in code_switch:
+            if w_form in (code_switch or {}):
                 wf.set("notes", "code-switch")
+            zho, eng = code_switch_gloss(w_form, (code_switch or {}).get(w_form), zho, eng)
             add_transl(w, "zho", zho)
             add_transl(w, "eng", eng)
 
@@ -909,11 +927,22 @@ def main() -> int:
         shutil.rmtree(args.out)
     args.out.mkdir(parents=True, exist_ok=True)
     by_language: dict = {}
+    shift_repairs = load_shift_repairs()
+    # Pinned whole-record repairs (p2_source_repairs.xml), applied first as in the
+    # other two builders.
+    record_repairs = load_record_repairs(Path(__file__).resolve().parent / "p2_source_repairs.xml")
+    # The maintainer's per-cell decisions on the review page, applied after the shifts.
+    cell_decisions = load_cell_restorations(Path(__file__).resolve().parent / "gloss_cell_decisions.tsv")
     for path in sorted(args.json.rglob("*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         recs = data if isinstance(data, list) else (list(data.values())[0] if data else [])
         if not isinstance(recs, list):
             continue
+        recs = apply_record_repairs(recs, "/".join(path.parts[-3:]), record_repairs, stats)
+        # Undo recorded gloss shifts in memory; the source JSON is never written.
+        recs = apply_shift_repairs(recs, "/".join(path.parts[-3:]), shift_repairs, stats)
+        recs = apply_cell_restorations(recs, "/".join(path.parts[-3:]), cell_decisions, stats,
+                                       label="cells set by the maintainer's decisions")
         root = build(recs, path.stem, steps, stats, attested, malformed, language=language_for(path), dialect=dialect_for(path))
         language = path.parent.name.split("_")[0]
         merged = by_language.get(language)

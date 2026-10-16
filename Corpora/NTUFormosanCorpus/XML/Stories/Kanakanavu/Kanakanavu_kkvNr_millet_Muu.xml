@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" ?>
 <TEXT id="NTU_Stry_Kanakanavu_kkvNr_millet_Muu" citation="NTU Corpus of Formosan Languages" BibTeX_citation="" copyright="CC BY-NC 4.0" xml:lang="xnb" dialect="Kanakanavu">
     <S id="kkvNr_millet_Muu_S_1">
         <FORM kindOf="original" notes="masi-kanakanavu ‘說Kanakanavu語’ 這裡發音人自稱cuma，如果是對祖孫輩則會使用tamu。">Uh tepaku masi'ʉnʉ'ʉna, iiku ia cuma Mu'u.</FORM>
@@ -308,7 +308,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_4">
-        <FORM kindOf="original" notes="表示“次數”用maka: maka-ucani 一次(或是maka-cani) maka-cusa 兩次 maka-turu 三次">sua ciausoumia iisi ia, 'apasiʉnʉ'ʉna 'ikua u turucu karimaku.</FORM>
+        <FORM kindOf="original" notes="1PL.EXCL: iikim   NOM mia     GEN kimia   ACC iikiam 1PL.INCL: iikita  NOM kita&#9;   GEN kita&#9;   ACC tanasa tamna iikim   /   tanasa=mia house POSS 1PL.NOM.EXCL / house=1PL.NOM.GEN 表示“次數”用maka: maka-ucani 一次(或是maka-cani) maka-cusa 兩次 maka-turu 三次">sua ciausoumia iisi ia, 'apasiʉnʉ'ʉna 'ikua u turucu karimaku.</FORM>
         <PHON kindOf="original">sua ʦiausoumia iisi ia ʔapasi*n*ʔ*na ʔikua u turuʦu karimaku</PHON>
         <FORM kindOf="standard">sua ciausoumia iisi ia, 'apasiʉnʉ'ʉna 'ikua u turucu karimaku.</FORM>
         <PHON kindOf="standard">sua ʦiausoumia iisi ia ʔapasiɨnɨʔɨna ʔikua u tu[r|ɾ]uʦu ka[r|ɾ]imaku</PHON>
@@ -681,8 +681,8 @@
                 <PHON kindOf="original">isua</PHON>
                 <FORM kindOf="standard">isua,</FORM>
                 <PHON kindOf="standard">isua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_8_W2">
@@ -718,9 +718,9 @@
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_8_W4">
-            <FORM kindOf="original" notes="code-switch">kisa-ataurho.</FORM>
+            <FORM kindOf="original" notes="code-switch">kisa-a=taurho.</FORM>
             <PHON kindOf="original">kisaataur*o</PHON>
-            <FORM kindOf="standard">kisa-ataurho.</FORM>
+            <FORM kindOf="standard">kisa-a=taurho.</FORM>
             <PHON kindOf="standard">kisaatau[r|ɾ]ho</PHON>
             <TRANSL xml:lang="zho" kindOf="original">說-關係詞=外省人</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">say-REL=Chinese</TRANSL>
@@ -729,17 +729,29 @@
                 <PHON kindOf="original">kisa</PHON>
                 <FORM kindOf="standard">kisa</FORM>
                 <PHON kindOf="standard">kisa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_8_W4M1">
-                <FORM kindOf="original">ataurho.</FORM>
-                <PHON kindOf="original">ataur*o</PHON>
-                <FORM kindOf="standard">ataurho.</FORM>
-                <PHON kindOf="standard">atau[r|ɾ]ho</PHON>
+                <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
+            </M>
+            <M id="kkvNr_millet_Muu_S_8_W4M2">
+                <FORM kindOf="original">=taurho.</FORM>
+                <PHON kindOf="original">taur*o</PHON>
+                <FORM kindOf="standard">=taurho.</FORM>
+                <PHON kindOf="standard">tau[r|ɾ]ho</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">外省人</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Chinese</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_10">
-        <FORM kindOf="original">su vina'ʉ, sua mamarangta miana ia, bak kan tavarʉ'ʉ.</FORM>
+        <FORM kindOf="original" notes="su=sua mamarang需依上下文翻譯, 有時指長輩, 老人家, 或是祖先">su vina'ʉ, sua mamarangta miana ia, bak kan tavarʉ'ʉ.</FORM>
         <PHON kindOf="original">su vinaʔ* sua mamaraŋta miana ia *ak kan tavar*ʔ*</PHON>
         <FORM kindOf="standard">su vina'ʉ, sua mamarangta miana ia, bak kan tavarʉ'ʉ.</FORM>
         <PHON kindOf="standard">su vinaʔɨ sua mama[r|ɾ]aŋta miana ia *ak kan tava[r|ɾ]ɨʔɨ</PHON>
@@ -900,7 +912,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_13">
-        <FORM kindOf="original" notes="ma-manu小孩們 m-ara 拿(主事焦點) -&gt; mari-">imo noo ikita kanakanavu ia, tavara'a mamia, ikamu maman tati'ing, sua marivina'ʉ teci marivina'ʉ ia.</FORM>
+        <FORM kindOf="original" notes="mamia表示強調要注意(‘所要知道的就是…’) ma-manu小孩們 m-ara 拿(主事焦點) -&gt; mari-">imo noo ikita kanakanavu ia, tavara'a mamia, ikamu maman tati'ing, sua marivina'ʉ teci marivina'ʉ ia.</FORM>
         <PHON kindOf="original">imo noo ikita kanakanavu ia tavaraʔa mamia ikamu maman tatiʔiŋ sua marivinaʔ* t[e|ə]ʦi marivinaʔ* ia</PHON>
         <FORM kindOf="standard">imo noo ikita kanakanavu ia, tavara'a mamia, ikamu maman tati'ing, sua marivina'ʉ teci marivina'ʉ ia.</FORM>
         <PHON kindOf="standard">imo noo ikita kanakanavu ia tava[r|ɾ]aʔa mamia ikamu maman tatiʔiŋ sua ma[r|ɾ]ivinaʔɨ teʦi ma[r|ɾ]ivinaʔɨ ia</PHON>
@@ -992,7 +1004,7 @@
             <PHON kindOf="original">tavaraʔa</PHON>
             <FORM kindOf="standard">tavara-'a</FORM>
             <PHON kindOf="standard">tava[r|ɾ]aʔa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">知道</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">知道-祈使.主焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">know-IMP.AF</TRANSL>
             <M id="kkvNr_millet_Muu_S_13_W5M0">
                 <FORM kindOf="original">tavara</FORM>
@@ -1007,6 +1019,7 @@
                 <PHON kindOf="original">ʔa</PHON>
                 <FORM kindOf="standard">'a</FORM>
                 <PHON kindOf="standard">ʔa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">祈使.主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">IMP.AF</TRANSL>
             </M>
         </W>
@@ -1188,7 +1201,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_17">
-        <FORM kindOf="original">kaisisiin pa, kaisisiin pa sii, nen vanai tia kaisisi.</FORM>
+        <FORM kindOf="original" notes="這裡的pa不是‘還’, 而是‘先’">kaisisiin pa, kaisisiin pa sii, nen vanai tia kaisisi.</FORM>
         <PHON kindOf="original">kaisisiin pa kaisisiin pa sii n[e|ə]n vanai tia kaisisi</PHON>
         <FORM kindOf="standard">kaisisiin pa, kaisisiin pa sii, nen vanai tia kaisisi.</FORM>
         <PHON kindOf="standard">kaisisiin pa kaisisiin pa sii nen vanai tia kaisisi</PHON>
@@ -1470,7 +1483,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_21">
-        <FORM kindOf="original">sua vina'ʉ ia, noo 'esi cia aruun ia, tavaru'ucu tamu kakangca, AH tecu tecu kaisisi kanakanavu iisi, cakʉrʉ tia misee.</FORM>
+        <FORM kindOf="original" notes="aru-un表示‘採收’ FS後面的..或許能成為另一個語段">sua vina'ʉ ia, noo 'esi cia aruun ia, tavaru'ucu tamu kakangca, AH tecu tecu kaisisi kanakanavu iisi, cakʉrʉ tia misee.</FORM>
         <PHON kindOf="original">sua vinaʔ* ia noo ʔ[e|ə]si ʦia aruun ia tavaruʔuʦu tamu kakaŋʦa a* t[e|ə]ʦu t[e|ə]ʦu kaisisi kanakanavu iisi ʦak*r* tia mis[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">sua vina'ʉ ia, noo 'esi cia aruun ia, tavaru'ucu tamu kakangca, AH tecu tecu kaisisi kanakanavu iisi, cakʉrʉ tia misee.</FORM>
         <PHON kindOf="standard">sua vinaʔɨ ia noo ʔesi ʦia a[r|ɾ]uun ia tava[r|ɾ]uʔuʦu tamu kakaŋʦa ah teʦu teʦu kaisisi kanakanavu iisi ʦakɨ[r|ɾ]ɨ tia misee</PHON>
@@ -1537,7 +1550,7 @@
                 <PHON kindOf="original">noo</PHON>
                 <FORM kindOf="standard">noo</FORM>
                 <PHON kindOf="standard">noo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">如果</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">若</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
             </M>
         </W>
@@ -1569,8 +1582,8 @@
                 <PHON kindOf="original">ʦia</PHON>
                 <FORM kindOf="standard">cia</FORM>
                 <PHON kindOf="standard">ʦia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_21_W6">
@@ -1674,29 +1687,39 @@
             <PHON kindOf="original">a*</PHON>
             <FORM kindOf="standard">AH</FORM>
             <PHON kindOf="standard">ah</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            <M id="kkvNr_millet_Muu_S_21_W11M0">
+                <FORM kindOf="original">AH</FORM>
+                <PHON kindOf="original">a*</PHON>
+                <FORM kindOf="standard">AH</FORM>
+                <PHON kindOf="standard">ah</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_millet_Muu_S_21_W12">
             <FORM kindOf="original">te=cu</FORM>
             <PHON kindOf="original">t[e|ə]ʦu</PHON>
             <FORM kindOf="standard">te=cu</FORM>
             <PHON kindOf="standard">teʦu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FS=FS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FS=FS</TRANSL>
             <M id="kkvNr_millet_Muu_S_21_W12M0">
                 <FORM kindOf="original">te</FORM>
                 <PHON kindOf="original">t[e|ə]</PHON>
                 <FORM kindOf="standard">te</FORM>
                 <PHON kindOf="standard">te</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_21_W12M1">
                 <FORM kindOf="original">=cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">狀態改變</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_21_W13">
@@ -1704,8 +1727,8 @@
             <PHON kindOf="original">t[e|ə]ʦu</PHON>
             <FORM kindOf="standard">te=cu</FORM>
             <PHON kindOf="standard">teʦu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FS=FS</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FS=FS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=COS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR=COS</TRANSL>
             <M id="kkvNr_millet_Muu_S_21_W13M0">
                 <FORM kindOf="original">te</FORM>
                 <PHON kindOf="original">t[e|ə]</PHON>
@@ -1719,7 +1742,7 @@
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">狀態改變</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -1728,15 +1751,15 @@
             <PHON kindOf="original">kaisisi</PHON>
             <FORM kindOf="standard">kaisisi</FORM>
             <PHON kindOf="standard">kaisisi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">非實現=COS</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">IRR=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">祭祀</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">worship</TRANSL>
             <M id="kkvNr_millet_Muu_S_21_W14M0">
                 <FORM kindOf="original">kaisisi</FORM>
                 <PHON kindOf="original">kaisisi</PHON>
                 <FORM kindOf="standard">kaisisi</FORM>
                 <PHON kindOf="standard">kaisisi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">祭典</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">ceremony</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">祭祀</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">worship</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_21_W15">
@@ -1744,15 +1767,15 @@
             <PHON kindOf="original">kanakanavu</PHON>
             <FORM kindOf="standard">kanakanavu</FORM>
             <PHON kindOf="standard">kanakanavu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">祭祀</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">worship</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">kanakanavu</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">kanakanavu</TRANSL>
             <M id="kkvNr_millet_Muu_S_21_W15M0">
                 <FORM kindOf="original">kanakanavu</FORM>
                 <PHON kindOf="original">kanakanavu</PHON>
                 <FORM kindOf="standard">kanakanavu</FORM>
                 <PHON kindOf="standard">kanakanavu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">卡那卡那富</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">Kanakanavu</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">kanakanavu</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">kanakanavu</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_21_W16">
@@ -1760,15 +1783,15 @@
             <PHON kindOf="original">iisi</PHON>
             <FORM kindOf="standard">iisi,</FORM>
             <PHON kindOf="standard">iisi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">kanakanavu</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">kanakanavu</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             <M id="kkvNr_millet_Muu_S_21_W16M0">
                 <FORM kindOf="original">iisi,</FORM>
                 <PHON kindOf="original">iisi</PHON>
                 <FORM kindOf="standard">iisi,</FORM>
                 <PHON kindOf="standard">iisi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">kanakanavu</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">kanakanavu</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_21_W17">
@@ -1840,8 +1863,8 @@
                 <PHON kindOf="original">iimo</PHON>
                 <FORM kindOf="standard">iimo</FORM>
                 <PHON kindOf="standard">iimo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">因此</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">therefore</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">所以</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">so</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_26_W1">
@@ -1856,7 +1879,7 @@
                 <PHON kindOf="original">noo</PHON>
                 <FORM kindOf="standard">noo</FORM>
                 <PHON kindOf="standard">noo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">如果</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">若</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
             </M>
         </W>
@@ -1880,8 +1903,8 @@
                 <PHON kindOf="original">ʦi</PHON>
                 <FORM kindOf="standard">=ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">狀態改變</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_26_W3">
@@ -1889,7 +1912,7 @@
             <PHON kindOf="original">marivinaʔ*</PHON>
             <FORM kindOf="standard">mari-vina'ʉ</FORM>
             <PHON kindOf="standard">ma[r|ɾ]ivinaʔɨ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">拿-小米</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦.拿-小米</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF.take-millet</TRANSL>
             <M id="kkvNr_millet_Muu_S_26_W3M0">
                 <FORM kindOf="original">mari</FORM>
@@ -1929,31 +1952,47 @@
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">KA</FORM>
             <PHON kindOf="standard">ka</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            <M id="kkvNr_millet_Muu_S_26_W5M0">
+                <FORM kindOf="original">KA</FORM>
+                <PHON kindOf="original">ka</PHON>
+                <FORM kindOf="standard">KA</FORM>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_millet_Muu_S_26_W6">
             <FORM kindOf="original">pata-nganai-in</FORM>
             <PHON kindOf="original">pataŋanaiin</PHON>
             <FORM kindOf="standard">pata-nganai-in</FORM>
             <PHON kindOf="standard">pataŋanaiin</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">PATA-名字-受焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PATA-name-PF</TRANSL>
             <M id="kkvNr_millet_Muu_S_26_W6M0">
                 <FORM kindOf="original">pata</FORM>
                 <PHON kindOf="original">pata</PHON>
                 <FORM kindOf="standard">pata</FORM>
                 <PHON kindOf="standard">pata</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">PATA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PATA</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_26_W6M1">
                 <FORM kindOf="original">nganai</FORM>
                 <PHON kindOf="original">ŋanai</PHON>
                 <FORM kindOf="standard">nganai</FORM>
                 <PHON kindOf="standard">ŋanai</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">名字</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_26_W6M2">
                 <FORM kindOf="original">in</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">in</FORM>
                 <PHON kindOf="standard">in</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_26_W7">
@@ -1961,15 +2000,15 @@
             <PHON kindOf="original">pa</PHON>
             <FORM kindOf="standard">pa.</FORM>
             <PHON kindOf="standard">pa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">PATA-名字-受焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PATA-name-PF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">先</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">first</TRANSL>
             <M id="kkvNr_millet_Muu_S_26_W7M0">
                 <FORM kindOf="original">pa.</FORM>
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa.</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">還</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">still</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">先</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">first</TRANSL>
             </M>
         </W>
     </S>
@@ -1987,14 +2026,14 @@
             <FORM kindOf="standard">Oh!</FORM>
             <PHON kindOf="standard">oh</PHON>
             <TRANSL xml:lang="zho" kindOf="original">喔</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">Oh</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">OH</TRANSL>
             <M id="kkvNr_millet_Muu_S_28_W0M0">
                 <FORM kindOf="original">Oh!</FORM>
                 <PHON kindOf="original">o*</PHON>
                 <FORM kindOf="standard">Oh!</FORM>
                 <PHON kindOf="standard">oh</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">喔</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">Oh</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OH</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_28_W1">
@@ -2119,7 +2158,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_29">
-        <FORM kindOf="original" notes="tisʉkara ‘裡面’">umavici can pania mokusa, tisʉkara vina'ʉ.</FORM>
+        <FORM kindOf="original" notes="can=cani pani這裡指的是酒 tisʉkara ‘裡面’">umavici can pania mokusa, tisʉkara vina'ʉ.</FORM>
         <PHON kindOf="original">umaviʦi ʦan pania mokusa tis*kara vinaʔ*</PHON>
         <FORM kindOf="standard">umavici can pania mokusa, tisʉkara vina'ʉ.</FORM>
         <PHON kindOf="standard">umaviʦi ʦan pania mokusa tisɨka[r|ɾ]a vinaʔɨ</PHON>
@@ -2361,7 +2400,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_32">
-        <FORM kindOf="original" notes="m-ate’i 留下來 ni-p-ate’i後代 ’ap-ate’i 使留下來">AH! mamarang, tavara'a mamia sii sua iikim ia, mo nipate'imu mamanu.</FORM>
+        <FORM kindOf="original" notes="mamia在這裡有請求意味：‘要了解’ m-ate’i 留下來 ni-p-ate’i後代 ’ap-ate’i 使留下來">AH! mamarang, tavara'a mamia sii sua iikim ia, mo nipate'imu mamanu.</FORM>
         <PHON kindOf="original">a* mamaraŋ tavaraʔa mamia sii sua iikim ia mo nipat[e|ə]ʔimu mamanu</PHON>
         <FORM kindOf="standard">AH! mamarang, tavara'a mamia sii sua iikim ia, mo nipate'imu mamanu.</FORM>
         <PHON kindOf="standard">ah mama[r|ɾ]aŋ tava[r|ɾ]aʔa mamia sii sua iikim ia mo nipateʔimu mamanu</PHON>
@@ -2373,21 +2412,31 @@
             <PHON kindOf="original">a*</PHON>
             <FORM kindOf="standard">AH!</FORM>
             <PHON kindOf="standard">ah</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">阿</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
+            <M id="kkvNr_millet_Muu_S_32_W0M0">
+                <FORM kindOf="original">AH!</FORM>
+                <PHON kindOf="original">a*</PHON>
+                <FORM kindOf="standard">AH!</FORM>
+                <PHON kindOf="standard">ah</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">阿</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_millet_Muu_S_32_W1">
             <FORM kindOf="original">mamarang,</FORM>
             <PHON kindOf="original">mamaraŋ</PHON>
             <FORM kindOf="standard">mamarang,</FORM>
             <PHON kindOf="standard">mama[r|ɾ]aŋ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">阿</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">長者</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">elders</TRANSL>
             <M id="kkvNr_millet_Muu_S_32_W1M0">
                 <FORM kindOf="original">mamarang,</FORM>
                 <PHON kindOf="original">mamaraŋ</PHON>
                 <FORM kindOf="standard">mamarang,</FORM>
                 <PHON kindOf="standard">mama[r|ɾ]aŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">阿</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">長者</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">elders</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_32_W2">
@@ -2947,7 +2996,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_42">
-        <FORM kindOf="original" notes="...misee 某某人說">iikam, mamanmaku sua, nimarivina'ʉcukamu ia, masiraru tecukam, mookusa cakʉrʉ kaisisi misee.</FORM>
+        <FORM kindOf="original" notes="iikam=iikamu ...misee 某某人說">iikam, mamanmaku sua, nimarivina'ʉcukamu ia, masiraru tecukam, mookusa cakʉrʉ kaisisi misee.</FORM>
         <PHON kindOf="original">iikam mamanmaku sua nimarivinaʔ*ʦukamu ia masiraru t[e|ə]ʦukam mookusa ʦak*r* kaisisi mis[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">iikam, mamanmaku sua, nimarivina'ʉcukamu ia, masiraru tecukam, mookusa cakʉrʉ kaisisi misee.</FORM>
         <PHON kindOf="standard">iikam mamanmaku sua nima[r|ɾ]ivinaʔɨʦukamu ia masi[r|ɾ]a[r|ɾ]u teʦukam mookusa ʦakɨ[r|ɾ]ɨ kaisisi misee</PHON>
@@ -3023,7 +3072,7 @@
             <PHON kindOf="original">nimarivinaʔ*ʦukamu</PHON>
             <FORM kindOf="standard">ni-mari-vina'ʉ=cu=kamu</FORM>
             <PHON kindOf="standard">nima[r|ɾ]ivinaʔɨʦukamu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">過去-主焦.拿-小米-過去=2PL.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">過去-主焦.拿-小米=過去=2PL.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PST-AF.take-millet=PST=2PL.NOM</TRANSL>
             <M id="kkvNr_millet_Muu_S_42_W3M0">
                 <FORM kindOf="original">ni</FORM>
@@ -3544,8 +3593,8 @@
                 <PHON kindOf="original">kaʔan</PHON>
                 <FORM kindOf="standard">ka'an</FORM>
                 <PHON kindOf="standard">kaʔan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_50_W1">
@@ -3560,8 +3609,8 @@
                 <PHON kindOf="original">tavar*ʔ*</PHON>
                 <FORM kindOf="standard">tavarʉ'ʉ</FORM>
                 <PHON kindOf="standard">tava[r|ɾ]ɨʔɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">知道</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">know</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_50_W2">
@@ -3576,8 +3625,8 @@
                 <PHON kindOf="original">aka</PHON>
                 <FORM kindOf="standard">aka</FORM>
                 <PHON kindOf="standard">aka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">祈使.否定</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IMP.NEG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_50_W3">
@@ -3624,8 +3673,8 @@
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua,</FORM>
                 <PHON kindOf="standard">sua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_50_W6">
@@ -3639,8 +3688,8 @@
             <PHON kindOf="original">marivinaʔ*</PHON>
             <FORM kindOf="standard">mari-vina'ʉ,</FORM>
             <PHON kindOf="standard">ma[r|ɾ]ivinaʔɨ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦.拿-小米</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF.take-millet</TRANSL>
             <M id="kkvNr_millet_Muu_S_50_W7M0">
                 <FORM kindOf="original">mari</FORM>
                 <PHON kindOf="original">mari</PHON>
@@ -3670,8 +3719,8 @@
                 <PHON kindOf="original">tia</PHON>
                 <FORM kindOf="standard">tia</FORM>
                 <PHON kindOf="standard">tia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_50_W9">
@@ -3702,8 +3751,8 @@
                 <PHON kindOf="original">t[e|ə][e|ə]n</PHON>
                 <FORM kindOf="standard">teen</FORM>
                 <PHON kindOf="standard">teen</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">TEEN</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">TEEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_50_W11">
@@ -3734,8 +3783,8 @@
                 <PHON kindOf="original">iimo</PHON>
                 <FORM kindOf="standard">iimo</FORM>
                 <PHON kindOf="standard">iimo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">因此</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">therefore</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">所以</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">so</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_50_W13">
@@ -3790,8 +3839,8 @@
                 <PHON kindOf="original">kan</PHON>
                 <FORM kindOf="standard">kan</FORM>
                 <PHON kindOf="standard">kan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">年</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">year</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KAN</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">KAN</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_50_W16">
@@ -3806,7 +3855,7 @@
                 <PHON kindOf="original">ʔuna</PHON>
                 <FORM kindOf="standard">'una</FORM>
                 <PHON kindOf="standard">ʔuna</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">有</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             </M>
         </W>
@@ -3852,10 +3901,10 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_56">
-        <FORM kindOf="original">moku ngʉco ?, murivain kan takusori ia, mi na'ʉ, ara, akia kan vʉkʉsin.</FORM>
-        <PHON kindOf="original">moku ŋ*ʦo  murivain kan takusori ia mi naʔ* ara akia kan v*k*sin</PHON>
-        <FORM kindOf="standard">moku ngʉco ?, murivain kan takusori ia, mi na'ʉ, ara, akia kan vʉkʉsin.</FORM>
-        <PHON kindOf="standard">moku ŋɨʦo  mu[r|ɾ]ivain kan takuso[r|ɾ]i ia mi naʔɨ a[r|ɾ]a akia kan vɨkɨsin</PHON>
+        <FORM kindOf="original">moku ngʉco X, murivain kan takusori ia, mi na'ʉ, ara, akia kan vʉkʉsin.</FORM>
+        <PHON kindOf="original">moku ŋ*ʦo * murivain kan takusori ia mi naʔ* ara akia kan v*k*sin</PHON>
+        <FORM kindOf="standard">moku ngʉco X, murivain kan takusori ia, mi na'ʉ, ara, akia kan vʉkʉsin.</FORM>
+        <PHON kindOf="standard">moku ŋɨʦo * mu[r|ɾ]ivain kan takuso[r|ɾ]i ia mi naʔɨ a[r|ɾ]a akia kan vɨkɨsin</PHON>
         <TRANSL xml:lang="zho">他的頭髮會變沒有。</TRANSL>
         <TRANSL xml:lang="eng">His hair will disappear</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_millet_Muu.mp3" start="116.44" end="126.95" file="kkvNr_millet_Muu_S23.mp3"/>
@@ -3892,13 +3941,17 @@
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_56_W2">
-            <FORM kindOf="original">?,</FORM>
-            <FORM kindOf="standard">?,</FORM>
+            <FORM kindOf="original">X,</FORM>
+            <PHON kindOf="original">*</PHON>
+            <FORM kindOf="standard">X,</FORM>
+            <PHON kindOf="standard">*</PHON>
             <TRANSL xml:lang="zho" kindOf="original">那個那個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             <M id="kkvNr_millet_Muu_S_56_W2M0">
-                <FORM kindOf="original">?,</FORM>
-                <FORM kindOf="standard">?,</FORM>
+                <FORM kindOf="original">X,</FORM>
+                <PHON kindOf="original">*</PHON>
+                <FORM kindOf="standard">X,</FORM>
+                <PHON kindOf="standard">*</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">那個那個</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             </M>
@@ -4682,7 +4735,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_68">
-        <FORM kindOf="original">tai sa vina'ʉ tia tonanta, marivina'ʉ.</FORM>
+        <FORM kindOf="original" notes="tona位子">tai sa vina'ʉ tia tonanta, marivina'ʉ.</FORM>
         <PHON kindOf="original">tai sa vinaʔ* tia tonanta marivinaʔ*</PHON>
         <FORM kindOf="standard">tai sa vina'ʉ tia tonanta, marivina'ʉ.</FORM>
         <PHON kindOf="standard">tai sa vinaʔɨ tia tonanta ma[r|ɾ]ivinaʔɨ</PHON>
@@ -4758,14 +4811,14 @@
             <PHON kindOf="original">tonanta</PHON>
             <FORM kindOf="standard">tona-n-ta,</FORM>
             <PHON kindOf="standard">tonanta</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">我們的位置</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">place-LF-1PL.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">地方-處焦=1PL.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">place-LF=1PL.GEN</TRANSL>
             <M id="kkvNr_millet_Muu_S_68_W4M0">
                 <FORM kindOf="original">tona</FORM>
                 <PHON kindOf="original">tona</PHON>
                 <FORM kindOf="standard">tona</FORM>
                 <PHON kindOf="standard">tona</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">我們的位置</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">地方</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">place</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_68_W4M1">
@@ -4773,6 +4826,7 @@
                 <PHON kindOf="original">n</PHON>
                 <FORM kindOf="standard">n</FORM>
                 <PHON kindOf="standard">n</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_68_W4M2">
@@ -4780,6 +4834,7 @@
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta,</FORM>
                 <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">1PL.屬格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1PL.GEN</TRANSL>
             </M>
         </W>
@@ -4822,14 +4877,14 @@
             <FORM kindOf="standard">Oh!</FORM>
             <PHON kindOf="standard">oh</PHON>
             <TRANSL xml:lang="zho" kindOf="original">喔</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">Oh</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">OH</TRANSL>
             <M id="kkvNr_millet_Muu_S_70_W0M0">
                 <FORM kindOf="original">Oh!</FORM>
                 <PHON kindOf="original">o*</PHON>
                 <FORM kindOf="standard">Oh!</FORM>
                 <PHON kindOf="standard">oh</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">喔</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">Oh</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OH</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_70_W1">
@@ -5086,8 +5141,8 @@
                 <PHON kindOf="original">mamaraŋ</PHON>
                 <FORM kindOf="standard">mamarang</FORM>
                 <PHON kindOf="standard">mama[r|ɾ]aŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">長輩</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">the.elderly</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">長者</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">elders</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_72_W3">
@@ -5095,19 +5150,23 @@
             <PHON kindOf="original">tumuturu</PHON>
             <FORM kindOf="standard">t&lt;um&gt;uturu</FORM>
             <PHON kindOf="standard">tumutu[r|ɾ]u</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-告知</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-tell</TRANSL>
-            <M id="kkvNr_millet_Muu_S_72_W3M0">
+            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;告知</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;tell</TRANSL>
+            <M id="kkvNr_millet_Muu_S_72_W3M0_0">
                 <FORM kindOf="original">-um-</FORM>
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
                 <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_72_W3M1">
-                <FORM kindOf="original">tuturu</FORM>
+            <M id="kkvNr_millet_Muu_S_72_W3M0_1">
+                <FORM kindOf="original">t-uturu</FORM>
                 <PHON kindOf="original">tuturu</PHON>
-                <FORM kindOf="standard">tuturu</FORM>
+                <FORM kindOf="standard">t-uturu</FORM>
                 <PHON kindOf="standard">tutu[r|ɾ]u</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">告知</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">tell</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_72_W4">
@@ -5122,8 +5181,8 @@
                 <PHON kindOf="original">kimia</PHON>
                 <FORM kindOf="standard">kimia</FORM>
                 <PHON kindOf="standard">kimia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1PL.斜格.排除</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1PL.OBL.EXCL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1PL.受焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1PL.ACC</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_72_W5">
@@ -5217,7 +5276,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_74">
-        <FORM kindOf="original">masiraru tecukamu, mati'ara'arang tia sikaisisiamu, cakʉrʉ tia misee.</FORM>
+        <FORM kindOf="original" notes="si 工具焦點:用來 音變se 音變si">masiraru tecukamu, mati'ara'arang tia sikaisisiamu, cakʉrʉ tia misee.</FORM>
         <PHON kindOf="original">masiraru t[e|ə]ʦukamu matiʔaraʔaraŋ tia sikaisisiamu ʦak*r* tia mis[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">masiraru tecukamu, mati'ara'arang tia sikaisisiamu, cakʉrʉ tia misee.</FORM>
         <PHON kindOf="standard">masi[r|ɾ]a[r|ɾ]u teʦukamu matiʔa[r|ɾ]aʔa[r|ɾ]aŋ tia sikaisisiamu ʦakɨ[r|ɾ]ɨ tia misee</PHON>
@@ -5236,7 +5295,7 @@
                 <PHON kindOf="original">masiraru</PHON>
                 <FORM kindOf="standard">masiraru</FORM>
                 <PHON kindOf="standard">masi[r|ɾ]a[r|ɾ]u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">原來</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">原本</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">originally</TRANSL>
             </M>
         </W>
@@ -5273,35 +5332,35 @@
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_74_W2">
-            <FORM kindOf="original">m-ati-'ara'-arang</FORM>
+            <FORM kindOf="original">m-ati&lt;'ara&gt;'arang</FORM>
             <PHON kindOf="original">matiʔaraʔaraŋ</PHON>
-            <FORM kindOf="standard">m-ati-'ara'-arang</FORM>
+            <FORM kindOf="standard">m-ati&lt;'ara&gt;'arang</FORM>
             <PHON kindOf="standard">matiʔa[r|ɾ]aʔa[r|ɾ]aŋ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-重疊-準備</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-RED-prepare</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-&lt;重疊&gt;準備</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-&lt;RED&gt;prepare</TRANSL>
             <M id="kkvNr_millet_Muu_S_74_W2M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_74_W2M1">
-                <FORM kindOf="original">ati</FORM>
-                <PHON kindOf="original">ati</PHON>
-                <FORM kindOf="standard">ati</FORM>
-                <PHON kindOf="standard">ati</PHON>
+            <M id="kkvNr_millet_Muu_S_74_W2M1_0">
+                <FORM kindOf="original">-'ara-</FORM>
+                <PHON kindOf="original">ʔara</PHON>
+                <FORM kindOf="standard">-'ara-</FORM>
+                <PHON kindOf="standard">ʔa[r|ɾ]a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_74_W2M2">
-                <FORM kindOf="original">'ara'</FORM>
-                <PHON kindOf="original">ʔaraʔ</PHON>
-                <FORM kindOf="standard">'ara'</FORM>
-                <PHON kindOf="standard">ʔa[r|ɾ]aʔ</PHON>
-            </M>
-            <M id="kkvNr_millet_Muu_S_74_W2M3">
-                <FORM kindOf="original">arang</FORM>
-                <PHON kindOf="original">araŋ</PHON>
-                <FORM kindOf="standard">arang</FORM>
-                <PHON kindOf="standard">a[r|ɾ]aŋ</PHON>
+            <M id="kkvNr_millet_Muu_S_74_W2M1_1">
+                <FORM kindOf="original">ati-'arang</FORM>
+                <PHON kindOf="original">atiʔaraŋ</PHON>
+                <FORM kindOf="standard">ati-'arang</FORM>
+                <PHON kindOf="standard">atiʔa[r|ɾ]aŋ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">準備</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">prepare</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_74_W3">
@@ -5483,7 +5542,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_78">
-        <FORM kindOf="original" notes="族人會把吃不完剩下的飯用香蕉葉.姑婆芋葉包起來用芒草葉綁起懸掛在工寮代表保持豐盛,年年有餘,給周邊的精靈吃">mamarangmita UH 'akun ma'upopang misee, neci'ire 'unai Sumukun sua tumatin koca'ania? 'akia.</FORM>
+        <FORM kindOf="original" notes="’akuni / ’akun 族人會把吃不完剩下的飯用香蕉葉.姑婆芋葉包起來用芒草葉綁起懸掛在工寮代表保持豐盛,年年有餘,給周邊的精靈吃">mamarangmita UH 'akun ma'upopang misee, neci'ire 'unai Sumukun sua tumatin koca'ania? 'akia.</FORM>
         <PHON kindOf="original">mamaraŋmita u* ʔakun maʔupopaŋ mis[e|ə][e|ə] n[e|ə]ʦiʔir[e|ə] ʔunai sumukun sua tumatin koʦaʔania ʔakia</PHON>
         <FORM kindOf="standard">mamarangmita UH 'akun ma'upopang misee, neci'ire 'unai Sumukun sua tumatin koca'ania? 'akia.</FORM>
         <PHON kindOf="standard">mama[r|ɾ]aŋmita uh ʔakun maʔupopaŋ misee neʦiʔi[r|ɾ]e ʔunai sumukun sua tumatin koʦaʔania ʔakia</PHON>
@@ -5519,14 +5578,24 @@
             <PHON kindOf="original">u*</PHON>
             <FORM kindOf="standard">UH</FORM>
             <PHON kindOf="standard">uh</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            <M id="kkvNr_millet_Muu_S_78_W1M0">
+                <FORM kindOf="original">UH</FORM>
+                <PHON kindOf="original">u*</PHON>
+                <FORM kindOf="standard">UH</FORM>
+                <PHON kindOf="standard">uh</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_millet_Muu_S_78_W2">
             <FORM kindOf="original">'akun</FORM>
             <PHON kindOf="original">ʔakun</PHON>
             <FORM kindOf="standard">'akun</FORM>
             <PHON kindOf="standard">ʔakun</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
             <M id="kkvNr_millet_Muu_S_78_W2M0">
                 <FORM kindOf="original">'akun</FORM>
                 <PHON kindOf="original">ʔakun</PHON>
@@ -5541,19 +5610,23 @@
             <PHON kindOf="original">maʔupopaŋ</PHON>
             <FORM kindOf="standard">ma-'upopang</FORM>
             <PHON kindOf="standard">maʔupopaŋ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-隨便</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-unceremonious</TRANSL>
             <M id="kkvNr_millet_Muu_S_78_W3M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_78_W3M1">
                 <FORM kindOf="original">'upopang</FORM>
                 <PHON kindOf="original">ʔupopaŋ</PHON>
                 <FORM kindOf="standard">'upopang</FORM>
                 <PHON kindOf="standard">ʔupopaŋ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">隨便</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">unceremonious</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_78_W4">
@@ -5561,15 +5634,15 @@
             <PHON kindOf="original">mis[e|ə][e|ə]</PHON>
             <FORM kindOf="standard">misee,</FORM>
             <PHON kindOf="standard">misee</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-隨便</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-unceremonious</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
             <M id="kkvNr_millet_Muu_S_78_W4M0">
                 <FORM kindOf="original">misee,</FORM>
                 <PHON kindOf="original">mis[e|ə][e|ə]</PHON>
                 <FORM kindOf="standard">misee,</FORM>
                 <PHON kindOf="standard">misee</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">說.主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">say.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_78_W5">
@@ -5584,8 +5657,8 @@
                 <PHON kindOf="original">n[e|ə]ʦiʔir[e|ə]</PHON>
                 <FORM kindOf="standard">neci'ire</FORM>
                 <PHON kindOf="standard">neʦiʔi[r|ɾ]e</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">你看</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">you.look</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">看.呼格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Look.VOC</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_78_W6">
@@ -5717,7 +5790,7 @@
                 <PHON kindOf="original">ʔinmamia</PHON>
                 <FORM kindOf="standard">'inmamia</FORM>
                 <PHON kindOf="standard">ʔinmamia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">僅</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">只有</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">only</TRANSL>
             </M>
         </W>
@@ -5733,8 +5806,8 @@
                 <PHON kindOf="original">iikita</PHON>
                 <FORM kindOf="standard">iikita</FORM>
                 <PHON kindOf="standard">iikita</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1IPL.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1IPL.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1PL.包含.主格我們</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1PL.INCL.NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_80_W2">
@@ -5765,7 +5838,7 @@
                 <PHON kindOf="original">kanakanavu</PHON>
                 <FORM kindOf="standard">Kanakanavu</FORM>
                 <PHON kindOf="standard">kanakanavu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">卡那卡那富</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">Kanakanavu</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">Kanakanavu</TRANSL>
             </M>
         </W>
@@ -5790,19 +5863,23 @@
             <PHON kindOf="original">tumatin</PHON>
             <FORM kindOf="standard">t&lt;um&gt;atin</FORM>
             <PHON kindOf="standard">tumatin</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-掛</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-hang</TRANSL>
-            <M id="kkvNr_millet_Muu_S_80_W5M0">
+            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;掛</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;hang</TRANSL>
+            <M id="kkvNr_millet_Muu_S_80_W5M0_0">
                 <FORM kindOf="original">-um-</FORM>
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
                 <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_80_W5M1">
-                <FORM kindOf="original">tatin</FORM>
+            <M id="kkvNr_millet_Muu_S_80_W5M0_1">
+                <FORM kindOf="original">t-atin</FORM>
                 <PHON kindOf="original">tatin</PHON>
-                <FORM kindOf="standard">tatin</FORM>
+                <FORM kindOf="standard">t-atin</FORM>
                 <PHON kindOf="standard">tatin</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">掛</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">hang</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_80_W6">
@@ -6158,14 +6235,24 @@
             <PHON kindOf="original">u*</PHON>
             <FORM kindOf="standard">UH</FORM>
             <PHON kindOf="standard">uh</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            <M id="kkvNr_millet_Muu_S_87_W0M0">
+                <FORM kindOf="original">UH</FORM>
+                <PHON kindOf="original">u*</PHON>
+                <FORM kindOf="standard">UH</FORM>
+                <PHON kindOf="standard">uh</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_millet_Muu_S_87_W1">
             <FORM kindOf="original">pa-cʉpʉng-cʉpʉng</FORM>
             <PHON kindOf="original">paʦ*p*ŋʦ*p*ŋ</PHON>
             <FORM kindOf="standard">pa-cʉpʉng-cʉpʉng</FORM>
             <PHON kindOf="standard">paʦɨpɨŋʦɨpɨŋ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">使役-重疊-心</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">CAU-RED-heart</TRANSL>
             <M id="kkvNr_millet_Muu_S_87_W1M0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
@@ -6196,6 +6283,16 @@
             <PHON kindOf="original">a*</PHON>
             <FORM kindOf="standard">AH!.</FORM>
             <PHON kindOf="standard">ah</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">AH</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
+            <M id="kkvNr_millet_Muu_S_87_W2M0">
+                <FORM kindOf="original">AH!.</FORM>
+                <PHON kindOf="original">a*</PHON>
+                <FORM kindOf="standard">AH!.</FORM>
+                <PHON kindOf="standard">ah</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">AH</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
+            </M>
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_88">
@@ -6234,7 +6331,7 @@
                 <PHON kindOf="original">kanakanavu</PHON>
                 <FORM kindOf="standard">Kanakanavu</FORM>
                 <PHON kindOf="standard">kanakanavu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">卡那卡那富</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">Kanakanavu</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">Kanakanavu</TRANSL>
             </M>
         </W>
@@ -6275,14 +6372,24 @@
             <PHON kindOf="original">tuu*</PHON>
             <FORM kindOf="standard">TUUH</FORM>
             <PHON kindOf="standard">tuuh</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">TUUH</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TUUH</TRANSL>
+            <M id="kkvNr_millet_Muu_S_88_W4M0">
+                <FORM kindOf="original">TUUH</FORM>
+                <PHON kindOf="original">tuu*</PHON>
+                <FORM kindOf="standard">TUUH</FORM>
+                <PHON kindOf="standard">tuuh</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">TUUH</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TUUH</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_millet_Muu_S_88_W5">
             <FORM kindOf="original">neen</FORM>
             <PHON kindOf="original">n[e|ə][e|ə]n</PHON>
             <FORM kindOf="standard">neen</FORM>
             <PHON kindOf="standard">neen</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">什麼</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
             <M id="kkvNr_millet_Muu_S_88_W5M0">
                 <FORM kindOf="original">neen</FORM>
                 <PHON kindOf="original">n[e|ə][e|ə]n</PHON>
@@ -6297,19 +6404,23 @@
             <PHON kindOf="original">tumatin</PHON>
             <FORM kindOf="standard">t&lt;um&gt;atin</FORM>
             <PHON kindOf="standard">tumatin</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
-            <M id="kkvNr_millet_Muu_S_88_W6M0">
+            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;懸掛</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;hang</TRANSL>
+            <M id="kkvNr_millet_Muu_S_88_W6M0_0">
                 <FORM kindOf="original">-um-</FORM>
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
                 <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_88_W6M1">
-                <FORM kindOf="original">tatin</FORM>
+            <M id="kkvNr_millet_Muu_S_88_W6M0_1">
+                <FORM kindOf="original">t-atin</FORM>
                 <PHON kindOf="original">tatin</PHON>
-                <FORM kindOf="standard">tatin</FORM>
+                <FORM kindOf="standard">t-atin</FORM>
                 <PHON kindOf="standard">tatin</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">懸掛</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">hang</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_88_W7">
@@ -6317,19 +6428,23 @@
             <PHON kindOf="original">koʦaʔania</PHON>
             <FORM kindOf="standard">ko-ca'ania?,</FORM>
             <PHON kindOf="standard">koʦaʔania</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">什麼</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">吃-中午</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">eat-noon</TRANSL>
             <M id="kkvNr_millet_Muu_S_88_W7M0">
                 <FORM kindOf="original">ko</FORM>
                 <PHON kindOf="original">ko</PHON>
                 <FORM kindOf="standard">ko</FORM>
                 <PHON kindOf="standard">ko</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">吃</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_88_W7M1">
                 <FORM kindOf="original">ca'ania?,</FORM>
                 <PHON kindOf="original">ʦaʔania</PHON>
                 <FORM kindOf="standard">ca'ania?,</FORM>
                 <PHON kindOf="standard">ʦaʔania</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">中午</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">noon</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_88_W8">
@@ -6344,8 +6459,8 @@
                 <PHON kindOf="original">tumaturu</PHON>
                 <FORM kindOf="standard">tumaturu</FORM>
                 <PHON kindOf="standard">tumatu[r|ɾ]u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊&lt;主焦&gt;告訴</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED&lt;AV&gt;tell</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_88_W9">
@@ -6380,8 +6495,8 @@
                 <PHON kindOf="original">tamu</PHON>
                 <FORM kindOf="standard">tamu</FORM>
                 <PHON kindOf="standard">tamu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">祖父</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">grandfather</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">祖父母</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">grandparents</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_88_W11">
@@ -6397,7 +6512,7 @@
                 <FORM kindOf="standard">kakangca</FORM>
                 <PHON kindOf="standard">kakaŋʦa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">天</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">sky</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">heaven</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_88_W12">
@@ -6406,14 +6521,14 @@
             <FORM kindOf="standard">Ah!.</FORM>
             <PHON kindOf="standard">ah</PHON>
             <TRANSL xml:lang="zho" kindOf="original">阿!</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">Ah</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
             <M id="kkvNr_millet_Muu_S_88_W12M0">
                 <FORM kindOf="original">Ah!.</FORM>
                 <PHON kindOf="original">a*</PHON>
                 <FORM kindOf="standard">Ah!.</FORM>
                 <PHON kindOf="standard">ah</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">阿!</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">Ah</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
             </M>
         </W>
     </S>
@@ -6453,7 +6568,7 @@
                 <PHON kindOf="original">iisi</PHON>
                 <FORM kindOf="standard">iisi</FORM>
                 <PHON kindOf="standard">iisi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
@@ -6518,19 +6633,23 @@
             <PHON kindOf="original">tumat</PHON>
             <FORM kindOf="standard">t&lt;um&gt;at</FORM>
             <PHON kindOf="standard">tumat</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-告知</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-tell</TRANSL>
-            <M id="kkvNr_millet_Muu_S_93_W5M0">
+            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;告知</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;tell</TRANSL>
+            <M id="kkvNr_millet_Muu_S_93_W5M0_0">
                 <FORM kindOf="original">-um-</FORM>
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
                 <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_93_W5M1">
-                <FORM kindOf="original">tat</FORM>
+            <M id="kkvNr_millet_Muu_S_93_W5M0_1">
+                <FORM kindOf="original">t-at</FORM>
                 <PHON kindOf="original">tat</PHON>
-                <FORM kindOf="standard">tat</FORM>
+                <FORM kindOf="standard">t-at</FORM>
                 <PHON kindOf="standard">tat</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">告知</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">tell</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_93_W6">
@@ -6538,6 +6657,16 @@
             <PHON kindOf="original">u*</PHON>
             <FORM kindOf="standard">UH.</FORM>
             <PHON kindOf="standard">uh</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            <M id="kkvNr_millet_Muu_S_93_W6M0">
+                <FORM kindOf="original">UH.</FORM>
+                <PHON kindOf="original">u*</PHON>
+                <FORM kindOf="standard">UH.</FORM>
+                <PHON kindOf="standard">uh</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            </M>
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_94">
@@ -6626,19 +6755,23 @@
             <PHON kindOf="original">tumatin</PHON>
             <FORM kindOf="standard">t&lt;um&gt;atin</FORM>
             <PHON kindOf="standard">tumatin</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主格-懸掛</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-hang</TRANSL>
-            <M id="kkvNr_millet_Muu_S_95_W0M0">
+            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;懸掛</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;hang</TRANSL>
+            <M id="kkvNr_millet_Muu_S_95_W0M0_0">
                 <FORM kindOf="original">-um-</FORM>
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
                 <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_95_W0M1">
-                <FORM kindOf="original">tatin</FORM>
+            <M id="kkvNr_millet_Muu_S_95_W0M0_1">
+                <FORM kindOf="original">t-atin</FORM>
                 <PHON kindOf="original">tatin</PHON>
-                <FORM kindOf="standard">tatin</FORM>
+                <FORM kindOf="standard">t-atin</FORM>
                 <PHON kindOf="standard">tatin</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">懸掛</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">hang</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_95_W1">
@@ -6828,7 +6961,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_99">
-        <FORM kindOf="original" notes="noo ka’an=niim  nokai 若  不 noo … (niim)">'arasakai, apasu ia, manasʉ tekia maramucu, ka'ankia tavarʉ'ʉ ʉmʉkʉrʉ toomarʉ, pangi, tarʉkʉra nokai.</FORM>
+        <FORM kindOf="original" notes="洗手: marumucu 洗澡: ma-rumucu 身體tinaan noo ka’an=niim  nokai 若  不 noo … (niim)">'arasakai, apasu ia, manasʉ tekia maramucu, ka'ankia tavarʉ'ʉ ʉmʉkʉrʉ toomarʉ, pangi, tarʉkʉra nokai.</FORM>
         <PHON kindOf="original">ʔarasakai apasu ia manas* t[e|ə]kia maramuʦu kaʔankia tavar*ʔ* *m*k*r* toomar* paŋi tar*k*ra nokai</PHON>
         <FORM kindOf="standard">'arasakai, apasu ia, manasʉ tekia maramucu, ka'ankia tavarʉ'ʉ ʉmʉkʉrʉ toomarʉ, pangi, tarʉkʉra nokai.</FORM>
         <PHON kindOf="standard">ʔa[r|ɾ]asakai apasu ia manasɨ tekia ma[r|ɾ]amuʦu kaʔankia tava[r|ɾ]ɨʔɨ ɨmɨkɨ[r|ɾ]ɨ tooma[r|ɾ]ɨ paŋi ta[r|ɾ]ɨkɨ[r|ɾ]a nokai</PHON>
@@ -6895,8 +7028,8 @@
                 <PHON kindOf="original">manas*</PHON>
                 <FORM kindOf="standard">manasʉ</FORM>
                 <PHON kindOf="standard">manasɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">或許</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">maybe</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">一定</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">must</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_99_W4">
@@ -7052,23 +7185,19 @@
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_99_W12">
-            <FORM kindOf="original">no-kai.</FORM>
+            <FORM kindOf="original">nokai.</FORM>
             <PHON kindOf="original">nokai</PHON>
-            <FORM kindOf="standard">no-kai.</FORM>
+            <FORM kindOf="standard">nokai.</FORM>
             <PHON kindOf="standard">nokai</PHON>
             <TRANSL xml:lang="zho" kindOf="original">若不</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">if.not</TRANSL>
             <M id="kkvNr_millet_Muu_S_99_W12M0">
-                <FORM kindOf="original">no</FORM>
-                <PHON kindOf="original">no</PHON>
-                <FORM kindOf="standard">no</FORM>
-                <PHON kindOf="standard">no</PHON>
-            </M>
-            <M id="kkvNr_millet_Muu_S_99_W12M1">
-                <FORM kindOf="original">kai.</FORM>
-                <PHON kindOf="original">kai</PHON>
-                <FORM kindOf="standard">kai.</FORM>
-                <PHON kindOf="standard">kai</PHON>
+                <FORM kindOf="original">nokai.</FORM>
+                <PHON kindOf="original">nokai</PHON>
+                <FORM kindOf="standard">nokai.</FORM>
+                <PHON kindOf="standard">nokai</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">若不</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">if.not</TRANSL>
             </M>
         </W>
     </S>
@@ -7259,10 +7388,10 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_108">
-        <FORM kindOf="original">UH iimo su 'akun sua iikamu po'upopopang.</FORM>
-        <PHON kindOf="original">u* iimo su ʔakun sua iikamu poʔupopopaŋ</PHON>
-        <FORM kindOf="standard">UH iimo su 'akun sua iikamu po'upopopang.</FORM>
-        <PHON kindOf="standard">uh iimo su ʔakun sua iikamu poʔupopopaŋ</PHON>
+        <FORM kindOf="original">UH iimo su 'akun sua iikamu poupopopang.</FORM>
+        <PHON kindOf="original">u* iimo su ʔakun sua iikamu poupopopaŋ</PHON>
+        <FORM kindOf="standard">UH iimo su 'akun sua iikamu poupopopang.</FORM>
+        <PHON kindOf="standard">uh iimo su ʔakun sua iikamu poupopopaŋ</PHON>
         <TRANSL xml:lang="zho">所以你們不要隨便。</TRANSL>
         <TRANSL xml:lang="eng">So do not do this unceremoniously.</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_millet_Muu.mp3" start="223.79" end="227.7" file="kkvNr_millet_Muu_S50.mp3"/>
@@ -7284,8 +7413,8 @@
                 <PHON kindOf="original">iimo</PHON>
                 <FORM kindOf="standard">iimo</FORM>
                 <PHON kindOf="standard">iimo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">因此</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">therefore</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">所以</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">so</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_108_W2">
@@ -7300,8 +7429,8 @@
                 <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_108_W3">
@@ -7316,7 +7445,7 @@
                 <PHON kindOf="original">ʔakun</PHON>
                 <FORM kindOf="standard">'akun</FORM>
                 <PHON kindOf="standard">ʔakun</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">不要</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
             </M>
         </W>
@@ -7353,35 +7482,43 @@
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_108_W6">
-            <FORM kindOf="original">p-o'u-po-popang.</FORM>
-            <PHON kindOf="original">poʔupopopaŋ</PHON>
-            <FORM kindOf="standard">p-o'u-po-popang.</FORM>
-            <PHON kindOf="standard">poʔupopopaŋ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-隨隨便便-重疊</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CAU-unceremonious-RED</TRANSL>
+            <FORM kindOf="original">p-o-upo&lt;po&gt;pang.</FORM>
+            <PHON kindOf="original">poupopopaŋ</PHON>
+            <FORM kindOf="standard">p-o-upo&lt;po&gt;pang.</FORM>
+            <PHON kindOf="standard">poupopopaŋ</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">CAUS-O-&lt;重疊&gt;隨便</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">CAUS-O-&lt;RED&gt;unceremonious</TRANSL>
             <M id="kkvNr_millet_Muu_S_108_W6M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">CAUS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CAUS</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_108_W6M1">
-                <FORM kindOf="original">o'u</FORM>
-                <PHON kindOf="original">oʔu</PHON>
-                <FORM kindOf="standard">o'u</FORM>
-                <PHON kindOf="standard">oʔu</PHON>
+                <FORM kindOf="original">o</FORM>
+                <PHON kindOf="original">o</PHON>
+                <FORM kindOf="standard">o</FORM>
+                <PHON kindOf="standard">o</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">O</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">O</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_108_W6M2">
-                <FORM kindOf="original">po</FORM>
+            <M id="kkvNr_millet_Muu_S_108_W6M2_0">
+                <FORM kindOf="original">-po-</FORM>
                 <PHON kindOf="original">po</PHON>
-                <FORM kindOf="standard">po</FORM>
+                <FORM kindOf="standard">-po-</FORM>
                 <PHON kindOf="standard">po</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_108_W6M3">
-                <FORM kindOf="original">popang.</FORM>
-                <PHON kindOf="original">popaŋ</PHON>
-                <FORM kindOf="standard">popang.</FORM>
-                <PHON kindOf="standard">popaŋ</PHON>
+            <M id="kkvNr_millet_Muu_S_108_W6M2_1">
+                <FORM kindOf="original">upo-pang.</FORM>
+                <PHON kindOf="original">upopaŋ</PHON>
+                <FORM kindOf="standard">upo-pang.</FORM>
+                <PHON kindOf="standard">upopaŋ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">隨便</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">unceremonious</TRANSL>
             </M>
         </W>
     </S>
@@ -7757,21 +7894,31 @@
             <PHON kindOf="original">u*</PHON>
             <FORM kindOf="standard">UH</FORM>
             <PHON kindOf="standard">uh</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            <M id="kkvNr_millet_Muu_S_111_W10M0">
+                <FORM kindOf="original">UH</FORM>
+                <PHON kindOf="original">u*</PHON>
+                <FORM kindOf="standard">UH</FORM>
+                <PHON kindOf="standard">uh</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_millet_Muu_S_111_W11">
             <FORM kindOf="original">Sumukun</FORM>
             <PHON kindOf="original">sumukun</PHON>
             <FORM kindOf="standard">Sumukun</FORM>
             <PHON kindOf="standard">sumukun</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">布農族</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Sumukun</TRANSL>
             <M id="kkvNr_millet_Muu_S_111_W11M0">
                 <FORM kindOf="original">Sumukun</FORM>
                 <PHON kindOf="original">sumukun</PHON>
                 <FORM kindOf="standard">Sumukun</FORM>
                 <PHON kindOf="standard">sumukun</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">布農族</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Sumukun</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_111_W12">
@@ -7779,15 +7926,15 @@
             <PHON kindOf="original">ia</PHON>
             <FORM kindOf="standard">ia.</FORM>
             <PHON kindOf="standard">ia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">布農族</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">Sumukun</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="kkvNr_millet_Muu_S_111_W12M0">
                 <FORM kindOf="original">ia.</FORM>
                 <PHON kindOf="original">ia</PHON>
                 <FORM kindOf="standard">ia.</FORM>
                 <PHON kindOf="standard">ia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">布農族</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">Sumukun</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
     </S>
@@ -8015,21 +8162,31 @@
             <PHON kindOf="original">a*</PHON>
             <FORM kindOf="standard">AH!</FORM>
             <PHON kindOf="standard">ah</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">AH</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
+            <M id="kkvNr_millet_Muu_S_117_W2M0">
+                <FORM kindOf="original">AH!</FORM>
+                <PHON kindOf="original">a*</PHON>
+                <FORM kindOf="standard">AH!</FORM>
+                <PHON kindOf="standard">ah</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">AH</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_millet_Muu_S_117_W3">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
             <FORM kindOf="standard">sua</FORM>
             <PHON kindOf="standard">sua</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">AH</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             <M id="kkvNr_millet_Muu_S_117_W3M0">
                 <FORM kindOf="original">sua</FORM>
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua</FORM>
                 <PHON kindOf="standard">sua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">AH</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_117_W4">
@@ -8037,15 +8194,15 @@
             <PHON kindOf="original">iisi</PHON>
             <FORM kindOf="standard">iisi</FORM>
             <PHON kindOf="standard">iisi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             <M id="kkvNr_millet_Muu_S_117_W4M0">
                 <FORM kindOf="original">iisi</FORM>
                 <PHON kindOf="original">iisi</PHON>
                 <FORM kindOf="standard">iisi</FORM>
                 <PHON kindOf="standard">iisi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_117_W5">
@@ -8053,15 +8210,15 @@
             <PHON kindOf="original">ia</PHON>
             <FORM kindOf="standard">ia.</FORM>
             <PHON kindOf="standard">ia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="kkvNr_millet_Muu_S_117_W5M0">
                 <FORM kindOf="original">ia.</FORM>
                 <PHON kindOf="original">ia</PHON>
                 <FORM kindOf="standard">ia.</FORM>
                 <PHON kindOf="standard">ia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
     </S>
@@ -8102,16 +8259,16 @@
             <PHON kindOf="original">mis[e|ə][e|ə]</PHON>
             <FORM kindOf="standard">misee.</FORM>
             <PHON kindOf="standard">misee</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">say</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
             <M id="kkvNr_millet_Muu_S_118_W1M0">
                 <FORM kindOf="original">misee.</FORM>
                 <PHON kindOf="original">mis[e|ə][e|ə]</PHON>
                 <FORM kindOf="standard">misee.</FORM>
                 <PHON kindOf="standard">misee</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">say</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
+                <TRANSL xml:lang="zho" notes="gloss borrowed: 'misee.\' is glossed this way in 42 of its 44 other occurrences in this language; the source wrote this word's English gloss in the Chinese slot too; counted only over the uses with the same English gloss" kindOf="original">說</TRANSL>
             </M>
+            <TRANSL xml:lang="zho" notes="gloss borrowed: 'misee.\' is glossed this way in 42 of its 44 other occurrences in this language; the source wrote this word's English gloss in the Chinese slot too; counted only over the uses with the same English gloss" kindOf="original">說</TRANSL>
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_119">
@@ -8391,48 +8548,40 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">介詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_123_W3">
-            <FORM kindOf="original" notes="code-switch">ci-e</FORM>
+            <FORM kindOf="original" notes="code-switch">cie</FORM>
             <PHON kindOf="original">ʦi[e|ə]</PHON>
-            <FORM kindOf="standard">ci-e</FORM>
+            <FORM kindOf="standard">cie</FORM>
             <PHON kindOf="standard">ʦie</PHON>
             <TRANSL xml:lang="zho" kindOf="original">七月</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">July</TRANSL>
             <M id="kkvNr_millet_Muu_S_123_W3M0">
-                <FORM kindOf="original">ci</FORM>
-                <PHON kindOf="original">ʦi</PHON>
-                <FORM kindOf="standard">ci</FORM>
-                <PHON kindOf="standard">ʦi</PHON>
-            </M>
-            <M id="kkvNr_millet_Muu_S_123_W3M1">
-                <FORM kindOf="original">e</FORM>
-                <PHON kindOf="original">[e|ə]</PHON>
-                <FORM kindOf="standard">e</FORM>
-                <PHON kindOf="standard">e</PHON>
+                <FORM kindOf="original">cie</FORM>
+                <PHON kindOf="original">ʦi[e|ə]</PHON>
+                <FORM kindOf="standard">cie</FORM>
+                <PHON kindOf="standard">ʦie</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">七月</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">July</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_123_W4">
-            <FORM kindOf="original" notes="code-switch">pa-e,</FORM>
+            <FORM kindOf="original" notes="code-switch">pae,</FORM>
             <PHON kindOf="original">pa[e|ə]</PHON>
-            <FORM kindOf="standard">pa-e,</FORM>
+            <FORM kindOf="standard">pae,</FORM>
             <PHON kindOf="standard">pae</PHON>
             <TRANSL xml:lang="zho" kindOf="original">八月</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">August</TRANSL>
             <M id="kkvNr_millet_Muu_S_123_W4M0">
-                <FORM kindOf="original">pa</FORM>
-                <PHON kindOf="original">pa</PHON>
-                <FORM kindOf="standard">pa</FORM>
-                <PHON kindOf="standard">pa</PHON>
-            </M>
-            <M id="kkvNr_millet_Muu_S_123_W4M1">
-                <FORM kindOf="original">e,</FORM>
-                <PHON kindOf="original">[e|ə]</PHON>
-                <FORM kindOf="standard">e,</FORM>
-                <PHON kindOf="standard">e</PHON>
+                <FORM kindOf="original">pae,</FORM>
+                <PHON kindOf="original">pa[e|ə]</PHON>
+                <FORM kindOf="standard">pae,</FORM>
+                <PHON kindOf="standard">pae</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">八月</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">August</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_123_W5">
@@ -8447,8 +8596,8 @@
                 <PHON kindOf="original">manas*</PHON>
                 <FORM kindOf="standard">manasʉ</FORM>
                 <PHON kindOf="standard">manasɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">或許</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">maybe</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">一定</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">must</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_123_W6">
@@ -8471,8 +8620,8 @@
                 <PHON kindOf="original">kita</PHON>
                 <FORM kindOf="standard">=kita</FORM>
                 <PHON kindOf="standard">kita</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1PL.主格.包含</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1PL.NOM.INCL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1PL.包含.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1PL.INCL.NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_123_W7">
@@ -8792,41 +8941,43 @@
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_132_W3">
-            <FORM kindOf="original">p-ati-ara-'aranga=mu</FORM>
+            <FORM kindOf="original">p-ati&lt;ara&gt;'aranga=mu</FORM>
             <PHON kindOf="original">patiaraʔaraŋamu</PHON>
-            <FORM kindOf="standard">p-ati-ara-'aranga=mu</FORM>
+            <FORM kindOf="standard">p-ati&lt;ara&gt;'aranga=mu</FORM>
             <PHON kindOf="standard">patia[r|ɾ]aʔa[r|ɾ]aŋamu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-重疊-準備=2PL.屬格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CAU-RED-prepare=2PL.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">使役-&lt;重疊&gt;準備=2PL.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">CAU-&lt;RED&gt;prepare=2PL.GEN</TRANSL>
             <M id="kkvNr_millet_Muu_S_132_W3M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_132_W3M1">
-                <FORM kindOf="original">ati</FORM>
-                <PHON kindOf="original">ati</PHON>
-                <FORM kindOf="standard">ati</FORM>
-                <PHON kindOf="standard">ati</PHON>
+            <M id="kkvNr_millet_Muu_S_132_W3M1_0">
+                <FORM kindOf="original">-ara-</FORM>
+                <PHON kindOf="original">ara</PHON>
+                <FORM kindOf="standard">-ara-</FORM>
+                <PHON kindOf="standard">a[r|ɾ]a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
+            </M>
+            <M id="kkvNr_millet_Muu_S_132_W3M1_1">
+                <FORM kindOf="original">ati-'aranga</FORM>
+                <PHON kindOf="original">atiʔaraŋa</PHON>
+                <FORM kindOf="standard">ati-'aranga</FORM>
+                <PHON kindOf="standard">atiʔa[r|ɾ]aŋa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">準備</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">prepare</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_132_W3M2">
-                <FORM kindOf="original">ara</FORM>
-                <PHON kindOf="original">ara</PHON>
-                <FORM kindOf="standard">ara</FORM>
-                <PHON kindOf="standard">a[r|ɾ]a</PHON>
-            </M>
-            <M id="kkvNr_millet_Muu_S_132_W3M3">
-                <FORM kindOf="original">'aranga</FORM>
-                <PHON kindOf="original">ʔaraŋa</PHON>
-                <FORM kindOf="standard">'aranga</FORM>
-                <PHON kindOf="standard">ʔa[r|ɾ]aŋa</PHON>
-            </M>
-            <M id="kkvNr_millet_Muu_S_132_W3M4">
-                <FORM kindOf="original">mu</FORM>
+                <FORM kindOf="original">=mu</FORM>
                 <PHON kindOf="original">mu</PHON>
-                <FORM kindOf="standard">mu</FORM>
+                <FORM kindOf="standard">=mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">2PL.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2PL.GEN</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_132_W4">
@@ -8858,7 +9009,7 @@
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">工焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IV</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IF</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_132_W5M1">
                 <FORM kindOf="original">kaisisi</FORM>
@@ -8899,22 +9050,23 @@
             <PHON kindOf="original">t[e|ə]kara</PHON>
             <FORM kindOf="standard">te=kara</FORM>
             <PHON kindOf="standard">teka[r|ɾ]a</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">IRR=Q.PART</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=疑問.助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR=Q.PART</TRANSL>
             <M id="kkvNr_millet_Muu_S_134_W0M0">
                 <FORM kindOf="original">te</FORM>
                 <PHON kindOf="original">t[e|ə]</PHON>
                 <FORM kindOf="standard">te</FORM>
                 <PHON kindOf="standard">te</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">IRR</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_134_W0M1">
                 <FORM kindOf="original">=kara</FORM>
                 <PHON kindOf="original">kara</PHON>
                 <FORM kindOf="standard">=kara</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">Q.PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">疑問.助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Q.PART</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_134_W1">
@@ -8922,15 +9074,15 @@
             <PHON kindOf="original">ʦan</PHON>
             <FORM kindOf="standard">can</FORM>
             <PHON kindOf="standard">ʦan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">one</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
             <M id="kkvNr_millet_Muu_S_134_W1M0">
                 <FORM kindOf="original">can</FORM>
                 <PHON kindOf="original">ʦan</PHON>
                 <FORM kindOf="standard">can</FORM>
                 <PHON kindOf="standard">ʦan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">one</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_134_W2">
@@ -8938,15 +9090,15 @@
             <PHON kindOf="original">vuan</PHON>
             <FORM kindOf="standard">vuan</FORM>
             <PHON kindOf="standard">vuan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">month</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">月</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">month</TRANSL>
             <M id="kkvNr_millet_Muu_S_134_W2M0">
                 <FORM kindOf="original">vuan</FORM>
                 <PHON kindOf="original">vuan</PHON>
                 <FORM kindOf="standard">vuan</FORM>
                 <PHON kindOf="standard">vuan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">month</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">月</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">month</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_134_W3">
@@ -8954,6 +9106,16 @@
             <PHON kindOf="original">a*</PHON>
             <FORM kindOf="standard">AH.</FORM>
             <PHON kindOf="standard">ah</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">AH</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
+            <M id="kkvNr_millet_Muu_S_134_W3M0">
+                <FORM kindOf="original">AH.</FORM>
+                <PHON kindOf="original">a*</PHON>
+                <FORM kindOf="standard">AH.</FORM>
+                <PHON kindOf="standard">ah</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">AH</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AH</TRANSL>
+            </M>
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_135">
@@ -9122,15 +9284,15 @@
             <PHON kindOf="original">ʦan</PHON>
             <FORM kindOf="standard">can</FORM>
             <PHON kindOf="standard">ʦan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">one</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">1</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
             <M id="kkvNr_millet_Muu_S_136_W3M0">
                 <FORM kindOf="original">can</FORM>
                 <PHON kindOf="original">ʦan</PHON>
                 <FORM kindOf="standard">can</FORM>
                 <PHON kindOf="standard">ʦan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">one</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_136_W4">
@@ -9163,14 +9325,24 @@
             <PHON kindOf="original">u*</PHON>
             <FORM kindOf="standard">UH</FORM>
             <PHON kindOf="standard">uh</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+            <M id="kkvNr_millet_Muu_S_137_W0M0">
+                <FORM kindOf="original">UH</FORM>
+                <PHON kindOf="original">u*</PHON>
+                <FORM kindOf="standard">UH</FORM>
+                <PHON kindOf="standard">uh</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_millet_Muu_S_137_W1">
             <FORM kindOf="original">tia</FORM>
             <PHON kindOf="original">tia</PHON>
             <FORM kindOf="standard">tia</FORM>
             <PHON kindOf="standard">tia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             <M id="kkvNr_millet_Muu_S_137_W1M0">
                 <FORM kindOf="original">tia</FORM>
                 <PHON kindOf="original">tia</PHON>
@@ -9185,15 +9357,15 @@
             <PHON kindOf="original">u</PHON>
             <FORM kindOf="standard">u</FORM>
             <PHON kindOf="standard">u</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">量詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">CLF</TRANSL>
             <M id="kkvNr_millet_Muu_S_137_W2M0">
                 <FORM kindOf="original">u</FORM>
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">CN</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">量詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CLF</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_137_W3">
@@ -9201,8 +9373,8 @@
             <PHON kindOf="original">ʦan</PHON>
             <FORM kindOf="standard">can</FORM>
             <PHON kindOf="standard">ʦan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">量詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CLF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
             <M id="kkvNr_millet_Muu_S_137_W3M0">
                 <FORM kindOf="original">can</FORM>
                 <PHON kindOf="original">ʦan</PHON>
@@ -9217,8 +9389,8 @@
             <PHON kindOf="original">matakanaŋa</PHON>
             <FORM kindOf="standard">matakanang-a</FORM>
             <PHON kindOf="standard">matakanaŋa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">只=認識-關係詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">only=know-REL</TRANSL>
             <M id="kkvNr_millet_Muu_S_137_W4M0">
                 <FORM kindOf="original">matakanang</FORM>
                 <PHON kindOf="original">matakanaŋ</PHON>
@@ -9237,8 +9409,8 @@
             <PHON kindOf="original">taniar*</PHON>
             <FORM kindOf="standard">taniarʉ</FORM>
             <PHON kindOf="standard">tania[r|ɾ]ɨ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">只=認識-關係詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">only=know-REL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">太陽</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">sun</TRANSL>
             <M id="kkvNr_millet_Muu_S_137_W5M0">
                 <FORM kindOf="original">taniarʉ</FORM>
                 <PHON kindOf="original">taniar*</PHON>
@@ -9253,25 +9425,31 @@
             <PHON kindOf="original">kisuunmaku</PHON>
             <FORM kindOf="standard">kisu-un=maku.</FORM>
             <PHON kindOf="standard">kisuunmaku</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">太陽</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">sun</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">說-受焦=1SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">say-PF=1SG.GEN</TRANSL>
             <M id="kkvNr_millet_Muu_S_137_W6M0">
                 <FORM kindOf="original">kisu</FORM>
                 <PHON kindOf="original">kisu</PHON>
                 <FORM kindOf="standard">kisu</FORM>
                 <PHON kindOf="standard">kisu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_137_W6M1">
                 <FORM kindOf="original">un</FORM>
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">un</FORM>
                 <PHON kindOf="standard">un</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_137_W6M2">
-                <FORM kindOf="original">maku.</FORM>
+                <FORM kindOf="original">=maku.</FORM>
                 <PHON kindOf="original">maku</PHON>
-                <FORM kindOf="standard">maku.</FORM>
+                <FORM kindOf="standard">=maku.</FORM>
                 <PHON kindOf="standard">maku</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -9284,29 +9462,27 @@
         <TRANSL xml:lang="eng">She kept laughing with surprise.</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_millet_Muu.mp3" start="284.4" end="286.63" file="kkvNr_millet_Muu_S68.mp3"/>
         <W id="kkvNr_millet_Muu_S_138_W0">
-            <FORM kindOf="original">putu-vaka-vakaan</FORM>
+            <FORM kindOf="original">putu&lt;vaka&gt;vakaan</FORM>
             <PHON kindOf="original">putuvakavakaan</PHON>
-            <FORM kindOf="standard">putu-vaka-vakaan</FORM>
+            <FORM kindOf="standard">putu&lt;vaka&gt;vakaan</FORM>
             <PHON kindOf="standard">putuvakavakaan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">一直閉合張開-重疊</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">open.and.close-RED</TRANSL>
-            <M id="kkvNr_millet_Muu_S_138_W0M0">
-                <FORM kindOf="original">putu</FORM>
-                <PHON kindOf="original">putu</PHON>
-                <FORM kindOf="standard">putu</FORM>
-                <PHON kindOf="standard">putu</PHON>
-            </M>
-            <M id="kkvNr_millet_Muu_S_138_W0M1">
-                <FORM kindOf="original">vaka</FORM>
+            <TRANSL xml:lang="zho" kindOf="original">一直閉合張開&lt;重疊&gt;</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">open.and.close&lt;RED&gt;</TRANSL>
+            <M id="kkvNr_millet_Muu_S_138_W0M0_0">
+                <FORM kindOf="original">-vaka-</FORM>
                 <PHON kindOf="original">vaka</PHON>
-                <FORM kindOf="standard">vaka</FORM>
+                <FORM kindOf="standard">-vaka-</FORM>
                 <PHON kindOf="standard">vaka</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_138_W0M2">
-                <FORM kindOf="original">vakaan</FORM>
-                <PHON kindOf="original">vakaan</PHON>
-                <FORM kindOf="standard">vakaan</FORM>
-                <PHON kindOf="standard">vakaan</PHON>
+            <M id="kkvNr_millet_Muu_S_138_W0M0_1">
+                <FORM kindOf="original">putu-vakaan</FORM>
+                <PHON kindOf="original">putuvakaan</PHON>
+                <FORM kindOf="standard">putu-vakaan</FORM>
+                <PHON kindOf="standard">putuvakaan</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">一直閉合張開</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">open.and.close</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_138_W1">
@@ -9347,19 +9523,23 @@
             <PHON kindOf="original">tumana</PHON>
             <FORM kindOf="standard">t&lt;um&gt;ana</FORM>
             <PHON kindOf="standard">tumana</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-聽到</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;-hear</TRANSL>
-            <M id="kkvNr_millet_Muu_S_139_W0M0">
+            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;聽到</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;hear</TRANSL>
+            <M id="kkvNr_millet_Muu_S_139_W0M0_0">
                 <FORM kindOf="original">-um-</FORM>
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
                 <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_139_W0M1">
-                <FORM kindOf="original">tana</FORM>
+            <M id="kkvNr_millet_Muu_S_139_W0M0_1">
+                <FORM kindOf="original">t-ana</FORM>
                 <PHON kindOf="original">tana</PHON>
-                <FORM kindOf="standard">tana</FORM>
+                <FORM kindOf="standard">t-ana</FORM>
                 <PHON kindOf="standard">tana</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">聽到</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">hear</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_139_W1">
@@ -9497,14 +9677,14 @@
             <FORM kindOf="standard">mi</FORM>
             <PHON kindOf="standard">mi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">MI</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">MI</TRANSL>
             <M id="kkvNr_millet_Muu_S_140_W6M0">
                 <FORM kindOf="original">mi</FORM>
                 <PHON kindOf="original">mi</PHON>
                 <FORM kindOf="standard">mi</FORM>
                 <PHON kindOf="standard">mi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">MI</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">MI</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_140_W7">
@@ -9512,6 +9692,16 @@
             <PHON kindOf="original">u*</PHON>
             <FORM kindOf="standard">UH.</FORM>
             <PHON kindOf="standard">uh</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            <M id="kkvNr_millet_Muu_S_140_W7M0">
+                <FORM kindOf="original">UH.</FORM>
+                <PHON kindOf="original">u*</PHON>
+                <FORM kindOf="standard">UH.</FORM>
+                <PHON kindOf="standard">uh</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+            </M>
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_141">
@@ -9620,7 +9810,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_143">
-        <FORM kindOf="original" notes="misee=kua\ say=1SG.ACC 說=1SG.受格 misee=kua\ say=1SG.ACC 說=1SG.受格">Uh 'emu pakarʉ'ʉ, 'apakasiin nanu niaracumu vina'ʉ.</FORM>
+        <FORM kindOf="original" notes="’emu為’esi=mu 你們在… misee=kua\ say=1SG.ACC 說=1SG.受格">Uh 'emu pakarʉ'ʉ, 'apakasiin nanu niaracumu vina'ʉ.</FORM>
         <PHON kindOf="original">u* ʔ[e|ə]mu pakar*ʔ* ʔapakasiin nanu niaraʦumu vinaʔ*</PHON>
         <FORM kindOf="standard">Uh 'emu pakarʉ'ʉ, 'apakasiin nanu niaracumu vina'ʉ.</FORM>
         <PHON kindOf="standard">uh ʔemu paka[r|ɾ]ɨʔɨ ʔapakasiin nanu nia[r|ɾ]aʦumu vinaʔɨ</PHON>
@@ -9639,8 +9829,8 @@
                 <PHON kindOf="original">u*</PHON>
                 <FORM kindOf="standard">Uh</FORM>
                 <PHON kindOf="standard">uh</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">UH</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">UH</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_143_W1">
@@ -9676,12 +9866,28 @@
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_143_W3">
-            <FORM kindOf="original">'apakasiin</FORM>
+            <FORM kindOf="original">'apa-kasiin</FORM>
             <PHON kindOf="original">ʔapakasiin</PHON>
-            <FORM kindOf="standard">'apakasiin</FORM>
+            <FORM kindOf="standard">'apa-kasiin</FORM>
             <PHON kindOf="standard">ʔapakasiin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役-處置</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-deal.with</TRANSL>
+            <M id="kkvNr_millet_Muu_S_143_W3M0">
+                <FORM kindOf="original">'apa</FORM>
+                <PHON kindOf="original">ʔapa</PHON>
+                <FORM kindOf="standard">'apa</FORM>
+                <PHON kindOf="standard">ʔapa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
+            </M>
+            <M id="kkvNr_millet_Muu_S_143_W3M1">
+                <FORM kindOf="original">kasiin</FORM>
+                <PHON kindOf="original">kasiin</PHON>
+                <FORM kindOf="standard">kasiin</FORM>
+                <PHON kindOf="standard">kasiin</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處置</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">deal.with</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_millet_Muu_S_143_W4">
             <FORM kindOf="original">nanu</FORM>
@@ -9695,8 +9901,8 @@
                 <PHON kindOf="original">nanu</PHON>
                 <FORM kindOf="standard">nanu</FORM>
                 <PHON kindOf="standard">nanu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">什麼</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">哪裡</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">where</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_143_W5">
@@ -9757,7 +9963,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_145">
-        <FORM kindOf="original" notes="misee主詞沒出來，指的是傳統祖先。">iimo sua kanakanvu ia, ka'an roimi vina'ʉ sii, masiraru nipatanganara noo, tia sikaisisi cakʉrʉ misee.</FORM>
+        <FORM kindOf="original" notes="matapangai 被稱呼/被指定 misee主詞沒出來，指的是傳統祖先。">iimo sua kanakanvu ia, ka'an roimi vina'ʉ sii, masiraru nipatanganara noo, tia sikaisisi cakʉrʉ misee.</FORM>
         <PHON kindOf="original">iimo sua kanakanvu ia kaʔan roimi vinaʔ* sii masiraru nipataŋanara noo tia sikaisisi ʦak*r* mis[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">iimo sua kanakanvu ia, ka'an roimi vina'ʉ sii, masiraru nipatanganara noo, tia sikaisisi cakʉrʉ misee.</FORM>
         <PHON kindOf="standard">iimo sua kanakanvu ia kaʔan [r|ɾ]oimi vinaʔɨ sii masi[r|ɾ]a[r|ɾ]u nipataŋana[r|ɾ]a noo tia sikaisisi ʦakɨ[r|ɾ]ɨ misee</PHON>
@@ -10127,7 +10333,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_150">
-        <FORM kindOf="original" notes="開墾之前需要進行一個儀式，午餐不能吃完，要把剩下的午餐用姑婆玉葉子包起來掛在工寮“taruan”(工作/狩獵的臨時屋)。">aranai na, tumatin koca'ania misee.</FORM>
+        <FORM kindOf="original" notes="aranai na後面可接時間，人名或地點。 開墾之前需要進行一個儀式，午餐不能吃完，要把剩下的午餐用姑婆玉葉子包起來掛在工寮“taruan”(工作/狩獵的臨時屋)。">aranai na, tumatin koca'ania misee.</FORM>
         <PHON kindOf="original">aranai na tumatin koʦaʔania mis[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">aranai na, tumatin koca'ania misee.</FORM>
         <PHON kindOf="standard">a[r|ɾ]anai na tumatin koʦaʔania misee</PHON>
@@ -10232,7 +10438,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_152">
-        <FORM kindOf="original">neen tuma, cumuraan ngu cikamu, 'unain Sumukun, tumatin koca'ania, akia.</FORM>
+        <FORM kindOf="original" notes="cumuraan iikamu 你們試著看 cumacʉ’ʉra-an 試著看看 unain = uneen 有嗎? 附著於’una後面的in表示疑問語氣，但和kara不同的是前者為反詰語氣(說話者已預設或知道答案)，而後者表示說話者並不知道答案。">neen tuma, cumuraan ngu cikamu, 'unain Sumukun, tumatin koca'ania, akia.</FORM>
         <PHON kindOf="original">n[e|ə][e|ə]n tuma ʦumuraan ŋu ʦikamu ʔunain sumukun tumatin koʦaʔania akia</PHON>
         <FORM kindOf="standard">neen tuma, cumuraan ngu cikamu, 'unain Sumukun, tumatin koca'ania, akia.</FORM>
         <PHON kindOf="standard">neen tuma ʦumu[r|ɾ]aan ŋu ʦikamu ʔunain sumukun tumatin koʦaʔania akia</PHON>
@@ -10542,21 +10748,31 @@
             <PHON kindOf="original">u*</PHON>
             <FORM kindOf="standard">UH</FORM>
             <PHON kindOf="standard">uh</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            <M id="kkvNr_millet_Muu_S_157_W2M0">
+                <FORM kindOf="original">UH</FORM>
+                <PHON kindOf="original">u*</PHON>
+                <FORM kindOf="standard">UH</FORM>
+                <PHON kindOf="standard">uh</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_millet_Muu_S_157_W3">
             <FORM kindOf="original">iikita</FORM>
             <PHON kindOf="original">iikita</PHON>
             <FORM kindOf="standard">iikita</FORM>
             <PHON kindOf="standard">iikita</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">1IPL.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1IPL.NOM</TRANSL>
             <M id="kkvNr_millet_Muu_S_157_W3M0">
                 <FORM kindOf="original">iikita</FORM>
                 <PHON kindOf="original">iikita</PHON>
                 <FORM kindOf="standard">iikita</FORM>
                 <PHON kindOf="standard">iikita</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1IPL.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1IPL.NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_157_W4">
@@ -10564,15 +10780,15 @@
             <PHON kindOf="original">ia</PHON>
             <FORM kindOf="standard">ia,</FORM>
             <PHON kindOf="standard">ia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">1IPL.主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">1IPL.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="kkvNr_millet_Muu_S_157_W4M0">
                 <FORM kindOf="original">ia,</FORM>
                 <PHON kindOf="original">ia</PHON>
                 <FORM kindOf="standard">ia,</FORM>
                 <PHON kindOf="standard">ia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1IPL.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1IPL.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_157_W5">
@@ -10714,7 +10930,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_160">
-        <FORM kindOf="original" notes="nupasʉ 包含vantuku 紙幣和kinparaa 銅板，或是可以變換成以上兩個的東西。">arananaki taniara soni apa'ara kʉʉna, 'apara nupasʉ.</FORM>
+        <FORM kindOf="original" notes="aranana 有點期待的意思，“真希望從…”這樣的含意。 nupasʉ 包含vantuku 紙幣和kinparaa 銅板，或是可以變換成以上兩個的東西。">arananaki taniara soni apa'ara kʉʉna, 'apara nupasʉ.</FORM>
         <PHON kindOf="original">arananaki taniara soni apaʔara k**na ʔapara nupas*</PHON>
         <FORM kindOf="standard">arananaki taniara soni apa'ara kʉʉna, 'apara nupasʉ.</FORM>
         <PHON kindOf="standard">a[r|ɾ]ananaki tania[r|ɾ]a soni apaʔa[r|ɾ]a kɨɨna ʔapa[r|ɾ]a nupasɨ</PHON>
@@ -11037,7 +11253,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_164">
-        <FORM kindOf="original" notes="neeci ‘你看喔!’ 想要證明以上所說的是真的不是假的。">cucuru manasi, neeci'ire iikita.</FORM>
+        <FORM kindOf="original" notes="cucuru 真的/太/非常 neeci ‘你看喔!’ 想要證明以上所說的是真的不是假的。">cucuru manasi, neeci'ire iikita.</FORM>
         <PHON kindOf="original">ʦuʦuru manasi n[e|ə][e|ə]ʦiʔir[e|ə] iikita</PHON>
         <FORM kindOf="standard">cucuru manasi, neeci'ire iikita.</FORM>
         <PHON kindOf="standard">ʦuʦu[r|ɾ]u manasi neeʦiʔi[r|ɾ]e iikita</PHON>
@@ -11110,7 +11326,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_166">
-        <FORM kindOf="original" notes="這句的masiin聽起來像makasi。">manmanmita kanakanavu map, masiin, kan maraa 'ecu, 'arasurusu 'ara'una, 'esi 'ara'una, manmanmita Kanakanavu masiin.</FORM>
+        <FORM kindOf="original" notes="’ecu為’esi=cu的簡略形式，表示‘已經在’。 maraa mamanung=cu 已經比較好了 susuru沒有單獨用法。’arasurusu表示前進或是進步。 ’arasurusu ’ikua 往我這邊走前 這句的masiin聽起來像makasi。">manmanmita kanakanavu map, masiin, kan maraa 'ecu, 'arasurusu 'ara'una, 'esi 'ara'una, manmanmita Kanakanavu masiin.</FORM>
         <PHON kindOf="original">manmanmita kanakanavu map masiin kan maraa ʔ[e|ə]ʦu ʔarasurusu ʔaraʔuna ʔ[e|ə]si ʔaraʔuna manmanmita kanakanavu masiin</PHON>
         <FORM kindOf="standard">manmanmita kanakanavu map, masiin, kan maraa 'ecu, 'arasurusu 'ara'una, 'esi 'ara'una, manmanmita Kanakanavu masiin.</FORM>
         <PHON kindOf="standard">manmanmita kanakanavu map masiin kan ma[r|ɾ]aa ʔeʦu ʔa[r|ɾ]asu[r|ɾ]usu ʔa[r|ɾ]aʔuna ʔesi ʔa[r|ɾ]aʔuna manmanmita kanakanavu masiin</PHON>
@@ -11512,7 +11728,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_174">
-        <FORM kindOf="original">iikita Kanakanavu ia, natekim na, makai cʉpʉngaku ia, natia mamanʉng.</FORM>
+        <FORM kindOf="original" notes="na-te=ku iovutu 我本來要來(但沒有來) nipacʉpung 已經想/已經測量">iikita Kanakanavu ia, natekim na, makai cʉpʉngaku ia, natia mamanʉng.</FORM>
         <PHON kindOf="original">iikita kanakanavu ia nat[e|ə]kim na makai ʦ*p*ŋaku ia natia maman*ŋ</PHON>
         <FORM kindOf="standard">iikita Kanakanavu ia, natekim na, makai cʉpʉngaku ia, natia mamanʉng.</FORM>
         <PHON kindOf="standard">iikita kanakanavu ia natekim na makai ʦɨpɨŋaku ia natia mamanɨŋ</PHON>
@@ -11636,23 +11852,23 @@
             <PHON kindOf="original">ʦ*p*ŋaku</PHON>
             <FORM kindOf="standard">cʉpʉng-a=ku</FORM>
             <PHON kindOf="standard">ʦɨpɨŋaku</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">heart-REL-1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">想-關係詞-1SG.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">想-關係詞=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">heart-REL=1SG.NOM</TRANSL>
             <M id="kkvNr_millet_Muu_S_174_W6M0">
                 <FORM kindOf="original">cʉpʉng</FORM>
                 <PHON kindOf="original">ʦ*p*ŋ</PHON>
                 <FORM kindOf="standard">cʉpʉng</FORM>
                 <PHON kindOf="standard">ʦɨpɨŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">heart</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">想</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">想</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">heart</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_174_W6M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">REL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">關係詞</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_174_W6M2">
                 <FORM kindOf="original">=ku</FORM>
@@ -11721,7 +11937,7 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_178">
-        <FORM kindOf="original" notes="na-te=ku iovutu也可改為na-tia=ku iovutu masiraru=kasu tia iovutu 你應該要來(可能有來) na-tia=kasu iovutu 你本來要來(結果你沒來) totasiarʉ 上午 noca’ania 下午 rovana 晚上">nakai, iikisa, iikita Kanakanavu ia, na'uneen, makai ti'inge taningininga, ma ʉ, teni to'ona Kanakanavu, ʉtʉmʉkʉ ʉ, utuira ia. natekita mamanʉng.</FORM>
+        <FORM kindOf="original" notes="na-’uneen ‘如果有’，和’uneen意思一樣。 ta-ningning-a場所-平-A，意指平的地方，即小平台或小平原。 teni=teen to’ona 指地方或是位置。 ʉtʉmʉkʉ 指三個人以上聚在一起生活。 ʉtʉmʉkʉʉn 一群人聚在一起(以下翻譯待確認) tʉmʉkʉʉn apatʉmʉkʉʉn tʉmʉkʉʉnʉn=maku (sua) kincaucau 由我來把親友聚在一起。 sua tʉmʉkʉʉnʉn=maku ia kincaucau na-te=ku iovutu也可改為na-tia=ku iovutu masiraru=kasu tia iovutu 你應該要來(可能有來) na-tia=kasu iovutu 你本來要來(結果你沒來) totasiarʉ 上午 noca’ania 下午 rovana 晚上">nakai, iikisa, iikita Kanakanavu ia, na'uneen, makai ti'inge taningininga, ma ʉ, teni to'ona Kanakanavu, ʉtʉmʉkʉ ʉ, utuira ia. natekita mamanʉng.</FORM>
         <PHON kindOf="original">nakai iikisa iikita kanakanavu ia naʔun[e|ə][e|ə]n makai tiʔiŋ[e|ə] taniŋiniŋa ma * t[e|ə]ni toʔona kanakanavu *t*m*k* * utuira ia nat[e|ə]kita maman*ŋ</PHON>
         <FORM kindOf="standard">nakai, iikisa, iikita Kanakanavu ia, na'uneen, makai ti'inge taningininga, ma ʉ, teni to'ona Kanakanavu, ʉtʉmʉkʉ ʉ, utuira ia. natekita mamanʉng.</FORM>
         <PHON kindOf="standard">nakai iikisa iikita kanakanavu ia naʔuneen makai tiʔiŋe taniŋiniŋa ma ɨ teni toʔona kanakanavu ɨtɨmɨkɨ ɨ utui[r|ɾ]a ia natekita mamanɨŋ</PHON>
@@ -12295,8 +12511,8 @@
             <PHON kindOf="original">t[e|ə]kasu</PHON>
             <FORM kindOf="standard">te=kasu</FORM>
             <PHON kindOf="standard">tekasu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">非實現-2SG.主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">IRR-2SG.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=2SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR=2SG.NOM</TRANSL>
             <M id="kkvNr_millet_Muu_S_190_W3M0">
                 <FORM kindOf="original">te</FORM>
                 <PHON kindOf="original">t[e|ə]</PHON>
@@ -12348,10 +12564,10 @@
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_193">
-        <FORM kindOf="original" notes="kesa=kisa 所說的">neeci'iree, iisua ia kesa, kesa taolho putoncu ihua.</FORM>
-        <PHON kindOf="original">n[e|ə][e|ə]ʦiʔir[e|ə][e|ə] iisua ia k[e|ə]sa k[e|ə]sa taoɾ*o putonʦu i*ua</PHON>
-        <FORM kindOf="standard">neeci'iree, iisua ia kesa, kesa taolho putoncu ihua.</FORM>
-        <PHON kindOf="standard">neeʦiʔi[r|ɾ]ee iisua ia kesa kesa tao*ho putonʦu ihua</PHON>
+        <FORM kindOf="original" notes="kesa=kisa 所說的">neeci'iree, iisua ia kesa, K kesa taolho putoncu ihua.</FORM>
+        <PHON kindOf="original">n[e|ə][e|ə]ʦiʔir[e|ə][e|ə] iisua ia k[e|ə]sa k k[e|ə]sa taoɾ*o putonʦu i*ua</PHON>
+        <FORM kindOf="standard">neeci'iree, iisua ia kesa, K kesa taolho putoncu ihua.</FORM>
+        <PHON kindOf="standard">neeʦiʔi[r|ɾ]ee iisua ia kesa k kesa tao*ho putonʦu ihua</PHON>
         <TRANSL xml:lang="zho">你看，那就是外省人所說的不同族。</TRANSL>
         <TRANSL xml:lang="eng">See, that is what Chinese people call 'different ethnic groups'.</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_millet_Muu.mp3" start="382.42" end="386.6" file="kkvNr_millet_Muu_S90.mp3"/>
@@ -12383,7 +12599,7 @@
                 <PHON kindOf="original">iisua</PHON>
                 <FORM kindOf="standard">iisua</FORM>
                 <PHON kindOf="standard">iisua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
@@ -12428,62 +12644,90 @@
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_193_W4">
+            <FORM kindOf="original">K</FORM>
+            <PHON kindOf="original">k</PHON>
+            <FORM kindOf="standard">K</FORM>
+            <PHON kindOf="standard">k</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            <M id="kkvNr_millet_Muu_S_193_W4M0">
+                <FORM kindOf="original">K</FORM>
+                <PHON kindOf="original">k</PHON>
+                <FORM kindOf="standard">K</FORM>
+                <PHON kindOf="standard">k</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            </M>
+        </W>
+        <W id="kkvNr_millet_Muu_S_193_W5">
             <FORM kindOf="original">kes-a</FORM>
             <PHON kindOf="original">k[e|ə]sa</PHON>
             <FORM kindOf="standard">kes-a</FORM>
             <PHON kindOf="standard">kesa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
-            <M id="kkvNr_millet_Muu_S_193_W4M0">
+            <TRANSL xml:lang="zho" kindOf="original">說-關係詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">say-REL</TRANSL>
+            <M id="kkvNr_millet_Muu_S_193_W5M0">
                 <FORM kindOf="original">kes</FORM>
                 <PHON kindOf="original">k[e|ə]s</PHON>
                 <FORM kindOf="standard">kes</FORM>
                 <PHON kindOf="standard">kes</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
             </M>
-            <M id="kkvNr_millet_Muu_S_193_W4M1">
+            <M id="kkvNr_millet_Muu_S_193_W5M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_millet_Muu_S_193_W5">
+        <W id="kkvNr_millet_Muu_S_193_W6">
             <FORM kindOf="original">taolho</FORM>
             <PHON kindOf="original">taoɾ*o</PHON>
             <FORM kindOf="standard">taolho</FORM>
             <PHON kindOf="standard">tao*ho</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">說-關係詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">say-REL</TRANSL>
-        </W>
-        <W id="kkvNr_millet_Muu_S_193_W6">
-            <FORM kindOf="original" notes="code-switch">putoncu</FORM>
-            <PHON kindOf="original">putonʦu</PHON>
-            <FORM kindOf="standard">putoncu</FORM>
-            <PHON kindOf="standard">putonʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">外省人</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">Chinese</TRANSL>
             <M id="kkvNr_millet_Muu_S_193_W6M0">
-                <FORM kindOf="original">putoncu</FORM>
-                <PHON kindOf="original">putonʦu</PHON>
-                <FORM kindOf="standard">putoncu</FORM>
-                <PHON kindOf="standard">putonʦu</PHON>
+                <FORM kindOf="original">taolho</FORM>
+                <PHON kindOf="original">taoɾ*o</PHON>
+                <FORM kindOf="standard">taolho</FORM>
+                <PHON kindOf="standard">tao*ho</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">外省人</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">Chinese</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_193_W7">
+            <FORM kindOf="original" notes="code-switch">putoncu</FORM>
+            <PHON kindOf="original">putonʦu</PHON>
+            <FORM kindOf="standard">putoncu</FORM>
+            <PHON kindOf="standard">putonʦu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">不同族</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">different.group</TRANSL>
+            <M id="kkvNr_millet_Muu_S_193_W7M0">
+                <FORM kindOf="original">putoncu</FORM>
+                <PHON kindOf="original">putonʦu</PHON>
+                <FORM kindOf="standard">putoncu</FORM>
+                <PHON kindOf="standard">putonʦu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">不同族</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">different.group</TRANSL>
+            </M>
+        </W>
+        <W id="kkvNr_millet_Muu_S_193_W8">
             <FORM kindOf="original">ihua.</FORM>
             <PHON kindOf="original">i*ua</PHON>
             <FORM kindOf="standard">ihua.</FORM>
             <PHON kindOf="standard">ihua</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">不同族</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">different.group</TRANSL>
-            <M id="kkvNr_millet_Muu_S_193_W7M0">
+            <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+            <M id="kkvNr_millet_Muu_S_193_W8M0">
                 <FORM kindOf="original">ihua.</FORM>
                 <PHON kindOf="original">i*ua</PHON>
                 <FORM kindOf="standard">ihua.</FORM>
                 <PHON kindOf="standard">ihua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
@@ -12501,25 +12745,39 @@
             <PHON kindOf="original">*</PHON>
             <FORM kindOf="standard">ʉ</FORM>
             <PHON kindOf="standard">ɨ</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            <M id="kkvNr_millet_Muu_S_196_W0M0">
+                <FORM kindOf="original">ʉ</FORM>
+                <PHON kindOf="original">*</PHON>
+                <FORM kindOf="standard">ʉ</FORM>
+                <PHON kindOf="standard">ɨ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            </M>
         </W>
         <W id="kkvNr_millet_Muu_S_196_W1">
             <FORM kindOf="original" notes="code-switch">awanai=cu,</FORM>
             <PHON kindOf="original">a*anaiʦu</PHON>
             <FORM kindOf="standard">awanai=cu,</FORM>
             <PHON kindOf="standard">awanaiʦu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">不合=過去</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">not.match=PST</TRANSL>
             <M id="kkvNr_millet_Muu_S_196_W1M0">
                 <FORM kindOf="original">awanai</FORM>
                 <PHON kindOf="original">a*anai</PHON>
                 <FORM kindOf="standard">awanai</FORM>
                 <PHON kindOf="standard">awanai</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">不合</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">not.match</TRANSL>
             </M>
             <M id="kkvNr_millet_Muu_S_196_W1M1">
-                <FORM kindOf="original">cu,</FORM>
+                <FORM kindOf="original">=cu,</FORM>
                 <PHON kindOf="original">ʦu</PHON>
-                <FORM kindOf="standard">cu,</FORM>
+                <FORM kindOf="standard">=cu,</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_196_W2">
@@ -12542,8 +12800,8 @@
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">狀態改變</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_millet_Muu_S_196_W3">
@@ -12574,13 +12832,13 @@
                 <PHON kindOf="original">kari</PHON>
                 <FORM kindOf="standard">kari.</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">話</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">word</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語言</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">language</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_millet_Muu_S_198">
-        <FORM kindOf="original">na, utuira kite=en Kanakanavu ia, te=kasu mosa naan tia uca'an maa kari iua.</FORM>
+        <FORM kindOf="original" notes="na=noo">na, utuira kite=en Kanakanavu ia, te=kasu mosa naan tia uca'an maa kari iua.</FORM>
         <PHON kindOf="original">na utuira kit[e|ə][e|ə]n kanakanavu ia t[e|ə]kasu mosa naan tia uʦaʔan maa kari iua</PHON>
         <FORM kindOf="original" ver="alt">na, utuira kite=en Kanakanavu ia, te=kasu mosa naan tia uca'an maa kari ihua.</FORM>
         <FORM kindOf="standard">na, utuira kiteen Kanakanavu ia, tekasu mosa naan tia uca'an maa kari iua.</FORM>

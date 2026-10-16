@@ -307,6 +307,48 @@ corpora trip these and will need fixing over time:
 (Resolves the Bunun-Topic-Focus degenerate-single-M question: its 51
 single-M Ws are conforming as long as no W lacks an M.)
 
+### POL-060 · RULED · 2026-10-14 · words that share one gloss
+**Words the source glosses as one unit are one `W`.** When a source prints a
+single gloss under two or more words, those words form a single `W`: its FORM
+is the words as printed, space-separated, and it carries the gloss once.
+Chang's Seediq grammar, for example, glosses `ani naq` as 雖然, `di ge` as
+的時候 and `kiya ka` as 所以 — each is one `W`. The words are not split into a
+`W` apiece with the gloss on the first and a `∅` placeholder on the rest.
+
+**Why:** the gloss is the source's unit of analysis. Splitting asserts a word
+boundary the analysis does not draw, and the `∅` placeholder looks exactly
+like a word the source leaves unglossed, so a reader cannot tell "this word
+has no gloss" from "this word's gloss is on its neighbour". Maintainer
+(2026-10-14): *"when two words share the same gloss, they get a single <W>
+block. That's a general rule."*
+
+**Consequences.** Within a parsed sentence (POL-023) such a `W` still needs at
+least one `M`; its `M` children follow whatever segmentation the source prints
+inside the unit, and where it prints none, one `M` spans the same words.
+**V060** (`W_count_matches_word_count`, SOFT) compares the number of `W` with
+the number of whitespace-delimited words in the sentence, so it reports every
+multi-word `W`. That is intended: the SOFT finding asks whoever reviews the
+corpus to confirm each multi-word `W` is deliberate. Raised by: the 2026-10 student review of the Chang 2000 Seediq
+grammar dev repo, where 40 such units had been split.
+
+### POL-061 · RULED · 2026-10-15 · a word with no gloss
+**A word or morpheme the source leaves unglossed is glossed `?`.** When a
+source prints no gloss under a word — and the word does not share its
+neighbour's gloss (POL-060) — its W gloss is `?`, not `∅` and not a missing
+TRANSL. Inside a segmented gloss the missing piece is `?` too: `yee-su`, where
+the source glosses only the pronoun, is `?-你`, and its M `yee` is `?`.
+
+**Why:** `∅` is the null-morpheme marker (POL-012) and asserts a silent
+morpheme, which an unglossed word is not. `?` is already how corpora carry a
+gloss the source itself leaves uncertain (HundredPaiwanStories 356 `?`,
+NTUFormosanCorpus 63 `?`, YeddaPalemeqBlog 2), and for a user the two cases
+read the same: the source does not give this word's meaning. A source's own
+`??` or `?` marker is kept as written (POL-036). Maintainer (2026-10-15):
+*"Where a gloss is missing entirely (not one of the shared cases), we insert
+the gloss `?`, and then treat accordingly. I _think_ ? is used elsewhere for
+uncertain glosses (most likely NTU). If this is confirmed, then make sure it's
+in a policy."* First applied in the Chang Seediq grammar dev repo.
+
 ### POL-024 · RULED · 2026-08-10 · parentheticals in translations
 Two different things, treated differently:
 - **Literal translations / analytic paraphrases** (`(Lit. the money that
@@ -423,14 +465,43 @@ allowlist (V084 for TRANSL, V156 for FORM).
   varies. A word-list corpus whose `S` is a word is the S-level case.
 - **Optional material is resolved by scope.** What forces a separate `S`
   block is not whether the variation sits inside a word, but whether the
-  **sentence's word inventory changes**. A whole optional *word* —
-  `x y (z)` — changes the W tier and the gloss alignment, so it becomes two
-  `S` blocks (POL-026), the second taking the first's id plus `-opt`.
-  Optional material that leaves the word count unchanged — `puken-(en)`,
-  `(u)m-lavi`, and equally a whole short word alternating `a`/`u` — becomes
-  a `ver="alt"` variant FORM on the word that varies, never a second
-  sentence.
-  Neither mechanism leaves parentheses in a published FORM.
+  **sentence's word inventory changes, or the glossing does**. A whole
+  optional *word* — `x y (z)` — changes the W tier and the gloss alignment,
+  so it becomes two `S` blocks (POL-026), the second taking the first's id
+  plus `-opt`. An optional *morpheme* becomes separate `S` blocks **when the
+  source glosses it, so the two readings would be glossed differently**:
+  Seediq-Chang's `h-(um)-uwa` is `huwa` 怎樣 or `h-um-uwa` 怎樣-AF, and NTU
+  Bunun's `kangavas(=an)` is `kangavas` 'mango' or `kangavas=an`
+  'mango=MED.NOM'. A variant FORM has no W or M tier of its own, so it
+  cannot carry the second gloss. In the maintainer's words (2026-10-15):
+  *"differences in morphemes necessitate different sentence blocks only if
+  they are glossed and would result in different glossing. Basically, I
+  want the glossing to be clear."* Everything else — optional letters inside
+  a single morpheme, a whole short word alternating `a`/`u`, and an optional
+  morpheme in data whose words carry no glosses (Blust's Thao dictionary
+  examples, the Utrecht word list) — becomes a `ver="alt"` variant FORM on
+  the node that varies, never a second sentence. Neither mechanism leaves
+  parentheses in a published FORM, except as below.
+
+  **Amended 2026-10-15; this supersedes** (POL-050) this bullet's wording as
+  revised 2026-09-09, under which optional material that "leaves the word
+  count unchanged" was always a variant. Raised by the Seediq-Chang audit,
+  where `h-(um)-uwa` (R275) had been made obligatory rather than resolved.
+  Per-corpus rulings on the variants already published are recorded in
+  `claudeplans/2026-10-15-segmentation-variant-worklist.md`.
+
+  **WakelinTexts' parentheses are not optional material** (maintainer,
+  2026-10-15). The article's key defines `( )` only as "in data, probable
+  discrepancy", so `puken-(en)`, `manuyung-(e)`, `(u)m-lavi` and the rest
+  are neither split nor variants: *"The parentheses should be retained in
+  the original tier, removed in the standard tier. ... The reason is that
+  while the author was uncertain, we do not have anything else to go on."*
+  Retained in the **sentence FORM only**: *"sentence FORM only, not the Ws
+  or Ms."* Words, morphemes and the standard tier keep the bracketed
+  letters without the brackets. This supersedes, for this notation only,
+  item 2 of the 2026-09-09 revision above (which resolved Wakelin's
+  original tier like the standard one) and the rule that no published FORM
+  keeps parentheses.
 - **Naming the extra blocks.** Wherever one source cell or sentence yields
   more than one `S` — optional material above, or a competing lexeme — the
   first block keeps its published id and the second takes that id plus

@@ -2597,14 +2597,14 @@
             <FORM kindOf="standard">ta</FORM>
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">Obl</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             <M id="TsouNr-pear-story-3_S_38_W8M0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">Obl</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-story-3_S_38_W9">
@@ -2644,21 +2644,31 @@
             <PHON kindOf="original">**</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">**</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+            <M id="TsouNr-pear-story-3_S_38_W11M0">
+                <FORM kindOf="original">XX</FORM>
+                <PHON kindOf="original">**</PHON>
+                <FORM kindOf="standard">XX</FORM>
+                <PHON kindOf="standard">**</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+            </M>
         </W>
         <W id="TsouNr-pear-story-3_S_38_W12">
             <FORM kindOf="original">'enepio.</FORM>
             <PHON kindOf="original">ʔenepio</PHON>
             <FORM kindOf="standard">'enepio.</FORM>
             <PHON kindOf="standard">ʔenepio</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">一些.AF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">some.AF</TRANSL>
             <M id="TsouNr-pear-story-3_S_38_W12M0">
                 <FORM kindOf="original">'enepio.</FORM>
                 <PHON kindOf="original">ʔenepio</PHON>
                 <FORM kindOf="standard">'enepio.</FORM>
                 <PHON kindOf="standard">ʔenepio</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">一些.AF</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">some.AF</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-story-3_S_38_W13">
@@ -4546,16 +4556,16 @@
             <PHON kindOf="original">ne</PHON>
             <FORM kindOf="standard">ne</FORM>
             <PHON kindOf="standard">ne</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">when</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
             <M id="TsouNr-pear-story-3_S_67_W2M0">
                 <FORM kindOf="original">ne</FORM>
                 <PHON kindOf="original">ne</PHON>
                 <FORM kindOf="standard">ne</FORM>
                 <PHON kindOf="standard">ne</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">when</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
+                <TRANSL xml:lang="zho" notes="gloss borrowed: 'ne' is glossed this way in 10 of its 11 other occurrences in this language; the source wrote this word's English gloss in the Chinese slot too; counted only over the uses with the same English gloss" kindOf="original">當</TRANSL>
             </M>
+            <TRANSL xml:lang="zho" notes="gloss borrowed: 'ne' is glossed this way in 10 of its 11 other occurrences in this language; the source wrote this word's English gloss in the Chinese slot too; counted only over the uses with the same English gloss" kindOf="original">當</TRANSL>
         </W>
         <W id="TsouNr-pear-story-3_S_67_W3">
             <FORM kindOf="original">moso</FORM>
@@ -5135,7 +5145,7 @@
         </W>
     </S>
     <S id="TsouNr-pear-story-3_S_76">
-        <FORM kindOf="original" notes="鄒語中有些在謂語位置，語意較像副詞的詞，常會接一no，再接主要謂語（動詞），結構就像 [[Adverbial + no]] + Verb]。這種用法不是普遍出現在所有像副詞性的詞上，而是只有部分副詞性的詞有此用法，像此句的akoeva no，而akoeva本身必須與no 連用，因此顯示這是某種定型化的用法。語料中的標記為NO。">ine.mio, eh, ine ntesi cu akoeva no ucia patmʉta.</FORM>
+        <FORM kindOf="original" notes="ine mio 兩詞合用為已固化之詞組(fixed expression)，語意為：&quot;那時候&quot;。 鄒語中有些在謂語位置，語意較像副詞的詞，常會接一no，再接主要謂語（動詞），結構就像 [[Adverbial + no]] + Verb]。這種用法不是普遍出現在所有像副詞性的詞上，而是只有部分副詞性的詞有此用法，像此句的akoeva no，而akoeva本身必須與no 連用，因此顯示這是某種定型化的用法。語料中的標記為NO。">ine.mio, eh, ine ntesi cu akoeva no ucia patmʉta.</FORM>
         <PHON kindOf="original">inemio ex ine ntesi ʦu akoeva no uʦia patmɨta</PHON>
         <FORM kindOf="standard">ine.mio, eh, ine ntesi cu akoeva no ucia patmʉta.</FORM>
         <PHON kindOf="standard">inemio eh ine ntesi ʦu akoeva no uʦia patmɨta</PHON>
@@ -5858,7 +5868,7 @@
             <PHON kindOf="original">ivaxa</PHON>
             <FORM kindOf="standard">ivah-a</FORM>
             <PHON kindOf="standard">ivaha</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">再</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">再-非主焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">again-NAF</TRANSL>
             <M id="TsouNr-pear-story-3_S_83_W11M0">
                 <FORM kindOf="original">ivah</FORM>
@@ -5873,6 +5883,7 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">非主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">NAF</TRANSL>
             </M>
         </W>
@@ -5961,31 +5972,21 @@
             <PHON kindOf="original">mi</PHON>
             <FORM kindOf="standard">mi</FORM>
             <PHON kindOf="standard">mi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">助動詞.未來</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AUX.HYP</TRANSL>
-            <M id="TsouNr-pear-story-3_S_86_W1M0">
-                <FORM kindOf="original">mi</FORM>
-                <PHON kindOf="original">mi</PHON>
-                <FORM kindOf="standard">mi</FORM>
-                <PHON kindOf="standard">mi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">助動詞.未來</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AUX.HYP</TRANSL>
-            </M>
         </W>
         <W id="TsouNr-pear-story-3_S_86_W2">
             <FORM kindOf="original">nte</FORM>
             <PHON kindOf="original">nte</PHON>
             <FORM kindOf="standard">nte</FORM>
             <PHON kindOf="standard">nte</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">助動詞.未來</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AUX.HYP</TRANSL>
             <M id="TsouNr-pear-story-3_S_86_W2M0">
                 <FORM kindOf="original">nte</FORM>
                 <PHON kindOf="original">nte</PHON>
                 <FORM kindOf="standard">nte</FORM>
                 <PHON kindOf="standard">nte</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">助動詞.未來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AUX.HYP</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-story-3_S_86_W3">
@@ -5993,15 +5994,15 @@
             <PHON kindOf="original">ʦʔu</PHON>
             <FORM kindOf="standard">c'u</FORM>
             <PHON kindOf="standard">ʦʔu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">相互分離.主焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">depart.from.each.other.AF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             <M id="TsouNr-pear-story-3_S_86_W3M0">
                 <FORM kindOf="original">c'u</FORM>
                 <PHON kindOf="original">ʦʔu</PHON>
                 <FORM kindOf="standard">c'u</FORM>
                 <PHON kindOf="standard">ʦʔu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">相互分離.主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">depart.from.each.other.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-story-3_S_86_W4">
@@ -6009,6 +6010,16 @@
             <PHON kindOf="original">eupevai</PHON>
             <FORM kindOf="standard">eupevai.</FORM>
             <PHON kindOf="standard">eupevai</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">相互分離.主焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">depart.from.each.other.AF</TRANSL>
+            <M id="TsouNr-pear-story-3_S_86_W4M0">
+                <FORM kindOf="original">eupevai.</FORM>
+                <PHON kindOf="original">eupevai</PHON>
+                <FORM kindOf="standard">eupevai.</FORM>
+                <PHON kindOf="standard">eupevai</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">相互分離.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">depart.from.each.other.AF</TRANSL>
+            </M>
         </W>
         <W id="TsouNr-pear-story-3_S_86_W5">
             <FORM kindOf="original">ina</FORM>
