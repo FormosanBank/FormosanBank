@@ -1,78 +1,63 @@
-# Formosan-PaiwanStories
+# Paiwan Stories
 
-## License and AI Use
+Three Eastern Paiwan stories with Chinese translations: *Dingding*,
+*Kavatjes ni vuvu* and *Maljialjian a qaciljay*. The corpus contains 46
+bilingual passages, with whole-story audio and no word or morpheme analysis.
 
-This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+## Rights
 
-This repository contains code and data for processing and structuring the Paiwan Stories dataset into the [FormosanBank XML format](https://app.gitbook.com/o/tZF822XPLvjWkTiqbQyF/s/VETgkt5DVZWXBIolTyjW/the-bank-architecture/xml-standardize-format). The dataset includes various Formosan dialects and is organized to assist in linguistic research and language preservation.
+**License:** CC BY-NC 4.0
 
-## Project Structure
+**Rights source:** Gesi Giling (阮翠芳), 2024-04-13; evidence: ask maintainer
 
-- **Final_XML**: Directory containing the processed data structured into FormosanBank XML format.
-- **requirements.txt**: Lists the Python libraries required to run the processing scripts.
+Joshua Hartshorne recorded permission directly from the Indigenous-text
+author. The illustrated books also carry separate illustration, adaptation
+and publisher rights. Full source documents are not redistributed here.
+The central FormosanBank terms and AI-use addendum also apply.
 
-## Installation
+## Sources and reproduction
 
-1. Clone this repository
+The two illustrated PDFs credit Gesi Giling for the Indigenous text and
+Tjaiwan Giling for illustrations; both colophons date their first printing
+to November 2020. The third source is a bilingual Word document.
 
-2. Set up a virtual environment (optional but recommended):
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
+`CodeAndDocs/data/reviewed_records.tsv` is the committed transcription
+baseline, with stable IDs, source locators and correction notes.
+`texts.tsv` supplies TEXT metadata; `source_exclusions.tsv` identifies
+paratext and illustration-only material. The source documents and original
+recordings are identified by SHA-256 in `source_manifest.json`.
 
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+The build reconstructs XML from this transcription, without fetching or
+re-extracting the restricted documents. With current FormosanBank dependencies:
 
-4. Download the three public source recordings:
-   ```bash
-   ./download_audio_data.sh
-   ```
+```bash
+FORMOSANBANK_ROOT=/path/to/FormosanBank PYTHON=python3 ./CodeAndDocs/generate_xml.sh
+python3 -m unittest discover -s CodeAndDocs/tests -v
+```
 
-   The download comes from the public `FormosanBank/Paiwan_Stories` Hugging
-   Face dataset and does not require an account.
+Inside `Corpora/Paiwan_Stories`, the shared checkout is found automatically.
+The build generates fresh source tiers, runs shared cleaning, copies original
+FORM to standard with `standardize.py --copy`, and derives PHON with Ortho94
+for originals and the registered standard for standard FORM. Ortho94 and
+Ortho113 Eastern values agree for this corpus's letters. Actual build tools
+are recorded in [provenance.json](CodeAndDocs/provenance.json), without a tools pin.
+QC is separate from generation. Set `QC_OUTPUT_DIR` to retain build warnings.
 
-## Usage
+## Audio
 
-The XMLs were created by hand from the PDF. No automatic processing.
+`./download_audio_data.sh` retrieves the three published WAVs into ignored
+`Audio/`, using the revision in FormosanBank's `audio_sources.json`.
+Use `--dry-run` to check the remote inventory without downloading.
+The recordings retain their published 16 kHz mono representation; no
+resampling or channel conversion is performed. Each TEXT names its whole-story
+recording. Sentence timings are not included.
 
-1. **Clean XML and standardize punctuation**
+## Notes and Issues
 
-This isn't necessary because everything was already standardized. It is listed just to make it clear that we didn't forget to do it.
-
-   ```bash
-   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/repo/Final_XML
-   ```
-
-**Outputs**
-   - This will update the XML files.
-
-**Notes**
-   - This removes empty XML elements
-   - It also standardizes orthography (more-or-less), though a lot of this was done in previous steps (not documented above)
-   - Unicode is flattened so that diacritics are merged with the characters they modify
-   - HTML escape codes are replaced with the corresponding characters
-
-2. **Standardize XML, Part 2**
-
-   ```bash
-   python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/repo/Final_XML
-   ```
-
-3. **Standardize orthography**
-
-   ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML --copy
-   ```
-
-**Outputs**
-   - Updates XML files
-
-**Notes**
-   - Creates a copy of every <FORM> element with kindOf="standard" attribute
-
-4. **Add phonology**
-
-The usual way.
+The restored Maljialjian passage uses `S6a`, between the existing S6 and S7;
+all published TEXT and sentence IDs remain stable. Chinese translations
+omitted or shifted in the earlier corpus are restored from the sources.
+Published quotation corrections and comma/exclamation typography are retained
+in the transcription; `repair_records.py` records the ID and locator repair.
+The Word source has 15 table rows containing 16 passages; row 4 holds two units.
+Historical alignment files are unavailable, so no sentence timings are inferred.
