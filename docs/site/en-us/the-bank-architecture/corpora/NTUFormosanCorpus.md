@@ -17,17 +17,17 @@ It consists of three main sections:
 
 | | Amis<br>Coastal | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Sakizaya | Atayal<br>Wenshui | Seediq<br>Tegudaya | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 7,531 | 23,486 | 16,290 | 17,978 | 14,038 | 5,864 | 25,298 | 10,206 | 20,354 | 10,853 |
+| Word count | 7,585 | 23,544 | 16,335 | 17,996 | 14,064 | 5,878 | 25,277 | 10,239 | 20,408 | 10,874 |
 | Total audio | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,486 | 23,404 | 16,225 | 17,963 | 8,993 | 5,859 | 20,369 | 10,206 | 15,169 | 10,837 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,531 | 23,396 | 16,288 | 17,961 | 14,036 | 5,859 | 25,298 | 10,206 | 20,334 | 10,837 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,540 | 23,462 | 16,249 | 17,981 | 9,019 | 5,873 | 20,247 | 10,239 | 15,223 | 10,858 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,585 | 23,457 | 16,333 | 17,955 | 14,062 | 5,873 | 25,177 | 10,239 | 20,388 | 10,858 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Morphologically segmented | 7,528 | 23,463 | 16,286 | 17,292 | 12,968 | 5,861 | 22,803 | 10,200 | 18,854 | 10,849 |
-| Glossed words | 7,528 | 23,463 | 16,286 | 17,292 | 12,968 | 5,861 | 22,803 | 10,195 | 18,847 | 10,848 |
+| Morphologically segmented | 7,528 | 23,478 | 16,277 | 17,533 | 12,994 | 5,860 | 23,201 | 10,230 | 18,881 | 10,860 |
+| Glossed words | 7,528 | 23,478 | 16,277 | 17,533 | 12,994 | 5,860 | 23,201 | 10,230 | 18,878 | 10,860 |
 
 ***
 
