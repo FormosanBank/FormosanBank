@@ -85,12 +85,10 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 
 In addition to the wide range of corpora already incorporated into FormosanBank, there is a large number of further corpora that permission to include in FormosanBank has been obtained and they are being processed at the moment. Below are some of these corpora:
 
-* Matthew's Gospel and John's Gospel (Siraya)
 * The Sedik Language of Formosa by Erin Asai (Seediq)
 * Chang's Kavalan reference grammar (Kavalan)
 * Poinsot Amis Dictionary (Amis)
 * Moedict Amis (Amis)
-* Asai's Seediq Language of Formosan (Seediq)
 * ​hala saku la (videos - Atayal)
 * ​hala saku la (text - Atayal)
 * Tung's Descriptive study of Tsou (Tsou)
