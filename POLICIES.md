@@ -273,7 +273,13 @@ the corpus's CodeAndDocs declares a dedup step* — a leftover duplicate
 then signals a pipeline defect, not a content question. The within-file
 vs cross-file distinction survives as the finding's `scope`.
 
-### POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12)
+### POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12; presence requirement withdrawn 2026-10-17 by POL-057)
+**Withdrawn in part (2026-10-17, POL-057):** the requirement below that every
+W in a parsed sentence gets at least one M no longer applies. A W with no M
+means its segmentation is unknown, which is legitimate. V144 stays as a SOFT
+prompt to confirm such words are deliberately unsegmented; V145 is now HARD.
+The rest of this entry is kept as the record of the original ruling.
+
 **The unit of morphological analysis is the sentence, not the file.** In a
 sentence that carries *some* morphological parsing, **every W gets at least
 one M**; a W with exactly one M there is read as "analyzed as
@@ -293,10 +299,12 @@ others alone are the normal, honest case (YeddaPalemeqBlog: 494 parsed
 sentences, 161 unparsed), and under the file-level reading a single parsed
 sentence turned every unparsed sentence in the file into a finding.
 
-Enforced as SOFT findings in `validate_xml.py`; SOFT because some existing
-corpora trip these and will need fixing over time:
-- **V144** — M-less W inside a *parsed sentence* (per sentence).
-- **V145** — an M level in a file where **no** sentence carries any parsing
+Enforced in `validate_xml.py` (as amended 2026-10-17):
+- **V144** (SOFT) — M-less W inside a *parsed sentence* (per sentence);
+  since POL-057 a prompt to confirm the word is deliberately unsegmented,
+  not a defect.
+- **V145** (HARD since 2026-10-17) — an M level in a file where **no**
+  sentence carries any parsing
   (per **file**, deliberately). "Every M mirrors its W" is evidence of a
   fake tier only in bulk: one short sentence whose words really are
   monomorphemic looks identical to a mirror tier, and single-M Ws are
@@ -306,6 +314,41 @@ corpora trip these and will need fixing over time:
 
 (Resolves the Bunun-Topic-Focus degenerate-single-M question: its 51
 single-M Ws are conforming as long as no W lacks an M.)
+
+### POL-057 · RULED · 2026-10-17 · an M records a morphological analysis
+**M elements record parsing that was actually done.** A W with two or more Ms
+was segmented. A W with exactly **one** M asserts that the word is
+**monomorphemic**. A W with **no** M means its segmentation is unknown. So a W
+gets a single M only "if the source told us it was monomorphemic, or we have
+some other good reason to believe so (ie evidence from data for the same
+dialect)". An M is never created just so that a word has one.
+
+**For maintainers:** build code must not insert a single M for any reason
+other than such an analysis (for example, to satisfy the old POL-023
+requirement). Where a pipeline did that, regenerate without that step. No
+validator checks this. Whether a single M is justified is a linguistic
+judgement, reviewed in the reproduction code.
+
+**Withdraws** POL-023's requirement that every W in a parsed sentence gets at
+least one M. Two POL-023 checks remain: **V144** (SOFT) reports M-less Ws in a
+parsed sentence so the reviewer can confirm they are deliberate, and **V145**
+(HARD) rejects a file that has an M tier but no segmented word anywhere.
+
+Maintainer (2026-10-15): *"a W with a single M is assumed to be monomorphemic.
+So we should only have a W with a single M if the source told us it was
+monomorphemic, or we have some other good reason to believe so (ie evidence
+from data for the same dialect). This overrules a previous policy that insisted
+that all Ws have at least one M. Instead, we leave open having no M in order to
+indicate unknown segmentation. In cases where we previously created a single M
+to respect the old policy, we should regenerate without that M-creation."*
+Maintainer (2026-10-17): *"I wanted to rescind the previous requirement that
+every W have an M. And I wanted a policy (with no validator attached) saying
+that Ms indicate parsing, so a single M means monomorphemic. That's mostly
+instructions to the maintainers."* On the checks: *"V144 as providing SOFT
+warnings can be kept. It's good to be aware that there are missing Ms and
+confirm that's intentional. V145 can be retained. That's a HARD validator,
+please. Formosan languages are not monomorphemic, so if there is an M tier but
+no split words anywhere, that's weird."* Replaces PR #212.
 
 ### POL-060 · RULED · 2026-10-14 · words that share one gloss
 **Words the source glosses as one unit are one `W`.** When a source prints a
@@ -322,9 +365,8 @@ has no gloss" from "this word's gloss is on its neighbour". Maintainer
 (2026-10-14): *"when two words share the same gloss, they get a single <W>
 block. That's a general rule."*
 
-**Consequences.** Within a parsed sentence (POL-023) such a `W` still needs at
-least one `M`; its `M` children follow whatever segmentation the source prints
-inside the unit, and where it prints none, one `M` spans the same words.
+**Consequences.** Its `M` children, if any, follow the segmentation the source
+prints inside the unit (POL-057).
 **V060** (`W_count_matches_word_count`, SOFT) compares the number of `W` with
 the number of whitespace-delimited words in the sentence, so it reports every
 multi-word `W`. That is intended: the SOFT finding asks whoever reviews the
