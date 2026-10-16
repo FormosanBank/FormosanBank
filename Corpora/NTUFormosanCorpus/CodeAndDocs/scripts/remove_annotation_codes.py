@@ -85,7 +85,10 @@ def build_maps(codedocs_dir):
         cleaning that strips ``=``/``-``/``.`` inside words.
         """
         base = tok.replace("[", "").replace("]", "")
-        seeds = {base, _strip_source_punct(base)}
+        # base.rstrip("\\_"): the source's trailing markup gone but the
+        # punctuation kept, as published ('yau1],\\' -> 'yau1,'); without it
+        # the comma-final overlap markers were never matched (2026-10-14).
+        seeds = {base, _strip_source_punct(base), base.rstrip("\\_")}
         for v in list(seeds):
             seeds.add(v.rstrip(".,!?"))
         out = set(seeds)
@@ -289,7 +292,11 @@ def process_file(path, token_map, codes, is_grammar, dry_run, stats):
             if not witness:
                 stats["PHON left (witness failed/absent)"] += 1
                 continue
-            for kind in ("original", "standard"):
+            # Original tier only: the standard tier is regenerated from the original by
+            # standardize.py, and standard PHON by add_phonology.py, so writing them here
+            # edits derived tiers for no gain. The project minimises edits to the standard
+            # tier once generated.
+            for kind in ("original",):
                 fe, pe = _tier(el, "FORM", kind), _tier(el, "PHON", kind)
                 if fe is not None and pe is not None and (fe.text or "").strip():
                     newp = convert(fe.text, mp)

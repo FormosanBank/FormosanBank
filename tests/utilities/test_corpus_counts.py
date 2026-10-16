@@ -39,10 +39,13 @@ class TestCountWords:
 
 
 def _sentence(*forms):
-    """Build an <S> with (kindOf, text) FORM children."""
+    """Build an <S> with (kindOf, text) or (kindOf, ver, text) FORM children."""
     s = ET.Element("S")
-    for kind, text in forms:
+    for spec in forms:
+        kind, ver, text = spec if len(spec) == 3 else (spec[0], None, spec[1])
         f = ET.SubElement(s, "FORM", {"kindOf": kind})
+        if ver is not None:
+            f.set("ver", ver)
         f.text = text
     return s
 
@@ -70,6 +73,38 @@ class TestSelectSentenceForm:
         w = ET.SubElement(s, "W")
         f = ET.SubElement(w, "FORM", {"kindOf": "standard"})
         f.text = "word-level"
+        assert corpus_counts.select_sentence_form(s) is None
+
+    # -- POL-028 variants -------------------------------------------------
+    # Counting is CI-coupled (statistics/, the token-comparison gate), so a
+    # variant must never be what gets counted.
+
+    def test_counts_the_standard_base_not_a_preceding_standard_variant(self):
+        s = _sentence(
+            ("original", "orig text"),
+            ("standard", "alt", "variant text"),
+            ("standard", "std text"),
+        )
+        assert corpus_counts.select_sentence_form(s) == "std text"
+
+    def test_counts_the_original_base_not_a_preceding_original_variant(self):
+        s = _sentence(
+            ("original", "alt", "variant text"),
+            ("original", "orig text"),
+        )
+        assert corpus_counts.select_sentence_form(s) == "orig text"
+
+    def test_a_standard_variant_does_not_outrank_the_original_base(self):
+        """No standard *base* exists, so the original tier owns the count."""
+        s = _sentence(
+            ("standard", "alt", "variant text"),
+            ("original", "orig text"),
+        )
+        assert corpus_counts.select_sentence_form(s) == "orig text"
+
+    def test_variants_alone_are_not_countable(self):
+        """Maintainer ruling 2026-09-10: strict. V149 HARD owns this shape."""
+        s = _sentence(("original", "alt", "variant text"))
         assert corpus_counts.select_sentence_form(s) is None
 
 
@@ -109,12 +144,27 @@ class TestAnalyzeFile:
         assert rec["glossed_words"] == 3
         assert rec["eng_transl_count"] == 5  # two eng TRANSLs in s2 count once
         assert rec["zho_transl_count"] == 3
+        assert rec["jpn_transl_count"] == 0  # no jpn TRANSL in this fixture
+        assert rec["nld_transl_count"] == 0  # nor nld
         assert rec["word_elements"] == 3
         assert rec["morpheme_elements"] == 1
         assert rec["translation_elements"] == 5
         assert rec["audio_elements"] == 0
         assert rec["file_count"] == 1
         # s3 has W-level FORMs but no S-level FORM: contributes 0, warned.
+        assert any("no countable FORM" in w for w in rec["warnings"])
+
+    def test_a_variant_only_sentence_counts_zero_and_warns(self):
+        """Strict selection (maintainer ruling 2026-09-10) must still be
+        visible: the sentence contributes nothing *and* says so, rather
+        than silently counting a secondary reading."""
+        root = ET.fromstring(
+            '<TEXT xml:lang="ami" dialect="Haian">'
+            '<S id="s1"><FORM kindOf="original" ver="alt">ina kaen wawa</FORM></S>'
+            "</TEXT>"
+        )
+        rec = corpus_counts.analyze_root(root)
+        assert rec["word_count"] == 0
         assert any("no countable FORM" in w for w in rec["warnings"])
 
     def test_truku_record_and_audio_counts(self):
@@ -149,3 +199,85 @@ class TestCollectRecords:
         assert len(errors) == 1
         assert errors[0]["path"].endswith("bad.xml")
         assert sum(r["word_count"] for r in records) == 11  # 5 + 2 + 3 + 1
+
+
+class TestJapaneseTranslationCount:
+    """jpn TRANSL tiers count like eng and zho (2026-09-10).
+
+    Before this, Sato-Pazeh-Songs — the bank's first Japanese material, 83
+    sentences with 82 Japanese translations — reported 0 translated words,
+    because only ENG_CODES and ZHO_CODES were counted.
+    """
+
+    XML = (
+        '<TEXT id="T" citation="c" BibTeX_citation="b" copyright="CC BY-NC 4.0"'
+        ' xml:lang="pzh" dialect="unknown">'
+        '<S id="s1"><FORM kindOf="original">Aiyan nu aiyan</FORM>'
+        '<TRANSL xml:lang="jpn">\u8981\u8ad6\u53e4\u4ee3</TRANSL></S>'
+        '<S id="s2"><FORM kindOf="original">rubuh rubh a kauwas</FORM>'
+        '<TRANSL xml:lang="ja">\u5730\u4e0b</TRANSL></S>'
+        '<S id="s3"><FORM kindOf="original">mahah dudul luwai</FORM></S>'
+        '</TEXT>'
+    )
+
+    def _record(self, tmp_path):
+        path = tmp_path / "pzh.xml"
+        path.write_text(self.XML, encoding="utf-8")
+        return corpus_counts.analyze_file(path)
+
+    def test_jpn_and_ja_both_count_the_sentence_word_count(self, tmp_path):
+        rec = self._record(tmp_path)
+        # s1 has 3 words, s2 has 4; s3 carries no TRANSL and contributes none.
+        assert rec["jpn_transl_count"] == 7
+        assert rec["word_count"] == 10
+
+    def test_jpn_does_not_leak_into_the_other_columns(self, tmp_path):
+        rec = self._record(tmp_path)
+        assert rec["eng_transl_count"] == 0
+        assert rec["zho_transl_count"] == 0
+
+    def test_jpn_transl_count_is_a_declared_field(self):
+        assert "jpn_transl_count" in corpus_counts.COUNT_FIELDS
+
+
+class TestDutchTranslationCount:
+    """nld TRANSL tiers count like eng, zho and jpn (2026-09-10).
+
+    The same two-language assumption that hid Japanese had been hiding Dutch
+    for far longer: Siraya_Gospels and UtrechtManuscriptWordList carry 3,130
+    nld TRANSL elements between them and reported none of them.
+    """
+
+    XML = (
+        '<TEXT id="T" citation="c" BibTeX_citation="b" copyright="CC BY-NC 4.0"'
+        ' xml:lang="fos" dialect="Siraya">'
+        '<S id="s1"><FORM kindOf="original">ka tu-ni-ey</FORM>'
+        '<TRANSL xml:lang="nld">ende het geschiedde</TRANSL></S>'
+        '<S id="s2"><FORM kindOf="original">ta ka-ligich-an</FORM>'
+        '<TRANSL xml:lang="nl">de heiligheid</TRANSL>'
+        '<TRANSL xml:lang="eng">the holiness</TRANSL></S>'
+        '<S id="s3"><FORM kindOf="original">ta mattiukapaey</FORM></S>'
+        '</TEXT>'
+    )
+
+    def _record(self, tmp_path):
+        path = tmp_path / "fos.xml"
+        path.write_text(self.XML, encoding="utf-8")
+        return corpus_counts.analyze_file(path)
+
+    def test_nld_and_nl_both_count_the_sentence_word_count(self, tmp_path):
+        rec = self._record(tmp_path)
+        # s1, s2 and s3 have 2 words each; s3 carries no TRANSL, so it counts
+        # toward word_count but not toward the Dutch column.
+        assert rec["nld_transl_count"] == 4
+        assert rec["word_count"] == 6
+
+    def test_a_sentence_translated_twice_counts_under_both(self, tmp_path):
+        rec = self._record(tmp_path)
+        # s2 has both nl and eng: the columns are independent, not exclusive.
+        assert rec["eng_transl_count"] == 2
+        assert rec["zho_transl_count"] == 0
+        assert rec["jpn_transl_count"] == 0
+
+    def test_nld_transl_count_is_a_declared_field(self):
+        assert "nld_transl_count" in corpus_counts.COUNT_FIELDS

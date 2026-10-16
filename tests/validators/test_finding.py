@@ -146,9 +146,15 @@ def test_write_soft_csv_creates_parent_dir(tmp_path):
 
 
 def test_summarize_empty():
+    """One bucket per Severity, derived from the enum.
+
+    Written against Severity itself rather than a hard-coded triple so that
+    adding a severity (WAIVED, 2026-09-09) does not fail a test that has no
+    opinion about how many there are.
+    """
     from QC.validation._finding import summarize
 
-    assert summarize([]) == {Severity.HARD: {}, Severity.SOFT: {}, Severity.WARN: {}}
+    assert summarize([]) == {severity: {} for severity in Severity}
 
 
 def test_summarize_counts_by_rule_within_severity():

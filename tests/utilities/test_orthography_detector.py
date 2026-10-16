@@ -144,3 +144,55 @@ def test_accents_all_stripped_without_orthography_data(tmp_path):
     decomposed = unicodedata.normalize("NFD", text)
     assert "́" not in decomposed, f"expected all accents stripped; got {text!r}"
     assert "elre" in text, f"expected bare vowels; got {text!r}"
+
+
+def test_null_morpheme_marker_is_not_scored(tmp_path):
+    """'∅' is analytic notation, not a letter, so it must not reach scoring.
+
+    POL-012 makes U+2205 the canonical null-morpheme marker on every tier
+    including the original. It is a letter in none of the orthography tables,
+    so counting it as an unexpected token penalised every candidate equally
+    and depressed the score for any corpus that analyses nulls without
+    distinguishing between them.
+    """
+    xml = _write_xml(tmp_path, "Papinanum ∅-ci ina ci mamaan", lang="ami",
+                     dialect="Coastal")
+    text, _, _ = extract_text_from_xml(xml)
+    assert "∅" not in text
+    # The surrounding word survives; only the marker is removed.
+    assert "ci" in text and "Papinanum" in text
+    letters, _counts = extract_letters(text)
+    assert "∅" not in letters
+
+
+def test_null_marker_removal_raises_the_true_orthography_score(tmp_path):
+    """A null-bearing text must not score below its null-free twin."""
+    (tmp_path / "a").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "b").mkdir(parents=True, exist_ok=True)
+    with_nulls = _write_xml(tmp_path / "a", "Pacaliw ∅-ci panay ci akian",
+                            lang="ami", dialect="Coastal")
+    without = _write_xml(tmp_path / "b", "Pacaliw ci panay ci akian",
+                         lang="ami", dialect="Coastal")
+
+    data = load_orthography_data(_ORTHOGRAPHIES_DIR)
+    ortho = data["Amis"]["Coastal"]["Ortho94"]
+
+    def score(path):
+        text, _, _ = extract_text_from_xml(path, orthography_data=data)
+        letters, counts = extract_letters(text)
+        return calculate_orthography_score(letters, set(ortho), counts, text)[0]
+
+    assert score(with_nulls) == score(without)
+
+
+def test_punctuation_that_is_a_letter_somewhere_survives(tmp_path):
+    """'?' is a real letter in four tables and must not be stripped.
+
+    Ferrell/Paiwan, Montgomery/Amis, Tsuchida/Pazeh and Wakelin/Yami all list
+    '?' in their letter column, so treating it as punctuation would erase an
+    orthographic contrast. Guards the null-stripping change from being
+    widened into the punctuation class it deliberately excludes.
+    """
+    xml = _write_xml(tmp_path, "ma?ang si?i", lang="tao", dialect="unknown")
+    text, _, _ = extract_text_from_xml(xml)
+    assert "?" in text

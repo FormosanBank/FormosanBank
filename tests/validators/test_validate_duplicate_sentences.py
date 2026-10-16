@@ -79,10 +79,12 @@ def test_extract_sentences_returns_only_chosen_tier(tmp_path):
         ("S_1", [("original", "Halo"), ("standard", "halo")]),
         ("S_2", [("original", "Yes"), ("standard", "yes")]),
     ])
-    forms = vds.extract_sentences(str(f), kind_of="standard")
+    forms = [(sid, raw) for sid, raw, _m in
+             vds.extract_sentences(str(f), kind_of="standard")]
     assert forms == [("S_1", "halo"), ("S_2", "yes")]
 
-    orig = vds.extract_sentences(str(f), kind_of="original")
+    orig = [(sid, raw) for sid, raw, _m in
+            vds.extract_sentences(str(f), kind_of="original")]
     assert orig == [("S_1", "Halo"), ("S_2", "Yes")]
 
 
@@ -94,7 +96,7 @@ def test_extract_sentences_skips_empty(tmp_path):
         ("S_3", [("standard", "bye")]),
     ])
     forms = vds.extract_sentences(str(f), kind_of="standard")
-    assert [sid for sid, _ in forms] == ["S_1", "S_3"]
+    assert [sid for sid, _raw, _meaning in forms] == ["S_1", "S_3"]
 
 
 # ---------------------------------------------------------------------------
@@ -264,3 +266,145 @@ def test_dedup_detection_survives_missing_codeanddocs(tmp_path):
     xml_dir.mkdir()
     _write_xml(xml_dir / "a.xml", [("S_1", [("standard", "x y")])])
     assert not vds.dedup_in_pipeline(str(xml_dir))
+
+
+def _write_xml_with_transls(path, sentences):
+    """sentences: [(s_id, form_text, [(lang, transl_text), ...])]"""
+    body = []
+    for sid, form, transls in sentences:
+        ts = "".join(
+            f'<TRANSL xml:lang="{lang}">{text}</TRANSL>'
+            for lang, text in transls)
+        body.append(
+            f'<S id="{sid}"><FORM kindOf="standard">{form}</FORM>{ts}</S>')
+    path.write_text(
+        '<?xml version="1.0" ?>\n<TEXT id="t" xml:lang="ami">'
+        + "".join(body) + "</TEXT>", encoding="utf-8")
+
+
+def test_same_form_different_transl_is_soft_even_when_dedup_is_declared(tmp_path):
+    """A homophone is not a leftover duplicate (maintainer, 2026-09-11).
+
+    Blust's Thao dictionary has `a` the future marker and `a` the linking
+    particle: one spelling, two words, two glosses. A corpus that declares dedup
+    should still be told about the pair - it might be one entry whose glosses
+    belong together as ver="alt" - but it is not a failure of the dedup step, so
+    it stays SOFT. Only same words AND same meaning is HARD.
+    """
+    f = tmp_path / "a.xml"
+    _write_xml_with_transls(f, [
+        ("S_1", "a", [("en", "future marker")]),
+        ("S_2", "a", [("en", "linking particle")]),
+        ("S_3", "b", [("en", "same")]),
+        ("S_4", "b", [("en", "same")]),
+    ])
+    findings = vds.find_duplicates(str(tmp_path), kind_of="standard",
+                                   dedup_expected=True)
+    by_text = {f_.normalized_text: f_ for f_ in findings}
+    assert by_text["a"].severity == "SOFT"
+    assert by_text["b"].severity == "HARD"
+
+
+# ---------------------------------------------------------------------------
+# The gloss key (maintainer, 2026-09-11)
+# ---------------------------------------------------------------------------
+#
+# The FORM key is compared literally; the GLOSS key is a bag of words. Every
+# pair below is a real one from Blust's Thao dictionary, which prints each
+# entry twice - under its headword and again in the index - typeset
+# independently each time, so the two copies disagree about presentation
+# without disagreeing about meaning.
+
+def _gloss(text):
+    return vds.normalize_gloss_for_comparison(text)
+
+
+@pytest.mark.parametrize("a,b", [
+    # spacing around a slash
+    ("was/ were fed", "was/were fed"),
+    ("(don't) give it/ get it", "(don't) give it/get it"),
+    # sentence case
+    ("Did you take my money?", "did you take my money?"),
+    # one separator swapped for another
+    ("was put on, of clothing, was dressed",
+     "was put on, of clothing; was dressed"),
+    # the alternates listed the other way round
+    ("move slightly, stir", "stir, move slightly"),
+    ("I counted; I studied; I read", "I read; I studied; I counted"),
+    # p.469 prints `k-in-arkar [PFc] was chewed by someone' -> karkar:4`.
+    # 23 definitions end in an unpaired quote; it is the book's own typo and
+    # must not keep an entry from its index twin.
+    ("was chewed by someone", "was chewed by someone'"),
+])
+def test_presentation_differences_are_one_gloss(a, b):
+    assert _gloss(a) == _gloss(b)
+
+
+@pytest.mark.parametrize("a,b", [
+    # a different word is a different gloss, however small
+    ("leaf of a tree", "leaves of a tree"),
+    ("be put on, of clothes, shoes", "be put on, of clothing, shoes"),
+    ("place where one has walked", "the place where one has walked"),
+    # "or" is a word, not a separator: this pair stays a question
+    ("raised; tamed or domesticated", "raised; tamed, domesticated"),
+    # one side saying more is a different gloss
+    ("5,000", "5,000 (function of /da/- unknown)"),
+    ("walk around it", "walk around it, circumambulate it"),
+    ("be drunk (by someone)", "be drunk by someone, as water, be imbibed"),
+])
+def test_real_differences_survive(a, b):
+    assert _gloss(a) != _gloss(b)
+
+
+def test_an_apostrophe_or_hyphen_inside_a_word_is_part_of_it():
+    assert _gloss("(don't) be quiet") == ("be", "don't", "quiet")
+    assert _gloss("don't go") != _gloss("do go")
+    assert _gloss("five-colored bird") != _gloss("five colored bird")
+
+
+def test_a_gloss_of_pure_punctuation_keys_empty():
+    assert _gloss("") == ()
+    assert _gloss("  ,;  ") == ()
+
+
+def test_the_form_key_stays_literal():
+    """Only the gloss loosened. The FORM is language data."""
+    assert vds.normalize_for_comparison("Yaku") != \
+        vds.normalize_for_comparison("yaku")
+    assert vds.normalize_for_comparison("a  b") == "a b"
+
+
+def test_reordered_glosses_do_not_become_ver_alt_variants(tmp_path):
+    """A survivor must not collect its own gloss back as a ver="alt".
+
+    apply_removals merges any TRANSL the removed S had and the survivor
+    lacked (POL-025). It uses the same key, so an arrangement the survivor
+    already says is not a distinct translation of it.
+    """
+    from lxml import etree
+    sys.path.insert(0, str(REPO / "QC" / "cleaning"))
+    import remove_duplicate_sentences as rds
+
+    (tmp_path / "a.xml").write_text(textwrap.dedent("""\
+        <?xml version="1.0" encoding="utf-8"?>
+        <TEXT id="T1" xml:lang="ami" citation="x" BibTeX_citation="x" copyright="x">
+          <S id="s1">
+            <FORM kindOf="standard">ma-ka-kakri</FORM>
+            <TRANSL xml:lang="eng">move slightly, stir</TRANSL>
+          </S>
+          <S id="s2">
+            <FORM kindOf="standard">ma-ka-kakri</FORM>
+            <TRANSL xml:lang="eng">stir, move slightly</TRANSL>
+          </S>
+        </TEXT>
+        """), encoding="utf-8")
+
+    removals = rds.plan_removals(str(tmp_path), scope="file")
+    assert [r[1] for r in removals] == ["s2"], removals
+    rds.apply_removals(removals)
+
+    survivors = etree.parse(str(tmp_path / "a.xml")).getroot().findall("S")
+    assert len(survivors) == 1
+    transls = survivors[0].findall("TRANSL")
+    assert [t.text for t in transls] == ["move slightly, stir"]
+    assert transls[0].get("ver") is None

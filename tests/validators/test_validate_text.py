@@ -531,6 +531,48 @@ def test_V120_null_in_S_standard_FORM_negative(tmp_path):
     )
 
 
+def test_V120_reconstruction_label_does_not_trigger(tmp_path):
+    """V120: '*-∅' is a reconstruction label, not a null morpheme.
+
+    standardize.remove_null_units keeps asterisked labels on purpose
+    (2026-09-09), so flagging them would leave a finding that can never
+    clear. A real '∅' elsewhere in the same FORM must still fire.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">tgbukuy *-ʔ, *-h, ma *-∅ Proto-Austronesian</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v120" not in combined, (
+        f"V120 should not flag a reconstruction label; stdout={proc.stdout!r}"
+    )
+
+
+def test_V120_still_fires_beside_a_reconstruction_label(tmp_path):
+    """The exemption is scoped to the label, not to the whole sentence."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">ma *-∅ and a stray ∅ here</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v120", "null symbol", "null in s-level", "null in s standard")
+    ), (
+        f"expected V120 for the stray null; stdout={proc.stdout!r}"
+    )
+
+
 def test_V120_null_in_original_tier_does_not_trigger(tmp_path):
     """V120: null in original tier is allowed (rule targets standard only)."""
     xml = (
@@ -1763,6 +1805,75 @@ def test_V135_original_has_punct_standard_does_not_soft(tmp_path):
         _TEXT_OPEN
         + '<S id="S1">'
         + '<FORM kindOf="original">hello.</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v135", "trailing punct", "trailing-punct", "punct mismatch")
+    ), (
+        f"expected V135 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V135_glottal_question_mark_is_a_letter_not_punct(tmp_path):
+    """V135 must not read '?' as punctuation where it writes the glottal stop.
+
+    Amis has a profile (Orthographies/Montgomery/Amis.tsv) whose letter
+    column contains '?'. Montgomery's `roma?` 'home' ends in a letter, and
+    its standard tier writes that letter `'`, which is a letter of Ortho113.
+    Neither tier ends in punctuation, so the two agree.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">itini i roma?</FORM>'
+        + "<FORM kindOf=\"standard\">itini i loma'</FORM>"
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert "v135" not in combined_output(proc), (
+        f"V135 should not fire on '?' as a glottal letter; "
+        f"stdout={proc.stdout!r}"
+    )
+
+
+def test_V135_still_fires_on_real_mismatch_in_a_glottal_language(tmp_path):
+    """Exempting '?' must not disarm the rule for the language.
+
+    Same Amis file, a genuine period-vs-nothing mismatch: still flagged.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">itini i roma?.</FORM>'
+        + "<FORM kindOf=\"standard\">itini i loma'</FORM>"
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v135", "trailing punct", "trailing-punct", "punct mismatch")
+    ), (
+        f"expected V135 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V135_question_mark_is_punct_where_no_profile_makes_it_a_letter(tmp_path):
+    """The exemption is per-language, not global.
+
+    Thao (ssf) has no profile listing '?', so there a trailing '?' is a
+    question mark and a mismatch against a bare standard tier is a finding.
+    """
+    xml = (
+        _TEXT_OPEN.replace('xml:lang="ami"', 'xml:lang="ssf"')
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello?</FORM>'
         + '<FORM kindOf="standard">hello</FORM>'
         + '</S>'
         + _TEXT_CLOSE

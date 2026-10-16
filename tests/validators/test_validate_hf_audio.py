@@ -366,3 +366,104 @@ def test_hf_inventory_rejects_unapproved_dataset_and_model_audio():
     message = "\n".join(failures)
     assert "FormosanBank/Unexpected" in message
     assert "examples/clip.wav" in message
+
+
+# ---------------------------------------------------------------------------
+# Transient Hugging Face errors are retried, not surfaced as a failed PR
+# ---------------------------------------------------------------------------
+
+class _Transient(Exception):
+    """Stands in for huggingface_hub's HTTP error; carries a status code."""
+
+    def __init__(self, status: int) -> None:
+        super().__init__(f"{status} Client Error")
+        self.response = type("R", (), {"status_code": status})()
+
+
+class FlakyApi(FakeApi):
+    """Raises a transient error the first `fail_times` calls to each method."""
+
+    def __init__(self, *, status: int = 429, fail_times: int = 2, **kw) -> None:
+        super().__init__(**kw)
+        self.status = status
+        self.fail_times = fail_times
+        self.calls: dict[str, int] = {}
+
+    def _maybe_fail(self, name: str) -> None:
+        self.calls[name] = self.calls.get(name, 0) + 1
+        if self.calls[name] <= self.fail_times:
+            raise _Transient(self.status)
+
+    def list_datasets(self, author: str, full: bool):
+        self._maybe_fail("list_datasets")
+        return super().list_datasets(author=author, full=full)
+
+    def list_models(self, author: str, full: bool):
+        self._maybe_fail("list_models")
+        return super().list_models(author=author, full=full)
+
+    def list_spaces(self, author: str, full: bool):
+        self._maybe_fail("list_spaces")
+        return super().list_spaces(author=author, full=full)
+
+    def list_repo_files(self, repo_id: str, *, repo_type: str, token: bool):
+        self._maybe_fail(f"list_repo_files:{repo_id}")
+        return super().list_repo_files(repo_id, repo_type=repo_type, token=token)
+
+
+def _retry_contract():
+    manifest = {"datasets": [{"repo_id": "FormosanBank/Test"}]}
+    permissions = {
+        "hf_organization": "FormosanBank",
+        "public_non_audio_datasets": ["FormosanBank/formosan-mt"],
+        "sources": [
+            {
+                "status": "published_public",
+                "hf_repositories": [
+                    {"repo_id": "FormosanBank/Test"},
+                    {"repo_id": "FormosanBank/TestMirror"},
+                ],
+            }
+        ],
+    }
+    return manifest, permissions
+
+
+def test_a_429_is_retried_and_then_succeeds(monkeypatch):
+    """An anonymous run against 21 datasets gets rate limited; that is the Hub
+    throttling us, not a parity failure, so it must not fail the job."""
+    monkeypatch.setattr(parity.time, "sleep", lambda _s: None)
+    manifest, permissions = _retry_contract()
+    api = FlakyApi(status=429, fail_times=2)
+
+    assert parity.validate_hf_inventory(manifest, permissions, api=api) == []
+    assert api.calls["list_datasets"] == 3  # two refusals, then the answer
+
+
+def test_a_503_is_retried_too(monkeypatch):
+    monkeypatch.setattr(parity.time, "sleep", lambda _s: None)
+    manifest, permissions = _retry_contract()
+    api = FlakyApi(status=503, fail_times=1)
+
+    assert parity.validate_hf_inventory(manifest, permissions, api=api) == []
+
+
+def test_a_persistent_429_still_raises(monkeypatch):
+    """Retry is not suppression: if the Hub never answers, the run fails."""
+    monkeypatch.setattr(parity.time, "sleep", lambda _s: None)
+    manifest, permissions = _retry_contract()
+    api = FlakyApi(status=429, fail_times=99)
+
+    with pytest.raises(Exception):
+        parity.validate_hf_inventory(manifest, permissions, api=api)
+
+
+def test_a_404_is_not_retried(monkeypatch):
+    """A missing repo is a real answer, not a transient one."""
+    monkeypatch.setattr(parity.time, "sleep", lambda _s: None)
+    manifest, permissions = _retry_contract()
+    api = FlakyApi(status=404, fail_times=1)
+
+    with pytest.raises(Exception):
+        parity.validate_hf_inventory(manifest, permissions, api=api)
+    assert api.calls["list_datasets"] == 1  # tried once, not retried

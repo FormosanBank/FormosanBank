@@ -54,6 +54,9 @@ from pathlib import Path
 # inside the functions that need them so `--help` works before install.
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.xml_forms import find_base_form  # noqa: E402
 _DATA_QUALITY_EVAL_SIBLING = _REPO_ROOT.parent / "data_quality_eval"
 
 CHARS_RE = re.compile(r'[\(\)\_\,\?\.\!\-\;\:\"\“\%\‘\”\�\"\[\]\(\)\*=/@\+><\^]')
@@ -137,7 +140,7 @@ def collect_entries(xml_path: Path, audio_root: Path, lang: str,
     entries = []
     for s in root.findall("S"):
         audio = s.find("AUDIO")
-        form = s.find("FORM")
+        form = find_base_form(s)
         if audio is None or form is None:
             continue
         audio_file = audio.attrib.get("file")

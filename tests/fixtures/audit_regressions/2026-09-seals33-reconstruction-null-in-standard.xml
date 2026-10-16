@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Audit finding: PR #165 (SEALS33), 2026-09-09.
+     standardize.py's null-unit removal treated the '∅' of a Neogrammarian
+     reconstruction label ('*-∅') as a null morpheme and stripped it, leaving
+     a bare '*' in the standard tier that means nothing. The published S25 of
+     both SEALS33 files carried the defect. S1 below is that sentence's shape;
+     S2 keeps a real null unit so the fix cannot be a blanket "never strip". -->
+<TEXT id="audit_2026_09_seals33_reconstruction_null"
+      citation="Audit regression fixture"
+      BibTeX_citation="@misc{fixture}"
+      copyright="public domain"
+      xml:lang="trv" dialect="unknown">
+  <S id="1">
+    <FORM kindOf="original">Bnrahan smalu ka hengak laqi tgbukuy *-ʔ, *-h, ma *-∅ Proto-Austronesian</FORM>
+  </S>
+  <S id="2">
+    <FORM kindOf="original">∅-sitangah kero-∅ ∅ misa</FORM>
+  </S>
+</TEXT>

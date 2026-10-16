@@ -98,6 +98,7 @@ IDEMPOTENT_FIXTURES = [
     "c001_fullwidth_paren_in_form.xml",
     "c001_fullwidth_paren_in_W_and_M_FORM.xml",
     "c001_fullwidth_paren_in_chinese_transl.xml",
+    "c001_cjk_punctuation_in_japanese_transl.xml",
     "c001_fullwidth_paren_in_nonchinese_transl.xml",
     "c002_apostrophe_variants_in_form.xml",
     "c002_double_quote_variants_in_form.xml",
@@ -212,6 +213,29 @@ def test_C001_chinese_transl_fullwidth_paren_preserved(
 
     transls = _transl_texts(work, "S")
     assert transls == ["你好（世界）。"], f"TRANSL: {transls!r}"
+
+
+def test_C001_japanese_transl_cjk_punctuation_preserved(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """C002 Branch C: Japanese TRANSL keeps its CJK punctuation verbatim.
+
+    Japanese shares the punctuation repertoire Branch B protects for
+    Chinese, but only Chinese was exempt from swap_punctuation, so a jpn
+    TRANSL had 、 turned into ',' and （） into '()'. Corner brackets 「」
+    are Japanese quotation marks, so Branch B's collapse to U+FF02 must
+    not apply to them either.
+    """
+    work = copy_fixture(
+        fixtures_dir / "c001_cjk_punctuation_in_japanese_transl.xml", tmp_path
+    )
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+
+    transls = _transl_texts(work, "S")
+    assert transls == ["サボンカイシ（人名、長者ノ妹）。「起唱之語」"], (
+        f"TRANSL: {transls!r}"
+    )
 
 
 def test_C001_nonchinese_transl_fullwidth_paren_collapses(

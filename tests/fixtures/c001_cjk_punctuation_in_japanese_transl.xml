@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C001/C002 Branch C fixture: CJK punctuation survives in Japanese TRANSL.
+
+  Shape: one S, both FORM tiers (no full-width content), plus an S-level
+  TRANSL with xml:lang="jpn" carrying the ideographic comma U+3001, the
+  full-width parens U+FF08/U+FF09, the ideographic full stop U+3002, and
+  the corner-bracket quotes U+300C/U+300D.
+  Exercises: clean_trans must not route Japanese through swap_punctuation
+  (which would give ",", "(", ")", "." and '"'), and must not apply the
+  Chinese quote collapse either (which would give U+FF02 for 「」).
+  Drawn from Sato 1934 "大社庄の蕃歌", the bank's first jpn TRANSL tier.
+-->
+<TEXT id="TEST_C001_JA" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="pzh" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Aiyan nu aiyan.</FORM>
+    <FORM kindOf="standard">Aiyan nu aiyan.</FORM>
+    <TRANSL xml:lang="jpn">サボンカイシ（人名、長者ノ妹）。「起唱之語」</TRANSL>
+  </S>
+</TEXT>

@@ -7,39 +7,39 @@ omitted.
 
 ## Outputs
 
-- XML: `Final_XML/Siraya/latham_1862_sideia_sida.xml`
-- XML: `Final_XML/Babuza-Favorlang/latham_1862_favorlang.xml`
+- XML: `XML/Siraya/latham_1862_sideia_sida.xml`
+- XML: `XML/Babuza-Favorlang/latham_1862_favorlang.xml`
 - Row report: `CodeAndDocs/extraction_report.csv`
 - Exact source checks: `CodeAndDocs/source_checks.tsv`
 
 ## Counts
 
-- Lexical records emitted: 62
-- Source FORM variants emitted: 70
-- Source varieties represented: 4
+- Lexical records emitted: 45
+- Source FORM readings emitted: 47
+- Source varieties represented: 3
 
 ## Counts By Source Variety
 
 | Variety | Records |
 | --- | --- |
-| Favorlang | 24 |
+| Favorlang | 29 |
 | Klaproth Formosan Sideia | 8 |
-| Sida | 22 |
 | Vander Vlis Sideia | 8 |
 
 ## Counts By Language
 
 | Language | Records |
 | --- | --- |
-| Babuza-Favorlang | 24 |
-| Siraya | 38 |
+| Babuza-Favorlang | 29 |
+| Siraya | 16 |
 
 ## Representation Decisions
 
-- Every source cell is one lexical `S` record.
-- Comma-separated source variants are separate `FORM` elements;
-  punctuation is not embedded in a FORM value.
-- Historical spelling is preserved in original and standard FORM
-  because the source supplies no supported modern normalization.
+- Five published cells contain competing lexemes, split into separate `S` records
+  under revised POL-028; added records use the source ID plus `-opt`
+  (a third reading would take `-opt3`).
+- Two spelling pairs stay together as original FORM plus `ver="alt"`.
+- Historical spelling and all source readings are preserved.
+  No standard tier is generated under the corpus's August 12 ruling.
 - No W/M segmentation or PHON is inferred from this comparative table.
 - Sideia/Sida maps to Siraya (`fos`); Favorlang maps to Babuza-Favorlang (`bzg`).

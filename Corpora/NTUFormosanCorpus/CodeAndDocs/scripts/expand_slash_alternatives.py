@@ -8,12 +8,11 @@ Background
 ----------
 In elicitation the NTU source sometimes records several acceptable forms
 of a word separated by ``/`` -- in the word/morpheme FORM and in the
-matching (also slash-separated) gloss -- while the free translation lists
-no alternatives. The slash scope is the *morpheme*: in
+matching (also slash-separated) gloss. The slash scope is the *morpheme*: in
 
     W FORM : pua/mua/mu-lebe         (M1 = pua/mua/mu, M2 = lebe)
     gloss  : 放/去/去-下 / put/go/go-down
-    TRANSL : 貓咪被丟樓梯下             (no slash)
+    TRANSL : 貓咪被丟樓梯下/貓咪被丟下樓梯
 
 only M1 alternates (3 ways); M2 (``lebe``) is shared. The three readings
 are therefore ``pua-lebe`` / ``mua-lebe`` / ``mu-lebe`` -- NOT the naive
@@ -35,13 +34,15 @@ Scope (a sentence is expanded only if ALL hold)
    word-level and sentence-level FORM/PHON (so each alternative can be
    reconstructed by replacing the group in place, preserving the word's
    own ``-``/``=`` separators).
-5. The free (S-level) translation contains no ``/``.
+5. The free (S-level) translation contains no ``/``, unless its complete
+   reviewed mapping and source witness are recorded in
+   ``CodeAndDocs/source_repairs.xml``.
 
 Output
 ------
 The original element becomes alternative 1; alternatives 2..N are copies
 inserted immediately after it, with id suffix ``-alt2`` .. ``-altN``
-(descendant ids rewritten to match, as in dedupe_sentence_ids.py). In
+(descendant ids rewritten to match, as in uniquify_sentence_ids.py). In
 each reading every morpheme takes its alternative's piece (or the shared
 piece), and the word- and sentence-level FORM/PHON/gloss are rebuilt by
 replacing each morpheme group with that piece -- so no slash remains.
@@ -62,12 +63,17 @@ Usage
 import argparse
 import collections
 import copy
+import hashlib
+import json
 import os
 from pathlib import Path
 
 import lxml.etree as etree
 
+from source_repair_registry import load_morpheme_slash_alternatives
+
 _XLANG = "{http://www.w3.org/XML/1998/namespace}lang"
+CONFIG = load_morpheme_slash_alternatives()
 
 
 def _ftext(el, kind):
@@ -91,7 +97,7 @@ def _capture(el):
     return d
 
 
-def analyze(s):
+def analyze(s, config=None):
     """Return (w_index, captured_ms, N) if s is a clean slash-alternation, else None."""
     ws = s.findall("W")
     slash_ws = [(i, w) for i, w in enumerate(ws) if "/" in (_ftext(w, "original") or "")]
@@ -101,7 +107,7 @@ def analyze(s):
     ms = w.findall("M")
     if not ms:
         return None
-    if any("/" in (t.text or "") for t in s.findall("TRANSL")):
+    if any("/" in (t.text or "") for t in s.findall("TRANSL")) and config is None:
         return None
     captured_ms = [_capture(m) for m in ms]
     counts = set()
@@ -115,6 +121,11 @@ def analyze(s):
     N = counts.pop()
     if N < 2:
         return None
+    if config is not None and len(config["translations"]) != N:
+        raise AssertionError(
+            f"{s.get('id')}: {len(config['translations'])} reviewed "
+            f"translations for {N} FORM readings"
+        )
     if len((_ftext(w, "original") or "").split("/")) != N:
         return None  # word-level alternation mis-segmented at the morpheme tier
     wcap = _capture(w)
@@ -128,6 +139,44 @@ def analyze(s):
                 if wtext is None or g not in wtext or stext is None or g not in stext:
                     return None
     return w_index, captured_ms, N
+
+
+def _digest(value):
+    payload = json.dumps(
+        value, ensure_ascii=False, separators=(",", ":")
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def _verify_source(config):
+    source_root = Path(__file__).resolve().parents[1]
+    source = source_root / config["source_file"]
+    data = json.loads(source.read_text(encoding="utf-8"))["glosses"]
+    matches = [
+        record for record_id, record in data
+        if int(record_id) == config["source_record"]
+    ]
+    if len(matches) != 1:
+        raise AssertionError(
+            f"expected one source record {config['source_record']} in {source}, "
+            f"found {len(matches)}"
+        )
+    actual = _digest(matches[0])
+    if actual != config["source_digest"]:
+        raise AssertionError(
+            f"source record drifted in {source}: expected "
+            f"{config['source_digest']}, found {actual}"
+        )
+
+
+def _verify_translations(s, config):
+    actual = {_lang(t): t.text or "" for t in s.findall("TRANSL")}
+    expected = config["expected_translations"]
+    if actual != expected:
+        raise AssertionError(
+            f"{s.get('id')}: source translations drifted: expected "
+            f"{expected!r}, found {actual!r}"
+        )
 
 
 def _piece(text, i, N):
@@ -144,7 +193,7 @@ def _group_replace(text, captured_ms, key, i, N):
     return text
 
 
-def _apply(elem, w_index, captured_ms, N, i):
+def _apply(elem, w_index, captured_ms, N, i, config=None):
     """Rewrite elem (a sentence) to alternative i in place."""
     w = elem.findall("W")[w_index]
     # morpheme tier: each child takes its piece
@@ -173,6 +222,10 @@ def _apply(elem, w_index, captured_ms, N, i):
         if child.tag in ("FORM", "PHON") and child.text:
             key = (child.tag, child.get("kindOf"))
             child.text = _group_replace(child.text, captured_ms, key, i, N)
+    if config is not None:
+        translations = config["translations"][i]
+        for child in elem.findall("TRANSL"):
+            child.text = translations[_lang(child)]
 
 
 def _retarget_ids(elem, old, new):
@@ -193,8 +246,8 @@ def _slash_in_forms(elem):
     return False
 
 
-def process_file(path, dry_run, stats):
-    original = open(path, "rb").read()
+def process_file(path, relative, dry_run, stats, seen_configs):
+    original = Path(path).read_bytes()
     tree = etree.parse(path)
     if serialize(tree) != original:
         stats["file skipped: round-trip guard"] += 1
@@ -202,7 +255,15 @@ def process_file(path, dry_run, stats):
     root = tree.getroot()
     modified = False
     for s in list(root.iter("S")):
-        info = analyze(s)
+        key = (relative, s.get("id"))
+        config = CONFIG.get(key)
+        if config is not None:
+            seen_configs.add(key)
+            if not _slash_in_forms(s):
+                continue
+            _verify_source(config)
+            _verify_translations(s, config)
+        info = analyze(s, config)
         if not info:
             continue
         w_index, captured_ms, N = info
@@ -214,10 +275,10 @@ def process_file(path, dry_run, stats):
             clone = copy.deepcopy(s)
             for au in clone.findall(".//AUDIO"):
                 au.getparent().remove(au)
-            _apply(clone, w_index, captured_ms, N, i)
+            _apply(clone, w_index, captured_ms, N, i, config)
             _retarget_ids(clone, sid, f"{sid}-alt{i + 1}")
             clones.append(clone)
-        _apply(s, w_index, captured_ms, N, 0)  # original becomes alternative 1
+        _apply(s, w_index, captured_ms, N, 0, config)
         for off, clone in enumerate(clones, start=1):
             parent.insert(parent.index(s) + off, clone)
         if _slash_in_forms(s) or any(_slash_in_forms(c) for c in clones):
@@ -241,13 +302,21 @@ def main():
 
     stats = collections.Counter()
     files = 0
+    seen_configs = set()
     for dirpath, _, filenames in os.walk(args.xml_dir):
         for fn in sorted(filenames):
             if not fn.endswith(".xml"):
                 continue
-            if process_file(os.path.join(dirpath, fn), args.dry_run, stats):
+            path = os.path.join(dirpath, fn)
+            relative = os.path.relpath(path, args.xml_dir).replace(os.sep, "/")
+            if process_file(path, relative, args.dry_run, stats, seen_configs):
                 files += 1
                 print(f"  modified: {fn}")
+    missing = set(CONFIG) - seen_configs
+    if missing:
+        raise AssertionError(
+            f"configured morpheme slash alternatives not found: {sorted(missing)}"
+        )
     print(f"\nfiles {'that would be ' if args.dry_run else ''}modified: {files}")
     for k, v in stats.most_common():
         print(f"  {v:5d}  {k}")

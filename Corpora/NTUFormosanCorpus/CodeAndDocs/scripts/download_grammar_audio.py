@@ -74,7 +74,7 @@ def process_language(lang_xml_dir, lang_audio_dir, lang_name):
         print(f"  {lang_name}: no audio entries found in XML.")
         return
 
-    # Deduplicate (same file may be referenced multiple times).
+    # Keep one copy when the same file is referenced multiple times.
     tasks = list({dest: (url, dest) for url, dest in tasks}.values())
 
     print(f"  {lang_name}: {len(tasks)} audio files to download.")

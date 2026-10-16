@@ -26,6 +26,8 @@ plot.png
 .claude/worktrees/
 coverage.xml
 .coverage
+# pytest-cov parallel mode writes .coverage.<host>.pid<N>.<random> per worker
+.coverage.*
 .audio-download-cache/
 
 # Build artifacts. Compiled GUI tools (e.g. QC/utilities/OCR Audit) are

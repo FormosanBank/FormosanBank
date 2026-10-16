@@ -1,0 +1,787 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SOURCE_REPAIRS>
+  <!-- Human-reviewed source repair data. Loaded only by scripts/source_repair_registry.py. -->
+  <GRAMMAR_RECORD_REPAIRS>
+    <CASE sourceFile="grammar/Kanakanavu_Kanakanavu/05.json" recordId="4" sourceDigest="f001895a989605ffd02740327542932e2a805e6a1f34acc37987bfaf77d87ddd">
+      <NOTE>The scraped table placed the Chinese translation in the gloss-form column and split the rare-use annotation across FORM tokens. Restore the sentence fields while retaining both source annotations.</NOTE>
+      <REPLACEMENT_JSON>[4,{"ori":["mima","sua","pa’ici","sua","cau","(很少使用兩個sua)"],"gloss":[["","",""]],"free":["#c 人們在喝酒。","#n na 標示名詞組中的處所、目標或方向論元。如sua 一樣，na 適用於所有類","#n 《卡那卡那富語語法概論》 第五章　格位標記與代名詞系統"],"s_end":true,"iu_a_span":[null,null],"meta":{"type":"GrammarBook","topic":"第五章 格位標記與代名詞系統","language":"卡那卡那富語, Kanakanavu, Kanakanavu"},"audio_url":"https://formosanbank.linguistics.ntu.edu.tw/files/audio/Kanakanavu_5-2-1.wav"}]</REPLACEMENT_JSON>
+    </CASE>
+    <CASE sourceFile="grammar/Kanakanavu_Kanakanavu/ap1.json" recordId="78" sourceDigest="eff203495d937da465457ab2229c0557fe9a87f917d2d7c47121529cf7082196">
+      <NOTE>The scraped table split one infixed word across two rows and shifted each following gloss one row downward. Rejoin the word and restore the source gloss alignment.</NOTE>
+      <REPLACEMENT_JSON>[78,{"ori":["matisapsapʉ","naParumaci","mukʉrʉ","tarisi","pui’i","na","tanasa."],"gloss":[["mati&lt;sap&gt;sapʉ","用手&lt;重疊&gt;摸索","_"],["naParumaci","已故-人名","_"],["m-ukʉrʉ","主事焦點-握著","_"],["tarisi","繩子","_"],["pui’i","主事焦點.回","_"],["na","處格","_"],["tanasa.","家","_"]],"free":["#c naParumaci握著繩子摸索回家。","#n 《卡那卡那富語語法概論》 長篇語料一　射日"],"s_end":true,"iu_a_span":[null,null],"meta":{"type":"GrammarBook","topic":"長篇語料一 射日","language":"卡那卡那富語, Kanakanavu, Kanakanavu"},"audio_url":"https://formosanbank.linguistics.ntu.edu.tw/files/audio/Kanakanavu_A3-5-23.wav"}]</REPLACEMENT_JSON>
+    </CASE>
+  </GRAMMAR_RECORD_REPAIRS>
+  <KANAKANAVU_FREE_ALTERNATIVES>
+    <CASE sourceFile="1" sentenceId="18" fallbackWord="1">
+      <SOURCE xml:lang="zho">我/你/他（她）很快樂。</SOURCE>
+      <SOURCE xml:lang="eng">I am/You are/(S)He is happy.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我很快樂。</TRANSL>
+        <TRANSL xml:lang="eng">I am happy.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">你很快樂。</TRANSL>
+        <TRANSL xml:lang="eng">You are happy.</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">他（她）很快樂。</TRANSL>
+        <TRANSL xml:lang="eng">(S)He is happy.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="19" fallbackWord="1">
+      <SOURCE xml:lang="zho">我們（包含）/我們（排除）/你們/他們工作。</SOURCE>
+      <SOURCE xml:lang="eng">We(INCL)/We(EXCL)/You/They work.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我們（包含）工作。</TRANSL>
+        <TRANSL xml:lang="eng">We(INCL) work.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">我們（排除）工作。</TRANSL>
+        <TRANSL xml:lang="eng">We(EXCL) work.</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">你們工作。</TRANSL>
+        <TRANSL xml:lang="eng">You work.</TRANSL>
+      </READING>
+      <READING index="4">
+        <TRANSL xml:lang="zho">他們工作。</TRANSL>
+        <TRANSL xml:lang="eng">They work.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="20">
+      <SOURCE xml:lang="zho">Pani認識我/你/他（她）。</SOURCE>
+      <SOURCE xml:lang="eng">Pani knows me/you/him(/her).</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">Pani認識我。</TRANSL>
+        <TRANSL xml:lang="eng">Pani knows me.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">Pani認識你。</TRANSL>
+        <TRANSL xml:lang="eng">Pani knows you.</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">Pani認識他（她）。</TRANSL>
+        <TRANSL xml:lang="eng">Pani knows him(/her).</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="21">
+      <SOURCE xml:lang="zho">Mu'u喜歡我們（包含）/我們（排除）/你們/他們。</SOURCE>
+      <SOURCE xml:lang="eng">Mu'u likes us(INCL)/us(EXCL)/you/them.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">Mu'u喜歡我們（包含）。</TRANSL>
+        <TRANSL xml:lang="eng">Mu'u likes us(INCL).</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">Mu'u喜歡我們（排除）。</TRANSL>
+        <TRANSL xml:lang="eng">Mu'u likes us(EXCL).</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">Mu'u喜歡你們。</TRANSL>
+        <TRANSL xml:lang="eng">Mu'u likes you.</TRANSL>
+      </READING>
+      <READING index="4">
+        <TRANSL xml:lang="zho">Mu'u喜歡他們。</TRANSL>
+        <TRANSL xml:lang="eng">Mu'u likes them.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="22" fallbackWord="1">
+      <SOURCE xml:lang="zho">我/你/他（她）認識Pani。</SOURCE>
+      <SOURCE xml:lang="eng">I/You/(S)He know(s) Pani.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我認識Pani。</TRANSL>
+        <TRANSL xml:lang="eng">I know Pani.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">你認識Pani。</TRANSL>
+        <TRANSL xml:lang="eng">You know Pani.</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">他（她）認識Pani。</TRANSL>
+        <TRANSL xml:lang="eng">(S)He know(s) Pani.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="23" fallbackWord="1">
+      <SOURCE xml:lang="zho">我們（包含）/我們（排除）/你們/他們喜歡Mu'u。</SOURCE>
+      <SOURCE xml:lang="eng">We(INCL)/We(EXCL)/You/They like Mu'u.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我們（包含）喜歡Mu'u。</TRANSL>
+        <TRANSL xml:lang="eng">We(INCL) like Mu'u.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">我們（排除）喜歡Mu'u。</TRANSL>
+        <TRANSL xml:lang="eng">We(EXCL) like Mu'u.</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">你們喜歡Mu'u。</TRANSL>
+        <TRANSL xml:lang="eng">You like Mu'u.</TRANSL>
+      </READING>
+      <READING index="4">
+        <TRANSL xml:lang="zho">他們喜歡Mu'u。</TRANSL>
+        <TRANSL xml:lang="eng">They like Mu'u.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="24">
+      <SOURCE xml:lang="zho">我/你/他（她）吃了麻糬。</SOURCE>
+      <SOURCE xml:lang="eng">I/You/(S)He ate rice cakes.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我吃了麻糬。</TRANSL>
+        <TRANSL xml:lang="eng">I ate rice cakes.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">你吃了麻糬。</TRANSL>
+        <TRANSL xml:lang="eng">You ate rice cakes.</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">他（她）吃了麻糬。</TRANSL>
+        <TRANSL xml:lang="eng">(S)He ate rice cakes.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="25">
+      <SOURCE xml:lang="zho">我們（包含）/我們（排除）/你們/他們拿了水。</SOURCE>
+      <SOURCE xml:lang="eng">We(INCL)/We(EXCL)/You/They took the water.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我們（包含）拿了水。</TRANSL>
+        <TRANSL xml:lang="eng">We(INCL) took the water.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">我們（排除）拿了水。</TRANSL>
+        <TRANSL xml:lang="eng">We(EXCL) took the water.</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">你們拿了水。</TRANSL>
+        <TRANSL xml:lang="eng">You took the water.</TRANSL>
+      </READING>
+      <READING index="4">
+        <TRANSL xml:lang="zho">他們拿了水。</TRANSL>
+        <TRANSL xml:lang="eng">They took the water.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="26">
+      <SOURCE xml:lang="zho">這是我的/你的/他(她)的水。</SOURCE>
+      <SOURCE xml:lang="eng">This is my/your/his(/her) water.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">這是我的水。</TRANSL>
+        <TRANSL xml:lang="eng">This is my water.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">這是你的水。</TRANSL>
+        <TRANSL xml:lang="eng">This is your water.</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">這是他(她)的水。</TRANSL>
+        <TRANSL xml:lang="eng">This is his(/her) water.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="27">
+      <SOURCE xml:lang="zho">那是我們的（包含）/我們的（排除）/你們的/他們的狗。</SOURCE>
+      <SOURCE xml:lang="eng">That is our(INCL)/our(EXCL)/your/their dog.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">那是我們的（包含）狗。</TRANSL>
+        <TRANSL xml:lang="eng">That is our(INCL) dog.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">那是我們的（排除）狗。</TRANSL>
+        <TRANSL xml:lang="eng">That is our(EXCL) dog.</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">那是你們的狗。</TRANSL>
+        <TRANSL xml:lang="eng">That is your dog.</TRANSL>
+      </READING>
+      <READING index="4">
+        <TRANSL xml:lang="zho">那是他們的狗。</TRANSL>
+        <TRANSL xml:lang="eng">That is their dog.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="28">
+      <SOURCE xml:lang="zho">我/你/他（她）吃地瓜。</SOURCE>
+      <SOURCE xml:lang="eng">I/You/(S)He eat(s) sweet potatoes. (lit. As for me/you/him(/her), I/you/s(he) eat(s) potatoes.)</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我吃地瓜。</TRANSL>
+        <TRANSL xml:lang="eng">I eat sweet potatoes.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">你吃地瓜。</TRANSL>
+        <TRANSL xml:lang="eng">You eat sweet potatoes.</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">他（她）吃地瓜。</TRANSL>
+        <TRANSL xml:lang="eng">(S)He eat(s) sweet potatoes.</TRANSL>
+      </READING>
+      <TRANSL_NOTE xml:lang="eng">source analytic translation: (lit. As for me/you/him(/her), I/you/s(he) eat(s) potatoes.)</TRANSL_NOTE>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="29">
+      <SOURCE xml:lang="zho">'angai打了我們（包含）/我們（排除）/你們/他們。</SOURCE>
+      <SOURCE xml:lang="eng">'angai hit us(INCL)/us(EXCL)/you/them. (lit. As for us(EXCL)/us(EXCL)/you/them, 'angai hit us/us/you/them.)</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">'angai打了我們（包含）。</TRANSL>
+        <TRANSL xml:lang="eng">'angai hit us(INCL).</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">'angai打了我們（排除）。</TRANSL>
+        <TRANSL xml:lang="eng">'angai hit us(EXCL).</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">'angai打了你們。</TRANSL>
+        <TRANSL xml:lang="eng">'angai hit you.</TRANSL>
+      </READING>
+      <READING index="4">
+        <TRANSL xml:lang="zho">'angai打了他們。</TRANSL>
+        <TRANSL xml:lang="eng">'angai hit them.</TRANSL>
+      </READING>
+      <TRANSL_NOTE xml:lang="eng">source analytic translation: (lit. As for us(EXCL)/us(EXCL)/you/them, 'angai hit us/us/you/them.)</TRANSL_NOTE>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="36">
+      <SOURCE xml:lang="zho">我吃這個（這些）/那個（那些）麻糬。</SOURCE>
+      <SOURCE xml:lang="eng">I eat this(these)/that(those) rice cakes.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我吃這個（這些）麻糬。</TRANSL>
+        <TRANSL xml:lang="eng">I eat this(these) rice cakes.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">我吃那個（那些）麻糬。</TRANSL>
+        <TRANSL xml:lang="eng">I eat that(those) rice cakes.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="79">
+      <SOURCE xml:lang="zho">我喜歡這個厲害的人/這隻厲害的狗。</SOURCE>
+      <SOURCE xml:lang="eng">I like this capable person/dog.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我喜歡這個厲害的人。</TRANSL>
+        <TRANSL xml:lang="eng">I like this capable person.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">我喜歡這隻厲害的狗。</TRANSL>
+        <TRANSL xml:lang="eng">I like this capable dog.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="109">
+      <SOURCE xml:lang="zho">'angai昨天打了很多/很少人。</SOURCE>
+      <SOURCE xml:lang="eng">'angai hit many/few persons yesterday.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">'angai昨天打了很多人。</TRANSL>
+        <TRANSL xml:lang="eng">'angai hit many persons yesterday.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">'angai昨天打了很少人。</TRANSL>
+        <TRANSL xml:lang="eng">'angai hit few persons yesterday.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="110">
+      <SOURCE xml:lang="zho">Pani昨天吃了很多/很少麻糬。</SOURCE>
+      <SOURCE xml:lang="eng">Pani ate many/few rice cakes yesterday.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">Pani昨天吃了很多麻糬。</TRANSL>
+        <TRANSL xml:lang="eng">Pani ate many rice cakes yesterday.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">Pani昨天吃了很少麻糬。</TRANSL>
+        <TRANSL xml:lang="eng">Pani ate few rice cakes yesterday.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="111">
+      <SOURCE xml:lang="zho">我煮了很多/一點點飯。</SOURCE>
+      <SOURCE xml:lang="eng">I cooked much/little rice.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我煮了很多飯。</TRANSL>
+        <TRANSL xml:lang="eng">I cooked much rice.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">我煮了一點點飯。</TRANSL>
+        <TRANSL xml:lang="eng">I cooked little rice.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="112">
+      <SOURCE xml:lang="zho">我們在那很滿/很淺的水裡面玩。</SOURCE>
+      <SOURCE xml:lang="eng">We are in that full/shallow water playing.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我們在那很滿的水裡面玩。</TRANSL>
+        <TRANSL xml:lang="eng">We are in that full water playing.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">我們在那很淺的水裡面玩。</TRANSL>
+        <TRANSL xml:lang="eng">We are in that shallow water playing.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="113">
+      <SOURCE xml:lang="zho">我簍子的裡的玉米很滿/很少。</SOURCE>
+      <SOURCE xml:lang="eng">I have full/few corns in my basket.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我簍子的裡的玉米很滿。</TRANSL>
+        <TRANSL xml:lang="eng">I have full corns in my basket.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">我簍子的裡的玉米很少。</TRANSL>
+        <TRANSL xml:lang="eng">I have few corns in my basket.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="114">
+      <SOURCE xml:lang="zho">我看到很多/很少（人）。</SOURCE>
+      <SOURCE xml:lang="eng">I see many/few (persons).</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我看到很多（人）。</TRANSL>
+        <TRANSL xml:lang="eng">I see many (persons).</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">我看到很少（人）。</TRANSL>
+        <TRANSL xml:lang="eng">I see few (persons).</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="120">
+      <SOURCE xml:lang="zho">我煮的飯很多/（只有）一點點。</SOURCE>
+      <SOURCE xml:lang="eng">The rice I cooked was much/little.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我煮的飯很多。</TRANSL>
+        <TRANSL xml:lang="eng">The rice I cooked was much.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">我煮的飯（只有）一點點。</TRANSL>
+        <TRANSL xml:lang="eng">The rice I cooked was little.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="121">
+      <SOURCE xml:lang="zho">溪水已經很滿/很淺了。</SOURCE>
+      <SOURCE xml:lang="eng">The water of the stream is already full/shallow.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">溪水已經很滿了。</TRANSL>
+        <TRANSL xml:lang="eng">The water of the stream is already full.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">溪水已經很淺了。</TRANSL>
+        <TRANSL xml:lang="eng">The water of the stream is already shallow.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="122">
+      <SOURCE xml:lang="zho">簍子裡的玉米已經很多/很少了。</SOURCE>
+      <SOURCE xml:lang="eng">The corns in the basket are already many/few.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">簍子裡的玉米已經很多了。</TRANSL>
+        <TRANSL xml:lang="eng">The corns in the basket are already many.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">簍子裡的玉米已經很少了。</TRANSL>
+        <TRANSL xml:lang="eng">The corns in the basket are already few.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="198">
+      <SOURCE xml:lang="zho">我吃了很多/很少地瓜。</SOURCE>
+      <SOURCE xml:lang="eng">I ate many/few sweet potatoes.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我吃了很多地瓜。</TRANSL>
+        <TRANSL xml:lang="eng">I ate many sweet potatoes.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">我吃了很少地瓜。</TRANSL>
+        <TRANSL xml:lang="eng">I ate few sweet potatoes.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="1" sentenceId="366">
+      <SOURCE xml:lang="zho">我自己一個人住在這裡/那裡。</SOURCE>
+      <SOURCE xml:lang="eng">I live here/there alone.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">我自己一個人住在這裡。</TRANSL>
+        <TRANSL xml:lang="eng">I live here alone.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">我自己一個人住在那裡。</TRANSL>
+        <TRANSL xml:lang="eng">I live there alone.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="3" sentenceId="66">
+      <SOURCE xml:lang="zho">他/他們吃地瓜。</SOURCE>
+      <SOURCE xml:lang="eng">He/They eat(s) sweet potatoes.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">他吃地瓜。</TRANSL>
+        <TRANSL xml:lang="eng">He eat(s) sweet potatoes.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">他們吃地瓜。</TRANSL>
+        <TRANSL xml:lang="eng">They eat(s) sweet potatoes.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="3" sentenceId="67">
+      <SOURCE xml:lang="zho">他/他們吃地瓜。</SOURCE>
+      <SOURCE xml:lang="eng">He/They eat sweet potatoes.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">他吃地瓜。</TRANSL>
+        <TRANSL xml:lang="eng">He eat sweet potatoes.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">他們吃地瓜。</TRANSL>
+        <TRANSL xml:lang="eng">They eat sweet potatoes.</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="3" sentenceId="468">
+      <SOURCE xml:lang="zho">Pani你要分/給我們肉幾次?</SOURCE>
+      <SOURCE xml:lang="eng">Pani, how often will you allocate the meat to us?</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">Pani你要分我們肉幾次?</TRANSL>
+        <TRANSL xml:lang="eng">Pani, how often will you allocate the meat to us?</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">Pani你要給我們肉幾次?</TRANSL>
+        <TRANSL xml:lang="eng">Pani, how often will you allocate the meat to us?</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="3" sentenceId="477">
+      <SOURCE xml:lang="zho">你花幾天完成了你的工作?為什麼這麼快/慢?</SOURCE>
+      <SOURCE xml:lang="eng">How many days did you spent to finish your works? Why so fast/slow?</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">你花幾天完成了你的工作?為什麼這麼快?</TRANSL>
+        <TRANSL xml:lang="eng">How many days did you spent to finish your works? Why so fast?</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">你花幾天完成了你的工作?為什麼這麼慢?</TRANSL>
+        <TRANSL xml:lang="eng">How many days did you spent to finish your works? Why so slow?</TRANSL>
+      </READING>
+    </CASE>
+    <CASE sourceFile="3" sentenceId="480">
+      <SOURCE xml:lang="zho">你要幾次去山上田裡/工作?</SOURCE>
+      <SOURCE xml:lang="eng">How often will you go to the mountain/ your field to work?</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">你要幾次去山上田裡?</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">你要幾次工作?</TRANSL>
+      </READING>
+      <FORM_NOTE>source English translation was not assigned to either expanded FORM because its slash correspondence is not structurally recoverable: How often will you go to the mountain/ your field to work?</FORM_NOTE>
+    </CASE>
+    <CASE sourceFile="3" sentenceId="512">
+      <SOURCE xml:lang="zho">抓這個木頭/樹根。</SOURCE>
+      <SOURCE xml:lang="eng">Hold this tree / tree root.</SOURCE>
+      <READING index="1">
+        <TRANSL xml:lang="zho">抓這個木頭。</TRANSL>
+        <TRANSL xml:lang="eng">Hold this tree.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">抓這個樹根。</TRANSL>
+        <TRANSL xml:lang="eng">Hold this tree root.</TRANSL>
+      </READING>
+    </CASE>
+  </KANAKANAVU_FREE_ALTERNATIVES>
+  <MORPHEME_SLASH_ALTERNATIVES>
+    <CASE xmlFile="Sentences/Rukai/Rukai.xml" sentenceId="20200529-FW-Ken-1_S_6" sourceFile="sentence/Rukai_Vedai/20200529-FW-Ken-1.json" sourceRecord="6" sourceDigest="16e9711ae380aa849098a7098f254bbc5ab6431a309d60d4bd6dbfccbb79b4bf">
+      <SOURCE_TRANSL xml:lang="zho">貓咪被丟樓梯下/貓咪被丟下樓梯。</SOURCE_TRANSL>
+      <SOURCE_TRANSL xml:lang="eng">The cat is thrown to/to/down stairs.</SOURCE_TRANSL>
+      <READING index="1">
+        <TRANSL xml:lang="zho">貓咪被丟樓梯下。</TRANSL>
+        <TRANSL xml:lang="eng">The cat is thrown to stairs.</TRANSL>
+      </READING>
+      <READING index="2">
+        <TRANSL xml:lang="zho">貓咪被丟樓梯下。</TRANSL>
+        <TRANSL xml:lang="eng">The cat is thrown to stairs.</TRANSL>
+      </READING>
+      <READING index="3">
+        <TRANSL xml:lang="zho">貓咪被丟下樓梯。</TRANSL>
+        <TRANSL xml:lang="eng">The cat is thrown down stairs.</TRANSL>
+      </READING>
+    </CASE>
+  </MORPHEME_SLASH_ALTERNATIVES>
+  <MALFORMED_TRANSLATIONS>
+    <CASE xmlFile="Grammar/Kanakanavu/Kanakanavu.xml" sentenceId="06_S_50" sourceFile="grammar/Kanakanavu_Kanakanavu/06.json" sourceIndices="49" sourceDigest="72576e98afbf701a1aabdde093253db84452ddf60b0e088764da726f760eb0cb" xml:lang="zho">
+      <EXPECTED>她的小孩正在哭.(說話者看到/知道,也可能只聽到小孩的哭聲而沒</EXPECTED>
+      <REPLACEMENT>她的小孩正在哭.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Grammar/Kanakanavu/Kanakanavu.xml" sentenceId="04_S_24" sourceFile="grammar/Kanakanavu_Kanakanavu/04.json" sourceIndices="23" sourceDigest="663f847ae5fb86a9040538ec6b6807559a76904c749b1233a3061a6bd88ad5f8" xml:lang="zho">
+      <EXPECTED>你所揹的東西很重.(ma'unu「揹負」這個字指用背簍所揹,支撐點在</EXPECTED>
+      <REPLACEMENT>你所揹的東西很重.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Grammar/Kanakanavu/Kanakanavu.xml" sentenceId="04_S_25" sourceFile="grammar/Kanakanavu_Kanakanavu/04.json" sourceIndices="24" sourceDigest="a8b9c3a9f507cf4831946062ddc2cd4bd0addeeee78f5c4caf56189922d1e54c" xml:lang="zho">
+      <EXPECTED>去舂搗我所蒸煮的那個糯米.(蒸煮年糕cunuku 才會使用蒸籠,把蒸籠</EXPECTED>
+      <REPLACEMENT>去舂搗我所蒸煮的那個糯米.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Grammar/Kanakanavu/Kanakanavu.xml" sentenceId="13_S_34" sourceFile="grammar/Kanakanavu_Kanakanavu/13.json" sourceIndices="33" sourceDigest="d829e64200380ff227fa2578705f773d9eec3a0a3098f85316d7aa9f900a7075" xml:lang="zho">
+      <EXPECTED>到了那天,他跟媽媽說:「我要去(射日)了.」(節錄自附錄三:射日</EXPECTED>
+      <REPLACEMENT>到了那天,他跟媽媽說:「我要去(射日)了.」</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Grammar/Kanakanavu/Kanakanavu.xml" sentenceId="05_S_8" sourceFile="grammar/Kanakanavu_Kanakanavu/05.json" sourceIndices="7" sourceDigest="c4f29c4406c21b70ef04b7bcbd38793eca1b22e888d96d93cf78a8ba1c59bdc3" xml:lang="zho">
+      <EXPECTED>但是族人因已獲得通報,提早移至不危險的地方.(節錄自附錄三:楠梓</EXPECTED>
+      <REPLACEMENT>但是族人因已獲得通報,提早移至不危險的地方.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Grammar/Kanakanavu/Kanakanavu.xml" sentenceId="14_S_14" sourceFile="grammar/Kanakanavu_Kanakanavu/14.json" sourceIndices="13" sourceDigest="c5b826689ab92bbc6beaf044d19fb6d31d22e2c9e627f4684195b8dc7765ed33" xml:lang="zho">
+      <EXPECTED>他拿起來掛在他的腰帶,之後就回家了.(節錄自附錄三:射日(17)-</EXPECTED>
+      <REPLACEMENT>他拿起來掛在他的腰帶,之後就回家了.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Grammar/Kanakanavu/Kanakanavu.xml" sentenceId="14_S_29" sourceFile="grammar/Kanakanavu_Kanakanavu/14.json" sourceIndices="28" sourceDigest="a797b31997592f559d73a64559240c35e1fae63f4ea3065790a3a83840e28406" xml:lang="zho">
+      <EXPECTED>楠梓仙溪的水所經之處較為平坦,所以這裡的水流較緩慢.(節錄自附</EXPECTED>
+      <REPLACEMENT>楠梓仙溪的水所經之處較為平坦,所以這裡的水流較緩慢.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Grammar/Kanakanavu/Kanakanavu.xml" sentenceId="14_S_32" sourceFile="grammar/Kanakanavu_Kanakanavu/14.json" sourceIndices="31" sourceDigest="98077c3cc4ee21c0f928003bc6b84069382555ec01318e19c3c057b54e864f41" xml:lang="zho">
+      <EXPECTED>但是族人因已獲得通報,提早移至不危險的地方.(節錄自附錄三:楠</EXPECTED>
+      <REPLACEMENT>但是族人因已獲得通報,提早移至不危險的地方.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Grammar/Kanakanavu/Kanakanavu.xml" sentenceId="15_S_16" sourceFile="grammar/Kanakanavu_Kanakanavu/15.json" sourceIndices="15" sourceDigest="06e42278ab1b4247f375331d036e2fdf41cba3d8f4cee786792813eb35b4a99d" xml:lang="zho">
+      <EXPECTED>而且會常因不同的講述人而有不同的說法.(節錄自附錄三:楠梓仙溪的</EXPECTED>
+      <REPLACEMENT>而且會常因不同的講述人而有不同的說法.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Grammar/Seediq/Seediq.xml" sentenceId="A2_S_558" sourceFile="grammar/Seediq_Tgdaya/A2.json" sourceIndices="557" sourceDigest="d4b69fb546c6c95e0bfdbce2873ca63311dc5859754b891a387bef5e6359b405" xml:lang="zho">
+      <EXPECTED>洗(物品</EXPECTED>
+      <REPLACEMENT>洗</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Sentences/Bunun/Bunun.xml" sentenceId="63_S_916" sourceFile="sentence/Bunun_Isbukun/63.json" sourceIndices="915" sourceDigest="7ccea43c9b0539de080668887d539e772c178daa9f18cb24f712bd35d99fc8e8" xml:lang="zho">
+      <EXPECTED>Subali向我求饒恕 (求我原諒他) &amp;lt; 敬禮請原諒), 並且給我錢了。</EXPECTED>
+      <REPLACEMENT>Subali向我求饒恕 (求我原諒他), 並且給我錢了。</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Sentences/Bunun/Bunun.xml" sentenceId="59_S_12" sourceFile="sentence/Bunun_Isbukun/59.json" sourceIndices="11" sourceDigest="b68e63bab5daa2d0c8fc5d2c58421d8105067136d6f55bac2d3a389fd81b7f9f" xml:lang="zho">
+      <EXPECTED>Subali向我求饒恕 (求我原諒他) &lt; 敬禮請原諒), 並且給我錢。</EXPECTED>
+      <REPLACEMENT>Subali向我求饒恕 (求我原諒他), 並且給我錢。</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Sentences/Rukai/Rukai.xml" sentenceId="20200529-FW-Lixing-1_S_23" sourceFile="sentence/Rukai_Vedai/20200529-FW-Lixing-1.json" sourceIndices="19" sourceDigest="f7a7e33354c37565ca54ca68fa31fc8ec45aa189643d240d734f175fb84de9b5" xml:lang="en">
+      <EXPECTED>All the boys brought three (different) baskets (and each of them must brought three</EXPECTED>
+      <REPLACEMENT>All the boys brought three (different) baskets</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Sentences/Rukai/Rukai.xml" sentenceId="20200530-FW-Yongfu-1_S_18" sourceFile="sentence/Rukai_Vedai/20200530-FW-Yongfu-1.json" sourceIndices="16" sourceDigest="5b78492a7a427fa881c701ecbd7d26abb08c5db887914a4e74ccc57814357a8c" xml:lang="en">
+      <EXPECTED>(Seeing Muni makes me happy). (lit: Muni (deixis), (I) feel happy.</EXPECTED>
+      <REPLACEMENT>(Seeing Muni makes me happy).</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml" sentenceId="KavCon-relatives_buya_ngengi_S_225" sourceFile="story/Kavalan_Xinshe/KavCon-relatives_buya_ngengi.json" sourceIndices="740" sourceDigest="fc54da9dae70f83684b08c91b3463a603279b8c2500e090863f56e53c12ec7a5" xml:lang="en">
+      <EXPECTED>We did not speak ill (of somebody.</EXPECTED>
+      <REPLACEMENT>We did not speak ill.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Stories/Rukai/Rukai_RukaiNr-marriage ceremony_taugadha.xml" sentenceId="RukaiNr-marriage ceremony_taugadha_S_5" sourceFile="story/Rukai_Vedai/RukaiNr-marriage ceremony_taugadha.json" sourceIndices="12,13,14,15" sourceDigest="f659603455378af97b02dcbb6f512e3ba525775e3414fc18c66d27c3b2a6e405" xml:lang="en" omitTranslation="true">
+      <EXPECTED>If (two families need a ceremony, (they) should give gifts and (they) dine together; (their) heart will be close</EXPECTED>
+    </CASE>
+    <CASE xmlFile="Stories/Rukai/Rukai_RukaiNr-princess balenge_balenge.xml" sentenceId="RukaiNr-princess balenge_balenge_S_60" sourceFile="story/Rukai_Vedai/RukaiNr-princess balenge_balenge.json" sourceIndices="150,151" sourceDigest="f8b72c35d2ec7e08f1915702c2c842581a0a0fc744ddb8e456fb8a8d76658c84" xml:lang="zho">
+      <EXPECTED>(他要離開(的時候),對Balenge說.</EXPECTED>
+      <REPLACEMENT>他要離開(的時候),對Balenge說.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Stories/Tsou/Tsou_None-1.xml" sentenceId="None-1_S_106" sourceFile="story/Tsou_Tsou/None-1.json" sourceIndices="244" sourceDigest="eb78e6b1557e7f7435bf565f2f563cca6bb03a9bf3f6d05bfec469681769b08e" xml:lang="zho">
+      <EXPECTED>(kaneko (yoneko 的女兒) 是老(孔)的太太.</EXPECTED>
+      <REPLACEMENT>kaneko (yoneko 的女兒) 是老(孔)的太太.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Stories/Tsou/Tsou_None-1.xml" sentenceId="None-1_S_106" sourceFile="story/Tsou_Tsou/None-1.json" sourceIndices="244" sourceDigest="eb78e6b1557e7f7435bf565f2f563cca6bb03a9bf3f6d05bfec469681769b08e" xml:lang="en">
+      <EXPECTED>(Kanekoi, yoneko's daughter, is Lao-Khong's wife.</EXPECTED>
+      <REPLACEMENT>Kanekoi, yoneko's daughter, is Lao-Khong's wife.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Stories/Tsou/Tsou_TsouConv-typhoon.xml" sentenceId="TsouConv-typhoon_S_27" sourceFile="story/Tsou_Tsou/TsouConv-typhoon.json" sourceIndices="54" sourceDigest="83d754c57843c71cd5b004f25acb5bef47a30265f1551ac3624eac3d68f18cd3" xml:lang="en">
+      <EXPECTED>(The money/The Japanese government had to somewhat pacify (you) at least.</EXPECTED>
+      <REPLACEMENT>The money/The Japanese government had to somewhat pacify (you) at least.</REPLACEMENT>
+    </CASE>
+    <CASE xmlFile="Stories/Tsou/Tsou_TsouNr-frog-story-tu.xml" sentenceId="TsouNr-frog-story-tu_S_15" sourceFile="story/Tsou_Tsou/TsouNr-frog-story-tu.json" sourceIndices="34,35,36,37,38,39,40" sourceDigest="b68647685f70941b6f6bb7be7d8b30130dfd229dce80bb242a1c9559c29bc737" xml:lang="en">
+      <EXPECTED>What the dog look up toward was a beehive. The dog shook the tree (with the beehive.</EXPECTED>
+      <REPLACEMENT>What the dog look up toward was a beehive. The dog shook the tree.</REPLACEMENT>
+    </CASE>
+  </MALFORMED_TRANSLATIONS>
+  <COMPACT_TRANSLATION_ALTERNATIVES>
+    <CASE xmlFile="Sentences/Bunun/Bunun.xml" sentenceId="36_S_16" xml:lang="zho">你是什麼原因跌倒/你為什麼跌倒？</CASE>
+    <CASE xmlFile="Sentences/Bunun/Bunun.xml" sentenceId="63_S_567" xml:lang="zho">你是什麼原因跌倒/你為什麼跌倒？</CASE>
+    <CASE xmlFile="Stories/Amis/Amis_Amis_Nr-frog_zuomei.xml" sentenceId="Amis_Nr-frog_zuomei_S_43" xml:lang="zho">我說的結束了/我講完了.</CASE>
+  </COMPACT_TRANSLATION_ALTERNATIVES>
+  <INDEXED_OPTIONAL_WORDS>
+    <CASE xmlFile="Grammar/Sakizaya/Sakizaya.xml" sentenceId="04_S_11">
+      <EXPECTED_FORM>amana (i) pukan tu epah!</EXPECTED_FORM>
+      <OPTIONAL wordIndex="1" expectedWordForm="i" surfaceToken="i"/>
+    </CASE>
+    <CASE xmlFile="Grammar/Sakizaya/Sakizaya.xml" sentenceId="08_S_15">
+      <EXPECTED_FORM>amana (i) pukan tu epah!</EXPECTED_FORM>
+      <OPTIONAL wordIndex="1" expectedWordForm="i" surfaceToken="i"/>
+    </CASE>
+    <CASE xmlFile="Grammar/Seediq/Seediq.xml" sentenceId="13_S_24">
+      <EXPECTED_FORM>"Huwa mesa mosa Paran," ga (mesa) smiling Dakis ka seediq ga.</EXPECTED_FORM>
+      <OPTIONAL wordIndex="5" expectedWordForm="mesa" surfaceToken="mesa"/>
+    </CASE>
+    <CASE xmlFile="Grammar/Seediq/Seediq.xml" sentenceId="13_S_25">
+      <EXPECTED_FORM>Cmiyuk kari bubu na ka Dakis (mesa), "Mpkbeyax ku naq meepah bobo na!" mesa.</EXPECTED_FORM>
+      <OPTIONAL wordIndex="5" expectedWordForm="mesa," surfaceToken="mesa"/>
+    </CASE>
+    <CASE xmlFile="Grammar/Seediq/Seediq.xml" sentenceId="13_S_26">
+      <EXPECTED_FORM>Hwaun su mneeru heya (mesa) mmaha ta Tongan ka kusun.</EXPECTED_FORM>
+      <OPTIONAL wordIndex="3" expectedWordForm="mesa" surfaceToken="mesa"/>
+    </CASE>
+    <CASE xmlFile="Grammar/Seediq/Seediq.xml" sentenceId="13_S_27">
+      <EXPECTED_FORM>Ga thwayan rmengo (mesa), "Iya mhemuc beebu seediq!" Dakis ga ka Takun.</EXPECTED_FORM>
+      <OPTIONAL wordIndex="3" expectedWordForm="mesa," surfaceToken="mesa"/>
+    </CASE>
+    <CASE xmlFile="Sentences/Rukai/Rukai.xml" sentenceId="20200528-FW-Jimmy_S_7">
+      <EXPECTED_FORM>taruadrusanay ki sinsi (si) la tupalra ka Tanebake (la) kipaelre ki kalalrisiane.</EXPECTED_FORM>
+      <OPTIONAL wordIndex="3" expectedWordForm="si" surfaceToken="si"/>
+      <OPTIONAL wordIndex="8" expectedWordForm="la" surfaceToken="la"/>
+    </CASE>
+    <CASE xmlFile="Sentences/Rukai/Rukai.xml" sentenceId="20200528-FW-Jimmy_S_11">
+      <EXPECTED_FORM>watinutinu (si) luasane lay tubava ka Muni.</EXPECTED_FORM>
+      <OPTIONAL wordIndex="1" expectedWordForm="si" surfaceToken="si"/>
+    </CASE>
+  </INDEXED_OPTIONAL_WORDS>
+  <SPECIAL_FORM_CASES>
+    <CASE kind="rukaiOptionalPrefix" xmlFile="Sentences/Rukai/Rukai.xml" sentenceId="20200530-FW-Jess_S_10">
+      <EXPECTED_FORM>kaisu lrimakadreele kay (taka)kiucaneli.</EXPECTED_FORM>
+    </CASE>
+    <CASE kind="rukaiUnalignedSlash" xmlFile="Sentences/Rukai/Rukai.xml" sentenceId="20200530-FW-Ryan_S_42">
+      <EXPECTED_FORM>ka alisu arakai ku sapakalrelremane la samwaesai/samusai.</EXPECTED_FORM>
+    </CASE>
+    <CASE kind="rukaiPositionalAlternative" xmlFile="Sentences/Rukai/Rukai.xml" sentenceId="20200422-CL-5_S_7">
+      <EXPECTED_FORM>walrumay makanaelre kay lasinsi (makanaelre) ki lasitu.</EXPECTED_FORM>
+    </CASE>
+  </SPECIAL_FORM_CASES>
+  <STORY_GLOSS_REPAIRS>
+    <CASE sourceFile="bnNr-pear_Talum.json" recordId="7" sourceDigest="90f613c85b1f75d9f73b0735c0e49ac662336b26afc6ca3481b18071cfb05561">
+      <NOTE>source phone-ringing event omitted from linguistic W tiers</NOTE>
+    </CASE>
+    <CASE sourceFile="bnNr-pear_Talum.json" recordId="8" sourceDigest="b8aeda4e6f61e2cec00e82f982fccc5f95fcb514eda80df3a55f56d77fd69bc4">
+      <NOTE>source phone-ringing event omitted from linguistic W tiers</NOTE>
+    </CASE>
+    <CASE sourceFile="sdqCon-dialog1_ciwas_tiwas 2021s.json" recordId="141" sourceDigest="3744e9bec0d8d9232d09642fd6511aaec146aca49409b9de018474bdcd3f1ed5">
+      <NOTE>source speaker and throat-clearing event rows omitted from linguistic W tiers</NOTE>
+    </CASE>
+    <CASE sourceFile="sdqNr-pear_lubi 2020s.json" recordId="11" sourceDigest="d50d1a798ab8e59a9ae26decbeecf8d426e3012cbf2daf213177b3ff76d0c61e">
+      <NOTE>source breath-event row omitted from linguistic W tiers</NOTE>
+      <GLOSS form="m--" eng="FS" zho="FS"/>
+    </CASE>
+    <CASE sourceFile="SaiNr-life_waon a boong.json" recordId="9" sourceDigest="62c55a575de580183f4c99152e131e8e7ccff63e667c5e1c064c30d53c7de816">
+      <NOTE>source speaker and throat-clearing event rows omitted from linguistic W tiers</NOTE>
+      <GLOSS form="tangtang" eng="_" zho="_"/>
+      <GLOSS form="ay" eng="&lt;AF&gt;dig" zho="&lt;主焦&gt;挖"/>
+    </CASE>
+    <CASE sourceFile="SaiNr-life_waon a boong.json" recordId="11" sourceDigest="8a942d279b9023c56f7bd96cf66c2460b98c3bafc34b9911d1182dc99a3152c6">
+      <NOTE>source speaker and throat-clearing event rows omitted from linguistic W tiers</NOTE>
+    </CASE>
+    <CASE sourceFile="KavNr-map_buya.json" recordId="25" sourceDigest="6d25d767a47830e5e7a5a55b3ad6574b7085a3ba48c8ef0dfb884dd5a4ee85dd">
+      <NOTE>live source gloss-column shift repaired from the archived official source row; annotation span markers omitted</NOTE>
+      <GLOSS form="pun=ti" eng="finish=PFV" zho="完成=完成"/>
+      <GLOSS form="ta-utay-an" eng="LOC-PN-LOC" zho="處所-人名-處所"/>
+      <GLOSS form="man" eng="eat" zho="吃"/>
+      <GLOSS form="za" eng="ZA" zho="ZA"/>
+      <GLOSS form="‘nay==(0.6)" eng="that" zho="那"/>
+    </CASE>
+    <CASE sourceFile="KavNr-map_buya.json" recordId="31" sourceDigest="7310ceecd10243b113261eef8ecf4203f13f7bc3ceb6cb65ff7427a76b1a1893">
+      <NOTE>live source gloss-column shift repaired from the archived official source row; annotation span markers omitted</NOTE>
+      <GLOSS form="tita-an-na" eng="see-LF-3SG.GEN" zho="看-處焦-3SG.屬格"/>
+      <GLOSS form="pasa" eng="toward" zho="往"/>
+      <GLOSS form="kawan-an" eng="right-LOC" zho="右-處所"/>
+      <GLOSS form="yau" eng="EXIST" zho="存在"/>
+      <GLOSS form="usiq" eng="one" zho="一"/>
+      <GLOSS form="kitut" eng="small" zho="小"/>
+      <GLOSS form="ay" eng="REL" zho="關係詞"/>
+      <GLOSS form="lazan" eng="road" zho="路"/>
+    </CASE>
+    <CASE sourceFile="KavNr-map_buya.json" recordId="32" sourceDigest="68844c6657152c722c6e82a7d39f66946932a30db6067197d36f6792f20a1c75">
+      <NOTE>live source gloss-column shift repaired from the archived official source row; annotation span marker omitted</NOTE>
+      <GLOSS form="nani" eng="DM" zho="DM"/>
+      <GLOSS form="pasazui=ti" eng="toward.there=PFV" zho="過去=完成"/>
+      <GLOSS form="s&lt;en&gt;aqay" eng="&lt;EN&gt;walk" zho="&lt;EN&gt;走"/>
+      <GLOSS form="ni-saqay-an-na,_" eng="NI-walk-AN-3SG.GEN" zho="NI-走-AN-3SG.屬格"/>
+    </CASE>
+    <CASE sourceFile="KavNr-pear_buya.json" recordId="19" sourceDigest="fc7c6ff541d9a898f0f67c2beb91c1c77d1878ec0ba538c3e958f8e04c931602">
+      <NOTE>live source gloss-column shift repaired from the archived official source row; annotation span markers omitted</NOTE>
+      <GLOSS form="maseq" eng="AF.arrive" zho="主焦.到達"/>
+      <GLOSS form="tita-an-na" eng="see-LF-3SG.GEN" zho="看-處焦-3SG.屬格"/>
+    </CASE>
+    <CASE sourceFile="KavNr-pear_buya.json" recordId="38" sourceDigest="de8b9fba9e77b8c4ebfc2b94058e914ea0c64567eeae26ba447fd9706836b23f">
+      <NOTE>live source gloss-column shift repaired from the archived official source row; annotation span markers omitted</NOTE>
+      <GLOSS form="suRaw" eng="fall" zho="跌倒"/>
+      <GLOSS form="nani" eng="DM" zho="DM"/>
+    </CASE>
+    <CASE sourceFile="SaiNr-frog1_bownay a tahes.json" recordId="117" sourceDigest="68bee2bdc139650cd3117b73b3c2ab4257bdb159304ccedcbacaf9b7674a4104">
+      <NOTE>live source gloss-column shift repaired from the archived official source row; annotation span marker omitted</NOTE>
+      <GLOSS form="osa'" eng="say" zho="&lt;主焦&gt;說"/>
+      <GLOSS form="ta'ilaila,\" eng="let's.go" zho="走吧"/>
+    </CASE>
+    <CASE sourceFile="TsouNr-frog-story-shi.json" recordId="10" sourceDigest="a4adde583ec0312f6efa0e8145ccc7c37ca65815ce70cebbd418f180c56e9f0f">
+      <NOTE>live source gloss-column shift repaired from the archived official source row; annotation span markers omitted</NOTE>
+      <GLOSS form="aʉt'ʉcʉ" eng="raise.AF" zho="養.主焦"/>
+      <GLOSS form="to" eng="OBL" zho="斜格"/>
+      <GLOSS form="mo" eng="AUX.AF" zho="助動詞.主焦"/>
+      <GLOSS form="conci" eng="one" zho="一"/>
+      <GLOSS form="fok'unge" eng="frog" zho="青蛙"/>
+      <GLOSS form="yon" eng="be.at.AF" zho="在.主焦"/>
+      <GLOSS form="ta'e" eng="here" zho="這裡"/>
+      <GLOSS form="meihua" eng="PN" zho="PN"/>
+      <GLOSS form="te-'o" eng="AUX.FUT-1SG.GEN" zho="助動.未來-第一人稱單數.屬格"/>
+      <GLOSS form="engha,\" eng="say.PF" zho="說.受焦"/>
+    </CASE>
+    <CASE sourceFile="bnNr-frog_Ciang.json" recordId="66" sourceDigest="5cf6e20cdafd07fcc2e611cd5e2da7f5151fa6b64257b57ad0f6017cbdc7bb56">
+      <NOTE>source cough event omitted from linguistic W tiers</NOTE>
+    </CASE>
+    <CASE sourceFile="bnNr-frog_Ciang.json" recordId="80" sourceDigest="7f60ce8d2f891047467da73c99ddced2e1ff794b4cac6e5393ce1d9b478ba873">
+      <NOTE>source cough event omitted from linguistic W tiers</NOTE>
+      <GLOSS form="a==" eng="FIL" zho="FIL"/>
+    </CASE>
+    <CASE sourceFile="bnNr-pear_Ciang.json" recordId="30" sourceDigest="4356d64ba916768b6796227aff7bbae6a5d48e4915a6ed32d3a76a76e0549076">
+      <NOTE>source cough event omitted from linguistic W tiers</NOTE>
+      <GLOSS form="a==" eng="FIL" zho="FIL"/>
+      <GLOSS form="maz=a" eng="what=DIST.NOM" zho="什麼=遠距.主格"/>
+      <GLOSS form="sidi=a" eng="goat=DIST.NOM" zho="山羊=遠距.主格"/>
+      <GLOSS form="hai" eng="TOP" zho="主題"/>
+    </CASE>
+    <CASE sourceFile="bnNr-frog_Laniahu.json" recordId="40" sourceDigest="a531448996f5a58653b5633226206f8904318fd6c016e1e63365fc0c1b1b1951">
+      <NOTE>source ori row restores the filler surface ai; FIL label retained and shifted terminator omitted</NOTE>
+      <GLOSS form="ai,\" eng="FIL" zho="FIL"/>
+    </CASE>
+    <CASE sourceFile="AtaNr-hunting3_Takun.json" recordId="6" sourceDigest="069002419241e520fc368e37d621c8d7024dd4a35f327cdcf97d8b4ccbb2f835">
+      <NOTE>source ori row restores su and wahi forms; shifted ACC and trap glosses realigned</NOTE>
+      <GLOSS form="su==" eng="ACC" zho="受格"/>
+      <GLOSS form="wahi.\" eng="trap" zho="陷阱"/>
+    </CASE>
+    <CASE sourceFile="kkvNr_domestic_troubles_Muu.json" recordId="1" sourceDigest="49bad246354ce350e3e2afae930052e6eef90756635555b36d465efc34f51019">
+      <NOTE>source cough event omitted from linguistic W tiers</NOTE>
+      <GLOSS form="sua" eng="NOM" zho="主格"/>
+    </CASE>
+    <CASE sourceFile="kkvNr_domestic_troubles_Muu.json" recordId="131" sourceDigest="eba3c4c15ec5a85c2662fd4eb5843a7b10cddb9700104514835ac172c84168a7">
+      <NOTE>source vocalization event omitted from linguistic W tiers</NOTE>
+      <GLOSS form="Kanakanavu" eng="Kanakanavu" zho="卡那卡那富"/>
+    </CASE>
+    <CASE sourceFile="SaiNr-kathethel2_kalaeh a oemaw.json" recordId="292" sourceDigest="0468f85ca03f7a027b8b69821224eb6e8c46695944557c1ac0df2aaec3ff4b35">
+      <NOTE>source breath event omitted from linguistic W tiers</NOTE>
+    </CASE>
+    <CASE sourceFile="SaiNr-holiday_kalaeh a _oemaw.json" recordId="74" sourceDigest="6ceeac557b67bd7f8d147669900fe34db2889ab84644663f4d68807ab92489ee">
+      <NOTE>source Mandarin marker retained as note; three failed transcriptions represented as UNCLEAR</NOTE>
+      <GLOSS form="o" eng="DM" zho="DM"/>
+      <GLOSS form="??"/>
+      <GLOSS form="??"/>
+      <GLOSS form="??" zho="還有"/>
+    </CASE>
+    <CASE sourceFile="SaiNr-holiday_kalaeh a _oemaw.json" recordId="79" sourceDigest="d728104b91717cd75d951eb4813cf7490765e4a168df08ca70943679140c910c">
+      <NOTE>source Japanese marker retained as note; failed transcription represented as UNCLEAR</NOTE>
+      <GLOSS form="isaa" eng="then" zho="就"/>
+      <GLOSS form="baiw" eng="AF.buy" zho="主焦.買"/>
+      <GLOSS form="ka" eng="ACC" zho="受格"/>
+      <GLOSS form="isaa" eng="that" zho="那些"/>
+      <GLOSS form="si-patabir" eng="RF-offer" zho="指焦-祭拜"/>
+      <GLOSS form="??" eng="after" zho="之後"/>
+    </CASE>
+    <CASE sourceFile="SaiNr-kathethel2_kalaeh a oemaw.json" recordId="6" sourceDigest="7a71d8d38814c51fe6a85a2ed9d65b98bd4d2b021e99ba8a03b1818687b3ba1e">
+      <NOTE>source Mandarin marker retained as note; missing transcription represented as UNCLEAR</NOTE>
+      <GLOSS form="kathethel" eng="PN" zho="雷女"/>
+      <GLOSS form="??" eng="is" zho="是"/>
+    </CASE>
+    <CASE sourceFile="SaiNr-kathethel2_kalaeh a oemaw.json" recordId="352" sourceDigest="3d4a17d32f59219f53bf0b4d770c4f6942df4c3f5b4959638a5605b6817e941b">
+      <NOTE>source Mandarin marker retained as note; missing transcription represented as UNCLEAR</NOTE>
+      <GLOSS form="hiza" eng="that" zho="那"/>
+      <GLOSS form="ka" eng="NOM" zho="主格"/>
+      <GLOSS form="SaiSiyat" eng="PN" zho="專名"/>
+      <GLOSS form="??" eng="is" zho="是"/>
+    </CASE>
+    <CASE sourceFile="Sainr-frog4_lalo a tahaeS.json" recordId="107" sourceDigest="3a0a346ec4b76b7622938ef26e317e09076b9c807f7e8983e125427c5a96756d">
+      <NOTE>source gloss shifted from punctuation to the preceding failed transcription</NOTE>
+      <GLOSS form="??" eng="gaksa" zho="gaksa"/>
+    </CASE>
+    <CASE sourceFile="SaiNr-life_waon a boong.json" recordId="140" sourceDigest="ddf06e1c180390125fdc2a069ec4b745f49817bea36dd19697c23787b5ea6546">
+      <NOTE>source speaker and breath-event rows omitted from linguistic W tiers</NOTE>
+      <GLOSS form="'ititi'an" eng="a.bit" zho="一點"/>
+      <GLOSS form="ka" eng="NOM" zho="主格"/>
+      <GLOSS form="rayhil" eng="money" zho="錢"/>
+      <GLOSS form="la==.\" eng="INT" zho="感嘆"/>
+    </CASE>
+    <CASE sourceFile="SaiNr-life_waon a boong.json" recordId="281" sourceDigest="f7d1833e2365600778bad89e5f861c019d598ef6b6fb23686e12c6bc6d03ff76">
+      <NOTE>source speaker and breath-event rows omitted from linguistic W tiers</NOTE>
+      <GLOSS form="isaza" eng="that" zho="那裡"/>
+      <GLOSS form="mina" eng="wish" zho="希望"/>
+      <GLOSS form="iya" eng="want" zho="要"/>
+      <GLOSS form="ininrayi:" eng="marry" zho="結婚"/>
+      <GLOSS form="ray" eng="LOC" zho="處格"/>
+      <GLOSS form="SaiSiyat./" eng="PN" zho="專名"/>
+    </CASE>
+    <CASE sourceFile="kkvNr_sowing_Paicu.json" recordId="56" sourceDigest="20e710fe3890e0b9e729034717d7610ac4abb4d6bd61f5cd590762b868e85902">
+      <NOTE>four glosses shifted off a pause marker onto their source forms</NOTE>
+      <GLOSS form="mima" eng="drink" zho="喝"/>
+      <GLOSS form="pava’atʉ" eng="accompany" zho="配著"/>
+      <GLOSS form="mima" eng="drink" zho="喝"/>
+      <GLOSS form="canumu.\" eng="water" zho="水"/>
+    </CASE>
+    <CASE sourceFile="sdqNr-childhood_micang 2020s.json" recordId="188" sourceDigest="ad3bd1f149dfbcffe0cd76e458ab03a3848b0f5ac86c754b533785e3c8b5f6ac">
+      <NOTE>source marker-only PART row omitted and dungan gloss restored from adjacent source context</NOTE>
+      <GLOSS form="wisu=ku" eng="PROG=1SG.NOM" zho="進行=1SG.主格"/>
+      <GLOSS form="p-qrinuc" eng="CAU-be.enslaved" zho="使役-被奴役"/>
+      <GLOSS form="dungan" eng="again" zho="又"/>
+    </CASE>
+  </STORY_GLOSS_REPAIRS>
+</SOURCE_REPAIRS>

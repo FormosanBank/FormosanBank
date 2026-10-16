@@ -47,7 +47,7 @@ For each matching sentence ``S_N``:
   which only the parenthesis characters are stripped (content kept) from
   every FORM/PHON/TRANSL text and ``notes`` attribute. Its id gains a
   ``-opt`` suffix (descendant ids rewritten to match, as in
-  dedupe_sentence_ids.py). AUDIO is removed from this reading -- the
+  uniquify_sentence_ids.py). AUDIO is removed from this reading -- the
   recording is of the shorter, actually-uttered sentence.
 
 PHON needs no orthography mapping: removing parentheses is purely
@@ -130,8 +130,16 @@ def _drop_groups(text):
     return _tidy(_PAREN_GROUP.sub("", text)) if text else text
 
 
+# A code-switch label is a gloss, not optional material: its parentheses stay
+# ("(Mandarin)" -- review page round 9; the word 較好 in Sentences 3_S_459).
+_LANGUAGE_LABEL = re.compile(r"\((Mandarin|Japanese|Chinese|Hakka)\)")
+
+
 def _strip_parens(text):
-    return text.replace("(", "").replace(")", "") if text else text
+    if not text:
+        return text
+    held = _LANGUAGE_LABEL.sub(lambda m: "\x00" + m.group(1) + "\x01", text)
+    return held.replace("(", "").replace(")", "").replace("\x00", "(").replace("\x01", ")")
 
 
 def make_without(s, whole):
@@ -139,7 +147,11 @@ def make_without(s, whole):
     from the S-level running FORM/PHON. Only optional-word parens appear at
     the S level (gloss parens live in TRANSL), so dropping every group is
     safe and sidesteps the S-FORM(no dashes)/W-FORM(dashes) mismatch."""
-    for kind in ("original", "standard"):
+    # Original tier only: the standard tier is regenerated from the original by
+    # standardize.py, and standard PHON by add_phonology.py, so writing them here
+    # edits derived tiers for no gain. The project minimises edits to the standard
+    # tier once generated.
+    for kind in ("original",):
         f, p = _form(s, kind), _phon(s, kind)
         if f is not None:
             f.text = _drop_groups(f.text)
@@ -163,7 +175,11 @@ def make_with(s, sid, whole):
     for au in clone.findall(".//AUDIO"):
         au.getparent().remove(au)
     # S-level FORM/PHON carry only optional-word parens -> strip them all
-    for kind in ("original", "standard"):
+    # Original tier only: the standard tier is regenerated from the original by
+    # standardize.py, and standard PHON by add_phonology.py, so writing them here
+    # edits derived tiers for no gain. The project minimises edits to the standard
+    # tier once generated.
+    for kind in ("original",):
         f, p = _form(clone, kind), _phon(clone, kind)
         if f is not None:
             f.text = _strip_parens(f.text)

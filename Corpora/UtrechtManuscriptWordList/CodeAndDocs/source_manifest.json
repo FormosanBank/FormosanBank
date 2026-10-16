@@ -1,0 +1,50 @@
+{
+  "basecamp": {
+    "account_id": 3340659,
+    "card_id": 7088357155,
+    "project_id": 31258415,
+    "url": "https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/7088357155",
+    "decisions": [
+      {
+        "comment_id": 8795096834,
+        "decision": "Create one S per lexical item, do not create W tiers, and omit a translation tier when that source field is absent."
+      },
+      {
+        "comment_id": 8795700046,
+        "decision": "Christopher Joby authorized use of his corrected transcriptions and translations under the referenced license."
+      },
+      {
+        "comment_id": 10012619752,
+        "decision": "The license is CC BY-NC."
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "Private/JobyUtrechtManuscript.pdf",
+      "role": "authoritative corrected transcription and translation table",
+      "sha256": "b871304347ed74f55ea7a8277eab8cd7336427034223eab8c987540ceaa054a4",
+      "bytes": 1096429,
+      "pages": 75,
+      "license": "CC BY-NC",
+      "public_url": "https://neerlandistiek.nl/wp-content/uploads/2021/07/UM-database.pdf"
+    },
+    {
+      "path": "Private/C.J.-van-der-Vlis.pdf",
+      "role": "public-domain historical comparison witness",
+      "sha256": "153611f4894ef4e1c3c5c831bcb48f91146d88d040c8009cd0266d64341ea5b8",
+      "bytes": 19506021,
+      "pages": 89,
+      "license": "public domain",
+      "public_url": "https://hdl.handle.net/2027/uc1.aa0001884022"
+    },
+    {
+      "path": "CodeAndDocs/source/public_predecessor.xml",
+      "role": "published content and identifier predecessor only",
+      "sha256": "75467c70128a1ceb4c4de34f9a34b8d7fbad9c45ba15109cb005a7df3969cd24",
+      "bytes": 285055,
+      "formosanbank_commit": "3a3c47c220520113f747e6a2d441494000e13c4b",
+      "formosanbank_path": "Corpora/UtrechtManuscriptWordList"
+    }
+  ]
+}

@@ -258,3 +258,169 @@ def test_rules34_require_complete_transl_pair():
     assert new_text == text and corrected == []
     # two quotes (a complete pair) -> fires
     assert aqc(text, ['said "y done"'], DICT)[0] == 'x: "zzq mid wqx"'
+
+
+# ---------------------------------------------------------------------------
+# POL-028: quote classification reads the tier's base, not a variant
+# ---------------------------------------------------------------------------
+
+def test_sentence_records_read_the_original_base_not_a_variant(tmp_path):
+    """`for form in s.findall("FORM"): ... break` took the first
+    kindOf="original" in document order, which is a ver="alt" variant
+    whenever one is written first."""
+    import xml.etree.ElementTree as ET
+    from QC.utilities.classify_quotes import _sentence_records
+
+    path = tmp_path / "a.xml"
+    path.write_text(
+        '<TEXT xml:lang="ami" dialect="Coastal">'
+        '<S id="1">'
+        '<FORM kindOf="original" ver="alt">variant reading</FORM>'
+        '<FORM kindOf="original">base reading</FORM>'
+        "</S></TEXT>",
+        encoding="utf-8",
+    )
+    records = _sentence_records(str(path), "ami")
+    assert [text for text, _transls in records] == ["base reading"]
+
+
+def test_sentence_records_skip_a_variant_only_sentence(tmp_path):
+    from QC.utilities.classify_quotes import _sentence_records
+
+    path = tmp_path / "a.xml"
+    path.write_text(
+        '<TEXT xml:lang="ami" dialect="Coastal">'
+        '<S id="1"><FORM kindOf="original" ver="alt">variant reading</FORM></S>'
+        "</TEXT>",
+        encoding="utf-8",
+    )
+    assert _sentence_records(str(path), "ami") == []
+
+
+# --- wrap rules and whole-word lookup (maintainer, 2026-10-14) ---------------
+
+def test_wrapped_translation_and_single_quoted_utterance_become_double():
+    # Rule 1: both wrapped; the closing quote may sit before or after the period.
+    for text in ("'o wawa no tao.'", "'o wawa no tao'."):
+        new, corrected, _, _ = aqc(text, ['" the child of the person ."'], set())
+        assert new.startswith('"') and '"' in new[-2:] and "'" not in new
+        assert len(corrected) == 2
+
+
+def test_consumed_wrapping_quotes_license_nothing_else():
+    # Rule 2: utterance already in double quotes; the translation's wrap is
+    # consumed, no other quote is left, so the inner ' stay glottal.
+    text = "\"'ayam ko tao'.\""
+    new, corrected, _, _ = aqc(text, ['" the bird of the person ."'], set())
+    assert new == text and corrected == []
+
+
+def test_a_wrapped_translation_is_consumed_even_when_the_utterance_is_not():
+    # Addendum (2026-10-14): the translation-wrapping quotes are consumed anyway
+    # and are not evidence of a quote; nothing else quotes, so nothing changes.
+    text = "'aehoe' mwai' ila kita' oyae'."
+    assert aqc("o wawa 'ayam tao'.", ['" a child said bird ."'], set())[0] == "o wawa 'ayam tao'."
+    # ... but a quotation inside the translation still licenses the old rules.
+    assert aqc("o wawa 'ayam tao'.", ['" a child said “bird” ."'], set())[0] == 'o wawa "ayam tao".'
+
+
+def test_a_word_with_a_glottal_at_both_edges_is_found_whole():
+    # 'aehoe' (Saisiyat, dog): the old lookup tried only 'aehoe and aehoe'.
+    text = "kas'oehaz ka 'aehoe' sahae' ila 'i'izo'."
+    lst = {"'aehoe'", "'i'izo'"}
+    new, corrected, _, _ = aqc(text, ['he said "x" there', "他說「x」"], lst)
+    assert corrected == [] and new == text
+
+
+def test_transl_wrap_needs_one_pair_around_the_whole_translation():
+    tw = classify_quotes.transl_wrap
+    assert tw('" dog also came to see ."') == (0, 24)
+    assert tw('"dog came".') is not None
+    assert tw('"A" and "B"') is None                 # two quotations
+    assert tw("「他說『走』」") is not None             # corner quotes nest
+    assert tw("he said \"go\"") is None
+
+
+def test_single_quoted_quotations_inside_a_consumed_translation_still_count():
+    # Formosan-Kanakanavu-Texts S_SPIRIT_S0020: utterance and translation are both
+    # wrapped in "; the translation's own quotation 'Yes,' licenses the nested
+    # 'əəʔə,' -> "əəʔə," (POL-018: nested quotations use double quotes too).
+    text = "\"nuu ʔusu misa=kan kasua Suŋau ia, 'əəʔə,' kisa-u-i=ʔai.\""
+    tr = ["\"When the Sungau says 'Usu to you, say 'Yes,' in reply.\""]
+    assert aqc(text, tr, set())[0] == "\"nuu ʔusu misa=kan kasua Suŋau ia, \"əəʔə,\" kisa-u-i=ʔai.\""
+    # contractions and possessives are not quotation marks
+    assert classify_quotes._single_quote_pairs_as_double("it's the dogs' bone") == "it's the dogs' bone"
+
+
+def test_rule_3_needs_the_opener_first_and_checks_it_against_the_list():
+    # NTU SaiNr-kathethel2 S_173: kamamwai' (closer-shaped) comes BEFORE the
+    # opener 'iniya'om, which is on the Saisiyat list; nothing may be converted.
+    text = "saen ay So'o ay hini kamamwai', talek, 'iniya'om."
+    tr = ['They said: "Is it you who come to cook for us?"']
+    assert aqc(text, tr, {"'iniya'om"})[0] == text
+    assert aqc(text, tr, set())[0] == text            # order alone blocks it
+
+
+# --- consonant preference (maintainer, 2026-10-14) ---------------------------
+# "for Saisiyat, Saaroa, Bunun, Kanakanavu, Paiwan, Puyuma, and Rukai, a ' next
+# to a consonant should be considered as a prime candidate for a quotation mark
+# UNLESS that is a word attested in that language with that spelling."
+
+def test_a_consonant_adjacent_quote_wins_among_several_openers():
+    # Two word-initial ', so rule 2 cannot choose; 'tatini (' + t) is the prime
+    # one, 'oya (' + o) stays a glottal.
+    text = "'oya ka 'tatini sahae.' ila"
+    assert aqc(text, [], set())[0] == text                       # no preference: nothing
+    assert aqc(text, [], set(), set())[0] == "'oya ka \"tatini sahae.\" ila"
+
+
+def test_a_consonant_adjacent_word_attested_with_that_spelling_is_not_prime():
+    text = "'oya ka 'tatini sahae.' ila"
+    assert aqc(text, [], set(), {"'tatini"})[0] == text           # exception list
+    assert aqc(text, [], {"'tatini"}, set())[0] == text           # the main list
+
+
+def test_more_quote_shaped_apostrophes_than_translation_quotes():
+    # Rule 1 needs as many start/end ' as TRANSL quotes; with one too many, the
+    # two consonant-adjacent ones match the count and are taken.
+    text = "'aehoe ma 'tatini sahaek'."
+    tr = ['the dog said "come here".']
+    assert aqc(text, tr, set())[0] == text
+    assert aqc(text, tr, set(), set())[0] == "'aehoe ma \"tatini sahaek\"."
+
+
+def test_the_preference_never_overrides_rule_1_when_the_counts_already_match():
+    # Two openers and two closers, four TRANSL quotes: rule 1 takes all four,
+    # prime or not.
+    text = "'ima ka', 'tatini sahaek'."
+    tr = ['"this", "that".']
+    assert aqc(text, tr, set(), set())[0] == aqc(text, tr, set())[0] == '"ima ka", "tatini sahaek".'
+
+
+# --- '' pairs (maintainer, 2026-10-14) ----------------------------------------
+# "If there is a `''` and a matching `''` in the same utterance, they can be
+# converted to "s."
+
+def test_a_matching_pair_of_double_apostrophes_becomes_double_quotes():
+    # ePark Atayal: '' typed for a double quote; previously half-converted.
+    text = "''tlubuw'' ga, mha ''rgyax.''"
+    new, corrected, _, _ = aqc(text, [], set())
+    assert new == '"tlubuw" ga, mha "rgyax."' and len(corrected) == 4
+
+
+def test_double_apostrophes_need_a_match_and_a_word_edge():
+    assert aqc("''tlubuw ga", [], set())[0] == "''tlubuw ga"                   # no match
+    assert aqc("kamatortoroe''omaling' ka", [], set())[0] == "kamatortoroe''omaling' ka"  # inside a word
+    assert aqc("'''Amis''' ka", [], set())[0] == "'''Amis''' ka"               # three: not one
+    # the glottals inside a converted pair stay glottals
+    assert aqc("''s'uli'' ka", [], set())[0] == '"s\'uli" ka'
+
+
+def test_a_double_apostrophe_matches_only_the_next_one():
+    # Amis Wikipedia U_parik_a_lutuk: each mark glued to a neighbouring word;
+    # the first opening must not pair with the last closing a paragraph later.
+    text = "tu ''maylunsan''han nu hulam, a lutuk''maylunsan''… Tuna"
+    assert aqc(text, [], set())[0] == text
+    # Sakizaya Wikipedia Daren: '' followed by a comma does not open.
+    text = "niyadu' '', pacumud tu ta-zen a kenis'' ka"
+    assert aqc(text, [], set())[0] == text

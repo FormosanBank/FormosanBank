@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture for V085 (must NOT fire).
+
+  Shape: a W whose two TRANSL children share xml:lang="eng" but are
+  discriminated by kindOf — the source's own gloss (kindOf="original")
+  and a standardized one (kindOf="standard"), neither carrying ver.
+
+  This is the shape POL-036 prescribes: standardizing a gloss never
+  overwrites the original, it is recorded as a separate
+  TRANSL[@kindOf="standard"] alongside it. `kindOf` already says which
+  is which, so no `ver` is needed and none should be demanded — `ver`
+  means "alternative reading" (POL-025), which a standardization is not.
+
+  Exercises: validate_xml.py must NOT report V085 here.
+-->
+<TEXT id="V085_POS_KINDOF" citation="test" BibTeX_citation="@test{test}" copyright="CC BY-NC-SA 4.0" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Mapafli.</FORM>
+    <TRANSL xml:lang="eng">He gave it.</TRANSL>
+    <W id="S_1W_1">
+      <FORM kindOf="original">Ma-pa-fli</FORM>
+      <TRANSL xml:lang="eng" kindOf="original">UV-CaU-give</TRANSL>
+      <TRANSL xml:lang="eng" kindOf="standard">UV-CAU-give</TRANSL>
+    </W>
+  </S>
+</TEXT>

@@ -437,6 +437,47 @@ def test_V085_multi_same_lang_TRANSL_with_ver_positive(
     )
 
 
+def test_V085_gloss_pair_discriminated_by_kindOf_needs_no_ver(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """V085 must not fire on POL-036's additive-gloss shape.
+
+    A W carrying the source's own gloss (kindOf='original') and a
+    standardized one (kindOf='standard') is already unambiguous: `kindOf`
+    says which is which. Demanding a `ver` there forced corpora to assert
+    "alternative reading" (POL-025) about a standardization, which is a
+    different axis entirely. Regression guard for the 2026-09-11 change
+    that added kindOf to V085's grouping key.
+    """
+    copy_fixture(
+        fixtures_dir / "v085_W_gloss_original_and_standard_no_ver.xml", tmp_path
+    )
+    proc = _run_validate(tmp_path)
+    combined = (proc.stdout + proc.stderr).lower()
+    assert "[v085]" not in combined, (
+        "V085 should not fire when kindOf discriminates the glosses; "
+        f"got stdout={proc.stdout!r}"
+    )
+
+
+def test_V085_two_glosses_sharing_kindOf_still_fires(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """Adding kindOf to the grouping key must not blunt V085.
+
+    Two TRANSLs agreeing on both xml:lang and kindOf are still ambiguous
+    about which is canonical, so the rule still applies.
+    """
+    copy_fixture(
+        fixtures_dir / "v085_W_two_standard_glosses_no_ver.xml", tmp_path
+    )
+    proc = _run_validate(tmp_path)
+    assert _has_rule_finding(proc, ("v085", "ver attribute", "discriminate")), (
+        "expected V085 finding for two TRANSLs sharing xml:lang and kindOf; "
+        f"got stdout={proc.stdout!r}"
+    )
+
+
 def test_S_audio_url_and_source_and_AUDIO_source_are_clean(
     tmp_path, fixtures_dir, copy_fixture
 ):

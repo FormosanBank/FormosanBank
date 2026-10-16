@@ -57,9 +57,12 @@ def prettify(elem):
 
 
 def w_has_nonempty_transl(w_elem):
-    """Return True if w_elem has at least one non-empty <TRANSL> child."""
+    """Return True when the terminal W is translated or explicitly unclear."""
+    form = w_elem.find('./FORM[@kindOf="original"]')
+    if form is not None and form.find('UNCLEAR') is not None:
+        return True
     for t in w_elem.findall('TRANSL'):
-        if (t.text or '').strip():
+        if (t.text or '').strip() or t.find('UNCLEAR') is not None:
             return True
     return False
 

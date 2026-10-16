@@ -15,8 +15,8 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from QC.corpus_counts import resolve_language, XML_LANG
-from QC.utilities.classify_quotes import QUOTE, apply_quote_corrections
+from QC.corpus_counts import resolve_language, XML_LANG, is_reproduction_path
+from QC.utilities.classify_quotes import CONSONANT_QUOTE_LANGUAGES, QUOTE, apply_quote_corrections
 
 _DEFAULT_REFERENCE_DIR = _REPO_ROOT / "QC" / "validation" / "reference"
 
@@ -25,6 +25,7 @@ XML_LANG_ATTR = "{http://www.w3.org/XML/1998/namespace}lang"
 _CHINESE_LANGS = frozenset({
     "zho", "zh", "cmn", "yue", "wuu", "hak", "nan",
 })
+_JAPANESE_LANGS = frozenset({"jpn", "ja"})
 _TRANSL_LANG_ALIASES = {
     "en": "eng",
     "zh": "zho",
@@ -61,6 +62,13 @@ def _is_chinese(lang: str | None) -> bool:
     return lang.lower() in _CHINESE_LANGS or lang.lower().startswith("zh")
 
 
+def _is_japanese(lang: str | None) -> bool:
+    """Return True when lang matches a known Japanese variant."""
+    if lang is None:
+        return False
+    return lang.lower() in _JAPANESE_LANGS
+
+
 def normalize_translation_language_metadata(
     root,
     xml_file: str,
@@ -92,10 +100,13 @@ def normalize_translation_language_metadata(
 # Null-morpheme markers attested in source data: 'ø' (U+00F8, NTU Grammar
 # Sakizaya/Kanakanavu), 'Ø' (U+00D8, legacy), and the canonical '∅'
 # (U+2205 EMPTY SET). A glyph counts as a null morpheme ONLY in morpheme
-# position — both neighbors are a string edge, whitespace, or the ASCII
-# segmentation hyphen — so the same letters inside foreign proper nouns
-# (Danish 'Grønland', 'Børn' in the Wikipedia corpora) are never touched.
-_NULL_MORPHEME_RE = re.compile(r"(^|[\s\-])[øØ∅](?=[\s\-]|$)")
+# position — both neighbors are a string edge, whitespace, or a morpheme
+# boundary marker (the ASCII segmentation hyphen or the clitic '=') — so the
+# same letters inside foreign proper nouns (Danish 'Grønland', 'Børn' in the
+# Wikipedia corpora) are never touched. '=' belongs here because a zero clitic
+# is written 'pa-to-va-vali=Ø': without it the glyph stays uncanonicalized and
+# downstream rules that test for '∅' silently miss it.
+_NULL_MORPHEME_RE = re.compile(r"(^|[\s\-=])[øØ∅](?=[\s\-=]|$)")
 
 
 def normalize_null_morphemes(text: str) -> str:
@@ -588,6 +599,10 @@ def clean_trans(
            double-quote variants to U+FF02 (full-width straight double quote)
            and emits c002 warning rows for single-quote variants and ASCII
            apostrophes (left unchanged).
+         - Japanese (C002 Branch C): punctuation is left untouched. Japanese
+           uses the same CJK punctuation Branch B protects, but 「」 are its
+           real quotation marks, so Branch B's collapse to U+FF02 does not
+           apply either.
       3. normalize_whitespace — collapse runs of whitespace.
       4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
 
@@ -602,6 +617,15 @@ def clean_trans(
     text = normalize_caret_variants(text)
     if _is_chinese(lang):
         text = _clean_trans_chinese(text, xml_file, s_id, warnings)
+    elif _is_japanese(lang):
+        # C002 Branch C: leave the punctuation alone. Japanese shares the CJK
+        # repertoire that Branch B exists to protect — 、 is the ideographic
+        # comma and （） the full-width parens — so swap_punctuation would
+        # ASCII-ify real source punctuation exactly as it would in Chinese.
+        # Branch B's own quote canonicalization is NOT applied: 「」 are
+        # Japanese quotation marks in their own right, not variants to
+        # collapse onto U+FF02.
+        pass
     else:
         # Emit c002b warning for U+02C8 before swap.
         if warnings is not None:
@@ -631,6 +655,25 @@ def _load_attestation(language, reference_dir, cache):
     return result
 
 
+def _load_consonant_exceptions(language, reference_dir, cache):
+    """For CONSONANT_QUOTE_LANGUAGES: the casefolded words attested with a '
+    next to a consonant (<Language>/attestation_consonant.txt; empty if the file
+    is absent). None for every other language, which turns the consonant
+    preference off."""
+    key = ("consonant", language)
+    if key in cache:
+        return cache[key]
+    result = None
+    if language in CONSONANT_QUOTE_LANGUAGES:
+        path = Path(reference_dir) / language / "attestation_consonant.txt"
+        result = set()
+        if path.exists():
+            with open(path, encoding="utf-8") as fh:
+                result = {w.strip().casefold() for w in fh if w.strip()}
+    cache[key] = result
+    return result
+
+
 def analyze_and_modify_xml_file(
     xml_dir,
     corpora_dir,
@@ -656,6 +699,9 @@ def analyze_and_modify_xml_file(
         _attestation_cache = {}
     for droot, dirs, files in os.walk(xml_dir):
         for file in files:
+            # CodeAndDocs/ is reproduction material, never published data.
+            if is_reproduction_path(os.path.join(droot, file), xml_dir):
+                continue
             if file.endswith(".xml"):
                 print(f"Processing file: {file}")
 
@@ -676,6 +722,8 @@ def analyze_and_modify_xml_file(
                 root = tree.getroot()
                 language = resolve_language(root.get(XML_LANG), root.get("dialect"))
                 dictionary = _load_attestation(language, reference_dir, _attestation_cache)
+                consonant_quotes = _load_consonant_exceptions(language, reference_dir,
+                                                              _attestation_cache)
                 is_wikipedia = "Wikipedias" in Path(xml_file).parts
                 modified = False
                 metadata_repairs = normalize_translation_language_metadata(
@@ -774,7 +822,8 @@ def analyze_and_modify_xml_file(
                             if not ft or QUOTE not in ft:
                                 continue
                             new_text, corrected, stranded, ambiguous = \
-                                apply_quote_corrections(ft, transl_texts, dictionary)
+                                apply_quote_corrections(ft, transl_texts, dictionary,
+                                                        consonant_quotes)
                             if corrected or stranded:
                                 form_element.text = new_text
                                 modified = True
@@ -813,9 +862,25 @@ def _quote_log_path(corpora_path) -> Path:
     return p / "quote_corrections.csv"
 
 
+def _warnings_path(corpora_path, warnings_dir) -> Path:
+    """Where the per-run cleaner_warnings.csv goes (POL-033).
+
+    Defaults to <corpora_path>/cleaner_warnings.csv, which for a corpus built
+    with --corpora_path <corpus>/XML lands the report inside published data.
+    --warnings_dir moves it out without changing any existing caller: a corpus
+    passes its CodeAndDocs, and the file never touches XML/.
+    """
+    if warnings_dir:
+        directory = Path(warnings_dir)
+        directory.mkdir(parents=True, exist_ok=True)
+        return directory / "cleaner_warnings.csv"
+    return Path(corpora_path) / "cleaner_warnings.csv"
+
+
 def main(args):
     print(f"Processing XML files in directory: {args.corpora_path}")
-    warnings_path = Path(args.corpora_path) / "cleaner_warnings.csv"
+    warnings_path = _warnings_path(args.corpora_path,
+                                   getattr(args, "warnings_dir", None))
     warnings = CleanerWarnings(warnings_path)
     # Durable quote-correction log (POL-035): append-mode, committed.
     corrections = CleanerWarnings(_quote_log_path(args.corpora_path),
@@ -846,6 +911,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--corpora_path', help='the path to the corpus')
+    parser.add_argument('--warnings_dir', default=None,
+                        help='directory for the per-run cleaner_warnings.csv '
+                             '(POL-033). Default: --corpora_path itself, which '
+                             'writes the report into published XML/ when that '
+                             'is the target; pass a CodeAndDocs to keep it out.')
     parser.add_argument('--reference_dir', default=None,
                         help='dir holding <Language>/attestation.txt '
                              '(default: QC/validation/reference)')

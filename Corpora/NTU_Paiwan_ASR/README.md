@@ -12,6 +12,8 @@ here in FormosanBank XML format.
 ## Contents
 
 - **260 XML files**, organised by speaker under `XML/Paiwan/<Speaker>/`.
+- **3,101 transcribed sentences**, **55 untranscribed recording stubs**, and
+  **3,156 audio references**.
 - **16 speakers** across two years, all under pseudonyms (see *Privacy* below). The two years are
   **distinct individuals**.
 - **Four dialects:** Northern, Central, Eastern, and Southern (Southern enters with the Year-2 data).
@@ -27,6 +29,13 @@ here in FormosanBank XML format.
    - `<topic>_<Speaker>.xml` holds the transcribed window (`<S>` elements with audio clips), and
    - `<topic>_<Speaker>_untranscribed.xml` is a stub (`TEXT` + a single `AUDIO`) pointing at the full
      recording, marking that the remainder is present as audio but not transcribed.
+
+## Publication authority
+
+The published XML is the reviewed output of private development commit
+`8fb7eff4c51daed73ca0950259a67c4f5dd9d559`. The private source inventory
+contains 202 ELAN files and is not published because it includes participant
+identities. The public output contains pseudonyms only.
 
 ## Layout
 
@@ -48,9 +57,9 @@ datasets (full recordings only). To fetch it and regenerate the per-sentence cli
 ./download_audio_data.sh
 ```
 
-This clones every `NTU_Paiwan_ASR_*` dataset into `Audio/` and then runs
+This downloads the two pinned `NTU_Paiwan_ASR_*` source datasets into `Audio/` and then runs
 `CodeAndDocs/extract_audio_clips.py` to cut each `<S>`'s `[start, end)` segment client-side. Requires
-`git-lfs`, `jq`, and the `hf` CLI (`pip install "huggingface_hub[cli]"`; `hf auth login`).
+`git-lfs`, `jq`, and the `hf` CLI (`pip install "huggingface_hub[cli]"`).
 
 ## Reproduction
 

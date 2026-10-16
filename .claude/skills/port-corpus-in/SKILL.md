@@ -255,6 +255,9 @@ PR separately (this skill is **not a git committer**, consistent with Phase 3).
    - `{{DESCRIPTION}}` — 1–3 sentences on what the corpus is and where it came from.
    - `{{COPYRIGHT}}` — the license/copyright line (e.g. `CC BY-NC`).
    - `{{CITATION}}` — APA-style citation(s); multiple separated by `|` per the XML format conventions.
+   - `{{NOTES_AND_ISSUES}}` — known limitations, source defects, and caveats that affect
+     the data (from the corpus README's "Notes and Issues" section and the QC summary);
+     `None known.` if there are none.
    - `{{ACCESS}}` — the standard access line:
      `* The repo containing this corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/<corpus_name>).`
 

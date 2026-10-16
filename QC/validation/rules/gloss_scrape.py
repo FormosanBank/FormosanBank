@@ -30,6 +30,8 @@ from pathlib import Path
 
 from lxml import etree
 
+from QC.xml_forms import find_base_form
+
 from QC.validation._finding import Finding, Severity
 
 # Segmentation / notation markers, per the FormosanBank gloss conventions.
@@ -93,10 +95,10 @@ def _form_text(elem: etree._Element, kind: str = "original") -> str:
     Preference: FORM[@kindOf=kind] > any FORM > ''. Only direct children,
     so a W's lookup never picks up an M's FORM.
     """
-    preferred = elem.find(f'./FORM[@kindOf="{kind}"]')
+    preferred = find_base_form(elem, kind)
     if preferred is not None and preferred.text:
         return preferred.text.strip()
-    any_form = elem.find("./FORM")
+    any_form = find_base_form(elem)
     if any_form is not None and any_form.text:
         return any_form.text.strip()
     return ""

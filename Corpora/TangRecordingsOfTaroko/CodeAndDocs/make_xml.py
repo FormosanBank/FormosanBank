@@ -1,21 +1,38 @@
 #!/usr/bin/env python3
 """
 make_xml.py
-Generate skeleton XML files (one per .wav file in Audio/) and write them to XML/.
-The <TEXT> header attributes are left as empty placeholders to be filled in later.
+Generate one XML file per recording (audio-only TEXT + AUDIO) and write them to
+the corpus's XML/Truku/.
+
+The recordings themselves are not an input. Every WAV in the four Paradisec
+items is enumerated by the item metadata committed in Metadata/, so the corpus
+rebuilds from this checkout alone (POL-048) without downloading a WAV.
+
+Those four files are an *extract*, not the archive's own RO-Crate: each is a
+single flattened entity wrapped as {"metadata": {...}}, with no @context and no
+@graph, so every reference in it -- license, publisher, collector, root --
+points at a node that was not kept. They are this corpus's only witness to
+Paradisec, and nothing committed re-fetches or verifies them against it.
 """
 
 import json
-import os
 import re
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-SCRIPT_DIR    = Path(__file__).parent
-AUDIO_DIR     = SCRIPT_DIR / "Audio" / "Truku"
+SCRIPT_DIR    = Path(__file__).resolve().parent
+CORPUS_ROOT   = SCRIPT_DIR.parent
 METADATA_DIR  = SCRIPT_DIR / "Metadata"
-XML_DIR       = SCRIPT_DIR / "XML" / "Truku"
+XML_DIR       = CORPUS_ROOT / "XML" / "Truku"
+
+# The licence every TEXT carries. A constant because the committed metadata
+# cannot supply it: its `license` is {"@id": "#license-3-a6e13b67"}, a reference
+# into a graph the extract does not include. The value rests on Prof. Apay
+# Tang's grant, recorded in the README's Rights block, and is written as the
+# exact rights_vocabulary.csv value POL-042 requires -- an unversioned Creative
+# Commons value means 4.0, so spelling out the version restates the same licence.
+COPYRIGHT = "CC BY-NC 4.0"
 
 # ── Citation formatter ────────────────────────────────────────────────────────
 def format_citation(credit_text):
@@ -101,53 +118,64 @@ def load_metadata():
         meta[prefix] = data["metadata"]
     return meta
 
+
+def item_recordings(meta):
+    """The WAV filenames the item's RO-Crate metadata enumerates."""
+    return sorted(
+        Path(part["@id"]).name
+        for part in meta.get("hasPart", [])
+        if str(part.get("@id", "")).lower().endswith(".wav")
+    )
+
 metadata = load_metadata()
 
 # ── Create output directory if needed ─────────────────────────────────────────
-XML_DIR.mkdir(exist_ok=True)
+XML_DIR.mkdir(parents=True, exist_ok=True)
 
-# ── Discover wav files ─────────────────────────────────────────────────────────
-wav_files = sorted(AUDIO_DIR.glob("*.wav"))
+# ── Discover the recordings from the committed metadata ───────────────────────
+recordings = sorted(
+    (wav_name, prefix)
+    for prefix, meta in metadata.items()
+    for wav_name in item_recordings(meta)
+)
 
-if not wav_files:
-    print("No .wav files found in Audio/")
-else:
-    for wav_path in wav_files:
-        wav_name   = wav_path.name                      # e.g. AIT1-001-1.wav
-        stem       = wav_path.stem                      # e.g. AIT1-001-1
-        xml_path   = XML_DIR / f"{stem}.xml"
+if not recordings:
+    raise SystemExit("No recordings enumerated in Metadata/")
 
-        # Derive item prefix and look up metadata
-        prefix     = "-".join(stem.split("-")[:2])      # e.g. "AIT1-001"
-        meta       = metadata.get(prefix, {})
-        source     = meta.get("@id", "")
-        citation   = format_citation(meta.get("creditText", ""))
-        bibtex     = format_bibtex(meta.get("creditText", ""))
+expected = {Path(wav_name).with_suffix(".xml").name for wav_name, _ in recordings}
+stale = {path.name for path in XML_DIR.glob("*.xml")} - expected
+if stale:
+    raise SystemExit(f"XML/Truku/ holds files the metadata does not list: {sorted(stale)}")
 
-        # Build the XML tree
-        text_elem = ET.Element("TEXT", attrib={
-            "id":             stem,
-            "xml:lang":       "trv",
-            "dialect":        "Truku",
-            "audio":          wav_name,
-            "source":         source,
-            "copyright":      "CC BY-NC",
-            "citation":       citation,
-            "BibTeX_citation": bibtex,
-        })
-        text_elem.text = "\n    "                       # indent before AUDIO
+for wav_name, prefix in recordings:
+    stem     = Path(wav_name).stem                  # e.g. AIT1-001-1
+    xml_path = XML_DIR / f"{stem}.xml"
+    meta     = metadata[prefix]
 
-        audio_elem = ET.SubElement(text_elem, "AUDIO", file=wav_name)
-        audio_elem.tail = "\n"                          # newline after AUDIO
+    # Build the XML tree
+    text_elem = ET.Element("TEXT", attrib={
+        "id":             stem,
+        "xml:lang":       "trv",
+        "dialect":        "Truku",
+        "audio":          wav_name,
+        "source":         meta["@id"],
+        "copyright":      COPYRIGHT,
+        "citation":       format_citation(meta["creditText"]),
+        "BibTeX_citation": format_bibtex(meta["creditText"]),
+    })
+    text_elem.text = "\n    "                       # indent before AUDIO
 
-        tree = ET.ElementTree(text_elem)
-        ET.indent(tree, space="    ")                   # pretty-print (Python ≥ 3.9)
+    audio_elem = ET.SubElement(text_elem, "AUDIO", file=wav_name)
+    audio_elem.tail = "\n"                          # newline after AUDIO
 
-        with open(xml_path, "w", encoding="utf-8") as fh:
-            fh.write("<?xml version='1.0' encoding='UTF-8'?>\n")
-            tree.write(fh, encoding="unicode", xml_declaration=False)
-            fh.write("\n")
+    tree = ET.ElementTree(text_elem)
+    ET.indent(tree, space="    ")                   # pretty-print (Python ≥ 3.9)
 
-        print(f"  wrote {xml_path.relative_to(SCRIPT_DIR)}")
+    with open(xml_path, "w", encoding="utf-8") as fh:
+        fh.write("<?xml version='1.0' encoding='UTF-8'?>\n")
+        tree.write(fh, encoding="unicode", xml_declaration=False)
+        fh.write("\n")
 
-    print(f"\nDone — {len(wav_files)} XML file(s) written to XML/")
+    print(f"  wrote {xml_path.relative_to(CORPUS_ROOT)}")
+
+print(f"\nDone — {len(recordings)} XML file(s) written to XML/Truku/")

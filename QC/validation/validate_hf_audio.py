@@ -7,9 +7,11 @@ import argparse
 import json
 import os
 import re
+import random
 import subprocess
 import sys
 import tempfile
+import time
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
@@ -393,6 +395,56 @@ def validate_online(
     return failures
 
 
+#: Statuses worth trying again: the Hub throttling us (429) or briefly
+#: unavailable (5xx). Anything else — 401, 403, 404 — is a real answer.
+RETRY_STATUSES = frozenset({429, 500, 502, 503, 504})
+RETRY_ATTEMPTS = 5
+RETRY_BASE_SECONDS = 2.0
+
+
+def _status_of(exc: Exception) -> int | None:
+    """The HTTP status an exception carries, if any.
+
+    huggingface_hub raises HfHubHTTPError, which subclasses requests'
+    HTTPError and keeps the response on ``.response``. Read it structurally
+    rather than importing the class, so this keeps working across hub
+    versions and stays testable without the dependency.
+    """
+    response = getattr(exc, "response", None)
+    status = getattr(response, "status_code", None)
+    return status if isinstance(status, int) else None
+
+
+def with_retry(call, *args, description: str = "", **kwargs):
+    """Call a Hugging Face API method, retrying transient failures.
+
+    This job runs anonymously (``HF_TOKEN: ''`` by design — it tests the
+    *public* contract) against every dataset, model and space in the
+    organisation, which is exactly the shape of traffic the Hub rate limits.
+    A 429 there says the Hub is throttling us, not that audio parity is
+    broken, and failing a pull request on it is a false signal.
+
+    Retries are capped and the final failure is re-raised: this makes a
+    flaky run succeed, it does not make a broken one pass.
+    """
+    delay = RETRY_BASE_SECONDS
+    for attempt in range(1, RETRY_ATTEMPTS + 1):
+        try:
+            return call(*args, **kwargs)
+        except Exception as exc:
+            status = _status_of(exc)
+            if status not in RETRY_STATUSES or attempt == RETRY_ATTEMPTS:
+                raise
+            wait = delay + random.uniform(0, delay / 2)
+            print(
+                f"hugging face {status} on {description or getattr(call, '__name__', 'call')}"
+                f" (attempt {attempt}/{RETRY_ATTEMPTS}); retrying in {wait:.1f}s",
+                file=sys.stderr,
+            )
+            time.sleep(wait)
+            delay *= 2
+
+
 def validate_hf_inventory(manifest: dict, permissions: dict, api=None) -> list[str]:
     """Enforce public published audio and private development audio on the Hub."""
     if api is None:
@@ -403,7 +455,10 @@ def validate_hf_inventory(manifest: dict, permissions: dict, api=None) -> list[s
     organization = permissions["hf_organization"]
     public_datasets = {
         item.id
-        for item in api.list_datasets(author=organization, full=True)
+        for item in with_retry(
+            api.list_datasets, author=organization, full=True,
+            description="list_datasets",
+        )
         if not getattr(item, "private", False) and not getattr(item, "gated", False)
     }
     manifested = {dataset["repo_id"] for dataset in manifest["datasets"]}
@@ -442,10 +497,12 @@ def validate_hf_inventory(manifest: dict, permissions: dict, api=None) -> list[s
     )
 
     for repo_id in public_non_audio:
-        files = api.list_repo_files(
+        files = with_retry(
+            api.list_repo_files,
             repo_id,
             repo_type="dataset",
             token=False,
+            description=f"list_repo_files({repo_id})",
         )
         audio = {path for path in files if is_audio(path)}
         failures.extend(
@@ -454,20 +511,28 @@ def validate_hf_inventory(manifest: dict, permissions: dict, api=None) -> list[s
 
     public_models = [
         item
-        for item in api.list_models(author=organization, full=True)
+        for item in with_retry(
+            api.list_models, author=organization, full=True,
+            description="list_models",
+        )
         if not getattr(item, "private", False) and not getattr(item, "gated", False)
     ]
     public_spaces = [
         item
-        for item in api.list_spaces(author=organization, full=True)
+        for item in with_retry(
+            api.list_spaces, author=organization, full=True,
+            description="list_spaces",
+        )
         if not getattr(item, "private", False) and not getattr(item, "gated", False)
     ]
     for repo_type, items in (("model", public_models), ("space", public_spaces)):
         for item in items:
-            files = api.list_repo_files(
+            files = with_retry(
+                api.list_repo_files,
                 item.id,
                 repo_type=repo_type,
                 token=False,
+                description=f"list_repo_files({item.id})",
             )
             audio = {path for path in files if is_audio(path)}
             failures.extend(

@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from QC.utilities.dialect_detector import candidates
+from QC.xml_forms import iter_base_forms
 
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 _UNLABELED = {"", "unknown"}
@@ -22,10 +23,13 @@ def xml_lang(root: ET.Element) -> str:
 
 
 def extract_standard_text(root: ET.Element) -> str:
+    # Base FORMs only. A POL-028 ver="alt" variant is a second reading of
+    # the same sentence, so folding it in would count that sentence twice
+    # and mix a secondary spelling into the dialect features.
     parts = [
         f.text.strip()
         for s in root.findall(".//S")
-        for f in s.findall("./FORM[@kindOf='standard']")
+        for f in iter_base_forms(s, "standard")
         if f.text and f.text.strip()
     ]
     return " ".join(parts).strip()

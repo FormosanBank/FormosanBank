@@ -2,6 +2,8 @@
 
 This folder contains lightweight scripts for checking FormosanBank XML corpora. The scripts are intentionally modular: run the checks that match the corpus state instead of treating every warning as an automatic data error.
 
+**Looking up a rule id?** [`validation/RULES.md`](validation/RULES.md) lists every rule — id, mnemonic, severity, and what it checks — grouped by the validator that runs it. It is generated from the code by `validation/rules_catalogue.py` and checked by a test, so it cannot drift; do not edit it by hand.
+
 ## Expected XML Tiers
 
 Most validation scripts inspect the standardized sentence tier:
@@ -226,6 +228,26 @@ logged to the **durable, committed** `quote_corrections.csv` (append-only;
 POL-035) — while ambiguous cases go to the ephemeral `cleaner_warnings.csv`
 as `c030` warnings (suppressed for the Wikipedias corpus; POL-033). See
 `docs/superpowers/specs/2026-08-10-quote-glottal-correction-design.md`.
+
+The rules run in this order (`QC/utilities/classify_quotes.py`,
+`apply_quote_corrections`; maintainer rulings of 2026-10-14):
+
+1. A `''` and the next `''` in the utterance, opening and closing a stretch,
+   become `"` (two apostrophes typed for a double quote).
+2. Wrap rules. A translation wrapped whole in quotation marks is consumed: it is
+   never evidence of a quotation. If the utterance is wrapped whole in `'`, those
+   two become `"`; if it is wrapped in `"`, it is left alone.
+3. The quotation rules 1–4 (`_quotation_targets`), each requiring the opening
+   quote before the closing one and every quote-bearing word unattested.
+   Attestation looks a word up whole and by its one-sided forms against
+   `<Language>/attestation.txt` (single-word FORMs, every word with `'` at both
+   edges, and words written that way 50+ times with the bare forms 10× rarer;
+   minus any word whose `'` stands next to a consonant). For Saisiyat, Saaroa,
+   Bunun, Kanakanavu, Paiwan, Puyuma and Rukai, a `'` next to a consonant is
+   preferred as the quotation mark when a rule has several candidates, unless
+   the word is attested (`attestation.txt`, or the headwords in
+   `attestation_consonant.txt`). `QC/utilities/build_attestation_dict.py`
+   generates both files.
 
 `QC/cleaning/remove_duplicate_sentences.py` removes duplicate `<S>` elements detected by the validator above. **It modifies XML in place** — the default is `--dry-run`; pass `--apply` to actually mutate files. Within each duplicate group it deterministically keeps the first occurrence by `(file, S id)` sort order.
 

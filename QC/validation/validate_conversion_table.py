@@ -26,6 +26,7 @@ class Verdict(Enum):
     MISMATCH = "mismatch"
     UNKNOWN_SOURCE = "unknown_source"
     UNTOKENIZABLE = "untokenizable"
+    DELETION = "deletion"
 
 
 @dataclass(frozen=True)
@@ -170,7 +171,11 @@ def load_conversion_table(
         for row in reader:
             src = (row.get(key) or "").strip()
             tgt = (row.get(column) or "").strip()
-            if not src or tgt in ("", "NA"):
+            # 'NA' means the letter does not occur in this dialect, so the row
+            # is not a rule. An *empty* cell is a rule: it deletes the matched
+            # string, which standardize.py honours and which therefore has to
+            # be audited like any other conversion (POL-056).
+            if not src or tgt == "NA":
                 continue
             rows.append((src, tgt))
     return rows, column
@@ -193,6 +198,24 @@ def audit(
                 report.rows.append(RowResult(src, tgt, Verdict.UNKNOWN_SOURCE, None, None))
                 continue
             src_ipa = "".join(original.ipa_of[g] for g in graphemes)
+        if tgt == "":
+            # The rule deletes the source. That is legitimate when the output
+            # orthography cannot write the phoneme at all, and a real loss when
+            # it can — which is the distinction worth reporting.
+            writable = sorted(
+                letter for letter, ipa in output.ipa_of.items()
+                if canonical_safe(ipa) == canonical_safe(src_ipa)
+            )
+            reason = (
+                f"the output writes {src_ipa} as {', '.join(f'`{w}`' for w in writable)}"
+                if writable else
+                f"the output cannot write {src_ipa}"
+            )
+            report.rows.append(
+                RowResult(src, tgt, Verdict.DELETION, src_ipa, None, reason)
+            )
+            continue
+
         tgt_ipa, unmatched = target_ipa(tgt, output)
         if tgt_ipa is None:
             report.rows.append(
@@ -276,6 +299,12 @@ def render_report(reports: list[Report]) -> str:
         lines.append(_bullet_lines(rows_for(Verdict.WARNING)))
         lines.append("### Unresolved mismatches")
         lines.append(_bullet_lines(rows_for(Verdict.MISMATCH)))
+        lines.append("### Deletions — the source phoneme is dropped")
+        lines.append(_bullet_lines([
+            f"`{r.src}` → (deleted), losing {r.src_ipa}"
+            + (f" — {r.reason}" if r.reason else "")
+            for r in report.rows if r.verdict == Verdict.DELETION
+        ]))
         lines.append("### Information loss")
         loss = [f"merge: {ipa} ← {', '.join(srcs)}" for ipa, srcs in report.merges]
         loss += [f"cannot encode: {ipa}" for ipa in report.cant_encode]

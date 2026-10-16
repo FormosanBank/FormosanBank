@@ -56,7 +56,7 @@ Three validator findings follow directly from that choice, and are **accepted**:
 | `G001` `marker_skeleton_parity` | **HARD** | `t<al>e-talem-i` and `do<qal>-plant` differ by that unit |
 
 There is no way to publish an unglossed morpheme without them; the alternative
-is to invent a gloss, which is worse. `make_xml.sh` therefore does not pass
+is to invent a gloss, which is worse. `generate_xml.sh` therefore does not pass
 `--exit-on-hard` to the gloss-scrape audit. It is not ungated:
 `scripts/review_qc_findings.py` pins all three findings to this exact word and
 morpheme and fails the build if a fourth appears, if one moves, or if any other
@@ -147,10 +147,20 @@ Install the two pinned Python dependencies and run the clean-room check from the
 
 ```bash
 python3 -m pip install -r Corpora/HundredPaiwanStories/CodeAndDocs/requirements.txt
-Corpora/HundredPaiwanStories/CodeAndDocs/make_xml.sh --check
+Corpora/HundredPaiwanStories/CodeAndDocs/generate_xml.sh --check
 ```
 
 The script verifies the source checksums in `CodeAndDocs/data/source_checksums.sha256`, rebuilds the XML against the current FormosanBank checkout, runs the full validator and test suite, and compares the result with the published files. Use `--write` only when intentionally regenerating the corpus.
+
+**POL-047 deviation:** the validators run *inside* `generate_xml.sh` rather
+than in a separate `validate.sh`, and that is deliberate here. This build's
+`reports/qc/*` are published corpus artifacts that `--check` compares
+byte-for-byte, and `scripts/review_qc_findings.py` gates the build on them —
+it pins the one by-design `G001` finding to its exact location and rejects any
+other. Splitting QC out would install XML before the gate had run, weakening a
+safety property this corpus is built around. The cost POL-047 warns about is
+accepted knowingly: a validator failure here blocks the rebuild, and
+investigating one means running the validators by hand against the build tree.
 
 The build deliberately does not pin shared tooling — the bank's model is that tooling improves and corpora are regenerated against it — so a rebuild picks up later improvements, and a resulting XML diff should be reviewed rather than suppressed.
 
