@@ -1,0 +1,15 @@
+.DS_Store
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+Private/
+Audio/
+logs/
+reports/
+XML/extract_logs/
+**/cleaner_warnings.csv
+**/standardize_warnings.csv
+CodeAndDocs/.build.*/
