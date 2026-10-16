@@ -76,7 +76,7 @@ carries meaning.
 **Transcribed from the page images at 300 dpi, not from the text layer**, by a
 Claude session (commit `cbcffea`, 2026-09-11), and checked against the book in the
 2026-10 student review (38 of its 39 chapter 5 cards marked reviewed; the 39th,
-C5-009, she asked to fold into C5-008, which the bracket rule now does). The
+C5-009, the reviewer asked to fold into C5-008, which the bracket rule now does). The
 scan's text layer is far more garbled in this chapter (`m “ usa s叫m.圖umalu`,
 `A孔阻止風`, `祭把` for 祭祀) and — more dangerously — it collapses the column
 spacing that carries the gloss alignment, which is exactly what produced the
