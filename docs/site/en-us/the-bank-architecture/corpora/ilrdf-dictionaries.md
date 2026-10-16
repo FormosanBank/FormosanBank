@@ -146,7 +146,7 @@ This project is made possible through the collaboration of native speakers, ling
 
 ### **Copyright**
 
-FormosanBank publishes this corpus under **CC BY-NC**.
+FormosanBank publishes this corpus under **CC BY-NC 4.0**.
 
 The online dictionary's [copyright statement](https://e-dictionary.ilrdf.org.tw/about?id=6c987092-47c7-ef11-bd58-00155db40116) allows quotation for research and teaching within a reasonable scope when the source is identified, and requires permission beyond that. This corpus is made available under those terms, with attribution to the Council of Indigenous Peoples and to ILRDF. Downstream users remain responsible for the source's attribution requirements and for applicable law; see `CodeAndDocs/source_data/RIGHTS.md` in the repository.
 
