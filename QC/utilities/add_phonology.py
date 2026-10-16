@@ -357,7 +357,10 @@ def phonologize(text: str, profile: PhonologyProfile) -> str:
             continue
         else:
             output.append("*")
-    return "".join(output)
+    # Dropping punctuation can leave the space that preceded it at an edge
+    # ('ako .' -> 'ak[o|u] ', '" Dopohen' -> ' [ɬ|ɮ]...'). A PHON tier has no
+    # outer whitespace (ILRDF_Dicts ruling, 2026-10-16).
+    return "".join(output).strip()
 
 
 def _form_text(form: ET.Element) -> str:
