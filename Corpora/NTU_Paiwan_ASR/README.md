@@ -9,6 +9,15 @@ at National Taiwan University, comprising **read text** (participants reading pr
 **spontaneous speech** (elicited narratives and topics). Collected over two field years and published
 here in FormosanBank XML format.
 
+## Rights
+
+**License:** CC BY 4.0
+**Rights source:** grantor and date not recorded in this repository; evidence: ask maintainer
+
+The `@copyright` value was recorded without a version (`CC-BY`) until
+2026-10-16, when it was normalized to `CC BY 4.0` under POL-042 (a value that
+names no version is 4.0).
+
 ## Contents
 
 - **260 XML files**, organised by speaker under `XML/Paiwan/<Speaker>/`.

@@ -7,6 +7,15 @@ This corpus is subject to its source license and the central FormosanBank terms 
 
 This repository contains code and data for processing and structuring Formosan language dictionaries provided by the Indigenous Languages Research and Development Foundation ([ILRDF](https://www.ilrdf.org.tw/)). The project includes handling dictionary data, downloading audio for words, and organizing the data into structured XML format.
 
+## Rights
+
+**License:** CC BY-NC 4.0
+**Rights source:** grantor and date not recorded in this repository; evidence: ask maintainer
+
+The `@copyright` value was recorded without a version (`CC-BY-NC`) until
+2026-10-16, when it was normalized to `CC BY-NC 4.0` under POL-042 (a value
+that names no version is 4.0).
+
 ## Project Structure
 
 - **dicts**: Contains PDF dictionaries for 16 Formosan languages provided by the ILRDF.

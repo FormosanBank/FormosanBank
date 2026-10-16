@@ -13,6 +13,16 @@ terms in [LICENSE.md](../../LICENSE.md) and
 [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is
 prohibited without prior written permission. Wikipedia text is CC BY-SA.
 
+## Rights
+
+**License:** CC BY-SA 4.0
+**Rights source:** Wikipedia contributors (the source wikis' licence), date not recorded in this repository; evidence: ask maintainer
+
+The articles are Wikipedia text, which Wikipedia publishes under CC BY-SA. The
+`@copyright` value was recorded without a version (`CC BY-SA`) until
+2026-10-16, when it was normalized to `CC BY-SA 4.0` under POL-042 (a value
+that names no version is 4.0).
+
 ## Reproducing `XML/`
 
 The corpus is **not re-scraped**: the live wikis have moved on since the
