@@ -695,6 +695,12 @@ licence is not a licence declaration, and free text admits errors no reader
 catches (`CC NC-BY` shipped in RauDong across 20 files). Where a value names no
 version it is 4.0.
 
+**Granted versions are kept (2026-10-16).** Where a rights holder granted a
+specific earlier or ported licence version, that version is kept as granted and
+added to the vocabulary rather than mapped to 4.0 (Virginia_Fey_Dictionary:
+`CC BY-NC 3.0`; Safolu-Amis-Dictionary: `CC BY-NC-SA 3.0 TW`). The "no version
+means 4.0" rule applies only when the grant names no version.
+
 **No exceptions.** A corpus whose rights cannot be expressed as one of these
 values is not published in FormosanBank, however genuine the permission behind
 it. Permission that does not amount to a licence is recorded in the corpus
