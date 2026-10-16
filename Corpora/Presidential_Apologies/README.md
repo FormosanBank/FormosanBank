@@ -26,7 +26,7 @@ Earlier corrections in `CodeAndDocs/data/source_corrections.csv` preserve Kavala
 
 Published TEXT IDs `PA_<Language>` and zero-based S IDs remain unchanged: `0` through `32`, or `0` through `28` for Kanakanavu. The tests compare source tiers, translations and IDs with a supplied published baseline.
 
-The [published orthography decision](https://github.com/FormosanBank/FormosanBank/commit/9608caee5) uses `standardize.py --copy` and original PHON profile `Ortho113`, including the previously reviewed Thao choice. PHON follows the declared dialect column. Kanakanavu `h`/`f`, Puyuma `ē`, and Sakizaya loan `f` remain in source FORM. Current shared tools own accent handling in derived PHON; unavailable dialect sound values remain `*` without borrowing another dialect's values.
+The [published orthography decision](https://github.com/FormosanBank/FormosanBank/commit/9608caee5) uses `standardize.py --copy` and original PHON profile `Ortho113`, including the previously reviewed Thao choice. PHON follows the declared dialect column. Current shared tools own accent handling in derived PHON; unavailable dialect sound values remain `*` without borrowing another dialect's values.
 
 ## Reproduce
 
@@ -60,6 +60,7 @@ None.
 ## Notes and Issues
 
 - The source repeats Saaroa S22/S23 on physical PDF pages 22/23 beside different translations. Both records are intentional and retained.
-- Some source notation still needs interpretation under POL-027/POL-028: Puyuma S28 `parubalruk(pasenkin)` and Tsou S2/S9 `taa’uzva(taa’uiva)`, `esmiza(esmia)`, `mahiz’o(mahi’o)`. The PDFs provide no legend distinguishing lexical alternatives, spelling variants or explanatory notation. These existing readings remain intact pending that decision; the corpus is not yet ready to port.
+- Puyuma S28 `parubalruk(pasenkin)` and Tsou S2/S9 `taa’uzva(taa’uiva)`, `esmiza(esmia)`, `mahiz’o(mahi’o)` print an alternative reading in parentheses. Each is published as a variant FORM (`ver="alt"`, POL-028) of one S, recorded in `CodeAndDocs/manual_edits.xml`: the base FORM has the reading outside the parentheses and the variant the one inside. Tsou S2's two alternations vary independently, so it has three variants (maintainer ruling, 2026-10-16).
+- Puyuma uses a small number of `h`s and `f`s, which are non-standard and may reflect borrowings. It also uses a number of ē's, the phonological significance of which are unclear. For now, these have been treated as identical to `e`. The words with ē, with their number of appearances: `yēncumincu` 47, `sēhu` 27, `yēncumin` 4, `sincengyēn` 3, `uēiyēnhuy` 2, `lihuayiēn` 1, `siyēnhua` 1, `sēfu` 1, `tuytonghuēiy` 1, `uēiyēn` 1, `yiēn` 1.
 - Mandarin code-switching, explanatory quotations and numbers are source content. CJK-only parenthetical annotations follow the scoped handling above. Do not treat every parenthesis as optional spoken material.
 - English has no bilingual-PDF witness, and the PDFs do not establish the inherited dialect labels.

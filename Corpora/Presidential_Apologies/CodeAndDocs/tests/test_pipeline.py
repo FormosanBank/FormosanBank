@@ -138,19 +138,19 @@ def test_source_corrections_are_explicit() -> None:
         (Path(file.attrib["path"]).parts[0], s.attrib["id"])
         for file in manual.findall("FILE") for s in file.findall("S")
     }
-    assert {(row["language"], row["section_id"]) for row in rows} == recorded | {
-        ("Kavalan", "6"),
-        ("Saaroa", "0"),
-        ("Truku", "25"),
+    # Every correction is a manual_edits.xml record (maintainer ruling
+    # 2026-10-16); the source transcripts themselves stay as transcribed.
+    assert {(row["language"], row["section_id"]) for row in rows} == recorded - {
+        ("Puyuma", "28"),
+        ("Tsou", "2"),
+        ("Tsou", "9"),
     }
     saaroa = read_sections(
         CODE_ROOT / "Apologies" / "Saaroa" / "Saaroa.txt", 33
     )[0]
     truku = read_sections(CODE_ROOT / "Apologies" / "Truku" / "Truku.txt", 33)[25]
-    assert "mualiuhlu" in saaroa
-    assert "mualiuhlʉ" not in saaroa
-    assert "tnpusu＇,“" in truku
-    assert "tnpusu;,“" not in truku
+    assert "mualiuhlʉ" in saaroa
+    assert "tnpusu;,“" in truku
 
 
 def test_source_manifest_inventory() -> None:
@@ -228,7 +228,9 @@ def test_embedded_word_boundaries(source: str, pdf: str, missing: int) -> None:
 def test_recorded_repairs_preserve_translations_and_survive_generation() -> None:
     records = ET.parse(CODE_ROOT / "manual_edits.xml").getroot()
     specs = {spec.language: spec for spec in load_specs()}
-    assert len(records.findall(".//S")) == 9
+    # 9 source repairs, 3 corrections moved out of the .txt sources, and 3
+    # parenthetical readings published as ver="alt" variants (2026-10-16).
+    assert len(records.findall(".//S")) == 15
     for file in records.findall("FILE"):
         language = Path(file.attrib["path"]).parts[0]
         spec = specs[language]
@@ -237,10 +239,18 @@ def test_recorded_repairs_preserve_translations_and_survive_generation() -> None
         english = read_sections(spec.english_file, spec.sections)
         for record in file.findall("S"):
             sid = record.attrib["id"]
-            original = record.findtext('FORM[@kindOf="original"]')
+            forms = record.findall("FORM")
+            assert [item.get("kindOf") for item in forms] == ["original"] * len(forms)
+            assert [item.get("ver") for item in forms] == [None] + ["alt"] * (len(forms) - 1)
+            original = forms[0].text
             assert original
-            assert [item.get("kindOf") for item in record.findall("FORM")] == ["original"]
             assert not record.findall("PHON")
+            generated_variants = [
+                item.text for item in generated.findall(f'S[@id="{sid}"]/FORM[@kindOf="original"][@ver="alt"]')
+            ]
+            assert [normalize_for_alignment(t) for t in generated_variants] == [
+                normalize_for_alignment(item.text) for item in forms[1:]
+            ]
             assert {t.get(XML_LANG): t.text for t in record.findall("TRANSL")} == {
                 "zho": chinese[int(sid)], "eng": english[int(sid)]
             }

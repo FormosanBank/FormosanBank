@@ -108,8 +108,9 @@ def process_file(
     removed = 0
     changed = 0
     for sentence in root.iter("S"):
-        original = sentence.find('FORM[@kindOf="original"]')
-        standard = sentence.find('FORM[@kindOf="standard"]')
+        # The base FORMs carry no @ver; ver="alt" variants (POL-028) follow them.
+        original = next((f for f in sentence.findall('FORM[@kindOf="original"]') if f.get("ver") is None), None)
+        standard = next((f for f in sentence.findall('FORM[@kindOf="standard"]') if f.get("ver") is None), None)
         if original is None or not original.text or standard is None or not standard.text:
             continue
         new_standard, standard_count = remove_annotations(standard.text)
@@ -117,6 +118,15 @@ def process_file(
             standard.text = new_standard
             removed += standard_count
             changed += 1
+        # Standard variants get the same annotation removal; PHON comes from the base only.
+        for variant in sentence.findall('FORM[@kindOf="standard"]'):
+            if variant.get("ver") is None or not variant.text:
+                continue
+            new_variant, variant_count = remove_annotations(variant.text)
+            if variant_count:
+                variant.text = new_variant
+                removed += variant_count
+                changed += 1
         masked_original, original_count = remove_annotations(original.text)
         if standard_profile is not None:
             phon = sentence.find('PHON[@kindOf="standard"]')
