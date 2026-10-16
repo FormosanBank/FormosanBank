@@ -21,7 +21,10 @@ prohibited without prior written permission. Wikipedia text is CC BY-SA.
 The articles are Wikipedia text, which Wikipedia publishes under CC BY-SA. The
 `@copyright` value was recorded without a version (`CC BY-SA`) until
 2026-10-16, when it was normalized to `CC BY-SA 4.0` under POL-042 (a value
-that names no version is 4.0).
+that names no version is 4.0). The same one-attribute change was made in the
+POL-035 snapshot (`CodeAndDocs/pre_correction_snapshot/`, 13,278 files),
+because `make_xml.sh` copies that snapshot into `XML/` and a rebuild must
+reproduce the new value.
 
 ## Reproducing `XML/`
 
