@@ -363,7 +363,7 @@ def safolu_corpus():
         text_id=SAFOLU_TEXT_ID, folder_name="Safolu",
         citation="Tsai, Chung-Han (Safolu Kacaw Lalanges). (n.d.). Amis dictionary. Provided to the g0v Amis Moedict project.",
         bibtex_citation="@misc{tsai_amis_dictionary, author={{Tsai Chung-Han (Safolu Kacaw Lalanges)}}, title={Amis dictionary}, year={n.d.}, note={Provided to the g0v Amis Moedict project}}",
-        copyright="CC BY-NC according to the frozen amis-safolu README; current data source is g0v/amis-moedict docs/s.",
+        copyright="CC BY-NC-SA 3.0 TW",
         source=f"Safolu/Tsai dictionary, g0v/amis-moedict@{manifest['source_commit']} docs/s.",
         glottocode="amis1246", dialect="Coastal",
         extraction_note="Every source example field is retained or recorded as unresolved or apparatus. Shared tools own downstream processing.",
