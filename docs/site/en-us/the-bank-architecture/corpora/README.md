@@ -95,4 +95,3 @@ In addition to the wide range of corpora already incorporated into FormosanBank,
 * ​hala saku la (text - Atayal)
 * Tung's Descriptive study of Tsou (Tsou)
 * Jeng (1992) Topic and focus in Bunun (Bunun)
-* Blust's Thao Dictionary (Thao)
