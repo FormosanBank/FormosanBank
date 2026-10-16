@@ -12,11 +12,18 @@
 #   PYTHON     interpreter to use (default: <bank>/.venv/bin/python)
 #   CTABLES    conversion-table dir (default: <bank>/Orthographies/ConversionTables)
 #   FB_DIALECTS  dialects.csv to resolve dialect/glottocode (default: <bank>/dialects.csv)
+#   NTU_BUILD_OUT  install here instead of ../../XML (trial builds; XML/ untouched)
+#   NTU_BUILD_CHECKPOINT=pre-cleanup
+#              skip the clean-up steps -- remove_empty_translations and the prune
+#              of unsupported W/M tiers. They exist
+#              to deal with what could not be fixed, so a trial of a *fix* is
+#              compared before them (qa/try_gloss_shift_repairs.sh does this).
+#              Never publish a checkpoint build.
 #
 # Each subcorpus runs the same three phases:
 #   A. builder      pipeline_{grammar,sentences,stories}.py: JSON -> XML
 #   B. repairs      shared FormosanBank cleaning + the corpus repair scripts
-#   C. tiers        prune/borrow, id alignment, standard tier + PHON (Ortho94)
+#   C. tiers        punctuation morphemes, prune, id alignment, standard tier + PHON (Ortho94)
 #
 # Every phase is idempotent; rerunning is safe.
 
@@ -29,7 +36,9 @@ CODEDOCS="$(dirname "$PIPE")"
 CORPUS="$(dirname "$CODEDOCS")"
 BANK="$(cd "$CORPUS/../.." && pwd)"
 SCR="$CODEDOCS/scripts"
-XML="$CORPUS/XML"
+XML="${NTU_BUILD_OUT:-$CORPUS/XML}"
+CHECKPOINT="${NTU_BUILD_CHECKPOINT:-}"
+case "$CHECKPOINT" in ""|pre-cleanup) ;; *) echo "unknown NTU_BUILD_CHECKPOINT: $CHECKPOINT" >&2; exit 2 ;; esac
 
 PY="${PYTHON:-$BANK/.venv/bin/python}"
 [[ -x "$PY" ]] || PY="$(command -v python3)"
@@ -53,19 +62,32 @@ common_repairs() {   # $1 = work dir
   run "clean_xml"              "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$W"
   TAIL=0 run "normalize_serialization (lxml)" "$SCR/normalize_serialization.py" --style lxml "$W"
   run "repair_s_gloss_shift"   "$PIPE/repair_s_gloss_shift.py" --xml_dir "$W"
+  TAIL=40 run "borrow_shift_blank_glosses" "$PIPE/borrow_shift_blank_glosses.py" --xml_dir "$W" \
+      --codedocs "$CODEDOCS" --subcorpus grammar --report "$CORPUS/logs/gloss_shift_borrowed_Grammar.tsv"
 }
 
 # ---------------------------------------------------------------- phase C
 # Tier construction, shared by all three subcorpora.
-finish_tiers() {     # $1 = work dir
-  local W="$1"
+finish_tiers() {     # $1 = work dir, $2 = subcorpus name (for report file names)
+  local W="$1" SUB="$2"
   run "resolve_slash_alternatives" "$PIPE/resolve_slash_alternatives.py" --xml_dir "$W"
-  run "prune non-conforming M"     "$PIPE/apply_prune_and_mirror.py" --xml_dir "$W" --only prune
-  run "borrow_missing_morphemes"   "$PIPE/borrow_missing_morphemes.py" --xml_dir "$W"
+  # Punctuation-only morphemes (ruling 2026-09-28): a repair, not clean-up.
+  # Escalations -- cases the rule does not resolve -- go to logs/ for review.
+  # These two print every counter (TAIL=40): the 2026-09-08 ruling asks for
+  # the numbers withdrawn or rebuilt to be reported, and tail -2 hid them.
+  TAIL=40 run "drop_punctuation_morphemes" "$PIPE/drop_punctuation_morphemes.py" --xml_dir "$W" \
+      --report "$CORPUS/logs/punctuation_morpheme_escalations_${SUB}.tsv"
+  TAIL=40 cleanup "prune non-conforming W/M"   "$PIPE/apply_prune_and_mirror.py" --xml_dir "$W"
   run_opt "mark_original_glosses"   "$SCR/mark_original_glosses.py" --xml-dir "$W"
   run "align_ids"                  "$PIPE/align_ids.py" --xml_dir "$W"
   step "standard tier + PHON (Ortho94)"
   "$PIPE/run_standard_and_phon.sh" "$W" "$CTABLES" 2>&1 | tail -4
+}
+
+# A clean-up step: skipped at the pre-cleanup checkpoint (see the header).
+cleanup() {
+  if [[ "$CHECKPOINT" == pre-cleanup ]]; then step "$1 (skipped: pre-cleanup checkpoint)"; return 0; fi
+  run "$@"
 }
 
 # mark_original_glosses is witness-gated and conservatively skips files whose
@@ -88,14 +110,14 @@ build_grammar() {
   local W; W="$(mktemp -d)"; trap 'rm -rf "$W"' RETURN
   step "GRAMMAR: builder (pipeline_grammar.py)"
   "$PY" "$PIPE/pipeline_grammar.py" --json "$CODEDOCS/grammar" --out "$W" \
-        --steps 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,21,22 2>&1 | tail -3
+        --steps 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,21,22,23,24 2>&1 | tail -3
   common_repairs "$W"
   run "convert_infix_notation"          "$SCR/convert_infix_notation.py" --xml_dir "$W"
   run "split_optional_parentheticals"   "$SCR/split_optional_parentheticals.py" --xml_dir "$W"
   run "resolve_inline_parentheticals"   "$SCR/resolve_inline_parentheticals.py" --xml_dir "$W"
-  run "remove_empty_translations"       "$SCR/remove_empty_translations.py" --xml-dir "$W"
+  cleanup "remove_empty_translations"   "$SCR/remove_empty_translations.py" --xml-dir "$W"
   run "propagate_clitic_boundaries"     "$SCR/propagate_clitic_boundaries.py" --xml_dir "$W"
-  finish_tiers "$W"
+  finish_tiers "$W" Grammar
   install_into "$W" Grammar
 }
 
@@ -105,9 +127,9 @@ build_flat() {       # $1 = sentences|stories
   W="$(mktemp -d)"; trap 'rm -rf "$W"' RETURN
   case "$kind" in
     sentences) json="$CODEDOCS/sentence"; out=Sentences; builder=pipeline_sentences.py
-               steps=0,1,2,3,4,5,7,8,9,10,11,14,15,18 ;;
+               steps=0,1,2,3,4,5,7,8,9,10,11,14,15,18,19 ;;
     stories)   json="$CODEDOCS/story";    out=Stories;  builder=pipeline_stories.py
-               steps=0,1,2,3,4,5,7,8,9,10,11,14,15,16,18 ;;
+               steps=0,1,2,3,4,5,7,8,9,10,11,14,15,16,18,19 ;;
   esac
   step "${out^^}: builder ($builder)"
   "$PY" "$PIPE/$builder" --json "$json" --out "$W" --steps "$steps" 2>&1 | tail -3
@@ -116,6 +138,8 @@ build_flat() {       # $1 = sentences|stories
   run "repair_l2_markers"      "$SCR/repair_l2_markers.py" --xml_dir "$W"
   run "borrow_segmentation"    "$SCR/borrow_segmentation.py" --xml_dir "$W" --source_dir "$CODEDOCS"
   run "repair_s_gloss_shift"   "$PIPE/repair_s_gloss_shift.py" --xml_dir "$W"
+  TAIL=40 run "borrow_shift_blank_glosses" "$PIPE/borrow_shift_blank_glosses.py" --xml_dir "$W" \
+      --codedocs "$CODEDOCS" --subcorpus "$(basename "$json")" --report "$CORPUS/logs/gloss_shift_borrowed_${out}.tsv"
   run "uniquify_sentence_ids"  "$SCR/uniquify_sentence_ids.py" --xml_dir "$W"
   run "remove_annotation_codes" "$SCR/remove_annotation_codes.py" --xml_dir "$W" --source_dir "$CODEDOCS"
   run "fix_double_encoded_glosses"      "$SCR/fix_double_encoded_glosses.py" --xml_dir "$W"
@@ -123,9 +147,9 @@ build_flat() {       # $1 = sentences|stories
   run "collapse_gloss_only_alternations" "$SCR/collapse_gloss_only_alternations.py" --xml_dir "$W"
   run "resolve_residual_optional_parens" "$SCR/resolve_residual_optional_parens.py" --xml_dir "$W"
   run "split_optional_parentheticals"   "$SCR/split_optional_parentheticals.py" --xml_dir "$W"
-  run "remove_empty_translations"       "$SCR/remove_empty_translations.py" --xml-dir "$W"
+  cleanup "remove_empty_translations"   "$SCR/remove_empty_translations.py" --xml-dir "$W"
   run "propagate_clitic_boundaries"      "$SCR/propagate_clitic_boundaries.py" --xml_dir "$W"
-  finish_tiers "$W"
+  finish_tiers "$W" "$out"
   install_into "$W" "$out"
 }
 
