@@ -13,7 +13,9 @@ treatments (maintainer ruling 2026-09-07):
     spelling variant    the same utterance written differently --
                         'hiya' / 'hiyaʼ', 'musa' / 'musaʼ', 'betunx' /
                         'baytunux'. One record; the other spellings ride
-                        along as FORM[@kindOf="alternate"].
+                        along as FORM[@kindOf="original" ver="alt"]
+                        (POL-028; standardize.py derives the standard
+                        variant).
 
     lexical alternative different wording -- 'mʼzwi' / 'mcisal',
                         'tanux' / 'mnaw tay tanux', 'sinsiy' /
@@ -38,12 +40,23 @@ the accepted cost of publishing only what we are confident of.
 
 A record split by numbering resolves each example INDEPENDENTLY: an example
 the cascade cannot read no longer takes its siblings with it.
+
+Split records are named by POL-028: the first reading keeps the id, then
+-opt, -opt3, ... Maintainer rulings for named main sentences
+(source_data/alternative_rulings.json) replace the automatic resolution for
+those records. Every record the resolver rewrites, splits or deletes -- and
+every ruled record except the two published without translation -- has
+printed alternatives in its source, so its recordings are moved out of the S
+and published as untranscribed audio at TEXT level (maintainer ruling
+2026-10-16, ILRDF only). Main sentences no longer in the 2026 source (S with
+@source) are left exactly as main published them.
 """
 from __future__ import annotations
 
 import argparse
 import csv
 import itertools
+import json
 import re
 from functools import lru_cache
 from dataclasses import dataclass, field
@@ -455,13 +468,87 @@ def split_record(text: str) -> tuple[list[Reading], list[str]]:
     return readings, dropped
 
 
-_SUFFIX = "abcdefghijklmnopqrstuvwxyz"
+XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
+_RULINGS = Path(__file__).resolve().parent / "source_data" / "alternative_rulings.json"
+
+
+def split_id(base: str, offset: int) -> str:
+    """POL-028 naming: the first reading keeps the id, then -opt, -opt3, ..."""
+    if offset == 0:
+        return base
+    return f"{base}-opt" if offset == 1 else f"{base}-opt{offset + 1}"
+
+
+def load_rulings(path: Path = _RULINGS) -> dict[str, dict]:
+    """Maintainer rulings that replace the automatic resolution, by main id."""
+    if not path.exists():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return {item["main_id"]: item for item in payload["records"]}
+
+
+def _untranscribe(root, sentence, counts) -> None:
+    """Move a record's recordings to TEXT level (untranscribed audio).
+
+    Maintainer ruling 2026-10-16 (ILRDF only): when the source prints
+    alternatives in one item, its recording is not attached to any S -- it
+    is published as untranscribed audio. TEXT-level AUDIO precedes every S
+    (XSD), so each is appended after the AUDIO elements already there.
+    """
+    position = 0
+    while position < len(root) and root[position].tag == "AUDIO":
+        position += 1
+    for audio in sentence.findall("AUDIO"):
+        sentence.remove(audio)
+        audio.tail = None
+        audio.set("source", f"ILRDF example {sentence.get('id')}; its source "
+                            "text prints alternatives")
+        root.insert(position, audio)
+        position += 1
+        counts["untranscribed_audio"] += 1
+
+
+def _ruled(sentence, ruling: dict, counts) -> list:
+    """Build the S records a maintainer ruling publishes for one main record."""
+    form = sentence.find('FORM[@kindOf="original"]')
+    if form.text != ruling["source_form"]:
+        raise ValueError(
+            f"{sentence.get('id')}: ruling expects source {ruling['source_form']!r}, "
+            f"record has {form.text!r}")
+    audio = [a for a in sentence.findall("AUDIO")]
+    records = []
+    for item in ruling["publish"]:
+        element = etree.Element("S", id=item["id"])
+        for index, text in enumerate(item["forms"]):
+            node = etree.SubElement(element, "FORM", kindOf="original")
+            if index:
+                node.set("ver", "alt")
+            node.text = text
+            if index == 0 and text != ruling["source_form"]:
+                node.set("notes", f"source: {ruling['source_form']}")
+        for index, text in enumerate(item["translations"]):
+            node = etree.SubElement(element, "TRANSL")
+            node.set(XML_LANG, "zho")
+            if index:
+                node.set("ver", "alt")
+            node.text = text
+        if ruling["audio"] == "on_S":
+            for a in audio:
+                element.append(etree.fromstring(etree.tostring(a)))
+        records.append(element)
+        counts["ruled_published"] += 1
+    counts["ruled_records"] += 1
+    return records
 
 
 def process(xml_dir: Path, apply: bool, report: Path | None) -> dict[str, int]:
     counts = {"records": 0, "unchanged": 0, "rewritten": 0, "published": 0,
-              "deleted": 0, "fragments_dropped": 0, "alternates": 0}
+              "deleted": 0, "fragments_dropped": 0, "alternates": 0,
+              "untranscribed_audio": 0, "ruled_records": 0, "ruled_published": 0,
+              "withdrawn_as_on_main": 0}
     rows: list[dict[str, object]] = []
+    rulings = load_rulings()
+    used_rulings: set[str] = set()
     for path in sorted(xml_dir.rglob("*.xml")):
         is_dictionary = path.name.endswith("_dictionary.xml")
         tree = etree.parse(str(path))
@@ -473,6 +560,28 @@ def process(xml_dir: Path, apply: bool, report: Path | None) -> dict[str, int]:
                 continue
             counts["records"] += 1
             source = form.text
+            if sentence.get("source"):
+                # A main sentence no longer in the 2026 source: published as
+                # main published it, recording included (maintainer ruling
+                # 2026-10-15, "Keep them (marked as from the 2024 scrape)").
+                counts["withdrawn_as_on_main"] += 1
+                continue
+            ruling = None if is_dictionary else rulings.get(sentence.get("id"))
+            if ruling is not None:
+                used_rulings.add(ruling["main_id"])
+                index = list(root).index(sentence)
+                replacement = _ruled(sentence, ruling, counts)
+                if ruling["audio"] != "on_S":
+                    _untranscribe(root, sentence, counts)
+                    index = list(root).index(sentence)
+                for offset, element in enumerate(replacement):
+                    root.insert(index + offset, element)
+                root.remove(sentence)
+                rows.append({"id": sentence.get("id"),
+                             "verdict": f"ruled:{ruling['ruling']}",
+                             "fragment": "", "source": source})
+                changed = True
+                continue
             resolve = split_headword if is_dictionary else split_record
             readings, dropped = resolve(source)
             for fragment in dropped:
@@ -481,6 +590,7 @@ def process(xml_dir: Path, apply: bool, report: Path | None) -> dict[str, int]:
                              "fragment": fragment, "source": source})
             if not readings:
                 counts["deleted"] += 1
+                _untranscribe(root, sentence, counts)
                 root.remove(sentence)
                 changed = True
                 continue
@@ -492,16 +602,16 @@ def process(xml_dir: Path, apply: bool, report: Path | None) -> dict[str, int]:
             counts["published"] += len(readings)
             rows.append({"id": sentence.get("id"), "verdict": "resolved",
                          "fragment": "", "source": source})
+            _untranscribe(root, sentence, counts)
             index = list(root).index(sentence)
             for offset, reading in enumerate(readings):
                 clone = etree.fromstring(etree.tostring(sentence))
-                if len(readings) > 1:
-                    clone.set("id", f"{sentence.get('id')}_{_SUFFIX[offset]}")
+                clone.set("id", split_id(sentence.get("id"), offset))
                 original = clone.find('FORM[@kindOf="original"]')
                 original.text = reading.text
                 original.set("notes", f"source: {source}")
                 for position, spelling in enumerate(reading.alternates, start=1):
-                    node = etree.Element("FORM", kindOf="alternate")
+                    node = etree.Element("FORM", kindOf="original", ver="alt")
                     node.text = spelling
                     clone.insert(position, node)
                     counts["alternates"] += 1
@@ -509,12 +619,17 @@ def process(xml_dir: Path, apply: bool, report: Path | None) -> dict[str, int]:
             root.remove(sentence)
             changed = True
         if apply and changed:
+            etree.indent(root, space="    ")
             tree.write(str(path), encoding="UTF-8", xml_declaration=True)
+    unused = sorted(set(rulings) - used_rulings)
+    if unused:
+        raise ValueError(f"rulings with no target record: {unused}")
     if report is not None and rows:
         report.parent.mkdir(parents=True, exist_ok=True)
         with report.open("w", encoding="utf-8", newline="") as handle:
             writer = csv.DictWriter(
-                handle, fieldnames=["id", "verdict", "fragment", "source"])
+                handle, fieldnames=["id", "verdict", "fragment", "source"],
+                lineterminator="\n")
             writer.writeheader()
             writer.writerows(rows)
     return counts
@@ -534,7 +649,11 @@ def main() -> int:
           f"{c['rewritten']} records rewritten into {c['published']} "
           f"({c['alternates']} alternate spellings), {c['deleted']} deleted, "
           f"{c['fragments_dropped']} fragments dropped, "
-          f"{c['unchanged']} unchanged ({c['records']} examined)")
+          f"{c['unchanged']} unchanged ({c['records']} examined); "
+          f"{c['ruled_records']} records replaced by maintainer rulings "
+          f"({c['ruled_published']} S); {c['untranscribed_audio']} recordings "
+          f"moved to untranscribed audio; {c['withdrawn_as_on_main']} 2024 "
+          f"sentences left as main published them")
     return 0
 
 

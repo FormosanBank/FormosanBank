@@ -1,72 +1,69 @@
 # Sentence and entry ids
 
-Ids are `<Language>_<source GUID>`, e.g.
-`Amis_20a69646-e70a-f011-bd65-00155db40116`. Dictionary entries take a `d`
-before the GUID; split records take a trailing `_a`, `_b`, `_c`.
+Two kinds of sentence id are published side by side (POL-037; maintainer
+ruling 2026-10-15: *"Keep main's ids for the 96,988 (frozen in the ledger);
+GUID ids only for new records."*):
 
-## Why not a content hash
+| Kind | Example | Which records |
+|---|---|---|
+| main's id, `<Language>_<n>` | `Amis_0` | every sentence FormosanBank published before the 2026 rebuild that is still published |
+| source GUID, `<Language>_<GUID>` | `Amis_20a69646-e70a-f011-bd65-00155db40116` | sentences new in the 2026 source |
 
-The 2026-08-23 build derived ids from a truncated SHA-256 of the sentence's own
-original FORM. That is immune to upstream reordering, but it stabilises the
-wrong axis: the id survives only while the text never changes. Every OCR fix,
-POL-001 restoration, or punctuation correction retires one id and mints
-another — the worst possible behaviour for a corpus whose stated purpose is
-progressive source-fidelity correction.
+Dictionary entries are always `<Language>_d<GUID>` (`d` for dictionary).
+A record that is split into several `S` follows POL-028: the first keeps the
+id, the second takes `-opt`, a third `-opt3`, and so on
+(`Atayal_3715`, `Atayal_3715-opt`).
 
-It also forecloses `manual_edits.xml`. `apply_manual_edits.py` matches records
-by `S/@id`, while POL-030 and POL-002 send hand edits to the *original* tier —
-the very tier the hash is derived from. A recorded edit changes the text, the
-next build mints a different id, and the record targets an id that no longer
-exists: an orphaned no-op that silently does nothing.
+## Main's ids are frozen, not recomputed
 
-## Why the source GUID
+`match_main_ids.py` matched every main sentence to the 2026 source **once**,
+and its output is committed as `source_data/main_id_ledger.csv`. The build
+reads the ledger and never re-matches, so a rebuild cannot move an id.
 
-The ILRDF API assigns a GUID to every word, explanation, and sentence item.
-Verified across all 16 committed snapshots on 2026-09-05:
+Matching, per main sentence:
 
-- 211,595 sentence items, **0** without an id
-- 210,502 distinct GUIDs, **0** carrying more than one distinct text,
-  translation, or audio set
-- **0** GUIDs appearing in more than one language
-- every GUID matches the canonical 8-4-4-4-12 shape
-- the sentence, word and explanation GUID spaces are pairwise **disjoint**
-  (210,502 / 144,029 / 169,859, zero overlap)
+1. its original FORM equals the 2026 text after normalisation (NFC;
+   `ʼ ’ ‘` → `'`; whitespace runs collapsed);
+2. otherwise, the Chinese translation is identical and the headword /
+   explanation / example position in main's old audio URL
+   (`…/Audio/<lang>/<headword>_{n}_@_<explanation>.<example>.mp3`) is the
+   same;
+3. otherwise, the Chinese translation is identical to exactly one 2026
+   sentence item in the language (`ZH_UNIQUE_FALLBACK`; this is what the
+   2026-10-15 review's matcher did, and it catches upstream edits that also
+   renamed the headword).
 
-## Why the GUID is carried whole
+| Ledger status | Count | What is published |
+|---|---:|---|
+| `kept` | 97,062 | the 2026 record, under the main id |
+| `merged-kept` | 259 | main published the sentence 2–3 times, the 2026 source once: the lowest main id is kept, and its `S` carries every distinct translation of the copies |
+| `merged-retired` | 261 | not published; listed in `../old_to_new_ids.csv` |
+| `withdrawn` | 1,255 | no 2026 record: published as main published it, from the POL-035 snapshot in `source_data/main_2024/`, marked with `S/@source` |
 
-Truncating to 16 hex digits buys brevity and costs the two things that matter:
-an id can no longer be grepped straight back to the snapshot, and a truncated
-key carries a collision risk the whole key does not. Checked before adopting
-the long form: `S/@id` is `xs:string` in the XSD with no format rule (V039
-checks uniqueness within a file, V081 checks `TEXT/@id` across corpora), and
-hyphenated `S` ids are already published in NTUFormosanCorpus (12,410),
-Song-Kanakanavu-Grammar (1,569) and HundredPaiwanStories (5).
+Of the 97,062 `kept`, 73 are replaced by the maintainer's per-sentence
+rulings in `source_data/alternative_rulings.json` (4 of them publish no `S`)
+and one (Puyuma_888, repair #3) is withdrawn; those five retired ids are also
+in `../old_to_new_ids.csv`.
 
-The `d` on entry ids is legibility, not collision insurance — the GUID spaces
-are already disjoint. The GUID still appears verbatim inside the id, so
-grepping a raw GUID finds the record either way.
+## Why new records carry the source GUID
 
-## Dedup and the canonical id
+The ILRDF API assigns a GUID to every word, explanation, and sentence item
+(verified across all 16 committed snapshots on 2026-09-05: 210,502 distinct
+sentence GUIDs, none carrying more than one text, none shared between
+languages). A GUID id survives our corrections to the text, which a hash of
+the text would not, and it is what lets `manual_edits.xml` (which matches
+records by `S/@id`) work at all. The GUID is carried whole so an id can be
+grepped straight back to the snapshot.
 
-The same sentence often appears under several headwords. 21,057 distinct texts
-carry two or more GUIDs (36,421 extra GUIDs). Records are merged by normalized
-original text, keeping every distinct translation, and the merged record's id
-is the **lowest GUID in the group**.
+The same sentence often appears under several headwords; 2026 records are
+merged by normalised original text, and a new record's id is the **lowest
+GUID in the group**.
 
-One consequence to know: a correction that makes two previously distinct texts
-identical will merge them and retire one id. That is rare, `tests/test_ids.py`
-fails loudly if ids stop being unique, and `source_data/published_ids.csv`
-catches it as a declared change rather than a silent one.
+## The two ledgers
 
-## Splitting
-
-A record that the source packed with more than one example, or with
-alternatives that resolve into separate readings, becomes several `S` elements
-whose ids take a letter suffix: `Atayal_<guid>_a`, `_b`, `_c`. Each is a
-declared addition in `published_ids.csv`; the parent row becomes
-`status=split-parent`.
-
-## Migration from the 2026-08-23 build
-
-Every id changes. No id from that build is preserved. Nothing downstream had
-consumed them — it was never merged.
+- `source_data/main_id_ledger.csv` — input. Which 2026 record keeps which
+  main id. Rewritten only by `match_main_ids.py --write`, deliberately.
+- `source_data/published_ids.csv` — lockfile over the built tree.
+  `generate_xml.py audit` (run by `validate.sh`) fails if an id disappears
+  without being declared, if the XML has an id the ledger does not declare,
+  or if an id's source GUIDs change.

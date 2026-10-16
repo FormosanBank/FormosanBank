@@ -10,13 +10,15 @@
 #
 #   1. review the snapshot diff — an upstream edit can add, remove or reword
 #      records, and each of those moves published ids;
-#   2. run make_xml.sh to rebuild XML/ from the new snapshots;
+#   2. run generate_xml.sh to rebuild XML/ from the new snapshots (the
+#      frozen main-id ledger, source_data/main_id_ledger.csv, names 2026
+#      records by GUID; a refresh can orphan rows, which the build reports);
 #   3. regenerate the id ledger and review it:
 #        python generate_xml.py ledger --write
 #      Every added or removed id must be a deliberate, explained change.
 #
 # To reproduce the published corpus you do NOT need this script. Use
-# make_xml.sh, which works entirely from the committed snapshots.
+# generate_xml.sh, which works entirely from the committed snapshots.
 set -euo pipefail
 
 CODEDOCS="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
@@ -30,6 +32,6 @@ Snapshots refreshed. This changed the source of truth.
 
 Next:
   1. review the snapshot diff
-  2. ./make_xml.sh
+  2. ./generate_xml.sh
   3. python generate_xml.py ledger --write   (then review the id diff)
 NEXT

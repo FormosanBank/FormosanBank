@@ -19,5 +19,13 @@
       "reason": "The target is the lesson number 30, not a translation. The source FORM and any source audio remain in XML.",
       "translation": "30"
     }
+  ],
+  "headword_sense_exclusions": [
+    {
+      "language": "Saisiyat",
+      "headword": "taSira:ma'",
+      "gloss": "不小心按到，請刪除！（沒有其他意思了。）",
+      "reason": "Editor note, not a sense (\"pressed by accident, please delete! (there is no other meaning.)\"). Maintainer ruling 2026-10-16: remove it."
+    }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "note": "Source-fidelity repairs to the ORIGINAL tier, applied through manual_edits.xml (POL-030). Each removes material the ILRDF API emitted that is not Formosan text. Bracketed Chinese glosses of place names -- 'takaw(高雄)', 'makazayazaya(瑪家村)' -- are deliberately NOT repaired: those are source annotation, not leaked text.",
+  "note": "Source-fidelity repairs to the ORIGINAL tier, applied through manual_edits.xml (POL-030). Each removes material the ILRDF API emitted that is not Formosan text. Bracketed Chinese glosses of place names -- 'takaw(高雄)', 'makazayazaya(瑪家村)' -- are deliberately NOT repaired: those are source annotation, not leaked text. Each repair is applied as an edit to the original tier, except action=\"withdraw\", which removes the record from publication (generate_xml.py) and publishes its recording as untranscribed audio.",
   "repairs": [
     {
       "guid": "9ad0db8f-e90a-f011-bd65-00155db40116",
@@ -23,8 +23,9 @@
       "language": "Puyuma",
       "class": "embedded-label",
       "before": "sagar mi mabareturetuk dratu buwa dra gamut. 請刪除",
-      "after": "sagar mi mabareturetuk dratu buwa dra gamut.",
-      "evidence": "The ILRDF API returned a part-of-speech category label in place of the word itself. '數詞' is the label for 'numeral'; the replacement is the numeral the sentence needs, attested elsewhere in the same language snapshot. '請刪除' is Chinese for 'please delete' -- an editor instruction, not language data."
+      "evidence": "The ILRDF API returned a part-of-speech category label in place of the word itself. '數詞' is the label for 'numeral'; the replacement is the numeral the sentence needs, attested elsewhere in the same language snapshot. '請刪除' is Chinese for 'please delete' -- an editor instruction, not language data.",
+      "action": "withdraw",
+      "ruling": "Maintainer ruling 2026-10-16 (repair #3, Puyuma_888): the editor note 請刪除 (\"please delete\") is an instruction to remove the record, so the sentence is NOT published; its recording is published as untranscribed audio."
     },
     {
       "guid": "0b29120a-f70a-f011-bd65-00155db40116",
@@ -48,7 +49,8 @@
       "class": "embedded-label",
       "before": "hlaʼalua maci kapita數詞ia ihlaisa macahlia malialualu.",
       "after": "hlaʼalua maci kapitanʉia ihlaisa macahlia malialualu.",
-      "evidence": "The ILRDF API returned a part-of-speech category label in place of the word itself. '數詞' is the label for 'numeral'; the replacement is the numeral the sentence needs, attested elsewhere in the same language snapshot. '請刪除' is Chinese for 'please delete' -- an editor instruction, not language data. 'kapitanʉ' is a Saaroa dictionary headword and appears in 16 sentences."
+      "evidence": "The ILRDF API returned a part-of-speech category label in place of the word itself. '數詞' is the label for 'numeral'; the replacement is the numeral the sentence needs, attested elsewhere in the same language snapshot. '請刪除' is Chinese for 'please delete' -- an editor instruction, not language data. 'kapitanʉ' is a Saaroa dictionary headword and appears in 16 sentences.",
+      "ruling": "Maintainer ruling 2026-10-16 (repair #7, Saaroa_3575): accepted as kapitanʉia. Unlike the other four 數詞 repairs, which restore ʉnʉmʉ, this one reads the damaged span as nʉ."
     },
     {
       "guid": "8a2e120a-f70a-f011-bd65-00155db40116",
@@ -101,10 +103,11 @@
     {
       "guid": "69ee8e4c-e70a-f011-bd65-00155db40116",
       "language": "Thao",
-      "class": "trailing-chinese",
+      "class": "place-name-annotation",
       "before": "haya wa pruq maqa sa Thau a tinulhanaz zain Sulikhiin, numa sa Shpuut muntal mzai 水裏坑.",
-      "after": "haya wa pruq maqa sa Thau a tinulhanaz zain Sulikhiin, numa sa Shpuut muntal mzai",
-      "evidence": "Chinese editorial text welded onto the end of the Formosan sentence. In every case the Chinese is either a copy of the record's own translation or an editor's note; none of it is Formosan."
+      "after": "haya wa pruq maqa sa Thau a tinulhanaz zain Sulikhiin, numa sa Shpuut muntal mzai (水裏坑).",
+      "evidence": "Chinese editorial text welded onto the end of the Formosan sentence. In every case the Chinese is either a copy of the record's own translation or an editor's note; none of it is Formosan.",
+      "ruling": "Maintainer ruling 2026-10-16 (repair #10): keep the place name, in parentheses, as an annotation: \"... muntal mzai (水裏坑).\""
     },
     {
       "guid": "cf787f58-e70a-f011-bd65-00155db40116",

@@ -22,11 +22,14 @@ import json
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
+from generate_xml import text_attributes
+import main_2024
 from ilrdf_source import (
     LANGUAGES,
     XML_LANG,
     Entry,
     extract_entries,
+    load_sense_exclusions,
     root_attributes,
     verify_and_load_snapshot,
 )
@@ -37,8 +40,11 @@ SNAPSHOT_DIR = SOURCE_DATA / "snapshots"
 XML_DIR = BASE.parent / "XML"
 
 
-def _build_tree(language: str, entries: list[Entry], snapshot_date: str) -> ET.Element:
-    attributes = dict(root_attributes(language, snapshot_date))
+def _build_tree(language: str, entries: list[Entry], snapshot_date: str,
+                main_attrs: dict[str, str]) -> ET.Element:
+    # Dialect and glottocode as main publishes them (ruling §7): without
+    # them the Truku dictionary would be counted as Seediq.
+    attributes = dict(text_attributes(language, snapshot_date, main_attrs))
     attributes["id"] = f"{attributes['id']}_dictionary"
     root = ET.Element("TEXT", attributes)
     for entry in entries:
@@ -66,10 +72,13 @@ def run(languages: list[str]) -> int:
         (SOURCE_DATA / "source_manifest.json").read_text(encoding="utf-8"))
     snapshot_date = manifest["snapshot_commit_date"]
     total_entries = total_senses = 0
+    sense_exclusions = load_sense_exclusions(SOURCE_DATA / "source_content_exclusions.json")
+    used: set[tuple[str, str, str]] = set()
     for language in languages:
         snapshot = verify_and_load_snapshot(language, SNAPSHOT_DIR, manifest)
-        entries = extract_entries(language, snapshot)
-        root = _build_tree(language, entries, snapshot_date)
+        entries = extract_entries(language, snapshot, sense_exclusions, used)
+        main_attrs, _ = main_2024.load(language)
+        root = _build_tree(language, entries, snapshot_date, main_attrs)
         path = XML_DIR / language / f"{language}_dictionary.xml"
         _write_tree(root, path)
         senses = sum(len(e.senses) for e in entries)
@@ -77,6 +86,11 @@ def run(languages: list[str]) -> int:
         total_senses += senses
         print(f"{language}: {len(entries)} entries, {senses} senses -> {path.name}")
     print(f"total: {total_entries} entries, {total_senses} senses")
+    unused = {k for k in sense_exclusions if k[0] in languages} - used
+    if unused:
+        print(f"error: unused headword-sense exclusions: {sorted(unused)}")
+        return 1
+    print(f"headword senses excluded as editor notes: {len(used)}")
     return 0
 
 

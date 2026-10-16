@@ -1,0 +1,1293 @@
+{
+ "_note": "Maintainer rulings 2026-10-15/16 on main sentences whose source text prints alternatives. Applied by split_alternatives.py in place of its automatic resolution; source_form is the record's original FORM after source repairs, and the build fails if it no longer matches. publish lists the exact S records (forms[0] is the base FORM, later forms are ver=\"alt\"; an empty translations list publishes no TRANSL). audio: 'untranscribed' puts the record's recordings at TEXT level (the source printed alternatives), 'on_S' keeps them in the S.",
+ "rulings_key": {
+  "retain": "one S, printed text kept with its parentheses, translation as printed",
+  "remove": "one S, the parenthesised content removed; translation as printed (Thao_2520: 我自己種的稻子)",
+  "b": "two S, same translation; second id <id>-opt",
+  "c": "one S, base FORM + ver=\"alt\" FORM",
+  "a": "two S, each with its own translation",
+  "notransl": "one S, no TRANSL",
+  "delete": "no S; recording published as untranscribed audio",
+  "thao-one-form": "Thao one-to-many split: one S, the parenthetical deleted",
+  "thao-alt-variant": "Thao one-to-many split: one S with the given ver=\"alt\" reading"
+ },
+ "records": [
+  {
+   "main_id": "Atayal_1516",
+   "ruling": "retain",
+   "source_form": "cyux mahuw trakis kwaraʼ kkneril qalang myan(cyux kmluh trakis).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Atayal_1516",
+     "forms": [
+      "cyux mahuw trakis kwara' kkneril qalang myan(cyux kmluh trakis)."
+     ],
+     "translations": [
+      "我們部落的婦女在拗小米穗(收割小米)。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Atayal_2728",
+   "ruling": "c",
+   "source_form": "cyux hmzinas lubung/langu qsyaʼ qu takusi qasa ru ppcicis qsyaʼ lwah.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Atayal_2728",
+     "forms": [
+      "cyux hmzinas lubung qsya' qu takusi qasa ru ppcicis qsya' lwah.",
+      "cyux hmzinas langu qsya' qu takusi qasa ru ppcicis qsya' lwah."
+     ],
+     "translations": [
+      "那部計程車正越過水坑，而且即將濺水。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Atayal_3715",
+   "ruling": "b",
+   "source_form": "slitun mamu slaq mamu? iniʼ mamu sliti lga, iyat (mamu) thyazyun mmikuy nyaʼ lʼay.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Atayal_3715",
+     "forms": [
+      "slitun mamu slaq mamu? ini' mamu sliti lga, iyat thyazyun mmikuy nya' l'ay."
+     ],
+     "translations": [
+      "你們的田需不需要砍草？如果你們不去砍，未來已長成一叢一叢的蘆葦草，將不好處理。"
+     ]
+    },
+    {
+     "id": "Atayal_3715-opt",
+     "forms": [
+      "slitun mamu slaq mamu? ini' mamu sliti lga, iyat mamu thyazyun mmikuy nya' l'ay."
+     ],
+     "translations": [
+      "你們的田需不需要砍草？如果你們不去砍，未來已長成一叢一叢的蘆葦草，將不好處理。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Atayal_4629",
+   "ruling": "delete",
+   "source_form": "msrʼux sami/myan tay/te ʼzil.",
+   "audio": "untranscribed",
+   "publish": []
+  },
+  {
+   "main_id": "Atayal_4760",
+   "ruling": "c",
+   "source_form": "laxi pglgi qurip paris/momw qu ramat qasa!",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Atayal_4760",
+     "forms": [
+      "laxi pglgi qurip paris qu ramat qasa!",
+      "laxi pglgi qurip momw qu ramat qasa!"
+     ],
+     "translations": [
+      "菜不要加辣椒！"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Bunun_7324",
+   "ruling": "retain",
+   "source_form": "lahahaiban mas laiʼlaisapuz,silasning-av (sila mas ning-av).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Bunun_7324",
+     "forms": [
+      "lahahaiban mas lai'laisapuz,silasning-av (sila mas ning-av)."
+     ],
+     "translations": [
+      "火車經過的的路徑(鐵道)"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Kavalan_680",
+   "ruling": "delete",
+   "source_form": "ineb ika (ineb)!",
+   "audio": "untranscribed",
+   "publish": []
+  },
+  {
+   "main_id": "Kavalan_1654",
+   "ruling": "remove",
+   "source_form": "kinsepat aimu nansasuani nanpitu (salipayan) dedan simliway temanan mediyatip tu tina numi.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Kavalan_1654",
+     "forms": [
+      "kinsepat aimu nansasuani nanpitu dedan simliway temanan mediyatip tu tina numi."
+     ],
+     "translations": [
+      "你們四個兄弟姐妹平均七天就輪流回來照顧你們的媽媽。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Kavalan_4500",
+   "ruling": "b",
+   "source_form": "yau qawRatan (uzisan) tu lazing ta quRuan.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Kavalan_4500",
+     "forms": [
+      "yau qawRatan tu lazing ta quRuan."
+     ],
+     "translations": [
+      "磯崎有海水浴場。"
+     ]
+    },
+    {
+     "id": "Kavalan_4500-opt",
+     "forms": [
+      "yau uzisan tu lazing ta quRuan."
+     ],
+     "translations": [
+      "磯崎有海水浴場。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Paiwan_1781",
+   "ruling": "remove",
+   "source_form": "na pavalasun a icapilj(kian) ta malasung?",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Paiwan_1781",
+     "forms": [
+      "na pavalasun a icapilj ta malasung?"
+     ],
+     "translations": [
+      "你曾經參加過馬拉松比賽嗎?"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Paiwan_2997",
+   "ruling": "c",
+   "source_form": "tjalja qalamqaman a qerir(qaljic) nua tjulja.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Paiwan_2997",
+     "forms": [
+      "tjalja qalamqaman a qerir nua tjulja.",
+      "tjalja qalamqaman a qaljic nua tjulja."
+     ],
+     "translations": [
+      "鰻魚的外皮最滑溜。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Paiwan_4411",
+   "ruling": "retain",
+   "source_form": "aicu a pinaka vavauan a dredretan papizuanan tua sinan paravac a zaljum ( vava ).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Paiwan_4411",
+     "forms": [
+      "aicu a pinaka vavauan a dredretan papizuanan tua sinan paravac a zaljum ( vava )."
+     ],
+     "translations": [
+      "那稱為聖水之壺的陶壺是用來盛裝聖水(酒)。."
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Paiwan_5128",
+   "ruling": "delete",
+   "source_form": "azua na cemakav ta paisu / valjitjuq nua ginku djinameq anga na kisacu kasauni.",
+   "audio": "untranscribed",
+   "publish": []
+  },
+  {
+   "main_id": "Paiwan_5320",
+   "ruling": "delete",
+   "source_form": "izua a namacay a kumakuma i tjuljivar / ljaʼedi tua ʼaciljay.",
+   "audio": "untranscribed",
+   "publish": []
+  },
+  {
+   "main_id": "Puyuma_1639",
+   "ruling": "retain",
+   "source_form": "andadaman dra mangayaw i, kiyabatrang a miyabetan (kitubangesar lra). tu atedranay i palakuwan tu kawi.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Puyuma_1639",
+     "forms": [
+      "andadaman dra mangayaw i, kiyabatrang a miyabetan (kitubangesar lra). tu atedranay i palakuwan tu kawi."
+     ],
+     "translations": [
+      "大狩獵祭的第二天，準青年(剛晉升儀式成為青年)要砍柴致謝，將木柴送到集會所。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Puyuma_2496",
+   "ruling": "remove",
+   "source_form": "an mekaekan ta dra kalimudan(inilaban) i, inaba ta dradrek dar!",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Puyuma_2496",
+     "forms": [
+      "an mekaekan ta dra kalimudan i, inaba ta dradrek dar!"
+     ],
+     "translations": [
+      "常吃多吃水果身體好耶！"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Saaroa_1220",
+   "ruling": "remove",
+   "source_form": "usuahlatʉngʉ maipaputu hlatʉngʉ mapuhli maipaputu hlatʉngʉ tualʉhlʉlʉhlʉ(tamana).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Saaroa_1220",
+     "forms": [
+      "usuahlatʉngʉ maipaputu hlatʉngʉ mapuhli maipaputu hlatʉngʉ tualʉhlʉlʉhlʉ."
+     ],
+     "translations": [
+      "包心菜有兩種，白菜包心菜和高麗菜。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Saisiyat_4340",
+   "ruling": "remove",
+   "source_form": "paStaʼay ʼam papaʼoSaʼ ila o, hiyaʼ ʼima Silʼi: ka basang ( ʼomaySiʼ ) ʼiziʼ i kitaʼ!",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Saisiyat_4340",
+     "forms": [
+      "paSta'ay 'am papa'oSa' ila o, hiya' 'ima Sil'i: ka basang 'izi' i kita'!"
+     ],
+     "translations": [
+      "巴斯達隘要送行了，懷孕的人不要看！"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Saisiyat_5392",
+   "ruling": "b",
+   "source_form": "hiza kaka:at maʼan. (hiza ʼinmanaʼa kaka:at.)",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Saisiyat_5392",
+     "forms": [
+      "hiza kaka:at ma'an."
+     ],
+     "translations": [
+      "那是我的筆。"
+     ]
+    },
+    {
+     "id": "Saisiyat_5392-opt",
+     "forms": [
+      "hiza 'inmana'a kaka:at."
+     ],
+     "translations": [
+      "那是我的筆。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Saisiyat_5442",
+   "ruling": "b",
+   "source_form": "siya kamatortoroeʼ mitaʼ. (siya ʼinmitaʼa kamatortoroeʼ.)",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Saisiyat_5442",
+     "forms": [
+      "siya kamatortoroe' mita'."
+     ],
+     "translations": [
+      "他是我們的老師。"
+     ]
+    },
+    {
+     "id": "Saisiyat_5442-opt",
+     "forms": [
+      "siya 'inmita'a kamatortoroe'."
+     ],
+     "translations": [
+      "他是我們的老師。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Saisiyat_5634",
+   "ruling": "remove",
+   "source_form": "ray ʼam papSiyaeʼ(raeraeʼoe:) maʼan ʼaehʼaehael paʼilhaehae:aeʼen boSok ila saboeh.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Saisiyat_5634",
+     "forms": [
+      "ray 'am papSiyae' ma'an 'aeh'aehael pa'ilhaehae:ae'en boSok ila saboeh."
+     ],
+     "translations": [
+      "在喝喜酒時，我把親戚都灌醉了。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Sakizaya_1535",
+   "ruling": "remove",
+   "source_form": "misakapahay tu miamutu（siyagyi） ku liken.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Sakizaya_1535",
+     "forms": [
+      "misakapahay tu miamutu ku liken."
+     ],
+     "translations": [
+      "第二次打水泥適合用細砂。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Seediq_149",
+   "ruling": "b",
+   "source_form": "Piya bango (na) sapah su?",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Seediq_149",
+     "forms": [
+      "Piya bango sapah su?"
+     ],
+     "translations": [
+      "你家的門牌號碼是幾號？"
+     ]
+    },
+    {
+     "id": "Seediq_149-opt",
+     "forms": [
+      "Piya bango na sapah su?"
+     ],
+     "translations": [
+      "你家的門牌號碼是幾號？"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Seediq_5029",
+   "ruling": "notransl",
+   "source_form": "Lihu tikuh qumi nii Robo, ini ku qita doriq.",
+   "audio": "on_S",
+   "publish": [
+    {
+     "id": "Seediq_5029",
+     "forms": [
+      "Lihu tikuh qumi nii Robo, ini ku qita doriq."
+     ],
+     "translations": []
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_836",
+   "ruling": "remove",
+   "source_form": "ata tu ilalaha sa kuskus (bantath), maqarman riqazan.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_836",
+     "forms": [
+      "ata tu ilalaha sa kuskus, maqarman riqazan."
+     ],
+     "translations": [
+      "腳不要張開，難看。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_1243",
+   "ruling": "remove",
+   "source_form": "kinunlharilhari sa qali, tanlhuaniza pangqayza (niza) tu kunlharilhari.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_1243",
+     "forms": [
+      "kinunlharilhari sa qali, tanlhuaniza pangqayza tu kunlharilhari."
+     ],
+     "translations": [
+      "天象一直閃爍雷電，晚上後閃電就停止了。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_1572",
+   "ruling": "retain",
+   "source_form": "azazak isa ianan (laqup) malhus, matiashaq painan, minu qa a pishqia?",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_1572",
+     "forms": [
+      "azazak isa ianan (laqup) malhus, matiashaq painan, minu qa a pishqia?"
+     ],
+     "translations": [
+      "孩子在床上睡，可能是做夢（要不然）為什麼會尖叫一聲？"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_2260",
+   "ruling": "remove",
+   "source_form": "klhiw mutun a malhituz yaku.a muntua ihu? (amutusi yaku hudun,) a malhituz yaku sa klhiw.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_2260",
+     "forms": [
+      "klhiw mutun a malhituz yaku.a muntua ihu? a malhituz yaku sa klhiw."
+     ],
+     "translations": [
+      "你要去哪裡？ 我要去山上，要去接繩子。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_2369",
+   "ruling": "remove",
+   "source_form": "Qaba wa taun mapashaduu (mapaʼinriri) sa naak a taun.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_2369",
+     "forms": [
+      "Qaba wa taun mapashaduu sa naak a taun."
+     ],
+     "translations": [
+      "Tuba的家和我家同在一行，而Qaba的家和我家則互相面對相向。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_2520",
+   "ruling": "remove",
+   "source_form": "matʼanak yaku malhuiza pazay (tipur, shanglaw) .",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_2520",
+     "forms": [
+      "mat'anak yaku malhuiza pazay."
+     ],
+     "translations": [
+      "我自己種的稻子"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_2989",
+   "ruling": "remove",
+   "source_form": "muksharay thithu a kuskus (bantath).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_2989",
+     "forms": [
+      "muksharay thithu a kuskus."
+     ],
+     "translations": [
+      "他的腳向前挺直。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_3221",
+   "ruling": "remove",
+   "source_form": "ya mashimzawiza sa qali, Zintun a wazaqan ya shashanuan pakharbuk(pupaur).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_3221",
+     "forms": [
+      "ya mashimzawiza sa qali, Zintun a wazaqan ya shashanuan pakharbuk."
+     ],
+     "translations": [
+      "冬天日月潭的清晨會湧現湮霧。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_3345",
+   "ruling": "remove",
+   "source_form": "haya wa sharitunu mabulawiza, pambalabalay ya kmaan (kanin).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_3345",
+     "forms": [
+      "haya wa sharitunu mabulawiza, pambalabalay ya kmaan."
+     ],
+     "translations": [
+      "這個木瓜已經熟了，正好吃。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_3828",
+   "ruling": "remove",
+   "source_form": "yamin tanatuqash miaqay makshnaw tu azazak a palhkakrikriw ya maqitan pinalhkakrikriwan(shibuhatan).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_3828",
+     "forms": [
+      "yamin tanatuqash miaqay makshnaw tu azazak a palhkakrikriw ya maqitan pinalhkakrikriwan."
+     ],
+     "translations": [
+      "我們老人家常常煩惱孩子們的工作是否好的工作。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_3947",
+   "ruling": "remove",
+   "source_form": "azazak maqa miku pishtubuiza pishʼizi sa thithu a turay(raki) numa puskit sa tubu.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_3947",
+     "forms": [
+      "azazak maqa miku pishtubuiza pish'izi sa thithu a turay numa puskit sa tubu."
+     ],
+     "translations": [
+      "孩子想小便，陰莖變硬並且遠遠地噴灑尿液。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_4092",
+   "ruling": "remove",
+   "source_form": "uka yaku tu la tuali, lhai yaku (lhaiak) ladadu pulhipas.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_4092",
+     "forms": [
+      "uka yaku tu la tuali, lhai yaku ladadu pulhipas."
+     ],
+     "translations": [
+      "我沒多少錢，我拿出一些來贊助。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_4446",
+   "ruling": "remove",
+   "source_form": "mabariz (qariw) a saran mathuaw maqitan ya mundadaan.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_4446",
+     "forms": [
+      "mabariz a saran mathuaw maqitan ya mundadaan."
+     ],
+     "translations": [
+      "平坦的路很好走。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_4722",
+   "ruling": "remove",
+   "source_form": "yaku tu ikain(ikahin) shminudap kukulay, rima mathuaw tukakukulay(rima mathuaw shazkin).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_4722",
+     "forms": [
+      "yaku tu ikain shminudap kukulay, rima mathuaw tukakukulay."
+     ],
+     "translations": [
+      "我剛才摸到蟲子，手很臭都是蟲臭味。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_5143",
+   "ruling": "retain",
+   "source_form": "azazak isa ianan (laqup) malhus, matiashaq painan minu qa apishqia?",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_5143",
+     "forms": [
+      "azazak isa ianan (laqup) malhus, matiashaq painan minu qa apishqia?"
+     ],
+     "translations": [
+      "孩子在床上睡，可能是做夢，（要不然）為什麼會尖叫一聲？"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_5598",
+   "ruling": "notransl",
+   "source_form": "maqaybul miku untal.",
+   "audio": "on_S",
+   "publish": [
+    {
+     "id": "Thao_5598",
+     "forms": [
+      "maqaybul miku untal."
+     ],
+     "translations": []
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_5611",
+   "ruling": "b",
+   "source_form": "minu sa mihu a rima qa amaradaradak? iahiaw shminaw (iahiaw flhuq).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_5611",
+     "forms": [
+      "minu sa mihu a rima qa amaradaradak? iahiaw shminaw."
+     ],
+     "translations": [
+      "為什麼你的手髒髒的？趕快洗。"
+     ]
+    },
+    {
+     "id": "Thao_5611-opt",
+     "forms": [
+      "minu sa mihu a rima qa amaradaradak? iahiaw flhuq."
+     ],
+     "translations": [
+      "為什麼你的手髒髒的？趕快洗。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_5696",
+   "ruling": "remove",
+   "source_form": "yaku masarima (mingkmir) afu kmaan.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_5696",
+     "forms": [
+      "yaku masarima afu kmaan."
+     ],
+     "translations": [
+      "我用手抓飯吃。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_6037",
+   "ruling": "remove",
+   "source_form": "pilalaha mihu a kuskus (bantath).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_6037",
+     "forms": [
+      "pilalaha mihu a kuskus."
+     ],
+     "translations": [
+      "把你的腳張開。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_6202",
+   "ruling": "remove",
+   "source_form": "haya wa sazum pinishqati iza, ata(ingqaiza) tu uqthai pishqati.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_6202",
+     "forms": [
+      "haya wa sazum pinishqati iza, ata tu uqthai pishqati."
+     ],
+     "translations": [
+      "這水已經煮開過了，不要再煮開。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_6325",
+   "ruling": "retain",
+   "source_form": "wazish a bunlhaz shiqalhiwi ihu amaqa ya puilin antu aminshazkin (minqarman).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_6325",
+     "forms": [
+      "wazish a bunlhaz shiqalhiwi ihu amaqa ya puilin antu aminshazkin (minqarman)."
+     ],
+     "translations": [
+      "你把山豬肉烘乾，這樣被保存才不會變臭（變壞）。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Truku_31",
+   "ruling": "remove",
+   "source_form": "Asi ka amung uqun na iyu ( sapuh ) ising.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Truku_31",
+     "forms": [
+      "Asi ka amung uqun na iyu ising."
+     ],
+     "translations": [
+      "他只能吃粉爲的藥。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Truku_77",
+   "ruling": "remove",
+   "source_form": "Hmnuma egu(lala) bi banar ka bubu mu.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Truku_77",
+     "forms": [
+      "Hmnuma egu bi banar ka bubu mu."
+     ],
+     "translations": [
+      "我的媽媽種了許多苦楝樹。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Truku_477",
+   "ruling": "remove",
+   "source_form": "Embeyhuy ka buji (putus).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Truku_477",
+     "forms": [
+      "Embeyhuy ka buji."
+     ],
+     "translations": [
+      "箭是彎曲的。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Truku_822",
+   "ruling": "remove",
+   "source_form": "Lala(egu) bi eran na ka bubu mu rudan.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Truku_822",
+     "forms": [
+      "Lala bi eran na ka bubu mu rudan."
+     ],
+     "translations": [
+      "我的阿嬤皺紋越來越多了。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Truku_1797",
+   "ruling": "remove",
+   "source_form": "Wada mgul dapa(kacing) na ka Watan.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Truku_1797",
+     "forms": [
+      "Wada mgul dapa na ka Watan."
+     ],
+     "translations": [
+      "Watan去栓住他的牛。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Truku_2408",
+   "ruling": "a",
+   "source_form": "Neyx ( wah ) ! wada mu qrapun da!",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Truku_2408",
+     "forms": [
+      "Neyx! wada mu qrapun da!"
+     ],
+     "translations": [
+      "好！我抓到了！"
+     ]
+    },
+    {
+     "id": "Truku_2408-opt",
+     "forms": [
+      "wah! wada mu qrapun da!"
+     ],
+     "translations": [
+      "哇！我抓到了！"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Truku_3684",
+   "ruling": "remove",
+   "source_form": "Smkrig ka kuyuh ( qrijil ).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Truku_3684",
+     "forms": [
+      "Smkrig ka kuyuh."
+     ],
+     "translations": [
+      "婦女在刮麻。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Truku_3786",
+   "ruling": "remove",
+   "source_form": "Spgeaanan na dangi(lupung) ka nasug gaga.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Truku_3786",
+     "forms": [
+      "Spgeaanan na dangi ka nasug gaga."
+     ],
+     "translations": [
+      "他幫朋友留一份。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Truku_4639",
+   "ruling": "remove",
+   "source_form": "Ita ki da (meysa)?",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Truku_4639",
+     "forms": [
+      "Ita ki da?"
+     ],
+     "translations": [
+      "給我好嗎？"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Tsou_664",
+   "ruling": "remove",
+   "source_form": "mainci (mo) maʼeʼepi si sapcisu?",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Tsou_664",
+     "forms": [
+      "mainci ma'e'epi si sapcisu?"
+     ],
+     "translations": [
+      "你的臉怎麼很多疤?"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Tsou_887",
+   "ruling": "remove",
+   "source_form": "naho nʼa matvaho (pasunaeno), pasuya.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Tsou_887",
+     "forms": [
+      "naho n'a matvaho, pasuya."
+     ],
+     "translations": [
+      "Pasuya,請再唱一次"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Tsou_1307",
+   "ruling": "b",
+   "source_form": "ita paʼeingzoti (na) aʼmi to tahza.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Tsou_1307",
+     "forms": [
+      "ita pa'eingzoti a'mi to tahza."
+     ],
+     "translations": [
+      "他寄少量的豆給我們."
+     ]
+    },
+    {
+     "id": "Tsou_1307-opt",
+     "forms": [
+      "ita pa'eingzoti na a'mi to tahza."
+     ],
+     "translations": [
+      "他寄少量的豆給我們."
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Yami_3691",
+   "ruling": "retain",
+   "source_form": "ya apira o mo nimayakan (a among)?",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Yami_3691",
+     "forms": [
+      "ya apira o mo nimayakan (a among)?"
+     ],
+     "translations": [
+      "你吃了幾條(魚)?"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Yami_4401",
+   "ruling": "retain",
+   "source_form": "to ta na piʼikoana (pisinmoa) sira an.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Yami_4401",
+     "forms": [
+      "to ta na pi'ikoana (pisinmoa) sira an."
+     ],
+     "translations": [
+      "不如我們乾脆把他們那個(撮合)好了。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Yami_4402",
+   "ruling": "remove",
+   "source_form": "to mo na piʼikoana (pivazaya) an.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Yami_4402",
+     "forms": [
+      "to mo na pi'ikoana an."
+     ],
+     "translations": [
+      "你就自已處理啦。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Yami_4729",
+   "ruling": "remove",
+   "source_form": "kangay no akma sia a sinavat(panganpen) a ipeyʼeza.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Yami_4729",
+     "forms": [
+      "kangay no akma sia a sinavat a ipey'eza."
+     ],
+     "translations": [
+      "難得我們一起捕到這麼多的狐狸。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_3103",
+   "ruling": "thao-one-form",
+   "source_form": "muqaqa yaku smuqum naak a tuqris, antu mara (uka sa mara).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_3103",
+     "forms": [
+      "muqaqa yaku smuqum naak a tuqris, antu mara."
+     ],
+     "translations": [
+      "我巡視我的張陷，結果徒勞無功，沒有捉到。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_3104",
+   "ruling": "thao-one-form",
+   "source_form": "muqaqa yaku smuqum naak a papanaq, antu mara (uka sa mara).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_3104",
+     "forms": [
+      "muqaqa yaku smuqum naak a papanaq, antu mara."
+     ],
+     "translations": [
+      "我巡視我的路箭，結果徒勞無功，沒有中。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_3945",
+   "ruling": "thao-one-form",
+   "source_form": "minyathun ihu mutusi Qariwan? ua! pinyathun yaku shmital (shmita yaku myathun).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_3945",
+     "forms": [
+      "minyathun ihu mutusi Qariwan? ua! pinyathun yaku shmital."
+     ],
+     "translations": [
+      "問：你去埔里有過夜嗎？　答：是的！我夜宿了一個晚上。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_6077",
+   "ruling": "thao-one-form",
+   "source_form": "intua sa naak a patikrin? ba! araran thithu, patikrinin thithu! (araran thithu patikrinin.)",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_6077",
+     "forms": [
+      "intua sa naak a patikrin? ba! araran thithu, patikrinin thithu!"
+     ],
+     "translations": [
+      "我的頭箍在哪裡？噢！被他拿去戴了！"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_6380",
+   "ruling": "thao-one-form",
+   "source_form": "azazak miarain thmanit, murushrush sa rushaq, titishak sa rushaq(rushaq titishak).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_6380",
+     "forms": [
+      "azazak miarain thmanit, murushrush sa rushaq, titishak sa rushaq."
+     ],
+     "translations": [
+      "小孩一直哭，不斷流淚，我為他擦眼淚。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_6072",
+   "ruling": "thao-one-form",
+   "source_form": "ina ya amutusi shmaila miaqay patikrinan sa patikrin (lina wa patikrin).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_6072",
+     "forms": [
+      "ina ya amutusi shmaila miaqay patikrinan sa patikrin."
+     ],
+     "translations": [
+      "媽媽若要去牽戲都是戴著頭箍。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_4853",
+   "ruling": "thao-one-form",
+   "source_form": "huya wa thau talahan sa rima, antatan sa buut sa rima (buut antatan sa rima).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_4853",
+     "forms": [
+      "huya wa thau talahan sa rima, antatan sa buut sa rima."
+     ],
+     "translations": [
+      "那個人的手被砍到，身體因而發燒（身體發燒是因手而起的）。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_975",
+   "ruling": "thao-alt-variant",
+   "source_form": "iupan thithu sa apuy (apuy iupan thithu).",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_975",
+     "forms": [
+      "iupan thithu sa apuy.",
+      "apuy iupan thithu."
+     ],
+     "translations": [
+      "火被他吹（他在吹火）。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_1332",
+   "ruling": "thao-alt-variant",
+   "source_form": "ata tu kmaanasapunuqi! = ata tu kmasapunuqi!",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_1332",
+     "forms": [
+      "ata tu kmaanasapunuqi!",
+      "ata tu kmasapunuqi!"
+     ],
+     "translations": [
+      "不要打到頭！"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_2162",
+   "ruling": "thao-alt-variant",
+   "source_form": "a makupit ihu apuy? italhawak(italha uan)!",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_2162",
+     "forms": [
+      "a makupit ihu apuy? italhawak!",
+      "a makupit ihu apuy? italha uan!"
+     ],
+     "translations": [
+      "你要熄滅燈火嗎？等我一下。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_3612",
+   "ruling": "thao-alt-variant",
+   "source_form": "uka mihu a patatash, haya naak a patatash arahu( ara uhu) matash.",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_3612",
+     "forms": [
+      "uka mihu a patatash, haya naak a patatash arahu matash.",
+      "uka mihu a patatash, haya naak a patatash ara uhu matash."
+     ],
+     "translations": [
+      "沒有筆，我的筆你拿去寫。－arahu為ara uhu的簡省。"
+     ]
+    }
+   ]
+  },
+  {
+   "main_id": "Thao_4429",
+   "ruling": "thao-alt-variant",
+   "source_form": "qunriuq thithu naak a ranaw. = thithu qunriuq naak a ranaw",
+   "audio": "untranscribed",
+   "publish": [
+    {
+     "id": "Thao_4429",
+     "forms": [
+      "qunriuq thithu naak a ranaw.",
+      "thithu qunriuq naak a ranaw"
+     ],
+     "translations": [
+      "他在偷我的雞。"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -32,8 +32,10 @@ MANUAL_EDITS = BASE / "manual_edits.xml"
 
 
 def load_repairs(path: Path) -> list[dict]:
+    """The text repairs. A repair with action="withdraw" is not an edit: the
+    record is left out of publication by generate_xml.py instead."""
     payload = json.loads(path.read_text(encoding="utf-8"))
-    return payload["repairs"]
+    return [r for r in payload["repairs"] if r.get("action") != "withdraw"]
 
 
 def build(xml_dir: Path, repairs: list[dict]) -> tuple[etree._Element, list[str]]:

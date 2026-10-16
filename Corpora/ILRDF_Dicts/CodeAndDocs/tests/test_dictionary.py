@@ -71,7 +71,7 @@ class TestTree(unittest.TestCase):
         multi = [e for e in entries if len(e.senses) > 1][:5]
         self.entries = multi + entries[:20]
         self.root = generate_dictionary._build_tree(
-            "Saaroa", self.entries, "2026-08-21")
+            "Saaroa", self.entries, "2026-08-21", {"dialect": "unknown"})
 
     def test_source_tiers_only(self):
         for s in self.root.findall("S"):
@@ -106,6 +106,28 @@ class TestTree(unittest.TestCase):
     def test_root_declares_the_language_and_rights(self):
         self.assertEqual(self.root.get(XML_LANG), "sxr")
         self.assertEqual(self.root.get("copyright"), "CC BY-NC 4.0")
+
+    def test_truku_dictionary_is_truku_not_seediq(self):
+        """Ruling §7: dialect and glottocode come from main's TEXT."""
+        root = generate_dictionary._build_tree(
+            "Truku", [], "2026-08-21", {"dialect": "Truku"})
+        self.assertEqual(root.get(XML_LANG), "trv")
+        self.assertEqual(root.get("dialect"), "Truku")
+        root = generate_dictionary._build_tree(
+            "Amis", [], "2026-08-21", {"dialect": "Xiuguluan", "glottocode": "cent2104"})
+        self.assertEqual((root.get("dialect"), root.get("glottocode")),
+                         ("Xiuguluan", "cent2104"))
+
+
+class TestSenseExclusion(unittest.TestCase):
+    def test_the_saisiyat_editor_note_is_not_a_sense(self):
+        from ilrdf_source import load_sense_exclusions
+        exclusions = load_sense_exclusions(
+            Path(generate_dictionary.SOURCE_DATA) / "source_content_exclusions.json")
+        entries = extract_entries("Saisiyat", _load("Saisiyat"), exclusions, set())
+        glosses = {s.gloss for e in entries for s in e.senses}
+        self.assertNotIn("不小心按到，請刪除！（沒有其他意思了。）", glosses)
+        self.assertIn("帶著雨傘", glosses)
 
 
 if __name__ == "__main__":

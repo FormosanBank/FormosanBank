@@ -1,51 +1,37 @@
 # Reproduction record
 
-Verified 2026-09-08.
+```bash
+Corpora/ILRDF_Dicts/CodeAndDocs/generate_xml.sh
+```
 
-| | |
-|---|---|
-| Pinned authority commit | `b88146902f6a90ab2d73aca0e304d45f565c392e` |
-| Combined XML digest | `406bf55bf681082607071cdb5c7b230d73f65da60ef647d265ab8c3369878981` |
-| Published ids | 306,820 |
-| Tests | 75, passing |
-| `validate_xml` | 32 files, 0 issues |
-
-The digest is `sha256` over the sorted per-file `sha256sum` lines of every
-`XML/**/*.xml`:
+rebuilds `XML/` from committed files only, with the shared QC tools of the
+checkout it is run from (POL-047/048). It needs no network access and no
+environment variables (`PYTHON` optionally picks the interpreter). It writes
+`CodeAndDocs/provenance.json` with the FormosanBank commit it built against
+(POL-052) and prints a digest of the XML: `sha256` over the sorted
+per-file `sha256sum` lines of every `XML/**/*.xml`,
 
 ```bash
 find Corpora/ILRDF_Dicts/XML -name '*.xml' | sort | xargs sha256sum | sha256sum
 ```
 
-Two consecutive full runs of `make_xml.sh` against the pinned authority
-produced byte-identical output.
+Verified 2026-10-16: two consecutive full runs produced byte-identical output
+for all 80 files under Corpora/ILRDF_Dicts/ that the build writes or reads back (XML, `manual_edits.xml/.md`,
+`old_to_new_ids.csv`, `docs/split_report.csv`, `provenance.json`);
+digest `aa1b31870e88b948108d674a515eabfe686e7655957a164069d20ba4981bc27c`.
 
-## Reproducing
+Same tools, different digest means something stopped being reproducible.
+Different tools (a newer commit in `provenance.json`) can legitimately change
+the digest: the shared tools moved.
 
-```bash
-export FORMOSANBANK_AUTHORITY=/path/to/FormosanBank   # clean, at the pin
-CodeAndDocs/make_xml.sh
-```
-
-The pin is **informational**. A rebuild uses whatever shared tooling the
-authority checkout has, and the script says so — it prints the commit it
-actually built against, and its digest, at the end. Pinning the tooling
-forever would mean the corpus could never be rebuilt with a fixed
-standardizer or cleaner without editing the script, and the pin would rot.
-
-The pin still earns its keep, because it is recorded here beside the digest it
-produced. **Same pin, different digest** means something has stopped being
-reproducible and wants investigating. **Different pin, different digest** is
-ordinary: the shared tooling moved, and this file should be updated to the new
-pin and digest once the diff has been reviewed.
-
-To verify a published digest rather than rebuild, set
-`FORMOSANBANK_STRICT_AUTHORITY=1` and the mismatch becomes a hard failure.
+`CodeAndDocs/validate.sh` runs the published-id audit and the corpus tests;
+it is not part of the build.
 
 ## Refreshing the source
 
 `refresh_source.sh` re-scrapes the ILRDF API into `source_data/snapshots/`
-and rewrites the manifest. `make_xml.sh` then builds from those new
-snapshots — the two are independent, and reproduction needs only the second.
-A refresh changes the source of truth, so review the snapshot diff and
-regenerate the id ledger afterwards.
+and rewrites the manifest. It is not part of reproduction: it changes the
+source of truth, can add, remove or reword records, and can orphan rows of the
+frozen main-id ledger. Review the snapshot diff, rebuild, then regenerate
+`published_ids.csv` (`python generate_xml.py ledger --write`) and review the
+id diff.

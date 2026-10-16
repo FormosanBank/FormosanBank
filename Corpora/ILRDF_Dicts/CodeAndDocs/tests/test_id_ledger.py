@@ -110,11 +110,11 @@ class TestAuditIds(unittest.TestCase):
         text = (
             LEDGER.replace(
                 f"Amis_{G1},{G1},active,\n", f"Amis_{G1},{G1},split-parent,\n")
-            + f"Amis_{G1}_a,{G1},active,split from a numbered record\n"
-            + f"Amis_{G1}_b,{G1},active,split from a numbered record\n"
+            + f"Amis_{G1}-opt,{G1},active,split from a numbered record\n"
+            + f"Amis_{G1}-opt3,{G1},active,split from a numbered record\n"
         )
         rows = _ledger(self.tmp, text)
-        xml_ids = {f"Amis_{G1}_a", f"Amis_{G1}_b", f"Amis_{G2}"}
+        xml_ids = {f"Amis_{G1}-opt", f"Amis_{G1}-opt3", f"Amis_{G2}"}
         extracted = {f"Amis_{G1}": {G1}, f"Amis_{G2}": {G2, G3}}
         self.assertEqual(audit_ids(rows, xml_ids, extracted), [])
 
@@ -128,10 +128,8 @@ class TestGenerateWritesSourceTiersOnly(unittest.TestCase):
     def test_build_tree_emits_no_derived_tiers(self):
         import generate_xml
         from ilrdf_source import Sentence
-        s = Sentence(original="Form.", language="Amis")
-        s.source_ids.add(G1)
-        s.translations.append(("zho", "翻譯。"))
-        root = generate_xml._build_tree("Amis", [s], "2026-08-21")
+        s = generate_xml.Published(f"Amis_{G1}", "Form.", [("zho", "翻譯。")])
+        root = generate_xml._build_tree("Amis", [s], [], {"id": "x"})
         for sentence in root.findall("S"):
             self.assertEqual(
                 [f.get("kindOf") for f in sentence.findall("FORM")], ["original"])

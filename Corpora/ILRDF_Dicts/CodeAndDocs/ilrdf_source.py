@@ -174,7 +174,27 @@ def entry_id(language: str, guid: str) -> str:
     return f"{language}_d{guid}"
 
 
-def extract_entries(language: str, snapshot: dict) -> list[Entry]:
+def _fold_apostrophe(text: str) -> str:
+    return text.replace("ʼ", "'")
+
+
+def load_sense_exclusions(path: Path) -> set[tuple[str, str, str]]:
+    """Headword senses that are editor notes, keyed (language, headword, gloss).
+
+    The headword is compared with ʼ folded to ', as the published FORM shows it.
+    """
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return {
+        (item["language"], _fold_apostrophe(normalize_source_form(item["headword"])),
+         normalize_source_text(item["gloss"]))
+        for item in payload.get("headword_sense_exclusions", [])
+    }
+
+
+def extract_entries(language: str, snapshot: dict,
+                    sense_exclusions: set[tuple[str, str, str]] | None = None,
+                    used_sense_exclusions: set[tuple[str, str, str]] | None = None,
+                    ) -> list[Entry]:
     """One Entry per published headword, merged by normalized headword text.
 
     Headwords repeat across queries (144,610 word records for 144,029 distinct
@@ -203,6 +223,11 @@ def extract_entries(language: str, snapshot: dict) -> list[Entry]:
                     continue
                 gloss = normalize_source_text(explanation.get("chineseExplanation"))
                 if not gloss or gloss in PLACEHOLDERS:
+                    continue
+                key = (language, _fold_apostrophe(headword), gloss)
+                if sense_exclusions and key in sense_exclusions:
+                    if used_sense_exclusions is not None:
+                        used_sense_exclusions.add(key)
                     continue
                 parts = explanation.get("partOfSpeech") or []
                 sense = Sense(
@@ -413,7 +438,18 @@ def extract_sentences(
     used_overrides: set[tuple[str, str, str]],
     translation_exclusions: set[tuple[str, str, str]] | None = None,
     used_exclusions: set[tuple[str, str, str]] | None = None,
+    untranslated: dict[str, Sentence] | None = None,
 ) -> tuple[list[Sentence], ExtractionStats]:
+    """Group the snapshot's sentence items into records, merged by text.
+
+    Items whose translation is a placeholder are skipped. When `untranslated`
+    is given, those skipped items are collected there instead -- grouped by
+    text the same way, but never merged into a translated record, so the
+    translated records (their GUIDs, ids and audio) are exactly what they are
+    without it. The build publishes an untranslated record only when the
+    frozen main-id ledger claims it (two main sentences the maintainer ruled
+    publishable without a translation).
+    """
     vocabulary = (
         build_recovery_vocabulary(snapshot)
         if language in RECOVERABLE_QUESTION_LANGUAGES
@@ -451,6 +487,22 @@ def extract_sentences(
                         continue
                     if translation in PLACEHOLDERS:
                         skipped_translation += 1
+                        if untranslated is not None and item.get("id"):
+                            text = original
+                            if vocabulary:
+                                text, _ = repair_source_questions(text, vocabulary)
+                            spare = untranslated.setdefault(
+                                text, Sentence(original=text, language=language))
+                            spare.source_ids.add(str(item["id"]))
+                            for audio in item.get("audioItems") or []:
+                                if not isinstance(audio, dict):
+                                    continue
+                                url = normalize_source_text(audio.get("audioUrl"))
+                                token = storage_id(url) if url else None
+                                if not url or (token and token in excluded_audio_ids):
+                                    continue
+                                if url not in spare.audio_urls:
+                                    spare.audio_urls.append(url)
                         continue
                     if vocabulary:
                         original, repairs = repair_source_questions(original, vocabulary)
@@ -493,6 +545,11 @@ def extract_sentences(
                         if url not in record.audio_urls:
                             record.audio_urls.append(url)
 
+    if untranslated is not None:
+        # An untranslated item whose text also occurs with a translation is
+        # already published by that translated record; it is not a record.
+        for text in [t for t in untranslated if t in grouped]:
+            del untranslated[text]
     sentences = sorted(grouped.values(), key=lambda item: (item.original.casefold(), item.original))
     # Two records must never claim the same id. With whole GUIDs this cannot
     # happen by truncation, but it would happen if the same GUID were merged

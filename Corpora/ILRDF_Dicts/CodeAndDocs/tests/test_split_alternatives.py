@@ -1,7 +1,7 @@
 """Source-side alternatives, resolved on the original tier.
 
 Two treatments, per the maintainer's rulings of 2026-09-07: a spelling variant
-is one record carrying FORM[@kindOf="alternate"]; a lexical alternative is
+is one record carrying FORM[@kindOf="original" ver="alt"]; a lexical alternative is
 separate <S> records. Anything we cannot classify confidently is dropped and
 logged rather than guessed at.
 """
@@ -232,3 +232,72 @@ class TestInvariants(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestPublishedShape(unittest.TestCase):
+    """POL-028 shape and the ILRDF audio ruling (maintainer, 2026-10-15/16)."""
+
+    def _run(self, body, rulings=None):
+        import tempfile
+        from lxml import etree
+        import split_alternatives as sa
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "Amis.xml"
+            path.write_text(
+                '<?xml version="1.0" encoding="UTF-8"?>\n<TEXT id="t">' + body + "</TEXT>",
+                encoding="utf-8")
+            original = sa.load_rulings
+            sa.load_rulings = lambda: rulings or {}
+            try:
+                sa.process(Path(tmp), apply=True, report=None)
+            finally:
+                sa.load_rulings = original
+            return etree.parse(str(path)).getroot()
+
+    def test_split_ids_use_opt_and_audio_becomes_untranscribed(self):
+        root = self._run(
+            '<S id="Amis_1"><FORM kindOf="original">cyux trang / (trang balay) '
+            'mʼabiʼ qu yutas.</FORM><TRANSL>t</TRANSL>'
+            '<AUDIO file="Amis_1.mp3"/></S>')
+        self.assertEqual([s.get("id") for s in root.findall("S")],
+                         ["Amis_1", "Amis_1-opt"])
+        self.assertEqual(root[0].tag, "AUDIO")
+        self.assertEqual(root[0].get("file"), "Amis_1.mp3")
+        self.assertEqual(root.findall("S/AUDIO"), [])
+
+    def test_spelling_variant_is_original_ver_alt(self):
+        root = self._run(
+            '<S id="Amis_2"><FORM kindOf="original">cyux mʼabiʼ / mʼabi qu yutas.'
+            '</FORM><AUDIO file="Amis_2.mp3"/></S>')
+        forms = root.findall("S/FORM")
+        self.assertEqual([(f.get("kindOf"), f.get("ver")) for f in forms],
+                         [("original", None), ("original", "alt")])
+        self.assertEqual(root.findall("FORM[@kindOf='alternate']"), [])
+        self.assertEqual(len(root.findall("AUDIO")), 1)
+
+    def test_unchanged_record_keeps_its_audio(self):
+        root = self._run('<S id="Amis_3"><FORM kindOf="original">cyux qu yutas.'
+                         '</FORM><AUDIO file="Amis_3.mp3"/></S>')
+        self.assertEqual(len(root.findall("S/AUDIO")), 1)
+        self.assertEqual(root.findall("AUDIO"), [])
+
+    def test_a_ruling_replaces_the_automatic_resolution(self):
+        ruling = {"Amis_4": {
+            "main_id": "Amis_4", "ruling": "b", "audio": "untranscribed",
+            "source_form": "x (y) z.",
+            "publish": [{"id": "Amis_4", "forms": ["x z."], "translations": ["甲"]},
+                        {"id": "Amis_4-opt", "forms": ["x y z."], "translations": ["甲"]}]}}
+        root = self._run('<S id="Amis_4"><FORM kindOf="original">x (y) z.</FORM>'
+                         '<AUDIO file="Amis_4.mp3"/></S>', ruling)
+        self.assertEqual([s.findtext("FORM") for s in root.findall("S")],
+                         ["x z.", "x y z."])
+        self.assertEqual(len(root.findall("AUDIO")), 1)
+
+    def test_a_ruling_whose_source_moved_fails_loudly(self):
+        ruling = {"Amis_5": {"main_id": "Amis_5", "ruling": "remove",
+                             "audio": "untranscribed", "source_form": "old (text).",
+                             "publish": [{"id": "Amis_5", "forms": ["old."],
+                                          "translations": []}]}}
+        with self.assertRaises(ValueError):
+            self._run('<S id="Amis_5"><FORM kindOf="original">new (text).</FORM></S>',
+                      ruling)

@@ -17,7 +17,7 @@ Recreate any baseline file with:
 | `TRANSL` | 169,946 |
 | `AUDIO` | 132,402 |
 
-These match `CodeAndDocs/docs/qc_report.md`, so the committed XML is what that
+These matched `CodeAndDocs/docs/qc_report.md` (since deleted), so the committed XML is what that
 report describes.
 
 Every count change from this baseline must be explained in the QC report's

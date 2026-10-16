@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter, defaultdict
 import csv
 from dataclasses import asdict, dataclass, field
 import json
@@ -23,6 +24,7 @@ from ilrdf_source import (
     root_attributes,
     verify_and_load_snapshot,
 )
+import main_2024
 
 
 BASE = Path(__file__).resolve().parent
@@ -31,27 +33,180 @@ SNAPSHOT_DIR = SOURCE_DATA / "snapshots"
 XML_DIR = BASE.parent / "XML"
 
 
-def _build_tree(language: str, sentences: list[Sentence], snapshot_date: str) -> ET.Element:
-    root = ET.Element("TEXT", root_attributes(language, snapshot_date))
-    for sentence in sentences:
-        identifier = sentence.identifier
-        element = ET.SubElement(root, "S", {"id": identifier})
-        ET.SubElement(element, "FORM", {"kindOf": "original"}).text = sentence.original
+#: Frozen output of match_main_ids.py: which 2026 record keeps which main id.
+MAIN_LEDGER_PATH = SOURCE_DATA / "main_id_ledger.csv"
+RULINGS_PATH = SOURCE_DATA / "alternative_rulings.json"
+REPAIRS_PATH = SOURCE_DATA / "source_repairs.json"
+#: Published old->new id table (POL-037 / POL-051), written by the build.
+OLD_TO_NEW_PATH = BASE / "old_to_new_ids.csv"
+
+#: OPEN QUESTION to the maintainer (2026-10-16). Where main published one
+#: sentence 2-3 times and the 2026 record has no recording of its own, attach
+#: every main copy's recording (True) or only the kept (lowest-id) copy's
+#: (False). Default: every copy.
+ATTACH_ALL_MERGED_RECORDINGS = True
+
+#: S/@source on main sentences that are no longer in the 2026 source.
+WITHDRAWN_SOURCE = (
+    "ILRDF online dictionary, 2024 scrape (as published on FormosanBank before "
+    "the 2026 rebuild); no longer in ILRDF's current dictionary"
+)
+
+
+@dataclass
+class Published:
+    """One S as generate_xml.py writes it (source tiers only)."""
+    identifier: str
+    original: str
+    translations: list[tuple[str, str]] = field(default_factory=list)
+    audio: list[dict[str, str]] = field(default_factory=list)
+    source: str | None = None
+
+
+def _norm_zh(value: str) -> str:
+    import unicodedata
+    return re.sub(r"\s+", "", unicodedata.normalize("NFKC", value or ""))
+
+
+def _main_rows(language: str) -> list[dict[str, str]]:
+    with MAIN_LEDGER_PATH.open(encoding="utf-8", newline="") as handle:
+        return [r for r in csv.DictReader(handle) if r["language"] == language]
+
+
+def _withdrawn_by_repair() -> dict[str, dict]:
+    payload = json.loads(REPAIRS_PATH.read_text(encoding="utf-8"))
+    return {r["guid"]: r for r in payload["repairs"] if r.get("action") == "withdraw"}
+
+
+def _audio_2026(record: Sentence) -> list[dict[str, str]]:
+    return [
+        {"url": url, "file": f"{record.identifier}{'' if i == 1 else f'_{i}'}.mp3"}
+        for i, url in enumerate(record.audio_urls, start=1)
+    ]
+
+
+def assemble(language: str, sentences: list[Sentence], untranslated: dict,
+             counts: Counter) -> tuple[list[Published], list[dict[str, str]], dict, list[dict]]:
+    """Map 2026 records onto main's ids and add main's withdrawn sentences.
+
+    Returns (sentences to publish, untranscribed AUDIO, main TEXT attributes,
+    old->new id rows).
+    """
+    main_attrs, mains = main_2024.load(language)
+    main_by_id = {m.identifier: m for m in mains}
+    rows = _main_rows(language)
+    if {r["main_id"] for r in rows} != set(main_by_id):
+        raise ValueError(f"{language}: main_id_ledger.csv does not cover main exactly")
+    published_id: dict[str, str] = {}
+    group: dict[str, list] = defaultdict(list)
+    for row in rows:
+        if row["status"] in ("kept", "merged-kept", "merged-retired"):
+            group[row["record_id"]].append(main_by_id[row["main_id"]])
+            if row["status"] != "merged-retired":
+                published_id[row["record_id"]] = row["published_id"]
+    withdraw = _withdrawn_by_repair()
+    old_to_new: list[dict] = []
+    for row in rows:
+        if row["status"] == "merged-retired":
+            old_to_new.append({
+                "old_id": row["main_id"], "new_id": row["published_id"],
+                "change": "retired: merged duplicate",
+                "reason": "main published this sentence more than once; the 2026 "
+                          "source has it once. Kept the lowest main id; its S "
+                          "carries every distinct translation of the copies."})
+
+    candidates = list(sentences)
+    for record in untranslated.values():
+        if record.identifier in published_id:
+            candidates.append(record)
+            counts["kept untranslated record (claimed by a main id)"] += 1
+    out: list[Published] = []
+    untranscribed: list[dict[str, str]] = []
+    for record in candidates:
+        identifier = published_id.get(record.identifier, record.identifier)
+        copies = sorted(group.get(record.identifier, []), key=lambda m: m.number)
+        translations = list(record.translations)
+        if len(copies) > 1:
+            seen = {_norm_zh(text) for _, text in translations}
+            for copy in copies:
+                for item in copy.translations:
+                    if _norm_zh(item["_text"]) in seen or not item["_text"].strip():
+                        continue
+                    seen.add(_norm_zh(item["_text"]))
+                    translations.append((item.get(XML_LANG, "zho"), item["_text"]))
+                    counts["merged: translation added from a main copy"] += 1
+        if record.audio_urls:
+            audio = _audio_2026(record)
+            counts["audio: 2026 recording"] += len(audio)
+        else:
+            chosen = copies if ATTACH_ALL_MERGED_RECORDINGS else copies[:1]
+            audio = [dict(a) for m in chosen for a in m.audio]
+            counts["audio: main's recording (no 2026 recording)"] += len(audio)
+        hit = next((withdraw[g] for g in record.source_ids if g in withdraw), None)
+        if hit is not None:
+            for item in audio:
+                untranscribed.append({**item, "source": (
+                    f"ILRDF example {identifier}; sentence withdrawn "
+                    "(source_repairs.json: action withdraw)")})
+            counts["withdrawn by repair ruling (recording -> untranscribed)"] += 1
+            old_to_new.append({
+                "old_id": identifier, "new_id": "",
+                "change": "removed",
+                "reason": hit["ruling"]})
+            continue
+        if identifier != record.identifier:
+            counts["published under a main id"] += 1
+        else:
+            counts["published under a new GUID id"] += 1
+        out.append(Published(identifier, record.original, translations, audio))
+
+    for row in rows:
+        if row["status"] != "withdrawn":
+            continue
+        main = main_by_id[row["main_id"]]
+        out.append(Published(
+            main.identifier, main.original,
+            [(t.get(XML_LANG, "zho"), t["_text"]) for t in main.translations],
+            [dict(a) for a in main.audio], WITHDRAWN_SOURCE))
+        counts["withdrawn main sentence published from the 2024 snapshot"] += 1
+    out.sort(key=lambda p: (p.original.casefold(), p.original, p.identifier))
+    return out, untranscribed, main_attrs, old_to_new
+
+
+def _build_tree(language: str, records: list[Published], untranscribed: list[dict],
+                attributes: dict[str, str]) -> ET.Element:
+    root = ET.Element("TEXT", attributes)
+    for item in untranscribed:
+        ET.SubElement(root, "AUDIO", item)
+    for record in records:
+        attrs = {"id": record.identifier}
+        if record.source:
+            attrs["source"] = record.source
+        element = ET.SubElement(root, "S", attrs)
+        ET.SubElement(element, "FORM", {"kindOf": "original"}).text = record.original
         translation_counts: dict[str, int] = {}
-        for lang_code, text in sentence.translations:
-            attributes = {XML_LANG: lang_code}
+        for lang_code, text in record.translations:
+            attributes_ = {XML_LANG: lang_code}
             if translation_counts.get(lang_code, 0):
-                attributes["ver"] = "alt"
+                attributes_["ver"] = "alt"
             translation_counts[lang_code] = translation_counts.get(lang_code, 0) + 1
-            ET.SubElement(element, "TRANSL", attributes).text = text
-        for index, url in enumerate(sentence.audio_urls, start=1):
-            suffix = "" if index == 1 else f"_{index}"
-            ET.SubElement(
-                element,
-                "AUDIO",
-                {"url": url, "file": f"{identifier}{suffix}.mp3"},
-            )
+            ET.SubElement(element, "TRANSL", attributes_).text = text
+        for audio in record.audio:
+            ET.SubElement(element, "AUDIO", audio)
     return root
+
+
+def text_attributes(language: str, snapshot_date: str, main_attrs: dict[str, str]) -> dict[str, str]:
+    """TEXT attributes; dialect and glottocode restored from main (ruling §7)."""
+    attributes = root_attributes(language, snapshot_date)
+    ordered: dict[str, str] = {}
+    for key, value in attributes.items():
+        ordered[key] = value
+        if key == "dialect":
+            ordered[key] = main_attrs.get("dialect") or value
+            if main_attrs.get("glottocode"):
+                ordered["glottocode"] = main_attrs["glottocode"]
+    return ordered
 
 
 def _write_tree(root: ET.Element, path: Path) -> None:
@@ -64,9 +219,19 @@ def _write_tree(root: ET.Element, path: Path) -> None:
         handle.write(b"\n")
 
 
+def write_old_to_new(rows: list[dict], path: Path) -> None:
+    rows = sorted(rows, key=lambda r: (r["old_id"].rsplit("_", 1)[0],
+                                       int(r["old_id"].rsplit("_", 1)[1])))
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["old_id", "new_id", "change", "reason"],
+                                lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 LEDGER_PATH = SOURCE_DATA / "published_ids.csv"
 MODES = ("generate", "audit", "ledger")
-_SPLIT_SUFFIX = re.compile(r"_[a-z]$")
+_SPLIT_SUFFIX = re.compile(r"-opt\d*$")
 _GUID_IN_ID = re.compile(
     r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
 
@@ -206,8 +371,11 @@ def run(mode: str, languages: list[str], write_ledger: bool = False) -> int:
     extracted: dict[str, set[str]] = {}
     xml_ids: set[str] = set()
 
+    old_to_new: list[dict] = []
+    totals: Counter = Counter()
     for language in languages:
         snapshot = verify_and_load_snapshot(language, SNAPSHOT_DIR, manifest)
+        untranslated: dict = {}
         sentences, stats = extract_sentences(
             language,
             snapshot,
@@ -216,18 +384,31 @@ def run(mode: str, languages: list[str], write_ledger: bool = False) -> int:
             used_overrides,
             exclusions,
             used_exclusions,
+            untranslated=untranslated,
         )
-        expected = _build_tree(language, sentences, snapshot_date)
+        counts: Counter = Counter()
+        records, untranscribed, main_attrs, retired = assemble(
+            language, sentences, untranslated, counts)
+        old_to_new.extend(retired)
+        totals.update(counts)
+        published_of = {}
+        for row in _main_rows(language):
+            if row["status"] in ("kept", "merged-kept"):
+                published_of[row["record_id"]] = row["published_id"]
+        for sentence in [*sentences, *untranslated.values()]:
+            extracted[published_of.get(sentence.identifier, sentence.identifier)] = set(
+                sentence.source_ids)
         for sentence in sentences:
-            extracted[sentence.identifier] = set(sentence.source_ids)
             for url in sentence.audio_urls:
                 audio_owners.setdefault(url, set()).add((language, sentence.original))
         path = XML_DIR / language / f"{language}.xml"
         if mode == "generate":
+            expected = _build_tree(language, records, untranscribed,
+                                   text_attributes(language, snapshot_date, main_attrs))
             _write_tree(expected, path)
         else:
             audit_errors.extend(
-                f"{language}: {error}" for error in _audit_structure(expected, path)
+                f"{language}: {error}" for error in _audit_structure(None, path)
             )
             if path.exists():
                 xml_ids.update(
@@ -242,6 +423,21 @@ def run(mode: str, languages: list[str], write_ledger: bool = False) -> int:
                         if item.get("id")
                     )
         print(f"{language}: {json.dumps(asdict(stats), sort_keys=True)}")
+        print(f"{language}: {json.dumps(dict(sorted(counts.items())), ensure_ascii=False)}")
+
+    if mode == "generate" and set(languages) == set(LANGUAGES):
+        rulings = json.loads(RULINGS_PATH.read_text(encoding="utf-8"))["records"]
+        for item in rulings:
+            if not item["publish"]:
+                old_to_new.append({
+                    "old_id": item["main_id"], "new_id": "", "change": "removed",
+                    "reason": "maintainer ruling 2026-10-16: the source prints "
+                              "alternatives that cannot be published as one "
+                              "sentence; its recording is published as "
+                              "untranscribed audio"})
+        write_old_to_new(old_to_new, OLD_TO_NEW_PATH)
+        print(f"wrote {OLD_TO_NEW_PATH.name}: {len(old_to_new)} rows")
+        print(f"TOTAL: {json.dumps(dict(sorted(totals.items())), ensure_ascii=False)}")
 
     relevant_overrides = {key for key in overrides if key[0] in languages}
     unused = sorted(relevant_overrides - used_overrides)
