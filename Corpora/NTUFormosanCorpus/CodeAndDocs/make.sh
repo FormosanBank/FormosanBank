@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # make.sh — regenerate the whole NTUFormosanCorpus from source and check it.
 #
-# The JSONs under grammar/, sentence/ and story/ are this corpus's source.
-# Nothing is scraped, so there is no refresh step: those JSONs are the
-# starting point and everything in ../XML/ is derived from them.
+# The JSONs under grammar/, sentence/ and story/ are this corpus's source:
+# NTU's published release pinned in source_release.tsv, fetched by
+# refresh_source.sh (never run from here, so a rebuild never depends on NTU's
+# site). They are the starting point; everything in ../XML/ is derived from them.
 #
 #   ./make.sh [--with-audio]
 #

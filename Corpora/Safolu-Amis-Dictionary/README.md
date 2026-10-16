@@ -11,6 +11,22 @@ decisions below are resolved. It is not ready to port.
 [Basecamp card](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/7112980917)
 and [corpus PR #157](https://github.com/FormosanBank/FormosanBank/pull/157).
 
+## Rights
+
+**License:** CC BY-NC-SA 3.0 TW
+**Rights source:** Tsai Chung-Han (蔡中涵), date not recorded in this repository; evidence: ask maintainer
+
+The licence is the version as granted (CC BY-NC-SA 3.0 Taiwan), kept as granted
+by maintainer ruling 2026-10-16 rather than mapped to 4.0 (POL-042). Until
+2026-10-16 each `TEXT/@copyright` held the prose "CC BY-NC according to the
+frozen amis-safolu README; current data source is g0v/amis-moedict docs/s.";
+POL-042 allows only a vocabulary value there, so that statement is preserved
+here. The grant itself (CC BY-NC-SA 3.0 Taiwan, from Tsai Chung-Han) is held in
+FormosanBank's records; ask the maintainer for it. For comparison, the frozen
+[miaoski/amis-safolu](https://github.com/miaoski/amis-safolu) README's licence line
+reads 蔡中涵委員 g0v 阿美語萌典計劃使用本字典，以 CC BY-NC 授權宣告。 (CC BY-NC, no version);
+the grant held by FormosanBank is the authority.
+
 ## Source and coverage
 
 [The source manifest](CodeAndDocs/source_manifest.json) identifies the pinned
