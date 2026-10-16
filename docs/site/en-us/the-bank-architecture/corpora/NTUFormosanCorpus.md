@@ -17,17 +17,17 @@ It consists of three main sections:
 
 | | Amis<br>Coastal | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Sakizaya | Atayal<br>Wenshui | Seediq<br>Tegudaya | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 7,585 | 23,544 | 16,335 | 17,996 | 14,064 | 5,878 | 25,277 | 10,239 | 20,408 | 10,874 |
+| Word count | 7,585 | 23,544 | 16,335 | 17,996 | 14,068 | 5,878 | 25,277 | 10,239 | 20,411 | 10,874 |
 | Total audio | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |  |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,540 | 23,462 | 16,249 | 17,981 | 9,019 | 5,873 | 20,247 | 10,239 | 15,223 | 10,858 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,585 | 23,457 | 16,333 | 17,955 | 14,062 | 5,873 | 25,177 | 10,239 | 20,388 | 10,858 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,585 | 23,457 | 16,333 | 17,955 | 14,066 | 5,873 | 25,177 | 10,239 | 20,391 | 10,858 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Morphologically segmented | 7,528 | 23,478 | 16,277 | 17,533 | 12,994 | 5,860 | 23,201 | 10,230 | 18,881 | 10,860 |
-| Glossed words | 7,528 | 23,478 | 16,277 | 17,533 | 12,994 | 5,860 | 23,201 | 10,230 | 18,878 | 10,860 |
+| Morphologically segmented | 7,528 | 23,478 | 16,277 | 17,533 | 12,998 | 5,860 | 23,201 | 10,230 | 18,884 | 10,860 |
+| Glossed words | 7,528 | 23,478 | 16,277 | 17,533 | 12,998 | 5,860 | 23,201 | 10,230 | 18,881 | 10,860 |
 
 ***
 
@@ -144,7 +144,7 @@ The original corpus has a great deal of discourse coding for Sentences and Stori
 
 * NTU transcribes the Stories in intonation units. Units are joined into one sentence up to NTU's sentence-end mark, except that a unit with its own translation ends its sentence. An untranscribed word is written `X`.
 
-* The Kanakanavu sentence subcorpus writes "∅" inside some words (30 occurrences), and the Sakizaya grammar writes a null prefix slot "ø". These are the linguists' null-morpheme annotation: a morpheme that is present in the analysis but has no phonological content (e.g. a phonologically empty relativizer, glossed REL). FormosanBank's convention (per the 2026-08 null-morpheme specification) canonicalizes the marker glyph to `∅` (U+2205) and keeps it in the original tier and on the word/morpheme tiers — where the morphological analysis lives — while removing it from sentence-level standard FORMs; in the PHON tier null morphemes are silent (a wholly-null morpheme carries PHON `∅` so the tier is never empty). See the corpus [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/NTUFormosanCorpus/readme.md) for details.
+* The Kanakanavu sentence subcorpus writes "∅" inside some words (32 occurrences; the source writes 2 of them as "Ø", which the build canonicalizes), and the Sakizaya grammar writes a null prefix slot "ø". These are the linguists' null-morpheme annotation: a morpheme that is present in the analysis but has no phonological content (e.g. a phonologically empty relativizer, glossed REL). FormosanBank's convention (per the 2026-08 null-morpheme specification) canonicalizes the marker glyph to `∅` (U+2205) and keeps it in the original tier and on the word/morpheme tiers — where the morphological analysis lives — while removing it from sentence-level standard FORMs; in the PHON tier null morphemes are silent (a wholly-null morpheme carries PHON `∅` so the tier is never empty). See the corpus [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/NTUFormosanCorpus/readme.md) for details.
 
 ***
 
