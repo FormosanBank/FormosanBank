@@ -268,8 +268,8 @@ CodeAndDocs/generate_xml.sh
 # Validation, separately. Reads XML/, never writes it.
 CodeAndDocs/validate.sh
 
-# Both, twice, with a byte-comparison between the passes.
-CodeAndDocs/reproduce.sh
+# Reproducibility check: build again; nothing may change.
+CodeAndDocs/generate_xml.sh && git status --short .
 ```
 
 Run from this corpus's folder. The scripts find FormosanBank themselves
@@ -282,12 +282,13 @@ out, since that folder is what the build writes.
 The two are separate because a build that aborts on a validator failure cannot be
 used to investigate that failure — you need the XML the validator objected to.
 
-The two-pass gate rebuilds from `source_inventory.tsv`, runs the complete current
-QC pipeline, and compares deterministic outputs. It runs against **whatever
-FormosanBank checkout it is pointed at** — the build is never pinned to an old
-commit (POL-047). The FormosanBank dependency is treated as read-only: the runner
-records its commit before and after each pass and refuses to report success if the
-run changed it.
+The build rebuilds from `source_inventory.tsv` and is idempotent (POL-047): on a
+clean checkout a second run leaves `git status` empty, apart from
+`CodeAndDocs/provenance.json` when the FormosanBank commit has moved. It runs
+against **whatever FormosanBank checkout it is pointed at** — the build is never
+pinned to an old commit (POL-047). The FormosanBank dependency is treated as
+read-only: both scripts record its commit and `git status` before and after, and
+refuse to report success if the run changed it.
 
 The commit whose tools built the XML currently under `XML/` is recorded in
 [`CodeAndDocs/provenance.json`](CodeAndDocs/provenance.json) (POL-052). Rewrite
@@ -328,7 +329,6 @@ Key files:
 - `CodeAndDocs/generate_xml.sh`: **the** entry point — source to published XML/
 - `CodeAndDocs/validate.sh`: every validator, plus the adjudication gate
 - `CodeAndDocs/adjudicate_findings.py`: requires zero HARD findings and dispositions every diagnostic
-- `CodeAndDocs/reproduce.sh`: performs the deterministic two-pass clean-clone gate
 
 ### Review round trip
 

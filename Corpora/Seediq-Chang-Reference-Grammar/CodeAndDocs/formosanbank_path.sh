@@ -1,4 +1,4 @@
-# Sourced by generate_xml.sh, validate.sh and reproduce.sh after they set
+# Sourced by generate_xml.sh and validate.sh after they set
 # repo_root. Sets formosanbank_path and defines dependency_status.
 #
 # Where FormosanBank is:
