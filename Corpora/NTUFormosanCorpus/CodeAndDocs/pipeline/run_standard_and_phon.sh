@@ -39,6 +39,10 @@ for dir in "$XML"/*/; do
   echo "  $lang: $(printf '%s' "$out" | grep -cE 'standardized successfully') file(s) standardized"
 done
 
+# Word divisions written in the standard tier only (standard_word_splits.tsv,
+# ruling 2026-10-16). Before add_phonology, so the standard PHON follows them.
+"$PY" "$(dirname "${BASH_SOURCE[0]}")/apply_standard_word_splits.py" "$XML" || exit 1
+
 # Original PHON from Ortho94; the standard PHON keeps Ortho113 where a table
 # exists, which add_phonology handles itself.
 "$PY" "$ROOT/QC/utilities/add_phonology.py" --corpora_path "$XML" --orthography Ortho94 2>&1 | tail -3

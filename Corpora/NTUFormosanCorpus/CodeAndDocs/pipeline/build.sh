@@ -134,6 +134,8 @@ build_flat() {       # $1 = sentences|stories
   step "${out^^}: builder ($builder)"
   "$PY" "$PIPE/$builder" --json "$json" --out "$W" --steps "$steps" 2>&1 | tail -3
   run "clean_xml"              "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$W"
+  # Glottal letters the shared quote cleaner took for quotation marks (ruling 2026-10-16).
+  run "restore_quote_exemptions" "$PIPE/restore_quote_exemptions.py" --xml_dir "$W"
   TAIL=0 run "normalize_serialization (lxml)" "$SCR/normalize_serialization.py" --style lxml "$W"
   run "repair_l2_markers"      "$SCR/repair_l2_markers.py" --xml_dir "$W"
   run "borrow_segmentation"    "$SCR/borrow_segmentation.py" --xml_dir "$W" --source_dir "$CODEDOCS"

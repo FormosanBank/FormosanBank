@@ -31,7 +31,10 @@ with `pipeline_grammar.py`:
 description of each. The numbers are *creation* order, not application
 order; `--steps` selects which run, and `build.sh` pins the sets above.
 
-**B. Repairs.** `QC/cleaning/clean_xml.py` from the bank, then the
+**B. Repairs.** `QC/cleaning/clean_xml.py` from the bank (for Sentences and
+Stories followed by `restore_quote_exemptions.py`, which puts back glottal
+letters the shared quote cleaner took for quotation marks, listed in
+`quote_cleaner_exemptions.tsv`; ruling 2026-10-16), then the
 per-subcorpus repair scripts in [`../scripts/`](../scripts/) — infix
 notation, optional parentheticals, annotation codes, clitic boundaries, and so
 on. Grammar and the two flat subcorpora use overlapping but not identical
@@ -53,7 +56,11 @@ that review chose to keep inline are not preserved; that is accepted.
 published corpus, per POL-037), then `run_standard_and_phon.sh`, which
 builds the standard tier and both PHON tiers against **Ortho94** — the
 orthography the NTU source documentation declares. (Earlier processing
-declared Ortho113; see the header of that script.)
+declared Ortho113; see the header of that script.) Between the standard tier
+and the PHON tiers it runs `apply_standard_word_splits.py`, which writes the
+word divisions in `standard_word_splits.tsv` into the standard sentence tier
+only (7 sentences where NTU's text joins two words its glosses separate;
+ruling 2026-10-16).
 
 ## Word and morpheme tiers
 

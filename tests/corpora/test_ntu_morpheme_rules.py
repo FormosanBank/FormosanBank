@@ -521,3 +521,50 @@ def test_example_sentences_from_ntus_notes_are_appended_to_their_story():
     assert last.get("id") == "KavNr-frog_buya_S_154-note2"
     assert last.find("FORM").text == "tmitaiku yau biat ’nay takinilan"
     assert "t<m>ita=iku" in last.find("FORM").get("notes")
+
+
+def test_standard_word_splits_are_written_in_the_standard_tier_only(tmp_path):
+    # Ruling 2026-10-16 (review page round 2, "B: split in standard only").
+    import apply_standard_word_splits as sws
+    lang = tmp_path / "Sakizaya"; lang.mkdir()
+    (lang / "Sakizaya.xml").write_text(
+        '<TEXT><S id="09_S_8"><FORM kindOf="original">mutizeng ku luma\' itiza.</FORM>'
+        '<FORM kindOf="standard">mutizeng ku luma\' itiza.</FORM></S></TEXT>', encoding="utf-8")
+    assert sws.main(["x", str(tmp_path)]) == 0
+    s = etree.parse(str(lang / "Sakizaya.xml")).getroot().find("S")
+    assert s.find("FORM[@kindOf='original']").text == "mutizeng ku luma' itiza."
+    assert s.find("FORM[@kindOf='standard']").text == "mutizeng ku luma' i tiza."
+    # A sentence that no longer holds the joined word stops the build.
+    (lang / "Sakizaya.xml").write_text(
+        '<TEXT><S id="09_S_8"><FORM kindOf="standard">mutizeng ku luma\' i tiza.</FORM></S></TEXT>', encoding="utf-8")
+    assert sws.main(["x", str(tmp_path)]) == 1
+
+
+def test_the_seven_standard_word_splits_are_published():
+    xml = CODEDOCS.parent / "XML" / "Grammar"
+    want = {("Sakizaya", "09_S_8"): "i tiza", ("Sakizaya", "09_S_9"): "i tiza", ("Sakizaya", "11_S_48"): "i tiza",
+            ("Sakizaya", "15_S_1"): "paza' ci", ("Kanakanavu", "14_S_27"): "tia 'apacangcangarʉʉn",
+            ("Kanakanavu", "15_S_7"): "tia 'apacangcangarʉʉn", ("Kanakanavu", "15_S_24"): "tia 'apacangcangarʉʉn"}
+    for (lang, sid), split in want.items():
+        s = next(s for s in etree.parse(str(xml / lang / f"{lang}.xml")).getroot().iter("S") if s.get("id") == sid)
+        assert split in s.find("FORM[@kindOf='standard']").text
+        assert split not in s.find("FORM[@kindOf='original']").text
+
+
+def test_a_null_glyph_glued_by_the_sentence_rebuild_is_canonicalized():
+    # Ruling 2026-10-16: Kanakanavu 3_S_375 published 'patovavaliØ' (Ø glued once '=' is removed).
+    from pipeline_sentences import _NULL_GLYPH
+    assert _NULL_GLYPH.sub("\\1\u2205", "pa-to-va-vali=Ø") == "pa-to-va-vali=\u2205"
+    assert _NULL_GLYPH.sub("\\1\u2205", "Grønland") == "Grønland"
+    xml = CODEDOCS.parent / "XML" / "Sentences" / "Kanakanavu" / "Kanakanavu.xml"
+    s = next(s for s in etree.parse(str(xml)).getroot().iter("S") if s.get("id") == "3_S_375")
+    assert s.find("FORM[@kindOf='original']").text == "patovavali\u2205 patopuru tavu."
+    assert s.find("FORM[@kindOf='standard']").text == "patovavali patopuru tavu."
+    assert "*" not in s.find("PHON[@kindOf='original']").text
+
+
+def test_glottal_letters_the_quote_cleaner_took_for_quotes_are_restored():
+    # Ruling 2026-10-16: Amis frog_cinhua S_60, 'pung (hole) and miceli' (AF-call).
+    xml = CODEDOCS.parent / "XML" / "Stories" / "Amis" / "Amis_Amis_Nr-frog_cinhua.xml"
+    s = next(s for s in etree.parse(str(xml)).getroot().iter("S") if s.get("id") == "Amis_Nr-frog_cinhua_S_60")
+    assert s.find("FORM[@kindOf='original']").text == "itini i hakini tuna 'pung, sa'an ku falucu' nira a miceli',"

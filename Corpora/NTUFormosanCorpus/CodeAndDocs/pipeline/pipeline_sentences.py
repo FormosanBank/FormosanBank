@@ -359,6 +359,16 @@ def step5_strip_markup(text: str, gloss: bool = False) -> tuple:
 # Only the MARKERS come off, never the material between them: an infix is
 # part of the surface form, so 'h<in>ud-an' is 'hinudan', not 'hudan'.
 _SEG_MARKERS = re.compile(r"[-=<>]")
+# A null morpheme written as a letter-like glyph (ø U+00F8, Ø U+00D8) in a
+# gloss form, e.g. Kanakanavu 'pa-to-va-vali=Ø'. Same pattern as clean_xml's
+# _NULL_MORPHEME_RE: the glyph stands alone between morpheme boundaries, so a
+# real letter (Danish 'Grønland') is never touched. clean_xml canonicalizes it
+# on W and M, but the sentence form is rebuilt from the gloss with the '='
+# removed, which glues the glyph to the word ('patovavaliØ') where clean_xml's
+# pattern cannot see it. Canonicalizing the rows first lets the null take the
+# path every other null takes (kept in the original, removed from the standard,
+# silent in PHON). Ruling 2026-10-16.
+_NULL_GLYPH = re.compile(r"(^|[\s\-=])[øØ](?=[\s\-=]|$)")
 
 
 def step0_form_from_gloss(rows: list) -> str:
@@ -637,6 +647,8 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                   code_switch=None, attested=None, malformed=None):
         attested = attested or {}
         malformed = malformed or {}
+        rows = [[_NULL_GLYPH.sub("\\1\u2205", str(r[0]))] + list(r[1:])
+                if r and isinstance(r[0], str) and _NULL_GLYPH.search(r[0]) else r for r in rows]
         s = ET.SubElement(root, "S")
         s.set("id", f"{text_id}_S_{sid}")
         form = ET.SubElement(s, "FORM")
