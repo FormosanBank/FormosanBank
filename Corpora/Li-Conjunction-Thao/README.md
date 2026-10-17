@@ -1,5 +1,13 @@
 # Li (2014), *Conjunction in Thao*
 
+## Rights
+
+**License:** CC BY 4.0
+
+**Rights source:** the article's own licence statement (Li 2014, published CC BY 4.0); evidence: ask maintainer
+
+The source article is published under Creative Commons Attribution 4.0 International. Until 2026-10-17 `TEXT/@copyright` carried that name in prose; POL-042 requires the exact vocabulary value `CC BY 4.0`.
+
 - Language/dialect: Thao (`ssf`, `dialect="Thao"`)
 - Source: Paul Jen-Kuei Li, “Conjunction in Thao,” pp. 401–409
 - Canonical source: <https://openresearch-repository.anu.edu.au/items/8bfb8bf0-2f58-4eae-947c-bf9af50faf9f>

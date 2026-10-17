@@ -395,6 +395,8 @@ the shared tool would be the better long-term answer and belongs in its own
 
 ### Deviations from POL-047 (stated, per the policy)
 
+**POL-047 deviation:** the corpus-local parser is `build_xml.py` (preceded by `transcribe_chapter5.py`) rather than `generate_xml.py`, and the steps below depart from the canonical list as stated here.
+
 - The initial parser is named `build_xml.py` rather than `generate_xml.py`, and a
   second corpus-local step, `transcribe_chapter5.py`, runs before it — the
   narrative's transcription is its own source layer. Both are initial parsing,

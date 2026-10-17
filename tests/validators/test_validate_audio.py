@@ -458,3 +458,44 @@ def test_soft_findings_alone_do_not_fail(tmp_path):
         f"expected exit 0 with only SOFT findings; got {proc.returncode}, "
         f"stderr={proc.stderr!r}"
     )
+
+
+# ---------------------------------------------------------------------------
+# V106 wrong_container (skills review D5, 2026-10-17): the bytes contradict the
+# extension. ILRDF v2 shipped WebM/Opus and MP4 files under .mp3 names; mutagen
+# decodes them, so V101 never fired.
+# ---------------------------------------------------------------------------
+
+def _write_bytes(path: Path, head: bytes, size: int = 4096) -> None:
+    path.write_bytes(head + b"\0" * (size - len(head)))
+
+
+def test_mp4_bytes_under_mp3_name_land_with_kind_wrong_container(tmp_path):
+    xml_dir, audio_dir, log_dir = _make_corpus(tmp_path)
+    _write_bytes(audio_dir / "clip.mp3", b"\0\0\0\x18ftypisom\0\0\x02\0")        # MP4
+    _write_bytes(audio_dir / "opus.mp3", b"\x1aE\xdf\xa3\x9f\x42\x86\x81\x01\x42\xf7\x81")  # WebM/EBML
+    _write_text(xml_dir / "t.xml", [{"id": "S1", "file": "clip.mp3", "start": "0", "end": "1"},
+                                    {"id": "S2", "file": "opus.mp3", "start": "0", "end": "1"}])
+    proc = _run(xml_dir, audio_dir, log_dir)
+    rows = _read_broken_csv(log_dir)
+    kinds = {r["audio_file"]: r["kind"] for r in rows}
+    assert kinds.get("clip.mp3") == "wrong_container", rows
+    assert kinds.get("opus.mp3") == "wrong_container", rows
+    messages = {r["audio_file"]: r["message"] for r in rows}
+    assert "mp4 data under a .mp3 name" in messages["clip.mp3"], messages
+    assert "webm data under a .mp3 name" in messages["opus.mp3"], messages
+    assert "V106: 2" in proc.stdout + proc.stderr, (proc.stdout, proc.stderr)
+    assert proc.returncode != 0
+
+
+def test_real_wav_and_unknown_bytes_are_not_wrong_container(tmp_path):
+    """A genuine WAV passes; bytes nobody recognises are V101's call, not V106's."""
+    xml_dir, audio_dir, log_dir = _make_corpus(tmp_path)
+    _make_audible_wav(audio_dir / "ok.wav")
+    _write_bytes(audio_dir / "junk.wav", b"not-any-container-at-all")
+    _write_text(xml_dir / "t.xml", [{"id": "S1", "file": "ok.wav", "start": "0", "end": "0.1"},
+                                    {"id": "S2", "file": "junk.wav", "start": "0", "end": "0.1"}])
+    _run(xml_dir, audio_dir, log_dir)
+    kinds = {r["audio_file"]: r["kind"] for r in _read_broken_csv(log_dir)}
+    assert "ok.wav" not in kinds, kinds
+    assert kinds.get("junk.wav") == "unloadable", kinds

@@ -2881,3 +2881,114 @@ def test_V147_legacy_tilde_in_phon_flagged(tmp_path):
     assert _has_text_finding(proc, ("v147", "legacy")), (
         f"expected V147; stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
+
+
+# ---------------------------------------------------------------------------
+# V158: '!'/'?' fused to the next word, or a space before it (SOFT)
+# ---------------------------------------------------------------------------
+
+def _v158_findings(xml_text: str) -> list:
+    tree = etree.parse(BytesIO(xml_text.encode("utf-8")))
+    return text_rules.v158_fused_terminal_punctuation(tree, Path("v158.xml"), None)
+
+
+def _v158_doc(standard: str) -> str:
+    return (
+        '<TEXT id="T" citation="c" BibTeX_citation="b" copyright="CC BY-NC 4.0" '
+        'xml:lang="ami" dialect="Coastal"><S id="S_1">'
+        f'<FORM kindOf="original">{standard}</FORM>'
+        f'<FORM kindOf="standard">{standard}</FORM></S></TEXT>'
+    )
+
+
+def test_v158_flags_punctuation_glued_to_the_next_word():
+    findings = _v158_findings(_v158_doc("Maolah kako!Tayra ko wawa."))
+    assert [f.rule_id for f in findings] == ["V158"]
+    assert findings[0].severity == Severity.SOFT
+    assert findings[0].character == "!"
+    assert findings[0].location == "S=S_1"
+
+
+def test_v158_flags_a_space_before_terminal_punctuation():
+    findings = _v158_findings(_v158_doc("Nga'ay ho ?"))
+    assert [f.character for f in findings] == ["?"]
+    assert "space before" in findings[0].message
+
+
+def test_v158_is_silent_on_correct_spacing_and_closing_quotes():
+    assert _v158_findings(_v158_doc('Maolah kako! Tayra ko wawa. "Nga\'ay ho?"')) == []
+    assert _v158_findings(_v158_doc("Tayra ko wawa?")) == []
+
+
+def test_v158_reads_the_standard_tier_only():
+    """In Ferrell's Paiwan '?' is a letter of the ORIGINAL tier; the rule never looks there."""
+    doc = (
+        '<TEXT id="T" citation="c" BibTeX_citation="b" copyright="CC BY-NC 4.0" '
+        'xml:lang="pwn" dialect="Southern"><S id="S_1">'
+        '<FORM kindOf="original">qa?u?an a vavayan</FORM>'
+        '<FORM kindOf="standard">qa\'u\'an a vavayan</FORM></S></TEXT>'
+    )
+    assert _v158_findings(doc) == []
+
+
+def test_v158_fixture_runs_through_the_validator(tmp_path):
+    fixture = Path(__file__).resolve().parents[1] / "fixtures" / "v158_fused_terminal_punctuation.xml"
+    target = tmp_path / "v158.xml"
+    target.write_text(fixture.read_text(encoding="utf-8"), encoding="utf-8")
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("V158",)), combined_output(proc)
+
+
+# ---------------------------------------------------------------------------
+# V159 null_glyph_glued_to_word (SOFT) — skills-review round 3, 2026-10-17
+# ---------------------------------------------------------------------------
+
+def _v159_findings(xml_text: str) -> list:
+    tree = etree.parse(BytesIO(xml_text.encode("utf-8")))
+    return text_rules.v159_null_glyph_glued_to_word(tree, Path("v159.xml"), None)
+
+
+def _v159_doc(standard: str, original: str | None = None) -> str:
+    return (
+        '<TEXT id="T" citation="c" BibTeX_citation="b" copyright="CC BY-NC 4.0" '
+        'xml:lang="ami" dialect="Coastal"><S id="S_1">'
+        f'<FORM kindOf="original">{original if original is not None else standard}</FORM>'
+        f'<FORM kindOf="standard">{standard}</FORM></S></TEXT>'
+    )
+
+
+def test_v159_flags_the_canonical_null_glued_to_a_word():
+    findings = _v159_findings(_v159_doc("nikoru∅maku a wawa"))
+    assert [f.rule_id for f in findings] == ["V159"]
+    assert findings[0].severity == Severity.SOFT
+    assert findings[0].character == "∅"
+    assert findings[0].location == "S=S_1"
+    assert "canonical null" in findings[0].message
+
+
+def test_v159_flags_a_latin_null_glyph_at_a_word_edge_only():
+    assert [f.character for f in _v159_findings(_v159_doc("Østerskær a niyaro'"))] == ["Ø"]
+    assert [f.character for f in _v159_findings(_v159_doc("ma-kaenø a wawa"))] == ["ø"]
+    # Word-internal ø is a Danish/Norwegian letter, never a null marker.
+    assert _v159_findings(_v159_doc("o Grønland ko ngangan")) == []
+    assert _v159_findings(_v159_doc("Børn ato Købmandens")) == []
+
+
+def test_v159_leaves_separated_nulls_to_the_cleaner():
+    """A null between separators is clean_xml's job (canonicalised to ∅); not a V159 case."""
+    assert _v159_findings(_v159_doc("ma-∅-kaen")) == []
+    assert _v159_findings(_v159_doc("ma ∅ kaen")) == []
+    assert _v159_findings(_v159_doc("ma=∅=kaen")) == []
+
+
+def test_v159_reads_the_standard_tier_only():
+    """The original tier is faithful to a source that writes nulls inline (NTU): never flagged there."""
+    assert _v159_findings(_v159_doc(standard="nikoru maku", original="nikoru∅maku")) == []
+
+
+def test_v159_fixture_runs_through_the_validator(tmp_path):
+    fixture = Path(__file__).resolve().parents[1] / "fixtures" / "v159_null_glyph_glued_to_word.xml"
+    target = tmp_path / "v159.xml"
+    target.write_text(fixture.read_text(encoding="utf-8"), encoding="utf-8")
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("V159",)), combined_output(proc)

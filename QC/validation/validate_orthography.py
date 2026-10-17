@@ -1,3 +1,49 @@
+#!/usr/bin/env python3
+"""validate_orthography.py — compare a corpus's letter inventory with the reference.
+
+Informational: prints metrics and WARNING lines and ALWAYS EXITS 0. It is the
+reader's job (a port audit, a QC summary) to quote the SUMMARY line.
+
+Inputs
+  --o_info     the directory `orthography_extract.py --output_dir` wrote. Either
+               the per-dialect layout <Language>/<dialect>/orthographic_info
+               (`--by_dialect true`) or the legacy <Language>/orthographic_info.
+  --reference  the matching reference tree, normally QC/validation/reference/
+               (one orthographic_info per language or per language/dialect).
+  --language   restrict to one <Language> directory (default: every one found).
+
+What is compared, per language (or language/dialect) group
+  * the set of distinct characters, digits excluded (Jaccard, overlap)
+  * the character-frequency distribution over the reference's whole
+    inventory plus the corpus's 30 most frequent characters (cosine,
+    Euclidean, KL divergence)
+  * the character-bigram distribution (cosine, Euclidean)
+  Thresholds that print a WARNING: Jaccard < .95, cosine < .975, Euclidean
+  > .03, KL > .03, bigram cosine < .95, bigram Euclidean > .04. They were set
+  by eye on the existing corpora and are not calibrated; a WARNING is a
+  reason to look at the SUMMARY line's corpus_only / reference_only sets,
+  not a verdict.
+
+Output
+  * the metrics, one per line, with any WARNING lines
+  * by default (development use) also the two pickles' key lists and the
+    reference's character-frequency table; `--quiet` drops those and the
+    matplotlib font messages, leaving the group header, the metric lines,
+    the WARNING lines and the SUMMARY line — what the skills run
+  * one greppable line per group:
+      SUMMARY orthography | <Language> / <dialect> | jaccard=… overlap=… cosine=…
+        euclid=… kl=… bigram_cosine=… bigram_euclid=… | corpus_only=[…]
+        reference_only=[…] | warnings=N
+    corpus_only lists the characters the corpus uses and the reference does
+    not; reference_only the reverse. Both are what an auditor should read.
+  * <group>_frequency_comparison.png beside the corpus's orthographic_info
+  * a group with no reference prints `SUMMARY orthography | <group> |
+    reference=missing | warnings=1` and is otherwise skipped
+
+Usage
+    python QC/validation/validate_orthography.py \
+        --o_info <output_dir>/extract_logs --reference QC/validation/reference [--quiet]
+"""
 import os
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,6 +54,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 from scipy.spatial.distance import euclidean
 from scipy.special import rel_entr
 import argparse
+import logging
+
+QUIET = False  # --quiet: only the group header, metric lines, WARNING lines and SUMMARY line
 
 plt.switch_backend('Agg')  # Use a non-GUI backend
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
@@ -94,16 +143,20 @@ def compare_orthography(c1_dir, c2_dir, label):
     # get the orthographic info for the target corpus
     with open(os.path.join(c1_dir, 'orthographic_info'), 'rb') as f:
         c1_info = pickle.load(f)
-    print(c1_info.keys())
+    if not QUIET:
+        print(c1_info.keys())
 
     # get the reference orthographic info
     ref_path = os.path.join(c2_dir, 'orthographic_info')
     if not os.path.isfile(ref_path):
         print(f"WARNING: No reference orthographic info found at {c2_dir}. Skipping {label}.")
-        return
+        print(f"SUMMARY orthography | {label} | reference=missing | warnings=1")
+        return None
     with open(ref_path, 'rb') as f:
         c2_info = pickle.load(f)
-    print(c2_info.keys())
+    if not QUIET:
+        print(c2_info.keys())
+    warnings_raised = 0
 
     # Filter unique_chars to exclude numerals
     exclude_chars = set(string.digits)
@@ -124,11 +177,13 @@ def compare_orthography(c1_dir, c2_dir, label):
     c1_top_30_chars = dict(c1_sorted_characters[:30])
     all_chars = set(c2_use_chars).union(set(c1_top_30_chars))
 
-    print(c2_character_frequency)
+    if not QUIET:
+        print(c2_character_frequency)
 
     char_jaccard_similarity = jaccard_similarity(set(c1_use_chars), set(c2_use_chars))
     print(f"Jaccard Similarity of unique characters: {char_jaccard_similarity:.2f}")
     if char_jaccard_similarity < .95:
+        warnings_raised += 1
         print("WARNING: The disjunction of character sets should be close to 0. It is recommended to check the unique characters in the orthographic info for the target corpus and the reference corpus.")
 
     char_overlap_coefficient = overlap_coefficient(set(c1_use_chars), set(c2_use_chars))
@@ -142,16 +197,19 @@ def compare_orthography(c1_dir, c2_dir, label):
     cosine_sim = cosine_similarity([c1_freq_vector], [c2_freq_vector])[0][0]
     print(f"Cosine Similarity of character frequencies: {cosine_sim:.2f}")
     if cosine_sim < .975:
+        warnings_raised += 1
         print("WARNING: Even when different orthographies are being used, cosine similarity is usually >.975.")
 
     euclidean_dist = euclidean(c1_freq_vector, c2_freq_vector)
     print(f"Euclidean Distance of character frequencies: {euclidean_dist:.2f}")
     if euclidean_dist > .03:
+        warnings_raised += 1
         print("WARNING: Even when different orthographies are being used, Euclidean distance is usually <.03.")
 
     kl_div = kl_divergence(c1_freq_vector, c2_freq_vector)
     print(f"KL Divergence of character frequencies: {kl_div:.2f}")
     if kl_div > .03:
+        warnings_raised += 1
         print("WARNING: Even when different orthographies are being used, KL divergence is usually <.03.")
 
     c1_bigrams = c1_info['2-grams']
@@ -170,14 +228,41 @@ def compare_orthography(c1_dir, c2_dir, label):
     bigram_cosine_sim = cosine_similarity([c1_bigram_vector], [c2_bigram_vector])[0][0]
     print(f"Cosine Similarity of bigram frequencies: {bigram_cosine_sim:.2f}")
     if bigram_cosine_sim < .95:
+        warnings_raised += 1
         print("WARNING: Even when different orthographies are being used, bigram cosine similarities are usually >.95.")
 
     bigram_euclidean_dist = euclidean(c1_bigram_vector, c2_bigram_vector)
     print(f"Euclidean Distance of bigram frequencies: {bigram_euclidean_dist:.2f}")
     if bigram_euclidean_dist > .04:
+        warnings_raised += 1
         print("WARNING: Even when different orthographies are being used, bigram Euclidean distance is usually <.04.")
 
     vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], c1_dir, label)
+
+    corpus_only = sorted(set(c1_use_chars) - set(c2_use_chars))
+    reference_only = sorted(set(c2_use_chars) - set(c1_use_chars))
+    summary = {
+        'label': label,
+        'jaccard': char_jaccard_similarity, 'overlap': char_overlap_coefficient,
+        'cosine': cosine_sim, 'euclid': euclidean_dist, 'kl': kl_div,
+        'bigram_cosine': bigram_cosine_sim, 'bigram_euclid': bigram_euclidean_dist,
+        'corpus_only': corpus_only, 'reference_only': reference_only,
+        'warnings': warnings_raised,
+    }
+    print(format_summary(summary))
+    return summary
+
+
+def format_summary(s):
+    """One greppable line per group; what an audit quotes."""
+    return (
+        f"SUMMARY orthography | {s['label']} | "
+        f"jaccard={s['jaccard']:.2f} overlap={s['overlap']:.2f} cosine={s['cosine']:.3f} "
+        f"euclid={s['euclid']:.3f} kl={s['kl']:.3f} bigram_cosine={s['bigram_cosine']:.3f} "
+        f"bigram_euclid={s['bigram_euclid']:.3f} | "
+        f"corpus_only=[{''.join(s['corpus_only'])}] reference_only=[{''.join(s['reference_only'])}] | "
+        f"warnings={s['warnings']}"
+    )
 
 
 def main(args, possiblelangs):
@@ -230,7 +315,13 @@ if __name__ == "__main__":
     parser.add_argument('--o_info', help='Path to log folder containing orthographic info that will be analyzed.')
     parser.add_argument('--reference', help='Path to reference orthographic info. If blank, uses whatever is in the reference folder inside QC/validation')
     parser.add_argument('--language', help='Language code. If blank, all languages in o_info will be analyzed.')
+    parser.add_argument('--quiet', action='store_true',
+                        help='Print only the group header, the metric lines, WARNING lines and the SUMMARY line '
+                             '(what the skills run). Default is the full development output.')
     args = parser.parse_args()
+    QUIET = args.quiet
+    if QUIET:
+        logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
 
     # Validate required arguments
     if not args.o_info:
