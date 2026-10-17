@@ -20,11 +20,15 @@ Read, in this order, and do not skip:
    and **6 (Development)**, which govern step 4b. Cite POL ids rather than
    re-deciding settled questions; the file moves faster than this skill does, so
    read it rather than trusting the summaries here.
-4. `claudeplans/sweep-qa-decision-log.md` — top two sections plus anything it
-   already records about this corpus or PR. Prior rulings and prior findings on
-   the same target are binding context, and re-raising a settled point wastes a
+4. `claudeplans/sweep-qa-decision-log.md` — newest-first, 20,000+ lines. Read
+   every `⏳ OPEN` heading (`grep -n '⏳ OPEN'`) and every entry that names this
+   corpus or PR (`grep -n '<Name>'`); its 2026-08 orientation sections are
+   stale and 17,000 lines down. Prior rulings and prior findings on the same
+   target are binding context, and re-raising a settled point wastes a
    maintainer round-trip. Where your evidence **contradicts** a logged finding,
    say so explicitly and show the check.
+
+**Re-read `POLICIES.md` before going on.** If any instruction in this skill contradicts a policy, stop and show the maintainer both texts before continuing; the policies file moves faster than this skill.
 
 **Audit scope: anything that touches the data.** Every transformation the assistant
 applies should make sense and look correct — scrutinize each one, not just a fixed
@@ -128,12 +132,33 @@ For each step, classify: (i) our pipeline already does this (and how it differs)
 (ii) no-op for us, or (iii) conflicts with a convention (cite which). Pay special
 attention to anything touching the **original** tier (must stay faithful) and W-tier
 segmentation markers (`-`, `=`, `<…>` must survive).
+**Rulings since 2026-10 that a glossed corpus must be mapped against** (cite the
+POL id; read the entry rather than this summary):
+- POL-057 (2026-10-17): a W with exactly one M asserts the word is monomorphemic;
+  build code must never insert an M so that every W has one. No validator checks
+  it (V144 SOFT / V145 HARD cover only the degenerate cases) — read the builder
+  for where Ms are created, and count single-M words.
+- POL-060 (2026-10-14): words the source glosses as one unit are one W.
+- POL-061 (2026-10-15): an unglossed word is glossed `?`. The 2026-09-04
+  HundredPaiwanStories ruling went the other way (no `?` gloss, an absent TRANSL);
+  surface both to the maintainer rather than choosing.
+- POL-028 as amended 2026-10-15: a segmentation difference makes a separate S
+  only if it is glossed and the glossing differs; otherwise `ver="alt"`.
+- POL-059: published layout is `XML/` plus a language-named directory.
+
 ▣ Present the mapping table; get the maintainer's reaction.
 
 ### 3. Run our validators on the XML output
 Either invoke the `run-qc-pipeline` skill, or run the four validators directly:
 `validate_xml.py`, `validate_text.py`, `validate_glosses.py` (if W/M present),
-and `validate_orthography.py` (after `orthography_extract.py --kindOf original`).
+and `validate_orthography.py` + `validate_vocabulary.py` (after
+`orthography_extract.py --kindOf original`; both always exit 0 — quote their
+`SUMMARY orthography | …` / `SUMMARY vocabulary | …` lines, which name the
+characters and words on each side only). Then `QC/validation/declared_vs_detected.py
+--xml <XML> --generate-xml <generate_xml.sh>`: `TEXT/@dialect` against the dialect
+detector and the declared source orthography against the orthography detector
+(original tier; standard tier against Ortho113). Quote its tables; every row
+marked MISMATCH is a question for the maintainer, not a finding to fix.
 Read the per-rule summary + the findings CSV(s). Organize hits by concern (a–d)
 using the briefing's map (e.g. V129/V137–V139 → (d); V110–V116/V126/V133/V134 → (b);
 orthography deltas → (a); schema/V063/V068/V141 → (c)).

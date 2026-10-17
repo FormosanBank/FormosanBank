@@ -91,6 +91,8 @@ the validator names on its `Details:` line, never to the terminal.
 | V143 | `transl_language_script_mismatch` | SOFT | file | TRANSL script contradicts its declared language. |
 | V146 | `phon_variant_group_malformed` | SOFT | file | malformed [x|y] variant group in a PHON. |
 | V147 | `phon_legacy_tilde_variant` | SOFT | file | legacy x~y variant notation in a PHON. |
+| V158 | `fused_terminal_punctuation` | SOFT | file | '!' or '?' glued to the following word, or a space before '!'/'?', in S-standard FORM. |
+| V159 | `null_glyph_glued_to_word` | SOFT | file | a null-morpheme glyph (∅ anywhere, or ø/Ø at a word edge) touching a letter in the S-standard FORM. |
 
 ## `validate_glosses.py` — word/morpheme glossing
 
@@ -126,4 +128,4 @@ the validator names on its `Details:` line, never to the terminal.
 | G011 | `unsplit_slash_alternate` | SOFT | file | '/' in an S-original whose W tier also carries '/'. |
 | G012 | `trailing_paren_note_in_TRANSL` | SOFT | file | a trailing '(...)' in a TRANSL belongs in the notes attribute. |
 
-91 rules.
+93 rules.

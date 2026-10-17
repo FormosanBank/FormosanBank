@@ -8,7 +8,7 @@ Wilang Yutas and his collaborator 劉宇陽 recorded these [Atayal videos](https
 
 **Rights source:** 劉宇陽, 2024-12-26; evidence: ask maintainer
 
-The grant specifies CC By-NC; POL-042 supplies the canonical 4.0 spelling. The corpus remains subject to FormosanBank's [central terms](https://github.com/FormosanBank/FormosanBank/blob/main/LICENSE.md) and [AI use addendum](https://github.com/FormosanBank/FormosanBank/blob/main/AI-USE-ADDENDUM.md).
+The grant specifies CC By-NC; POL-042 supplies the canonical 4.0 spelling. The licence was recorded unversioned (`CC-BY-NC`) until 2026-10-17. The corpus remains subject to FormosanBank's [central terms](https://github.com/FormosanBank/FormosanBank/blob/main/LICENSE.md) and [AI use addendum](https://github.com/FormosanBank/FormosanBank/blob/main/AI-USE-ADDENDUM.md).
 
 ## Reproduction
 

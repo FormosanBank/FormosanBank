@@ -17,6 +17,7 @@ Bootstrap a fresh corpus development repository at `<parent_dir>/Formosan-<corpu
 
 ## Pre-checks
 
+0. **Re-read `POLICIES.md` before going on.** If any instruction in this skill contradicts a policy, stop and show the maintainer both texts before continuing; the policies file moves faster than this skill.
 1. Locate FormosanBank: usually `<parent_dir>/FormosanBank/`. If not found, prompt user for path. Required for `requirements.txt` and the `check-venv.py` hook to copy.
 2. Verify `<formosanbank_path>/requirements.txt` and `<formosanbank_path>/.claude/hooks/check-venv.py` both exist. If either is missing, refuse and surface to the user — the bootstrap depends on both.
 3. Verify target directory `<parent_dir>/Formosan-<corpus_name>/` does NOT already exist. If it does, refuse — operator must delete first or choose a new name.
