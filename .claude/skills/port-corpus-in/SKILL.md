@@ -84,6 +84,21 @@ cp <source README> "<formosanbank_path>/Corpora/<corpus_name>/README.md"
 # If has_audio: cp <source download_audio_data.sh> "<formosanbank_path>/Corpora/<corpus_name>/"
 ```
 
+**Audio parity with Hugging Face (if has_audio).** The XML's `<AUDIO file=…>`
+references are the contract CI checks against the Hub (`validate_hf_audio.py`,
+blocking). Before the PR, show the operator the dry run of the sync tool for
+the corpus's dataset — it lists the clips the XML references that the Hub
+lacks and the Hub files nothing references any more, and changes nothing
+without `--apply`:
+
+```bash
+<python> <formosanbank_path>/QC/utilities/sync_hf_audio.py \
+  --repo FormosanBank/<dataset> --xml "<formosanbank_path>/Corpora/<corpus_name>/XML"
+```
+
+Running it with `--apply` (write token, ffmpeg) is the operator's call and a
+separate step; record the revision SHA it prints in `audio_sources.json`.
+
 Drop nothing from the source dev repo unless explicitly approved.
 
 ### Phase 4: Validate after port
@@ -125,6 +140,28 @@ P005 = `statistics/audio_durations.csv` stale for this corpus (run
 conversion table — run `validate_conversion_table.py` on it (source profile,
 target profile, table as the three positional args) before trusting the
 standard tier.
+
+**Declared vs detected.** The build declares a dialect (`TEXT/@dialect`) and a
+source orthography (`--orthography` / the conversion table in
+`generate_xml.sh`); check that the text agrees before the corpus is published:
+
+```bash
+<python> <formosanbank_path>/QC/validation/declared_vs_detected.py \
+  --xml "<formosanbank_path>/Corpora/<corpus_name>/XML" \
+  --generate-xml "<formosanbank_path>/Corpora/<corpus_name>/CodeAndDocs/generate_xml.sh"
+```
+
+Quote the three tables in the Phase 6 summary. A row marked MISMATCH is not
+a blocker by itself (the detectors are statistical, the dialect models cover
+seven languages, and a corpus can legitimately mix sources), but it is a
+question for the operator before the PR is opened, never something to fix
+silently.
+
+**Waivers are a tool to know, not a step.** `Corpora/<corpus_name>/qc_waivers.tsv`
+(POL-054) records a HARD finding the maintainer has ruled waived, so CI stops
+failing on it while new findings still fail. Mention it only when a HARD
+finding survives and the maintainer says it is acceptable; do not create or
+extend it on your own.
 
 **Cross-corpus duplicate check.** Now that the corpus sits alongside the rest of the bank, check whether its sentences already exist in other published corpora with `QC/utilities/find_duplicate_sentences.py` — the cross-corpus complement of `validate_duplicate_sentences.py`, whose within-corpus check already ran during `run-qc-pipeline`. Run once per language in the corpus, from the FormosanBank root (the script's `--corpora` default is `./Corpora`):
 
@@ -327,6 +364,8 @@ Print:
 - XSD validation result
 - Spot-check results
 - Cross-corpus duplicate check: match count per language + CSV path(s), or why it was skipped
+- Declared vs detected: the three tables from `declared_vs_detected.py`, every MISMATCH row called out
+- Audio parity (if has_audio): the `sync_hf_audio.py` dry-run counts (referenced / on the Hub / to upload / to delete)
 - GitBook page: <path>
 - Stats tables populated from `<corpus_name>_corpora_stats.csv` (audio columns pending if the audio-durations step was skipped).
 - "GitBook page created on branch <chosen>; commit and open the GitBook PR separately."
