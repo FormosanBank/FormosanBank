@@ -18,6 +18,11 @@ from lxml import etree
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "CodeAndDocs" / "video_manifest.tsv"
 XML_ROOT = ROOT / "XML"
+# The caption track's own end for sentences followed by empty captions, which the
+# reviewed inputs omit (maintainer 2026-10-17, Wilang round 5: "Go with B - fix all 22").
+CAPTION_END_TIMES = ROOT / "CodeAndDocs" / "caption_end_times.tsv"
+# Untranscribed audio between or after captions, listed in each video's companion.
+UNTRANSCRIBED_CLIPS = ROOT / "CodeAndDocs" / "untranscribed_clips.tsv"
 XML_NS = "http://www.w3.org/XML/1998/namespace"
 CITATION = (
     "Wilang Yutas. (2019). YouTube channel. YouTube. "
@@ -103,12 +108,12 @@ def load_manifest(path: Path = MANIFEST) -> list[ManifestRow]:
             )
         )
     paths = [row.output_path for row in manifest]
-    if len(manifest) != 82 or len(set(paths)) != 82:
-        raise ValueError("Video manifest must contain 82 unique output paths")
+    if len(manifest) != 83 or len(set(paths)) != 83:
+        raise ValueError("Video manifest must contain 83 unique output paths")
     if sum(row.source_path is not None for row in manifest) != 34:
         raise ValueError("Video manifest must contain 34 transcript sources")
-    if sum(bool(row.audio_only_file) for row in manifest) != 48:
-        raise ValueError("Video manifest must contain 48 audio-only outputs")
+    if sum(bool(row.audio_only_file) for row in manifest) != 49:
+        raise ValueError("Video manifest must contain 49 audio-only outputs")
     for row in manifest:
         expected_kind = "transcript" if row.source_path is not None else "audio_only"
         if row.output_kind != expected_kind:
@@ -353,14 +358,41 @@ def build_transcript(
         audio.set("start", entry.start)
         if raw_index + 1 < len(entries):
             audio.set("end", entries[raw_index + 1].start)
+        source_end = CAPTION_ENDS.get((output_stem, sentence_id))
+        if source_end is not None:
+            if source_end[0] != entry.start:
+                raise ValueError(f"caption_end_times.tsv start mismatch: {output_stem} {sentence_id}")
+            audio.set("end", source_end[1])
+            APPLIED_ENDS.add((output_stem, sentence_id))
         audio.set("file", clip)
     return root, stats, untranscribed_clips, dropped_notes
+
+
+def load_caption_end_times(path: Path = CAPTION_END_TIMES) -> dict[tuple[str, str], tuple[str, str]]:
+    with path.open(encoding="utf-8", newline="") as handle:
+        return {
+            (row["output_stem"], row["sentence_id"]): (row["start"], row["end"])
+            for row in csv.DictReader(handle, delimiter="\t")
+        }
+
+
+def load_untranscribed_clips(path: Path = UNTRANSCRIBED_CLIPS) -> dict[str, list[str]]:
+    clips: dict[str, list[str]] = {}
+    with path.open(encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle, delimiter="\t"):
+            clips.setdefault(row["companion_output"], []).append(row["file"])
+    return clips
+
+
+CAPTION_ENDS = load_caption_end_times()
+APPLIED_ENDS: set[tuple[str, str]] = set()
 
 
 def build_audio_only(row: ManifestRow, extra_clips: list[str] = ()) -> etree._Element:
     root = create_root(row.output_path.stem, row.video_id)
     etree.SubElement(root, "AUDIO", file=row.audio_only_file)
-    for clip in extra_clips:
+    listed = load_untranscribed_clips().get(str(row.output_path.relative_to(ROOT)), [])
+    for clip in [*extra_clips, *(c for c in listed if c != row.audio_only_file)]:
         etree.SubElement(root, "AUDIO", file=clip)
     return root
 
@@ -430,17 +462,22 @@ def main() -> None:
     for row in manifest:
         if row.source_path is None:
             outputs[row.output_path] = build_audio_only(row, clips_by_video.pop(row.video_id, []))
+    if APPLIED_ENDS != set(CAPTION_ENDS):
+        raise ValueError(f"caption_end_times.tsv rows not applied: {sorted(set(CAPTION_ENDS) - APPLIED_ENDS)}")
+    companions = {str(row.output_path.relative_to(ROOT)) for row in manifest if row.source_path is None}
+    if not set(load_untranscribed_clips()) <= companions:
+        raise ValueError("untranscribed_clips.tsv names a companion that is not in the manifest")
     if clips_by_video:
         raise ValueError(f"Untranscribed captions in videos without an _untranscribed companion: {clips_by_video}")
     for row in manifest:
         write_xml(outputs[row.output_path], args.output_dir / row.output_path.relative_to(XML_ROOT))
     print(f"Wrote {len(manifest)} XML files under {args.output_dir}")
-    print(f"Transcript files: {transcript_files}; audio-only files: 48")
+    print(f"Transcript files: {transcript_files}; audio-only files: 49")
     print(
         f"Source timestamps: {totals.timestamp_lines}; "
         f"included: {totals.included_entries}; blank: {totals.blank_entries}"
     )
-    retired = sum(len(root.findall("AUDIO")) - 1 for root in outputs.values() if root.find("S") is None)
+    retired = sum(1 for root in outputs.values() if root.find("S") is None for a in root.findall("AUDIO") if "_Atayal_" in a.get("file", ""))
     print(f"Question-mark-only captions moved to _untranscribed companions: {retired}")
     print(f"Transcriber Japanese notes moved from FORM text to FORM notes: {dropped_notes}")
     print(

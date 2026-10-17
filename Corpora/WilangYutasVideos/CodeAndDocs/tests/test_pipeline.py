@@ -34,9 +34,9 @@ class WilangPipelineTests(unittest.TestCase):
             str(path.relative_to(ROOT)) for path in sorted((ROOT / "XML").rglob("*.xml"))
         }
         self.assertEqual(expected, actual)
-        self.assertEqual(len(expected), 82)
+        self.assertEqual(len(expected), 83)
         self.assertEqual(sum(row.source_path is not None for row in self.manifest), 34)
-        self.assertEqual(sum(bool(row.audio_only_file) for row in self.manifest), 48)
+        self.assertEqual(sum(bool(row.audio_only_file) for row in self.manifest), 49)
 
     def test_all_pinned_sources_match_manifest(self) -> None:
         for row in self.manifest:
@@ -88,7 +88,17 @@ class WilangPipelineTests(unittest.TestCase):
                 self.assertEqual(len(root.findall("S")), 0)
                 self.assertEqual(
                     [audio.get("file") for audio in root.findall("AUDIO")],
-                    [row.audio_only_file, *retired_clips.get(row.video_id, [])],
+                    [
+                        row.audio_only_file,
+                        *retired_clips.get(row.video_id, []),
+                        *(
+                            clip
+                            for clip in builder.load_untranscribed_clips().get(
+                                str(row.output_path.relative_to(ROOT)), []
+                            )
+                            if clip != row.audio_only_file
+                        ),
+                    ],
                 )
                 continue
             entries, _ = builder.parse_source(row.source_path)
@@ -110,24 +120,38 @@ class WilangPipelineTests(unittest.TestCase):
                 self.assertIsNotNone(audio)
                 self.assertEqual(audio.get("start"), entry.start)
                 expected_end = entries[raw_index + 1].start if raw_index + 1 < len(entries) else None
+                source_end = builder.load_caption_end_times().get((row.output_path.stem, sentence_id))
+                if source_end is not None:
+                    expected_end = source_end[1]
                 self.assertEqual(audio.get("end"), expected_end)
                 self.assertEqual(
                     audio.get("file"), f"{row.output_path.stem}_{sentence_id}.wav"
                 )
         self.assertEqual(total_sentences, 3012)
 
-    def test_published_timing_corrections_survive(self) -> None:
+    def test_caption_track_end_times(self) -> None:
+        # Maintainer 2026-10-17 (round 5): "Go with B - fix all 22": sentence ends come from the
+        # caption track's next (possibly empty) caption, as in the corpus's first version.
+        ends = builder.load_caption_end_times()
+        self.assertEqual(len(ends), 22)
         checks = (
-            ("20180723_fangwenYutas_Wilan_02buluolingxiu", "Atayal_3", None),
-            ("20190209_YutasWilang_ki_Yagu_03_disanduan", "Atayal_2", "15.0"),
-            ("20190209_YutasWilang_ki_Yagu_05_diwuduan", "Atayal_137", "641.68"),
-            ("20190209_YutasWilang_ki_Yagu_07_diqiduan_yakidege", "Atayal_4", "46.5"),
-            ("muqianxianzuozhepian_20160525_binkafeifangtan_Yutas_Wilang_muqianxianzuozhepian", "Atayal_196", "862.72"),
+            ("20180723_fangwenYutas_Wilan_02buluolingxiu", "Atayal_3", "14.46"),
+            ("20190209_YutasWilang_ki_Yagu_03_disanduan", "Atayal_2", "6.4"),
+            ("20190209_YutasWilang_ki_Yagu_05_diwuduan", "Atayal_137", "619.34"),
+            ("20190209_YutasWilang_ki_Yagu_07_diqiduan_yakidege", "Atayal_4", "19.14"),
+            ("muqianxianzuozhepian_20160525_binkafeifangtan_Yutas_Wilang_muqianxianzuozhepian", "Atayal_196", "862.22"),
+            ("20190407_Yutas_Wilang_di5duan_Lowsing_Watan_MVI_1703", "Atayal_36", "163.4"),
         )
         for name, sid, end in checks:
             with self.subTest(name=name, sid=sid):
                 audio = self.xml[f"XML/Atayal/{name}.xml"].find(f"S[@id='{sid}']/AUDIO")
                 self.assertEqual(audio.get("end"), end)
+        companion = self.xml["XML/Atayal/20190209_YutasWilang_ki_Yagu_05_diwuduan_untranscribed.xml"]
+        self.assertEqual(
+            [a.get("file") for a in companion.findall("AUDIO")],
+            ["20190209_YutasWilang_ki_Yagu_05_diwuduan_untranscribed.wav"],
+        )
+        self.assertEqual(sum(len(v) for v in builder.load_untranscribed_clips().values()), 7)
 
     def test_original_and_standard_forms_are_parallel(self) -> None:
         for root in self.xml.values():

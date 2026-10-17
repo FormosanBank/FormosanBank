@@ -100,7 +100,7 @@ def main() -> None:
             if "(再確認)" not in notes:
                 raise SystemExit("Issue #1 finding 21 lost its editorial source marker")
 
-    print("PASS: 82/82 pre-clean XML files match the source builder")
+    print("PASS: 83/83 pre-clean XML files match the source builder")
     print("Source accounting: 3,014 timestamp rows; 237 translation lines; 5 continuations")
     print("Issue #1 evidence: all 21 recorded source locations exist")
     print("This mechanical check does not replace independent source and final-output review.")

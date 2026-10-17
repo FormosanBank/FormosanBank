@@ -1,6 +1,6 @@
 # Wilang Yutas Videos
 
-Wilang Yutas and his collaborator 劉宇陽 recorded these [Atayal videos](https://www.youtube.com/@wilangyutas9297). The corpus contains Sekolik Atayal (`tay`), with some Mandarin translations: 82 XML files, 34 transcripts, 48 audio-only files and 3,012 sentences.
+Wilang Yutas and his collaborator 劉宇陽 recorded these [Atayal videos](https://www.youtube.com/@wilangyutas9297). The corpus contains Sekolik Atayal (`tay`), with some Mandarin translations: 83 XML files, 34 transcripts, 49 audio-only files and 3,012 sentences.
 
 ## Rights
 
@@ -45,7 +45,7 @@ python3 -m unittest discover -s CodeAndDocs/tests -v
 
 [video_manifest.tsv](CodeAndDocs/video_manifest.tsv) lists every output, video ID and source hash. The 34 committed transcripts preserve Joshua Hartshorne's published corrections from [the June source repair](https://github.com/FormosanBank/FormosanBank/commit/5dbd832e245ff1f34078aa2c8e8bb314957556b8). `CodeAndDocs/import_reviewed_sources.py` performed this one-time import and updated the hashes. It is not called by regeneration.
 
-The reviewed inputs contain 3,014 non-empty timestamp rows, 237 translation lines and five wrapped caption continuations. The earlier development scrape's 3,441 empty timestamps are absent from the reviewed inputs. Restoring those empty rows would change 22 published audio endpoints. All published TEXT/S IDs, recording filenames, audio-only entries and endpoints are retained, except the two retired sentence IDs described below.
+The reviewed inputs contain 3,014 non-empty timestamp rows, 237 translation lines and five wrapped caption continuations. The earlier development scrape's 3,441 empty timestamps (captions with no text) are absent from the reviewed inputs. Where a sentence's next caption was empty, its end is that empty caption's start, as in the caption track and the corpus's first version: 22 sentences, recorded with their source line in [caption_end_times.tsv](CodeAndDocs/caption_end_times.tsv) (maintainer ruling 2026-10-17). 18 are a video's last sentence, which otherwise ran to the end of the video and contained the untranscribed tail; 4 are mid-video, followed by uncaptioned stretches of 8.6, 22.34, 27.36 and 0.5 s. Audio covered by no caption is untranscribed audio and belongs in the video's `_untranscribed` companion: [untranscribed_clips.tsv](CodeAndDocs/untranscribed_clips.tsv) lists the 7 clips this added (the 4 mid-video stretches, and the tail of the 3 videos whose companion held only the stretch before the first caption), and `…Yagu_05_diwuduan_untranscribed.xml` is a new companion. All published TEXT/S IDs, recording filenames and audio-only entries are retained, except the two retired sentence IDs described below; endpoints are retained except the 22 above.
 
 Each timestamped caption becomes one S. An indented continuation, or a continuation of an open speaker parenthesis, belongs to that caption. Unindented translation lines stay translations, including two instances of the name `Wilang`. Parentheses identify a second speaker in this source; their content is retained and the speaker boundary becomes punctuation. They do not indicate optional words.
 
