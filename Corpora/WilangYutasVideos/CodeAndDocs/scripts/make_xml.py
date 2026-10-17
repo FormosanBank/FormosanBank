@@ -113,7 +113,7 @@ def create_xml_header(language_name, lang_code, dialect, youtube_url, video_id, 
     root.set("dialect", dialect)
     root.set("audio", unescape(youtube_url))
     root.set("source", "Wilang Yutas Atayal Videos")
-    root.set("copyright", "CC-BY-NC")
+    root.set("copyright", "CC BY-NC 4.0")
     root.set("citation", "")
     root.set("BibTeX_citation", "")
     

@@ -10,6 +10,14 @@ All text is Atayal (`tay`), dialect Sekolik. 82 XML files; 34 carry transcripts 
 
 ***
 
+## Rights
+
+**License:** CC BY-NC 4.0
+
+**Rights source:** 劉宇陽 (Wilang Yutas's collaborator), 2024-12-26; evidence: ask maintainer
+
+Permission to republish the videos' transcriptions and audio was granted by Wilang Yutas's collaborator 劉宇陽. The licence was recorded unversioned (`CC-BY-NC`) until 2026-10-17; POL-042 normalises an unversioned grant to 4.0 (maintainer ruling on PR #177, 2026-10-17).
+
 # Notes
 
 * Many of the videos lack transcripts. These have XMLs that point to the audio file, but there are no `<S>` elements.

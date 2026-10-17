@@ -27,7 +27,7 @@ BIBTEX = ("@incollection{li2014conjunctionthao, author={Li, Paul Jen-Kuei}, "
           "editor={Arka, I Wayan and Indrawati, N. L. K. Mas}, publisher={Asia-Pacific "
           "Linguistics}, year={2014}, pages={401--409}, url={https://openresearch-"
           "repository.anu.edu.au/items/8bfb8bf0-2f58-4eae-947c-bf9af50faf9f}}")
-COPYRIGHT = "Creative Commons Attribution 4.0 International (CC BY 4.0)."
+COPYRIGHT = "CC BY 4.0"
 EDGE_PUNCTUATION = ".,!?;:…"
 INFIX_SITE = "\x00"  # transient marker for an infix extraction site (see parse_morphemes)
 
