@@ -17,17 +17,17 @@ It consists of three main sections:
 
 | | Amis<br>Coastal | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Sakizaya | Atayal<br>Wenshui | Seediq<br>Tegudaya | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 7,585 | 23,544 | 16,335 | 17,996 | 14,068 | 5,878 | 25,277 | 10,239 | 20,411 | 10,874 |
-| Total audio | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |
+| Word count | 7,585 | 17,727 | 16,336 | 18,036 | 14,068 | 5,878 | 25,277 | 10,239 | 20,457 | 10,928 |
+| Total audio | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.4h | 1.0h | 4.0h | 1.8h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.4h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,540 | 23,462 | 16,249 | 17,981 | 9,019 | 5,873 | 20,247 | 10,239 | 15,223 | 10,858 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,585 | 23,457 | 16,333 | 17,955 | 14,066 | 5,873 | 25,177 | 10,239 | 20,391 | 10,858 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,540 | 17,641 | 16,250 | 18,021 | 9,019 | 5,873 | 20,247 | 10,239 | 15,269 | 10,912 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,585 | 17,657 | 16,334 | 17,989 | 14,066 | 5,873 | 25,177 | 10,239 | 20,437 | 10,912 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Morphologically segmented | 7,528 | 23,478 | 16,277 | 17,533 | 12,998 | 5,860 | 23,201 | 10,230 | 18,884 | 10,860 |
-| Glossed words | 7,528 | 23,478 | 16,277 | 17,533 | 12,998 | 5,860 | 23,201 | 10,230 | 18,881 | 10,860 |
+| Morphologically segmented | 7,528 | 17,674 | 16,278 | 17,573 | 12,998 | 5,860 | 23,201 | 10,230 | 18,933 | 10,914 |
+| Glossed words | 7,528 | 17,674 | 16,278 | 17,573 | 12,998 | 5,860 | 23,201 | 10,230 | 18,930 | 10,914 |
 
 ***
 
