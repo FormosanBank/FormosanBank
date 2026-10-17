@@ -36,3 +36,7 @@ coverage.xml
 *.exe
 *.pyz
 *.app/
+
+# Tool output written next to the XML it processed (orthography_extract,
+# Hugging Face uploads). Never published data.
+**/XML/**/.cache/
