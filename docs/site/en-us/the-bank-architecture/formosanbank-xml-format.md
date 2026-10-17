@@ -86,7 +86,7 @@ A text-only file normally contains one or more `<S>` elements. An audio-only fil
 ### The `<S>`, `<W>`, and `<M>` Elements
 
 * `<S>` represents a sentence or utterance and is a direct child of `<TEXT>`.
-* `<W>` represents a word and is a direct child of `<S>`.
+* `<W>` represents a word and is a direct child of `<S>`. Words the source glosses as a single unit (one gloss printed under two or more words) are one `<W>`, whose FORM is those words separated by spaces (Policy POL-060).
 * `<M>` represents a morpheme and is a direct child of `<W>`.
 
 All three require an `id`. IDs for S, W, and M elements must be unique within the XML file.

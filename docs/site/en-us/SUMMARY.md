@@ -48,6 +48,7 @@
   * [Sato Pazeh Songs](the-bank-architecture/corpora/sato-pazeh-songs.md)
   * [Wu: Amis Pa-Verbs](the-bank-architecture/corpora/wu-amis-pa-verbs.md)
   * [Blust (2003) Thao Dictionary](the-bank-architecture/corpora/blust-thao-dictionary.md)
+  * [Chang (2000) Seediq Reference Grammar](the-bank-architecture/corpora/seediq-chang-reference-grammar.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Formosan MT Toolkit](the-bank-architecture/developers/formosan-mt-toolkit.md)
