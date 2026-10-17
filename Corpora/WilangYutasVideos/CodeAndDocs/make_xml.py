@@ -41,6 +41,10 @@ _CLOSE_PAREN_RE = re.compile(r" *\)[,.!?:;]*")
 _LEADING_COMMA_RE = re.compile(r"(?<=\S) +(,+) *")
 _LEADING_PERIOD_RE = re.compile(r"(?<=\S) +(\.+)(?=[^\s,.])")
 _UNCLEAR_RE = re.compile(r"[?\uff1f]{3,}")
+_UNCLEAR_ONLY_RE = re.compile(r"[?\uff1f]{3,}")
+# The transcriber glosses Japanese loanwords in parentheses, e.g. ``cyolo(日: ちょっと)``.
+# These are notes, not speech (maintainer 2026-10-17: "Drop the transcriber's Japanese notes.").
+_JAPANESE_NOTE_RE = re.compile(r"\s*[(（]日[:：][^()（）]*[)）]")
 _EDITORIAL_RECHECK_RE = re.compile(r"\s*([（(][^（）()]*再確認[^（）()]*[）)])\s*$")
 
 
@@ -211,6 +215,19 @@ def normalize_form(text: str) -> tuple[str, bool]:
     return _TRAIL_SPACE_BEFORE_PUNCT_RE.sub(r"\1", normalized), had_parens
 
 
+def drop_japanese_notes(text: str) -> tuple[str, int]:
+    return _JAPANESE_NOTE_RE.subn("", text)
+
+
+def is_unclear_only(text: str) -> bool:
+    """A caption that is nothing but question marks: audio nobody transcribed.
+
+    It is published as untranscribed audio in the video's ``_untranscribed``
+    companion, not as a sentence; its sentence number is retired, not reused.
+    """
+    return bool(_UNCLEAR_ONLY_RE.fullmatch(text))
+
+
 def split_editorial_recheck(translation: str) -> tuple[str, str | None]:
     match = _EDITORIAL_RECHECK_RE.search(translation)
     if not match:
@@ -246,17 +263,27 @@ def _join_notes(*values: str | None) -> str | None:
     return "; ".join(notes) if notes else None
 
 
-def build_transcript(row: ManifestRow) -> tuple[etree._Element, SourceStats]:
+def build_transcript(
+    row: ManifestRow,
+) -> tuple[etree._Element, SourceStats, list[str], int]:
     verify_source(row)
     assert row.source_path is not None
     entries, stats = parse_source(row.source_path)
     output_stem = row.output_path.stem
     root = create_root(output_stem, row.video_id)
     included = [(index, entry) for index, entry in enumerate(entries) if entry.text]
+    untranscribed_clips: list[str] = []
+    dropped_notes = 0
     for sentence_number, (raw_index, entry) in enumerate(included, start=1):
         sentence_id = f"Atayal_{sentence_number}"
+        clip = f"{output_stem}_{sentence_id}.wav"
+        if is_unclear_only(entry.text):
+            untranscribed_clips.append(clip)
+            continue
         sentence = etree.SubElement(root, "S", id=sentence_id)
-        normalized, had_parens = normalize_form(entry.text)
+        text, notes = drop_japanese_notes(entry.text)
+        dropped_notes += notes
+        normalized, had_parens = normalize_form(text)
         translation = entry.translation
         editorial_note = None
         if translation is not None:
@@ -284,13 +311,15 @@ def build_transcript(row: ManifestRow) -> tuple[etree._Element, SourceStats]:
         audio.set("start", entry.start)
         if raw_index + 1 < len(entries):
             audio.set("end", entries[raw_index + 1].start)
-        audio.set("file", f"{output_stem}_{sentence_id}.wav")
-    return root, stats
+        audio.set("file", clip)
+    return root, stats, untranscribed_clips, dropped_notes
 
 
-def build_audio_only(row: ManifestRow) -> etree._Element:
+def build_audio_only(row: ManifestRow, extra_clips: list[str] = ()) -> etree._Element:
     root = create_root(row.output_path.stem, row.video_id)
     etree.SubElement(root, "AUDIO", file=row.audio_only_file)
+    for clip in extra_clips:
+        etree.SubElement(root, "AUDIO", file=clip)
     return root
 
 
@@ -338,9 +367,15 @@ def main() -> None:
         raise SystemExit("Source output directory must be empty; use generate_xml.sh for rebuilding")
     totals = SourceStats(0, 0, 0, 0, 0)
     transcript_files = 0
+    clips_by_video: dict[str, list[str]] = {}
+    dropped_notes = 0
+    outputs: dict[Path, etree._Element] = {}
     for row in manifest:
         if row.source_path is not None:
-            root, stats = build_transcript(row)
+            root, stats, clips, notes = build_transcript(row)
+            dropped_notes += notes
+            if clips:
+                clips_by_video.setdefault(row.video_id, []).extend(clips)
             transcript_files += 1
             totals = SourceStats(
                 totals.timestamp_lines + stats.timestamp_lines,
@@ -349,15 +384,23 @@ def main() -> None:
                 totals.translation_lines + stats.translation_lines,
                 totals.continuation_lines + stats.continuation_lines,
             )
-        else:
-            root = build_audio_only(row)
-        write_xml(root, args.output_dir / row.output_path.relative_to(XML_ROOT))
+            outputs[row.output_path] = root
+    for row in manifest:
+        if row.source_path is None:
+            outputs[row.output_path] = build_audio_only(row, clips_by_video.pop(row.video_id, []))
+    if clips_by_video:
+        raise ValueError(f"Untranscribed captions in videos without an _untranscribed companion: {clips_by_video}")
+    for row in manifest:
+        write_xml(outputs[row.output_path], args.output_dir / row.output_path.relative_to(XML_ROOT))
     print(f"Wrote {len(manifest)} XML files under {args.output_dir}")
     print(f"Transcript files: {transcript_files}; audio-only files: 48")
     print(
         f"Source timestamps: {totals.timestamp_lines}; "
         f"included: {totals.included_entries}; blank: {totals.blank_entries}"
     )
+    retired = sum(len(root.findall("AUDIO")) - 1 for root in outputs.values() if root.find("S") is None)
+    print(f"Question-mark-only captions moved to _untranscribed companions: {retired}")
+    print(f"Transcriber Japanese notes dropped: {dropped_notes}")
     print(
         f"Translation lines: {totals.translation_lines}; "
         f"wrapped source continuations: {totals.continuation_lines}"

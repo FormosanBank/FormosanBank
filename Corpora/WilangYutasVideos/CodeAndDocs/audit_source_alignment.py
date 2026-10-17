@@ -58,12 +58,17 @@ def main() -> None:
 
     totals = builder.SourceStats(0, 0, 0, 0, 0)
     sentence_index: dict[tuple[str, str], etree._Element] = {}
+    built = {row.output_path: builder.build_transcript(row) for row in manifest if row.source_path is not None}
+    clips_by_video: dict[str, list[str]] = {}
+    for row in manifest:
+        if row.source_path is not None:
+            clips_by_video.setdefault(row.video_id, []).extend(built[row.output_path][2])
     for row in manifest:
         actual_path = xml_root / row.output_path.relative_to(ROOT / "XML")
         parser_no_blanks = etree.XMLParser(remove_blank_text=True)
         actual = etree.parse(str(actual_path), parser_no_blanks).getroot()
         if row.source_path is not None:
-            expected, stats = builder.build_transcript(row)
+            expected, stats, _, _ = built[row.output_path]
             totals = builder.SourceStats(
                 totals.timestamp_lines + stats.timestamp_lines,
                 totals.included_entries + stats.included_entries,
@@ -72,7 +77,7 @@ def main() -> None:
                 totals.continuation_lines + stats.continuation_lines,
             )
         else:
-            expected = builder.build_audio_only(row)
+            expected = builder.build_audio_only(row, clips_by_video.get(row.video_id, []))
         if canonical_xml(actual) != canonical_xml(expected):
             raise SystemExit(f"Generated XML/source mismatch: {actual_path}")
         for sentence in actual.findall("S"):

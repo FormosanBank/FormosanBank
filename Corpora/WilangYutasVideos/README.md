@@ -1,6 +1,6 @@
 # Wilang Yutas Videos
 
-Wilang Yutas and his collaborator 劉宇陽 recorded these [Atayal videos](https://www.youtube.com/@wilangyutas9297). The corpus contains Sekolik Atayal (`tay`), with some Mandarin translations: 82 XML files, 34 transcripts, 48 audio-only files and 3,014 sentences.
+Wilang Yutas and his collaborator 劉宇陽 recorded these [Atayal videos](https://www.youtube.com/@wilangyutas9297). The corpus contains Sekolik Atayal (`tay`), with some Mandarin translations: 82 XML files, 34 transcripts, 48 audio-only files and 3,012 sentences.
 
 ## Rights
 
@@ -31,6 +31,8 @@ The build starts from the committed transcripts in a fresh staging directory, th
 
 The build uses the selected checkout's tools and records their actual revision in [provenance.json](CodeAndDocs/provenance.json). That record is informational, not a tool pin. A Git-free export retains its supplied provenance. Warnings are saved outside the corpus; the printed directory must be reviewed. Source refresh, validators and audio acquisition are separate from the XML build.
 
+`CodeAndDocs/refresh_source.sh` is the optional source refresh (POL-047). It needs network access and never writes XML. `refresh_source.sh captions` re-fetches the channel's caption files into `CodeAndDocs/raw_scrape/` (`scripts/scrape.py`; needs `yt-dlp` and `youtube-transcript-api`). `refresh_source.sh audio` downloads each video's audio and cuts the per-sentence and untranscribed clips from the built XML's timings (`scripts/download_audio.py`; needs `yt-dlp`, `lxml`, `ffmpeg` and `ffprobe`). After new captions: review every change to `raw_scrape/`, update the hashes in `video_manifest.tsv`, rebuild, then run `audio`. If the untranscribed clips it reports differ from `video_manifest.tsv`, update the manifest and rebuild.
+
 Run the corpus regression checks separately:
 
 ```bash
@@ -43,13 +45,15 @@ python3 -m unittest discover -s CodeAndDocs/tests -v
 
 [video_manifest.tsv](CodeAndDocs/video_manifest.tsv) lists every output, video ID and source hash. The 34 committed transcripts preserve Joshua Hartshorne's published corrections from [the June source repair](https://github.com/FormosanBank/FormosanBank/commit/5dbd832e245ff1f34078aa2c8e8bb314957556b8). `CodeAndDocs/import_reviewed_sources.py` performed this one-time import and updated the hashes. It is not called by regeneration.
 
-The reviewed inputs contain 3,014 non-empty timestamp rows, 237 translation lines and five wrapped caption continuations. The earlier development scrape's 3,441 empty timestamps are absent from the reviewed inputs. Restoring those empty rows would change 22 published audio endpoints. All published TEXT/S IDs, recording filenames, audio-only entries and endpoints are retained.
+The reviewed inputs contain 3,014 non-empty timestamp rows, 237 translation lines and five wrapped caption continuations. The earlier development scrape's 3,441 empty timestamps are absent from the reviewed inputs. Restoring those empty rows would change 22 published audio endpoints. All published TEXT/S IDs, recording filenames, audio-only entries and endpoints are retained, except the two retired sentence IDs described below.
 
 Each timestamped caption becomes one S. An indented continuation, or a continuation of an open speaker parenthesis, belongs to that caption. Unindented translation lines stay translations, including two instances of the name `Wilang`. Parentheses identify a second speaker in this source; their content is retained and the speaker boundary becomes punctuation. They do not indicate optional words.
 
+The exception is the transcriber's notes on Japanese loanwords, written `(日: …)` after the word, e.g. `cyolo(日: ちょっと)`. They are notes, not speech, and are dropped (17 notes in 13 captions, all in `20190209_YutasWilang_ki_Yagu_04_disiduan_Sayun.xml`). The loanword itself stays.
+
 Transcription gaps retain the published word boundary after `UNCLEAR`, so regeneration cannot join the words on either side. The gap supplies no invented text or phonemes.
 
-The [issue #1 source review](CodeAndDocs/issue_1_review.tsv) retains all 20 flagged instances of source-authentic Japanese/Mandarin content. Two pure `(再確認)` recheck markers are recorded in FORM notes rather than emitted as translations. Two similar annotations attached to real translations move to translation notes. No spoken text is deleted. The complete earlier acquisition and processing versions remain in Git history; the development-only scripts under `scripts/` are not reproduction entrypoints.
+The [issue #1 source review](CodeAndDocs/issue_1_review.tsv) records all 20 flagged instances of Japanese/Mandarin content: Japanese and Mandarin speech, code-switches and song lyrics are retained; the 13 captions whose flagged content is the transcriber's `(日: …)` notes have those notes dropped. Two pure `(再確認)` recheck markers are recorded in FORM notes rather than emitted as translations. Two similar annotations attached to real translations move to translation notes. No spoken text is deleted. The complete earlier acquisition and processing versions remain in Git history; the development-only scripts under `scripts/` are not reproduction entrypoints.
 
 ## Audio
 
@@ -59,7 +63,8 @@ The [issue #1 source review](CodeAndDocs/issue_1_review.tsv) retains all 20 flag
 
 - Many videos have no transcript. Their XML points to audio without inventing S records. Partly transcribed recordings retain their `_untranscribed` companions.
 - Subtitle timestamps are not guaranteed to align perfectly with the recording. Multi-speaker passages have no separate speaker timestamps.
-- Source question-mark runs mark attempted but unrecoverable transcription and become `UNCLEAR`. There is no word or morpheme analysis.
+- Source question-mark runs inside a caption mark attempted but unrecoverable transcription and become `UNCLEAR`. There is no word or morpheme analysis.
+- A caption that is nothing but question marks is untranscribed audio, not a sentence. Its clip is listed in the video's `_untranscribed` companion and its sentence ID is retired, not reused (POL-037). This applies to two captions, `…MVI_1703.xml` `Atayal_8` (39.74–40.78 s) and `Atayal_9` (40.78–42.0 s); their clips `…MVI_1703_Atayal_8.wav` and `…_Atayal_9.wav` are now in `…MVI_1703_untranscribed.xml`. `scripts/download_audio.py` cuts clips only from sentence timings, so a future audio refresh would cut that stretch as an untranscribed gap clip instead.
 - Japanese songs, Mandarin speech and annotations, and the Bopomofo fragment `ㄇ` are intentional source content. Orthography, vocabulary and phonology warnings involving them need source-aware review.
 - Repeated utterances are narrative evidence. Do not deduplicate them for corpus publication.
 

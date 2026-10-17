@@ -60,6 +60,26 @@ class WilangPipelineTests(unittest.TestCase):
 
     def test_sentence_and_audio_mapping_matches_pinned_sources(self) -> None:
         total_sentences = 0
+        retired_clips: dict[str, list[str]] = {}
+        for row in self.manifest:
+            if row.source_path is None:
+                continue
+            entries, _ = builder.parse_source(row.source_path)
+            included = [entry for entry in entries if entry.text]
+            for number, entry in enumerate(included, start=1):
+                if builder.is_unclear_only(entry.text):
+                    retired_clips.setdefault(row.video_id, []).append(
+                        f"{row.output_path.stem}_Atayal_{number}.wav"
+                    )
+        self.assertEqual(
+            retired_clips,
+            {
+                "350G0spDLPk": [
+                    "20190407_Yutas_Wilang_di5duan_Lowsing_Watan_MVI_1703_Atayal_8.wav",
+                    "20190407_Yutas_Wilang_di5duan_Lowsing_Watan_MVI_1703_Atayal_9.wav",
+                ]
+            },
+        )
         for row in self.manifest:
             root = self.xml[str(row.output_path.relative_to(ROOT))]
             self.assertEqual(root.get("id"), row.output_path.stem)
@@ -68,17 +88,22 @@ class WilangPipelineTests(unittest.TestCase):
                 self.assertEqual(len(root.findall("S")), 0)
                 self.assertEqual(
                     [audio.get("file") for audio in root.findall("AUDIO")],
-                    [row.audio_only_file],
+                    [row.audio_only_file, *retired_clips.get(row.video_id, [])],
                 )
                 continue
             entries, _ = builder.parse_source(row.source_path)
-            included = [(index, entry) for index, entry in enumerate(entries) if entry.text]
+            included = [
+                (number, raw_index, entry)
+                for number, (raw_index, entry) in enumerate(
+                    ((index, entry) for index, entry in enumerate(entries) if entry.text),
+                    start=1,
+                )
+                if not builder.is_unclear_only(entry.text)
+            ]
             sentences = root.findall("S")
             self.assertEqual(len(sentences), len(included))
             total_sentences += len(sentences)
-            for number, (sentence, (raw_index, entry)) in enumerate(
-                zip(sentences, included, strict=True), start=1
-            ):
+            for sentence, (number, raw_index, entry) in zip(sentences, included, strict=True):
                 sentence_id = f"Atayal_{number}"
                 self.assertEqual(sentence.get("id"), sentence_id)
                 audio = sentence.find("AUDIO")
@@ -89,7 +114,7 @@ class WilangPipelineTests(unittest.TestCase):
                 self.assertEqual(
                     audio.get("file"), f"{row.output_path.stem}_{sentence_id}.wav"
                 )
-        self.assertEqual(total_sentences, 3014)
+        self.assertEqual(total_sentences, 3012)
 
     def test_published_timing_corrections_survive(self) -> None:
         checks = (
@@ -166,7 +191,11 @@ class WilangPipelineTests(unittest.TestCase):
             sentence = root.find(f"S[@id='{row['s_id']}']")
             self.assertIsNotNone(sentence)
             form_text = "".join(sentence.find("FORM[@kindOf='original']").itertext())
-            self.assertTrue(any(ord(character) > 127 for character in form_text))
+            self.assertNotIn("日", form_text)
+            if row["resolution"].startswith("accepted"):
+                self.assertTrue(any(ord(character) > 127 for character in form_text))
+            else:
+                self.assertTrue(row["resolution"].startswith("transcriber's Japanese note dropped"))
         fixed = self.xml[rows[20]["output_path"]].find("S[@id='Atayal_110']")
         self.assertIsNotNone(fixed)
         self.assertIsNone(fixed.find("TRANSL"))
