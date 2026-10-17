@@ -120,3 +120,59 @@ def test_vocabulary_missing_reference_is_reported_not_fatal(trees):
     proc = _run("validate_vocabulary.py", o_info, reference)
     assert proc.returncode == 0
     assert "SUMMARY vocabulary | Amis / Southern | reference=missing | warnings=1" in proc.stdout
+
+
+# ---------------------------------------------------------------------------
+# --quiet (hand-over answer Q4R2, 2026-10-17): the development output stays the
+# default; the skills run --quiet and get only the group header, the metric
+# lines, WARNING lines and the SUMMARY line.
+# ---------------------------------------------------------------------------
+
+def _run_quiet(script: str, o_info: Path, reference: Path) -> subprocess.CompletedProcess:
+    return subprocess.run(
+        [sys.executable, str(REPO / "QC" / "validation" / script),
+         "--o_info", str(o_info), "--reference", str(reference), "--quiet"],
+        capture_output=True, text=True, cwd=REPO,
+    )
+
+
+def test_orthography_default_output_keeps_the_development_detail(trees):
+    o_info, reference = trees
+    out = _run("validate_orthography.py", o_info, reference).stdout
+    assert out.count("dict_keys([") == 4            # two pickles' key lists, per group, two groups
+    assert any(l.startswith("{'") for l in out.splitlines()), "reference frequency table is printed by default"
+
+
+def test_orthography_quiet_leaves_only_metrics_warnings_and_summary(trees):
+    o_info, reference = trees
+    _write_info(o_info / "Amis" / "Coastal", AMIS_WITH_BARRED_U)
+    proc = _run_quiet("validate_orthography.py", o_info, reference)
+    assert proc.returncode == 0, proc.stderr
+    lines = proc.stdout.splitlines()
+    assert "dict_keys([" not in proc.stdout
+    assert not any(l.startswith("{'") for l in lines)
+    assert "  --- Dialect: Coastal ---" in lines            # the group header stays: numbers need their group
+    assert any(l.startswith("Jaccard Similarity of unique characters:") for l in lines)
+    assert any(l.startswith("WARNING: The disjunction of character sets") for l in lines)
+    assert sum(l.startswith("SUMMARY orthography | ") for l in lines) == 2
+    assert "findfont" not in proc.stderr
+
+
+def test_vocabulary_warning_text_names_words_not_character_sets(trees):
+    o_info, reference = trees
+    _write_info(o_info / "Amis" / "Coastal", AMIS + ("fafahi kaying ") * 6)
+    proc = _run("validate_vocabulary.py", o_info, reference)
+    assert "character sets" not in proc.stderr + proc.stdout
+    assert "Top-100 word overlap with the reference is low (Jaccard < .975)." in proc.stderr
+    assert "Jaccard Similarity of top-100 words: 0.88" in proc.stdout
+
+
+def test_vocabulary_quiet_puts_warnings_on_stdout_as_plain_lines(trees):
+    o_info, reference = trees
+    _write_info(o_info / "Amis" / "Coastal", AMIS + ("fafahi kaying ") * 6)
+    proc = _run_quiet("validate_vocabulary.py", o_info, reference)
+    assert proc.returncode == 0, proc.stderr
+    assert "WARNING: Top-100 word overlap with the reference is low (Jaccard < .975)." in proc.stdout
+    assert "WARNING: High-frequency words in corpus but not in reference: ['fafahi', 'kaying']" in proc.stdout
+    assert "UserWarning" not in proc.stderr and "findfont" not in proc.stderr
+    assert any(l.startswith("SUMMARY vocabulary | Amis / Coastal |") for l in proc.stdout.splitlines())

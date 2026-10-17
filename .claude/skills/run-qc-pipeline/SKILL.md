@@ -186,17 +186,20 @@ Run each validator, capturing output. Do NOT abort the recipe on failures — th
 # one `SUMMARY orthography | <group> | …` line per language/dialect group
 # (metrics, corpus_only=[…] / reference_only=[…] characters, warnings=N).
 # Quote those lines verbatim in the summary — do not just report "ran".
+# --quiet: group header, metric lines, WARNING lines and SUMMARY line only;
+# the full development output (pickle keys, reference frequency table) is
+# the default for a human at the terminal, not for this log.
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_orthography.py \
   --o_info <output_dir>/extract_logs \
-  --reference <formosanbank_path>/QC/validation/reference 2>&1 \
+  --reference <formosanbank_path>/QC/validation/reference --quiet 2>&1 \
   | tee <output_dir>/05d_validate_orthography.log
 
 # Vocabulary comparison vs reference. Same contract: quote each
 # `SUMMARY vocabulary | <group> | …` line (top-100 overlap and the words on
-# each side only).
+# each side only). --quiet puts its warnings on stdout as plain WARNING lines.
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_vocabulary.py \
   --o_info <output_dir>/extract_logs \
-  --reference <formosanbank_path>/QC/validation/reference 2>&1 \
+  --reference <formosanbank_path>/QC/validation/reference --quiet 2>&1 \
   | tee <output_dir>/05e_validate_vocabulary.log
 
 # Declared vs detected: does the text agree with what the pipeline says?

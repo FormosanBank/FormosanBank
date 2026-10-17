@@ -151,10 +151,12 @@ POL id; read the entry rather than this summary):
 ### 3. Run our validators on the XML output
 Either invoke the `run-qc-pipeline` skill, or run the four validators directly:
 `validate_xml.py`, `validate_text.py`, `validate_glosses.py` (if W/M present),
-and `validate_orthography.py` + `validate_vocabulary.py` (after
+and `validate_orthography.py --quiet` + `validate_vocabulary.py --quiet` (after
 `orthography_extract.py --kindOf original`; both always exit 0 — quote their
 `SUMMARY orthography | …` / `SUMMARY vocabulary | …` lines, which name the
-characters and words on each side only). Then `QC/validation/declared_vs_detected.py
+characters and words on each side only; `--quiet` leaves only the group
+header, metrics, WARNING and SUMMARY lines, the full output is for a human
+at the terminal). Then `QC/validation/declared_vs_detected.py
 --xml <XML> --generate-xml <generate_xml.sh>`: `TEXT/@dialect` against the dialect
 detector and the declared source orthography against the orthography detector
 (original tier; standard tier against Ortho113). Quote its tables; every row

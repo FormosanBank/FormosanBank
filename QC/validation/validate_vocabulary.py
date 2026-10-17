@@ -16,8 +16,10 @@ uncalibrated and the comparison is noisy across genres (a dictionary's top
 words are not a narrative's), so read the two word lists, not just the
 numbers.
 
-Output: the two metrics, Python `warnings` on stderr when they fall below
-threshold, and one greppable line per group:
+Output: the two metrics, a warning when either falls below threshold (a
+Python `warnings` message on stderr by default; with `--quiet` a plain
+`WARNING: …` line on stdout, which is what the skills run), and one
+greppable line per group:
     SUMMARY vocabulary | <Language> / <dialect> | top100_jaccard=… overlap=… |
       corpus_only=[w1 w2 …] reference_only=[…] | warnings=N
 A group with no reference prints `SUMMARY vocabulary | <group> |
@@ -25,7 +27,7 @@ reference=missing | warnings=1`.
 
 Usage
     python QC/validation/validate_vocabulary.py \
-        --o_info <output_dir>/extract_logs --reference QC/validation/reference
+        --o_info <output_dir>/extract_logs --reference QC/validation/reference [--quiet]
 """
 import os
 import matplotlib.pyplot as plt
@@ -37,6 +39,16 @@ from scipy.spatial.distance import euclidean
 from scipy.special import rel_entr
 import argparse
 import warnings
+
+QUIET = False  # --quiet: warnings as plain WARNING lines on stdout, no font messages
+
+
+def _warn(message):
+    if QUIET:
+        print("WARNING: " + message)
+    else:
+        warnings.warn(message)
+
 
 plt.switch_backend('Agg')  # Use a non-GUI backend
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
@@ -74,22 +86,22 @@ def compare_vocabulary(c1_dir, c2_dir, label):
     warns = False  # flag to check if any warnings were raised
 
     word_jaccard_similarity = jaccard_similarity(set(vocab1), set(vocab2))
-    print(f"Jaccard Similarity of words characters: {word_jaccard_similarity:.2f}")
+    print(f"Jaccard Similarity of top-100 words: {word_jaccard_similarity:.2f}")
     if word_jaccard_similarity < .975:
         warns = True
-        warnings.warn("The disjunction of character sets should be close to 0.")
+        _warn("Top-100 word overlap with the reference is low (Jaccard < .975).")
 
     word_overlap_coefficient = overlap_coefficient(set(vocab1), set(vocab2))
     print(f"Overlap Coefficient of unique words: {word_overlap_coefficient:.2f}")
     if word_overlap_coefficient < .975:
         warns = True
-        warnings.warn("The disjunction of character sets should be close to 0.")
+        _warn("Top-100 word overlap with the reference is low (overlap coefficient < .975).")
 
     unique_to_vocab1 = sorted(set(vocab1) - set(vocab2))
     unique_to_vocab2 = sorted(set(vocab2) - set(vocab1))
     if warns:
-        warnings.warn(f"High-frequency words in corpus but not in reference: {unique_to_vocab1}")
-        warnings.warn(f"High-frequency words in reference but not in corpus: {unique_to_vocab2}")
+        _warn(f"High-frequency words in corpus but not in reference: {unique_to_vocab1}")
+        _warn(f"High-frequency words in reference but not in corpus: {unique_to_vocab2}")
     summary = {
         'label': label, 'jaccard': word_jaccard_similarity, 'overlap': word_overlap_coefficient,
         'corpus_only': unique_to_vocab1, 'reference_only': unique_to_vocab2,
@@ -159,7 +171,14 @@ if __name__ == "__main__":
     parser.add_argument('--o_info', help='Path to log folder containing orthographic info that will be analyzed.')
     parser.add_argument('--reference', help='Path to reference orthographic info. If blank, uses whatever is in the reference folder inside QC/validation')
     parser.add_argument('--language', help='Language code. If blank, all languages in o_info will be analyzed.')
+    parser.add_argument('--quiet', action='store_true',
+                        help='Warnings as plain WARNING lines on stdout and no matplotlib font messages '
+                             '(what the skills run). Default is the full development output.')
     args = parser.parse_args()
+    QUIET = args.quiet
+    if QUIET:
+        import logging
+        logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
 
     # Validate required arguments
     if not args.o_info:
