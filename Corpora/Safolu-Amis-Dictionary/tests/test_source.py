@@ -26,7 +26,8 @@ class SourceTests(unittest.TestCase):
         cls.by_id = {row.sentence_id: row for row in cls.records}
 
     def test_every_source_field_is_accounted_for(self):
-        represented = {row.notes["source_ordinal"] for row in self.records}
+        # records added from the printed book (printed_additions.json) have no source field
+        represented = {row.notes["source_ordinal"] for row in self.records if row.notes["source_ordinal"] is not None}
         excluded = {row["source_ordinal"] for row in self.rejected}
         self.assertFalse(represented & excluded)
         self.assertEqual(represented | excluded, set(range(1, 49420)))
@@ -57,9 +58,10 @@ class SourceTests(unittest.TestCase):
         self.assertEqual(row.translations[0].text, "Pangcah 是由日語番人諧音的借詞。")
 
     def test_panay_remains_the_chinese_subject(self):
+        # maintainer 2026-10-17: the name is the Chinese subject, without the stray period
         row = self.by_id["S14824"]
         self.assertEqual(row.form, "Mangalay ci Panay a malakangkofo.")
-        self.assertEqual(row.translations[0].text, "Panay.想當護士。")
+        self.assertEqual(row.translations[0].text, "Panay想當護士。")
 
     def test_attested_pronunciations_are_same_tier_variants(self):
         expected = {
@@ -120,9 +122,17 @@ class SourceTests(unittest.TestCase):
         self.assertIn(35128, {row["source_ordinal"] for row in self.rejected})
 
     def test_bank_translation_prior_correction(self):
-        # OPEN 2026-10-17: the maintainer adopted the editors' Chinese for S37193, which they wrote
-        # 提歀 (a variant character); this branch's earlier correction was 提款. Asked; not yet ruled.
-        self.assertEqual(self.by_id["S37193"].translations[0].text, "銀行是提款的地方。")
+        # maintainer 2026-10-17: the editors' Chinese exactly (提歀, a variant character), not 提款
+        self.assertEqual(self.by_id["S37193"].translations[0].text, "銀行是提歀的地方。")
+
+    def test_printed_examples_are_added(self):
+        # maintainer 2026-10-16/17: add the printed examples the source lacks, editors' Chinese, ids S49420-S49423
+        self.assertEqual([(self.by_id[i].form, self.by_id[i].translations[0].text) for i in ("S49420", "S49421", "S49422", "S49423")],
+                         [("Mikapkapan niyam ko panay.", "我們把稻子除草了。"), ("Tatoloay ko miparoay i paliding a koli.", "裝貨上車的有三個工人。"),
+                          ("Miwingawingay ko waco to wikol.", "狗在搖尾巴了。"), ("Paro no omah.", "田畝產量。")])
+
+    def test_cross_reference_dropped_from_translation(self):
+        self.assertEqual(self.by_id["S48080"].translations[0].text, "廁所在哪裡？請告訴我！")
 
     # Maintainer rulings, Safolu review 2026-10-16/17 (claudeplans/sweep-qa-decision-log.md)
     def test_review_card_bracket_becomes_alternative_form(self):

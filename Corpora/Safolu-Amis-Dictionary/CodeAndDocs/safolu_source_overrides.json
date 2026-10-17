@@ -645,11 +645,11 @@
     "14824": {
       "expected_cleaned_form": "Mangalay ci Panay a malakangkofo.Panay.",
       "expected_cleaned_final_translation": "Panay.想當護士。",
-      "reason": "Review translation card (rule 2: raw) (replaces earlier override: Preserve Panay as the subject of the Chinese translation. The raw source sequence places it after the complete Amis sentence and before 想當護士; it is not a disposable copied clause. Witnesses: dict/10-M)",
+      "reason": "Review question 2026-10-17, answer C: the name is the subject of the Chinese, without the stray period (book 10-M.txt:10008 prints 'Panay.' at the end of the Amis line). Review translation card (rule 2: raw) (replaces earlier override: Preserve Panay as the subject of the Chinese translation. The raw source sequence places it after the complete Amis sentence and before 想當護士; it is not a disposable copied clause. Witnesses: dict/10-M)",
       "emitted": [
         {
           "form": "Mangalay ci Panay a malakangkofo.",
-          "translation": "想當護士。"
+          "translation": "Panay想當護士。"
         }
       ]
     },
@@ -804,11 +804,11 @@
     "48080": {
       "expected_cleaned_form": "Icowaay ko tatahengan?Pasowalen kako!",
       "expected_cleaned_final_translation": "Pasowalen kako!廁所在哪裡？",
-      "reason": "Review translation card (group card: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
+      "reason": "Review question 2026-10-17: drop the cross-reference 同 tata'ian。 (the book's 'same as tata'ian', 21-T.txt:4305). Review translation card (group card: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Icowaay ko tatahengan?Pasowalen kako!",
-          "translation": "廁所在哪裡？請告訴我！同 tata'ian。"
+          "translation": "廁所在哪裡？請告訴我！"
         }
       ]
     },

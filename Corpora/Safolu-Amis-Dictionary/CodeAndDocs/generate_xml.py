@@ -35,6 +35,7 @@ from source_snapshot import MANIFEST, load_rows
 
 DEFAULT_XML_OUT_DIR = ROOT / "XML"
 DEFAULT_OVERRIDES_PATH = ROOT / "CodeAndDocs" / "safolu_source_overrides.json"
+PRINTED_ADDITIONS_PATH = ROOT / "CodeAndDocs" / "printed_additions.json"
 
 # The canonical XML is grouped language-first (XML/Amis/<Source>/) to match
 # FormosanBank's Corpora/<Name>/XML/<Language>/ convention.
@@ -381,7 +382,27 @@ def safolu_corpus():
     records, rejected = extract_generated_moedict_examples(
         load_rows(), SAFOLU_TEXT_ID, "zho", "eng", load_source_overrides()
     )
+    records += printed_additions()
     return corpus, records, rejected
+
+
+def printed_additions(path: Path = PRINTED_ADDITIONS_PATH) -> list[ExampleRecord]:
+    """Printed examples the pinned source lacks (see printed_additions.json), appended with new ids."""
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    added = []
+    for item in payload["additions"]:
+        added.append(ExampleRecord(
+            sentence_id=item["sentence_id"],
+            source_file=f"docs/s/{item['entry']}.json@{payload['upstream_commit']}",
+            source_line=None,
+            entry_title=item["entry"],
+            definition=item["definition"],
+            form=normalize_bang_spacing(item["form"]),
+            translations=[Translation("zho", item["translation"])],
+            raw_example="",
+            notes={"source_ordinal": None, "added_from_print": item["printed"], "upstream_commit": payload["upstream_commit"]},
+        ))
+    return added
 
 
 def main():
