@@ -1904,6 +1904,43 @@ def v158_fused_terminal_punctuation(
     return findings
 
 
+# ---------------------------------------------------------------------------
+# V159: a null-morpheme glyph glued to a word in the S-standard tier
+# ---------------------------------------------------------------------------
+# A null morpheme written inline (Ø, ø or the canonical ∅) belongs to the
+# ORIGINAL tier, where it is faithful to the source; `clean_xml` canonicalises
+# a null that stands alone between separators and the standard tier is meant
+# to drop them. One that is still glued to letters in the STANDARD tier was
+# missed by both. The glyph ø/Ø is also a letter in Danish and Norwegian
+# names (Grønland, Børn), so only a word-EDGE ø/Ø is reported, and the
+# message says it may be a foreign letter; the canonical ∅ is never a letter,
+# so it is reported wherever it touches one.
+_NULL_CANONICAL_GLUED = re.compile(r"[^\W\d_]∅|∅[^\W\d_]")
+_NULL_LATIN_AT_WORD_EDGE = re.compile(r"(?<!\S)[øØ](?=[^\W\d_])|(?<=[^\W\d_])[øØ](?!\S)")
+
+
+def v159_null_glyph_glued_to_word(tree, path, index) -> list[Finding]:
+    """V159 SOFT null_glyph_glued_to_word: a null-morpheme glyph (∅ anywhere,
+    or ø/Ø at a word edge) touching a letter in the S-standard FORM."""
+    lang = _resolve_language(tree)
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
+        for m in _NULL_CANONICAL_GLUED.finditer(text):
+            findings.append(_soft_finding(
+                rule_id="V159",
+                message="V159 SOFT null_glyph_glued_to_word: canonical null ∅ glued to a word in "
+                        "S-standard FORM (the standard tier should not carry null morphemes)",
+                path=path, elem=s, language=lang, character="∅"))
+        for m in _NULL_LATIN_AT_WORD_EDGE.finditer(text):
+            findings.append(_soft_finding(
+                rule_id="V159",
+                message="V159 SOFT null_glyph_glued_to_word: ø/Ø at a word edge in S-standard FORM; "
+                        "a null-morpheme glyph left in the text, or a Danish/Norwegian letter in a name "
+                        "(check the word)",
+                path=path, elem=s, language=lang, character=m.group(0)))
+    return findings
+
+
 def v147_phon_legacy_tilde_variant(
     tree: etree._ElementTree,
     path: Path,
@@ -1979,5 +2016,7 @@ RULES: list = [
     v147_phon_legacy_tilde_variant,
     # V158: '!'/'?' fused to the next word, or a space before it (Safolu, 2026-10-16)
     v158_fused_terminal_punctuation,
+    # V159: 2026-10-17 skills-review round 3 (D10): detection only, cleaner untouched
+    v159_null_glyph_glued_to_word,
 ]
 CROSS_FILE_RULES: list = []
