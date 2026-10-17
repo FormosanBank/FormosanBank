@@ -704,3 +704,73 @@ def test_g004_still_fires_on_stacked_infixes_with_split_root():
     findings = _run(gloss_scrape.g004_infix_root_reconstructed, xml)
     assert [f.location for f in findings] == ["S=s W=w"]
     assert "pukpuk" in findings[0].message
+
+
+# --------------------------------------------------------------------------
+# G014-G018 (skills review D8 and D7, 2026-10-17)
+# --------------------------------------------------------------------------
+
+def _glossed(words, lang="ami", dialect="Coastal", sid="s1", gloss_lang="eng"):
+    """An S whose W tier is [(form, gloss), ...]; M-less, so only W glosses matter."""
+    ws = "".join(
+        f'<W id="{sid}w{i}"><FORM kindOf="original">{f}</FORM>'
+        f'<TRANSL kindOf="original" xml:lang="{gloss_lang}">{g}</TRANSL></W>'
+        for i, (f, g) in enumerate(words))
+    return (f'<S id="{sid}"><FORM kindOf="original">{" ".join(f for f, _g in words)}</FORM>'
+            f'<TRANSL kindOf="original" xml:lang="eng">t</TRANSL>{ws}</S>')
+
+
+def _doc(sentences, lang="ami", dialect="Coastal"):
+    return (f'<?xml version="1.0" encoding="UTF-8"?>\n<TEXT xml:lang="{lang}" dialect="{dialect}" '
+            f'citation="c" BibTeX_citation="b" copyright="c">{"".join(sentences)}</TEXT>')
+
+
+def test_g014_rare_substring_gloss_of_a_dominant_gloss_fires():
+    doc = _doc([_glossed([("mikalic", "catch-UV")], sid=f"s{i}") for i in range(4)]
+               + [_glossed([("mikalic", "catch")], sid="s9")])
+    found = _run(gloss_scrape.g014_rare_gloss_is_substring_of_dominant, doc)
+    assert [f.rule_id for f in found] == ["G014"]
+    assert "'mikalic' glossed 'catch' 1x but 'catch-UV' 4x" in found[0].message
+    # an unrelated rare gloss is a sense split, not a shift
+    doc2 = _doc([_glossed([("mikalic", "catch-UV")], sid=f"s{i}") for i in range(4)]
+                + [_glossed([("mikalic", "fish-UV")], sid="s9")])
+    assert _run(gloss_scrape.g014_rare_gloss_is_substring_of_dominant, doc2) == []
+
+
+def test_g015_fires_on_a_sentence_where_function_words_carry_strange_glosses():
+    normal = [_glossed([("ko", "NOM"), ("to", "OBL"), ("wawa", "child")], sid=f"s{i}") for i in range(24)]
+    shifted = [_glossed([("ko", "child"), ("to", "NOM"), ("wawa", "OBL")], sid="s99")]
+    found = _run(gloss_scrape.g015_function_word_aberrant_gloss_rate, _doc(normal + shifted))
+    assert [(f.rule_id, f.location, f.count) for f in found] == [("G015", "S=s99", 3)]   # all three words are frequent here
+    assert _run(gloss_scrape.g015_function_word_aberrant_gloss_rate, _doc(normal)) == []
+
+
+def test_g016_flags_unbalanced_ascii_and_cjk_brackets():
+    doc = _doc([_glossed([("a", "catch (with"), ("b", "a net)"), ("c", "拿（手"), ("d", "fine (ok)")])])
+    found = _run(gloss_scrape.g016_unbalanced_brackets_in_gloss, doc)
+    assert [(f.character, f.location) for f in found] == [("(", "S=s1 W=s1w0"), (")", "S=s1 W=s1w1"), ("（", "S=s1 W=s1w2")]
+    assert all(f.severity is Severity.SOFT for f in found)
+
+
+def test_g017_flags_an_english_run_and_a_seediq_run_in_an_amis_text():
+    sentences = [
+        _glossed([("maolah", "like"), ("kako", "1SG")], sid="s1"),
+        _glossed([("the", "x"), ("children", "x"), ("are", "x"), ("here", "x")], sid="s2"),
+        _glossed([("maolah", "like"), ("the", "x"), ("kako", "1SG")], sid="s3"),   # one English word: no run
+    ]
+    found = _run(gloss_scrape.g017_out_of_language_run, _doc(sentences))
+    assert [(f.location, f.count) for f in found] == [("S=s2", 3)]   # the, are, here; "children" rides along
+    assert "3 of 4 consecutive words read as English, not Amis" in found[0].message
+    # everyday Amis words that are also short English ones ('a', 'to', 'no') never count
+    amis = [_glossed([("a", "LNK"), ("to", "OBL"), ("no", "GEN"), ("wawa", "child")], sid="s4")]
+    assert _run(gloss_scrape.g017_out_of_language_run, _doc(amis)) == []
+
+
+def test_g018_latin_only_glosses_on_a_chinese_tier_are_one_finding():
+    doc = _doc([_glossed([("ko", "主格"), ("mikalic", "AV"), ("wawa", "小孩"), ("to", "OBL"), ("a", "PV")],
+                         gloss_lang="zho")])
+    found = _run(gloss_scrape.g018_latin_gloss_on_chinese_tier, doc)
+    assert [(f.rule_id, f.count) for f in found] == [("G018", 3)]
+    assert "3 of 5 Chinese-declared" in found[0].message
+    clean = _doc([_glossed([("ko", "主格"), ("wawa", "小孩")], gloss_lang="zho")])
+    assert _run(gloss_scrape.g018_latin_gloss_on_chinese_tier, clean) == []

@@ -21,6 +21,11 @@ Rules:
 - G010 WARN: mixed marker retention in S FORM[@kindOf='original'].
 - G011 SOFT: unsplit '/' alternate (slash in both S FORM and the W tier).
 - G012 SOFT: trailing parenthetical left in TRANSL text, not the notes attribute.
+- G014 WARN: a word's rare gloss is a substring of its dominant gloss (shifted column).
+- G015 WARN: a sentence whose function words carry glosses they almost never take.
+- G016 SOFT: unbalanced ASCII/CJK bracket inside a W/M gloss (bracket bleed).
+- G017 SOFT: three or more consecutive FORM words from another language.
+- G018 SOFT: Latin-only glosses on a Chinese-declared W/M gloss tier.
 """
 from __future__ import annotations
 
@@ -717,6 +722,336 @@ def g012_trailing_paren_note_in_TRANSL(
 # Registry
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# G014-G016: gloss-shift detectors (skills review D8, 2026-10-17). Each caught a
+# real defect by hand in October: the rare-gloss-substring test found all four
+# shifted columns in Seediq-Chang; the function-word rate exposed a one-left
+# shift in 7 of 11 NTU Atayal files; the bracket test found 32 bracket-bleed
+# glosses in Seediq-Chang.
+# ---------------------------------------------------------------------------
+
+_G014_MIN_DOMINANT = 3      # a gloss has to be established before a variant is "rare"
+_G015_MIN_OCCURRENCES = 20  # a function word: this many tokens in the file
+_G015_DOMINANT_SHARE = 0.8  # ...with one gloss most of the time
+_G015_RARE_SHARE = 0.05     # a gloss it carries under 5% of the time is aberrant
+_G015_RATE_RATIO = 3.0      # a sentence is suspect when its aberrant rate is this many times the file's
+_G015_MIN_ABERRANT = 2      # ...and holds at least this many aberrant function words
+_BRACKETS = {"(": ")", "[": "]", "（": "）", "［": "］", "【": "】", "「": "」", "『": "』"}
+_CLOSERS = {v: k for k, v in _BRACKETS.items()}
+
+
+def _w_gloss_pairs(tree: etree._ElementTree):
+    """(W element, lowercased W FORM, W-level gloss text) for every glossed W."""
+    for w in tree.iter("W"):
+        form = _form_text(w).lower()
+        gloss = _transl_text(w)
+        if form and gloss:
+            yield w, form, gloss
+
+
+def g014_rare_gloss_is_substring_of_dominant(
+    tree: etree._ElementTree,
+    path: Path,
+    index=None,
+) -> list[Finding]:
+    """G014 WARN: a word's rare gloss is a substring of its dominant gloss.
+
+    A column shift leaves a word carrying its neighbour's gloss, which is
+    often the dominant gloss with a unit chopped off ('catch' where the word
+    normally reads 'catch-UV') or the dominant gloss as a prefix of a longer
+    one. Reported per word; a genuine sense split will show up too.
+    """
+    by_form: dict[str, Counter] = {}
+    example: dict[tuple[str, str], str] = {}
+    for w, form, gloss in _w_gloss_pairs(tree):
+        by_form.setdefault(form, Counter())[gloss] += 1
+        example.setdefault((form, gloss), _loc(w))
+    findings: list[Finding] = []
+    for form, glosses in sorted(by_form.items()):
+        dominant, dom_freq = glosses.most_common(1)[0]
+        if dom_freq < _G014_MIN_DOMINANT:
+            continue
+        for gloss, freq in sorted(glosses.items()):
+            if gloss == dominant or freq > 2 or freq * 3 > dom_freq:
+                continue
+            if gloss in dominant or dominant in gloss:
+                findings.append(Finding(
+                    rule_id="G014",
+                    severity=Severity.WARN,
+                    message=(f"{form!r} glossed {gloss!r} {freq}x but {dominant!r} {dom_freq}x; "
+                             f"the rare gloss is a substring/superstring of the dominant one — "
+                             f"a shifted column?"),
+                    path=path,
+                    location=example[(form, gloss)],
+                    character=gloss,
+                    count=freq,
+                ))
+    return findings
+
+
+def g015_function_word_aberrant_gloss_rate(
+    tree: etree._ElementTree,
+    path: Path,
+    index=None,
+) -> list[Finding]:
+    """G015 WARN: sentences where function words carry glosses they almost never take.
+
+    Function words (frequent, one dominant gloss) are the control: in a
+    sentence whose gloss grid slipped a column, several of them carry glosses
+    they take under 5% of the time. Reported per S when its aberrant rate is
+    three times the file's and at least two function words are affected.
+    """
+    by_form: dict[str, Counter] = {}
+    for _w, form, gloss in _w_gloss_pairs(tree):
+        by_form.setdefault(form, Counter())[gloss] += 1
+    function_words = {}
+    for form, glosses in by_form.items():
+        total = sum(glosses.values())
+        _dominant, dom_freq = glosses.most_common(1)[0]
+        if total >= _G015_MIN_OCCURRENCES and dom_freq / total >= _G015_DOMINANT_SHARE:
+            function_words[form] = (total, glosses)
+    if not function_words:
+        return []
+    per_s: dict[etree._Element, list[int]] = {}
+    file_total = file_aberrant = 0
+    for w, form, gloss in _w_gloss_pairs(tree):
+        if form not in function_words:
+            continue
+        total, glosses = function_words[form]
+        aberrant = glosses[gloss] / total < _G015_RARE_SHARE
+        s = w.getparent()
+        slot = per_s.setdefault(s, [0, 0])
+        slot[0] += 1
+        file_total += 1
+        if aberrant:
+            slot[1] += 1
+            file_aberrant += 1
+    file_rate = file_aberrant / file_total if file_total else 0.0
+    findings: list[Finding] = []
+    for s, (seen, aberrant) in per_s.items():
+        if aberrant < _G015_MIN_ABERRANT:
+            continue
+        if file_rate and aberrant / seen < _G015_RATE_RATIO * file_rate:
+            continue
+        s_id = s.get("id") or ""
+        findings.append(Finding(
+            rule_id="G015",
+            severity=Severity.WARN,
+            message=(f"S={s_id}: {aberrant} of {seen} function words carry a gloss they take "
+                     f"under 5% of the time (file rate {file_rate:.1%}); a shifted gloss grid?"),
+            path=path,
+            location=f"S={s_id}" if s_id else "S",
+            count=aberrant,
+        ))
+    return findings
+
+
+def _unbalanced(text: str) -> str | None:
+    stack: list[str] = []
+    for ch in text:
+        if ch in _BRACKETS:
+            stack.append(ch)
+        elif ch in _CLOSERS:
+            if not stack or stack[-1] != _CLOSERS[ch]:
+                return ch
+            stack.pop()
+    return stack[-1] if stack else None
+
+
+def g016_unbalanced_brackets_in_gloss(
+    tree: etree._ElementTree,
+    path: Path,
+    index=None,
+) -> list[Finding]:
+    """G016 SOFT: a W or M gloss with an unclosed or unopened bracket (ASCII or CJK).
+
+    A bracket that opens in one gloss and closes in the next is the trace of
+    a parenthetical that was split across cells by the scrape ("bracket
+    bleed"); 32 such glosses in Seediq-Chang.
+    """
+    findings: list[Finding] = []
+    for elem in tree.iter("W", "M"):
+        gloss = _transl_text(elem)
+        if not gloss:
+            continue
+        stray = _unbalanced(gloss)
+        if stray is None:
+            continue
+        findings.append(Finding(
+            rule_id="G016",
+            severity=Severity.SOFT,
+            message=f"gloss {gloss!r} has an unbalanced bracket {stray!r}; a parenthetical split across cells?",
+            path=path,
+            location=_loc(elem) if elem.tag == "W" else _m_loc(elem),
+            character=stray,
+        ))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# G017-G018: out-of-language runs (skills review D7, 2026-10-17). Two Ewe
+# examples in the Amis SVC dev repo, Ilocano passages in nine Amis Wikipedia
+# biographies, English under xml:lang="zho", 19 English voice codes on NTU's
+# Chinese gloss tier. V143 covers TRANSL script vs declared language; nothing
+# covered FORM, or Latin codes on a Chinese gloss tier.
+# ---------------------------------------------------------------------------
+
+# Three letters or longer, and none that is also an attested Formosan word
+# ('a', 'i', 'to', 'no' are everyday Amis; 'can', 'may', 'into', 'but' sit in
+# the Amis/Paiwan reference vocabularies). Checked BEFORE the declared
+# language's vocabulary, because those vocabularies are built from the bank
+# and carry its own English leaks.
+_ENGLISH_FUNCTION_WORDS = frozenset(
+    "the and are was were been being this that these those its she they them his her their you our your "
+    "not yes then than because when while where who which what how there here have has had does did "
+    "could will would shall should might must also very out down over under about after before".split())
+_G017_MIN_RUN = 3
+_G018_MIN_LATIN = 3
+_G018_MIN_RATE = 0.02
+_LATIN_WORD = re.compile(r"^[A-Za-z][A-Za-z.]*$")
+_CJK_CHAR = re.compile(r"[㐀-䶿一-鿿豈-﫿]")
+_reference_vocab_cache: dict[str, frozenset[str]] | None = None
+
+
+def _reference_vocabulary() -> dict[str, frozenset[str]]:
+    """{language name: words} from QC/validation/reference/<Lang>/**/orthographic_info."""
+    global _reference_vocab_cache
+    if _reference_vocab_cache is None:
+        import pickle
+        root = Path(__file__).resolve().parents[1] / "reference"
+        vocab: dict[str, set[str]] = {}
+        for info in root.glob("*/**/orthographic_info"):
+            lang = info.relative_to(root).parts[0]
+            try:
+                with info.open("rb") as fp:
+                    words = pickle.load(fp).get("word_frequency", {})
+            except Exception:
+                continue
+            vocab.setdefault(lang, set()).update(w for w in words if len(w) >= 3)
+        _reference_vocab_cache = {k: frozenset(v) for k, v in vocab.items()}
+    return _reference_vocab_cache
+
+
+def _declared_language(tree: etree._ElementTree) -> str | None:
+    from QC.corpus_counts import resolve_language
+    root = tree.getroot()
+    return resolve_language(root.get("{http://www.w3.org/XML/1998/namespace}lang"), root.get("dialect"))
+
+
+def _foreign(token: str, own: frozenset[str], others: dict[str, frozenset[str]]) -> str | None:
+    """The language a token points to when it is not the declared one, else None."""
+    word = token.strip("“”\"'.,;:!?()[]…").lower()
+    if not word:
+        return None
+    if word in _ENGLISH_FUNCTION_WORDS:
+        return "English"
+    if word in own:
+        return None
+    for lang, words in others.items():
+        if word in words:
+            return lang
+    return None
+
+
+def g017_out_of_language_run(
+    tree: etree._ElementTree,
+    path: Path,
+    index=None,
+) -> list[Finding]:
+    """G017 SOFT: a run of an S original FORM holding three or more words of
+    another language — English function words, or words attested in another
+    Formosan language's reference vocabulary but not this one's — with no
+    word of the declared language in between.
+
+    Rate-free and per sentence: an example sentence quoted from another
+    language, a scrape that caught the paper's prose, a Wikipedia article
+    with an untranslated passage.
+    """
+    language = _declared_language(tree)
+    vocab = _reference_vocabulary()
+    if not language or language not in vocab:
+        return []
+    own = vocab[language]
+    others = {k: v for k, v in vocab.items() if k != language}
+    findings: list[Finding] = []
+    for s in tree.iter("S"):
+        text = _form_text(s)
+        if not text:
+            continue
+        # A run is closed by a word of the declared language; words that are
+        # neither (content words no list knows) ride along inside it, so
+        # "the children are here" counts its three function words.
+        run: list[tuple[str, str | None]] = []
+        best: list[tuple[str, str | None]] = []
+        def foreign_count(r):
+            return sum(1 for _t, l in r if l)
+        for token in text.split() + [""]:
+            word = token.strip("“”\"'.,;:!?()[]…").lower()
+            lang = _foreign(token, own, others) if token else None
+            if token and lang:
+                run.append((token, lang))
+            elif token and word and word not in own and run:
+                run.append((token, None))
+            else:
+                while run and run[-1][1] is None:
+                    run.pop()
+                if foreign_count(run) > foreign_count(best):
+                    best = run
+                run = []
+        if foreign_count(best) >= _G017_MIN_RUN:
+            top = Counter(l for _t, l in best if l).most_common(1)[0][0]
+            s_id = s.get("id") or ""
+            findings.append(Finding(
+                rule_id="G017",
+                severity=Severity.SOFT,
+                message=(f"S={s_id}: {foreign_count(best)} of {len(best)} consecutive words read as "
+                         f"{top}, not {language}: {' '.join(t for t, _l in best)!r}"),
+                path=path,
+                location=f"S={s_id}" if s_id else "S",
+                character=" ".join(t for t, _l in best),
+                count=foreign_count(best),
+            ))
+    return findings
+
+
+def g018_latin_gloss_on_chinese_tier(
+    tree: etree._ElementTree,
+    path: Path,
+    index=None,
+) -> list[Finding]:
+    """G018 SOFT: W/M glosses declared Chinese (xml:lang="zho") that are Latin
+    letters only — an English word or a Leipzig code in the Chinese column.
+
+    One aggregated finding per file when at least three such glosses make up
+    2% of the Chinese glosses; NTU had 19 English voice codes on its Chinese
+    tier.
+    """
+    considered = latin = 0
+    first = ""
+    for elem in tree.iter("W", "M"):
+        for transl in elem.findall("TRANSL"):
+            if (transl.get("{http://www.w3.org/XML/1998/namespace}lang") or "").strip().lower() != "zho":
+                continue
+            text = (transl.text or "").strip()
+            if not text:
+                continue
+            considered += 1
+            if _LATIN_WORD.match(text) and not _CJK_CHAR.search(text):
+                latin += 1
+                first = first or (_loc(elem) if elem.tag == "W" else _m_loc(elem))
+    if latin < _G018_MIN_LATIN or not considered or latin / considered < _G018_MIN_RATE:
+        return []
+    return [Finding(
+        rule_id="G018",
+        severity=Severity.SOFT,
+        message=(f"{latin} of {considered} Chinese-declared W/M glosses are Latin letters only "
+                 f"(English words or Leipzig codes in the zho column)"),
+        path=path,
+        location=first,
+        count=latin,
+    )]
+
+
 RULES: list = [
     g001_marker_skeleton_parity,
     g002_M_count_matches_gloss_units,
@@ -728,5 +1063,11 @@ RULES: list = [
     g010_mixed_marker_retention,
     g011_unsplit_slash_alternate,
     g012_trailing_paren_note_in_TRANSL,
+    # D8 gloss-shift detectors and D7 out-of-language runs (2026-10-17)
+    g014_rare_gloss_is_substring_of_dominant,
+    g015_function_word_aberrant_gloss_rate,
+    g016_unbalanced_brackets_in_gloss,
+    g017_out_of_language_run,
+    g018_latin_gloss_on_chinese_tier,
 ]
 CROSS_FILE_RULES: list = []
