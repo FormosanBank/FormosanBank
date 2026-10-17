@@ -8,7 +8,7 @@ Permission to republish was generously provided by Wilang Yutas's
 collaborator, 劉宇陽.
 
 All audio is available. All text is Atayal (`tay`), Sekolik dialect. The
-corpus has 82 XML files: 34 transcript files with 3,012 sentences and 48
+corpus has 83 XML files: 34 transcript files with 3,012 sentences and 49
 audio-only files.
 
 ***
@@ -45,15 +45,15 @@ audio-only files.
 * The transcriber wrote notes on Japanese loanwords in parentheses after the word, e.g. `cyolo(日: ちょっと)`. These notes are not speech: they are taken out of the sentence text and recorded in its FORM `notes`, naming the word (e.g. `transcriber's Japanese gloss: cyolo = ちょっと`; 17 notes in 13 sentences); the loanword stays.
 * One Mandarin translation marks a missing stretch with `(???)`; the mark is removed and the translation's `notes` says it is uncertain, quoting the source.
 * A few sentences quote Japanese song lyrics (kana/kanji) and one sentence contains a Bopomofo fragment (`ㄇ`) from the transcriber; these are faithful to the source subtitles and are intentionally kept.
-* Timestamps come from the source captions and may not align perfectly with the audio.
+* Timestamps come from the source captions and may not align perfectly with the audio. A sentence ends where the next caption begins, including a caption with no text: so a video's last sentence ends with its caption rather than running to the end of the video, and stretches covered by no caption are untranscribed audio, listed in the video's `_untranscribed` file.
 
 ***
 
 ## Corpus Processing
 
-`CodeAndDocs/generate_xml.sh` rebuilds all 82 XML files from the committed transcripts and [video manifest](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WilangYutasVideos/CodeAndDocs/video_manifest.tsv), without scraping YouTube. It uses the current FormosanBank cleaner, accent-removal standardization and Ortho94 phonology. The actual tool revision is recorded in [provenance.json](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WilangYutasVideos/CodeAndDocs/provenance.json); it is not a required checkout pin. Source speaker notes remain attached to both FORM tiers.
+`CodeAndDocs/generate_xml.sh` rebuilds all 83 XML files from the committed transcripts and [video manifest](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WilangYutasVideos/CodeAndDocs/video_manifest.tsv), without scraping YouTube. It uses the current FormosanBank cleaner, accent-removal standardization and Ortho94 phonology. The actual tool revision is recorded in [provenance.json](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WilangYutasVideos/CodeAndDocs/provenance.json); it is not a required checkout pin. Source speaker notes remain attached to both FORM tiers.
 
-The reviewed inputs preserve the published corrections and contain 3,014 timestamped captions, 237 translation lines and five wrapped caption continuations. All recording filenames, audio endpoints and TEXT/S IDs are preserved, except the two retired sentence IDs described under Notes; the captions become 3,012 sentences. Repeated utterances, code-switching and transcription gaps remain part of the corpus. Pure editorial recheck markers are retained in notes, and real translations retain their text.
+The reviewed inputs preserve the published corrections and contain 3,014 timestamped captions, 237 translation lines and five wrapped caption continuations. All recording filenames and TEXT/S IDs are preserved, except the two retired sentence IDs described under Notes; 22 audio end times return to the caption track's own (see Notes); the captions become 3,012 sentences. Repeated utterances, code-switching and transcription gaps remain part of the corpus. Pure editorial recheck markers are retained in notes, and real translations retain their text.
 
 Source checks and regression tests run separately from regeneration. Two unchanged-input builds must reproduce the same output, and final QC still requires source review. The [corpus README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WilangYutasVideos/README.md) gives the commands and processing caveats.
 
