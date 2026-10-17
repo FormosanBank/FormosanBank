@@ -52,6 +52,20 @@ in morpheme position canonicalize to `∅`. A `cleaner_warnings.csv` may
 appear next to the XML — it is a per-run report (POL-033): read it into the
 summary, do not commit it.
 
+**Annotator notes in translations (POL-024).** The shared step for stripping
+parenthetical annotator notes such as `(人名)` or `(imperatives)` from
+sentence-level `<TRANSL>` is `QC/cleaning/suppress_transl_annotations.py`
+(curated exact-match list in `transl_annotation_suppress_list.txt` next to it;
+W/M-level glosses are never touched). Preview first; apply only when the
+operator has seen the before/after examples, and record the step in the
+corpus README's Reproducibility section so the build reproduces it:
+
+```bash
+.venv/bin/python3 <formosanbank_path>/QC/cleaning/suppress_transl_annotations.py \
+  --corpora_path <xml_path> 2>&1 | tee <output_dir>/01b_suppress_transl_preview.log
+# --apply only after the operator approves the preview
+```
+
 ### Phase 2: Orthography detection (HUMAN JUDGMENT REQUIRED)
 
 Run the detector. Note: `orthography_detector.py` takes the XML path as a positional argument (no `--corpora_path` flag) and defaults to analyzing the **original** tier — which is what we want at this stage, before Phase 3 creates the standard tier.
@@ -168,17 +182,32 @@ Run each validator, capturing output. Do NOT abort the recipe on failures — th
   --corpora_path <xml_path> \
   --output_dir <output_dir>/extract_logs 2>&1 | tee <output_dir>/05c_orthography_extract.log
 
-# Orthography comparison vs reference
+# Orthography comparison vs reference. Always exits 0; the evidence is the
+# one `SUMMARY orthography | <group> | …` line per language/dialect group
+# (metrics, corpus_only=[…] / reference_only=[…] characters, warnings=N).
+# Quote those lines verbatim in the summary — do not just report "ran".
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_orthography.py \
   --o_info <output_dir>/extract_logs \
   --reference <formosanbank_path>/QC/validation/reference 2>&1 \
   | tee <output_dir>/05d_validate_orthography.log
 
-# Vocabulary comparison vs reference
+# Vocabulary comparison vs reference. Same contract: quote each
+# `SUMMARY vocabulary | <group> | …` line (top-100 overlap and the words on
+# each side only).
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_vocabulary.py \
   --o_info <output_dir>/extract_logs \
   --reference <formosanbank_path>/QC/validation/reference 2>&1 \
   | tee <output_dir>/05e_validate_vocabulary.log
+
+# Declared vs detected: does the text agree with what the pipeline says?
+# TEXT/@dialect vs the dialect detector (per file, standard tier), and the
+# declared source orthography (from generate_xml.sh, or the Phase 2 answer
+# via --declared-orthography) vs the orthography detector on the original
+# tier, plus the standard tier vs Ortho113. Exits 0; quote the tables and
+# every row marked MISMATCH in the summary.
+.venv/bin/python3 <formosanbank_path>/QC/validation/declared_vs_detected.py \
+  --xml <xml_path> --declared-orthography <Phase 2 answer> 2>&1 \
+  | tee <output_dir>/05d2_declared_vs_detected.log
 
 # Dialect distribution (informational). Prints an (xml:lang, dialect) ->
 # count table; a human reads it to judge whether the distribution looks
@@ -215,6 +244,17 @@ Then check whether the corpus has audio (quick grep for `<AUDIO` across the XML 
   --path <audio_dir> --xml_path <xml_path> \
   --log_dir <output_dir> --no-exit-on-hard \
   2>&1 | tee <output_dir>/05i_validate_audio.log
+```
+
+If `validate_audio.py` writes a `broken_audio.csv`, the shared step that
+removes those `<AUDIO>` elements is `QC/cleaning/clean_audio.py` (dry run by
+default). Preview it, show the operator the list, and apply only on approval;
+the removal then belongs in the corpus build, not in a hand edit:
+
+```bash
+.venv/bin/python3 <formosanbank_path>/QC/cleaning/clean_audio.py \
+  --corpus_path <corpus_path> --broken_csv <output_dir>/broken_audio.csv \
+  2>&1 | tee <output_dir>/05j_clean_audio_preview.log   # add --apply after approval
 ```
 
 ### Phase 6: Summary

@@ -17,7 +17,12 @@ See `CodeAndDocs/` for the scripts that produce the contents of `XML/` from the 
 
 To rebuild from source:
 
-<!-- Step-by-step instructions. Fill from the dev repo's README. -->
+<!-- Step-by-step instructions. Fill from the dev repo's README. Name every
+     shared QC step the build runs, with its flags, in the order generate_xml.sh
+     runs them — e.g. apply_manual_edits.py, clean_xml.py,
+     suppress_transl_annotations.py (POL-024, if annotator notes were stripped
+     from translations), standardize.py --tsv_path …, add_phonology.py
+     --orthography …, clean_audio.py (if broken AUDIO entries were removed). -->
 
 {{REPRODUCIBILITY_STEPS}}
 

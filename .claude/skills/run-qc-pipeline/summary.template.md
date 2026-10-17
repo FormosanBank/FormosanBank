@@ -37,6 +37,20 @@
 |---|---|---|
 | Orthography similarity vs reference | {{ORTHO_SIM}} | Thresholds uncalibrated (B Phase B4 work) |
 | Vocabulary overlap vs reference | {{VOCAB_OVERLAP}} | Cross-genre comparisons may be noisy |
+
+Quoted from the logs (one line per language/dialect group; these are the evidence, the numbers above are the digest):
+
+```
+{{SUMMARY_ORTHOGRAPHY_LINES}}   <!-- every `SUMMARY orthography | …` line from 05d_validate_orthography.log -->
+{{SUMMARY_VOCABULARY_LINES}}    <!-- every `SUMMARY vocabulary | …` line from 05e_validate_vocabulary.log -->
+```
+
+## Declared vs detected
+
+<!-- Paste the three tables from 05d2_declared_vs_detected.log: dialect
+     (TEXT/@dialect vs the detector), original-tier orthography vs the
+     declared source orthography, standard tier vs Ortho113. List every row
+     marked MISMATCH here with what you make of it; the operator rules. -->
 | Cross-file duplicate sentences (within corpus) | {{DUPES_SOFT_COUNT}} | May be legitimate (repeated proverbs etc.) |
 
 ## Dialect distribution

@@ -151,7 +151,14 @@ POL id; read the entry rather than this summary):
 ### 3. Run our validators on the XML output
 Either invoke the `run-qc-pipeline` skill, or run the four validators directly:
 `validate_xml.py`, `validate_text.py`, `validate_glosses.py` (if W/M present),
-and `validate_orthography.py` (after `orthography_extract.py --kindOf original`).
+and `validate_orthography.py` + `validate_vocabulary.py` (after
+`orthography_extract.py --kindOf original`; both always exit 0 — quote their
+`SUMMARY orthography | …` / `SUMMARY vocabulary | …` lines, which name the
+characters and words on each side only). Then `QC/validation/declared_vs_detected.py
+--xml <XML> --generate-xml <generate_xml.sh>`: `TEXT/@dialect` against the dialect
+detector and the declared source orthography against the orthography detector
+(original tier; standard tier against Ortho113). Quote its tables; every row
+marked MISMATCH is a question for the maintainer, not a finding to fix.
 Read the per-rule summary + the findings CSV(s). Organize hits by concern (a–d)
 using the briefing's map (e.g. V129/V137–V139 → (d); V110–V116/V126/V133/V134 → (b);
 orthography deltas → (a); schema/V063/V068/V141 → (c)).
