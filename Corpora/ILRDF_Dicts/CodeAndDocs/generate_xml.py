@@ -25,6 +25,7 @@ from ilrdf_source import (
     verify_and_load_snapshot,
 )
 import main_2024
+from audio_recordings import AudioTable, audio_elements, choose, load_second_s
 
 
 BASE = Path(__file__).resolve().parent
@@ -40,11 +41,10 @@ REPAIRS_PATH = SOURCE_DATA / "source_repairs.json"
 #: Published old->new id table (POL-037 / POL-051), written by the build.
 OLD_TO_NEW_PATH = BASE / "old_to_new_ids.csv"
 
-#: OPEN QUESTION to the maintainer (2026-10-16). Where main published one
-#: sentence 2-3 times and the 2026 record has no recording of its own, attach
-#: every main copy's recording (True) or only the kept (lowest-id) copy's
-#: (False). Default: every copy.
-ATTACH_ALL_MERGED_RECORDINGS = True
+#: Every recording dropped or not used, written by the build.
+AUDIO_LOG_PATH = BASE / "docs" / "audio_not_published.csv"
+AUDIO_LOG_FIELDS = ["language", "s_id", "origin", "url", "file", "type", "village",
+                    "outcome", "same_as", "same_as_village"]
 
 #: S/@source on main sentences that are no longer in the 2026 source.
 WITHDRAWN_SOURCE = (
@@ -78,15 +78,27 @@ def _withdrawn_by_repair() -> dict[str, dict]:
     return {r["guid"]: r for r in payload["repairs"] if r.get("action") == "withdraw"}
 
 
-def _audio_2026(record: Sentence) -> list[dict[str, str]]:
-    return [
-        {"url": url, "file": f"{record.identifier}{'' if i == 1 else f'_{i}'}.mp3"}
-        for i, url in enumerate(record.audio_urls, start=1)
-    ]
+def _recordings(language: str, identifier: str, urls: list[str],
+                village_of: dict[str, str | None], main_audio: list[dict[str, str]],
+                audio: tuple, counts: Counter) -> list[dict[str, str]]:
+    """AUDIO attributes for one sentence (audio_recordings.py has the rules)."""
+    table, second_s, log = audio
+    start = len(log)
+    chosen = choose(language, identifier, urls, village_of, main_audio, table,
+                    second_s, log)
+    for row in log[start:]:
+        row["language"] = language
+        counts[f"audio not published: {row['outcome']}"] += 1
+    for item in chosen:
+        counts[f"audio: {item.origin} recording"] += 1
+    if len(chosen) > 1:
+        counts["sentences with 2+ distinct recordings"] += 1
+    return audio_elements(language, identifier, chosen, table)
 
 
 def assemble(language: str, sentences: list[Sentence], untranslated: dict,
-             counts: Counter) -> tuple[list[Published], list[dict[str, str]], dict, list[dict]]:
+             counts: Counter, audio: tuple
+             ) -> tuple[list[Published], list[dict[str, str]], dict, list[dict]]:
     """Map 2026 records onto main's ids and add main's withdrawn sentences.
 
     Returns (sentences to publish, untranscribed AUDIO, main TEXT attributes,
@@ -135,16 +147,12 @@ def assemble(language: str, sentences: list[Sentence], untranslated: dict,
                     seen.add(_norm_zh(item["_text"]))
                     translations.append((item.get(XML_LANG, "zho"), item["_text"]))
                     counts["merged: translation added from a main copy"] += 1
-        if record.audio_urls:
-            audio = _audio_2026(record)
-            counts["audio: 2026 recording"] += len(audio)
-        else:
-            chosen = copies if ATTACH_ALL_MERGED_RECORDINGS else copies[:1]
-            audio = [dict(a) for m in chosen for a in m.audio]
-            counts["audio: main's recording (no 2026 recording)"] += len(audio)
+        recordings = _recordings(
+            language, identifier, record.audio_urls, record.audio_class,
+            [dict(a) for m in copies for a in m.audio], audio, counts)
         hit = next((withdraw[g] for g in record.source_ids if g in withdraw), None)
         if hit is not None:
-            for item in audio:
+            for item in recordings:
                 untranscribed.append({**item, "source": (
                     f"ILRDF example {identifier}; sentence withdrawn "
                     "(source_repairs.json: action withdraw)")})
@@ -158,7 +166,7 @@ def assemble(language: str, sentences: list[Sentence], untranslated: dict,
             counts["published under a main id"] += 1
         else:
             counts["published under a new GUID id"] += 1
-        out.append(Published(identifier, record.original, translations, audio))
+        out.append(Published(identifier, record.original, translations, recordings))
 
     for row in rows:
         if row["status"] != "withdrawn":
@@ -167,7 +175,9 @@ def assemble(language: str, sentences: list[Sentence], untranslated: dict,
         out.append(Published(
             main.identifier, main.original,
             [(t.get(XML_LANG, "zho"), t["_text"]) for t in main.translations],
-            [dict(a) for a in main.audio], WITHDRAWN_SOURCE))
+            _recordings(language, main.identifier, [], {},
+                        [dict(a) for a in main.audio], audio, counts),
+            WITHDRAWN_SOURCE))
         counts["withdrawn main sentence published from the 2024 snapshot"] += 1
     out.sort(key=lambda p: (p.original.casefold(), p.original, p.identifier))
     return out, untranscribed, main_attrs, old_to_new
@@ -373,6 +383,8 @@ def run(mode: str, languages: list[str], write_ledger: bool = False) -> int:
 
     old_to_new: list[dict] = []
     totals: Counter = Counter()
+    audio_log: list[dict[str, str]] = []
+    audio = (AudioTable(), load_second_s(), audio_log)
     for language in languages:
         snapshot = verify_and_load_snapshot(language, SNAPSHOT_DIR, manifest)
         untranslated: dict = {}
@@ -388,7 +400,7 @@ def run(mode: str, languages: list[str], write_ledger: bool = False) -> int:
         )
         counts: Counter = Counter()
         records, untranscribed, main_attrs, retired = assemble(
-            language, sentences, untranslated, counts)
+            language, sentences, untranslated, counts, audio)
         old_to_new.extend(retired)
         totals.update(counts)
         published_of = {}
@@ -437,6 +449,13 @@ def run(mode: str, languages: list[str], write_ledger: bool = False) -> int:
                               "untranscribed audio"})
         write_old_to_new(old_to_new, OLD_TO_NEW_PATH)
         print(f"wrote {OLD_TO_NEW_PATH.name}: {len(old_to_new)} rows")
+        AUDIO_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+        with AUDIO_LOG_PATH.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=AUDIO_LOG_FIELDS,
+                                    lineterminator="\n")
+            writer.writeheader()
+            writer.writerows(audio_log)
+        print(f"wrote {AUDIO_LOG_PATH.name}: {len(audio_log)} rows")
         print(f"TOTAL: {json.dumps(dict(sorted(totals.items())), ensure_ascii=False)}")
 
     relevant_overrides = {key for key in overrides if key[0] in languages}

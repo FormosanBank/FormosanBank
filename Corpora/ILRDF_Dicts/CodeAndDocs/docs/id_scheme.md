@@ -12,7 +12,9 @@ GUID ids only for new records."*):
 Dictionary entries are always `<Language>_d<GUID>` (`d` for dictionary).
 A record that is split into several `S` follows POL-028: the first keeps the
 id, the second takes `-opt`, a third `-opt3`, and so on
-(`Atayal_3715`, `Atayal_3715-opt`).
+(`Atayal_3715`, `Atayal_3715-opt`). A sentence with several different
+recordings becomes one `S` per recording named the same way (`Bunun_1995`,
+`Bunun_1995-opt`); see `recording_split_ids.csv`.
 
 ## Main's ids are frozen, not recomputed
 

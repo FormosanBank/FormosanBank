@@ -71,6 +71,8 @@ class Sentence:
     original: str
     translations: list[tuple[str, str]] = field(default_factory=list)
     audio_urls: list[str] = field(default_factory=list)
+    #: The source's audioClass of each recording (Yami: the village).
+    audio_class: dict[str, str | None] = field(default_factory=dict)
     source_ids: set[str] = field(default_factory=set)
     language: str = ""
 
@@ -430,6 +432,16 @@ def _translation_language(
     return "zho"
 
 
+def _note_class(record: Sentence, url: str, audio: dict, language: str) -> None:
+    """Record a recording's audioClass; one URL must not carry two."""
+    value = audio.get("audioClass")
+    value = normalize_source_text(value) or None if isinstance(value, str) else None
+    if url in record.audio_class and record.audio_class[url] != value:
+        raise ValueError(f"{language}: {url} has audioClass "
+                         f"{record.audio_class[url]!r} and {value!r}")
+    record.audio_class[url] = value
+
+
 def extract_sentences(
     language: str,
     snapshot: dict[str, object],
@@ -501,6 +513,7 @@ def extract_sentences(
                                 token = storage_id(url) if url else None
                                 if not url or (token and token in excluded_audio_ids):
                                     continue
+                                _note_class(spare, url, audio, language)
                                 if url not in spare.audio_urls:
                                     spare.audio_urls.append(url)
                         continue
@@ -542,6 +555,7 @@ def extract_sentences(
                         if token and token in excluded_audio_ids:
                             excluded_audio += 1
                             continue
+                        _note_class(record, url, audio, language)
                         if url not in record.audio_urls:
                             record.audio_urls.append(url)
 

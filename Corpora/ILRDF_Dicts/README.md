@@ -12,34 +12,35 @@ published from its 2024 scrape.
 | | Sentences | Dictionaries |
 |---|---:|---:|
 | Files | 16 | 16 |
-| `S` records | 168,548 | 139,579 |
-| `TRANSL` | 170,673 | 164,849 |
-| `AUDIO` in an `S` | 139,914 | — |
-| untranscribed `AUDIO` (direct child of `TEXT`) | 493 | — |
+| `S` records | 184,147 | 139,579 |
+| `TRANSL` | 187,336 | 164,849 |
+| `AUDIO` in an `S` (at most one per `S`) | 131,341 | — |
+| untranscribed `AUDIO` (direct child of `TEXT`) | 486 | — |
 | variant readings (`FORM kindOf="original" ver="alt"`) | 2,006 | 134 |
 
 | Language | `S` (sentences) | under a main id | new (GUID id) | of which 2024-only | `AUDIO` in an `S` | untranscribed `AUDIO` | headword entries |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Amis | 8,849 | 5,430 | 3,419 | 4 | 7,192 | 0 | 8,444 |
-| Atayal | 9,161 | 6,384 | 2,777 | 89 | 7,235 | 127 | 6,496 |
-| Bunun | 11,971 | 8,697 | 3,274 | 6 | 10,700 | 20 | 7,564 |
-| Kanakanavu | 8,717 | 5,616 | 3,101 | 538 | 6,866 | 0 | 4,415 |
-| Kavalan | 10,413 | 8,209 | 2,204 | 138 | 9,624 | 5 | 7,291 |
-| Paiwan | 7,764 | 5,359 | 2,405 | 3 | 6,155 | 33 | 6,625 |
-| Puyuma | 9,389 | 7,066 | 2,323 | 37 | 9,052 | 7 | 8,636 |
-| Rukai | 15,179 | 10,449 | 4,730 | 2 | 13,690 | 6 | 12,997 |
-| Saaroa | 7,056 | 4,067 | 2,989 | 211 | 5,156 | 1 | 6,092 |
-| Saisiyat | 9,080 | 6,095 | 2,985 | 38 | 8,061 | 5 | 6,268 |
-| Sakizaya | 8,195 | 5,346 | 2,849 | 1 | 7,325 | 98 | 7,078 |
-| Seediq | 7,560 | 5,463 | 2,097 | 29 | 6,591 | 2 | 5,977 |
-| Thao | 9,593 | 6,419 | 3,174 | 22 | 7,928 | 93 | 5,165 |
-| Truku | 29,608 | 4,669 | 24,939 | 6 | 6,621 | 19 | 32,892 |
-| Tsou | 7,027 | 2,878 | 4,149 | 116 | 5,312 | 65 | 5,768 |
-| Yami | 8,986 | 6,432 | 2,554 | 15 | 22,406 | 12 | 7,871 |
-| **Total** | **168,548** | **98,579** | **69,969** | **1,255** | **139,914** | **493** | **139,579** |
+| Amis | 9,038 | 5,616 | 3,422 | 4 | 6,571 | 0 | 8,444 |
+| Atayal | 9,191 | 6,410 | 2,781 | 89 | 6,916 | 127 | 6,496 |
+| Bunun | 12,368 | 9,022 | 3,346 | 6 | 10,446 | 20 | 7,564 |
+| Kanakanavu | 8,844 | 5,654 | 3,190 | 538 | 6,794 | 0 | 4,415 |
+| Kavalan | 10,647 | 8,384 | 2,263 | 138 | 9,297 | 5 | 7,291 |
+| Paiwan | 7,837 | 5,424 | 2,413 | 3 | 5,815 | 33 | 6,625 |
+| Puyuma | 9,644 | 7,292 | 2,352 | 37 | 8,304 | 7 | 8,636 |
+| Rukai | 15,236 | 10,474 | 4,762 | 2 | 12,960 | 6 | 12,997 |
+| Saaroa | 7,166 | 4,161 | 3,005 | 211 | 4,939 | 1 | 6,092 |
+| Saisiyat | 9,340 | 6,212 | 3,128 | 38 | 7,662 | 5 | 6,268 |
+| Sakizaya | 8,495 | 5,565 | 2,930 | 1 | 6,766 | 98 | 7,078 |
+| Seediq | 7,660 | 5,495 | 2,165 | 29 | 6,121 | 2 | 5,977 |
+| Thao | 9,860 | 6,660 | 3,200 | 22 | 7,658 | 91 | 5,165 |
+| Truku | 29,718 | 4,762 | 24,956 | 6 | 5,812 | 16 | 32,892 |
+| Tsou | 7,187 | 2,957 | 4,230 | 116 | 4,949 | 63 | 5,768 |
+| Yami | 21,916 | 19,158 | 2,758 | 15 | 20,331 | 12 | 7,871 |
+| **Total** | **184,147** | **113,246** | **70,901** | **1,255** | **131,341** | **486** | **139,579** |
 
-"Under a main id" includes the `-opt` records split from a main sentence;
-"2024-only" sentences are explained below.
+"Under a main id" includes the `-opt` records split from a main sentence
+(alternatives, and one `S` per recording); "2024-only" sentences are
+explained below.
 
 ## Rights
 
@@ -74,7 +75,10 @@ Sentences FormosanBank published before the rebuild keep their ids
 (`Amis_0` …); sentences new in 2026 carry the source's GUID
 (`Amis_20a69646-e70a-f011-bd65-00155db40116`); dictionary entries carry
 `d` + GUID. A record split into several `S` keeps its id on the first and
-adds `-opt`, `-opt3` … to the others (POL-028). The matching of old sentences
+adds `-opt`, `-opt3` … to the others (POL-028). A sentence with several
+different recordings is also split this way, one `S` per recording (see
+"Recordings" below); those 15,599 added ids are listed in
+[CodeAndDocs/docs/recording_split_ids.csv](CodeAndDocs/docs/recording_split_ids.csv). The matching of old sentences
 to the 2026 source was done once and frozen in
 [CodeAndDocs/source_data/main_id_ledger.csv](CodeAndDocs/source_data/main_id_ledger.csv);
 see [CodeAndDocs/docs/id_scheme.md](CodeAndDocs/docs/id_scheme.md).
@@ -112,12 +116,13 @@ FormosanBank commit the published XML was built against is recorded in
 [CodeAndDocs/provenance.json](CodeAndDocs/provenance.json) (POL-052).
 `CodeAndDocs/validate.sh` runs the published-id audit and the corpus tests.
 
-**POL-047 deviation:** besides the canonical steps, the build runs three
+**POL-047 deviation:** besides the canonical steps, the build runs four
 corpus-local steps — `generate_dictionary.py` (headword files),
 `build_manual_edits.py` (renders `manual_edits.xml` from the reviewed repair
-table) and `split_alternatives.py` (source-side alternatives, after the
+table), `split_alternatives.py` (source-side alternatives, after the
 manual edits and before `clean_xml.py`, because the repairs must match the
-unsplit text).
+unsplit text) and `one_recording_per_s.py` (after the split, so that only
+sentences that keep their recordings are split by recording).
 
 The steps, in order:
 
@@ -127,9 +132,10 @@ The steps, in order:
 2. `generate_dictionary.py` — headword entries.
 3. `build_manual_edits.py`, then the shared `QC/cleaning/apply_manual_edits.py`.
 4. `split_alternatives.py --apply`.
-5. `QC/cleaning/clean_xml.py`.
-6. `QC/utilities/standardize.py --remove_accents --ortho-path Orthographies/Ortho113`.
-7. `QC/utilities/add_phonology.py --orthography Ortho113`.
+5. `one_recording_per_s.py` — one `S` per distinct recording.
+6. `QC/cleaning/clean_xml.py`.
+7. `QC/utilities/standardize.py --remove_accents --ortho-path Orthographies/Ortho113`.
+8. `QC/utilities/add_phonology.py --orthography Ortho113`.
 
 ### Phonology
 
@@ -222,26 +228,62 @@ resolved as listed there.
 item, its recording is not attached to any of the resulting sentences: it is
 published as untranscribed audio, an `AUDIO` that is a direct child of
 `TEXT`, with `AUDIO/@source` naming the example it belongs to (maintainer
-ruling 2026-10-16, ILRDF only). 493 recordings are published this way.
+ruling 2026-10-16, ILRDF only). 486 recordings are published this way.
 
 Headword notation is left as the source writes it (`uculru(wa)` marks an
 optional ending).
 
 ### Recordings
 
-Each sentence uses the 2026 ILRDF recording where the 2026 source has a
-usable one (`<id-of-the-2026-record>.mp3`). Where it has none — no recording
-at all, an all-zero file, or one excluded in
-[source_data/audio_exclusions.json](CodeAndDocs/source_data/audio_exclusions.json)
-— the sentence keeps the recording FormosanBank already published
-(`<Language>_<n>.mp3`, with its `start`/`end`). Where main published one
-sentence twice and the 2026 record has no recording, both old recordings are
-attached (an open question to the maintainer; one constant in
-`generate_xml.py`).
+Every recording was fingerprinted once (SHA-256 and real file type, read from
+the file's first bytes) and the result is frozen in
+[CodeAndDocs/source_data/audio_fingerprints.tsv](CodeAndDocs/source_data/audio_fingerprints.tsv);
+the build never downloads anything. The rules (maintainer rulings
+2026-10-17; code in `CodeAndDocs/audio_recordings.py`):
+
+- **One `S` per distinct recording; identical copies kept once.** The same
+  sentence is often printed under several headwords, each copy with its own
+  recording; byte-identical copies are published once (98,529 copies). A
+  sentence with *k* different recordings becomes *k* `S` with the same text
+  and translations: the first keeps the id, the others take `-opt`, `-opt3`
+  … (15,599 added `S`: 8,808 `-opt`, 6,326 `-opt3`, 465 `-opt4` or higher).
+- **Main's recording first.** Where FormosanBank's 2024 recording is
+  byte-identical to a 2026 one, the 2024 `AUDIO` is published unchanged,
+  under its existing file name (`<Language>_<n>.mp3`, with its
+  `start`/`end`). Where the 2026 source has a different usable recording, the
+  2026 one is used (713 sentences); where it has none, main's is kept. For
+  Kanakanavu_2310 and Kanakanavu_5468 both are published (main's on the main
+  id, the 2026 one on `-opt`; [source_data/audio_rulings.json](CodeAndDocs/source_data/audio_rulings.json)).
+- **File names.** A 2026 recording is named after its `S`
+  (`Bunun_1995-opt.mp3`), with the extension of its real type: 2,162 are
+  WebM (`.webm`) and 16 MP4 (`.mp4`); they are not converted.
+- **Yami: the village is in the file name.** The source records most Yami
+  sentences in three villages. They are published as three `S`, 朗島 first
+  (it keeps the id; main's recording is the 朗島 one), then 野銀, then 漁人,
+  with files `<id>_<village>.<ext>` (`Yami_4596_野銀.mp3` on `Yami_4596-opt`).
+  Not ruled: where one sentence has two *different* recordings from the same
+  village (267 files), the second is named `<id>_<village>_2.<ext>`; Yami
+  recordings with no village in the source (652 files, 644 sentences) are
+  named after their `S`, like the other languages.
+- **Broken recordings are dropped.** 157 2026 files are empty (all zero
+  bytes, or no recognisable audio header) and 3 Paiwan files could not be
+  downloaded. Where the sentence has another working recording (2026 or
+  main's) that one is used; **13 sentences are left with no recording**
+  (Paiwan 1, Puyuma 1, Saaroa 5, Tsou 5, Yami 1).
+
+Every recording that is not published, and why, is listed in
+[CodeAndDocs/docs/audio_not_published.csv](CodeAndDocs/docs/audio_not_published.csv)
+(99,403 rows: 98,529 identical copies, 713 replaced 2024 recordings, 157
+broken, 3 unreachable, and 1 note where main's recording replaced broken
+2026 ones). Files the XML references that Hugging Face does not yet hold are
+listed by `audio_upload_manifest.py` in
+[CodeAndDocs/docs/audio_upload_manifest.csv](CodeAndDocs/docs/audio_upload_manifest.csv)
+(33,817 files, 4.0 GB).
 
 ### Excluded content
 
-- 820 all-zero audio ids, two confirmed transcript mismatches, and both uses
+- 820 all-zero audio ids (found before the 2026 fingerprinting; the 157
+  found by it are under "Recordings" above), two confirmed transcript mismatches, and both uses
   of 40 audio ids assigned to different forms in different languages
   ([source_data/audio_exclusions.json](CodeAndDocs/source_data/audio_exclusions.json)).
 - Three Kanakanavu lesson numbers that are not translations, and one Saisiyat
@@ -260,6 +302,9 @@ attached (an open question to the maintainer; one constant in
 | `build_manual_edits.py` | renders `manual_edits.xml` from the repair table |
 | `match_main_ids.py` | one-off: matched main's sentences to the 2026 source; wrote `main_id_ledger.csv` |
 | `snapshot_main_xml.py` | one-off: wrote the POL-035 snapshot in `source_data/main_2024/` |
-| `audio_upload_manifest.py` | lists referenced audio missing from Hugging Face (`docs/audio_upload_manifest.csv`); uploads nothing |
+| `audio_recordings.py` | which recordings each sentence carries, and their file names |
+| `one_recording_per_s.py` | build step: one `S` per distinct recording |
+| `freeze_audio_fingerprints.py` | one-off: wrote `source_data/audio_fingerprints.tsv` from the fingerprinting run |
+| `audio_upload_manifest.py` | lists referenced audio missing from Hugging Face (`docs/audio_upload_manifest.csv`), offline, from the frozen listing; uploads nothing |
 | `refresh_source.py` / `.sh` | re-scrape the API into snapshots (not part of reproduction) |
 | `tests/` | `python -m pytest CodeAndDocs/tests` |
