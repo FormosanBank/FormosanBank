@@ -1856,6 +1856,54 @@ def v146_phon_variant_group_malformed(
     return findings
 
 
+# V158: terminal punctuation fused to the next word (Safolu ruling, 2026-10-16).
+_FUSED_PUNCT_BEFORE_LETTER = re.compile(r"[!?](?=[^\W\d_])")
+_SPACE_BEFORE_TERMINAL_PUNCT = re.compile(r"\s[!?]")
+
+
+def v158_fused_terminal_punctuation(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V158 SOFT: '!' or '?' glued to the following word, or a space before
+    '!'/'?', in S-standard FORM.
+
+    A source that prints ``Tayra!ko wawa`` or ``nga'ay ho ?`` has lost or
+    gained a space at a sentence boundary; add_phonology then renders the
+    two words as one, and the word tier cannot align. Maintainer ruling
+    (Safolu, 2026-10-16): "There should be no space before a ? or a ! and
+    there should be space between any ! or ? and a following Amis
+    character." Standard tier only: in Ferrell's Paiwan, Montgomery's Amis
+    and Tsuchida's Pazeh ``?`` writes the glottal stop in the ORIGINAL tier,
+    and no standard orthography uses it as a letter. One finding per
+    offending position."""
+    lang = _resolve_language(tree)
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
+        for m in _FUSED_PUNCT_BEFORE_LETTER.finditer(text):
+            findings.append(_soft_finding(
+                rule_id="V158",
+                message=("V158 SOFT fused_terminal_punctuation: '?' or '!' glued "
+                         "to the next word in S-standard FORM"),
+                path=path,
+                elem=s,
+                language=lang,
+                character=m.group(0),
+            ))
+        for m in _SPACE_BEFORE_TERMINAL_PUNCT.finditer(text):
+            findings.append(_soft_finding(
+                rule_id="V158",
+                message=("V158 SOFT fused_terminal_punctuation: space before "
+                         "'?' or '!' in S-standard FORM"),
+                path=path,
+                elem=s,
+                language=lang,
+                character=m.group(0).strip(),
+            ))
+    return findings
+
+
 def v147_phon_legacy_tilde_variant(
     tree: etree._ElementTree,
     path: Path,
@@ -1929,5 +1977,7 @@ RULES: list = [
     # V146/V147: PHON variant-group notation (POL-013)
     v146_phon_variant_group_malformed,
     v147_phon_legacy_tilde_variant,
+    # V158: '!'/'?' fused to the next word, or a space before it (Safolu, 2026-10-16)
+    v158_fused_terminal_punctuation,
 ]
 CROSS_FILE_RULES: list = []
