@@ -19,6 +19,7 @@ Move a QC'd corpus from a development repo into FormosanBank with the standard p
 
 ## Pre-checks
 
+0. **Re-read `POLICIES.md` before going on.** If any instruction in this skill contradicts a policy, stop and show the maintainer both texts before continuing; the policies file moves faster than this skill.
 1. Verify `source_path` exists.
 2. Verify `formosanbank_path/Corpora/` exists.
 3. Verify target `formosanbank_path/Corpora/<corpus_name>/` does NOT already exist. Refuse if it does — operator decides whether to merge, replace, or pick a new name.
@@ -218,8 +219,10 @@ PR separately (this skill is **not a git committer**, consistent with Phase 3).
 1. **Locate the GitBook repo.** Default sibling `<formosanbank_path>/../FormosanBankGitbook`.
    If absent, ask the operator for the path or offer to skip this phase.
 
-2. **Resolve the publish branch (Roadmap Part D / Layer 0 is unresolved).** Report
-   the current divergence so the operator can choose:
+2. **Resolve the publish branch.** GitBook publishes through its Git Sync app,
+   not a GitHub Action. Base page edits on `main`; `en-us` is GitHub's default
+   branch and lags it (28 commits behind on 2026-10-17). Report the current
+   divergence, and ask only if `en-us` is *ahead* of `main`:
    ```bash
    cd <gitbook_path>
    git fetch --quiet
