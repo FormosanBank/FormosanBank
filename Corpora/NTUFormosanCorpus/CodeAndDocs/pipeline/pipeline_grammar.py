@@ -183,8 +183,11 @@ from __future__ import annotations
 
 import argparse
 import copy
+from collections import Counter
+import difflib
 import sys
 import hashlib
+import csv
 import json
 import os
 import re
@@ -204,10 +207,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "qa"))
 from utils import (resolve_ungrammatical_parens, expand_infixes,
                    strip_l2m, strip_prosodic_markers, extract_notes)
 from grammar_xml_tests import clitic_alignment, morpheme_count, MARKERS
+from sentence_xml_tests import split_joined_infixes
 
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 ET.register_namespace("xml", "http://www.w3.org/XML/1998/namespace")
-SPLIT = re.compile(r"[-=]")
+# A morpheme boundary; a '-' inside an infix bracket ('la<in-i>haib',
+# '<PFV-PFV>pass') is not one -- utils.expand_infixes reads the bracket.
+SPLIT = re.compile(r"[-=](?![^<>]*>)")
 HAN = re.compile(r"[㐀-䶿一-鿿豈-﫿]")
 
 # Grammatical role labels attested as trailing annotations in the form column.
@@ -269,12 +275,39 @@ STEPS = {
    20: "withdraw a word or morpheme analysis the tiers do not support",
    21: "strip transcription markup from forms",
    22: "reassign glosses stranded on a form-less morpheme, then drop the shell",
+   23: "write x/xx/XX/XXX/XXXX glosses as X; fully capitalize a mis-cased label (rulings 2026-10-14)",
+   24: "drop the '_' English placeholder (ruling 2026-10-14)",
 }
 
 # The corpus's own repair table is the single source of truth; p3 reads it
 # rather than copying the cases. main applies it via repair_source_fields.py,
 # which is fail-closed on the whole-corpus file layout and so cannot run
 # against a grammar-only tree.
+_STRAY_PUNCT = re.compile(r"\s+([.,!?;:…]+)(?=\s|$)")
+
+
+def aligned_or_joined(sentence, forms: list, stats: dict | None = None) -> bool:
+    """clitic_alignment, and failing that the same test with every stray
+    punctuation token joined to the word before it ('chuanzhe .' ->
+    'chuanzhe.'). When only the joined text lines up, the sentence form is
+    rewritten that way: a punctuation normalization, no letter changes
+    (maintainer, 2026-10-14, card stray-punct: "join them (all)")."""
+    node = sentence.find("FORM[@kindOf='original']")
+    s_form = "".join(node.itertext()) if node is not None else ""
+    if clitic_alignment(s_form, forms):
+        return True
+    joined = _STRAY_PUNCT.sub(r"\1", s_form)
+    if joined == s_form or not clitic_alignment(joined, forms):
+        return False
+    for child in list(node):
+        node.remove(child)
+    node.text = joined
+    if stats is not None:
+        stats["20 stray punctuation joined so the words line up"] = stats.get(
+            "20 stray punctuation joined so the words line up", 0) + 1
+    return True
+
+
 def prune_unsupported(sentence, stats: dict) -> None:
     """Withdraw an analysis the sentence's own tiers do not support.
 
@@ -301,7 +334,7 @@ def prune_unsupported(sentence, stats: dict) -> None:
     s_form = orig(sentence)
     forms = [orig(w) for w in words]
 
-    if not clitic_alignment(s_form, forms):
+    if not aligned_or_joined(sentence, forms, stats):
         for w in words:
             sentence.remove(w)
         stats["20 sentences whose W tier was withdrawn"] = stats.get(
@@ -566,8 +599,9 @@ _INFIX_GLOSS = re.compile(r"<[^>]+>")
 
 def _gloss_pieces(gloss: str) -> int:
     """Morphemes a gloss claims: [-=] pieces plus one per infix gloss."""
+    gloss = split_joined_infixes(gloss)
     return (len([x for x in SPLIT.split(gloss) if x])
-            + len(_INFIX_GLOSS.findall(gloss or "")))
+            + len(_INFIX_GLOSS.findall(gloss)))
 
 
 def step7_align_separator(form: str, gloss: str, attested: dict) -> str:
@@ -641,6 +675,319 @@ def apply_record_repairs(records: list, src_key: str, repairs: dict, stats: dict
     return out
 
 
+def load_cell_restorations(path: Path) -> dict:
+    """{source file: [(record id, row, column, value found, value to write)]}.
+
+    A pinned list of single gloss cells to rewrite at load time. Each row names
+    the value it expects to find, so a changed source fails the build instead
+    of being overwritten blindly. Used for ruling 2026-09-29: NTU's 2026 release
+    replaced the backchannel gloss 'BC' with the sound in capitals ('M', 'OH').
+    """
+    out: dict = {}
+    if not path.exists():
+        return out
+    lines = [l for l in path.read_text(encoding="utf-8").splitlines() if l and not l.startswith("#")]
+    for row in csv.DictReader(lines, delimiter="\t"):
+        out.setdefault(row["source_file"], []).append(
+            (int(row["record_id"]), int(row["row"]), int(row["column"]), row["found"], row["restore"]))
+    return out
+
+
+def apply_cell_restorations(records: list, src_key: str, table: dict, stats: dict,
+                            label: str = "cells restored (BC)") -> list:
+    cells = [c for f, cs in table.items() if src_key.endswith(f) for c in cs]
+    if not cells:
+        return records
+    by_id = {r[0]: r for r in records if isinstance(r, list) and len(r) > 1}
+    for rid, k, col, found, restore in cells:
+        row = by_id[rid][1]["gloss"][k]
+        if str(row[col]).strip() != found:
+            raise RuntimeError(f"source drifted for {src_key}:{rid} row {k} column {col}; "
+                               f"expected {found!r}, found {row[col]!r}")
+        while len(row) <= col:
+            row.append("")
+        row[col] = restore
+        stats[label] = stats.get(label, 0) + 1
+    return records
+
+
+# Gloss-cell rulings, 2026-10-14 (maintainer, review page round 4).
+# "convert all glosses that consist solely of "x", "xx", or "XX" to "X". Both in
+# English and Chinese." and "change glosses that consist entirely of "XXXX" and
+# "XXX" to "X" everywhere."
+X_GLOSSES = {"x", "xx", "XX", "XXX", "XXXX"}
+# ... and, card xlong (2026-10-14, "yes, all of them"): XXXXX, XXXXXX, XXXXXXX,
+# XXXXXXXX (any run of five or more) and [XXXX].
+X_LONG = re.compile(r"X{5,}|\[XXXX\]")
+# "if something would be an attested gloss (at least 20 attestations in NTU) if
+# all letters were capitalized AND at least one letter is capitalized, then fully
+# capitalize." Held back pending a ruling: 'Han' (Rukai payrange, Chinese 漢人) is
+# the ethnonym; HAN is attested only as the gloss of the particle han.
+CAPS_MIN = 20
+CAPS_HELD = {"Han"}
+_CELL_COUNTS: Counter | None = None
+
+
+def ntu_gloss_counts() -> Counter:
+    """Whole-cell counts of every gloss value in NTU's source, all three subcorpora."""
+    global _CELL_COUNTS
+    if _CELL_COUNTS is None:
+        _CELL_COUNTS = Counter()
+        codedocs = Path(__file__).resolve().parent.parent
+        for sub in ("grammar", "sentence", "story"):
+            for path in (codedocs / sub).rglob("*.json"):
+                data = json.loads(path.read_text(encoding="utf-8"))
+                recs = data if isinstance(data, list) else (list(data.values())[0] if data else [])
+                for rec in recs:
+                    if not (isinstance(rec, list) and len(rec) > 1 and isinstance(rec[1], dict)):
+                        continue
+                    for row in rec[1].get("gloss") or []:
+                        for cell in row[1:3]:
+                            if str(cell).strip():
+                                _CELL_COUNTS[str(cell).strip()] += 1
+    return _CELL_COUNTS
+
+
+def normalize_gloss_cell(text: str, stats: dict | None = None) -> str:
+    """Apply the 2026-10-14 X and capitalization rulings to one gloss cell."""
+    v = (text or "").strip()
+    new = None
+    if v in X_GLOSSES or X_LONG.fullmatch(v):
+        new = "X"
+        key = "x glosses written X"
+    elif (v != v.upper() and re.search(r"[A-Z]", v) and v not in CAPS_HELD
+          and ntu_gloss_counts().get(v.upper(), 0) >= CAPS_MIN):
+        new = v.upper()
+        key = "labels fully capitalized"
+    if new is None:
+        return text
+    if stats is not None:
+        stats[f"gloss ruling 2026-10-14: {key}"] = stats.get(f"gloss ruling 2026-10-14: {key}", 0) + 1
+    return new
+
+
+def han_share(text: str | None) -> float:
+    """The share of a gloss's pieces (split at - = . and spaces) that are Chinese."""
+    pieces = [p for p in re.split(r"[-=.\s]+", text or "") if re.search(r"\w", p)]
+    return sum(1 for p in pieces if HAN.search(p)) / len(pieces) if pieces else 0.0
+
+
+def step1_realign(zho: str, eng: str) -> tuple:
+    """Put each gloss in the slot of its own language.
+
+    The source's column order is not fixed: Kanakanavu writes Chinese first,
+    Rukai English first, and Bunun is mixed WITHIN the language (6820 rows one
+    way, 6450 the other), so the decision is per row.
+    Three cases, each seen in NTU's source:
+    * Both slots filled: the slot whose pieces are MORE Chinese is Chinese.
+      A cell can hold one stray piece of the other language ('IRR=go-處格'
+      beside '非實現=移動-在', 57 rows); testing for any Han at all, as this
+      step did until 2026-09-30, left those rows reversed.
+    * The same Chinese text in both slots ('鉛' / '鉛', 15 rows): it is not an
+      English gloss, so the English slot is emptied.
+    * One slot filled: placed by its script, so a lone English gloss never
+      publishes as Chinese (names and codes stay where they are).
+    Identical Latin pairs (DM, TOP, PN) and names stay as they are. Idempotent.
+    """
+    z, e = (zho or "").strip(), (eng or "").strip()
+    blank = lambda s: s in ("", "_")
+    if not blank(z) and not blank(e):
+        if z == e and HAN.search(z):
+            return zho, ""
+        # Whole words only: a piece of a gloss is never moved between the
+        # two languages on its own (maintainer, 2026-09-30).
+        return (eng, zho) if han_share(e) > han_share(z) else (zho, eng)
+    if blank(z) and not blank(e) and HAN.search(e):
+        return eng, zho
+    # A lone gloss starting in lower case is English ('bring-PF', 'that.way');
+    # names ('Saupu') and codes ('DM') belong to neither language and stay.
+    if blank(e) and not blank(z) and not HAN.search(z) and any(
+            re.match(r"[^A-Za-z]*[a-z]", piece) for piece in re.split(r"[-=.\s]+", z) if piece):
+        return eng, zho
+    return zho, eng
+
+
+LATIN = re.compile(r"[A-Za-z]")
+
+
+def _blank(s: str) -> bool:
+    return (s or "").strip() in ("", "_")
+
+
+def _orientation(zho: str, eng: str) -> int:
+    """+1 the glosses sit in their own slots, -1 step1_realign would move
+    them to the other slots, 0 no evidence either way (blank, names, codes,
+    the same Chinese in both)."""
+    z, e = (zho or "").strip(), (eng or "").strip()
+    moved = step1_realign(zho, eng)
+    if moved == (eng, zho) and z != e:
+        return -1
+    if not _blank(z) and not _blank(e):
+        return 1 if han_share(z) > han_share(e) else 0
+    if not _blank(z):
+        return 1 if HAN.search(z) else 0
+    if not _blank(e):
+        return 1 if LATIN.search(e) and not HAN.search(e) else 0
+    return 0
+
+
+def _english_words(text: str) -> list:
+    """The runs of Latin letters in a gloss that are English words: all lower
+    case ('that', 'no', 'wonder'). A run with a capital or a digit is a label
+    or code ('3SG', '1IPL', 'FS', 'Ca' in 'Ca重疊', a name); NTU writes those in
+    its Chinese glosses routinely (14,263 Chinese cells hold one; about 170 a
+    lower-case word). Maintainer, 2026-09-30: "latin labels like 3SG that
+    routinely are written in the Chinese glosses in NTU should not count as
+    code-mixing for purposes of switching."
+    """
+    return [r for r in re.findall(r"[A-Za-z0-9]+", text or "") if re.fullmatch(r"[a-z]+", r)]
+
+
+def _unmixed(zho: str, eng: str) -> bool:
+    """Neither gloss mixes the two languages: the Chinese gloss holds no English
+    word (labels such as 3SG are allowed) and the English gloss no Chinese."""
+    return not _english_words(zho) and not HAN.search(eng or "")
+
+
+def swap_single_piece(zho: str, eng: str) -> tuple:
+    """Exchange ONE piece between the two glosses when that alone leaves the
+    English all Latin and the Chinese all Chinese ('say-難怪=EVI' /
+    '說-no.wonder=知識詞'). Maintainer, 2026-09-30: "where there is a single
+    morpheme in a word where swapping would make the English gloss all-Latin
+    and the Chinese gloss all-Chinese. You can do that swap." Labels such as
+    3SG count as neither (see _english_words). Both glosses must cut into the
+    same pieces at the same separators; a piece is crossed when the English
+    one is Chinese and the Chinese one is Latin with no Chinese in it."""
+    zp, ep = re.split(r"([-=](?![^<>]*>))", zho or ""), re.split(r"([-=](?![^<>]*>))", eng or "")
+    if len(zp) != len(ep) or len(zp) < 3 or zp[1::2] != ep[1::2]:
+        return zho, eng
+    crossed = [k for k in range(0, len(zp), 2)
+               if HAN.search(ep[k]) and LATIN.search(zp[k]) and not HAN.search(zp[k])]
+    if len(crossed) != 1:
+        return zho, eng
+    k = crossed[0]
+    zp[k], ep[k] = ep[k], zp[k]
+    new = "".join(zp), "".join(ep)
+    return new if _unmixed(*new) else (zho, eng)
+
+
+def _exchange_one_subpiece(zho: str, eng: str) -> tuple:
+    """Exchange the one crossed piece, cutting also at '.' inside a label bundle
+    ('1SG.屬格' / '1SG.GEN'): exactly one piece of the English is Chinese and
+    its counterpart is Latin; nothing else is touched."""
+    cut = r"([-=.](?![^<>]*>))"
+    zp, ep = re.split(cut, zho or ""), re.split(cut, eng or "")
+    if len(zp) != len(ep) or zp[1::2] != ep[1::2]:
+        return zho, eng
+    wrong = [k for k in range(0, len(zp), 2) if HAN.search(ep[k]) or
+             (LATIN.search(zp[k]) and not HAN.search(zp[k]) and zp[k] != ep[k])]
+    if len(wrong) != 1:
+        return zho, eng
+    k = wrong[0]
+    if not (HAN.search(ep[k]) and LATIN.search(zp[k]) and not HAN.search(zp[k]) and not LATIN.search(ep[k])):
+        return zho, eng
+    zp[k], ep[k] = ep[k], zp[k]
+    return "".join(zp), "".join(ep)
+
+
+def step1_realign_sentence(pairs: list, stats: dict | None = None, forms: list | None = None) -> list:
+    """step1_realign for one sentence's (zho, eng) pairs, with the licence the
+    maintainer set for a word that goes against its own line.
+
+    A line (sentence) writes most of its words in one column order: English
+    first or Chinese first. Following that order is not in question -- the
+    builder reads row[1] as Chinese, so an English-first line has every word
+    exchanged. A REVERSAL is a word whose order is the opposite of its line's.
+    Ruling, 2026-09-30: "Isolated reversals (or runs of 2 words with possible
+    swaps) should only be swapped if we they contain only English and only
+    Chinese (no swapping if there is a mix within a gloss). Otherwise, should be
+    a run of at least 3 to license swapping."
+    So a reversal in a run of 3 or more consecutive reversals, or one whose two
+    glosses are each in a single script, goes to the slots its own glosses say.
+    Any other reversal follows its line's order. Words that show no order (blank,
+    names, codes, the same Chinese in both slots) neither end nor count toward a
+    run; a word in its line's order ends one. A line with no majority order has
+    no reversals: each word follows its own glosses. Then swap_single_piece.
+    The duplicate rule (the same Chinese in both slots empties the English slot)
+    is not a move and always applies. Given the words' *forms*, so does its
+    mirror: the same English word gloss in both slots empties the Chinese slot
+    (maintainer, 2026-09-30, on the 49 such words: "drop the copy"). A label
+    (NOM, DM: no lower-case letter), a placeholder, a number and a copy of the
+    word itself are not English glosses and are left as they are.
+    """
+    stats = {} if stats is None else stats
+
+    def count(key):
+        stats[key] = stats.get(key, 0) + 1
+
+    signs = [_orientation(z, e) for z, e in pairs]
+    ahead = signs.count(1) - signs.count(-1)
+    line = (ahead > 0) - (ahead < 0)            # +1 Chinese first, -1 English first, 0 no majority
+    rev = [bool(line) and s == -line for s in signs]
+    run = [0] * len(pairs)
+    k = 0
+    while k < len(pairs):
+        if not rev[k]:
+            k += 1
+            continue
+        members, j = [], k
+        while j < len(pairs) and signs[j] != line:
+            if rev[j]:
+                members.append(j)
+            j += 1
+        for m in members:
+            run[m] = len(members)
+        k = j
+
+    out = []
+    for k, (zho, eng) in enumerate(pairs):
+        new = step1_realign(zho, eng)
+        if rev[k]:
+            if run[k] >= 3:
+                count("1 reversal against its line: run of 3+, to its own slots")
+            elif _unmixed(*new):
+                count("1 reversal against its line: unmixed, to its own slots")
+            elif not HAN.search(_exchange_one_subpiece(*new)[1]):
+                # Maintainer, 2026-09-30, on each of the five words this decided
+                # ("Use the alternative"): a reversal also goes to its own slots
+                # when, after at most one crossed piece is exchanged, its English
+                # holds no Chinese (put-PF=1SG.屬格 -> put-PF=1SG.GEN).
+                new = _exchange_one_subpiece(*new)
+                count("1 reversal against its line: one crossed piece, to its own slots")
+            else:
+                count("1 reversal against its line: mixed, run of 1-2, follows its line")
+                new = (zho, eng) if line == 1 else (eng, zho)
+        elif signs[k] == -1:
+            count("1 gloss columns exchanged (the line's order)" if line else
+                  "1 gloss columns exchanged (line has no majority order)")
+        elif new != (zho, eng):
+            count("1 same Chinese in both slots: English slot emptied")
+        piece = swap_single_piece(*new)
+        if piece != new:
+            count("1 single piece exchanged")
+        if forms is not None and _same_english(*piece, forms[k]):
+            piece = ("", piece[1])
+            count("1 same English in both slots: Chinese slot emptied")
+        out.append(piece)
+    return out
+
+
+# What the review page's census counted as a real English gloss (2026-09-30).
+_NOT_ENGLISH = {"", "_", "??", "?", "X", "XX", "XXX", "FIL", "FS", "BC", "UH", "UM", "EH", "AH"}
+
+
+def _same_english(zho: str, eng: str, form: str) -> bool:
+    """The same English word gloss written in both slots."""
+    z, e = (zho or "").strip(), (eng or "").strip()
+    if not e or z != e or HAN.search(e) or not re.search(r"[a-z]", e):
+        return False
+    if e.strip(".,;:!?()[]<>").upper() in _NOT_ENGLISH or re.fullmatch(r"[\d.]+", e):
+        return False
+    squash = lambda s: re.sub(r"[^\w]", "", (s or "").replace("’", "'")).lower()
+    a, b = squash(e), squash(form)
+    return not (a and (a == b or difflib.SequenceMatcher(None, a, b).ratio() >= 0.8))
+
+
 def has_han(text: str | None) -> bool:
     return bool(HAN.search(text or ""))
 
@@ -701,6 +1048,30 @@ def drop_starred_readings(text: str) -> str:
 
 _FINAL_PUNCT = re.compile(r"[.!?。！？]\s*$")
 _LIT = re.compile(r"^\s*[(（]\s*lit\.?\s*[)）]\s*", re.I)
+
+_WRAP_OPEN = '"“＂「'
+_WRAP_CLOSE = '"”＂」'
+_ANY_QUOTE = '"“”＂「」『』'
+
+
+def unwrap_translation(text: str) -> str:
+    """Drop the one pair of quotation marks around a whole translation
+    ('" dog also came to see ."' -> 'dog also came to see .', '「從墓地帶回祭品。」'
+    -> '從墓地帶回祭品。'; sentence-final punctuation after the closing mark
+    stays). A translation with any other quotation mark inside is left as it is.
+    Applied where free_translation_repairs.tsv says `unwrap` (maintainer,
+    2026-10-14: "remove the quotations from the English in an earlier step";
+    then "unwrap the Chinese using the same rules we've used for English")."""
+    if not text:
+        return text
+    s = text.strip()
+    k = len(s) - 1
+    while k > 0 and s[k] in ".!?。！？":
+        k -= 1
+    if k <= 0 or s[0] not in _WRAP_OPEN or s[k] not in _WRAP_CLOSE \
+            or any(c in _ANY_QUOTE for c in s[1:k]):
+        return text
+    return (s[1:k].strip() + s[k + 1:]).strip()
 
 
 def load_free_repairs(path=None) -> dict:
@@ -770,6 +1141,9 @@ def apply_gloss_restorations(records: list, src_key: str, table: dict, stats: di
             stats["gloss cells restored"] = stats.get("gloss cells restored", 0) + 1
 
 
+_EMBEDDED_TAG = re.compile(r"(?=#[ecn](?![A-Za-z]))")
+
+
 def free_entries(free: list, stem: str, rid: str, repairs: dict) -> list:
     """Resolve a record's free-translation lines into (lang, text, ver, note).
 
@@ -788,11 +1162,23 @@ def free_entries(free: list, stem: str, rid: str, repairs: dict) -> list:
     """
     by_lang: dict = {"zho": [], "eng": []}
     notes: list = []
-    for line in free or []:
+    # One source line can hold several tagged lines ('#e He gets called at.#c 他被叫。',
+    # '#c 熊使山豬害怕。#n mapinpising ...') or repeat its tag ('#e #e All wishes ...').
+    # Each tag starts a line of its own; read whole, the second tag and its text were
+    # published inside the first line's translation or note (18 places).
+    free = [part.strip() for line in free or []
+            for part in _EMBEDDED_TAG.split(str(line)) if part.strip() not in ("", "#e", "#c", "#n")]
+    for line in free:
         if line.startswith("#c"):
-            by_lang["zho"].append(line[2:].strip())
+            text = line[2:].strip()
+            if repairs.get((stem, "*", "zho")) == "unwrap":
+                text = unwrap_translation(text)
+            by_lang["zho"].append(text)
         elif line.startswith("#e"):
-            by_lang["eng"].append(line[2:].strip())
+            text = line[2:].strip()
+            if repairs.get((stem, "*", "eng")) == "unwrap":
+                text = unwrap_translation(text)
+            by_lang["eng"].append(text)
         elif line.startswith("#n"):
             notes.append(line[2:].strip())
 
@@ -1254,6 +1640,15 @@ def build(records: list, text_id: str, steps: set[int], stats: dict,
                         elif name == "zho": zho = canon
                         else: eng = canon
 
+            if 23 in steps:
+                zho, eng = normalize_gloss_cell(zho, stats), normalize_gloss_cell(eng, stats)
+            if 24 in steps and eng.strip() == "_":
+                # The grammar books give only a Chinese gloss and put '_' in the
+                # English column; Stories and Sentences already drop it.
+                eng = ""
+                stats["24 '_' English placeholders dropped"] = stats.get(
+                    "24 '_' English placeholders dropped", 0) + 1
+
             w = ET.SubElement(s, "W")
             w.set("id", f"{text_id}_S_{rid}_W{i}")
             wf = ET.SubElement(w, "FORM")
@@ -1381,6 +1776,10 @@ def main() -> int:
         steps = {int(x) for x in args.steps.split(",") if x.strip()}
 
     repairs = load_record_repairs(Path(__file__).with_name("p2_source_repairs.xml"))
+    from gloss_shift import apply_to_records as apply_shift_repairs, load_table
+    shift_repairs = load_table()
+    # The maintainer's per-cell decisions on the review page, applied after the shifts.
+    cell_decisions = load_cell_restorations(Path(__file__).with_name("gloss_cell_decisions.tsv"))
     attested = build_attestation(args.json, _attestation_clean) if 7 in steps else {}
     malformed = load_malformed_translations(args.json) if 19 in steps else {}
     stats: dict = {}
@@ -1400,6 +1799,12 @@ def main() -> int:
         if not isinstance(recs, list):
             continue
         src_key = "/".join(path.parts[-3:])
+        # Undo recorded gloss shifts in memory; the source JSON is never written.
+        # A shift repair on a record p2_source_repairs.xml also replaces fails
+        # closed there: that record's pinned digest no longer matches.
+        recs = apply_shift_repairs(recs, src_key, shift_repairs, stats)
+        recs = apply_cell_restorations(recs, src_key, cell_decisions, stats,
+                                       label="cells set by the maintainer's decisions")
         root = build(recs, path.stem, steps, stats, src_key, repairs, attested,
                      malformed, language=language_for(path), dialect=dialect_for(path))
         language = path.parent.name.split("_")[0]

@@ -622,7 +622,7 @@
             <PHON kindOf="original">inimu</PHON>
             <FORM kindOf="standard">ini=mu</FORM>
             <PHON kindOf="standard">inimu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">否定-=SG.屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">否定=1SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NEG=1SG.GEN</TRANSL>
             <M id="sdqNr-pear_lubi 2020s_S_7_W14M0">
                 <FORM kindOf="original">ini</FORM>
@@ -637,7 +637,7 @@
                 <PHON kindOf="original">mu</PHON>
                 <FORM kindOf="standard">=mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">SG.屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.屬格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.GEN</TRANSL>
             </M>
         </W>
@@ -2924,8 +2924,8 @@
                 <PHON kindOf="original">wa</PHON>
                 <FORM kindOf="standard">wa</FORM>
                 <PHON kindOf="standard">wa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W1">
@@ -2935,17 +2935,21 @@
             <PHON kindOf="standard">qmita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;看</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;see</TRANSL>
-            <M id="sdqNr-pear_lubi 2020s_S_50_W1M0">
+            <M id="sdqNr-pear_lubi 2020s_S_50_W1M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="sdqNr-pear_lubi 2020s_S_50_W1M1">
-                <FORM kindOf="original">qita</FORM>
+            <M id="sdqNr-pear_lubi 2020s_S_50_W1M0_1">
+                <FORM kindOf="original">q-ita</FORM>
                 <PHON kindOf="original">qita</PHON>
-                <FORM kindOf="standard">qita</FORM>
+                <FORM kindOf="standard">q-ita</FORM>
                 <PHON kindOf="standard">qita</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W2">
@@ -2960,8 +2964,8 @@
                 <PHON kindOf="original">kija</PHON>
                 <FORM kindOf="standard">kiya</FORM>
                 <PHON kindOf="standard">kija</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W3">
@@ -2976,8 +2980,8 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma,</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W4">
@@ -2992,8 +2996,8 @@
                 <PHON kindOf="original">wa</PHON>
                 <FORM kindOf="standard">wa</FORM>
                 <PHON kindOf="standard">wa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W5">
@@ -3032,8 +3036,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a,</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W7">
@@ -3043,17 +3047,21 @@
             <PHON kindOf="standard">dmajo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;幫忙</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;help</TRANSL>
-            <M id="sdqNr-pear_lubi 2020s_S_50_W7M0">
+            <M id="sdqNr-pear_lubi 2020s_S_50_W7M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="sdqNr-pear_lubi 2020s_S_50_W7M1">
-                <FORM kindOf="original">dayo</FORM>
+            <M id="sdqNr-pear_lubi 2020s_S_50_W7M0_1">
+                <FORM kindOf="original">d-ayo</FORM>
                 <PHON kindOf="original">dajo</PHON>
-                <FORM kindOf="standard">dayo</FORM>
+                <FORM kindOf="standard">d-ayo</FORM>
                 <PHON kindOf="standard">dajo</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">幫忙</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">help</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W8">
@@ -3068,8 +3076,8 @@
                 <PHON kindOf="original">anu</PHON>
                 <FORM kindOf="standard">anu</FORM>
                 <PHON kindOf="standard">anu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W9">
@@ -3100,8 +3108,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W11">
@@ -3141,15 +3149,15 @@
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">腳踏車=3SG.屬格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">bicycle=3SG.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="sdqNr-pear_lubi 2020s_S_50_W12M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W13">
@@ -3157,15 +3165,15 @@
             <PHON kindOf="original">ɾuluna</PHON>
             <FORM kindOf="standard">rulu=na</FORM>
             <PHON kindOf="standard">ɾuluna</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">進行=3PL.屬格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PROG=3PL.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">腳踏車=3SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">bicycle=3SG.GEN</TRANSL>
             <M id="sdqNr-pear_lubi 2020s_S_50_W13M0">
                 <FORM kindOf="original">rulu</FORM>
                 <PHON kindOf="original">ɾulu</PHON>
                 <FORM kindOf="standard">rulu</FORM>
                 <PHON kindOf="standard">ɾulu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">腳踏車</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">bike</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">bicycle</TRANSL>
             </M>
             <M id="sdqNr-pear_lubi 2020s_S_50_W13M1">
                 <FORM kindOf="original">=na</FORM>
@@ -3181,23 +3189,23 @@
             <PHON kindOf="original">wadaħa</PHON>
             <FORM kindOf="standard">wa=daha</FORM>
             <PHON kindOf="standard">wadaħa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">幫忙-處焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">help-LF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">進行=3PL.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PROG=3PL.GEN</TRANSL>
             <M id="sdqNr-pear_lubi 2020s_S_50_W14M0">
                 <FORM kindOf="original">wa</FORM>
                 <PHON kindOf="original">wa</PHON>
                 <FORM kindOf="standard">wa</FORM>
                 <PHON kindOf="standard">wa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">幫忙</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">help</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
             </M>
             <M id="sdqNr-pear_lubi 2020s_S_50_W14M1">
                 <FORM kindOf="original">=daha</FORM>
                 <PHON kindOf="original">daħa</PHON>
                 <FORM kindOf="standard">=daha</FORM>
                 <PHON kindOf="standard">daħa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3PL.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3PL.GEN</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W15">
@@ -3205,8 +3213,8 @@
             <PHON kindOf="original">dajoan</PHON>
             <FORM kindOf="standard">dayo-an</FORM>
             <PHON kindOf="standard">dajoan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;採</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;pick</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">幫忙-處焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">help-LF</TRANSL>
             <M id="sdqNr-pear_lubi 2020s_S_50_W15M0">
                 <FORM kindOf="original">dayo</FORM>
                 <PHON kindOf="original">dajo</PHON>
@@ -3229,19 +3237,23 @@
             <PHON kindOf="original">lmamu</PHON>
             <FORM kindOf="standard">l&lt;m&gt;amu</FORM>
             <PHON kindOf="standard">lmamu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-            <M id="sdqNr-pear_lubi 2020s_S_50_W16M0">
+            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;採</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;pick</TRANSL>
+            <M id="sdqNr-pear_lubi 2020s_S_50_W16M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="sdqNr-pear_lubi 2020s_S_50_W16M1">
-                <FORM kindOf="original">lamu</FORM>
+            <M id="sdqNr-pear_lubi 2020s_S_50_W16M0_1">
+                <FORM kindOf="original">l-amu</FORM>
                 <PHON kindOf="original">lamu</PHON>
-                <FORM kindOf="standard">lamu</FORM>
+                <FORM kindOf="standard">l-amu</FORM>
                 <PHON kindOf="standard">lamu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">採</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">pick</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W17">
@@ -3249,13 +3261,15 @@
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka,</FORM>
             <PHON kindOf="standard">ka</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             <M id="sdqNr-pear_lubi 2020s_S_50_W17M0">
                 <FORM kindOf="original">ka,</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka,</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W18">
@@ -3270,8 +3284,8 @@
                 <PHON kindOf="original">anu</PHON>
                 <FORM kindOf="standard">anu</FORM>
                 <PHON kindOf="standard">anu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W19">
@@ -3342,8 +3356,8 @@
                 <PHON kindOf="original">kija</PHON>
                 <FORM kindOf="standard">kiya</FORM>
                 <PHON kindOf="standard">kija</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
         <W id="sdqNr-pear_lubi 2020s_S_50_W23">
@@ -3390,8 +3404,8 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma,</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
     </S>
@@ -4098,7 +4112,7 @@
             <PHON kindOf="original">snalu</PHON>
             <FORM kindOf="standard">s&lt;n&gt;alu</FORM>
             <PHON kindOf="standard">snalu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">&lt;受焦.完成&gt;-做</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">&lt;受焦.完成&gt;做</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;PF.PFV&gt;make</TRANSL>
             <M id="sdqNr-pear_lubi 2020s_S_64_W5M0_0">
                 <FORM kindOf="original">-n-</FORM>

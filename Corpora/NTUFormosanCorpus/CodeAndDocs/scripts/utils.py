@@ -147,6 +147,38 @@ def strip_l2m(form):
         return _L2M_RE.sub('', form), True
     return form, False
 
+
+def l2_letter(raw):
+    """The language letter of the first code-switch tag in a raw form ('<L2JkikayL2J>' -> 'J'), or None."""
+    m = re.search(r'L2([A-Za-z])', raw or '')
+    return m.group(1).upper() if m else None
+
+
+# A code-switched word NTU left without an English gloss gets its language as
+# the gloss, and a word written in Han characters is its own Chinese gloss
+# (review page round 9, cards "unglossed" and "cs-zho"). Only the tags that
+# ruling named: M, J and C, and Han characters with no tag, which are Mandarin.
+# Written with parentheses, as the respelled labels publish: this runs after the
+# builders' bracket-to-parenthesis canonicalization (step 8).
+_L2_LANGUAGE = {'M': 'Mandarin', 'J': 'Japanese', 'C': 'Chinese'}
+_HAN = re.compile(r'[㐀-鿿豈-﫿]')
+
+
+def code_switch_gloss(form, letter, zho, eng):
+    """Return (zho, eng) for a word; changed only when its English slot is empty.
+
+    *letter* is the word's code-switch tag letter (None when it had no tag).
+    """
+    if (eng or '').strip():
+        return zho, eng
+    han = bool(_HAN.search(form or ''))
+    language = _L2_LANGUAGE.get(letter) if letter else ('Mandarin' if han else None)
+    if not language:
+        return zho, eng
+    if han and not (zho or '').strip():
+        zho = re.sub(r'[.,?!;:]+$', '', (form or '').strip())
+    return zho, f'({language})'
+
 # W FORM values that are known to be omitted from the sentence surface string
 # and must be inserted when a count mismatch is detected.
 #   XXXX – unintelligible speech marker
@@ -681,6 +713,18 @@ def expand_infixes(form, en_gloss, zh_gloss):
 
     en_infixes = _INFIX_RE.findall(en_gloss)
     zh_infixes = _INFIX_RE.findall(zh_gloss)
+
+    # A bracket can hold infixes joined by '-': 'la<in-i>haib' glossed
+    # '<PFV-PFV>pass' is -in- PFV and -i- PFV (maintainer, 2026-09-30). It is
+    # split only where each gloss's bracket splits into as many pieces, so
+    # every infix keeps a gloss of its own.
+    fp, ep, zp = ([x.split('-') for x in xs] for xs in (form_infixes, en_infixes, zh_infixes))
+    shape = [len(x) for x in fp]
+    if (max(shape) > 1 and all(all(x) for x in fp)
+            and all(not g or [len(x) for x in g] == shape for g in (ep, zp))):
+        form_infixes = [p for x in fp for p in x]
+        en_infixes = [p for x in ep for p in x]
+        zh_infixes = [p for x in zp for p in x]
 
     # Replace each run of consecutive infix spans with '-' to mark the
     # embedding point, then strip leading/trailing '-' for word-initial/final

@@ -81,9 +81,11 @@ any `CodeAndDocs/quote_corrections.csv` is durable correction evidence.
 The pinned upstream README and licence state CC BY-NC 3.0. The publisher links
 [Taiwan Bible Society correspondence dated 2008-10-07](https://drive.google.com/file/d/1s2_xzc_ZFbInk9wGXfVeUmvktJDZI5cb/view)
 welcoming digitization, but that message does not specify a Creative Commons
-licence or its grant date. CC BY-NC 3.0 is absent from the current rights
-vocabulary, and published XML previously said CC BY-SA. The representation,
-licence change and grant date still require maintainer review before publication.
+licence or its grant date. Published XML said `CC BY-SA` until
+2026-10-16, which matched neither the version nor the NonCommercial term of the
+grant. The licence is kept as granted, CC BY-NC 3.0, by maintainer ruling
+2026-10-16 (*"CC BY-NC 3.0 (as granted; add to vocabulary)"*) rather than mapped
+to 4.0 (POL-042).
 
 The corpus is also subject to the central FormosanBank
 [licence](https://github.com/FormosanBank/FormosanBank/blob/main/LICENSE.md) and

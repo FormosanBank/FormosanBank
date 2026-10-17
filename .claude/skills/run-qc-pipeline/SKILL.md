@@ -137,14 +137,14 @@ PHON is regenerated from FORM on every run, is marker-free (`-`, `=`,
 infix brackets omitted; infix *content* kept), drops unmapped punctuation,
 and renders unmapped letters as `*` (POL-003).
 
-**Note:** `add_phonology.py` adds `<PHON>` elements. These are now valid under the schema — `xml_template.xsd` defines `PHON_Type` and allows `PHON` within `S`/`W`/`M` (and the DTD fallback declares `PHON*` on each), so `validate_xml.py` in Phase 5 accepts them. (Earlier versions of this skill warned that PHON would fail `validate_xml.py`; that schema drift has since been resolved, so no such caveat is needed in the summary.)
+**Note:** `add_phonology.py` adds `<PHON>` elements. These are valid under the schema — `xml_template.xsd` defines `PHON_Type` and allows `PHON` within `S`/`W`/`M` (and the DTD fallback declares `PHON*` on each), so `validate_xml.py` in Phase 5 accepts them.
 
 ### Phase 5: Validate (informational)
 
 Run each validator, capturing output. Do NOT abort the recipe on failures — these are info-gathering:
 
 ```bash
-# DTD/XSD conformance. --no-exit-on-hard so the pipeline does not
+# XSD conformance. --no-exit-on-hard so the pipeline does not
 # abort on HARD findings — this phase is informational; the log is
 # the artifact. The validator's default behavior is to exit 1 on HARD
 # findings, which is the right behavior for CI gating but wrong for
@@ -158,7 +158,7 @@ Run each validator, capturing output. Do NOT abort the recipe on failures — th
 # --no-exit-on-hard so this informational phase does not abort the recipe.
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_text.py by_path \
   --path <xml_path> --no-exit-on-hard \
-  --soft-csv <output_dir>/05b_validate_text_soft.csv \
+  --csv <output_dir>/05b_validate_text_findings.csv \
   2>&1 | tee <output_dir>/05b_validate_text.log
 
 # Orthography extraction
@@ -202,8 +202,9 @@ Run each validator, capturing output. Do NOT abort the recipe on failures — th
 Then check whether the corpus has `<W>` or `<M>` elements (quick grep across XML files). If yes:
 
 ```bash
-.venv/bin/python3 <formosanbank_path>/QC/validation/validate_glosses.py \
-  <xml_path> --output_dir <output_dir> 2>&1 | tee <output_dir>/05h_validate_glosses.log
+.venv/bin/python3 <formosanbank_path>/QC/validation/validate_glosses.py by_path \
+  --path <xml_path> --output_dir <output_dir> --no-exit-on-hard \
+  2>&1 | tee <output_dir>/05h_validate_glosses.log
 ```
 
 Then check whether the corpus has audio (quick grep for `<AUDIO` across the XML files). If yes, locate the audio directory (commonly `<corpus_path>/Audio/`; if ambiguous, ask). If the audio files aren't present locally (dev repos often defer the download), skip the run and record that in the summary as an open item instead:

@@ -108,6 +108,26 @@ The full pipeline is documented in [QC/README.md](QC/README.md). The typical ord
 
 `QC/corpus_metrics.py --history-extend` is the incremental path (resume from the cached CSV, sample only commits since its last row, seeded by a one-time snapshot of the corpus at that commit). `QC/corpus_metrics.py --history-rebuild` (XML mode, no `--stats-dir`) instead restates the entire history CSV from git blobs under the current rules — a full first-parent walk that takes a long time. History rows written before 2026-06 used different counting rules (first FORM, all whitespace chunks); the discontinuity is accepted.
 
+## Changes that need the maintainer's approval
+
+Binding for every Claude session and every agent it launches (maintainer ruling, 2026-10-16: "CHANGING A SHARED TOOL
+WITHOUT ASKING ME ABOUT IT SHOULD NEVER HAPPEN!").
+
+- **Shared files change only with the maintainer's approval, asked for first.** Shared = `QC/`, `Orthographies/`,
+  `POLICIES.md`, `.github/`, `.claude/`, `.githooks/`, `tests/` outside `tests/corpora/`, the root CSVs, and the root
+  project files (`CLAUDE.md`, `README.md`, `requirements*.txt`, …). Corpus folders (`Corpora/<name>/`), `tests/corpora/`,
+  the pending lists, `claudeplans/` and `docs/` are not shared.
+- **Agent instructions contain only the maintainer's rulings, quoted.** Anything else goes under "proposals: do not
+  implement". Before launching an agent, check every instruction line against `claudeplans/sweep-qa-decision-log.md`.
+- **Every agent prompt says:** edit only `Corpora/<this corpus>/` (plus what a quoted ruling names); any deviation from the
+  instructions: stop and report it, don't implement it.
+- **After an agent finishes, before reporting:** list every file it changed outside its corpus folder and put each one to
+  the maintainer as a question.
+- **Never cite a ruling the maintainer did not make** (in code comments, commit messages, docs or reports).
+- **Enforced at commit time:** `.githooks/commit-msg` refuses a commit that touches a shared file unless the message
+  carries `Shared-change-approved: <the maintainer's words, with the date>`. `.claude/hooks/install-git-guard.py`
+  (SessionStart) installs it into the repo's hooks folder every session.
+
 ## Conventions worth preserving
 
 - Per-corpus logs land in `logs/` subdirs that are gitignored; prefer `--log_dir`/`--output_dir` flags to keep output out of the tree entirely.
