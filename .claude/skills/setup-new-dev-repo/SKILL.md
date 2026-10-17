@@ -63,8 +63,10 @@ Capture pip output. If any install fails, surface immediately to user — do not
 
 Canonical corpus folders match the published `Corpora/<Name>/` tree: **`XML/`** (the corpus XML), **`Audio/`** (downloaded audio, gitignored — audio corpora only), and **`CodeAndDocs/`** (scripts that reproduce `XML/`). Use these names, **never `Final_XML`/`Final_audio`** (a legacy naming being phased out of older dev repos).
 
-- Create placeholders: `XML/.gitkeep`, `CodeAndDocs/.gitkeep`.
-- Generate `README.md` from `.claude/skills/setup-new-dev-repo/README.template.md`, substituting `{{CORPUS_NAME}}`, `{{LANGUAGE}}`, `{{CREATED_DATE}}` (today, YYYY-MM-DD).
+- Create placeholders: `XML/.gitkeep`, `CodeAndDocs/.gitkeep`, `CodeAndDocs/tests/`.
+- Generate `README.md` from `.claude/skills/setup-new-dev-repo/README.template.md`, substituting `{{CORPUS_NAME}}`, `{{LANGUAGE}}`, `{{CREATED_DATE}}` (today, YYYY-MM-DD). It already carries the three sections the port later requires: `## Rights` (POL-044), the reproduction section that names `generate_xml.sh` and links `provenance.json` (POL-047/052), and `## Notes and Issues` (POL-055).
+- Copy `generate_xml.sh.template` to `CodeAndDocs/generate_xml.sh` and `chmod +x` it. It is the one entry point (POL-047) with the five canonical steps written out and commented, a staging build with install (idempotent), FormosanBank located from either layout, and the provenance write at the end. Replace `<Language>` / `<SourceOrthography>` and the step-1 command; delete the steps the corpus does not have (no standard tier → no steps 4–5) and say so in the README with a `**POL-047 deviation:**` line.
+- Copy `test_source_accounting.py.template` to `CodeAndDocs/tests/test_source_accounting.py`. **Tests first** (maintainer, Poinsot, 2026-10-17: "Please start by writing appropriate tests for these decisions"): fill in `source_units()` before writing the parser, so the parser is written against a count the source itself gives. The test skips when the source is absent, which is how a corpus with a private PDF still ships it.
 - Copy `.claude/skills/setup-new-dev-repo/gitignore.template` to `.gitignore` (it already ignores `Audio/`, `*.mp3`, `*.wav`).
 - If `has_audio`: copy and substitute `download_audio_data.sh.template` to `download_audio_data.sh` (it downloads into `Audio/`); `chmod +x` it.
 
@@ -143,6 +145,18 @@ Print summary including:
     `Orthographies/ConversionTables/<Language>_<Scheme>_113.tsv` and document
     it in the README's reproduction section; run
     `validate_conversion_table.py` on it before first use.
+  - **Decisions about specific records go in a content-gated table, not in
+    code.** The pattern five corpora converged on: a file (TSV or JSON) keyed
+    by the stable record id *and the input text the decision expects*, with
+    the reason, the date and the maintainer's words; the build refuses the row
+    when the input has drifted ("Source override … no longer matches
+    upstream"). Worked examples: `Corpora/Safolu-Amis-Dictionary/CodeAndDocs/`
+    (`safolu_source_overrides.json`, ordinal + expected form) and
+    `Corpora/Seediq-Chang-Reference-Grammar/CodeAndDocs/review_corrections.tsv`
+    (`was` must match or the build fails as a stale review). `manual_edits.xml`
+    keys on positional ids and cannot carry a standard-tier edit; a dict of
+    sentence text inside `build_xml.py` is what `lint_hidden_tables.py` warns
+    about (POL-039).
 
 ## Decisions to surface (do NOT guess)
 
