@@ -2,7 +2,7 @@
 
 Example sentences and phrases from Virginia Fey's (1986) *Amis Dictionary*
 (阿美語字典), with English and Chinese translations. The current development
-output contains 2,043 S records from 2,012 source examples, in
+output contains 2,042 S records from 2,012 source examples, in
 `XML/Amis/Amis.xml`. The language is Amis (`ami`), dialect Xiuguluan.
 Source review remains incomplete; this output is not ready to port.
 
@@ -41,7 +41,7 @@ Sentences whose original FORM is identical are one sentence (POL-025,
 maintainer ruling 2026-10-17): the later record merges into the earliest and
 its translations become `ver="alt"`. Eight such pairs exist; the merged-away
 ids S2843, S3026, S5023, S5280, S5703, S6241 and S6916 are retired (main had
-already retired them), and S5991-opt is never created. Records that the source
+already retired them), and S5991-opt is never created. One published sentence is removed: S6908 `ceco.`, the third option of the slash cell `sasoken a kowa' / cacoscosen a kowa' / ceco.` (Pith Paper Plant), because it is not clear how it should be read (maintainer ruling 2026-10-17); its id is retired, and the full cell remains in the FORM notes of S2761 and S6907. Records that the source
 repair made different (S1899/S1900, S5141/S5142) stay separate. Historical
 published IDs stay stable. New S readings use `-opt`.
 

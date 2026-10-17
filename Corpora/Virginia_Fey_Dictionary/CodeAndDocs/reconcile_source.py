@@ -211,6 +211,13 @@ def apply_form_decisions(
         else:
             form.attrib.pop("notes", None)
 
+    for removal in decisions.get("removed_sentences", []):
+        sentence = by_id.pop(removal["id"], None)
+        if sentence is None or normalize("".join(original_form(sentence).itertext())) != normalize(removal["form"]):
+            fail(f"removed sentence {removal['id']} is missing or no longer reads {removal['form']!r}")
+        sentence.getparent().remove(sentence)
+        row_by_id.pop(removal["id"], None)
+
     all_ids = [sentence.get("id") for sentence in root.iter("S")]
     if len(all_ids) != len(set(all_ids)):
         fail("form reconciliation produced duplicate S ids")

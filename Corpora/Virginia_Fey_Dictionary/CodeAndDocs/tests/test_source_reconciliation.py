@@ -88,7 +88,7 @@ def test_same_form_sentences_are_one_sentence(reconciled):
     merged_away = {"S2843", "S3026", "S6916", "S6241", "S5023", "S5280", "S5703", "S5991-opt"}
     assert not merged_away & ids
     forms = [s.findtext('FORM[@kindOf="original"]') for s in reconciled.iter("S")]
-    assert len(forms) == len(set(forms)) == 2043
+    assert len(forms) == len(set(forms)) == 2042
     s1945 = [(t.get(XML_LANG), t.get("ver"), t.text) for t in reconciled.find('.//S[@id="S1945"]').findall("TRANSL")]
     assert s1945 == [("eng", None, "rainbow"), ("zho", None, "彩虹"), ("eng", "alt", "a rainbow")]
 
@@ -100,7 +100,8 @@ def test_only_source_content_notes_remain(reconciled):
     assert notes["S4934"] is None
     assert notes["S1193"] == "Katalawan ko demak nira. Literally"
     assert notes["S5991"] == "talakal / tilo ni Idek."
-    assert sum(1 for n in notes.values() if n) == 75
+    assert "S6908" not in notes  # ceco. dropped (maintainer 2026-10-17)
+    assert sum(1 for n in notes.values() if n) == 74
 
 
 @pytest.mark.parametrize("sentence_id,expected", [

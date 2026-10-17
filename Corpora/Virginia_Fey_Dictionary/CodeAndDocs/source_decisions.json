@@ -93,7 +93,7 @@
       "source_form": "sasoken a kowa' / cacoscosen a kowa' / ceco.",
       "sheet_defect": "The historical upstream stemmer dropped source prefixes; replay reproduces the sheet text.",
       "evidence": "source/upstream/k.txt:3227",
-      "variants": [{"id": "S2761", "form": "sasoken a kowa'."}, {"id": "S6907", "form": "cacoscosen a kowa'."}, {"id": "S6908", "form": "ceco."}]
+      "variants": [{"id": "S2761", "form": "sasoken a kowa'."}, {"id": "S6907", "form": "cacoscosen a kowa'."}]
     },
     {
       "source_row": 2804,
@@ -339,6 +339,14 @@
     "Confirm whether kalatolo/kalitolo represents competing lexemes or pronunciation variants before publication. Printed page 345 confirms both forms, but does not settle this classification."
   ],
   "source_field_evidence_note": "The 2015 upstream stemmer loses prefixes in deduplication(); its 2016 fix is 23b6efd42fe3e73c0d3cd249c14587ca6349af9f. Replaying the old converter reproduces 512 of 519 sheet losses, including all 145 raw/Word disagreement rows. source_field_repairs.tsv retains exact source excerpts and file:line locators at the pinned upstream commit. Lowercase g to ng matches that digital edition's moedict.py; this is never run on the XML. Full raw and corrected Word witnesses were compared separately before recording these repairs.",
+  "removed_sentences": [
+    {
+      "id": "S6908",
+      "source_row": 2761,
+      "form": "ceco.",
+      "reason": "Third option of the slash cell sasoken a kowa' / cacoscosen a kowa' / ceco. (Pith Paper Plant); maintainer 2026-10-17: \"yes, drop ceco. It's not clear how to handle it.\" Published on main; id retired (POL-037), disclosed in the README (POL-051). The cell survives in the FORM notes of S2761 and S6907."
+    }
+  ],
   "translation_splits": [
     {
       "id": "S413",
