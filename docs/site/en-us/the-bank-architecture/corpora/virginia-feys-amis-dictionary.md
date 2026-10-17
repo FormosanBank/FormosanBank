@@ -49,7 +49,7 @@ lists the remaining decisions. A successful build or XML check does not settle t
 
 ## Access Details
 
-The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/7d045c2f5/Corpora/Virginia_Fey_Dictionary/)
+The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/7d045c2f544485076091623eab7c60922b8f7c85/Corpora/Virginia_Fey_Dictionary/)
 match the reviewed private development commit. This proposal has not been merged.
 
 ## Corpus Processing
@@ -57,9 +57,9 @@ match the reviewed private development commit. This proposal has not been merged
 The build starts from the preserved hand-corrected baseline and pinned digital source, applies source-located repairs, and runs the current shared tools. It accounts for 2,012 complete source rows while retaining all 2,040 published sentence IDs and adding three (S1900, S5142, S6717-opt). Spelling and sound use the shared Amis tables (Xiuguluan).
 
 Run `bash Corpora/Virginia_Fey_Dictionary/CodeAndDocs/generate_xml.sh` in the candidate
-FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/7d045c2f5/Corpora/Virginia_Fey_Dictionary/README.md) documents dependencies,
+FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/7d045c2f544485076091623eab7c60922b8f7c85/Corpora/Virginia_Fey_Dictionary/README.md) documents dependencies,
 source coverage and any scoped pipeline deviations. The
-[build provenance](https://github.com/FormosanBank/FormosanBank/blob/7d045c2f5/Corpora/Virginia_Fey_Dictionary/CodeAndDocs/provenance.json) records the actual
+[build provenance](https://github.com/FormosanBank/FormosanBank/blob/7d045c2f544485076091623eab7c60922b8f7c85/Corpora/Virginia_Fey_Dictionary/CodeAndDocs/provenance.json) records the actual
 tools used for the retained output; it does not select or pin tools for later builds.
 
 ## Copyright
