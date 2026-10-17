@@ -139,6 +139,22 @@ if [[ "$SECOND_NORMALIZE" != "$EXPECTED_SECOND_NORMALIZE" ]]; then
     exit 1
 fi
 
+# The source's unknown-gloss marker: a W/M gloss that is only "?" becomes
+# <UNCLEAR/>, and a "?" piece inside a gloss does too, but only for the
+# glosses listed in unclear_gloss_placeholders.tsv (104 glosses). Runs
+# last, after every step that re-indents the XML, because ET.indent would
+# put whitespace inside a TRANSL that holds only <UNCLEAR/>.
+UNCLEAR=$(
+    "$PYTHON_BIN" "$CODE_ROOT/scripts/apply_unclear_glosses.py" \
+        --corpora-path "$BUILD_ROOT/XML"
+)
+echo "$UNCLEAR"
+EXPECTED_UNCLEAR=$'unclear_w_glosses=18\nunclear_m_glosses=338\nplaceholder_w_glosses=291\nplaceholder_m_glosses=0\nomitted_sentence_translations=0'
+if [[ "$UNCLEAR" != "$EXPECTED_UNCLEAR" ]]; then
+    echo "unexpected unknown-gloss conversion result" >&2
+    exit 1
+fi
+
 PUBLISHED_ROOT="$BUILD_ROOT/published-corpora"
 mkdir -p "$PUBLISHED_ROOT"
 for corpus_path in "$BANK"/Corpora/*; do

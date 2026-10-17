@@ -47,10 +47,61 @@ unglossed.
 
 The morpheme `078S4W19M0c` is therefore published **with no `TRANSL` at all**.
 An absent gloss is the honest record of an absent source gloss. It is
-deliberately not filled with a `?`: this source writes `?` itself, as a real
-gloss, for morphemes it cannot identify — 337 times — so a `?` of our own
-would be indistinguishable from the author's. The `notes` attribute on the
-word's `TRANSL` records that the gap is intentional.
+deliberately not filled with a `?`: this source writes `?` itself for
+morphemes it cannot identify (published as `<UNCLEAR/>`, see the next
+section), and a marker of our own would be indistinguishable from the
+author's. The `notes` attribute on the word's `TRANSL` records that the gap is
+intentional.
+
+### The source's `?` gloss is published as `<UNCLEAR/>`
+
+Where the analyst could not identify a morpheme, the source glosses it with a
+bare `?` (for example `001S7`, morpheme `ta`). FormosanBank has an element for
+exactly that, so a `W` or `M` gloss whose whole text is `?`, `??` or `???`
+(ASCII or full-width) is published as `<UNCLEAR/>`, with the `TRANSL`'s
+attributes unchanged:
+
+```xml
+<!-- before -->  <TRANSL xml:lang="eng" kindOf="original">?</TRANSL>
+<!-- after  -->  <TRANSL xml:lang="eng" kindOf="original"><UNCLEAR/></TRANSL>
+```
+
+This applies to 356 glosses: 338 `M` and 18 `W`. Maintainer's rulings,
+2026-10-17: "B. A, plus ? used as a placeholder inside a gloss", where A =
+"Convert glosses that are exactly ? or ??"; "B. Glosses UNCLEAR; sentence
+translations omitted"; and "if the S FORM is simply <UNCLEAR/>, no Ws. If the
+W FORM is <UNCLEAR />, no Ms under it." In this corpus no sentence translation
+is only a `?` (so none is omitted), and no `FORM` is `<UNCLEAR/>` (the build
+fails if one ever is).
+
+A `?` that is one piece of a longer gloss is converted too, gloss by gloss:
+[`CodeAndDocs/unclear_gloss_placeholders.tsv`](CodeAndDocs/unclear_gloss_placeholders.tsv)
+(columns `gloss`, `lang`) lists the glosses to convert, and in each listed
+gloss every `?` bounded by `-`, `=`, `.`, whitespace or the ends of the string
+becomes `<UNCLEAR/>`:
+
+| source gloss | published |
+| --- | --- |
+| `?-what` | `<UNCLEAR/>-what` |
+| `stat-exact-?` | `stat-exact-<UNCLEAR/>` |
+| `if-main-?-outsider-nom` | `if-main-<UNCLEAR/>-outsider-nom` |
+
+The table lists 104 distinct glosses, all `eng`, covering all 291 `W` glosses
+of this kind (maintainer's ruling, 2026-10-17: "All rows in this corpus:
+placeholder → UNCLEAR"). A table row that matches no gloss fails the build.
+
+Two kinds of `?` are still published as written, because the `?` is not
+bounded by one of those delimiters: a `?` next to an infix marker (24 `W`
+glosses, e.g. `?<af>-complete`, `?<perf>-loc-that-still`) and a `?` attached to
+a word (4 glosses: `decide?` on two `M`, `decide?<perf>` and
+`past-decide?<af>` on `W`). Sentence translations are not glosses and are not
+touched; two of them contain a `?` standing for an untranslated word
+(`Well if you had ?, …`).
+
+The conversion is `CodeAndDocs/scripts/apply_unclear_glosses.py`, the last
+step of `generate_xml.sh` before the validators. It runs last because the
+corpus's own scripts re-indent the XML with `ET.indent`, which would put
+whitespace inside a `TRANSL` that holds only `<UNCLEAR/>`.
 
 Three validator findings follow directly from that choice, and are **accepted**:
 
