@@ -683,6 +683,67 @@ _PHON_ALLOWED_PARENTS = {"S", "W", "M"}
 _PHON_KINDOF_ALLOWED = {"original", "standard"}
 
 
+def _audio_clip_key(audio: etree._Element, root: etree._Element) -> tuple:
+    """What a sentence's AUDIO points at: (url or file or TEXT/@audio, start, end)."""
+    return (
+        audio.get("url") or audio.get("file") or root.get("audio") or "",
+        audio.get("start"),
+        audio.get("end"),
+    )
+
+
+def _original_form_text(s: etree._Element) -> str:
+    for form in s.findall("FORM"):
+        if form.get("kindOf") == "original" and form.get("ver") is None:
+            return " ".join((form.text or "").split())
+    return ""
+
+
+def v162_shared_clip_under_different_sentences(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """Two S in one file whose AUDIO names the same clip (same url/file, start and
+    end) must carry the same original FORM; one clip cannot be two sentences.
+
+    V162 (2026-10-17, skills review D5): the ILRDF v2 port attached 13 clips to
+    26 different readings. A clip that genuinely covers several sentences is
+    attached to none of them and kept as untranscribed audio (maintainer,
+    2026-10-16: "We don't have a mechanism for multiple audio files for one S
+    block, and i don't want one").
+    """
+    findings: list[Finding] = []
+    root = tree.getroot()
+    first_seen: dict[tuple, tuple[str, str]] = {}
+    for s in tree.iter("S"):
+        audio = s.find("AUDIO")
+        if audio is None:
+            continue
+        key = _audio_clip_key(audio, root)
+        if key == ("", None, None):
+            continue  # orphan: V053's business
+        text = _original_form_text(s)
+        s_id = s.get("id") or ""
+        if key not in first_seen:
+            first_seen[key] = (s_id, text)
+            continue
+        other_id, other_text = first_seen[key]
+        if other_text == text:
+            continue  # a genuine duplicate sentence; V-dedup territory, not audio
+        clip = key[0] + (f" [{key[1]}-{key[2]}]" if key[1] is not None else "")
+        findings.append(Finding(
+            rule_id="V162",
+            severity=Severity.HARD,
+            message=(f"V162 HARD shared_clip_under_different_sentences: AUDIO {clip} is "
+                     f"attached to S={other_id} ({other_text[:40]!r}) and to S={s_id} "
+                     f"({text[:40]!r}); one clip, two sentences"),
+            path=path,
+            location=f"S={s_id}" if s_id else "S",
+        ))
+    return findings
+
+
 def v070_phon_placement(
     tree: etree._ElementTree,
     path: Path,
@@ -1200,6 +1261,8 @@ RULES: list = [
     v052_audio_single_file_mode_requires_start_end,
     v053_orphan_audio,
     v054_audio_end_after_start,
+    # V162: 2026-10-17 skills review D5 (audio consistency without audio files)
+    v162_shared_clip_under_different_sentences,
     v070_phon_placement,
     v071_phon_kindof_enum,
     v072_duplicate_phon_kindof,

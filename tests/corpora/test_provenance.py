@@ -12,6 +12,8 @@ root. That list only shrinks: a new or rebuilt corpus ships the file instead.
 """
 import json
 import re
+import subprocess
+import warnings
 
 import pytest
 
@@ -110,3 +112,43 @@ def test_readme_links_provenance(corpus):
         f"POL-052: {corpus}'s README transcribes the provenance SHA ({commit[:12]}"
         "...). Link provenance.json instead — a second copy drifts."
     )
+
+
+def _last_xml_change(corpus: str) -> str | None:
+    """YYYY-MM-DD of the last commit touching the corpus's XML/, or None when
+    git history is not available (a shallow CI checkout sees one commit)."""
+    try:
+        depth = subprocess.run(["git", "rev-list", "--count", "HEAD"], capture_output=True,
+                               text=True, cwd=REPO_ROOT, check=True).stdout.strip()
+        if int(depth) < 2:
+            return None
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", f"Corpora/{corpus}/XML"],
+                             capture_output=True, text=True, cwd=REPO_ROOT, check=True).stdout.strip()
+    except (OSError, subprocess.CalledProcessError, ValueError):
+        return None
+    return out or None
+
+
+@pytest.mark.parametrize("corpus", CORPORA)
+def test_provenance_is_not_older_than_the_xml(corpus):
+    """Provenance is reporting-only (maintainer, 2026-09-09), so this warns: a
+    `built` date earlier than the XML's last change means the record describes
+    a build that is no longer the published bytes (Wakelin: built 2026-09-06,
+    XML changed 2026-10-15, its generate_xml.sh never writes the file)."""
+    path = REPO_ROOT / "Corpora" / corpus / "CodeAndDocs" / "provenance.json"
+    if not path.exists():
+        return
+    try:
+        built = json.loads(path.read_text(encoding="utf-8")).get("built")
+    except ValueError:
+        return  # test_corpus_records_build_provenance reports the parse error
+    last = _last_xml_change(corpus)
+    if not built or not last or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(built)):
+        return
+    if str(built) < last:
+        warnings.warn(
+            f"{corpus}: provenance.json says built {built} but XML/ last changed {last}; "
+            "the record no longer describes the published bytes — have the build write "
+            "provenance.json, or rerun it (POL-052).",
+            stacklevel=1,
+        )

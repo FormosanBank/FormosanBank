@@ -53,6 +53,8 @@ the validator names on its `Details:` line, never to the terminal.
 | V151 | `S_TRANSL_has_no_kindOf` | SOFT | file | an S-level TRANSL must not carry @kindOf. |
 | V156 | `form_ver_value_in_allowlist` | HARD | file | when FORM/@ver is set, its value must be in the project allowlist. |
 | V157 | `legacy_alternate_kindOf` | SOFT | file | FORM[@kindOf='alternate'] is the deprecated variant spelling. |
+| V162 | `shared_clip_under_different_sentences` | HARD | file | Two S in one file whose AUDIO names the same clip (same url/file, start and end) must carry the same original FORM; one clip cannot be two sentences. |
+| V163 | `audio_on_sentence_with_printed_alternative` | SOFT | file | An S carrying AUDIO whose original FORM still prints an alternative (a slash between words, or an optional part in parentheses) should not carry that audio: the clip read one option, and the sentence states two. |
 
 ## `validate_text.py` — text and typography
 
@@ -128,4 +130,4 @@ the validator names on its `Details:` line, never to the terminal.
 | G011 | `unsplit_slash_alternate` | SOFT | file | '/' in an S-original whose W tier also carries '/'. |
 | G012 | `trailing_paren_note_in_TRANSL` | SOFT | file | a trailing '(...)' in a TRANSL belongs in the notes attribute. |
 
-93 rules.
+95 rules.
