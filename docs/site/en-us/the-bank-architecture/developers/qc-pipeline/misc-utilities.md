@@ -4,45 +4,15 @@ icon: screwdriver-wrench
 
 # Miscellaneous utilities
 
-> Occasional, one-off helpers for preparing and uploading audio: stamping durations onto `AUDIO` elements, organizing audio into per-XML subdirs, batching large file collections, and uploading a corpus's audio to Hugging Face.
+> The one-off helper for uploading a corpus's audio to Hugging Face. (The dev-repo-era audio wranglers `add_durations.py`, `group_audios.py` and `organize_batches.py` were deleted in October 2026; `audio_durations.csv` is maintained by the [audio duration stats](audio-duration-stats.md) tooling.)
 
 ## What it's for
 
-These are not part of the routine QC pipeline. They are audio-wrangling helpers reached for during corpus preparation or a publish — usually run once per corpus, often in a corpus's dev repo before porting. Several still assume the dev-repo `Final_XML/` + `Final_audio/` layout rather than the published `XML/` + `Audio/` layout.
+Not part of the routine QC pipeline: run once per corpus when its audio is first published, or after it changes. For keeping an already-published dataset in parity with the XML, use [sync_hf_audio.py](sync-hf-audio.md) instead.
 
 ## When to run it
 
-Run by hand, occasionally, from the repo root after `source .venv/bin/activate` (or from a dev repo). None of these are wired into CI.
-
-## add_durations.py — stamp start/end onto AUDIO elements
-
-**How:** for a corpus with segmented audio, walks each XML file, measures each referenced audio file's duration (WAV via `wave`, MP3 via `mutagen`), and sets `start="0"` / `end="<seconds>"` on the matching `AUDIO` element. An `AUDIO` element whose audio file has no measurable duration is **removed** from the XML. Expects the dev-repo `Final_XML/` ↔ `Final_audio/<xml_stem>/` layout. Note: this edits the duration *attributes inside the XML*, distinct from [`audio_durations.csv`](audio-duration-stats.md), which stores aggregate seconds for statistics.
-
-**Usage:**
-
-```bash
-python QC/utilities/add_durations.py --path path/to/Final_XML
-```
-
-## group_audios.py — organize audio into per-XML subdirs
-
-**How:** for each XML marked `audio="segmented"`, reads the `AUDIO` file names and moves the corresponding files from `Final_audio/` into a per-XML subfolder `Final_audio/<xml_stem>/`, so each XML's clips are grouped together (the layout `add_durations.py` expects).
-
-**Usage:**
-
-```bash
-python QC/utilities/group_audios.py --path path/to/Final_XML
-```
-
-## organize_batches.py — batch large file collections
-
-**How:** recursively scans a parent folder; any subfolder holding more than the batch size (default 10,000) is split, its files distributed into `batch_1/`, `batch_2/`, … subfolders. Useful for keeping audio directories under per-folder file-count limits (e.g. for Hugging Face uploads). Skips `.cache`/`.git` paths. The batch size is fixed at the default in code (no CLI flag).
-
-**Usage:**
-
-```bash
-python QC/utilities/organize_batches.py --path path/to/audio
-```
+Run by hand from the repo root after `source .venv/bin/activate`. Not wired into CI.
 
 ## upload_to_hf.py — upload a corpus's audio to Hugging Face
 
@@ -65,12 +35,9 @@ python QC/utilities/upload_to_hf.py --path . --audio-dir Final_audio --dry-run
 | `--yes` | off | Skip confirmation prompts (unattended). |
 | `--num-workers` | `1` | Upload parallelism. |
 
-## Historical one-off migrations
-
-Two audio-statistics migration scripts were run once and are documented with the audio-duration tooling rather than here: `migrate_audio_durations.py` and `port_audio_seconds_from_gitbook.py` (see [Audio duration stats](audio-duration-stats.md)). They are retained for provenance and should not need re-running.
-
 ## Related
 
 - [QC Pipeline overview](README.md)
-- [Audio duration stats](audio-duration-stats.md) — `audio_durations.csv` seconds (distinct from the in-XML start/end attributes)
+- [Audio duration stats](audio-duration-stats.md) — `audio_durations.csv` seconds
+- [sync_hf_audio.py](sync-hf-audio.md) — keep a published dataset in parity with the XML
 - [Porting a Corpus In](../porting-a-corpus.md)

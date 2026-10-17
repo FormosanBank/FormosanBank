@@ -62,11 +62,7 @@ python QC/utilities/refresh_audio_stats.py WilangYutasVideos --keep-audio
 
 ## Output & side effects
 
-`audio_durations.csv` is written only by `update_audio_stats.py` / `refresh_audio_stats.py` (and the historical one-off migrations below). **CI never writes it** — `get_corpus_stats.py` and `corpus_metrics.py` only read it. `refresh_audio_stats.py` additionally rewrites one per-corpus stats CSV and downloads/deletes audio.
-
-## Historical one-off migrations
-
-Two scripts seeded `audio_durations.csv` once and are not part of any routine workflow: `QC/utilities/migrate_audio_durations.py` (seeded the CSV from the committed per-corpus CSVs, anchoring `count_at_compute` to a reference commit) and `QC/utilities/port_audio_seconds_from_gitbook.py` (a no-download alternative that ported seconds from the GitBook repo's per-corpus stats CSVs). They are retained for provenance; you should not need to run them.
+`audio_durations.csv` is written only by `update_audio_stats.py` / `refresh_audio_stats.py`. (The two one-off scripts that seeded it in 2026-06, `migrate_audio_durations.py` and `port_audio_seconds_from_gitbook.py`, were deleted in October 2026; their history is in git.) **CI never writes it** — `get_corpus_stats.py` and `corpus_metrics.py` only read it. `refresh_audio_stats.py` additionally rewrites one per-corpus stats CSV and downloads/deletes audio.
 
 ## When to run it
 

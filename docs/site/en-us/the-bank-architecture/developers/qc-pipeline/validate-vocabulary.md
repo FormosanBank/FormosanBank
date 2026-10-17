@@ -80,6 +80,5 @@ Run it alongside [validate_orthography.py](validate-orthography.md) in the ortho
 
 - [validate_orthography.py](validate-orthography.md) — character-level sibling check.
 - [orthography_extract.py](orthography-extract.md) — produces the `orthographic_info` profiles this script consumes.
-- [orthography_compare.py](orthography-compare.md) — compare two corpora's orthographies against each other.
 - [Running an Audit](../running-an-audit.md)
 - [QC Pipeline overview](README.md)

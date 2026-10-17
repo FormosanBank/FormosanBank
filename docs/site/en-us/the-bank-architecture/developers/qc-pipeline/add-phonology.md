@@ -75,7 +75,7 @@ python QC/utilities/add_phonology.py \
 
 ### Single-file wrapper
 
-`add_phonology.py --corpora_path <file.xml>` can operate on one XML file directly. `QC/utilities/add_phonology_single_file.py` is still available as a wrapper for workflows that prefer an explicit `--xml_path`; it runs `add_phonology.py` on one file via a temp directory, copying the result back. Flags: `--xml_path`, `--orthography`, `--target_column`, `--language`.
+`add_phonology.py --corpora_path <file.xml>` can operate on one XML file directly. (The former `add_phonology_single_file.py` wrapper was deleted in October 2026.)
 
 ## Output & side effects
 
