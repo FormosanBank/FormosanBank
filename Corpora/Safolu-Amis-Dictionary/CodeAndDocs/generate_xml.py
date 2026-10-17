@@ -190,6 +190,18 @@ def split_glued_form(form: str) -> list[tuple[str, str]] | None:
     return pairs or None
 
 
+# Maintainer rulings 2026-10-16/17 (Safolu review): "For spacing, we should assume spacing after ! and ?
+# everywhere in this corpus. If we don't see it in the original tier, add it." and "There should be no space
+# before a ? or a ! and there should be space between any ! or ? and a following Amis character."
+# A closing quote or bracket directly after ! or ? stays attached. In Amis ' is a letter (the glottal stop).
+_SPACE_BEFORE_BANG = re.compile(r"\s+([?!？！])")
+_NO_SPACE_AFTER_BANG = re.compile(r"([?!？！])(?=[A-Za-z0-9'’ʼ^“「『])")
+
+
+def normalize_bang_spacing(form: str) -> str:
+    return _NO_SPACE_AFTER_BANG.sub(r"\1 ", _SPACE_BEFORE_BANG.sub(r"\1", form))
+
+
 def extract_generated_moedict_examples(
     source_rows: list[dict],
     text_id: str,
@@ -282,24 +294,21 @@ def extract_generated_moedict_examples(
         if override:
             emitted = []
             for item in override["emitted"]:
-                replacement_translation = str(item.get("translation", ""))
-                translation_notes = str(item.get("translation_notes", "")) or None
-                emitted.append(
-                    (
-                        str(item["form"]),
-                        (
-                            [
-                                Translation(
-                                    final_translation_lang,
-                                    replacement_translation,
-                                    translation_notes,
-                                )
-                            ]
-                            if replacement_translation
-                            else []
-                        ),
+                if "translations" in item:
+                    # several translations, e.g. an alternative one (ver="alt", POL-025)
+                    item_translations = [
+                        Translation(final_translation_lang, str(t["text"]), t.get("notes"), t.get("ver"))
+                        for t in item["translations"]
+                    ]
+                else:
+                    replacement_translation = str(item.get("translation", ""))
+                    translation_notes = str(item.get("translation_notes", "")) or None
+                    item_translations = (
+                        [Translation(final_translation_lang, replacement_translation, translation_notes)]
+                        if replacement_translation
+                        else []
                     )
-                )
+                emitted.append((str(item["form"]), item_translations))
         # The source sometimes packed Amis + Chinese (a single glued
         # pair, or a "；"-separated list) into the form slot. Split it
         # into (Amis, Chinese) pairs; drop the entry when it cannot be
@@ -333,11 +342,11 @@ def extract_generated_moedict_examples(
                     source_line=None,
                     entry_title=title,
                     definition=definition_text,
-                    form=emit_form,
+                    form=normalize_bang_spacing(emit_form),
                     translations=emit_translations,
                     raw_example=raw_example,
                     notes=record_notes,
-                    variants=tuple(override["emitted"][index - 1].get("variants", [])) if override else (),
+                    variants=tuple(normalize_bang_spacing(v) for v in override["emitted"][index - 1].get("variants", [])) if override else (),
                 )
             )
 

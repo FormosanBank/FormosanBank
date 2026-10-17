@@ -4,7 +4,7 @@
     "1889": {
       "expected_cleaned_form": "O 'Arikaya ko 'ada no 'Amis/Pangcah.",
       "expected_cleaned_final_translation": "'Arikaya是阿美族人的敵人。",
-      "reason": "The alikakay example offers two ethnonyms. The separate 'amis and pangcah entries identify their meanings and the latter's loanword origin; preserve both lexical readings in separate S (POL-027/028).",
+      "reason": "Review slash card (slash-S01889): twoS (replaces earlier override: The alikakay example offers two ethnonyms. The separate 'amis and pangcah entries identify their meanings and the latter's loanword origin; preserve both lexical readings in separate S (POL-027/028).)",
       "emitted": [
         {
           "form": "O 'Arikaya ko 'ada no 'Amis.",
@@ -19,7 +19,7 @@
     "29086": {
       "expected_cleaned_form": "Misa'osi to tilid/cudad.",
       "expected_cleaned_final_translation": "讀書。",
-      "reason": "The dictionary cross-references tilid and cudad as synonyms. Historical amis-safolu raw_contents rows 19846 and 20672 independently attest each complete reading; preserve both in separate S (POL-027/028).",
+      "reason": "Review slash card (slash-S29086): twoS (replaces earlier override: The dictionary cross-references tilid and cudad as synonyms. Historical amis-safolu raw_contents rows 19846 and 20672 independently attest each complete reading; preserve both in separate S (POL-027/0)",
       "emitted": [
         {
           "form": "Misa'osi to tilid.",
@@ -34,22 +34,18 @@
     "42869": {
       "expected_cleaned_form": "Sapikilidongaw ako to fail（orad） i aikor no 'ongcoy.",
       "expected_cleaned_final_translation": "我想在岩石後面避一避風（雨）。",
-      "reason": "The source explicitly pairs fail/orad with Chinese wind/rain. Historical raw_contents row 34613 confirms the two meanings; retain the current source spellings and pair each complete reading with its translation (POL-027).",
+      "reason": "Ruling 2026-10-16: \"S42869 (retain the parenthetical in FORM and TRANSL)\" (replaces earlier override: The source explicitly pairs fail/orad with Chinese wind/rain. Historical raw_contents row 34613 confirms the two meanings; retain the current source spellings and pair each complete reading with its t)",
       "emitted": [
         {
-          "form": "Sapikilidongaw ako to fail i aikor no 'ongcoy.",
-          "translation": "我想在岩石後面避一避風。"
-        },
-        {
-          "form": "Sapikilidongaw ako to orad i aikor no 'ongcoy.",
-          "translation": "我想在岩石後面避一避雨。"
+          "form": "Sapikilidongaw ako to fail（orad） i aikor no 'ongcoy.",
+          "translation": "我想在岩石後面避一避風（雨）。"
         }
       ]
     },
     "42957": {
       "expected_cleaned_form": "Sapikonis a faktaw/saditek.",
       "expected_cleaned_final_translation": "劃線的墨汁具。",
-      "reason": "The source offers the separately defined tools faktaw and saditek. The faktaw entry identifies a loanword and cross-references saditek; retain both lexical alternatives in separate S (POL-027/028).",
+      "reason": "Review slash card (slash-S42957): twoS (replaces earlier override: The source offers the separately defined tools faktaw and saditek. The faktaw entry identifies a loanword and cross-references saditek; retain both lexical alternatives in separate S (POL-027/028).)",
       "emitted": [
         {
           "form": "Sapikonis a faktaw.",
@@ -472,11 +468,11 @@
     "37193": {
       "expected_cleaned_form": "Pidafo'an to payso ko kinko.",
       "expected_cleaned_final_translation": "銀行是提ej06",
-      "reason": "Restore the visibly truncated/corrupt Chinese translation from the Amis sentence and entry definition.",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh (replaces earlier override: Restore the visibly truncated/corrupt Chinese translation from the Amis sentence and entry definition.)",
       "emitted": [
         {
           "form": "Pidafo'an to payso ko kinko.",
-          "translation": "銀行是提款的地方。"
+          "translation": "銀行是提歀的地方。"
         }
       ]
     },
@@ -539,157 +535,139 @@
     "1666": {
       "expected_cleaned_form": "Acah!ka ta'angay nona pacifaran!",
       "expected_cleaned_final_translation": "ka ta'angay nona pacifaran!哇，這個港口真大呀？",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (answer: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Acah!ka ta'angay nona pacifaran!",
-          "translation": "哇，這個港口真大呀？",
-          "translation_notes": "Source translation field repeated Amis text: ka ta'angay nona pacifaran!"
+          "translation": "哇，這個港口真大呀？"
         }
       ]
     },
     "1667": {
       "expected_cleaned_form": "Acah!kona kamaro'an makapahay!",
       "expected_cleaned_final_translation": "kona kamaro'an makapahay!這個座位漂亮極了！",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (answer: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Acah!kona kamaro'an makapahay!",
-          "translation": "這個座位漂亮極了！",
-          "translation_notes": "Source translation field repeated Amis text: kona kamaro'an makapahay!"
+          "translation": "這個座位漂亮極了！"
         }
       ]
     },
     "1705": {
       "expected_cleaned_form": "Adi!makapah cingra.",
       "expected_cleaned_final_translation": "makapah cingra.啊！",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (answer: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Adi!makapah cingra.",
-          "translation": "啊！",
-          "translation_notes": "Source translation field repeated Amis text: makapah cingra."
+          "translation": "啊！她真美啊。"
         }
       ]
     },
     "1710": {
       "expected_cleaned_form": "Wata!ka adihay no fokeloh!",
       "expected_cleaned_final_translation": "ka adihay no fokeloh!啊！",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (answer: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Wata!ka adihay no fokeloh!",
-          "translation": "啊！",
-          "translation_notes": "Source translation field repeated Amis text: ka adihay no fokeloh!"
+          "translation": "啊！石頭真多！"
         }
       ]
     },
     "1774": {
       "expected_cleaned_form": "Aki!kona wawa kasini'adaan!",
       "expected_cleaned_final_translation": "kona wawa kasini'adaan!啊，這孩子真可憐！",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (answer: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Aki!kona wawa kasini'adaan!",
-          "translation": "啊，這孩子真可憐！",
-          "translation_notes": "Source translation field repeated Amis text: kona wawa kasini'adaan!"
+          "translation": "啊，這孩子真可憐！"
         }
       ]
     },
     "2128": {
       "expected_cleaned_form": "Atira, atira!tatayni to ko tosiya!",
       "expected_cleaned_final_translation": "tatayni to ko tosiya!閃開，閃開！",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (group card: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Atira, atira!tatayni to ko tosiya!",
-          "translation": "閃開，閃開！",
-          "translation_notes": "Source translation field repeated Amis text: tatayni to ko tosiya!"
+          "translation": "閃開，閃開！汽車要來了！"
         }
       ]
     },
     "6703": {
       "expected_cleaned_form": "Hayken makenaay koni a wawa hokini?saromi'adsa a mitatangic?",
       "expected_cleaned_final_translation": "saromi'adsa a mitatangic?這孩子不知怎麼了，哭鬧了一整天？",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (rule 2: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Hayken makenaay koni a wawa hokini?saromi'adsa a mitatangic?",
-          "translation": "這孩子不知怎麼了，哭鬧了一整天？",
-          "translation_notes": "Source translation field repeated Amis text: saromi'adsa a mitatangic?"
+          "translation": "這孩子不知怎麼了，哭鬧了一整天？"
         }
       ]
     },
     "7095": {
       "expected_cleaned_form": "Talacowaay kamo?Kilimen ako kamo icowacowa.",
       "expected_cleaned_final_translation": "Kilimen ako kamo icowacowa.你們到底去哪裡了？",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (group card: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Talacowaay kamo?Kilimen ako kamo icowacowa.",
-          "translation": "你們到底去哪裡了？",
-          "translation_notes": "Source translation field repeated Amis text: Kilimen ako kamo icowacowa."
+          "translation": "你們到底去哪裡了？我到處去找你們。"
         }
       ]
     },
     "9418": {
       "expected_cleaned_form": "Kati i!malahok kita.",
       "expected_cleaned_final_translation": "malahok kita.那麼請吧！",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (group card: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Kati i!malahok kita.",
-          "translation": "那麼請吧！",
-          "translation_notes": "Source translation field repeated Amis text: malahok kita."
+          "translation": "那麼請吧！我們共進午餐。"
         }
       ]
     },
     "9448": {
       "expected_cleaned_form": "“ Katomireng!”han ako cingra.",
       "expected_cleaned_final_translation": "”han ako cingra.我對他說：“站起來！",
-      "reason": "Remove the repeated Amis narration and restore the displaced closing Chinese quotation mark.",
+      "reason": "Review translation card (your text) (replaces earlier override: Remove the repeated Amis narration and restore the displaced closing Chinese quotation mark.)",
       "emitted": [
         {
           "form": "“ Katomireng!”han ako cingra.",
-          "translation": "我對他說：“站起來！”",
-          "translation_notes": "Source translation field repeated the Amis narration han ako cingra and placed its closing quote before the Chinese text."
+          "translation": "我對他說：“站起來！”"
         }
       ]
     },
     "14824": {
       "expected_cleaned_form": "Mangalay ci Panay a malakangkofo.Panay.",
       "expected_cleaned_final_translation": "Panay.想當護士。",
-      "reason": "Preserve Panay as the subject of the Chinese translation. The raw source sequence places it after the complete Amis sentence and before 想當護士; it is not a disposable copied clause. Witnesses: dict/10-M.txt lines 10006-10009 and raw_contents 10717 of amis-safolu f512d5ba0d08f81b26093a9b7b4a85acac760a30. POL-001/POL-024.",
+      "reason": "Review translation card (rule 2: raw) (replaces earlier override: Preserve Panay as the subject of the Chinese translation. The raw source sequence places it after the complete Amis sentence and before 想當護士; it is not a disposable copied clause. Witnesses: dict/10-M)",
       "emitted": [
         {
           "form": "Mangalay ci Panay a malakangkofo.",
-          "translation": "Panay.想當護士。"
+          "translation": "想當護士。"
         }
-      ],
-      "evidence": {
-        "source_commit": "e7c6976a0766e9b0aeb7083e2c06db60f5485252",
-        "source_file": "docs/s/malakangkofo.json",
-        "heteronym_index": 1,
-        "definition_index": 1,
-        "example_index": 1
-      }
+      ]
     },
     "17870": {
       "expected_cleaned_form": "Marakad!matengil no wina.",
       "expected_cleaned_final_translation": "matengil no wina.停止哭泣！",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (group card: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Marakad!matengil no wina.",
-          "translation": "停止哭泣！",
-          "translation_notes": "Source translation field repeated Amis text: matengil no wina."
+          "translation": "停止哭泣！會被媽媽聽見的。"
         }
       ]
     },
     "28235": {
       "expected_cleaned_form": "",
       "expected_cleaned_final_translation": "Mipelpelan 摧ko tamataan nimamo.老奶奶的眼鏡打碎了。",
-      "reason": "Recover the marked Amis sentence and remove the stray Chinese character that interrupted it.",
+      "reason": "Review translation card (your text) (replaces earlier override: Recover the marked Amis sentence and remove the stray Chinese character that interrupted it.)",
       "emitted": [
         {
           "form": "Mipelpelan ko tamataan nimamo.",
@@ -700,60 +678,55 @@
     "32404": {
       "expected_cleaned_form": "“Na'ay mikadafo kako!” han nikaka.",
       "expected_cleaned_final_translation": "” han nikaka.姊姊說：“我不能入贅！",
-      "reason": "Remove the repeated Amis narration and restore the displaced closing Chinese quotation mark.",
+      "reason": "Review translation card (your text) (replaces earlier override: Remove the repeated Amis narration and restore the displaced closing Chinese quotation mark.)",
       "emitted": [
         {
           "form": "“Na'ay mikadafo kako!” han nikaka.",
-          "translation": "姊姊說：“我不能入贅！”",
-          "translation_notes": "Source translation field repeated the Amis narration han nikaka and placed its closing quote before the Chinese text."
+          "translation": "姊姊說：“我不能入贅！”"
         }
       ]
     },
     "35656": {
       "expected_cleaned_form": "Papinanomen kako to mamang!maso'away kako.",
       "expected_cleaned_final_translation": "maso'away kako.請允許我喝點水吧！",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (group card: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Papinanomen kako to mamang!maso'away kako.",
-          "translation": "請允許我喝點水吧！",
-          "translation_notes": "Source translation field repeated Amis text: maso'away kako."
+          "translation": "請允許我喝點水吧！我口渴。"
         }
       ]
     },
     "37250": {
       "expected_cleaned_form": "Pifawah to sasingalan!tada faedetay ko romi'ad.",
       "expected_cleaned_final_translation": "tada faedetay ko romi'ad.開窗吧！",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (group card: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Pifawah to sasingalan!tada faedetay ko romi'ad.",
-          "translation": "開窗吧！",
-          "translation_notes": "Source translation field repeated Amis text: tada faedetay ko romi'ad."
+          "translation": "開窗吧！天太熱了。"
         }
       ]
     },
     "39991": {
       "expected_cleaned_form": "O maan ko mienengan nona tamdaw hokini?saeneenengsa to i tatihitihi.",
       "expected_cleaned_final_translation": "saeneenengsa to i tatihitihi.那個人到底在看什麼？",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (group card: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "O maan ko mienengan nona tamdaw hokini?saeneenengsa to i tatihitihi.",
-          "translation": "那個人到底在看什麼？",
-          "translation_notes": "Source translation field repeated Amis text: saeneenengsa to i tatihitihi."
+          "translation": "那個人到底在看什麼？往周圍看來看去的。"
         }
       ]
     },
     "40721": {
       "expected_cleaned_form": "enengen ko miso!ta'angyay ko pinko ako sakaemohsa awa ko 'engid.",
       "expected_cleaned_final_translation": "ta'angyay ko pinko ako sakaemohsa awa ko 'engid.你看！",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (group card: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "enengen ko miso!ta'angyay ko pinko ako sakaemohsa awa ko 'engid.",
-          "translation": "你看！",
-          "translation_notes": "Source translation field repeated Amis text: ta'angyay ko pinko ako sakaemohsa awa ko 'engid."
+          "translation": "你看！我的蘋果很大，光溜溜的沒有蟲傷。"
         }
       ]
     },
@@ -798,19 +771,18 @@
     "44773": {
       "expected_cleaned_form": "Sapisakofawaw iso han?pafelien ako kiso to kilang!",
       "expected_cleaned_final_translation": "pafelien ako kiso to kilang!你想建廚房嗎？",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (group card: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Sapisakofawaw iso han?pafelien ako kiso to kilang!",
-          "translation": "你想建廚房嗎？",
-          "translation_notes": "Source translation field repeated Amis text: pafelien ako kiso to kilang!"
+          "translation": "你想建廚房嗎？我給你木料。"
         }
       ]
     },
     "46482": {
       "expected_cleaned_form": "Satowitowishan no lotong ko ca'ang ko kilang patalaw to tamdaw/",
       "expected_cleaned_final_translation": "猴子故意把樹枝上下擺動來嚇人。",
-      "reason": "Replace the stray terminal slash with sentence punctuation; the source contains no alternative reading.",
+      "reason": "Review slash card: period in place of the trailing slash (replaces earlier override: Replace the stray terminal slash with sentence punctuation; the source contains no alternative reading.)",
       "emitted": [
         {
           "form": "Satowitowishan no lotong ko ca'ang ko kilang patalaw to tamdaw.",
@@ -821,24 +793,22 @@
     "47755": {
       "expected_cleaned_form": "Kamaro' itini!Tamakoen hena!",
       "expected_cleaned_final_translation": "Tamakoen hena!請在這裡坐，抽根煙吧！",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (rule 2: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Kamaro' itini!Tamakoen hena!",
-          "translation": "請在這裡坐，抽根煙吧！",
-          "translation_notes": "Source translation field repeated Amis text: Tamakoen hena!"
+          "translation": "請在這裡坐，抽根煙吧！"
         }
       ]
     },
     "48080": {
       "expected_cleaned_form": "Icowaay ko tatahengan?Pasowalen kako!",
       "expected_cleaned_final_translation": "Pasowalen kako!廁所在哪裡？",
-      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "reason": "Review translation card (group card: raw) (replaces earlier override: Keep the repeated Amis clause as provenance rather than Chinese free-translation text.)",
       "emitted": [
         {
           "form": "Icowaay ko tatahengan?Pasowalen kako!",
-          "translation": "廁所在哪裡？",
-          "translation_notes": "Source translation field repeated Amis text: Pasowalen kako!"
+          "translation": "廁所在哪裡？請告訴我！同 tata'ian。"
         }
       ]
     },
@@ -912,23 +882,17 @@
     "7064": {
       "expected_cleaned_form": "tefi' (tefie'h)",
       "expected_cleaned_final_translation": "肩豆。",
+      "reason": "Ruling 2026-10-16: \"S07064, which should have two Ss (one for the alternative paranthetical)\" (replaces earlier override: The i entry explicitly describes the preceding-vowel pronunciation, so the parenthetical is an attested pronunciation variant, not a competing lexeme (POL-028). https://new-amis.moedict.tw/terms/i.)",
       "emitted": [
         {
           "form": "tefi'",
-          "translation": "肩豆。",
-          "variants": [
-            "tefie'h"
-          ]
+          "translation": "肩豆。"
+        },
+        {
+          "form": "tefie'h",
+          "translation": "肩豆。"
         }
-      ],
-      "reason": "The i entry explicitly describes the preceding-vowel pronunciation, so the parenthetical is an attested pronunciation variant, not a competing lexeme (POL-028). https://new-amis.moedict.tw/terms/i.",
-      "evidence": {
-        "source_commit": "e7c6976a0766e9b0aeb7083e2c06db60f5485252",
-        "source_file": "docs/s/i.json",
-        "heteronym_index": 1,
-        "definition_index": 1,
-        "example_index": 2
-      }
+      ]
     },
     "36": {
       "expected_cleaned_form": "O cima ko 'a'afangen iso (cima koya 'a'afangen iso)?",
@@ -1060,6 +1024,3256 @@
         {
           "form": "Rakis ko remes.",
           "translation": "流血。"
+        }
+      ]
+    },
+    "6": {
+      "expected_cleaned_form": "Ini ko 'a'acawen a nanom (nanum).",
+      "expected_cleaned_final_translation": "要舀的水在這裡。",
+      "reason": "Review card P1-1 (answer): alt",
+      "emitted": [
+        {
+          "form": "Ini ko 'a'acawen a nanom.",
+          "translation": "要舀的水在這裡。",
+          "variants": [
+            "Ini ko 'a'acawen a nanum."
+          ]
+        }
+      ]
+    },
+    "92": {
+      "expected_cleaned_form": "O 'a'anipen niyam ko (koni) panay.",
+      "expected_cleaned_final_translation": "我們要去插秧（這是我們插秧用的秧苗）。",
+      "reason": "Review card P1-2 (answer): remove",
+      "emitted": [
+        {
+          "form": "O 'a'anipen niyam ko panay.",
+          "translations": [
+            {
+              "text": "我們要去插秧。"
+            },
+            {
+              "text": "這是我們插秧用的秧苗。",
+              "ver": "alt"
+            }
+          ]
+        }
+      ]
+    },
+    "341": {
+      "expected_cleaned_form": "'afafolad no toros.",
+      "expected_cleaned_final_translation": "膝蓋骨。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), note: alt-transl",
+      "emitted": [
+        {
+          "form": "'afafolad no toros.",
+          "translations": [
+            {
+              "text": "膝蓋骨。"
+            },
+            {
+              "text": "髕骨。",
+              "ver": "alt"
+            }
+          ]
+        }
+      ]
+    },
+    "451": {
+      "expected_cleaned_form": "Kakedalan adihay ko mi'icangay 'alal i lotok.",
+      "expected_cleaned_final_translation": "乾旱期山上有很多枯乾的樹枝。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Kakedalan adihay ko ma'icangay 'alal i lotok.",
+          "translation": "乾旱期山上有很多枯乾的樹枝。"
+        }
+      ]
+    },
+    "452": {
+      "expected_cleaned_form": "Mi'alal ci mama to kasoy sapanokay.",
+      "expected_cleaned_final_translation": "爸爸砍乾樹枝帶回家。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: amis",
+      "emitted": [
+        {
+          "form": "Mi'alal ci mama to sapanokay.",
+          "translation": "爸爸砍乾樹枝帶回家。"
+        }
+      ]
+    },
+    "704": {
+      "expected_cleaned_form": "'Aninen ko wawa a nisalama (misalama)!",
+      "expected_cleaned_final_translation": "讓孩子演戲玩耍吧！",
+      "reason": "Review card P1-3 (answer): twoS",
+      "emitted": [
+        {
+          "form": "'Aninen ko wawa a nisalama!",
+          "translation": "讓孩子演戲玩耍吧！"
+        },
+        {
+          "form": "'Aninen ko wawa a misalama!",
+          "translation": "讓孩子演戲玩耍吧！"
+        }
+      ]
+    },
+    "719": {
+      "expected_cleaned_form": "O 'anof ko kaci'ilo ningra.",
+      "expected_cleaned_final_translation": "他因貪婪而犯罪。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "O 'anof ko sakaci'ilo ningra.",
+          "translation": "他因貪婪而犯罪。"
+        }
+      ]
+    },
+    "790": {
+      "expected_cleaned_form": "'Apengpengay cinira ca (to) kafilo a rakaten.",
+      "expected_cleaned_final_translation": "他胖墩墩的走不了路。",
+      "reason": "Review card P1-4 (answer): remove",
+      "emitted": [
+        {
+          "form": "'Apengpengay cinira ca kafilo a rakaten.",
+          "translation": "他胖墩墩的走不了路。"
+        }
+      ]
+    },
+    "826": {
+      "expected_cleaned_form": "O 'aramisit ko nidatengan niyam.",
+      "expected_cleaned_final_translation": "我們去採香菜。",
+      "reason": "Review translation card (your text)",
+      "emitted": [
+        {
+          "form": "O 'aramisit ko nidatengan niyam.",
+          "translations": [
+            {
+              "text": "我們去採香菜。"
+            },
+            {
+              "text": "我們採的是香菜！",
+              "ver": "alt"
+            }
+          ]
+        }
+      ]
+    },
+    "963": {
+      "expected_cleaned_form": "'Atekes ko 'aca nona riko'.",
+      "expected_cleaned_final_translation": "",
+      "reason": "Review translation card (answer: raw)",
+      "emitted": [
+        {
+          "form": "'Atekes ko 'aca nona riko'.",
+          "translation": "這件衣服價錢很貴。"
+        }
+      ]
+    },
+    "1062": {
+      "expected_cleaned_form": "'Edengan ci Kacaw ko caayay pakatakop.",
+      "expected_cleaned_final_translation": "唯有卡造先生沒有趕上。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "'Edeng ci Kacaw ko caayay pakatakop.",
+          "translation": "只有卡造先生沒有趕上。"
+        }
+      ]
+    },
+    "1073": {
+      "expected_cleaned_form": "O 'edoan ko niyaro' Sani(Intonisiya).",
+      "expected_cleaned_final_translation": "Sani(印尼) 的故鄉很多鼠類。",
+      "reason": "Review card P1-5 (answer): asis",
+      "emitted": [
+        {
+          "form": "O 'edoan ko niyaro' Sani(Intonisiya).",
+          "translation": "Sani(印尼) 的故鄉很多鼠類。"
+        }
+      ]
+    },
+    "1143": {
+      "expected_cleaned_form": "'Em'em sa ci Calaw to matentenay a kamay.",
+      "expected_cleaned_final_translation": "Calaw 忍痛被砸傷的手。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "'Em'em sa ci Calaw to matentenay a kamay.",
+          "translation": "Calaw 先生忍痛被砸傷的手。"
+        }
+      ]
+    },
+    "1144": {
+      "expected_cleaned_form": "Hadidi sa to semsem no 'orip ci Nikar.",
+      "expected_cleaned_final_translation": "Nikar 堅持忍受痛苦的生活。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "'Em'em sa to semsem no 'orip ci Nikar.",
+          "translation": "Nikar小姐堅持忍受痛苦的生活。"
+        }
+      ]
+    },
+    "1283": {
+      "expected_cleaned_form": "Saliyaliyawen ako a somowal cinira 'i, caay saca kapitengil to sowal.",
+      "expected_cleaned_final_translation": "我反反復",
+      "reason": "Review translation card (your text)",
+      "emitted": [
+        {
+          "form": "Saliyaliyawen ako a somowal cinira 'i, caay saca kapitengil to sowal.",
+          "translation": "我反反復複地對他說，但他還是不聽話。"
+        }
+      ]
+    },
+    "1606": {
+      "expected_cleaned_form": "Cecay a no'eli'an(no'eli).",
+      "expected_cleaned_final_translation": "一張百元鈔。",
+      "reason": "Review card P1-6 (answer): twoS",
+      "emitted": [
+        {
+          "form": "Cecay a no'eli'an.",
+          "translation": "一張百元鈔。"
+        },
+        {
+          "form": "Cecay a no'eli.",
+          "translation": "一張百元鈔。"
+        }
+      ]
+    },
+    "1687": {
+      "expected_cleaned_form": "Cowa kanga'ay ko foti' ako i dadaya, adadaayho ko fongoh ako imatini/hatini.",
+      "expected_cleaned_final_translation": "我昨天晚上睡不好，現在頭還痛呢。",
+      "reason": "Review card P1-7 (note): twoS",
+      "emitted": [
+        {
+          "form": "Cowa kanga'ay ko foti' ako i dadaya, adadaayho ko fongoh ako imatini.",
+          "translation": "我昨天晚上睡不好，現在頭還痛呢。"
+        },
+        {
+          "form": "Cowa kanga'ay ko foti' ako i dadaya, adadaayho ko fongoh ako hatini.",
+          "translation": "我昨天晚上睡不好，現在頭還痛呢。"
+        }
+      ]
+    },
+    "1813": {
+      "expected_cleaned_form": "Alafengfengsa to i kemod no ufang ko honi/soni no rarohod a matngil.",
+      "expected_cleaned_final_translation": "聽見馬蜂的聲音在山洞深處嗡嗡地嚮著。",
+      "reason": "Review slash card (slash-S01813): alt",
+      "emitted": [
+        {
+          "form": "Alafengfengsa to i kemod no ufang ko honi no rarohod a matngil.",
+          "translation": "聽見馬蜂的聲音在山洞深處嗡嗡地嚮著。",
+          "variants": [
+            "Alafengfengsa to i kemod no ufang ko soni no rarohod a matngil."
+          ]
+        }
+      ]
+    },
+    "1865": {
+      "expected_cleaned_form": "Mafasaway to alatek.",
+      "expected_cleaned_final_translation": "（菜）也許早涼了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "Mafasaway to ko dateng alatek.",
+          "translation": "菜也許早涼了。"
+        }
+      ]
+    },
+    "1903": {
+      "expected_cleaned_form": "Matepong （ma^epong） no waco ko alipel.",
+      "expected_cleaned_final_translation": "籬笆被狗挖了洞。",
+      "reason": "Review card P1-9 (answer): alt",
+      "emitted": [
+        {
+          "form": "Matepong no waco ko alipel.",
+          "translation": "籬笆被狗挖了洞。",
+          "variants": [
+            "ma^epong no waco ko alipel."
+          ]
+        }
+      ]
+    },
+    "2004": {
+      "expected_cleaned_form": "anocima sa kako!",
+      "expected_cleaned_final_translation": "呀！",
+      "reason": "Review translation card (answer: raw)",
+      "emitted": [
+        {
+          "form": "anocima sa kako!",
+          "translation": "呀！是老朋友，我以為是誰呢！"
+        }
+      ]
+    },
+    "2139": {
+      "expected_cleaned_form": "Sakaromadiwaw kako.",
+      "expected_cleaned_final_translation": "我想",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Sakaromadiwaw kako.",
+          "translation": "我想唱歌。"
+        }
+      ]
+    },
+    "2191": {
+      "expected_cleaned_form": "Ca'ahan ako pasifekang a mi^eneng.",
+      "expected_cleaned_final_translation": "",
+      "reason": "Review translation card (answer: raw)",
+      "emitted": [
+        {
+          "form": "Ca'ahan ako pasifekang a mi^eneng.",
+          "translation": "我於是就抬頭向上看。"
+        }
+      ]
+    },
+    "2209": {
+      "expected_cleaned_form": "Mica'efas ko tapelik to karomakat no tamina.",
+      "expected_cleaned_final_translation": "船在行進中海浪溢(打)上來。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), note: alt-transl",
+      "emitted": [
+        {
+          "form": "Mica'efas ko tapelik to karomakat no tamina.",
+          "translations": [
+            {
+              "text": "船在行進中海浪溢上來。"
+            },
+            {
+              "text": "海浪拍打行進中的船隻。",
+              "ver": "alt"
+            }
+          ]
+        }
+      ]
+    },
+    "2615": {
+      "expected_cleaned_form": "Caho ko maamaan.",
+      "expected_cleaned_final_translation": "（短語）。",
+      "reason": "Review translation card (your text)",
+      "emitted": [
+        {
+          "form": "Caho ko maamaan.",
+          "translation": "還早呢。"
+        }
+      ]
+    },
+    "2939": {
+      "expected_cleaned_form": "Toloay ko celed no panay.",
+      "expected_cleaned_final_translation": "有三束稻穗。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Toloay ko celedan no panay.",
+          "translation": "有三束稻穗。"
+        }
+      ]
+    },
+    "3809": {
+      "expected_cleaned_form": "Cipo'eni to ko 'eli'.",
+      "expected_cleaned_final_translation": "茅草長長白穗了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), note: alt-transl",
+      "emitted": [
+        {
+          "form": "Cipo'eni to ko 'eli'.",
+          "translations": [
+            {
+              "text": "茅草長長白穗了。"
+            },
+            {
+              "text": "茅草長苞子白穗了。",
+              "ver": "alt"
+            }
+          ]
+        }
+      ]
+    },
+    "4676": {
+      "expected_cleaned_form": "Mafana' a midio' kona wawa.",
+      "expected_cleaned_final_translation": "這小孩會學語。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Mafana' a midio' kona wawa.",
+          "translation": "這小孩會學語。"
+        },
+        {
+          "form": "Mafana' a padi'o to wawa.",
+          "translation": "很會哄小孩。"
+        }
+      ]
+    },
+    "4677": {
+      "expected_cleaned_form": "O di'o ko sakakaay to cipadesay.",
+      "expected_cleaned_final_translation": "對傷心的心撫慰是最高的恩賜。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "O di'o ko sakakaay to cipadesay.",
+          "translation": "對傷心的人撫慰是最高的恩賜。"
+        }
+      ]
+    },
+    "5168": {
+      "expected_cleaned_form": "Mitatiw to faktaw ko sayxo.",
+      "expected_cleaned_final_translation": "師父帶墨斗。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mitatiw to faktaw ko sayxo.",
+          "translation": "師父帶墨斗具。"
+        }
+      ]
+    },
+    "5520": {
+      "expected_cleaned_form": "Miferok to sera omah.",
+      "expected_cleaned_final_translation": "把田地鬆土。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Miferok to sera no omah.",
+          "translation": "把田地鬆土。"
+        }
+      ]
+    },
+    "5640": {
+      "expected_cleaned_form": "Masakango ko fita'o i omah nangra.",
+      "expected_cleaned_final_translation": "他們田裡有一塊廢水池。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Masatango ko fita'o i omah nangra.",
+          "translation": "他們田裡有一塊廢水池。"
+        }
+      ]
+    },
+    "6105": {
+      "expected_cleaned_form": "Adihay a malengaw ko haherher i riyar.",
+      "expected_cleaned_final_translation": "在海邊長許多稜果。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Adihay a malengaw ko haherher i riyar.",
+          "translation": "在海邊長許多稜果樹。"
+        }
+      ]
+    },
+    "6208": {
+      "expected_cleaned_form": "Pakalaheci cingra hakiya?",
+      "expected_cleaned_final_translation": "不知道他能不能完成?",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Pakalaheci cingra hakila?",
+          "translation": "不知道他能不能完成?"
+        }
+      ]
+    },
+    "6308": {
+      "expected_cleaned_form": "Halihepolay to tatiih niyam ko ina ako.",
+      "expected_cleaned_final_translation": "我媽媽較易寬容我們缺失。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), note: alt-transl",
+      "emitted": [
+        {
+          "form": "Halihepolay to tatiih niyam ko ina ako.",
+          "translations": [
+            {
+              "text": "我媽媽較易寬容我們缺失。"
+            },
+            {
+              "text": "比較容易寬容我們缺失的是媽媽。",
+              "ver": "alt"
+            }
+          ]
+        }
+      ]
+    },
+    "7123": {
+      "expected_cleaned_form": "Mapasifana' to kiso maliyang iho to sowal.",
+      "expected_cleaned_final_translation": "我已經告訴妳了你還聽。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mapasifana' to kiso maliyang iho to sowal.",
+          "translation": "我已經告訴妳了你還不聽。"
+        }
+      ]
+    },
+    "7421": {
+      "expected_cleaned_form": "Kakomaen to ^epah!",
+      "expected_cleaned_final_translation": "請吃酒！",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Kakomaen to 'epah !",
+          "translation": "請吃酒！"
+        }
+      ]
+    },
+    "7426": {
+      "expected_cleaned_form": "Aka kakomaen to ^epah!",
+      "expected_cleaned_final_translation": "不要喝酒！",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Aka kakomaen to 'epah !",
+          "translation": "不要喝酒！"
+        }
+      ]
+    },
+    "7461": {
+      "expected_cleaned_form": "Maraodto ko kaca'angan no kilang.",
+      "expected_cleaned_final_translation": "樹木長枝的時期到了到。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Maraodto ko kacica'angan no kilang.",
+          "translation": "樹木長枝的時期到了到。"
+        }
+      ]
+    },
+    "7796": {
+      "expected_cleaned_form": "O kadotakit ko hecek niyam.",
+      "expected_cleaned_final_translation": "我們的柱子是蘆竹。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "O kadotakit ko hecek niyam.",
+          "translation": "我們的柱子是毛海棗。"
+        }
+      ]
+    },
+    "7971": {
+      "expected_cleaned_form": "Cowa to kasomowal cingra, kahisa to i loma'.",
+      "expected_cleaned_final_translation": "（聽了之後）他不說話了，就這樣答應在家了。",
+      "reason": "Review translation card (your text)",
+      "emitted": [
+        {
+          "form": "Cowa to kasomowal cingra, kahisa to i loma'.",
+          "translation": "他不說話了，就這樣答應在家了。"
+        }
+      ]
+    },
+    "8164": {
+      "expected_cleaned_form": "Kakidaten a lapot.",
+      "expected_cleaned_final_translation": "要拉斷蕃薯的藤蔓。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Kakidaten a lapot.",
+          "translation": "要拉斷的蕃薯藤蔓。"
+        }
+      ]
+    },
+    "8302": {
+      "expected_cleaned_form": "Kakorkoren a refong（hefong）.",
+      "expected_cleaned_final_translation": "要挖的洞。",
+      "reason": "Review card P1-10 (answer): alt",
+      "emitted": [
+        {
+          "form": "Kakorkoren a refong.",
+          "translation": "要挖的洞。",
+          "variants": [
+            "Kakorkoren a hefong."
+          ]
+        }
+      ]
+    },
+    "8308": {
+      "expected_cleaned_form": "Mapolon nani otofay kakot sato ko kamay ningra.",
+      "expected_cleaned_final_translation": "騎機車摔倒之後他的手殘廢了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mapolin nani otofay kakot sato ko kamay ningra.",
+          "translation": "騎機車摔倒之後他的手殘廢了。"
+        }
+      ]
+    },
+    "8765": {
+      "expected_cleaned_form": "Kanarikay a patatikol i Taypak!",
+      "expected_cleaned_final_translation": "要下決心返回台北！",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Kanarikay a patatikol i Taypak!",
+          "translation": "要提早返回台北！"
+        }
+      ]
+    },
+    "8922": {
+      "expected_cleaned_form": "Kapkapen noya mi'adopay ko to^man a minokay.",
+      "expected_cleaned_final_translation": "獵人摸黑回家。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Kapkapen noya mi'adopay ko to'eman a minokay.",
+          "translation": "獵人摸黑回家。"
+        }
+      ]
+    },
+    "8924": {
+      "expected_cleaned_form": "Misakoli ko mako i'ayaw, kapkaphan ko to'man a malingad.",
+      "expected_cleaned_final_translation": "我以前打工做苦力，一直就摸黑起床勞作。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "Misakoli ko mako i'ayaw, kapkaphan ko to'eman a malingad.",
+          "translation": "我以前打工做苦力，就一直是摸黑起床出門。"
+        }
+      ]
+    },
+    "8938": {
+      "expected_cleaned_form": "O to'as ko kapohawan no ina ako.",
+      "expected_cleaned_final_translation": "我母親年老時失明。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "O to'as ko kapohawan ni ina ako.",
+          "translation": "我母親年老時失明。"
+        }
+      ]
+    },
+    "9288": {
+      "expected_cleaned_form": "Kasasolek no hecek ko sanatektek no loma'.",
+      "expected_cleaned_final_translation": "木材的相互組合使房子結實牢固。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Kasasolek no hecek ko sakanatektek no loma'.",
+          "translation": "木材的相互組合使房子結實牢固。"
+        }
+      ]
+    },
+    "9386": {
+      "expected_cleaned_form": "Paloma to fakong o katatolasan.",
+      "expected_cleaned_final_translation": "種螫蟹花作為界線。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Paloma to fakong o katatolasan.",
+          "translation": "種螫蟹花(文殊蘭)作為界線。"
+        }
+      ]
+    },
+    "9563": {
+      "expected_cleaned_form": "Kelang a matfad ko satoktok.",
+      "expected_cleaned_final_translation": "瑯頭隆噹一聲掉地。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Kelangsa a matfad ko satoktok.",
+          "translation": "瑯頭隆噹一聲掉地。"
+        }
+      ]
+    },
+    "10084": {
+      "expected_cleaned_form": "hai kira.",
+      "expected_cleaned_final_translation": "是的。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Hayi kira.",
+          "translation": "是的。"
+        }
+      ]
+    },
+    "10085": {
+      "expected_cleaned_form": "Mamipatay kamo takowanan kira!",
+      "expected_cleaned_final_translation": "你們就要殺死我了吧！",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Mamipatay kamo takowanan kira!",
+          "translation": "你們就要殺死我了吧！"
+        },
+        {
+          "form": "Mamipadang kamo takowanan kira !",
+          "translation": "(我就知道)你們是要來幫助我的啊!"
+        }
+      ]
+    },
+    "10147": {
+      "expected_cleaned_form": "Tayniay ihoni a mikitoh ci Kacaw to demak iso.",
+      "expected_cleaned_final_translation": "卡召先生剛來此講述有關你的事。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Tayniay ihoni a mikitoh ci Kacaw to demak iso.",
+          "translation": "卡造先生剛來此講述有關你的事。"
+        }
+      ]
+    },
+    "10252": {
+      "expected_cleaned_form": "Kodait koni a paliyoken(pi'yaw).",
+      "expected_cleaned_final_translation": "這條佩裙(男性用)很結實。",
+      "reason": "Review card P1-11 (answer): twoS",
+      "emitted": [
+        {
+          "form": "Kodait koni a paliyoken.",
+          "translation": "這條佩裙很結實。"
+        },
+        {
+          "form": "Kodait koni a paliyoken pi'yaw.",
+          "translation": "這條佩裙(男性用)很結實。"
+        }
+      ]
+    },
+    "11188": {
+      "expected_cleaned_form": "Nga'ayay ko faloco' no 'Amis a tamdaw, cowa pisafana' cowa pisamsam to tao, lawidawidangsa canira.",
+      "expected_cleaned_final_translation": "心地善良的人，不欺騙也不欺侮他人，他們彼此友好相處。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Nga'ayay ko faloco' no 'Amis a tamdaw, cowa pisafana' cowa pisamsam to tao, lawidawidangsa canira.",
+          "translation": "阿美族是心地善良的人，不欺騙也不欺侮他人，他們彼此友好相處。"
+        }
+      ]
+    },
+    "11233": {
+      "expected_cleaned_form": "Malefis ko sakofit.",
+      "expected_cleaned_final_translation": "紐扣調了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Malefis ko sakofit.",
+          "translation": "紐扣掉了。"
+        }
+      ]
+    },
+    "11234": {
+      "expected_cleaned_form": "Malefis ko cecay a wawa ako.",
+      "expected_cleaned_final_translation": "我死了一個小孩。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Malefis ko cecay a wawa ako.",
+          "translation": "我死了一個小孩。"
+        },
+        {
+          "form": "Malefis ko cecay a wawa nira.",
+          "translation": "她死了一個小孩。"
+        }
+      ]
+    },
+    "11823": {
+      "expected_cleaned_form": "Mo^cel^cel ko kilang i lotolotokan.",
+      "expected_cleaned_final_translation": "山林中的樹木都很筆直。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: amis",
+      "emitted": [
+        {
+          "form": "Mo'ecel'ecel ko kilang i lotolotokan.",
+          "translation": "山林中的樹木都很筆直。"
+        }
+      ]
+    },
+    "11924": {
+      "expected_cleaned_form": "Ma'alolay no cedas ko maamaan.",
+      "expected_cleaned_final_translation": "所有的東西被洪水沖走了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Ma'alolay no cedas ko maamaan.",
+          "translation": "所有財物洪水沖走了。"
+        }
+      ]
+    },
+    "12762": {
+      "expected_cleaned_form": "Maceleday ako ko panay.",
+      "expected_cleaned_final_translation": "稻子被我捆好了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Maceleday ako ko panay.",
+          "translation": "稻子被我捆好一束了。"
+        }
+      ]
+    },
+    "12763": {
+      "expected_cleaned_form": "Maceleday a fitonay.",
+      "expected_cleaned_final_translation": "捆成捆的刺竹。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Maceleday a fitonay.",
+          "translation": "捆成一捆的刺竹。"
+        }
+      ]
+    },
+    "13051": {
+      "expected_cleaned_form": "Madakawdy to cimalay（kasoling）.",
+      "expected_cleaned_final_translation": "乘坐火車。",
+      "reason": "Review card P1-12 (answer): alt",
+      "emitted": [
+        {
+          "form": "Madakawdy to cimalay.",
+          "translation": "乘坐火車。",
+          "variants": [
+            "Madakawdy to cimalay kasoling."
+          ]
+        }
+      ]
+    },
+    "13361": {
+      "expected_cleaned_form": "Mafesiw ko fali.",
+      "expected_cleaned_final_translation": "刮風。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mafesiw ko fali.",
+          "translation": "起風。"
+        }
+      ]
+    },
+    "14109": {
+      "expected_cleaned_form": "Makanasal ko riko' ningra maarway to ko fanges.",
+      "expected_cleaned_final_translation": "他的衣服很透明皮膚都看的出來。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Makanasal ko riko' ningra ma'arway to ko fanges.",
+          "translation": "他的衣服很透明皮膚都看的出來。"
+        }
+      ]
+    },
+    "14110": {
+      "expected_cleaned_form": "Makanasal ko lamllo iso.",
+      "expected_cleaned_final_translation": "你種的小米很稀疏。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Makanasal ko lamelo iso.",
+          "translation": "你種的小米很稀疏。"
+        }
+      ]
+    },
+    "14150": {
+      "expected_cleaned_form": "Makapkapay ko lamlo.",
+      "expected_cleaned_final_translation": "小米被摟草間苗了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Makapkapay ko lamlo.",
+          "translation": "小米被摟草間苗了。"
+        },
+        {
+          "form": "Makapkapay ko pananoman.",
+          "translation": "水田除草了。"
+        }
+      ]
+    },
+    "14151": {
+      "expected_cleaned_form": "Makapkapay ako ko patatikolan a lalan.",
+      "expected_cleaned_final_translation": "我摸索著返回的道路。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Makapkapay ako ko patatikoran a lalan.",
+          "translation": "我摸索著返回的道路。"
+        }
+      ]
+    },
+    "14226": {
+      "expected_cleaned_form": "Makecoray ko Fotod nani Singko(Madawdaw).",
+      "expected_cleaned_final_translation": "從新港可以瞭望蘭嶼。",
+      "reason": "Review card P1-13 (answer): asis",
+      "emitted": [
+        {
+          "form": "Makecoray ko Fotod nani Singko(Madawdaw).",
+          "translation": "從新港可以瞭望蘭嶼。"
+        }
+      ]
+    },
+    "14997": {
+      "expected_cleaned_form": "Malaloay ko sasahemayen a felac.",
+      "expected_cleaned_final_translation": "要煮的糯米泡起來了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Malaloay ko sasahemayen a felac.",
+          "translation": "浸泡要煮的糯米。"
+        }
+      ]
+    },
+    "15579": {
+      "expected_cleaned_form": "Maloficay ko heci no kamoraw.",
+      "expected_cleaned_final_translation": "柚子果實很多了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Maloficay ko heci no kamoraw.",
+          "translation": "柚子果實很多了。"
+        },
+        {
+          "form": "Maloficay ko heci  akamoraw.",
+          "translation": "果實很多的柚子。"
+        }
+      ]
+    },
+    "15907": {
+      "expected_cleaned_form": "Mana'angay ko kakaenen niyam.",
+      "expected_cleaned_final_translation": "我們的糧食儲存起來了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Mana'angay ko kakaenen niyam.",
+          "translation": "我們儲存在倉庫的糧食。"
+        }
+      ]
+    },
+    "16832": {
+      "expected_cleaned_form": "Mapalidingay to ko lima pawti patayra i simaysiyo(piilangan).",
+      "expected_cleaned_final_translation": "十包稻穀被載到碾米廠了。",
+      "reason": "Review card P1-14 (answer): alt",
+      "emitted": [
+        {
+          "form": "Mapalidingay to ko lima pawti patayra i simaysiyo.",
+          "translation": "十包稻穀被載到碾米廠了。",
+          "variants": [
+            "Mapalidingay to ko lima pawti patayra i simaysiyo piilangan."
+          ]
+        }
+      ]
+    },
+    "16967": {
+      "expected_cleaned_form": "Mapapi'araway ko mitiliday to kacodo(ika).",
+      "expected_cleaned_final_translation": "學生被人叫去看電影。",
+      "reason": "Review card P1-15 (answer): remove",
+      "emitted": [
+        {
+          "form": "Mapapi'araway ko mitiliday to kacodo.",
+          "translation": "學生被人叫去看電影。"
+        }
+      ]
+    },
+    "16968": {
+      "expected_cleaned_form": "Mapapi'araway a mitiliday to kacodo(ika).",
+      "expected_cleaned_final_translation": "被人叫去看電影的學生。",
+      "reason": "Review card P1-16 (answer): remove",
+      "emitted": [
+        {
+          "form": "Mapapi'araway a mitiliday to kacodo.",
+          "translation": "被人叫去看電影的學生。"
+        }
+      ]
+    },
+    "17147": {
+      "expected_cleaned_form": "Mapapitinooyay kako to farawfawan.",
+      "expected_cleaned_final_translation": "我被要求織連衣裙了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Mapapitinooyay kako to farawfawan.",
+          "translation": "我被要求織連衣裙了。"
+        },
+        {
+          "form": "Mapapitinooyay to riko' a kaying.",
+          "translation": "被要求編織衣服的姐。"
+        }
+      ]
+    },
+    "17198": {
+      "expected_cleaned_form": "Maparoay ko dateng i cayna.",
+      "expected_cleaned_final_translation": "青菜裝在菜籃裡了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Maparoay ko dateng i cayna.",
+          "translation": "青菜裝在菜籃裡了。"
+        },
+        {
+          "form": "Maparoay a dateng i cayna.",
+          "translation": "裝在菜籃裡的青菜。"
+        }
+      ]
+    },
+    "17483": {
+      "expected_cleaned_form": "Mapatolonay ako cingra to dademak.",
+      "expected_cleaned_final_translation": "他接受我委託做事。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mapatolonay ako cingra to demak.",
+          "translation": "他接受我委託做事。"
+        }
+      ]
+    },
+    "17692": {
+      "expected_cleaned_form": "Mapispis ko papah 'aol yo mafaliyos.",
+      "expected_cleaned_final_translation": "颱風時竹葉一片一片​被吹落。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mapispis ko papah no 'aol yo mafaliyos.",
+          "translation": "颱風時竹葉一片一片​被吹落。"
+        }
+      ]
+    },
+    "17693": {
+      "expected_cleaned_form": "Mapispisay ko papah 'aol yo mafaliyos.",
+      "expected_cleaned_final_translation": "颱風時竹葉一片一片​被吹落了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mapispisay ko papah no 'aol yo mafaliyos.",
+          "translation": "颱風時竹葉一片一片​被吹落了。"
+        }
+      ]
+    },
+    "18565": {
+      "expected_cleaned_form": "Masafita'o a nanom i naikoran no cedas i lawac no 'alo.",
+      "expected_cleaned_final_translation": "洪水過河邊形成的小池塘。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Masafita'o ko nanom i naikoran no cedas i lawac no 'alo.",
+          "translation": "洪水過河邊形成的小池塘。"
+        }
+      ]
+    },
+    "18567": {
+      "expected_cleaned_form": "Masafita'oay a nanom.",
+      "expected_cleaned_final_translation": "一池廢水。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Masafita'oay a nanom.",
+          "translation": "一窪。"
+        }
+      ]
+    },
+    "18925": {
+      "expected_cleaned_form": "Masamaliemi ko fo'is.",
+      "expected_cleaned_final_translation": "星星閃閃發光。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Masamali'emi ko fo'is.",
+          "translation": "星星閃閃發光。"
+        }
+      ]
+    },
+    "19238": {
+      "expected_cleaned_form": "Masasidef ko faloco'.",
+      "expected_cleaned_final_translation": "心亂意麻。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Masasifed ko faloco'.",
+          "translation": "心亂意麻。"
+        }
+      ]
+    },
+    "19390": {
+      "expected_cleaned_form": "Masatemitmik ko tatemik.",
+      "expected_cleaned_final_translation": "脈搏不停地跳動。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Masatemitmik ko tatemik.",
+          "translation": "脈搏不停地跳動。"
+        },
+        {
+          "form": "Masatemitmik ko felac no tatemik.",
+          "translation": "脈搏不停地跳動。"
+        }
+      ]
+    },
+    "19534": {
+      "expected_cleaned_form": "Masena'ay ko ontopa(piontoan) cowa kanga'ay a comikay.",
+      "expected_cleaned_final_translation": "操場一片泥濘無法跑步。",
+      "reason": "Review card P1-17 (answer): alt",
+      "emitted": [
+        {
+          "form": "Masena'ay ko ontopa cowa kanga'ay a comikay.",
+          "translation": "操場一片泥濘無法跑步。",
+          "variants": [
+            "Masena'ay ko piontoan cowa kanga'ay a comikay."
+          ]
+        }
+      ]
+    },
+    "20122": {
+      "expected_cleaned_form": "Matatapi'ay ningra kako i sawni a masasemo.",
+      "expected_cleaned_final_translation": "摔跤時，我一再被他所打敗了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Matatapi'ay ningra kako i sawni a masasemo.",
+          "translation": "摔跤時，我一再被他所打敗。"
+        }
+      ]
+    },
+    "20234": {
+      "expected_cleaned_form": "Matefaday ko lamelo.",
+      "expected_cleaned_final_translation": "小米成熟了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Matefaday ko lamelo.",
+          "translation": "小米成熟了。"
+        },
+        {
+          "form": "Matefaday ko kalapiyat.",
+          "translation": "打雷時打閃電了。"
+        }
+      ]
+    },
+    "20235": {
+      "expected_cleaned_form": "Matefaday ko paro nara tosiya i fatad no lalan.",
+      "expected_cleaned_final_translation": "那輛汽車的貨物半路上掉下來了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Matefaday ko paro nora tosiya i fatad no lalan.",
+          "translation": "那輛汽車的貨物半路上掉下來了。"
+        }
+      ]
+    },
+    "20435": {
+      "expected_cleaned_form": "Matiyoray to a amoto.",
+      "expected_cleaned_final_translation": "攪拌好的水泥被。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Matiyoray to a amoto.",
+          "translation": "攪拌好的水泥。"
+        }
+      ]
+    },
+    "20464": {
+      "expected_cleaned_form": "Matohatoh ko paliding.",
+      "expected_cleaned_final_translation": "車子搖動起來。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Matohatoh ko paliding.",
+          "translation": "車子搖擺起來。"
+        }
+      ]
+    },
+    "20505": {
+      "expected_cleaned_form": "Matomes i tatelecan ko masolsolay niyam a takora'.",
+      "expected_cleaned_final_translation": "",
+      "reason": "Review translation card (answer: raw)",
+      "emitted": [
+        {
+          "form": "Matomes i tatelecan ko masolsolay niyam a takora'.",
+          "translation": "腰帶上掛滿了我們捆綁起來的青蛙。"
+        }
+      ]
+    },
+    "20581": {
+      "expected_cleaned_form": "Mawikihay ko sapikpik no 'ayam.",
+      "expected_cleaned_final_translation": "鳥翅膀被反背著。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Mawikihay ko sapikpik no 'ayam.",
+          "translation": "鳥翅膀被扭傷了。"
+        }
+      ]
+    },
+    "20589": {
+      "expected_cleaned_form": "Mawingawingay to wikol ko waco amilitemoh takowanan.",
+      "expected_cleaned_final_translation": "狗尾巴搖動著迎接我。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "Mawingawingay ko wikol a waco militemoh takowanan.",
+          "translation": "搖擺著尾巴迎接我的狗。"
+        }
+      ]
+    },
+    "21293": {
+      "expected_cleaned_form": "Mica'efas ko taplik to tefo.",
+      "expected_cleaned_final_translation": "海浪溢出堤防。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mica'efas ko taplik to tifo.",
+          "translation": "海浪溢出堤防。"
+        }
+      ]
+    },
+    "21296": {
+      "expected_cleaned_form": "Mica'efasan no nanom ko lalan.",
+      "expected_cleaned_final_translation": "水把道路溢過去了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mica'efasan no nanom ko lalan.",
+          "translation": "水把道路淹溢過去了。"
+        }
+      ]
+    },
+    "22164": {
+      "expected_cleaned_form": "O cinira komiditekay a mitolik.",
+      "expected_cleaned_final_translation": "編製很密的人是他。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Cinira ko miditekay a mitolik.",
+          "translation": "編製很密的人是他。"
+        }
+      ]
+    },
+    "22390": {
+      "expected_cleaned_form": "Cima komifawfaway to maamaan？",
+      "expected_cleaned_final_translation": "",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "Cima ko mifawfaway to dafong？",
+          "translation": "誰弄亂東西？"
+        }
+      ]
+    },
+    "22497": {
+      "expected_cleaned_form": "Mifilo a tayra riyar(tarariyar) mifoting ko kapah.",
+      "expected_cleaned_final_translation": "青年急忙下海去捕撈了一下魚。",
+      "reason": "Review card P1-18 (answer): alt",
+      "emitted": [
+        {
+          "form": "Mifilo a tayra riyar mifoting ko kapah.",
+          "translation": "青年急忙下海去捕撈了一下魚。",
+          "variants": [
+            "Mifilo a tayra tarariyar mifoting ko kapah."
+          ]
+        }
+      ]
+    },
+    "23623": {
+      "expected_cleaned_form": "Mikasoyay cinira.",
+      "expected_cleaned_final_translation": "他",
+      "reason": "Review translation card (answer: raw)",
+      "emitted": [
+        {
+          "form": "Mikasoyay cinira.",
+          "translation": "他在砍柴。"
+        }
+      ]
+    },
+    "24598": {
+      "expected_cleaned_form": "Milataw to lotok.",
+      "expected_cleaned_final_translation": "燒山林。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Milataw to lotok.",
+          "translation": "祭拜山神。"
+        }
+      ]
+    },
+    "24601": {
+      "expected_cleaned_form": "Milataway cinira tora kilakilangan.",
+      "expected_cleaned_final_translation": "他在燒那片樹林。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Milataway cinira tora kilakilangan.",
+          "translation": "他祭拜那樹林了。"
+        }
+      ]
+    },
+    "24602": {
+      "expected_cleaned_form": "O cima ko milataway to lotok?",
+      "expected_cleaned_final_translation": "是誰燒的山呢？",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "O cima ko milataway to lotok?",
+          "translation": "是誰在祭山神？"
+        }
+      ]
+    },
+    "25133": {
+      "expected_cleaned_form": "cinira to emi.",
+      "expected_cleaned_final_translation": "他在拾麥子。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: amis",
+      "emitted": [
+        {
+          "form": "Milificay cinira to 'emi.",
+          "translation": "他在拾麥子。"
+        }
+      ]
+    },
+    "25684": {
+      "expected_cleaned_form": "Miniwaniway ko fafahiyan i omah anini.",
+      "expected_cleaned_final_translation": "今天婦女到水田裡除草。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Miniwaniway ko fafahiyan i omah anini.",
+          "translation": "今天婦女到水田裡除草了。"
+        }
+      ]
+    },
+    "26135": {
+      "expected_cleaned_form": "Ora fafahiyan ko mipadekay kamianan.",
+      "expected_cleaned_final_translation": "是那個女人",
+      "reason": "Review translation card (answer: raw)",
+      "emitted": [
+        {
+          "form": "Ora fafahiyan ko mipadekay kamianan.",
+          "translation": "是那個女人給我們偏心。"
+        }
+      ]
+    },
+    "28434": {
+      "expected_cleaned_form": "Miporodan ako kora kaered.",
+      "expected_cleaned_final_translation": "我把那條繩子編成線圈了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Miporodan ako kora kaered.",
+          "translation": "我把那條繩子繞成線圈了。"
+        }
+      ]
+    },
+    "29229": {
+      "expected_cleaned_form": "Misaciricirid ko 'orip no mismukongay ko tayal a tamdaw.",
+      "expected_cleaned_final_translation": "做木工的人到到處流浪。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Misaciricirid ko 'orip no misamukongay ko tayal a tamdaw.",
+          "translation": "做木工的人到到處流浪。"
+        },
+        {
+          "form": "Misaciricirid ko 'orip no misamukongay a tamdaw.",
+          "translation": "做木工的人到到處流浪。"
+        }
+      ]
+    },
+    "29771": {
+      "expected_cleaned_form": "Misakako to polong a demak.",
+      "expected_cleaned_final_translation": "我負起一事的責任。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Misakako to polong a demak.",
+          "translation": "我負起所有事情的責任。"
+        }
+      ]
+    },
+    "30634": {
+      "expected_cleaned_form": "Misaporod to fodoy.",
+      "expected_cleaned_final_translation": "編毛線團。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Misaporod to fodoy.",
+          "translation": "繞毛線團。"
+        }
+      ]
+    },
+    "30962": {
+      "expected_cleaned_form": "Misayangidaf ko fafahi'an to sapaka'en to 'alomanay a lafang.",
+      "expected_cleaned_final_translation": "婦女們忙著準備菜餚給一團客人吃。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Misatangidaf ko fafahi'an to sapaka'en to 'alomanay a lafang.",
+          "translation": "婦女們忙著準備菜餚給一團客人吃。"
+        }
+      ]
+    },
+    "31012": {
+      "expected_cleaned_form": "Misatefitefir ko seperingko(spering) a kafoti'an.",
+      "expected_cleaned_final_translation": "彈簧床會上下彈跳。",
+      "reason": "Review card P1-19 (answer): alt",
+      "emitted": [
+        {
+          "form": "Misatefitefir ko seperingko a kafoti'an.",
+          "translation": "彈簧床會上下彈跳。",
+          "variants": [
+            "Misatefitefir ko spering a kafoti'an."
+          ]
+        }
+      ]
+    },
+    "31357": {
+      "expected_cleaned_form": "Nga'ayay ho ko miso!",
+      "expected_cleaned_final_translation": "你好！",
+      "reason": "Review translation card (your text)",
+      "emitted": [
+        {
+          "form": "Nga'ayay ho ko miso!",
+          "translations": [
+            {
+              "text": "你好！"
+            },
+            {
+              "text": "您好！",
+              "ver": "alt"
+            }
+          ]
+        }
+      ]
+    },
+    "31818": {
+      "expected_cleaned_form": "Mitefad to kako to taheka pakalafi caniraan.",
+      "expected_cleaned_final_translation": "我從上面取下食具，給他們準備吃晚飯。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Mitefad to kako to taheka pakalafi caniraan.",
+          "translation": "我從上面取下食具，給他們準備吃晚飯。"
+        },
+        {
+          "form": "Mitefad kako to nitapayan a foting nani cadada pakalafi caniraan.",
+          "translation": "我從上面的擱板取下乾魚，給他們吃晚飯。"
+        }
+      ]
+    },
+    "31819": {
+      "expected_cleaned_form": "Mitefadan ko wawa to mali.",
+      "expected_cleaned_final_translation": "孩子把球取下來了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mitefadan no wawa ko mali.",
+          "translation": "孩子把球取下來了。"
+        }
+      ]
+    },
+    "31942": {
+      "expected_cleaned_form": "Miterak to 'ongcoy.",
+      "expected_cleaned_final_translation": "推石頭。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Miterak to 'ongcoy.",
+          "translation": "推石頭。"
+        },
+        {
+          "form": "Miterak to dadangoyan.",
+          "translation": "把游泳圈推下水。"
+        }
+      ]
+    },
+    "32017": {
+      "expected_cleaned_form": "Aano misalisin kita mitimoc to firidawan ato finangay.",
+      "expected_cleaned_final_translation": "我們如果舉行祭祀，就直接吃小米和稻米。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Aano misalisin kita mitimoc to firidawan ato finangay.",
+          "translation": "我們如果舉行祭祀，就直接吃小米和稻米。"
+        },
+        {
+          "form": "Aano misalisin kita mitimoc to lamelo.",
+          "translation": "我們如果舉行祭祀就會沾一點小米。"
+        }
+      ]
+    },
+    "32023": {
+      "expected_cleaned_form": "Mitinooyay ko kaying to farohefohay a telec.",
+      "expected_cleaned_final_translation": "小姐在紡毛線腰布。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Mitinooyay ko kaying to farohefohay a telec.",
+          "translation": "小姐在紡毛線腰布。"
+        },
+        {
+          "form": "Mitinooyay ko kaying to kanit a telec.",
+          "translation": "小姐在編織毛線腰布。"
+        }
+      ]
+    },
+    "32034": {
+      "expected_cleaned_form": "Mitisekan ako ko fadohang no lokedaw.",
+      "expected_cleaned_final_translation": "我把豹子的胸膛刺透了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Mitisekan ako ko fadohang no lokedaw.",
+          "translation": "我把豹子的胸膛刺透了。"
+        },
+        {
+          "form": "Mitisekan no mi'adopay ko falohang no lokedaw.",
+          "translation": "獵人把豹子的胸膛刺透了。"
+        }
+      ]
+    },
+    "32075": {
+      "expected_cleaned_form": "Mitodal to oo' no efa.",
+      "expected_cleaned_final_translation": "烙馬腳。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mitodal to oo' no 'efa.",
+          "translation": "烙馬腳。"
+        }
+      ]
+    },
+    "32078": {
+      "expected_cleaned_form": "Mitodidis kako to tolak no lengac.",
+      "expected_cleaned_final_translation": "失要把月桃剝皮。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mitodidis kako to tolak no lengac.",
+          "translation": "我要把月桃剝皮。"
+        }
+      ]
+    },
+    "32089": {
+      "expected_cleaned_form": "Mitofific to i alofoay no kafer.",
+      "expected_cleaned_final_translation": "瞬間抽取褲袋的東西。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Mitofific to i alofoay no kafer.",
+          "translation": "(瞬間)抽取褲袋的東西。"
+        }
+      ]
+    },
+    "32218": {
+      "expected_cleaned_form": "Kalikien a miwanik kona wawa, malafo a ko loma'!",
+      "expected_cleaned_final_translation": "趕快淘汰這個小孩，否則，家裡要遭殃了！",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Kalikien a miwanik kona wawa, malafo a ko loma'!",
+          "translation": "趕快淘汰這個小孩，否則，家裡要遭殃了！"
+        },
+        {
+          "form": "Miwanik nitakawan, cilafo a ko loma' !",
+          "translation": "趕快挪贓物，否則，家裡要遭殃了！"
+        }
+      ]
+    },
+    "32228": {
+      "expected_cleaned_form": "Miwarawaray toya kakeseman",
+      "expected_cleaned_final_translation": "",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Miwarawaray toya kakeseman",
+          "translations": []
+        },
+        {
+          "form": "Miwarawaray to itiyaay ho a demak.",
+          "translation": "正在淡忘以前的事。"
+        }
+      ]
+    },
+    "32251": {
+      "expected_cleaned_form": "Miyasyasan ko simal a maemin.",
+      "expected_cleaned_final_translation": "油沿途都滴灑了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Miyasyasan ko simal a ma'emin.",
+          "translation": "油沿途都滴灑了。"
+        }
+      ]
+    },
+    "32400": {
+      "expected_cleaned_form": "Na'angen ko kowan（kowang） naira!",
+      "expected_cleaned_final_translation": "把他們的槍支收藏起來！",
+      "reason": "Review card P1-20 (answer): alt",
+      "emitted": [
+        {
+          "form": "Na'angen ko kowan naira!",
+          "translation": "把他們的槍支收藏起來！",
+          "variants": [
+            "Na'angen ko kowang naira!"
+          ]
+        }
+      ]
+    },
+    "32522": {
+      "expected_cleaned_form": "O ciokakay titi ko sapacemol a tenger to naniwac.",
+      "expected_cleaned_final_translation": "綠豆燉排骨。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: amis",
+      "emitted": [
+        {
+          "form": "O ciokakay titi ko sapacamol to naniwac a mitenger.",
+          "translation": "綠豆燉排骨。"
+        }
+      ]
+    },
+    "32714": {
+      "expected_cleaned_form": "Ngarngar to rengos.",
+      "expected_cleaned_final_translation": "啃草。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Ngarngar to rengos.",
+          "translation": "啃草。"
+        },
+        {
+          "form": "Ngarngar to rengos ko kolong.",
+          "translation": "牛啃吃青草。"
+        }
+      ]
+    },
+    "32718": {
+      "expected_cleaned_form": "Ngarohngohay ko honi（ngiha'） ira.",
+      "expected_cleaned_final_translation": "他的嗓音變聲了。",
+      "reason": "Review card P1-21 (answer): remove",
+      "emitted": [
+        {
+          "form": "Ngarohngohay ko honi ira.",
+          "translation": "他的嗓音變聲了。"
+        }
+      ]
+    },
+    "32789": {
+      "expected_cleaned_form": "Ngito'en no ising ko malaholay（manahalay） a wadis.",
+      "expected_cleaned_final_translation": "醫生把蛀牙拔掉。",
+      "reason": "Review card P1-22 (answer): alt",
+      "emitted": [
+        {
+          "form": "Ngito'en no ising ko malaholay a wadis.",
+          "translation": "醫生把蛀牙拔掉。",
+          "variants": [
+            "Ngito'en no ising ko manahalay a wadis."
+          ]
+        }
+      ]
+    },
+    "33085": {
+      "expected_cleaned_form": "Pa'ayaw ho to sowal.",
+      "expected_cleaned_final_translation": "先開講。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Pa'ayaw ho to sowal.",
+          "translation": "先開講。"
+        },
+        {
+          "form": "Kiso ko pa'ayaw to sowal.",
+          "translation": "你先開場說幾句。"
+        }
+      ]
+    },
+    "33439": {
+      "expected_cleaned_form": "Pacokoray a romakat.",
+      "expected_cleaned_final_translation": "隌伴走路。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Pacokoray a romakat.",
+          "translation": "陪伴走路。"
+        }
+      ]
+    },
+    "33440": {
+      "expected_cleaned_form": "Pacokoray ci Lafin to malitengay.",
+      "expected_cleaned_final_translation": "Lafin先生給拐杖給老人。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Pacokoray ci Lafin to malitengay.",
+          "translation": "Lafin先生拿拐杖給老人。"
+        }
+      ]
+    },
+    "33468": {
+      "expected_cleaned_form": "Paconoh to dademak（dademaken）.",
+      "expected_cleaned_final_translation": "推卸工作。",
+      "reason": "Review card P1-23 (answer): alt",
+      "emitted": [
+        {
+          "form": "Paconoh to dademak.",
+          "translation": "推卸工作。",
+          "variants": [
+            "Paconoh to dademaken."
+          ]
+        }
+      ]
+    },
+    "33521": {
+      "expected_cleaned_form": "Padetengen ningra kako a miseti'.",
+      "expected_cleaned_final_translation": "他故意打我。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: amis",
+      "emitted": [
+        {
+          "form": "Padetengen ningra a miseti' kako.",
+          "translation": "他故意打我。"
+        }
+      ]
+    },
+    "33522": {
+      "expected_cleaned_form": "Padetenghan ira ko pising a mingiwit.",
+      "expected_cleaned_final_translation": "他就故意把自己的臉扭歪。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Padetenghan nira ko pising a mingiwit.",
+          "translation": "他就故意把自己的臉扭歪。"
+        }
+      ]
+    },
+    "33523": {
+      "expected_cleaned_form": "Cowa kanga'ay a padetenghan iso a mikerah ko nanom.",
+      "expected_cleaned_final_translation": "你不能這樣故意把水抽乾。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Cowa kanga'ay a padetenghan iso a mikerah ko nanom.",
+          "translation": "你不能這樣故意把水抽乾。"
+        },
+        {
+          "form": "Cowa kanga'ay a padetenghan iso a minokay.",
+          "translation": "你不能就這樣故意離開。"
+        }
+      ]
+    },
+    "33995": {
+      "expected_cleaned_form": "Nga'ayay ko mata nifaki ako, pakaeneng to tilid to dadaya.",
+      "expected_cleaned_final_translation": "",
+      "reason": "Review translation card (your text)",
+      "emitted": [
+        {
+          "form": "Nga'ayay ko mata nifaki ako, pakaeneng to tilid to dadaya.",
+          "translation": "我爺爺的眼力好，晚上能看書。"
+        }
+      ]
+    },
+    "34008": {
+      "expected_cleaned_form": "Pakafawaen ira kono（koni） a hako.",
+      "expected_cleaned_final_translation": "他能把這箱子抬起來。",
+      "reason": "Review card P1-24 (answer): alt",
+      "emitted": [
+        {
+          "form": "Pakafawaen ira kono a hako.",
+          "translation": "他能把這箱子抬起來。",
+          "variants": [
+            "Pakafawaen ira koni a hako."
+          ]
+        }
+      ]
+    },
+    "34280": {
+      "expected_cleaned_form": "Pakasoy ko fa'inayan to herek no pitapi' no fafahiyan.",
+      "expected_cleaned_final_translation": "女子完成在男子家裡的服役之後要送柴火到女子家裡。(送柴禮)",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Pakasoy ko fa'inayan to herek no pitapi' no fafahiyan.",
+          "translation": "女子完成在男子家裡的服役之後男子要送柴火到女子家裡表達願意入贅，這叫送柴禮。"
+        }
+      ]
+    },
+    "34376": {
+      "expected_cleaned_form": "Awaay ko pakayraan (pa'edcasan) no faloco' ako.",
+      "expected_cleaned_final_translation": "我心裡一直覺得不踏實。",
+      "reason": "Review card P1-25 (answer): remove",
+      "emitted": [
+        {
+          "form": "Awaay ko pakayraan no faloco' ako.",
+          "translation": "我心裡一直覺得不踏實。"
+        }
+      ]
+    },
+    "34486": {
+      "expected_cleaned_form": "Pakonira han to kora maliyangay a tamdaw.",
+      "expected_cleaned_final_translation": "那個壞脾氣人就没人理他了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Pakonira han to kora maliyangay a tamdaw.",
+          "translation": "那個壞脾氣的人就没人理他了。"
+        }
+      ]
+    },
+    "35434": {
+      "expected_cleaned_form": "Ci Totoy ko papatolonen ako.",
+      "expected_cleaned_final_translation": "Totoy（多堆）是我的委託人。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Ci Totoy ko papatolonen ako.",
+          "translation": "我要委託的人是Totoy先生。"
+        }
+      ]
+    },
+    "35491": {
+      "expected_cleaned_form": "Anopapacem taya i paisingan papeno to wawa.",
+      "expected_cleaned_final_translation": "明天早晨到衛生所給孩子施打牛痘疫苗。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Anopapacem tayra i paisingan papeno to wawa.",
+          "translation": "明天早晨到衛生所給孩子施打牛痘疫苗。"
+        }
+      ]
+    },
+    "35537": {
+      "expected_cleaned_form": "Papialaen to enem a lafot（lefot） a payci.",
+      "expected_cleaned_final_translation": "讓他拿出6千元。",
+      "reason": "Review card P1-26 (answer): alt",
+      "emitted": [
+        {
+          "form": "Papialaen to enem a lafot a payci.",
+          "translation": "讓他拿出6千元。",
+          "variants": [
+            "Papialaen to enem a lefot a payci."
+          ]
+        }
+      ]
+    },
+    "35817": {
+      "expected_cleaned_form": "Papitinooyen aca ira kora makapahay a kaying.",
+      "expected_cleaned_final_translation": "他又請那位漂亮的小姐織布。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Papitinooyen aca ira kora makapahay a kaying.",
+          "translation": "他只請那位漂亮的小姐織布。"
+        }
+      ]
+    },
+    "35862": {
+      "expected_cleaned_form": "Paponini'en a kolol（koror）.",
+      "expected_cleaned_final_translation": "要按摩的背部。",
+      "reason": "Review card P1-27 (answer): alt",
+      "emitted": [
+        {
+          "form": "Paponini'en a kolol.",
+          "translation": "要按摩的背部。",
+          "variants": [
+            "Paponini'en a koror."
+          ]
+        }
+      ]
+    },
+    "35904": {
+      "expected_cleaned_form": "Parapic toya demak cingra.",
+      "expected_cleaned_final_translation": "他跟那件事有關連。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Parapic toya demak cingranan.",
+          "translation": "他跟那件事有關連。"
+        }
+      ]
+    },
+    "36064": {
+      "expected_cleaned_form": "Pasalongay a koma'en.",
+      "expected_cleaned_final_translation": "吃了一點。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Pasalongay a koma'en.",
+          "translation": "吃了一點。"
+        },
+        {
+          "form": "Pasalongay koma'en a lafang.",
+          "translation": "吃了一點的客人。"
+        }
+      ]
+    },
+    "36070": {
+      "expected_cleaned_form": "pasamoha to cecay a 'odax.",
+      "expected_cleaned_final_translation": "意思意思地給他一個糖果。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Pasamo han to cecay a 'odax",
+          "translation": "意思意思地給他一個糖果。"
+        }
+      ]
+    },
+    "36150": {
+      "expected_cleaned_form": "Pasata to dingki（tingki）.",
+      "expected_cleaned_final_translation": "交電稅。",
+      "reason": "Review card P1-28 (answer): alt",
+      "emitted": [
+        {
+          "form": "Pasata to dingki.",
+          "translation": "交電稅。",
+          "variants": [
+            "Pasata to tingki."
+          ]
+        }
+      ]
+    },
+    "36198": {
+      "expected_cleaned_form": "Pasela'en ho kako!",
+      "expected_cleaned_final_translation": "",
+      "reason": "Review translation card (your text)",
+      "emitted": [
+        {
+          "form": "Pasela'en ho kako !",
+          "translation": "讓我再休息一下吧！"
+        }
+      ]
+    },
+    "36399": {
+      "expected_cleaned_form": "Patafad ko niyaro' no Sikano.",
+      "expected_cleaned_final_translation": "吉安的部落在舉行播種祭。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Patafad ko niyaro' no Sikano.",
+          "translation": "吉安的部落在舉行播種祭。"
+        },
+        {
+          "form": "Patafad ko niyaro' no Madawdaw.",
+          "translation": "Madawdaw部落在舉行播種祭。"
+        }
+      ]
+    },
+    "36593": {
+      "expected_cleaned_form": "Awaay ko cowa kapatay a pi'orip.",
+      "expected_cleaned_final_translation": "生命都會死亡。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Awaay ko cowa kapatay a 'orip.",
+          "translation": "生命都會死亡。"
+        }
+      ]
+    },
+    "36605": {
+      "expected_cleaned_form": "Patefaden to dadangoyan.",
+      "expected_cleaned_final_translation": "丟下救生圈。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Patefad ko dadangoyan.",
+          "translation": "丟下救生圈。"
+        }
+      ]
+    },
+    "36606": {
+      "expected_cleaned_form": "Patefaday to kaka'enen i tenok no riyar",
+      "expected_cleaned_final_translation": "在海中丟下東西。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Patefaday to kaka'enen i tenok no riyar",
+          "translation": "在海中丟下東西。"
+        },
+        {
+          "form": "Patefaday to kaka'enen i niyaro' ko hikoki.",
+          "translation": "飛機從空中往部落丟下食物了。"
+        }
+      ]
+    },
+    "36608": {
+      "expected_cleaned_form": "Patefaden ko dadangoyan.",
+      "expected_cleaned_final_translation": "丟下救生圈。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Patefaden ko dadangoyan.",
+          "translation": "要丟下救生圈。"
+        }
+      ]
+    },
+    "36727": {
+      "expected_cleaned_form": "Patingtingen kako to nanges tosa a tingting.",
+      "expected_cleaned_final_translation": "秤給我芒果兩斤。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Patingtingen kako to nanges tosa a tingting.",
+          "translation": "秤兩斤芒果給我。"
+        }
+      ]
+    },
+    "36861": {
+      "expected_cleaned_form": "Icowaay ko payakiyak to lihaf?",
+      "expected_cleaned_final_translation": "謠言從哪裡散播開來的。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Nanicowaay ko payakiyak to lihaf ?",
+          "translation": "謠言從哪裡散播開來的。"
+        }
+      ]
+    },
+    "37011": {
+      "expected_cleaned_form": "I papotal ko pi'epodan to maomaan（maamaan）.",
+      "expected_cleaned_final_translation": "卸貨的地方在院子外面。",
+      "reason": "Review card P1-29 (answer): alt",
+      "emitted": [
+        {
+          "form": "I papotal ko pi'epodan to maomaan.",
+          "translation": "卸貨的地方在院子外面。",
+          "variants": [
+            "I papotal ko pi'epodan to maamaan."
+          ]
+        }
+      ]
+    },
+    "37113": {
+      "expected_cleaned_form": "Pitosan a polo'(a payso).",
+      "expected_cleaned_final_translation": "二十元鈔(一張)。",
+      "reason": "Review card P1-30 (answer): remove",
+      "emitted": [
+        {
+          "form": "Pitosan a polo'.",
+          "translation": "二十元鈔。"
+        }
+      ]
+    },
+    "37128": {
+      "expected_cleaned_form": "Piceled to panay!",
+      "expected_cleaned_final_translation": "把稻子捆起來！",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Piceled to panay!",
+          "translation": "把稻子捆起來！"
+        },
+        {
+          "form": "Piceled to 'asisiw !",
+          "translation": "把稻草捆起來！"
+        }
+      ]
+    },
+    "37214": {
+      "expected_cleaned_form": "Piditek to ni torikan iso a kadango.",
+      "expected_cleaned_final_translation": "籃子要編得精緻。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "Piditek toni tolikan iso a kadango.",
+          "translation": "你編的籃子要編得精緻。"
+        }
+      ]
+    },
+    "37215": {
+      "expected_cleaned_form": "Piditekan no kofa itini tona sera.",
+      "expected_cleaned_final_translation": "這土地政府測量過的地方。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Piditekan no kofa itini tona sera.",
+          "translation": "政府測量過這塊土地。"
+        }
+      ]
+    },
+    "38300": {
+      "expected_cleaned_form": "Pipaterep to pa'aw'aw no waco!",
+      "expected_cleaned_final_translation": "禁止狗叫！",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Pipaterep to pi'aw'aw no waco !",
+          "translation": "阻止狗叫！"
+        }
+      ]
+    },
+    "38536": {
+      "expected_cleaned_form": "Pisafaol to ada' han no kakita'an ko kapah.",
+      "expected_cleaned_final_translation": "頭目要部落的年青人出去征獵頭吧。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Pisafaol to ada' han no kakita'an ko kapah.",
+          "translation": "頭目要部落的年青人出征前獵頭祭吧。"
+        }
+      ]
+    },
+    "38802": {
+      "expected_cleaned_form": "Iomah ko pisokidatan niyam to 'awkay no konga'.",
+      "expected_cleaned_final_translation": "我們在田裡拔地瓜的藤蔓。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "I omah ko pisokidatan niyam to 'awakay no konga'.",
+          "translation": "我們在田裡拉拔地瓜的藤蔓。"
+        }
+      ]
+    },
+    "38877": {
+      "expected_cleaned_form": "O pitinac aca ako to sema tora epah nga'ay to.",
+      "expected_cleaned_final_translation": "我只用舌頭舔一下酒就可以了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "O pitinac aca ako to sema tora 'epah nga'ay to.",
+          "translation": "我只用舌頭舔一下酒就可以了。"
+        }
+      ]
+    },
+    "39194": {
+      "expected_cleaned_form": "O rarepeten a 'ayam（sofitay） cinira.",
+      "expected_cleaned_final_translation": "即將抓住的鳥。",
+      "reason": "Review card P1-31 (answer): remove",
+      "emitted": [
+        {
+          "form": "O rarepeten a 'ayam cinira.",
+          "translation": "即將抓住的鳥。"
+        }
+      ]
+    },
+    "39534": {
+      "expected_cleaned_form": "Adihayay ko fokeloh itini, ca kanga'ay a ropayen.",
+      "expected_cleaned_final_translation": "這裏石頭多，",
+      "reason": "Review translation card (answer: raw)",
+      "emitted": [
+        {
+          "form": "Adihayay ko fokeloh itini, ca kanga'ay a ropayen.",
+          "translation": "這裏石頭多，不容易弄平。"
+        }
+      ]
+    },
+    "39882": {
+      "expected_cleaned_form": "Sacaholaken ako hasapifuting（hasapifuting）.",
+      "expected_cleaned_final_translation": "我要做竹籠準備捕魚用。",
+      "reason": "Review card P1-32 (identical-variants card: one FORM only): remove",
+      "emitted": [
+        {
+          "form": "Sacaholaken ako hasapifuting.",
+          "translation": "我要做竹籠準備捕魚用。"
+        }
+      ]
+    },
+    "39952": {
+      "expected_cleaned_form": "Sadatengen niyam i aikoran（aykoran） no loma'.",
+      "expected_cleaned_final_translation": "我們在屋後種菜吧！",
+      "reason": "Review card P1-33 (25% rule): alt",
+      "emitted": [
+        {
+          "form": "Sadatengen niyam i aikoran no loma'.",
+          "translation": "我們在屋後種菜吧！",
+          "variants": [
+            "Sadatengen niyam i aykoran no loma'."
+          ]
+        }
+      ]
+    },
+    "39973": {
+      "expected_cleaned_form": "O saditek to 'adipal konini a penen.",
+      "expected_cleaned_final_translation": "這些五節芒(蘆葦)是用來補強籬笆的。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "O saditek to 'adipel konini a penen.",
+          "translation": "這些五節芒(蘆葦)是用來補強籬笆的。"
+        }
+      ]
+    },
+    "40530": {
+      "expected_cleaned_form": "Maraayay ko kamaro'an niyam, oya ko sakacila'ed no niyaro'（niyaro'）.",
+      "expected_cleaned_final_translation": "我們住的地方很遠，因此村子間有間隔。",
+      "reason": "Review card P1-34 (identical-variants card: one FORM only): remove",
+      "emitted": [
+        {
+          "form": "Maraayay ko kamaro'an niyam, oya ko sakacila'ed no niyaro'.",
+          "translation": "我們住的地方很遠，因此村子間有間隔。"
+        }
+      ]
+    },
+    "40981": {
+      "expected_cleaned_form": "Sakapohawaw nona a lokedaw.",
+      "expected_cleaned_final_translation": "希望隻老虎瞎了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Sakapohawaw nona a lokedaw.",
+          "translation": "希望隻老虎瞎了。"
+        },
+        {
+          "form": "Sakapohawaw nona lokedaw.",
+          "translation": "希望這隻老虎瞎眼。"
+        }
+      ]
+    },
+    "41068": {
+      "expected_cleaned_form": "Awaay ko kakemaken（dademaken） ako, sakatayoaw ako.",
+      "expected_cleaned_final_translation": "我沒什麼事情要做，希望慢慢來。",
+      "reason": "Review card P1-35 (25% rule): alt",
+      "emitted": [
+        {
+          "form": "Awaay ko kakemaken ako, sakatayoaw ako.",
+          "translation": "我沒什麼事情要做，希望慢慢來。",
+          "variants": [
+            "Awaay ko dademaken ako, sakatayoaw ako."
+          ]
+        }
+      ]
+    },
+    "41400": {
+      "expected_cleaned_form": "^Enengen salipahaksa cangra a misalama!",
+      "expected_cleaned_final_translation": "看！",
+      "reason": "Review translation card (answer: raw)",
+      "emitted": [
+        {
+          "form": "^Enengen salipahaksa cangra a misalama!",
+          "translation": "看！他們玩得那麼開心。"
+        }
+      ]
+    },
+    "41437": {
+      "expected_cleaned_form": "Salonganay ko kakapahan ira.",
+      "expected_cleaned_final_translation": "她的漂亮是很標致的。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Salonganay ko kakapahan nira.",
+          "translation": "她的漂亮是很標致的。"
+        }
+      ]
+    },
+    "41438": {
+      "expected_cleaned_form": "Salonganay a kaying.",
+      "expected_cleaned_final_translation": "標致的小姐。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Salonganay a kaying.",
+          "translation": "標致的小姐。"
+        },
+        {
+          "form": "Salonganay a kapah.",
+          "translation": "很帥的年青人。"
+        }
+      ]
+    },
+    "41762": {
+      "expected_cleaned_form": "Sapasengien kana tosa a hana.",
+      "expected_cleaned_final_translation": "比較一下這兩朵花看起來很像。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Sapasengien kona tosa a hana.",
+          "translation": "比較一下這兩朵花看起來很像。"
+        }
+      ]
+    },
+    "41986": {
+      "expected_cleaned_form": "Sapi'ised to cafay.",
+      "expected_cleaned_final_translation": "和伙伴競爭的方式。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapi'ised to cafay.",
+          "translation": "和伙伴競爭的方式。"
+        },
+        {
+          "form": "O taneng ko sapi'ised to cafay.",
+          "translation": "用智力和伙伴競爭。"
+        }
+      ]
+    },
+    "42142": {
+      "expected_cleaned_form": "O 'oway ko sapiceled to lamlo.",
+      "expected_cleaned_final_translation": "用藤條捆小米。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "O 'oway ko sapiceled to lamlo.",
+          "translation": "用藤條捆小米。"
+        },
+        {
+          "form": "O 'oway ko sapiceled to 'aol.",
+          "translation": "用藤條捆竹子。"
+        }
+      ]
+    },
+    "42841": {
+      "expected_cleaned_form": "Sapikidat to konga.",
+      "expected_cleaned_final_translation": "拔蕃薯蔓的工具。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Sapikidat to konga.",
+          "translation": "拉拔蕃薯蔓的工具。"
+        }
+      ]
+    },
+    "42941": {
+      "expected_cleaned_form": "O kanoos ko sapikolahot no tamay（tomay） to tamdaw.",
+      "expected_cleaned_final_translation": "狗熊用爪子傷人。",
+      "reason": "Review card P1-36 (25% rule): alt",
+      "emitted": [
+        {
+          "form": "O kanoos ko sapikolahot no tamay to tamdaw.",
+          "translation": "狗熊用爪子傷人。",
+          "variants": [
+            "O kanoos ko sapikolahot no tomay to tamdaw."
+          ]
+        }
+      ]
+    },
+    "43045": {
+      "expected_cleaned_form": "Sapilalo to felac.",
+      "expected_cleaned_final_translation": "浸米的用具。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapilalo to felac.",
+          "translation": "浸米的用具。"
+        },
+        {
+          "form": "Sapilalo to felac a pa'etang.",
+          "translation": "浸泡糯米的木桶。"
+        }
+      ]
+    },
+    "43046": {
+      "expected_cleaned_form": "Sapilaloaw ako to kocosta i fintang.",
+      "expected_cleaned_final_translation": "我想在臉盆裡泡襪子。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapilaloaw ako to kocosta i fintang.",
+          "translation": "我想在臉盆裡泡襪子。"
+        },
+        {
+          "form": "Sapilaloaw ako to doway a felac i fintang.",
+          "translation": "我想在臉盆裡糯米。"
+        }
+      ]
+    },
+    "43077": {
+      "expected_cleaned_form": "Sapilatawaw ako to lalotokan.",
+      "expected_cleaned_final_translation": "我想燒山林。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Sapilatawaw ako to lalotokan.",
+          "translation": "我想祭山神。"
+        }
+      ]
+    },
+    "43457": {
+      "expected_cleaned_form": "Sapiniwaniw to rengos a pitaw.",
+      "expected_cleaned_final_translation": "除草的鋤頭。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Sapiniwaniw to rengos a pitaw.",
+          "translation": "除草的鋤頭。"
+        },
+        {
+          "form": "Sapiniwaniw to rengos no omah a pitaw.",
+          "translation": "水田除草用的鋤頭。"
+        }
+      ]
+    },
+    "43458": {
+      "expected_cleaned_form": "Sapiniwaniwaw niyam to no sadateng a rengos.",
+      "expected_cleaned_final_translation": "我們想給菜地鋤草。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapiniwaniwaw niyam to no sadateng a rengos.",
+          "translation": "我們想給菜地鋤草。"
+        },
+        {
+          "form": "Sapiniwaniwaw niyam to pananoman.",
+          "translation": "我們想把水田鋤草。"
+        }
+      ]
+    },
+    "44000": {
+      "expected_cleaned_form": "O lay(line) ko sapipasopet to tandaw.",
+      "expected_cleaned_final_translation": "用賴召集人。",
+      "reason": "Review card P1-37 (answer): remove",
+      "emitted": [
+        {
+          "form": "O lay ko sapipasopet to tandaw.",
+          "translation": "用賴召集人。"
+        }
+      ]
+    },
+    "44028": {
+      "expected_cleaned_form": "Oni a（ko） sapipatalalikor no faki.",
+      "expected_cleaned_final_translation": "這是老爺爺最後遺囑的憑藉。",
+      "reason": "Review card P1-38 (answer): remove",
+      "emitted": [
+        {
+          "form": "Oni a sapipatalalikor no faki.",
+          "translation": "這是老爺爺最後遺囑的憑藉。"
+        }
+      ]
+    },
+    "44086": {
+      "expected_cleaned_form": "Oni ko sapipaterep to honi.",
+      "expected_cleaned_final_translation": "這是禁止聲響的器具。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Oni ko sapipaterep to honi.",
+          "translation": "這是禁止聲響的器具。"
+        },
+        {
+          "form": "O tapodo ko ko sapipaterep to honi.",
+          "translation": "毛巾用來防止聲響。"
+        }
+      ]
+    },
+    "44103": {
+      "expected_cleaned_form": "Ora sapipatingting to diyong.",
+      "expected_cleaned_final_translation": "那是稱豬用的。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Ora sapipatingting to diyong.",
+          "translation": "那是稱豬用的。"
+        },
+        {
+          "form": "Ora sapipatingting to diyong a tingting.",
+          "translation": "那是秤豬用的秤錘。"
+        }
+      ]
+    },
+    "44104": {
+      "expected_cleaned_form": "Sapipatingting to tatirengan.",
+      "expected_cleaned_final_translation": "稱體重用的。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapipatingting to tatirengan.",
+          "translation": "稱體重用的。"
+        },
+        {
+          "form": "Sapipatingting to tatirengan a tingting.",
+          "translation": "稱體重用的秤錘。"
+        }
+      ]
+    },
+    "44241": {
+      "expected_cleaned_form": "Sapiporod to walay.",
+      "expected_cleaned_final_translation": "編線圈用的。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Sapiporod to walay.",
+          "translation": "繞線圈用的。"
+        }
+      ]
+    },
+    "44343": {
+      "expected_cleaned_form": "Sapiringring a pilit.",
+      "expected_cleaned_final_translation": "炒豆子用的鍋。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: zh",
+      "emitted": [
+        {
+          "form": "Sapiringring a pilit.",
+          "translation": "炒豆子用的炒菜鍋。"
+        }
+      ]
+    },
+    "44364": {
+      "expected_cleaned_form": "Sapirofo to koko'.",
+      "expected_cleaned_final_translation": "關雞的工具。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapirofo to koko'.",
+          "translation": "關雞的工具。"
+        },
+        {
+          "form": "Sapirofo to koko' a pakoko'an.",
+          "translation": "關雞的鷄籠。"
+        }
+      ]
+    },
+    "44941": {
+      "expected_cleaned_form": "Sapisaporodaw ni Ariray to walay.",
+      "expected_cleaned_final_translation": "Ariray（阿拉萊）想編線圈。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Sapisaporodaw ni Ariray to walay.",
+          "translation": "Ariray（阿拉萊）想繞線圈。"
+        }
+      ]
+    },
+    "45047": {
+      "expected_cleaned_form": "Sapisatoker to katayalan.",
+      "expected_cleaned_final_translation": "罷工。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapisatoker to katayalan.",
+          "translation": "罷工。"
+        },
+        {
+          "form": "Matoka ko sapisatoker to katayalan.",
+          "translation": "用怠工來罷工。"
+        }
+      ]
+    },
+    "45048": {
+      "expected_cleaned_form": "Sapisatokel to lifon.",
+      "expected_cleaned_final_translation": "減少工資。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Sapisatoker to lifon.",
+          "translation": "減少工資。"
+        }
+      ]
+    },
+    "45415": {
+      "expected_cleaned_form": "Sapitapi'aw ira toya loma' nipanay.",
+      "expected_cleaned_final_translation": "他想去Panay（巴奈）家行婚前服勞役。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Sapitapi'aw ira toya loma' nipanay.",
+          "translation": "他想去Panay（巴奈）家做婚前服勞役。"
+        }
+      ]
+    },
+    "45450": {
+      "expected_cleaned_form": "O tokar ko sapitefad ako to lamlo.",
+      "expected_cleaned_final_translation": "我用梯子取下小米。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "O tokar ko sapitefad ako to lamlo.",
+          "translation": "我用梯子取下小米。"
+        },
+        {
+          "form": "O tokar ko sapitefad ako to kowa'.",
+          "translation": "我用梯子取下木瓜。"
+        }
+      ]
+    },
+    "45451": {
+      "expected_cleaned_form": "Sapitefadaw ira to kingking i kafekang.",
+      "expected_cleaned_final_translation": "她想在上面取罐頭。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), rule 1 (Chinese-only edits): zh",
+      "emitted": [
+        {
+          "form": "Sapitefadaw ira to kingking i kafekang.",
+          "translation": "她想在上面取龍眼。"
+        }
+      ]
+    },
+    "45500": {
+      "expected_cleaned_form": "Sapitelep to kilang.",
+      "expected_cleaned_final_translation": "推倒樹木用的（器具）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "Sapitelep to kilang kikay.",
+          "translation": "推倒樹木用的機器。"
+        }
+      ]
+    },
+    "45545": {
+      "expected_cleaned_form": "Sapiterak to sapa'enor.",
+      "expected_cleaned_final_translation": "拋錨用的（器具）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapiterak to sapa'enor.",
+          "translation": "拋錨用的（器具）。"
+        },
+        {
+          "form": "O kikai ko sapiterak to sapa'enor.",
+          "translation": "用機器拋錨。"
+        }
+      ]
+    },
+    "45567": {
+      "expected_cleaned_form": "Sapitihelom to pikimadan.",
+      "expected_cleaned_final_translation": "圍繞演講台的器物。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapitihelom to pikimadan.",
+          "translation": "圍繞演講台的器物。"
+        },
+        {
+          "form": "Sapitihelom to pikimadan ko 'axenan.",
+          "translation": "圍繞演講台的椅子。"
+        }
+      ]
+    },
+    "45579": {
+      "expected_cleaned_form": "Sapitilak to likat.",
+      "expected_cleaned_final_translation": "輻射光線用的（器具）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapitilak to likat.",
+          "translation": "輻射光線用的（器具）。"
+        },
+        {
+          "form": "Sapitilak to likat ko dingci.",
+          "translation": "用手電筒手照射亮光。"
+        }
+      ]
+    },
+    "45585": {
+      "expected_cleaned_form": "Sapitilo to 'afar.",
+      "expected_cleaned_final_translation": "撈蝦用的網。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapitilo to 'afar.",
+          "translation": "撈蝦用的網。"
+        },
+        {
+          "form": "Sapitilo to siri.",
+          "translation": "捕獵山羊的陷阱。"
+        }
+      ]
+    },
+    "45590": {
+      "expected_cleaned_form": "Sapitimocaw ako to wawa to kohaw.",
+      "expected_cleaned_final_translation": "我想餵孩子湯。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Sapitimocaw ako to wawa to kohaw.",
+          "translation": "我想餵孩子湯。"
+        },
+        {
+          "form": "Sapitimocaw ako to to kohaw.",
+          "translation": "我想沾一口湯。"
+        }
+      ]
+    },
+    "45611": {
+      "expected_cleaned_form": "Sapitiyor to amoto.",
+      "expected_cleaned_final_translation": "攪拌水泥的工具。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapitiyor to amoto.",
+          "translation": "攪拌水泥的工具。"
+        },
+        {
+          "form": "Sapitiyor to amoto ko impi.",
+          "translation": "鏟子是攪拌水泥的工具。"
+        }
+      ]
+    },
+    "45622": {
+      "expected_cleaned_form": "Sapitodal to tilid.",
+      "expected_cleaned_final_translation": "烙字用的（器物）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapitodal to tilid.",
+          "translation": "烙字用的（器物）。"
+        },
+        {
+          "form": "Sapitodal to tilid a marad.",
+          "translation": "烙字用的鐵器。"
+        }
+      ]
+    },
+    "45630": {
+      "expected_cleaned_form": "Sapitoka' to fadahong.",
+      "expected_cleaned_final_translation": "支撐屋頂用的（器具）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapitoka' to fadahong.",
+          "translation": "支撐屋頂用的（器具）。"
+        },
+        {
+          "form": "Sapitoka' to fadahong ko tata'angay a hecek.",
+          "translation": "支撐屋頂用的大柱子。"
+        }
+      ]
+    },
+    "45632": {
+      "expected_cleaned_form": "Sapitokad to tiyad.",
+      "expected_cleaned_final_translation": "剖腹用的（器具）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapitokad to tiyad.",
+          "translation": "剖腹用的（器具）。"
+        },
+        {
+          "form": "Sapitokad to tiyad a po'ot.",
+          "translation": "剖腹用的小刀。"
+        }
+      ]
+    },
+    "45634": {
+      "expected_cleaned_form": "Sapitoker to kafafaw.",
+      "expected_cleaned_final_translation": "抵制上級用的手段。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapitoker to kafafaw.",
+          "translation": "抵制上級用的手段。"
+        },
+        {
+          "form": "O toka ko sapitoker to kafafaw.",
+          "translation": "用怠工手段抵制上級。"
+        }
+      ]
+    },
+    "45636": {
+      "expected_cleaned_form": "Sapitokinih to fokeloh.",
+      "expected_cleaned_final_translation": "傾斜石頭用的（器具）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapitokinih to fokeloh.",
+          "translation": "傾斜石頭用的（器具）。"
+        },
+        {
+          "form": "O kilang ko sapitokinih to fokeloh.",
+          "translation": "用木棍傾斜這塊石頭。"
+        }
+      ]
+    },
+    "45661": {
+      "expected_cleaned_form": "Sapitongod to cohcoh.",
+      "expected_cleaned_final_translation": "連接鐵製撞鈴用的（器物）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "Sapitongod to cohcoh a kaered.",
+          "translation": "連接鐵製撞鈴用的繩子。"
+        }
+      ]
+    },
+    "45663": {
+      "expected_cleaned_form": "Sapitongtong to panay.",
+      "expected_cleaned_final_translation": "打稻穀用的（器具）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapitongtong to panay.",
+          "translation": "打稻穀用的（器具）。"
+        },
+        {
+          "form": "Sapitongtong to panay a pipacpacan.",
+          "translation": "打稻穀用的木桶。"
+        }
+      ]
+    },
+    "45668": {
+      "expected_cleaned_form": "Sapitopaaw ako to tilid o citing no 'Amis sanay.",
+      "expected_cleaned_final_translation": "我想出版阿美語詞典。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: amis",
+      "emitted": [
+        {
+          "form": "Sapitopaaw ako to citing no 'Amis sanay.",
+          "translation": "我想出版阿美語詞典。"
+        }
+      ]
+    },
+    "45689": {
+      "expected_cleaned_form": "Sapiwa'il to 'a'adopen.",
+      "expected_cleaned_final_translation": "套捕野獸用的（器具）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapiwa'il to 'a'adopen.",
+          "translation": "套捕野獸用的（器具）。"
+        },
+        {
+          "form": "Sapiwa'il to 'a'adopen a ka'ered.",
+          "translation": "套捕野獸用的繩子。"
+        }
+      ]
+    },
+    "45713": {
+      "expected_cleaned_form": "Sapiwangawang to ciwciw.",
+      "expected_cleaned_final_translation": "驅趕小雞用的（器物）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "Sapiwangawang to ciwciw a 'alal.",
+          "translation": "驅趕小雞用的小乾枝。"
+        }
+      ]
+    },
+    "45731": {
+      "expected_cleaned_form": "Sapiwikwik to cayna.",
+      "expected_cleaned_final_translation": "編籃子用的（器物）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapiwikwik to cayna.",
+          "translation": "編籃子用的（器物）。"
+        },
+        {
+          "form": "Sapiwikwik to cayna a 'oway.",
+          "translation": "編籃子用的藤條。"
+        }
+      ]
+    },
+    "45740": {
+      "expected_cleaned_form": "Sapiwingawing to wikol.",
+      "expected_cleaned_final_translation": "搖尾巴用的（器物，如道具等）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Sapiwingawing to wikol.",
+          "translation": "搖尾巴用的（器物，如道具等）。"
+        },
+        {
+          "form": "Sapiwingawing to wikol a 'alal.",
+          "translation": "搖尾巴用的乾樹枝。"
+        }
+      ]
+    },
+    "45741": {
+      "expected_cleaned_form": "Sapiwingawingaw no oles to wikol.",
+      "expected_cleaned_final_translation": "狼想搖尾巴。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Sapiwingawingaw no oles to wikol.",
+          "translation": "狼想搖尾巴。"
+        },
+        {
+          "form": "Sapiwingawingaw no waco to wikol.",
+          "translation": "狗好像要搖尾巴。"
+        }
+      ]
+    },
+    "45743": {
+      "expected_cleaned_form": "Sapiwitawitaw ira to tosa a koko' a taini.",
+      "expected_cleaned_final_translation": "他想提兩頭雞來。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Sapiwitawitaw ira to tosa a koko' a taini.",
+          "translation": "他想提兩隻雞來。"
+        }
+      ]
+    },
+    "45744": {
+      "expected_cleaned_form": "Sapixixawaw ako a pailoma'.",
+      "expected_cleaned_final_translation": "我想捉海龜養在家裡。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapixixawaw ako a pailoma'.",
+          "translation": "我想捉海龜養在家裡。"
+        },
+        {
+          "form": "Sapixixawaw ako a pacing.",
+          "translation": "我捉海龜的漁槍。"
+        }
+      ]
+    },
+    "45748": {
+      "expected_cleaned_form": "Sapiyasyas to simal.",
+      "expected_cleaned_final_translation": "滴灑汽油用的（器具）。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sapiyasyas to simal.",
+          "translation": "滴灑汽油用的（器具）。"
+        },
+        {
+          "form": "Sapiyasyas to simal a pa'etang.",
+          "translation": "滴灑汽油用的桶子。"
+        }
+      ]
+    },
+    "46050": {
+      "expected_cleaned_form": "Perper sato ko saselican topitatayni aca.",
+      "expected_cleaned_final_translation": "他經常來弄得門槽都破爛了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "Perper sato ko saselican to pitatayni aca ningra.",
+          "translation": "他經常來弄得門槽都破爛了。(常客)"
+        }
+      ]
+    },
+    "46166": {
+      "expected_cleaned_form": "Sasinoetsa cingra a mataya（matayar）.",
+      "expected_cleaned_final_translation": "他汗流夾背地工作。",
+      "reason": "Review card P1-39 (25% rule): alt",
+      "emitted": [
+        {
+          "form": "Sasinoetsa cingra a mataya.",
+          "translation": "他汗流夾背地工作。",
+          "variants": [
+            "Sasinoetsa cingra a matayar."
+          ]
+        }
+      ]
+    },
+    "46224": {
+      "expected_cleaned_form": "Sasokidaten kora konga.",
+      "expected_cleaned_final_translation": "要把那些蕃薯蔓拔了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), rule 1 (Chinese-only edits): zh",
+      "emitted": [
+        {
+          "form": "Sasokidaten kora konga.",
+          "translation": "要把那些蕃薯蔓拉扯了。"
+        }
+      ]
+    },
+    "46457": {
+      "expected_cleaned_form": "Satokinikinihen koya 'adipel naira.",
+      "expected_cleaned_final_translation": "把他們那些籬笆弄倒。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), rule 1 (Chinese-only edits): zh",
+      "emitted": [
+        {
+          "form": "Satokinikinihen koya 'adipel naira.",
+          "translation": "把他們的那些籬笆弄得倒西歪。"
+        }
+      ]
+    },
+    "46577": {
+      "expected_cleaned_form": "O sekop ko sapitiyol to",
+      "expected_cleaned_final_translation": "",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "O sekop ko sapitiyol to 'amoto.",
+          "translation": "用鏟子攪拌水泥。"
+        }
+      ]
+    },
+    "46932": {
+      "expected_cleaned_form": "Sokidat to masay.",
+      "expected_cleaned_final_translation": "拔出藤蔓。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Sokidat to masay.",
+          "translation": "拉出藤蔓。"
+        }
+      ]
+    },
+    "46933": {
+      "expected_cleaned_form": "Sokidaten ko ta'angay a heci no konga.",
+      "expected_cleaned_final_translation": "地瓜長大了要拔它的蔓藤。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Sokidaten ko ta'angay a heci no konga.",
+          "translation": "地瓜長大了要拔它的蔓藤。"
+        },
+        {
+          "form": "Sokidaten ko milaladay a lapot no konga.",
+          "translation": "蔓延的地瓜蔓藤要拉扯。"
+        }
+      ]
+    },
+    "46941": {
+      "expected_cleaned_form": "sokoy no riyar.",
+      "expected_cleaned_final_translation": "",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), rule 1 (Chinese-only edits): zh",
+      "emitted": [
+        {
+          "form": "sokoy no riyar.",
+          "translation": "牡丹藻"
+        }
+      ]
+    },
+    "46956": {
+      "expected_cleaned_form": "Opisacacakan no Kiwit ko solong.",
+      "expected_cleaned_final_translation": "奇美部落的廚房。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Opisacacakan no Kiwit ko solong.",
+          "translation": "奇美部落的廚房。"
+        },
+        {
+          "form": "Opisacacakan no fayinayan no Kiwit ko solong.",
+          "translation": "奇美部落的男人用廚房。"
+        }
+      ]
+    },
+    "47457": {
+      "expected_cleaned_form": "Tahira i takaraway a sera cangra.",
+      "expected_cleaned_final_translation": "他們到達了高地上。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), rule 1 (Chinese-only edits): zh",
+      "emitted": [
+        {
+          "form": "Tahira i takaraway a sera cangra.",
+          "translation": "他們到達高地了。"
+        }
+      ]
+    },
+    "47748": {
+      "expected_cleaned_form": "Pak'en to kolong i talotalodan.",
+      "expected_cleaned_final_translation": "在草地放牛。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Paka'en to kolong i talotalodan.",
+          "translation": "在草地放牛。"
+        }
+      ]
+    },
+    "47912": {
+      "expected_cleaned_form": "Tao'en ko niyaro a misakapah.",
+      "expected_cleaned_final_translation": "把部落管理好。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Tao'en ko niyaro' a misakapah.",
+          "translation": "把部落管理好。"
+        }
+      ]
+    },
+    "47999": {
+      "expected_cleaned_form": "Tarangen ko papah no tamako.",
+      "expected_cleaned_final_translation": "把煙葉焙乾。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Tarangen ko papah no tamako.",
+          "translation": "把煙葉烘乾。"
+        }
+      ]
+    },
+    "48213": {
+      "expected_cleaned_form": "Tatenaan no riyal.",
+      "expected_cleaned_final_translation": "海底。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Tatenaan no riyal.",
+          "translation": "海底。"
+        },
+        {
+          "form": "Tahira i tatenaan no riyar a micelem.",
+          "translation": "潛到海底。"
+        }
+      ]
+    },
+    "48214": {
+      "expected_cleaned_form": "Tatenaan no pa^tang.",
+      "expected_cleaned_final_translation": "水桶底。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "Tatenaan no pa^etang.",
+          "translation": "水桶的桶底。"
+        }
+      ]
+    },
+    "48307": {
+      "expected_cleaned_form": "Tatimocen a kakaenen.",
+      "expected_cleaned_final_translation": "直接入口的食物。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), rule 1 (Chinese-only edits): zh",
+      "emitted": [
+        {
+          "form": "Tatimocen a kakaenen.",
+          "translation": "沾一口試吃的食物。"
+        }
+      ]
+    },
+    "48362": {
+      "expected_cleaned_form": "Pakinaliay tato ko cikay ningra isawni, saadadasa ko pakih ira.",
+      "expected_cleaned_final_translation": "他剛才跑得過火了，所以踝骨痛得厲害。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "Pakinaliay tato ko cikay ningra isawni, saadadasa ko pakih nira.",
+          "translation": "他剛才跑得過火了，没想到踝骨痛得厲害。"
+        }
+      ]
+    },
+    "48389": {
+      "expected_cleaned_form": "O tatohatohen koni tacanoyan namo.",
+      "expected_cleaned_final_translation": "要把你們的鞦韆擺動。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), rule 1 (Chinese-only edits): zh",
+      "emitted": [
+        {
+          "form": "O tatohatohen koni tacanoyan namo.",
+          "translation": "要把你們的鞦韆鬆動卸下來。"
+        }
+      ]
+    },
+    "48390": {
+      "expected_cleaned_form": "Tatohatohen a kikay.",
+      "expected_cleaned_final_translation": "要鬆動的機器。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), rule 1 (Chinese-only edits): zh",
+      "emitted": [
+        {
+          "form": "Tatohatohen a kikay.",
+          "translation": "要鬆動的分解的機器。"
+        }
+      ]
+    },
+    "48413": {
+      "expected_cleaned_form": "Tatolikawen a （karomakatan）.",
+      "expected_cleaned_final_translation": "要開出來的人行道。",
+      "reason": "Review card P1-40 (answer): remove",
+      "emitted": [
+        {
+          "form": "Tatolikawen a.",
+          "translation": "要開出來的人行道。"
+        }
+      ]
+    },
+    "48559": {
+      "expected_cleaned_form": "Tefaden kora tokar.",
+      "expected_cleaned_final_translation": "把梯子取下來。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Tefaden kora tokar.",
+          "translation": "把梯子取下來。"
+        },
+        {
+          "form": "Tefaden to tokar kora kowa'.",
+          "translation": "把梯子取棵木瓜。"
+        }
+      ]
+    },
+    "48664": {
+      "expected_cleaned_form": "Tomenek to ko kerah('erac).",
+      "expected_cleaned_final_translation": "退潮海浪平靜了。",
+      "reason": "Review card P1-41 (answer): remove",
+      "emitted": [
+        {
+          "form": "Tomenek to ko kerah.",
+          "translation": "退潮海浪平靜了。"
+        }
+      ]
+    },
+    "48884": {
+      "expected_cleaned_form": "Tinooyen ako koni a farohefohay.",
+      "expected_cleaned_final_translation": "我要把這毛線紡織起來。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), 25%+25% rule: separate",
+      "emitted": [
+        {
+          "form": "Tinooyen ako koni a farohefohay.",
+          "translation": "我要把這毛線紡織起來。"
+        },
+        {
+          "form": "Tinooyen ako koni a kanit.",
+          "translation": "我要把這毛線編織成毛綿衣。"
+        }
+      ]
+    },
+    "48923": {
+      "expected_cleaned_form": "Matatiwtiw ko ngiga' a romadiw.",
+      "expected_cleaned_final_translation": "歌聲參差不齊。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Matatiwtiw ko ngiha' a romadiw.",
+          "translation": "歌聲參差不齊。"
+        }
+      ]
+    },
+    "48994": {
+      "expected_cleaned_form": "Tohatohen ko cakelis iso.",
+      "expected_cleaned_final_translation": "把你的斧頭鬆弛下來。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Tohatohen ko cakelis iso.",
+          "translation": "把你的斧頭鬆弛下來。"
+        },
+        {
+          "form": "Tohatohen ko kawil no cakelis iso.",
+          "translation": "把你的斧頭柄卸下來。"
+        }
+      ]
+    },
+    "48996": {
+      "expected_cleaned_form": "Tokaden to ko kolong!",
+      "expected_cleaned_final_translation": "把牛屠宰吧！",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Tokaden to ko kolong !",
+          "translation": "把牛屠宰了吧！"
+        }
+      ]
+    },
+    "49102": {
+      "expected_cleaned_form": "Tomerep to ko fatakinay.",
+      "expected_cleaned_final_translation": "蟋蟀不叫了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: amis",
+      "emitted": [
+        {
+          "form": "Tomerep to ko tanikay.",
+          "translation": "蟋蟀不叫了。"
+        }
+      ]
+    },
+    "49126": {
+      "expected_cleaned_form": "Maraod to ko laood（lalo'od）, tomokolay ko sapaloma.",
+      "expected_cleaned_final_translation": "春天到了，種子發芽了。",
+      "reason": "Review card P1-42 (answer): alt",
+      "emitted": [
+        {
+          "form": "Maraod to ko laood, tomokolay ko sapaloma.",
+          "translation": "春天到了，種子發芽了。",
+          "variants": [
+            "Maraod to ko lalo'od, tomokolay ko sapaloma."
+          ]
+        }
+      ]
+    },
+    "49143": {
+      "expected_cleaned_form": "Tongal ko kafana'.",
+      "expected_cleaned_final_translation": "更知道。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), rule 1 (Chinese-only edits): zh",
+      "emitted": [
+        {
+          "form": "Tongal ko kafana'.",
+          "translation": "更有知識。"
+        }
+      ]
+    },
+    "49267": {
+      "expected_cleaned_form": "Wa'ilen ko li'el no kolong to kaered.",
+      "expected_cleaned_final_translation": "用繩子把牛脖子套住。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Wa'ilen ko li'el no kolong to ka'ered.",
+          "translation": "用繩子把牛脖子套住。"
+        }
+      ]
+    },
+    "49277": {
+      "expected_cleaned_form": "Wadayen to ako kora malapo'iay a tamdaw.",
+      "expected_cleaned_final_translation": "我們把那些互相謾罵的人勸開了。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), E1 threshold (≤3 letters and ≤1 character): both",
+      "emitted": [
+        {
+          "form": "Wadayen to ako kora malapo'iay a tamdaw.",
+          "translation": "我把那些互相謾罵的人勸開了。"
+        }
+      ]
+    },
+    "49300": {
+      "expected_cleaned_form": "Wangawangsa ko kayam ira papipanokayen kami.",
+      "expected_cleaned_final_translation": "他的手揮動著，示意我們回去。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: amis",
+      "emitted": [
+        {
+          "form": "Wangawangsa ko kayam ira papipanokay kamiyanan.",
+          "translation": "他的手揮動著，示意我們回去。"
+        }
+      ]
+    },
+    "49325": {
+      "expected_cleaned_form": "Wawadayen a fiyaw.",
+      "expected_cleaned_final_translation": "即將讓人勸架的鄰居。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: both",
+      "emitted": [
+        {
+          "form": "Wawadayen a fiyaw.",
+          "translation": "要叫人勸架的鄰居。"
+        }
+      ]
+    },
+    "49382": {
+      "expected_cleaned_form": "Wingawingen no oles ko wikol ira.",
+      "expected_cleaned_final_translation": "狼把自己的尾巴搖一搖。",
+      "reason": "Upstream editors' edit (g0v/amis-moedict 4cb82539d), answer: separate",
+      "emitted": [
+        {
+          "form": "Wingawingen no oles ko wikol ira.",
+          "translation": "狼把自己的尾巴搖一搖。"
+        },
+        {
+          "form": "Wingawingen no waco ko wikol ira.",
+          "translation": "狗要把自己的尾巴搖一搖。"
         }
       ]
     }
