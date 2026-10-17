@@ -254,6 +254,25 @@ constraint without UPA violations.
 from a missing FORM = never transcribed). Not counted as a token.
 `standardize.py` preserves it when duplicating original → standard.
 
+**Amended 2026-10-17.** `<UNCLEAR/>` is the bank's one marker for this, at
+every level (S, W and M FORM, and PHON). A source's own marker for an
+untranscribed word (NTU's `X` / `XX`) is replaced by `<UNCLEAR/>`. A FORM that
+is nothing but `<UNCLEAR/>` has no lower tiers: an S whose FORM is only
+`<UNCLEAR/>` has no W, and a W whose FORM is only `<UNCLEAR/>` has no M. Word
+counts read the whole FORM, so words after an inline `<UNCLEAR/>` are counted
+and the gap is not. A sentence translation that is wholly unknown is not
+emitted (no TRANSL); a word or morpheme gloss that is wholly unknown is
+`<TRANSL><UNCLEAR/></TRANSL>`. Inside a gloss, an unknown piece is
+`<UNCLEAR/>` (`if-main-<UNCLEAR/>-outsider-nom`). A source's mark of
+uncertainty about a gloss it did give (`LIG?`, `他?`) is kept as written.
+Maintainer (2026-10-17, Unknown-Content Markers review): NTU's untranscribed
+words → *"A. All tiers"*; *"Keep the tag"* (not a text marker); *"if the
+translation is unknown (? or ?? etc), we shouldn't use <UNCLEAR/> but actually
+just not emit a translation. Similarly <UNCLEAR /> FORM text should not result
+in lower tiers. So if the S FORM is simply <UNCLEAR/>, no Ws. If the W FORM is
+<UNCLEAR />, no Ms under it."*, read as *"B. Glosses UNCLEAR; sentence
+translations omitted"*; wording approved.
+
 ### POL-022 · RULED · 2026-08-10 · duplicate sentences
 **Narratives may repeat; reference resources may not.** In narrative and
 spontaneous-speech corpora, exact duplicate sentences are *fine* — natural
@@ -390,6 +409,16 @@ read the same: the source does not give this word's meaning. A source's own
 the gloss `?`, and then treat accordingly. I _think_ ? is used elsewhere for
 uncertain glosses (most likely NTU). If this is confirmed, then make sure it's
 in a policy."* First applied in the Chang Seediq grammar dev repo.
+
+**Amended 2026-10-17 (supersedes the `?` above).** A word or morpheme the
+source leaves unglossed, or glosses `?` / `??`, is glossed `<UNCLEAR/>`
+(POL-021): `yee-su` is `<UNCLEAR/>-你`, and its M `yee` is `<UNCLEAR/>`. This
+covers sources' own `?` and `??` markers too, so POL-036's "kept as written"
+no longer applies to them. Maintainer (2026-10-17): *"For POL-061, it makes
+sense to deliberately gloss someting as having an unknown gloss in order to
+distinguish "forgot to gloss" from "couldn't gloss". But in that case, for
+consistency, let's use <UNCLEAR />"*; sources' own markers → *"B. A + placeholders"*
+(exact `?`/`??` and `?` used as a placeholder inside a gloss).
 
 ### POL-024 · RULED · 2026-08-10 · parentheticals in translations
 Two different things, treated differently:
