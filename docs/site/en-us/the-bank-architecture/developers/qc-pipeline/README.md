@@ -106,6 +106,7 @@ Everything in the **cleaning & standardization** pipeline modifies XML *in place
 * [validate_vocabulary.py](validate-vocabulary.md) — vocabulary vs reference
 * [validate_duplicate_sentences.py](validate-duplicate-sentences.md) — within-corpus duplicates
 * [validate_audio.py](validate-audio.md) — broken/silent/mis-ranged audio
+* [content_delta.py](content-delta.md) — removed, renamed or relabelled published XML, red for override
 * [validate_hf_audio.py](validate-hf-audio.md) — Hub ↔ XML audio parity (blocking in CI)
 * [sync_hf_audio.py](sync-hf-audio.md) — repair a dataset to match the XML (dry run by default)
 
@@ -125,6 +126,7 @@ Everything in the **cleaning & standardization** pipeline modifies XML *in place
 * [orthography_detector.py](orthography-detector.md) — guess a corpus's source orthography
 * [dialect_detector](dialect-detector.md) — ML per-language dialect prediction
 * [declared_vs_detected.py](declared-vs-detected.md) — the pipeline's dialect and source orthography vs the detectors
+* [lint_hidden_tables.py](lint-hidden-tables.md) — language data hiding in build code (POL-039), advisory
 
 ### Fix-ups & review
 

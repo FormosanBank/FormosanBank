@@ -23,6 +23,8 @@ You do, mostly when something is red. This table is the map:
 <tr><td><code>audio-validation</code></td><td>PR + push to main</td><td>HARD findings V100–V103 for corpora whose XML the PR touched. Deliberately does not manufacture V100 failures where no local audio exists. Full-corpus job informational.</td></tr>
 <tr><td><code>hf-audio-parity</code></td><td>PR + push + nightly 08:17 UTC</td><td><strong>Everything.</strong> No baseline, no exemption, no swallowed exit code — see <a href="hugging-face-audio-parity.md">Hugging Face audio parity</a>.</td></tr>
 <tr><td><code>tests</code></td><td>PR + push to main</td><td><code>pytest</code>. Plain and total.</td></tr>
+<tr><td><code>rights-comparison</code></td><td>PR + push to main</td><td>Any change to a corpus's licence between the PR base and the head (<code>rights_delta.py</code>, POL-044). Red by design; a legitimate change is merged by maintainer override, with no label-based bypass.</td></tr>
+<tr><td><code>content-comparison</code></td><td>PR + push to main</td><td>Removed or renamed TEXT and sentence ids, element counts that go down, changed <code>@dialect</code> or <code>@copyright</code>, for the corpora whose XML the PR touches (<a href="../qc-pipeline/content-delta.md">content_delta.py</a>, POL-037, POL-051). Red by design, overridden the same way.</td></tr>
 </tbody></table>
 
 ### Informational — these report and move on
