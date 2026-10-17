@@ -132,7 +132,7 @@ the validator names on its `Details:` line, never to the terminal.
 | G014 | `rare_gloss_is_substring_of_dominant` | WARN | file | a word's rare gloss is a substring of its dominant gloss. |
 | G015 | `function_word_aberrant_gloss_rate` | WARN | file | sentences where function words carry glosses they almost never take. |
 | G016 | `unbalanced_brackets_in_gloss` | SOFT | file | a W or M gloss with an unclosed or unopened bracket (ASCII or CJK). |
-| G017 | `out_of_language_run` | SOFT | file | a run of an S original FORM holding three or more words of another language — English function words, or words attested in another Formosan language's reference vocabulary but not this one's — with no word of the declared language in between. |
+| G017 | `out_of_language_run` | SOFT | file | a run of an S original FORM holding three or more English function words with no word of the declared language in between — a scrape that caught the paper's prose, a citation left in the text, an untranslated passage. |
 | G018 | `latin_gloss_on_chinese_tier` | SOFT | file | W/M glosses declared Chinese (xml:lang="zho") that are Latin letters only — an English word or a Leipzig code in the Chinese column. |
 
 100 rules.

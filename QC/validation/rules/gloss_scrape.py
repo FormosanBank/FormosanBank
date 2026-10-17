@@ -24,7 +24,7 @@ Rules:
 - G014 WARN: a word's rare gloss is a substring of its dominant gloss (shifted column).
 - G015 WARN: a sentence whose function words carry glosses they almost never take.
 - G016 SOFT: unbalanced ASCII/CJK bracket inside a W/M gloss (bracket bleed).
-- G017 SOFT: three or more consecutive FORM words from another language.
+- G017 SOFT: three or more English function words in a row inside an S FORM.
 - G018 SOFT: Latin-only glosses on a Chinese-declared W/M gloss tier.
 """
 from __future__ import annotations
@@ -894,6 +894,14 @@ def g016_unbalanced_brackets_in_gloss(
 # biographies, English under xml:lang="zho", 19 English voice codes on NTU's
 # Chinese gloss tier. V143 covers TRANSL script vs declared language; nothing
 # covered FORM, or Latin codes on a Chinese gloss tier.
+#
+# G017 detects English only. The card also wanted "words attested only in
+# another language"; tried against the bank's own reference vocabularies on
+# the Amis Wikipedia (2,000 files) it flagged 315 runs, all place names,
+# loans and shared Austronesian words read as Kavalan, Paiwan or Bunun, and a
+# stricter form (five lowercase words, one language) flagged none. The bank's
+# vocabularies overlap too much to tell languages apart; that half needs
+# non-overlapping lexicons it does not have.
 # ---------------------------------------------------------------------------
 
 # Three letters or longer, and none that is also an attested Formosan word
@@ -938,19 +946,10 @@ def _declared_language(tree: etree._ElementTree) -> str | None:
     return resolve_language(root.get("{http://www.w3.org/XML/1998/namespace}lang"), root.get("dialect"))
 
 
-def _foreign(token: str, own: frozenset[str], others: dict[str, frozenset[str]]) -> str | None:
-    """The language a token points to when it is not the declared one, else None."""
+def _foreign(token: str) -> str | None:
+    """'English' when the token is an English function word, else None."""
     word = token.strip("“”\"'.,;:!?()[]…").lower()
-    if not word:
-        return None
-    if word in _ENGLISH_FUNCTION_WORDS:
-        return "English"
-    if word in own:
-        return None
-    for lang, words in others.items():
-        if word in words:
-            return lang
-    return None
+    return "English" if word in _ENGLISH_FUNCTION_WORDS else None
 
 
 def g017_out_of_language_run(
@@ -958,21 +957,19 @@ def g017_out_of_language_run(
     path: Path,
     index=None,
 ) -> list[Finding]:
-    """G017 SOFT: a run of an S original FORM holding three or more words of
-    another language — English function words, or words attested in another
-    Formosan language's reference vocabulary but not this one's — with no
-    word of the declared language in between.
+    """G017 SOFT: a run of an S original FORM holding three or more English
+    function words with no word of the declared language in between — a
+    scrape that caught the paper's prose, a citation left in the text, an
+    untranslated passage.
 
-    Rate-free and per sentence: an example sentence quoted from another
-    language, a scrape that caught the paper's prose, a Wikipedia article
-    with an untranslated passage.
+    Rate-free and per sentence. A word of the declared language (its
+    reference vocabulary) closes the run; words no list knows ride along.
     """
     language = _declared_language(tree)
     vocab = _reference_vocabulary()
     if not language or language not in vocab:
         return []
     own = vocab[language]
-    others = {k: v for k, v in vocab.items() if k != language}
     findings: list[Finding] = []
     for s in tree.iter("S"):
         text = _form_text(s)
@@ -987,7 +984,7 @@ def g017_out_of_language_run(
             return sum(1 for _t, l in r if l)
         for token in text.split() + [""]:
             word = token.strip("“”\"'.,;:!?()[]…").lower()
-            lang = _foreign(token, own, others) if token else None
+            lang = _foreign(token) if token else None
             if token and lang:
                 run.append((token, lang))
             elif token and word and word not in own and run:

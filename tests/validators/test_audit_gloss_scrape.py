@@ -752,7 +752,7 @@ def test_g016_flags_unbalanced_ascii_and_cjk_brackets():
     assert all(f.severity is Severity.SOFT for f in found)
 
 
-def test_g017_flags_an_english_run_and_a_seediq_run_in_an_amis_text():
+def test_g017_flags_an_english_run_in_an_amis_text():
     sentences = [
         _glossed([("maolah", "like"), ("kako", "1SG")], sid="s1"),
         _glossed([("the", "x"), ("children", "x"), ("are", "x"), ("here", "x")], sid="s2"),
