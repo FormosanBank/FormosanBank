@@ -93,6 +93,5 @@ Run it in the orthography-checking stage of the pipeline, after a `standard` tie
 
 - [orthography_extract.py](orthography-extract.md) — produces the `orthographic_info` profiles this script consumes.
 - [validate_vocabulary.py](validate-vocabulary.md) — sibling check on high-frequency words.
-- [orthography_compare.py](orthography-compare.md) — compare two corpora's orthographies against each other.
 - [Running an Audit](../running-an-audit.md)
 - [QC Pipeline overview](README.md)

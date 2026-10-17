@@ -141,7 +141,7 @@ python QC/utilities/standardize.py \
 
 ### Single-file wrapper
 
-`standardize.py --corpora_path <file.xml>` can operate on one XML file directly. `QC/utilities/standardize_single_file.py` is still available as a wrapper for workflows that prefer an explicit `--xml_path`; it copies the file into a temp directory, invokes `standardize.py --corpora_path <tempdir> --tsv_path …`, then writes the result back. Flags: `--xml_path`, `--tsv_path`, `--target_column`. (It has no `--copy` mode.)
+`standardize.py --corpora_path <file.xml>` can operate on one XML file directly. (The former `standardize_single_file.py` wrapper was deleted in October 2026.)
 
 ## Output & side effects
 
