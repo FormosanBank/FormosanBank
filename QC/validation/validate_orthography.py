@@ -26,6 +26,10 @@ What is compared, per language (or language/dialect) group
 
 Output
   * the metrics, one per line, with any WARNING lines
+  * by default (development use) also the two pickles' key lists and the
+    reference's character-frequency table; `--quiet` drops those and the
+    matplotlib font messages, leaving the group header, the metric lines,
+    the WARNING lines and the SUMMARY line — what the skills run
   * one greppable line per group:
       SUMMARY orthography | <Language> / <dialect> | jaccard=… overlap=… cosine=…
         euclid=… kl=… bigram_cosine=… bigram_euclid=… | corpus_only=[…]
@@ -38,7 +42,7 @@ Output
 
 Usage
     python QC/validation/validate_orthography.py \
-        --o_info <output_dir>/extract_logs --reference QC/validation/reference
+        --o_info <output_dir>/extract_logs --reference QC/validation/reference [--quiet]
 """
 import os
 import matplotlib.pyplot as plt
@@ -50,6 +54,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 from scipy.spatial.distance import euclidean
 from scipy.special import rel_entr
 import argparse
+import logging
+
+QUIET = False  # --quiet: only the group header, metric lines, WARNING lines and SUMMARY line
 
 plt.switch_backend('Agg')  # Use a non-GUI backend
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
@@ -136,7 +143,8 @@ def compare_orthography(c1_dir, c2_dir, label):
     # get the orthographic info for the target corpus
     with open(os.path.join(c1_dir, 'orthographic_info'), 'rb') as f:
         c1_info = pickle.load(f)
-    print(c1_info.keys())
+    if not QUIET:
+        print(c1_info.keys())
 
     # get the reference orthographic info
     ref_path = os.path.join(c2_dir, 'orthographic_info')
@@ -146,7 +154,8 @@ def compare_orthography(c1_dir, c2_dir, label):
         return None
     with open(ref_path, 'rb') as f:
         c2_info = pickle.load(f)
-    print(c2_info.keys())
+    if not QUIET:
+        print(c2_info.keys())
     warnings_raised = 0
 
     # Filter unique_chars to exclude numerals
@@ -168,7 +177,8 @@ def compare_orthography(c1_dir, c2_dir, label):
     c1_top_30_chars = dict(c1_sorted_characters[:30])
     all_chars = set(c2_use_chars).union(set(c1_top_30_chars))
 
-    print(c2_character_frequency)
+    if not QUIET:
+        print(c2_character_frequency)
 
     char_jaccard_similarity = jaccard_similarity(set(c1_use_chars), set(c2_use_chars))
     print(f"Jaccard Similarity of unique characters: {char_jaccard_similarity:.2f}")
@@ -305,7 +315,13 @@ if __name__ == "__main__":
     parser.add_argument('--o_info', help='Path to log folder containing orthographic info that will be analyzed.')
     parser.add_argument('--reference', help='Path to reference orthographic info. If blank, uses whatever is in the reference folder inside QC/validation')
     parser.add_argument('--language', help='Language code. If blank, all languages in o_info will be analyzed.')
+    parser.add_argument('--quiet', action='store_true',
+                        help='Print only the group header, the metric lines, WARNING lines and the SUMMARY line '
+                             '(what the skills run). Default is the full development output.')
     args = parser.parse_args()
+    QUIET = args.quiet
+    if QUIET:
+        logging.getLogger('matplotlib.font_manager').setLevel(logging.ERROR)
 
     # Validate required arguments
     if not args.o_info:
