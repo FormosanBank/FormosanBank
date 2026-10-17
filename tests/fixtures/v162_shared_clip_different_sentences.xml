@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- V162 (HARD): one clip attached to two different sentences. S_1 and S_2 name
+     the same file and span with different original FORMs (the ILRDF v2 shape).
+     S_3 shares S_1's clip with the same text: a repeated sentence, not V162. -->
+<TEXT id="v162" citation="c" BibTeX_citation="b" copyright="CC BY-NC 4.0" xml:lang="ami" dialect="Coastal" audio="segmented">
+  <S id="S_1">
+    <FORM kindOf="original">Maolah kako.</FORM>
+    <FORM kindOf="standard">Maolah kako.</FORM>
+    <AUDIO file="clip_7.mp3" start="0" end="1.5"/>
+  </S>
+  <S id="S_2">
+    <FORM kindOf="original">Tayra ko wawa.</FORM>
+    <FORM kindOf="standard">Tayra ko wawa.</FORM>
+    <AUDIO file="clip_7.mp3" start="0" end="1.5"/>
+  </S>
+  <S id="S_3">
+    <FORM kindOf="original">Maolah kako.</FORM>
+    <FORM kindOf="standard">Maolah kako.</FORM>
+    <AUDIO file="clip_7.mp3" start="0" end="1.5"/>
+  </S>
+</TEXT>

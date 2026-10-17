@@ -1319,3 +1319,40 @@ def test_V148_formless_S_never_counts(tmp_path):
     combined = combined_output(proc)
     assert "v148" not in combined, (
         f"FORM-less S must not trip V148; stdout={proc.stdout!r}")
+
+
+# ---------------------------------------------------------------------------
+# V162 / V163: audio consistency without audio files (skills review D5, 2026-10-17)
+# ---------------------------------------------------------------------------
+
+def _findings_csv(tmp_path: Path, rule_id: str) -> list[dict]:
+    """Rows for one rule from the findings CSV _run_validate writes next to the XML."""
+    import csv
+    path = tmp_path / "soft.csv"
+    if not path.exists():
+        return []
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        return [r for r in csv.DictReader(handle) if r.get("rule_id") == rule_id]
+
+
+def test_V162_one_clip_two_sentences_is_hard(tmp_path, fixtures_dir, copy_fixture):
+    """S_1 and S_2 share clip_7.mp3 [0-1.5] with different FORMs; S_3 repeats S_1's text and is not flagged."""
+    copy_fixture(fixtures_dir / "v162_shared_clip_different_sentences.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    assert _has_rule_finding(proc, ("v162",)), proc.stdout
+    rows = _findings_csv(tmp_path, "V162")
+    assert [r["location"] for r in rows] == ["S=S_2"], rows
+    assert rows[0]["severity"] == "HARD"
+    assert "one clip, two sentences" in rows[0]["message"]
+    assert proc.returncode != 0
+
+
+def test_V163_audio_on_printed_alternative_is_soft(tmp_path, fixtures_dir, copy_fixture):
+    """S_1 (slash) and S_2 (optional parenthesis) carry AUDIO: SOFT; S_3 has no AUDIO, S_4 no alternative."""
+    copy_fixture(fixtures_dir / "v163_audio_on_printed_alternative.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    rows = _findings_csv(tmp_path, "V163")
+    assert sorted(r["location"] for r in rows) == ["S=S_1", "S=S_2"], rows
+    assert all(r["severity"] == "SOFT" for r in rows)
+    assert sorted(r["character"] for r in rows) == ["g(e)", "i/q"]
+    assert proc.returncode == 0, "SOFT only: the validator must not exit 1"

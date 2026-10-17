@@ -8,6 +8,7 @@ the CSV writer.
 Signature: same as HARD rules.
 """
 import difflib
+import re
 import unicodedata
 from pathlib import Path
 
@@ -408,6 +409,51 @@ def v157_legacy_alternate_kindOf(
     return findings
 
 
+# A printed alternative inside a sentence: "Qbhni/qduda ka ni", "lemang(e)da",
+# "tualʉhlʉlʉhlʉ(tamana)". The recording can only have read one of them.
+_ALTERNATIVE_SLASH_RE = re.compile(r"[^\W\d_]/[^\W\d_]")
+_ALTERNATIVE_PAREN_RE = re.compile(r"[^\W\d_]\([^\W\d_]+\)|\([^\W\d_]+\)[^\W\d_]")
+
+
+def v163_audio_on_sentence_with_printed_alternative(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """An S carrying AUDIO whose original FORM still prints an alternative (a slash
+    between words, or an optional part in parentheses) should not carry that
+    audio: the clip read one option, and the sentence states two.
+
+    V163 (2026-10-17, skills review D5), after the maintainer's 2026-10-16
+    ruling: "when there are multiple options in a single item, we do NOT
+    include the audio with that item ... The audio should still be used, but is
+    included as an untranscribed audio item". SOFT: a human decides which.
+    """
+    findings: list[Finding] = []
+    for s in tree.iter("S"):
+        if s.find("AUDIO") is None:
+            continue
+        original = next((f for f in s.findall("FORM")
+                         if f.get("kindOf") == "original" and f.get("ver") is None), None)
+        text = (original.text or "") if original is not None else ""
+        hit = _ALTERNATIVE_SLASH_RE.search(text) or _ALTERNATIVE_PAREN_RE.search(text)
+        if not hit:
+            continue
+        s_id = s.get("id") or ""
+        findings.append(Finding(
+            rule_id="V163",
+            severity=Severity.SOFT,
+            message=(f"V163 SOFT audio_on_sentence_with_printed_alternative: S={s_id} has "
+                     f"AUDIO but its original FORM prints an alternative "
+                     f"({hit.group(0)!r} in {text[:60]!r}); attach the clip as "
+                     f"untranscribed audio instead"),
+            path=path,
+            location=f"S={s_id}" if s_id else "S",
+            character=hit.group(0),
+        ))
+    return findings
+
+
 def v151_S_TRANSL_has_no_kindOf(
     tree: etree._ElementTree,
     path: Path,
@@ -473,5 +519,7 @@ RULES: list = [
     v157_legacy_alternate_kindOf,
     # POL-025 S-level TRANSL @kindOf (2026-09-08)
     v151_S_TRANSL_has_no_kindOf,
+    # V163: 2026-10-17 skills review D5 (audio consistency without audio files)
+    v163_audio_on_sentence_with_printed_alternative,
 ]
 CROSS_FILE_RULES: list = []
