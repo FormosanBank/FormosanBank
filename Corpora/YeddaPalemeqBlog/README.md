@@ -35,7 +35,7 @@ prohibited without prior written permission.
 - 5,585 TRANSL elements
 - 665 AUDIO references
 - Canonical XML SHA-256:
-  `5144410793dc3292a75a81feade52d699443bffd2497837c702d31afbb786752`
+  `39386e8b1b0a2ac7a37929af812764e1d5fa6bacb9391a0a3f175b095903dd9f`
 
 The original transcription uses the established Yedda Ortho113 route. The
 standard FORM tier is derived from the original tier, and both PHON tiers are
@@ -221,7 +221,7 @@ FormosanBank checkout contains this corpus, so the corpus tracks improvements to
 `clean_xml.py`, `standardize.py` and `add_phonology.py` like every other corpus.
 
 > **Tool version of record.** `XML/` as published was last regenerated against
-> FormosanBank commit `c3ea819d23e6025cfbd9dda7cb7b594c4c2cc304`. `rebuild_xml.sh`
+> FormosanBank commit `bd13ea1ffb71c956183896b24bd27728eb62e47c`. `rebuild_xml.sh`
 > prints a note when the checkout differs — informational, not an error. To
 > reproduce that exact output rather than a current one, set `VALIDATOR_ROOT` to
 > a checkout at that commit.

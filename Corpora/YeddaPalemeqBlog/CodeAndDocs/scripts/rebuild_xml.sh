@@ -14,7 +14,7 @@ RUN_LOG_DIR="${RUN_LOG_DIR:-$(mktemp -d -t yedda-rebuild-XXXXXX)}"
 # The published XML was last regenerated against this FormosanBank commit.
 # Informational only: the shared utilities move on, and a newer commit is the
 # expected case. Recorded here and in README.md so a reproduction can pin it.
-REFERENCE_VALIDATOR_COMMIT="c3ea819d23e6025cfbd9dda7cb7b594c4c2cc304"
+REFERENCE_VALIDATOR_COMMIT="bd13ea1ffb71c956183896b24bd27728eb62e47c"
 
 if ! command -v "$VALIDATOR_PYTHON" >/dev/null 2>&1 && [[ ! -x "$VALIDATOR_PYTHON" ]]; then
     echo "VALIDATOR_PYTHON is not executable: $VALIDATOR_PYTHON" >&2
