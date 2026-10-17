@@ -41,6 +41,35 @@ structure-altering step that could distort the data. Keep the assistant's profil
 strong coder, does not read the languages, churn-prone — so trust nothing without
 evidence.
 
+## Step 0b — Profile the corpus and load its checklists
+
+One audit skill, one lifecycle, with per-shape checklist files: the corpora do
+not sort into clean types (ePark is parallel, audio and word-glossed; NTU is
+glossed text and audio; Song is grammar examples plus a dictionary appendix),
+and most recurring problems cut across types. Profile first, then load what
+applies — `checklists/README.md` has the table:
+
+```bash
+<python> - <<'EOF'
+import glob, collections
+from xml.etree import ElementTree as ET
+tiers = collections.Counter(); files = 0
+for f in glob.glob("<XML dir>/**/*.xml", recursive=True):
+    files += 1; root = ET.parse(f).getroot()
+    for tag in ("S", "W", "M", "TRANSL", "AUDIO", "PHON"): tiers[tag] += sum(1 for _ in root.iter(tag))
+print(files, "files;", dict(tiers))
+EOF
+ls Corpora/<Name>/ 2>/dev/null | head -3          # re-port if it exists on main
+```
+
+Then read `checklists/every-corpus.md` and, by the profile, `dictionary.md`,
+`glossed.md` (W or M present, or interlinear source), `text-with-translation.md`
+(S + TRANSL, no W/M), `audio.md` (AUDIO, a download script, or recordings),
+`re-port.md` (the corpus exists on main). Each item says what to look for, how
+to check, what counts as acceptable, and the case in the bank it comes from.
+Report, per loaded checklist, which items you ran and what each found; "not
+applicable" is an answer, "not run" is not.
+
 ## Inputs (gather via AskUserQuestion if missing)
 
 - `repo_path` — **either** the sibling dev repo (`../Formosan-<Name>/`), run from
@@ -132,6 +161,12 @@ For each step, classify: (i) our pipeline already does this (and how it differs)
 (ii) no-op for us, or (iii) conflicts with a convention (cite which). Pay special
 attention to anything touching the **original** tier (must stay faithful) and W-tier
 segmentation markers (`-`, `=`, `<…>` must survive).
+**What counts as acceptable** (maintainer, 2026-10-17): a policy with a test is
+enforced by the test — HARD is HARD; SOFT is raised to the maintainer with a
+description and a categorisation of where the warnings come from. A policy
+with no test is a guideline: the audit proposes, the maintainer decides; the
+audit never acts on it alone.
+
 **Rulings since 2026-10 that a glossed corpus must be mapped against** (cite the
 POL id; read the entry rather than this summary):
 - POL-057 (2026-10-17): a W with exactly one M asserts the word is monomorphemic;
@@ -225,6 +260,8 @@ re-port PR; skip them only for a dev repo too early to have a build shape yet.
 | Reversals explicit | POL-050 | A change that undoes something previously merged must cite the commit or POL entry it supersedes. Re-adding a standard tier a merged ruling removed is the recurring case. |
 | PR scope | POL-049 | A corpus PR does not change `QC/`, `tests/`, `POLICIES.md`, root registries, `requirements.txt`, or `.github/workflows/`. Those belong in their own PR, merged first. |
 | W-tier completeness | POL-041 | No W tier anywhere is normal and never a finding; *some* sentences segmented and others not is an incomplete pass (V148, SOFT). |
+| Decisions as data, not code | POL-039 | Record-level decisions (overrides, corrections, exclusions, review verdicts) live in a content-gated table — stable record id + the input text expected + reason + date + the maintainer's words, refused when the input drifts (Safolu `safolu_source_overrides.json`, Seediq-Chang `review_corrections.tsv`) — not as Python literals; `lint_hidden_tables.py --corpus` lists the files to read. `manual_edits.xml` keys on positional ids and cannot carry a standard-tier edit. |
+| Content delta (re-port) | POL-037/051 | `content_delta.py --base <merge base> --head Corpora --corpus <Name>`; every red line traced on the audit artifact (`checklists/re-port.md` item 1) or flagged "no approved decision found". |
 
 ▣ Present the conformance table with a verdict per row; get the maintainer's call
 on which gaps block the merge and which are recorded and carried.
