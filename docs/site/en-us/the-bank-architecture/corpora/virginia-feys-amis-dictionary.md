@@ -1,6 +1,6 @@
 # Virginia Fey's Amis Dictionary
 
-This candidate contains 2,043 Amis example records with English and Mandarin readings from Virginia Fey’s dictionary and its maintained digital edition. The source is routed to Xiuguluan. It preserves source spelling and multiple meanings; no audio or W/M analysis is supplied.
+This candidate contains 2,042 Amis example records with English and Mandarin readings from Virginia Fey’s dictionary and its maintained digital edition. The source is routed to Xiuguluan. It preserves source spelling and multiple meanings; no audio or W/M analysis is supplied.
 
 This candidate remains under review. The statistics below describe the checked-in candidate XML.
 
@@ -49,17 +49,17 @@ lists the remaining decisions. A successful build or XML check does not settle t
 
 ## Access Details
 
-The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/7d045c2f544485076091623eab7c60922b8f7c85/Corpora/Virginia_Fey_Dictionary/)
+The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/45578e57a9e1c768394df211f16aed14ab4c87b2/Corpora/Virginia_Fey_Dictionary/)
 match the reviewed private development commit. This proposal has not been merged.
 
 ## Corpus Processing
 
-The build starts from the preserved hand-corrected baseline and pinned digital source, applies source-located repairs, and runs the current shared tools. It accounts for 2,012 complete source rows while retaining all 2,040 published sentence IDs and adding three (S1900, S5142, S6717-opt). Spelling and sound use the shared Amis tables (Xiuguluan).
+The build starts from the preserved hand-corrected baseline and pinned digital source, applies source-located repairs, and runs the current shared tools. It accounts for 2,012 complete source rows while retaining 2,039 of the 2,040 published sentence IDs and adding three (S1900, S5142, S6717-opt). S6908 `ceco.`, the third option of a slash cell, is removed because it is not clear how it should be read. Spelling and sound use the shared Amis tables (Xiuguluan).
 
 Run `bash Corpora/Virginia_Fey_Dictionary/CodeAndDocs/generate_xml.sh` in the candidate
-FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/7d045c2f544485076091623eab7c60922b8f7c85/Corpora/Virginia_Fey_Dictionary/README.md) documents dependencies,
+FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/45578e57a9e1c768394df211f16aed14ab4c87b2/Corpora/Virginia_Fey_Dictionary/README.md) documents dependencies,
 source coverage and any scoped pipeline deviations. The
-[build provenance](https://github.com/FormosanBank/FormosanBank/blob/7d045c2f544485076091623eab7c60922b8f7c85/Corpora/Virginia_Fey_Dictionary/CodeAndDocs/provenance.json) records the actual
+[build provenance](https://github.com/FormosanBank/FormosanBank/blob/45578e57a9e1c768394df211f16aed14ab4c87b2/Corpora/Virginia_Fey_Dictionary/CodeAndDocs/provenance.json) records the actual
 tools used for the retained output; it does not select or pin tools for later builds.
 
 ## Copyright
