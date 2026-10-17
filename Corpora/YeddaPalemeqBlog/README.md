@@ -35,7 +35,7 @@ prohibited without prior written permission.
 - 5,585 TRANSL elements
 - 665 AUDIO references
 - Canonical XML SHA-256:
-  `39386e8b1b0a2ac7a37929af812764e1d5fa6bacb9391a0a3f175b095903dd9f`
+  `0ede251235c455644e540aa67e32df5e3f8fcb68925ac85ef776f20c5be2b43f`
 
 The original transcription uses the established Yedda Ortho113 route. The
 standard FORM tier is derived from the original tier, and both PHON tiers are
@@ -85,6 +85,35 @@ a word containing an infix carry angle-bracket (`<AV>`-style) notation in its
 "-em- is actor voice (AV) case marker, and -in- is undergoer voice" — so the
 information is present and correct, merely written another way. V062 is a
 notation difference, not missing data.
+
+**Unknown word glosses are `<UNCLEAR/>`.** Where Yedda marks a word's meaning
+as unknown, the gloss is `<TRANSL xml:lang="eng"><UNCLEAR/></TRANSL>` rather
+than a literal question mark (maintainer's rulings, 2026-10-17). `build_xml.py`
+does this in three ways, and lists every change in
+`CodeAndDocs/data/formosanbank_audit/unclear_gloss_review.tsv` (9 rows):
+
+- A word or morpheme gloss that is exactly `?`, `??` or `???` (also full-width
+  `？`) becomes `<UNCLEAR/>`, keeping the TRANSL's attributes. One gloss:
+  `S77_1W5` `nu`.
+- `CodeAndDocs/gloss_to_notes.tsv` lists eight word glosses ruled one by one.
+  Seven start with `?` followed by Yedda's own comment (`? I cannot find this
+  word.`): the gloss becomes `<UNCLEAR/>` and the whole original text moves to
+  the TRANSL's `notes` attribute (`S419_1W20`, `S425_1W4`, `S425_1W27`,
+  `S427_1W7`, `S430_1W7`, `S617_1W4`, `S640_1W6`). The eighth, `S313_1W3`
+  `k<ar>im`, is glossed `to find`, with the original explanation in `notes`;
+  its two morphemes stay unglossed.
+- `CodeAndDocs/unclear_gloss_placeholders.tsv` (header `gloss<TAB>lang`) lists
+  glosses in which a `?` standing as a whole piece — bounded by `-`, `=`, `.`,
+  whitespace or the ends — is a placeholder; each such `?` becomes
+  `<UNCLEAR/>` and the rest of the gloss is kept. **It ships with no rows**;
+  rows are added only as the maintainer rules on them. A `?` attached to a word
+  (`LIG?`, `right?`, `clitic?`) is the author's own hedge and is kept as
+  written.
+
+Sentence translations are never converted, and no sentence or word `FORM` is
+`<UNCLEAR/>` in this corpus, so no W or M tier is affected. The shared
+pretty-printer puts a whole-gloss `<UNCLEAR/>` on its own indented line; the
+surrounding whitespace is formatting only.
 
 **Sixteen sentences carry no `W` tier at all.** The blog prints them as bare
 phrase entries with no word breakdown — `S268_1`, `S269_1`, `S378_1`–`S381_1`,
@@ -255,11 +284,12 @@ Corpora/YeddaPalemeqBlog/CodeAndDocs/scripts/reproduce.sh
 ```
 
 The pinned handoff has zero structural, text, or gloss HARD findings. Its
-9,915 soft finding occurrences are source-backed and fail-closed by exact
+9,913 soft finding occurrences are source-backed and fail-closed by exact
 rule counts — including one file-level V148 recording that 16 sentences are
-bare phrase entries the blog never broke into words. Eleven corpus regression tests cover source hashes, source
+bare phrase entries the blog never broke into words. Twenty-three corpus regression tests cover source hashes, source
 coverage, reviewed repairs, stable tier shape, per-sentence M-tier
-consistency, standard-tier accent removal, and canonical XML identity.
+consistency, standard-tier accent removal, unknown-gloss `<UNCLEAR/>` handling,
+and canonical XML identity.
 Published port readiness has zero HARD findings and zero warnings.
 
 ## Audio
