@@ -24,6 +24,7 @@
 #   A. builder      pipeline_{grammar,sentences,stories}.py: JSON -> XML
 #   B. repairs      shared FormosanBank cleaning + the corpus repair scripts
 #   C. tiers        punctuation morphemes, prune, id alignment, standard tier + PHON (Ortho94)
+#   D. markers      mark_unclear.py: NTU's X / ? unknown markers -> <UNCLEAR/> (last)
 #
 # Every phase is idempotent; rerunning is safe.
 
@@ -84,6 +85,18 @@ finish_tiers() {     # $1 = work dir, $2 = subcorpus name (for report file names
   "$PIPE/run_standard_and_phon.sh" "$W" "$CTABLES" 2>&1 | tail -4
 }
 
+# NTU's unknown-content markers -> <UNCLEAR/> (rulings 2026-10-17; mark_unclear.py):
+# untranscribed X words, ?/??/??? glosses, ?/XXX sentence translations, and the
+# ? pieces listed in ../unclear_gloss_placeholders.tsv. Runs last, after the
+# shared standardize/add_phonology steps, which read FORM.text and would
+# convert a FORM holding <UNCLEAR/> only up to the marker. It prints every
+# counter (TAIL=40) and lists each change, and each held X word, in logs/.
+mark_unclear() {     # $1 = work dir, $2 = subcorpus name (for the report file name)
+  TAIL=40 run "mark_unclear" "$PIPE/mark_unclear.py" --xml_dir "$1" \
+      --placeholders "$CODEDOCS/unclear_gloss_placeholders.tsv" \
+      --report "$CORPUS/logs/unclear_${2}.tsv"
+}
+
 # A clean-up step: skipped at the pre-cleanup checkpoint (see the header).
 cleanup() {
   if [[ "$CHECKPOINT" == pre-cleanup ]]; then step "$1 (skipped: pre-cleanup checkpoint)"; return 0; fi
@@ -118,6 +131,7 @@ build_grammar() {
   cleanup "remove_empty_translations"   "$SCR/remove_empty_translations.py" --xml-dir "$W"
   run "propagate_clitic_boundaries"     "$SCR/propagate_clitic_boundaries.py" --xml_dir "$W"
   finish_tiers "$W" Grammar
+  mark_unclear "$W" Grammar
   install_into "$W" Grammar
 }
 
@@ -161,6 +175,7 @@ build_flat() {       # $1 = sentences|stories
     TAIL=20 run "dedupe_bunun63" "$PIPE/dedupe_bunun63.py" --xml_dir "$W" \
         --report "$CORPUS/logs/bunun63_dedupe.tsv"
   fi
+  mark_unclear "$W" "$out"
   install_into "$W" "$out"
 }
 

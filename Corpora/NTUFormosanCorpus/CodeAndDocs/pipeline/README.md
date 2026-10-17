@@ -16,7 +16,7 @@ is idempotent — rerunning it is safe and should produce byte-identical XML.
 
 ## What runs, in order
 
-Each subcorpus goes through three phases.
+Each subcorpus goes through four phases.
 
 **A. Builder — JSON → XML.** One script per subcorpus, sharing its helpers
 with `pipeline_grammar.py`:
@@ -72,6 +72,21 @@ and the PHON tiers it runs `apply_standard_word_splits.py`, which writes the
 word divisions in `standard_word_splits.tsv` into the standard sentence tier
 only (7 sentences where NTU's text joins two words its glosses separate;
 ruling 2026-10-16).
+
+**D. Unknown markers → `<UNCLEAR/>`.** Last of all (for Sentences, after
+`split_two_renderings.py` and `dedupe_bunun63.py`), `mark_unclear.py` writes
+NTU's own "unknown" markers as the schema's `<UNCLEAR/>` element (rulings
+2026-10-17): an untranscribed word (`X`, `XX`, `XXX`, `XXXX`) in the sentence
+FORM and PHON, and in the word's FORM, PHON and `X` gloss, with the word's `M`
+removed; a word or morpheme gloss that is only `?`, `??` or `???`; a `?` piece
+inside a longer gloss only where `../unclear_gloss_placeholders.tsv` lists that
+gloss (shipped empty); a sentence translation that is only `?` or `XXX` is
+removed; and a sentence that is nothing but `<UNCLEAR/>` loses its word tier. A
+word written `X` whose gloss is something else (`FS`, `PART`, `father`, ...; 13
+words) is left as it is. It runs after `run_standard_and_phon.sh` because the
+shared `standardize.py` and `add_phonology.py` read `FORM.text`: given a FORM
+holding `<UNCLEAR/>` they would transliterate, or phonologize, only part of
+it. Every change, and each word held back, is listed in `logs/unclear_<Subcorpus>.tsv`.
 
 ## Word and morpheme tiers
 
@@ -189,6 +204,10 @@ Per POL-039, item-specific corrections live in data files, not in code:
   (`M`, `OH`, `HAY`), 404 cells. Each row names the value it expects to find.
 - `gloss_shift_repairs.tsv` — gloss-shift corrections (see below), applied at
   load time by all three builders; only rows with status `accepted` take effect
+- `../unclear_gloss_placeholders.tsv` — glosses (columns `gloss`, `lang`) in
+  which `mark_unclear.py` writes each `?` that stands as a whole gloss piece
+  (bounded by `-`, `=`, `.`, a space, or the ends) as `<UNCLEAR/>`. The
+  maintainer decides these gloss by gloss; the table ships with no rows.
 
 ## Gloss shifts
 
