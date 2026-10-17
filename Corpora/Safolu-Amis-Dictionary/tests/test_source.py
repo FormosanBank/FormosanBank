@@ -66,7 +66,6 @@ class SourceTests(unittest.TestCase):
             "S04848": ("'efa", "'fa", "馬"),
             "S04848-opt": ("enem", "'nem", "六"),
             "S07063": ("sapihpih", "sapiehpieh", "扇子。"),
-            "S07064": ("tefi'", "tefie'h", "肩豆。"),
         }
         for sid, (base, variant, translation) in expected.items():
             row = self.by_id[sid]
@@ -97,7 +96,6 @@ class SourceTests(unittest.TestCase):
             "S39092": [("Rakis ko 'irang.", "流血。"), ("Rakis ko remes.", "流血。")],
             "S01889": [("O 'Arikaya ko 'ada no 'Amis.", "'Arikaya是阿美族人的敵人。"), ("O 'Arikaya ko 'ada no Pangcah.", "'Arikaya是阿美族人的敵人。")],
             "S29086": [("Misa'osi to tilid.", "讀書。"), ("Misa'osi to cudad.", "讀書。")],
-            "S42869": [("Sapikilidongaw ako to fail i aikor no 'ongcoy.", "我想在岩石後面避一避風。"), ("Sapikilidongaw ako to orad i aikor no 'ongcoy.", "我想在岩石後面避一避雨。")],
             "S42957": [("Sapikonis a faktaw.", "劃線的墨汁具。"), ("Sapikonis a saditek.", "劃線的墨汁具。")],
         }
         for sid, readings in expected.items():
@@ -119,9 +117,30 @@ class SourceTests(unittest.TestCase):
             pipeline.extract_generated_moedict_examples([row], self.corpus.text_id, "zho", "eng", {"14824": pipeline.load_source_overrides()["14824"]})
 
     def test_unresolved_readings_and_prior_corrections_are_preserved(self):
-        self.assertEqual(self.by_id["S00006"].form, "Ini ko 'a'acawen a nanom (nanum).")
-        self.assertEqual(self.by_id["S37193"].translations[0].text, "銀行是提款的地方。")
         self.assertIn(35128, {row["source_ordinal"] for row in self.rejected})
+
+    def test_bank_translation_prior_correction(self):
+        # OPEN 2026-10-17: the maintainer adopted the editors' Chinese for S37193, which they wrote
+        # 提歀 (a variant character); this branch's earlier correction was 提款. Asked; not yet ruled.
+        self.assertEqual(self.by_id["S37193"].translations[0].text, "銀行是提款的地方。")
+
+    # Maintainer rulings, Safolu review 2026-10-16/17 (claudeplans/sweep-qa-decision-log.md)
+    def test_review_card_bracket_becomes_alternative_form(self):
+        # card P1-1: One S + alt variant
+        row = self.by_id["S00006"]
+        self.assertEqual((row.form, row.variants), ("Ini ko 'a'acawen a nanom.", ("Ini ko 'a'acawen a nanum.",)))
+
+    def test_tefi_is_two_sentences(self):
+        # "S07064, which should have two Ss (one for the alternative paranthetical)"
+        self.assertEqual([(r.form, r.variants, r.translations[0].text) for r in (self.by_id["S07064"], self.by_id["S07064-opt"])],
+                         [("tefi'", (), "肩豆。"), ("tefie'h", (), "肩豆。")])
+
+    def test_s42869_keeps_its_parenthetical(self):
+        # "S42869 (retain the parenthetical in FORM and TRANSL)"
+        row = self.by_id["S42869"]
+        self.assertEqual((row.form, row.translations[0].text),
+                         ("Sapikilidongaw ako to fail（orad） i aikor no 'ongcoy.", "我想在岩石後面避一避風（雨）。"))
+        self.assertNotIn("S42869-opt", self.by_id)
 
 
 if __name__ == "__main__":
