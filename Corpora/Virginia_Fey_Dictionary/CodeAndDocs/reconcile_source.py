@@ -267,6 +267,39 @@ def apply_translation_repairs(root: etree._Element, decisions: dict) -> int:
     return repaired
 
 
+def apply_translation_splits(root: etree._Element, decisions: dict) -> int:
+    """Split one translation into several readings (later ones ver="alt")."""
+    by_id = {sentence.get("id"): sentence for sentence in root.iter("S")}
+    split = 0
+    for item in decisions.get("translation_splits", []):
+        sentence = by_id.get(item["id"])
+        if sentence is None:
+            fail(f"translation split target is missing: {item['id']}")
+        matches = [
+            node
+            for node in translation_nodes(sentence, item["lang"])
+            if normalize(node.text) == normalize(item["old"])
+        ]
+        if len(matches) != 1:
+            fail(f"{item['id']} {item['lang']}: expected one {item['old']!r}, found {len(matches)}")
+        node = matches[0]
+        node.text = item["new"][0]
+        anchor = node
+        for text in item["new"][1:]:
+            extra = etree.Element("TRANSL")
+            extra.set(XML_LANG, item["lang"])
+            extra.text = text
+            extra.tail = node.tail
+            anchor.addnext(extra)
+            anchor = extra
+        nodes = translation_nodes(sentence, item["lang"])
+        nodes[0].attrib.pop("ver", None)
+        for other in nodes[1:]:
+            other.set("ver", "alt")
+        split += 1
+    return split
+
+
 def apply_structural_repairs(root: etree._Element, decisions: dict) -> int:
     by_id = {sentence.get("id"): sentence for sentence in root.iter("S")}
     repaired = 0
@@ -375,6 +408,7 @@ def main() -> int:
     row_by_id = apply_form_decisions(root, decisions, rows)
     structural = apply_structural_repairs(root, decisions)
     repaired = apply_translation_repairs(root, decisions)
+    apply_translation_splits(root, decisions)
     annotated = preserve_source_translations(root, rows, row_by_id)
     merged = merge_same_form_sentences(root, decisions)
 

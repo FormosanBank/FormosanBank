@@ -50,7 +50,7 @@
       "source_row": 1811,
       "source_form": "ano hatini / imatini.",
       "evidence": "source/upstream/h.txt:582",
-      "variants": [{"id": "S1811", "form": "ano hatini."}, {"id": "S6901", "form": "imatini."}]
+      "variants": [{"id": "S1811", "form": "ano hatini."}, {"id": "S6901", "form": "ano imatini."}]
     },
     {
       "source_row": 1945,
@@ -275,7 +275,7 @@
     {
       "source_row": 4934,
       "source_form": "Ga'ayho han  r a paratoh.",
-      "form": "Nga'ayho han ci nikar a paratoh.",
+      "form": "Nga'ayho han ci Nikar a paratoh.",
       "reason": "The corrected Word source supplies Nga'ayho and ci nikar; the sheet lost most of the name and its preceding particle.",
       "evidence": "https://github.com/miaoski/amis-data/blob/494e5e4bc276c4d2b8b7b827a2c737597239a73b/ramoh/R.doc; table 1, row 166; SHA256 8b6564d4c394aa1d2a0521e9fbaba364659456cd1014f6b0dcd5ad5079c74dc3"
     },
@@ -339,6 +339,22 @@
     "Confirm whether kalatolo/kalitolo represents competing lexemes or pronunciation variants before publication. Printed page 345 confirms both forms, but does not settle this classification."
   ],
   "source_field_evidence_note": "The 2015 upstream stemmer loses prefixes in deduplication(); its 2016 fix is 23b6efd42fe3e73c0d3cd249c14587ca6349af9f. Replaying the old converter reproduces 512 of 519 sheet losses, including all 145 raw/Word disagreement rows. source_field_repairs.tsv retains exact source excerpts and file:line locators at the pinned upstream commit. Lowercase g to ng matches that digital edition's moedict.py; this is never run on the XML. Full raw and corrected Word witnesses were compared separately before recording these repairs.",
+  "translation_splits": [
+    {
+      "id": "S413",
+      "lang": "eng",
+      "old": "1. He saved me. physically as from drowning. 2.spiritually",
+      "new": ["He saved me (physically)", "He saved me (spiritually)"],
+      "reason": "Maintainer 2026-10-17: \"S413 should have two alternate ENglish definitions: \\\"He saved me (physically)\\\" and \\\"He saved me (spiritually\\\")\""
+    },
+    {
+      "id": "S413",
+      "lang": "zho",
+      "old": "1. 他救我，由肉體上如從溺水之險境中 2. 精神或屬靈上",
+      "new": ["他救我，由肉體上如從溺水之險境中", "他救我，精神或屬靈上"],
+      "reason": "Maintainer 2026-10-17: \"And two alternate Chinese definitions: \\\"他救我，由肉體上如從溺水之險境中\\\" and \\\"他救我，精神或屬靈上\\\"\""
+    }
+  ],
   "same_form_merges": {
     "rule": "Sentences whose original FORM is identical are one sentence: later ids merge into the earliest and their translations become ver=\"alt\" (maintainer 2026-10-17: \"Merge each pair into one S with ver=\\\"alt\\\" translations (POL-025)\").",
     "expected": [

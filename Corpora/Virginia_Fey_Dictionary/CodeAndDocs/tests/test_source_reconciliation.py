@@ -29,7 +29,7 @@ def reconciled(tmp_path_factory):
     ("S2278", "Maolah kako a tayra a misalama."),
     ("S2805", "Palafacen koya kolong ta ira a makilim nira ko kakaenen."),
     ("S2908", "Cilamit ko sowal no Kawas i faloco' ako."),
-    ("S4934", "Nga'ayho han ci nikar a paratoh."),
+    ("S4934", "Nga'ayho han ci Nikar a paratoh."),
     ("S3797b", "nanamanan a demak"),
     ("S6913", "o pakoyocay."),
     ("S6717", "O kalatolo konini."),
@@ -153,3 +153,16 @@ def test_recorded_word_correction_cannot_be_overwritten(tmp_path):
     spec.loader.exec_module(module)
     with pytest.raises(SystemExit, match="duplicate source decision for row 4934"):
         module.load_decisions(tmp_path / "source_decisions.json")
+
+
+def test_round_three_rulings(reconciled):
+    # Maintainer 2026-10-17 (Fey review round 3).
+    assert reconciled.findtext('.//S[@id="S4934"]/FORM[@kindOf="original"]') == "Nga'ayho han ci Nikar a paratoh."
+    assert reconciled.findtext('.//S[@id="S6901"]/FORM[@kindOf="original"]') == "ano imatini."
+    s413 = [(t.get(XML_LANG), t.get("ver"), t.text) for t in reconciled.find('.//S[@id="S413"]').findall("TRANSL")]
+    assert s413 == [
+        ("eng", None, "He saved me (physically)"),
+        ("eng", "alt", "He saved me (spiritually)"),
+        ("zho", None, "他救我，由肉體上如從溺水之險境中"),
+        ("zho", "alt", "他救我，精神或屬靈上"),
+    ]

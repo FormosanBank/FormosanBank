@@ -479,8 +479,10 @@
         <PHON kindOf="original">paʡ[o|u]ripən nira kak[o|u]</PHON>
         <FORM kindOf="standard">Pa'oripen nira kako.</FORM>
         <PHON kindOf="standard">paʡ[o|u]ripən nira kak[o|u]</PHON>
-        <TRANSL xml:lang="eng">1. He saved me. physically as from drowning. 2.spiritually</TRANSL>
-        <TRANSL xml:lang="zho">1. 他救我，由肉體上如從溺水之險境中 2. 精神或屬靈上</TRANSL>
+        <TRANSL xml:lang="eng" notes="1. He saved me. physically as from drowning. 2.spiritually">He saved me (physically)</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">He saved me (spiritually)</TRANSL>
+        <TRANSL xml:lang="zho" notes="1. 他救我，由肉體上如從溺水之險境中 2. 精神或屬靈上">他救我，由肉體上如從溺水之險境中</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">他救我，精神或屬靈上</TRANSL>
     </S>
     <S id="S414">
         <FORM kindOf="original">O ma'araway i kalo'orip a tinako konini.</FORM>
@@ -9283,9 +9285,9 @@
         <TRANSL xml:lang="zho" ver="alt">有關耶穌的話就是福音</TRANSL>
     </S>
     <S id="S4934">
-        <FORM kindOf="original">Nga'ayho han ci nikar a paratoh.</FORM>
+        <FORM kindOf="original">Nga'ayho han ci Nikar a paratoh.</FORM>
         <PHON kindOf="original">ŋaʡajħ[o|u] ħan ʦi nikar a parat[o|u]ħ</PHON>
-        <FORM kindOf="standard">Nga'ayho han ci nikar a paratoh.</FORM>
+        <FORM kindOf="standard">Nga'ayho han ci Nikar a paratoh.</FORM>
         <PHON kindOf="standard">ŋaʡajħ[o|u] ħan ʦi nikar a parat[o|u]ħ</PHON>
         <TRANSL xml:lang="eng">Greet Nikar.</TRANSL>
         <TRANSL xml:lang="zho">請代我向妮卡兒問好</TRANSL>
@@ -16762,10 +16764,10 @@
         <TRANSL xml:lang="zho">彩虹</TRANSL>
     </S>
     <S id="S6901">
-        <FORM kindOf="original" notes="ano hatini / imatini.">imatini.</FORM>
-        <PHON kindOf="original">imatini</PHON>
-        <FORM kindOf="standard">imatini.</FORM>
-        <PHON kindOf="standard">imatini</PHON>
+        <FORM kindOf="original" notes="ano hatini / imatini.">ano imatini.</FORM>
+        <PHON kindOf="original">an[o|u] imatini</PHON>
+        <FORM kindOf="standard">ano imatini.</FORM>
+        <PHON kindOf="standard">an[o|u] imatini</PHON>
         <TRANSL xml:lang="eng" notes="right now * present time">right now</TRANSL>
         <TRANSL xml:lang="eng" ver="alt">present time</TRANSL>
         <TRANSL xml:lang="zho" notes="現在，此刻，這時">現在</TRANSL>
