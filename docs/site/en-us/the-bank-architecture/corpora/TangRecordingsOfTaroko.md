@@ -28,12 +28,28 @@ None of the audio are transcribed. There is slightly more meta-data at Paradisec
 <!-- CORPUS STATS END -->
 
 
+## Notes and Issues
+
+The committed metadata extracts are not independently checked against Paradisec. Joshua accepted this limit for the closed AIT1 deposit, recorded in 1997 and published in 2016, in [FormosanBank #197](https://github.com/FormosanBank/FormosanBank/pull/197). The extracts enumerate 61 source files and archival fields absent from our XML, and have been unchanged since the corpus's first commit. The 30 matching MP3s are treated as delivery copies of the WAV masters; the remaining file, `AIT1-001-2df.pdf`, has not been inspected or included.
+
+Remote audio verification compares paths, sizes and hosted SHA-256 object IDs. It does not listen to the recordings or independently verify Paradisec. The verifier covers this 30-WAV inventory; it is not a general audit tool for larger datasets. If local hashes differ, move those copies aside before downloading and checking again.
+
 ## **Access Details**
 
 * The repo containing this corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/TangRecordingsOfTaroko).
-* `CodeAndDocs/generate_xml.sh` rebuilds all 30 XML files from an extract of the Paradisec item metadata committed alongside it. The recordings themselves are not an input, so the corpus reproduces without downloading any audio.
-* The published audio is pinned by identity: `CodeAndDocs/audio_manifest.json` records the byte size and SHA-256 of all 30 recordings against an immutable Hugging Face revision, and `CodeAndDocs/verify_sources.py` checks them — including `--live`, which compares against the hosted copy in one API call without downloading 13.6 GB. Nothing is resampled or converted; the files are the 44.1 kHz stereo originals as deposited.
-* **Known deviation.** The *metadata* extract is not covered the way the audio is: it is the only Paradisec metadata FormosanBank holds, and nothing in the repository re-fetches it or checks it against the catalogue — there is no `refresh_source.sh`. This is accepted deliberately: AIT1 is a closed archival deposit, recorded in 1997 and published in 2016, so re-downloading an immutable record would add machinery without adding assurance. The reproduction guarantee is therefore that the published XML follows from the committed extract, not that the extract follows from Paradisec. The extract is upstream material rather than FormosanBank's own output fed back in: it enumerates 61 files where the corpus publishes 30, carries archival fields the XML has no place for, and has been unchanged since the corpus was first committed. The FormosanBank commit the published XML was built against is recorded in [`CodeAndDocs/provenance.json`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/TangRecordingsOfTaroko/CodeAndDocs/provenance.json).
+* The published audio is pinned by identity: `CodeAndDocs/audio_manifest.json` records the byte size and SHA-256 of all 30 recordings against an immutable Hugging Face revision. `CodeAndDocs/verify_sources.py --live` checks the hosted identities without downloading 13.6 GB; `--local` hashes downloaded files. The downloader preserves the original 44.1 kHz stereo WAVs and verifies their bytes. It does not resample or upload audio.
+
+## Corpus Processing
+
+From a FormosanBank checkout, run:
+
+```bash
+Corpora/TangRecordingsOfTaroko/CodeAndDocs/generate_xml.sh
+```
+
+This rebuilds all 30 XML files from the four committed metadata extracts without downloading audio. The build's FormosanBank commit is recorded in [`CodeAndDocs/provenance.json`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/TangRecordingsOfTaroko/CodeAndDocs/provenance.json); it does not select an older checkout. A Git-free export retains that record.
+
+**POL-047 deviation:** These untranscribed recordings have no text tiers or manual edits, so only source-to-XML generation applies. Audio verification runs separately from the build.
 
 ***
 
