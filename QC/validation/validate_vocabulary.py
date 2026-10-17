@@ -1,3 +1,32 @@
+#!/usr/bin/env python3
+"""validate_vocabulary.py — compare a corpus's most frequent words with the reference.
+
+Informational: prints metrics and warnings and ALWAYS EXITS 0. The reader (a
+port audit, a QC summary) quotes the SUMMARY line.
+
+Inputs: the same --o_info / --reference / --language as validate_orthography.py
+(the orthographic_info pickles written by orthography_extract.py, per language
+or per language/dialect, and QC/validation/reference/).
+
+What is compared, per group: the 100 most frequent words of the corpus against
+the 100 most frequent words of the reference — Jaccard similarity and overlap
+coefficient of the two sets. A warning is raised when either is below .975,
+and the words on each side only are then listed. The thresholds are
+uncalibrated and the comparison is noisy across genres (a dictionary's top
+words are not a narrative's), so read the two word lists, not just the
+numbers.
+
+Output: the two metrics, Python `warnings` on stderr when they fall below
+threshold, and one greppable line per group:
+    SUMMARY vocabulary | <Language> / <dialect> | top100_jaccard=… overlap=… |
+      corpus_only=[w1 w2 …] reference_only=[…] | warnings=N
+A group with no reference prints `SUMMARY vocabulary | <group> |
+reference=missing | warnings=1`.
+
+Usage
+    python QC/validation/validate_vocabulary.py \
+        --o_info <output_dir>/extract_logs --reference QC/validation/reference
+"""
 import os
 import matplotlib.pyplot as plt
 import numpy as np
@@ -34,7 +63,8 @@ def compare_vocabulary(c1_dir, c2_dir, label):
     ref_path = os.path.join(c2_dir, 'orthographic_info')
     if not os.path.isfile(ref_path):
         print(f"WARNING: No reference orthographic info found at {c2_dir}. Skipping {label}.")
-        return
+        print(f"SUMMARY vocabulary | {label} | reference=missing | warnings=1")
+        return None
     with open(ref_path, 'rb') as f:
         c2_info = pickle.load(f)
 
@@ -55,11 +85,28 @@ def compare_vocabulary(c1_dir, c2_dir, label):
         warns = True
         warnings.warn("The disjunction of character sets should be close to 0.")
 
+    unique_to_vocab1 = sorted(set(vocab1) - set(vocab2))
+    unique_to_vocab2 = sorted(set(vocab2) - set(vocab1))
     if warns:
-        unique_to_vocab1 = set(vocab1) - set(vocab2)
         warnings.warn(f"High-frequency words in corpus but not in reference: {unique_to_vocab1}")
-        unique_to_vocab2 = set(vocab2) - set(vocab1)
         warnings.warn(f"High-frequency words in reference but not in corpus: {unique_to_vocab2}")
+    summary = {
+        'label': label, 'jaccard': word_jaccard_similarity, 'overlap': word_overlap_coefficient,
+        'corpus_only': unique_to_vocab1, 'reference_only': unique_to_vocab2,
+        'warnings': (1 if word_jaccard_similarity < .975 else 0) + (1 if word_overlap_coefficient < .975 else 0),
+    }
+    print(format_summary(summary))
+    return summary
+
+
+def format_summary(s):
+    """One greppable line per group; what an audit quotes."""
+    return (
+        f"SUMMARY vocabulary | {s['label']} | "
+        f"top100_jaccard={s['jaccard']:.2f} overlap={s['overlap']:.2f} | "
+        f"corpus_only=[{' '.join(s['corpus_only'])}] reference_only=[{' '.join(s['reference_only'])}] | "
+        f"warnings={s['warnings']}"
+    )
 
 
 def main(args, possiblelangs):
