@@ -7,7 +7,9 @@ config, repo-wide tables, tests outside tests/corpora/) must carry a trailer
     Shared-change-approved: <the maintainer's words, with the date>
 
 Corpus folders (Corpora/<name>/), corpus tests (tests/corpora/), the pending
-lists, claudeplans/ and docs/ are not shared paths. Installed into the repo's
+lists, claudeplans/ and docs/ are not shared paths. In a merge commit, a shared
+file whose staged content is identical to the branch being merged in is not a
+change made here, so it needs no trailer (maintainer 2026-10-17). Installed into the repo's
 hooks folder by .claude/hooks/install-git-guard.py (SessionStart).
 """
 import re
@@ -45,9 +47,32 @@ def staged_paths() -> list[str]:
     return [p for p in out.splitlines() if p]
 
 
+def merge_heads() -> list[str]:
+    """The commits being merged in, if a merge is in progress (MERGE_HEAD may list several)."""
+    path = subprocess.run(["git", "rev-parse", "--git-path", "MERGE_HEAD"],
+                          capture_output=True, text=True).stdout.strip()
+    try:
+        return [line.split()[0] for line in open(path, encoding="utf-8") if line.strip()]
+    except OSError:
+        return []
+
+
+def differs_from(commit: str) -> set[str]:
+    """Staged paths whose content differs from `commit` (added, changed or deleted relative to it)."""
+    out = subprocess.run(
+        ["git", "-c", "core.quotePath=false", "diff", "--cached", "--name-only", commit],
+        capture_output=True, text=True, check=True,
+    ).stdout
+    return {p for p in out.splitlines() if p}
+
+
 def main(argv: list[str]) -> int:
     message = open(argv[1], encoding="utf-8").read() if len(argv) > 1 else ""
     shared = [p for p in staged_paths() if is_shared(p)]
+    for head in merge_heads():
+        # identical to one side of the merge: that side's change, not one made here
+        changed = differs_from(head)
+        shared = [p for p in shared if p in changed]
     if not shared or TRAILER.search(message):
         return 0
     print(
