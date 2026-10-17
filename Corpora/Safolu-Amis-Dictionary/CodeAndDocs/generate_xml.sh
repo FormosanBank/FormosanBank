@@ -10,10 +10,10 @@ else
     BANK="$(cd "$CORPUS/../FormosanBank" && pwd)"
 fi
 PY="${PYTHON:-python3}"
-CONVERSION="$BANK/Orthographies/ConversionTables/Amis_Safolu_113.tsv"
-for required in "$BANK/Orthographies/Safolu/Amis.tsv" "$CONVERSION"; do
+CONVERSION="$BANK/Orthographies/ConversionTables/Amis_Church_113.tsv"
+for required in "$BANK/Orthographies/Church/Amis.tsv" "$CONVERSION"; do
     if [[ ! -f "$required" ]]; then
-        echo "Missing shared Safolu orthography input: $required; see README Notes and Issues." >&2
+        echo "Missing shared orthography input: $required" >&2
         exit 2
     fi
 done
@@ -24,7 +24,7 @@ trap 'rm -rf "$STAGE"' EXIT
 "$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$STAGE/XML"
 "$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CONVERSION" \
     --target_column Coastal --corpora_path "$STAGE/XML"
-"$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Safolu --corpora_path "$STAGE/XML"
+"$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Church --corpora_path "$STAGE/XML"
 "$PY" "$BANK/QC/cleaning/remove_duplicate_sentences.py" by_path --path "$STAGE/XML" --apply
 
 "$PY" - "$BANK" "$STAGE/provenance.json" "$CODEDOCS/provenance.json" <<'PY'
