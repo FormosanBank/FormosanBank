@@ -51,7 +51,8 @@
 
 ## Known limitations of this summary
 
-- `validate_xml.py` may fail after Phase 4 (`add_phonology.py`) purely because the DTD currently has no `<PHON>` element. This is schema/code drift, not a corpus error. Resolving belongs to B's reconciliation work.
+- `<PHON>` is valid under `QC/validation/xml_template.xsd`, so a `validate_xml.py` failure after Phase 4 is a corpus error, never schema drift.
+- `validate_orthography.py` and `validate_vocabulary.py` always exit 0; their numbers above are only meaningful if read against the thresholds and against the other published corpora of the language.
 
 ## Ready to port?
 

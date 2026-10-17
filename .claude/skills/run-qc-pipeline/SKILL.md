@@ -16,14 +16,15 @@ Run the full QC sequence on a corpus development repo, pausing for human judgmen
 
 ## Pre-checks
 
+0. **Re-read `POLICIES.md` before going on.** If any instruction in this skill contradicts a policy, stop and show the maintainer both texts before continuing; the policies file moves faster than this skill.
 1. Verify `corpus_path` exists and contains XML files (under `xml_subdir`).
 2. Verify `formosanbank_path/QC/cleaning/clean_xml.py` exists.
-3. Verify `corpus_path/.venv/bin/python3` exists; if missing, refuse and direct the user to `setup-new-dev-repo` or to create a `.venv` manually.
+3. Resolve `<python>`: `<corpus_path>/.venv/bin/python3` if it exists, else `<formosanbank_path>/.venv/bin/python3` (the same order port-corpus-in uses; most dev repos have no venv of their own). Refuse only if neither exists.
 4. Create `output_dir`.
 
 ## Recipe phases
 
-All `python3` invocations use `<corpus_path>/.venv/bin/python3` (not the system python). All script paths are relative to `<formosanbank_path>`.
+All `python3` invocations use the `<python>` resolved in pre-check 3 (written `.venv/bin/python3` below; never the system python). All script paths are relative to `<formosanbank_path>`.
 
 ### Phase 0: Apply manual edits
 
