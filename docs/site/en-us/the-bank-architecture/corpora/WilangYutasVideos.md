@@ -42,7 +42,8 @@ audio-only files.
 * Segments that were not transcribable are marked as `<UNCLEAR/>`.
 * A caption that is nothing but question marks is untranscribed audio, not a sentence: its clip is listed in the video's `_untranscribed` file and its sentence ID is retired, not reused. This applies to two captions, `Atayal_8` and `Atayal_9` of `20190407_Yutas_Wilang_di5duan_Lowsing_Watan_MVI_1703`.
 * Many videos involve multiple speakers. The source captions put additional speakers in parentheses without separate timestamps. The corpus retains their text and records `notes="multiple speakers"`, but it cannot provide speaker-level timing.
-* The transcriber wrote notes on Japanese loanwords in parentheses after the word, e.g. `cyolo(日: ちょっと)`. These notes are not speech and are dropped (17 notes in 13 sentences); the loanword stays.
+* The transcriber wrote notes on Japanese loanwords in parentheses after the word, e.g. `cyolo(日: ちょっと)`. These notes are not speech: they are taken out of the sentence text and recorded in its FORM `notes`, naming the word (e.g. `transcriber's Japanese gloss: cyolo = ちょっと`; 17 notes in 13 sentences); the loanword stays.
+* One Mandarin translation marks a missing stretch with `(???)`; the mark is removed and the translation's `notes` says it is uncertain, quoting the source.
 * A few sentences quote Japanese song lyrics (kana/kanji) and one sentence contains a Bopomofo fragment (`ㄇ`) from the transcriber; these are faithful to the source subtitles and are intentionally kept.
 * Timestamps come from the source captions and may not align perfectly with the audio.
 
