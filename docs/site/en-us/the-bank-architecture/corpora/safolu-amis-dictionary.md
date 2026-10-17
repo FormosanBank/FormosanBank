@@ -1,8 +1,10 @@
 # Safolu Amis Dictionary
 
-The Safolu Amis Dictionary supplies Amis examples and Mandarin readings from the pinned g0v Amis Moedict source. The checked-in candidate XML retains 49,179 sentence records from the earlier build. It has no audio or W/M analysis.
+The Safolu Amis Dictionary is a collection of 49,406 Amis example sentences with Mandarin (Chinese) translations, drawn from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵). The data comes from the generated JSON of the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project (`docs/s`; see [amis.moedict.tw](https://amis.moedict.tw/)), checked against the dictionary's printed text.
 
-This candidate remains under review. The statistics below describe the retained final XML, before the pending source repairs are regenerated.
+Each sentence carries the source text (`original` tier), a copy in the FormosanBank standard orthography (`standard` tier, Ortho113), and an IPA transcription of each. The corpus stops at the sentence level: it has no audio and no word or morpheme segmentation, because the dictionary's examples carry none.
+
+***
 
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
@@ -25,58 +27,40 @@ This candidate remains under review. The statistics below describe the retained 
 
 <!-- CORPUS STATS END -->
 
-## Notes and Issues
-
-- The Safolu PHON profile and conversion table remain unmerged shared inputs.
-  Current conversion checking reports an unresolved `u → o` mapping and `d`/`o`
-  routing questions. Preserve the source's distinct vowel spellings and mixed
-  `g`/`ng`; see [orthography evidence](https://github.com/FormosanBank/FormosanBank/blob/b77b8f57fd664a31fec812cfcc2904631930ae5d/Corpora/Safolu-Amis-Dictionary/docs/orthography_evidence.md).
-- Forty-two original-FORM parenthesis/slash cases still need source-specific
-  interpretation. The revised parser resolves only directly supported cases,
-  including the explicit pronunciation examples in the `e` and `i` entries.
-- S37193's published Chinese correction was inferred from its sentence and
-  definition; an authoritative reading is still needed. It is preserved pending
-  review. Source field 35128 still contains unexplained `久` on the publisher's
-  page and remains outside released XML.
-- The source history includes both PDF-to-TXT and DOCX conversion. A clean JSON
-  file does not establish that it is free of earlier extraction errors.
-
-The [corpus PR #157](https://github.com/FormosanBank/FormosanBank/pull/157)
-lists the remaining decisions. A successful build or XML check does not settle them.
 
 ## Access Details
 
-The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/b77b8f57fd664a31fec812cfcc2904631930ae5d/Corpora/Safolu-Amis-Dictionary/)
-match the reviewed private development commit. This proposal has not been merged.
+* The corpus and the code that rebuilds it are [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Safolu-Amis-Dictionary).
+
+***
 
 ## Corpus Processing
 
-The revised parser reads a committed public snapshot of 49,419 source fields, applies exact field corrections and stages 49,455 source records before shared deduplication. The complete build currently stops because the shared Safolu profile and conversion are unavailable. Its new source repairs are not yet in final XML. The retained provenance describes the old final build, not a new successful regeneration.
+The build reads a committed snapshot of the source (49,419 example fields at `g0v/amis-moedict` commit `e7c6976`, 2026-05-08) and never fetches anything. Its steps, all in the repository:
 
-Run `bash Corpora/Safolu-Amis-Dictionary/CodeAndDocs/generate_xml.sh` in the candidate
-FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/b77b8f57fd664a31fec812cfcc2904631930ae5d/Corpora/Safolu-Amis-Dictionary/README.md) documents dependencies,
-source coverage and any scoped pipeline deviations. The
-[build provenance](https://github.com/FormosanBank/FormosanBank/blob/b77b8f57fd664a31fec812cfcc2904631930ae5d/Corpora/Safolu-Amis-Dictionary/CodeAndDocs/provenance.json) records the actual
-tools used for the retained output; it does not select or pin tools for later builds.
+* **Parsing** into one sentence per example. Where a source field holds two readings (a parenthesised or slashed alternative), it becomes either one sentence with an alternative form or two sentences, as decided example by example in a maintainer review.
+* **Per-sentence decisions** from that review (2026-10-16/17), each recorded with its reason: full translations from the printed text where the digitised source cut them short, and decisions on 48 parenthesis and slash examples.
+* **The dictionary editors' later corrections.** The editors have kept revising the dictionary upstream since our snapshot. 204 of their edits are adopted (pinned at `g0v/amis-moedict` commit `4cb82539d`, 2026-10-16), so **these 204 sentences follow the editors' revision, not the printed book**. Four examples printed in the book but missing from the source are added.
+* **Spacing:** no space before `?` or `!`, and a space after them before the next word.
+* **Standard tier** via the Church-to-Ortho113 conversion table (Coastal), and **pronunciation** from the Church orthography table.
+* **Duplicates** are removed only when both the standard text and the translations are identical (120 sentences).
+
+The [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Safolu-Amis-Dictionary/README.md) gives the details, the full list of decisions, and how to reproduce the corpus.
+
+***
 
 ## Copyright
 
-The retained XML copyright field is:
-
-CC BY-NC according to the frozen amis-safolu README; current data source is g0v/amis-moedict docs/s.
-
-**License:** unresolved; the existing XML copyright prose is retained.
-
-**Rights source:** Safolu Kacaw Lalanges, date unconfirmed; evidence: ask maintainer.
+**CC BY-NC-SA 3.0 TW**, the licence as granted by Tsai Chung-Han; the grant is held in FormosanBank's records.
 
 The frozen upstream README says CC BY-NC without a version. The
 [publisher README](https://github.com/g0v/amis-moedict-new/blob/20d9718b362e046c8a79454d3710efa4fe404afe/README.md#license-授權)
 identifies Tsai Chung-Han's dictionary as CC BY-NC-SA 3.0 TW and links his
 [signed licence deed](https://drive.google.com/file/d/1IQykXGWtaWAL0pH0xlE0pi5My0Onlji2/view),
 which names that licence. Its printed footer says 2015/4/9; this does not establish
-the signature or grant date. CC BY-NC-SA 3.0 TW is absent from the current rights
-vocabulary. The final XML licence and grant date still need maintainer review
-before publication (POL-042 through POL-045).
+the signature or grant date.
+
+***
 
 ## Citation
 
