@@ -25,7 +25,8 @@ from ilrdf_source import (
     verify_and_load_snapshot,
 )
 import main_2024
-from audio_recordings import AudioTable, audio_elements, choose, load_second_s
+from audio_recordings import (AudioTable, audio_elements, choose, load_no_audio,
+                              load_second_s)
 
 
 BASE = Path(__file__).resolve().parent
@@ -82,10 +83,10 @@ def _recordings(language: str, identifier: str, urls: list[str],
                 village_of: dict[str, str | None], main_audio: list[dict[str, str]],
                 audio: tuple, counts: Counter) -> list[dict[str, str]]:
     """AUDIO attributes for one sentence (audio_recordings.py has the rules)."""
-    table, second_s, log = audio
+    table, second_s, no_audio, log = audio
     start = len(log)
     chosen = choose(language, identifier, urls, village_of, main_audio, table,
-                    second_s, log)
+                    second_s, log, no_audio)
     for row in log[start:]:
         row["language"] = language
         counts[f"audio not published: {row['outcome']}"] += 1
@@ -384,7 +385,7 @@ def run(mode: str, languages: list[str], write_ledger: bool = False) -> int:
     old_to_new: list[dict] = []
     totals: Counter = Counter()
     audio_log: list[dict[str, str]] = []
-    audio = (AudioTable(), load_second_s(), audio_log)
+    audio = (AudioTable(), load_second_s(), load_no_audio(), audio_log)
     for language in languages:
         snapshot = verify_and_load_snapshot(language, SNAPSHOT_DIR, manifest)
         untranslated: dict = {}

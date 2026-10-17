@@ -10,7 +10,8 @@ import unittest
 import xml.etree.ElementTree as ET
 
 from audio_recordings import (AudioTable, Fingerprint, audio_elements, choose,
-                              split_id, EXTENSIONS, BROKEN_TYPES, UNREACHABLE)
+                              load_no_audio, split_id, EXTENSIONS, BROKEN_TYPES,
+                              UNREACHABLE)
 
 XML_DIR = Path(__file__).resolve().parents[2] / "XML"
 
@@ -25,11 +26,12 @@ class FakeTable(AudioTable):
 
 
 def run(language, identifier, recordings, mains=(), main_audio=(), village=None,
-        second_s=()):
+        second_s=(), no_audio=()):
     table = FakeTable(recordings, mains)
     log = []
     chosen = choose(language, identifier, [u for u, _, _ in recordings], village or {},
-                    [dict(a) for a in main_audio], table, set(second_s), log)
+                    [dict(a) for a in main_audio], table, set(second_s), log,
+                    set(no_audio))
     return audio_elements(language, identifier, chosen, table), log
 
 
@@ -90,6 +92,14 @@ class TestChoice(unittest.TestCase):
         out, _ = run("Yami", "Yami_1", recs, village={"u1": "野銀", "u2": "野銀"})
         self.assertEqual([a["file"] for a in out], ["Yami_1_野銀.mp3", "Yami_1_野銀_2.mp3"])
 
+    def test_no_audio_ruling_drops_every_recording(self):
+        main = {"url": "old", "file": "Bunun_1.mp3"}
+        out, log = run("Bunun", "Bunun_1", [("u1", "M", "same-as-main"), ("u2", "B", "mp3")],
+                       mains=[("Bunun_1.mp3", "M")], main_audio=[main], no_audio=["Bunun_1"])
+        self.assertEqual(out, [])
+        self.assertEqual(len(log), 3)
+        self.assertTrue(all("Drop the audio" in r["outcome"] for r in log))
+
     def test_split_id(self):
         self.assertEqual([split_id("X", k) for k in range(4)],
                          ["X", "X-opt", "X-opt3", "X-opt4"])
@@ -102,6 +112,18 @@ class TestBuiltXml(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.table = AudioTable()
+
+    def test_no_audio_rulings_hold(self):
+        # Maintainer, round 3 (2026-10-16): "Use only 2026 version. Drop the audio."
+        found = {}
+        for identifier in sorted(load_no_audio()):
+            language = identifier.rsplit("_", 1)[0]
+            root = ET.parse(XML_DIR / language / f"{language}.xml").getroot()
+            family = [s for s in root.findall("S")
+                      if s.get("id") == identifier or s.get("id", "").startswith(identifier + "-opt")]
+            found[identifier] = (len(family), sum(len(s.findall("AUDIO")) for s in family))
+        self.assertEqual(found, {i: (1, 0) for i in found})
+        self.assertEqual(len(found), 5)
 
     def test_published_audio(self):
         problems = []

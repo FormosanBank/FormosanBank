@@ -20,7 +20,7 @@ for all 39 files under Corpora/ILRDF_Dicts/ that the build writes (the 32 XML
 files, `manual_edits.xml/.md`, `old_to_new_ids.csv`, `docs/split_report.csv`,
 `docs/audio_not_published.csv`, `docs/recording_split_ids.csv`,
 `provenance.json`); digest
-`ca29d23cc4831b8da12c5ec13d5432f052d592834614ffc1d6199541c70306de`.
+`3876eb31666e6dd630fb6b2c9da521cfa156bbc1e5cd68915d564318854d39b3`.
 
 Same tools, different digest means something stopped being reproducible.
 Different tools (a newer commit in `provenance.json`) can legitimately change

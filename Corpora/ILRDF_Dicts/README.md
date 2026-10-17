@@ -14,7 +14,7 @@ published from its 2024 scrape.
 | Files | 16 | 16 |
 | `S` records | 184,147 | 139,579 |
 | `TRANSL` | 187,336 | 164,849 |
-| `AUDIO` in an `S` (at most one per `S`) | 131,341 | — |
+| `AUDIO` in an `S` (at most one per `S`) | 131,336 | — |
 | untranscribed `AUDIO` (direct child of `TEXT`) | 486 | — |
 | variant readings (`FORM kindOf="original" ver="alt"`) | 2,006 | 134 |
 
@@ -23,20 +23,20 @@ published from its 2024 scrape.
 | Amis | 9,038 | 5,616 | 3,422 | 4 | 6,571 | 0 | 8,444 |
 | Atayal | 9,191 | 6,410 | 2,781 | 89 | 6,916 | 127 | 6,496 |
 | Bunun | 12,368 | 9,022 | 3,346 | 6 | 10,446 | 20 | 7,564 |
-| Kanakanavu | 8,844 | 5,654 | 3,190 | 538 | 6,794 | 0 | 4,415 |
+| Kanakanavu | 8,844 | 5,654 | 3,190 | 538 | 6,793 | 0 | 4,415 |
 | Kavalan | 10,647 | 8,384 | 2,263 | 138 | 9,297 | 5 | 7,291 |
 | Paiwan | 7,837 | 5,424 | 2,413 | 3 | 5,815 | 33 | 6,625 |
 | Puyuma | 9,644 | 7,292 | 2,352 | 37 | 8,304 | 7 | 8,636 |
 | Rukai | 15,236 | 10,474 | 4,762 | 2 | 12,960 | 6 | 12,997 |
 | Saaroa | 7,166 | 4,161 | 3,005 | 211 | 4,939 | 1 | 6,092 |
-| Saisiyat | 9,340 | 6,212 | 3,128 | 38 | 7,662 | 5 | 6,268 |
+| Saisiyat | 9,340 | 6,212 | 3,128 | 38 | 7,659 | 5 | 6,268 |
 | Sakizaya | 8,495 | 5,565 | 2,930 | 1 | 6,766 | 98 | 7,078 |
 | Seediq | 7,660 | 5,495 | 2,165 | 29 | 6,121 | 2 | 5,977 |
 | Thao | 9,860 | 6,660 | 3,200 | 22 | 7,658 | 91 | 5,165 |
 | Truku | 29,718 | 4,762 | 24,956 | 6 | 5,812 | 16 | 32,892 |
-| Tsou | 7,187 | 2,957 | 4,230 | 116 | 4,949 | 63 | 5,768 |
+| Tsou | 7,187 | 2,957 | 4,230 | 116 | 4,948 | 63 | 5,768 |
 | Yami | 21,916 | 19,158 | 2,758 | 15 | 20,331 | 12 | 7,871 |
-| **Total** | **184,147** | **113,246** | **70,901** | **1,255** | **131,341** | **486** | **139,579** |
+| **Total** | **184,147** | **113,246** | **70,901** | **1,255** | **131,336** | **486** | **139,579** |
 
 "Under a main id" includes the `-opt` records split from a main sentence
 (alternatives, and one `S` per recording); "2024-only" sentences are
@@ -270,12 +270,17 @@ the build never downloads anything. The rules (maintainer rulings
   downloaded. Where the sentence has another working recording (2026 or
   main's) that one is used; **13 sentences are left with no recording**
   (Paiwan 1, Puyuma 1, Saaroa 5, Tsou 5, Yami 1).
+- **Recordings dropped by ruling.** Kanakanavu_2270, Saisiyat_1174,
+  Saisiyat_4707, Saisiyat_5198 and Tsou_2810 are published with the 2026
+  text and no recording ("Use only 2026 version. Drop the audio.",
+  maintainer, 2026-10-16;
+  [source_data/audio_rulings.json](CodeAndDocs/source_data/audio_rulings.json)).
 
 Every recording that is not published, and why, is listed in
 [CodeAndDocs/docs/audio_not_published.csv](CodeAndDocs/docs/audio_not_published.csv)
-(99,403 rows: 98,529 identical copies, 713 replaced 2024 recordings, 157
-broken, 3 unreachable, and 1 note where main's recording replaced broken
-2026 ones). Files the XML references that Hugging Face does not yet hold are
+(99,408 rows: 98,529 identical copies, 713 replaced 2024 recordings, 157
+broken, 3 unreachable, 5 dropped by ruling, and 1 note where main's
+recording replaced broken 2026 ones). Files the XML references that Hugging Face does not yet hold are
 listed by `audio_upload_manifest.py` in
 [CodeAndDocs/docs/audio_upload_manifest.csv](CodeAndDocs/docs/audio_upload_manifest.csv)
 (33,817 files, 4.0 GB).

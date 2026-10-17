@@ -109,18 +109,40 @@ def load_second_s(path: Path = AUDIO_RULINGS_PATH) -> set[str]:
     return set(payload["second_s"]["main_ids"])
 
 
+def load_no_audio(path: Path = AUDIO_RULINGS_PATH) -> set[str]:
+    """Sentences ruled to carry no recording at all ("Drop the audio")."""
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return set(payload["no_audio"]["main_ids"])
+
+
+NO_AUDIO_OUTCOME = ("not published: maintainer ruling 2026-10-16 \"Drop the audio\" "
+                    "(source_data/audio_rulings.json, no_audio)")
+
+
 def _village_rank(village: str | None) -> int:
     return YAMI_VILLAGES.index(village) if village in YAMI_VILLAGES else len(YAMI_VILLAGES)
 
 
 def choose(language: str, identifier: str, urls: list[str], village_of: dict[str, str | None],
            main_audio: list[dict[str, str]], table: AudioTable, second_s: set[str],
-           log: list[dict[str, str]]) -> list[Recording]:
+           log: list[dict[str, str]], no_audio: set[str] = frozenset()) -> list[Recording]:
     """The distinct recordings of one sentence, in publication order.
 
     `log` receives one row per recording left out (broken, unreachable,
-    identical copy, main's recording replaced by a 2026 one).
+    identical copy, main's recording replaced by a 2026 one, ruled out).
+    A sentence in `no_audio` gets no recording from any source.
     """
+    if identifier in no_audio:
+        for url in urls:
+            fp = table.recording(url)
+            log.append({"s_id": identifier, "origin": "2026", "url": url,
+                        "file": fp.file, "type": fp.type,
+                        "village": village_of.get(url) or "", "outcome": NO_AUDIO_OUTCOME})
+        for attributes in main_audio:
+            log.append({"s_id": identifier, "origin": "main",
+                        "url": attributes.get("url", ""), "file": attributes.get("file", ""),
+                        "type": "", "outcome": NO_AUDIO_OUTCOME})
+        return []
     working: list[Recording] = []
     for url in urls:
         fp = table.recording(url)
