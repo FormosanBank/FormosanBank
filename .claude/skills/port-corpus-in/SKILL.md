@@ -27,6 +27,25 @@ Move a QC'd corpus from a development repo into FormosanBank with the standard p
    - `qc-output/<latest-timestamp>/qc-summary.md` exists, OR
    - User explicitly passed `assume_qc_passed=true`.
    - If neither: surface to user. Either ask to run `run-qc-pipeline` first or to set `assume_qc_passed=true`.
+5. **The dev repo already has the published build shape** (POL-047/048/052); a
+   port copies it, it does not create it. Check, and stop with a list of what is
+   missing rather than porting around it (a new corpus is never added to a
+   pending list):
+   - `CodeAndDocs/generate_xml.sh` exists, is executable, and is the only entry
+     point (no `Makefile`, `make_xml.sh`, `reproduce.sh`, `run_qc_pipeline.sh`,
+     `build.sh` beside it — POL-047);
+   - it reads nothing outside its own `CodeAndDocs/` and the FormosanBank checkout
+     (no `Private/`, no `VALIDATOR_ROOT`/`FORMOSANBANK_*` env vars, no second clone
+     — POL-048), and runs no validator (build only);
+   - `CodeAndDocs/provenance.json` is written by the build and holds a 40-character
+     `formosanbank_commit` (POL-052);
+   - `CodeAndDocs/tests/` holds the source-accounting test (every source unit is
+     either emitted or in the rejected list with a reason; skips when the source
+     is absent) — the `setup-new-dev-repo` scaffold ships it as
+     `test_source_accounting.py`; a corpus without one has no answer to "is text
+     missing from the scrape?" (Seediq-Chang's chapters 5 and 6 were).
+   Offer the scaffold's templates (`.claude/skills/setup-new-dev-repo/`) for
+   whatever is missing; the fix belongs in the dev repo, before the port.
 
 ## Recipe phases
 
@@ -103,14 +122,74 @@ Drop nothing from the source dev repo unless explicitly approved.
 
 ### Phase 4: Validate after port
 
-Run `validate_xml.py` on the new published XML to confirm XSD conformance.
-`--no-exit-on-hard` lets us inspect findings rather than aborting the skill
-on first failure; HARD findings appear on stderr regardless.
+**The gate GitHub runs, run here first.** A pull request is checked by three
+validators, not one, and each is compared with what `main` already has: any
+HARD finding that is new fails the PR. Run exactly that, and quote the counts
+("0 new HARD in xml / text / glosses") above the push block in Phase 6. A
+corpus that passes only `validate_xml.py` can still turn the PR red for a text
+or gloss defect — it has happened, and the fix then lands after the hand-over
+instead of before it.
 
 ```bash
-<python> <formosanbank_path>/QC/validation/validate_xml.py by_path \
-  --path "<formosanbank_path>/Corpora/<corpus_name>/XML" --no-exit-on-hard
+cd <formosanbank_path>
+C="Corpora/<corpus_name>"
+# The baseline: what main holds for this corpus (empty for a new port, so every
+# HARD finding is new; the predecessor for a re-port).
+rm -rf /tmp/port-base && mkdir -p /tmp/port-base
+git archive origin/main -- "$C" 2>/dev/null | tar -x -C /tmp/port-base || true
+for v in validate_xml validate_text validate_glosses; do
+  <python> QC/validation/${v}.py --no-exit-on-hard by_path --path "$C/XML" --csv /tmp/port-$v-head.csv
+  args=(--candidate /tmp/port-$v-head.csv --severity HARD)
+  if [ -d "/tmp/port-base/$C/XML" ]; then
+    <python> QC/validation/${v}.py --no-exit-on-hard by_path --path "/tmp/port-base/$C/XML" --csv /tmp/port-$v-base.csv
+    args+=(--baseline /tmp/port-$v-base.csv)
+  fi
+  echo "== $v: new HARD findings vs main =="; <python> QC/validation/compare_findings.py "${args[@]}"
+done
 ```
+
+(`validate_glosses.py` is a no-op on a corpus without W/M; run it anyway so the
+line reads "0".) SOFT findings do not gate: list them in the Phase 6 summary
+by rule, with what each class is, for the operator to read.
+
+**The static build-shape tests, for this corpus.** The repository's own tests
+check the port shape (one entry point in canonical order, self-contained,
+provenance recorded and linked, the Rights block and the Notes and Issues
+section in the README, only XML under `XML/`, no deviation stated in prose
+alone). Run them for the ported corpus and quote the pass count:
+
+```bash
+<python> -m pytest tests/corpora -q -k "<corpus_name>"
+```
+
+**The build, actually run (POL-047 idempotency).** The maintainer wants this
+done locally in the port, not in CI. From the FormosanBank checkout, run the
+corpus's entry point and require a clean tree afterwards:
+
+```bash
+cd <formosanbank_path>
+bash "Corpora/<corpus_name>/CodeAndDocs/generate_xml.sh"
+git status --porcelain "Corpora/<corpus_name>" "statistics/"    # must print nothing
+```
+
+A build that changes files on a clean checkout is not idempotent; one that
+exits because a table, a private file or a second clone is missing is not
+self-contained (POL-048). Either is a finding to surface, not to work around.
+If the build needs more than about twenty minutes, say so and ask before
+running it.
+
+**The corpus's own tests.** They are the per-corpus regression layer (Tang's 16
+each corrupt one thing and assert the complaint; Song's 21 pin every printed
+record) and nothing in CI collects them (`testpaths = ["tests"]`). Run them
+here, with the environment the corpus expects, and quote the pass count:
+
+```bash
+cd <formosanbank_path>
+FORMOSANBANK_ROOT="$PWD" <python> -m pytest "Corpora/<corpus_name>/CodeAndDocs/tests" "Corpora/<corpus_name>/tests" -q 2>/dev/null
+```
+
+The source-accounting test (pre-check 5) must be among them and must pass; if
+it skips because the source is absent from the public checkout, say so.
 
 **Resolve `<python>` in this order:**
 1. `<source_path>/.venv/bin/python3` if it exists (dev repos created via `setup-new-dev-repo` have one)
@@ -140,6 +219,27 @@ P005 = `statistics/audio_durations.csv` stale for this corpus (run
 conversion table — run `validate_conversion_table.py` on it (source profile,
 target profile, table as the three positional args) before trusting the
 standard tier.
+
+**Re-port: what changed against the merge base, and why each change was
+approved.** When `main` already holds this corpus, run the content-delta check
+CI will run and read every red line:
+
+```bash
+<python> <formosanbank_path>/QC/validation/content_delta.py \
+  --base /tmp/port-base/Corpora --head "<formosanbank_path>/Corpora" --corpus <corpus_name>
+```
+
+Mismatching what was recorded prevents a merge; the check stays red until the
+maintainer overrides it. The skill's part is the **audit artifact** that makes
+the override an informed one: publish one page for the re-port listing every
+class of change the tool reports (TEXT ids removed or renamed, S removed or
+renumbered, elements removed per tier, dialect and licence changes), one row
+each with its count, the decision it traces to — a quoted ruling from the
+decision log, a disclosure in the PR body, or a POL entry — and, where none
+can be found, the flag **"no approved decision found"**. Rows with that flag
+are the questions the maintainer answers before overriding; rows with a trace
+are what the override is for. Link the page in the Phase 6 summary and the PR
+body. (This is the shape the maintainer asked for on PRs #173 and #164.)
 
 **Declared vs detected.** The build declares a dialect (`TEXT/@dialect`) and a
 source orthography (`--orthography` / the conversion table in
@@ -227,19 +327,31 @@ print("OK: no private content leaked.")
 EOF
 ```
 
-### Phase 4b: Refresh attestation dictionaries
+### Phase 4b: Is the attestation dictionary stale?
 
 The quote/glottal correction in `clean_xml` reads a precomputed per-language
-attestation dictionary. Now that this corpus adds new data, refresh it for
-each language the corpus contains:
+attestation dictionary (`QC/validation/reference/<Name>/attestation.txt`).
+Refreshing it is **not** part of a port (maintainer, 2026-10-17: "Refreshing
+the attestation dictionary should be part of building the dev repo (if it is
+needed at all) … automatically refreshing doesn't make sense"), and a
+corpus PR never changes `QC/` (POL-049). What the port does is check how old
+the dictionary is and ask:
 
 ```bash
-<python> <formosanbank_path>/QC/utilities/build_attestation_dict.py --language <Name>
+cd <formosanbank_path>
+for L in <each language in the corpus>; do
+  f="QC/validation/reference/${L}/attestation.txt"
+  [ -f "$f" ] || { echo "$L: no attestation dictionary"; continue; }
+  echo "$L: attestation last changed $(git log -1 --format=%cs -- "$f"); newest $L corpus merged $(git log -1 --format=%cs -- $(grep -l "xml:lang=\"<iso>\"" -r Corpora/*/XML -m1 --include=*.xml | awk -F/ '{print $1"/"$2}' | sort -u | tr '\n' ' '))"
+done
 ```
 
-Run once per distinct language in the ported corpus. Commit the updated
-`QC/validation/reference/<Name>/attestation.txt` alongside the port.
-(Languages whose orthography does not use `'` can be skipped.)
+If the dictionary predates one or more corpora of that language by months,
+raise it as a question in the Phase 6 summary ("the <Name> attestation
+dictionary is from <date>; <N> corpora of <Name> merged since — refresh in
+its own PR?"). Do not run `build_attestation_dict.py` here and never commit
+`QC/validation/reference/` in the corpus PR; a refresh is its own PR, merged
+first, with its number noted in the corpus PR body.
 
 ### Phase 5: Add to GitBook
 
@@ -361,7 +473,12 @@ PR separately (this skill is **not a git committer**, consistent with Phase 3).
 Print:
 - What was created (paths)
 - What was dropped (paths)
-- XSD validation result
+- The gate: "N new HARD in xml / text / glosses vs main" (three numbers), SOFT findings by rule with a one-line description each
+- Static build-shape tests for this corpus: pass count
+- The build run: "generate_xml.sh ran in <time>; git status clean" (or what it changed / why it stopped)
+- The corpus's own tests: pass count, and whether the source-accounting test ran or skipped
+- Re-port only: the content-delta lines and the link to the audit artifact (rows traced / rows flagged "no approved decision found")
+- Attestation dictionary: age per language, and the refresh question if it is stale
 - Spot-check results
 - Cross-corpus duplicate check: match count per language + CSV path(s), or why it was skipped
 - Declared vs detected: the three tables from `declared_vs_detected.py`, every MISMATCH row called out
@@ -376,7 +493,7 @@ Print:
   - "Privacy leak check: <result> (clean / N basename collisions to review / HARD ERROR)"
 - Recommended next steps:
   - Review the new `Corpora/<corpus_name>/` contents
-  - Commit and open a PR
+  - Commit and open a PR — the PR body carries what Phase 6 printed: the three gate counts, the build result, the test counts, and (re-port) the audit artifact link and every removal with its reason (POL-051)
 
 ## Decisions the skill surfaces (does NOT guess)
 
