@@ -195,11 +195,23 @@ class WilangPipelineTests(unittest.TestCase):
             if row["resolution"].startswith("accepted"):
                 self.assertTrue(any(ord(character) > 127 for character in form_text))
             else:
-                self.assertTrue(row["resolution"].startswith("transcriber's Japanese note dropped"))
+                self.assertTrue(row["resolution"].startswith("transcriber's Japanese note moved to FORM notes"))
+                self.assertIn("transcriber's Japanese gloss: ", sentence.find("FORM[@kindOf='original']").get("notes", ""))
         fixed = self.xml[rows[20]["output_path"]].find("S[@id='Atayal_110']")
         self.assertIsNotNone(fixed)
         self.assertIsNone(fixed.find("TRANSL"))
         self.assertIn("(再確認)", fixed.find("FORM[@kindOf='original']").get("notes", ""))
+
+    def test_japanese_notes_and_uncertain_translation_are_notes(self) -> None:
+        root = self.xml["XML/Atayal/20190209_YutasWilang_ki_Yagu_04_disiduan_Sayun.xml"]
+        s31 = root.find("S[@id='Atayal_31']")
+        for kind in ("original", "standard"):
+            form = s31.find(f"FORM[@kindOf='{kind}']")
+            self.assertEqual("".join(form.itertext()), "qwas ta qani ga, cyolo Sayun ga,")
+            self.assertEqual(form.get("notes"), "transcriber's Japanese gloss: cyolo = ちょっと")
+        transl = root.find("S[@id='Atayal_85']/TRANSL")
+        self.assertEqual(transl.text, "所以他們取名為")
+        self.assertEqual(transl.get("notes"), "translation uncertain: the source writes 所以他們取名為(???)")
 
     def test_editorial_rechecks_are_not_free_translation_text(self) -> None:
         path = (

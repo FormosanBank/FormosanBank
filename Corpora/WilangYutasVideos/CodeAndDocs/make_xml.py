@@ -43,8 +43,17 @@ _LEADING_PERIOD_RE = re.compile(r"(?<=\S) +(\.+)(?=[^\s,.])")
 _UNCLEAR_RE = re.compile(r"[?\uff1f]{3,}")
 _UNCLEAR_ONLY_RE = re.compile(r"[?\uff1f]{3,}")
 # The transcriber glosses Japanese loanwords in parentheses, e.g. ``cyolo(日: ちょっと)``.
-# These are notes, not speech (maintainer 2026-10-17: "Drop the transcriber's Japanese notes.").
-_JAPANESE_NOTE_RE = re.compile(r"\s*[(（]日[:：][^()（）]*[)）]")
+# These are notes, not speech: they leave the FORM text and are recorded in the sentence's
+# FORM notes, naming the word annotated (maintainer 2026-10-17: "The annotator notes saying
+# what the original Japanese is should go into the notes for the S ... it should specify which
+# word is being annotated.").
+_JAPANESE_NOTE_RE = re.compile(r"\s*[(（]日[:：]([^()（）]*)[)）]")
+# A note annotates the word before it, except where the note glosses a longer phrase.
+_JAPANESE_NOTE_SPANS = {"学校のきゅうじ": "gako no kyuzi"}
+# A source mark that part of a translation is missing; recorded as a TRANSL note instead
+# (maintainer 2026-10-17: "Remove the paranthetical. Use the notes attribute to state that
+# translation is uncertain.").
+_TRANSL_UNCERTAIN_RE = re.compile(r"\s*[(（][?？]{3,}[)）]")
 _EDITORIAL_RECHECK_RE = re.compile(r"\s*([（(][^（）()]*再確認[^（）()]*[）)])\s*$")
 
 
@@ -215,8 +224,34 @@ def normalize_form(text: str) -> tuple[str, bool]:
     return _TRAIL_SPACE_BEFORE_PUNCT_RE.sub(r"\1", normalized), had_parens
 
 
-def drop_japanese_notes(text: str) -> tuple[str, int]:
-    return _JAPANESE_NOTE_RE.subn("", text)
+def drop_japanese_notes(text: str) -> tuple[str, list[str]]:
+    """Remove the transcriber's ``(日: …)`` notes; return the text and ``word = note`` records."""
+    records: list[str] = []
+    for match in _JAPANESE_NOTE_RE.finditer(text):
+        note = match.group(1).strip()
+        word = _JAPANESE_NOTE_SPANS.get(note)
+        if word is None:
+            before = re.findall(r"[^\s(),.]+", text[: match.start()])
+            word = before[-1] if before else "?"
+        record = f"{word} = {note or '(left blank)'}"
+        if record not in records:
+            records.append(record)
+    return _JAPANESE_NOTE_RE.sub("", text), records
+
+
+def japanese_note(records: list[str]) -> str | None:
+    if not records:
+        return None
+    return "transcriber's Japanese gloss: " + ", ".join(records)
+
+
+def split_uncertain_translation(translation: str) -> tuple[str, str | None]:
+    if not _TRANSL_UNCERTAIN_RE.search(translation):
+        return translation, None
+    return (
+        _TRANSL_UNCERTAIN_RE.sub("", translation).strip(),
+        f"translation uncertain: the source writes {translation}",
+    )
 
 
 def is_unclear_only(text: str) -> bool:
@@ -281,15 +316,18 @@ def build_transcript(
             untranscribed_clips.append(clip)
             continue
         sentence = etree.SubElement(root, "S", id=sentence_id)
-        text, notes = drop_japanese_notes(entry.text)
-        dropped_notes += notes
+        text, japanese = drop_japanese_notes(entry.text)
+        dropped_notes += len(_JAPANESE_NOTE_RE.findall(entry.text))
         normalized, had_parens = normalize_form(text)
         translation = entry.translation
         editorial_note = None
+        uncertain_note = None
         if translation is not None:
             translation, editorial_note = split_editorial_recheck(translation)
+            translation, uncertain_note = split_uncertain_translation(translation)
         form_note = _join_notes(
             "multiple speakers" if had_parens else None,
+            japanese_note(japanese),
             (
                 f"source translation field contains editorial marker "
                 f"{editorial_note}; no free translation supplied"
@@ -304,8 +342,12 @@ def build_transcript(
         if translation:
             transl = etree.SubElement(sentence, "TRANSL")
             transl.set(f"{{{XML_NS}}}lang", "zho")
-            if editorial_note:
-                transl.set("notes", f"source editorial marker: {editorial_note}")
+            transl_note = _join_notes(
+                f"source editorial marker: {editorial_note}" if editorial_note else None,
+                uncertain_note,
+            )
+            if transl_note:
+                transl.set("notes", transl_note)
             transl.text = translation
         audio = etree.SubElement(sentence, "AUDIO")
         audio.set("start", entry.start)
@@ -400,7 +442,7 @@ def main() -> None:
     )
     retired = sum(len(root.findall("AUDIO")) - 1 for root in outputs.values() if root.find("S") is None)
     print(f"Question-mark-only captions moved to _untranscribed companions: {retired}")
-    print(f"Transcriber Japanese notes dropped: {dropped_notes}")
+    print(f"Transcriber Japanese notes moved from FORM text to FORM notes: {dropped_notes}")
     print(
         f"Translation lines: {totals.translation_lines}; "
         f"wrapped source continuations: {totals.continuation_lines}"
