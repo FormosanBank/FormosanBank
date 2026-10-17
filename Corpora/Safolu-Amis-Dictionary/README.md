@@ -127,7 +127,9 @@ FORMOSANBANK_ROOT=/path/to/FormosanBank python3 -m pytest Corpora/Safolu-Amis-Di
 ```
 
 Generation, shared cleaning, standardization, PHON and dedup run in temporary
-staging; only a completed build installs XML and provenance. The build never
+staging; only a completed build installs XML and its
+[provenance record](CodeAndDocs/provenance.json) (the FormosanBank commit whose
+tools built it; recorded, never used to gate a build, per POL-052). The build never
 fetches a source. To refresh the source deliberately, run
 `python3 CodeAndDocs/source_snapshot.py /path/to/clean/amis-moedict` and review
 the new manifest and every change; overrides whose expected text no longer
