@@ -77,8 +77,12 @@ def select_sentence_form(sentence) -> str | None:
     reports that shape."""
     for kind in ("standard", "original"):
         for form in iter_base_forms(sentence, kind):
-            if form.text and form.text.strip():
-                return form.text
+            # The whole FORM, not .text: an inline <UNCLEAR/> ends .text, which
+            # would drop every word after the gap (and a FORM that opens with
+            # one would look empty).
+            text = "".join(form.itertext())
+            if text.strip():
+                return text
     return None
 
 
