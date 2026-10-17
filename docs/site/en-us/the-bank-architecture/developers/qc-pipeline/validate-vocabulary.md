@@ -63,12 +63,19 @@ python QC/validation/validate_vocabulary.py \
 | `--o_info` | yes | — | Folder of extracted `orthographic_info` profiles to analyze. |
 | `--reference` | yes | — | Folder of reference profiles, normally `QC/validation/reference`. |
 | `--language` | no | all languages found under `--o_info` | Limit analysis to one language folder. |
+| `--quiet` | no | off | Warnings as plain `WARNING:` lines on stdout instead of Python `warnings` on stderr, and no matplotlib font messages. The skills run with it. |
 
 > The help text claims `--reference` defaults to the bundled folder when blank, but the code calls `parser.error` if it is omitted — both `--o_info` and `--reference` are required and must exist on disk.
 
 ## Output & exit codes
 
-- **stdout / stderr**: per-language/dialect Jaccard and overlap values, plus `warnings.warn` lines listing divergent high-frequency words.
+- **stdout / stderr**: per-language/dialect Jaccard and overlap values of the top-100 word lists, a warning when either is below .975 (naming the words on each side only), and one greppable line per group that an audit quotes:
+
+  ```
+  SUMMARY vocabulary | Amis / Coastal | top100_jaccard=0.88 overlap=1.00 | corpus_only=[fafahi kaying] reference_only=[] | warnings=1
+  ```
+
+  A group with no reference prints `SUMMARY vocabulary | <group> | reference=missing | warnings=1`.
 
 This validator is **informational**: warnings never change the exit code, and there is no HARD/SOFT classification or `--no-exit-on-hard` flag. A warning is a prompt for human review (likely a mislabeled language/dialect or noisy source text), not a build failure.
 

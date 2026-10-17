@@ -75,12 +75,19 @@ python QC/validation/validate_orthography.py \
 | `--o_info` | yes | — | Folder of extracted `orthographic_info` profiles to analyze (output of `orthography_extract.py`). |
 | `--reference` | yes | — | Folder of reference profiles, normally `QC/validation/reference`. |
 | `--language` | no | all languages found under `--o_info` | Limit analysis to one language folder. |
+| `--quiet` | no | off | Only the group header, the metric lines, `WARNING` lines and the `SUMMARY` line; also silences matplotlib's font messages. The skills run with it; the default is the full development output (the pickles' key lists and the reference's character-frequency table). |
 
 > Despite the help text saying `--reference` defaults to the bundled folder "if blank," the code calls `parser.error` when it is omitted — both `--o_info` and `--reference` are effectively required, and each path must exist on disk.
 
 ## Output & exit codes
 
-- **stdout**: per-language/dialect blocks of metric values and any `WARNING` lines.
+- **stdout**: per-language/dialect blocks of metric values and any `WARNING` lines, ending in one greppable line per group that an audit quotes:
+
+  ```
+  SUMMARY orthography | Amis / Coastal | jaccard=0.97 overlap=1.00 cosine=0.995 euclid=0.012 kl=0.008 bigram_cosine=0.97 bigram_euclid=0.03 | corpus_only=[ʉ] reference_only=[] | warnings=1
+  ```
+
+  `corpus_only` lists the characters the corpus uses and the reference does not, `reference_only` the reverse; `warnings` counts the thresholds crossed. A group with no reference prints `SUMMARY orthography | <group> | reference=missing | warnings=1`.
 - **PNG**: `<label>_frequency_comparison.png` written into each corpus profile folder under `--o_info`.
 
 This validator is **informational**: warnings do not change the exit code. There is no HARD/SOFT classification and no `--no-exit-on-hard` flag here. A `WARNING` means "look at this," typically a stray or missing character class versus the reference; treat it as a prompt for a human to review the orthography, not a build failure.
