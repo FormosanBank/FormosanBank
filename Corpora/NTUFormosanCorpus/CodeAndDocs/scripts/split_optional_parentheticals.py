@@ -72,8 +72,11 @@ from pathlib import Path
 
 import lxml.etree as etree
 
-_WHOLE_PAREN = re.compile(r"^\([^()]*\)$")
-_PAREN_GLOSS = re.compile(r"^\(.*\)$")
+# The sentence's punctuation may follow the parenthesis ('(ngi-palay).'); the
+# word is still a whole optional word (POL-026; Ryan S_19, item D2 on the 2026-10-16 follow-ups
+# page, a fix under existing policy, not a separate ruling).
+_WHOLE_PAREN = re.compile(r"^\([^()]*\)[^\w()]*$")
+_PAREN_GLOSS = re.compile(r"^\(.*\)[^\w()]*$")  # gloss may carry the punctuation too: '(主題),'
 
 
 def _form(el, kind):
@@ -130,8 +133,16 @@ def _drop_groups(text):
     return _tidy(_PAREN_GROUP.sub("", text)) if text else text
 
 
+# A code-switch label is a gloss, not optional material: its parentheses stay
+# ("(Mandarin)" -- review page round 9; the word 較好 in Sentences 3_S_459).
+_LANGUAGE_LABEL = re.compile(r"\((Mandarin|Japanese|Chinese|Hakka)\)")
+
+
 def _strip_parens(text):
-    return text.replace("(", "").replace(")", "") if text else text
+    if not text:
+        return text
+    held = _LANGUAGE_LABEL.sub(lambda m: "\x00" + m.group(1) + "\x01", text)
+    return held.replace("(", "").replace(")", "").replace("\x00", "(").replace("\x01", ")")
 
 
 def make_without(s, whole):

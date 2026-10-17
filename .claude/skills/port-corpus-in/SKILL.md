@@ -39,7 +39,7 @@ Read `source_path` top-level. Identify and report:
   - `Final_XML/` (common in dev repos)
   - `xml/<chapter>.xml` (common for chapter-segmented corpora)
   - Root-level `*.xml` (monolithic — see below)
-- Is the XML monolithic (single file with many `<TEXT>` or `<S>` elements)? If yes, prompt the user: "This corpus has a monolithic XML. Run `split-monolithic-xml` first, then re-invoke port-corpus-in. Do NOT proceed without splitting." (`split-monolithic-xml` is a deferred-backlog item; it may not exist yet.)
+- Is the XML monolithic (single file with many `<TEXT>` or `<S>` elements)? If yes, stop and tell the user the XML must first be split into the published per-file layout — via a committed script in the dev repo's `CodeAndDocs/` (POL-038) — then re-invoke port-corpus-in. Do not port a monolithic file.
 - What scripts exist (at root or in a `scripts/` subdir) that likely belong in `CodeAndDocs/`?
 - What source data artifacts exist at root (e.g., original PDFs, extracted text files, decrypted source documents) that may belong in `CodeAndDocs/` for reproducibility — *unless* they contain private content per CLAUDE.md's "private source data" caveat, in which case surface to user.
 - What scratch dirs exist that should be dropped (`data/`, `raw_data/`, `Original/`, `img-by-page/`, `text-by-page/`, `logs/`, etc.)?
@@ -87,7 +87,7 @@ Drop nothing from the source dev repo unless explicitly approved.
 
 ### Phase 4: Validate after port
 
-Run `validate_xml.py` on the new published XML to confirm DTD/XSD conformance.
+Run `validate_xml.py` on the new published XML to confirm XSD conformance.
 `--no-exit-on-hard` lets us inspect findings rather than aborting the skill
 on first failure; HARD findings appear on stderr regardless.
 
@@ -321,7 +321,7 @@ PR separately (this skill is **not a git committer**, consistent with Phase 3).
 Print:
 - What was created (paths)
 - What was dropped (paths)
-- DTD validation result
+- XSD validation result
 - Spot-check results
 - Cross-corpus duplicate check: match count per language + CSV path(s), or why it was skipped
 - GitBook page: <path>
@@ -329,7 +329,7 @@ Print:
 - "GitBook page created on branch <chosen>; commit and open the GitBook PR separately."
 - Open items, e.g.:
   - "README is a stub — please flesh out the {{REPRODUCIBILITY_STEPS}} section before opening a PR"
-  - "DTD validation failed on N files — investigate before opening PR"
+  - "XSD validation failed on N files — investigate before opening PR"
   - "audio download script copied but not tested; run it to verify it still works in the published location"
   - "Privacy leak check: <result> (clean / N basename collisions to review / HARD ERROR)"
 - Recommended next steps:

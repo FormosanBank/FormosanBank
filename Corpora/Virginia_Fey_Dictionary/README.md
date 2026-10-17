@@ -88,7 +88,18 @@ Fey, Virginia (1986). *Amis Dictionary* (阿美語字典). The Bible Society in 
 
 Li, P. J. K., Joby, C., & Zeitoun, E. (2024). Word Lists and Dictionaries of Formosan Languages. Handbook on Formosan languages: The indigenous languages of Taiwan. Leiden: Brill.
 
-## License
+## Rights
+
+**License:** CC BY-NC 3.0
+**Rights source:** The Bible Society in Taiwan (台灣聖經公會), as stated in miaoski/amis-data; date not recorded in this repository; evidence: ask maintainer
+
+The licence is the version as granted (CC BY-NC 3.0 Unported, quoted below),
+kept as granted by maintainer ruling 2026-10-16 rather than mapped to 4.0
+(POL-042). Until 2026-10-16 each `TEXT/@copyright` read `CC BY-SA`, which
+matched neither the version nor the NonCommercial term of the grant. The same
+one-attribute change was made in the POL-035 snapshot
+(`CodeAndDocs/pre_correction_snapshot/Amis/Amis.xml`), because `make_xml.sh`
+copies that snapshot into `XML/` and a rebuild must reproduce the new value.
 
 According to [the github repo we sourced this from](https://github.com/miaoski/amis-data), permission for a CC-BY-NC license was provided by the Taipei Bible Society:
 

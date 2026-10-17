@@ -334,10 +334,7 @@ def safolu_corpus(sources_dir: Path) -> tuple[Corpus, list[ExampleRecord], list[
             "year={n.d.}, "
             "note={Provided to the g0v Amis Moedict project}}"
         ),
-        copyright=(
-            "CC BY-NC according to the frozen amis-safolu README; current data source is "
-            "g0v/amis-moedict docs/s."
-        ),
+        copyright="CC BY-NC-SA 3.0 TW",
         source=(
             f"Current Safolu/Tsai generated Moedict JSON from g0v/amis-moedict@{amis_moedict_commit} docs/s; "
             f"deprecated generator repository miaoski/amis-safolu@{amis_safolu_commit} documents the pipeline."

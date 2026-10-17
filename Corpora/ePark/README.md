@@ -6,6 +6,15 @@ This corpus is subject to its source license and the central FormosanBank terms 
 
 This repository contains code and data for processing and structuring the ePark dataset into the [FormosanBank XML format](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/formosanbank-xml-format). The dataset includes various Formosan dialects and is organized to assist in linguistic research and language preservation.
 
+## Rights
+
+**License:** CC BY-NC-SA 4.0
+**Rights source:** the ePark source site, which publishes these materials under this licence; date not recorded in this repository; evidence: ask maintainer
+
+The `@copyright` value was recorded without a version (`CC-BY-NC-SA`) until
+2026-10-16, when it was normalized to `CC BY-NC-SA 4.0` under POL-042 (a value
+that names no version is 4.0).
+
 ## Project Structure
 
 - **ePark_1**, **ePark_2**, **ePark_3**: Directories containing the source data files from the ePark dataset, organized by different parts. eParks 2 and 3 contain multiple topics. Data in the different ePark folders are structured differently, and so the code is in this repo is catered to deal with these different structures to process the code.
@@ -117,6 +126,22 @@ python add_dialects.py --dialects_csv dialects.csv --final_xml_dir Final_XML
 
 **_Output_**
 This edits the XML in the `Final_XML` directory to update the id attribute for <TEXT> tags.
+
+5a. **Re-apply recorded hand edits**
+
+One-off source corrections that no rule should make are recorded in
+`CodeAndDocs/manual_edits.xml` (changelog: `CodeAndDocs/manual_edits.md`) and
+re-applied here, before any cleaning:
+
+   ```bash
+   python path/to/FormosanBankRepo/QC/cleaning/apply_manual_edits.py --corpora_path Final_XML --manual_file path/to/FormosanBankRepo/Corpora/ePark/CodeAndDocs/manual_edits.xml
+   ```
+
+Currently one record: `wen_hua_pian_cultural_section/Puyuma/Jianhe_Puyuma.xml`
+S 246, where the source typed two of its four quotation marks as `''`
+(`vavayan''`, `''imu''`); the next sentence, S 247, is the same template typed
+with `"` throughout (maintainer, 2026-10-14: "a one-off that should not have a
+rule").
 
 6. **Clean XML and standardize punctuation**
 

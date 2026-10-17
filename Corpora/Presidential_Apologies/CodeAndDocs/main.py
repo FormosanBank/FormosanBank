@@ -1,130 +1,158 @@
-import os
-from xml.etree.ElementTree import Element, SubElement, tostring
+#!/usr/bin/env python3
+"""Generate source-tier XML for the Presidential Apologies corpus."""
+
+from __future__ import annotations
+
+import argparse
+import csv
+from dataclasses import dataclass
+from pathlib import Path
 from xml.dom import minidom
+from xml.etree.ElementTree import Element, SubElement, tostring
 
-def read_apologies(path, langs):
-    """Read apology texts in multiple languages from text files."""
-    to_return = dict()
-
-    # Read apologies in English
-    ap = open(os.path.join(path, "English.txt"), "r").read().split("\n")
-    for s in ap:
-        s = s.strip()  # Remove any extra whitespace
-    to_return["English"] = ap
-
-    # Read apologies in Chinese
-    ap = open(os.path.join(path, "Chinese.txt"), "r").read().split("\n")
-    for s in ap:
-        s = s.strip()
-    to_return["Chinese"] = ap
-
-    # Read apologies for each specified language
-    for lang in langs:
-        lang_path = os.path.join(path, lang)
-        ap = open(os.path.join(lang_path, lang + ".txt"), "r").read().split("\n")
-        for s in ap:
-            s = s.strip()
-        to_return[lang] = ap
-
-        # Special handling for Kanakanavu language with additional English and Chinese translations
-        if lang == "Kanakanavu":
-            ap = open(os.path.join(lang_path, lang + "_en.txt"), "r").read().split("\n")
-            for s in ap:
-                s = s.strip()
-            to_return[lang + "_en"] = ap
-
-            ap = open(os.path.join(lang_path, lang + "_zh.txt"), "r").read().split("\n")
-            for s in ap:
-                s = s.strip()
-            to_return[lang + "_zh"] = ap
-
-    return to_return
+HERE = Path(__file__).resolve().parent
+REPO_ROOT = HERE.parent
+CONFIG_PATH = HERE / "data" / "dialect_authority.tsv"
 
 
-def prettify(elem):
-    """Return a pretty-printed XML string for the Element."""
-    rough_string = tostring(elem, 'utf-8')  # Convert XML element to a string
-    reparsed = minidom.parseString(rough_string)  # Reparse for formatting
-    return reparsed.toprettyxml(indent="    ")  # Return formatted XML string
+@dataclass(frozen=True)
+class LanguageSpec:
+    language: str
+    iso_639_3: str
+    dialect: str
+    sections: int
+    text_id: str
+    glottocode: str
+    source_file: Path
+    chinese_file: Path
+    english_file: Path
 
 
-def generate_apology_xml(lang, lang_code, apologies, out_path):
-    """Generate an XML file with apology texts and translations for a given language."""
-    
-    # Create the root XML element
-    root = Element("TEXT")
-    root.set("id", f"PA_{lang}")
-    root.set("xml:lang", lang_code)
-    root.set("source", f"Presidential apology to indigenous people in {lang}")
-    root.set("copyright", "public domain")
-    root.set("citation", f"Tsai, I. W. (2016, August 1). President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government [Speech transcript, {lang} translation]. https://indigenous-justice.president.gov.tw/")
-    root.set("BibTeX_citation", f"@misc{{PA_{lang}, author = {{Tsai, Ing-Wen}}, title = {{President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government}}, year = {{2016}}, month = {{August}}, day = {{1}}, note = {{[Speech transcript, {lang} translation]}}, url = {{https://indigenous-justice.president.gov.tw/}} }}")
- 
-    print(len(apologies[lang]), lang)  # Print number of apologies for debugging
+def load_specs(path: Path = CONFIG_PATH) -> tuple[LanguageSpec, ...]:
+    """Load the external language, source, and dialect mapping."""
+    with path.open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle, delimiter="\t"))
+    if not rows:
+        raise ValueError(f"no language rows in {path}")
 
-    # Retrieve apologies and translations based on language
-    apology, en, zh = apologies[lang], apologies["English"], apologies["Chinese"]
-    if lang == "Kanakanavu":
-        en, zh = apologies[lang + "_en"], apologies[lang + "_zh"]
-
-    # Generate XML entries for each apology
-    for i in range(len(apology)):
-        ap_s, en_s, zh_s = apology[i], en[i], zh[i]
-
-        # Create sentence element
-        s_element = SubElement(root, "S")
-        s_element.set("id", str(i))
-
-        # Create form (apology text in the target language)
-        form_element = SubElement(s_element, "FORM")
-        form_element.text = ap_s
-
-        # Create translations in Chinese and English
-        transl_element = SubElement(s_element, "TRANSL")
-        transl_element.set("xml:lang", "zh")
-        transl_element.text = zh_s
-
-        transl_element = SubElement(s_element, "TRANSL")
-        transl_element.set("xml:lang", "en")
-        transl_element.text = en_s
-
-    # Convert XML structure to a formatted string
-    try:
-        xml_string = prettify(root)
-    except:
-        xml_string = ""
-        print(lang)  # Log if there’s an issue with XML formatting
-
-    # Write the XML content to a file
-    with open(os.path.join(out_path, lang + ".xml"), "w", encoding="utf-8") as xmlfile:
-        xmlfile.write(xml_string)
+    specs = tuple(
+        LanguageSpec(
+            language=row["language"],
+            iso_639_3=row["iso_639_3"],
+            dialect=row["dialect"],
+            sections=int(row["sections"]),
+            text_id=row["text_id"],
+            glottocode=row.get("glottocode") or "",
+            source_file=HERE / row["source_file"],
+            chinese_file=HERE / row["chinese_file"],
+            english_file=HERE / row["english_file"],
+        )
+        for row in rows
+    )
+    languages = [spec.language for spec in specs]
+    text_ids = [spec.text_id for spec in specs]
+    if len(languages) != len(set(languages)):
+        raise ValueError("language names must be unique")
+    if len(text_ids) != len(set(text_ids)):
+        raise ValueError("TEXT IDs must be unique")
+    return specs
 
 
-def main():
-    """Main function to read apology data and generate XML files."""
-    curr_dir = os.path.dirname(os.path.abspath(__file__))
-    output_path = os.path.join(curr_dir, "Final_XML")
+def read_sections(path: Path, expected: int) -> list[str]:
+    """Read non-empty source sections and enforce the recorded count."""
+    sections = [line.strip() for line in path.read_text(encoding="utf-8").splitlines()]
+    if len(sections) != expected:
+        raise ValueError(f"{path}: expected {expected} sections, found {len(sections)}")
+    empty = [index for index, text in enumerate(sections) if not text]
+    if empty:
+        raise ValueError(f"{path}: empty sections at zero-based indexes {empty}")
+    return sections
 
-    # Define language codes and list of languages to process
-    lang_codes = {
-        "Amis": "ami", "Atayal": "tay", "Saisiyat": "xsy", "Thao": "ssf", "Seediq": "trv", "Bunun": "bnn",
-        "Paiwan": "pwn", "Rukai": "dru", "Truku": "trv", "Kavalan": "ckv", "Tsou": "tsu", "Kanakanavu": "xnb",
-        "Saaroa": "sxr", "Puyuma": "pyu", "Yami": "tao", "Sakizaya": "szy"
-    }
-    
-    langs = [
-        "Amis", "Atayal", "Bunun", "Kavalan", "Paiwan", "Puyuma", "Rukai", "Saaroa", "Saisiyat", "Sakizaya", 
-        "Seediq", "Thao", "Truku", "Tsou", "Yami", "Kanakanavu"
-    ]
 
-    # Read apology texts from files
-    apologies_dir = os.path.join(curr_dir, "Apologies")
-    apologies = read_apologies(apologies_dir, langs)
+def prettify(root: Element) -> str:
+    """Serialize XML in the stable FormosanBank indentation style."""
+    parsed = minidom.parseString(tostring(root, encoding="utf-8"))
+    lines = parsed.toprettyxml(indent="    ").splitlines()
+    return "\n".join(line for line in lines if line.strip())
 
-    # Generate XML for each language
-    for lang in langs:
-        generate_apology_xml(lang, lang_codes[lang], apologies, output_path)
+
+def build_document(spec: LanguageSpec) -> Element:
+    """Build one source-tier TEXT element from the recorded source mapping."""
+    original = read_sections(spec.source_file, spec.sections)
+    chinese = read_sections(spec.chinese_file, spec.sections)
+    english = read_sections(spec.english_file, spec.sections)
+    citation = (
+        "Tsai, I. W. (2016, August 1). President Tsai Ing-wen's apology "
+        "to the Indigenous Peoples on behalf of the government "
+        f"[Speech transcript, {spec.language} translation]. "
+        "https://indigenous-justice.president.gov.tw/"
+    )
+    bibtex = (
+        f"@misc{{PA_{spec.language}, author = {{Tsai, Ing-Wen}}, "
+        "title = {President Tsai Ing-wen's apology to the Indigenous Peoples "
+        "on behalf of the government}, year = {2016}, month = {August}, "
+        "day = {1}, note = {[Speech transcript, "
+        f"{spec.language} translation]}}, "
+        "url = {https://indigenous-justice.president.gov.tw/} }"
+    )
+    root = Element(
+        "TEXT",
+        {
+            "id": spec.text_id,
+            "xml:lang": spec.iso_639_3,
+            "source": f"Presidential apology to indigenous people in {spec.language}",
+            "copyright": "public domain",
+            "citation": citation,
+            "BibTeX_citation": bibtex,
+            "dialect": spec.dialect,
+        },
+    )
+    if spec.glottocode:
+        root.set("glottocode", spec.glottocode)
+
+    for index, (form_text, chinese_text, english_text) in enumerate(
+        zip(original, chinese, english, strict=True)
+    ):
+        sentence = SubElement(root, "S", {"id": str(index)})
+        form = SubElement(sentence, "FORM", {"kindOf": "original"})
+        form.text = form_text
+        translation = SubElement(sentence, "TRANSL", {"xml:lang": "zho"})
+        translation.text = chinese_text
+        translation = SubElement(sentence, "TRANSL", {"xml:lang": "eng"})
+        translation.text = english_text
+    return root
+
+
+def generate_all(output_dir: Path, specs: tuple[LanguageSpec, ...] | None = None) -> int:
+    """Write all configured XML files and return the sentence count."""
+    configured = specs or load_specs()
+    total = 0
+    for spec in configured:
+        destination = output_dir / spec.language / f"{spec.language}.xml"
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(prettify(build_document(spec)), encoding="utf-8")
+        total += spec.sections
+    return total
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=REPO_ROOT / "XML",
+        help="destination for canonical language subdirectories",
+    )
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    specs = load_specs()
+    total = generate_all(args.output_dir, specs)
+    print(f"generated {len(specs)} XML files with {total} sentences")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

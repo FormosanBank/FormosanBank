@@ -73,9 +73,25 @@ jobs:
           # baseline for. Under :(glob), '*' stops at '/' and '**' does not,
           # so only the canonical Corpora/<name>/XML/ tree matches, which is
           # what the comment above always claimed.
-          git diff --name-only --diff-filter=AM \
+          #
+          # core.quotePath=false is load-bearing too. By default git prints a
+          # path with non-ASCII bytes C-quoted ("Corpora/.../Cond\303\251.xml"),
+          # a name no file has. The validators then read 0 files and write an
+          # empty findings CSV, so the step below passed on files it never
+          # opened, and validate_glosses wrote no CSV at all, failing stage 2.
+          git -c core.quotePath=false diff --name-only --diff-filter=AM \
             "origin/${{ github.base_ref }}...HEAD" \
             -- ':(glob)Corpora/*/XML/**/*.xml' > changed_xml.txt
+          # Every listed path must be a file; one that is not would be checked
+          # vacuously, so stop here instead.
+          missing=0
+          while IFS= read -r file; do
+            if [ ! -f "$file" ]; then
+              echo "::error::Listed as changed but not a file: $file"
+              missing=1
+            fi
+          done < changed_xml.txt
+          [ "$missing" -eq 0 ] || exit 1
           count=$(wc -l < changed_xml.txt)
           echo "count=$count" >> "$GITHUB_OUTPUT"
           echo "Changed canonical XML files: $count"
