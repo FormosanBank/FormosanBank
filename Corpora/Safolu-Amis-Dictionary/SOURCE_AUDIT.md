@@ -1,8 +1,7 @@
 # Safolu source review
 
-**Development status: needs remediation.** Current shared orthography and
-unresolved source readings block final regeneration and QC. This document
-records durable source decisions, not a ready-to-port verdict.
+**Status (2026-10-17):** rebuilt with the maintainer's review decisions; see the
+README's Processing section. This document records the earlier source decisions.
 
 The [source manifest](CodeAndDocs/source_manifest.json) fixes the 49,419
 example fields from `g0v/amis-moedict/docs/s`. The snapshot is a lossless
@@ -35,8 +34,8 @@ evidence are retained separately from derived tiers.
 - Resolve the complete alternative constructions in S00036, S00621 and
   S00689, and the optional words in S11242, into separate aligned S records.
 - Keep the explicit lexical alternatives in S01889, S29086 and S42957 as
-  separate S. S42869 pairs fail/orad with the source's Chinese wind/rain
-  readings, preserving the current source spellings. Dictionary entries and
+  separate S. S42869 keeps its parenthetical `fail（orad）` / `風（雨）` in one sentence
+  (maintainer ruling 2026-10-16). Dictionary entries and
   historical raw text support these four decisions (POL-027/028).
 - Preserve three further lexical pairs in S07828 (finacadan/tamdaw),
   S29374 (cokowi/parad) and S39092 ('irang/remes). Their example fields and

@@ -4,9 +4,9 @@ Safolu Kacaw Lalanges (Tsai Chung-Han) dictionary examples, distributed by
 the g0v Amis Moedict project. Amis (`ami`), Coastal provenance; no source W/M
 annotation or audio. Virginia Fey and Poinsot are separate corpora.
 
-**Status:** blocked before QC. The source parser has been repaired, but final
-XML remains the previous 49,179-record output until the orthography and source
-decisions below are resolved. It is not ready to port.
+**Status:** rebuilt 2026-10-17 from the pinned source with every decision from the
+maintainer's Safolu review applied (PR #157). Two rebuilds are byte-identical;
+validate_xml, validate_text and validate_glosses report 0 HARD findings.
 
 [Basecamp card](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/7112980917)
 and [corpus PR #157](https://github.com/FormosanBank/FormosanBank/pull/157).
@@ -33,69 +33,107 @@ the grant held by FormosanBank is the authority.
 `g0v/amis-moedict` `docs/s` input: 42,273 lexical files, 57,361 definitions and
 49,419 example fields. The committed compressed snapshot retains each complete
 raw example, definition, title and stable source locator. Headwords and
-definitions provide context; embedded examples are included, with no invented
-word segmentation or glosses.
+definitions provide context; there is no word segmentation or glossing, so the
+corpus has no W or M tier.
 
-The revised parser emits 49,455 records before shared dedup, accounting for all
-49,419 source fields with 20 excluded fields. The 76 exact-field overrides
-retain prior corrections and document the new source-backed repairs. Published
-expansion IDs remain fixed; new readings keep the base ID and add `-opt`,
-`-opt3`, etc. The former FORM-only merger is removed: equal forms with different
-meanings must survive current shared dedup.
+The build emits 49,526 records: 49,522 from the 49,419 source fields (20 fields
+are excluded and recorded; some fields yield two sentences) plus 4 examples
+added from the printed book. Shared dictionary dedup then removes 120 exact
+duplicates, leaving **49,406 sentences**. Published ids stay fixed; a second
+reading of a source example keeps the base id and adds `-opt`, `-opt3`, etc.
 
-The historical ledgers in `data/formosanbank_audit/` are retained as evidence of
-the previous output and issue review. They are not current audit verdicts.
-See [source review](SOURCE_AUDIT.md) and [dialect evidence](docs/dialect_evidence.md).
+## Processing
+
+In order (`CodeAndDocs/generate_xml.sh`):
+
+1. `CodeAndDocs/generate_xml.py` parses the snapshot and applies the
+   per-sentence decisions in
+   [`safolu_source_overrides.json`](CodeAndDocs/safolu_source_overrides.json)
+   and [`printed_additions.json`](CodeAndDocs/printed_additions.json) (below),
+   then the spacing rule: no space before `?` or `!`, and a space after them
+   when a letter, digit or opening quote follows. Maintainer: "There should be
+   no space before a ? or a ! and there should be space between any ! or ? and a
+   following Amis character."
+2. `QC/cleaning/clean_xml.py` (shared cleaning: quote style, stray spaces).
+3. `QC/utilities/standardize.py` with `Orthographies/ConversionTables/Amis_Church_113.tsv`,
+   column `Coastal`, makes the standard tier (it also turns `u` into `o` and
+   `g` into `ng`).
+4. `QC/utilities/add_phonology.py --orthography Church` writes PHON. Maintainer:
+   original PHON from "Church/Amis.tsv as is — And then use the Church_113
+   converter to make the standard tier."
+5. `QC/cleaning/remove_duplicate_sentences.py` removes a sentence only when its
+   standard FORM **and** its translations equal another's; differing
+   translations would be kept as alternatives. Maintainer: "Don't dedup based on
+   the original tier. Dedup if standard tiers are identical."
+
+### Per-sentence decisions
+
+Every entry in `safolu_source_overrides.json` names the cleaned source text it
+expects (the build stops if upstream text no longer matches) and its reason.
+336 entries: 48 earlier source repairs, and 288 sentences decided in the
+maintainer's review (2026-10-16/17):
+
+- **Parentheses and slashes (48):** 41 parenthesis examples, 5 slash
+  alternatives, S42869 (keeps its parenthetical in FORM and translation) and
+  S07064 (two sentences). Each is kept as printed, has the parenthetical removed,
+  becomes one sentence with an alternative FORM (`ver="alt"`), or becomes two
+  sentences, as decided per example. Rule used for the undecided ones: "if the
+  paranthetical contains a single word that differs from the previous word in
+  less than 25% of it's letters AND there is no paranthetical in the
+  translation, then also go with `One S + alt variant`."
+- **Translations (36):** where the g0v source broke an example at an internal
+  `!` or `?` (the second Amis clause landed in the Chinese field and the Chinese
+  was cut), the full translation from the printed text
+  ([miaoski/amis-safolu](https://github.com/miaoski/amis-safolu) `dict/*.txt`)
+  is used, or the maintainer's own text.
+- **Upstream editors' edits (204).** Since our snapshot (2026-05-08) the
+  dictionary's editors have revised examples in `g0v/amis-moedict` (pinned here at
+  `4cb82539d`, 2026-10-16). Maintainer: "Look at fixes by the editors since our
+  download. See if there are any that we don't have. If so, adopt their fix."
+  Edits changing at most 3 letters and 1 character were adopted; Chinese-only
+  edits were adopted unless they only added a parenthetical; where both the
+  Amis and the Chinese changed by 25% or more, the editors' version is published
+  as a separate sentence (`-opt`) beside the original; the rest were decided one
+  by one. **These 204 sentences follow the editors' revision, not the printed
+  book.** List them with
+  `grep -o '"reason": "Upstream editors[^"]*"' CodeAndDocs/safolu_source_overrides.json`
+  (each entry's `expected_cleaned_*` fields hold the pinned text, `emitted` what
+  is published).
+- **Printed examples the source lacked (4):** `S49420`–`S49423` (mikapkapan,
+  miparoay, miwingawingay, paro), with the editors' Chinese; each entry in
+  `printed_additions.json` records where the book prints it.
+
+The review itself (questions, examples and answers) is recorded in FormosanBank's
+`claudeplans/sweep-qa-decision-log.md`.
+
+## Changes from the previous release
+
+Compared with the previously published file (49,181 sentences):
+
+- **Removed (4):** S00401, S00623, S00692, S00869, exact duplicates of other
+  sentences under the standard-tier rule.
+- **Added (229):** 142 source examples the old build had lost (140 were merged
+  into another sentence with the same FORM, often with a different meaning; 2
+  were dropped), 83 second readings (`-opt`), and the 4 printed examples.
+- **Changed:** 164 original FORMs and 128 translations (the decisions above and
+  the source repairs); 25 sentences have an alternative FORM and 7 an
+  alternative translation. PHON is regenerated from the Church table.
 
 ## Reproduction
 
-The single build entry point uses committed inputs and the surrounding
-FormosanBank tools. Its [provenance record](CodeAndDocs/provenance.json)
-currently describes the retained historical XML, whose old build was reproduced
-byte for byte. Provenance does not select or pin the tools used for a new build.
-
 ```sh
-PYTHON=python3 CodeAndDocs/generate_xml.sh /path/to/current/FormosanBank
+PYTHON=python3 CodeAndDocs/generate_xml.sh /path/to/FormosanBank
+FORMOSANBANK_ROOT=/path/to/FormosanBank python3 -m pytest Corpora/Safolu-Amis-Dictionary/tests
 ```
 
-Generation, shared cleaning, standardization and PHON run in temporary staging;
-only a completed build installs XML and provenance. Current main lacks the
-Safolu profile and conversion table, so the build reports that dependency before
-changing the retained XML. Do not substitute an unrelated profile.
+Generation, shared cleaning, standardization, PHON and dedup run in temporary
+staging; only a completed build installs XML and provenance. The build never
+fetches a source. To refresh the source deliberately, run
+`python3 CodeAndDocs/source_snapshot.py /path/to/clean/amis-moedict` and review
+the new manifest and every change; overrides whose expected text no longer
+matches stop the build.
 
 **POL-047 deviation:** shared dictionary dedup runs after derived tiers.
-Validation and source refresh run separately from generation.
-
-Source parsing can be investigated independently, using an external staging
-directory; this is not a final corpus build or QC clearance:
-
-```sh
-python3 CodeAndDocs/generate_xml.py --xml-out-dir /tmp/safolu-review/XML \
-  --report-dir /tmp/safolu-review
-FORMOSANBANK_ROOT=/path/to/current/FormosanBank python3 -m unittest discover -s tests -v
-```
-
-To refresh the source deliberately, run
-`python3 CodeAndDocs/source_snapshot.py /path/to/clean/amis-moedict` and review
-the new manifest and all source changes. Generation never fetches a source or
-reads a private clone. Run the installed corpus audit and QC workflow after
-the outstanding decisions are resolved; the old count-based acceptance scripts
-have been retired.
-
-## Rights
-
-**License:** unresolved; the existing XML copyright prose is retained.
-
-**Rights source:** Safolu Kacaw Lalanges, date unconfirmed; evidence: ask maintainer.
-
-The frozen upstream README says CC BY-NC without a version. The
-[publisher README](https://github.com/g0v/amis-moedict-new/blob/20d9718b362e046c8a79454d3710efa4fe404afe/README.md#license-授權)
-identifies Tsai Chung-Han's dictionary as CC BY-NC-SA 3.0 TW and links his
-[signed licence deed](https://drive.google.com/file/d/1IQykXGWtaWAL0pH0xlE0pi5My0Onlji2/view),
-which names that licence. Its printed footer says 2015/4/9; this does not establish
-the signature or grant date. CC BY-NC-SA 3.0 TW is absent from the current rights
-vocabulary. The final XML licence and grant date still need maintainer review
-before publication (POL-042 through POL-045).
 
 ## Audio
 
@@ -103,16 +141,9 @@ None.
 
 ## Notes and Issues
 
-- The Safolu PHON profile and conversion table remain unmerged shared inputs.
-  Current conversion checking reports an unresolved `u → o` mapping and `d`/`o`
-  routing questions. Preserve the source's distinct vowel spellings and mixed
-  `g`/`ng`; see [orthography evidence](docs/orthography_evidence.md).
-- Forty-two original-FORM parenthesis/slash cases still need source-specific
-  interpretation. The revised parser resolves only directly supported cases,
-  including the explicit pronunciation examples in the `e` and `i` entries.
-- S37193's published Chinese correction was inferred from its sentence and
-  definition; an authoritative reading is still needed. It is preserved pending
-  review. Source field 35128 still contains unexplained `久` on the publisher's
-  page and remains outside released XML.
+- Source field 35128 still contains an unexplained `久` on the publisher's page
+  and stays excluded.
+- The upstream editors have also added about 900 examples that are not in the
+  printed book. They are not included.
 - The source history includes both PDF-to-TXT and DOCX conversion. A clean JSON
   file does not establish that it is free of earlier extraction errors.
