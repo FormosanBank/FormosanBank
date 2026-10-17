@@ -204,7 +204,12 @@ def apply_form_decisions(
         drop_derived_tiers(sentence)
         form = original_form(sentence)
         form.text = decision["form"]
-        form.set("notes", decision["source_form"])
+        # A repaired row's sheet text is only the converter's damage; keep it as a
+        # note only where it carries source content (maintainer 2026-10-17).
+        if decision.get("keep_source_form_note"):
+            form.set("notes", decision["source_form"])
+        else:
+            form.attrib.pop("notes", None)
 
     all_ids = [sentence.get("id") for sentence in root.iter("S")]
     if len(all_ids) != len(set(all_ids)):
@@ -305,6 +310,43 @@ def preserve_source_translations(
     return annotated
 
 
+def merge_same_form_sentences(root: etree._Element, decisions: dict) -> list[list[str]]:
+    """Merge sentences whose original FORM is identical into the earliest one."""
+    groups: dict[str, list[etree._Element]] = defaultdict(list)
+    for sentence in root.iter("S"):
+        groups[normalize("".join(original_form(sentence).itertext()))].append(sentence)
+    merged: list[list[str]] = []
+    for sentences in groups.values():
+        if len(sentences) < 2:
+            continue
+        survivor, others = sentences[0], sentences[1:]
+        anchor = survivor.findall("TRANSL")[-1]
+        for other in others:
+            for node in other.findall("TRANSL"):
+                anchor.addnext(node)
+                anchor = node
+            other.getparent().remove(other)
+        seen: set[tuple[str, str]] = set()
+        for node in list(survivor.findall("TRANSL")):
+            key = (node.get(XML_LANG, ""), normalize("".join(node.itertext())))
+            if key in seen:
+                survivor.remove(node)
+            else:
+                seen.add(key)
+        by_language: dict[str, list[etree._Element]] = defaultdict(list)
+        for node in survivor.findall("TRANSL"):
+            by_language[node.get(XML_LANG, "")].append(node)
+        for nodes in by_language.values():
+            nodes[0].attrib.pop("ver", None)
+            for node in nodes[1:]:
+                node.set("ver", "alt")
+        merged.append([survivor.get("id")] + [other.get("id") for other in others])
+    expected = decisions["same_form_merges"]["expected"]
+    if sorted(merged) != sorted(expected):
+        fail(f"same-form merges {sorted(merged)} differ from the recorded {sorted(expected)}")
+    return merged
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--path", required=True, help="XML file to reconcile")
@@ -334,6 +376,7 @@ def main() -> int:
     structural = apply_structural_repairs(root, decisions)
     repaired = apply_translation_repairs(root, decisions)
     annotated = preserve_source_translations(root, rows, row_by_id)
+    merged = merge_same_form_sentences(root, decisions)
 
     tree.write(
         str(xml_path),
@@ -345,7 +388,8 @@ def main() -> int:
         f"Reconciled {len(row_by_id)} S records from {len(rows)} source rows; "
         f"applied {structural} structural and {repaired} translation repairs, "
         f"and preserved "
-        f"{annotated} transformed source translation fields in notes."
+        f"{annotated} transformed source translation fields in notes; "
+        f"merged {len(merged)} same-form groups."
     )
     return 0
 

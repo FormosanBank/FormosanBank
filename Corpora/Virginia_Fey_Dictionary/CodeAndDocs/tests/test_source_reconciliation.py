@@ -49,16 +49,18 @@ def test_restores_source_words(reconciled, sentence_id, expected):
     assert reconciled.findtext(f'.//S[@id="{sentence_id}"]/FORM[@kindOf="original"]') == expected
 
 
-def test_unconfirmed_spelling_does_not_replace_publication(reconciled):
+def test_sentence_initial_capital_g_is_ng(reconciled):
+    # Maintainer 2026-10-17 (S3846/S4934): "Both Ng in original".
     assert reconciled.findtext('.//S[@id="S3846"]/FORM[@kindOf="original"]') == (
-        "Manga'ay kako a tayra haw? Ga'ayto."
+        "Manga'ay kako a tayra haw? Nga'ayto."
     )
+    assert reconciled.findtext('.//S[@id="S4934"]/FORM[@kindOf="original"]').startswith("Nga'ayho")
 
 
 def test_generated_g_follows_source_guide():
-    # Guide page 20: g is the ng sound. Only derived spelling changes.
+    # Guide page 20: g is the ng sound; shared Ortho113 phonology gives /ŋ/.
     sentence = etree.parse(str(CODE.parent / "XML/Amis/Amis.xml")).find('.//S[@id="S3846"]')
-    assert sentence.findtext('FORM[@kindOf="original"]') == "Manga'ay kako a tayra haw? Ga'ayto."
+    assert sentence.findtext('FORM[@kindOf="original"]') == "Manga'ay kako a tayra haw? Nga'ayto."
     assert sentence.findtext('FORM[@kindOf="standard"]') == "Manga'ay kako a tayra haw? Nga'ayto."
     for kind in ("original", "standard"):
         assert sentence.findtext(f'PHON[@kindOf="{kind}"]') == (
@@ -76,8 +78,29 @@ def test_distinct_source_meanings_survive(reconciled):
 
 def test_new_ids_do_not_renumber_historical_readings(reconciled):
     ids = {s.get("id") for s in reconciled.iter("S")}
-    assert {"S3797", "S3797b", "S5991", "S5991-opt", "S6717", "S6717-opt"} <= ids
+    assert {"S3797", "S3797b", "S5991", "S6717", "S6717-opt"} <= ids
     assert not {"S5991b", "S6717b"} & ids
+
+
+def test_same_form_sentences_are_one_sentence(reconciled):
+    # Maintainer 2026-10-17: "Merge each pair into one S with ver=\"alt\" translations (POL-025)".
+    ids = {s.get("id") for s in reconciled.iter("S")}
+    merged_away = {"S2843", "S3026", "S6916", "S6241", "S5023", "S5280", "S5703", "S5991-opt"}
+    assert not merged_away & ids
+    forms = [s.findtext('FORM[@kindOf="original"]') for s in reconciled.iter("S")]
+    assert len(forms) == len(set(forms)) == 2043
+    s1945 = [(t.get(XML_LANG), t.get("ver"), t.text) for t in reconciled.find('.//S[@id="S1945"]').findall("TRANSL")]
+    assert s1945 == [("eng", None, "rainbow"), ("zho", None, "彩虹"), ("eng", "alt", "a rainbow")]
+
+
+def test_only_source_content_notes_remain(reconciled):
+    # Maintainer 2026-10-17: drop notes that only repeat converter-damaged sheet text.
+    notes = {s.get("id"): s.find('FORM[@kindOf="original"]').get("notes") for s in reconciled.iter("S")}
+    assert notes["S3560"] is None
+    assert notes["S4934"] is None
+    assert notes["S1193"] == "Katalawan ko demak nira. Literally"
+    assert notes["S5991"] == "talakal / tilo ni Idek."
+    assert sum(1 for n in notes.values() if n) == 75
 
 
 @pytest.mark.parametrize("sentence_id,expected", [

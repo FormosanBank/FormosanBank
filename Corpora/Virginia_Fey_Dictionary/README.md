@@ -2,7 +2,7 @@
 
 Example sentences and phrases from Virginia Fey's (1986) *Amis Dictionary*
 (阿美語字典), with English and Chinese translations. The current development
-output contains 2,051 S records from 2,012 source examples, in
+output contains 2,043 S records from 2,012 source examples, in
 `XML/Amis/Amis.xml`. The language is Amis (`ami`), dialect Xiuguluan.
 Source review remains incomplete; this output is not ready to port.
 
@@ -31,12 +31,19 @@ stemmer dropped prefixes and entire short words. Replaying it reproduces 512
 of the 519 sheet losses; the other seven have direct source evidence. Its
 [2016 fix](https://github.com/miaoski/amis-data/commit/23b6efd42fe3e73c0d3cd249c14587ca6349af9f)
 preserves those pieces. Source translations that were split or cleaned remain
-recoverable in TRANSL notes. Later readings use `ver="alt"`.
+recoverable in TRANSL notes. Later readings use `ver="alt"`. A FORM `notes`
+attribute keeps the source cell only where it carries content beyond the
+corrected text: the full cell of a split slash cell, and S1193's stray English
+`Literally`. The sheet's converter-damaged text is not repeated in notes; it
+remains in the frozen sheet copy (maintainer ruling 2026-10-17).
 
-The current shared duplicate remover compares both FORM and translations.
-Previously merged records with distinct meanings are retained separately;
-published translations are accounted for at their original source records.
-Historical published IDs stay stable. New S readings use `-opt`.
+Sentences whose original FORM is identical are one sentence (POL-025,
+maintainer ruling 2026-10-17): the later record merges into the earliest and
+its translations become `ver="alt"`. Eight such pairs exist; the merged-away
+ids S2843, S3026, S5023, S5280, S5703, S6241 and S6916 are retired (main had
+already retired them), and S5991-opt is never created. Records that the source
+repair made different (S1899/S1900, S5141/S5142) stay separate. Historical
+published IDs stay stable. New S readings use `-opt`.
 
 ## Reproduction
 
@@ -54,10 +61,8 @@ interpreter. The build uses committed inputs and performs no source download.
 
 The entry point restores the snapshot, checks historical duplicate IDs,
 reconciles source fields, runs shared cleaning, then standardizes and generates
-PHON with the committed `CodeAndDocs/Orthographies/` tables before shared
-deduplication. These retain the existing Xiuguluan mappings and add the guide's
-`g` → `ng` spelling and /ŋ/ sound; existing `ng` digraphs are preserved.
-Standard PHON still uses the current shared standard. Validation runs separately.
+PHON with the shared tables (`Orthographies/ConversionTables/Amis_Church_113.tsv`,
+Xiuguluan column, and the Ortho113 profile) before shared deduplication. Validation runs separately.
 The source audit checks the
 recorded inventory and corrections; passing it does not resolve the remaining
 source questions. Run the full FormosanBank audit and QC workflow separately.
@@ -100,8 +105,10 @@ No audio is supplied.
 
 - The digital source was checked against raw text, corrected Word files and
   conversion history. This is not a complete review of the printed dictionary.
-- S3846 retains the source spelling `Ga'ayto`; the derived standard is
-  `Nga'ayto`. Both PHON tiers use /ŋ/, following the printed guide (page 20).
+- The digital edition writes the ng sound as `g` (printed guide, page 20), and its
+  converter changed only lowercase `g`. A sentence-initial capital `G` is ng too,
+  so S3846 reads `Nga'ayto` and S4934 `Nga'ayho` in both tiers (maintainer ruling
+  2026-10-17).
   This narrow mapping does not recover phonemic contrasts absent from the source.
 - [Printed page 345](https://drive.google.com/file/d/1eNMbHjQfC-ZR77ha17S_441hx9ZcsDhm/view)
   confirms `O kalatolo / kalitolo konini.` The page does not classify the pair
