@@ -303,6 +303,32 @@ Use **`crossvalidate`** for honest numbers — `evaluate` is train-on-test and o
 
 **Full documentation** (usage, retraining, interpreting output, how it works): [QC/utilities/dialect_detector/README.md](utilities/dialect_detector/README.md).
 
+## Hugging Face audio parity
+
+Published audio lives in Hugging Face datasets, and the XML's `<AUDIO file=…>`
+references are the contract. Two tools, one read-only and one that writes:
+
+```bash
+# Report drift (CI runs this; anonymous; never writes):
+python QC/validation/validate_hf_audio.py
+
+# Repair one dataset so it holds exactly the clips the XML references.
+# DRY RUN by default — prints what would be sliced/uploaded/deleted:
+python QC/utilities/sync_hf_audio.py --repo FormosanBank/<Dataset> \
+    --xml Corpora/<Corpus>/XML[/<Subdir>]
+# Against a branch without checking it out:
+python QC/utilities/sync_hf_audio.py --repo FormosanBank/<Dataset> \
+    --xml Corpora/<Corpus>/XML --from-ref origin/<branch>
+# Do it (needs HF_TOKEN with write access, and ffmpeg for the slicing):
+python QC/utilities/sync_hf_audio.py --repo … --xml … --apply
+```
+
+`sync_hf_audio.py` slices missing clips out of the whole-story recording named
+by `AUDIO/@url` with ffmpeg, uploads them and deletes the clips nothing
+references any more, in a single Hub commit; it then prints the revision SHA
+and file count to record in `audio_sources.json`. Run it after any rebuild
+that changes sentence boundaries, and re-run `validate_hf_audio.py` afterwards.
+
 ## Corpus Metrics
 
 **Shared counting rules** live in `QC/corpus_counts.py`: tokens are whitespace-separated chunks containing at least one Unicode letter or digit (digit-only chunks count; punctuation-only chunks like `?` do not); per sentence, the `standard` FORM is used if non-empty, otherwise the `original` FORM, otherwise 0; language identity comes from `xml:lang` + `dialect` attributes (`trv` + `Truku` dialect → Truku, otherwise Seediq). This module is imported by `get_corpus_stats.py`, `corpus_metrics.py`, and `count_tokens.py`.
