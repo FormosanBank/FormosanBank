@@ -463,6 +463,8 @@ such S-level `kindOf` attributes; V151 ships SOFT rather than HARD until
 they are remediated (see `claudeplans/2026-09-08-alternate-form-worklist.md`).
 Amended 2026-09-08.
 
+In a dictionary headword entry, each sense after the first is a `ver="alt"` TRANSL.
+
 ### POL-026 · RULED · 2026-08-10 · optional material in examples
 A source sentence with optional words — `x y (z)` — becomes **two S
 blocks**: `x y` and `x y z`. Care at conversion time: the gloss tier of
@@ -599,6 +601,8 @@ allowlist (V084 for TRANSL, V156 for FORM).
   applies to them: an `-opt` id is never renumbered afterwards, and a
   later-discovered third reading takes `-opt3` rather than shifting
   anything.
+- ILRDF_Dicts: where the source prints an alternative in parentheses in both the
+  sentence and its translation, the sentence MAY be kept as printed (maintainer ruling 2026-10-16).
 
 ---
 

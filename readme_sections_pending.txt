@@ -6,7 +6,6 @@
 
 Campbell-Favorlang rights
 Campbell-Favorlang notes
-ILRDF_Dicts notes
 MontgomeryTexts notes
 NTU_Paiwan_ASR notes
 SEALS33 notes
