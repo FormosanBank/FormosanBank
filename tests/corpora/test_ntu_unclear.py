@@ -533,6 +533,14 @@ def test_rukai_question_pieces_are_unclear(texts):
     assert [_inner(f) for f in s18.findall("FORM")] == ["waecenge ka <UNCLEAR />lalasu ki kidringi."] * 2
 
 
+def test_small_cases_ruled_2026_10_18(sentences):
+    """NTU Word Forms page, "Yes, all as proposed": ##sbsawan -> sbsawan."""
+    want = {"sdqNr-childhood_micang 2020s_S_12_W17": "sbsawan"}
+    found = {w.get("id"): [_inner(f) for f in w.findall("FORM")] for s in sentences
+             for w in s.findall("W") if w.get("id") in want}
+    assert found == {k: [v, v] for k, v in want.items()}
+
+
 def test_kavalan_percent_deleted(sentences):
     """Ruling 2026-10-18 on Kavalan s%, seme% (glossed FS): "the % should be deleted." """
     words = {w.get("id"): w for s in sentences for w in s.findall("W")
