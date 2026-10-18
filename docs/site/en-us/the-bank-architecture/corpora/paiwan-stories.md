@@ -19,7 +19,7 @@ these whole-story references have no sentence timings and therefore report zero.
 ***
 
 <!-- CORPUS STATS START -->
-### Corpus Statistics
+## Corpus Statistics
 
 | | Paiwan<br>Eastern |
 | --- | --- |
@@ -38,6 +38,7 @@ these whole-story references have no sentence timings and therefore report zero.
 ***
 
 <!-- CORPUS STATS END -->
+
 
 ## Corpus Processing
 
