@@ -361,9 +361,21 @@ def apply_typography(bank):
     trees = {p: etree.parse(p) for p in sorted((HERE.parent / "XML").rglob("*.xml"))}
     sentences = {s.get("id"): s for t in trees.values() for s in t.getroot().findall("S")}
     typography = apply_main_typography(sentences)
+    joined = 0
+    with (HERE / "joined_translations.csv").open(encoding="utf-8", newline="") as stream:
+        for row in csv.DictReader(stream):  # English alternatives main kept as one TRANSL
+            sentence = sentences[row["sid"]]
+            english = [t for t in sentence.findall("TRANSL") if t.get(XML_LANG) == "eng"]
+            if " || ".join("".join(t.itertext()) for t in english) != row["before"]:
+                raise ValueError(f"Joined-translation row no longer matches: {row['sid']}")
+            english[0].text = row["after"]
+            english[0].attrib.pop("ver", None)
+            for extra in english[1:]:
+                sentence.remove(extra)
+            joined += 1
     for path, tree in trees.items():
         tree.write(str(path), encoding="utf-8", xml_declaration=True, pretty_print=True)
-    print(f"Kept main's typography in {typography} fields")
+    print(f"Kept main's typography in {typography} fields; rejoined {joined} English translations")
 
 
 LEDGER_FIELDS = ["withdrawn_id", "kept_id", "action", "reason", "ruling"]
