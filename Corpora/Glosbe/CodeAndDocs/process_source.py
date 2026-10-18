@@ -289,6 +289,19 @@ LEADING = [
 INNER_LABEL = re.compile(r"(?<=[?.!\"]) \((?:\d{1,2}|[a-z])\)(?= [A-Z])")
 
 
+def _label_parts(note):
+    """The separate labels inside one combined source-label note: "17. (1)" ->
+    ["17.", "(1)"], as the editorial step would have split them."""
+    pattern = LEADING[1][1]
+    parts, rest = [], note.strip() + " X"
+    while True:
+        match = pattern.match(rest)
+        if not match:
+            return parts if rest.strip() == "X" and parts else []
+        parts.append(match.group(0).strip())
+        rest = rest[match.end():]
+
+
 def move_editorial(element):
     """Move editorial pieces of one FORM/TRANSL into its notes. Returns them."""
     text = "".join(element.itertext())
@@ -553,9 +566,11 @@ def merge_translation_files(bank, write_ledger=False):
         target = english[merges[sid]]
         form, other = target.find("FORM[@kindOf='original']"), sentence.find("FORM[@kindOf='original']")
         pieces = (form.get("notes") or "").split(" | ") if form.get("notes") else []
+        covered = set(pieces) | {part for piece in pieces for part in _label_parts(piece)}
         for piece in ((other.get("notes") or "").split(" | ") if other.get("notes") else []):
-            if piece not in pieces:
+            if piece not in covered:  # e.g. "17." and "(1)" are already in "17. (1)"
                 pieces.append(piece)
+                covered.add(piece)
         if pieces:
             form.set("notes", " | ".join(pieces))
         have = {(t.get(XML_LANG), " ".join("".join(t.itertext()).split())) for t in target.findall("TRANSL")}
