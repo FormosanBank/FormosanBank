@@ -8,7 +8,6 @@ Campbell-Favorlang rights
 Campbell-Favorlang notes
 HundredPaiwanStories notes
 ILRDF_Dicts notes
-Li-Conjunction-Thao notes
 MontgomeryTexts notes
 NTUFormosanCorpus rights
 NTUFormosanCorpus notes
@@ -21,7 +20,6 @@ Siraya_Gospels rights
 Siraya_Gospels notes
 Song-Kanakanavu-Grammar notes
 UtrechtManuscriptWordList notes
-Virginia_Fey_Dictionary notes
 WakelinTexts notes
 Whitehorn_Collection rights
 Whitehorn_Collection notes

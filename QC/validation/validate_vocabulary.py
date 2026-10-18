@@ -121,6 +121,19 @@ def format_summary(s):
     )
 
 
+def reference_dir(reference, lang, dialect):
+    """The reference folder for lang/dialect. A dialect with no reference of its own falls back to <lang>/default
+    and says so: the Sakizaya reference is filed as Sakizaya/default, so a dialect="Sakizaya" group was never
+    compared with anything."""
+    own = os.path.join(reference, lang, dialect)
+    default = os.path.join(reference, lang, 'default')
+    if (dialect != 'default' and not os.path.isfile(os.path.join(own, 'orthographic_info'))
+            and os.path.isfile(os.path.join(default, 'orthographic_info'))):
+        print(f"NOTE: no reference for {lang} / {dialect}; comparing with {lang} / default instead.")
+        return default
+    return own
+
+
 def main(args, possiblelangs):
 
     if args.language:
@@ -157,7 +170,7 @@ def main(args, possiblelangs):
                 print(f"  --- Dialect: {dialect} ---")
                 compare_vocabulary(
                     os.path.join(lang_path, dialect),
-                    os.path.join(args.reference, lang, dialect),
+                    reference_dir(args.reference, lang, dialect),
                     f"{lang} / {dialect}"
                 )
 
