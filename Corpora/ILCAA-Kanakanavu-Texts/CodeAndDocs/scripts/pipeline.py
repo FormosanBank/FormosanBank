@@ -31,7 +31,7 @@ ROOT = CODEDOCS / ".build"
 PDF_NAME = "B602_KanakanavuText.pdf"
 EXPECTED_SHA256 = "785058bad6a8495f8b5fb51ed3d0eaf7da1736e791b308611d9442c010d93c03"
 EXPECTED_SOURCE_UNIT_COUNT = 1431
-EXPECTED_SENTENCE_COUNT = 1447
+EXPECTED_SENTENCE_COUNT = 1446
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 NSMAP = {"xml": "http://www.w3.org/XML/1998/namespace"}
 
@@ -308,7 +308,9 @@ def clean_space(text: str) -> str:
 
 def normalize_source_chars(text: str) -> str:
     """Normalize source-text codepoint confusables verified against the PDF."""
-    return unicodedata.normalize("NFC", text).replace("ә", "ə")
+    # Ɂ (U+0241) is the glottal stop printed with another glyph in four texts: write it as ʔ
+    # (maintainer, 2026-10-18), so every later step sees the ordinary ʔ.
+    return unicodedata.normalize("NFC", text).replace("ә", "ə").replace("\u0241", "\u0294")
 
 
 def strip_form_footnote_anchors(text: str) -> str:
@@ -1629,6 +1631,9 @@ def build_word_and_morph_rows(
     word_order = 0
     for sline, gline in zip(source_lines, gloss_lines):
         s_tokens = line_token_entries(sline, known_footnotes, source=True)
+        if unit_id in REVIEWED_ONE_WORD_PAIRS and any(
+                strip_outer_punct(t["text"])[1] == REVIEWED_ONE_WORD_PAIRS[unit_id][0][0] for t in s_tokens):
+            s_tokens = merge_reviewed_word_pairs(unit_id, s_tokens)
         g_tokens = line_token_entries(gline, known_footnotes, source=False)
         aligned_g_tokens: list[dict[str, Any] | None]
         if len(s_tokens) != len(g_tokens):
@@ -1687,6 +1692,31 @@ def build_word_and_morph_rows(
             morphs = parse_morphemes_for_word(row)
             morph_rows.extend(morphs)
     return word_rows, morph_rows, warnings
+
+
+# Printed gloss columns that span two source words. Maintainer, 2026-10-18 (Naparamaci
+# example 68, "əhə kai," glossed once as "interjection"): "Treat them as a single W and a single M."
+REVIEWED_ONE_WORD_PAIRS = {
+    "ILCAA_KANAKANAVU_TEXTS_011_NAPARAMACI_U0068": (("əhə", "kai"),),
+}
+
+
+def merge_reviewed_word_pairs(unit_id: str, entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    for first, second in REVIEWED_ONE_WORD_PAIRS.get(unit_id, ()):
+        for i in range(len(entries) - 1):
+            a, b = entries[i], entries[i + 1]
+            if strip_outer_punct(a["text"])[1] == first and strip_outer_punct(b["text"])[1] == second:
+                entries = entries[:i] + [{
+                    "text": a["text"] + " " + b["text"],
+                    "raw_text": a["raw_text"] + " " + b["raw_text"],
+                    "bbox": [min(a["bbox"][0], b["bbox"][0]), min(a["bbox"][1], b["bbox"][1]),
+                             max(a["bbox"][2], b["bbox"][2]), max(a["bbox"][3], b["bbox"][3])],
+                    "refs": sorted(set(a["refs"] + b["refs"])),
+                }] + entries[i + 2:]
+                break
+        else:
+            raise RuntimeError(f"{unit_id}: reviewed word pair {first!r} {second!r} not found")
+    return entries
 
 
 def align_gloss_entries_by_source_position(

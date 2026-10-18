@@ -16,11 +16,12 @@ Use printed example numbers and physical PDF pages below as stable locators.
   preserves Sumio 澄男 on physical page 206 and the long source translation of
   masuuvuuvu on page 209. Neither is an extraction error.
 - Keep the 17 repeated narrative groups. Repetition in a story is source data.
-- On physical page 90, Naparamaci example 68, interjection aligns with əhə.
-  The parser previously put it on kai and padded əhə with UNCLEAR. The source
-  parser now keeps the printed column alignment and leaves kai's gloss absent.
+- On physical page 90, Naparamaci example 68, the book prints one gloss
+  ("interjection") under the two words əhə kai. Maintainer, 2026-10-18: "Treat
+  them as a single W and a single M." The parser merges them into one word
+  "əhə kai" with one morpheme (REVIEWED_ONE_WORD_PAIRS). The validator's
+  word count (V060, SOFT) then reads 10 words against 11 in the form.
   The multiword gloss sibling's spouse on page 72 is preserved unchanged.
-  Final XML still awaits the shared build; the correction is in the parser.
 - The introduction's two starred constructions use the scoped grammatical
   reading/exclusion, retained with the raw source in the notation report:
   page 24 example 23b and page 25 example 26a (POL-016/POL-017).
@@ -66,24 +67,22 @@ standard FORM and segmental PHON while preserving it in original FORM
 narrow vowel allophones. The source table, its 16 records and IDs remain
 unchanged. This scope does not approve the full historical transcription system.
 
-Table 1 and its explanation on physical page 16 explicitly identify Tsuchida's
-ɨ and Basic Vocabulary's ʉ as the high central vowel. Ortho113 writes ʉ for
-IPA ɨ. The separate Table1 profile therefore routes these two columns with
-ɨ -> ʉ, ng -> /ŋ/, apostrophe -> /ʔ/, and the reviewed l -> r mapping.
-Its c-before-i source rule follows the same page's phonology description.
-Keep doubled vowels, diphthongs and echo-vowel variants as printed; do not
-modernize historical words or apply the narrative ə -> e rule to ɨ.
-Stress remains in original FORM and is removed by the canonical derived-tier
-tools. Szakos y is also identified as ɨ, but cöön still lacks a supported
-sound mapping for ö; its group remains blocked (POL-001/002/003/056).
+Table 1 (physical page 16) is not published. Maintainer ruling 2026-10-18:
+"Drop all of Table 1." Its Tsuchida 1969, Szakos 1999 and Basic Vocabulary 2007
+columns (30 records, ids T1_*) are removed from the introduction ledger and
+listed there as an excluded region; the Szakos ö question that blocked the
+build is therefore moot. The page's explanation and the phonology prose are
+not part of the table: they identify Tsuchida's ɨ as the high central vowel,
+and Ortho113 writes ʉ for IPA ɨ. The two prose examples next to the table
+(kumakaɨn(ɨ) on page 17 and phonemic /kaɨnɨ/ with phonetic [kɅɨnɨ] on page 16)
+are not published either (maintainer, 2026-10-18: "Drop the prose examples."),
+so the separate Table1 orthography and conversion table that served them are
+deleted. Nothing in the published corpus is written with ɨ.
 
-The same page directly gives phonemic /kaɨnɨ/, phonetic [kɅɨnɨ] and 'to eat'.
-Keep original FORM kaɨnɨ and the literal source PHON kɅɨnɨ in their own
-PhonemicComparison file. Preserve the printed uppercase turned-v codepoint.
-The shared --preserve-existing-original flag keeps that authoritative source
-transcription; standard FORM/PHON still follow the Table1 conversion and
-Ortho113. This does not infer narrow allophones for other forms, W/M analysis
-or a dialect. The source audit checks the retained PHON as source evidence.
+Capitalization is not phonemically relevant (maintainer, 2026-10-18); shared
+PHON lower-cases it. The standard tier merges ə and native e into e and l and r
+into r, as Ortho113 does (maintainer, 2026-10-18: "that's standardization").
+
 
 ## Representation and coverage review
 
@@ -103,10 +102,23 @@ source readings, not a deletion of narrative repetition.
 The locators and decisions are in
 [notation_decisions.tsv](notation_decisions.tsv). Nine cases have optional whole
 words and five have different glosses or analyses; these retain two S readings.
-Two classifications remain open: page 65 example 42 (mu-usa/mu-kusa), and
-page 200 example 35 (ha/sua and iihaa/iisua). The marker evidence does not
-establish the demonstrative relationship or whether both substitutions vary
-together; preserve those two S readings pending resolution.
+Two classifications were ruled on 2026-10-18 on the review page. Page 65
+example 42 (mu-usa/mu-kusa) is a variant: one S, mu-kusa as the alternative on
+the word and morpheme. Page 200 example 35 (ha/sua and iihaa/iisua) stays two S
+readings: the marker evidence does not establish the demonstrative relationship
+or whether both substitutions vary together.
+
+Maintainer, 2026-10-18, also ruled: the infix angle brackets are dropped from
+sentence-level standard FORMs (original FORM keeps them as printed;
+strip_standard_brackets.py); the hyphens left in standard FORMs of the lexical
+records "should be deleted" (standardize.py --segmented-without-m-tier); the
+clause brackets of examples 23a-d are dropped from the standard FORM, and are
+not in the original W and M forms ("drop the square brackets from standard. And
+from the W and M levels of original"); the original sentence FORM keeps them, as
+the parentheses shared cleaning writes for the printed square brackets. The
+capital glottal stop Ɂ is written ʔ from the start in the original tier, and is
+then the ordinary ʔ ("just replace Ɂ with ʔ as an early step in original"). The
+parentheses in translations stay.
 Source generation now uses base IDs and -opt instead of V1/V2; the corpus is
 not yet published (POL-028/037).
 The tee/tia root triggers V150 SOFT for low overlap; footnote 14 establishes
@@ -146,14 +158,12 @@ not emitted as its rejected field-note reading. Note 29 identifies the title
 ʔənnaŋ on physical page 146; the introduction ledger now admits the title's
 English reading and the note's Chinese meaning together.
 
-The [introduction ledger](introduction_lexemes.json) admits 101 S from 102
-page-anchored entries, with seven files separated by transcription group.
-Table 1's Tsuchida 1969, Szakos 1999 and Basic Vocabulary 2007 columns stay
-separate. The printed Tsuchida cells ta’ɨ́lɨmɨ and ranɨ́ngɨ correct the PDF text
-layer's v́ to ɨ́ in those two cells only (physical page 16, POL-001).
+The [introduction ledger](introduction_lexemes.json) admits 70 S from 70
+page-anchored entries, with four files separated by transcription group.
+(Table 1's 30 records and the two prose examples were dropped on 2026-10-18,
+see above.)
 Table 2 supplies 16 distinct free-pronoun forms from 17 cells; repeated íikia
-and the prose reuse of kumakaɨn share reference records with both contexts
-retained (POL-022). Stress is preserved and row labels are not invented English
+shares a reference record with both contexts retained (POL-022). Stress is preserved and row labels are not invented English
 translations. Bound pronouns, affix templates, phoneme inventories and Table 4
 remain context. The Saaroa comparison iɫakia has its own sxr file (languages.csv). The prior
 xsr tag identified Sherpa and caused shared phonology to skip it; correct the
@@ -172,10 +182,8 @@ On physical page 24, mu-caanə/AV-go, um-avici/AV-bring and
 k<um>a-kili/RED<AV>-tie supply three W and seven M, including the k-a gap root
 and -um- infix. No free S translation is supplied or invented (POL-014/023/036).
 The village-labelled [kau]/[kɔ:]/[kaa] comparison on page 15 remains unresolved;
-the source supplies no separate orthographic forms for it. The Szakos group
-still requires its source sound mapping for ö. The full build
-rejects unsupported profile routing before touching final XML. Retained final
-XML and provenance remain unchanged.
+the source supplies no separate orthographic forms for it. The full build
+rejects unsupported profile routing before touching final XML.
 
 ## Review evidence
 

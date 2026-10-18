@@ -26,8 +26,6 @@ def load_records(path: Path, workspace: Path) -> list[dict]:
         if "".join(r["raw_form"].split()) not in page:
             raise ValueError(f"Missing source form: {r['id']}")
         allowed = page
-        if r["id"] in {"T1_Tsuchida1969_R05", "T1_Tsuchida1969_R09"}:
-            allowed = allowed.replace("v́", "ɨ́")
         if r["raw_form"] == "kumakaɨn(ɨ)":
             allowed += "kumakaɨnɨ"  # Explicit optional echo vowel, POL-028.
         for value in [r["form"], *r["variants"], *(t["text"] for t in r["translations"])]:

@@ -16,8 +16,7 @@ import sys
 from pathlib import Path
 profiles = {r["profile"] for r in json.loads(Path(sys.argv[1]).read_text())["records"]}
 # Table 2's 16 Tsuchida1976 pronouns use the reviewed Asai2026 grapheme subset.
-unsupported = sorted(profiles - {"Asai2026", "SaaroaComparison", "Tsuchida1976",
-                                "Tsuchida1969", "BasicVocabulary2007", "PhonemicComparison"})
+unsupported = sorted(profiles - {"Asai2026", "SaaroaComparison", "Tsuchida1976"})
 if unsupported:
     print("Final generation needs reviewed per-source routes for: " + ", ".join(unsupported), file=sys.stderr)
     sys.exit(2)
@@ -26,11 +25,8 @@ SOURCE_ORTHOGRAPHY="$CODEDOCS/scripts/orthographies/Asai2026"
 CONVERSION="$CODEDOCS/scripts/orthographies/ConversionTables/Kanakanavu_Asai2026_113.tsv"
 SAAROA_ORTHOGRAPHY="$CODEDOCS/scripts/orthographies/SaaroaComparison"
 SAAROA_CONVERSION="$CODEDOCS/scripts/orthographies/ConversionTables/Saaroa_SaaroaComparison_113.tsv"
-TABLE_ORTHOGRAPHY="$CODEDOCS/scripts/orthographies/Table1"
-TABLE_CONVERSION="$CODEDOCS/scripts/orthographies/ConversionTables/Kanakanavu_Table1_113.tsv"
 for required in "$SOURCE_ORTHOGRAPHY/Kanakanavu.tsv" "$SOURCE_ORTHOGRAPHY/Kanakanavu.rules.tsv" \
-    "$CONVERSION" "$SAAROA_ORTHOGRAPHY/Saaroa.tsv" "$SAAROA_CONVERSION" \
-    "$TABLE_ORTHOGRAPHY/Kanakanavu.tsv" "$TABLE_ORTHOGRAPHY/Kanakanavu.rules.tsv" "$TABLE_CONVERSION"; do
+    "$CONVERSION" "$SAAROA_ORTHOGRAPHY/Saaroa.tsv" "$SAAROA_CONVERSION"; do
     if [[ ! -f "$required" ]]; then
         echo "Missing committed Kanakanavu orthography input: $required" >&2
         exit 2
@@ -43,14 +39,12 @@ trap 'rm -rf "$STAGE"' EXIT
 XML_STAGE="$STAGE/build/xml_drafts"
 "$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$XML_STAGE"
 for xml in "$XML_STAGE/Kanakanavu/"*.xml; do
-    case "$xml" in
-        *_intro_Tsuchida1969.xml|*_intro_BasicVocabulary2007.xml|*_intro_PhonemicComparison.xml)
-            orthography="$TABLE_ORTHOGRAPHY"; conversion="$TABLE_CONVERSION" ;;
-        *) orthography="$SOURCE_ORTHOGRAPHY"; conversion="$CONVERSION" ;;
-    esac
-    "$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$conversion" \
-        --target_column standard --corpora_path "$xml"
-    "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography "$orthography" \
+    # --segmented-without-m-tier: the lexical records print morpheme hyphens but have no M tier
+    # (maintainer, 2026-10-18: the hyphens "should be deleted in the standard S FORM").
+    "$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CONVERSION" \
+        --target_column standard --segmented-without-m-tier --corpora_path "$xml"
+    "$PY" "$CODEDOCS/scripts/strip_standard_brackets.py" "$xml"
+    "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography "$SOURCE_ORTHOGRAPHY" \
         --corpora_path "$xml" --preserve-existing-original
 done
 if [[ -d "$XML_STAGE/Saaroa" ]]; then
@@ -75,6 +69,7 @@ PY
 for language in Kanakanavu Saaroa; do
     if [[ -d "$XML_STAGE/$language" ]]; then
         mkdir -p "$CORPUS/XML/$language"
+        rm -f "$CORPUS/XML/$language/"*.xml   # drop files an earlier build wrote for sources no longer published
         cp "$XML_STAGE/$language/"*.xml "$CORPUS/XML/$language/"
     fi
 done

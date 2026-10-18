@@ -1,18 +1,18 @@
 <?xml version="1.0" ?>
-<TEXT id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT" xml:lang="xnb" dialect="Kanakanavu" citation="Asai, E., Mei, K., Li, P. J.-k., &amp; Tsuchida, S. (2026). Kanakanavu texts (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies." BibTeX_citation="@book{AsaiMeiLiTsuchida2026KanakanavuTexts,author={Erin Asai and Kuang Mei and Paul Jen-kuei Li and Shigeru Tsuchida},editor={Paul Jen-kuei Li},title={Kanakanavu Texts},year={2026},publisher={Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},isbn={978-4-86337-602-1},note={With the assistance of Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0}}" copyright="Copyright © 2026 Paul Jen-kuei Li, Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0." source="Kanakanavu Texts (2026), Part 2, Text 1, Kuang Mei, printed pages 50-54, source PDF B602_KanakanavuText.pdf">
-    <S id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1">
-        <FORM kindOf="original" notes="Source parenthetical expanded under POL-026/POL-027; exact source and decision are in source_notation_audit.csv.">sua tia=kari=maku ia, tee=ku pu-isua Suŋau mata ʔusu ŋanai-ini.</FORM>
+<TEXT id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT" xml:lang="xnb" dialect="Kanakanavu" citation="Asai, E., Mei, K., Li, P. J.-k., &amp; Tsuchida, S. (2026). Kanakanavu texts (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies." BibTeX_citation="@book{AsaiMeiLiTsuchida2026KanakanavuTexts,author={Erin Asai and Kuang Mei and Paul Jen-kuei Li and Shigeru Tsuchida},editor={Paul Jen-kuei Li},title={Kanakanavu Texts},year={2026},publisher={Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},isbn={978-4-86337-602-1},note={With the assistance of Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0}}" copyright="CC BY 4.0" source="Kanakanavu Texts (2026), Part 2, Text 1, Kuang Mei, printed pages 50-54, source PDF B602_KanakanavuText.pdf">
+    <S id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001">
+        <FORM kindOf="original">sua tia=kari=maku ia, tee=ku pu-isua Suŋau mata ʔusu ŋanai-ini.</FORM>
         <PHON kindOf="original">sua tiakarimaku ia teeku puisua suŋau mata ʔusu ŋanaiini</PHON>
         <FORM kindOf="standard">sua tiakarimaku ia, teeku puisua Sungau mata 'usu nganaiini.</FORM>
         <PHON kindOf="standard">sua tiaka[r|ɾ]imaku ia teeku puisua suŋau mata ʔusu ŋanaiini</PHON>
         <TRANSL xml:lang="eng">I am going to tell the story of the Sungau and (a woman) called 'Usu.</TRANSL>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W001">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W001">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
             <FORM kindOf="standard">sua</FORM>
             <PHON kindOf="standard">sua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W001_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W001_M01">
                 <FORM kindOf="original">sua</FORM>
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua</FORM>
@@ -20,27 +20,27 @@
                 <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W002">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W002">
             <FORM kindOf="original">tia=kari=maku</FORM>
             <PHON kindOf="original">tiakarimaku</PHON>
             <FORM kindOf="standard">tia=kari=maku</FORM>
             <PHON kindOf="standard">tiaka[r|ɾ]imaku</PHON>
             <TRANSL xml:lang="eng" kindOf="original">FUT=tell=1SG.AGT</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W002_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W002_M01">
                 <FORM kindOf="original">tia</FORM>
                 <PHON kindOf="original">tia</PHON>
                 <FORM kindOf="standard">tia</FORM>
                 <PHON kindOf="standard">tia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W002_M02">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W002_M02">
                 <FORM kindOf="original">=kari</FORM>
                 <PHON kindOf="original">kari</PHON>
                 <FORM kindOf="standard">=kari</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">tell</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W002_M03">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W002_M03">
                 <FORM kindOf="original">=maku</FORM>
                 <PHON kindOf="original">maku</PHON>
                 <FORM kindOf="standard">=maku</FORM>
@@ -48,13 +48,13 @@
                 <TRANSL xml:lang="eng" kindOf="original">1SG.AGT</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W003">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W003">
             <FORM kindOf="original">ia</FORM>
             <PHON kindOf="original">ia</PHON>
             <FORM kindOf="standard">ia</FORM>
             <PHON kindOf="standard">ia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W003_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W003_M01">
                 <FORM kindOf="original">ia</FORM>
                 <PHON kindOf="original">ia</PHON>
                 <FORM kindOf="standard">ia</FORM>
@@ -62,20 +62,24 @@
                 <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W004">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W004">
             <FORM kindOf="original">tee=ku</FORM>
             <PHON kindOf="original">teeku</PHON>
+            <FORM kindOf="original" ver="alt">tia=ku</FORM>
             <FORM kindOf="standard">tee=ku</FORM>
             <PHON kindOf="standard">teeku</PHON>
+            <FORM kindOf="standard" ver="alt">tia=ku</FORM>
             <TRANSL xml:lang="eng" kindOf="original">FUT=1SG.NOM</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W004_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W004_M01">
                 <FORM kindOf="original">tee</FORM>
                 <PHON kindOf="original">tee</PHON>
+                <FORM kindOf="original" ver="alt">tia</FORM>
                 <FORM kindOf="standard">tee</FORM>
                 <PHON kindOf="standard">tee</PHON>
+                <FORM kindOf="standard" ver="alt">tia</FORM>
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W004_M02">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W004_M02">
                 <FORM kindOf="original">=ku</FORM>
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">=ku</FORM>
@@ -83,20 +87,20 @@
                 <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W005">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W005">
             <FORM kindOf="original">pu-isua</FORM>
             <PHON kindOf="original">puisua</PHON>
             <FORM kindOf="standard">pu-isua</FORM>
             <PHON kindOf="standard">puisua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">tell-that</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W005_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W005_M01">
                 <FORM kindOf="original">pu</FORM>
                 <PHON kindOf="original">pu</PHON>
                 <FORM kindOf="standard">pu</FORM>
                 <PHON kindOf="standard">pu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">tell</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W005_M02">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W005_M02">
                 <FORM kindOf="original">isua</FORM>
                 <PHON kindOf="original">isua</PHON>
                 <FORM kindOf="standard">isua</FORM>
@@ -104,13 +108,13 @@
                 <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W006">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W006">
             <FORM kindOf="original">Suŋau</FORM>
             <PHON kindOf="original">suŋau</PHON>
             <FORM kindOf="standard">Sungau</FORM>
             <PHON kindOf="standard">suŋau</PHON>
             <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W006_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W006_M01">
                 <FORM kindOf="original">Suŋau</FORM>
                 <PHON kindOf="original">suŋau</PHON>
                 <FORM kindOf="standard">Sungau</FORM>
@@ -118,13 +122,13 @@
                 <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W007">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W007">
             <FORM kindOf="original">mata</FORM>
             <PHON kindOf="original">mata</PHON>
             <FORM kindOf="standard">mata</FORM>
             <PHON kindOf="standard">mata</PHON>
             <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W007_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W007_M01">
                 <FORM kindOf="original">mata</FORM>
                 <PHON kindOf="original">mata</PHON>
                 <FORM kindOf="standard">mata</FORM>
@@ -132,13 +136,13 @@
                 <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W008">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W008">
             <FORM kindOf="original">ʔusu</FORM>
             <PHON kindOf="original">ʔusu</PHON>
             <FORM kindOf="standard">'usu</FORM>
             <PHON kindOf="standard">ʔusu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W008_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W008_M01">
                 <FORM kindOf="original">ʔusu</FORM>
                 <PHON kindOf="original">ʔusu</PHON>
                 <FORM kindOf="standard">'usu</FORM>
@@ -146,20 +150,20 @@
                 <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W009">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W009">
             <FORM kindOf="original">ŋanai-ini</FORM>
             <PHON kindOf="original">ŋanaiini</PHON>
             <FORM kindOf="standard">nganai-ini</FORM>
             <PHON kindOf="standard">ŋanaiini</PHON>
             <TRANSL xml:lang="eng" kindOf="original">name-3.GEN</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W009_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W009_M01">
                 <FORM kindOf="original">ŋanai</FORM>
                 <PHON kindOf="original">ŋanai</PHON>
                 <FORM kindOf="standard">nganai</FORM>
                 <PHON kindOf="standard">ŋanai</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V1_W009_M02">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001_W009_M02">
                 <FORM kindOf="original">ini</FORM>
                 <PHON kindOf="original">ini</PHON>
                 <FORM kindOf="standard">ini</FORM>
@@ -168,208 +172,40 @@
             </M>
         </W>
     </S>
-    <S id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2">
-        <FORM kindOf="original" notes="Source parenthetical expanded under POL-026/POL-027; exact source and decision are in source_notation_audit.csv.">sua tia=kari=maku ia, tia=ku pu-isua Suŋau mata ʔusu ŋanai-ini.</FORM>
-        <PHON kindOf="original">sua tiakarimaku ia tiaku puisua suŋau mata ʔusu ŋanaiini</PHON>
-        <FORM kindOf="standard">sua tiakarimaku ia, tiaku puisua Sungau mata 'usu nganaiini.</FORM>
-        <PHON kindOf="standard">sua tiaka[r|ɾ]imaku ia tiaku puisua suŋau mata ʔusu ŋanaiini</PHON>
-        <TRANSL xml:lang="eng">I am going to tell the story of the Sungau and (a woman) called 'Usu.</TRANSL>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W001">
-            <FORM kindOf="original">sua</FORM>
-            <PHON kindOf="original">sua</PHON>
-            <FORM kindOf="standard">sua</FORM>
-            <PHON kindOf="standard">sua</PHON>
-            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W001_M01">
-                <FORM kindOf="original">sua</FORM>
-                <PHON kindOf="original">sua</PHON>
-                <FORM kindOf="standard">sua</FORM>
-                <PHON kindOf="standard">sua</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-            </M>
-        </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W002">
-            <FORM kindOf="original">tia=kari=maku</FORM>
-            <PHON kindOf="original">tiakarimaku</PHON>
-            <FORM kindOf="standard">tia=kari=maku</FORM>
-            <PHON kindOf="standard">tiaka[r|ɾ]imaku</PHON>
-            <TRANSL xml:lang="eng" kindOf="original">FUT=tell=1SG.AGT</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W002_M01">
-                <FORM kindOf="original">tia</FORM>
-                <PHON kindOf="original">tia</PHON>
-                <FORM kindOf="standard">tia</FORM>
-                <PHON kindOf="standard">tia</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
-            </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W002_M02">
-                <FORM kindOf="original">=kari</FORM>
-                <PHON kindOf="original">kari</PHON>
-                <FORM kindOf="standard">=kari</FORM>
-                <PHON kindOf="standard">ka[r|ɾ]i</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">tell</TRANSL>
-            </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W002_M03">
-                <FORM kindOf="original">=maku</FORM>
-                <PHON kindOf="original">maku</PHON>
-                <FORM kindOf="standard">=maku</FORM>
-                <PHON kindOf="standard">maku</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">1SG.AGT</TRANSL>
-            </M>
-        </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W003">
-            <FORM kindOf="original">ia</FORM>
-            <PHON kindOf="original">ia</PHON>
-            <FORM kindOf="standard">ia</FORM>
-            <PHON kindOf="standard">ia</PHON>
-            <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W003_M01">
-                <FORM kindOf="original">ia</FORM>
-                <PHON kindOf="original">ia</PHON>
-                <FORM kindOf="standard">ia</FORM>
-                <PHON kindOf="standard">ia</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
-            </M>
-        </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W004">
-            <FORM kindOf="original">tia=ku</FORM>
-            <PHON kindOf="original">tiaku</PHON>
-            <FORM kindOf="standard">tia=ku</FORM>
-            <PHON kindOf="standard">tiaku</PHON>
-            <TRANSL xml:lang="eng" kindOf="original">FUT=1SG.NOM</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W004_M01">
-                <FORM kindOf="original">tia</FORM>
-                <PHON kindOf="original">tia</PHON>
-                <FORM kindOf="standard">tia</FORM>
-                <PHON kindOf="standard">tia</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
-            </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W004_M02">
-                <FORM kindOf="original">=ku</FORM>
-                <PHON kindOf="original">ku</PHON>
-                <FORM kindOf="standard">=ku</FORM>
-                <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
-            </M>
-        </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W005">
-            <FORM kindOf="original">pu-isua</FORM>
-            <PHON kindOf="original">puisua</PHON>
-            <FORM kindOf="standard">pu-isua</FORM>
-            <PHON kindOf="standard">puisua</PHON>
-            <TRANSL xml:lang="eng" kindOf="original">tell-that</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W005_M01">
-                <FORM kindOf="original">pu</FORM>
-                <PHON kindOf="original">pu</PHON>
-                <FORM kindOf="standard">pu</FORM>
-                <PHON kindOf="standard">pu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">tell</TRANSL>
-            </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W005_M02">
-                <FORM kindOf="original">isua</FORM>
-                <PHON kindOf="original">isua</PHON>
-                <FORM kindOf="standard">isua</FORM>
-                <PHON kindOf="standard">isua</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
-            </M>
-        </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W006">
-            <FORM kindOf="original">Suŋau</FORM>
-            <PHON kindOf="original">suŋau</PHON>
-            <FORM kindOf="standard">Sungau</FORM>
-            <PHON kindOf="standard">suŋau</PHON>
-            <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W006_M01">
-                <FORM kindOf="original">Suŋau</FORM>
-                <PHON kindOf="original">suŋau</PHON>
-                <FORM kindOf="standard">Sungau</FORM>
-                <PHON kindOf="standard">suŋau</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
-            </M>
-        </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W007">
-            <FORM kindOf="original">mata</FORM>
-            <PHON kindOf="original">mata</PHON>
-            <FORM kindOf="standard">mata</FORM>
-            <PHON kindOf="standard">mata</PHON>
-            <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W007_M01">
-                <FORM kindOf="original">mata</FORM>
-                <PHON kindOf="original">mata</PHON>
-                <FORM kindOf="standard">mata</FORM>
-                <PHON kindOf="standard">mata</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
-            </M>
-        </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W008">
-            <FORM kindOf="original">ʔusu</FORM>
-            <PHON kindOf="original">ʔusu</PHON>
-            <FORM kindOf="standard">'usu</FORM>
-            <PHON kindOf="standard">ʔusu</PHON>
-            <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W008_M01">
-                <FORM kindOf="original">ʔusu</FORM>
-                <PHON kindOf="original">ʔusu</PHON>
-                <FORM kindOf="standard">'usu</FORM>
-                <PHON kindOf="standard">ʔusu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
-            </M>
-        </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W009">
-            <FORM kindOf="original">ŋanai-ini</FORM>
-            <PHON kindOf="original">ŋanaiini</PHON>
-            <FORM kindOf="standard">nganai-ini</FORM>
-            <PHON kindOf="standard">ŋanaiini</PHON>
-            <TRANSL xml:lang="eng" kindOf="original">name-3.GEN</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W009_M01">
-                <FORM kindOf="original">ŋanai</FORM>
-                <PHON kindOf="original">ŋanai</PHON>
-                <FORM kindOf="standard">nganai</FORM>
-                <PHON kindOf="standard">ŋanai</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
-            </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0001V2_W009_M02">
-                <FORM kindOf="original">ini</FORM>
-                <PHON kindOf="original">ini</PHON>
-                <FORM kindOf="standard">ini</FORM>
-                <PHON kindOf="standard">ini</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">3.GEN</TRANSL>
-            </M>
-        </W>
-    </S>
-    <S id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1">
+    <S id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002">
         <FORM kindOf="original" notes="Source parenthetical expanded under POL-026/POL-027; exact source and decision are in source_notation_audit.csv.">ni-pusu-ʔuma=kan piniŋ ʔusu mu-usa ʔuma-ʔuma, pureren=kan sua ʔusu.</FORM>
         <PHON kindOf="original">nipusuʔumakan piniŋ ʔusu muusa ʔumaʔuma purerenkan sua ʔusu</PHON>
         <FORM kindOf="standard">nipusu'umakan pining 'usu muusa 'uma'uma, purerenkan sua 'usu.</FORM>
         <PHON kindOf="standard">nipusuʔumakan piniŋ ʔusu muusa ʔumaʔuma pu[r|ɾ]e[r|ɾ]enkan sua ʔusu</PHON>
         <TRANSL xml:lang="eng">When her neighbors had come to the fields to help with the crop, 'Usu watched them stealthily.</TRANSL>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W001">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W001">
             <FORM kindOf="original">ni-pusu-ʔuma=kan</FORM>
             <PHON kindOf="original">nipusuʔumakan</PHON>
             <FORM kindOf="standard">ni-pusu-'uma=kan</FORM>
             <PHON kindOf="standard">nipusuʔumakan</PHON>
             <TRANSL xml:lang="eng" kindOf="original">PFV-help-field=said</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W001_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W001_M01">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W001_M02">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W001_M02">
                 <FORM kindOf="original">pusu</FORM>
                 <PHON kindOf="original">pusu</PHON>
                 <FORM kindOf="standard">pusu</FORM>
                 <PHON kindOf="standard">pusu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">help</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W001_M03">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W001_M03">
                 <FORM kindOf="original">ʔuma</FORM>
                 <PHON kindOf="original">ʔuma</PHON>
                 <FORM kindOf="standard">'uma</FORM>
                 <PHON kindOf="standard">ʔuma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">field</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W001_M04">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W001_M04">
                 <FORM kindOf="original">=kan</FORM>
                 <PHON kindOf="original">kan</PHON>
                 <FORM kindOf="standard">=kan</FORM>
@@ -377,13 +213,13 @@
                 <TRANSL xml:lang="eng" kindOf="original">said</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W002">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W002">
             <FORM kindOf="original">piniŋ</FORM>
             <PHON kindOf="original">piniŋ</PHON>
             <FORM kindOf="standard">pining</FORM>
             <PHON kindOf="standard">piniŋ</PHON>
             <TRANSL xml:lang="eng" kindOf="original">outside</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W002_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W002_M01">
                 <FORM kindOf="original">piniŋ</FORM>
                 <PHON kindOf="original">piniŋ</PHON>
                 <FORM kindOf="standard">pining</FORM>
@@ -391,13 +227,13 @@
                 <TRANSL xml:lang="eng" kindOf="original">outside</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W003">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W003">
             <FORM kindOf="original">ʔusu</FORM>
             <PHON kindOf="original">ʔusu</PHON>
             <FORM kindOf="standard">'usu</FORM>
             <PHON kindOf="standard">ʔusu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W003_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W003_M01">
                 <FORM kindOf="original">ʔusu</FORM>
                 <PHON kindOf="original">ʔusu</PHON>
                 <FORM kindOf="standard">'usu</FORM>
@@ -405,20 +241,20 @@
                 <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W004">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W004">
             <FORM kindOf="original">mu-usa</FORM>
             <PHON kindOf="original">muusa</PHON>
             <FORM kindOf="standard">mu-usa</FORM>
             <PHON kindOf="standard">muusa</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-go</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W004_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W004_M01">
                 <FORM kindOf="original">mu</FORM>
                 <PHON kindOf="original">mu</PHON>
                 <FORM kindOf="standard">mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W004_M02">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W004_M02">
                 <FORM kindOf="original">usa</FORM>
                 <PHON kindOf="original">usa</PHON>
                 <FORM kindOf="standard">usa</FORM>
@@ -426,20 +262,20 @@
                 <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W005">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W005">
             <FORM kindOf="original">ʔuma-ʔuma</FORM>
             <PHON kindOf="original">ʔumaʔuma</PHON>
             <FORM kindOf="standard">'uma-'uma</FORM>
             <PHON kindOf="standard">ʔumaʔuma</PHON>
             <TRANSL xml:lang="eng" kindOf="original">RED-field</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W005_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W005_M01">
                 <FORM kindOf="original">ʔuma</FORM>
                 <PHON kindOf="original">ʔuma</PHON>
                 <FORM kindOf="standard">'uma</FORM>
                 <PHON kindOf="standard">ʔuma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W005_M02">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W005_M02">
                 <FORM kindOf="original">ʔuma</FORM>
                 <PHON kindOf="original">ʔuma</PHON>
                 <FORM kindOf="standard">'uma</FORM>
@@ -447,20 +283,20 @@
                 <TRANSL xml:lang="eng" kindOf="original">field</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W006">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W006">
             <FORM kindOf="original">pureren=kan</FORM>
             <PHON kindOf="original">purerenkan</PHON>
             <FORM kindOf="standard">pureren=kan</FORM>
             <PHON kindOf="standard">pu[r|ɾ]e[r|ɾ]enkan</PHON>
             <TRANSL xml:lang="eng" kindOf="original">watch.stealthily=said</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W006_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W006_M01">
                 <FORM kindOf="original">pureren</FORM>
                 <PHON kindOf="original">pureren</PHON>
                 <FORM kindOf="standard">pureren</FORM>
                 <PHON kindOf="standard">pu[r|ɾ]e[r|ɾ]en</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">watch.stealthily</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W006_M02">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W006_M02">
                 <FORM kindOf="original">=kan</FORM>
                 <PHON kindOf="original">kan</PHON>
                 <FORM kindOf="standard">=kan</FORM>
@@ -468,13 +304,13 @@
                 <TRANSL xml:lang="eng" kindOf="original">said</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W007">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W007">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
             <FORM kindOf="standard">sua</FORM>
             <PHON kindOf="standard">sua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W007_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W007_M01">
                 <FORM kindOf="original">sua</FORM>
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua</FORM>
@@ -482,13 +318,13 @@
                 <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W008">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W008">
             <FORM kindOf="original">ʔusu</FORM>
             <PHON kindOf="original">ʔusu</PHON>
             <FORM kindOf="standard">'usu</FORM>
             <PHON kindOf="standard">ʔusu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V1_W008_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002_W008_M01">
                 <FORM kindOf="original">ʔusu</FORM>
                 <PHON kindOf="original">ʔusu</PHON>
                 <FORM kindOf="standard">'usu</FORM>
@@ -497,40 +333,40 @@
             </M>
         </W>
     </S>
-    <S id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2">
+    <S id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt">
         <FORM kindOf="original" notes="Source parenthetical expanded under POL-026/POL-027; exact source and decision are in source_notation_audit.csv.">ni-pusu-ʔuma=kan piniŋ ʔusu mu-a-kusa ʔuma-ʔuma, pureren=kan sua ʔusu.</FORM>
         <PHON kindOf="original">nipusuʔumakan piniŋ ʔusu muakusa ʔumaʔuma purerenkan sua ʔusu</PHON>
         <FORM kindOf="standard">nipusu'umakan pining 'usu muakusa 'uma'uma, purerenkan sua 'usu.</FORM>
         <PHON kindOf="standard">nipusuʔumakan piniŋ ʔusu muakusa ʔumaʔuma pu[r|ɾ]e[r|ɾ]enkan sua ʔusu</PHON>
         <TRANSL xml:lang="eng">When her neighbors had come to the fields to help with the crop, 'Usu watched them stealthily.</TRANSL>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W001">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W001">
             <FORM kindOf="original">ni-pusu-ʔuma=kan</FORM>
             <PHON kindOf="original">nipusuʔumakan</PHON>
             <FORM kindOf="standard">ni-pusu-'uma=kan</FORM>
             <PHON kindOf="standard">nipusuʔumakan</PHON>
             <TRANSL xml:lang="eng" kindOf="original">PFV-help-field=said</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W001_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W001_M01">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W001_M02">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W001_M02">
                 <FORM kindOf="original">pusu</FORM>
                 <PHON kindOf="original">pusu</PHON>
                 <FORM kindOf="standard">pusu</FORM>
                 <PHON kindOf="standard">pusu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">help</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W001_M03">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W001_M03">
                 <FORM kindOf="original">ʔuma</FORM>
                 <PHON kindOf="original">ʔuma</PHON>
                 <FORM kindOf="standard">'uma</FORM>
                 <PHON kindOf="standard">ʔuma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">field</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W001_M04">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W001_M04">
                 <FORM kindOf="original">=kan</FORM>
                 <PHON kindOf="original">kan</PHON>
                 <FORM kindOf="standard">=kan</FORM>
@@ -538,13 +374,13 @@
                 <TRANSL xml:lang="eng" kindOf="original">said</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W002">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W002">
             <FORM kindOf="original">piniŋ</FORM>
             <PHON kindOf="original">piniŋ</PHON>
             <FORM kindOf="standard">pining</FORM>
             <PHON kindOf="standard">piniŋ</PHON>
             <TRANSL xml:lang="eng" kindOf="original">outside</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W002_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W002_M01">
                 <FORM kindOf="original">piniŋ</FORM>
                 <PHON kindOf="original">piniŋ</PHON>
                 <FORM kindOf="standard">pining</FORM>
@@ -552,13 +388,13 @@
                 <TRANSL xml:lang="eng" kindOf="original">outside</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W003">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W003">
             <FORM kindOf="original">ʔusu</FORM>
             <PHON kindOf="original">ʔusu</PHON>
             <FORM kindOf="standard">'usu</FORM>
             <PHON kindOf="standard">ʔusu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W003_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W003_M01">
                 <FORM kindOf="original">ʔusu</FORM>
                 <PHON kindOf="original">ʔusu</PHON>
                 <FORM kindOf="standard">'usu</FORM>
@@ -566,27 +402,27 @@
                 <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W004">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W004">
             <FORM kindOf="original">mu-a-kusa</FORM>
             <PHON kindOf="original">muakusa</PHON>
             <FORM kindOf="standard">mu-a-kusa</FORM>
             <PHON kindOf="standard">muakusa</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-IRR-go.toward</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W004_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W004_M01">
                 <FORM kindOf="original">mu</FORM>
                 <PHON kindOf="original">mu</PHON>
                 <FORM kindOf="standard">mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W004_M02">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W004_M02">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W004_M03">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W004_M03">
                 <FORM kindOf="original">kusa</FORM>
                 <PHON kindOf="original">kusa</PHON>
                 <FORM kindOf="standard">kusa</FORM>
@@ -594,20 +430,20 @@
                 <TRANSL xml:lang="eng" kindOf="original">go.toward</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W005">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W005">
             <FORM kindOf="original">ʔuma-ʔuma</FORM>
             <PHON kindOf="original">ʔumaʔuma</PHON>
             <FORM kindOf="standard">'uma-'uma</FORM>
             <PHON kindOf="standard">ʔumaʔuma</PHON>
             <TRANSL xml:lang="eng" kindOf="original">RED-field</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W005_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W005_M01">
                 <FORM kindOf="original">ʔuma</FORM>
                 <PHON kindOf="original">ʔuma</PHON>
                 <FORM kindOf="standard">'uma</FORM>
                 <PHON kindOf="standard">ʔuma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W005_M02">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W005_M02">
                 <FORM kindOf="original">ʔuma</FORM>
                 <PHON kindOf="original">ʔuma</PHON>
                 <FORM kindOf="standard">'uma</FORM>
@@ -615,20 +451,20 @@
                 <TRANSL xml:lang="eng" kindOf="original">field</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W006">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W006">
             <FORM kindOf="original">pureren=kan</FORM>
             <PHON kindOf="original">purerenkan</PHON>
             <FORM kindOf="standard">pureren=kan</FORM>
             <PHON kindOf="standard">pu[r|ɾ]e[r|ɾ]enkan</PHON>
             <TRANSL xml:lang="eng" kindOf="original">watch.stealthily=said</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W006_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W006_M01">
                 <FORM kindOf="original">pureren</FORM>
                 <PHON kindOf="original">pureren</PHON>
                 <FORM kindOf="standard">pureren</FORM>
                 <PHON kindOf="standard">pu[r|ɾ]e[r|ɾ]en</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">watch.stealthily</TRANSL>
             </M>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W006_M02">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W006_M02">
                 <FORM kindOf="original">=kan</FORM>
                 <PHON kindOf="original">kan</PHON>
                 <FORM kindOf="standard">=kan</FORM>
@@ -636,13 +472,13 @@
                 <TRANSL xml:lang="eng" kindOf="original">said</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W007">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W007">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
             <FORM kindOf="standard">sua</FORM>
             <PHON kindOf="standard">sua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W007_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W007_M01">
                 <FORM kindOf="original">sua</FORM>
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua</FORM>
@@ -650,13 +486,13 @@
                 <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
-        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W008">
+        <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W008">
             <FORM kindOf="original">ʔusu</FORM>
             <PHON kindOf="original">ʔusu</PHON>
             <FORM kindOf="standard">'usu</FORM>
             <PHON kindOf="standard">ʔusu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">name</TRANSL>
-            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002V2_W008_M01">
+            <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0002-opt_W008_M01">
                 <FORM kindOf="original">ʔusu</FORM>
                 <PHON kindOf="original">ʔusu</PHON>
                 <FORM kindOf="standard">'usu</FORM>
@@ -669,7 +505,7 @@
         <FORM kindOf="original">"ʔa, tee=ku mu-a-taruʔan, cina," misa=kani sua ʔusu.</FORM>
         <PHON kindOf="original">ʔa teeku muataruʔan tʂina misakani sua ʔusu</PHON>
         <FORM kindOf="standard">"'a, teeku muataru'an, cina," misakani sua 'usu.</FORM>
-        <PHON kindOf="standard">ʔa teeku muata[r|ɾ]uʔan tʂina misakani sua ʔusu</PHON>
+        <PHON kindOf="standard">ʔa teeku muata[r|ɾ]uʔan ʦina misakani sua ʔusu</PHON>
         <TRANSL xml:lang="eng">"Ah! I want to pass the night (in the field), Mother," said 'Usu.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0003_W001">
             <FORM kindOf="original">ʔa</FORM>
@@ -738,13 +574,13 @@
             <FORM kindOf="original">cina</FORM>
             <PHON kindOf="original">tʂina</PHON>
             <FORM kindOf="standard">cina</FORM>
-            <PHON kindOf="standard">tʂina</PHON>
+            <PHON kindOf="standard">ʦina</PHON>
             <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0003_W004_M01">
                 <FORM kindOf="original">cina</FORM>
                 <PHON kindOf="original">tʂina</PHON>
                 <FORM kindOf="standard">cina</FORM>
-                <PHON kindOf="standard">tʂina</PHON>
+                <PHON kindOf="standard">ʦina</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             </M>
         </W>
@@ -802,7 +638,7 @@
         <FORM kindOf="original">m-ali-vali=kan cina-ini=kan, "tia=i-a-vatu Suŋau."</FORM>
         <PHON kindOf="original">maɾivaɾikan tʂinainikan tiaiavatu suŋau</PHON>
         <FORM kindOf="standard">marivarikan cinainikan, "tiaiavatu Sungau."</FORM>
-        <PHON kindOf="standard">ma[r|ɾ]iva[r|ɾ]ikan tʂinainikan tiaiavatu suŋau</PHON>
+        <PHON kindOf="standard">ma[r|ɾ]iva[r|ɾ]ikan ʦinainikan tiaiavatu suŋau</PHON>
         <TRANSL xml:lang="eng">Her mother replied, "The Sungau will come there."</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0004_W001">
             <FORM kindOf="original">m-ali-vali=kan</FORM>
@@ -843,13 +679,13 @@
             <FORM kindOf="original">cina-ini=kan</FORM>
             <PHON kindOf="original">tʂinainikan</PHON>
             <FORM kindOf="standard">cina-ini=kan</FORM>
-            <PHON kindOf="standard">tʂinainikan</PHON>
+            <PHON kindOf="standard">ʦinainikan</PHON>
             <TRANSL xml:lang="eng" kindOf="original">mother-3.GEN=said</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0004_W002_M01">
                 <FORM kindOf="original">cina</FORM>
                 <PHON kindOf="original">tʂina</PHON>
                 <FORM kindOf="standard">cina</FORM>
-                <PHON kindOf="standard">tʂina</PHON>
+                <PHON kindOf="standard">ʦina</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0004_W002_M02">
@@ -920,7 +756,7 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0005">
         <FORM kindOf="original">"ʔa=kan tee=ku t&lt;um&gt;a-tinuʔa."</FORM>
         <PHON kindOf="original">ʔakan teeku tumatinuʔa</PHON>
-        <FORM kindOf="standard">"'akan teeku t&lt;um&gt;atinu'a."</FORM>
+        <FORM kindOf="standard">"'akan teeku tumatinu'a."</FORM>
         <PHON kindOf="standard">ʔakan teeku tumatinuʔa</PHON>
         <TRANSL xml:lang="eng">"Ah! (But) I'll make a campfire"</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0005_W001">
@@ -1137,7 +973,7 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0008">
         <FORM kindOf="original">tee=kan=cu ma-paraupau, t&lt;um&gt;a-tinuʔa=kan=cu ʔusu.</FORM>
         <PHON kindOf="original">teekanʦu maparaupau tumatinuʔakanʦu ʔusu</PHON>
-        <FORM kindOf="standard">teekancu maparaupau, t&lt;um&gt;atinu'akancu 'usu.</FORM>
+        <FORM kindOf="standard">teekancu maparaupau, tumatinu'akancu 'usu.</FORM>
         <PHON kindOf="standard">teekanʦu mapa[r|ɾ]aupau tumatinuʔakanʦu ʔusu</PHON>
         <TRANSL xml:lang="eng">(When) it was already near dusk, 'Usu make a campfire.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0008_W001">
@@ -1250,7 +1086,7 @@
         <FORM kindOf="original">maka-sua=cu ma-pitəʔə=cu, cili-cili-ai=kan sua ʔusu canum-ini.</FORM>
         <PHON kindOf="original">makasuaʦu mapitəʔəʦu tʂiɾitʂiɾiaikan sua ʔusu ʦanumini</PHON>
         <FORM kindOf="standard">makasuacu mapite'ecu, ciriciriaikan sua 'usu canumini.</FORM>
-        <PHON kindOf="standard">makasuaʦu mapiteʔeʦu tʂi[r|ɾ]itʂi[r|ɾ]iaikan sua ʔusu ʦanumini</PHON>
+        <PHON kindOf="standard">makasuaʦu mapiteʔeʦu ʦi[r|ɾ]iʦi[r|ɾ]iaikan sua ʔusu ʦanumini</PHON>
         <TRANSL xml:lang="eng">(When) it was already dark, 'Usu had her water spilled.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0009_W001">
             <FORM kindOf="original">maka-sua=cu</FORM>
@@ -1312,20 +1148,20 @@
             <FORM kindOf="original">cili-cili-ai=kan</FORM>
             <PHON kindOf="original">tʂiɾitʂiɾiaikan</PHON>
             <FORM kindOf="standard">ciri-ciri-ai=kan</FORM>
-            <PHON kindOf="standard">tʂi[r|ɾ]itʂi[r|ɾ]iaikan</PHON>
+            <PHON kindOf="standard">ʦi[r|ɾ]iʦi[r|ɾ]iaikan</PHON>
             <TRANSL xml:lang="eng" kindOf="original">RED-spill-NEUT=said</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0009_W003_M01">
                 <FORM kindOf="original">cili</FORM>
                 <PHON kindOf="original">tʂiɾi</PHON>
                 <FORM kindOf="standard">ciri</FORM>
-                <PHON kindOf="standard">tʂi[r|ɾ]i</PHON>
+                <PHON kindOf="standard">ʦi[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0009_W003_M02">
                 <FORM kindOf="original">cili</FORM>
                 <PHON kindOf="original">tʂiɾi</PHON>
                 <FORM kindOf="standard">ciri</FORM>
-                <PHON kindOf="standard">tʂi[r|ɾ]i</PHON>
+                <PHON kindOf="standard">ʦi[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">spill</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0009_W003_M03">
@@ -1578,8 +1414,8 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0012">
         <FORM kindOf="original">"ʔa. ʔakia canum=aku. ʔacu c&lt;in&gt;ili-cili cau mi-caʔania," misa=kan.</FORM>
         <PHON kindOf="original">ʔa ʔakia ʦanumaku ʔaʦu tʂiniɾitʂiɾi ʦau miʦaʔania misakan</PHON>
-        <FORM kindOf="standard">"'a. 'akia canumaku. 'acu c&lt;in&gt;iriciri cau mica'ania," misakan.</FORM>
-        <PHON kindOf="standard">ʔa ʔakia ʦanumaku ʔaʦu tʂini[r|ɾ]itʂi[r|ɾ]i ʦau miʦaʔania misakan</PHON>
+        <FORM kindOf="standard">"'a. 'akia canumaku. 'acu ciniriciri cau mica'ania," misakan.</FORM>
+        <PHON kindOf="standard">ʔa ʔakia ʦanumaku ʔaʦu ʦini[r|ɾ]iʦi[r|ɾ]i ʦau miʦaʔania misakan</PHON>
         <TRANSL xml:lang="eng">"I've got no (more) water (lit, my water is no more), somebody had spilled it this afternoon," said (she).</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0012_W001">
             <FORM kindOf="original">ʔa</FORM>
@@ -1648,13 +1484,13 @@
             <FORM kindOf="original">c&lt;in&gt;ili-cili</FORM>
             <PHON kindOf="original">tʂiniɾitʂiɾi</PHON>
             <FORM kindOf="standard">c&lt;in&gt;iri-ciri</FORM>
-            <PHON kindOf="standard">tʂini[r|ɾ]itʂi[r|ɾ]i</PHON>
+            <PHON kindOf="standard">ʦini[r|ɾ]iʦi[r|ɾ]i</PHON>
             <TRANSL xml:lang="eng" kindOf="original">RED&lt;PFV&gt;-spill</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0012_W005_M01">
                 <FORM kindOf="original">c-ili</FORM>
                 <PHON kindOf="original">tʂiɾi</PHON>
                 <FORM kindOf="standard">c-iri</FORM>
-                <PHON kindOf="standard">tʂi[r|ɾ]i</PHON>
+                <PHON kindOf="standard">ʦi[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0012_W005_M02">
@@ -1668,7 +1504,7 @@
                 <FORM kindOf="original">cili</FORM>
                 <PHON kindOf="original">tʂiɾi</PHON>
                 <FORM kindOf="standard">ciri</FORM>
-                <PHON kindOf="standard">tʂi[r|ɾ]i</PHON>
+                <PHON kindOf="standard">ʦi[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">spill</TRANSL>
             </M>
         </W>
@@ -1901,7 +1737,7 @@
         <FORM kindOf="original">pasə-kə-kəəc-ai=kan sua ʔusu manu-ini, si kaʔan=kan tia=pa-tiʔin=kiai.</FORM>
         <PHON kindOf="original">pasəkəkəəʦaikan sua ʔusu manuini ʂi kaʔankan tiapatiʔinkiai</PHON>
         <FORM kindOf="standard">pasekekeecaikan sua 'usu manuini, si ka'ankan tiapati'inkiai.</FORM>
-        <PHON kindOf="standard">pasekekeeʦaikan sua ʔusu manuini ʂi kaʔankan tiapatiʔinkiai</PHON>
+        <PHON kindOf="standard">pasekekeeʦaikan sua ʔusu manuini si kaʔankan tiapatiʔinkiai</PHON>
         <TRANSL xml:lang="eng">She pinched her child with her fingernails, for she wasn't going to leave it behind.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0015_W001">
             <FORM kindOf="original">pasə-kə-kəəc-ai=kan</FORM>
@@ -1998,13 +1834,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0015_W005_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -2209,7 +2045,7 @@
         <FORM kindOf="original">pasə-kəəc-ən=kan ʔusu manu-ini, si kaʔan tia=pa-tiʔin=kiai.</FORM>
         <PHON kindOf="original">pasəkəəʦənkan ʔusu manuini ʂi kaʔan tiapatiʔinkiai</PHON>
         <FORM kindOf="standard">pasekeecenkan 'usu manuini, si ka'an tiapati'inkiai.</FORM>
-        <PHON kindOf="standard">pasekeeʦenkan ʔusu manuini ʂi kaʔan tiapatiʔinkiai</PHON>
+        <PHON kindOf="standard">pasekeeʦenkan ʔusu manuini si kaʔan tiapatiʔinkiai</PHON>
         <TRANSL xml:lang="eng">'Usu pinched her child with her fingernails, for she wasn't going to leave it behind.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0017_W001">
             <FORM kindOf="original">pasə-kəəc-ən=kan</FORM>
@@ -2285,13 +2121,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">for</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0017_W004_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">for</TRANSL>
             </M>
         </W>
@@ -2514,10 +2350,10 @@
         </W>
     </S>
     <S id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0020">
-        <FORM kindOf="original">"nuu ʔusu misa=kan kasua Suŋau ia, 'əəʔə,' kisa-u-i=ʔai."</FORM>
+        <FORM kindOf="original">"nuu ʔusu misa=kan kasua Suŋau ia, "əəʔə," kisa-u-i=ʔai."</FORM>
         <PHON kindOf="original">nuu ʔusu misakan kasua suŋau ia əəʔə kisauiʔai</PHON>
-        <FORM kindOf="standard">"nuu 'usu misakan kasua Sungau ia, 'ee'e,' kisaui'ai."</FORM>
-        <PHON kindOf="standard">nuu ʔusu misakan kasua suŋau ia ʔeeʔeʔ kisauiʔai</PHON>
+        <FORM kindOf="standard">"nuu 'usu misakan kasua Sungau ia, "ee'e," kisaui'ai."</FORM>
+        <PHON kindOf="standard">nuu ʔusu misakan kasua suŋau ia eeʔe kisauiʔai</PHON>
         <TRANSL xml:lang="eng">"When the Sungau says 'Usu to you, say 'Yes,' in reply."</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0020_W001">
             <FORM kindOf="original">nuu</FORM>
@@ -2783,7 +2619,7 @@
         <FORM kindOf="original">"ʔacu nanu si ʔusu tia=mu-a-canumu," misa=kan sua Suŋau.</FORM>
         <PHON kindOf="original">ʔaʦu nanu ʂi ʔusu tiamuaʦanumu misakan sua suŋau</PHON>
         <FORM kindOf="standard">"'acu nanu si 'usu tiamuacanumu," misakan sua Sungau.</FORM>
-        <PHON kindOf="standard">ʔaʦu nanu ʂi ʔusu tiamuaʦanumu misakan sua suŋau</PHON>
+        <PHON kindOf="standard">ʔaʦu nanu si ʔusu tiamuaʦanumu misakan sua suŋau</PHON>
         <TRANSL xml:lang="eng">"Where is 'Usu, for she would (go to) fetch water?" said the Sungau.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0022_W001">
             <FORM kindOf="original">ʔacu</FORM>
@@ -2817,13 +2653,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">for</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0022_W003_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">for</TRANSL>
             </M>
         </W>
@@ -2930,7 +2766,7 @@
         <FORM kindOf="original">"ʔusu" misa masi-va-vaʔatə ca-canə.</FORM>
         <PHON kindOf="original">ʔusu misa maʂivavaʔatə ʦaʦanə</PHON>
         <FORM kindOf="standard">"'usu" misa masivava'ate cacane.</FORM>
-        <PHON kindOf="standard">ʔusu misa maʂivavaʔate ʦaʦane</PHON>
+        <PHON kindOf="standard">ʔusu misa masivavaʔate ʦaʦane</PHON>
         <TRANSL xml:lang="eng">Walking down the road, he called out in passing, "'Usu!"</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0023_W001">
             <FORM kindOf="original">ʔusu</FORM>
@@ -2964,13 +2800,13 @@
             <FORM kindOf="original">masi-va-vaʔatə</FORM>
             <PHON kindOf="original">maʂivavaʔatə</PHON>
             <FORM kindOf="standard">masi-va-va'ate</FORM>
-            <PHON kindOf="standard">maʂivavaʔate</PHON>
+            <PHON kindOf="standard">masivavaʔate</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV.call-RED-in.passing</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0023_W003_M01">
                 <FORM kindOf="original">masi</FORM>
                 <PHON kindOf="original">maʂi</PHON>
                 <FORM kindOf="standard">masi</FORM>
-                <PHON kindOf="standard">maʂi</PHON>
+                <PHON kindOf="standard">masi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV.call</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0023_W003_M02">
@@ -3336,13 +3172,13 @@
         <FORM kindOf="original">ma-kasi=kan ʔinia, "ʔusu" misa, "əəʔə" misa=kan ʔeesi na vaatu.</FORM>
         <PHON kindOf="original">makaʂikan ʔinia ʔusu misa əəʔə misakan ʔeeʂi na vaatu</PHON>
         <FORM kindOf="standard">makasikan 'inia, "'usu" misa, "ee'e" misakan 'eesi na vaatu.</FORM>
-        <PHON kindOf="standard">makaʂikan ʔinia ʔusu misa eeʔe misakan ʔeeʂi na vaatu</PHON>
+        <PHON kindOf="standard">makasikan ʔinia ʔusu misa eeʔe misakan ʔeesi na vaatu</PHON>
         <TRANSL xml:lang="eng">Going there, he called, "'Usu!", (and) the one from the stone (lit., the being- from-the-stone) said "Yes."</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0027_W001">
             <FORM kindOf="original">ma-kasi=kan</FORM>
             <PHON kindOf="original">makaʂikan</PHON>
             <FORM kindOf="standard">ma-kasi=kan</FORM>
-            <PHON kindOf="standard">makaʂikan</PHON>
+            <PHON kindOf="standard">makasikan</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-go.toward=said</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0027_W001_M01">
                 <FORM kindOf="original">ma</FORM>
@@ -3355,7 +3191,7 @@
                 <FORM kindOf="original">kasi</FORM>
                 <PHON kindOf="original">kaʂi</PHON>
                 <FORM kindOf="standard">kasi</FORM>
-                <PHON kindOf="standard">kaʂi</PHON>
+                <PHON kindOf="standard">kasi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">go.toward</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0027_W001_M03">
@@ -3447,13 +3283,13 @@
             <FORM kindOf="original">ʔeesi</FORM>
             <PHON kindOf="original">ʔeeʂi</PHON>
             <FORM kindOf="standard">'eesi</FORM>
-            <PHON kindOf="standard">ʔeeʂi</PHON>
+            <PHON kindOf="standard">ʔeesi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">exist</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0027_W007_M01">
                 <FORM kindOf="original">ʔeesi</FORM>
                 <PHON kindOf="original">ʔeeʂi</PHON>
                 <FORM kindOf="standard">'eesi</FORM>
-                <PHON kindOf="standard">ʔeeʂi</PHON>
+                <PHON kindOf="standard">ʔeesi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">exist</TRANSL>
             </M>
         </W>
@@ -3490,7 +3326,7 @@
         <FORM kindOf="original">ʔuriŋ-ai=kan ʔinia sua vaatu, ʔaisi=kan ʔinia caracə.</FORM>
         <PHON kindOf="original">ʔuriŋaikan ʔinia sua vaatu ʔaiʂikan ʔinia ʦaraʦə</PHON>
         <FORM kindOf="standard">'uringaikan 'inia sua vaatu, 'aisikan 'inia carace.</FORM>
-        <PHON kindOf="standard">ʔu[r|ɾ]iŋaikan ʔinia sua vaatu ʔaiʂikan ʔinia ʦa[r|ɾ]aʦe</PHON>
+        <PHON kindOf="standard">ʔu[r|ɾ]iŋaikan ʔinia sua vaatu ʔaisikan ʔinia ʦa[r|ɾ]aʦe</PHON>
         <TRANSL xml:lang="eng">As he lit a torch (and directed it) upon the stone, there was the louse.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0028_W001">
             <FORM kindOf="original">ʔuriŋ-ai=kan</FORM>
@@ -3566,13 +3402,13 @@
             <FORM kindOf="original">ʔaisi=kan</FORM>
             <PHON kindOf="original">ʔaiʂikan</PHON>
             <FORM kindOf="standard">'aisi=kan</FORM>
-            <PHON kindOf="standard">ʔaiʂikan</PHON>
+            <PHON kindOf="standard">ʔaisikan</PHON>
             <TRANSL xml:lang="eng" kindOf="original">exist=said</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0028_W005_M01">
                 <FORM kindOf="original">ʔaisi</FORM>
                 <PHON kindOf="original">ʔaiʂi</PHON>
                 <FORM kindOf="standard">'aisi</FORM>
-                <PHON kindOf="standard">ʔaiʂi</PHON>
+                <PHON kindOf="standard">ʔaisi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">exist</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0028_W005_M02">
@@ -4092,7 +3928,7 @@
         <FORM kindOf="original">ka-ʔala-ʔalam-ai=kan sua vai-ini, aranai=kani ʔinia sua kan ma-a-ŋaliŋali maamia sua ʔalam-ini sikəlapə talakuluka tanaveciŋal avalaʔi maamia kula-kula-kulai ni-aranai=kan ʔinia ka-vaŋvaŋ.</FORM>
         <PHON kindOf="original">kaʔaɾaʔaɾamaikan sua vaiini aranaikani ʔinia sua kan maaŋaɾiŋaɾi maamia sua ʔaɾamini ʂikəɾapə taɾakuɾuka tanavetʂiŋaɾ avaɾaʔi maamia kuɾakuɾakuɾai niaranaikan ʔinia kavaŋvaŋ</PHON>
         <FORM kindOf="standard">ka'ara'aramaikan sua vaiini, aranaikani 'inia sua kan maangaringari maamia sua 'aramini sikerape tarakuruka tanavecingar avara'i maamia kurakurakurai niaranaikan 'inia kavangvang.</FORM>
-        <PHON kindOf="standard">kaʔa[r|ɾ]aʔa[r|ɾ]amaikan sua vaiini a[r|ɾ]anaikani ʔinia sua kan maaŋa[r|ɾ]iŋa[r|ɾ]i maamia sua ʔa[r|ɾ]amini ʂike[r|ɾ]ape ta[r|ɾ]aku[r|ɾ]uka tanavetʂiŋa[r|ɾ] ava[r|ɾ]aʔi maamia ku[r|ɾ]aku[r|ɾ]aku[r|ɾ]ai nia[r|ɾ]anaikan ʔinia kavaŋvaŋ</PHON>
+        <PHON kindOf="standard">kaʔa[r|ɾ]aʔa[r|ɾ]amaikan sua vaiini a[r|ɾ]anaikani ʔinia sua kan maaŋa[r|ɾ]iŋa[r|ɾ]i maamia sua ʔa[r|ɾ]amini sike[r|ɾ]ape ta[r|ɾ]aku[r|ɾ]uka tanaveʦiŋa[r|ɾ] ava[r|ɾ]aʔi maamia ku[r|ɾ]aku[r|ɾ]aku[r|ɾ]ai nia[r|ɾ]anaikan ʔinia kavaŋvaŋ</PHON>
         <TRANSL xml:lang="eng">As her older brother cut (it) open, there came out from its shaking flesh mosquitos, insects, and all kinds of worms.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0034_W001">
             <FORM kindOf="original">ka-ʔala-ʔalam-ai=kan</FORM>
@@ -4315,13 +4151,13 @@
             <FORM kindOf="original">sikəlapə</FORM>
             <PHON kindOf="original">ʂikəɾapə</PHON>
             <FORM kindOf="standard">sikerape</FORM>
-            <PHON kindOf="standard">ʂike[r|ɾ]ape</PHON>
+            <PHON kindOf="standard">sike[r|ɾ]ape</PHON>
             <TRANSL xml:lang="eng" kindOf="original">mosquito</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0034_W012_M01">
                 <FORM kindOf="original">sikəlapə</FORM>
                 <PHON kindOf="original">ʂikəɾapə</PHON>
                 <FORM kindOf="standard">sikerape</FORM>
-                <PHON kindOf="standard">ʂike[r|ɾ]ape</PHON>
+                <PHON kindOf="standard">sike[r|ɾ]ape</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">mosquito</TRANSL>
             </M>
         </W>
@@ -4343,13 +4179,13 @@
             <FORM kindOf="original">tanaveciŋal</FORM>
             <PHON kindOf="original">tanavetʂiŋaɾ</PHON>
             <FORM kindOf="standard">tanavecingar</FORM>
-            <PHON kindOf="standard">tanavetʂiŋa[r|ɾ]</PHON>
+            <PHON kindOf="standard">tanaveʦiŋa[r|ɾ]</PHON>
             <TRANSL xml:lang="eng" kindOf="original">insect.sp</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0034_W014_M01">
                 <FORM kindOf="original">tanaveciŋal</FORM>
                 <PHON kindOf="original">tanavetʂiŋaɾ</PHON>
                 <FORM kindOf="standard">tanavecingar</FORM>
-                <PHON kindOf="standard">tanavetʂiŋa[r|ɾ]</PHON>
+                <PHON kindOf="standard">tanaveʦiŋa[r|ɾ]</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">insect.sp</TRANSL>
             </M>
         </W>
@@ -4561,19 +4397,19 @@
         <FORM kindOf="original">ŋuaci=cu sua tavalaʔ-an=aku.</FORM>
         <PHON kindOf="original">ŋuatʂiʦu sua tavaɾaʔanaku</PHON>
         <FORM kindOf="standard">nguacicu sua tavara'anaku.</FORM>
-        <PHON kindOf="standard">ŋuatʂiʦu sua tava[r|ɾ]aʔanaku</PHON>
+        <PHON kindOf="standard">ŋuaʦiʦu sua tava[r|ɾ]aʔanaku</PHON>
         <TRANSL xml:lang="eng">That's all I know (about the story).</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0036_W001">
             <FORM kindOf="original">ŋuaci=cu</FORM>
             <PHON kindOf="original">ŋuatʂiʦu</PHON>
             <FORM kindOf="standard">nguaci=cu</FORM>
-            <PHON kindOf="standard">ŋuatʂiʦu</PHON>
+            <PHON kindOf="standard">ŋuaʦiʦu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">end=COS</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0036_W001_M01">
                 <FORM kindOf="original">ŋuaci</FORM>
                 <PHON kindOf="original">ŋuatʂi</PHON>
                 <FORM kindOf="standard">nguaci</FORM>
-                <PHON kindOf="standard">ŋuatʂi</PHON>
+                <PHON kindOf="standard">ŋuaʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">end</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_008_A_LEGENDARY_MALICIOUS_SPIRIT_S0036_W001_M02">

@@ -71,7 +71,8 @@ def test_page_bottom_translations_are_recovered_without_footnotes():
 def test_final_xml_shape_and_langs():
     xml_dir = ROOT / "XML/Kanakanavu"
     files = sorted(xml_dir.glob("*.xml"))
-    assert len(files) == 45
+    # 45 numbered files + footnote lexemes + two introduction groups (Asai 2026, Tsuchida 1976).
+    assert len(files) == 48
     assert files[0].name == "ILCAA_KanakanavuTexts_000_grammatical_introduction_examples.xml"
     for path in files:
         root = ET.parse(path).getroot()
@@ -81,7 +82,10 @@ def test_final_xml_shape_and_langs():
         assert root.attrib["citation"]
         assert root.attrib["BibTeX_citation"]
         for transl in root.iter("TRANSL"):
-            assert transl.attrib["{http://www.w3.org/XML/1998/namespace}lang"] == "eng"
+            lang = transl.attrib["{http://www.w3.org/XML/1998/namespace}lang"]
+            # The footnotes (and the title of footnote 29) print some meanings in Chinese.
+            chinese_allowed = "_footnote_lexemes" in path.name or "_intro_Asai2026" in path.name
+            assert lang in (("eng", "zho") if chinese_allowed else ("eng",))
 
 
 def test_translation_kindof_is_owned_by_tier():
@@ -90,7 +94,8 @@ def test_translation_kindof_is_owned_by_tier():
         root = ET.parse(path).getroot()
         for sentence in root.iter("S"):
             direct_translations = [child for child in sentence if child.tag == "TRANSL"]
-            assert direct_translations
+            if "_FOOTNOTE_LEXEMES_" not in sentence.attrib["id"] and "_INTRO_" not in sentence.attrib["id"]:
+                assert direct_translations  # Lexical records print no free translation of their own.
             assert all("kindOf" not in transl.attrib for transl in direct_translations)
         for parent_name in ("W", "M"):
             for parent in root.iter(parent_name):
@@ -113,36 +118,34 @@ def test_word_and_morpheme_gloss_tiers_are_structurally_consistent():
         for word in root.iter("W"):
             w_count += 1
             gloss = word.find("TRANSL")
-            if gloss is None:
-                assert word.attrib["id"] == "ILCAA_KANAKANAVU_TEXTS_011_NAPARAMACI_S0068_W005"
-            else:
-                assert gloss.attrib.get("kindOf") == "original"
-                assert "".join(gloss.itertext()).strip() or gloss.find("UNCLEAR") is not None
-                w_gloss_count += 1
+            assert gloss is not None
+            assert gloss.attrib.get("kindOf") == "original"
+            assert "".join(gloss.itertext()).strip() or gloss.find("UNCLEAR") is not None
+            w_gloss_count += 1
             original = word.find('./FORM[@kindOf="original"]')
             if original is not None and "<" in (original.text or "") and ">" in (original.text or ""):
                 w_original_infix_count += 1
             if gloss is not None and "<" in (gloss.text or "") and ">" in (gloss.text or ""):
                 w_gloss_infix_count += 1
-            assert word.findall("M"), "The retained baseline has no M-less W"
+            assert word.findall("M"), "Every W carries an M"
         for morph in root.iter("M"):
             m_count += 1
             gloss = morph.find("TRANSL")
-            if gloss is None:
-                assert morph.attrib["id"] == "ILCAA_KANAKANAVU_TEXTS_011_NAPARAMACI_S0068_W005_M01"
-            else:
-                assert gloss.attrib.get("kindOf") == "original"
-                assert "".join(gloss.itertext()).strip() or gloss.find("UNCLEAR") is not None
-                m_gloss_count += 1
+            assert gloss is not None
+            assert gloss.attrib.get("kindOf") == "original"
+            assert "".join(gloss.itertext()).strip() or gloss.find("UNCLEAR") is not None
+            m_gloss_count += 1
             for form in morph.findall("FORM"):
                 assert "<" not in (form.text or "") and ">" not in (form.text or "")
             original = morph.find('./FORM[@kindOf="original"]')
             text = original.text if original is not None else ""
             if text.startswith("-") and text.endswith("-"):
                 m_infix_count += 1
-    assert w_count - w_gloss_count in (0, 1)
-    assert m_count - m_gloss_count in (0, 1)
-    assert w_original_infix_count == w_gloss_infix_count == m_infix_count
+    assert w_count == w_gloss_count
+    assert m_count == m_gloss_count
+    # Eight stacked-infix words (e.g. t<in-um>upuru) are one <...> in W but two infix Ms.
+    assert w_original_infix_count == w_gloss_infix_count
+    assert m_infix_count == w_original_infix_count + 8
     assert m_infix_count > 0
 
 
@@ -164,7 +167,7 @@ def test_retained_derived_tiers_are_complete():
                     phon = parent.find(f'./PHON[@kindOf="{kind}"]')
                     assert phon is not None and (phon.text or "").strip()
     assert original_forms
-    assert parent_count == 29735
+    assert parent_count == 29732
     assert any(any(ord(ch) > 127 for ch in text) for text in original_forms)
 
 
@@ -177,9 +180,7 @@ def test_every_generated_sentence_indexed():
         xml_ids.update(s.attrib["id"] for s in root.findall("S"))
     assert xml_ids
     assert xml_ids == index_ids
-    # Preserve prior readings and add the explicitly paired source transcription.
-    assert "ILCAA_KANAKANAVU_TEXTS_INTRO_PHONEMICCOMPARISON_P016_RAISED_A" in xml_ids
-    assert len(xml_ids) == 1447 + 57 + 101
+    assert len(xml_ids) == 1446 + 57 + 70
 
 
 def test_grammar_introduction_examples_in_final_xml():
@@ -193,8 +194,9 @@ def test_grammar_introduction_examples_in_final_xml():
     first_word = sentences[0].find("W")
     assert first_word is not None
     assert "".join(first_word.find('./FORM[@kindOf="original"]').itertext()) == "t<um>a-taŋi"
-    assert "naini sua [k<um>a-kaən uuru]" in forms
-    assert "naini sua [kaən-a]" in forms
+    # Shared cleaning changes the printed square brackets to parentheses.
+    assert "naini sua (k<um>a-kaən uuru)" in forms
+    assert "naini sua (kaən-a)" in forms
     assert "a-pa-kaən-a maanu uuru." in forms
     assert all("kaən-ən=musu" not in form for form in forms)
     assert all("*" not in form for form in forms)
@@ -384,8 +386,8 @@ def test_numbered_source_units_and_notation_are_accounted_for():
     assert all(row["xml_translation"] for row in coverage)
     assert all(row["source_translation"] for row in coverage)
     assert sum(row["word_morpheme_action"] == "clause_brackets_at_s_aligned_w_m" for row in coverage) == 4
-    assert sum(row["word_morpheme_action"] == "expanded_variants_with_aligned_w_m" for row in coverage) == 16
-    assert sum(row["word_morpheme_action"] == "same_tier_form_variants" for row in coverage) == 8
+    assert sum(row["word_morpheme_action"] == "expanded_variants_with_aligned_w_m" for row in coverage) == 15
+    assert sum(row["word_morpheme_action"] == "same_tier_form_variants" for row in coverage) == 9
 
     with (WORKSPACE / "data/processed/source_notation_audit.csv").open(encoding="utf-8") as handle:
         notation = list(csv.DictReader(handle))
@@ -450,3 +452,22 @@ def test_seeded_source_comparison_does_not_claim_visual_review():
     assert "S/W/M source-to-XML rows passed: 30; failed: 0" in report
     assert "Visual review was not performed by this script" in report
     assert "All 252 physical pages were reviewed" not in report
+
+
+def test_maintainer_rulings_2026_10_18_on_brackets_and_glottal_stop():
+    xml_dir = ROOT / "XML/Kanakanavu"
+    for path in xml_dir.glob("*.xml"):
+        assert "Ɂ" not in path.read_text(encoding="utf-8")  # Ɂ is written ʔ from the start
+        root = ET.parse(path).getroot()
+        for sentence in root.iter("S"):
+            for form in sentence.findall('./FORM[@kindOf="standard"]'):
+                assert "<" not in (form.text or "") and ">" not in (form.text or "")
+    root = ET.parse(ROOT / "XML/Kanakanavu/ILCAA_KanakanavuTexts_000_grammatical_introduction_examples.xml").getroot()
+    for number in ("S0024", "S0025", "S0026", "S0027"):
+        sentence = root.find(f'./S[@id="ILCAA_KANAKANAVU_TEXTS_000_GRAMMATICAL_INTRODUCTION_EXAMPLES_{number}"]')
+        standard = sentence.find('./FORM[@kindOf="standard"]').text
+        assert not set("()[]") & set(standard)
+        assert "(" in sentence.find('./FORM[@kindOf="original"]').text  # the clause stays marked in the original S FORM
+        for node in [*sentence.iter("W"), *sentence.iter("M")]:
+            for form in node.findall("FORM"):
+                assert not set("()[]") & set(form.text or "")

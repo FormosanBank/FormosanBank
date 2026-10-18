@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
-<TEXT id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES" xml:lang="xnb" dialect="Kanakanavu" citation="Asai, E., Mei, K., Li, P. J.-k., &amp; Tsuchida, S. (2026). Kanakanavu texts (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies." BibTeX_citation="@book{AsaiMeiLiTsuchida2026KanakanavuTexts,author={Erin Asai and Kuang Mei and Paul Jen-kuei Li and Shigeru Tsuchida},editor={Paul Jen-kuei Li},title={Kanakanavu Texts},year={2026},publisher={Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},isbn={978-4-86337-602-1},note={With the assistance of Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0}}" copyright="Copyright © 2026 Paul Jen-kuei Li, Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0." source="Kanakanavu Texts (2026), Part 4, Text 20, Shigeru Tsuchida, printed pages 234-239, source PDF B602_KanakanavuText.pdf">
+<TEXT id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES" xml:lang="xnb" dialect="Kanakanavu" citation="Asai, E., Mei, K., Li, P. J.-k., &amp; Tsuchida, S. (2026). Kanakanavu texts (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies." BibTeX_citation="@book{AsaiMeiLiTsuchida2026KanakanavuTexts,author={Erin Asai and Kuang Mei and Paul Jen-kuei Li and Shigeru Tsuchida},editor={Paul Jen-kuei Li},title={Kanakanavu Texts},year={2026},publisher={Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},isbn={978-4-86337-602-1},note={With the assistance of Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0}}" copyright="CC BY 4.0" source="Kanakanavu Texts (2026), Part 4, Text 20, Shigeru Tsuchida, printed pages 234-239, source PDF B602_KanakanavuText.pdf">
     <S id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0001">
         <FORM kindOf="original">tee=ku pu-a-iisua sua t&lt;in&gt;uturu=cu=maku chiausou=maku.</FORM>
         <PHON kindOf="original">teeku puaiisua sua tinuturuʦumaku ʦhiausoumaku</PHON>
-        <FORM kindOf="standard">teeku puaiisua sua t&lt;in&gt;uturucumaku chiausoumaku.</FORM>
+        <FORM kindOf="standard">teeku puaiisua sua tinuturucumaku chiausoumaku.</FORM>
         <PHON kindOf="standard">teeku puaiisua sua tinutu[r|ɾ]uʦumaku ʦhiausoumaku</PHON>
         <TRANSL xml:lang="eng">I'll tell my professor a story.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0001_W001">
@@ -207,7 +207,7 @@
         <FORM kindOf="original">sua taa-ʔaratiŋ-a kisa-ən ia, ʔakia taavalaʔə kaa-taərəpə ʔinia si cu-cculu ni-ala-tumulu tatia.</FORM>
         <PHON kindOf="original">sua taaʔaratiŋa kisaən ia ʔakia taavaɾaʔə kaataərəpə ʔinia ʂi ʦuʦʦuɾu niaɾatumuɾu tatia</PHON>
         <FORM kindOf="standard">sua taa'aratinga kisaen ia, 'akia taavara'e kaataerepe 'inia si cuccuru niaratumuru tatia.</FORM>
-        <PHON kindOf="standard">sua taaʔa[r|ɾ]atiŋa kisaen ia ʔakia taava[r|ɾ]aʔe kaatae[r|ɾ]epe ʔinia ʂi ʦuʦʦu[r|ɾ]u nia[r|ɾ]atumu[r|ɾ]u tatia</PHON>
+        <PHON kindOf="standard">sua taaʔa[r|ɾ]atiŋa kisaen ia ʔakia taava[r|ɾ]aʔe kaatae[r|ɾ]epe ʔinia si ʦuʦʦu[r|ɾ]u nia[r|ɾ]atumu[r|ɾ]u tatia</PHON>
         <TRANSL xml:lang="eng">It is said no one could dive into the place "narrow stream" because there is really a lot (of water).</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0003_W001">
             <FORM kindOf="original">sua</FORM>
@@ -353,13 +353,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0003_W009_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -809,7 +809,7 @@
         <FORM kindOf="original">ta-skar-a ʔinia ia, makai denki ma-ciasə, makai deŋki m-uru-sinaŋ.</FORM>
         <PHON kindOf="original">taskara ʔinia ia makai *enki matʂiasə makai *eŋki muruʂinaŋ</PHON>
         <FORM kindOf="standard">taskara 'inia ia, makai denki maciase, makai dengki murusinang.</FORM>
-        <PHON kindOf="standard">taska[r|ɾ]a ʔinia ia makai *enki matʂiase makai *eŋki mu[r|ɾ]uʂinaŋ</PHON>
+        <PHON kindOf="standard">taska[r|ɾ]a ʔinia ia makai *enki maʦiase makai *eŋki mu[r|ɾ]usinaŋ</PHON>
         <TRANSL xml:lang="eng">In the depths of the water, it is so bright and shiny, as if there is electricity.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0007_W001">
             <FORM kindOf="original">ta-skar-a</FORM>
@@ -899,7 +899,7 @@
             <FORM kindOf="original">ma-ciasə</FORM>
             <PHON kindOf="original">matʂiasə</PHON>
             <FORM kindOf="standard">ma-ciase</FORM>
-            <PHON kindOf="standard">matʂiase</PHON>
+            <PHON kindOf="standard">maʦiase</PHON>
             <TRANSL xml:lang="eng" kindOf="original">STA-bright</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0007_W006_M01">
                 <FORM kindOf="original">ma</FORM>
@@ -912,7 +912,7 @@
                 <FORM kindOf="original">ciasə</FORM>
                 <PHON kindOf="original">tʂiasə</PHON>
                 <FORM kindOf="standard">ciase</FORM>
-                <PHON kindOf="standard">tʂiase</PHON>
+                <PHON kindOf="standard">ʦiase</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">bright</TRANSL>
             </M>
         </W>
@@ -948,7 +948,7 @@
             <FORM kindOf="original">m-uru-sinaŋ</FORM>
             <PHON kindOf="original">muruʂinaŋ</PHON>
             <FORM kindOf="standard">m-uru-sinang</FORM>
-            <PHON kindOf="standard">mu[r|ɾ]uʂinaŋ</PHON>
+            <PHON kindOf="standard">mu[r|ɾ]usinaŋ</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-URU-shine</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0007_W009_M01">
                 <FORM kindOf="original">m</FORM>
@@ -968,7 +968,7 @@
                 <FORM kindOf="original">sinaŋ</FORM>
                 <PHON kindOf="original">ʂinaŋ</PHON>
                 <FORM kindOf="standard">sinang</FORM>
-                <PHON kindOf="standard">ʂinaŋ</PHON>
+                <PHON kindOf="standard">sinaŋ</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">shine</TRANSL>
             </M>
         </W>
@@ -1103,7 +1103,7 @@
         <FORM kindOf="original">nu tuncu-nni ia, ʔaravaŋ iisua ia, maka-sia lun-cala na ni-ru-camu-a sua ʔaapana.</FORM>
         <PHON kindOf="original">nu tunʦunni ia ʔaravaŋ iisua ia makaʂia ɾunʦaɾa na niruʦamua sua ʔaapana</PHON>
         <FORM kindOf="standard">nu tuncunni ia, 'aravang iisua ia, makasia runcara na nirucamua sua 'aapana.</FORM>
-        <PHON kindOf="standard">nu tunʦunni ia ʔa[r|ɾ]avaŋ iisua ia makaʂia [r|ɾ]unʦa[r|ɾ]a na ni[r|ɾ]uʦamua sua ʔaapana</PHON>
+        <PHON kindOf="standard">nu tunʦunni ia ʔa[r|ɾ]avaŋ iisua ia makasia [r|ɾ]unʦa[r|ɾ]a na ni[r|ɾ]uʦamua sua ʔaapana</PHON>
         <TRANSL xml:lang="eng">If fish poison is put into (the narrow stream), there will be a big pile of fish, named 'aapana in Kanakanavu.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0009_W001">
             <FORM kindOf="original">nu</FORM>
@@ -1200,7 +1200,7 @@
             <FORM kindOf="original">maka-sia</FORM>
             <PHON kindOf="original">makaʂia</PHON>
             <FORM kindOf="standard">maka-sia</FORM>
-            <PHON kindOf="standard">makaʂia</PHON>
+            <PHON kindOf="standard">makasia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">like-this</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0009_W007_M01">
                 <FORM kindOf="original">maka</FORM>
@@ -1213,7 +1213,7 @@
                 <FORM kindOf="original">sia</FORM>
                 <PHON kindOf="original">ʂia</PHON>
                 <FORM kindOf="standard">sia</FORM>
-                <PHON kindOf="standard">ʂia</PHON>
+                <PHON kindOf="standard">sia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
@@ -1978,7 +1978,7 @@
         <FORM kindOf="original">maka-sua sua kanakanavu ni-mu-sikarə ʔinia.</FORM>
         <PHON kindOf="original">makasua sua kanakanavu nimuʂikarə ʔinia</PHON>
         <FORM kindOf="standard">makasua sua kanakanavu nimusikare 'inia.</FORM>
-        <PHON kindOf="standard">makasua sua kanakanavu nimuʂika[r|ɾ]e ʔinia</PHON>
+        <PHON kindOf="standard">makasua sua kanakanavu nimusika[r|ɾ]e ʔinia</PHON>
         <TRANSL xml:lang="eng">Kanakanavu people got inside there in that way.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0014_W001">
             <FORM kindOf="original">maka-sua</FORM>
@@ -2033,7 +2033,7 @@
             <FORM kindOf="original">ni-mu-sikarə</FORM>
             <PHON kindOf="original">nimuʂikarə</PHON>
             <FORM kindOf="standard">ni-mu-sikare</FORM>
-            <PHON kindOf="standard">nimuʂika[r|ɾ]e</PHON>
+            <PHON kindOf="standard">nimusika[r|ɾ]e</PHON>
             <TRANSL xml:lang="eng" kindOf="original">PFV-AV.go-inside</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0014_W004_M01">
                 <FORM kindOf="original">ni</FORM>
@@ -2053,7 +2053,7 @@
                 <FORM kindOf="original">sikarə</FORM>
                 <PHON kindOf="original">ʂikarə</PHON>
                 <FORM kindOf="standard">sikare</FORM>
-                <PHON kindOf="standard">ʂika[r|ɾ]e</PHON>
+                <PHON kindOf="standard">sika[r|ɾ]e</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">inside</TRANSL>
             </M>
         </W>
@@ -2076,7 +2076,7 @@
         <FORM kindOf="original">sua makai iikia maŋ-təʔai ŋisaa mu-sikar-a-ini ʔinia ia, kaʔan taavalaʔə pu-aiʔi ta-skaar-a.</FORM>
         <PHON kindOf="original">sua makai iikia maŋtəʔai ŋisaa muʂikaraini ʔinia ia kaʔan taavaɾaʔə puaiʔi taskaara</PHON>
         <FORM kindOf="standard">sua makai iikia mangte'ai ngisaa musikaraini 'inia ia, ka'an taavara'e puai'i taskaara.</FORM>
-        <PHON kindOf="standard">sua makai iikia maŋteʔai ŋisaa muʂika[r|ɾ]aini ʔinia ia kaʔan taava[r|ɾ]aʔe puaiʔi taskaa[r|ɾ]a</PHON>
+        <PHON kindOf="standard">sua makai iikia maŋteʔai ŋisaa musika[r|ɾ]aini ʔinia ia kaʔan taava[r|ɾ]aʔe puaiʔi taskaa[r|ɾ]a</PHON>
         <TRANSL xml:lang="eng">If anyone with a low lung capacity like me (dives) into there, he cannot return.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0015_W001">
             <FORM kindOf="original">sua</FORM>
@@ -2159,7 +2159,7 @@
             <FORM kindOf="original">mu-sikar-a-ini</FORM>
             <PHON kindOf="original">muʂikaraini</PHON>
             <FORM kindOf="standard">mu-sikar-a-ini</FORM>
-            <PHON kindOf="standard">muʂika[r|ɾ]aini</PHON>
+            <PHON kindOf="standard">musika[r|ɾ]aini</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV.go-inside-LOC-3.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0015_W006_M01">
                 <FORM kindOf="original">mu</FORM>
@@ -2172,7 +2172,7 @@
                 <FORM kindOf="original">sikar</FORM>
                 <PHON kindOf="original">ʂikar</PHON>
                 <FORM kindOf="standard">sikar</FORM>
-                <PHON kindOf="standard">ʂika[r|ɾ]</PHON>
+                <PHON kindOf="standard">sika[r|ɾ]</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">inside</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0015_W006_M03">
@@ -2845,8 +2845,8 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0020">
         <FORM kindOf="original">ʔuuna=kan vaivi ʔinia takis-pintungsien c&lt;in-m&gt;əʔəra ʔinia vənai.</FORM>
         <PHON kindOf="original">ʔuunakan vaivi ʔinia takispintun*ʂien tʂinməʔəra ʔinia vənai</PHON>
-        <FORM kindOf="standard">'uunakan vaivi 'inia takispintungsien c&lt;inm&gt;e'era 'inia venai.</FORM>
-        <PHON kindOf="standard">ʔuunakan vaivi ʔinia takispintuŋʂien tʂinmeʔe[r|ɾ]a ʔinia venai</PHON>
+        <FORM kindOf="standard">'uunakan vaivi 'inia takispintungsien cinme'era 'inia venai.</FORM>
+        <PHON kindOf="standard">ʔuunakan vaivi ʔinia takispintuŋsien ʦinmeʔe[r|ɾ]a ʔinia venai</PHON>
         <TRANSL xml:lang="eng">The Paiwan saw a snake there.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0020_W001">
             <FORM kindOf="original">ʔuuna=kan</FORM>
@@ -2901,7 +2901,7 @@
             <FORM kindOf="original">takis-pintungsien</FORM>
             <PHON kindOf="original">takispintun*ʂien</PHON>
             <FORM kindOf="standard">takis-pintungsien</FORM>
-            <PHON kindOf="standard">takispintuŋʂien</PHON>
+            <PHON kindOf="standard">takispintuŋsien</PHON>
             <TRANSL xml:lang="eng" kindOf="original">TAKIS-Pingtung.County</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0020_W004_M01">
                 <FORM kindOf="original">takis</FORM>
@@ -2914,7 +2914,7 @@
                 <FORM kindOf="original">pintungsien</FORM>
                 <PHON kindOf="original">pintun*ʂien</PHON>
                 <FORM kindOf="standard">pintungsien</FORM>
-                <PHON kindOf="standard">pintuŋʂien</PHON>
+                <PHON kindOf="standard">pintuŋsien</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">Pingtung.County</TRANSL>
             </M>
         </W>
@@ -2922,7 +2922,7 @@
             <FORM kindOf="original">c&lt;in-m&gt;əʔəra</FORM>
             <PHON kindOf="original">tʂinməʔəra</PHON>
             <FORM kindOf="standard">c&lt;in-m&gt;e'era</FORM>
-            <PHON kindOf="standard">tʂinmeʔe[r|ɾ]a</PHON>
+            <PHON kindOf="standard">ʦinmeʔe[r|ɾ]a</PHON>
             <TRANSL xml:lang="eng" kindOf="original">see&lt;PFV-AV&gt;</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0020_W005_M01">
                 <FORM kindOf="original">c-əʔəra</FORM>
@@ -2932,11 +2932,18 @@
                 <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0020_W005_M02">
-                <FORM kindOf="original">-in-m-</FORM>
-                <PHON kindOf="original">inm</PHON>
-                <FORM kindOf="standard">-in-m-</FORM>
-                <PHON kindOf="standard">inm</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV-AV&gt;</TRANSL>
+                <FORM kindOf="original">-in-</FORM>
+                <PHON kindOf="original">in</PHON>
+                <FORM kindOf="standard">-in-</FORM>
+                <PHON kindOf="standard">in</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
+            </M>
+            <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0020_W005_M03">
+                <FORM kindOf="original">-m-</FORM>
+                <PHON kindOf="original">m</PHON>
+                <FORM kindOf="standard">-m-</FORM>
+                <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AV&gt;</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0020_W006">
@@ -2971,8 +2978,8 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0021">
         <FORM kindOf="original">kan manaasə t&lt;in&gt;mana=cu=kamu kaari iisi.</FORM>
         <PHON kindOf="original">kan manaasə tinmanaʦukamu kaari iiʂi</PHON>
-        <FORM kindOf="standard">kan manaase t&lt;in&gt;manacukamu kaari iisi.</FORM>
-        <PHON kindOf="standard">kan manaase tinmanaʦukamu kaa[r|ɾ]i iiʂi</PHON>
+        <FORM kindOf="standard">kan manaase tinmanacukamu kaari iisi.</FORM>
+        <PHON kindOf="standard">kan manaase tinmanaʦukamu kaa[r|ɾ]i iisi</PHON>
         <TRANSL xml:lang="eng">You certainly have heard of the story.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0021_W001">
             <FORM kindOf="original">kan</FORM>
@@ -3055,13 +3062,13 @@
             <FORM kindOf="original">iisi</FORM>
             <PHON kindOf="original">iiʂi</PHON>
             <FORM kindOf="standard">iisi</FORM>
-            <PHON kindOf="standard">iiʂi</PHON>
+            <PHON kindOf="standard">iisi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0021_W005_M01">
                 <FORM kindOf="original">iisi</FORM>
                 <PHON kindOf="original">iiʂi</PHON>
                 <FORM kindOf="standard">iisi</FORM>
-                <PHON kindOf="standard">iiʂi</PHON>
+                <PHON kindOf="standard">iisi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
@@ -3069,7 +3076,7 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0022">
         <FORM kindOf="original">c&lt;əm&gt;əʔəra ʔinia vaivi vənai.</FORM>
         <PHON kindOf="original">ʦəməʔəra ʔinia vaivi vənai</PHON>
-        <FORM kindOf="standard">c&lt;em&gt;e'era 'inia vaivi venai.</FORM>
+        <FORM kindOf="standard">ceme'era 'inia vaivi venai.</FORM>
         <PHON kindOf="standard">ʦemeʔe[r|ɾ]a ʔinia vaivi venai</PHON>
         <TRANSL xml:lang="eng">The Paiwan saw a snake there.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0022_W001">
@@ -3329,19 +3336,19 @@
         <FORM kindOf="original">ʔaisi=cu mu-a-sikarə tantanau vənai. a-lala-ʔunsu=kani sua vənai.</FORM>
         <PHON kindOf="original">ʔaiʂiʦu muaʂikarə tantanau vənai aɾaɾaʔunsukani sua vənai</PHON>
         <FORM kindOf="standard">'aisicu muasikare tantanau venai. arara'unsukani sua venai.</FORM>
-        <PHON kindOf="standard">ʔaiʂiʦu muaʂika[r|ɾ]e tantanau venai a[r|ɾ]a[r|ɾ]aʔunsukani sua venai</PHON>
+        <PHON kindOf="standard">ʔaisiʦu muasika[r|ɾ]e tantanau venai a[r|ɾ]a[r|ɾ]aʔunsukani sua venai</PHON>
         <TRANSL xml:lang="eng">The snake was (climbing) up the mountain and disappeared.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0024_W001">
             <FORM kindOf="original">ʔaisi=cu</FORM>
             <PHON kindOf="original">ʔaiʂiʦu</PHON>
             <FORM kindOf="standard">'aisi=cu</FORM>
-            <PHON kindOf="standard">ʔaiʂiʦu</PHON>
+            <PHON kindOf="standard">ʔaisiʦu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">exist=COS</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0024_W001_M01">
                 <FORM kindOf="original">ʔaisi</FORM>
                 <PHON kindOf="original">ʔaiʂi</PHON>
                 <FORM kindOf="standard">'aisi</FORM>
-                <PHON kindOf="standard">ʔaiʂi</PHON>
+                <PHON kindOf="standard">ʔaisi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">exist</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0024_W001_M02">
@@ -3356,7 +3363,7 @@
             <FORM kindOf="original">mu-a-sikarə</FORM>
             <PHON kindOf="original">muaʂikarə</PHON>
             <FORM kindOf="standard">mu-a-sikare</FORM>
-            <PHON kindOf="standard">muaʂika[r|ɾ]e</PHON>
+            <PHON kindOf="standard">muasika[r|ɾ]e</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-IRR-inside</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0024_W002_M01">
                 <FORM kindOf="original">mu</FORM>
@@ -3376,7 +3383,7 @@
                 <FORM kindOf="original">sikarə</FORM>
                 <PHON kindOf="original">ʂikarə</PHON>
                 <FORM kindOf="standard">sikare</FORM>
-                <PHON kindOf="standard">ʂika[r|ɾ]e</PHON>
+                <PHON kindOf="standard">sika[r|ɾ]e</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">inside</TRANSL>
             </M>
         </W>
@@ -3580,7 +3587,7 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0026">
         <FORM kindOf="original">t&lt;um&gt;u-tuuturu=kani caau "c&lt;əm&gt;əʔəra=ku vənai a-ma-laucu, t&lt;um&gt;a-tamparu tatia ma-caasə."</FORM>
         <PHON kindOf="original">tumutuuturukani ʦaau ʦəməʔəraku vənai amaɾauʦu tumatamparu tatia maʦaasə</PHON>
-        <FORM kindOf="standard">t&lt;um&gt;utuuturukani caau "c&lt;em&gt;e'eraku venai amaraucu, t&lt;um&gt;atamparu tatia macaase."</FORM>
+        <FORM kindOf="standard">tumutuuturukani caau "ceme'eraku venai amaraucu, tumatamparu tatia macaase."</FORM>
         <PHON kindOf="standard">tumutuutu[r|ɾ]ukani ʦaau ʦemeʔe[r|ɾ]aku venai ama[r|ɾ]auʦu tumatampa[r|ɾ]u tatia maʦaase</PHON>
         <TRANSL xml:lang="eng">He told other people, "I saw a terrifyingly big and long snake downstream."</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0026_W001">
@@ -3769,20 +3776,20 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0027">
         <FORM kindOf="original">si-pusa-n sua vaivi c&lt;in-m&gt;əʔəra ia, ni-macai, ni-ara-aka.</FORM>
         <PHON kindOf="original">ʂipusan sua vaivi tʂinməʔəra ia nimaʦai niaraaka</PHON>
-        <FORM kindOf="standard">sipusan sua vaivi c&lt;inm&gt;e'era ia, nimacai, niaraaka.</FORM>
-        <PHON kindOf="standard">ʂipusan sua vaivi tʂinmeʔe[r|ɾ]a ia nimaʦai nia[r|ɾ]aaka</PHON>
+        <FORM kindOf="standard">sipusan sua vaivi cinme'era ia, nimacai, niaraaka.</FORM>
+        <PHON kindOf="standard">sipusan sua vaivi ʦinmeʔe[r|ɾ]a ia nimaʦai nia[r|ɾ]aaka</PHON>
         <TRANSL xml:lang="eng">Two days later, the Paiwan who saw (the snake) died.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0027_W001">
             <FORM kindOf="original">si-pusa-n</FORM>
             <PHON kindOf="original">ʂipusan</PHON>
             <FORM kindOf="standard">si-pusa-n</FORM>
-            <PHON kindOf="standard">ʂipusan</PHON>
+            <PHON kindOf="standard">sipusan</PHON>
             <TRANSL xml:lang="eng" kindOf="original">SI-two-ORD</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0027_W001_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">SI</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0027_W001_M02">
@@ -3832,7 +3839,7 @@
             <FORM kindOf="original">c&lt;in-m&gt;əʔəra</FORM>
             <PHON kindOf="original">tʂinməʔəra</PHON>
             <FORM kindOf="standard">c&lt;in-m&gt;e'era</FORM>
-            <PHON kindOf="standard">tʂinmeʔe[r|ɾ]a</PHON>
+            <PHON kindOf="standard">ʦinmeʔe[r|ɾ]a</PHON>
             <TRANSL xml:lang="eng" kindOf="original">see&lt;PFV-AV&gt;</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0027_W004_M01">
                 <FORM kindOf="original">c-əʔəra</FORM>
@@ -3842,11 +3849,18 @@
                 <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0027_W004_M02">
-                <FORM kindOf="original">-in-m-</FORM>
-                <PHON kindOf="original">inm</PHON>
-                <FORM kindOf="standard">-in-m-</FORM>
-                <PHON kindOf="standard">inm</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV-AV&gt;</TRANSL>
+                <FORM kindOf="original">-in-</FORM>
+                <PHON kindOf="original">in</PHON>
+                <FORM kindOf="standard">-in-</FORM>
+                <PHON kindOf="standard">in</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
+            </M>
+            <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0027_W004_M03">
+                <FORM kindOf="original">-m-</FORM>
+                <PHON kindOf="original">m</PHON>
+                <FORM kindOf="standard">-m-</FORM>
+                <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AV&gt;</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0027_W005">
@@ -4029,7 +4043,7 @@
         <FORM kindOf="original">ma-naasə ʔaisi mu-a-ʔuna na ta-ka-taərəp-a kanakanavu pa-ʔaratiŋ-a.</FORM>
         <PHON kindOf="original">manaasə ʔaiʂi muaʔuna na takataərəpa kanakanavu paʔaratiŋa</PHON>
         <FORM kindOf="standard">manaase 'aisi mua'una na takataerepa kanakanavu pa'aratinga.</FORM>
-        <PHON kindOf="standard">manaase ʔaiʂi muaʔuna na takatae[r|ɾ]epa kanakanavu paʔa[r|ɾ]atiŋa</PHON>
+        <PHON kindOf="standard">manaase ʔaisi muaʔuna na takatae[r|ɾ]epa kanakanavu paʔa[r|ɾ]atiŋa</PHON>
         <TRANSL xml:lang="eng">(The snake) lived at the narrow stream (with deep water) where the Kanakanavu dived.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0029_W001">
             <FORM kindOf="original">ma-naasə</FORM>
@@ -4056,13 +4070,13 @@
             <FORM kindOf="original">ʔaisi</FORM>
             <PHON kindOf="original">ʔaiʂi</PHON>
             <FORM kindOf="standard">'aisi</FORM>
-            <PHON kindOf="standard">ʔaiʂi</PHON>
+            <PHON kindOf="standard">ʔaisi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">exist</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0029_W002_M01">
                 <FORM kindOf="original">ʔaisi</FORM>
                 <PHON kindOf="original">ʔaiʂi</PHON>
                 <FORM kindOf="standard">'aisi</FORM>
-                <PHON kindOf="standard">ʔaiʂi</PHON>
+                <PHON kindOf="standard">ʔaisi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">exist</TRANSL>
             </M>
         </W>
@@ -4673,7 +4687,7 @@
         <FORM kindOf="original">makaa-sua sua si-a-tuuturu kamua masi-taavalaʔə=cu=kamu.</FORM>
         <PHON kindOf="original">makaasua sua ʂiatuuturu kamua maʂitaavaɾaʔəʦukamu</PHON>
         <FORM kindOf="standard">makaasua sua siatuuturu kamua masitaavara'ecukamu.</FORM>
-        <PHON kindOf="standard">makaasua sua ʂiatuutu[r|ɾ]u kamua maʂitaava[r|ɾ]aʔeʦukamu</PHON>
+        <PHON kindOf="standard">makaasua sua siatuutu[r|ɾ]u kamua masitaava[r|ɾ]aʔeʦukamu</PHON>
         <TRANSL xml:lang="eng">I'm telling you for you to know this.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0034_W001">
             <FORM kindOf="original">makaa-sua</FORM>
@@ -4714,13 +4728,13 @@
             <FORM kindOf="original">si-a-tuuturu</FORM>
             <PHON kindOf="original">ʂiatuuturu</PHON>
             <FORM kindOf="standard">si-a-tuuturu</FORM>
-            <PHON kindOf="standard">ʂiatuutu[r|ɾ]u</PHON>
+            <PHON kindOf="standard">siatuutu[r|ɾ]u</PHON>
             <TRANSL xml:lang="eng" kindOf="original">CV-IRR-tell</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0034_W003_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">CV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0034_W003_M02">
@@ -4756,13 +4770,13 @@
             <FORM kindOf="original">masi-taavalaʔə=cu=kamu</FORM>
             <PHON kindOf="original">maʂitaavaɾaʔəʦukamu</PHON>
             <FORM kindOf="standard">masi-taavara'e=cu=kamu</FORM>
-            <PHON kindOf="standard">maʂitaava[r|ɾ]aʔeʦukamu</PHON>
+            <PHON kindOf="standard">masitaava[r|ɾ]aʔeʦukamu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV.speak-know=COS=2PL.NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0034_W005_M01">
                 <FORM kindOf="original">masi</FORM>
                 <PHON kindOf="original">maʂi</PHON>
                 <FORM kindOf="standard">masi</FORM>
-                <PHON kindOf="standard">maʂi</PHON>
+                <PHON kindOf="standard">masi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV.speak</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0034_W005_M02">
@@ -4918,7 +4932,7 @@
         <FORM kindOf="original">naatia uulu-n pakisia miana.</FORM>
         <PHON kindOf="original">naatia uuɾun pakiʂia miana</PHON>
         <FORM kindOf="standard">naatia uurun pakisia miana.</FORM>
-        <PHON kindOf="standard">naatia uu[r|ɾ]un pakiʂia miana</PHON>
+        <PHON kindOf="standard">naatia uu[r|ɾ]un pakisia miana</PHON>
         <TRANSL xml:lang="eng">The Chinese people were to block the narrow stream in the past.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0036_W001">
             <FORM kindOf="original">naatia</FORM>
@@ -4959,13 +4973,13 @@
             <FORM kindOf="original">pakisia</FORM>
             <PHON kindOf="original">pakiʂia</PHON>
             <FORM kindOf="standard">pakisia</FORM>
-            <PHON kindOf="standard">pakiʂia</PHON>
+            <PHON kindOf="standard">pakisia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">Chinese</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0036_W003_M01">
                 <FORM kindOf="original">pakisia</FORM>
                 <PHON kindOf="original">pakiʂia</PHON>
                 <FORM kindOf="standard">pakisia</FORM>
-                <PHON kindOf="standard">pakiʂia</PHON>
+                <PHON kindOf="standard">pakisia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">Chinese</TRANSL>
             </M>
         </W>
@@ -4988,7 +5002,7 @@
         <FORM kindOf="original">kaʔan tavaalaʔ-ən=kiai um-uulu si ma-ʔintasə canumu.</FORM>
         <PHON kindOf="original">kaʔan tavaaɾaʔənkiai umuuɾu ʂi maʔintasə ʦanumu</PHON>
         <FORM kindOf="standard">ka'an tavaara'enkiai umuuru si ma'intase canumu.</FORM>
-        <PHON kindOf="standard">kaʔan tavaa[r|ɾ]aʔenkiai umuu[r|ɾ]u ʂi maʔintase ʦanumu</PHON>
+        <PHON kindOf="standard">kaʔan tavaa[r|ɾ]aʔenkiai umuu[r|ɾ]u si maʔintase ʦanumu</PHON>
         <TRANSL xml:lang="eng">They were not able to block it because the water was very strong.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0037_W001">
             <FORM kindOf="original">kaʔan</FORM>
@@ -5057,13 +5071,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0037_W004_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -5107,19 +5121,19 @@
         <FORM kindOf="original">ŋuaci.</FORM>
         <PHON kindOf="original">ŋuatʂi</PHON>
         <FORM kindOf="standard">nguaci.</FORM>
-        <PHON kindOf="standard">ŋuatʂi</PHON>
+        <PHON kindOf="standard">ŋuaʦi</PHON>
         <TRANSL xml:lang="eng">That's all.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0038_W001">
             <FORM kindOf="original">ŋuaci</FORM>
             <PHON kindOf="original">ŋuatʂi</PHON>
             <FORM kindOf="standard">nguaci</FORM>
-            <PHON kindOf="standard">ŋuatʂi</PHON>
+            <PHON kindOf="standard">ŋuaʦi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">end</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0038_W001_M01">
                 <FORM kindOf="original">ŋuaci</FORM>
                 <PHON kindOf="original">ŋuatʂi</PHON>
                 <FORM kindOf="standard">nguaci</FORM>
-                <PHON kindOf="standard">ŋuatʂi</PHON>
+                <PHON kindOf="standard">ŋuaʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">end</TRANSL>
             </M>
         </W>
@@ -5128,13 +5142,13 @@
         <FORM kindOf="original">ara-siŋsiŋ-a, susumanpai.</FORM>
         <PHON kindOf="original">araʂiŋʂiŋa susumanpai</PHON>
         <FORM kindOf="standard">arasingsinga, susumanpai.</FORM>
-        <PHON kindOf="standard">a[r|ɾ]aʂiŋʂiŋa susumanpai</PHON>
+        <PHON kindOf="standard">a[r|ɾ]asiŋsiŋa susumanpai</PHON>
         <TRANSL xml:lang="eng">Stay healthy! Thank you.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0039_W001">
             <FORM kindOf="original">ara-siŋsiŋ-a</FORM>
             <PHON kindOf="original">araʂiŋʂiŋa</PHON>
             <FORM kindOf="standard">ara-singsing-a</FORM>
-            <PHON kindOf="standard">a[r|ɾ]aʂiŋʂiŋa</PHON>
+            <PHON kindOf="standard">a[r|ɾ]asiŋsiŋa</PHON>
             <TRANSL xml:lang="eng" kindOf="original">get-healthy-AV.IMP</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0039_W001_M01">
                 <FORM kindOf="original">ara</FORM>
@@ -5147,7 +5161,7 @@
                 <FORM kindOf="original">siŋsiŋ</FORM>
                 <PHON kindOf="original">ʂiŋʂiŋ</PHON>
                 <FORM kindOf="standard">singsing</FORM>
-                <PHON kindOf="standard">ʂiŋʂiŋ</PHON>
+                <PHON kindOf="standard">siŋsiŋ</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">healthy</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_042_A_DANGEROUS_NARROW_STREAM_WITH_WHITE_STONES_S0039_W001_M03">

@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
-<TEXT id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER" xml:lang="xnb" dialect="Kanakanavu" citation="Asai, E., Mei, K., Li, P. J.-k., &amp; Tsuchida, S. (2026). Kanakanavu texts (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies." BibTeX_citation="@book{AsaiMeiLiTsuchida2026KanakanavuTexts,author={Erin Asai and Kuang Mei and Paul Jen-kuei Li and Shigeru Tsuchida},editor={Paul Jen-kuei Li},title={Kanakanavu Texts},year={2026},publisher={Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},isbn={978-4-86337-602-1},note={With the assistance of Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0}}" copyright="Copyright © 2026 Paul Jen-kuei Li, Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0." source="Kanakanavu Texts (2026), Part 3, Text 6, Paul Jen-kuei Li, printed pages 111-114, source PDF B602_KanakanavuText.pdf">
+<TEXT id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER" xml:lang="xnb" dialect="Kanakanavu" citation="Asai, E., Mei, K., Li, P. J.-k., &amp; Tsuchida, S. (2026). Kanakanavu texts (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies." BibTeX_citation="@book{AsaiMeiLiTsuchida2026KanakanavuTexts,author={Erin Asai and Kuang Mei and Paul Jen-kuei Li and Shigeru Tsuchida},editor={Paul Jen-kuei Li},title={Kanakanavu Texts},year={2026},publisher={Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},isbn={978-4-86337-602-1},note={With the assistance of Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0}}" copyright="CC BY 4.0" source="Kanakanavu Texts (2026), Part 3, Text 6, Paul Jen-kuei Li, printed pages 111-114, source PDF B602_KanakanavuText.pdf">
     <S id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0001">
         <FORM kindOf="original">sua miana cuumaku ia, u-cani saruanai u-rucini nannakə.</FORM>
         <PHON kindOf="original">sua miana ʦuumaku ia uʦani saruanai urutʂini nannakə</PHON>
         <FORM kindOf="standard">sua miana cuumaku ia, ucani saruanai urucini nannake.</FORM>
-        <PHON kindOf="standard">sua miana ʦuumaku ia uʦani sa[r|ɾ]uanai u[r|ɾ]utʂini nannake</PHON>
+        <PHON kindOf="standard">sua miana ʦuumaku ia uʦani sa[r|ɾ]uanai u[r|ɾ]uʦini nannake</PHON>
         <TRANSL xml:lang="eng">In the past, my father's siblings included one brother and two sisters.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0001_W001">
             <FORM kindOf="original">sua</FORM>
@@ -101,7 +101,7 @@
             <FORM kindOf="original">u-rucini</FORM>
             <PHON kindOf="original">urutʂini</PHON>
             <FORM kindOf="standard">u-rucini</FORM>
-            <PHON kindOf="standard">u[r|ɾ]utʂini</PHON>
+            <PHON kindOf="standard">u[r|ɾ]uʦini</PHON>
             <TRANSL xml:lang="eng" kindOf="original">NUM-two</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0001_W007_M01">
                 <FORM kindOf="original">u</FORM>
@@ -114,7 +114,7 @@
                 <FORM kindOf="original">rucini</FORM>
                 <PHON kindOf="original">rutʂini</PHON>
                 <FORM kindOf="standard">rucini</FORM>
-                <PHON kindOf="standard">[r|ɾ]utʂini</PHON>
+                <PHON kindOf="standard">[r|ɾ]uʦini</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">two</TRANSL>
             </M>
         </W>
@@ -234,8 +234,8 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0003">
         <FORM kindOf="original">ni-mu-kusa cakəranə t&lt;um&gt;uncu mia-iisua sua ciina=maku ia, ni-pivəra.</FORM>
         <PHON kindOf="original">nimukusa ʦakəranə tumunʦu miaiisua sua tʂiinamaku ia nipivəra</PHON>
-        <FORM kindOf="standard">nimukusa cakerane t&lt;um&gt;uncu miaiisua sua ciinamaku ia, nipivera.</FORM>
-        <PHON kindOf="standard">nimukusa ʦake[r|ɾ]ane tumunʦu miaiisua sua tʂiinamaku ia nipive[r|ɾ]a</PHON>
+        <FORM kindOf="standard">nimukusa cakerane tumuncu miaiisua sua ciinamaku ia, nipivera.</FORM>
+        <PHON kindOf="standard">nimukusa ʦake[r|ɾ]ane tumunʦu miaiisua sua ʦiinamaku ia nipive[r|ɾ]a</PHON>
         <TRANSL xml:lang="eng">He went to the stream to poison fish, my mother being pregnant at that time.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0003_W001">
             <FORM kindOf="original">ni-mu-kusa</FORM>
@@ -339,13 +339,13 @@
             <FORM kindOf="original">ciina=maku</FORM>
             <PHON kindOf="original">tʂiinamaku</PHON>
             <FORM kindOf="standard">ciina=maku</FORM>
-            <PHON kindOf="standard">tʂiinamaku</PHON>
+            <PHON kindOf="standard">ʦiinamaku</PHON>
             <TRANSL xml:lang="eng" kindOf="original">mother=1SG.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0003_W006_M01">
                 <FORM kindOf="original">ciina</FORM>
                 <PHON kindOf="original">tʂiina</PHON>
                 <FORM kindOf="standard">ciina</FORM>
-                <PHON kindOf="standard">tʂiina</PHON>
+                <PHON kindOf="standard">ʦiina</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0003_W006_M02">
@@ -395,7 +395,7 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0004">
         <FORM kindOf="original">mia-iisua ia, ki-papa cuumaku t&lt;um&gt;uncu.</FORM>
         <PHON kindOf="original">miaiisua ia kipapa ʦuumaku tumunʦu</PHON>
-        <FORM kindOf="standard">miaiisua ia, kipapa cuumaku t&lt;um&gt;uncu.</FORM>
+        <FORM kindOf="standard">miaiisua ia, kipapa cuumaku tumuncu.</FORM>
         <PHON kindOf="standard">miaiisua ia kipapa ʦuumaku tumunʦu</PHON>
         <TRANSL xml:lang="eng">She followed my father going to poison fish at that time.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0004_W001">
@@ -494,19 +494,19 @@
         <FORM kindOf="original">si nuu ʔuuna=ci vutukulu ia, tia=cu ala-ən=kiai.</FORM>
         <PHON kindOf="original">ʂi nuu ʔuunatʂi vutukuɾu ia tiaʦu aɾaənkiai</PHON>
         <FORM kindOf="standard">si nuu 'uunaci vutukuru ia, tiacu araenkiai.</FORM>
-        <PHON kindOf="standard">ʂi nuu ʔuunatʂi vutuku[r|ɾ]u ia tiaʦu a[r|ɾ]aenkiai</PHON>
+        <PHON kindOf="standard">si nuu ʔuunaʦi vutuku[r|ɾ]u ia tiaʦu a[r|ɾ]aenkiai</PHON>
         <TRANSL xml:lang="eng">If there were fish, she would take them.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0005_W001">
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0005_W001_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -528,7 +528,7 @@
             <FORM kindOf="original">ʔuuna=ci</FORM>
             <PHON kindOf="original">ʔuunatʂi</PHON>
             <FORM kindOf="standard">'uuna=ci</FORM>
-            <PHON kindOf="standard">ʔuunatʂi</PHON>
+            <PHON kindOf="standard">ʔuunaʦi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">exist=COS</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0005_W003_M01">
                 <FORM kindOf="original">ʔuuna</FORM>
@@ -541,7 +541,7 @@
                 <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">tʂi</PHON>
                 <FORM kindOf="standard">=ci</FORM>
-                <PHON kindOf="standard">tʂi</PHON>
+                <PHON kindOf="standard">ʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -746,19 +746,19 @@
         <FORM kindOf="original">si ni-pivəra sua cina=maku mia-iisua.</FORM>
         <PHON kindOf="original">ʂi nipivəra sua tʂinamaku miaiisua</PHON>
         <FORM kindOf="standard">si nipivera sua cinamaku miaiisua.</FORM>
-        <PHON kindOf="standard">ʂi nipive[r|ɾ]a sua tʂinamaku miaiisua</PHON>
+        <PHON kindOf="standard">si nipive[r|ɾ]a sua ʦinamaku miaiisua</PHON>
         <TRANSL xml:lang="eng">Because my mother was pregnant at that time.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0007_W001">
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0007_W001_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -801,13 +801,13 @@
             <FORM kindOf="original">cina=maku</FORM>
             <PHON kindOf="original">tʂinamaku</PHON>
             <FORM kindOf="standard">cina=maku</FORM>
-            <PHON kindOf="standard">tʂinamaku</PHON>
+            <PHON kindOf="standard">ʦinamaku</PHON>
             <TRANSL xml:lang="eng" kindOf="original">mother=1SG.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0007_W004_M01">
                 <FORM kindOf="original">cina</FORM>
                 <PHON kindOf="original">tʂina</PHON>
                 <FORM kindOf="standard">cina</FORM>
-                <PHON kindOf="standard">tʂina</PHON>
+                <PHON kindOf="standard">ʦina</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0007_W004_M02">
@@ -844,7 +844,7 @@
         <FORM kindOf="original">aranai ʔinia cuumaku um-ava=ci cina=maku mu-caanə tanasa.</FORM>
         <PHON kindOf="original">aranai ʔinia ʦuumaku umavatʂi tʂinamaku muʦaanə tanasa</PHON>
         <FORM kindOf="standard">aranai 'inia cuumaku umavaci cinamaku mucaane tanasa.</FORM>
-        <PHON kindOf="standard">a[r|ɾ]anai ʔinia ʦuumaku umavatʂi tʂinamaku muʦaane tanasa</PHON>
+        <PHON kindOf="standard">a[r|ɾ]anai ʔinia ʦuumaku umavaʦi ʦinamaku muʦaane tanasa</PHON>
         <TRANSL xml:lang="eng">My father carried my mother home on his back.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0008_W001">
             <FORM kindOf="original">aranai</FORM>
@@ -892,7 +892,7 @@
             <FORM kindOf="original">um-ava=ci</FORM>
             <PHON kindOf="original">umavatʂi</PHON>
             <FORM kindOf="standard">um-ava=ci</FORM>
-            <PHON kindOf="standard">umavatʂi</PHON>
+            <PHON kindOf="standard">umavaʦi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-carry=COS</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0008_W004_M01">
                 <FORM kindOf="original">um</FORM>
@@ -912,7 +912,7 @@
                 <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">tʂi</PHON>
                 <FORM kindOf="standard">=ci</FORM>
-                <PHON kindOf="standard">tʂi</PHON>
+                <PHON kindOf="standard">ʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -920,13 +920,13 @@
             <FORM kindOf="original">cina=maku</FORM>
             <PHON kindOf="original">tʂinamaku</PHON>
             <FORM kindOf="standard">cina=maku</FORM>
-            <PHON kindOf="standard">tʂinamaku</PHON>
+            <PHON kindOf="standard">ʦinamaku</PHON>
             <TRANSL xml:lang="eng" kindOf="original">mother=1SG.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0008_W005_M01">
                 <FORM kindOf="original">cina</FORM>
                 <PHON kindOf="original">tʂina</PHON>
                 <FORM kindOf="standard">cina</FORM>
-                <PHON kindOf="standard">tʂina</PHON>
+                <PHON kindOf="standard">ʦina</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0008_W005_M02">
@@ -1089,7 +1089,7 @@
         <FORM kindOf="original">ma-naasə aaka cəpəŋ-ini si ma-ʔula=pa=kimi mia-iisua</FORM>
         <PHON kindOf="original">manaasə aaka ʦəpəŋini ʂi maʔuɾapakimi miaiisua</PHON>
         <FORM kindOf="standard">manaase aaka cepengini si ma'urapakimi miaiisua</FORM>
-        <PHON kindOf="standard">manaase aaka ʦepeŋini ʂi maʔu[r|ɾ]apakimi miaiisua</PHON>
+        <PHON kindOf="standard">manaase aaka ʦepeŋini si maʔu[r|ɾ]apakimi miaiisua</PHON>
         <TRANSL xml:lang="eng">He probably felt very bad because we were still very small.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0010_W001">
             <FORM kindOf="original">ma-naasə</FORM>
@@ -1151,13 +1151,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0010_W004_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -1768,7 +1768,7 @@
         <FORM kindOf="original">mii tia=ci ma-səŋəcə sua cuumaku ia, makasua maamia=cu ara-aka.</FORM>
         <PHON kindOf="original">mii tiatʂi masəŋəʦə sua ʦuumaku ia makasua maamiaʦu araaka</PHON>
         <FORM kindOf="standard">mii tiaci masengece sua cuumaku ia, makasua maamiacu araaka.</FORM>
-        <PHON kindOf="standard">mii tiatʂi maseŋeʦe sua ʦuumaku ia makasua maamiaʦu a[r|ɾ]aaka</PHON>
+        <PHON kindOf="standard">mii tiaʦi maseŋeʦe sua ʦuumaku ia makasua maamiaʦu a[r|ɾ]aaka</PHON>
         <TRANSL xml:lang="eng">My father was going to commit suicide, and then he died.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0014_W001">
             <FORM kindOf="original">mii</FORM>
@@ -1788,7 +1788,7 @@
             <FORM kindOf="original">tia=ci</FORM>
             <PHON kindOf="original">tiatʂi</PHON>
             <FORM kindOf="standard">tia=ci</FORM>
-            <PHON kindOf="standard">tiatʂi</PHON>
+            <PHON kindOf="standard">tiaʦi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">FUT=COS</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0014_W002_M01">
                 <FORM kindOf="original">tia</FORM>
@@ -1801,7 +1801,7 @@
                 <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">tʂi</PHON>
                 <FORM kindOf="standard">=ci</FORM>
-                <PHON kindOf="standard">tʂi</PHON>
+                <PHON kindOf="standard">ʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -1929,7 +1929,7 @@
         <FORM kindOf="original">sua vai cuumaku kimia ŋuai ʔisua ni-pa-pa-cəvərə kimia ʔapa-ta-lava mii tavalaʔə=ci=kia mu-ca-caanə tia=kirimi kaən-a.</FORM>
         <PHON kindOf="original">sua vai ʦuumaku kimia ŋuai ʔisua nipapaʦəvərə kimia ʔapataɾava mii tavaɾaʔətʂikia muʦaʦaanə tiakirimi kaəna</PHON>
         <FORM kindOf="standard">sua vai cuumaku kimia nguai 'isua nipapacevere kimia 'apatarava mii tavara'ecikia mucacaane tiakirimi kaena.</FORM>
-        <PHON kindOf="standard">sua vai ʦuumaku kimia ŋuai ʔisua nipapaʦeve[r|ɾ]e kimia ʔapata[r|ɾ]ava mii tava[r|ɾ]aʔetʂikia muʦaʦaane tiaki[r|ɾ]imi kaena</PHON>
+        <PHON kindOf="standard">sua vai ʦuumaku kimia ŋuai ʔisua nipapaʦeve[r|ɾ]e kimia ʔapata[r|ɾ]ava mii tava[r|ɾ]aʔeʦikia muʦaʦaane tiaki[r|ɾ]imi kaena</PHON>
         <TRANSL xml:lang="eng">It was my father's sisters who supported us until I was able to walk and look for food.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0015_W001">
             <FORM kindOf="original">sua</FORM>
@@ -2110,7 +2110,7 @@
             <FORM kindOf="original">tavalaʔə=ci=kia</FORM>
             <PHON kindOf="original">tavaɾaʔətʂikia</PHON>
             <FORM kindOf="standard">tavara'e=ci=kia</FORM>
-            <PHON kindOf="standard">tava[r|ɾ]aʔetʂikia</PHON>
+            <PHON kindOf="standard">tava[r|ɾ]aʔeʦikia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">able=COS=1SG.NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0015_W011_M01">
                 <FORM kindOf="original">tavalaʔə</FORM>
@@ -2123,7 +2123,7 @@
                 <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">tʂi</PHON>
                 <FORM kindOf="standard">=ci</FORM>
-                <PHON kindOf="standard">tʂi</PHON>
+                <PHON kindOf="standard">ʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0015_W011_M03">
@@ -2209,7 +2209,7 @@
         <FORM kindOf="original">makasua=cu tavalaʔə=ci=kia mu-ca-caanə, ara-u-kukunu sumukunu.</FORM>
         <PHON kindOf="original">makasuaʦu tavaɾaʔətʂikia muʦaʦaanə araukukunu sumukunu</PHON>
         <FORM kindOf="standard">makasuacu tavara'ecikia mucacaane, araukukunu sumukunu.</FORM>
-        <PHON kindOf="standard">makasuaʦu tava[r|ɾ]aʔetʂikia muʦaʦaane a[r|ɾ]aukukunu sumukunu</PHON>
+        <PHON kindOf="standard">makasuaʦu tava[r|ɾ]aʔeʦikia muʦaʦaane a[r|ɾ]aukukunu sumukunu</PHON>
         <TRANSL xml:lang="eng">When I knew how to walk, I was together with the Bunun people.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0016_W001">
             <FORM kindOf="original">makasua=cu</FORM>
@@ -2236,7 +2236,7 @@
             <FORM kindOf="original">tavalaʔə=ci=kia</FORM>
             <PHON kindOf="original">tavaɾaʔətʂikia</PHON>
             <FORM kindOf="standard">tavara'e=ci=kia</FORM>
-            <PHON kindOf="standard">tava[r|ɾ]aʔetʂikia</PHON>
+            <PHON kindOf="standard">tava[r|ɾ]aʔeʦikia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">know=COS=1SG.NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0016_W002_M01">
                 <FORM kindOf="original">tavalaʔə</FORM>
@@ -2249,7 +2249,7 @@
                 <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">tʂi</PHON>
                 <FORM kindOf="standard">=ci</FORM>
-                <PHON kindOf="standard">tʂi</PHON>
+                <PHON kindOf="standard">ʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0016_W002_M03">
@@ -2398,19 +2398,19 @@
         <FORM kindOf="original">si nanala=kia ʔakia maamia tapaacapa.</FORM>
         <PHON kindOf="original">ʂi nanaɾakia ʔakia maamia tapaaʦapa</PHON>
         <FORM kindOf="standard">si nanarakia 'akia maamia tapaacapa.</FORM>
-        <PHON kindOf="standard">ʂi nana[r|ɾ]akia ʔakia maamia tapaaʦapa</PHON>
+        <PHON kindOf="standard">si nana[r|ɾ]akia ʔakia maamia tapaaʦapa</PHON>
         <TRANSL xml:lang="eng">Because I was an orphan, without anyone to support me.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0018_W001">
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0018_W001_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -2481,20 +2481,20 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0019">
         <FORM kindOf="original">si ʔakia ma-maraŋ, mu-a-caca=kia maamia cucua k&lt;um&gt;aən.</FORM>
         <PHON kindOf="original">ʂi ʔakia mamaraŋ muaʦaʦakia maamia ʦuʦua kumaən</PHON>
-        <FORM kindOf="standard">si 'akia mamarang, muacacakia maamia cucua k&lt;um&gt;aen.</FORM>
-        <PHON kindOf="standard">ʂi ʔakia mama[r|ɾ]aŋ muaʦaʦakia maamia ʦuʦua kumaen</PHON>
+        <FORM kindOf="standard">si 'akia mamarang, muacacakia maamia cucua kumaen.</FORM>
+        <PHON kindOf="standard">si ʔakia mama[r|ɾ]aŋ muaʦaʦakia maamia ʦuʦua kumaen</PHON>
         <TRANSL xml:lang="eng">Because I had no parents, I could only walk around and eat with other people.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0019_W001">
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0019_W001_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -2621,8 +2621,8 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0020">
         <FORM kindOf="original">makasua c&lt;in&gt;uvər-a=maku aranai mi tiʔiŋ-ai=pa=kia mata-lava na ara-tatia=ci=kia.</FORM>
         <PHON kindOf="original">makasua tʂinuvəramaku aranai mi tiʔiŋaipakia mataɾava na aratatiatʂikia</PHON>
-        <FORM kindOf="standard">makasua c&lt;in&gt;uveramaku aranai mi ti'ingaipakia matarava na aratatiacikia.</FORM>
-        <PHON kindOf="standard">makasua tʂinuve[r|ɾ]amaku a[r|ɾ]anai mi tiʔiŋaipakia mata[r|ɾ]ava na a[r|ɾ]atatiatʂikia</PHON>
+        <FORM kindOf="standard">makasua cinuveramaku aranai mi ti'ingaipakia matarava na aratatiacikia.</FORM>
+        <PHON kindOf="standard">makasua ʦinuve[r|ɾ]amaku a[r|ɾ]anai mi tiʔiŋaipakia mata[r|ɾ]ava na a[r|ɾ]atatiaʦikia</PHON>
         <TRANSL xml:lang="eng">That is how I have been raised since I was a young child.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0020_W001">
             <FORM kindOf="original">makasua</FORM>
@@ -2642,7 +2642,7 @@
             <FORM kindOf="original">c&lt;in&gt;uvər-a=maku</FORM>
             <PHON kindOf="original">tʂinuvəramaku</PHON>
             <FORM kindOf="standard">c&lt;in&gt;uver-a=maku</FORM>
-            <PHON kindOf="standard">tʂinuve[r|ɾ]amaku</PHON>
+            <PHON kindOf="standard">ʦinuve[r|ɾ]amaku</PHON>
             <TRANSL xml:lang="eng" kindOf="original">raise&lt;PFV&gt;-LV=1SG.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0020_W002_M01">
                 <FORM kindOf="original">c-uvər</FORM>
@@ -2775,7 +2775,7 @@
             <FORM kindOf="original">ara-tatia=ci=kia</FORM>
             <PHON kindOf="original">aratatiatʂikia</PHON>
             <FORM kindOf="standard">ara-tatia=ci=kia</FORM>
-            <PHON kindOf="standard">a[r|ɾ]atatiatʂikia</PHON>
+            <PHON kindOf="standard">a[r|ɾ]atatiaʦikia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">become-big=COS=1SG.NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0020_W008_M01">
                 <FORM kindOf="original">ara</FORM>
@@ -2795,7 +2795,7 @@
                 <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">tʂi</PHON>
                 <FORM kindOf="standard">=ci</FORM>
-                <PHON kindOf="standard">tʂi</PHON>
+                <PHON kindOf="standard">ʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_017_MY_FATHER_S0020_W008_M04">

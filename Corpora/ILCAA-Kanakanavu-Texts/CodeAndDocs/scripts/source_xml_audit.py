@@ -306,7 +306,7 @@ def direct_element(
 
 
 def norm_text(text: str) -> str:
-    text = unicodedata.normalize("NFC", text or "")
+    text = unicodedata.normalize("NFC", text or "").replace("\u0241", "\u0294")
     text = (
         text.replace("\u2018", "'")
         .replace("\u2019", "'")

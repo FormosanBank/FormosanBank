@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
-<TEXT id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS" xml:lang="xnb" dialect="Kanakanavu" citation="Asai, E., Mei, K., Li, P. J.-k., &amp; Tsuchida, S. (2026). Kanakanavu texts (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies." BibTeX_citation="@book{AsaiMeiLiTsuchida2026KanakanavuTexts,author={Erin Asai and Kuang Mei and Paul Jen-kuei Li and Shigeru Tsuchida},editor={Paul Jen-kuei Li},title={Kanakanavu Texts},year={2026},publisher={Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},isbn={978-4-86337-602-1},note={With the assistance of Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0}}" copyright="Copyright © 2026 Paul Jen-kuei Li, Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0." source="Kanakanavu Texts (2026), Part 4, Text 3, Shigeru Tsuchida, printed pages 148-151, source PDF B602_KanakanavuText.pdf">
+<TEXT id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS" xml:lang="xnb" dialect="Kanakanavu" citation="Asai, E., Mei, K., Li, P. J.-k., &amp; Tsuchida, S. (2026). Kanakanavu texts (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies." BibTeX_citation="@book{AsaiMeiLiTsuchida2026KanakanavuTexts,author={Erin Asai and Kuang Mei and Paul Jen-kuei Li and Shigeru Tsuchida},editor={Paul Jen-kuei Li},title={Kanakanavu Texts},year={2026},publisher={Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},isbn={978-4-86337-602-1},note={With the assistance of Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0}}" copyright="CC BY 4.0" source="Kanakanavu Texts (2026), Part 4, Text 3, Shigeru Tsuchida, printed pages 148-151, source PDF B602_KanakanavuText.pdf">
     <S id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0001">
         <FORM kindOf="original">ʔuuna=pa u-cani sua isi=mita kanakanavu.</FORM>
         <PHON kindOf="original">ʔuunapa uʦani sua iʂimita kanakanavu</PHON>
         <FORM kindOf="standard">'uunapa ucani sua isimita kanakanavu.</FORM>
-        <PHON kindOf="standard">ʔuunapa uʦani sua iʂimita kanakanavu</PHON>
+        <PHON kindOf="standard">ʔuunapa uʦani sua isimita kanakanavu</PHON>
         <TRANSL xml:lang="eng">We Kanakanavu people still have one taboo.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0001_W001">
             <FORM kindOf="original">ʔuuna=pa</FORM>
@@ -66,13 +66,13 @@
             <FORM kindOf="original">isi=mita</FORM>
             <PHON kindOf="original">iʂimita</PHON>
             <FORM kindOf="standard">isi=mita</FORM>
-            <PHON kindOf="standard">iʂimita</PHON>
+            <PHON kindOf="standard">isimita</PHON>
             <TRANSL xml:lang="eng" kindOf="original">taboo=1INCL.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0001_W004_M01">
                 <FORM kindOf="original">isi</FORM>
                 <PHON kindOf="original">iʂi</PHON>
                 <FORM kindOf="standard">isi</FORM>
-                <PHON kindOf="standard">iʂi</PHON>
+                <PHON kindOf="standard">isi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">taboo</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0001_W004_M02">
@@ -102,7 +102,7 @@
         <FORM kindOf="original">naatia=maku a-paica-ən sian pu-kari-kari.</FORM>
         <PHON kindOf="original">naatiamaku apaiʦaən ʂian pukarikari</PHON>
         <FORM kindOf="standard">naatiamaku apaicaen sian pukarikari.</FORM>
-        <PHON kindOf="standard">naatiamaku apaiʦaen ʂian puka[r|ɾ]ika[r|ɾ]i</PHON>
+        <PHON kindOf="standard">naatiamaku apaiʦaen sian puka[r|ɾ]ika[r|ɾ]i</PHON>
         <TRANSL xml:lang="eng">I plan to talk about it by means of (the type recorder) here.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0002_W001">
             <FORM kindOf="original">naatia=maku</FORM>
@@ -157,13 +157,13 @@
             <FORM kindOf="original">sian</FORM>
             <PHON kindOf="original">ʂian</PHON>
             <FORM kindOf="standard">sian</FORM>
-            <PHON kindOf="standard">ʂian</PHON>
+            <PHON kindOf="standard">sian</PHON>
             <TRANSL xml:lang="eng" kindOf="original">here</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0002_W003_M01">
                 <FORM kindOf="original">sian</FORM>
                 <PHON kindOf="original">ʂian</PHON>
                 <FORM kindOf="standard">sian</FORM>
-                <PHON kindOf="standard">ʂian</PHON>
+                <PHON kindOf="standard">sian</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">here</TRANSL>
             </M>
         </W>
@@ -200,7 +200,7 @@
         <FORM kindOf="original">nakai ma-kaasi seŋsei=maku, "aa-paica-u=pa sian," pu-kari-kari misai.</FORM>
         <PHON kindOf="original">nakai makaaʂi seŋseimaku aapaiʦaupa ʂian pukarikari misai</PHON>
         <FORM kindOf="standard">nakai makaasi sengseimaku, "aapaicaupa sian," pukarikari misai.</FORM>
-        <PHON kindOf="standard">nakai makaaʂi seŋseimaku aapaiʦaupa ʂian puka[r|ɾ]ika[r|ɾ]i misai</PHON>
+        <PHON kindOf="standard">nakai makaasi seŋseimaku aapaiʦaupa sian puka[r|ɾ]ika[r|ɾ]i misai</PHON>
         <TRANSL xml:lang="eng">But the professor said, "Please talk from here."</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0003_W001">
             <FORM kindOf="original">nakai</FORM>
@@ -220,7 +220,7 @@
             <FORM kindOf="original">ma-kaasi</FORM>
             <PHON kindOf="original">makaaʂi</PHON>
             <FORM kindOf="standard">ma-kaasi</FORM>
-            <PHON kindOf="standard">makaaʂi</PHON>
+            <PHON kindOf="standard">makaasi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-like.this</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0003_W002_M01">
                 <FORM kindOf="original">ma</FORM>
@@ -233,7 +233,7 @@
                 <FORM kindOf="original">kaasi</FORM>
                 <PHON kindOf="original">kaaʂi</PHON>
                 <FORM kindOf="standard">kaasi</FORM>
-                <PHON kindOf="standard">kaaʂi</PHON>
+                <PHON kindOf="standard">kaasi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">like.this</TRANSL>
             </M>
         </W>
@@ -297,13 +297,13 @@
             <FORM kindOf="original">sian</FORM>
             <PHON kindOf="original">ʂian</PHON>
             <FORM kindOf="standard">sian</FORM>
-            <PHON kindOf="standard">ʂian</PHON>
+            <PHON kindOf="standard">sian</PHON>
             <TRANSL xml:lang="eng" kindOf="original">here</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0003_W005_M01">
                 <FORM kindOf="original">sian</FORM>
                 <PHON kindOf="original">ʂian</PHON>
                 <FORM kindOf="standard">sian</FORM>
-                <PHON kindOf="standard">ʂian</PHON>
+                <PHON kindOf="standard">sian</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">here</TRANSL>
             </M>
         </W>
@@ -354,7 +354,7 @@
         <FORM kindOf="original">ʔuuna=pa u-cani isi=mita kanakanavu, vərəŋa.</FORM>
         <PHON kindOf="original">ʔuunapa uʦani iʂimita kanakanavu vərəŋa</PHON>
         <FORM kindOf="standard">'uunapa ucani isimita kanakanavu, verenga.</FORM>
-        <PHON kindOf="standard">ʔuunapa uʦani iʂimita kanakanavu ve[r|ɾ]eŋa</PHON>
+        <PHON kindOf="standard">ʔuunapa uʦani isimita kanakanavu ve[r|ɾ]eŋa</PHON>
         <TRANSL xml:lang="eng">We Kanakanavu people still have one taboo about eels.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0004_W001">
             <FORM kindOf="original">ʔuuna=pa</FORM>
@@ -402,13 +402,13 @@
             <FORM kindOf="original">isi=mita</FORM>
             <PHON kindOf="original">iʂimita</PHON>
             <FORM kindOf="standard">isi=mita</FORM>
-            <PHON kindOf="standard">iʂimita</PHON>
+            <PHON kindOf="standard">isimita</PHON>
             <TRANSL xml:lang="eng" kindOf="original">taboo=1INCL.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0004_W003_M01">
                 <FORM kindOf="original">isi</FORM>
                 <PHON kindOf="original">iʂi</PHON>
                 <FORM kindOf="standard">isi</FORM>
-                <PHON kindOf="standard">iʂi</PHON>
+                <PHON kindOf="standard">isi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">taboo</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0004_W003_M02">
@@ -451,8 +451,8 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0005">
         <FORM kindOf="original">sua kisa-i ma-maaraŋ, miana ma-kaasi ʔakun k&lt;um&gt;aən vərəŋa si puisia.</FORM>
         <PHON kindOf="original">sua kisai mamaaraŋ miana makaaʂi ʔakun kumaən vərəŋa ʂi puiʂia</PHON>
-        <FORM kindOf="standard">sua kisai mamaarang, miana makaasi 'akun k&lt;um&gt;aen verenga si puisia.</FORM>
-        <PHON kindOf="standard">sua kisai mamaa[r|ɾ]aŋ miana makaaʂi ʔakun kumaen ve[r|ɾ]eŋa ʂi puiʂia</PHON>
+        <FORM kindOf="standard">sua kisai mamaarang, miana makaasi 'akun kumaen verenga si puisia.</FORM>
+        <PHON kindOf="standard">sua kisai mamaa[r|ɾ]aŋ miana makaasi ʔakun kumaen ve[r|ɾ]eŋa si puisia</PHON>
         <TRANSL xml:lang="eng">The elders in the past told us not to eat any eel because of the taboo.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0005_W001">
             <FORM kindOf="original">sua</FORM>
@@ -528,7 +528,7 @@
             <FORM kindOf="original">ma-kaasi</FORM>
             <PHON kindOf="original">makaaʂi</PHON>
             <FORM kindOf="standard">ma-kaasi</FORM>
-            <PHON kindOf="standard">makaaʂi</PHON>
+            <PHON kindOf="standard">makaasi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-like.this</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0005_W005_M01">
                 <FORM kindOf="original">ma</FORM>
@@ -541,7 +541,7 @@
                 <FORM kindOf="original">kaasi</FORM>
                 <PHON kindOf="original">kaaʂi</PHON>
                 <FORM kindOf="standard">kaasi</FORM>
-                <PHON kindOf="standard">kaaʂi</PHON>
+                <PHON kindOf="standard">kaasi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">like.this</TRANSL>
             </M>
         </W>
@@ -598,13 +598,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0005_W009_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -612,13 +612,13 @@
             <FORM kindOf="original">puisia</FORM>
             <PHON kindOf="original">puiʂia</PHON>
             <FORM kindOf="standard">puisia</FORM>
-            <PHON kindOf="standard">puiʂia</PHON>
+            <PHON kindOf="standard">puisia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">superstition</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0005_W010_M01">
                 <FORM kindOf="original">puisia</FORM>
                 <PHON kindOf="original">puiʂia</PHON>
                 <FORM kindOf="standard">puisia</FORM>
-                <PHON kindOf="standard">puiʂia</PHON>
+                <PHON kindOf="standard">puisia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">superstition</TRANSL>
             </M>
         </W>
@@ -627,7 +627,7 @@
         <FORM kindOf="original">u-cani maamia siu-ini.</FORM>
         <PHON kindOf="original">uʦani maamia ʂiuini</PHON>
         <FORM kindOf="standard">ucani maamia siuini.</FORM>
-        <PHON kindOf="standard">uʦani maamia ʂiuini</PHON>
+        <PHON kindOf="standard">uʦani maamia siuini</PHON>
         <TRANSL xml:lang="eng">Each (eel) only has one intestine.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0006_W001">
             <FORM kindOf="original">u-cani</FORM>
@@ -668,13 +668,13 @@
             <FORM kindOf="original">siu-ini</FORM>
             <PHON kindOf="original">ʂiuini</PHON>
             <FORM kindOf="standard">siu-ini</FORM>
-            <PHON kindOf="standard">ʂiuini</PHON>
+            <PHON kindOf="standard">siuini</PHON>
             <TRANSL xml:lang="eng" kindOf="original">intestine-3.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0006_W003_M01">
                 <FORM kindOf="original">siu</FORM>
                 <PHON kindOf="original">ʂiu</PHON>
                 <FORM kindOf="standard">siu</FORM>
-                <PHON kindOf="standard">ʂiu</PHON>
+                <PHON kindOf="standard">siu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">intestine</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0006_W003_M02">
@@ -689,8 +689,8 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0007">
         <FORM kindOf="original">sua=kani vanai kaʔanə tia=k&lt;um&gt;a-kaən vərəŋa ia, k&lt;um&gt;aən=kita ia, siiu vərəŋa ni-mara-can-cani maamia</FORM>
         <PHON kindOf="original">suakani vanai kaʔanə tiakumakaən vərəŋa ia kumaənkita ia ʂiiu vərəŋa nimaraʦanʦani maamia</PHON>
-        <FORM kindOf="standard">suakani vanai ka'ane tiak&lt;um&gt;akaen verenga ia, k&lt;um&gt;aenkita ia, siiu verenga nimaracancani maamia</FORM>
-        <PHON kindOf="standard">suakani vanai kaʔane tiakumakaen ve[r|ɾ]eŋa ia kumaenkita ia ʂiiu ve[r|ɾ]eŋa nima[r|ɾ]aʦanʦani maamia</PHON>
+        <FORM kindOf="standard">suakani vanai ka'ane tiakumakaen verenga ia, kumaenkita ia, siiu verenga nimaracancani maamia</FORM>
+        <PHON kindOf="standard">suakani vanai kaʔane tiakumakaen ve[r|ɾ]eŋa ia kumaenkita ia siiu ve[r|ɾ]eŋa nima[r|ɾ]aʦanʦani maamia</PHON>
         <TRANSL xml:lang="eng">The reason for not eating any eel is that the eel has only one intestine.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0007_W001">
             <FORM kindOf="original">sua=kani</FORM>
@@ -850,13 +850,13 @@
             <FORM kindOf="original">siiu</FORM>
             <PHON kindOf="original">ʂiiu</PHON>
             <FORM kindOf="standard">siiu</FORM>
-            <PHON kindOf="standard">ʂiiu</PHON>
+            <PHON kindOf="standard">siiu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">intestine</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0007_W009_M01">
                 <FORM kindOf="original">siiu</FORM>
                 <PHON kindOf="original">ʂiiu</PHON>
                 <FORM kindOf="standard">siiu</FORM>
-                <PHON kindOf="standard">ʂiiu</PHON>
+                <PHON kindOf="standard">siiu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">intestine</TRANSL>
             </M>
         </W>
@@ -928,7 +928,7 @@
         <FORM kindOf="original">nai, cəʔəra-i vərəŋa puuʔa-an=ku=cu kauru sua tavaruŋa-ini araanai na əməca-ini. makaasi na taʔica-in ia, u-cani maamia siu-ini alaal-ai na taaʔiica-ini.</FORM>
         <PHON kindOf="original">nai ʦəʔərai vərəŋa puuʔaankuʦu kauru sua tavaruŋaini araanai na əməʦaini makaaʂi na taʔiʦain ia uʦani maamia ʂiuini aɾaaɾai na taaʔiiʦaini</PHON>
         <FORM kindOf="standard">nai, ce'erai verenga puu'aankucu kauru sua tavarungaini araanai na emecaini. makaasi na ta'icain ia, ucani maamia siuini araarai na taa'iicaini.</FORM>
-        <PHON kindOf="standard">nai ʦeʔe[r|ɾ]ai ve[r|ɾ]eŋa puuʔaankuʦu kau[r|ɾ]u sua tava[r|ɾ]uŋaini a[r|ɾ]aanai na emeʦaini makaaʂi na taʔiʦain ia uʦani maamia ʂiuini a[r|ɾ]aa[r|ɾ]ai na taaʔiiʦaini</PHON>
+        <PHON kindOf="standard">nai ʦeʔe[r|ɾ]ai ve[r|ɾ]eŋa puuʔaankuʦu kau[r|ɾ]u sua tava[r|ɾ]uŋaini a[r|ɾ]aanai na emeʦaini makaasi na taʔiʦain ia uʦani maamia siuini a[r|ɾ]aa[r|ɾ]ai na taaʔiiʦaini</PHON>
         <TRANSL xml:lang="eng">Well, look at the eel that I bought, I cut it right down the middle from top to bottom, and there was only one intestine all the way.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0008_W001">
             <FORM kindOf="original">nai</FORM>
@@ -1116,13 +1116,13 @@
             <FORM kindOf="original">makaasi</FORM>
             <PHON kindOf="original">makaaʂi</PHON>
             <FORM kindOf="standard">makaasi</FORM>
-            <PHON kindOf="standard">makaaʂi</PHON>
+            <PHON kindOf="standard">makaasi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">like.this</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0008_W011_M01">
                 <FORM kindOf="original">makaasi</FORM>
                 <PHON kindOf="original">makaaʂi</PHON>
                 <FORM kindOf="standard">makaasi</FORM>
-                <PHON kindOf="standard">makaaʂi</PHON>
+                <PHON kindOf="standard">makaasi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">like.this</TRANSL>
             </M>
         </W>
@@ -1214,13 +1214,13 @@
             <FORM kindOf="original">siu-ini</FORM>
             <PHON kindOf="original">ʂiuini</PHON>
             <FORM kindOf="standard">siu-ini</FORM>
-            <PHON kindOf="standard">ʂiuini</PHON>
+            <PHON kindOf="standard">siuini</PHON>
             <TRANSL xml:lang="eng" kindOf="original">intestine-3.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0008_W017_M01">
                 <FORM kindOf="original">siu</FORM>
                 <PHON kindOf="original">ʂiu</PHON>
                 <FORM kindOf="standard">siu</FORM>
-                <PHON kindOf="standard">ʂiu</PHON>
+                <PHON kindOf="standard">siu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">intestine</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0008_W017_M02">
@@ -1291,8 +1291,8 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0009">
         <FORM kindOf="original">iimu kisa-i ma-maaraŋ, miana ia, ʔakuni k&lt;um&gt;aən ʔinia si puisia.</FORM>
         <PHON kindOf="original">iimu kisai mamaaraŋ miana ia ʔakuni kumaən ʔinia ʂi puiʂia</PHON>
-        <FORM kindOf="standard">iimu kisai mamaarang, miana ia, 'akuni k&lt;um&gt;aen 'inia si puisia.</FORM>
-        <PHON kindOf="standard">iimu kisai mamaa[r|ɾ]aŋ miana ia ʔakuni kumaen ʔinia ʂi puiʂia</PHON>
+        <FORM kindOf="standard">iimu kisai mamaarang, miana ia, 'akuni kumaen 'inia si puisia.</FORM>
+        <PHON kindOf="standard">iimu kisai mamaa[r|ɾ]aŋ miana ia ʔakuni kumaen ʔinia si puisia</PHON>
         <TRANSL xml:lang="eng">So our elders in the old days said not to eat it because of a superstition.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0009_W001">
             <FORM kindOf="original">iimu</FORM>
@@ -1431,13 +1431,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0009_W009_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -1445,13 +1445,13 @@
             <FORM kindOf="original">puisia</FORM>
             <PHON kindOf="original">puiʂia</PHON>
             <FORM kindOf="standard">puisia</FORM>
-            <PHON kindOf="standard">puiʂia</PHON>
+            <PHON kindOf="standard">puisia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">superstition</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0009_W010_M01">
                 <FORM kindOf="original">puisia</FORM>
                 <PHON kindOf="original">puiʂia</PHON>
                 <FORM kindOf="standard">puisia</FORM>
-                <PHON kindOf="standard">puiʂia</PHON>
+                <PHON kindOf="standard">puisia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">superstition</TRANSL>
             </M>
         </W>
@@ -1459,7 +1459,7 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0010">
         <FORM kindOf="original">tee=kani paa-taa-tanam vərəŋa. k&lt;um&gt;a-kaən=kia ala-sələcə na taaʔiica.</FORM>
         <PHON kindOf="original">teekani paataatanam vərəŋa kumakaənkia aɾasəɾəʦə na taaʔiiʦa</PHON>
-        <FORM kindOf="standard">teekani paataatanam verenga. k&lt;um&gt;akaenkia araserece na taa'iica.</FORM>
+        <FORM kindOf="standard">teekani paataatanam verenga. kumakaenkia araserece na taa'iica.</FORM>
         <PHON kindOf="standard">teekani paataatanam ve[r|ɾ]eŋa kumakaenkia a[r|ɾ]ase[r|ɾ]eʦe na taaʔiiʦa</PHON>
         <TRANSL xml:lang="eng">It is said that we would be like an eel: What we eat would come out of the buttocks just like an eel (= Our bowel movements will look like eels).</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0010_W001">
@@ -1613,7 +1613,7 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0011">
         <FORM kindOf="original">kisa-i ma-maaraŋ, miana ku-ʔupa-ʔupaŋ=kita k&lt;um&gt;aən ia, tee=kita makai vərəŋa kaən-ən maamia ala-sələcə, makai kisa-i sumukun.</FORM>
         <PHON kindOf="original">kisai mamaaraŋ miana kuʔupaʔupaŋkita kumaən ia teekita makai vərəŋa kaənən maamia aɾasəɾəʦə makai kisai sumukun</PHON>
-        <FORM kindOf="standard">kisai mamaarang, miana ku'upa'upangkita k&lt;um&gt;aen ia, teekita makai verenga kaenen maamia araserece, makai kisai sumukun.</FORM>
+        <FORM kindOf="standard">kisai mamaarang, miana ku'upa'upangkita kumaen ia, teekita makai verenga kaenen maamia araserece, makai kisai sumukun.</FORM>
         <PHON kindOf="standard">kisai mamaa[r|ɾ]aŋ miana kuʔupaʔupaŋkita kumaen ia teekita makai ve[r|ɾ]eŋa kaenen maamia a[r|ɾ]ase[r|ɾ]eʦe makai kisai sumukun</PHON>
         <TRANSL xml:lang="eng">Our elders in the old days said that we would be like an eel: What we eat haphazardly would come out of the buttocks just like an eel. It is also said like the Bunun.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0011_W001">
@@ -1900,8 +1900,8 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0012">
         <FORM kindOf="original">k&lt;um&gt;a-kaən ala-sələcə sua iikita kanakanavu ia, k&lt;um&gt;a-kaən ala-sələcə, ala-sələcə maamia naa taaʔiica sua ni-kaən-a mu-a-lavu=ci=kia.</FORM>
         <PHON kindOf="original">kumakaən aɾasəɾəʦə sua iikita kanakanavu ia kumakaən aɾasəɾəʦə aɾasəɾəʦə maamia naa taaʔiiʦa sua nikaəna muaɾavutʂikia</PHON>
-        <FORM kindOf="standard">k&lt;um&gt;akaen araserece sua iikita kanakanavu ia, k&lt;um&gt;akaen araserece, araserece maamia naa taa'iica sua nikaena muaravucikia.</FORM>
-        <PHON kindOf="standard">kumakaen a[r|ɾ]ase[r|ɾ]eʦe sua iikita kanakanavu ia kumakaen a[r|ɾ]ase[r|ɾ]eʦe a[r|ɾ]ase[r|ɾ]eʦe maamia naa taaʔiiʦa sua nikaena mua[r|ɾ]avutʂikia</PHON>
+        <FORM kindOf="standard">kumakaen araserece sua iikita kanakanavu ia, kumakaen araserece, araserece maamia naa taa'iica sua nikaena muaravucikia.</FORM>
+        <PHON kindOf="standard">kumakaen a[r|ɾ]ase[r|ɾ]eʦe sua iikita kanakanavu ia kumakaen a[r|ɾ]ase[r|ɾ]eʦe a[r|ɾ]ase[r|ɾ]eʦe maamia naa taaʔiiʦa sua nikaena mua[r|ɾ]avuʦikia</PHON>
         <TRANSL xml:lang="eng">We Kanakanavu people believed that what we had eaten would come out of the buttocks, and we would get hungry just like an eel.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0012_W001">
             <FORM kindOf="original">k&lt;um&gt;a-kaən</FORM>
@@ -2166,7 +2166,7 @@
             <FORM kindOf="original">mu-a-lavu=ci=kia</FORM>
             <PHON kindOf="original">muaɾavutʂikia</PHON>
             <FORM kindOf="standard">mu-a-ravu=ci=kia</FORM>
-            <PHON kindOf="standard">mua[r|ɾ]avutʂikia</PHON>
+            <PHON kindOf="standard">mua[r|ɾ]avuʦikia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-IRR-hungry=COS=1EXCL.NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0012_W015_M01">
                 <FORM kindOf="original">mu</FORM>
@@ -2193,7 +2193,7 @@
                 <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">tʂi</PHON>
                 <FORM kindOf="standard">=ci</FORM>
-                <PHON kindOf="standard">tʂi</PHON>
+                <PHON kindOf="standard">ʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0012_W015_M05">
@@ -2314,7 +2314,7 @@
         <FORM kindOf="original">cu-culu sua kisa-i ma-maaraŋ miana ia, kaʔan pə-rəsəvə, si cu-cculu uu-pia-ni=ci ni-para-pici=maku vərəŋa miana.</FORM>
         <PHON kindOf="original">ʦuʦuɾu sua kisai mamaaraŋ miana ia kaʔan pərəsəvə ʂi ʦuʦʦuɾu uupianitʂi niparapitʂimaku vərəŋa miana</PHON>
         <FORM kindOf="standard">cucuru sua kisai mamaarang miana ia, ka'an pereseve, si cuccuru uupianici niparapicimaku verenga miana.</FORM>
-        <PHON kindOf="standard">ʦuʦu[r|ɾ]u sua kisai mamaa[r|ɾ]aŋ miana ia kaʔan pe[r|ɾ]eseve ʂi ʦuʦʦu[r|ɾ]u uupianitʂi nipa[r|ɾ]apitʂimaku ve[r|ɾ]eŋa miana</PHON>
+        <PHON kindOf="standard">ʦuʦu[r|ɾ]u sua kisai mamaa[r|ɾ]aŋ miana ia kaʔan pe[r|ɾ]eseve si ʦuʦʦu[r|ɾ]u uupianiʦi nipa[r|ɾ]apiʦimaku ve[r|ɾ]eŋa miana</PHON>
         <TRANSL xml:lang="eng">Ancient people in the past told the truth, and they did not tell a lie because I bisected several eels to find that out.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0014_W001">
             <FORM kindOf="original">cu-culu</FORM>
@@ -2460,13 +2460,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0014_W009_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -2495,7 +2495,7 @@
             <FORM kindOf="original">uu-pia-ni=ci</FORM>
             <PHON kindOf="original">uupianitʂi</PHON>
             <FORM kindOf="standard">uu-pia-ni=ci</FORM>
-            <PHON kindOf="standard">uupianitʂi</PHON>
+            <PHON kindOf="standard">uupianiʦi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">NUM-several-3.GEN=COS</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0014_W011_M01">
                 <FORM kindOf="original">uu</FORM>
@@ -2522,7 +2522,7 @@
                 <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">tʂi</PHON>
                 <FORM kindOf="standard">=ci</FORM>
-                <PHON kindOf="standard">tʂi</PHON>
+                <PHON kindOf="standard">ʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -2530,7 +2530,7 @@
             <FORM kindOf="original">ni-para-pici=maku</FORM>
             <PHON kindOf="original">niparapitʂimaku</PHON>
             <FORM kindOf="standard">ni-para-pici=maku</FORM>
-            <PHON kindOf="standard">nipa[r|ɾ]apitʂimaku</PHON>
+            <PHON kindOf="standard">nipa[r|ɾ]apiʦimaku</PHON>
             <TRANSL xml:lang="eng" kindOf="original">PFV-get-cut=1SG.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0014_W012_M01">
                 <FORM kindOf="original">ni</FORM>
@@ -2550,7 +2550,7 @@
                 <FORM kindOf="original">pici</FORM>
                 <PHON kindOf="original">pitʂi</PHON>
                 <FORM kindOf="standard">pici</FORM>
-                <PHON kindOf="standard">pitʂi</PHON>
+                <PHON kindOf="standard">piʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">cut</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0014_W012_M04">
@@ -2594,7 +2594,7 @@
         <FORM kindOf="original">kuu=pi=kia m-ara-pici, cu-cculu u-cani maamia siu-ini.</FORM>
         <PHON kindOf="original">kuupikia marapitʂi ʦuʦʦuɾu uʦani maamia ʂiuini</PHON>
         <FORM kindOf="standard">kuupikia marapici, cuccuru ucani maamia siuini.</FORM>
-        <PHON kindOf="standard">kuupikia ma[r|ɾ]apitʂi ʦuʦʦu[r|ɾ]u uʦani maamia ʂiuini</PHON>
+        <PHON kindOf="standard">kuupikia ma[r|ɾ]apiʦi ʦuʦʦu[r|ɾ]u uʦani maamia siuini</PHON>
         <TRANSL xml:lang="eng">I did not know the truth that (an eel) had only one intestine before I bisected it.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0015_W001">
             <FORM kindOf="original">kuu=pi=kia</FORM>
@@ -2628,7 +2628,7 @@
             <FORM kindOf="original">m-ara-pici</FORM>
             <PHON kindOf="original">marapitʂi</PHON>
             <FORM kindOf="standard">m-ara-pici</FORM>
-            <PHON kindOf="standard">ma[r|ɾ]apitʂi</PHON>
+            <PHON kindOf="standard">ma[r|ɾ]apiʦi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-get-cut</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0015_W002_M01">
                 <FORM kindOf="original">m</FORM>
@@ -2648,7 +2648,7 @@
                 <FORM kindOf="original">pici</FORM>
                 <PHON kindOf="original">pitʂi</PHON>
                 <FORM kindOf="standard">pici</FORM>
-                <PHON kindOf="standard">pitʂi</PHON>
+                <PHON kindOf="standard">piʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">cut</TRANSL>
             </M>
         </W>
@@ -2712,13 +2712,13 @@
             <FORM kindOf="original">siu-ini</FORM>
             <PHON kindOf="original">ʂiuini</PHON>
             <FORM kindOf="standard">siu-ini</FORM>
-            <PHON kindOf="standard">ʂiuini</PHON>
+            <PHON kindOf="standard">siuini</PHON>
             <TRANSL xml:lang="eng" kindOf="original">intestine-3.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0015_W006_M01">
                 <FORM kindOf="original">siu</FORM>
                 <PHON kindOf="original">ʂiu</PHON>
                 <FORM kindOf="standard">siu</FORM>
-                <PHON kindOf="standard">ʂiu</PHON>
+                <PHON kindOf="standard">siu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">intestine</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0015_W006_M02">
@@ -2734,7 +2734,7 @@
         <FORM kindOf="original">ʔakia sua ni-ma-caʔa na ʔuna-ini. ni-ma-caʔa sua siu-ini ia, ma-naasə naatia=pa ʔuuna taa-usukain-a ni-kaən=kiai.</FORM>
         <PHON kindOf="original">ʔakia sua nimaʦaʔa na ʔunaini nimaʦaʔa sua ʂiuini ia manaasə naatiapa ʔuuna taausukaina nikaənkiai</PHON>
         <FORM kindOf="standard">'akia sua nimaca'a na 'unaini. nimaca'a sua siuini ia, manaase naatiapa 'uuna taausukaina nikaenkiai.</FORM>
-        <PHON kindOf="standard">ʔakia sua nimaʦaʔa na ʔunaini nimaʦaʔa sua ʂiuini ia manaase naatiapa ʔuuna taausukaina nikaenkiai</PHON>
+        <PHON kindOf="standard">ʔakia sua nimaʦaʔa na ʔunaini nimaʦaʔa sua siuini ia manaase naatiapa ʔuuna taausukaina nikaenkiai</PHON>
         <TRANSL xml:lang="eng">There are no sections in an intestine. What we have eaten will certainly get stuck somewhere.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0016_W001">
             <FORM kindOf="original">ʔakia</FORM>
@@ -2873,13 +2873,13 @@
             <FORM kindOf="original">siu-ini</FORM>
             <PHON kindOf="original">ʂiuini</PHON>
             <FORM kindOf="standard">siu-ini</FORM>
-            <PHON kindOf="standard">ʂiuini</PHON>
+            <PHON kindOf="standard">siuini</PHON>
             <TRANSL xml:lang="eng" kindOf="original">intestine-3.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0016_W008_M01">
                 <FORM kindOf="original">siu</FORM>
                 <PHON kindOf="original">ʂiu</PHON>
                 <FORM kindOf="standard">siu</FORM>
-                <PHON kindOf="standard">ʂiu</PHON>
+                <PHON kindOf="standard">siu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">intestine</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0016_W008_M02">
@@ -3021,7 +3021,7 @@
         <FORM kindOf="original">u-cani maamia ma-kaasi na taʔica-ini.</FORM>
         <PHON kindOf="original">uʦani maamia makaaʂi na taʔiʦaini</PHON>
         <FORM kindOf="standard">ucani maamia makaasi na ta'icaini.</FORM>
-        <PHON kindOf="standard">uʦani maamia makaaʂi na taʔiʦaini</PHON>
+        <PHON kindOf="standard">uʦani maamia makaasi na taʔiʦaini</PHON>
         <TRANSL xml:lang="eng">It has only one intestine running from head to tail.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0017_W001">
             <FORM kindOf="original">u-cani</FORM>
@@ -3062,7 +3062,7 @@
             <FORM kindOf="original">ma-kaasi</FORM>
             <PHON kindOf="original">makaaʂi</PHON>
             <FORM kindOf="standard">ma-kaasi</FORM>
-            <PHON kindOf="standard">makaaʂi</PHON>
+            <PHON kindOf="standard">makaasi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-like.this</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0017_W003_M01">
                 <FORM kindOf="original">ma</FORM>
@@ -3075,7 +3075,7 @@
                 <FORM kindOf="original">kaasi</FORM>
                 <PHON kindOf="original">kaaʂi</PHON>
                 <FORM kindOf="standard">kaasi</FORM>
-                <PHON kindOf="standard">kaaʂi</PHON>
+                <PHON kindOf="standard">kaasi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">like.this</TRANSL>
             </M>
         </W>
@@ -3210,7 +3210,7 @@
         <FORM kindOf="original">iikita=kani si kanakanavu miana ia, maka-sua=kani, u-cani maamia siu-in sua misai. ma-maaraŋ miana.</FORM>
         <PHON kindOf="original">iikitakani ʂi kanakanavu miana ia makasuakani uʦani maamia ʂiuin sua misai mamaaraŋ miana</PHON>
         <FORM kindOf="standard">iikitakani si kanakanavu miana ia, makasuakani, ucani maamia siuin sua misai. mamaarang miana.</FORM>
-        <PHON kindOf="standard">iikitakani ʂi kanakanavu miana ia makasuakani uʦani maamia ʂiuin sua misai mamaa[r|ɾ]aŋ miana</PHON>
+        <PHON kindOf="standard">iikitakani si kanakanavu miana ia makasuakani uʦani maamia siuin sua misai mamaa[r|ɾ]aŋ miana</PHON>
         <TRANSL xml:lang="eng">Our elders in the past said each (eel) has only one intestine.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0019_W001">
             <FORM kindOf="original">iikita=kani</FORM>
@@ -3237,13 +3237,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0019_W002_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -3356,13 +3356,13 @@
             <FORM kindOf="original">siu-in</FORM>
             <PHON kindOf="original">ʂiuin</PHON>
             <FORM kindOf="standard">siu-in</FORM>
-            <PHON kindOf="standard">ʂiuin</PHON>
+            <PHON kindOf="standard">siuin</PHON>
             <TRANSL xml:lang="eng" kindOf="original">intestine-3.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0019_W009_M01">
                 <FORM kindOf="original">siu</FORM>
                 <PHON kindOf="original">ʂiu</PHON>
                 <FORM kindOf="standard">siu</FORM>
-                <PHON kindOf="standard">ʂiu</PHON>
+                <PHON kindOf="standard">siu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">intestine</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_025_NOT_EATING_EELS_S0019_W009_M02">

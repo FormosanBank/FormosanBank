@@ -3,9 +3,10 @@
 Asai, Mei, Li and Tsuchida (2026), *Kanakanavu texts*, edited by Paul Jen-kuei
 Li and published by ILCAA, Tokyo University of Foreign Studies.
 
-**Status:** needs remediation before QC. The retained XML is the previous
-1,455-sentence output, moved into `XML/Kanakanavu/` without changing its bytes.
-Passing the source comparison or regression tests does not establish readiness.
+**Status:** regenerated on 2026-10-18 by `CodeAndDocs/generate_xml.sh` (48 Kanakanavu
+files and one Saaroa file, 1,573 S); not yet signed off. Open: the final review
+of the SOFT findings. Passing the source comparison or regression tests
+does not establish readiness.
 
 [Basecamp card](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/10012922283),
 [corpus PR #155](https://github.com/FormosanBank/FormosanBank/pull/155),
@@ -17,17 +18,20 @@ The committed [252-page PDF](CodeAndDocs/data/raw/pdf/B602_KanakanavuText.pdf)
 has SHA-256 `785058bad6a8495f8b5fb51ed3d0eaf7da1736e791b308611d9442c010d93c03`.
 The parser accounts for 44 narratives and 40 numbered introduction examples
 (48 introduction units), totalling 1,431 source units. Of 24 parenthetical
-constructions, eight use W/M FORM variants and 16 retain separate S readings,
-producing 1,447 numbered-example S records. Another source file contains 57
+constructions, nine use W/M FORM variants and 15 retain separate S readings,
+producing 1,446 numbered-example S records. Another source file contains 57
 lexical records from 49 explanatory footnotes. Introduction tables/prose and
-the title linked to footnote 29 add 101 S, for 1,605 source-stage S records.
-The 45 retained final XML files still have 1,455 S and await regeneration.
+the title linked to footnote 29 add 70 S, for 1,573 S in the final XML.
+Table 1 of the introduction (physical page 16) is not published: maintainer
+ruling 2026-10-18, "Drop all of Table 1." Neither are the two prose examples
+next to it (kumakaɨn(ɨ) and the /kaɨnɨ/ [kɅɨnɨ] pair): "Drop the prose
+examples." All 32 records are recorded as an excluded region in the
+introduction ledger.
 The [footnote ledger](CodeAndDocs/footnote_lexemes.jsonl) accounts for all 87
 notes. The [introduction ledger](CodeAndDocs/introduction_lexemes.json) keeps
-historical transcription columns and the Saaroa comparison in separate files.
+the Tsuchida 1976 pronouns and the Saaroa comparison in separate files.
 It records bound morphology/templates as context and the unresolved village
-phonetics explicitly. The printed /kaɨnɨ/ and [kɅɨnɨ] pair keeps its source
-FORM and source-supplied PHON separately. Tsuchida's source distinguishes the two vocatives
+phonetics explicitly. Tsuchida's source distinguishes the two vocatives
 from ordinary pronouns; all four forms keep separate records. These counts are
 not a whole-book coverage verdict.
 The source parser repairs a misplaced interjection gloss in Naparamaci example
@@ -52,18 +56,14 @@ PYTHON=python3 CodeAndDocs/generate_xml.sh /path/to/current/FormosanBank
 
 The build stages source extraction, shared cleaning, standardization and PHON,
 then installs successful output. It performs no QC or source refresh. Narrative
-deduplication is not a build step. Generation stops before changing XML until
-the remaining Szakos group has a supported conversion route for ö.
+deduplication is not a build step.
 
-The [provenance record](CodeAndDocs/provenance.json) describes the retained
-historical XML. It does not select or pin tools for a new build. The previous
-private phonology override and count-based QC acceptance wrapper are retired.
-The entry point passes the committed narrative, Table 1 and Saaroa tables
+The [provenance record](CodeAndDocs/provenance.json) names the FormosanBank
+commit that built the XML. The previous private phonology override and count-based QC acceptance wrapper are retired.
+The entry point passes the committed narrative and Saaroa tables
 under `CodeAndDocs/scripts/orthographies/` directly to the shared tools, with
-separate file/language routing. Table 1's Tsuchida 1969 and 2007 vocabulary
-columns map source ɨ/ʉ to standard ʉ, preserving their historical forms.
-Table 2's 16 pronouns use the narrative route's reviewed subset. Shared PHON
-preserves the one explicit source transcription and derives all other PHON.
+separate file/language routing.
+Table 2's 16 pronouns use the narrative route's reviewed subset.
 These tables need no installation in FormosanBank.
 
 For source investigation without producing final derived tiers:
@@ -84,15 +84,16 @@ and current QC workflow after the outstanding source and tool work is resolved.
 
 ## Rights
 
-**License:** CC BY 4.0, stated on source PDF physical page 3.
+**License:** CC BY 4.0
 
 **Rights source:** Paul Jen-kuei Li, Yi-Chun Chen, Hsiu-min Huang and Amy
-Ming-luan Chen, 2026; exact grant date not stated; evidence: ask maintainer.
+Ming-luan Chen, 2026 (the source was published under this licence; there is no
+separate grant); evidence: ask maintainer
 
-The source PDF may be redistributed under that licence with attribution.
+The licence is stated on the source PDF itself (physical page 3). The source
+PDF may be redistributed under that licence with attribution.
 Source generation writes the canonical licence value `CC BY 4.0` (POL-042),
-with attribution retained here. The retained XML still carries its old
-copyright prose and awaits final regeneration.
+with attribution retained here. All 51 regenerated files carry `CC BY 4.0`.
 
 ## Audio
 
@@ -103,14 +104,14 @@ None supplied with this source.
 - Standard PHON follows Ortho113 (POL-003). The source's conditioned c/s
   pronunciation stays in original PHON; the former private standard override
   is retired. The two tiers therefore differ in those environments.
-- The source parser resolves eight spelling/pronunciation variants and the old
-  V1/V2 IDs. Tsuchida's notation key resolves ha/sua in two passages;
-  two parenthetical classifications still need resolution under POL-028.
+- The source parser resolves nine spelling/pronunciation variants and the old
+  V1/V2 IDs. Tsuchida's notation key resolves ha/sua in two passages. Page 195
+  example 35 (ha/sua and iihaa/iisua) stays two S readings (maintainer, 2026-10-18).
   Clause grouping stays at S; shared cleaning normalizes its brackets to
   parentheses and PHON omits them. These clauses are not optional material.
-- Introduction lexical material has seven transcription groups, including Saaroa
-  and the explicit phonemic/phonetic pair. Szakos ö still needs a supported sound
-  mapping. Table 2's 16 pronouns have a
+- Introduction lexical material has three transcription groups (Asai 2026,
+  Tsuchida 1976 and the Saaroa comparison). Table 1 is not published (see above).
+  Table 2's 16 pronouns have a
   verified segmental route; their stress marks remain in original FORM.
   The Saaroa comparison has a
   source-backed `ɫ` -> `hl` conversion and the corrected Saaroa code `sxr`,

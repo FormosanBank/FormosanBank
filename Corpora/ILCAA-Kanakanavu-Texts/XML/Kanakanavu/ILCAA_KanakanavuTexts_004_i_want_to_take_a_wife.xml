@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE" xml:lang="xnb" dialect="Kanakanavu" citation="Asai, E., Mei, K., Li, P. J.-k., &amp; Tsuchida, S. (2026). Kanakanavu texts (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies." BibTeX_citation="@book{AsaiMeiLiTsuchida2026KanakanavuTexts,author={Erin Asai and Kuang Mei and Paul Jen-kuei Li and Shigeru Tsuchida},editor={Paul Jen-kuei Li},title={Kanakanavu Texts},year={2026},publisher={Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},isbn={978-4-86337-602-1},note={With the assistance of Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0}}" copyright="Copyright © 2026 Paul Jen-kuei Li, Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0." source="Kanakanavu Texts (2026), Part 1, Text 4, Erin Asai, printed pages 44-46, source PDF B602_KanakanavuText.pdf">
+<TEXT id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE" xml:lang="xnb" dialect="Kanakanavu" citation="Asai, E., Mei, K., Li, P. J.-k., &amp; Tsuchida, S. (2026). Kanakanavu texts (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies." BibTeX_citation="@book{AsaiMeiLiTsuchida2026KanakanavuTexts,author={Erin Asai and Kuang Mei and Paul Jen-kuei Li and Shigeru Tsuchida},editor={Paul Jen-kuei Li},title={Kanakanavu Texts},year={2026},publisher={Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},isbn={978-4-86337-602-1},note={With the assistance of Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0}}" copyright="CC BY 4.0" source="Kanakanavu Texts (2026), Part 1, Text 4, Erin Asai, printed pages 44-46, source PDF B602_KanakanavuText.pdf">
     <S id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0001">
         <FORM kindOf="original">ni-ka-manu-manu=kani=kiai.</FORM>
         <PHON kindOf="original">nikamanumanukanikiai</PHON>
@@ -95,7 +95,7 @@
         <FORM kindOf="original">"m-uru-ʔucaŋə=cu=ku, cina."</FORM>
         <PHON kindOf="original">muruʔuʦaŋəʦuku tʂina</PHON>
         <FORM kindOf="standard">"muru'ucangecuku, cina."</FORM>
-        <PHON kindOf="standard">mu[r|ɾ]uʔuʦaŋeʦuku tʂina</PHON>
+        <PHON kindOf="standard">mu[r|ɾ]uʔuʦaŋeʦuku ʦina</PHON>
         <TRANSL xml:lang="eng">"I'd like to take a wife, Mother."</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0003_W001">
             <FORM kindOf="original">m-uru-ʔucaŋə=cu=ku</FORM>
@@ -143,13 +143,13 @@
             <FORM kindOf="original">cina</FORM>
             <PHON kindOf="original">tʂina</PHON>
             <FORM kindOf="standard">cina</FORM>
-            <PHON kindOf="standard">tʂina</PHON>
+            <PHON kindOf="standard">ʦina</PHON>
             <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0003_W002_M01">
                 <FORM kindOf="original">cina</FORM>
                 <PHON kindOf="original">tʂina</PHON>
                 <FORM kindOf="standard">cina</FORM>
-                <PHON kindOf="standard">tʂina</PHON>
+                <PHON kindOf="standard">ʦina</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             </M>
         </W>
@@ -354,7 +354,7 @@
         <FORM kindOf="original">ma-ka-cəkəna=kani ʔani-ʔacaŋ-ini vəkəs-ini, "kaʔanə=pa=ku m-uru-ʔucaŋə, cina?"</FORM>
         <PHON kindOf="original">makaʦəkənakani ʔaniʔaʦaŋini vəkəʂini kaʔanəpaku muruʔuʦaŋə tʂina</PHON>
         <FORM kindOf="standard">makacekenakani 'ani'acangini vekesini, "ka'anepaku muru'ucange, cina?"</FORM>
-        <PHON kindOf="standard">makaʦekenakani ʔaniʔaʦaŋini vekeʂini kaʔanepaku mu[r|ɾ]uʔuʦaŋe tʂina</PHON>
+        <PHON kindOf="standard">makaʦekenakani ʔaniʔaʦaŋini vekesini kaʔanepaku mu[r|ɾ]uʔuʦaŋe ʦina</PHON>
         <TRANSL xml:lang="eng">His hair reached his shoulders (and asked), "Can't I take a wife, Mother?"</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0005_W001">
             <FORM kindOf="original">ma-ka-cəkəna=kani</FORM>
@@ -423,7 +423,7 @@
             <FORM kindOf="original">vəkəs-ini</FORM>
             <PHON kindOf="original">vəkəʂini</PHON>
             <FORM kindOf="standard">vekes-ini</FORM>
-            <PHON kindOf="standard">vekeʂini</PHON>
+            <PHON kindOf="standard">vekesini</PHON>
             <TRANSL xml:lang="eng" kindOf="original">hair-3.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0005_W003_M01">
                 <FORM kindOf="original">vəkəs</FORM>
@@ -500,13 +500,13 @@
             <FORM kindOf="original">cina</FORM>
             <PHON kindOf="original">tʂina</PHON>
             <FORM kindOf="standard">cina</FORM>
-            <PHON kindOf="standard">tʂina</PHON>
+            <PHON kindOf="standard">ʦina</PHON>
             <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0005_W006_M01">
                 <FORM kindOf="original">cina</FORM>
                 <PHON kindOf="original">tʂina</PHON>
                 <FORM kindOf="standard">cina</FORM>
-                <PHON kindOf="standard">tʂina</PHON>
+                <PHON kindOf="standard">ʦina</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             </M>
         </W>
@@ -662,7 +662,7 @@
         <FORM kindOf="original">ma-ka-cəkəna=kani na kəkə-ini sua vəkəs-ini.</FORM>
         <PHON kindOf="original">makaʦəkənakani na kəkəini sua vəkəʂini</PHON>
         <FORM kindOf="standard">makacekenakani na kekeini sua vekesini.</FORM>
-        <PHON kindOf="standard">makaʦekenakani na kekeini sua vekeʂini</PHON>
+        <PHON kindOf="standard">makaʦekenakani na kekeini sua vekesini</PHON>
         <TRANSL xml:lang="eng">His hair reached his legs.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0007_W001">
             <FORM kindOf="original">ma-ka-cəkəna=kani</FORM>
@@ -752,7 +752,7 @@
             <FORM kindOf="original">vəkəs-ini</FORM>
             <PHON kindOf="original">vəkəʂini</PHON>
             <FORM kindOf="standard">vekes-ini</FORM>
-            <PHON kindOf="standard">vekeʂini</PHON>
+            <PHON kindOf="standard">vekesini</PHON>
             <TRANSL xml:lang="eng" kindOf="original">hair-3.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0007_W005_M01">
                 <FORM kindOf="original">vəkəs</FORM>
@@ -1053,8 +1053,8 @@
     <S id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0011">
         <FORM kindOf="original">"coomaini=kasu cuulu, cina. c&lt;um&gt;ə-cəʔəra paaʔi ʔikua."</FORM>
         <PHON kindOf="original">ʦoomainikasu ʦuuɾu tʂina ʦuməʦəʔəra paaʔi ʔikua</PHON>
-        <FORM kindOf="standard">"coomainikasu cuuru, cina. c&lt;um&gt;ece'era paa'i 'ikua."</FORM>
-        <PHON kindOf="standard">ʦoomainikasu ʦuu[r|ɾ]u tʂina ʦumeʦeʔe[r|ɾ]a paaʔi ʔikua</PHON>
+        <FORM kindOf="standard">"coomainikasu cuuru, cina. cumece'era paa'i 'ikua."</FORM>
+        <PHON kindOf="standard">ʦoomainikasu ʦuu[r|ɾ]u ʦina ʦumeʦeʔe[r|ɾ]a paaʔi ʔikua</PHON>
         <TRANSL xml:lang="eng">"You really deserve it, Mother. You will not see me any more."</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0011_W001">
             <FORM kindOf="original">coomaini=kasu</FORM>
@@ -1095,13 +1095,13 @@
             <FORM kindOf="original">cina</FORM>
             <PHON kindOf="original">tʂina</PHON>
             <FORM kindOf="standard">cina</FORM>
-            <PHON kindOf="standard">tʂina</PHON>
+            <PHON kindOf="standard">ʦina</PHON>
             <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0011_W003_M01">
                 <FORM kindOf="original">cina</FORM>
                 <PHON kindOf="original">tʂina</PHON>
                 <FORM kindOf="standard">cina</FORM>
-                <PHON kindOf="standard">tʂina</PHON>
+                <PHON kindOf="standard">ʦina</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             </M>
         </W>
@@ -1166,7 +1166,7 @@
         <FORM kindOf="original">ala-i ʔinia paŋarə mata-cəkəcəkə ta-ta-piniŋ-a, mu-ciri.</FORM>
         <PHON kindOf="original">aɾai ʔinia paŋarə mataʦəkəʦəkə tatapiniŋa mutʂiri</PHON>
         <FORM kindOf="standard">arai 'inia pangare matacekeceke tatapininga, muciri.</FORM>
-        <PHON kindOf="standard">a[r|ɾ]ai ʔinia paŋa[r|ɾ]e mataʦekeʦeke tatapiniŋa mutʂi[r|ɾ]i</PHON>
+        <PHON kindOf="standard">a[r|ɾ]ai ʔinia paŋa[r|ɾ]e mataʦekeʦeke tatapiniŋa muʦi[r|ɾ]i</PHON>
         <TRANSL xml:lang="eng">He took the spear, planting it (into the ground) outside, and stood there.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0012_W001">
             <FORM kindOf="original">ala-i</FORM>
@@ -1277,7 +1277,7 @@
             <FORM kindOf="original">mu-ciri</FORM>
             <PHON kindOf="original">mutʂiri</PHON>
             <FORM kindOf="standard">mu-ciri</FORM>
-            <PHON kindOf="standard">mutʂi[r|ɾ]i</PHON>
+            <PHON kindOf="standard">muʦi[r|ɾ]i</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-stand</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0012_W006_M01">
                 <FORM kindOf="original">mu</FORM>
@@ -1290,7 +1290,7 @@
                 <FORM kindOf="original">ciri</FORM>
                 <PHON kindOf="original">tʂiri</PHON>
                 <FORM kindOf="standard">ciri</FORM>
-                <PHON kindOf="standard">tʂi[r|ɾ]i</PHON>
+                <PHON kindOf="standard">ʦi[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">stand</TRANSL>
             </M>
         </W>
@@ -1299,7 +1299,7 @@
         <FORM kindOf="original">ara-tumu=kani=cu na ʔacip-ini ramisi tuluvu.</FORM>
         <PHON kindOf="original">aratumukaniʦu na ʔatʂipini ramiʂi tuɾuvu</PHON>
         <FORM kindOf="standard">aratumukanicu na 'acipini ramisi turuvu.</FORM>
-        <PHON kindOf="standard">a[r|ɾ]atumukaniʦu na ʔatʂipini [r|ɾ]amiʂi tu[r|ɾ]uvu</PHON>
+        <PHON kindOf="standard">a[r|ɾ]atumukaniʦu na ʔaʦipini [r|ɾ]amisi tu[r|ɾ]uvu</PHON>
         <TRANSL xml:lang="eng">Blades of grass grew at his feet.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0013_W001">
             <FORM kindOf="original">ara-tumu=kani=cu</FORM>
@@ -1354,13 +1354,13 @@
             <FORM kindOf="original">ʔacip-ini</FORM>
             <PHON kindOf="original">ʔatʂipini</PHON>
             <FORM kindOf="standard">'acip-ini</FORM>
-            <PHON kindOf="standard">ʔatʂipini</PHON>
+            <PHON kindOf="standard">ʔaʦipini</PHON>
             <TRANSL xml:lang="eng" kindOf="original">foot-3.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0013_W003_M01">
                 <FORM kindOf="original">ʔacip</FORM>
                 <PHON kindOf="original">ʔatʂip</PHON>
                 <FORM kindOf="standard">'acip</FORM>
-                <PHON kindOf="standard">ʔatʂip</PHON>
+                <PHON kindOf="standard">ʔaʦip</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">foot</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0013_W003_M02">
@@ -1375,13 +1375,13 @@
             <FORM kindOf="original">ramisi</FORM>
             <PHON kindOf="original">ramiʂi</PHON>
             <FORM kindOf="standard">ramisi</FORM>
-            <PHON kindOf="standard">[r|ɾ]amiʂi</PHON>
+            <PHON kindOf="standard">[r|ɾ]amisi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">root</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0013_W004_M01">
                 <FORM kindOf="original">ramisi</FORM>
                 <PHON kindOf="original">ramiʂi</PHON>
                 <FORM kindOf="standard">ramisi</FORM>
-                <PHON kindOf="standard">[r|ɾ]amiʂi</PHON>
+                <PHON kindOf="standard">[r|ɾ]amisi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">root</TRANSL>
             </M>
         </W>
@@ -1593,7 +1593,7 @@
         <FORM kindOf="original">tapianaŋai ma-ka-naanu si tia=makai maamia na=ʔiipi=musu?</FORM>
         <PHON kindOf="original">tapianaŋai makanaanu ʂi tiamakai maamia naʔiipimusu</PHON>
         <FORM kindOf="standard">tapianangai makanaanu si tiamakai maamia na'iipimusu?</FORM>
-        <PHON kindOf="standard">tapianaŋai makanaanu ʂi tiamakai maamia naʔiipimusu</PHON>
+        <PHON kindOf="standard">tapianaŋai makanaanu si tiamakai maamia naʔiipimusu</PHON>
         <TRANSL xml:lang="eng">What kind of bird sounds just like the voice of your late son, 'iipi?</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0016_W001">
             <FORM kindOf="original">tapianaŋai</FORM>
@@ -1641,13 +1641,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0016_W003_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -1719,7 +1719,7 @@
         <FORM kindOf="original">tanirərə-ʔau=pa=kia si ʔaisi=pa=ʔai miana si tia=na=ʔiipi=maku.</FORM>
         <PHON kindOf="original">tanirərəʔaupakia ʂi ʔaiʂipaʔai miana ʂi tianaʔiipimaku</PHON>
         <FORM kindOf="standard">tanirere'aupakia si 'aisipa'ai miana si tiana'iipimaku.</FORM>
-        <PHON kindOf="standard">tani[r|ɾ]e[r|ɾ]eʔaupakia ʂi ʔaiʂipaʔai miana ʂi tianaʔiipimaku</PHON>
+        <PHON kindOf="standard">tani[r|ɾ]e[r|ɾ]eʔaupakia si ʔaisipaʔai miana si tianaʔiipimaku</PHON>
         <TRANSL xml:lang="eng">I am still consoled because my late son 'iipi seems to be still around.</TRANSL>
         <W id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0017_W001">
             <FORM kindOf="original">tanirərə-ʔau=pa=kia</FORM>
@@ -1760,13 +1760,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0017_W002_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
@@ -1774,13 +1774,13 @@
             <FORM kindOf="original">ʔaisi=pa=ʔai</FORM>
             <PHON kindOf="original">ʔaiʂipaʔai</PHON>
             <FORM kindOf="standard">'aisi=pa='ai</FORM>
-            <PHON kindOf="standard">ʔaiʂipaʔai</PHON>
+            <PHON kindOf="standard">ʔaisipaʔai</PHON>
             <TRANSL xml:lang="eng" kindOf="original">stay=still=perhaps</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0017_W003_M01">
                 <FORM kindOf="original">ʔaisi</FORM>
                 <PHON kindOf="original">ʔaiʂi</PHON>
                 <FORM kindOf="standard">'aisi</FORM>
-                <PHON kindOf="standard">ʔaiʂi</PHON>
+                <PHON kindOf="standard">ʔaisi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">stay</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0017_W003_M02">
@@ -1816,13 +1816,13 @@
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">ʂi</PHON>
             <FORM kindOf="standard">si</FORM>
-            <PHON kindOf="standard">ʂi</PHON>
+            <PHON kindOf="standard">si</PHON>
             <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_004_I_WANT_TO_TAKE_A_WIFE_S0017_W005_M01">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">ʂi</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <PHON kindOf="standard">ʂi</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
             </M>
         </W>
