@@ -430,21 +430,38 @@ def _form_key(sentence):
     return " ".join("".join(sentence.find("FORM[@kindOf='original']").itertext()).split())
 
 
+# Maintainer, 2026-10-18 (round 2, near-matches): "If the two versions differ in
+# the addition or subtraction of an Amis word, then they are different records
+# and should not be merged. ... commas and periods and dashes can be ignored
+# ... Differences in ' vs \" vs curly versions of either must be discussed."
+IGNORABLE = re.compile(r"[\s,.\-]")
+
+
+def _loose_key(text):
+    return IGNORABLE.sub("", text)
+
+
 def plan_merge():
-    """Amis-Chinese S whose original FORM equals exactly one Amis-English S."""
+    """Amis-Chinese S joining one Amis-English S: identical original FORM, or
+    (if none) a FORM that differs only in spaces, commas, periods and dashes.
+    Returns {zho id: (eng id, "exact" | "loose", zho text)} and the ambiguous."""
     english = etree.parse(ENG_TMEM).getroot().findall("S")
     chinese = etree.parse(ZHO_TMEM).getroot().findall("S")
-    by_form = defaultdict(list)
+    exact, loose = defaultdict(list), defaultdict(list)
     for sentence in english:
-        by_form[_form_key(sentence)].append(sentence.get("id"))
+        exact[_form_key(sentence)].append(sentence.get("id"))
+        loose[_loose_key(_form_key(sentence))].append(sentence.get("id"))
     merges, ambiguous = {}, {}
     for sentence in chinese:
-        sid, matches = sentence.get("id"), by_form.get(_form_key(sentence), [])
-        if sid in KEEP_PUBLISHED or not matches:
+        sid, text = sentence.get("id"), _form_key(sentence)
+        if sid in KEEP_PUBLISHED:
             continue
+        kind, matches = "exact", exact.get(text, [])
+        if not matches:
+            kind, matches = "loose", loose.get(_loose_key(text), [])
         if len(matches) == 1:
-            merges[sid] = matches[0]
-        else:
+            merges[sid] = (matches[0], kind, text)
+        elif matches:
             ambiguous[sid] = matches
     return merges, ambiguous
 
@@ -477,15 +494,23 @@ def merge_translation_files(bank, write_ledger=False):
     identical to an English-file S joins it (its id is withdrawn -> the English
     id); every other Chinese-file S moves over with its own id. The English
     file keeps its path and TEXT id; the Chinese file is removed."""
-    merges, ambiguous = plan_merge()
+    plan, ambiguous = plan_merge()
+    merges = {old: keep for old, (keep, _, _) in plan.items()}
     ledger = {k: v for k, v in WITHDRAWN.items() if v["action"] == "merged"}
     if write_ledger:
         rows = [v for v in WITHDRAWN.values() if v["action"] != "merged"]
-        for old, keep in sorted(merges.items()):
+        for old, (keep, kind, text) in sorted(plan.items()):
+            if kind == "exact":
+                reason = ("Same Amis sentence (identical original FORM) as the kept "
+                          "Amis-English S; its Chinese translation moved there.")
+                ruling = MERGE_RULING
+            else:
+                reason = ("Same Amis sentence as the kept Amis-English S except for spaces, "
+                          "commas, periods or dashes; the kept S keeps its Amis-English FORM. "
+                          f"Amis-Chinese FORM was: {text}")
+                ruling = NEAR_RULING
             rows.append({"withdrawn_id": old, "kept_id": keep, "action": "merged",
-                         "reason": "Same Amis sentence (identical original FORM) as the kept "
-                                   "Amis-English S; its Chinese translation moved there.",
-                         "ruling": MERGE_RULING})
+                         "reason": reason, "ruling": ruling})
         target = {r["withdrawn_id"]: r["kept_id"] for r in rows}
         for row in rows:  # a duplicate whose survivor later joins points at the final id
             while row["kept_id"] in target and row["kept_id"] != row["withdrawn_id"]:
@@ -541,10 +566,15 @@ def merge_translation_files(bank, write_ledger=False):
             if row["withdrawn_id"] in final or row["kept_id"] not in final:
                 raise ValueError(f"withdrawn_ids.csv does not describe the output: {row['withdrawn_id']}")
     print(f"Deleted {dropped} list enumerators")
-    print(f"Joined {joined} Amis-Chinese S to identical Amis-English S; moved {moved} with their "
-          f"own ids; {len(ambiguous)} match more than one Amis-English S and were moved unmerged")
+    exact_n = sum(1 for _, kind, _ in plan.values() if kind == "exact")
+    print(f"Joined {joined} Amis-Chinese S to Amis-English S ({exact_n} identical, {joined - exact_n} "
+          f"differing only in spaces/commas/periods/dashes); moved {moved} with their own ids; "
+          f"{len(ambiguous)} match more than one Amis-English S and were moved unmerged")
 
 
+NEAR_RULING = ('2026-10-18 (round 2, near-matches): "Join spacing/punctuation/quote-only ones"; '
+               '"commas and periods and dashes can be ignored; merge in whatever way seems more '
+               'appropriate (but do so consistently, using code)."')
 MERGE_RULING = ("2026-10-18: \"If we have Mandarin and English translations for the same Amis, is it "
                 "one S or two? It should be one, with both English and Mandarin translations.\"; "
                 "\"Merge inside #180\"; \"For Glosbe, I think we can have just one file.\"")
