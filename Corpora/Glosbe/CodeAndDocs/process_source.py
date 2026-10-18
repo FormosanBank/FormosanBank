@@ -222,8 +222,102 @@ def apply_main_typography(sentences):
     return count
 
 
+# Editorial material in the Amis original FORM and the English TRANSL of the
+# two Amis translation-memory files moves to notes= (maintainer, 2026-10-18,
+# [editorial citations]: "Move to notes= (both files)"; "Consistency is good.
+# Putting in notes is fine."). Chinese TRANSL text is not touched.
+_REF = r"(?:[1-3] )?[A-Z][A-Za-z'.]*(?: [A-Za-z][A-Za-z'.]*)*\.? \d"
+EDITORIAL = [
+    # scripture or reading references inside parentheses, anywhere
+    ("citation", re.compile(r"\s*\([^()]*\d+:\d+[^()]*\)")),
+    # paragraph/picture/box cross-references: Amis "Nengnengen ko ...", English "See ..."
+    ("cross-reference", re.compile(r"\s*\(\s*(?:Nen?gnengen|See|Look under)\b[^()]*\)")),
+    # box and footnote captions: "(of the Watchtower)", "(of the Awake!)"
+    ("caption", re.compile(r"\s*\(no (?:Kowaping|Padaka|padaka)\)")),
+    # a trailing reference after a dash: " -Luka 12:15.", " -'Osien ko Isaya 40:26."
+    ("citation", re.compile(r"\s+-\s?(?:'Osien ko |Read |Compare |Nengnengen ko )?" + _REF + r"[^-]{0,70}$")),
+]
+LEADING = [
+    # the end of a reference whose start lies outside this Glosbe segment: "33:12-17) "
+    ("citation", re.compile(r"^\d+:\d[\d:,; \-]*\)\s+")),
+    # paragraph, page and list labels: "9 ", "6, 7. ", "(1) ", "(b) ", "b. ", "2. "
+    ("label", re.compile(r"^(?:\d{1,2}(?:\s*,\s*\d{1,2})*\.?|\((?:\d{1,2}|[a-z])\)|[a-z]\.)\s+(?=[A-Z\"(]|'[A-Z])")),
+]
+# A list label that starts a second question inside the same segment: "? (3) O"
+INNER_LABEL = re.compile(r"(?<=[?.!\"]) \((?:\d{1,2}|[a-z])\)(?= [A-Z])")
+
+
+def move_editorial(element):
+    """Move editorial pieces of one FORM/TRANSL into its notes. Returns them."""
+    text = "".join(element.itertext())
+    pieces = []
+    changed = True
+    while changed:
+        changed = False
+        for kind, pattern in LEADING + EDITORIAL:
+            match = pattern.search(text)
+            if not match:
+                continue
+            rest = (text[:match.start()] + " " + text[match.end():]).strip()
+            if not re.search(r"[^\W\d_]", rest):
+                continue  # the whole segment is the reference; keep it
+            pieces.append((match.start(), kind, match.group(0).strip()))
+            text = " ".join(rest.split())
+            changed = True
+            break
+    for match in list(INNER_LABEL.finditer(text))[::-1]:
+        pieces.append((match.start(), "label", match.group(0).strip()))
+        text = text[:match.start()] + text[match.end():]
+    if pieces:
+        element.text = text
+        notes = [element.get("notes")] if element.get("notes") else []
+        element.set("notes", " | ".join(notes + [p for _, _, p in pieces]))
+    return [(k, p) for _, k, p in pieces]
+
+
+def apply_label_notes(sentences, records):
+    """source_labels.csv labels, already removed at render, become notes."""
+    sid_of = {r["record"]: r["sid"] for r in records}
+    count = 0
+    for record, label in LABELS.items():
+        sentence = sentences.get(sid_of[record])
+        if sentence is None:
+            continue
+        for element, value in ([(sentence.find("FORM[@kindOf='original']"), label["source_label"])]
+                               + [(t, label["target_label"]) for t in sentence.findall("TRANSL")]):
+            note = value.strip()
+            if element.get("notes") and note in element.get("notes").split(" | "):
+                continue
+            notes = [element.get("notes")] if element.get("notes") else []
+            element.set("notes", " | ".join([note] + notes))
+            count += 1
+    return count
+
+
 def apply_rulings(bank):
-    """Post-cleaning, table-driven maintainer rulings (see README)."""
+    """Before the alias replay: source labels and editorial material to notes."""
+    trees = {p: etree.parse(p) for p in sorted((HERE.parent / "XML").rglob("*.xml"))}
+    sentences = {s.get("id"): s for t in trees.values() for s in t.getroot().findall("S")}
+    with (HERE / "source_records.jsonl").open(encoding="utf-8") as stream:
+        records = [json.loads(line) for line in stream]
+    labels = apply_label_notes(sentences, records)
+    moved = defaultdict(int)
+    for path, tree in trees.items():
+        if not path.name.endswith("_tmem.xml") or not path.name.startswith("Glosbe_ami_"):
+            continue
+        for sentence in tree.getroot().findall("S"):
+            targets = [sentence.find("FORM[@kindOf='original']")]
+            targets += [t for t in sentence.findall("TRANSL") if t.get(XML_LANG) == "eng"]
+            for element in targets:
+                for kind, _ in move_editorial(element):
+                    moved[kind] += 1
+    for path, tree in trees.items():
+        tree.write(str(path), encoding="utf-8", xml_declaration=True, pretty_print=True)
+    print(f"Recorded {labels} source-label notes; moved to notes: {dict(sorted(moved.items()))}")
+
+
+def apply_typography(bank):
+    """After the alias replay: main's typography (main_typography.csv)."""
     trees = {p: etree.parse(p) for p in sorted((HERE.parent / "XML").rglob("*.xml"))}
     sentences = {s.get("id"): s for t in trees.values() for s in t.getroot().findall("S")}
     typography = apply_main_typography(sentences)
@@ -252,6 +346,7 @@ if __name__ == "__main__":
     parser.add_argument("--formosanbank-root", type=Path)
     parser.add_argument("--apply-aliases", type=Path)
     parser.add_argument("--apply-rulings", type=Path)
+    parser.add_argument("--apply-typography", type=Path)
     parser.add_argument("--record-provenance", type=Path)
     args = parser.parse_args()
     if args.record_provenance:
@@ -260,6 +355,8 @@ if __name__ == "__main__":
         apply_reviewed_aliases(args.apply_aliases.resolve())
     elif args.apply_rulings:
         apply_rulings(args.apply_rulings.resolve())
+    elif args.apply_typography:
+        apply_typography(args.apply_typography.resolve())
     else:
         if not args.formosanbank_root:
             parser.error("use generate_xml.sh or supply --formosanbank-root")
