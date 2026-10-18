@@ -431,6 +431,17 @@ distinguish "forgot to gloss" from "couldn't gloss". But in that case, for
 consistency, let's use <UNCLEAR />"*; sources' own markers → *"B. A + placeholders"*
 (exact `?`/`??` and `?` used as a placeholder inside a gloss).
 
+**Amended 2026-10-18 (whole sentences).** When the source glosses no word of a
+sentence, its words carry no gloss (no TRANSL): the author is not glossing that
+sentence. `<UNCLEAR/>` marks a gloss the source itself marks unknown (`?`, `??`,
+`X`), a word the source leaves unglossed inside a glossed sentence, or a gloss
+FormosanBank cannot work out from the source. Maintainer (2026-10-18): *"It's
+different when the source doesn't gloss an entire sentence. In that case, the
+author simply isn't glossing that sentence. That's very different from the
+uathor marking the gloss as "?" or similar. Or when we, as FormosanBank
+maintainers, can't figure out what the source intended."*; wording approved on
+the Nowbucyang gloss review, round 2.
+
 ### POL-024 · RULED · 2026-08-10 · parentheticals in translations
 Two different things, treated differently:
 - **Literal translations / analytic paraphrases** (`(Lit. the money that
