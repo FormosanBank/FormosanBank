@@ -63,7 +63,7 @@ Read `source_path` top-level. Identify and report:
 - What scripts exist (at root or in a `scripts/` subdir) that likely belong in `CodeAndDocs/`?
 - What source data artifacts exist at root (e.g., original PDFs, extracted text files, decrypted source documents) that may belong in `CodeAndDocs/` for reproducibility — *unless* they contain private content per CLAUDE.md's "private source data" caveat, in which case surface to user.
 - What scratch dirs exist that should be dropped (`data/`, `raw_data/`, `Original/`, `img-by-page/`, `text-by-page/`, `logs/`, etc.)?
-- Does `Private/` exist? If yes, list its contents in the report under a clear "WILL NOT BE PORTED" heading. Do not surface it as a candidate for copying at any point in Phase 2.
+- Does `Private/` exist — or any top-level directory whose name begins with `Private` (`Private:Source/` is in use)? If yes, list its contents in the report under a clear "WILL NOT BE PORTED" heading. Do not surface it as a candidate for copying at any point in Phase 2.
 - Is there a `download_audio_data.sh`?
 
 ### Phase 2: Present plan
@@ -285,7 +285,11 @@ cd <formosanbank_path>
 - Target files are discovered by looking for `<Language>` as a path component under `Corpora/`, so published corpora with *flat* XML layouts are not scanned as targets — a clean result is informative, not exhaustive.
 - Matches are **informational, not blockers** — and per POL-022, expectations differ by corpus type: narratives may legitimately repeat sentences (within and across corpora built from the same materials), while for dictionaries, wordlists, and grammar example collections overlap is worth scrutinizing (repeats should generally be excluded unless the attestations carry distinct provenance). Report the match count and CSV path in the Phase 6 summary; the operator decides whether overlap warrants dropping or annotating anything before opening the PR.
 
-**Privacy leak check.** If `<source_path>/Private/` exists, verify nothing from it landed in the published corpus. Two layers:
+**Privacy leak check.** If any top-level directory of `<source_path>` whose
+name begins with `Private` exists — `Private/`, but also `Private:Source/`,
+`Private-data/` and the like (the Amis Kuo-Sung dev repo keeps its PDF in
+`Private:Source/`, which a check on `Private/` alone never saw) — verify
+nothing from it landed in the published corpus. Two layers:
 
 1. **Content-hash check (hard error).** For every file under `<source_path>/Private/`, compute a SHA-256 hash. For every file under `<formosanbank_path>/Corpora/<corpus_name>/`, compute its hash. Any match means a private file's exact content has leaked to the public corpus, regardless of filename — that's a real leak. Abort the port: do not declare Phase 5 success; surface the matching pair(s); recommend the user delete the offending file(s) (or revert the entire port with `rm -r <formosanbank_path>/Corpora/<corpus_name>/`) and investigate how it happened.
 2. **Basename collision check (warning, not blocker).** Any file in the published corpus whose basename matches a basename anywhere under `Private/` — even with different content. This catches plausible name reuse (e.g., a `Private/README.md` of operator notes and a public `README.md`). Surface the list for operator review; do not block.
@@ -296,19 +300,21 @@ Suggested implementation (run from the model, not pre-baked into a helper):
 python3 <<'EOF'
 import hashlib, sys
 from pathlib import Path
-priv = Path("<source_path>/Private")
+privs = [p for p in Path("<source_path>").iterdir() if p.is_dir() and p.name.startswith("Private")]
 target = Path("<formosanbank_path>/Corpora/<corpus_name>")
-if not priv.is_dir():
-    print("OK: no Private/ dir in source.")
+if not privs:
+    print("OK: no Private* dir in source.")
     sys.exit(0)
+print("private dirs:", [p.name for p in privs])
 def h(p):
     H = hashlib.sha256()
     with open(p, "rb") as f:
         for c in iter(lambda: f.read(8192), b""):
             H.update(c)
     return H.hexdigest()
-priv_by_hash = {h(f): f for f in priv.rglob("*") if f.is_file()}
-priv_names = {f.name for f in priv.rglob("*") if f.is_file()}
+priv_files = [f for priv in privs for f in priv.rglob("*") if f.is_file()]
+priv_by_hash = {h(f): f for f in priv_files}
+priv_names = {f.name for f in priv_files}
 content_leaks, name_collisions = [], []
 for tf in target.rglob("*"):
     if not tf.is_file(): continue
