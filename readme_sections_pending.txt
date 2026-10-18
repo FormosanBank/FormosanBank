@@ -9,7 +9,6 @@ Campbell-Favorlang notes
 Glosbe notes
 HundredPaiwanStories notes
 ILRDF_Dicts notes
-Li-Conjunction-Thao notes
 MontgomeryTexts notes
 NTUFormosanCorpus rights
 NTUFormosanCorpus notes
@@ -27,7 +26,6 @@ WakelinTexts notes
 Whitehorn_Collection rights
 Whitehorn_Collection notes
 Wikipedias notes
-WilangYutasVideos notes
 YeddaPalemeqBlog rights
 YeddaPalemeqBlog notes
 ePark notes
