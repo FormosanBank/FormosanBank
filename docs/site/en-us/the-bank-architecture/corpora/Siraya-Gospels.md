@@ -2,7 +2,7 @@
 
 Gravius's 1661 Matthew and John were printed in Siraya alongside Dutch. This corpus retains the hand-corrected Siraya transcription and its Dutch readings, with King James English and Chinese Union Version reference translations.
 
-There are 49 chapters and 1,951 printed verse records: 1,071 in Matthew and 880 in John. All published chapter and verse IDs remain. The two source scans and the retained reference editions are identified in the corpus's [source manifest](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Siraya_Gospels/CodeAndDocs/source_manifest.json).
+There are 49 chapters and 1,951 printed verse records: 1,071 in Matthew and 880 in John. All published chapter and verse IDs remain. The two source scans are identified in the corpus's [source manifest](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Siraya_Gospels/CodeAndDocs/source_manifest.json), and the retained King James and Chinese Union Version editions in its [reference-translation manifest](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Siraya_Gospels/CodeAndDocs/reference_translations/manifest.json).
 
 ***
 
