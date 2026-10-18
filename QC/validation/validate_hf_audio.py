@@ -322,6 +322,9 @@ def format_delta(label: str, paths: set[str], limit: int = 20) -> list[str]:
     return lines
 
 
+HF_DATASET_GIT_URL = "https://huggingface.co/datasets/{repo_id}"
+
+
 def git_repo_files(repo_id: str, revision: str) -> set[str]:
     """List a pinned public Hub tree over anonymous Git without API pagination."""
     env = {**os.environ, "GIT_TERMINAL_PROMPT": "0"}
@@ -333,7 +336,7 @@ def git_repo_files(repo_id: str, revision: str) -> set[str]:
                 "remote",
                 "add",
                 "origin",
-                f"https://huggingface.co/datasets/{repo_id}",
+                HF_DATASET_GIT_URL.format(repo_id=repo_id),
             ],
             [
                 "git",
@@ -357,14 +360,17 @@ def git_repo_files(repo_id: str, revision: str) -> set[str]:
                 text=True,
             )
         result = subprocess.run(
-            ["git", "ls-tree", "-r", "--name-only", "FETCH_HEAD"],
+            # -z: NUL-separated names, never quoted. Plain output prints a
+            # non-ASCII name as a quoted octal escape ("Yami_5475_\\346…mp3"),
+            # which matches no expected path (13,279 ILRDF Yami files).
+            ["git", "ls-tree", "-r", "--name-only", "-z", "FETCH_HEAD"],
             cwd=temp_dir,
             env=env,
             check=True,
             capture_output=True,
             text=True,
         )
-    return set(result.stdout.splitlines())
+    return {name for name in result.stdout.split("\0") if name}
 
 
 def validate_online(
