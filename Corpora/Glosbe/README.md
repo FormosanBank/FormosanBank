@@ -1,8 +1,8 @@
 # Glosbe Formosan Corpus
 
 This corpus contains Glosbe dictionary and translation-memory examples for Amis,
-Atayal, Saisiyat and Truku. It has seven XML files, 5,787 S, 7,758 TRANSL,
-11,574 FORM and 11,574 PHON. There is no W/M analysis or Formosan audio.
+Atayal, Saisiyat and Truku. It has seven XML files, 5,676 S, 7,680 TRANSL,
+11,352 FORM and 11,352 PHON. There is no W/M analysis or Formosan audio.
 Glosbe is crowdsourced; preserving a source pair does not establish that its
 translation or language label is correct. Religious/JW material predominates.
 
@@ -45,9 +45,17 @@ stay. Chinese TRANSL text is not changed. Notes are not passed to PHON.
 **Main's typography is kept where the PR's was rejected** (maintainer, 2026-10-18:
 dashes, dates, symbols "Reject"; ellipsis "Reject").
 `CodeAndDocs/main_typography.csv` restores main's commas for source em-dashes,
-`1988.11.1` dates, `,` for menu ` > `, no `®`, and `...` for `. . .` in 202 fields;
-each row names the exact text it replaces and the build stops if that text has
-changed.
+`1988.11.1` dates, `,` for menu ` > `, no `®`, and `...` for `. . .` in 202 fields,
+and main's text for five quotation sentences without independent evidence
+(U001264, U001777, U001790, U002107, U002127; ruling: "the 5 stay as main has
+them"). Each row names the exact text it replaces and the build stops if that text
+has changed. [`CodeAndDocs/joined_translations.csv`](CodeAndDocs/joined_translations.csv)
+rejoins five English alternative pairs into main's single "; "-joined translation
+(U000011, U001000, U002829, U003827, U003922; ruling: "Join them back as main had
+them"); other English alternatives stay separate `ver="alt"` TRANSL.
+[`CodeAndDocs/drop_enumerators.csv`](CodeAndDocs/drop_enumerators.csv) deletes the 17
+list enumerators (`(2)`, `(b)`) in the 15 fields where main had written `2.` /
+`b.` (ruling: "Delete the enumerators entirely.").
 `CodeAndDocs/source_markers.csv` records the reviewed footnote and highlight roles
 used during source capture; it does not authorize stripping unreviewed markers.
 
@@ -65,20 +73,28 @@ They concern dictionary candidates only; `trv` means Truku in that comparison.
 Mandarin and English translations for the same Amis, is it one S or two? It
 should be one, with both English and Mandarin translations."; "For Glosbe, I
 think we can have just one file. Some Ss have translations in English, some in
-Mandarin, and some in both."). `XML/Amis/Glosbe_ami_eng_tmem.xml` keeps its path
-and TEXT id and now holds 4,625 S: 2,392 with English only, 1,758 with English
-and Chinese, 475 with Chinese only. An Amis-Chinese S whose Amis original FORM is
-identical (whitespace-normalised, after the fixes above) to exactly one Amis-English
-S joins it; 1,821 Amis-Chinese ids were withdrawn this way. Every other
-Amis-Chinese S moved over with its own id. Texts that differ only by punctuation,
-spacing, quotes or a few letters were not joined. `Glosbe_ami_zho_tmem.xml` was
-removed.
+Mandarin, and some in both."; on its name: "Just call it Amis.xml. Obviously fix
+the citation and BibTeX as appropriate."). `XML/Amis/Amis.xml` (TEXT id
+`GLOSBE_ami_TMEM`) holds 4,514 S: 2,360 with English only, 1,790 with English and
+Chinese, 364 with Chinese only. An Amis-Chinese S joins an Amis-English S when
+their Amis original FORMs are identical (1,800), or, failing that, equal once
+spaces, commas, periods and dashes are ignored (53; ruling: "commas and periods
+and dashes can be ignored"). The joined S keeps the Amis-English id and FORM; the
+Chinese-file FORM of a non-identical join is quoted in the ledger. Texts that
+differ by an Amis word, a letter, an apostrophe or a quotation mark are not
+joined (ruling: "If the two versions differ in the addition or subtraction of an
+Amis word, then they are different records and should not be merged";
+"Differences in ' vs \" vs curly versions of either must be discussed").
+Every other Amis-Chinese S moved over with its own id.
 
 **Withdrawn identifiers** (POL-037, POL-051) are listed with the id kept in their
 place, the reason and the maintainer's words in
-[`CodeAndDocs/withdrawn_ids.csv`](CodeAndDocs/withdrawn_ids.csv): 1,821 joined
-Amis-Chinese S ids, the TEXT id `GLOSBE_ami_zho_TMEM` (kept:
-`GLOSBE_ami_eng_TMEM`), and three duplicate dictionary entries deleted by ruling:
+[`CodeAndDocs/withdrawn_ids.csv`](CodeAndDocs/withdrawn_ids.csv): 1,853 joined
+Amis-Chinese S ids; 79 Amis-Chinese copies of a sentence that were identical to
+another copy once the search-highlight spaces were removed (ruling: "Yes, remove
+them (and join the 79)"; this includes U000801 -> U000669); the TEXT ids
+`GLOSBE_ami_eng_TMEM` and `GLOSBE_ami_zho_TMEM` (both kept as `GLOSBE_ami_TMEM`);
+and three duplicate dictionary entries deleted by ruling:
 `GLOSBE_tay_eng_LEXICAL_U000030` btunux "stone" (kept U000029 btúnux),
 `GLOSBE_tay_eng_LEXICAL_U000104` kayal "sky" (kept U000093 kāyal) and the Truku
 `GLOSBE_trv_eng_LEXICAL_U000111` yako "I" (kept the Saisiyat
@@ -104,9 +120,11 @@ pages that pad the searched word with spaces; the build removes that padding whe
 it shows (`i ,`, `han ?`, `( Nengnengen`, `" o wacay`) (maintainer, 2026-10-18:
 "Fix the whole highlight-space class (426 S) before merge"; "No space after \"").
 [`CodeAndDocs/highlight_space_keep.csv`](CodeAndDocs/highlight_space_keep.csv)
-keeps 92 such spaces that main already published, plus `'Olic 118 ,`, which the
-English-paired capture also prints. Two hand edits restore the space after a comma
-in Amis-English U000916 and U001027 (ruling: "Restore the space (manual edit)"). Shared cleaning owns Unicode typography and quotation handling.
+keeps only `'Olic 118 ,`, which the English-paired capture also prints; the 92
+spaces main had published are removed too (ruling: "Yes, remove them"). Hand edits
+restore the space after a comma in Amis-English U000916 and U001027 and in
+Amis-Chinese U000059 and U002061 (rulings: "Restore the space (manual edit)";
+"Yes" + "And merge as needed"). Shared cleaning owns Unicode typography and quotation handling.
 Only explicitly reviewed footnote stars and three keyword-highlighting pairs are
 removed; a previously unreviewed star stops source capture. Literal grammaticality
 judgments must not be admitted by stripping their markers (POL-016).
@@ -114,7 +132,7 @@ judgments must not be admitted by stripping their markers (POL-016).
 Joshua's accepted quotation corrections are retained in
 `CodeAndDocs/quote_corrections.csv`. The original pre-correction XML remains
 unchanged in `CodeAndDocs/pre_correction_snapshot/` (POL-035).
-`CodeAndDocs/manual_edits.xml` replays 192 reviewed S blocks before cleaning so
+`CodeAndDocs/manual_edits.xml` replays 194 reviewed S blocks before cleaning so
 fresh source builds preserve corrections without appending the same classifier
 events on every run. It preserves three repairs that the restored context otherwise
 defeats, separates the two quotations in Chinese S U001443,
@@ -158,13 +176,14 @@ Recorded quotation repairs preserve reviewed readings, but automatic quotation
 classification can still miss errors. Distinct source spellings remain separate
 even when their standard forms coincide.
 
-Open as of 2026-10-18 (not ruled): `Glosbe_ami_eng_tmem.xml` now also carries the
-Chinese translations but keeps its name and its Amis-English citation; 121
-Chinese-only S whose Amis differs from an Amis-English S only by spacing,
-punctuation, quotes or a few letters, and 3 that match two Amis-English S, are not
-joined; U000046 (above); the 92 highlight spaces main already published (removing
-them would make 79 pairs of Chinese-only S identical); paragraph numbers,
-cross-references and citations inside Chinese TRANSL text are unchanged.
+Open as of 2026-10-18 (not ruled): U000046 (above); one pair that differs only by a
+final apostrophe (Amis-Chinese U001151 "...Makapahay Faloco" / Amis-English U002332
+"...Makapahay Faloco'"); 3 Amis-Chinese S (U001767, U001773, U002187) whose Amis
+equals two Amis-English S (U000875, U003376) that are themselves the same Amis
+sentence with different English translations; Amis-Chinese S that differ from an
+Amis-English S by a word, a list number written "(1)" vs "1.", a slashed date or a
+menu symbol are not joined. Paragraph numbers, cross-references and citations
+inside Chinese TRANSL text are left as published (ruling: "Leave as is").
 
 ## Reproduction
 
@@ -193,10 +212,10 @@ ISO paths. Unexpected XML outside the declared output paths stops a rebuild.
 
 **POL-047 deviation:** Right after cleaning, the shared duplicate removal
 (`plan_removals`/`apply_removals`, original tier, within each file) runs through a
-corpus-local wrapper that honours `keep_published_ids.csv`. It runs before the
-editorial step on purpose: moving references to notes makes 30 pairs of published
-Amis-Chinese S (copies that differ only by a highlight space main published)
-identical, and withdrawing either id is not ruled. After that, the shared removal
+corpus-local wrapper that honours `keep_published_ids.csv` and stops if it would
+withdraw a published id that `withdrawn_ids.csv` does not list (79 are listed). It
+runs before the editorial step, so it compares the texts as cleaned, not after
+references move to notes. After that, the shared removal
 helper applies the exact associations in `source_aliases.csv`, preserving distinct
 translations as alternate readings (POL-025); standard spelling collisions do not
 authorize deletion of distinct source spellings.

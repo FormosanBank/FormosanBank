@@ -103,7 +103,7 @@ def test_source_quotes_keep_the_adjacent_glottal_letter():
     final = final_sentences()
     for sid, phrase in [
         ("GLOSBE_ami_eng_TMEM_U000271", '"\'acaaw to toki"'),
-        ("GLOSBE_ami_zho_TMEM_U001790", '"\'odingaray a pasalat"'),
+        ("GLOSBE_ami_zho_TMEM_U001790", 'a\'"odingaray a pasalat"'),  # kept as main (ruling)
         ("GLOSBE_ami_zho_TMEM_U000293", '"Itini'),
     ]:
         assert phrase in final[resolve(sid)].findtext('FORM[@kindOf="original"]')
@@ -116,8 +116,8 @@ def test_final_ids_and_approved_tiers():
                  for s in etree.parse(f).findall("S")}
     final = final_sentences()
     ledger = withdrawn()
-    assert published - final.keys() == {k for k, v in ledger.items() if v["action"] != "text merged"}
-    assert all(v["kept_id"] in final for k, v in ledger.items() if v["action"] != "text merged")
+    assert published - final.keys() == {k for k, v in ledger.items() if not v["action"].startswith("text")}
+    assert all(v["kept_id"] in final for k, v in ledger.items() if not v["action"].startswith("text"))
     assert "GLOSBE_ami_zho_TMEM_U000046" in final  # keep_published_ids.csv
     assert final.keys() - published == {"GLOSBE_tay_eng_LEXICAL_T5674367316521196016",
                                         "GLOSBE_xsy_eng_LEXICAL_T5403228964499116686"}
@@ -164,16 +164,33 @@ def test_one_amis_file_joins_identical_sentences():
     from lxml import etree
 
     assert not (HERE.parent / "XML/Amis/Glosbe_ami_zho_tmem.xml").exists()
-    root = etree.parse(HERE.parent / "XML/Amis/Glosbe_ami_eng_tmem.xml").getroot()
-    assert root.get("id") == "GLOSBE_ami_eng_TMEM"
-    assert withdrawn()["GLOSBE_ami_zho_TMEM"]["kept_id"] == "GLOSBE_ami_eng_TMEM"
+    assert not (HERE.parent / "XML/Amis/Glosbe_ami_eng_tmem.xml").exists()
+    root = etree.parse(HERE.parent / "XML/Amis/Amis.xml").getroot()
+    assert root.get("id") == "GLOSBE_ami_TMEM"
+    assert "English and Chinese translations" in root.get("citation")
+    for old in ("GLOSBE_ami_zho_TMEM", "GLOSBE_ami_eng_TMEM"):
+        assert withdrawn()[old]["kept_id"] == "GLOSBE_ami_TMEM"
     s = root.find('S[@id="GLOSBE_ami_eng_TMEM_U000012"]')
     assert resolve("GLOSBE_ami_zho_TMEM_U000143") == "GLOSBE_ami_eng_TMEM_U000012"
     assert [t.get(SOURCE.XML_LANG) for t in s.findall("TRANSL")] == ["eng", "zho"]
     kept = root.find('S[@id="GLOSBE_ami_zho_TMEM_U000046"]')
     assert [t.get(SOURCE.XML_LANG) for t in kept.findall("TRANSL")] == ["zho"]
     joined = {k for k, v in withdrawn().items() if v["action"] == "merged"}
-    assert len(joined) == 1821
+    assert len(joined) == 1853
+    ledger = withdrawn()
+    assert ledger["GLOSBE_ami_zho_TMEM_U000801"]["kept_id"] == "GLOSBE_ami_zho_TMEM_U000669"
+    assert ledger["GLOSBE_ami_zho_TMEM_U002061"]["kept_id"] == "GLOSBE_ami_eng_TMEM_U000916"
+    assert "GLOSBE_ami_zho_TMEM_U001151" in final_sentences()  # differs by an apostrophe
+
+
+def test_round_two_rulings():
+    final = final_sentences()
+    english = lambda sid: [t.text for t in final[sid].findall("TRANSL") if t.get(SOURCE.XML_LANG) == "eng"]
+    assert english("GLOSBE_ami_eng_TMEM_U000011") == ["Fear them not, O my beloved,; Though our enemies will fight it,"]
+    assert len(english("GLOSBE_ami_eng_TMEM_U000762")) == 2  # kept split
+    assert english("GLOSBE_ami_eng_TMEM_U002829")[0].endswith('; Give Success to All Your Plans"')
+    form = final["GLOSBE_ami_eng_TMEM_U000836"].find('FORM[@kindOf="original"]')
+    assert form.get("notes") == "(Nengnengen ko satapangan coka.)"
 
 
 def test_highlight_spaces_and_editorial_notes():
@@ -202,14 +219,13 @@ def test_language_homographs_survive():
     (900, "How would Jehovah's counsel benefit Job long after his trials?"),
     (2543, "What goals might you set for yourself?"),
     (2597, "How can you plan to be a full-time Christian minister?"),
-    (2829, 'Give Success to All Your Plans"'),
     (3376, "What will we consider?"),
     (4033, "How can baptized brothers be courageous?"),
 ])
 def test_reviewed_alias_readings_survive_current_dedup(number, reading):
     from lxml import etree
 
-    tree = etree.parse(HERE.parent / "XML/Amis/Glosbe_ami_eng_tmem.xml")
+    tree = etree.parse(HERE.parent / "XML/Amis/Amis.xml")
     sentence = tree.find(f'S[@id="GLOSBE_ami_eng_TMEM_U{number:06}"]')
     assert reading in [t.text for t in sentence.findall('TRANSL[@ver="alt"]')]
 
