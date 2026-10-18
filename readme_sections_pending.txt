@@ -12,9 +12,7 @@ MontgomeryTexts notes
 NTUFormosanCorpus rights
 NTUFormosanCorpus notes
 NTU_Paiwan_ASR notes
-Nowbucyang-Truku-Thesis notes
 Paiwan_Stories notes
-RauDong notes
 SEALS33 notes
 Siraya_Gospels rights
 Siraya_Gospels notes
@@ -23,7 +21,6 @@ UtrechtManuscriptWordList notes
 WakelinTexts notes
 Whitehorn_Collection rights
 Whitehorn_Collection notes
-Wikipedias notes
 YeddaPalemeqBlog rights
 YeddaPalemeqBlog notes
 ePark notes
