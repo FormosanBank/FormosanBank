@@ -190,7 +190,46 @@ def split_null_morpheme(ids):
         ms[0].append(_new_gloss(m_gloss))
 
 
-STEPS = [merge_joint_glosses, add_thesis_glosses, gloss_morphemes_unclear, split_null_morpheme]
+# Ruling 8 -- [nb-other-clitic-gloss-fusion]. Maintainer: "Treat host +
+# clitic as one W (POL-060)". The thesis writes a clitic as its own token
+# (`Ini =ku`) but usually prints ONE gloss token for host and clitic (不-我).
+# data/manual/clitic_merges.tsv lists every such pair, with the printed form
+# and gloss lines; pairs whose clitic has its own printed gloss token are not
+# in it. Excluded for now by the maintainer, awaiting a follow-up card:
+# S-n-rus =mu (C03_E012A), B-n-arig =ku (C04_E003B), Mgay =ku (C01_E011D,
+# C01_E011D2). The merged W keeps the host's id, FORM "host clitic", and the
+# printed gloss; its Ms are the host's Ms then the clitic's M, each with its
+# gloss and its published id. The clitic W is removed.
+CLITIC_MERGES = HERE / "data" / "manual" / "clitic_merges.tsv"
+
+
+def merge_clitic_glosses(ids):
+    with CLITIC_MERGES.open(newline="", encoding="utf-8") as stream:
+        rows = list(csv.DictReader(stream, delimiter="\t"))
+    _expect(rows, "clitic_merges.tsv is empty")
+    for row in rows:
+        host, clitic = ids.get(row["host_w_id"]), ids.get(row["clitic_w_id"])
+        label = f"{row['sentence_id'][len(P):]} {row['merged_form']}"
+        _expect(host is not None and clitic is not None and host.getnext() is clitic
+                and host.getparent().get("id") == row["sentence_id"], f"{label}: words not found")
+        _expect(_original(host).text == row["host_form"] and _original(clitic).text == row["clitic_form"],
+                f"{label}: FORMs changed")
+        _expect(_gloss_text(host) == row["host_gloss"] and _gloss_text(clitic) == row["clitic_gloss"],
+                f"{label}: glosses changed")
+        _expect(row["merged_gloss"] == f"{row['host_gloss']}-{row['clitic_gloss']}", f"{label}: bad table row")
+        _expect(set(clitic.attrib) == {"id"} and {c.tag for c in clitic} <= {"FORM", "PHON", "TRANSL", "M"},
+                f"{label}: clitic W carries more than FORM/PHON/TRANSL/M")
+        clitic_ms = clitic.findall("M")
+        _expect(len(clitic_ms) == 1, f"{label}: clitic W should have one M")
+        _original(host).text = row["merged_form"]
+        _strip_derived(host)
+        host.find("TRANSL").text = row["merged_gloss"]
+        host.findall("M")[-1].addnext(clitic_ms[0])
+        host.getparent().remove(clitic)
+
+
+STEPS = [merge_joint_glosses, add_thesis_glosses, gloss_morphemes_unclear, split_null_morpheme,
+         merge_clitic_glosses]
 
 
 def main():

@@ -51,6 +51,16 @@ the author chose not to gloss.
 `skiya` in C02_E001D (`asu skiya`, printed gloss `船 ∅-飛`) is the W
 `∅-skiya` with a null M `∅` (gloss `∅`, a new id, …W2M2) before the M `skiya`
 (gloss `飛`, its published id …W2M1); the sentence FORM stays as printed.
+The thesis writes a clitic as its own token (`Ini =ku`) but usually prints one
+gloss token for host and clitic (`不-我`). Those 95 pairs, listed with their
+printed form and gloss lines in `CodeAndDocs/data/manual/clitic_merges.tsv`,
+are one W each (POL-060): FORM `Ini =ku`, gloss `不-我`, the host's Ms then the
+clitic's M, all keeping their published ids. Three clitics with their own
+printed gloss token stay separate W (`Hpuy-an =nami` 煮-LF 我們, C01_E024A;
+`Gaga =su` and `Gisu =su` 正在 你, C01_E027A/B). `S-n-rus =mu` (C03_E012A),
+`B-n-arig =ku` (C04_E003B) and `Mgay =ku` (C01_E011D, C01_E011D2) await a
+maintainer ruling and are unchanged, as is the morpheme boundary of `Nnita`
+(C03_E003A).
 
 Lexical and derivation tables remain source evidence outside the published
 sentence/interlinear-example scope. Original PHON follows the source's
