@@ -20,6 +20,8 @@ Yedda Palemeq, a Paiwan speaker and linguist, maintained a [blog](https://yeddap
 | Translated words |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 5,877 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 |
 | Morphologically segmented | 4,475 |
 | Glossed words | 0 |
 
@@ -31,7 +33,7 @@ Yedda Palemeq, a Paiwan speaker and linguist, maintained a [blog](https://yeddap
 ### **Access Details**
 
 * The corpus XML and retained processing code are available [in FormosanBank](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/YeddaPalemeqBlog).
-* `CodeAndDocs/scripts/` rebuilds the published XML from a frozen snapshot of the scrape, with no network access. `CodeAndDocs/scrape/` holds the code that read the blog in the first place; the build does not run it, and a fresh scrape of a live blog will not reproduce the snapshot byte-for-byte.
+* `CodeAndDocs/generate_xml.sh` (with the scripts in `CodeAndDocs/scripts/`) rebuilds the published XML from a frozen snapshot of the scrape, with no network access; `CodeAndDocs/validate.sh` runs the checks separately. `CodeAndDocs/scrape/` holds the code that read the blog in the first place; the build does not run it, and a fresh scrape of a live blog will not reproduce the snapshot byte-for-byte.
 
 ***
 
@@ -47,6 +49,7 @@ Yedda Palemeq, a Paiwan speaker and linguist, maintained a [blog](https://yeddap
 
 * Examples are not necessarily glossed word by word; repeated words and common function words are often unglossed in the source. Glosses were matched within a single example only — a gloss is never reused from another example, since it may not be contextually correct. Where no gloss can be found, the `<W>` element's `<FORM>` is just a copy of the word in the example and no `<TRANSL>` is provided.
 * Sometimes the same word is spelled differently in the main text and in the glosses. We have assumed the main text is correct and the gloss is incorrect; in those cases the gloss is ignored.
+* Word glosses the author marks as unknown are published as `<UNCLEAR/>` rather than a literal `?`: one gloss that is only `?` (`S77_1W5` `nu`), and seven that begin with `?` followed by the author's comment (`? I cannot find this word.`), whose full text moves to the gloss's `notes` attribute. One more, `S313_1W3` `k<ar>im`, is glossed `to find` with the author's explanation in `notes`. All nine are listed in `CodeAndDocs/data/formosanbank_audit/unclear_gloss_review.tsv`. A `?` attached to a word in a gloss (`LIG?`, `right?`) is the author's own hedge and is kept.
 * **This corpus is segmented but not glossed at the morpheme level.** The author glosses *words*, in prose, and never glosses individual morphemes, so no `<M>` element carries a `<TRANSL>` — and none ever has, in any version of this corpus. A morpheme has a form and a position and nothing else. That is why "Glossed words" above reads 0 while "Morphologically segmented" reads 4,475: segmentation and glossing are separate things here and only the first is present. Supplying morpheme glosses would be original linguistic work rather than data recovery.
 
 * Sixteen sentences carry no `<W>` tier at all — the blog prints them as bare phrase entries with no word breakdown, so there is nothing to segment. They have no words and no morphemes.

@@ -31,7 +31,7 @@ The finding-based validators — [validate_xml.py](validate-xml.md), [validate_t
 | **SOFT** | A candidate cleanup or review item. Reported and written to the findings CSV, but **never** changes the exit code. |
 | **WARN** | Advisory only. Reserved; rarely used. |
 
-These validators print a compact **per-rule summary** to the terminal and write **one findings CSV** whose path is announced as `Details: <path>` — per-finding detail lives in the CSV, not the terminal. Pass `--no-exit-on-hard` to inspect findings without failing your shell (useful during discovery; CI leaves it off so HARD findings gate).
+These validators print a compact **per-rule summary** to the terminal and write **one findings CSV** whose path is announced as `Details: <path>` — per-finding detail lives in the CSV, not the terminal. To look up an id you saw in either, see [The rule catalogue](rule-catalogue.md), which lists all 83 rules and is generated from the code. Pass `--no-exit-on-hard` to inspect findings without failing your shell (useful during discovery; CI leaves it off so HARD findings gate).
 
 {% hint style="warning" %}
 Not every validator uses this framework. [validate_dialect.py](validate-dialect.md), [validate_orthography.py](validate-orthography.md), [validate_vocabulary.py](validate-vocabulary.md), and [validate_duplicate_sentences.py](validate-duplicate-sentences.md) print their own reports and **always exit 0** — they are informational. Each page says which kind it is.
@@ -91,7 +91,7 @@ Run after the XML is built (these are read-only). XML format must pass first; la
 (See [QC/README.md](https://github.com/FormosanBank/FormosanBank/blob/main/QC/README.md) for the authoritative version of both sequences.)
 
 {% hint style="danger" %}
-Everything in the **cleaning & standardization** pipeline — plus the [fix-up utilities](fix-up-utilities.md) — modifies XML *in place*. Some cleaners default to `--dry-run`, but several (e.g. `clean_xml.py`, `apply_manual_edits.py`, `standardize.py`) mutate immediately. Always `git diff` before committing. The **validation** pipeline never mutates data.
+Everything in the **cleaning & standardization** pipeline modifies XML *in place*. Some cleaners default to `--dry-run`, but several (e.g. `clean_xml.py`, `apply_manual_edits.py`, `standardize.py`) mutate immediately. Always `git diff` before committing. The **validation** pipeline never mutates data.
 {% endhint %}
 
 ## Reference pages
@@ -106,28 +106,30 @@ Everything in the **cleaning & standardization** pipeline — plus the [fix-up u
 * [validate_vocabulary.py](validate-vocabulary.md) — vocabulary vs reference
 * [validate_duplicate_sentences.py](validate-duplicate-sentences.md) — within-corpus duplicates
 * [validate_audio.py](validate-audio.md) — broken/silent/mis-ranged audio
+* [content_delta.py](content-delta.md) — removed, renamed or relabelled published XML, red for override
+* [validate_hf_audio.py](validate-hf-audio.md) — Hub ↔ XML audio parity (blocking in CI)
+* [sync_hf_audio.py](sync-hf-audio.md) — repair a dataset to match the XML (dry run by default)
 
 ### Cleaning
 
 * [Manual edits](manual-edits.md) — capture & replay reproducible hand edits (runs first)
 * [clean_xml.py](clean-xml.md): Unicode, entity, punctuation, and translation-metadata normalization
 * [clean_audio.py](clean-audio.md) — remove broken `<AUDIO>` entries
-* [clean_filepaths.py](clean-filepaths.md) — sanitize cross-platform filenames
 * [remove_duplicate_sentences.py](remove-duplicate-sentences.md) — drop duplicate `<S>`
 * [suppress_transl_annotations.py](suppress-transl-annotations.md) — strip annotator notes from `<TRANSL>`
 
 ### Orthography & tier building
 
 * [orthography_extract.py](orthography-extract.md) — grapheme inventories & statistics
-* [orthography_compare.py](orthography-compare.md) — compare two corpora
 * [standardize.py](standardize.md) — build the `standard` `FORM` tier
 * [add_phonology.py](add-phonology.md) — add `PHON` tiers
 * [orthography_detector.py](orthography-detector.md) — guess a corpus's source orthography
 * [dialect_detector](dialect-detector.md) — ML per-language dialect prediction
+* [declared_vs_detected.py](declared-vs-detected.md) — the pipeline's dialect and source orthography vs the detectors
+* [lint_hidden_tables.py](lint-hidden-tables.md) — language data hiding in build code (POL-039), advisory
 
 ### Fix-ups & review
 
-* [Fix-up utilities](fix-up-utilities.md) — `fix_dialects`, `fix_ids`, `fix_multiple_translations`
 * [sample_sentences.py](sample-sentences.md) — random `<S>` sample for human review
 * [find_duplicate_sentences.py](find-duplicate-sentences.md) — cross-corpus duplicate detection
 * [OCR Review Tool](ocr-review-tool.md): guided, resumable human review of OCR-derived XML
@@ -146,4 +148,4 @@ Everything in the **cleaning & standardization** pipeline — plus the [fix-up u
 
 ### Miscellaneous
 
-* [Misc utilities](misc-utilities.md) — `add_durations`, `group_audios`, `organize_batches`, `upload_to_hf`
+* [Misc utilities](misc-utilities.md) — `upload_to_hf`

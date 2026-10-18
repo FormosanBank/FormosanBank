@@ -19,6 +19,8 @@ Everything in `statistics/` **except one file**:
 
 That last row is the trap. `audio_durations.csv` sits among generated files, looks generated, and is not — it is a source of truth that CI only ever **reads**.
 
+One generated file lives outside `statistics/`, and it is the well-behaved case: [`QC/validation/RULES.md`](https://github.com/FormosanBank/FormosanBank/blob/main/QC/validation/RULES.md), the validation-rule catalogue. A developer regenerates it with `python QC/validation/rules_catalogue.py`, and unlike everything above it is **enforced** — a test runs `--check`, so a stale catalogue is a red check rather than a silent overwrite. See [The rule catalogue](../qc-pipeline/rule-catalogue.md).
+
 ## Why it exists
 
 Audio seconds cannot be recomputed in CI, because the audio is gitignored and the full download is roughly 105 GiB. So the seconds are computed once, by hand, and committed alongside the audio-file count they were computed against. CI fills the seconds columns from this file and compares that stored `count_at_compute` against the corpus's current XML audio count; when they diverge it emits a `STALE AUDIO` warning rather than a wrong number.

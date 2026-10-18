@@ -36,7 +36,7 @@ With two supporting skills used on demand: `sample-sentences-for-expert-review` 
 
 ### `setup-new-dev-repo`
 
-Bootstraps a fresh `Formosan-<Name>/` dev repo with the standard layout (`XML/`, `CodeAndDocs/`, `Private/`), a Python `.venv` installed from FormosanBank's `requirements.txt`, a `.gitignore` (audio is gitignored), a README scaffold, and a SessionStart venv-check safety hook. Surfaces decisions like whether to set up a git remote and whether to include audio scaffolding. Use it when starting a corpus that doesn't yet have its own repo.
+Bootstraps a fresh `Formosan-<Name>/` dev repo with the standard layout (`XML/`, `CodeAndDocs/`, `Private/`), a Python `.venv` installed from FormosanBank's `requirements.txt`, a `.gitignore` (audio is gitignored), a README scaffold that already carries the Rights, reproduction and Notes and Issues sections the port requires, a `CodeAndDocs/generate_xml.sh` skeleton with the five canonical steps written out (one entry point, staging build, provenance written at the end), a `tests/test_source_accounting.py` template to fill in before the parser (every source unit emitted or rejected with a reason), and a SessionStart venv-check safety hook. Surfaces decisions like whether to set up a git remote and whether to include audio scaffolding. Use it when starting a corpus that doesn't yet have its own repo.
 
 ### `run-qc-pipeline`
 
@@ -44,11 +44,11 @@ Runs the full QC sequence on a **dev repo**: [apply_manual_edits](qc-pipeline/ma
 
 ### `audit-dev-repo`
 
-The guided version of [Running an Audit](running-an-audit.md). Reads a dev repo's preprocessing, maps each transformation onto FormosanBank's pipeline, runs the validators on its output, and diffs the `original` tier against the source for dropped characters/punctuation and extraction artifacts — **pausing for the maintainer's judgment on each concern** before writing the report. Use it when reviewing a new dev repo's preprocessing prior to QC and porting.
+The guided version of [Running an Audit](running-an-audit.md). Reads a dev repo's preprocessing, maps each transformation onto FormosanBank's pipeline, runs the validators on its output, and diffs the `original` tier against the source for dropped characters/punctuation and extraction artifacts — **pausing for the maintainer's judgment on each concern** before writing the report. Use it when reviewing a new dev repo's preprocessing prior to QC and porting. Since October 2026 it starts by profiling the corpus (tiers, audio, source kind, new or re-port) and loads per-shape checklists — every corpus, dictionary, glossed, text with translation, audio, re-port — each item saying what to look for, how to check it, what counts as acceptable and the case in the bank it comes from.
 
 ### `port-corpus-in`
 
-The guided version of [Porting a Corpus In](porting-a-corpus.md). Moves a QC'd corpus from its dev repo into `Corpora/<Name>/` with the standard layout, enforces the `Private/` no-leak invariant (including a content-hash check after the copy), re-validates the published XML, and wires the corpus into this GitBook (page, nav, corpus list, stats tables). It **surfaces decisions rather than guessing** — corpus name, which XML to copy, README handling, the GitBook publish branch, how to populate audio seconds — and never commits.
+The guided version of [Porting a Corpus In](porting-a-corpus.md). Refuses a dev repo without the published build shape (one `generate_xml.sh`, self-contained, provenance written, a source-accounting test), moves a QC'd corpus into `Corpora/<Name>/` with the standard layout, enforces the `Private/` no-leak invariant (including a content-hash check after the copy), then runs the gate GitHub will run — the three validators compared against `main`, the static build-shape tests, the build itself with a clean-tree check, the corpus's own tests, and for a re-port the content-delta check with an audit page that traces every change to a decision — and wires the corpus into this GitBook (page, nav, corpus list, stats tables). It checks the age of the language's attestation dictionary and asks, rather than refreshing it. It **surfaces decisions rather than guessing** — corpus name, which XML to copy, README handling, the GitBook publish branch, how to populate audio seconds — and never commits.
 
 ### `sample-sentences-for-expert-review`
 

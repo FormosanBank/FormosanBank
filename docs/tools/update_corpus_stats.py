@@ -63,25 +63,60 @@ PROMOTE_DIALECT_AS_LANG = {
     ('trv', 'Truku'): 'Truku',
 }
 
-# Human-readable names for each ISO language code
-LANG_NAMES = {
-    'ami': 'Amis',
-    'bnn': 'Bunun',
-    'ckv': 'Kavalan',
-    'dru': 'Rukai',
-    'pwn': 'Paiwan',
-    'pyu': 'Puyuma',
-    'ssf': 'Thao',
-    'sxr': 'Saaroa',
-    'szy': 'Sakizaya',
-    'tao': 'Yami',
-    'tay': 'Atayal',
-    'trv': 'Seediq',
-    'tsu': 'Tsou',
-    'xnb': 'Kanakanavu',
-    'xsy': 'Saisiyat',
-    'fos': 'Siraya'
-}
+# Human-readable names for each ISO language code, read from FormosanBank's
+# languages.csv — the single source of truth for language identity (POL-039).
+#
+# This used to be a hard-coded dict here, which is a second copy of that
+# registry living in another repo. It drifted exactly as you would expect: a
+# code with no entry fell back to itself, so Babuza-Favorlang published as
+# "bzg" and Pazeh needed a hand-edit here when its first corpus landed. A
+# missing name is now an error, not a silently plausible-looking column.
+
+
+def resolve_languages_csv(cli_path=None, env=None, stats_dir=None, repo_root=None):
+    """Resolve FormosanBank's languages.csv.
+
+    Precedence: --languages-csv flag > FORMOSANBANK_LANGUAGES_CSV env >
+    the registry beside the stats dir we are already reading (so the names
+    and the numbers always come from one checkout) > sibling checkout.
+    """
+    repo_root = Path(repo_root) if repo_root is not None else REPO_ROOT
+    env = env if env is not None else os.environ
+    if cli_path:
+        p = Path(cli_path)
+    elif env.get("FORMOSANBANK_LANGUAGES_CSV"):
+        p = Path(env["FORMOSANBANK_LANGUAGES_CSV"])
+    elif stats_dir is not None:
+        p = Path(stats_dir).parent / "languages.csv"
+    else:
+        p = repo_root.parent / "FormosanBank" / "languages.csv"
+    return p.resolve()
+
+
+def load_language_names(path):
+    """ISO 639-3 code -> display name. Mirrors QC.corpus_counts."""
+    with open(path, newline="", encoding="utf-8") as handle:
+        return {
+            row["ISO639-3"].strip().lower(): row["Language"].strip()
+            for row in csv.DictReader(handle)
+            if row["ISO639-3"].strip()
+        }
+
+
+def _load_language_names_best_effort():
+    """Populate at import where the registry is reachable.
+
+    Keeps ``col_header`` usable without a CLI run (the tests call it
+    directly). ``main`` re-resolves against the stats dir it actually reads
+    and hard-errors there, so a real run never renders a bare ISO code.
+    """
+    try:
+        return load_language_names(resolve_languages_csv())
+    except (OSError, KeyError):
+        return {}
+
+
+LANG_NAMES = _load_language_names_best_effort()
 
 # HTML markers so the section can be cleanly replaced on subsequent runs
 STATS_START = '<!-- CORPUS STATS START -->'
@@ -115,6 +150,14 @@ CSV_TO_MD = {
     'Song-Kanakanavu-Grammar_corpora_stats.csv': 'song-kanakanavu-grammar.md',
     'Li-Conjunction-Thao_corpora_stats.csv': 'li-conjunction-thao.md',
     'Campbell-Favorlang_corpora_stats.csv': 'campbell-favorlang.md',
+    'UtrechtManuscriptWordList_corpora_stats.csv': 'utrecht-manuscript-word-list.md',
+    'Huteson-Rukai-Survey_corpora_stats.csv': 'huteson-rukai-survey.md',
+    'Sato-Pazeh-Songs_corpora_stats.csv': 'sato-pazeh-songs.md',
+    'Amis-Pa-Verbs_corpora_stats.csv': 'wu-amis-pa-verbs.md',
+    'Blust-Thao-Dictionary_corpora_stats.csv': 'blust-thao-dictionary.md',
+    'ILCAA-Kanakanavu-Texts_corpora_stats.csv': 'ilcaa-kanakanavu-texts.md',
+    'Seediq-Chang-Reference-Grammar_corpora_stats.csv': 'seediq-chang-reference-grammar.md',
+    'Cuerq-Pourrias-Poinsot-Amis-Dictionary_corpora_stats.csv': 'cuerq-pourrias-poinsot-amis-dictionary.md',
 }
 
 # ---------------------------------------------------------------------------
@@ -182,7 +225,9 @@ def row_has_data(row: dict) -> bool:
     """Return True if at least one displayed numeric field is non-zero."""
     fields = ('word_count', 'transcribed_audio_count', 'transcribed_audio_seconds',
               'untranscribed_audio_count', 'untranscribed_audio_seconds',
-              'eng_transl_count', 'zho_transl_count', 'segmented_words')
+              'eng_transl_count', 'zho_transl_count', 'jpn_transl_count',
+              'nld_transl_count',
+              'segmented_words')
     try:
         return any(float(row.get(f) or 0) != 0 for f in fields)
     except (ValueError, TypeError):
@@ -228,6 +273,8 @@ ROW_DEFS = [
     ('Translated words',                    None,                        None),
     (f'{INDENT}English',                   'eng_transl_count',           fmt_count),
     (f'{INDENT}Mandarin',                  'zho_transl_count',           fmt_count),
+    (f'{INDENT}Japanese',                  'jpn_transl_count',           fmt_count),
+    (f'{INDENT}Dutch',                     'nld_transl_count',           fmt_count),
     ('Morphologically segmented',           'segmented_words',           fmt_count),
     ('Glossed words',                       'glossed_words',             fmt_count),
 ]
@@ -376,6 +423,8 @@ def _empty_stats() -> dict:
         'untranscribed_audio_seconds': 0.0,
         'eng_transl_count':            0,
         'zho_transl_count':            0,
+        'jpn_transl_count':            0,
+        'nld_transl_count':            0,
         'segmented_words':             0,
         'glossed_words':               0,
     }
@@ -388,6 +437,8 @@ def _accumulate(bucket: dict, row: dict) -> None:
         bucket['untranscribed_audio_seconds'] += float(row.get('untranscribed_audio_seconds')     or 0)
         bucket['eng_transl_count']            += int(float(row.get('eng_transl_count')            or 0))
         bucket['zho_transl_count']            += int(float(row.get('zho_transl_count')            or 0))
+        bucket['jpn_transl_count']            += int(float(row.get('jpn_transl_count')            or 0))
+        bucket['nld_transl_count']            += int(float(row.get('nld_transl_count')            or 0))
         bucket['segmented_words']             += int(float(row.get('segmented_words')             or 0))
         bucket['glossed_words']               += int(float(row.get('glossed_words')               or 0))
     except (ValueError, TypeError):
@@ -455,6 +506,8 @@ def _make_table_from_buckets(keys: list, buckets: dict, header_fn) -> str:
         '| Translated words | '                    + ' | '.join('' for _ in keys)                                              + ' |',
         f'| {INDENT}English | '                   + ' | '.join(col(k, 'eng_transl_count',            fmt_count) for k in keys) + ' |',
         f'| {INDENT}Mandarin | '                  + ' | '.join(col(k, 'zho_transl_count',            fmt_count) for k in keys) + ' |',
+        f'| {INDENT}Japanese | '                  + ' | '.join(col(k, 'jpn_transl_count',            fmt_count) for k in keys) + ' |',
+        f'| {INDENT}Dutch | '                     + ' | '.join(col(k, 'nld_transl_count',            fmt_count) for k in keys) + ' |',
         '| Morphologically segmented | '           + ' | '.join(col(k, 'segmented_words',              fmt_count) for k in keys) + ' |',
         '| Glossed words | '                       + ' | '.join(glossed(k)                                        for k in keys) + ' |',
     ]
@@ -517,6 +570,18 @@ def update_readme() -> None:
 # Main
 # ---------------------------------------------------------------------------
 
+def _language_codes_in_stats() -> set:
+    """Every language code appearing in the stats CSVs we are about to read."""
+    codes = set()
+    for csv_path in sorted(STATS_DIR.glob('*.csv')):
+        with open(csv_path, newline='', encoding='utf-8') as handle:
+            for row in csv.DictReader(handle):
+                code = (row.get('language') or '').strip().lower()
+                if code:
+                    codes.add(LANG_NORMALISE.get(code, code))
+    return codes
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Inject corpus statistics tables into the GitBook markdown."
@@ -527,12 +592,40 @@ def main() -> None:
         help="Path to FormosanBank/statistics (default: sibling FormosanBank "
              "checkout, or $FORMOSANBANK_STATS_DIR).",
     )
+    parser.add_argument(
+        "--languages-csv",
+        default=None,
+        help="Path to FormosanBank/languages.csv (default: beside --stats-dir, "
+             "or $FORMOSANBANK_LANGUAGES_CSV).",
+    )
     args = parser.parse_args()
 
-    global STATS_DIR
+    global STATS_DIR, LANG_NAMES
     STATS_DIR = resolve_stats_dir(cli_stats_dir=args.stats_dir)
 
-    print(f'Reading stats from {STATS_DIR}\n')
+    languages_csv = resolve_languages_csv(
+        cli_path=args.languages_csv, stats_dir=STATS_DIR
+    )
+    try:
+        LANG_NAMES = load_language_names(languages_csv)
+    except OSError as exc:
+        raise SystemExit(
+            f"[update_corpus_stats] languages.csv not found: {languages_csv}\n"
+            f"It is the source of the language names in these tables. Clone "
+            f"FormosanBank as a sibling, or pass --languages-csv <path>."
+        ) from exc
+
+    unnamed = sorted(_language_codes_in_stats() - set(LANG_NAMES))
+    if unnamed:
+        raise SystemExit(
+            f"[update_corpus_stats] {languages_csv} has no name for: "
+            f"{', '.join(unnamed)}\n"
+            f"These codes appear in the stats CSVs. Add them to languages.csv "
+            f"rather than letting the tables print a bare ISO code."
+        )
+
+    print(f'Reading stats from {STATS_DIR}')
+    print(f'Reading language names from {languages_csv}\n')
     print('Updating corpus markdown files with statistics…\n')
 
     for csv_name, md_name in CSV_TO_MD.items():

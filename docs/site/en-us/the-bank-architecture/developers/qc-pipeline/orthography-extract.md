@@ -10,7 +10,7 @@ icon: spell-check
 
 `orthography_extract.py` reads the sentence text of a corpus and summarizes *how it is spelled*: which characters appear, how often, which bigrams are common, which punctuation marks are used, and which words are frequent. The result is a serialized statistics object (`orthographic_info`) plus a set of plots.
 
-This object is the raw material the orthography- and vocabulary-level validators consume. Run it before [validate_orthography.py](validate-orthography.md) and [validate_vocabulary.py](validate-vocabulary.md), and feed it to [orthography_compare.py](orthography-compare.md) when comparing two corpora.
+This object is the raw material the orthography- and vocabulary-level validators consume. Run it before [validate_orthography.py](validate-orthography.md) and [validate_vocabulary.py](validate-vocabulary.md).
 
 ## How it works
 
@@ -66,7 +66,7 @@ python QC/orthography/orthography_extract.py \
 
 Read-only with respect to the corpus XML — it never modifies the data. For each language (and dialect, if `--by_dialect`) it creates a folder under `--output_dir` (`<output_dir>/<Language>[/<dialect>]`) containing:
 
-- `orthographic_info` — a pickled dict of all the statistics above (consumed by the validators and `orthography_compare.py`).
+- `orthographic_info` — a pickled dict of all the statistics above (consumed by the validators).
 - `unique_characters.txt`
 - `character_frequencies.png`, `character_class_distribution.png`
 - `bigram_heatmap.png`, `top_bigrams.png`
@@ -81,7 +81,6 @@ In the QC pipeline this runs **after** the standard tier exists (create it with 
 ## Related
 
 - [QC Pipeline overview](README.md)
-- [orthography_compare.py](orthography-compare.md)
 - [validate_orthography.py](validate-orthography.md)
 - [validate_vocabulary.py](validate-vocabulary.md)
 - [standardize.py](standardize.md)
