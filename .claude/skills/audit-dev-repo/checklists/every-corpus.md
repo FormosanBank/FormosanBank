@@ -88,8 +88,8 @@
 
 **Documentation**
 
-19. **README and GitBook drift.** Stale claims, prose counts nobody lints, missing required sections.
-    How: `tests/corpora/test_readme_sections.py` (Rights block, Notes and Issues); derive every count in prose from the XML and compare; the GitBook page is user-facing (maintainer rule).
+19. **README drift.** Stale claims, prose counts nobody lints, missing or misordered required sections.
+    How: `tests/corpora/test_readme_sections.py` (layout and License block); derive every count in prose from the XML and compare; the README is user-facing, since the documentation site renders it as the corpus page (maintainer rule).
     Example: Wakelin's README said 52 words lost their M tier; the file had 5.
 
 20. **How questions are put to the maintainer.** State the question; show the full record as printed with the printed and PDF page; never truncate; regenerate open-only; read the store back before saying "consumed"; no own linguistic analysis on the card.
