@@ -1,0 +1,68 @@
+name: Documentation site
+
+# Builds every edition of the documentation site (docs/tools/build_site.py:
+# assemble -> properdocs --strict -> link check) and publishes it with GitHub
+# Pages. Pull requests build without publishing, so a broken page or link
+# fails review instead of going live.
+#
+# The statistics tables and growth figures are drawn from statistics/*.csv at
+# build time. Those CSVs are committed by the Corpus Metrics workflow using
+# GITHUB_TOKEN, and pushes made with GITHUB_TOKEN never start other workflows,
+# so a push trigger alone would publish the numbers from *before* the stats
+# commit. The workflow_run trigger rebuilds after every Corpus Metrics run on
+# main, from the tip of main (which then includes the stats commit).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Corpus Metrics"]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.event_name == 'pull_request' && github.ref || 'main' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # workflow_run runs at the commit that started Corpus Metrics; build
+          # main's tip instead so the stats commit it just pushed is included.
+          ref: ${{ github.event_name == 'workflow_run' && 'main' || '' }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+          cache-dependency-path: requirements-site.txt
+      - name: Install site dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-site.txt
+      - name: Build all editions and check links
+        run: python docs/tools/build_site.py --site-dir site
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    if: github.event_name != 'pull_request' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
