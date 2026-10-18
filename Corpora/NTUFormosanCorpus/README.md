@@ -1,17 +1,58 @@
 # NTU Corpus of Formosan Languages
 
-## Rights
+Glossed sentences and stories in ten Formosan languages from National Taiwan
+University's online NTU Corpus of Formosan Languages: examples from grammar
+books, elicited sentences, and transcribed narratives and conversations, most
+with word-by-word and morpheme-by-morpheme glosses in English and Mandarin, and
+audio for the grammar examples and the stories.
 
-**License:** CC BY-NC 4.0
-**Rights source:** not recorded in this repository (the source is NTU's public data release of the NTU Corpus of Formosan Languages, named in [CodeAndDocs/source_release.tsv](CodeAndDocs/source_release.tsv)); date not recorded in this repository; evidence: ask maintainer
+## Languages and dialects
 
-The corpus is distributed under CC BY-NC 4.0, the value recorded in the `copyright` attribute of every `TEXT` element. This repository does not record who granted that licence or when; the maintainer holds the evidence. This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+Ten languages, one dialect each. The language is the `xml:lang` attribute of each
+file's `TEXT` element and the dialect its `dialect` attribute; the values below
+were read from all 193 published files.
 
-***
+| Language | `xml:lang` | `dialect` | Files (subcorpus) | NTU's source folder |
+| --- | --- | --- | --- | --- |
+| Amis | `ami` | Coastal | 18 (Stories) | `story/Amis_Ciwkangan` |
+| Atayal | `tay` | Wenshui | 11 (Stories) | `story/Atayal_Mayrinax` |
+| Bunun | `bnn` | Junqun | 1 (Sentences), 13 (Stories) | `sentence/Bunun_Isbukun`, `story/Bunun_Isbukun` |
+| Kanakanavu | `xnb` | Kanakanavu | 1 (Grammar), 1 (Sentences), 19 (Stories) | `Kanakanavu_Kanakanavu` in all three |
+| Kavalan | `ckv` | Kavalan | 31 (Stories) | `story/Kavalan_Xinshe` |
+| Rukai | `dru` | Wutai | 1 (Sentences), 22 (Stories) | `sentence/Rukai_Vedai`, `story/Rukai_Vedai` |
+| Saisiyat | `xsy` | Saisiyat | 20 (Stories) | `story/Saisiyat_Tong-he` |
+| Sakizaya | `szy` | Sakizaya | 1 (Grammar), 15 (Stories) | `grammar/Sakizaya_Sakizaya`, `story/Sakizaya_Sakizaya` |
+| Seediq | `trv` | Tegudaya | 1 (Grammar), 26 (Stories) | `grammar/Seediq_Tgdaya`, `story/Seediq_Tgdaya` |
+| Tsou | `tsu` | Tsou | 12 (Stories) | `story/Tsou_Tsou` |
 
-## Notes and Issues
+`trv` is the ISO 639-3 code for both Seediq and Truku; with `dialect="Tegudaya"`
+these files are Seediq. NTU's folder names give the dialect as NTU names it:
+[dialects.csv](../../dialects.csv) lists Ciwkangan, Mayrinax, Isbukun, Vedai and
+Tgdaya as other names of Coastal, Wenshui, Junqun, Wutai and Tegudaya. For
+Kavalan (folder `Xinshe`) and Saisiyat (folder `Tong-he`) the XML records the
+language name as the dialect.
 
-### Public audio
+## Source
+
+[The NTU Corpus of Formosan Languages](https://corpus.linguistics.ntu.edu.tw/#/) is the first large open corpus of Formosan languages. The NTU Corpus is a comprehensive and meticulously curated dataset representing 10 Indigenous Formosan languages: Kanakanavu, Rukai, Saisiyat, Tsou, Kavalan, Amis, Seediq, Atayal, Sakizaya, and Bunun. This corpus includes texts, audio recordings, elicited sentences, and example sentences from various sources such as grammar books and narrative collections. Designed to support linguistic research and revitalization efforts, the NTU Corpus provides a unique window into the diversity and complexity of Formosan languages.
+
+It consists of three main sections:
+
+* Grammar (examples derived from grammar textbooks)
+
+* Sentences (individual sentences recorded during fieldwork and transcribed and glossed).
+
+* Stories (narratives recorded during fieldwork and transcribed and glossed.)
+
+FormosanBank builds the corpus from NTU's own published data files (JSON), not
+from the website: NTU's release of 2026-01-10, with three Saisiyat stories from
+its release of 2024-04-08 ("How to reproduce" below names the files). The 52
+grammar, 139 sentence and 187 story JSONs become `XML/Grammar` (one file each
+for Kanakanavu, Sakizaya and Seediq), `XML/Sentences` (one file each for Bunun,
+Kanakanavu and Rukai) and `XML/Stories` (187 files, one per story, in all ten
+languages).
+
+#### Public audio
 
 Run `./download_audio_data.sh` from this corpus directory to download the
 public Grammar and Stories datasets from Hugging Face. The download is pinned
@@ -24,7 +65,93 @@ return 404 and one returns an empty response; their unusable `AUDIO` references
 were removed and remain documented in `missing_audio.csv` and the per-language
 `failed_audio.csv` files.
 
-### Major issues, user beware
+Only the Grammar and Stories subcorpora have audio: the repository's
+`audio_sources.json` lists a Hugging Face dataset for each of those two and none
+for Sentences.
+
+#### Glossing conventions
+
+The glossing conventions for the NTU Corpus primarily follow the [**Leipzig Glossing Rules**](https://www.eva.mpg.de/lingua/resources/glossing-rules.php), with modifications to better capture the linguistic specificity of Formosan languages. Below are the alternative treatments for Leipzig Rules 6, 7, and 10, as well as other adopted coding conventions.
+
+##### Modifications to Leipzig Glossing Rules
+
+1. **Rule 6 - Non-Overt Elements**
+   * The symbol `[ ]` or `Ø` is not used for glossing non-overt elements.
+   * Example:
+     * **akoy** (Saisiyat) is glossed as `AF.many`.
+     * In Tsou, the non-overt element in **bonu** ('to eat') is glossed as `eat.AF`.
+2. **Rule 7 - Inherent Categories**
+   * Coding for inherent categories is **not used**.
+3. **Rule 10 - Reduplication**
+   * Reduplication is not marked by the tilde `~`. Instead, the following conventions are adopted:
+     * **Ca Reduplication:** Marked as `Ca-`.
+       * Example: **ha-hila** (Saisiyat) is glossed as `Ca-sun`.
+     * **Prefix-Type Reduplication:** Marked as `red-` if the reduplicated portion is at the beginning of the word.
+       * Example: **m-li-lizaq** (Kavalan) is glossed as `af-red-happy`.
+     * **Infix-Type Reduplication:** Marked as `<red>` if the reduplicated portion occurs in the medial position of the word.
+       * Example: **sa-ru\<mi'a>mi'ad** (Amis) is glossed as `sa-<red>day`.
+
+##### Glossing Focus Markers
+
+The following focus markers are **new abbreviations** introduced in the NTU Corpus to represent the specific focus morphology of Formosan languages:
+
+* **AF:** Agent Focus
+* **PF:** Patient Focus
+* **RF (IF):** Referential Focus (Instrumental Focus)
+* **LF:** Locative Focus
+
+##### Focus Morphology in Tsou
+
+The Tsou language has a unique focus system compared to other Formosan languages:
+
+* **Agent Focus (AF):** Glossed after the verb stem.
+* **Patient Focus (PF):** Glossed similarly.
+* Example:
+  * **bonU/ana** ('to eat') → `eat.AF/eat.PF`.
+  * **boacU/eoeca** ('to bite') → `bite.AF/bite.PF`.
+  * Verbs with -m- or m- forms for AF:
+    * **tmoecU/teoca** ('to hack') → `hack.AF/hack.PF`.
+    * **matvo'ho/patvo'ha** ('to dare to say') → `dare.to.say.AF/dare.to.say.PF`.
+    * **mooteo/totea** ('to wait') → `wait.AF/wait.PF`.
+
+##### Replaced Abbreviations
+
+The NTU Corpus uses alternative abbreviations to standard Leipzig Glossing Rules to better fit Formosan languages:
+
+| **Leipzig Abbreviation** | **NTU Corpus Abbreviation** |
+| ------------------------ | --------------------------- |
+| `caus`                   | `cau`                       |
+| `dem`                    | `'this'` and `'that'`       |
+| `nmlz`                   | `nmz`                       |
+| `recp`                   | `rec`                       |
+
+##### Discourse Coding
+
+The original corpus has a great deal of discourse coding for Sentences and Stories. For purposes of FormosanBank, this has been removed. Interested parties should consult the original.
+
+## Statistics
+
+The table of word counts, audio, translations and glossing is generated from
+`statistics/NTUFormosanCorpus_corpora_stats.csv` and appears on this corpus's page
+on the [FormosanBank site](https://formosanbank.github.io/FormosanBank/).
+
+## How to cite
+
+If you use this corpus, or anything derived from it, in a publication, cite both
+FormosanBank and:
+
+* Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2).
+
+## License
+
+**License:** CC BY-NC 4.0
+**Rights source:** not recorded in this repository (the source is NTU's public data release of the NTU Corpus of Formosan Languages, named in [CodeAndDocs/source_release.tsv](CodeAndDocs/source_release.tsv)); date not recorded in this repository; evidence: ask maintainer
+
+The corpus is distributed under CC BY-NC 4.0, the value recorded in the `copyright` attribute of every `TEXT` element. This repository does not record who granted that licence or when; the maintainer holds the evidence. This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
+## Notes and caveats
+
+#### Major issues, user beware
 
 * It is known that the audio does not always match the text. It is not clear how common this is.
 
@@ -42,7 +169,7 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 
 * The original data also has notes written below the free translation. Many of these simply state the source of the information, but others explain words or give further examples. They are kept, in the `notes` attribute of the sentence's original-tier `FORM`, together with the parenthetical notes described above. Where those notes give example sentences with translations, each example is also published as a sentence of its own at the end of its story (18 sentences, from 4 stories; listed in [`CodeAndDocs/pipeline/note_sentences.tsv`](CodeAndDocs/pipeline/note_sentences.tsv)). Their `S` ids end in `-note` and a number, and their `FORM` notes say they are not part of the recording.
 
-## Minor notes
+#### Minor notes
 
 * The Amis text does not use the `^` glottal stop. `^` does appear in the original, but as a discourse marker. 
 
@@ -62,19 +189,15 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 
 * In the Seediq conversation `sdqCon-dialog5_dakis_takun 2020s`, where a speaker switches to a stretch of Mandarin that the sentence's translation does not cover, that stretch is published as a sentence of its own, with a note saying so (44 sentences). Four utterances where a short Mandarin phrase sits inside a translated Seediq sentence are kept whole.
 
-* NTU transcribes the Stories in intonation units. Units are joined into one sentence up to NTU's sentence-end mark, except that a unit with its own translation ends its sentence. An untranscribed word is written `X`.
+* NTU transcribes the Stories in intonation units. Units are joined into one sentence up to NTU's sentence-end mark, except that a unit with its own translation ends its sentence. NTU writes an untranscribed word `X` (also `XX`, `XXX`, `XXXX`); FormosanBank publishes it as `<UNCLEAR/>` (see the next note).
 
-* **Unknown content is written `<UNCLEAR/>` (rulings 2026-10-17).** NTU marks what it could not transcribe or gloss with its own placeholders; the corpus writes them as the schema's `<UNCLEAR/>` element ("we tried and failed"), as the last step of the build (`CodeAndDocs/pipeline/mark_unclear.py`; every change is listed in `logs/unclear_<Subcorpus>.tsv`). All of it is in the Stories subcorpus except 10 word and 24 morpheme glosses in Sentences.
-  - *Untranscribed words* (`X`, `XX`, `XXX`, `XXXX`): 609 in the sentence text of 510 sentences, now `<UNCLEAR/>` in both sentence FORMs and both sentence PHONs, with the punctuation NTU wrote kept (`piala haca, <UNCLEAR/>, aku tuni kalitang, ...`). In the word tier, 582 such words have `<UNCLEAR/>` as FORM (without punctuation; ruling 2026-10-18), PHON and gloss (1,126 glosses that were `X`). **Removed:** the 563 morphemes (`M`) under those words, each a copy of the word (`XX` glossed `X`), because no analysis of an untranscribed word exists (POL-057). Three sentences are nothing but an untranscribed word; one of them had a word tier, and that word and its morpheme are **removed** too.
-  - *Words written `X` that have a real gloss*: 13 words, glossed `FS` (3), `PART`, `NOM`, `father`, `after`, `is`, `gaksa`, `(Mandarin)` (2) and `??` (2). Their FORM is `<UNCLEAR/>`; their PHON, glosses and morphemes are kept as NTU wrote them (ruling 2026-10-18: "FORM → <UNCLEAR/>, keep the real gloss (and its morphemes)").
-  - *`X` as part of a word*: only the `X` part is `<UNCLEAR/>` (ruling 2026-10-18: "Convert the X part only"), in the word FORM of 7 words (`mi-XX,` → `mi-<UNCLEAR/>`, `kia-XXX=aku` → `kia-<UNCLEAR/>=aku`, ...) and in one Mandarin sentence, `我的XX在XX那邊` → `我的<UNCLEAR/>在<UNCLEAR/>那邊`. Their glosses (`AF-XX`), PHON and morphemes are unchanged.
-  - *A gloss label in a word's form*: Kanakanavu Sentences `3_S_456`, where NTU typed `AV.` (the gloss) into the form column, `AV.kara-peen=kasu`. The record has no sentence text, and its gloss columns hold glosses, not a form, so nothing shows a form-for-gloss swap; the label is replaced by `<UNCLEAR/>` in the word, morpheme and sentence FORMs and PHONs (`<UNCLEAR/>kara-peen=kasu`; ruling 2026-10-18: "If it is just for that word, then the FORM should carry <UNCLEAR/>").
-  - *A morpheme the transcriber could not write*: in five Rukai words NTU wrote `?` for it; the `?` is `<UNCLEAR/>` in their word and morpheme FORMs and, where it appears, the sentence FORM (`alupu-?=ini` → `alupu-<UNCLEAR/>=ini`, `?la-lasu` → `<UNCLEAR/>la-lasu`; ruling 2026-10-18: "Yes: <UNCLEAR/> for the ? piece"). Their glosses are unchanged. Three more Rukai words written the same way, `pa-pacay-?` and `palrayngi=?` (twice), were not part of that ruling and keep their `?`.
-  - *Unknown glosses*: a word or morpheme gloss that is only `?`, `??` or `???` is `<UNCLEAR/>` (418 word glosses, 542 morpheme glosses), keeping its attributes. A `?` inside a longer word gloss (`banana-??`; 125 glosses, 104 distinct) is left as written unless its gloss is listed in `CodeAndDocs/unclear_gloss_placeholders.tsv`, which has no rows yet.
-  - *Unknown sentence translations*: **removed**, 6 translations in 4 sentences that were only `?` (4, e.g. the English of `kkvNr-fishing_Muu_S_65`) or `XXX` (2, both translations of `sdqCon-dialog2_ciwas_tiwas 2021s_S_339`).
-  - Word counts: `<UNCLEAR/>` is not a word, so the corpus's word count (`QC/corpus_counts.py`) falls by the 609 untranscribed words, from 146,531 to 145,922. A tool that reads only the text before a FORM's first child element would undercount further (142,615), dropping every word after the first `<UNCLEAR/>` of a sentence.
+* **Content NTU could not transcribe or gloss is written `<UNCLEAR/>`.** This is the last step of the build (`CodeAndDocs/pipeline/mark_unclear.py`). Almost all of it is in the Stories subcorpus; Sentences has 10 word and 24 morpheme glosses. Every case, with the ruling behind it, is listed under "What each step does" (phase D) below.
+  * *Untranscribed words*: 609 in the sentence text of 510 sentences are `<UNCLEAR/>` in both sentence FORMs and both sentence PHONs, with NTU's punctuation kept (`piala haca, <UNCLEAR/>, aku tuni kalitang, ...`). In the word tier, 582 such words have `<UNCLEAR/>` as FORM, PHON and gloss. The 563 morphemes under those words, each a copy of the word (`XX` glossed `X`), were removed. Thirteen words written `X` that NTU did gloss (e.g. `FS`, `father`) keep their gloss and morphemes; only their FORM is `<UNCLEAR/>`. Where `X` is only part of a word (`mi-XX,`), only that part is `<UNCLEAR/>` (`mi-<UNCLEAR/>`).
+  * *Unknown glosses*: a word or morpheme gloss that is only `?`, `??` or `???` is `<UNCLEAR/>` (418 word glosses, 542 morpheme glosses). A `?` inside a longer gloss (`banana-??`; 125 glosses) is left as written.
+  * *Unknown sentence translations*: 6 translations in 4 sentences that were only `?` or `XXX` were removed.
+  * `<UNCLEAR/>` is not counted as a word, so the corpus word count falls by the 609 untranscribed words.
 
-* **No punctuation in word and morpheme forms (ruling 2026-10-18).** NTU wrote each word's punctuation into its word and morpheme FORMs (`haca,`). "Punctuation shouldn't be in W FORMs or M FORMs anyway. Delete everywhere in NTU.": `CodeAndDocs/pipeline/strip_word_punctuation.py` deletes it, as the last build step, from every word and morpheme FORM (both tiers); sentence FORMs keep their punctuation. **Removed:** 79,048 characters (`,` 64,192; `.` 13,426; `?` 594; `"` 474; `!` 362), counted over both tiers and both levels. What counts as punctuation is set per language in `CodeAndDocs/word_form_characters.tsv`; `'` is a letter (the glottal stop) and `-` `=` `<` `>` `~` `∅` are morpheme markers, so they stay. Where a character is punctuation at the end of a word but not inside one, it is removed **only from the end of the FORM** (ruling 2026-10-18, "all approved."): `.` in Bunun, Rukai, Sakizaya, Atayal, Seediq, Tsou and Kanakanavu, `,` in Seediq and Tsou, `?` in Rukai and Kanakanavu, 54,624 characters in 54,600 FORMs. Dots inside a word stay (Tsou `Lao.Jia`, `zo.lu.shang.lai.a`, Rukai `tou.mu`: "attempts to write multimorphemic Chinese words. We don't wnat to remove those periods."), a `.` before a word-final hyphen goes and the hyphen stays (Sakizaya `umah.-` → `umah-`, `ma-hini.-` → `ma-hini-`; ruling 2026-10-18), and a Rukai `?` straight after `-` or `=`, which stands for an unknown morpheme (`pa-pacay-?`, `palrayngi=?`). Where a character is not clearly punctuation in a language it is **held**, left everywhere in that language until a ruling: Seediq `'` (`s'a`). Seediq `##` (`##sbsawan`) is deleted from the word and morpheme FORMs (ruling 2026-10-18); the sentence FORM keeps it. Kanakanavu `iisi／ramisi` (`3_S_512`) is read like `iisi/ramisi`: FORM `iisi`, with `ramisi` as its alternate FORM (ruling 2026-10-18). Kavalan `%`, written on two false starts (`s%`, `seme%`, glossed FS), is deleted from their word and morpheme FORMs (ruling 2026-10-18: "the % should be deleted."); the sentence FORMs keep it. Words written only with punctuation are deleted, with their morphemes and with that punctuation token in the sentence FORM, which keeps the rest of its punctuation (ruling 2026-10-18: "Delete these W" ... "But I'd delete those from those sentences, too."; `CodeAndDocs/pipeline/drop_punctuation_words.py`): five words, Bunun `.` (2, glossed (咳嗽)) and `,` (2) in `bnNr-frog_Ciang`, and Seediq `,` (glossed PART) in `sdqNr-childhood_micang 2020s`, e.g. `at mazasia, adiia, . a, Kulu hai` → `at mazasia, adiia, a, Kulu hai`.
+* **Word and morpheme FORMs carry no punctuation; sentence FORMs keep it.** NTU wrote each word's punctuation into its word and morpheme forms (`haca,`); the last build step (`CodeAndDocs/pipeline/strip_word_punctuation.py`) deletes it: 79,048 characters (`,` 64,192; `.` 13,426; `?` 594; `"` 474; `!` 362) over both tiers. `'` is a letter (the glottal stop) and `-` `=` `<` `>` `~` `∅` are morpheme markers, so they stay. A character that is not clearly punctuation in a language is left everywhere in that language for now (Seediq `'`). A character that is punctuation only at the end of a word is removed only there: `.` inside Atayal `asi.ki.na` stays, and so does a Rukai `?` straight after `-` or `=`, where it marks an unknown morpheme (`pa-pacay-?`). The full rules are under "What each step does" (phase D) below.
 
 * **Bunun sentences published once (rulings 2026-10-16).** NTU's release has a revised copy of the Bunun sentence collection, `sentence/Bunun_Isbukun/63.json` (upstream `63_revised.json`, no speaker or date), alongside the original files. 875 of its 920 records repeat a record of another file; `pipeline/bunun63_pairs.tsv` (written by `pipeline/make_bunun63_pairs.py`) pairs them, on identical word lists or on a shared translation with word lists at least 60% alike. At the end of the Sentences build, after all cleaning, `pipeline/dedupe_bunun63.py` compares each pair as published: identical copies keep the other file's sentence and drop the 63.json one; copies that differ only in notes keep the more recent or more complete note; copies that differ in translation become one sentence with the other copy's translations as alternatives (`ver="alt"`; a translation written `A / B` becomes A plus alternative B); and where the sentence text is the same but the analysis differs (mostly reduplication written `ma-ba-baliv` 'AF-RED-buy' in the revision against `ma<ba>baliv` 'AF<RED>buy'), the revision's analysis is kept and the other copy dropped. Where the sentence text itself differs, a difference only in punctuation or word division keeps the revision, and a difference in letters keeps the other file's copy, whose spellings other Bunun corpora mostly use (`saia` 1,254 times against the revision's `saiia` 49). All 875 pairs are resolved: 897 sentences are dropped (Bunun Sentences 2,096 → 1,199) and 113 alternative translations added. The build's per-pair report is `logs/bunun63_dedupe.tsv`.
 
@@ -84,7 +207,7 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 
 * Three stories exist twice in NTU's release, as two transcriptions of one recording: Seediq `sdqNr-taboo_pawan` and `sdqNr-tattoo2_pawan`, and Tsou `TsouNr-pear-story-3` / `TsouNr-pear-zheng-2`. The corpus uses the newer text, which has no audio timing; each record takes its time span and recording from NTU's timed transcription of the same text (`pipeline/audio_timing_grafts.tsv`, written by `pipeline/make_audio_timing_grafts.py`, which checks that the two versions have the same records and sentence ends). The Seediq word lists differ from the timed versions mainly in analysis (`kesa-un` vs `kes-un`), not in the sentence lines, which use the usual spellings (`kesun`).
 
-* In the Kanakanavu sentence subcorpus, "∅" appears 32 times (the source writes 2 of them as "Ø", which the sentence builder canonicalizes), marking a null morpheme (e.g. a phonologically empty REL). Pipeline treatment: the marker is kept in original/W/M FORMs, removed from S-level standard FORMs by `standardize.py`, and silent in PHON (an all-null M gets PHON `∅`); `clean_xml.py` canonicalizes the Grammar subcorpus's `ø`/`Ø` variants to `∅`. See step 7 under Processing.
+* The Kanakanavu sentence subcorpus writes "∅" inside some words (32 occurrences; the source writes 2 of them as "Ø", which the build canonicalizes), and the Sakizaya grammar writes a null prefix slot "ø". These are the linguists' null-morpheme annotation: a morpheme that is present in the analysis but has no phonological content (e.g. a phonologically empty relativizer, glossed REL). FormosanBank's convention (per the 2026-08 null-morpheme specification) canonicalizes the marker glyph to `∅` (U+2205) and keeps it in the original tier and on the word/morpheme tiers — where the morphological analysis lives — while removing it from sentence-level standard FORMs; in the PHON tier null morphemes are silent (a wholly-null morpheme carries PHON `∅` so the tier is never empty). See the corpus [README](#what-each-step-does) for details.
 
 * Some English glosses contain Mandarin (e.g. `eng="使役-太陽=完成貌"`), most likely because the glossers were Mandarin-dominant. These are left as they are in the source.
 
@@ -121,62 +244,25 @@ removed.
   identically to their baseline. Competing *lexemes* are not variants; they keep
   the first reading and record the rest in `@notes` for a POL-027 pass.
 
-***
+#### Orthography
 
-## Orthography: the source is Ortho94
+The NTU source is written in **Ortho94**, the orthography released in ROC year 94 which Ortho113 later revised. The corpus is processed as Ortho94 throughout: the original phonemic tier is generated from Ortho94's letter-to-sound rules, and the standard tier is produced by converting 94 → 113 per language, since Ortho113 is FormosanBank's common orthography.
 
-The NTU source documentation states its orthography, and it is **Ortho94** —
-the standard released in ROC year 94, which Ortho113 later revised. The corpus
-is therefore processed as Ortho94 throughout:
+This is a change from earlier processing, which declared the original tier to be Ortho113 and produced the standard tier by stripping accents without any letter conversion — describing the source as an orthography it was not written in.
 
-- `add_phonology.py --orthography Ortho94` generates the **original** PHON from
-  Ortho94's letter-to-sound rules. The **standard** PHON continues to use
-  Ortho113, which is FormosanBank's common orthography.
-- `standardize.py --tsv_path Orthographies/ConversionTables/<Language>_94_113.tsv`
-  produces the standard tier by converting 94 → 113 per language.
+Eight of the corpus's ten languages carry an empty conversion table (Atayal, Bunun, Kanakanavu, Kavalan, Rukai, Saisiyat, Seediq and Tsou); only the Amis and Sakizaya tables have letter rows. Bunun and Tsou need no letter conversion, their Ortho94 and Ortho113 spellings agreeing; Kanakanavu genuinely differs but cannot be converted in this direction, because Ortho113 introduced letters Ortho94 did not have. This repository does not record why the Atayal, Kavalan, Rukai, Saisiyat and Seediq tables are empty. Accents are removed and capital variants derived in all cases regardless.
 
-**This is a change.** Earlier processing declared the original tier to be
-Ortho113 and produced the standard tier with `--remove_accents` — a copy with
-accents stripped and no letter conversion. That mis-described the source: the
-phonology generated for the original tier used the rules of an orthography the
-source was not written in.
+#### Quality checks
 
-Three of the corpus's ten languages have an **empty** conversion table
-(headers only): **Bunun**, **Kanakanavu** and **Tsou**. Bunun and Tsou need no
-letter conversion — their 94 and 113 spellings agree. Kanakanavu genuinely
-differs, but is not convertible in this direction: Ortho113 introduced letters
-Ortho94 did not have, so no mapping exists. An empty table is not a no-op:
-`standardize` still resolves the source profile through the naming convention
-(`<Language>_<Scheme>_113.tsv` → `Orthographies/Ortho94/<Language>.tsv`), so
-**accents are still removed and capital variants still derived** in every case.
+FormosanBank's validators decide whether a corpus's XML is *legal*. This corpus additionally carries a suite that measures how well it holds together as a **glossed** corpus — whether the word tier accounts for the sentence, whether every morpheme a word's form implies actually has a morpheme element, and whether the glosses sit in the right language slots. A file can be perfectly valid and still score poorly on these.
 
-**Kanakanavu is the exception** (ruling 2026-10-16). NTU writes it in Ortho113 spelling: `ʉ` 5,207
-times — a letter Ortho94 does not give Kanakanavu (Ortho94.pdf p. 15 writes the central high vowel
-for Tsou only) — and `r` 5,342 times against `l` 34 (28 words, mostly loans and names). Its original
-PHON is therefore generated from **Ortho113**'s rules (`run_standard_and_phon.sh`); under Ortho94's,
-every `ʉ` became `*` (2,193 of 3,981 sentences). The 34 `l`, which Ortho113 lacks, stay `*` in PHON.
+Almost none of those tests can honestly reach 100%: the source contains sentences nobody segmented and words nobody glossed, and suppressing that fact would be worse than reporting it. So the recorded score is the specification — a baseline file holds what each test achieves on the corpus as published, and any rebuild is compared against it, with drops reported as regressions and rises reported so the baseline can be moved deliberately.
 
-## Quality checks and regressions
+The suite and its baseline live in the corpus's `CodeAndDocs/qa/` directory in the [FormosanBank repository](CodeAndDocs/qa).
 
-The validators in `QC/validation/` decide whether this corpus's XML is *legal*.
-A separate suite in [CodeAndDocs/qa/](CodeAndDocs/qa/) measures how well it holds
-together as a **glossed** corpus — whether the word tier accounts for the
-sentence, whether every morpheme a form implies has an `M`, whether the glosses
-sit in the right language slots. A file can be perfectly valid and still score
-badly there.
+## Reproduction and processing
 
-Because almost none of those tests can honestly reach 100% (the source has
-sentences nobody segmented and words nobody glossed), the recorded score is the
-specification: [CodeAndDocs/qa/baseline.tsv](CodeAndDocs/qa/baseline.tsv) holds
-what each test achieves on the corpus as published, and a rebuild is compared
-against it. See [CodeAndDocs/qa/README.md](CodeAndDocs/qa/README.md).
-
-```bash
-python CodeAndDocs/qa/check_regressions.py --subcorpus stories \
-    --xml XML/Stories --json CodeAndDocs/story
-```
-
-## Processing
+### How to reproduce
 
 The source is NTU's public data release, named file by file in
 [CodeAndDocs/source_release.tsv](CodeAndDocs/source_release.tsv): NTU's release of 2026-01-10
@@ -218,15 +304,30 @@ shared tools because those read only `FORM.text` and would not see
 would run after the build rather than first; the corpus has no
 `manual_edits.xml`, so it is a no-op. No validator runs inside the build.
 
+* The corpus is regenerable from NTU's public source data. [`CodeAndDocs/source_release.tsv`](CodeAndDocs/source_release.tsv) names the source: NTU's release of 2026-01-10 (the `gh-pages` branch of [github.com/liao961120/glossParser](https://github.com/liao961120/glossParser)), one row per source file. Three Saisiyat stories are taken from NTU's 2024-04-08 release instead, because the later releases shift their glosses by one word. Five upstream files are deliberately not used; the table gives the reason for each. `CodeAndDocs/refresh_source.sh` fetches the pinned release (`--check` compares the committed files with it). `CodeAndDocs/pipeline/build_subcorpora.sh` takes the 378 source JSONs (52 grammar, 139 sentence, 187 story) to the published XML: a builder per subcorpus, then repair steps and tier construction (alternate readings, morpheme pruning, id alignment, and the standard and phonemic tiers against Ortho94). Each subcorpus is built in a temporary directory and installed only on success. `CodeAndDocs/generate_xml.sh` wraps that build with the re-application of recorded hand edits; `CodeAndDocs/validate.sh` runs the source-coverage audit, validation and a regression check against the recorded QA baseline. Every correction to NTU's data is stored as reviewed data rather than code, so it survives regeneration, and each one checks that the source still holds what it expects: if NTU's data changes, the build stops instead of silently repairing the wrong thing. Step-by-step documentation is in [CodeAndDocs/pipeline/README.md](CodeAndDocs/pipeline/README.md) and the corpus [README](#what-each-step-does).
+
+The build needs a FormosanBank checkout (it uses the shared tools under `QC/`, the
+conversion tables under `Orthographies/ConversionTables/` and `dialects.csv`) and
+the Python packages in [CodeAndDocs/requirements.txt](CodeAndDocs/requirements.txt);
+it reads no network resource. It writes `XML/Grammar`, `XML/Sentences` and
+`XML/Stories`, and its reports go to `logs/` in the corpus folder, which git
+ignores. The environment variables that redirect it (`PYTHON`, `CTABLES`,
+`FB_DIALECTS`, `NTU_BUILD_OUT`, `NTU_BUILD_CHECKPOINT`) are listed in the header of
+[CodeAndDocs/pipeline/build_subcorpora.sh](CodeAndDocs/pipeline/build_subcorpora.sh)
+and in the pipeline README.
+
+### What each step does
+
 The build itself is
 [CodeAndDocs/pipeline/build_subcorpora.sh](CodeAndDocs/pipeline/build_subcorpora.sh), which takes each
-subcorpus from JSON to XML in three phases — a per-subcorpus **builder**
+subcorpus from JSON to XML in four phases — a per-subcorpus **builder**
 (`pipeline_grammar.py`, `pipeline_sentences.py`, `pipeline_stories.py`), a chain
 of **repairs** (`QC/cleaning/clean_xml.py` plus the scripts in
-`CodeAndDocs/scripts/`), and **tier construction** (alternate-reading
+`CodeAndDocs/scripts/` and some in `CodeAndDocs/pipeline/`), **tier construction** (alternate-reading
 resolution, word/morpheme-tier rules (see the pipeline README's "Word and morpheme
 tiers"), id alignment per POL-037, then the standard
-and PHON tiers against Ortho94). Each subcorpus is built from scratch in a temp
+and PHON tiers against Ortho94), and **markers** (`mark_unclear.py`, then
+`strip_word_punctuation.py`). Each subcorpus is built from scratch in a temp
 directory and installed into `XML/` only on success, so rerunning is safe and
 should reproduce the same bytes. The steps, the data tables that carry the
 item-specific corrections, and the environment overrides are documented in
@@ -237,17 +338,283 @@ parsers' minidom style and the published lxml style (`<?xml version='1.0'
 encoding='UTF-8'?>`) — and every repair script refuses to rewrite a file it
 cannot first reproduce byte-for-byte (the "round-trip guard", which guarantees a
 script never introduces incidental reformatting). `build_subcorpora.sh` normalizes to the
-lxml convention immediately after the builder, so the guard holds for the whole
+lxml convention right after `clean_xml.py` (and, for Sentences and Stories,
+`restore_quote_exemptions.py`), before the first repair script, so the guard holds for the whole
 repair chain.
 
-### Superseded: the earlier post-processing chain
+#### 1. `CodeAndDocs/generate_xml.sh`
+
+1. Finds the FormosanBank checkout two folders above the corpus and picks the
+   Python interpreter: `$PYTHON`, else `<checkout>/.venv/bin/python`, else
+   `python3`. Stops if `QC/cleaning/clean_xml.py` is missing.
+2. Runs `pipeline/build_subcorpora.sh all` (step 2).
+3. Runs `QC/cleaning/apply_manual_edits.py --corpus <corpus>` only if
+   `CodeAndDocs/manual_edits.xml` exists. It does not, so this prints "no
+   manual_edits.xml; nothing to re-apply".
+4. Reads the checkout's commit (`git rev-parse HEAD`). If
+   [CodeAndDocs/provenance.json](CodeAndDocs/provenance.json) does not already name
+   it, rewrites that file with the commit and today's date (UTC). Nothing compares
+   against it.
+
+#### 2. `CodeAndDocs/pipeline/build_subcorpora.sh all`
+
+Builds Grammar, then Sentences, then Stories, each in a new temporary directory.
+The script runs with `set -euo pipefail`, so a failing step stops the build before
+anything is installed (two steps are exceptions: `mark_original_glosses.py` is run
+"tolerated", and inside `run_standard_and_phon.sh` a failing `standardize.py` or
+`add_phonology.py` does not stop the build). At the end of each subcorpus, `install_into` deletes
+`XML/<Subcorpus>`, copies the temporary directory in, deletes every file that is
+not `.xml` (report CSVs the cleaners leave behind), and prints the file count.
+
+**Phase A, builder (JSON → XML).** `pipeline_grammar.py --json CodeAndDocs/grammar`,
+`pipeline_sentences.py --json CodeAndDocs/sentence` or
+`pipeline_stories.py --json CodeAndDocs/story`, each with a pinned `--steps` list.
+The numbers are the builders' own (`--list-steps` prints them); the descriptions
+below are the builders' own one-line descriptions.
+
+| Step | What it does | Grammar | Sentences | Stories |
+| --- | --- | --- | --- | --- |
+| 0 | rebuild the sentence form from the gloss forms | | yes | yes |
+| 1 | Grammar: remove constituent bracketing, role labels and coindex subscripts; Sentences/Stories: put the gloss columns in the right language slots | yes | yes | yes |
+| 2 | Grammar: render A2 vocabulary lists as sentences with no word tier; Sentences/Stories: split a record that holds several sentences | yes | yes | yes |
+| 3 | Grammar: apply pinned source-record repairs; Sentences/Stories: expand infix notation into its own morphemes | yes | yes | yes |
+| 4 | Grammar: strip footnote markers from the sentence form; Sentences/Stories: drop sentences the source marks ungrammatical | yes | yes | yes |
+| 5 | Grammar: emit no word tier for unglossed sentences; Sentences/Stories: strip transcription markup from forms | yes | yes | yes |
+| 6 | join fixed English compound glosses with '.' | yes | | |
+| 7 | Grammar: convert a gloss separator when it makes the morpheme counts match; Sentences/Stories: resolve POL-017 grammaticality parentheses (both tiers, before the form is rebuilt) | yes | yes | yes |
+| 8 | Grammar: strip prompt prefixes from the sentence form; Sentences/Stories: canonicalize punctuation (POL-010/011/013) via clean_xml | yes | yes | yes |
+| 9 | Grammar: strip role labels from the sentence form; Sentences/Stories: convert a gloss separator when it makes the morpheme counts match | yes | yes | yes |
+| 10 | Grammar: move parenthesised source annotations out of the sentence form; Sentences/Stories: repair truncated free translations | yes | yes | yes |
+| 11 | Grammar: canonicalize punctuation via clean_xml; Sentences/Stories: split an unglossed whole-word optional parenthetical into a second sentence | yes | yes | yes |
+| 12 | Grammar: resolve POL-017 grammaticality parentheses in the sentence form | yes | not run | not run |
+| 13 | Grammar: close the space before sentence-final punctuation | yes | not run | not run |
+| 14 | Grammar: suppress sentence blocks recorded as irreconcilable; Sentences/Stories: record word-internal optional material as an alternate form | yes | yes | yes |
+| 15 | Grammar: rebuild the sentence form from the word tier for cited excerpts; Sentences/Stories: drop rows that are transcription apparatus, not words | yes | yes | yes |
+| 16 | Grammar: split an unglossed optional parenthetical into a second sentence; Stories: merge each s_end group of records into one sentence | yes | | yes |
+| 17 | expand infix notation into its own morphemes | yes | | |
+| 18 | Grammar: give an unsegmented word a single mirror morpheme (POL-023); Sentences/Stories: reassign glosses stranded on a form-less morpheme, then drop the shell | not run | yes | yes |
+| 19 | Grammar: repair truncated free translations; Sentences/Stories: write x/xx/XX/XXX/XXXX glosses as X and fully capitalize a mis-cased label (rulings 2026-10-14) | yes | yes | yes |
+| 20 | Grammar: withdraw a word or morpheme analysis the tiers do not support | not run | | |
+| 21 | strip transcription markup from forms | yes | | |
+| 22 | reassign glosses stranded on a form-less morpheme, then drop the shell | yes | | |
+| 23 | write x/xx/XX/XXX/XXXX glosses as X; fully capitalize a mis-cased label (rulings 2026-10-14) | yes | | |
+| 24 | drop the '_' English placeholder (ruling 2026-10-14) | yes | | |
+
+The Sentences and Stories builders also define steps 12 (withdraw a word or
+morpheme analysis the tiers do not support) and 13 (a single mirror morpheme for
+an unsegmented word); the build does not run them. Inside the Sentences and
+Stories builders, `pipeline/pol028.py` makes one sentence per reading of a record
+with a glossed optional morpheme or an optional phrase (see "Variant readings"
+under Notes and caveats), and the Stories builder applies
+`pipeline/audio_timing_grafts.tsv` (see the note on stories that exist twice).
+All three builders apply `pipeline/gloss_shift_repairs.tsv` (rows with status
+`accepted`), `pipeline/p2_source_repairs.xml` and
+`pipeline/gloss_cell_decisions.tsv` as they load the records; each repair is
+pinned to the source record it expects, so a changed source stops the build. The
+[pipeline README](CodeAndDocs/pipeline/README.md) describes these tables and the
+word- and morpheme-tier rules.
+
+**Phase B, repairs.** Grammar runs, in this order:
+
+1. `QC/cleaning/clean_xml.py --corpora_path <temp dir>` (shared punctuation and
+   character cleaning; canonicalizes null-morpheme glyphs to `∅`).
+2. `scripts/normalize_serialization.py --style lxml` (rewrites the files in the
+   published lxml style so the later scripts' round-trip guards hold).
+3. `pipeline/repair_s_gloss_shift.py` (moves word glosses that sit one word too
+   high back onto the words they gloss).
+4. `pipeline/borrow_shift_blank_glosses.py --subcorpus grammar` (a word left bare
+   by a gloss-shift repair may borrow a gloss from the same language; report
+   `logs/gloss_shift_borrowed_Grammar.tsv`).
+5. `scripts/convert_infix_notation.py` (morpheme-tier infixes `<X>` → `-X-`).
+6. `scripts/split_optional_parentheticals.py` (a whole optional word with a
+   parenthesized gloss → two sentences, without and with it, the second `-opt`).
+7. `scripts/resolve_inline_parentheticals.py` (remaining balanced parentheses:
+   in the sentence form, one sentence per reading, `-optN`; in the word/morpheme
+   analysis only, the parentheses are stripped).
+8. `scripts/remove_empty_translations.py` (deletes `TRANSL` elements with no text;
+   skipped at the `pre-cleanup` checkpoint).
+9. `scripts/propagate_clitic_boundaries.py` (gives each clitic morpheme the
+   leading `=` its word has).
+
+Sentences and Stories run, in this order:
+
+1. `QC/cleaning/clean_xml.py --corpora_path <temp dir>`.
+2. `pipeline/restore_quote_exemptions.py` (puts back glottal-stop `'` letters the
+   shared quote cleaner took for quotation marks, listed in
+   `pipeline/quote_cleaner_exemptions.tsv`; ruling 2026-10-16).
+3. `scripts/normalize_serialization.py --style lxml`.
+4. `scripts/repair_l2_markers.py` (malformed code-switch tags, from a token map).
+5. `scripts/borrow_segmentation.py --source_dir CodeAndDocs` (an unsegmented
+   word takes the segmentation of a segmented copy of it in the source JSONs).
+6. `pipeline/repair_s_gloss_shift.py`.
+7. `pipeline/borrow_shift_blank_glosses.py --subcorpus sentence|story` (report
+   `logs/gloss_shift_borrowed_<Subcorpus>.tsv`).
+8. `scripts/uniquify_sentence_ids.py` (the second sentence with a duplicated
+   record id gets `-2`).
+9. `scripts/remove_annotation_codes.py --source_dir CodeAndDocs` (bracketed
+   annotation codes, overlap markers and fused example numbers; a `notes`
+   breadcrumb on each sentence affected).
+10. `scripts/fix_double_encoded_glosses.py` (`&amp;lt;` → `<`, one level).
+11. `scripts/convert_infix_notation.py`.
+12. `scripts/collapse_gloss_only_alternations.py` (a `/` alternation found only in
+    the gloss row is collapsed to the form the sentence uses).
+13. `scripts/resolve_residual_optional_parens.py` (the whole-word parentheticals
+    left: split, strip or delete, by whether the word appears in the sentence).
+14. `scripts/split_optional_parentheticals.py`.
+15. `scripts/remove_empty_translations.py` (skipped at the `pre-cleanup`
+    checkpoint).
+16. `scripts/propagate_clitic_boundaries.py`.
+
+The superseded chain at the end of this section describes most of these scripts
+in more detail (with counts from the earlier build).
+
+**Phase C, tiers** (all three subcorpora):
+
+1. `pipeline/resolve_slash_alternatives.py`: a `/` in a word or morpheme FORM.
+   Spelling variants keep the first reading as the base FORM and the others as
+   `FORM[@kindOf="original" ver="alt"]`; competing words keep the first reading
+   and record the others in `@notes`. The word's morphemes are regenerated from
+   the form that remains.
+2. `pipeline/drop_punctuation_morphemes.py` (punctuation-only morphemes; report
+   `logs/punctuation_morpheme_escalations_<Subcorpus>.tsv`; ruling 2026-09-28).
+3. `pipeline/drop_punctuation_words.py` (a word written only with punctuation,
+   and its token in the sentence FORM; report `logs/punctuation_words_<Subcorpus>.tsv`;
+   ruling 2026-10-18).
+4. `pipeline/drop_speaker_label_words.py --source_dir CodeAndDocs` (multi-speaker
+   labels such as `Y,M:`, after the words are numbered so no other id moves;
+   report `logs/speaker_label_words_<Subcorpus>.tsv`; ruling 2026-10-18).
+5. `pipeline/apply_prune_and_mirror.py`: withdraws a word tier that does not
+   account for its sentence (ruling 2026-09-08) and rebuilds, unglossed, the
+   morphemes of a word that cannot be reconciled with its form and gloss (ruling
+   2026-09-09). Skipped at the `pre-cleanup` checkpoint.
+6. `scripts/mark_original_glosses.py` (adds `kindOf="original"` to word and
+   morpheme glosses, POL-036; attributes only; a failure does not stop the build).
+7. `pipeline/align_ids.py` (renames `-opt1` to `-opt` so ids match those already
+   published, POL-037).
+8. `pipeline/run_standard_and_phon.sh <temp dir> <conversion tables>`: for each
+   language folder, `QC/utilities/standardize.py --tsv_path
+   Orthographies/ConversionTables/<Language>_94_113.tsv --corpus <Language>` (a
+   language without a table is skipped with a message); then
+   `pipeline/apply_standard_word_splits.py` (the word divisions in
+   `pipeline/standard_word_splits.tsv`, standard sentence tier only); then
+   `QC/utilities/add_phonology.py --orthography Ortho94`; then, for Kanakanavu
+   only, `add_phonology.py --orthography Ortho113 --language Kanakanavu`; and
+   finally deletes every `PHON` left with no text (a form with no letters has no
+   phonology, and V073 forbids an empty PHON).
+
+##### Orthography: the source is Ortho94
+
+The NTU source documentation states its orthography, and it is **Ortho94** —
+the standard released in ROC year 94, which Ortho113 later revised. The corpus
+is therefore processed as Ortho94 throughout:
+
+- `add_phonology.py --orthography Ortho94` generates the **original** PHON from
+  Ortho94's letter-to-sound rules. The **standard** PHON continues to use
+  Ortho113, which is FormosanBank's common orthography.
+- `standardize.py --tsv_path Orthographies/ConversionTables/<Language>_94_113.tsv`
+  produces the standard tier by converting 94 → 113 per language.
+
+**This is a change.** Earlier processing declared the original tier to be
+Ortho113 and produced the standard tier with `--remove_accents` — a copy with
+accents stripped and no letter conversion. That mis-described the source: the
+phonology generated for the original tier used the rules of an orthography the
+source was not written in.
+
+Eight of the corpus's ten languages have an **empty** conversion table
+(headers only): **Atayal**, **Bunun**, **Kanakanavu**, **Kavalan**, **Rukai**,
+**Saisiyat**, **Seediq** and **Tsou**; only the Amis and Sakizaya tables have
+letter rows. Bunun and Tsou need no
+letter conversion — their 94 and 113 spellings agree. Kanakanavu genuinely
+differs, but is not convertible in this direction: Ortho113 introduced letters
+Ortho94 did not have, so no mapping exists. An empty table is not a no-op:
+`standardize` still resolves the source profile through the naming convention
+(`<Language>_<Scheme>_113.tsv` → `Orthographies/Ortho94/<Language>.tsv`), so
+**accents are still removed and capital variants still derived** in every case.
+This repository does not record why the Atayal, Kavalan, Rukai, Saisiyat and
+Seediq tables are empty.
+
+**Kanakanavu is the exception** (ruling 2026-10-16). NTU writes it in Ortho113 spelling: `ʉ` 5,207
+times — a letter Ortho94 does not give Kanakanavu (Ortho94.pdf p. 15 writes the central high vowel
+for Tsou only) — and `r` 5,342 times against `l` 34 (28 words, mostly loans and names). Its original
+PHON is therefore generated from **Ortho113**'s rules (`run_standard_and_phon.sh`); under Ortho94's,
+every `ʉ` became `*` (2,193 of 3,981 sentences). The 34 `l`, which Ortho113 lacks, stay `*` in PHON.
+
+**Phase D, markers.** For Sentences only, first
+`pipeline/split_two_renderings.py` (a translation `A / B` → a translation plus an
+alternative) and `pipeline/dedupe_bunun63.py` (report `logs/bunun63_dedupe.tsv`);
+both are described under Notes and caveats. Then, for every subcorpus:
+
+1. `pipeline/mark_unclear.py --placeholders CodeAndDocs/unclear_gloss_placeholders.tsv`
+   (report `logs/unclear_<Subcorpus>.tsv`). It runs after the shared
+   `standardize.py` and `add_phonology.py` because those read only `FORM.text` and
+   would convert a FORM holding `<UNCLEAR/>` only up to the marker.
+2. `pipeline/strip_word_punctuation.py --table CodeAndDocs/word_form_characters.tsv`
+   (report `logs/word_punctuation_<Subcorpus>.tsv`). A character the table does not
+   classify stops the build.
+
+What these two steps decide, case by case:
+
+* **Unknown content is written `<UNCLEAR/>` (rulings 2026-10-17).** NTU marks what it could not transcribe or gloss with its own placeholders; the corpus writes them as the schema's `<UNCLEAR/>` element ("we tried and failed"), as the last step of the build (`CodeAndDocs/pipeline/mark_unclear.py`; every change is listed in `logs/unclear_<Subcorpus>.tsv`). All of it is in the Stories subcorpus except 10 word and 24 morpheme glosses in Sentences.
+  - *Untranscribed words* (`X`, `XX`, `XXX`, `XXXX`): 609 in the sentence text of 510 sentences, now `<UNCLEAR/>` in both sentence FORMs and both sentence PHONs, with the punctuation NTU wrote kept (`piala haca, <UNCLEAR/>, aku tuni kalitang, ...`). In the word tier, 582 such words have `<UNCLEAR/>` as FORM (without punctuation; ruling 2026-10-18), PHON and gloss (1,126 glosses that were `X`). **Removed:** the 563 morphemes (`M`) under those words, each a copy of the word (`XX` glossed `X`), because no analysis of an untranscribed word exists (POL-057). Three sentences are nothing but an untranscribed word; one of them had a word tier, and that word and its morpheme are **removed** too.
+  - *Words written `X` that have a real gloss*: 13 words, glossed `FS` (3), `PART`, `NOM`, `father`, `after`, `is`, `gaksa`, `(Mandarin)` (2) and `??` (2). Their FORM is `<UNCLEAR/>`; their PHON, glosses and morphemes are kept as NTU wrote them (ruling 2026-10-18: "FORM → <UNCLEAR/>, keep the real gloss (and its morphemes)").
+  - *`X` as part of a word*: only the `X` part is `<UNCLEAR/>` (ruling 2026-10-18: "Convert the X part only"), in the word FORM of 7 words (`mi-XX,` → `mi-<UNCLEAR/>`, `kia-XXX=aku` → `kia-<UNCLEAR/>=aku`, ...) and in one Mandarin sentence, `我的XX在XX那邊` → `我的<UNCLEAR/>在<UNCLEAR/>那邊`. Their glosses (`AF-XX`), PHON and morphemes are unchanged.
+  - *A gloss label in a word's form*: Kanakanavu Sentences `3_S_456`, where NTU typed `AV.` (the gloss) into the form column, `AV.kara-peen=kasu`. The record has no sentence text, and its gloss columns hold glosses, not a form, so nothing shows a form-for-gloss swap; the label is replaced by `<UNCLEAR/>` in the word, morpheme and sentence FORMs and PHONs (`<UNCLEAR/>kara-peen=kasu`; ruling 2026-10-18: "If it is just for that word, then the FORM should carry <UNCLEAR/>").
+  - *A morpheme the transcriber could not write*: in five Rukai words NTU wrote `?` for it; the `?` is `<UNCLEAR/>` in their word and morpheme FORMs and, where it appears, the sentence FORM (`alupu-?=ini` → `alupu-<UNCLEAR/>=ini`, `?la-lasu` → `<UNCLEAR/>la-lasu`; ruling 2026-10-18: "Yes: <UNCLEAR/> for the ? piece"). Their glosses are unchanged. Three more Rukai words written the same way, `pa-pacay-?` and `palrayngi=?` (twice), were not part of that ruling and keep their `?`.
+  - *Unknown glosses*: a word or morpheme gloss that is only `?`, `??` or `???` is `<UNCLEAR/>` (418 word glosses, 542 morpheme glosses), keeping its attributes. A `?` inside a longer word gloss (`banana-??`; 125 glosses, 104 distinct) is left as written unless its gloss is listed in `CodeAndDocs/unclear_gloss_placeholders.tsv`, which has no rows yet.
+  - *Unknown sentence translations*: **removed**, 6 translations in 4 sentences that were only `?` (4, e.g. the English of `kkvNr-fishing_Muu_S_65`) or `XXX` (2, both translations of `sdqCon-dialog2_ciwas_tiwas 2021s_S_339`).
+  - Word counts: `<UNCLEAR/>` is not a word, so the corpus's word count (`QC/corpus_counts.py`) falls by the 609 untranscribed words, from 146,531 to 145,922. A tool that reads only the text before a FORM's first child element would undercount further (142,615), dropping every word after the first `<UNCLEAR/>` of a sentence.
+
+* **No punctuation in word and morpheme forms (ruling 2026-10-18).** NTU wrote each word's punctuation into its word and morpheme FORMs (`haca,`). "Punctuation shouldn't be in W FORMs or M FORMs anyway. Delete everywhere in NTU.": `CodeAndDocs/pipeline/strip_word_punctuation.py` deletes it, as the last build step, from every word and morpheme FORM (both tiers); sentence FORMs keep their punctuation. **Removed:** 79,048 characters (`,` 64,192; `.` 13,426; `?` 594; `"` 474; `!` 362), counted over both tiers and both levels. What counts as punctuation is set per language in `CodeAndDocs/word_form_characters.tsv`; `'` is a letter (the glottal stop) and `-` `=` `<` `>` `~` `∅` are morpheme markers, so they stay. Where a character is punctuation at the end of a word but not inside one, it is removed **only from the end of the FORM** (ruling 2026-10-18, "all approved."): `.` in Bunun, Rukai, Sakizaya, Atayal, Seediq, Tsou and Kanakanavu, `,` in Seediq and Tsou, `?` in Rukai and Kanakanavu, 54,624 characters in 54,600 FORMs. Dots inside a word stay (Tsou `Lao.Jia`, `zo.lu.shang.lai.a`, Rukai `tou.mu`: "attempts to write multimorphemic Chinese words. We don't wnat to remove those periods."), a `.` before a word-final hyphen goes and the hyphen stays (Sakizaya `umah.-` → `umah-`, `ma-hini.-` → `ma-hini-`; ruling 2026-10-18), and a Rukai `?` straight after `-` or `=`, which stands for an unknown morpheme (`pa-pacay-?`, `palrayngi=?`). Where a character is not clearly punctuation in a language it is **held**, left everywhere in that language until a ruling: Seediq `'` (`s'a`). Seediq `##` (`##sbsawan`) is deleted from the word and morpheme FORMs (ruling 2026-10-18); the sentence FORM keeps it. Kanakanavu `iisi／ramisi` (`3_S_512`) is read like `iisi/ramisi`: FORM `iisi`, with `ramisi` as its alternate FORM (ruling 2026-10-18). Kavalan `%`, written on two false starts (`s%`, `seme%`, glossed FS), is deleted from their word and morpheme FORMs (ruling 2026-10-18: "the % should be deleted."); the sentence FORMs keep it. Words written only with punctuation are deleted, with their morphemes and with that punctuation token in the sentence FORM, which keeps the rest of its punctuation (ruling 2026-10-18: "Delete these W" ... "But I'd delete those from those sentences, too."; `CodeAndDocs/pipeline/drop_punctuation_words.py`): five words, Bunun `.` (2, glossed (咳嗽)) and `,` (2) in `bnNr-frog_Ciang`, and Seediq `,` (glossed PART) in `sdqNr-childhood_micang 2020s`, e.g. `at mazasia, adiia, . a, Kulu hai` → `at mazasia, adiia, a, Kulu hai`.
+
+The null-morpheme marker across the tiers, as the shared steps above treat it:
+
+* In the Kanakanavu sentence subcorpus, "∅" appears 32 times (the source writes 2 of them as "Ø", which the sentence builder canonicalizes), marking a null morpheme (e.g. a phonologically empty REL). Pipeline treatment: the marker is kept in original/W/M FORMs, removed from S-level standard FORMs by `standardize.py`, and silent in PHON (an all-null M gets PHON `∅`); `clean_xml.py` canonicalizes the Grammar subcorpus's `ø`/`Ø` variants to `∅`. See step 7 under Processing.
+
+#### 3. `CodeAndDocs/validate.sh` (the checks; not part of the build)
+
+1. `scripts/audit_source_coverage.py --repo-root <corpus>`: checks that every
+   tracked source record is represented in the generated XML.
+2. `QC/validation/validate_text.py by_path --path XML --no-exit-on-hard --log_dir logs`.
+3. `QC/validation/validate_glosses.py by_path --path XML --no-exit-on-hard --log_dir logs`.
+4. The regression check: runs `qa/run_regression.sh` if it exists and is
+   executable, and otherwise prints "qa/ harness not present in this checkout;
+   skipped". There is no `qa/run_regression.sh` in `CodeAndDocs/qa/`, so this step
+   is currently always skipped; run `qa/check_regressions.py` by hand (below).
+
+HARD findings do not stop the script. `validate.sh` does not run
+`QC/validation/validate_xml.py` (the XSD check).
+
+##### Quality checks and regressions
+
+The validators in `QC/validation/` decide whether this corpus's XML is *legal*.
+A separate suite in [CodeAndDocs/qa/](CodeAndDocs/qa/) measures how well it holds
+together as a **glossed** corpus — whether the word tier accounts for the
+sentence, whether every morpheme a form implies has an `M`, whether the glosses
+sit in the right language slots. A file can be perfectly valid and still score
+badly there.
+
+Because almost none of those tests can honestly reach 100% (the source has
+sentences nobody segmented and words nobody glossed), the recorded score is the
+specification: [CodeAndDocs/qa/baseline.tsv](CodeAndDocs/qa/baseline.tsv) holds
+what each test achieves on the corpus as published, and a rebuild is compared
+against it. See [CodeAndDocs/qa/README.md](CodeAndDocs/qa/README.md).
+
+```bash
+python CodeAndDocs/qa/check_regressions.py --subcorpus stories \
+    --xml XML/Stories --json CodeAndDocs/story
+```
+
+#### Superseded: the earlier post-processing chain
 
 The numbered steps below document the **previous** build, in which the parsers
 under `scripts/` produced `Final_XML/` and a long chain of repair scripts was
 applied to the installed `XML/`. `build_subcorpora.sh` replaces that path: it calls a
 subset of the same repair scripts, but the parse and the tier construction are
 different, and `Final_XML/` is no longer produced. The list is retained because
-it is the reference for what each individual repair script does.
+it is the reference for what each individual repair script does. Two scripts it names
+are no longer in `CodeAndDocs/scripts/`: `repair_empty_morphemes.py` (step 4) and
+`dedupe_sentence_ids.py` (step 6, whose job `uniquify_sentence_ids.py` now does in the
+current build).
 
 * **1. Parse original files**
 
