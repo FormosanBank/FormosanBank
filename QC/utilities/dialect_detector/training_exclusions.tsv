@@ -1,0 +1,4 @@
+pattern	reason
+NTU_Paiwan_ASR/XML/Paiwan/*/02??[0-9]*-*_*.xml	NTU Paiwan read speech: TEXT/@dialect is the reader's dialect, not the passage's. Maintainer 2026-10-18: "Drop the read speech from Paiwan ASR. Still use the the spontaneous speech."
+NTU_Paiwan_ASR/XML/Paiwan/Orsen/02_Orsen_*.xml	NTU Paiwan read speech (same ruling; no _untranscribed sibling, unlike spontaneous files)
+NTU_Paiwan_ASR/XML/Paiwan/Loris/01_P01_Loris.xml	NTU Paiwan read speech (same ruling; no _untranscribed sibling, unlike spontaneous files)

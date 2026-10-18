@@ -9,6 +9,14 @@ fill in or verify `TEXT/@dialect`.
 - **In scope:** the multi-dialect languages in [`dialects.csv`](../../../dialects.csv) —
   Amis, Atayal, Bunun, Paiwan, Puyuma, Rukai, and `trv` (= Truku + Seediq's three
   dialects). Single-dialect languages are reported `unsupported`.
+- **In scope but not trained yet:** Pazeh (Pazeh, Kaxabu) and Babuza-Favorlang
+  (Babuza, Favorlang). Maintainer, 2026-10-18: "I see no reason not to include
+  Pazeh (Pazeh, Kaxabu) and Babuza-Favorlang (Babuza, Favorlang), even though they
+  don't have standard orthographies (yet)." As of that date there is nothing to
+  train on: Babuza-Favorlang has 2 labelled files, both `Favorlang`; Pazeh's 3 files
+  are all `dialect="unknown"`; all 5 have only an original tier. Add them (with a
+  fallback for having no Ortho113 table) once each has standard-tier files labelled
+  in at least two dialects.
 - **Out of scope:** writing the canonical `TEXT/@dialect`, any hard pass/fail.
 
 > Run everything from the repo root with the project venv. The examples use
@@ -63,6 +71,14 @@ held-out cross-validation (it maximizes how often the model commits while keepin
 held-out accuracy-on-committed ≥ 0.95), and bakes that threshold into the saved
 model. Commit the regenerated `dialect_models/*.json` after retraining.
 
+Two kinds of labelled file are never training documents:
+- anything under a corpus's `CodeAndDocs/` (snapshots there are copies of
+  published files and would count twice);
+- files matching a pattern in [`training_exclusions.tsv`](training_exclusions.tsv),
+  each row with its reason. Today that is NTU_Paiwan_ASR's read speech, whose
+  `dialect` names the reader rather than the passage read. `train` prints how many
+  files the list removed.
+
 Flags: `--top_n` (profile size per dialect, default 2000), `--models_dir`,
 `--corpora_path`, `--orthographies`. `train --calibrate` is on by default;
 internals expose `calibrate=False` for a quick uncalibrated build.
@@ -79,15 +95,15 @@ PYTHONPATH=. python -m QC.utilities.dialect_detector evaluate [--language ami]
 
 **Prefer `crossvalidate`.** `evaluate` is train-on-test and optimistic, because a
 file's own words sit in its dialect's profile. Current honest held-out top-1
-(forced choice):
+(forced choice; retrained 2026-10-18 on 675 labelled files):
 
-| Atayal · Bunun · Puyuma · Rukai · Seediq | Paiwan | Amis |
-|:--:|:--:|:--:|
-| 1.000 | 0.854 | 0.819 |
+| Atayal · Bunun · Puyuma · Rukai | Seediq | Paiwan | Amis |
+|:--:|:--:|:--:|:--:|
+| 1.000 | 0.948 | 0.696 | 0.671 |
 
-With the calibrated thresholds, those five languages commit **every** file at ~1.0
-precision; **Amis commits ~72%** and **Paiwan ~66%** (≥0.95 precision), returning
-`unknown` on the rest.
+With the calibrated thresholds, Atayal, Bunun, Puyuma and Rukai commit **every**
+file at 1.0 precision and Seediq commits ~99% at 0.96; **Amis commits ~40%** and
+**Paiwan ~20%** (≥0.95 precision), returning `unknown` on the rest.
 
 ### Why Amis and Paiwan are harder
 
@@ -121,6 +137,7 @@ the data*, not hand-set. Below the calibrated threshold the model abstains
 | `combiner.py` | Softmax conditional-logit fit (`fit_combiner`, `predict_proba`). |
 | `candidates.py`, `hints.py` | Candidate dialect set + label/alias reconciliation. |
 | `data.py` | Corpus walking + standard-tier extraction. |
+| `training_exclusions.tsv` | Labelled files never used for training, each with its reason. |
 | `model.py` | `DialectModel`, `build_model` / `fit_model_from_docs`, save/load, `predict_root`, `train_all`. |
 | `evaluate.py` | `cross_validate`, `calibrate_threshold`, metrics, per-language report. |
 | `cli.py`, `__main__.py` | `train` / `predict` / `evaluate` / `crossvalidate`. |
