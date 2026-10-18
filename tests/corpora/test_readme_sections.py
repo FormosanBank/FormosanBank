@@ -1,35 +1,43 @@
-"""POL-044 and POL-055: the two README sections every published corpus carries.
+"""POL-044, POL-052 and POL-055 (as amended 2026-10-18): the corpus README layout.
 
-POL-044 (rights documentation) names `tests/corpora/test_rights_documentation.py`
-as its implementation; that file never existed. POL-055 (corpus documentation)
-says of its `Notes and Issues` section "Nothing lints the name today". This is
-both lints:
+Each corpus README is the single copy of that corpus's documentation: the
+documentation site renders it as the corpus page (docs/tools/prepare_site.py).
+Its sections, in this order (maintainer, 2026-10-18):
 
-* `## Rights` with a `**License:** <value>` line equal to the corpus XML's
-  `@copyright` (one value across the corpus) and a `**Rights source:**` line;
-* a heading named exactly `Notes and Issues` (POL-055: "The section is
-  `Notes and Issues` in both places ... legacy spellings to migrate, not
-  alternatives").
+    # <Corpus name>
+    ## Languages and dialects
+    ## Source
+    ## Statistics                 (the site inserts the table here)
+    ## How to cite
+    ## License                    (POL-044's two structured lines live here)
+    ## Notes and caveats          (POL-055; "None known." when empty)
+    ## Reproduction and processing
+    ### How to reproduce
+    ### What each step does
 
-Legacy READMEs are listed in `readme_sections_pending.txt` at the repo root,
-one `<corpus> <check>` pair per line, so a corpus that passes one check is still
-held to it. The list only shrinks; a new or re-ported corpus is never added.
+Two checks per corpus:
+
+* ``structure`` -- the headings above, each exactly once, in that order;
+* ``rights`` -- under ``## License``, a ``**License:** <value>`` line equal to the
+  corpus XML's ``@copyright`` (one value across the corpus) and a
+  ``**Rights source:**`` line.
+
+Corpora whose README cannot yet pass a check are listed in
+``readme_sections_pending.txt`` at the repo root, one ``<corpus> <check>`` pair
+per line. The list only shrinks; a new or re-ported corpus is never added.
 """
-import re
+import sys
 from xml.etree import ElementTree as ET
 
 import pytest
 
 from tests._helpers import REPO_ROOT
 
+sys.path.insert(0, str(REPO_ROOT / "docs" / "tools"))
+from readme_layout import REQUIRED_HEADINGS, rights_problems, structure_problems  # noqa: E402
+
 PENDING_FILE = REPO_ROOT / "readme_sections_pending.txt"
-CHECKS = ("rights", "notes")
-
-RIGHTS_HEADING_RE = re.compile(r"^##\s+Rights\s*$", re.M)
-LICENSE_LINE_RE = re.compile(r"^\*\*License:\*\*\s*(.+?)\s*$", re.M)
-SOURCE_LINE_RE = re.compile(r"^\*\*Rights source:\*\*\s*\S", re.M)
-NOTES_HEADING_RE = re.compile(r"^#{1,6}\s+Notes and Issues\s*$", re.M)
-
+CHECKS = ("structure", "rights")
 
 def _pending() -> set[tuple[str, str]]:
     if not PENDING_FILE.exists():
@@ -69,32 +77,13 @@ def _copyrights(corpus: str) -> set[str]:
     return values
 
 
-def rights_problems(readme: str, copyrights: set[str]) -> list[str]:
-    """POL-044: what is wrong with the Rights block, as a list (empty = fine)."""
-    problems = []
-    if not RIGHTS_HEADING_RE.search(readme):
-        problems.append("no '## Rights' heading")
-    match = LICENSE_LINE_RE.search(readme)
-    if not match:
-        problems.append("no '**License:** <value>' line")
-    elif copyrights != {match.group(1)}:
-        problems.append(
-            f"License line says {match.group(1)!r} but the XML @copyright is "
-            f"{sorted(copyrights)}"
-        )
-    if not SOURCE_LINE_RE.search(readme):
-        problems.append("no '**Rights source:** <grantor>, <date>; evidence: ...' line")
-    return problems
-
-
-def notes_problems(readme: str) -> list[str]:
-    """POL-055: the section must be headed exactly 'Notes and Issues'."""
-    if NOTES_HEADING_RE.search(readme):
-        return []
-    legacy = re.findall(
-        r"^#{1,6}\s+((?:Notes|Known|Major|Caveats?|Issues)[^\n]*)$", readme, re.M)
-    hint = f" (found {legacy!r}; POL-055 names one spelling)" if legacy else ""
-    return [f"no heading named exactly 'Notes and Issues'{hint}"]
+def _problems(corpus: str, check: str) -> list[str]:
+    readme = _readme_text(corpus)
+    if readme is None:
+        return ["no README.md"]
+    if check == "rights":
+        return rights_problems(readme, _copyrights(corpus))
+    return structure_problems(readme)
 
 
 CORPORA = _corpora()
@@ -111,15 +100,7 @@ def test_pending_list_names_real_corpora_and_checks():
 
 def test_pending_list_has_no_passing_entries():
     """The list shrinks by itself rather than quietly going out of date."""
-    stale = []
-    for corpus, check in sorted(_pending()):
-        readme = _readme_text(corpus)
-        if readme is None:
-            continue
-        problems = (rights_problems(readme, _copyrights(corpus))
-                    if check == "rights" else notes_problems(readme))
-        if not problems:
-            stale.append(f"{corpus} {check}")
+    stale = sorted(f"{c} {k}" for c, k in _pending() if not _problems(c, k))
     assert not stale, (
         f"readme_sections_pending.txt still lists checks that now pass: {stale}. "
         "Delete those lines."
@@ -127,27 +108,23 @@ def test_pending_list_has_no_passing_entries():
 
 
 @pytest.mark.parametrize("corpus", CORPORA)
-def test_readme_rights_block(corpus):
-    readme = _readme_text(corpus)
-    assert readme is not None, f"{corpus} has no README.md"
-    problems = rights_problems(readme, _copyrights(corpus))
-    if problems and (corpus, "rights") in _pending():
-        pytest.skip(f"{corpus} rights block predates POL-044 (readme_sections_pending.txt)")
+def test_readme_structure(corpus):
+    problems = _problems(corpus, "structure")
+    if problems and (corpus, "structure") in _pending():
+        pytest.skip(f"{corpus}: README layout pending (readme_sections_pending.txt)")
     assert not problems, (
-        f"POL-044: {corpus}/README.md: " + "; ".join(problems) + ". The block is:\n"
-        "## Rights\n**License:** <the XML @copyright>\n"
-        "**Rights source:** <grantor>, <YYYY-MM-DD>; evidence: ask maintainer"
+        f"{corpus}/README.md: " + "; ".join(problems) + ". Required, in order: "
+        + ", ".join(REQUIRED_HEADINGS)
     )
 
 
 @pytest.mark.parametrize("corpus", CORPORA)
-def test_readme_notes_and_issues(corpus):
-    readme = _readme_text(corpus)
-    assert readme is not None, f"{corpus} has no README.md"
-    problems = notes_problems(readme)
-    if problems and (corpus, "notes") in _pending():
-        pytest.skip(f"{corpus} predates POL-055's one name (readme_sections_pending.txt)")
+def test_readme_license_block(corpus):
+    problems = _problems(corpus, "rights")
+    if problems and (corpus, "rights") in _pending():
+        pytest.skip(f"{corpus}: rights block pending (readme_sections_pending.txt)")
     assert not problems, (
-        f"POL-055: {corpus}/README.md: " + "; ".join(problems) +
-        ". Rename the section to 'Notes and Issues' (write 'None known.' if empty)."
+        f"POL-044: {corpus}/README.md: " + "; ".join(problems) + ". The block is:\n"
+        "## License\n**License:** <the XML @copyright>\n"
+        "**Rights source:** <grantor>, <YYYY-MM-DD>; evidence: ask maintainer"
     )
