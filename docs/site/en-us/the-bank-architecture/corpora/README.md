@@ -50,7 +50,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 
 | | Truku | Amis | Bunun | Babuza-Favorlang | Kavalan | Rukai | Siraya | Paiwan | Puyuma | Pazeh | Thao | Saaroa | Sakizaya | Yami | Atayal | Seediq | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 87,472 | 1,466,259 | 244,193 | 22,112 | 126,844 | 275,699 | 42,987 | 415,724 | 230,655 | 356 | 165,366 | 63,054 | 1,670,487 | 119,295 | 861,907 | 955,261 | 87,904 | 124,447 | 101,871 |
+| Word count | 87,472 | 1,466,259 | 244,193 | 22,112 | 126,844 | 275,699 | 42,987 | 415,724 | 230,655 | 356 | 165,366 | 63,053 | 1,670,487 | 119,295 | 861,907 | 955,261 | 87,904 | 124,447 | 101,871 |
 | Total audio | 84.4h | 121.6h | 125.4h | 0 | 53.8h | 154.3h | 0 | 168.9h | 119.9h | 0 | 41.4h | 45.9h | 49.0h | 40.5h | 171.2h | 92.4h | 41.1h | 65.1h | 47.0h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 41.6h | 121.2h | 125.4h | 0 | 53.8h | 154.3h | 0 | 134.1h | 119.9h | 0 | 41.4h | 45.9h | 49.0h | 40.5h | 160.0h | 92.2h | 41.1h | 65.1h | 47.0h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 42.8h | 0.4h | 0 | 0 | 0 | 0 | 0 | 34.8h | 0 | 0 | 0 | 0 | 0 | 0 | 11.2h | 0.1h | 0 | 0 | 0 |

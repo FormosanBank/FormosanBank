@@ -7,19 +7,19 @@ This corpus is the Kanakanavu (`xnb`) text of Asai, Mei, Li and Tsuchida's 2026 
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | Saaroa | Kanakanavu |
-| --- | --- | --- |
-| Word count | 1 | 10,071 |
-| Total audio | 0 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 |
-| Translated words |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 10,036 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 4 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 |
-| Morphologically segmented | 0 | 9,942 |
-| Glossed words | 0 | 9,942 |
+| | Kanakanavu |
+| --- | --- |
+| Word count | 10,071 |
+| Total audio | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
+| Translated words |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 10,036 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 4 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 |
+| Morphologically segmented | 9,942 |
+| Glossed words | 9,942 |
 
 ***
 
@@ -36,7 +36,6 @@ This corpus is the Kanakanavu (`xnb`) text of Asai, Mei, Li and Tsuchida's 2026 
 * **`əhə kai` is one word.** In Naparamaci example 68 the book prints a single gloss, "interjection", under the two words, so they are published as one word and one morpheme.
 * **Not every sentence has word-level analysis.** The introduction's word lists and the footnote entries are single words that the book does not segment; they carry a translation and no word or morpheme tier. Only three of the introduction's lexical examples come with the book's own morpheme analysis.
 * **Not included.** The introduction's Table 1 (historical transcriptions by Tsuchida 1969, Szakos 1999 and the 2007 Basic Vocabulary) and two prose examples next to it are left out by decision. The village-labelled phonetic comparison on page 15 is also left out, because the book gives no written form for it.
-* **A Saaroa comparison word.** The introduction compares one Kanakanavu word with Saaroa; it is published separately, as Saaroa (`sxr`).
 * **Printed translation parentheses are kept.** The book's own clarifications, for example `Thereupon, (the girl) left`, stay in the English translations. One translation prints an em dash that the shared cleaning step writes as a hyphen.
 * **Repeated passages are kept.** Repetition within a story is source data and is not removed.
 
