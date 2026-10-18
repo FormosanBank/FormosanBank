@@ -22,18 +22,17 @@ import site_stats
 
 REPO_ROOT = site_stats.REPO_ROOT
 
-# Sentences on generated pages, as templates.
-LANGUAGE_INTRO = "FormosanBank holds {words} words of {language}, in {count} corpora."
-LANGUAGE_INTRO_ONE = "FormosanBank holds {words} words of {language}, in 1 corpus."
-LANGUAGE_INTRO_TAIL = "These numbers are generated from the corpus statistics every time the site is published."
-DIALECTS_NOTE = "One column per dialect; unknown is data whose source does not record the dialect."
-CORPUS_WORDS = "{corpus}: {words} words"
-GROWTH_CAPTION = (
-    "Each step is a change to the published corpus on main, counted with today's counting rules. "
-    "A line starts where its count first rises above zero."
-)
-FIGURE_TITLE = "{language}: words over time"
-FIGURE_ALT = "Growth of {language} in FormosanBank: total, transcribed, segmented and glossed words over time, log scale"
+# Sentences on generated pages, as templates: defined where the page is
+# written (language_pages), so a translated template always matches the page.
+LANGUAGE_INTRO = language_pages.LANGUAGE_INTRO
+LANGUAGE_INTRO_ONE = language_pages.LANGUAGE_INTRO_ONE
+LANGUAGE_INTRO_TAIL = language_pages.LANGUAGE_INTRO_TAIL
+DIALECTS_NOTE = language_pages.DIALECTS_NOTE
+CORPUS_WORDS = language_pages.CORPUS_WORDS
+GROWTH_CAPTION_STEPS = language_pages.GROWTH_CAPTION_STEPS
+GROWTH_CAPTION_START = language_pages.GROWTH_CAPTION_START
+FIGURE_TITLE = language_pages.FIGURE_TITLE
+FIGURE_ALT = language_pages.FIGURE_ALT
 FULL_PAGE_IN_ENGLISH = "The complete, current version of this page is in English:"
 
 SECTION_LABELS = (
@@ -55,7 +54,7 @@ def labels() -> list[str]:
     out += [label for _field, label in language_pages.SERIES]
     out += list(SECTION_LABELS)
     out += [LANGUAGE_INTRO, LANGUAGE_INTRO_ONE, LANGUAGE_INTRO_TAIL, DIALECTS_NOTE,
-            CORPUS_WORDS, GROWTH_CAPTION, FIGURE_TITLE, FIGURE_ALT, FULL_PAGE_IN_ENGLISH,
+            CORPUS_WORDS, GROWTH_CAPTION_STEPS, GROWTH_CAPTION_START, FIGURE_TITLE, FIGURE_ALT, FULL_PAGE_IN_ENGLISH,
             site_stats.UNKNOWN_DIALECT, re.sub(r"[*`]", "", site_stats.NOT_YET_COMPUTED)]
     with open(REPO_ROOT / "languages.csv", newline="", encoding="utf-8") as handle:
         out += [row["Language"].strip() for row in csv.DictReader(handle)]

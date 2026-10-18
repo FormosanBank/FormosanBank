@@ -525,6 +525,7 @@ A language-named directory is common, but it is not a schema requirement.	以語
 A legitimate change lands by explicit maintainer override, which is deliberately the hardest step in the mechanism.	正當的變更須經維護者明確覆寫才能合併，這刻意被設計為整個機制中最困難的一步。	no	mt			2026-10-18
 A letter-to-letter conversion row would assert a correspondence that does not exist, so there is none.	逐字母的轉換列會主張一個並不存在的對應，因此沒有設這樣的列。	no	mt			2026-10-18
 A licensing and consent record.	一份授權與同意的記錄。	no	mt			2026-10-18
+A line starts where its count first rises above zero.	每條線從其數值首次大於零處開始。	no	mt			2026-10-18
 A listed gloss that no longer matches the snapshot, a listed file that does not exist, or a count other than five applied is a hard error.	若所列的詞義標注不再與快照相符、所列的檔案不存在，或套用的數量不是五個，即為嚴重錯誤。	no	mt			2026-10-18
 A listing is a question — is this table documented, keyed by id, cited? — not a verdict.	列出的項目是一個問題——這張表有沒有文件說明、是否以 id 為鍵、是否註明出處？——而不是結論。	no	mt			2026-10-18
 A local FormosanBank clone with `Corpora/` present and the `.venv` active.	一份含有 `Corpora/` 的 FormosanBank 本機複本，並已啟用 `.venv`。	no	mt			2026-10-18
@@ -1950,7 +1951,7 @@ Each sits beside its conversion table and holds ordered, context-sensitive rewri
 Each skill is a guided recipe: it gathers the inputs it needs, runs the QC scripts in the right order, and — crucially — pauses for human judgment at the points where a decision can't be automated (which orthography a corpus uses, whether a finding is a real bug, which files to port).	每個技能都是一份引導式流程：它會蒐集所需的輸入、依正確順序執行 QC 腳本，而且 — 關鍵在於 — 在無法自動化的決策點暫停，等待人工判斷（語料庫使用哪種書寫系統、某項檢查結果是否為真正的錯誤、要移植哪些檔案）。	no	mt			2026-10-18
 Each source row becomes one `<S>` whose `id` is the source-row number, holding the row's text as the original FORM, a Mandarin TRANSL, and an English TRANSL where the row has one.	每一列來源資料成為一個 `<S>`，其 `id` 為來源列號，包含該列文本作為原始 FORM、一個華語 TRANSL，以及（若該列有的話）一個英語 TRANSL。	no	mt			2026-10-18
 Each step first checks that the XML is in the state the ruling was made against and stops with an error otherwise.	每個步驟都先檢查 XML 是否處於該裁定所依據的狀態，否則以錯誤停止。	no	mt			2026-10-18
-Each step is a change to the published corpus on main, counted with today's counting rules. A line starts where its count first rises above zero.	每一步代表 main 上已發布語料庫的一次變更，並以目前的計數規則計算。每條線從其計數首次大於零之處開始。	no	mt			2026-10-18
+Each step is a change to the published corpus on `main`, counted with today's counting rules.	每一階代表 `main` 上已發布語料庫的一次變更，並以現行的計數規則計算。	no	mt			2026-10-18
 Each subcorpus is built from scratch in a temp directory and installed into `XML/` only on success, so rerunning is safe and should reproduce the same bytes.	每個子語料庫都在暫存目錄中從頭建置，僅在成功時才安裝到 `XML/`，因此重新執行是安全的，且應能重現相同的位元組。	no	mt			2026-10-18
 Each subcorpus is built in a temporary directory and installed only on success. `CodeAndDocs/generate_xml.sh` wraps that build with the re-application of recorded hand edits; `CodeAndDocs/validate.sh` runs the source-coverage audit, validation and a regression check against the recorded QA baseline.	每個子語料庫都在暫存目錄中建置，僅在成功時才安裝。`CodeAndDocs/generate_xml.sh` 將該建置與重新套用已記錄的手動編輯包在一起；`CodeAndDocs/validate.sh` 執行來源覆蓋稽核、驗證，以及與已記錄 QA 基準比較的退步檢查。	no	mt			2026-10-18
 Each subfolder will start with ep[ver] followed by the topic name. in each folder, there will be a folder for each of the languages, and inside each of these folders, an XML file for each dialect and an audio folder for the audio files associated with the XML files.	每個子資料夾以 ep[ver] 開頭，後接主題名稱。每個資料夾中，每種語言各有一個資料夾，而每個語言資料夾內有每種方言的 XML 檔案，以及一個存放與這些 XML 檔案相關音檔的錄音資料夾。	no	mt			2026-10-18
@@ -4274,7 +4275,7 @@ One XML file per article (12,748 articles), sentence tier only (no word segmenta
 One XML file per language, `XML/<Language>/<Language>.xml`.	每種語言一個 XML 檔案，`XML/<Language>/<Language>.xml`。	no	mt			2026-10-18
 One `S` per defined form.	每個有定義的詞形一個 `S`。	no	mt			2026-10-18
 One `S` per distinct recording; identical copies kept once.	每個不同的錄音一個 `S`；完全相同的副本只保留一份。	no	mt			2026-10-18
-One column per dialect; unknown is data whose source does not record the dialect.	每個方言一欄；「未知」指來源未記錄方言的資料。	no	mt			2026-10-18
+One column per dialect; `unknown` is data whose source does not record the dialect.	每個方言一欄；`unknown` 表示來源未記錄方言的資料。	no	mt			2026-10-18
 One command rebuilds the published `XML/` from them:	一個指令即可由它們重建已發布的 `XML/`：	no	mt			2026-10-18
 One command rebuilds the whole corpus.	一個指令即可重建整個語料庫。	no	mt			2026-10-18
 One command, `bash Corpora/Presidential_Apologies/CodeAndDocs/generate_xml.sh`, rebuilds the published XML from these files.	只需一個指令 `bash Corpora/Presidential_Apologies/CodeAndDocs/generate_xml.sh`，即可從這些檔案重新建置已發布的 XML。	no	mt			2026-10-18
