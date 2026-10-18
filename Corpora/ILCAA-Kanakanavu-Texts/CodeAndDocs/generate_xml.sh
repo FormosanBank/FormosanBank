@@ -44,7 +44,7 @@ for xml in "$XML_STAGE/Kanakanavu/"*.xml; do
     "$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CONVERSION" \
         --target_column standard --segmented-without-m-tier --corpora_path "$xml"
     "$PY" "$CODEDOCS/scripts/strip_standard_brackets.py" "$xml"
-    "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography "$SOURCE_ORTHOGRAPHY" \
+    "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography "$BANK/Orthographies/Asai2026" \
         --corpora_path "$xml" --preserve-existing-original
 done
 if [[ -d "$XML_STAGE/Saaroa" ]]; then
