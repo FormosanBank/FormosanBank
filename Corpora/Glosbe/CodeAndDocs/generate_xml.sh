@@ -13,6 +13,7 @@ test -f "$FB/QC/cleaning/clean_xml.py"
 "$PY" "$FB/QC/cleaning/apply_manual_edits.py" --corpora_path "$XML"
 (cd "$ROOT" && "$PY" "$FB/QC/cleaning/clean_xml.py" --corpora_path XML ${QC_OUTPUT_DIR:+--warnings_dir "$QC_OUTPUT_DIR"})
 "$PY" "$HERE/process_source.py" --apply-aliases "$FB"
+"$PY" "$HERE/process_source.py" --apply-rulings "$FB"
 "$PY" "$FB/QC/cleaning/remove_duplicate_sentences.py" by_path --path "$XML" --tier original --scope file --apply
 "$PY" "$FB/QC/utilities/standardize.py" --tsv_path "$CT/Amis_94_113.tsv" --target_column Coastal --corpora_path "$XML/Amis"
 "$PY" "$FB/QC/utilities/standardize.py" --tsv_path "$CT/Atayal_Church_113.tsv" --target_column standard --corpora_path "$XML/Atayal"

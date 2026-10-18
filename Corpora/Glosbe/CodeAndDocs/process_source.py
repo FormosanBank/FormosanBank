@@ -195,6 +195,43 @@ def apply_reviewed_aliases(bank):
     print(f"Replayed {len(plan)} reviewed aliases; retained {merged} alternate translations")
 
 
+def _element(sentence, element, text):
+    """The one FORM original, or the one TRANSL whose text is `text`."""
+    if element == "FORM":
+        found = sentence.findall("FORM[@kindOf='original']")
+    else:
+        found = [t for t in sentence.findall("TRANSL") if "".join(t.itertext()) == text]
+    if len(found) != 1:
+        raise ValueError(f"Expected one {element} in {sentence.get('id')}")
+    return found[0]
+
+
+def apply_main_typography(sentences):
+    """Keep main's dashes, dates, symbols and ellipses where the maintainer
+    rejected the PR's source spelling (2026-10-18: [dashes, dates, symbols]
+    "Reject"; [ellipsis] "Reject"). Each row replaces one whole field and
+    refuses to apply if the field no longer reads as reviewed."""
+    count = 0
+    with (HERE / "main_typography.csv").open(encoding="utf-8", newline="") as stream:
+        for row in csv.DictReader(stream):
+            target = _element(sentences[row["sid"]], row["element"], row["before"])
+            if "".join(target.itertext()) != row["before"]:
+                raise ValueError(f"Typography row no longer matches: {row['sid']}")
+            target.text = row["after"]
+            count += 1
+    return count
+
+
+def apply_rulings(bank):
+    """Post-cleaning, table-driven maintainer rulings (see README)."""
+    trees = {p: etree.parse(p) for p in sorted((HERE.parent / "XML").rglob("*.xml"))}
+    sentences = {s.get("id"): s for t in trees.values() for s in t.getroot().findall("S")}
+    typography = apply_main_typography(sentences)
+    for path, tree in trees.items():
+        tree.write(str(path), encoding="utf-8", xml_declaration=True, pretty_print=True)
+    print(f"Kept main's typography in {typography} fields")
+
+
 def record_provenance(bank):
     revision = os.environ.get("FORMOSANBANK_COMMIT", "")
     if (bank / ".git").exists():
@@ -214,12 +251,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--formosanbank-root", type=Path)
     parser.add_argument("--apply-aliases", type=Path)
+    parser.add_argument("--apply-rulings", type=Path)
     parser.add_argument("--record-provenance", type=Path)
     args = parser.parse_args()
     if args.record_provenance:
         record_provenance(args.record_provenance.resolve())
     elif args.apply_aliases:
         apply_reviewed_aliases(args.apply_aliases.resolve())
+    elif args.apply_rulings:
+        apply_rulings(args.apply_rulings.resolve())
     else:
         if not args.formosanbank_root:
             parser.error("use generate_xml.sh or supply --formosanbank-root")
