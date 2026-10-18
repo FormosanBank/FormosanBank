@@ -57,6 +57,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 from QC.xml_forms import find_base_form  # noqa: E402
+from QC.validation.rules._form_text import form_text  # noqa: E402
 _DATA_QUALITY_EVAL_SIBLING = _REPO_ROOT.parent / "data_quality_eval"
 
 CHARS_RE = re.compile(r'[\(\)\_\,\?\.\!\-\;\:\"\“\%\‘\”\�\"\[\]\(\)\*=/@\+><\^]')
@@ -145,7 +146,7 @@ def collect_entries(xml_path: Path, audio_root: Path, lang: str,
             continue
         audio_file = audio.attrib.get("file")
         audio_url = audio.attrib.get("url", "")
-        text = (form.text or "").strip()
+        text = form_text(form).strip()
         if not audio_file or not text:
             continue
         # Resolve under audio_root (recursive search as last resort).

@@ -16,6 +16,7 @@ from lxml import etree
 
 from QC.validation._corpus_index import CorpusIndex
 from QC.validation._finding import Finding, Severity
+from QC.validation.rules._form_text import form_text as whole_form_text
 
 
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
@@ -127,7 +128,7 @@ def _first_form_text(elem: etree._Element) -> str:
     """Text of the element's first FORM child, whitespace-stripped."""
     for child in elem:
         if child.tag == "FORM":
-            return (child.text or "").strip()
+            return whole_form_text(child).strip()
     return ""
 
 
@@ -324,15 +325,15 @@ def v150_alternate_FORM_low_overlap(
                 if bases:
                     pairs.append((form, bases))
         for alt, bases in pairs:          # baseless variants are V149's business
-            alt_text = (alt.text or "").strip()
+            alt_text = whole_form_text(alt).strip()
             ratio, base_text = max(
                 (
                     (
                         difflib.SequenceMatcher(
-                            None, _fold(alt_text), _fold(base.text),
+                            None, _fold(alt_text), _fold(whole_form_text(base)),
                             autojunk=False,
                         ).ratio(),
-                        (base.text or "").strip(),
+                        whole_form_text(base).strip(),
                     )
                     for base in bases
                 ),
@@ -435,7 +436,7 @@ def v163_audio_on_sentence_with_printed_alternative(
             continue
         original = next((f for f in s.findall("FORM")
                          if f.get("kindOf") == "original" and f.get("ver") is None), None)
-        text = (original.text or "") if original is not None else ""
+        text = whole_form_text(original) if original is not None else ""
         hit = _ALTERNATIVE_SLASH_RE.search(text) or _ALTERNATIVE_PAREN_RE.search(text)
         if not hit:
             continue

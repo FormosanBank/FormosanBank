@@ -37,6 +37,8 @@ from lxml import etree
 
 from QC.validation._corpus_index import CorpusIndex
 from QC.validation._finding import Finding, Severity
+from QC.validation.rules._form_text import form_text as whole_form_text
+from QC.validation.rules._form_text import form_words_text
 from QC.validation.rules._reconstruct import (
     DEFAULT_SIMILARITY_THRESHOLD,
     letter_skeleton,
@@ -75,11 +77,11 @@ def _extract_s_direct_text(s_elem: etree._Element) -> str:
     CSV output.
     """
     original = find_base_form(s_elem, "original")
-    if original is not None and original.text:
-        return original.text.strip()
+    if original is not None and form_words_text(original).strip():
+        return form_words_text(original).strip()
     any_form = find_base_form(s_elem)
-    if any_form is not None and any_form.text:
-        return any_form.text.strip()
+    if any_form is not None and form_words_text(any_form).strip():
+        return form_words_text(any_form).strip()
     return (s_elem.text or "").strip()
 
 
@@ -131,13 +133,17 @@ def _w_form_with_inline_infixes_marked(form_text: str, w_elem: etree._Element) -
 
 
 def _get_w_form(w_elem: etree._Element) -> str:
-    """Return W's preferred FORM text. Original > any FORM > ''."""
+    """Return W's preferred FORM text. Original > any FORM > ''.
+
+    Each <UNCLEAR/> reads as one "?" piece, so V061 counts an unclear
+    morpheme (``<UNCLEAR/>=maku`` -> 2) as the M tier does.
+    """
     original = find_base_form(w_elem, "original")
-    if original is not None and original.text:
-        return original.text.strip()
+    if original is not None and form_words_text(original).strip():
+        return form_words_text(original).strip()
     any_form = find_base_form(w_elem)
-    if any_form is not None and any_form.text:
-        return any_form.text.strip()
+    if any_form is not None and form_words_text(any_form).strip():
+        return form_words_text(any_form).strip()
     return ''
 
 
@@ -346,7 +352,7 @@ def v063_W_FORM_retains_segmentation(
         s_original = find_base_form(s, "original")
         if s_original is None:
             continue
-        s_count = _count_segmentation_chars(s_original.text or "")
+        s_count = _count_segmentation_chars(whole_form_text(s_original))
         if s_count <= 3:
             continue
         ws = [child for child in s if child.tag == "W"]
@@ -358,7 +364,7 @@ def v063_W_FORM_retains_segmentation(
         for w in ws:
             for form in w.findall('./FORM'):
                 kind = form.get("kindOf")
-                marker_count = _count_segmentation_chars(form.text or "")
+                marker_count = _count_segmentation_chars(whole_form_text(form))
                 if kind == "original":
                     original_sum += marker_count
                 elif kind == "standard":
@@ -444,7 +450,7 @@ def v062_infix_M_needs_angle_gloss(
         form_text = None
         for child in m:
             if child.tag == "FORM":
-                form_text = (child.text or "").strip()
+                form_text = whole_form_text(child).strip()
                 break
         if form_text is None or not _INFIX_PATTERN.match(form_text):
             continue
@@ -562,7 +568,7 @@ def v065_every_W_has_TRANSL(
 def _m_forms(m_elem: etree._Element) -> list[str]:
     """Return all direct-child FORM text values of an M element."""
     return [
-        (child.text or "")
+        whole_form_text(child)
         for child in m_elem
         if child.tag == "FORM"
     ]
@@ -646,7 +652,7 @@ def v067_no_angle_brackets_in_M_FORM(
         for child in m:
             if child.tag != "FORM":
                 continue
-            text = child.text or ""
+            text = whole_form_text(child)
             if "<" in text or ">" in text:
                 offending_forms.append((child.get("kindOf"), text))
         if not offending_forms:
@@ -702,16 +708,16 @@ def v068_M_reconstructs_W(
         w_form = find_base_form(w, "original")
         if w_form is None:
             continue
-        w_skel = letter_skeleton(w_form.text)
+        w_skel = letter_skeleton(whole_form_text(w_form))
         if not w_skel:
             continue
         m_skel: Counter = Counter()
         saw_m_form = False
         for m in ms:
             m_form = find_base_form(m, "original")
-            if m_form is not None and (m_form.text or "").strip():
+            if m_form is not None and whole_form_text(m_form).strip():
                 saw_m_form = True
-                m_skel += letter_skeleton(m_form.text)
+                m_skel += letter_skeleton(whole_form_text(m_form))
         if not saw_m_form:
             continue  # M FORMs missing -> V011/V012/other rules own this
         sim = similarity(w_skel, m_skel)
@@ -729,7 +735,7 @@ def v068_M_reconstructs_W(
             message=(
                 f"W id={w_id!r}: child M FORMs reconstruct only {sim:.0%} of the "
                 f"W FORM letters; the morphemes may belong to a different word. "
-                f"W FORM={w_form.text!r}"
+                f"W FORM={whole_form_text(w_form)!r}"
             ),
             path=path,
             location=loc,
@@ -850,7 +856,7 @@ def v070_gloss_code_as_FORM(
     for parent_tag in ("W", "M"):
         for elem in tree.iter(parent_tag):
             for form in elem.findall("FORM"):
-                text = (form.text or "").strip()
+                text = whole_form_text(form).strip()
                 core = text.strip("-=")
                 if not core:
                     continue
