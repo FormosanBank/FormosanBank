@@ -40,6 +40,7 @@ from QC.validation.rules._reconstruct import (
     letter_skeleton,
     similarity,
 )
+from QC.validation.rules._gloss_text import gloss_text
 from QC.xml_forms import find_base_form
 
 
@@ -451,7 +452,7 @@ def v062_infix_M_needs_angle_gloss(
         has_angle_gloss = False
         for child in parent_w:
             if child.tag == "TRANSL":
-                text = child.text or ""
+                text = gloss_text(child)
                 if "<" in text and ">" in text:
                     has_angle_gloss = True
                     break
@@ -937,7 +938,7 @@ def gloss_languages(tree: etree._ElementTree) -> set:
     glossed = 0
     for w in tree.iter("W"):
         present = {t.get(_XML_LANG) for t in w.findall("TRANSL")
-                   if (t.text or "").strip()}
+                   if gloss_text(t)}
         present = {l for l in present if l}
         if not present:
             continue
@@ -977,7 +978,7 @@ def v153_gloss_pieces_match_morphemes(
             continue
         n = _morphemes_implied(form)
         for t in w.findall("TRANSL"):
-            gloss = (t.text or "").strip()
+            gloss = gloss_text(t)
             if not gloss:
                 continue
             if _gloss_pieces(gloss) != n:
@@ -1056,8 +1057,8 @@ def v154_gloss_script_matches_language(
     example = ""
     for parent in list(tree.iter("W")) + list(tree.iter("M")):
         for t in parent.findall("TRANSL"):
-            lang, text = t.get(_XML_LANG), (t.text or "").strip()
-            others = {o.get(_XML_LANG): (o.text or "").strip()
+            lang, text = t.get(_XML_LANG), gloss_text(t)
+            others = {o.get(_XML_LANG): gloss_text(o)
                       for o in parent.findall("TRANSL") if o is not t}
             if not odd(text, lang, others):
                 continue
@@ -1071,7 +1072,7 @@ def v154_gloss_script_matches_language(
                     for w in sentence.findall("W"):
                         if w is parent:
                             continue
-                        sib = {o.get(_XML_LANG): (o.text or "").strip()
+                        sib = {o.get(_XML_LANG): gloss_text(o)
                                for o in w.findall("TRANSL")}
                         if odd(sib.get(lang, ""), lang,
                                {k: v for k, v in sib.items() if k != lang}):
@@ -1122,7 +1123,7 @@ def v155_gloss_language_set_incomplete(
     example = ""
     for w in tree.iter("W"):
         present = {t.get(_XML_LANG) for t in w.findall("TRANSL")
-                   if (t.text or "").strip()}
+                   if gloss_text(t)}
         present = {l for l in present if l}
         if not present or present >= langs:
             continue
