@@ -433,6 +433,8 @@ def rewrite_repo_links(
         parsed = urlsplit(raw)
         if parsed.scheme or parsed.netloc or raw.startswith(("/", "#")) or not parsed.path:
             return match.group(0)
+        if ".gitbook/assets/" in raw:
+            return match.group(0)  # a site image: transform_markdown maps it to assets/images/
         target = PurePosixPath(posixpath.normpath(str(repo_path.parent / parsed.path)))
         if str(target).startswith(".."):
             return match.group(0)
@@ -661,6 +663,23 @@ def assemble_translated_sources(
         path.write_text(_after_title(path.read_text(encoding="utf-8"), note), encoding="utf-8")
 
 
+TRANSLATE_PAGE = PurePosixPath("docs/tools/translate_page/index.html")
+
+
+def install_translate_pages(repository_root: Path, staging_en: Path) -> None:
+    """The translation tool: one static page per target language, beside its data."""
+    import translations
+
+    template = (repository_root / TRANSLATE_PAGE).read_text(encoding="utf-8")
+    for target in translations.TARGETS:
+        out = staging_en / "translate" / target.name.casefold()
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "index.html").write_text(
+            template.replace("{{LANGUAGE_NAME}}", target.name).replace("{{LANGUAGE_CODE}}", target.code),
+            encoding="utf-8",
+        )
+
+
 def stage_edition(repository_root: Path, staging: Path, edition: Edition) -> bool:
     """Assemble an edition's source tree in ``staging``. False if it has no pages."""
     if staging.exists():
@@ -741,11 +760,30 @@ def prepare_site(repository_root: Path, output_root: Path) -> list[tuple[Edition
         shutil.rmtree(output_root)
     output_root.mkdir(parents=True)
 
+    import language_pages
+    import translated_editions
+    import translations
+
     present: list[Edition] = []
     english: dict[PurePosixPath, PurePosixPath] | None = None
-    for edition in EDITIONS:  # English first: the others fall back to it
+    staging_en = output_root / "staging" / "en"
+    legacy = translated_editions.load_legacy_map(repository_root)
+    history = language_pages.load_history(repository_root / "statistics" / "language_history.csv")
+    for edition in EDITIONS:  # English first: the others are built from it
         staging = output_root / "staging" / edition.key
-        if not stage_edition(repository_root, staging, edition):
+        has_pages = stage_edition(repository_root, staging, edition)
+        if edition.key == "en":
+            translated_editions.write_tool_data(staging, repository_root)
+            install_translate_pages(repository_root, staging)
+        else:
+            target = translations.TARGETS_BY_EDITION[edition.key]
+            staging.mkdir(parents=True, exist_ok=True)
+            approved = translations.approved_map(
+                translations.load_store(target.code, repository_root / "docs" / "translations"))
+            translated_editions.build_edition(
+                staging_en, staging, target, approved, legacy.get(edition.key, {}), history)
+            has_pages = (staging / "README.md").is_file()
+        if not has_pages:
             continue
         mapping = prepare_edition(
             staging, output_root / "docs" / edition.key, edition, repository_root,

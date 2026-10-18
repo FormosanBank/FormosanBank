@@ -56,7 +56,7 @@ The corpus contains 524 aligned sections: 33 per language (29 for Kanakanavu), e
 
 **Alignment.** Each paragraph of every language was aligned with its Mandarin and English translation by dividing the apology into 33 sections, the same in every language. Kanakanavu, whose paragraphing differs, was divided separately into 29. Each transcript holds one section per line. An example:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-12-08 at 9.41.01 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../docs/site/en-us/.gitbook/assets/Screenshot 2024-12-08 at 9.41.01 PM.png" alt=""><figcaption></figcaption></figure>
 
 #### Audio
 

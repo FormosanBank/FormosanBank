@@ -100,8 +100,13 @@ def growth_series(
     return points
 
 
-def render_growth_svg(series: list[Point], title: str) -> str:
-    """The growth figure as SVG text: log y axis, plot area height = 2 x width."""
+def render_growth_svg(series: list[Point], title: str, labels: dict[str, str] | None = None) -> str:
+    """The growth figure as SVG text: log y axis, plot area height = 2 x width.
+
+    ``labels`` translates the axis label ("ylabel") and the series names
+    (keyed by their English names); translated editions pass it.
+    """
+    labels = labels or {}
     import matplotlib
 
     matplotlib.use("Agg")
@@ -117,11 +122,11 @@ def render_growth_svg(series: list[Point], title: str) -> str:
         # log scale: a zero has no position, so it is a gap in the line
         ys = [p.values[field] if p.values[field] > 0 else float("nan") for p in series]
         if any(y == y for y in ys):  # at least one non-NaN
-            ax.plot(xs, ys, label=label, color=color, drawstyle="steps-post", **style)
+            ax.plot(xs, ys, label=labels.get(label, label), color=color, drawstyle="steps-post", **style)
             plotted += 1
     ax.set_yscale("log")
     ax.set_title(title, fontsize=12)
-    ax.set_ylabel("Words (log scale)")
+    ax.set_ylabel(labels.get("ylabel", "Words (log scale)"))
     ax.xaxis.set_major_locator(mdates.MonthLocator(bymonth=(1, 7)))
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
     for tick in ax.get_xticklabels():

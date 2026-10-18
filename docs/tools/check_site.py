@@ -69,6 +69,7 @@ def parse_page(path: Path) -> Page:
 
 def resolve_target(site_root: Path, source: Path, reference: str) -> tuple[Path, str]:
     parsed = urlsplit(reference)
+    parsed = parsed._replace(path=unquote(parsed.path))  # browsers decode %20 etc.
     if parsed.scheme in {"http", "https"} and parsed.netloc != LOCAL_HOST:
         raise ValueError("external")
     if parsed.netloc == LOCAL_HOST and parsed.path.startswith("/kakarayan/"):
