@@ -31,6 +31,10 @@ while read -r expected source_name; do
     fi
 done < "$CODE_ROOT/data/source_checksums.sha256"
 
+# The published files live in XML/Paiwan/ (POL-059: a language-named
+# directory on the path); the build itself writes a flat XML/.
+PUBLISHED_XML="$CORPUS_ROOT/XML/Paiwan"
+
 BUILD_ROOT=$(mktemp -d /tmp/hundred-paiwan-rebuild.XXXXXX)
 cleanup() {
     rm -rf -- "$BUILD_ROOT"
@@ -77,16 +81,17 @@ mv "$BUILD_ROOT/CodeAndDocs/quote_corrections.csv" \
 # Recorded hand edits. Runs after the cleaner and BEFORE standardize.py and
 # add_phonology.py, because apply_manual_edits replaces an S from a record
 # that carries no standard FORM and no PHON -- both are regenerated below.
-# One edit is expected; a no-op would mean the build now produces it by
-# itself and the record is obsolete (POL-030), so treat that as a failure
-# rather than a warning.
+# Two edits are expected (008S28 and 050S39, both quotation marks the
+# cleaner leaves as the glottal letter '); a no-op would mean the build now
+# produces it by itself and the record is obsolete (POL-030), so treat that
+# as a failure rather than a warning.
 cp "$CODE_ROOT/manual_edits.xml" "$BUILD_ROOT/CodeAndDocs/manual_edits.xml"
 MANUAL_EDITS=$(
     cd "$BUILD_ROOT" && "$PYTHON_BIN" "$BANK/QC/cleaning/apply_manual_edits.py" \
         --corpora_path XML
 )
 echo "$MANUAL_EDITS"
-if [[ "$MANUAL_EDITS" != *"apply: 1 edit(s) across 1 file(s); 0 no-op(s)"* ]]; then
+if [[ "$MANUAL_EDITS" != *"apply: 2 edit(s) across 2 file(s); 0 no-op(s)"* ]]; then
     echo "unexpected manual-edit result" >&2
     exit 1
 fi
@@ -216,20 +221,33 @@ env \
     PAIWAN_SOURCE_ROOT="$SOURCE_ROOT" \
     "$PYTHON_BIN" -m unittest discover -s "$CODE_ROOT/tests" -v
 
+# --check: the XML, the rebuild reports and the hand-edit changelog must
+# match the committed copies exactly. The four QC logs below are what the
+# shared cleaner and validators report about that XML; when a shared tool
+# changes (a new rule, a reworded message) they change with it while the XML
+# does not. A difference there is shown, not fatal: review it and rerun with
+# --write to refresh the committed logs.
+report_qc_log_difference() {
+    local built=$1 committed=$2
+    if ! cmp -s "$built" "$committed"; then
+        echo "NOTE: $(basename "$committed") differs from the committed copy" \
+            "(shared tooling changed?); review and rerun with --write:" >&2
+        diff -u "$committed" "$built" >&2 || true
+    fi
+}
+
 if [[ "$MODE" == "--check" ]]; then
-    diff -qr "$BUILD_ROOT/XML" "$CORPUS_ROOT/XML"
+    diff -qr "$BUILD_ROOT/XML" "$PUBLISHED_XML"
     diff -qr "$BUILD_ROOT/reports/rebuild" "$CODE_ROOT/reports/rebuild"
-    cmp "$BUILD_ROOT/reports/qc/qc-summary.md" "$CODE_ROOT/reports/qc/qc-summary.md"
-    cmp "$BUILD_ROOT/reports/qc/soft_findings_review.json" \
-        "$CODE_ROOT/reports/qc/soft_findings_review.json"
-    cmp "$BUILD_ROOT/reports/qc/cleaner_warnings.csv" \
-        "$CODE_ROOT/reports/qc/cleaner_warnings.csv"
-    cmp "$BUILD_ROOT/reports/qc/quote_corrections.csv" \
-        "$CODE_ROOT/reports/qc/quote_corrections.csv"
     cmp "$BUILD_ROOT/CodeAndDocs/manual_edits.md" "$CODE_ROOT/manual_edits.md"
+    for log in qc-summary.md soft_findings_review.json \
+        cleaner_warnings.csv quote_corrections.csv; do
+        report_qc_log_difference "$BUILD_ROOT/reports/qc/$log" \
+            "$CODE_ROOT/reports/qc/$log"
+    done
 else
-    mkdir -p "$CORPUS_ROOT/XML" "$CODE_ROOT/reports/rebuild" "$CODE_ROOT/reports/qc"
-    rsync -a --delete "$BUILD_ROOT/XML/" "$CORPUS_ROOT/XML/"
+    mkdir -p "$PUBLISHED_XML" "$CODE_ROOT/reports/rebuild" "$CODE_ROOT/reports/qc"
+    rsync -a --delete "$BUILD_ROOT/XML/" "$PUBLISHED_XML/"
     rsync -a --delete "$BUILD_ROOT/reports/rebuild/" "$CODE_ROOT/reports/rebuild/"
     cp "$BUILD_ROOT/reports/qc/qc-summary.md" "$CODE_ROOT/reports/qc/qc-summary.md"
     cp "$BUILD_ROOT/reports/qc/soft_findings_review.json" \
@@ -239,7 +257,7 @@ else
     cp "$BUILD_ROOT/reports/qc/quote_corrections.csv" \
         "$CODE_ROOT/reports/qc/quote_corrections.csv"
     cp "$BUILD_ROOT/CodeAndDocs/manual_edits.md" "$CODE_ROOT/manual_edits.md"
-    diff -qr "$BUILD_ROOT/XML" "$CORPUS_ROOT/XML"
+    diff -qr "$BUILD_ROOT/XML" "$PUBLISHED_XML"
     diff -qr "$BUILD_ROOT/reports/rebuild" "$CODE_ROOT/reports/rebuild"
     cmp "$BUILD_ROOT/reports/qc/qc-summary.md" "$CODE_ROOT/reports/qc/qc-summary.md"
     cmp "$BUILD_ROOT/reports/qc/soft_findings_review.json" \

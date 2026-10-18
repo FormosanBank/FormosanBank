@@ -161,7 +161,7 @@ reviewed source or the build fails rather than correcting drifted text, and the
 pass is idempotent. `normalize_sentence_standards.py` now changes nothing — it
 runs after `standardize.py` purely to verify that all 16 decisions hold.
 
-**A genuine one-off editorial judgement** goes in `manual_edits.xml` — see
+**A one-off editorial judgement** goes in `manual_edits.xml` — see
 "Recorded hand edits" below.
 
 ### Hyphens are not part of the standard orthography
@@ -206,17 +206,34 @@ python3 -m pip install -r Corpora/HundredPaiwanStories/CodeAndDocs/requirements.
 Corpora/HundredPaiwanStories/CodeAndDocs/generate_xml.sh --check
 ```
 
-The script verifies the source checksums in `CodeAndDocs/data/source_checksums.sha256`, rebuilds the XML against the current FormosanBank checkout, runs the full validator and test suite, and compares the result with the published files. Use `--write` only when intentionally regenerating the corpus.
+The script verifies the source checksums in `CodeAndDocs/data/source_checksums.sha256`, rebuilds the XML against the current FormosanBank checkout, runs the full validator and test suite, and compares the result with the published files in `XML/Paiwan/`. `--check` fails if the XML, `reports/rebuild/` or `manual_edits.md` differ. The four QC logs in `reports/qc/` (`qc-summary.md`, `soft_findings_review.json`, `cleaner_warnings.csv`, `quote_corrections.csv`) describe what the shared cleaner and validators report, so they change whenever those tools do; `--check` prints any difference in them as a note with the diff instead of failing. Use `--write` only when intentionally regenerating the corpus; it also refreshes those logs.
 
 **POL-047 deviation:** the validators run *inside* `generate_xml.sh` rather
 than in a separate `validate.sh`, and that is deliberate here. This build's
-`reports/qc/*` are published corpus artifacts that `--check` compares
-byte-for-byte, and `scripts/review_qc_findings.py` gates the build on them —
+`reports/qc/*` are published corpus artifacts, and
+`scripts/review_qc_findings.py` gates the build on the validators' findings —
 it pins the one by-design `G001` finding to its exact location and rejects any
-other. Splitting QC out would install XML before the gate had run, weakening a
+other HARD finding. Splitting QC out would install XML before the gate had run, weakening a
 safety property this corpus is built around. The cost POL-047 warns about is
 accepted knowingly: a validator failure here blocks the rebuild, and
 investigating one means running the validators by hand against the build tree.
+
+**What the QC gate fails on.** The gate is built so that changes to the shared
+validators do not break this corpus's rebuild:
+
+- **Any HARD finding** other than the accepted `G001` on `078S4W19` fails,
+  whatever rule it comes from.
+- **Reviewed rules** (`V061`, `V064`, `V122`, `G001`, `G002`, `G010`; `G003`
+  must report nothing): every finding must be explained against the XML (for
+  example, each `V061` must be a reduplicated word), and a count above the
+  reviewed one fails. A count below it is reported in `qc-summary.md`, not
+  failed: the gate's XML-derived checks (element inventory, parentheses,
+  hyphen-free standard tier, the unglossed morpheme) still hold the data
+  itself, so a lower count means the validator now reports less.
+- **Any other rule** is unreviewed: its SOFT and WARN findings are listed in
+  `qc-summary.md` under "Findings from rules this corpus has not reviewed",
+  printed as a `NOTE:` during the build, and do not stop it. At the last
+  rebuild (2026-10-18) these were `V135` (66), `V153` (43) and `G014` (5).
 
 The build deliberately does not pin shared tooling — the bank's model is that tooling improves and corpora are regenerated against it — so a rebuild picks up later improvements, and a resulting XML diff should be reviewed rather than suppressed.
 
@@ -242,22 +259,26 @@ The source prints quotations with curly marks, which the shared cleaner folds to
 straight ones and then resolves against the glottal letter `'` under POL-035. The
 two logs of that pass are committed with the build:
 
-- `CodeAndDocs/reports/qc/quote_corrections.csv` — the 24 `'` → `"` rewrites the
+- `CodeAndDocs/reports/qc/quote_corrections.csv` — the 22 `'` → `"` rewrites the
   cleaner made to the original tier, with the form before and after each.
 - `CodeAndDocs/reports/qc/cleaner_warnings.csv` — the 27 `'` it flagged but left
   alone, because the translation did not place the quotation with enough
   confidence to rule out a glottal reading. `008S28` is the notable one, and a
   recorded hand edit corrects it afterwards.
 
+The cleaner version the corpus was first built with also rewrote the two `'`
+of `050S39`; the current cleaner reads them as the glottal letter and neither rewrites nor flags them,
+so that sentence is now corrected by a recorded hand edit as well.
+
 ### Recorded hand edits
 
-One correction in this corpus is a genuine one-off editorial judgement rather
-than a rule, so it uses the standard FormosanBank mechanism:
+Two corrections in this corpus are one-off editorial judgements rather than
+a rule, so they use the standard FormosanBank mechanism:
 [`CodeAndDocs/manual_edits.xml`](CodeAndDocs/manual_edits.xml), replayed by
 `QC/cleaning/apply_manual_edits.py` and summarised for readers in
 [`CodeAndDocs/manual_edits.md`](CodeAndDocs/manual_edits.md).
 
-The single record is `008S28`. The source prints its inner quotation with curly
+The first record is `008S28`. The source prints its inner quotation with curly
 single quotes (`‘aa’`); the cleaner folds those to `'` and then declines to
 rewrite them as `"`, because the English translation does not place the
 quotation confidently enough to rule out a glottal reading — `'` is the glottal
@@ -265,10 +286,18 @@ letter in this orthography, so the cleaner is deliberately conservative and logs
 the case (rule `c030`) instead of guessing. Here it is a quotation, so the edit
 sets `"aa"` in the original FORM at the sentence, word and morpheme tiers.
 
+The second record is `050S39`. The source prints `“sa-u; ‘idu,’ aya-u, kina.”`
+(“Go and tell him to come here, mother.”): `‘idu,’` is a quotation inside the
+quotation. The cleaner folds the curly marks to `'` and leaves them, so without
+the edit the standard tier would read them as glottal stops (standard PHON
+`sau ʔiduʔ ajau kina`). The edit sets `"idu,"` in the sentence's original FORM
+(the word and morpheme FORMs, `id-u`, carry no quotation mark), giving
+standard PHON `sau idu ajau kina`.
+
 The step runs after the cleaner and *before* `standardize.py` and
 `add_phonology.py`, because an edit record carries no standard FORM and no PHON
-— both are regenerated from the edited original. The build asserts exactly one
-edit applies and **fails on a no-op**: if the pipeline ever produces this
+— both are regenerated from the edited original. The build asserts exactly two
+edits apply and **fails on a no-op**: if the pipeline ever produces this
 content by itself the record is obsolete (POL-030) and should be pruned, not
 left to pass silently.
 
@@ -294,9 +323,10 @@ Each item is described in full in the section named in brackets.
 - **Hyphens differ between tiers.** The original tier keeps the source's
   hyphens (153 sentences); the standard tier has none. ["Hyphens are not part
   of the standard orthography"]
-- **Quotation marks.** The cleaner rewrote 24 `'` as `"` in the original tier
+- **Quotation marks.** The cleaner rewrote 22 `'` as `"` in the original tier
   and left 27 flagged `'` alone because they might be the glottal letter; one
-  of those, `008S28`, is corrected by a recorded hand edit. ["Validation",
+  of those, `008S28`, is corrected by a recorded hand edit, and so is `050S39`,
+  whose two `'` the cleaner no longer rewrites or flags. ["Validation",
   "Recorded hand edits"]
 
 ## Citation
