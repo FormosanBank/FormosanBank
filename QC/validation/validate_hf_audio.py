@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -37,6 +38,18 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 
 def is_audio(path: str | Path) -> bool:
     return Path(path).suffix.lower() in AUDIO_SUFFIXES
+
+
+def name_shard(filename: str) -> str:
+    """The shard folder for a file in a sharded ILRDF language: the first hex
+    digit of the SHA-256 of its UTF-8 file name ("0" ... "f").
+
+    Hugging Face refuses more than 10,000 files in one folder, so the large
+    ILRDF languages (``sharded_languages`` in audio_sources.json) spread their
+    files over 16 subfolders chosen by this function. Anything that writes or
+    reads that layout must call this function rather than repeat the rule.
+    """
+    return hashlib.sha256(filename.encode("utf-8")).hexdigest()[0]
 
 
 def load_json(path: Path) -> dict:
@@ -76,11 +89,13 @@ def load_contract(
         permission_id = dataset.get("permission_id")
         if not isinstance(permission_id, str) or not permission_id:
             raise ValueError(f"{repo_id}: permission_id must be a non-empty string")
-        batch_2 = dataset.get("rukai_batch_2_files", [])
-        if not isinstance(batch_2, list) or not all(
-            isinstance(path, str) and is_audio(path) for path in batch_2
+        sharded = dataset.get("sharded_languages", [])
+        if not isinstance(sharded, list) or not all(
+            isinstance(language, str) and language for language in sharded
         ):
-            raise ValueError(f"{repo_id}: rukai_batch_2_files must be audio filenames")
+            raise ValueError(
+                f"{repo_id}: sharded_languages must be a list of language folder names"
+            )
 
     permissions_path = REPO_ROOT / manifest["permissions"]
     permissions = load_json(permissions_path)
@@ -243,7 +258,7 @@ def expected_remote_paths(dataset: dict) -> set[str]:
         return result
 
     result: set[str] = set()
-    rukai_batch_2 = set(dataset.get("rukai_batch_2_files", []))
+    sharded_languages = set(dataset.get("sharded_languages", []))
     for xml_path, _, audio in xml_audio_elements(xml_root):
         filename = audio.get("file")
         if not filename:
@@ -257,13 +272,8 @@ def expected_remote_paths(dataset: dict) -> set[str]:
             path = relative.parent / xml_path.stem / filename
         elif mode == "ilrdf":
             path = relative.parent / xml_path.stem
-            if relative.parts[0] == "Rukai":
-                batch = (
-                    "batch_2"
-                    if filename in rukai_batch_2
-                    else "batch_1"
-                )
-                path /= batch
+            if relative.parts[0] in sharded_languages:
+                path /= name_shard(filename)
             path /= filename
         else:
             raise ValueError(f"unknown path_mode {mode!r}")
