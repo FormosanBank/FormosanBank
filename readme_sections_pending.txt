@@ -6,7 +6,6 @@
 
 Campbell-Favorlang rights
 Campbell-Favorlang notes
-Glosbe notes
 ILRDF_Dicts notes
 MontgomeryTexts notes
 NTU_Paiwan_ASR notes
