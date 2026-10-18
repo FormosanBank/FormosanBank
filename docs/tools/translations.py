@@ -81,13 +81,28 @@ ABBREVIATIONS = re.compile(
 SENTENCE_END = re.compile(r"(?<=[.!?])\s+(?=[\"“'(\[`*A-Z0-9])")
 
 
+INLINE_CODE = re.compile(r"`[^`\n]+`")
+
+
 def plain_text(markdown: str) -> str:
-    """Inline Markdown flattened to what a reader sees; inline code is kept."""
-    text = IMAGE.sub("", markdown)
+    """Inline Markdown flattened to what a reader sees; inline code is kept as written.
+
+    Code spans are masked first, so `<UNCLEAR/>` or `*` inside backticks is
+    not mistaken for an HTML tag or emphasis.
+    """
+    saved: list[str] = []
+
+    def mask(match: re.Match[str]) -> str:
+        saved.append(match.group(0))
+        return f"\x00{len(saved) - 1}\x00"
+
+    text = INLINE_CODE.sub(mask, markdown)
+    text = IMAGE.sub("", text)
     text = LINK.sub(lambda m: m.group(1), text)
     text = HTML_TAG.sub("", text)
     text = EMPHASIS.sub(lambda m: m.group(2), text)
     text = text.replace("&nbsp;", " ").replace("\\#", "#")
+    text = re.sub("\x00(\\d+)\x00", lambda m: saved[int(m.group(1))], text)
     return " ".join(text.split())
 
 

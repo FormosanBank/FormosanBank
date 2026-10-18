@@ -142,3 +142,10 @@ def test_label_template_with_broken_placeholder_is_unused():
     assert t(site_labels.FIGURE_TITLE, language="Amis") is None
     t = site_labels.translator({site_labels.FIGURE_TITLE: "{language} 字數"})
     assert t(site_labels.FIGURE_TITLE, language="阿美語") == "阿美語 字數"
+
+
+def test_inline_code_is_not_stripped_as_markup():
+    # Found 2026-10-19: `<UNCLEAR/>` and `*` inside backticks were removed as an
+    # HTML tag and as emphasis, so the English unit read "ungrammatical (``)".
+    units = tr.segments("Examples marked ungrammatical (`*`) or with `<UNCLEAR/>` are excluded.\n")
+    assert units == ["Examples marked ungrammatical (`*`) or with `<UNCLEAR/>` are excluded."]
