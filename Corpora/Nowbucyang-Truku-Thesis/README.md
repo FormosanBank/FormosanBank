@@ -61,6 +61,10 @@ printed gloss token stay separate W (`Hpuy-an =nami` 煮-LF 我們, C01_E024A;
 `B-n-arig =ku` (C04_E003B) and `Mgay =ku` (C01_E011D, C01_E011D2) await a
 maintainer ruling and are unchanged, as is the morpheme boundary of `Nnita`
 (C03_E003A).
+Three parentheticals the thesis prints after a free translation are notes on
+that translation, not alternative translations: `(* 螢火蟲出來了)` in C04_E008C
+(the starred reading the sentence does not have) and `(在路上)` / `(已看到人)`
+in C01_E028A / C01_E028B.
 
 Lexical and derivation tables remain source evidence outside the published
 sentence/interlinear-example scope. Original PHON follows the source's

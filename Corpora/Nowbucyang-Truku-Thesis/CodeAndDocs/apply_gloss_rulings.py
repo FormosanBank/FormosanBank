@@ -228,8 +228,34 @@ def merge_clitic_glosses(ids):
         host.getparent().remove(clitic)
 
 
+# Ruling 9 -- [nb-other-starred-alt-translation] (8c), PDF page 130, prints
+# 星星出來了。(* 螢火蟲出來了): the starred reading is one the sentence does NOT
+# have. Maintainer: "Keep it as a note on the translation".
+# Ruling 10 -- [nb-other-parenthetical-as-alt-translation] (28a)/(28b), PDF
+# page 44, print 要來這裡了(在路上) and 剛剛到達這裡(已看到人). Maintainer:
+# "Move to a note". In each, the ver="alt" TRANSL is removed and the
+# parenthetical, as printed, becomes the notes of the primary TRANSL.
+ALT_TO_NOTE = [
+    # (S id, alt TRANSL text now, note)
+    ("C04_E008C", "* 螢火蟲出來了", "(* 螢火蟲出來了)"),
+    ("C01_E028A", "在路上", "(在路上)"),
+    ("C01_E028B", "已看到人", "(已看到人)"),
+]
+
+
+def move_alt_translations_to_notes(ids):
+    for sentence_id, alt_text, note in ALT_TO_NOTE:
+        sentence = _get(ids, sentence_id, "S")
+        alts = [t for t in sentence.findall("TRANSL") if t.get("ver") == "alt"]
+        primary = [t for t in sentence.findall("TRANSL") if t.get("ver") is None]
+        _expect(len(alts) == 1 and alts[0].text == alt_text, f"{sentence_id}: alt TRANSL is not {alt_text}")
+        _expect(len(primary) == 1 and primary[0].get("notes") is None, f"{sentence_id}: expected one primary TRANSL without notes")
+        sentence.remove(alts[0])
+        primary[0].set("notes", note)
+
+
 STEPS = [merge_joint_glosses, add_thesis_glosses, gloss_morphemes_unclear, split_null_morpheme,
-         merge_clitic_glosses]
+         merge_clitic_glosses, move_alt_translations_to_notes]
 
 
 def main():
