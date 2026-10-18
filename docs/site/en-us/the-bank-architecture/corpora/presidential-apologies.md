@@ -8,6 +8,7 @@ This apology text, as part of the effort to promote **historical justice**, has 
 
 The corpus contains 524 aligned sections: 33 per language (29 for Kanakanavu), each with the Indigenous-language text, its Mandarin translation and its English translation. No audio is included.
 
+
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 

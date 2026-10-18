@@ -7,25 +7,26 @@ There are 49 chapters and 1,951 printed verse records: 1,071 in Matthew and 880 
 ***
 
 <!-- CORPUS STATS START -->
-### Corpus Statistics
+## Corpus Statistics
 
 | | Siraya |
 | --- | --- |
-| Word count | 41,952 |
+| Word count | 41,767 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 41,952 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 41,851 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 41,767 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 41,666 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 41,723 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 41,564 |
 | Morphologically segmented | 0 |
 | Glossed words | 0 |
 
 ***
 
 <!-- CORPUS STATS END -->
+
 
 ## Notes and Issues
 
