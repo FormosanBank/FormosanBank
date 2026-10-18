@@ -26,10 +26,11 @@
 #   3. add_phonology     original PHON from the Ortho94 Yami profile (the
 #                        source orthography); standard PHON from Ortho113, the
 #                        scheme standards.csv designates for Yami
-#   4. apply_unclear_glosses.py (this corpus's own step): the glosses and the
-#                        one sentence translation the source leaves unknown,
-#                        listed in unclear_glosses.tsv, become <UNCLEAR/> or
-#                        are omitted (POL-021, POL-061). Runs last because the
+#   4. apply_unclear_glosses.py (this corpus's own step): the morpheme glosses
+#                        the source marks `?` become <UNCLEAR/> and the one
+#                        sentence translation it declares unknown is omitted,
+#                        per unclear_glosses.tsv (POL-021, POL-061); empty
+#                        glosses are left empty. Runs last because the
 #                        shared standardize/add_phonology do not handle
 #                        <UNCLEAR/> inside TRANSL.
 #
