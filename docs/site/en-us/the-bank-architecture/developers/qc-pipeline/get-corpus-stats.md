@@ -4,11 +4,11 @@ icon: chart-line
 
 # get_corpus_stats.py
 
-> Writes the per-corpus statistics CSV that the GitBook consumes, counting tokens, sentences, elements, and audio from a corpus's XML and filling audio seconds from the audio-durations source of truth.
+> Writes the per-corpus statistics CSV that the documentation site reads, counting tokens, sentences, elements, and audio from a corpus's XML and filling audio seconds from the audio-durations source of truth.
 
 ## What it's for
 
-`QC/utilities/get_corpus_stats.py` produces one `statistics/<CorpusName>_corpora_stats.csv` per corpus, broken down by `(language, dialect)`. Each row carries token counts, sentence counts, segmented/glossed word counts, English/Mandarin translation token counts, audio element counts, audio seconds, and structural element tallies. These CSVs are the published interface the GitBook's own `update_corpus_stats.py` reads by column name, and the file [`corpus_metrics.py`](corpus-metrics.md) aggregates with `--stats-dir`.
+`QC/utilities/get_corpus_stats.py` produces one `statistics/<CorpusName>_corpora_stats.csv` per corpus, broken down by `(language, dialect)`. Each row carries token counts, sentence counts, segmented/glossed word counts, English/Mandarin translation token counts, audio element counts, audio seconds, and structural element tallies. These CSVs are the published interface the documentation site's `docs/tools/site_stats.py` (and anyone downloading them) reads by column name, and the file [`corpus_metrics.py`](corpus-metrics.md) aggregates with `--stats-dir`.
 
 All counting rules come from [`corpus_counts.py`](token-counting.md) — the single source of truth — so this script and the token/metrics tooling always agree. Audio *seconds* are never computed here (CI runners have no audio files): they are read from `statistics/audio_durations.csv`, the audio-seconds source of truth maintained by [`update_audio_stats.py` / `refresh_audio_stats.py`](audio-duration-stats.md).
 

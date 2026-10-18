@@ -4,7 +4,7 @@ icon: box-open
 
 # Porting a Corpus In
 
-Once a corpus has passed [QC](qc-pipeline/README.md) and any [audit](running-an-audit.md) findings are resolved, it is **ported** from its dev repo (`Formosan-<Name>/`) into FormosanBank's published tree (`Corpora/<Name>/`) with the standard layout, then wired into this GitBook. This page describes that as a manual procedure — and, importantly, the **decisions you have to make** along the way that the guided [`port-corpus-in` Claude skill](using-the-claude-skills.md) would otherwise prompt you for.
+Once a corpus has passed [QC](qc-pipeline/README.md) and any [audit](running-an-audit.md) findings are resolved, it is **ported** from its dev repo (`Formosan-<Name>/`) into FormosanBank's published tree (`Corpora/<Name>/`) with the standard layout, and registered on this site (its README becomes its page). This page describes that as a manual procedure — and, importantly, the **decisions you have to make** along the way that the guided [`port-corpus-in` Claude skill](using-the-claude-skills.md) would otherwise prompt you for.
 
 {% hint style="warning" %}
 **Port only QC'd corpora.** Porting is not a fix-it step. If QC found problems, fix them in the dev repo (or consciously accept them) *before* porting — don't try to repair data during the port.
@@ -27,7 +27,6 @@ Dev repos created with the [`setup-new-dev-repo` skill](using-the-claude-skills.
 
 - The corpus dev repo at a known path, with recent QC evidence (e.g. a `qc-output/<timestamp>/qc-summary.md`). If there is none, run QC first.
 - A local FormosanBank clone with `Corpora/` present and the `.venv` active.
-- A local clone of this GitBook repo (default sibling `../FormosanBankGitbook`) if you intend to publish the page now.
 
 Refuse to proceed if `Corpora/<Name>/` already exists — decide whether to merge, replace, or rename before overwriting anything.
 
@@ -95,41 +94,33 @@ python QC/validation/validate_xml.py by_path --path Corpora/<Name>/XML --no-exit
 1. **Content-hash check (hard error).** Hash every file under `Private/` and every file under `Corpora/<Name>/`. Any matching hash means private content leaked, regardless of filename — abort the port, surface the pair, and revert (`rm -r Corpora/<Name>/`).
 2. **Basename-collision check (warning).** Any published file whose *basename* also appears under `Private/` (even with different content) — surface for review; not a blocker.
 
-### 5. Add to GitBook
+### 5. Add to the documentation site
 
-Publishing into `Corpora/` is only half-done until the corpus appears in this GitBook. The mechanical wiring is done by the GitBook repo's `manage_corpus_pages.py` helper; you then write the prose and inject the stats.
+The corpus page on this site **is the corpus README**, rendered when the site is built with the statistics table inserted under `## Statistics`. It ships in the port's own pull request; there is no second repository.
 
-{% hint style="info" %}
-The English GitBook is canonical and the repository's default branch is `en-us`. Make page edits on a fresh feature branch from the current `origin/en-us`. The translation branches are partial and should not be used as the source for English corpus pages.
-{% endhint %}
-
-1. **Decide the page identifiers**: the page `slug` (kebab-case + `.md`), the nav label, the page title, and the trailing parenthetical "descriptors" for the corpus list (e.g. `(text, audio, English, Mandarin)`) derived from the corpus's tiers/audio/translations.
-2. **Scaffold the four integration points** with the helper — this wires the page, the `SUMMARY.md` nav bullet, the `corpora/README.md` corpus-list bullet, and the stats map (see the [four integration points](folder-structure.md) the helper manages):
+1. **Make sure the README follows the corpus layout** (headings in order: Languages and dialects, Source, Statistics, How to cite, License, Notes and caveats, Reproduction and processing; POL-055). The template is `.claude/skills/port-corpus-in/README.template.md`.
+2. **Decide the page identifiers**: the page `slug` (its URL name, kebab-case), the menu label, and the "descriptors" for the corpus list (e.g. `text, audio, English, Mandarin`) derived from the corpus's tiers/audio/translations.
+3. **Register the page** (one row in `docs/site/corpus_pages.csv`; the menu entry, the corpus-list bullet and the statistics table follow from it):
 
    ```bash
-   python manage_corpus_pages.py add \
-     --gitbook-root . --corpus "<Name>" --slug "<slug>" \
-     --nav-label "<label>" --title "<title>" --descriptors "<descriptors>" \
-     --template <path-to-corpus-page-template>
+   python docs/tools/manage_corpus_pages.py add \
+     --corpus "<Name>" --slug "<slug>" --nav-label "<label>" --descriptors "<descriptors>"
    ```
-3. **Fill the prose placeholders** on the new page — description, copyright/license, citation(s), and the standard "access" line pointing at the corpus on GitHub.
-4. **Populate the stats tables (audio-aware).** Generate the per-corpus stats CSV and inject it:
+4. **Generate the per-corpus stats CSV (audio-aware):**
 
    ```bash
    # If the corpus has audio, populate audio seconds FIRST (see decision below), then:
    python QC/utilities/get_corpus_stats.py Corpora/<Name>     # writes statistics/<Name>_corpora_stats.csv
-   # In the GitBook repo, inject the tables, pointing at the active FormosanBank checkout:
-   python update_corpus_stats.py --stats-dir <FormosanBank>/statistics
    ```
 
    {% hint style="warning" %}
    **Audio decision.** If the corpus has audio, the audio-seconds columns need `statistics/audio_durations.csv` populated *before* `get_corpus_stats.py` runs, or they come out 0. Choose: run [update_audio_stats.py](qc-pipeline/audio-duration-stats.md) if the audio is local; use [refresh_audio_stats.py](qc-pipeline/audio-duration-stats.md) if it's only on Hugging Face; or skip and note that the page's audio columns are pending a later refresh.
    {% endhint %}
-5. **Verify** the page is fully wired and placeholder-free (`manage_corpus_pages.py check --strict`).
+5. **Verify**: `python docs/tools/manage_corpus_pages.py check --strict` passes, and `python docs/tools/build_site.py` ends with `link check clean`. Open `site/the-bank-architecture/corpora/<slug>/index.html` and check the table.
 
 ### 6. Summarize and commit
 
-Record what was created, what was dropped, the validation result, the privacy-leak result, and any open items (README still a stub, audio columns pending, etc.). The port itself makes working-tree changes only — **you commit and open the PRs** (one for the FormosanBank corpus, one for the GitBook page). The new `statistics/<Name>_corpora_stats.csv` is committed with the corpus; CI later regenerates an identical CSV.
+Record what was created, what was dropped, the validation result, the privacy-leak result, and any open items (README still a stub, audio columns pending, etc.). The port itself makes working-tree changes only — **you commit and open the pull request** (one, containing the corpus and its page). The new `statistics/<Name>_corpora_stats.csv` is committed with the corpus; CI later regenerates an identical CSV.
 
 ## Decisions you own (the skill never guesses these)
 

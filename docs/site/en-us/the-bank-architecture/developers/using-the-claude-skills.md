@@ -16,7 +16,7 @@ From a Claude Code session opened in your FormosanBank clone, either:
 - **Describe the task** — the skills are written to trigger on the matching intent (e.g. "QC this dev repo" or "port this corpus in").
 
 {% hint style="info" %}
-Several skills operate across **two repositories at once** — a sibling `Formosan-<Name>/` dev repo and FormosanBank, or FormosanBank and this GitBook repo. Start Claude Code in FormosanBank and grant access to the other directory (Claude Code's `--add-dir` / additional-directories setting) so the scripts and the data are both in scope.
+Several skills operate across **two repositories at once** — a sibling `Formosan-<Name>/` dev repo and FormosanBank. Start Claude Code in FormosanBank and grant access to the other directory (Claude Code's `--add-dir` / additional-directories setting) so the scripts and the data are both in scope.
 {% endhint %}
 
 The corpus-processing skills make **working-tree changes only**. They do not commit or push, so you review the diffs and open the pull requests yourself. The one exception is `setup-new-dev-repo`, which creates an initial local scaffold commit and asks before any push.
@@ -27,7 +27,7 @@ The skills line up with the stages a corpus passes through, from creation to pub
 
 ```
 setup-new-dev-repo  →  (ingest source, develop XML)  →  run-qc-pipeline
-        →  audit-dev-repo  →  port-corpus-in  →  (published in Corpora/ + GitBook)
+        →  audit-dev-repo  →  port-corpus-in  →  (published in Corpora/ and on this site)
 ```
 
 With two supporting skills used on demand: `sample-sentences-for-expert-review` (manual content review) and `refresh-audio-stats` (recompute audio durations).
@@ -48,7 +48,7 @@ The guided version of [Running an Audit](running-an-audit.md). Reads a dev repo'
 
 ### `port-corpus-in`
 
-The guided version of [Porting a Corpus In](porting-a-corpus.md). Refuses a dev repo without the published build shape (one `generate_xml.sh`, self-contained, provenance written, a source-accounting test), moves a QC'd corpus into `Corpora/<Name>/` with the standard layout, enforces the `Private/` no-leak invariant (including a content-hash check after the copy), then runs the gate GitHub will run — the three validators compared against `main`, the static build-shape tests, the build itself with a clean-tree check, the corpus's own tests, and for a re-port the content-delta check with an audit page that traces every change to a decision — and wires the corpus into this GitBook (page, nav, corpus list, stats tables). It checks the age of the language's attestation dictionary and asks, rather than refreshing it. It **surfaces decisions rather than guessing** — corpus name, which XML to copy, README handling, the GitBook publish branch, how to populate audio seconds — and never commits.
+The guided version of [Porting a Corpus In](porting-a-corpus.md). Refuses a dev repo without the published build shape (one `generate_xml.sh`, self-contained, provenance written, a source-accounting test), moves a QC'd corpus into `Corpora/<Name>/` with the standard layout, enforces the `Private/` no-leak invariant (including a content-hash check after the copy), then runs the gate GitHub will run — the three validators compared against `main`, the static build-shape tests, the build itself with a clean-tree check, the corpus's own tests, and for a re-port the content-delta check with an audit page that traces every change to a decision — and registers the corpus page on this site (its README is the page; one row in `docs/site/corpus_pages.csv`). It checks the age of the language's attestation dictionary and asks, rather than refreshing it. It **surfaces decisions rather than guessing** — corpus name, which XML to copy, README handling, the GitBook publish branch, how to populate audio seconds — and never commits.
 
 ### `sample-sentences-for-expert-review`
 
@@ -60,7 +60,7 @@ Wraps [refresh_audio_stats.py](qc-pipeline/audio-duration-stats.md) to recompute
 
 ## What the skills are not
 
-- **Not committers for corpus or GitBook changes.** You commit those working-tree edits and open the PRs. `setup-new-dev-repo` only creates the new repository's initial scaffold commit.
+- **Not committers for corpus changes.** You commit those working-tree edits and open the PRs. `setup-new-dev-repo` only creates the new repository's initial scaffold commit.
 - **Not fix-it tools.** `run-qc-pipeline` and `audit-dev-repo` *report*; you decide what to fix, and fixes happen in the dev repo's reproduction scripts so regeneration preserves them.
 - **Not a substitute for understanding the scripts.** When a skill does something surprising, the per-script pages in the [QC Pipeline](qc-pipeline/README.md) section are the ground truth.
 

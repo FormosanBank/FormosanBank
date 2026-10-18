@@ -8,7 +8,7 @@ icon: chart-line
 
 ## What it's for
 
-`QC/corpus_metrics.py` rolls everything up to the collection level. It produces `corpus_metrics.json` and `corpus_metrics.md` (totals plus per-language and per-source breakdowns and a benchmark comparison), a set of "current state" PNG bar charts, and — in its history modes — appends to `statistics/corpus_size_history.csv` and renders the growth-over-time line charts the GitBook embeds.
+`QC/corpus_metrics.py` rolls everything up to the collection level. It produces `corpus_metrics.json` and `corpus_metrics.md` (totals plus per-language and per-source breakdowns and a benchmark comparison), a set of "current state" PNG bar charts, and — in its history modes — appends to `statistics/corpus_size_history.csv` and renders the four growth-over-time PNGs in `statistics/` that the repository README shows. (The documentation site's per-language growth figures come from `statistics/language_history.csv`, written by `QC/language_history.py`.)
 
 It can compute either from the per-corpus CSVs written by [`get_corpus_stats.py`](get-corpus-stats.md) (fast; pass `--stats-dir`) or directly from XML under `Corpora/`. Either way the counting rules come from [`corpus_counts.py`](token-counting.md), the single source of truth.
 

@@ -34,7 +34,7 @@ This is not a nicety. It selects which reference materials apply (`reference/Tru
 
 ## Who reads it
 
-`QC/corpus_counts.load_language_codes()` is the one loader for `languages.csv`; every other consumer imports it rather than reading the file. The same `corpus_counts` module resolves the `trv` + dialect rule, which is why token counts, statistics, and the GitBook all agree on what a language is.
+`QC/corpus_counts.load_language_codes()` is the one loader for `languages.csv`; every other consumer imports it rather than reading the file. The same `corpus_counts` module resolves the `trv` + dialect rule, which is why token counts, statistics, and the documentation site all agree on what a language is.
 
 ## How it's enforced
 

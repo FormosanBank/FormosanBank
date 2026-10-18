@@ -12,7 +12,8 @@ Everything in `statistics/` **except one file**:
 
 | Path | Written by | Contents |
 |---|---|---|
-| `statistics/*_corpora_stats.csv` | `corpus-metrics` (CI) | Per-corpus counts, one CSV per corpus. Consumed by the GitBook. |
+| `statistics/*_corpora_stats.csv` | `corpus-metrics` (CI) | Per-corpus counts, one CSV per corpus. Read by the documentation site at build time. |
+| `statistics/language_history.csv` | `corpus-metrics` (CI) | Per corpus, language and dialect, one row set per XML-changing commit (`QC/language_history.py`). The site's growth figures. |
 | `statistics/corpus_size_history.csv` | `corpus-metrics` (CI) | One row per XML-changing commit — the longitudinal growth record. |
 | `statistics/corpus_*_over_time.png` | `corpus-metrics` (CI) | Four growth graphs (size, transcribed audio, Mandarin words, glossed words). |
 | `statistics/audio_durations.csv` | **a human, on demand** | Audio seconds per `(corpus, language, dialect)`. **Not** CI-written. |
@@ -35,7 +36,7 @@ History rows written before 2026-06 used different counting rules (first `FORM`,
 
 `QC/corpus_counts.py` is the single source of truth for the counting *rules* behind all of it: tokens come from sentence-level `FORM` only (standard tier, original fallback) and are whitespace chunks containing at least one letter or digit. `get_corpus_stats.py`, `corpus_metrics.py` and `count_tokens.py` all import it, which is why the numbers agree.
 
-Downstream, the GitBook consumes the per-corpus CSVs through its own `update_corpus_stats.py`.
+Downstream, the documentation site reads the per-corpus CSVs and `language_history.csv` every time it is built (see [Generated pages](generated-pages.md)); nothing copies the numbers anywhere.
 
 ## How it's enforced
 

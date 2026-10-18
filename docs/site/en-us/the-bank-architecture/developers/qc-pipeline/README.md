@@ -141,7 +141,7 @@ Everything in the **cleaning & standardization** pipeline modifies XML *in place
 
 ### Statistics & CI
 
-* [get_corpus_stats.py](get-corpus-stats.md) — per-corpus stats CSV the GitBook consumes
+* [get_corpus_stats.py](get-corpus-stats.md) — per-corpus stats CSV the documentation site reads
 * [corpus_metrics.py](corpus-metrics.md) — aggregate metrics & growth history
 * [Token counting](token-counting.md) — `count_tokens`, `tokens_delta`, `corpus_counts`, plots
 * [Audio duration stats](audio-duration-stats.md) — `update`/`refresh_audio_stats`, `audio_durations.csv`
