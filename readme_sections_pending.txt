@@ -9,7 +9,6 @@ Campbell-Favorlang notes
 ILRDF_Dicts notes
 MontgomeryTexts notes
 NTU_Paiwan_ASR notes
-Paiwan_Stories notes
 SEALS33 notes
 Song-Kanakanavu-Grammar notes
 UtrechtManuscriptWordList notes
