@@ -68,6 +68,7 @@ class Recording:
     url: str = ""
     village: str | None = None
     source_file: str = ""            # 2026: the name it was downloaded under
+    url_from_2026: bool = False      # main's: url replaced by an identical 2026 copy's
 
 
 def split_id(base: str, offset: int) -> str:
@@ -125,12 +126,16 @@ def _village_rank(village: str | None) -> int:
 
 def choose(language: str, identifier: str, urls: list[str], village_of: dict[str, str | None],
            main_audio: list[dict[str, str]], table: AudioTable, second_s: set[str],
-           log: list[dict[str, str]], no_audio: set[str] = frozenset()) -> list[Recording]:
-    """The distinct recordings of one sentence, in publication order.
+           log: list[dict[str, str]], no_audio: set[str] = frozenset()
+           ) -> tuple[list[Recording], list[dict[str, str]]]:
+    """The distinct recordings of one sentence, in publication order, and
+    main's recordings that a different 2026 recording replaced (published as
+    untranscribed audio: maintainer, 2026-10-18, "And add the recordings as
+    untranscribed audio").
 
-    `log` receives one row per recording left out (broken, unreachable,
-    identical copy, main's recording replaced by a 2026 one, ruled out).
-    A sentence in `no_audio` gets no recording from any source.
+    `log` receives one row per recording left out of the S (broken,
+    unreachable, identical copy, replaced, ruled out). A sentence in
+    `no_audio` gets no recording from any source.
     """
     if identifier in no_audio:
         for url in urls:
@@ -142,7 +147,7 @@ def choose(language: str, identifier: str, urls: list[str], village_of: dict[str
             log.append({"s_id": identifier, "origin": "main",
                         "url": attributes.get("url", ""), "file": attributes.get("file", ""),
                         "type": "", "outcome": NO_AUDIO_OUTCOME})
-        return []
+        return [], []
     working: list[Recording] = []
     for url in urls:
         fp = table.recording(url)
@@ -174,21 +179,36 @@ def choose(language: str, identifier: str, urls: list[str], village_of: dict[str
         log.append({"s_id": identifier, "origin": "main", "url": "", "file": "",
                     "type": "", "outcome": "every 2026 recording dropped: main's "
                     "recording used instead"})
+    replaced: list[dict[str, str]] = []
     if not working or identifier in second_s:
         kept_mains = mains
     else:
         kept_mains = [m for m in mains if m.sha256 is not None and m.sha256 in working_shas]
+        replaced_shas: set[str] = set()
         for m in mains:
-            if m not in kept_mains:
-                log.append({"s_id": identifier, "origin": "main", "url": m.attributes.get("url", ""),
-                            "file": m.attributes.get("file", ""), "type": "",
-                            "outcome": "main's recording not used: the 2026 source has a different one"})
+            if m in kept_mains:
+                continue
+            row = {"s_id": identifier, "origin": "main", "url": m.attributes.get("url", ""),
+                   "file": m.attributes.get("file", ""), "type": ""}
+            if m.sha256 is not None and m.sha256 in replaced_shas:
+                log.append({**row, "outcome": "identical copy: kept once (untranscribed)"})
+                continue
+            if m.sha256 is not None:
+                replaced_shas.add(m.sha256)
+            log.append({**row, "outcome": "main's recording replaced by a different 2026 "
+                                          "one: published as untranscribed audio"})
+            replaced.append(dict(m.attributes))
 
     chosen: list[Recording] = []
     seen: dict[str, Recording] = {}
     for item in [*kept_mains, *working]:
         if item.sha256 is not None and item.sha256 in seen:
             kept = seen[item.sha256]
+            if kept.origin == "main" and item.origin == "2026" and not kept.url_from_2026:
+                # Maintainer, 2026-10-18: "Use the 2026 URL" -- the file stays
+                # main's, the AUDIO carries the 2026 source URL.
+                kept.attributes["url"] = item.url
+                kept.url_from_2026 = True
             log.append({"s_id": identifier, "origin": item.origin,
                         "url": item.url or item.attributes.get("url", ""),
                         "file": item.source_file or item.attributes.get("file", ""),
@@ -200,7 +220,7 @@ def choose(language: str, identifier: str, urls: list[str], village_of: dict[str
         if item.sha256 is not None:
             seen[item.sha256] = item
         chosen.append(item)
-    return chosen
+    return chosen, replaced
 
 
 def audio_elements(language: str, identifier: str, chosen: list[Recording],
@@ -231,5 +251,15 @@ def audio_elements(language: str, identifier: str, chosen: list[Recording],
             name = f"{identifier}_{item.village}{suffix}.{extension}"
         else:
             name = f"{split_id(identifier, offset)}.{extension}"
+        # Maintainer, 2026-10-18: "Give replacements new names" -- a name main
+        # already uses for different bytes is never reused. The new name
+        # appends _2 (_3 ...), as the Yami same-village names do ("OK as built").
+        stem, count = name.rsplit(".", 1)[0], 1
+        while True:
+            existing = table.main_file(language, name)
+            if existing is None or existing.sha256 == item.sha256:
+                break
+            count += 1
+            name = f"{stem}_{count}.{extension}"
         out.append({"url": item.url, "file": name})
     return out

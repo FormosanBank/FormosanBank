@@ -5,6 +5,7 @@ once; ids -opt, -opt3; Yami village in the file name, 朗島 first; files named
 by their real type; broken/unreachable recordings dropped, main's recording
 used when no working 2026 copy exists.
 """
+import csv
 from pathlib import Path
 import unittest
 import xml.etree.ElementTree as ET
@@ -14,6 +15,7 @@ from audio_recordings import (AudioTable, Fingerprint, audio_elements, choose,
                               UNREACHABLE)
 
 XML_DIR = Path(__file__).resolve().parents[2] / "XML"
+AUDIO_LOG = Path(__file__).resolve().parents[1] / "docs" / "audio_not_published.csv"
 
 
 class FakeTable(AudioTable):
@@ -29,9 +31,10 @@ def run(language, identifier, recordings, mains=(), main_audio=(), village=None,
         second_s=(), no_audio=()):
     table = FakeTable(recordings, mains)
     log = []
-    chosen = choose(language, identifier, [u for u, _, _ in recordings], village or {},
-                    [dict(a) for a in main_audio], table, set(second_s), log,
-                    set(no_audio))
+    chosen, replaced = choose(language, identifier, [u for u, _, _ in recordings],
+                              village or {}, [dict(a) for a in main_audio], table,
+                              set(second_s), log, set(no_audio))
+    run.replaced = replaced
     return audio_elements(language, identifier, chosen, table), log
 
 
@@ -51,14 +54,18 @@ class TestChoice(unittest.TestCase):
         main = {"url": "old", "file": "Bunun_1.mp3", "start": "0", "end": "3"}
         out, _ = run("Bunun", "Bunun_1", [("u1", "M", "same-as-main"), ("u2", "B", "mp3")],
                      mains=[("Bunun_1.mp3", "M")], main_audio=[main])
-        self.assertEqual(out, [main, {"url": "u2", "file": "Bunun_1-opt.mp3"}])
+        # Ruling 2026-10-18 "Use the 2026 URL": main's file, the 2026 URL.
+        self.assertEqual(out, [{**main, "url": "u1"}, {"url": "u2", "file": "Bunun_1-opt.mp3"}])
 
     def test_different_2026_recording_replaces_mains(self):
-        main = {"url": "old", "file": "Bunun_1.mp3"}
+        # Ruling 2026-10-18 "Give replacements new names" + "add the recordings
+        # as untranscribed audio".
+        main = {"url": "old", "file": "Bunun_1.mp3", "start": "0", "end": "3"}
         out, log = run("Bunun", "Bunun_1", [("u1", "B", "mp3")],
                        mains=[("Bunun_1.mp3", "M")], main_audio=[main])
-        self.assertEqual(out, [{"url": "u1", "file": "Bunun_1.mp3"}])
-        self.assertIn("main's recording not used", log[0]["outcome"])
+        self.assertEqual(out, [{"url": "u1", "file": "Bunun_1_2.mp3"}])
+        self.assertEqual(run.replaced, [main])
+        self.assertIn("published as untranscribed audio", log[0]["outcome"])
 
     def test_second_s_ruling_keeps_main_first(self):
         main = {"url": "old", "file": "Bunun_1.mp3"}
@@ -124,6 +131,51 @@ class TestBuiltXml(unittest.TestCase):
             found[identifier] = (len(family), sum(len(s.findall("AUDIO")) for s in family))
         self.assertEqual(found, {i: (1, 0) for i in found})
         self.assertEqual(len(found), 5)
+
+    def test_no_published_name_reuses_a_main_file_with_other_bytes(self):
+        # Ruling 2026-10-18: "Give replacements new names".
+        problems = []
+        for path in sorted(XML_DIR.glob("*/*.xml")):
+            if path.name.endswith("_dictionary.xml"):
+                continue
+            language = path.parent.name
+            for audio in ET.parse(path).getroot().iter("AUDIO"):
+                fp = self.table.by_url.get(audio.get("url", ""))
+                main = self.table.main_file(language, audio.get("file"))
+                if fp is not None and main is not None and fp.sha256 != main.sha256:
+                    problems.append(audio.get("file"))
+        self.assertEqual(problems[:20], [])
+
+    def test_identical_main_recordings_carry_the_2026_url(self):
+        # Ruling 2026-10-18: "Use the 2026 URL". Where a sentence's own 2026
+        # recording was kept once because main's file is byte-identical
+        # (audio_not_published.csv, same_as = main's file), main's AUDIO
+        # carries a 2026 source URL.
+        wanted = {}
+        for r in csv.DictReader(open(AUDIO_LOG, encoding="utf-8")):
+            if (r["origin"] == "2026" and r["outcome"] == "identical copy: kept once"
+                    and self.table.main_file(r["language"], r["same_as"]) is not None):
+                wanted.setdefault(r["language"], set()).add(r["same_as"])
+        self.assertGreater(sum(map(len, wanted.values())), 0)
+        stale = []
+        for language, files in sorted(wanted.items()):
+            root = ET.parse(XML_DIR / language / f"{language}.xml").getroot()
+            for audio in root.iter("AUDIO"):
+                if audio.get("file") in files and audio.get("url", "") not in self.table.by_url:
+                    stale.append(audio.get("file"))
+        self.assertEqual(stale[:20], [])
+
+    def test_replaced_main_recordings_are_untranscribed(self):
+        # Ruling 2026-10-18: "add the recordings as untranscribed audio".
+        rows = [r for r in csv.DictReader(open(AUDIO_LOG, encoding="utf-8"))
+                if r["outcome"].startswith("main's recording replaced")]
+        self.assertGreater(len(rows), 0)
+        missing = []
+        for r in rows:
+            root = ET.parse(XML_DIR / r["language"] / f"{r['language']}.xml").getroot()
+            if r["file"] not in {a.get("file") for a in root.findall("AUDIO")}:
+                missing.append(r["file"])
+        self.assertEqual(missing[:20], [])
 
     def test_published_audio(self):
         problems = []

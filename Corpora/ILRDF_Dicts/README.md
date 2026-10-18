@@ -15,28 +15,28 @@ published from its 2024 scrape.
 | `S` records | 184,147 | 139,579 |
 | `TRANSL` | 187,336 | 164,849 |
 | `AUDIO` in an `S` (at most one per `S`) | 131,336 | — |
-| untranscribed `AUDIO` (direct child of `TEXT`) | 486 | — |
+| untranscribed `AUDIO` (direct child of `TEXT`) | 1,194 | — |
 | variant readings (`FORM kindOf="original" ver="alt"`) | 2,006 | 134 |
 
 | Language | `S` (sentences) | under a main id | new (GUID id) | of which 2024-only | `AUDIO` in an `S` | untranscribed `AUDIO` | headword entries |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Amis | 9,038 | 5,616 | 3,422 | 4 | 6,571 | 0 | 8,444 |
-| Atayal | 9,191 | 6,410 | 2,781 | 89 | 6,916 | 127 | 6,496 |
-| Bunun | 12,368 | 9,022 | 3,346 | 6 | 10,446 | 20 | 7,564 |
-| Kanakanavu | 8,844 | 5,654 | 3,190 | 538 | 6,793 | 0 | 4,415 |
-| Kavalan | 10,647 | 8,384 | 2,263 | 138 | 9,297 | 5 | 7,291 |
-| Paiwan | 7,837 | 5,424 | 2,413 | 3 | 5,815 | 33 | 6,625 |
-| Puyuma | 9,644 | 7,292 | 2,352 | 37 | 8,304 | 7 | 8,636 |
-| Rukai | 15,236 | 10,474 | 4,762 | 2 | 12,960 | 6 | 12,997 |
-| Saaroa | 7,166 | 4,161 | 3,005 | 211 | 4,939 | 1 | 6,092 |
-| Saisiyat | 9,340 | 6,212 | 3,128 | 38 | 7,659 | 5 | 6,268 |
-| Sakizaya | 8,495 | 5,565 | 2,930 | 1 | 6,766 | 98 | 7,078 |
-| Seediq | 7,660 | 5,495 | 2,165 | 29 | 6,121 | 2 | 5,977 |
-| Thao | 9,860 | 6,660 | 3,200 | 22 | 7,658 | 91 | 5,165 |
-| Truku | 29,718 | 4,762 | 24,956 | 6 | 5,812 | 16 | 32,892 |
-| Tsou | 7,187 | 2,957 | 4,230 | 116 | 4,948 | 63 | 5,768 |
-| Yami | 21,916 | 19,158 | 2,758 | 15 | 20,331 | 12 | 7,871 |
-| **Total** | **184,147** | **113,246** | **70,901** | **1,255** | **131,336** | **486** | **139,579** |
+| Amis | 9,038 | 5,616 | 3,422 | 4 | 6,571 | 28 | 8,444 |
+| Atayal | 9,191 | 6,410 | 2,781 | 89 | 6,916 | 165 | 6,496 |
+| Bunun | 12,368 | 9,022 | 3,346 | 6 | 10,446 | 59 | 7,564 |
+| Kanakanavu | 8,844 | 5,654 | 3,190 | 538 | 6,793 | 74 | 4,415 |
+| Kavalan | 10,647 | 8,384 | 2,263 | 138 | 9,297 | 61 | 7,291 |
+| Paiwan | 7,837 | 5,424 | 2,413 | 3 | 5,815 | 80 | 6,625 |
+| Puyuma | 9,644 | 7,292 | 2,352 | 37 | 8,304 | 97 | 8,636 |
+| Rukai | 15,236 | 10,474 | 4,762 | 2 | 12,960 | 12 | 12,997 |
+| Saaroa | 7,166 | 4,161 | 3,005 | 211 | 4,939 | 81 | 6,092 |
+| Saisiyat | 9,340 | 6,212 | 3,128 | 38 | 7,659 | 67 | 6,268 |
+| Sakizaya | 8,495 | 5,565 | 2,930 | 1 | 6,766 | 118 | 7,078 |
+| Seediq | 7,660 | 5,495 | 2,165 | 29 | 6,121 | 40 | 5,977 |
+| Thao | 9,860 | 6,660 | 3,200 | 22 | 7,658 | 127 | 5,165 |
+| Truku | 29,718 | 4,762 | 24,956 | 6 | 5,812 | 24 | 32,892 |
+| Tsou | 7,187 | 2,957 | 4,230 | 116 | 4,948 | 120 | 5,768 |
+| Yami | 21,916 | 19,158 | 2,758 | 15 | 20,331 | 41 | 7,871 |
+| **Total** | **184,147** | **113,246** | **70,901** | **1,255** | **131,336** | **1,194** | **139,579** |
 
 "Under a main id" includes the `-opt` records split from a main sentence
 (alternatives, and one `S` per recording); "2024-only" sentences are
@@ -228,7 +228,9 @@ resolved as listed there.
 item, its recording is not attached to any of the resulting sentences: it is
 published as untranscribed audio, an `AUDIO` that is a direct child of
 `TEXT`, with `AUDIO/@source` naming the example it belongs to (maintainer
-ruling 2026-10-16, ILRDF only). 486 recordings are published this way.
+ruling 2026-10-16, ILRDF only). 486 recordings are published this way;
+with the 708 replaced 2024 recordings (below), 1,194 untranscribed
+recordings in all.
 
 Headword notation is left as the source writes it (`uculru(wa)` marks an
 optional ending).
@@ -248,23 +250,34 @@ the build never downloads anything. The rules (maintainer rulings
   and translations: the first keeps the id, the others take `-opt`, `-opt3`
   … (15,599 added `S`: 8,808 `-opt`, 6,326 `-opt3`, 465 `-opt4` or higher).
 - **Main's recording first.** Where FormosanBank's 2024 recording is
-  byte-identical to a 2026 one, the 2024 `AUDIO` is published unchanged,
-  under its existing file name (`<Language>_<n>.mp3`, with its
-  `start`/`end`). Where the 2026 source has a different usable recording, the
-  2026 one is used (713 sentences); where it has none, main's is kept. For
+  byte-identical to a 2026 one, the file keeps its existing name
+  (`<Language>_<n>.mp3`, with its `start`/`end`) and the `AUDIO` carries the
+  2026 source URL (maintainer, 2026-10-18: "Use the 2026 URL"). Where the
+  2026 source has a different usable recording, the 2026 one goes on the
+  `S` under a new file name, and the 2024 recording is kept as untranscribed
+  audio (maintainer, 2026-10-18: "Give replacements new names" and "add the
+  recordings as untranscribed audio"): 708 recordings, with
+  `AUDIO/@source` "ILRDF example <id>; FormosanBank's 2024 recording,
+  replaced by a different recording in the 2026 source" (5 more were
+  byte-identical copies of those and are kept once). Where the 2026 source
+  has no usable recording, main's is kept. For
   Kanakanavu_2310 and Kanakanavu_5468 both are published (main's on the main
   id, the 2026 one on `-opt`; [source_data/audio_rulings.json](CodeAndDocs/source_data/audio_rulings.json)).
 - **File names.** A 2026 recording is named after its `S`
   (`Bunun_1995-opt.mp3`), with the extension of its real type: 2,162 are
-  WebM (`.webm`) and 16 MP4 (`.mp4`); they are not converted.
+  WebM (`.webm`) and 16 MP4 (`.mp4`); they are not converted. A name that a
+  2024 file with different content already has is never reused: the new
+  recording takes `_2` (`Amis_137_2.mp3`), as the Yami same-village names
+  do.
 - **Yami: the village is in the file name.** The source records most Yami
   sentences in three villages. They are published as three `S`, 朗島 first
   (it keeps the id; main's recording is the 朗島 one), then 野銀, then 漁人,
   with files `<id>_<village>.<ext>` (`Yami_4596_野銀.mp3` on `Yami_4596-opt`).
-  Not ruled: where one sentence has two *different* recordings from the same
-  village (267 files), the second is named `<id>_<village>_2.<ext>`; Yami
-  recordings with no village in the source (652 files, 644 sentences) are
-  named after their `S`, like the other languages.
+  Where one sentence has two *different* recordings from the same village
+  (267 files), the second is named `<id>_<village>_2.<ext>`; Yami recordings
+  with no village in the source (652 files, 644 sentences) are named after
+  their `S`, like the other languages (both "OK as built", maintainer,
+  2026-10-18).
 - **Broken recordings are dropped.** 157 2026 files are empty (all zero
   bytes, or no recognisable audio header) and 3 Paiwan files could not be
   downloaded. Where the sentence has another working recording (2026 or
@@ -278,9 +291,9 @@ the build never downloads anything. The rules (maintainer rulings
 
 Every recording that is not published, and why, is listed in
 [CodeAndDocs/docs/audio_not_published.csv](CodeAndDocs/docs/audio_not_published.csv)
-(99,408 rows: 98,529 identical copies, 713 replaced 2024 recordings, 157
-broken, 3 unreachable, 5 dropped by ruling, and 1 note where main's
-recording replaced broken 2026 ones). Files the XML references that Hugging Face does not yet hold are
+(99,408 rows: 98,534 identical copies, 708 2024 recordings moved to
+untranscribed audio, 157 broken, 3 unreachable, 5 dropped by ruling, and 1
+note where main's recording replaced broken 2026 ones). Files the XML references that Hugging Face does not yet hold are
 listed by `audio_upload_manifest.py` in
 [CodeAndDocs/docs/audio_upload_manifest.csv](CodeAndDocs/docs/audio_upload_manifest.csv)
 (33,817 files, 4.0 GB).

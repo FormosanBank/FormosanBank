@@ -81,12 +81,22 @@ def _withdrawn_by_repair() -> dict[str, dict]:
 
 def _recordings(language: str, identifier: str, urls: list[str],
                 village_of: dict[str, str | None], main_audio: list[dict[str, str]],
-                audio: tuple, counts: Counter) -> list[dict[str, str]]:
-    """AUDIO attributes for one sentence (audio_recordings.py has the rules)."""
+                audio: tuple, counts: Counter,
+                untranscribed: list[dict[str, str]]) -> list[dict[str, str]]:
+    """AUDIO attributes for one sentence (audio_recordings.py has the rules).
+
+    Main's recordings replaced by a different 2026 recording are appended to
+    `untranscribed` (TEXT-level AUDIO, the corpus's untranscribed convention).
+    """
     table, second_s, no_audio, log = audio
     start = len(log)
-    chosen = choose(language, identifier, urls, village_of, main_audio, table,
-                    second_s, log, no_audio)
+    chosen, replaced = choose(language, identifier, urls, village_of, main_audio,
+                              table, second_s, log, no_audio)
+    for item in replaced:
+        untranscribed.append({**item, "source": (
+            f"ILRDF example {identifier}; FormosanBank's 2024 recording, replaced "
+            "by a different recording in the 2026 source")})
+        counts["audio: main recording replaced, published as untranscribed"] += 1
     for row in log[start:]:
         row["language"] = language
         counts[f"audio not published: {row['outcome']}"] += 1
@@ -150,7 +160,7 @@ def assemble(language: str, sentences: list[Sentence], untranslated: dict,
                     counts["merged: translation added from a main copy"] += 1
         recordings = _recordings(
             language, identifier, record.audio_urls, record.audio_class,
-            [dict(a) for m in copies for a in m.audio], audio, counts)
+            [dict(a) for m in copies for a in m.audio], audio, counts, untranscribed)
         hit = next((withdraw[g] for g in record.source_ids if g in withdraw), None)
         if hit is not None:
             for item in recordings:
@@ -177,7 +187,7 @@ def assemble(language: str, sentences: list[Sentence], untranslated: dict,
             main.identifier, main.original,
             [(t.get(XML_LANG, "zho"), t["_text"]) for t in main.translations],
             _recordings(language, main.identifier, [], {},
-                        [dict(a) for a in main.audio], audio, counts),
+                        [dict(a) for a in main.audio], audio, counts, untranscribed),
             WITHDRAWN_SOURCE))
         counts["withdrawn main sentence published from the 2024 snapshot"] += 1
     out.sort(key=lambda p: (p.original.casefold(), p.original, p.identifier))
