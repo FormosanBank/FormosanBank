@@ -63,7 +63,9 @@ ASCII or fullwidth, anywhere in the string. The ~60 "naturalistic elaborations"
 that review chose to keep inline are not preserved; that is accepted.
 
 **C. Tiers.** `resolve_slash_alternatives.py` (competing readings →
-`kindOf="alternate"`), `drop_punctuation_morphemes.py` and
+`kindOf="alternate"`), `drop_punctuation_morphemes.py`,
+`drop_punctuation_words.py` (a word written only with punctuation is deleted,
+with its token in the sentence FORM; ruling 2026-10-18) and
 `apply_prune_and_mirror.py` (see "Word and morpheme tiers" below),
 `mark_original_glosses.py`, `align_ids.py` (keep ids stable against the
 published corpus, per POL-037), then `run_standard_and_phon.sh`, which

@@ -407,14 +407,15 @@ PARTIAL_X = {   # ruling 3: W id -> its original FORM as published
     "SaiNr-frog6_kalaeh a _oemaw_S_47_W10": "<UNCLEAR />-ralom-an",
     "TsouConv-typhoon_S_326_W1": "mucian-shi-alishansiang-zuei-<UNCLEAR />",    # FORM-final '.' removed
 }
-# Word FORMs written only with a character to delete: deleting would empty them.
-EMPTY_IF_DELETED = {"bnNr-frog_Ciang_S_64_W5", "bnNr-frog_Ciang_S_64_W5M0",
-                    "bnNr-frog_Ciang_S_78_W8", "bnNr-frog_Ciang_S_78_W8M0"}
-# Word FORMs written only with a FORM-final character (Bunun '.', glossed (咳嗽); Seediq ',',
-# glossed PART): left, since deleting would empty them. Not ruled on; V164 flags them.
-ONLY_PUNCTUATION = {"bnNr-frog_Ciang_S_34_W3", "bnNr-frog_Ciang_S_34_W3M0",
-                    "bnNr-frog_Ciang_S_159_W0", "bnNr-frog_Ciang_S_159_W0M0",
-                    "sdqNr-childhood_micang 2020s_S_185_W16", "sdqNr-childhood_micang 2020s_S_185_W16M0"}
+# Words written only with punctuation were deleted, with their token in the
+# sentence (ruling 2026-10-18; drop_punctuation_words.py): there are none left.
+PUNCTUATION_WORD_SENTENCES = {   # S id -> original sentence FORM after the deletion
+    "bnNr-frog_Ciang_S_34": "at mazasia, adiia, a, Kulu hai, ungadahun saicia maza bungu sia pan saak tu isa maza sisiuh hai,",
+    "bnNr-frog_Ciang_S_64": "ungat maza Dahu'ikita hai, a, kilimun saicia adiia lalaaka tu,",
+    "bnNr-frog_Ciang_S_78": "haitu, mazasia asu hai acimanuun saicia maza, a sias pahusaza, mavuvuhvuh. hai muhalhal a pahusaz at,",
+    "bnNr-frog_Ciang_S_159": "haitu idadaza naia sia lukiscia hai saduan naicia tu, at adii mazasia, kikilimun mamita maza, sia sisiuha.",
+    "sdqNr-childhood_micang 2020s_S_185": "ma, ma wisu ku qrinuc dungan saya ma , wada ku s htiyun malix dungan ma, wisu ku pqrinuc dungan",
+}
 
 
 @pytest.fixture(scope="module")
@@ -427,8 +428,6 @@ def test_no_deletable_punctuation_in_word_or_morpheme_forms(texts, char_table):
     for t in texts:
         lang = t.get(XML_LANG)
         for el in [*t.iter("W"), *t.iter("M")]:
-            if el.get("id") in EMPTY_IF_DELETED:
-                continue
             for f in el.findall("FORM"):
                 for ch in "".join(f.itertext()):
                     if swp.is_content(ch):
@@ -449,8 +448,6 @@ def test_no_form_final_punctuation_in_word_or_morpheme_forms(texts, char_table):
     for t in texts:
         lang = t.get(XML_LANG)
         for el in [*t.iter("W"), *t.iter("M")]:
-            if el.get("id") in EMPTY_IF_DELETED | ONLY_PUNCTUATION:
-                continue
             for f in el.findall("FORM"):
                 last = (f[-1].tail if len(f) else f.text) or ""
                 if swp.final_run_start(last, lang, char_table) < len(last):
@@ -470,6 +467,49 @@ def test_inside_word_dots_stay(sentences):
     found = {w.get("id"): _inner(w.find("FORM")) for s in sentences for w in s.findall("W")
              if w.get("id") in INSIDE_WORD_DOTS}
     assert found == INSIDE_WORD_DOTS
+
+
+def test_no_word_is_only_punctuation(sentences):
+    """Ruling 2026-10-18: "Delete these W" ... "But I'd delete those from those sentences, too." """
+    import drop_punctuation_words as dpw
+    left = [(w.get("id"), "".join(f.itertext())) for s in sentences for w in s.findall("W")
+            for f in w.findall("FORM") if dpw.only_punctuation("".join(f.itertext()))]
+    assert left == []
+    found = {s.get("id"): [_inner(f) for f in s.findall("FORM")] for s in sentences
+             if s.get("id") in PUNCTUATION_WORD_SENTENCES}
+    assert found == {k: [v, v] for k, v in PUNCTUATION_WORD_SENTENCES.items()}
+
+
+def test_drop_punctuation_words_step(tmp_path):
+    import drop_punctuation_words as dpw
+    sample = """<?xml version="1.0" ?>
+<TEXT id="t" xml:lang="trv">
+    <S id="s1">
+        <FORM kindOf="original">ma , wada ku dungan ,</FORM>
+        <W id="s1_W0"><FORM kindOf="original">ma</FORM></W>
+        <W id="s1_W1"><FORM kindOf="original">wada=ku</FORM></W>
+        <W id="s1_W2"><FORM kindOf="original">dungan</FORM></W>
+        <W id="s1_W3"><FORM kindOf="original">,</FORM><M id="s1_W3M0"><FORM kindOf="original">,</FORM></M></W>
+    </S>
+    <S id="s2">
+        <FORM kindOf="original">. haitu, a, -</FORM>
+        <W id="s2_W0"><FORM kindOf="original">.</FORM></W>
+        <W id="s2_W1"><FORM kindOf="original">haitu,</FORM></W>
+        <W id="s2_W2"><FORM kindOf="original">a,</FORM></W>
+        <W id="s2_W3"><FORM kindOf="original">-</FORM></W>
+    </S>
+</TEXT>"""
+    xml_dir = tmp_path / "xml"
+    xml_dir.mkdir()
+    (xml_dir / "a.xml").write_text(sample, encoding="utf-8")
+    for _ in range(2):    # idempotent
+        assert dpw.main(["--xml_dir", str(xml_dir)]) == 0
+    root = ET.parse(xml_dir / "a.xml").getroot()
+    s1, s2 = root.findall("S")
+    assert s1.find("FORM").text == "ma , wada ku dungan"           # the last ',' is W3's; the other stays
+    assert [w.get("id") for w in s1.findall("W")] == ["s1_W0", "s1_W1", "s1_W2"]
+    assert s2.find("FORM").text == "haitu, a, -"                   # opening token; a marker is not punctuation
+    assert [w.get("id") for w in s2.findall("W")] == ["s2_W1", "s2_W2", "s2_W3"]
 
 
 def test_kavalan_percent_deleted(sentences):
