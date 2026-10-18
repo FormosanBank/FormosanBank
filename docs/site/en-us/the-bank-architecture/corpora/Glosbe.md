@@ -58,7 +58,7 @@ Because this is a crowdsourced dictionary and translation memory, the linguistic
 
 ## **Copyright**
 
-The current XML records Glosbe and its contributors or source corpora as rights holders. The material was collected for private research review, and redistribution remains subject to Glosbe's terms and any third-party source rights. This is not a blanket Creative Commons corpus.
+**License:** CC BY-NC-SA 4.0, the licence under which Glosbe's terms of use make user-uploaded content available to other users. Every `TEXT` element records `copyright="CC BY-NC-SA 4.0"`. Glosbe content can include third-party translation-memory sources, so users must also follow those sources' rights, as well as the central FormosanBank [Terms of Use](../../additional-resources/terms-of-use.md).
 
 ***
 

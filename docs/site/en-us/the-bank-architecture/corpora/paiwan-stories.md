@@ -56,7 +56,7 @@ The Paiwan Stories were integrated into FormosanBank’s standardized XML format
 
 ### Copyrights
 
-Stories can be used under Creative Commons CC-BY-NC license&#x20;
+Stories can be used under Creative Commons CC BY-NC 4.0, as granted by the author, Gesi Giling (阮翠芳).
 
 ***
 

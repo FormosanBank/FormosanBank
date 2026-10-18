@@ -66,7 +66,7 @@ The NTU Paiwan ASR Corpus is a crucial resource for advancing research and techn
 
 ### **Copyright**
 
-The current public XML records this corpus as CC BY. The central FormosanBank terms and AI-use addendum also apply.
+**License:** CC BY 4.0 (the `copyright` value of every `TEXT` element). The central FormosanBank terms and AI-use addendum also apply.
 
 ***
 
