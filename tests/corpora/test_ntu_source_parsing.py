@@ -9,7 +9,7 @@ Maintainer's rulings, 2026-10-18 (NTU follow-up review), one test group each:
   must not be glued onto the word (pipeline_grammar.py, step 15);
 * multi-speaker labels, 'Y,M:', 'W,G,S:': "Any number of single capital letters
   followed by a colon, ignore intervening commas => speaker label."
-  (pipeline_stories.py, step 15).
+  (drop_speaker_label_words.py, after the words are numbered: POL-037).
 
 The second group holds the published XML to the rulings; NTU_XML_DIR points it
 at another tree (e.g. the pre-change XML, on which these tests fail).
@@ -61,12 +61,6 @@ def test_code_switch_tags_stripped(raw, clean):
 ])
 def test_multi_speaker_label_pattern(raw, label):
     assert bool(ps.multi_speaker_labels([[raw, "_", "_"]])) is label
-
-
-def test_multi_speaker_label_row_is_apparatus():
-    labels = ps.multi_speaker_labels([["S,G,W:", "_", "_"]])
-    assert ps.apparatus_class(["S,G,W", "", ""], labels).startswith("1 speaker label")
-    assert ps.apparatus_class(["S,G,W", "", ""]) is None    # without the raw cell's colon
 
 
 # ------------------------------------------------------- the published XML
@@ -134,3 +128,23 @@ def test_full_width_slash_is_a_variant():
         ("standard", None, "iisi"), ("standard", "alt", "ramisi")]
     assert [f.text for f in s.findall("FORM")] == ["matikusaa karu iisi karu."] * 2
     assert not any("／" in "".join(f.itertext()) for f in root.iter("FORM"))
+
+
+def test_label_removal_keeps_every_other_id(sentences):
+    """POL-037: removing a label leaves a gap; no other W or M id moves."""
+    ids = {sid: [w.get("id").rsplit("_", 1)[1] for w in sentences[sid].findall("W")]
+           for sid in ("None-1_S_21", "TsouConv-typhoon_S_503")}
+    assert ids["None-1_S_21"][:3] == ["W1", "W2", "W3"]          # W0 was the label Y,M
+    assert "W4" not in ids["TsouConv-typhoon_S_503"] and "W6" not in ids["TsouConv-typhoon_S_503"]
+    assert ids["TsouConv-typhoon_S_503"][3:6] == ["W3", "W5", "W7"]
+
+
+def test_withdrawn_ids_are_listed_and_absent():
+    import csv
+    lines = [ln for ln in (CODEDOCS / "withdrawn_ids.tsv").read_text(encoding="utf-8").splitlines()
+             if ln and not ln.startswith("#")]
+    rows = list(csv.DictReader(lines, delimiter="\t"))
+    assert len(rows) == 34 and all(r["reason"] and r["ruling"] for r in rows)
+    present = {e.get("id") for f in NTU_XML.rglob("*.xml") for e in ET.parse(f).getroot().iter()
+               if e.tag in ("W", "M")}
+    assert [r["withdrawn_id"] for r in rows if r["withdrawn_id"] in present] == []
