@@ -1,18 +1,10 @@
-# Nowbucyang-Truku-Thesis
+# Nowbucyang Truku thesis
 
-Truku linguistic examples extracted from Lowking Wei-Cheng Hsu / 許韋晟, 2008,
-太魯閣語構詞法研究 [Word Formation in Truku], MA thesis, National Hsin-Chu
-University of Education. 278 sentences (`xml:lang="trv"`, `dialect="Truku"`)
-with Chinese translations; word (W) and morpheme (M) segmentation where the
-thesis's interlinear gloss line aligned reliably with the Truku tokens.
-
-## License and AI Use
-
-This corpus is subject to its source license and the central FormosanBank terms
-in [LICENSE.md](../../LICENSE.md) and
-[AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited
-without prior written permission. The thesis is used with the author's
-permission (`rights_status=full_rights_obtained` in `TEXT@source`).
+Truku examples from Lowking Wei-Cheng Hsu / 許韋晟, *太魯閣語構詞法研究*
+[Word Formation in Truku], 2008, MA thesis, National Hsin-Chu University of
+Education. The revised corpus has 285 examples, 1,045 W (1,146 written words:
+101 W each join two words the thesis glosses as one unit) and 1,440 morphemes
+(`trv`, dialect `Truku`), with source Chinese translations where supplied.
 
 ## Rights
 
@@ -24,145 +16,107 @@ The thesis is used with the author's permission (`rights_status=full_rights_obta
 
 ## Orthography
 
-The thesis writes Truku in Ortho94 (recorded in `TEXT@source` and
-`CodeAndDocs/data/processed/orthography_report.md`). The `original` FORM tier
-preserves the thesis's spelling and segmentation notation — except for the nine
-sentences that carry no W/M tier, whose original FORMs are written without
-segmentation markers (see "Manual edits"); the `standard` tier
-is the machine-owned de-segmented form (see pipeline below). PHON tiers are
-IPA: `original` from the Ortho94 Seediq profile, `standard` from the Ortho113
-Seediq profile (both via their `Truku` dialect columns, including the Truku
-phonotactic rules — e.g. i/u lowering next to q/h, palatal [c] before i/y).
+The source specifies Ortho94 on PDF page 22, with its tables on pages 23–24.
+Original FORM preserves source spelling and analysis, except for the nine
+sentences Joshua ruled should have no W/M or segmentation notation.
+The current shared tools generate standard FORM and both PHON tiers, using
+the Seediq conversion tables and their Truku column. Original PHON uses
+Ortho94; standard PHON follows the current project standard.
 
-## Reproducing the XML
+## Audio
+
+None.
+
+## Notes and Issues
+
+Three examples have word glosses but no free translation. Some source glosses
+do not align to individual written morphemes; retain the word gloss without
+inventing finer analysis. The author's inconsistent infix and clitic gloss
+notation is preserved.
+
+`CodeAndDocs/apply_gloss_rulings.py` applies the maintainer's 2026-10-18 gloss
+rulings to the build; each step quotes the ruling it implements. `niya na`,
+which the thesis glosses jointly as `尚未` (C03_E037A_0206_01, C03_E039C), is
+one W with one M (POL-060); the FORM notes recording the joint gloss are kept.
+C01_E011E (`N-tama ka patas gaga.`, PDF page 32) carries the thesis's gloss
+line `屬-爸爸 主格 書 那`; its printed paraphrase `Patas tama ka gaga.` is the
+separate, unglossed C01_E011E2.
+Where the thesis prints more written morphemes than gloss pieces and the
+maintainer ruled the pieces cannot be matched, each M is glossed `<UNCLEAR/>`
+and the W keeps the printed gloss: the four-morpheme infix words `S-n-lu-an`
+(C01_E021D), `T-n-tak-an` (C01_E023E), `H-n-puy-an` (C01_E024B) and
+`h-n-qil-an` (C02_E004A), and `n-hda-an` 完成 (C02_E004B). Whole sentences the
+thesis does not gloss stay unglossed: `<UNCLEAR/>` is for a gloss the source
+marks as unclear or that the maintainers cannot recover, not for a sentence
+the author chose not to gloss.
+`skiya` in C02_E001D (`asu skiya`, printed gloss `船 ∅-飛`) is the W
+`∅-skiya` with a null M `∅` (gloss `∅`, a new id, …W2M2) before the M `skiya`
+(gloss `飛`, its published id …W2M1). The sentence's original FORM is
+`asu ∅-skiya`: the `∅-` is not printed in the thesis and was added, with a
+`notes` attribute saying so, to match the word and morpheme analysis.
+The thesis writes a clitic as its own token (`Ini =ku`) but usually prints one
+gloss token for host and clitic (`不-我`). Those 95 pairs, listed with their
+printed form and gloss lines in `CodeAndDocs/data/manual/clitic_merges.tsv`,
+are one W each (POL-060): FORM `Ini =ku`, gloss `不-我`, the host's Ms then the
+clitic's M, all keeping their published ids. Three clitics with their own
+printed gloss token stay separate W (`Hpuy-an =nami` 煮-LF 我們, C01_E024A;
+`Gaga =su` and `Gisu =su` 正在 你, C01_E027A/B). `S-n-rus =mu` (C03_E012A),
+`B-n-arig =ku` (C04_E003B) are one W in infix notation (`S<n>rus =mu`
+擦-n-我: Ms `S-rus` 擦, `-n-` n, `=mu` 我; `B<n>arig =ku` 買-n-我 likewise).
+`Mgay =ku` (C01_E011D, C01_E011D2) is one W glossed `AF-給=我`, with M `Mgay`
+`<UNCLEAR/>` and M `=ku` 我. `Nnita` (C03_E003A) keeps one unglossed M.
+Three parentheticals the thesis prints after a free translation are notes on
+that translation, not alternative translations: `(* 螢火蟲出來了)` in C04_E008C
+(the starred reading the sentence does not have) and `(在路上)` / `(已看到人)`
+in C01_E028A / C01_E028B.
+
+Lexical and derivation tables remain source evidence outside the published
+sentence/interlinear-example scope. Original PHON follows the source's
+Ortho94 values; the current Ortho113 profile gives `g` and `l` different sound
+values in standard PHON. See the source decisions for the scoped conversion
+ruling and retained repetitions.
+
+## Reproduction
+
+From a FormosanBank checkout with its Python dependencies installed:
 
 ```bash
-Corpora/Nowbucyang-Truku-Thesis/CodeAndDocs/make_xml.sh
+PYTHON=python3 Corpora/Nowbucyang-Truku-Thesis/CodeAndDocs/generate_xml.sh
 ```
 
-`make_xml.sh` is the **single entry point** — it invokes
-`scripts/pipeline.py --step <name>` directly (there are no per-step wrapper
-scripts) and then the FormosanBank QC tools. It rebuilds
-`XML/Truku/Hsu_Lowking_Truku_WordFormation_2008.xml` end-to-end from
-**committed inputs** (no PDF work needed) and is idempotent:
+For private development, set `FORMOSANBANK_ROOT` to the current shared
+checkout and run `CodeAndDocs/generate_xml.sh`. `QC_OUTPUT_DIR` optionally
+selects an external report directory. The build uses committed examples and
+manual records, requires no PDF or private clone, and starts in fresh staging.
+It builds original tiers, applies recorded edits and the gloss rulings
+(`apply_gloss_rulings.py`), cleans, standardizes, replays the reviewed merges
+and generates phonology before replacing `XML/`.
+Validators and private PDF extraction are separate from the build.
+[provenance.json](CodeAndDocs/provenance.json) records the actual shared build
+commit; it never selects or requires an older tool checkout.
 
-1. **Build** (`scripts/pipeline.py --step build_formosanbank_xml`): emits the
-   raw corpus XML from the committed parse intermediates under
-   `data/processed/` (`quality_filtered_examples.jsonl`, `gloss_records.jsonl`,
-   `duplicates.csv`, `overlap_candidates.csv`), then merges
-   `data/manual/manual_sentences.xml` (see "Manual edits"). The internal
-   structural check (`--step validate_formosanbank_xml`) runs next.
-2. **FormosanBank QC** (run from the repo root with its `.venv`):
-   `apply_manual_edits --manual_file CodeAndDocs/manual_edits.xml` (recorded
-   hand edits first, POL-030; see "Manual edits") →
-   `clean_xml` (typography/character canonicalization; POL-010/011/012/013) →
-   `standardize --tsv_path Orthographies/ConversionTables/Seediq_94_113.tsv`
-   (the `Truku` column, selected by `TEXT@dialect`) →
-   `remove_duplicate_sentences --tier original --scope file --apply` (residual
-   duplicate merge, POL-022/POL-025; see "Duplicates") →
-   `add_phonology --orthography Ortho94`.
+**POL-047 deviation:** After standardization and before phonology,
+`replay_reviewed_merges.py` calls the current shared merger with the five
+specific August 12 decisions in `reviewed_merges.csv`. The generic current
+merger intentionally does not infer these translation-differing merges.
 
-`clean_xml` runs **once**. Older documented orders for this corpus ran it a
-second time after `standardize`, to strip the segmentation markers the standard
-tier used to carry; since POL-002 `standardize` owns all standard-tier cleaning
-(its C012 step strips `-` and `=` from the S-level standard FORM of every
-morpheme-segmented sentence — `trv` is not one of the hyphen-is-a-letter
-orthographies), so the second pass had nothing left to do. Removing it
-reproduces the published file byte-identically; do not re-add it.
+The original parser and private source-review helpers remain in
+`CodeAndDocs/scripts/`. Do source refresh separately with the permitted PDF;
+review resulting example inputs before regeneration. Raw PDFs, page images
+and ephemeral reports are not publication inputs. The source hashes and
+locators remain in the committed metadata and example records.
+`data/manual/source_additions.csv` selects reviewed examples from the preserved
+raw blocks and verifies their source text hashes before rebuilding.
 
-The `Seediq_94_113.tsv` `Truku` column currently contains **no letter
-conversions** (verified with `validate_conversion_table.py`, PASS), so the
-standard tier is the original minus segmentation hyphens, clitic `=`, and null
-morphemes (C012), with accents stripped. If Ortho94→Ortho113 letter mappings
-for Truku are ever added to that table, rerunning `make_xml.sh` applies them.
+Parser regression checks: `python3 -m pytest CodeAndDocs/tests`.
 
-Only if the *parse itself* must change (e.g. a new PDF extraction) do the
-earlier pipeline steps matter; they are all in `scripts/pipeline.py`
-(`--step inspect_pdf` … `dedupe_against_formosanbank`, in the order listed in
-`STEP_FUNCS`) with the source PDFs committed under `data/raw/pdf/`. No OCR is
-used anywhere. Deduplication (`dedupe_examples`,
-`dedupe_against_formosanbank`) removes exact Truku+translation pairs
-within-thesis and flags overlaps with other FormosanBank Truku corpora — see
-"Duplicates" below for what that leaves behind and how Phase 2 handles it.
+## Preserved decisions
 
-## Manual edits
-
-Two mechanisms, applied in this order:
-
-1. [`CodeAndDocs/data/manual/manual_sentences.xml`](CodeAndDocs/data/manual/manual_sentences.xml)
-   — the corpus's own *additions/overrides* file, merged by sentence id inside
-   the Phase 1 build. Each `<S>` there is appended verbatim and **overrides**
-   any automated sentence with the same id, so hand-added sentences survive
-   rebuilds. It predates `manual_edits.xml`; per the 2026-08-11 ruling it stays
-   as-is.
-2. [`CodeAndDocs/manual_edits.xml`](CodeAndDocs/manual_edits.xml) — the
-   repo-standard POL-030 record, re-applied first in Phase 2 by
-   `QC/cleaning/apply_manual_edits.py` (changelog:
-   [`CodeAndDocs/manual_edits.md`](CodeAndDocs/manual_edits.md)). It holds
-   **nine** sentences (`C01_E008Bb`, `C01_E008Cb`, `C01_E011Fb`, `C01_E021Ab`,
-   `C01_E027Ab`, `C01_E027Cb`, `C03_E034b`, `C01_E011K`, `C01_E011L`) —
-   seven automated slash/parenthesis-variant expansions plus two hand
-   additions. None of them was ever fully glossed, so per the maintainer's
-   2026-08-12 ruling they get **no W/M tier and no segmentation notation at
-   all**: their `original` FORMs are rewritten marker-free
-   (`M-gay =ku pila…` → `Mgay ku pila…`) rather than carrying `-`/`=` that
-   nothing downstream can resolve. Recording it as a manual edit keeps the
-   change reproducible instead of a hand edit lost on the next rebuild.
-
-In both files the records carry only the `original` FORM and the TRANSLs;
-standard-FORM and PHON tiers are regenerated downstream (POL-002/003).
-
-## Duplicates
-
-The Phase 1 pipeline declares a dedup step (`dedupe_examples`,
-`dedupe_against_formosanbank`), so POL-022 treats residual duplicates in this
-corpus as HARD findings. That step's key is the exact (Truku form, Chinese
-translation) **pair**, which leaves two kinds of leftover behind. The Phase 2
-`remove_duplicate_sentences --tier original` step separates them:
-
-- **Same original FORM, different free translation → merged** (POL-025). The
-  same source sentence recurs in two thesis examples with a differently-worded
-  Chinese translation; the survivor keeps the extra translations as
-  `ver="alt"` and the duplicate `<S>` is deleted. **5 groups merged**
-  (5 `<S>` removed, 6 TRANSLs merged as `ver="alt"`).
-- **Same standard FORM, different original segmentation → retained
-  deliberately.** **3 groups** (`Mgay ku pila sunan ka yaku.`,
-  `Mtgsa laqi ka Lowking.`, `Nnima ka srus nii?`) coincide only *after*
-  de-segmentation: the thesis writes them with different morpheme notation in
-  the two places (`N-nima` vs `Nnima`, `M-tgsa` vs the marker-free variant
-  expansion, `Mgay =ku` vs `Mgay ku`). Under POL-022's distinct-provenance
-  nuance these are separate attestations of how the source renders the word,
-  not a pipeline defect, so they are **kept on purpose** — the residual HARD
-  duplicate finding for these three groups is expected and is not to be
-  "fixed" by deleting one member.
-
-  All three retentions are **settled maintainer decisions**, including
-  `C01_E026A_0079_01` / `C03_E034b`: that pair differs in *both* its
-  segmentation (`M-tgsa` vs the marker-free variant expansion) and its Chinese
-  translation, and the maintainer ruled (2026-08-12) to **keep both members**
-  on exactly that basis — differing on two independent axes makes them two
-  distinct attestations, not one sentence recorded twice. It is not an open
-  question and must not be merged by a later pass.
-
-## Known QC state (2026-08-12)
-
-- `validate_xml`: clean. 278 sentences, 1,130 W, 1,424 M; token count 1,192.
-- `validate_text`: SOFT 16 (V116 non-ASCII ×4, V122 parens/slashes ×12). No
-  V126/V133 segmentation findings — the nine W/M-less sentences are
-  marker-free on both tiers (see "Manual edits").
-- Gloss worklist (GitHub issue #81, linguistic work, open): 120 M without
-  TRANSL (V064 HARD), 83 W without gloss (V065), 14 V060 W-count mismatches.
-- Duplicates: 3 within-file groups retained deliberately — see "Duplicates".
-- V152 (`Seediq_94_113.tsv` value column `Truku` "is not a canonical dialect"):
-  a **defect in the V152 rule**, not in the CSVs (maintainer ruling
-  2026-08-12). `Truku` is its own language in `languages.csv`
-  (`trv` covers both Seediq and Truku, and `dialect="Truku"` resolves the
-  column at run time); `validate_conversion_table.py … --dialect Truku`
-  returns PASS. No registry change is warranted here; fixing V152 is a
-  separate repo-wide task.
-- Truku has no attestation dictionary by design (quote-glottal correction
-  disarmed for this corpus).
-
-Manual QC review lists from the build are under `CodeAndDocs/data/processed/`
-(`manual_qc_slash_options.txt`, `manual_qc_parentheses.txt`,
-`gloss_alignment_audit.csv`).
+See [source-decisions.md](CodeAndDocs/source-decisions.md). The existing
+`data/manual/manual_sentences.xml` overrides/additions and all nine original
+`manual_edits.xml` records are retained. Further records preserve the reviewed
+punctuation-differing translations, partial source glosses and repeated examples'
+alternative gloss readings.
+The three distinct-provenance duplicate groups are retained, including
+`C01_E026A_0079_01` / `C03_E034b`. Source-backed morphemes are never removed
+because their gloss is absent; V064 is SOFT under current policy.

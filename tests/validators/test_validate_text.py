@@ -1887,6 +1887,84 @@ def test_V135_question_mark_is_punct_where_no_profile_makes_it_a_letter(tmp_path
     )
 
 
+def _declare_table(corpus: Path, table: str) -> None:
+    """Give the fixture corpus a CodeAndDocs/generate_xml.sh that standardizes with `table`."""
+    (corpus / "CodeAndDocs").mkdir(parents=True, exist_ok=True)
+    (corpus / "CodeAndDocs" / "generate_xml.sh").write_text(
+        f'python QC/utilities/standardize.py --tsv_path "$FB/Orthographies/ConversionTables/{table}" '
+        '--corpora_path XML\n', encoding="utf-8")
+
+
+_CHURCH_QUESTION = (
+    _TEXT_OPEN
+    + '<S id="S1">'
+    + '<FORM kindOf="original">icowa kiso a mahacra?</FORM>'
+    + '<FORM kindOf="standard">icuwa kisu a mahacra?</FORM>'
+    + '</S>'
+    + _TEXT_CLOSE
+)
+
+
+def test_V135_declared_church_original_reads_question_mark_as_punct(tmp_path):
+    """A corpus that declares its original tier Church (Amis_Church_113.tsv in
+    CodeAndDocs/generate_xml.sh) has only Church's letters there, and Church
+    has no '?' letter: both tiers end in a question mark, so no finding.
+    (Poinsot: 164 such reports when every Amis profile's letters counted.)"""
+    _write_xml(tmp_path, _CHURCH_QUESTION)
+    _declare_table(tmp_path, "Amis_Church_113.tsv")
+    proc = _run_validate_text(tmp_path)
+    assert "v135" not in combined_output(proc), f"stdout={proc.stdout!r}"
+
+
+def test_V135_undeclared_original_keeps_the_broad_letter_set(tmp_path):
+    """The same file with nothing declared: '?' is a letter of some Amis
+    profile (Montgomery), so the original "ends in no punctuation" and V135
+    fires, as it always has. (This is also the control for the test above.)"""
+    _write_xml(tmp_path, _CHURCH_QUESTION)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v135", "trailing punct", "trailing-punct", "punct mismatch")
+    ), f"expected V135 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+
+
+def test_V135_declared_montgomery_original_keeps_glottal_question_mark(tmp_path):
+    """A corpus declaring Montgomery keeps '?' as a letter: `roma?` ends in a
+    letter and its standard `loma'` too, so no finding, exactly as before."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">itini i roma?</FORM>'
+        + "<FORM kindOf=\"standard\">itini i loma'</FORM>"
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    _declare_table(tmp_path, "Amis_Montgomery_113.tsv")
+    proc = _run_validate_text(tmp_path)
+    assert "v135" not in combined_output(proc), f"stdout={proc.stdout!r}"
+
+
+def test_V135_period_inside_a_multi_letter_letter_is_not_a_final_letter(tmp_path):
+    """Ortho113 Thao spells l + h as `l.h` and t + h as `t.h` (to keep them
+    apart from the letters lh and th), so '.' occurs only inside those
+    letters. A period at the end of a sentence is still punctuation: with
+    the original tier declared Blust2003 (no '.' letter) and the standard in
+    Ortho113, both tiers end in a period and V135 has nothing to report.
+    (Blust-Thao-Dictionary: 163 such reports without this.)"""
+    xml = (
+        _TEXT_OPEN.replace('xml:lang="ami"', 'xml:lang="ssf"')
+        + '<S id="S1">'
+        + '<FORM kindOf="original">a sa lhalhaushin, marutaw a lhalhaushin.</FORM>'
+        + '<FORM kindOf="standard">a sa lhalhaushin, marutaw a lhalhaushin.</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    _declare_table(tmp_path, "Thao_Blust2003_113.tsv")
+    proc = _run_validate_text(tmp_path)
+    assert "v135" not in combined_output(proc), f"stdout={proc.stdout!r}"
+
+
 def test_V135_matching_punct_OK(tmp_path):
     """V135: both tiers end with the same punctuation — no finding."""
     xml = (
