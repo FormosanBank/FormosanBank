@@ -13,7 +13,7 @@ After scraping the articles, they have been preprocessed to remove elements like
 
 | | Amis<br>unknown | Paiwan<br>unknown | Sakizaya | Atayal<br>unknown | Seediq<br>unknown |
 | --- | --- | --- | --- | --- | --- |
-| Word count | 1,982,130 | 123,725 | 1,649,981 | 555,392 | 792,060 |
+| Word count | 850,500 | 116,685 | 1,567,968 | 529,757 | 736,080 |
 | Total audio | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 |
