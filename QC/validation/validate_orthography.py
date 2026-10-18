@@ -162,6 +162,12 @@ def compare_orthography(c1_dir, c2_dir, label):
     exclude_chars = set(string.digits)
     c1_use_chars = [char for char in c1_info['unique_characters'] if char not in exclude_chars]
     c2_use_chars = [char for char in c2_info['unique_characters'] if char not in exclude_chars]
+    if not c1_use_chars:
+        # A group too small to profile (orthography_extract.py now skips these; an older orthographic_info may
+        # still hold one): every ratio below would divide by zero.
+        print(f"WARNING: {label}: no characters in the corpus profile (too little text). Skipping {label}.")
+        print(f"SUMMARY orthography | {label} | corpus=too-small | warnings=1")
+        return None
 
     # Create a subset of the character frequency dictionaries
     c1_character_frequency = {char: freq for char, freq in c1_info['character_frequency'].items() if char in c1_use_chars}
