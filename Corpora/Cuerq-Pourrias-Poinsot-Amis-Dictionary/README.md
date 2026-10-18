@@ -147,10 +147,9 @@ Validators run on `XML/` on 2026-10-18 (full logs under `qc-output/`, not commit
     which stays an example (see "Word pairs" below).
   - V133 dashes: prefixes listed as head words (`aki-`) and printed hyphens.
   - V116: the printed `…`, and `ù` in `tansù`.
-  - V135 (164 with the validator on `main` as of 2026-10-18): a false alarm. Both tiers end in `?`, but the rule reads
-    the original tier with the letters of every Amis spelling profile, including Montgomery's, where `?` is a letter.
-    FormosanBank branch `qc/v135-declared-orthography` makes V135 use the spelling a corpus declares in
-    `CodeAndDocs/generate_xml.sh` (approved 2026-10-18, cards r2-m4b and r3-v135); with it this corpus has 0.
+  - V135: 0. Before FormosanBank PR #304 (2026-10-18) it reported 164 false alarms: both tiers end in `?`, but the rule
+    read the original tier with the letters of every Amis spelling profile, including Montgomery's, where `?` is a
+    letter. It now uses the spelling the corpus declares in `CodeAndDocs/generate_xml.sh` (Church).
 - **Orthography vs reference** (standard tier, character overlap coefficient / cosine):
   - Xiuguluan: 0.90 / 0.991.
   - Southern: 0.96 / 0.986.
