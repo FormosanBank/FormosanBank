@@ -1,0 +1,739 @@
+<title>Chang Seediq Proofreading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Serif+TC:wght@400;600&display=swap">
+<style>
+:root {
+  --bg: #F3F4F7;
+  --surface: #FFFFFF;
+  --sunken: #EEF0F4;
+  --ink: #1A2130;
+  --muted: #5E6778;
+  --line: #D9DDE5;
+  --accent: #2B4C8C;
+  --accent-soft: #E3EAF7;
+  --mark: #B5401F;
+  --mark-soft: #FBE9E2;
+  --flag: #8A5F00;
+  --flag-soft: #FFF3D6;
+  --ok: #2E7D4F;
+  --ok-soft: #E2F3E8;
+  --focus: #2B4C8C;
+  --seediq: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --han: "Noto Serif TC", "Songti TC", "PMingLiU", "MingLiU", serif;
+  --ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #12161E; --surface: #1A202B; --sunken: #151A23; --ink: #E6E9EF;
+    --muted: #9AA3B2; --line: #2C3442; --accent: #8FB0F0; --accent-soft: #22304A;
+    --mark: #F08A65; --mark-soft: #3A2219; --flag: #E3B341; --flag-soft: #33290F;
+    --ok: #6FCF97; --ok-soft: #173325; --focus: #8FB0F0;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #12161E; --surface: #1A202B; --sunken: #151A23; --ink: #E6E9EF;
+  --muted: #9AA3B2; --line: #2C3442; --accent: #8FB0F0; --accent-soft: #22304A;
+  --mark: #F08A65; --mark-soft: #3A2219; --flag: #E3B341; --flag-soft: #33290F;
+  --ok: #6FCF97; --ok-soft: #173325; --focus: #8FB0F0;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--ui); }
+.wrap { max-width: 1100px; margin: 0 auto; padding-inline: 16px; padding-block: 0 64px; }
+h1 { font-size: 1.35rem; font-weight: 600; margin: 0; text-wrap: balance; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+  border-bottom: 1px solid var(--line); padding-block: 12px; }
+.bar-in { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
+.bar .grow { flex: 1 1 240px; min-width: 0; }
+.sub { color: var(--muted); font-size: .85rem; }
+.meter { height: 6px; background: var(--sunken); border-radius: 3px; overflow: hidden; margin-top: 6px; max-width: 360px; }
+.meter > i { display: block; height: 100%; background: var(--ok); width: 0; transition: width .3s; }
+.nums { font-variant-numeric: tabular-nums; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 6px 12px; font-size: .9rem; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.btn.small { padding: 3px 9px; font-size: .82rem; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.mode { margin-top: 14px; border-radius: 8px; padding: 10px 14px; font-size: .9rem; border: 1px solid var(--line); background: var(--surface); }
+.mode strong { font-weight: 600; }
+.mode.server { border-color: var(--ok); background: var(--ok-soft); }
+.mode.local { border-color: var(--flag); background: var(--flag-soft); }
+.saved { font-size: .82rem; color: var(--muted); }
+
+details.guide { margin-top: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 16px; }
+details.guide summary { cursor: pointer; font-weight: 600; }
+.guide-body { max-width: 72ch; }
+.guide-body li { margin-block: 4px; }
+.guide-body code, .inline-seediq { font-family: var(--seediq); font-size: .92em; }
+.inline-han { font-family: var(--han); }
+
+/* filters */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-block: 18px 12px; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 4px 12px; font-size: .85rem; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.chip .nums { opacity: .75; margin-left: 4px; }
+.search { flex: 1 1 200px; min-width: 0; max-width: 320px; border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 5px 10px; }
+.pager { display: flex; gap: 8px; align-items: center; justify-content: flex-end; margin-block: 12px; font-size: .88rem; }
+
+/* record card */
+.list { display: grid; gap: 14px; }
+.rec { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 10px; }
+.rec.is-reviewed { border-color: color-mix(in srgb, var(--ok) 55%, var(--line)); }
+.rec-head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+.rid { font-family: var(--seediq); font-weight: 500; font-size: 1rem; }
+.loc { color: var(--muted); font-size: .88rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+.tag { font-size: .75rem; letter-spacing: .02em; border-radius: 4px; padding: 1px 7px; background: var(--sunken); color: var(--muted); }
+.tag.flag { background: var(--flag-soft); color: var(--flag); }
+.tag.done { background: var(--ok-soft); color: var(--ok); }
+.tag.edit { background: var(--mark-soft); color: var(--mark); }
+.note-banner { font-size: .86rem; background: var(--sunken); border-radius: 6px; padding: 6px 10px; color: var(--muted); }
+
+.igt-wrap { overflow-x: auto; padding-bottom: 4px; }
+.igt { display: flex; gap: 6px; align-items: flex-start; width: max-content; }
+.rowlabels, .col { display: grid; grid-template-rows: 18px 36px 36px auto; gap: 4px; }
+.rowlabels span { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); align-self: center; }
+.col .n { font-size: .7rem; color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; }
+.cell { height: 36px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); padding: 0 8px; min-width: 3.5ch; }
+.cell.w { font-family: var(--seediq); font-size: .95rem; }
+.cell.g { font-family: var(--han); font-size: 1.02rem; }
+.cell.changed { border-color: var(--mark); background: var(--mark-soft); }
+.cell.bad { border-color: var(--flag); box-shadow: inset 0 -2px 0 var(--flag); }
+.cell.missing { border-style: dashed; background: transparent; color: var(--muted); font-size: .75rem; display: grid; place-items: center; }
+.col .was { font-size: .74rem; color: var(--mark); text-decoration: line-through; text-align: center; max-width: 16ch; overflow-wrap: anywhere; min-height: 1em; }
+.col .was .h { font-family: var(--han); }
+
+.tools { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: .82rem; color: var(--muted); }
+.tools .lbl { margin-right: 4px; }
+.warn { font-size: .86rem; color: var(--flag); display: grid; gap: 2px; }
+.warn:empty { display: none; }
+.field { display: grid; gap: 4px; }
+.field > label { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.tr { font-family: var(--han); font-size: 1.05rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); padding: 6px 10px; resize: vertical; min-height: 2.4em; width: 100%; }
+.tr.changed { border-color: var(--mark); background: var(--mark-soft); }
+.tr[readonly] { color: var(--muted); }
+.tr-was { font-size: .8rem; color: var(--mark); }
+.tr-was s { font-family: var(--han); }
+.note { border: 1px solid var(--line); border-radius: 6px; background: var(--bg); padding: 6px 10px; resize: vertical; min-height: 2.2em; width: 100%; font-size: .9rem; }
+.rec-foot { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.rev { border: 1px solid var(--ok); color: var(--ok); background: transparent; border-radius: 6px; padding: 6px 14px; font-weight: 500; }
+.rev[aria-pressed="true"] { background: var(--ok); color: var(--surface); }
+.rec-foot .spacer { flex: 1; }
+
+.copybox { margin-top: 14px; background: var(--surface); border: 1px solid var(--accent); border-radius: 8px; padding: 12px 14px; display: grid; gap: 8px; }
+.copybox textarea { width: 100%; height: 140px; font-family: var(--seediq); font-size: .78rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 8px 16px; border-radius: 6px; font-size: .9rem; z-index: 9; max-width: calc(100% - 32px); }
+.empty { color: var(--muted); padding: 24px; text-align: center; }
+@media (prefers-reduced-motion: reduce) { .meter > i { transition: none; } }
+</style>
+
+<div class="bar">
+  <div class="wrap bar-in" style="padding-block:0">
+    <div class="grow">
+      <h1>Chang Seediq Proofreading</h1>
+      <div class="sub nums" id="progress-text">Loading…</div>
+      <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+    </div>
+    <div class="actions">
+      <span class="saved" id="saved-state"></span>
+      <button class="btn primary" id="btn-download" type="button">Download corrections</button>
+      <button class="btn" id="btn-load" type="button">Load saved file</button>
+      <input type="file" id="file-in" accept=".json,application/json" hidden>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="mode" id="mode">Connecting…</div>
+  <section class="copybox" id="copybox" hidden>
+    <div>Saving a file is not available here. Copy the text below and paste it into an email to the maintainer, or into a plain-text file named <code>chang-review.json</code>.</div>
+    <textarea id="copy-text" readonly aria-label="Corrections as text"></textarea>
+    <div class="actions"><button class="btn primary" id="btn-copy" type="button">Copy</button><button class="btn" id="btn-copy-close" type="button">Close</button></div>
+  </section>
+
+  <details class="guide" id="guide">
+    <summary>How to review</summary>
+    <div class="guide-body">
+      <p>Each card is one example from Chang Yung-li (2000), <span class="inline-han">賽德克語參考語法</span>. The first row is the Seediq, the second row is the gloss printed under each word, and below them is the free translation. Open the book at the page shown on the card and make each card match the book exactly.</p>
+      <ul>
+        <li><strong>Misread characters.</strong> Fix any Chinese character, Seediq letter or punctuation mark that differs from the book. Type the book's spelling, even where it looks unusual.</li>
+        <li><strong>Misaligned glosses.</strong> Each gloss must sit under the word it belongs to. Click a box, then use the buttons under the table: <em>Insert box</em> and <em>Delete box</em> shift only that row; <em>Insert column</em> and <em>Delete column</em> change both rows.</li>
+        <li><strong>One word per box.</strong> If a word or gloss is missing, insert a box. If the book prints no gloss under a word, write <span class="inline-han">∅</span>. When one gloss spans two words (for example <span class="inline-han">跟</span> over <code>daha ka</code>), put it under the first word and <span class="inline-han">∅</span> under the second.</li>
+        <li><strong>Morphemes.</strong> A hyphenated word should have a gloss with the same number of parts: <code>s-usa-un-mu</code> over <span class="inline-han">S-去-PF-我</span>. Infixes are written inside the gloss as the book prints them.</li>
+        <li><strong>Keep the book's notation.</strong> <code>(ka)</code> marks optional material, <code>laqi/heya</code> marks alternatives, and <code>{…}</code> groups alternatives across words. In a translation, <code> = </code> separates alternative translations. Keep all of these as they are.</li>
+        <li><strong>Proper names</strong> such as <code>pawan</code> and <code>walis</code> are glossed as themselves.</li>
+        <li><strong>Notes.</strong> If you are unsure, or something cannot be fixed in the boxes, write it in the note. Notes go to the maintainer.</li>
+        <li><strong>Mark reviewed</strong> when a card matches the book, even if you changed nothing. That is how we know it was checked.</li>
+      </ul>
+      <p>Cards with a yellow tag were flagged by an automatic check as likely problems. The tag is only a hint about where to start.</p>
+    </div>
+  </details>
+
+  <div class="filters" role="group" aria-label="Filter cards">
+    <button class="chip" type="button" data-filter="all" aria-pressed="true">All<span class="nums" data-count="all"></span></button>
+    <button class="chip" type="button" data-filter="todo" aria-pressed="false">Not reviewed<span class="nums" data-count="todo"></span></button>
+    <button class="chip" type="button" data-filter="flagged" aria-pressed="false">Flagged<span class="nums" data-count="flagged"></span></button>
+    <button class="chip" type="button" data-filter="changed" aria-pressed="false">Changed<span class="nums" data-count="changed"></span></button>
+    <button class="chip" type="button" data-filter="notes" aria-pressed="false">With a note<span class="nums" data-count="notes"></span></button>
+    <input class="search" id="search" type="search" placeholder="Find: R053, S0237, p. 138, a word…" aria-label="Find a card">
+  </div>
+  <div class="pager" id="pager-top"></div>
+  <div class="list" id="list"></div>
+  <div class="pager" id="pager-bottom"></div>
+</main>
+<div class="toast" id="toast" hidden></div>
+
+<script type="application/json" id="baseline">/*__BASELINE__*/</script>
+<script>
+(function () {
+  "use strict";
+  var BASE = JSON.parse(document.getElementById("baseline").textContent);
+  var FORMAT = BASE.format;
+  var RECORDS = BASE.records;
+  var BY_ID = {};
+  RECORDS.forEach(function (r) { BY_ID[r.record] = r; });
+  var LS_KEY = "chang-review:" + FORMAT;
+  var PAGE_SIZE = 20;
+  var NULL = "∅";
+
+  // unsynced: record id -> updatedAt of an edit the server has not yet confirmed.
+  var state = { edits: {}, unsynced: {}, filter: "all", query: "", page: 0, lastDownloadCount: null };
+  var mode = "starting";            // "server" | "local"
+  var db = null, downloads = null;
+  var timers = {}, inflight = {}, pending = {};
+  var focus = null;                 // {rid, row, idx}
+  var changeCounter = 0;
+
+  // ---------- helpers ----------
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k];
+      if (v === null || v === undefined || v === false) return;
+      if (k === "text") n.textContent = v;
+      else if (k === "className") n.className = v;
+      else if (k.slice(0, 2) === "on") n.addEventListener(k.slice(2), v);
+      else n.setAttribute(k, v === true ? "" : v);
+    });
+    (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return n;
+  }
+  function toast(msg) {
+    var t = document.getElementById("toast");
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._t); toast._t = setTimeout(function () { t.hidden = true; }, 3500);
+  }
+  function hasHan(s) { return /[㐀-鿿豈-﫿]/.test(s); }
+  function visualLen(s) { var n = 0; for (var ch of s) n += /[　-鿿豈-﫿＀-￯]/.test(ch) ? 2 : 1; return n; }
+  function morphemes(t) {
+    var infixes = (t.match(/<[^>]+>/g) || []).length;
+    var rest = t.replace(/<[^>]+>/g, "");
+    return rest.split(/[-=]/).filter(function (p) { return p.trim(); }).length + infixes;
+  }
+  function sameArr(a, b) { if (a.length !== b.length) return false; for (var i = 0; i < a.length; i++) if (a[i] !== b[i]) return false; return true; }
+
+  // ---------- state ----------
+  function current(rid) {
+    var e = state.edits[rid], r = BY_ID[rid];
+    if (e && e.base === r.hash) return e;
+    return { base: r.hash, words: r.words.slice(), glosses: r.glosses.slice(), translation: r.translation, note: "", reviewed: false, updatedAt: 0 };
+  }
+  function editable(rid) {
+    var e = state.edits[rid];
+    if (!e || e.base !== BY_ID[rid].hash) { e = current(rid); state.edits[rid] = e; }
+    return e;
+  }
+  function isChanged(rid) {
+    var e = state.edits[rid], r = BY_ID[rid];
+    if (!e || e.base !== r.hash) return false;
+    return !sameArr(e.words, r.words) || !sameArr(e.glosses, r.glosses) || e.translation !== r.translation;
+  }
+  function hasNote(rid) { var e = state.edits[rid]; return !!(e && e.note && e.note.trim()); }
+  function isReviewed(rid) { var e = state.edits[rid]; return !!(e && e.base === BY_ID[rid].hash && e.reviewed); }
+  function touch(rid) {
+    var e = editable(rid);
+    e.updatedAt = Date.now();
+    state.unsynced[rid] = e.updatedAt;
+    changeCounter++;
+    scheduleSave(rid);
+    updateCounts();
+  }
+
+  // ---------- persistence ----------
+  function saveLocal() {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify({ edits: state.edits, unsynced: state.unsynced, lastDownloadCount: state.lastDownloadCount, changeCounter: changeCounter }));
+    } catch (e) { /* storage blocked: the server or a downloaded file is the only copy */ }
+  }
+  function loadLocal() {
+    try {
+      var raw = localStorage.getItem(LS_KEY);
+      if (!raw) return;
+      var d = JSON.parse(raw);
+      state.edits = d.edits || {};
+      // Storage from before this field existed holds no unconfirmed work: never re-upload it.
+      state.unsynced = d.unsynced || {};
+      state.lastDownloadCount = d.lastDownloadCount == null ? null : d.lastDownloadCount;
+      changeCounter = d.changeCounter || 0;
+    } catch (e) { /* ignore */ }
+    try {
+      var ui = JSON.parse(localStorage.getItem(LS_KEY + ":ui") || "{}");
+      if (ui.filter) state.filter = ui.filter;
+      if (typeof ui.page === "number") state.page = ui.page;
+    } catch (e) { /* ignore */ }
+  }
+  function saveUi() { try { localStorage.setItem(LS_KEY + ":ui", JSON.stringify({ filter: state.filter, page: state.page })); } catch (e) {} }
+
+  function scheduleSave(rid) {
+    saveLocal();
+    setSaved("Saving…");
+    clearTimeout(timers[rid]);
+    timers[rid] = setTimeout(function () { writeServer(rid); }, 700);
+    updateLocalNudge();
+  }
+  function plain(e) {
+    return { base: e.base, words: e.words.slice(), glosses: e.glosses.slice(), translation: e.translation,
+             note: e.note || "", reviewed: !!e.reviewed, updatedAt: e.updatedAt || 0 };
+  }
+  function writeServer(rid, retried) {
+    if (mode !== "server" || !db) { setSaved(mode === "local" ? "Saved in this browser" : ""); return; }
+    if (inflight[rid]) { pending[rid] = true; return; }
+    inflight[rid] = true;
+    var stamp = state.edits[rid].updatedAt;
+    db.doc("edits/" + rid).set(plain(state.edits[rid])).then(function () {
+      if (state.unsynced[rid] === stamp) { delete state.unsynced[rid]; saveLocal(); }
+      setSaved("Saved to server " + new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
+    }).catch(function (err) {
+      var code = err && err.code;
+      if (code === "invalid_argument" || code === "not_granted" || code === "revoked" || code === "capability_disabled" || code === "capability_removed") {
+        setMode("local", "The server did not accept your changes, so they are kept in this browser instead.");
+      } else if (!retried && (code === "unavailable" || code === "resource_exhausted")) {
+        pending[rid] = false;
+        setTimeout(function () { inflight[rid] = false; writeServer(rid, true); }, 1500 + Math.random() * 1500);
+        return "retrying";
+      } else {
+        setSaved("Could not reach the server; kept in this browser");
+      }
+    }).then(function (r) {
+      if (r === "retrying") return;
+      inflight[rid] = false;
+      if (pending[rid]) { pending[rid] = false; writeServer(rid); }
+    });
+  }
+  function setSaved(t) { document.getElementById("saved-state").textContent = t; }
+
+  function setMode(m, why) {
+    mode = m;
+    var box = document.getElementById("mode");
+    box.className = "mode " + m;
+    box.textContent = "";
+    if (m === "server") {
+      box.appendChild(el("strong", { text: "Your work saves automatically to the shared server." }));
+      box.appendChild(document.createTextNode(" You can close this page at any time and pick up where you left off, on any computer. The maintainer can see your corrections as you go."));
+      setSaved("");
+    } else {
+      box.appendChild(el("strong", { text: "Your work saves in this browser only." }));
+      box.appendChild(document.createTextNode(" " + (why ? why + " " : "") + "Reopening this page in the same browser brings your work back, but clearing browsing data or switching computers loses it. At the end of each session, click Download corrections and keep the file. To continue on another computer, use Load saved file. When you finish, email the file to the maintainer."));
+      box.appendChild(el("div", { id: "nudge", className: "sub" }));
+      setSaved("Saved in this browser");
+      updateLocalNudge();
+    }
+  }
+  function updateLocalNudge() {
+    var n = document.getElementById("nudge");
+    if (!n) return;
+    if (state.lastDownloadCount === null) n.textContent = changeCounter ? "You have not downloaded your corrections yet." : "";
+    else {
+      var since = changeCounter - state.lastDownloadCount;
+      n.textContent = since > 0 ? since + " change" + (since === 1 ? "" : "s") + " since your last download." : "Your last download includes all your changes.";
+    }
+  }
+
+  // ---------- server connection ----------
+  function connect() {
+    var api = window.claude && window.claude.use ? window.claude : null;
+    if (!api) { setMode("local"); return; }
+    api.use("downloads").then(function (d) { downloads = d; }).catch(function () {});
+    Promise.all([api.use("db").catch(function () { return null; }), api.use("user").catch(function () { return null; })])
+      .then(function (res) {
+        db = res[0];
+        var user = res[1];
+        if (!db) { setMode("local"); return; }
+        var canP = user ? user.can("data.write").catch(function () { return null; }) : Promise.resolve(null);
+        return canP.then(function (can) {
+          if (can === false) { db = null; setMode("local", "This page is open to you for viewing, not for saving to the server."); return; }
+          setMode("server");
+          subscribe();
+        });
+      }).catch(function () { setMode("local"); });
+  }
+  function subscribe() {
+    var first = true;
+    db.collection("edits").onSnapshot(function (snap) {
+      var seen = {};
+      snap.docs.forEach(function (d) {
+        if (!d.exists || !BY_ID[d.id]) return;
+        var remote = d.data();
+        // A document made against a different baseline is not this page's to show.
+        if (remote.base !== BY_ID[d.id].hash) return;
+        seen[d.id] = true;
+        var local = state.edits[d.id];
+        if (!local || (remote.updatedAt || 0) > (local.updatedAt || 0)) {
+          state.edits[d.id] = JSON.parse(JSON.stringify(remote));
+          if (state.unsynced[d.id] && state.unsynced[d.id] <= (remote.updatedAt || 0)) delete state.unsynced[d.id];
+          if (!(focus && focus.rid === d.id)) rerenderCard(d.id);
+        }
+      });
+      // The server is the record: a card it no longer holds, with no unconfirmed
+      // edit here, goes back to the original text in this browser too.
+      Object.keys(state.edits).forEach(function (rid) {
+        if (!seen[rid] && !state.unsynced[rid]) {
+          delete state.edits[rid];
+          if (!(focus && focus.rid === rid)) rerenderCard(rid);
+        }
+      });
+      if (first) {
+        first = false;
+        // Only edits made here that the server never confirmed go up.
+        Object.keys(state.unsynced).forEach(function (rid) {
+          if (BY_ID[rid] && state.edits[rid] && state.edits[rid].base === BY_ID[rid].hash) writeServer(rid);
+          else delete state.unsynced[rid];
+        });
+      }
+      saveLocal();
+      updateCounts();
+    }, function () { setMode("local", "The connection to the server was lost."); });
+  }
+
+  // ---------- filtering ----------
+  function matches(r) {
+    var rid = r.record;
+    if (state.filter === "todo" && isReviewed(rid)) return false;
+    if (state.filter === "flagged" && !r.flags.length) return false;
+    if (state.filter === "changed" && !isChanged(rid)) return false;
+    if (state.filter === "notes" && !hasNote(rid)) return false;
+    var q = state.query.trim().toLowerCase();
+    if (!q) return true;
+    var e = current(rid);
+    var hay = [rid, r.locator, r.published_as.join(" "), e.words.join(" "), e.glosses.join(" "), e.translation].join(" ").toLowerCase();
+    return q.split(/\s+/).every(function (t) { return hay.indexOf(t) >= 0; });
+  }
+  function updateCounts() {
+    var c = { all: RECORDS.length, todo: 0, flagged: 0, changed: 0, notes: 0 };
+    var reviewed = 0;
+    RECORDS.forEach(function (r) {
+      var rid = r.record;
+      if (isReviewed(rid)) reviewed++; else c.todo++;
+      if (r.flags.length) c.flagged++;
+      if (isChanged(rid)) c.changed++;
+      if (hasNote(rid)) c.notes++;
+    });
+    document.querySelectorAll("[data-count]").forEach(function (s) { s.textContent = c[s.getAttribute("data-count")]; });
+    document.getElementById("progress-text").textContent =
+      reviewed + " of " + RECORDS.length + " examples reviewed · " + c.changed + " changed · " + c.notes + " with a note";
+    document.getElementById("meter").style.width = (100 * reviewed / RECORDS.length) + "%";
+  }
+
+  // ---------- rendering ----------
+  function renderList() {
+    var list = document.getElementById("list");
+    var shown = RECORDS.filter(matches);
+    var pages = Math.max(1, Math.ceil(shown.length / PAGE_SIZE));
+    if (state.page >= pages) state.page = pages - 1;
+    if (state.page < 0) state.page = 0;
+    list.textContent = "";
+    var slice = shown.slice(state.page * PAGE_SIZE, (state.page + 1) * PAGE_SIZE);
+    if (!slice.length) list.appendChild(el("div", { className: "empty", text: "No cards match." }));
+    slice.forEach(function (r) { list.appendChild(renderCard(r)); });
+    ["pager-top", "pager-bottom"].forEach(function (id) { renderPager(document.getElementById(id), pages, shown.length); });
+    document.querySelectorAll("[data-filter]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-filter") === state.filter)); });
+    saveUi();
+  }
+  function renderPager(box, pages, total) {
+    box.textContent = "";
+    box.appendChild(el("span", { className: "nums", text: total + " card" + (total === 1 ? "" : "s") + " · page " + (state.page + 1) + " of " + pages }));
+    box.appendChild(el("button", { className: "btn small", type: "button", text: "Previous", disabled: state.page === 0,
+      onclick: function () { state.page--; renderList(); window.scrollTo(0, 0); } }));
+    box.appendChild(el("button", { className: "btn small", type: "button", text: "Next", disabled: state.page >= pages - 1,
+      onclick: function () { state.page++; renderList(); window.scrollTo(0, 0); } }));
+  }
+  function rerenderCard(rid) {
+    var old = document.getElementById("rec-" + rid);
+    if (old) old.replaceWith(renderCard(BY_ID[rid]));
+  }
+
+  function sizeCol(col, w, g) {
+    var n = Math.max(4, visualLen(w || "") + 2, visualLen(g || "") * 1.15 + 2);
+    col.querySelectorAll(".cell").forEach(function (c) { c.style.width = n + "ch"; });
+  }
+
+  function renderCard(r) {
+    var rid = r.record, e = current(rid);
+    var card = el("article", { className: "rec" + (isReviewed(rid) ? " is-reviewed" : ""), id: "rec-" + rid, "data-rid": rid });
+
+    var tags = el("div", { className: "tags" });
+    r.flags.forEach(function (f) { tags.appendChild(el("span", { className: "tag flag", text: f.replace("_", " "), title: FLAG_HELP[f] || "" })); });
+    if (isChanged(rid)) tags.appendChild(el("span", { className: "tag edit", text: "changed" }));
+    if (isReviewed(rid)) tags.appendChild(el("span", { className: "tag done", text: "reviewed" }));
+    card.appendChild(el("div", { className: "rec-head" }, [
+      el("span", { className: "rid", text: rid }),
+      el("span", { className: "loc", text: r.locator }),
+      el("span", { className: "loc", text: r.published_as.length ? "→ " + r.published_as.join(", ") : "" }),
+      tags
+    ]));
+    if (r.merged_into) card.appendChild(el("div", { className: "note-banner", text: "Not published: this example repeats " + r.merged_into + ", which is published instead. You can skip it." }));
+
+    // interlinear table
+    var igt = el("div", { className: "igt" });
+    igt.appendChild(el("div", { className: "rowlabels" }, [el("span"), el("span", { text: "Seediq" }), el("span", { text: "Gloss" }), el("span")]));
+    var n = Math.max(e.words.length, e.glosses.length);
+    for (var i = 0; i < n; i++) igt.appendChild(renderCol(rid, e, r, i));
+    card.appendChild(el("div", { className: "igt-wrap" }, [igt]));
+
+    var tools = el("div", { className: "tools" }, [
+      el("span", { className: "lbl", text: "Selected box:" }),
+      toolBtn("Insert box before", function (f, ed) { arr(ed, f.row).splice(f.idx, 0, ""); return { row: f.row, idx: f.idx }; }),
+      toolBtn("Insert box after", function (f, ed) { arr(ed, f.row).splice(f.idx + 1, 0, ""); return { row: f.row, idx: f.idx + 1 }; }),
+      toolBtn("Delete box", function (f, ed) { arr(ed, f.row).splice(f.idx, 1); return { row: f.row, idx: Math.max(0, f.idx - 1) }; }),
+      toolBtn("Insert column after", function (f, ed) { ed.words.splice(f.idx + 1, 0, ""); ed.glosses.splice(f.idx + 1, 0, ""); return { row: "words", idx: f.idx + 1 }; }),
+      toolBtn("Delete column", function (f, ed) { ed.words.splice(f.idx, 1); ed.glosses.splice(f.idx, 1); return { row: f.row, idx: Math.max(0, f.idx - 1) }; })
+    ]);
+    card.appendChild(tools);
+    card.appendChild(el("div", { className: "warn", id: "warn-" + rid }));
+
+    // translation
+    var trId = "tr-" + rid;
+    var tr = el("textarea", { className: "tr" + (e.translation !== r.translation ? " changed" : ""), id: trId, rows: "1", readonly: r.translation_fixed_in_build });
+    tr.value = e.translation;
+    tr.addEventListener("input", function () {
+      var ed = editable(rid); ed.translation = tr.value.replace(/\s*\n\s*/g, " ");
+      tr.classList.toggle("changed", ed.translation !== r.translation);
+      renderTrWas(rid); touch(rid); refreshCardChrome(rid);
+    });
+    var trField = el("div", { className: "field" }, [el("label", { "for": trId, text: "Free translation" }), tr, el("div", { className: "tr-was", id: "trwas-" + rid })]);
+    if (r.translation_fixed_in_build) trField.appendChild(el("div", { className: "sub", text: "This translation is split into separate readings by hand in the build, so it cannot be edited here. If it is wrong, describe the fix in the note." }));
+    card.appendChild(trField);
+
+    var noteId = "note-" + rid;
+    var note = el("textarea", { className: "note", id: noteId, rows: "1", placeholder: "Questions or anything the boxes cannot express" });
+    note.value = e.note || "";
+    note.addEventListener("input", function () { editable(rid).note = note.value; touch(rid); });
+    card.appendChild(el("div", { className: "field" }, [el("label", { "for": noteId, text: "Note for the maintainer" }), note]));
+
+    var rev = el("button", { className: "rev", type: "button", "aria-pressed": String(isReviewed(rid)),
+      text: isReviewed(rid) ? "Reviewed ✓" : "Mark reviewed" });
+    rev.addEventListener("click", function () {
+      var ed = editable(rid); ed.reviewed = !ed.reviewed; touch(rid); rerenderCard(rid);
+      if (state.filter === "todo" && ed.reviewed) toast(rid + " marked reviewed");
+    });
+    var reset = el("button", { className: "btn small", type: "button", text: "Undo my changes to this card", disabled: !isChanged(rid) });
+    reset.addEventListener("click", function () {
+      var ed = editable(rid);
+      ed.words = r.words.slice(); ed.glosses = r.glosses.slice(); ed.translation = r.translation;
+      touch(rid); rerenderCard(rid); toast("Restored " + rid + " to the original text");
+    });
+    card.appendChild(el("div", { className: "rec-foot" }, [rev, el("span", { className: "spacer" }), reset]));
+
+    setTimeout(function () { renderWarnings(rid); renderTrWas(rid); }, 0);
+    return card;
+  }
+
+  function arr(ed, row) { return row === "words" ? ed.words : ed.glosses; }
+  function toolBtn(label, fn) {
+    return el("button", { className: "btn small", type: "button", text: label,
+      onmousedown: function (ev) { ev.preventDefault(); },   // keep focus on the box
+      onclick: function (ev) {
+        var card = ev.target.closest(".rec"), rid = card.getAttribute("data-rid");
+        if (!focus || focus.rid !== rid) { toast("Click a box in this card first"); return; }
+        var ed = editable(rid);
+        var next = fn(focus, ed);
+        touch(rid);
+        rerenderCard(rid);
+        focusCell(rid, next.row, Math.min(next.idx, arr(ed, next.row).length - 1));
+      } });
+  }
+  function focusCell(rid, row, idx) {
+    var c = document.querySelector('#rec-' + CSS.escape(rid) + ' .cell[data-row="' + row + '"][data-idx="' + idx + '"]');
+    if (c) c.focus();
+  }
+
+  function renderCol(rid, e, r, i) {
+    var col = el("div", { className: "col" });
+    col.appendChild(el("span", { className: "n", text: String(i + 1) }));
+    ["words", "glosses"].forEach(function (row) {
+      var a = row === "words" ? e.words : e.glosses, orig = row === "words" ? r.words : r.glosses;
+      if (i >= a.length) {
+        col.appendChild(el("button", { className: "cell missing", type: "button", text: "+ add",
+          onclick: function () { var ed = editable(rid); arr(ed, row).push(""); touch(rid); rerenderCard(rid); focusCell(rid, row, arr(ed, row).length - 1); } }));
+        return;
+      }
+      var inp = el("input", { className: "cell " + (row === "words" ? "w" : "g") + (a[i] !== orig[i] ? " changed" : ""),
+        id: "c-" + rid + "-" + row + "-" + i, "data-row": row, "data-idx": String(i), type: "text", spellcheck: "false", autocomplete: "off",
+        "aria-label": (row === "words" ? "Seediq word " : "Gloss ") + (i + 1) });
+      inp.value = a[i];
+      inp.addEventListener("focus", function () { focus = { rid: rid, row: row, idx: i }; });
+      inp.addEventListener("blur", function () { setTimeout(function () { if (focus && focus.rid === rid && document.activeElement && !document.activeElement.closest("#rec-" + CSS.escape(rid))) focus = null; }, 0); });
+      inp.addEventListener("input", function () {
+        var ed = editable(rid); arr(ed, row)[i] = inp.value.trim();
+        inp.classList.toggle("changed", arr(ed, row)[i] !== orig[i]);
+        var ww = ed.words[i] || "", gg = ed.glosses[i] || "";
+        sizeCol(col, ww, gg);
+        renderWas(col, r, ed, i);
+        touch(rid); renderWarnings(rid); refreshCardChrome(rid);
+      });
+      col.appendChild(inp);
+    });
+    col.appendChild(el("div", { className: "was" }));
+    sizeCol(col, e.words[i] || "", e.glosses[i] || "");
+    renderWas(col, r, e, i);
+    return col;
+  }
+  function renderWas(col, r, e, i) {
+    var box = col.querySelector(".was"); box.textContent = "";
+    var parts = [];
+    if (i < e.words.length && e.words[i] !== r.words[i] && r.words[i] !== undefined) parts.push(r.words[i]);
+    if (i < e.glosses.length && e.glosses[i] !== r.glosses[i] && r.glosses[i] !== undefined) parts.push(r.glosses[i]);
+    parts.forEach(function (p, k) {
+      if (k) box.appendChild(document.createTextNode(" / "));
+      box.appendChild(el("span", { className: hasHan(p) ? "h" : "", text: p || "(empty)" }));
+    });
+    box.title = parts.length ? "Original: " + parts.join(" / ") : "";
+  }
+  function renderTrWas(rid) {
+    var box = document.getElementById("trwas-" + rid); if (!box) return;
+    var e = current(rid), r = BY_ID[rid];
+    box.textContent = "";
+    if (e.translation !== r.translation) { box.appendChild(document.createTextNode("Original: ")); box.appendChild(el("s", { text: r.translation || "(empty)" })); }
+  }
+  function refreshCardChrome(rid) {
+    var card = document.getElementById("rec-" + rid); if (!card) return;
+    var tags = card.querySelector(".tags"), tag = tags.querySelector(".tag.edit");
+    if (isChanged(rid) && !tag) tags.appendChild(el("span", { className: "tag edit", text: "changed" }));
+    if (!isChanged(rid) && tag) tag.remove();
+    var reset = card.querySelector(".rec-foot .btn"); if (reset) reset.disabled = !isChanged(rid);
+  }
+  function renderWarnings(rid) {
+    var box = document.getElementById("warn-" + rid); if (!box) return;
+    var e = current(rid), msgs = [];
+    var card = document.getElementById("rec-" + rid);
+    card.querySelectorAll(".cell.bad").forEach(function (c) { c.classList.remove("bad"); });
+    function bad(row, i) { var c = card.querySelector('.cell[data-row="' + row + '"][data-idx="' + i + '"]'); if (c) c.classList.add("bad"); }
+    if (e.words.length !== e.glosses.length)
+      msgs.push("The Seediq row has " + e.words.length + " boxes and the gloss row has " + e.glosses.length + ". Every word needs a gloss; write " + NULL + " where the book prints none.");
+    var empties = [], spaces = [], counts = [];
+    ["words", "glosses"].forEach(function (row) {
+      arr(e, row).forEach(function (v, i) {
+        if (!v) { empties.push(i + 1); bad(row, i); }
+        if (/\s/.test(v)) { spaces.push(i + 1); bad(row, i); }
+      });
+    });
+    for (var i = 0; i < Math.min(e.words.length, e.glosses.length); i++) {
+      var w = e.words[i], g = e.glosses[i];
+      if (/[-=<]/.test(w) && g && g !== NULL && morphemes(w) !== morphemes(g)) { counts.push(i + 1); bad("glosses", i); }
+    }
+    if (empties.length) msgs.push("Empty box in column " + uniq(empties).join(", ") + ". Type the word or gloss, write " + NULL + ", or delete the box.");
+    if (spaces.length) msgs.push("Column " + uniq(spaces).join(", ") + " has a space inside a box. Put one word per box; use Insert box after to split it.");
+    if (counts.length) msgs.push("Column " + counts.join(", ") + ": the word and its gloss have a different number of hyphenated parts. Check it against the book; it may be printed that way.");
+    box.textContent = "";
+    msgs.forEach(function (m) { box.appendChild(el("div", { text: m })); });
+  }
+  function uniq(a) { return a.filter(function (v, i) { return a.indexOf(v) === i; }).sort(function (x, y) { return x - y; }); }
+
+  var FLAG_HELP = {
+    latin_gloss: "A gloss in Latin letters that is not a known name: often a sign that the glosses slipped by one column.",
+    unbalanced: "A gloss with an unmatched bracket: a bracket may have drifted in from the next gloss.",
+    substring: "A one-character gloss that is part of this word's usual gloss: a two-character word may have been split across two words.",
+    adjacent: "Two neighbouring glosses join into a word used elsewhere: a gloss may have been split across two columns.",
+    count: "A word and its gloss have a different number of hyphenated parts."
+  };
+
+  // ---------- download / load ----------
+  function exportPayload() {
+    var edits = {};
+    Object.keys(state.edits).forEach(function (rid) {
+      var e = state.edits[rid];
+      if (!BY_ID[rid] || e.base !== BY_ID[rid].hash) return;
+      if (!e.updatedAt) return;
+      edits[rid] = plain(e);
+    });
+    return { format: FORMAT, exported: new Date().toISOString(), edits: edits };
+  }
+  function doDownload() {
+    var text = JSON.stringify(exportPayload(), null, 1);
+    var name = "chang-seediq-review-" + new Date().toISOString().slice(0, 10) + ".json";
+    function done() { state.lastDownloadCount = changeCounter; saveLocal(); updateLocalNudge(); toast("Downloaded " + name); }
+    if (!downloads) { showCopy(text); return; }
+    downloads.save({ filename: name, data: text }).then(done).catch(function (err) {
+      var code = err && err.code;
+      if (code === "declined") return;
+      if (code === "rate_limited") { toast("A save prompt is already open."); return; }
+      showCopy(text);
+    });
+  }
+  function showCopy(text) {
+    document.getElementById("copy-text").value = text;
+    document.getElementById("copybox").hidden = false;
+    document.getElementById("copybox").scrollIntoView({ block: "nearest" });
+  }
+  function doLoad(file) {
+    var fr = new FileReader();
+    fr.onload = function () {
+      var d;
+      try { d = JSON.parse(fr.result); } catch (e) { toast("That file is not a saved review file."); return; }
+      if (!d || d.format !== FORMAT || typeof d.edits !== "object") { toast("That file is from a different review and cannot be loaded here."); return; }
+      var taken = 0, stale = 0, older = 0;
+      Object.keys(d.edits).forEach(function (rid) {
+        var inc = d.edits[rid];
+        if (!BY_ID[rid] || inc.base !== BY_ID[rid].hash) { stale++; return; }
+        var cur = state.edits[rid];
+        if (cur && (cur.updatedAt || 0) > (inc.updatedAt || 0)) { older++; return; }
+        state.edits[rid] = { base: inc.base, words: (inc.words || []).map(String), glosses: (inc.glosses || []).map(String),
+          translation: String(inc.translation || ""), note: String(inc.note || ""), reviewed: !!inc.reviewed, updatedAt: inc.updatedAt || Date.now() };
+        taken++;
+        state.unsynced[rid] = state.edits[rid].updatedAt;
+        scheduleSave(rid);
+      });
+      renderList(); updateCounts();
+      toast("Loaded " + taken + " card" + (taken === 1 ? "" : "s") + (older ? "; kept " + older + " newer here" : "") + (stale ? "; skipped " + stale + " from an older version" : ""));
+    };
+    fr.readAsText(file);
+  }
+
+  // ---------- wiring ----------
+  document.getElementById("btn-download").addEventListener("click", doDownload);
+  document.getElementById("btn-load").addEventListener("click", function () { document.getElementById("file-in").click(); });
+  document.getElementById("file-in").addEventListener("change", function (ev) { var f = ev.target.files[0]; if (f) doLoad(f); ev.target.value = ""; });
+  document.getElementById("btn-copy").addEventListener("click", function () {
+    var ta = document.getElementById("copy-text");
+    var p = navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(ta.value) : Promise.reject();
+    p.then(function () { toast("Copied"); state.lastDownloadCount = changeCounter; saveLocal(); updateLocalNudge(); })
+     .catch(function () { ta.focus(); ta.select(); toast("Press Ctrl+C (or ⌘C) to copy"); });
+  });
+  document.getElementById("btn-copy-close").addEventListener("click", function () { document.getElementById("copybox").hidden = true; });
+  document.querySelectorAll("[data-filter]").forEach(function (b) {
+    b.addEventListener("click", function () { state.filter = b.getAttribute("data-filter"); state.page = 0; renderList(); });
+  });
+  var searchT;
+  document.getElementById("search").addEventListener("input", function (ev) {
+    clearTimeout(searchT);
+    searchT = setTimeout(function () { state.query = ev.target.value; state.page = 0; renderList(); }, 200);
+  });
+  window.addEventListener("beforeunload", function () { saveLocal(); });
+
+  loadLocal();
+  try { if (!localStorage.getItem(LS_KEY + ":seen")) { document.getElementById("guide").open = true; localStorage.setItem(LS_KEY + ":seen", "1"); } }
+  catch (e) { document.getElementById("guide").open = true; }
+  renderList();
+  updateCounts();
+  connect();
+})();
+</script>

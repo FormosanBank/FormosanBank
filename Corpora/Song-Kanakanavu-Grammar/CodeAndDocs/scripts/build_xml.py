@@ -171,11 +171,7 @@ def make_root(identifier: str, source: str) -> ET.Element:
             "dialect": "Kanakanavu",
             "citation": CITATION,
             "BibTeX_citation": BIBTEX,
-            "copyright": (
-                "Song, Limei (2018), Introduction to Kanakanavu Grammar (Council "
-                "of Indigenous Peoples). Licensed to FormosanBank under CC BY-NC 4.0 "
-                "by permission of the author (Li-May Sung)."
-            ),
+            "copyright": "CC BY-NC 4.0",
             "source": source,
         },
     )

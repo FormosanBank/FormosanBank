@@ -7,13 +7,11 @@ Education. The revised corpus has 285 examples, 1,146 words and 1,443 morphemes
 
 ## Rights
 
-**License:** Unconfirmed; existing XML attribution and permission wording are preserved.
+**License:** CC BY-NC 4.0
 
-**Rights source:** Lowking Wei-Cheng Hsu / 許韋晟, 2025-04-16; evidence: ask maintainer
+**Rights source:** Lowking Wei-Cheng Hsu 許韋晟 (the author), date not recorded in this repository; evidence: ask maintainer
 
-The author's email to Joshua Hartshorne permits contributing the examples to
-FormosanBank but names no exact POL-042 licence. Publication still requires
-that confirmation.
+The thesis is used with the author's permission (`rights_status=full_rights_obtained` in `TEXT@source`). Until 2026-10-17 `TEXT/@copyright` carried the prose "© Lowking Wei-Cheng Hsu / 許韋晟. Used by FormosanBank with permission."; the maintainer ruled the licence CC BY-NC 4.0 on 2026-10-15.
 
 ## Orthography
 

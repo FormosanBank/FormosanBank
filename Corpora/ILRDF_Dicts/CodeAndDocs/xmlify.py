@@ -170,7 +170,7 @@ def xmlify_main():
         root.set("xml:lang", lang_codes[lang])
         root.set("source", "Indigenous Languages Research and Development Foundation Dictionaries")
         root.set("audio", "diarized")
-        root.set("copyright", "CC-BY-NC")
+        root.set("copyright", "CC BY-NC 4.0")
         root.set("citation", citation)
         root.set("BibTeX_citation", BibTex)
 
