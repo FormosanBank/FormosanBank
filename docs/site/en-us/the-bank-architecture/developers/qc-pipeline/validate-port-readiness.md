@@ -26,9 +26,9 @@ It complements the rule-based validators: they check the **XML content**; this c
 
 | ID | Check |
 | --- | --- |
-| `P004` | Commit hashes pinned in `README`/`reproducibility`/`qc_status` files disagree with each other or are unreachable in the FormosanBank repository. Decide which pin is authoritative and fix the others. |
+| `P004` | Commit hashes pinned in `README`/`reproducibility`/`qc_status` files disagree with each other or are unreachable in the FormosanBank repository. Decide which pin is authoritative and fix the others. A hash inside a URL or a markdown link target is a link, not a pin, and is ignored (since October 2026). |
 | `P005` | The corpus's `AUDIO` element count doesn't match `statistics/audio_durations.csv` — the published audio seconds are stale. Refresh with `QC/utilities/refresh_audio_stats.py` after the port. |
-| `P006` | `CodeAndDocs/` references a conversion table (`Orthographies/ConversionTables/*.tsv`). Run [validate\_conversion\_table.py](https://github.com/FormosanBank/FormosanBank/blob/main/QC/validation/validate_conversion_table.py) on it before trusting the standard tier it produced. |
+| `P006` | `CodeAndDocs/` standardizes through a conversion table — one under `Orthographies/ConversionTables/`, or any other `--tsv_path`; a corpus-local table is marked as such because it sits outside the POL-056 sweep. Run [validate\_conversion\_table.py](https://github.com/FormosanBank/FormosanBank/blob/main/QC/validation/validate_conversion_table.py) on it before trusting the standard tier it produced. |
 
 ## Usage
 

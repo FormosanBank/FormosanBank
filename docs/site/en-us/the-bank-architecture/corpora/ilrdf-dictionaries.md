@@ -130,6 +130,8 @@ This project is made possible through the collaboration of native speakers, ling
 
 ### **Copyright**
 
+FormosanBank publishes this corpus under **CC BY-NC 4.0** (the `copyright` value of every `TEXT` element).
+
 The online dictionary's current [copyright statement](https://e-dictionary.ilrdf.org.tw/about?id=6c987092-47c7-ef11-bd58-00155db40116) says that ILRDF-authored works may be reproduced, publicly broadcast, or publicly transmitted within a reasonable scope when the source is identified. Other protected uses require permission unless an applicable fair-use provision applies. Users should consult the current statement and the source terms before reusing this corpus.
 
 ***

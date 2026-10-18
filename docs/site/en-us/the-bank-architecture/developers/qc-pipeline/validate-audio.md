@@ -4,7 +4,7 @@ icon: circle-check
 
 # validate_audio.py
 
-> Always-on, lightweight broken-audio check that walks a corpus's XML plus its audio directory and reports missing, unloadable, silent, and invalid-range audio (V100–V103), with a SOFT words/sec sanity signal (V105).
+> Always-on, lightweight broken-audio check that walks a corpus's XML plus its audio directory and reports missing, unloadable, silent, invalid-range and wrong-container audio (V100–V103, V106), with a SOFT words/sec sanity signal (V105).
 
 {% hint style="info" %}
 This validator inspects audio files you have **locally**. It says nothing about what is hosted on Hugging Face — file-level parity between the XML and the Hub is a separate, blocking check: [validate_hf_audio.py](validate-hf-audio.md).
@@ -33,9 +33,10 @@ Rule IDs (each broken-audio class is a HARD finding, written to `broken_audio.cs
 | `V101` | `unloadable` | File present but `wave` (WAV) or Mutagen (encoded formats) can't decode it, or it has no positive duration. |
 | `V102` | `silent` | Appears silent — only checked when `--check_silence` is passed. |
 | `V103` | `invalid_range` | `AUDIO @start >= @end` (both parsed as floats). |
+| `V106` | `wrong_container` | The file's first bytes are a different container from the one its extension claims (a WebM/Opus or MP4 file saved as `.mp3`, an MP3 as `.wav`). Checked before decoding, because mutagen decodes an Opus stream under an `.mp3` name and `V101` never fires — which is how the ILRDF v2 upload reached a published dataset. Bytes nobody recognises are left to `V101`. |
 | `V105` | — (SOFT) | words/sec or chars/sec outside the expected range (written to `audio_duration_issues.csv`). |
 
-Per file, checks run in order: invalid-range and missing are independent; for resolved files, `unloadable` short-circuits (a broken file is not further checked), otherwise `silent` (if enabled) and then the SOFT words/sec check run. `V104` (declared-vs-actual duration) is reserved in the module docstring but not currently emitted — it is "absorbed by V105."
+Per file, checks run in order: invalid-range and missing are independent; for resolved files, `wrong_container` short-circuits first (an extension that lies proves nothing by decoding), then `unloadable` short-circuits (a broken file is not further checked), otherwise `silent` (if enabled) and then the SOFT words/sec check run. `V104` (declared-vs-actual duration) is reserved in the module docstring but not currently emitted — it is "absorbed by V105."
 
 **Silence detection** (`--check_silence` only): WAV files are judged by RMS amplitude below a threshold; encoded formats are probed with `ffmpeg`'s `silencedetect` filter and called silent when ≥95% of the duration is reported as silence. If the probe can't run, the result is `None` and the file is not flagged silent.
 

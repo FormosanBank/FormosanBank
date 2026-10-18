@@ -13,7 +13,7 @@ After scraping the articles, they have been preprocessed to remove elements like
 
 | | Amis<br>unknown | Paiwan<br>unknown | Sakizaya | Atayal<br>unknown | Seediq<br>unknown |
 | --- | --- | --- | --- | --- | --- |
-| Word count | 1,982,130 | 123,725 | 1,649,981 | 555,392 | 792,060 |
+| Word count | 850,500 | 116,685 | 1,567,968 | 529,757 | 736,080 |
 | Total audio | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 |
@@ -30,7 +30,19 @@ After scraping the articles, they have been preprocessed to remove elements like
 <!-- CORPUS STATS END -->
 
 
-### Processing and Quality Control
+### The published corpus
+
+The corpus has 12,748 articles, one XML file each: 1,892 Amis, 2,935 Atayal, 455 Paiwan, 5,498 Sakizaya and 1,968 Seediq. It is not re-scraped, because the live wikis have changed since the June 2026 scrape. Instead, `CodeAndDocs/generate_xml.sh` rebuilds `XML/` from that scrape, preserved in `CodeAndDocs/pre_correction_snapshot/` (13,278 files), plus the recorded corrections ([corpus README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/README.md)). On the way it:
+
+* drops 29 articles the scrape saved twice under the same id (`<name> (1).xml`; the copies were identical) and 11 articles with no Latin letter at all;
+* sets `dialect="unknown"` on every article, because no Wikipedia article identifies its dialect;
+* restores Seediq text that the historical citation cutter removed: 25 articles get their cut-off body text back (28 source sections) and 5 get their author credit back, in the FORM `notes` attribute. Each is listed, with the source revision it was read from, in [`citation_restorations.csv`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/citation_restorations.csv);
+* withdraws 490 articles that the scrape downloaded a second time under a title that redirects to them (108 Amis, 81 Atayal, 17 Paiwan, 194 Sakizaya, 90 Seediq; e.g. `Amis/Abraham_Lincoln.xml` was the article `Aparaham Linken`). No text is lost: each copy's text is published, character for character, under the article it redirects to. The withdrawn ids are listed in [`old_to_new_ids.csv`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/old_to_new_ids.csv) and [`source_redirects.csv`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/source_redirects.csv). Token counts fell by 1,311,509, because those copies had been counted twice; most of the Amis drop is one article, `Amis/Amilika.xml` ("America"), which 50 redirect titles led to;
+* builds the standard tier as a copy of the original with accents removed (no spelling conversion, since the dialect is unknown), and PHON from the Ortho113 tables (see below).
+
+### Processing and Quality Control (the original 2026-06 scrape)
+
+The steps in this section describe how the June 2026 scrape was made and cleaned. They are kept for provenance and are not re-run.
 
 The **Formosan Wikipedias Corpus** was created by sourcing articles from publicly available Formosan-language Wikipedias, Amis, Atayal, Sakizaya, Seediq, and Paiwan. Considering that the quality control pipeline of Wikipedias isn't as rigorous as other resources in the Bank, extra effort went into processing, cleaning, and QCing the Wikipedias articles. Below, we outline the detailed processing steps and quality control measures applied to ensure the corpus is both reliable and linguistically accurate.
 
@@ -110,7 +122,7 @@ In addition to the thorough work done during processing to ensure the resulting 
 ### **Processing Notes**
 
 * Given the multilingual nature of Wikipedia articles, users should note the presence of occasional non-Formosan text (e.g., English characters or Chinese text). While these have been minimized, they may still appear at low frequencies.
-* The current Wikipedia XML files do not record a `dialect` attribute. The statistics table therefore labels those buckets `unspecified`. New and repaired files should use `dialect="unknown"` when the source variety cannot be identified, as required by the current validator.
+* Every article records `dialect="unknown"`, because Wikipedia articles do not identify a dialect. The Seediq articles (`xml:lang="trv"`) therefore count as Seediq, not Truku.
 
 ***
 
@@ -129,21 +141,14 @@ Although the data doesn't have associated audio or translations, it still can be
 
 Please beware that due to the nature of the wikipedias corpus (being collected from public online article and heavily containing non-Formosan text), there are some limitations in the corpus that should be pointed out.
 
-* in the `<FORM kindOf="standard">`, part of the standrdaization that is done to the data is replacing all u's with o's. This is because in Formosan languages, these two represent the same letter phonetically. However, since there is a low frequency occurrence of English words in the Wikipedias corpus that weren't excluded out in the processing and QC, these English words would also have u's switched to o's. For the time being it's hard to single out English words when applying that standardization. the letter u isn't that common in English, and there isn't that much English code-switching in the corpus after cleaning, so we don't expect this to be a major issue.
-* In cleaning out citations, our code does have some false alarms, cutting out significant text. But that's fairly rare and not easily fixed. Below are some detected examples. Check the citation removal logs linked above if needed.
-  * Articles/Seediq/Nakahara.txt
-  * Articles/Seediq/Kobah.txt
-  * Articles/Seediq/Smangus.txt
-  * Articles/Seediq/Tausa.txt
-  * Articles/Seediq/Pratan.txt
-  * Articles/Seediq/Bubun.txt
-  * And some others. Mostly Seediq.
+* The standard tier (`<FORM kindOf="standard">`) is a copy of the original with accents removed. It does not convert spelling, so any English or other non-Formosan words are left as they are.
+* The historical citation cutter sometimes stopped at an early reference heading and removed the article text after it. The 30 Seediq cases identified so far are repaired (see "The published corpus" above), including Nakahara, Kobah, Pratan and Bubun (body text) and Smangus (author credit). `Tausa`, which this page used to list as an example, is not among the 30. Other articles cut the same way, if any, have not been looked for.
 
 ***
 
 ### The orthography behind `PHON`
 
-**Short version.** The `PHON` tiers in this corpus are generated by mapping each letter of the `FORM` text to IPA through **one** orthography table — `Ortho113`, dialect-agnostic column — for all five languages and all 13,238 articles. Wikipedia articles do not state which orthography their author used, so this is an assumption, not a fact recovered from the source. This section gives the evidence for it and the size of the residual error, so you can decide whether `PHON` is usable for your purpose.
+**Short version.** The `PHON` tiers in this corpus are generated by mapping each letter of the `FORM` text to IPA through **one** orthography table — `Ortho113`, dialect-agnostic column — for all five languages and all articles. (The figures in this section were computed on the 13,238 articles published before the 490 redirect copies were withdrawn on 2026-10-18, and were not recomputed.) Wikipedia articles do not state which orthography their author used, so this is an assumption, not a fact recovered from the source. This section gives the evidence for it and the size of the residual error, so you can decide whether `PHON` is usable for your purpose.
 
 If you need phonemic precision, treat `PHON` here as a **broad, deliberately under-specified** transcription and go back to `FORM`. If you need a rough phone inventory, a searchable phonemic index, or a segment-level baseline, `PHON` is sound to within the error described below.
 
@@ -240,7 +245,7 @@ Ortho113 is used corpus-wide, for the reasons set out above. The one material di
 
 ### **Copyright**
 
-According to [Wikipedia:Copyrights](https://en.wikipedia.org/wiki/Wikipedia:Copyrights) page, Wikipedias can be used under Creative Commons liscene CC-BY SA:
+According to [Wikipedia:Copyrights](https://en.wikipedia.org/wiki/Wikipedia:Copyrights) page, Wikipedias can be used under the Creative Commons license CC BY-SA. FormosanBank publishes this corpus under **CC BY-SA 4.0** (the `copyright` value of every `TEXT` element).
 
 > Most of Wikipedia's text and many of its images are co-licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_4.0_International_License) (CC BY-SA) and the [GNU Free Documentation License](https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License) (GFDL) (unversioned, with no invariant sections, front-cover texts, or back-cover texts). Some text has been imported only under CC BY-SA and CC BY-SA-compatible license and cannot be reused under GFDL; such text will be identified on the page footer, in the page history, or on the discussion page of the article that utilizes the text.
 

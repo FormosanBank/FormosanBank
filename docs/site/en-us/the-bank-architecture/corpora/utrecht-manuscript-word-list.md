@@ -13,15 +13,15 @@ The source supplies a morphological analysis for two entries, and those carry `W
 
 | | Siraya |
 | --- | --- |
-| Word count | 1,205 |
+| Word count | 1,204 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 1,193 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 1,192 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 1,190 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 1,189 |
 | Morphologically segmented | 2 |
 | Glossed words | 0 |
 
@@ -50,7 +50,7 @@ Two of the source's own conventions are preserved rather than normalized away. W
 
 For eleven consecutive entries, beginning at the manuscript's own page 12, the source table fills its two van der Vlis columns in the opposite order to the rest of the table. The build restores the intended order. This is worth recording because the earlier published version of this corpus reproduced the anomaly, printing the Siraya form as its own Dutch translation.
 
-One entry, `pasagoualalingaua ng` 'mirror', carries a space that both other witnesses set solid. It is published as the source has it.
+One entry, `pasagoualalingauang` 'mirror', is published as one word: Joby's table cell wraps it across two lines, which reads as a space in the text layer, and van der Vlis sets it solid. For `vougot` 'to bind', van der Vlis gives a second spelling, `vuxot`, published as its variant.
 
 ***
 

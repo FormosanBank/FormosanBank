@@ -63,4 +63,4 @@ CC BY-NC 4.0
 
 In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
 
-* Whitehorn, J. (n.d.). Whitehorn: Paiwan collection. Retrieved February 24, 2025, from https://www.repository.cam.ac.uk/collections/1240188b-2f4c-401e-9372-58177440d9c6 and https://www.repository.cam.ac.uk/collections/dc1f2cd8-36da-48e1-979b-fe478eff6a91
+* Whitehorn, J. (n.d.). The Whitehorn Collections. World Oral Literature Project. Retrieved February 24, 2025, from https://www.repository.cam.ac.uk/collections/1240188b-2f4c-401e-9372-58177440d9c6 and https://www.repository.cam.ac.uk/collections/dc1f2cd8-36da-48e1-979b-fe478eff6a91

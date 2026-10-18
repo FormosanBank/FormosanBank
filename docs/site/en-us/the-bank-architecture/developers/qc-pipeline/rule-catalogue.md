@@ -10,7 +10,7 @@ icon: list-ol
 
 A validator run tells you `V135 trailing_punct_mismatch: 2` and points at a findings CSV. That names the rule but does not explain it, and until September 2026 there was nowhere to look it up: the rules lived in five Python modules, and the pages in this section each described their own family in prose.
 
-[**`QC/validation/RULES.md`**](https://github.com/FormosanBank/FormosanBank/blob/main/QC/validation/RULES.md) is the missing index. It lists **every** rule the validators run — currently 83 — with:
+[**`QC/validation/RULES.md`**](https://github.com/FormosanBank/FormosanBank/blob/main/QC/validation/RULES.md) is the missing index. It lists **every** rule the validators run — 101 as of October 2026 — with:
 
 | Column | Meaning |
 |---|---|
