@@ -197,6 +197,8 @@ def main(bank):
             raise ValueError(f"Unregistered source language: {relative}")
         output = HERE.parent / "XML" / language / Path(relative).name
         outputs.append((output, rows, metadata))
+    if AMIS_TMEM.exists():  # rebuilt from the two Amis translation-memory files below
+        AMIS_TMEM.unlink()
     unexpected = set((HERE.parent / "XML").rglob("*.xml")) - {p for p, _, _ in outputs}
     if unexpected:
         raise ValueError(f"Unexpected final XML; review its layout before rebuilding: {sorted(unexpected)}")
@@ -424,6 +426,21 @@ def remove_duplicates(bank, write_ledger=False):
 
 ENG_TMEM = HERE.parent / "XML" / "Amis" / "Glosbe_ami_eng_tmem.xml"
 ZHO_TMEM = HERE.parent / "XML" / "Amis" / "Glosbe_ami_zho_tmem.xml"
+# Maintainer, 2026-10-18 (round 2, file name): "Rename (new TEXT id; old one
+# withdrawn -> new)" + "Just call it Amis.xml. Obviously fix the citation and
+# BibTeX as appropriate."
+AMIS_TMEM = HERE.parent / "XML" / "Amis" / "Amis.xml"
+AMIS_TMEM_ID = "GLOSBE_ami_TMEM"
+AMIS_TMEM_CITATION = (
+    "Glosbe. (2026). Glosbe Amis translation memory with English and Chinese translations. "
+    "Amis-English pairs retrieved 2026-05-14, from https://glosbe.com/ami/en; Amis-Chinese pairs "
+    "retrieved 2026-06-29, from https://glosbe.com/ami/zh")
+AMIS_TMEM_BIBTEX = (
+    "@misc{Glosbe_ami_TMEM, author = {{Glosbe}}, title = {{Glosbe Amis translation memory with "
+    "English and Chinese translations}}, year = {{2026}}, howpublished = {{Glosbe online dictionary "
+    "and translation memory}}, url = {{https://glosbe.com/ami/en}}, note = {{Amis--English pairs "
+    "retrieved 2026-05-14 from https://glosbe.com/ami/en; Amis--Chinese pairs retrieved 2026-06-29 "
+    "from https://glosbe.com/ami/zh}}}")
 
 
 def _form_key(sentence):
@@ -556,7 +573,11 @@ def merge_translation_files(bank, write_ledger=False):
     dropped = drop_enumerators(english)
     zho_source = zho_root.get("source")
     root.set("source", f"{root.get('source')} Chinese translations: {zho_source}")
-    english_tree.write(str(ENG_TMEM), encoding="utf-8", xml_declaration=True, pretty_print=True)
+    root.set("id", AMIS_TMEM_ID)
+    root.set("citation", AMIS_TMEM_CITATION)
+    root.set("BibTeX_citation", AMIS_TMEM_BIBTEX)
+    english_tree.write(str(AMIS_TMEM), encoding="utf-8", xml_declaration=True, pretty_print=True)
+    ENG_TMEM.unlink()
     ZHO_TMEM.unlink()
     final = {s.get("id") for f in (HERE.parent / "XML").rglob("*.xml") for s in etree.parse(f).findall("S")}
     with (HERE / "withdrawn_ids.csv").open(encoding="utf-8", newline="") as stream:
