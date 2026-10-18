@@ -157,3 +157,8 @@ def test_statistics_tables_are_not_units():
     units = tr.segments(page)
     assert "13.4h" not in units and not any("Coastal" in u for u in units)
     assert "The record id" in units  # an ordinary table still counts
+
+
+def test_sentences_do_not_split_inside_code():
+    units = tr.segments("A leading `? ` marks a doubtful form. Alternatives look like `[x| y]`. Done.\n")
+    assert units == ["A leading `? ` marks a doubtful form.", "Alternatives look like `[x| y]`.", "Done."]

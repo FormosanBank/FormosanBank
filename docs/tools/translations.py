@@ -107,8 +107,21 @@ def plain_text(markdown: str) -> str:
 
 
 def split_sentences(text: str) -> list[str]:
-    protected = ABBREVIATIONS.sub(lambda m: m.group(0)[:-1] + "\x01", text)
-    return [s.replace("\x01", ".").strip() for s in SENTENCE_END.split(protected) if s.strip()]
+    """Sentences of a paragraph; never split inside a code span or an abbreviation."""
+    saved: list[str] = []
+
+    def mask(match: re.Match[str]) -> str:
+        saved.append(match.group(0))
+        return f"\x02{len(saved) - 1}\x02"
+
+    protected = INLINE_CODE.sub(mask, text)
+    protected = ABBREVIATIONS.sub(lambda m: m.group(0)[:-1] + "\x01", protected)
+    out = []
+    for piece in SENTENCE_END.split(protected):
+        piece = re.sub("\x02(\\d+)\x02", lambda m: saved[int(m.group(1))], piece)
+        if piece.strip():
+            out.append(piece.replace("\x01", ".").strip())
+    return out
 
 
 def translatable(text: str) -> bool:
