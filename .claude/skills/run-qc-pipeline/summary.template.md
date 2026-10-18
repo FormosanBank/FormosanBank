@@ -30,6 +30,7 @@
 | `validate_duplicate_sentences.py` (same-file dupes) | {{DUPES_RESULT}} | {{DUPES_NOTES}} |
 | `validate_glosses.py` | {{GLOSSES_RESULT_OR_NA}} | {{GLOSSES_NOTES}} |
 | `validate_audio.py` | {{AUDIO_RESULT_OR_NA}} | {{AUDIO_NOTES}} <!-- "skipped — audio not local" if applicable --> |
+| The corpus's own tests (`CodeAndDocs/tests`, `tests/`) | {{CORPUS_TESTS_RESULT}} | {{CORPUS_TESTS_NOTES}} <!-- pass count; "no source-accounting test" is an open item --> |
 
 ## Soft checks (info-only)
 

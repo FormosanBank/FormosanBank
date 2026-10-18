@@ -232,6 +232,22 @@ Run each validator, capturing output. Do NOT abort the recipe on failures — th
   2>&1 | tee <output_dir>/05g_validate_duplicate_sentences.log
 ```
 
+**The corpus's own tests** (maintainer, 2026-10-17: run them "locally during a port
+or update to a specific corpus", never in GitHub's pytest). They are this
+corpus's regression layer — the source-accounting test above all, which is
+what tells a complete-looking inventory from a complete one. Run them from the
+dev repo with the FormosanBank checkout named, and quote the pass count in
+the summary:
+
+```bash
+FORMOSANBANK_ROOT=<formosanbank_path> .venv/bin/python3 -m pytest \
+  <corpus_path>/CodeAndDocs/tests <corpus_path>/tests -q 2>&1 | tee <output_dir>/05k_corpus_tests.log
+```
+
+A corpus with no `CodeAndDocs/tests/test_source_accounting.py` is an open
+item for the summary: the scaffold's template is at
+`.claude/skills/setup-new-dev-repo/test_source_accounting.py.template`.
+
 Then check whether the corpus has `<W>` or `<M>` elements (quick grep across XML files). If yes:
 
 ```bash

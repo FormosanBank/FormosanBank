@@ -24,7 +24,8 @@ Rules:
 - G014 WARN: a word's rare gloss is a substring of its dominant gloss (shifted column).
 - G015 WARN: a sentence whose function words carry glosses they almost never take.
 - G016 SOFT: unbalanced ASCII/CJK bracket inside a W/M gloss (bracket bleed).
-- G017 SOFT: three or more English function words in a row inside an S FORM.
+- G017 SOFT: three or more English/German/French function words in a row inside an S FORM.
+- G019 SOFT: Han characters or kana inside S original FORMs (Chinese or Japanese), per file.
 - G018 SOFT: Latin-only glosses on a Chinese-declared W/M gloss tier.
 """
 from __future__ import annotations
@@ -896,24 +897,38 @@ def g016_unbalanced_brackets_in_gloss(
 # Chinese gloss tier. V143 covers TRANSL script vs declared language; nothing
 # covered FORM, or Latin codes on a Chinese gloss tier.
 #
-# G017 detects English only. The card also wanted "words attested only in
-# another language"; tried against the bank's own reference vocabularies on
-# the Amis Wikipedia (2,000 files) it flagged 315 runs, all place names,
-# loans and shared Austronesian words read as Kavalan, Paiwan or Bunun, and a
-# stricter form (five lowercase words, one language) flagged none. The bank's
-# vocabularies overlap too much to tell languages apart; that half needs
-# non-overlapping lexicons it does not have.
+# Maintainer, 2026-10-17: "should check for English, German, French, Chinese,
+# and Japanese." The three European languages are the function-word case
+# (G017): short words that never occur in a Formosan sentence, three in a
+# row. Chinese and Japanese are the script case (G019): kana is Japanese,
+# Han characters are Chinese or Japanese, either is a leak in a FORM.
+# "Words attested only in another Formosan language" was tried against the
+# bank's own reference vocabularies and dropped: on the Amis Wikipedia it
+# flagged 315 runs of place names, loans and shared Austronesian words.
 # ---------------------------------------------------------------------------
 
-# Three letters or longer, and none that is also an attested Formosan word
-# ('a', 'i', 'to', 'no' are everyday Amis; 'can', 'may', 'into', 'but' sit in
-# the Amis/Paiwan reference vocabularies). Checked BEFORE the declared
-# language's vocabulary, because those vocabularies are built from the bank
-# and carry its own English leaks.
-_ENGLISH_FUNCTION_WORDS = frozenset(
-    "the and are was were been being this that these those its she they them his her their you our your "
-    "not yes then than because when while where who which what how there here have has had does did "
-    "could will would shall should might must also very out down over under about after before".split())
+# Three letters or longer, and none that is also an attested Formosan word:
+# 'a', 'i', 'to', 'no' are everyday Amis; 'can', 'may', 'into', 'but' (English),
+# 'mit', 'aus', 'kann' (German) and 'les', 'pas', 'par', 'son', 'sur', 'mais',
+# 'cela' (French) sit in the bank's reference vocabularies. Checked BEFORE the
+# declared language's vocabulary, because those vocabularies are built from
+# the bank and carry its own leaks.
+_FUNCTION_WORDS = {
+    "English": frozenset(
+        "the and are was were been being this that these those its she they them his her their you our your "
+        "not yes then than because when while where who which what how there here have has had does did "
+        "could will would shall should might must also very out down over under about after before".split()),
+    "German": frozenset(
+        "der die das und ist nicht ein eine einer eines dem den des für sich auch wird werden sind war "
+        "haben hat über nach bei als wie noch nur oder aber wenn dass dieser diese dieses ihre ihrer seine "
+        "seiner wurde wurden können zum zur".split()),
+    "French": frozenset(
+        "des une est sont dans pour que qui avec ses leur leurs cette ces plus nous vous ils elles été être "
+        "avoir aux dont très comme aussi entre sans sous chez ont fait peut".split()),
+}
+_KANA = re.compile(r"[\u3040-\u30ff]")
+_HAN = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]")
+_G019_MIN_HAN = 3
 _G017_MIN_RUN = 3
 _G018_MIN_LATIN = 3
 _G018_MIN_RATE = 0.02
@@ -948,9 +963,12 @@ def _declared_language(tree: etree._ElementTree) -> str | None:
 
 
 def _foreign(token: str) -> str | None:
-    """'English' when the token is an English function word, else None."""
+    """The language whose function-word list holds the token, else None."""
     word = token.strip("“”\"'.,;:!?()[]…").lower()
-    return "English" if word in _ENGLISH_FUNCTION_WORDS else None
+    for language, words in _FUNCTION_WORDS.items():
+        if word in words:
+            return language
+    return None
 
 
 def g017_out_of_language_run(
@@ -958,10 +976,10 @@ def g017_out_of_language_run(
     path: Path,
     index=None,
 ) -> list[Finding]:
-    """G017 SOFT: a run of an S original FORM holding three or more English
-    function words with no word of the declared language in between — a
-    scrape that caught the paper's prose, a citation left in the text, an
-    untranslated passage.
+    """G017 SOFT: a run of an S original FORM holding three or more English,
+    German or French function words with no word of the declared language in
+    between — a scrape that caught the paper's prose, a citation left in the
+    text, an untranslated passage.
 
     Rate-free and per sentence. A word of the declared language (its
     reference vocabulary) closes the run; words no list knows ride along.
@@ -1009,6 +1027,45 @@ def g017_out_of_language_run(
                 character=" ".join(t for t, _l in best),
                 count=foreign_count(best),
             ))
+    return findings
+
+
+def g019_han_or_kana_in_form(
+    tree: etree._ElementTree,
+    path: Path,
+    index=None,
+) -> list[Finding]:
+    """G019 SOFT: S original FORMs that carry kana (Japanese) or three or more
+    Han characters (Chinese or Japanese), one finding per file and script.
+
+    A Formosan sentence has neither; what carries them is a Chinese
+    annotation left in the text ("(語氣上揚)"), a code-switched sentence, a
+    Japanese name, or a Wikipedia subject's Chinese name. Which of those it
+    is takes a reader, so this counts and points.
+    """
+    kana_hits: list[str] = []
+    han_hits: list[str] = []
+    for s in tree.iter("S"):
+        text = _form_text(s)
+        if not text:
+            continue
+        loc = f"S={s.get('id')}" if s.get("id") else "S"
+        if _KANA.search(text):
+            kana_hits.append(loc)
+        elif len(_HAN.findall(text)) >= _G019_MIN_HAN:
+            han_hits.append(loc)
+    findings: list[Finding] = []
+    if kana_hits:
+        findings.append(Finding(
+            rule_id="G019", severity=Severity.SOFT,
+            message=f"{len(kana_hits)} S original FORM(s) carry kana (Japanese); first at {kana_hits[0]}",
+            path=path, location=kana_hits[0], character="kana", count=len(kana_hits)))
+    if han_hits:
+        findings.append(Finding(
+            rule_id="G019", severity=Severity.SOFT,
+            message=(f"{len(han_hits)} S original FORM(s) carry {_G019_MIN_HAN}+ Han characters "
+                     f"(Chinese or Japanese); first at {han_hits[0]}"),
+            path=path, location=han_hits[0], character="han", count=len(han_hits)))
     return findings
 
 
@@ -1067,5 +1124,6 @@ RULES: list = [
     g016_unbalanced_brackets_in_gloss,
     g017_out_of_language_run,
     g018_latin_gloss_on_chinese_tier,
+    g019_han_or_kana_in_form,
 ]
 CROSS_FILE_RULES: list = []

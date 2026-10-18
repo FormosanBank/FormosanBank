@@ -828,3 +828,27 @@ def test_g001_g002_still_compare_a_whole_unclear_gloss():
 def test_g012_reads_text_after_inline_unclear():
     findings = _run(gloss_scrape.g012_trailing_paren_note_in_TRANSL, UNCLEAR_XML)
     assert [f.location for f in findings] == ["S=s"]
+
+
+def test_g017_reads_german_and_french_runs_too():
+    sentences = [
+        _glossed([("maolah", "like"), ("kako", "1SG")], sid="s1"),
+        _glossed([("der", "x"), ("Hund", "x"), ("ist", "x"), ("nicht", "x"), ("hier", "x")], sid="s2"),
+        _glossed([("nous", "x"), ("sommes", "x"), ("dans", "x"), ("la", "x"), ("maison", "x"), ("avec", "x"), ("vous", "x")], sid="s3"),
+        _glossed([("mit", "x"), ("kako", "1SG"), ("pas", "x")], sid="s4"),   # attested Formosan words: never foreign
+    ]
+    found = _run(gloss_scrape.g017_out_of_language_run, _doc(sentences))
+    assert [(f.location, f.count) for f in found] == [("S=s2", 3), ("S=s3", 4)]
+    assert "read as German" in found[0].message and "read as French" in found[1].message
+
+
+def test_g019_counts_kana_and_han_in_forms_per_file():
+    sentences = [
+        _glossed([("sauqaljai", "x"), ("稲葉浩志", "x"), ("いなば", "x")], sid="s1"),       # kana → Japanese
+        _glossed([("?", "x"), ("(語氣上揚)", "x")], sid="s2"),                              # Han ≥ 3 → Chinese or Japanese
+        _glossed([("kman", "x"), ("da", "x")], sid="s3"),
+        _glossed([("Taywan", "x"), ("(台灣)", "x")], sid="s4"),                              # two Han: below the bar
+    ]
+    found = _run(gloss_scrape.g019_han_or_kana_in_form, _doc(sentences))
+    assert [(f.character, f.location, f.count) for f in found] == [("kana", "S=s1", 1), ("han", "S=s2", 1)]
+    assert "kana (Japanese)" in found[0].message and "Chinese or Japanese" in found[1].message

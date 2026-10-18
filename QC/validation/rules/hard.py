@@ -14,6 +14,7 @@ from lxml import etree
 from QC.validation._corpus_index import CorpusIndex
 from QC.validation._dialect_inventory import valid_dialects
 from QC.validation._finding import Finding, Severity
+from QC.validation._rights import load_rights_vocabulary
 from QC.validation.rules.soft import _carries_parsing, _children, _sentence_words, _tree_language
 
 
@@ -1242,6 +1243,52 @@ def v145_degenerate_all_single_M_tier(
     )]
 
 
+def v160_copyright_present(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """TEXT/@copyright must be present and non-empty (POL-042)."""
+    root = tree.getroot()
+    if (root.get("copyright") or "").strip():
+        return []
+    return [Finding(
+        rule_id="V160",
+        severity=Severity.HARD,
+        message=(
+            "TEXT/@copyright is missing or empty; every published TEXT "
+            "declares a licence (POL-042)"
+        ),
+        path=path,
+        location=f"TEXT[@id={root.get('id')!r}]",
+    )]
+
+
+def v161_copyright_in_vocabulary(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """TEXT/@copyright must equal a rights_vocabulary.csv value exactly."""
+    root = tree.getroot()
+    value = (root.get("copyright") or "").strip()
+    if not value:
+        return []  # V160 owns the empty case
+    vocabulary = load_rights_vocabulary()
+    if value in vocabulary:
+        return []
+    return [Finding(
+        rule_id="V161",
+        severity=Severity.HARD,
+        message=(
+            f"TEXT/@copyright {value!r} is not a rights_vocabulary.csv value; "
+            f"allowed: {', '.join(sorted(vocabulary))} (POL-042)"
+        ),
+        path=path,
+        location=f"TEXT[@id={root.get('id')!r}]",
+    )]
+
+
 RULES: list = [
     v145_degenerate_all_single_M_tier,  # POL-023/POL-057, HARD since 2026-10-17
     v000_schema_validation,
@@ -1272,5 +1319,8 @@ RULES: list = [
     # POL-028 alternate FORMs (2026-09-08)
     v149_alternate_FORM_requires_base_sibling,
     v156_form_ver_value_in_allowlist,
+    # POL-042 rights vocabulary (2026-09, PR #236)
+    v160_copyright_present,
+    v161_copyright_in_vocabulary,
 ]
 CROSS_FILE_RULES: list = [v081_text_id_unique_across_published_corpora]
