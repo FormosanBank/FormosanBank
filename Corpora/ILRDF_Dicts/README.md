@@ -369,6 +369,24 @@ and Yami files already on Hugging Face under the old layout, column
   headword sense that is an editor note (`不小心按到，請刪除！…`)
   ([source_data/source_content_exclusions.json](CodeAndDocs/source_data/source_content_exclusions.json)).
 
+## Notes and Issues
+
+Each item is described in full in the section named in brackets.
+
+- **1,251 sentences are no longer in ILRDF's current dictionary.** They are
+  kept as FormosanBank published them from its 2024 scrape and carry an
+  `S/@source` saying so. ["Sentences from the 2024 scrape — 1,251"]
+- **24 `?` are left where the source lost a letter.** In Kanakanavu, Saaroa
+  and Tsou the source sometimes has a literal `?` where **ʉ** was lost; 61
+  were restored, but these 24 could not be confirmed and are left visible
+  rather than guessed. ["Recovered `?` corruption — 61 tokens"]
+- **1,438 recordings are published without a transcription** (as `AUDIO`
+  directly under `TEXT`), including the 244 that FormosanBank's 2024
+  publication had attached to several different sentences. ["Recordings"]
+- **99,963 recordings are not published**; every one, and why, is in
+  [CodeAndDocs/docs/audio_not_published.csv](CodeAndDocs/docs/audio_not_published.csv).
+  ["Recordings", "Excluded content"]
+
 ## Code
 
 | | |
