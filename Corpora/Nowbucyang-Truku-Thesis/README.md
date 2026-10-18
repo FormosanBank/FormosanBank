@@ -2,7 +2,8 @@
 
 Truku examples from Lowking Wei-Cheng Hsu / 許韋晟, *太魯閣語構詞法研究*
 [Word Formation in Truku], 2008, MA thesis, National Hsin-Chu University of
-Education. The revised corpus has 285 examples, 1,146 words and 1,443 morphemes
+Education. The revised corpus has 285 examples, 1,049 W (1,146 written words:
+97 W each join two words the thesis glosses as one unit) and 1,442 morphemes
 (`trv`, dialect `Truku`), with source Chinese translations where supplied.
 
 ## Rights

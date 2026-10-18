@@ -127,3 +127,13 @@ The six older exact FORM/free-translation duplicates remain accounted for in
 where the retained earlier examples use `IF-雪` and `IF-風`. Recorded edits
 keep these later W/M readings as `ver="alt"` with source locators (POL-025),
 without replacing the earlier readings or adding duplicate sentences.
+
+## Gloss rulings of 2026-10-18
+
+`apply_gloss_rulings.py` applies the maintainer's rulings from the Nowbucyang
+Gloss Review page, quoting each: `niya na` and 95 host + clitic pairs
+(`clitic_merges.tsv`) become one W each (POL-060); C01_E011E takes the
+thesis gloss line; unmatched M pieces of five words are `<UNCLEAR/>`;
+`skiya` becomes `∅-skiya` with a null M; three parenthetical readings move
+from `ver="alt"` translations to translation notes. It supersedes, for
+`niya na`, the paragraph above that leaves its two parts unglossed.
