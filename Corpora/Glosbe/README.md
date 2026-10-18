@@ -1,7 +1,7 @@
 # Glosbe Formosan Corpus
 
 This corpus contains Glosbe dictionary and translation-memory examples for Amis,
-Atayal, Saisiyat and Truku. It has seven XML files, 5,670 S, 7,677 TRANSL,
+Atayal, Saisiyat and Truku. It has seven XML files, 5,670 S, 7,659 TRANSL,
 11,340 FORM and 11,340 PHON. There is no W/M analysis or Formosan audio.
 Glosbe is crowdsourced; preserving a source pair does not establish that its
 translation or language label is correct. Religious/JW material predominates.
@@ -53,9 +53,15 @@ has changed. [`CodeAndDocs/joined_translations.csv`](CodeAndDocs/joined_translat
 rejoins five English alternative pairs into main's single "; "-joined translation
 (U000011, U001000, U002829, U003827, U003922; ruling: "Join them back as main had
 them"); other English alternatives stay separate `ver="alt"` TRANSL.
-[`CodeAndDocs/drop_enumerators.csv`](CodeAndDocs/drop_enumerators.csv) deletes the 17
+The build deletes the 17
 list enumerators (`(2)`, `(b)`) in the 15 fields where main had written `2.` /
-`b.` (ruling: "Delete the enumerators entirely.").
+`b.` (ruling: "Delete the enumerators entirely."). The build now deletes every note
+part that is only an enumerator (`(x)` with one letter or 1-2 digits, or `x.`) in
+every file: 229 in Amis.xml, none elsewhere (ruling: "Delete all 212", the count
+left after the first 17). A Chinese translation that only adds a page reference
+(`18頁 上帝的話必萬世長存` next to `上帝的話必萬世長存`) is dropped (ruling: "One
+translation, drop the page"): 18 copies; 19 `N頁` translations with no clean twin
+stay.
 `CodeAndDocs/source_markers.csv` records the reviewed footnote and highlight roles
 used during source capture; it does not authorize stripping unreviewed markers.
 
@@ -186,8 +192,8 @@ even when their standard forms coincide.
 Open as of 2026-10-18 (not ruled): Amis-Chinese S that differ from an Amis-English S
 by a word, a list number written "(1)" vs "1.", a slashed date or a menu symbol are
 not joined. Paragraph numbers, cross-references and citations inside Chinese TRANSL
-text are left as published (ruling: "Leave as is"), e.g. the joined U002332 has
-Chinese "16頁 用上帝的律法和原則鍛煉良心" and the alternative without "16頁".
+text are left as published (ruling: "Leave as is"), apart from the page-reference
+copies above.
 
 ## Reproduction
 

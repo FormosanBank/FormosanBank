@@ -195,6 +195,21 @@ def test_maanan_sentences_are_one_s():
     assert len([t for t in kept.findall("TRANSL") if t.get(SOURCE.XML_LANG) == "eng"]) == 4
 
 
+def test_no_enumerator_notes_or_page_copies():
+    import re
+    for sentence in final_sentences().values():
+        for element in sentence.iter("FORM", "TRANSL"):
+            for part in (element.get("notes") or "").split(" | "):
+                assert not SOURCE.ENUMERATOR.fullmatch(part), (sentence.get("id"), part)
+        chinese = ["".join(t.itertext()) for t in sentence.findall("TRANSL")
+                   if t.get(SOURCE.XML_LANG) == "zho"]
+        for text in chinese:
+            match = re.match(r"^\d+頁\s*(.+)$", text)
+            assert not (match and match.group(1) in chinese), sentence.get("id")
+    page = final_sentences()["GLOSBE_ami_eng_TMEM_U002332"]
+    assert [t.text for t in page.findall("TRANSL") if t.get(SOURCE.XML_LANG) == "zho"] == ["用上帝的律法和原則鍛煉良心"]
+
+
 def test_notes_do_not_repeat_a_label():
     for sentence in final_sentences().values():
         for element in sentence.iter("FORM", "TRANSL"):
