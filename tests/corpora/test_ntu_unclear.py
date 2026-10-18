@@ -246,6 +246,46 @@ def test_word_punctuation_deleted_per_table(tmp_path):
     assert _inner(ids["s1"].find("FORM")) == "haca, 'aca. , mi-<UNCLEAR />,"         # S untouched
 
 
+FINAL_TABLE = """lang\tchar\tcodepoint\tclass\taction\tnote
+tsu\t.\tU+002E\tpunctuation\tfinal\t
+tsu\t,\tU+002C\tpunctuation\tfinal\t
+tsu\t?\tU+003F\tpunctuation\tfinal\t
+tsu\t"\tU+0022\tpunctuation\tdelete\t
+tsu\t'\tU+0027\tletter\tkeep\t
+tsu\t-\tU+002D\tmarker\tkeep\t
+tsu\t=\tU+003D\tmarker\tkeep\t
+"""
+
+FINAL_CASES = {   # FORM -> after the step (ruling 2026-10-18 on FORM-final punctuation)
+    "zo.lu.shang.lai.a.": "zo.lu.shang.lai.a",     # inside dots stay, the final one goes
+    "Lao.Jia": "Lao.Jia",
+    "a,,": "a",                                    # the whole final run
+    "kati...": "kati",
+    'Y,M"': "Y,M",                                 # a 'delete' character ends the run too
+    "wu-.": "wu-",                                 # left ending in a marker
+    "umah.-": "umah.-",                            # '.' before a marker is not final
+    "pa-pacay-?": "pa-pacay-?",                    # ? after - or = is an unknown morpheme
+    "palrayngi=?.": "palrayngi=?",
+    "?la-lasu.": "?la-lasu",
+    "ulaqi'.": "ulaqi'",
+    ".": ".",                                      # would be empty: left
+}
+
+
+def test_word_punctuation_form_final_only(tmp_path):
+    words = "".join(f'<W id="w{i}"><FORM kindOf="original">{f}</FORM></W>' for i, f in enumerate(FINAL_CASES))
+    sample = ('<?xml version="1.0" ?>\n<TEXT id="t" xml:lang="tsu"><S id="s"><FORM kindOf="original">x</FORM>'
+              + words + '<W id="u"><FORM kindOf="original"><UNCLEAR/>=maku.</FORM></W></S></TEXT>')
+    xml_dir = tmp_path / "xml"
+    xml_dir.mkdir()
+    (xml_dir / "a.xml").write_text(sample, encoding="utf-8")
+    (tmp_path / "chars.tsv").write_text(FINAL_TABLE, encoding="utf-8")
+    assert swp.main(["--xml_dir", str(xml_dir), "--table", str(tmp_path / "chars.tsv")]) == 0
+    ids = {e.get("id"): e for e in ET.parse(xml_dir / "a.xml").getroot().iter() if e.get("id")}
+    assert {f: _inner(ids[f"w{i}"].find("FORM")) for i, f in enumerate(FINAL_CASES)} == FINAL_CASES
+    assert _inner(ids["u"].find("FORM")) == "<UNCLEAR />=maku"      # final after <UNCLEAR/>
+
+
 def test_word_punctuation_second_run_changes_nothing(tmp_path):
     _, text, _ = _strip(tmp_path)
     assert swp.main(["--xml_dir", str(tmp_path / "xml"), "--table", str(tmp_path / "chars.tsv")]) == 0
@@ -360,16 +400,21 @@ def test_held_words_are_unchanged(sentences):
 
 PARTIAL_X = {   # ruling 3: W id -> its original FORM as published
     "Amis_Conv-talking_tamih_panay_S_122_W10": "mi-<UNCLEAR />",
-    "kkvNr_dailylife_Angai_S_9_W1": "<UNCLEAR />=maku.",          # Kanakanavu '.' is held
+    "kkvNr_dailylife_Angai_S_9_W1": "<UNCLEAR />=maku",           # FORM-final '.' removed
     "kkvNr_family_Paicu_S_42_W1": "<UNCLEAR />=ci=kim",
     "kkvNr_family_Paicu_S_47_W1": "<UNCLEAR />=ci=kim",
     "RukaiNr-childhood_balenge_S_5_W0": "kia-<UNCLEAR />=aku",
     "SaiNr-frog6_kalaeh a _oemaw_S_47_W10": "<UNCLEAR />-ralom-an",
-    "TsouConv-typhoon_S_326_W1": "mucian-shi-alishansiang-zuei-<UNCLEAR />.",   # Tsou '.' is held
+    "TsouConv-typhoon_S_326_W1": "mucian-shi-alishansiang-zuei-<UNCLEAR />",    # FORM-final '.' removed
 }
 # Word FORMs written only with a character to delete: deleting would empty them.
 EMPTY_IF_DELETED = {"bnNr-frog_Ciang_S_64_W5", "bnNr-frog_Ciang_S_64_W5M0",
                     "bnNr-frog_Ciang_S_78_W8", "bnNr-frog_Ciang_S_78_W8M0"}
+# Word FORMs written only with a FORM-final character (Bunun '.', glossed (咳嗽); Seediq ',',
+# glossed PART): left, since deleting would empty them. Not ruled on; V164 flags them.
+ONLY_PUNCTUATION = {"bnNr-frog_Ciang_S_34_W3", "bnNr-frog_Ciang_S_34_W3M0",
+                    "bnNr-frog_Ciang_S_159_W0", "bnNr-frog_Ciang_S_159_W0M0",
+                    "sdqNr-childhood_micang 2020s_S_185_W16", "sdqNr-childhood_micang 2020s_S_185_W16M0"}
 
 
 @pytest.fixture(scope="module")
@@ -396,6 +441,35 @@ def test_no_deletable_punctuation_in_word_or_morpheme_forms(texts, char_table):
                         break
     assert unlisted == set(), f"characters missing from word_form_characters.tsv: {sorted(unlisted)}"
     assert bad == [], f"{len(bad)} W/M FORM(s) still hold punctuation to delete, e.g. {bad[:5]}"
+
+
+def test_no_form_final_punctuation_in_word_or_morpheme_forms(texts, char_table):
+    """Ruling 2026-10-18: the 'final' characters go from the end of a W/M FORM only."""
+    bad = []
+    for t in texts:
+        lang = t.get(XML_LANG)
+        for el in [*t.iter("W"), *t.iter("M")]:
+            if el.get("id") in EMPTY_IF_DELETED | ONLY_PUNCTUATION:
+                continue
+            for f in el.findall("FORM"):
+                last = (f[-1].tail if len(f) else f.text) or ""
+                if swp.final_run_start(last, lang, char_table) < len(last):
+                    bad.append((el.get("id"), "".join(f.itertext())))
+    assert bad == [], f"{len(bad)} W/M FORM(s) still end in punctuation, e.g. {bad[:5]}"
+
+
+INSIDE_WORD_DOTS = {   # "attempts to write multimorphemic Chinese words. We don't wnat to remove those periods."
+    "None-1_S_93_W8": "Lao.Jia",
+    "None-1_S_150_W0": "zo.lu.shang.lai.a",
+    "RukaiNr-marriage ceremony_taugadha_S_177_W0": "tou.mu",
+    "52_S_5_W1": "Sung.laoshi",
+}
+
+
+def test_inside_word_dots_stay(sentences):
+    found = {w.get("id"): _inner(w.find("FORM")) for s in sentences for w in s.findall("W")
+             if w.get("id") in INSIDE_WORD_DOTS}
+    assert found == INSIDE_WORD_DOTS
 
 
 def test_untranscribed_word_forms_are_bare(sentences):

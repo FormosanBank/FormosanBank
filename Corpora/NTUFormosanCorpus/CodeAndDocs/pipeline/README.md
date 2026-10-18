@@ -102,10 +102,13 @@ counts as punctuation is decided per language in `../word_form_characters.tsv`,
 which lists every character other than a letter or digit found in a word or
 morpheme FORM: `delete` (`,` `.` `!` `?` `"`), `keep` (`'`, the glottal stop in
 every NTU language's Ortho94/Ortho113 table but Seediq's, and the markers `-`
-`=` `<` `>` `~` `∅`), or `hold`, where the character is not clearly punctuation
-in that language (`.` inside words such as Atayal `asi.ki.na` or Tsou
-`Lao.Jia`; Rukai `?` standing for an unknown morpheme, `alupu-?=ini`; ...).
-Held characters stay, every occurrence, until the maintainer rules. A character
+`=` `<` `>` `~` `∅`), `final`, punctuation removed only at the end of a FORM
+because the same character inside a word is not (`.` in Atayal `asi.ki.na` or
+Tsou `Lao.Jia`; ruling 2026-10-18, "all approved."; a `?` straight after `-` or
+`=` is a Rukai unknown morpheme, `pa-pacay-?`, and stays), or `hold`, where the
+character is not clearly punctuation in that language (Seediq `#` and `'`,
+Kanakanavu `／`). Held characters stay, every occurrence, until the maintainer
+rules. A character
 the table does not list stops the build. A FORM that would be left empty (a
 Bunun word written only `,`) is left as it is. Changes are listed in
 `logs/word_punctuation_<Subcorpus>.tsv`.
@@ -233,8 +236,9 @@ Per POL-039, item-specific corrections live in data files, not in code:
 - `../word_form_characters.tsv` — every character other than a letter or digit
   in a word or morpheme FORM, per language (`lang`, `char`, `codepoint`,
   `class`, `action`, `note`), read by `strip_word_punctuation.py`: `delete`,
-  `keep` (a letter or a morpheme marker) or `hold` (not clearly punctuation in
-  that language; awaiting a ruling).
+  `final` (deleted only at the end of a FORM), `keep` (a letter or a morpheme
+  marker) or `hold` (not clearly punctuation in that language; awaiting a
+  ruling).
 
 ## Gloss shifts
 

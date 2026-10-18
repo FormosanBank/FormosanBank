@@ -17,10 +17,24 @@ that occurs in a W or M FORM, with its class and action.
   * keep:   a letter of that language's orthography (' is the glottal stop in
             Ortho94 and Ortho113 for every NTU language but Seediq) or a
             morpheme-structure marker (- = < > ~ ∅);
-  * hold:   not clear that it is punctuation in that language (. between the
-            syllables of a loan, tou.mu; ? standing for an unknown morpheme,
-            alupu-?=ini; ...) -- left in place, every occurrence, until the
+  * final:  punctuation only at the end of a FORM, where the same character
+            inside a word is not (. between the syllables of a Mandarin word,
+            Lao.Jia, zo.lu.shang.lai.a.; , in Y,M) -- removed only from the
+            FORM-final run (below), kept everywhere else;
+  * hold:   not clear that it is punctuation in that language (Seediq # and ',
+            Kanakanavu ／) -- left in place, every occurrence, until the
             maintainer rules.
+
+The FORM-final run (ruling 2026-10-18, on the counts of the earlier review:
+"Only word and morpheme forms would change ... Dots inside words would stay and
+only the final mark would go ... 16 forms would lose more than one character ...
+Some forms would end in a marker ..." -- "all approved."; inside-word dots are
+"attempts to write multimorphemic Chinese words. We don't wnat to remove those
+periods.") is the longest stretch at the very end of the FORM's last text
+segment made only of 'final' and 'delete' characters: zo.lu.shang.lai.a. loses
+its last '.', a,, both commas, wu-. its '.' (the '-' stays); umah.- keeps its
+'.', which is not at the end. A ? straight after - or = stands for an unknown
+morpheme (Rukai pa-pacay-?, palrayngi=?) and ends the run: it is kept.
 
 A character that the table does not list for the language stops the build, so
 nothing new is deleted, or kept, without being classified first.
@@ -43,7 +57,7 @@ from pathlib import Path
 from lxml import etree
 
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
-ACTIONS = {"delete", "keep", "hold"}
+ACTIONS = {"delete", "final", "keep", "hold"}
 
 
 def load_table(path):
@@ -67,6 +81,19 @@ def is_content(ch):
     return ch.isalpha() or ch.isdigit() or ch in NULLS
 
 
+def final_run_start(seg, lang, table):
+    """Index where seg's FORM-final run of 'final'/'delete' characters starts."""
+    i = len(seg)
+    while i > 0:
+        ch = seg[i - 1]
+        if is_content(ch) or table.get((lang, ch)) not in ("final", "delete"):
+            break
+        if ch == "?" and i > 1 and seg[i - 2] in "-=":
+            break      # an unknown morpheme (pa-pacay-?, palrayngi=?), not a question mark
+        i -= 1
+    return i
+
+
 def write_like(path, root):
     """Rewrite path keeping its own bytes before and after the root element."""
     raw = path.read_text(encoding="utf-8")
@@ -86,9 +113,10 @@ def process_form(form, lang, table, counts, unlisted):
                          f"{etree.tostring(form, encoding='unicode')!r}")
     segs = [form.text or ""] + [c.tail or "" for c in form]
     new, dropped = [], Counter()
-    for seg in segs:
+    for k, seg in enumerate(segs):
+        start = final_run_start(seg, lang, table) if k == len(segs) - 1 else len(seg)
         out = []
-        for ch in seg:
+        for i, ch in enumerate(seg):
             if is_content(ch):
                 out.append(ch)
                 continue
@@ -96,8 +124,8 @@ def process_form(form, lang, table, counts, unlisted):
             if action is None:
                 unlisted[(lang, ch)] += 1
                 out.append(ch)
-            elif action == "delete":
-                dropped[ch] += 1
+            elif action == "delete" or (action == "final" and i >= start):
+                dropped[(action, ch)] += 1
             else:
                 out.append(ch)
         new.append("".join(out))
@@ -109,8 +137,9 @@ def process_form(form, lang, table, counts, unlisted):
     form.text = new[0] or None
     for child, tail in zip(form, new[1:]):
         child.tail = tail or None
-    for ch, n in dropped.items():
-        counts[f"deleted {lang} {ch!r}"] += n
+    for (action, ch), n in dropped.items():
+        where = " (FORM-final)" if action == "final" else ""
+        counts[f"deleted {lang} {ch!r}{where}"] += n
     counts["FORM elements changed"] += 1
     return "changed"
 
