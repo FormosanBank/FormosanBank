@@ -27,6 +27,4 @@ WakelinTexts notes
 Whitehorn_Collection rights
 Whitehorn_Collection notes
 Wikipedias notes
-YeddaPalemeqBlog rights
-YeddaPalemeqBlog notes
 ePark notes
