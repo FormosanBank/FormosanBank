@@ -100,9 +100,22 @@ def transls(el):
     return out
 
 
+def split_joined_infixes(text):
+    """'la<in-i>haib' -> 'la<in><i>haib'.
+
+    A bracket holding infixes joined by '-' is that many infixes, each with its
+    own gloss ('<PFV-PFV>'): maintainer, 2026-09-30. Every counter reads it this
+    way, as utils.expand_infixes does, or the prune would withdraw the Ms.
+    """
+    return re.sub(r"<([^<>]*-[^<>]*)>",
+                  lambda m: ("".join(f"<{p}>" for p in m.group(1).split("-"))
+                             if all(m.group(1).split("-")) else m.group(0)),
+                  text or "")
+
+
 def morpheme_count(form):
     """Morphemes implied by a form's own markers: 'kʉnʉ-ʉn' -> 2, 'h<m>uwa' -> 2."""
-    stripped = (form or "").strip()
+    stripped = split_joined_infixes(form).strip()
     if not stripped:
         return 0
     infixes = len(re.findall(r"<[^>]+>", stripped))
@@ -124,7 +137,7 @@ def gloss_pieces(gloss):
     form.
     """
     total = 0
-    for part in re.split(r"[-=]", gloss or ""):
+    for part in re.split(r"[-=]", split_joined_infixes(gloss)):
         if not part:
             continue
         infixes = len(re.findall(r"<[^>]+>", part))

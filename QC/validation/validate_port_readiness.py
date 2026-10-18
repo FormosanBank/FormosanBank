@@ -15,7 +15,8 @@ recent audits kept finding by hand (2026-08 audit season):
              repository (one dev repo shipped three different hashes)
   P005 WARN  corpus AUDIO count differs from statistics/audio_durations.csv
              (stale audio seconds; run refresh_audio_stats.py)
-  P006 WARN  CodeAndDocs references a conversion table; remind to run
+  P006 WARN  CodeAndDocs standardizes through a conversion table (any
+             --tsv_path, not only Orthographies/ConversionTables/); remind to run
              validate_conversion_table.py on it before trusting the
              standard tier
 
@@ -52,6 +53,10 @@ _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 _HASH_CONTEXT_RE = re.compile(r"commit|hash|\bpin|reproduc|checkout",
                               re.IGNORECASE)
 _HEX_RE = re.compile(r"\b[0-9a-f]{7,40}\b")
+# A hash inside a URL is a link (to upstream data, to the corpus's own
+# history), not a pin of this repository: PR #170's upstream data link and
+# PR #163's history links both tripped P004 before this.
+_URL_RE = re.compile(r"https?://\S+|\]\([^)]*\)")
 _PIN_FILE_GLOBS = ("README*", "readme*", "reproducibility*", "qc_status*")
 
 
@@ -136,7 +141,7 @@ def check_commit_pins(corpus_path: Path, repo_root: Path,
             for line in lines:
                 if not _HASH_CONTEXT_RE.search(line):
                     continue
-                for match in _HEX_RE.findall(line):
+                for match in _HEX_RE.findall(_URL_RE.sub(" ", line)):
                     pins.setdefault(match, []).append(path.name)
     if not pins:
         return
@@ -209,10 +214,17 @@ def check_conversion_tables(corpus_path: Path, report: Report) -> None:
             continue
         for match in re.findall(r"ConversionTables/([A-Za-z0-9_\- ]+\.tsv)",
                                 text):
-            referenced.add(match)
+            referenced.add("ConversionTables/" + match)
+        # A corpus-local table (--tsv_path CodeAndDocs/foo.tsv) escapes the
+        # POL-056 sweep entirely, so it needs the reminder most: PRs #153 and
+        # #150 passed with 0 WARN while standardizing through one.
+        for match in re.findall(r"--tsv_path[ =]+[\"']?([^\s\"']+)", text):
+            if "ConversionTables/" not in match:
+                referenced.add(match)
     for table in sorted(referenced):
+        local = "" if "ConversionTables/" in table else " (corpus-local: outside the POL-056 sweep)"
         report.add("P006", "WARN",
-                   f"standardization uses ConversionTables/{table}; run "
+                   f"standardization uses {table}{local}; run "
                    f"QC/validation/validate_conversion_table.py on it before "
                    f"trusting the standard tier")
 

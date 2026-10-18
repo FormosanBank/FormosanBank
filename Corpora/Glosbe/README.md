@@ -165,7 +165,8 @@ separate from this licence. Glosbe aggregates material from third-party sources;
 retain the source attribution and follow the central FormosanBank terms in
 [LICENSE.md](https://github.com/FormosanBank/FormosanBank/blob/main/LICENSE.md) and
 [AI-USE-ADDENDUM.md](https://github.com/FormosanBank/FormosanBank/blob/main/AI-USE-ADDENDUM.md).
-The proposed rights-attribute normalization requires normal maintainer merge review.
+Until 2026-10-17 `TEXT/@copyright` carried a prose rights notice; the maintainer
+ruled the value CC BY-NC-SA 4.0 on 2026-10-15.
 
 Joseph Lin prepared the reviewed Traditional Chinese conversion. Glosbe and its
 contributors supplied the dictionary and translation-memory material.
