@@ -29,9 +29,9 @@ The **example sentences** (`XML/<Language>/<Language>.xml`) carry the source's C
 | | Amis<br>Xiuguluan | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Paiwan<br>Northern | Puyuma<br>Nanwang | Thao | Saaroa | Sakizaya | Yami | Atayal<br>Sekolik | Seediq<br>Tegudaya | Truku | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Word count | 71,745 | 83,034 | 77,048 | 103,182 | 66,037 | 81,149 | 74,820 | 42,511 | 60,988 | 148,332 | 81,885 | 76,958 | 247,999 | 55,168 | 62,629 | 68,556 |
-| Total audio | 8.4h | 12.3h | 10.9h | 14.7h | 9.2h | 10.6h | 9.2h | 6.9h | 8.2h | 6.3h | 10.5h | 8.5h | 7.1h | 4.3h | 12.5h | 9.2h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 8.4h | 12.3h | 10.9h | 14.7h | 9.2h | 10.6h | 9.2h | 6.9h | 8.2h | 6.3h | 10.5h | 8.5h | 7.1h | 4.3h | 12.5h | 9.2h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Total audio | 10.8h | 16.4h | 12.8h | 23.0h | 10.4h | 13.5h | 11.5h | 8.5h | 11.2h | 23.6h | 11.7h | 10.2h | 9.5h | 8.5h | 15.2h | 12.1h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 10.7h | 16.3h | 12.7h | 22.9h | 10.3h | 13.3h | 11.3h | 8.3h | 10.9h | 23.6h | 11.4h | 10.2h | 9.5h | 8.2h | 14.8h | 12.0h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0.0h | 0.1h | 0.1h | 0.0h | 0.1h | 0.2h | 0.2h | 0.2h | 0.3h | 0.1h | 0.3h | 0.1h | 0.0h | 0.3h | 0.4h | 0.1h |
 | Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 18 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 71,745 | 83,016 | 77,035 | 103,176 | 66,012 | 81,142 | 74,817 | 42,511 | 60,988 | 148,332 | 81,885 | 76,949 | 247,999 | 55,168 | 62,593 | 68,556 |
