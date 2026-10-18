@@ -132,7 +132,35 @@ def add_thesis_glosses(ids):
         _put_word_gloss(word, _new_gloss(word_gloss))
 
 
-STEPS = [merge_joint_glosses, add_thesis_glosses]
+# Ruling 4 -- infix words printed with four morphemes [nb-inf-C01_E021D,
+# nb-inf-C01_E023E, nb-inf-C01_E024B, nb-inf-C02_E004A]. Maintainer chose
+# "C: <UNCLEAR/>" and "Four Ms, none glossed." The W keeps the gloss the
+# thesis prints. (C01_E023E's printed token 砍-LF-我 also covers the clitic
+# =mu; see ruling 8.)
+# Ruling 5 -- [nb-whole-C02_E004B] n-hda-an 完成. Maintainer: "<UNCLEAR/> on
+# each morpheme" and "Three Ms, none glossed."
+UNCLEAR_MORPHEMES = {
+    # W id: W gloss as printed (left unchanged)
+    "C01_E021DW1": "製作-n-LF",  # S-n-lu-an
+    "C01_E023EW1": "砍-LF",  # T-n-tak-an
+    "C01_E024BW1": "煮-LF",  # H-n-puy-an
+    "C02_E004AW4": "死-n-LF",  # h-n-qil-an
+    "C02_E004BW3": "完成",  # n-hda-an
+}
+
+
+def gloss_morphemes_unclear(ids):
+    for word_id, word_gloss in UNCLEAR_MORPHEMES.items():
+        word = _get(ids, word_id, "W")
+        _expect(_gloss_text(word) == word_gloss, f"{word_id}: W gloss is not {word_gloss}")
+        ms = word.findall("M")
+        _expect(len(ms) in (3, 4) and not any(_glosses(m) for m in ms),
+                f"{word_id}: expected three or four unglossed M")
+        for m in ms:
+            m.append(_new_gloss(unclear=True))
+
+
+STEPS = [merge_joint_glosses, add_thesis_glosses, gloss_morphemes_unclear]
 
 
 def main():

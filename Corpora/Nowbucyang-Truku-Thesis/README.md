@@ -40,6 +40,14 @@ one W with one M (POL-060); the FORM notes recording the joint gloss are kept.
 C01_E011E (`N-tama ka patas gaga.`, PDF page 32) carries the thesis's gloss
 line `屬-爸爸 主格 書 那`; its printed paraphrase `Patas tama ka gaga.` is the
 separate, unglossed C01_E011E2.
+Where the thesis prints more written morphemes than gloss pieces and the
+maintainer ruled the pieces cannot be matched, each M is glossed `<UNCLEAR/>`
+and the W keeps the printed gloss: the four-morpheme infix words `S-n-lu-an`
+(C01_E021D), `T-n-tak-an` (C01_E023E), `H-n-puy-an` (C01_E024B) and
+`h-n-qil-an` (C02_E004A), and `n-hda-an` 完成 (C02_E004B). Whole sentences the
+thesis does not gloss stay unglossed: `<UNCLEAR/>` is for a gloss the source
+marks as unclear or that the maintainers cannot recover, not for a sentence
+the author chose not to gloss.
 
 Lexical and derivation tables remain source evidence outside the published
 sentence/interlinear-example scope. Original PHON follows the source's
