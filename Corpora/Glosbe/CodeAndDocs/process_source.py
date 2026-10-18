@@ -366,16 +366,48 @@ def apply_typography(bank):
     print(f"Kept main's typography in {typography} fields")
 
 
-def remove_duplicates(bank):
+LEDGER_FIELDS = ["withdrawn_id", "kept_id", "action", "reason", "ruling"]
+DUPLICATE_RULING = ('2026-10-18, [highlight spaces main already published]: "Yes, remove them '
+                    '(and join the 79)"; [U000669/U000801 duplicate]: "Withdraw U000801 (-> U000669)"')
+
+
+def _write_ledger(rows):
+    with (HERE / "withdrawn_ids.csv").open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=LEDGER_FIELDS, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def _published_ids():
+    return {s.get("id") for f in sorted((HERE / "pre_correction_snapshot").rglob("*.xml"))
+            for s in etree.parse(f).findall("S")}
+
+
+def remove_duplicates(bank, write_ledger=False):
     """The shared within-file duplicate removal on the original tier, except
-    for ids kept as published pending a ruling (keep_published_ids.csv)."""
+    for ids kept as published pending a ruling (keep_published_ids.csv). A
+    published id it removes must be listed in withdrawn_ids.csv ("duplicate")."""
     sys.path.insert(0, str(bank))
     from QC.cleaning.remove_duplicate_sentences import apply_removals, plan_removals
 
     plan = [p for p in plan_removals(str(HERE.parent / "XML"), scope="file", tier="original")
             if p[1] not in KEEP_PUBLISHED]
+    published = _published_ids()
+    removed = {p[1]: p[3] for p in plan if p[1] in published}
+    listed = {k for k, v in WITHDRAWN.items() if v["action"] == "duplicate"}
+    if write_ledger:
+        rows = [v for v in WITHDRAWN.values() if v["action"] != "duplicate"]
+        rows += [{"withdrawn_id": old, "kept_id": keep, "action": "duplicate",
+                  "reason": "Same Amis FORM and the same translation as the kept S (copies of "
+                            "one Glosbe sentence that differed only by search-highlight spaces).",
+                  "ruling": DUPLICATE_RULING} for old, keep in sorted(removed.items())]
+        _write_ledger(rows)
+    elif set(removed) != listed:
+        raise ValueError(f"Duplicate removal differs from withdrawn_ids.csv: "
+                         f"new {sorted(set(removed) - listed)[:5]}, gone {sorted(listed - set(removed))[:5]}")
     merged = apply_removals(plan) if plan else 0
-    print(f"Removed {len(plan)} duplicate S; merged {merged} distinct translations")
+    print(f"Removed {len(plan)} duplicate S ({len(removed)} published ids); "
+          f"merged {merged} distinct translations")
 
 
 ENG_TMEM = HERE.parent / "XML" / "Amis" / "Glosbe_ami_eng_tmem.xml"
@@ -421,11 +453,11 @@ def merge_translation_files(bank, write_ledger=False):
                          "reason": "Same Amis sentence (identical original FORM) as the kept "
                                    "Amis-English S; its Chinese translation moved there.",
                          "ruling": MERGE_RULING})
-        with (HERE / "withdrawn_ids.csv").open("w", encoding="utf-8", newline="") as stream:
-            writer = csv.DictWriter(stream, fieldnames=["withdrawn_id", "kept_id", "action",
-                                                        "reason", "ruling"], lineterminator="\n")
-            writer.writeheader()
-            writer.writerows(rows)
+        target = {r["withdrawn_id"]: r["kept_id"] for r in rows}
+        for row in rows:  # a duplicate whose survivor later joins points at the final id
+            while row["kept_id"] in target and row["kept_id"] != row["withdrawn_id"]:
+                row["kept_id"] = target[row["kept_id"]]
+        _write_ledger(rows)
         ledger = {old: {"kept_id": keep} for old, keep in merges.items()}
     planned = {old: row["kept_id"] for old, row in ledger.items()}
     if planned != merges:
@@ -467,6 +499,13 @@ def merge_translation_files(bank, write_ledger=False):
     root.set("source", f"{root.get('source')} Chinese translations: {zho_source}")
     english_tree.write(str(ENG_TMEM), encoding="utf-8", xml_declaration=True, pretty_print=True)
     ZHO_TMEM.unlink()
+    final = {s.get("id") for f in (HERE.parent / "XML").rglob("*.xml") for s in etree.parse(f).findall("S")}
+    with (HERE / "withdrawn_ids.csv").open(encoding="utf-8", newline="") as stream:
+        for row in csv.DictReader(stream):
+            if row["action"].startswith("text"):
+                continue
+            if row["withdrawn_id"] in final or row["kept_id"] not in final:
+                raise ValueError(f"withdrawn_ids.csv does not describe the output: {row['withdrawn_id']}")
     print(f"Joined {joined} Amis-Chinese S to identical Amis-English S; moved {moved} with their "
           f"own ids; {len(ambiguous)} match more than one Amis-English S and were moved unmerged")
 
@@ -499,7 +538,7 @@ if __name__ == "__main__":
     parser.add_argument("--apply-typography", type=Path)
     parser.add_argument("--remove-duplicates", type=Path)
     parser.add_argument("--merge-translations", type=Path)
-    parser.add_argument("--write-merge-ledger", action="store_true",
+    parser.add_argument("--write-ledger", dest="write_merge_ledger", action="store_true",
                         help="Rewrite the merged rows of withdrawn_ids.csv; review the diff")
     parser.add_argument("--record-provenance", type=Path)
     args = parser.parse_args()
@@ -512,7 +551,7 @@ if __name__ == "__main__":
     elif args.apply_typography:
         apply_typography(args.apply_typography.resolve())
     elif args.remove_duplicates:
-        remove_duplicates(args.remove_duplicates.resolve())
+        remove_duplicates(args.remove_duplicates.resolve(), args.write_merge_ledger)
     elif args.merge_translations:
         merge_translation_files(args.merge_translations.resolve(), args.write_merge_ledger)
     else:

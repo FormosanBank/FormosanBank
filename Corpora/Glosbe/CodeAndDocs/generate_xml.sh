@@ -12,11 +12,11 @@ test -f "$FB/QC/cleaning/clean_xml.py"
 "$PY" "$HERE/process_source.py" --formosanbank-root "$FB"
 "$PY" "$FB/QC/cleaning/apply_manual_edits.py" --corpora_path "$XML"
 (cd "$ROOT" && "$PY" "$FB/QC/cleaning/clean_xml.py" --corpora_path XML ${QC_OUTPUT_DIR:+--warnings_dir "$QC_OUTPUT_DIR"})
-"$PY" "$HERE/process_source.py" --remove-duplicates "$FB"
+"$PY" "$HERE/process_source.py" --remove-duplicates "$FB" ${GLOSBE_WRITE_MERGE_LEDGER:+--write-ledger}
 "$PY" "$HERE/process_source.py" --apply-rulings "$FB"
 "$PY" "$HERE/process_source.py" --apply-aliases "$FB"
 "$PY" "$HERE/process_source.py" --apply-typography "$FB"
-"$PY" "$HERE/process_source.py" --merge-translations "$FB" ${GLOSBE_WRITE_MERGE_LEDGER:+--write-merge-ledger}
+"$PY" "$HERE/process_source.py" --merge-translations "$FB" ${GLOSBE_WRITE_MERGE_LEDGER:+--write-ledger}
 "$PY" "$FB/QC/utilities/standardize.py" --tsv_path "$CT/Amis_94_113.tsv" --target_column Coastal --corpora_path "$XML/Amis"
 "$PY" "$FB/QC/utilities/standardize.py" --tsv_path "$CT/Atayal_Church_113.tsv" --target_column standard --corpora_path "$XML/Atayal"
 "$PY" "$FB/QC/utilities/standardize.py" --tsv_path "$CT/Seediq_94_113.tsv" --target_column Truku --corpora_path "$XML/Truku"
