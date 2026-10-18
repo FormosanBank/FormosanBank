@@ -1654,3 +1654,36 @@ def test_V154_text_after_inline_unclear_is_read():
     xml = _unclear_s(_w("W1", "a", {"zho": "go<UNCLEAR/>去",
                                     "eng": "去<UNCLEAR/>go"}))
     assert _findings_for(gloss_rules.v154_gloss_script_matches_language, xml) == []
+
+
+# ---------------------------------------------------------------------------
+# V164: a W FORM that is only punctuation (SOFT)
+# ---------------------------------------------------------------------------
+
+def _v164(*forms: str) -> list:
+    ws = "".join(f'<W id="W{i}"><FORM kindOf="original">{f}</FORM>'
+                 f'<FORM kindOf="standard">{f}</FORM></W>' for i, f in enumerate(forms))
+    body = f'<S id="S1"><FORM kindOf="original">x</FORM>{ws}</S>'
+    return _findings_for(gloss_rules.v164_W_form_only_punctuation,
+                         _TEXT_TEMPLATE.format(body=body))
+
+
+@pytest.mark.parametrize("form", [".", ",", "?", "...", "!", '"', "？", "。", "「」", ". ,", "<UNCLEAR/>?", "#", "%"])
+def test_V164_punctuation_only_W_FORM_flagged(form):
+    findings = _v164(form)
+    assert [f.rule_id for f in findings] == ["V164"]          # once per W, not per FORM
+    assert findings[0].severity == Severity.SOFT
+    assert findings[0].location == "W=W0"
+    assert "2 such FORM(s)" in findings[0].message
+
+
+@pytest.mark.parametrize("form", [
+    "haca", "haca,", "'", "’", "ʼ", "ˈ", "^", "-", "=", "&lt;", "&gt;", "~", "∅", "Ø", "ø",
+    "=?", "-.", "<UNCLEAR/>", "<UNCLEAR/>,ka", "1", "不要", "a.b",
+])
+def test_V164_word_or_marker_not_flagged(form):
+    assert _v164(form) == []
+
+
+def test_V164_one_finding_per_offending_W():
+    assert [f.location for f in _v164("ka", ".", "ta", ",")] == ["W=W1", "W=W3"]

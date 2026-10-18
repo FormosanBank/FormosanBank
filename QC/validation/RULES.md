@@ -116,6 +116,7 @@ the validator names on its `Details:` line, never to the terminal.
 | V153 | `gloss_pieces_match_morphemes` | SOFT | file | a word's gloss should claim as many morphemes as its form does. |
 | V154 | `gloss_script_matches_language` | SOFT | file | a gloss whose script its neighbours agree is wrong. |
 | V155 | `gloss_language_set_incomplete` | SOFT | file | a glossed word should carry every gloss language the file uses. |
+| V164 | `W_form_only_punctuation` | SOFT | file | a W FORM made only of punctuation or symbols is not a word. |
 
 ## `audit_gloss_scrape.py` — scrape-vs-source audit
 
@@ -138,4 +139,4 @@ the validator names on its `Details:` line, never to the terminal.
 | G018 | `latin_gloss_on_chinese_tier` | SOFT | file | W/M glosses declared Chinese (xml:lang="zho") that are Latin letters only — an English word or a Leipzig code in the Chinese column. |
 | G019 | `han_or_kana_in_form` | SOFT | file | S original FORMs that carry kana (Japanese) or three or more Han characters (Chinese or Japanese), one finding per file and script. |
 
-103 rules.
+104 rules.
