@@ -188,6 +188,23 @@ def split_null_morpheme(ids):
         null_m.append(_new_gloss(null_gloss))
         ms[0].addprevious(null_m)
         ms[0].append(_new_gloss(m_gloss))
+        # Round 3 (maintainer, 2026-10-18): chose "A: ∅ in the sentence too"
+        # and "But explain in note that it's been added there." V124/V125
+        # require a W/M null to appear in the S original FORM as well.
+        sentence = word.getparent()
+        s_form = _original(sentence)
+        _expect(s_form.text == NULL_SENTENCE_BEFORE and s_form.get("notes") is None,
+                f"{sentence.get('id')}: S FORM is not '{NULL_SENTENCE_BEFORE}' without notes")
+        s_form.text = NULL_SENTENCE_AFTER
+        s_form.set("notes", NULL_SENTENCE_NOTE)
+        _strip_derived(sentence)
+
+
+NULL_SENTENCE_BEFORE = "asu skiya"
+NULL_SENTENCE_AFTER = "asu ∅-skiya"
+NULL_SENTENCE_NOTE = ("The ∅- is not printed in the thesis sentence (PDF page 55, 'asu skiya'); "
+                      "FormosanBank added it to match the word and morpheme analysis, since the "
+                      "thesis glosses skiya as ∅-飛.")
 
 
 # Ruling 8 -- [nb-other-clitic-gloss-fusion]. Maintainer: "Treat host +

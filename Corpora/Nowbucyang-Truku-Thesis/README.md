@@ -51,7 +51,9 @@ marks as unclear or that the maintainers cannot recover, not for a sentence
 the author chose not to gloss.
 `skiya` in C02_E001D (`asu skiya`, printed gloss `船 ∅-飛`) is the W
 `∅-skiya` with a null M `∅` (gloss `∅`, a new id, …W2M2) before the M `skiya`
-(gloss `飛`, its published id …W2M1); the sentence FORM stays as printed.
+(gloss `飛`, its published id …W2M1). The sentence's original FORM is
+`asu ∅-skiya`: the `∅-` is not printed in the thesis and was added, with a
+`notes` attribute saying so, to match the word and morpheme analysis.
 The thesis writes a clitic as its own token (`Ini =ku`) but usually prints one
 gloss token for host and clitic (`不-我`). Those 95 pairs, listed with their
 printed form and gloss lines in `CodeAndDocs/data/manual/clitic_merges.tsv`,
