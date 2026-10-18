@@ -38,7 +38,7 @@ dru	.	U+002E	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all a
 dru	<	U+003C	marker	keep	marker: infix bracket
 dru	=	U+003D	marker	keep	marker: clitic boundary
 dru	>	U+003E	marker	keep	marker: infix bracket
-dru	?	U+003F	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): a question mark at the end of a FORM is removed; a ? straight after - or = is an unknown morpheme and stays (pa-pacay-?, palrayngi=?, ngi-lra-lredreke-?=ini), as does one inside a FORM (?la-lasu)
+dru	?	U+003F	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): a question mark at the end of a FORM is removed; a ? straight after - or = is an unknown morpheme and stays (pa-pacay-?, palrayngi=?), as does one inside a FORM; in five listed words mark_unclear.py has already made it <UNCLEAR/> (ngi-lra-lredreke-<UNCLEAR/>=ini, <UNCLEAR/>la-lasu; ruling 2026-10-18)
 szy	!	U+0021	punctuation	delete	punctuation: exclamation mark
 szy	"	U+0022	punctuation	delete	punctuation: quotation mark
 szy	'	U+0027	letter	keep	letter: glottal stop in this language's Ortho94 and Ortho113 tables (Orthographies/Ortho94, Ortho113)

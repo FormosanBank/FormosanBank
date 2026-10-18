@@ -57,6 +57,13 @@ What it does, per sentence (S):
    place -- the form NTU wrote for that position is unknown -- in the W and M
    FORMs and PHONs and in the sentence FORM and PHON, both tiers:
    <UNCLEAR/>kara-peen=kasu, M <UNCLEAR/>kara, S <UNCLEAR/>karapeenkasu pai'ici?.
+7. A ? the transcriber wrote for a morpheme it could not write. Ruling 2026-10-18
+   (NTU Word Forms page): "Yes: <UNCLEAR/> for the ? piece", for the five Rukai
+   words listed in UNKNOWN_PIECE_WORDS: ngi-lra-lredreke-?=ini (twice),
+   alupu-?=ini, ?la-lasu, ?ma-adrau-nga. Every ? in their W and M FORMs (every
+   tier) becomes <UNCLEAR/> (alupu-<UNCLEAR/>=ini), and so does a ? opening a
+   token of their sentence FORMs (?lalasu -> <UNCLEAR/>lalasu). Glosses (?P
+   included) and PHON (which has no reading for the ?) are unchanged.
 5. Placeholders: a ? standing as a whole gloss piece (bounded by -, =, ., space or
    the ends of the gloss) is replaced by <UNCLEAR/> only in glosses listed in
    ../unclear_gloss_placeholders.tsv (columns gloss, lang). The maintainer decides
@@ -103,6 +110,16 @@ PLACEHOLDER_PIECE = re.compile(r"(?:^|(?<=[-=.\s]))[?？]{1,3}(?=$|[-=.\s])")
 # Ruling 6 (2026-10-18): (xml:lang, W id) -> (the label in its FORMs, the label's
 # reading at the start of its PHONs). The build stops if the data no longer matches.
 GLOSS_LABEL_IN_FORM = {("xnb", "3_S_456_W0"): ("AV.", "av")}
+# Ruling 7 (2026-10-18): the words whose ? stands for a morpheme NTU could not write.
+UNKNOWN_PIECE_WORDS = {
+    ("dru", "20200429-CL-6_S_1_W6"),         # ngi-lra-lredreke-?=ini
+    ("dru", "20200429-CL-6_S_2_W8"),         # ngi-lra-lredreke-?=ini.
+    ("dru", "20200529-FW-Ingrid_S_7_W8"),    # alupu-?=ini
+    ("dru", "20200529-FW-Lixing-1_S_18_W2"), # ?la-lasu
+    ("dru", "20200531-FW-yuki_S_3_W0"),      # ?ma-adrau-nga
+}
+QUESTION = re.compile(r"\?")
+QUESTION_OPENING_TOKEN = re.compile(r"(?<!\S)\?(?=[^\W\d_])")
 
 
 def text_of(el):
@@ -267,6 +284,31 @@ def fix_gloss_label_in_form(s, lang, counts, log):
                     etree.tostring(el, encoding="unicode", with_tail=False))
 
 
+def unclear_question_pieces(s, lang, counts, log):
+    """Ruling 7: the ? of a listed word -> <UNCLEAR/>, in its FORMs and its sentence's."""
+    words = [w for w in s.findall("W") if (lang, w.get("id")) in UNKNOWN_PIECE_WORDS]
+    if not words:
+        return
+    for w in words:
+        for el in [w, *w.findall("M")]:
+            for form in el.findall("FORM"):
+                before = etree.tostring(form, encoding="unicode", with_tail=False)
+                n = replace_in_mixed(form, QUESTION)
+                if n:
+                    counts["? piece in W/M FORM -> UNCLEAR (ruling 7)"] += n
+                    log("? piece (ruling 7)", f"{el.get('id')} kindOf={form.get('kindOf')}", before,
+                        etree.tostring(form, encoding="unicode", with_tail=False))
+    for form in s.findall("FORM"):
+        before = etree.tostring(form, encoding="unicode", with_tail=False)
+        n = replace_in_mixed(form, QUESTION_OPENING_TOKEN)
+        if n > len(words):
+            raise SystemExit(f"mark_unclear: {s.get('id')}: {n} ? tokens for {len(words)} listed words")
+        if n:
+            counts["? piece in S FORM -> UNCLEAR (ruling 7)"] += n
+            log("? piece (ruling 7)", f"{s.get('id')} kindOf={form.get('kindOf')}", before,
+                etree.tostring(form, encoding="unicode", with_tail=False))
+
+
 def process_sentence(s, placeholders, counts, report, rel, lang=None):
     sid = s.get("id")
 
@@ -274,6 +316,7 @@ def process_sentence(s, placeholders, counts, report, rel, lang=None):
         report.append((rel, sid, where, kind, before, after))
 
     fix_gloss_label_in_form(s, lang, counts, log)
+    unclear_question_pieces(s, lang, counts, log)
 
     # 1. S-level FORM and PHON. The PHON is located through its FORM: PHON holds
     # one token per FORM token that has a letter or digit, in order, so the

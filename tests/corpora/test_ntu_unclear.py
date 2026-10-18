@@ -512,6 +512,27 @@ def test_drop_punctuation_words_step(tmp_path):
     assert [w.get("id") for w in s2.findall("W")] == ["s2_W1", "s2_W2", "s2_W3"]
 
 
+UNKNOWN_PIECES = {   # W id -> its FORM (both tiers); ruling 2026-10-18: "Yes: <UNCLEAR/> for the ? piece"
+    "20200429-CL-6_S_1_W6": "ngi-lra-lredreke-<UNCLEAR />=ini",
+    "20200429-CL-6_S_2_W8": "ngi-lra-lredreke-<UNCLEAR />=ini",
+    "20200529-FW-Ingrid_S_7_W8": "alupu-<UNCLEAR />=ini",
+    "20200529-FW-Lixing-1_S_18_W2": "<UNCLEAR />la-lasu",
+    "20200531-FW-yuki_S_3_W0": "<UNCLEAR />ma-adrau-nga",
+}
+
+
+def test_rukai_question_pieces_are_unclear(texts):
+    rukai = [t for t in texts if t.get(XML_LANG) == "dru"]
+    words = {w.get("id"): w for t in rukai for w in t.iter("W") if w.get("id") in UNKNOWN_PIECES}
+    assert set(words) == set(UNKNOWN_PIECES)
+    for wid, form in UNKNOWN_PIECES.items():
+        assert [_inner(f) for f in words[wid].findall("FORM")] == [form, form], wid
+    assert [_inner(f) for f in words["20200529-FW-Lixing-1_S_18_W2"].find("M").findall("FORM")] == ["<UNCLEAR />la"] * 2
+    assert [t.text for t in words["20200529-FW-Lixing-1_S_18_W2"].findall("TRANSL")] == ["?複數-男生", "?P-boy"]
+    s18 = next(s for t in rukai for s in t.iter("S") if s.get("id") == "20200529-FW-Lixing-1_S_18")
+    assert [_inner(f) for f in s18.findall("FORM")] == ["waecenge ka <UNCLEAR />lalasu ki kidringi."] * 2
+
+
 def test_kavalan_percent_deleted(sentences):
     """Ruling 2026-10-18 on Kavalan s%, seme% (glossed FS): "the % should be deleted." """
     words = {w.get("id"): w for s in sentences for w in s.findall("W")
