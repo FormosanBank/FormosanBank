@@ -20,6 +20,8 @@ with (HERE / "source_labels.csv").open(encoding="utf-8", newline="") as stream:
     LABELS = {row["record"]: row for row in csv.DictReader(stream)}
 with (HERE / "source_notes.csv").open(encoding="utf-8", newline="") as stream:
     NOTES = {row["record"]: row for row in csv.DictReader(stream)}
+with (HERE / "withdrawn_ids.csv").open(encoding="utf-8", newline="") as stream:
+    WITHDRAWN = {row["withdrawn_id"]: row for row in csv.DictReader(stream)}
 with (HERE / "highlight_space_keep.csv").open(encoding="utf-8", newline="") as stream:
     HIGHLIGHT_KEEP = defaultdict(list)
     for row in csv.DictReader(stream):
@@ -156,10 +158,17 @@ def main(bank):
     from QC.corpus_counts import resolve_language
 
     files = defaultdict(list)
+    deleted = {sid for sid, row in WITHDRAWN.items() if row["action"] == "deleted"}
+    seen = set()
     with (HERE / "source_records.jsonl").open(encoding="utf-8") as stream:
         for line in stream:
             row = json.loads(line)
+            if row["sid"] in deleted:  # withdrawn by ruling; see withdrawn_ids.csv
+                seen.add(row["sid"])
+                continue
             files[row["file"]].append(row)
+    if seen != deleted:
+        raise ValueError(f"Withdrawn ids not in the frozen source: {sorted(deleted - seen)}")
     outputs = []
     for relative, rows in files.items():
         baseline = HERE / "pre_correction_snapshot" / relative
