@@ -104,9 +104,19 @@ def content_fields(record):
     return source, target
 
 
+# Maintainer, 2026-10-18 ([licence]): "Yes, delete this: `note = {{Collected
+# by FormosanBank for private research review; redistribution subject to
+# Glosbe terms and third-party source rights}}`".
+PRIVATE_NOTE = (", note = {{Collected by FormosanBank for private research review; "
+                "redistribution subject to Glosbe terms and third-party source rights}}")
+
+
 def render(records, metadata):
     root = etree.Element("TEXT", attrib=metadata)
     root.set("copyright", "CC BY-NC-SA 4.0")
+    bibtex = root.get("BibTeX_citation", "")
+    if bibtex.count(PRIVATE_NOTE) == 1:
+        root.set("BibTeX_citation", bibtex.replace(PRIVATE_NOTE, ""))
     grouped = defaultdict(list)
     for row in records:
         grouped[row["sid"]].append(row)
