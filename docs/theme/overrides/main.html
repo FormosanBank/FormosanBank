@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if page.meta and page.meta.cover %}
+    <div
+      class="fb-cover"
+      style="background-image: url('{{ page.meta.cover | e }}')"
+      aria-hidden="true"
+    ></div>
+  {% endif %}
+  {% if page.meta and page.meta.icon %}
+    <span class="fb-page-icon" aria-hidden="true">
+      {% include ".icons/" ~ page.meta.icon ~ ".svg" ignore missing %}
+    </span>
+  {% endif %}
+  {{ super() }}
+{% endblock %}

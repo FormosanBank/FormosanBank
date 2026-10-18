@@ -21,3 +21,8 @@ tqdm==4.67.1
 pytest==8.3.4
 pytest-cov==5.0.0
 beautifulsoup4==4.15.0
+
+# Documentation site build (docs/tools/build_site.py, tests/site/)
+mkdocs-material==9.7.7
+mkdocs-literate-nav==0.6.3
+properdocs==1.6.7
