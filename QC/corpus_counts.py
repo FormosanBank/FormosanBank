@@ -1,7 +1,7 @@
 """Single source of truth for FormosanBank corpus counting rules.
 
 Both statistics pipelines import from here:
-  - QC/utilities/get_corpus_stats.py (per-corpus CSVs for the Gitbook)
+  - QC/utilities/get_corpus_stats.py (per-corpus CSVs for the documentation site)
   - QC/corpus_metrics.py and QC/count_tokens.py (size tracker + PR deltas)
 
 Rules (decided 2026-06-10):
@@ -120,6 +120,9 @@ COUNT_FIELDS = (
     # Appended 2026-09-10: same gap, older. Siraya_Gospels and
     # UtrechtManuscriptWordList have carried Dutch translations all along.
     "nld_transl_count",
+    # Appended 2026-10-18 for the documentation site's growth figures: words
+    # of sentences with audio (an AUDIO with a file on the S or on any W).
+    "transcribed_words",
 )
 
 
@@ -131,6 +134,13 @@ def split_audio_elements(root) -> tuple[list, list]:
     transcribed += [e for e in root.findall(".//W/AUDIO") if "file" in e.attrib]
     untranscribed = [e for e in root.findall("AUDIO") if "file" in e.attrib]
     return transcribed, untranscribed
+
+
+def _has_audio_file(sentence) -> bool:
+    """True if the sentence, or any of its words, has an AUDIO with a file."""
+    return any("file" in a.attrib for a in sentence.findall("AUDIO")) or any(
+        "file" in a.attrib for a in sentence.findall("W/AUDIO")
+    )
 
 
 def analyze_root(root) -> dict:
@@ -172,6 +182,8 @@ def analyze_root(root) -> dict:
             record["jpn_transl_count"] += n
         if transl_langs & NLD_CODES:
             record["nld_transl_count"] += n
+        if _has_audio_file(sentence):
+            record["transcribed_words"] += n
         if sentence.find(".//M") is not None:
             record["segmented_words"] += n
         if sentence.find(".//M/TRANSL") is not None:
