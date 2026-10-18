@@ -48,6 +48,9 @@ and the W keeps the printed gloss: the four-morpheme infix words `S-n-lu-an`
 thesis does not gloss stay unglossed: `<UNCLEAR/>` is for a gloss the source
 marks as unclear or that the maintainers cannot recover, not for a sentence
 the author chose not to gloss.
+`skiya` in C02_E001D (`asu skiya`, printed gloss `船 ∅-飛`) is the W
+`∅-skiya` with a null M `∅` (gloss `∅`, a new id, …W2M2) before the M `skiya`
+(gloss `飛`, its published id …W2M1); the sentence FORM stays as printed.
 
 Lexical and derivation tables remain source evidence outside the published
 sentence/interlinear-example scope. Original PHON follows the source's

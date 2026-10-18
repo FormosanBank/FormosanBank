@@ -160,7 +160,37 @@ def gloss_morphemes_unclear(ids):
             m.append(_new_gloss(unclear=True))
 
 
-STEPS = [merge_joint_glosses, add_thesis_glosses, gloss_morphemes_unclear]
+# Ruling 6 -- [nb-single-C02_E001D] `asu skiya`, printed gloss 船 ∅-飛 (PDF
+# page 55). Maintainer: "Copy the word gloss to the M" and "So for purposes of
+# the W, the FORM should be ∅-skiya. Then 2 Ms, each with its own gloss."
+# The sentence FORM stays as printed. The existing M (skiya) keeps its id;
+# the new null M takes the next free id and is placed first, as the gloss
+# order ∅-飛 requires (POL-037: no renumbering).
+NULL_SPLITS = [
+    # (W id, W FORM before, W FORM after, W gloss, existing M id, new null M id, M glosses)
+    ("C02_E001DW2", "skiya", "∅-skiya", "∅-飛", "C02_E001DW2M1", "C02_E001DW2M2", ("∅", "飛")),
+]
+
+
+def split_null_morpheme(ids):
+    for word_id, before, after, word_gloss, m_id, null_id, (null_gloss, m_gloss) in NULL_SPLITS:
+        word = _get(ids, word_id, "W")
+        _expect(_original(word).text == before, f"{word_id}: FORM is not {before}")
+        _expect(_gloss_text(word) == word_gloss, f"{word_id}: W gloss is not {word_gloss}")
+        ms = word.findall("M")
+        _expect(len(ms) == 1 and ms[0].get("id") == P + m_id and not _glosses(ms[0]),
+                f"{word_id}: expected the single unglossed M {m_id}")
+        _expect(P + null_id not in ids, f"{null_id}: id already in use")
+        _original(word).text = after
+        _strip_derived(word)
+        null_m = etree.Element("M", {"id": P + null_id})
+        etree.SubElement(null_m, "FORM", {"kindOf": "original"}).text = "∅"
+        null_m.append(_new_gloss(null_gloss))
+        ms[0].addprevious(null_m)
+        ms[0].append(_new_gloss(m_gloss))
+
+
+STEPS = [merge_joint_glosses, add_thesis_glosses, gloss_morphemes_unclear, split_null_morpheme]
 
 
 def main():
