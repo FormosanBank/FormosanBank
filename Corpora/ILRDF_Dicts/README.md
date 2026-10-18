@@ -120,13 +120,15 @@ FormosanBank commit the published XML was built against is recorded in
 [CodeAndDocs/provenance.json](CodeAndDocs/provenance.json) (POL-052).
 `CodeAndDocs/validate.sh` runs the published-id audit and the corpus tests.
 
-**POL-047 deviation:** besides the canonical steps, the build runs four
+**POL-047 deviation:** besides the canonical steps, the build runs five
 corpus-local steps — `generate_dictionary.py` (headword files),
 `build_manual_edits.py` (renders `manual_edits.xml` from the reviewed repair
 table), `split_alternatives.py` (source-side alternatives, after the
 manual edits and before `clean_xml.py`, because the repairs must match the
-unsplit text) and `one_recording_per_s.py` (after the split, so that only
-sentences that keep their recordings are split by recording).
+unsplit text), `one_recording_per_s.py` (after the split, so that only
+sentences that keep their recordings are split by recording) and
+`tidy_edge_spaces.py` (after `clean_xml.py`, which turns full-width
+`？！．` into ASCII and so exposes some of these spaces).
 
 The steps, in order:
 
@@ -138,8 +140,9 @@ The steps, in order:
 4. `split_alternatives.py --apply`.
 5. `one_recording_per_s.py` — one `S` per distinct recording.
 6. `QC/cleaning/clean_xml.py`.
-7. `QC/utilities/standardize.py --remove_accents --ortho-path Orthographies/Ortho113`.
-8. `QC/utilities/add_phonology.py --orthography Ortho113`.
+7. `tidy_edge_spaces.py` — spaces next to punctuation at the edges of a form.
+8. `QC/utilities/standardize.py --remove_accents --ortho-path Orthographies/Ortho113`.
+9. `QC/utilities/add_phonology.py --orthography Ortho113`.
 
 ### Phonology
 
@@ -188,6 +191,29 @@ Four repairs undo exactly that, restoring `ʉnʉmʉ`
 `tʉnʉmʉa …`). The fifth, Saaroa_3575 `kapita數詞ia`, is read as `nʉ`:
 `hlaʼalua maci kapitanʉia …` (`kapitanʉ` is a Saaroa headword and appears in
 16 sentences).
+
+### Spaces next to punctuation at the edges of a form — 1,165 forms
+
+The source often leaves a space before sentence-final punctuation
+(`tukamia .`) or next to a quotation mark or bracket at the start or end of
+a sentence, and a few sentences open with a stray period (`. Aiza …`).
+Phonology drops punctuation, so these spaces ended up at the edge of the
+PHON tier. On the original tier (the standard tier follows), the build
+removes exactly that space and nothing else (maintainer, 2026-10-18:
+"Revert; fix ILRDF text (Recommended)" and "Same treatment
+(Recommended)"), in `CodeAndDocs/tidy_edge_spaces.py`:
+
+| Pattern | Forms | Example |
+|---|---:|---|
+| space before final `.` `?` `!` | 1,136 | `… fafahiyan ako .` → `… fafahiyan ako.` |
+| stray leading period | 12 | `. Aiza bunun masuaz …` → `Aiza bunun masuaz …` |
+| space after an opening `"` | 7 | `" Dopohen a matayal!" …` → `"Dopohen a matayal!" …` |
+| space before a closing `"` `,` `…` `-` at the end | 9 | `… mas ismut ,` → `… mas ismut,`; headword `caca -` → `caca-` |
+| spaces inside a final bracket | 1 | `… a zaljum ( vava ).` → `… a zaljum (vava).` |
+
+Every changed form, before and after, is in
+[CodeAndDocs/docs/edge_space_report.csv](CodeAndDocs/docs/edge_space_report.csv)
+(3 of them are headwords). No PHON value has a space at either edge.
 
 ### Recovered `?` corruption — 61 tokens
 
@@ -337,6 +363,7 @@ and Yami files already on Hugging Face under the old layout, column
 | `snapshot_main_xml.py` | one-off: wrote the POL-035 snapshot in `source_data/main_2024/` |
 | `audio_recordings.py` | which recordings each sentence carries, and their file names |
 | `one_recording_per_s.py` | build step: one `S` per distinct recording |
+| `tidy_edge_spaces.py` | build step: the space next to punctuation at the start/end of an original FORM |
 | `freeze_audio_fingerprints.py` | one-off: wrote `source_data/audio_fingerprints.tsv` from the fingerprinting run |
 | `audio_upload_manifest.py` | lists referenced audio not yet at its Hugging Face path (`docs/audio_upload_manifest.csv`: new files, and files that only move into the sharded folders), offline, from the frozen listing; uploads nothing |
 | `refresh_source.py` / `.sh` | re-scrape the API into snapshots (not part of reproduction) |

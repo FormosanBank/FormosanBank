@@ -16,11 +16,11 @@ find Corpora/ILRDF_Dicts/XML -name '*.xml' | sort | xargs sha256sum | sha256sum
 ```
 
 Verified 2026-10-18: two consecutive full runs produced byte-identical output
-for all 39 files under Corpora/ILRDF_Dicts/ that the build writes (the 32 XML
+for all 40 files under Corpora/ILRDF_Dicts/ that the build writes (the 32 XML
 files, `manual_edits.xml/.md`, `old_to_new_ids.csv`, `docs/split_report.csv`,
 `docs/audio_not_published.csv`, `docs/recording_split_ids.csv`,
-`provenance.json`); digest
-`a8b1931f158cd3db1a986f0f3fb1635bf2d717d557653e323c4fe011e6824bc7`.
+`docs/edge_space_report.csv`, `provenance.json`); digest
+`cbcf0936821d304883bc2816b95a37e3f3ff9a97f867edc573d95b8bc992049c`.
 
 Same tools, different digest means something stopped being reproducible.
 Different tools (a newer commit in `provenance.json`) can legitimately change

@@ -37,40 +37,46 @@ cd "$CODEDOCS"
 
 step() { printf '\n== %s ==\n' "$*"; }
 
-step "1/9  source tiers: sentences (2026 snapshots + main's ids, 2024 withdrawn sentences, audio)"
+step "1/10  source tiers: sentences (2026 snapshots + main's ids, 2024 withdrawn sentences, audio)"
 "$PYTHON" "$CODEDOCS/generate_xml.py" generate
 
-step "2/9  source tiers: headword dictionaries"
+step "2/10  source tiers: headword dictionaries"
 "$PYTHON" "$CODEDOCS/generate_dictionary.py"
 
 # Repairs come before the split: the split rewrites the very text a repair
 # matches on (one Thao record is both repaired and split).
-step "3/9  render manual_edits.xml from the reviewed repair table"
+step "3/10  render manual_edits.xml from the reviewed repair table"
 "$PYTHON" "$CODEDOCS/build_manual_edits.py" --xml-dir "$XML_PATH"
 
-step "4/9  re-apply recorded manual edits (original tier, POL-030)"
+step "4/10  re-apply recorded manual edits (original tier, POL-030)"
 "$PYTHON" "$FORMOSANBANK/QC/cleaning/apply_manual_edits.py" --corpora_path "$XML_PATH"
 
-step "5/9  source-side alternatives: maintainer rulings, then automatic resolution"
+step "5/10  source-side alternatives: maintainer rulings, then automatic resolution"
 "$PYTHON" "$CODEDOCS/split_alternatives.py" --apply \
     --xml-dir "$XML_PATH" --report "$CODEDOCS/docs/split_report.csv"
 
 # After the split: a record whose source prints alternatives has already had
 # its recordings moved to TEXT level, so only sentences that keep theirs split.
-step "6/9  one S per distinct recording (-opt, -opt3; maintainer ruling 2026-10-17)"
+step "6/10  one S per distinct recording (-opt, -opt3; maintainer ruling 2026-10-17)"
 "$PYTHON" "$CODEDOCS/one_recording_per_s.py" \
     --xml-dir "$XML_PATH" --report "$CODEDOCS/docs/recording_split_ids.csv"
 
-step "7/9  clean_xml"
+step "7/10  clean_xml"
 "$PYTHON" "$FORMOSANBANK/QC/cleaning/clean_xml.py" \
     --corpora_path "$XML_PATH" --reference_dir "$reference_dir"
 
-step "8/9  standardize (Ortho113; accents removed)"
+# After clean_xml: it turns full-width ？！． into ASCII, which is what
+# exposes some of these spaces.
+step "8/10  original tier: no space next to punctuation at the start/end of a FORM (maintainer ruling 2026-10-18)"
+"$PYTHON" "$CODEDOCS/tidy_edge_spaces.py" \
+    --xml-dir "$XML_PATH" --report "$CODEDOCS/docs/edge_space_report.csv"
+
+step "9/10  standardize (Ortho113; accents removed)"
 "$PYTHON" "$FORMOSANBANK/QC/utilities/standardize.py" \
     --corpora_path "$XML_PATH" --remove_accents \
     --ortho-path "$FORMOSANBANK/Orthographies/Ortho113"
 
-step "9/9  phonology: original and standard tiers, Ortho113"
+step "10/10  phonology: original and standard tiers, Ortho113"
 "$PYTHON" "$FORMOSANBANK/QC/utilities/add_phonology.py" \
     --corpora_path "$XML_PATH" --orthography Ortho113
 
