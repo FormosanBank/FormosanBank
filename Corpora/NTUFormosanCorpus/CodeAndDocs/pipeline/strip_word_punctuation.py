@@ -33,7 +33,8 @@ Some forms would end in a marker ..." -- "all approved."; inside-word dots are
 periods.") is the longest stretch at the very end of the FORM's last text
 segment made only of 'final' and 'delete' characters: zo.lu.shang.lai.a. loses
 its last '.', a,, both commas, wu-. its '.' (the '-' stays); umah.- keeps its
-'.', which is not at the end. A ? straight after - or = stands for an unknown
+'.', which is not at the end -- but loses it under a later ruling (final_run_end:
+a FORM-final '-' after punctuation does not stop the run). A ? straight after - or = stands for an unknown
 morpheme (Rukai pa-pacay-?, palrayngi=?) and ends the run: it is kept.
 
 A character that the table does not list for the language stops the build, so
@@ -81,9 +82,24 @@ def is_content(ch):
     return ch.isalpha() or ch.isdigit() or ch in NULLS
 
 
-def final_run_start(seg, lang, table):
+def final_run_end(seg):
+    """Where the FORM-final run must end: before a FORM-final '-' that follows punctuation.
+
+    A cut-off word written with its full stop before the hyphen, Sakizaya umah.- and
+    ma-hini.- (ruling 2026-10-18, NTU Word Forms page, "Yes, all as proposed": drop
+    the '.', keep the '-'), ends its final run before the hyphen.
+    """
+    end = len(seg)
+    while end > 0 and seg[end - 1] == "-":
+        end -= 1
+    if end == len(seg) or end == 0 or is_content(seg[end - 1]):
+        return len(seg)
+    return end
+
+
+def final_run_start(seg, lang, table, end=None):
     """Index where seg's FORM-final run of 'final'/'delete' characters starts."""
-    i = len(seg)
+    i = len(seg) if end is None else end
     while i > 0:
         ch = seg[i - 1]
         if is_content(ch) or table.get((lang, ch)) not in ("final", "delete"):
@@ -114,7 +130,11 @@ def process_form(form, lang, table, counts, unlisted):
     segs = [form.text or ""] + [c.tail or "" for c in form]
     new, dropped = [], Counter()
     for k, seg in enumerate(segs):
-        start = final_run_start(seg, lang, table) if k == len(segs) - 1 else len(seg)
+        if k == len(segs) - 1:
+            end = final_run_end(seg)
+            start = final_run_start(seg, lang, table, end)
+        else:
+            start = end = len(seg)
         out = []
         for i, ch in enumerate(seg):
             if is_content(ch):
@@ -124,7 +144,7 @@ def process_form(form, lang, table, counts, unlisted):
             if action is None:
                 unlisted[(lang, ch)] += 1
                 out.append(ch)
-            elif action == "delete" or (action == "final" and i >= start):
+            elif action == "delete" or (action == "final" and start <= i < end):
                 dropped[(action, ch)] += 1
             else:
                 out.append(ch)

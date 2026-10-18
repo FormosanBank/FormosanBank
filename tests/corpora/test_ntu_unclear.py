@@ -263,7 +263,8 @@ FINAL_CASES = {   # FORM -> after the step (ruling 2026-10-18 on FORM-final punc
     "kati...": "kati",
     'Y,M"': "Y,M",                                 # a 'delete' character ends the run too
     "wu-.": "wu-",                                 # left ending in a marker
-    "umah.-": "umah.-",                            # '.' before a marker is not final
+    "umah.-": "umah-",                             # '.' before a final '-' goes, the '-' stays
+    "ta.-=a": "ta.-=a",                            # ... but only before a FORM-final '-'
     "pa-pacay-?": "pa-pacay-?",                    # ? after - or = is an unknown morpheme
     "palrayngi=?.": "palrayngi=?",
     "?la-lasu.": "?la-lasu",
@@ -534,8 +535,11 @@ def test_rukai_question_pieces_are_unclear(texts):
 
 
 def test_small_cases_ruled_2026_10_18(sentences):
-    """NTU Word Forms page, "Yes, all as proposed": ##sbsawan -> sbsawan."""
-    want = {"sdqNr-childhood_micang 2020s_S_12_W17": "sbsawan"}
+    """NTU Word Forms page, "Yes, all as proposed": ##sbsawan -> sbsawan; umah.- -> umah-,
+    ma-hini.- -> ma-hini-."""
+    want = {"sdqNr-childhood_micang 2020s_S_12_W17": "sbsawan",
+            "skzyNr-sapat_Panay_S_15_W10": "umah-",
+            "skzyNr-sapat_Panay_S_44_W14": "ma-hini-"}
     found = {w.get("id"): [_inner(f) for f in w.findall("FORM")] for s in sentences
              for w in s.findall("W") if w.get("id") in want}
     assert found == {k: [v, v] for k, v in want.items()}
