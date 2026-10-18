@@ -48,6 +48,7 @@ _XML10_INVALID_RE = re.compile(
 #   <L2Mword   wordL2M>    fully bracketed, letter after L2
 #   <L2word    wordL2>     no language letter
 #   <L2Tword   wordTL2>    closing transposed, letter before L2
+#   <T2word                opening with no L, letter before 2 (once)
 #   L2M<word   >L2M        brackets on the inside
 #   <L2M>word<L2M>         both tags fully bracketed
 # Where the language letter sits between 'L2' and a bracket it cannot be
@@ -60,6 +61,11 @@ _L2M_RE = re.compile(
     r'|L2[A-Za-z]?>'   # closing: L2M>, L2j>, L2>
     r'|L2[A-Za-z]?<'   # bracket-outside opening: L2M<
     r'|<L2[A-Z]?'      # opening: <L2M, <L2J, or bare <L2
+    # Opening with the L dropped and the letter first: '<T2mi.jioL2T>' (TsouConv-
+    # typhoon record 421, the source's only one) left '<T2mi.jio.' in the word
+    # FORM (maintainer, 2026-10-18: "fix that stripping."). L is excluded so
+    # that '<L2haiya' still reads as '<L2' + 'haiya'.
+    r'|<[A-KM-Z]2(?=[a-z])'
     r'|[A-Z]L2>'       # transposed closing: ML2>, TL2>
     r'|>L2[A-Z]?'      # bracket-outside closing: >L2M
     # The `ori` stream drops the brackets altogether and leaves the tag
