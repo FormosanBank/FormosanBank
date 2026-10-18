@@ -44,6 +44,19 @@ What it does, per sentence (S):
 4. Ruling: "if the S FORM is simply <UNCLEAR/>, no Ws. If the W FORM is
    <UNCLEAR />, no Ms under it." An S whose original FORM holds nothing but
    <UNCLEAR/> markers (no letter or digit left) loses its W tier.
+6. A gloss label NTU typed into a form cell. Ruling 2026-10-18: "these are
+   candidates for reversed items. But if there's no evidence of a reversal (no
+   actual text to flip with the gloss), then obviously this should be deleted. If
+   that's a problem for the whole sentence, the whole sentence goes. If it is just
+   for that word, then the FORM should carry <UNCLEAR/>". One case, listed in
+   GLOSS_LABEL_IN_FORM: Sentences 3.json record 456, form cell
+   'AV.kara-peen=kasu', glosses '主焦.喝-多少=2SG.主格' / 'AV.drink-how.many=2SG.NOM',
+   no sentence text (ori '.'). The gloss cells hold glosses, not a form, so there
+   is no reversal; the other word (pai'ici?) and the translation are sound, so it
+   is a problem for this word only. The label is deleted and <UNCLEAR/> takes its
+   place -- the form NTU wrote for that position is unknown -- in the W and M
+   FORMs and PHONs and in the sentence FORM and PHON, both tiers:
+   <UNCLEAR/>kara-peen=kasu, M <UNCLEAR/>kara, S <UNCLEAR/>karapeenkasu pai'ici?.
 5. Placeholders: a ? standing as a whole gloss piece (bounded by -, =, ., space or
    the ends of the gloss) is replaced by <UNCLEAR/> only in glosses listed in
    ../unclear_gloss_placeholders.tsv (columns gloss, lang). The maintainer decides
@@ -85,6 +98,11 @@ UNKNOWN_GLOSS = re.compile(r"^\s*[?？]{1,3}\s*$")
 UNKNOWN_S_TRANSL = re.compile(r"^\s*(?:[?？]{1,3}|X+)\s*$")
 # A ? piece inside a longer gloss: bounded by - = . whitespace or the ends.
 PLACEHOLDER_PIECE = re.compile(r"(?:^|(?<=[-=.\s]))[?？]{1,3}(?=$|[-=.\s])")
+
+
+# Ruling 6 (2026-10-18): (xml:lang, W id) -> (the label in its FORMs, the label's
+# reading at the start of its PHONs). The build stops if the data no longer matches.
+GLOSS_LABEL_IN_FORM = {("xnb", "3_S_456_W0"): ("AV.", "av")}
 
 
 def text_of(el):
@@ -214,11 +232,48 @@ def form_is_only_unclear(form):
     return not any(ch.isalnum() for ch in rest)
 
 
-def process_sentence(s, placeholders, counts, report, rel):
+def replace_label(el, label, where):
+    """Replace a leading label in el's text (or in the first token of a sentence) with <UNCLEAR/>."""
+    if has_children(el):
+        if el[0].tag == "UNCLEAR" and not (el.text or "").strip():
+            return False         # a second run
+        raise SystemExit(f"mark_unclear: {where}: unexpected children in {etree.tostring(el, encoding='unicode')!r}")
+    text = el.text or ""
+    if not text.startswith(label):
+        raise SystemExit(f"mark_unclear: {where}: {el.tag} {text!r} does not start with {label!r}")
+    set_mixed(el, [None, text[len(label):]])
+    return True
+
+
+def fix_gloss_label_in_form(s, lang, counts, log):
+    """Ruling 6: the gloss label in a word's FORM becomes <UNCLEAR/>, in every tier."""
+    for w in s.findall("W"):
+        entry = GLOSS_LABEL_IN_FORM.get((lang, w.get("id")))
+        if entry is None:
+            continue
+        label, reading = entry
+        morph = w.find("M")
+        targets = ([(f, label) for f in w.findall("FORM")] + [(p, reading) for p in w.findall("PHON")]
+                   + [(f, label) for f in morph.findall("FORM")] + [(p, reading) for p in morph.findall("PHON")])
+        if w is s.find("W"):     # the sentence's first token carries the label too
+            targets += [(f, label) for f in s.findall("FORM")] + [(p, reading) for p in s.findall("PHON")]
+        else:
+            raise SystemExit(f"mark_unclear: {w.get('id')}: the label is expected on the first word")
+        for el, lab in targets:
+            before = etree.tostring(el, encoding="unicode", with_tail=False)
+            if replace_label(el, lab, w.get("id")):
+                counts["gloss label in FORM -> UNCLEAR (ruling 6)"] += 1
+                log("gloss label in FORM (ruling 6)", w.get("id"), before,
+                    etree.tostring(el, encoding="unicode", with_tail=False))
+
+
+def process_sentence(s, placeholders, counts, report, rel, lang=None):
     sid = s.get("id")
 
     def log(kind, where, before, after):
         report.append((rel, sid, where, kind, before, after))
+
+    fix_gloss_label_in_form(s, lang, counts, log)
 
     # 1. S-level FORM and PHON. The PHON is located through its FORM: PHON holds
     # one token per FORM token that has a letter or digit, in order, so the
@@ -346,8 +401,9 @@ def main(argv=None):
         tree = etree.parse(str(path))
         before = len(report)
         rel = str(path.relative_to(args.xml_dir))
+        lang = tree.getroot().get(XML_LANG)
         for s in tree.getroot().iter("S"):
-            process_sentence(s, placeholders, counts, report, rel)
+            process_sentence(s, placeholders, counts, report, rel, lang)
         if report[before:]:
             write_like(path, tree.getroot())
             files += 1

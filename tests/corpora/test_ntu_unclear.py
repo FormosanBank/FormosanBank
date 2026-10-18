@@ -480,6 +480,50 @@ def test_kavalan_percent_deleted(sentences):
         "KavNr-map_buya_S_6_W3": ["s"] * 4, "KavNr-map_buya_S_26_W5": ["seme"] * 4}
 
 
+def test_gloss_label_in_a_form_is_unclear(texts):
+    """Ruling 2026-10-18 on 'AV.kara-peen=kasu' (Sentences 3.json record 456, no reversal
+    in the record): "If it is just for that word, then the FORM should carry <UNCLEAR/>"."""
+    s = next(s for t in texts if t.get(XML_LANG) == "xnb" for s in t.iter("S")
+             if s.get("id") == "3_S_456" and s.find("W/TRANSL") is not None)
+    w = s.find("W")
+    assert [_inner(f) for f in s.findall("FORM")] == ["<UNCLEAR />karapeenkasu pai'ici?"] * 2
+    assert [_inner(f) for f in w.findall("FORM")] == ["<UNCLEAR />kara-peen=kasu"] * 2
+    assert [_inner(f) for f in w.find("M").findall("FORM")] == ["<UNCLEAR />kara"] * 2
+    assert [_inner(p) for p in w.findall("PHON")] == ["<UNCLEAR />ka[r|ɾ]apeenkasu"] * 2
+    assert [t.text for t in w.findall("TRANSL")] == ["主焦.喝-多少=2SG.主格", "AV.drink-how.many=2SG.NOM"]
+    labels = [(n.get("id"), "".join(f.itertext())) for t in texts for n in [*t.iter("W"), *t.iter("M")]
+              for f in n.findall("FORM") if "".join(f.itertext()).startswith("AV.")]
+    assert labels == []
+
+
+def test_mark_unclear_replaces_the_listed_gloss_label(tmp_path):
+    sample = """<?xml version="1.0" ?>
+<TEXT id="t" xml:lang="xnb">
+    <S id="3_S_456">
+        <FORM kindOf="original">AV.karapeenkasu pai'ici?</FORM>
+        <PHON kindOf="original">avka[r|ɾ]apeenkasu paiʔiʦi</PHON>
+        <W id="3_S_456_W0">
+            <FORM kindOf="original">AV.kara-peen=kasu</FORM>
+            <PHON kindOf="original">avka[r|ɾ]apeenkasu</PHON>
+            <M id="3_S_456_W0M0"><FORM kindOf="original">AV.kara</FORM><PHON kindOf="original">avka[r|ɾ]a</PHON></M>
+            <M id="3_S_456_W0M1"><FORM kindOf="original">peen</FORM></M>
+        </W>
+        <W id="3_S_456_W1"><FORM kindOf="original">pai'ici?</FORM></W>
+    </S>
+</TEXT>"""
+    xml_dir = tmp_path / "xml"
+    xml_dir.mkdir()
+    (xml_dir / "a.xml").write_text(sample, encoding="utf-8")
+    for _ in range(2):    # idempotent
+        assert mu.main(["--xml_dir", str(xml_dir), "--placeholders", str(tmp_path / "none.tsv")]) == 0
+    ids = {e.get("id"): e for e in ET.parse(xml_dir / "a.xml").getroot().iter() if e.get("id")}
+    assert _inner(ids["3_S_456"].find("FORM")) == "<UNCLEAR />karapeenkasu pai'ici?"
+    assert _inner(ids["3_S_456"].find("PHON")) == "<UNCLEAR />ka[r|ɾ]apeenkasu paiʔiʦi"
+    assert _inner(ids["3_S_456_W0"].find("FORM")) == "<UNCLEAR />kara-peen=kasu"
+    assert _inner(ids["3_S_456_W0M0"].find("PHON")) == "<UNCLEAR />ka[r|ɾ]a"
+    assert _inner(ids["3_S_456_W0M1"].find("FORM")) == "peen"
+
+
 def test_untranscribed_word_forms_are_bare(sentences):
     bad = [(w.get("id"), _inner(f)) for s in sentences for w in s.findall("W") for f in w.findall("FORM")
            if f.find("UNCLEAR") is not None and not re.search(r"[^\W_]", "".join(f.itertext()))
