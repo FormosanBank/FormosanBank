@@ -472,6 +472,14 @@ def test_inside_word_dots_stay(sentences):
     assert found == INSIDE_WORD_DOTS
 
 
+def test_kavalan_percent_deleted(sentences):
+    """Ruling 2026-10-18 on Kavalan s%, seme% (glossed FS): "the % should be deleted." """
+    words = {w.get("id"): w for s in sentences for w in s.findall("W")
+             if w.get("id") in ("KavNr-map_buya_S_6_W3", "KavNr-map_buya_S_26_W5")}
+    assert {k: [_inner(f) for f in w.iter("FORM")] for k, w in words.items()} == {
+        "KavNr-map_buya_S_6_W3": ["s"] * 4, "KavNr-map_buya_S_26_W5": ["seme"] * 4}
+
+
 def test_untranscribed_word_forms_are_bare(sentences):
     bad = [(w.get("id"), _inner(f)) for s in sentences for w in s.findall("W") for f in w.findall("FORM")
            if f.find("UNCLEAR") is not None and not re.search(r"[^\W_]", "".join(f.itertext()))
