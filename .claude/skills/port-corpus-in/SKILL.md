@@ -257,7 +257,7 @@ seven languages, and a corpus can legitimately mix sources), but it is a
 question for the operator before the PR is opened, never something to fix
 silently.
 
-**Waivers are a tool to know, not a step.** `Corpora/<corpus_name>/qc_waivers.tsv`
+**Waivers are a tool to know, not a step.** `Corpora/<corpus_name>/CodeAndDocs/qc_waivers.tsv`
 (POL-054) records a HARD finding the maintainer has ruled waived, so CI stops
 failing on it while new findings still fail. Mention it only when a HARD
 finding survives and the maintainer says it is acceptable; do not create or
