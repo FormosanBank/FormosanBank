@@ -2,7 +2,7 @@
   // FormosanBank isolated dev container.
   //
   // Mounts the WHOLE Formosan parent dir (so cross-repo workflows like
-  // port-corpus-in and gitbook-sync work) and NOTHING else from the host.
+  // port-corpus-in from the corpus dev repos works) and NOTHING else from the host.
   // Everything outside ~/Documents/Projects/Formosan is invisible inside the
   // container — that is the isolation boundary.
   "name": "FormosanBank (isolated)",
