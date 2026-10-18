@@ -26,6 +26,10 @@ python CodeAndDocs/remove_accents.py --corpora_path <dir>
 Rau, D. V., and Dong, M. N. (2006). Yami texts with reference grammar and dictionary. Institute of Linguistics, Academia Sinica.
 
 
-## License
+## Rights
 
-The copyright holder made this corpus available CC BY-NC.
+**License:** CC BY-NC 4.0
+
+**Rights source:** the copyright holder (see References), date not recorded in this repository; evidence: ask maintainer
+
+The copyright holder made this corpus available CC BY-NC. The licence was recorded as `CC NC-BY` until 2026-10-17; POL-042 normalises an unversioned grant to 4.0 (maintainer approval of the normalisation sweep, 2026-10-17).

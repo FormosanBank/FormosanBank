@@ -99,6 +99,15 @@ jobs:
             echo "Files:"
             cat changed_xml.txt
           fi
+      - name: A changed corpus may not shelter on a pending list
+        if: steps.changed.outputs.count != '0'
+        run: |
+          # The four root-level pending lists skip legacy corpora in pytest.
+          # They only shrink, and a PR that rebuilds a corpus is when its line
+          # goes; without this step a re-port could leave its corpus listed and
+          # never be gated by those tests.
+          python QC/validation/check_pending_lists.py --changed changed_xml.txt
+
       - name: Block newly introduced hard XML and text findings
         if: steps.changed.outputs.count != '0'
         run: |

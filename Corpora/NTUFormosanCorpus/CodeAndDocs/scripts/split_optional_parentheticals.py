@@ -72,8 +72,11 @@ from pathlib import Path
 
 import lxml.etree as etree
 
-_WHOLE_PAREN = re.compile(r"^\([^()]*\)$")
-_PAREN_GLOSS = re.compile(r"^\(.*\)$")
+# The sentence's punctuation may follow the parenthesis ('(ngi-palay).'); the
+# word is still a whole optional word (POL-026; Ryan S_19, item D2 on the 2026-10-16 follow-ups
+# page, a fix under existing policy, not a separate ruling).
+_WHOLE_PAREN = re.compile(r"^\([^()]*\)[^\w()]*$")
+_PAREN_GLOSS = re.compile(r"^\(.*\)[^\w()]*$")  # gloss may carry the punctuation too: '(主題),'
 
 
 def _form(el, kind):

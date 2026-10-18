@@ -1,0 +1,91 @@
+name: Content Delta
+
+# Mirror of rights-comparison.yaml for the content POL-037 and POL-051
+# protect: TEXT and S ids, element counts per tier, TEXT/@dialect. Red on any
+# removal, rename, renumbering, count drop or relabelling of published XML;
+# a legitimate re-port is merged by maintainer override, exactly as a licence
+# change is. Only corpora whose XML/ the PR touches are compared.
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_ref:
+        description: Ref or SHA to compare against
+        required: false
+        default: origin/main
+  pull_request:
+    paths:
+      - "Corpora/*/XML/**"
+      - "QC/validation/content_delta.py"
+      - ".github/workflows/content-comparison.yaml"
+  push:
+    branches:
+      - main
+    paths:
+      - "Corpora/*/XML/**"
+      - "QC/validation/content_delta.py"
+      - ".github/workflows/content-comparison.yaml"
+
+jobs:
+  compare-content:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+    - name: Checkout head
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+
+    - name: Install lxml
+      run: python3 -m pip install --upgrade pip lxml
+
+    - name: Resolve base ref
+      id: base
+      env:
+        EVENT_NAME: ${{ github.event_name }}
+        INPUT_BASE_REF: ${{ inputs.base_ref }}
+        PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        PUSH_BEFORE_SHA: ${{ github.event.before }}
+      run: |
+        if [[ "$EVENT_NAME" == "pull_request" && -n "$PR_BASE_SHA" ]]; then
+          BASE_REF="$PR_BASE_SHA"
+        elif [[ "$EVENT_NAME" == "push" && -n "$PUSH_BEFORE_SHA" && "$PUSH_BEFORE_SHA" != "0000000000000000000000000000000000000000" ]]; then
+          BASE_REF="$PUSH_BEFORE_SHA"
+        else
+          BASE_REF="${INPUT_BASE_REF:-origin/main}"
+        fi
+        if ! git rev-parse --verify "$BASE_REF^{commit}" >/dev/null 2>&1; then
+          git fetch --no-tags origin "$BASE_REF" || true
+        fi
+        if ! git rev-parse --verify "$BASE_REF^{commit}" >/dev/null 2>&1; then
+          echo "::warning::Base $BASE_REF unreachable; comparing with HEAD^."
+          BASE_REF="HEAD^"
+        fi
+        echo "base_ref=$BASE_REF" >> "$GITHUB_OUTPUT"
+
+    - name: Corpora whose published XML changed
+      id: corpora
+      run: |
+        git diff --name-only "${{ steps.base.outputs.base_ref }}...HEAD" -- 'Corpora/*/XML/**' \
+          | awk -F/ '$1=="Corpora" && $3=="XML" {print $2}' | sort -u > changed_corpora.txt
+        echo "count=$(wc -l < changed_corpora.txt)" >> "$GITHUB_OUTPUT"
+        cat changed_corpora.txt
+
+    - name: Materialize the base tree
+      if: steps.corpora.outputs.count != '0'
+      run: |
+        rm -rf /tmp/base && mkdir -p /tmp/base
+        git archive "${{ steps.base.outputs.base_ref }}" Corpora | tar -x -C /tmp/base
+
+    - name: Compare published content
+      if: steps.corpora.outputs.count != '0'
+      run: |
+        args=()
+        while IFS= read -r corpus; do args+=(--corpus "$corpus"); done < changed_corpora.txt
+        python3 QC/validation/content_delta.py --base /tmp/base/Corpora --head Corpora "${args[@]}"

@@ -10,6 +10,8 @@ bilingual passages, with whole-story audio and no word or morpheme analysis.
 
 **Rights source:** Gesi Giling (阮翠芳), 2024-04-13; evidence: ask maintainer
 
+The author granted republication under CC BY-NC. The licence was recorded unversioned (`CC-BY-NC`) until 2026-10-17; POL-042 normalises an unversioned grant to 4.0.
+
 Joshua Hartshorne recorded permission directly from the Indigenous-text
 author. The illustrated books also carry separate illustration, adaptation
 and publisher rights. Full source documents are not redistributed here.

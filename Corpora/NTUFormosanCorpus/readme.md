@@ -23,21 +23,21 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 
 ### Major issues, user beware
 
-* It is known that the audio does not always match the text. It is not clear how common this is. 
+* It is known that the audio does not always match the text. It is not clear how common this is.
 
-* There are sentences (last count, 56) where the glosses are clearly wrong. Most, but not all, of these cases involve a missing gloss, resulting in glosses being out of sync with the words. See `sentences_with_bad_glosses_removed.csv`
+* NTU's word-by-word glosses are sometimes shifted by one word relative to the words they gloss. The shifts found so far have been reviewed and repaired (see [`CodeAndDocs/pipeline/gloss_shift_repairs.tsv`](CodeAndDocs/pipeline/gloss_shift_repairs.tsv) and [`gloss_cell_decisions.tsv`](CodeAndDocs/pipeline/gloss_cell_decisions.tsv)); others may remain.
 
-* At the time the NTU Formosan Corpus was created, there were no clear conventions as to whether to write a clitic as a stand-alone word. However, the glosses almost always treat the clitic as attached to another word. This results in sometimes two words corresponding to a single W element. A list of such cases is found in `clitics.csv` (currently 819 cases).
+* At the time the NTU Formosan Corpus was created, there were no clear conventions as to whether to write a clitic as a stand-alone word. However, the glosses almost always treat the clitic as attached to another word. As a result, a written word and a `W` element do not always correspond one-to-one.
 
 * There are some translated but unglossed wordlists. These lack W elements on account of not having any segmentation or glossing.
 
-* Even after accounting for the two issues above, the number of W elements does not always match the number of words in the sentence. These cases are listed in `validation_results.csv` (current count: 366).
+* Where a sentence's word-by-word glosses do not account for its text, its word tier is withdrawn: the sentence is published without `W` elements rather than with glosses attached to the wrong words. This applies to 164 sentences (Grammar 35, Sentences 51, Stories 78).
 
-* There are a number of cases where, in the glosses, the wordform and syntactic glosses differ in the number of segments. Many of these cases appear to be due to failing to segment the wordform. Others may be due to the wordforms and syntactic glosses being out of alignment. Known examples are recorded in `validation_m_results.csv` (current count: 1,415).
+* In some words, the wordform and its morpheme glosses differ in the number of segments. Many of these cases appear to be due to the wordform not being segmented; others may be due to the wordforms and glosses being out of alignment.
 
-* The original data often contains transcriber notes or translation notes in the text. These have been removed from the text and placed in a `notes` attribute in the corresponding <FORM />. However, such information may not always be included (it was complicated to extract), so users who are interested in the notes and parentheticals should consult the online version of the NTU Formosan Corpus, which is meant to be read by a human. The `id` of the XML file (check the <TEXT> header element) tells you what the file is on NTU Formosan Corpus. The `id` of the <S> element tells you which line in the NTU Formosan Corpus.
+* The original data often contains transcriber notes or translation notes inline, in parentheses. These are removed from the text and preserved in a `notes` attribute: commentary inside a free translation goes to `TRANSL/@notes` (5,911 translations, in 4,403 sentences), and commentary in the sentence text itself goes to `FORM/@notes` (6,114 sentences, a figure that also includes the notes described in the next item, plus 1,339 at the word level). Every parenthetical span is extracted, whether the source wrote ASCII `(...)` or fullwidth `（...）` and wherever in the string it sits; the `notes` attribute holds the source string as written, so nothing is lost. Word- and morpheme-level glosses are left exactly as the source wrote them, since those are glosses rather than commentary. A small residue survives: 28 free translations still carry a parenthetical inline (23 of them with no `notes` attribute, so those are not recorded anywhere else), and 16 have unbalanced parentheses that cannot be resolved automatically. The online version of the NTU Formosan Corpus is meant to be read by a human and remains the better place to browse the annotations: the `id` of the XML file (check the `TEXT` header element) tells you what the file is there, and the `id` of the `S` element tells you which line.
 
-* The original data also has notes written below the free translation. Many of these simply state the source of the information, but others are useful and relevant. These are NOT included in FormosanBank. (Not because they aren't interesting, but because it's harder than you'd think to extract them and figure out where to put them.)
+* The original data also has notes written below the free translation. Many of these simply state the source of the information, but others explain words or give further examples. They are kept, in the `notes` attribute of the sentence's original-tier `FORM`, together with the parenthetical notes described above. Where those notes give example sentences with translations, each example is also published as a sentence of its own at the end of its story (18 sentences, from 4 stories; listed in [`CodeAndDocs/pipeline/note_sentences.tsv`](CodeAndDocs/pipeline/note_sentences.tsv)). Their `S` ids end in `-note` and a number, and their `FORM` notes say they are not part of the recording.
 
 ## Minor notes
 
@@ -49,33 +49,48 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 
 * The original data has a lot of prosodic markup and other dialog markup. This has all been removed.
 
-* Item 323 in sentence/Kanakanavu_Kanakanavu/1.json is excluded because it involves two sentence fragments that are hard to deal with.
+* The original tier keeps NTU's spelling and word division. Where NTU's sentence text writes as one word what NTU's own glosses treat as two, the standard tier writes the two words, as glossed (7 sentences, listed in [`CodeAndDocs/pipeline/standard_word_splits.tsv`](CodeAndDocs/pipeline/standard_word_splits.tsv)): Sakizaya `itiza` → `i tiza` and `paza'ci` → `paza' ci`, Kanakanavu `tia'apacangcangarʉʉn` → `tia 'apacangcangarʉʉn`.
 
-* Item 12 from sentence/Bunun_Isbukun/59.json is misaligned in the original, but the alignment is straightforward and was corrected by hand.
+* Code-switched words that NTU left unglossed are glossed with the name of the language in parentheses: `(Mandarin)` (47 words), `(Hakka)` (4), `(Japanese)` (4) and `(Chinese)` (2). A word written in Han characters is its own Chinese gloss.
 
-* In the Sakizaya texts, "i tina" and "i tiza" are sometimes written as "itina" and "itiza". However, the glosses treat them as separate words. We have edited the text to write them as separate words.
+* In the Seediq conversation `sdqCon-dialog5_dakis_takun 2020s`, where a speaker switches to a stretch of Mandarin that the sentence's translation does not cover, that stretch is published as a sentence of its own, with a note saying so (44 sentences). Four utterances where a short Mandarin phrase sits inside a translated Seediq sentence are kept whole.
 
-* In the Sakizaya texts, "paza'ci" was written as a single word, but based on glossing and other examples, it appears to be "paza' ci". This was corrected as part of parse_grammar.py
+* NTU transcribes the Stories in intonation units. Units are joined into one sentence up to NTU's sentence-end mark, except that a unit with its own translation ends its sentence. An untranscribed word is written `X`.
 
-* In the Kanakanavu texts, "tia'apacangcangarʉʉn" was often written as one word, whereas it appears that "tia 'apacangcangarʉʉn" is more likely based on glossing. We made this change in parse_grammar.py.
+* **Bunun sentences published once (rulings 2026-10-16).** NTU's release has a revised copy of the Bunun sentence collection, `sentence/Bunun_Isbukun/63.json` (upstream `63_revised.json`, no speaker or date), alongside the original files. 875 of its 920 records repeat a record of another file; `pipeline/bunun63_pairs.tsv` (written by `pipeline/make_bunun63_pairs.py`) pairs them, on identical word lists or on a shared translation with word lists at least 60% alike. At the end of the Sentences build, after all cleaning, `pipeline/dedupe_bunun63.py` compares each pair as published: identical copies keep the other file's sentence and drop the 63.json one; copies that differ only in notes keep the more recent or more complete note; copies that differ in translation become one sentence with the other copy's translations as alternatives (`ver="alt"`; a translation written `A / B` becomes A plus alternative B); and where the sentence text is the same but the analysis differs (mostly reduplication written `ma-ba-baliv` 'AF-RED-buy' in the revision against `ma<ba>baliv` 'AF<RED>buy'), the revision's analysis is kept and the other copy dropped. Where the sentence text itself differs, a difference only in punctuation or word division keeps the revision, and a difference in letters keeps the other file's copy, whose spellings other Bunun corpora mostly use (`saia` 1,254 times against the revision's `saiia` 49). All 875 pairs are resolved: 897 sentences are dropped (Bunun Sentences 2,096 → 1,199) and 113 alternative translations added. The build's per-pair report is `logs/bunun63_dedupe.tsv`.
 
-* In the Kanakanavu sentence subcorpus, "∅" appears 31 times, marking a null morpheme (e.g. a phonologically empty REL). Pipeline treatment: the marker is kept in original/W/M FORMs, removed from S-level standard FORMs by `standardize.py`, and silent in PHON (an all-null M gets PHON `∅`); `clean_xml.py` canonicalizes the Grammar subcorpus's `ø`/`Ø` variants to `∅`. See step 7 under Processing.
+* A free translation written as two renderings, `A / B` ("I have three younger brothers. / There are my three younger brothers."), is published as a translation plus an alternative translation (`ver="alt"`): 48 Sentences translations (`pipeline/split_two_renderings.py`; ruling 2026-10-16).
 
-* Some English glosses contain Mandarin (e.g. `eng="使役-太陽=完成貌"`), most likely because the glossers were Mandarin-dominant. These are left as they are in the source; the known cases are listed in [gloss_anomalies_review.csv](gloss_anomalies_review.csv) (category `eng gloss contains CJK`).
+* Kavalan `KavNr-frog_abas` S_138: NTU wrote the line as the transcriber's label `((VOICEOVER:mai=ti))` — the words *mai=ti* spoken by a voice-over. It is published as the speech (`maiti.`), with the label in a FORM note (`pipeline/p2_source_repairs.xml`).
 
-* A handful of wordforms contain or consist of gloss codes rather than actual word material (e.g. `RED-osa-un`, where the annotator wrote the reduplication code instead of the reduplicated syllable, or words whose form cell is just `FIL`/`NOM`/`EXIST`). The true forms are not recoverable from the source; they are listed in [gloss_anomalies_review.csv](gloss_anomalies_review.csv) (categories `gloss code embedded in wordform` and `wordform is a bare gloss code`).
+* Three stories exist twice in NTU's release, as two transcriptions of one recording: Seediq `sdqNr-taboo_pawan` and `sdqNr-tattoo2_pawan`, and Tsou `TsouNr-pear-story-3` / `TsouNr-pear-zheng-2`. The corpus uses the newer text, which has no audio timing; each record takes its time span and recording from NTU's timed transcription of the same text (`pipeline/audio_timing_grafts.tsv`, written by `pipeline/make_audio_timing_grafts.py`, which checks that the two versions have the same records and sentence ends). The Seediq word lists differ from the timed versions mainly in analysis (`kesa-un` vs `kes-un`), not in the sentence lines, which use the usual spellings (`kesun`).
 
-* Some sentences are glossed only in English in the source (no Chinese gloss exists), and some source gloss rows are *echo rows* (the gloss cells just repeat the wordform — common for names and untranslated items). Neither is repairable from the source; see [gloss_anomalies_review.csv](gloss_anomalies_review.csv) (categories `english-only glossing in source` and `echo gloss`). A further small set has the Chinese gloss available in a duplicate of the same word elsewhere in the source (category `zh exists in a source duplicate`), repairable on request.
+* In the Kanakanavu sentence subcorpus, "∅" appears 32 times (the source writes 2 of them as "Ø", which the sentence builder canonicalizes), marking a null morpheme (e.g. a phonologically empty REL). Pipeline treatment: the marker is kept in original/W/M FORMs, removed from S-level standard FORMs by `standardize.py`, and silent in PHON (an all-null M gets PHON `∅`); `clean_xml.py` canonicalizes the Grammar subcorpus's `ø`/`Ø` variants to `∅`. See step 7 under Processing.
+
+* Some English glosses contain Mandarin (e.g. `eng="使役-太陽=完成貌"`), most likely because the glossers were Mandarin-dominant. These are left as they are in the source.
+
+* NTU's word lists write a few words as gloss codes rather than as words: `RED-osa-un` (4 times, Seediq), where NTU's sentence line has `hhaun`; `FIL` (Bunun `bnNr-frog_Laniahu`, record 40), where it has `ai`; and `EXIST`/`NOM` (Saisiyat `SaiNr-election`, record 115). The published sentence text comes from NTU's sentence line, so it has the real words. The Bunun word is written as in the sentence line (`ai`, glossed FIL) and the Saisiyat record is repaired with NTU's 2026 words (`pipeline/gloss_cell_decisions.tsv`, `pipeline/p2_source_repairs.xml`). `RED-osa-un` is not a gloss of `hhaun`, so the three Seediq sentences that contain it (`sdqNr-pear-dakis 2020s_S_42`, `sdqCon-dialog5_dakis_takun 2020s_S_23`, `sdqNr-sisin_dakis 2020s_S_111`) are published without a word tier. Nothing is deleted.
+
+* Some sentences are glossed only in English in the source (no Chinese gloss exists), and some source gloss rows are *echo rows* (the gloss cells just repeat the wordform — common for names and untranslated items). Neither is repairable from the source. A further small set has the Chinese gloss available in a duplicate of the same word elsewhere in the source, repairable on request.
 
 * Six source JSONs in the sentence subcorpus assign the same record id to two *different* sentences (e.g. `sentence/Bunun_Isbukun/46.json` numbers its records 1,2,3,3,4,...). Because S ids embed the record id, both sentences would receive the same S id (and identical W/M ids below it). The second occurrence (in document order) is disambiguated with a `-2` suffix: `46_S_3` and `46_S_3-2`. For those sentences the NTU line-number provenance is inherently ambiguous — the collision is in the NTU backend itself. Affected: `46_S_3`, `03-4_S_15`, `43_S_2` (Bunun); `3_S_201` (Kanakanavu); `20200530-FW-Andrea-1_S_6`, `20200530-FW-Yongfu-1_S_13` (Rukai).
 
-* **Variant readings use the POL-028 `ver="alt"` spelling.** Where the source
-records a second acceptable reading of a word or sentence — word-internal
-optional material (`ka(z)`, `kangavas(=an)`) or a slash alternation the readings
-of which are spelling variants of one another — the node carries its tier's base
-FORM plus a sibling `FORM[@kindOf="original" ver="alt"]`, and `standardize.py`
-derives the matching `FORM[@kindOf="standard" ver="alt"]`. **191 variants**, in
-21 files across all three subcorpora.
+* **Variant readings.** Optional *letters* inside a morpheme (`ka(z)`, `(s)aiv=ik`) and slash
+alternations whose readings are spelling variants of one another stay one sentence: the node
+carries its tier's base FORM plus a sibling `FORM[@kindOf="original" ver="alt"]`, and
+`standardize.py` derives the matching `FORM[@kindOf="standard" ver="alt"]`. **126 variants**,
+in 18 files. A *glossed* optional morpheme or clitic (`kangavas(=an)` 'mango(=MED.NOM)') is
+different (POL-028 as amended 2026-10-15): the two readings are glossed differently, so each is
+a sentence of its own with its own word and morpheme tiers — the base keeps the published id, the
+other reading is `<id>-opt`. An optional *phrase* (`(nau tu)`, `(kane ku butulu)?`) is split the
+same way (POL-026); a record with both gets `-opt3` (phrase) and `-opt4` (both). Built by
+`pipeline/pol028.py`: 30 records with a glossed optional morpheme and 6 with an optional phrase
+(37 added sentences; 3 more come from whole optional words followed by punctuation, such as `(ngi-palay).`, which the POL-026 step now recognizes). Both readings carry the record's translation, except where the translation
+itself marks the option (`（將）`, `(互相)`, `(吃豬肉)`): then each reading takes its own wording;
+per-reading settings ruled by the maintainer are in `pipeline/pol028_readings.tsv`. In a story the
+`-opt` sentence has no AUDIO: the recording has one reading only. Where NTU has a sentence line,
+both readings take their text from it; otherwise from the word list with the segmentation marks
+removed.
 
   Until 2026-09-10 these were written `kindOf="alternate"`, the spelling POL-028
   deprecated on 2026-09-09 (one day after this corpus was first published here).
@@ -116,6 +131,12 @@ Ortho94 did not have, so no mapping exists. An empty table is not a no-op:
 (`<Language>_<Scheme>_113.tsv` → `Orthographies/Ortho94/<Language>.tsv`), so
 **accents are still removed and capital variants still derived** in every case.
 
+**Kanakanavu is the exception** (ruling 2026-10-16). NTU writes it in Ortho113 spelling: `ʉ` 5,207
+times — a letter Ortho94 does not give Kanakanavu (Ortho94.pdf p. 15 writes the central high vowel
+for Tsou only) — and `r` 5,342 times against `l` 34 (28 words, mostly loans and names). Its original
+PHON is therefore generated from **Ortho113**'s rules (`run_standard_and_phon.sh`); under Ortho94's,
+every `ʉ` became `*` (2,193 of 3,981 sentences). The 34 `l`, which Ortho113 lacks, stay `*` in PHON.
+
 ## Quality checks and regressions
 
 The validators in `QC/validation/` decide whether this corpus's XML is *legal*.
@@ -138,9 +159,16 @@ python CodeAndDocs/qa/check_regressions.py --subcorpus stories \
 
 ## Processing
 
-The JSONs under `CodeAndDocs/{grammar,sentence,story}` are this corpus's
-source. Nothing is scraped, so there is no refresh step: those JSONs are the
-starting point, and everything in `XML/` is derived from them.
+The source is NTU's public data release, named file by file in
+[CodeAndDocs/source_release.tsv](CodeAndDocs/source_release.tsv): NTU's release of 2026-01-10
+(the `gh-pages` branch of github.com/liao961120/glossParser), with three Saisiyat stories taken
+from the 2024-04-08 release instead and five upstream files deliberately not used (the table gives
+each reason). `CodeAndDocs/refresh_source.sh` fetches that release into `CodeAndDocs/{grammar,sentence,story}`
+(`--check` compares the committed files with it); neither `make.sh` nor `build.sh` runs it, so a
+rebuild never depends on NTU's site. The committed JSONs are the starting point, and everything in
+`XML/` is derived from them. Every correction to NTU's data is stored as reviewed data rather than
+code, and each one checks that the source still holds what it expects: if NTU's data changes, the
+build stops instead of silently repairing the wrong thing.
 
 ```bash
 source ../../.venv/bin/activate

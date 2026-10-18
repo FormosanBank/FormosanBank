@@ -521,3 +521,133 @@ def test_example_sentences_from_ntus_notes_are_appended_to_their_story():
     assert last.get("id") == "KavNr-frog_buya_S_154-note2"
     assert last.find("FORM").text == "tmitaiku yau biat ’nay takinilan"
     assert "t<m>ita=iku" in last.find("FORM").get("notes")
+
+
+def test_standard_word_splits_are_written_in_the_standard_tier_only(tmp_path):
+    # Ruling 2026-10-16 (review page round 2, "B: split in standard only").
+    import apply_standard_word_splits as sws
+    lang = tmp_path / "Sakizaya"; lang.mkdir()
+    (lang / "Sakizaya.xml").write_text(
+        '<TEXT><S id="09_S_8"><FORM kindOf="original">mutizeng ku luma\' itiza.</FORM>'
+        '<FORM kindOf="standard">mutizeng ku luma\' itiza.</FORM></S></TEXT>', encoding="utf-8")
+    assert sws.main(["x", str(tmp_path)]) == 0
+    s = etree.parse(str(lang / "Sakizaya.xml")).getroot().find("S")
+    assert s.find("FORM[@kindOf='original']").text == "mutizeng ku luma' itiza."
+    assert s.find("FORM[@kindOf='standard']").text == "mutizeng ku luma' i tiza."
+    # A sentence that no longer holds the joined word stops the build.
+    (lang / "Sakizaya.xml").write_text(
+        '<TEXT><S id="09_S_8"><FORM kindOf="standard">mutizeng ku luma\' i tiza.</FORM></S></TEXT>', encoding="utf-8")
+    assert sws.main(["x", str(tmp_path)]) == 1
+
+
+def test_the_seven_standard_word_splits_are_published():
+    xml = CODEDOCS.parent / "XML" / "Grammar"
+    want = {("Sakizaya", "09_S_8"): "i tiza", ("Sakizaya", "09_S_9"): "i tiza", ("Sakizaya", "11_S_48"): "i tiza",
+            ("Sakizaya", "15_S_1"): "paza' ci", ("Kanakanavu", "14_S_27"): "tia 'apacangcangarʉʉn",
+            ("Kanakanavu", "15_S_7"): "tia 'apacangcangarʉʉn", ("Kanakanavu", "15_S_24"): "tia 'apacangcangarʉʉn"}
+    for (lang, sid), split in want.items():
+        s = next(s for s in etree.parse(str(xml / lang / f"{lang}.xml")).getroot().iter("S") if s.get("id") == sid)
+        assert split in s.find("FORM[@kindOf='standard']").text
+        assert split not in s.find("FORM[@kindOf='original']").text
+
+
+def test_a_null_glyph_glued_by_the_sentence_rebuild_is_canonicalized():
+    # Ruling 2026-10-16: Kanakanavu 3_S_375 published 'patovavaliØ' (Ø glued once '=' is removed).
+    from pipeline_sentences import _NULL_GLYPH
+    assert _NULL_GLYPH.sub("\\1\u2205", "pa-to-va-vali=Ø") == "pa-to-va-vali=\u2205"
+    assert _NULL_GLYPH.sub("\\1\u2205", "Grønland") == "Grønland"
+    xml = CODEDOCS.parent / "XML" / "Sentences" / "Kanakanavu" / "Kanakanavu.xml"
+    s = next(s for s in etree.parse(str(xml)).getroot().iter("S") if s.get("id") == "3_S_375")
+    assert s.find("FORM[@kindOf='original']").text == "patovavali\u2205 patopuru tavu."
+    assert s.find("FORM[@kindOf='standard']").text == "patovavali patopuru tavu."
+    # The null leaves nothing in PHON. The '*' is the l of patovavali: NTU's
+    # Kanakanavu is phonologized with Ortho113, which has no l (ruling 2026-10-16, A).
+    assert s.find("PHON[@kindOf='original']").text == "patovava*i patopu[r|ɾ]u tavu"
+
+
+def test_glottal_letters_the_quote_cleaner_took_for_quotes_are_restored():
+    # Ruling 2026-10-16: Amis frog_cinhua S_60, 'pung (hole) and miceli' (AF-call).
+    xml = CODEDOCS.parent / "XML" / "Stories" / "Amis" / "Amis_Amis_Nr-frog_cinhua.xml"
+    s = next(s for s in etree.parse(str(xml)).getroot().iter("S") if s.get("id") == "Amis_Nr-frog_cinhua_S_60")
+    assert s.find("FORM[@kindOf='original']").text == "itini i hakini tuna 'pung, sa'an ku falucu' nira a miceli',"
+
+
+def test_pol028_glossed_optional_morpheme_detection():
+    import pol028
+    assert pol028.is_glossed_optional_morpheme(["kangavas(=an)", "mango(=MED.NOM)", "芒果(=近距.主格)"])
+    assert not pol028.is_glossed_optional_morpheme(["ka(z)", "NOM", "主格"])          # optional letters: ver="alt"
+    assert not pol028.is_glossed_optional_morpheme(["(ngi-palay).", "(REFL-blow)", ""])  # whole word: POL-026
+    assert pol028.reading_rows([["naw=(lri-)siulri", "1S.BN=(FUT-)back", "x"]], True)[0][:2] == ["naw=lri-siulri", "1S.BN=FUT-back"]
+    assert pol028.reading_ori(["kainaw", "(lri)siulri"], False) == ["kainaw", "siulri"]
+
+
+def test_pol028_phrase_readings_and_translations():
+    import pol028
+    rows = [["ma-dalame=su", "x", "y"], ["(kane", "eat", "吃"], ["ku", "OBL", "斜格"], ["butulu)?", "pork", "豬肉"]]
+    assert pol028.phrase_span([r[0] for r in rows]) == (1, 3)
+    assert [r[0] for r in pol028.phrase_reading(rows, (1, 3), False, cells=True)] == ["ma-dalame=su?"]
+    assert pol028.phrase_free(["#c 你喜歡（吃豬肉）嗎？"], False) == ["#c 你喜歡嗎？"]
+    assert pol028.phrase_free(["#c 你喜歡（吃豬肉）嗎？"], True) == ["#c 你喜歡吃豬肉嗎？"]
+    assert pol028.phrase_span(["(CLEAR", "THROAT)"]) is None                       # a transcriber's label
+
+
+def test_pol028_published_splits():
+    xml = CODEDOCS.parent / "XML"
+    ids = {s.get("id"): s for f in xml.glob("*/*/*.xml") for s in etree.parse(str(f)).getroot().iter("S")}
+    for base in ("28_S_6", "20200529-FW-Ryan_S_6", "3_S_1", "20200528-FW-Ryan_S_19", "5_S_34"):
+        assert base + "-opt" in ids, base
+    assert "3_S_1-opt3" in ids and "3_S_1-opt4" in ids
+    # #4 is published once: its 30.json and 63.json copies differ in analysis, so
+    # dedupe_bunun63 keeps the revision (63_S_499) -- whichever copy survives, the
+    # translations follow the ruling.
+    four = next(b for b in ("30_S_5", "63_S_499") if b in ids)
+    assert ("30_S_5" in ids) != ("63_S_499" in ids)
+    zho = lambda sid: [t.text for t in ids[sid].findall("TRANSL") if t.get("{http://www.w3.org/XML/1998/namespace}lang") == "zho"]
+    assert zho(four + "-opt") == ["外面一定很熱"] and zho(four) == ["外面本來就很熱"]
+    assert ids["20200529-FW-Ryan_S_6"].find("FORM[@kindOf='original']").get("notes")
+    assert ids["20200529-FW-Ryan_S_6-opt"].find("FORM[@kindOf='original']").get("notes")
+    assert ids["20200529-FW-Ryan_S_6"].find("FORM[@kindOf='original']").text.startswith("kay yakay danne kay lasitu mapatwaramarama")
+    assert all(ids[s + "-opt"].find("AUDIO") is None for s in ("SaiNr-frog5__awi_ a basi__S_202",))
+
+
+def test_voiceover_and_rec40_and_timing_grafts():
+    xml = CODEDOCS.parent / "XML" / "Stories"
+    def s_of(f, sid):
+        return next(s for s in etree.parse(str(f)).getroot().iter("S") if s.get("id") == sid)
+    s = s_of(xml / "Kavalan" / "Kavalan_KavNr-frog_abas.xml", "KavNr-frog_abas_S_138")
+    assert s.find("FORM[@kindOf='original']").text.startswith("maiti") and "VOICEOVER" in s.find("FORM[@kindOf='original']").get("notes")
+    s = s_of(xml / "Bunun" / "Bunun_bnNr-frog_Laniahu.xml", "bnNr-frog_Laniahu_S_40")
+    assert s.find("W/FORM").text == "ai,"
+    for f in ("Seediq/Seediq_sdqNr-taboo_pawan 2021s.xml", "Seediq/Seediq_sdqNr-tattoo2_pawan 2020s.xml", "Tsou/Tsou_TsouNr-pear-story-3.xml"):
+        S = list(etree.parse(str(xml / f)).getroot().iter("S"))
+        assert S and all(x.find("AUDIO") is not None for x in S), f
+
+
+def test_kanakanavu_original_phon_uses_ortho113():
+    root = etree.parse(str(CODEDOCS.parent / "XML" / "Sentences" / "Kanakanavu" / "Kanakanavu.xml")).getroot()
+    s = next(s for s in root.iter("S") if s.get("id") == "1_S_67")
+    assert "*" not in s.find("PHON[@kindOf='original']").text and "ɨ" in s.find("PHON[@kindOf='original']").text
+
+
+def test_bunun63_duplicates_are_published_once():
+    # Rulings 2026-10-16 (Bunun 63.json duplicates page): identical pairs drop the 63.json copy.
+    root = etree.parse(str(CODEDOCS.parent / "XML" / "Sentences" / "Bunun" / "Bunun.xml")).getroot()
+    ids = {s.get("id") for s in root.iter("S")}
+    assert "01_S_1" in ids and "63_S_1" not in ids              # identical: 63.json copy dropped
+    assert "63_S_12" in ids and "01-1_S_4" not in ids           # analysis differs: revision kept
+    s = next(s for s in root.iter("S") if s.get("id") == "01-4_S_6")   # translations combined
+    alts = [t.text for t in s.findall("TRANSL") if t.get("ver") == "alt"]
+    assert "那是讓人快樂的地方。" in alts and "That's the place that makes people happy." in alts
+
+
+def test_bunun63_round2_and_two_renderings():
+    # Rulings 2026-10-16, Bunun 63.json duplicates round 2.
+    root = etree.parse(str(CODEDOCS.parent / "XML" / "Sentences" / "Bunun" / "Bunun.xml")).getroot()
+    ids = {s.get("id") for s in root.iter("S")}
+    assert "03-2_S_9" in ids and "63_S_107" not in ids     # letters differ: other file kept
+    assert "63_S_685" in ids and "48_S_21" not in ids      # punctuation only: revision kept
+    assert "63_S_653" in ids and "47_S_4" not in ids       # word division only: revision kept
+    rukai = etree.parse(str(CODEDOCS.parent / "XML" / "Sentences" / "Rukai" / "Rukai.xml")).getroot()
+    s = next(s for s in rukai.iter("S") if s.get("id") == "20200325-CL-2_S_1")
+    eng = [(t.get("ver"), t.text) for t in s.findall("TRANSL") if t.get("{http://www.w3.org/XML/1998/namespace}lang") == "eng"]
+    assert eng == [(None, "I have three younger brothers."), ("alt", "There are my three younger brothers.")]

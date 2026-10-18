@@ -135,9 +135,13 @@ Key evidence files:
 
 The full final-XML row audit and grouped ILRDF review are generated development-side artifacts. Their compact results are retained in the published reports; the complete files remain in the development repository's QC output.
 
-## Rights and Source Notes
+## Rights
 
-FormosanBank records project-owner permission to scrape Glosbe for this work. Glosbe content can include third-party translation-memory sources, so users must also follow the source-corpus rights and the central FormosanBank terms.
+**License:** CC BY-NC-SA 4.0
+
+**Rights source:** Glosbe terms of use (user-uploaded content is available to other users under CC BY-NC-SA 4.0), as archived; maintainer decision 2024-04-17; evidence: ask maintainer
+
+FormosanBank records project-owner permission to scrape Glosbe for this work. Glosbe content can include third-party translation-memory sources, so users must also follow the source-corpus rights and the central FormosanBank terms. Until 2026-10-17 `TEXT/@copyright` carried a prose rights notice; the maintainer ruled the value CC BY-NC-SA 4.0 on 2026-10-15.
 
 ## Acknowledgments
 

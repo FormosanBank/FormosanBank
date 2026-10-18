@@ -130,6 +130,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "qa"))
 from utils import (code_switch_gloss, expand_infixes, l2_letter, strip_l2m,  # noqa: E402
                    strip_prosodic_markers, resolve_ungrammatical_parens)
 from gloss_shift import apply_to_records as apply_shift_repairs  # noqa: E402
+import pol028  # noqa: E402
 from gloss_shift import load_table as load_shift_repairs  # noqa: E402
 
 ET.register_namespace("xml", "http://www.w3.org/XML/1998/namespace")
@@ -198,8 +199,12 @@ _INLINE_OPTIONAL = re.compile(r"\(([^()*]*)\)")
 
 def has_inline_optional(form: str) -> bool:
     text = (form or "").strip()
+    # A whole optional word may carry the sentence's punctuation after its
+    # parenthesis ('(ngi-palay).'); it is still a whole word (POL-026), not
+    # optional material inside one (POL-026; Ryan S_19, item D2 on the 2026-10-16 follow-ups
+    # page, listed there as a fix under existing policy, not a separate ruling).
     return bool(_INLINE_OPTIONAL.search(text)) and not re.fullmatch(
-        r"\([^()]*\)", text)
+        r"\([^()]*\)\W*", text)
 
 
 def inline_readings(form: str) -> tuple:
@@ -359,6 +364,16 @@ def step5_strip_markup(text: str, gloss: bool = False) -> tuple:
 # Only the MARKERS come off, never the material between them: an infix is
 # part of the surface form, so 'h<in>ud-an' is 'hinudan', not 'hudan'.
 _SEG_MARKERS = re.compile(r"[-=<>]")
+# A null morpheme written as a letter-like glyph (ø U+00F8, Ø U+00D8) in a
+# gloss form, e.g. Kanakanavu 'pa-to-va-vali=Ø'. Same pattern as clean_xml's
+# _NULL_MORPHEME_RE: the glyph stands alone between morpheme boundaries, so a
+# real letter (Danish 'Grønland') is never touched. clean_xml canonicalizes it
+# on W and M, but the sentence form is rebuilt from the gloss with the '='
+# removed, which glues the glyph to the word ('patovavaliØ') where clean_xml's
+# pattern cannot see it. Canonicalizing the rows first lets the null take the
+# path every other null takes (kept in the original, removed from the standard,
+# silent in PHON). Ruling 2026-10-16.
+_NULL_GLYPH = re.compile(r"(^|[\s\-=])[øØ](?=[\s\-=]|$)")
 
 
 def step0_form_from_gloss(rows: list) -> str:
@@ -569,6 +584,25 @@ def build(records: list, text_id: str, steps: set, stats: dict,
                 stats["4 ungrammatical sentences dropped"] = stats.get(
                     "4 ungrammatical sentences dropped", 0) + 1
                 continue
+            split = pol028.readings(rows, ori, body, pol028.overrides_for(language, text_id, rid)) if 14 in steps else None
+            if split:
+                # POL-028 (glossed optional morpheme) and POL-026 (optional
+                # phrase): each reading is a sentence of its own, with its own
+                # word and morpheme tiers. See pol028.py. Only the base reading
+                # keeps AUDIO: the recording has that reading only.
+                for sfx, r_rows, r_ori, r_free, notes, keep_audio in split:
+                    emit_sentence(root, text_id, rid + suffix + sfx, dict(body, free=r_free),
+                                  r_rows, r_ori, steps, stats, code_switch, attested, malformed)
+                    s_new = root.findall("S")[-1]
+                    if not keep_audio:
+                        for a in s_new.findall("AUDIO"):
+                            s_new.remove(a)
+                    if notes:
+                        f = s_new.find("FORM[@kindOf='original']")
+                        f.set("notes", " ".join(x for x in (notes, f.get("notes")) if x))
+                stats["14 records split into readings (POL-028 / POL-026)"] = stats.get(
+                    "14 records split into readings (POL-028 / POL-026)", 0) + 1
+                continue
             emit_sentence(root, text_id, rid + suffix, body, rows, ori, steps, stats,
                           code_switch, attested, malformed)
     # POL-053: the closed attribute surface, plus V017/V085 conformance.
@@ -637,6 +671,8 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                   code_switch=None, attested=None, malformed=None):
         attested = attested or {}
         malformed = malformed or {}
+        rows = [[_NULL_GLYPH.sub("\\1\u2205", str(r[0]))] + list(r[1:])
+                if r and isinstance(r[0], str) and _NULL_GLYPH.search(r[0]) else r for r in rows]
         s = ET.SubElement(root, "S")
         s.set("id", f"{text_id}_S_{sid}")
         form = ET.SubElement(s, "FORM")
@@ -653,18 +689,20 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                 "0 sentence forms rebuilt from the gloss", 0) + 1
         alt_s_form = None
         if 14 in steps and any(has_inline_optional(str(r[0])) for r in rows):
-            main_words, alt_words = [], []
-            for r in rows:
-                f = str(r[0])
-                if has_inline_optional(f):
-                    a, b = inline_readings(f)
-                    main_words.append(a)
-                    alt_words.append(b)
-                else:
-                    main_words.append(f)
-                    alt_words.append(f)
-            s_form = " ".join(w for w in main_words if w)
-            alt_s_form = " ".join(w for w in alt_words if w)
+            # Ruling 2026-10-16 (r2~rukai): where NTU has a sentence line, both
+            # readings take their text from it; otherwise both are rebuilt from
+            # the gloss forms with the segmentation marks removed, like every
+            # other rebuilt sentence (joining the word forms verbatim leaked
+            # '-' and '=' into the sentence text).
+            if WORDY.search(" ".join(str(t) for t in ori)):
+                s_form = " ".join(str(t) for t in pol028.reading_ori(ori, False))
+                alt_s_form = " ".join(str(t) for t in pol028.reading_ori(ori, True))
+            else:
+                def _reading(i):
+                    return [[inline_readings(str(r[0]))[i]] + list(r[1:])
+                            if has_inline_optional(str(r[0])) else r for r in rows]
+                s_form = step0_form_from_gloss(_reading(0))
+                alt_s_form = step0_form_from_gloss(_reading(1))
             stats["14 sentences given an alternate form"] = stats.get(
                 "14 sentences given an alternate form", 0) + 1
 
@@ -683,7 +721,7 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
 
         # emit_sentence sees the id with any split suffix ('12a'); the repair
         # table keys on the source record, so the suffix comes off first.
-        base_rid = re.sub(r"[a-z]$", "", str(sid))
+        base_rid = re.sub(r"[a-z]$", "", str(sid).removesuffix("-opt"))
         entries, free_notes = free_entries(body.get("free") or [], text_id,
                                            base_rid, FREE_REPAIRS)
         for lang, text, ver, note in entries:
