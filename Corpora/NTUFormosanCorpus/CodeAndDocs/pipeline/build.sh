@@ -24,7 +24,8 @@
 #   A. builder      pipeline_{grammar,sentences,stories}.py: JSON -> XML
 #   B. repairs      shared FormosanBank cleaning + the corpus repair scripts
 #   C. tiers        punctuation morphemes, prune, id alignment, standard tier + PHON (Ortho94)
-#   D. markers      mark_unclear.py: NTU's X / ? unknown markers -> <UNCLEAR/> (last)
+#   D. markers      mark_unclear.py: NTU's X / ? unknown markers -> <UNCLEAR/>
+#                   strip_word_punctuation.py: punctuation out of W/M FORMs (last)
 #
 # Every phase is idempotent; rerunning is safe.
 
@@ -97,6 +98,16 @@ mark_unclear() {     # $1 = work dir, $2 = subcorpus name (for the report file n
       --report "$CORPUS/logs/unclear_${2}.tsv"
 }
 
+# Punctuation out of word and morpheme FORMs (ruling 2026-10-18;
+# strip_word_punctuation.py), per language as classified in
+# ../word_form_characters.tsv; an unclassified character stops the build. Runs
+# after mark_unclear, whose X-word and X-part patterns read the punctuation.
+strip_word_punctuation() {   # $1 = work dir, $2 = subcorpus name (for the report file name)
+  TAIL=40 run "strip_word_punctuation" "$PIPE/strip_word_punctuation.py" --xml_dir "$1" \
+      --table "$CODEDOCS/word_form_characters.tsv" \
+      --report "$CORPUS/logs/word_punctuation_${2}.tsv"
+}
+
 # A clean-up step: skipped at the pre-cleanup checkpoint (see the header).
 cleanup() {
   if [[ "$CHECKPOINT" == pre-cleanup ]]; then step "$1 (skipped: pre-cleanup checkpoint)"; return 0; fi
@@ -132,6 +143,7 @@ build_grammar() {
   run "propagate_clitic_boundaries"     "$SCR/propagate_clitic_boundaries.py" --xml_dir "$W"
   finish_tiers "$W" Grammar
   mark_unclear "$W" Grammar
+  strip_word_punctuation "$W" Grammar
   install_into "$W" Grammar
 }
 
@@ -176,6 +188,7 @@ build_flat() {       # $1 = sentences|stories
         --report "$CORPUS/logs/bunun63_dedupe.tsv"
   fi
   mark_unclear "$W" "$out"
+  strip_word_punctuation "$W" "$out"
   install_into "$W" "$out"
 }
 

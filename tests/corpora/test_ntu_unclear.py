@@ -13,6 +13,15 @@ Corpora/NTUFormosanCorpus/CodeAndDocs/pipeline/mark_unclear.py:
 4. "if the S FORM is simply <UNCLEAR/>, no Ws. If the W FORM is <UNCLEAR />, no Ms
    under it."
 
+Maintainer's rulings, 2026-10-18 (mark_unclear.py and strip_word_punctuation.py):
+
+5. Word FORM punctuation, option "Bare <UNCLEAR/>": "Punctuation shouldn't be in W
+   FORMs or M FORMs anyway. Delete everywhere in NTU." What is punctuation is
+   decided per language in CodeAndDocs/word_form_characters.tsv.
+6. The 13 X words with a real gloss: "FORM -> <UNCLEAR/>, keep the real gloss (and
+   its morphemes)".
+7. X as part of a word: "Convert the X part only (mi-<UNCLEAR/>)".
+
 The first group runs the step on small hand-written sentences; the second holds
 the published XML to the rulings. NTU_XML_DIR points the second group at another
 tree (e.g. the pre-change XML, on which these tests fail).
@@ -32,13 +41,14 @@ CODEDOCS = ROOT / "Corpora" / "NTUFormosanCorpus" / "CodeAndDocs"
 sys.path.insert(0, str(CODEDOCS / "pipeline"))
 
 import mark_unclear as mu  # noqa: E402
+import strip_word_punctuation as swp  # noqa: E402
 
 NTU_XML = Path(os.environ.get("NTU_XML_DIR") or ROOT / "Corpora" / "NTUFormosanCorpus" / "XML")
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
-# The 13 words whose FORM is X but whose gloss is something else. Held unchanged
-# (possible misalignments, not ruled on); a change to this list is a change to
-# the corpus that should be looked at.
+# The 13 words whose FORM is X but whose gloss is something else. Ruling
+# 2026-10-18: FORM -> <UNCLEAR/>, gloss and morphemes kept; a change to this list
+# is a change to the corpus that should be looked at.
 HELD = {
     "AtaNr-moving_Takun_S_106_W0": "FS",
     "AtaNr-proposal_Takun_S_143_W0": "??",
@@ -135,7 +145,7 @@ def test_untranscribed_word_in_every_tier(tmp_path):
     assert [_inner(p) for p in s1.findall("PHON")] == ["piaɾa ħaʦa <UNCLEAR /> aku ɾopas",
                                                        "piaɾa ħaʦa <UNCLEAR /> ako ɾopas"]
     w = ids["s1_W1"]
-    assert _inner(w.find("FORM")) == "<UNCLEAR />,"
+    assert _inner(w.find("FORM")) == "<UNCLEAR />"          # bare (ruling 2026-10-18)
     assert _inner(w.find("PHON")) == "<UNCLEAR />"
     assert [(t.get(XML_LANG), t.get("kindOf"), _inner(t)) for t in w.findall("TRANSL")] == [
         ("zho", "original", "<UNCLEAR />"), ("eng", "original", "<UNCLEAR />")]
@@ -158,11 +168,93 @@ def test_sentence_that_is_only_unclear_has_no_words(tmp_path):
     assert s2.findall("W") == [] and s2.findall("TRANSL") == []
 
 
-def test_x_word_with_a_real_gloss_is_left_alone(tmp_path):
+def test_x_word_with_a_real_gloss_gets_an_unclear_form_only(tmp_path):
     _, ids = _run(tmp_path)
     w = ids["s1_W3"]
-    assert w.find("FORM").text == "X." and w.find("TRANSL").text == "FS"
-    assert len(w.findall("M")) == 1
+    assert _inner(w.find("FORM")) == "<UNCLEAR />" and w.find("TRANSL").text == "FS"
+    assert [_inner(f) for f in w.find("M").findall("FORM")] == ["X."]     # M kept as is
+
+
+def test_x_part_of_a_word(tmp_path):
+    xml_dir = tmp_path / "xml"
+    xml_dir.mkdir()
+    (xml_dir / "a.xml").write_text("""<TEXT id="t" xml:lang="ami">
+    <S id="s1">
+        <FORM kindOf="original">kafana'an miXX, 我的XX在XX那邊 Xinyi</FORM>
+        <W id="s1_W0">
+            <FORM kindOf="original">mi-XX,</FORM>
+            <TRANSL xml:lang="eng" kindOf="original">AF-XX</TRANSL>
+            <M id="s1_W0M0"><FORM kindOf="original">XX,</FORM></M>
+        </W>
+        <W id="s1_W1"><FORM kindOf="original">Xinyi</FORM></W>
+    </S>
+</TEXT>""", encoding="utf-8")
+    table = tmp_path / "placeholders.tsv"
+    table.write_text("gloss\tlang\n", encoding="utf-8")
+    assert mu.main(["--xml_dir", str(xml_dir), "--placeholders", str(table)]) == 0
+    ids = {e.get("id"): e for e in ET.parse(xml_dir / "a.xml").getroot().iter() if e.get("id")}
+    assert _inner(ids["s1"].find("FORM")) == "kafana'an miXX, 我的<UNCLEAR />在<UNCLEAR />那邊 Xinyi"
+    assert _inner(ids["s1_W0"].find("FORM")) == "mi-<UNCLEAR />,"
+    assert ids["s1_W0"].find("TRANSL").text == "AF-XX"                 # gloss not ruled on
+    assert _inner(ids["s1_W0"].find("M/FORM")) == "XX,"                 # M not ruled on
+    assert _inner(ids["s1_W1"].find("FORM")) == "Xinyi"
+
+
+PUNCT_TABLE = """# comment
+lang\tchar\tcodepoint\tclass\taction\tnote
+ami\t,\tU+002C\tpunctuation\tdelete\t
+ami\t.\tU+002E\tunclear\thold\t
+ami\t'\tU+0027\tletter\tkeep\t
+ami\t-\tU+002D\tmarker\tkeep\t
+"""
+
+PUNCT_SAMPLE = """<?xml version="1.0" ?>
+<TEXT id="t" xml:lang="ami">
+    <S id="s1">
+        <FORM kindOf="original">haca, 'aca. , mi-<UNCLEAR/>,</FORM>
+        <W id="s1_W0">
+            <FORM kindOf="original">haca,</FORM>
+            <FORM kindOf="standard" ver="alt">haca,</FORM>
+            <M id="s1_W0M0"><FORM kindOf="original">haca,</FORM></M>
+        </W>
+        <W id="s1_W1"><FORM kindOf="original">'aca.</FORM></W>
+        <W id="s1_W2"><FORM kindOf="original">,</FORM></W>
+        <W id="s1_W3"><FORM kindOf="original">mi-<UNCLEAR/>,</FORM></W>
+    </S>
+</TEXT>"""
+
+
+def _strip(tmp_path, sample=PUNCT_SAMPLE):
+    xml_dir = tmp_path / "xml"
+    xml_dir.mkdir()
+    (xml_dir / "a.xml").write_text(sample, encoding="utf-8")
+    table = tmp_path / "chars.tsv"
+    table.write_text(PUNCT_TABLE, encoding="utf-8")
+    rc = swp.main(["--xml_dir", str(xml_dir), "--table", str(table)])
+    text = (xml_dir / "a.xml").read_text(encoding="utf-8")
+    return rc, text, {e.get("id"): e for e in ET.fromstring(text.split("\n", 1)[1]).iter() if e.get("id")}
+
+
+def test_word_punctuation_deleted_per_table(tmp_path):
+    rc, _, ids = _strip(tmp_path)
+    assert rc == 0
+    assert [_inner(f) for f in ids["s1_W0"].findall("FORM")] == ["haca", "haca"]    # every tier and variant
+    assert _inner(ids["s1_W0M0"].find("FORM")) == "haca"                              # M too
+    assert _inner(ids["s1_W1"].find("FORM")) == "'aca."      # ' a letter, . held
+    assert _inner(ids["s1_W2"].find("FORM")) == ","          # would be empty: left
+    assert _inner(ids["s1_W3"].find("FORM")) == "mi-<UNCLEAR />"
+    assert _inner(ids["s1"].find("FORM")) == "haca, 'aca. , mi-<UNCLEAR />,"         # S untouched
+
+
+def test_word_punctuation_second_run_changes_nothing(tmp_path):
+    _, text, _ = _strip(tmp_path)
+    assert swp.main(["--xml_dir", str(tmp_path / "xml"), "--table", str(tmp_path / "chars.tsv")]) == 0
+    assert (tmp_path / "xml" / "a.xml").read_text(encoding="utf-8") == text
+
+
+def test_word_punctuation_unlisted_character_stops(tmp_path):
+    with pytest.raises(SystemExit):
+        _strip(tmp_path, PUNCT_SAMPLE.replace("haca,</FORM>\n            <FORM", "haca;</FORM>\n            <FORM"))
 
 
 def test_second_run_changes_nothing(tmp_path):
@@ -195,10 +287,15 @@ UNKNOWN = re.compile(r"^\s*[?？]{1,3}\s*$")
 
 
 @pytest.fixture(scope="module")
-def sentences():
+def texts():
     files = sorted(NTU_XML.rglob("*.xml"))
     assert files, f"no XML found under {NTU_XML}"
-    return [s for path in files for s in ET.parse(path).getroot().iter("S")]
+    return [ET.parse(path).getroot() for path in files]
+
+
+@pytest.fixture(scope="module")
+def sentences(texts):
+    return [s for t in texts for s in t.iter("S")]
 
 
 def _held(w):
@@ -220,7 +317,9 @@ def test_x_words_are_unclear_and_have_no_morphemes(sentences):
             if any(re.fullmatch(r'\s*[.,!?;:"“”()]*X+[.,!?;:"“”()]*\s*', f.text or "") and len(f) == 0
                    for f in w.findall("FORM")):
                 bad.append(w.get("id"))
-            if any(f.find("UNCLEAR") is not None for f in w.findall("FORM")) and w.findall("M"):
+            # "If the W FORM is <UNCLEAR />, no Ms": a FORM that is only the marker
+            # (an X part, mi-<UNCLEAR/>, keeps its morphemes; ruling 2026-10-18).
+            if any(_inner(f) == "<UNCLEAR />" for f in w.findall("FORM")) and w.findall("M"):
                 bad.append(w.get("id") + " (has M)")
     assert bad == [], f"{len(bad)} X word(s) not converted, e.g. {bad[:5]}"
 
@@ -255,3 +354,74 @@ def test_held_words_are_unchanged(sentences):
     assert set(found) == set(HELD)
     for wid, gloss in HELD.items():
         assert gloss in found[wid], (wid, found[wid])
+
+
+# ------------------------------------------- rulings of 2026-10-18, published XML
+
+PARTIAL_X = {   # ruling 3: W id -> its original FORM as published
+    "Amis_Conv-talking_tamih_panay_S_122_W10": "mi-<UNCLEAR />",
+    "kkvNr_dailylife_Angai_S_9_W1": "<UNCLEAR />=maku.",          # Kanakanavu '.' is held
+    "kkvNr_family_Paicu_S_42_W1": "<UNCLEAR />=ci=kim",
+    "kkvNr_family_Paicu_S_47_W1": "<UNCLEAR />=ci=kim",
+    "RukaiNr-childhood_balenge_S_5_W0": "kia-<UNCLEAR />=aku",
+    "SaiNr-frog6_kalaeh a _oemaw_S_47_W10": "<UNCLEAR />-ralom-an",
+    "TsouConv-typhoon_S_326_W1": "mucian-shi-alishansiang-zuei-<UNCLEAR />.",   # Tsou '.' is held
+}
+# Word FORMs written only with a character to delete: deleting would empty them.
+EMPTY_IF_DELETED = {"bnNr-frog_Ciang_S_64_W5", "bnNr-frog_Ciang_S_64_W5M0",
+                    "bnNr-frog_Ciang_S_78_W8", "bnNr-frog_Ciang_S_78_W8M0"}
+
+
+@pytest.fixture(scope="module")
+def char_table():
+    return swp.load_table(CODEDOCS / "word_form_characters.tsv")
+
+
+def test_no_deletable_punctuation_in_word_or_morpheme_forms(texts, char_table):
+    bad, unlisted = [], set()
+    for t in texts:
+        lang = t.get(XML_LANG)
+        for el in [*t.iter("W"), *t.iter("M")]:
+            if el.get("id") in EMPTY_IF_DELETED:
+                continue
+            for f in el.findall("FORM"):
+                for ch in "".join(f.itertext()):
+                    if swp.is_content(ch):
+                        continue
+                    action = char_table.get((lang, ch))
+                    if action is None:
+                        unlisted.add((lang, ch))
+                    elif action == "delete":
+                        bad.append((el.get("id"), "".join(f.itertext())))
+                        break
+    assert unlisted == set(), f"characters missing from word_form_characters.tsv: {sorted(unlisted)}"
+    assert bad == [], f"{len(bad)} W/M FORM(s) still hold punctuation to delete, e.g. {bad[:5]}"
+
+
+def test_untranscribed_word_forms_are_bare(sentences):
+    bad = [(w.get("id"), _inner(f)) for s in sentences for w in s.findall("W") for f in w.findall("FORM")
+           if f.find("UNCLEAR") is not None and not re.search(r"[^\W_]", "".join(f.itertext()))
+           and _inner(f) != "<UNCLEAR />"]
+    assert bad == [], f"{len(bad)} word FORM(s) of an untranscribed word are not a bare <UNCLEAR/>, e.g. {bad[:5]}"
+
+
+def test_sentence_forms_keep_punctuation(sentences):
+    s = next(s for s in sentences if s.get("id") == "SaiNr-holiday_kalaeh a _oemaw_S_78")
+    assert _inner(s.find("FORM")) == "oh, isaa baiw ka isaa sipatabir <UNCLEAR />, si'aelen saboeh."
+
+
+def test_x_words_with_a_real_gloss_have_an_unclear_form(sentences):
+    words = {w.get("id"): w for s in sentences for w in s.findall("W") if w.get("id") in HELD}
+    assert set(words) == set(HELD)
+    for wid, w in words.items():
+        assert [_inner(f) for f in w.findall("FORM")] == ["<UNCLEAR />"] * len(w.findall("FORM")) != [], wid
+        assert w.findall("M"), wid                                        # morphemes kept
+
+
+def test_x_part_of_a_word_published(sentences):
+    words = {w.get("id"): w for s in sentences for w in s.findall("W") if w.get("id") in PARTIAL_X}
+    assert set(words) == set(PARTIAL_X)
+    for wid, form in PARTIAL_X.items():
+        assert [_inner(f) for f in words[wid].findall("FORM")] == [form, form], wid
+    s300 = next(s for s in sentences if s.get("id") == "sdqCon-dialog5_dakis_takun 2020s_S_300")
+    assert [_inner(f) for f in s300.findall("FORM")] == ["我的<UNCLEAR />在<UNCLEAR />那邊"] * 2

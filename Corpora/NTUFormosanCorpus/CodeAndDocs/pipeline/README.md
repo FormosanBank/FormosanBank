@@ -81,12 +81,32 @@ FORM and PHON, and in the word's FORM, PHON and `X` gloss, with the word's `M`
 removed; a word or morpheme gloss that is only `?`, `??` or `???`; a `?` piece
 inside a longer gloss only where `../unclear_gloss_placeholders.tsv` lists that
 gloss (shipped empty); a sentence translation that is only `?` or `XXX` is
-removed; and a sentence that is nothing but `<UNCLEAR/>` loses its word tier. A
-word written `X` whose gloss is something else (`FS`, `PART`, `father`, ...; 13
-words) is left as it is. It runs after `run_standard_and_phon.sh` because the
+removed; and a sentence that is nothing but `<UNCLEAR/>` loses its word tier.
+Rulings 2026-10-18: an untranscribed word's FORM is a bare `<UNCLEAR/>`, without
+the punctuation NTU attached; a word written `X` whose gloss is something else
+(`FS`, `PART`, `father`, ...; 13 words) gets `<UNCLEAR/>` as its FORM only, its
+PHON, glosses and morphemes kept as NTU wrote them; and an `X` run that is part
+of a word gets `<UNCLEAR/>` for that part only (`mi-XX,` → `mi-<UNCLEAR/>`, 7
+words; the sentence token `我的XX在XX那邊` → `我的<UNCLEAR/>在<UNCLEAR/>那邊`). It
+runs after `run_standard_and_phon.sh` because the
 shared `standardize.py` and `add_phonology.py` read `FORM.text`: given a FORM
 holding `<UNCLEAR/>` they would transliterate, or phonologize, only part of
-it. Every change, and each word held back, is listed in `logs/unclear_<Subcorpus>.tsv`.
+it. Every change is listed in `logs/unclear_<Subcorpus>.tsv`.
+
+Then `strip_word_punctuation.py` deletes punctuation from every word and
+morpheme FORM (ruling 2026-10-18: "Punctuation shouldn't be in W FORMs or M
+FORMs anyway. Delete everywhere in NTU."). Sentence FORMs keep theirs. What
+counts as punctuation is decided per language in `../word_form_characters.tsv`,
+which lists every character other than a letter or digit found in a word or
+morpheme FORM: `delete` (`,` `.` `!` `?` `"`), `keep` (`'`, the glottal stop in
+every NTU language's Ortho94/Ortho113 table but Seediq's, and the markers `-`
+`=` `<` `>` `~` `∅`), or `hold`, where the character is not clearly punctuation
+in that language (`.` inside words such as Atayal `asi.ki.na` or Tsou
+`Lao.Jia`; Rukai `?` standing for an unknown morpheme, `alupu-?=ini`; ...).
+Held characters stay, every occurrence, until the maintainer rules. A character
+the table does not list stops the build. A FORM that would be left empty (a
+Bunun word written only `,`) is left as it is. Changes are listed in
+`logs/word_punctuation_<Subcorpus>.tsv`.
 
 ## Word and morpheme tiers
 
@@ -208,6 +228,11 @@ Per POL-039, item-specific corrections live in data files, not in code:
   which `mark_unclear.py` writes each `?` that stands as a whole gloss piece
   (bounded by `-`, `=`, `.`, a space, or the ends) as `<UNCLEAR/>`. The
   maintainer decides these gloss by gloss; the table ships with no rows.
+- `../word_form_characters.tsv` — every character other than a letter or digit
+  in a word or morpheme FORM, per language (`lang`, `char`, `codepoint`,
+  `class`, `action`, `note`), read by `strip_word_punctuation.py`: `delete`,
+  `keep` (a letter or a morpheme marker) or `hold` (not clearly punctuation in
+  that language; awaiting a ruling).
 
 ## Gloss shifts
 

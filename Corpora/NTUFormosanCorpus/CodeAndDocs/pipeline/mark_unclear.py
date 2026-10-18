@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Write NTU's unknown-content markers as <UNCLEAR/> (maintainer's rulings, 2026-10-17).
+"""Write NTU's unknown-content markers as <UNCLEAR/> (maintainer's rulings, 2026-10-17
+and 2026-10-18).
 
 NTU writes a word it could not transcribe as X (README: "An untranscribed word is
 written `X`"; in practice X, XX, XXX or XXXX), glosses such a word X, and marks
@@ -16,12 +17,24 @@ What it does, per sentence (S):
    * every S-level PHON: the matching ``x+`` tokens (add_phonology's reading of
      X+) become <UNCLEAR/>; their number must equal the FORM's X tokens, or the
      build stops;
-   * every W whose FORMs are all X+ (punctuation kept as above) and whose glosses
-     are X+ or absent: FORM and PHON become <UNCLEAR/>, each X+ gloss becomes
-     <TRANSL ...><UNCLEAR/></TRANSL> (attributes kept), and its M are removed.
+   * every W whose FORMs are all X+ and whose glosses are X+ or absent: FORM and
+     PHON become <UNCLEAR/>, each X+ gloss becomes <TRANSL ...><UNCLEAR/></TRANSL>
+     (attributes kept), and its M are removed. The word FORM is a bare <UNCLEAR/>,
+     without the punctuation NTU attached to the X (ruling 2026-10-18, option
+     "Bare <UNCLEAR/>": "Punctuation shouldn't be in W FORMs or M FORMs anyway.
+     Delete everywhere in NTU."; the rest of that ruling is
+     strip_word_punctuation.py, the step after this one).
    * A W whose FORM is X+ but whose gloss is something else (FS, PART, father,
-     ?? ...) is left exactly as it is, M included: it may be a misalignment, and
-     the maintainer has not ruled on it. Each one is listed in the report.
+     ?? ...; 13 words). Ruling 2026-10-18: "FORM -> <UNCLEAR/>, keep the real
+     gloss (and its morphemes)". Every FORM of the word becomes a bare
+     <UNCLEAR/>; its PHON, glosses (including a ?? gloss) and M are left as NTU
+     wrote them. Each one is listed in the report.
+   * X as part of a word. Ruling 2026-10-18: "Convert the X part only
+     (mi-<UNCLEAR/>)". In every FORM of any other W (mi-XX, -> mi-<UNCLEAR/>,),
+     and in every S-level FORM (我的XX在XX那邊 -> 我的<UNCLEAR/>在<UNCLEAR/>那邊), a
+     run of X with no Latin letter on either side becomes <UNCLEAR/>. Nothing
+     else of these words changes (PHON, glosses, M, the fused sentence token
+     miXX,).
 2. Unknown glosses. Ruling: "B. A, plus ? used as a placeholder inside a gloss",
    A = "Convert glosses that are exactly ? or ??". A W or M TRANSL whose whole text
    is ?, ?? or ??? (half- or full-width) becomes <TRANSL ...><UNCLEAR/></TRANSL>.
@@ -64,6 +77,10 @@ X_GLOSS = re.compile(r"^\s*X+\s*$")
 # add_phonology's reading of an X+ token: x+ under Ortho94; *+ under Ortho113
 # (Kanakanavu's original PHON), which has no letter x.
 PHON_X = re.compile(r"(?<!\S)(?:x+|\*+)(?!\S)")
+# The X part of a word (ruling 3, 2026-10-18): an X run with no Latin letter on
+# either side. Whole-token X has been converted by then, and in a token such as
+# miXX, the X touches a letter, so this finds mi-XX, and 我的XX在XX那邊 only.
+PART_X = re.compile(r"(?<![A-Za-z])X+(?![A-Za-z])")
 UNKNOWN_GLOSS = re.compile(r"^\s*[?？]{1,3}\s*$")
 UNKNOWN_S_TRANSL = re.compile(r"^\s*(?:[?？]{1,3}|X+)\s*$")
 # A ? piece inside a longer gloss: bounded by - = . whitespace or the ends.
@@ -115,6 +132,31 @@ def replace_matches(el, pattern, group):
         pieces.append(text[pos:])
         set_mixed(el, [p for p in pieces if p != ""])
     return n
+
+
+def replace_in_mixed(el, pattern):
+    """Like replace_matches, in el.text and in the tail of each <UNCLEAR/> child."""
+    if any(c.tag != "UNCLEAR" for c in el):
+        raise SystemExit(f"mark_unclear: {el.tag} has a child other than UNCLEAR: "
+                         f"{etree.tostring(el, encoding='unicode')!r}")
+    pieces, n = [], 0
+    for seg_i, seg in enumerate([el.text or ""] + [c.tail or "" for c in el]):
+        if seg_i:
+            pieces.append(None)          # the existing <UNCLEAR/> child
+        pos = 0
+        for m in pattern.finditer(seg):
+            pieces += [seg[pos:m.start()], None]
+            pos = m.end()
+            n += 1
+        pieces.append(seg[pos:])
+    if n:
+        set_mixed(el, [p for p in pieces if p != ""])
+    return n
+
+
+def is_bare_unclear(el):
+    return len(el) == 1 and el[0].tag == "UNCLEAR" and not (el.text or "").strip() \
+        and not (el[0].tail or "").strip()
 
 
 def remove_keep_layout(el):
@@ -192,6 +234,11 @@ def process_sentence(s, placeholders, counts, report, rel):
             counts["S FORM X tokens -> UNCLEAR"] += n
             counts["S FORM elements changed"] += 1
             log("S FORM", sid, before, etree.tostring(form, encoding="unicode", with_tail=False))
+        before = "".join(form.itertext())
+        n = replace_in_mixed(form, PART_X)
+        if n:
+            counts["S FORM X part of a token -> UNCLEAR (ruling 3)"] += n
+            log("S FORM X part (ruling 3)", sid, before, etree.tostring(form, encoding="unicode", with_tail=False))
     for phon in s.findall("PHON"):
         n_words, positions = x_positions.get(phon.get("kindOf"), (0, []))
         if not positions:
@@ -230,13 +277,17 @@ def process_sentence(s, placeholders, counts, report, rel):
         wid = w.get("id")
         if is_x_word(w):
             if x_word_held(w):
-                counts["X word held (real gloss)"] += 1
+                # Ruling 2 (2026-10-18): FORM only; PHON, glosses and M stay.
+                counts["X word with real gloss: FORM -> UNCLEAR (ruling 2)"] += 1
                 glosses = " | ".join(f"{t.get(XML_LANG)}={text_of(t)}" for t in w.findall("TRANSL"))
-                log("HELD X word with real gloss", wid, " | ".join(f.text for f in w.findall("FORM")), glosses)
+                log("X word with real gloss: FORM -> UNCLEAR", wid,
+                    " | ".join(f.text for f in w.findall("FORM")), glosses)
+                for form in w.findall("FORM"):
+                    set_mixed(form, [None])
                 continue
             counts["W X words -> UNCLEAR"] += 1
             for form in w.findall("FORM"):
-                replace_matches(form, X_TOKEN, 2)
+                set_mixed(form, [None])     # bare: the punctuation goes (ruling 2026-10-18)
             for phon in w.findall("PHON"):
                 if has_children(phon) or not PHON_X.fullmatch((phon.text or "").strip()):
                     raise SystemExit(f"mark_unclear: {wid}: PHON {phon.text!r} is not x+ or *+")
@@ -250,6 +301,20 @@ def process_sentence(s, placeholders, counts, report, rel):
                 remove_keep_layout(m)
             log("W X word -> UNCLEAR", wid, "", etree.tostring(w, encoding="unicode", with_tail=False))
             continue
+
+        # A word whose FORMs are all a bare <UNCLEAR/> was handled above (a second
+        # run): its glosses stay as they are, a ruling-2 word's ?? included.
+        if all(is_bare_unclear(f) for f in w.findall("FORM")) and w.findall("FORM"):
+            continue
+
+        # Ruling 3: the X part of a word.
+        for form in w.findall("FORM"):
+            before = "".join(form.itertext())
+            n = replace_in_mixed(form, PART_X)
+            if n:
+                counts["W FORM X part -> UNCLEAR (ruling 3)"] += n
+                log("W FORM X part (ruling 3)", f"{wid} kindOf={form.get('kindOf')}", before,
+                    etree.tostring(form, encoding="unicode", with_tail=False))
 
         # 2 and 5 on this word's glosses and its morphemes' glosses.
         for node, level in [(w, "W")] + [(m, "M") for m in w.findall("M")]:
@@ -283,7 +348,7 @@ def main(argv=None):
         rel = str(path.relative_to(args.xml_dir))
         for s in tree.getroot().iter("S"):
             process_sentence(s, placeholders, counts, report, rel)
-        if any(r[3] != "HELD X word with real gloss" for r in report[before:]):
+        if report[before:]:
             write_like(path, tree.getroot())
             files += 1
     print(f"placeholder table rows: {len(placeholders)}")
