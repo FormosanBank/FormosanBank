@@ -1,16 +1,23 @@
-# Seediq-Chang-Reference-Grammar
+# Chang (2000) Seediq Reference Grammar
 
-**Basecamp card:** [6922277585](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/6922277585)
+This corpus is the Seediq (`trv`) material from Chang Yung-li's 張永利 2000 *賽德克語參考語法* [Seediq Reference Grammar] (Yuan-Liou Publishing), transcribed from scans of the book and proofread against the printed pages. It has two files: the interlinear example sentences of chapters 3–4 (351 sentences, word- and morpheme-glossed) and the chapter 5 narrative, a `sumuladuc` 祭祀 ritual account (37 sentences). Glosses and translations are in Mandarin (`zho`).
 
-**Primary language:** Seediq (`trv`), Tegudaya dialect (the book's 霧社方言; see Notes and Issues)
+## Languages and dialects
 
-**Status:** Audited 2026-10-16; see "Audit history" below
+**Primary language:** Seediq (`trv`), Tegudaya dialect (the book's 霧社方言; see the dialect note below)
 
-**Where it lives:** published in FormosanBank as `Corpora/Seediq-Chang-Reference-Grammar`;
-developed in the private repository `Formosan-Seediq-Chang-Reference-Grammar`. The
-two hold the same build code, and the build runs unchanged in either place.
+Both files, `XML/Seediq/chang-2000-seediq-reference-grammar.xml` (chapters 3–4) and
+`XML/Seediq/chang-2000-seediq-long-texts.xml` (chapter 5), carry `xml:lang="trv"` and
+`dialect="Tegudaya"` on their `TEXT` element. `trv` is the ISO 639-3 code for the
+whole Seediq family, Truku included; the `dialect` attribute is what makes this
+Seediq (Tegudaya) rather than Truku.
 
-**Created:** 2026-06-28 · **Last rebuilt:** 2026-10-16 (see `CodeAndDocs/provenance.json`)
+**Dialect.** The book says it describes the 霧社方言 (Wushe dialect), spoken in
+南豐 and 互助 villages, with consultants from 互助村 (printed p. 37: 本文研究的是霧社方言).
+FormosanBank tags this dialect `Tegudaya` (德固達雅; also called Tgdaya, Paran, 霧社).
+The book also thanks a speaker of the 春陽 dialect, Pastor 張秋雄 (walis ukan), for
+"許多寶貴的意見" (p. 38). FormosanBank's dialect detector agrees: Tegudaya, p = 0.96
+(grammar file) and 0.94 (chapter 5).
 
 ## Source
 
@@ -21,32 +28,23 @@ The author romanizes his name in **Wade-Giles**: *Chang Yung-li*. This repositor
 uses Chang everywhere: the corpus name, `TEXT/@id`, the XML filename, `@citation`,
 `@BibTeX_citation`, `@source` and the documentation.
 
+**Basecamp card:** [6922277585](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/6922277585)
+
 The 208-page primary scan and 105-page secondary scan came from the same Basecamp
 card. They are kept in the private development repository (Git-ignored `Private/`)
 and are not required for a build. Their hashes and page counts are recorded in
 `CodeAndDocs/source_alignment_audit.md`.
 
-## Rights
+There is no audio: the book is print only, and the XML has no `AUDIO` elements.
 
-**License:** CC BY-NC 4.0
+#### Scope: chapters 3–4 and the chapter 5 narrative
 
-**Rights source:** Chang Yung-li 張永利, 2024-01-07; evidence: ask maintainer
-
-Prof. Chang granted permission on 7 January 2024 to include the Formosan text,
-translations and glosses under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
-Attribution and the original citation must be retained; the grant is
-non-commercial. `TEXT/@copyright` carries the bare vocabulary value
-`CC BY-NC 4.0` and nothing else, per POL-042 — the grantor, the date and this
-evidence pointer belong here, not in the attribute.
-
-## Corpus
-
-### Scope: chapters 3 and 4 only
-
-**The corpus covers printed pp. 54–148 — chapters 3 and 4 — and no more.** The
+**The interlinear examples cover printed pp. 54–148 — chapters 3 and 4 — and no more; the chapter 5 narrative (pp. 151–159) is the corpus's second file.** The
 reviewed inventory was built for those chapters (see
-`finalize_source_inventory.py`), and two later chapters of the book are **not
+`finalize_source_inventory.py`); chapter 5 was transcribed separately (see "The chapter 5 narrative" below), and chapter 6 is **not
 represented at all**:
+
+* **Scope.** Chapters 3 and 4 (printed pp. 54–148) and the chapter 5 narrative (pp. 151–159). Chapter 6, the basic vocabulary list, is not included. Examples the book marks ungrammatical (`*`) or marginal (`?`) are left out.
 
 | Printed | PDF | Chapter | Status |
 |---|---|---|---|
@@ -65,7 +63,7 @@ at all, so a marker-keyed pass finds nothing there even when pointed at it.
 
 Chapter 6 remains unextracted by decision (maintainer, 2026-09-11).
 
-### The chapter 5 narrative
+#### The chapter 5 narrative
 
 `XML/Seediq/chang-2000-seediq-long-texts.xml` — **37 S / 269 W / 319 M**, the
 `sumuladuc` 祭祀 ritual account told by 傅景賢 (walis wadan) and retold by 錢成鏡
@@ -100,7 +98,7 @@ loan (`pizu為漢音字'譬如'`), so the detector flagging it is correct and no
 is wanted. And `tanah tunux` 'red head' is the narrator's idiom for the Japanese
 period, which the free translation renders as 日本時代.
 
-### What is in the corpus
+#### What is in the corpus
 
 The checked-in `CodeAndDocs/source_inventory.tsv` is a complete reviewed inventory
 of the 353 marked source blocks **in chapters 3–4**. It records an explicit
@@ -116,6 +114,139 @@ decision for every block:
 Leading ungrammatical or marginal examples are excluded. Grammatical slash
 alternatives and optional material are expanded. The source's parenthetical 用狗
 reading is retained as an alternate translation.
+
+## Statistics
+
+The table of word counts, audio, translations and glossing is generated from
+`statistics/Seediq-Chang-Reference-Grammar_corpora_stats.csv` and appears on this corpus's page
+on the [FormosanBank site](https://formosanbank.github.io/FormosanBank/).
+
+## How to cite
+
+If you use this corpus, or anything derived from it, in a publication, cite both
+FormosanBank and:
+
+Chang, Yung-li 張永利. 2000. 賽德克語參考語法 [Seediq Reference Grammar]. Yuan-Liou Publishing 遠流出版事業股份有限公司.
+
+The same reference in APA style:
+
+Chang, Y. (2000). *賽德克語參考語法* [Seediq reference grammar]. Yuan-Liou Publishing.
+
+See the FormosanBank [Terms of Use](https://formosanbank.github.io/FormosanBank/additional-resources/terms-of-use/).
+
+## License
+
+**License:** CC BY-NC 4.0
+
+**Rights source:** Chang Yung-li 張永利, 2024-01-07; evidence: ask maintainer
+
+CC BY-NC 4.0 (Creative Commons Attribution–NonCommercial), by permission of the author (Chang Yung-li).
+
+Prof. Chang granted permission on 7 January 2024 to include the Formosan text,
+translations and glosses under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
+Attribution and the original citation must be retained; the grant is
+non-commercial. `TEXT/@copyright` carries the bare vocabulary value
+`CC BY-NC 4.0` and nothing else, per POL-042 — the grantor, the date and this
+evidence pointer belong here, not in the attribute.
+
+## Notes and caveats
+
+#### In brief
+
+* **Orthography.** The major Seediq writing systems (Church, ILRDF 94, ILRDF 113) are
+  identical. Chang (2000) predates even ILRDF 94, but we treat the original tier as
+  113 for convenience. Note that the writing here differs from our other Seediq
+  sources in a few systematic ways: some words are written with vowels that the
+  other corpora leave out (`munekan`, elsewhere `mnekan`), and pronouns are
+  hyphenated onto the preceding word (`sapah-mu`, elsewhere `sapah mu`). The
+  significance of this is not currently clear. The standard tier keeps the book's spelling; it removes the morpheme hyphens, so the pronoun is joined to the word before it (`sapahmu`).
+* **One printed example can be several sentences.** Where the book prints optional material in parentheses or alternatives with a slash, each grammatical reading is its own sentence (ids `R275`, `R275-opt`, …), and its translation is adjusted where the printed one covers more than one reading. A reading identical to an earlier example is published once.
+* **One word per printed gloss.** Where the book prints one gloss under two words (e.g. `ani naq` 雖然, `kiya ka` 所以), the two are a single word element. A pronoun printed inside such a pair (`ani-ku naq`) is written as an infix, `ani<ku>naq` 雖然<我>.
+* **Infixes.** At the word tier, an infixed word is written with angle brackets, e.g. `b<n>eebu` glossed `打<完成貌>`. Sentences keep the book's hyphens (`b-n-eebu`). Where the book glosses each hyphen piece in a row (`m-un-ekan` AF-完成貌-吃), the morphemes follow the book.
+* **Unglossed words.** A word the book leaves unglossed has the gloss `<UNCLEAR/>`, e.g. the question particle `yee`, `lux` in `h-um-uwa-su lux`, sentence-initial `soka` (17 glosses: 8 words, 9 morphemes). In one gloss only part is unknown: `yee-su` is glossed `<UNCLEAR/>-你`. No sentence or word form, and no sentence translation, is `<UNCLEAR/>`.
+* **Where the published text corrects the book.** Everywhere else the original tier follows the printed page. These are the only places where the data departs from the print, and each carries a `notes` attribute: they are listed in the table under "In detail" below.
+* **A printing error left as printed.** The translation of 1c (p. 78) reads 煮飯的的人是我自己, with 的 doubled; its `notes` says so.
+* **Brackets and spacing.** Square and lenticular brackets (an embedded clause, or emphasis) are removed from the Seediq and the translations; the sentence's `notes` records what was bracketed. Parentheses are full-width in Chinese and ASCII in Seediq. Translations have no space beside a Latin-script name (`我相信pawan會打敗walis的。`).
+* **`da/di`** is published as `da`, with `di` as a variant FORM (`ver="alt"`).
+* **Review notes.** Notes from a 2026 proofreading of the whole corpus against the book are in `notes` attributes, attributed to the source the reviewer cited.
+
+#### In detail
+
+- **One W per printed gloss (POL-060).** Where the book prints one gloss under two
+  words, the two are a single W: `ani naq` 雖然, `ani sa` 但是, `kiya ka` 所以,
+  `ado ka` 如果, `bobo na` 之後, `di ge` 的時候, `daha ka` 跟, `asi ka` 應該/一定,
+  `saya ali` 今天, `uka ka` 沒有, `cubeyo hayan` 從前. Seven of these the book names
+  as single connectives in its own prose (printed pp. 138–146); the other four
+  follow the gloss's position on the page. These sentences have fewer W than
+  words, which V060 reports as SOFT by design.
+- **A pronoun inside such a pair is written as an infix.** The book prints
+  `ani-ku naq`, `ado-su ka` and `ado-ku ka`, with the pronoun between the two
+  words of the connective. The W is `ani<ku>naq` glossed `雖然<我>` (likewise
+  `ado<su>ka` 如果<你>, `ado<ku>ka` 如果<我>), split into M per POL-014. The
+  sentence-level FORM keeps the printed `ani-ku naq`, but the W's PHON runs the
+  words together (`anikunaq`). Each such W says so in its gloss's `notes`.
+- **Infixed words are written with angle brackets at the word tier (POL-014),
+  but the sentences keep the book's hyphens.** Where the book glosses a root
+  interrupted by an infix, e.g. `b-n-eebu` 打-完成貌, the word is `b<n>eebu`
+  glossed `打<完成貌>`, and its morphemes are the root `b-eebu` 打 and the infix
+  `-n-` 完成貌 (61 words, ruled 2026-10-15). Where the book instead glosses each
+  hyphen piece, e.g. `m-un-ekan` AF-完成貌-吃, the word follows the book: three
+  morphemes in a row, `m` AF + `un` 完成貌 + `ekan` 吃, and the printed gloss (18
+  words: `m-un-ekan`, `m-un-ekan-ku`, `m-un-usa`, `m-un-eyah`, `m-un-eyah-su`,
+  `k-um-ubunux`; ruled 2026-10-15).
+- **Morpheme FORMs carry no punctuation.** Quote marks, full-width punctuation and
+  ASCII `.,;:?!` are removed from morphemes; words and sentences keep theirs as
+  printed (ruled 2026-10-15).
+- **`laqi/sapah-mu` (R070) is read as `laqi-mu` / `sapah-mu`**: the book prints the
+  `-mu` (我的) once, on the second alternative, and it belongs to both (ruled
+  2026-10-16; `slash_scope.tsv`).
+- **A word the book leaves unglossed has the gloss `<UNCLEAR/>`**, e.g. the
+  question particle `yee`, `lux` in `h-um-uwa-su lux`, sentence-initial `soka`.
+  POL-061 inserted `?` for these; the maintainer ruled on 2026-10-17 that this
+  corpus's own `?` glosses become `<UNCLEAR/>` ("Our own POL-061 ? glosses become
+  <UNCLEAR/>" -> "Yes"). `build_xml.py` still uses `?` internally while splitting
+  glosses into morphemes, then `unclear_glosses()` replaces every W/M gloss piece
+  that is exactly `?` with the element, keeping the TRANSL's attributes:
+  `<TRANSL xml:lang="zho"><UNCLEAR/></TRANSL>` for a whole gloss (17: 9 M, 8 W),
+  and `<TRANSL …><UNCLEAR/>-你</TRANSL>` for the one partial gloss, `yee-su`
+  (R222). No sentence FORM, word FORM or sentence translation is `<UNCLEAR/>`.
+- **Where the published text corrects the book itself.** Everywhere else the
+  original tier follows the printed page: OCR and scrape errors were corrected
+  *toward* the print, in Hunter's scan review and in the 2026-10 student review,
+  whose every edit was checked against the scan. These are the only places where
+  what we publish departs from what the book prints. Each was ruled by the
+  maintainer (2026-10-14/15) and carries a `notes` attribute on the element it
+  changes:
+
+  | Book (printed page, example) | Book prints | Published | Why |
+  |---|---|---|---|
+  | p. 83, 2b | `mah-un` glossed 吃-PF | 喝-PF | the object is 水 'water'; a dictionary gives 喝 |
+  | pp. 119–120, 11b | 用-AF--我 | 用-AF-我 | the double hyphen is a typo |
+  | p. 140, 17a | `musa meepah` | `m-usa m-eepah` | hyphenated as in the book's other examples |
+  | p. 145, 25b | no translation | the translation of 23b/24b | the parallel examples |
+  | p. 147, 28a | `m-aha-ku` glossed AF-去-你 | AF-去-我 | `-ku` is first person, as in 29a–c |
+  | p. 147, 28a | `turima` glossed 洗 | 洗（AF） | to match 29a–c |
+  | pp. 147–148, 29a–c | `m-aha-ku` glossed AF-去-你 | AF-去-我 | `-ku` is first person |
+  | p. 108, 5 | one gloss, AF-在, under `m-enaq/gaga` | the `gaga` reading glossed 在 | the book glosses bare `gaga` 在 in 6b; the AF belongs to the `m-` of `m-enaq` |
+
+- **A known printing error is left as printed:** the translation of 1c (p. 78,
+  `yaku-naq (ka) pure ido`) reads 煮飯的的人是我自己, with 的 doubled; its `notes`
+  says so.
+- **Square and lenticular brackets are removed** from the Seediq and the
+  translations (the book uses them for an embedded clause or for emphasis; each
+  affected sentence's FORM `notes` records what was bracketed). **Parentheses are
+  standardized**: full-width in Chinese, ASCII in Seediq. **Translations carry no
+  spaces beside a Latin name** (`我相信pawan會打敗walis的。`), though the book sets
+  one; a space between two Latin words stays (`Awi Tone`).
+- **`da/di` is published as `da` with `di` as a variant FORM** (`ver="alt"`),
+  not as two sentences: both are glossed 起始貌 under one translation.
+- **`h-(um)-uwa` (R275) is published both ways**, `huwa` and `h-um-uwa`, as
+  separate sentences, because the optional infix changes the W/M tier.
+- **Notes from the 2026-10 student review** are in `notes` attributes, attributed
+  to the source the reviewer named (the book, a dictionary, the ILRDF online
+  grammar) or otherwise to the review.
+
+#### Import decisions
 
 **Starred parentheses are directional** (POL-017): `*(X)` marks X *obligatory*, so
 X is published without its star; `(*X)` marks X *forbidden*, so X is dropped. The
@@ -178,96 +309,36 @@ Mandarin rendering — an aspect 了, a progressive 在, a cleft 是 — that re
 is kept as a `TRANSL[@ver="alt"]`. All 15 merges are listed in
 `CodeAndDocs/deduplicated_variants.tsv` with what differed (POL-051).
 
-## Notes and Issues
+## Reproduction and processing
 
-- **Dialect.** The book says it describes the 霧社方言 (Wushe dialect), spoken in
-  南豐 and 互助 villages, with consultants from 互助村 (printed p. 37: 本文研究的是霧社方言).
-  FormosanBank tags this dialect `Tegudaya` (德固達雅; also called Tgdaya, Paran, 霧社).
-  The book also thanks a speaker of the 春陽 dialect, Pastor 張秋雄 (walis ukan), for
-  "許多寶貴的意見" (p. 38). FormosanBank's dialect detector agrees: Tegudaya, p = 0.96
-  (grammar file) and 0.94 (chapter 5).
-- **Orthography.** The major Seediq writing systems (Church, ILRDF 94, ILRDF 113) are
-  identical. Chang (2000) predates even ILRDF 94, but we treat the original tier as
-  113 for convenience. Note that the writing here differs from our other Seediq
-  sources in a few systematic ways: some words are written with vowels that the
-  other corpora leave out (`munekan`, elsewhere `mnekan`), and pronouns are
-  hyphenated onto the preceding word (`sapah-mu`, elsewhere `sapah mu`). The
-  significance of this is not currently clear.
-- **One W per printed gloss (POL-060).** Where the book prints one gloss under two
-  words, the two are a single W: `ani naq` 雖然, `ani sa` 但是, `kiya ka` 所以,
-  `ado ka` 如果, `bobo na` 之後, `di ge` 的時候, `daha ka` 跟, `asi ka` 應該/一定,
-  `saya ali` 今天, `uka ka` 沒有, `cubeyo hayan` 從前. Seven of these the book names
-  as single connectives in its own prose (printed pp. 138–146); the other four
-  follow the gloss's position on the page. These sentences have fewer W than
-  words, which V060 reports as SOFT by design.
-- **A pronoun inside such a pair is written as an infix.** The book prints
-  `ani-ku naq`, `ado-su ka` and `ado-ku ka`, with the pronoun between the two
-  words of the connective. The W is `ani<ku>naq` glossed `雖然<我>` (likewise
-  `ado<su>ka` 如果<你>, `ado<ku>ka` 如果<我>), split into M per POL-014. The
-  sentence-level FORM keeps the printed `ani-ku naq`, but the W's PHON runs the
-  words together (`anikunaq`). Each such W says so in its gloss's `notes`.
-- **Infixed words are written with angle brackets at the word tier (POL-014),
-  but the sentences keep the book's hyphens.** Where the book glosses a root
-  interrupted by an infix, e.g. `b-n-eebu` 打-完成貌, the word is `b<n>eebu`
-  glossed `打<完成貌>`, and its morphemes are the root `b-eebu` 打 and the infix
-  `-n-` 完成貌 (61 words, ruled 2026-10-15). Where the book instead glosses each
-  hyphen piece, e.g. `m-un-ekan` AF-完成貌-吃, the word follows the book: three
-  morphemes in a row, `m` AF + `un` 完成貌 + `ekan` 吃, and the printed gloss (18
-  words: `m-un-ekan`, `m-un-ekan-ku`, `m-un-usa`, `m-un-eyah`, `m-un-eyah-su`,
-  `k-um-ubunux`; ruled 2026-10-15).
-- **Morpheme FORMs carry no punctuation.** Quote marks, full-width punctuation and
-  ASCII `.,;:?!` are removed from morphemes; words and sentences keep theirs as
-  printed (ruled 2026-10-15).
-- **`laqi/sapah-mu` (R070) is read as `laqi-mu` / `sapah-mu`**: the book prints the
-  `-mu` (我的) once, on the second alternative, and it belongs to both (ruled
-  2026-10-16; `slash_scope.tsv`).
-- **A word the book leaves unglossed has the gloss `<UNCLEAR/>`**, e.g. the
-  question particle `yee`, `lux` in `h-um-uwa-su lux`, sentence-initial `soka`.
-  POL-061 inserted `?` for these; the maintainer ruled on 2026-10-17 that this
-  corpus's own `?` glosses become `<UNCLEAR/>` ("Our own POL-061 ? glosses become
-  <UNCLEAR/>" -> "Yes"). `build_xml.py` still uses `?` internally while splitting
-  glosses into morphemes, then `unclear_glosses()` replaces every W/M gloss piece
-  that is exactly `?` with the element, keeping the TRANSL's attributes:
-  `<TRANSL xml:lang="zho"><UNCLEAR/></TRANSL>` for a whole gloss (17: 9 M, 8 W),
-  and `<TRANSL …><UNCLEAR/>-你</TRANSL>` for the one partial gloss, `yee-su`
-  (R222). No sentence FORM, word FORM or sentence translation is `<UNCLEAR/>`.
-- **Where the published text corrects the book itself.** Everywhere else the
-  original tier follows the printed page: OCR and scrape errors were corrected
-  *toward* the print, in Hunter's scan review and in the 2026-10 student review,
-  whose every edit was checked against the scan. These are the only places where
-  what we publish departs from what the book prints. Each was ruled by the
-  maintainer (2026-10-14/15) and carries a `notes` attribute on the element it
-  changes:
+### How to reproduce
 
-  | Book (printed page, example) | Book prints | Published | Why |
-  |---|---|---|---|
-  | p. 83, 2b | `mah-un` glossed 吃-PF | 喝-PF | the object is 水 'water'; a dictionary gives 喝 |
-  | pp. 119–120, 11b | 用-AF--我 | 用-AF-我 | the double hyphen is a typo |
-  | p. 140, 17a | `musa meepah` | `m-usa m-eepah` | hyphenated as in the book's other examples |
-  | p. 145, 25b | no translation | the translation of 23b/24b | the parallel examples |
-  | p. 147, 28a | `m-aha-ku` glossed AF-去-你 | AF-去-我 | `-ku` is first person, as in 29a–c |
-  | p. 147, 28a | `turima` glossed 洗 | 洗（AF） | to match 29a–c |
-  | pp. 147–148, 29a–c | `m-aha-ku` glossed AF-去-你 | AF-去-我 | `-ku` is first person |
-  | p. 108, 5 | one gloss, AF-在, under `m-enaq/gaga` | the `gaga` reading glossed 在 | the AF belongs to the `m-` of `m-enaq`; the book glosses bare `gaga` 在 in 6b |
+```bash
+bash Corpora/Seediq-Chang-Reference-Grammar/CodeAndDocs/generate_xml.sh
+```
 
-- **A known printing error is left as printed:** the translation of 1c (p. 78,
-  `yaku-naq (ka) pure ido`) reads 煮飯的的人是我自己, with 的 doubled; its `notes`
-  says so.
-- **Square and lenticular brackets are removed** from the Seediq and the
-  translations (the book uses them for an embedded clause or for emphasis; each
-  affected sentence's FORM `notes` records what was bracketed). **Parentheses are
-  standardized**: full-width in Chinese, ASCII in Seediq. **Translations carry no
-  spaces beside a Latin name** (`我相信pawan會打敗walis的。`), though the book sets
-  one; a space between two Latin words stays (`Awi Tone`).
-- **`da/di` is published as `da` with `di` as a variant FORM** (`ver="alt"`),
-  not as two sentences: both are glossed 起始貌 under one translation.
-- **`h-(um)-uwa` (R275) is published both ways**, `huwa` and `h-um-uwa`, as
-  separate sentences, because the optional infix changes the W/M tier.
-- **Notes from the 2026-10 student review** are in `notes` attributes, attributed
-  to the source the reviewer named (the book, a dictionary, the ILRDF online
-  grammar) or otherwise to the review.
+The FormosanBank commit the published XML was last built with is recorded in
+[CodeAndDocs/provenance.json](CodeAndDocs/provenance.json) (POL-052; provenance
+only, a rebuild always runs the current tools).
 
-## Reproduce and validate
+`generate_xml.sh` changes into the corpus folder itself, so it can be run from the
+repository root as above or from the corpus folder as below. It needs the
+FormosanBank checkout's Python, `.venv/bin/python3` (or the interpreter named by
+`FORMOSANBANK_PYTHON`), and no network: every input it reads is committed under
+`CodeAndDocs/`. Its output is the two files under `XML/Seediq/` and a rewritten
+`CodeAndDocs/provenance.json`, plus the three generated tables named under step 2 below.
+
+**Where it lives:** published in FormosanBank as `Corpora/Seediq-Chang-Reference-Grammar`;
+developed in the private repository `Formosan-Seediq-Chang-Reference-Grammar`. The
+two held the same build code at the port (development commit `82e099f`, 2026-10-16); the
+2026-10-17 `<UNCLEAR/>` change to `build_xml.py` and `audit_source_alignment.py`
+is so far only in FormosanBank. The build runs unchanged in either place.
+
+**Status:** Audited 2026-10-16; see "Audit history" below
+
+**Created:** 2026-06-28 · **Last rebuilt:** 2026-10-17 (see `CodeAndDocs/provenance.json`)
+
+#### Reproduce and validate
 
 ```bash
 # THE entry point: source -> XML/. Build only, no validators (POL-047).
@@ -292,7 +363,8 @@ used to investigate that failure — you need the XML the validator objected to.
 
 The build rebuilds from `source_inventory.tsv` and is idempotent (POL-047): on a
 clean checkout a second run leaves `git status` empty, apart from
-`CodeAndDocs/provenance.json` when the FormosanBank commit has moved. It runs
+`CodeAndDocs/provenance.json` when the FormosanBank commit has moved or the build
+date has changed (the file records both). It runs
 against **whatever FormosanBank checkout it is pointed at** — the build is never
 pinned to an old commit (POL-047). The FormosanBank dependency is treated as
 read-only: both scripts record its commit and `git status` before and after, and
@@ -300,7 +372,126 @@ refuse to report success if the run changed it.
 
 The commit whose tools built the XML currently under `XML/` is recorded in
 [`CodeAndDocs/provenance.json`](CodeAndDocs/provenance.json) (POL-052). Rewrite
-that file on every rebuild.
+that file on every rebuild; `generate_xml.sh` does this itself as its last step.
+
+### What each step does
+
+`generate_xml.sh` runs with `set -euo pipefail`, so it stops at the first failing
+step. Before any step it:
+
+- finds FormosanBank with `formosanbank_path.sh` (`FORMOSANBANK_PATH` if set; else
+  `../..` when that folder holds `QC/cleaning/clean_xml.py`; else `../FormosanBank`);
+- checks that the Python interpreter is executable and that
+  `QC/cleaning/clean_xml.py` exists;
+- records FormosanBank's `HEAD` commit and its `git status --porcelain` (leaving out
+  this corpus's own folder when the corpus sits inside that checkout);
+- changes into the corpus folder and sets `PYTHONHASHSEED=0`,
+  `PYTHONDONTWRITEBYTECODE=1` and a temporary `MPLCONFIGDIR`, removed on exit.
+
+Then, in order:
+
+1. **`CodeAndDocs/transcribe_chapter5.py`** (corpus-local; chapter 5 only).
+   - Reads `CodeAndDocs/chapter5_transcription.tsv`: 40 rows, one per printed block,
+     with `record_id` (`C5-001` …), `printed_page`, the Seediq line, the gloss line,
+     the translation, `gloss_bracket` and a note. The Seediq and gloss lines are split
+     on spaces into word/gloss pairs; a row whose counts differ stops the run.
+   - Groups consecutive blocks that share one printed gloss bracket. `gloss_bracket`
+     is `opens_and_closes`, `opens_only`, `closes_only` or `none` (the title and the
+     section headings, which stand alone). When a block opens a bracket while the
+     previous one is still open, the rule ruled 2026-10-15 applies: if the previous
+     block's Seediq ends in `.`, `!`, `?`, `。`, `！` or `？`, its `]` is taken to be
+     dropped and a new example starts; otherwise the new `[` is the slip and the block
+     continues the open example. A group of several blocks becomes one record under the
+     first block's id, with the Seediq, glosses and translations joined and a note
+     naming the blocks; the later blocks stay as `exclude` rows with reason
+     `merged_into_<id>` (C5-009 into C5-008, C5-030 into C5-029).
+   - A block with no translation is excluded as `missing_source_translation` (C5-001,
+     the title `sumuladuc`).
+   - Writes `CodeAndDocs/chapter5_inventory.tsv`: 40 rows, 37 `include`, 3 `exclude`,
+     each with its locator `printed p. N / PDF p. N+16 / chapter 5 narrative`.
+2. **`CodeAndDocs/build_xml.py`** (corpus-local; both files).
+   - Reads `CodeAndDocs/source_inventory.tsv` and stops unless it has exactly 353 rows,
+     each `include` or `exclude` (273 are `include`).
+   - Loads its data tables: `translation_readings.tsv` (36 rows for 23 records),
+     `word_variants.tsv` (5 rows, `da/di` in R181–R185; a variant whose hyphens,
+     `=` or angle brackets differ from its base stops the build),
+     `reading_glosses.tsv` (1 row, R193), `slash_scope.tsv` (1 row, R070),
+     `shared_gloss_pairs.tsv` (11 pairs), `review_corrections.tsv` (60 rows for 47
+     records) and `review_xml_notes.tsv` (48 notes).
+   - For each included record, in inventory order: overlays the review corrections
+     (see "Review round trip" below); removes `[]［］【】` from the Seediq and the
+     translation; makes parentheses ASCII in the Seediq and full-width in glosses and
+     translations; removes the coindexation subscript `ᵢ`; applies `slash_scope.tsv`
+     and `reading_glosses.tsv`. A table row whose printed word or gloss no longer
+     matches stops the build.
+   - Expands each record into its grammatical readings: `(*X)` is dropped and `*(X)`
+     kept without its star; `(ka)` and a parenthesized group of words give a reading
+     without and one with them; optional letters inside a word (`h-(um)-uwa`) give a
+     bare and a full reading; a braced group is split at its slash; a slash gives one
+     reading per unstarred alternative, each with its own gloss when the gloss has as
+     many alternatives; a `word_variants.tsv` word keeps its base only. Every
+     combination of these choices is one reading: 366 in all.
+   - Gives each reading its translation (`translations_for()`): a
+     `translation_readings.tsv` row whose trigger word is in the reading; else that
+     record's fixed row (a primary and alternates); else a printed translation split
+     at `=` into a primary and alternates; else two quoted translations joined by 或,
+     the second as an alternate; else the printed translation.
+   - Merges readings whose sentence FORM is identical (`deduplicate()`): the first is
+     kept, the others' locators are added to its `S/@source`, and any of their
+     translations that differs from those it already has (ignoring spaces and
+     `，。、！？,.!?`) is added as a `TRANSL ver="alt"`. 15 readings are merged,
+     leaving 351. Ids are then assigned per record: the record id, then `-opt`,
+     `-opt3`, `-opt4`.
+   - Writes `XML/Seediq/chang-2000-seediq-reference-grammar.xml`: the `TEXT`
+     attributes (`id`, `xml:lang="trv"`, `dialect="Tegudaya"`, `source` with the
+     primary scan's SHA-256, `copyright="CC BY-NC 4.0"`, `citation`,
+     `BibTeX_citation`); per S, the original `FORM` (plus a `ver="alt"` FORM where
+     `da` has the variant `di`) and the Mandarin `TRANSL`s, with spaces beside Chinese
+     characters removed. W are built by `gloss_units()`: a `∅` gloss after the first
+     word of a `shared_gloss_pairs.tsv` pair joins the two words into one W (a pronoun
+     printed between them becomes an infix, `ani<ku>naq` 雖然<我>), and any other `∅`
+     becomes `?`. The W FORM writes a root-and-infix word with angle brackets
+     (`b<n>eebu`, gloss `打<完成貌>`). M are built by `morpheme_pairs()`: punctuation
+     is stripped; a root-and-infix word gives the root written with a hyphen
+     (`b-eebu`) plus the infix (`-n-`); otherwise hyphen pieces pair with gloss pieces
+     when the counts match, one extra gloss piece joins the first M, and anything else
+     is one M for the whole word. Ids are `<S id>W01`, `<S id>W01M01`, …. Review notes
+     are attached to the sentence FORM, its primary TRANSL or a word's gloss; a note
+     that finds no target stops the build. Last, `unclear_glosses()` turns each W/M
+     gloss piece that is exactly `?` into `<UNCLEAR/>`.
+   - Writes `XML/Seediq/chang-2000-seediq-long-texts.xml` from the 37 included rows of
+     `chapter5_inventory.tsv` the same way, but with no expansion, no merging and no
+     coindex removal: one S per row, with the row's id and locator, in narrative order.
+   - Writes three generated tables in `CodeAndDocs/`: `extracted_examples.tsv` (one
+     row per published chapter 3–4 sentence), `rejected_candidates.tsv` (the 80
+     excluded inventory rows with their reasons) and `deduplicated_variants.tsv` (the
+     15 merges and what differed). It prints a warning listing each merged copy whose
+     gloss or translation differed, and stops if a review correction matched no
+     included record.
+3. **`QC/cleaning/apply_manual_edits.py --corpora_path XML`**. There is no
+   `CodeAndDocs/manual_edits.xml`, so it prints that it found no manual-edits file and
+   changes nothing.
+4. **`QC/cleaning/clean_xml.py --corpora_path XML --warnings_dir CodeAndDocs`**, the
+   shared cleaner, on every FORM in the two files except standard-tier ones. Any
+   warnings go to `CodeAndDocs/cleaner_warnings.csv`, which a run with none removes
+   (none is committed).
+5. **`QC/utilities/standardize.py --remove_accents --hard-remove-segmentation --corpora_path XML`**.
+   Copies every original FORM (S, W and M, `ver="alt"` variants included) to a
+   standard FORM, with no letter conversion. It deletes accents the Seediq reference
+   orthography does not attest. On S-level standard FORMs only, it removes any
+   null-morpheme marker with its hyphen and, in sentences that have an M tier (here,
+   every sentence), the segmentation hyphens and `=`. `--hard-remove-segmentation` changes nothing here: it only matters
+   where `-` is a letter, and it is not one in Seediq. Any warnings go to
+   `XML/standardize_warnings.csv` (none is committed).
+6. **`QC/utilities/add_phonology.py --corpora_path XML`**. With no `--orthography`, it
+   writes standard `PHON` only, from the Ortho113 Seediq table's `Tegudaya` column;
+   there is no original `PHON`.
+7. **Dependency check.** FormosanBank's commit and `git status` are read again; if
+   either changed, the script prints "FormosanBank dependency changed during the
+   build; refusing success." and exits 2.
+8. **Provenance.** Inline Python rewrites `CodeAndDocs/provenance.json`:
+   `formosanbank_commit`, `built` (today's date) and the SHA-256 of each file under
+   `XML/Seediq/`.
 
 Key files:
 
@@ -337,8 +528,26 @@ Key files:
 - `CodeAndDocs/generate_xml.sh`: **the** entry point — source to published XML/
 - `CodeAndDocs/validate.sh`: every validator, plus the adjudication gate
 - `CodeAndDocs/adjudicate_findings.py`: requires zero HARD findings and dispositions every diagnostic
+- `CodeAndDocs/standardize_glosses.py`: not part of the build; a report-only (or, with
+  `--write`, additive) starting point for standardized W/M glosses.
 
-### Review round trip
+#### Validation (`validate.sh`)
+
+`validate.sh` stops with exit 2 if `XML/Seediq/chang-2000-seediq-reference-grammar.xml`
+does not exist. It writes each check's stdout, stderr and exit code under
+`qc-output/${QC_RUN:-latest}/` (Git-ignored), and runs, in order: the orthography
+detector on `XML` for `trv` (a diagnostic, not a gate); `audit_source_alignment.py`,
+which also rewrites `CodeAndDocs/source_alignment_audit.md`; `check_wellformed.py`;
+`validate_xml.py`; `validate_text.py` and `validate_glosses.py` (both with
+`--no-exit-on-hard`); `validate_dialect.py`; `validate_duplicate_sentences.py` on the
+original and the standard tier; then, for each tier, `orthography_extract.py`,
+`validate_orthography.py` and `validate_vocabulary.py` against
+`QC/validation/reference/` for Seediq. It then repeats the dependency check, runs
+`adjudicate_findings.py --qc-dir` on the output, replaces local paths in the output
+with `$REPO_ROOT`, `$FORMOSANBANK_PATH` and `$TMPDIR`, and exits 1 if any check
+failed. It never writes to `XML/`.
+
+#### Review round trip
 
 The Seediq words, their glosses and the free translations were all read off
 printed pages, so all three can carry transcription errors: misread characters
@@ -380,20 +589,20 @@ what the transcription pass read, and keeping "what we first read" separate from
 a different baseline is refused; a correction whose `was` no longer matches the
 inventory fails the build as stale; one matching no record fails the build; a
 row left with unequal word and gloss counts fails. The 23 records whose published
-translations are written out by hand in `translations_for()` refuse a translation
+translations are written out by hand in `translation_readings.tsv` (applied by `translations_for()`) refuse a translation
 correction (the page makes their translation read-only and asks for a note).
 
 Cards carry triage flags, so a reviewer with limited time knows where to start:
 `latin_gloss`, `unbalanced`, `substring`, `adjacent` (two neighbouring glosses
 that join into a word used elsewhere, which is the sharpest test), and `count`.
 
-### Why dedup is corpus-local (POL-046)
+#### Why dedup is corpus-local (POL-046)
 
 `QC/cleaning/remove_duplicate_sentences.py` **deletes** a duplicate `S`; it keeps
 the first by id order and drops the rest. As of 2026-09-11 it deletes only where
 the FORM *and* every TRANSL match, leaving the differing case for a human to
 resolve as `ver="alt"` (POL-025). This corpus needs that resolution, not a
-deletion: 10 of its 15 duplicate pairs carry a *different* Mandarin rendering of
+deletion: 9 of its 15 duplicate pairs carry a *different* Mandarin rendering of
 the same sentence, and every pair has a second source locator worth keeping. So
 `build_xml.deduplicate()` merges rather than deletes — carrying the locators into
 `S/@source` and the differing renderings into `TRANSL[@ver="alt"]` — and the
@@ -401,7 +610,7 @@ shared tool then finds nothing left to remove. Folding the merge behaviour into
 the shared tool would be the better long-term answer and belongs in its own
 `QC/` pull request (POL-049).
 
-### Deviations from POL-047 (stated, per the policy)
+#### Deviations from POL-047 (stated, per the policy)
 
 **POL-047 deviation:** the corpus-local parser is `build_xml.py` (preceded by `transcribe_chapter5.py`) rather than `generate_xml.py`, and the steps below depart from the canonical list as stated here.
 
@@ -417,7 +626,7 @@ the shared tool would be the better long-term answer and belongs in its own
   Bunun/Thao "hyphen is a letter" escape and does nothing for Seediq — verified
   by building with and without it. Harmless, and still worth removing.
 
-## Audit history
+#### Audit history
 
 Findings from the 2026-09-11 dev-repo audit, with their status:
 
@@ -444,7 +653,7 @@ Findings from the 2026-09-11 dev-repo audit, with their status:
   already carried by the morphosyntactic gloss (`-un` PF, `-an` LF, `s-`/`su-` RF),
   so nothing is lost.
 - ~~Render infix glosses inline, and reconcile `maha-ku`~~ — **both closed
-  2026-09-11.** Infix glosses are now written inline (`AF<完成貌>-吃` then; since 2026-10-15 `打<完成貌>`, see Notes and Issues), taking
+  2026-09-11.** Infix glosses are now written inline (`AF<完成貌>-吃` then; since 2026-10-15 `打<完成貌>`, see Notes and caveats), taking
   V153 from 26 findings to 8.
 
   The `maha-ku` half was **withdrawn as a mistaken finding**. An earlier audit
@@ -465,4 +674,4 @@ Findings from the 2026-09-11 dev-repo audit, with their status:
   and runs no validator; `CodeAndDocs/validate.sh` validates and writes nothing
   under `XML/`. `run_qc_pipeline.sh` is gone.
 
-No publication action has been taken.
+The corpus was published in FormosanBank on 2026-10-16 (commit `7738a75dc`).
