@@ -121,3 +121,16 @@ def test_multi_speaker_labels_removed(sentences):
     assert left == [], f"{len(left)} FORM(s) still hold a multi-speaker label, e.g. {left[:3]}"
     for sid, form in MULTI_LABEL_SENTENCES.items():
         assert [_inner(f) for f in sentences[sid].findall("FORM")] == [form] * 2, sid
+
+
+def test_full_width_slash_is_a_variant():
+    """Kanakanavu 3_S_512 'iisi／ramisi': "Yes, all as proposed" (2026-10-18) -- FORM iisi,
+    ramisi its alternate FORM."""
+    root = ET.parse(NTU_XML / "Sentences" / "Kanakanavu" / "Kanakanavu.xml").getroot()
+    s = next(s for s in root.iter("S") if s.get("id") == "3_S_512")
+    w = next(w for w in s.findall("W") if w.get("id") == "3_S_512_W2")
+    assert [(f.get("kindOf"), f.get("ver"), f.text) for f in w.findall("FORM")] == [
+        ("original", None, "iisi"), ("original", "alt", "ramisi"),
+        ("standard", None, "iisi"), ("standard", "alt", "ramisi")]
+    assert [f.text for f in s.findall("FORM")] == ["matikusaa karu iisi karu."] * 2
+    assert not any("／" in "".join(f.itertext()) for f in root.iter("FORM"))

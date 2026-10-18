@@ -86,7 +86,7 @@ xnb	=	U+003D	marker	keep	marker: clitic boundary
 xnb	>	U+003E	marker	keep	marker: infix bracket
 xnb	?	U+003F	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): a question mark at the end of a FORM is removed (isi?, pai'ici?)
 xnb	∅	U+2205	marker	keep	marker: null morpheme
-xnb	／	U+FF0F	unclear	hold	unclear: separates two forms, iisi／ramisi (3_S_512_W2)
+xnb	／	U+FF0F	unclear	hold	separates two forms, iisi／ramisi (3_S_512_W2); resolve_slash_alternatives.py now reads it as '/' (ruling 2026-10-18), so none reaches this step
 xsy	'	U+0027	letter	keep	letter: glottal stop in this language's Ortho94 and Ortho113 tables (Orthographies/Ortho94, Ortho113)
 xsy	,	U+002C	punctuation	delete	punctuation: comma
 xsy	-	U+002D	marker	keep	marker: affix boundary

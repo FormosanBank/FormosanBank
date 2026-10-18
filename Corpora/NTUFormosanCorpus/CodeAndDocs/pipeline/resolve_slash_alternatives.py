@@ -43,6 +43,10 @@ from apply_prune_and_mirror import segment_from_form  # noqa: E402
 from QC.xml_forms import find_base_form  # noqa: E402
 
 MARK = re.compile(r"[-=<>]")
+# The full-width solidus is the same separator: Kanakanavu 3_S_512 'iisi／ramisi'
+# (maintainer, 2026-10-18, NTU Word Forms page: "Yes, all as proposed" -- FORM
+# iisi, with ramisi as its alternate FORM).
+SLASH = re.compile(r"[/／]")
 OVERLAP_MIN = 0.6          # POL-028: an alternate looks like its sibling
 LENGTH_RATIO = 2           # POL-028: neither form may be twice the other
 
@@ -112,9 +116,9 @@ def resolve_word(w, stats: Counter, sentence_form: str = "") -> str | None:
     form = find_base_form(w, "original")
     if form is None:
         form = find_base_form(w)
-    if form is None or "/" not in (form.text or ""):
+    if form is None or not SLASH.search(form.text or ""):
         return None
-    raw = form.text
+    raw = form.text.replace("／", "/")
     parts = _readings(raw)
     if not parts:
         return None
@@ -176,9 +180,9 @@ def main() -> int:
                 changed = True
                 # Keep the sentence form in step with the word tier.
                 for sf in _forms(s):
-                    if sf.text and "/" in sf.text:
+                    if sf.text and SLASH.search(sf.text):
                         sf.text = " ".join(
-                            (tok.split("/")[0] if "/" in tok else tok)
+                            (SLASH.split(tok)[0] if SLASH.search(tok) else tok)
                             for tok in sf.text.split())
                         stats["sentence forms de-slashed"] += 1
         if changed and not args.dry_run:

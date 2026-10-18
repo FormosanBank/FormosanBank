@@ -101087,10 +101087,10 @@
         </W>
     </S>
     <S id="3_S_512">
-        <FORM kindOf="original">matikusaa karu iisi／ramisi karu.</FORM>
-        <PHON kindOf="original">matikusaa ka[r|ɾ]u iisi[r|ɾ]amisi ka[r|ɾ]u</PHON>
-        <FORM kindOf="standard">matikusaa karu iisi／ramisi karu.</FORM>
-        <PHON kindOf="standard">matikusaa ka[r|ɾ]u iisi[r|ɾ]amisi ka[r|ɾ]u</PHON>
+        <FORM kindOf="original">matikusaa karu iisi karu.</FORM>
+        <PHON kindOf="original">matikusaa ka[r|ɾ]u iisi ka[r|ɾ]u</PHON>
+        <FORM kindOf="standard">matikusaa karu iisi karu.</FORM>
+        <PHON kindOf="standard">matikusaa ka[r|ɾ]u iisi ka[r|ɾ]u</PHON>
         <TRANSL xml:lang="zho">抓這個木頭/樹根。</TRANSL>
         <TRANSL xml:lang="eng">Hold this tree</TRANSL>
         <TRANSL xml:lang="eng" ver="alt">tree root.</TRANSL>
@@ -101151,20 +101151,14 @@
             </M>
         </W>
         <W id="3_S_512_W2">
-            <FORM kindOf="original">iisi／ramisi</FORM>
-            <PHON kindOf="original">iisi[r|ɾ]amisi</PHON>
-            <FORM kindOf="standard">iisi／ramisi</FORM>
-            <PHON kindOf="standard">iisi[r|ɾ]amisi</PHON>
+            <FORM kindOf="original">iisi</FORM>
+            <PHON kindOf="original">iisi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
-            <M id="3_S_512_W2M0">
-                <FORM kindOf="original">iisi／ramisi</FORM>
-                <PHON kindOf="original">iisi[r|ɾ]amisi</PHON>
-                <FORM kindOf="standard">iisi／ramisi</FORM>
-                <PHON kindOf="standard">iisi[r|ɾ]amisi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
-            </M>
+            <FORM kindOf="original" ver="alt">ramisi</FORM>
+            <FORM kindOf="standard">iisi</FORM>
+            <PHON kindOf="standard">iisi</PHON>
+            <FORM kindOf="standard" ver="alt">ramisi</FORM>
         </W>
         <W id="3_S_512_W3">
             <FORM kindOf="original">karu</FORM>
