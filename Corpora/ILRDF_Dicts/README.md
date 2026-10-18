@@ -293,10 +293,21 @@ Every recording that is not published, and why, is listed in
 [CodeAndDocs/docs/audio_not_published.csv](CodeAndDocs/docs/audio_not_published.csv)
 (99,408 rows: 98,534 identical copies, 708 2024 recordings moved to
 untranscribed audio, 157 broken, 3 unreachable, 5 dropped by ruling, and 1
-note where main's recording replaced broken 2026 ones). Files the XML references that Hugging Face does not yet hold are
-listed by `audio_upload_manifest.py` in
+note where main's recording replaced broken 2026 ones).
+
+Hugging Face allows at most 10,000 files in one folder, so the three
+largest languages (Bunun, Rukai, Yami; `sharded_languages` in the repo-root
+`audio_sources.json`) are stored in 16 subfolders each, `<Lang>/<Lang>/0/`
+to `<Lang>/<Lang>/f/`, chosen by the first hex digit of the SHA-256 of the
+file name (`name_shard` in `QC/validation/validate_hf_audio.py`). This
+replaces Rukai's earlier `batch_1/` and `batch_2/` folders ("Shard big
+languages by name (Recommended)", maintainer, 2026-10-18). Files the XML
+references that are not yet at their Hugging Face path are listed by
+`audio_upload_manifest.py` in
 [CodeAndDocs/docs/audio_upload_manifest.csv](CodeAndDocs/docs/audio_upload_manifest.csv)
-(33,817 files, 4.0 GB).
+(59,407 rows: 33,817 new files to upload, 4.0 GB, and 25,590 Bunun, Rukai
+and Yami files already on Hugging Face under the old layout, column
+`hf_old_path`, which move into the subfolders by a copy on Hugging Face).
 
 ### Excluded content
 
@@ -323,6 +334,6 @@ listed by `audio_upload_manifest.py` in
 | `audio_recordings.py` | which recordings each sentence carries, and their file names |
 | `one_recording_per_s.py` | build step: one `S` per distinct recording |
 | `freeze_audio_fingerprints.py` | one-off: wrote `source_data/audio_fingerprints.tsv` from the fingerprinting run |
-| `audio_upload_manifest.py` | lists referenced audio missing from Hugging Face (`docs/audio_upload_manifest.csv`), offline, from the frozen listing; uploads nothing |
+| `audio_upload_manifest.py` | lists referenced audio not yet at its Hugging Face path (`docs/audio_upload_manifest.csv`: new files, and files that only move into the sharded folders), offline, from the frozen listing; uploads nothing |
 | `refresh_source.py` / `.sh` | re-scrape the API into snapshots (not part of reproduction) |
 | `tests/` | `python -m pytest CodeAndDocs/tests` |
