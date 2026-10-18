@@ -76,6 +76,12 @@ _L2M_RE = re.compile(
     r'|L2[A-Z]?(?![A-Za-z])'  # bare closing: hikokiL2J, luL2M
 )
 
+# A Mandarin tag pair with no 'L2' at all, wrapping the word: '<Mpi.jiaoM>'
+# (Tsou None-1, the source's only one; maintainer, 2026-10-18: strip it, as for
+# '<T2...'). Only the M pair, and only around a lower-case word, so infix
+# notation ('c<Um>Ura') can never match.
+_BARE_M_PAIR_RE = re.compile(r'<M([a-z][^<>\s]*?)M>')
+
 # Matches infix morpheme notation: <n>, <m>, <PF.PFV>, etc.
 # Angle-bracket spans whose content is NOT an L2 code-switch marker.
 _INFIX_RE = re.compile(r'<([^>]+)>')
@@ -149,6 +155,9 @@ def strip_l2m(form):
     is_code_switch : bool
         True if any marker was found and stripped.
     """
+    if _BARE_M_PAIR_RE.search(form):
+        form = _BARE_M_PAIR_RE.sub(r'\1', form)
+        return _L2M_RE.sub('', form), True
     if _L2M_RE.search(form):
         return _L2M_RE.sub('', form), True
     return form, False

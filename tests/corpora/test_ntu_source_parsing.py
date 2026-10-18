@@ -43,6 +43,8 @@ def _inner(el):
 
 @pytest.mark.parametrize("raw, clean", [
     ("<T2mi.jioL2T>].\\\\", "mi.jio."),     # the malformed tag, opening with no L
+    ("<Mpi.jiaoM>", "pi.jiao"),             # a bare M pair, no L2 at all
+    ("c<Um>Ura", "c<Um>Ura"),               # infix with a capital: not a tag
     ("<L2haiyaL2>", "haiya"),               # a bare <L2 still keeps the word's h
     ("<L2JjidenshaL2J>", "jidensha"),
     ("k<um>an", "k<um>an"),                 # infix notation untouched
@@ -83,8 +85,10 @@ def test_malformed_code_switch_tag_stripped(sentences):
     assert [_inner(f) for f in w.iter("FORM")] == ["mi.jio"] * 4
     assert [f.text for f in s.findall("FORM")] == ["'a lasi no 'so aiti honga 'o, 'o 'o ping.zhuang to mi.jio."] * 2
     leftovers = [(sid, "".join(f.itertext())) for sid, s in sentences.items() for f in s.iter("FORM")
-                 if "T2mi" in "".join(f.itertext())]
+                 if "T2mi" in "".join(f.itertext()) or "Mpi" in "".join(f.itertext())]
     assert leftovers == []
+    w = next(w for w in sentences["None-1_S_50"].findall("W") if w.get("id") == "None-1_S_50_W7")
+    assert [_inner(f) for f in w.iter("FORM")] == ["pi.jiao"] * 4
 
 
 def test_cited_excerpt_words_carry_no_transcription_apparatus():
