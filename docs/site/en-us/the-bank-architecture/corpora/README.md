@@ -89,7 +89,6 @@ In addition to the wide range of corpora already incorporated into FormosanBank,
 
 * The Sedik Language of Formosa by Erin Asai (Seediq)
 * Chang's Kavalan reference grammar (Kavalan)
-* Poinsot Amis Dictionary (Amis)
 * Moedict Amis (Amis)
 * ​hala saku la (videos - Atayal)
 * ​hala saku la (text - Atayal)
