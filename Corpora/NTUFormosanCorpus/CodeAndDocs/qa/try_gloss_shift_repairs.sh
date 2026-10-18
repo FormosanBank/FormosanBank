@@ -8,14 +8,14 @@
 # (default: accepted,proposed) -- and compares them with
 # gloss_shift_blast_radius.py. XML/ is never written.
 #
-# Both builds stop at the pre-cleanup checkpoint (build.sh's
+# Both builds stop at the pre-cleanup checkpoint (build_subcorpora.sh's
 # NTU_BUILD_CHECKPOINT): the steps that withdraw unsupported word and morpheme
 # tiers, borrow donor morphemes, and delete empty translations exist to deal
 # with what could NOT be fixed, so they should count neither for nor against a
 # fix. Set CHECKPOINT=published to compare the full builds instead.
 #
 # Environment: KEEP_DIR keeps both builds (<KEEP_DIR>/baseline, /candidate);
-# NTU_GLOSS_SHIFT_TABLE points at another repairs table; PYTHON as build.sh.
+# NTU_GLOSS_SHIFT_TABLE points at another repairs table; PYTHON as build_subcorpora.sh.
 set -euo pipefail
 SUB="${1:?usage: $0 <grammar|sentences|stories> [statuses] [report.md]}"
 STATUSES="${2:-accepted,proposed}"
@@ -35,7 +35,7 @@ WORK="$(mktemp -d)"; trap 'rm -rf "$WORK"' EXIT
 build() {   # $1 = label, $2 = statuses in force ("none" for the baseline)
   echo "=== building $OUT ($1; checkpoint: ${CP:-published}; statuses: $2)"
   NTU_BUILD_OUT="$WORK/$1" NTU_BUILD_CHECKPOINT="$CP" NTU_GLOSS_SHIFT_STATUSES="$2" \
-    "$CODEDOCS/pipeline/build.sh" "$SUB" > "$WORK/$1.log" 2>&1 \
+    "$CODEDOCS/pipeline/build_subcorpora.sh" "$SUB" > "$WORK/$1.log" 2>&1 \
     || { tail -30 "$WORK/$1.log"; exit 1; }
   grep -E "gloss-shift repairs applied" "$WORK/$1.log" || echo "  (no gloss-shift repairs applied)"
 }

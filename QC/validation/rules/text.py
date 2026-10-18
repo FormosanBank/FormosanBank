@@ -169,6 +169,8 @@ def _orthography_letters(lang: str, subdir: str | None = None) -> frozenset[str]
     `subdir` restricts the search to Orthographies/<subdir>/<Lang>.tsv;
     None searches every Orthographies/*/<Lang>.tsv. Multi-character letters
     are decomposed, following _orthography_allowed_chars.
+    A '.' that occurs only inside multi-character letters is left out (see
+    below).
 
     The unrestricted form is deliberately broad: nothing in the XML records
     which source orthography a corpus's original tier was written in, so a
@@ -184,6 +186,7 @@ def _orthography_letters(lang: str, subdir: str | None = None) -> frozenset[str]
         _ortho_letter_cache[key] = frozenset()
         return _ortho_letter_cache[key]
     chars: set[str] = set()
+    single: set[str] = set()
     for tsv_path in _ORTHOGRAPHIES_ROOT.glob(f"{subdir or '*'}/{name}.tsv"):
         try:
             with tsv_path.open(encoding="utf-8") as fh:
@@ -191,12 +194,71 @@ def _orthography_letters(lang: str, subdir: str | None = None) -> frozenset[str]
                 for line in fh:
                     parts = line.split("\t")
                     if parts:
-                        chars.update(parts[0].strip())
+                        letter = parts[0].strip()
+                        chars.update(letter)
+                        if len(letter) == 1:
+                            single.add(letter)
         except OSError:
             continue
+    # Ortho113 Thao writes l + h as `l.h` and t + h as `t.h`, so '.' occurs
+    # only inside those letters and never ends a word: a final '.' is a
+    # period (decision page card r3-v135, 2026-10-18). Only '.': Saisiyat's
+    # ':' also appears only inside letters (`o:e`, `a:e`) in its profile, yet
+    # ends words as the length mark (`hahila:`).
+    if "." in chars and "." not in single:
+        chars.discard(".")
     result = frozenset(chars)
     _ortho_letter_cache[key] = result
     return result
+
+
+_DECLARED_TABLE_FLAG = re.compile(r'--tsv_path[ =]+"?([^"\s]+)"?')
+_DECLARED_TABLE_NAME = re.compile(r"^([A-Za-z]+)_([A-Za-z0-9]+)_113\.tsv$")
+_declared_cache: dict[Path, dict[str, str]] = {}
+
+
+def _declared_source_orthographies(path: Path) -> dict[str, str]:
+    """{language name: source orthography folder} declared by the corpus's
+    CodeAndDocs/generate_xml.sh through its conversion tables
+    (`--tsv_path …/Amis_Church_113.tsv` → {"Amis": "Church"}; `94` is
+    Ortho94), read as declared_vs_detected.py reads them but per language,
+    since one script may standardize several languages. The corpus is the
+    nearest folder above the file that has CodeAndDocs/generate_xml.sh;
+    without one, or with only shell variables in the table names, nothing is
+    declared.
+    """
+    for folder in path.resolve().parents:
+        if folder in _declared_cache:
+            return _declared_cache[folder]
+        script = folder / "CodeAndDocs" / "generate_xml.sh"
+        if not script.is_file():
+            continue
+        declared: dict[str, str] = {}
+        try:
+            text = script.read_text(encoding="utf-8")
+        except OSError:
+            text = ""
+        for m in _DECLARED_TABLE_FLAG.finditer(text):
+            n = _DECLARED_TABLE_NAME.match(Path(m.group(1)).name)
+            if n:
+                source = n.group(2)
+                declared.setdefault(n.group(1), "Ortho" + source if source.isdigit() else source)
+        _declared_cache[folder] = declared
+        return declared
+    return {}
+
+
+def _original_tier_letters(lang: str, path: Path) -> frozenset[str]:
+    """Letters of the original tier: those of the source orthography the
+    corpus declares for this language, when Orthographies/<Source>/<Lang>.tsv
+    exists; otherwise every profile's letters (_orthography_letters(lang)),
+    as before.
+    """
+    name = _ISO_TO_ORTHO_NAME.get(lang)
+    source = _declared_source_orthographies(path).get(name or "")
+    if source and (_ORTHOGRAPHIES_ROOT / source / f"{name}.tsv").is_file():
+        return _orthography_letters(lang, source)
+    return _orthography_letters(lang)
 
 
 def _resolve_language(tree: etree._ElementTree) -> str:
@@ -1292,9 +1354,11 @@ def v135_trailing_punct_mismatch(
     One finding per offending S."""
     lang = _resolve_language(tree)
     # The two tiers are in different orthographies, so they get different
-    # letter sets: the original tier may be in any profiled source
-    # orthography, the standard tier is in Ortho113 by definition (POL-002).
-    original_letters = _orthography_letters(lang)
+    # letter sets: the original tier is in the source orthography the corpus
+    # declares (any profiled one when it declares none), the standard tier is
+    # in Ortho113 by definition (POL-002). A Church text ending in `mahacra?`
+    # ends in a question mark; a Montgomery one ending in `roma?` does not.
+    original_letters = _original_tier_letters(lang, path)
     standard_letters = _orthography_letters(lang, "Ortho113")
     findings: list[Finding] = []
     for s in tree.iter("S"):

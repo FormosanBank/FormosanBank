@@ -10,7 +10,10 @@ no translations, and never has. Word-level glosses are prose explanations rather
 than interlinear glosses. See "Reading the tiers" below before using either
 tier.
 
-## License and AI use
+## Rights
+
+**License:** CC BY-NC 4.0
+**Rights source:** Yedda Palemeq (the author), date not recorded in this repository; evidence: ask maintainer
 
 **Permission to license this material was given by the author, Yedda Palemeq.**
 The corpus is distributed under CC BY-NC 4.0, which is the value recorded in
@@ -35,11 +38,12 @@ prohibited without prior written permission.
 - 5,585 TRANSL elements
 - 665 AUDIO references
 - Canonical XML SHA-256:
-  `5144410793dc3292a75a81feade52d699443bffd2497837c702d31afbb786752`
+  `0ede251235c455644e540aa67e32df5e3f8fcb68925ac85ef776f20c5be2b43f`
 
 The original transcription uses the established Yedda Ortho113 route. The
 standard FORM tier is derived from the original tier, and both PHON tiers are
-regenerated with the pinned FormosanBank tooling.
+regenerated with the current FormosanBank tooling (the commit last used is
+recorded in [CodeAndDocs/provenance.json](CodeAndDocs/provenance.json)).
 
 ## Reading the tiers
 
@@ -85,6 +89,35 @@ a word containing an infix carry angle-bracket (`<AV>`-style) notation in its
 "-em- is actor voice (AV) case marker, and -in- is undergoer voice" — so the
 information is present and correct, merely written another way. V062 is a
 notation difference, not missing data.
+
+**Unknown word glosses are `<UNCLEAR/>`.** Where Yedda marks a word's meaning
+as unknown, the gloss is `<TRANSL xml:lang="eng"><UNCLEAR/></TRANSL>` rather
+than a literal question mark (maintainer's rulings, 2026-10-17). `build_xml.py`
+does this in three ways, and lists every change in
+`CodeAndDocs/data/formosanbank_audit/unclear_gloss_review.tsv` (9 rows):
+
+- A word or morpheme gloss that is exactly `?`, `??` or `???` (also full-width
+  `？`) becomes `<UNCLEAR/>`, keeping the TRANSL's attributes. One gloss:
+  `S77_1W5` `nu`.
+- `CodeAndDocs/gloss_to_notes.tsv` lists eight word glosses ruled one by one.
+  Seven start with `?` followed by Yedda's own comment (`? I cannot find this
+  word.`): the gloss becomes `<UNCLEAR/>` and the whole original text moves to
+  the TRANSL's `notes` attribute (`S419_1W20`, `S425_1W4`, `S425_1W27`,
+  `S427_1W7`, `S430_1W7`, `S617_1W4`, `S640_1W6`). The eighth, `S313_1W3`
+  `k<ar>im`, is glossed `to find`, with the original explanation in `notes`;
+  its two morphemes stay unglossed.
+- `CodeAndDocs/unclear_gloss_placeholders.tsv` (header `gloss<TAB>lang`) lists
+  glosses in which a `?` standing as a whole piece — bounded by `-`, `=`, `.`,
+  whitespace or the ends — is a placeholder; each such `?` becomes
+  `<UNCLEAR/>` and the rest of the gloss is kept. **It ships with no rows**;
+  rows are added only as the maintainer rules on them. A `?` attached to a word
+  (`LIG?`, `right?`, `clitic?`) is the author's own hedge and is kept as
+  written.
+
+Sentence translations are never converted, and no sentence or word `FORM` is
+`<UNCLEAR/>` in this corpus, so no W or M tier is affected. The shared
+pretty-printer puts a whole-gloss `<UNCLEAR/>` on its own indented line; the
+surrounding whitespace is formatting only.
 
 **Sixteen sentences carry no `W` tier at all.** The blog prints them as bare
 phrase entries with no word breakdown — `S268_1`, `S269_1`, `S378_1`–`S381_1`,
@@ -199,10 +232,10 @@ than renumbering unrelated records.
 
 `CodeAndDocs/` holds two separate things, and the distinction matters:
 
-- **`CodeAndDocs/scripts/` + `CodeAndDocs/data/` — the reproduction path.**
-  The frozen source snapshot, audit tables, builder, tests, and QC disposition.
-  These rebuild the canonical XML deterministically with no network access, and
-  are what the commands below run.
+- **`CodeAndDocs/generate_xml.sh`, `CodeAndDocs/scripts/` and
+  `CodeAndDocs/data/` — the reproduction path.** The frozen source snapshot,
+  audit tables, builder, tests, and QC disposition. These rebuild the canonical
+  XML deterministically with no network access.
 - **`CodeAndDocs/scrape/` — the scrape code.** `download_html.py`,
   `analyze_blog_structure.py`, and `download_audio.py`: the scripts that
   derived the corpus from the live blog in the first place, including the
@@ -216,51 +249,70 @@ than renumbering unrelated records.
 Reproducing the published corpus therefore means rebuilding from the frozen
 snapshot, not re-scraping. The **source** is pinned — development source commit
 `25ed1f1ec56584e4a3e9fc960269c72d0e892a58`, verified by hash at build time. The
-**tooling is not**: a rebuild uses the shared QC utilities from whatever
-FormosanBank checkout contains this corpus, so the corpus tracks improvements to
-`clean_xml.py`, `standardize.py` and `add_phonology.py` like every other corpus.
+**tooling is not** (POL-048): a rebuild uses the shared QC utilities from
+whatever FormosanBank checkout contains this corpus, so the corpus tracks
+improvements to `clean_xml.py`, `standardize.py` and `add_phonology.py` like
+every other corpus. The FormosanBank commit the published `XML/` was last built
+against is recorded in
+[CodeAndDocs/provenance.json](CodeAndDocs/provenance.json) (POL-052);
+`generate_xml.sh` rewrites that file when it runs at a different commit. It is
+a record, not a gate: the build never compares against it.
 
-> **Tool version of record.** `XML/` as published was last regenerated against
-> FormosanBank commit `c3ea819d23e6025cfbd9dda7cb7b594c4c2cc304`. `rebuild_xml.sh`
-> prints a note when the checkout differs — informational, not an error. To
-> reproduce that exact output rather than a current one, set `VALIDATOR_ROOT` to
-> a checkout at that commit.
-
-From a FormosanBank checkout, rebuild with:
-
-```bash
-Corpora/YeddaPalemeqBlog/CodeAndDocs/scripts/rebuild_xml.sh
-```
-
-`VALIDATOR_ROOT` (default: the checkout containing this corpus), `VALIDATOR_PYTHON`
-(default `python3`) and `RUN_LOG_DIR` (default: a fresh temp dir) are all
-optional overrides.
-
-Run the full QC suite with:
+From the repository root, rebuild with:
 
 ```bash
-VALIDATOR_ROOT=/path/to/pinned/FormosanBank \
-VALIDATOR_PYTHON=/path/to/python \
-OUTPUT_DIR=/absolute/new/path/outside/repo \
-Corpora/YeddaPalemeqBlog/CodeAndDocs/scripts/run_final_qc.sh
+Corpora/YeddaPalemeqBlog/CodeAndDocs/generate_xml.sh
 ```
 
-Run two clean committed-tree rebuilds and final QC with:
+It runs `scripts/build_xml.py` (frozen snapshot → original tier),
+`QC/cleaning/clean_xml.py`, `scripts/fix_m_tier.py`,
+`QC/utilities/standardize.py --remove_accents`,
+`QC/utilities/add_phonology.py --orthography Ortho113`, and
+`scripts/finalize_manifest.py` (writes the output hashes and counts to
+`CodeAndDocs/data/formosanbank_audit/manifest.json`). `PYTHON` (default
+`python3`) and `BUILD_LOG_DIR` (default: a fresh temp dir, where the cleaner's
+warnings go) are optional. To check reproduction, run it twice and confirm
+`git status --porcelain Corpora/YeddaPalemeqBlog/XML` prints nothing.
+
+**POL-047 deviation:** the corpus-local generator is `scripts/build_xml.py`
+rather than `generate_xml.py`, and two corpus-local steps sit inside the
+canonical order: `scripts/fix_m_tier.py` runs between `clean_xml.py` and
+`standardize.py` (it applies POL-023 per sentence, and `standardize.py`'s C012
+hyphen step depends on which sentences keep an M tier — see "Morpheme tier and
+standard-tier accents" above), and `scripts/finalize_manifest.py` runs after
+`add_phonology.py` to record hashes and counts of the output. No validator runs
+inside the build.
+
+Run the QC suite with:
 
 ```bash
-VALIDATOR_ROOT=/path/to/pinned/FormosanBank \
-VALIDATOR_PYTHON=/path/to/python \
-OUTPUT_DIR=/absolute/new/path/outside/repo \
-Corpora/YeddaPalemeqBlog/CodeAndDocs/scripts/reproduce.sh
+Corpora/YeddaPalemeqBlog/CodeAndDocs/validate.sh
 ```
 
-The pinned handoff has zero structural, text, or gloss HARD findings. Its
-9,915 soft finding occurrences are source-backed and fail-closed by exact
-rule counts — including one file-level V148 recording that 16 sentences are
-bare phrase entries the blog never broke into words. Eleven corpus regression tests cover source hashes, source
-coverage, reviewed repairs, stable tier shape, per-sentence M-tier
-consistency, standard-tier accent removal, and canonical XML identity.
-Published port readiness has zero HARD findings and zero warnings.
+`validate.sh` runs the corpus regression tests (`CodeAndDocs/tests/`),
+`scripts/verify_handoff.py`, `scripts/audit_issue_1.py --check-only`, the
+shared validators (`validate_xml`, `validate_text`, `validate_glosses`,
+`validate_dialect`, `validate_duplicate_sentences` on both tiers),
+`orthography_detector`, `validate_port_readiness`, and finally
+`scripts/adjudicate_qc.py`, which fails unless every finding matches the
+reviewed inventory by exact rule counts. `PYTHON` and `OUTPUT_DIR` (default: a
+fresh temp path) are optional. Twenty-three corpus regression tests cover
+source hashes, source coverage, reviewed repairs, stable tier shape,
+per-sentence M-tier consistency, standard-tier accent removal, unknown-gloss
+`<UNCLEAR/>` handling, and canonical XML identity.
+
+The reviewed inventory has zero structural, text, or gloss HARD findings and
+9,913 SOFT finding occurrences, all source-backed — including one file-level
+V148 recording that 16 sentences are bare phrase entries the blog never broke
+into words. It was first reviewed on 2026-09-04 (`CodeAndDocs/QC_STATUS.md`).
+Run on 2026-10-18 with the tools at the commit in `provenance.json`, the
+validators still report zero HARD findings, but four SOFT rules newer than that
+review report 72 findings the inventory does not list (V135 ×69, V153 ×1,
+V158 ×1, V163 ×1),
+and port readiness reports one P004 warning (the development source commit
+named above is not reachable in this repository, which is expected: dev repos
+are private); `adjudicate_qc.py` therefore stops at its first check. Those findings
+have not been reviewed.
 
 ## Audio
 
@@ -269,6 +321,35 @@ public YouTube audio through the central FormosanBank downloader. Downloaded
 audio is not tracked. The 665 referenced files total 4,217.7 seconds; the three
 shared alternative recordings are declared public dataset extras and excluded
 from corpus totals.
+
+## Notes and Issues
+
+Each item is described in full in the section named in brackets.
+
+- **No morpheme is glossed.** All 6,492 `M` elements have no `TRANSL`; the
+  blog segments words but glosses only whole words, in prose. ["Reading the
+  tiers"]
+- **731 of the 5,643 `W` elements have no `TRANSL`**, because the source gave
+  no explanation for that word in that example; glosses are never borrowed
+  from another post. ["Reading the tiers"]
+- **Sixteen sentences have no `W` tier** (`S268_1`, `S269_1`,
+  `S378_1`–`S381_1`, `S393_1`, `S533_1`, `S545_1`–`S545_8`): the blog prints
+  them as bare phrases. ["Reading the tiers"]
+- **Eight word glosses the blogger marked as unknown are `<UNCLEAR/>`**, with
+  her comment moved to `notes` where there was one; one more (`S313_1W3`) is
+  glossed `to find` with her explanation in `notes`. All 9 are listed in
+  `CodeAndDocs/data/formosanbank_audit/unclear_gloss_review.tsv`. ["Reading
+  the tiers"]
+- **Infixes are escaped text, not markup** (`s&lt;em&gt;eljec-an`); a consumer
+  that strips tags naively will corrupt these words. ["Reading the tiers"]
+- **Six series numbers are absent: 66, 183, 197, 480, 519 and 543.** The
+  corpus is not a complete run of the series. ["Source coverage"]
+- **Three recordings are omitted** (`S24_1`, `S483_1`, `S535_1` and their
+  `_1b` alternatives), because each recording reads both alternative
+  wordings. ["Source reconciliation"]
+- **The standard tier drops two Mandarin accents** in `S303_1` (`yípó` →
+  `yipo`, `āyí` → `ayi`), and `S652653654_2`'s standard FORM drops the
+  source's segmentation hyphens. ["Morpheme tier and standard-tier accents"]
 
 ## Citation
 

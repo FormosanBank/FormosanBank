@@ -3,7 +3,7 @@
 # pinned in source_release.tsv (github.com/liao961120/glossParser, gh-pages),
 # writes them into grammar/ sentence/ story/, and rewrites source_snapshot.json.
 #
-# NEVER invoked by make.sh or pipeline/build.sh: the build reads only the
+# NEVER invoked by generate_xml.sh or pipeline/build_subcorpora.sh: the build reads only the
 # committed JSONs, so a rebuild never depends on NTU's site.
 #
 #   ./refresh_source.sh --check    compare the committed JSONs with the pinned

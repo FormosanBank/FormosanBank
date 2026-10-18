@@ -1,0 +1,354 @@
+<title>Poinsot Line Transcription</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Serif+TC:wght@400;600&display=swap">
+<style>
+:root {
+  --bg: #F4F3EF; --surface: #FFFFFF; --sunken: #ECEAE4; --ink: #1E1D1A; --muted: #64615A; --line: #DAD6CD;
+  --accent: #1F5E6E; --accent-soft: #DDEEF1; --flag: #8A5F00; --flag-soft: #FFF3D6; --ok: #2E7D4F; --ok-soft: #E2F3E8;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --han: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  --ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { color-scheme: dark;
+    --bg: #15161A; --surface: #1D1F24; --sunken: #181A1E; --ink: #E7E6E2; --muted: #A09D95; --line: #2F3238;
+    --accent: #7FC4D4; --accent-soft: #1E3439; --flag: #E3B341; --flag-soft: #33290F; --ok: #6FCF97; --ok-soft: #173325; }
+}
+:root[data-theme="dark"] { color-scheme: dark;
+  --bg: #15161A; --surface: #1D1F24; --sunken: #181A1E; --ink: #E7E6E2; --muted: #A09D95; --line: #2F3238;
+  --accent: #7FC4D4; --accent-soft: #1E3439; --flag: #E3B341; --flag-soft: #33290F; --ok: #6FCF97; --ok-soft: #173325; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--ui); margin: 0; }
+.wrap { max-width: 1100px; margin: 0 auto; padding-inline: 16px; padding-block: 0 64px; }
+h1 { font-size: 1.35rem; font-weight: 600; margin: 0; text-wrap: balance; }
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); padding-block: 12px; }
+.bar-in { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
+.grow { flex: 1 1 240px; min-width: 0; }
+.sub { color: var(--muted); font-size: .85rem; }
+.meter { height: 6px; background: var(--sunken); border-radius: 3px; overflow: hidden; margin-top: 6px; max-width: 360px; }
+.meter > i { display: block; height: 100%; background: var(--ok); width: 0; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 6px 12px; font-size: .9rem; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.mode { margin-top: 14px; border-radius: 8px; padding: 10px 14px; font-size: .9rem; border: 1px solid var(--line); background: var(--surface); }
+.mode.server { border-color: var(--ok); background: var(--ok-soft); }
+.mode.local { border-color: var(--flag); background: var(--flag-soft); }
+details.guide { margin-top: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 16px; }
+details.guide summary { cursor: pointer; font-weight: 600; }
+.guide-body { max-width: 74ch; }
+.guide-body li { margin-block: 4px; }
+code, .mono { font-family: var(--mono); font-size: .92em; }
+.han { font-family: var(--han); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 18px 12px; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 4px 12px; font-size: .85rem; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.list { display: grid; gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 10px; min-width: 0; }
+.card.done { border-color: color-mix(in srgb, var(--ok) 55%, var(--line)); }
+.head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+.rid { font-family: var(--mono); font-weight: 500; }
+.tag { font-size: .75rem; border-radius: 4px; padding: 1px 7px; background: var(--sunken); color: var(--muted); margin-left: auto; }
+.tag.ok { background: var(--ok-soft); color: var(--ok); }
+.ctx { display: grid; gap: 4px; font-size: .9rem; }
+.ctx div { overflow-wrap: anywhere; }
+.ctx .lbl { color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; margin-right: 6px; }
+.ctx .t { font-family: var(--mono); }
+.ctx .t .h { font-family: var(--han); }
+.scan { background: #fff; border: 1px solid var(--line); border-radius: 4px; overflow-x: auto; }
+.scan img { display: block; max-width: 100%; height: auto; }
+.field { display: grid; gap: 4px; }
+.field > label { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.tx { font-family: var(--mono), var(--han); font-size: 1.02rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); padding: 8px 10px; width: 100%; resize: vertical; min-height: 2.6em; }
+.note { border: 1px solid var(--line); border-radius: 6px; background: var(--bg); padding: 6px 10px; width: 100%; resize: vertical; min-height: 2.2em; font-size: .9rem; }
+.choices { display: flex; flex-wrap: wrap; gap: 8px; }
+.choice { border: 1px solid var(--line); background: var(--bg); border-radius: 6px; padding: 6px 12px; font-size: .88rem; }
+.choice[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.foot { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.rev { border: 1px solid var(--ok); color: var(--ok); background: transparent; border-radius: 6px; padding: 6px 14px; font-weight: 500; }
+.rev[aria-pressed="true"] { background: var(--ok); color: var(--surface); }
+.copybox { margin-top: 14px; background: var(--surface); border: 1px solid var(--accent); border-radius: 8px; padding: 12px 14px; display: grid; gap: 8px; }
+.copybox textarea { width: 100%; height: 140px; font-family: var(--mono); font-size: .78rem; }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 8px 16px; border-radius: 6px; font-size: .9rem; z-index: 9; max-width: calc(100% - 32px); }
+</style>
+
+<div class="bar">
+  <div class="wrap bar-in">
+    <div class="grow">
+      <h1>Poinsot Line Transcription</h1>
+      <div class="sub" id="progress">Loading…</div>
+      <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+    </div>
+    <div class="actions">
+      <span class="sub" id="saved"></span>
+      <button class="btn primary" id="btn-download" type="button">Download my work</button>
+      <button class="btn" id="btn-load" type="button">Load saved file</button>
+      <input type="file" id="file-in" accept=".json,application/json" hidden>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="mode" id="mode">Connecting…</div>
+  <section class="copybox" id="copybox" hidden>
+    <div>Saving a file is not available here. Copy the text below and send it to the maintainer, or paste it into a plain-text file named <code>poinsot-lines.json</code>.</div>
+    <textarea id="copy-text" readonly aria-label="Your work as text"></textarea>
+    <div class="actions"><button class="btn primary" id="btn-copy" type="button">Copy</button><button class="btn" id="btn-copy-close" type="button">Close</button></div>
+  </section>
+
+  <details class="guide" id="guide">
+    <summary>What to do</summary>
+    <div class="guide-body">
+      <p>These are lines from <span class="han">博利亞潘世光阿漢字典</span> (O Citig no Amis, Cuerq &amp; Pourrias 2002), an Amis–Chinese dictionary. When the book was typed up, each of these printed lines was marked as blank by mistake, so its text is missing. Each card shows a strip of the page scan, five printed lines, with the missing line among them.</p>
+      <ul>
+        <li><strong>Find the line.</strong> The card gives the text of the line just <em>above</em> and just <em>below</em> the missing one. The missing line is the one between them in the scan. Don't rely on its position in the strip; the strips are sometimes cut one line off.</li>
+        <li><strong>Type it exactly as printed:</strong> the Amis, the Chinese, and all punctuation. Use <code>’</code> or <code>'</code> for the Amis apostrophe (either is fine), <code>-</code> for a dash, <code>=</code>, and the braces <code>{S}</code>, <code>{N}</code>, <code>{J}</code> etc. as printed. For the colon between the Amis and the Chinese, type <code>:</code>. Keep the book's spelling even if it looks odd.</li>
+        <li><strong>A line can be part of a longer entry</strong> (it may start in the middle of a sentence). Type just that printed line.</li>
+        <li><strong>If the line is really blank</strong> (white space, a picture, a page edge), choose <em>Really blank</em>. If you can't read part of it, type what you can, put <code>[?]</code> where you can't, and say so in the note.</li>
+        <li><strong>Mark done</strong> when the card is finished.</li>
+      </ul>
+      <p><strong>Saving your work.</strong> Your typing is kept in this browser as you go, but nowhere else. At the end of every session, click <em>Download my work</em> and keep the file. It holds everything you have done so far, finished or not. To continue later, or on another computer, open this page and click <em>Load saved file</em> to pick up where you left off, then download again when you stop. When you are done, or whenever you are asked, send the latest file to the maintainer. Sending an unfinished file is fine.</p>
+    </div>
+  </details>
+
+  <div class="filters" role="group" aria-label="Filter cards">
+    <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+    <button class="chip" type="button" data-filter="todo" aria-pressed="false">Not done</button>
+    <button class="chip" type="button" data-filter="done" aria-pressed="false">Done</button>
+  </div>
+  <div class="list" id="list"></div>
+</main>
+<div class="toast" id="toast" hidden></div>
+
+<script type="application/json" id="baseline">/*__BASELINE__*/</script>
+<script>
+(function () {
+  "use strict";
+  var BASE = JSON.parse(document.getElementById("baseline").textContent);
+  var FORMAT = BASE.format, CARDS = BASE.cards, BY_ID = {};
+  CARDS.forEach(function (c) { BY_ID[c.id] = c; });
+  var LS_KEY = "poinsot-lines:" + FORMAT;
+  var state = { edits: {}, unsynced: {}, filter: "all" };
+  var mode = "starting", db = null, downloads = null, timers = {}, inflight = {}, pending = {};
+
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k]; if (v === null || v === undefined || v === false) return;
+      if (k === "text") n.textContent = v; else if (k === "className") n.className = v;
+      else if (k.slice(0, 2) === "on") n.addEventListener(k.slice(2), v); else n.setAttribute(k, v === true ? "" : v);
+    });
+    (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return n;
+  }
+  function toast(m) { var t = document.getElementById("toast"); t.textContent = m; t.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(function () { t.hidden = true; }, 3500); }
+  function current(id) {
+    var e = state.edits[id], c = BY_ID[id];
+    if (e && e.base === c.hash) return e;
+    return { base: c.hash, text: "", status: "", note: "", done: false, updatedAt: 0 };
+  }
+  function editable(id) { var e = state.edits[id]; if (!e || e.base !== BY_ID[id].hash) { e = current(id); state.edits[id] = e; } return e; }
+  function isDone(id) { var e = state.edits[id]; return !!(e && e.base === BY_ID[id].hash && e.done); }
+  function plain(e) { return { base: e.base, text: e.text || "", status: e.status || "", note: e.note || "", done: !!e.done, updatedAt: e.updatedAt || 0 }; }
+
+  function saveLocal() { try { localStorage.setItem(LS_KEY, JSON.stringify({ edits: state.edits, unsynced: state.unsynced, changeCounter: changeCounter, lastDownload: lastDownload })); } catch (e) {} }
+  function loadLocal() {
+    try { var d = JSON.parse(localStorage.getItem(LS_KEY) || "null"); if (d) { state.edits = d.edits || {}; state.unsynced = d.unsynced || {}; changeCounter = d.changeCounter || 0; lastDownload = d.lastDownload == null ? null : d.lastDownload; } } catch (e) {}
+    try { var f = localStorage.getItem(LS_KEY + ":filter"); if (f) state.filter = f; } catch (e) {}
+  }
+  function touch(id) {
+    var e = editable(id); e.updatedAt = Date.now(); state.unsynced[id] = e.updatedAt; changeCounter++; updateNudge();
+    saveLocal(); setSaved("Saving…"); clearTimeout(timers[id]); timers[id] = setTimeout(function () { writeServer(id); }, 700); counts();
+  }
+  function setSaved(t) { document.getElementById("saved").textContent = t; }
+  // changes since the last download (local mode): a reminder to download before closing
+  var changeCounter = 0, lastDownload = null;
+  function updateNudge() {
+    var n = document.getElementById("nudge"); if (!n) return;
+    if (lastDownload === null) n.textContent = changeCounter ? "You have not downloaded your work yet." : "";
+    else { var s = changeCounter - lastDownload; n.textContent = s > 0 ? s + " change" + (s === 1 ? "" : "s") + " since your last download." : "Your last download includes all your changes."; }
+  }
+  function writeServer(id, retried) {
+    if (mode !== "server" || !db) { setSaved(mode === "local" ? "Saved in this browser" : ""); return; }
+    if (inflight[id]) { pending[id] = true; return; }
+    inflight[id] = true;
+    var stamp = state.edits[id].updatedAt;
+    db.doc("edits/" + id).set(plain(state.edits[id])).then(function () {
+      if (state.unsynced[id] === stamp) { delete state.unsynced[id]; saveLocal(); }
+      setSaved("Saved " + new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
+    }).catch(function (err) {
+      var code = err && err.code;
+      if (["invalid_argument", "not_granted", "revoked", "capability_disabled", "capability_removed"].indexOf(code) >= 0)
+        setMode("local", "The server did not accept your work, so it is kept in this browser instead.");
+      else if (!retried && (code === "unavailable" || code === "resource_exhausted")) {
+        setTimeout(function () { inflight[id] = false; writeServer(id, true); }, 1500 + Math.random() * 1500); return "retrying";
+      } else setSaved("Could not reach the server; kept in this browser");
+    }).then(function (r) { if (r === "retrying") return; inflight[id] = false; if (pending[id]) { pending[id] = false; writeServer(id); } });
+  }
+  function setMode(m, why) {
+    mode = m; var box = document.getElementById("mode"); box.className = "mode " + m; box.textContent = "";
+    if (m === "server") {
+      box.appendChild(el("strong", { text: "Your work saves automatically." }));
+      box.appendChild(document.createTextNode(" You can close this page and continue later, on any computer."));
+    } else {
+      box.appendChild(el("strong", { text: "Your work is kept in this browser only." }));
+      box.appendChild(document.createTextNode(" Clearing browsing data or switching computers loses it. Before you stop, click Download my work and keep the file. To continue, click Load saved file. Send the latest file to the maintainer, finished or not."));
+      box.appendChild(el("div", { id: "nudge", className: "sub" }));
+      updateNudge();
+    }
+  }
+  function connect() {
+    var api = window.claude && window.claude.use ? window.claude : null;
+    if (!api) { setMode("local"); return; }
+    api.use("downloads").then(function (d) { downloads = d; }).catch(function () {});
+    Promise.all([api.use("db").catch(function () { return null; }), api.use("user").catch(function () { return null; })]).then(function (res) {
+      db = res[0]; var user = res[1];
+      if (!db) { setMode("local"); return; }
+      var canP = user ? user.can("data.write").catch(function () { return null; }) : Promise.resolve(null);
+      return canP.then(function (can) {
+        if (can === false) { db = null; setMode("local", "This page is open to you for viewing, not for saving to the server."); return; }
+        setMode("server"); subscribe();
+      });
+    }).catch(function () { setMode("local"); });
+  }
+  function subscribe() {
+    var first = true;
+    db.collection("edits").onSnapshot(function (snap) {
+      var seen = {};
+      snap.docs.forEach(function (d) {
+        if (!d.exists || !BY_ID[d.id]) return;
+        var r = d.data(); if (r.base !== BY_ID[d.id].hash) return;
+        seen[d.id] = true;
+        var l = state.edits[d.id];
+        if (!l || (r.updatedAt || 0) > (l.updatedAt || 0)) {
+          state.edits[d.id] = JSON.parse(JSON.stringify(r));
+          if (state.unsynced[d.id] && state.unsynced[d.id] <= (r.updatedAt || 0)) delete state.unsynced[d.id];
+          var a = document.activeElement; if (!(a && a.closest && a.closest("#card-" + CSS.escape(d.id)))) rerender(d.id);
+        }
+      });
+      Object.keys(state.edits).forEach(function (id) { if (!seen[id] && !state.unsynced[id]) { delete state.edits[id]; rerender(id); } });
+      if (first) {
+        first = false;
+        // only edits made here that the server never confirmed go up
+        Object.keys(state.unsynced).forEach(function (id) {
+          if (BY_ID[id] && state.edits[id] && state.edits[id].base === BY_ID[id].hash) writeServer(id); else delete state.unsynced[id];
+        });
+      }
+      saveLocal(); counts();
+    }, function () { setMode("local", "The connection to the server was lost."); });
+  }
+
+  function counts() {
+    var done = CARDS.filter(function (c) { return isDone(c.id); }).length;
+    document.getElementById("progress").textContent = done + " of " + CARDS.length + " lines done";
+    document.getElementById("meter").style.width = (100 * done / CARDS.length) + "%";
+  }
+  function han(s) {
+    var span = el("span", { className: "t" });
+    String(s || "").split(/([　-鿿＀-￯]+)/).forEach(function (part, i) {
+      if (part) span.appendChild(i % 2 ? el("span", { className: "h", text: part }) : document.createTextNode(part));
+    });
+    return span;
+  }
+  function renderCard(c) {
+    var id = c.id, e = current(id);
+    var card = el("article", { className: "card" + (isDone(id) ? " done" : ""), id: "card-" + id });
+    card.appendChild(el("div", { className: "head" }, [
+      el("span", { className: "rid", text: "Page " + c.page + ", line " + c.line }),
+      el("span", { className: "tag" + (isDone(id) ? " ok" : ""), text: isDone(id) ? "done" : "to do" })
+    ]));
+    card.appendChild(el("div", { className: "ctx" }, [
+      el("div", null, [el("span", { className: "lbl", text: "Line above" }), han(c.before || "(none)")]),
+      el("div", null, [el("span", { className: "lbl", text: "Missing line" }), el("span", { className: "sub", text: "between these two; type it below" })]),
+      el("div", null, [el("span", { className: "lbl", text: "Line below" }), han(c.after || "(none)")])
+    ]));
+    card.appendChild(el("div", { className: "scan" }, [el("img", { src: c.img, alt: "Scan of page " + c.page + " around line " + c.line, loading: "lazy" })]));
+    var txId = "tx-" + id;
+    var tx = el("textarea", { className: "tx", id: txId, rows: "2", spellcheck: "false", placeholder: "Type the missing line exactly as printed" });
+    tx.value = e.text || "";
+    tx.addEventListener("input", function () { var ed = editable(id); ed.text = tx.value.replace(/\s*\n\s*/g, " "); if (ed.text && ed.status === "blank") ed.status = ""; touch(id); syncChoices(); });
+    card.appendChild(el("div", { className: "field" }, [el("label", { "for": txId, text: "The missing line" }), tx]));
+    var choices = el("div", { className: "choices" });
+    var opts = [["", "It has text (typed above)"], ["blank", "Really blank"], ["unsure", "Can't find or read it"]];
+    function syncChoices() { var s = current(id).status || ""; choices.querySelectorAll(".choice").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-v") === s)); }); }
+    opts.forEach(function (o) {
+      choices.appendChild(el("button", { className: "choice", type: "button", "data-v": o[0], text: o[1],
+        onclick: function () { var ed = editable(id); ed.status = o[0]; touch(id); syncChoices(); } }));
+    });
+    card.appendChild(choices); setTimeout(syncChoices, 0);
+    var noteId = "note-" + id;
+    var note = el("textarea", { className: "note", id: noteId, rows: "1", placeholder: "Anything unclear" });
+    note.value = e.note || "";
+    note.addEventListener("input", function () { editable(id).note = note.value; touch(id); });
+    card.appendChild(el("div", { className: "field" }, [el("label", { "for": noteId, text: "Note for the maintainer" }), note]));
+    var rev = el("button", { className: "rev", type: "button", "aria-pressed": String(isDone(id)), text: isDone(id) ? "Done ✓" : "Mark done" });
+    rev.addEventListener("click", function () {
+      var ed = editable(id);
+      if (!ed.done && !ed.text.trim() && ed.status !== "blank" && ed.status !== "unsure") { toast("Type the line, or choose Really blank / Can't find it"); return; }
+      ed.done = !ed.done; touch(id); rerender(id);
+    });
+    card.appendChild(el("div", { className: "foot" }, [rev]));
+    return card;
+  }
+  function rerender(id) { var old = document.getElementById("card-" + id); if (old && BY_ID[id]) { var n = renderCard(BY_ID[id]); if (!matches(BY_ID[id])) n.hidden = true; old.replaceWith(n); } }
+  function matches(c) { return state.filter === "all" || (state.filter === "done") === isDone(c.id); }
+  function render() {
+    var list = document.getElementById("list"); list.textContent = "";
+    CARDS.forEach(function (c) { var n = renderCard(c); if (!matches(c)) n.hidden = true; list.appendChild(n); });
+    document.querySelectorAll("[data-filter]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-filter") === state.filter)); });
+    counts();
+  }
+  function exportPayload() {
+    var edits = {};
+    Object.keys(state.edits).forEach(function (id) { var e = state.edits[id]; if (BY_ID[id] && e.base === BY_ID[id].hash && e.updatedAt) edits[id] = plain(e); });
+    return { format: FORMAT, exported: new Date().toISOString(), edits: edits };
+  }
+  function showCopy(t) { document.getElementById("copy-text").value = t; document.getElementById("copybox").hidden = false; }
+  document.getElementById("btn-download").addEventListener("click", function () {
+    var text = JSON.stringify(exportPayload(), null, 1), name = "poinsot-lines-" + new Date().toISOString().slice(0, 10) + ".json";
+    if (!downloads) { showCopy(text); return; }
+    function done() { lastDownload = changeCounter; saveLocal(); updateNudge(); toast("Downloaded " + name); }
+    downloads.save({ filename: name, data: text }).then(done).catch(function (err) {
+      var code = err && err.code; if (code === "declined") return; if (code === "rate_limited") { toast("A save prompt is already open."); return; } showCopy(text);
+    });
+  });
+  document.getElementById("btn-load").addEventListener("click", function () { document.getElementById("file-in").click(); });
+  document.getElementById("file-in").addEventListener("change", function (ev) {
+    var f = ev.target.files[0]; ev.target.value = ""; if (!f) return;
+    var fr = new FileReader();
+    fr.onload = function () {
+      var d; try { d = JSON.parse(fr.result); } catch (e) { toast("That is not a saved file from this page."); return; }
+      if (!d || d.format !== FORMAT || typeof d.edits !== "object") { toast("That file is from a different page."); return; }
+      var n = 0;
+      Object.keys(d.edits).forEach(function (id) {
+        var inc = d.edits[id]; if (!BY_ID[id] || inc.base !== BY_ID[id].hash) return;
+        var cur = state.edits[id]; if (cur && (cur.updatedAt || 0) > (inc.updatedAt || 0)) return;
+        state.edits[id] = { base: inc.base, text: String(inc.text || ""), status: String(inc.status || ""), note: String(inc.note || ""), done: !!inc.done, updatedAt: inc.updatedAt || Date.now() };
+        state.unsynced[id] = state.edits[id].updatedAt; saveLocal(); writeServer(id); n++;
+        changeCounter++; lastDownload = changeCounter;   // what was just loaded is already in a file
+      });
+      render(); updateNudge(); toast("Loaded " + n + " card" + (n === 1 ? "" : "s"));
+    };
+    fr.readAsText(f);
+  });
+  document.getElementById("btn-copy").addEventListener("click", function () {
+    var ta = document.getElementById("copy-text");
+    (navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(ta.value) : Promise.reject()).then(function () { lastDownload = changeCounter; saveLocal(); updateNudge(); toast("Copied"); }).catch(function () { ta.focus(); ta.select(); toast("Press Ctrl+C (or ⌘C) to copy"); });
+  });
+  document.getElementById("btn-copy-close").addEventListener("click", function () { document.getElementById("copybox").hidden = true; });
+  document.querySelectorAll("[data-filter]").forEach(function (b) {
+    b.addEventListener("click", function () { state.filter = b.getAttribute("data-filter"); try { localStorage.setItem(LS_KEY + ":filter", state.filter); } catch (e) {} render(); });
+  });
+  window.addEventListener("beforeunload", function (ev) {
+    saveLocal();
+    if (mode === "local" && changeCounter > (lastDownload || 0)) { ev.preventDefault(); ev.returnValue = ""; }   // unsaved: browser asks
+  });
+  loadLocal();
+  try { if (!localStorage.getItem(LS_KEY + ":seen")) { document.getElementById("guide").open = true; localStorage.setItem(LS_KEY + ":seen", "1"); } } catch (e) { document.getElementById("guide").open = true; }
+  render(); connect();
+})();
+</script>
