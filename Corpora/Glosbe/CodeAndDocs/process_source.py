@@ -550,6 +550,33 @@ def group_sentences(root, english):
     return len(folded)
 
 
+PAGE_COPY = re.compile(r"^\d+頁\s*(.+)$")
+
+
+def drop_page_copies(root):
+    """Maintainer, 2026-10-18, on Chinese translations that differ only by a
+    leading page reference ("18頁 上帝的話必萬世長存" next to "上帝的話必萬世長存"):
+    "One translation, drop the page". The N頁 copy goes only where its clean
+    text is also a Chinese translation of the same S; ver is reassigned."""
+    dropped = 0
+    for sentence in root.findall("S"):
+        chinese = [t for t in sentence.findall("TRANSL") if t.get(XML_LANG) == "zho"]
+        texts = {"".join(t.itertext()) for t in chinese}
+        for transl in chinese:
+            match = PAGE_COPY.match("".join(transl.itertext()))
+            if match and match.group(1) in texts:
+                if transl.get("notes"):
+                    raise ValueError(f"Page copy carries notes: {sentence.get('id')}")
+                sentence.remove(transl)
+                dropped += 1
+                remaining = [t for t in sentence.findall("TRANSL") if t.get(XML_LANG) == "zho"]
+                for index, other in enumerate(remaining):
+                    other.attrib.pop("ver", None)
+                    if index:
+                        other.set("ver", "alt")
+    return dropped
+
+
 # Maintainer, 2026-10-18: "Delete the enumerators entirely."; asked about every
 # enumerator-only note part: "Delete all 212".
 ENUMERATOR = re.compile(r"\((?:[A-Za-z]|\d{1,2})\)|[A-Za-z]\.")
@@ -651,6 +678,7 @@ def merge_translation_files(bank, write_ledger=False):
             have.add(key)
         joined += 1
     grouped = group_sentences(root, english)
+    pages = drop_page_copies(root)
     zho_source = zho_root.get("source")
     root.set("source", f"{root.get('source')} Chinese translations: {zho_source}")
     root.set("id", AMIS_TMEM_ID)
@@ -667,7 +695,8 @@ def merge_translation_files(bank, write_ledger=False):
                 continue
             if row["withdrawn_id"] in final or row["kept_id"] not in final:
                 raise ValueError(f"withdrawn_ids.csv does not describe the output: {row['withdrawn_id']}")
-    print(f"Folded {grouped} S into another S (grouped_sentences.csv); deleted list enumerators in notes: {dropped}")
+    print(f"Folded {grouped} S into another S (grouped_sentences.csv); dropped {pages} page-reference "
+          f"copies of a Chinese translation; deleted list enumerators in notes: {dropped}")
     kinds = defaultdict(int)
     for _, kind, _ in plan.values():
         kinds[kind] += 1
