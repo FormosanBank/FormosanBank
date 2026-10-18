@@ -1,12 +1,15 @@
 # NTU Corpus of Formosan Languages
 
-## License and AI Use
+## Rights
 
-This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+**License:** CC BY-NC 4.0
+**Rights source:** not recorded in this repository (the source is NTU's public data release of the NTU Corpus of Formosan Languages, named in [CodeAndDocs/source_release.tsv](CodeAndDocs/source_release.tsv)); date not recorded in this repository; evidence: ask maintainer
+
+The corpus is distributed under CC BY-NC 4.0, the value recorded in the `copyright` attribute of every `TEXT` element. This repository does not record who granted that licence or when; the maintainer holds the evidence. This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
 
 ***
 
-## Notes
+## Notes and Issues
 
 ### Public audio
 
@@ -174,7 +177,7 @@ The source is NTU's public data release, named file by file in
 (the `gh-pages` branch of github.com/liao961120/glossParser), with three Saisiyat stories taken
 from the 2024-04-08 release instead and five upstream files deliberately not used (the table gives
 each reason). `CodeAndDocs/refresh_source.sh` fetches that release into `CodeAndDocs/{grammar,sentence,story}`
-(`--check` compares the committed files with it); neither `make.sh` nor `build.sh` runs it, so a
+(`--check` compares the committed files with it); neither `generate_xml.sh` nor `build_subcorpora.sh` runs it, so a
 rebuild never depends on NTU's site. The committed JSONs are the starting point, and everything in
 `XML/` is derived from them. Every correction to NTU's data is stored as reviewed data rather than
 code, and each one checks that the source still holds what it expects: if NTU's data changes, the
@@ -182,11 +185,35 @@ build stops instead of silently repairing the wrong thing.
 
 ```bash
 source ../../.venv/bin/activate
-./CodeAndDocs/make.sh              # build + audit + validate + regression check
+./CodeAndDocs/generate_xml.sh      # the build (POL-047 entry point); runs no checks
+./CodeAndDocs/validate.sh          # source-coverage audit + validators + regression check
 ```
 
-`make.sh` is a thin wrapper. The build itself is
-[CodeAndDocs/pipeline/build.sh](CodeAndDocs/pipeline/build.sh), which takes each
+`generate_xml.sh` is a thin wrapper, and it runs no validators: the checks are
+in `validate.sh`, so a failing check never blocks the rebuild needed to
+investigate it. Audio is not part of the build (`./download_audio_data.sh`).
+The FormosanBank commit the XML was built against is recorded in
+[CodeAndDocs/provenance.json](CodeAndDocs/provenance.json) (POL-052);
+`generate_xml.sh` rewrites that file when it runs at a different commit. It is
+a record, not a gate: the build never compares against it.
+
+**POL-047 deviation:** the corpus-local generator is
+`CodeAndDocs/pipeline/build_subcorpora.sh` with its builders
+`pipeline_{grammar,sentences,stories}.py`, not `generate_xml.py`, and the
+shared steps run inside it, per subcorpus, rather than in `generate_xml.sh`:
+`QC/cleaning/clean_xml.py` first, then corpus-local repairs, then
+`QC/utilities/standardize.py` and `QC/utilities/add_phonology.py` (in
+`pipeline/run_standard_and_phon.sh`), so their relative order is the canonical
+one. Corpus-local steps run after `add_phonology.py`: for Sentences
+`split_two_renderings.py` and `dedupe_bunun63.py`, then for every subcorpus
+`mark_unclear.py` and `strip_word_punctuation.py`, which must come after the
+shared tools because those read only `FORM.text` and would not see
+`<UNCLEAR/>` (see the pipeline README). `QC/cleaning/apply_manual_edits.py`
+would run after the build rather than first; the corpus has no
+`manual_edits.xml`, so it is a no-op. No validator runs inside the build.
+
+The build itself is
+[CodeAndDocs/pipeline/build_subcorpora.sh](CodeAndDocs/pipeline/build_subcorpora.sh), which takes each
 subcorpus from JSON to XML in three phases — a per-subcorpus **builder**
 (`pipeline_grammar.py`, `pipeline_sentences.py`, `pipeline_stories.py`), a chain
 of **repairs** (`QC/cleaning/clean_xml.py` plus the scripts in
@@ -203,7 +230,7 @@ Note on serialization: the corpus has two serialization conventions — the
 parsers' minidom style and the published lxml style (`<?xml version='1.0'
 encoding='UTF-8'?>`) — and every repair script refuses to rewrite a file it
 cannot first reproduce byte-for-byte (the "round-trip guard", which guarantees a
-script never introduces incidental reformatting). `build.sh` normalizes to the
+script never introduces incidental reformatting). `build_subcorpora.sh` normalizes to the
 lxml convention immediately after the builder, so the guard holds for the whole
 repair chain.
 
@@ -211,7 +238,7 @@ repair chain.
 
 The numbered steps below document the **previous** build, in which the parsers
 under `scripts/` produced `Final_XML/` and a long chain of repair scripts was
-applied to the installed `XML/`. `build.sh` replaces that path: it calls a
+applied to the installed `XML/`. `build_subcorpora.sh` replaces that path: it calls a
 subset of the same repair scripts, but the parse and the tier construction are
 different, and `Final_XML/` is no longer produced. The list is retained because
 it is the reference for what each individual repair script does.
@@ -250,7 +277,7 @@ Note also that utterances in grammar and stories lack audio, and some of the aud
 AUDIO `file` attributes keep the **raw (URL-encoded) basename** of the source URL
 (e.g. `Seediq_A1-3-1-6%20n.mp3`) — the published convention that the Hugging Face
 audio archives are keyed on; do not decode them. `remove_no_audio_elements.py`
-(run by make.sh right after parsing) deletes only the self-closing `<AUDIO/>`
+(run by the former `make.sh` right after parsing) deletes only the self-closing `<AUDIO/>`
 placeholder elements whose filename is the NTU "no audio file" sentinel (沒有音檔,
 matched in both its URL-encoded and decoded spellings); sentence content is never
 touched.
@@ -334,7 +361,7 @@ Many remaining empty-form morphemes exist because the source writes a wordform u
 
 **Notes**
    - A word is repaired only if all guards hold: a unique candidate piece-sequence among same-language source duplicates; letter fidelity (boundary markers are added, letters never change — verified); per-tier gloss counts equal to the piece count; and PHON reproducibility (converting the word's current FORM through `add_phonology.py`'s own `phonologize` must exactly regenerate its existing PHON before the mapping is trusted to produce the new per-morpheme PHONs — since 2026-08-10 this uses the real pipeline profile, so it passes on current-pipeline PHON and skips older vintages). Anything failing a guard is skipped and remains listed in `empty_M_repair_partition.csv`.
-   - `make.sh` runs this step twice: here, and again as step 5b after the manual corrections (steps 11–12), because a word can become borrowable only after a correction repairs its FORM (e.g. Bunun `61_S_2` `nii＝ik` → `nii=ik`). On a fresh regeneration the two passes recover 122 words — 12 more than the published corpus, since the modernized guard 5 accepts words the old vintage check had to skip.
+   - The former `make.sh` ran this step twice: here, and again as step 5b after the manual corrections (steps 11–12), because a word can become borrowable only after a correction repairs its FORM (e.g. Bunun `61_S_2` `nii＝ik` → `nii=ik`). On a fresh regeneration the two passes recover 122 words — 12 more than the published corpus, since the modernized guard 5 accepts words the old vintage check had to skip.
    - Background on `==`: the source uses `==`/`===` as a prosodic-lengthening marker, which the parsers strip. In a few words the stripped run also contained a real boundary (e.g. `izaw===tu` = `izaw==` + clitic `=tu`), fusing two morphemes; where a cleanly segmented duplicate exists this step recovers them. Spellings containing `==` are never used as the borrowed form.
    - Expects the corpus's current serialization (lxml with XML declaration, after the id-normalization pass); a file is rewritten only if it first round-trips byte-identically, so the script never reformats. Idempotent.
 
@@ -506,7 +533,7 @@ A few words list several *complete* alternative words separated by `/`, each its
     python CodeAndDocs/scripts/expand_word_level_alternatives.py
 ```
 
-Because these cases need per-sentence judgement, each is described in the script's `CONFIG` rather than inferred; the `/`-split, `-` re-segmentation, and PHON (from the word's own slashed PHON, no mapping) are mechanical. PHON handling is best-effort by vintage (2026-08-10): when the file's PHON no longer carries the `/` alternation or `-` segmentation markers (the current `add_phonology.py` strips them), the FORMs and glosses are still expanded and PHON is left for `make.sh`'s final `add_phonology.py` refresh to regenerate. Two judgement points for S_7, both recorded in `CONFIG`: (a) the published free translation was **truncated** to the first alternative (source `free` is "Laucu is smart/tall/big"), so each reading's translation is restored from source — the zh `很` is taken to distribute (`Laucu很聰明/很高/很大`); (b) the source wrote `狀態.實現.聰明` with a `.` where the morpheme boundary `-` belongs (cf. the sibling `狀態.實現-大`), repaired so STAT.RLS/be.smart align. The original becomes alternative 1; alternatives 2..N follow with id suffix `-alt2`..`-altN`; mis-segmented morphemes are rebuilt from each alternative's own tiers; AUDIO stays on alternative 1. Expands 1 sentence (S_7 → 3); V121 drops by 6; the readings are clean under validate_glosses. Round-trip guard; idempotent.
+Because these cases need per-sentence judgement, each is described in the script's `CONFIG` rather than inferred; the `/`-split, `-` re-segmentation, and PHON (from the word's own slashed PHON, no mapping) are mechanical. PHON handling is best-effort by vintage (2026-08-10): when the file's PHON no longer carries the `/` alternation or `-` segmentation markers (the current `add_phonology.py` strips them), the FORMs and glosses are still expanded and PHON is left for the former `make.sh`'s final `add_phonology.py` refresh to regenerate. Two judgement points for S_7, both recorded in `CONFIG`: (a) the published free translation was **truncated** to the first alternative (source `free` is "Laucu is smart/tall/big"), so each reading's translation is restored from source — the zh `很` is taken to distribute (`Laucu很聰明/很高/很大`); (b) the source wrote `狀態.實現.聰明` with a `.` where the morpheme boundary `-` belongs (cf. the sibling `狀態.實現-大`), repaired so STAT.RLS/be.smart align. The original becomes alternative 1; alternatives 2..N follow with id suffix `-alt2`..`-altN`; mis-segmented morphemes are rebuilt from each alternative's own tiers; AUDIO stays on alternative 1. Expands 1 sentence (S_7 → 3); V121 drops by 6; the readings are clean under validate_glosses. Round-trip guard; idempotent.
 
 * **19. Collapse gloss-only slash alternations**
 

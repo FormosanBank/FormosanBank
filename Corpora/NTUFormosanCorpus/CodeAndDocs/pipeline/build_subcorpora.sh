@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-# build.sh — regenerate NTUFormosanCorpus XML/ from the source JSONs.
+# build_subcorpora.sh — regenerate NTUFormosanCorpus XML/ from the source JSONs.
+# Called by ../generate_xml.sh, the corpus entry point (POL-047).
 #
 # The JSONs under ../grammar, ../sentence and ../story are the starting point
 # for this corpus; nothing is scraped, so there is no refresh step. This
 # script is the whole build: JSON -> XML/{Grammar,Sentences,Stories}.
 #
 # Usage:
-#   ./build.sh [grammar|sentences|stories|all]     (default: all)
+#   ./build_subcorpora.sh [grammar|sentences|stories|all]     (default: all)
 #
 # Environment:
 #   PYTHON     interpreter to use (default: <bank>/.venv/bin/python)

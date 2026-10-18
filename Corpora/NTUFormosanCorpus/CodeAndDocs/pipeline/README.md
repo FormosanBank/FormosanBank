@@ -7,10 +7,12 @@ everything in `../../XML/` is derived from them by this directory.
 
 ```bash
 source ../../../../.venv/bin/activate
-./build.sh              # or: ./build.sh grammar | sentences | stories
+../generate_xml.sh                 # the corpus entry point (POL-047): all three subcorpora
+./build_subcorpora.sh grammar      # or sentences | stories: one subcorpus only
 ```
 
-`build.sh` writes `../../XML/{Grammar,Sentences,Stories}` from scratch
+`../generate_xml.sh` runs `build_subcorpora.sh all` (and would re-apply a
+`../manual_edits.xml`; there is none). `build_subcorpora.sh` writes `../../XML/{Grammar,Sentences,Stories}` from scratch
 (each subcorpus is built in a temp dir and installed only on success), and
 is idempotent — rerunning it is safe and should produce byte-identical XML.
 
@@ -29,7 +31,7 @@ with `pipeline_grammar.py`:
 
 `--list-steps` on any builder prints the numbered step list with a one-line
 description of each. The numbers are *creation* order, not application
-order; `--steps` selects which run, and `build.sh` pins the sets above.
+order; `--steps` selects which run, and `build_subcorpora.sh` pins the sets above.
 
 **Readings (POL-028, POL-026).** Inside the Sentences and Stories builders, `pol028.py` turns a record with
 a glossed optional morpheme (`kangavas(=an)`) or an optional phrase (`(nau tu)`) into one sentence per
@@ -49,7 +51,7 @@ letters the shared quote cleaner took for quotation marks, listed in
 per-subcorpus repair scripts in [`../scripts/`](../scripts/) — infix
 notation, optional parentheticals, annotation codes, clitic boundaries, and so
 on. Grammar and the two flat subcorpora use overlapping but not identical
-chains; `build.sh` is the authority.
+chains; `build_subcorpora.sh` is the authority.
 
 `repair_translation_parentheticals.py` is **not** run. It encodes a completed
 human review of 453 candidate translations plus a SHA-256 of that population,
@@ -281,7 +283,7 @@ accepted.
 
 `../qa/try_gloss_shift_repairs.sh` builds the subcorpus twice into scratch
 directories (never `XML/`): once without the repairs and once with them. Both
-builds stop at `build.sh`'s pre-cleanup checkpoint (`NTU_BUILD_CHECKPOINT`).
+builds stop at `build_subcorpora.sh`'s pre-cleanup checkpoint (`NTU_BUILD_CHECKPOINT`).
 The clean-up steps (prune and empty-translation removal) deal with what
 could not be fixed, so they count neither for nor against a fix. Measured after
 them, the 245 Stories proposals of 2026-09-28 appeared to change 26 unrelated

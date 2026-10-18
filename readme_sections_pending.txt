@@ -10,8 +10,6 @@ Glosbe notes
 ILRDF_Dicts notes
 Li-Conjunction-Thao notes
 MontgomeryTexts notes
-NTUFormosanCorpus rights
-NTUFormosanCorpus notes
 NTU_Paiwan_ASR notes
 Nowbucyang-Truku-Thesis notes
 Paiwan_Stories notes
