@@ -202,8 +202,12 @@ edits (no `CodeAndDocs/manual_edits.xml`).
   sit in unrelated passages and the source gives each its own Chinese and
   English translation, so this is repetition in the narrative, not a
   duplicated extraction. Both are kept.
-- **Parentheses in translations.** 205 translation strings contain `(` or `)`.
-  They are part of the published translations, not conversion artifacts.
+- **Parentheses and slashes.** `validate_text.py` reports 204 V122 findings,
+  one per `(`, `)` or `/` character: 196 in translations, which are part of
+  the published translations, not conversion artifacts, and 8 in the
+  sentence FORMs (both tiers) of text 11 sentence 12 and text 13 sentence 13,
+  whose parentheses are in the delivered text. (205 before text 9 sentence
+  23's English translation was omitted; see above.)
 
 ## References
 
