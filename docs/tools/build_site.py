@@ -44,7 +44,22 @@ def set_html_lang(edition_dir: Path, lang: str, nested: list[Path]) -> int:
     return changed
 
 
+def count_pages(site_dir: Path) -> int:
+    """HTML pages under ``site_dir``; refuses an empty or missing site.
+
+    A link check over nothing finds nothing: without this, a build that wrote
+    its pages elsewhere reported "link check clean" with 0 pages.
+    """
+    pages = sum(1 for _ in site_dir.rglob("*.html")) if site_dir.is_dir() else 0
+    if pages == 0:
+        raise SystemExit(f"no HTML pages in {site_dir}: the build wrote nothing there")
+    return pages
+
+
 def build(repository_root: Path, site_dir: Path, build_dir: Path) -> None:
+    # Absolute paths: properdocs resolves a relative --site-dir against the
+    # directory of its config file (.build/), not the current directory.
+    repository_root, site_dir, build_dir = (p.resolve() for p in (repository_root, site_dir, build_dir))
     editions = prepare_site.prepare_site(repository_root, build_dir)
     if site_dir.exists():
         shutil.rmtree(site_dir)
@@ -65,10 +80,10 @@ def build(repository_root: Path, site_dir: Path, build_dir: Path) -> None:
         edition_dir = site_dir / edition.site_subdir
         nested = [d for d in subdirs if d != edition_dir and d.is_relative_to(edition_dir)]
         set_html_lang(edition_dir, edition.html_lang, nested)
-    errors = check_site.check_site(site_dir.resolve())
+    pages = count_pages(site_dir)
+    errors = check_site.check_site(site_dir)
     if errors:
         raise SystemExit("\n".join(errors))
-    pages = sum(1 for _ in site_dir.rglob("*.html"))
     print(f"Built {len(editions)} edition(s), {pages} HTML pages; link check clean.")
 
 
