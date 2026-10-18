@@ -8,9 +8,13 @@
 #
 # RauDong's machine-readable text was supplied to FormosanBank already
 # digitized; there is no scrape, OCR or parse stage in this repository to
-# re-run, and none can be reconstructed. The delivered XML is therefore the
-# source, preserved verbatim in CodeAndDocs/pre_correction_snapshot/XML/
-# (POL-035), and this script rebuilds XML/ from it:
+# re-run, and none can be reconstructed. The source of record is therefore a
+# snapshot in CodeAndDocs/pre_correction_snapshot/XML/ (POL-035), and this
+# script rebuilds XML/ from it. The snapshot is the XML as published at
+# 2bed0e22f, NOT the July 2025 delivery (0d0df4710): earlier hand corrections
+# (quote normalization, one split sentence, translation edits) are baked into
+# it and no script replays them. ../README.md lists what differs.
+#
 #
 #   0. restore XML/ from the pre-correction snapshot
 #   1. clean_xml         original-tier canonicalization (typographic quotes,
@@ -33,9 +37,10 @@
 # o — no f, q or u), plus an acute accent that marks lexical stress rather
 # than a segment. Ortho94 reproduces the published original PHON exactly, so
 # the profile is identified rather than assumed; see ../README.md. Ortho94 has
-# no letter for the accented vowels, so accent-bearing original forms get the
-# tool's `*` unknown-character marker in original PHON; the standard tier,
-# where the accent is gone, is unaffected.
+# no letter for the accented vowels; add_phonology folds the stress accent
+# before mapping, so accented vowels come out as the plain vowel in original
+# PHON (no `*`). The only `*` left in either PHON tier are Chinese characters
+# quoted in the text and the `UNK` placeholder morphemes (no Yami `u`).
 #
 # No apply_manual_edits step: this corpus has no CodeAndDocs/manual_edits.xml
 # and no hand edits to re-apply. Per POL-038 nothing here is hand-edited —

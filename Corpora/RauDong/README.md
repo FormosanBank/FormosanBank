@@ -45,11 +45,13 @@ Two consequences a data user should know:
 - `add_phonology` folds the stress accent before mapping (it marks stress, not
   a different segment), so accented vowels come out as the plain vowel in
   **original** PHON: `ma-níring` → `maniriŋ`. Before that shared change
-  (2026-09-04) they came out as `*` (1,127 PHON values); the rebuild recorded in
+  (2026-09-05) they came out as `*` (1,127 PHON values); the rebuild recorded in
   `CodeAndDocs/provenance.json` replaced all of them.
-- A further 29 PHON values contain `*` because the sentence quotes Chinese
-  (`國小二三年級`, `mi開開玩笑`, `nim要理i`). Those characters have no Yami
-  phonological value.
+- 29 PHON values per tier (58 in all, original and standard) still contain
+  `*`. In 20 of each 29 the form quotes Chinese (`國小二三年級`, `mi開開玩笑`,
+  `nim要理i`); those characters have no Yami phonological value. The other 9
+  of each 29 are the `UNK` morphemes described below: Ortho94 and Ortho113
+  have no Yami `u`, so `UNK` comes out as `*nk`.
 
 ### Notation inside the FORM tiers
 
@@ -58,7 +60,8 @@ Two consequences a data user should know:
 - **`:`** marks the point of infixation inside an infixed root at morpheme
   level. `k-om-an` 'eat (AF)' is two morphemes: `om` (AF) and `k:an` (eat).
 - **`'`** is the glottal-stop **letter**, not an apostrophe or a quote mark
-  (264 occurrences). Quotations are written with `"`.
+  (132 occurrences per tier, original and standard alike: 44 each at sentence,
+  word and morpheme level). Quotations are written with `"`.
 - **`UNK`** appears as a morpheme FORM and gloss in 9 places where the source
   gives no morpheme analysis for the word.
 - A handful of sentences contain Chinese words code-switched into the Yami
@@ -68,15 +71,42 @@ Two consequences a data user should know:
 
 The machine-readable text of these 20 texts was supplied to FormosanBank
 already digitized. **There is no scrape, OCR or parse stage in this repository
-to re-run, and none can be reconstructed from what we hold.** The delivered
-XML is therefore the source of record, and it is preserved verbatim in
+to re-run, and none can be reconstructed from what we hold.** The source of
+record is therefore a snapshot of the XML in
 
     CodeAndDocs/pre_correction_snapshot/XML/
 
+**The snapshot is not the XML as delivered.** It is the XML as published in
+this repository at commit `2bed0e22f` (2026-10), after the original delivery
+(commit `0d0df4710`, 2025-07-08) had been hand-corrected over several commits
+between 2025-11 and 2026-06. Compared with the delivery, the snapshot has:
+
+- a different sentence-level `original` FORM in 447 of the 793 delivered
+  sentences — in 401 of them the only change is typographic double quotes
+  (`“ ”`) becoming `"`;
+- one sentence split in two: text 10, sentence 18 became sentences 18 and 18b
+  (794 sentences in all);
+- different sentence translations in 534 sentences (957 translation strings),
+  mostly the same quote normalization plus `’` → `'`;
+- structural changes, among them W and M ids, missing `kindOf` values,
+  `TEXT` capitalization, `dialect="Yami"`, `zh`/`en` → `zho`/`eng`, and the
+  files moved under `Yami/` and renamed;
+- `standard` FORM and both PHON tiers, which the delivery did not have. The
+  build regenerates all three (steps 2 and 3 below), so their snapshot values
+  do not reach `XML/`.
+
+No script in this repository replays those earlier edits; they exist only as
+their result in the snapshot and in the git history. The delivered XML can be
+recovered with `git show 0d0df4710:"Corpora/RauDong/XML/<file>"`.
+
+The snapshot has had one edit since it was taken: its `TEXT/@copyright` was
+changed from `CC NC-BY` to `CC BY-NC 4.0`, the same one-line change made to the
+published XML on 2026-10-17 (POL-042).
+
 Everything under `XML/` is rebuilt from that snapshot by
-`CodeAndDocs/generate_xml.sh` (POL-047). The snapshot is never edited; nothing in `XML/` is
-hand-edited. If a correction is ever needed, it is made by a script that runs
-as a pipeline step, so it survives the next rebuild.
+`CodeAndDocs/generate_xml.sh` (POL-047); nothing in `XML/` is hand-edited. If a
+correction is ever needed, it is made by a script that runs as a pipeline step,
+so it survives the next rebuild.
 
 The `.png` files and `orthographic_info` in `CodeAndDocs/` are a character-
 and word-frequency profile of the corpus produced during its original QC. They
