@@ -17,17 +17,17 @@ It consists of three main sections:
 
 | | Amis<br>Coastal | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Sakizaya | Atayal<br>Wenshui | Seediq<br>Tegudaya | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 7,558 | 17,727 | 16,118 | 18,035 | 14,068 | 5,872 | 25,151 | 10,081 | 20,435 | 10,877 |
+| Word count | 7,558 | 17,727 | 16,118 | 18,035 | 14,068 | 5,872 | 25,151 | 10,058 | 20,435 | 10,877 |
 | Total audio | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.4h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.4h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,513 | 17,641 | 16,033 | 18,020 | 9,019 | 5,867 | 20,124 | 10,081 | 15,234 | 10,861 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,558 | 17,657 | 16,116 | 17,988 | 14,066 | 5,867 | 25,054 | 10,081 | 20,412 | 10,861 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,513 | 17,641 | 16,033 | 18,020 | 9,019 | 5,867 | 20,124 | 10,058 | 15,234 | 10,861 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,558 | 17,657 | 16,116 | 17,988 | 14,066 | 5,867 | 25,054 | 10,058 | 20,412 | 10,861 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Morphologically segmented | 7,501 | 17,674 | 16,060 | 17,572 | 12,998 | 5,854 | 23,088 | 10,072 | 18,911 | 10,863 |
-| Glossed words | 7,501 | 17,674 | 16,060 | 17,572 | 12,998 | 5,854 | 23,088 | 10,072 | 18,908 | 10,863 |
+| Morphologically segmented | 7,501 | 17,674 | 16,060 | 17,572 | 13,028 | 5,854 | 23,088 | 10,049 | 18,911 | 10,863 |
+| Glossed words | 7,501 | 17,674 | 16,060 | 17,572 | 13,028 | 5,854 | 23,088 | 10,049 | 18,908 | 10,863 |
 
 ***
 
