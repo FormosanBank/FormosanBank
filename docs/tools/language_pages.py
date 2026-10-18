@@ -45,6 +45,19 @@ SERIES_STYLES = (
 EXCLUDED_FROM_SECOND_FIGURE = frozenset({"Wikipedias"})
 LANGUAGES_DIR = "languages"
 
+# Generated sentences, as templates. site_labels lists them as shared labels,
+# and the page is written from them, so a translated template always matches.
+LANGUAGE_INTRO = "FormosanBank holds {words} words of {language}, in {count} corpora."
+LANGUAGE_INTRO_ONE = "FormosanBank holds {words} words of {language}, in 1 corpus."
+LANGUAGE_INTRO_TAIL = "These numbers are generated from the corpus statistics every time the site is published."
+DIALECTS_NOTE = "One column per dialect; `unknown` is data whose source does not record the dialect."
+CORPUS_WORDS = "{corpus}: {words} words"
+# One sentence per label: pages are translated sentence by sentence.
+GROWTH_CAPTION_STEPS = "Each step is a change to the published corpus on `main`, counted with today's counting rules."
+GROWTH_CAPTION_START = "A line starts where its count first rises above zero."
+FIGURE_TITLE = "{language}: words over time"
+FIGURE_ALT = "Growth of {language} in FormosanBank: total, transcribed, segmented and glossed words over time, log scale"
+
 
 @dataclass(frozen=True)
 class Point:
@@ -161,9 +174,9 @@ def language_page(
     lines = [
         f"# {language}",
         "",
-        f"FormosanBank holds {site_stats.fmt_count(totals['word_count'])} words of {language}, "
-        f"in {len(by_corpus)} corpus{'es' if len(by_corpus) != 1 else ''}. These numbers are "
-        "generated from the corpus statistics every time the site is published.",
+        (LANGUAGE_INTRO_ONE if len(by_corpus) == 1 else LANGUAGE_INTRO).format(
+            words=site_stats.fmt_count(totals["word_count"]), language=language, count=len(by_corpus))
+        + " " + LANGUAGE_INTRO_TAIL,
         "",
         "## Statistics",
         "",
@@ -175,7 +188,7 @@ def language_page(
         lines += [
             "## Dialects",
             "",
-            "One column per dialect; *unknown* is data whose source does not record the dialect.",
+            DIALECTS_NOTE,
             "",
             dialects,
             "",
@@ -184,16 +197,14 @@ def language_page(
     for corpus in sorted(by_corpus, key=lambda c: (-(by_corpus[c]["word_count"] or 0), c)):
         page = labels.get(corpus)
         name = f"[{page.nav_label}](../{site_stats_relative(page)})" if page else corpus
-        lines.append(f"* {name}: {site_stats.fmt_count(by_corpus[corpus]['word_count'])} words")
+        lines.append("* " + CORPUS_WORDS.format(corpus=name, words=site_stats.fmt_count(by_corpus[corpus]["word_count"])))
     lines += [
         "",
         "## Growth over time",
         "",
-        f"![Growth of {language} in FormosanBank: total, transcribed, segmented and glossed "
-        f"words over time, log scale](figures/{figure_name})",
+        f"![{FIGURE_ALT.format(language=language)}](figures/{figure_name})",
         "",
-        "Each step is a change to the published corpus on `main`, counted with today's counting rules. "
-        "A line starts where its count first rises above zero.",
+        GROWTH_CAPTION_STEPS + " " + GROWTH_CAPTION_START,
         "",
     ]
     return "\n".join(lines)
@@ -233,7 +244,7 @@ def write_language_pages(
     for name in names:
         figure = f"{language_slug(name)}-growth.svg"
         (out / "figures" / figure).write_text(
-            render_growth_svg(growth_series(history, language=name), f"{name}: words over time"),
+            render_growth_svg(growth_series(history, language=name), FIGURE_TITLE.format(language=name)),
             encoding="utf-8",
         )
         (out / f"{language_slug(name)}.md").write_text(

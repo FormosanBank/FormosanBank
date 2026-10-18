@@ -103,3 +103,21 @@ def test_real_stats_give_one_page_per_language(tmp_path):
     for name in names:
         assert (tmp_path / "languages" / f"{lp.language_slug(name)}.md").is_file()
         assert (tmp_path / "languages" / "figures" / f"{lp.language_slug(name)}-growth.svg").is_file()
+
+
+def test_every_generated_sentence_matches_a_label_template(rows):
+    # Found live 2026-10-19: the page said "in 12 corpuses" while the label
+    # said "corpora", so a translated template could never apply.
+    import site_labels
+    import translated_editions as te
+    import translations as tr
+    pages = [prepare_site.CorpusPage("Mini", "mini", "Mini corpus", "", "", "")]
+    multi = {"Amis", "Seediq", "Babuza-Favorlang"}
+    for language in ("Amis", "Yami"):
+        text = lp.language_page(language, rows, HISTORY, pages, "x.svg", multi)
+        assert "corpuses" not in text
+        units = [u for u in tr.segments(text) if u not in site_labels.labels()]
+        approved = {label: "T" + label for label in site_labels.labels()}
+        expanded = te.expand_templates(units, approved)
+        leftover = [u for u in units if u not in expanded and u != language]
+        assert leftover == [], leftover
