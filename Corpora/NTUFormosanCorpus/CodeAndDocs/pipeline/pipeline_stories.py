@@ -86,10 +86,22 @@ STEPS = {
 # class -- CJK in the form column -- is deliberately NOT dropped: in the stories
 # most of it is genuine Mandarin code-switching, where the Chinese IS the word.
 _SPEAKER = re.compile(r"^\s*[A-Z]\s*[:.：]*\s*$")
+# Several speakers at once, 'Y,M:', 'W,G,S:' (24 rows, all in the Tsou
+# conversations). Ruling 2026-10-18: "Any number of single capital letters
+# followed by a colon, ignore intervening commas => speaker label." They are NOT
+# dropped here: dropping a row renumbers the words after it, and published ids
+# are never renumbered (POL-037). drop_speaker_label_words.py removes the W
+# after ids are assigned, using multi_speaker_labels on the raw cells.
+_MULTI_SPEAKER = re.compile(r"^\s*[A-Z](?:\s*,\s*[A-Z])+\s*[:：]\s*$")
 _LABEL_ECHO = re.compile(r"^\s*([A-Z])\s*[:.…]*\s*(?:\([^)]*\))?\s*[.…]*\s*$")
 _PUNCT_ONLY = re.compile(r"^[^\w’'ʉ]+$")
 _PAUSE = re.compile(r"^\s*[（(]?\d+(?:\.\d+)?[）)]?\s*$|^\.{2,}$|^=+$")
 _NONVERBAL = re.compile(r"^\s*[（(]\s*[A-Z]{2,}\s*[）)]\s*$")
+
+
+def multi_speaker_labels(rows: list) -> set:
+    """The multi-speaker labels among raw rows, as step 5 leaves them ('Y,M:' -> 'Y,M')."""
+    return {re.sub(r"[\s:：]", "", str(r[0])) for r in rows if r and _MULTI_SPEAKER.match(str(r[0]))}
 
 
 def apparatus_class(row: list):

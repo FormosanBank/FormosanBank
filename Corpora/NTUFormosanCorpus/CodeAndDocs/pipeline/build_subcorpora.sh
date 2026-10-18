@@ -80,6 +80,14 @@ finish_tiers() {     # $1 = work dir, $2 = subcorpus name (for report file names
   # the numbers withdrawn or rebuilt to be reported, and tail -2 hid them.
   TAIL=40 run "drop_punctuation_morphemes" "$PIPE/drop_punctuation_morphemes.py" --xml_dir "$W" \
       --report "$CORPUS/logs/punctuation_morpheme_escalations_${SUB}.tsv"
+  # Words written only with punctuation, and their token in the sentence (ruling
+  # 2026-10-18: "Delete these W" ... "But I'd delete those from those sentences, too.").
+  TAIL=40 run "drop_punctuation_words" "$PIPE/drop_punctuation_words.py" --xml_dir "$W" \
+      --report "$CORPUS/logs/punctuation_words_${SUB}.tsv"
+  # Multi-speaker labels ('Y,M:'; ruling 2026-10-18), removed after the words are
+  # numbered so no other id moves (POL-037).
+  TAIL=40 run "drop_speaker_label_words" "$PIPE/drop_speaker_label_words.py" --xml_dir "$W" \
+      --source_dir "$CODEDOCS" --report "$CORPUS/logs/speaker_label_words_${SUB}.tsv"
   TAIL=40 cleanup "prune non-conforming W/M"   "$PIPE/apply_prune_and_mirror.py" --xml_dir "$W"
   run_opt "mark_original_glosses"   "$SCR/mark_original_glosses.py" --xml-dir "$W"
   run "align_ids"                  "$PIPE/align_ids.py" --xml_dir "$W"

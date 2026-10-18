@@ -246,6 +246,47 @@ def test_word_punctuation_deleted_per_table(tmp_path):
     assert _inner(ids["s1"].find("FORM")) == "haca, 'aca. , mi-<UNCLEAR />,"         # S untouched
 
 
+FINAL_TABLE = """lang\tchar\tcodepoint\tclass\taction\tnote
+tsu\t.\tU+002E\tpunctuation\tfinal\t
+tsu\t,\tU+002C\tpunctuation\tfinal\t
+tsu\t?\tU+003F\tpunctuation\tfinal\t
+tsu\t"\tU+0022\tpunctuation\tdelete\t
+tsu\t'\tU+0027\tletter\tkeep\t
+tsu\t-\tU+002D\tmarker\tkeep\t
+tsu\t=\tU+003D\tmarker\tkeep\t
+"""
+
+FINAL_CASES = {   # FORM -> after the step (ruling 2026-10-18 on FORM-final punctuation)
+    "zo.lu.shang.lai.a.": "zo.lu.shang.lai.a",     # inside dots stay, the final one goes
+    "Lao.Jia": "Lao.Jia",
+    "a,,": "a",                                    # the whole final run
+    "kati...": "kati",
+    'Y,M"': "Y,M",                                 # a 'delete' character ends the run too
+    "wu-.": "wu-",                                 # left ending in a marker
+    "umah.-": "umah-",                             # '.' before a final '-' goes, the '-' stays
+    "ta.-=a": "ta.-=a",                            # ... but only before a FORM-final '-'
+    "pa-pacay-?": "pa-pacay-?",                    # ? after - or = is an unknown morpheme
+    "palrayngi=?.": "palrayngi=?",
+    "?la-lasu.": "?la-lasu",
+    "ulaqi'.": "ulaqi'",
+    ".": ".",                                      # would be empty: left
+}
+
+
+def test_word_punctuation_form_final_only(tmp_path):
+    words = "".join(f'<W id="w{i}"><FORM kindOf="original">{f}</FORM></W>' for i, f in enumerate(FINAL_CASES))
+    sample = ('<?xml version="1.0" ?>\n<TEXT id="t" xml:lang="tsu"><S id="s"><FORM kindOf="original">x</FORM>'
+              + words + '<W id="u"><FORM kindOf="original"><UNCLEAR/>=maku.</FORM></W></S></TEXT>')
+    xml_dir = tmp_path / "xml"
+    xml_dir.mkdir()
+    (xml_dir / "a.xml").write_text(sample, encoding="utf-8")
+    (tmp_path / "chars.tsv").write_text(FINAL_TABLE, encoding="utf-8")
+    assert swp.main(["--xml_dir", str(xml_dir), "--table", str(tmp_path / "chars.tsv")]) == 0
+    ids = {e.get("id"): e for e in ET.parse(xml_dir / "a.xml").getroot().iter() if e.get("id")}
+    assert {f: _inner(ids[f"w{i}"].find("FORM")) for i, f in enumerate(FINAL_CASES)} == FINAL_CASES
+    assert _inner(ids["u"].find("FORM")) == "<UNCLEAR />=maku"      # final after <UNCLEAR/>
+
+
 def test_word_punctuation_second_run_changes_nothing(tmp_path):
     _, text, _ = _strip(tmp_path)
     assert swp.main(["--xml_dir", str(tmp_path / "xml"), "--table", str(tmp_path / "chars.tsv")]) == 0
@@ -360,16 +401,22 @@ def test_held_words_are_unchanged(sentences):
 
 PARTIAL_X = {   # ruling 3: W id -> its original FORM as published
     "Amis_Conv-talking_tamih_panay_S_122_W10": "mi-<UNCLEAR />",
-    "kkvNr_dailylife_Angai_S_9_W1": "<UNCLEAR />=maku.",          # Kanakanavu '.' is held
+    "kkvNr_dailylife_Angai_S_9_W1": "<UNCLEAR />=maku",           # FORM-final '.' removed
     "kkvNr_family_Paicu_S_42_W1": "<UNCLEAR />=ci=kim",
     "kkvNr_family_Paicu_S_47_W1": "<UNCLEAR />=ci=kim",
     "RukaiNr-childhood_balenge_S_5_W0": "kia-<UNCLEAR />=aku",
     "SaiNr-frog6_kalaeh a _oemaw_S_47_W10": "<UNCLEAR />-ralom-an",
-    "TsouConv-typhoon_S_326_W1": "mucian-shi-alishansiang-zuei-<UNCLEAR />.",   # Tsou '.' is held
+    "TsouConv-typhoon_S_326_W1": "mucian-shi-alishansiang-zuei-<UNCLEAR />",    # FORM-final '.' removed
 }
-# Word FORMs written only with a character to delete: deleting would empty them.
-EMPTY_IF_DELETED = {"bnNr-frog_Ciang_S_64_W5", "bnNr-frog_Ciang_S_64_W5M0",
-                    "bnNr-frog_Ciang_S_78_W8", "bnNr-frog_Ciang_S_78_W8M0"}
+# Words written only with punctuation were deleted, with their token in the
+# sentence (ruling 2026-10-18; drop_punctuation_words.py): there are none left.
+PUNCTUATION_WORD_SENTENCES = {   # S id -> original sentence FORM after the deletion
+    "bnNr-frog_Ciang_S_34": "at mazasia, adiia, a, Kulu hai, ungadahun saicia maza bungu sia pan saak tu isa maza sisiuh hai,",
+    "bnNr-frog_Ciang_S_64": "ungat maza Dahu'ikita hai, a, kilimun saicia adiia lalaaka tu,",
+    "bnNr-frog_Ciang_S_78": "haitu, mazasia asu hai acimanuun saicia maza, a sias pahusaza, mavuvuhvuh. hai muhalhal a pahusaz at,",
+    "bnNr-frog_Ciang_S_159": "haitu idadaza naia sia lukiscia hai saduan naicia tu, at adii mazasia, kikilimun mamita maza, sia sisiuha.",
+    "sdqNr-childhood_micang 2020s_S_185": "ma, ma wisu ku qrinuc dungan saya ma , wada ku s htiyun malix dungan ma, wisu ku pqrinuc dungan",
+}
 
 
 @pytest.fixture(scope="module")
@@ -382,8 +429,6 @@ def test_no_deletable_punctuation_in_word_or_morpheme_forms(texts, char_table):
     for t in texts:
         lang = t.get(XML_LANG)
         for el in [*t.iter("W"), *t.iter("M")]:
-            if el.get("id") in EMPTY_IF_DELETED:
-                continue
             for f in el.findall("FORM"):
                 for ch in "".join(f.itertext()):
                     if swp.is_content(ch):
@@ -396,6 +441,160 @@ def test_no_deletable_punctuation_in_word_or_morpheme_forms(texts, char_table):
                         break
     assert unlisted == set(), f"characters missing from word_form_characters.tsv: {sorted(unlisted)}"
     assert bad == [], f"{len(bad)} W/M FORM(s) still hold punctuation to delete, e.g. {bad[:5]}"
+
+
+def test_no_form_final_punctuation_in_word_or_morpheme_forms(texts, char_table):
+    """Ruling 2026-10-18: the 'final' characters go from the end of a W/M FORM only."""
+    bad = []
+    for t in texts:
+        lang = t.get(XML_LANG)
+        for el in [*t.iter("W"), *t.iter("M")]:
+            for f in el.findall("FORM"):
+                last = (f[-1].tail if len(f) else f.text) or ""
+                if swp.final_run_start(last, lang, char_table) < len(last):
+                    bad.append((el.get("id"), "".join(f.itertext())))
+    assert bad == [], f"{len(bad)} W/M FORM(s) still end in punctuation, e.g. {bad[:5]}"
+
+
+INSIDE_WORD_DOTS = {   # "attempts to write multimorphemic Chinese words. We don't wnat to remove those periods."
+    "None-1_S_93_W8": "Lao.Jia",
+    "None-1_S_150_W0": "zo.lu.shang.lai.a",
+    "RukaiNr-marriage ceremony_taugadha_S_177_W0": "tou.mu",
+    "52_S_5_W1": "Sung.laoshi",
+}
+
+
+def test_inside_word_dots_stay(sentences):
+    found = {w.get("id"): _inner(w.find("FORM")) for s in sentences for w in s.findall("W")
+             if w.get("id") in INSIDE_WORD_DOTS}
+    assert found == INSIDE_WORD_DOTS
+
+
+def test_no_word_is_only_punctuation(sentences):
+    """Ruling 2026-10-18: "Delete these W" ... "But I'd delete those from those sentences, too." """
+    import drop_punctuation_words as dpw
+    left = [(w.get("id"), "".join(f.itertext())) for s in sentences for w in s.findall("W")
+            for f in w.findall("FORM") if dpw.only_punctuation("".join(f.itertext()))]
+    assert left == []
+    found = {s.get("id"): [_inner(f) for f in s.findall("FORM")] for s in sentences
+             if s.get("id") in PUNCTUATION_WORD_SENTENCES}
+    assert found == {k: [v, v] for k, v in PUNCTUATION_WORD_SENTENCES.items()}
+
+
+def test_drop_punctuation_words_step(tmp_path):
+    import drop_punctuation_words as dpw
+    sample = """<?xml version="1.0" ?>
+<TEXT id="t" xml:lang="trv">
+    <S id="s1">
+        <FORM kindOf="original">ma , wada ku dungan ,</FORM>
+        <W id="s1_W0"><FORM kindOf="original">ma</FORM></W>
+        <W id="s1_W1"><FORM kindOf="original">wada=ku</FORM></W>
+        <W id="s1_W2"><FORM kindOf="original">dungan</FORM></W>
+        <W id="s1_W3"><FORM kindOf="original">,</FORM><M id="s1_W3M0"><FORM kindOf="original">,</FORM></M></W>
+    </S>
+    <S id="s2">
+        <FORM kindOf="original">. haitu, a, -</FORM>
+        <W id="s2_W0"><FORM kindOf="original">.</FORM></W>
+        <W id="s2_W1"><FORM kindOf="original">haitu,</FORM></W>
+        <W id="s2_W2"><FORM kindOf="original">a,</FORM></W>
+        <W id="s2_W3"><FORM kindOf="original">-</FORM></W>
+    </S>
+</TEXT>"""
+    xml_dir = tmp_path / "xml"
+    xml_dir.mkdir()
+    (xml_dir / "a.xml").write_text(sample, encoding="utf-8")
+    for _ in range(2):    # idempotent
+        assert dpw.main(["--xml_dir", str(xml_dir)]) == 0
+    root = ET.parse(xml_dir / "a.xml").getroot()
+    s1, s2 = root.findall("S")
+    assert s1.find("FORM").text == "ma , wada ku dungan"           # the last ',' is W3's; the other stays
+    assert [w.get("id") for w in s1.findall("W")] == ["s1_W0", "s1_W1", "s1_W2"]
+    assert s2.find("FORM").text == "haitu, a, -"                   # opening token; a marker is not punctuation
+    assert [w.get("id") for w in s2.findall("W")] == ["s2_W1", "s2_W2", "s2_W3"]
+
+
+UNKNOWN_PIECES = {   # W id -> its FORM (both tiers); ruling 2026-10-18: "Yes: <UNCLEAR/> for the ? piece"
+    "20200429-CL-6_S_1_W6": "ngi-lra-lredreke-<UNCLEAR />=ini",
+    "20200429-CL-6_S_2_W8": "ngi-lra-lredreke-<UNCLEAR />=ini",
+    "20200529-FW-Ingrid_S_7_W8": "alupu-<UNCLEAR />=ini",
+    "20200529-FW-Lixing-1_S_18_W2": "<UNCLEAR />la-lasu",
+    "20200531-FW-yuki_S_3_W0": "<UNCLEAR />ma-adrau-nga",
+}
+
+
+def test_rukai_question_pieces_are_unclear(texts):
+    rukai = [t for t in texts if t.get(XML_LANG) == "dru"]
+    words = {w.get("id"): w for t in rukai for w in t.iter("W") if w.get("id") in UNKNOWN_PIECES}
+    assert set(words) == set(UNKNOWN_PIECES)
+    for wid, form in UNKNOWN_PIECES.items():
+        assert [_inner(f) for f in words[wid].findall("FORM")] == [form, form], wid
+    assert [_inner(f) for f in words["20200529-FW-Lixing-1_S_18_W2"].find("M").findall("FORM")] == ["<UNCLEAR />la"] * 2
+    assert [t.text for t in words["20200529-FW-Lixing-1_S_18_W2"].findall("TRANSL")] == ["?複數-男生", "?P-boy"]
+    s18 = next(s for t in rukai for s in t.iter("S") if s.get("id") == "20200529-FW-Lixing-1_S_18")
+    assert [_inner(f) for f in s18.findall("FORM")] == ["waecenge ka <UNCLEAR />lalasu ki kidringi."] * 2
+
+
+def test_small_cases_ruled_2026_10_18(sentences):
+    """NTU Word Forms page, "Yes, all as proposed": ##sbsawan -> sbsawan; umah.- -> umah-,
+    ma-hini.- -> ma-hini-."""
+    want = {"sdqNr-childhood_micang 2020s_S_12_W17": "sbsawan",
+            "skzyNr-sapat_Panay_S_15_W10": "umah-",
+            "skzyNr-sapat_Panay_S_44_W14": "ma-hini-"}
+    found = {w.get("id"): [_inner(f) for f in w.findall("FORM")] for s in sentences
+             for w in s.findall("W") if w.get("id") in want}
+    assert found == {k: [v, v] for k, v in want.items()}
+
+
+def test_kavalan_percent_deleted(sentences):
+    """Ruling 2026-10-18 on Kavalan s%, seme% (glossed FS): "the % should be deleted." """
+    words = {w.get("id"): w for s in sentences for w in s.findall("W")
+             if w.get("id") in ("KavNr-map_buya_S_6_W3", "KavNr-map_buya_S_26_W5")}
+    assert {k: [_inner(f) for f in w.iter("FORM")] for k, w in words.items()} == {
+        "KavNr-map_buya_S_6_W3": ["s"] * 4, "KavNr-map_buya_S_26_W5": ["seme"] * 4}
+
+
+def test_gloss_label_in_a_form_is_unclear(texts):
+    """Ruling 2026-10-18 on 'AV.kara-peen=kasu' (Sentences 3.json record 456, no reversal
+    in the record): "If it is just for that word, then the FORM should carry <UNCLEAR/>"."""
+    s = next(s for t in texts if t.get(XML_LANG) == "xnb" for s in t.iter("S")
+             if s.get("id") == "3_S_456" and s.find("W/TRANSL") is not None)
+    w = s.find("W")
+    assert [_inner(f) for f in s.findall("FORM")] == ["<UNCLEAR />karapeenkasu pai'ici?"] * 2
+    assert [_inner(f) for f in w.findall("FORM")] == ["<UNCLEAR />kara-peen=kasu"] * 2
+    assert [_inner(f) for f in w.find("M").findall("FORM")] == ["<UNCLEAR />kara"] * 2
+    assert [_inner(p) for p in w.findall("PHON")] == ["<UNCLEAR />ka[r|ɾ]apeenkasu"] * 2
+    assert [t.text for t in w.findall("TRANSL")] == ["主焦.喝-多少=2SG.主格", "AV.drink-how.many=2SG.NOM"]
+    labels = [(n.get("id"), "".join(f.itertext())) for t in texts for n in [*t.iter("W"), *t.iter("M")]
+              for f in n.findall("FORM") if "".join(f.itertext()).startswith("AV.")]
+    assert labels == []
+
+
+def test_mark_unclear_replaces_the_listed_gloss_label(tmp_path):
+    sample = """<?xml version="1.0" ?>
+<TEXT id="t" xml:lang="xnb">
+    <S id="3_S_456">
+        <FORM kindOf="original">AV.karapeenkasu pai'ici?</FORM>
+        <PHON kindOf="original">avka[r|ɾ]apeenkasu paiʔiʦi</PHON>
+        <W id="3_S_456_W0">
+            <FORM kindOf="original">AV.kara-peen=kasu</FORM>
+            <PHON kindOf="original">avka[r|ɾ]apeenkasu</PHON>
+            <M id="3_S_456_W0M0"><FORM kindOf="original">AV.kara</FORM><PHON kindOf="original">avka[r|ɾ]a</PHON></M>
+            <M id="3_S_456_W0M1"><FORM kindOf="original">peen</FORM></M>
+        </W>
+        <W id="3_S_456_W1"><FORM kindOf="original">pai'ici?</FORM></W>
+    </S>
+</TEXT>"""
+    xml_dir = tmp_path / "xml"
+    xml_dir.mkdir()
+    (xml_dir / "a.xml").write_text(sample, encoding="utf-8")
+    for _ in range(2):    # idempotent
+        assert mu.main(["--xml_dir", str(xml_dir), "--placeholders", str(tmp_path / "none.tsv")]) == 0
+    ids = {e.get("id"): e for e in ET.parse(xml_dir / "a.xml").getroot().iter() if e.get("id")}
+    assert _inner(ids["3_S_456"].find("FORM")) == "<UNCLEAR />karapeenkasu pai'ici?"
+    assert _inner(ids["3_S_456"].find("PHON")) == "<UNCLEAR />ka[r|ɾ]apeenkasu paiʔiʦi"
+    assert _inner(ids["3_S_456_W0"].find("FORM")) == "<UNCLEAR />kara-peen=kasu"
+    assert _inner(ids["3_S_456_W0M0"].find("PHON")) == "<UNCLEAR />ka[r|ɾ]a"
+    assert _inner(ids["3_S_456_W0M1"].find("FORM")) == "peen"
 
 
 def test_untranscribed_word_forms_are_bare(sentences):

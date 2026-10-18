@@ -2,7 +2,8 @@
 # of NTUFormosanCorpus, by language (xml:lang), and what strip_word_punctuation.py does with it.
 # action: delete = punctuation, removed (ruling 2026-10-18: "Punctuation shouldn't be in W FORMs
 #   or M FORMs anyway. Delete everywhere in NTU."); keep = a letter of the language's orthography
-#   or a morpheme-structure marker; hold = not clear that it is punctuation here, left in place
+#   or a morpheme-structure marker; final = punctuation removed only from the end of a FORM (strip_word_punctuation.py:
+#   final_run_start), kept inside a word; hold = not clear that it is punctuation here, left in place
 #   until the maintainer rules. A character missing from this table stops the build.
 lang	char	codepoint	class	action	note
 ami	'	U+0027	letter	keep	letter: glottal stop in this language's Ortho94 and Ortho113 tables (Orthographies/Ortho94, Ortho113)
@@ -16,12 +17,12 @@ bnn	"	U+0022	punctuation	delete	punctuation: quotation mark
 bnn	'	U+0027	letter	keep	letter: glottal stop in this language's Ortho94 and Ortho113 tables (Orthographies/Ortho94, Ortho113)
 bnn	,	U+002C	punctuation	delete	punctuation: comma
 bnn	-	U+002D	marker	keep	marker: affix boundary (also listed as a Bunun letter in Ortho94/Ortho113)
-bnn	.	U+002E	unclear	hold	unclear: inside a name, Sung.laoshi (52_S_5_W1); the 2 words written only '.' are glossed (cough)
+bnn	.	U+002E	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): removed at the end of a FORM, kept inside one (Sung.laoshi, 52_S_5_W1); the 2 words written only "." (glossed (cough)) are left, since deleting would empty them
 bnn	<	U+003C	marker	keep	marker: infix bracket
 bnn	=	U+003D	marker	keep	marker: clitic boundary
 bnn	>	U+003E	marker	keep	marker: infix bracket
 bnn	?	U+003F	punctuation	delete	punctuation: question mark
-ckv	%	U+0025	unclear	hold	unclear: s%, seme% (KavNr-map_buya_S_6_W3, S_26_W5), both glossed FS
+ckv	%	U+0025	punctuation	delete	punctuation: truncation mark on two false starts glossed FS, s% and seme% (KavNr-map_buya_S_6_W3, S_26_W5); ruling 2026-10-18: "the % should be deleted."
 ckv	'	U+0027	letter	keep	letter: glottal stop in this language's Ortho94 and Ortho113 tables (Orthographies/Ortho94, Ortho113)
 ckv	,	U+002C	punctuation	delete	punctuation: comma
 ckv	-	U+002D	marker	keep	marker: affix boundary
@@ -33,43 +34,43 @@ ckv	?	U+003F	punctuation	delete	punctuation: question mark
 dru	!	U+0021	punctuation	delete	punctuation: exclamation mark
 dru	,	U+002C	punctuation	delete	punctuation: comma
 dru	-	U+002D	marker	keep	marker: affix boundary
-dru	.	U+002E	unclear	hold	unclear: between syllables of a loan, tou.mu 'leader' (RukaiNr-marriage ceremony_taugadha_S_177_W0)
+dru	.	U+002E	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): removed at the end of a FORM, kept inside one (tou.mu 'leader', RukaiNr-marriage ceremony_taugadha_S_177_W0)
 dru	<	U+003C	marker	keep	marker: infix bracket
 dru	=	U+003D	marker	keep	marker: clitic boundary
 dru	>	U+003E	marker	keep	marker: infix bracket
-dru	?	U+003F	unclear	hold	unclear: stands for an unknown morpheme or segment, ngi-lra-lredreke-?=ini, alupu-?=ini, ?la-lasu, ?ma-adrau-nga
+dru	?	U+003F	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): a question mark at the end of a FORM is removed; a ? straight after - or = is an unknown morpheme and stays (pa-pacay-?, palrayngi=?), as does one inside a FORM; in five listed words mark_unclear.py has already made it <UNCLEAR/> (ngi-lra-lredreke-<UNCLEAR/>=ini, <UNCLEAR/>la-lasu; ruling 2026-10-18)
 szy	!	U+0021	punctuation	delete	punctuation: exclamation mark
 szy	"	U+0022	punctuation	delete	punctuation: quotation mark
 szy	'	U+0027	letter	keep	letter: glottal stop in this language's Ortho94 and Ortho113 tables (Orthographies/Ortho94, Ortho113)
 szy	,	U+002C	punctuation	delete	punctuation: comma
 szy	-	U+002D	marker	keep	marker: affix boundary
-szy	.	U+002E	unclear	hold	unclear: 100....2.2yah, 101....sa (13_S_38_W0, W4)
+szy	.	U+002E	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): removed at the end of a FORM (kuyni., kati...), kept inside one and before a marker (umah.-, ma-hini.-)
 szy	=	U+003D	marker	keep	marker: clitic boundary
 szy	?	U+003F	punctuation	delete	punctuation: question mark
 szy	∅	U+2205	marker	keep	marker: null morpheme
 tay	'	U+0027	letter	keep	letter: glottal stop in this language's Ortho94 and Ortho113 tables (Orthographies/Ortho94, Ortho113)
 tay	,	U+002C	punctuation	delete	punctuation: comma
 tay	-	U+002D	marker	keep	marker: affix boundary
-tay	.	U+002E	unclear	hold	unclear: inside words, asi.ki.na 'however', asi.gi 'be.like', asi.ki 'necessary' (20 words)
+tay	.	U+002E	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): removed at the end of a FORM, kept inside one (asi.ki.na 'however', asi.gi 'be.like')
 tay	<	U+003C	marker	keep	marker: infix bracket
 tay	=	U+003D	marker	keep	marker: clitic boundary
 tay	>	U+003E	marker	keep	marker: infix bracket
 tay	?	U+003F	punctuation	delete	punctuation: question mark
 trv	!	U+0021	punctuation	delete	punctuation: exclamation mark
 trv	"	U+0022	punctuation	delete	punctuation: quotation mark
-trv	#	U+0023	unclear	hold	unclear: ##sbsawan (sdqNr-childhood_micang 2020s_S_12_W17)
+trv	#	U+0023	punctuation	delete	transcription mark, ##sbsawan (sdqNr-childhood_micang 2020s_S_12_W17); ruling 2026-10-18 ("Yes, all as proposed"): drop the ##
 trv	'	U+0027	unclear	hold	unclear: not a letter in Seediq Ortho94/Ortho113; one word, s'a (sdqNr-ricah_uma 2021s_S_32_W13)
-trv	,	U+002C	unclear	hold	unclear: inside a Mandarin word 不要不要不要,你那裡有那個帳; a word written only ',' is glossed PART
+trv	,	U+002C	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): removed at the end of a FORM (ge,  a,,), kept inside one (不要不要不要,你那裡有那個帳); the word written only "," (glossed PART) is left
 trv	-	U+002D	marker	keep	marker: affix boundary
-trv	.	U+002E	unclear	hold	unclear: inside words, bobo.na 'afterwards', tama.bubu=mu, daha.ka, keyan.ba (52 words)
+trv	.	U+002E	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): removed at the end of a FORM, kept inside one (bobo.na 'afterwards', tama.bubu=mu, keyan.ba)
 trv	<	U+003C	marker	keep	marker: infix bracket
 trv	=	U+003D	marker	keep	marker: clitic boundary
 trv	>	U+003E	marker	keep	marker: infix bracket
 trv	?	U+003F	punctuation	delete	punctuation: question mark
 tsu	'	U+0027	letter	keep	letter: glottal stop in this language's Ortho94 and Ortho113 tables (Orthographies/Ortho94, Ortho113)
-tsu	,	U+002C	unclear	hold	unclear: inside words, Y,M  M,Y,G (24 words) and the number 0,7
+tsu	,	U+002C	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): removed at the end of a FORM (avaho,), kept inside one (Y,M; the number 0,7)
 tsu	-	U+002D	marker	keep	marker: affix boundary
-tsu	.	U+002E	unclear	hold	unclear: between syllables of Mandarin, Lao.Jia, zo.lu.shang.lai.a., khong.ching.lin (67 words)
+tsu	.	U+002E	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): removed at the end of a FORM, kept inside one: "attempts to write multimorphemic Chinese words. We don't wnat to remove those periods." (Lao.Jia, zo.lu.shang.lai.a)
 tsu	<	U+003C	marker	keep	marker: infix bracket
 tsu	=	U+003D	marker	keep	marker: clitic boundary
 tsu	>	U+003E	marker	keep	marker: infix bracket
@@ -79,13 +80,13 @@ xnb	"	U+0022	punctuation	delete	punctuation: quotation mark
 xnb	'	U+0027	letter	keep	letter: glottal stop in this language's Ortho94 and Ortho113 tables (Orthographies/Ortho94, Ortho113)
 xnb	,	U+002C	punctuation	delete	punctuation: comma
 xnb	-	U+002D	marker	keep	marker: affix boundary
-xnb	.	U+002E	unclear	hold	unclear: inside words, AV.kara-peen=kasu, una.pe, siau.mi, fung.nian.ji (6 words)
+xnb	.	U+002E	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): removed at the end of a FORM, kept inside one (una.pe, siau.mi, fung.nian.ji)
 xnb	<	U+003C	marker	keep	marker: infix bracket
 xnb	=	U+003D	marker	keep	marker: clitic boundary
 xnb	>	U+003E	marker	keep	marker: infix bracket
-xnb	?	U+003F	unclear	hold	unclear: pai'ici?少用, a variant FORM (3_S_458_W4) with a note after the ?
+xnb	?	U+003F	punctuation	final	final: FORM-final only (ruling 2026-10-18, "all approved."): a question mark at the end of a FORM is removed (isi?, pai'ici?)
 xnb	∅	U+2205	marker	keep	marker: null morpheme
-xnb	／	U+FF0F	unclear	hold	unclear: separates two forms, iisi／ramisi (3_S_512_W2)
+xnb	／	U+FF0F	unclear	hold	separates two forms, iisi／ramisi (3_S_512_W2); resolve_slash_alternatives.py now reads it as '/' (ruling 2026-10-18), so none reaches this step
 xsy	'	U+0027	letter	keep	letter: glottal stop in this language's Ortho94 and Ortho113 tables (Orthographies/Ortho94, Ortho113)
 xsy	,	U+002C	punctuation	delete	punctuation: comma
 xsy	-	U+002D	marker	keep	marker: affix boundary

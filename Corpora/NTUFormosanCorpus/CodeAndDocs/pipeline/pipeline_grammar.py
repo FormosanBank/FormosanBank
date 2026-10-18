@@ -90,7 +90,9 @@ STEPS
      IU100-101)' -- while the fully glossed word tier holds the transcript. The
      sentence is rebuilt from those word forms, with the conversational
      apparatus removed (IU numbers, pause timings, prominence, unit-final
-     backslash), and the citation kept as a note.
+     backslash), and the citation kept as a note. The IU numbers and pauses
+     come off the word forms too (ruling 2026-10-18): '100....（2.2）^yah' is the
+     word 'yah', not '100....2.2yah'.
 
   16 split an unglossed optional parenthetical into a second sentence
      The source marks an optional word by wrapping it in parentheses. Where the
@@ -1422,7 +1424,9 @@ def build(records: list, text_id: str, steps: set[int], stats: dict,
                     "21 sentence forms cleaned of markup", 0) + 1
                 s_form = " ".join(cleaned.split())
 
+        cited = False
         if 15 in steps and _CITATION.match(s_form):
+            cited = True
             rebuilt = step15_sentence_from_words(
                 [str(r[0]) for r in (body.get("gloss") or [])
                  if isinstance(r, list) and r])
@@ -1594,6 +1598,22 @@ def build(records: list, text_id: str, steps: set[int], stats: dict,
             w_form = str(row[0])
             zho = str(row[1]) if len(row) > 1 else ""
             eng = str(row[2]) if len(row) > 2 else ""
+
+            if cited:
+                # Step 15 took the apparatus out of the rebuilt sentence only; the
+                # word forms kept the IU number and the pause, glued on once the
+                # pause's parentheses went: '100....（2.2）^yah' published as
+                # '100....2.2yah' (maintainer, 2026-10-18: fix the parsing). The ^
+                # is NTU's accent mark here, dropped by step 21 as everywhere. With
+                # the words parsed, the tier is no longer withdrawn, which exposes
+                # the lengthening mark: 'ca^li==w' would split into 'cali' + '=w'.
+                # It comes off as it does from the sentence form (step 21 above).
+                stripped = _IU_TRAILING.sub("", _PAUSE.sub("", _IU_NUMBER.sub("", w_form)))
+                stripped = re.sub(r"={2,}", "", stripped)
+                if stripped != w_form:
+                    stats["15 cited word forms cleaned of IU numbers and pauses"] = stats.get(
+                        "15 cited word forms cleaned of IU numbers and pauses", 0) + 1
+                    w_form = stripped
 
             code_switch = False
 

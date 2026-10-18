@@ -459,6 +459,40 @@ def language_code(name: str) -> str:
 
 FREE_REPAIRS = load_free_repairs()
 
+# A note NTU wrote into a form cell, in parentheses: 3.json record 458,
+# 'pai’ici?(少用)', 少用 "rarely used". Step 14 reads a parenthesis inside a word
+# as optional letters, and made the alternate FORM 'pai'ici?少用' (maintainer,
+# 2026-10-18: "obviously a variant wouldn't be in Chinese!"). The Grammar build
+# already handles exactly this note (scripts/resolve_inline_parentheticals.py,
+# _fix_rarely_used_annotation: the FORMs keep 'pai'ici?', the note goes to the
+# original sentence FORM's notes), but that script runs after the builder, by
+# which time step 14 has made the variant. The same handling, before step 14:
+FORM_NOTES = {"(少用)": "source annotation 少用: rarely used"}
+
+
+def take_form_notes(rows: list, ori: list, stats: dict) -> tuple:
+    """Remove FORM_NOTES annotations from the form cells and ori tokens.
+
+    Returns (rows, ori, notes found)."""
+    notes = []
+    for ann, note in FORM_NOTES.items():
+        if any(ann in str(r[0]) for r in rows if r) or any(ann in str(t) for t in ori):
+            rows = [[str(r[0]).replace(ann, "")] + list(r[1:]) if r else r for r in rows]
+            ori = [t for t in (str(t).replace(ann, "") for t in ori) if t.strip()]
+            notes.append(note)
+            stats["14   source annotations moved to notes"] = stats.get(
+                "14   source annotations moved to notes", 0) + 1
+    return rows, ori, notes
+
+
+def append_form_note(sentence, note: str) -> None:
+    """Add note to the original sentence FORM's notes, as Grammar's _append_note does."""
+    form = sentence.find("FORM[@kindOf='original']")
+    existing = (form.get("notes") or "").strip()
+    if note not in existing:
+        form.set("notes", f"{existing}; {note}" if existing else note)
+
+
 def build(records: list, text_id: str, steps: set, stats: dict,
           attested: dict | None = None, malformed: dict | None = None, language: str = "", dialect: str = "unknown") -> ET.Element:
     root = ET.Element("TEXT")
@@ -477,6 +511,10 @@ def build(records: list, text_id: str, steps: set, stats: dict,
         rid, body = str(rec[0]), rec[1]
         all_rows = gloss_rows(body)
         all_ori = list(body.get("ori") or [])
+        form_notes = []
+        if 14 in steps:
+            all_rows, all_ori, form_notes = take_form_notes(all_rows, all_ori, stats)
+        emitted_before = len(root.findall("S"))
 
         code_switch = {}          # word form -> its code-switch tag letter (None if the tag had none)
         if 7 in steps:
@@ -605,6 +643,9 @@ def build(records: list, text_id: str, steps: set, stats: dict,
                 continue
             emit_sentence(root, text_id, rid + suffix, body, rows, ori, steps, stats,
                           code_switch, attested, malformed)
+        for s_new in root.findall("S")[emitted_before:]:
+            for note in form_notes:
+                append_form_note(s_new, note)
     # POL-053: the closed attribute surface, plus V017/V085 conformance.
     conform_sentence(root, stats)
     return root

@@ -48,6 +48,7 @@ _XML10_INVALID_RE = re.compile(
 #   <L2Mword   wordL2M>    fully bracketed, letter after L2
 #   <L2word    wordL2>     no language letter
 #   <L2Tword   wordTL2>    closing transposed, letter before L2
+#   <T2word                opening with no L, letter before 2 (once)
 #   L2M<word   >L2M        brackets on the inside
 #   <L2M>word<L2M>         both tags fully bracketed
 # Where the language letter sits between 'L2' and a bracket it cannot be
@@ -60,6 +61,11 @@ _L2M_RE = re.compile(
     r'|L2[A-Za-z]?>'   # closing: L2M>, L2j>, L2>
     r'|L2[A-Za-z]?<'   # bracket-outside opening: L2M<
     r'|<L2[A-Z]?'      # opening: <L2M, <L2J, or bare <L2
+    # Opening with the L dropped and the letter first: '<T2mi.jioL2T>' (TsouConv-
+    # typhoon record 421, the source's only one) left '<T2mi.jio.' in the word
+    # FORM (maintainer, 2026-10-18: "fix that stripping."). L is excluded so
+    # that '<L2haiya' still reads as '<L2' + 'haiya'.
+    r'|<[A-KM-Z]2(?=[a-z])'
     r'|[A-Z]L2>'       # transposed closing: ML2>, TL2>
     r'|>L2[A-Z]?'      # bracket-outside closing: >L2M
     # The `ori` stream drops the brackets altogether and leaves the tag
@@ -69,6 +75,12 @@ _L2M_RE = re.compile(
     r'|(?<![A-Za-z])L2[A-Z](?=[A-Za-z])'  # bare opener: L2Jmaemotte
     r'|L2[A-Z]?(?![A-Za-z])'  # bare closing: hikokiL2J, luL2M
 )
+
+# A Mandarin tag pair with no 'L2' at all, wrapping the word: '<Mpi.jiaoM>'
+# (Tsou None-1, the source's only one; maintainer, 2026-10-18: strip it, as for
+# '<T2...'). Only the M pair, and only around a lower-case word, so infix
+# notation ('c<Um>Ura') can never match.
+_BARE_M_PAIR_RE = re.compile(r'<M([a-z][^<>\s]*?)M>')
 
 # Matches infix morpheme notation: <n>, <m>, <PF.PFV>, etc.
 # Angle-bracket spans whose content is NOT an L2 code-switch marker.
@@ -143,6 +155,9 @@ def strip_l2m(form):
     is_code_switch : bool
         True if any marker was found and stripped.
     """
+    if _BARE_M_PAIR_RE.search(form):
+        form = _BARE_M_PAIR_RE.sub(r'\1', form)
+        return _L2M_RE.sub('', form), True
     if _L2M_RE.search(form):
         return _L2M_RE.sub('', form), True
     return form, False
