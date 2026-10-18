@@ -16,17 +16,15 @@ import sys
 from pathlib import Path
 profiles = {r["profile"] for r in json.loads(Path(sys.argv[1]).read_text())["records"]}
 # Table 2's 16 Tsuchida1976 pronouns use the reviewed Asai2026 grapheme subset.
-unsupported = sorted(profiles - {"Asai2026", "SaaroaComparison", "Tsuchida1976"})
+unsupported = sorted(profiles - {"Asai2026", "Tsuchida1976"})
 if unsupported:
     print("Final generation needs reviewed per-source routes for: " + ", ".join(unsupported), file=sys.stderr)
     sys.exit(2)
 PY
 SOURCE_ORTHOGRAPHY="$BANK/Orthographies/Asai2026"
 CONVERSION="$BANK/Orthographies/ConversionTables/Kanakanavu_Asai2026_113.tsv"
-SAAROA_ORTHOGRAPHY="$CODEDOCS/scripts/orthographies/SaaroaComparison"
-SAAROA_CONVERSION="$CODEDOCS/scripts/orthographies/ConversionTables/Saaroa_SaaroaComparison_113.tsv"
 for required in "$SOURCE_ORTHOGRAPHY/Kanakanavu.tsv" "$SOURCE_ORTHOGRAPHY/Kanakanavu.rules.tsv" \
-    "$CONVERSION" "$SAAROA_ORTHOGRAPHY/Saaroa.tsv" "$SAAROA_CONVERSION"; do
+    "$CONVERSION"; do
     if [[ ! -f "$required" ]]; then
         echo "Missing committed Kanakanavu orthography input: $required" >&2
         exit 2
@@ -47,11 +45,6 @@ for xml in "$XML_STAGE/Kanakanavu/"*.xml; do
     "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography "$BANK/Orthographies/Asai2026" \
         --corpora_path "$xml" --preserve-existing-original
 done
-if [[ -d "$XML_STAGE/Saaroa" ]]; then
-    "$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$SAAROA_CONVERSION" \
-        --target_column standard --corpora_path "$XML_STAGE/Saaroa"
-    "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography "$SAAROA_ORTHOGRAPHY" --corpora_path "$XML_STAGE/Saaroa"
-fi
 
 # POL-052: say which FormosanBank commit the published bytes were built against. Informational
 # only; the build never compares against it to decide whether to run, and never rewrites it.
@@ -60,7 +53,7 @@ HEAD_COMMIT="$(git -C "$BANK" rev-parse HEAD 2>/dev/null || echo unknown)"
 if [ "$HEAD_COMMIT" != "$REFERENCE_COMMIT" ]; then
     echo "note: FormosanBank at $HEAD_COMMIT; XML/ was last built at $REFERENCE_COMMIT" >&2
 fi
-for language in Kanakanavu Saaroa; do
+for language in Kanakanavu; do
     if [[ -d "$XML_STAGE/$language" ]]; then
         mkdir -p "$CORPUS/XML/$language"
         rm -f "$CORPUS/XML/$language/"*.xml   # drop files an earlier build wrote for sources no longer published

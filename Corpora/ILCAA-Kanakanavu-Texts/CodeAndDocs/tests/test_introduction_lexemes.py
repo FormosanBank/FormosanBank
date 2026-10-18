@@ -30,7 +30,7 @@ def test_table_1_is_not_published():
     drafts = WORKSPACE / "build/xml_drafts/Kanakanavu"
     for profile in ("Szakos1999", "BasicVocabulary2007", "Tsuchida1969", "PhonemicComparison"):
         assert not list(drafts.glob(f"*_intro_{profile}.xml"))
-    assert {r["profile"] for r in data["records"]} == {"Asai2026", "Tsuchida1976", "SaaroaComparison"}
+    assert {r["profile"] for r in data["records"]} == {"Asai2026", "Tsuchida1976"}
     assert any(e["pages"] == [16, 17] and "Table 1" in e["kind"] for e in data["excluded_regions"])
 
 
@@ -49,10 +49,11 @@ def test_free_pronouns_preserve_stress_and_row_context():
     assert "1EXCL" in iikia.find("FORM").get("notes")
 
 
-def test_saaroa_comparison_keeps_its_language():
-    root, s = sentence("SaaroaComparison", "P020_SAAROA", "Saaroa")
-    assert root.get(intro.XML_LANG) == "sxr" and root.get("dialect") == "Saaroa"
-    assert s.findtext("FORM") == "iɫakia"
+def test_saaroa_comparison_word_is_not_published():
+    # Maintainer, 2026-10-18: "drop that single Saaroa word from the corpus."
+    assert not list((WORKSPACE / "build/xml_drafts").glob("Saaroa/*.xml"))
+    data = json.loads((CODE / "introduction_lexemes.json").read_text())
+    assert not [r for r in data["records"] if r["language"] == "sxr"]
 
 
 @pytest.mark.parametrize("key,ordinary,vocative", [
@@ -86,7 +87,7 @@ def test_printed_analysis_keeps_infix_gap_and_source_gloss():
 
 def test_templates_and_unresolved_phonetic_strings_are_not_sentences():
     records = intro.load_records(CODE / "introduction_lexemes.json", WORKSPACE)
-    assert len(records) == 70
+    assert len(records) == 69
     assert not any("STEM" in r["form"] or r["form"] in ("M-type", "kɔ:", "kɅɨnɨ") for r in records)
     data = json.loads((CODE / "introduction_lexemes.json").read_text())
     assert {r["kind"] for r in data["pending"]} == {"phonetic comparison"}

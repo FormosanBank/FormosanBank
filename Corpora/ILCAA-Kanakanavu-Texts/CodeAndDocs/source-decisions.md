@@ -49,13 +49,10 @@ without installing copies in FormosanBank. It retains final XML until the
 remaining historical profiles have supported routes; the complete regenerated
 output still needs review before QC.
 
-The Saaroa comparison `iɫakia` has a separate, four-grapheme source profile.
-The cited [Saaroa Texts (2023)](https://doi.org/10.15026/125201), section 2,
-printed page 3 (PDF page 16), identifies its `ɫ` as a voiceless lateral fricative;
-the form itself appears on printed page 6. Preserve `ɫ` in original FORM and
-derive IPA `ɬ` and Ortho113 `hl`: `iɫakia` -> `ihlakia`, with `iɬakia` in
-both PHON tiers (POL-001/002/003). This profile covers only that comparison,
-not Saaroa generally. The build processes its language directory separately.
+The Saaroa word `iɫakia`, cited in the pronoun prose on PDF page 20, is not
+published. Maintainer, 2026-10-18: "drop that single Saaroa word from the corpus.
+And drop the new conversion table created for it." Its profile and conversion
+table are deleted with it.
 Table 2's 16 free pronouns (physical page 20, Tsuchida1976 group) use only
 a, i, k, m, n, s, t, u, ʔ and ŋ, plus source stress accents. Tsuchida's 1975
 dissertation, section 2.1.1.1, printed pages 27–28 (PDF pages 61–62), identifies
@@ -165,9 +162,7 @@ see above.)
 Table 2 supplies 16 distinct free-pronoun forms from 17 cells; repeated íikia
 shares a reference record with both contexts retained (POL-022). Stress is preserved and row labels are not invented English
 translations. Bound pronouns, affix templates, phoneme inventories and Table 4
-remain context. The Saaroa comparison iɫakia has its own sxr file (languages.csv). The prior
-xsr tag identified Sherpa and caused shared phonology to skip it; correct the
-source language code while preserving its Saaroa path and IDs (POL-039).
+remain context.
 
 The pronoun distinction is resolved by Tsuchida's *Reconstruction of Proto-Tsouic
 Phonology*, 1975 Yale dissertation, section 2.1.2.2, printed pages 37–38

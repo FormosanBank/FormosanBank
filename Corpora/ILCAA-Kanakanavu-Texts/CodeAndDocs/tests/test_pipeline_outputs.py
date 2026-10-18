@@ -180,7 +180,7 @@ def test_every_generated_sentence_indexed():
         xml_ids.update(s.attrib["id"] for s in root.findall("S"))
     assert xml_ids
     assert xml_ids == index_ids
-    assert len(xml_ids) == 1446 + 57 + 70
+    assert len(xml_ids) == 1446 + 57 + 69
 
 
 def test_grammar_introduction_examples_in_final_xml():

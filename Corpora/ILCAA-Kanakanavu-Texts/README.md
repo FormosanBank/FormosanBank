@@ -4,7 +4,7 @@ Asai, Mei, Li and Tsuchida (2026), *Kanakanavu texts*, edited by Paul Jen-kuei
 Li and published by ILCAA, Tokyo University of Foreign Studies.
 
 **Status:** built on 2026-10-18 by `CodeAndDocs/generate_xml.sh` (48 Kanakanavu
-files and one Saaroa file, 1,573 S). The maintainer reviewed the QC findings and
+files, 1,572 S). The maintainer reviewed the QC findings and
 the open notation questions that day; the rulings are in
 [source decisions](CodeAndDocs/source-decisions.md).
 
@@ -21,7 +21,7 @@ The parser accounts for 44 narratives and 40 numbered introduction examples
 constructions, nine use W/M FORM variants and 15 retain separate S readings,
 producing 1,446 numbered-example S records. Another source file contains 57
 lexical records from 49 explanatory footnotes. Introduction tables/prose and
-the title linked to footnote 29 add 70 S, for 1,573 S in the final XML.
+the title linked to footnote 29 add 69 S, for 1,572 S in the final XML.
 Table 1 of the introduction (physical page 16) is not published: maintainer
 ruling 2026-10-18, "Drop all of Table 1." Neither are the two prose examples
 next to it (kumakaɨn(ɨ) and the /kaɨnɨ/ [kɅɨnɨ] pair): "Drop the prose
@@ -29,7 +29,8 @@ examples." All 32 records are recorded as an excluded region in the
 introduction ledger.
 The [footnote ledger](CodeAndDocs/footnote_lexemes.jsonl) accounts for all 87
 notes. The [introduction ledger](CodeAndDocs/introduction_lexemes.json) keeps
-the Tsuchida 1976 pronouns and the Saaroa comparison in separate files.
+the Tsuchida 1976 pronouns in a separate file. The one Saaroa word the
+introduction cites (iɫakia, PDF page 20) is not published (maintainer, 2026-10-18).
 It records bound morphology/templates as context and the unresolved village
 phonetics explicitly. Tsuchida's source distinguishes the two vocatives
 from ordinary pronouns; all four forms keep separate records. These counts are
@@ -60,10 +61,8 @@ deduplication is not a build step.
 The [provenance record](CodeAndDocs/provenance.json) names the FormosanBank
 commit that built the XML. The previous private phonology override and count-based QC acceptance wrapper are retired.
 The entry point reads the Kanakanavu source profile `Asai2026` from the
-FormosanBank checkout (`Orthographies/Asai2026/`), and passes the committed
-conversion tables and the Saaroa comparison profile under
-`CodeAndDocs/scripts/orthographies/` directly to the shared tools, with
-separate file/language routing.
+FormosanBank checkout (`Orthographies/Asai2026/`), and the conversion table `Kanakanavu_Asai2026_113.tsv` from
+`Orthographies/ConversionTables/`.
 Table 2's 16 pronouns use the narrative route's reviewed subset.
 These tables need no installation in FormosanBank.
 
@@ -92,7 +91,7 @@ separate grant); evidence: ask maintainer
 The licence is stated on the source PDF itself (physical page 3). The source
 PDF may be redistributed under that licence with attribution.
 Source generation writes the canonical licence value `CC BY 4.0` (POL-042),
-with attribution retained here. All 51 regenerated files carry `CC BY 4.0`.
+with attribution retained here. All 48 files carry `CC BY 4.0`.
 
 ## Audio
 
@@ -108,13 +107,10 @@ None supplied with this source.
   example 35 (ha/sua and iihaa/iisua) stays two S readings (maintainer, 2026-10-18).
   Clause grouping stays at S; shared cleaning normalizes its brackets to
   parentheses and PHON omits them. These clauses are not optional material.
-- Introduction lexical material has three transcription groups (Asai 2026,
-  Tsuchida 1976 and the Saaroa comparison). Table 1 is not published (see above).
+- Introduction lexical material has two transcription groups (Asai 2026 and
+  Tsuchida 1976). Table 1 is not published (see above).
   Table 2's 16 pronouns have a
   verified segmental route; their stress marks remain in original FORM.
-  The Saaroa comparison has a
-  source-backed `ɫ` -> `hl` conversion and the corrected Saaroa code `sxr`,
-  separate from the narrative profile.
   The village-labelled phonetic comparison remains open in the ledger.
   Supplemental records preserve printed readings; only three analyzed prose
   examples supply W/M tiers.
