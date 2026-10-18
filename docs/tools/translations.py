@@ -130,6 +130,7 @@ class Block:
     raw: str = ""  # code
     title: str = ""  # admonition title
     section: str = ""  # nearest level-2 heading above
+    heading: str = ""  # nearest heading of any level above
 
 
 def parse_blocks(markdown: str) -> list[Block]:
@@ -137,6 +138,7 @@ def parse_blocks(markdown: str) -> list[Block]:
     lines = text.split("\n")
     blocks: list[Block] = []
     section = ""
+    last_heading = ""
     paragraph: list[str] = []
     i = 0
 
@@ -170,6 +172,7 @@ def parse_blocks(markdown: str) -> list[Block]:
             title = plain_text(heading.group(2))
             if level == 2:
                 section = title
+            last_heading = title
             if translatable(title):
                 blocks.append(Block("heading", level=level, units=[title], section=section))
             i += 1
@@ -182,7 +185,7 @@ def parse_blocks(markdown: str) -> list[Block]:
                     cells = [plain_text(c) for c in lines[i].strip().strip("|").split("|")]
                     rows.append(cells)
                 i += 1
-            blocks.append(Block("table", rows=rows, section=section))
+            blocks.append(Block("table", rows=rows, section=section, heading=last_heading))
             continue
         admonition = ADMONITION.match(line)
         if admonition:
@@ -225,7 +228,18 @@ def parse_blocks(markdown: str) -> list[Block]:
     return blocks
 
 
+# Statistics tables are generated (site_stats); their labels are translated
+# once as shared labels, and their cells are numbers and language names.
+STATISTICS_HEADINGS = {"Statistics", "Corpus Statistics", "By language", "By dialect", "Dialects"}
+
+
+def is_statistics_table(block: Block) -> bool:
+    return block.kind == "table" and block.heading in STATISTICS_HEADINGS
+
+
 def block_units(block: Block) -> list[str]:
+    if is_statistics_table(block):
+        return []
     if block.kind == "table":
         return [cell for row in block.rows for cell in row if translatable(cell)]
     units = list(block.units)
@@ -428,7 +442,7 @@ def render_translated_page(
             if texts:
                 header = f'!!! note "{title}"' if title else "!!! note"
                 out += [header, f"    {' '.join(texts)}", ""]
-        elif block.kind == "table":
+        elif block.kind == "table" and not is_statistics_table(block):
             def row_text(row):
                 cells = []
                 for cell in row:

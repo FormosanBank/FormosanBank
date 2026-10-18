@@ -149,3 +149,11 @@ def test_inline_code_is_not_stripped_as_markup():
     # HTML tag and as emphasis, so the English unit read "ungrammatical (``)".
     units = tr.segments("Examples marked ungrammatical (`*`) or with `<UNCLEAR/>` are excluded.\n")
     assert units == ["Examples marked ungrammatical (`*`) or with `<UNCLEAR/>` are excluded."]
+
+
+def test_statistics_tables_are_not_units():
+    page = ("# C\n\n## Statistics\n\n| | Amis<br>Coastal |\n| --- | --- |\n| Word count | 13 |\n"
+            "| Total audio | 13.4h |\n\n## Source\n\n| Field | Meaning |\n| --- | --- |\n| id | The record id |\n")
+    units = tr.segments(page)
+    assert "13.4h" not in units and not any("Coastal" in u for u in units)
+    assert "The record id" in units  # an ordinary table still counts
