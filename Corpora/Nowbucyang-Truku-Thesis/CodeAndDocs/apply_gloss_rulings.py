@@ -254,8 +254,76 @@ def move_alt_translations_to_notes(ids):
         primary[0].set("notes", note)
 
 
+# Round 2 (maintainer, 2026-10-18): the three host + clitic pairs held back
+# from ruling 8. The sentence FORMs are not changed.
+# - S-n-rus =mu (C03_E012A): chose "A: infix notation" -- "This is infix
+#   notation, you are correct." W `S<n>rus =mu` = 擦-n-我; Ms `S-rus` = 擦,
+#   `-n-` = n, `=mu` = 我.
+# - B-n-arig =ku (C04_E003B): "A" -- W `B<n>arig =ku` = 買-n-我; Ms
+#   `B-arig` = 買, `-n-` = n, `=ku` = 我.
+# As in the q-m-pah-an repair (source-decisions.md), the root keeps M1's id,
+# the infix keeps M2's, old M3 (the rest of the root) is removed, and the
+# clitic's M keeps its published id.
+INFIX_CLITIC_MERGES = [
+    # (host W, clitic W, host FORM before, new W FORM, W gloss before, new W gloss,
+    #  [(M id, FORM before, FORM after, gloss)], M id removed)
+    ("C03_E012AW1", "C03_E012AW2", "S-n-rus", "S<n>rus =mu", "擦-n", "擦-n-我",
+     [("C03_E012AW1M1", "S", "S-rus", "擦"), ("C03_E012AW1M2", "n", "-n-", "n")], ("C03_E012AW1M3", "rus")),
+    ("C04_E003BW1", "C04_E003BW2", "B-n-arig", "B<n>arig =ku", "買-n", "買-n-我",
+     [("C04_E003BW1M1", "B", "B-arig", "買"), ("C04_E003BW1M2", "n", "-n-", "n")], ("C04_E003BW1M3", "arig")),
+]
+# - Mgay =ku (C01_E011D, C01_E011D2): "A" -- W `Mgay =ku` glossed AF-給=我
+#   (the maintainer's spelling); M `Mgay` = <UNCLEAR/>; M `=ku` = 我.
+UNCLEAR_HOST_CLITIC_MERGES = [
+    # (host W, clitic W, new W FORM, W gloss before, new W gloss, host M id)
+    ("C01_E011DW1", "C01_E011DW2", "Mgay =ku", "AF-給", "AF-給=我", "C01_E011DW1M1"),
+    ("C01_E011D2W1", "C01_E011D2W2", "Mgay =ku", "AF-給", "AF-給=我", "C01_E011D2W1M1"),
+]
+
+
+def _merge_clitic_word(host, clitic, new_form, new_gloss):
+    clitic_ms = clitic.findall("M")
+    _expect(len(clitic_ms) == 1 and _gloss_text(clitic) == "我" and _gloss_text(clitic_ms[0]) == "我",
+            f"{clitic.get('id')}: expected one clitic M glossed 我")
+    _expect(set(clitic.attrib) == {"id"} and {c.tag for c in clitic} <= {"FORM", "PHON", "TRANSL", "M"},
+            f"{clitic.get('id')}: clitic W carries more than FORM/PHON/TRANSL/M")
+    _original(host).text = new_form
+    _strip_derived(host)
+    host.find("TRANSL").text = new_gloss
+    host.findall("M")[-1].addnext(clitic_ms[0])
+    host.getparent().remove(clitic)
+
+
+def merge_held_clitics(ids):
+    for host_id, clitic_id, before, form, gloss_before, gloss, m_changes, (gone_id, gone_form) in INFIX_CLITIC_MERGES:
+        host, clitic = _get(ids, host_id, "W"), _get(ids, clitic_id, "W")
+        _expect(host.getnext() is clitic, f"{host_id}/{clitic_id}: not adjacent")
+        _expect(_original(host).text == before and _gloss_text(host) == gloss_before,
+                f"{host_id}: not {before} / {gloss_before}")
+        ms = host.findall("M")
+        _expect([m.get("id") for m in ms] == [P + m_changes[0][0], P + m_changes[1][0], P + gone_id]
+                and [_original(m).text for m in ms] == [m_changes[0][1], m_changes[1][1], gone_form]
+                and not any(_glosses(m) for m in ms), f"{host_id}: Ms not as expected")
+        for m, (_, _, new_m_form, m_gloss) in zip(ms, m_changes):
+            _original(m).text = new_m_form
+            _strip_derived(m)
+            m.append(_new_gloss(m_gloss))
+        host.remove(ms[2])
+        _merge_clitic_word(host, clitic, form, gloss)
+    for host_id, clitic_id, form, gloss_before, gloss, m_id in UNCLEAR_HOST_CLITIC_MERGES:
+        host, clitic = _get(ids, host_id, "W"), _get(ids, clitic_id, "W")
+        _expect(host.getnext() is clitic, f"{host_id}/{clitic_id}: not adjacent")
+        ms = host.findall("M")
+        _expect(_original(host).text == "Mgay" and _gloss_text(host) == gloss_before
+                and len(ms) == 1 and ms[0].get("id") == P + m_id and _gloss_text(ms[0]) == gloss_before,
+                f"{host_id}: not Mgay with one M glossed {gloss_before}")
+        ms[0].remove(ms[0].find("TRANSL"))
+        ms[0].append(_new_gloss(unclear=True))
+        _merge_clitic_word(host, clitic, form, gloss)
+
+
 STEPS = [merge_joint_glosses, add_thesis_glosses, gloss_morphemes_unclear, split_null_morpheme,
-         merge_clitic_glosses, move_alt_translations_to_notes]
+         merge_clitic_glosses, move_alt_translations_to_notes, merge_held_clitics]
 
 
 def main():

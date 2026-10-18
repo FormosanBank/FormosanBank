@@ -2,8 +2,8 @@
 
 Truku examples from Lowking Wei-Cheng Hsu / 許韋晟, *太魯閣語構詞法研究*
 [Word Formation in Truku], 2008, MA thesis, National Hsin-Chu University of
-Education. The revised corpus has 285 examples, 1,049 W (1,146 written words:
-97 W each join two words the thesis glosses as one unit) and 1,442 morphemes
+Education. The revised corpus has 285 examples, 1,045 W (1,146 written words:
+101 W each join two words the thesis glosses as one unit) and 1,440 morphemes
 (`trv`, dialect `Truku`), with source Chinese translations where supplied.
 
 ## Rights
@@ -59,9 +59,10 @@ are one W each (POL-060): FORM `Ini =ku`, gloss `不-我`, the host's Ms then th
 clitic's M, all keeping their published ids. Three clitics with their own
 printed gloss token stay separate W (`Hpuy-an =nami` 煮-LF 我們, C01_E024A;
 `Gaga =su` and `Gisu =su` 正在 你, C01_E027A/B). `S-n-rus =mu` (C03_E012A),
-`B-n-arig =ku` (C04_E003B) and `Mgay =ku` (C01_E011D, C01_E011D2) await a
-maintainer ruling and are unchanged, as is the morpheme boundary of `Nnita`
-(C03_E003A).
+`B-n-arig =ku` (C04_E003B) are one W in infix notation (`S<n>rus =mu`
+擦-n-我: Ms `S-rus` 擦, `-n-` n, `=mu` 我; `B<n>arig =ku` 買-n-我 likewise).
+`Mgay =ku` (C01_E011D, C01_E011D2) is one W glossed `AF-給=我`, with M `Mgay`
+`<UNCLEAR/>` and M `=ku` 我. `Nnita` (C03_E003A) keeps one unglossed M.
 Three parentheticals the thesis prints after a free translation are notes on
 that translation, not alternative translations: `(* 螢火蟲出來了)` in C04_E008C
 (the starred reading the sentence does not have) and `(在路上)` / `(已看到人)`
