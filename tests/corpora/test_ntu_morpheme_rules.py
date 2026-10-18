@@ -617,7 +617,7 @@ def test_voiceover_and_rec40_and_timing_grafts():
     s = s_of(xml / "Kavalan" / "Kavalan_KavNr-frog_abas.xml", "KavNr-frog_abas_S_138")
     assert s.find("FORM[@kindOf='original']").text.startswith("maiti") and "VOICEOVER" in s.find("FORM[@kindOf='original']").get("notes")
     s = s_of(xml / "Bunun" / "Bunun_bnNr-frog_Laniahu.xml", "bnNr-frog_Laniahu_S_40")
-    assert s.find("W/FORM").text == "ai,"
+    assert s.find("W/FORM").text == "ai"
     for f in ("Seediq/Seediq_sdqNr-taboo_pawan 2021s.xml", "Seediq/Seediq_sdqNr-tattoo2_pawan 2020s.xml", "Tsou/Tsou_TsouNr-pear-story-3.xml"):
         S = list(etree.parse(str(xml / f)).getroot().iter("S"))
         assert S and all(x.find("AUDIO") is not None for x in S), f
