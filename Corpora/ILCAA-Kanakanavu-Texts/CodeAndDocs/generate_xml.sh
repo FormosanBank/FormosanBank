@@ -21,7 +21,7 @@ if unsupported:
     print("Final generation needs reviewed per-source routes for: " + ", ".join(unsupported), file=sys.stderr)
     sys.exit(2)
 PY
-SOURCE_ORTHOGRAPHY="$CODEDOCS/scripts/orthographies/Asai2026"
+SOURCE_ORTHOGRAPHY="$BANK/Orthographies/Asai2026"
 CONVERSION="$CODEDOCS/scripts/orthographies/ConversionTables/Kanakanavu_Asai2026_113.tsv"
 SAAROA_ORTHOGRAPHY="$CODEDOCS/scripts/orthographies/SaaroaComparison"
 SAAROA_CONVERSION="$CODEDOCS/scripts/orthographies/ConversionTables/Saaroa_SaaroaComparison_113.tsv"

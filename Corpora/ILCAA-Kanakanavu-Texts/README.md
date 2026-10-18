@@ -60,8 +60,10 @@ deduplication is not a build step.
 
 The [provenance record](CodeAndDocs/provenance.json) names the FormosanBank
 commit that built the XML. The previous private phonology override and count-based QC acceptance wrapper are retired.
-The entry point passes the committed narrative and Saaroa tables
-under `CodeAndDocs/scripts/orthographies/` directly to the shared tools, with
+The entry point reads the Kanakanavu source profile `Asai2026` from the
+FormosanBank checkout (`Orthographies/Asai2026/`), and passes the committed
+conversion tables and the Saaroa comparison profile under
+`CodeAndDocs/scripts/orthographies/` directly to the shared tools, with
 separate file/language routing.
 Table 2's 16 pronouns use the narrative route's reviewed subset.
 These tables need no installation in FormosanBank.
