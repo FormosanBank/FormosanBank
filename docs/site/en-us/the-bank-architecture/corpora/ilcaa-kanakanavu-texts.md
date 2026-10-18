@@ -1,91 +1,67 @@
 # Asai et al. (2026) Kanakanavu Texts
 
-This proposed collection covers the grammatical introduction and 44 narratives in Asai et al.’s 2026 Kanakanavu Texts. The checked-in candidate retains 45 XML files and 1,455 sentence records from the earlier build, with English translations and W/M analysis. It has no audio.
+This corpus is the Kanakanavu (`xnb`) text of Asai, Mei, Li and Tsuchida's 2026 *Kanakanavu Texts* (Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies): 44 narratives and the example sentences of the book's grammatical introduction, with the book's own English translations and, for the narratives and the introduction's numbered examples, its word and morpheme glossing. The introduction's word lists and the book's explanatory footnotes add single-word entries. The source is a born-digital PDF, so nothing was OCR'd. There is no audio.
 
-This candidate remains under review. The statistics below describe the retained final XML, before the pending source repairs are regenerated.
+***
 
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | Kanakanavu |
-| --- | --- |
-| Word count | 9,998 |
-| Total audio | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
-| Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 9,998 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 |
-| Morphologically segmented | 9,983 |
-| Glossed words | 9,983 |
+| | Saaroa | Kanakanavu |
+| --- | --- | --- |
+| Word count | 1 | 10,071 |
+| Total audio | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 |
+| Translated words |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 10,036 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 4 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 |
+| Morphologically segmented | 0 | 9,942 |
+| Glossed words | 0 | 9,942 |
 
 ***
 
 <!-- CORPUS STATS END -->
 
-## Notes and Issues
 
-- Standard PHON follows Ortho113 (POL-003). The source's conditioned c/s
-  pronunciation stays in original PHON; the former private standard override
-  is retired. The two tiers therefore differ in those environments.
-- The source parser resolves eight spelling/pronunciation variants and the old
-  V1/V2 IDs. Tsuchida's notation key resolves ha/sua in two passages;
-  two parenthetical classifications still need resolution under POL-028.
-  Clause grouping stays at S; shared cleaning normalizes its brackets to
-  parentheses and PHON omits them. These clauses are not optional material.
-- Introduction lexical material has seven transcription groups, including Saaroa
-  and the explicit phonemic/phonetic pair. Szakos ö still needs a supported sound
-  mapping. Table 2's 16 pronouns have a
-  verified segmental route; their stress marks remain in original FORM.
-  The Saaroa comparison has a
-  source-backed `ɫ` -> `hl` conversion and the corrected Saaroa code `sxr`,
-  separate from the narrative profile.
-  The village-labelled phonetic comparison remains open in the ledger.
-  Supplemental records preserve printed readings; only three analyzed prose
-  examples supply W/M tiers. They remain source-stage output pending the full build.
-- The earlier ten-page expert review and historical samples cover those records
-  only. They do not establish a current visual review of every page or reading.
+## **Notes and Issues**
 
-The [corpus PR #155](https://github.com/FormosanBank/FormosanBank/pull/155)
-lists the remaining decisions. A successful build or XML check does not settle them.
+* **The standard tier is a transliteration into Ortho113.** The book writes Kanakanavu with IPA-style letters (`ʔ`, `ŋ`, `ə`). The standard tier writes `ʔ` as `'`, `ŋ` as `ng` and `ə` as `e`. It also writes `l` as `r`, as Ortho113 has a single `r`. Two distinctions are therefore lost in the standard tier: `ə` versus the rarer native `e`, and `l` versus `r`. The original tier keeps both.
+* **The capital glottal stop `Ɂ` is written `ʔ`.** Four of the narratives print the glottal stop with this glyph. The original tier writes it as the ordinary `ʔ`, so a search for `ʔ` finds all of them.
+* **Infix brackets stay in the original sentence form, not the standard one.** The original tier keeps the book's `<um>`; the standard sentence form drops the brackets. Word and morpheme forms keep their segmentation marks (`-`, `=`, `<...>`) as printed, and the morpheme tier carries the infix as `-um-`.
+* **Spelling variants the book prints in parentheses are kept as alternatives.** For example `mu-usa (= mu-kusa)` is one sentence whose word carries `mu-kusa` as an alternative reading. Nine pairs are handled this way. Where the two readings would be glossed differently, or the book prints whole optional words, the second reading is its own sentence, with the same ID plus `-opt`.
+* **The example-23 clauses.** The book prints square brackets around the pseudo-cleft clause in examples 23a to 23d. The original sentence form shows them as parentheses; the standard form and the word and morpheme forms have none.
+* **`əhə kai` is one word.** In Naparamaci example 68 the book prints a single gloss, "interjection", under the two words, so they are published as one word and one morpheme.
+* **Not every sentence has word-level analysis.** The introduction's word lists and the footnote entries are single words that the book does not segment; they carry a translation and no word or morpheme tier. Only three of the introduction's lexical examples come with the book's own morpheme analysis.
+* **Not included.** The introduction's Table 1 (historical transcriptions by Tsuchida 1969, Szakos 1999 and the 2007 Basic Vocabulary) and two prose examples next to it are left out by decision. The village-labelled phonetic comparison on page 15 is also left out, because the book gives no written form for it.
+* **A Saaroa comparison word.** The introduction compares one Kanakanavu word with Saaroa; it is published separately, as Saaroa (`sxr`).
+* **Printed translation parentheses are kept.** The book's own clarifications, for example `Thereupon, (the girl) left`, stay in the English translations. One translation prints an em dash that the shared cleaning step writes as a hyphen.
+* **Repeated passages are kept.** Repetition within a story is source data and is not removed.
 
-## Access Details
+***
 
-The [candidate XML and reproduction package](https://github.com/FormosanBank/FormosanBank/tree/c8362f07b3de5cbb0dade0c6a93bde3859a21f80/Corpora/ILCAA-Kanakanavu-Texts/)
-match the reviewed private development commit. This proposal has not been merged.
+## **Access Details**
 
-## Corpus Processing
+* The repo containing this corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/ILCAA-Kanakanavu-Texts).
 
-The parser reads the committed CC BY 4.0 PDF and source decisions. It emits 1,447 numbered-example S, 57 footnote S and 101 introduction/title S, totalling 1,605 source records. Historical columns stay separate. Repairs preserve prior corrections and narrative repetition while fixing gloss alignment, infixes, pseudo-clefts and reading variants. Table 1's Tsuchida 1969 and 2007 vocabulary columns use a separate source route; Table 2's 16 pronouns use the reviewed narrative-profile subset. Saaroa has its own conversion. The explicit /kaɨnɨ/[kɅɨnɨ] pair preserves source FORM and PHON separately. Shared tools derive other original PHON from source profiles and standard PHON from Ortho113 (POL-003). Szakos ö, one village phonetic comparison and two narrative classifications remain unresolved. These repairs have not reached retained final XML; provenance identifies its actual earlier build.
+***
 
-Run `bash Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/generate_xml.sh` in the candidate
-FormosanBank checkout. The [README](https://github.com/FormosanBank/FormosanBank/blob/c8362f07b3de5cbb0dade0c6a93bde3859a21f80/Corpora/ILCAA-Kanakanavu-Texts/README.md) documents dependencies,
-source coverage and any scoped pipeline deviations. The
-[build provenance](https://github.com/FormosanBank/FormosanBank/blob/c8362f07b3de5cbb0dade0c6a93bde3859a21f80/Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/provenance.json) records the actual
-tools used for the retained output; it does not select or pin tools for later builds.
+## **Corpus Processing**
 
-## Copyright
+Run `bash Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/generate_xml.sh` in a FormosanBank checkout. It extracts the text from the committed source PDF, builds the XML, then runs FormosanBank's shared cleaning, standardization and phonology steps. The [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/ILCAA-Kanakanavu-Texts/README.md) documents the dependencies, the source coverage and every decision about the book's notation. The [build provenance](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/ILCAA-Kanakanavu-Texts/CodeAndDocs/provenance.json) records the FormosanBank commit the published XML was built against.
 
-The retained XML copyright field is:
+***
 
-Copyright © 2026 Paul Jen-kuei Li, Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0.
+## **Copyright**
 
-**License:** CC BY 4.0, stated on source PDF physical page 3.
+CC BY 4.0 (Creative Commons Attribution 4.0 International). The licence is stated on the source PDF itself (physical page 3); the rights holders are Paul Jen-kuei Li, Yi-Chun Chen, Hsiu-min Huang and Amy Ming-luan Chen (2026).
 
-**Rights source:** Paul Jen-kuei Li, Yi-Chun Chen, Hsiu-min Huang and Amy
-Ming-luan Chen, 2026; exact grant date not stated; evidence: ask maintainer.
-
-The source PDF may be redistributed under that licence with attribution.
-Source generation writes the canonical licence value `CC BY 4.0` (POL-042),
-with attribution retained here. The retained XML still carries its old
-copyright prose and awaits final regeneration.
+***
 
 ## Citation
 
 In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
 
-Asai, E., Mei, K., Li, P. J.-k., & Tsuchida, S. 2026. *Kanakanavu Texts*
-(P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and
-Africa, Tokyo University of Foreign Studies.
+Asai, E., Mei, K., Li, P. J.-k., & Tsuchida, S. (2026). *Kanakanavu Texts* (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies.
