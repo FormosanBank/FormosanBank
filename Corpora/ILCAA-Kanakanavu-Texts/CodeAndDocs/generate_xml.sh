@@ -53,19 +53,13 @@ if [[ -d "$XML_STAGE/Saaroa" ]]; then
     "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography "$SAAROA_ORTHOGRAPHY" --corpora_path "$XML_STAGE/Saaroa"
 fi
 
-"$PY" - "$BANK" "$STAGE/provenance.json" "$CODEDOCS/provenance.json" <<'PY'
-import json
-import subprocess
-import sys
-from pathlib import Path
-bank, destination, previous = map(Path, sys.argv[1:])
-if (bank / ".git").exists():
-    commit = subprocess.check_output(["git", "-C", str(bank), "rev-parse", "HEAD"], text=True).strip()
-    destination.write_text(json.dumps({"formosanbank_commit": commit}, indent=2) + "\n")
-else:
-    destination.write_bytes(previous.read_bytes())
-    print("No Git metadata: verify the export tools revision separately; retain provenance.")
-PY
+# POL-052: say which FormosanBank commit the published bytes were built against. Informational
+# only; the build never compares against it to decide whether to run, and never rewrites it.
+REFERENCE_COMMIT="$(sed -n 's/.*"formosanbank_commit"[[:space:]]*:[[:space:]]*"\([0-9a-f]\{40\}\)".*/\1/p' "$CODEDOCS/provenance.json")"
+HEAD_COMMIT="$(git -C "$BANK" rev-parse HEAD 2>/dev/null || echo unknown)"
+if [ "$HEAD_COMMIT" != "$REFERENCE_COMMIT" ]; then
+    echo "note: FormosanBank at $HEAD_COMMIT; XML/ was last built at $REFERENCE_COMMIT" >&2
+fi
 for language in Kanakanavu Saaroa; do
     if [[ -d "$XML_STAGE/$language" ]]; then
         mkdir -p "$CORPUS/XML/$language"
@@ -73,4 +67,3 @@ for language in Kanakanavu Saaroa; do
         cp "$XML_STAGE/$language/"*.xml "$CORPUS/XML/$language/"
     fi
 done
-cp "$STAGE/provenance.json" "$CODEDOCS/provenance.json"
