@@ -7,6 +7,9 @@ Maintainer's rulings, 2026-10-18 (NTU follow-up review), one test group each:
 * a Sakizaya grammar example quoted from a conversation, '100....（2.2）^yah'
   (intonation-unit number, pause, then the word): the unit number and the pause
   must not be glued onto the word (pipeline_grammar.py, step 15);
+* multi-speaker labels, 'Y,M:', 'W,G,S:': "Any number of single capital letters
+  followed by a colon, ignore intervening commas => speaker label."
+  (pipeline_stories.py, step 15).
 
 The second group holds the published XML to the rulings; NTU_XML_DIR points it
 at another tree (e.g. the pre-change XML, on which these tests fail).
@@ -27,6 +30,9 @@ sys.path.insert(0, str(CODEDOCS / "scripts"))
 
 from utils import strip_l2m, strip_prosodic_markers  # noqa: E402
 
+sys.path.insert(0, str(CODEDOCS / "pipeline"))
+import pipeline_stories as ps  # noqa: E402
+
 
 def _inner(el):
     return (el.text or "") + "".join(ET.tostring(c, encoding="unicode") for c in el)
@@ -44,6 +50,21 @@ def _inner(el):
 ])
 def test_code_switch_tags_stripped(raw, clean):
     assert strip_l2m(strip_prosodic_markers(raw))[0] == clean
+
+
+@pytest.mark.parametrize("raw, label", [
+    ("Y,M:", True), ("W,G,S:", True), ("S, G ,W：", True),
+    ("Y,M", False),            # no colon: not a label
+    ("ma,", False), ("Lao.Jia:", False), ("T:", False),   # T: is the single-label rule's
+])
+def test_multi_speaker_label_pattern(raw, label):
+    assert bool(ps.multi_speaker_labels([[raw, "_", "_"]])) is label
+
+
+def test_multi_speaker_label_row_is_apparatus():
+    labels = ps.multi_speaker_labels([["S,G,W:", "_", "_"]])
+    assert ps.apparatus_class(["S,G,W", "", ""], labels).startswith("1 speaker label")
+    assert ps.apparatus_class(["S,G,W", "", ""]) is None    # without the raw cell's colon
 
 
 # ------------------------------------------------------- the published XML
@@ -79,3 +100,20 @@ def test_cited_excerpt_words_carry_no_transcription_apparatus():
     for sid, forms in words.items():
         for form in forms:
             assert not any(ch.isdigit() for ch in form) and "==" not in form, (sid, form)
+
+
+MULTI_LABEL_SENTENCES = {   # S id -> its sentence FORM after the labels went (22 sentences, 23 labels)
+    "None-1_S_21": "te'o i'vaha mia 'ia, mi mimu i'vaho novei to, atuhcumu emoo.",
+    "TsouConv-typhoon_S_289": "zou ba'e mameoi.",
+    "TsouConv-typhoon_S_503": "ea zou mo nana, <UNCLEAR /> <UNCLEAR /> oh mo nana nʉthʉ na s, seito ne kosiuso.",
+}
+
+
+def test_multi_speaker_labels_removed(sentences):
+    import re
+    label = re.compile(r"(?<!\S)[A-Z](?:,[A-Z])+(?!\S)")
+    left = [(sid, "".join(f.itertext())) for sid, s in sentences.items() for f in s.iter("FORM")
+            if label.search("".join(f.itertext()))]
+    assert left == [], f"{len(left)} FORM(s) still hold a multi-speaker label, e.g. {left[:3]}"
+    for sid, form in MULTI_LABEL_SENTENCES.items():
+        assert [_inner(f) for f in sentences[sid].findall("FORM")] == [form] * 2, sid

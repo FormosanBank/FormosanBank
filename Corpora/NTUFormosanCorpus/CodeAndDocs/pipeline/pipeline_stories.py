@@ -86,18 +86,31 @@ STEPS = {
 # class -- CJK in the form column -- is deliberately NOT dropped: in the stories
 # most of it is genuine Mandarin code-switching, where the Chinese IS the word.
 _SPEAKER = re.compile(r"^\s*[A-Z]\s*[:.：]*\s*$")
+# Several speakers at once, 'Y,M:', 'W,G,S:' (24 rows, all in the Tsou
+# conversations). Ruling 2026-10-18: "Any number of single capital letters
+# followed by a colon, ignore intervening commas => speaker label." Matched on the
+# raw cell, because step 5 removes the colon (multi_speaker_labels below).
+_MULTI_SPEAKER = re.compile(r"^\s*[A-Z](?:\s*,\s*[A-Z])+\s*[:：]\s*$")
 _LABEL_ECHO = re.compile(r"^\s*([A-Z])\s*[:.…]*\s*(?:\([^)]*\))?\s*[.…]*\s*$")
 _PUNCT_ONLY = re.compile(r"^[^\w’'ʉ]+$")
 _PAUSE = re.compile(r"^\s*[（(]?\d+(?:\.\d+)?[）)]?\s*$|^\.{2,}$|^=+$")
 _NONVERBAL = re.compile(r"^\s*[（(]\s*[A-Z]{2,}\s*[）)]\s*$")
 
 
-def apparatus_class(row: list):
-    """Which of the six apparatus classes this row is, or None if it is a word."""
+def multi_speaker_labels(rows: list) -> set:
+    """The multi-speaker labels among raw rows, as step 5 leaves them ('Y,M:' -> 'Y,M')."""
+    return {re.sub(r"[\s:：]", "", str(r[0])) for r in rows if r and _MULTI_SPEAKER.match(str(r[0]))}
+
+
+def apparatus_class(row: list, labels: frozenset = frozenset()):
+    """Which of the six apparatus classes this row is, or None if it is a word.
+
+    labels: the record's multi-speaker labels (multi_speaker_labels), which
+    count as speaker labels like a single capital does."""
     form = str(row[0]).strip()
     glosses = [str(c).strip() for c in row[1:]]
     blank = all(g in ("", "_") for g in glosses)
-    if _SPEAKER.match(form):
+    if _SPEAKER.match(form) or form in labels:
         if blank:
             return "1 speaker label, no gloss"
         if any(_LABEL_ECHO.match(g) for g in glosses if g):
@@ -547,7 +560,10 @@ def build(records: list, text_id: str, steps: set, stats: dict,
             all_ori = [t for t in (resolve_ungrammatical_parens(str(t)) for t in all_ori)
                        if t.strip()]
 
+        speaker_labels = frozenset()
         if 15 in steps:
+            # Before step 5, which takes the colon off a multi-speaker label.
+            speaker_labels = frozenset(multi_speaker_labels(all_rows))
             # Before step 5, which would keep the opening half as a word.
             all_rows = drop_split_events(all_rows, stats)
             all_ori = drop_split_events(all_ori, stats, tokens=True)
@@ -591,7 +607,7 @@ def build(records: list, text_id: str, steps: set, stats: dict,
             kept = []
             dropped_labels = set()
             for r in all_rows:
-                cls = apparatus_class(r)
+                cls = apparatus_class(r, speaker_labels)
                 if cls:
                     stats[f"15 dropped: {cls}"] = stats.get(f"15 dropped: {cls}", 0) + 1
                     if cls.startswith(("1 speaker label", "2 speaker label")):

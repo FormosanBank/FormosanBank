@@ -48,6 +48,8 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 
 * The Rukai marker `_` is not used in the text.
 
+* Speaker labels (`T:`) are not words and are removed from the word tier and the sentence text. That includes labels naming several speakers at once, `Y,M:`, `W,G,S:` (ruling 2026-10-18: "Any number of single capital letters followed by a colon, ignore intervening commas => speaker label."; 23 such labels in 22 Tsou sentences).
+
 * A small subset of sentences in the Grammar subcorpus have no word-by-word glosses (the original data does not include them).
 
 * The original data has a lot of prosodic markup and other dialog markup. This has all been removed.
