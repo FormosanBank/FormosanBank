@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-# build.sh — regenerate NTUFormosanCorpus XML/ from the source JSONs.
+# build_subcorpora.sh — regenerate NTUFormosanCorpus XML/ from the source JSONs.
+# Called by ../generate_xml.sh, the corpus entry point (POL-047).
 #
 # The JSONs under ../grammar, ../sentence and ../story are the starting point
 # for this corpus; nothing is scraped, so there is no refresh step. This
 # script is the whole build: JSON -> XML/{Grammar,Sentences,Stories}.
 #
 # Usage:
-#   ./build.sh [grammar|sentences|stories|all]     (default: all)
+#   ./build_subcorpora.sh [grammar|sentences|stories|all]     (default: all)
 #
 # Environment:
 #   PYTHON     interpreter to use (default: <bank>/.venv/bin/python)
@@ -24,6 +25,8 @@
 #   A. builder      pipeline_{grammar,sentences,stories}.py: JSON -> XML
 #   B. repairs      shared FormosanBank cleaning + the corpus repair scripts
 #   C. tiers        punctuation morphemes, prune, id alignment, standard tier + PHON (Ortho94)
+#   D. markers      mark_unclear.py: NTU's X / ? unknown markers -> <UNCLEAR/>
+#                   strip_word_punctuation.py: punctuation out of W/M FORMs (last)
 #
 # Every phase is idempotent; rerunning is safe.
 
@@ -84,6 +87,28 @@ finish_tiers() {     # $1 = work dir, $2 = subcorpus name (for report file names
   "$PIPE/run_standard_and_phon.sh" "$W" "$CTABLES" 2>&1 | tail -4
 }
 
+# NTU's unknown-content markers -> <UNCLEAR/> (rulings 2026-10-17; mark_unclear.py):
+# untranscribed X words, ?/??/??? glosses, ?/XXX sentence translations, and the
+# ? pieces listed in ../unclear_gloss_placeholders.tsv. Runs last, after the
+# shared standardize/add_phonology steps, which read FORM.text and would
+# convert a FORM holding <UNCLEAR/> only up to the marker. It prints every
+# counter (TAIL=40) and lists each change, and each held X word, in logs/.
+mark_unclear() {     # $1 = work dir, $2 = subcorpus name (for the report file name)
+  TAIL=40 run "mark_unclear" "$PIPE/mark_unclear.py" --xml_dir "$1" \
+      --placeholders "$CODEDOCS/unclear_gloss_placeholders.tsv" \
+      --report "$CORPUS/logs/unclear_${2}.tsv"
+}
+
+# Punctuation out of word and morpheme FORMs (ruling 2026-10-18;
+# strip_word_punctuation.py), per language as classified in
+# ../word_form_characters.tsv; an unclassified character stops the build. Runs
+# after mark_unclear, whose X-word and X-part patterns read the punctuation.
+strip_word_punctuation() {   # $1 = work dir, $2 = subcorpus name (for the report file name)
+  TAIL=40 run "strip_word_punctuation" "$PIPE/strip_word_punctuation.py" --xml_dir "$1" \
+      --table "$CODEDOCS/word_form_characters.tsv" \
+      --report "$CORPUS/logs/word_punctuation_${2}.tsv"
+}
+
 # A clean-up step: skipped at the pre-cleanup checkpoint (see the header).
 cleanup() {
   if [[ "$CHECKPOINT" == pre-cleanup ]]; then step "$1 (skipped: pre-cleanup checkpoint)"; return 0; fi
@@ -118,6 +143,8 @@ build_grammar() {
   cleanup "remove_empty_translations"   "$SCR/remove_empty_translations.py" --xml-dir "$W"
   run "propagate_clitic_boundaries"     "$SCR/propagate_clitic_boundaries.py" --xml_dir "$W"
   finish_tiers "$W" Grammar
+  mark_unclear "$W" Grammar
+  strip_word_punctuation "$W" Grammar
   install_into "$W" Grammar
 }
 
@@ -161,6 +188,8 @@ build_flat() {       # $1 = sentences|stories
     TAIL=20 run "dedupe_bunun63" "$PIPE/dedupe_bunun63.py" --xml_dir "$W" \
         --report "$CORPUS/logs/bunun63_dedupe.tsv"
   fi
+  mark_unclear "$W" "$out"
+  strip_word_punctuation "$W" "$out"
   install_into "$W" "$out"
 }
 

@@ -16,7 +16,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../.." && pwd)"
 XML=${1:?usage: run_standard_and_phon.sh <xml dir> <tables dir>}
 TABLES=${2:-$ROOT/Orthographies/ConversionTables}
 cd "$ROOT"
-# Honour an explicit $PYTHON (build.sh sets it); fall back to the repo venv,
+# Honour an explicit $PYTHON (build_subcorpora.sh sets it); fall back to the repo venv,
 # then to whatever python3 is on PATH. A git worktree has no .venv, so
 # sourcing it unconditionally would silently leave the wrong interpreter.
 PY="${PYTHON:-$ROOT/.venv/bin/python}"

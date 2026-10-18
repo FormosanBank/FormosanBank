@@ -1,10 +1,10 @@
 {
   "_note": "POL-052. The FormosanBank commit whose tools built the published XML under XML/. Provenance only: the build does not read this file and is not pinned to this commit -- the pipeline runs against whatever FormosanBank checkout it is pointed at, per POL-047. Rewrite this on every rebuild.",
-  "formosanbank_commit": "64e06eabd6838d46418302c492cb39f90b24bc9d",
-  "built": "2026-10-16",
+  "formosanbank_commit": "bd13ea1ffb71c956183896b24bd27728eb62e47c",
+  "built": "2026-10-17",
   "xml_sha256": {
-    "chang-2000-seediq-long-texts.xml": "735983ceae7047769156ae11d0604169adac931325d961ffb4878cb4293f7938",
-    "chang-2000-seediq-reference-grammar.xml": "6f7d557383500c2fddd5f2c22ecd65ea0b84fe70367932ab6f32105296b1533e"
+    "chang-2000-seediq-long-texts.xml": "c7392772b946ffd6216a0bf642a9056c799b02826fd0fabcc2474b86e4bf2c80",
+    "chang-2000-seediq-reference-grammar.xml": "2561f70cba83ae98eca5481302f79cb2d6200d475dd24d66433e8f45eb21988b"
   },
   "supersedes_commit": "3a3c47c220520113f747e6a2d441494000e13c4b"
 }

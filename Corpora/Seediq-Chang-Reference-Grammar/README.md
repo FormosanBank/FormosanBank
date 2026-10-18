@@ -221,8 +221,16 @@ is kept as a `TRANSL[@ver="alt"]`. All 15 merges are listed in
 - **`laqi/sapah-mu` (R070) is read as `laqi-mu` / `sapah-mu`**: the book prints the
   `-mu` (我的) once, on the second alternative, and it belongs to both (ruled
   2026-10-16; `slash_scope.tsv`).
-- **`?` is a word the book leaves unglossed (POL-061)**, e.g. the question
-  particle `yee`, `lux` in `h-um-uwa-su lux`, sentence-initial `soka`.
+- **A word the book leaves unglossed has the gloss `<UNCLEAR/>`**, e.g. the
+  question particle `yee`, `lux` in `h-um-uwa-su lux`, sentence-initial `soka`.
+  POL-061 inserted `?` for these; the maintainer ruled on 2026-10-17 that this
+  corpus's own `?` glosses become `<UNCLEAR/>` ("Our own POL-061 ? glosses become
+  <UNCLEAR/>" -> "Yes"). `build_xml.py` still uses `?` internally while splitting
+  glosses into morphemes, then `unclear_glosses()` replaces every W/M gloss piece
+  that is exactly `?` with the element, keeping the TRANSL's attributes:
+  `<TRANSL xml:lang="zho"><UNCLEAR/></TRANSL>` for a whole gloss (17: 9 M, 8 W),
+  and `<TRANSL …><UNCLEAR/>-你</TRANSL>` for the one partial gloss, `yee-su`
+  (R222). No sentence FORM, word FORM or sentence translation is `<UNCLEAR/>`.
 - **Where the published text corrects the book itself.** Everywhere else the
   original tier follows the printed page: OCR and scrape errors were corrected
   *toward* the print, in Hunter's scan review and in the 2026-10 student review,

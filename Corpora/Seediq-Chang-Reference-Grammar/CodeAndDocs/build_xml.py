@@ -849,6 +849,42 @@ def gloss_units(pairs: tuple[tuple[str, str], ...]) -> list[tuple[str, str]]:
     return [(word, gloss.replace("∅", UNKNOWN_GLOSS)) for word, gloss in out]
 
 
+# The `?` above is only a placeholder while the gloss is still a string, so the
+# morpheme split and the W/M piece counts treat it like any other gloss piece.
+# What is published is <UNCLEAR/> (maintainer, 2026-10-17: "Our own POL-061 ?
+# glosses become <UNCLEAR/>" -> "Yes"): `?` becomes <TRANSL><UNCLEAR/></TRANSL>
+# and `?-你` becomes <TRANSL><UNCLEAR/>-你</TRANSL>. Only a gloss piece that is
+# exactly `?` is replaced. It runs after ET.indent, which would otherwise put
+# indentation whitespace inside a TRANSL whose only content is the element.
+_GLOSS_PIECES = re.compile(r"([-<>])")
+
+
+def unclear_glosses(root: ET.Element) -> int:
+    """Replace each W/M gloss piece that is UNKNOWN_GLOSS with <UNCLEAR/>.
+
+    Returns the number of TRANSL elements changed.
+    """
+    changed = 0
+    for unit in (*root.iter("W"), *root.iter("M")):
+        for transl in unit.findall("TRANSL"):
+            if len(transl) or not transl.text:
+                continue
+            pieces = _GLOSS_PIECES.split(transl.text)
+            if UNKNOWN_GLOSS not in pieces:
+                continue
+            transl.text = None
+            last: ET.Element | None = None
+            for piece in pieces:
+                if piece == UNKNOWN_GLOSS:
+                    last = ET.SubElement(transl, "UNCLEAR")
+                elif last is None:
+                    transl.text = (transl.text or "") + piece or None
+                else:
+                    last.tail = (last.tail or "") + piece or None
+            changed += 1
+    return changed
+
+
 # Punctuation a morpheme never keeps. The morphemes are cut here, before the
 # shared cleaner turns full-width punctuation into ASCII, so the full-width forms
 # the book sets in a few Seediq lines (nii， on p. 155) and the quote marks of
@@ -1057,6 +1093,7 @@ def build_long_texts() -> tuple[ET.ElementTree, int]:
                                 [row["translation"]], [])
         attach_notes(sentence, [row["record_id"]], notes)
     ET.indent(root, space="  ")
+    print(f"chapter 5: {unclear_glosses(root)} W/M glosses published as <UNCLEAR/>")
     return ET.ElementTree(root), len(rows)
 
 
@@ -1161,6 +1198,7 @@ def build_xml(variants: list[Variant]) -> ET.ElementTree:
         attach_notes(sentence, [variant.source.record_id]
                      + [merged.source.record_id for merged in variant.merged], notes)
     ET.indent(root, space="  ")
+    print(f"chapters 3-4: {unclear_glosses(root)} W/M glosses published as <UNCLEAR/>")
     return ET.ElementTree(root)
 
 

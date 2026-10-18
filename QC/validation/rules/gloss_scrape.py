@@ -39,6 +39,7 @@ from lxml import etree
 from QC.xml_forms import find_base_form
 
 from QC.validation._finding import Finding, Severity
+from QC.validation.rules._gloss_text import gloss_text
 
 # Segmentation / notation markers, per the FormosanBank gloss conventions.
 MARKERS = "-<>=~"
@@ -118,11 +119,11 @@ def _transl_text(elem: etree._Element) -> str:
     guess — comparing against an 'alt' gloss would produce noise.
     """
     original = elem.find('./TRANSL[@kindOf="original"]')
-    if original is not None and original.text:
-        return original.text.strip()
+    if original is not None and gloss_text(original):
+        return gloss_text(original)
     transls = [c for c in elem if c.tag == "TRANSL"]
-    if len(transls) == 1 and transls[0].text:
-        return transls[0].text.strip()
+    if len(transls) == 1:
+        return gloss_text(transls[0])
     return ""
 
 
@@ -698,7 +699,7 @@ def g012_trailing_paren_note_in_TRANSL(
     findings: list[Finding] = []
     for s in tree.iter("S"):
         for transl in s.findall("./TRANSL"):
-            text = (transl.text or "").strip()
+            text = gloss_text(transl)
             if not text or transl.get("notes"):
                 continue
             match = _TRAILING_PAREN.search(text)
@@ -1086,7 +1087,7 @@ def g018_latin_gloss_on_chinese_tier(
         for transl in elem.findall("TRANSL"):
             if (transl.get("{http://www.w3.org/XML/1998/namespace}lang") or "").strip().lower() != "zho":
                 continue
-            text = (transl.text or "").strip()
+            text = gloss_text(transl)
             if not text:
                 continue
             considered += 1
