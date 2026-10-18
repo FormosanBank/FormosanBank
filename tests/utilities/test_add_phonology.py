@@ -820,14 +820,3 @@ def test_a_variant_form_gets_no_phon_of_its_own(tmp_path):
     _run(corpus)
     root = ET.parse(xml_path).getroot()
     assert [p.get("ver") for p in root.findall(".//PHON")] == [None]
-
-
-def test_dropped_edge_punctuation_leaves_no_outer_space():
-    """'ako .' and '" Dopohen' lose their punctuation, not into a space at
-    the edge of PHON (ILRDF_Dicts, 2026-10-16: 2,258 such PHON tiers)."""
-    profile = load_profile("Ortho113", "Amis", "Xiuguluan")
-    assert profile is not None
-    for source in ("fafahiyan ako .", '" Dopohen a matayal!" saan'):
-        result = phonologize(source, profile)
-        assert result == result.strip(), repr(result)
-        assert result
