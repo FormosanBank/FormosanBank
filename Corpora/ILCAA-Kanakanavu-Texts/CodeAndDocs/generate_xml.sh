@@ -22,7 +22,7 @@ if unsupported:
     sys.exit(2)
 PY
 SOURCE_ORTHOGRAPHY="$BANK/Orthographies/Asai2026"
-CONVERSION="$CODEDOCS/scripts/orthographies/ConversionTables/Kanakanavu_Asai2026_113.tsv"
+CONVERSION="$BANK/Orthographies/ConversionTables/Kanakanavu_Asai2026_113.tsv"
 SAAROA_ORTHOGRAPHY="$CODEDOCS/scripts/orthographies/SaaroaComparison"
 SAAROA_CONVERSION="$CODEDOCS/scripts/orthographies/ConversionTables/Saaroa_SaaroaComparison_113.tsv"
 for required in "$SOURCE_ORTHOGRAPHY/Kanakanavu.tsv" "$SOURCE_ORTHOGRAPHY/Kanakanavu.rules.tsv" \
