@@ -165,8 +165,7 @@ after a run, then delete them. They are never committed.
 Step 4 is this corpus's own script. It applies the rows of
 `CodeAndDocs/unclear_glosses.tsv` (see "Unknown glosses" under Notes and
 Issues) and fails without writing anything if a row no longer matches the
-snapshot, or if any gloss or translation that is exactly `?` (or `??`) is left
-that the table does not list. Empty glosses are left as they are.
+snapshot, or if any wholly unknown gloss is left that the table does not list.
 It runs last because the shared `standardize.py` and `add_phonology.py` do not
 handle `<UNCLEAR/>` inside a translation.
 
@@ -187,20 +186,16 @@ edits (no `CodeAndDocs/manual_edits.xml`).
   `mapa-sila-siláp-i`, `veza-no-dehdeh`, `vozovóza`,
   `nimakalkalima-so-nakem` (×2), `pángap`, `kong-koan`.
 - **Unknown glosses are `<UNCLEAR/>`** (POL-021 and POL-061 as amended
-  2026-10-17; the amendments are in PR #297). The source glosses six
-  morphemes `?` in both Chinese and English: text 5 `kominazazang` and
-  `minipinizozongan`, text 9 `naway`, text 12 `s:yak`, text 14 `viknaz`,
-  text 18 `nipapo`. Those 12 glosses are
-  `<TRANSL xml:lang="..."><UNCLEAR/></TRANSL>`.
-- **Five words have empty glosses** (`<TRANSL xml:lang="zho"/>` and
-  `<TRANSL xml:lang="eng"/>`): the words above five of those morphemes, all
-  but text 12's. The source leaves them unglossed rather than declaring them
-  unclear, so they are left empty, not marked `<UNCLEAR/>`.
-- **Text 9 sentence 23 has no sentence translation.** The source gives only
-  `句意不詳` / `(Sentence meaning not clear`, and a wholly unknown sentence
-  translation is not emitted (POL-021 as amended). The source's doubt about a
-  gloss it does give is kept as written (text 2, `sombing` glossed
-  `糞(日語?)`). Both changes are listed row by row in
+  2026-10-17; the amendments are in PR #297). The source glosses
+  six morphemes `?` in both Chinese and English and leaves the five words
+  above them unglossed: text 5 `kominazazang` and `minipinizozongan`, text 9
+  `naway`, text 12 `s:yak` (a morpheme of a glossed word), text 14 `viknaz`,
+  text 18 `nipapo`. Those 22 glosses (12 morpheme, 10 word) are
+  `<TRANSL xml:lang="..."><UNCLEAR/></TRANSL>`. Text 9 sentence 23 has no
+  sentence translation: the source gives only `句意不詳` / `(Sentence meaning
+  not clear`, and a wholly unknown sentence translation is not emitted. The
+  source's doubt about a gloss it does give is kept as written (text 2,
+  `sombing` glossed `糞(日語?)`). The changes are listed row by row in
   `CodeAndDocs/unclear_glosses.tsv`.
 - **One sentence appears twice** in text 16, at sentence 22 and sentence 50
   (`i-ké-yngen na no oo na ni ina na a ka no ama na am,`). The two occurrences

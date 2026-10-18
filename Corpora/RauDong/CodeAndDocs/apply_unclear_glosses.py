@@ -1,19 +1,15 @@
 #!/usr/bin/env python3
 """Write RauDong's unknown glosses as ``<UNCLEAR/>`` (POL-021, POL-061).
 
-Rau & Dong gloss six morphemes ``?`` (Chinese and English) and give text 9
-sentence 23 the sentence translations ``句意不詳`` / ``(Sentence meaning not
-clear``. Under POL-021 and POL-061 as amended 2026-10-17:
+Rau & Dong leave six morphemes glossed ``?`` (Chinese and English), leave the
+five words above them with empty glosses, and give text 9 sentence 23 the
+sentence translations ``句意不詳`` / ``(Sentence meaning not clear``. Under
+POL-021 and POL-061 as amended 2026-10-17:
 
-* a word or morpheme gloss the source declares unknown (its ``?``) is
-  ``<TRANSL ...><UNCLEAR/></TRANSL>`` (action ``unclear``);
+* a word or morpheme gloss that is wholly unknown -- the source's ``?``, or no
+  gloss at all -- is ``<TRANSL ...><UNCLEAR/></TRANSL>`` (action ``unclear``);
 * a sentence translation that is wholly unknown is not emitted (action
   ``omit``).
-
-Glosses the source simply leaves empty (the five words above five of those
-morphemes) are NOT converted and stay empty. Maintainer, 2026-10-18:
-"`<UNCLEAR/>` is really for when the source declares it unclear, rather than
-just fails to gloss."
 
 Every change is a row of ``unclear_glosses.tsv`` next to this script (POL-038:
 the table is the record, nothing is hand-edited). A row names the TEXT/@id,
@@ -23,9 +19,9 @@ when
 
 * a row's element or TRANSL is missing, or its text is not ``snapshot_text``
   (the snapshot changed under the table);
-* after the table is applied, any W or M gloss or S translation is still
-  exactly ``?``/``??``/``???`` (a case the table does not cover). Empty
-  glosses are not checked: they are left as they are.
+* after the table is applied, any W or M gloss is still empty or exactly
+  ``?``/``??``/``???``, or any S translation is exactly such a marker (a case
+  the table does not cover).
 
 A source's doubt about a gloss it did give (text 2 M 8_22_1 ``糞(日語?)``) is
 not a wholly unknown gloss and is left as written.
@@ -85,8 +81,11 @@ def leftovers(root: etree._Element) -> list[str]:
             continue
         parent = transl.getparent()
         text = (transl.text or "").strip()
-        if parent.tag in ("S", "W", "M") and WHOLE_MARKER.fullmatch(text):
+        if parent.tag in ("W", "M") and (not text or WHOLE_MARKER.fullmatch(text)):
             found.append(f"{root.get('id')} {parent.tag} {parent.get('id')} "
+                         f"{transl.get(XML_LANG)} {transl.text!r}")
+        elif parent.tag == "S" and WHOLE_MARKER.fullmatch(text):
+            found.append(f"{root.get('id')} S {parent.get('id')} "
                          f"{transl.get(XML_LANG)} {transl.text!r}")
     return found
 
