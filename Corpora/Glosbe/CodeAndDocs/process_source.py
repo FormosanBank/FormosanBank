@@ -26,6 +26,8 @@ with (HERE / "withdrawn_ids.csv").open(encoding="utf-8", newline="") as stream:
 with (HERE / "keep_published_ids.csv").open(encoding="utf-8", newline="") as stream:
     KEEP_ROWS = list(csv.DictReader(stream))
     KEEP_PUBLISHED = {row["id"] for row in KEEP_ROWS}
+with (HERE / "ruled_joins.csv").open(encoding="utf-8", newline="") as stream:
+    RULED_JOINS = {row["zho_id"]: row for row in csv.DictReader(stream)}
 with (HERE / "highlight_space_keep.csv").open(encoding="utf-8", newline="") as stream:
     HIGHLIGHT_KEEP = defaultdict(list)
     for row in csv.DictReader(stream):
@@ -487,6 +489,11 @@ def plan_merge():
         if sid in KEEP_PUBLISHED:
             continue
         kind, matches = "exact", exact.get(text, [])
+        if sid in RULED_JOINS:  # a join the maintainer ruled on despite a letter difference
+            row = RULED_JOINS[sid]
+            if row["zho_form"] != text:
+                raise ValueError(f"Ruled join no longer matches: {sid}")
+            kind, matches = "ruled", [row["eng_id"]]
         if not matches:
             kind, matches = "loose", loose.get(_loose_key(text), [])
         if len(matches) == 1:
@@ -577,7 +584,12 @@ def merge_translation_files(bank, write_ledger=False):
     if write_ledger:
         rows = [v for v in WITHDRAWN.values() if v["action"] != "merged"]
         for old, (keep, kind, text) in sorted(plan.items()):
-            if kind == "exact":
+            if kind == "ruled":
+                reason = ("Same Amis sentence as the kept Amis-English S; joined by ruling although "
+                          "the Amis-Chinese FORM lacks a final apostrophe. The kept S keeps "
+                          f"the Amis-English FORM. Amis-Chinese FORM was: {text}")
+                ruling = RULED_JOINS[old]["ruling"]
+            elif kind == "exact":
                 reason = ("Same Amis sentence (identical original FORM) as the kept "
                           "Amis-English S; its Chinese translation moved there.")
                 ruling = MERGE_RULING
@@ -650,9 +662,11 @@ def merge_translation_files(bank, write_ledger=False):
             if row["withdrawn_id"] in final or row["kept_id"] not in final:
                 raise ValueError(f"withdrawn_ids.csv does not describe the output: {row['withdrawn_id']}")
     print(f"Folded {grouped} S into another S (grouped_sentences.csv); deleted {dropped} list enumerators")
-    exact_n = sum(1 for _, kind, _ in plan.values() if kind == "exact")
-    print(f"Joined {joined} Amis-Chinese S to Amis-English S ({exact_n} identical, {joined - exact_n} "
-          f"differing only in spaces/commas/periods/dashes); moved {moved} with their own ids; "
+    kinds = defaultdict(int)
+    for _, kind, _ in plan.values():
+        kinds[kind] += 1
+    print(f"Joined {joined} Amis-Chinese S to Amis-English S ({kinds['exact']} identical, {kinds['loose']} "
+          f"differing only in spaces/commas/periods/dashes, {kinds['ruled']} by ruling); moved {moved} with their own ids; "
           f"{len(ambiguous)} match more than one Amis-English S and were moved unmerged")
 
 
