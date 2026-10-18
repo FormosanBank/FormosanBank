@@ -142,7 +142,15 @@ The original corpus has a great deal of discourse coding for Sentences and Stori
 
 * In the Seediq conversation `sdqCon-dialog5_dakis_takun 2020s`, where a speaker switches to a stretch of Mandarin that the sentence's translation does not cover, that stretch is published as a sentence of its own, with a note saying so (44 sentences). Four utterances where a short Mandarin phrase sits inside a translated Seediq sentence are kept whole.
 
-* NTU transcribes the Stories in intonation units. Units are joined into one sentence up to NTU's sentence-end mark, except that a unit with its own translation ends its sentence. An untranscribed word is written `X`.
+* NTU transcribes the Stories in intonation units. Units are joined into one sentence up to NTU's sentence-end mark, except that a unit with its own translation ends its sentence. NTU writes an untranscribed word `X` (also `XX`, `XXX`, `XXXX`); FormosanBank publishes it as `<UNCLEAR/>` (see the next note).
+
+* **Content NTU could not transcribe or gloss is written `<UNCLEAR/>`.** This is the last step of the build (`CodeAndDocs/pipeline/mark_unclear.py`). Almost all of it is in the Stories subcorpus; Sentences has 10 word and 24 morpheme glosses.
+  * *Untranscribed words*: 609 in the sentence text of 510 sentences are `<UNCLEAR/>` in both sentence FORMs and both sentence PHONs, with NTU's punctuation kept (`piala haca, <UNCLEAR/>, aku tuni kalitang, ...`). In the word tier, 582 such words have `<UNCLEAR/>` as FORM, PHON and gloss. The 563 morphemes under those words, each a copy of the word (`XX` glossed `X`), were removed. Thirteen words written `X` that NTU did gloss (e.g. `FS`, `father`) keep their gloss and morphemes; only their FORM is `<UNCLEAR/>`. Where `X` is only part of a word (`mi-XX,`), only that part is `<UNCLEAR/>` (`mi-<UNCLEAR/>`).
+  * *Unknown glosses*: a word or morpheme gloss that is only `?`, `??` or `???` is `<UNCLEAR/>` (418 word glosses, 542 morpheme glosses). A `?` inside a longer gloss (`banana-??`; 125 glosses) is left as written.
+  * *Unknown sentence translations*: 6 translations in 4 sentences that were only `?` or `XXX` were removed.
+  * `<UNCLEAR/>` is not counted as a word, so the corpus word count falls by the 609 untranscribed words.
+
+* **Word and morpheme FORMs carry no punctuation; sentence FORMs keep it.** NTU wrote each word's punctuation into its word and morpheme forms (`haca,`); the last build step (`CodeAndDocs/pipeline/strip_word_punctuation.py`) deletes it: 79,048 characters (`,` 64,192; `.` 13,426; `?` 594; `"` 474; `!` 362) over both tiers. `'` is a letter (the glottal stop) and `-` `=` `<` `>` `~` `∅` are morpheme markers, so they stay. A character that is not clearly punctuation in a language is left everywhere in that language for now, e.g. `.` inside Atayal `asi.ki.na`, and `?` in Rukai, where it marks an unknown morpheme (`alupu-?=ini`).
 
 * The Kanakanavu sentence subcorpus writes "∅" inside some words (32 occurrences; the source writes 2 of them as "Ø", which the build canonicalizes), and the Sakizaya grammar writes a null prefix slot "ø". These are the linguists' null-morpheme annotation: a morpheme that is present in the analysis but has no phonological content (e.g. a phonologically empty relativizer, glossed REL). FormosanBank's convention (per the 2026-08 null-morpheme specification) canonicalizes the marker glyph to `∅` (U+2205) and keeps it in the original tier and on the word/morpheme tiers — where the morphological analysis lives — while removing it from sentence-level standard FORMs; in the PHON tier null morphemes are silent (a wholly-null morpheme carries PHON `∅` so the tier is never empty). See the corpus [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/NTUFormosanCorpus/readme.md) for details.
 
@@ -170,7 +178,7 @@ The suite and its baseline live in the corpus's `CodeAndDocs/qa/` directory in t
 
 ## Copyright
 
-CC BY-NC
+CC BY-NC 4.0
 
 ***
 
