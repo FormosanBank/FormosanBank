@@ -522,3 +522,30 @@ def test_a_404_is_not_retried(monkeypatch):
     with pytest.raises(Exception):
         parity.validate_hf_inventory(manifest, permissions, api=api)
     assert api.calls["list_datasets"] == 1  # tried once, not retried
+
+
+def test_git_listing_returns_non_ascii_names_unquoted(tmp_path, monkeypatch):
+    # A real git repository, listed by the real git_repo_files: git quotes a
+    # non-ASCII name unless told otherwise, and a quoted name matches nothing.
+    import subprocess
+
+    source = tmp_path / "Test"
+    names = ["Yami/Yami/0/Yami_1003_漁人.mp3", "Amis/Amis/Amis_1.mp3"]
+    for name in names:
+        (source / name).parent.mkdir(parents=True, exist_ok=True)
+        (source / name).write_bytes(b"audio")
+
+    def git(*args):
+        return subprocess.run(
+            ["git", "-c", "user.name=t", "-c", "user.email=t@example.org",
+             "-c", "commit.gpgsign=false", *args],
+            cwd=source, check=True, capture_output=True, text=True,
+        ).stdout.strip()
+
+    git("init", "--quiet")
+    git("add", ".")
+    git("commit", "--quiet", "-m", "fixture")
+    revision = git("rev-parse", "HEAD")
+    monkeypatch.setattr(parity, "HF_DATASET_GIT_URL", f"file://{tmp_path}/{{repo_id}}")
+
+    assert parity.git_repo_files("Test", revision) == set(names)
