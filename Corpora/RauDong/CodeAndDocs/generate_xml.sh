@@ -26,6 +26,12 @@
 #   3. add_phonology     original PHON from the Ortho94 Yami profile (the
 #                        source orthography); standard PHON from Ortho113, the
 #                        scheme standards.csv designates for Yami
+#   4. apply_unclear_glosses.py (this corpus's own step): the glosses and the
+#                        one sentence translation the source leaves unknown,
+#                        listed in unclear_glosses.tsv, become <UNCLEAR/> or
+#                        are omitted (POL-021, POL-061). Runs last because the
+#                        shared standardize/add_phonology do not handle
+#                        <UNCLEAR/> inside TRANSL.
 #
 # Step 2 replaces the corpus's former bespoke remove_accents.py, which stripped
 # the acute accent from an already-built standard tier after the fact. The
@@ -44,7 +50,7 @@
 #
 # No apply_manual_edits step: this corpus has no CodeAndDocs/manual_edits.xml
 # and no hand edits to re-apply. Per POL-038 nothing here is hand-edited —
-# XML/ is a pure function of the snapshot and these three steps.
+# XML/ is a pure function of the snapshot, unclear_glosses.tsv and these steps.
 #
 # Warning sidecars (cleaner_warnings.csv, standardize_warnings.csv) are
 # per-run reports (POL-033): review them after a run, then delete. Never
@@ -96,5 +102,8 @@ step "2. standardize --remove_accents"
 
 step "3. add_phonology (original: Ortho94; standard: Ortho113)"
 "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Ortho94 --corpora_path "$XML"
+
+step "4. apply_unclear_glosses (POL-021/POL-061; table: unclear_glosses.tsv)"
+"$PY" "$CODEDOCS/apply_unclear_glosses.py" --corpora_path "$XML"
 
 step "Done. Review + delete any *_warnings.csv sidecars under $XML (POL-033)."

@@ -6,9 +6,10 @@ The 20 glossed Yami (Tao, `tao`) narrative texts published in
 > dictionary.* Institute of Linguistics, Academia Sinica.
 
 794 sentences, 13,295 words and 16,731 morphemes, each with Chinese and
-English translations at the sentence, word **and** morpheme tier. One file per
-text, named for the text. Every text carries `dialect="Yami"`. There is no
-audio.
+English translations at the sentence, word **and** morpheme tier (except a few
+glosses and one sentence translation the source leaves unknown; see Notes and
+Issues). One file per text, named for the text. Every text carries
+`dialect="Yami"`. There is no audio.
 
 ## License and AI Use
 
@@ -144,6 +145,9 @@ python <bank>/QC/utilities/standardize.py --remove_accents --corpora_path XML
 
 # 3. generate both PHON tiers
 python <bank>/QC/utilities/add_phonology.py --orthography Ortho94 --corpora_path XML
+
+# 4. unknown glosses -> <UNCLEAR/>, unknown sentence translation omitted
+python CodeAndDocs/apply_unclear_glosses.py --corpora_path XML
 ```
 
 Step 3's `--orthography Ortho94` supplies the **original** PHON; the
@@ -157,6 +161,13 @@ is correct — they are Chinese quotation marks.
 Steps 1 and 2 write `cleaner_warnings.csv` / `standardize_warnings.csv` into
 `XML/` when they have anything to report. Those are per-run reports: read them
 after a run, then delete them. They are never committed.
+
+Step 4 is this corpus's own script. It applies the rows of
+`CodeAndDocs/unclear_glosses.tsv` (see "Unknown glosses" under Notes and
+Issues) and fails without writing anything if a row no longer matches the
+snapshot, or if any wholly unknown gloss is left that the table does not list.
+It runs last because the shared `standardize.py` and `add_phonology.py` do not
+handle `<UNCLEAR/>` inside a translation.
 
 There is no `apply_manual_edits.py` step because there are no recorded hand
 edits (no `CodeAndDocs/manual_edits.xml`).
@@ -174,6 +185,18 @@ edits (no `CodeAndDocs/manual_edits.xml`).
   their morpheme tier does not reconstruct the word: `ngomon-an`, `ngomon`,
   `mapa-sila-siláp-i`, `veza-no-dehdeh`, `vozovóza`,
   `nimakalkalima-so-nakem` (×2), `pángap`, `kong-koan`.
+- **Unknown glosses are `<UNCLEAR/>`** (POL-021 and POL-061 as amended
+  2026-10-17; the amendments are in PR #297). The source glosses
+  six morphemes `?` in both Chinese and English and leaves the five words
+  above them unglossed: text 5 `kominazazang` and `minipinizozongan`, text 9
+  `naway`, text 12 `s:yak` (a morpheme of a glossed word), text 14 `viknaz`,
+  text 18 `nipapo`. Those 22 glosses (12 morpheme, 10 word) are
+  `<TRANSL xml:lang="..."><UNCLEAR/></TRANSL>`. Text 9 sentence 23 has no
+  sentence translation: the source gives only `句意不詳` / `(Sentence meaning
+  not clear`, and a wholly unknown sentence translation is not emitted. The
+  source's doubt about a gloss it does give is kept as written (text 2,
+  `sombing` glossed `糞(日語?)`). The changes are listed row by row in
+  `CodeAndDocs/unclear_glosses.tsv`.
 - **One sentence appears twice** in text 16, at sentence 22 and sentence 50
   (`i-ké-yngen na no oo na ni ina na a ka no ama na am,`). The two occurrences
   sit in unrelated passages and the source gives each its own Chinese and
