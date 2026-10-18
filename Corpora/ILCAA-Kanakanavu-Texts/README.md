@@ -114,7 +114,7 @@ None supplied with this source.
   The village-labelled phonetic comparison remains open in the ledger.
   Supplemental records preserve printed readings; only three analyzed prose
   examples supply W/M tiers.
-- The printed capital glottal stop `Ɂ` (four narratives and introduction example 23c) is written `ʔ` in the original
+- The printed capital glottal stop `Ɂ` (four narratives and three introduction examples) is written `ʔ` in the original
   tier from the start and is then the ordinary `ʔ`. Capitalization is not phonemic, so
   shared PHON lower-cases names.
 - The standard tier merges `ə` and the rarer native `e` into `e`, and `l` and `r` into `r`,
