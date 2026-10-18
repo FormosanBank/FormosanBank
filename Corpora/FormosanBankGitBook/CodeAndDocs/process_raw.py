@@ -13,14 +13,18 @@ XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 LANGUAGE = "Paiwan"
 LANGUAGE_CODE = "pwn"
 DIALECT = "Eastern"
-CITATION = "Ruan, X. (2025). Paiwan translation of FormosanBank manual."
-BIBTEX = (
-    "@misc{gitbook_paiwan_transl, author={Ruan, X.}, "
-    "title={Paiwan Translation of FormosanBank Manual}, year={2025}, "
-    "note={Translation}}"
-)
-
 CODE = Path(__file__).resolve().parent
+FORMOSANBANK = CODE.parents[2]
+
+# The citation covers every contributor to the corpus and carries a version
+# (maintainer, 2026-10-18); see citation.py. It replaced
+# "Ruan, X. (2025). Paiwan translation of FormosanBank manual."
+import sys  # noqa: E402
+
+sys.path.insert(0, str(CODE))
+import citation  # noqa: E402
+
+CITATION, BIBTEX = citation.citation(FORMOSANBANK / "docs" / "translations")
 
 
 def read_table(name: str) -> list[dict[str, str]]:

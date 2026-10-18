@@ -1,4 +1,4 @@
-"""Per-corpus statistics CSVs for FormosanBank (consumed by the Gitbook).
+"""Per-corpus statistics CSVs for FormosanBank (read by the documentation site).
 
 Counting rules live in QC/corpus_counts.py (shared with corpus_metrics.py
 and count_tokens.py). Writes statistics/<CorpusName>_corpora_stats.csv.
@@ -9,9 +9,9 @@ source of truth written by update_audio_stats.py / refresh_audio_stats.py).
 Staleness is flagged when XML audio-element counts differ from those stored
 in that file. Audio *counts* are recomputed from XML on every run.
 
-Column names through `file_count` are a published interface: the Gitbook's
-update_corpus_stats.py reads them by name. Only append columns, never
-rename or remove.
+Column names are a published interface: the documentation site
+(docs/tools/site_stats.py) and anyone downloading the CSVs read them by name.
+Only append columns, never rename or remove.
 """
 import argparse
 import csv
@@ -35,6 +35,8 @@ FIELDNAMES = [
     # Appended 2026-09-10; safe for DictReader consumers, same as the 2026-06 batch.
     "jpn_transl_count",
     "nld_transl_count",
+    # Appended 2026-10-18 (documentation site growth figures).
+    "transcribed_words",
 ]
 
 SUM_FIELDS = [f for f in FIELDNAMES if f not in

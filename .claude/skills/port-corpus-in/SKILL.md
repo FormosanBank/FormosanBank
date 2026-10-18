@@ -15,7 +15,7 @@ Move a QC'd corpus from a development repo into FormosanBank with the standard p
 - `corpus_name` — name for the published version. Default: derive from source by stripping `Formosan-` prefix. User can override.
 - `formosanbank_path` — default sibling `../FormosanBank/` relative to source.
 - `assume_qc_passed` — default `false`. If `false` and no recent QC summary is found, refuse or ask.
-- `skip_gitbook` — default `false`. If `true`, Phase 5 (Add to GitBook) is skipped and the operator publishes the GitBook page later.
+- `skip_docs` — default `false`. If `true`, Phase 5 (Add to the documentation site) is skipped and the operator registers the page later. (`skip_gitbook`, the old name, means the same.)
 
 ## Pre-checks
 
@@ -93,11 +93,12 @@ cp -r <source XML> "<formosanbank_path>/Corpora/<corpus_name>/XML/"
 # Copy scripts
 cp <source scripts> "<formosanbank_path>/Corpora/<corpus_name>/CodeAndDocs/"
 
-# README: either copy or generate from template
-# If copy:
-cp <source README> "<formosanbank_path>/Corpora/<corpus_name>/README.md"
-# If generate: render template at .claude/skills/port-corpus-in/README.template.md
-# with substitutions from QC summary + user input.
+# README: the corpus's only documentation (the documentation site renders it as
+# the corpus page). It must follow the layout in README.template.md (headings
+# checked by tests/corpora/test_readme_sections.py). If the dev repo's README
+# already follows it, copy it; otherwise render the template from the dev
+# README + QC summary + user input, keeping every sentence of the dev README.
+cp <source README> "<formosanbank_path>/Corpora/<corpus_name>/README.md"   # or render the template
 
 # Audio:
 # If has_audio: cp <source download_audio_data.sh> "<formosanbank_path>/Corpora/<corpus_name>/"
@@ -154,9 +155,9 @@ by rule, with what each class is, for the operator to read.
 
 **The static build-shape tests, for this corpus.** The repository's own tests
 check the port shape (one entry point in canonical order, self-contained,
-provenance recorded and linked, the Rights block and the Notes and Issues
-section in the README, only XML under `XML/`, no deviation stated in prose
-alone). Run them for the ported corpus and quote the pass count:
+provenance recorded and linked, the README layout (headings in order, the
+License block, Notes and caveats), only XML under `XML/`, no deviation stated
+in prose alone). Run them for the ported corpus and quote the pass count:
 
 ```bash
 <python> -m pytest tests/corpora -q -k "<corpus_name>"
@@ -359,90 +360,42 @@ its own PR?"). Do not run `build_attestation_dict.py` here and never commit
 `QC/validation/reference/` in the corpus PR; a refresh is its own PR, merged
 first, with its number noted in the corpus PR body.
 
-### Phase 5: Add to GitBook
+### Phase 5: Add to the documentation site
 
-Publishing a corpus into `Corpora/` is only half-done until it appears in the
-public GitBook. This phase wires the corpus's four GitBook integration points
-(its own page, the `SUMMARY.md` nav entry, the `corpora/README.md` corpus-list
-bullet, and the `CSV_TO_MD` stats map) using the GitBook repo's helper, then fills
-the page prose. **Skippable with `--skip-gitbook`** if the operator wants to defer.
+The corpus page on the documentation site (https://formosanbank.github.io/FormosanBank/)
+is the corpus README itself, rendered when the site is built, with its statistics
+table inserted under `## Statistics`. It ships in this port's own PR; there is no
+second repository and no second PR. **Skippable with `skip_docs`** if the operator
+wants to defer. Working-tree edits only (this skill is **not a git committer**).
 
-The helper does the mechanical edits; the skill (you) writes the prose. The
-skill makes working-tree edits only — the operator commits and opens the GitBook
-PR separately (this skill is **not a git committer**, consistent with Phase 3).
+1. **Derive identifiers** and confirm via `AskUserQuestion` (offer defaults, allow override):
+   - `slug` — the page's URL name: kebab-case of `corpus_name` (e.g. `Nowbucyang-Truku-Thesis` → `nowbucyang-truku-thesis`).
+   - `nav-label` — human label for the site menu and the corpus list.
+   - `descriptors` — what the corpus contains, in the style of the existing list (e.g. `text, audio, English, Mandarin`, `audio`, `text, glossing, English`). Derive from the corpus's tiers/audio/translations; confirm with the operator.
 
-1. **Locate the GitBook repo.** Default sibling `<formosanbank_path>/../FormosanBankGitbook`.
-   If absent, ask the operator for the path or offer to skip this phase.
-
-2. **Resolve the publish branch.** GitBook publishes through its Git Sync app,
-   not a GitHub Action. Base page edits on `main`; `en-us` is GitHub's default
-   branch and lags it (28 commits behind on 2026-10-17). Report the current
-   divergence, and ask only if `en-us` is *ahead* of `main`:
+2. **Register the page** (one row in `docs/site/corpus_pages.csv`; the menu entry,
+   the corpora-index bullet and the statistics table all follow from it):
    ```bash
-   cd <gitbook_path>
-   git fetch --quiet
-   echo "main ahead of en-us by: $(git rev-list --count origin/en-us..main 2>/dev/null || echo '?')"
-   echo "en-us ahead of main by: $(git rev-list --count main..origin/en-us 2>/dev/null || echo '?')"
+   <python> <formosanbank_path>/docs/tools/manage_corpus_pages.py add \
+     --corpus "<corpus_name>" --slug "<slug>" \
+     --nav-label "<nav-label>" --descriptors "<descriptors>"
    ```
-   Then `AskUserQuestion`: "Which branch does GitBook publish from? I'll make the
-   page edits on a fresh feature branch off it." Check out / create a feature
-   branch off the operator's choice in the GitBook working tree. Do NOT hardcode
-   a branch.
+   (`<python>` resolved as in Phase 4.)
 
-3. **Derive identifiers** and confirm via `AskUserQuestion` (offer defaults, allow override):
-   - `slug` — kebab-case of `corpus_name` + `.md` (e.g. `Nowbucyang-Truku-Thesis` → `nowbucyang-truku-thesis.md`).
-   - `nav-label` — human label for the table of contents AND the corpus list.
-   - `title` — the page H1.
-   - `descriptors` — the trailing parenthetical for the corpus-list bullet, summarizing what the corpus contains, in the style of the existing list (e.g. `(text, audio, English, Mandarin)`, `(audio)`, `(text, glossing, English)`). Derive from the corpus's tiers/audio/translations; confirm with the operator.
-
-4. **Scaffold the four integration points** with the helper, passing the skill's template:
+3. **Check the README layout and registration:**
    ```bash
-   <python> <gitbook_path>/manage_corpus_pages.py add \
-     --gitbook-root "<gitbook_path>" \
-     --corpus "<corpus_name>" \
-     --slug "<slug>" \
-     --nav-label "<nav-label>" \
-     --title "<title>" \
-     --descriptors "<descriptors>" \
-     --template "<formosanbank_path>/.claude/skills/port-corpus-in/corpus_page.template.md"
+   <python> <formosanbank_path>/docs/tools/manage_corpus_pages.py check --strict
+   <python> -m pytest tests/corpora/test_readme_sections.py -q -k "<corpus_name>"
    ```
-   This wires: the page, the `SUMMARY.md` nav bullet, the `corpora/README.md` corpus-list bullet, and the `CSV_TO_MD` stats-map entry. (`<python>` resolved as in Phase 4.)
+   Both must pass. A failure names the heading that is missing or out of order.
 
-5. **Fill the prose placeholders** in `<gitbook_path>/en-us/the-bank-architecture/corpora/<slug>`,
-   reading the corpus README + QC summary:
-   - `{{DESCRIPTION}}` — 1–3 sentences on what the corpus is and where it came from.
-   - `{{COPYRIGHT}}` — the license/copyright line (e.g. `CC BY-NC`).
-   - `{{CITATION}}` — APA-style citation(s); multiple separated by `|` per the XML format conventions.
-   - `{{NOTES_AND_ISSUES}}` — known limitations, source defects, and caveats that affect
-     the data (from the corpus README's "Notes and Issues" section and the QC summary);
-     `None known.` if there are none.
-   - `{{ACCESS}}` — the standard access line:
-     `* The repo containing this corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/<corpus_name>).`
-
-6. **Verify the page is fully wired and placeholder-free:**
-   ```bash
-   <python> <gitbook_path>/manage_corpus_pages.py check \
-     --gitbook-root "<gitbook_path>" \
-     --corpora-path "<formosanbank_path>/Corpora" \
-     --strict
-   ```
-   A leftover `{{...}}` placeholder or a missing integration point (page / nav / README
-   list / stats-map) fails this — fix before declaring the phase done. At this point
-   `check` also reports an **informational** "Missing stats CSV" line for the new corpus
-   (its stats CSV doesn't exist yet); that is expected *here* and is resolved by step 7
-   below, which generates the CSV and injects the tables. Because that line does not
-   gate, a `--strict` failure at this step means a real integration problem, not the
-   pending stats.
-
-7. **Populate the stats tables (audio-aware).** The page's stats block and the
-   `corpora/README.md` aggregate are filled by `update_corpus_stats.py` from the
-   corpus's stats CSV. Generate that CSV and inject it, in this order:
+4. **Generate the per-corpus stats CSV (audio-aware).**
 
    a. **Audio gate (detect + guide).** Check whether the ported XML has audio:
       ```bash
       grep -rl "<AUDIO" "<formosanbank_path>/Corpora/<corpus_name>/XML" | head -1
       ```
-      - **No match (no audio):** skip to step 7b.
+      - **No match (no audio):** skip to step 4b.
       - **Has audio:** the audio-seconds columns need `statistics/audio_durations.csv`
         populated for this corpus *before* `get_corpus_stats` runs (otherwise audio
         seconds are 0). Do NOT automate this — surface the choice to the maintainer
@@ -454,25 +407,24 @@ PR separately (this skill is **not a git committer**, consistent with Phase 3).
         - *Maintainer chooses to skip:* proceed; note in the Phase 6 summary that the
           page's audio columns are pending a later `refresh-audio-stats` run.
 
-   b. **Generate the per-corpus stats CSV:**
+   b. **Generate the CSV:**
       ```bash
       <python> <formosanbank_path>/QC/utilities/get_corpus_stats.py \
         "<formosanbank_path>/Corpora/<corpus_name>"
       ```
       This writes `<formosanbank_path>/statistics/<corpus_name>_corpora_stats.csv`.
       Commit it with the corpus (CI later regenerates the identical CSV via `--all`).
+      Do not edit `statistics/language_history.csv`: the corpus-metrics workflow
+      extends it after the merge, and the site's growth figures follow.
 
-   c. **Inject the tables into the GitBook:**
-      ```bash
-      <python> <gitbook_path>/update_corpus_stats.py --stats-dir "<formosanbank_path>/statistics"
-      ```
-      Pass `--stats-dir` explicitly so it reads the *active* FormosanBank checkout
-      (the sibling default may point at a different checkout that lacks the new CSV).
-      This fills the new page's stats block and refreshes the `corpora/README.md`
-      aggregate. Commit the changed `.md` in the GitBook repo.
-
-   d. **Re-verify:** `manage_corpus_pages.py check --strict` passes and the new
-      corpus's "missing stats CSV" informational line is gone.
+5. **Build the site and look at the page:**
+   ```bash
+   <python> <formosanbank_path>/docs/tools/build_site.py
+   ```
+   It must end `link check clean`. The page is at
+   `site/the-bank-architecture/corpora/<slug>/index.html`; confirm its statistics
+   table shows the corpus's languages, and that the corpus appears on each of its
+   languages' pages under `site/languages/`.
 
 ### Phase 6: Summary
 
@@ -489,11 +441,10 @@ Print:
 - Cross-corpus duplicate check: match count per language + CSV path(s), or why it was skipped
 - Declared vs detected: the three tables from `declared_vs_detected.py`, every MISMATCH row called out
 - Audio parity (if has_audio): the `sync_hf_audio.py` dry-run counts (referenced / on the Hub / to upload / to delete)
-- GitBook page: <path>
-- Stats tables populated from `<corpus_name>_corpora_stats.csv` (audio columns pending if the audio-durations step was skipped).
-- "GitBook page created on branch <chosen>; commit and open the GitBook PR separately."
+- Documentation site: registered as `<slug>` in `docs/site/corpus_pages.csv`; `build_site.py` result line
+- Stats table from `<corpus_name>_corpora_stats.csv` (audio columns pending if the audio-durations step was skipped).
 - Open items, e.g.:
-  - "README is a stub — please flesh out the {{REPRODUCIBILITY_STEPS}} section before opening a PR"
+  - "README is a stub — please flesh out the {{PROCESSING_STEPS}} section (What each step does) before opening a PR"
   - "XSD validation failed on N files — investigate before opening PR"
   - "audio download script copied but not tested; run it to verify it still works in the published location"
   - "Privacy leak check: <result> (clean / N basename collisions to review / HARD ERROR)"

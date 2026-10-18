@@ -18,7 +18,7 @@ host sandbox was not active. This container closes that hole at the kernel level
 
 | Host path | Container path | Notes |
 |---|---|---|
-| `~/Documents/Projects/Formosan` | `/workspace` | The whole parent dir — supports cross-repo workflows (port-corpus-in, gitbook sync). |
+| `~/Documents/Projects/Formosan` | `/workspace` | The whole parent dir — supports cross-repo workflows (port-corpus-in from the corpus dev repos). |
 | (named volume `formosanbank-venv`) | `/workspace/FormosanBank/.venv` | Linux-native venv; shadows the macOS host `.venv`. |
 | (named volume `formosanbank-claude-auth`) | `/home/vscode/.claude` | Persists the in-container Claude login. |
 

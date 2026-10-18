@@ -1,0 +1,66 @@
+site_name: FormosanBank
+site_url: https://formosanbank.github.io/FormosanBank/
+site_description: Documentation for the FormosanBank corpus of Indigenous languages of Taiwan
+# docs_dir and site_url are set per edition by docs/tools/prepare_site.py
+docs_dir: .build/docs/en
+use_directory_urls: true
+draft_docs: |
+  SUMMARY.md
+
+theme:
+  name: material
+  custom_dir: docs/theme/overrides
+  language: en
+  logo: assets/brand-mark.svg
+  favicon: assets/brand-mark.svg
+  font:
+    text: Noto Sans
+    code: IBM Plex Mono
+  features:
+    - content.code.copy
+    - navigation.indexes
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.suggest
+  palette:
+    scheme: default
+    primary: white
+    accent: blue
+
+plugins:
+  - search:
+      lang:
+        - en
+        - zh
+  - literate-nav:
+      nav_file: SUMMARY.md
+      tab_length: 2
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  generator: false
+  # alternate (the language menu) is written per edition by docs/tools/prepare_site.py
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/FormosanBank/FormosanBank
+    - icon: simple/huggingface
+      link: https://huggingface.co/FormosanBank
+
+copyright: FormosanBank is a mixed-source collection. Source-specific rights and restrictions apply.

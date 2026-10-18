@@ -1,3 +1,7 @@
+# FormosanBank
+
+**Documentation:** https://formosanbank.github.io/FormosanBank/ (English; also [繁體中文](https://formosanbank.github.io/FormosanBank/zh/) and [Paiwan](https://formosanbank.github.io/FormosanBank/paiwan/)). Each corpus's page there is its `Corpora/<name>/README.md`; per-language statistics and growth figures are under *Languages*. The site is built from this repository ([docs/](docs/)) by [.github/workflows/pages.yaml](.github/workflows/pages.yaml).
+
 # Corpora
 
 ## License and AI Use

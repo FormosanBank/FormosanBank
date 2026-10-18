@@ -20,7 +20,7 @@ See [AI-USE-ADDENDUM.md](AI-USE-ADDENDUM.md).
 
 ## Annotations and Metadata
 
-FormosanBank-created annotations and metadata are described in the GitBook Terms of Use as CC BY 4.0, with required attribution, except where a corpus-specific source license or rights notice imposes stricter terms.
+FormosanBank-created annotations and metadata are described in the FormosanBank Terms of Use as CC BY 4.0, with required attribution, except where a corpus-specific source license or rights notice imposes stricter terms.
 
 The CC BY 4.0 metadata notice does not grant Commercial AI Use rights in corpus materials where those rights are otherwise reserved or prohibited.
 
@@ -40,5 +40,5 @@ Users must also cite corpus-specific upstream sources where required.
 
 Current public terms:
 
-- Terms of Use: https://ai4commsci.gitbook.io/formosanbank/additional-resources/terms-of-use
+- Terms of Use: https://formosanbank.github.io/FormosanBank/additional-resources/terms-of-use/
 - AI Use Addendum: [AI-USE-ADDENDUM.md](AI-USE-ADDENDUM.md)
