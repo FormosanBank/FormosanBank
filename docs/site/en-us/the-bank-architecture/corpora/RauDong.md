@@ -38,7 +38,7 @@ Since October 2026 the published XML is rebuilt reproducibly: `CodeAndDocs/gener
 
 ### **Corpus Notes**
 
-* The original text has morphemes marked with hyphens. This is retained in the "original" tier and removed from the "standard" tier. 
+* The original text has morphemes marked with hyphens. These are retained in the "original" tier at all three levels. The "standard" tier removes them from the sentence only, so the sentence reads as running text (`maniring`); standard word and morpheme forms keep them (`ma-niring`). 
 
 * Lexical accent is marked in the original tier but removed in the standard tier. 
 * The pronunciation (PHON) tiers were regenerated with the current tools in October 2026: variant vowels are written `[o|u]`, morpheme hyphens and punctuation are not part of PHON, accented vowels map to their plain vowel, and the standard tier's `z` is `r` (a bug had made it `ɻ`, merging z and r).
