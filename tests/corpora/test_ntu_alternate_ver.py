@@ -164,3 +164,23 @@ def test_step14_skips_a_word_whose_form_is_a_slash_alternation():
     # No slash at all: the ordinary step-14 case.
     assert spans_slash_alternation("ka(z)") is False
     assert spans_slash_alternation("kangavas(=an)") is False
+
+
+def test_no_variant_form_is_written_in_han(nodes):
+    """A note NTU wrote in parentheses is not a variant reading.
+
+    Kanakanavu 3_S_458: source 'pai’ici?(少用)', 少用 "rarely used". Step 14 read the
+    parentheses as optional letters and published the variant 'pai'ici?少用'
+    (maintainer, 2026-10-18: "obviously a variant wouldn't be in Chinese!"). The note
+    now goes to the sentence FORM's notes, as Grammar's handling of it does.
+    """
+    import re
+    han = re.compile(r"[㐀-鿿豈-﫿]")
+    offenders = [(n.get("id"), "".join(f.itertext())) for _, n in nodes
+                 for f in n.findall("FORM") if f.get("ver") and han.search("".join(f.itertext()))]
+    assert offenders == [], f"{len(offenders)} variant FORM(s) in Han: {offenders[:4]}"
+    s458 = [n for p, n in nodes if n.get("id") == "3_S_458" and "Sentences" in p.parts]
+    assert len(s458) == 1
+    assert [f.get("ver") for f in s458[0].iter("FORM")].count("alt") == 0
+    assert s458[0].find("FORM").get("notes") == "source annotation 少用: rarely used"
+    assert s458[0].find("FORM").text == "Temusu sekarapeen tanuku mima pai'ici?"

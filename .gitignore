@@ -36,3 +36,12 @@ coverage.xml
 *.exe
 *.pyz
 *.app/
+
+# Tool output written next to the XML it processed (orthography_extract,
+# Hugging Face uploads). Never published data.
+**/XML/**/.cache/
+# PyInstaller output of the OCR review tool (untracked 2026-10-17; the source
+# reviewOCR.py + reviewOCR.spec stay tracked, binaries ship as Release assets).
+QC/utilities/OCR Audit/build/
+QC/utilities/OCR Audit/dist/
+QC/utilities/OCR Audit/macos dist/

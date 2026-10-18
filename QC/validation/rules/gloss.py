@@ -20,6 +20,7 @@ Rules:
 - V065 SOFT: every W element should have at least one TRANSL child.
 - V066 HARD: '=' (clitic boundary) in a W FORM must appear in at least one child M FORM.
 - V067 HARD: '<' or '>' in an M FORM is forbidden; infix Ms must use '-X-' notation.
+- V164 SOFT: a W FORM made only of punctuation or symbols is not a word.
 
 V062/V064/V065 form the **gloss-presence family**: gloss coverage and
 gloss notation are *reported*, never fatal. Some corpora legitimately
@@ -28,6 +29,7 @@ prose rather than Leipzig angle brackets; both are worth surfacing in
 case they are unintended, but neither can block publication.
 """
 import re
+import unicodedata
 from collections import Counter
 from pathlib import Path
 
@@ -40,6 +42,7 @@ from QC.validation.rules._reconstruct import (
     letter_skeleton,
     similarity,
 )
+from QC.validation.rules._gloss_text import gloss_text
 from QC.xml_forms import find_base_form
 
 
@@ -451,7 +454,7 @@ def v062_infix_M_needs_angle_gloss(
         has_angle_gloss = False
         for child in parent_w:
             if child.tag == "TRANSL":
-                text = child.text or ""
+                text = gloss_text(child)
                 if "<" in text and ">" in text:
                     has_angle_gloss = True
                     break
@@ -937,7 +940,7 @@ def gloss_languages(tree: etree._ElementTree) -> set:
     glossed = 0
     for w in tree.iter("W"):
         present = {t.get(_XML_LANG) for t in w.findall("TRANSL")
-                   if (t.text or "").strip()}
+                   if gloss_text(t)}
         present = {l for l in present if l}
         if not present:
             continue
@@ -977,7 +980,7 @@ def v153_gloss_pieces_match_morphemes(
             continue
         n = _morphemes_implied(form)
         for t in w.findall("TRANSL"):
-            gloss = (t.text or "").strip()
+            gloss = gloss_text(t)
             if not gloss:
                 continue
             if _gloss_pieces(gloss) != n:
@@ -1056,8 +1059,8 @@ def v154_gloss_script_matches_language(
     example = ""
     for parent in list(tree.iter("W")) + list(tree.iter("M")):
         for t in parent.findall("TRANSL"):
-            lang, text = t.get(_XML_LANG), (t.text or "").strip()
-            others = {o.get(_XML_LANG): (o.text or "").strip()
+            lang, text = t.get(_XML_LANG), gloss_text(t)
+            others = {o.get(_XML_LANG): gloss_text(o)
                       for o in parent.findall("TRANSL") if o is not t}
             if not odd(text, lang, others):
                 continue
@@ -1071,7 +1074,7 @@ def v154_gloss_script_matches_language(
                     for w in sentence.findall("W"):
                         if w is parent:
                             continue
-                        sib = {o.get(_XML_LANG): (o.text or "").strip()
+                        sib = {o.get(_XML_LANG): gloss_text(o)
                                for o in w.findall("TRANSL")}
                         if odd(sib.get(lang, ""), lang,
                                {k: v for k, v in sib.items() if k != lang}):
@@ -1122,7 +1125,7 @@ def v155_gloss_language_set_incomplete(
     example = ""
     for w in tree.iter("W"):
         present = {t.get(_XML_LANG) for t in w.findall("TRANSL")
-                   if (t.text or "").strip()}
+                   if gloss_text(t)}
         present = {l for l in present if l}
         if not present or present >= langs:
             continue
@@ -1147,6 +1150,64 @@ def v155_gloss_language_set_incomplete(
     )]
 
 
+# ---------------------------------------------------------------------------
+# V164: a word FORM that is only punctuation (SOFT)
+# ---------------------------------------------------------------------------
+
+# Characters that look like punctuation or symbols to Unicode but are letters or
+# morpheme markers in FormosanBank forms: the glottal-stop letters, the stress
+# mark, the morpheme boundaries and the null-morpheme glyphs. A FORM holding any
+# of them is not "only punctuation".
+_V164_NOT_PUNCTUATION = frozenset("'ʼ’ˈ^-=<>~∅Øø")
+
+
+def _only_punctuation(text: str) -> bool:
+    chars = [ch for ch in text if not ch.isspace()]
+    return bool(chars) and all(
+        unicodedata.category(ch)[0] in "PS" and ch not in _V164_NOT_PUNCTUATION
+        for ch in chars)
+
+
+def v164_W_form_only_punctuation(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V164 SOFT: a W FORM made only of punctuation or symbols is not a word.
+
+    A word (W) FORM, any kindOf and any variant, whose text -- ignoring any
+    <UNCLEAR/> -- is nothing but Unicode punctuation (P*) and symbol (S*)
+    characters: ePark's '?' glossed '？' and '.' glossed '句號', NTU's Bunun '.'
+    glossed '(咳嗽)'. The sentence's punctuation, or a transcription mark, has
+    been given a word of its own. Letters and morpheme markers that Unicode
+    classes as punctuation or symbols (' ʼ ’ ˈ ^ - = < > ~ ∅ Ø ø) make a FORM a
+    word. A FORM that is only <UNCLEAR/> is not checked.
+
+    Maintainer, 2026-10-18: "we shouldn't have W FORMs that consist entirely of
+    punctuation. That would be a good SOFT validator to have, for this corpus but
+    also others." Fires once per W, naming its first such FORM.
+    """
+    findings: list[Finding] = []
+    for w in tree.iter("W"):
+        hits = [(f.get("kindOf"), "".join(f.itertext())) for f in w.findall("FORM")
+                if _only_punctuation("".join(f.itertext()))]
+        if not hits:
+            continue
+        w_id = w.get("id") or ""
+        kind, text = hits[0]
+        findings.append(Finding(
+            rule_id="V164",
+            severity=Severity.SOFT,
+            message=(f"V164 SOFT W_form_only_punctuation: W id={w_id!r} FORM "
+                     f"kindOf={kind!r} is only punctuation ({text!r}); "
+                     f"{len(hits)} such FORM(s) on this W"),
+            path=path,
+            location=f"W={w_id}" if w_id else "W",
+            character=text.strip()[:10],
+        ))
+    return findings
+
+
 RULES: list = [
     v060_W_count_matches_word_count,
     v061_M_count_matches_form_segmentation,
@@ -1163,5 +1224,7 @@ RULES: list = [
     v153_gloss_pieces_match_morphemes,
     v154_gloss_script_matches_language,
     v155_gloss_language_set_incomplete,
+    # word FORMs that are only punctuation (2026-10-18, NTU review)
+    v164_W_form_only_punctuation,
 ]
 CROSS_FILE_RULES: list = []

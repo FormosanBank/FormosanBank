@@ -11,7 +11,7 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-XML_PATH = ROOT / "Final_XML/Truku/Hsu_Lowking_Truku_WordFormation_2008.xml"
+XML_PATH = ROOT.parent / "XML/Truku/Hsu_Lowking_Truku_WordFormation_2008.xml"
 OUT_DIR = ROOT / "data/processed/spotcheck_images"
 REPORT_PATH = ROOT / "data/processed/pdf_xml_visual_spotcheck.md"
 
@@ -130,7 +130,7 @@ def main() -> None:
         "",
         f"- Spotcheck status: {'PASS' if all_ok else 'FAIL'}",
         "- No OCR was used for these comparisons; page images are audit renderings of the source PDF.",
-        "- Final XML remains under `Final_XML/Truku/`; screenshot crops and this report stay outside `Final_XML/`.",
+        "- Final XML remains under `XML/Truku/`; screenshot crops and this report stay outside `XML/`.",
         "",
     ])
     REPORT_PATH.write_text("\n".join(lines), encoding="utf-8")

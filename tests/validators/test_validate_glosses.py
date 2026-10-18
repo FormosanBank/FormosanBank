@@ -1582,3 +1582,108 @@ def test_V154_leipzig_code_in_the_mandarin_slot_is_suspicious(tmp_path):
             + _w("W4", "d", {"zho": "AUX.AF", "eng": "aux"}) + "</S>")
     proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
     assert "V154" in proc.stdout + proc.stderr
+
+
+# ---------------------------------------------------------------------------
+# Inline <UNCLEAR/> in a gloss (approved shared-tool fix, 2026-10-18)
+#
+# lxml's ``.text`` is only the text BEFORE the first child element, so a
+# gloss written ``if-main-<UNCLEAR/>-outsider-nom`` used to be read as
+# ``if-main-`` and a gloss that is only ``<UNCLEAR/>`` as empty. The rules
+# now read the whole gloss and count each <UNCLEAR/> as one piece. The
+# examples are the shapes HundredPaiwanStories publishes.
+# ---------------------------------------------------------------------------
+
+def _unclear_s(*ws: str, form: str = "x") -> str:
+    return _TEXT_TEMPLATE.format(
+        body=f'<S id="S1"><FORM kindOf="original">{form}</FORM>{"".join(ws)}</S>')
+
+
+def test_gloss_text_reads_whole_gloss_with_unclear_as_one_piece():
+    from QC.validation.rules._gloss_text import gloss_text
+    t = etree.fromstring('<TRANSL>if-main-<UNCLEAR/>-outsider-nom</TRANSL>')
+    assert gloss_text(t) == "if-main-?-outsider-nom"
+    assert gloss_text(etree.fromstring("<TRANSL> <UNCLEAR/> </TRANSL>")) == "?"
+    assert gloss_text(etree.fromstring("<TRANSL>go</TRANSL>")) == "go"
+    assert gloss_text(etree.fromstring("<TRANSL/>")) == ""
+    assert gloss_text(etree.fromstring("<TRANSL>a<!--c-->b</TRANSL>")) == "ab"
+
+
+def test_V153_inline_unclear_counts_as_one_gloss_piece():
+    """5 morphemes, 5 gloss pieces once <UNCLEAR/> is one of them."""
+    xml = _unclear_s(_w("W1", "ka-ki-tja-djalan-an",
+                        {"eng": "if-main-<UNCLEAR/>-outsider-nom"}))
+    assert _findings_for(gloss_rules.v153_gloss_pieces_match_morphemes, xml) == []
+
+
+def test_V153_whole_unclear_gloss_is_one_piece_not_empty():
+    """A gloss that is only <UNCLEAR/> claims one morpheme -- exactly what the
+    source's '?' claimed -- so a two-morpheme form is still compared."""
+    xml = _unclear_s(_w("W1", "ka-un", {"eng": "<UNCLEAR/>"}))
+    findings = _findings_for(gloss_rules.v153_gloss_pieces_match_morphemes, xml)
+    assert len(findings) == 1
+    assert "'?' (1)" in findings[0].message
+
+
+def test_V062_angle_gloss_after_inline_unclear_is_seen():
+    """HundredPaiwanStories 037S5W12: the <qal> infix gloss follows the
+    <UNCLEAR/>, so a read that stops at the element misses it."""
+    xml = _TEXT_TEMPLATE.format(body=(
+        '<S id="S1"><FORM kindOf="original">x</FORM><W id="W1">'
+        '<FORM kindOf="original">pu-tsu-q&lt;ar&gt;uɫquɫ-an</FORM>'
+        '<TRANSL xml:lang="eng">have-<UNCLEAR/>-hoof&lt;qal&gt;-nom</TRANSL>'
+        '<M id="M1"><FORM kindOf="original">-ar-</FORM><TRANSL xml:lang="eng">qal</TRANSL></M>'
+        '</W></S>'))
+    assert _findings_for(gloss_rules.v062_infix_M_needs_angle_gloss, xml) == []
+
+
+def test_V155_whole_unclear_gloss_counts_as_present():
+    """A word whose Mandarin gloss is <UNCLEAR/> carries both gloss languages;
+    the unclarity is recorded, not missing."""
+    xml = _unclear_s(
+        _w("W1", "a", {"zho": "一", "eng": "one"}),
+        _w("W2", "b", {"zho": "二", "eng": "two"}),
+        _w("W3", "c", {"zho": "<UNCLEAR/>", "eng": "three"}))
+    assert _findings_for(gloss_rules.v155_gloss_language_set_incomplete, xml) == []
+    assert gloss_rules.gloss_languages(_parse(xml)) == {"zho", "eng"}
+
+
+def test_V154_text_after_inline_unclear_is_read():
+    """Read only up to <UNCLEAR/>, each slot looks like the other script (a
+    cross-slot swap); read whole, both slots carry their own script."""
+    xml = _unclear_s(_w("W1", "a", {"zho": "go<UNCLEAR/>去",
+                                    "eng": "去<UNCLEAR/>go"}))
+    assert _findings_for(gloss_rules.v154_gloss_script_matches_language, xml) == []
+
+
+# ---------------------------------------------------------------------------
+# V164: a W FORM that is only punctuation (SOFT)
+# ---------------------------------------------------------------------------
+
+def _v164(*forms: str) -> list:
+    ws = "".join(f'<W id="W{i}"><FORM kindOf="original">{f}</FORM>'
+                 f'<FORM kindOf="standard">{f}</FORM></W>' for i, f in enumerate(forms))
+    body = f'<S id="S1"><FORM kindOf="original">x</FORM>{ws}</S>'
+    return _findings_for(gloss_rules.v164_W_form_only_punctuation,
+                         _TEXT_TEMPLATE.format(body=body))
+
+
+@pytest.mark.parametrize("form", [".", ",", "?", "...", "!", '"', "？", "。", "「」", ". ,", "<UNCLEAR/>?", "#", "%"])
+def test_V164_punctuation_only_W_FORM_flagged(form):
+    findings = _v164(form)
+    assert [f.rule_id for f in findings] == ["V164"]          # once per W, not per FORM
+    assert findings[0].severity == Severity.SOFT
+    assert findings[0].location == "W=W0"
+    assert "2 such FORM(s)" in findings[0].message
+
+
+@pytest.mark.parametrize("form", [
+    "haca", "haca,", "'", "’", "ʼ", "ˈ", "^", "-", "=", "&lt;", "&gt;", "~", "∅", "Ø", "ø",
+    "=?", "-.", "<UNCLEAR/>", "<UNCLEAR/>,ka", "1", "不要", "a.b",
+])
+def test_V164_word_or_marker_not_flagged(form):
+    assert _v164(form) == []
+
+
+def test_V164_one_finding_per_offending_W():
+    assert [f.location for f in _v164("ka", ".", "ta", ",")] == ["W=W1", "W=W3"]

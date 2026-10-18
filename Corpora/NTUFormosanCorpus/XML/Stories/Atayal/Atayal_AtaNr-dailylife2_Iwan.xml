@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <TEXT id="NTU_Stry_Atayal_AtaNr-dailylife2_Iwan" citation="NTU Corpus of Formosan Languages" BibTeX_citation="" copyright="CC BY-NC 4.0" xml:lang="tay" dialect="Wenshui">
     <S id="AtaNr-dailylife2_Iwan_S_1">
-        <FORM kindOf="original" notes="maniq semian “eat cup” 意指過年。 汶水泰雅不同村之間有b/v, c/s等發音上的差異。清安村發音人較年輕一輩的詞彙已無b和c的音，但較年長的發音人的部分詞彙仍保留b和c的音。此篇語料係依照發音人的發音而給予標記。">minaniq samiyan la ga, la, musa'sami kumayi' su quriyux la ru,</FORM>
+        <FORM kindOf="original" notes="汶水泰雅口語語料中會有語助詞和其他功能詞(主題標記、連接詞、主格)等連讀的現象（lga, lru, lgi, lku, etc.）。目前將此類例子拆解為兩個單位標記。 maniq semian “eat cup” 意指過年。 汶水泰雅不同村之間有b/v, c/s等發音上的差異。清安村發音人較年輕一輩的詞彙已無b和c的音，但較年長的發音人的部分詞彙仍保留b和c的音。此篇語料係依照發音人的發音而給予標記。">minaniq samiyan la ga, la, musa'sami kumayi' su quriyux la ru,</FORM>
         <PHON kindOf="original">minaniq samijan la ɣa la musaʔsami kumajiʔ su qurijux la ru</PHON>
         <FORM kindOf="standard">minaniq samiyan la ga, la, musa'sami kumayi' su quriyux la ru,</FORM>
         <PHON kindOf="standard">minaniq [s|ɕ]amijan la ɣa la mu[s|ɕ]aʔ[s|ɕ]ami kumajiʔ [s|ɕ]u qurijux la ru</PHON>
@@ -13,7 +13,7 @@
             <PHON kindOf="original">minaniq</PHON>
             <FORM kindOf="standard">m&lt;in&gt;-aniq</FORM>
             <PHON kindOf="standard">minaniq</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦&lt;完成&gt;吃</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦&lt;完成&gt;-吃</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF&lt;PFV&gt;-eat</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_1_W0M0_0">
                 <FORM kindOf="original">-in-</FORM>
@@ -28,7 +28,7 @@
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦吃</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="AtaNr-dailylife2_Iwan_S_1_W0M1">
@@ -36,6 +36,7 @@
                 <PHON kindOf="original">aniq</PHON>
                 <FORM kindOf="standard">aniq</FORM>
                 <PHON kindOf="standard">aniq</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">吃</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
             </M>
         </W>
@@ -72,53 +73,61 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_1_W3">
-            <FORM kindOf="original">ga,</FORM>
+            <FORM kindOf="original">ga</FORM>
             <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
+            <FORM kindOf="standard">ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_1_W3M0">
-                <FORM kindOf="original">ga,</FORM>
+                <FORM kindOf="original">ga</FORM>
                 <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
+                <FORM kindOf="standard">ga</FORM>
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_1_W4">
-            <FORM kindOf="original">la,</FORM>
+            <FORM kindOf="original">la</FORM>
             <PHON kindOf="original">la</PHON>
-            <FORM kindOf="standard">la,</FORM>
+            <FORM kindOf="standard">la</FORM>
             <PHON kindOf="standard">la</PHON>
             <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_1_W4M0">
-                <FORM kindOf="original">la,</FORM>
+                <FORM kindOf="original">la</FORM>
                 <PHON kindOf="original">la</PHON>
-                <FORM kindOf="standard">la,</FORM>
+                <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_1_W5">
-            <FORM kindOf="original">musa'=sami</FORM>
+            <FORM kindOf="original">m-usa'=sami</FORM>
             <PHON kindOf="original">musaʔsami</PHON>
-            <FORM kindOf="standard">musa'=sami</FORM>
+            <FORM kindOf="standard">m-usa'=sami</FORM>
             <PHON kindOf="standard">mu[s|ɕ]aʔ[s|ɕ]ami</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦.去=1PL.主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF.go=1PL.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-去=1PL.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-go=1PL.NOM</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_1_W5M0">
-                <FORM kindOf="original">musa'</FORM>
-                <PHON kindOf="original">musaʔ</PHON>
-                <FORM kindOf="standard">musa'</FORM>
-                <PHON kindOf="standard">mu[s|ɕ]aʔ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦.去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF.go</TRANSL>
+                <FORM kindOf="original">m</FORM>
+                <PHON kindOf="original">m</PHON>
+                <FORM kindOf="standard">m</FORM>
+                <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="AtaNr-dailylife2_Iwan_S_1_W5M1">
+                <FORM kindOf="original">usa'</FORM>
+                <PHON kindOf="original">usaʔ</PHON>
+                <FORM kindOf="standard">usa'</FORM>
+                <PHON kindOf="standard">u[s|ɕ]aʔ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
+            </M>
+            <M id="AtaNr-dailylife2_Iwan_S_1_W5M2">
                 <FORM kindOf="original">=sami</FORM>
                 <PHON kindOf="original">sami</PHON>
                 <FORM kindOf="standard">=sami</FORM>
@@ -200,16 +209,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_1_W10">
-            <FORM kindOf="original">ru,</FORM>
+            <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
-            <FORM kindOf="standard">ru,</FORM>
+            <FORM kindOf="standard">ru</FORM>
             <PHON kindOf="standard">ru</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_1_W10M0">
-                <FORM kindOf="original">ru,</FORM>
+                <FORM kindOf="original">ru</FORM>
                 <PHON kindOf="original">ru</PHON>
-                <FORM kindOf="standard">ru,</FORM>
+                <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">ru</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
@@ -217,7 +226,7 @@
         </W>
     </S>
     <S id="AtaNr-dailylife2_Iwan_S_4">
-        <FORM kindOf="original">ru, taqru' i kumayi' su quriyux ga, baqun su musa' tana' i, pamuwaun la ga, ga, hawbingun la.</FORM>
+        <FORM kindOf="original" notes="tana' 為澤敖利的講法，汶水用 ska' ‘enough'">ru, taqru' i kumayi' su quriyux ga, baqun su musa' tana' i, pamuwaun la ga, ga, hawbingun la.</FORM>
         <PHON kindOf="original">ru taqruʔ i kumajiʔ su qurijux ɣa [β|v]aqun su musaʔ tanaʔ i pamuwaun la ɣa ɣa ħaw[β|v]iŋun la</PHON>
         <FORM kindOf="standard">ru, taqru' i kumayi' su quriyux ga, baqun su musa' tana' i, pamuwaun la ga, ga, hawbingun la.</FORM>
         <PHON kindOf="standard">ru taqruʔ i kumajiʔ [s|ɕ]u qurijux ɣa βaqun [s|ɕ]u mu[s|ɕ]aʔ tanaʔ i pamuwaun la ɣa ɣa ħawβiŋun la</PHON>
@@ -225,16 +234,16 @@
         <TRANSL xml:lang="eng" notes="(We) finish digging out the ginger, and when the amount is known to be enough for planting, we have them cut.">finish digging out the ginger, and when the amount is known to be enough for planting, we have them cut.</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-dailylife2_Iwan.mp3" start="5.78" end="16.6" file="AtaNr-dailylife2_Iwan_S1.mp3"/>
         <W id="AtaNr-dailylife2_Iwan_S_4_W0">
-            <FORM kindOf="original">ru,</FORM>
+            <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
-            <FORM kindOf="standard">ru,</FORM>
+            <FORM kindOf="standard">ru</FORM>
             <PHON kindOf="standard">ru</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_4_W0M0">
-                <FORM kindOf="original">ru,</FORM>
+                <FORM kindOf="original">ru</FORM>
                 <PHON kindOf="original">ru</PHON>
-                <FORM kindOf="standard">ru,</FORM>
+                <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">ru</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
@@ -329,16 +338,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_4_W6">
-            <FORM kindOf="original">ga,</FORM>
+            <FORM kindOf="original">ga</FORM>
             <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
+            <FORM kindOf="standard">ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_4_W6M0">
-                <FORM kindOf="original">ga,</FORM>
+                <FORM kindOf="original">ga</FORM>
                 <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
+                <FORM kindOf="standard">ga</FORM>
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
@@ -417,16 +426,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_4_W11">
-            <FORM kindOf="original">i,</FORM>
+            <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
-            <FORM kindOf="standard">i,</FORM>
+            <FORM kindOf="standard">i</FORM>
             <PHON kindOf="standard">i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_4_W11M0">
-                <FORM kindOf="original">i,</FORM>
+                <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
-                <FORM kindOf="standard">i,</FORM>
+                <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
@@ -473,32 +482,32 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_4_W14">
-            <FORM kindOf="original">ga,</FORM>
+            <FORM kindOf="original">ga</FORM>
             <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
+            <FORM kindOf="standard">ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_4_W14M0">
-                <FORM kindOf="original">ga,</FORM>
+                <FORM kindOf="original">ga</FORM>
                 <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
+                <FORM kindOf="standard">ga</FORM>
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_4_W15">
-            <FORM kindOf="original">ga,</FORM>
+            <FORM kindOf="original">ga</FORM>
             <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
+            <FORM kindOf="standard">ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_4_W15M0">
-                <FORM kindOf="original">ga,</FORM>
+                <FORM kindOf="original">ga</FORM>
                 <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
+                <FORM kindOf="standard">ga</FORM>
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
@@ -529,16 +538,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_4_W17">
-            <FORM kindOf="original">la.</FORM>
+            <FORM kindOf="original">la</FORM>
             <PHON kindOf="original">la</PHON>
-            <FORM kindOf="standard">la.</FORM>
+            <FORM kindOf="standard">la</FORM>
             <PHON kindOf="standard">la</PHON>
             <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_4_W17M0">
-                <FORM kindOf="original">la.</FORM>
+                <FORM kindOf="original">la</FORM>
                 <PHON kindOf="original">la</PHON>
-                <FORM kindOf="standard">la.</FORM>
+                <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
@@ -594,16 +603,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_10_W2">
-            <FORM kindOf="original">ru,</FORM>
+            <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
-            <FORM kindOf="standard">ru,</FORM>
+            <FORM kindOf="standard">ru</FORM>
             <PHON kindOf="standard">ru</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_10_W2M0">
-                <FORM kindOf="original">ru,</FORM>
+                <FORM kindOf="original">ru</FORM>
                 <PHON kindOf="original">ru</PHON>
-                <FORM kindOf="standard">ru,</FORM>
+                <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">ru</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
@@ -698,16 +707,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_10_W7">
-            <FORM kindOf="original">ga,</FORM>
+            <FORM kindOf="original">ga</FORM>
             <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
+            <FORM kindOf="standard">ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_10_W7M0">
-                <FORM kindOf="original">ga,</FORM>
+                <FORM kindOf="original">ga</FORM>
                 <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
+                <FORM kindOf="standard">ga</FORM>
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
@@ -770,16 +779,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_10_W11">
-            <FORM kindOf="original">ru,</FORM>
+            <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
-            <FORM kindOf="standard">ru,</FORM>
+            <FORM kindOf="standard">ru</FORM>
             <PHON kindOf="standard">ru</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_10_W11M0">
-                <FORM kindOf="original">ru,</FORM>
+                <FORM kindOf="original">ru</FORM>
                 <PHON kindOf="original">ru</PHON>
-                <FORM kindOf="standard">ru,</FORM>
+                <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">ru</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
@@ -811,16 +820,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_13_W1">
-            <FORM kindOf="original">i,</FORM>
+            <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
-            <FORM kindOf="standard">i,</FORM>
+            <FORM kindOf="standard">i</FORM>
             <PHON kindOf="standard">i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_13_W1M0">
-                <FORM kindOf="original">i,</FORM>
+                <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
-                <FORM kindOf="standard">i,</FORM>
+                <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
@@ -891,16 +900,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_13_W6">
-            <FORM kindOf="original">ga,</FORM>
+            <FORM kindOf="original">ga</FORM>
             <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
+            <FORM kindOf="standard">ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_13_W6M0">
-                <FORM kindOf="original">ga,</FORM>
+                <FORM kindOf="original">ga</FORM>
                 <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
+                <FORM kindOf="standard">ga</FORM>
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
@@ -939,16 +948,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_13_W8">
-            <FORM kindOf="original">su,</FORM>
+            <FORM kindOf="original">su</FORM>
             <PHON kindOf="original">su</PHON>
-            <FORM kindOf="standard">su,</FORM>
+            <FORM kindOf="standard">su</FORM>
             <PHON kindOf="standard">[s|ɕ]u</PHON>
             <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_13_W8M0">
-                <FORM kindOf="original">su,</FORM>
+                <FORM kindOf="original">su</FORM>
                 <PHON kindOf="original">su</PHON>
-                <FORM kindOf="standard">su,</FORM>
+                <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">[s|ɕ]u</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
@@ -1011,16 +1020,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_13_W12">
-            <FORM kindOf="original">ayutak,</FORM>
+            <FORM kindOf="original">ayutak</FORM>
             <PHON kindOf="original">ajutak</PHON>
-            <FORM kindOf="standard">ayutak,</FORM>
+            <FORM kindOf="standard">ayutak</FORM>
             <PHON kindOf="standard">ajutak</PHON>
             <TRANSL xml:lang="zho" kindOf="original">橘子</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">orange</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_13_W12M0">
-                <FORM kindOf="original">ayutak,</FORM>
+                <FORM kindOf="original">ayutak</FORM>
                 <PHON kindOf="original">ajutak</PHON>
-                <FORM kindOf="standard">ayutak,</FORM>
+                <FORM kindOf="standard">ayutak</FORM>
                 <PHON kindOf="standard">ajutak</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">橘子</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">orange</TRANSL>
@@ -1100,16 +1109,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_17_W4">
-            <FORM kindOf="original">sal,</FORM>
+            <FORM kindOf="original">sal</FORM>
             <PHON kindOf="original">sal</PHON>
-            <FORM kindOf="standard">sal,</FORM>
+            <FORM kindOf="standard">sal</FORM>
             <PHON kindOf="standard">[s|ɕ]al</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_17_W4M0">
-                <FORM kindOf="original">sal,</FORM>
+                <FORM kindOf="original">sal</FORM>
                 <PHON kindOf="original">sal</PHON>
-                <FORM kindOf="standard">sal,</FORM>
+                <FORM kindOf="standard">sal</FORM>
                 <PHON kindOf="standard">[s|ɕ]al</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
@@ -1140,16 +1149,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_17_W6">
-            <FORM kindOf="original">ru,</FORM>
+            <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
-            <FORM kindOf="standard">ru,</FORM>
+            <FORM kindOf="standard">ru</FORM>
             <PHON kindOf="standard">ru</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_17_W6M0">
-                <FORM kindOf="original">ru,</FORM>
+                <FORM kindOf="original">ru</FORM>
                 <PHON kindOf="original">ru</PHON>
-                <FORM kindOf="standard">ru,</FORM>
+                <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">ru</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
@@ -1180,16 +1189,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_17_W8">
-            <FORM kindOf="original">xiliyu'.</FORM>
+            <FORM kindOf="original">xiliyu'</FORM>
             <PHON kindOf="original">xilijuʔ</PHON>
-            <FORM kindOf="standard">xiliyu'.</FORM>
+            <FORM kindOf="standard">xiliyu'</FORM>
             <PHON kindOf="standard">xilijuʔ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">肥料</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">fertilizer</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_17_W8M0">
-                <FORM kindOf="original">xiliyu'.</FORM>
+                <FORM kindOf="original">xiliyu'</FORM>
                 <PHON kindOf="original">xilijuʔ</PHON>
-                <FORM kindOf="standard">xiliyu'.</FORM>
+                <FORM kindOf="standard">xiliyu'</FORM>
                 <PHON kindOf="standard">xilijuʔ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">肥料</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">fertilizer</TRANSL>
@@ -1205,16 +1214,16 @@
         <TRANSL xml:lang="eng">And, after we finish our work, when seeing grass growing around our ginger, we'll go to spray insecticide and add fertilizer.</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-dailylife2_Iwan.mp3" start="36.74" end="50.75" file="AtaNr-dailylife2_Iwan_S5.mp3"/>
         <W id="AtaNr-dailylife2_Iwan_S_20_W0">
-            <FORM kindOf="original">ru,</FORM>
+            <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
-            <FORM kindOf="standard">ru,</FORM>
+            <FORM kindOf="standard">ru</FORM>
             <PHON kindOf="standard">ru</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_20_W0M0">
-                <FORM kindOf="original">ru,</FORM>
+                <FORM kindOf="original">ru</FORM>
                 <PHON kindOf="original">ru</PHON>
-                <FORM kindOf="standard">ru,</FORM>
+                <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">ru</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
@@ -1253,16 +1262,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_20_W3">
-            <FORM kindOf="original">i,</FORM>
+            <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
-            <FORM kindOf="standard">i,</FORM>
+            <FORM kindOf="standard">i</FORM>
             <PHON kindOf="standard">i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_20_W3M0">
-                <FORM kindOf="original">i,</FORM>
+                <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
-                <FORM kindOf="standard">i,</FORM>
+                <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
@@ -1357,16 +1366,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_20_W8">
-            <FORM kindOf="original">ga,</FORM>
+            <FORM kindOf="original">ga</FORM>
             <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
+            <FORM kindOf="standard">ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_20_W8M0">
-                <FORM kindOf="original">ga,</FORM>
+                <FORM kindOf="original">ga</FORM>
                 <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
+                <FORM kindOf="standard">ga</FORM>
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
@@ -1485,16 +1494,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_20_W15">
-            <FORM kindOf="original">ga,</FORM>
+            <FORM kindOf="original">ga</FORM>
             <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
+            <FORM kindOf="standard">ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TOP,</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_20_W15M0">
-                <FORM kindOf="original">ga,</FORM>
+                <FORM kindOf="original">ga</FORM>
                 <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
+                <FORM kindOf="standard">ga</FORM>
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TOP,</TRANSL>
@@ -1525,16 +1534,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_20_W17">
-            <FORM kindOf="original">i,</FORM>
+            <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
-            <FORM kindOf="standard">i,</FORM>
+            <FORM kindOf="standard">i</FORM>
             <PHON kindOf="standard">i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_20_W17M0">
-                <FORM kindOf="original">i,</FORM>
+                <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
-                <FORM kindOf="standard">i,</FORM>
+                <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
@@ -1573,9 +1582,9 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_20_W19">
-            <FORM kindOf="original">t&lt;um&gt;uba'.</FORM>
+            <FORM kindOf="original">t&lt;um&gt;uba'</FORM>
             <PHON kindOf="original">tumu[β|v]aʔ</PHON>
-            <FORM kindOf="standard">t&lt;um&gt;uba'.</FORM>
+            <FORM kindOf="standard">t&lt;um&gt;uba'</FORM>
             <PHON kindOf="standard">tumuβaʔ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;噴藥</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;spray</TRANSL>
@@ -1588,41 +1597,41 @@
                 <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
             <M id="AtaNr-dailylife2_Iwan_S_20_W19M0_1">
-                <FORM kindOf="original">t-uba'.</FORM>
+                <FORM kindOf="original">t-uba'</FORM>
                 <PHON kindOf="original">tu[β|v]aʔ</PHON>
-                <FORM kindOf="standard">t-uba'.</FORM>
+                <FORM kindOf="standard">t-uba'</FORM>
                 <PHON kindOf="standard">tuβaʔ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">噴藥</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">spray</TRANSL>
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_20_W20">
-            <FORM kindOf="original">ru,</FORM>
+            <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
-            <FORM kindOf="standard">ru,</FORM>
+            <FORM kindOf="standard">ru</FORM>
             <PHON kindOf="standard">ru</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_20_W20M0">
-                <FORM kindOf="original">ru,</FORM>
+                <FORM kindOf="original">ru</FORM>
                 <PHON kindOf="original">ru</PHON>
-                <FORM kindOf="standard">ru,</FORM>
+                <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">ru</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_20_W21">
-            <FORM kindOf="original">su,</FORM>
+            <FORM kindOf="original">su</FORM>
             <PHON kindOf="original">su</PHON>
-            <FORM kindOf="standard">su,</FORM>
+            <FORM kindOf="standard">su</FORM>
             <PHON kindOf="standard">[s|ɕ]u</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_20_W21M0">
-                <FORM kindOf="original">su,</FORM>
+                <FORM kindOf="original">su</FORM>
                 <PHON kindOf="original">su</PHON>
-                <FORM kindOf="standard">su,</FORM>
+                <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">[s|ɕ]u</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
@@ -1669,16 +1678,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_20_W24">
-            <FORM kindOf="original">xiliyu',</FORM>
+            <FORM kindOf="original">xiliyu'</FORM>
             <PHON kindOf="original">xilijuʔ</PHON>
-            <FORM kindOf="standard">xiliyu',</FORM>
+            <FORM kindOf="standard">xiliyu'</FORM>
             <PHON kindOf="standard">xilijuʔ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">肥料</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">fertilizer</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_20_W24M0">
-                <FORM kindOf="original">xiliyu',</FORM>
+                <FORM kindOf="original">xiliyu'</FORM>
                 <PHON kindOf="original">xilijuʔ</PHON>
-                <FORM kindOf="standard">xiliyu',</FORM>
+                <FORM kindOf="standard">xiliyu'</FORM>
                 <PHON kindOf="standard">xilijuʔ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">肥料</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">fertilizer</TRANSL>
@@ -1710,16 +1719,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_28_W1">
-            <FORM kindOf="original">i,</FORM>
+            <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
-            <FORM kindOf="standard">i,</FORM>
+            <FORM kindOf="standard">i</FORM>
             <PHON kindOf="standard">i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_28_W1M0">
-                <FORM kindOf="original">i,</FORM>
+                <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
-                <FORM kindOf="standard">i,</FORM>
+                <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
@@ -1798,16 +1807,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_28_W6">
-            <FORM kindOf="original">ga,</FORM>
+            <FORM kindOf="original">ga</FORM>
             <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
+            <FORM kindOf="standard">ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_28_W6M0">
-                <FORM kindOf="original">ga,</FORM>
+                <FORM kindOf="original">ga</FORM>
                 <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
+                <FORM kindOf="standard">ga</FORM>
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
@@ -1854,16 +1863,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_28_W9">
-            <FORM kindOf="original">cu,</FORM>
+            <FORM kindOf="original">cu</FORM>
             <PHON kindOf="original">ʦu</PHON>
-            <FORM kindOf="standard">cu,</FORM>
+            <FORM kindOf="standard">cu</FORM>
             <PHON kindOf="standard">[ʦ|ʨ]u</PHON>
             <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_28_W9M0">
-                <FORM kindOf="original">cu,</FORM>
+                <FORM kindOf="original">cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
-                <FORM kindOf="standard">cu,</FORM>
+                <FORM kindOf="standard">cu</FORM>
                 <PHON kindOf="standard">[ʦ|ʨ]u</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
@@ -1926,16 +1935,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_28_W13">
-            <FORM kindOf="original">gi,</FORM>
+            <FORM kindOf="original">gi</FORM>
             <PHON kindOf="original">ɣi</PHON>
-            <FORM kindOf="standard">gi,</FORM>
+            <FORM kindOf="standard">gi</FORM>
             <PHON kindOf="standard">ɣi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_28_W13M0">
-                <FORM kindOf="original">gi,</FORM>
+                <FORM kindOf="original">gi</FORM>
                 <PHON kindOf="original">ɣi</PHON>
-                <FORM kindOf="standard">gi,</FORM>
+                <FORM kindOf="standard">gi</FORM>
                 <PHON kindOf="standard">ɣi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
@@ -1943,7 +1952,7 @@
         </W>
     </S>
     <S id="AtaNr-dailylife2_Iwan_S_32">
-        <FORM kindOf="original">tiku, asi syue, syue hani la ga, sipayat cu buwating hani la ga usu i, i, ta'ali' la ru, musa' sumliyat ru, taqaruun sumlyat la ga, luma, talan ru kiya ku ali' la ga, mana'aring i tabalku' la.</FORM>
+        <FORM kindOf="original" notes="“四”在汶水方言稱為sapaat，發音人在IU35中的 sipayat是澤敖利方言說法。 IU35末的usu應為 mutu i 的口語省略，意思是 “會”。 sumliyat 應為 sumiliyat，口語時母音會省略。">tiku, asi syue, syue hani la ga, sipayat cu buwating hani la ga usu i, i, ta'ali' la ru, musa' sumliyat ru, taqaruun sumlyat la ga, luma, talan ru kiya ku ali' la ga, mana'aring i tabalku' la.</FORM>
         <PHON kindOf="original">tiku asi sjue sjue ħani la ɣa sipajat ʦu [β|v]uwatiŋ ħani la ɣa usu i i taʔaliʔ la ru musaʔ sumlijat ru taqaruun sumljat la ɣa luma talan ru kija ku aliʔ la ɣa manaʔariŋ i ta[β|v]alkuʔ la</PHON>
         <FORM kindOf="standard">tiku, asi syue, syue hani la ga, sipayat cu buwating hani la ga usu i, i, ta'ali' la ru, musa' sumliyat ru, taqaruun sumlyat la ga, luma, talan ru kiya ku ali' la ga, mana'aring i tabalku' la.</FORM>
         <PHON kindOf="standard">tiku a[s|ɕ]i [s|ɕ]jue [s|ɕ]jue ħani la ɣa [s|ɕ]ipajat [ʦ|ʨ]u βuwatiŋ ħani la ɣa u[s|ɕ]u i i taʔaliʔ la ru mu[s|ɕ]aʔ [s|ɕ]umlijat ru taqaruun [s|ɕ]umljat la ɣa luma talan ru kija ku aliʔ la ɣa manaʔariŋ i taβalkuʔ la</PHON>
@@ -1951,16 +1960,16 @@
         <TRANSL xml:lang="eng" notes="Just like this April, (we) would gather bamboo shoots, and go to cut grass. And after cutting the grass, (if we) see there are bamboo shoots, we'll start to gather them.">Just like this April, would gather bamboo shoots, and go to cut grass. And after cutting the grass, see there are bamboo shoots, we'll start to gather them.</TRANSL>
         <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-dailylife2_Iwan.mp3" start="58.95" end="79.09" file="AtaNr-dailylife2_Iwan_S7.mp3"/>
         <W id="AtaNr-dailylife2_Iwan_S_32_W0">
-            <FORM kindOf="original">tiku,</FORM>
+            <FORM kindOf="original">tiku</FORM>
             <PHON kindOf="original">tiku</PHON>
-            <FORM kindOf="standard">tiku,</FORM>
+            <FORM kindOf="standard">tiku</FORM>
             <PHON kindOf="standard">tiku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_32_W0M0">
-                <FORM kindOf="original">tiku,</FORM>
+                <FORM kindOf="original">tiku</FORM>
                 <PHON kindOf="original">tiku</PHON>
-                <FORM kindOf="standard">tiku,</FORM>
+                <FORM kindOf="standard">tiku</FORM>
                 <PHON kindOf="standard">tiku</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
@@ -1983,16 +1992,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_32_W2">
-            <FORM kindOf="original" notes="code-switch">syue,</FORM>
+            <FORM kindOf="original" notes="code-switch">syue</FORM>
             <PHON kindOf="original">sjue</PHON>
-            <FORM kindOf="standard">syue,</FORM>
+            <FORM kindOf="standard">syue</FORM>
             <PHON kindOf="standard">[s|ɕ]jue</PHON>
             <TRANSL xml:lang="zho" kindOf="original">四月</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">April</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_32_W2M0">
-                <FORM kindOf="original">syue,</FORM>
+                <FORM kindOf="original">syue</FORM>
                 <PHON kindOf="original">sjue</PHON>
-                <FORM kindOf="standard">syue,</FORM>
+                <FORM kindOf="standard">syue</FORM>
                 <PHON kindOf="standard">[s|ɕ]jue</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">四月</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">April</TRANSL>
@@ -2047,16 +2056,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_32_W6">
-            <FORM kindOf="original">ga,</FORM>
+            <FORM kindOf="original">ga</FORM>
             <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
+            <FORM kindOf="standard">ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_32_W6M0">
-                <FORM kindOf="original">ga,</FORM>
+                <FORM kindOf="original">ga</FORM>
                 <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
+                <FORM kindOf="standard">ga</FORM>
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
@@ -2175,32 +2184,32 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_32_W14">
-            <FORM kindOf="original">i,</FORM>
+            <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
-            <FORM kindOf="standard">i,</FORM>
+            <FORM kindOf="standard">i</FORM>
             <PHON kindOf="standard">i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_32_W14M0">
-                <FORM kindOf="original">i,</FORM>
+                <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
-                <FORM kindOf="standard">i,</FORM>
+                <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_32_W15">
-            <FORM kindOf="original">i,</FORM>
+            <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
-            <FORM kindOf="standard">i,</FORM>
+            <FORM kindOf="standard">i</FORM>
             <PHON kindOf="standard">i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_32_W15M0">
-                <FORM kindOf="original">i,</FORM>
+                <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
-                <FORM kindOf="standard">i,</FORM>
+                <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
@@ -2247,16 +2256,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_32_W18">
-            <FORM kindOf="original">ru,</FORM>
+            <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
-            <FORM kindOf="standard">ru,</FORM>
+            <FORM kindOf="standard">ru</FORM>
             <PHON kindOf="standard">ru</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_32_W18M0">
-                <FORM kindOf="original">ru,</FORM>
+                <FORM kindOf="original">ru</FORM>
                 <PHON kindOf="original">ru</PHON>
-                <FORM kindOf="standard">ru,</FORM>
+                <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">ru</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
@@ -2303,16 +2312,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_32_W21">
-            <FORM kindOf="original">ru,</FORM>
+            <FORM kindOf="original">ru</FORM>
             <PHON kindOf="original">ru</PHON>
-            <FORM kindOf="standard">ru,</FORM>
+            <FORM kindOf="standard">ru</FORM>
             <PHON kindOf="standard">ru</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_32_W21M0">
-                <FORM kindOf="original">ru,</FORM>
+                <FORM kindOf="original">ru</FORM>
                 <PHON kindOf="original">ru</PHON>
-                <FORM kindOf="standard">ru,</FORM>
+                <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">ru</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
@@ -2383,32 +2392,32 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_32_W25">
-            <FORM kindOf="original">ga,</FORM>
+            <FORM kindOf="original">ga</FORM>
             <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
+            <FORM kindOf="standard">ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TOP,</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_32_W25M0">
-                <FORM kindOf="original">ga,</FORM>
+                <FORM kindOf="original">ga</FORM>
                 <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
+                <FORM kindOf="standard">ga</FORM>
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TOP,</TRANSL>
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_32_W26">
-            <FORM kindOf="original">luma,</FORM>
+            <FORM kindOf="original">luma</FORM>
             <PHON kindOf="original">luma</PHON>
-            <FORM kindOf="standard">luma,</FORM>
+            <FORM kindOf="standard">luma</FORM>
             <PHON kindOf="standard">luma</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_32_W26M0">
-                <FORM kindOf="original">luma,</FORM>
+                <FORM kindOf="original">luma</FORM>
                 <PHON kindOf="original">luma</PHON>
-                <FORM kindOf="standard">luma,</FORM>
+                <FORM kindOf="standard">luma</FORM>
                 <PHON kindOf="standard">luma</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
@@ -2519,16 +2528,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_32_W33">
-            <FORM kindOf="original">ga,</FORM>
+            <FORM kindOf="original">ga</FORM>
             <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
+            <FORM kindOf="standard">ga</FORM>
             <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_32_W33M0">
-                <FORM kindOf="original">ga,</FORM>
+                <FORM kindOf="original">ga</FORM>
                 <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
+                <FORM kindOf="standard">ga</FORM>
                 <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
@@ -2591,16 +2600,16 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_32_W37">
-            <FORM kindOf="original">la.</FORM>
+            <FORM kindOf="original">la</FORM>
             <PHON kindOf="original">la</PHON>
-            <FORM kindOf="standard">la.</FORM>
+            <FORM kindOf="standard">la</FORM>
             <PHON kindOf="standard">la</PHON>
             <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_32_W37M0">
-                <FORM kindOf="original">la.</FORM>
+                <FORM kindOf="original">la</FORM>
                 <PHON kindOf="original">la</PHON>
-                <FORM kindOf="standard">la.</FORM>
+                <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
@@ -2632,32 +2641,32 @@
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_42_W1">
-            <FORM kindOf="original">la.</FORM>
+            <FORM kindOf="original">la</FORM>
             <PHON kindOf="original">la</PHON>
-            <FORM kindOf="standard">la.</FORM>
+            <FORM kindOf="standard">la</FORM>
             <PHON kindOf="standard">la</PHON>
             <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_42_W1M0">
-                <FORM kindOf="original">la.</FORM>
+                <FORM kindOf="original">la</FORM>
                 <PHON kindOf="original">la</PHON>
-                <FORM kindOf="standard">la.</FORM>
+                <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
         <W id="AtaNr-dailylife2_Iwan_S_42_W2">
-            <FORM kindOf="original">ho.</FORM>
+            <FORM kindOf="original">ho</FORM>
             <PHON kindOf="original">ħo</PHON>
-            <FORM kindOf="standard">ho.</FORM>
+            <FORM kindOf="standard">ho</FORM>
             <PHON kindOf="standard">ħo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             <M id="AtaNr-dailylife2_Iwan_S_42_W2M0">
-                <FORM kindOf="original">ho.</FORM>
+                <FORM kindOf="original">ho</FORM>
                 <PHON kindOf="original">ħo</PHON>
-                <FORM kindOf="standard">ho.</FORM>
+                <FORM kindOf="standard">ho</FORM>
                 <PHON kindOf="standard">ħo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
