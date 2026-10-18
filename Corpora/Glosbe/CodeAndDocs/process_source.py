@@ -20,6 +20,10 @@ with (HERE / "source_labels.csv").open(encoding="utf-8", newline="") as stream:
     LABELS = {row["record"]: row for row in csv.DictReader(stream)}
 with (HERE / "source_notes.csv").open(encoding="utf-8", newline="") as stream:
     NOTES = {row["record"]: row for row in csv.DictReader(stream)}
+with (HERE / "highlight_space_keep.csv").open(encoding="utf-8", newline="") as stream:
+    HIGHLIGHT_KEEP = defaultdict(list)
+    for row in csv.DictReader(stream):
+        HIGHLIGHT_KEEP[row["record"]].append(row["text"])
 
 
 def text_key(text):
@@ -44,8 +48,41 @@ def source_text(record, field):
     return " ".join(text.split())
 
 
+def strip_highlight_spaces(text, keep=()):
+    """Remove the spaces Glosbe's search-word highlighting left in a scrape.
+
+    Joseph Lin's witness was scraped from Glosbe result pages, which pad the
+    searched word with spaces (`i ,` on the page for "i", `" o wacay` on the
+    page for "o"). Collapsed whitespace hides the padding between words; what
+    remains is a space before , ; : ! ? or a lone period, inside parentheses,
+    or just inside a double quotation (maintainer, 2026-10-18: "Fix the whole
+    highlight-space class (426 S) before merge" and "No space after \"").
+    A spaced ellipsis ". . ." is the source's own spelling and is not touched.
+    Single quotes are left alone: ' is also the Amis glottal letter.
+    `keep` lists exact source snippets whose space is not this PR's artifact
+    (highlight_space_keep.csv): main published it, or the English-paired
+    capture prints it too. Changing those is a separate, unruled question.
+    """
+    for snippet in keep:
+        if text.count(snippet) != 1:
+            raise ValueError(f"Kept highlight snippet not found once: {snippet!r}")
+        text = text.replace(snippet, snippet.replace(" ", "\0"))
+    text = re.sub(r"(?<!\. \.)\s+([,;:!?])", r"\1", text)
+    text = re.sub(r"(?<![.\s])\s+\.(?!\s*\.)", ".", text)
+    text = re.sub(r"\(\s+", "(", text)
+    text = re.sub(r"\s+\)", ")", text)
+    if text.count('"') % 2 == 0:
+        parts = text.split('"')
+        for i in range(1, len(parts), 2):  # the text inside each quotation
+            parts[i] = parts[i].strip()
+        text = '"'.join(parts)
+    return text.replace("\0", " ")
+
+
 def content_fields(record):
     source, target = (source_text(record, field) for field in ("source", "target"))
+    if record["kind"] == "reviewed_chinese":
+        source = strip_highlight_spaces(source, HIGHLIGHT_KEEP.get(record["record"], ()))
     # The English JW fragments repeat article/page/outline labels in both
     # columns. These are locators, not spoken numerals. The frozen input
     # retains them; years, dates, unpaired numbers and Chinese stay intact.
