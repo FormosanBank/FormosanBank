@@ -27,6 +27,7 @@ def readings(parent):
     (11, 88, 5, 4, ["tia=ma-ʔanivi-ni", "tia=ma-ʔanivi-ini"], ["ni", "ini"], "3.GEN"),  # p93
     (11, 102, 4, 1, ["va=ʔai", "ava=ʔai"], ["va", "ava"], "in.fact"),  # p95
     (40, 9, 1, 1, ["aan=ci", "haan=ci"], ["aan", "haan"], "Where.gone"),  # p231
+    (9, 42, 3, 2, ["mu-usa", "mu-kusa"], ["usa", "kusa"], "AV.go-toward"),  # p65; maintainer 2026-10-18
     (9, 31, 3, 1, ["ha", "sua"], ["ha", "sua"], "NOM"),  # p64; Tsuchida 2003, p6
     (31, 13, 6, 1, ["ha", "sua"], ["ha", "sua"], "NOM"),  # p189; same marker
 ])
