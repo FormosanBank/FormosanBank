@@ -776,6 +776,60 @@ def test_g018_latin_only_glosses_on_a_chinese_tier_are_one_finding():
     assert _run(gloss_scrape.g018_latin_gloss_on_chinese_tier, clean) == []
 
 
+# --------------------------------------------------------------------------
+# Inline <UNCLEAR/> in a gloss (approved shared-tool fix, 2026-10-18): the
+# whole gloss is read and each <UNCLEAR/> is one gloss unit. Before the fix
+# '.text' stopped at the element, so 'if-main-<UNCLEAR/>-outsider-nom' read
+# as 'if-main-' (G001 HARD + G002) on HundredPaiwanStories.
+# --------------------------------------------------------------------------
+
+UNCLEAR_XML = """<TEXT><S id="s">
+  <TRANSL xml:lang="eng">He went <UNCLEAR/> (Wu 1995, p. 34)</TRANSL>
+  <W id="w1">
+    <FORM kindOf="original">ka-ki-tja-djalan-an</FORM>
+    <TRANSL kindOf="original" xml:lang="eng">if-main-<UNCLEAR/>-outsider-nom</TRANSL>
+    <M id="m1"><FORM kindOf="original">ka</FORM><TRANSL xml:lang="eng">if</TRANSL></M>
+    <M id="m2"><FORM kindOf="original">ki</FORM><TRANSL xml:lang="eng">main</TRANSL></M>
+    <M id="m3"><FORM kindOf="original">tja</FORM><TRANSL xml:lang="eng"><UNCLEAR/></TRANSL></M>
+    <M id="m4"><FORM kindOf="original">djalan</FORM><TRANSL xml:lang="eng">outsider</TRANSL></M>
+    <M id="m5"><FORM kindOf="original">an</FORM><TRANSL xml:lang="eng">nom</TRANSL></M>
+  </W>
+  <W id="w2">
+    <FORM kindOf="original">ka-un</FORM>
+    <TRANSL kindOf="original" xml:lang="eng"><UNCLEAR/></TRANSL>
+    <M id="m6"><FORM kindOf="original">ka</FORM><TRANSL xml:lang="eng">x</TRANSL></M>
+    <M id="m7"><FORM kindOf="original">un</FORM><TRANSL xml:lang="eng">y</TRANSL></M>
+  </W>
+</S></TEXT>"""
+
+
+def test_transl_text_reads_whole_gloss_with_unclear_as_one_unit():
+    w1, w2 = _tree(UNCLEAR_XML).getroot().iter("W")
+    assert gloss_scrape._transl_text(w1) == "if-main-?-outsider-nom"
+    assert gloss_scrape._gloss_units(gloss_scrape._transl_text(w1)) == 5
+    assert gloss_scrape._transl_text(w2) == "?"
+    assert gloss_scrape._gloss_units(gloss_scrape._transl_text(w2)) == 1
+
+
+def test_g001_g002_silent_on_inline_unclear_that_fills_a_slot():
+    for rule in (gloss_scrape.g001_marker_skeleton_parity,
+                 gloss_scrape.g002_M_count_matches_gloss_units):
+        assert "S=s W=w1" not in [f.location for f in _run(rule, UNCLEAR_XML)]
+
+
+def test_g001_g002_still_compare_a_whole_unclear_gloss():
+    """A gloss that is only <UNCLEAR/> is one unit, as the source's '?' was:
+    against a two-morpheme form it is still reported, not skipped as empty."""
+    for rule in (gloss_scrape.g001_marker_skeleton_parity,
+                 gloss_scrape.g002_M_count_matches_gloss_units):
+        assert "S=s W=w2" in [f.location for f in _run(rule, UNCLEAR_XML)]
+
+
+def test_g012_reads_text_after_inline_unclear():
+    findings = _run(gloss_scrape.g012_trailing_paren_note_in_TRANSL, UNCLEAR_XML)
+    assert [f.location for f in findings] == ["S=s"]
+
+
 def test_g017_reads_german_and_french_runs_too():
     sentences = [
         _glossed([("maolah", "like"), ("kako", "1SG")], sid="s1"),

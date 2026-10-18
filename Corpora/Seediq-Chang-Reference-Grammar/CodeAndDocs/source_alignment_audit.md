@@ -35,7 +35,7 @@ The private scans are optional verification inputs. The reviewed `source_invento
 - Oliver Sun's ten hand-transcribed forms are retained.
 - The R012 parenthetical `用狗` reading is an alternate translation, not a FORM expansion.
 - Cross-page examples and the three explicit shared/cross-reference translations carry review notes in the inventory.
-- A gloss printed under two words makes them one W (POL-060); a word the source leaves unglossed has the gloss `?` (POL-061). No lexical gloss was invented.
+- A gloss printed under two words makes them one W (POL-060); a word the source leaves unglossed has the gloss `<UNCLEAR/>` (POL-061 `?`, published as `<UNCLEAR/>` per the 2026-10-17 ruling). No lexical gloss was invented.
 
 ## Result
 
