@@ -30,8 +30,13 @@ None.
 
 Three examples have word glosses but no free translation. Some source glosses
 do not align to individual written morphemes; retain the word gloss without
-inventing finer analysis. The joint gloss for `niya na` is recorded in FORM
-notes. The author's inconsistent infix and clitic gloss notation is preserved.
+inventing finer analysis. The author's inconsistent infix and clitic gloss
+notation is preserved.
+
+`CodeAndDocs/apply_gloss_rulings.py` applies the maintainer's 2026-10-18 gloss
+rulings to the build; each step quotes the ruling it implements. `niya na`,
+which the thesis glosses jointly as `尚未` (C03_E037A_0206_01, C03_E039C), is
+one W with one M (POL-060); the FORM notes recording the joint gloss are kept.
 
 Lexical and derivation tables remain source evidence outside the published
 sentence/interlinear-example scope. Original PHON follows the source's
@@ -51,8 +56,9 @@ For private development, set `FORMOSANBANK_ROOT` to the current shared
 checkout and run `CodeAndDocs/generate_xml.sh`. `QC_OUTPUT_DIR` optionally
 selects an external report directory. The build uses committed examples and
 manual records, requires no PDF or private clone, and starts in fresh staging.
-It builds original tiers, applies recorded edits, cleans, standardizes,
-replays the reviewed merges and generates phonology before replacing `XML/`.
+It builds original tiers, applies recorded edits and the gloss rulings
+(`apply_gloss_rulings.py`), cleans, standardizes, replays the reviewed merges
+and generates phonology before replacing `XML/`.
 Validators and private PDF extraction are separate from the build.
 [provenance.json](CodeAndDocs/provenance.json) records the actual shared build
 commit; it never selects or requires an older tool checkout.
