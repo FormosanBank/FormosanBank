@@ -488,13 +488,16 @@ def render_corpus_page(
     site_pages: dict[PurePosixPath, PurePosixPath],
 ) -> str:
     """The published page for one corpus: its README, with statistics inserted."""
-    readme_path = repository_root / "Corpora" / page.corpus / "README.md"
-    if not readme_path.is_file():
-        raise FileNotFoundError(f"{page.corpus} has no README.md at {readme_path}")
-    text = readme_path.read_text(encoding="utf-8")
+    corpus_dir = repository_root / "Corpora" / page.corpus
+    # Matched by listing, not by opening "README.md": the container's file
+    # system is case-insensitive and Linux CI is not.
+    names = [p.name for p in corpus_dir.iterdir() if p.name.casefold() == "readme.md"]
+    if len(names) != 1:
+        raise FileNotFoundError(f"{page.corpus}: expected one README.md, found {names}")
+    text = (corpus_dir / names[0]).read_text(encoding="utf-8")
     text = rewrite_repo_links(
         text,
-        repo_path=PurePosixPath("Corpora") / page.corpus / "README.md",
+        repo_path=PurePosixPath("Corpora") / page.corpus / names[0],
         page_source=page.source_path,
         site_pages=site_pages,
         repository_root=repository_root,
@@ -587,7 +590,8 @@ def copy_static_assets(static_root: Path, output_dir: Path) -> None:
 
 def assemble_english_sources(repository_root: Path, staging: Path) -> None:
     """Write the generated English pages into the staging source tree."""
-    import site_stats  # local module in docs/tools
+    import language_pages  # local modules in docs/tools
+    import site_stats
 
     pages = load_corpus_pages(repository_root)
     site_pages = {
@@ -611,13 +615,20 @@ def assemble_english_sources(repository_root: Path, staging: Path) -> None:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(render_included_doc(repository_root, doc, site_pages), encoding="utf-8")
 
+    history = language_pages.load_history(repository_root / "statistics" / "language_history.csv")
+    languages = language_pages.write_language_pages(staging, stats, history, pages)
+    figures = language_pages.write_main_figures(staging / CORPORA_PAGE_DIR / "figures", history)
+
     summary_path = staging / "SUMMARY.md"
-    summary_path.write_text(
-        corpora_nav(summary_path.read_text(encoding="utf-8"), pages), encoding="utf-8"
-    )
+    summary = corpora_nav(summary_path.read_text(encoding="utf-8"), pages)
+    summary_path.write_text(language_pages.languages_nav(summary, languages), encoding="utf-8")
     index_path = staging / CORPORA_PAGE_DIR / "README.md"
     index_path.write_text(
-        site_stats.fill_corpora_index(index_path.read_text(encoding="utf-8"), stats, pages),
+        site_stats.fill_corpora_index(
+            index_path.read_text(encoding="utf-8"), stats, pages,
+            link=lambda name: f"../../{language_pages.LANGUAGES_DIR}/{language_pages.language_slug(name)}.md",
+            figures=figures,
+        ),
         encoding="utf-8",
     )
 
@@ -689,6 +700,13 @@ def prepare_edition(
     asset_dir = staging / ".gitbook" / "assets"
     if asset_dir.is_dir():
         shutil.copytree(asset_dir, output_dir / "assets" / "images", dirs_exist_ok=True)
+    # Other non-Markdown files (generated figures) keep their paths.
+    for path in sorted(staging.rglob("*")):
+        relative = path.relative_to(staging)
+        if path.is_file() and path.suffix != ".md" and relative.parts[0] != ".gitbook":
+            target = output_dir / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(path, target)
     copy_static_assets(repository_root / "docs" / "theme" / "static", output_dir)
     return mapping
 

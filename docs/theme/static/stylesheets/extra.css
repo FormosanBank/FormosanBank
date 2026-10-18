@@ -362,3 +362,15 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Two growth figures side by side on the corpora page (stacked on phones). */
+.fb-figure-pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+.fb-figure-pair img {
+  width: 100%;
+  height: auto;
+}
