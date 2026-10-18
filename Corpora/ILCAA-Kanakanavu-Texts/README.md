@@ -3,10 +3,10 @@
 Asai, Mei, Li and Tsuchida (2026), *Kanakanavu texts*, edited by Paul Jen-kuei
 Li and published by ILCAA, Tokyo University of Foreign Studies.
 
-**Status:** regenerated on 2026-10-18 by `CodeAndDocs/generate_xml.sh` (48 Kanakanavu
-files and one Saaroa file, 1,573 S); not yet signed off. Open: the final review
-of the SOFT findings. Passing the source comparison or regression tests
-does not establish readiness.
+**Status:** built on 2026-10-18 by `CodeAndDocs/generate_xml.sh` (48 Kanakanavu
+files and one Saaroa file, 1,573 S). The maintainer reviewed the QC findings and
+the open notation questions that day; the rulings are in
+[source decisions](CodeAndDocs/source-decisions.md).
 
 [Basecamp card](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/10012922283),
 [corpus PR #155](https://github.com/FormosanBank/FormosanBank/pull/155),
@@ -36,8 +36,7 @@ from ordinary pronouns; all four forms keep separate records. These counts are
 not a whole-book coverage verdict.
 The source parser repairs a misplaced interjection gloss in Naparamaci example
 68, omits empty gloss padding, restores the aligned W/M tiers of introduction
-examples 23a-d and separates eight stacked infix pairs. Final XML awaits the
-shared build below.
+examples 23a-d and separates eight stacked infix pairs.
 
 Source W/M glosses and free translations remain separate. Source narrative
 repetitions, publisher corrections, Japanese name characters, and meaningful
@@ -81,8 +80,6 @@ The comparison checks extracted text, source sidecars and the selected XML,
 including W/M FORM variants and supplemental forms, meanings and context. Source-only
 output has no derived tiers, so the report still fails its completeness checks.
 It never certifies a visual review.
-Use the installed gloss audit, corpus audit
-and current QC workflow after the outstanding source and tool work is resolved.
 
 ## Rights
 
@@ -120,6 +117,18 @@ None supplied with this source.
   separate from the narrative profile.
   The village-labelled phonetic comparison remains open in the ledger.
   Supplemental records preserve printed readings; only three analyzed prose
-  examples supply W/M tiers. They remain source-stage output pending the full build.
+  examples supply W/M tiers.
+- The printed capital glottal stop `Ɂ` (four narratives) is written `ʔ` in the original
+  tier from the start and is then the ordinary `ʔ`. Capitalization is not phonemic, so
+  shared PHON lower-cases names.
+- The standard tier merges `ə` and the rarer native `e` into `e`, and `l` and `r` into `r`,
+  as Ortho113 does. The original tier keeps both distinctions.
+- Infix angle brackets stay in the original sentence FORM and are dropped from the standard
+  sentence FORM; W and M forms keep their segmentation marks. Hyphens are removed from the
+  standard FORM of the lexical records, too.
+- In examples 23a-d the clause brackets are written as parentheses in the original sentence
+  FORM (shared cleaning) and are absent from the standard FORM and from every W and M.
+- Naparamaci example 68 prints one gloss under two words, so `əhə kai` is one W and one M.
+- One English translation prints an em dash that shared cleaning writes as a hyphen.
 - The earlier ten-page expert review and historical samples cover those records
   only. They do not establish a current visual review of every page or reading.
