@@ -21,7 +21,6 @@ Siraya_Gospels rights
 Siraya_Gospels notes
 Song-Kanakanavu-Grammar notes
 UtrechtManuscriptWordList notes
-Virginia_Fey_Dictionary notes
 WakelinTexts notes
 Whitehorn_Collection rights
 Whitehorn_Collection notes
