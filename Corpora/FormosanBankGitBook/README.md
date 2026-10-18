@@ -31,6 +31,9 @@ Joshua supplied the citation on 2025-02-25:
 
 > Ruan, X. (2025). Paiwan translation of FormosanBank manual.
 
+That citation was replaced on 2026-10-18 by one that lists every contributor
+and carries a version (see "How to cite").
+
 The source is a nine-page trilingual PDF rather than the GitBook pages it
 mirrors, because only the PDF aligns Paiwan, Mandarin and English record by
 record. Its Mandarin is a distinct translation, segmented to parallel the
@@ -79,7 +82,26 @@ page on the [FormosanBank site](https://formosanbank.github.io/FormosanBank/).
 If you use this corpus, or anything derived from it, in a publication, cite both
 FormosanBank and:
 
-* Ruan, X. (2025). Paiwan translation of FormosanBank manual.
+* Ruan, X. (2025). Translations of the FormosanBank documentation v1.
+
+BibTeX:
+
+```
+@misc{formosanbank_doc_translations, author={Ruan, Xuan}, title={Translations of the FormosanBank documentation v1}, year={2025}}
+```
+
+The citation lists every contributor in alphabetical order and carries a
+version, so it changes over time as translations collected on the documentation
+site are added (maintainer, 2026-10-18: "it should list all contributors in
+alphabetical order. Title is just 'Translations of the FormosanBank
+documentation vX' going forward. For now, Xuan Ruan is the only author and it
+is v1. BibTex will need to be updated as well. This does mean the citation
+changes over time, but that's OK."). The build computes it
+(`CodeAndDocs/citation.py`) from `CodeAndDocs/contributors.tsv` and the
+translation store, and writes it into every file's `citation` and
+`BibTeX_citation`; the version is 1 plus the number of dates on which approved
+translations were added. Until 2026-10-18 the citation was
+"Ruan, X. (2025). Paiwan translation of FormosanBank manual."
 
 ## License
 
@@ -104,6 +126,24 @@ also apply, including the commercial AI restriction. Historical licensing text
 inside the translated manual does not replace the corpus rights statement.
 
 ## Notes and caveats
+
+#### Translations collected on the documentation site
+
+Translators can now translate the documentation on the site's translation
+pages (Paiwan, Amis and Bunun, plus Mandarin for the site itself). Approved
+Formosan translations become files of this corpus under
+`XML/<Language>/doc_translations/`, one per translator, dialect and date of
+import, with the English sentence and, when one is approved, the Mandarin
+translation of the same English sentence attached. Older translations are never
+removed: when the documentation changes, translations of the old wording stay
+as data. Some attached Mandarin translations began as machine translation and
+were approved by a person; the table counts them per file.
+
+<!-- SITE TRANSLATION COUNTS START (written by CodeAndDocs/build_translations.py) -->
+No translations collected through the site's translation pages yet. When there are, each file is listed here with its sentence count and how many of its attached Mandarin translations began as machine translation and were then approved by a person.
+<!-- SITE TRANSLATION COUNTS END -->
+
+#### Notes on the 2025 translation
 
 These translations preserve historical manual text. Use current
 [POLICIES.md](../../POLICIES.md) and the committed English GitBook documentation
@@ -233,7 +273,8 @@ failure (`set -euo pipefail`). It takes the FormosanBank root from
 interpreter from `PYTHON` (default `python3`). It first checks that
 `QC/cleaning/clean_xml.py` exists under that root.
 
-1. **`CodeAndDocs/process_raw.py`** (no flags; defaults `--source-dir
+1. **`CodeAndDocs/process_raw.py`** (also computes the citation and BibTeX
+   with `CodeAndDocs/citation.py`; see "How to cite") (no flags; defaults `--source-dir
    CodeAndDocs/raw_data/Paiwan`, `--output XML/Paiwan`). Reads the section list
    from `CodeAndDocs/source_sections.tsv` and requires exactly one ledger
    `<section>.txt` per listed section in `raw_data/Paiwan/` (any missing or extra
@@ -252,6 +293,14 @@ interpreter from `PYTHON` (default `python3`). It first checks that
    `TRANSL xml:lang="eng"` (the English line). No W, M, PHON, standard FORM or
    AUDIO is written at this step. The `source_url` and `sha256` columns of
    `source_sections.tsv` are not used here (`source_audit.py` checks the hashes).
+1b. **`CodeAndDocs/build_translations.py`** (no flags). Reads the approved rows
+   of FormosanBank's `docs/translations/pwn.tsv`, `ami.tsv` and `bnn.tsv` and
+   writes one TEXT per translator, dialect and import date under
+   `XML/<Language>/doc_translations/` (original FORM = the translation;
+   TRANSL eng = the English sentence; TRANSL zho = the approved Mandarin of the
+   same English sentence from `zho.tsv`, if any), then rewrites the counts table
+   under "Notes and caveats". With no approved rows it writes no XML. A
+   translator missing from `CodeAndDocs/contributors.tsv` stops the build.
 2. **`QC/cleaning/clean_xml.py --corpora_path XML --warnings_dir CodeAndDocs`**
    (shared). Edits the XML in place: replaces non-breaking spaces; in FORM text
    strips zero-width characters, decodes leftover HTML entities, maps caret-like
