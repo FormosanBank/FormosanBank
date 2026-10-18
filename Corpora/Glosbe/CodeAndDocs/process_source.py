@@ -550,25 +550,31 @@ def group_sentences(root, english):
     return len(folded)
 
 
-def drop_enumerators(sentences):
-    """List enumerators deleted outright, not kept as notes (drop_enumerators.csv)."""
-    dropped = 0
-    with (HERE / "drop_enumerators.csv").open(encoding="utf-8", newline="") as stream:
-        for row in csv.DictReader(stream):  # list enumerators deleted, not kept as notes
-            sentence = sentences[row["sid"]]
-            element = (sentence.find("FORM[@kindOf='original']") if row["element"] == "FORM" else
-                       next(t for t in sentence.findall("TRANSL") if t.get(XML_LANG) == "eng"))
-            notes = element.get("notes", "").split(" | ")
-            for piece in row["pieces"].split(" | "):
-                if piece not in notes:
-                    raise ValueError(f"Enumerator {piece} not in notes of {row['sid']}")
-                notes.remove(piece)
-                dropped += 1
-            if notes:
-                element.set("notes", " | ".join(notes))
+# Maintainer, 2026-10-18: "Delete the enumerators entirely."; asked about every
+# enumerator-only note part: "Delete all 212".
+ENUMERATOR = re.compile(r"\((?:[A-Za-z]|\d{1,2})\)|[A-Za-z]\.")
+
+
+def drop_enumerators():
+    """Delete note parts that are only a list enumerator ("(3)", "(b)", "b.")
+    in every Glosbe XML file; other note content stays."""
+    counts = {}
+    for path in sorted((HERE.parent / "XML").rglob("*.xml")):
+        tree, dropped = etree.parse(str(path)), 0
+        for element in tree.getroot().iter("FORM", "TRANSL"):
+            if not element.get("notes"):
+                continue
+            parts = element.get("notes").split(" | ")
+            kept = [part for part in parts if not ENUMERATOR.fullmatch(part)]
+            dropped += len(parts) - len(kept)
+            if kept:
+                element.set("notes", " | ".join(kept))
             else:
                 del element.attrib["notes"]
-    return dropped
+        counts[path.name] = dropped
+        if dropped:
+            tree.write(str(path), encoding="utf-8", xml_declaration=True, pretty_print=True)
+    return counts
 
 
 def merge_translation_files(bank, write_ledger=False):
@@ -645,7 +651,6 @@ def merge_translation_files(bank, write_ledger=False):
             have.add(key)
         joined += 1
     grouped = group_sentences(root, english)
-    dropped = drop_enumerators(english)
     zho_source = zho_root.get("source")
     root.set("source", f"{root.get('source')} Chinese translations: {zho_source}")
     root.set("id", AMIS_TMEM_ID)
@@ -654,6 +659,7 @@ def merge_translation_files(bank, write_ledger=False):
     english_tree.write(str(AMIS_TMEM), encoding="utf-8", xml_declaration=True, pretty_print=True)
     ENG_TMEM.unlink()
     ZHO_TMEM.unlink()
+    dropped = drop_enumerators()
     final = {s.get("id") for f in (HERE.parent / "XML").rglob("*.xml") for s in etree.parse(f).findall("S")}
     with (HERE / "withdrawn_ids.csv").open(encoding="utf-8", newline="") as stream:
         for row in csv.DictReader(stream):
@@ -661,7 +667,7 @@ def merge_translation_files(bank, write_ledger=False):
                 continue
             if row["withdrawn_id"] in final or row["kept_id"] not in final:
                 raise ValueError(f"withdrawn_ids.csv does not describe the output: {row['withdrawn_id']}")
-    print(f"Folded {grouped} S into another S (grouped_sentences.csv); deleted {dropped} list enumerators")
+    print(f"Folded {grouped} S into another S (grouped_sentences.csv); deleted list enumerators in notes: {dropped}")
     kinds = defaultdict(int)
     for _, kind, _ in plan.values():
         kinds[kind] += 1
