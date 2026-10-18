@@ -52,9 +52,10 @@ four form units but only three gloss units (`al=te-talem-i` against
 
 Morpheme `078S4W19M0c` is therefore published with **no `TRANSL` element at
 all**. An absent gloss is the honest record of an absent source gloss. It is
-deliberately not filled with a `?`: this source writes `?` itself, as a real
-gloss, for morphemes its authors could not identify — 337 times — so a `?`
-supplied by FormosanBank would be indistinguishable from the authors' own. The
+deliberately not filled with a placeholder: this source writes `?` itself for
+morphemes its authors could not identify (published as `<UNCLEAR/>`, see the
+next section), so a marker supplied by FormosanBank would be indistinguishable
+from the authors' own. The
 `notes` attribute on the word's `TRANSL` records that the gap is intentional.
 
 Three validator findings follow directly from that decision, and are accepted:
@@ -70,6 +71,27 @@ alternative — inventing a gloss — is worse. The build does not simply ignore
 hard findings: `review_qc_findings.py` pins all three to this exact word and
 morpheme and fails if a fourth appears, if one moves, or if any other morpheme
 in the corpus loses its gloss.
+
+#### The source's `?` gloss is published as `<UNCLEAR/>`
+
+Where the analyst could not identify a morpheme, the source glosses it with a
+bare `?` (for example `001S7`, morpheme `ta`). FormosanBank has an element for
+exactly that, so a word or morpheme gloss whose whole text is `?`, `??` or
+`???` is published as `<UNCLEAR/>`, with the `TRANSL`'s attributes unchanged:
+
+```xml
+<!-- before -->  <TRANSL xml:lang="eng" kindOf="original">?</TRANSL>
+<!-- after  -->  <TRANSL xml:lang="eng" kindOf="original"><UNCLEAR/></TRANSL>
+```
+
+This applies to 356 glosses: 338 morpheme glosses and 18 word glosses. A `?`
+that is one piece of a longer word gloss is converted too, in the 291 word
+glosses listed in `CodeAndDocs/unclear_gloss_placeholders.tsv` (104 distinct
+glosses): `?-what` becomes `<UNCLEAR/>-what`. A `?` next to an infix marker
+(24 word glosses, e.g. `?<af>-complete`) or attached to a word (4 glosses,
+e.g. `decide?`) is kept as written. Sentence translations are not changed; two
+of them contain a `?` standing for an untranslated word (`Well if you had ?, …`).
+No `FORM` is `<UNCLEAR/>`.
 
 #### What the rebuild needs besides the source
 
@@ -167,7 +189,7 @@ The source does not identify a supported dialect for texts `090`, `091`, `097`, 
 
 R. J. Early granted FormosanBank permission to publish these texts and supplied the source document. We are grateful for that permission, without which the corpus could not be distributed.
 
-On that basis the corpus is published under **CC BY-NC**: attributed non-commercial use and redistribution are permitted, and commercial use requires prior written permission. Every `TEXT` element records `copyright="CC BY-NC"`. The corpus is also subject to FormosanBank's central license and AI-use terms.
+On that basis the corpus is published under **CC BY-NC 4.0**: attributed non-commercial use and redistribution are permitted, and commercial use requires prior written permission. Every `TEXT` element records `copyright="CC BY-NC 4.0"`. The corpus is also subject to FormosanBank's central license and AI-use terms.
 
 Users are encouraged to consult the published source. A PDF is available from the [Australian National University repository](https://openresearch-repository.anu.edu.au/server/api/core/bitstreams/5f377c02-9051-40b3-b839-7108229b3f84/content), which also provides the grammatical and cultural context for the texts.
 

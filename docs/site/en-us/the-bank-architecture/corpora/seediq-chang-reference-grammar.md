@@ -38,7 +38,7 @@ This corpus is the Seediq (`trv`) material from Chang Yung-li's 張永利 2000 *
 * **One printed example can be several sentences.** Where the book prints optional material in parentheses or alternatives with a slash, each grammatical reading is its own sentence (ids `R275`, `R275-opt`, …), and its translation is adjusted where the printed one covers more than one reading. A reading identical to an earlier example is published once.
 * **One word per printed gloss.** Where the book prints one gloss under two words (e.g. `ani naq` 雖然, `kiya ka` 所以), the two are a single word element. A pronoun printed inside such a pair (`ani-ku naq`) is written as an infix, `ani<ku>naq` 雖然<我>.
 * **Infixes.** At the word tier, an infixed word is written with angle brackets, e.g. `b<n>eebu` glossed `打<完成貌>`. Sentences keep the book's hyphens (`b-n-eebu`). Where the book glosses each hyphen piece in a row (`m-un-ekan` AF-完成貌-吃), the morphemes follow the book.
-* **Unglossed words.** A word the book leaves unglossed is glossed `?`, e.g. the question particle `yee`.
+* **Unglossed words.** A word the book leaves unglossed has the gloss `<UNCLEAR/>`, e.g. the question particle `yee`, `lux` in `h-um-uwa-su lux`, sentence-initial `soka` (17 glosses: 8 words, 9 morphemes). In one gloss only part is unknown: `yee-su` is glossed `<UNCLEAR/>-你`. No sentence or word form, and no sentence translation, is `<UNCLEAR/>`.
 * **Where the published text corrects the book.** Everywhere else the original tier follows the printed page. These are the only places where the data departs from the print, and each carries a `notes` attribute:
 
 | Book (printed page, example) | Book prints | Published | Why |
