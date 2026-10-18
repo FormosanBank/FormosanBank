@@ -80,7 +80,7 @@ def test_marker_evidence_does_not_resolve_the_paired_demonstrative_reading():
 @pytest.mark.parametrize("number,words,glosses,analyzed_morphs", [
     (24, ["naini", "sua", "k<um>a-kaən", "uuru"], ["who", "NOM", "RED<AV>-eat", "cooked.rice"], [("k-a", "RED"), ("-um-", "<AV>"), ("kaən", "eat")]),
     (25, ["naini", "sua", "kaən-a"], ["what", "NOM", "eat-NMLZ.UV"], [("kaən", "eat"), ("a", "NMLZ.UV")]),
-    (26, ["naini", "sua", "si-pa-Ɂucip-in", "uuru"], ["what", "NOM", "CV-PA-cook-3.GEN", "cooked.rice"], [("si", "CV"), ("pa", "PA"), ("Ɂucip", "cook"), ("in", "3.GEN")]),
+    (26, ["naini", "sua", "si-pa-ʔucip-in", "uuru"], ["what", "NOM", "CV-PA-cook-3.GEN", "cooked.rice"], [("si", "CV"), ("pa", "PA"), ("ʔucip", "cook"), ("in", "3.GEN")]),
     (27, ["naini", "sua", "si-ara-kulacə=musu", "ia"], ["what", "NOM", "CV-get-angry=2SG.GEN", "TOP"], [("si", "CV"), ("ara", "get"), ("kulacə", "angry"), ("=musu", "2SG.GEN")]),
 ])
 def test_pseudocleft_clause_brackets_preserve_source_alignment(number, words, glosses, analyzed_morphs):
