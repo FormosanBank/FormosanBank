@@ -6,6 +6,14 @@ This corpus is subject to its source license and the central FormosanBank terms 
 
 This repository contains code and data for processing and structuring the Paiwan Stories dataset into the [FormosanBank XML format](https://app.gitbook.com/o/tZF822XPLvjWkTiqbQyF/s/VETgkt5DVZWXBIolTyjW/the-bank-architecture/xml-standardize-format). The dataset includes various Formosan dialects and is organized to assist in linguistic research and language preservation.
 
+## Rights
+
+**License:** CC BY-NC 4.0
+
+**Rights source:** Gesi Giling (阮翠芳), 2024-04-13; evidence: ask maintainer
+
+The author granted republication under CC BY-NC. The licence was recorded unversioned (`CC-BY-NC`) until 2026-10-17; POL-042 normalises an unversioned grant to 4.0.
+
 ## Project Structure
 
 - **Final_XML**: Directory containing the processed data structured into FormosanBank XML format.

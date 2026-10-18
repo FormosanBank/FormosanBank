@@ -161,7 +161,7 @@ after a run, then delete them. They are never committed.
 There is no `apply_manual_edits.py` step because there are no recorded hand
 edits (no `CodeAndDocs/manual_edits.xml`).
 
-## Known caveats
+## Notes and Issues
 
 - **Infixes are written with hyphens, not angle brackets.** The word tier
   writes `k-om-an`, `s-in-avat`, `ni-t-om-agtag`; the morpheme tier splits
@@ -186,3 +186,11 @@ edits (no `CodeAndDocs/manual_edits.xml`).
 
 Rau, D. V., & Dong, M. N. (2006). *Yami texts with reference grammar and
 dictionary.* Institute of Linguistics, Academia Sinica.
+
+## Rights
+
+**License:** CC BY-NC 4.0
+
+**Rights source:** the copyright holder (see References), date not recorded in this repository; evidence: ask maintainer
+
+The copyright holder made this corpus available CC BY-NC. The licence was recorded as `CC NC-BY` until 2026-10-17; POL-042 normalises an unversioned grant to 4.0 (maintainer approval of the normalisation sweep, 2026-10-17).

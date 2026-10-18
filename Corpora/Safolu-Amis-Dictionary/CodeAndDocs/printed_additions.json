@@ -1,0 +1,38 @@
+{
+  "description": "Examples printed in the Safolu dictionary that the pinned g0v/amis-moedict source (docs/s) lacks; the upstream editors restored them later (g0v/amis-moedict 4cb82539d). Added after the source records with new ids. Maintainer rulings 2026-10-16 (\"add the printed examples\") and 2026-10-17 (the editors' Chinese; ids S49420-S49423). Form and Chinese are the editors' text; the 'printed' field records where the book prints the example and its printed Chinese.",
+  "upstream_commit": "4cb82539d",
+  "additions": [
+    {
+      "sentence_id": "S49420",
+      "entry": "mikapkapan",
+      "definition": "給...除草了。",
+      "form": "Mikapkapan niyam ko panay.",
+      "translation": "我們把稻子除草了。",
+      "printed": "12-M-2.txt:11598 (Chinese printed: 我們給稻子除草了。)"
+    },
+    {
+      "sentence_id": "S49421",
+      "entry": "miparoay",
+      "definition": "指裝東西的人。",
+      "form": "Tatoloay ko miparoay i paliding a koli.",
+      "translation": "裝貨上車的有三個工人。",
+      "printed": "13-M-3.txt:9840 (Chinese printed: 裝車的有三個工人。)"
+    },
+    {
+      "sentence_id": "S49422",
+      "entry": "miwingawingay",
+      "definition": "正在搖動、擺動尾巴了。",
+      "form": "Miwingawingay ko waco to wikol.",
+      "translation": "狗在搖尾巴了。",
+      "printed": "14-M-4.txt:19192"
+    },
+    {
+      "sentence_id": "S49423",
+      "entry": "paro",
+      "definition": "泛指其中所容納的東西、容量、內容、內涵。",
+      "form": "Paro no omah.",
+      "translation": "田畝產量。",
+      "printed": "18-P.txt:14147"
+    }
+  ]
+}

@@ -67,7 +67,7 @@ The validator suite is a **staged pipeline** of separate executables that share 
 | 1 | `QC/validation/validate_xml.py` | `QC/validation/rules/hard.py` | XML format: schema, IDs, attributes, structural validity. |
 | 1 | `QC/validation/validate_dialect.py` | (n/a — informational) | Prints a `(xml:lang, dialect) -> count` summary. Run right after `validate_xml.py`; requires human eyeballing to confirm the distribution looks right. |
 | 2 | `QC/validation/validate_glosses.py` | `QC/validation/rules/gloss.py` | Gloss artifacts: V060–V065. SOFT rules emit warnings; HARD rules cause nonzero exit. |
-| 2 | `QC/validation/validate_punct.py` | (legacy script) | Punctuation/processing artifacts. |
+| 2 | `QC/validation/validate_text.py` | `QC/validation/rules/text.py` | Text content of `FORM`/`TRANSL`: punctuation, character set, null/segmentation markers (consolidated the retired `validate_punct.py` + `non_ascii_counts.py` in B9.4). |
 
 Gloss validation can be **run on any corpus**, including unsegmented ones — rules naturally no-op when iterating empty `W`/`M` lists. SOFT rules (V060/V061/V065) are review-not-gate: they surface candidate cleanups without blocking the build.
 
@@ -123,8 +123,8 @@ python QC/validation/validate_text.py by_path \
   --path /path/to/Final_XML
 ```
 
-`validate_text.py` (added in B9.4) consolidates the legacy
-`validate_punct.py` and `non_ascii_counts.py` scripts under one
+`validate_text.py` (added in B9.4) replaced the legacy
+`validate_punct.py` and `non_ascii_counts.py` scripts (both since deleted) with one
 Finding-framework-aware validator. It checks the *textual content* of
 `<FORM>` and `<TRANSL>`: smart quotes, imbalanced parentheses,
 repeated punctuation, consecutive dashes, multiple whitespace,
@@ -132,7 +132,7 @@ mismatched smart quotes, non-ASCII characters (excluding CJK),
 null-symbol propagation between W/M/S tiers, parens/slashes in source
 forms (SOFT review diagnostics), and `=` leftovers in the
 S-level standard tier. HARD findings exit 1; SOFT findings go to a
-CSV artifact (`--soft-csv`) for review.
+CSV artifact (`--csv`; `--soft-csv` is a deprecated alias) for review.
 
 Extract orthographic information from the standard tier:
 
@@ -303,6 +303,32 @@ Use **`crossvalidate`** for honest numbers — `evaluate` is train-on-test and o
 
 **Full documentation** (usage, retraining, interpreting output, how it works): [QC/utilities/dialect_detector/README.md](utilities/dialect_detector/README.md).
 
+## Hugging Face audio parity
+
+Published audio lives in Hugging Face datasets, and the XML's `<AUDIO file=…>`
+references are the contract. Two tools, one read-only and one that writes:
+
+```bash
+# Report drift (CI runs this; anonymous; never writes):
+python QC/validation/validate_hf_audio.py
+
+# Repair one dataset so it holds exactly the clips the XML references.
+# DRY RUN by default — prints what would be sliced/uploaded/deleted:
+python QC/utilities/sync_hf_audio.py --repo FormosanBank/<Dataset> \
+    --xml Corpora/<Corpus>/XML[/<Subdir>]
+# Against a branch without checking it out:
+python QC/utilities/sync_hf_audio.py --repo FormosanBank/<Dataset> \
+    --xml Corpora/<Corpus>/XML --from-ref origin/<branch>
+# Do it (needs HF_TOKEN with write access, and ffmpeg for the slicing):
+python QC/utilities/sync_hf_audio.py --repo … --xml … --apply
+```
+
+`sync_hf_audio.py` slices missing clips out of the whole-story recording named
+by `AUDIO/@url` with ffmpeg, uploads them and deletes the clips nothing
+references any more, in a single Hub commit; it then prints the revision SHA
+and file count to record in `audio_sources.json`. Run it after any rebuild
+that changes sentence boundaries, and re-run `validate_hf_audio.py` afterwards.
+
 ## Corpus Metrics
 
 **Shared counting rules** live in `QC/corpus_counts.py`: tokens are whitespace-separated chunks containing at least one Unicode letter or digit (digit-only chunks count; punctuation-only chunks like `?` do not); per sentence, the `standard` FORM is used if non-empty, otherwise the `original` FORM, otherwise 0; language identity comes from `xml:lang` + `dialect` attributes (`trv` + `Truku` dialect → Truku, otherwise Seediq). This module is imported by `get_corpus_stats.py`, `corpus_metrics.py`, and `count_tokens.py`.
@@ -437,10 +463,9 @@ python QC/validation/validate_xml.py by_path \
   --verbose \
   --log_dir /path/to/qc-output/logs
 
-python QC/validation/validate_punct.py by_path \
+python QC/validation/validate_text.py by_path \
   --path /path/to/Final_XML \
-  --verbose \
-  --log_dir /path/to/qc-output/logs
+  --csv /path/to/qc-output/validate_text_findings.csv
 ```
 
 `orthography_extract.py --output_dir` writes extracted `orthographic_info` files and plots to that directory.

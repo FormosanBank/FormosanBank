@@ -408,3 +408,61 @@ def test_reordered_glosses_do_not_become_ver_alt_variants(tmp_path):
     transls = survivors[0].findall("TRANSL")
     assert [t.text for t in transls] == ["move slightly, stir"]
     assert transls[0].get("ver") is None
+
+
+# ---------------------------------------------------------------------------
+# The key carries the language (Glosbe #180, 2026-09-13: Saisiyat `yako` and
+# Truku `yako` collided in a multi-language corpus). trv + Truku resolves to
+# Truku, trv otherwise to Seediq, through the shared QC/corpus_counts rule.
+# ---------------------------------------------------------------------------
+
+def _write_xml_lang(path: Path, lang: str, dialect: str, sentences):
+    parts = ['<?xml version="1.0" encoding="utf-8"?>',
+             f'<TEXT id="T_{path.stem}" xml:lang="{lang}" dialect="{dialect}" '
+             'citation="x" BibTeX_citation="x" copyright="x">']
+    for sid, forms in sentences:
+        parts.append(f'  <S id="{sid}">')
+        for kind, text in forms:
+            parts.append(f'    <FORM kindOf="{kind}">{text}</FORM>')
+        parts.append('  </S>')
+    parts.append('</TEXT>')
+    path.write_text("\n".join(parts), encoding="utf-8")
+
+
+def test_same_spelling_in_two_languages_is_not_a_duplicate(tmp_path):
+    _write_xml_lang(tmp_path / "xsy.xml", "xsy", "Saisiyat",
+                    [("U000475", [("standard", "yako")])])
+    _write_xml_lang(tmp_path / "trv.xml", "trv", "Truku",
+                    [("U000111", [("standard", "yako")])])
+    assert vds.find_duplicates(str(tmp_path), kind_of="standard") == []
+
+
+def test_same_spelling_in_one_language_across_files_is_a_duplicate(tmp_path):
+    _write_xml_lang(tmp_path / "a.xml", "xsy", "Saisiyat",
+                    [("S_1", [("standard", "yako")])])
+    _write_xml_lang(tmp_path / "b.xml", "xsy", "Saisiyat",
+                    [("S_9", [("standard", "yako")])])
+    findings = vds.find_duplicates(str(tmp_path), kind_of="standard")
+    assert len(findings) == 1
+    assert findings[0].language == "Saisiyat"
+    assert findings[0].scope == "cross-file"
+    assert findings[0].kind == "identical"
+    assert {o.language for o in findings[0].occurrences} == {"Saisiyat"}
+
+
+def test_trv_without_truku_dialect_is_seediq():
+    assert vds.resolve_language("trv", "Truku") == "Truku"
+    assert vds.resolve_language("trv", "Tegudaya") == "Seediq"
+    assert vds.resolve_language("trv", None) == "Seediq"
+
+
+def test_csv_carries_language_and_kind(tmp_path):
+    _write_xml_lang(tmp_path / "a.xml", "ami", "Coastal",
+                    [("S_1", [("standard", "nga'ay ho")]),
+                     ("S_2", [("standard", "nga'ay ho")])])
+    findings = vds.find_duplicates(str(tmp_path), kind_of="standard")
+    out = tmp_path / "f.csv"
+    vds._write_csv(findings, str(out))
+    header, *rows = out.read_text(encoding="utf-8").splitlines()
+    assert header.split(",")[:4] == ["severity", "scope", "language", "kind"]
+    assert all(",Amis,identical," in r for r in rows), rows

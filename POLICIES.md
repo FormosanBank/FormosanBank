@@ -273,7 +273,13 @@ the corpus's CodeAndDocs declares a dedup step* — a leftover duplicate
 then signals a pipeline defect, not a content question. The within-file
 vs cross-file distinction survives as the finding's `scope`.
 
-### POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12)
+### POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12; presence requirement withdrawn 2026-10-17 by POL-057)
+**Withdrawn in part (2026-10-17, POL-057):** the requirement below that every
+W in a parsed sentence gets at least one M no longer applies. A W with no M
+means its segmentation is unknown, which is legitimate. V144 stays as a SOFT
+prompt to confirm such words are deliberately unsegmented; V145 is now HARD.
+The rest of this entry is kept as the record of the original ruling.
+
 **The unit of morphological analysis is the sentence, not the file.** In a
 sentence that carries *some* morphological parsing, **every W gets at least
 one M**; a W with exactly one M there is read as "analyzed as
@@ -293,10 +299,12 @@ others alone are the normal, honest case (YeddaPalemeqBlog: 494 parsed
 sentences, 161 unparsed), and under the file-level reading a single parsed
 sentence turned every unparsed sentence in the file into a finding.
 
-Enforced as SOFT findings in `validate_xml.py`; SOFT because some existing
-corpora trip these and will need fixing over time:
-- **V144** — M-less W inside a *parsed sentence* (per sentence).
-- **V145** — an M level in a file where **no** sentence carries any parsing
+Enforced in `validate_xml.py` (as amended 2026-10-17):
+- **V144** (SOFT) — M-less W inside a *parsed sentence* (per sentence);
+  since POL-057 a prompt to confirm the word is deliberately unsegmented,
+  not a defect.
+- **V145** (HARD since 2026-10-17) — an M level in a file where **no**
+  sentence carries any parsing
   (per **file**, deliberately). "Every M mirrors its W" is evidence of a
   fake tier only in bulk: one short sentence whose words really are
   monomorphemic looks identical to a mirror tier, and single-M Ws are
@@ -306,6 +314,41 @@ corpora trip these and will need fixing over time:
 
 (Resolves the Bunun-Topic-Focus degenerate-single-M question: its 51
 single-M Ws are conforming as long as no W lacks an M.)
+
+### POL-057 · RULED · 2026-10-17 · an M records a morphological analysis
+**M elements record parsing that was actually done.** A W with two or more Ms
+was segmented. A W with exactly **one** M asserts that the word is
+**monomorphemic**. A W with **no** M means its segmentation is unknown. So a W
+gets a single M only "if the source told us it was monomorphemic, or we have
+some other good reason to believe so (ie evidence from data for the same
+dialect)". An M is never created just so that a word has one.
+
+**For maintainers:** build code must not insert a single M for any reason
+other than such an analysis (for example, to satisfy the old POL-023
+requirement). Where a pipeline did that, regenerate without that step. No
+validator checks this. Whether a single M is justified is a linguistic
+judgement, reviewed in the reproduction code.
+
+**Withdraws** POL-023's requirement that every W in a parsed sentence gets at
+least one M. Two POL-023 checks remain: **V144** (SOFT) reports M-less Ws in a
+parsed sentence so the reviewer can confirm they are deliberate, and **V145**
+(HARD) rejects a file that has an M tier but no segmented word anywhere.
+
+Maintainer (2026-10-15): *"a W with a single M is assumed to be monomorphemic.
+So we should only have a W with a single M if the source told us it was
+monomorphemic, or we have some other good reason to believe so (ie evidence
+from data for the same dialect). This overrules a previous policy that insisted
+that all Ws have at least one M. Instead, we leave open having no M in order to
+indicate unknown segmentation. In cases where we previously created a single M
+to respect the old policy, we should regenerate without that M-creation."*
+Maintainer (2026-10-17): *"I wanted to rescind the previous requirement that
+every W have an M. And I wanted a policy (with no validator attached) saying
+that Ms indicate parsing, so a single M means monomorphemic. That's mostly
+instructions to the maintainers."* On the checks: *"V144 as providing SOFT
+warnings can be kept. It's good to be aware that there are missing Ms and
+confirm that's intentional. V145 can be retained. That's a HARD validator,
+please. Formosan languages are not monomorphemic, so if there is an M tier but
+no split words anywhere, that's weird."* Replaces PR #212.
 
 ### POL-060 · RULED · 2026-10-14 · words that share one gloss
 **Words the source glosses as one unit are one `W`.** When a source prints a
@@ -322,9 +365,8 @@ has no gloss" from "this word's gloss is on its neighbour". Maintainer
 (2026-10-14): *"when two words share the same gloss, they get a single <W>
 block. That's a general rule."*
 
-**Consequences.** Within a parsed sentence (POL-023) such a `W` still needs at
-least one `M`; its `M` children follow whatever segmentation the source prints
-inside the unit, and where it prints none, one `M` spans the same words.
+**Consequences.** Its `M` children, if any, follow the segmentation the source
+prints inside the unit (POL-057).
 **V060** (`W_count_matches_word_count`, SOFT) compares the number of `W` with
 the number of whitespace-delimited words in the sentence, so it reports every
 multi-word `W`. That is intended: the SOFT finding asks whoever reviews the
@@ -465,14 +507,43 @@ allowlist (V084 for TRANSL, V156 for FORM).
   varies. A word-list corpus whose `S` is a word is the S-level case.
 - **Optional material is resolved by scope.** What forces a separate `S`
   block is not whether the variation sits inside a word, but whether the
-  **sentence's word inventory changes**. A whole optional *word* —
-  `x y (z)` — changes the W tier and the gloss alignment, so it becomes two
-  `S` blocks (POL-026), the second taking the first's id plus `-opt`.
-  Optional material that leaves the word count unchanged — `puken-(en)`,
-  `(u)m-lavi`, and equally a whole short word alternating `a`/`u` — becomes
-  a `ver="alt"` variant FORM on the word that varies, never a second
-  sentence.
-  Neither mechanism leaves parentheses in a published FORM.
+  **sentence's word inventory changes, or the glossing does**. A whole
+  optional *word* — `x y (z)` — changes the W tier and the gloss alignment,
+  so it becomes two `S` blocks (POL-026), the second taking the first's id
+  plus `-opt`. An optional *morpheme* becomes separate `S` blocks **when the
+  source glosses it, so the two readings would be glossed differently**:
+  Seediq-Chang's `h-(um)-uwa` is `huwa` 怎樣 or `h-um-uwa` 怎樣-AF, and NTU
+  Bunun's `kangavas(=an)` is `kangavas` 'mango' or `kangavas=an`
+  'mango=MED.NOM'. A variant FORM has no W or M tier of its own, so it
+  cannot carry the second gloss. In the maintainer's words (2026-10-15):
+  *"differences in morphemes necessitate different sentence blocks only if
+  they are glossed and would result in different glossing. Basically, I
+  want the glossing to be clear."* Everything else — optional letters inside
+  a single morpheme, a whole short word alternating `a`/`u`, and an optional
+  morpheme in data whose words carry no glosses (Blust's Thao dictionary
+  examples, the Utrecht word list) — becomes a `ver="alt"` variant FORM on
+  the node that varies, never a second sentence. Neither mechanism leaves
+  parentheses in a published FORM, except as below.
+
+  **Amended 2026-10-15; this supersedes** (POL-050) this bullet's wording as
+  revised 2026-09-09, under which optional material that "leaves the word
+  count unchanged" was always a variant. Raised by the Seediq-Chang audit,
+  where `h-(um)-uwa` (R275) had been made obligatory rather than resolved.
+  Per-corpus rulings on the variants already published are recorded in
+  `claudeplans/2026-10-15-segmentation-variant-worklist.md`.
+
+  **WakelinTexts' parentheses are not optional material** (maintainer,
+  2026-10-15). The article's key defines `( )` only as "in data, probable
+  discrepancy", so `puken-(en)`, `manuyung-(e)`, `(u)m-lavi` and the rest
+  are neither split nor variants: *"The parentheses should be retained in
+  the original tier, removed in the standard tier. ... The reason is that
+  while the author was uncertain, we do not have anything else to go on."*
+  Retained in the **sentence FORM only**: *"sentence FORM only, not the Ws
+  or Ms."* Words, morphemes and the standard tier keep the bracketed
+  letters without the brackets. This supersedes, for this notation only,
+  item 2 of the 2026-09-09 revision above (which resolved Wakelin's
+  original tier like the standard one) and the rule that no published FORM
+  keeps parentheses.
 - **Naming the extra blocks.** Wherever one source cell or sentence yields
   more than one `S` — optional material above, or a competing lexeme — the
   first block keeps its published id and the second takes that id plus
@@ -561,6 +632,24 @@ should be preserved. A standardized gloss can be added as a separate
 kindOf='standard' translation"); companion to POL-001's source-fidelity
 guarantee, applied to the gloss tier.
 
+### POL-062 · RULED · 2026-08-12 · W/M-level translations are not cleaned
+`clean_xml` normalizes S-level `TRANSL` text but deliberately leaves
+**word- and morpheme-level `TRANSL` (gloss) content alone**. Rationale:
+those tiers are not used for machine translation — they are read by
+humans — so the extra material a source packs into a gloss (etymology,
+root notes, dialect comments, alternative spellings, parenthetical
+asides) is *information to keep*, not noise to strip. A gloss that reads
+`"bring, AV. The root is kacu 'bring'."` stays exactly as the source
+wrote it. Consequences: parentheses, slashes and prose inside W/M
+glosses are not defects (V121/V122-style findings on gloss text are
+review material at most), and gloss standardization remains additive
+(POL-036) — a normalized code is added as a separate
+`TRANSL[@kindOf="standard"]`, never by rewriting the original gloss.
+Raised by: the 2026-08-12 Yedda review, where `clean_xml` was observed
+to skip W/M TRANSL repo-wide; that behavior is intended, not a bug.
+*(Numbered 2026-10-15. Ruled 2026-08-12 and drafted as POL-041 on branch `work/b3-yedda`, which never
+reached main; POL-041 was later assigned to W-tier presence.)*
+
 ### POL-037 · RULED · 2026-08-11 · stable public identifiers
 Published identifiers are **stable**: a `TEXT/@id` must never collide with
 (or be reused from) an already-published `TEXT/@id`, and S/W/M ids —
@@ -571,6 +660,27 @@ silently orphans both. Regeneration pipelines must therefore produce the
 same ids run over run; an id scheme change is a breaking change to
 announce, not a cleanup. Made explicit from the id rules implicit in the
 GitBook XML-format page.
+
+**Clarified 2026-08-12 (maintainer):** the rule is *not* "ids never
+change" — it is **do not change them without a compelling reason, and if
+you do, be very careful about what the change breaks.** Tidiness is not a
+compelling reason: when reworking a published sentence, **keeping the
+original numbering with gaps is preferred over renumbering** (e.g. a
+sentence that loses two words keeps `W1 W2 W5 W8` rather than being
+resequenced `W1…W4`). Beyond external citation, the concrete breakage is
+internal:
+`manual_edits.xml` records are keyed by id (S id, and the W/M ids inside
+the recorded block), so an *upstream* id change — a parser tweak that
+renumbers words, a re-split sentence, an intake script that reorders —
+silently invalidates the matching hand edits. `apply_manual_edits.py`
+will then either no-op (the record's id no longer exists) or apply to
+the wrong sentence, and because the pipeline's step 0 legitimately
+no-ops on already-edited XML (POL-030), a broken record is **hard to
+distinguish from a healthy one**. When an id change is genuinely
+warranted: state the reason, list every changed id in the corpus README,
+re-capture any affected `manual_edits.xml` records against the new ids,
+and verify `apply_manual_edits.py` still reports the expected edit count
+(not a silent rise in no-ops).
 
 ### POL-038 · RULED · 2026-08-11 · data files change only via code
 XML files and raw scrape files are **only ever modified by committed
@@ -654,6 +764,12 @@ and `standards.csv` as a registry per POL-039): a Creative Commons licence, or
 licence is not a licence declaration, and free text admits errors no reader
 catches (`CC NC-BY` shipped in RauDong across 20 files). Where a value names no
 version it is 4.0.
+
+**Granted versions are kept (2026-10-16).** Where a rights holder granted a
+specific earlier or ported licence version, that version is kept as granted and
+added to the vocabulary rather than mapped to 4.0 (Virginia_Fey_Dictionary:
+`CC BY-NC 3.0`; Safolu-Amis-Dictionary: `CC BY-NC-SA 3.0 TW`). The "no version
+means 4.0" rule applies only when the grant names no version.
 
 **No exceptions.** A corpus whose rights cannot be expressed as one of these
 values is not published in FormosanBank, however genuine the permission behind
