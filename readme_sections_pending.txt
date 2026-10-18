@@ -9,7 +9,6 @@ Campbell-Favorlang notes
 Glosbe notes
 HundredPaiwanStories notes
 ILRDF_Dicts notes
-Li-Conjunction-Thao notes
 MontgomeryTexts notes
 NTUFormosanCorpus rights
 NTUFormosanCorpus notes
