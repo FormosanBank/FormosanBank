@@ -13,7 +13,6 @@ MontgomeryTexts notes
 NTUFormosanCorpus rights
 NTUFormosanCorpus notes
 NTU_Paiwan_ASR notes
-Nowbucyang-Truku-Thesis notes
 Paiwan_Stories notes
 SEALS33 notes
 Siraya_Gospels rights
