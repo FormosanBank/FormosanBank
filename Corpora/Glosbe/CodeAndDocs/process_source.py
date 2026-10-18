@@ -280,8 +280,8 @@ EDITORIAL = [
 LEADING = [
     # the end of a reference whose start lies outside this Glosbe segment: "33:12-17) "
     ("citation", re.compile(r"^\d+:\d[\d:,; \-]*\)\s+")),
-    # paragraph, page and list labels: "9 ", "6, 7. ", "(1) ", "(b) ", "b. ", "2. "
-    ("label", re.compile(r"^(?:\d{1,2}(?:\s*,\s*\d{1,2})*\.?|\((?:\d{1,2}|[a-z])\)|[a-z]\.)\s+(?=[A-Z\"(]|'[A-Z])")),
+    # paragraph, page and list labels: "9 ", "6, 7. ", "1-3. ", "(1) ", "(b) ", "b. ", "2. "
+    ("label", re.compile(r"^(?:\d{1,2}(?:\s*[,-]\s*\d{1,2})*\.?|\((?:\d{1,2}|[a-z])\)|[a-z]\.)\s+(?=[A-Z\"(]|'[A-Z])")),
 ]
 # A list label that starts a second question inside the same segment: "? (3) O"
 INNER_LABEL = re.compile(r"(?<=[?.!\"]) \((?:\d{1,2}|[a-z])\)(?= [A-Z])")
