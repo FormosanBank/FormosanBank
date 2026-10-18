@@ -337,7 +337,9 @@ def test_sentence_translations_preserve_printed_characters_and_notes():
         (
             "ILCAA_KanakanavuTexts_011_naparamaci.xml",
             "ILCAA_KANAKANAVU_TEXTS_011_NAPARAMACI_S0009",
-            "She went—at that time the river was muddy. The girl went (there) to fish with a net, as she said.",
+            # The book prints an em dash; shared cleaning writes every dash as "-", and the
+            # maintainer ruled to leave it (2026-10-18).
+            "She went-at that time the river was muddy. The girl went (there) to fish with a net, as she said.",
         ),
         (
             "ILCAA_KanakanavuTexts_034_setting_up_traps.xml",

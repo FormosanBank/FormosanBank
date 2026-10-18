@@ -114,7 +114,7 @@ None supplied with this source.
   The village-labelled phonetic comparison remains open in the ledger.
   Supplemental records preserve printed readings; only three analyzed prose
   examples supply W/M tiers.
-- The printed capital glottal stop `Ɂ` (four narratives) is written `ʔ` in the original
+- The printed capital glottal stop `Ɂ` (four narratives and introduction example 23c) is written `ʔ` in the original
   tier from the start and is then the ordinary `ʔ`. Capitalization is not phonemic, so
   shared PHON lower-cases names.
 - The standard tier merges `ə` and the rarer native `e` into `e`, and `l` and `r` into `r`,
@@ -125,6 +125,7 @@ None supplied with this source.
 - In examples 23a-d the clause brackets are written as parentheses in the original sentence
   FORM (shared cleaning) and are absent from the standard FORM and from every W and M.
 - Naparamaci example 68 prints one gloss under two words, so `əhə kai` is one W and one M.
-- One English translation prints an em dash that shared cleaning writes as a hyphen.
+- One English translation prints an em dash that shared cleaning writes as a hyphen
+  (`clean_xml.py` writes every dash as `-`); the maintainer ruled to leave it.
 - The earlier ten-page expert review and historical samples cover those records
   only. They do not establish a current visual review of every page or reading.
