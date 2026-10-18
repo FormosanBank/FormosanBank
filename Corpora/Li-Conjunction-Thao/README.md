@@ -24,9 +24,9 @@ Morphology remains partial: 140 of 211 W elements have no M child, and the four 
 
 **License:** CC BY 4.0
 
-**Rights source:** Paul Jen-Kuei Li, confirmed by Joshua Hartshorne, 2025-06-04; evidence: ask maintainer
+**Rights source:** the article's own licence statement (Li 2014, published CC BY 4.0); evidence: ask maintainer
 
-The article's first page explicitly releases the work under CC BY 4.0. The source records and generated text derive from that licensed article. XML uses the exact rights-vocabulary value, preserving the published licence claim. The spelling change from the previous prose value still requires the normal maintainer rights review at merge (POL-042–044).
+The source article is published under Creative Commons Attribution 4.0 International. Until 2026-10-17 `TEXT/@copyright` carried that name in prose; POL-042 requires the exact vocabulary value `CC BY 4.0`.
 
 ## Rebuild
 

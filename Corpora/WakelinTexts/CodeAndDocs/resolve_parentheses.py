@@ -1,40 +1,25 @@
 #!/usr/bin/env python3
-"""Resolve the article's parenthesis notation in the ORIGINAL tier.
+"""Handle the article's parenthesis notation, one tier at a time.
 
-Step 3 of generate_xml.sh: after clean_xml.py, BEFORE standardize.py, so
-standardize derives the standard tier — base and variants alike — from an
-original that already carries no parentheses (POL-002, POL-028).
+The article's key defines `( )` one way only: "in data, probable discrepancy".
+The transcriber was unsure of the bracketed letters. Ruled 2026-10-15
+(maintainer): "Not variants. The parentheses should be retained in the
+original tier, removed in the standard tier. ... The reason is that while the
+author was uncertain, we do not have anything else to go on." And, on where
+in the original tier: "sentence FORM only, not the Ws or Ms." So:
 
-Until 2026-09-09 this ran after standardize and touched the standard tier
-only, on the ruling recorded in 694bbc903: "the optional material is handled
-with the alternative FORM mechanism, in the standard tier only... The original
-tier keeps all of this notation untouched." POL-028, ruled the next day, says
-"neither mechanism leaves parentheses in a published FORM", and the maintainer
-resolved the conflict on 2026-09-09 in POL-028's favour: the tiers are handled
-the same way. Doing it here rather than there also fixed an inconsistency —
-the seven alternates this script used to create were the only ones in the bank
-spelled in the standard orthography, because they were made after standardize
-had run.
+  --tier original  (step 3, after clean_xml, before standardize)
+      The sentence FORM keeps the parentheses as printed: `puken-(en) lavi u
+      anan-anak`. Word and morpheme FORMs drop them and keep the letters
+      (`puken-en`, M `en`). No reading is chosen and no variant is made.
+  --tier standard  (step 5b, after standardize)
+      The parentheses are removed and the bracketed letters kept, so the
+      standard tier reads the fuller form: `puken-en`, `um-lavi`, `kua`.
+      Strict: fails if a parenthesis survives in a standard FORM.
 
-The article's key gives `( )` two jobs, and they need opposite treatment.
-
-**Optional material** — `puken-(en)`, `(u)m-lavi`, `ku(a)` — is a real
-alternation: the word can be read with the bracketed letters or without them.
-No orthography has a parenthesis, and choosing either reading silently asserts
-something the article declines to say. So the word gets both readings, through
-the POL-028 variant mechanism: the tier's base FORM takes the fuller reading,
-closest to the printed letter sequence, and a `ver="alt"` FORM of the same
-tier takes the reading without the bracketed material.
-
-The variant goes on the **word**, and only there. Not on the morpheme, where
-the alternation is not expressible — a morpheme whose whole form is optional
-would have to alternate with nothing — and where it is not the morpheme's
-property anyway: whether the segment is present is a fact about the word.
-Morphemes therefore just lose the brackets and keep their letters. And not on
-the sentence, for the same reason the corpus's slash alternations stop at the
-word: a sentence-level variant for one optional letter is noise, and a
-sentence carrying two of them could only show one, which reads as a claim that
-the other did not vary. The sentence FORM carries the fuller reading.
+This supersedes the 2026-09-09 handling, which resolved each bracket in the
+original tier into a base FORM (with the letters) plus a ver="alt" FORM
+(without them), and before that the 694bbc903 handling (standard tier only).
 
 **The uncertainty marker** `(unctn)` (also `(onctn)`, `(unan)`) is not text at
 all; it is the article's annotation that a reading is doubtful. Deleting it
@@ -42,14 +27,12 @@ outright would lose a judgement the article deliberately recorded, so it moves
 to the element's `@notes` — on the word it qualifies, and on each TRANSL that
 carries it (maintainer, 2026-09-09). Where the same marker also appears on the
 enclosing sentence FORM it is deleted there: the annotation belongs to the
-word, and repeating it up the tree says nothing extra.
+word, and repeating it up the tree says nothing extra. This runs in the
+original-tier step, before standardize, so neither tier carries the marker.
 
 A TRANSL whose entire text is the marker is left alone and reported: stripping
 it would leave an empty TRANSL, which is a validator error, and choosing a
 replacement gloss is a human's call, not this script's.
-
-Strict by design: it reports what it changed, and fails if a parenthesis
-survives in any FORM.
 """
 from __future__ import annotations
 
@@ -77,26 +60,8 @@ def tidy(text: str) -> str:
 
 
 def with_material(text: str) -> str:
+    """The fuller reading: brackets removed, bracketed letters kept."""
     return tidy(BRACKETED.sub(r"\1", text))
-
-
-def without_material(text: str) -> str:
-    return tidy(BRACKETED.sub("", text))
-
-
-def original_form(node):
-    for f in node.findall("FORM"):
-        if f.get("kindOf") == "original" and f.get("ver") is None:
-            return f
-    return None
-
-
-def add_variant(node, value):
-    """A ver="alt" FORM in the original tier (POL-028, revised 2026-09-09)."""
-    f = ET.Element("FORM", {"kindOf": "original", "ver": "alt"})
-    f.text = value
-    last = max((i for i, c in enumerate(node) if c.tag == "FORM"), default=-1)
-    node.insert(last + 1, f)
 
 
 def note(element, marker):
@@ -109,9 +74,12 @@ def note(element, marker):
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--xml-dir", default=str(CODE_ROOT.parent / "XML"))
+    ap.add_argument("--tier", choices=("original", "standard"), default="original")
     args = ap.parse_args()
+    if args.tier == "standard":
+        return strip_standard_tier(Path(args.xml_dir))
 
-    noted = deleted = alternations = morphemes = 0
+    noted = deleted = 0
     transl_noted = 0
     whole_marker: list[tuple[str, str]] = []
 
@@ -145,44 +113,65 @@ def main() -> int:
                     deleted += 1
                 touched = True
 
-        # --- optional material, in the original tier ----------------------
-        for sentence in root.findall("S"):
-            for word in sentence.findall("W"):
-                nodes = ([(sentence, "S"), (word, "W")]
-                         + [(m, "M") for m in word.findall("M")])
-                for node, kind in nodes:
-                    form = original_form(node)
-                    if form is None or not form.text or "(" not in form.text:
-                        continue
-                    text = tidy(form.text)
-                    form.text = with_material(text)
-                    if kind == "W":
-                        add_variant(node, without_material(text))
-                        alternations += 1
-                    elif kind == "M":
-                        morphemes += 1
-                    touched = True
-
         if touched:
             path.write_text(prettify(root), encoding="utf-8")
 
     print(f"  uncertainty marker -> W FORM @notes        : {noted}")
     print(f"  uncertainty marker -> TRANSL @notes        : {transl_noted}")
     print(f"  uncertainty marker deleted (repeat at S)   : {deleted}")
-    print(f"  optional material -> base + ver=\"alt\"      : {alternations}")
-    print(f"  morphemes unbracketed                      : {morphemes}")
     for name, pid in whole_marker:
         print(f"  .. left alone, whole gloss is the marker: {name} {pid}")
 
-    left = []
+    # --- the article's ( ): sentence FORM keeps them, W and M do not -------
+    unbracketed = 0
     for path in sorted(Path(args.xml_dir).rglob("*.xml")):
-        for form in ET.parse(path).getroot().iter("FORM"):
-            if "(" in (form.text or ""):
-                left.append((path.name, form.text))
+        root = ET.parse(path).getroot()
+        touched = False
+        for node in [*root.iter("W"), *root.iter("M")]:
+            for form in node.findall("FORM"):
+                if form.get("kindOf") == "original" and "(" in (form.text or ""):
+                    form.text = with_material(form.text)
+                    unbracketed += 1
+                    touched = True
+        if touched:
+            path.write_text(prettify(root), encoding="utf-8")
+    kept = sum(1 for path in sorted(Path(args.xml_dir).rglob("*.xml"))
+               for s in ET.parse(path).getroot().iter("S")
+               for form in s.findall("FORM")
+               if form.get("kindOf") == "original" and "(" in (form.text or ""))
+    print(f"  W/M FORMs with the article's ( ) removed    : {unbracketed}")
+    print(f"  sentence FORMs keeping the article's ( )    : {kept}")
+    left = [(path.name, f.text) for path in sorted(Path(args.xml_dir).rglob("*.xml"))
+            for node in [*ET.parse(path).getroot().iter("W"), *ET.parse(path).getroot().iter("M")]
+            for f in node.findall("FORM") if any(c in (f.text or "") for c in "()")]
+    if left:
+        for name, text in left:
+            print(f"  !! parenthesis survives in a word or morpheme in {name}: {text}")
+        raise SystemExit("parentheses remain in a W or M FORM")
+    return 0
+
+
+def strip_standard_tier(xml_dir: Path) -> int:
+    """Remove the parentheses from every standard-tier FORM (step 5b)."""
+    changed = 0
+    for path in sorted(xml_dir.rglob("*.xml")):
+        root = ET.parse(path).getroot()
+        touched = False
+        for form in root.iter("FORM"):
+            if form.get("kindOf") == "standard" and "(" in (form.text or ""):
+                form.text = with_material(form.text)
+                changed += 1
+                touched = True
+        if touched:
+            path.write_text(prettify(root), encoding="utf-8")
+    print(f"  standard-tier FORMs with ( ) removed        : {changed}")
+    left = [(path.name, form.text) for path in sorted(xml_dir.rglob("*.xml"))
+            for form in ET.parse(path).getroot().iter("FORM")
+            if form.get("kindOf") == "standard" and any(c in (form.text or "") for c in "()")]
     if left:
         for name, text in left:
             print(f"  !! parenthesis survives in {name}: {text}")
-        raise SystemExit("parentheses remain in a published FORM")
+        raise SystemExit("parentheses remain in a standard-tier FORM")
     return 0
 
 

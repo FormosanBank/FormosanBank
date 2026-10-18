@@ -669,7 +669,7 @@
         </W>
     </S>
     <S id="TsouNr-pear-wang-3_S_14">
-        <FORM kindOf="original">oh, mo asngʉc, toa, ho mʉ isi teapha na ito, fucu na ito, to isi, ngovei to sʉnʉsi. ci ci fucu o 'o isi toai ci beahci.</FORM>
+        <FORM kindOf="original" notes="ngovei could be a speech error. The correct one should be ngov'eni 'to make something hang on some place'.">oh, mo asngʉc, toa, ho mʉ isi teapha na ito, fucu na ito, to isi, ngovei to sʉnʉsi. ci ci fucu o 'o isi toai ci beahci.</FORM>
         <PHON kindOf="original">ox mo asŋɨʦ toa xo mɨ isi teapxa na ito fuʦu na ito to isi ŋovei to sɨnɨsi ʦi ʦi fuʦu o ʔo isi toai ʦi ɓeaxʦi</PHON>
         <FORM kindOf="standard">oh, mo asngʉc, toa, ho mʉ isi teapha na ito, fucu na ito, to isi, ngovei to sʉnʉsi. ci ci fucu o 'o isi toai ci beahci.</FORM>
         <PHON kindOf="standard">oh mo asŋɨʦ toa ho mɨ isi teapha na ito fuʦu na ito to isi ŋovei to sɨnɨsi ʦi ʦi fuʦu o ʔo isi toai ʦi ɓeahʦi</PHON>
@@ -3575,14 +3575,14 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FIl</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="TsouNr-pear-wang-3_S_61_W8M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIl</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-wang-3_S_61_W9">
@@ -3715,7 +3715,7 @@
         </W>
     </S>
     <S id="TsouNr-pear-wang-3_S_68">
-        <FORM kindOf="original">'a isi maka, aiti ho mo ea, fatua 'o, 'o ntesi mia,</FORM>
+        <FORM kindOf="original" notes="ea-fatua &quot;有石頭&quot;。">'a isi maka, aiti ho mo ea, fatua 'o, 'o ntesi mia,</FORM>
         <PHON kindOf="original">ʔa isi maka aiti xo mo ea fatua ʔo ʔo ntesi mia</PHON>
         <FORM kindOf="standard">'a isi maka, aiti ho mo ea, fatua 'o, 'o ntesi mia,</FORM>
         <PHON kindOf="standard">ʔa isi maka aiti ho mo ea fatua ʔo ʔo ntesi mia</PHON>
@@ -3734,8 +3734,8 @@
                 <PHON kindOf="original">ʔa</PHON>
                 <FORM kindOf="standard">'a</FORM>
                 <PHON kindOf="standard">ʔa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">知識詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EVI</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-wang-3_S_68_W1">
@@ -3774,8 +3774,8 @@
                 <PHON kindOf="original">maka</PHON>
                 <FORM kindOf="standard">maka,</FORM>
                 <PHON kindOf="standard">maka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">比較</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">comparatively</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">至少.受焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">the.least.PF</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-wang-3_S_68_W3">
@@ -3806,8 +3806,8 @@
                 <PHON kindOf="original">xo</PHON>
                 <FORM kindOf="standard">ho</FORM>
                 <PHON kindOf="standard">ho</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">還</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">still</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-wang-3_S_68_W5">
@@ -3822,8 +3822,8 @@
                 <PHON kindOf="original">mo</PHON>
                 <FORM kindOf="standard">mo</FORM>
                 <PHON kindOf="standard">mo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">助動詞.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AUX.AF</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-wang-3_S_68_W6">
@@ -3833,6 +3833,14 @@
             <PHON kindOf="standard">ea</PHON>
             <TRANSL xml:lang="zho" kindOf="original">有-</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">have-</TRANSL>
+            <M id="TsouNr-pear-wang-3_S_68_W6M0">
+                <FORM kindOf="original">ea</FORM>
+                <PHON kindOf="original">ea</PHON>
+                <FORM kindOf="standard">ea</FORM>
+                <PHON kindOf="standard">ea</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">有</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">have</TRANSL>
+            </M>
         </W>
         <W id="TsouNr-pear-wang-3_S_68_W7">
             <FORM kindOf="original">-fatua</FORM>
@@ -3926,8 +3934,8 @@
                 <PHON kindOf="original">mia</PHON>
                 <FORM kindOf="standard">mia,</FORM>
                 <PHON kindOf="standard">mia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">走在.受焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">walk.on.PF</TRANSL>
             </M>
         </W>
     </S>
@@ -4474,15 +4482,15 @@
             <PHON kindOf="original">mox</PHON>
             <FORM kindOf="standard">moh,</FORM>
             <PHON kindOf="standard">moh</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
             <M id="TsouNr-pear-wang-3_S_81_W0M0">
                 <FORM kindOf="original">moh,</FORM>
                 <PHON kindOf="original">mox</PHON>
                 <FORM kindOf="standard">moh,</FORM>
                 <PHON kindOf="standard">moh</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-wang-3_S_81_W1">
@@ -5782,14 +5790,14 @@
             <PHON kindOf="original">i</PHON>
             <FORM kindOf="standard">i</FORM>
             <PHON kindOf="standard">i</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="TsouNr-pear-wang-3_S_99_W8M0">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
@@ -7977,8 +7985,8 @@
                 <PHON kindOf="original">mo</PHON>
                 <FORM kindOf="standard">mo</FORM>
                 <PHON kindOf="standard">mo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">助動詞.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AUX.AF</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-wang-3_S_145_W1">
@@ -7993,8 +8001,8 @@
                 <PHON kindOf="original">nana</PHON>
                 <FORM kindOf="standard">nana</FORM>
                 <PHON kindOf="standard">nana</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">似乎</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">seems</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-wang-3_S_145_W2">
@@ -8102,9 +8110,9 @@
             </M>
         </W>
         <W id="TsouNr-pear-wang-3_S_145_W8">
-            <FORM kindOf="original">pa-ngangcʉngcʉa</FORM>
+            <FORM kindOf="original">pa-ngangcʉngcʉ-a</FORM>
             <PHON kindOf="original">paŋaŋʦɨŋʦɨa</PHON>
-            <FORM kindOf="standard">pa-ngangcʉngcʉa</FORM>
+            <FORM kindOf="standard">pa-ngangcʉngcʉ-a</FORM>
             <PHON kindOf="standard">paŋaŋʦɨŋʦɨa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役-滿.主焦-受焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-full.AF-PF</TRANSL>
@@ -8113,12 +8121,24 @@
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
             </M>
             <M id="TsouNr-pear-wang-3_S_145_W8M1">
-                <FORM kindOf="original">ngangcʉngcʉa</FORM>
-                <PHON kindOf="original">ŋaŋʦɨŋʦɨa</PHON>
-                <FORM kindOf="standard">ngangcʉngcʉa</FORM>
-                <PHON kindOf="standard">ŋaŋʦɨŋʦɨa</PHON>
+                <FORM kindOf="original">ngangcʉngcʉ</FORM>
+                <PHON kindOf="original">ŋaŋʦɨŋʦɨ</PHON>
+                <FORM kindOf="standard">ngangcʉngcʉ</FORM>
+                <PHON kindOf="standard">ŋaŋʦɨŋʦɨ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">滿.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">full.AF</TRANSL>
+            </M>
+            <M id="TsouNr-pear-wang-3_S_145_W8M2">
+                <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-wang-3_S_145_W9">
@@ -8133,8 +8153,8 @@
                 <PHON kindOf="original">ʦi</PHON>
                 <FORM kindOf="standard">ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">NCM.SG</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NCM.SG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
             </M>
         </W>
         <W id="TsouNr-pear-wang-3_S_145_W10">

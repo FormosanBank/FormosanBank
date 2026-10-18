@@ -16,14 +16,15 @@ Run the full QC sequence on a corpus development repo, pausing for human judgmen
 
 ## Pre-checks
 
+0. **Re-read `POLICIES.md` before going on.** If any instruction in this skill contradicts a policy, stop and show the maintainer both texts before continuing; the policies file moves faster than this skill.
 1. Verify `corpus_path` exists and contains XML files (under `xml_subdir`).
 2. Verify `formosanbank_path/QC/cleaning/clean_xml.py` exists.
-3. Verify `corpus_path/.venv/bin/python3` exists; if missing, refuse and direct the user to `setup-new-dev-repo` or to create a `.venv` manually.
+3. Resolve `<python>`: `<corpus_path>/.venv/bin/python3` if it exists, else `<formosanbank_path>/.venv/bin/python3` (the same order port-corpus-in uses; most dev repos have no venv of their own). Refuse only if neither exists.
 4. Create `output_dir`.
 
 ## Recipe phases
 
-All `python3` invocations use `<corpus_path>/.venv/bin/python3` (not the system python). All script paths are relative to `<formosanbank_path>`.
+All `python3` invocations use the `<python>` resolved in pre-check 3 (written `.venv/bin/python3` below; never the system python). All script paths are relative to `<formosanbank_path>`.
 
 ### Phase 0: Apply manual edits
 
@@ -50,6 +51,20 @@ apostrophes/quotes canonicalize to ASCII, and null-morpheme glyphs `ø`/`Ø`
 in morpheme position canonicalize to `∅`. A `cleaner_warnings.csv` may
 appear next to the XML — it is a per-run report (POL-033): read it into the
 summary, do not commit it.
+
+**Annotator notes in translations (POL-024).** The shared step for stripping
+parenthetical annotator notes such as `(人名)` or `(imperatives)` from
+sentence-level `<TRANSL>` is `QC/cleaning/suppress_transl_annotations.py`
+(curated exact-match list in `transl_annotation_suppress_list.txt` next to it;
+W/M-level glosses are never touched). Preview first; apply only when the
+operator has seen the before/after examples, and record the step in the
+corpus README's Reproducibility section so the build reproduces it:
+
+```bash
+.venv/bin/python3 <formosanbank_path>/QC/cleaning/suppress_transl_annotations.py \
+  --corpora_path <xml_path> 2>&1 | tee <output_dir>/01b_suppress_transl_preview.log
+# --apply only after the operator approves the preview
+```
 
 ### Phase 2: Orthography detection (HUMAN JUDGMENT REQUIRED)
 
@@ -137,14 +152,14 @@ PHON is regenerated from FORM on every run, is marker-free (`-`, `=`,
 infix brackets omitted; infix *content* kept), drops unmapped punctuation,
 and renders unmapped letters as `*` (POL-003).
 
-**Note:** `add_phonology.py` adds `<PHON>` elements. These are now valid under the schema — `xml_template.xsd` defines `PHON_Type` and allows `PHON` within `S`/`W`/`M` (and the DTD fallback declares `PHON*` on each), so `validate_xml.py` in Phase 5 accepts them. (Earlier versions of this skill warned that PHON would fail `validate_xml.py`; that schema drift has since been resolved, so no such caveat is needed in the summary.)
+**Note:** `add_phonology.py` adds `<PHON>` elements. These are valid under the schema — `xml_template.xsd` defines `PHON_Type` and allows `PHON` within `S`/`W`/`M` (and the DTD fallback declares `PHON*` on each), so `validate_xml.py` in Phase 5 accepts them.
 
 ### Phase 5: Validate (informational)
 
 Run each validator, capturing output. Do NOT abort the recipe on failures — these are info-gathering:
 
 ```bash
-# DTD/XSD conformance. --no-exit-on-hard so the pipeline does not
+# XSD conformance. --no-exit-on-hard so the pipeline does not
 # abort on HARD findings — this phase is informational; the log is
 # the artifact. The validator's default behavior is to exit 1 on HARD
 # findings, which is the right behavior for CI gating but wrong for
@@ -158,7 +173,7 @@ Run each validator, capturing output. Do NOT abort the recipe on failures — th
 # --no-exit-on-hard so this informational phase does not abort the recipe.
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_text.py by_path \
   --path <xml_path> --no-exit-on-hard \
-  --soft-csv <output_dir>/05b_validate_text_soft.csv \
+  --csv <output_dir>/05b_validate_text_findings.csv \
   2>&1 | tee <output_dir>/05b_validate_text.log
 
 # Orthography extraction
@@ -167,17 +182,35 @@ Run each validator, capturing output. Do NOT abort the recipe on failures — th
   --corpora_path <xml_path> \
   --output_dir <output_dir>/extract_logs 2>&1 | tee <output_dir>/05c_orthography_extract.log
 
-# Orthography comparison vs reference
+# Orthography comparison vs reference. Always exits 0; the evidence is the
+# one `SUMMARY orthography | <group> | …` line per language/dialect group
+# (metrics, corpus_only=[…] / reference_only=[…] characters, warnings=N).
+# Quote those lines verbatim in the summary — do not just report "ran".
+# --quiet: group header, metric lines, WARNING lines and SUMMARY line only;
+# the full development output (pickle keys, reference frequency table) is
+# the default for a human at the terminal, not for this log.
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_orthography.py \
   --o_info <output_dir>/extract_logs \
-  --reference <formosanbank_path>/QC/validation/reference 2>&1 \
+  --reference <formosanbank_path>/QC/validation/reference --quiet 2>&1 \
   | tee <output_dir>/05d_validate_orthography.log
 
-# Vocabulary comparison vs reference
+# Vocabulary comparison vs reference. Same contract: quote each
+# `SUMMARY vocabulary | <group> | …` line (top-100 overlap and the words on
+# each side only). --quiet puts its warnings on stdout as plain WARNING lines.
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_vocabulary.py \
   --o_info <output_dir>/extract_logs \
-  --reference <formosanbank_path>/QC/validation/reference 2>&1 \
+  --reference <formosanbank_path>/QC/validation/reference --quiet 2>&1 \
   | tee <output_dir>/05e_validate_vocabulary.log
+
+# Declared vs detected: does the text agree with what the pipeline says?
+# TEXT/@dialect vs the dialect detector (per file, standard tier), and the
+# declared source orthography (from generate_xml.sh, or the Phase 2 answer
+# via --declared-orthography) vs the orthography detector on the original
+# tier, plus the standard tier vs Ortho113. Exits 0; quote the tables and
+# every row marked MISMATCH in the summary.
+.venv/bin/python3 <formosanbank_path>/QC/validation/declared_vs_detected.py \
+  --xml <xml_path> --declared-orthography <Phase 2 answer> 2>&1 \
+  | tee <output_dir>/05d2_declared_vs_detected.log
 
 # Dialect distribution (informational). Prints an (xml:lang, dialect) ->
 # count table; a human reads it to judge whether the distribution looks
@@ -202,8 +235,9 @@ Run each validator, capturing output. Do NOT abort the recipe on failures — th
 Then check whether the corpus has `<W>` or `<M>` elements (quick grep across XML files). If yes:
 
 ```bash
-.venv/bin/python3 <formosanbank_path>/QC/validation/validate_glosses.py \
-  <xml_path> --output_dir <output_dir> 2>&1 | tee <output_dir>/05h_validate_glosses.log
+.venv/bin/python3 <formosanbank_path>/QC/validation/validate_glosses.py by_path \
+  --path <xml_path> --output_dir <output_dir> --no-exit-on-hard \
+  2>&1 | tee <output_dir>/05h_validate_glosses.log
 ```
 
 Then check whether the corpus has audio (quick grep for `<AUDIO` across the XML files). If yes, locate the audio directory (commonly `<corpus_path>/Audio/`; if ambiguous, ask). If the audio files aren't present locally (dev repos often defer the download), skip the run and record that in the summary as an open item instead:
@@ -213,6 +247,17 @@ Then check whether the corpus has audio (quick grep for `<AUDIO` across the XML 
   --path <audio_dir> --xml_path <xml_path> \
   --log_dir <output_dir> --no-exit-on-hard \
   2>&1 | tee <output_dir>/05i_validate_audio.log
+```
+
+If `validate_audio.py` writes a `broken_audio.csv`, the shared step that
+removes those `<AUDIO>` elements is `QC/cleaning/clean_audio.py` (dry run by
+default). Preview it, show the operator the list, and apply only on approval;
+the removal then belongs in the corpus build, not in a hand edit:
+
+```bash
+.venv/bin/python3 <formosanbank_path>/QC/cleaning/clean_audio.py \
+  --corpus_path <corpus_path> --broken_csv <output_dir>/broken_audio.csv \
+  2>&1 | tee <output_dir>/05j_clean_audio_preview.log   # add --apply after approval
 ```
 
 ### Phase 6: Summary

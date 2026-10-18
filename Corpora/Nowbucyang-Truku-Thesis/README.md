@@ -14,6 +14,14 @@ in [LICENSE.md](../../LICENSE.md) and
 without prior written permission. The thesis is used with the author's
 permission (`rights_status=full_rights_obtained` in `TEXT@source`).
 
+## Rights
+
+**License:** CC BY-NC 4.0
+
+**Rights source:** Lowking Wei-Cheng Hsu 許韋晟 (the author), date not recorded in this repository; evidence: ask maintainer
+
+The thesis is used with the author's permission (`rights_status=full_rights_obtained` in `TEXT@source`). Until 2026-10-17 `TEXT/@copyright` carried the prose "© Lowking Wei-Cheng Hsu / 許韋晟. Used by FormosanBank with permission."; the maintainer ruled the licence CC BY-NC 4.0 on 2026-10-15.
+
 ## Orthography
 
 The thesis writes Truku in Ortho94 (recorded in `TEXT@source` and

@@ -2086,7 +2086,7 @@ def citation_bits(config: dict[str, Any], l1: str, l2: str, suffix: str) -> tupl
     year = retrieved_date[:4]
     citation = f"Glosbe. ({year}). Glosbe {source_name(config, l1)}-{target_name(config, l2)} dictionary and translation memory. Retrieved {retrieved_date}, from {representative_url}"
     bib = f"@misc{{Glosbe_{l1}_{tgt_iso}_{suffix}, author = {{{{Glosbe}}}}, title = {{{{Glosbe {source_name(config, l1)}--{target_name(config, l2)} dictionary and translation memory}}}}, year = {{{{{year}}}}}, howpublished = {{{{Glosbe online dictionary and translation memory}}}}, url = {{{{{representative_url}}}}}, note = {{{{Collected by FormosanBank for private research review; redistribution subject to Glosbe terms and third-party source rights}}}}}}"
-    copyright_attr = "© Glosbe and/or respective contributors/source corpora. Collected by FormosanBank for private research review; redistribution subject to Glosbe terms and third-party source rights."
+    copyright_attr = "CC BY-NC-SA 4.0"
     return tgt_iso, representative_url, citation, bib, copyright_attr
 
 
