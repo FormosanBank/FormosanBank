@@ -3,6 +3,7 @@
 
 import argparse
 import csv
+import hashlib
 import json
 import os
 import re
@@ -22,6 +23,9 @@ with (HERE / "source_notes.csv").open(encoding="utf-8", newline="") as stream:
     NOTES = {row["record"]: row for row in csv.DictReader(stream)}
 with (HERE / "withdrawn_ids.csv").open(encoding="utf-8", newline="") as stream:
     WITHDRAWN = {row["withdrawn_id"]: row for row in csv.DictReader(stream)}
+with (HERE / "keep_published_ids.csv").open(encoding="utf-8", newline="") as stream:
+    KEEP_ROWS = list(csv.DictReader(stream))
+    KEEP_PUBLISHED = {row["id"] for row in KEEP_ROWS}
 with (HERE / "highlight_space_keep.csv").open(encoding="utf-8", newline="") as stream:
     HIGHLIGHT_KEEP = defaultdict(list)
     for row in csv.DictReader(stream):
@@ -169,6 +173,21 @@ def main(bank):
             files[row["file"]].append(row)
     if seen != deleted:
         raise ValueError(f"Withdrawn ids not in the frozen source: {sorted(deleted - seen)}")
+    witness_path = HERE / "work/reference_glosbe/amis_glosbe_traditional.xml"
+    witness = {s.get("id"): s for s in etree.parse(witness_path).findall("S")}
+    for keep in KEEP_ROWS:  # published ids kept pending a ruling (keep_published_ids.csv)
+        rows = files[keep["file"]]
+        if any(r["sid"] == keep["id"] for r in rows):
+            continue
+        sentence = witness[keep["witness_id"]]
+        record = {"file": keep["file"], "sid": keep["id"], "record": keep["record"],
+                  "kind": "reviewed_chinese", "source_key": keep["witness_id"],
+                  "source": " ".join(sentence.findtext("FORM[@kindOf='original']").split()),
+                  "target": " ".join(sentence.findtext("TRANSL").split()), "url": keep["url"],
+                  "locator": f"work/reference_glosbe/amis_glosbe_traditional.xml#{keep['witness_id']}",
+                  "sha256": hashlib.sha256(witness_path.read_bytes()).hexdigest(), "asterisks": ""}
+        position = sum(1 for r in rows if r["sid"] < keep["id"])
+        rows.insert(position, record)
     outputs = []
     for relative, rows in files.items():
         baseline = HERE / "pre_correction_snapshot" / relative
@@ -201,6 +220,8 @@ def apply_reviewed_aliases(bank):
     with (HERE / "source_aliases.csv").open(encoding="utf-8", newline="") as stream:
         for row in csv.DictReader(stream):
             old, keep = row["omitted_id"], row["retained_id"]
+            if old in KEEP_PUBLISHED:  # kept as published pending a ruling
+                continue
             if old not in entries:  # Already absent from the baseline or manual edits.
                 continue
             old_path, old_s = entries[old]
@@ -345,6 +366,116 @@ def apply_typography(bank):
     print(f"Kept main's typography in {typography} fields")
 
 
+def remove_duplicates(bank):
+    """The shared within-file duplicate removal on the original tier, except
+    for ids kept as published pending a ruling (keep_published_ids.csv)."""
+    sys.path.insert(0, str(bank))
+    from QC.cleaning.remove_duplicate_sentences import apply_removals, plan_removals
+
+    plan = [p for p in plan_removals(str(HERE.parent / "XML"), scope="file", tier="original")
+            if p[1] not in KEEP_PUBLISHED]
+    merged = apply_removals(plan) if plan else 0
+    print(f"Removed {len(plan)} duplicate S; merged {merged} distinct translations")
+
+
+ENG_TMEM = HERE.parent / "XML" / "Amis" / "Glosbe_ami_eng_tmem.xml"
+ZHO_TMEM = HERE.parent / "XML" / "Amis" / "Glosbe_ami_zho_tmem.xml"
+
+
+def _form_key(sentence):
+    return " ".join("".join(sentence.find("FORM[@kindOf='original']").itertext()).split())
+
+
+def plan_merge():
+    """Amis-Chinese S whose original FORM equals exactly one Amis-English S."""
+    english = etree.parse(ENG_TMEM).getroot().findall("S")
+    chinese = etree.parse(ZHO_TMEM).getroot().findall("S")
+    by_form = defaultdict(list)
+    for sentence in english:
+        by_form[_form_key(sentence)].append(sentence.get("id"))
+    merges, ambiguous = {}, {}
+    for sentence in chinese:
+        sid, matches = sentence.get("id"), by_form.get(_form_key(sentence), [])
+        if sid in KEEP_PUBLISHED or not matches:
+            continue
+        if len(matches) == 1:
+            merges[sid] = matches[0]
+        else:
+            ambiguous[sid] = matches
+    return merges, ambiguous
+
+
+def merge_translation_files(bank, write_ledger=False):
+    """One Amis translation-memory file (maintainer, 2026-10-18: "For Glosbe,
+    I think we can have just one file. Some Ss have translations in English,
+    some in Mandarin, and some in both."). A Chinese-file S whose Amis FORM is
+    identical to an English-file S joins it (its id is withdrawn -> the English
+    id); every other Chinese-file S moves over with its own id. The English
+    file keeps its path and TEXT id; the Chinese file is removed."""
+    merges, ambiguous = plan_merge()
+    ledger = {k: v for k, v in WITHDRAWN.items() if v["action"] == "merged"}
+    if write_ledger:
+        rows = [v for v in WITHDRAWN.values() if v["action"] != "merged"]
+        for old, keep in sorted(merges.items()):
+            rows.append({"withdrawn_id": old, "kept_id": keep, "action": "merged",
+                         "reason": "Same Amis sentence (identical original FORM) as the kept "
+                                   "Amis-English S; its Chinese translation moved there.",
+                         "ruling": MERGE_RULING})
+        with (HERE / "withdrawn_ids.csv").open("w", encoding="utf-8", newline="") as stream:
+            writer = csv.DictWriter(stream, fieldnames=["withdrawn_id", "kept_id", "action",
+                                                        "reason", "ruling"], lineterminator="\n")
+            writer.writeheader()
+            writer.writerows(rows)
+        ledger = {old: {"kept_id": keep} for old, keep in merges.items()}
+    planned = {old: row["kept_id"] for old, row in ledger.items()}
+    if planned != merges:
+        raise ValueError(f"Merge plan differs from withdrawn_ids.csv: "
+                         f"new {sorted(set(merges.items()) - set(planned.items()))[:5]}, "
+                         f"gone {sorted(set(planned.items()) - set(merges.items()))[:5]}")
+    english_tree, chinese_tree = etree.parse(ENG_TMEM), etree.parse(ZHO_TMEM)
+    english = {s.get("id"): s for s in english_tree.getroot().findall("S")}
+    root = english_tree.getroot()
+    zho_root = chinese_tree.getroot()
+    moved = joined = 0
+    for sentence in zho_root.findall("S"):
+        sid = sentence.get("id")
+        if sid not in merges:
+            root.append(sentence)
+            moved += 1
+            continue
+        target = english[merges[sid]]
+        form, other = target.find("FORM[@kindOf='original']"), sentence.find("FORM[@kindOf='original']")
+        pieces = (form.get("notes") or "").split(" | ") if form.get("notes") else []
+        for piece in ((other.get("notes") or "").split(" | ") if other.get("notes") else []):
+            if piece not in pieces:
+                pieces.append(piece)
+        if pieces:
+            form.set("notes", " | ".join(pieces))
+        have = {(t.get(XML_LANG), " ".join("".join(t.itertext()).split())) for t in target.findall("TRANSL")}
+        for transl in sentence.findall("TRANSL"):
+            key = (transl.get(XML_LANG), " ".join("".join(transl.itertext()).split()))
+            if key in have:
+                continue
+            transl.attrib.pop("ver", None)
+            if any(t.get(XML_LANG) == key[0] for t in target.findall("TRANSL")):
+                transl.set("ver", "alt")
+            last = target.findall("TRANSL")[-1]
+            last.addnext(transl)
+            have.add(key)
+        joined += 1
+    zho_source = zho_root.get("source")
+    root.set("source", f"{root.get('source')} Chinese translations: {zho_source}")
+    english_tree.write(str(ENG_TMEM), encoding="utf-8", xml_declaration=True, pretty_print=True)
+    ZHO_TMEM.unlink()
+    print(f"Joined {joined} Amis-Chinese S to identical Amis-English S; moved {moved} with their "
+          f"own ids; {len(ambiguous)} match more than one Amis-English S and were moved unmerged")
+
+
+MERGE_RULING = ("2026-10-18: \"If we have Mandarin and English translations for the same Amis, is it "
+                "one S or two? It should be one, with both English and Mandarin translations.\"; "
+                "\"Merge inside #180\"; \"For Glosbe, I think we can have just one file.\"")
+
+
 def record_provenance(bank):
     revision = os.environ.get("FORMOSANBANK_COMMIT", "")
     if (bank / ".git").exists():
@@ -366,6 +497,10 @@ if __name__ == "__main__":
     parser.add_argument("--apply-aliases", type=Path)
     parser.add_argument("--apply-rulings", type=Path)
     parser.add_argument("--apply-typography", type=Path)
+    parser.add_argument("--remove-duplicates", type=Path)
+    parser.add_argument("--merge-translations", type=Path)
+    parser.add_argument("--write-merge-ledger", action="store_true",
+                        help="Rewrite the merged rows of withdrawn_ids.csv; review the diff")
     parser.add_argument("--record-provenance", type=Path)
     args = parser.parse_args()
     if args.record_provenance:
@@ -376,6 +511,10 @@ if __name__ == "__main__":
         apply_rulings(args.apply_rulings.resolve())
     elif args.apply_typography:
         apply_typography(args.apply_typography.resolve())
+    elif args.remove_duplicates:
+        remove_duplicates(args.remove_duplicates.resolve())
+    elif args.merge_translations:
+        merge_translation_files(args.merge_translations.resolve(), args.write_merge_ledger)
     else:
         if not args.formosanbank_root:
             parser.error("use generate_xml.sh or supply --formosanbank-root")
