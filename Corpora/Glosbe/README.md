@@ -1,8 +1,8 @@
 # Glosbe Formosan Corpus
 
 This corpus contains Glosbe dictionary and translation-memory examples for Amis,
-Atayal, Saisiyat and Truku. It has seven XML files, 5,676 S, 7,680 TRANSL,
-11,352 FORM and 11,352 PHON. There is no W/M analysis or Formosan audio.
+Atayal, Saisiyat and Truku. It has seven XML files, 5,670 S, 7,677 TRANSL,
+11,340 FORM and 11,340 PHON. There is no W/M analysis or Formosan audio.
 Glosbe is crowdsourced; preserving a source pair does not establish that its
 translation or language label is correct. Religious/JW material predominates.
 
@@ -75,22 +75,32 @@ should be one, with both English and Mandarin translations."; "For Glosbe, I
 think we can have just one file. Some Ss have translations in English, some in
 Mandarin, and some in both."; on its name: "Just call it Amis.xml. Obviously fix
 the citation and BibTeX as appropriate."). `XML/Amis/Amis.xml` (TEXT id
-`GLOSBE_ami_TMEM`) holds 4,514 S: 2,360 with English only, 1,790 with English and
-Chinese, 364 with Chinese only. An Amis-Chinese S joins an Amis-English S when
+`GLOSBE_ami_TMEM`) holds 4,508 S: 2,358 with English only, 1,791 with English and
+Chinese, 359 with Chinese only. An Amis-Chinese S joins an Amis-English S when
 their Amis original FORMs are identical (1,800), or, failing that, equal once
 spaces, commas, periods and dashes are ignored (53; ruling: "commas and periods
-and dashes can be ignored"). The joined S keeps the Amis-English id and FORM; the
+and dashes can be ignored"), plus one ruled join in
+[`CodeAndDocs/ruled_joins.csv`](CodeAndDocs/ruled_joins.csv) (U001151 into U002332,
+keeping "Faloco'"; ruling: "we clearly should join and should go with `Faloco'`
+and not `Faloco` on the join"; both Glosbe pages print `Falocoˈ`). The joined S keeps the Amis-English id and FORM; the
 Chinese-file FORM of a non-identical join is quoted in the ledger. Texts that
 differ by an Amis word, a letter, an apostrophe or a quotation mark are not
 joined (ruling: "If the two versions differ in the addition or subtraction of an
 Amis word, then they are different records and should not be merged";
 "Differences in ' vs \" vs curly versions of either must be discussed").
-Every other Amis-Chinese S moved over with its own id.
+Every other Amis-Chinese S moved over with its own id. The five S reading "Oniya
+lalakaw wa milengo to maanan?" are one S, U000875, with four English and two
+Chinese translations ([`CodeAndDocs/grouped_sentences.csv`](CodeAndDocs/grouped_sentences.csv);
+ruling: "One S (keep U000875) ... withdraw the other 4 ids -> U000875" + "But clean
+up these letters: )(乙)"): the Chinese labels 乙) 丙) )(乙) are removed and the
+caption reference 見課文開頭的圖片 is in that translation's notes.
 
 **Withdrawn identifiers** (POL-037, POL-051) are listed with the id kept in their
 place, the reason and the maintainer's words in
-[`CodeAndDocs/withdrawn_ids.csv`](CodeAndDocs/withdrawn_ids.csv): 1,853 joined
-Amis-Chinese S ids; 79 Amis-Chinese copies of a sentence that were identical to
+[`CodeAndDocs/withdrawn_ids.csv`](CodeAndDocs/withdrawn_ids.csv): 1,854 joined
+Amis-Chinese S ids; 4 ids grouped into U000875; `GLOSBE_ami_zho_TMEM_U000046`
+(-> U003882; ruling: "Withdraw (-> U003882)"; the same Glosbe record as U000012,
+which joined U003882); 79 Amis-Chinese copies of a sentence that were identical to
 another copy once the search-highlight spaces were removed (ruling: "Yes, remove
 them (and join the 79)"; this includes U000801 -> U000669); the TEXT ids
 `GLOSBE_ami_eng_TMEM` and `GLOSBE_ami_zho_TMEM` (both kept as `GLOSBE_ami_TMEM`);
@@ -101,12 +111,9 @@ and three duplicate dictionary entries deleted by ruling:
 `GLOSBE_xsy_eng_LEXICAL_U000475`). The build stops if its join plan differs from
 the ledger.
 
-`GLOSBE_ami_zho_TMEM_U000046`, identical to `..._U000012`, is not ruled and stays
-as published on main: [`CodeAndDocs/keep_published_ids.csv`](CodeAndDocs/keep_published_ids.csv)
-renders it from the witness copy main published and keeps it out of the alias
-replay, duplicate removal and the join. U000012 joined Amis-English U003882;
-U000046 remains a Chinese-only S with the same Amis text. Deleting that row
-restores the alternative (U000046 represented by U000012).
+[`CodeAndDocs/keep_published_ids.csv`](CodeAndDocs/keep_published_ids.csv) can hold a
+published id pending a ruling (rendered from its witness copy and kept out of the
+alias replay, duplicate removal and the join); it is empty now.
 `CodeAndDocs/source_aliases.csv` also
 accounts for 49 redundant English records in the old proposal. These are repeated
 reference examples, not repeated occurrences in a continuous story (POL-022).
@@ -176,14 +183,11 @@ Recorded quotation repairs preserve reviewed readings, but automatic quotation
 classification can still miss errors. Distinct source spellings remain separate
 even when their standard forms coincide.
 
-Open as of 2026-10-18 (not ruled): U000046 (above); one pair that differs only by a
-final apostrophe (Amis-Chinese U001151 "...Makapahay Faloco" / Amis-English U002332
-"...Makapahay Faloco'"); 3 Amis-Chinese S (U001767, U001773, U002187) whose Amis
-equals two Amis-English S (U000875, U003376) that are themselves the same Amis
-sentence with different English translations; Amis-Chinese S that differ from an
-Amis-English S by a word, a list number written "(1)" vs "1.", a slashed date or a
-menu symbol are not joined. Paragraph numbers, cross-references and citations
-inside Chinese TRANSL text are left as published (ruling: "Leave as is").
+Open as of 2026-10-18 (not ruled): Amis-Chinese S that differ from an Amis-English S
+by a word, a list number written "(1)" vs "1.", a slashed date or a menu symbol are
+not joined. Paragraph numbers, cross-references and citations inside Chinese TRANSL
+text are left as published (ruling: "Leave as is"), e.g. the joined U002332 has
+Chinese "16頁 用上帝的律法和原則鍛煉良心" and the alternative without "16頁".
 
 ## Reproduction
 

@@ -103,7 +103,7 @@ def test_source_quotes_keep_the_adjacent_glottal_letter():
     final = final_sentences()
     for sid, phrase in [
         ("GLOSBE_ami_eng_TMEM_U000271", '"\'acaaw to toki"'),
-        ("GLOSBE_ami_zho_TMEM_U001790", 'a\'"odingaray a pasalat"'),  # kept as main (ruling)
+        ("GLOSBE_ami_zho_TMEM_U001790", 'a "\'odingaray a pasalat"'),
         ("GLOSBE_ami_zho_TMEM_U000293", '"Itini'),
     ]:
         assert phrase in final[resolve(sid)].findtext('FORM[@kindOf="original"]')
@@ -118,7 +118,7 @@ def test_final_ids_and_approved_tiers():
     ledger = withdrawn()
     assert published - final.keys() == {k for k, v in ledger.items() if not v["action"].startswith("text")}
     assert all(v["kept_id"] in final for k, v in ledger.items() if not v["action"].startswith("text"))
-    assert "GLOSBE_ami_zho_TMEM_U000046" in final  # keep_published_ids.csv
+    assert ledger["GLOSBE_ami_zho_TMEM_U000046"]["kept_id"] == "GLOSBE_ami_eng_TMEM_U003882"
     assert final.keys() - published == {"GLOSBE_tay_eng_LEXICAL_T5674367316521196016",
                                         "GLOSBE_xsy_eng_LEXICAL_T5403228964499116686"}
     for sentence in final.values():
@@ -173,14 +173,35 @@ def test_one_amis_file_joins_identical_sentences():
     s = root.find('S[@id="GLOSBE_ami_eng_TMEM_U000012"]')
     assert resolve("GLOSBE_ami_zho_TMEM_U000143") == "GLOSBE_ami_eng_TMEM_U000012"
     assert [t.get(SOURCE.XML_LANG) for t in s.findall("TRANSL")] == ["eng", "zho"]
-    kept = root.find('S[@id="GLOSBE_ami_zho_TMEM_U000046"]')
-    assert [t.get(SOURCE.XML_LANG) for t in kept.findall("TRANSL")] == ["zho"]
     joined = {k for k, v in withdrawn().items() if v["action"] == "merged"}
-    assert len(joined) == 1853
+    assert len(joined) == 1854
     ledger = withdrawn()
     assert ledger["GLOSBE_ami_zho_TMEM_U000801"]["kept_id"] == "GLOSBE_ami_zho_TMEM_U000669"
     assert ledger["GLOSBE_ami_zho_TMEM_U002061"]["kept_id"] == "GLOSBE_ami_eng_TMEM_U000916"
-    assert "GLOSBE_ami_zho_TMEM_U001151" in final_sentences()  # differs by an apostrophe
+    assert ledger["GLOSBE_ami_zho_TMEM_U001151"]["kept_id"] == "GLOSBE_ami_eng_TMEM_U002332"  # ruled join
+    faloco = final_sentences()["GLOSBE_ami_eng_TMEM_U002332"]
+    assert faloco.findtext('FORM[@kindOf="original"]').endswith("Faloco'")
+
+
+def test_maanan_sentences_are_one_s():
+    final, ledger = final_sentences(), withdrawn()
+    kept = final["GLOSBE_ami_eng_TMEM_U000875"]
+    for old in ("GLOSBE_ami_eng_TMEM_U003376", "GLOSBE_ami_zho_TMEM_U001767",
+                "GLOSBE_ami_zho_TMEM_U001773", "GLOSBE_ami_zho_TMEM_U002187"):
+        assert ledger[old]["kept_id"] == "GLOSBE_ami_eng_TMEM_U000875" and old not in final
+    zho = [(t.text, t.get("ver"), t.get("notes")) for t in kept.findall("TRANSL")
+           if t.get(SOURCE.XML_LANG) == "zho"]
+    assert zho == [("本篇課文會談談什麼?", None, None), ("本篇課文會討論什麼?", "alt", "見課文開頭的圖片")]
+    assert len([t for t in kept.findall("TRANSL") if t.get(SOURCE.XML_LANG) == "eng"]) == 4
+
+
+def test_notes_do_not_repeat_a_label():
+    for sentence in final_sentences().values():
+        for element in sentence.iter("FORM", "TRANSL"):
+            if element.get("notes"):
+                pieces = element.get("notes").split(" | ")
+                parts = [p for piece in pieces for p in (SOURCE._label_parts(piece) or [piece])]
+                assert len(parts) == len(set(parts)), (sentence.get("id"), element.get("notes"))
 
 
 def test_round_two_rulings():
@@ -219,7 +240,7 @@ def test_language_homographs_survive():
     (900, "How would Jehovah's counsel benefit Job long after his trials?"),
     (2543, "What goals might you set for yourself?"),
     (2597, "How can you plan to be a full-time Christian minister?"),
-    (3376, "What will we consider?"),
+    (875, "What will we consider?"),  # U003376 grouped into U000875 (round 3)
     (4033, "How can baptized brothers be courageous?"),
 ])
 def test_reviewed_alias_readings_survive_current_dedup(number, reading):
