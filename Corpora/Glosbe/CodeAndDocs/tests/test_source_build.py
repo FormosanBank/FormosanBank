@@ -80,16 +80,33 @@ def test_recorded_quote_repairs_preserve_glottal_letters():
         assert phrase in root.findtext(f'.//S[@id="{sid}"]/FORM')
 
 
-def test_source_quotes_keep_the_adjacent_glottal_letter():
+def final_sentences():
     from lxml import etree
 
-    for file, sid, phrase in [
-        ("Amis/Glosbe_ami_eng_tmem.xml", "GLOSBE_ami_eng_TMEM_U000271", '"\'acaaw to toki"'),
-        ("Amis/Glosbe_ami_zho_tmem.xml", "GLOSBE_ami_zho_TMEM_U001790", '"\'odingaray a pasalat"'),
-        ("Amis/Glosbe_ami_zho_tmem.xml", "GLOSBE_ami_zho_TMEM_U000293", '3 "Itini'),
+    return {s.get("id"): s for f in (HERE.parent / "XML").rglob("*.xml")
+            for s in etree.parse(f).findall("S")}
+
+
+def withdrawn():
+    import csv
+
+    with (HERE / "withdrawn_ids.csv").open(encoding="utf-8", newline="") as stream:
+        return {row["withdrawn_id"]: row for row in csv.DictReader(stream)}
+
+
+def resolve(sid):
+    """A published id, or the id it was withdrawn to (withdrawn_ids.csv)."""
+    return withdrawn().get(sid, {}).get("kept_id", sid)
+
+
+def test_source_quotes_keep_the_adjacent_glottal_letter():
+    final = final_sentences()
+    for sid, phrase in [
+        ("GLOSBE_ami_eng_TMEM_U000271", '"\'acaaw to toki"'),
+        ("GLOSBE_ami_zho_TMEM_U001790", '"\'odingaray a pasalat"'),
+        ("GLOSBE_ami_zho_TMEM_U000293", '"Itini'),
     ]:
-        tree = etree.parse(HERE.parent / "XML" / file)
-        assert phrase in tree.findtext(f'S[@id="{sid}"]/FORM[@kindOf="original"]')
+        assert phrase in final[resolve(sid)].findtext('FORM[@kindOf="original"]')
 
 
 def test_final_ids_and_approved_tiers():
@@ -97,9 +114,11 @@ def test_final_ids_and_approved_tiers():
 
     published = {s.get("id") for f in (HERE / "pre_correction_snapshot").rglob("*.xml")
                  for s in etree.parse(f).findall("S")}
-    final = {s.get("id"): s for f in (HERE.parent / "XML").rglob("*.xml")
-             for s in etree.parse(f).findall("S")}
-    assert published - final.keys() == {"GLOSBE_ami_zho_TMEM_U000046"}
+    final = final_sentences()
+    ledger = withdrawn()
+    assert published - final.keys() == {k for k, v in ledger.items() if v["action"] != "text merged"}
+    assert all(v["kept_id"] in final for k, v in ledger.items() if v["action"] != "text merged")
+    assert "GLOSBE_ami_zho_TMEM_U000046" in final  # keep_published_ids.csv
     assert final.keys() - published == {"GLOSBE_tay_eng_LEXICAL_T5674367316521196016",
                                         "GLOSBE_xsy_eng_LEXICAL_T5403228964499116686"}
     for sentence in final.values():
@@ -119,8 +138,6 @@ def test_source_labels_and_date_are_retained_in_the_snapshot():
 
 
 @pytest.mark.parametrize("first,second,spellings,translations", [
-    (29, 30, ["btúnux", "btunux"], ["stone", "stone"]),
-    (93, 104, ["kāyal", "kayal"], ["sky", "sky"]),
     (415, 425, ["sílung", "silung"], ["sea", "ocean"]),
 ])
 def test_standard_collisions_preserve_distinct_source_entries(first, second, spellings, translations):
@@ -134,19 +151,46 @@ def test_standard_collisions_preserve_distinct_source_entries(first, second, spe
     assert len({s.findtext('FORM[@kindOf="standard"]') for s in entries}) == 1
 
 
-def test_parallel_translation_witnesses_and_language_homographs_survive():
+def test_ruled_duplicates_are_withdrawn():
+    final, ledger = final_sentences(), withdrawn()
+    for old, keep in [("GLOSBE_tay_eng_LEXICAL_U000030", "GLOSBE_tay_eng_LEXICAL_U000029"),
+                      ("GLOSBE_tay_eng_LEXICAL_U000104", "GLOSBE_tay_eng_LEXICAL_U000093"),
+                      ("GLOSBE_trv_eng_LEXICAL_U000111", "GLOSBE_xsy_eng_LEXICAL_U000475")]:
+        assert old not in final and keep in final
+        assert ledger[old]["kept_id"] == keep and ledger[old]["action"] == "deleted"
+
+
+def test_one_amis_file_joins_identical_sentences():
     from lxml import etree
 
-    pairs = [
-        ("Amis/Glosbe_ami_eng_tmem.xml", "GLOSBE_ami_eng_TMEM_U000012", "eng"),
-        ("Amis/Glosbe_ami_zho_tmem.xml", "GLOSBE_ami_zho_TMEM_U000143", "zho"),
-    ]
-    forms = []
-    for file, sid, language in pairs:
-        s = etree.parse(HERE.parent / "XML" / file).find(f'S[@id="{sid}"]')
-        assert s.find('TRANSL').get(SOURCE.XML_LANG) == language
-        forms.append(s.findtext('FORM[@kindOf="original"]'))
-    assert forms[0] == forms[1]
+    assert not (HERE.parent / "XML/Amis/Glosbe_ami_zho_tmem.xml").exists()
+    root = etree.parse(HERE.parent / "XML/Amis/Glosbe_ami_eng_tmem.xml").getroot()
+    assert root.get("id") == "GLOSBE_ami_eng_TMEM"
+    assert withdrawn()["GLOSBE_ami_zho_TMEM"]["kept_id"] == "GLOSBE_ami_eng_TMEM"
+    s = root.find('S[@id="GLOSBE_ami_eng_TMEM_U000012"]')
+    assert resolve("GLOSBE_ami_zho_TMEM_U000143") == "GLOSBE_ami_eng_TMEM_U000012"
+    assert [t.get(SOURCE.XML_LANG) for t in s.findall("TRANSL")] == ["eng", "zho"]
+    kept = root.find('S[@id="GLOSBE_ami_zho_TMEM_U000046"]')
+    assert [t.get(SOURCE.XML_LANG) for t in kept.findall("TRANSL")] == ["zho"]
+    joined = {k for k, v in withdrawn().items() if v["action"] == "merged"}
+    assert len(joined) == 1821
+
+
+def test_highlight_spaces_and_editorial_notes():
+    final = final_sentences()
+    form = lambda sid: final[resolve(sid)].find('FORM[@kindOf="original"]')
+    assert '"o wacay' in form("GLOSBE_ami_zho_TMEM_U000012").text
+    assert "sa'opo i, oya" in form("GLOSBE_ami_zho_TMEM_U000233").text
+    assert "'Olic 118 ," in form("GLOSBE_ami_zho_TMEM_U000393").text  # in both captures
+    note = form("GLOSBE_ami_eng_TMEM_U000811")
+    assert note.get("notes") == "(Nengnengen ko saka 12 fatac)"
+    assert note.text.endswith("so'linay kimad")
+    assert "private research" not in final["GLOSBE_ami_eng_LEXICAL_U000001"].getparent().get("BibTeX_citation")
+
+
+def test_language_homographs_survive():
+    from lxml import etree
+
     for language, folder, number, meaning in [("ami", "Amis", 23, "father"), ("tay", "Atayal", 149, "uncle")]:
         tree = etree.parse(HERE.parent / f"XML/{folder}/Glosbe_{language}_eng_lexical.xml")
         s = tree.find(f'S[@id="GLOSBE_{language}_eng_LEXICAL_U{number:06}"]')

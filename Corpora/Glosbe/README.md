@@ -1,8 +1,8 @@
 # Glosbe Formosan Corpus
 
 This corpus contains Glosbe dictionary and translation-memory examples for Amis,
-Atayal, Saisiyat and Truku. It has eight XML files, 7,610 S, 7,789 TRANSL,
-15,220 FORM and 15,220 PHON. There is no W/M analysis or Formosan audio.
+Atayal, Saisiyat and Truku. It has seven XML files, 5,787 S, 7,758 TRANSL,
+11,574 FORM and 11,574 PHON. There is no W/M analysis or Formosan audio.
 Glosbe is crowdsourced; preserving a source pair does not establish that its
 translation or language label is correct. Religious/JW material predominates.
 
@@ -23,11 +23,31 @@ locators, hashes and assigned S IDs. The full 5,860-row Chinese witness and
 historical inputs remain available for tracing repeated and typographic variants.
 `CodeAndDocs/source_labels.csv` records the 753 reviewed English pairs whose
 matching page, paragraph or outline labels are editorial locators. Those labels
-remain in the frozen source. Dates, years, unpaired numerals and Chinese source
-labels are preserved. Parenthetical elaborations, dates written with slashes and
-navigation symbols remain intact. `CodeAndDocs/source_notes.csv` moves sixteen
-matching journal-citation suffixes into FORM/TRANSL notes, preserving their wording
-without passing the references to PHON. Other source text is unchanged.
+remain in the frozen source and are published as `notes=` on the FORM and the
+English TRANSL. `CodeAndDocs/source_notes.csv` moves sixteen matching
+journal-citation suffixes into FORM/TRANSL notes.
+
+**Editorial material goes to notes** (maintainer, 2026-10-18: "Move to notes=
+(both files)"; "Consistency is good. Putting in notes is fine."). In the Amis
+translation memory, the build moves out of the Amis original FORM and the English
+TRANSL, into that element's `notes=`: scripture and reading references in
+parentheses or after a final dash (`(Loma 8:35)`, ` -Luka 12:15.`,
+` -'Osien ko Isaya 40:26.`, an English segment's leading `33:12-17) `),
+paragraph/picture/box cross-references (`(Nengnengen ko saka 12 fatac)`,
+`(See paragraph 12)`, `(See opening picture.)`), leading paragraph, page and list
+labels (`9 `, `6, 7. (1) `, `(b) `) and a list label that opens a second question,
+and the captions `(no Kowaping)` / `(no Padaka)`. In the 2026-10-18 build: 312
+citations, 159 cross-references, 528 labels and 17 captions, plus the 1,457
+source-label notes. A segment that is nothing but such a reference stays as text.
+Years and numerals that belong to the sentence (`1943 miheca`, `17 ko mihecaan`)
+stay. Chinese TRANSL text is not changed. Notes are not passed to PHON.
+
+**Main's typography is kept where the PR's was rejected** (maintainer, 2026-10-18:
+dashes, dates, symbols "Reject"; ellipsis "Reject").
+`CodeAndDocs/main_typography.csv` restores main's commas for source em-dashes,
+`1988.11.1` dates, `,` for menu ` > `, no `®`, and `...` for `. . .` in 202 fields;
+each row names the exact text it replaces and the build stops if that text has
+changed.
 `CodeAndDocs/source_markers.csv` records the reviewed footnote and highlight roles
 used during source capture; it does not authorize stripping unreviewed markers.
 
@@ -41,9 +61,37 @@ They concern dictionary candidates only; `trv` means Truku in that comparison.
 
 ## Corrections and identifiers
 
-Published TEXT/S identities are retained, except for one identical Chinese S:
-`GLOSBE_ami_zho_TMEM_U000046` is represented by `..._U000012`. Their published
-FORM, PHON and translation are identical. `CodeAndDocs/source_aliases.csv` also
+**One Amis translation-memory file** (maintainer, 2026-10-18: "If we have
+Mandarin and English translations for the same Amis, is it one S or two? It
+should be one, with both English and Mandarin translations."; "For Glosbe, I
+think we can have just one file. Some Ss have translations in English, some in
+Mandarin, and some in both."). `XML/Amis/Glosbe_ami_eng_tmem.xml` keeps its path
+and TEXT id and now holds 4,625 S: 2,392 with English only, 1,758 with English
+and Chinese, 475 with Chinese only. An Amis-Chinese S whose Amis original FORM is
+identical (whitespace-normalised, after the fixes above) to exactly one Amis-English
+S joins it; 1,821 Amis-Chinese ids were withdrawn this way. Every other
+Amis-Chinese S moved over with its own id. Texts that differ only by punctuation,
+spacing, quotes or a few letters were not joined. `Glosbe_ami_zho_tmem.xml` was
+removed.
+
+**Withdrawn identifiers** (POL-037, POL-051) are listed with the id kept in their
+place, the reason and the maintainer's words in
+[`CodeAndDocs/withdrawn_ids.csv`](CodeAndDocs/withdrawn_ids.csv): 1,821 joined
+Amis-Chinese S ids, the TEXT id `GLOSBE_ami_zho_TMEM` (kept:
+`GLOSBE_ami_eng_TMEM`), and three duplicate dictionary entries deleted by ruling:
+`GLOSBE_tay_eng_LEXICAL_U000030` btunux "stone" (kept U000029 btúnux),
+`GLOSBE_tay_eng_LEXICAL_U000104` kayal "sky" (kept U000093 kāyal) and the Truku
+`GLOSBE_trv_eng_LEXICAL_U000111` yako "I" (kept the Saisiyat
+`GLOSBE_xsy_eng_LEXICAL_U000475`). The build stops if its join plan differs from
+the ledger.
+
+`GLOSBE_ami_zho_TMEM_U000046`, identical to `..._U000012`, is not ruled and stays
+as published on main: [`CodeAndDocs/keep_published_ids.csv`](CodeAndDocs/keep_published_ids.csv)
+renders it from the witness copy main published and keeps it out of the alias
+replay, duplicate removal and the join. U000012 joined Amis-English U003882;
+U000046 remains a Chinese-only S with the same Amis text. Deleting that row
+restores the alternative (U000046 represented by U000012).
+`CodeAndDocs/source_aliases.csv` also
 accounts for 49 redundant English records in the old proposal. These are repeated
 reference examples, not repeated occurrences in a continuous story (POL-022).
 Distinct translations remain in one S with `ver="alt"` after the first (POL-025).
@@ -51,8 +99,14 @@ The two new lexical S use immutable Glosbe translation IDs. Text corrections do
 not renumber records or generate new identities from their spelling.
 
 The parser preserves word spaces around apostrophes, including the 26 dictionary
-entries damaged by the old cleanup. Amis source spaces are also preserved in
-Joseph's witness. Shared cleaning owns Unicode typography and quotation handling.
+entries damaged by the old cleanup. Joseph's witness was scraped from Glosbe search
+pages that pad the searched word with spaces; the build removes that padding where
+it shows (`i ,`, `han ?`, `( Nengnengen`, `" o wacay`) (maintainer, 2026-10-18:
+"Fix the whole highlight-space class (426 S) before merge"; "No space after \"").
+[`CodeAndDocs/highlight_space_keep.csv`](CodeAndDocs/highlight_space_keep.csv)
+keeps 92 such spaces that main already published, plus `'Olic 118 ,`, which the
+English-paired capture also prints. Two hand edits restore the space after a comma
+in Amis-English U000916 and U001027 (ruling: "Restore the space (manual edit)"). Shared cleaning owns Unicode typography and quotation handling.
 Only explicitly reviewed footnote stars and three keyword-highlighting pairs are
 removed; a previously unreviewed star stops source capture. Literal grammaticality
 judgments must not be admitted by stripping their markers (POL-016).
@@ -60,7 +114,7 @@ judgments must not be admitted by stripping their markers (POL-016).
 Joshua's accepted quotation corrections are retained in
 `CodeAndDocs/quote_corrections.csv`. The original pre-correction XML remains
 unchanged in `CodeAndDocs/pre_correction_snapshot/` (POL-035).
-`CodeAndDocs/manual_edits.xml` replays 190 reviewed S blocks before cleaning so
+`CodeAndDocs/manual_edits.xml` replays 192 reviewed S blocks before cleaning so
 fresh source builds preserve corrections without appending the same classifier
 events on every run. It preserves three repairs that the restored context otherwise
 defeats, separates the two quotations in Chinese S U001443,
@@ -101,8 +155,16 @@ Glosbe is crowdsourced and contains incorrect or incomplete translations and
 language labels; religious/JW examples dominate. Amis and Atayal dialects are
 unknown, and the approved Amis conversion does not resolve every o/u pronunciation.
 Recorded quotation repairs preserve reviewed readings, but automatic quotation
-classification can still miss errors. Parallel English/Chinese witnesses and
-distinct source spellings remain separate even when their standard forms coincide.
+classification can still miss errors. Distinct source spellings remain separate
+even when their standard forms coincide.
+
+Open as of 2026-10-18 (not ruled): `Glosbe_ami_eng_tmem.xml` now also carries the
+Chinese translations but keeps its name and its Amis-English citation; 121
+Chinese-only S whose Amis differs from an Amis-English S only by spacing,
+punctuation, quotes or a few letters, and 3 that match two Amis-English S, are not
+joined; U000046 (above); the 92 highlight spaces main already published (removing
+them would make 79 pairs of Chinese-only S identical); paragraph numbers,
+cross-references and citations inside Chinese TRANSL text are unchanged.
 
 ## Reproduction
 
@@ -115,8 +177,9 @@ FORMOSANBANK_ROOT=/path/to/FormosanBank \
 ```
 
 The entry point starts from committed source records, applies recorded edits,
-cleans, replays reviewed source aliases, deduplicates within each file, standardizes
-with the tables above, and generates both PHON tiers. It uses no network, private sibling or
+cleans, removes within-file duplicates, moves editorial material to notes, replays
+reviewed source aliases, restores main's typography, joins the Amis files,
+standardizes with the tables above, and generates both PHON tiers. It uses no network, private sibling or
 historical tools checkout. Run validation separately using the current QC tools.
 Run `python -m pytest tests` from `CodeAndDocs/` with the same
 `FORMOSANBANK_ROOT`; root-level tests exercise the historical acquisition code.
@@ -128,19 +191,15 @@ Final XML uses the shared registry's Amis, Atayal, Truku and Saisiyat directorie
 (POL-059). Frozen source locators and the pristine baseline retain their historical
 ISO paths. Unexpected XML outside the declared output paths stops a rebuild.
 
-**POL-047 deviation:** After cleaning, the shared removal helper applies the exact
-associations in `source_aliases.csv`, preserving distinct translations as alternate
-readings (POL-025). Ordinary shared deduplication then compares original FORM and
-translations within each file, before standardization; standard spelling collisions
-do not authorize deletion of distinct source spellings.
-
-The reviewed output has no within-file original duplicates. Its 1,225
-English/Chinese parallel groups preserve Joseph's separate witness and translations
-(merged PR #72; POL-022/025). The current checker treats differing translations as
-SOFT. Standard-tier checks also flag three Atayal spelling collisions, two with the
-same translation, although this pipeline deduplicates original forms only. Source
-language is not part of the checker's key, so Saisiyat and Truku `yako` also match.
-Fixtures protect these distinct originals; findings remain visible for review.
+**POL-047 deviation:** Right after cleaning, the shared duplicate removal
+(`plan_removals`/`apply_removals`, original tier, within each file) runs through a
+corpus-local wrapper that honours `keep_published_ids.csv`. It runs before the
+editorial step on purpose: moving references to notes makes 30 pairs of published
+Amis-Chinese S (copies that differ only by a highlight space main published)
+identical, and withdrawing either id is not ruled. After that, the shared removal
+helper applies the exact associations in `source_aliases.csv`, preserving distinct
+translations as alternate readings (POL-025); standard spelling collisions do not
+authorize deletion of distinct source spellings.
 
 [Build provenance](CodeAndDocs/provenance.json) records the actual shared checkout
 commit without selecting or requiring that version. A Git-free export can supply

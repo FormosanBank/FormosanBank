@@ -6,7 +6,6 @@
 
 Campbell-Favorlang rights
 Campbell-Favorlang notes
-Glosbe notes
 HundredPaiwanStories notes
 ILRDF_Dicts notes
 Li-Conjunction-Thao notes
