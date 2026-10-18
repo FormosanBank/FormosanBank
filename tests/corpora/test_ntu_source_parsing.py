@@ -4,6 +4,9 @@ Maintainer's rulings, 2026-10-18 (NTU follow-up review), one test group each:
 
 * a malformed code-switch tag, '<T2mi.jioL2T>' (TsouConv-typhoon record 421):
   "fix that stripping." (scripts/utils.py, _L2M_RE);
+* a Sakizaya grammar example quoted from a conversation, '100....（2.2）^yah'
+  (intonation-unit number, pause, then the word): the unit number and the pause
+  must not be glued onto the word (pipeline_grammar.py, step 15);
 
 The second group holds the published XML to the rulings; NTU_XML_DIR points it
 at another tree (e.g. the pre-change XML, on which these tests fail).
@@ -61,3 +64,18 @@ def test_malformed_code_switch_tag_stripped(sentences):
     leftovers = [(sid, "".join(f.itertext())) for sid, s in sentences.items() for f in s.iter("FORM")
                  if "T2mi" in "".join(f.itertext())]
     assert leftovers == []
+
+
+def test_cited_excerpt_words_carry_no_transcription_apparatus():
+    """Grammar 13.json records 38, 39, 48 quote skzyNr-moving_kulang IU100-101,
+    IU105-107 and IU309-312; '100....（2.2）^yah' is the word 'yah'."""
+    root = ET.parse(NTU_XML / "Grammar" / "Sakizaya" / "Sakizaya.xml").getroot()
+    sakizaya = {s.get("id"): s for s in root.iter("S")}
+    words = {sid: [w.find("FORM").text for w in sakizaya[sid].findall("W")]
+             for sid in ("13_S_38", "13_S_39", "13_S_48")}
+    assert words["13_S_38"] == ["yah", "ta-luma'", "kina", "adiwawa", "sa", "ku", "babalaki"]
+    assert words["13_S_39"][0] == "sa-ka-ta-luma'" and words["13_S_39"][6] == "sa"
+    assert words["13_S_48"][0] == "ya" and "caliw" in words["13_S_48"]
+    for sid, forms in words.items():
+        for form in forms:
+            assert not any(ch.isdigit() for ch in form) and "==" not in form, (sid, form)
