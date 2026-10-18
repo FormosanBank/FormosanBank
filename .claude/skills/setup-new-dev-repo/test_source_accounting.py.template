@@ -1,0 +1,79 @@
+"""Every source unit is accounted for: emitted, or rejected with a reason.
+
+A "complete" inventory that is complete only of itself is the defect this
+test exists for (Seediq-Chang: 353 of 353 blocks "reviewed" while chapters 5
+and 6 were never extracted). The test enumerates the SOURCE's own units and
+checks that each is either in the published XML or in the rejected list, that
+the two sets are disjoint, and that every rejection carries a reason. It skips
+when the source is not on disk (a private PDF does not ship with the corpus).
+
+Fill in the two functions marked TODO for this corpus's notion of a unit:
+numbered examples, dictionary rows, verses, pages, spreadsheet rows.
+"""
+from pathlib import Path
+import csv
+
+import pytest
+from lxml import etree
+
+HERE = Path(__file__).resolve().parent
+CODE = HERE.parent                      # CodeAndDocs/
+CORPUS = CODE.parent
+SOURCE = CODE / "source"                # TODO: where the pinned source lives
+REJECTED = CODE / "rejected.tsv"        # unit<TAB>reason, written by generate_xml.py
+XML_DIR = CORPUS / "XML"
+
+
+def source_units() -> set[str]:
+    """TODO: every unit the source contains, by the id the build gives it.
+
+    Derive it from the source itself (count the examples, the rows, the
+    verses), never from the build's output. When the source states its own
+    extent (a lemma count, a page count, a chapter list), assert that too
+    in test_source_declares_the_same_extent below.
+    """
+    raise NotImplementedError
+
+
+def emitted_units() -> set[str]:
+    """TODO: the units present in XML/, by the same id (S/@id, TEXT/@id, …)."""
+    ids = set()
+    for path in XML_DIR.rglob("*.xml"):
+        for s in etree.parse(str(path)).iter("S"):
+            ids.add(s.get("id"))
+    return ids
+
+
+def rejected_units() -> dict[str, str]:
+    if not REJECTED.exists():
+        return {}
+    with REJECTED.open(encoding="utf-8", newline="") as handle:
+        return {row["unit"]: row["reason"] for row in csv.DictReader(handle, delimiter="\t")}
+
+
+needs_source = pytest.mark.skipif(not SOURCE.exists(), reason="source not on disk (private)")
+
+
+@needs_source
+def test_every_source_unit_is_emitted_or_rejected():
+    units = source_units()
+    emitted, rejected = emitted_units(), rejected_units()
+    missing = sorted(units - emitted - set(rejected))
+    assert not missing, f"{len(missing)} source units neither emitted nor rejected: {missing[:10]}"
+    both = sorted(emitted & set(rejected))
+    assert not both, f"emitted AND rejected: {both[:10]}"
+    unknown = sorted((emitted | set(rejected)) - units)
+    assert not unknown, f"not in the source at all: {unknown[:10]}"
+
+
+def test_every_rejection_has_a_reason():
+    empty = sorted(u for u, reason in rejected_units().items() if not reason.strip())
+    assert not empty, f"rejected without a reason: {empty[:10]}"
+
+
+@needs_source
+def test_source_declares_the_same_extent():
+    """TODO when the source states its own extent: compare it with what the
+    build found and print both (Utrecht: the manuscript says 1,072 lemmas,
+    the build finds 1,061 and says so in the README)."""
+    pytest.skip("fill in when the source states an extent")

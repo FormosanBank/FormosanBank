@@ -1,0 +1,7 @@
+record_id	field	action	value	reason
+C5-008	all	supersede		Merged with C5-009 by the gloss-bracket rule in transcribe_chapter5.py (ruled 2026-10-14/15); the build now produces the reviewer's merged example itself.
+C5-009	all	supersede		Merged into C5-008 by the gloss-bracket rule in transcribe_chapter5.py (ruled 2026-10-14/15).
+R085	words	keep		Read as [sapah-mu]/[naku] over [房子-我的]/[我的] (ruled 2026-10-14): the space typed after the slash is dropped.
+R241	glosses	keep		The printed double hyphen in 用-AF--我 is a typo (ruled 2026-10-14); keeps 用-AF-我.
+R351	glosses	set	"[""的時候"", ""AF-吃-你"", ""飯"", ""主格"", ""你"", ""AF-去-我"", ""洗（AF）"", ""身"", ""主格"", ""我""]"	m-aha-ku is AF-去-我 in all of 29a-c, a correction to the printed AF-去-你 by analogy with other examples (ruled 2026-10-14); the reviewer's 洗（AF） is kept.
+R298	translation	set	我相信pawan會打敗walis的。	"No spaces: the translation is Chinese (ruled 2026-10-15); the reviewer typed ""walis的 。""."

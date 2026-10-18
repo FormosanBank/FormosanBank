@@ -6,6 +6,12 @@ check has both sides available, and a stored baseline is redundant state
 that can itself drift. Exits 1 on any change, so a licence cannot move
 without a maintainer overriding a red check.
 
+A corpus that exists only in the head tree is new, not a licence change:
+it had no licence to change. It is listed for the record and does not fail
+the check (maintainer, 2026-10-18: "That's not a rights change. THat's just
+a new corpus that never had rights before."). A new corpus whose files
+disagree on their licence still fails.
+
 Usage:
     python QC/validation/rights_delta.py --base <dir> --head <dir>
 """
@@ -56,8 +62,17 @@ def licenses_at(corpora_path: Path) -> dict[str, str]:
     return result
 
 
+def added(base: dict[str, str], head: dict[str, str]) -> list[str]:
+    """Lines for corpora new in head with one consistent licence (not findings)."""
+    return [f"{corpus}: {head[corpus]!r}" for corpus in sorted(set(head) - set(base))
+            if not isinstance(head[corpus], _Inconsistent)]
+
+
 def compare(base: dict[str, str], head: dict[str, str]) -> list[str]:
-    """Human-readable lines for every difference; empty when unchanged."""
+    """Human-readable lines for every licence change; empty when unchanged.
+
+    A corpus new in head is not a change (see `added`), unless its own files
+    disagree on the licence."""
     lines: list[str] = []
     for corpus in sorted(set(base) | set(head)):
         before, after = base.get(corpus), head.get(corpus)
@@ -68,7 +83,7 @@ def compare(base: dict[str, str], head: dict[str, str]) -> list[str]:
         if before == after:
             continue
         if before is None:
-            lines.append(f"{corpus}: added with {after!r}")
+            continue          # new corpus: listed by `added`, not a change
         elif after is None:
             lines.append(f"{corpus}: removed (was {before!r})")
         else:
@@ -82,7 +97,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--head", required=True, type=Path)
     args = parser.parse_args(argv)
 
-    lines = compare(licenses_at(args.base), licenses_at(args.head))
+    base, head = licenses_at(args.base), licenses_at(args.head)
+    new = added(base, head)
+    if new:
+        print("New corpora (not a licence change; listed for the record):")
+        for line in new:
+            print(f"  {line}")
+    lines = compare(base, head)
     if not lines:
         print("No corpus licence changed.")
         return 0

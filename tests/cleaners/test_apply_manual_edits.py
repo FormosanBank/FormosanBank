@@ -198,16 +198,38 @@ def test_apply_writes_changelog_md(tmp_path):
     assert "S1" in text and "manual" in text
 
 
-def test_missing_xml_file_in_group_warns_and_skips(tmp_path):
-    # manual_edits.xml references a file that doesn't exist under corpora_path
-    _write(tmp_path / "XML" / "real.xml", _doc(_sent("S1", "x")))
+def test_missing_xml_file_in_group_is_an_error_and_applies_nothing(tmp_path):
+    # manual_edits.xml references a file that doesn't exist under corpora_path.
+    # A wrong FILE path used to be a warning that skipped every record under
+    # it, which is indistinguishable from a successful run (Amis-Pa-Verbs,
+    # path="pa-verbs.xml" for Amis/pa-verbs.xml). It now refuses to run.
+    real = tmp_path / "XML" / "real.xml"
+    _write(real, _doc(_sent("S1", "x")))
     man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
-    _write(man, '<MANUAL_EDITS><FILE path="ghost.xml">'
-                '<S id="S1"><FORM kindOf="original">y</FORM></S>'
-                "</FILE></MANUAL_EDITS>")
+    _write(man, '<MANUAL_EDITS>'
+                '<FILE path="ghost.xml"><S id="S1"><FORM kindOf="original">y</FORM></S></FILE>'
+                '<FILE path="real.xml"><S id="S1"><FORM kindOf="original">z</FORM></S></FILE>'
+                "</MANUAL_EDITS>")
+    before = real.read_bytes()
     proc = _run_apply(tmp_path / "XML")
+    assert proc.returncode == 2, proc.stdout + proc.stderr
+    assert "ghost.xml" in proc.stderr and "ERROR" in proc.stderr
+    assert real.read_bytes() == before, "nothing may be applied when a path is unresolved"
+    assert not (tmp_path / "CodeAndDocs" / "manual_edits.md").exists()
+
+
+def test_missing_xml_file_in_group_warns_and_skips_with_allow_missing(tmp_path):
+    real = tmp_path / "XML" / "real.xml"
+    _write(real, _doc(_sent("S1", "x")))
+    man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
+    _write(man, '<MANUAL_EDITS>'
+                '<FILE path="ghost.xml"><S id="S1"><FORM kindOf="original">y</FORM></S></FILE>'
+                '<FILE path="real.xml"><S id="S1"><FORM kindOf="original">z</FORM></S></FILE>'
+                "</MANUAL_EDITS>")
+    proc = _run_apply(tmp_path / "XML", "--allow-missing")
     assert proc.returncode == 0, proc.stderr
     assert "ghost.xml" in proc.stdout and "skipping" in proc.stdout.lower()
+    assert _form(real, "S1") == "z"
 
 
 def test_capture_then_apply_roundtrip(tmp_path):

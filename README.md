@@ -89,7 +89,6 @@ QC/
 │   ├── logs/
 │   │   ├── Amis_ePark
 │   │   └── Amis_ILRDF_Dicts
-│   ├── orthography_compare.py
 │   └── orthography_extract.py
 ├── validation/
 │   ├── logs/
@@ -334,26 +333,6 @@ dataset is installed. Interrupted transfers resume from
    - **Usage**: `python3 QC/count_tokens.py <corpora_path>`
    - **Example**: `python3 QC/count_tokens.py ./Corpora`
    - **Output** The code will output the count for each language as well as the count per resource then will print the total token count across the corpora
-
-2. **`orthography_compare.py`**
-   - **Purpose**: Compares orthographic features between two corpora using various similarity and distance metrics to determine if the two corpora use the same orthography or not.
-   - **Usage**:
-     ```bash
-     python3 QC/orthography/orthography_compare.py --o_info_1 <orthographi_info_path1> --o_info_2 <orthographi_info_path2>
-     ```
-   - **Arguments**:
-     - `--o_info_1`: Specifies the path to the first log folder containing the orthograpihc info. Should be in the format `Language_Corpus`.
-     - `--o_info_2`: Specifies the path to the second log folder containing the orthograpihc info. Should be in the format `Language_Corpus`.
-
-   - **Analysis Metrics Used**:
-     - **Jaccard Similarity**: Measures the overlap between sets of characters in the two corpora.
-     - **Overlap Coefficient**: Compares the intersection of character sets, normalized by the smaller set size.
-     - **Cosine Similarity**: Computes similarity based on the angle between character frequency vectors.
-     - **Euclidean Distance**: Measures the straight-line distance between frequency vectors, indicating overall difference.
-     - **Kullback-Leibler (KL) Divergence**: Measures the difference in information between character distributions.
-
-   - **Output**:
-     - This script generates comparison visuals for each similarity and distance metric, helping users understand the differences in orthography between corpora.
 
 3. **`orthography_extract.py`**
    - **Purpose**: Extracts and analyzes orthographic features, such as character frequencies, from XML files for specific languages and corpus.

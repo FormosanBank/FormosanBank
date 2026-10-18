@@ -704,3 +704,151 @@ def test_g004_still_fires_on_stacked_infixes_with_split_root():
     findings = _run(gloss_scrape.g004_infix_root_reconstructed, xml)
     assert [f.location for f in findings] == ["S=s W=w"]
     assert "pukpuk" in findings[0].message
+
+
+# --------------------------------------------------------------------------
+# G014-G018 (skills review D8 and D7, 2026-10-17)
+# --------------------------------------------------------------------------
+
+def _glossed(words, lang="ami", dialect="Coastal", sid="s1", gloss_lang="eng"):
+    """An S whose W tier is [(form, gloss), ...]; M-less, so only W glosses matter."""
+    ws = "".join(
+        f'<W id="{sid}w{i}"><FORM kindOf="original">{f}</FORM>'
+        f'<TRANSL kindOf="original" xml:lang="{gloss_lang}">{g}</TRANSL></W>'
+        for i, (f, g) in enumerate(words))
+    return (f'<S id="{sid}"><FORM kindOf="original">{" ".join(f for f, _g in words)}</FORM>'
+            f'<TRANSL kindOf="original" xml:lang="eng">t</TRANSL>{ws}</S>')
+
+
+def _doc(sentences, lang="ami", dialect="Coastal"):
+    return (f'<?xml version="1.0" encoding="UTF-8"?>\n<TEXT xml:lang="{lang}" dialect="{dialect}" '
+            f'citation="c" BibTeX_citation="b" copyright="c">{"".join(sentences)}</TEXT>')
+
+
+def test_g014_rare_substring_gloss_of_a_dominant_gloss_fires():
+    doc = _doc([_glossed([("mikalic", "catch-UV")], sid=f"s{i}") for i in range(4)]
+               + [_glossed([("mikalic", "catch")], sid="s9")])
+    found = _run(gloss_scrape.g014_rare_gloss_is_substring_of_dominant, doc)
+    assert [f.rule_id for f in found] == ["G014"]
+    assert "'mikalic' glossed 'catch' 1x but 'catch-UV' 4x" in found[0].message
+    # an unrelated rare gloss is a sense split, not a shift
+    doc2 = _doc([_glossed([("mikalic", "catch-UV")], sid=f"s{i}") for i in range(4)]
+                + [_glossed([("mikalic", "fish-UV")], sid="s9")])
+    assert _run(gloss_scrape.g014_rare_gloss_is_substring_of_dominant, doc2) == []
+
+
+def test_g015_fires_on_a_sentence_where_function_words_carry_strange_glosses():
+    normal = [_glossed([("ko", "NOM"), ("to", "OBL"), ("wawa", "child")], sid=f"s{i}") for i in range(24)]
+    shifted = [_glossed([("ko", "child"), ("to", "NOM"), ("wawa", "OBL")], sid="s99")]
+    found = _run(gloss_scrape.g015_function_word_aberrant_gloss_rate, _doc(normal + shifted))
+    assert [(f.rule_id, f.location, f.count) for f in found] == [("G015", "S=s99", 3)]   # all three words are frequent here
+    assert _run(gloss_scrape.g015_function_word_aberrant_gloss_rate, _doc(normal)) == []
+
+
+def test_g016_flags_unbalanced_ascii_and_cjk_brackets():
+    doc = _doc([_glossed([("a", "catch (with"), ("b", "a net)"), ("c", "拿（手"), ("d", "fine (ok)")])])
+    found = _run(gloss_scrape.g016_unbalanced_brackets_in_gloss, doc)
+    assert [(f.character, f.location) for f in found] == [("(", "S=s1 W=s1w0"), (")", "S=s1 W=s1w1"), ("（", "S=s1 W=s1w2")]
+    assert all(f.severity is Severity.SOFT for f in found)
+
+
+def test_g017_flags_an_english_run_in_an_amis_text():
+    sentences = [
+        _glossed([("maolah", "like"), ("kako", "1SG")], sid="s1"),
+        _glossed([("the", "x"), ("children", "x"), ("are", "x"), ("here", "x")], sid="s2"),
+        _glossed([("maolah", "like"), ("the", "x"), ("kako", "1SG")], sid="s3"),   # one English word: no run
+    ]
+    found = _run(gloss_scrape.g017_out_of_language_run, _doc(sentences))
+    assert [(f.location, f.count) for f in found] == [("S=s2", 3)]   # the, are, here; "children" rides along
+    assert "3 of 4 consecutive words read as English, not Amis" in found[0].message
+    # everyday Amis words that are also short English ones ('a', 'to', 'no') never count
+    amis = [_glossed([("a", "LNK"), ("to", "OBL"), ("no", "GEN"), ("wawa", "child")], sid="s4")]
+    assert _run(gloss_scrape.g017_out_of_language_run, _doc(amis)) == []
+
+
+def test_g018_latin_only_glosses_on_a_chinese_tier_are_one_finding():
+    doc = _doc([_glossed([("ko", "主格"), ("mikalic", "AV"), ("wawa", "小孩"), ("to", "OBL"), ("a", "PV")],
+                         gloss_lang="zho")])
+    found = _run(gloss_scrape.g018_latin_gloss_on_chinese_tier, doc)
+    assert [(f.rule_id, f.count) for f in found] == [("G018", 3)]
+    assert "3 of 5 Chinese-declared" in found[0].message
+    clean = _doc([_glossed([("ko", "主格"), ("wawa", "小孩")], gloss_lang="zho")])
+    assert _run(gloss_scrape.g018_latin_gloss_on_chinese_tier, clean) == []
+
+
+# --------------------------------------------------------------------------
+# Inline <UNCLEAR/> in a gloss (approved shared-tool fix, 2026-10-18): the
+# whole gloss is read and each <UNCLEAR/> is one gloss unit. Before the fix
+# '.text' stopped at the element, so 'if-main-<UNCLEAR/>-outsider-nom' read
+# as 'if-main-' (G001 HARD + G002) on HundredPaiwanStories.
+# --------------------------------------------------------------------------
+
+UNCLEAR_XML = """<TEXT><S id="s">
+  <TRANSL xml:lang="eng">He went <UNCLEAR/> (Wu 1995, p. 34)</TRANSL>
+  <W id="w1">
+    <FORM kindOf="original">ka-ki-tja-djalan-an</FORM>
+    <TRANSL kindOf="original" xml:lang="eng">if-main-<UNCLEAR/>-outsider-nom</TRANSL>
+    <M id="m1"><FORM kindOf="original">ka</FORM><TRANSL xml:lang="eng">if</TRANSL></M>
+    <M id="m2"><FORM kindOf="original">ki</FORM><TRANSL xml:lang="eng">main</TRANSL></M>
+    <M id="m3"><FORM kindOf="original">tja</FORM><TRANSL xml:lang="eng"><UNCLEAR/></TRANSL></M>
+    <M id="m4"><FORM kindOf="original">djalan</FORM><TRANSL xml:lang="eng">outsider</TRANSL></M>
+    <M id="m5"><FORM kindOf="original">an</FORM><TRANSL xml:lang="eng">nom</TRANSL></M>
+  </W>
+  <W id="w2">
+    <FORM kindOf="original">ka-un</FORM>
+    <TRANSL kindOf="original" xml:lang="eng"><UNCLEAR/></TRANSL>
+    <M id="m6"><FORM kindOf="original">ka</FORM><TRANSL xml:lang="eng">x</TRANSL></M>
+    <M id="m7"><FORM kindOf="original">un</FORM><TRANSL xml:lang="eng">y</TRANSL></M>
+  </W>
+</S></TEXT>"""
+
+
+def test_transl_text_reads_whole_gloss_with_unclear_as_one_unit():
+    w1, w2 = _tree(UNCLEAR_XML).getroot().iter("W")
+    assert gloss_scrape._transl_text(w1) == "if-main-?-outsider-nom"
+    assert gloss_scrape._gloss_units(gloss_scrape._transl_text(w1)) == 5
+    assert gloss_scrape._transl_text(w2) == "?"
+    assert gloss_scrape._gloss_units(gloss_scrape._transl_text(w2)) == 1
+
+
+def test_g001_g002_silent_on_inline_unclear_that_fills_a_slot():
+    for rule in (gloss_scrape.g001_marker_skeleton_parity,
+                 gloss_scrape.g002_M_count_matches_gloss_units):
+        assert "S=s W=w1" not in [f.location for f in _run(rule, UNCLEAR_XML)]
+
+
+def test_g001_g002_still_compare_a_whole_unclear_gloss():
+    """A gloss that is only <UNCLEAR/> is one unit, as the source's '?' was:
+    against a two-morpheme form it is still reported, not skipped as empty."""
+    for rule in (gloss_scrape.g001_marker_skeleton_parity,
+                 gloss_scrape.g002_M_count_matches_gloss_units):
+        assert "S=s W=w2" in [f.location for f in _run(rule, UNCLEAR_XML)]
+
+
+def test_g012_reads_text_after_inline_unclear():
+    findings = _run(gloss_scrape.g012_trailing_paren_note_in_TRANSL, UNCLEAR_XML)
+    assert [f.location for f in findings] == ["S=s"]
+
+
+def test_g017_reads_german_and_french_runs_too():
+    sentences = [
+        _glossed([("maolah", "like"), ("kako", "1SG")], sid="s1"),
+        _glossed([("der", "x"), ("Hund", "x"), ("ist", "x"), ("nicht", "x"), ("hier", "x")], sid="s2"),
+        _glossed([("nous", "x"), ("sommes", "x"), ("dans", "x"), ("la", "x"), ("maison", "x"), ("avec", "x"), ("vous", "x")], sid="s3"),
+        _glossed([("mit", "x"), ("kako", "1SG"), ("pas", "x")], sid="s4"),   # attested Formosan words: never foreign
+    ]
+    found = _run(gloss_scrape.g017_out_of_language_run, _doc(sentences))
+    assert [(f.location, f.count) for f in found] == [("S=s2", 3), ("S=s3", 4)]
+    assert "read as German" in found[0].message and "read as French" in found[1].message
+
+
+def test_g019_counts_kana_and_han_in_forms_per_file():
+    sentences = [
+        _glossed([("sauqaljai", "x"), ("稲葉浩志", "x"), ("いなば", "x")], sid="s1"),       # kana → Japanese
+        _glossed([("?", "x"), ("(語氣上揚)", "x")], sid="s2"),                              # Han ≥ 3 → Chinese or Japanese
+        _glossed([("kman", "x"), ("da", "x")], sid="s3"),
+        _glossed([("Taywan", "x"), ("(台灣)", "x")], sid="s4"),                              # two Han: below the bar
+    ]
+    found = _run(gloss_scrape.g019_han_or_kana_in_form, _doc(sentences))
+    assert [(f.character, f.location, f.count) for f in found] == [("kana", "S=s1", 1), ("han", "S=s2", 1)]
+    assert "kana (Japanese)" in found[0].message and "Chinese or Japanese" in found[1].message

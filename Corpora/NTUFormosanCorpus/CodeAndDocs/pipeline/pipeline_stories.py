@@ -59,6 +59,7 @@ from gloss_shift import apply_to_records as apply_shift_repairs  # noqa: E402
 from gloss_shift import load_table as load_shift_repairs  # noqa: E402
 from gloss_shift import EVENT_CLOSE, EVENT_OPEN  # noqa: E402
 import gloss_shift as gs  # noqa: E402
+import pol028  # noqa: E402
 
 STEPS = {
     0: "rebuild the sentence form from the gloss forms",
@@ -186,8 +187,12 @@ _INLINE_OPTIONAL = re.compile(r"\(([^()*]*)\)")
 
 def has_inline_optional(form: str) -> bool:
     text = (form or "").strip()
+    # A whole optional word may carry the sentence's punctuation after its
+    # parenthesis ('(ngi-palay).'); it is still a whole word (POL-026), not
+    # optional material inside one (POL-026; Ryan S_19, item D2 on the 2026-10-16 follow-ups
+    # page, listed there as a fix under existing policy, not a separate ruling).
     return bool(_INLINE_OPTIONAL.search(text)) and not re.fullmatch(
-        r"\([^()]*\)", text)
+        r"\([^()]*\)\W*", text)
 
 
 def inline_readings(form: str) -> tuple:
@@ -632,6 +637,25 @@ def build(records: list, text_id: str, steps: set, stats: dict,
                 stats["4 ungrammatical sentences dropped"] = stats.get(
                     "4 ungrammatical sentences dropped", 0) + 1
                 continue
+            split = pol028.readings(rows, ori, body, pol028.overrides_for(language, text_id, rid)) if 14 in steps else None
+            if split:
+                # POL-028 (glossed optional morpheme) and POL-026 (optional
+                # phrase): each reading is a sentence of its own, with its own
+                # word and morpheme tiers. See pol028.py. Only the base reading
+                # keeps AUDIO: the recording has that reading only.
+                for sfx, r_rows, r_ori, r_free, notes, keep_audio in split:
+                    emit_sentence(root, text_id, rid + suffix + sfx, dict(body, free=r_free),
+                                  r_rows, r_ori, steps, stats, code_switch, attested, malformed, language=language, audio_shift=audio_shift)
+                    s_new = root.findall("S")[-1]
+                    if not keep_audio:
+                        for a in s_new.findall("AUDIO"):
+                            s_new.remove(a)
+                    if notes:
+                        f = s_new.find("FORM[@kindOf='original']")
+                        f.set("notes", " ".join(x for x in (notes, f.get("notes")) if x))
+                stats["14 records split into readings (POL-028 / POL-026)"] = stats.get(
+                    "14 records split into readings (POL-028 / POL-026)", 0) + 1
+                continue
             emit_sentence(root, text_id, rid + suffix, body, rows, ori, steps, stats,
                           code_switch, attested, malformed, language=language, audio_shift=audio_shift)
     append_note_sentences(root, text_id, stats)
@@ -732,18 +756,18 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
                 "0 sentence forms rebuilt from the gloss", 0) + 1
         alt_s_form = None
         if 14 in steps and any(has_inline_optional(str(r[0])) for r in rows):
-            main_words, alt_words = [], []
-            for r in rows:
-                f = str(r[0])
-                if has_inline_optional(f):
-                    a, b = inline_readings(f)
-                    main_words.append(a)
-                    alt_words.append(b)
-                else:
-                    main_words.append(f)
-                    alt_words.append(f)
-            s_form = " ".join(w for w in main_words if w)
-            alt_s_form = " ".join(w for w in alt_words if w)
+            # Ruling 2026-10-16 (r2~rukai): NTU's sentence line where there is
+            # one; otherwise rebuilt from the gloss forms with the segmentation
+            # marks removed (see pipeline_sentences.emit_sentence).
+            if WORDY.search(" ".join(str(t) for t in ori)):
+                s_form = " ".join(str(t) for t in pol028.reading_ori(ori, False))
+                alt_s_form = " ".join(str(t) for t in pol028.reading_ori(ori, True))
+            else:
+                def _reading(i):
+                    return [[inline_readings(str(r[0]))[i]] + list(r[1:])
+                            if has_inline_optional(str(r[0])) else r for r in rows]
+                s_form = step0_form_from_gloss(_reading(0))
+                alt_s_form = step0_form_from_gloss(_reading(1))
             stats["14 sentences given an alternate form"] = stats.get(
                 "14 sentences given an alternate form", 0) + 1
 
@@ -762,7 +786,7 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
 
         # emit_sentence sees the id with any split suffix ('12a'); the repair
         # table keys on the source record, so the suffix comes off first.
-        base_rid = re.sub(r"[a-z]$", "", str(sid))
+        base_rid = re.sub(r"[a-z]$", "", str(sid).removesuffix("-opt"))
         entries, free_notes = free_entries(body.get("free") or [], text_id,
                                            base_rid, FREE_REPAIRS)
         for lang, text, ver, note in entries:
@@ -1000,6 +1024,38 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
 
 STEPS[16] = "merge each s_end group of records into one sentence"
 
+
+
+def load_timing_grafts(path) -> dict:
+    """{source file: {record id: (start, end, video)}} from audio_timing_grafts.tsv."""
+    lines = [l for l in Path(path).read_text(encoding="utf-8").splitlines() if l and not l.startswith("#")]
+    out: dict = {}
+    for r in csv.DictReader(lines, delimiter="\t"):
+        out.setdefault(r["source_file"], {})[int(r["record"])] = (float(r["start"]), float(r["end"]), r["video"])
+    return out
+
+
+def apply_timing_grafts(recs: list, src_key: str, grafts: dict, stats: dict) -> list:
+    """Give untimed records the time span and recording of NTU's timed
+    transcription of the same text (ruling 2026-10-16; see
+    make_audio_timing_grafts.py). Fails if a record already has timing: the
+    graft must never overwrite NTU's own."""
+    table = next((v for k, v in grafts.items() if src_key.endswith(k)), None)
+    if not table:
+        return recs
+    out = []
+    for r in recs:
+        if isinstance(r, list) and len(r) > 1 and isinstance(r[1], dict) and r[0] in table:
+            span = r[1].get("iu_a_span") or [None, None]
+            if span[0] is not None:
+                raise RuntimeError(f"{src_key} record {r[0]} already has timing {span}")
+            start, end, video = table[r[0]]
+            body = dict(r[1], iu_a_span=[start, end], meta=dict(r[1].get("meta") or {}, video=video))
+            r = [r[0], body] + list(r[2:])
+            stats["audio timing grafted from NTU's timed transcription"] = stats.get(
+                "audio timing grafted from NTU's timed transcription", 0) + 1
+        out.append(r)
+    return out
 
 
 def _first_span(records: list) -> float:
@@ -1350,6 +1406,7 @@ def main() -> int:
     cell_restorations = load_cell_restorations(here / "bc_restorations.tsv")
     # The maintainer's per-cell decisions on the review page, applied after the shifts.
     cell_decisions = load_cell_restorations(here / "gloss_cell_decisions.tsv")
+    timing_grafts = load_timing_grafts(here / "audio_timing_grafts.tsv")
     for path in sorted(args.json.rglob("*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         recs = data if isinstance(data, list) else (list(data.values())[0] if data else [])
@@ -1363,6 +1420,7 @@ def main() -> int:
         recs = apply_shift_repairs(recs, src_key, shift_repairs, stats)
         recs = apply_cell_restorations(recs, src_key, cell_decisions, stats,
                                        label="cells set by the maintainer's decisions")
+        recs = apply_timing_grafts(recs, src_key, timing_grafts, stats)
         # The story's zero point is taken from the SOURCE units, before any
         # merging: it must not depend on how a sentence reduces its units'
         # spans, or changing that reduction silently re-times whole stories.

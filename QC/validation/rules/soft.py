@@ -8,6 +8,7 @@ the CSV writer.
 Signature: same as HARD rules.
 """
 import difflib
+import re
 import unicodedata
 from pathlib import Path
 
@@ -166,20 +167,20 @@ def v144_M_less_W_in_parsed_sentence(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V144 SOFT (POL-023): a morphologically parsed sentence with M-less Ws.
+    """V144 SOFT (POL-057): a morphologically parsed sentence with M-less Ws.
 
-    Ruling 2026-08-12 (re-scoped from per file to **per sentence**): the
-    unit of morphological analysis is the sentence, not the file. In a
-    sentence that carries *some* parsing every W needs at least one M (a
-    single M there reads "analyzed as monomorphemic"); a sentence the
-    author simply never analyzed carries no M tier at all, and demanding
-    M there would fake an analysis. The old file-scoped reading punished
-    exactly that honest mixed state — one parsed sentence made every
-    unparsed sentence in the file a finding.
+    A W with no M is legitimate: it means the word's segmentation is not
+    known (POL-057, which withdrew POL-023's "every W gets at least one M"
+    on 2026-10-17). The finding is kept as a prompt, not a defect: in a
+    sentence where some words are segmented, the reviewer confirms that
+    the M-less ones are deliberately unsegmented. Maintainer
+    (2026-10-17): "V144 as providing SOFT warnings can be kept. It's good
+    to be aware that there are missing Ms and confirm that's intentional."
 
-    Aggregated per file (one Finding, counting the M-less Ws inside
-    parsed sentences). SOFT because existing corpora trip this and need
-    fixing over time.
+    Per sentence (2026-08-12): a sentence the author never analyzed carries
+    no M tier and is not a finding, even beside a parsed sentence.
+    Aggregated per file (one Finding, counting the M-less Ws inside parsed
+    sentences).
     """
     parsed = [ws for ws in _sentence_words(tree) if _carries_parsing(ws)]
     if not parsed:
@@ -199,52 +200,11 @@ def v144_M_less_W_in_parsed_sentence(
         message=(
             f"V144 SOFT: {missing} W elements in {sentences} of "
             f"{len(parsed)} morphologically parsed sentences have no M "
-            f"child (POL-023: within a parsed sentence every W gets at "
-            f"least one M; an unparsed sentence carries no M tier)"
+            f"child — allowed (no M = segmentation unknown, POL-057); "
+            f"confirm each is deliberately unsegmented"
         ),
         path=path,
         count=missing,
-        language=_tree_language(tree, path, index),
-        character="",
-    )]
-
-
-def v145_degenerate_all_single_M_tier(
-    tree: etree._ElementTree,
-    path: Path,
-    index: CorpusIndex | None,
-) -> list[Finding]:
-    """V145 SOFT (POL-023): M level present but the file carries no parsing.
-
-    Ruling 2026-08-10: corpora without morpheme segmentation should have
-    no M level at all — an M tier where every M-bearing W has exactly
-    one M identical in role to its W adds no information (historically:
-    ~100 spurious M shells shipped in YeddaPalemeqBlog).
-
-    Deliberately kept **file-scoped** when V144 went per-sentence
-    (2026-08-12). "Every M mirrors its W" is only evidence of a fake
-    tier in bulk: a single sentence whose handful of words really are
-    monomorphemic is indistinguishable from a mirror tier, and POL-023
-    explicitly blesses single-M Ws as "analyzed as monomorphemic". A
-    whole file with no multi-morphemic word anywhere is the reliable
-    signal; one sentence is not. Same severity as before.
-    """
-    sentences = _sentence_words(tree)
-    if not sentences or any(_carries_parsing(ws) for ws in sentences):
-        return []
-    singles = sum(1 for ws in sentences for w in ws if _children(w, "M"))
-    if singles == 0:
-        return []
-    return [Finding(
-        rule_id="V145",
-        severity=Severity.SOFT,
-        message=(
-            f"V145 SOFT: M level present but no sentence in the file "
-            f"carries any morphological parsing ({singles} mirror single-M "
-            f"Ws) — unsegmented corpora should have no M level (POL-023)"
-        ),
-        path=path,
-        count=singles,
         language=_tree_language(tree, path, index),
         character="",
     )]
@@ -449,6 +409,51 @@ def v157_legacy_alternate_kindOf(
     return findings
 
 
+# A printed alternative inside a sentence: "Qbhni/qduda ka ni", "lemang(e)da",
+# "tualʉhlʉlʉhlʉ(tamana)". The recording can only have read one of them.
+_ALTERNATIVE_SLASH_RE = re.compile(r"[^\W\d_]/[^\W\d_]")
+_ALTERNATIVE_PAREN_RE = re.compile(r"[^\W\d_]\([^\W\d_]+\)|\([^\W\d_]+\)[^\W\d_]")
+
+
+def v163_audio_on_sentence_with_printed_alternative(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """An S carrying AUDIO whose original FORM still prints an alternative (a slash
+    between words, or an optional part in parentheses) should not carry that
+    audio: the clip read one option, and the sentence states two.
+
+    V163 (2026-10-17, skills review D5), after the maintainer's 2026-10-16
+    ruling: "when there are multiple options in a single item, we do NOT
+    include the audio with that item ... The audio should still be used, but is
+    included as an untranscribed audio item". SOFT: a human decides which.
+    """
+    findings: list[Finding] = []
+    for s in tree.iter("S"):
+        if s.find("AUDIO") is None:
+            continue
+        original = next((f for f in s.findall("FORM")
+                         if f.get("kindOf") == "original" and f.get("ver") is None), None)
+        text = (original.text or "") if original is not None else ""
+        hit = _ALTERNATIVE_SLASH_RE.search(text) or _ALTERNATIVE_PAREN_RE.search(text)
+        if not hit:
+            continue
+        s_id = s.get("id") or ""
+        findings.append(Finding(
+            rule_id="V163",
+            severity=Severity.SOFT,
+            message=(f"V163 SOFT audio_on_sentence_with_printed_alternative: S={s_id} has "
+                     f"AUDIO but its original FORM prints an alternative "
+                     f"({hit.group(0)!r} in {text[:60]!r}); attach the clip as "
+                     f"untranscribed audio instead"),
+            path=path,
+            location=f"S={s_id}" if s_id else "S",
+            character=hit.group(0),
+        ))
+    return findings
+
+
 def v151_S_TRANSL_has_no_kindOf(
     tree: etree._ElementTree,
     path: Path,
@@ -504,9 +509,9 @@ def v151_S_TRANSL_has_no_kindOf(
 RULES: list = [
     v010_count_s_without_form,
     v014_count_missing_standard_form,
-    # POL-023 M-tier consistency (2026-08-10; V144 per-sentence 2026-08-12)
+    # M-tier awareness (POL-023 2026-08-10, per sentence 2026-08-12; POL-057
+    # 2026-10-17). V145 moved to hard.py (HARD, 2026-10-17).
     v144_M_less_W_in_parsed_sentence,
-    v145_degenerate_all_single_M_tier,
     # POL-041 W-tier presence (2026-09-03), file-scoped
     v148_W_less_S_in_segmented_file,
     # POL-028 alternate FORMs (2026-09-08)
@@ -514,5 +519,7 @@ RULES: list = [
     v157_legacy_alternate_kindOf,
     # POL-025 S-level TRANSL @kindOf (2026-09-08)
     v151_S_TRANSL_has_no_kindOf,
+    # V163: 2026-10-17 skills review D5 (audio consistency without audio files)
+    v163_audio_on_sentence_with_printed_alternative,
 ]
 CROSS_FILE_RULES: list = []

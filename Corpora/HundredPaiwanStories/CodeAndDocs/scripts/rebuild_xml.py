@@ -31,7 +31,7 @@ from paiwan_source import (
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
-COPYRIGHT = "CC BY-NC"
+COPYRIGHT = "CC BY-NC 4.0"
 MISSING_GLOSS_NOTE = "No source gloss was supplied for final -i."
 
 

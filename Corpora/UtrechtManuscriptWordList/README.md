@@ -66,7 +66,7 @@ python3 Corpora/UtrechtManuscriptWordList/CodeAndDocs/extract_source.py
 
 The build verifies the source ledger's hash, regenerates the source-to-predecessor reconciliation, builds the XML, and compares a second generation byte for byte.
 
-**Deviation from POL-047.** `generate_xml.sh` runs steps 1 and 3 only. `apply_manual_edits.py` has nothing to apply; `clean_xml.py` is not run because the generator emits canonical text directly from a pinned ledger and has no scrape to clean; `standardize.py` and `add_phonology.py` are omitted because no Siraya standard orthography or phonology profile exists. QC lives in `CodeAndDocs/validate.sh`, separately, because a build that cannot finish when a validator fails cannot be used to investigate the failure.
+**POL-047 deviation:** `generate_xml.sh` runs steps 1 and 3 only. `apply_manual_edits.py` has nothing to apply; `clean_xml.py` is not run because the generator emits canonical text directly from a pinned ledger and has no scrape to clean; `standardize.py` and `add_phonology.py` are omitted because no Siraya standard orthography or phonology profile exists. QC lives in `CodeAndDocs/validate.sh`, separately, because a build that cannot finish when a validator fails cannot be used to investigate the failure.
 
 **Build provenance:** [`CodeAndDocs/provenance.json`](CodeAndDocs/provenance.json).
 

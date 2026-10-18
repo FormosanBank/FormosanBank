@@ -3,7 +3,7 @@
 Wikipedia articles in the five Formosan languages that have a Wikipedia:
 Amis (ami), Atayal (tay), Paiwan (pwn), Sakizaya (szy), and Seediq (trv),
 scraped 2026-06 and structured into the FormosanBank XML format. One XML
-file per article (13,238 articles), sentence tier only (no word
+file per article (12,748 articles), sentence tier only (no word
 segmentation, no translations).
 
 ## License and AI Use
@@ -13,17 +13,35 @@ terms in [LICENSE.md](../../LICENSE.md) and
 [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is
 prohibited without prior written permission. Wikipedia text is CC BY-SA.
 
+## Rights
+
+**License:** CC BY-SA 4.0
+**Rights source:** Wikipedia contributors (the source wikis' licence), date not recorded in this repository; evidence: ask maintainer
+
+The articles are Wikipedia text, which Wikipedia publishes under CC BY-SA. The
+`@copyright` value was recorded without a version (`CC BY-SA`) until
+2026-10-16, when it was normalized to `CC BY-SA 4.0` under POL-042 (a value
+that names no version is 4.0). The same one-attribute change was made in the
+POL-035 snapshot (`CodeAndDocs/pre_correction_snapshot/`, 13,278 files),
+because `generate_xml.sh` copies that snapshot into `XML/` and a rebuild must
+reproduce the new value.
+
 ## Reproducing `XML/`
 
 The corpus is **not re-scraped**: the live wikis have moved on since the
 2026-06 scrape, so the published XML is the baseline. The pristine
 pre-correction XML is snapshotted in `CodeAndDocs/pre_correction_snapshot/`
-(POL-035), and `CodeAndDocs/make_xml.sh` regenerates `XML/` from it:
+(POL-035), and `CodeAndDocs/generate_xml.sh` regenerates `XML/` from it:
 
 ```bash
 cd Corpora/Wikipedias
-PYTHON=/path/to/python ./CodeAndDocs/make_xml.sh [path-to-FormosanBank-root]
+PYTHON=/path/to/python ./CodeAndDocs/generate_xml.sh [path-to-FormosanBank-root]
 ```
+
+The FormosanBank commit the published `XML/` was last built against is
+recorded in [CodeAndDocs/provenance.json](CodeAndDocs/provenance.json)
+(POL-052). The build reads it only to print a note when the checkout it runs
+in is a different commit; it always builds with the tools in that checkout.
 
 Steps, in order:
 
@@ -36,8 +54,13 @@ Steps, in order:
    (V142). It is not a grammaticality marker — the article body simply
    starts after it — so the `? ` is dropped (maintainer ruling
    2026-08-12); the standard tier and PHON regenerate from the corrected
-   original in later steps. `CodeAndDocs/manual_edits.md` is the readable
-   changelog.
+   original in later steps. A second Sakizaya record fixes `Luxembourg`
+   (see "Apostrophe handling"). The other 30 records are Seediq: 25 restore
+   article text the historical scrape cut off and 5 restore author credits
+   — see "Restored Seediq source text and author credits" below.
+   32 records in all; every one changes its file on a fresh build (the
+   build log line is `apply: 32 edit(s) across 32 file(s); 0 no-op(s)`).
+   `CodeAndDocs/manual_edits.md` is the readable changelog.
 3. **`delete_duplicate_articles.py`** — the scrape saved 29 articles
    twice (duplicate downloads named `<name> (1).xml` / `(2)`), giving 58
    files with colliding `TEXT/@id`. One file per id is kept — the
@@ -57,6 +80,10 @@ Steps, in order:
    (NFC, HTML entities, typographic quotes/dashes, non-breaking spaces).
    Writes a per-run `XML/cleaner_warnings.csv`: review, then delete —
    it is never committed (POL-033).
+7b. **`drop_redirect_copies.py`** — deletes 490 articles that the scrape
+   downloaded a second time under a redirect title; see "Withdrawn
+   articles: redirect copies" below. It runs after `clean_xml` because the
+   hashes it checks are of the cleaned original FORM.
 8. **`QC/utilities/standardize.py --remove_accents`** — standard tier =
    copy of the original tier with accents/stray combining marks removed.
    No conversion table is applied (dialect unknown).
@@ -65,10 +92,40 @@ Steps, in order:
    differ by dialect appear as `[x|y]` variant groups; punctuation is
    not carried into PHON.
 
-The published corpus is the 13,238 files this leaves.
+The published corpus is the 12,748 files this leaves: 1,892 Amis,
+2,935 Atayal, 455 Paiwan, 5,498 Sakizaya and 1,968 Seediq.
+
+**POL-047 deviation:** besides the canonical steps (restore the source,
+`apply_manual_edits`, `clean_xml`, `standardize`, `add_phonology`), the
+build runs corpus-local steps 3–6 before `clean_xml` (duplicate-download
+and non-content deletion, `dialect="unknown"`, the two apostrophe rulings)
+and step 7b after it (redirect-copy deletion, which must compare cleaned
+text). Each implements a maintainer ruling on this corpus (2026-08-11/12,
+2026-10-14, 2026-10-18), not a general cleaning rule. The source is
+restored by a shell loop in `generate_xml.sh` rather than a corpus-local
+`generate_xml.py`, since the step is a plain copy.
 
 The pipeline is deterministic and idempotent: consecutive runs produce
 byte-identical output.
+
+### Refreshing the source: `refresh_source.sh`
+
+`CodeAndDocs/refresh_source.sh` (POL-047's optional source-acquisition
+script) re-downloads the article text from the five live wikis with the
+original scraper, `download.py`, into `CodeAndDocs/Articles/<Language>/`
+(one plain-text file per article). By default it fetches every title in the
+committed `Titles/` lists (the June 2026 inventory); `--new-titles` first
+deletes those lists so `download.py` re-lists every article on each wiki.
+It refuses to run when `Articles/` already exists, because `download.py`
+skips files that are already there and would mix two download dates.
+Requires network access to `*.wikipedia.org` and
+`pip install -r CodeAndDocs/requirements.txt`.
+
+`generate_xml.sh` never calls it, and a refresh changes no published data
+by itself: the build reads only the committed snapshot. Turning a fresh
+download into published XML is a re-scrape (the historical steps below,
+reviewed, and a new snapshot committed), which needs the maintainer's
+decision first.
 
 ### Historical scrape provenance (not part of the pipeline)
 
@@ -82,17 +139,90 @@ and the `*.log` files recording exactly what those steps removed. Their
 input (the live wikis of 2026-06) no longer exists in that state, so they
 are not re-run.
 
-## Notes for data users
+## Restored Seediq source text and author credits
+
+The historical scrape's citation cutter (`clean_articles.py`) stopped
+reading 30 Seediq articles too early. 30 records in
+`CodeAndDocs/manual_edits.xml` put the missing source text back
+(maintainer ruling 2026-10-18, PR #176: "The manual edits are approve,
+assuming they still run. The notes are approved."). Each record keeps the
+article's previously published text unchanged as the start of the original
+FORM; nothing already published is altered.
+
+- **25 articles get their cut-off body text back** (28 source sections;
+  Gluban has 3 and Tkijig 2). These are village articles whose later
+  sections (beginning `Hangan alang` "village name") followed an early
+  reference heading. The Chinese section labels that the source prints
+  beside each Seediq heading — 322 in all, e.g. `Hangan alang(部落名稱)` —
+  are kept in the FORM `notes` attribute, one per line, not in the text.
+  Ten URL strings in the source sections are left out (link text, not
+  language); the words around them are kept. Example: `Seediq/Ibuh.xml`
+  went from 324 to 1,379 characters of original FORM.
+- **5 articles get their author credit back**, in the FORM `notes`
+  attribute only; their text is unchanged: Batul, Cyocuy, Hbun_kramay,
+  Libu, Smangus (e.g. Libu: `Matis alang Ripu nii we, hlidan na Aking
+  Nawi(黃美玉).`).
+
+[`CodeAndDocs/citation_restorations.csv`](CodeAndDocs/citation_restorations.csv)
+lists all 30: the source revision each was read from (a permanent
+`trv.wikipedia.org/w/index.php?oldid=…` URL), the length and SHA-256 of the
+previously published text that must remain the start of the FORM, the
+SHA-256 of the notes, the number of restored sections and section labels,
+and the excluded URLs. The restored text goes through the same Seediq
+apostrophe step and `clean_xml` as everything else. These are the 30 cases
+PR #176 identified; other articles cut the same way, if any, have not been
+looked for since.
+
+## Withdrawn articles: redirect copies
+
+The scrape listed every page title on each wiki, including redirect titles,
+so 490 articles were downloaded twice: once under their own title and once
+under a title that redirects to it (e.g. `Amis/Abraham_Lincoln.xml` is the
+article `Aparaham Linken` reached through the redirect `Abraham Lincoln`).
+The copies are deleted (maintainer ruling 2026-10-18: "Yes, delete (record
+the ids as withdrawn)"): 108 Amis, 81 Atayal, 17 Paiwan, 194 Sakizaya and
+90 Seediq.
+
+- [`CodeAndDocs/source_redirects.csv`](CodeAndDocs/source_redirects.csv)
+  lists each deleted file and id, the kept article, the source titles, the
+  evidence (wiki revision or redirect-log URLs) and the SHA-256 of the
+  cleaned original FORM. `drop_redirect_copies.py` checks every copy before
+  deleting any: same TEXT ids as listed, one S each, and the copy's original
+  FORM identical to the kept article's and to the recorded hash. Any
+  mismatch stops the build with nothing deleted.
+- [`CodeAndDocs/old_to_new_ids.csv`](CodeAndDocs/old_to_new_ids.csv)
+  records the 490 withdrawn `TEXT/@id`s (`old_id`), the id of the kept
+  article with the same text (`new_id`), `change` = `withdrawn: redirect
+  copy`, and the reason. No withdrawn id is reused.
+- Six of the recorded hashes were re-recorded on 2026-10-18 when the
+  deletion was ported onto the current build: the kept articles
+  `Amis/Ina.xml`, `Atayal/’tayal.xml` (three copies),
+  `Sakizaya/Fo-lu-lun-se.xml` and `Sakizaya/Lo-ma.xml` contain `''`, which
+  the 2026-10-14 apostrophe step now writes as `"`. The copies still match
+  their kept articles exactly.
+
+Text is not lost: every withdrawn article's original FORM is published,
+character for character, under the kept id. Token counts do fall, because
+the copies were counted twice before: 1,311,509 tokens in all (Amis
+1,131,630; Sakizaya 82,013; Seediq 65,191; Atayal 25,635; Paiwan 7,040).
+Most of the Amis drop is one article: 50 redirect titles (US presidents and
+`United_states`, among others) all led to the 21,766-token `Amis/Amilika.xml`
+("America"), so the corpus held 51 copies of it. The 490 copies belong to
+362 kept articles.
+
+## Notes and Issues
 
 - **`dialect="unknown"` everywhere**: Wikipedia articles carry no dialect
   identification. For Seediq this means the corpus counts as Seediq, not
   Truku, under FormosanBank counting rules (trv counts as Truku only with
   an explicit `dialect="Truku"`).
 - **One file per article**: the 29 twice-downloaded articles now have a
-  single file each (pipeline step 3). Two of them keep a `(1)` in the
-  filename (`Atayal/msin (1).xml`, `Sakizaya/Oro’raw (1).xml`) because
-  the scrape never wrote a counter-less copy; the file names carry no
-  meaning, the `TEXT/@id` does. Sentence-level duplication *across*
+  single file each (pipeline step 3), and the 490 copies downloaded under
+  redirect titles are withdrawn (step 7b; see above). One kept file has a
+  `(1)` in its name, `Sakizaya/Oro’raw (1).xml`, because the scrape never
+  wrote a counter-less copy (`Atayal/msin (1).xml`, the other such file,
+  is one of the 490 redirect copies); the file names carry no meaning,
+  the `TEXT/@id` does. Sentence-level duplication *across*
   articles (wiki boilerplate) is still reported SOFT by the
   duplicate-sentence validator — this corpus declares no dedup step.
 - **PHON is provisional**: with dialect unknown, IPA uses default columns;
@@ -169,7 +299,9 @@ in `XML/Seediq/` only:
 **Short version.** The `PHON` tiers in this corpus are generated by mapping
 each letter of the `FORM` text to IPA through **one** orthography table —
 `Orthographies/Ortho113/`, dialect-agnostic column — for all five languages
-and all 13,238 articles. Wikipedia articles do not state which orthography
+and all articles. (The figures in this appendix were computed on the
+13,238 articles published before the 490 redirect copies were withdrawn on
+2026-10-18; they were not recomputed.) Wikipedia articles do not state which orthography
 their author used, so this is an assumption, not a fact recovered from the
 source. This appendix gives the evidence for it and the size of the residual
 error, so you can decide whether `PHON` is usable for your purpose.

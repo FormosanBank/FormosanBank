@@ -7,13 +7,21 @@ official Alilin e-reader. It produces two files in the
 [FormosanBank XML format](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/formosanbank-xml-format):
 the grammar's interlinear examples and the Appendix 2A dictionary.
 
-## Rights and permissions
+## Rights
+
+**License:** CC BY-NC 4.0
+**Rights source:** Li-May Sung (the author), date not recorded in this repository; evidence: ask maintainer
 
 The author (Li-May Sung) granted permission to publish this corpus under
 **CC BY-NC 4.0** (Creative Commons Attribution–NonCommercial); the permission
 evidence is on Basecamp card
 [`10081339846`](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/10081339846).
-Each `<TEXT>` element's `copyright` attribute records this license. Attribution
+Each `<TEXT>` element's `copyright` attribute records this license as the
+bare value `CC BY-NC 4.0`. (Until 2026-10-16 it held the prose "Song, Limei
+(2018), Introduction to Kanakanavu Grammar (Council of Indigenous Peoples).
+Licensed to FormosanBank under CC BY-NC 4.0 by permission of the author
+(Li-May Sung)."; POL-042 allows only a vocabulary value there, so the
+permission statement now lives in this section.) Attribution
 and non-commercial use are required; see the FormosanBank
 [LICENSE](../../LICENSE.md) and [AI-USE-ADDENDUM](../../AI-USE-ADDENDUM.md).
 

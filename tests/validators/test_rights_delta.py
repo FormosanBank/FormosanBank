@@ -1,11 +1,11 @@
-"""rights_delta: any licence change is a finding (POL-044).
+"""rights_delta: any licence change is a finding (POL-044); a new corpus is not a change.
 
 There is no baseline file. A merge check already has both sides available,
 and a stored baseline is redundant state that can itself drift.
 """
 from pathlib import Path
 
-from QC.validation.rights_delta import compare, licenses_at
+from QC.validation.rights_delta import added, compare, licenses_at, main
 
 
 def _tree(tmp_path: Path, name: str, corpora: dict) -> Path:
@@ -40,9 +40,24 @@ def test_a_removed_corpus_is_reported():
     assert len(lines) == 1 and "removed" in lines[0].lower()
 
 
-def test_an_added_corpus_is_reported():
-    lines = compare({}, {"A": "CC BY 4.0"})
-    assert len(lines) == 1 and "added" in lines[0].lower()
+def test_an_added_corpus_is_not_a_licence_change():
+    """A new corpus had no licence to change (maintainer, 2026-10-18: "That's not a rights change.")."""
+    assert compare({}, {"A": "CC BY 4.0"}) == []
+    assert added({}, {"A": "CC BY 4.0"}) == ["A: 'CC BY 4.0'"]
+
+
+def test_a_new_corpus_passes_the_check_and_is_listed(tmp_path, capsys):
+    base = _tree(tmp_path, "base", {"A": "CC BY 4.0"})
+    head = _tree(tmp_path, "head", {"A": "CC BY 4.0", "B": "CC BY-NC 4.0"})
+    assert main(["--base", str(base), "--head", str(head)]) == 0
+    out = capsys.readouterr().out
+    assert "New corpora" in out and "B: 'CC BY-NC 4.0'" in out
+
+
+def test_a_new_corpus_beside_a_changed_licence_still_fails(tmp_path):
+    base = _tree(tmp_path, "base", {"A": "CC BY 4.0"})
+    head = _tree(tmp_path, "head", {"A": "CC BY-NC 4.0", "B": "CC BY-NC 4.0"})
+    assert main(["--base", str(base), "--head", str(head)]) == 1
 
 
 def test_inconsistent_corpus_is_reported_not_raised(tmp_path):

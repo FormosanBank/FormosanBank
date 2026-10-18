@@ -7,16 +7,18 @@ everything in `../../XML/` is derived from them by this directory.
 
 ```bash
 source ../../../../.venv/bin/activate
-./build.sh              # or: ./build.sh grammar | sentences | stories
+../generate_xml.sh                 # the corpus entry point (POL-047): all three subcorpora
+./build_subcorpora.sh grammar      # or sentences | stories: one subcorpus only
 ```
 
-`build.sh` writes `../../XML/{Grammar,Sentences,Stories}` from scratch
+`../generate_xml.sh` runs `build_subcorpora.sh all` (and would re-apply a
+`../manual_edits.xml`; there is none). `build_subcorpora.sh` writes `../../XML/{Grammar,Sentences,Stories}` from scratch
 (each subcorpus is built in a temp dir and installed only on success), and
 is idempotent — rerunning it is safe and should produce byte-identical XML.
 
 ## What runs, in order
 
-Each subcorpus goes through three phases.
+Each subcorpus goes through four phases.
 
 **A. Builder — JSON → XML.** One script per subcorpus, sharing its helpers
 with `pipeline_grammar.py`:
@@ -29,7 +31,18 @@ with `pipeline_grammar.py`:
 
 `--list-steps` on any builder prints the numbered step list with a one-line
 description of each. The numbers are *creation* order, not application
-order; `--steps` selects which run, and `build.sh` pins the sets above.
+order; `--steps` selects which run, and `build_subcorpora.sh` pins the sets above.
+
+**Readings (POL-028, POL-026).** Inside the Sentences and Stories builders, `pol028.py` turns a record with
+a glossed optional morpheme (`kangavas(=an)`) or an optional phrase (`(nau tu)`) into one sentence per
+reading — base id, `-opt`, and `-opt3`/`-opt4` when a record has both — each with its own word and
+morpheme tiers; per-reading translations and notes ruled by the maintainer are in `pol028_readings.tsv`.
+Optional letters inside a morpheme stay one sentence with a `ver="alt"` FORM (step 14).
+
+**Audio timing grafts.** `audio_timing_grafts.tsv` (written by `make_audio_timing_grafts.py`) gives three
+stories whose text NTU publishes untimed the time spans of NTU's timed transcription of the same text;
+the Stories builder applies it before the story's zero point is computed, and fails if a record
+already has timing.
 
 **B. Repairs.** `QC/cleaning/clean_xml.py` from the bank (for Sentences and
 Stories followed by `restore_quote_exemptions.py`, which puts back glottal
@@ -38,7 +51,7 @@ letters the shared quote cleaner took for quotation marks, listed in
 per-subcorpus repair scripts in [`../scripts/`](../scripts/) — infix
 notation, optional parentheticals, annotation codes, clitic boundaries, and so
 on. Grammar and the two flat subcorpora use overlapping but not identical
-chains; `build.sh` is the authority.
+chains; `build_subcorpora.sh` is the authority.
 
 `repair_translation_parentheticals.py` is **not** run. It encodes a completed
 human review of 453 candidate translations plus a SHA-256 of that population,
@@ -61,6 +74,41 @@ and the PHON tiers it runs `apply_standard_word_splits.py`, which writes the
 word divisions in `standard_word_splits.tsv` into the standard sentence tier
 only (7 sentences where NTU's text joins two words its glosses separate;
 ruling 2026-10-16).
+
+**D. Unknown markers → `<UNCLEAR/>`.** Last of all (for Sentences, after
+`split_two_renderings.py` and `dedupe_bunun63.py`), `mark_unclear.py` writes
+NTU's own "unknown" markers as the schema's `<UNCLEAR/>` element (rulings
+2026-10-17): an untranscribed word (`X`, `XX`, `XXX`, `XXXX`) in the sentence
+FORM and PHON, and in the word's FORM, PHON and `X` gloss, with the word's `M`
+removed; a word or morpheme gloss that is only `?`, `??` or `???`; a `?` piece
+inside a longer gloss only where `../unclear_gloss_placeholders.tsv` lists that
+gloss (shipped empty); a sentence translation that is only `?` or `XXX` is
+removed; and a sentence that is nothing but `<UNCLEAR/>` loses its word tier.
+Rulings 2026-10-18: an untranscribed word's FORM is a bare `<UNCLEAR/>`, without
+the punctuation NTU attached; a word written `X` whose gloss is something else
+(`FS`, `PART`, `father`, ...; 13 words) gets `<UNCLEAR/>` as its FORM only, its
+PHON, glosses and morphemes kept as NTU wrote them; and an `X` run that is part
+of a word gets `<UNCLEAR/>` for that part only (`mi-XX,` → `mi-<UNCLEAR/>`, 7
+words; the sentence token `我的XX在XX那邊` → `我的<UNCLEAR/>在<UNCLEAR/>那邊`). It
+runs after `run_standard_and_phon.sh` because the
+shared `standardize.py` and `add_phonology.py` read `FORM.text`: given a FORM
+holding `<UNCLEAR/>` they would transliterate, or phonologize, only part of
+it. Every change is listed in `logs/unclear_<Subcorpus>.tsv`.
+
+Then `strip_word_punctuation.py` deletes punctuation from every word and
+morpheme FORM (ruling 2026-10-18: "Punctuation shouldn't be in W FORMs or M
+FORMs anyway. Delete everywhere in NTU."). Sentence FORMs keep theirs. What
+counts as punctuation is decided per language in `../word_form_characters.tsv`,
+which lists every character other than a letter or digit found in a word or
+morpheme FORM: `delete` (`,` `.` `!` `?` `"`), `keep` (`'`, the glottal stop in
+every NTU language's Ortho94/Ortho113 table but Seediq's, and the markers `-`
+`=` `<` `>` `~` `∅`), or `hold`, where the character is not clearly punctuation
+in that language (`.` inside words such as Atayal `asi.ki.na` or Tsou
+`Lao.Jia`; Rukai `?` standing for an unknown morpheme, `alupu-?=ini`; ...).
+Held characters stay, every occurrence, until the maintainer rules. A character
+the table does not list stops the build. A FORM that would be left empty (a
+Bunun word written only `,`) is left as it is. Changes are listed in
+`logs/word_punctuation_<Subcorpus>.tsv`.
 
 ## Word and morpheme tiers
 
@@ -178,6 +226,15 @@ Per POL-039, item-specific corrections live in data files, not in code:
   (`M`, `OH`, `HAY`), 404 cells. Each row names the value it expects to find.
 - `gloss_shift_repairs.tsv` — gloss-shift corrections (see below), applied at
   load time by all three builders; only rows with status `accepted` take effect
+- `../unclear_gloss_placeholders.tsv` — glosses (columns `gloss`, `lang`) in
+  which `mark_unclear.py` writes each `?` that stands as a whole gloss piece
+  (bounded by `-`, `=`, `.`, a space, or the ends) as `<UNCLEAR/>`. The
+  maintainer decides these gloss by gloss; the table ships with no rows.
+- `../word_form_characters.tsv` — every character other than a letter or digit
+  in a word or morpheme FORM, per language (`lang`, `char`, `codepoint`,
+  `class`, `action`, `note`), read by `strip_word_punctuation.py`: `delete`,
+  `keep` (a letter or a morpheme marker) or `hold` (not clearly punctuation in
+  that language; awaiting a ruling).
 
 ## Gloss shifts
 
@@ -226,7 +283,7 @@ accepted.
 
 `../qa/try_gloss_shift_repairs.sh` builds the subcorpus twice into scratch
 directories (never `XML/`): once without the repairs and once with them. Both
-builds stop at `build.sh`'s pre-cleanup checkpoint (`NTU_BUILD_CHECKPOINT`).
+builds stop at `build_subcorpora.sh`'s pre-cleanup checkpoint (`NTU_BUILD_CHECKPOINT`).
 The clean-up steps (prune and empty-translation removal) deal with what
 could not be fixed, so they count neither for nor against a fix. Measured after
 them, the 245 Stories proposals of 2026-09-28 appeared to change 26 unrelated
