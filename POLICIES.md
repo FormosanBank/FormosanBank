@@ -61,12 +61,11 @@ recommendation). Cite the ID rather than re-deciding the question.
 
 This file (`FormosanBank/POLICIES.md`) is **canonical** — it versions together
 with the code that implements the rulings, and entries cite rule IDs and
-scripts by name. A rendered copy is published in the GitBook at
-`en-us/the-bank-architecture/policies.md` with a header marking it as synced;
-the GitBook repo regenerates it with `python sync_upstream_docs.py`, and its
-`tests/test_upstream_doc_sync.py` drift check (a byte-comparison against a
-FormosanBank checkout) fails when the copy diverges. The GitBook's
-[FormosanBank XML Format](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/formosanbank-xml-format)
+scripts by name. The documentation site renders it as a page
+([FormosanBank Policies](https://formosanbank.github.io/FormosanBank/the-bank-architecture/policies/)) every time
+the site is built, so there is no copy to drift (until 2026-10 a synced copy
+lived in the separate GitBook repo, policed by a drift test). The site's
+[FormosanBank XML Format](https://formosanbank.github.io/FormosanBank/the-bank-architecture/formosanbank-xml-format/)
 page remains the narrative description of the format; where it states a
 convention, the matching POL entry cites it rather than duplicating prose.
 
@@ -853,8 +852,14 @@ structured lines and prose beneath:
 The licence must equal the corpus's `@copyright`; the date is when permission
 was granted or last confirmed. `evidence: ask maintainer` rather than naming a
 system — the evidence store may change, the instruction to a reader will not.
-The prose explains where the right came from and is required but unchecked. The
-GitBook corpus page carries the same licence in its `## Copyright` section.
+The prose explains where the right came from and is required but unchecked.
+
+**Amended 2026-10-18** (supersedes the section name above and the GitBook
+`## Copyright` sentence, per POL-050): the README is now the corpus's only
+documentation, rendered as its page on the documentation site, and the section
+holding these two lines is **`## License`** (layout in POL-055). The two lines,
+their values and their check are unchanged. Maintainer, 2026-10-18: clicked
+"Approve these headings and the three amendments".
 
 **Interrogated at merge.** Any change to a corpus's licence, in either
 direction, fails `.github/workflows/rights-comparison.yaml`, which compares the
@@ -865,8 +870,8 @@ explicit maintainer override, which is deliberately the hardest step in the
 mechanism. There is no label-based bypass; the friction is the control
 (maintainer, 2026-09-05).
 Implemented by: `QC/validation/rights_delta.py`,
-`tests/corpora/test_rights_documentation.py`, and the GitBook repo's
-`manage_corpus_pages.py check --strict`.
+`tests/corpora/test_readme_sections.py` (the `rights` check, using
+`docs/tools/readme_layout.py`), and `docs/tools/manage_corpus_pages.py check --strict`.
 
 ### POL-045 · RULED · 2026-09-05 · audio rights
 **Audio inherits the XML licence.** Audio published for a corpus carries that
@@ -1098,10 +1103,13 @@ so the record is machine-readable and can be checked:
 ```
 
 `formosanbank_commit` (a full 40-character SHA) is required; `_note` and `built`
-are optional. The corpus README's reproduction section **links to the file**
-rather than repeating the SHA, so there is one copy to keep current; the GitBook
-page's `## Corpus Processing` section does the same. A SHA transcribed into
-prose is a second copy that drifts.
+are optional. The corpus README's **`## Reproduction and processing`** section
+(under `### How to reproduce`) **links to the file** rather than repeating the
+SHA, so there is one copy to keep current. A SHA transcribed into prose is a
+second copy that drifts. (Amended 2026-10-18, per POL-050: the README is the
+only corpus document, so the former GitBook `## Corpus Processing` copy of this
+link is gone; maintainer clicked "Approve these headings and the three
+amendments".)
 
 **Enforced** by `tests/corpora/test_provenance.py`: the file must exist, parse,
 and carry a well-formed commit, and the README must link it. Corpora that
@@ -1220,21 +1228,30 @@ finding-based validators get it), `QC/validation/waivers.py`,
 `tests/validators/test_waivers.py`. First user: `Corpora/SEALS33`, whose
 corpus-local `check_hard_findings.py` this replaces (POL-046).
 
-### POL-055 · RULED · 2026-09-09 · corpus documentation
-Every corpus README and every GitBook corpus page carries a
-**`Notes and Issues`** section: the known limitations, source defects,
-unresolved data problems and caveats a user needs *before* using the corpus —
-OCR artifacts left in place, missing audio, hand edits, orthography assumptions.
-Write `None known.` when there are none; the section is never simply absent.
+### POL-055 · RULED · 2026-09-09, amended 2026-10-18 · corpus documentation
+**One document per corpus: its README.** Each corpus is described once, in
+`Corpora/<corpus>/README.md`; the documentation site renders that file as the
+corpus page (registered in `docs/site/corpus_pages.csv`). Its sections, each
+once, in this order (maintainer, 2026-10-18):
 
-**One name.** The section is `Notes and Issues` in both places. Seven GitBook
-pages currently say `Corpus Notes`, one says `Notes` and one `Minor notes`;
-those are legacy spellings to migrate, not alternatives. Nothing lints the name
-today, which is why fixing it needs an entry rather than a convention.
+```
+# <Corpus name>
+## Languages and dialects       (say so when the source does not record the dialect)
+## Source                       (brief description of the source; audio here)
+## Statistics                   (the site inserts the generated table here)
+## How to cite
+## License                      (POL-044's two lines, then the evidence or where to find it)
+## Notes and caveats
+## Reproduction and processing
+### How to reproduce            (usually two .sh files; links provenance.json, POL-052)
+### What each step does         (blow by blow through the scripts)
+```
 
-**Where it goes.** On a GitBook page, immediately after the statistics block and
-before `Access Details` — a caveat a reader meets after the numbers and before
-the download link. In a corpus README, after `Audio`.
+**Notes and caveats** holds the known limitations, source defects, unresolved
+data problems and caveats a user needs *before* using the corpus — OCR artifacts
+left in place, missing audio, hand edits, orthography assumptions, and import
+decisions not everyone would agree with. Write `None known.` when there are
+none; the section is never simply absent.
 
 **What it is not.** Not process history, not a changelog, not the QC findings
 list. It is the short set of things that would mislead someone who compared this
@@ -1243,10 +1260,20 @@ worked example: a dialect whose source does not record schwa, a source that
 writes word-final vowels double, an unglossed particle, and one gloss inferred
 rather than transcribed.
 
-Implemented by: the `port-corpus-in` templates
-(`README.template.md`, `corpus_page.template.md`) and their `{{NOTES_AND_ISSUES}}`
-placeholder. Not yet linted; `manage_corpus_pages.py check` verifies the four
-integration points and not page structure.
+**Amended 2026-10-18** (per POL-050). Supersedes the 2026-09-09 text, which
+required a section named `Notes and Issues` "in both places" (README and GitBook
+page) and placed it after `Audio` in the README and after the statistics block
+on the GitBook page. The README and the GitBook page are merged into the one
+document above; the section is now `Notes and caveats`. Maintainer, 2026-10-18,
+on the format: "Notes & Caveats <-- describes issues users should be aware of,
+including major decisions in importing that perhaps not everyone would agree
+with"; on the headings: clicked "Approve these headings and the three
+amendments".
+
+Implemented by: `docs/tools/readme_layout.py` (the layout),
+`tests/corpora/test_readme_sections.py` (the `structure` check; legacy READMEs
+in `readme_sections_pending.txt`), `docs/tools/manage_corpus_pages.py check
+--strict` (in `tests.yaml`), and the `port-corpus-in` `README.template.md`.
 
 ### POL-056 · RULED · 2026-09-09 · conversion tables
 A conversion table (`Orthographies/ConversionTables/<Language>_<Scheme>_113.tsv`)
@@ -1291,8 +1318,8 @@ phoneme-level section so a deletion is not invisible in aggregate.
 
 Enforced by `tests/utilities/test_standardize_rule_application.py`, which asserts
 that **every rule in every committed table produces exactly its own
-replacement** — the sweep that found the 17. Documented for users on the GitBook
-`standardize` page under "How rules are applied".
+replacement** — the sweep that found the 17. Documented for users on the
+documentation site's `standardize.py` page under "How rules are applied".
 
 ### POL-058 · RULED · 2026-09-11 · orthography checks need a standard
 **A language with no standard orthography gets no orthography check.** Where
