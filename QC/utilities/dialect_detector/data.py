@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
 
+from QC.corpus_counts import is_reproduction_path
 from QC.utilities.dialect_detector import candidates
 from QC.xml_forms import iter_base_forms
 
@@ -37,6 +38,10 @@ def extract_standard_text(root: ET.Element) -> str:
 
 def _iter_text_roots(corpora_path: Path):
     for p in sorted(Path(corpora_path).rglob("*.xml")):
+        # CodeAndDocs holds POL-035 snapshots: copies of published files that
+        # would count twice and straddle cross-validation folds.
+        if is_reproduction_path(p, root=corpora_path):
+            continue
         try:
             root = ET.parse(p).getroot()
         except ET.ParseError:
