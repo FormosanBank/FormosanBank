@@ -46,7 +46,7 @@ Two consequences a data user should know:
 - `add_phonology` folds the stress accent before mapping (it marks stress, not
   a different segment), so accented vowels come out as the plain vowel in
   **original** PHON: `ma-níring` → `maniriŋ`. Before that shared change
-  (2026-09-05) they came out as `*` (1,127 PHON values); the rebuild recorded in
+  (2026-09-05) they came out as `*` (1,098 PHON values); the rebuild recorded in
   `CodeAndDocs/provenance.json` replaced all of them.
 - 29 PHON values per tier (58 in all, original and standard) still contain
   `*`. In 20 of each 29 the form quotes Chinese (`國小二三年級`, `mi開開玩笑`,
