@@ -40,6 +40,7 @@ from QC.validation.rules._reconstruct import (
     letter_skeleton,
     similarity,
 )
+from QC.xml_forms import find_base_form
 
 
 # Infix shape: starts and ends with '-' with non-'-' content between.
@@ -70,10 +71,10 @@ def _extract_s_direct_text(s_elem: etree._Element) -> str:
     behavior; carried over so V060's word counts agree with the legacy
     CSV output.
     """
-    original = s_elem.find('./FORM[@kindOf="original"]')
+    original = find_base_form(s_elem, "original")
     if original is not None and original.text:
         return original.text.strip()
-    any_form = s_elem.find('./FORM')
+    any_form = find_base_form(s_elem)
     if any_form is not None and any_form.text:
         return any_form.text.strip()
     return (s_elem.text or "").strip()
@@ -128,10 +129,10 @@ def _w_form_with_inline_infixes_marked(form_text: str, w_elem: etree._Element) -
 
 def _get_w_form(w_elem: etree._Element) -> str:
     """Return W's preferred FORM text. Original > any FORM > ''."""
-    original = w_elem.find('./FORM[@kindOf="original"]')
+    original = find_base_form(w_elem, "original")
     if original is not None and original.text:
         return original.text.strip()
-    any_form = w_elem.find('./FORM')
+    any_form = find_base_form(w_elem)
     if any_form is not None and any_form.text:
         return any_form.text.strip()
     return ''
@@ -181,7 +182,10 @@ def v060_W_count_matches_word_count(
     for s in tree.iter("S"):
         s_id = s.get("id")
         # No FORM at all -> V010/V013 handle that; we have nothing to compare.
-        if s.find('./FORM') is None:
+        # No *base* FORM either (a tier of variants only) -> V149 HARD owns
+        # that shape; counting its zero words here would just restate it as
+        # a bogus "word-count (0)" mismatch.
+        if find_base_form(s) is None:
             continue
         # No W at all -> a presence question (V148), not a count mismatch.
         if s.find('./W') is None:
@@ -336,7 +340,7 @@ def v063_W_FORM_retains_segmentation(
         for form in w.findall('./FORM')
     )
     for s in tree.iter("S"):
-        s_original = s.find('./FORM[@kindOf="original"]')
+        s_original = find_base_form(s, "original")
         if s_original is None:
             continue
         s_count = _count_segmentation_chars(s_original.text or "")
@@ -692,7 +696,7 @@ def v068_M_reconstructs_W(
         ms = [child for child in w if child.tag == "M"]
         if not ms:
             continue  # monomorphemic; nothing to reconstruct
-        w_form = w.find('./FORM[@kindOf="original"]')
+        w_form = find_base_form(w, "original")
         if w_form is None:
             continue
         w_skel = letter_skeleton(w_form.text)
@@ -701,7 +705,7 @@ def v068_M_reconstructs_W(
         m_skel: Counter = Counter()
         saw_m_form = False
         for m in ms:
-            m_form = m.find('./FORM[@kindOf="original"]')
+            m_form = find_base_form(m, "original")
             if m_form is not None and (m_form.text or "").strip():
                 saw_m_form = True
                 m_skel += letter_skeleton(m_form.text)
@@ -898,9 +902,9 @@ _LEIPZIG_ONLY = re.compile(r"[A-Z0-9<>.\-=\u2205/\s]+")
 
 
 def _pref_form_text(el) -> str:
-    node = el.find("FORM[@kindOf='original']")
+    node = find_base_form(el, "original")
     if node is None:
-        node = el.find("FORM")
+        node = find_base_form(el)
     return "".join(node.itertext()).strip() if node is not None else ""
 
 

@@ -1,7 +1,15 @@
 import xml.etree.ElementTree as ET
 import html
 import os
+import sys
 import unicodedata
+from pathlib import Path as _Path
+
+_REPO_ROOT = _Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.corpus_counts import LANGUAGE_NAMES, is_reproduction_path  # noqa: E402
+from QC.xml_forms import find_base_form  # noqa: E402
 import collections
 import regex as re
 import string
@@ -41,7 +49,15 @@ def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False
         raise ValueError(f"corpus {to_check_path} doesn't exist")
     for root, dirs, files in os.walk(to_check_path):
         for file in files:
-            if file.endswith(".xml") and re.findall(language_to_process, os.path.join(root)): # and 'Final_XML' in os.path.join(root, file) 
+            if not file.endswith(".xml"):
+                continue
+            # CodeAndDocs/ is reproduction material, not published data.
+            # Without this, pointing the tool at a corpus root reads the
+            # POL-035 snapshot as well as the corpus and counts every
+            # character twice.
+            if is_reproduction_path(os.path.join(root, file), to_check_path):
+                continue
+            if re.findall(language_to_process, os.path.join(root)):
                 tree = ET.parse(os.path.join(root, file))
                 root_to_read = tree.getroot()
                 
@@ -51,7 +67,11 @@ def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False
                 for s in root_to_read.findall('.//S'):
                     # Find the <FORM> element within the <S> element
                     if kindOf:
-                        form = s.find(f"FORM[@kindOf='{kindOf}']")
+                        # The tier's base FORM. A POL-028 ver="alt" variant
+                        # would otherwise stand in for the base whenever it
+                        # is written first, inventorying the orthography of
+                        # a secondary reading instead of the sentence's own.
+                        form = find_base_form(s, kindOf)
                         if form is not None:
                             if form.text:
                                 text += " " + form.text
@@ -473,9 +493,13 @@ def main(args, langs):
     
 if __name__ == "__main__":
 
-    langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
-             'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Siraya', 'Kanakanavu']
-    
+    # Every language a published record can resolve to, from the
+    # languages.csv registry (POL-039/POL-040) rather than a copy kept
+    # here. The hardcoded list this replaces had gone stale: it was
+    # missing Babuza-Favorlang and Pazeh, so the CLI rejected two
+    # registered languages that have published corpora.
+    langs = LANGUAGE_NAMES
+
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--corpora_path', help='the path to the corpus')

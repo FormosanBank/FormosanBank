@@ -15,8 +15,8 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from QC.corpus_counts import resolve_language, XML_LANG
-from QC.utilities.classify_quotes import QUOTE, apply_quote_corrections
+from QC.corpus_counts import resolve_language, XML_LANG, is_reproduction_path
+from QC.utilities.classify_quotes import CONSONANT_QUOTE_LANGUAGES, QUOTE, apply_quote_corrections
 
 _DEFAULT_REFERENCE_DIR = _REPO_ROOT / "QC" / "validation" / "reference"
 
@@ -655,6 +655,25 @@ def _load_attestation(language, reference_dir, cache):
     return result
 
 
+def _load_consonant_exceptions(language, reference_dir, cache):
+    """For CONSONANT_QUOTE_LANGUAGES: the casefolded words attested with a '
+    next to a consonant (<Language>/attestation_consonant.txt; empty if the file
+    is absent). None for every other language, which turns the consonant
+    preference off."""
+    key = ("consonant", language)
+    if key in cache:
+        return cache[key]
+    result = None
+    if language in CONSONANT_QUOTE_LANGUAGES:
+        path = Path(reference_dir) / language / "attestation_consonant.txt"
+        result = set()
+        if path.exists():
+            with open(path, encoding="utf-8") as fh:
+                result = {w.strip().casefold() for w in fh if w.strip()}
+    cache[key] = result
+    return result
+
+
 def analyze_and_modify_xml_file(
     xml_dir,
     corpora_dir,
@@ -680,6 +699,9 @@ def analyze_and_modify_xml_file(
         _attestation_cache = {}
     for droot, dirs, files in os.walk(xml_dir):
         for file in files:
+            # CodeAndDocs/ is reproduction material, never published data.
+            if is_reproduction_path(os.path.join(droot, file), xml_dir):
+                continue
             if file.endswith(".xml"):
                 print(f"Processing file: {file}")
 
@@ -700,6 +722,8 @@ def analyze_and_modify_xml_file(
                 root = tree.getroot()
                 language = resolve_language(root.get(XML_LANG), root.get("dialect"))
                 dictionary = _load_attestation(language, reference_dir, _attestation_cache)
+                consonant_quotes = _load_consonant_exceptions(language, reference_dir,
+                                                              _attestation_cache)
                 is_wikipedia = "Wikipedias" in Path(xml_file).parts
                 modified = False
                 metadata_repairs = normalize_translation_language_metadata(
@@ -798,7 +822,8 @@ def analyze_and_modify_xml_file(
                             if not ft or QUOTE not in ft:
                                 continue
                             new_text, corrected, stranded, ambiguous = \
-                                apply_quote_corrections(ft, transl_texts, dictionary)
+                                apply_quote_corrections(ft, transl_texts, dictionary,
+                                                        consonant_quotes)
                             if corrected or stranded:
                                 form_element.text = new_text
                                 modified = True

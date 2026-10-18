@@ -15,6 +15,7 @@ from QC.validation._corpus_index import CorpusIndex
 from QC.validation._dialect_inventory import valid_dialects
 from QC.validation._finding import Finding, Severity
 from QC.validation._rights import load_rights_vocabulary
+from QC.validation.rules.soft import _carries_parsing, _children, _sentence_words, _tree_language
 
 
 _XSD_PATH = Path(__file__).resolve().parents[1] / "xml_template.xsd"
@@ -683,6 +684,67 @@ _PHON_ALLOWED_PARENTS = {"S", "W", "M"}
 _PHON_KINDOF_ALLOWED = {"original", "standard"}
 
 
+def _audio_clip_key(audio: etree._Element, root: etree._Element) -> tuple:
+    """What a sentence's AUDIO points at: (url or file or TEXT/@audio, start, end)."""
+    return (
+        audio.get("url") or audio.get("file") or root.get("audio") or "",
+        audio.get("start"),
+        audio.get("end"),
+    )
+
+
+def _original_form_text(s: etree._Element) -> str:
+    for form in s.findall("FORM"):
+        if form.get("kindOf") == "original" and form.get("ver") is None:
+            return " ".join((form.text or "").split())
+    return ""
+
+
+def v162_shared_clip_under_different_sentences(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """Two S in one file whose AUDIO names the same clip (same url/file, start and
+    end) must carry the same original FORM; one clip cannot be two sentences.
+
+    V162 (2026-10-17, skills review D5): the ILRDF v2 port attached 13 clips to
+    26 different readings. A clip that genuinely covers several sentences is
+    attached to none of them and kept as untranscribed audio (maintainer,
+    2026-10-16: "We don't have a mechanism for multiple audio files for one S
+    block, and i don't want one").
+    """
+    findings: list[Finding] = []
+    root = tree.getroot()
+    first_seen: dict[tuple, tuple[str, str]] = {}
+    for s in tree.iter("S"):
+        audio = s.find("AUDIO")
+        if audio is None:
+            continue
+        key = _audio_clip_key(audio, root)
+        if key == ("", None, None):
+            continue  # orphan: V053's business
+        text = _original_form_text(s)
+        s_id = s.get("id") or ""
+        if key not in first_seen:
+            first_seen[key] = (s_id, text)
+            continue
+        other_id, other_text = first_seen[key]
+        if other_text == text:
+            continue  # a genuine duplicate sentence; V-dedup territory, not audio
+        clip = key[0] + (f" [{key[1]}-{key[2]}]" if key[1] is not None else "")
+        findings.append(Finding(
+            rule_id="V162",
+            severity=Severity.HARD,
+            message=(f"V162 HARD shared_clip_under_different_sentences: AUDIO {clip} is "
+                     f"attached to S={other_id} ({other_text[:40]!r}) and to S={s_id} "
+                     f"({text[:40]!r}); one clip, two sentences"),
+            path=path,
+            location=f"S={s_id}" if s_id else "S",
+        ))
+    return findings
+
+
 def v070_phon_placement(
     tree: etree._ElementTree,
     path: Path,
@@ -941,36 +1003,53 @@ def v085_multi_same_lang_transl_requires_ver(
     index: CorpusIndex | None,
 ) -> list[Finding]:
     """V085: when a parent has multiple TRANSL children sharing the same
-    xml:lang, at least one must carry a `ver` attribute to discriminate them.
+    xml:lang *and* the same `kindOf`, at least one must carry a `ver`
+    attribute to discriminate them.
 
     Per the Bril Amis Basecamp card (Mar 3, 2026): "If there are multiple
     translations in the same language, mark one with a `ver=\"alt\"` attribute."
     The convention is one canonical TRANSL (bare) plus one or more alternatives
     marked with `ver`. Two bare same-language TRANSLs on the same parent are
     ambiguous about which one is canonical and which is the alternative.
+
+    `kindOf` joins the grouping key (2026-09-11) because it is an independent
+    axis, not a competing spelling of `ver` (POL-025). At W/M level a gloss
+    carries `kindOf="original"` for the source's own gloss and
+    `kindOf="standard"` for a standardized one, and POL-036 requires the
+    standardized gloss to be recorded *alongside* the original rather than
+    replacing it. Grouping on xml:lang alone made that pair indistinguishable
+    from two competing readings, so the only way to publish POL-036's
+    prescribed shape was to add a `ver="alt"` that asserts "alternative
+    reading" about something that is not one. A gloss pair already
+    discriminated by `kindOf` needs no `ver`; two TRANSLs sharing *both*
+    attributes are still ambiguous and still flag.
     """
     findings: list[Finding] = []
     for parent in tree.iter():
-        # Group this parent's direct TRANSL children by xml:lang.
-        by_lang: dict[str, list] = {}
+        # Group this parent's direct TRANSL children by (xml:lang, kindOf).
+        by_key: dict[tuple[str, str], list] = {}
         for child in parent:
             if child.tag != "TRANSL":
                 continue
             lang = child.get(_XML_LANG_ATTR) or ""
-            by_lang.setdefault(lang, []).append(child)
-        for lang, group in by_lang.items():
+            kind_of = child.get("kindOf") or ""
+            by_key.setdefault((lang, kind_of), []).append(child)
+        for (lang, kind_of), group in by_key.items():
             if len(group) < 2:
                 continue
             if any(t.get("ver") for t in group):
                 continue
             p_id = parent.get("id")
             p_tag = parent.tag
+            shared = f"xml:lang={lang!r}"
+            if kind_of:
+                shared += f" and kindOf={kind_of!r}"
             findings.append(Finding(
                 rule_id="V085",
                 severity=Severity.HARD,
                 message=(
                     f"{p_tag} id={p_id!r} has {len(group)} TRANSL children with "
-                    f"xml:lang={lang!r}; at least one must carry a ver attribute "
+                    f"{shared}; at least one must carry a ver attribute "
                     "to discriminate them"
                 ),
                 path=path,
@@ -1118,6 +1197,52 @@ def v081_text_id_unique_across_published_corpora(
     )]
 
 
+
+def v145_degenerate_all_single_M_tier(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V145 HARD (POL-023, POL-057): M level present but the file carries no parsing.
+
+    HARD since 2026-10-17. Maintainer: "V145 can be retained. That's a HARD
+    validator, please. Formosan languages are not monomorphemic, so if there
+    is an M tier but no split words anywhere, that's weird."
+
+    Ruling 2026-08-10: corpora without morpheme segmentation should have
+    no M level at all — an M tier where every M-bearing W has exactly
+    one M identical in role to its W adds no information (historically:
+    ~100 spurious M shells shipped in YeddaPalemeqBlog).
+
+    Deliberately kept **file-scoped** when V144 went per-sentence
+    (2026-08-12). "Every M mirrors its W" is only evidence of a fake
+    tier in bulk: a single sentence whose handful of words really are
+    monomorphemic is indistinguishable from a mirror tier, and POL-023
+    explicitly blesses single-M Ws as "analyzed as monomorphemic". A
+    whole file with no multi-morphemic word anywhere is the reliable
+    signal; one sentence is not.
+    """
+    sentences = _sentence_words(tree)
+    if not sentences or any(_carries_parsing(ws) for ws in sentences):
+        return []
+    singles = sum(1 for ws in sentences for w in ws if _children(w, "M"))
+    if singles == 0:
+        return []
+    return [Finding(
+        rule_id="V145",
+        severity=Severity.HARD,
+        message=(
+            f"V145 HARD: M level present but no sentence in the file "
+            f"carries any morphological parsing ({singles} mirror single-M "
+            f"Ws) — an M tier needs some segmented word (POL-023, POL-057)"
+        ),
+        path=path,
+        count=singles,
+        language=_tree_language(tree, path, index),
+        character="",
+    )]
+
+
 def v160_copyright_present(
     tree: etree._ElementTree,
     path: Path,
@@ -1165,6 +1290,7 @@ def v161_copyright_in_vocabulary(
 
 
 RULES: list = [
+    v145_degenerate_all_single_M_tier,  # POL-023/POL-057, HARD since 2026-10-17
     v000_schema_validation,
     v001_root_must_be_TEXT,
     v013_S_must_have_original_FORM,
@@ -1182,6 +1308,8 @@ RULES: list = [
     v052_audio_single_file_mode_requires_start_end,
     v053_orphan_audio,
     v054_audio_end_after_start,
+    # V162: 2026-10-17 skills review D5 (audio consistency without audio files)
+    v162_shared_clip_under_different_sentences,
     v070_phon_placement,
     v071_phon_kindof_enum,
     v072_duplicate_phon_kindof,
@@ -1191,7 +1319,7 @@ RULES: list = [
     # POL-028 alternate FORMs (2026-09-08)
     v149_alternate_FORM_requires_base_sibling,
     v156_form_ver_value_in_allowlist,
-    # POL-042 rights (2026-09-05)
+    # POL-042 rights vocabulary (2026-09, PR #236)
     v160_copyright_present,
     v161_copyright_in_vocabulary,
 ]

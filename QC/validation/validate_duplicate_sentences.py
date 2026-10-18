@@ -62,6 +62,8 @@ _DISC_HERE = Path(__file__).resolve()
 if str(_DISC_HERE.parents[2]) not in sys.path:
     sys.path.insert(0, str(_DISC_HERE.parents[2]))
 from QC.validation._discovery import discover_xml_files as _discover_xml_files  # noqa: E402
+from QC.xml_forms import find_base_form  # noqa: E402
+from QC.corpus_counts import resolve_language  # noqa: E402
 
 
 # ---------------------------------------------------------------------------
@@ -76,8 +78,47 @@ def normalize_for_comparison(text: str) -> str:
 
     Does NOT lowercase.  Case-sensitivity is intentional per the B9.5 plan;
     cross-corpus tooling can still choose to lowercase if it wants to.
+
+    This is the FORM key - the language data, compared literally. The gloss
+    gets a looser key; see ``normalize_gloss_for_comparison``.
     """
     return _WS.sub(" ", text).strip()
+
+
+#: A word of a gloss: letters or digits, with an apostrophe or hyphen allowed
+#: *inside* it so ``don't`` and ``five-colored`` stay whole. Everything else -
+#: the slash, the comma, the semicolon, brackets, a trailing stop, a stray
+#: quote - is a separator.
+_GLOSS_WORD = re.compile(r"[^\W_]+(?:['\u2019-][^\W_]+)*")
+
+
+def normalize_gloss_for_comparison(text: str) -> tuple[str, ...]:
+    """The gloss as a sorted bag of words, for equivalence only.
+
+    A gloss is prose a translator wrote, so two records of the *same* sentence
+    routinely disagree about things that carry no meaning. Measured on Blust's
+    Thao dictionary, where the same entry is printed twice (once under its
+    headword, once in the index) and typeset independently each time:
+
+      spacing around a slash   ``was/ were fed``      ``was/were fed``
+      sentence case            ``Did you take ...``   ``did you take ...``
+      a separator swapped      ``tamed or domesticated``  ``tamed, domesticated``
+      the order of alternates  ``move slightly, stir``    ``stir, move slightly``
+      a stray closing quote    ``was chewed by someone'`` (the book's own typo)
+
+    Comparing the raw string keeps all of those apart, and every pair then
+    reaches a human as a question with no answer to give. Comparing the bag of
+    words settles them: 17 such groups in that corpus, 0 rows in any other
+    corpus that currently runs the dedup.
+
+    The cost is that word ORDER stops being meaningful, so two glosses built
+    from the same words in a different arrangement compare equal - ``father of
+    the bride`` and ``bride of the father`` are one key. That is the deliberate
+    trade (maintainer, 2026-09-11): in a gloss the order of listed senses is
+    presentation, and the pathological rearrangement does not occur in practice.
+    The published text is never touched - this function only ever builds a key.
+    """
+    return tuple(sorted(_GLOSS_WORD.findall(text.casefold())))
 
 
 def extract_sentences(xml_path: str, kind_of: str = "standard"):
@@ -95,13 +136,45 @@ def extract_sentences(xml_path: str, kind_of: str = "standard"):
         return out
     for s in root.iter("S"):
         sid = s.get("id", "")
-        for form in s:  # only direct children
-            if form.tag == "FORM" and form.get("kindOf") == kind_of:
-                text = form.text or ""
-                if normalize_for_comparison(text):
-                    out.append((sid, text))
-                break  # at most one matching FORM per S
+        # The tier's BASE form, never a ver="alt" variant: two sentences
+        # whose variants coincide are not duplicates of each other.
+        form = find_base_form(s, kind_of)
+        if form is not None:
+            text = form.text or ""
+            if normalize_for_comparison(text):
+                out.append((sid, text, sentence_meaning(s)))
     return out
+
+
+_XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
+
+
+def file_language(xml_path: str) -> str:
+    """The language a file's sentences belong to, as the bank names it.
+
+    TEXT/@xml:lang resolved with TEXT/@dialect through the shared rule (trv +
+    Truku is Truku, trv otherwise Seediq). Two sentences are only ever the
+    same sentence inside one language: Saisiyat ``yako`` and Truku ``yako``
+    are two words that happen to be spelt alike (Glosbe #180, 2026-09-13),
+    and a corpus that holds several languages must not pair them. Unknown or
+    missing codes fall back to the raw code so such files still compare
+    among themselves.
+    """
+    try:
+        root = ET.parse(xml_path).getroot()
+    except ET.ParseError:
+        return ""
+    code = (root.get(_XML_LANG) or "").strip()
+    return resolve_language(code, root.get("dialect")) or code.lower()
+
+
+def sentence_meaning(s) -> tuple:
+    """Every TRANSL on this S, as a comparable, order-independent key."""
+    return tuple(sorted(
+        ((t.get(_XML_LANG) or "").strip().lower(),
+         normalize_gloss_for_comparison("".join(t.itertext())))
+        for t in s.findall("TRANSL")
+    ))
 
 
 @dataclass(frozen=True)
@@ -109,6 +182,7 @@ class Occurrence:
     file: str          # path relative to scan root
     s_id: str
     raw_text: str      # text as it appeared, pre-normalization
+    language: str = ""  # resolved language of the file (see file_language)
 
 
 @dataclass
@@ -117,6 +191,8 @@ class Finding:
     normalized_text: str
     occurrences: list = field(default_factory=list)
     scope: str = "within-file"             # "within-file" or "cross-file"
+    language: str = ""                     # the one language every occurrence shares
+    kind: str = "identical"                # "identical" (same TRANSL set) or "translation-differs"
 
     @property
     def s_ids(self):
@@ -193,24 +269,42 @@ def find_duplicates(root_path: str, kind_of: str = "standard",
     else:
         rel_base = root_p
 
-    index: dict[str, list[Occurrence]] = defaultdict(list)
+    # Keyed on the FORM alone, so that a repeated spelling is still reported;
+    # the MEANING decides how loudly (maintainer, 2026-09-11):
+    #
+    #   same FORM and same TRANSL  the sentence really is there twice. In a
+    #                              corpus whose pipeline dedups, that is HARD -
+    #                              the dedup step should have removed it.
+    #   same FORM, different TRANSL  two words that happen to be spelt alike, or
+    #                              one word whose glosses should be merged into
+    #                              one S with ver="alt" (POL-025). Never
+    #                              deletable without a human, so always SOFT.
+    # The key carries the language: the same spelling in two languages of a
+    # multi-language corpus is never a duplicate (see file_language).
+    index: dict[tuple[str, str], list[tuple[Occurrence, tuple]]] = defaultdict(list)
     for xml_path in _collect_xml_files(str(root_p)):
         rel = os.path.relpath(str(xml_path), str(rel_base))
-        for sid, raw in extract_sentences(str(xml_path), kind_of=kind_of):
+        language = file_language(str(xml_path))
+        for sid, raw, meaning in extract_sentences(str(xml_path), kind_of=kind_of):
             norm = normalize_for_comparison(raw)
             if not norm:
                 continue
-            index[norm].append(Occurrence(file=rel, s_id=sid, raw_text=raw))
+            index[(language, norm)].append(
+                (Occurrence(file=rel, s_id=sid, raw_text=raw, language=language), meaning))
 
-    severity = "HARD" if dedup_expected else "SOFT"
     findings: list[Finding] = []
-    for norm_text, occs in index.items():
-        if len(occs) < 2:
+    for (language, norm_text), entries in index.items():
+        if len(entries) < 2:
             continue
+        occs = [o for o, _m in entries]
+        same_meaning = len({m for _o, m in entries}) == 1
+        severity = "HARD" if (dedup_expected and same_meaning) else "SOFT"
+        kind = "identical" if same_meaning else "translation-differs"
         files = {o.file for o in occs}
         scope = "within-file" if len(files) == 1 else "cross-file"
         findings.append(Finding(severity=severity, normalized_text=norm_text,
-                                occurrences=list(occs), scope=scope))
+                                occurrences=list(occs), scope=scope,
+                                language=language, kind=kind))
 
     # Stable order: within-file first, then by text, then first occurrence.
     findings.sort(key=lambda f: (0 if f.scope == "within-file" else 1,
@@ -243,23 +337,33 @@ def _resolve_scan_root(args, parser) -> str:
 def _write_csv(findings, output_path: str):
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["severity", "scope", "normalized_text", "file", "s_id",
-                    "raw_text"])
+        w.writerow(["severity", "scope", "language", "kind", "normalized_text",
+                    "file", "s_id", "raw_text"])
         for fnd in findings:
             for occ in fnd.occurrences:
-                w.writerow([fnd.severity, fnd.scope, fnd.normalized_text,
-                            occ.file, occ.s_id, occ.raw_text])
+                w.writerow([fnd.severity, fnd.scope, fnd.language, fnd.kind,
+                            fnd.normalized_text, occ.file, occ.s_id, occ.raw_text])
 
 
 def _summarize(findings, dedup_expected: bool = False):
     n_within = sum(1 for f in findings if f.scope == "within-file")
     n_cross = sum(1 for f in findings if f.scope == "cross-file")
-    severity = "HARD" if dedup_expected else "SOFT"
-    note = (" (corpus pipeline declares dedup — leftovers are pipeline "
-            "defects)" if dedup_expected else
+    # Severity is per finding now, not per run: a group whose glosses differ is
+    # SOFT even where the pipeline dedups, because it may be two words rather
+    # than one sentence twice (maintainer, 2026-09-11).
+    hard = sum(1 for f in findings if f.severity == "HARD")
+    soft = len(findings) - hard
+    note = (" (corpus pipeline declares dedup — a same-gloss leftover is a "
+            "pipeline defect)" if dedup_expected else
             " (no dedup step declared — maintainer's call per POL-022)")
-    print(f"Duplicate sentence findings [{severity}]{note}: "
+    print(f"Duplicate sentence findings{note}: "
+          f"HARD={hard} (same gloss), SOFT={soft} (gloss differs); "
           f"within-file={n_within} groups, cross-file={n_cross} groups")
+    by_lang = defaultdict(int)
+    for f in findings:
+        by_lang[f.language or "?"] += 1
+    if by_lang:
+        print("  groups by language: " + ", ".join(f"{k}={v}" for k, v in sorted(by_lang.items())))
 
 
 def main(argv=None) -> int:

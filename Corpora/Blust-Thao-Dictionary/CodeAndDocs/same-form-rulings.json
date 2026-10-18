@@ -1,0 +1,1575 @@
+{
+  "_comment": "One verdict per group of sentences that share a FORM and differ in gloss. Recorded from the maintainer's review page, 2026-09-11. `glosses` is the state the verdict was given on and is what apply_same_form_rulings.py matches: it refuses to act on a group whose glosses have moved. `members` is the audit trail of which sentences were on screen - S ids carry a sense number within the page, so they renumber whenever any sense is dropped, and they are deliberately NOT part of the match.",
+  "rulings": [
+    {
+      "form": "a",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0280-s001",
+        "blust-entry-p0280-s002"
+      ],
+      "glosses": [
+        [
+          "future marker"
+        ],
+        [
+          "linking particle, ligature, mark of lexical, phrasal, or clausal attribution or modification"
+        ]
+      ],
+      "maintainer": "Pattern to extract: If the FORM notes both contain the word \"homograph\", they are homophones, keep both."
+    },
+    {
+      "form": "kay p-athay",
+      "action": "keep-first",
+      "members": [
+        "blust-entry-p0282-s004",
+        "blust-entry-p0461-s012"
+      ],
+      "glosses": [
+        [
+          "beat, kill"
+        ],
+        [
+          "kill"
+        ]
+      ],
+      "maintainer": "Delete second one. Keep first."
+    },
+    {
+      "form": "ama",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0289-s004",
+        "blust-entry-p0289-s006"
+      ],
+      "glosses": [
+        [
+          "father, Father (add.)"
+        ],
+        [
+          "+ PERSONAL NAME uncle, father's brother; term of reference or address for men of the father's generation"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "mashash-anak",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0291-s007",
+        "blust-entry-p0591-s004"
+      ],
+      "glosses": [
+        [
+          "misaligned, as fence posts of different heights, fail to be in agreement, of people who are expected to get along"
+        ],
+        [
+          "unaligned, as fence posts of different heights, fail to be in agreement, of people who are expected to get along"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second."
+    },
+    {
+      "form": "pin-apuy-an",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0301-s002",
+        "blust-entry-p0301-s004"
+      ],
+      "glosses": [
+        [
+          "was started, of a fire"
+        ],
+        [
+          "make a fire in a place"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "awak",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0308-s002",
+        "blust-entry-p0308-s007"
+      ],
+      "glosses": [
+        [
+          "a notch, as in a tree trunk"
+        ],
+        [
+          "an area of the body corresponding roughly to the waist. This term has no English equivalent, but refers to the vulnerable portions of the side and back between the rib cage and the pelvic bone. Checking suggested that it cannot be used to refer to the more protected frontal area covered by the abdominal muscles, which is called /tiaz/ (abdomen below the navel)"
+        ]
+      ],
+      "maintainer": "Pattern to extract: If the FORM notes both contain the word \"homograph\", they are homophones, keep both."
+    },
+    {
+      "form": "lhum-bala-balay",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0316-s006",
+        "blust-entry-p0553-s009"
+      ],
+      "glosses": [
+        [
+          "just happen to, do something by chance",
+          "You arrived just as we were speaking of you"
+        ],
+        [
+          "just happen to, do something by chance"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "pash-bunaz-an",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0331-s012",
+        "blust-entry-p0686-s023"
+      ],
+      "glosses": [
+        [
+          "place for sand"
+        ],
+        [
+          "place for putting sand"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "ka-buqnur-ik",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0333-s007",
+        "blust-entry-p0429-s007"
+      ],
+      "glosses": [
+        [
+          "I am made angry, my anger is aroused by someone or something"
+        ],
+        [
+          "I am made angry, my anger is aroused"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "pashi-thaythuy",
+      "action": "keep-first",
+      "members": [
+        "blust-entry-p0345-s005",
+        "blust-ex-p0345-e007"
+      ],
+      "glosses": [
+        [
+          "let them have (something)"
+        ],
+        [
+          "Give it to them/let them have it"
+        ]
+      ],
+      "maintainer": "Delete second one. Keep first."
+    },
+    {
+      "form": "dadu",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0351-s007",
+        "blust-entry-p0351-s009"
+      ],
+      "glosses": [
+        [
+          "leader; head of the people; the president of Taiwan"
+        ],
+        [
+          "correct, true; really, definitely"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "min-dadu",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0351-s008",
+        "blust-entry-p0352-s003"
+      ],
+      "glosses": [
+        [
+          "become a leader, become chief"
+        ],
+        [
+          "develop, come into being"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "da-rima matilaw",
+      "action": "merge-notes",
+      "members": [
+        "blust-entry-p0359-s010",
+        "blust-ex-p0597-e005"
+      ],
+      "glosses": [
+        [
+          "5,000 (function of /da/- unknown)"
+        ],
+        [
+          "5,000"
+        ]
+      ],
+      "maintainer": "\"(function of /da/- unknown)\" should got into a note. And then they merge, no need for ver=alt. Just combine the notes."
+    },
+    {
+      "form": "pash-farukuz-an",
+      "action": "keep-first",
+      "members": [
+        "blust-entry-p0376-s009",
+        "blust-entry-p0687-s008"
+      ],
+      "glosses": [
+        [
+          "place where ladders are kept"
+        ],
+        [
+          "place whereladders are kept"
+        ]
+      ],
+      "maintainer": "Delete second one. Keep first."
+    },
+    {
+      "form": "qalha fatu",
+      "action": "keep-first",
+      "members": [
+        "blust-entry-p0377-s004",
+        "blust-entry-p0763-s006"
+      ],
+      "glosses": [
+        [
+          "be stony, have lots of stones; have large testicles"
+        ],
+        [
+          "having big testicles"
+        ]
+      ],
+      "maintainer": "delete the second, keep the first"
+    },
+    {
+      "form": "kawi a filhaq",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0381-s015",
+        "blust-ex-p0280-e012"
+      ],
+      "glosses": [
+        [
+          "leaf of a tree"
+        ],
+        [
+          "leaves of a tree"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "h-m-in-adana",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0394-s001",
+        "blust-entry-p0403-s010"
+      ],
+      "glosses": [
+        [
+          "raised; tamed or domesticated"
+        ],
+        [
+          "raised; tamed, domesticated"
+        ]
+      ],
+      "maintainer": "These are actually the same."
+    },
+    {
+      "form": "ia-muqmuq",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0409-s022",
+        "blust-entry-p0630-s011"
+      ],
+      "glosses": [
+        [
+          "be tolerant of others' faults"
+        ],
+        [
+          "be tolerant of the shortcomings of others"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "ifaz-an",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0411-s013",
+        "blust-entry-p0412-s008"
+      ],
+      "glosses": [
+        [
+          "be put on, of clothes, shoes, a blanket, or any bodily covering"
+        ],
+        [
+          "be put on, of clothing, shoes, a blanket, or any bodily covering"
+        ]
+      ],
+      "maintainer": "These appear to be identical."
+    },
+    {
+      "form": "ing-ka-kulhmuz",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0412-s017",
+        "blust-entry-p0492-s007"
+      ],
+      "glosses": [
+        [
+          "roll rice into a ball to eat it"
+        ],
+        [
+          "roll the rice into a ball to eat it"
+        ]
+      ],
+      "maintainer": "Differing by an article. Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "ing-karunkun",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0413-s002",
+        "blust-entry-p0453-s001"
+      ],
+      "glosses": [
+        [
+          "walk around it"
+        ],
+        [
+          "walk around it, circumambulate it"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "i-lhqanizu-an",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0416-s019",
+        "blust-entry-p0547-s004"
+      ],
+      "glosses": [
+        [
+          "look at oneself in a mirror"
+        ],
+        [
+          "look at one's image in a mirror"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "ina",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0418-s005",
+        "blust-entry-p0418-s007"
+      ],
+      "glosses": [
+        [
+          "mother, Mother (add.)"
+        ],
+        [
+          "+ PERSONAL NAME aunt, mother's sister, term of reference or address for women of the mother's generation"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "in-undadan-an",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0421-s011",
+        "blust-entry-p1038-s002"
+      ],
+      "glosses": [
+        [
+          "place where one has walked"
+        ],
+        [
+          "the place where one has walked"
+        ]
+      ],
+      "maintainer": "Differing by an article. Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "i-qilha-n",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0422-s006",
+        "blust-entry-p0422-s007"
+      ],
+      "glosses": [
+        [
+          "be drunk (by someone)"
+        ],
+        [
+          "be drunk by someone, as water, be imbibed"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "ka sazum a qlhuran",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0429-s002",
+        "blust-entry-p0800-s008"
+      ],
+      "glosses": [
+        [
+          "common rice paddy snake, water snake, Enhydris plumbea (Boie), fam. Colubridae. A slender non-venomous snake with dark gray upper side and yellowish under side which is common in the rice paddies"
+        ],
+        [
+          "common rice paddy snake, water snake, Enhydris plumbea (Boie), fam. Colubridae. A non-venomous snake common in rice paddies, with slender body, dark gray upper side, and yellowish under side"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "lhqa ribush a kabua",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0429-s006",
+        "blust-entry-p0546-s010"
+      ],
+      "glosses": [
+        [
+          "several wild plants, fam. Convolvulaceae, including Ipomoea triloba L. and Strictocardia tiliifolia (Desr.) Hall. f"
+        ],
+        [
+          "several wild plants, fam. Convolvulaceae, incl. Ipomoea triloba L. and Strictocardia tiliifolia (Desr.) Hall. f"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "kit-kakatu-n",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0434-s011",
+        "blust-entry-p0475-s008"
+      ],
+      "glosses": [
+        [
+          "be full of spiderwebs, be full of cobwebs"
+        ],
+        [
+          "be full of spiderwebs or cobwebs"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "ka-kurkur",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0436-s012",
+        "blust-entry-p0436-s013"
+      ],
+      "glosses": [
+        [
+          "any tool used for loosening up the soil"
+        ],
+        [
+          "armpit"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "pish-kalan-kan",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0437-s012",
+        "blust-entry-p0722-s013"
+      ],
+      "glosses": [
+        [
+          "writhe, twist and turn in violent motion"
+        ],
+        [
+          "writhe, twist and turn violently"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "kalawa-n",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0438-s006",
+        "blust-entry-p0438-s007"
+      ],
+      "glosses": [
+        [
+          "be made, be done, be fixed by someone or for someone"
+        ],
+        [
+          "be made, be done, be fixed, be built on"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "ming-kalingkin",
+      "action": "keep-first",
+      "members": [
+        "blust-entry-p0439-s012",
+        "blust-entry-p0604-s008"
+      ],
+      "glosses": [
+        [
+          "get healthy, to begin to feel healthy or vigorous"
+        ],
+        [
+          "get healthy, begin to feel healthy or vigorous"
+        ]
+      ],
+      "maintainer": "Keep the first, delete the second"
+    },
+    {
+      "form": "pish-kalingkin",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0439-s014",
+        "blust-entry-p0722-s014"
+      ],
+      "glosses": [
+        [
+          "get healthy"
+        ],
+        [
+          "become healthy"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "k-in-alisi-an",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0440-s007",
+        "blust-entry-p0469-s010"
+      ],
+      "glosses": [
+        [
+          "was dyed, was colored by someone"
+        ],
+        [
+          "was dyed, colored by someone"
+        ]
+      ],
+      "maintainer": "Delete one. Either one."
+    },
+    {
+      "form": "k-in-an qtha-n",
+      "action": "keep-first",
+      "members": [
+        "blust-entry-p0446-s011",
+        "blust-entry-p0469-s017"
+      ],
+      "glosses": [
+        [
+          "was stepped on, was pressed underfoot; mark made by stepping, footprint"
+        ],
+        [
+          "was crushed underfoot"
+        ]
+      ],
+      "maintainer": "Delete second one, which is a strict subset."
+    },
+    {
+      "form": "k-m-an qtha",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0447-s003",
+        "blust-entry-p0480-s003"
+      ],
+      "glosses": [
+        [
+          "step on something"
+        ],
+        [
+          "crush something underfoot"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "pish-ka-kanshuz",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0448-s011",
+        "blust-entry-p0722-s011"
+      ],
+      "glosses": [
+        [
+          "give an intermittent aroma of something delicious or fragrant"
+        ],
+        [
+          "give an intermittent delicious or fragrant aroma"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second."
+    },
+    {
+      "form": "kash-kariri",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0450-s015",
+        "blust-entry-p0454-s016"
+      ],
+      "glosses": [
+        [
+          "flip about, turn this way and that, as a trapped animal trying to free itself"
+        ],
+        [
+          "flip about, turn this way and that, as a trapped animal trying to get free"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "kashun-taqa",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0456-s019",
+        "blust-entry-p0969-s006"
+      ],
+      "glosses": [
+        [
+          "twist this way and that, as a trapped animal trying to free itself"
+        ],
+        [
+          "twist this way and that, flip around, as a trapped animal trying to free itself"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "pu-katkat",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0457-s015",
+        "blust-entry-p0737-s001"
+      ],
+      "glosses": [
+        [
+          "remove stitches from a sewn article of apparel"
+        ],
+        [
+          "remove the stitches from a sewn article of apparel"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second."
+    },
+    {
+      "form": "kay tunu",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0461-s016",
+        "blust-entry-p1015-s013"
+      ],
+      "glosses": [
+        [
+          "hit, beat, as with a stick"
+        ],
+        [
+          "slap, beat, thrash"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "maka-kikalhi-wak",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0465-s010",
+        "blust-ex-p0465-e002"
+      ],
+      "glosses": [
+        [
+          "I will ask"
+        ],
+        [
+          "I want to ask"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second."
+    },
+    {
+      "form": "kit-lhulhuk-in",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0475-s012",
+        "blust-entry-p0553-s005"
+      ],
+      "glosses": [
+        [
+          "be pimply, have pimples"
+        ],
+        [
+          "be pimply, be covered with pimples"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "k-m-urkur",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0484-s005",
+        "blust-entry-p0484-s006"
+      ],
+      "glosses": [
+        [
+          "soften or loosen something up, as the soil around a plant"
+        ],
+        [
+          "to tickle"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "k-m-ushkush",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0484-s012",
+        "blust-entry-p0484-s013"
+      ],
+      "glosses": [
+        [
+          "scrape out, as rice that sticks to the pot; scratch up with backward movements, as a dog scratching up the ground"
+        ],
+        [
+          "to pile up, as stones"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "k-m-utun",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0484-s015",
+        "blust-entry-p0484-s016"
+      ],
+      "glosses": [
+        [
+          "douse a fire, extinguish a fire by dousing it with water"
+        ],
+        [
+          "is cutting rope or thread"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "ma-kutbaz",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0503-s004",
+        "blust-entry-p0571-s002"
+      ],
+      "glosses": [
+        [
+          "be dry, as rice cooked without enough water"
+        ],
+        [
+          "be dry, as rice that is cooked without enough water"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second."
+    },
+    {
+      "form": "lh-um-fawa",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0533-s002",
+        "blust-entry-p0553-s018"
+      ],
+      "glosses": [
+        [
+          "swollen from contusion (not water retention)"
+        ],
+        [
+          "swollen from contusion (not from water retention)"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "lh-m-iur",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0541-s015",
+        "blust-entry-p0545-s007"
+      ],
+      "glosses": [
+        [
+          "hook fruit with a fruiting pole, collect anything with a hook-shaped object"
+        ],
+        [
+          "hook fruit with a fruiting pole, collect with a hook-shaped object"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "lh-m-uthun",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0545-s011",
+        "blust-entry-p0545-s012"
+      ],
+      "glosses": [
+        [
+          "order someone to do something"
+        ],
+        [
+          "to remind, suggest that someone do something"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "lhqa na-ntua",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0546-s008",
+        "blust-ex-p0644-e010"
+      ],
+      "glosses": [
+        [
+          "residing where?"
+        ],
+        [
+          "Where do you live?"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "lhqa ribush a qnuan",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0546-s011",
+        "blust-entry-p0829-s005"
+      ],
+      "glosses": [
+        [
+          "largest species of deer"
+        ],
+        [
+          "largest type of deer"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "pash-lhufu-an",
+      "action": "keep-first",
+      "members": [
+        "blust-entry-p0551-s008",
+        "blust-entry-p0689-s015"
+      ],
+      "glosses": [
+        [
+          "a place where one broods or sits on eggs"
+        ],
+        [
+          "a place where a bird or chicken broods or sits on eggs"
+        ]
+      ],
+      "maintainer": "Delete second one. Keep first."
+    },
+    {
+      "form": "malalia",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0571-s013",
+        "blust-entry-p0571-s014"
+      ],
+      "glosses": [
+        [
+          "malaria"
+        ],
+        [
+          "to run"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "mi-mamuri",
+      "action": "keep-first",
+      "members": [
+        "blust-entry-p0574-s019",
+        "blust-entry-p0607-s012"
+      ],
+      "glosses": [
+        [
+          "do something alone, do something by oneself"
+        ],
+        [
+          "do something alone, do sthg by oneself"
+        ]
+      ],
+      "maintainer": "Keep the first, delete the second"
+    },
+    {
+      "form": "ma-tusuq",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0599-s009",
+        "blust-entry-p0599-s010"
+      ],
+      "glosses": [
+        [
+          "will drip"
+        ],
+        [
+          "will instruct"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "m-in-aka-rihaz",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0610-s004",
+        "blust-entry-p0610-s005"
+      ],
+      "glosses": [
+        [
+          "did something all the way through"
+        ],
+        [
+          "did something all the way through; stayed up late, as to accomplish something"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second."
+    },
+    {
+      "form": "m-in-alhuiza",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0611-s004",
+        "blust-ex-p0664-e018"
+      ],
+      "glosses": [
+        [
+          "planted"
+        ],
+        [
+          "Have you finished the planting yet?"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second."
+    },
+    {
+      "form": "mintamar",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0618-s016",
+        "blust-entry-p0718-s014"
+      ],
+      "glosses": [
+        [
+          "spin"
+        ],
+        [
+          "to spin"
+        ]
+      ],
+      "maintainer": "delete the first, keep the second"
+    },
+    {
+      "form": "m-urun",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0632-s014",
+        "blust-entry-p0632-s015"
+      ],
+      "glosses": [
+        [
+          "arrive"
+        ],
+        [
+          "do something first"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "mu-saran",
+      "action": "keep-first",
+      "members": [
+        "blust-entry-p0632-s024",
+        "blust-entry-p0864-s011"
+      ],
+      "glosses": [
+        [
+          "go onto the road, take onto the road"
+        ],
+        [
+          "go out onto the road, take out onto the road"
+        ]
+      ],
+      "maintainer": "Keep the first, delete the second"
+    },
+    {
+      "form": "m-ushnaw",
+      "action": "keep-either",
+      "members": [
+        "blust-entry-p0633-s006",
+        "blust-entry-p1044-s008"
+      ],
+      "glosses": [
+        [
+          "to like, be fond of"
+        ],
+        [
+          "like, be fond of"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "mu-ta-tata",
+      "action": "keep-first",
+      "members": [
+        "blust-entry-p0633-s012",
+        "blust-entry-p0975-s006"
+      ],
+      "glosses": [
+        [
+          "come oneby-one"
+        ],
+        [
+          "come oneby-one, come one at a time"
+        ]
+      ],
+      "maintainer": "Keep the first, delete the second"
+    },
+    {
+      "form": "palhintaz",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0662-s009",
+        "blust-entry-p0662-s014"
+      ],
+      "glosses": [
+        [
+          "go together"
+        ],
+        [
+          "go together, accompany"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second."
+    },
+    {
+      "form": "paqnap",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0674-s008",
+        "blust-entry-p0674-s010"
+      ],
+      "glosses": [
+        [
+          "do something from a starting point, do from the start"
+        ],
+        [
+          "do something systematically, or equitably"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "p-in-uqitan",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0719-s025",
+        "blust-entry-p0720-s001"
+      ],
+      "glosses": [
+        [
+          "was set by someone"
+        ],
+        [
+          "was steered by someone"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "pish-qilha-z",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0724-s008",
+        "blust-ex-p0793-e007"
+      ],
+      "glosses": [
+        [
+          "to sober up, recover from intoxication"
+        ],
+        [
+          "Vomit so you will sober up"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "p-utu-an",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0754-s015",
+        "blust-entry-p0754-s016"
+      ],
+      "glosses": [
+        [
+          "be put on or in"
+        ],
+        [
+          "have sexual intercourse, be copulated with"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "sh-m-ang-qafu",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0758-s011",
+        "blust-entry-p0925-s010"
+      ],
+      "glosses": [
+        [
+          "throw ashes at or on something"
+        ],
+        [
+          "throw ashes at or on something (to ensure spiritual protection)"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second."
+    },
+    {
+      "form": "s-m-a-sas",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0866-s004",
+        "blust-entry-p0874-s009"
+      ],
+      "glosses": [
+        [
+          "deliver, take to someone repeatedly or habitually"
+        ],
+        [
+          "deliver to someone, as a meal to workers in the fields"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "sh-m-aish",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0890-s004",
+        "blust-entry-p0926-s004"
+      ],
+      "glosses": [
+        [
+          "help someone by taking over a task, relieve a person at a job or a shift"
+        ],
+        [
+          "help someone by taking over a task, relieve someone at a job or a shift"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second."
+    },
+    {
+      "form": "sharun",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p0899-s005",
+        "blust-entry-p0899-s006"
+      ],
+      "glosses": [
+        [
+          "kind of reed which grows to a height of about one meter. It has a round stem about the diameter of a broom handle, which is peeled to make shizu mats"
+        ],
+        [
+          "takic the Formosan leopard cat, Felis bengalensis chinensis Gray, fam. Felidae. A small fierce wild cat that preys on the muntjac or barking deer"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "tishmamraw",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p0995-s003",
+        "blust-entry-p0995-s004"
+      ],
+      "glosses": [
+        [
+          "horse"
+        ],
+        [
+          "a kuskus horsehoof clover, a small clover-like plant with a single leaf shaped somewhat like the hoof of a horse. The leaf is prepared as a medicine in much the same way as the agqulha, and given to children in the treatment of colds and gas. The name is a transparent calque from Taiwanese"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "undadan",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p1038-s001",
+        "blust-entry-p1038-s007"
+      ],
+      "glosses": [
+        [],
+        [
+          "walk!"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second. The first one isn't even a definition anyway; it's a misparse. A definition will never consist of just a colon."
+    },
+    {
+      "form": "urun",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p1042-s008",
+        "blust-entry-p1042-s012"
+      ],
+      "glosses": [
+        [
+          "arrive"
+        ],
+        [
+          "do first, do before someone else can"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "urun-ik",
+      "action": "keep-both",
+      "members": [
+        "blust-entry-p1042-s010",
+        "blust-entry-p1042-s014"
+      ],
+      "glosses": [
+        [
+          "I arrived"
+        ],
+        [
+          "I do something before some else can"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    },
+    {
+      "form": "pashi-yakin",
+      "action": "merge-alt",
+      "members": [
+        "blust-entry-p1057-s006",
+        "blust-ex-p1057-e013"
+      ],
+      "glosses": [
+        [
+          "leave me alone; for me; let me have it"
+        ],
+        [
+          "Leave me alone; don't interfere with me"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "kawi a ma-qalhayqay",
+      "action": "keep-first",
+      "members": [
+        "blust-ex-p0280-e007",
+        "blust-ex-p0764-e001"
+      ],
+      "glosses": [
+        [
+          "dried wood, wood that has been dried"
+        ],
+        [
+          "dry wood"
+        ]
+      ],
+      "maintainer": "Delete second one. Keep first."
+    },
+    {
+      "form": "laqsimuaw a hulus azaz t-in-ap'an-an",
+      "action": "merge-alt",
+      "members": [
+        "blust-ex-p0310-e012",
+        "blust-ex-p0968-e013"
+      ],
+      "glosses": [
+        [
+          "A beggar's clothes are full of patches"
+        ],
+        [
+          "The beggar's clothes are all patched up"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "dadu mia-zithu",
+      "action": "merge-alt",
+      "members": [
+        "blust-ex-p0351-e007",
+        "blust-ex-p1064-e010"
+      ],
+      "glosses": [
+        [
+          "That is correct/ that's right"
+        ],
+        [
+          "That's true!, that's right!"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "ita shau-hala",
+      "action": "merge-alt",
+      "members": [
+        "blust-ex-p0396-e011",
+        "blust-ex-p0425-e009"
+      ],
+      "glosses": [
+        [
+          "We (incl.) are early"
+        ],
+        [
+          "We have arrived early"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "ya hiaw ma-kalingkin sa but",
+      "action": "merge-alt",
+      "members": [
+        "blust-ex-p0400-e010",
+        "blust-ex-p0439-e015"
+      ],
+      "glosses": [
+        [
+          "Get well soon"
+        ],
+        [
+          "I hope you get well soon"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "m-ihu a matha",
+      "action": "keep-either",
+      "members": [
+        "blust-ex-p0414-e013",
+        "blust-ex-p0557-e002"
+      ],
+      "glosses": [
+        [
+          "your eyes"
+        ],
+        [
+          "your (sg.) eye"
+        ]
+      ],
+      "maintainer": "Delete one, keep the other. Doesn't matter which."
+    },
+    {
+      "form": "ata tu k-m-an tamaku",
+      "action": "merge-alt",
+      "members": [
+        "blust-ex-p0445-e003",
+        "blust-ex-p1007-e001"
+      ],
+      "glosses": [
+        [
+          "Don't smoke!"
+        ],
+        [
+          "Don't smoke cigarettes"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "thithu kan pizpiz-an",
+      "action": "keep-second",
+      "members": [
+        "blust-ex-p0446-e010",
+        "blust-ex-p0728-e006"
+      ],
+      "glosses": [
+        [
+          "He stepped on (something) to press it down"
+        ],
+        [
+          "he is stepping on something to press it down"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second."
+    },
+    {
+      "form": "haya wa thumay ti ama wa p-in-ataqaz",
+      "action": "merge-alt",
+      "members": [
+        "blust-ex-p0693-e008",
+        "blust-ex-p0984-e010"
+      ],
+      "glosses": [
+        [
+          "This is the bear that Father carried on a shoulder pole"
+        ],
+        [
+          "The bear was carried by Father"
+        ]
+      ],
+      "maintainer": "one word - merge as ver=alt"
+    },
+    {
+      "form": "talhtalh-i uan ihu nak a kawi, ani yaku shirua-n talhtalh",
+      "action": "keep-second",
+      "members": [
+        "blust-ex-p0918-e008",
+        "blust-ex-p0960-e001"
+      ],
+      "glosses": [
+        [
+          "Please split the firewood for me (as) I don't want to split it"
+        ],
+        [
+          "Please split the firewood for me (as) I'm not willing to split it"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second."
+    },
+    {
+      "form": "ata tu taqtaq-i",
+      "action": "keep-both",
+      "members": [
+        "blust-ex-p0970-e008",
+        "blust-ex-p0971-e003"
+      ],
+      "glosses": [
+        [
+          "Don't chop it!"
+        ],
+        [
+          "Don't spit out (food)!"
+        ]
+      ],
+      "maintainer": "homophones - keep both"
+    }
+  ],
+  "settled_by_a_rule": [
+    {
+      "form": "i-ra-rauriuq",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0422-s011",
+        "blust-ex-p0826-e002"
+      ],
+      "glosses": [
+        [
+          "(don't) be quiet"
+        ],
+        [
+          "Keep quiet; don't make noise!"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second.",
+      "retired_because": "the `(don't)` rule in build_entry_xml.py now removes the negative-imperative sense on its own, which is what this verdict asked for"
+    },
+    {
+      "form": "pawawinwin",
+      "action": "keep-second",
+      "members": [
+        "blust-entry-p0699-s002",
+        "blust-ex-p0699-e001"
+      ],
+      "glosses": [
+        [
+          "(don't) shake your head from side to side"
+        ],
+        [
+          "Shake your head from side to side"
+        ]
+      ],
+      "maintainer": "Delete first one, keep second.",
+      "retired_because": "the `(don't)` rule in build_entry_xml.py now removes the negative-imperative sense on its own, which is what this verdict asked for"
+    },
+    {
+      "form": "sas-i",
+      "action": "delete-both",
+      "members": [
+        "blust-entry-p0865-s011",
+        "blust-entry-p0867-s001"
+      ],
+      "glosses": [
+        [
+          "(don't) send it"
+        ],
+        [
+          "(don't) take it to them"
+        ]
+      ],
+      "maintainer": "delete both of these. The optional \"don't\"s are for bound forms to tell you that they could be positive or negative. Pretty much all of those should be removed. We're not supposed to be including bound forms anyway.",
+      "retired_because": "the `(don't)` rule in build_entry_xml.py now removes the negative-imperative sense on its own, which is what this verdict asked for"
+    },
+    {
+      "form": "ungqibi",
+      "action": "keep-first",
+      "members": [
+        "blust-entry-p1033-s003",
+        "blust-entry-p1033-s005"
+      ],
+      "glosses": [
+        [
+          "carry on a carrying pole suspended between two persons"
+        ],
+        [
+          "(don't) carry it"
+        ]
+      ],
+      "maintainer": "Delete the second one. See not about the optional \"don't\"s.",
+      "retired_because": "the `(don't)` rule in build_entry_xml.py now removes the negative-imperative sense on its own, which is what this verdict asked for"
+    }
+  ],
+  "_settled_comment": "Verdicts a later rule reproduces on its own. Kept as expectations, not as instructions: apply_same_form_rulings.py checks that each of these groups really has been settled, and says so if one comes back. A rule that stops doing what the maintainer asked for is at minimum worth flagging, and possibly a verdict to restore (maintainer, 2026-09-11)."
+}

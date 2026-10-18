@@ -7,6 +7,8 @@ broken audio in four classes:
   V101 unloadable    — file present but mutagen/wave can't decode it
   V102 silent        — RMS amplitude (WAV) or ffmpeg silencedetect below threshold
   V103 invalid_range — AUDIO/@start >= AUDIO/@end
+  V106 wrong_container — the bytes are not the container the extension claims
+                         (a WebM/Opus or MP4 file saved as .mp3, an MP3 as .wav)
 
 Plus two SOFT signals (warn, don't fail):
 
@@ -14,7 +16,7 @@ Plus two SOFT signals (warn, don't fail):
   V105 words/sec or chars/sec out of range
 
 Output:
-  <log_dir>/broken_audio.csv         — kind ∈ {missing, unloadable, silent, invalid_range}
+  <log_dir>/broken_audio.csv         — kind ∈ {missing, unloadable, silent, invalid_range, wrong_container}
   <log_dir>/audio_duration_issues.csv — words/sec + chars/sec rows (SOFT)
 
 This validator integrates with the Finding framework
@@ -50,6 +52,7 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 from QC.validation._finding import Finding, Severity, summarize  # noqa: E402
+from QC.xml_forms import find_base_form  # noqa: E402
 
 
 # -----------------------------------------------------------------------------
@@ -60,12 +63,14 @@ RULE_UNLOADABLE = "V101"
 RULE_SILENT = "V102"
 RULE_INVALID_RANGE = "V103"
 RULE_WORDS_PER_SEC = "V105"
+RULE_WRONG_CONTAINER = "V106"
 
 KIND_TO_RULE = {
     "missing": RULE_MISSING,
     "unloadable": RULE_UNLOADABLE,
     "silent": RULE_SILENT,
     "invalid_range": RULE_INVALID_RANGE,
+    "wrong_container": RULE_WRONG_CONTAINER,
 }
 
 AUDIO_EXTENSIONS = ('.mp3', '.wav', '.flac', '.ogg', '.m4a')
@@ -269,7 +274,7 @@ def collect_sentence_refs(xml_root):
                     text_audio_filename = root_elem.get('audio') if root_elem.tag == 'TEXT' else None
                     for elem in root_elem.findall('.//S') + root_elem.findall('.//W'):
                         audio_elem = elem.find('AUDIO')
-                        form_elem = elem.find("FORM[@kindOf='original']")
+                        form_elem = find_base_form(elem, "original")
                         if (audio_elem is not None
                                 and form_elem is not None):
                             audio_filename = audio_elem.attrib.get('file') or text_audio_filename
@@ -364,6 +369,47 @@ def _effective_ref_duration(ref: AudioRef, audio_path: str) -> float | None:
     return get_audio_duration(audio_path)
 
 
+#: What the first bytes of a file say it is, by container. Checked before
+#: decoding because mutagen will happily read an Opus stream served as .mp3
+#: and report a duration, which is how four MP4s and a batch of WebM files
+#: reached a published dataset under .mp3 names (ILRDF v2, PR #199).
+_CONTAINER_SIGNATURES = (
+    ("webm", lambda b: b[:4] == b"\x1aE\xdf\xa3"),
+    ("mp4", lambda b: b[4:8] == b"ftyp"),
+    ("ogg", lambda b: b[:4] == b"OggS"),
+    ("flac", lambda b: b[:4] == b"fLaC"),
+    ("wav", lambda b: b[:4] == b"RIFF" and b[8:12] == b"WAVE"),
+    ("mp3", lambda b: b[:3] == b"ID3" or (len(b) > 1 and b[0] == 0xFF and (b[1] & 0xE0) == 0xE0)),
+)
+_EXTENSION_CONTAINER = {".wav": "wav", ".mp3": "mp3", ".flac": "flac", ".ogg": "ogg", ".m4a": "mp4"}
+
+
+def detect_container(audio_path: str) -> str | None:
+    """'wav', 'mp3', 'flac', 'ogg', 'mp4', 'webm', or None when unrecognised."""
+    try:
+        with open(audio_path, "rb") as handle:
+            head = handle.read(12)
+    except OSError:
+        return None
+    for name, matches in _CONTAINER_SIGNATURES:
+        if matches(head):
+            return name
+    return None
+
+
+def _check_wrong_container(audio_path: str) -> str | None:
+    """The detected container when it contradicts the extension, else None.
+
+    An unrecognised signature is not a mismatch (V101 decides whether the
+    file decodes); only a positively identified *other* container is.
+    """
+    expected = _EXTENSION_CONTAINER.get(Path(audio_path).suffix.lower())
+    found = detect_container(audio_path)
+    if expected is None or found is None or found == expected:
+        return None
+    return found
+
+
 def _check_unloadable(audio_path: str) -> bool:
     """Return True if mutagen/wave cannot decode the file."""
     suffix = Path(audio_path).suffix.lower()
@@ -446,6 +492,17 @@ def validate_corpus(xml_root: Path, audio_root: Path,
     for ref, audio_path in tqdm(
         resolved_refs, desc="checking sentence/word audio", disable=not sys.stderr.isatty()
     ):
+        wrong = _check_wrong_container(audio_path)
+        if wrong is not None:
+            findings.append(Finding(
+                rule_id=RULE_WRONG_CONTAINER,
+                severity=Severity.HARD,
+                message=(f"audio file is {wrong} data under a "
+                         f"{Path(audio_path).suffix.lower()} name: {ref.audio_filename}"),
+                path=Path(ref.xml_path),
+                location=_audio_location(ref),
+            ))
+            continue  # the extension lies; decoding it proves nothing
         if _check_unloadable(audio_path):
             findings.append(Finding(
                 rule_id=RULE_UNLOADABLE,

@@ -8,9 +8,11 @@ they poison the morpheme tier, which splits them into nonsense like 'lrigi/ma'.
 Two outcomes, decided by POL-028's own test rather than by guessing:
 
 * the readings are **spelling variants** of one another (they overlap highly and
-  neither is more than twice the other's length) -- the first becomes the FORM
-  and each other becomes a sibling FORM[@kindOf='alternate'], which is exactly
-  what POL-028 defines an alternate to be.
+  neither is more than twice the other's length) -- the first becomes the tier's
+  base FORM and each other becomes a sibling FORM[@kindOf='original' ver='alt'],
+  which is exactly what POL-028 (revised 2026-09-09) defines a variant to be.
+  The variant names its own tier, so standardize.py can derive the matching
+  standard-tier variant.
 * the readings are **competing lexemes** ('ma-lrigi/ma-elre-elrenge/ma-adraw')
   -- POL-027 makes those separate S blocks, which is a larger change than this
   script should make on its own. The first reading is kept so the FORM is legal,
@@ -34,7 +36,11 @@ from pathlib import Path
 from lxml import etree
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+_BANK = Path(__file__).resolve().parents[4]
+if str(_BANK) not in sys.path:
+    sys.path.insert(0, str(_BANK))
 from apply_prune_and_mirror import segment_from_form  # noqa: E402
+from QC.xml_forms import find_base_form  # noqa: E402
 
 MARK = re.compile(r"[-=<>]")
 OVERLAP_MIN = 0.6          # POL-028: an alternate looks like its sibling
@@ -99,9 +105,13 @@ def _pick_base(parts: list, sentence_form: str) -> int:
 
 def resolve_word(w, stats: Counter, sentence_form: str = "") -> str | None:
     """Resolve a slashed W FORM. Returns the surviving base form, or None."""
-    form = w.find("FORM[@kindOf='original']")
+    # Base FORMs only. This step runs after pipeline_{sentences,stories} may
+    # already have added a ver="alt" variant (their step 14), so a plain
+    # first-match would de-slash the variant and leave the base alone.
+    # (`a or b` would be wrong: a childless lxml element is falsy.)
+    form = find_base_form(w, "original")
     if form is None:
-        form = w.find("FORM")
+        form = find_base_form(w)
     if form is None or "/" not in (form.text or ""):
         return None
     raw = form.text
@@ -121,9 +131,10 @@ def resolve_word(w, stats: Counter, sentence_form: str = "") -> str | None:
     if is_spelling_variant(parts):
         for extra in parts[1:]:
             alt = etree.SubElement(w, "FORM")
-            alt.set("kindOf", "alternate")
+            alt.set("kindOf", "original")
+            alt.set("ver", "alt")
             alt.text = extra
-        stats["spelling variants -> FORM[@kindOf='alternate']"] += 1
+        stats["spelling variants -> FORM[@kindOf='original' ver='alt']"] += 1
     else:
         note = "competing readings (POL-027, pending split): " + " / ".join(parts[1:])
         form.set("notes", ((form.get("notes") or "") + " " + note).strip())
@@ -156,9 +167,9 @@ def main() -> int:
         changed = False
         for s in tree.getroot().iter("S"):
             for w in s.findall("W"):
-                sf = s.find("FORM[@kindOf='original']")
+                sf = find_base_form(s, "original")
                 if sf is None:
-                    sf = s.find("FORM")
+                    sf = find_base_form(s)
                 base = resolve_word(w, stats, (sf.text or "") if sf is not None else "")
                 if base is None:
                     continue

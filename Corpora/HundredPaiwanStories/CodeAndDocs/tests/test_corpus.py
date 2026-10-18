@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 XML_ROOT = Path(os.environ.get("PAIWAN_XML_ROOT", ROOT / "XML")).resolve()
 REPORTS_ROOT = Path(os.environ.get("PAIWAN_REPORTS_ROOT", ROOT / "reports")).resolve()
 SOURCE_ROOT = Path(os.environ.get("PAIWAN_SOURCE_ROOT", ROOT)).resolve()
-COPYRIGHT = "CC BY-NC"
+COPYRIGHT = "CC BY-NC 4.0"
 MARKERS = "-=<>~()"
 
 

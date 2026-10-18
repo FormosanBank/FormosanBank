@@ -1,0 +1,138 @@
+{
+  "_comment": "Findings the maintainer has ruled on. Each one is a defect in the PRINTED book, not in the parse, so the record keeps what the page says and the ruling is applied where the corpus is built - curated-readings.json, read by build_entry_xml.readings(). They are counted separately from the worklist so a page the maintainer has already answered stops coming back. `maintainer` quotes the ruling as it was written.",
+  "rulings": [
+    {
+      "rule": "E03",
+      "headword": "acay",
+      "page": 280,
+      "maintainer": "That's effectively two words: \"ka-p-acay-en a ayuzi\" is \"widow\" and \"ka-p-acay-an a binanau'az\" is \"widower\".",
+      "handled": "curated-readings.json: two readings, one English each"
+    },
+    {
+      "rule": "E03",
+      "headword": "filhaq",
+      "page": 381,
+      "maintainer": "There is a typographical error in the book. Interpret #3 as: The definition of \"filhaq a rima\" and \"rima a filhaq\" are both \"finger\". Interpret #4 as: The definition of \"filhaq a kuskus\" and \"kuskus a filhaq\" is \"toe\". This was just a failure to change fonts. It's also a failure to note that these are two different headwords (really head phrases) with the words in a different order.",
+      "handled": "curated-readings.json: two readings sharing one English, for each of senses 3 and 4"
+    },
+    {
+      "rule": "S03",
+      "headword": "filhaq",
+      "page": 381,
+      "maintainer": "Same ruling as the E03 on this entry: the definition is set in the sub-entry face, so the parse is right that the sense has no definition of its own.",
+      "handled": "curated-readings.json"
+    },
+    {
+      "rule": "E03",
+      "headword": "rima",
+      "page": 832,
+      "maintainer": "There's a typographical error in the book. This should be interpreted as two spellings (\"masa-rima\" and \"masay rima\") with one meaning (\"use the hand for some purpose\"). Use the ver=\"alt\" method for the two spellings.",
+      "handled": "curated-readings.json: one reading with `alternate`, which becomes a ver=\"alt\" FORM"
+    },
+    {
+      "rule": "S03",
+      "headword": "rima",
+      "page": 832,
+      "maintainer": "Same ruling as the E03 on this entry.",
+      "handled": "curated-readings.json"
+    },
+    {
+      "rule": "S08",
+      "headword": "rima",
+      "page": 832,
+      "maintainer": "The book is like this: printed p.832 sets `1a` twice, on `rima wa ina` and again on `rima wa huqi`.",
+      "handled": "nothing to do; the record keeps what the page prints"
+    },
+    {
+      "rule": "S07",
+      "headword": "kan",
+      "page": 446,
+      "maintainer": "The book does not contain a #10 sense.",
+      "handled": "nothing to do; the record keeps what the page prints"
+    },
+    {
+      "rule": "S07",
+      "headword": "shawiki",
+      "page": 903,
+      "maintainer": "Sense numbering starts at 3.",
+      "handled": "nothing to do; the record keeps what the page prints"
+    },
+    {
+      "rule": "S07",
+      "headword": "tmaz",
+      "page": 998,
+      "maintainer": "I think you mean there is a sense 6 and a sense 6a. That is correct.",
+      "handled": "nothing to do; the record keeps what the page prints"
+    },
+    {
+      "rule": "S07",
+      "headword": "tuzuk",
+      "page": 1030,
+      "maintainer": "There is no sense 4 in the book.",
+      "handled": "nothing to do; the record keeps what the page prints"
+    },
+    {
+      "rule": "S08",
+      "headword": "bukbuk",
+      "page": 329,
+      "maintainer": "Book is like this.",
+      "handled": "nothing to do; the record keeps what the page prints"
+    },
+    {
+      "rule": "S08",
+      "headword": "kalan",
+      "page": 437,
+      "maintainer": "Book is like this.",
+      "handled": "nothing to do; the record keeps what the page prints"
+    },
+    {
+      "rule": "S08",
+      "headword": "parakpak",
+      "page": 676,
+      "maintainer": "Book is like this.",
+      "handled": "nothing to do; the record keeps what the page prints"
+    },
+    {
+      "rule": "S08",
+      "headword": "qalha",
+      "page": 763,
+      "maintainer": "The sense label \"1b\" is repeated. But this is parsed correctly. None of the senses repeat, just the labels.",
+      "handled": "nothing to do; the record keeps what the page prints"
+    },
+    {
+      "rule": "S08",
+      "headword": "rium",
+      "page": 841,
+      "maintainer": "This is parsed correctly. The number is repeated, but these are distinct senses.",
+      "handled": "nothing to do; the record keeps what the page prints"
+    },
+    {
+      "rule": "S08",
+      "headword": "trik",
+      "page": 1006,
+      "maintainer": "Book is like this.",
+      "handled": "nothing to do; the record keeps what the page prints"
+    },
+    {
+      "rule": "S08",
+      "headword": "utu",
+      "page": 1046,
+      "maintainer": "The parser is correct. The numbering is disordered.",
+      "handled": "nothing to do; the record keeps what the page prints"
+    },
+    {
+      "rule": "S03",
+      "headword": "ma–kimzi",
+      "page": 567,
+      "maintainer": "\"continuously moan or groan\" is the definition. Guessing that this just had the wrong typeface.",
+      "handled": "curated-readings.json: one reading, with the English lifted out of the form"
+    },
+    {
+      "rule": "S03",
+      "headword": "maka–sia–siaq",
+      "page": 565,
+      "maintainer": "This is a misparse. Book reads: maka-sia-siaq to cheep -> |sia-siaq|:2 ... on the first line, we had a cross reference to a bound form, but the closing `|` was not there. Instead, it appeared on the 2nd line. Recommend writing a guard to look for other such cases.",
+      "handled": "parse_entries.py: a cross-reference that does not end in `:N` is held open for the next line. The guard found one other case, p.370, where bars round a sub-entry's own form were read as a reference."
+    }
+  ]
+}

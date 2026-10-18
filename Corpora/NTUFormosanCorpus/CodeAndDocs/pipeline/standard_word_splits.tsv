@@ -1,0 +1,13 @@
+# Word divisions written in the STANDARD sentence tier only (ruling 2026-10-16, review page round 2: "B: split in standard only").
+# NTU's sentence text writes one word where NTU's own word glosses have two; the original tier keeps NTU's spelling,
+# the word tier already follows the glosses, and the standard tier writes the words as glossed. Applied by
+# apply_standard_word_splits.py after standardize.py and before add_phonology.py (so the standard PHON follows).
+# A row whose sentence is found but whose standard FORM does not contain 'joined' as a whole word stops the build.
+language	s_id	joined	split	evidence
+Sakizaya	09_S_8	itiza	i tiza	words: i 介系詞 | t-iza 地點-那
+Sakizaya	09_S_9	itiza	i tiza	words: i 介系詞 | t-iza
+Sakizaya	11_S_48	itiza	i tiza	words: i 介系詞 | t-iza 地點-那
+Sakizaya	15_S_1	paza'ci	paza' ci	words: paza' 香蕉 | ci 主格.人名標記
+Kanakanavu	14_S_27	tia'apacangcangarʉʉn	tia 'apacangcangarʉʉn	words: tia 非實現 | 'apa-cangcangarʉ-ʉn 使動-快樂-受事焦點
+Kanakanavu	15_S_7	tia'apacangcangarʉʉn	tia 'apacangcangarʉʉn	words: tia 非實現 | 'apa-cangcangarʉ-ʉn 使動-快樂-受事焦點
+Kanakanavu	15_S_24	tia'apacangcangarʉʉn	tia 'apacangcangarʉʉn	words: tia 非實現 | 'apa-cangcangarʉ-ʉn 使動-快樂-受事焦點

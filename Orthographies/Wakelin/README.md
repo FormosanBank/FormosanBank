@@ -148,16 +148,34 @@ consonant**: `kwan` 'said' → `koan` 說 (746 tokens) is the clearest case. A
 blanket `y` → `i` *loses* seven points, because word-initial `y` is a real
 consonant (`ya`, `yaken`).
 
-`standardize.apply_standard` iterates the conversion table's rows **in order**
-and does a plain string replacement for each, so a context-sensitive rule can be
-written as a set of multi-character rows. The sixteen consonant+glide sequences
-that actually occur are therefore listed individually, and they are placed
-**after** `ǥ` → `h` and `ch` → `c` (so that the digraphs are computed on the
-post-substitution alphabet, which is what lets `panchy-` reach `panci`) and
-**before** the single-letter rows.
+A context-sensitive rule is written as a set of multi-character rows, so the
+sixteen consonant+glide sequences that actually occur are listed individually
+rather than as a blanket `y` → `i`.
 
-**The row order in `Yami_Wakelin_113.tsv` is load-bearing. It is not an
-alphabetical list, and reordering it will silently change the output.**
+**Amended 2026-09-10.** This section previously said that
+`standardize.apply_standard` iterates the rows **in order** with plain string
+replacement, and that the glide rows sit *after* `ǥ` → `h` and `ch` → `c` so the
+digraphs are computed on the post-substitution alphabet — "which is what lets
+`panchy-` reach `panci`". That was true when the table was built (2026-09-08)
+and stopped being true the next day: POL-056 (`307868c60`) made a conversion
+table a **set** of rules, staged through placeholders longest-source-first, so
+**row order does not matter and a rule's output is never matched by another
+rule**. `ch` → `c` can therefore no longer feed `cy` → `ci`, and `chya` stopped
+at `cya`.
+
+The intent is now expressed directly, the way POL-056 requires (the same
+migration `Amis_Church_113` got): the table carries its own row
+
+    chy → ci
+
+so `chya` reaches `cia` and `panchy-` reaches `panci` without depending on
+chaining. `chy` is the only sequence that was affected — it is the only glide
+row whose source can be produced by an earlier rule, since `ǥ` → `h` yields `h`
+and the table has no `hw`/`hy` row.
+
+**Row order in `Yami_Wakelin_113.tsv` is no longer load-bearing** (POL-056), but
+every rule must still say what it means on its own: do not reintroduce a row
+that only works because another row ran first.
 
 ## What the tables do not fix
 

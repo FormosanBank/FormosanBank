@@ -216,24 +216,34 @@ def _write_xml_with_transls(path, sentences):
         + "".join(body) + "</TEXT>", encoding="utf-8")
 
 
-def test_apply_merges_distinct_transls_into_survivor_as_ver_alt(tmp_path):
+def test_a_different_translation_is_not_a_duplicate(tmp_path):
+    """SUPERSEDES the ver="alt" merge for differing translations (POL-050).
+
+    The tool used to treat one FORM as one sentence and merge the losers'
+    translations into the survivor as ver="alt". That deletes homophones: in a
+    dictionary, one spelling with two glosses is usually two words. Since
+    2026-09-11 the equivalence is FORM **and** TRANSL, so a sentence with a
+    different translation is simply not a duplicate and nothing is merged.
+    validate_duplicate_sentences reports the pair SOFT instead, for a human to
+    decide between homophone and ver="alt".
+
+    POL-025 is still honoured, and more simply: a distinct translation cannot be
+    lost to dedup, because the S that carries it is never removed.
+    """
     f = tmp_path / "a.xml"
     _write_xml_with_transls(f, [
         ("S_1", "same", [("en", "first reading")]),
-        ("S_2", "same", [("en", "second reading"), ("zho", "第二")]),
-        ("S_3", "same", [("en", "first  reading")]),   # ws-normalized dup transl
+        ("S_2", "same", [("en", "second reading"), ("zho", "\u7b2c\u4e8c")]),
+        ("S_3", "same", [("en", "first  reading")]),   # ws-normalized: a real dup
     ])
     plan = rds.plan_removals(str(tmp_path), scope="file", tier="standard")
     merged = rds.apply_removals(plan)
     root = etree.parse(str(f)).getroot()
-    assert [s.get("id") for s in root.iter("S")] == ["S_1"]
-    transls = root.findall(".//S/TRANSL")
+    # S_3 goes: same words, same meaning. S_2 stays: same words, other meaning.
+    assert [s.get("id") for s in root.iter("S")] == ["S_1", "S_2"]
+    assert merged == 0
     keys = [((t.get("{http://www.w3.org/XML/1998/namespace}lang") or ""),
-             t.text, t.get("ver")) for t in transls]
-    # Survivor's own TRANSL untouched; S_2's two distinct readings merged as
-    # ver="alt"; S_3's whitespace-variant duplicate NOT merged.
+             t.text, t.get("ver")) for t in root.findall(".//S/TRANSL")]
     assert ("en", "first reading", None) in keys
-    assert ("en", "second reading", "alt") in keys
-    assert ("zho", "第二", "alt") in keys
-    assert len(keys) == 3
-    assert merged == 2
+    assert ("en", "second reading", None) in keys
+    assert not [k for k in keys if k[2] == "alt"]

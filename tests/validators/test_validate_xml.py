@@ -437,6 +437,47 @@ def test_V085_multi_same_lang_TRANSL_with_ver_positive(
     )
 
 
+def test_V085_gloss_pair_discriminated_by_kindOf_needs_no_ver(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """V085 must not fire on POL-036's additive-gloss shape.
+
+    A W carrying the source's own gloss (kindOf='original') and a
+    standardized one (kindOf='standard') is already unambiguous: `kindOf`
+    says which is which. Demanding a `ver` there forced corpora to assert
+    "alternative reading" (POL-025) about a standardization, which is a
+    different axis entirely. Regression guard for the 2026-09-11 change
+    that added kindOf to V085's grouping key.
+    """
+    copy_fixture(
+        fixtures_dir / "v085_W_gloss_original_and_standard_no_ver.xml", tmp_path
+    )
+    proc = _run_validate(tmp_path)
+    combined = (proc.stdout + proc.stderr).lower()
+    assert "[v085]" not in combined, (
+        "V085 should not fire when kindOf discriminates the glosses; "
+        f"got stdout={proc.stdout!r}"
+    )
+
+
+def test_V085_two_glosses_sharing_kindOf_still_fires(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """Adding kindOf to the grouping key must not blunt V085.
+
+    Two TRANSLs agreeing on both xml:lang and kindOf are still ambiguous
+    about which is canonical, so the rule still applies.
+    """
+    copy_fixture(
+        fixtures_dir / "v085_W_two_standard_glosses_no_ver.xml", tmp_path
+    )
+    proc = _run_validate(tmp_path)
+    assert _has_rule_finding(proc, ("v085", "ver attribute", "discriminate")), (
+        "expected V085 finding for two TRANSLs sharing xml:lang and kindOf; "
+        f"got stdout={proc.stdout!r}"
+    )
+
+
 def test_S_audio_url_and_source_and_AUDIO_source_are_clean(
     tmp_path, fixtures_dir, copy_fixture
 ):
@@ -991,20 +1032,21 @@ def test_V083_schema_validation_negative(tmp_path, fixtures_dir, copy_fixture):
 
 
 # -----------------------------------------------------------------------------
-# V144/V145 SOFT — M-tier consistency (POL-023, ruled 2026-08-10;
-# V144 re-scoped to the SENTENCE 2026-08-12)
+# V144 SOFT / V145 HARD — M-tier consistency (POL-023, ruled 2026-08-10;
+# V144 re-scoped to the SENTENCE 2026-08-12; POL-057 2026-10-17)
 #
-# V144 (per sentence): in a sentence that carries some morphological
-# parsing, every W must have at least one M; a single-M W there reads as
-# "analyzed as monomorphemic". A sentence the author never analyzed
-# carries no M tier at all and is NOT a finding — even when a sibling
-# sentence in the same file is fully parsed.
+# V144 (per sentence, SOFT, a prompt not a defect): in a sentence that
+# carries some morphological parsing, a W with no M is reported so the
+# reviewer can confirm it is deliberately unsegmented (POL-057: no M =
+# segmentation unknown, which is legitimate). A sentence the author never
+# analyzed carries no M tier at all and is NOT a finding — even when a
+# sibling sentence in the same file is fully parsed.
 # "Carries some parsing" = some W has 2+ M, or some M's FORM differs from
 # its parent W's FORM (the criterion in YeddaPalemeqBlog's fix_m_tier.py).
 #
-# V145 (per file, deliberately): a file where no sentence carries any
-# parsing should have no M level at all (an all-single-M mirror tier adds
-# no information — the Yedda case).
+# V145 (per file, deliberately; HARD since 2026-10-17): a file where no
+# sentence carries any parsing must have no M level at all (an
+# all-single-M mirror tier adds no information — the Yedda case).
 # -----------------------------------------------------------------------------
 
 _MT_OPEN = (
@@ -1138,14 +1180,19 @@ def test_V145_all_single_M_tier_flagged(tmp_path):
     assert _has_rule_finding(proc, ("v145",)), (
         f"expected V145; stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
+    # HARD since 2026-10-17: the run fails and the finding says HARD.
+    assert proc.returncode == 1, f"V145 is HARD; expected exit 1, got {proc.returncode}"
+    rows = _soft_rows(tmp_path, "V145")
+    assert rows and all(r["severity"] == "HARD" for r in rows), (
+        f"expected HARD V145 rows in the findings CSV; got {rows!r}")
 
 
 def test_V145_stays_file_scoped_beside_a_parsed_sentence(tmp_path):
     """Deliberate 2026-08-12 choice: V145 keeps FILE scope while V144 went
     per sentence. S2's mirror M tier is indistinguishable from a genuine
-    "all words monomorphemic" analysis at sentence scale, and POL-023
-    blesses single-M Ws — so a file that carries parsing anywhere is not a
-    V145 finding."""
+    "all words monomorphemic" analysis at sentence scale, and POL-057 reads
+    single-M Ws as "monomorphemic" — so a file that carries parsing anywhere
+    is not a V145 finding."""
     body = (
         '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
         + _w("W1", "ma-kaen", ["ma-", "kaen"])
@@ -1272,3 +1319,40 @@ def test_V148_formless_S_never_counts(tmp_path):
     combined = combined_output(proc)
     assert "v148" not in combined, (
         f"FORM-less S must not trip V148; stdout={proc.stdout!r}")
+
+
+# ---------------------------------------------------------------------------
+# V162 / V163: audio consistency without audio files (skills review D5, 2026-10-17)
+# ---------------------------------------------------------------------------
+
+def _findings_csv(tmp_path: Path, rule_id: str) -> list[dict]:
+    """Rows for one rule from the findings CSV _run_validate writes next to the XML."""
+    import csv
+    path = tmp_path / "soft.csv"
+    if not path.exists():
+        return []
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        return [r for r in csv.DictReader(handle) if r.get("rule_id") == rule_id]
+
+
+def test_V162_one_clip_two_sentences_is_hard(tmp_path, fixtures_dir, copy_fixture):
+    """S_1 and S_2 share clip_7.mp3 [0-1.5] with different FORMs; S_3 repeats S_1's text and is not flagged."""
+    copy_fixture(fixtures_dir / "v162_shared_clip_different_sentences.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    assert _has_rule_finding(proc, ("v162",)), proc.stdout
+    rows = _findings_csv(tmp_path, "V162")
+    assert [r["location"] for r in rows] == ["S=S_2"], rows
+    assert rows[0]["severity"] == "HARD"
+    assert "one clip, two sentences" in rows[0]["message"]
+    assert proc.returncode != 0
+
+
+def test_V163_audio_on_printed_alternative_is_soft(tmp_path, fixtures_dir, copy_fixture):
+    """S_1 (slash) and S_2 (optional parenthesis) carry AUDIO: SOFT; S_3 has no AUDIO, S_4 no alternative."""
+    copy_fixture(fixtures_dir / "v163_audio_on_printed_alternative.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    rows = _findings_csv(tmp_path, "V163")
+    assert sorted(r["location"] for r in rows) == ["S=S_1", "S=S_2"], rows
+    assert all(r["severity"] == "SOFT" for r in rows)
+    assert sorted(r["character"] for r in rows) == ["g(e)", "i/q"]
+    assert proc.returncode == 0, "SOFT only: the validator must not exit 1"

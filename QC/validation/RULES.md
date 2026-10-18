@@ -44,9 +44,9 @@ the validator names on its `Details:` line, never to the terminal.
 | V073 | `phon_non_empty` | HARD | file | PHON must have non-empty text content. |
 | V081 | `text_id_unique_across_published_corpora` | HARD | corpus | a TEXT/@id in the corpus-under-test must not collide with any TEXT/@id in published Corpora/. Cross-file rule; consults the CorpusIndex's published_ids. |
 | V084 | `transl_ver_value_in_allowlist` | HARD | file | when TRANSL/@ver is set, its value must be in the project allowlist. |
-| V085 | `multi_same_lang_transl_requires_ver` | HARD | file | when a parent has multiple TRANSL children sharing the same xml:lang, at least one must carry a `ver` attribute to discriminate them. |
+| V085 | `multi_same_lang_transl_requires_ver` | HARD | file | when a parent has multiple TRANSL children sharing the same xml:lang *and* the same `kindOf`, at least one must carry a `ver` attribute to discriminate them. |
 | V144 | `M_less_W_in_parsed_sentence` | SOFT | file | a morphologically parsed sentence with M-less Ws. |
-| V145 | `degenerate_all_single_M_tier` | SOFT | file | M level present but the file carries no parsing. |
+| V145 | `degenerate_all_single_M_tier` | HARD | file | M level present but the file carries no parsing. |
 | V148 | `W_less_S_in_segmented_file` | SOFT | file | a partially word-segmented file. |
 | V149 | `alternate_FORM_requires_base_sibling` | HARD | file | a variant FORM must have exactly one base FORM in its own tier. |
 | V150 | `alternate_FORM_low_overlap` | SOFT | file | an alternate FORM that does not look like a spelling variant of its sibling. |
@@ -55,6 +55,8 @@ the validator names on its `Details:` line, never to the terminal.
 | V157 | `legacy_alternate_kindOf` | SOFT | file | FORM[@kindOf='alternate'] is the deprecated variant spelling. |
 | V160 | `copyright_present` | HARD | file | TEXT/@copyright must be present and non-empty (POL-042). |
 | V161 | `copyright_in_vocabulary` | HARD | file | TEXT/@copyright must equal a rights_vocabulary.csv value exactly. |
+| V162 | `shared_clip_under_different_sentences` | HARD | file | Two S in one file whose AUDIO names the same clip (same url/file, start and end) must carry the same original FORM; one clip cannot be two sentences. |
+| V163 | `audio_on_sentence_with_printed_alternative` | SOFT | file | An S carrying AUDIO whose original FORM still prints an alternative (a slash between words, or an optional part in parentheses) should not carry that audio: the clip read one option, and the sentence states two. |
 
 ## `validate_text.py` — text and typography
 
@@ -93,6 +95,8 @@ the validator names on its `Details:` line, never to the terminal.
 | V143 | `transl_language_script_mismatch` | SOFT | file | TRANSL script contradicts its declared language. |
 | V146 | `phon_variant_group_malformed` | SOFT | file | malformed [x|y] variant group in a PHON. |
 | V147 | `phon_legacy_tilde_variant` | SOFT | file | legacy x~y variant notation in a PHON. |
+| V158 | `fused_terminal_punctuation` | SOFT | file | '!' or '?' glued to the following word, or a space before '!'/'?', in S-standard FORM. |
+| V159 | `null_glyph_glued_to_word` | SOFT | file | a null-morpheme glyph (∅ anywhere, or ø/Ø at a word edge) touching a letter in the S-standard FORM. |
 
 ## `validate_glosses.py` — word/morpheme glossing
 
@@ -127,5 +131,11 @@ the validator names on its `Details:` line, never to the terminal.
 | G010 | `mixed_marker_retention` | WARN | file | S-original tiers inconsistently retain segmentation markers. |
 | G011 | `unsplit_slash_alternate` | SOFT | file | '/' in an S-original whose W tier also carries '/'. |
 | G012 | `trailing_paren_note_in_TRANSL` | SOFT | file | a trailing '(...)' in a TRANSL belongs in the notes attribute. |
+| G014 | `rare_gloss_is_substring_of_dominant` | WARN | file | a word's rare gloss is a substring of its dominant gloss. |
+| G015 | `function_word_aberrant_gloss_rate` | WARN | file | sentences where function words carry glosses they almost never take. |
+| G016 | `unbalanced_brackets_in_gloss` | SOFT | file | a W or M gloss with an unclosed or unopened bracket (ASCII or CJK). |
+| G017 | `out_of_language_run` | SOFT | file | a run of an S original FORM holding three or more English, German or French function words with no word of the declared language in between — a scrape that caught the paper's prose, a citation left in the text, an untranslated passage. |
+| G018 | `latin_gloss_on_chinese_tier` | SOFT | file | W/M glosses declared Chinese (xml:lang="zho") that are Latin letters only — an English word or a Leipzig code in the Chinese column. |
+| G019 | `han_or_kana_in_form` | SOFT | file | S original FORMs that carry kana (Japanese) or three or more Han characters (Chinese or Japanese), one finding per file and script. |
 
-93 rules.
+103 rules.

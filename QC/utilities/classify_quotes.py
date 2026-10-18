@@ -30,8 +30,15 @@ import glob
 import os
 import re
 import sys
+import unicodedata
 from collections import Counter, defaultdict
+from pathlib import Path
 from xml.etree import ElementTree as ET
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.xml_forms import find_base_form  # noqa: E402
 
 QUOTE = "'"
 
@@ -60,6 +67,97 @@ def translation_confirms_glottal(form_text, transl_texts):
         return True
     fq = sum(ch in FORM_DQUOTES for ch in form_text)
     return tq == fq
+
+
+# A source whose quotation marks are a backtick/apostrophe pair (Blust's Thao
+# Dictionary is the worked case) prints the same quotation in the Thao and in
+# its English translation, so the translation is a witness for the FORM. Two
+# things follow, and both are evidence the per-apostrophe classifier does not
+# otherwise have.
+OPENING_MARKS = "`\u2018\u201c"
+CLOSING_MARKS = "\u2019\u201d"
+
+
+def _closing_apostrophes(text: str, dict_cf: set | None = None) -> int:
+    """Apostrophes used as a closing quotation mark, not as a letter.
+
+    A closing mark follows a letter, digit or sentence punctuation and is not
+    followed by a letter. A glottal-stop apostrophe can look identical at the
+    end of a word, so when a dictionary is available the word is checked
+    against it first: an attested `qriu'` is a glottal, not a closing mark.
+    """
+    total = 0
+    for match in re.finditer(r"(?<=[\w.,;:?!])'(?![\w])", text):
+        if dict_cf:
+            start = match.start()
+            while start > 0 and text[start - 1].isalpha():
+                start -= 1
+            word = text[start : match.start() + 1]
+            if word and word.casefold() in dict_cf:
+                continue
+        total += 1
+    return total
+
+
+def quote_parity(form_text, transl_texts, dictionary=None):
+    """Compare the quotation marks in a FORM with those in its translations.
+
+    Returns a dict with the opener and closer counts on each side and a verdict:
+
+    ``balanced``        both sides agree and each side's own marks pair up;
+    ``form_unclosed``   the FORM opens a quotation it never closes -- the usual
+                        cause is a quotation that runs past the sentence the
+                        text was split at;
+    ``form_unopened``   the FORM closes a quotation it never opened -- the same
+                        cause, seen from the other end, or an apostrophe that is
+                        really a glottal stop;
+    ``transl_unopened`` the translation closes a quotation it never opened,
+                        which in a scraped source usually means the opening
+                        glyph is missing from the PDF's text layer;
+    ``transl_unclosed`` the mirror of that;
+    ``count_mismatch``  both sides are internally balanced but disagree on how
+                        many quotations there are -- often a translator
+                        splitting one quotation in two, so the weakest signal
+                        of the six.
+
+    ``dictionary`` is the language's attested single words, as ``classify``
+    takes it; without one, a word-final glottal stop counts as a closing mark.
+
+    It is deliberately a report and not a repair: which side is wrong is a
+    judgement about the source, and the counts are what make it decidable.
+    """
+    transl_texts = list(transl_texts or [])
+    # The dictionary applies to the FORM only: it is the Formosan language's
+    # word list, and a translation is English.
+    dict_cf = _casefold_dict(dictionary) if dictionary else None
+    form_open = sum(ch in OPENING_MARKS for ch in form_text)
+    form_close = sum(ch in CLOSING_MARKS for ch in form_text) + _closing_apostrophes(
+        form_text, dict_cf
+    )
+    transl_open = sum(ch in OPENING_MARKS for t in transl_texts for ch in t)
+    transl_close = sum(
+        ch in CLOSING_MARKS for t in transl_texts for ch in t
+    ) + sum(_closing_apostrophes(t) for t in transl_texts)
+
+    if form_open == form_close == transl_open == transl_close:
+        verdict = "balanced"
+    elif form_open > form_close:
+        verdict = "form_unclosed"
+    elif form_close > form_open:
+        verdict = "form_unopened"
+    elif transl_open > transl_close:
+        verdict = "transl_unclosed"
+    elif transl_close > transl_open:
+        verdict = "transl_unopened"
+    else:
+        verdict = "count_mismatch"
+    return {
+        "form_open": form_open,
+        "form_close": form_close,
+        "transl_open": transl_open,
+        "transl_close": transl_close,
+        "verdict": verdict,
+    }
 
 
 def _is_letter(ch) -> bool:
@@ -321,8 +419,21 @@ def _classify_bound(dict_cf, i, quote_indices, info):
 # Punctuation a CLOSING quotation mark can sit against (word.' / word'. / word',).
 CLOSING_PUNCT = set(".,!?;")
 
+# A glottal stop stands next to a vowel in these languages: there a ' right
+# before a consonant at the start of a word, or right after one at the end, is
+# a prime candidate for a quotation mark -- unless the word is attested with
+# that spelling (maintainer, 2026-10-14). Used only to choose among several
+# candidates; the wrap rules ignore it.
+CONSONANT_QUOTE_LANGUAGES = {"Saisiyat", "Saaroa", "Bunun", "Kanakanavu", "Paiwan", "Puyuma", "Rukai"}
+VOWELS = set("aeiouəɨʉɘɜœæø")
 
-def _quotation_targets(text, transls, dict_cf):
+
+def is_vowel(ch: str) -> bool:
+    base = unicodedata.normalize("NFD", (ch or "").casefold())[:1]
+    return base in VOWELS
+
+
+def _quotation_targets(text, transls, dict_cf, fq_consumed=0, consonant_quotes=None):
     """High-confidence quotation rules over a whitespace-normalized ``text``.
 
     Returns the set of ' indices to rewrite to " (empty set if no rule fires).
@@ -332,18 +443,26 @@ def _quotation_targets(text, transls, dict_cf):
     and shrink as the dictionary grows).
 
     A ' "starts a word" = adjacency 'initial'; "ends a word" = adjacency 'final'.
-    A word is "attested" if the whitespace token holding the ' is in the dict.
-    First rule that fires wins, subject to the no-empty-quote guard.
+    A word is "attested" if the glottal word the ' belongs to is in the dict,
+    looked up whole and by its one-sided forms (``word_forms``). First rule that
+    fires wins, subject to the no-empty-quote guard. In every rule the opening
+    quote must come before the closing one.
 
-      1. #TRANSL quotation marks (incl. Chinese) minus existing FORM " equals the
-         count of word-initial + word-final ', and NONE of those words is
-         attested -> all those ' are quotes.
+      1. #TRANSL quotation marks (incl. Chinese) minus existing FORM " (less any
+         a wrap rule consumed) equals the count of word-initial + word-final ',
+         they alternate opening/closing, and NONE of those words is attested ->
+         all those ' are quotes. With ``consonant_quotes`` set and MORE such '
+         than the count, the consonant-adjacent unattested ones are taken when
+         they alone match it.
       2. exactly one word-initial ' AND exactly one ' immediately following
          closing punctuation (. , ! ? ;).
       3. exactly one word-initial ' AND exactly one word-final ' immediately
-         preceding closing punctuation, and that word-final word is not attested.
+         preceding closing punctuation, neither word attested.
       4. exactly one word-initial ' that follows punctuation AND exactly one
          word-final ', and neither word is attested.
+    Rules 2-4 need exactly one candidate on each side; with ``consonant_quotes``
+    set (CONSONANT_QUOTE_LANGUAGES), several candidates of which exactly one is
+    consonant-adjacent and unattested narrow to that one.
     """
     idx = [i for i, ch in enumerate(text) if ch == QUOTE]
     if not idx:
@@ -355,25 +474,73 @@ def _quotation_targets(text, transls, dict_cf):
     wf_before_closing = [i for i in word_final
                          if i + 1 < len(text) and text[i + 1] in CLOSING_PUNCT]
 
-    def attested(i):
-        """Is the glottal WORD this ' belongs to attested? Uses the letter-run
-        adjacent to the ' (initial: '+letters; final: letters+'), NOT the whole
-        whitespace token -- so an opening quote glued to a word that ends in a
-        real glottal (e.g. 'Mafana') doesn't hide that ``mafana'`` is attested.
+    def word_forms(i):
+        """The spellings under which the glottal WORD this ' belongs to is looked up.
+
+        The word is the run of letters, apostrophes and word-internal marks
+        around the ' (``WORD_MARKS``). Looked up whole, and also without the
+        apostrophe at its far edge -- so an opening quote glued to a word that
+        ends in a real glottal ('Mafana') doesn't hide that ``mafana'`` is
+        attested, and a word with a glottal at both edges (``'aehoe'``) or
+        inside (``'a'aynaa'``) is found as itself (maintainer, 2026-10-14: the
+        list includes words that begin and end in a single quote; the old
+        one-sided lookup could never match them).
         """
+        if adj[i] not in ("initial", "final"):
+            return set()
+        a = i
+        while a > 0 and (text[a - 1].isalpha() or text[a - 1] in WORD_MARKS):
+            a -= 1
+        b = i + 1
+        while b < len(text) and (text[b].isalpha() or text[b] in WORD_MARKS):
+            b += 1
+        word = text[a:b].strip(":-~^")
+        cands = {word}
+        if adj[i] == "initial" and word.endswith(QUOTE):
+            cands.add(word[:-1])
+        if adj[i] == "final" and word.startswith(QUOTE):
+            cands.add(word[1:])
+        # The letters on the apostrophe's own side, as before: kept so the
+        # lookup only ever finds MORE words than it used to ('ta'enengan still
+        # matches 'ta, k'yaba' still matches yaba').
         if adj[i] == "initial":
             j = i + 1
             while j < len(text) and text[j].isalpha():
                 j += 1
-            word = text[i:j]
-        elif adj[i] == "final":
+            cands.add(text[i:j])
+        else:
             j = i - 1
             while j >= 0 and text[j].isalpha():
                 j -= 1
-            word = text[j + 1:i + 1]
+            cands.add(text[j + 1:i + 1])
+        return cands
+
+    def attested(i):
+        cands = word_forms(i)
+        return bool(cands) and any(c.casefold() in dict_cf for c in cands)
+
+    def prime(i):
+        """' next to a consonant (initial: before one; final: after one), the
+        word not attested with that spelling."""
+        if adj[i] == "initial":
+            nb = text[i + 1] if i + 1 < len(text) else ""
+        elif adj[i] == "final":
+            nb = text[i - 1] if i else ""
         else:
             return False
-        return word.casefold() in dict_cf
+        if not (_is_letter(nb) and not is_vowel(nb)):
+            return False
+        cands = {c.casefold() for c in word_forms(i)}
+        return not (cands & dict_cf) and not (cands & consonant_quotes)
+
+    def narrowed(cands):
+        """Several candidates, exactly one of them prime -> that one. Otherwise
+        the candidates are left as they are (maintainer, 2026-10-14: the
+        consonant preference only decides between candidates)."""
+        if consonant_quotes is None or len(cands) <= 1:
+            return cands
+        p = [i for i in cands if prime(i)]
+        return p if len(p) == 1 else cands
 
     def guarded(conv):
         """Return conv unless the rewrite would create an empty quotation -- two
@@ -397,7 +564,9 @@ def _quotation_targets(text, transls, dict_cf):
 
     se = sorted(set(word_initial) | set(word_final))
     tq = sum(ch in TRANSL_QUOTES for t in transls for ch in t)
-    fq = sum(ch in FORM_DQUOTES for ch in text)
+    # FORM double quotes that a wrap rule has already paired with consumed
+    # translation quotes are not counted again.
+    fq = sum(ch in FORM_DQUOTES for ch in text) - fq_consumed
     # Rules 3-4 have ambiguous closers (word'. / word' are real word-final-glottal
     # patterns), so they only fire when the TRANSL carries at least one complete
     # quotation PAIR. A lone TRANSL quote (a quotation that spans sentence
@@ -408,29 +577,46 @@ def _quotation_targets(text, transls, dict_cf):
     # BALANCED (equal openers and closers): a real quotation has matched marks,
     # so a lone word-final glottal matching a single spanning TRANSL quote (odd
     # count) is not a quotation.
-    if se and (tq - fq) == len(se) and len(word_initial) == len(word_final) \
+    # ... and in order: opening, closing, opening, closing (2026-10-14).
+    alternates = all(adj[i] == ("initial" if n % 2 == 0 else "final") for n, i in enumerate(se))
+    if se and (tq - fq) == len(se) and len(word_initial) == len(word_final) and alternates \
             and all(not attested(i) for i in se):
         conv = guarded(set(se))
         if conv:
             return conv
+    # ... and when there are more start/end ' than TRANSL quotes, the prime ones
+    # (consonant-adjacent, unattested), if they alone match the count.
+    if consonant_quotes is not None and se and len(se) > (tq - fq) > 0:
+        pse = [i for i in se if prime(i)]
+        if len(pse) == (tq - fq) \
+                and all(adj[i] == ("initial" if n % 2 == 0 else "final") for n, i in enumerate(pse)):
+            conv = guarded(set(pse))
+            if conv:
+                return conv
+    word_initial = narrowed(word_initial)
+    word_final = narrowed(word_final)
+    wf_before_closing = narrowed(wf_before_closing)
     # Rule 2 -- one word-initial ' + one ' after closing punct (.' is unambiguous).
     if len(word_initial) == 1 and len(after_closing) == 1 \
-            and word_initial[0] != after_closing[0]:
+            and word_initial[0] < after_closing[0]:
         conv = guarded({word_initial[0], after_closing[0]})
         if conv:
             return conv
     # Rule 3 -- one word-initial ' + one word-final ' before closing punct
     # (unattested); TRANSL-corroborated.
+    # The opening quote must come before the closing one, and the opening word
+    # is checked against the list too (2026-10-14: rule 3 paired kamamwai' with
+    # a LATER 'iniya'om, which is on the Saisiyat list, and never looked it up).
     if transl_has_pair and len(word_initial) == 1 and len(wf_before_closing) == 1 \
-            and word_initial[0] != wf_before_closing[0] \
-            and not attested(wf_before_closing[0]):
+            and word_initial[0] < wf_before_closing[0] \
+            and not attested(word_initial[0]) and not attested(wf_before_closing[0]):
         conv = guarded({word_initial[0], wf_before_closing[0]})
         if conv:
             return conv
     # Rule 4 -- one word-initial ' after punct + one word-final ', neither
     # attested; TRANSL-corroborated.
     if transl_has_pair and len(word_initial) == 1 and _follows_punct(text, word_initial[0]) \
-            and len(word_final) == 1 and word_initial[0] != word_final[0] \
+            and len(word_final) == 1 and word_initial[0] < word_final[0] \
             and not attested(word_initial[0]) and not attested(word_final[0]):
         conv = guarded({word_initial[0], word_final[0]})
         if conv:
@@ -438,7 +624,7 @@ def _quotation_targets(text, transls, dict_cf):
     return set()
 
 
-def _destrand_for_quotation(text, transls, dict_cf):
+def _destrand_for_quotation(text, transls, dict_cf, fq_consumed=0, consonant_quotes=None):
     """If removing the whitespace on one side of a STRANDED ' lets a quotation
     rule fire, return (variant_text, converted_indices, [orig ' index]).
     Otherwise (text, empty set, []).
@@ -455,13 +641,184 @@ def _destrand_for_quotation(text, transls, dict_cf):
             continue
         for sp in (i - 1, i + 1):
             variant = text[:sp] + text[sp + 1:]
-            conv = _quotation_targets(variant, transls, dict_cf)
+            conv = _quotation_targets(variant, transls, dict_cf, fq_consumed, consonant_quotes)
             if conv:
                 return variant, conv, [i]
     return text, set(), []
 
 
-def apply_quote_corrections(form_text, transls, dictionary):
+# Word-internal marks a Formosan word may carry besides letters and the
+# apostrophe (Saisiyat's length colon, the Bunun/Thao hyphen, the reduplication
+# tilde, Sakizaya's circumflex); mirrors build_attestation_dict.ALLOWED_MARKS.
+WORD_MARKS = set("':-~^")
+# Sentence-final punctuation a wrapping quote may stand before or after.
+SENTENCE_FINAL = set(".!?。！？…")
+_QUOTE_FAMILIES = ({'"', "“", "”", "＂"}, {"「", "」"}, {"『", "』"})
+_OPENERS = {'"', "“", "＂", "「", "『"}
+_CLOSERS = {'"', "”", "＂", "」", "』"}
+
+
+def _wrapping_close(s, open_set, close_set):
+    """Index of the quote that closes a quote at s[0], when that pair wraps the
+    whole string -- the closing quote may stand before or after sentence-final
+    punctuation. None otherwise."""
+    if len(s) < 2 or s[0] not in open_set:
+        return None
+    k = len(s) - 1
+    while k > 0 and s[k] in SENTENCE_FINAL:
+        k -= 1
+    if k <= 0 or s[k] not in close_set:
+        return None
+    return k
+
+
+def transl_wrap(t):
+    """(open, close) indices of quotation marks that wrap a translation whole, or
+    None. The pair must belong together: no quote of the same family between
+    them that would close the first one early ("A" and "B" is two quotations).
+    A straight quote cannot nest, so any straight quote inside disqualifies it;
+    curly and corner quotes are matched as brackets."""
+    s = t.strip()
+    k = _wrapping_close(s, _OPENERS, _CLOSERS)
+    if k is None:
+        return None
+    lead = len(t) - len(t.lstrip())
+    fam = next(f for f in _QUOTE_FAMILIES if s[0] in f)
+    if s[k] not in fam:
+        return None
+    if s[0] in ('"', "＂"):
+        if any(ch in ('"', "＂") for ch in s[1:k]):
+            return None
+    else:
+        depth = 0
+        for j, ch in enumerate(s[:k + 1]):
+            if ch in fam and ch in _OPENERS:
+                depth += 1
+            elif ch in fam and ch in _CLOSERS:
+                depth -= 1
+                if depth == 0 and j != k:
+                    return None
+    return lead, lead + k
+
+
+def wrap_rules(text, transls):
+    """The two wrap rules (maintainer, 2026-10-14), applied before every other
+    rule except the '' pairs. Returns (indices of ' to rewrite to ",
+    consumed-quote-stripped translations, FORM double quotes consumed, stop).
+
+    1. A translation wrapped whole in quotation marks, and an utterance wrapped
+       whole in single quotes (each closing quote before or after
+       sentence-final punctuation): the two single quotes become double quotes.
+    2. The same, with the utterance wrapped in double quotes: nothing changes in
+       the utterance.
+    3. (Addendum) The translation wrapped, the utterance not: nothing changes in
+       the utterance.
+    In every case the translation-wrapping quotes are consumed: they no longer
+    count as evidence for any further ' -> ". If no other quotation mark is left
+    in the translations, the sentence is finished.
+    """
+    wraps = [transl_wrap(t) for t in transls]
+    if not any(wraps):
+        return set(), transls, 0, False
+    conv, fq_consumed = set(), 0
+    k = _wrapping_close(text, {QUOTE}, {QUOTE})
+    if k is not None:
+        conv = {0, k}
+        fq_consumed = 2
+    else:
+        k = _wrapping_close(text, FORM_DQUOTES, FORM_DQUOTES)
+        # Addendum (maintainer, 2026-10-14): "If the translation is wrapped by
+        # quotes and the utterance is not, the translation-wrapping quotes are
+        # consumed anyway. They are not considered evidence of a quote."
+        fq_consumed = 2 if k is not None else 0
+    stripped = []
+    for t, w in zip(transls, wraps):
+        if w:
+            a, b = w
+            t = t[:a] + t[a + 1:b] + t[b + 1:]
+        stripped.append(_single_quote_pairs_as_double(t))
+    left = sum(ch in TRANSL_QUOTES for t in stripped for ch in t)
+    return conv, stripped, fq_consumed, left == 0
+
+
+def _single_quote_pairs_as_double(t):
+    """A translation's own quotations written in single quotes ('Yes,' inside
+    "... say 'Yes,' in reply.") count as translation-internal quotes once the
+    wrapping pair is consumed. Elsewhere the cleaner never reads ' in a
+    translation as a quotation mark (it's, dogs'), so only a pair counts: an
+    opening ' or ‘ at the start of a word, closed by a later ' or ’ that ends a
+    word or follows punctuation. Returns a copy with those pairs written as ",
+    used for counting only -- the translation itself is never rewritten."""
+    chars, opener = list(t), None
+    for i, ch in enumerate(t):
+        left = t[i - 1] if i else " "
+        right = t[i + 1] if i + 1 < len(t) else " "
+        if ch in ("'", "‘") and (left.isspace() or left in '(["“') and right.isalnum():
+            opener = i
+        elif ch in ("'", "’") and opener is not None and not (left.isalnum() and right.isalnum()) \
+                and (right.isspace() or right in '.,;:!?)]"”' or i + 1 == len(t)):
+            chars[opener] = chars[i] = '"'
+            opener = None
+    return "".join(chars)
+
+
+_DQ_OPEN_BEFORE = set("([{“「『\"")
+_DQ_CLOSE_AFTER = set(".,;:!?)]}”」』\"…")
+
+
+def _double_apostrophe_pairs(text):
+    """Two apostrophes typed for a double quotation mark (ePark Atayal
+    ``''tlubuw ... rgyax''``). Maintainer, 2026-10-14: "If there is a `''` and a
+    matching `''` in the same utterance, they can be converted to "s."
+
+    Only a run of exactly two apostrophes counts; a run of three is not one. An
+    opening '' starts a word (start of text, a space or an opening bracket/quote
+    before it, a letter or digit after it); a closing '' ends one (a non-space
+    before it, the end of text, a space or closing punctuation after it). The
+    match of an opening '' is the NEXT '' in the utterance, whatever its shape:
+    it must be a closing one, or nothing is converted -- so ''maylunsan''han ...
+    lutuk''maylunsan'' (each mark glued to a neighbouring word) never pairs the
+    first opening with the last closing across a paragraph. '' between two
+    letters (Saisiyat ``kamatortoroe''omaling'``) neither opens nor closes.
+    Returns the rewritten text and the indices of the new " in it."""
+    runs, i = [], 0
+    while i < len(text):
+        if text[i] == QUOTE:
+            j = i
+            while j < len(text) and text[j] == QUOTE:
+                j += 1
+            if j - i == 2:
+                before = text[i - 1] if i else " "
+                after = text[j] if j < len(text) else " "
+                opens = (before.isspace() or before in _DQ_OPEN_BEFORE) and after.isalnum()
+                closes = (after.isspace() or after in _DQ_CLOSE_AFTER) and not before.isspace()
+                runs.append((i, "open" if opens and not closes else "close" if closes and not opens else None))
+            i = j
+        else:
+            i += 1
+    pairs, k = [], 0
+    while k + 1 < len(runs):
+        if runs[k][1] == "open" and runs[k + 1][1] == "close":
+            pairs.append((runs[k][0], runs[k + 1][0]))
+            k += 2
+        else:
+            k += 1
+    if not pairs:
+        return text, set()
+    starts = {i for pair in pairs for i in pair}
+    out, new_idx, i = [], set(), 0
+    while i < len(text):
+        if i in starts:
+            new_idx.add(len(out))
+            out.append('"')
+            i += 2
+        else:
+            out.append(text[i])
+            i += 1
+    return "".join(out), new_idx
+
+
+def apply_quote_corrections(form_text, transls, dictionary, consonant_quotes=None):
     """Rewrite ' -> " on the ORIGINAL tier only under the high-confidence
     quotation rules in ``_quotation_targets``; assume glottal otherwise.
 
@@ -481,26 +838,44 @@ def apply_quote_corrections(form_text, transls, dictionary):
     if QUOTE not in text:
         return text, [], [], []
     dict_cf = _casefold_dict(dictionary)
+    if consonant_quotes is not None:
+        consonant_quotes = _casefold_dict(consonant_quotes)
+
+    # '' ... '' pairs come first: they are double quotation marks already.
+    text, dq_conv = _double_apostrophe_pairs(text)
+
+    # Then the wrap rules; they may rewrite the utterance's wrapping
+    # single quotes and consume the translations' wrapping quotes.
+    wrap_conv, transls, fq_consumed, stop = wrap_rules(text, list(transls))
+    if wrap_conv:
+        chars = list(text)
+        for i in wrap_conv:
+            chars[i] = '"'
+        text = "".join(chars)
+    if stop or QUOTE not in text:
+        return text, sorted(dq_conv | wrap_conv), [], []
+
     tq = sum(ch in TRANSL_QUOTES for t in transls for ch in t)
     # A TRANSL that carries no quotation confirms the sentence has none.
     quotation_allowed = not (transls and tq == 0)
 
-    corrected, stranded, work = set(), [], text
+    corrected, stranded, work = dq_conv | set(wrap_conv), [], text
     if quotation_allowed:
-        conv = _quotation_targets(text, transls, dict_cf)
+        conv = _quotation_targets(text, transls, dict_cf, fq_consumed, consonant_quotes)
         if conv:
             work = text
         else:
-            work, conv, stranded = _destrand_for_quotation(text, transls, dict_cf)
+            work, conv, stranded = _destrand_for_quotation(text, transls, dict_cf, fq_consumed,
+                                                           consonant_quotes)
         if conv:
             chars = list(work)
             for i in conv:
                 chars[i] = '"'
             work = "".join(chars)
-            corrected = conv
+            corrected |= conv
 
     ambiguous = []
-    if not corrected and tq > 0:
+    if not (corrected - set(wrap_conv) - dq_conv) and tq > 0:
         ambiguous = [i for i, ch in enumerate(text) if ch == QUOTE]
     return work, sorted(corrected), stranded, ambiguous
 
@@ -536,13 +911,13 @@ def _sentence_records(path, lang):
         return []
     out = []
     for s in root.findall("S"):
-        form_text = None
-        for form in s.findall("FORM"):
-            if form.get("kindOf") == "original" and form.text:
-                form_text = " ".join("".join(form.itertext()).split())
-                break
-        if form_text is None:
+        # The original tier's BASE: a POL-028 ver="alt" variant is a second
+        # reading, and classifying its quotes would attribute them to the
+        # sentence as though the base had said them.
+        form = find_base_form(s, "original")
+        if form is None or not form.text:
             continue
+        form_text = " ".join("".join(form.itertext()).split())
         transls = []
         for tr in s.findall("TRANSL"):
             txt = "".join(tr.itertext())

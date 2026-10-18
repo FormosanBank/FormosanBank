@@ -1,0 +1,11 @@
+{
+  "_comment": "Readings that WERE curated and no longer need to be: a later rule derives them from the printed page on its own. They are kept because a curated reading is a maintainer's ruling, and a ruling does not stop being true when the code that honours it changes. test_entry_xml.py asserts that the build still produces each of these WITHOUT consulting this file; if one ever stops matching, the rule that replaced the curation has regressed and the curation should go back into curated-readings.json. Same shape as curated-readings.json, plus `retired` (when and by what).",
+  "balinuqaz ya q–in–usaz iza i–say ma–braq muqay mu–apaw cicu a punuq, numa ya pin–shkash–in ita kun–na–tmaz/pish–na–tmaz cicu a punuq": {
+    "retired": "2026-09-11, when the repeated-word test was scoped to the words the slash is alternating. The repeated `cicu a punuq` here is the sentence's own, on both sides of the slash, so the test no longer fires and the frame stands unaided.",
+    "maintainer": "I'm guessing that actually just the two words alternate (kun-na-tmaz vs. pish-na-tmaz), but this is very uncertain and should go on our list.",
+    "readings": [
+      {"thao": "balinuqaz ya q–in–usaz iza i–say ma–braq muqay mu–apaw cicu a punuq, numa ya pin–shkash–in ita kun–na–tmaz cicu a punuq"},
+      {"thao": "balinuqaz ya q–in–usaz iza i–say ma–braq muqay mu–apaw cicu a punuq, numa ya pin–shkash–in ita pish–na–tmaz cicu a punuq"}
+    ]
+  }
+}

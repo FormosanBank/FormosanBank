@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V085 (must fire).
+
+  Shape: a W with two TRANSL children sharing BOTH xml:lang="eng" and
+  kindOf="standard", neither carrying ver.
+
+  Adding kindOf to V085's grouping key (2026-09-11) must not blunt the
+  rule: two TRANSLs that agree on both attributes are still ambiguous
+  about which is canonical, so V085 still applies.
+
+  Exercises: validate_xml.py should report a V085 HARD finding.
+-->
+<TEXT id="V085_NEG_KINDOF" citation="test" BibTeX_citation="@test{test}" copyright="CC BY-NC-SA 4.0" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Mapafli.</FORM>
+    <TRANSL xml:lang="eng">He gave it.</TRANSL>
+    <W id="S_1W_1">
+      <FORM kindOf="original">Ma-pa-fli</FORM>
+      <TRANSL xml:lang="eng" kindOf="standard">UV-CAU-give</TRANSL>
+      <TRANSL xml:lang="eng" kindOf="standard">UV-CAUS-give</TRANSL>
+    </W>
+  </S>
+</TEXT>

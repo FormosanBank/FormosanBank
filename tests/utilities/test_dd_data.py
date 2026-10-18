@@ -36,3 +36,26 @@ def test_extract_standard_text_only_standard_tier():
         '<FORM kindOf="standard">STD</FORM></S></TEXT>'
     )
     assert extract_standard_text(root) == "STD"
+
+
+def test_extract_standard_text_uses_bases_only(tmp_path):
+    """POL-028: a ver="alt" variant is a second reading of the SAME sentence.
+    Folding it into the dialect-classifier's text counts one sentence twice
+    and mixes a secondary reading into the features."""
+    root = ET.fromstring(
+        '<TEXT xml:lang="ami" dialect="Coastal">'
+        '<S id="1">'
+        '<FORM kindOf="standard">fafahiyan</FORM>'
+        '<FORM kindOf="standard" ver="alt">fafahian</FORM>'
+        "</S></TEXT>"
+    )
+    assert extract_standard_text(root) == "fafahiyan"
+
+
+def test_extract_standard_text_ignores_a_variant_only_sentence(tmp_path):
+    root = ET.fromstring(
+        '<TEXT xml:lang="ami" dialect="Coastal">'
+        '<S id="1"><FORM kindOf="standard" ver="alt">fafahian</FORM></S>'
+        "</TEXT>"
+    )
+    assert extract_standard_text(root) == ""

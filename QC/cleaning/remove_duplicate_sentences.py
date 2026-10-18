@@ -45,7 +45,14 @@ from lxml import etree
 # Reuse the validator's normalize + extract logic so equivalence stays in sync.
 _THIS = Path(__file__).resolve()
 sys.path.insert(0, str(_THIS.parents[1] / "validation"))
-from validate_duplicate_sentences import normalize_for_comparison  # noqa: E402
+if str(_THIS.parents[2]) not in sys.path:
+    sys.path.insert(0, str(_THIS.parents[2]))
+from QC.corpus_counts import is_reproduction_path  # noqa: E402
+from QC.xml_forms import find_base_form  # noqa: E402
+from validate_duplicate_sentences import (  # noqa: E402
+    normalize_for_comparison,
+    normalize_gloss_for_comparison,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -53,8 +60,20 @@ from validate_duplicate_sentences import normalize_for_comparison  # noqa: E402
 # ---------------------------------------------------------------------------
 
 def _extract_sentences_lxml(xml_path: str, kind_of: str):
-    """Return [(s_id, normalized_text), ...].  Uses lxml so apply() can reuse
-    the same parse without round-tripping."""
+    """Return [(s_id, key), ...] where the key is (FORM text, TRANSLs).
+
+    Two sentences are the same sentence only when they say the same thing AND
+    mean the same thing. Keying on the FORM alone deletes homophones: Blust's
+    Thao dictionary has `a` the future marker and `a` the linking particle, one
+    spelling and two words, and FORM-only equivalence silently merged them. In a
+    dictionary that is the common case, not the corner case (maintainer,
+    2026-09-11).
+
+    Where the FORM matches and the TRANSL does not, this returns two different
+    keys and neither is removed - validate_duplicate_sentences reports it SOFT,
+    for a human to decide whether it is a homophone or one entry that should
+    carry both glosses as ver="alt" (POL-025).
+    """
     out = []
     try:
         root = etree.parse(xml_path).getroot()
@@ -63,13 +82,19 @@ def _extract_sentences_lxml(xml_path: str, kind_of: str):
         return out
     for s in root.iter("S"):
         sid = s.get("id", "")
-        for child in s:
-            if child.tag == "FORM" and child.get("kindOf") == kind_of:
-                norm = normalize_for_comparison(child.text or "")
-                if norm:
-                    out.append((sid, norm))
-                break
+        # The tier's BASE form, never a ver="alt" variant: two sentences
+        # whose variants coincide are not duplicates of each other.
+        child = find_base_form(s, kind_of)
+        if child is not None:
+            norm = normalize_for_comparison(child.text or "")
+            if norm:
+                out.append((sid, (norm, sentence_meaning(s))))
     return out
+
+
+def sentence_meaning(s) -> tuple:
+    """Every TRANSL on this S, as a comparable, order-independent key."""
+    return tuple(sorted(_transl_key(t) for t in s.findall("TRANSL")))
 
 
 def _collect_xml_files(root_path: str):
@@ -78,7 +103,9 @@ def _collect_xml_files(root_path: str):
         return [p]
     if not p.is_dir():
         return []
-    return sorted(p.rglob("*.xml"))
+    # CodeAndDocs/ is reproduction material, never published data.
+    return sorted(x for x in p.rglob("*.xml")
+                  if not is_reproduction_path(x, p))
 
 
 def plan_removals(root_path: str, scope: str = "file",
@@ -101,7 +128,7 @@ def plan_removals(root_path: str, scope: str = "file",
 
     if scope == "file":
         for xml_path in xml_files:
-            by_text: dict[str, list[str]] = defaultdict(list)
+            by_text: dict[tuple, list[str]] = defaultdict(list)
             for sid, norm in _extract_sentences_lxml(str(xml_path), tier):
                 by_text[norm].append(sid)
             for norm, sids in by_text.items():
@@ -114,7 +141,7 @@ def plan_removals(root_path: str, scope: str = "file",
                     removals.append((abs_path, sid, abs_path, sorted_sids[0]))
     else:
         # corpus scope: build (norm_text -> [(file, sid), ...]) over all files.
-        by_text: dict[str, list[tuple[str, str]]] = defaultdict(list)
+        by_text: dict[tuple, list[tuple[str, str]]] = defaultdict(list)
         for xml_path in xml_files:
             abs_path = str(xml_path.resolve())
             for sid, norm in _extract_sentences_lxml(str(xml_path), tier):
@@ -149,10 +176,20 @@ def _s_id_sort_key(sid: str):
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
 
-def _transl_key(transl) -> tuple[str, str]:
+def _transl_key(transl) -> tuple[str, tuple[str, ...]]:
+    """This TRANSL's identity for equivalence, never for output.
+
+    The gloss is keyed on its bag of words, so the same gloss typeset twice -
+    a space after a slash, the alternates listed the other way round - is one
+    key. See ``normalize_gloss_for_comparison`` for what that costs.
+
+    Used twice, and both uses want the loose key: deciding whether two S are
+    the same sentence, and deciding whether a removed S carried a gloss the
+    survivor lacks. A survivor glossed ``move slightly, stir`` should not
+    collect ``stir, move slightly`` as a ver="alt" variant of itself.
+    """
     lang = (transl.get(_XML_LANG) or "").strip().lower()
-    text = " ".join("".join(transl.itertext()).split())
-    return (lang, text)
+    return (lang, normalize_gloss_for_comparison("".join(transl.itertext())))
 
 
 def apply_removals(removals):
@@ -300,7 +337,7 @@ def main(argv=None) -> int:
         print(f"[dry-run] Would remove {len(plan)} duplicate <S> element(s):")
         for f, sid, keep_f, keep_sid in plan:
             where = keep_sid if keep_f == f else f"{keep_f}#{keep_sid}"
-            print(f"  - {f}#{sid}  (duplicate of {where}; distinct TRANSLs merge into it as ver=\"alt\")")
+            print(f"  - {f}#{sid}  (duplicate of {where})")
         print("[dry-run] Re-run with --apply to actually modify files.")
         return 0
 

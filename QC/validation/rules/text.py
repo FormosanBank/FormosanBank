@@ -100,6 +100,7 @@ _QC_ROOT = Path(__file__).resolve().parents[3]
 if str(_QC_ROOT) not in _sys.path:
     _sys.path.insert(0, str(_QC_ROOT))
 from QC.corpus_counts import LANG_CODE_TO_NAME as _ISO_TO_ORTHO_NAME  # noqa: E402  (languages.csv, POL-039)
+from QC.xml_forms import find_base_form  # noqa: E402
 
 
 _ORTHOGRAPHIES_ROOT = Path(__file__).resolve().parents[3] / "Orthographies"
@@ -207,36 +208,62 @@ def _resolve_language(tree: etree._ElementTree) -> str:
 
 
 def _s_standard_form_text(s: etree._Element) -> str | None:
-    """Return text of the S element's direct-child kindOf='standard' FORM, or None."""
-    for child in s:
-        if child.tag == "FORM" and child.get("kindOf") == "standard":
-            return child.text or ""
-    return None
+    """Text of the S's direct-child standard *base* FORM, or None.
+
+    Base, not a POL-028 ver="alt" variant: these helpers answer "what does
+    this sentence say", and a variant is a second reading of it.
+    """
+    return _direct_form_by_kind(s, "standard")
 
 
 def _s_original_form_text(s: etree._Element) -> str | None:
-    """Return text of the S element's direct-child kindOf='original' FORM, or None."""
-    for child in s:
-        if child.tag == "FORM" and child.get("kindOf") == "original":
-            return child.text or ""
-    return None
+    """Text of the S's direct-child original *base* FORM, or None."""
+    return _direct_form_by_kind(s, "original")
 
 
 def _direct_form_by_kind(elem: etree._Element, kind: str) -> str | None:
-    """Return the text of a direct-child FORM with the given kindOf, or None."""
-    for child in elem:
-        if child.tag == "FORM" and child.get("kindOf") == kind:
-            return child.text or ""
-    return None
+    """Text of the direct-child *base* FORM of the given kindOf, or None.
+
+    None also covers "this tier has only variants" — V149 (HARD) owns that
+    shape, and no other rule should reason about a variant as if it were
+    the base (maintainer ruling 2026-09-10).
+    """
+    form = find_base_form(elem, kind)
+    return (form.text or "") if form is not None else None
+
+
+def _iter_standard_texts(s: etree._Element):
+    """Yield the text of every standard FORM of ``s`` -- base and variants.
+
+    The character-level rules below ask "is this published text clean?",
+    and a POL-028 ``ver="alt"`` variant is published text: standardize
+    derives it from the original-tier variant exactly as it derives the
+    base, so it is machine-owned and held to the same standard.
+
+    That is the opposite of what most consumers want. A rule that asks
+    "what does this sentence say?" -- alignment, duplicate detection,
+    tier-vs-tier comparison -- must take the base alone, because a
+    variant is a secondary reading and substituting it changes the
+    question. Those rules keep using ``find_base_form`` and are listed in
+    QC/xml_forms.py's docstring. The split is per rule, deliberately, and
+    was drawn after two defects were found sitting in variants that no
+    validator looked at (NTUFormosanCorpus, 2026-09-11).
+
+    Document order, base first where one exists. A tier with only
+    variants still yields them: V149 (HARD) reports the missing base, and
+    suppressing the text here would hide a second defect behind the first.
+    """
+    for form in s.findall("FORM"):
+        if form.get("kindOf") != "standard":
+            continue
+        yield "".join(form.itertext())
 
 
 def _s_standard_pairs(tree: etree._ElementTree):
     """Yield (s_id, standard_text) for each S whose standard FORM exists."""
     for s in tree.iter("S"):
-        text = _s_standard_form_text(s)
-        if text is None:
-            continue
-        yield s.get("id") or "", text
+        for text in _iter_standard_texts(s):
+            yield s.get("id") or "", text
 
 
 def _s_standard_triples(tree: etree._ElementTree):
@@ -247,10 +274,8 @@ def _s_standard_triples(tree: etree._ElementTree):
     (sourceline). Added 2026-06-01 alongside the SOFT-CSV upgrade.
     """
     for s in tree.iter("S"):
-        text = _s_standard_form_text(s)
-        if text is None:
-            continue
-        yield s, s.get("id") or "", text
+        for text in _iter_standard_texts(s):
+            yield s, s.get("id") or "", text
 
 
 def _location_for(elem: etree._Element) -> str:
@@ -575,22 +600,21 @@ def v120_null_in_S_standard(
     """
     findings: list[Finding] = []
     for s in tree.iter("S"):
-        text = _s_standard_form_text(s)
-        if text is not None:
+        for text in _iter_standard_texts(s):
             text = _RECONSTRUCTION_NULL_RE.sub("", text)
-        if text is None or NULL_SYMBOL not in text:
-            continue
-        s_id = s.get("id") or ""
-        findings.append(Finding(
-            rule_id="V120",
-            severity=Severity.SOFT,
-            message=(
-                f"V120 SOFT: null symbol '{NULL_SYMBOL}' in S-level standard FORM "
-                f"(null in s-level standard); S id={s_id!r}"
-            ),
-            path=path,
-            location=f"S={s_id}" if s_id else "S",
-        ))
+            if NULL_SYMBOL not in text:
+                continue
+            s_id = s.get("id") or ""
+            findings.append(Finding(
+                rule_id="V120",
+                severity=Severity.SOFT,
+                message=(
+                    f"V120 SOFT: null symbol '{NULL_SYMBOL}' in S-level standard "
+                    f"FORM (null in s-level standard); S id={s_id!r}"
+                ),
+                path=path,
+                location=f"S={s_id}" if s_id else "S",
+            ))
     return findings
 
 
@@ -1593,7 +1617,7 @@ def v141_W_reconstructs_S(
         ws = [child for child in s if child.tag == "W"]
         if not ws:
             continue  # unsegmented; nothing to reconstruct
-        s_form = s.find('./FORM[@kindOf="original"]')
+        s_form = find_base_form(s, "original")
         if s_form is None:
             continue
         s_skel = letter_skeleton(s_form.text)
@@ -1602,7 +1626,7 @@ def v141_W_reconstructs_S(
         w_skel: Counter = Counter()
         saw_w_form = False
         for w in ws:
-            w_form = w.find('./FORM[@kindOf="original"]')
+            w_form = find_base_form(w, "original")
             if w_form is not None and (w_form.text or "").strip():
                 saw_w_form = True
                 w_skel += letter_skeleton(w_form.text)
@@ -1832,6 +1856,91 @@ def v146_phon_variant_group_malformed(
     return findings
 
 
+# V158: terminal punctuation fused to the next word (Safolu ruling, 2026-10-16).
+_FUSED_PUNCT_BEFORE_LETTER = re.compile(r"[!?](?=[^\W\d_])")
+_SPACE_BEFORE_TERMINAL_PUNCT = re.compile(r"\s[!?]")
+
+
+def v158_fused_terminal_punctuation(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V158 SOFT: '!' or '?' glued to the following word, or a space before
+    '!'/'?', in S-standard FORM.
+
+    A source that prints ``Tayra!ko wawa`` or ``nga'ay ho ?`` has lost or
+    gained a space at a sentence boundary; add_phonology then renders the
+    two words as one, and the word tier cannot align. Maintainer ruling
+    (Safolu, 2026-10-16): "There should be no space before a ? or a ! and
+    there should be space between any ! or ? and a following Amis
+    character." Standard tier only: in Ferrell's Paiwan, Montgomery's Amis
+    and Tsuchida's Pazeh ``?`` writes the glottal stop in the ORIGINAL tier,
+    and no standard orthography uses it as a letter. One finding per
+    offending position."""
+    lang = _resolve_language(tree)
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
+        for m in _FUSED_PUNCT_BEFORE_LETTER.finditer(text):
+            findings.append(_soft_finding(
+                rule_id="V158",
+                message=("V158 SOFT fused_terminal_punctuation: '?' or '!' glued "
+                         "to the next word in S-standard FORM"),
+                path=path,
+                elem=s,
+                language=lang,
+                character=m.group(0),
+            ))
+        for m in _SPACE_BEFORE_TERMINAL_PUNCT.finditer(text):
+            findings.append(_soft_finding(
+                rule_id="V158",
+                message=("V158 SOFT fused_terminal_punctuation: space before "
+                         "'?' or '!' in S-standard FORM"),
+                path=path,
+                elem=s,
+                language=lang,
+                character=m.group(0).strip(),
+            ))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# V159: a null-morpheme glyph glued to a word in the S-standard tier
+# ---------------------------------------------------------------------------
+# A null morpheme written inline (Ø, ø or the canonical ∅) belongs to the
+# ORIGINAL tier, where it is faithful to the source; `clean_xml` canonicalises
+# a null that stands alone between separators and the standard tier is meant
+# to drop them. One that is still glued to letters in the STANDARD tier was
+# missed by both. The glyph ø/Ø is also a letter in Danish and Norwegian
+# names (Grønland, Børn), so only a word-EDGE ø/Ø is reported, and the
+# message says it may be a foreign letter; the canonical ∅ is never a letter,
+# so it is reported wherever it touches one.
+_NULL_CANONICAL_GLUED = re.compile(r"[^\W\d_]∅|∅[^\W\d_]")
+_NULL_LATIN_AT_WORD_EDGE = re.compile(r"(?<!\S)[øØ](?=[^\W\d_])|(?<=[^\W\d_])[øØ](?!\S)")
+
+
+def v159_null_glyph_glued_to_word(tree, path, index) -> list[Finding]:
+    """V159 SOFT null_glyph_glued_to_word: a null-morpheme glyph (∅ anywhere,
+    or ø/Ø at a word edge) touching a letter in the S-standard FORM."""
+    lang = _resolve_language(tree)
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
+        for m in _NULL_CANONICAL_GLUED.finditer(text):
+            findings.append(_soft_finding(
+                rule_id="V159",
+                message="V159 SOFT null_glyph_glued_to_word: canonical null ∅ glued to a word in "
+                        "S-standard FORM (the standard tier should not carry null morphemes)",
+                path=path, elem=s, language=lang, character="∅"))
+        for m in _NULL_LATIN_AT_WORD_EDGE.finditer(text):
+            findings.append(_soft_finding(
+                rule_id="V159",
+                message="V159 SOFT null_glyph_glued_to_word: ø/Ø at a word edge in S-standard FORM; "
+                        "a null-morpheme glyph left in the text, or a Danish/Norwegian letter in a name "
+                        "(check the word)",
+                path=path, elem=s, language=lang, character=m.group(0)))
+    return findings
+
+
 def v147_phon_legacy_tilde_variant(
     tree: etree._ElementTree,
     path: Path,
@@ -1905,5 +2014,9 @@ RULES: list = [
     # V146/V147: PHON variant-group notation (POL-013)
     v146_phon_variant_group_malformed,
     v147_phon_legacy_tilde_variant,
+    # V158: '!'/'?' fused to the next word, or a space before it (Safolu, 2026-10-16)
+    v158_fused_terminal_punctuation,
+    # V159: 2026-10-17 skills-review round 3 (D10): detection only, cleaner untouched
+    v159_null_glyph_glued_to_word,
 ]
 CROSS_FILE_RULES: list = []
