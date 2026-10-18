@@ -4,27 +4,6 @@ This candidate contains 2,042 Amis example records with English and Mandarin rea
 
 This candidate remains under review. The statistics below describe the checked-in candidate XML.
 
-<!-- CORPUS STATS START -->
-## Corpus Statistics
-
-| | Amis<br>Xiuguluan |
-| --- | --- |
-| Word count | 9,228 |
-| Total audio | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
-| Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 9,228 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 9,228 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 |
-| Morphologically segmented | 0 |
-| Glossed words | 0 |
-
-***
-
-<!-- CORPUS STATS END -->
-
 ## Notes and Issues
 
 - The digital source was checked against raw text, corrected Word files and
@@ -46,6 +25,28 @@ This candidate remains under review. The statistics below describe the checked-i
 
 The [corpus PR #170](https://github.com/FormosanBank/FormosanBank/pull/170)
 lists the remaining decisions. A successful build or XML check does not settle them.
+
+
+<!-- CORPUS STATS START -->
+## Corpus Statistics
+
+| | Amis<br>Xiuguluan |
+| --- | --- |
+| Word count | 9,199 |
+| Total audio | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
+| Translated words |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 9,199 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 9,199 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 |
+| Morphologically segmented | 0 |
+| Glossed words | 0 |
+
+***
+
+<!-- CORPUS STATS END -->
 
 ## Access Details
 
