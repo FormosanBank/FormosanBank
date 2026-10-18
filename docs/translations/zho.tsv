@@ -1,16 +1,60 @@
 english	translation	approved	origin	translator	dialect	date
+"""Every M mirrors its W"" is evidence of a fake tier only in bulk: one short sentence whose words really are monomorphemic looks identical to a mirror tier, and single-M Ws are explicitly legal, so sentence-scoping V145 would manufacture false positives."	「每個 M 都與其 W 相同」只有在大量出現時才是偽造層的證據：一個詞確實都是單一詞素的短句，看起來和鏡像層完全相同，而且單一 M 的 W 明確是合法的，因此若將 V145 改為以句子為範圍，就會製造出誤報。	no	mt			2026-10-18
 (2023). _miaoski/amis-data_ \[Python].	(2023). miaoski/amis-data [Python].	no	previous-website			2026-10-18
+(Numbered 2026-10-15.	（2026-10-15 編號。	no	mt			2026-10-18
+(Requires the append-mode fix in `CleanerWarnings.write_csv`; see 2026-08-10 QC test plan, Task 1.)	（需要 `CleanerWarnings.write_csv` 中的附加模式修正；見 2026-08-10 QC 測試計畫，Task 1。）	no	mt			2026-10-18
+(Resolves the Bunun-Topic-Focus degenerate-single-M question: its 51 single-M Ws are conforming as long as no W lacks an M.)	（解決了 Bunun-Topic-Focus 退化單一 M 的問題：只要沒有 W 缺少 M，其 51 個單一 M 的 W 就符合規定。）	no	mt			2026-10-18
+(V121/V122 flag leftover parens/slashes; unresolved slash alternatives in published FORMs are the symptom of skipping this rule.)	（V121/V122 會標記殘留的括號／斜線；已發布 FORM 中未解決的斜線替代選項，就是略過此規則的徵兆。）	no	mt			2026-10-18
+1. Tier semantics	1. 層的語意	no	mt			2026-10-18
+2. Characters and typography	2. 字元與排版	no	mt			2026-10-18
+3. Structure	3. 結構	no	mt			2026-10-18
+4. Process	4. 流程	no	mt			2026-10-18
+5. Rights	5. 權利	no	mt			2026-10-18
+6. Development	6. 開發	no	mt			2026-10-18
 > ### Not protected > > See also: Commons:Unprotected works > > According to the _Copyright Act as amended on 15 June 2022_, The following items shall not be the subject matter of copyright, to which \{{PD-ROC-exempt\}} applied:\[2022 Art.9] > > 1.	> 未受保護的部分 > > 另見：Commons:未受版權保護的作品 > > 根據2022年6月15日修訂的《著作權法》，以下項目不屬於著作權的標的，適用於\{{PD-ROC-exempt\}}：\[2022年第9條] > > 1.	no	previous-website			2026-10-18
 > Most of Wikipedia's text and many of its images are co-licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) and the GNU Free Documentation License (GFDL) (unversioned, with no invariant sections, front-cover texts, or back-cover texts).	維基百科的大部分文本和許多圖片都同時根據創用CC署名-相同方式共享 4.0 國際授權版（CC BY-SA）和GNU自由文檔授權（GFDL）（無版本、無不變部分、封面文本或封底文本）進行共有授權。	no	previous-website			2026-10-18
 A Legacy of Suppression and Revitalization	受壓抑與復振的語言	no	corpus-match			2026-10-18
 A Rich Linguistic Landscape	豐富的語言景觀	no	previous-website			2026-10-18
+A W with exactly one M asserts that the word is monomorphemic.	恰好只有一個 M 的 W 表示該詞為單一詞素。	no	mt			2026-10-18
+A W with no M means its segmentation is unknown, which is legitimate.	沒有 M 的 W 表示其切分未知，這是合理的。	no	mt			2026-10-18
+A W with no M means its segmentation is unknown.	沒有 M 的 W 表示其切分未知。	no	mt			2026-10-18
+A W with two or more Ms was segmented.	有兩個或以上 M 的 W 已經過切分。	no	mt			2026-10-18
+A `~` between two CJK characters is not gloss notation and carries no morphological meaning.	位於兩個 CJK 字元之間的 `~` 不是詞義標注符號，也不帶有任何構詞意義。	no	mt			2026-10-18
+A competing lexeme for the same meaning, or a different gloss, is not a variant; per POL-027 it becomes its own `S` block, named the same way as the optional-material case below.	表達同一意義的競爭詞項，或不同的詞義標注，不是變體；依 POL-027，它會成為自己的 `S` 區塊，命名方式與下文的可選成分情況相同。	no	mt			2026-10-18
 A comprehensive body of resources can aid educational efforts, allowing these communities to reclaim and teach their languages to younger generations, strengthening the connection between language and cultural pride.	豐富的資源體系可以協助教育工作，以促進這些族群能夠重新學習並傳授語言給年輕世代，從而強化語言與文化自豪感之間的連結。	no	previous-website			2026-10-18
 A detailed, generated breakdown can be found here.	詳細資訊請參見此處	no	previous-website			2026-10-18
+A dev repo may keep the source's glyph (`ø`/`Ø`) while work is in progress — two 2026-08 audits chose to — but that choice does not survive publication: `clean_xml` canonicalizes the glyph the first time the corpus runs through the pipeline, so there is no per-corpus opt-out of `∅` in published data.	開發儲存庫在工作進行期間可以保留來源的字形（`ø`/`Ø`）— 2026-08 有兩次稽核選擇這麼做 — 但這個選擇不會延續到發布：語料庫第一次經過管線時，`clean_xml` 就會將該字形規範化，因此已發布資料中沒有針對個別語料庫不使用 `∅` 的選項。	no	mt			2026-10-18
+"A gloss that reads `""bring, AV."	"一個讀作 `""bring, AV."	no	mt			2026-10-18
+A null in a W FORM requires a null M child (V069 HARD).	W FORM 中的零形式需要一個零 M 子元素（V069 HARD）。	no	mt			2026-10-18
+A one-letter word alternating `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid a variant as a letter changing inside a longer word.	一個在 `a`/`u` 之間交替的單字母詞（WakelinTexts `Kwaway/S2W3`），和較長詞內部的一個字母改變一樣，都是有效的變體。	no	mt			2026-10-18
+A publication build reads one exact commit of the public FormosanBank XML and creates an indexed SQLite read model, small catalogues, checksums, and prepared downloads.	發布建置會讀取公開 FormosanBank XML 的某一個確切提交（commit），並建立有索引的 SQLite 讀取模型、小型目錄、校驗碼及預先準備的下載檔。	no	mt			2026-10-18
+A published corpus rebuilds from a FormosanBank checkout alone. Dev repos are permanently private and are never a build input.	已發布的語料庫僅憑一份 FormosanBank 檢出（checkout）即可重建。開發儲存庫永久不公開，也從不作為建置輸入。	no	mt			2026-10-18
+A search can start with a Formosan expression or with a translation.	搜尋可以從臺灣南島語的語句開始，也可以從翻譯開始。	no	mt			2026-10-18
+A selection can include one Formosan language, optional corpus and dialect filters, Formosan or translation matching, evidence requirements, and explicitly chosen fields.	一次選取可包含一種臺灣南島語、選用的語料庫與方言篩選條件、以臺灣南島語或翻譯進行比對、證據要求，以及明確選擇的欄位。	no	mt			2026-10-18
+"A sentence ""carries some parsing"" when either (a) some W in it has two or more M children, or (b) some M's FORM differs from its parent W's FORM (an infix split, or an M that shows a segmentation the W FORM does not)."	句子「帶有部分剖析」是指：(a) 其中某個 W 有兩個或以上的 M 子元素，或 (b) 某個 M 的 FORM 與其父 W 的 FORM 不同（中綴拆分，或 M 顯示出 W FORM 未顯示的切分）。	no	mt			2026-10-18
 A sentence may have several English or Chinese translations.	某些句子常會有多種不同的翻譯	no	previous-website			2026-10-18
+A sentence that carries no parsing carries no M at all — the author may simply never have analyzed it, and requiring an M there would fake an analysis it does not have.	不帶任何剖析的句子完全沒有 M — 作者可能根本沒有分析過它，若要求該處有 M，就是偽造一個它並不具有的分析。	no	mt			2026-10-18
 A significant reason to study Formosan languages lies in their ability to challenge and potentially reshape established linguistic theories.	研究臺灣南島語的重要原因之一，在於其可能挑戰並重塑既有的語言學理論的能力。	no	previous-website			2026-10-18
+A sleeping service may take time to start, and model output is an unreviewed draft rather than an authoritative translation or correction.	處於休眠狀態的服務可能需要一些時間才能啟動，而模型輸出是未經審閱的草稿，並非具權威性的翻譯或校正。	no	mt			2026-10-18
+A source sentence offering alternatives — `Sally likes x / y / z` — becomes one S block per option, never a single block with the slashes retained.	提供替代選項的來源句子 — `Sally likes x / y / z` — 會成為每個選項各一個 S 區塊，絕不會是保留斜線的單一區塊。	no	mt			2026-10-18
+A source sentence with optional words — `x y (z)` — becomes two S blocks: `x y` and `x y z`.	帶有可選詞的來源句子 — `x y (z)` — 會成為兩個 S 區塊：`x y` 和 `x y z`。	no	mt			2026-10-18
+A source's mark of uncertainty about a gloss it did give (`LIG?`, `他?`) is kept as written.	來源對其確實給出的詞義標注所表示的不確定標記（`LIG?`、`他?`）依原樣保留。	no	mt			2026-10-18
+A source's own `??` or `?` marker is kept as written (POL-036).	來源本身的 `??` 或 `?` 標記依原樣保留（POL-036）。	no	mt			2026-10-18
+A spelling variant does not double a word's length.	拼寫變體不會使一個詞的長度加倍。	no	mt			2026-10-18
+"A standardized gloss can be added as a separate kindOf='standard' translation""); companion to POL-001's source-fidelity guarantee, applied to the gloss tier."	標準化的詞義標注可以作為另一個 kindOf='standard' 翻譯加入」）；是 POL-001 來源忠實保證的配套規定，應用於詞義標注層。	no	mt			2026-10-18
 A stepping stone for creating digital resources and applications, such as dictionaries, and grammar-check tools, tailored to these languages.	可作為專為這些語言打造的數位資源和應用程式的基礎（如字典和語法檢查工具）。	no	previous-website			2026-10-18
+A third reading and beyond carry their reading number: `-opt3`, `-opt4`, and so on (maintainer, 2026-09-10).	第三種及之後的讀法帶有其讀法編號：`-opt3`、`-opt4`，依此類推（維護者，2026-09-10）。	no	mt			2026-10-18
+A tier carrying any variant must carry exactly one FORM of that `kindOf` without `ver` — the base the variants vary from (V149 HARD).	帶有任何變體的層，必須恰好帶有一個該 `kindOf` 且不帶 `ver` 的 FORM — 也就是變體所依據的基底（V149 HARD）。	no	mt			2026-10-18
+A tier may carry several variants; it may not carry several bases, because then no variant knows what it varies from.	一個層可以帶有多個變體；但不可以帶有多個基底，因為那樣就沒有任何變體知道自己是從哪個基底變化而來。	no	mt			2026-10-18
+A variant FORM has no W or M tier of its own, so it cannot carry the second gloss.	變體 FORM 沒有自己的 W 或 M 層，因此無法帶有第二個詞義標注。	no	mt			2026-10-18
+"A variant reading is written `ver=""alt""` on a FORM whose `kindOf` names its tier — `kindOf=""original"" ver=""alt""` is a variant of the original tier, `kindOf=""standard"" ver=""alt""` of the standard."	"變體讀法寫成在 FORM 上加 `ver=""alt""`，其 `kindOf` 指明所屬的層 — `kindOf=""original"" ver=""alt""` 是原始層的變體，`kindOf=""standard"" ver=""alt""` 是標準層的變體。"	no	mt			2026-10-18
 A well-developed intellectual infrastructure, including active collaborations with organizations like the Indigenous Languages Research and Development Foundation, which helps drive language revitalization efforts.	完善的智識基礎設施，包括與原住民族語言研究發展基金會等組織的積極合作，其有助於推動族語復振工作。	no	previous-website			2026-10-18
+A whole file with no multi-morphemic word anywhere is the reliable signal.	整個檔案中任何地方都沒有多詞素的詞，才是可靠的訊號。	no	mt			2026-10-18
+A whole optional word — `x y (z)` — changes the W tier and the gloss alignment, so it becomes two `S` blocks (POL-026), the second taking the first's id plus `-opt`.	一個完整的可選詞 — `x y (z)` — 會改變 W 層和詞義標注的對齊，因此它會成為兩個 `S` 區塊（POL-026），第二個區塊採用第一個區塊的 id 加上 `-opt`。	no	mt			2026-10-18
+A word or morpheme the source leaves unglossed is glossed `?`.	來源未標注的詞或詞素，其詞義標注為 `?`。	no	mt			2026-10-18
+A word-list corpus whose `S` is a word is the S-level case.	`S` 為一個詞的詞表語料庫，就是 S 層級的情況。	no	mt			2026-10-18
 API for Data Collection	語料收集API（應用程式介面）	no	previous-website			2026-10-18
+Academic and redistributed work must cite FormosanBank and the relevant source corpora.	學術作品及再散布的作品必須引用 FormosanBank 及相關的來源語料庫。	no	mt			2026-10-18
 Accessibility	可及性	no	previous-website			2026-10-18
 According to Copyright rules by territory/Taiwan, transcriptions of presidential speeches are not copyrighted as they are listed under public domain.	根據臺灣的版權規定，總統演講的轉錄不受版權保護，因為它們屬於公共領域。	no	previous-website			2026-10-18
 According to Wikipedia:Copyrights page, Wikipedias can be used under the Creative Commons license CC BY-SA.	根據維基百科：版權頁面，維基百科可以在創用CC授權條款CC-BY-SA下使用：	no	previous-website			2026-10-18
@@ -18,64 +62,104 @@ Acknowledgments	致謝	no	previous-website			2026-10-18
 Advisory Board	諮詢委員會	no	previous-website			2026-10-18
 After scraping the articles, they have been preprocessed to remove elements like URLs, extraneous punctuation, and irrelevant text that is not relevant to the linguistic structure of Formosan while preserving linguistic integrity.	我們抓取百科文章並保留語言完整性之同時，一樣需要經歷多道清理與標準化程序例如移除URL、無關的標點符號或文本等	no	previous-website			2026-10-18
 Alignment.	句子譯文間的對齊處理:	no	previous-website			2026-10-18
+All dash/hyphen look-alikes canonicalize to ASCII `-` (U+2010…U+2015, U+2212, U+FE58, U+FE63, U+FF0D).	所有與破折號／連字號相似的字元一律轉為 ASCII `-`（U+2010…U+2015、U+2212、U+FE58、U+FE63、U+FF0D）。	no	mt			2026-10-18
+All standard-tier cleaning lives in `standardize.py`, none in `clean_xml.py`.	所有標準層的清理都在 `standardize.py` 中進行，`clean_xml.py` 中完全沒有。	no	mt			2026-10-18
 All use is subject to the following restrictions:	且所有使用均須遵守以下限制：	no	previous-website			2026-10-18
 Although other authorities have proposed alternative sets of dialect groupings themselves, our approach here is to follow the official nomenclature as recognized by the Taiwanese government, without making any independent scientific judgments.	儘管有其他機構與學者提出不同的方言分群論述，在此我們以臺灣官方認可的命名為準，不進行其他額外判斷。	no	previous-website			2026-10-18
 Although the data doesn't have associated audio or translations, it still can be relevant to a number of practical applications:	儘管維基百科語料未附帶相關音訊或翻譯，仍與許多實際應用具有相關性：	no	previous-website			2026-10-18
+Amended 2026-09-08.	2026-09-08 修訂。	no	mt			2026-10-18
+"Amended 2026-10-15; this supersedes (POL-050) this bullet's wording as revised 2026-09-09, under which optional material that ""leaves the word count unchanged"" was always a variant."	2026-10-15 修訂；這取代了（POL-050）本項依 2026-09-09 修訂的措辭，在該措辭下，「使詞數不變」的可選成分一律是變體。	no	mt			2026-10-18
+Amended 2026-10-17 (supersedes the `?` above).	2026-10-17 修訂（取代上述的 `?`）。	no	mt			2026-10-18
+Amended 2026-10-17.	2026-10-17 修訂。	no	mt			2026-10-18
+Amended 2026-10-18 (whole sentences).	2026-10-18 修訂（整個句子）。	no	mt			2026-10-18
 Amis (Ami)	阿美語（Amis/Ami）	no	previous-website			2026-10-18
 Amis, Atayal, Sakizaya, Seediq, and Paiwan have their own dedicated Wikipedia editions, making them publicly accessible for research and education.	目前，阿美語、泰雅語、撒奇萊雅語、賽德克語及排灣語各自擁有專屬的維基百科版本，並對外開放供研究與教育使用。	no	previous-website			2026-10-18
 Amis: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	阿美語: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
 Amis: https://ami.wikipedia.org	阿美語：https://ami.wikipedia.org	no	previous-website			2026-10-18
 "Amis: the letter `b` occurs only in `Balay` and `Sbalay`, Atayal words quoted in the apology (""In the Atayal language, truth is called 'Balay', and reconciliation is called 'Sbalay'"")."	阿美語：總統道歉文本的阿美語版本中出現了幾次字母b，這並不屬於該語言的標準拼寫法。所有b都集中出現於兩個詞中：Balay和Sbalay。這兩個詞是原道歉文本中引用的泰雅語詞彙，並以相同形式出現在阿美語翻譯中。以下是英文翻譯中的範例：「在泰雅語中，真相叫做 'Balay'，而和解叫做 'Sbalay'」。	no	previous-website			2026-10-18
 An Abundance of Latent Resources	豐富的潛在資源	no	previous-website			2026-10-18
+An M is never created just so that a word has one.	絕不會只為了讓某個詞有一個 M 而建立 M。	no	mt			2026-10-18
 An example would be 'Amis'	例如：「阿美語」。	no	previous-website			2026-10-18
 An example would be 'cent2104,' referring to Coastal Amis	例如：'cent2104' 指「海岸阿美語」。	no	previous-website			2026-10-18
 An example:	下方展示一個範例圖示	no	previous-website			2026-10-18
+An existing rights claim is never weakened because a reviewer could not find its evidence. The evidence lives with the maintainer, not in this repository. Escalate; do not downgrade.	現有的權利主張絕不會因為審查者找不到其證據而被弱化。證據由維護者保管，而不在本儲存庫中。請向上呈報；不要降級。	no	mt			2026-10-18
+An optional morpheme becomes separate `S` blocks when the source glosses it, so the two readings would be glossed differently: Seediq-Chang's `h-(um)-uwa` is `huwa` 怎樣 or `h-um-uwa` 怎樣-AF, and NTU Bunun's `kangavas(=an)` is `kangavas` 'mango' or `kangavas=an` 'mango=MED.NOM'.	當來源為可選詞素做了詞義標注，使兩種讀法的詞義標注會不同時，該可選詞素就會成為獨立的 `S` 區塊：Seediq-Chang 的 `h-(um)-uwa` 是 `huwa` 怎樣 或 `h-um-uwa` 怎樣-AF，而 NTU 布農語的 `kangavas(=an)` 是 `kangavas` 'mango' 或 `kangavas=an` 'mango=MED.NOM'。	no	mt			2026-10-18
 And our many contributors.	以及許多的貢獻者。	no	corpus-match			2026-10-18
 Annotation Verification	註釋複驗	no	previous-website			2026-10-18
 Annotations and Metadata	注釋和後設資料	no	corpus-match			2026-10-18
 Anyone can use contributed data for permitted noncommercial purposes, subject to the Terms of Use and AI Use Addendum, with the following restrictions:	任何人都可以依使用條款及AI使用附錄，將捐贈資料用於允許的非商業目的，但有以下限制：	no	previous-website			2026-10-18
 Anyone who uses your data must acknowledge you as the author and owner of the data.	任何使用您資料的人必須承認 您是資料的作者及擁有者。	no	corpus-match			2026-10-18
 Anyone who uses your data must acknowledge your work.	任何使用您的語料的人必須承 認您的作品。	no	corpus-match			2026-10-18
+Anything the maintainer has not actually ruled on is marked UNRESOLVED with a recommendation — those entries are proposals awaiting review, not rules.	維護者尚未實際裁定的事項都標為 UNRESOLVED 並附有建議 — 這些條目是等待審查的提案，不是規則。	no	mt			2026-10-18
 Applications	應用	no	previous-website			2026-10-18
+Applications should read the current release from `meta.json`, confirm that `/readyz` reports the same release, and retain that release ID in reproducible work.	應用程式應從 `meta.json` 讀取目前的發行版，確認 `/readyz` 回報的是同一個發行版，並在可重現的工作中保留該發行版 ID。	no	mt			2026-10-18
 Articles were cleaned to remove URLs, extraneous punctuation, and citation markers.	清理文章以移除URL、無關的標點符號及引用標記	no	previous-website			2026-10-18
 Articles were initially saved in their raw, unprocessed format.	初始階段，文章以原始的、未經處理的格式保存。	no	previous-website			2026-10-18
 Articles were retrieved using the Wikipedia API for each language.	使用維基百科API檢索各種語言的文章。	no	previous-website			2026-10-18
 As long as they follow those rules, anyone may use your data for:	只要遵守這些規則，任何人都 可以將您的資料用於：	no	corpus-match			2026-10-18
+At M level the infixed root is one morpheme FORM, written with `-` at the infixation point, and the infix is `-b-`.	在 M 層級，含中綴的詞根是一個詞素 FORM，在中綴插入點寫上 `-`，中綴則寫作 `-b-`。	no	mt			2026-10-18
+At lookup time, the API normalizes the query and uses prebuilt SQLite indexes to retrieve a small result page.	查詢時，API 會將查詢正規化，並使用預先建置的 SQLite 索引擷取一小頁結果。	no	mt			2026-10-18
 Atayal (Tayal)	泰雅語（Atayal/Tayal）	no	previous-website			2026-10-18
 Atayal: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	泰雅語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
 Atayal: https://tay.wikipedia.org	泰雅語：https://tay.wikipedia.org	no	previous-website			2026-10-18
 Audio Integration	音訊整合	no	previous-website			2026-10-18
 Audio is hosted on Hugging Face rather than committed to Git.	音檔存放於Hugging Face，而非提交至Git。	no	previous-website			2026-10-18
+Audit note: U+2019→U+0027 in a dev repo's build script is conforming behavior — cite this entry instead of flagging it.	稽核附註：開發儲存庫建置腳本中的 U+2019→U+0027 屬於符合規定的行為 — 請引用本條目，而不要將其標記為問題。	no	mt			2026-10-18
+Auditors should not flag inline naturalistic parentheticals as defects.	稽核者不應將行內的自然括號說明標記為缺陷。	no	mt			2026-10-18
+Audits sweep for both patterns.	稽核會掃查這兩種模式。	no	mt			2026-10-18
 Automated Speech Recognition (ASR): The aligned text and audio make this corpus particularly valuable for developing ASR systems tailored to Paiwan, enabling future tools like transcription software and voice interfaces in the language.	自動語音辨識（ASR）：對齊的文本和音訊檔案使這個語料庫在開發專為排灣語設計的語音辨識系統中具有特殊價值，預期將支援排灣語的自動轉寫軟體及語音介面等工具的開發。	no	previous-website			2026-10-18
 Automatic Speech Recognition (ASR)\ ASR technology continues to progress, with preliminary models achieving an error rate of under 50% for several languages, a notable milestone in endangered language transcription.	自動語音辨識（ASR）\ 自動語音辨識技術持續進步，初步模型在幾種語言中的錯誤率已低於50%，這是瀕危語言轉錄中重要的里程碑。	no	previous-website			2026-10-18
 BLEU scores indicate usable translations, and we're working on acquiring more training materials to improve accuracy further.	BLEU得分顯示翻譯可用，目前正努力獲取更多訓練資料，以進一步提高準確度。	no	previous-website			2026-10-18
+Backstops either way: git history, and a committed correction log.	無論哪種情況的後備保障：git 歷史紀錄，以及已提交的修正紀錄。	no	mt			2026-10-18
 Basic Structure	基本結構	no	previous-website			2026-10-18
+"Basically, I want the glossing to be clear."" Everything else — optional letters inside a single morpheme, a whole short word alternating `a`/`u`, and an optional morpheme in data whose words carry no glosses (Blust's Thao dictionary examples, the Utrecht word list) — becomes a `ver=""alt""` variant FORM on the node that varies, never a second sentence."	"基本上，我希望詞義標注清楚明確。」其他一切 — 單一詞素內的可選字母、在 `a`/`u` 之間交替的完整短詞，以及在詞不帶詞義標注的資料中的可選詞素（Blust 的邵語詞典例句、Utrecht 詞表）— 都成為位於變化節點上的 `ver=""alt""` 變體 FORM，絕不會成為第二個句子。"	no	mt			2026-10-18
 Because there may be multiple such names for a single dialect, the CSV may contain multiple rows for the same “official” dialect.	由於一個方言可能有多個名稱，因此CSV檔中同一個「官方」方言欄可能會有多筆資料。	no	previous-website			2026-10-18
 Below is a list of the current corpora of which FormosanBank consists:	以下是目前FormosanBank所包含的語料庫列表：	no	previous-website			2026-10-18
 Below is a list of the wikipedias available in Formosan languages:	您可以瀏覽以下臺灣南島語維基百科平台：	no	previous-website			2026-10-18
 Below, we outline the detailed processing steps and quality control measures applied to ensure the corpus is both reliable and linguistically accurate.	以下為詳細的處理步驟與品質管控措施，確保此語料庫的可靠性及準確性：	no	previous-website			2026-10-18
 Beyond academic interest, documenting and revitalizing Formosan languages has profound cultural and social significance.	除了學術上的興趣，記錄和復振臺灣南島語也具有深遠的文化和社會意義。	no	previous-website			2026-10-18
+Beyond external citation, the concrete breakage is internal: `manual_edits.xml` records are keyed by id (S id, and the W/M ids inside the recorded block), so an upstream id change — a parser tweak that renumbers words, a re-split sentence, an intake script that reorders — silently invalidates the matching hand edits.	除了外部引用之外，具體的破壞發生在內部：`manual_edits.xml` 紀錄以 id 作為鍵（S id，以及所記錄區塊內的 W/M id），因此上游的 id 改變 — 會重新編號詞的剖析器調整、重新拆分的句子、會重新排序的收錄腳本 — 會悄悄地使對應的手動編輯失效。	no	mt			2026-10-18
 Breaking the Mold: Challenging Linguistic Theories	打破常規：挑戰語言學理論	no	previous-website			2026-10-18
+Browser playground	瀏覽器試用區	no	mt			2026-10-18
+Building and reviewing	建置與審查	no	mt			2026-10-18
 Built upon the foundational writing systems announced in 2005 by the Council of Indigenous Peoples and the Ministry of Education, these dictionaries represent the culmination of nearly seven years of collaborative effort involving hundreds of participants.	該辭典以原住民族委員會與教育部於2005年共同頒布的原住民族語言書寫系統為基礎，代表著數百名參與者將近七年合作努力的成果。	no	previous-website			2026-10-18
 Bunun: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	布農語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
+"But in that case, for consistency, let's use ""; sources' own markers → ""B. A + placeholders"" (exact `?`/`??` and `?` used as a placeholder inside a gloss)."	"但在這種情況下，為了一致起見，讓我們使用 ""；來源本身的標記 → ""B. A + 佔位符""（恰為 `?`/`??` 者，以及在詞義標注內作為佔位符使用的 `?`）。"	no	mt			2026-10-18
 By 2014, all dictionaries had been completed, marking a significant milestone in the documentation of Taiwan's indigenous languages.	至2014年，所有辭典均已編纂完成，是臺灣原住民族語言記錄的一項重要里程碑。	no	previous-website			2026-10-18
 By maintaining a centralized and authoritative mapping of dialect names, we hope to make it easier for corpus users, researchers, and community members to identify, compare, and discuss Formosan dialects consistently and accurately.	透過一個集中式的、權威的方言名稱對應表，期望能促進語料庫使用者、研究人員及族人更一致且準確地識別、比較及討論臺灣南島語方言。	no	previous-website			2026-10-18
 By preserving these languages, we support the cultural identity of Taiwan’s Indigenous communities and ensure that their linguistic heritage is not lost to history.	透過保存這些語言，我們支持臺灣原住民族的文化認同，並確保其語言襲產不會隨歷史消逝。	no	previous-website			2026-10-18
 By studying these languages, researchers can develop theories that are more inclusive of non-European language structures, leading to new insights into the full range of human linguistic capabilities.	透過研究這些語言，研究者能發展出更具包容性的理論，涵蓋非歐洲語言結構，從而對人類語言能力的各個面向提出新的見解。	no	previous-website			2026-10-18
+CJK context — RULED (2026-09-03).	CJK 語境 — RULED（2026-09-03）。	no	mt			2026-10-18
 CSV Mapping File	CSV對照檔案	no	previous-website			2026-10-18
+Canonical XML remains in the public FormosanBank repository.	標準版（canonical）XML 仍保存在公開的 FormosanBank 儲存庫中。	no	mt			2026-10-18
+Care at conversion time: the gloss tier of the `x y` block must not contain z's gloss (and its W/M tier must not contain z), and each block's translation must match its own variant.	轉換時需注意：`x y` 區塊的詞義標注層不得包含 z 的詞義標注（其 W/M 層也不得包含 z），且每個區塊的翻譯必須與其自身的變體相符。	no	mt			2026-10-18
 Cases flagged for ambiguity were manually resolved.	其他標記為模糊不清的案例則會手動消除。	no	previous-website			2026-10-18
+Chang's Seediq grammar, for example, glosses `ani naq` as 雖然, `di ge` as 的時候 and `kiya ka` as 所以 — each is one `W`.	例如，Chang 的賽德克語文法將 `ani naq` 標注為 雖然、`di ge` 標注為 的時候、`kiya ka` 標注為 所以 — 每一個都是一個 `W`。	no	mt			2026-10-18
+Chinese TRANSL is unaffected (that branch never calls `swap_punctuation`).	中文 TRANSL 不受影響（該分支從不呼叫 `swap_punctuation`）。	no	mt			2026-10-18
+Chinese TRANSL text follows Chinese conventions instead (fullwidth quotes retained/canonicalized; title marks 《》 untouched).	中文 TRANSL 文字則依循中文慣例（保留／規範化全形引號；書名號 《》 不予更動）。	no	mt			2026-10-18
+"Chinese glosses and translations use it for an open semantic argument (`把~抓住`, ""catch ~""), for prosodic lengthening after an interjection (`哇~真漂亮`), and for numeric ranges (`五~六`)."	"中文的詞義標注與翻譯用它表示開放的語意論元（`把~抓住`，""catch ~""）、感嘆詞之後的韻律延長（`哇~真漂亮`），以及數字範圍（`五~六`）。"	no	mt			2026-10-18
 Chinese-indexed versions	華語索引版本	no	previous-website			2026-10-18
 Chuan-Jie Lin	林川傑	no	previous-website			2026-10-18
+Circumfixes are analogous, unless the source glosses them as prefix + suffix.	環綴的處理方式類似，除非來源將其標注為前綴加後綴。	no	mt			2026-10-18
 Cite FormosanBank and each Wikipedia language edition used.	依據我們的使用條款，若您使用此語料庫或其衍生產品，請引用FormosanBank及實際使用的各語言維基百科。	no	previous-website			2026-10-18
+Cite the ID rather than re-deciding the question.	請引用 ID，而不要重新決定該問題。	no	mt			2026-10-18
 Citing the apology in general: Tsai, I. W. (2016, August 1). _President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government_ \[Speech transcript].	引用道歉文文本（通用版）：Tsai, I. W. (2016, August 1). President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government \[Speech transcript].	no	previous-website			2026-10-18
+"Clarified 2026-08-12 (maintainer): the rule is not ""ids never change"" — it is do not change them without a compelling reason, and if you do, be very careful about what the change breaks."	2026-08-12 釐清（維護者）：規則不是「id 永不改變」— 而是沒有充分理由就不要改變它們，如果要改變，必須非常謹慎地考慮這項改變會破壞什麼。	no	mt			2026-10-18
+Codepoint — RULED (2026-08-10).	碼位 — RULED（2026-08-10）。	no	mt			2026-10-18
 Collaboration with Indigenous communities, linguists, and technology experts remains a key component of FormosanBank’s growth, ensuring that the project remains community-oriented and culturally sensitive.	藉由與原住民族族人、語言學家和技術人士的合作仍然是FormosanBank成熟的核心要素，確保該計畫維持以族人為導向並兼顧文化敏感度。	no	previous-website			2026-10-18
 Commercial AI use requires prior written permission.	商業AI使用須事先取得書面許可。	no	previous-website			2026-10-18
 Community Engagement	社群參與	no	previous-website			2026-10-18
+Companion ruling: single quotes never serve as quotation marks (POL-018).	配套裁定：單引號從不作為引號使用（POL-018）。	no	mt			2026-10-18
+Companion to POL-030, which covers hand edits; this covers automated corrections.	POL-030 的配套規定，POL-030 涵蓋手動編輯；本條涵蓋自動修正。	no	mt			2026-10-18
 Comparative Studies: Supports research on shared features and differences among Formosan languages.	比較研究：支援臺灣南島語之間共同特徵和差異的研究。	no	previous-website			2026-10-18
 Complete reconstruction also requires the private raw recordings and speaker key, which are intentionally not public.	若要完整重建語料庫，仍需要未公開的原始錄音及錄音人員對照表。	no	previous-website			2026-10-18
 Complex Voice Systems: Formosan languages employ an intricate voice system where the subject’s role can shift based on verbal affixes.	複雜的焦點系統：臺灣南島語擁有一套精細的焦點系統，其中主語的角色會根據動詞的詞綴而變化。	no	previous-website			2026-10-18
 Comprehensive Data	語料面向	no	previous-website			2026-10-18
 Computational Linguistics Research\ We’ve started computational studies on sentence structures and grammatical voice systems across Formosan languages, with initial findings expected soon.	計算語言學研究\ 本計畫已對臺灣南島語的句子結構和語法語音系統進行計算研究，預計很快就會有初步結果。	no	previous-website			2026-10-18
+Consequences.	結果。	no	mt			2026-10-18
+"Consequences: a `'…'` pair functioning as quotation marks is an intake bug to fix (rewrap in `""` or drop), never something to preserve as source typography; cleaners and validators treat `'` as a letter, not as paired punctuation (`clean_xml`'s c002 warning on single-quote variants in Chinese TRANSL exists for exactly this reason)."	"結果：作為引號使用的 `'…'` 成對符號是需要修正的收錄錯誤（改用 `""` 包覆或刪除），絕不可作為來源排版而保留；清理工具與驗證器將 `'` 視為字母，而非成對的標點（`clean_xml` 對中文 TRANSL 中單引號變體發出的 c002 警告，正是基於這個原因而存在）。"	no	mt			2026-10-18
+Consequences: never hand-edit a standard FORM — the edit is clobbered on the next run.	結果：絕不要手動編輯標準 FORM — 該編輯會在下次執行時被覆蓋。	no	mt			2026-10-18
+"Consequences: parentheses, slashes and prose inside W/M glosses are not defects (V121/V122-style findings on gloss text are review material at most), and gloss standardization remains additive (POL-036) — a normalized code is added as a separate `TRANSL[@kindOf=""standard""]`, never by rewriting the original gloss."	"結果：W/M 詞義標注中的括號、斜線和文字敘述都不是缺陷（針對詞義標注文字的 V121/V122 類發現項目至多是審查材料），且詞義標注標準化仍是附加性的（POL-036）— 正規化的代碼會作為另一個 `TRANSL[@kindOf=""standard""]` 加入，絕不改寫原始詞義標注。"	no	mt			2026-10-18
 Considering that the quality control pipeline of Wikipedias isn't as rigorous as other resources in the Bank, extra effort went into processing, cleaning, and QCing the Wikipedias articles.	基於維基百科的品質管控流程不如FormosanBank中的其他資源嚴格，我們特別加強對維基百科文章的處理、清理和品質管控。	no	previous-website			2026-10-18
 Consistency Checks on XML Structure	XML 結構的一致性檢查	no	previous-website			2026-10-18
 Content Summary	內容摘要	no	previous-website			2026-10-18
@@ -83,91 +167,167 @@ Contributing to FormosanBank	為 FormosanBank 作出貢獻	no	corpus-match			202
 Contributors	貢獻者	no	corpus-match			2026-10-18
 Contributors to the Corpus	其他相關貢獻者	no	corpus-match			2026-10-18
 Copyright and Licensing	版權與授權	no	corpus-match			2026-10-18
+Corpora that parse some sentences and leave others alone are the normal, honest case (YeddaPalemeqBlog: 494 parsed sentences, 161 unparsed), and under the file-level reading a single parsed sentence turned every unparsed sentence in the file into a finding.	部分句子經過剖析、其他句子未經處理的語料庫是正常且誠實的情況（YeddaPalemeqBlog：494 個已剖析句子、161 個未剖析句子），而在以檔案為層級的解讀下，只要有一個已剖析的句子，就會使檔案中每個未剖析的句子都變成發現項目。	no	mt			2026-10-18
 Corpus Content:	語料庫內容：	no	previous-website			2026-10-18
+Corpus lookup does not depend on model availability.	語料庫查詢不依賴模型是否可用。	no	mt			2026-10-18
 Corpus of Paiwan stories [Electronic resource].	Corpus of Paiwan stories [Electronic resource].	no	previous-website			2026-10-18
+Corpus records are attestations from named sources.	語料庫紀錄是來自具名來源的實際用例（attestation）。	no	mt			2026-10-18
+Correcting OCR/scraping errors to match what the source prints makes the tier more faithful and is expected; punctuation may be normalized (POL-010/011).	修正 OCR／擷取錯誤以符合來源印刷的內容，會使該層更忠實，這是預期中的做法；標點符號可以正規化（POL-010/011）。	no	mt			2026-10-18
 Could be used for building surprisal and perplexity models, which would facilitate Quality Assurance of further collected data	可用於建立驚訝度和困惑度模型，以促成未來所收集的語料的品質保證。	no	previous-website			2026-10-18
 Council of Indigenous Peoples.	Council of Indigenous Peoples.	no	previous-website			2026-10-18
+"Cross-corpus/orthographic statistics use `kindOf=""standard""`; token counting uses the standard sentence-level FORM with original fallback (`QC/corpus_counts.py` is the single source of truth for counting rules)."	"跨語料庫／書寫系統統計使用 `kindOf=""standard""`；詞元計數使用句子層級的標準 FORM，若無則退而使用原始 FORM（`QC/corpus_counts.py` 是計數規則的唯一依據）。"	no	mt			2026-10-18
+Cross-file registry checks (`standards.csv`, `dialects.csv`, orthography profiles, conversion-table headers) report SOFT findings, not HARD failures — registries may be legitimately out of sync mid-migration.	跨檔案的登錄表檢查（`standards.csv`、`dialects.csv`、書寫系統設定檔、轉換表標頭）回報的是 SOFT 發現項目，而非 HARD 失敗 — 登錄表在遷移過程中可能合理地不同步。	no	mt			2026-10-18
+Cross-ref POL-010.	參見 POL-010。	no	mt			2026-10-18
 Cultural and Social Impact	文化與社會影響	no	previous-website			2026-10-18
 Cultural products	文化產品	no	corpus-match			2026-10-18
 Currently, the corpus covers 17 languages, including 16 extant languages and one dormant language.	在這裡，您可以找到17個語言語料庫的收集及處理說明，其中包括16個現存語言及休眠語言西拉雅語。	no	previous-website			2026-10-18
 Damián Blasi	Damián Blasi	no	previous-website			2026-10-18
 Data Contributors: Sixteen speakers (pseudonyms used to maintain anonymity)	語料貢獻者：兩個田野年度共16位錄音人員，公開資料全程使用化名	no	previous-website			2026-10-18
+Data releases and prepared downloads	資料發行版與預先準備的下載檔	no	mt			2026-10-18
+Decks and review state stay in the current browser.	卡組與複習狀態都保留在目前的瀏覽器中。	no	mt			2026-10-18
 Despite the endangered status of many Formosan languages, Taiwan has an impressive array of linguistic resources that facilitate the study of these languages due to a lot of efforts for preservation of these languages:	儘管許多臺灣南島語處於瀕危狀態，臺灣政府及各方學界多年持續投入多年多方的努力，保存不少令人印象深刻的語言資源，這些資源更是促進了對這些語言的研究：	no	previous-website			2026-10-18
 Developed by the Indigenous Languages Research and Development Foundation (ILRDF), this digital platform caters to a wide audience, including preschoolers, students, adults, and language teachers, with resources and tools designed to support various learning levels and linguistic goals.	該平台由原住民族語言研究發展基金會（ILRDF）開發，服務對象包括學齡前兒童、學生、成人及族語教師等，以提供不同學習階段和語言學習目標的資源與工具。	no	previous-website			2026-10-18
+Dictionary and sentence search share one interface.	詞典搜尋與句子搜尋共用同一個介面。	no	mt			2026-10-18
+Dictionary results provide meanings, variants, corpus coverage, citations, and attested examples.	詞典結果提供詞義、變體、語料庫涵蓋範圍、引用及有實際出處的例句。	no	mt			2026-10-18
+Direct XML edits without a record are not acceptable — they are lost on regeneration.	沒有紀錄的直接 XML 編輯是不可接受的 — 它們會在重新產生時遺失。	no	mt			2026-10-18
+Do not drop the extra readings (Puyuma-Teng audit found 7 lost) and do not create duplicate S blocks for them.	不要捨棄額外的解讀（Puyuma-Teng 稽核發現有 7 個遺失），也不要為它們建立重複的 S 區塊。	no	mt			2026-10-18
 Downloadable Resources	資源下載	no	previous-website			2026-10-18
+Downstream, C012 in `standardize.py` strips `-` from S-level standard FORMs only in morpheme-segmented sentences, preserving digit-flanked `-` (dates, verse ranges).	在下游，`standardize.py` 中的 C012 只在已切分詞素的句子中，從 S 層級標準 FORM 移除 `-`，並保留兩側為數字的 `-`（日期、經文節數範圍）。	no	mt			2026-10-18
 Each corpus in this collection represents a unique linguistic dataset, encompassing various types of text and audio recordings.	這裡集結的每個語料庫皆代表一個獨特的語料集，包含著各類文本和錄音。	no	previous-website			2026-10-18
 Each dictionary took two years to complete, involving the dedication of language teachers, experts, and scholars.	每部辭典平均耗時兩年完成，凝聚了語言教師、專家與學者們的心血。	no	previous-website			2026-10-18
 Each language displays unique phonological, grammatical, and lexical characteristics, providing a broad spectrum for comparative studies.	每種語言都展現了獨特的語音、語法和詞彙特徵，為比較研究提供了廣泛的範疇。	no	previous-website			2026-10-18
 Each newsletter offers a closer look at our work, from updates on corpus expansions to new features, tools, and resources we’re developing to support language research and revitalization efforts.	每期電子報將深入介紹我們的工作，從語料庫最新的擴展，以及正在開發的支援語言研究和族語復振工作的新功能、工具和資源。	no	previous-website			2026-10-18
 Each paragraph of every language was aligned with its Mandarin and English translation by dividing the apology into 33 sections, the same in every language.	每段臺灣南島語文本與其對應的英語和華語翻譯進行了對齊處理。我們將道歉文內容均分切割為33個段落，所有語言的分段均保持一致	no	previous-website			2026-10-18
+Each pipeline run self-corrects from source; the pipeline is the baseline.	每次執行管線都會從來源自我修正；管線本身就是基準。	no	mt			2026-10-18
 Each resource in FormosanBank has its own copyright and licensing terms.	FormosanBank中的每項資源都有其各自的版權和授權條款	no	previous-website			2026-10-18
+Each variant must satisfy two independent conditions against its own tier's base (V150 SOFT):	每個變體都必須相對於其所屬層的基底，滿足兩個獨立的條件（V150 SOFT）：	no	mt			2026-10-18
+Edit that file, not this page.	請編輯該檔案，而不是本頁面。	no	mt			2026-10-18
 Education and Research	教育與研究	no	previous-website			2026-10-18
 Electronic Resource.	Electronic Resource.	no	previous-website			2026-10-18
 Emily Prud'hommeaux	Emily Prud'hommeaux	no	previous-website			2026-10-18
+Enforced in `validate_xml.py` (as amended 2026-10-17):	由 `validate_xml.py` 強制執行（依 2026-10-17 修訂）：	no	mt			2026-10-18
+Entries carry status RULED (decided) or UNRESOLVED (open, with a recommendation).	條目的狀態為 RULED（已決定）或 UNRESOLVED（未決，附建議）。	no	mt			2026-10-18
+Entry format: ID · Status · Date · Applies to — ruling, rationale, implemented-by.	條目格式：ID · 狀態 · 日期 · 適用範圍 — 裁定、理由、實作方式。	no	mt			2026-10-18
 Even though the Wikipedias corpus doesn't have audio or translations associated with it, it still is highly valuable for computational and linguistic applications.	儘管維基百科語料庫中不包含音檔或翻譯，然而其對於計算與語言學應用仍極具重要價值。	no	previous-website			2026-10-18
+Every Kakarayan data release records the exact FormosanBank source commit and Kakarayan publisher commit.	每個 Kakarayan 資料發行版都會記錄確切的 FormosanBank 來源提交及 Kakarayan 發布程式的提交。	no	mt			2026-10-18
+Every `TEXT/@copyright` is exactly one value from `rights_vocabulary.csv`. No exceptions, no free text.	每一個 `TEXT/@copyright` 都恰好是 `rights_vocabulary.csv` 中的一個值。沒有例外，不可使用自由文字。	no	mt			2026-10-18
+Every corpus route is pinned to an immutable release ID.	每一條語料庫路由都固定對應到一個不可變的發行版 ID。	no	mt			2026-10-18
+Every hand edit to published XML must be reproducible: recorded in `CodeAndDocs/manual_edits.xml` (via `capture_manual_edits.py`, re-applied first in the pipeline by `apply_manual_edits.py`) or by a committed script.	對已發布 XML 的每一項手動編輯都必須可重現：記錄於 `CodeAndDocs/manual_edits.xml`（透過 `capture_manual_edits.py`，並由 `apply_manual_edits.py` 在管線中最先重新套用），或由已提交的腳本完成。	no	mt			2026-10-18
 Every translation requires `xml:lang` using an ISO 639-3 code.	xml:lang: 翻譯的語言代碼，使用ISO 639-3標準。	no	previous-website			2026-10-18
 Example Sentence Extraction\ We extracted thousands of example sentences from 16 electronic dictionaries, creating a valuable parallel corpus for future machine learning applications.	例句提取\ 從16部數位辭典中提取數千條例句，創建一個具有價值的平行語料庫並供未來機器學習應用。	no	previous-website			2026-10-18
 Example sentences are translated into Chinese, ensuring accessibility for researchers and learners.	例句均附有華語翻譯，確保研究者與學習者能夠方便使用。	no	previous-website			2026-10-18
 Examples and Applications: Practical sentences for immediate learning and use.	範例與應用：提供實用句子，便於即時學習與應用。	no	previous-website			2026-10-18
 Excellent transportation and communication networks, making collaboration and fieldwork more manageable.	便利的交通和通訊網絡，使得合作與田野調查更為可行。	no	previous-website			2026-10-18
+Exclude them.	將它們排除。	no	mt			2026-10-18
 Explore our subpages to dive into individual newsletters, where you’ll find in-depth articles, progress reports, and insights into the evolving world of FormosanBank.	透過點選子頁面，能閱覽各期電子報，從中將發現更詳盡的文章、進度報告以及對FormosanBank日益成熟的見解。	no	previous-website			2026-10-18
+Expose them as human-readable CSV/TSV/ XML in a prominent, documented place (repo-root registries — `languages.csv`, `dialects.csv`, `standards.csv` — or `Orthographies/`) and load them from there, through exactly one loader.	將它們以人類可讀的 CSV/TSV/ XML 形式放在醒目且有文件說明的位置（儲存庫根目錄的登錄表 — `languages.csv`、`dialects.csv`、`standards.csv` — 或 `Orthographies/`），並透過恰好一個載入器從那裡載入。	no	mt			2026-10-18
 Extensive Use of Reduplication: The use of reduplication in Formosan languages goes beyond simple pluralization or emphasis; it can indicate aspectual distinctions, intensification, or even noun derivation.	廣泛使用重疊詞：臺灣南島語中的重疊詞不僅限於簡單的複數或強調，它還能夠用於標示時貌、強度，甚至衍生名詞	no	previous-website			2026-10-18
 Features include:	功能包括：	no	previous-website			2026-10-18
 Features of the ILRDF Online Dictionaries	原語會族語線上辭典特點	no	previous-website			2026-10-18
 Fey, V. (1986). _Amis dictionary_.	Fey, V. (1986). Amis dictionary.	no	previous-website			2026-10-18
+Follow the FormosanBank Terms of Use, the AI Use and Commercial Licensing policy, and every corpus or upstream-source notice.	請遵守 FormosanBank 使用條款、AI 使用與商業授權政策，以及每一個語料庫或上游來源的聲明。	no	mt			2026-10-18
 For a comprehensive view of our early achievements, please refer to the full September 2023 newsletter PDFs below:	欲了解本計畫初期成果更詳細的說明，請參閱以下完整的2023年9月份電子報：	no	previous-website			2026-10-18
 For a more detailed overview, please find the complete October 2024 newsletter PDFs below:	如需更詳細的說明，請參閱下方完整的 2024 年 10 月電子報：	no	previous-website			2026-10-18
 For a segment within one document-level recording, set `TEXT/@audio` and provide `start` and `end`:	當單一音檔涵蓋整個XML文件時（在`<TEXT>`標籤的 `audio`屬性中引用），`<AUDIO>`元素將包括start和end屬性，以指示相關片段的時間範圍。	no	previous-website			2026-10-18
 For academic publications, you should cite Mohamed, W., Le Ferrand, É., Sung, L.-M., Prud'hommeaux, E., & Hartshorne, J. K. (2024).	對於學術出版物，請引用以下文獻： Mohamed, W., Le Ferrand, É., Sung, L.-M., Prud'hommeaux, E., & Hartshorne, J. K. (2024).	no	previous-website			2026-10-18
 For code packages, you may refer to the GitHub repository.	對於代碼 包，您可以引用 GitHub 存儲庫。	no	corpus-match			2026-10-18
+For complete or large-scale analysis, use a prepared artifact from the Kakarayan data releases.	如需完整或大規模的分析，請使用 Kakarayan 資料發行版中預先準備好的成品（artifact）。	no	mt			2026-10-18
 For definitions, examples, and the permission process, see AI Use and Commercial Licensing.	詳細定義及申請方式請見AI使用與商業授權。	no	previous-website			2026-10-18
 For example:	例如：	no	previous-website			2026-10-18
+For maintainers: build code must not insert a single M for any reason other than such an analysis (for example, to satisfy the old POL-023 requirement).	給維護者：建置程式碼不得因這種分析以外的任何理由插入單一 M（例如為了滿足舊的 POL-023 要求）。	no	mt			2026-10-18
 Formosan Dialects	臺灣南島語方言	no	previous-website			2026-10-18
 Formosan Languages	臺灣南島語	no	corpus-match			2026-10-18
+"Formosan languages are not monomorphemic, so if there is an M tier but no split words anywhere, that's weird."" Replaces PR #212."	臺灣南島語不是單一詞素的語言，所以如果有 M 層但任何地方都沒有拆分的詞，那就很奇怪。」取代 PR #212。	no	mt			2026-10-18
 Formosan languages speakers distribution showing the low number of speakers across Formosan languages, with some having virtually no speaking population	臺灣南島語使用者的分布情況顯示：臺灣南島語的使用人數普遍較少，其中一些語言幾乎已無使用者。	no	previous-website			2026-10-18
 Formosan languages today are spoken only by a portion of Taiwan's indigenous population, constituting \~2% of Taiwan's population.	目前，臺灣南島語僅由臺灣原住民族一部分人口使用，這些原住民族約佔臺灣總人口的2%。	no	previous-website			2026-10-18
+FormosanBank Policies	FormosanBank 政策	no	mt			2026-10-18
 FormosanBank XML Format	FormosanBank的XML格式	no	previous-website			2026-10-18
+FormosanBank XML remains canonical.	FormosanBank XML 仍為標準版本（canonical）。	no	mt			2026-10-18
 FormosanBank is accessible through the GitHub repository, with audio hosted by HuggingFace.	您也可以從GitHub了解FormosanBank相關的工作及語料，而大多數語音檔案存放於Hugging Face。	no	previous-website			2026-10-18
 FormosanBank materials are available for permitted noncommercial uses and, where the applicable source license allows it, redistribution.	FormosanBank資料可用於允許的非商業用途；僅在適用的來源授權允許時方可重新發布	no	previous-website			2026-10-18
 FormosanBank will acknowledge you as the author and owner of your data.	FormosanBank 會承認您是語 料的作者及擁有者。	no	corpus-match			2026-10-18
 FormosanBank-created annotations and metadata are CC-BY-4.0, except where a corpus-specific source or rights notice imposes stricter terms.	FormosanBank建立的註釋和後設資料遵循CC-BY-4.0，但語料庫特定來源或權利聲明有更嚴格條款時除外。	no	previous-website			2026-10-18
 FormosanBank.	FormosanBank.	no	previous-website			2026-10-18
 Full dictionary text	全辭典文本	no	previous-website			2026-10-18
+Full records load only when opened.	完整紀錄只在開啟時才載入。	no	mt			2026-10-18
 Funding	資金支持	no	corpus-match			2026-10-18
 Further information is available at https://web.klokah.tw/creativeCommons/.	更多資訊請參閱：https://web.klokah.tw/creativeCommons/	no	previous-website			2026-10-18
+Generated page	自動產生的頁面	no	mt			2026-10-18
 GitHub. https://github.com/miaoski/amis-data (Original work published 2013)	GitHub. https://github.com/miaoski/amis-data (Original work published 2013)	no	previous-website			2026-10-18
+Glosbe currently carries 4,157 such S-level `kindOf` attributes; V151 ships SOFT rather than HARD until they are remediated (see `claudeplans/2026-09-08-alternate-form-worklist.md`).	Glosbe 目前帶有 4,157 個這類 S 層級的 `kindOf` 屬性；在修正完成之前，V151 以 SOFT 而非 HARD 發布（見 `claudeplans/2026-09-08-alternate-form-worklist.md`）。	no	mt			2026-10-18
 Glottocodes are unique identifiers used within the Glottolog database to reference languages and dialects, making it easier to connect data across different linguistic resources.	Glottocode是Glottolog資料庫用以標示語言和方言的唯一識別碼，有助於不同語言資源的語料連結。	no	previous-website			2026-10-18
+Governs	規範範圍	no	mt			2026-10-18
+Guards: V154 (legacy notation in a profile), V146 (malformed group in PHON), V147 (legacy `~` in PHON — regenerate).	防護檢查：V154（設定檔中的舊式寫法）、V146（PHON 中格式錯誤的群組）、V147（PHON 中的舊式 `~` — 請重新產生）。	no	mt			2026-10-18
 "HTML escape codes were replaced with the corresponding characters, and a `kindOf=""standard""` attribute was added to `` elements."	"將HTML轉義碼替換為對應的字元，並且將kindOf=""standard"" 屬性新增到`<FORM>`元素中。"	no	previous-website			2026-10-18
 Henry Chang	張永利	no	previous-website			2026-10-18
 Here, we document the process we are going through to document Formosan languages via our newsletters.	在這裡，我們透過電子報記錄在復振和保存臺灣南島語的過程。	no	previous-website			2026-10-18
 Here, we recap key achievements from the first months of our project, as we laid the groundwork for creating a machine-readable corpus of the Indigenous Formosan languages.	在這裡，我們回顧了計畫初期的重要成果，並為創建機器可讀取的臺灣南島語語料庫奠定穩健的基礎。	no	previous-website			2026-10-18
 Here, you’ll find comprehensive documentation of the corpora used in FormosanBank.	在這裡，您可以找到FormosanBank所使用的語料庫的詳細文檔。	no	previous-website			2026-10-18
 High-quality audio files accompany most example sentences, providing an invaluable resource for analyzing pronunciation, phonology, and spoken language contexts.	高品質的音訊檔案伴隨多數例句，為分析發音、音韻及口語語境提供寶貴資源。	no	previous-website			2026-10-18
+Highlights	重點	no	mt			2026-10-18
 Historical Resource Digitization\ We’ve made strides in digitizing historical records, including OCR adaptations for Siraya.	史料資源數位化\ 在歷史記錄數位化方面已取得有效的進展，包括西拉雅語的光學字元辨識改編作業。	no	previous-website			2026-10-18
+How it is hosted	託管方式	no	mt			2026-10-18
+How the file is organised	本檔案的組織方式	no	mt			2026-10-18
+I _think_ ? is used elsewhere for uncertain glosses (most likely NTU).	我_認為_ ? 在其他地方被用於不確定的詞義標注（最可能是 NTU）。	no	mt			2026-10-18
 ILRDF Dictionaries	原語會族語線上辭典	no	previous-website			2026-10-18
 ILRDF has generously shared their extensive data on Formosan languages with us, enabling our team to push forward in creating a comprehensive, machine-readable corpus.	原語會慷慨地分享其豐富的臺灣南島語語料，使我們的團隊得以推動「建立完整且機器可讀的語料庫」的工作	no	previous-website			2026-10-18
+ILRDF_Dicts: where the source prints an alternative in parentheses in both the sentence and its translation, the sentence MAY be kept as printed (maintainer ruling 2026-10-16).	ILRDF_Dicts：當來源在句子及其翻譯中都以括號印出替代選項時，該句子可以依印刷原樣保留（維護者裁定 2026-10-16）。	no	mt			2026-10-18
+If a collection of ungrammatical examples is ever wanted, it will be a different, purpose-built corpus.	如果將來需要不合語法例句的集合，那會是另一個專門建立的語料庫。	no	mt			2026-10-18
+"If the W FORM is , no Ms under it."", read as ""B. Glosses UNCLEAR; sentence translations omitted""; wording approved."	如果 W FORM 是 ，其下就沒有 M。」，解讀為「B. 詞義標注為 UNCLEAR；省略句子翻譯」；措辭已核准。	no	mt			2026-10-18
 If there is no required citation listed, this means it is sufficient to cite FormosanBank itself, as described below.	若未列出所需引用，則僅需引用FormosanBank本身，如下所述。	no	previous-website			2026-10-18
+"If this is confirmed, then make sure it's in a policy."" First applied in the Chang Seediq grammar dev repo."	如果這一點得到確認，就確保它寫進政策中。」首次應用於 Chang 賽德克語文法開發儲存庫。	no	mt			2026-10-18
 If you prefer a different license, please discuss it with us.	如果您偏好不同的授權，請與我們討論。	no	previous-website			2026-10-18
+If you read nothing else, read these ten.	如果其他都不讀，請讀這十條。	no	mt			2026-10-18
 If you use this corpus, or anything derived from it, in a publication, cite both FormosanBank and:	依據我們的使用條款，若您在任何出版物中使用此語料庫或任何由此語料庫衍生的產品，您必須同時引用FormosanBank以及：	no	previous-website			2026-10-18
 If you use this corpus, or anything derived from it, in a publication, cite both FormosanBank and:	根據我們的使用條款，若您在任何出版物中使用此語料庫或任何從此語料庫衍生的產品，您必須同時引用FormosanBank以及以下資料：	no	previous-website			2026-10-18
 If you use this corpus, or anything derived from it, in a publication, cite both FormosanBank and:	若您在任何出版物中使用此語料庫或任何從此語料庫衍生的產品，您必須同時引用FormosanBank以及以下資料：	no	previous-website			2026-10-18
 If you use this corpus, or anything derived from it, in a publication, cite both FormosanBank and:	若您在任何出版物中使用此語料庫或其衍生產品，必須同時引用FormosanBank及	no	previous-website			2026-10-18
 If you wish to allow commercial uses, please discuss with us.	如果您希望允許商業用途，請與我們討論。	no	previous-website			2026-10-18
 If you wish, you can also review the data.	如果您願意，您也可以檢閱資料。	no	previous-website			2026-10-18
+Implemented by: `clean_xml.py` `swap_punctuation` (C001/C002).	實作方式：`clean_xml.py` 的 `swap_punctuation`（C001/C002）。	no	mt			2026-10-18
+Implemented by: `swap_punctuation`; C012.	實作方式：`swap_punctuation`；C012。	no	mt			2026-10-18
+Implemented by: convention; enforced through audits (`audit-dev-repo`, `audit-gloss-scrape`).	實作方式：慣例；透過稽核（`audit-dev-repo`、`audit-gloss-scrape`）強制執行。	no	mt			2026-10-18
+Implemented in `clean_xml`'s `swap_punctuation` (C029), pure typography per the POL-010 rationale.	實作於 `clean_xml` 的 `swap_punctuation`（C029），依 POL-010 的理由屬於純排版處理。	no	mt			2026-10-18
+Implemented in `gloss_scrape._gloss_notation_text` (consumed by G001, G002, G007).	實作於 `gloss_scrape._gloss_notation_text`（由 G001、G002、G007 使用）。	no	mt			2026-10-18
+"In a dictionary headword entry, each sense after the first is a `ver=""alt""` TRANSL."	"在詞典詞目條目中，第一個義項之後的每個義項都是 `ver=""alt""` 的 TRANSL。"	no	mt			2026-10-18
+"In a sentence that carries some morphological parsing, every W gets at least one M; a W with exactly one M there is read as ""analyzed as monomorphemic""."	在帶有部分構詞剖析的句子中，每個 W 至少有一個 M；在該處只有一個 M 的 W 解讀為「分析為單一詞素」。	no	mt			2026-10-18
 In addition to the thorough work done during processing to ensure the resulting corpus is of high quality, further QC steps were conducted to validate and enhance the dataset's reliability and usability.	除了處理過程中所做的工作以確保最終語料庫的高品質外，還進一步執行品質管控步驟，以驗證並提升語料集的可靠性和可用性。	no	previous-website			2026-10-18
+"In cases where we previously created a single M to respect the old policy, we should regenerate without that M-creation."" Maintainer (2026-10-17): ""I wanted to rescind the previous requirement that every W have an M. And I wanted a policy (with no validator attached) saying that Ms indicate parsing, so a single M means monomorphemic."	在我們先前為了遵守舊政策而建立單一 M 的情況下，應該在不建立該 M 的情況下重新產生。」維護者（2026-10-17）：「我想撤銷先前要求每個 W 都要有 M 的規定。我也想要一項政策（不附驗證器），說明 M 表示剖析，所以單一 M 代表單一詞素。	no	mt			2026-10-18
 In contrast, Formosan languages exhibit features that are rarely found in languages upon which traditional linguistic theories are built.	相比之下，臺灣南島語展示了許多罕見的特徵，有別於傳統語言學理論所立基於的語言。	no	previous-website			2026-10-18
+In dictionaries, wordlists, and grammar example collections, repeats should be excluded — a reference resource gains nothing from the same entry twice.	在詞典、詞表和文法例句集中，應排除重複 — 參考資源不會因同一條目出現兩次而有所增益。	no	mt			2026-10-18
+In morpheme position (neighbors are edge/whitespace/`-`), `ø` U+00F8 and `Ø` U+00D8 normalize to `∅` on every tier including original — the null marker is analytic notation, not source spelling, so POL-001 is not violated; letter-adjacent `ø` (Danish loanwords) is never touched.	在詞素位置上（相鄰為邊界／空白／`-`），`ø` U+00F8 和 `Ø` U+00D8 在包括原始層在內的每一層都正規化為 `∅` — 零標記是分析用的符號，不是來源的拼寫，因此不違反 POL-001；與字母相鄰的 `ø`（丹麥語借詞）則從不更動。	no	mt			2026-10-18
+In narrative and spontaneous-speech corpora, exact duplicate sentences are fine — natural repetition is part of the text.	在敘事及自發言談語料庫中，完全相同的重複句子是可以的 — 自然的重複是文本的一部分。	no	mt			2026-10-18
 In recent years, there has been a resurgence of interest in revitalizing these languages, driven by government initiatives and grassroots efforts.	近年來，復振這些語言的興趣 逐漸重燃，這一趨勢主要得益 於政府倡議和草根運動的努 力。	no	corpus-match			2026-10-18
+In that case, the author simply isn't glossing that sentence.	在那種情況下，作者只是沒有為那個句子做詞義標注。	no	mt			2026-10-18
+"In the maintainer's words (2026-10-15): ""differences in morphemes necessitate different sentence blocks only if they are glossed and would result in different glossing."	用維護者的話來說（2026-10-15）：「只有當詞素的差異有詞義標注、且會導致不同的詞義標注時，才需要不同的句子區塊。	no	mt			2026-10-18
 In this section, you will find some of the work that was possible because of FormosanBank; that is, research that utilized data from FormosanBank.	在此，提供我們利用 FormosanBank 語料所進行的研究成果。	no	previous-website			2026-10-18
 In total, the current public corpus includes about 8.2 million words and 703 hours of audio.	目前公開語料庫包含8,219,206個詞及702.9小時的語音資料	no	previous-website			2026-10-18
 Indigenous Languages Research and Development Foundation (ILRDF)	原住民族語言研究發展基金會（ILRDF）	no	corpus-match			2026-10-18
+Inside a segmented gloss the missing piece is `?` too: `yee-su`, where the source glosses only the pronoun, is `?-你`, and its M `yee` is `?`.	在已切分的詞義標注內，缺少的部分也是 `?`：`yee-su` 中來源只標注了代名詞，因此為 `?-你`，其 M `yee` 為 `?`。	no	mt			2026-10-18
 "Instead, it includes multiple voice forms (e.g., agent, patient, instrumental, and benefactive), often referred to as a ""symmetric voice system."" This structure defies simple categorization and challenges the notion that active/passive distinctions are universal or optimal for all languages."	而是包括了多種焦點形式（例如：施事、受事、工具和受益），通常稱為「對稱性焦點系統」。這種結構無法簡單地予以分類，這挑戰了過往認為主動/被動二分系統為最普遍又理想的觀點。	no	previous-website			2026-10-18
+Interactive API reference	互動式 API 參考文件	no	mt			2026-10-18
 Interactive Learning Tools	互動學習工具	no	previous-website			2026-10-18
+Interactive exports are limited to 1,000 rows and 5 MiB.	互動式匯出的上限為 1,000 列及 5 MiB。	no	mt			2026-10-18
 Irrelevant content (e.g., non-Formosan text) was also removed.	與語言結構無關的內容也一併刪除（例如：非臺灣南島語之文本）。	no	previous-website			2026-10-18
 It accepts:	屬性：	no	previous-website			2026-10-18
+It does not parse XML or rebuild data during the request.	它不會在請求過程中解析 XML 或重建資料。	no	mt			2026-10-18
 It has five attributes required by the XSD:	<TEXT>元素必須包含以下屬性：	no	previous-website			2026-10-18
+It has no account, upload, write, or arbitrary SQL route.	它沒有帳號、上傳、寫入或任意 SQL 的路由。	no	mt			2026-10-18
+It is marker-free: segmentation markers (`-`, `=`, infix brackets) are not represented; infix content is, since it is pronounced.	它不含標記：切分標記（`-`、`=`、中綴括號）不予呈現；中綴的內容則會呈現，因為它會被發音。	no	mt			2026-10-18
+It is meaningful only at W and M level, where a TRANSL carries a gloss: `original` is the source's own gloss, `standard` a standardized one.	它只在 W 和 M 層級有意義，在這些層級 TRANSL 帶有詞義標注：`original` 是來源本身的詞義標注，`standard` 是標準化後的詞義標注。	no	mt			2026-10-18
+It requires no account.	使用時不需要帳號。	no	mt			2026-10-18
+It supports dictionary and sentence search, record detail, frequency and summary queries, dataset previews, and finite exports.	它支援詞典與句子搜尋、紀錄詳細資料、頻率與摘要查詢、資料集預覽，以及有限大小的匯出。	no	mt			2026-10-18
+It's good to be aware that there are missing Ms and confirm that's intentional.	能察覺有缺少的 M 並確認那是刻意的，是件好事。	no	mt			2026-10-18
+Its `M` children, if any, follow the segmentation the source prints inside the unit (POL-057).	其 `M` 子元素（若有的話）依循來源在該單位內印出的切分（POL-057）。	no	mt			2026-10-18
 Joshua Hartshorne	Joshua Hartshorne	no	previous-website			2026-10-18
 Juan T. F. & Ruan X.	Juan T. F. & 阮玄	no	previous-website			2026-10-18
 Juan, T. F., & Ruan, X. (2024).	Juan, T. F., & Ruan, X. (2024).	no	previous-website			2026-10-18
+Kakarayan	Kakarayan	no	mt			2026-10-18
+Kakarayan has a required public, read-only query API.	Kakarayan 有一個必要的、公開且唯讀的查詢 API。	no	mt			2026-10-18
+Kakarayan has no learner accounts or cloud synchronization.	Kakarayan 沒有學習者帳號，也沒有雲端同步。	no	mt			2026-10-18
+Kakarayan is FormosanBank's public interface for corpus lookup, language learning, research data, and developer access.	Kakarayan 是 FormosanBank 的公開介面，提供語料庫查詢、語言學習、研究資料及開發者存取。	no	mt			2026-10-18
+Kakarayan repository and technical documentation	Kakarayan 儲存庫與技術文件	no	mt			2026-10-18
+Kakarayan separates the small interface from the large corpus read model:	Kakarayan 將小型介面與大型語料庫讀取模型分開：	no	mt			2026-10-18
 Kanakanavu, whose paragraphing differs, was divided separately into 29.	唯一的例外是卡那卡那富語，其分段與其他語言有較大差異，因此單獨另外處理，僅分為29個段落。	no	previous-website			2026-10-18
 Kanakanavu: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	卡那卡那富語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
 Kanakanavu: the text uses a small number of `h`s and `f`s, which are controversial.	卡那卡那富語：此語料庫中出現少量的字母h和f	no	previous-website			2026-10-18
@@ -177,47 +337,149 @@ Language Covered: Paiwan	涵蓋語言：排灣語	no	previous-website			2026-10-
 Language Preservation	語言保存	no	previous-website			2026-10-18
 Language Revitalization: Supports the creation of educational materials and language-learning resources for Paiwan speakers and learners.	語言復振：支援排灣語使用者和學習者創建教材和語言學習資源。	no	previous-website			2026-10-18
 Language specific: Tsai, I. W. (2016, August 1). _President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government_ \[Speech transcript, Amis translation].	引用道歉文文本（特定語言版）：Tsai, I. W. (2016, August 1). President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government \[Speech transcript, Amis translation].	no	previous-website			2026-10-18
+Latham-1862 carries 5 such cases, all Babuza-Favorlang; they are tracked for remediation.	Latham-1862 有 5 個這類情況，全都是巴布薩語（Favorlang）；它們已列入追蹤待修正。	no	mt			2026-10-18
+Learners can:	學習者可以：	no	mt			2026-10-18
+Learning tools	學習工具	no	mt			2026-10-18
 Li, Joby and Zeitoun (2024) note that Fey misses some phonemic contrasts, including glottal versus pharyngealized stops.	根據Li等人（2024）的說法：「Fey（1986）的字典...忽略了某些音素差異，例如喉塞音與咽化塞音之間的區別，比如，秀姑巒阿美語'op'op『青蛙』與qopo『集合』」。	no	previous-website			2026-10-18
 Li-May Sung	宋麗梅	no	previous-website			2026-10-18
 Li-May Sung&#x20;	宋麗梅	no	previous-website			2026-10-18
 Limitations	限制	no	previous-website			2026-10-18
 Linguistic Analysis: Enables studies on syntax, phonology, discourse structures, and other linguistic phenomena.	語言學分析：支援語法、聲韻、言談架構和其他語言現象的研究。	no	previous-website			2026-10-18
+"Literal translations / analytic paraphrases (`(Lit. the money that Utay took is how much?)`) belong in a `ver=""alt""` TRANSL or a `notes` attribute, not inline in the primary TRANSL text."	"直譯／分析性的改述（`(Lit. the money that Utay took is how much?)`）應放在 `ver=""alt""` 的 TRANSL 或 `notes` 屬性中，而不是放在主要 TRANSL 文字的行內。"	no	mt			2026-10-18
 Logs of removed annotations and non-Formosan text were reviewed to ensure edits were appropriate and did not inadvertently remove valuable linguistic data.	被刪除的註釋和非臺灣南島語文本的記錄會再複檢，以確保編輯適當，並且不會不小心刪除到有價值的語料。	no	previous-website			2026-10-18
 Looking Ahead	展望未來	no	corpus-match			2026-10-18
+Lookup	查詢	no	mt			2026-10-18
+Lookup tables and other data that critical steps depend on are never hardcoded inside a python file.	關鍵步驟所依賴的查詢表及其他資料，絕不寫死在 Python 檔案中。	no	mt			2026-10-18
+M elements record parsing that was actually done.	M 元素記錄實際完成的剖析。	no	mt			2026-10-18
+M-level clitic FORMs retain the `=` marker whether or not the source wrote the clitic attached.	M 層級的附著詞 FORM 保留 `=` 標記，無論來源是否將該附著詞連寫。	no	mt			2026-10-18
+Machine translation and speech recognition are optional Hugging Face services.	機器翻譯與語音辨識是選用的 Hugging Face 服務。	no	mt			2026-10-18
+"Made explicit from the GitBook XML-format page's long-standing instruction (""Original source glosses should be preserved."	由 GitBook XML 格式頁面長期以來的指示明確化（「應保留來源原本的詞義標注。	no	mt			2026-10-18
+Made explicit from the id rules implicit in the GitBook XML-format page.	由 GitBook XML 格式頁面中隱含的 id 規則明確化。	no	mt			2026-10-18
+"Maintainer (2026-10-14): ""when two words share the same gloss, they get a single block."	維護者（2026-10-14）：「當兩個詞共用相同的詞義標注時，它們合為單一區塊。	no	mt			2026-10-18
+"Maintainer (2026-10-15): ""Where a gloss is missing entirely (not one of the shared cases), we insert the gloss `?`, and then treat accordingly."	維護者（2026-10-15）：「當詞義標注完全缺少時（不屬於共用的情況），我們插入詞義標注 `?`，然後據此處理。	no	mt			2026-10-18
+"Maintainer (2026-10-15): ""a W with a single M is assumed to be monomorphemic."	維護者（2026-10-15）：「有單一 M 的 W 被假定為單一詞素。	no	mt			2026-10-18
+"Maintainer (2026-10-17): ""For POL-061, it makes sense to deliberately gloss someting as having an unknown gloss in order to distinguish ""forgot to gloss"" from ""couldn't gloss""."	維護者（2026-10-17）：「就 POL-061 而言，刻意將某個詞標注為詞義未知是合理的，以便區分『忘了標注』與『無法標注』。	no	mt			2026-10-18
+"Maintainer (2026-10-17, Unknown-Content Markers review): NTU's untranscribed words → ""A. All tiers""; ""Keep the tag"" (not a text marker); ""if the translation is unknown (? or ?? etc), we shouldn't use but actually just not emit a translation."	維護者（2026-10-17，未知內容標記審查）：NTU 的未轉寫詞 →「A. 所有層」；「保留標籤」（不是文字標記）；「如果翻譯未知（? 或 ?? 等），我們不應使用 ，而是乾脆不輸出翻譯。	no	mt			2026-10-18
+"Maintainer (2026-10-18): ""It's different when the source doesn't gloss an entire sentence."	維護者（2026-10-18）：「來源沒有為整個句子做詞義標注時，情況就不同了。	no	mt			2026-10-18
 Manual Spot Checks	手動抽查	no	previous-website			2026-10-18
+Mechanism (ruled 2026-08-11 — deliberately no corpus-type registry): whether a corpus should be duplicate-free is that corpus's own choice, expressed in its pipeline — reference resources include a dedup step (`remove_duplicate_sentences.py`) in their `CodeAndDocs/` reproduction pipeline; narratives don't.	機制（2026-08-11 裁定 — 刻意不設語料庫類型登錄表）：語料庫是否應無重複，由該語料庫自行選擇，並透過其管線表達 — 參考資源會在其 `CodeAndDocs/` 重現管線中加入去重步驟（`remove_duplicate_sentences.py`）；敘事語料庫則不加入。	no	mt			2026-10-18
 Metadata, including the article title and language code, was added to the XML files for organizational purposes.	後設資料如文章標題和語言代碼會加入到XML檔案中。	no	previous-website			2026-10-18
 Morpheme glosses are represented as translations within ``:	對於遵循萊比錫規則的語言學註釋，可在<M>元素內使用<TRANSL>元素提供語素層級的註釋。	no	previous-website			2026-10-18
+Most entries restate a decision already made in code, in a spec, in the GitBook, or in an audit sign-off; the later ones record a maintainer ruling directly, and each says which.	大多數條目重述已在程式碼、規格、GitBook 或稽核簽核中做出的決定；較後面的條目則直接記錄維護者的裁定，且每一條都註明屬於哪一種。	no	mt			2026-10-18
 Most of the corpora are derived from a previously published source.	大部分語料庫來自先前已發布的來源。	no	previous-website			2026-10-18
+Moving it to `notes` is permitted but optional — a judgment call, not a cleanup target.	將其移到 `notes` 是允許的但非必要 — 這是判斷問題，不是清理目標。	no	mt			2026-10-18
+Much corpus text is OCRed, so a source's hyphen-vs-dash choice cannot be trusted as principled.	大量語料文本經過 OCR，因此無法相信來源在連字號與破折號之間的選擇是有原則的。	no	mt			2026-10-18
 Much of the research in modern linguistics has been disproportionately based on a small set of languages, predominantly Indo-European languages like English, French, and German.	現代語言學的研究過度集中於少數幾種語言──主要是印歐語系語言，如英語、法語和德語等。	no	previous-website			2026-10-18
 NTU Paiwan ASR Corpus	國立臺灣大學排灣語自動語音辨識	no	previous-website			2026-10-18
+Naming the extra blocks.	額外區塊的命名。	no	mt			2026-10-18
+Narratives may repeat; reference resources may not.	敘事可以重複；參考資源則不可以。	no	mt			2026-10-18
+Naturalistic elaboration (`Sally went to Porto (a town in Portugal).`) MAY stay inline: a human translator might really produce that parenthetical, and one may want MT to learn to produce it.	自然的補充說明（`Sally went to Porto (a town in Portugal).`）可以保留在行內：人類譯者確實可能寫出這樣的括號說明，而且我們可能希望機器翻譯學會產生它。	no	mt			2026-10-18
+Neither mechanism leaves parentheses in a published FORM, except as below.	兩種機制都不會在已發布的 FORM 中留下括號，以下情況除外。	no	mt			2026-10-18
+Net effect: an edit made only to a standard FORM or PHON is invisible to capture and futile anyway — edit the original and let regeneration propagate.	最終效果：只對標準 FORM 或 PHON 所做的編輯，對擷取工具而言是看不見的，而且無論如何都是徒勞 — 請編輯原始層，讓重新產生的過程傳遞變更。	no	mt			2026-10-18
+"Never by hand and never ad hoc (including ""quick"" interactive edits during audits or reviews): a non-code edit is not reproducible and is silently destroyed on regeneration."	絕不手動、絕不臨時處理（包括在稽核或審查期間「快速」的互動式編輯）：非程式碼的編輯無法重現，且會在重新產生時悄悄被破壞。	no	mt			2026-10-18
+New corpora are built in per-corpus dev repos and ported into `Corpora/` only after QC.	新的語料庫在各語料庫專屬的開發儲存庫中建置，只有在通過 QC 之後才移植到 `Corpora/`。	no	mt			2026-10-18
+New corpora are developed in per-corpus dev repos and ported into `Corpora/` only after QC.	新的語料庫在各語料庫專屬的開發儲存庫中開發，只有在通過 QC 之後才移植到 `Corpora/`。	no	mt			2026-10-18
 Newsletters	電子報	no	previous-website			2026-10-18
 No Commercial AI Use	禁止商業 AI 使用	no	corpus-match			2026-10-18
+No real corpus data has been corrected yet, so this is a per-corpus step at the time the pipeline actually runs (i.e. during the regeneration sweep).	目前還沒有任何實際語料庫資料被修正過，因此這是在管線實際執行時（即重新產生作業期間）針對各語料庫進行的步驟。	no	mt			2026-10-18
+No validator checks this.	沒有驗證器檢查這一點。	no	mt			2026-10-18
 Nobody can sell your data.	誰也不能銷售您的語料。	no	corpus-match			2026-10-18
 Non-Formosan text (from the old processing notes): Given the multilingual nature of Wikipedia articles, users should note the presence of occasional non-Formosan text (e.g., English characters or Chinese text).	鑑於維基百科文章的多語言特性，使用者應注意偶爾出現的非臺灣南島語文本（例如英語字母或華語文本）。	no	previous-website			2026-10-18
+Non-regenerable corpora: before corrections are first applied, snapshot the pristine pre-correction XML into that corpus's `CodeAndDocs/` as the reproduction baseline, and document the snapshot in the corpus README.	不可重新產生的語料庫：在首次套用修正之前，將原始的修正前 XML 快照存入該語料庫的 `CodeAndDocs/` 作為重現基準，並在語料庫 README 中記錄此快照。	no	mt			2026-10-18
 None of the words with them appear in the ILRDF dictionary, with or without the `h`s and `f`s, so they have been left in.	包含h或f的字詞在原語會族語辭典語料庫中均未出現，因此，我們選擇保留這些字母。	no	previous-website			2026-10-18
+Not counted as a token.	不計為詞元。	no	mt			2026-10-18
 Note that in some cases, the data is still being processed and not yet publicly available.	部分語料因為仍在處理中，故尚未公開連結。	no	previous-website			2026-10-18
+Nothing requires the variation to be word-internal.	沒有任何規定要求變化必須發生在詞的內部。	no	mt			2026-10-18
+Nuance from the Latham 2026-08 call: a wordlist repeat with distinct provenance (attested from a different source variety or page) is informative attestation, not a repeat, and may be kept deliberately.	2026-08 Latham 討論中的細節：具有不同出處（來自不同來源變體或頁面的用例）的詞表重複項，是有資訊價值的用例證據而非重複，可以刻意保留。	no	mt			2026-10-18
+Null morphemes are silent in PHON; a whole-null FORM gets PHON `∅`.	零詞素在 PHON 中不發音；整個為零的 FORM 其 PHON 為 `∅`。	no	mt			2026-10-18
+"Null units (`∅` plus one bridging hyphen) are removed from S-level standard FORMs in TSV/remove-accents modes; `--copy` keeps them (V120 SOFT = ""re-standardize when convenient"")."	零單位（`∅` 加上一個銜接用的連字號）在 TSV／移除重音符號模式中會從 S 層級標準 FORM 移除；`--copy` 則保留它們（V120 SOFT =「方便時重新標準化」）。	no	mt			2026-10-18
 October 2024	2024年10月	no	previous-website			2026-10-18
 Office of the President.	Office of the President.	no	previous-website			2026-10-18
 On August 1, 2016, President Tsai Ing-wen delivered a historic apology to Taiwan's indigenous peoples on behalf of the government during Indigenous Peoples' Day.	2016年8月1日，蔡英文總統在原住民日代表政府向臺灣原住民族作出歷史性致歉。	no	previous-website			2026-10-18
+On an S-level TRANSL — a free translation — there is no such axis and the attribute carries no information (V151).	在 S 層級的 TRANSL（即自由翻譯）上沒有這個面向，該屬性不帶任何資訊（V151）。	no	mt			2026-10-18
+One convention covers both mechanisms because the question a reader asks of the id is the same — which block of a split is this? — and not why was it split?, which the FORMs and glosses answer.	同一套慣例涵蓋兩種機制，因為讀者對 id 提出的問題相同 — 這是拆分後的哪一個區塊？— 而不是為什麼要拆分？後者由 FORM 和詞義標注回答。	no	mt			2026-10-18
+One entry per project-wide ruling.	每一項專案層級的裁定各占一個條目。	no	mt			2026-10-18
+One entry point, one step order: `generate_xml.sh` runs generate → manual edits → clean → standardize → add_phonology. Deviation is allowed but must be justified at merge.	單一進入點、單一步驟順序：`generate_xml.sh` 依序執行 generate → manual edits → clean → standardize → add_phonology。可以偏離，但必須在合併時說明理由。	no	mt			2026-10-18
 One of the main goals of FormosanBank is to provide comprehensive data that advances researchers' work on Formosan languages.	FormosanBank 的主要目標之一是提供全方位的語料，促進研究人員對臺灣南島語的研究工作。	no	previous-website			2026-10-18
 Ongoing Updates	持續更新	no	previous-website			2026-10-18
 Ongoing data collection efforts continue to enrich this body of resources.	未來藉由更持續性的收集，將促進語料資源的豐富性與完整性。	no	previous-website			2026-10-18
 Online Access and Search	線上存取與查詢	no	previous-website			2026-10-18
 Online Quizzes: Test your knowledge of the languages.	線上測驗：測試您對語言知識的掌握程度。	no	previous-website			2026-10-18
+Only structural unreadability (file missing/unparseable) is HARD.	只有結構上無法讀取（檔案遺失／無法剖析）才是 HARD。	no	mt			2026-10-18
+Open Kakarayan	開啟 Kakarayan	no	mt			2026-10-18
+Open Kakarayan: formosanbank.github.io/kakarayan	開啟 Kakarayan：formosanbank.github.io/kakarayan	no	mt			2026-10-18
+Open questions carry status UNRESOLVED — ask the maintainer once, record the answer here, and the question is closed everywhere.	未決問題的狀態標為 UNRESOLVED — 向維護者詢問一次，將答案記錄於此，該問題即在各處結案。	no	mt			2026-10-18
+OpenAPI document	OpenAPI 文件	no	mt			2026-10-18
 Optional attributes are:	可選屬性可能包括：	no	previous-website			2026-10-18
+Optional material is resolved by scope.	可選成分依範圍處理。	no	mt			2026-10-18
+"Or when we, as FormosanBank maintainers, can't figure out what the source intended.""; wording approved on the Nowbucyang gloss review, round 2."	或者與我們身為 FormosanBank 維護者，無法判斷來源意圖的情況也不同。」；措辭已在 Nowbucyang 詞義標注審查第 2 輪中核准。	no	mt			2026-10-18
 Oral and literary works for news reports that are intended strictly to communicate facts. > 5.	僅為傳達事實之新聞報導的口述或文字作品。 > 5.	no	previous-website			2026-10-18
+Ordinary browsers never download the database or a corpus-wide search index.	一般瀏覽器從不下載該資料庫或涵蓋整個語料庫的搜尋索引。	no	mt			2026-10-18
 Origin and Historical Background	起源與歷史背景	no	corpus-match			2026-10-18
+"Original source glosses are preserved as written (in `TRANSL[@kindOf=""original""]` at M/W level)."	"來源原本的詞義標注依原樣保留（在 M/W 層級的 `TRANSL[@kindOf=""original""]` 中）。"	no	mt			2026-10-18
 Other protected uses require permission unless an applicable fair-use provision applies.	其他受著作權保護內容的利用，除符合法定合理使用外，須先取得授權。	no	previous-website			2026-10-18
 OtherNames:\ Any alternative dialect names that map onto the official dialect name.	OtherNames（其他名稱）：任何與官方方言名稱對應的替代方言名稱。	no	previous-website			2026-10-18
 Our corpora are designed to support linguistic research, language education, and revitalization efforts, making these endangered languages accessible and analyzable for researchers, educators, and community members alike.	我們的語料庫旨在於支持語言學研究、語言教育和族語復振工作，使研究人員、教育工作者和族人皆能夠輕鬆存取與分析這些瀕危語言。	no	previous-website			2026-10-18
 Over time, as new names and variants become known, these entries will be updated or expanded.	隨著新名稱的出現，這些條目將進行更新或擴充。	no	previous-website			2026-10-18
+Overlap — it must overlap the sibling highly, or, where both forms are too short for overlap to be measurable, simply be short.	重疊 — 它必須與同層的兄弟形式高度重疊，或者，當兩個形式都太短而無法測量重疊時，只需要很短即可。	no	mt			2026-10-18
 Overview	概述	no	previous-website			2026-10-18
+PHON is derived and machine-owned (`add_phonology.py` regenerates it; hand edits are stripped from manual-edit records).	PHON 是衍生的、由機器負責（`add_phonology.py` 會重新產生它；手動編輯會從手動編輯紀錄中被移除）。	no	mt			2026-10-18
+POL-001	POL-001	no	mt			2026-10-18
+POL-001 · RULED · long-standing · original FORM tier	POL-001 · RULED · 長期以來 · 原始 FORM 層	no	mt			2026-10-18
+POL-002	POL-002	no	mt			2026-10-18
+POL-002 · RULED · 2026-08-09 · standard FORM tier	POL-002 · RULED · 2026-08-09 · 標準 FORM 層	no	mt			2026-10-18
+POL-003 · RULED · 2026-08-09 · PHON tier	POL-003 · RULED · 2026-08-09 · PHON 層	no	mt			2026-10-18
+POL-004 · RULED · long-standing · cross-corpus comparison	POL-004 · RULED · 長期以來 · 跨語料庫比較	no	mt			2026-10-18
+POL-010 · RULED (recorded 2026-08-10) · all Formosan-text tiers	POL-010 · RULED（記錄於 2026-08-10）· 所有臺灣南島語文本層	no	mt			2026-10-18
+POL-011 · RULED · 2026-08 · all tiers	POL-011 · RULED · 2026-08 · 所有層	no	mt			2026-10-18
+POL-012 · RULED · 2026-08-09 · null morphemes, all tiers	POL-012 · RULED · 2026-08-09 · 零詞素，所有層	no	mt			2026-10-18
+POL-013 · RULED · 2026-08-10 · the tilde	POL-013 · RULED · 2026-08-10 · 波浪號	no	mt			2026-10-18
+POL-014 · RULED · GitBook · infixes on W/M tiers	POL-014 · RULED · GitBook · W/M 層上的中綴	no	mt			2026-10-18
+POL-015 · RULED · GitBook · clitics	POL-015 · RULED · GitBook · 附著詞	no	mt			2026-10-18
+POL-016 · RULED · 2026-08-10 · ungrammatical/marginal examples	POL-016 · RULED · 2026-08-10 · 不合語法／邊緣的例句	no	mt			2026-10-18
+POL-017 · RULED · 2026-08-10 · obligatory/forbidden parentheses	POL-017 · RULED · 2026-08-10 · 必要／禁止的括號	no	mt			2026-10-18
+POL-018 · RULED · 2026-08-10 · quotation marks	POL-018 · RULED · 2026-08-10 · 引號	no	mt			2026-10-18
+POL-020 · RULED · 2026-06-01 · sibling order	POL-020 · RULED · 2026-06-01 · 同層元素順序	no	mt			2026-10-18
+POL-021 · RULED · GitBook · untranscribable content	POL-021 · RULED · GitBook · 無法轉寫的內容	no	mt			2026-10-18
+POL-022 · RULED · 2026-08-10 · duplicate sentences	POL-022 · RULED · 2026-08-10 · 重複的句子	no	mt			2026-10-18
+POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12; presence requirement withdrawn 2026-10-17 by POL-057)	POL-023 · RULED · 2026-08-10 · M 層的存在（範圍於 2026-08-12 修訂；存在要求於 2026-10-17 由 POL-057 撤回）	no	mt			2026-10-18
+POL-024 · RULED · 2026-08-10 · parentheticals in translations	POL-024 · RULED · 2026-08-10 · 翻譯中的括號說明	no	mt			2026-10-18
+POL-025 · RULED · 2026-08-10 · alternative translations	POL-025 · RULED · 2026-08-10 · 替代翻譯	no	mt			2026-10-18
+POL-026 · RULED · 2026-08-10 · optional material in examples	POL-026 · RULED · 2026-08-10 · 例句中的可選成分	no	mt			2026-10-18
+POL-027 · RULED · 2026-08-10 · alternatives in examples	POL-027 · RULED · 2026-08-10 · 例句中的替代選項	no	mt			2026-10-18
+POL-028 · RULED · 2026-09-08 · variant FORMs	POL-028 · RULED · 2026-09-08 · 變體 FORM	no	mt			2026-10-18
+POL-030 · RULED · 2026-06-15 · reproducible hand edits	POL-030 · RULED · 2026-06-15 · 可重現的手動編輯	no	mt			2026-10-18
+POL-031	POL-031	no	mt			2026-10-18
+POL-031 · RULED · long-standing · corpus development	POL-031 · RULED · 長期以來 · 語料庫開發	no	mt			2026-10-18
+POL-032 · RULED · 2026-06 · audio statistics	POL-032 · RULED · 2026-06 · 錄音統計	no	mt			2026-10-18
+POL-033 · RULED · 2026-08-10 · warnings sidecars	POL-033 · RULED · 2026-08-10 · 警告附屬檔案	no	mt			2026-10-18
+POL-034 · RULED · 2026-08 · registry consistency findings	POL-034 · RULED · 2026-08 · 登錄表一致性發現項目	no	mt			2026-10-18
+POL-035 · RULED · 2026-08-10 · pre-correction baselines	POL-035 · RULED · 2026-08-10 · 修正前的基準	no	mt			2026-10-18
+POL-036 · RULED · 2026-08-11 · gloss standardization is additive	POL-036 · RULED · 2026-08-11 · 詞義標注標準化是附加性的	no	mt			2026-10-18
+POL-037	POL-037	no	mt			2026-10-18
+POL-037 · RULED · 2026-08-11 · stable public identifiers	POL-037 · RULED · 2026-08-11 · 穩定的公開識別碼	no	mt			2026-10-18
+POL-038	POL-038	no	mt			2026-10-18
+POL-038 · RULED · 2026-08-11 · data files change only via code	POL-038 · RULED · 2026-08-11 · 資料檔案只能透過程式碼更改	no	mt			2026-10-18
+POL-039 · RULED · 2026-08-11 · no data tables hidden in code	POL-039 · RULED · 2026-08-11 · 程式碼中不隱藏資料表	no	mt			2026-10-18
+POL-042	POL-042	no	mt			2026-10-18
+POL-043	POL-043	no	mt			2026-10-18
+POL-046	POL-046	no	mt			2026-10-18
+POL-047	POL-047	no	mt			2026-10-18
+POL-048	POL-048	no	mt			2026-10-18
+POL-057 · RULED · 2026-10-17 · an M records a morphological analysis	POL-057 · RULED · 2026-10-17 · M 記錄的是構詞分析	no	mt			2026-10-18
+POL-060 · RULED · 2026-10-14 · words that share one gloss	POL-060 · RULED · 2026-10-14 · 共用一個詞義標注的詞	no	mt			2026-10-18
+POL-061 · RULED · 2026-10-15 · a word with no gloss	POL-061 · RULED · 2026-10-15 · 沒有詞義標注的詞	no	mt			2026-10-18
+POL-062 · RULED · 2026-08-12 · W/M-level translations are not cleaned	POL-062 · RULED · 2026-08-12 · W/M 層級的翻譯不予清理	no	mt			2026-10-18
 Paiwan Stories	排灣故事	no	previous-website			2026-10-18
 Paiwan: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	排灣語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
 Paiwan: https://pwn.wikipedia.org	排灣語：https://pwn.wikipedia.org	no	previous-website			2026-10-18
+Parsers must distinguish the two; treating them identically published an ungrammatical sentence (NTU Rukai `*(malra)`, parser fixed 149537a10).	剖析器必須區分這兩者；將兩者視為相同曾導致發布了一個不合語法的句子（NTU 魯凱語 `*(malra)`，剖析器已於 149537a10 修正）。	no	mt			2026-10-18
+Per-corpus rulings on the variants already published are recorded in `claudeplans/2026-10-15-segmentation-variant-worklist.md`.	對已發布變體的各語料庫裁定，記錄於 `claudeplans/2026-10-15-segmentation-variant-worklist.md`。	no	mt			2026-10-18
 Periodic expert consultations ensure updates and accuracy, with the final decisions on word usage returned to the respective indigenous communities	定期諮詢專家，以確保內容更新與準確性，並將詞彙使用的最終決策權交還至各族族人。	no	previous-website			2026-10-18
+Phonemic variants on the PHON tier (and in orthography-profile IPA cells, which flow verbatim into PHON) are written `[x|y]` — two or more pipe-separated alternatives in square brackets (`[b|v]`, `[ɬ|ɮ|l]`, multi-char fine: `[l|ll]`).	PHON 層上的音位變體（以及書寫系統設定檔中的 IPA 儲存格，其內容會原封不動地流入 PHON）寫作 `[x|y]` — 方括號中兩個或以上以直線分隔的選項（`[b|v]`、`[ɬ|ɮ|l]`，多字元亦可：`[l|ll]`）。	no	mt			2026-10-18
 Phylogenetic trees by Li (2006), Blust (2009), and Greenhill &#x26; Gray (2009), showing that most Austronesian language diversity is found in Taiwan's Formosan languages	Li (2006)、Blust (2009)和Greenhill &#x26; Gray (2009)的語系譜樹顯示，南島語系的語言多樣性主要集中於臺灣南島語中。	no	previous-website			2026-10-18
 Please beware that due to the nature of the wikipedias corpus (being collected from public online article and heavily containing non-Formosan text), there are some limitations in the corpus that should be pointed out.	請注意，由於維基百科語料庫的性質（來自公開的線上文章且包含大量非臺灣南島語文本），該語料庫存在一些限制，特別在此指明。	no	previous-website			2026-10-18
+Policy	政策	no	mt			2026-10-18
 Preprocessing and Cleaning	前置處理與清理	no	previous-website			2026-10-18
 Presidential Apologies	總統道歉文	no	previous-website			2026-10-18
 Principal Investigators	計畫主持人	no	previous-website			2026-10-18
@@ -225,49 +487,105 @@ Processing Steps	處理步驟	no	previous-website			2026-10-18
 Processing and Quality Control (the original 2026-06 scrape)	處理與品質管控	no	previous-website			2026-10-18
 Proficiency Exams: The existence of government-backed proficiency exams for Formosan languages shows a significant commitment to language preservation and education.	語言能力測驗：政府持續籌辦臺灣南島語的認證測驗，顯示出對族語保存和族語教育的承諾。	no	previous-website			2026-10-18
 Project Progress\ We’re excited to report that the FormosanBank corpus now contains over 6 million words and 360 hours of audio, covering a wide range of linguistic data.	計畫進度\ 很高興向各位報告，FormosanBank語料庫已涵蓋超過600萬個詞彙和360小時的語音語料。	no	previous-website			2026-10-18
+Project links	專案連結	no	mt			2026-10-18
+Proportion catches disproportionate pairs specifically — it does not close every hole the short-form exemption opens.	比例專門抓出不成比例的配對 — 它並不能堵住短形式豁免所造成的每一個漏洞。	no	mt			2026-10-18
+Proportion is a separate test because overlap alone cannot catch it: a short form paired with a long one shares a short member, and a short-form exemption written against the shorter string would wave it through.	比例之所以是獨立的測試，是因為單靠重疊無法抓到它：短形式與長形式配對時會共有一個短的成員，而以較短字串為準所寫的短形式豁免條款會讓它通過。	no	mt			2026-10-18
+Proportion — neither form may be more than twice the length of the other.	比例 — 任一形式的長度都不得超過另一形式的兩倍。	no	mt			2026-10-18
+Public API	公開 API	no	mt			2026-10-18
 Public signage in English and the availability of language education programs, including immersion schools and heritage language programs.	英語的公共標誌和語言教育課程的提供，包括沉浸式教學和傳承語言課程。	no	previous-website			2026-10-18
 Publications	出版物	no	previous-website			2026-10-18
+Published PHON migrates at the regeneration sweep.	已發布的 PHON 會在重新產生作業（sweep）時遷移。	no	mt			2026-10-18
+Published identifiers are stable. `TEXT/@id` is never reused; S/W/M ids are never renumbered once published. External users cite them.	已發布的識別碼是穩定的。`TEXT/@id` 從不重複使用；S/W/M 的 id 一旦發布便不再重新編號。外部使用者會引用它們。	no	mt			2026-10-18
+Published identifiers are stable: a `TEXT/@id` must never collide with (or be reused from) an already-published `TEXT/@id`, and S/W/M ids — unique within their file — are not renumbered once published.	已發布的識別碼是穩定的：`TEXT/@id` 絕不能與已發布的 `TEXT/@id` 衝突（或重複使用），而 S/W/M id — 在其檔案內唯一 — 一旦發布便不再重新編號。	no	mt			2026-10-18
 Puyuma: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	卑南語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
 Quality Control	品質管控	no	previous-website			2026-10-18
+"Quotations use double quotes (`""`)."	"引文使用雙引號（`""`）。"	no	mt			2026-10-18
+Raised by the ISO 639-3 map drift: four separate hardcoded copies of the code→language table had diverged (`bzg` present in one, `pzh` in another).	由 ISO 639-3 對照表的不一致所引發：程式碼→語言對照表有四份各自寫死的副本，彼此已出現分歧（`bzg` 出現在其中一份，`pzh` 在另一份）。	no	mt			2026-10-18
+Raised by the Seediq-Chang audit, where `h-(um)-uwa` (R275) had been made obligatory rather than resolved.	由 Seediq-Chang 稽核提出，其中 `h-(um)-uwa`（R275）曾被當作必要成分，而非加以處理。	no	mt			2026-10-18
+Raised by: the 2026-08-11 Group 1 sweep review.	提出者：2026-08-11 第 1 組全面審查。	no	mt			2026-10-18
+Raised by: the 2026-08-12 Yedda review, where `clean_xml` was observed to skip W/M TRANSL repo-wide; that behavior is intended, not a bug.	提出者：2026-08-12 Yedda 審查，當時觀察到 `clean_xml` 在整個儲存庫中都跳過 W/M TRANSL；該行為是刻意的，不是錯誤。	no	mt			2026-10-18
+Raised by: the 2026-10 student review of the Chang 2000 Seediq grammar dev repo, where 40 such units had been split.	提出者：2026-10 學生對 Chang 2000 賽德克語文法開發儲存庫的審查，其中有 40 個這類單位曾被拆開。	no	mt			2026-10-18
 Random samples of the XML files were manually inspected to confirm proper segmentation, alignment, and the integrity of the linguistic content.	隨機抽取的XML檔案樣本經由手動檢查，以確認語料的適當分段、對齊以及語言內容的完整性	no	previous-website			2026-10-18
+Rationale: AUDIO must be positionable anywhere; XSD 1.0 cannot express the mixed constraint without UPA violations.	理由：AUDIO 必須能放在任何位置；XSD 1.0 無法在不違反 UPA 的情況下表達這種混合限制。	no	mt			2026-10-18
+Rationale: external users cite and align against these ids, and the manual-edits mechanism (POL-030) keys its records by sentence id — renumbering silently orphans both.	理由：外部使用者會以這些 id 引用和對齊，而手動編輯機制（POL-030）以句子 id 作為其紀錄的鍵 — 重新編號會悄悄地讓兩者都失去對應。	no	mt			2026-10-18
+Rationale: the glottal stop's canonical spelling in Formosan orthographies is the straight apostrophe; curly variants in print are typography, not orthography, so this does not violate POL-001.	理由：在臺灣南島語書寫系統中，喉塞音的標準寫法是直撇號；印刷品中的彎曲變體屬於排版而非書寫系統，因此這並不違反 POL-001。	no	mt			2026-10-18
+Rationale: those tiers are not used for machine translation — they are read by humans — so the extra material a source packs into a gloss (etymology, root notes, dialect comments, alternative spellings, parenthetical asides) is information to keep, not noise to strip.	理由：這些層不用於機器翻譯 — 它們是給人閱讀的 — 因此來源放進詞義標注中的額外內容（詞源、詞根註記、方言說明、替代拼寫、括號旁註）是應保留的資訊，而不是要去除的雜訊。	no	mt			2026-10-18
 Read-speech XML was built from ELAN sources.	朗讀語音的XML由ELAN來源建立。	no	previous-website			2026-10-18
 Recognizing the importance of sustainability, the ILRDF digitized these dictionaries and launched the Indigenous Languages Online Dictionary platform.	體認到永續發展的重要性，原語會將這些辭典進行數位化，並推出族語線上辭典平台。	no	previous-website			2026-10-18
+"Reconciled at merge (2026-08-10): original-tier rewrites are logged as `c031` (corrected `'`→`""`) and `c032` (stranded-repair) rows in a dedicated, durable `quote_corrections.csv` (append-only across runs; commit it after correcting runs) — distinct from `cleaner_warnings.csv`, which stays an ephemeral per-run report per POL-033 and carries only the `c030` ambiguity flags."	"合併時調和（2026-08-10）：原始層的改寫會以 `c031`（已修正 `'`→`""`）和 `c032`（孤立符號修復）列記錄在專用且持久的 `quote_corrections.csv` 中（跨執行僅附加；修正性執行後請提交它）— 與 `cleaner_warnings.csv` 不同，後者依 POL-033 仍是短暫的每次執行報告，只帶有 `c030` 模稜兩可標記。"	no	mt			2026-10-18
+Recordings remain in the active tab unless the user downloads one or explicitly submits it to the named speech-recognition provider.	錄音會保留在目前使用中的分頁內，除非使用者下載錄音，或明確將其送交指定的語音辨識服務提供者。	no	mt			2026-10-18
+Records that no-op at apply time are kept with a salient warning; `apply_manual_edits.py --prune` removes them — an explicit maintenance action for when the upstream build has genuinely absorbed the fix (ruling 2026-08-10).	在套用時沒有作用的紀錄會被保留，並發出醒目的警告；`apply_manual_edits.py --prune` 會移除它們 — 這是明確的維護動作，用於上游建置確實已吸收該修正的情況（2026-08-10 裁定）。	no	mt			2026-10-18
 Reference Grammars and Dictionaries: Many languages are supported by well-developed grammars and dictionaries, providing essential tools for linguistic research.	字典和語法書：許多語言擁有完善的字典和語法書，為語言學研究提供了重要的工具。	no	previous-website			2026-10-18
+Refresh on demand via `refresh_audio_stats.py` / `update_audio_stats.py`.	需要時透過 `refresh_audio_stats.py` / `update_audio_stats.py` 更新。	no	mt			2026-10-18
+Regenerable corpora (a reproduction pipeline exists in `CodeAndDocs/` — e.g. Glosbe): nothing extra.	可重新產生的語料庫（`CodeAndDocs/` 中有重現管線 — 例如 Glosbe）：不需額外處理。	no	mt			2026-10-18
+Regeneration pipelines must therefore produce the same ids run over run; an id scheme change is a breaking change to announce, not a cleanup.	因此，重新產生的管線每次執行都必須產生相同的 id；更改 id 方案是需要公告的破壞性變更，而不是清理。	no	mt			2026-10-18
+Releases, citation, and rights	發行版、引用與權利	no	mt			2026-10-18
 Removing Non-Formosan Text	移除非臺灣南島語文本	no	previous-website			2026-10-18
+Report a public-site problem	回報公開網站問題	no	mt			2026-10-18
 Required citations are listed on the page for each corpus in the manual and also in the root of each XML file.	手冊上每個語料庫的頁面和每個XML文件的根目錄中列出了所需的引用。	no	previous-website			2026-10-18
+Research and downloads	研究與下載	no	mt			2026-10-18
 Resource Assessment\ Our team has cataloged existing resources and obtained permissions for essential materials, including dictionaries, corpora, and audio recordings.	資源評估\ 本計畫團隊已完成現有資源目錄的整理，並獲得了必要材料的授權，包括辭典、語料庫和語音資料。	no	previous-website			2026-10-18
+Results can be narrowed by language, corpus, dialect, translation language, match type, and available evidence.	結果可依語言、語料庫、方言、翻譯語言、比對類型及現有證據加以篩選。	no	mt			2026-10-18
+Revised 2026-09-09.	2026-09-09 修訂。	no	mt			2026-10-18
 "Rich Data Sources: The ""latent"" corpus of Formosan languages includes already-acquired materials, historical documents, and published corpora."	豐富的語料資源：臺灣南島語的豐富「潛在」資源包含已收集的材料、歷史文獻以及已出版的語料庫。	no	previous-website			2026-10-18
+Rights	權利	no	mt			2026-10-18
 Robert Early	Robert Early	no	previous-website			2026-10-18
 Rukai: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	魯凱語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
+Ruled 2026-08-12 and drafted as POL-041 on branch `work/b3-yedda`, which never reached main; POL-041 was later assigned to W-tier presence.)	於 2026-08-12 裁定，並在分支 `work/b3-yedda` 上草擬為 POL-041，但該分支從未進入 main；POL-041 後來被指派給 W 層的存在。）	no	mt			2026-10-18
 Running the corpus's `download_audio_data.sh` downloads the full recordings and uses `CodeAndDocs/extract_audio_clips.py` to recreate the sentence-level clips referenced by the XML.	執行語料庫中的`download_audio_data.sh`會下載完整錄音，再由`CodeAndDocs/extract_audio_clips.py`重建XML所引用的句級音檔。	no	previous-website			2026-10-18
 Saaroa: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	拉阿魯哇語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
 Saisiyat: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	賽夏語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
 Sakizaya: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	撒奇萊雅語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
 Sakizaya: a small number of `f`s appear to be in loanwords.	撒奇萊雅語：少量含f的字詞被視為是外來詞。	no	previous-website			2026-10-18
 Sakizaya: https://szy.wikipedia.org	撒奇萊雅語：https://szy.wikipedia.org	no	previous-website			2026-10-18
+Same care as POL-026: each block's glosses, W/M tier, and translation reflect only its own option.	與 POL-026 相同的注意事項：每個區塊的詞義標注、W/M 層和翻譯只反映其自身的選項。	no	mt			2026-10-18
 Scientific research	科學研究	no	corpus-match			2026-10-18
 Scraping Wikipedia Articles	抓取維基百科文章	no	previous-website			2026-10-18
+Search results and exports retain stable identifiers, corpus scope, source paths, citations, and rights references.	搜尋結果與匯出保留穩定的識別碼、語料庫範圍、來源路徑、引用及權利參照。	no	mt			2026-10-18
+Section	章節	no	mt			2026-10-18
 Securing Funding\ We are thrilled to announce a 3-year grant from the U.S. National Science Foundation, which enables us to hire staff and conduct essential research trips.	確保經費支持\ 很興奮地宣布本計畫獲得美國國家科學基金會（NSF）為期三年的補助，這使我們能夠聘用研究人員以進行必要的研究旅程	no	previous-website			2026-10-18
+See CLAUDE.md §Development workflow.	參見 CLAUDE.md §Development workflow。	no	mt			2026-10-18
 Seediq: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	賽德克語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
 Seediq: https://trv.wikipedia.org	賽德克語：https://trv.wikipedia.org	no	previous-website			2026-10-18
+Semantics — RULED (2026-08-10).	語意 — RULED（2026-08-10）。	no	mt			2026-10-18
+Sentence results provide the source and FormosanBank-standard forms, translations, tokens, audio references, and interlinear or phonological tiers when the source contains them.	句子結果提供來源形式與 FormosanBank 標準形式、翻譯、詞元（tokens）、錄音參照，以及來源中含有時的逐行對照（interlinear）層或音韻層。	no	mt			2026-10-18
+Sentence, word, and morpheme translations retain their own tier owners.	句子、詞與詞素的翻譯各自保留其所屬的層。	no	mt			2026-10-18
 September 2023	2023年9月	no	previous-website			2026-10-18
+Shared tools first. Extend a shared tool before writing a corpus-specific one. Corpus-specific processing code is a last resort and a fork risk.	共用工具優先。在撰寫語料庫專屬的工具之前，先擴充共用工具。語料庫專屬的處理程式碼是最後手段，也有分叉的風險。	no	mt			2026-10-18
 Should they cite a paper of yours?	他們應該引用你的論文嗎？	no	previous-website			2026-10-18
 Should users link to your website?	用戶應該連結到您的網站嗎？	no	previous-website			2026-10-18
+Sibling order of FORM/PHON/TRANSL/AUDIO/W within S (and within W) is not schema-enforced; W/M-at-end is a soft documentation convention.	S 內（以及 W 內）FORM/PHON/TRANSL/AUDIO/W 的同層順序不受綱要（schema）強制；W/M 置於末尾是非強制性的文件慣例。	no	mt			2026-10-18
 Significance	重要性	no	previous-website			2026-10-18
 Similar to the rest of the corpora in FormosanBank, the dataset is formatted in XML for easy use in computational applications.	這與FormosanBank中的其他語料庫類似，該語料集以XML格式進行編排，利於日後在計算應用程式中使用。	no	previous-website			2026-10-18
+Similarly FORM text should not result in lower tiers.	同樣地，FORM 文字也不應產生下層。	no	mt			2026-10-18
 Since some languages encompass multiple dialects, this column helps group related dialects.	由於某些語言包含多種方言，此欄位有助於將相關的方言歸類。	no	previous-website			2026-10-18
+Single quotes are never used as quotation marks in Formosan text — on any tier, in any language.	在臺灣南島語文本中，單引號從不作為引號使用 — 在任何層、任何語言中皆然。	no	mt			2026-10-18
 Slogans and common symbols, terms, formulas, numerical charts, forms, notebooks, or almanacs. > 4.	標語及常用之符號、名詞、公式、數字表、表格、筆記簿或年曆。 > 4.	no	previous-website			2026-10-18
+"So a W gets a single M only ""if the source told us it was monomorphemic, or we have some other good reason to believe so (ie evidence from data for the same dialect)""."	因此，只有「如果來源告訴我們它是單一詞素，或者我們有其他充分理由相信如此（即來自同一方言資料的證據）」時，W 才會有單一的 M。	no	mt			2026-10-18
+So if the S FORM is simply , no Ws.	所以如果 S FORM 只是 ，就沒有 W。	no	mt			2026-10-18
+So we should only have a W with a single M if the source told us it was monomorphemic, or we have some other good reason to believe so (ie evidence from data for the same dialect).	所以只有在來源告訴我們它是單一詞素，或我們有其他充分理由相信如此（即來自同一方言資料的證據）時，才應該有單一 M 的 W。	no	mt			2026-10-18
 Some authors wish to allow for commercial uses.	有些作者希望允許商業用途。	no	previous-website			2026-10-18
 Some of these QC steps are listed below:	以下列出其步驟：	no	previous-website			2026-10-18
 Some text has been imported only under CC BY-SA and CC BY-SA-compatible license and cannot be reused under GFDL; such text will be identified on the page footer, in the page history, or on the discussion page of the article that utilizes the text.	有些文本僅依據CC BY-SA和與CC BY-SA相容的授權條款進行匯入，不能根據GFDL重用；這些文本將在頁面底部、頁面歷史或使用該文本的文章討論頁上標示出來。	no	previous-website			2026-10-18
 Source Materials	來源材料	no	corpus-match			2026-10-18
 Source materials	來源材料	no	previous-website			2026-10-18
+"Source ruling: `feature/quote-glottal-classifier`'s quote-glottal-correction spec (its `'`→`""` rewrite is the first non-self-correcting mutation of the original tier)."	"來源裁定：`feature/quote-glottal-classifier` 的引號／喉塞音修正規格（其 `'`→`""` 改寫是對原始層第一個非自我修正的變動）。"	no	mt			2026-10-18
+Source: GitBook XML-format page §Special Rules.	來源：GitBook XML 格式頁面 §Special Rules。	no	mt			2026-10-18
+Sources: GitBook XML-format page §PHON; `docs/superpowers/specs/2026-08-09-per-language-standard-orthography-design.md`.	來源：GitBook XML 格式頁面 §PHON；`docs/superpowers/specs/2026-08-09-per-language-standard-orthography-design.md`。	no	mt			2026-10-18
+Spec: `docs/superpowers/specs/2026-08-09-null-morpheme-handling-design.md`.	規格：`docs/superpowers/specs/2026-08-09-null-morpheme-handling-design.md`。	no	mt			2026-10-18
+Spec: `docs/superpowers/specs/2026-08-09-standardize-owns-standard-cleaning-design.md`.	規格：`docs/superpowers/specs/2026-08-09-standardize-owns-standard-cleaning-design.md`。	no	mt			2026-10-18
+Spec: `docs/superpowers/specs/2026-08-10-phon-variant-notation-design.md`.	規格：`docs/superpowers/specs/2026-08-10-phon-variant-notation-design.md`。	no	mt			2026-10-18
 Special thanks to all collaborators and the broader Paiwan community for their support and engagement in this vital preservation effort.	特別感謝所有參與錄音的排灣族人以及研究助理，感謝他們在這一項重要保存工作中的支持與合作。	no	previous-website			2026-10-18
 Special thanks to the Indigenous Languages Research and Development Foundation (ILRDF) for their invaluable contributions and to the broader Formosan communities for their support and engagement.	尤其感謝原住民族語言研究發展基金會（ILRDF）的寶貴貢獻，以及臺灣原住民族的支持與參與。	no	previous-website			2026-10-18
 Specific logs were generated for this step:	為此移除步驟生成了特定的記錄檔：	no	previous-website			2026-10-18
 Speech Technology Development: Facilitates tools such as text-to-speech systems and pronunciation modeling.	語音技術發展：促進文字轉語音系統和發音建模等工具的開發。	no	previous-website			2026-10-18
+"Splitting asserts a word boundary the analysis does not draw, and the `∅` placeholder looks exactly like a word the source leaves unglossed, so a reader cannot tell ""this word has no gloss"" from ""this word's gloss is on its neighbour""."	拆分會主張一個該分析並未劃出的詞界，而 `∅` 佔位符看起來和來源未標注的詞完全一樣，使讀者無法分辨「這個詞沒有詞義標注」與「這個詞的詞義標注在它的相鄰詞上」。	no	mt			2026-10-18
+Standard PHON uses the language's designated standard orthography per `standards.csv` (blank entry = standard PHON deliberately skipped).	標準 PHON 使用 `standards.csv` 為該語言指定的標準書寫系統（空白項目 = 刻意略過標準 PHON）。	no	mt			2026-10-18
+Standard-FORM/PHON tiers are never hand-edited (POL-002/003).	標準 FORM／PHON 層從不手動編輯（POL-002/003）。	no	mt			2026-10-18
 Standardization and Punctuation Cleaning	標準化與標點符號清理	no	previous-website			2026-10-18
 Standardized Written Forms: All 16 extant languages have standardized orthographies, making the documentation process more systematic.	標準化書寫形式：所有16種現存語言均有標準化的拼寫法，使得語言記錄過程更加系統化。	no	previous-website			2026-10-18
+"Standardizing a gloss — e.g. normalizing a source's idiosyncratic label to a Leipzig-style code — never overwrites the original: it is recorded as a separate `TRANSL[@kindOf=""standard""]` alongside it."	"將詞義標注標準化 — 例如將來源特有的標籤正規化為 Leipzig 式代碼 — 絕不覆寫原始內容：它會記錄為並列的另一個 `TRANSL[@kindOf=""standard""]`。"	no	mt			2026-10-18
+Static release metadata	靜態發行版中繼資料	no	mt			2026-10-18
 Stay tuned for more updates as we continue expanding FormosanBank and advancing language preservation through innovative technology!	隨著我們持續擴展 FormosanBank 並透過創新技術推動語言保存，敬請關注更多最新消息！	no	previous-website			2026-10-18
 Taipei: The Bible Society.	Taipei: The Bible Society.	no	previous-website			2026-10-18
 Taiwan's infrastructure and supportive language policies provide a fertile environment for linguistic research.	臺灣的基礎設施和具前瞻性的語言推動政策為語言學研究提供了良好環境。	no	previous-website			2026-10-18
@@ -277,8 +595,17 @@ Terms of Use	使用條款	no	corpus-match			2026-10-18
 Text in non-Formosan languages, such as English, Chinese, or other non-Latin scripts, was identified and removed.	識別並移除非臺灣南島語的文本（例如：英語、華語或其他非拉丁文字）。	no	previous-website			2026-10-18
 Texts with aligned audio for read speech	具有句級文本及音檔對齊的朗讀語音	no	previous-website			2026-10-18
 Thao: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	邵語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
+That is intended: the SOFT finding asks whoever reviews the corpus to confirm each multi-word `W` is deliberate.	這是刻意的：該 SOFT 發現項目要求審查語料庫的人確認每一個多詞 `W` 都是刻意的。	no	mt			2026-10-18
+That spelling names no tier, so a node carrying two variants could not say which base each varied from, and a variant could not be transliterated because nothing knew which tier it belonged to.	這種寫法沒有指明層，因此帶有兩個變體的節點無法說明每個變體是從哪個基底變化而來，而變體也無法被轉寫，因為沒有任何東西知道它屬於哪一層。	no	mt			2026-10-18
+That's a HARD validator, please.	請設為 HARD 驗證器。	no	mt			2026-10-18
+"That's a general rule."""	這是一般規則。」	no	mt			2026-10-18
+"That's mostly instructions to the maintainers."" On the checks: ""V144 as providing SOFT warnings can be kept."	這主要是給維護者的指示。」關於檢查：「V144 作為提供 SOFT 警告的檢查可以保留。	no	mt			2026-10-18
+"That's very different from the uathor marking the gloss as ""?"" or similar."	這與作者將詞義標注標記為『?』或類似符號非常不同。	no	mt			2026-10-18
+The 4 to 5 GB database is activated on the query server before traffic reaches it.	4 至 5 GB 的資料庫會在流量到達之前於查詢伺服器上啟用。	no	mt			2026-10-18
+The API accepts bounded `GET` requests only.	此 API 只接受有範圍限制的 `GET` 請求。	no	mt			2026-10-18
 The Austronesian-speaking people are believed to have first settled in Taiwan around 6,000 years ago, making it one of the earliest regions to develop distinct Austronesian languages.	據信，南島語族約在 6000 年前 首次定居臺灣，使臺灣成為最 早發展出獨特南島語的地區之 一。	no	corpus-match			2026-10-18
 The CSV includes the following columns:	該CSV檔包括以下欄位：	no	previous-website			2026-10-18
+The Downloads page records each artifact's scope, size, SHA-256 checksum, citation, rights, and included linguistic tiers.	「下載」頁面記錄每個成品的範圍、大小、SHA-256 校驗碼、引用、權利資訊，以及所包含的語言學層。	no	mt			2026-10-18
 The Formosan Languages Today	臺灣南島語現狀	no	corpus-match			2026-10-18
 The Formosan Wikipedias Corpus is a collection of articles sourced from publicly available Formosan-language Wikipedias.	臺灣南島語維基百科語料庫是一個公開可用的臺灣南島語維基百科文章典藏。	no	previous-website			2026-10-18
 The Formosan Wikipedias Corpus was created by sourcing articles from publicly available Formosan-language Wikipedias, Amis, Atayal, Sakizaya, Seediq, and Paiwan.	臺灣南島語維基百科語料庫是從公開可用的臺灣南島語維基百科網站中抓取文章所創建的。	no	previous-website			2026-10-18
@@ -298,9 +625,16 @@ The XML files were subjected to automated checks to ensure compliance with the F
 The XML format used in FormosanBank is a standardized structure based on the Pangloss Collection.	FormosanBank使用的XML格式是以Pangloss Collection為基礎的標準化結構	no	previous-website			2026-10-18
 The `` Element	<TEXT>元素	no	previous-website			2026-10-18
 The ``, ``, and `` Elements	`<S>`、`<W>`和`<M>`元素	no	previous-website			2026-10-18
+The `original` tier is the actual source text, not a raw scrape. Fixing an OCR misread or a dropped period makes it more faithful; changing the source's spelling is the error to catch.	`original` 層是實際的來源文本，而非原始擷取（raw scrape）。修正 OCR 誤讀或遺漏的句點會讓它更忠實；更改來源的拼寫才是要抓出的錯誤。	no	mt			2026-10-18
+The `original` tier represents the actual original source (the printed book, the web page), not the raw scrape or OCR pass.	`original` 層代表實際的原始來源（印刷書籍、網頁），而不是原始擷取或 OCR 處理的結果。	no	mt			2026-10-18
+The `standard` tier is derived and machine-owned: `standardize.py` regenerates it from the original tier on every run (`create_standard` replaces existing content before applying any conversion).	`standard` 層是衍生的、由機器負責：`standardize.py` 每次執行都會從原始層重新產生它（`create_standard` 會在套用任何轉換之前取代既有內容）。	no	mt			2026-10-18
+The `standard` tier is the same content in FormosanBank's one common orthography. It is derived, never hand-edited.	`standard` 層是以 FormosanBank 單一共同書寫系統呈現的相同內容。它是衍生產生的，從不手動編輯。	no	mt			2026-10-18
 The apology addressed the pain and mistreatment endured by indigenous communities over four centuries and marked the establishment of the Presidential Office Indigenous Historical Justice and Transitional Justice Committee (Indigenous Justice Committee).&#x20;	道歉的內容涉及原住民族族人在四百年間所遭受的痛苦和不公平待遇，這同時也標誌著總統府原住民族歷史正義與轉型正義委員會（原轉會）的成立。	no	previous-website			2026-10-18
 The apology text is also available in English and Chinese.	另外也提供英語和華語版本。	no	previous-website			2026-10-18
+"The article's key defines `( )` only as ""in data, probable discrepancy"", so `puken-(en)`, `manuyung-(e)`, `(u)m-lavi` and the rest are neither split nor variants: ""The parentheses should be retained in the original tier, removed in the standard tier. ..."	該文章的符號說明只將 `( )` 定義為「資料中可能的不一致」，因此 `puken-(en)`、`manuyung-(e)`、`(u)m-lavi` 等既不拆分也不作為變體：「括號應保留在原始層，在標準層中移除。……	no	mt			2026-10-18
 The audio files are not in git: `download_audio_data.sh` fetches them from FormosanBank's Hugging Face audio store (it runs `QC/utilities/download_audio.py --corpus ILRDF_Dicts`).	音檔不會提交至Git。語料庫中的`download_audio_data.sh`會從Hugging Face下載音檔	no	previous-website			2026-10-18
+The bare-tilde notation (`b~v`) is retired: it had no grouping scope and collided with the Leipzig reduplication marker.	單獨波浪號的寫法（`b~v`）已停用：它沒有分組範圍，且與 Leipzig 重疊標記衝突。	no	mt			2026-10-18
+The canonical null-morpheme marker is `∅` U+2205.	標準的零詞素標記是 `∅` U+2205。	no	mt			2026-10-18
 The central FormosanBank terms and AI-use addendum also apply.	FormosanBank的使用條款及AI使用附錄亦適用。	no	previous-website			2026-10-18
 The cleaned articles were converted into the FormosanBank XML format, where each article was structured with a `` element for the main text.	清理過的文章轉換為FormosanBank XML格式，每篇文章的主要內容皆以`<FORM>`元素來架構。	no	previous-website			2026-10-18
 The constitution, acts, regulations, or official documents. > 2.	憲法、法律、命令或公文。 > 2.	no	previous-website			2026-10-18
@@ -313,13 +647,17 @@ The corpus is invaluable for documenting and preserving linguistic diversity, an
 The corpus provides authentic text data for training models in natural language processing (NLP) tasks, such as language modeling and text classification.	該語料庫提供了真實的文本語料，可用於訓練自然語言處理（NLP）任務中的模型，如語言建模和文本分類。	no	previous-website			2026-10-18
 The country boasts:	臺灣擁有：	no	previous-website			2026-10-18
 The current XML records a per-language citation in this form (each file's `citation` attribute, with a matching BibTeX entry in `BibTeX_citation`):	現行XML採用以下格式：	no	previous-website			2026-10-18
+The data	資料	no	mt			2026-10-18
 The dictionaries support the documentation and revitalization of endangered indigenous languages, ensuring they remain a living cultural asset.	該語料庫支持瀕危原住民族語的記錄與復振，確保其作為活的文化資產得以延續。	no	previous-website			2026-10-18
 The diversity among the Formosan languages is a testament to this long history, as the island served as a hub of linguistic evolution and cultural exchange before the Austronesian people began migrating to other parts of Southeast Asia and the Pacific.	在南島民族遷徙至東南亞 及太平洋其他地區之前，臺灣 一直是語言演化與文化交流的 中心，而臺灣南島語的多樣性 正見證了這段悠久的歷史。	no	corpus-match			2026-10-18
 The diversity of their structures opens up new avenues for exploring fundamental questions in syntactic theory, language processing, and acquisition.	臺灣南島語結構上的多樣性為探索句法理論、語言處理與習得等基礎問題開啟了新的途徑。	no	previous-website			2026-10-18
+The documentation site renders it as a page (FormosanBank Policies) every time the site is built, so there is no copy to drift (until 2026-10 a synced copy lived in the separate GitBook repo, policed by a drift test).	文件網站在每次建置時將其呈現為一個頁面（FormosanBank 政策），因此不存在會產生落差的副本（直到 2026-10 為止，一份同步副本存放在獨立的 GitBook 儲存庫中，並由一項落差測試監控）。	no	mt			2026-10-18
 The ePark corpus is a comprehensive and interactive resource for the preservation, learning, and revitalization of Indigenous languages of Taiwan.	族語E樂園語料庫是一個包羅萬象且互動式的數位資源平台，專為保存、學習與復振臺灣原住民族語言而設計。	no	previous-website			2026-10-18
 The ePark corpus was developed through collaboration between ILRDF, educators, linguists, and Indigenous communities.	族語E樂園語料庫的開發得益於原住民族語言研究發展基金會（ILRDF）、教育工作者、語言學家以及各族族人的共同合作。	no	previous-website			2026-10-18
+The exception requires CJK on both sides, which leaves Leipzig-style `CAU~walk` untouched.	此例外要求兩側都是 CJK 字元，因此 Leipzig 式的 `CAU~walk` 不受影響。	no	mt			2026-10-18
 The following have contributed data to FormosanBank.	感謝以下個人、學者、或機關單位授權或捐贈他們的語料給FormosanBank。	no	previous-website			2026-10-18
 The following logs were generated for quality assurance:	為了保證品質，生成以下記錄檔：	no	previous-website			2026-10-18
+The gloss-scrape rules therefore strip it before parsing morpheme structure, so it neither contributes a morpheme slot nor enters a marker skeleton.	因此詞義標注擷取規則會在解析詞素結構之前將它移除，使它既不占用詞素位置，也不進入標記骨架。	no	mt			2026-10-18
 The hierarchy is:	XML格式遵循層級結構，主要元素的組織方式如下：	no	previous-website			2026-10-18
 The large-scale nature of FormosanBank would not have been possible without the collaborative efforts of numerous individuals and organizations.&#x20;	在此感謝許多個人、學者、合作夥伴及機構單位的共同努力，FormosanBank資料庫才能在短時間內建置完成，並已具如此大規模！	no	previous-website			2026-10-18
 The license for the source material is described on the corpus page in the manual for each corpus, as well as in the root of every XML file.\ \ In addition to the above, you are required to cite FormosanBank itself.	來源的授權在手冊上的各語料庫頁面以及每個XML文件的根目錄中有詳細說明。 除上述要求外，您還需引用FormosanBank本身。	no	previous-website			2026-10-18
@@ -327,17 +665,34 @@ The linguistic diversity within the Formosan languages themselves adds another l
 The most striking example occurred during the Mandarin-only policy from 1949 to 1987, which enforced Mandarin Chinese as the sole official language, significantly impacting the transmission of Formosan languages to younger generations.	最 具代表性的例子發生於 1949 年至 1987 年間的單一國語政 策，該政策將國語（華語）強 制為唯一的官方語言，對臺灣 南島語的傳承，尤其是對年輕 一代的傳遞，造成無比深遠的 影響。	no	corpus-match			2026-10-18
 The online dictionary's current copyright statement says that ILRDF-authored works may be reproduced, publicly broadcast, or publicly transmitted within a reasonable scope when the source is identified.	族語線上辭典目前的版權聲明表示，若著作人為原語會，得在合理範圍內重製、公開播送或公開傳輸，利用時須註明出處。	no	previous-website			2026-10-18
 The online platform makes these resources available to a global audience, transcending geographical boundaries.	此線上平台跨越地理藩籬，將資源提供予世界各地的使用者。	no	previous-website			2026-10-18
+The operative thresholds live in V150, deliberately not here, so they can be tuned from evidence without a re-ruling.	實際使用的門檻值存放在 V150 中，刻意不寫在這裡，以便能根據證據調整而不需重新裁定。	no	mt			2026-10-18
 The original text would be `` and any text that will be standardized from this point will be in ``	"原始文本標記為`<FORM kindOf=""original"">`，標準化的文本則標記為<`FORM kindOf=""standard"">`。"	no	previous-website			2026-10-18
 The platform offers downloadable content for offline learning, including:	該平台提供可供離線學習的下載內容，包括：	no	previous-website			2026-10-18
 The project began in 2007 with the systematic compilation of dictionaries for the 16 indigenous languages.	該計畫於2007年啟動，系統性地編纂16族原住民語的辭典。	no	previous-website			2026-10-18
 The project is continually evolving, with plans to expand the corpus, improve data quality, and incorporate new technologies for linguistic research.	此計畫正持續擴展，計劃擴充 語料庫、提升語料品質，並整 合新的語言學研究技術。	no	corpus-match			2026-10-18
 The public scripts apply pseudonyms and contain no real participant names.	公開程式會套用化名，且不含錄音人員的真實姓名。	no	previous-website			2026-10-18
+"The reason is that while the author was uncertain, we do not have anything else to go on."" Retained in the sentence FORM only: ""sentence FORM only, not the Ws or Ms."" Words, morphemes and the standard tier keep the bracketed letters without the brackets."	原因是，雖然作者不確定，但我們沒有其他依據。」只保留在句子 FORM 中：「僅限句子 FORM，不包括 W 或 M。」詞、詞素和標準層保留括號中的字母，但不保留括號。	no	mt			2026-10-18
+The research builder provides a small preview and a finite CSV, TSV, or JSON Lines export.	研究建構器提供小規模預覽，以及有限大小的 CSV、TSV 或 JSON Lines 匯出。	no	mt			2026-10-18
+The rest of this entry is kept as the record of the original ruling.	本條目的其餘部分保留作為原始裁定的紀錄。	no	mt			2026-10-18
+"The root is kacu 'bring'.""` stays exactly as the source wrote it."	"The root is kacu 'bring'.""` 的詞義標注，會完全依來源所寫的樣子保留。"	no	mt			2026-10-18
+The rule	規則	no	mt			2026-10-18
+"The ruling recorded in commit `694bbc903` (2026-09-07) — ""the optional material is handled with the alternative FORM mechanism, in the standard tier only… The original tier keeps all of this notation untouched."" That left WakelinTexts' original tier carrying source parentheses, which contradicts this entry's closing rule that no published FORM keeps them."	記錄於提交 `694bbc903`（2026-09-07）的裁定 —「可選成分以替代 FORM 機制處理，僅限於標準層……原始層保留所有這些標記不予更動。」這使得 WakelinTexts 的原始層帶有來源的括號，與本條目最後「已發布的 FORM 都不保留括號」的規則相矛盾。	no	mt			2026-10-18
+The same holds of a whole corpus: with no morpheme segmentation there is no M level at all, since an all-single-M mirror tier adds no information.	整個語料庫亦然：若沒有詞素切分，就完全沒有 M 層級，因為全部只有單一 M 的鏡像層不會增加任何資訊。	no	mt			2026-10-18
 The second field year and spontaneous-speech data were built with `CodeAndDocs/build_y2_and_spontaneous.py`, followed by the standard cleaning, orthography, phonology, and validation steps.	第二個田野年度及自發性語音則由`CodeAndDocs/build_y2_and_spontaneous.py`建立，之後執行標準清理、拼寫法、音韻及驗證流程。	no	previous-website			2026-10-18
+The site's FormosanBank XML Format page remains the narrative description of the format; where it states a convention, the matching POL entry cites it rather than duplicating prose.	網站上的「FormosanBank XML 格式」頁面仍是該格式的敘述性說明；當該頁面陳述某項慣例時，對應的 POL 條目會引用它，而不重複其文字。	no	mt			2026-10-18
+The source's spelling — its orthographic letter choices — must be preserved.	來源的拼寫 — 其書寫系統上的字母選擇 — 必須保留。	no	mt			2026-10-18
 The speakers often reside in specific Indigenous communities, and revitalization efforts are ongoing to ensure these languages survive for future generations.	而這些使用者主要分布於特定的原住民族地區（部落）。為此，復振語言的工作正持續進行，期以確保這些語言在未來世代中能繼續保存。	no	previous-website			2026-10-18
+The straight apostrophe/single quote is confusable with the glottal-stop letter, and this holds even for languages whose orthography lacks a glottal stop, because loanwords carrying the letter are rampant.	直撇號／單引號容易與喉塞音字母混淆，即使是書寫系統中沒有喉塞音的語言也是如此，因為帶有該字母的借詞非常普遍。	no	mt			2026-10-18
 The system does not conform to the typical active/passive alternation seen in many European languages.	這個系統並不符合許多歐洲語言中常見的主動/被動交替	no	previous-website			2026-10-18
 The translated apologies are the main texts forming the corpus described here.	這些翻譯後的道歉文本構成了本語料庫的主要內容。	no	previous-website			2026-10-18
+The unit of morphological analysis is the sentence, not the file.	構詞分析的單位是句子，而非檔案。	no	mt			2026-10-18
+The variation may span the whole form.	變化可以涵蓋整個形式。	no	mt			2026-10-18
+The within-file vs cross-file distinction survives as the finding's `scope`.	檔案內與跨檔案的區分保留為該發現項目的 `scope`。	no	mt			2026-10-18
+The words are not split into a `W` apiece with the gloss on the first and a `∅` placeholder on the rest.	這些詞不會被拆成各自一個 `W`，並把詞義標注放在第一個詞、其餘放上 `∅` 佔位符。	no	mt			2026-10-18
+There is no `-opt2`: the second block is the common case and stays unnumbered, so the ids already published do not move.	沒有 `-opt2`：第二個區塊是常見情況，保持不編號，因此已發布的 id 不會變動。	no	mt			2026-10-18
 Therefore, many of these languages are considered endangered, with only a few actively spoken in daily life.	因此，許多臺灣南島語被認為正處於瀕危狀態，只有少數幾種語言仍在日常生活當中被使用。	no	previous-website			2026-10-18
 These XML files were saved in the `XML` directory for further analysis and applications.	這些XML檔案儲存於XML目錄中，以便進一步分析和應用。	no	previous-website			2026-10-18
+These are published identifiers the moment they merge, so POL-037 applies to them: an `-opt` id is never renumbered afterwards, and a later-discovered third reading takes `-opt3` rather than shifting anything.	這些在合併的那一刻就是已發布的識別碼，因此 POL-037 適用於它們：`-opt` id 之後絕不重新編號，而後來才發現的第三種讀法採用 `-opt3`，而不是移動任何東西。	no	mt			2026-10-18
 These checks ensured the processed corpus accurately reflected the original articles' linguistic structures.	確保處理過的語料庫準確地反映原始文章的語言結構。	no	previous-website			2026-10-18
 These configurations are uncommon in the world’s languages, making Formosan languages valuable for testing claims about cognitive biases in word order preference and processing efficiency in language.	如此語序配置在世界語言中並不常見，使得臺灣南島語更具研究價值，尤其是認知偏好及心理語言學等議題。	no	previous-website			2026-10-18
 These dictionaries are invaluable for documenting and preserving linguistic diversity.	這些辭典在記錄和保存語言多樣性具有重要價值	no	previous-website			2026-10-18
@@ -348,15 +703,21 @@ These languages, which form a significant part of the Austronesian language fami
 These may include:	這些限制可能包括	no	previous-website			2026-10-18
 These newsletters are your window into our latest discoveries, project milestones, and the innovative methods we’re employing to collect, process, and share the data that powers FormosanBank.	這些報導內容是您了解我們的最好窗口，報導內容包含最新發現、專案里程碑，以及分享創新方法。	no	previous-website			2026-10-18
 These unique features make Formosan languages a testing ground for linguistic theory, with the potential to break or refine existing frameworks and broaden our understanding of what is possible in human language.	這些獨特的特徵使臺灣南島語成為檢驗語言學理論的最佳利器，具有突破或精煉現有框架的潛力，並拓展我們理解人類語言的各式可能性	no	previous-website			2026-10-18
+They are not universal grammar rules, and frequency is not a claim about correctness or speaker preference.	它們不是普遍的文法規則，而頻率也不代表對正確性或說話者偏好的主張。	no	mt			2026-10-18
+They have the broadest reach, and almost every review question that gets re-litigated is settled by one of them.	它們的影響範圍最廣，而幾乎每一個被反覆爭論的審查問題，都已由其中一條解決。	no	mt			2026-10-18
 They include text, audio recordings, and translations, making them a comprehensive resource for research, education, and language revitalization.	內容涵蓋文字、錄音和翻譯，為研究、教育及語言復振提供了全面的資源。	no	previous-website			2026-10-18
 This CSV file is a living document.	此CSV檔案是一份活躍文件。	no	previous-website			2026-10-18
 This apology text, as part of the effort to promote historical justice, has been translated into the 16 officially recognized Formosan languages: Amis, Atayal, Saisiyat, Thao, Seediq, Bunun, Paiwan, Rukai, Truku, Kavalan, Tsou, Kanakanavu, Saaroa, Puyuma, Yami, and Sakizaya.	這份道歉文是作為推動歷史正義的起點，並已翻譯成16族官方認定的臺灣南島語：阿美語、泰雅語、賽夏語、邵語、賽德克語、布農語、排灣語、魯凱語、太魯閣與、噶瑪蘭語、鄒語、卡那卡那富語、拉阿魯哇語、卑南語、雅美(達悟)語和撒奇萊雅語。	no	previous-website			2026-10-18
+This applies to published `XML/`, to raw scrapes under `CodeAndDocs/`, and to POL-035 pre-correction snapshots alike (a snapshot defect is fixed by a committed script run against the snapshot, not by editing it).	這同樣適用於已發布的 `XML/`、`CodeAndDocs/` 下的原始擷取，以及 POL-035 的修正前快照（快照的缺陷由針對該快照執行的已提交腳本修正，而不是直接編輯它）。	no	mt			2026-10-18
 This complexity challenges common theories about morphological simplicity and productivity.	這種複雜性挑戰了構詞學常見的簡單性和能產性理論。	no	previous-website			2026-10-18
 This corpus consists exclusively of text data.	本語料庫僅包含文本資料。	no	previous-website			2026-10-18
 This corpus was developed through a collaborative effort led by Dr. Sung at the NTU Graduate Institute of Linguistics.	本語料庫是由國立臺灣大學語言學研究所宋麗梅博士指導的合作團隊所開發。	no	previous-website			2026-10-18
+"This covers sources' own `?` and `??` markers too, so POL-036's ""kept as written"" no longer applies to them."	這也涵蓋來源本身的 `?` 和 `??` 標記，因此 POL-036 的「依原樣保留」不再適用於它們。	no	mt			2026-10-18
 This digital transformation allows the dictionaries to remain dynamic, expandable, and maintainable, becoming a vital resource for language promotion, teaching, research, and learning.	此數位轉型使辭典得以具動態性、可擴展性及可維護性，成為語言推廣、教學、研究與學習的重要資源。	no	previous-website			2026-10-18
 This diversity can help linguists investigate how different grammatical structures affect language processing, learning, and cognitive representation.	這種多樣性有助於語言學家研究不同的語法結構如何影響語言處理、學習和認知表徵。	no	previous-website			2026-10-18
 This ensures your data is shared with the world in a way that aligns with your wishes and protects your rights.	以上是為了確保您的語料依照 您的意願進行共享，並保護您的權益。	no	corpus-match			2026-10-18
+"This entry's own original text, which said a variant was `kindOf=""alternate""` and ""the only marking for this: not `ver`""."	"本條目自身的原始文字，其中說變體是 `kindOf=""alternate""`，並且「這是唯一的標示方式：不是 `ver`」。"	no	mt			2026-10-18
+This file (`FormosanBank/POLICIES.md`) is canonical — it versions together with the code that implements the rulings, and entries cite rule IDs and scripts by name.	本檔案（`FormosanBank/POLICIES.md`）為標準版本 — 它與實作這些裁定的程式碼一起進行版本控制，條目以名稱引用規則 ID 和腳本。	no	mt			2026-10-18
 This file serves as a “key” or reference point, enabling conversion between different dialect names that users may encounter.	此檔案作為一把「鑰匙」或參考點，讓使用者們能夠在不同的方言名稱之間進行轉換。	no	previous-website			2026-10-18
 This grant has been crucial in enabling us to undertake such an ambitious project, and it reaffirms the importance of our collective efforts in revitalizing and preserving endangered languages.	這筆資助對我們推動如此宏大的計畫至關重要，再次肯定了我們共同努力復振與保存瀕危語言的重要性。	no	previous-website			2026-10-18
 "This included verifying the presence of required attributes (e.g., `kindOf=""original""` and `kindOf=""standard""`) and the absence of empty or malformed elements."	"這包括檢驗所需屬性是否存在（例如：kindOf=""original""和kindOf=""standard""），以及是否含有空元素或異常元素。"	no	previous-website			2026-10-18
@@ -364,12 +725,20 @@ This includes language education in schools, proficiency exams, immersion progra
 This includes, but is not limited to, technologies designed to generate text for commercial purposes or capable of creating works in the same style or genre as the corpus.	這包括但不限於旨在生成用於商業目的的文本或能夠創建與語料庫相同風格或類型的作品的技術。	no	previous-website			2026-10-18
 This initiative would not have been possible without their dedication, expertise, and unwavering commitment to preserving the rich linguistic heritage of the Formosan languages.	沒有大家的專業知識、奉獻和對保護臺灣南島語豐富語言遺產的堅定信念，此項舉措就不可能實現。	no	previous-website			2026-10-18
 This is the name that will appear in the XML and other primary data files.	XML和其他主要資料檔案中皆是採用此名稱。	no	previous-website			2026-10-18
+This is the same shape TRANSL has used since POL-025, and the allowed values share one allowlist (V084 for TRANSL, V156 for FORM).	這與 TRANSL 自 POL-025 以來使用的形式相同，且允許的值共用同一份允許清單（TRANSL 為 V084，FORM 為 V156）。	no	mt			2026-10-18
+This makes search practical on phones and slower connections while keeping the service simple enough for a small research group to maintain.	這使得在手機和較慢的網路連線上也能實際進行搜尋，同時讓服務保持足夠簡單，小型研究團隊即可維護。	no	mt			2026-10-18
 This means you must cite the source in any redistributed or derived products.	這意味著您必須在任何再發布或衍生作品中引用來源。	no	previous-website			2026-10-18
+This overrules a previous policy that insisted that all Ws have at least one M. Instead, we leave open having no M in order to indicate unknown segmentation.	這推翻了先前堅持所有 W 至少要有一個 M 的政策。相反地，我們保留不設 M 的可能，以表示切分未知。	no	mt			2026-10-18
+This page is built from `POLICIES.md` every time the site is published.	本頁面在每次發布網站時由 `POLICIES.md` 建置而成。	no	mt			2026-10-18
 This project is made possible through the collaboration of native speakers, linguists, and researchers.	誠摯感謝各族族人、語言學家與研究人員的共同合作，本計畫才能得以完成。	no	previous-website			2026-10-18
 This step has brought us closer to compiling the largest machine-readable collection of endangered languages.	這讓我們朝向開發最大規模並機器可讀取瀕危語言的資料庫更邁近了一步。	no	previous-website			2026-10-18
+This supersedes two earlier rulings (POL-050):	這取代了兩項較早的裁定（POL-050）：	no	mt			2026-10-18
+This supersedes, for this notation only, item 2 of the 2026-09-09 revision above (which resolved Wakelin's original tier like the standard one) and the rule that no published FORM keeps parentheses.	這項規定僅就此標記法而言，取代上述 2026-09-09 修訂的第 2 項（該項將 Wakelin 的原始層比照標準層處理），以及「已發布的 FORM 都不保留括號」的規則。	no	mt			2026-10-18
 This support will accelerate our efforts to build and expand the FormosanBank corpus.	同時也將加速我們擴展和推動FormosanBank語料庫的相關工作。	no	previous-website			2026-10-18
 This work forms a strong foundation for our ongoing data processing and analysis efforts.	這項工作對語料處理和分析奠定了堅實的基礎。	no	previous-website			2026-10-18
 Throughout history, the use of Formosan languages has been suppressed under different colonial regimes.	歷史上，臺灣南島語的使用在 不同殖民政權下遭到壓制。	no	corpus-match			2026-10-18
+Tidiness is not a compelling reason: when reworking a published sentence, keeping the original numbering with gaps is preferred over renumbering (e.g. a sentence that loses two words keeps `W1 W2 W5 W8` rather than being resequenced `W1…W4`).	整齊不是充分的理由：在重新處理已發布的句子時，偏好保留有間隔的原始編號，而非重新編號（例如，少了兩個詞的句子保留 `W1 W2 W5 W8`，而不是重新排序為 `W1…W4`）。	no	mt			2026-10-18
+Tilde look-alikes canonicalize to ASCII `~` U+007E: U+223C TILDE OPERATOR (what LaTeX-typeset PDFs emit for the reduplication tilde — e.g. Bril 2024's `RED∼stem`) and U+301C WAVE DASH.	與波浪號相似的字元一律轉為 ASCII `~` U+007E：U+223C TILDE OPERATOR（以 LaTeX 排版的 PDF 為重疊波浪號輸出的字元 — 例如 Bril 2024 的 `RED∼stem`）以及 U+301C WAVE DASH。	no	mt			2026-10-18
 Titles of available articles were collected and stored in the `Titles` directory as pickle files for each language.	將可用文章的標題收集並儲存於Titles目錄，作為各語言的打包(pickle)檔案。	no	previous-website			2026-10-18
 To help manage the complexity of multiple naming conventions, the main repository includes a CSV file.	為有效處理多種命名規範的複雜性，主語料庫包含一個CSV檔案。	no	previous-website			2026-10-18
 To use them, you may need to cite the source material.	若要使用這些資料，您可能需要引用來源。	no	previous-website			2026-10-18
@@ -378,18 +747,35 @@ Translation Availability	翻譯支援	no	previous-website			2026-10-18
 Translations or compilations by central or local government agencies of works referred to in the preceding subparagraph. > 3.	由中央或地方政府機關翻譯或編纂的前項所指之作品。 > 3.	no	previous-website			2026-10-18
 Truku: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	太魯閣語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
 Tsou: Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	鄒語：Council of Indigenous Peoples, & Indigenous Languages Research and Development Foundation.	no	previous-website			2026-10-18
+Two different things, treated differently:	兩種不同的情況，處理方式不同：	no	mt			2026-10-18
+Two readings a source offers as alternative pronunciations of one word stay a variant however little they overlap; two words for one meaning become separate blocks however much they do.	來源作為同一個詞的替代發音而提供的兩種讀法，無論重疊多麼少都仍是變體；表達同一意義的兩個詞，無論重疊多麼多都會成為獨立的區塊。	no	mt			2026-10-18
+"Typographic apostrophes and quotes canonicalize to ASCII `'` and `""`: U+2018/U+2019 curly singles, U+02BC modifier apostrophe, U+02BB, backtick, and U+02C8 stress mark all → `'`; curly doubles → `""`."	"排版用的撇號與引號一律轉為 ASCII `'` 和 `""`：U+2018/U+2019 彎單引號、U+02BC 修飾撇號、U+02BB、反引號，以及 U+02C8 重音符號都 → `'`；彎雙引號 → `""`。"	no	mt			2026-10-18
 Unlike other Austronesian languages that are more closely related to one another, Formosan languages stand apart due to their distinct evolutionary paths, making them crucial to understanding the origins and diversification of this language family.	與南島語系中其他彼此關係較為密切的語言不同，臺灣南島語因其獨特的演化路徑，發展出眾多與其他語言有別的特色，這使其在理解南島語系的起源與多樣化過程中，具有極為重要的價值。	no	previous-website			2026-10-18
+Unmapped punctuation is dropped; unmapped letters surface as `*`.	未對應的標點符號會被捨棄；未對應的字母會以 `*` 呈現。	no	mt			2026-10-18
 Useful for developing tools like spell checkers and predictive text.	可用於開發拼寫檢查器和預測文本等工具。	no	previous-website			2026-10-18
 Users can search for words, view their definitions, listen to pronunciations, and explore examples in real-time.	使用者可實時查詢單詞、查看其定義、聆聽發音，並搜尋相關例句。	no	previous-website			2026-10-18
 Users can share feedback or discuss usage questions in the discussion area, fostering a collaborative environment.	使用者可以在討論區分享回饋或交流使用問題，營造友善互動的環境。	no	previous-website			2026-10-18
 Users must cite this source along with FormosanBank where required.	關於此XML文本的使用者需附上此引用並同時引用FormosanBank。	no	previous-website			2026-10-18
 Users should consult the current statement and the source terms before reusing this corpus.	使用本語料庫前，請查閱最新聲明及來源條款。	no	previous-website			2026-10-18
+Using Kakarayan does not replace source-specific terms.	使用 Kakarayan 並不能取代各來源特定的條款。	no	mt			2026-10-18
 Using these titles, the articles were downloaded, saved as text files, and stored in the `Articles` directory.	依據這些標題，下載文章後儲存成文字檔，保存在Articles目錄中。	no	previous-website			2026-10-18
+V060 (`W_count_matches_word_count`, SOFT) compares the number of `W` with the number of whitespace-delimited words in the sentence, so it reports every multi-word `W`.	V060（`W_count_matches_word_count`，SOFT）比較 `W` 的數量與句子中以空白分隔的詞數，因此它會回報每一個多詞的 `W`。	no	mt			2026-10-18
+V085 enforces this and V084 restricts the value; the XSD does not and cannot express either.	V085 強制執行這一點，V084 則限制其值；XSD 沒有、也無法表達這兩者。	no	mt			2026-10-18
+V144 (SOFT) — M-less W inside a parsed sentence (per sentence); since POL-057 a prompt to confirm the word is deliberately unsegmented, not a defect.	V144（SOFT）— 已剖析句子中沒有 M 的 W（以句子為單位）；自 POL-057 起，這是確認該詞是刻意不切分的提示，而非缺陷。	no	mt			2026-10-18
+V144 stays as a SOFT prompt to confirm such words are deliberately unsegmented; V145 is now HARD.	V144 保留為 SOFT 提示，用以確認這類詞是刻意不切分的；V145 現在為 HARD。	no	mt			2026-10-18
+V145 (HARD since 2026-10-17) — an M level in a file where no sentence carries any parsing (per file, deliberately).	V145（自 2026-10-17 起為 HARD）— 在沒有任何句子帶有剖析的檔案中出現 M 層級（刻意以檔案為單位）。	no	mt			2026-10-18
+V145 can be retained.	V145 可以保留。	no	mt			2026-10-18
+V150 measures overlap and proportion, and it is a useful prompt — it flagged exactly the six Latham pairs a human then classified, and none of the two it left alone — but it decides nothing.	V150 測量重疊與比例，是有用的提示 — 它恰好標記了後來由人工分類的六組 Latham 配對，而它放過的兩組則一組也沒有標記 — 但它不做任何決定。	no	mt			2026-10-18
+Variants are derived along with their tier.	變體隨其所屬層一起衍生。	no	mt			2026-10-18
+Variants exist for both tiers; the original tier is resolved like the standard one.	兩個層都有變體；原始層的處理方式與標準層相同。	no	mt			2026-10-18
+Variants may sit at S, W or M, and belong on the node that actually varies.	變體可以位於 S、W 或 M，並應放在實際發生變化的節點上。	no	mt			2026-10-18
 Verb-Initial and Flexible Word Order: Many Formosan languages are verb-initial, and some even exhibit object-before-subject orders.	動詞起首及靈活的詞序：許多臺灣南島語屬於動詞起首類型，有些語言甚至呈現賓語在主語前的語序	no	previous-website			2026-10-18
+Very short pairs (the shorter form at or under 2 characters, the longer at most twice that) are exempt from both conditions by design and rely on review, not on either test, to catch a mismatched pair.	非常短的配對（較短形式不超過 2 個字元，較長形式最多為其兩倍）在設計上同時豁免兩項條件，必須依靠審查，而非任一項測試，來抓出不相符的配對。	no	mt			2026-10-18
 Victoria Rau	何德華	no	previous-website			2026-10-18
 Virginia Fey Amis Dictionary	Virginia Fey阿美語辭典	no	previous-website			2026-10-18
 Visit the Indigenous Languages Online Dictionary at https://e-dictionary.ilrdf.org.tw to explore the 16 indigenous language dictionaries.	您可以瀏覽族語線上辭典的線上平台：https://e-dictionary.ilrdf.org.tw，探索16族原住民語的辭典。	no	previous-website			2026-10-18
 Visit the ePark corpus online platform at https://web.klokah.tw/.	您可以瀏覽族語E樂園語料庫的線上平台：https://web.klokah.tw/	no	previous-website			2026-10-18
+WakelinTexts' parentheses are not optional material (maintainer, 2026-10-15).	WakelinTexts 的括號不是可選成分（維護者，2026-10-15）。	no	mt			2026-10-18
 We anticipate that ongoing research, consultation with linguists and native speakers, and the addition of new sources will lead to periodic updates.	隨著本計畫的進展，並與語言學家和母語人士的密切合作以及新來源的獲取，此份檔案將會持續更新、擴充。	no	previous-website			2026-10-18
 We are also grateful for the financial support provided by the National Science Foundation (NSF) through award #2319296.	我們同樣感謝美國國家科學基金會（NSF）提供三年的經費支持（補助編號#2319296）。	no	previous-website			2026-10-18
 We are deeply indebted to the many individuals and organizations who have supported the Formosan Bank project.	我們衷心感謝眾多支持 FormosanBank計畫的個人與團體	no	previous-website			2026-10-18
@@ -412,21 +798,42 @@ We’re in the final stages of quality control and are preparing for the first o
 We’re working with additional data to refine and enhance these results.	目前正持續使用更多語料來完善和增強這些結果。	no	previous-website			2026-10-18
 We’ve made significant strides in our mission to preserve and revitalize the Indigenous Formosan languages.	我們在保存和復振臺灣南島語言的使命上取得了顯著進展。	no	previous-website			2026-10-18
 What can people do with your data?	他人可以如何使用您的語料？	no	corpus-match			2026-10-18
+What deviates, and gets flagged at audit time: writing the root rejoined with no hyphen (`ta`), or splitting it into two separate M elements (`t-` and `a-`).	偏離規定、並會在稽核時被標記的情況：將詞根重新合併而不加連字號（`ta`），或將其拆成兩個獨立的 M 元素（`t-` 和 `a-`）。	no	mt			2026-10-18
+What forces a separate `S` block is not whether the variation sits inside a word, but whether the sentence's word inventory changes, or the glossing does.	迫使產生獨立 `S` 區塊的，不是變化是否位於詞內，而是句子的詞彙組成是否改變，或者詞義標注是否改變。	no	mt			2026-10-18
 What is the process? How does this work?	流程是什麼？這是如何運作的？	no	corpus-match			2026-10-18
 What must you do?	您必須做什麼？	no	previous-website			2026-10-18
 What rights do you keep?	您保留哪些權利？	no	corpus-match			2026-10-18
 When a given source text or audio file is clearly aligned with one of the officially recognized dialects, we include that dialect's name directly in the XML.	當特定的文本或音檔明確對應於官方認可的方言時，便會直接在XML中標註該方言名稱。	no	previous-website			2026-10-18
+When a source prints a single gloss under two or more words, those words form a single `W`: its FORM is the words as printed, space-separated, and it carries the gloss once.	當來源在兩個或以上的詞下方只印一個詞義標注時，這些詞構成單一 `W`：其 FORM 為依印刷所示、以空格分隔的這些詞，且只帶一次詞義標注。	no	mt			2026-10-18
+When a source prints no gloss under a word — and the word does not share its neighbour's gloss (POL-060) — its W gloss is `?`, not `∅` and not a missing TRANSL.	當來源在某個詞下方沒有印出詞義標注 — 且該詞並未與相鄰詞共用詞義標注（POL-060）— 其 W 詞義標注為 `?`，而不是 `∅`，也不是缺少 TRANSL。	no	mt			2026-10-18
+When an audit, skill, script, or review touches one of these questions, cite the entry (e.g. POL-012) instead of re-deciding it.	當稽核、技能（skill）、腳本或審查涉及這些問題之一時，請引用該條目（例如 POL-012），而不要重新決定。	no	mt			2026-10-18
+When an id change is genuinely warranted: state the reason, list every changed id in the corpus README, re-capture any affected `manual_edits.xml` records against the new ids, and verify `apply_manual_edits.py` still reports the expected edit count (not a silent rise in no-ops).	當確實有必要更改 id 時：說明理由，在語料庫 README 中列出每一個更改的 id，針對新 id 重新擷取任何受影響的 `manual_edits.xml` 紀錄，並確認 `apply_manual_edits.py` 仍回報預期的編輯數量（而不是無作用的數量悄悄增加）。	no	mt			2026-10-18
+When automated corrections first touch a corpus's published XML, what guarantees we can still see (and reproduce) the uncorrected state depends on the corpus type:	當自動修正首次觸及某個語料庫的已發布 XML 時，如何保證我們仍能看到（並重現）未修正的狀態，取決於語料庫的類型：	no	mt			2026-10-18
+When the source glosses no word of a sentence, its words carry no gloss (no TRANSL): the author is not glossing that sentence.	當來源沒有為某個句子的任何詞提供詞義標注時，該句的詞不帶詞義標注（無 TRANSL）：作者並沒有為該句做詞義標注。	no	mt			2026-10-18
+Where a pipeline did that, regenerate without that step.	若某條管線曾這樣做，請移除該步驟後重新產生。	no	mt			2026-10-18
 Where the source material is public domain, you are not legally required to cite the source but you should as common courtesy.\ \ Note that for many of the corpora, the license includes additional restrictions such as allowing only non-commercial use.	若來源資料屬於公有領域，在法律上雖無需引用來源，但基於禮貌，建議您應進行引用。 請注意，許多語料庫的授權包括額外限制，例如僅允許非商業用途。	no	previous-website			2026-10-18
+Where this file lives and how it syncs	本檔案的位置與同步方式	no	mt			2026-10-18
+Wherever one source cell or sentence yields more than one `S` — optional material above, or a competing lexeme — the first block keeps its published id and the second takes that id plus `-opt`.	凡是一個來源儲存格或句子產生不只一個 `S` 時 — 上述的可選成分，或競爭詞項 — 第一個區塊保留其已發布的 id，第二個則採用該 id 加上 `-opt`。	no	mt			2026-10-18
+Whether a second reading is a competing lexeme is a judgement about the source, not a string-similarity test (maintainer, 2026-09-10).	第二種讀法是否為競爭詞項，是對來源的判斷，而不是字串相似度測試（維護者，2026-09-10）。	no	mt			2026-10-18
+Whether a single M is justified is a linguistic judgement, reviewed in the reproduction code.	單一 M 是否合理是語言學上的判斷，會在重現程式碼中審查。	no	mt			2026-10-18
 While these have been minimized, they may still appear at low frequencies.	儘管這些情況已被最小化，但仍可能出現。	no	previous-website			2026-10-18
 Why Formosan?	為何是臺灣南島語？	no	previous-website			2026-10-18
+"Why per sentence (amended 2026-08-12): a file-level rule cannot express ""this sentence is unanalyzed""."	為何以句子為單位（2026-08-12 修訂）：以檔案為層級的規則無法表達「這個句子未經分析」。	no	mt			2026-10-18
+Why: `∅` is the null-morpheme marker (POL-012) and asserts a silent morpheme, which an unglossed word is not.	理由：`∅` 是零詞素標記（POL-012），表示一個不發音的詞素，而未標注的詞並非如此。	no	mt			2026-10-18
+Why: the gloss is the source's unit of analysis.	理由：詞義標注是來源的分析單位。	no	mt			2026-10-18
 Wikipedias	維基百科	no	previous-website			2026-10-18
 With rich examples and structured content, the dictionaries are invaluable for both language learners and researchers.	憑藉豐富範例與結構化的內容，這些辭典對語言學習者與研究者而言皆是無價之寶。	no	previous-website			2026-10-18
+Withdrawn in part (2026-10-17, POL-057): the requirement below that every W in a parsed sentence gets at least one M no longer applies.	部分撤回（2026-10-17，POL-057）：下文中「已剖析句子中的每個 W 至少要有一個 M」的要求不再適用。	no	mt			2026-10-18
+Withdraws POL-023's requirement that every W in a parsed sentence gets at least one M. Two POL-023 checks remain: V144 (SOFT) reports M-less Ws in a parsed sentence so the reviewer can confirm they are deliberate, and V145 (HARD) rejects a file that has an M tier but no segmented word anywhere.	撤回 POL-023 中「已剖析句子中的每個 W 至少有一個 M」的要求。POL-023 仍保留兩項檢查：V144（SOFT）回報已剖析句子中沒有 M 的 W，讓審查者確認它們是刻意的；V145（HARD）則拒絕具有 M 層但任何地方都沒有已切分詞的檔案。	no	mt			2026-10-18
 Within this repository, where possible, we identify and label these dialects directly in the XML files (see the FormosanBank XML format for more details).	FormosanBank以此為本，直接在XML檔案中標註方言別（詳情請參閱FormosanBank的XML格式說明）。	no	previous-website			2026-10-18
 Without the tremendous effort and collaborations of these entities, it wouldn't have been possible to have such a valuable resource in FormosanBank.	若沒有這些團體的付出與協作，就無法在FormosanBank中擁有如此珍貴的資源。	no	previous-website			2026-10-18
 Word Suggestions: Contribute or recommend new words.	詞彙建議：貢獻或建議新詞彙。	no	previous-website			2026-10-18
 Word cards	詞卡	no	previous-website			2026-10-18
+Words the source glosses as one unit are one `W`.	來源作為一個單位標注的多個詞，是一個 `W`。	no	mt			2026-10-18
 Wu Ming-yi modernized the digital spelling, but this does not establish that the distinction was recovered.	然而，這個語料庫的原始資料庫指出，「感謝吳明義先生將天主教的舊式拼法，改寫成原民會版本的新式拼法。」目前尚不清楚這是否解決了Li等人提出的擔憂	no	previous-website			2026-10-18
 XML Structuring	XML架構	no	previous-website			2026-10-18
+XML and raw scrape files change only via committed code — a pipeline script, `manual_edits.xml`, or a one-off script in `CodeAndDocs/`. Never a hand edit, not even during an audit.	XML 與原始擷取檔案只能透過已提交的程式碼更改 — 管線腳本、`manual_edits.xml`，或 `CodeAndDocs/` 中的一次性腳本。絕不手動編輯，即使在稽核期間也不行。	no	mt			2026-10-18
+XML files and raw scrape files are only ever modified by committed code — a pipeline script, a recorded `manual_edits.xml` applied by `apply_manual_edits.py` (POL-030), or a one-off script committed to `CodeAndDocs/`.	XML 檔案和原始擷取檔案只能由已提交的程式碼修改 — 管線腳本、由 `apply_manual_edits.py` 套用的已記錄 `manual_edits.xml`（POL-030），或提交至 `CodeAndDocs/` 的一次性腳本。	no	mt			2026-10-18
 XML files underwent additional cleaning to remove empty elements, standardize orthography, and merge Unicode diacritics with their base characters.	XML檔案經過進一步清理，移除空元素並標準化標點符號與拼寫，並將Unicode變音符號與其基本字元合併。	no	previous-website			2026-10-18
 Xuan Ruan	阮玄	no	previous-website			2026-10-18
 Yami/Tao (spoken on Orchid Island)	雅美語/達悟語（Yami/Tao，蘭嶼主要使用的語言）	no	previous-website			2026-10-18
@@ -440,6 +847,8 @@ Yuyang Liu	劉宇陽	no	previous-website			2026-10-18
 \[Chinese Version]	[中文版]	no	previous-website			2026-10-18
 \[English Version]	[英文版]	no	previous-website			2026-10-18
 \[FormosanBank: September 2023 Updates]	\[FormosanBank: September 2023 Updates\]	no	previous-website			2026-10-18
+"` in FORM, or ungrammaticality/marginality asserted only in `@source`/`@notes` free text) both now read as ""this sentence should have been excluded — or the marker is stray punctuation to clean; review and remove one or the other."" Applies at intake (dev-repo build scripts); existing published hits are the V142/V129 review worklist."	`，或僅在 `@source`/`@notes` 自由文字中宣稱不合語法／邊緣性）現在都解讀為「這個句子應該已被排除 — 或者該標記是需要清理的多餘標點；請審查並移除其中之一」。適用於收錄階段（開發儲存庫建置腳本）；現有已發布的命中項目即為 V142/V129 審查工作清單。	no	mt			2026-10-18
+`?` is already how corpora carry a gloss the source itself leaves uncertain (HundredPaiwanStories 356 `?`, NTUFormosanCorpus 63 `?`, YeddaPalemeqBlog 2), and for a user the two cases read the same: the source does not give this word's meaning.	`?` 已是語料庫用來表示來源本身不確定之詞義標注的方式（HundredPaiwanStories 356 個 `?`、NTUFormosanCorpus 63 個 `?`、YeddaPalemeqBlog 2 個），而對使用者來說，這兩種情況意義相同：來源沒有給出這個詞的意思。	no	mt			2026-10-18
 `BibTeX_citation`: The corresponding BibTeX citation.	`BibTeX_citation`：對原始來源的BibTeX格式引用。	no	previous-website			2026-10-18
 `` links a document, sentence, word, or morpheme to audio.	`<AUDIO>`元素將特定音檔片段與XML中的語言元素（如句子、詞彙或語素）連結	no	previous-website			2026-10-18
 `` provides a translation at sentence, word, or morpheme level.	<TRANSL>元素用於提供語言元素（句子、單詞或語素等）的翻譯。	no	previous-website			2026-10-18
@@ -447,12 +856,17 @@ Yuyang Liu	劉宇陽	no	previous-website			2026-10-18
 `` represents a sentence or utterance and is a direct child of ``.	`<S>`：代表一個句子或語句；只能是`<TEXT>`元素的子元素。	no	previous-website			2026-10-18
 `` represents a word and is a direct child of ``.	`<W>`：代表一個詞彙；只能是`<S>`元素的子元素。	no	previous-website			2026-10-18
 `` represents one document.	`<TEXT>`代表整個文檔。	no	previous-website			2026-10-18
+`alternate` is deprecated: still schema-valid, flagged by V157 (SOFT), removed from the enumeration once the published FORMs using it are migrated.	`alternate` 已棄用：仍符合綱要，會被 V157（SOFT）標記，待使用它的已發布 FORM 遷移後即從列舉值中移除。	no	mt			2026-10-18
+`apply_manual_edits.py` will then either no-op (the record's id no longer exists) or apply to the wrong sentence, and because the pipeline's step 0 legitimately no-ops on already-edited XML (POL-030), a broken record is hard to distinguish from a healthy one.	屆時 `apply_manual_edits.py` 不是沒有作用（紀錄的 id 已不存在），就是套用到錯誤的句子上，而且由於管線的第 0 步在已編輯過的 XML 上合理地沒有作用（POL-030），損壞的紀錄很難與健全的紀錄區分。	no	mt			2026-10-18
 `citation_marker_removal.log`: Tracks citation markers removed from within the text.	citation_marker_removal.log：追蹤從文本中刪除的引用標記。	no	previous-website			2026-10-18
 `citation`: The human-readable citation for the original source.	`citation`：對原始來源的APA格式引用。	no	previous-website			2026-10-18
 `citations_remove.log`: Tracks removed citation sections.	citations_remove.log：追蹤移除的引用區塊。	no	previous-website			2026-10-18
+`clean_xml` normalizes S-level `TRANSL` text but deliberately leaves word- and morpheme-level `TRANSL` (gloss) content alone.	`clean_xml` 會正規化 S 層級的 `TRANSL` 文字，但刻意不更動詞和詞素層級的 `TRANSL`（詞義標注）內容。	no	mt			2026-10-18
+`cleaner_warnings.csv` / `standardize_warnings.csv` are per-run reports, not stable artifacts: they are rewritten by each run, never committed, and never treated as cumulative logs.	`cleaner_warnings.csv` / `standardize_warnings.csv` 是每次執行的報告，而非穩定的成品：它們每次執行都會被重寫，從不提交，也從不被視為累積的紀錄。	no	mt			2026-10-18
 `copyright`: The copyright or license notice that applies to the file.	`copyright`：版權或授權訊息（例如：CC BY）。	no	previous-website			2026-10-18
 `encoding_detection.log`: Notes encoding issues and fixes for articles.	encoding_detection.log：記錄文章的編碼問題和修正。	no	previous-website			2026-10-18
 `glottocode`: A Glottolog code when one is useful for the variety represented.	`glottocode`：指定特定方言時，則使用Glottolog代碼。	no	previous-website			2026-10-18
+`kindOf` on a TRANSL is a different axis and is not interchangeable with `ver`.	TRANSL 上的 `kindOf` 是不同的面向，不能與 `ver` 互換。	no	mt			2026-10-18
 `link_removal.log`: Lists URLs removed from the text.	link_removal.log：列出所有從文本中刪除的URL。	no	previous-website			2026-10-18
 `remove_Annotations.log`: Tracks removal of non-Formosan commentary in parentheses.	remove_Annotations.log：追蹤去除括號內非臺灣南島語的註解。	no	previous-website			2026-10-18
 `remove_character_strings.log`: Notes removal of continuous segments of non-Latin text.	remove_character_strings.log：記錄去除連續的非拉丁文字段落。	no	previous-website			2026-10-18
@@ -460,12 +874,30 @@ Yuyang Liu	劉宇陽	no	previous-website			2026-10-18
 `remove_large_blocks.log`: Logs large non-Latin text blocks removed.	remove_large_blocks.log：記錄移除的大型非拉丁文字區塊。	no	previous-website			2026-10-18
 `remove_possible_citations.log`: Records sequence numbers and periods (common citation markers) that were removed.	remove_possible_citations.log：記錄被刪除的序號和句點（常見引用標記）。	no	previous-website			2026-10-18
 `source`: A more specific source location, chapter, file, or other provenance note.	`source`：對原始檔案、章節或其他相關細節的描述。	no	previous-website			2026-10-18
+`standardize.py` preserves it when duplicating original → standard.	`standardize.py` 在將原始層複製為標準層時會保留它。	no	mt			2026-10-18
+`standardize.py` produces the standard tier's base from the original tier's base and each standard variant from the corresponding original variant, so a variant is machine-owned on the standard side exactly as the base is (POL-002).	`standardize.py` 從原始層的基底產生標準層的基底，並從對應的原始變體產生每個標準變體，因此變體在標準層這一側和基底一樣由機器負責（POL-002）。	no	mt			2026-10-18
+`statistics/audio_durations.csv` is the source of truth for audio seconds; CI only reads it.	`statistics/audio_durations.csv` 是錄音秒數的唯一依據；CI 只讀取它。	no	mt			2026-10-18
+`validate_duplicate_sentences` reports every duplicate as SOFT (maintainer decides), upgrading to HARD only when the corpus's CodeAndDocs declares a dedup step — a leftover duplicate then signals a pipeline defect, not a content question.	`validate_duplicate_sentences` 將每一個重複都回報為 SOFT（由維護者決定），只有在語料庫的 CodeAndDocs 宣告了去重步驟時才升級為 HARD — 此時殘留的重複代表管線缺陷，而非內容問題。	no	mt			2026-10-18
+"`ver=""alt""` is not confined to the S level — MontgomeryTexts, RauDong and WakelinTexts use it on W and M, which is correct."	"`ver=""alt""` 不限於 S 層級 — MontgomeryTexts、RauDong 和 WakelinTexts 在 W 和 M 上也使用它，這是正確的。"	no	mt			2026-10-18
 `xml:lang`: The source language as an ISO 639-3 code.	`xml:lang`：語言代碼，使用ISO 639-3標準。	no	previous-website			2026-10-18
+`~` is thereby freed for reduplication (FORM tiers) only.	`~` 因此只保留給重疊使用（FORM 層）。	no	mt			2026-10-18
 ePark Data	族語E樂園	no	previous-website			2026-10-18
 glottocode:\ The standardized Glottocode identifier corresponding to the dialect, if available.	Glottocode（Glotto碼）：對應於該方言的標準化Glottocode識別碼（如果已有）。	no	previous-website			2026-10-18
+how S/W/M and their children are arranged	S/W/M 及其子元素如何安排	no	mt			2026-10-18
+keep local language notes.	保存本機的語言筆記。	no	mt			2026-10-18
 language:\ The name of the officially recognized Formosan language to which the dialect belongs.	language（語言）：該方言所屬的官方認可的臺灣南島語名稱。	no	previous-website			2026-10-18
+licensing and permission	授權與許可	no	mt			2026-10-18
 miaoski.	miaoski.	no	previous-website			2026-10-18
 official:\ The official dialect name used by the FormosanBank repository.	official（官方）：FormosanBank語料庫所採用的官方方言名稱	no	previous-website			2026-10-18
+record and replay pronunciation practice;	錄製並重播發音練習；	no	mt			2026-10-18
+review cards and export a backup or Anki-compatible TSV;	複習卡片，並匯出備份或與 Anki 相容的 TSV；	no	mt			2026-10-18
+save cited dictionary entries and sentences to a browser-local study deck;	將附有引用的詞典條目和句子儲存至瀏覽器本機的學習卡組；	no	mt			2026-10-18
+submit selected text or audio to named FormosanBank machine-translation or speech-recognition services;	將選取的文字或錄音送交指定的 FormosanBank 機器翻譯或語音辨識服務；	no	mt			2026-10-18
+the code that does all of the above, and how changes to it are reviewed	執行上述所有工作的程式碼，以及其變更如何審查	no	mt			2026-10-18
 the dictionary/ies corresponding to the languages that were used.	與所使用語言相對應的辭典	no	previous-website			2026-10-18
+use reviewed orthography conversion tables; and	使用經過審閱的書寫系統轉換表；以及	no	mt			2026-10-18
+what each tier means	各層的意義	no	mt			2026-10-18
+what may be done to the data	可以對資料做哪些處理	no	mt			2026-10-18
+which characters may appear, and how	哪些字元可以出現，以及如何出現	no	mt			2026-10-18
 Ūi-iū Kán	Ūi-iū Kán	no	previous-website			2026-10-18
 劉宇陽	劉宇陽	no	previous-website			2026-10-18
