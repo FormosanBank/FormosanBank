@@ -272,6 +272,33 @@ edit applies and **fails on a no-op**: if the pipeline ever produces this
 content by itself the record is obsolete (POL-030) and should be pruned, not
 left to pass silently.
 
+## Notes and Issues
+
+Each item is described in full in the section named in brackets.
+
+- **One morpheme has no gloss.** `078S4W19M0c`, the final `-i` of
+  `t<al>e-talem-i` in `078S4`, is published with no `TRANSL` because the
+  source prints four form units but only three gloss units. The three
+  validator findings this causes (`G001` HARD, `G002` and `V064` SOFT) are
+  accepted. ["The one unglossed morpheme"]
+- **The source's `?` glosses are published as `<UNCLEAR/>`**: 356 whole
+  glosses (338 `M`, 18 `W`) and the `?` pieces of 291 `W` glosses. A `?` next
+  to an infix marker (24 `W` glosses) or attached to a word (4 glosses) is kept
+  as written, and two sentence translations keep a `?` standing for an
+  untranslated word. ["The source's `?` gloss is published as `<UNCLEAR/>`"]
+- **Sixteen sentences are corrected by a reviewed decision table**
+  (`CodeAndDocs/standard_surface_decisions.tsv`): 11 have the source's
+  `(?)` uncertain-reading annotation removed from the original FORM and
+  recorded in `notes`, and 5 with a parenthesised optional token are published
+  as two complete sentences. ["How sentence-level corrections are recorded"]
+- **Hyphens differ between tiers.** The original tier keeps the source's
+  hyphens (153 sentences); the standard tier has none. ["Hyphens are not part
+  of the standard orthography"]
+- **Quotation marks.** The cleaner rewrote 24 `'` as `"` in the original tier
+  and left 27 flagged `'` alone because they might be the glottal letter; one
+  of those, `008S28`, is corrected by a recorded hand edit. ["Validation",
+  "Recorded hand edits"]
+
 ## Citation
 
 Early, R. J., and Whitehorn, J. 2003. *One Hundred Paiwan Texts*. Pacific Linguistics, Research School of Pacific and Asian Studies, Australian National University.
