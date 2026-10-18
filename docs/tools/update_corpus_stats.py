@@ -156,6 +156,7 @@ CSV_TO_MD = {
     'Amis-Pa-Verbs_corpora_stats.csv': 'wu-amis-pa-verbs.md',
     'Blust-Thao-Dictionary_corpora_stats.csv': 'blust-thao-dictionary.md',
     'Seediq-Chang-Reference-Grammar_corpora_stats.csv': 'seediq-chang-reference-grammar.md',
+    'Cuerq-Pourrias-Poinsot-Amis-Dictionary_corpora_stats.csv': 'cuerq-pourrias-poinsot-amis-dictionary.md',
 }
 
 # ---------------------------------------------------------------------------
