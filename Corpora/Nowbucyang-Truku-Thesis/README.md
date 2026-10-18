@@ -37,6 +37,9 @@ notation is preserved.
 rulings to the build; each step quotes the ruling it implements. `niya na`,
 which the thesis glosses jointly as `尚未` (C03_E037A_0206_01, C03_E039C), is
 one W with one M (POL-060); the FORM notes recording the joint gloss are kept.
+C01_E011E (`N-tama ka patas gaga.`, PDF page 32) carries the thesis's gloss
+line `屬-爸爸 主格 書 那`; its printed paraphrase `Patas tama ka gaga.` is the
+separate, unglossed C01_E011E2.
 
 Lexical and derivation tables remain source evidence outside the published
 sentence/interlinear-example scope. Original PHON follows the source's

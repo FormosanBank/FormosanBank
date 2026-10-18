@@ -108,7 +108,31 @@ def merge_joint_glosses(ids):
         first.getparent().remove(second)
 
 
-STEPS = [merge_joint_glosses]
+# Ruling 2 -- [nb-C01_E011E] `N-tama ka patas gaga.` (thesis (11e), PDF page 32,
+# gloss line 屬-爸爸 主格 書 那). Maintainer: "Use the thesis glosses".
+# (The paraphrase `Patas tama ka gaga.` that the thesis prints beside it is
+# already its own unglossed S, C01_E011E2, from manual_sentences.xml.)
+THESIS_GLOSSES = {
+    # W id: (W gloss, [M glosses in M order])
+    "C01_E011EW1": ("屬-爸爸", ["屬", "爸爸"]),
+    "C01_E011EW2": ("主格", ["主格"]),
+    "C01_E011EW3": ("書", ["書"]),
+    "C01_E011EW4": ("那", ["那"]),
+}
+
+
+def add_thesis_glosses(ids):
+    for word_id, (word_gloss, m_glosses) in THESIS_GLOSSES.items():
+        word = _get(ids, word_id, "W")
+        ms = word.findall("M")
+        _expect(len(ms) == len(m_glosses), f"{word_id}: expected {len(m_glosses)} M")
+        _expect(not _glosses(word) and not any(_glosses(m) for m in ms), f"{word_id}: already glossed")
+        for m, gloss in zip(ms, m_glosses):
+            m.append(_new_gloss(gloss))
+        _put_word_gloss(word, _new_gloss(word_gloss))
+
+
+STEPS = [merge_joint_glosses, add_thesis_glosses]
 
 
 def main():
