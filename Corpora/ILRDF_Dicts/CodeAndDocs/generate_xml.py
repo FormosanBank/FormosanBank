@@ -42,6 +42,10 @@ REPAIRS_PATH = SOURCE_DATA / "source_repairs.json"
 #: Published old->new id table (POL-037 / POL-051), written by the build.
 OLD_TO_NEW_PATH = BASE / "old_to_new_ids.csv"
 
+#: Frozen decisions on recordings main attached to several different
+#: sentences (freeze_shared_clips.py; maintainer ruling 2026-10-18).
+SHARED_CLIPS_PATH = SOURCE_DATA / "shared_clips.json"
+
 #: Every recording dropped or not used, written by the build.
 AUDIO_LOG_PATH = BASE / "docs" / "audio_not_published.csv"
 AUDIO_LOG_FIELDS = ["language", "s_id", "origin", "url", "file", "type", "village",
@@ -62,6 +66,8 @@ class Published:
     translations: list[tuple[str, str]] = field(default_factory=list)
     audio: list[dict[str, str]] = field(default_factory=list)
     source: str | None = None
+    #: Other readings of the same sentence: FORM kindOf="original" ver="alt".
+    alternates: list[str] = field(default_factory=list)
 
 
 def _norm_zh(value: str) -> str:
@@ -190,8 +196,68 @@ def assemble(language: str, sentences: list[Sentence], untranslated: dict,
                         [dict(a) for a in main.audio], audio, counts, untranscribed),
             WITHDRAWN_SOURCE))
         counts["withdrawn main sentence published from the 2024 snapshot"] += 1
+    apply_shared_clips(language, out, untranscribed, old_to_new, audio[3], counts)
     out.sort(key=lambda p: (p.original.casefold(), p.original, p.identifier))
     return out, untranscribed, main_attrs, old_to_new
+
+
+def apply_shared_clips(language: str, out: list[Published], untranscribed: list[dict],
+                       old_to_new: list[dict], log: list[dict], counts: Counter) -> None:
+    """One recording main attached to several different sentences.
+
+    Maintainer ruling 2026-10-18 (quoted in source_data/shared_clips.json):
+    a variant/same pair is merged into one S (first id kept, the other
+    reading a ver="alt" FORM, translations merged, recording kept); otherwise
+    the recording stays only on the sentence the 2026 source attaches it to,
+    and becomes untranscribed audio where the 2026 source cannot tell.
+    """
+    payload = json.loads(SHARED_CLIPS_PATH.read_text(encoding="utf-8"))
+    by_id = {p.identifier: p for p in out}
+    for group in payload["groups"]:
+        if group["language"] != language:
+            continue
+        clip = {k: group[k] for k in ("url", "start", "end") if group[k] is not None}
+        if group["outcome"] == "merge":
+            keep = by_id[group["keep"]]
+            for retired_id in group["retire"]:
+                retired = by_id.pop(retired_id)
+                if any(a.get("url") != group["url"] for a in retired.audio):
+                    raise ValueError(f"{retired_id}: carries a recording besides the shared clip")
+                if retired.original != keep.original and retired.original not in keep.alternates:
+                    keep.alternates.append(retired.original)
+                seen = {_norm_zh(text) for _, text in keep.translations}
+                for lang_code, text in retired.translations:
+                    if _norm_zh(text) not in seen:
+                        seen.add(_norm_zh(text))
+                        keep.translations.append((lang_code, text))
+                out.remove(retired)
+                old_to_new.append({
+                    "old_id": retired_id, "new_id": keep.identifier,
+                    "change": "retired: merged duplicate",
+                    "reason": "the same sentence printed twice with one recording; "
+                              "merged into the first id, its reading kept as a "
+                              "ver=\"alt\" FORM (maintainer ruling 2026-10-18, "
+                              "source_data/shared_clips.json)"})
+                counts["shared clip: sentence merged into the first id"] += 1
+            continue
+        outcome = group["outcome"]
+        for member in group["members"]:
+            record = by_id[member["base_id"]]
+            before = len(record.audio)
+            record.audio = [a for a in record.audio if a.get("file") != member["file"]]
+            if len(record.audio) != before - 1:
+                raise ValueError(f"{member['s_id']}: shared clip {member['file']} not found")
+            log.append({"language": language, "s_id": member["s_id"], "origin": "main",
+                        "url": group["url"], "file": member["file"], "type": "",
+                        "outcome": f"shared clip, maintainer ruling 2026-10-18: {outcome}"})
+            counts["shared clip: recording removed from a sentence"] += 1
+        if outcome.startswith("untranscribed"):
+            first = min(group["members"], key=lambda m: int(m["base_id"].rsplit("_", 1)[1]))
+            untranscribed.append({"url": group["url"], "file": first["file"],
+                                  **{k: v for k, v in clip.items() if k != "url"}, "source": (
+                "ILRDF examples " + ", ".join(m["s_id"] for m in group["members"])
+                + "; FormosanBank's 2024 recording, printed for different sentences")})
+            counts["shared clip: published as untranscribed audio"] += 1
 
 
 def _build_tree(language: str, records: list[Published], untranscribed: list[dict],
@@ -205,6 +271,8 @@ def _build_tree(language: str, records: list[Published], untranscribed: list[dic
             attrs["source"] = record.source
         element = ET.SubElement(root, "S", attrs)
         ET.SubElement(element, "FORM", {"kindOf": "original"}).text = record.original
+        for alternate in record.alternates:
+            ET.SubElement(element, "FORM", {"kindOf": "original", "ver": "alt"}).text = alternate
         translation_counts: dict[str, int] = {}
         for lang_code, text in record.translations:
             attributes_ = {XML_LANG: lang_code}

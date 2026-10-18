@@ -12,31 +12,31 @@ published from its 2024 scrape.
 | | Sentences | Dictionaries |
 |---|---:|---:|
 | Files | 16 | 16 |
-| `S` records | 184,147 | 139,579 |
-| `TRANSL` | 187,336 | 164,849 |
-| `AUDIO` in an `S` (at most one per `S`) | 131,336 | — |
-| untranscribed `AUDIO` (direct child of `TEXT`) | 1,194 | — |
-| variant readings (`FORM kindOf="original" ver="alt"`) | 2,006 | 134 |
+| `S` records | 184,119 | 139,579 |
+| `TRANSL` | 187,314 | 164,849 |
+| `AUDIO` in an `S` (at most one per `S`) | 130,763 | — |
+| untranscribed `AUDIO` (direct child of `TEXT`) | 1,438 | — |
+| variant readings (`FORM kindOf="original" ver="alt"`) | 2,024 | 134 |
 
 | Language | `S` (sentences) | under a main id | new (GUID id) | of which 2024-only | `AUDIO` in an `S` | untranscribed `AUDIO` | headword entries |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Amis | 9,038 | 5,616 | 3,422 | 4 | 6,571 | 28 | 8,444 |
-| Atayal | 9,191 | 6,410 | 2,781 | 89 | 6,916 | 165 | 6,496 |
-| Bunun | 12,368 | 9,022 | 3,346 | 6 | 10,446 | 59 | 7,564 |
-| Kanakanavu | 8,844 | 5,654 | 3,190 | 538 | 6,793 | 74 | 4,415 |
-| Kavalan | 10,647 | 8,384 | 2,263 | 138 | 9,297 | 61 | 7,291 |
-| Paiwan | 7,837 | 5,424 | 2,413 | 3 | 5,815 | 80 | 6,625 |
-| Puyuma | 9,644 | 7,292 | 2,352 | 37 | 8,304 | 97 | 8,636 |
-| Rukai | 15,236 | 10,474 | 4,762 | 2 | 12,960 | 12 | 12,997 |
-| Saaroa | 7,166 | 4,161 | 3,005 | 211 | 4,939 | 81 | 6,092 |
-| Saisiyat | 9,340 | 6,212 | 3,128 | 38 | 7,659 | 67 | 6,268 |
+| Amis | 9,037 | 5,615 | 3,422 | 4 | 6,560 | 32 | 8,444 |
+| Atayal | 9,191 | 6,410 | 2,781 | 89 | 6,885 | 172 | 6,496 |
+| Bunun | 12,368 | 9,022 | 3,346 | 6 | 10,444 | 59 | 7,564 |
+| Kanakanavu | 8,837 | 5,647 | 3,190 | 537 | 6,609 | 160 | 4,415 |
+| Kavalan | 10,647 | 8,384 | 2,263 | 138 | 9,287 | 62 | 7,291 |
+| Paiwan | 7,837 | 5,424 | 2,413 | 3 | 5,812 | 81 | 6,625 |
+| Puyuma | 9,631 | 7,279 | 2,352 | 36 | 8,208 | 134 | 8,636 |
+| Rukai | 15,236 | 10,474 | 4,762 | 2 | 12,958 | 13 | 12,997 |
+| Saaroa | 7,161 | 4,156 | 3,005 | 209 | 4,837 | 130 | 6,092 |
+| Saisiyat | 9,339 | 6,211 | 3,128 | 38 | 7,600 | 93 | 6,268 |
 | Sakizaya | 8,495 | 5,565 | 2,930 | 1 | 6,766 | 118 | 7,078 |
-| Seediq | 7,660 | 5,495 | 2,165 | 29 | 6,121 | 40 | 5,977 |
+| Seediq | 7,660 | 5,495 | 2,165 | 29 | 6,115 | 43 | 5,977 |
 | Thao | 9,860 | 6,660 | 3,200 | 22 | 7,658 | 127 | 5,165 |
-| Truku | 29,718 | 4,762 | 24,956 | 6 | 5,812 | 24 | 32,892 |
-| Tsou | 7,187 | 2,957 | 4,230 | 116 | 4,948 | 120 | 5,768 |
-| Yami | 21,916 | 19,158 | 2,758 | 15 | 20,331 | 41 | 7,871 |
-| **Total** | **184,147** | **113,246** | **70,901** | **1,255** | **131,336** | **1,194** | **139,579** |
+| Truku | 29,718 | 4,762 | 24,956 | 6 | 5,810 | 24 | 32,892 |
+| Tsou | 7,186 | 2,956 | 4,230 | 116 | 4,885 | 149 | 5,768 |
+| Yami | 21,916 | 19,158 | 2,758 | 15 | 20,329 | 41 | 7,871 |
+| **Total** | **184,119** | **113,218** | **70,901** | **1,251** | **130,763** | **1,438** | **139,579** |
 
 "Under a main id" includes the `-opt` records split from a main sentence
 (alternatives, and one `S` per recording); "2024-only" sentences are
@@ -88,14 +88,15 @@ to the 2026 source was done once and frozen in
 see [CodeAndDocs/docs/id_scheme.md](CodeAndDocs/docs/id_scheme.md).
 
 Every previously published id that is no longer published, and why, is in
-[CodeAndDocs/old_to_new_ids.csv](CodeAndDocs/old_to_new_ids.csv) (266 rows):
+[CodeAndDocs/old_to_new_ids.csv](CodeAndDocs/old_to_new_ids.csv) (284 rows):
 261 duplicates merged into the lowest id of their group, 4 sentences whose
-printed alternatives cannot be published as one sentence, and Puyuma_888
-(source repair #3).
+printed alternatives cannot be published as one sentence, Puyuma_888
+(source repair #3), and 18 sentences printed twice with one recording
+(see "One recording printed for several sentences" below).
 
-## Sentences from the 2024 scrape — 1,255
+## Sentences from the 2024 scrape — 1,251
 
-1,255 sentences FormosanBank published from its 2024 scrape are no longer in
+1,251 sentences FormosanBank published from its 2024 scrape are no longer in
 ILRDF's current dictionary. They are kept as published then — same id,
 original text, translation and recording — from a committed snapshot of that
 XML ([CodeAndDocs/source_data/main_2024/](CodeAndDocs/source_data/main_2024/),
@@ -105,7 +106,7 @@ are regenerated like every other record's.
 
 | Amis | Atayal | Bunun | Kanakanavu | Kavalan | Paiwan | Puyuma | Rukai | Saaroa | Saisiyat | Sakizaya | Seediq | Thao | Truku | Tsou | Yami |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 4 | 89 | 6 | 538 | 138 | 3 | 37 | 2 | 211 | 38 | 1 | 29 | 22 | 6 | 116 | 15 |
+| 4 | 89 | 6 | 537 | 138 | 3 | 36 | 2 | 209 | 38 | 1 | 29 | 22 | 6 | 116 | 15 |
 
 ## Reproducing the XML
 
@@ -259,8 +260,8 @@ item, its recording is not attached to any of the resulting sentences: it is
 published as untranscribed audio, an `AUDIO` that is a direct child of
 `TEXT`, with `AUDIO/@source` naming the example it belongs to (maintainer
 ruling 2026-10-16, ILRDF only). 486 recordings are published this way;
-with the 708 replaced 2024 recordings (below), 1,194 untranscribed
-recordings in all.
+with the 708 replaced 2024 recordings and the 244 recordings printed for
+several sentences (below), 1,438 untranscribed recordings in all.
 
 Headword notation is left as the source writes it (`uculru(wa)` marks an
 optional ending).
@@ -319,11 +320,30 @@ the build never downloads anything. The rules (maintainer rulings
   maintainer, 2026-10-16;
   [source_data/audio_rulings.json](CodeAndDocs/source_data/audio_rulings.json)).
 
+**One recording printed for several sentences.** In 285 cases
+FormosanBank's 2024 publication attached one recording (byte-identical
+files, the same 2024 URL and segment) to two to four different sentences
+(validate_xml.py V162). Maintainer ruling 2026-10-18 ("2026 source decides;
+merge the 18"), frozen with every member in
+[source_data/shared_clips.json](CodeAndDocs/source_data/shared_clips.json):
+
+| Case | Groups | What is published |
+|---|---:|---|
+| near-identical or same wording (one sentence printed twice) | 18 | merged into the first id, the other reading as a `ver="alt"` FORM, translations merged, recording kept; the 18 retired ids are in `old_to_new_ids.csv` |
+| different sentences; the 2026 source attaches the recording to another sentence, which already carries it | 23 | no member keeps it |
+| different sentences; the 2026 source has no copy of the recording | 244 | no member keeps it; published once as untranscribed audio |
+
+The 2026 source attaches none of these recordings to any of their members.
+Where a removed recording was a sentence's second recording, its `-opt`
+`S` is no longer published (10 ids; one, Kanakanavu_4483, keeps its other
+recording on the base id).
+
 Every recording that is not published, and why, is listed in
 [CodeAndDocs/docs/audio_not_published.csv](CodeAndDocs/docs/audio_not_published.csv)
-(99,408 rows: 98,534 identical copies, 708 2024 recordings moved to
-untranscribed audio, 157 broken, 3 unreachable, 5 dropped by ruling, and 1
-note where main's recording replaced broken 2026 ones).
+(99,963 rows: 98,534 identical copies, 708 2024 recordings moved to
+untranscribed audio, 555 removed from sentences that shared one recording,
+157 broken, 3 unreachable, 5 dropped by ruling, and 1 note where main's
+recording replaced broken 2026 ones).
 
 Hugging Face allows at most 10,000 files in one folder, so the three
 largest languages (Bunun, Rukai, Yami; `sharded_languages` in the repo-root

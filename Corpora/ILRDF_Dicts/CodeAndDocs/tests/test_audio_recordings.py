@@ -200,3 +200,44 @@ class TestBuiltXml(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@unittest.skipUnless((XML_DIR / "Bunun" / "Bunun.xml").exists(), "built XML not present")
+class TestSharedClips(unittest.TestCase):
+    """Maintainer ruling 2026-10-18 on recordings main attached to several
+    different sentences (source_data/shared_clips.json)."""
+
+    def test_no_clip_on_two_different_sentences(self):
+        clashes = []
+        for path in sorted(XML_DIR.glob("*/*.xml")):
+            if path.name.endswith("_dictionary.xml"):
+                continue
+            seen = {}
+            for s in ET.parse(path).getroot().iter("S"):
+                audio = s.find("AUDIO")
+                if audio is None:
+                    continue
+                form = next(f for f in s.findall("FORM")
+                            if f.get("kindOf") == "original" and f.get("ver") is None)
+                key = (audio.get("url") or audio.get("file"), audio.get("start"), audio.get("end"))
+                text = " ".join((form.text or "").split())
+                if key in seen and seen[key][1] != text:
+                    clashes.append((seen[key][0], s.get("id")))
+                seen.setdefault(key, (s.get("id"), text))
+        self.assertEqual(clashes[:20], [])
+
+    def test_merges_applied(self):
+        import json
+        groups = json.loads((Path(__file__).resolve().parents[1] / "source_data"
+                             / "shared_clips.json").read_text(encoding="utf-8"))["groups"]
+        merges = [g for g in groups if g["outcome"] == "merge"]
+        self.assertEqual(len(merges), 18)
+        problems = []
+        for g in merges:
+            root = ET.parse(XML_DIR / g["language"] / f"{g['language']}.xml").getroot()
+            ids = {s.get("id"): s for s in root.findall("S")}
+            if g["keep"] not in ids or any(r in ids for r in g["retire"]):
+                problems.append(g["keep"])
+            elif ids[g["keep"]].find("AUDIO") is None:
+                problems.append(g["keep"] + " lost its recording")
+        self.assertEqual(problems, [])
