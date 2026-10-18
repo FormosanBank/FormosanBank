@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+set -euo pipefail
+CODEDOCS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CORPUS="$(dirname "$CODEDOCS")"
+if [[ -n "${FORMOSANBANK_ROOT:-${1:-}}" ]]; then
+    BANK="$(cd "${FORMOSANBANK_ROOT:-$1}" && pwd)"
+elif [[ -d "$CORPUS/../../QC" ]]; then
+    BANK="$(cd "$CORPUS/../.." && pwd)"
+else
+    BANK="$(cd "$CORPUS/../FormosanBank" && pwd)"
+fi
+PY="${PYTHON:-python3}"
+"$PY" - "$CODEDOCS/introduction_lexemes.json" <<'PY'
+import json
+import sys
+from pathlib import Path
+profiles = {r["profile"] for r in json.loads(Path(sys.argv[1]).read_text())["records"]}
+# Table 2's 16 Tsuchida1976 pronouns use the reviewed Asai2026 grapheme subset.
+unsupported = sorted(profiles - {"Asai2026", "Tsuchida1976"})
+if unsupported:
+    print("Final generation needs reviewed per-source routes for: " + ", ".join(unsupported), file=sys.stderr)
+    sys.exit(2)
+PY
+SOURCE_ORTHOGRAPHY="$BANK/Orthographies/Asai2026"
+CONVERSION="$BANK/Orthographies/ConversionTables/Kanakanavu_Asai2026_113.tsv"
+for required in "$SOURCE_ORTHOGRAPHY/Kanakanavu.tsv" "$SOURCE_ORTHOGRAPHY/Kanakanavu.rules.tsv" \
+    "$CONVERSION"; do
+    if [[ ! -f "$required" ]]; then
+        echo "Missing committed Kanakanavu orthography input: $required" >&2
+        exit 2
+    fi
+done
+
+STAGE="$(mktemp -d "$CODEDOCS/.build-XXXXXX")"
+trap 'rm -rf "$STAGE"' EXIT
+"$PY" "$CODEDOCS/scripts/pipeline.py" --workspace "$STAGE"
+XML_STAGE="$STAGE/build/xml_drafts"
+"$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$XML_STAGE"
+for xml in "$XML_STAGE/Kanakanavu/"*.xml; do
+    # --segmented-without-m-tier: the lexical records print morpheme hyphens but have no M tier
+    # (maintainer, 2026-10-18: the hyphens "should be deleted in the standard S FORM").
+    "$PY" "$BANK/QC/utilities/standardize.py" --tsv_path "$CONVERSION" \
+        --target_column standard --segmented-without-m-tier --corpora_path "$xml"
+    "$PY" "$CODEDOCS/scripts/strip_standard_brackets.py" "$xml"
+    "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography "$BANK/Orthographies/Asai2026" \
+        --corpora_path "$xml" --preserve-existing-original
+done
+
+# POL-052: say which FormosanBank commit the published bytes were built against. Informational
+# only; the build never compares against it to decide whether to run, and never rewrites it.
+REFERENCE_COMMIT="$(sed -n 's/.*"formosanbank_commit"[[:space:]]*:[[:space:]]*"\([0-9a-f]\{40\}\)".*/\1/p' "$CODEDOCS/provenance.json")"
+HEAD_COMMIT="$(git -C "$BANK" rev-parse HEAD 2>/dev/null || echo unknown)"
+if [ "$HEAD_COMMIT" != "$REFERENCE_COMMIT" ]; then
+    echo "note: FormosanBank at $HEAD_COMMIT; XML/ was last built at $REFERENCE_COMMIT" >&2
+fi
+for language in Kanakanavu; do
+    if [[ -d "$XML_STAGE/$language" ]]; then
+        mkdir -p "$CORPUS/XML/$language"
+        rm -f "$CORPUS/XML/$language/"*.xml   # drop files an earlier build wrote for sources no longer published
+        cp "$XML_STAGE/$language/"*.xml "$CORPUS/XML/$language/"
+    fi
+done

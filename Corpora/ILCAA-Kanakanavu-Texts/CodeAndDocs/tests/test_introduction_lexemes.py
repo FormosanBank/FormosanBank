@@ -1,0 +1,103 @@
+"""Printed table columns, lexical examples and protected grammatical context."""
+
+import csv
+import json
+import os
+import shutil
+import sys
+from pathlib import Path
+
+import pytest
+from lxml import etree
+
+CODE = Path(__file__).resolve().parents[1]
+WORKSPACE = Path(os.environ.get("KANAKANAVU_WORKSPACE", CODE / ".build"))
+sys.path.insert(0, str(CODE / "scripts"))
+import introduction_lexemes as intro
+
+
+def sentence(profile, key, language="Kanakanavu"):
+    file = WORKSPACE / f"build/xml_drafts/{language}/ILCAA_KanakanavuTexts_intro_{profile}.xml"
+    root = etree.parse(str(file)).getroot()
+    return root, root.find(f"S[@id='ILCAA_KANAKANAVU_TEXTS_INTRO_{profile.upper()}_{key}']")
+
+
+def test_table_1_is_not_published():
+    # Maintainer rulings 2026-10-18: "Drop all of Table 1." and "Drop the prose examples."
+    data = json.loads((CODE / "introduction_lexemes.json").read_text())
+    assert not [r["id"] for r in data["records"] if r["id"].startswith("T1_")]
+    assert {r["profile"] for r in data["records"]}.isdisjoint({"Szakos1999", "BasicVocabulary2007"})
+    drafts = WORKSPACE / "build/xml_drafts/Kanakanavu"
+    for profile in ("Szakos1999", "BasicVocabulary2007", "Tsuchida1969", "PhonemicComparison"):
+        assert not list(drafts.glob(f"*_intro_{profile}.xml"))
+    assert {r["profile"] for r in data["records"]} == {"Asai2026", "Tsuchida1976"}
+    assert any(e["pages"] == [16, 17] and "Table 1" in e["kind"] for e in data["excluded_regions"])
+
+
+def test_free_pronouns_preserve_stress_and_row_context():
+    root, _ = sentence("Tsuchida1976", "T2_01")
+    assert len(root.findall("S")) == 16
+    assert not root.findall(".//TRANSL")  # Row headings are not free translations.
+    forms = [s.findtext("FORM") for s in root.findall("S")]
+    # PDF p20: these exact forms are the reviewed subset of the existing route.
+    assert forms == [
+        "íiku", "íikia", "ʔikúa", "íikasu", "iimukásu", "kasúa", "íikita", "kitána",
+        "íikimi", "kimía", "íikamu", "iimukámu", "kamúa", "ŋuaini", "ʔinía", "ʔisua",
+    ]
+    assert not any(f.startswith(("=", "-")) or f == "ø" for f in forms)
+    iikia = next(s for s in root.findall("S") if s.findtext("FORM") == "íikia")
+    assert "1EXCL" in iikia.find("FORM").get("notes")
+
+
+def test_saaroa_comparison_word_is_not_published():
+    # Maintainer, 2026-10-18: "drop that single Saaroa word from the corpus."
+    assert not list((WORKSPACE / "build/xml_drafts").glob("Saaroa/*.xml"))
+    data = json.loads((CODE / "introduction_lexemes.json").read_text())
+    assert not [r for r in data["records"] if r["language"] == "sxr"]
+
+
+@pytest.mark.parametrize("key,ordinary,vocative", [
+    ("T2_03", "íikasu", "iimukásu"), ("T2_09", "íikamu", "iimukámu"),
+])
+def test_vocatives_remain_separate_from_ordinary_pronouns(key, ordinary, vocative):
+    for suffix, form in (("", ordinary), ("-opt", vocative)):
+        _, s = sentence("Tsuchida1976", key + suffix)
+        assert [(f.text, f.get("ver")) for f in s.findall("FORM")] == [(form, None)]
+        assert "Tsuchida (1975: 37)" in s.find("FORM").get("notes")
+        assert "vocative" in s.find("FORM").get("notes")
+        assert not s.findall("TRANSL")
+
+
+def test_title_and_footnote_supply_the_same_lexeme():
+    _, s = sentence("Asai2026", "TITLE_FN029")
+    assert s.findtext("FORM") == "ʔənnaŋ"
+    assert [(t.get(intro.XML_LANG), t.text) for t in s.findall("TRANSL")] == [
+        ("eng", "Fruit of the bird lime plant"), ("zho", "破布子")]
+
+
+def test_printed_analysis_keeps_infix_gap_and_source_gloss():
+    _, s = sentence("Asai2026", "P024_03")
+    assert s.find("TRANSL") is None
+    assert s.findtext("W/TRANSL") == "RED<AV>-tie"
+    assert [m.findtext("FORM") for m in s.findall("W/M")] == ["k-a", "-um-", "kili"]
+    with (WORKSPACE / "data/processed/xml_token_index.csv").open() as f:
+        indexed = {r["element_id"] for r in csv.DictReader(f)}
+    assert {x.get("id") for x in s.xpath(".//W | .//M")} <= indexed
+
+
+def test_templates_and_unresolved_phonetic_strings_are_not_sentences():
+    records = intro.load_records(CODE / "introduction_lexemes.json", WORKSPACE)
+    assert len(records) == 69
+    assert not any("STEM" in r["form"] or r["form"] in ("M-type", "kɔ:", "kɅɨnɨ") for r in records)
+    data = json.loads((CODE / "introduction_lexemes.json").read_text())
+    assert {r["kind"] for r in data["pending"]} == {"phonetic comparison"}
+    assert data["profile_review_required"] == []
+
+
+def test_changed_source_page_requires_review(tmp_path):
+    target = tmp_path / "data/raw/text/pages"
+    shutil.copytree(WORKSPACE / "data/raw/text/pages", target)
+    with (target / "page_0016.txt").open("a") as f:
+        f.write("changed")
+    with pytest.raises(ValueError, match="Changed introduction source page: 16"):
+        intro.load_records(CODE / "introduction_lexemes.json", tmp_path)

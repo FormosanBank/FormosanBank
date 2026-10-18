@@ -54,6 +54,7 @@ record the review evidence used to build them.
 | `Cauquelin` | Puyuma | 10145149843 | No source-to-Ortho113 conversion is asserted for unresolved vowel correspondences. |
 | `Tsuchida` | Pazeh | 10150746084 | Produces original PHON; no Ortho113 Pazeh table currently exists. |
 | `Ochiai` | Seediq | 10152216849 | Implements the reviewed source mappings and conversion table. |
+| `Asai2026` | Kanakanavu | Madeline Boese review (c and s palatalize before i) | The original tier of Asai et al. (2026) *Kanakanavu texts*: IPA letters ʔ ŋ ə, with `l` and `r` distinct. Capital letters are lower-cased in PHON. |
 
 Tsuchida's Saisiyat source supplies bracketed phonology directly rather than
 deriving it from FORM. Keep that source PHON with
