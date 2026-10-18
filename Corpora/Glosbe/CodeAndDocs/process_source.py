@@ -449,6 +449,27 @@ def plan_merge():
     return merges, ambiguous
 
 
+def drop_enumerators(sentences):
+    """List enumerators deleted outright, not kept as notes (drop_enumerators.csv)."""
+    dropped = 0
+    with (HERE / "drop_enumerators.csv").open(encoding="utf-8", newline="") as stream:
+        for row in csv.DictReader(stream):  # list enumerators deleted, not kept as notes
+            sentence = sentences[row["sid"]]
+            element = (sentence.find("FORM[@kindOf='original']") if row["element"] == "FORM" else
+                       next(t for t in sentence.findall("TRANSL") if t.get(XML_LANG) == "eng"))
+            notes = element.get("notes", "").split(" | ")
+            for piece in row["pieces"].split(" | "):
+                if piece not in notes:
+                    raise ValueError(f"Enumerator {piece} not in notes of {row['sid']}")
+                notes.remove(piece)
+                dropped += 1
+            if notes:
+                element.set("notes", " | ".join(notes))
+            else:
+                del element.attrib["notes"]
+    return dropped
+
+
 def merge_translation_files(bank, write_ledger=False):
     """One Amis translation-memory file (maintainer, 2026-10-18: "For Glosbe,
     I think we can have just one file. Some Ss have translations in English,
@@ -507,6 +528,7 @@ def merge_translation_files(bank, write_ledger=False):
             last.addnext(transl)
             have.add(key)
         joined += 1
+    dropped = drop_enumerators(english)
     zho_source = zho_root.get("source")
     root.set("source", f"{root.get('source')} Chinese translations: {zho_source}")
     english_tree.write(str(ENG_TMEM), encoding="utf-8", xml_declaration=True, pretty_print=True)
@@ -518,6 +540,7 @@ def merge_translation_files(bank, write_ledger=False):
                 continue
             if row["withdrawn_id"] in final or row["kept_id"] not in final:
                 raise ValueError(f"withdrawn_ids.csv does not describe the output: {row['withdrawn_id']}")
+    print(f"Deleted {dropped} list enumerators")
     print(f"Joined {joined} Amis-Chinese S to identical Amis-English S; moved {moved} with their "
           f"own ids; {len(ambiguous)} match more than one Amis-English S and were moved unmerged")
 
