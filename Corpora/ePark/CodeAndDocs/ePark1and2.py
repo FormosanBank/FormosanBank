@@ -90,7 +90,7 @@ def create_xml(curr_ePark, out_ePark, file, dialect, lang, lang_code, dir, ePark
     root.set("xml:lang", lang_code)
     root.set("source", ePark + " " + dir + " " + dialect)
     root.set("audio", "diarized")
-    root.set("copyright", "CC-BY-NC-SA")
+    root.set("copyright", "CC BY-NC-SA 4.0")
     root.set("citation", "Indigenous Languages Research and Development Foundation. (2020). 族語E樂園. https://web.klokah.tw/")
     root.set("BibTeX_citation", "@misc{ePark, author = {Indigenous Languages Research and Development Foundation}, title = {族語E樂園}, year = {2020}, url = {https://web.klokah.tw/} }")
 

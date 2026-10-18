@@ -14,6 +14,7 @@ from lxml import etree
 from QC.validation._corpus_index import CorpusIndex
 from QC.validation._dialect_inventory import valid_dialects
 from QC.validation._finding import Finding, Severity
+from QC.validation.rules.soft import _carries_parsing, _children, _sentence_words, _tree_language
 
 
 _XSD_PATH = Path(__file__).resolve().parents[1] / "xml_template.xsd"
@@ -682,6 +683,67 @@ _PHON_ALLOWED_PARENTS = {"S", "W", "M"}
 _PHON_KINDOF_ALLOWED = {"original", "standard"}
 
 
+def _audio_clip_key(audio: etree._Element, root: etree._Element) -> tuple:
+    """What a sentence's AUDIO points at: (url or file or TEXT/@audio, start, end)."""
+    return (
+        audio.get("url") or audio.get("file") or root.get("audio") or "",
+        audio.get("start"),
+        audio.get("end"),
+    )
+
+
+def _original_form_text(s: etree._Element) -> str:
+    for form in s.findall("FORM"):
+        if form.get("kindOf") == "original" and form.get("ver") is None:
+            return " ".join((form.text or "").split())
+    return ""
+
+
+def v162_shared_clip_under_different_sentences(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """Two S in one file whose AUDIO names the same clip (same url/file, start and
+    end) must carry the same original FORM; one clip cannot be two sentences.
+
+    V162 (2026-10-17, skills review D5): the ILRDF v2 port attached 13 clips to
+    26 different readings. A clip that genuinely covers several sentences is
+    attached to none of them and kept as untranscribed audio (maintainer,
+    2026-10-16: "We don't have a mechanism for multiple audio files for one S
+    block, and i don't want one").
+    """
+    findings: list[Finding] = []
+    root = tree.getroot()
+    first_seen: dict[tuple, tuple[str, str]] = {}
+    for s in tree.iter("S"):
+        audio = s.find("AUDIO")
+        if audio is None:
+            continue
+        key = _audio_clip_key(audio, root)
+        if key == ("", None, None):
+            continue  # orphan: V053's business
+        text = _original_form_text(s)
+        s_id = s.get("id") or ""
+        if key not in first_seen:
+            first_seen[key] = (s_id, text)
+            continue
+        other_id, other_text = first_seen[key]
+        if other_text == text:
+            continue  # a genuine duplicate sentence; V-dedup territory, not audio
+        clip = key[0] + (f" [{key[1]}-{key[2]}]" if key[1] is not None else "")
+        findings.append(Finding(
+            rule_id="V162",
+            severity=Severity.HARD,
+            message=(f"V162 HARD shared_clip_under_different_sentences: AUDIO {clip} is "
+                     f"attached to S={other_id} ({other_text[:40]!r}) and to S={s_id} "
+                     f"({text[:40]!r}); one clip, two sentences"),
+            path=path,
+            location=f"S={s_id}" if s_id else "S",
+        ))
+    return findings
+
+
 def v070_phon_placement(
     tree: etree._ElementTree,
     path: Path,
@@ -1134,7 +1196,54 @@ def v081_text_id_unique_across_published_corpora(
     )]
 
 
+
+def v145_degenerate_all_single_M_tier(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V145 HARD (POL-023, POL-057): M level present but the file carries no parsing.
+
+    HARD since 2026-10-17. Maintainer: "V145 can be retained. That's a HARD
+    validator, please. Formosan languages are not monomorphemic, so if there
+    is an M tier but no split words anywhere, that's weird."
+
+    Ruling 2026-08-10: corpora without morpheme segmentation should have
+    no M level at all — an M tier where every M-bearing W has exactly
+    one M identical in role to its W adds no information (historically:
+    ~100 spurious M shells shipped in YeddaPalemeqBlog).
+
+    Deliberately kept **file-scoped** when V144 went per-sentence
+    (2026-08-12). "Every M mirrors its W" is only evidence of a fake
+    tier in bulk: a single sentence whose handful of words really are
+    monomorphemic is indistinguishable from a mirror tier, and POL-023
+    explicitly blesses single-M Ws as "analyzed as monomorphemic". A
+    whole file with no multi-morphemic word anywhere is the reliable
+    signal; one sentence is not.
+    """
+    sentences = _sentence_words(tree)
+    if not sentences or any(_carries_parsing(ws) for ws in sentences):
+        return []
+    singles = sum(1 for ws in sentences for w in ws if _children(w, "M"))
+    if singles == 0:
+        return []
+    return [Finding(
+        rule_id="V145",
+        severity=Severity.HARD,
+        message=(
+            f"V145 HARD: M level present but no sentence in the file "
+            f"carries any morphological parsing ({singles} mirror single-M "
+            f"Ws) — an M tier needs some segmented word (POL-023, POL-057)"
+        ),
+        path=path,
+        count=singles,
+        language=_tree_language(tree, path, index),
+        character="",
+    )]
+
+
 RULES: list = [
+    v145_degenerate_all_single_M_tier,  # POL-023/POL-057, HARD since 2026-10-17
     v000_schema_validation,
     v001_root_must_be_TEXT,
     v013_S_must_have_original_FORM,
@@ -1152,6 +1261,8 @@ RULES: list = [
     v052_audio_single_file_mode_requires_start_end,
     v053_orphan_audio,
     v054_audio_end_after_start,
+    # V162: 2026-10-17 skills review D5 (audio consistency without audio files)
+    v162_shared_clip_under_different_sentences,
     v070_phon_placement,
     v071_phon_kindof_enum,
     v072_duplicate_phon_kindof,

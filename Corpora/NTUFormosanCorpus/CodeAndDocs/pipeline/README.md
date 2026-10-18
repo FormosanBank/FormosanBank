@@ -31,7 +31,21 @@ with `pipeline_grammar.py`:
 description of each. The numbers are *creation* order, not application
 order; `--steps` selects which run, and `build.sh` pins the sets above.
 
-**B. Repairs.** `QC/cleaning/clean_xml.py` from the bank, then the
+**Readings (POL-028, POL-026).** Inside the Sentences and Stories builders, `pol028.py` turns a record with
+a glossed optional morpheme (`kangavas(=an)`) or an optional phrase (`(nau tu)`) into one sentence per
+reading — base id, `-opt`, and `-opt3`/`-opt4` when a record has both — each with its own word and
+morpheme tiers; per-reading translations and notes ruled by the maintainer are in `pol028_readings.tsv`.
+Optional letters inside a morpheme stay one sentence with a `ver="alt"` FORM (step 14).
+
+**Audio timing grafts.** `audio_timing_grafts.tsv` (written by `make_audio_timing_grafts.py`) gives three
+stories whose text NTU publishes untimed the time spans of NTU's timed transcription of the same text;
+the Stories builder applies it before the story's zero point is computed, and fails if a record
+already has timing.
+
+**B. Repairs.** `QC/cleaning/clean_xml.py` from the bank (for Sentences and
+Stories followed by `restore_quote_exemptions.py`, which puts back glottal
+letters the shared quote cleaner took for quotation marks, listed in
+`quote_cleaner_exemptions.tsv`; ruling 2026-10-16), then the
 per-subcorpus repair scripts in [`../scripts/`](../scripts/) — infix
 notation, optional parentheticals, annotation codes, clitic boundaries, and so
 on. Grammar and the two flat subcorpora use overlapping but not identical
@@ -47,48 +61,231 @@ ASCII or fullwidth, anywhere in the string. The ~60 "naturalistic elaborations"
 that review chose to keep inline are not preserved; that is accepted.
 
 **C. Tiers.** `resolve_slash_alternatives.py` (competing readings →
-`kindOf="alternate"`), `apply_prune_and_mirror.py --only prune` (drop
-M elements that carry no morphological evidence, per POL-054),
-`borrow_missing_morphemes.py`, `align_ids.py` (keep ids stable against the
+`kindOf="alternate"`), `drop_punctuation_morphemes.py` and
+`apply_prune_and_mirror.py` (see "Word and morpheme tiers" below),
+`mark_original_glosses.py`, `align_ids.py` (keep ids stable against the
 published corpus, per POL-037), then `run_standard_and_phon.sh`, which
 builds the standard tier and both PHON tiers against **Ortho94** — the
 orthography the NTU source documentation declares. (Earlier processing
-declared Ortho113; see the header of that script.)
+declared Ortho113; see the header of that script.) Between the standard tier
+and the PHON tiers it runs `apply_standard_word_splits.py`, which writes the
+word divisions in `standard_word_splits.tsv` into the standard sentence tier
+only (7 sentences where NTU's text joins two words its glosses separate;
+ruling 2026-10-16).
+
+## Word and morpheme tiers
+
+What the build does when the word or morpheme tier cannot stand, and why. All
+three rules are maintainer rulings, recorded in the decision log.
+
+- **Punctuation-only morphemes** (`drop_punctuation_morphemes.py`, ruling
+  2026-09-28). A false start written with its punctuation (`ta-,`) splits into a
+  morpheme whose form is `,`. In a multimorphemic word, an unglossed
+  punctuation-only morpheme is deleted. A glossed one, when fewer segments are
+  glossed than there are segments, is deleted and its gloss shifted onto the
+  segment after it. If no segment follows it, or no unglossed segment follows to
+  absorb the shift, it is left and reported in
+  `logs/punctuation_morpheme_escalations_<subcorpus>.tsv`. The word's FORM keeps
+  its punctuation: that is source text. A `=` in front of the deleted piece stays
+  in the morpheme tier, on the morpheme before it: `na=,` (a clitic whose host
+  was cut off) keeps the morpheme `na=`, as the corpus writes such a clitic, and
+  V066 (a W's `=` must reach one of its Ms) holds.
+- **Word tier withdrawn** (`apply_prune_and_mirror.py`, ruling 2026-09-08). A
+  sentence whose word tier does not account for its sentence form loses its W
+  elements.
+- **Unreconcilable morphemes rebuilt, unglossed** (`apply_prune_and_mirror.py`,
+  ruling 2026-09-09: "regenerate the Ms from the W's segmentation and do not
+  include glosses in the Ms"). This is judged word by word. A word whose
+  morphemes cannot be reconciled with its form and gloss gets one M per piece of
+  its own segmented FORM, with no glosses: the segmentation is real data, but no
+  confirmed morphosyntactic glossing exists. A word of one piece gets no M ("a
+  lack of Ms indicates no clear segmentation"). Every other word keeps its Ms; a
+  glossed one-morpheme word keeps its own single M. **No morpheme is ever copied
+  from another word.** Until 2026-09-28 this step, and the separate
+  `borrow_missing_morphemes.py` (now deleted), copied glossed morphemes from the
+  first occurrence of the same word form anywhere in the subcorpus, in any
+  language. That was never ruled.
+- **A word left bare by a gloss-shift repair** (`borrow_shift_blank_glosses.py`,
+  ruling 2026-09-28) may borrow a gloss. It does so only from the same language,
+  only when at least 5 other occurrences exist and one gloss accounts for at
+  least 90% of them (placeholders such as `FIL` and `XX` don't count), and it
+  marks the gloss with a `notes` attribute. Words that were already bare in the
+  source are never filled. Declined cases are reported in
+  `logs/gloss_shift_borrowed_<subcorpus>.tsv`. The same step also takes the
+  English slot of a word whose source writes the same Chinese gloss in both
+  slots, which step 1 empties (ruling 2026-09-30: "Drop the English. This
+  becomes a potential target for gloss-borrowing.").
+- **Which gloss is English and which Chinese** (step 1,
+  `pipeline_grammar.step1_realign_sentence`). The source does not keep the two in
+  fixed columns, so step 1 decides per sentence. A line's majority column order
+  is followed. A word written in the opposite order (a reversal) goes to the
+  slots its own glosses say only if it is in a run of 3+ reversals or neither of
+  its glosses mixes the two languages; otherwise it follows its line (ruling
+  2026-09-30). One crossed piece is exchanged only when that leaves no Chinese in
+  the English gloss and no English word in the Chinese one. A Latin label in a
+  Chinese gloss (3SG, 1IPL, FS: any run with a capital or a digit) is not mixing
+  (ruling 2026-09-30); an all-lower-case run (`that`) is. The same English word
+  gloss written in both slots (`say` / `say`) empties the Chinese slot (ruling
+  2026-09-30: "drop the copy"); labels (`NOM` / `NOM`), placeholders and copies
+  of the word itself are left as they are.
+- **A non-verbal event written across two rows** (`((CLEARS` + `THROAT))`,
+  `(PHONE` + `RINGS)._`; `pipeline_stories.drop_split_events`) is one
+  transcription mark: both rows are dropped with any gloss on them, and so are
+  the two tokens when a transcript line writes the event the same way (ruling
+  2026-09-30: "treat both halves as a mark"). Punctuation after the closing
+  bracket is kept. NTU has 9 such events in gloss rows and 3 in transcript
+  lines, all in the stories.
+- **Gloss-cell rulings of 2026-10-14** (`pipeline_grammar.normalize_gloss_cell`;
+  step 19 in Stories/Sentences, 23 in Grammar). A gloss that is solely `x`, `xx`,
+  `XX`, `XXX` or `XXXX` is written `X`, in both languages; so are runs of five or
+  more X and `[XXXX]` (card xlong, 2026-10-14: "yes, all of them"). A gloss with at least
+  one capital letter is fully capitalized when the capitalized form is a gloss
+  attested at least 20 times in NTU's source (`FIl` → `FIL`, `Part` → `PART`);
+  `Han` (Rukai payrange, 漢人, the ethnonym) stays `Han` (card han, 2026-10-14: "keep").
+- **Grammar's `_`** (step 24): the grammar books put `_` in the English column; it
+  is no longer published as an English gloss (ruling 2026-10-14: "drop").
+- **Per-cell decisions** (`gloss_cell_decisions.tsv`): the maintainer's answers
+  on the review page that set a word's cells (which cell is English, a label in
+  both slots, a sentence's glosses removed), applied after the shift repairs and
+  pinned to the value each cell must hold. All three builders apply them (the
+  Grammar builder since round 6 of the review page).
+- **A stray punctuation token** in the sentence form (`chuanzhe .`) is joined to
+  the word before it when, and only when, that lets the word tier account for
+  the sentence (`pipeline_grammar.aligned_or_joined`; ruling 2026-10-14: "join").
+- **Borrowing for the same English in both slots**: the emptied Chinese slot may
+  borrow, counting only the uses of the word with the same English gloss
+  (ruling 2026-10-14: "pair").
+- **An infix bracket holding a hyphen** (`la<in-i>haib`, glossed `<PFV-PFV>`) is
+  that many infixes, `-in-` and `-i-`, each with its own gloss (ruling
+  2026-09-30). Every step that counts or cuts morphemes reads it that way: the
+  builder's cut at `-`/`=` skips hyphens inside brackets, the separator vote and
+  the prune count two morphemes (`qa/sentence_xml_tests.split_joined_infixes`),
+  and `convert_infix_notation.py` converts both.
+
+The policy behind the morpheme rules is "the M tier is evidence, never
+manufactured": POL-057 on the unmerged `policy/m-tier-is-evidence` branch. It
+was numbered POL-054 before 2026-09-10; POL-054 on `main` is now the waivers
+policy.
 
 ## Data tables
 
 Per POL-039, item-specific corrections live in data files, not in code:
 
-- `free_translation_repairs.tsv` — free-translation fixes keyed by sentence id
+- `free_translation_repairs.tsv` — free-translation fixes keyed by sentence id,
+  or by `*` for a whole story (`unwrap`: the four Saisiyat stories whose
+  translator wrapped every English translation in quotation marks, and
+  holiday's Chinese)
+- `same_english_rulings.tsv` — the Chinese gloss the maintainer chose for a word
+  whose source wrote the same English gloss in both slots, where the borrowing
+  rule's evidence was too thin (review page, 2026-10-14: "write"); read by
+  `borrow_shift_blank_glosses.py`
 - `audio_overrides.tsv` — AUDIO suppression beyond the `沒有音檔` sentinel
 - `p2_source_repairs.xml` — recorded whole-record source repairs, each pinned to
-  a SHA-256 of the record it replaces so a drifting source fails the build
-- `p2_source_repairs.xml` — recorded whole-record source repairs, each pinned to
-  a SHA-256 of the record it replaces so a drifting source fails the build
+  a SHA-256 of the record it replaces so a drifting source fails the build. Read
+  by all three builders (Sentences since round 6 of the review page: Rukai
+  20200529-FW-Ludwig record 15).
+- `bc_restorations.tsv` — gloss cells set back to `BC` (ruling 2026-09-29): NTU's
+  2026 release replaced the backchannel gloss `BC` with the sound in capitals
+  (`M`, `OH`, `HAY`), 404 cells. Each row names the value it expects to find.
+- `gloss_shift_repairs.tsv` — gloss-shift corrections (see below), applied at
+  load time by all three builders; only rows with status `accepted` take effect
+
+## Gloss shifts
+
+Some source records carry their word glosses one word away from the words they
+belong to: a gloss went missing (or was fused with a separately written
+clitic's), every later gloss in the intonation unit slid one word left, and the
+unit's last word was left bare. In Atayal `hunting3_Takun` record 15 the case
+marker `ku` carries `climb-LF=1SG.GEN` and the verb `rakiyas-an=mu` has nothing.
+The displacement is in NTU's JSON itself, not introduced by this build.
+
+The source JSONs are never edited. A correction is a row in
+`gloss_shift_repairs.tsv`, pinned to the SHA-256 of the record(s) it targets,
+naming one of a closed set of operations — `shift_right` (a cell is missing),
+`shift_left` (a spurious blank), `split` (two glosses fused into one cell; a
+`=` stays with the clitic it marks, a `-` is dropped),
+`merge` (one gloss cut in two), `swap` (the two gloss columns exchanged), and
+`fill` (the only operation that writes text, refused without a named
+reviewer). Every operation except `fill` is checked mechanically to have moved
+cells without changing their content. See `gloss_shift.py`.
+
+```bash
+# propose repairs (nothing is applied; output is for review)
+python find_gloss_shifts.py --language Atayal --out-dir /tmp/shifts
+# trial the proposals in a scratch build and check the blast radius
+../qa/try_gloss_shift_repairs.sh stories accepted,proposed /tmp/blast.md
+```
+
+`find_gloss_shifts.py` scores each candidate against the rest of the language,
+leave-one-out. A repair is proposed only if it raises the number of
+(word, gloss) pairs attested elsewhere (placeholder glosses such as `XX`, `??`,
+`FIL`, `FS` and `BC` are not evidence). It must also not lower morpheme-count
+agreement (checked per gloss language), plain-text reconstruction, the number
+of uncontradicted glosses, or the number of words whose English and Chinese
+glosses are a pair seen elsewhere. Words a repair leaves bare are reported, not
+refused. For each one the report shows how the same word is glossed elsewhere
+*in the same language*, as a suggestion for a reviewer to turn into a `fill`
+row. Apparatus never receives a gloss: pauses, punctuation, `(LAUGH)`-style
+notes, lone `<L2J` tags, one-letter bracket markers (`<A` … `A>`: dropped with their letter by step 5, ruling 2026-09-29) and speaker labels with a colon (`F:`, `S,G,W:`). The
+patterns are `pipeline_stories.py` step 15's own. A lone capital with no colon
+(`E==`, `X`) is a word slot, because the builder keeps it once it is glossed.
+Grammar and Sentences are scanned one sentence per record, as their builders
+publish them. Where equally good windows compete, the detector picks the
+*shortest*, so the start of a span may be too late. The report lists the
+competing windows, and every row needs a reader of the language before it is
+accepted.
+
+`../qa/try_gloss_shift_repairs.sh` builds the subcorpus twice into scratch
+directories (never `XML/`): once without the repairs and once with them. Both
+builds stop at `build.sh`'s pre-cleanup checkpoint (`NTU_BUILD_CHECKPOINT`).
+The clean-up steps (prune and empty-translation removal) deal with what
+could not be fixed, so they count neither for nor against a fix. Measured after
+them, the 245 Stories proposals of 2026-09-28 appeared to change 26 unrelated
+sentences, all through prune's donor morphemes (since removed), and 6 targets disappeared
+because prune withdrew their word tier. `../qa/gloss_shift_blast_radius.py`
+compares the two builds by (language, sentence id) and fails if anything
+outside the targets changed.
 
 ## Which source JSONs
 
-The JSONs under `../grammar`, `../sentence` and `../story` are the ones this
-corpus has always published. An "audited source output" revision of 207 of them
-exists on the `fix/ntu-gloss-placeholder` branch, but **no script in the
-repository produces it**: every `json.dumps` in `../scripts/` computes a SHA-256
-digest, and nothing reads a source JSON and writes it back. That revision is
-therefore unauditable and unreproducible, and this build does not use it.
+The JSONs are NTU's own published output. `liao961120/glossParser` builds them
+from the linguists' gloss files and publishes every release to its public
+`gh-pages` branch, served at https://yongfu.name/glossParser/. NTU's corpus
+site (https://corpus.linguistics.ntu.edu.tw/) reads the same store.
 
-It also is not simply better. Adjudicating the contested gloss rows against
-glosses from records both versions agree on (a lexicon of 32,417 wordforms drawn
-only from uncontested records), the published source carries the attested gloss
-1,154 times against that revision's 682, with a larger margin (84,140 vs 56,165).
-Its characteristic error is an off-by-one gloss shift: `ila` PFV (attested 363x)
-becomes empty, `a` FIL (305x) becomes `IRR` (0x), `yau` EXIST (256x) becomes
-`one` (0x).
+This corpus builds from **NTU's release of 2026-01-10** (gh-pages `48b9e0b`),
+adopted 2026-09-28 by maintainer ruling. `../source_release.tsv` maps every
+local file to the upstream file it comes from. NTU renames files between
+releases (54 are now `*_revised`/`*_edited`), and re-published its edits of two
+Atayal stories under names ending in a space. Five upstream files are
+deliberately excluded, each with its reason: two superseded old names, and three
+alternative transcriptions of texts we already have (open questions).
+Three Saisiyat stories (`SaiNr-election`, `SaiNr-life`, `SaiNr-holiday`) are
+pinned to NTU's release of 2024-04-08 instead (ruling 2026-09-29; a row's
+`commit` column in `source_release.tsv`): NTU's 2025 and 2026 releases slide
+their glosses one word, so that 57.9% of the 2024 word-gloss pairs recur in the
+other Saisiyat stories against 9.9% in 2026. The 20 small transcription fixes
+NTU made to them in 2026 (mostly `=` → `==` on fillers) are ported at load time
+by `p2_source_repairs.xml`, as are the glosses of 5 records that the 2026
+release moved onto one-letter bracket markers.
+`../refresh_source.sh` fetches exactly that release and verifies every file's
+SHA-256 (`--check` compares, `--latest` reports whether NTU has released since).
+It also rewrites `../source_snapshot.json`, which
+`../scripts/verify_source_snapshot.py` checks.
+
+History: until 2026-09-28 the corpus built from NTU's release of 2024-04-08
+(`3571fd6`). Six of those files carried unrecorded hand edits: four Sakizaya
+stories with their backspace characters deleted (the builders strip those
+anyway), Kanakanavu `05.json` record 4, and `ap1.json` record 78. The last two
+are also fixed, better, by the pinned replacements in `p2_source_repairs.xml`,
+which are now re-pinned to NTU's own records. PR #161 had adopted the 2026
+release on 2026-08-22, and `2b738f947` reverted it as "unauditable". It is in
+fact auditable against NTU's gh-pages history.
 
 Note that the QA suite in [`../qa/`](../qa/) **cannot detect this**. Its tests
-measure structural completeness — both glosses present, morpheme counts matching
-— so a gloss shifted onto the wrong word passes all of them. A higher QA score
-is not evidence of better glossing.
-
-
+measure structural completeness (both glosses present, morpheme counts
+matching), so a gloss shifted onto the wrong word passes all of them. A higher
+QA score is not evidence of better glossing.
 
 ## Environment
 
@@ -97,6 +294,10 @@ is not evidence of better glossing.
 | `PYTHON` | `<bank>/.venv/bin/python` | building from a git worktree, which has no `.venv` |
 | `CTABLES` | `<bank>/Orthographies/ConversionTables` | testing an unmerged conversion table |
 | `FB_DIALECTS` | `<bank>/dialects.csv` | testing an unmerged dialect/alias row |
+| `NTU_BUILD_OUT` | `../../XML` | installing a trial build somewhere else (XML/ untouched) |
+| `NTU_BUILD_CHECKPOINT` | unset | `pre-cleanup` skips prune and empty-translation removal, for trialling a fix; never publish it |
+| `NTU_GLOSS_SHIFT_STATUSES` | `accepted` | `accepted,proposed` trials proposed gloss-shift rows |
+| `NTU_GLOSS_SHIFT_TABLE` | `gloss_shift_repairs.tsv` | trialling another repairs table |
 
 ## Audio clip names are keyed by span, not by sentence id
 
