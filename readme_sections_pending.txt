@@ -14,8 +14,6 @@ NTUFormosanCorpus notes
 NTU_Paiwan_ASR notes
 Paiwan_Stories notes
 SEALS33 notes
-Siraya_Gospels rights
-Siraya_Gospels notes
 Song-Kanakanavu-Grammar notes
 UtrechtManuscriptWordList notes
 WakelinTexts notes
