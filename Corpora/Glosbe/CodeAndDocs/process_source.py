@@ -496,6 +496,53 @@ def plan_merge():
     return merges, ambiguous
 
 
+def group_sentences(root, english):
+    """Fold whole S into one kept S (grouped_sentences.csv): maintainer,
+    2026-10-18 (round 3) on the five "Oniya lalakaw wa milengo to maanan?" S:
+    "One S (keep U000875): all distinct English and Chinese translations, the
+    extra ones as alternatives; withdraw the other 4 ids -> U000875" + "But
+    clean up these letters: )(乙)". Each row names one translation as it reads
+    now and as it is kept; a caption reference goes to that TRANSL's notes."""
+    with (HERE / "grouped_sentences.csv").open(encoding="utf-8", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    folded = set()
+    for row in rows:
+        kept = english[row["kept_id"]]
+        source = root.find(f"S[@id='{row['from_id']}']")
+        if source is None or _form_key(source) != _form_key(kept):
+            raise ValueError(f"Grouped S no longer matches: {row['from_id']}")
+        transl = next((t for t in source.findall("TRANSL") if t.get(XML_LANG) == row["lang"]
+                       and "".join(t.itertext()) == row["before"]), None)
+        if transl is None:
+            raise ValueError(f"Grouped translation not found: {row['from_id']} {row['before']}")
+        transl.text = row["after"]
+        if row["note"]:
+            transl.set("notes", " | ".join(filter(None, [transl.get("notes"), row["note"]])))
+        kept.append(transl)
+        folded.add(row["from_id"])
+    for sid in folded:
+        source = root.find(f"S[@id='{sid}']")
+        if source.findall("TRANSL"):
+            raise ValueError(f"Grouped S still has translations: {sid}")
+        root.remove(source)
+    for kept_id in {row["kept_id"] for row in rows}:  # identical readings once; ver after the first
+        kept, first, seen = english[kept_id], set(), {}
+        for transl in kept.findall("TRANSL"):
+            key = (transl.get(XML_LANG), "".join(transl.itertext()))
+            if key in seen:
+                notes = [n for n in (seen[key].get("notes"), transl.get("notes")) if n]
+                if notes:
+                    seen[key].set("notes", " | ".join(dict.fromkeys(" | ".join(notes).split(" | "))))
+                kept.remove(transl)
+                continue
+            seen[key] = transl
+            transl.attrib.pop("ver", None)
+            if key[0] in first:
+                transl.set("ver", "alt")
+            first.add(key[0])
+    return len(folded)
+
+
 def drop_enumerators(sentences):
     """List enumerators deleted outright, not kept as notes (drop_enumerators.csv)."""
     dropped = 0
@@ -585,6 +632,7 @@ def merge_translation_files(bank, write_ledger=False):
             last.addnext(transl)
             have.add(key)
         joined += 1
+    grouped = group_sentences(root, english)
     dropped = drop_enumerators(english)
     zho_source = zho_root.get("source")
     root.set("source", f"{root.get('source')} Chinese translations: {zho_source}")
@@ -601,7 +649,7 @@ def merge_translation_files(bank, write_ledger=False):
                 continue
             if row["withdrawn_id"] in final or row["kept_id"] not in final:
                 raise ValueError(f"withdrawn_ids.csv does not describe the output: {row['withdrawn_id']}")
-    print(f"Deleted {dropped} list enumerators")
+    print(f"Folded {grouped} S into another S (grouped_sentences.csv); deleted {dropped} list enumerators")
     exact_n = sum(1 for _, kind, _ in plan.values() if kind == "exact")
     print(f"Joined {joined} Amis-Chinese S to Amis-English S ({exact_n} identical, {joined - exact_n} "
           f"differing only in spaces/commas/periods/dashes); moved {moved} with their own ids; "
