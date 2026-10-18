@@ -9,7 +9,6 @@ Campbell-Favorlang notes
 Glosbe notes
 HundredPaiwanStories notes
 ILRDF_Dicts notes
-Li-Conjunction-Thao notes
 MontgomeryTexts notes
 NTUFormosanCorpus rights
 NTUFormosanCorpus notes
@@ -20,7 +19,6 @@ RauDong notes
 SEALS33 notes
 Song-Kanakanavu-Grammar notes
 UtrechtManuscriptWordList notes
-Virginia_Fey_Dictionary notes
 WakelinTexts notes
 Whitehorn_Collection rights
 Whitehorn_Collection notes

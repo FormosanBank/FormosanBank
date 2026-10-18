@@ -162,6 +162,12 @@ def compare_orthography(c1_dir, c2_dir, label):
     exclude_chars = set(string.digits)
     c1_use_chars = [char for char in c1_info['unique_characters'] if char not in exclude_chars]
     c2_use_chars = [char for char in c2_info['unique_characters'] if char not in exclude_chars]
+    if not c1_use_chars:
+        # A group too small to profile (orthography_extract.py now skips these; an older orthographic_info may
+        # still hold one): every ratio below would divide by zero.
+        print(f"WARNING: {label}: no characters in the corpus profile (too little text). Skipping {label}.")
+        print(f"SUMMARY orthography | {label} | corpus=too-small | warnings=1")
+        return None
 
     # Create a subset of the character frequency dictionaries
     c1_character_frequency = {char: freq for char, freq in c1_info['character_frequency'].items() if char in c1_use_chars}
@@ -265,6 +271,19 @@ def format_summary(s):
     )
 
 
+def reference_dir(reference, lang, dialect):
+    """The reference folder for lang/dialect. A dialect with no reference of its own falls back to <lang>/default
+    and says so: the Sakizaya reference is filed as Sakizaya/default, so a dialect="Sakizaya" group was never
+    compared with anything."""
+    own = os.path.join(reference, lang, dialect)
+    default = os.path.join(reference, lang, 'default')
+    if (dialect != 'default' and not os.path.isfile(os.path.join(own, 'orthographic_info'))
+            and os.path.isfile(os.path.join(default, 'orthographic_info'))):
+        print(f"NOTE: no reference for {lang} / {dialect}; comparing with {lang} / default instead.")
+        return default
+    return own
+
+
 def main(args, possiblelangs):
 
     if args.language:
@@ -301,7 +320,7 @@ def main(args, possiblelangs):
                 print(f"  --- Dialect: {dialect} ---")
                 compare_orthography(
                     os.path.join(lang_path, dialect),
-                    os.path.join(args.reference, lang, dialect),
+                    reference_dir(args.reference, lang, dialect),
                     f"{lang} / {dialect}"
                 )
         
