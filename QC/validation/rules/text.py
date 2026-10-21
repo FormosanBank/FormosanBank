@@ -55,6 +55,7 @@ from lxml import etree
 
 from QC.validation._corpus_index import CorpusIndex
 from QC.validation._finding import Finding, Severity
+from QC.validation.rules._form_text import form_text as whole_form_text
 from QC.validation.rules._reconstruct import (
     DEFAULT_SIMILARITY_THRESHOLD,
     letter_skeleton,
@@ -269,6 +270,13 @@ def _resolve_language(tree: etree._ElementTree) -> str:
     return ""
 
 
+def _form_or_transl_text(elem: etree._Element) -> str:
+    """A FORM read whole, past any inline <UNCLEAR/>; a TRANSL as ``.text``."""
+    if elem.tag == "FORM":
+        return whole_form_text(elem)
+    return elem.text or ""
+
+
 def _s_standard_form_text(s: etree._Element) -> str | None:
     """Text of the S's direct-child standard *base* FORM, or None.
 
@@ -291,7 +299,7 @@ def _direct_form_by_kind(elem: etree._Element, kind: str) -> str | None:
     the base (maintainer ruling 2026-09-10).
     """
     form = find_base_form(elem, kind)
-    return (form.text or "") if form is not None else None
+    return whole_form_text(form) if form is not None else None
 
 
 def _iter_standard_texts(s: etree._Element):
@@ -593,7 +601,7 @@ def v116_non_ascii_in_form(
     for form in tree.iter("FORM"):
         if form.get("kindOf") == "original":
             continue
-        text = form.text or ""
+        text = whole_form_text(form)
         for ch in text:
             if ord(ch) <= 127:
                 continue
@@ -703,7 +711,7 @@ def v121_parens_slashes_in_W_or_M_FORM(
         for child in parent:
             if child.tag != "FORM":
                 continue
-            text = child.text or ""
+            text = whole_form_text(child)
             if _PAREN_OR_SLASH_RE.search(text):
                 p_id = parent.get("id") or ""
                 findings.append(Finding(
@@ -734,7 +742,7 @@ def v122_parens_slashes_anywhere(
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         for ch in text:
             if ch in "()/":
                 findings.append(_soft_finding(
@@ -798,7 +806,7 @@ def v123_null_in_WM_std_requires_sister_original_null(
 def _form_contains_null(elem: etree._Element) -> bool:
     """Return True if elem has any direct-child FORM whose text contains '∅'."""
     for child in elem:
-        if child.tag == "FORM" and child.text and NULL_SYMBOL in child.text:
+        if child.tag == "FORM" and NULL_SYMBOL in whole_form_text(child):
             return True
     return False
 
@@ -994,7 +1002,7 @@ def v127_smart_quotes_in_FORM_hard(
     """
     findings: list[Finding] = []
     for form in tree.iter("FORM"):
-        text = form.text or ""
+        text = whole_form_text(form)
         offenders = sorted({ch for ch in text if ch in _SMART_QUOTE_SET})
         if not offenders:
             continue
@@ -1049,7 +1057,7 @@ def v128_control_chars_in_FORM_TRANSL(
     """
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         offenders = _disallowed_control_chars(text)
         if not offenders:
             continue
@@ -1089,7 +1097,7 @@ def v129_asterisk_in_standard_FORM(
     """V129 HARD (TR11): '*' in any FORM, either tier (original or standard)."""
     findings: list[Finding] = []
     for form in tree.iter("FORM"):
-        text = form.text or ""
+        text = whole_form_text(form)
         if "*" not in text:
             continue
         parent = form.getparent()
@@ -1183,7 +1191,7 @@ def v131_zero_width_or_BOM_in_FORM_TRANSL(
     """V131 HARD (TR16): zero-width or BOM in FORM or TRANSL."""
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         offenders = sorted({ch for ch in text if ch in _ZERO_WIDTH_CHARS})
         if not offenders:
             continue
@@ -1232,7 +1240,7 @@ def v132_html_entities_in_FORM_TRANSL(
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         for match in _HTML_ENTITY_RE.findall(text):
             findings.append(_soft_finding(
                 rule_id="V132",
@@ -1298,7 +1306,7 @@ def v134_angle_brackets_in_S_FORM(
         for child in s:
             if child.tag != "FORM":
                 continue
-            text = child.text or ""
+            text = whole_form_text(child)
             for ch in text:
                 if ch in "<>":
                     findings.append(_soft_finding(
@@ -1440,7 +1448,7 @@ def v136_mixed_script_confusables(
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for form in tree.iter("FORM"):
-        text = form.text or ""
+        text = whole_form_text(form)
         scripts = {s for s in (_script_for(ch) for ch in text) if s is not None}
         if len(scripts) >= 2:
             findings.append(_soft_finding(
@@ -1501,7 +1509,7 @@ def v137_trailing_decimal_footnote_in_S_FORM_TRANSL(
         # onto a morpheme), as does S-level TRANSL.
         if parent_tag == "TRANSL" and host_tag in ("W", "M"):
             continue
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         for match in _FOOTNOTE_RE.finditer(text):
             location = (
                 f"{host_tag}={host_id} {parent_tag}"
@@ -1551,7 +1559,7 @@ def v138_superscript_digit_footnote(
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         for ch in text:
             if ch in _SUPERSCRIPT_DIGITS:
                 findings.append(_soft_finding(
@@ -1642,7 +1650,7 @@ def v139_bracketed_digit_footnote(
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         for match in _BRACKETED_DIGIT_RE.findall(text):
             findings.append(_soft_finding(
                 rule_id="V139",
@@ -1684,16 +1692,16 @@ def v141_W_reconstructs_S(
         s_form = find_base_form(s, "original")
         if s_form is None:
             continue
-        s_skel = letter_skeleton(s_form.text)
+        s_skel = letter_skeleton(whole_form_text(s_form))
         if not s_skel:
             continue
         w_skel: Counter = Counter()
         saw_w_form = False
         for w in ws:
             w_form = find_base_form(w, "original")
-            if w_form is not None and (w_form.text or "").strip():
+            if w_form is not None and whole_form_text(w_form).strip():
                 saw_w_form = True
-                w_skel += letter_skeleton(w_form.text)
+                w_skel += letter_skeleton(whole_form_text(w_form))
         if not saw_w_form:
             continue  # W FORMs missing -> structural rules own this
         sim = similarity(s_skel, w_skel)
@@ -1706,7 +1714,7 @@ def v141_W_reconstructs_S(
             message=(
                 f"S id={s_id!r}: child W FORMs reconstruct only {sim:.0%} of the "
                 f"S FORM letters; the word tier may be misaligned with the "
-                f"sentence. S FORM={s_form.text!r}"
+                f"sentence. S FORM={whole_form_text(s_form)!r}"
             ),
             path=path,
             location=f"S={s_id}" if s_id else "S",
@@ -1759,7 +1767,7 @@ def v142_unmarked_grammaticality(
     findings: list[Finding] = []
     for s in tree.iter("S"):
         for form in s.findall("FORM"):
-            text = (form.text or "").lstrip()
+            text = whole_form_text(form).lstrip()
             if text.startswith("? "):
                 findings.append(_soft_finding(
                     rule_id="V142",
