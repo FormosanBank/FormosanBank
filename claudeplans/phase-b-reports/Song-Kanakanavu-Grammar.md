@@ -4,7 +4,7 @@ Date: 2026-08-12 · Branch: `work/b3-song` (off `main` @ `3ce8e7dac`) ·
 Group 2 (bespoke pipeline: full README order, `standardize.py --copy` +
 `normalize_standard_forms.py` + `fold_standard_stress.py`, phonology Ortho113)
 
-Corpus: Kanakanavu (`xnb`, dialect Kanakanavu), Song Limei 2018 *Introduction to
+Corpus: Kanakanavu (`xnb`, dialect Kanakanavu), Sung Li-May 2018 *Introduction to
 Kanakanavu Grammar*. 2 XML files — 699 grammar sentences (650 with `W`/`M`;
 3,477 `W`, 5,034 `M`) and 870 dictionary entries. No audio.
 

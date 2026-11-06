@@ -78,12 +78,12 @@ EXPECTED_MORPHEMES = 5048
 XML_PATH = "XML/Kanakanavu/Song_2018_Kanakanavu_Grammar.xml"
 
 CITATION = (
-    "Song, Limei. (2018). Kanakanafu yu yufa gailun [Introduction to "
+    "Sung, Li-May. (2018). Kanakanafu yu yufa gailun [Introduction to "
     "Kanakanavu Grammar]. Taiwan nandao yuyan congshu, 16. Council of "
     "Indigenous Peoples."
 )
 BIBTEX = (
-    "@book{song2018kanakanavu, author={Song, Limei}, title={Kanakanafu yu "
+    "@book{song2018kanakanavu, author={Sung, Li-May}, title={Kanakanafu yu "
     "yufa gailun [Introduction to Kanakanavu Grammar]}, series={Taiwan "
     "nandao yuyan congshu}, volume={16}, publisher={Council of Indigenous "
     "Peoples}, year={2018}}"
@@ -255,7 +255,7 @@ def build_grammar(included: list[dict[str, str]]) -> None:
             {
                 "id": row["final_s_id"],
                 "source": (
-                    f"Song 2018 official reader page {row['reader_page']}; "
+                    f"Sung 2018 official reader page {row['reader_page']}; "
                     f"ledger label {row['example_label']}; {row['confidence_review_note']}."
                 ),
             },
@@ -359,7 +359,7 @@ def build_dictionary() -> None:
         decision = split.get(row["entry_id"])
         canonical_form = _canonical_apostrophes(row["form"])
         source = (
-            f"Song 2018 official reader page {row['reader_page']}; "
+            f"Sung 2018 official reader page {row['reader_page']}; "
             f"Appendix 2A column {row['column']}; {row['method']}."
         )
         if decision is None:

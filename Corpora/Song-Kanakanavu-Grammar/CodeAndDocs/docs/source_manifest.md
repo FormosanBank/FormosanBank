@@ -1,7 +1,7 @@
 # Source manifest
 
 - Basecamp card: https://3.basecamp.com/4067638/buckets/31258415/card_tables/cards/10081339846
-- Citation: Song, Limei. 2018. *Kanakanafu yu yufa gailun* [Introduction to Kanakanavu Grammar]. *Taiwan nandao yuyan congshu*, 16. Council of Indigenous Peoples.
+- Citation: Sung, Li-May. 2018. *Kanakanafu yu yufa gailun* [Introduction to Kanakanavu Grammar]. *Taiwan nandao yuyan congshu*, 16. Council of Indigenous Peoples.
 - Official reader: https://alilin.cip.gov.tw/ebook/5949734115b6abe6caf971/HTML5/pc.html#/page/1
 - Official manifest: 268 page images, reader update timestamp `2018/07/30 17:29:49`
 - Local image-source compilation: `raw_data/source.pdf`

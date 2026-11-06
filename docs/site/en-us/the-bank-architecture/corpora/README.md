@@ -29,7 +29,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Truku Word Formation (Hsu Thesis)](nowbucyang-truku-thesis.md) (text, glossing, Mandarin)
 * [Safolu Amis Dictionary](safolu-amis-dictionary.md) (text, Mandarin)
 * [Latham 1862](latham-1862.md) (text, English)
-* [Song (2018) Kanakanavu Grammar](song-kanakanavu-grammar.md) text, glossing, Mandarin
+* [Sung (2018) Kanakanavu Grammar](song-kanakanavu-grammar.md) text, glossing, Mandarin
 * [Li (2014) Conjunction in Thao](li-conjunction-thao.md) (text, glossing, English)
 * [Campbell-Favorlang](campbell-favorlang.md) (text, English)
 * [Utrecht Manuscript Word List](utrecht-manuscript-word-list.md) (text, English, Dutch)
