@@ -23,8 +23,9 @@ Config keys (review/review_config.json):
                     analysis line that is not spelled like the sentence
   gloss_line        optional {"ver": "alt", "notes_contains": "...", "empty_token": "$"}:
                     the glosses live in one S-level TRANSL; spread them over the words
-  record_info       optional TSV (record, locator, include) for corpora whose <S>
-                    carry no page locator, or to leave records out
+  record_info       optional TSV (record, locator, include[, label]) for corpora whose
+                    <S> carry no page locator, to leave records out, or to label a
+                    card's first box differently (e.g. "Bunun headword")
   locators          optional [[regex, format], ...]: rewrite S/@source into something a
                     student can read; first match wins; {0}.. = groups, {source} = raw
   flags_off         triage flags that are noise for this source (e.g. ["parts"]
@@ -90,6 +91,7 @@ def unbalanced(value: str) -> bool:
 
 
 def record_hash(r: dict) -> str:
+    # Only what the student can change; locators, labels and flags may change without voiding their work.
     shown = [r["sentence"], r["words"], r["glosses"], [t["text"] for t in r["translations"]]]
     blob = json.dumps(shown, ensure_ascii=False, separators=(",", ":"))
     return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:16]
@@ -231,6 +233,7 @@ def main() -> None:
                 "file": rel,
                 "file_label": label,
                 "locator": row.get("locator") or readable(s.get("source") or "", cfg),
+                "sentence_label": row.get("label") or "",
                 "sentence": inner(sform),
                 "words": words,
                 "glosses": glosses,

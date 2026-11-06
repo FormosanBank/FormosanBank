@@ -530,7 +530,7 @@ details.guide summary { cursor: pointer; font-weight: 600; }
       sent.classList.toggle("changed", ed.sentence !== r.sentence);
       renderWasLine("swas-" + rid, ed.sentence, r.sentence, "lang"); autosize(sent); touch(rid); refreshCardChrome(rid);
     });
-    card.appendChild(el("div", { className: "field" }, [el("label", { "for": sId, text: CFG.language + " sentence" + (r.words.length ? ", as the book prints it" : "") }), sent, el("div", { className: "was-line", id: "swas-" + rid })]));
+    card.appendChild(el("div", { className: "field" }, [el("label", { "for": sId, text: r.sentence_label || (CFG.language + " sentence" + (r.words.length ? ", as the book prints it" : "")) }), sent, el("div", { className: "was-line", id: "swas-" + rid })]));
 
     // interlinear table
     if (WORDS_ON && r.words.length) {
