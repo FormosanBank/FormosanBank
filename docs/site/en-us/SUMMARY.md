@@ -40,7 +40,7 @@
   * [Truku Word Formation (Hsu Thesis)](the-bank-architecture/corpora/nowbucyang-truku-thesis.md)
   * [Safolu Amis Dictionary](the-bank-architecture/corpora/safolu-amis-dictionary.md)
   * [Latham 1862](the-bank-architecture/corpora/latham-1862.md)
-  * [Song (2018) Kanakanavu Grammar](the-bank-architecture/corpora/song-kanakanavu-grammar.md)
+  * [Sung (2018) Kanakanavu Grammar](the-bank-architecture/corpora/song-kanakanavu-grammar.md)
   * [Li (2014) Conjunction in Thao](the-bank-architecture/corpora/li-conjunction-thao.md)
   * [Campbell-Favorlang](the-bank-architecture/corpora/campbell-favorlang.md)
   * [Utrecht Manuscript Word List](the-bank-architecture/corpora/utrecht-manuscript-word-list.md)

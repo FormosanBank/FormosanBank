@@ -1,6 +1,6 @@
-# Song Limei (2018), *Introduction to Kanakanavu Grammar*
+# Sung Li-May (2018), *Introduction to Kanakanavu Grammar*
 
-This corpus is the Kanakanavu (`xnb`) material from Song Limei's 2018 *Kanakanafu yu yufa gailun* [Introduction to Kanakanavu Grammar] (Council of Indigenous Peoples), scraped from the official Alilin e-reader and reconciled page-by-page against the source page images. It comprises 699 grammar sentences — 650 of them with word- and morpheme-level interlinear glossing (3,477 words, 5,048 morphemes) — together with the book's Appendix 2A dictionary as a separate 870-entry lexicon. Text is in the Ortho113 orthography with Mandarin (`zho`) translations and glosses.
+This corpus is the Kanakanavu (`xnb`) material from Sung Li-May's 2018 *Kanakanafu yu yufa gailun* [Introduction to Kanakanavu Grammar] (Council of Indigenous Peoples), scraped from the official Alilin e-reader and reconciled page-by-page against the source page images. It comprises 699 grammar sentences — 650 of them with word- and morpheme-level interlinear glossing (3,477 words, 5,048 morphemes) — together with the book's Appendix 2A dictionary as a separate 870-entry lexicon. Text is in the Ortho113 orthography with Mandarin (`zho`) translations and glosses.
 
 ## Languages and dialects
 
@@ -13,8 +13,8 @@ translations and glosses are Mandarin (`xml:lang="zho"`).
 
 ## Source
 
-The Kanakanavu (`xnb`) corpus drawn from Song
-Limei's 2018 *Kanakanafu yu yufa gailun* [Introduction to Kanakanavu Grammar]
+The Kanakanavu (`xnb`) corpus drawn from Sung
+Li-May's 2018 *Kanakanafu yu yufa gailun* [Introduction to Kanakanavu Grammar]
 (Taiwan nandao yuyan congshu 16; Council of Indigenous Peoples), scraped from the
 [official Alilin e-reader](https://alilin.cip.gov.tw/ebook/5949734115b6abe6caf971/HTML5/pc.html#/page/1).
 It produces two files in the
@@ -49,7 +49,7 @@ on the [FormosanBank site](https://formosanbank.github.io/FormosanBank/).
 If you use this corpus, or anything derived from it, in a publication, cite both
 FormosanBank and:
 
-Song, Limei. (2018). *Kanakanafu yu yufa gailun* [Introduction to Kanakanavu Grammar]. *Taiwan nandao yuyan congshu*, 16. Council of Indigenous Peoples.
+Sung, Li-May. (2018). *Kanakanafu yu yufa gailun* [Introduction to Kanakanavu Grammar]. *Taiwan nandao yuyan congshu*, 16. Council of Indigenous Peoples.
 
 ## License
 
