@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 """Export a dev repo's XML as the baseline for a student proofreading page.
 
-    python export_review.py --repo ../Formosan-<Name>          # reads <repo>/review/review_config.json
+    python export_review.py --repo ../Formosan-<Name> --images-out <scratchpad>/<name>-pages
         -> <repo>/review/review_baseline.json   what the student starts from; apply_review.py checks against it
         -> <repo>/review/review_page.html       publish this file as the artifact
+        -> <images-out>/p0053.jpg ...           one image per PDF page a card cites, published beside the
+                                                page as pages/p0053.jpg (never committed: they are the book)
+        -> <images-out>/files.json              the publish's `files` map, {"pages/p0053.jpg": "<path>"}
+
+Every card shows its example as the book prints it (maintainer, 2026-11-06: "Yes, change the skill
+to always include screenshots."): cut from the page where the example can be found, the whole page
+otherwise, with a button for the whole page either way.
 
 One card per <S>, showing what the XML publishes: the sentence (S FORM original),
 the word-by-word line (W FORM original) with one gloss per word (the W's first
@@ -31,6 +38,16 @@ Config keys (review/review_config.json):
   flags_off         triage flags that are noise for this source (e.g. ["parts"]
                     where the book glosses whole words)
   guide_items       corpus-specific <li> items for the guide (trusted HTML)
+  flag_labels       optional {code: [short label, explanation]} for corpus flags given in
+                    record_info's optional `flags` column (comma-separated codes)
+  page_images       required: {"pdf": repo-relative PDF (under an ignored Private/),
+                    "pages": regex over the card's locator whose group 1 is a page number or
+                    a range "394-395" (every match counts), "offset": added to each (default 0),
+                    "locate": "text" (find the sentence in the PDF's text layer and cut the
+                    example out) or "none" (scanned PDF: show the whole page),
+                    "boxes": optional TSV (record, page, x0, y0, x1, y1; fractions of the page)
+                    that places the cut where the PDF has no text layer,
+                    "dpi": default 140, "quality": JPEG quality, default 60}
 """
 
 from __future__ import annotations
@@ -112,11 +129,206 @@ def load_record_info(path: Path) -> dict[str, dict]:
     return {row["record"]: row for row in rows}
 
 
+def cited_pages(locator: str, spec: dict) -> list[int]:
+    pages: list[int] = []
+    for m in re.finditer(spec["pages"], locator):
+        value = m.group(1)
+        if "-" in value:
+            first, last = (int(v) for v in value.split("-"))
+            pages += list(range(first, last + 1))
+        else:
+            pages.append(int(value))
+    offset = int(spec.get("offset", 0))
+    return list(dict.fromkeys(p + offset for p in pages))
+
+
+class PageText:
+    """The PDF's text lines on one page, for finding a card's example (locate: "text")."""
+
+    def __init__(self, page) -> None:
+        self.lines: list[tuple[float, float, float, float]] = []
+        self.text = ""
+        self.owner: list[int] = []
+        found = []
+        for block in page.get_text("dict")["blocks"]:
+            for line in block.get("lines", []):
+                key = letters("".join(span["text"] for span in line["spans"]))
+                if key:
+                    found.append((tuple(line["bbox"]), key))
+        # A page printed in two columns (De Busser's word list): at least a quarter of its lines on
+        # each side of the middle and almost none across it. Read it column by column, and keep the
+        # cut inside the sentence's column.
+        self.columns: list[tuple[float, float]] = []
+        self.column_of: list[int] = []
+        groups = [found]
+        if found:
+            x0 = min(b[0] for b, _ in found); x1 = max(b[2] for b, _ in found); mid = (x0 + x1) / 2
+            left = [i for i in found if i[0][2] < mid - 5]
+            right = [i for i in found if i[0][0] > mid + 5]
+            across = len(found) - len(left) - len(right)
+            if len(left) >= len(found) / 4 and len(right) >= len(found) / 4 and across <= len(found) / 10:
+                groups = [left, right]
+                self.columns = [(x0, mid), (mid, x1)]
+        # Reading order within a column: printed rows top to bottom (within 3 pt is one row), each
+        # left to right. A PDF's own order can jump about, and an interlinear row is often several "lines".
+        for column, group in enumerate(groups):
+            group = sorted(group, key=lambda item: (item[0][1], item[0][0]))
+            rows: list[list] = []
+            for item in group:
+                if rows and item[0][1] - rows[-1][0][0][1] <= 3:
+                    rows[-1].append(item)
+                else:
+                    rows.append([item])
+            for row in rows:
+                for bbox, key in sorted(row, key=lambda item: item[0][0]):
+                    self.lines.append(bbox)
+                    self.column_of.append(column)
+                    self.text += key
+                    self.owner += [len(self.lines) - 1] * len(key)
+        heights = sorted(l[3] - l[1] for l in self.lines) or [12.0]
+        self.line_height = heights[len(heights) // 2]
+        self.rect = page.rect
+
+    def find(self, value: str, start: int = 0) -> tuple[int, int] | None:
+        """(first, last) character positions of `value`'s letters, tried as a 24-letter
+        opening, then 12-letter pieces from its start, middle and end."""
+        key = letters(value)
+        if not key:
+            return None
+        tries = [key[:24]] + [key[i:i + 12] for i in (0, max(0, len(key) // 2 - 6), max(0, len(key) - 12))]
+        for piece in tries:
+            if len(piece) < 6 and piece != key:
+                continue
+            at = self.text.find(piece, start)
+            if at >= 0:
+                return at, at + len(piece) - 1
+        return None
+
+    def box(self, sentence: str, translations: list[str]) -> list[float] | None:
+        hit = self.find(sentence)
+        if hit is None:
+            return None
+        # A short sentence (a word-list headword) can occur earlier on the page inside another
+        # entry (De Busser p. 570: "the full verb mudan"): take the occurrence its translation
+        # follows soonest.
+        keys = [letters(t)[:12] for t in translations if letters(t)]
+        if keys and len(letters(sentence)) < 24:
+            piece = self.text[hit[0]:hit[1] + 1]
+            best, at = None, hit[0]
+            while at >= 0:
+                gaps = [self.text.find(k, at + len(piece)) - at for k in keys]
+                gaps = [g for g in gaps if g > 0]
+                if gaps and (best is None or min(gaps) < best[0]):
+                    best = (min(gaps), at)
+                at = self.text.find(piece, at + 1)
+            if best:
+                hit = (best[1], best[1] + len(piece) - 1)
+        first = self.owner[hit[0]]
+        last = self.owner[hit[1]]
+        translations_found = False
+        for text in translations:
+            # the translation's end, looked for within the next 1,500 letters
+            key = letters(text)
+            end = self.find(key[-12:] if len(key) > 12 else key, hit[1]) if key else None
+            if end and end[0] - hit[1] < 1500:
+                last = max(last, self.owner[end[1]])
+                translations_found = True
+                break
+        if self.columns:
+            column = self.column_of[first]
+            last = max(i for i in range(first, last + 1) if self.column_of[i] == column)
+            page_x0, page_x1 = self.columns[column]
+        else:
+            page_x0 = min(l[0] for l in self.lines)
+            page_x1 = max(l[2] for l in self.lines)
+        lines = self.lines[first:last + 1]
+        top, bottom = min(l[1] for l in lines), max(l[3] for l in lines)
+        if not translations_found:
+            # no translation to end on: show about seven printed lines from the sentence down
+            bottom = max(bottom, top + 7 * 1.6 * self.line_height)
+        pad = 10
+        w, h = self.rect.width, self.rect.height
+        self.complete = translations_found
+        side = 0 if self.columns else pad  # a column's edge is the gutter: no pad into the next column
+        return [round(max(0, page_x0 - side) / w, 4), round(max(0, top - pad) / h, 4),
+                round(min(w, page_x1 + side) / w, 4), round(min(h, bottom + pad) / h, 4)]
+
+
+def page_images(records: list[dict], cfg: dict, repo: Path, images_out: Path) -> dict:
+    """Render every cited page and attach {file, page, box, w, h} to each card."""
+    import fitz  # PyMuPDF
+    spec = cfg["page_images"]
+    pdf = (repo / spec["pdf"]).resolve()
+    if not pdf.exists():
+        sys.exit(f"page_images.pdf not found: {pdf} (restore it from git history; see SKILL.md step 2)")
+    if images_out.resolve().is_relative_to(repo):
+        sys.exit("--images-out must be outside the dev repo: the page images are the book and are never committed")
+    doc = fitz.open(str(pdf))
+    boxes: dict[tuple[str, int], list[float]] = {}
+    if spec.get("boxes"):
+        with (repo / spec["boxes"]).open(encoding="utf-8", newline="") as handle:
+            for row in csv.DictReader(handle, delimiter="\t"):
+                boxes[(row["record"], int(row["page"]))] = [float(row[k]) for k in ("x0", "y0", "x1", "y1")]
+    texts: dict[int, PageText] = {}
+    missing = [r["record"] for r in records if not cited_pages(r["locator"], spec)]
+    if missing:
+        sys.exit(f"{len(missing)} cards cite no page under page_images.pages, e.g. {missing[:3]}")
+    for r in records:
+        images = []
+        for number in cited_pages(r["locator"], spec):
+            if not 1 <= number <= doc.page_count:
+                sys.exit(f"{r['record']}: page {number} is outside the PDF (1-{doc.page_count})")
+            box = boxes.get((r["record"], number))
+            if box is None and spec.get("locate") == "text":
+                trs = [t["text"] for t in r["translations"]]
+                for tried in (number, number + 1, number - 1):
+                    # the page the card names first, then its neighbours (an example that ran on)
+                    if not 1 <= tried <= doc.page_count:
+                        continue
+                    if tried not in texts:
+                        texts[tried] = PageText(doc[tried - 1])
+                    box = texts[tried].box(r["sentence"], trs)
+                    if box:
+                        if tried != number:
+                            r["_other_page"] = True
+                        number = tried
+                        break
+            images.append({"file": f"pages/p{number:04d}.jpg", "page": number, "box": box})
+            # An example found low on its page with no translation after it runs onto the next
+            # page (Puyuma p.114 example 46): show that page too, whole.
+            if (box and spec.get("locate") == "text" and not texts[number].complete and box[3] > 0.85
+                    and number < doc.page_count and (r["record"], number) not in boxes):
+                images.append({"file": f"pages/p{number + 1:04d}.jpg", "page": number + 1, "box": None})
+        if spec.get("locate") == "text" and not any(i["box"] for i in images):
+            r["_not_found"] = True
+        r["images"] = images
+    images_out.mkdir(parents=True, exist_ok=True)
+    dpi, quality = int(spec.get("dpi", 140)), int(spec.get("quality", 60))
+    from PIL import Image
+    sizes, files = {}, {}
+    for number in sorted({i["page"] for r in records for i in r["images"]}):
+        target = images_out / f"p{number:04d}.jpg"
+        pix = doc[number - 1].get_pixmap(dpi=dpi, colorspace=fitz.csGRAY)
+        Image.frombytes("L", (pix.width, pix.height), pix.samples).save(target, "JPEG", quality=quality, optimize=True)
+        sizes[number] = (pix.width, pix.height)
+        files[f"pages/p{number:04d}.jpg"] = str(target)
+    for r in records:
+        for i in r["images"]:
+            i["w"], i["h"] = sizes[i["page"]]
+    (images_out / "files.json").write_text(json.dumps(files, indent=1) + "\n", encoding="utf-8")
+    total = sum(Path(f).stat().st_size for f in files.values())
+    return {"pages": len(files), "bytes": total,
+            "cut": sum(1 for r in records for i in r["images"] if i["box"]),
+            "whole": sum(1 for r in records for i in r["images"] if not i["box"])}
+
+
 def guide_html(cfg: dict, example: tuple[str, str] | None, has_words: bool, edge_punct: bool) -> str:
     lang = html.escape(cfg["language"])
     items = [
-        f"<p>Each card is one sentence from {cfg['source_html']} as it appears in FormosanBank's data. "
-        f"Open the book at the page shown on the card and make the card match the book. {cfg.get('pdf_note', '')}</p>",
+        f"<p>Each card is one sentence from {cfg['source_html']} as it appears in FormosanBank's data, with the "
+        "book's page above it: the example cut out where we could find it, otherwise the whole page. Make the card match "
+        "the picture. If the example runs past the edge of the cut, or you need the lines around it, press "
+        f"<em>Show the whole page</em>. {cfg.get('pdf_note', '')}</p>",
         "<h3>What to fix</h3><ul>",
         f"<li><strong>Misread letters.</strong> Fix any {lang} letter, character or punctuation mark that differs "
         "from the book. Type the book's spelling even where it looks unusual. Don't correct the author's spelling or grammar.</li>",
@@ -171,6 +383,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--repo", type=Path, required=True)
     ap.add_argument("--config", type=Path, help="default: <repo>/review/review_config.json")
+    ap.add_argument("--images-out", type=Path, required=True,
+                    help="directory for the page images, outside the repo (use the session scratchpad)")
     args = ap.parse_args()
     repo = args.repo.resolve()
     cfg_path = args.config or repo / "review" / "review_config.json"
@@ -181,6 +395,8 @@ def main() -> None:
         sys.exit(f"{corrections} holds corrections. Re-exporting would change the baseline under them; "
                  "incorporate or move them aside first.")
 
+    if "page_images" not in cfg:
+        sys.exit("review_config.json needs a page_images block: every card shows the book's page (see the docstring)")
     word_tier = cfg.get("word_tier", "edit")
     gline = cfg.get("gloss_line")
     info = load_record_info(repo / cfg["record_info"]) if cfg.get("record_info") else {}
@@ -243,9 +459,12 @@ def main() -> None:
                 "more_glosses": "; ".join(more),
                 "scrape_notes": list(dict.fromkeys(notes)),
                 "_line_count_off": line_count_off,
+                "_corpus_flags": [f.strip() for f in (row.get("flags") or "").split(",") if f.strip()],
             }
             rec["hash"] = record_hash(rec)
             records.append(rec)
+
+    shots = page_images(records, cfg, repo, args.images_out)
 
     # ---- triage flags (hints for the student, not verdicts) ----
     usual: dict[str, Counter] = defaultdict(Counter)
@@ -287,6 +506,11 @@ def main() -> None:
             flags.append("unclear")
         if has_translations and not r["translations"]:
             flags.append("no_translation")
+        if r.pop("_not_found", False):
+            flags.append("not_on_page")
+        if r.pop("_other_page", False):
+            flags.append("other_page")
+        flags += r.pop("_corpus_flags")
         r["flags"] = sorted(set(flags) - set(cfg.get("flags_off", [])))
 
     # A note the scrape put on most cards says something about the whole corpus: it belongs in
@@ -319,6 +543,7 @@ def main() -> None:
             "word_tier": word_tier,
             "download_prefix": cfg["download_prefix"],
             "files": [{"file": f, "label": labels[f], "count": n} for f, n in sorted(files.items())],
+            "flag_labels": cfg.get("flag_labels", {}),
         },
         "records": records,
     }
@@ -342,6 +567,10 @@ def main() -> None:
           f"{sum(1 for r in records if not r['translations'])} without a translation")
     print(f"  flagged: {sum(1 for r in records if r['flags'])} cards  {dict(sorted(flag_counts.items()))}")
     print(f"  morpheme example in guide: {example}")
+    print(f"  page images: {shots['pages']} pages, {shots['bytes'] / 1e6:.1f} MB in {args.images_out}; "
+          f"{shots['cut']} cut out, {shots['whole']} whole pages; "
+          f"{flag_counts.get('not_on_page', 0)} cards whose sentence was not found on its page, "
+          f"{flag_counts.get('other_page', 0)} found on the next or previous page instead")
     for n in sorted(corpus_wide):
         print(f"  NOT shown on cards (on {note_counts[n]} of {len(records)}); say it in guide_items if it matters: {n}")
     print(f"  punctuation-in-word-boxes guide item: {'included' if edge_punct else 'not needed'}")

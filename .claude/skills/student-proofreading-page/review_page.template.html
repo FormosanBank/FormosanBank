@@ -102,6 +102,16 @@ details.guide summary { cursor: pointer; font-weight: 600; }
 .note-banner { font-size: .86rem; background: var(--sunken); border-radius: 6px; padding: 6px 10px; color: var(--muted); overflow-wrap: anywhere; }
 .note-banner .inline-lang { color: var(--ink); }
 
+/* the book's page: the example cut out, or the whole page */
+.src { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #fff; }
+.src-cut { position: relative; width: 100%; overflow: hidden; }
+.src-cut img { position: absolute; max-width: none; height: auto; display: block; }
+.src-page { position: relative; max-height: 75vh; overflow: auto; }
+.src-page img { width: 100%; height: auto; display: block; }
+.src-page .box { position: absolute; outline: 3px solid var(--flag); outline-offset: 0; pointer-events: none; }
+.src-bar { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; justify-content: space-between; padding: 5px 10px; font-size: .8rem; color: var(--muted); background: var(--sunken); border-top: 1px solid var(--line); }
+.src-bar .btn { padding: 3px 10px; font-size: .8rem; }
+
 .igt-wrap { overflow-x: auto; padding-bottom: 4px; }
 .igt { display: flex; gap: 6px; align-items: flex-start; width: max-content; }
 .rowlabels, .col { display: grid; grid-template-rows: 18px 36px 36px auto; gap: 4px; }
@@ -497,6 +507,47 @@ details.guide summary { cursor: pointer; font-weight: 600; }
   }
   function autosize(ta) { ta.style.height = "auto"; ta.style.height = (ta.scrollHeight + 2) + "px"; }
 
+  // The book's page for one card. With a box: the example cut out, and a button for the whole page
+  // (the box outlined). Without one: the whole page, scrollable.
+  function renderSource(im) {
+    var whole = !im.box;
+    var wrap = el("figure", { className: "src" });
+    var view = el("div");
+    var caption = el("span", { text: "Book, PDF p. " + im.page + (im.box ? "" : " (find the example on this page)") });
+    var toggle = im.box ? el("button", { className: "btn", type: "button" }) : null;
+    function draw() {
+      view.innerHTML = "";
+      var img = el("img", { src: im.file, alt: "PDF page " + im.page + " of the book", loading: "lazy", width: String(im.w), height: String(im.h) });
+      if (!whole) {
+        var b = im.box, bw = b[2] - b[0], bh = b[3] - b[1];
+        view.className = "src-cut";
+        view.style.aspectRatio = (bw * im.w) + " / " + (bh * im.h);
+        img.style.width = (100 / bw) + "%";
+        img.style.left = (-b[0] / bw * 100) + "%";
+        img.style.top = (-b[1] / bh * 100) + "%";
+        view.appendChild(img);
+      } else {
+        view.className = "src-page";
+        view.style.aspectRatio = "";
+        var holder = el("div", { style: "position:relative" }, [img]);
+        if (im.box) {
+          var b2 = im.box;
+          holder.appendChild(el("div", { className: "box", style: "left:" + (b2[0] * 100) + "%;top:" + (b2[1] * 100) + "%;width:" + ((b2[2] - b2[0]) * 100) + "%;height:" + ((b2[3] - b2[1]) * 100) + "%" }));
+        }
+        view.appendChild(holder);
+        // bring the outlined example into view (the img's width/height attributes give the
+        // page its height before the image has loaded)
+        if (im.box) requestAnimationFrame(function () { view.scrollTop = Math.max(0, im.box[1] * holder.offsetHeight - 40); });
+      }
+      if (toggle) toggle.textContent = whole ? "Show the example only" : "Show the whole page";
+    }
+    if (toggle) toggle.addEventListener("click", function () { whole = !whole; draw(); });
+    draw();
+    wrap.appendChild(view);
+    wrap.appendChild(el("figcaption", { className: "src-bar" }, [caption, toggle]));
+    return wrap;
+  }
+
   function renderCard(r) {
     var rid = r.record, e = current(rid);
     var card = el("article", { className: "rec" + (isReviewed(rid) ? " is-reviewed" : ""), id: "rec-" + rid, "data-rid": rid });
@@ -520,6 +571,7 @@ details.guide summary { cursor: pointer; font-weight: 600; }
     }
     if (r.more_glosses) card.appendChild(el("div", { className: "note-banner", text: "Some words here have a second gloss in our data, not shown in the boxes: " + r.more_glosses + ". If one is wrong, say so in the note." }));
     r.scrape_notes.forEach(function (n) { card.appendChild(el("div", { className: "note-banner", text: "Note from the scrape: " + n })); });
+    (r.images || []).forEach(function (im) { card.appendChild(renderSource(im)); });
 
     // sentence
     var sId = "s-" + rid;
@@ -713,8 +765,11 @@ details.guide summary { cursor: pointer; font-weight: 600; }
     split_word: ["split word?", "A one-character gloss that is part of this word's usual gloss: a gloss may have been split across two words."],
     line_count: ["gloss count differs", "Our gloss line has a different number of glosses than there are words, so the guess at where each gloss goes is probably wrong somewhere."],
     unclear: ["unreadable spot", "The scrape could not read part of this example and marked it <UNCLEAR/>. If you can read the book there, replace <UNCLEAR/> with what it prints."],
-    no_translation: ["no translation", "Our data has no free translation for this sentence."]
+    no_translation: ["no translation", "Our data has no free translation for this sentence."],
+    other_page: ["on another page", "The example was not on the page the card names, but on the page next to it, which is the one shown. Check you are looking at the right example."],
+    not_on_page: ["not found on page", "The automatic check could not find this sentence on the page shown, so the whole page is shown. The example may be on another page, or our text differs a lot from the book."]
   };
+  Object.keys(CFG.flag_labels || {}).forEach(function (k) { FLAGS[k] = CFG.flag_labels[k]; });
 
   // ---------- download / load ----------
   function exportPayload() {
