@@ -22,7 +22,7 @@ TSFC-AudioB-16A  Rukai  "RUKAI (Kocapongan) Vocabulary 1"
   notebook: TSFC-PDF-106 p.4~40
 ```
 
-364 `S` records across 20 files, in 11 languages, are extracted from those cells. The name is
+363 `S` records across 20 files, in 11 languages, are extracted from those cells. The name is
 deliberately narrow — `Tsuchida_TapeGlosses_*` — because this is one slice of
 the collection, and the collection has a great deal more in it that is not
 released. Further slices can be added to this repo under their own names.
@@ -45,13 +45,13 @@ released. Further slices can be added to this repo under their own names.
 | `Rukai/…_Rukai.xml` | Rukai | `dru` | unknown | — | 15 |
 | `Rukai/…_Rukai_Mantauran.xml` | Rukai | `dru` | **Wanshan** | Mantauran | 17 |
 | `Saaroa/…_Saaroa.xml` | Saaroa | `sxr` | Saaroa | — | 34 |
-| `Saisiyat/…_Saisiyat.xml` | Saisiyat | `xsy` | Saisiyat | — | 35 |
+| `Saisiyat/…_Saisiyat.xml` | Saisiyat | `xsy` | Saisiyat | — | 34 |
 | `Seediq/…_Seediq.xml` | Seediq | `trv` | unknown | — | 20 |
 | `Seediq/…_Seediq_Soasal.xml` | Seediq | `trv` | unknown | Soasal | 24 |
 | `Tsou/…_Tsou_Duhtu.xml` | Tsou | `tsu` | Tsou | **Duhtu** | 28 |
 | `Yami/…_Yami.xml` | Yami | `tao` | Yami | — | 21 |
 | `Yami/…_Yami_Imorod.xml` | Yami | `tao` | Yami | Imorod | 11 |
-| | | | | **total** | **364** |
+| | | | | **total** | **363** |
 
 Single-dialect languages take the language name as the `dialect` value, as
 every single-dialect language in `dialects.csv` does. Multi-dialect languages
@@ -153,7 +153,7 @@ including the ones not published, with the reason recoverable from its
 `gloss_flag` and `record_type` columns. The XML is built only from rows that are
 a glossed lexeme in a Formosan language.
 
-`CodeAndDocs/source/audited_glosses.tsv` holds the **78 reviewed decisions**
+`CodeAndDocs/source/audited_glosses.tsv` holds the **79 reviewed decisions**
 that override the automatic rules — see "Every candidate was read against its
 source cell" below. `extract_forms.py` requires it (`--audit`) and refuses to
 run if any decision no longer lands on exactly one extracted row, so a change
@@ -165,10 +165,10 @@ in the source sheet cannot silently carry a stale decision.
 | non-Formosan language (Tagalog, Ibanag, Hausa) | 25 |
 | classified `incipit` — the opening words of a song or narrative | 23 |
 | gloss flagged `metadata_phrase` — prose about the recording | 18 |
-| **excluded by the hand audit**, reason recorded per row | 11 |
+| **excluded by the hand audit**, reason recorded per row | 12 |
 | gloss flagged `unbalanced_paren_gloss` — the capture ran past a parenthesis | 10 |
 | gloss flagged `long_bare_before` — over 5 characters in the ambiguous layout | 5 |
-| **published** | **359 rows → 364 S** |
+| **published** | **358 rows → 363 S** |
 
 Three of the 23 unpublished openings are Tagalog or Ibanag, so **20 of them are
 Formosan**; the other three are counted in the non-Formosan row as well and are
@@ -184,7 +184,7 @@ python QC/validation/validate_text.py by_path --path Corpora/Tsuchida-TapeGlosse
 python QC/count_tokens.py Corpora/Tsuchida-TapeGlosses
 ```
 
-- `validate_xml.py`: **20 files, 364 SOFT, 0 HARD.** Every SOFT finding is
+- `validate_xml.py`: **20 files, 363 SOFT, 0 HARD.** Every SOFT finding is
   `V014 count_missing_standard_form`, one per `S` — the expected and intended
   consequence of there being no `standard` tier (see below).
 - `validate_text.py`: 20 files, **33 SOFT, 0 HARD**:
@@ -195,8 +195,8 @@ python QC/count_tokens.py Corpora/Tsuchida-TapeGlosses
     Yami `rangən wo(a) lobaŋbaŋ` and Atayal `pusi(y)a` "water". See "Known
     limits" 6.
   - `V136 mixed_script_confusables` (8) — Latin and IPA in one form
-- `count_tokens.py`: **377 tokens** — Kavalan 75, Seediq 47, Atayal 44, Yami 37,
-  Saaroa 36, Saisiyat 35, Rukai 33 (Wanshan 18 / unknown 15), Tsou 29,
+- `count_tokens.py`: **376 tokens** — Kavalan 75, Seediq 47, Atayal 44, Yami 37,
+  Saaroa 36, Saisiyat 34, Rukai 33 (Wanshan 18 / unknown 15), Tsou 29,
   Kanakanavu 23, Bunun 14, Amis 4. Unchanged by the removal of the
   `standard` tier: `QC/corpus_counts.py` counts the standard sentence `FORM`
   with the original as fallback.
@@ -216,7 +216,7 @@ Maintainer's ruling, 2026-11-06: **"No standard until we've decided how to
 standardize."**
 
 Each `S` carries `FORM kindOf="original"`, `PHON kindOf="original"` and a
-`TRANSL`, and nothing else. The `TRANSL` is `xml:lang="jpn"` on 354 records and
+`TRANSL`, and nothing else. The `TRANSL` is `xml:lang="jpn"` on 353 records and
 `xml:lang="eng"` on 10, because three tape sides were surveyed in English
 rather than Japanese. The earlier build had a
 `kindOf="standard"` FORM holding a byte-identical copy of the original, made
@@ -226,7 +226,7 @@ standard orthography, which it is not — there is no conversion table for his
 notation, so no real transliteration was possible.
 
 The visible consequence is that `V014 count_missing_standard_form` (SOFT)
-reports every one of the 364 `S` elements. That is the correct signal: the
+reports every one of the 363 `S` elements. That is the correct signal: the
 corpus is genuinely missing a standard tier, and the validator should say so
 until someone who knows these orthographies supplies a conversion table. The
 placeholder copy can be re-created at any time with:
@@ -238,16 +238,16 @@ python QC/utilities/standardize.py --copy --corpora_path <path>
 ## Known limits
 
 1. **There is no `standard` tier at all** (above), so every cross-corpus
-   orthographic comparison will skip this corpus, and `V014` reports all 364
+   orthographic comparison will skip this corpus, and `V014` reports all 363
    records. Deliberate, per the maintainer's ruling.
 2. **Glosses are Japanese, with ten exceptions.** `TRANSL/@xml:lang="jpn"` on
-   354 records. The schema and the statistics already have a
+   353 records. The schema and the statistics already have a
    `jpn_transl_count` column, but no published corpus uses it, so this would be
    the bank's first Japanese-glossed material. Ten records are
    `xml:lang="eng"`: `TSFC-AudioA-21B` (Amis) and part of `TSFC-AudioA-18A`
    (Bunun) were surveyed in English, and four Kanakanavu and Tsou records carry
    English glosses the catalogue wrote in parentheses. There is no Chinese
-   translation, and no English for the other 354.
+   translation, and no English for the other 353.
 3. **20 Formosan incipits are left unpublished** but are interesting in their own right:
    they are the opening words of recorded songs and narratives — 子守唄
    "lullaby", 猿とありくいの話 "the story of the monkey and the anteater", 太陽と月
@@ -255,12 +255,12 @@ python QC/utilities/standardize.py --copy --corpora_path <path>
    source and have no translation, so they are not lexemes and not sentences.
    `record_type=incipit` in the source TSV finds them; 23 rows carry that type
    with a usable gloss, of which 3 are Tagalog or Ibanag.
-4. **Every candidate was read against its source cell; 78 decisions overrode
+4. **Every candidate was read against its source cell; 79 decisions overrode
    the automatic rules.** The automatic rules are a candidate generator: they
    find bracketed forms and guess which neighbouring text is the gloss. On
    2026-11-06 all 194 candidates in the two ambiguous layouts (`gloss[form]`
    and `[form]gloss`), plus every row the filters had discarded, were read
-   against their own source cells, and the remaining 137 explicit
+   against their own source cells, and the remaining 136 explicit
    `[form](gloss)` and `「gloss」[form]` candidates were read as well — so every
    row in the corpus has been looked at. The decisions live in
    `CodeAndDocs/source/audited_glosses.tsv`, one row each with its reason.
@@ -295,10 +295,10 @@ python QC/utilities/standardize.py --copy --corpora_path <path>
      name of a fish-and-plant field guide.
 
    **The residual risk is now the opposite of what it was.** The automatic
-   filters are still in place and still discard 34 rows; 11 of those were
+   filters are still in place and still discard 33 rows; 12 of those were
    checked and confirmed unrecoverable (no gloss exists in the source), and the
    rest are flagged prose. What has *not* been independently checked is my own
-   reading: a second reader of Japanese would be checking 78 decisions and 364
+   reading: a second reader of Japanese would be checking 79 decisions and 363
    glosses, not sifting 572 candidates. See
    `../Tsuchida-survey/basecamp-japanese-review-todo.md`.
 

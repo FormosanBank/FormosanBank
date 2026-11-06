@@ -134,7 +134,7 @@ disappeared entirely: its only record was `tamlau <- 人, 親族名詞` above.
 whole rows where the fix was to trim the capture, and the 1-5 character band
 was still unmeasured. On the same day the maintainer asked why a human reader
 was needed at all for a judgement about Japanese. So every candidate was read
-instead -- see the next section -- and the corpus went to **359 rows / 364 S**
+instead -- see the next section -- and the corpus went to **358 rows / 363 S**
 in 11 languages, Amis included again.
 
 ## Every candidate read against its source cell (2026-11-06)
@@ -142,8 +142,8 @@ in 11 languages, Amis included again.
 The automatic rules are a candidate generator. All 194 candidates in the two
 ambiguous layouts, every row the filters had discarded, and the 137 explicit
 `[form](gloss)` / `「gloss」[form]` candidates were read against their own
-source cells. **78 decisions** are recorded in
-`source/audited_glosses.tsv` -- 67 publish, 11 exclude -- each with its reason.
+source cells. **79 decisions** are recorded in
+`source/audited_glosses.tsv` -- 67 publish, 12 exclude -- each with its reason.
 `extract_forms.py --audit` applies them and aborts if a decision no longer
 matches exactly one extracted row, so a change to the sheet cannot carry a
 stale decision silently.
@@ -194,8 +194,24 @@ Saisiyat taʔoeloeh <- 頭のことをなんと言いますか？ -> 頭  "head"
 and `tariŋan` was excluded outright: its 「」 holds the title of a
 fish-and-plant field guide, not a meaning.
 
+**5. One tape side elicits the same word twice.** `TSFC-AudioA-8A` runs a
+prompted section and then a second pass over the same vocabulary:
+
+```
+3m43s~5m48s: 「頭のことをなんと言いますか？」[taʔoeloeh], 「髪の毛」[bəkəs]...
+8m5s~:       頭[taʔoeloeh], 髪の毛[bəkəs]...星[bintuʔan]
+```
+
+Both passes were being published, so `taʔoeloeh ← 頭` and `bəkəs ← 髪の毛` each
+appeared twice as byte-identical `S` elements differing only in their id. One of
+each is now excluded. Because side + form + gloss is the same on both `bəkəs`
+rows, the audit key gained an optional `gloss_pattern` column to tell them
+apart; it is blank on all 78 other decisions. The corpus has **no exact
+duplicate records** left -- checked by grouping every published row on
+(tape side, form, gloss).
+
 **What is still unchecked** is my own reading. A second reader of Japanese
-would be checking 78 decisions and 364 glosses, not sifting 572 candidates.
+would be checking 79 decisions and 363 glosses, not sifting 572 candidates.
 
 ## Two forms against one gloss
 
@@ -237,12 +253,12 @@ a later ruling can be applied by regenerating.
 | --- | --- | --- |
 | `FORM kindOf="original"` | the form as the catalogue gives it | fidelity to the source |
 | `PHON kindOf="original"` | the form again | the source string *is* a phonetic transcription, so it belongs on PHON as much as on FORM |
-| `TRANSL xml:lang="jpn"` or `"eng"` | the gloss | Japanese on 354 records, English on 10 (three sides were surveyed in English); no Chinese exists |
+| `TRANSL xml:lang="jpn"` or `"eng"` | the gloss | Japanese on 353 records, English on 10 (three sides were surveyed in English); no Chinese exists |
 
 **No `standard` tier.** Maintainer's ruling, 2026-11-06: "No standard until
 we've decided how to standardize." The first build had one, holding a
 byte-identical copy of the original via `standardize.py --copy`. It is gone.
-`V014 count_missing_standard_form` (SOFT) now reports all 364 `S` elements,
+`V014 count_missing_standard_form` (SOFT) now reports all 363 `S` elements,
 which is the intended signal.
 
 One consequence to read carefully: `validate_text.py` SOFT findings fell from
@@ -284,5 +300,5 @@ released, without re-deriving anything from the sheet.
 5. **Whether the 20 Formosan song and narrative incipits** should become their
    own small corpus rather than being dropped.
 7. **The parenthesised Yami FORM** `rangən wo(a) lobaŋbaŋ` (above).
-6. **A second reader for the 78 audit decisions and 364 published glosses**
+6. **A second reader for the 79 audit decisions and 363 published glosses**
    (above). No longer a sifting job -- a check on judgements already made.

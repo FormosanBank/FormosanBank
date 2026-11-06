@@ -132,10 +132,17 @@ def apply_audit(rows, path):
     applied = collections.Counter()
     for a in audit:
         hit = index.get((a['tape_side_id'], a['form'], a['extracted_gloss']), [])
+        # TSFC-AudioA-8A elicits the same word twice, in two sections of the
+        # tape, with the same gloss both times, so side + form + gloss does not
+        # identify a single row there. The optional gloss_pattern column breaks
+        # that tie; it is blank on every other decision.
+        if a.get('gloss_pattern'):
+            hit = [r for r in hit if r['gloss_pattern'] == a['gloss_pattern']]
         if len(hit) != 1:
             raise SystemExit(
                 f"audit decision matches {len(hit)} rows, expected 1: "
-                f"{a['tape_side_id']} / {a['form']!r} / {a['extracted_gloss']!r}")
+                f"{a['tape_side_id']} / {a['form']!r} / {a['extracted_gloss']!r}"
+                + (f" / {a['gloss_pattern']}" if a.get('gloss_pattern') else ''))
         r = hit[0]
         r['audit_action'], r['audit_note'] = a['action'], a['note']
         if a['action'] == 'exclude':
