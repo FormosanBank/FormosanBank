@@ -3,6 +3,7 @@
 tape catalogue (the two audio tabs of the project's public Google Sheet).
 
 Input : the sheet's tabs as TSV, in --tsv-dir
+        the reviewed decisions, --audit (source/audited_glosses.tsv)
 Output: one TSV of extracted forms, --out
 
 The content-summary cells mix four gloss patterns with free prose, so every row
@@ -109,6 +110,52 @@ def flag(gloss, pattern):
         return 'long_bare_before'
     return ''
 
+def apply_audit(rows, path):
+    """Overlay the reviewed decisions in audited_glosses.tsv onto the automatic
+    extraction.
+
+    The automatic rules are a candidate generator: they find bracketed forms and
+    guess which neighbouring text is the gloss. Every candidate was then read
+    against its own source cell by hand, and the cases the rules got wrong are
+    recorded in that file -- either a corrected gloss, a corrected gloss
+    language, a corrected language for the segment of tape, or an exclusion with
+    the reason. See source-decisions.md.
+
+    A decision whose key no longer matches exactly one extracted row is a hard
+    error, not a warning: it means the sheet changed under the audit and the
+    decision can no longer be trusted to land on the row it was made about.
+    """
+    audit = list(csv.DictReader(open(path, encoding='utf-8'), delimiter='\t'))
+    index = collections.defaultdict(list)
+    for r in rows:
+        index[(r['tape_side_id'], r['form'], r['gloss_ja'])].append(r)
+    applied = collections.Counter()
+    for a in audit:
+        hit = index.get((a['tape_side_id'], a['form'], a['extracted_gloss']), [])
+        if len(hit) != 1:
+            raise SystemExit(
+                f"audit decision matches {len(hit)} rows, expected 1: "
+                f"{a['tape_side_id']} / {a['form']!r} / {a['extracted_gloss']!r}")
+        r = hit[0]
+        r['audit_action'], r['audit_note'] = a['action'], a['note']
+        if a['action'] == 'exclude':
+            r['gloss_flag'] = 'audited_excluded'
+        elif a['action'] == 'publish':
+            r['gloss_ja'] = a['gloss']
+            r['gloss_lang'] = a['gloss_lang'] or 'jpn'
+            r['language_audited'] = a['language_audited']
+            r['gloss_flag'] = ''
+            # Every publish decision is a word with a meaning. One of them
+            # (Amis 'fongoh') had been typed 'incipit' only because the
+            # metadata text swept into its gloss contained 音声 ("audio"),
+            # which the genre test reads as the label 声.
+            r['record_type'] = 'lexeme'
+        else:
+            raise SystemExit(f"unknown audit action {a['action']!r}")
+        applied[a['action']] += 1
+    return applied
+
+
 def extract(tsv_dir):
     out, st = [], collections.Counter()
     for tab, fn, lc, dc, sc, nc, pc, uc in TABS:
@@ -162,6 +209,13 @@ def extract(tsv_dir):
                     'dialect_as_catalogued': dial or '',
                     'form': form, 'gloss_ja': gloss,
                     'gloss_pattern': pattern, 'gloss_flag': flag(gloss, pattern),
+                    # Japanese unless the audit says otherwise: three tape
+                    # sides were surveyed in English.
+                    'gloss_lang': 'jpn',
+                    # Set only where the audit found a segment of tape to be in
+                    # a different language from the one the catalogue names for
+                    # the side; language_as_catalogued stays as the sheet has it.
+                    'language_audited': '', 'audit_action': '', 'audit_note': '',
                     'questionnaire_item_no': item,
                     'record_type': record_type(form, gloss, pattern),
                     'notebook_xref': g(r, nc), 'notebook_pages': g(r, pc),
@@ -176,8 +230,11 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument('--tsv-dir', required=True)
     ap.add_argument('--out', required=True)
+    ap.add_argument('--audit', required=True,
+                    help='reviewed decisions, source/audited_glosses.tsv')
     a = ap.parse_args()
     rows, st = extract(a.tsv_dir)
+    applied = apply_audit(rows, a.audit)
     with open(a.out, 'w', newline='') as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys()), delimiter='\t')
         w.writeheader(); w.writerows(rows)
@@ -185,6 +242,8 @@ if __name__ == '__main__':
     lex = [r for r in clean if r['record_type'] == 'lexeme']
     inc = [r for r in rows if r['record_type'] == 'incipit']
     print(f'{len(rows)} forms -> {a.out}')
+    print(f'  audited decisions applied: '
+          + ', '.join(f'{v} {k}' for k, v in sorted(applied.items())))
     for k, v in sorted(st.items()):
         print(f'  {k}: {v}')
     print(f'  with a gloss and no flag: {len(clean)}')

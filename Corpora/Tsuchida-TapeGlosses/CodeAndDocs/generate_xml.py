@@ -2,8 +2,15 @@
 """Build FormosanBank XML from the forms extracted by extract_forms.py.
 
 Only clean form-gloss pairs in Formosan languages are published: a row needs a
-Japanese gloss and an empty gloss_flag. Everything else stays in
+gloss and an empty gloss_flag. Everything else stays in
 source/extracted_forms.tsv for review. See source-decisions.md for why.
+
+Two columns here come from the hand audit recorded in source/audited_glosses.tsv
+rather than from the catalogue: gloss_lang, because three tape sides were
+surveyed in English rather than Japanese, and language_audited, because two
+sides contain a stretch of a language other than the one the catalogue names
+for the side. language_as_catalogued is never overwritten, and every S says
+both what the catalogue called the side and what the audit concluded.
 
 One file per (language, dialect-as-catalogued) so that the catalogue's own
 dialect labels never get silently merged.
@@ -66,10 +73,15 @@ def main():
     # Only lexemes: a row classified 'incipit' is the opening words of a
     # recorded song or narrative and its "gloss" is a genre label, not a
     # meaning, so publishing it in a wordlist would misrepresent both.
+    # The language a row is filed under: what the audit concluded for that
+    # stretch of tape if it looked at it, otherwise what the catalogue says.
+    def lang_of(r):
+        return r['language_audited'] or r['language_as_catalogued']
+
     clean = [r for r in rows
              if r['gloss_ja'] and not r['gloss_flag']
              and r['record_type'] == 'lexeme'
-             and r['language_as_catalogued'] in LANG]
+             and lang_of(r) in LANG]
 
     # Group on the FormosanBank language, not the catalogue's string: "Ami"
     # and "Amis" (and "Tayal" and "Atayal") are the same language spelled two
@@ -77,16 +89,23 @@ def main():
     # one filename, so the second silently overwrote the first.
     groups = collections.defaultdict(list)
     for r in clean:
-        cl = r['language_as_catalogued']
+        cl = lang_of(r)
         _, fb = LANG[cl]
         # Mantauran is a Rukai dialect given in the language column; keep it
         # apart from Rukai rows that name no dialect.
-        key = (fb, 'Mantauran' if cl == 'Mantauran' else r['dialect_as_catalogued'])
-        groups[key].append(r)
+        if cl == 'Mantauran':
+            dial = 'Mantauran'
+        elif r['language_audited']:
+            # The catalogue's dialect names a dialect of the side's catalogued
+            # language, so it says nothing about this stretch of tape.
+            dial = ''
+        else:
+            dial = r['dialect_as_catalogued']
+        groups[(fb, dial)].append(r)
 
     written = []
     for (fb_lang, cat_dial), items in sorted(groups.items()):
-        iso = LANG[items[0]['language_as_catalogued']][0]
+        iso = LANG[lang_of(items[0])][0]
         if cat_dial == 'Mantauran':
             dialect = DIALECT_MAP[('Rukai', 'Mantauran-as-language')]
         elif fb_lang in SINGLE_DIALECT:
@@ -119,6 +138,11 @@ def main():
                     f'catalogued as "{r["language_as_catalogued"]}"']
             if cat_dial and cat_dial != 'Mantauran':
                 prov.append(f'catalogued dialect "{cat_dial}"')
+            if r['language_audited']:
+                prov.append(f'filed under {r["language_audited"]} on audit, '
+                            f'not the catalogued language: {r["audit_note"]}')
+            elif r['audit_note']:
+                prov.append(f'gloss corrected on audit: {r["audit_note"]}')
             if r['notebook_xref']:
                 nb = r['notebook_xref']
                 if r['notebook_pages']:
@@ -146,7 +170,10 @@ def main():
                 # not. V014 count_missing_standard_form is SOFT and will
                 # report every S; that is the intended, visible consequence.
                 lines.append(f'    <PHON kindOf="original">{escape(part)}</PHON>')
-                lines.append(f'    <TRANSL xml:lang="jpn">{escape(r["gloss_ja"])}</TRANSL>')
+                # Not always Japanese: three sides were surveyed in English and
+                # their glosses are English, which the audit records per row.
+                lines.append(f'    <TRANSL xml:lang="{r["gloss_lang"] or "jpn"}">'
+                             f'{escape(r["gloss_ja"])}</TRANSL>')
                 lines.append('  </S>')
         lines.append('</TEXT>')
         with open(path, 'w', encoding='utf-8') as f:
@@ -178,7 +205,7 @@ def main():
     skipped = collections.Counter()
     for r in rows:
         if r not in clean:
-            if r['language_as_catalogued'] not in LANG:
+            if lang_of(r) not in LANG:
                 skipped['non-Formosan language'] += 1
             elif not r['gloss_ja']:
                 skipped['no gloss'] += 1

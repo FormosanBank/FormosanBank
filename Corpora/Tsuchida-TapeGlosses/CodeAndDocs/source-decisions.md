@@ -128,14 +128,74 @@ parenthesis rule.
 2. `long_bare_before` at **more than 5** characters, not 14. 20 rows.
 
 Published went from 329 rows / 334 S to 308 rows / 313 S, and the Amis file
-disappeared entirely: its only record was `tamlau <- 人, 親族名詞` above. This
-discards roughly 8 correct records along with the bad ones, which is the
-intended trade -- a wrong gloss is worse than a missing one, and every
-excluded row stays in `extracted_forms.tsv` with its reason in `gloss_flag`.
+disappeared entirely: its only record was `tamlau <- 人, 親族名詞` above.
 
-**Still unmeasured:** the 1-5 character band, 160 published rows. Single words
-like 頭 "head" and ふけ "dandruff"; prose metadata is not 1-5 characters long,
-so the expected error rate is low, but no row-by-row check has been done.
+**That blunt-filter step was then superseded.** The filters were discarding
+whole rows where the fix was to trim the capture, and the 1-5 character band
+was still unmeasured. On the same day the maintainer asked why a human reader
+was needed at all for a judgement about Japanese. So every candidate was read
+instead -- see the next section -- and the corpus went to **359 rows / 364 S**
+in 11 languages, Amis included again.
+
+## Every candidate read against its source cell (2026-11-06)
+
+The automatic rules are a candidate generator. All 194 candidates in the two
+ambiguous layouts, every row the filters had discarded, and the 137 explicit
+`[form](gloss)` / `「gloss」[form]` candidates were read against their own
+source cells. **78 decisions** are recorded in
+`source/audited_glosses.tsv` -- 67 publish, 11 exclude -- each with its reason.
+`extract_forms.py --audit` applies them and aborts if a decision no longer
+matches exactly one extracted row, so a change to the sheet cannot carry a
+stale decision silently.
+
+Four kinds of finding:
+
+**1. The filters discarded 39 rows that only needed trimming.** When a cell
+opens with survey metadata the capture swallows it and the real gloss is the
+last segment. 28 of the 39 are now published:
+
+```
+Sedeq    tunux  <- 「フ」と対応。頭                            -> 頭      "head"
+  cell: 23m53s~: 「フ」と対応。頭[tunux]...石焼き[mubux]
+Bunun    buŋu   <- 語彙調査(日本語-Bunun語) 頭                 -> 頭      "head"
+Atayal   jaŋah  <- 語彙調査男性話者　概ねフィールドノート順 0m0s~星  -> 星      "star"
+Kavalan  tutuk  <- 男性話者 お昼                               -> お昼    "midday"
+Atayal   gayaʔ  <- の「シ」に対応 0m0s~4m30s: 物                -> 物      "thing"
+```
+
+**2. Two tape sides hold a language other than the one they are catalogued
+under.** `TSFC-AudioA-21A` is catalogued Atayal and its own cell says
+`23m41s: Saisiyat女性話者` -- from that point the material is Saisiyat.
+`TSFC-AudioB-55A` is catalogued Hausa (an English-glossed Hausa survey is
+really on it) and switches at 31m35s to a Formosan list. 11 records moved to
+Saisiyat. The notebook cross-references corroborate this independently of the
+Japanese: both Saisiyat stretches point to `TSFC-PDF-119`/`120`/`121`, the
+Atayal stretch of `21A` to `TSFC-PDF-005`.
+
+**3. Ten glosses are English, not Japanese**, and had been published as
+`xml:lang="jpn"`. `TSFC-AudioA-21B` describes itself as 英語による語彙調査
+("a vocabulary survey in English") and yields `head[fongoh]`, `face[laway]`,
+`neck[liər]`, `person[tamlau]` -- the four records that put Amis back.
+
+**4. Eight published glosses were simply wrong.** The worst:
+
+```
+Tsou     reməta    <- P.                 -> 閉める  "to close"
+Tsou     remətə    <- Act.               -> 閉める  "to close"
+  cell: [reməta](P.), [remətə](Act.)(閉める)   -- P./Act. are voice labels
+Saisiyat poŋuo     <- 〜星                -> 白髪    "white hair"
+  cell: 髪の毛[boquas],白髪[poŋuo]〜星[bintuaŋ] -- captured the NEXT item
+Saisiyat bintuaŋ   <- 光で録音一度切れる    -> 星      "star"
+Kavalan  sii       <- 」                  -> 肉      "meat"
+  cell: 「肉...食べる肉を何ていうか」 女性話者「[sii]」 -- captured a quote mark
+Saisiyat taʔoeloeh <- 頭のことをなんと言いますか？ -> 頭  "head"
+```
+
+and `tariŋan` was excluded outright: its 「」 holds the title of a
+fish-and-plant field guide, not a meaning.
+
+**What is still unchecked** is my own reading. A second reader of Japanese
+would be checking 78 decisions and 364 glosses, not sifting 572 candidates.
 
 ## Two forms against one gloss
 
@@ -177,17 +237,17 @@ a later ruling can be applied by regenerating.
 | --- | --- | --- |
 | `FORM kindOf="original"` | the form as the catalogue gives it | fidelity to the source |
 | `PHON kindOf="original"` | the form again | the source string *is* a phonetic transcription, so it belongs on PHON as much as on FORM |
-| `TRANSL xml:lang="jpn"` | the Japanese gloss | the gloss language is Japanese; no English or Chinese exists |
+| `TRANSL xml:lang="jpn"` or `"eng"` | the gloss | Japanese on 354 records, English on 10 (three sides were surveyed in English); no Chinese exists |
 
 **No `standard` tier.** Maintainer's ruling, 2026-11-06: "No standard until
 we've decided how to standardize." The first build had one, holding a
 byte-identical copy of the original via `standardize.py --copy`. It is gone.
-`V014 count_missing_standard_form` (SOFT) now reports all 313 `S` elements,
+`V014 count_missing_standard_form` (SOFT) now reports all 364 `S` elements,
 which is the intended signal.
 
 One consequence to read carefully: `validate_text.py` SOFT findings fell from
-195 to 36 when the tier went (and to 27 after the gloss-filter tightening
-below), and **that is not the data improving**. `V116 non_ascii_in_form` skips
+195 to 36 when the tier went (and to 33 now), and **that is not the data
+improving**. `V116 non_ascii_in_form` skips
 `kindOf="original"` by policy, and `V136`/`V122` were double-counting one
 string across two identical tiers. Nothing changed in the transcriptions.
 
@@ -221,8 +281,8 @@ released, without re-deriving anything from the sheet.
 3. **Dialect rows** for Tsou Duhtu and the Atayal/Seediq/Yami village labels —
    deferred by the maintainer 2026-11-06 ("Deal with when data arrives").
 4. **Whether `PHON` and `FORM` should hold the same string.**
-5. **Whether the 29 song and narrative incipits** should become their own
-   small corpus rather than being dropped.
+5. **Whether the 20 Formosan song and narrative incipits** should become their
+   own small corpus rather than being dropped.
 7. **The parenthesised Yami FORM** `rangən wo(a) lobaŋbaŋ` (above).
-6. **A Japanese-reading review** of the published 313, for the 1-5 character
-   `bare_before` residue (above).
+6. **A second reader for the 78 audit decisions and 364 published glosses**
+   (above). No longer a sifting job -- a check on judgements already made.

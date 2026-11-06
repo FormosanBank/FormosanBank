@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TEXT id="TSUCHIDA_TAPEGLOSSES_YAMI_IMOROD" citation="土田滋台湾原住民語資料 [Tsuchida Shigeru Taiwan Indigenous Language Materials], 2023. Digital collection managed by the Information Resources Center, Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies. https://formosa.aa-ken.jp" BibTeX_citation="@misc{TsuchidaFormosanMaterials2023,title={土田滋台湾原住民語資料 [Tsuchida Shigeru Taiwan Indigenous Language Materials]},year={2023},howpublished={Digital collection managed by the Information Resources Center, Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},url={https://formosa.aa-ken.jp}}" copyright="CC BY 4.0" xml:lang="tao" dialect="Yami" source="Audio catalogue (TSFC音源リスト) of the Tsuchida collection, content-summary column; see CodeAndDocs/source-decisions.md">
-  <S id="Tsuchida_TapeGlosses_Yami_Imorod_TSFC-AudioB-42A_001" source='tape side TSFC-AudioB-42A; catalogued as "Yami"; catalogued dialect "Imorod"; notebook TSFC-PDF-140 (p.8~27)'>
+  <S id="Tsuchida_TapeGlosses_Yami_Imorod_TSFC-AudioB-42A_001" source='tape side TSFC-AudioB-42A; catalogued as "Yami"; catalogued dialect "Imorod"; gloss corrected on audit: captured the spoken announcement; the gloss is the final 頭; notebook TSFC-PDF-140 (p.8~27)'>
+    <FORM kindOf="original">woʔo</FORM>
+    <PHON kindOf="original">woʔo</PHON>
+    <TRANSL xml:lang="jpn">頭</TRANSL>
+  </S>
+  <S id="Tsuchida_TapeGlosses_Yami_Imorod_TSFC-AudioB-42A_002" source='tape side TSFC-AudioB-42A; catalogued as "Yami"; catalogued dialect "Imorod"; notebook TSFC-PDF-140 (p.8~27)'>
     <FORM kindOf="original">ovok</FORM>
     <PHON kindOf="original">ovok</PHON>
     <TRANSL xml:lang="jpn">髪</TRANSL>
   </S>
-  <S id="Tsuchida_TapeGlosses_Yami_Imorod_TSFC-AudioB-42A_002" source='tape side TSFC-AudioB-42A; catalogued as "Yami"; catalogued dialect "Imorod"; notebook TSFC-PDF-140 (p.8~27)'>
+  <S id="Tsuchida_TapeGlosses_Yami_Imorod_TSFC-AudioB-42A_003" source='tape side TSFC-AudioB-42A; catalogued as "Yami"; catalogued dialect "Imorod"; notebook TSFC-PDF-140 (p.8~27)'>
     <FORM kindOf="original">nimalasay</FORM>
     <PHON kindOf="original">nimalasay</PHON>
     <TRANSL xml:lang="jpn">負ける</TRANSL>
@@ -46,11 +51,6 @@
     <TRANSL xml:lang="jpn">はかる</TRANSL>
   </S>
   <S id="Tsuchida_TapeGlosses_Yami_Imorod_TSFC-AudioB-43B_003" source='tape side TSFC-AudioB-43B; catalogued as "Yami"; catalogued dialect "Imorod"; notebook TSFC-PDF-141 (p.10~12; p.18~24)'>
-    <FORM kindOf="original">tariŋan</FORM>
-    <PHON kindOf="original">tariŋan</PHON>
-    <TRANSL xml:lang="jpn">TG台湾沿岸魚植物図鑑Ⅰ</TRANSL>
-  </S>
-  <S id="Tsuchida_TapeGlosses_Yami_Imorod_TSFC-AudioB-43B_004" source='tape side TSFC-AudioB-43B; catalogued as "Yami"; catalogued dialect "Imorod"; notebook TSFC-PDF-141 (p.10~12; p.18~24)'>
     <FORM kindOf="original">itap</FORM>
     <PHON kindOf="original">itap</PHON>
     <TRANSL xml:lang="jpn">船の櫂</TRANSL>
