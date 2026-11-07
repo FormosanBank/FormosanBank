@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "translation_exclusions": [
+    {
+      "form": "maan, mapusan, matuun, masʉpatʉʉn, maimʉʉn, manʉmʉn, mapituun, maruun, masiʉn, aaʼa ! kaʼaan musutampʉ, ʼinmaamia masiʉn vaantuku.",
+      "language": "Kanakanavu",
+      "reason": "The target is the lesson number 10, not a translation. The source FORM and any source audio remain in XML.",
+      "translation": "10"
+    },
+    {
+      "form": "kaʼaan cu ku tavarʉʼʉ mova kasua, ʼinmaamia cu isi iku tamna.",
+      "language": "Kanakanavu",
+      "reason": "The target is the lesson number 20, not a translation. The source FORM and any source audio remain in XML.",
+      "translation": "20"
+    },
+    {
+      "form": "ʼakunneʼe maacaca, ʼinmaamia isi tavarʉʼa maku umavici nesi mova kasua.",
+      "language": "Kanakanavu",
+      "reason": "The target is the lesson number 30, not a translation. The source FORM and any source audio remain in XML.",
+      "translation": "30"
+    }
+  ],
+  "headword_sense_exclusions": [
+    {
+      "language": "Saisiyat",
+      "headword": "taSira:ma'",
+      "gloss": "不小心按到，請刪除！（沒有其他意思了。）",
+      "reason": "Editor note, not a sense (\"pressed by accident, please delete! (there is no other meaning.)\"). Maintainer ruling 2026-10-16: remove it."
+    }
+  ]
+}

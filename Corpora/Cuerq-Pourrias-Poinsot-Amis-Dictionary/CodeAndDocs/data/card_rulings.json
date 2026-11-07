@@ -1,0 +1,906 @@
+{
+  "about": "Per-line results ruled by the maintainer on the decision page (https://claude.ai/artifact/Jjv2qdtPzyDcvRHiZaSt7Y) where the general parser does not produce them. Applied by scripts/build_amis_chinese_xml.py after the records are built. 'headwords' / 'examples' replace every head-word / example S of that line; 'add_alt_translation' appends a ver=\"alt\" Chinese TRANSL to one S; 'replace_chinese' rewrites one Chinese TRANSL text and adds a note; 'alt_forms' turns the listed forms into FORM ver=\"alt\" of the first. Each item quotes the ruling.",
+  "lines": [
+    {
+      "line": 216,
+      "ruling": "r6-reask-216 (\"ancoh = 發臭尿 is an N reading (N file; {N} removed from the Chinese)\") (2026-10-17)",
+      "source": "'agcep：發臭 = ancoh：發臭尿{N}；飯燒焦味；燒焦",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "'agcep",
+          "zho": [
+            "發臭",
+            "飯燒焦味",
+            "燒焦"
+          ]
+        },
+        {
+          "label": "N",
+          "form": "ancoh",
+          "zho": [
+            "發臭尿"
+          ],
+          "notes": [
+            "listed under 'agcep"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 373,
+      "ruling": "card r5-coastal-373, button \"New Coastal file pair (dialect=\\\"Coastal\\\") for these readings\" (2026-10-17)",
+      "source": "'alimdas = 'alogdas：游蛇；(小蟒蛇 = alomdas {豐濱}) - 綿蛇 - 蚺蛇",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "'alimdas",
+          "zho": [
+            "游蛇",
+            "綿蛇",
+            "蚺蛇"
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "'alogdas",
+          "zho": [
+            "游蛇",
+            "綿蛇",
+            "蚺蛇"
+          ]
+        },
+        {
+          "label": "Coastal",
+          "form": "alomdas",
+          "zho": [
+            "小蟒蛇"
+          ],
+          "notes": [
+            "source label: 豐濱"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 693,
+      "ruling": "card r5-mixed-693 (fix): \"So 'araw'i and 'arawi are really \\\"alt\\\"s.\"",
+      "source": "'araw'i = 'arawi：相反；小心 - pi'arawi {N}：注意, 小心, 除了, 但是",
+      "alt_forms": [
+        {
+          "label": "unmarked",
+          "forms": [
+            "'araw'i",
+            "'arawi"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 1525,
+      "ruling": "card r5-mixed-1525 (fix): \"I tihnk the example isn't unmarked, it's F, right?\" (2026-10-17)",
+      "source": "cfaday - pacfaday：注釋的解釋 - {F} pacfafaray a pacfaday ;無中生有",
+      "examples": [
+        {
+          "labels": [
+            "F"
+          ],
+          "form": "pacfafaray a pacfaday",
+          "zho": [
+            "無中生有"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 1741,
+      "ruling": "card r5-mixed-1741 (fix): \"Drop the examples. They are constructions with missing pivots, not useful for us.\" (2026-10-17)",
+      "source": "cikaw = lawac：岸；濱；岸邊 {F} - i cikaw no...：在...旁邊",
+      "examples": []
+    },
+    {
+      "line": 2201,
+      "ruling": "card r6-structure-2201 (asprinted) — \"As printed; drop the dangling word\" (2026-10-17)",
+      "source": "cokah - macacokah：尥蹶子；用角互鬥或牴觸(動物)；像水牛打架；支架 - o",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "macacokah",
+          "zho": [
+            "尥蹶子",
+            "用角互鬥或牴觸(動物)",
+            "像水牛打架",
+            "支架"
+          ],
+          "notes": [
+            "root: cokah"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 2410,
+      "ruling": "card r5-unbalanced-2410 (fix): \"Everrything after 阿美的禮儀 is a paranthetical that goes in notes.\" (2026-10-17)",
+      "source": "cpo' - misacpo'：阿美的禮儀(經常作豐年祭的弟三天，為得到很多魚 在不少村裡，人人在河口集合，信鬼或信教在十二時與興儀式；然後按照年適齡他們吃系魚；同樣的時間或吃後，他們聲論文；接著表年適齡他們舉行賽跑 - 在其他地方，他們舉行這個禮儀割稻前一個月",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "misacpo'",
+          "zho": [
+            "阿美的禮儀"
+          ],
+          "notes": [
+            "root: cpo'",
+            "printed in parentheses: (經常作豐年祭的弟三天，為得到很多魚 在不少村裡，人人在河口集合，信鬼或信教在十二時與興儀式；然後按照年適齡他們吃系魚；同樣的時間或吃後，他們聲論文；接著表年適齡他們舉行賽跑 - 在其他地方，他們舉行這個禮儀割稻前一個月)"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 2416,
+      "ruling": "card r5-mixed-2416 (fix): \"Drop the \"N ex\"; I don't think that's specific to N.\" (2026-10-17)",
+      "source": "crah - macrah = 'omac：變得不鮮艷的；無味道的；褪色的{N} - macrah ko riko'：淡色的衣服",
+      "examples": [
+        {
+          "labels": [
+            "unmarked"
+          ],
+          "form": "macrah ko riko'",
+          "zho": [
+            "淡色的衣服"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 2578,
+      "ruling": "card r5-mixed-2578 (fix): \"daidam - {F} = damdam：辣椒 = copel：Capsicum annum；薑 {N} = 'adiam = kisraay = kacipa'ay = tayo：Zingiber offici\nF - damdam - 辣椒 - Capsicum annum | Zingiber offici\nunmarked - copel -  辣椒 - Capsicum annum | Zingiber offici\nunmarked - 'adiam -  辣椒 - Capsicum annum | Zingiber offici\nunmarked - kisraay -  辣椒 - Capsicum annum | Zingiber offici\nunmarked - kacipa'ay -  辣椒 - Capsicum annum | Zingiber offici\nunmarked - tayo -  辣椒 - Capsicum annum | Zingiber offici\nN - copel - 薑\" (2026-10-17)",
+      "source": "daidam - {F} = damdam：辣椒 = copel：Capsicum annum；薑 {N} = 'adiam = kisraay = kacipa'ay = tayo：Zingiber offici",
+      "headwords": [
+        {
+          "label": "F",
+          "form": "damdam",
+          "zho": [
+            "辣椒"
+          ],
+          "other": [
+            [
+              "lat",
+              "Capsicum annum",
+              [
+                "scientific name"
+              ]
+            ],
+            [
+              "lat",
+              "Zingiber offici",
+              [
+                "scientific name"
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "copel",
+          "zho": [
+            "辣椒"
+          ],
+          "other": [
+            [
+              "lat",
+              "Capsicum annum",
+              [
+                "scientific name"
+              ]
+            ],
+            [
+              "lat",
+              "Zingiber offici",
+              [
+                "scientific name"
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "'adiam",
+          "zho": [
+            "辣椒"
+          ],
+          "other": [
+            [
+              "lat",
+              "Capsicum annum",
+              [
+                "scientific name"
+              ]
+            ],
+            [
+              "lat",
+              "Zingiber offici",
+              [
+                "scientific name"
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "kisraay",
+          "zho": [
+            "辣椒"
+          ],
+          "other": [
+            [
+              "lat",
+              "Capsicum annum",
+              [
+                "scientific name"
+              ]
+            ],
+            [
+              "lat",
+              "Zingiber offici",
+              [
+                "scientific name"
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "kacipa'ay",
+          "zho": [
+            "辣椒"
+          ],
+          "other": [
+            [
+              "lat",
+              "Capsicum annum",
+              [
+                "scientific name"
+              ]
+            ],
+            [
+              "lat",
+              "Zingiber offici",
+              [
+                "scientific name"
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "tayo",
+          "zho": [
+            "辣椒"
+          ],
+          "other": [
+            [
+              "lat",
+              "Capsicum annum",
+              [
+                "scientific name"
+              ]
+            ],
+            [
+              "lat",
+              "Zingiber offici",
+              [
+                "scientific name"
+              ]
+            ]
+          ]
+        },
+        {
+          "label": "N",
+          "form": "copel",
+          "zho": [
+            "薑"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 2695,
+      "ruling": "r6-structure-2695 (\"Note \\\"Japanese borrowing (uncertain)\\\"; drop 日語 from the Chinese\") (2026-10-17)",
+      "source": "daysag {S} = kakitaan：日語（？）首領；村長；區長；里長",
+      "headwords": [
+        {
+          "label": "S",
+          "form": "daysag",
+          "zho": [
+            "首領",
+            "村長",
+            "區長",
+            "里長"
+          ],
+          "notes": [
+            "Japanese borrowing (uncertain)"
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "kakitaan",
+          "zho": [
+            "首領",
+            "村長",
+            "區長",
+            "里長"
+          ],
+          "notes": [
+            "Japanese borrowing (uncertain)"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 3319,
+      "ruling": "card r5-unbalanced-3319 (fix): \"Drop everything starting with the (\" (2026-10-17)",
+      "source": "faka：木做的腰帶(柔軟，三十公寬，被青年人帶的為練習和預備打戰 同樣他們禁食那段時間",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "faka",
+          "zho": [
+            "木做的腰帶"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 3934,
+      "ruling": "card r5-conflicts-3934 (fix): \"You are missing a reading of `maflih koni ko si fodoy` marked for N, which is 沒有考慮. Otherwise, correct\"",
+      "source": "flih - maflih：反面外地 - maflih koni ko si fodoy：他反穿他的服裝；沒有考慮 {N}：maflih a masimsim：不需要考慮；反駁，駁斥 - maflih to 'alomanay：每次反駁別人",
+      "add_alt_translation": [
+        {
+          "label": "N",
+          "kind": "examples",
+          "form": "maflih koni ko si fodoy",
+          "zho": "沒有考慮"
+        }
+      ]
+    },
+    {
+      "line": 4246,
+      "ruling": "card r5-mixed-4246 (fix): \"drop S-L04246-e01\" (2026-10-17)",
+      "source": "fotig - mifotig：釣魚，捕魚 - mamifotig {S}：漁夫 - o pifotig：捕魚法",
+      "examples": [
+        {
+          "labels": [
+            "unmarked"
+          ],
+          "form": "o pifotig",
+          "zho": [
+            "捕魚法"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 4269,
+      "ruling": "card r5-mixed-4269 (fix): \"N-L04269-03 is actually unmarked. I think. We'll assume it is. \nMake sure that unmarked-L04269-01 has 5 alternate translations (, | : all are separaters for this one, but not necessarily for other records)\" (2026-10-17)",
+      "source": "fowah - mafowah：開，張開；打破：閘門的破裂；增多 {N} = malnak；瞪眼",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "mafowah",
+          "zho": [
+            "開",
+            "張開",
+            "打破",
+            "閘門的破裂",
+            "瞪眼"
+          ],
+          "notes": [
+            "root: fowah"
+          ]
+        },
+        {
+          "label": "N",
+          "form": "mafowah",
+          "zho": [
+            "增多"
+          ],
+          "notes": [
+            "root: fowah"
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "malnak",
+          "zho": [
+            "增多"
+          ],
+          "notes": [
+            "root: fowah",
+            "listed under mafowah"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 4309,
+      "ruling": "r6-structure-4309 (\"Note \\\"form uncertain\\\" on the FORM\") (2026-10-17)",
+      "source": "fser (？)：膽汁",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "fser",
+          "zho": [
+            "膽汁"
+          ],
+          "notes": [
+            "form uncertain"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 6340,
+      "ruling": "card r5-mixed-6340 (fix): \"N - kalaliliwan - 秋天 | 秋季 | 重新出發的\" (2026-10-17)",
+      "source": "kalaliliwan： = {N}：秋天，秋季；重新出發的",
+      "headwords": [
+        {
+          "label": "N",
+          "form": "kalaliliwan",
+          "zho": [
+            "秋天",
+            "秋季",
+            "重新出發的"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 6494,
+      "ruling": "card r5-mixed-6494 (fix): \"毛柿子 is an additional translation for all 3\" (2026-10-17)",
+      "source": "kamaya - {S} = nages：芒果樹；芒果； = kafohogay {N}：毛柿子",
+      "headwords": [
+        {
+          "label": "S",
+          "form": "kamaya",
+          "zho": [
+            "芒果樹",
+            "芒果",
+            "毛柿子"
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "nages",
+          "zho": [
+            "芒果樹",
+            "芒果",
+            "毛柿子"
+          ]
+        },
+        {
+          "label": "N",
+          "form": "kafohogay",
+          "zho": [
+            "毛柿子"
+          ],
+          "notes": [
+            "listed under kamaya"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 6517,
+      "ruling": "card r5-mixed-6517 (fix): \"(代名詞) is a translator annotation, can be dropped\ndrop Z-L06517-e01\" (2026-10-17)",
+      "source": "kamo：你們 (代名詞)；{Z} 語言 - misakamo to kacikian：只講話",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "kamo",
+          "zho": [
+            "你們"
+          ]
+        },
+        {
+          "label": "Z",
+          "form": "kamo",
+          "zho": [
+            "語言"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "labels": [
+            "unmarked"
+          ],
+          "form": "misakamo to kacikian",
+          "zho": [
+            "只講話"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 6599,
+      "ruling": "card r5-mixed-6599 (ok): \"But drop the \"[宗]\"\nANd N-L06599-03 is actually unmarked, and has the same definition as the unmarked kapa\" (2026-10-17)",
+      "source": "kapa：[宗] 給人祝福時，按手在這個人的頭上；大 {N} = tata'ag",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "kapa",
+          "zho": [
+            "給人祝福時，按手在這個人的頭上"
+          ]
+        },
+        {
+          "label": "N",
+          "form": "kapa",
+          "zho": [
+            "大"
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "tata'ag",
+          "zho": [
+            "給人祝福時，按手在這個人的頭上"
+          ],
+          "notes": [
+            "listed under kapa"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 6766,
+      "ruling": "card r5-conflicts-6766 (fix): \"`(花蓮語)` should not appear in the translation. Also, it specifies the translation as Hualien dialect. It should nonetheless apply to any dialect file currently labeled as Xiuguluan. But not to others.\"",
+      "source": "karo' - {T} = kamoraw = wirok：(花蓮語)柚子；{S}榕樹",
+      "replace_chinese": [
+        {
+          "from": "(花蓮語)柚子",
+          "to": "柚子",
+          "note": "source label: 花蓮語",
+          "only_labels": [
+            "unmarked",
+            "F",
+            "T"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 7803,
+      "ruling": "card r5-mixed-7803 (fix): \"unmarked-L07803-e01 should actually be Z. \nDrop 用腳跩垃圾(如雞扒土)  from unmarked-L07803-01\nThere is an additional version of unmarked-L07803-e01 which is indeed unmarked but has the translation 用腳跩垃圾(如雞扒土)\" (2026-10-17)",
+      "source": "korih - mikorih：拉土，塡土(如墳墓)；鋤，拔除 - mikorih to panay：鋤稻子 {Z}；用腳跩垃圾(如雞扒土)；挖 - mikorih to lakaw：尋找在垃圾裡",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "mikorih",
+          "zho": [
+            "拉土，塡土(如墳墓)",
+            "鋤，拔除",
+            "挖"
+          ],
+          "notes": [
+            "root: korih"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "labels": [
+            "Z"
+          ],
+          "form": "mikorih to panay",
+          "zho": [
+            "鋤稻子"
+          ]
+        },
+        {
+          "labels": [
+            "unmarked"
+          ],
+          "form": "mikorih to panay",
+          "zho": [
+            "用腳跩垃圾(如雞扒土)"
+          ]
+        },
+        {
+          "labels": [
+            "unmarked"
+          ],
+          "form": "mikorih to lakaw",
+          "zho": [
+            "尋找在垃圾裡"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 7819,
+      "ruling": "card r5-mixed-7819 (fix): \"ko'san no 'odal ('odaz)：蜂蜜是含糖的；好味的 <- two possible sentences (\"ko'san no 'odal \" & \"ko'san no 'odaz\") to be handled as ver=\"alt\". \n      - unmarked version has two meanings: 蜂蜜是含糖的；好味的\n      - S version has one: 恭維話\nko'san is unmarked, has two definitions: 甜的；含糖的\nko'sanay a sowal is unmarked and means 能說會道的話\nko'san ko sowal nira is unmarked and means 他服力地講話\" (2026-10-17)",
+      "source": "ko'san：甜的；含糖的 - ko'san no 'odal ('odaz)：蜂蜜是含糖的；好味的；恭維話{S} - ko'sanay a sowal：能說會道的話 - ko'san ko sowal nira：他服力地講話",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "ko'san",
+          "zho": [
+            "甜的",
+            "含糖的"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "labels": [
+            "unmarked"
+          ],
+          "form": "ko'san no 'odal",
+          "zho": [
+            "蜂蜜是含糖的",
+            "好味的"
+          ],
+          "alt": [
+            "ko'san no 'odaz"
+          ]
+        },
+        {
+          "labels": [
+            "S"
+          ],
+          "form": "ko'san no 'odal",
+          "zho": [
+            "恭維話"
+          ],
+          "alt": [
+            "ko'san no 'odaz"
+          ]
+        },
+        {
+          "labels": [
+            "unmarked"
+          ],
+          "form": "ko'sanay a sowal",
+          "zho": [
+            "能說會道的話"
+          ]
+        },
+        {
+          "labels": [
+            "unmarked"
+          ],
+          "form": "ko'san ko sowal nira",
+          "zho": [
+            "他服力地講話"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 8702,
+      "ruling": "card r5-mixed-8702 (fix): \"unmarked-L08702-e01 is actually S, not unmarked\" (2026-10-17)",
+      "source": "lgac：野山薑；蘆竹用做筐 - dogec no lgac {S}：月桃心",
+      "examples": [
+        {
+          "labels": [
+            "S"
+          ],
+          "form": "dogec no lgac",
+          "zho": [
+            "月桃心"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 9592,
+      "ruling": "r6-structure-9592 (\"Note \\\"Arabic borrowing (uncertain)\\\"; drop 阿拉伯 from the Chinese\") (2026-10-17)",
+      "source": "lotol：阿拉伯(？)：接骨樹類的小樹",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "lotol",
+          "zho": [
+            "接骨樹類的小樹"
+          ],
+          "notes": [
+            "Arabic borrowing (uncertain)"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 12899,
+      "ruling": "card r5-conflicts-12899 (fix): \"S - pispis - 摘 ｜ 用雙手拉來摘 / unmarked - pitpit - 摘 ｜ 個個地摘 / unmarked ex - mipispis to papah no tamako - 採菸葉\"",
+      "source": "pispis - {S} = pitpit：摘 ( pispis：用雙手拉來摘 - pitpit：個個地摘) - mipispis to papah no tamako：採菸葉",
+      "headwords": [
+        {
+          "label": "S",
+          "form": "pispis",
+          "zho": [
+            "摘",
+            "用雙手拉來摘"
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "pitpit",
+          "zho": [
+            "摘",
+            "個個地摘"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "labels": [
+            "unmarked"
+          ],
+          "form": "mipispis to papah no tamako",
+          "zho": [
+            "採菸葉"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 13029,
+      "ruling": "card r5-coastal-13029, button \"New Coastal file pair (dialect=\\\"Coastal\\\") for these readings\" (2026-10-17)",
+      "source": "podok - <4> {Tingalaw}：米酒",
+      "headwords": [
+        {
+          "label": "Coastal",
+          "form": "podok",
+          "zho": [
+            "米酒"
+          ],
+          "notes": [
+            "sense 4",
+            "source label: Tingalaw"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 13550,
+      "ruling": "card r5-conflicts-13550 (fix): \"rcad and lcad aren't given definitions. There's just the unmarked example sentence with translation.\"",
+      "source": "rcad - {T} = lcad - rcad ko ocog：同樣多",
+      "headwords": [],
+      "examples": [
+        {
+          "labels": [
+            "unmarked"
+          ],
+          "form": "rcad ko ocog",
+          "zho": [
+            "同樣多"
+          ],
+          "notes": [
+            "head words in the source: rcad - {T} = lcad (no translation of their own; ruled: no head-word S)"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 13576,
+      "ruling": "card r5-unbalanced-13576 (fix): \"Translation is 豐年祭. Everything after that is a note.\" (2026-10-17)",
+      "source": "regreg - maregreg {N}：豐年祭(在北方的村\"maregreg\"指示最大的豐年祭：村民)一天一夜待在隼合的地方，他們守齋，還有賽跑…和年青人的秘密傳授；另一個意思：豐年祭的第五天，大家招待客人吃飯)",
+      "headwords": [
+        {
+          "label": "N",
+          "form": "maregreg",
+          "zho": [
+            "豐年祭"
+          ],
+          "notes": [
+            "root: regreg",
+            "note in source: (在北方的村\"maregreg\"指示最大的豐年祭：村民)一天一夜待在隼合的地方，他們守齋，還有賽跑…和年青人的秘密傳授；另一個意思：豐年祭的第五天，大家招待客人吃飯)"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 14520,
+      "ruling": "card r5-unbalanced-14520 (fix): \"Delete all the parentheses in the planned entries and it'll be fine.\" (2026-10-17)",
+      "source": "sapa’et：鏨子 (mipa’et)：鑿)",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "sapa’et",
+          "zho": [
+            "鏨子"
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "mipa’et",
+          "zho": [
+            "鑿"
+          ],
+          "notes": [
+            "listed under sapa’et"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 15180,
+      "ruling": "card r5-unbalanced-15180 (fix): \"sisil and sisid are ver=\"alt\"s. And drop the spurious end parentheses in the Chiense.\" (2026-10-17)",
+      "source": "sisil = sisid：一種鳥的名字)",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "sisil",
+          "zho": [
+            "一種鳥的名字"
+          ],
+          "alt": [
+            "sisid"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 15401,
+      "ruling": "card r5-unbalanced-15401 (fix): \"Translations are 山苦菜 and 苦瓜. All the rest is a note.\" (2026-10-17)",
+      "source": "sokoy = kakorot：山苦菜，苦澀的水果(野葫蘆枓)他的水果和葉子是可采用的，他的根和木薯的根一樣厚) 以前是用為洗衣服的肥皂；苦瓜",
+      "headwords": [
+        {
+          "label": "unmarked",
+          "form": "sokoy",
+          "zho": [
+            "山苦菜",
+            "苦瓜"
+          ],
+          "notes": [
+            "note in source: 苦澀的水果(野葫蘆枓)他的水果和葉子是可采用的，他的根和木薯的根一樣厚) 以前是用為洗衣服的肥皂"
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "kakorot",
+          "zho": [
+            "山苦菜",
+            "苦瓜"
+          ],
+          "notes": [
+            "note in source: 苦澀的水果(野葫蘆枓)他的水果和葉子是可采用的，他的根和木薯的根一樣厚) 以前是用為洗衣服的肥皂"
+          ]
+        }
+      ]
+    },
+    {
+      "line": 17673,
+      "ruling": "card r5-unbalanced-17673 (None): \"All of this is a note: (tri’：確定的日子失去配偶的男女人)被村的頭目從他們的家出不可一天一犬夜,村民(finawlan)隼合在隼會所 要是有人出來，會發生洪水或地震)\" (2026-10-17)",
+      "source": "tri’ - {N} = rowis：汗，出汗；流血；眼淚：(tri’：確定的日子失去配偶的男女人)被村的頭目從他們的家出不可一天一犬夜,村民(finawlan)隼合在隼會所 要是有人出來，會發生洪水或地震)",
+      "headwords": [
+        {
+          "label": "N",
+          "form": "tri’",
+          "zho": [
+            "汗，出汗",
+            "流血",
+            "眼淚"
+          ],
+          "notes": [
+            "note in source: (tri’：確定的日子失去配偶的男女人)被村的頭目從他們的家出不可一天一犬夜,村民(finawlan)隼合在隼會所 要是有人出來，會發生洪水或地震)"
+          ]
+        },
+        {
+          "label": "unmarked",
+          "form": "rowis",
+          "zho": [
+            "汗，出汗",
+            "流血",
+            "眼淚"
+          ],
+          "notes": [
+            "note in source: (tri’：確定的日子失去配偶的男女人)被村的頭目從他們的家出不可一天一犬夜,村民(finawlan)隼合在隼會所 要是有人出來，會發生洪水或地震)"
+          ]
+        }
+      ]
+    }
+  ]
+}

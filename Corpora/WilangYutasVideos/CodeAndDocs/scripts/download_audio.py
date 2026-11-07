@@ -1,13 +1,19 @@
 """
-download_audio.py
+download_audio.py -- source refresh for the audio (run by ../refresh_source.sh, never by the build).
 
-For every XML file in Final_XML/, reads the audio URL and id from the <TEXT>
-element, downloads the audio track, and converts it to WAV using ffmpeg.
+Reads each published XML file in XML/Atayal/ (read-only) for its YouTube URL and caption
+timings, downloads the video's audio as WAV into Audio/Atayal/<text_id>.wav, and cuts:
+  * one clip per transcribed sentence: <text_id>_<S id>.wav (its AUDIO start-end);
+  * one clip per untranscribed gap of 1 s or more: <text_id>_untranscribed.wav, or
+    <text_id>_untranscribed_1.wav, _2.wav ... when there are several.
+These clips are what is published on Hugging Face.
 
-Output files are placed in Audio/ and named after the TEXT id attribute
-(e.g. "20180728_Yutas_Wilang_MVI_1079_...xml" → "20180728_....wav").
+It never writes XML: generate_xml.sh writes every AUDIO element, and the audio-only and
+*_untranscribed.xml files come from CodeAndDocs/video_manifest.tsv (POL-047: a source refresh
+only fetches source). If a refresh changes the gaps, update video_manifest.tsv to the clip names
+printed here and rebuild. Maintainer 2026-10-17: keep it, "with the XML-writing removed".
 
-Requires ffmpeg to be installed and on PATH.
+Requires ffmpeg/ffprobe on PATH and the yt-dlp Python package.
 """
 
 import os
@@ -36,22 +42,6 @@ def parse_xml_metadata(xml_path):
     except Exception as e:
         print(f"  [WARN] Could not parse {xml_path.name}: {e}")
         return None
-
-
-def add_audio_element_to_stub(xml_path, wav_filename):
-    """Add <AUDIO file="..."/> as a child of <TEXT> for stub XMLs (no <S> elements)."""
-    parser = etree.XMLParser(remove_blank_text=True)
-    tree = etree.parse(str(xml_path), parser)
-    root = tree.getroot()
-
-    # Idempotent: remove any existing top-level AUDIO element first
-    for existing in root.findall("AUDIO"):
-        root.remove(existing)
-
-    audio_el = etree.SubElement(root, "AUDIO")
-    audio_el.set("file", wav_filename)
-    tree.write(str(xml_path), encoding="utf-8", pretty_print=True, xml_declaration=True)
-    print(f"  [XML]  Added <AUDIO file=\"{wav_filename}\"/> to {xml_path.name}")
 
 
 def download_as_wav(youtube_url, output_stem, audio_dir):
@@ -101,39 +91,6 @@ def get_wav_duration(wav_path):
     return float(result.stdout.strip())
 
 
-def create_untranscribed_xml(original_xml_path, text_id, segments):
-    """Write (or overwrite) a <text_id>_untranscribed.xml file.
-
-    Copies the <TEXT> attributes from the original XML, updates 'id', and adds
-    one <AUDIO file="..."/> child per untranscribed segment.
-
-    Updated 2026-06-03: start/stop attributes are no longer written.
-    Each segment WAV (cut by segment_wav above) IS the untranscribed
-    region in full; writing source-video offsets here was misleading
-    because a reader would expect them to be offsets within @file and
-    they weren't. The `segments` tuple shape (start, stop, filename) is
-    retained because handle_untranscribed_segments still logs the
-    source-video offsets to stdout for debugging.
-    """
-    parser = etree.XMLParser(remove_blank_text=True)
-    orig_root = etree.parse(str(original_xml_path), parser).getroot()
-
-    new_root = etree.Element("TEXT")
-    for k, v in orig_root.attrib.items():
-        new_root.set(k, v)
-    new_root.set("id", f"{text_id}_untranscribed")
-
-    for _start, _stop, wav_filename in segments:
-        audio_el = etree.SubElement(new_root, "AUDIO")
-        audio_el.set("file", wav_filename)
-
-    out_path = original_xml_path.parent / f"{text_id}_untranscribed.xml"
-    etree.ElementTree(new_root).write(
-        str(out_path), encoding="utf-8", pretty_print=True, xml_declaration=True
-    )
-    print(f"  [XML]  Wrote {out_path.name} ({len(segments)} untranscribed segment(s))")
-
-
 def handle_untranscribed_segments(xml_path, text_id, src_wav):
     """Detect every untranscribed audio gap and create WAV segments + XML.
 
@@ -162,20 +119,16 @@ def handle_untranscribed_segments(xml_path, text_id, src_wav):
     MIN_GAP = 1.0  # seconds — gaps shorter than this are ignored
 
     parser = etree.XMLParser(remove_blank_text=True)
-    root = etree.parse(str(xml_path), parser).getroot()
+    root = etree.parse(str(xml_path), parser).getroot()  # read-only
 
     # Wipe this video's prior untranscribed outputs up front so the
     # rebuild is deterministic. Scoped strictly to filenames matching
     # `<text_id>_untranscribed*` so we never touch other videos' files
     # or the master `<text_id>.wav`.
     prior_wavs = sorted(AUDIO_DIR.glob(f"{text_id}_untranscribed*.wav"))
-    prior_xml = xml_path.parent / f"{text_id}_untranscribed.xml"
     for p in prior_wavs:
         p.unlink()
         print(f"  [DEL]  {p.name}  (stale untranscribed WAV from prior run)")
-    if prior_xml.exists():
-        prior_xml.unlink()
-        print(f"  [DEL]  {prior_xml.name}  (stale untranscribed XML from prior run)")
 
     total_duration = get_wav_duration(src_wav)
 
@@ -250,50 +203,27 @@ def handle_untranscribed_segments(xml_path, text_id, src_wav):
         segment_wav(src_wav, gap_start, gap_stop, out_path)
         print(f"  [WAV]  {wav_filename}  ({gap_start:.2f}s – {gap_stop:.2f}s)")
         segments.append((gap_start, gap_stop, wav_filename))
-
-    create_untranscribed_xml(xml_path, text_id, segments)
+    # No XML is written: the *_untranscribed.xml files come from video_manifest.tsv.
 
 
 def segment_transcribed_xml(xml_path, text_id, src_wav):
-    """Segment src_wav according to AUDIO timestamps in each <S> element.
+    """Cut one clip per <S> from src_wav: Audio/Atayal/<text_id>_<s_id>.wav (read-only on the XML).
 
-    Segments are written to Audio/<text_id>_<s_id>.wav (all in the root Audio
-    folder; the text_id prefix avoids collisions across XMLs).
-    The 'file' attribute is added to each <AUDIO> element pointing to that file.
-    The XML is updated in place.
+    The published XML writes the clip end as @end; @stop is accepted for older builds.
+    (The pre-2026-10-17 version read only @stop, so against published XML every clip
+    ran to the end of the video.)
     """
-    parser = etree.XMLParser(remove_blank_text=True)
-    tree = etree.parse(str(xml_path), parser)
-    root = tree.getroot()
-
-    sentences = root.findall("S")
-    changed = False
-
-    for s in sentences:
+    root = etree.parse(str(xml_path)).getroot()
+    for s in root.findall("S"):
         s_id = s.get("id", "unknown")
         audio_el = s.find("AUDIO")
-        if audio_el is None:
+        if audio_el is None or audio_el.get("start") is None:
             continue
-
-        start = audio_el.get("start")
-        stop = audio_el.get("stop")  # may be None for final sentence
-        if start is None:
-            continue
-
-        out_filename = f"{text_id}_{s_id}.wav"
-        out_path = AUDIO_DIR / out_filename
-
+        stop = audio_el.get("end") or audio_el.get("stop")  # None only for a final caption
+        out_path = AUDIO_DIR / f"{text_id}_{s_id}.wav"
         if not out_path.exists():
-            segment_wav(src_wav, start, stop, out_path)
-
-        if audio_el.get("file") != out_filename:
-            audio_el.set("file", out_filename)
-            changed = True
-
-    if changed:
-        tree.write(str(xml_path), encoding="utf-8", pretty_print=True, xml_declaration=True)
-        print(f"  [XML]  Updated {len(sentences)} AUDIO elements in {xml_path.name}")
-
+            segment_wav(src_wav, audio_el.get("start"), stop, out_path)
+            print(f"  [WAV]  {out_path.name}")
 
 def main():
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
@@ -337,8 +267,7 @@ def main():
             if has_transcript:
                 segment_transcribed_xml(xml_path, text_id, wav_path)
                 handle_untranscribed_segments(xml_path, text_id, wav_path)
-            else:
-                add_audio_element_to_stub(xml_path, wav_filename)
+            # an audio-only video's clip is the whole <text_id>.wav; nothing to cut
 
     print(f"\nDone. Downloaded: {downloaded}  Errors: {errors}")
 

@@ -19,7 +19,7 @@ def create_root(p, id, audio):
     root.set("xml:lang", "pwn")
     root.set("source", f"Li-May Paiwan Data, Participant {p}, file {id}")
     root.set("audio", audio)
-    root.set("copyright", "CC-BY")
+    root.set("copyright", "CC BY 4.0")
     root.set("citation", "origianl")
     root.set("BibTeX_citation", "TBD")
     return root

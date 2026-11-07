@@ -16,7 +16,10 @@ from pathlib import Path
 # two acutes and 'ayi' loses an acute and a macron, at S, W and M level. The
 # original tier keeps all 30. Paiwan attests no accented letter, so the keep set
 # protects nothing here -- contrast Puyuma, whose 'ē' survives.
-EXPECTED_TEXT = Counter({"V116": 18, "V122": 2389})
+# V122 was 2,389 until 2026-10-17, when the ruled gloss_to_notes.tsv moved
+# S640_1W6's gloss -- whose "(2nd personal plural GEN)" gave one '(' and one
+# ')' finding -- into TRANSL/@notes, which V122 does not read.
+EXPECTED_TEXT = Counter({"V116": 18, "V122": 2387})
 # V064 is one finding per morpheme without a gloss. fix_m_tier.py removes the
 # 1,165 mirror morphemes of the unparsed sentences, so the inventory falls from
 # 7,657 to 6,492 without any gloss being invented or lost.

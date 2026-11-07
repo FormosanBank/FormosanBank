@@ -1,0 +1,47 @@
+{
+  "overrides": [
+    {
+      "form": "maza asu hai, mazima dahdah mas itubunun tu dahis.",
+      "language": "Bunun",
+      "reason": "The API target is an English sentence, not Chinese.",
+      "translation": "Dogs like to lick human faces.",
+      "xml_lang": "eng"
+    },
+    {
+      "form": "maza sidi hai, mazima dahdah mas mahasbit tu hasila.",
+      "language": "Bunun",
+      "reason": "The API target is an English sentence, not Chinese.",
+      "translation": "Goats like to lick salty salt.",
+      "xml_lang": "eng"
+    },
+    {
+      "form": "ljenguaqu a kemitj azua vutjulj.",
+      "language": "Paiwan",
+      "reason": "The API copied the Paiwan source form into the target field.",
+      "translation": "ljenguaqu a kemitj azua vutjulj.",
+      "xml_lang": "pwn"
+    },
+    {
+      "form": "tjemuljutjuljur ti kuljelje tua kinraljum a tinekelan tua vava.",
+      "language": "Paiwan",
+      "reason": "The API copied the Paiwan source form into the target field.",
+      "translation": "tjemuljutjuljur ti kuljelje tua kinraljum a tinekelan tua vava.",
+      "xml_lang": "pwn"
+    },
+    {
+      "form": "ti angaw, ti kalu seRay ti uing matiw qaniyau kintulu sa naung semalaw.",
+      "language": "Kavalan",
+      "reason": "The API target contains only the personal name Angaw and has no linguistic content.",
+      "translation": "Angaw",
+      "xml_lang": "zxx"
+    },
+    {
+      "form": "Pingikalraku kane la  kacaeme kay  bicukali.",
+      "language": "Rukai",
+      "reason": "The API target is a Rukai sentence, not Chinese.",
+      "translation": "sasupate ku bicuka ini kay luange.",
+      "xml_lang": "dru"
+    }
+  ],
+  "schema_version": 1
+}

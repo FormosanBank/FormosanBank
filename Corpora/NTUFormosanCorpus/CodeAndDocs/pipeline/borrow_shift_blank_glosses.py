@@ -1,0 +1,306 @@
+#!/usr/bin/env python3
+"""Borrow a gloss for a word that a gloss-shift repair left bare.
+
+Maintainer ruling, 2026-09-28: "if we have a sentence with one word without a
+gloss BECAUSE WE SHIFTED THE GLOSSES, try borrowing a gloss following similar
+functionality for what is done in (5)" -- i.e. same language only, from the
+corpus's own evidence, and never a guess.
+
+Which words: the build applies the repair rows in force (see gloss_shift.py) to
+the source records when it loads them. This step replays those rows and takes
+exactly the cells a row blanked -- a word that had a gloss in the source and has
+none after the shift. Words that were already bare in the source are not
+touched: that is an omission, not something we did. Also the English slot of a
+word whose source writes the same Chinese gloss in both slots, which
+step1_realign empties (maintainer, 2026-09-30: "Drop the English. This becomes
+a potential target for gloss-borrowing."), and the Chinese slot of a word whose
+source writes the same English word gloss in both slots, which step1_realign
+empties too (maintainer, 2026-10-14, card same-english-borrow: "pair"). For those
+the evidence is narrower: only the other uses of the same word WITH THE SAME
+ENGLISH GLOSS count, so a word's commonest Chinese for another sense is never
+borrowed (Tsou ci "why" would otherwise get 關係詞, its relative-marker gloss).
+
+The borrowed gloss: among the other W elements of the SAME language (never the
+sentence itself) whose form is the same word, the most frequent gloss in that
+gloss language. It is borrowed only when the evidence is one-sided: at least
+``--min-count`` occurrences, and that gloss on at least ``--min-share`` of them.
+Placeholder glosses (XX, ??, FIL, FS, ...) are not evidence. Each gloss language
+is decided separately. The TRANSL written carries a ``notes`` attribute naming
+its provenance and the counts, so a reader can tell it from a gloss NTU wrote. A
+word whose single M mirrors it gets the same gloss on the M.
+
+Anything not borrowed -- no occurrences, evidence split, or the word could not
+be located unambiguously -- is written to ``--report`` for review. For a
+same-English slot the rule leaves empty, same_english_rulings.tsv may name the
+Chinese the maintainer chose for that word and English gloss (review page,
+2026-10-14: "write"); it is written with a note saying so.
+
+    python borrow_shift_blank_glosses.py --xml_dir <dir> --codedocs <CodeAndDocs> \\
+        [--report out.tsv] [--min-count 5] [--min-share 0.9]
+"""
+from __future__ import annotations
+
+import argparse
+import copy
+import csv
+import re
+import sys
+from collections import Counter, defaultdict
+from pathlib import Path
+
+from lxml import etree
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from gloss_shift import (PLACEHOLDER_GLOSSES, REPAIRS_TSV,  # noqa: E402
+                         apply_to_records, blank, is_word, load_table, norm_form,
+                         records_of)
+
+XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
+HAN = re.compile(r"[㐀-䶿一-鿿豈-﫿]")
+
+
+def form_text(el) -> str:
+    node = el.find("FORM[@kindOf='original']")
+    return "".join(node.itertext()).strip() if node is not None else ""
+
+
+def gloss(el, lang: str) -> str:
+    for t in el.findall("TRANSL"):
+        if t.get(XML_LANG) == lang and t.get("ver") is None:
+            return (t.text or "").strip()
+    return ""
+
+
+def evidence_gloss(g: str) -> bool:
+    return bool(g) and g != "_" and g.rstrip("=").upper() not in PLACEHOLDER_GLOSSES
+
+
+def created_blanks(codedocs: Path, rows: list) -> list:
+    """(language dir, S id, source form, gloss lang) for every cell a row blanked.
+
+    The rows are applied exactly as the builders apply them (``apply_to_records``:
+    every row for a file, in table order, each pinned to the source), so chained
+    rows over the same or overlapping records compose the same way here.
+    """
+    out = []
+    by_file = defaultdict(list)
+    for row in rows:
+        by_file[row["source_file"]].append(row)
+    for src, frows in by_file.items():
+        path = codedocs / src
+        recs = records_of(path)
+        fixed = apply_to_records(recs, src, frows, {})
+        per_record = src.startswith(("grammar/", "sentence/"))
+        first_of, start = {}, None
+        for r in recs:
+            if start is None or per_record:
+                start = r[0]
+            first_of[str(r[0])] = start
+            if r[1].get("s_end", True):
+                start = None
+        targeted = {rid for row in frows for rid in row["record_ids"].split("+")}
+        language = path.parent.name.split("_")[0]
+        for before, after in zip(recs, fixed):
+            rid = str(before[0])
+            if rid not in targeted:
+                continue
+            for b, a in zip(before[1].get("gloss") or [], after[1].get("gloss") or []):
+                if not is_word(b[0]):
+                    continue
+                for c in (1, 2):
+                    old = b[c] if c < len(b) else ""
+                    new = a[c] if c < len(a) else ""
+                    if not blank(old) and blank(new):
+                        lang = "zho" if HAN.search(old) else "eng"
+                        out.append((language, f"{path.stem}_S_{first_of[rid]}", b[0], lang))
+    return out
+
+
+DISPLACED = "the source gloss was displaced (gloss-shift repair)"
+DUPLICATE = "the source wrote this word's Chinese gloss in the English slot too"
+SAME_ENGLISH = ("the source wrote this word's English gloss in the Chinese slot too; counted only "
+                "over the uses with the same English gloss")
+
+
+def duplicate_blanks(codedocs: Path, subcorpus: str | None) -> list:
+    """(language dir, S id, source form, 'eng') for every word whose two gloss
+    cells hold the same Chinese text: step1_realign empties its English slot.
+    Grammar never runs step1_realign, so only sentence and story count."""
+    out = []
+    for sub in ("sentence", "story"):
+        if subcorpus and sub != subcorpus:
+            continue
+        for path in sorted((codedocs / sub).rglob("*.json")):
+            start = None
+            for r in records_of(path):
+                rid, rec = str(r[0]), r[1]
+                if start is None or sub == "sentence":
+                    start = rid
+                for row in rec.get("gloss") or []:
+                    a, b = (str(row[c]).strip() if c < len(row) else "" for c in (1, 2))
+                    if is_word(str(row[0])) and a == b and HAN.search(a):
+                        out.append((path.parent.name.split("_")[0], f"{path.stem}_S_{start}",
+                                    str(row[0]), "eng", DUPLICATE))
+                if rec.get("s_end", True):
+                    start = None
+    return out
+
+
+def same_english_blanks(codedocs: Path, subcorpus: str | None) -> list:
+    """(language dir, S id, source form, 'zho', SAME_ENGLISH) for every word whose two
+    gloss cells hold the same English word gloss: step1_realign empties its Chinese
+    slot (pipeline_grammar._same_english decides, as in the build)."""
+    from pipeline_grammar import _same_english
+    out = []
+    for sub in ("sentence", "story"):
+        if subcorpus and sub != subcorpus:
+            continue
+        for path in sorted((codedocs / sub).rglob("*.json")):
+            start = None
+            for r in records_of(path):
+                rid, rec = str(r[0]), r[1]
+                if start is None or sub == "sentence":
+                    start = rid
+                for row in rec.get("gloss") or []:
+                    a, b = (str(row[c]).strip() if c < len(row) else "" for c in (1, 2))
+                    if is_word(str(row[0])) and _same_english(a, b, str(row[0])):
+                        out.append((path.parent.name.split("_")[0], f"{path.stem}_S_{start}",
+                                    str(row[0]), "zho", SAME_ENGLISH))
+                if rec.get("s_end", True):
+                    start = None
+    return out
+
+
+def load_rulings(path: Path) -> dict:
+    """{(language dir, normalized word, English gloss): (Chinese, rationale)}."""
+    out = {}
+    if path.exists():
+        lines = [l for l in path.read_text(encoding="utf-8").splitlines() if l and not l.startswith("#")]
+        for row in csv.DictReader(lines, delimiter="\t"):
+            out[(row["language"], norm_form(row["word"]), row["english"])] = (row["chinese"], row["rationale"])
+    return out
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--xml_dir", required=True, type=Path)
+    ap.add_argument("--codedocs", type=Path, default=Path(__file__).resolve().parents[1])
+    ap.add_argument("--report", type=Path)
+    ap.add_argument("--table", type=Path, default=REPAIRS_TSV,
+                    help="repairs table (default: the build's, honouring NTU_GLOSS_SHIFT_TABLE)")
+    ap.add_argument("--min-count", type=int, default=5)
+    ap.add_argument("--min-share", type=float, default=0.9)
+    ap.add_argument("--subcorpus", choices=("grammar", "sentence", "story"),
+                    help="only rows whose source_file is in this subcorpus: a build of one "
+                         "subcorpus cannot hold another's sentences")
+    ap.add_argument("--dry-run", action="store_true")
+    args = ap.parse_args()
+
+    rows = load_table(args.table)
+    rulings = load_rulings(Path(__file__).resolve().parent / "same_english_rulings.tsv")
+    if args.subcorpus:
+        rows = [r for r in rows if r["source_file"].startswith(args.subcorpus + "/")]
+    blanks = [b + (DISPLACED,) for b in created_blanks(args.codedocs, rows)]
+    blanks += duplicate_blanks(args.codedocs, args.subcorpus)
+    blanks += same_english_blanks(args.codedocs, args.subcorpus)
+    stats, report = Counter(), []
+    if not blanks:
+        print("no gloss-shift repair in force left a word bare, and no word has the same "
+              "Chinese in both slots")
+        return 0
+    # Index the build: per language dir, every S and every W's glosses.
+    trees, sents, lex, pair = {}, {}, defaultdict(Counter), defaultdict(Counter)
+    for path in sorted(args.xml_dir.rglob("*.xml")):
+        lang_dir = path.parent.name
+        tree = etree.parse(str(path))
+        trees[path] = tree
+        for s in tree.getroot().iter("S"):
+            sents[(lang_dir, s.get("id"))] = (path, s)
+            for w in s.findall("W"):
+                for gl in ("eng", "zho"):
+                    g = gloss(w, gl)
+                    if evidence_gloss(g):
+                        lex[(lang_dir, norm_form(form_text(w)), gl)][g] += 1
+                if gloss(w, "eng") and evidence_gloss(gloss(w, "zho")):
+                    pair[(lang_dir, norm_form(form_text(w)), gloss(w, "eng"))][gloss(w, "zho")] += 1
+    changed_files = set()
+    filled = set()   # (W, gloss language) written in this run: a W whose source left an empty
+                     # TRANSL still reads as bare to gloss(), and must not be filled twice
+    for language, sid, src_form, gl, why in blanks:
+        base = {"language": language, "sentence": sid, "word": src_form, "gloss_lang": gl}
+        hit = sents.get((language, sid))
+        if hit is None:
+            report.append({**base, "outcome": "sentence not in this build"})
+            continue
+        path, s = hit
+        key = norm_form(src_form)
+        cands = [w for w in s.findall("W") if norm_form(form_text(w)) == key and not gloss(w, gl)
+                 and (w.get("id"), gl) not in filled]
+        if (len(cands) > 1 and why == SAME_ENGLISH and len({gloss(w, "eng") for w in cands}) == 1
+                and (language, key, gloss(cands[0], "eng")) in rulings):
+            # Identical bare words with the same English and a ruling (Bunun S_344 has
+            # via "why" twice): either assignment gives the same result, so the ruling
+            # fills them one at a time.
+            cands = cands[:1]
+        if len(cands) != 1:
+            report.append({**base, "outcome": f"{len(cands)} bare W with this form; not located"})
+            stats["not located"] += 1
+            continue
+        w = cands[0]
+        if why == SAME_ENGLISH:
+            eng = gloss(w, "eng")
+            own = Counter(gloss(x, gl) for x in s.findall("W") if norm_form(form_text(x)) == key
+                          and gloss(x, "eng") == eng and evidence_gloss(gloss(x, gl)))
+            counts = pair[(language, key, eng)] - own
+        else:
+            own = Counter(gloss(x, gl) for x in s.findall("W")
+                          if norm_form(form_text(x)) == key and evidence_gloss(gloss(x, gl)))
+            counts = lex[(language, key, gl)] - own
+        n = sum(counts.values())
+        top, k = (counts.most_common(1)[0] if counts else ("", 0))
+        dist = ", ".join(f"{g} {c}" for g, c in counts.most_common(4)) or "none"
+        ruled = rulings.get((language, key, gloss(w, "eng"))) if why == SAME_ENGLISH else None
+        if (n < args.min_count or k / max(n, 1) < args.min_share) and ruled:
+            top = ruled[0]
+            note = (f"gloss set by the maintainer's ruling (review page, 2026-10-14); "
+                    f"'{src_form}' '{gloss(w, 'eng')}' is glossed {dist} elsewhere in this language")
+            stats["written by the maintainer's ruling"] += 1
+            outcome = f"ruled '{top}' (evidence: {dist}, n={n})"
+        elif n < args.min_count or k / max(n, 1) < args.min_share:
+            report.append({**base, "outcome": f"not borrowed: {dist} (n={n})"})
+            stats["not borrowed (evidence too thin or split)"] += 1
+            continue
+        else:
+            note = (f"gloss borrowed: '{src_form}' is glossed this way in {k} of its {n} other "
+                    f"occurrences in this language; {why}")
+            outcome = f"borrowed '{top}' ({k}/{n})"
+            stats["borrowed"] += 1
+        filled.add((w.get("id"), gl))
+        t = etree.SubElement(w, "TRANSL")
+        t.set(XML_LANG, gl)
+        t.set("notes", note)
+        t.text = top
+        ms = w.findall("M")
+        if len(ms) == 1 and norm_form(form_text(ms[0])) == key and not gloss(ms[0], gl):
+            ms[0].append(copy.deepcopy(t))
+        report.append({**base, "outcome": outcome})
+        changed_files.add(path)
+    if not args.dry_run:
+        for path in changed_files:
+            trees[path].write(str(path), encoding="utf-8", xml_declaration=True)
+    if args.report:
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        with args.report.open("w", encoding="utf-8", newline="") as fh:
+            wr = csv.DictWriter(fh, fieldnames=["language", "sentence", "word", "gloss_lang", "outcome"],
+                                delimiter="\t")
+            wr.writeheader()
+            wr.writerows(report)
+    print(f"words left bare by a shift: {len(blanks)} cells; files modified: {len(changed_files)}")
+    for key in sorted(stats):
+        print(f"  {key}: {stats[key]}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

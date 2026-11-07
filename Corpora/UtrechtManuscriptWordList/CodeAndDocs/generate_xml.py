@@ -96,7 +96,13 @@ def strip_alternate_form(raw: str, headword: str, decisions: dict[str, Any],
     if rules["strip_bracketed"]:
         value, _ = outermost_brackets(value)
     keep_tail = any(item["source_row"] == source_row for item in rules["keep_tail"])
-    if rules["drop_text_after_headword"] and not keep_tail:
+    if keep_tail:
+        # The text after the headword is a second spelling, not a parse: it
+        # alone is the variant (row 1060: "vougot" / "vuxot" -> "vuxot").
+        if not value.startswith(headword + " "):
+            raise ValueError(f"keep_tail row {source_row} has no tail after {headword!r}: {value!r}")
+        value = value[len(headword) + 1:].strip()
+    elif rules["drop_text_after_headword"]:
         if value.startswith(headword + " "):
             value = headword
     return "" if value == headword else value

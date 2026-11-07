@@ -63,6 +63,7 @@ if str(_DISC_HERE.parents[2]) not in sys.path:
     sys.path.insert(0, str(_DISC_HERE.parents[2]))
 from QC.validation._discovery import discover_xml_files as _discover_xml_files  # noqa: E402
 from QC.xml_forms import find_base_form  # noqa: E402
+from QC.corpus_counts import resolve_language  # noqa: E402
 
 
 # ---------------------------------------------------------------------------
@@ -148,6 +149,25 @@ def extract_sentences(xml_path: str, kind_of: str = "standard"):
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
 
+def file_language(xml_path: str) -> str:
+    """The language a file's sentences belong to, as the bank names it.
+
+    TEXT/@xml:lang resolved with TEXT/@dialect through the shared rule (trv +
+    Truku is Truku, trv otherwise Seediq). Two sentences are only ever the
+    same sentence inside one language: Saisiyat ``yako`` and Truku ``yako``
+    are two words that happen to be spelt alike (Glosbe #180, 2026-09-13),
+    and a corpus that holds several languages must not pair them. Unknown or
+    missing codes fall back to the raw code so such files still compare
+    among themselves.
+    """
+    try:
+        root = ET.parse(xml_path).getroot()
+    except ET.ParseError:
+        return ""
+    code = (root.get(_XML_LANG) or "").strip()
+    return resolve_language(code, root.get("dialect")) or code.lower()
+
+
 def sentence_meaning(s) -> tuple:
     """Every TRANSL on this S, as a comparable, order-independent key."""
     return tuple(sorted(
@@ -162,6 +182,7 @@ class Occurrence:
     file: str          # path relative to scan root
     s_id: str
     raw_text: str      # text as it appeared, pre-normalization
+    language: str = ""  # resolved language of the file (see file_language)
 
 
 @dataclass
@@ -170,6 +191,8 @@ class Finding:
     normalized_text: str
     occurrences: list = field(default_factory=list)
     scope: str = "within-file"             # "within-file" or "cross-file"
+    language: str = ""                     # the one language every occurrence shares
+    kind: str = "identical"                # "identical" (same TRANSL set) or "translation-differs"
 
     @property
     def s_ids(self):
@@ -256,27 +279,32 @@ def find_duplicates(root_path: str, kind_of: str = "standard",
     #                              one word whose glosses should be merged into
     #                              one S with ver="alt" (POL-025). Never
     #                              deletable without a human, so always SOFT.
-    index: dict[str, list[tuple[Occurrence, tuple]]] = defaultdict(list)
+    # The key carries the language: the same spelling in two languages of a
+    # multi-language corpus is never a duplicate (see file_language).
+    index: dict[tuple[str, str], list[tuple[Occurrence, tuple]]] = defaultdict(list)
     for xml_path in _collect_xml_files(str(root_p)):
         rel = os.path.relpath(str(xml_path), str(rel_base))
+        language = file_language(str(xml_path))
         for sid, raw, meaning in extract_sentences(str(xml_path), kind_of=kind_of):
             norm = normalize_for_comparison(raw)
             if not norm:
                 continue
-            index[norm].append(
-                (Occurrence(file=rel, s_id=sid, raw_text=raw), meaning))
+            index[(language, norm)].append(
+                (Occurrence(file=rel, s_id=sid, raw_text=raw, language=language), meaning))
 
     findings: list[Finding] = []
-    for norm_text, entries in index.items():
+    for (language, norm_text), entries in index.items():
         if len(entries) < 2:
             continue
         occs = [o for o, _m in entries]
         same_meaning = len({m for _o, m in entries}) == 1
         severity = "HARD" if (dedup_expected and same_meaning) else "SOFT"
+        kind = "identical" if same_meaning else "translation-differs"
         files = {o.file for o in occs}
         scope = "within-file" if len(files) == 1 else "cross-file"
         findings.append(Finding(severity=severity, normalized_text=norm_text,
-                                occurrences=list(occs), scope=scope))
+                                occurrences=list(occs), scope=scope,
+                                language=language, kind=kind))
 
     # Stable order: within-file first, then by text, then first occurrence.
     findings.sort(key=lambda f: (0 if f.scope == "within-file" else 1,
@@ -309,12 +337,12 @@ def _resolve_scan_root(args, parser) -> str:
 def _write_csv(findings, output_path: str):
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["severity", "scope", "normalized_text", "file", "s_id",
-                    "raw_text"])
+        w.writerow(["severity", "scope", "language", "kind", "normalized_text",
+                    "file", "s_id", "raw_text"])
         for fnd in findings:
             for occ in fnd.occurrences:
-                w.writerow([fnd.severity, fnd.scope, fnd.normalized_text,
-                            occ.file, occ.s_id, occ.raw_text])
+                w.writerow([fnd.severity, fnd.scope, fnd.language, fnd.kind,
+                            fnd.normalized_text, occ.file, occ.s_id, occ.raw_text])
 
 
 def _summarize(findings, dedup_expected: bool = False):
@@ -331,6 +359,11 @@ def _summarize(findings, dedup_expected: bool = False):
     print(f"Duplicate sentence findings{note}: "
           f"HARD={hard} (same gloss), SOFT={soft} (gloss differs); "
           f"within-file={n_within} groups, cross-file={n_cross} groups")
+    by_lang = defaultdict(int)
+    for f in findings:
+        by_lang[f.language or "?"] += 1
+    if by_lang:
+        print("  groups by language: " + ", ".join(f"{k}={v}" for k, v in sorted(by_lang.items())))
 
 
 def main(argv=None) -> int:

@@ -1,0 +1,21 @@
+{
+  "_doc": [
+    "Corrections to the hand-typed POL-035 snapshot where the snapshot does not match the printed article.",
+    "Applied by generate_xml.py after the slash decisions. Each entry names the node, the snapshot text it",
+    "expects (the build stops if the snapshot differs), and the text to publish. drop_variants removes any",
+    "alternate FORM the snapshot gives the node."
+  ],
+  "corrections": [
+    {
+      "file": "Kangkang",
+      "printed": "18 mengep su kan(u)kanen-da (Original.pdf p. 3, text A, line 18): the (u) is set in the space between kan and kanen-da, against the k of kanen-da, with no hyphen",
+      "ruling": "maintainer 2026-10-15: \"parentheses should remain in the original tier, be removed in the standard, as explained above. These are not alternations, and the u appears to be attached to kanen anyway.\"",
+      "nodes": [
+        {"id": "S18", "expect": "mengep su kan(u) kanen-da", "form": "mengep su kan (u)kanen-da"},
+        {"id": "S18W3", "expect": "kan", "form": "kan", "drop_variants": true},
+        {"id": "S18W4", "expect": "kanen-da", "form": "(u)kanen-da"},
+        {"id": "S18W4M1", "expect": "kanen", "form": "(u)kanen"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- V163 (SOFT): AUDIO on a sentence whose original FORM prints an alternative.
+     S_1 slash alternative, S_2 optional parenthesis, S_3 the same slash text with
+     no AUDIO (not flagged), S_4 a plain sentence with AUDIO (not flagged). -->
+<TEXT id="v163" citation="c" BibTeX_citation="b" copyright="CC BY-NC 4.0" xml:lang="trv" dialect="Duda" audio="segmented">
+  <S id="S_1">
+    <FORM kindOf="original">Qbhni/qduda ka ni.</FORM>
+    <FORM kindOf="standard">Qbhni/qduda ka ni.</FORM>
+    <AUDIO file="a1.wav" start="0" end="1.2"/>
+  </S>
+  <S id="S_2">
+    <FORM kindOf="original">inika sun a lemang(e)da.</FORM>
+    <FORM kindOf="standard">inika sun a lemang(e)da.</FORM>
+    <AUDIO file="a2.wav" start="0" end="2.0"/>
+  </S>
+  <S id="S_3">
+    <FORM kindOf="original">Qbhni/qduda ka ni.</FORM>
+    <FORM kindOf="standard">Qbhni/qduda ka ni.</FORM>
+  </S>
+  <S id="S_4">
+    <FORM kindOf="original">Malu su hu?</FORM>
+    <FORM kindOf="standard">Malu su hu?</FORM>
+    <AUDIO file="a4.wav" start="0" end="1.1"/>
+  </S>
+</TEXT>

@@ -31,7 +31,8 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 from QC.corpus_counts import resolve_language, XML_LANG
-from QC.utilities.classify_quotes import PUNCT, _strip_flanking_punct, _is_letter
+from QC.utilities.classify_quotes import (PUNCT, CONSONANT_QUOTE_LANGUAGES, _is_letter,
+                                         _strip_flanking_punct, is_vowel)
 
 
 def _has_letter_or_digit(word: str) -> bool:
@@ -59,33 +60,96 @@ def is_edge_apostrophe_word(word: str) -> bool:
     return all(_is_letter(ch) or ch in ALLOWED_MARKS for ch in word)
 
 
+# A glottal stop stands next to a vowel: a word that begins with ' + consonant
+# or ends with consonant + ' is a quotation mark glued to a word, not a glottal.
+
+
+def glottal_next_to_consonant(word: str) -> bool:
+    """True iff `word` begins with ' + consonant or ends with consonant + '
+    (maintainer, 2026-10-14: such words are removed from the list)."""
+    if len(word) >= 2 and word[0] == "'" and _is_letter(word[1]) and not is_vowel(word[1]):
+        return True
+    if len(word) >= 2 and word[-1] == "'" and _is_letter(word[-2]) and not is_vowel(word[-2]):
+        return True
+    return False
+
+
 def build_attestation_set(forms_by_sentence, min_freq=3, include_interior=False):
-    """Edge-apostrophe words from single-word S-FORMs (± frequent interiors).
+    """Edge-apostrophe words from single-word S-FORMs (± frequent interiors),
+    plus every word anywhere in running text that begins AND ends with ',
+    minus every word whose ' stands next to a consonant.
 
     forms_by_sentence: list of token lists (each = one S-FORM, whitespace-split).
-    include_interior=False (default) draws from single-word S-FORMs only.
-    Regardless of source, only entries passing `is_edge_apostrophe_word`
-    are kept — anything else can never match a classifier lookup.
+    include_interior=False (default) draws the one-edge words from single-word
+    S-FORMs only. Words with ' at BOTH edges are taken from every position
+    (maintainer, 2026-10-14: "our allow-list should include words that begin
+    *and* end in single quotes"); then any word that starts with ' + consonant
+    or ends with consonant + ' is removed ("After adding those, we should remove
+    from the allow-list any words that start with a ' followed by a consonant or
+    end with a consonant followed by a '"). Only entries passing
+    `is_edge_apostrophe_word` are kept -- anything else can never match a
+    classifier lookup.
     """
     singleword = set()
     interior = Counter()
+    both_edges = set()
     for toks in forms_by_sentence:
         if len(toks) == 1:
             core = _strip_flanking_punct(toks[0]).casefold()
             if core:
                 singleword.add(core)
+        for t in toks:
+            core = _strip_flanking_punct(t).casefold()
+            if len(core) >= 3 and core[0] == "'" and core[-1] == "'":
+                both_edges.add(core)
         if include_interior:
             for t in toks[1:-1]:                   # exclude initial + final
                 core = _strip_flanking_punct(t).casefold()
                 if core and _has_letter_or_digit(core):
                     interior[core] += 1
-    result = singleword
+    result = singleword | both_edges
     if include_interior:
         result = result | {w for w, n in interior.items() if n >= min_freq}
-    return {w for w in result if is_edge_apostrophe_word(w)}
+    return {w for w in result if is_edge_apostrophe_word(w) and not glottal_next_to_consonant(w)}
 
 
-def _iter_language_forms(corpora_path, language):
+def consonant_headwords(forms_by_sentence):
+    """One-word S-FORMs (dictionary headwords) whose ' stands next to a
+    consonant: the words the consonant filter takes off the list, kept apart as
+    the "attested with that spelling" exceptions for CONSONANT_QUOTE_LANGUAGES."""
+    out = set()
+    for toks in forms_by_sentence:
+        if len(toks) == 1:
+            core = _strip_flanking_punct(toks[0]).casefold()
+            if core and is_edge_apostrophe_word(core) and glottal_next_to_consonant(core):
+                out.add(core)
+    return out
+
+
+def frequent_both_edge_words(original_forms, min_count=50, min_ratio=10):
+    """Words written with ' at both edges at least `min_count` times in the
+    language's original tier, whose variants missing one or both 's are together
+    at least `min_ratio` times rarer (maintainer, 2026-10-14: "Add to the allow
+    lists words that appear at least 50 times in the corpus with opening and
+    ending 's, and the word missing one or both 's is at least 10x less frequent
+    as with both")."""
+    counts = Counter()
+    for toks in original_forms:
+        for t in toks:
+            core = _strip_flanking_punct(t).casefold()
+            if core:
+                counts[core] += 1
+    out = set()
+    for w, n in counts.items():
+        if n < min_count or len(w) < 3 or w[0] != "'" or w[-1] != "'":
+            continue
+        missing = counts[w[1:]] + counts[w[:-1]] + counts[w[1:-1]]
+        if n >= min_ratio * missing and is_edge_apostrophe_word(w):
+            out.add(w)
+    return out
+
+
+def _iter_language_forms(corpora_path, language, kinds=("original", "standard")):
     """Yield token lists for every original/standard S-FORM in `language`."""
     for path in glob.iglob(os.path.join(corpora_path, "**", "*.xml"),
                            recursive=True):
@@ -101,7 +165,7 @@ def _iter_language_forms(corpora_path, language):
             continue
         for s in root.findall("S"):
             for form in s.findall("FORM"):
-                if form.get("kindOf") in ("original", "standard"):
+                if form.get("kindOf") in kinds:
                     text = " ".join("".join(form.itertext()).split())
                     if text:
                         yield text.split()
@@ -121,10 +185,16 @@ def main(argv=None):
     forms = list(_iter_language_forms(args.corpora_path, args.language))
     words = build_attestation_set(forms, args.min_freq,
                                   include_interior=args.include_interior)
+    words |= frequent_both_edge_words(
+        list(_iter_language_forms(args.corpora_path, args.language, kinds=("original",))))
+    words = {w for w in words if not glottal_next_to_consonant(w)}
     out_dir = Path(args.reference_dir) / args.language
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "attestation.txt"
     out_path.write_text("\n".join(sorted(words)) + "\n", encoding="utf-8")
+    if args.language in CONSONANT_QUOTE_LANGUAGES:
+        (out_dir / "attestation_consonant.txt").write_text(
+            "\n".join(sorted(consonant_headwords(forms))) + "\n", encoding="utf-8")
     print(f"{args.language}: {len(forms)} S-FORMs scanned -> "
           f"{len(words)} words -> {out_path}")
 

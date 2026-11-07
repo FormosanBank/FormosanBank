@@ -11,7 +11,7 @@ from pathlib import Path
 from lxml import etree
 
 # Make the QC package importable so we can reuse the shared dialect inventory
-# (the same single-vs-multi-dialect source used by fix_dialects.py and V036).
+# (the same single-vs-multi-dialect source used by V036).
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))

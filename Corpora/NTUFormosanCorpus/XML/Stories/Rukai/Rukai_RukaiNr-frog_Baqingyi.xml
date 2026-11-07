@@ -1,12 +1,124 @@
 <?xml version="1.0" ?>
 <TEXT id="NTU_Stry_Rukai_RukaiNr-frog_Baqingyi" citation="NTU Corpus of Formosan Languages" BibTeX_citation="" copyright="CC BY-NC 4.0" xml:lang="dru" dialect="Wutai">
     <S id="RukaiNr-frog_Baqingyi_S_1">
-        <FORM kindOf="original" notes="lrulay大概三歲左右的嬰孩。">wasipi</FORM>
-        <PHON kindOf="original">wasipi</PHON>
-        <FORM kindOf="standard">wasipi</FORM>
-        <PHON kindOf="standard">wasipi</PHON>
+        <FORM kindOf="original" notes="lrulay大概三歲左右的嬰孩。">yakay kudra lrulay ku wasipi</FORM>
+        <PHON kindOf="original">jakaj kuɖa ɭulaj ku wasipi</PHON>
+        <FORM kindOf="standard">yakay kudra lrulay ku wasipi</FORM>
+        <PHON kindOf="standard">jakaj kuɖa ɭulaj ku wasipi</PHON>
         <TRANSL xml:lang="zho">有一個在睡覺的小孩。</TRANSL>
         <TRANSL xml:lang="eng">There was a child which was sleeping</TRANSL>
+        <W id="RukaiNr-frog_Baqingyi_S_1_W0">
+            <FORM kindOf="original">y-a-kay</FORM>
+            <PHON kindOf="original">jakaj</PHON>
+            <FORM kindOf="standard">y-a-kay</FORM>
+            <PHON kindOf="standard">jakaj</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">處所-實現-這</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC-RLS-this</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_1_W0M0">
+                <FORM kindOf="original">y</FORM>
+                <PHON kindOf="original">j</PHON>
+                <FORM kindOf="standard">y</FORM>
+                <PHON kindOf="standard">j</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_1_W0M1">
+                <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_1_W0M2">
+                <FORM kindOf="original">kay</FORM>
+                <PHON kindOf="original">kaj</PHON>
+                <FORM kindOf="standard">kay</FORM>
+                <PHON kindOf="standard">kaj</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_1_W1">
+            <FORM kindOf="original">kudra</FORM>
+            <PHON kindOf="original">kuɖa</PHON>
+            <FORM kindOf="standard">kudra</FORM>
+            <PHON kindOf="standard">kuɖa</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">那.</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that.INV</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_1_W1M0">
+                <FORM kindOf="original">kudra</FORM>
+                <PHON kindOf="original">kuɖa</PHON>
+                <FORM kindOf="standard">kudra</FORM>
+                <PHON kindOf="standard">kuɖa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">那.</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.INV</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_1_W2">
+            <FORM kindOf="original">lrulay</FORM>
+            <PHON kindOf="original">ɭulaj</PHON>
+            <FORM kindOf="standard">lrulay</FORM>
+            <PHON kindOf="standard">ɭulaj</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">不可見</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">baby</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_1_W2M0">
+                <FORM kindOf="original">lrulay</FORM>
+                <PHON kindOf="original">ɭulaj</PHON>
+                <FORM kindOf="standard">lrulay</FORM>
+                <PHON kindOf="standard">ɭulaj</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">不可見</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">baby</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_1_W3">
+            <FORM kindOf="original">ku</FORM>
+            <PHON kindOf="original">ku</PHON>
+            <FORM kindOf="standard">ku</FORM>
+            <PHON kindOf="standard">ku</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">嬰兒</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_1_W3M0">
+                <FORM kindOf="original">ku</FORM>
+                <PHON kindOf="original">ku</PHON>
+                <FORM kindOf="standard">ku</FORM>
+                <PHON kindOf="standard">ku</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">嬰兒</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_1_W4">
+            <FORM kindOf="original">w-a-sipi</FORM>
+            <PHON kindOf="original">wasipi</PHON>
+            <FORM kindOf="standard">w-a-sipi</FORM>
+            <PHON kindOf="standard">wasipi</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">主動-實現-作夢</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">ACT-RLS-dream</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_1_W4M0">
+                <FORM kindOf="original">w</FORM>
+                <PHON kindOf="original">w</PHON>
+                <FORM kindOf="standard">w</FORM>
+                <PHON kindOf="standard">w</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">主動</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">ACT</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_1_W4M1">
+                <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_1_W4M2">
+                <FORM kindOf="original">sipi</FORM>
+                <PHON kindOf="original">sipi</PHON>
+                <FORM kindOf="standard">sipi</FORM>
+                <PHON kindOf="standard">sipi</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">作夢</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">dream</TRANSL>
+            </M>
+        </W>
     </S>
     <S id="RukaiNr-frog_Baqingyi_S_3">
         <FORM kindOf="original">la lapu pikay ki didilrungu ku takurauru</FORM>
@@ -787,8 +899,8 @@
                 <PHON kindOf="original">ala</PHON>
                 <FORM kindOf="standard">ala</FORM>
                 <PHON kindOf="standard">ala</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_9_W1">
@@ -803,8 +915,8 @@
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
                 <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">被動</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PASS</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_9_W2">
@@ -819,17 +931,33 @@
                 <PHON kindOf="original">ə</PHON>
                 <FORM kindOf="standard">e</FORM>
                 <PHON kindOf="standard">ə</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">填補詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_9_W3">
-            <FORM kindOf="original">kithere</FORM>
+            <FORM kindOf="original">ki-there</FORM>
             <PHON kindOf="original">kiθərə</PHON>
-            <FORM kindOf="standard">kithere</FORM>
+            <FORM kindOf="standard">ki-there</FORM>
             <PHON kindOf="standard">kiθərə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">被動-勒住</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PASS-str-angle</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PASS-strangle</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_9_W3M0">
+                <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
+                <FORM kindOf="standard">ki</FORM>
+                <PHON kindOf="standard">ki</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">被動</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PASS</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_9_W3M1">
+                <FORM kindOf="original">there</FORM>
+                <PHON kindOf="original">θərə</PHON>
+                <FORM kindOf="standard">there</FORM>
+                <PHON kindOf="standard">θərə</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">勒住</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">strangle</TRANSL>
+            </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_9_W4">
             <FORM kindOf="original">ki</FORM>
@@ -843,8 +971,8 @@
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
                 <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_9_W5">
@@ -867,7 +995,7 @@
                 <PHON kindOf="original">diɭuŋu</PHON>
                 <FORM kindOf="standard">dilrungu</FORM>
                 <PHON kindOf="standard">diɭuŋu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">甕</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">罐子</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">jar</TRANSL>
             </M>
         </W>
@@ -883,8 +1011,8 @@
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_9_W7">
@@ -899,8 +1027,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_9_W8">
@@ -915,8 +1043,8 @@
                 <PHON kindOf="original">kai</PHON>
                 <FORM kindOf="standard">kai</FORM>
                 <PHON kindOf="standard">kai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">話</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">word</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_9_W9">
@@ -931,8 +1059,8 @@
                 <PHON kindOf="original">maka</PHON>
                 <FORM kindOf="standard">maka</FORM>
                 <PHON kindOf="standard">maka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">過</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">pass</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">可能.情態</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">POSS.MOD</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_9_W10">
@@ -1849,12 +1977,12 @@
         </W>
     </S>
     <S id="RukaiNr-frog_Baqingyi_S_18">
-        <FORM kindOf="original">la dreele ku sigu sa dreele ki sigu kuini taupungu la aleale</FORM>
-        <PHON kindOf="original">la ɖəələ ku sigu sa ɖəələ ki sigu kuini taupuŋu la aləalə</PHON>
-        <FORM kindOf="standard">la dreele ku sigu sa dreele ki sigu kuini taupungu la aleale</FORM>
-        <PHON kindOf="standard">la ɖəələ ku sigu sa ɖəələ ki sigu kuini taupuŋu la aləalə</PHON>
-        <TRANSL xml:lang="zho">然後當狗看到虎頭蜂的時候，就一直叫</TRANSL>
-        <TRANSL xml:lang="eng" notes="Then when that dog saw the hornet, (it) kept woofing.">Then when that dog saw the hornet, kept woofing.</TRANSL>
+        <FORM kindOf="original">la dreele ku sigu</FORM>
+        <PHON kindOf="original">la ɖəələ ku sigu</PHON>
+        <FORM kindOf="standard">la dreele ku sigu</FORM>
+        <PHON kindOf="standard">la ɖəələ ku sigu</PHON>
+        <TRANSL xml:lang="zho">然後就看到虎頭蜂</TRANSL>
+        <TRANSL xml:lang="eng">then saw the hornet.</TRANSL>
         <W id="RukaiNr-frog_Baqingyi_S_18_W0">
             <FORM kindOf="original">la</FORM>
             <PHON kindOf="original">la</PHON>
@@ -1919,14 +2047,22 @@
                 <TRANSL xml:lang="eng" kindOf="original">hornet</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_18_W4">
+    </S>
+    <S id="RukaiNr-frog_Baqingyi_S_19">
+        <FORM kindOf="original">sa dreele ki sigu kuini taupungu la aleale</FORM>
+        <PHON kindOf="original">sa ɖəələ ki sigu kuini taupuŋu la aləalə</PHON>
+        <FORM kindOf="standard">sa dreele ki sigu kuini taupungu la aleale</FORM>
+        <PHON kindOf="standard">sa ɖəələ ki sigu kuini taupuŋu la aləalə</PHON>
+        <TRANSL xml:lang="zho">然後當狗看到虎頭蜂的時候，就一直叫</TRANSL>
+        <TRANSL xml:lang="eng" notes="Then when that dog saw the hornet, (it) kept woofing.">Then when that dog saw the hornet, kept woofing.</TRANSL>
+        <W id="RukaiNr-frog_Baqingyi_S_19_W0">
             <FORM kindOf="original">sa</FORM>
             <PHON kindOf="original">sa</PHON>
             <FORM kindOf="standard">sa</FORM>
             <PHON kindOf="standard">sa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_18_W4M0">
+            <M id="RukaiNr-frog_Baqingyi_S_19_W0M0">
                 <FORM kindOf="original">sa</FORM>
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
@@ -1935,14 +2071,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_18_W5">
+        <W id="RukaiNr-frog_Baqingyi_S_19_W1">
             <FORM kindOf="original">dreele</FORM>
             <PHON kindOf="original">ɖəələ</PHON>
             <FORM kindOf="standard">dreele</FORM>
             <PHON kindOf="standard">ɖəələ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_18_W5M0">
+            <M id="RukaiNr-frog_Baqingyi_S_19_W1M0">
                 <FORM kindOf="original">dreele</FORM>
                 <PHON kindOf="original">ɖəələ</PHON>
                 <FORM kindOf="standard">dreele</FORM>
@@ -1951,14 +2087,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_18_W6">
+        <W id="RukaiNr-frog_Baqingyi_S_19_W2">
             <FORM kindOf="original">ki</FORM>
             <PHON kindOf="original">ki</PHON>
             <FORM kindOf="standard">ki</FORM>
             <PHON kindOf="standard">ki</PHON>
             <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_18_W6M0">
+            <M id="RukaiNr-frog_Baqingyi_S_19_W2M0">
                 <FORM kindOf="original">ki</FORM>
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
@@ -1967,14 +2103,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_18_W7">
+        <W id="RukaiNr-frog_Baqingyi_S_19_W3">
             <FORM kindOf="original">sigu</FORM>
             <PHON kindOf="original">sigu</PHON>
             <FORM kindOf="standard">sigu</FORM>
             <PHON kindOf="standard">sigu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">大蜜蜂</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">hornet</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_18_W7M0">
+            <M id="RukaiNr-frog_Baqingyi_S_19_W3M0">
                 <FORM kindOf="original">sigu</FORM>
                 <PHON kindOf="original">sigu</PHON>
                 <FORM kindOf="standard">sigu</FORM>
@@ -1983,14 +2119,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">hornet</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_18_W8">
+        <W id="RukaiNr-frog_Baqingyi_S_19_W4">
             <FORM kindOf="original">kuini</FORM>
             <PHON kindOf="original">kuini</PHON>
             <FORM kindOf="standard">kuini</FORM>
             <PHON kindOf="standard">kuini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">那.不可見.近指</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">that.INV.PROX</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_18_W8M0">
+            <M id="RukaiNr-frog_Baqingyi_S_19_W4M0">
                 <FORM kindOf="original">kuini</FORM>
                 <PHON kindOf="original">kuini</PHON>
                 <FORM kindOf="standard">kuini</FORM>
@@ -1999,14 +2135,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">that.INV.PROX</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_18_W9">
+        <W id="RukaiNr-frog_Baqingyi_S_19_W5">
             <FORM kindOf="original">taupungu</FORM>
             <PHON kindOf="original">taupuŋu</PHON>
             <FORM kindOf="standard">taupungu</FORM>
             <PHON kindOf="standard">taupuŋu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狗</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">dog</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_18_W9M0">
+            <M id="RukaiNr-frog_Baqingyi_S_19_W5M0">
                 <FORM kindOf="original">taupungu</FORM>
                 <PHON kindOf="original">taupuŋu</PHON>
                 <FORM kindOf="standard">taupungu</FORM>
@@ -2015,14 +2151,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">dog</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_18_W10">
+        <W id="RukaiNr-frog_Baqingyi_S_19_W6">
             <FORM kindOf="original">la</FORM>
             <PHON kindOf="original">la</PHON>
             <FORM kindOf="standard">la</FORM>
             <PHON kindOf="standard">la</PHON>
             <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_18_W10M0">
+            <M id="RukaiNr-frog_Baqingyi_S_19_W6M0">
                 <FORM kindOf="original">la</FORM>
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
@@ -2031,14 +2167,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_18_W11">
+        <W id="RukaiNr-frog_Baqingyi_S_19_W7">
             <FORM kindOf="original">aleale</FORM>
             <PHON kindOf="original">aləalə</PHON>
             <FORM kindOf="standard">aleale</FORM>
             <PHON kindOf="standard">aləalə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狗吠</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">woof</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_18_W11M0">
+            <M id="RukaiNr-frog_Baqingyi_S_19_W7M0">
                 <FORM kindOf="original">aleale</FORM>
                 <PHON kindOf="original">aləalə</PHON>
                 <FORM kindOf="standard">aleale</FORM>
@@ -2049,12 +2185,220 @@
         </W>
     </S>
     <S id="RukaiNr-frog_Baqingyi_S_20">
-        <FORM kindOf="original">sa aleale kuini taupungu kuini sigu</FORM>
-        <PHON kindOf="original">sa aləalə kuini taupuŋu kuini sigu</PHON>
-        <FORM kindOf="standard">sa aleale kuini taupungu kuini sigu</FORM>
-        <PHON kindOf="standard">sa aləalə kuini taupuŋu kuini sigu</PHON>
+        <FORM kindOf="original">sa aleale kuini taupungu kuini sigu la kirimu kainganay ungungung si mutaluvayvay</FORM>
+        <PHON kindOf="original">sa aləalə kuini taupuŋu kuini sigu la kirimu kaiŋanaj uŋuŋuŋ si mutaluvajvaj</PHON>
+        <FORM kindOf="standard">sa aleale kuini taupungu kuini sigu la kirimu kainganay ungungung si mutaluvayvay</FORM>
+        <PHON kindOf="standard">sa aləalə kuini taupuŋu kuini sigu la kirimu kaiŋanaj uŋuŋuŋ si mutaluvajvaj</PHON>
         <TRANSL xml:lang="zho">那隻大蜜蜂突然出來然後一直嗡嗡嗡。</TRANSL>
         <TRANSL xml:lang="eng" notes="That hornet then suddenly came out and (kept) buzzing.">That hornet then suddenly came out and buzzing.</TRANSL>
+        <W id="RukaiNr-frog_Baqingyi_S_20_W0">
+            <FORM kindOf="original">sa</FORM>
+            <PHON kindOf="original">sa</PHON>
+            <FORM kindOf="standard">sa</FORM>
+            <PHON kindOf="standard">sa</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W0M0">
+                <FORM kindOf="original">sa</FORM>
+                <PHON kindOf="original">sa</PHON>
+                <FORM kindOf="standard">sa</FORM>
+                <PHON kindOf="standard">sa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_20_W1">
+            <FORM kindOf="original">ale-ale</FORM>
+            <PHON kindOf="original">aləalə</PHON>
+            <FORM kindOf="standard">ale-ale</FORM>
+            <PHON kindOf="standard">aləalə</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">吠-重疊</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">woof-RED</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W1M0">
+                <FORM kindOf="original">ale</FORM>
+                <PHON kindOf="original">alə</PHON>
+                <FORM kindOf="standard">ale</FORM>
+                <PHON kindOf="standard">alə</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">吠</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">woof</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W1M1">
+                <FORM kindOf="original">ale</FORM>
+                <PHON kindOf="original">alə</PHON>
+                <FORM kindOf="standard">ale</FORM>
+                <PHON kindOf="standard">alə</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_20_W2">
+            <FORM kindOf="original">kuini</FORM>
+            <PHON kindOf="original">kuini</PHON>
+            <FORM kindOf="standard">kuini</FORM>
+            <PHON kindOf="standard">kuini</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">那.不可見.近指</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that.INV.PROX</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W2M0">
+                <FORM kindOf="original">kuini</FORM>
+                <PHON kindOf="original">kuini</PHON>
+                <FORM kindOf="standard">kuini</FORM>
+                <PHON kindOf="standard">kuini</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">那.不可見.近指</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.INV.PROX</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_20_W3">
+            <FORM kindOf="original">taupungu</FORM>
+            <PHON kindOf="original">taupuŋu</PHON>
+            <FORM kindOf="standard">taupungu</FORM>
+            <PHON kindOf="standard">taupuŋu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">狗</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">dog</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W3M0">
+                <FORM kindOf="original">taupungu</FORM>
+                <PHON kindOf="original">taupuŋu</PHON>
+                <FORM kindOf="standard">taupungu</FORM>
+                <PHON kindOf="standard">taupuŋu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">狗</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">dog</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_20_W4">
+            <FORM kindOf="original">kuini</FORM>
+            <PHON kindOf="original">kuini</PHON>
+            <FORM kindOf="standard">kuini</FORM>
+            <PHON kindOf="standard">kuini</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">那.不可見.近指</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that.INV.PROX</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W4M0">
+                <FORM kindOf="original">kuini</FORM>
+                <PHON kindOf="original">kuini</PHON>
+                <FORM kindOf="standard">kuini</FORM>
+                <PHON kindOf="standard">kuini</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">那.不可見.近指</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.INV.PROX</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_20_W5">
+            <FORM kindOf="original">sigu</FORM>
+            <PHON kindOf="original">sigu</PHON>
+            <FORM kindOf="standard">sigu</FORM>
+            <PHON kindOf="standard">sigu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">大蜜蜂</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">hornet</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W5M0">
+                <FORM kindOf="original">sigu</FORM>
+                <PHON kindOf="original">sigu</PHON>
+                <FORM kindOf="standard">sigu</FORM>
+                <PHON kindOf="standard">sigu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">大蜜蜂</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">hornet</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_20_W6">
+            <FORM kindOf="original">la</FORM>
+            <PHON kindOf="original">la</PHON>
+            <FORM kindOf="standard">la</FORM>
+            <PHON kindOf="standard">la</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W6M0">
+                <FORM kindOf="original">la</FORM>
+                <PHON kindOf="original">la</PHON>
+                <FORM kindOf="standard">la</FORM>
+                <PHON kindOf="standard">la</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_20_W7">
+            <FORM kindOf="original">kirimu</FORM>
+            <PHON kindOf="original">kirimu</PHON>
+            <FORM kindOf="standard">kirimu</FORM>
+            <PHON kindOf="standard">kirimu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">突然</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">sudden</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W7M0">
+                <FORM kindOf="original">kirimu</FORM>
+                <PHON kindOf="original">kirimu</PHON>
+                <FORM kindOf="standard">kirimu</FORM>
+                <PHON kindOf="standard">kirimu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">突然</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">sudden</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_20_W8">
+            <FORM kindOf="original">kainganay</FORM>
+            <PHON kindOf="original">kaiŋanaj</PHON>
+            <FORM kindOf="standard">kainganay</FORM>
+            <PHON kindOf="standard">kaiŋanaj</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">出來</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">come.out</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W8M0">
+                <FORM kindOf="original">kainganay</FORM>
+                <PHON kindOf="original">kaiŋanaj</PHON>
+                <FORM kindOf="standard">kainganay</FORM>
+                <PHON kindOf="standard">kaiŋanaj</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">出來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">come.out</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_20_W9">
+            <FORM kindOf="original">ungungung</FORM>
+            <PHON kindOf="original">uŋuŋuŋ</PHON>
+            <FORM kindOf="standard">ungungung</FORM>
+            <PHON kindOf="standard">uŋuŋuŋ</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">嗡嗡嗡</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">buzz</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W9M0">
+                <FORM kindOf="original">ungungung</FORM>
+                <PHON kindOf="original">uŋuŋuŋ</PHON>
+                <FORM kindOf="standard">ungungung</FORM>
+                <PHON kindOf="standard">uŋuŋuŋ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">嗡嗡嗡</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">buzz</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_20_W10">
+            <FORM kindOf="original">si</FORM>
+            <PHON kindOf="original">si</PHON>
+            <FORM kindOf="standard">si</FORM>
+            <PHON kindOf="standard">si</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W10M0">
+                <FORM kindOf="original">si</FORM>
+                <PHON kindOf="original">si</PHON>
+                <FORM kindOf="standard">si</FORM>
+                <PHON kindOf="standard">si</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
+            </M>
+        </W>
+        <W id="RukaiNr-frog_Baqingyi_S_20_W11">
+            <FORM kindOf="original">mu-taluvayvay</FORM>
+            <PHON kindOf="original">mutaluvajvaj</PHON>
+            <FORM kindOf="standard">mu-taluvayvay</FORM>
+            <PHON kindOf="standard">mutaluvajvaj</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">去-出來</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">go-come.out</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W11M0">
+                <FORM kindOf="original">mu</FORM>
+                <PHON kindOf="original">mu</PHON>
+                <FORM kindOf="standard">mu</FORM>
+                <PHON kindOf="standard">mu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_20_W11M1">
+                <FORM kindOf="original">taluvayvay</FORM>
+                <PHON kindOf="original">taluvajvaj</PHON>
+                <FORM kindOf="standard">taluvayvay</FORM>
+                <PHON kindOf="standard">taluvajvaj</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">出來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">come.out</TRANSL>
+            </M>
+        </W>
     </S>
     <S id="RukaiNr-frog_Baqingyi_S_24">
         <FORM kindOf="original">la mutaluvayvay si</FORM>
@@ -2777,10 +3121,10 @@
         </W>
     </S>
     <S id="RukaiNr-frog_Baqingyi_S_35">
-        <FORM kindOf="original">ikay kuini la e sa muadreke kuini lrulay la katuase wamua ku miaki lregelrege ku e</FORM>
-        <PHON kindOf="original">ikaj kuini la ə sa muaɖəkə kuini ɭulaj la katuasə wamua ku miaki ɭəgəɭəgə ku ə</PHON>
-        <FORM kindOf="standard">ikay kuini la e sa muadreke kuini lrulay la katuase wamua ku miaki lregelrege ku e</FORM>
-        <PHON kindOf="standard">ikaj kuini la ə sa muaɖəkə kuini ɭulaj la katuasə wamua ku miaki ɭəgəɭəgə ku ə</PHON>
+        <FORM kindOf="original">ikay kuini la e sa muadreke kuini lrulay la katuase wamua ku miaki lregelrege ku e e lrenege.</FORM>
+        <PHON kindOf="original">ikaj kuini la ə sa muaɖəkə kuini ɭulaj la katuasə wamua ku miaki ɭəgəɭəgə ku ə ə ɭənəgə</PHON>
+        <FORM kindOf="standard">ikay kuini la e sa muadreke kuini lrulay la katuase wamua ku miaki lregelrege ku e e lrenege.</FORM>
+        <PHON kindOf="standard">ikaj kuini la ə sa muaɖəkə kuini ɭulaj la katuasə wamua ku miaki ɭəgəɭəgə ku ə ə ɭənəgə</PHON>
         <TRANSL xml:lang="zho">當跌倒的時侯，那個小孩就離開去那個很像山的石頭。</TRANSL>
         <TRANSL xml:lang="eng" notes="There, when (the boy) stumbled over, that boy left to the stone that is like a mountain.">There, when stumbled over, that boy left to the stone that is like a mountain.</TRANSL>
     </S>
@@ -2796,14 +3140,12 @@
             <PHON kindOf="original">la</PHON>
             <FORM kindOf="standard">la</FORM>
             <PHON kindOf="standard">la</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">la</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             <M id="RukaiNr-frog_Baqingyi_S_42_W0M0">
                 <FORM kindOf="original">la</FORM>
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">la</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
@@ -2812,14 +3154,12 @@
             <PHON kindOf="original">mua</PHON>
             <FORM kindOf="standard">mua</FORM>
             <PHON kindOf="standard">mua</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">mua</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             <M id="RukaiNr-frog_Baqingyi_S_42_W1M0">
                 <FORM kindOf="original">mua</FORM>
                 <PHON kindOf="original">mua</PHON>
                 <FORM kindOf="standard">mua</FORM>
                 <PHON kindOf="standard">mua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">mua</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
         </W>
@@ -2828,14 +3168,12 @@
             <PHON kindOf="original">si</PHON>
             <FORM kindOf="standard">si</FORM>
             <PHON kindOf="standard">si</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">si</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
             <M id="RukaiNr-frog_Baqingyi_S_42_W2M0">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">si</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
             </M>
         </W>
@@ -3555,8 +3893,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_52_W1">
@@ -3571,15 +3909,15 @@
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">狀態.離開</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">狀態</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">STAT</TRANSL>
             </M>
             <M id="RukaiNr-frog_Baqingyi_S_52_W1M1">
                 <FORM kindOf="original">tuase</FORM>
                 <PHON kindOf="original">tuasə</PHON>
                 <FORM kindOf="standard">tuase</FORM>
                 <PHON kindOf="standard">tuasə</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">離開</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">leave</TRANSL>
             </M>
         </W>
@@ -3608,19 +3946,27 @@
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_52_W3">
-            <FORM kindOf="original">tarudrusa</FORM>
+            <FORM kindOf="original">taru-drusa</FORM>
             <PHON kindOf="original">taruɖusa</PHON>
-            <FORM kindOf="standard">tarudrusa</FORM>
+            <FORM kindOf="standard">taru-drusa</FORM>
             <PHON kindOf="standard">taruɖusa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">TARU-二</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TARU-two</TRANSL>
             <M id="RukaiNr-frog_Baqingyi_S_52_W3M0">
-                <FORM kindOf="original">tarudrusa</FORM>
-                <PHON kindOf="original">taruɖusa</PHON>
-                <FORM kindOf="standard">tarudrusa</FORM>
-                <PHON kindOf="standard">taruɖusa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">二.人</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">two.HUM</TRANSL>
+                <FORM kindOf="original">taru</FORM>
+                <PHON kindOf="original">taru</PHON>
+                <FORM kindOf="standard">taru</FORM>
+                <PHON kindOf="standard">taru</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">TARU</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TARU</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_52_W3M1">
+                <FORM kindOf="original">drusa</FORM>
+                <PHON kindOf="original">ɖusa</PHON>
+                <FORM kindOf="standard">drusa</FORM>
+                <PHON kindOf="standard">ɖusa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">二</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">two</TRANSL>
             </M>
         </W>
     </S>
@@ -4072,12 +4418,11 @@
         </W>
     </S>
     <S id="RukaiNr-frog_Baqingyi_S_59">
-        <FORM kindOf="original">sa wasa dreele kudra ki sa mukameameale la dreele kuini angatu kiapeapeapela ala kainganaynganay si la mua tarudrusa kuini ki angatu</FORM>
-        <PHON kindOf="original">sa wasa ɖəələ kuɖa ki sa mukaməaməalə la ɖəələ kuini aŋatu kiapəapəapəla ala kaiŋanajŋanaj si la mua taruɖusa kuini ki aŋatu</PHON>
-        <FORM kindOf="standard">sa wasa dreele kudra ki sa mukameameale la dreele kuini angatu kiapeapeapela ala kainganaynganay si la mua tarudrusa kuini ki angatu</FORM>
-        <PHON kindOf="standard">sa wasa ɖəələ kuɖa ki sa mukaməaməalə la ɖəələ kuini aŋatu kiapəapəapəla ala kaiŋanajŋanaj si la mua taruɖusa kuini ki aŋatu</PHON>
-        <TRANSL xml:lang="zho">然後兩個人就過去木頭那邊</TRANSL>
-        <TRANSL xml:lang="eng" notes="Then (they) went to that tree together.">Then went to that tree together.</TRANSL>
+        <FORM kindOf="original">sa wasa dreele kudra ki sa mukameameale la dreele kuini angatu kiapeapeapela ala kainganaynganay si</FORM>
+        <PHON kindOf="original">sa wasa ɖəələ kuɖa ki sa mukaməaməalə la ɖəələ kuini aŋatu kiapəapəapəla ala kaiŋanajŋanaj si</PHON>
+        <FORM kindOf="standard">sa wasa dreele kudra ki sa mukameameale la dreele kuini angatu kiapeapeapela ala kainganaynganay si</FORM>
+        <PHON kindOf="standard">sa wasa ɖəələ kuɖa ki sa mukaməaməalə la ɖəələ kuini aŋatu kiapəapəapəla ala kaiŋanajŋanaj si</PHON>
+        <TRANSL xml:lang="eng" notes="when… when seeing that… when going to the dry land, (they) then saw the wood floating.">when… when seeing that… when going to the dry land, then saw the wood floating.</TRANSL>
         <W id="RukaiNr-frog_Baqingyi_S_59_W0">
             <FORM kindOf="original">sa</FORM>
             <PHON kindOf="original">sa</PHON>
@@ -4090,8 +4435,8 @@
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
                 <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">SA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">SA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_59_W1">
@@ -4130,8 +4475,8 @@
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
                 <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">SA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">SA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_59_W3">
@@ -4178,8 +4523,8 @@
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
                 <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_59_W6">
@@ -4194,14 +4539,14 @@
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
                 <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">SA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">SA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_59_W7">
-            <FORM kindOf="original">mu-kameameale</FORM>
+            <FORM kindOf="original">mu-ka-mea-meale</FORM>
             <PHON kindOf="original">mukaməaməalə</PHON>
-            <FORM kindOf="standard">mu-kameameale</FORM>
+            <FORM kindOf="standard">mu-ka-mea-meale</FORM>
             <PHON kindOf="standard">mukaməaməalə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-KA-重疊-乾燥</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-KA-RED-dry</TRANSL>
@@ -4210,12 +4555,32 @@
                 <PHON kindOf="original">mu</PHON>
                 <FORM kindOf="standard">mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
             <M id="RukaiNr-frog_Baqingyi_S_59_W7M1">
-                <FORM kindOf="original">kameameale</FORM>
-                <PHON kindOf="original">kaməaməalə</PHON>
-                <FORM kindOf="standard">kameameale</FORM>
-                <PHON kindOf="standard">kaməaməalə</PHON>
+                <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
+                <FORM kindOf="standard">ka</FORM>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_59_W7M2">
+                <FORM kindOf="original">mea</FORM>
+                <PHON kindOf="original">məa</PHON>
+                <FORM kindOf="standard">mea</FORM>
+                <PHON kindOf="standard">məa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_59_W7M3">
+                <FORM kindOf="original">meale</FORM>
+                <PHON kindOf="original">məalə</PHON>
+                <FORM kindOf="standard">meale</FORM>
+                <PHON kindOf="standard">məalə</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">乾燥</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">dry</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_59_W8">
@@ -4230,8 +4595,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_59_W9">
@@ -4278,8 +4643,8 @@
                 <PHON kindOf="original">aŋatu</PHON>
                 <FORM kindOf="standard">angatu</FORM>
                 <PHON kindOf="standard">aŋatu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">樹</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">tree</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">木</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">wood</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_59_W12">
@@ -4334,8 +4699,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_59_W14">
@@ -4374,34 +4739,42 @@
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_59_W16">
+    </S>
+    <S id="RukaiNr-frog_Baqingyi_S_63">
+        <FORM kindOf="original">la mua tarudrusa kuini ki angatu</FORM>
+        <PHON kindOf="original">la mua taruɖusa kuini ki aŋatu</PHON>
+        <FORM kindOf="standard">la mua tarudrusa kuini ki angatu</FORM>
+        <PHON kindOf="standard">la mua taruɖusa kuini ki aŋatu</PHON>
+        <TRANSL xml:lang="zho">然後兩個人就過去木頭那邊</TRANSL>
+        <TRANSL xml:lang="eng" notes="Then (they) went to that tree together.">Then went to that tree together.</TRANSL>
+        <W id="RukaiNr-frog_Baqingyi_S_63_W0">
             <FORM kindOf="original">la</FORM>
             <PHON kindOf="original">la</PHON>
             <FORM kindOf="standard">la</FORM>
             <PHON kindOf="standard">la</PHON>
             <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_59_W16M0">
+            <M id="RukaiNr-frog_Baqingyi_S_63_W0M0">
                 <FORM kindOf="original">la</FORM>
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_59_W17">
+        <W id="RukaiNr-frog_Baqingyi_S_63_W1">
             <FORM kindOf="original">mua</FORM>
             <PHON kindOf="original">mua</PHON>
             <FORM kindOf="standard">mua</FORM>
             <PHON kindOf="standard">mua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_59_W17M0">
+            <M id="RukaiNr-frog_Baqingyi_S_63_W1M0">
                 <FORM kindOf="original">mua</FORM>
                 <PHON kindOf="original">mua</PHON>
                 <FORM kindOf="standard">mua</FORM>
@@ -4410,14 +4783,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_59_W18">
+        <W id="RukaiNr-frog_Baqingyi_S_63_W2">
             <FORM kindOf="original">taru-drusa</FORM>
             <PHON kindOf="original">taruɖusa</PHON>
             <FORM kindOf="standard">taru-drusa</FORM>
             <PHON kindOf="standard">taruɖusa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">TARU-二</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TARU-two</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_59_W18M0">
+            <M id="RukaiNr-frog_Baqingyi_S_63_W2M0">
                 <FORM kindOf="original">taru</FORM>
                 <PHON kindOf="original">taru</PHON>
                 <FORM kindOf="standard">taru</FORM>
@@ -4425,7 +4798,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">TARU</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TARU</TRANSL>
             </M>
-            <M id="RukaiNr-frog_Baqingyi_S_59_W18M1">
+            <M id="RukaiNr-frog_Baqingyi_S_63_W2M1">
                 <FORM kindOf="original">drusa</FORM>
                 <PHON kindOf="original">ɖusa</PHON>
                 <FORM kindOf="standard">drusa</FORM>
@@ -4434,14 +4807,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">two</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_59_W19">
+        <W id="RukaiNr-frog_Baqingyi_S_63_W3">
             <FORM kindOf="original">kuini</FORM>
             <PHON kindOf="original">kuini</PHON>
             <FORM kindOf="standard">kuini</FORM>
             <PHON kindOf="standard">kuini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">那.可見.近指</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">that.VIS.PROX</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_59_W19M0">
+            <M id="RukaiNr-frog_Baqingyi_S_63_W3M0">
                 <FORM kindOf="original">kuini</FORM>
                 <PHON kindOf="original">kuini</PHON>
                 <FORM kindOf="standard">kuini</FORM>
@@ -4450,36 +4823,36 @@
                 <TRANSL xml:lang="eng" kindOf="original">that.VIS.PROX</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_59_W20">
+        <W id="RukaiNr-frog_Baqingyi_S_63_W4">
             <FORM kindOf="original">ki</FORM>
             <PHON kindOf="original">ki</PHON>
             <FORM kindOf="standard">ki</FORM>
             <PHON kindOf="standard">ki</PHON>
             <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_59_W20M0">
+            <M id="RukaiNr-frog_Baqingyi_S_63_W4M0">
                 <FORM kindOf="original">ki</FORM>
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
                 <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="RukaiNr-frog_Baqingyi_S_59_W21">
+        <W id="RukaiNr-frog_Baqingyi_S_63_W5">
             <FORM kindOf="original">angatu</FORM>
             <PHON kindOf="original">aŋatu</PHON>
             <FORM kindOf="standard">angatu</FORM>
             <PHON kindOf="standard">aŋatu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">木</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">wood</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_59_W21M0">
+            <M id="RukaiNr-frog_Baqingyi_S_63_W5M0">
                 <FORM kindOf="original">angatu</FORM>
                 <PHON kindOf="original">aŋatu</PHON>
                 <FORM kindOf="standard">angatu</FORM>
                 <PHON kindOf="standard">aŋatu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">樹</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">tree</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">木</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">wood</TRANSL>
             </M>
         </W>
     </S>
@@ -4637,8 +5010,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_65_W1">
@@ -4646,14 +5019,14 @@
             <PHON kindOf="original">katuasə</PHON>
             <FORM kindOf="standard">ka-tuase</FORM>
             <PHON kindOf="standard">katuasə</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">狀態-非實現.離開</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">狀態.非實現-離開</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-leave</TRANSL>
             <M id="RukaiNr-frog_Baqingyi_S_65_W1M0">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">狀態.離開</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">狀態.非實現</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             </M>
             <M id="RukaiNr-frog_Baqingyi_S_65_W1M1">
@@ -4661,7 +5034,7 @@
                 <PHON kindOf="original">tuasə</PHON>
                 <FORM kindOf="standard">tuase</FORM>
                 <PHON kindOf="standard">tuasə</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">離開</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">leave</TRANSL>
             </M>
         </W>
@@ -4733,8 +5106,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_65_W6">
@@ -4797,8 +5170,8 @@
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_65_W9">
@@ -4808,23 +5181,29 @@
             <PHON kindOf="standard">kiraragajŋa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;開心=完成貌</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;happy=PFV</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_65_W9M0">
+            <M id="RukaiNr-frog_Baqingyi_S_65_W9M0_0">
                 <FORM kindOf="original">-ra-</FORM>
                 <PHON kindOf="original">ra</PHON>
                 <FORM kindOf="standard">-ra-</FORM>
                 <PHON kindOf="standard">ra</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_65_W9M0_1">
+                <FORM kindOf="original">ki-ragay</FORM>
+                <PHON kindOf="original">kiragaj</PHON>
+                <FORM kindOf="standard">ki-ragay</FORM>
+                <PHON kindOf="standard">kiragaj</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">開心</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">happy</TRANSL>
             </M>
             <M id="RukaiNr-frog_Baqingyi_S_65_W9M1">
-                <FORM kindOf="original">kiragay</FORM>
-                <PHON kindOf="original">kiragaj</PHON>
-                <FORM kindOf="standard">kiragay</FORM>
-                <PHON kindOf="standard">kiragaj</PHON>
-            </M>
-            <M id="RukaiNr-frog_Baqingyi_S_65_W9M2">
-                <FORM kindOf="original">nga</FORM>
+                <FORM kindOf="original">=nga</FORM>
                 <PHON kindOf="original">ŋa</PHON>
-                <FORM kindOf="standard">nga</FORM>
+                <FORM kindOf="standard">=nga</FORM>
                 <PHON kindOf="standard">ŋa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">完成貌</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_65_W10">
@@ -4839,8 +5218,8 @@
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
                 <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">SA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">SA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
     </S>
@@ -4863,7 +5242,7 @@
                 <PHON kindOf="original">taluvajvaj</PHON>
                 <FORM kindOf="standard">taluvayvay</FORM>
                 <PHON kindOf="standard">taluvajvaj</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">出來</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">出去</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">come.out</TRANSL>
             </M>
             <M id="RukaiNr-frog_Baqingyi_S_67_W0M1">
@@ -4887,7 +5266,7 @@
                 <PHON kindOf="original">malala</PHON>
                 <FORM kindOf="standard">malala</FORM>
                 <PHON kindOf="standard">malala</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">朋友</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">兩個</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">friend</TRANSL>
             </M>
         </W>
@@ -4903,8 +5282,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_67_W3">
@@ -4912,31 +5291,39 @@
             <PHON kindOf="original">kirararagajŋa</PHON>
             <FORM kindOf="standard">ki&lt;ra&gt;&lt;ra&gt;ragay=nga</FORM>
             <PHON kindOf="standard">kirararagajŋa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;-&lt;重疊&gt;開心=完成貌</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;-&lt;RED&gt;happy=PFV</TRANSL>
-            <M id="RukaiNr-frog_Baqingyi_S_67_W3M0">
+            <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;&lt;重疊&gt;開心=完成貌</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;&lt;RED&gt;happy=PFV</TRANSL>
+            <M id="RukaiNr-frog_Baqingyi_S_67_W3M0_0">
                 <FORM kindOf="original">-ra-</FORM>
                 <PHON kindOf="original">ra</PHON>
                 <FORM kindOf="standard">-ra-</FORM>
                 <PHON kindOf="standard">ra</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_67_W3M0_1">
+                <FORM kindOf="original">-ra-</FORM>
+                <PHON kindOf="original">ra</PHON>
+                <FORM kindOf="standard">-ra-</FORM>
+                <PHON kindOf="standard">ra</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
+            </M>
+            <M id="RukaiNr-frog_Baqingyi_S_67_W3M0_2">
+                <FORM kindOf="original">ki-ragay</FORM>
+                <PHON kindOf="original">kiragaj</PHON>
+                <FORM kindOf="standard">ki-ragay</FORM>
+                <PHON kindOf="standard">kiragaj</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">開心</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">happy</TRANSL>
             </M>
             <M id="RukaiNr-frog_Baqingyi_S_67_W3M1">
-                <FORM kindOf="original">-ra-</FORM>
-                <PHON kindOf="original">ra</PHON>
-                <FORM kindOf="standard">-ra-</FORM>
-                <PHON kindOf="standard">ra</PHON>
-            </M>
-            <M id="RukaiNr-frog_Baqingyi_S_67_W3M2">
-                <FORM kindOf="original">kiragay</FORM>
-                <PHON kindOf="original">kiragaj</PHON>
-                <FORM kindOf="standard">kiragay</FORM>
-                <PHON kindOf="standard">kiragaj</PHON>
-            </M>
-            <M id="RukaiNr-frog_Baqingyi_S_67_W3M3">
-                <FORM kindOf="original">nga</FORM>
+                <FORM kindOf="original">=nga</FORM>
                 <PHON kindOf="original">ŋa</PHON>
-                <FORM kindOf="standard">nga</FORM>
+                <FORM kindOf="standard">=nga</FORM>
                 <PHON kindOf="standard">ŋa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">完成貌</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Baqingyi_S_67_W4">
@@ -4951,8 +5338,8 @@
                 <PHON kindOf="original">makanaəɭə</PHON>
                 <FORM kindOf="standard">makanaelre</FORM>
                 <PHON kindOf="standard">makanaəɭə</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">一起</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">together</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">全部</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">all</TRANSL>
             </M>
         </W>
     </S>

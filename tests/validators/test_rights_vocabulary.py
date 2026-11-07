@@ -20,6 +20,8 @@ EXPECTED = {
     "CC BY-NC 4.0": "cc-by-nc-4.0",
     "CC BY-NC-SA 4.0": "cc-by-nc-sa-4.0",
     "CC BY-NC-ND 4.0": "cc-by-nc-nd-4.0",
+    "CC BY-NC 3.0": "cc-by-nc-3.0",
+    "CC BY-NC-SA 3.0 TW": "cc-by-nc-sa-3.0",
     "public domain": "",
 }
 

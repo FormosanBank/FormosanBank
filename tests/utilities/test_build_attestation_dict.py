@@ -74,3 +74,32 @@ def test_generator_writes_reference_file(tmp_path):
     assert "'ayam" in words             # interior, frequent, edge apostrophe
     assert "no" not in words
     assert "ira" not in words           # no apostrophe -> filtered
+
+
+def test_both_edge_words_come_from_running_text_and_consonant_glottals_go():
+    # Maintainer, 2026-10-14: include words that begin AND end in ' (from any
+    # position), then drop any word with ' + consonant or consonant + '.
+    forms = [
+        ["ka", "'aehoe'", "sahae'", "ila"],      # 'aehoe' interior, both edges
+        ["'izo'"],                               # single-word, both edges
+        ["o", "'madimadiay'", "ko"],              # a quoted word: ' + consonant
+        ["'ayam"],                               # one edge, single word: kept
+        ["kakay'"],                              # y + ' : consonant -> dropped
+    ]
+    result = bad.build_attestation_set(forms)
+    assert {"'aehoe'", "'izo'", "'ayam"} <= result
+    assert "'madimadiay'" not in result and "kakay'" not in result
+    assert "sahae'" not in result                # one edge, interior: not added
+
+
+def test_frequent_both_edge_words_need_50_uses_and_rare_variants():
+    forms = [["'aehoe'"]] * 60 + [["aehoe'"]] * 5 + [["'izo'"]] * 49 + [["'ima'"]] * 50 + [["ima"]] * 6
+    got = bad.frequent_both_edge_words(forms)
+    assert got == {"'aehoe'"}     # 'izo' too rare; 'ima': 6 bare uses > 50/10
+
+
+def test_consonant_headwords_are_the_one_word_forms_the_filter_removes():
+    # The "attested with that spelling" exceptions for the consonant
+    # preference: dictionary headwords whose ' stands next to a consonant.
+    forms = [["'wacogo"], ["'aehoe'"], ["o", "'tatini", "ka"], ["kamatortoroe''omaling'"]]
+    assert bad.consonant_headwords(forms) == {"'wacogo", "kamatortoroe''omaling'"}

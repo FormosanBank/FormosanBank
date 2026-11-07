@@ -6,6 +6,7 @@ from __future__ import annotations
 import copy
 import csv
 import hashlib
+import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -19,6 +20,22 @@ EXPECTED_SOURCE_SHA256 = (
     "e18d0aa67893278cb7754e9725e68a81075760961391b3db941eca7d873ddba6"
 )
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
+# Glosses in which the maintainer has ruled, row by row, that a `?` standing as
+# a whole gloss piece is the author's unknown-gloss placeholder. Header
+# `gloss<TAB>lang`; each row is one exact W/M TRANSL text and its xml:lang.
+UNCLEAR_PLACEHOLDER_TABLE = ROOT / "unclear_gloss_placeholders.tsv"
+# Maintainer's ruling, 2026-10-17: a W/M gloss that is exactly `?`, `??` or
+# `???` (half- or full-width) is the source's unknown-gloss marker.
+WHOLE_UNKNOWN_GLOSS = re.compile(r"[?？]{1,3}")
+# A `?` run standing as a whole gloss piece: bounded on both sides by -, =, .,
+# whitespace, or the string's ends. `LIG?` and `right?` do not match.
+PLACEHOLDER_PIECE = re.compile(r"(?<![^\-=.\s])[?？]+(?![^\-=.\s])")
+# Word glosses the maintainer ruled on one by one (2026-10-17): the author's
+# whole gloss text moves to the TRANSL's notes attribute and the gloss becomes
+# new_gloss, where the literal `<UNCLEAR/>` means the gloss is <UNCLEAR/>.
+# Header `w_id<TAB>form<TAB>lang<TAB>old_gloss<TAB>new_gloss`.
+GLOSS_TO_NOTES_TABLE = ROOT / "gloss_to_notes.tsv"
+UNCLEAR_SENTINEL = "<UNCLEAR/>"
 
 
 ISSUE_REPAIRS = {
@@ -636,6 +653,136 @@ def restore_source_word_translations(root: ET.Element) -> list[dict[str, str]]:
     return rows
 
 
+def read_placeholder_table(path: Path) -> set[tuple[str, str]]:
+    """Return the (gloss, lang) pairs ruled to carry `?` placeholders."""
+    with path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.reader(handle, delimiter="\t", quoting=csv.QUOTE_NONE)
+        header = next(reader, None)
+        if header != ["gloss", "lang"]:
+            raise SystemExit(f"{path.name}: header must be gloss<TAB>lang, got {header}")
+        rows: set[tuple[str, str]] = set()
+        for line_number, row in enumerate(reader, start=2):
+            if len(row) != 2 or not row[0] or not row[1]:
+                raise SystemExit(f"{path.name}:{line_number}: expected gloss<TAB>lang")
+            gloss, lang = row
+            if WHOLE_UNKNOWN_GLOSS.fullmatch(gloss.strip()):
+                raise SystemExit(
+                    f"{path.name}:{line_number}: {gloss!r} is a whole unknown-gloss "
+                    "marker, converted without a table row"
+                )
+            if not PLACEHOLDER_PIECE.search(gloss):
+                raise SystemExit(
+                    f"{path.name}:{line_number}: {gloss!r} has no `?` standing as a "
+                    "whole gloss piece"
+                )
+            rows.add((gloss, lang))
+    return rows
+
+
+def set_mixed_unclear(translation: ET.Element, segments: list[str]) -> None:
+    """Rewrite a text-only TRANSL as segments joined by <UNCLEAR/> elements."""
+    if len(translation):
+        raise RuntimeError("Expected a text-only TRANSL")
+    translation.text = segments[0] or None
+    for segment in segments[1:]:
+        marker = ET.SubElement(translation, "UNCLEAR")
+        marker.tail = segment or None
+
+
+def move_glosses_to_notes(root: ET.Element, table: Path) -> list[dict[str, str]]:
+    """Apply the ruled gloss_to_notes.tsv rows; fail on any mismatch.
+
+    Must run after ET.indent, like mark_unclear_glosses.
+    """
+    with table.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t", quoting=csv.QUOTE_NONE)
+        if reader.fieldnames != ["w_id", "form", "lang", "old_gloss", "new_gloss"]:
+            raise SystemExit(f"{table.name}: unexpected header {reader.fieldnames}")
+        rules = list(reader)
+    rows = []
+    for rule in rules:
+        sentence_id = rule["w_id"].rsplit("W", 1)[0]
+        word = find_word(find_sentence(root, sentence_id), rule["w_id"])
+        if original_form(word).text != rule["form"]:
+            raise SystemExit(f"{table.name}: {rule['w_id']} is not {rule['form']!r}")
+        translations = [
+            t for t in word.findall("TRANSL") if t.get(XML_LANG) == rule["lang"]
+        ]
+        if (
+            len(translations) != 1
+            or len(translations[0])
+            or translations[0].text != rule["old_gloss"]
+            or translations[0].get("notes") is not None
+        ):
+            raise SystemExit(
+                f"{table.name}: {rule['w_id']} does not carry exactly the listed "
+                "gloss as a text-only TRANSL without notes"
+            )
+        translation = translations[0]
+        translation.set("notes", rule["old_gloss"])
+        if rule["new_gloss"] == UNCLEAR_SENTINEL:
+            translation.text = None
+            set_mixed_unclear(translation, ["", ""])
+        elif "<" in rule["new_gloss"] or not rule["new_gloss"].strip():
+            raise SystemExit(f"{table.name}: bad new_gloss for {rule['w_id']}")
+        else:
+            translation.text = rule["new_gloss"]
+        rows.append(
+            {
+                "element": "W",
+                "id": rule["w_id"],
+                "lang": rule["lang"],
+                "source_gloss": rule["old_gloss"],
+                "unclear_count": str(len(translation)),
+                "resolution": "ruled_gloss_to_notes",
+            }
+        )
+    return rows
+
+
+def mark_unclear_glosses(
+    root: ET.Element, placeholders: set[tuple[str, str]]
+) -> list[dict[str, str]]:
+    """Turn the source's unknown-gloss markers in W/M TRANSL into <UNCLEAR/>.
+
+    Must run after ET.indent so no indentation whitespace is put inside the
+    TRANSL around the marker. Sentence-level translations are never touched.
+    """
+    rows = []
+    matched: set[tuple[str, str]] = set()
+    for element in [*root.iter("W"), *root.iter("M")]:
+        for translation in element.findall("TRANSL"):
+            if len(translation):
+                continue
+            text = translation.text or ""
+            lang = translation.get(XML_LANG, "")
+            if WHOLE_UNKNOWN_GLOSS.fullmatch(text.strip()):
+                set_mixed_unclear(translation, ["", ""])
+                resolution = "whole_unknown_gloss_marker"
+            elif (text, lang) in placeholders:
+                matched.add((text, lang))
+                set_mixed_unclear(translation, PLACEHOLDER_PIECE.split(text))
+                resolution = "listed_placeholder_pieces"
+            else:
+                continue
+            rows.append(
+                {
+                    "element": element.tag,
+                    "id": element.get("id", ""),
+                    "lang": lang,
+                    "source_gloss": text,
+                    "unclear_count": str(len(translation)),
+                    "resolution": resolution,
+                }
+            )
+    unmatched = sorted(placeholders - matched)
+    if unmatched:
+        raise SystemExit(
+            f"{UNCLEAR_PLACEHOLDER_TABLE.name}: rows match no W/M gloss: {unmatched}"
+        )
+    return rows
+
+
 def write_tsv(path: Path, rows: list[dict[str, str]], fields: list[str]) -> None:
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(
@@ -650,8 +797,14 @@ def write_audits(
     issue_rows: list[dict[str, str]],
     translation_rows: list[dict[str, str]],
     word_translation_rows: list[dict[str, str]],
+    unclear_rows: list[dict[str, str]],
 ) -> None:
     AUDIT.mkdir(parents=True, exist_ok=True)
+    write_tsv(
+        AUDIT / "unclear_gloss_review.tsv",
+        unclear_rows,
+        ["element", "id", "lang", "source_gloss", "unclear_count", "resolution"],
+    )
     coverage = []
     for sentence_id in source_ids:
         variant = VARIANTS.get(sentence_id)
@@ -781,8 +934,14 @@ def main() -> None:
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     ET.indent(tree, space="  ")
+    unclear_rows = move_glosses_to_notes(root, GLOSS_TO_NOTES_TABLE)
+    unclear_rows += mark_unclear_glosses(
+        root, read_placeholder_table(UNCLEAR_PLACEHOLDER_TABLE)
+    )
     tree.write(OUTPUT, encoding="utf-8", xml_declaration=True)
-    write_audits(source_ids, issue_rows, translation_rows, word_translation_rows)
+    write_audits(
+        source_ids, issue_rows, translation_rows, word_translation_rows, unclear_rows
+    )
     print(
         f"Built 671 source-backed pre-QC records from {len(source_ids)} frozen records."
     )

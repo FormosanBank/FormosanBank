@@ -87,7 +87,7 @@ def _apply_file(xml_path, file_group, changelog, noops, prune):
     return modified
 
 
-def apply(corpora_path, manual_file, prune: bool = False) -> int:
+def apply(corpora_path, manual_file, prune: bool = False, allow_missing: bool = False) -> int:
     corpora_path = Path(corpora_path).resolve()
     root = mec.load_manual(manual_file)
     if root is None:
@@ -98,11 +98,26 @@ def apply(corpora_path, manual_file, prune: bool = False) -> int:
     noops: list[tuple] = []
     applied_files = 0
 
+    # A FILE group whose path resolves to nothing is an error, not a warning:
+    # the records under it would be silently skipped, and a build that skips
+    # every hand edit looks exactly like one that applied them (Amis-Pa-Verbs
+    # shipped with path="pa-verbs.xml" for Amis/pa-verbs.xml and lost all its
+    # records that way). Resolve every path first, before touching any XML.
+    missing = [fg.get("path") for fg in root.findall("FILE")
+               if not (corpora_path / (fg.get("path") or "")).exists()]
+    if missing and not allow_missing:
+        for rel in missing:
+            print(f"ERROR: manual_edits.xml FILE path={rel!r} matches no file under "
+                  f"{corpora_path}; its records would be skipped. Fix the path "
+                  f"(relative to --corpora_path) or pass --allow-missing.",
+                  file=sys.stderr)
+        return 2
+
     for fg in root.findall("FILE"):
         rel = fg.get("path")
         xml_path = corpora_path / rel
         if not xml_path.exists():
-            print(f"WARNING: {rel} not found under {corpora_path}; skipping its manual edits.")
+            print(f"WARNING: {rel} not found under {corpora_path}; skipping its manual edits (--allow-missing).")
             continue
         if _apply_file(xml_path, fg, changelog, noops, prune):
             applied_files += 1
@@ -139,13 +154,17 @@ def main(argv=None):
     parser.add_argument("--prune", action="store_true",
                         help="remove no-op records from manual_edits.xml "
                              "(default: keep them and warn; ruling 2026-08-10)")
+    parser.add_argument("--allow-missing", action="store_true",
+                        help="only warn (exit 0) when a FILE path matches no file "
+                             "under --corpora_path; default: refuse to run (exit 2)")
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args(argv)
 
     if not Path(args.corpora_path).exists():
         parser.error(f"--corpora_path does not exist: {args.corpora_path}")
     manual_file = args.manual_file or mec.default_manual_file(args.corpora_path)
-    return apply(args.corpora_path, manual_file, prune=args.prune)
+    return apply(args.corpora_path, manual_file, prune=args.prune,
+                 allow_missing=args.allow_missing)
 
 
 if __name__ == "__main__":

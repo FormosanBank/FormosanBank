@@ -20,6 +20,8 @@ Two escape hatches, deliberately different:
 Self-containment (POL-048) has no deviation clause and cannot be waived.
 """
 import re
+import warnings
+from pathlib import Path
 
 import pytest
 
@@ -156,12 +158,15 @@ def test_entry_point_is_executable(corpus):
 
 @pytest.mark.parametrize("corpus", CORPORA)
 def test_no_competing_entry_point(corpus):
+    """Neither under CodeAndDocs/ nor at the corpus root: Safolu kept a root
+    Makefile that targeted a scripts/ directory it no longer had."""
     _require_migrated(corpus)
-    code_docs = REPO_ROOT / "Corpora" / corpus / "CodeAndDocs"
+    corpus_dir = REPO_ROOT / "Corpora" / corpus
+    code_docs = corpus_dir / "CodeAndDocs"
     leftovers = sorted(
-        str(p.relative_to(code_docs))
-        for name in COMPETING_NAMES
-        for p in code_docs.rglob(name)
+        {str(p.relative_to(corpus_dir))
+         for name in COMPETING_NAMES
+         for p in list(code_docs.rglob(name)) + list(corpus_dir.glob(name))}
     )
     assert not leftovers, (
         f"POL-047: {corpus} has {ENTRY_POINT} alongside older entry points "
@@ -224,3 +229,81 @@ def test_shared_steps_run_in_canonical_order(corpus):
         f"order ({'; '.join(problems)}). Reorder it, or state the reason in the "
         f"README with a '{DEVIATION_MARKER}' line."
     )
+
+
+# ---------------------------------------------------------------------------
+# Gaps closed 2026-10-17 (skills review E3)
+# ---------------------------------------------------------------------------
+
+#: A README line that talks about a POL-047 deviation in its own words.
+DEVIATION_PROSE_RE = re.compile(r"POL-047.*deviat|deviat.*POL-047", re.IGNORECASE)
+NO_DEVIATION_RE = re.compile(r"\bno POL-047 deviation\b", re.IGNORECASE)
+
+
+@pytest.mark.parametrize("corpus", CORPORA)
+def test_deviation_is_stated_with_the_canonical_marker(corpus):
+    """A deviation stated in prose only is not findable by the marker grep.
+
+    Seediq-Chang ("### Deviations from POL-047") and Utrecht ("**Deviation from
+    POL-047.**") passed every POL-047 test because their builds happen to run no
+    validators; the marker is what a reviewer greps for.
+    """
+    readme = _readme_text(corpus)
+    prose = [line for line in readme.splitlines()
+             if DEVIATION_PROSE_RE.search(line) and not NO_DEVIATION_RE.search(line)]
+    if not prose or _declares_deviation(corpus):
+        return
+    pytest.fail(
+        f"POL-047: {corpus}/README.md states a deviation in its own words "
+        f"({prose[0].strip()[:80]!r}) but never with the canonical "
+        f"'{DEVIATION_MARKER}' line, which is what makes it findable. Add the line."
+    )
+
+
+#: Something that writes a file, next to something that names the published tree.
+_WRITE_RE = re.compile(r"\.write\(|open\([^)]*['\"][wa]|write_text\(|write_bytes\(|shutil\.(copy|move)")
+_XML_DIR_RE = re.compile(r"\bXML/|[\"']XML[\"']|xml_root|XML_DIR", re.IGNORECASE)
+
+
+def _download_hooks(corpus: str) -> list[Path]:
+    """Scripts a corpus runs around an audio download: named in its
+    download_audio_data.sh, or registered as a post_download command in
+    audio_sources.json."""
+    corpus_dir = REPO_ROOT / "Corpora" / corpus
+    scripts: set[Path] = set()
+    sh = corpus_dir / "download_audio_data.sh"
+    if sh.exists():
+        for name in re.findall(r"[\w./-]+\.py", sh.read_text(encoding="utf-8")):
+            for candidate in (corpus_dir / name, corpus_dir / "CodeAndDocs" / name,
+                              corpus_dir / "CodeAndDocs" / Path(name).name):
+                if candidate.is_file():
+                    scripts.add(candidate)
+    manifest = REPO_ROOT / "audio_sources.json"
+    if manifest.exists():
+        for dataset in __import__("json").loads(manifest.read_text(encoding="utf-8")).get("datasets", []):
+            if dataset.get("corpus") != corpus:
+                continue
+            for token in dataset.get("post_download") or []:
+                if isinstance(token, str) and token.endswith(".py") and (REPO_ROOT / token).is_file():
+                    scripts.add(REPO_ROOT / token)
+    return sorted(scripts)
+
+
+@pytest.mark.parametrize("corpus", CORPORA)
+def test_download_hooks_do_not_write_published_xml(corpus):
+    """Audio download is not a build step (POL-038/POL-047): a hook that writes
+    into XML/ makes the published data depend on whether audio was fetched.
+    Heuristic (a write call and a reference to XML/ in the same script), so it
+    warns rather than fails."""
+    suspects = []
+    for script in _download_hooks(corpus):
+        text = script.read_text(encoding="utf-8", errors="replace")
+        if _WRITE_RE.search(text) and _XML_DIR_RE.search(text):
+            suspects.append(str(script.relative_to(REPO_ROOT)))
+    if suspects:
+        warnings.warn(
+            f"{corpus}: a download hook appears to write into XML/ "
+            f"({', '.join(suspects)}); published XML must come from generate_xml.sh "
+            "alone (POL-038). Read the script; if it only reads, ignore this.",
+            stacklevel=1,
+        )

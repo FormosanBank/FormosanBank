@@ -9,6 +9,7 @@ on:
       - "Corpora/**"
       - "QC/corpus_metrics.py"
       - "QC/corpus_counts.py"
+      - "QC/language_history.py"
       - "QC/utilities/audio_durations.py"
       - "QC/utilities/get_corpus_stats.py"
       - "QC/reference/corpus_benchmarks.json"
@@ -19,6 +20,7 @@ on:
       - "Corpora/**"
       - "QC/corpus_metrics.py"
       - "QC/corpus_counts.py"
+      - "QC/language_history.py"
       - "QC/utilities/audio_durations.py"
       - "QC/utilities/get_corpus_stats.py"
       - "QC/reference/corpus_benchmarks.json"
@@ -58,6 +60,10 @@ jobs:
             --history-extend \
             --history-cache statistics/corpus_size_history.csv
 
+      - name: Extend per-language history (documentation site growth figures)
+        run: |
+          python3 QC/language_history.py extend --csv statistics/language_history.csv
+
       - name: Add metrics summary
         run: cat corpus-metrics/corpus_metrics.md >> "$GITHUB_STEP_SUMMARY"
 
@@ -83,6 +89,7 @@ jobs:
             statistics/corpus_transcribed_audio_over_time.png \
             statistics/corpus_mandarin_words_over_time.png \
             statistics/corpus_glossed_words_over_time.png \
+            statistics/language_history.csv \
             statistics/*_corpora_stats.csv
           if git diff --cached --quiet; then
             echo "No statistics changes."
@@ -92,6 +99,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Update corpus statistics and growth graph"
+          # The documentation site rebuilds after this workflow completes
+          # (pages.yaml, workflow_run), so the new numbers are published.
 
           # Rebase and retry rather than push once. This job takes minutes —
           # it regenerates every per-corpus CSV, then walks history for
