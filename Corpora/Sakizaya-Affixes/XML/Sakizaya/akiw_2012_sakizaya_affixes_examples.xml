@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="AKIW_SZY_2012_SAKIZAYA_AFFIXES_EXAMPLES" citation="Akiw, Chung-Wen Hsu. 2012. The Study of Affixes in Sakizaya. Master's thesis, National Dong Hwa University." BibTeX_citation="@mastersthesis{Akiw_2012_Sakizaya_Affixes, author = {Akiw, Chung-Wen Hsu}, title = {The Study of Affixes in Sakizaya}, school = {National Dong Hwa University}, year = {2012}}" copyright="Author permission recorded on Basecamp card 8176965975; private development corpus pending maintainer port-in approval." xml:lang="szy" source="akiw_2012_sakizaya_affixes_scan.pdf; numbered Sakizaya examples; SHA-256 fab787faf0e32cd087ba3dc222734132ad4213ca0804b8d5b32a318e66fbbbee" glottocode="saki1247" dialect="Sakizaya">
+<TEXT id="AKIW_SZY_2012_SAKIZAYA_AFFIXES_EXAMPLES" citation="Akiw, Chung-Wen Hsu. 2012. The Study of Affixes in Sakizaya. Master's thesis, National Dong Hwa University." BibTeX_citation="@mastersthesis{Akiw_2012_Sakizaya_Affixes, author = {Akiw, Chung-Wen Hsu}, title = {The Study of Affixes in Sakizaya}, school = {National Dong Hwa University}, year = {2012}}" copyright="CC BY-NC 4.0" xml:lang="szy" source="akiw_2012_sakizaya_affixes_scan.pdf; numbered Sakizaya examples; SHA-256 fab787faf0e32cd087ba3dc222734132ad4213ca0804b8d5b32a318e66fbbbee" glottocode="saki1247" dialect="Sakizaya">
     <S id="AKIW_SZY_2012_EX_001" source="PDF page 33; example 1">
         <FORM kindOf="original">mi-pa-baybay ci Taydung.</FORM>
         <FORM kindOf="standard">mipabaybay ci Taydung.</FORM>
@@ -1394,6 +1394,9 @@
                 <FORM kindOf="original">∅</FORM>
                 <FORM kindOf="standard">∅</FORM>
                 <PHON kindOf="standard">∅</PHON>
+                <TRANSL xml:lang="zho">
+                    <UNCLEAR/>
+                </TRANSL>
             </M>
             <M id="AKIW_SZY_2012_EX_017DW1M2">
                 <FORM kindOf="original">imelang</FORM>
@@ -3588,8 +3591,8 @@
             </M>
         </W>
         <W id="AKIW_SZY_2012_EX_029AW3">
-            <FORM kindOf="original">duba',</FORM>
-            <FORM kindOf="standard">duba',</FORM>
+            <FORM kindOf="original">duba'</FORM>
+            <FORM kindOf="standard">duba'</FORM>
             <PHON kindOf="standard">duba[ʔ|ʡ]</PHON>
             <TRANSL xml:lang="zho">跑</TRANSL>
             <M id="AKIW_SZY_2012_EX_029AW3M1">
@@ -5314,7 +5317,7 @@
         <FORM kindOf="original">mi-tebu' kita i buyu' ayza.</FORM>
         <FORM kindOf="standard">mitebu' kita i buyu' ayza.</FORM>
         <PHON kindOf="standard">mitəbu[ʔ|ʡ] kita i buju[ʔ|ʡ] ajza</PHON>
-        <TRANSL xml:lang="zho">我們現在上山探竹筍。</TRANSL>
+        <TRANSL xml:lang="zho">我們現在上山採竹筍。</TRANSL>
         <W id="AKIW_SZY_2012_EX_040BW1">
             <FORM kindOf="original">mi-tebu'</FORM>
             <FORM kindOf="standard">mi-tebu'</FORM>
@@ -6607,7 +6610,7 @@
         </W>
     </S>
     <S id="AKIW_SZY_2012_EX_049A" source="PDF page 80; example 49a">
-        <FORM kindOf="original">sanal han tu nu mita tayza ci Panay-an.</FORM>
+        <FORM kindOf="original" notes="Printed again as example 75a (PDF page 103) with a different gloss line: tu is glossed 斜格 here and TU there; Panay-an is Panay-斜格 here and 人名-斜格 there.">sanal han tu nu mita tayza ci Panay-an.</FORM>
         <FORM kindOf="standard">sanal han tu nu mita tayza ci Panayan.</FORM>
         <PHON kindOf="standard">sana[r|ɾ] ħan tu nu mita tajza ʦi panajan</PHON>
         <TRANSL xml:lang="zho">我們上午再去 Panay那裏。</TRANSL>
@@ -10656,6 +10659,108 @@
             </M>
         </W>
     </S>
+    <S id="AKIW_SZY_2012_EX_075A" source="PDF page 103; example 75a">
+        <FORM kindOf="original" notes="Printed first as example 49a (PDF page 80) with a different gloss line: tu is glossed TU here and 斜格 there; Panay-an is 人名-斜格 here and Panay-斜格 there.">sanal han tu nu mita tayza ci Panay-an.</FORM>
+        <FORM kindOf="standard">sanal han tu nu mita tayza ci Panayan.</FORM>
+        <PHON kindOf="standard">sana[r|ɾ] ħan tu nu mita tajza ʦi panajan</PHON>
+        <TRANSL xml:lang="zho">我們上午再去 Panay那裏。</TRANSL>
+        <W id="AKIW_SZY_2012_EX_075AW1">
+            <FORM kindOf="original">sanal</FORM>
+            <FORM kindOf="standard">sanal</FORM>
+            <PHON kindOf="standard">sana[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho">上午</TRANSL>
+            <M id="AKIW_SZY_2012_EX_075AW1M1">
+                <FORM kindOf="original">sanal</FORM>
+                <FORM kindOf="standard">sanal</FORM>
+                <PHON kindOf="standard">sana[r|ɾ]</PHON>
+                <TRANSL xml:lang="zho">上午</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_075AW2">
+            <FORM kindOf="original">han</FORM>
+            <FORM kindOf="standard">han</FORM>
+            <PHON kindOf="standard">ħan</PHON>
+            <TRANSL xml:lang="zho">HAN</TRANSL>
+            <M id="AKIW_SZY_2012_EX_075AW2M1">
+                <FORM kindOf="original">han</FORM>
+                <FORM kindOf="standard">han</FORM>
+                <PHON kindOf="standard">ħan</PHON>
+                <TRANSL xml:lang="zho">HAN</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_075AW3">
+            <FORM kindOf="original">tu</FORM>
+            <FORM kindOf="standard">tu</FORM>
+            <PHON kindOf="standard">tu</PHON>
+            <TRANSL xml:lang="zho">TU</TRANSL>
+            <M id="AKIW_SZY_2012_EX_075AW3M1">
+                <FORM kindOf="original">tu</FORM>
+                <FORM kindOf="standard">tu</FORM>
+                <PHON kindOf="standard">tu</PHON>
+                <TRANSL xml:lang="zho">TU</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_075AW4">
+            <FORM kindOf="original">nu</FORM>
+            <FORM kindOf="standard">nu</FORM>
+            <PHON kindOf="standard">nu</PHON>
+            <TRANSL xml:lang="zho">屬格</TRANSL>
+            <M id="AKIW_SZY_2012_EX_075AW4M1">
+                <FORM kindOf="original">nu</FORM>
+                <FORM kindOf="standard">nu</FORM>
+                <PHON kindOf="standard">nu</PHON>
+                <TRANSL xml:lang="zho">屬格</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_075AW5">
+            <FORM kindOf="original">mita</FORM>
+            <FORM kindOf="standard">mita</FORM>
+            <PHON kindOf="standard">mita</PHON>
+            <TRANSL xml:lang="zho">m-我們.屬格</TRANSL>
+        </W>
+        <W id="AKIW_SZY_2012_EX_075AW6">
+            <FORM kindOf="original">tayza</FORM>
+            <FORM kindOf="standard">tayza</FORM>
+            <PHON kindOf="standard">tajza</PHON>
+            <TRANSL xml:lang="zho">去</TRANSL>
+            <M id="AKIW_SZY_2012_EX_075AW6M1">
+                <FORM kindOf="original">tayza</FORM>
+                <FORM kindOf="standard">tayza</FORM>
+                <PHON kindOf="standard">tajza</PHON>
+                <TRANSL xml:lang="zho">去</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_075AW7">
+            <FORM kindOf="original">ci</FORM>
+            <FORM kindOf="standard">ci</FORM>
+            <PHON kindOf="standard">ʦi</PHON>
+            <TRANSL xml:lang="zho">斜格</TRANSL>
+            <M id="AKIW_SZY_2012_EX_075AW7M1">
+                <FORM kindOf="original">ci</FORM>
+                <FORM kindOf="standard">ci</FORM>
+                <PHON kindOf="standard">ʦi</PHON>
+                <TRANSL xml:lang="zho">斜格</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_075AW8">
+            <FORM kindOf="original">Panay-an</FORM>
+            <FORM kindOf="standard">Panay-an</FORM>
+            <PHON kindOf="standard">panajan</PHON>
+            <TRANSL xml:lang="zho">人名-斜格</TRANSL>
+            <M id="AKIW_SZY_2012_EX_075AW8M1">
+                <FORM kindOf="original">Panay</FORM>
+                <FORM kindOf="standard">Panay</FORM>
+                <PHON kindOf="standard">panaj</PHON>
+                <TRANSL xml:lang="zho">人名</TRANSL>
+            </M>
+            <M id="AKIW_SZY_2012_EX_075AW8M2">
+                <FORM kindOf="original">an</FORM>
+                <FORM kindOf="standard">an</FORM>
+                <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="zho">斜格</TRANSL>
+            </M>
+        </W>
+    </S>
     <S id="AKIW_SZY_2012_EX_075B" source="PDF page 104; example 75b">
         <FORM kindOf="original">caay kanca ka-tayni anu-sanal mi-cudad.</FORM>
         <FORM kindOf="standard">caay kanca katayni anusanal micudad.</FORM>
@@ -12750,6 +12855,120 @@
             </M>
         </W>
     </S>
+    <S id="AKIW_SZY_2012_EX_087A" source="PDF page 118; example 87a">
+        <FORM kindOf="original">pa-dama kaku tu ma-liyuh-ay pa-batikal a wawa.</FORM>
+        <FORM kindOf="standard">padama kaku tu maliyuhay pabatikal a wawa.</FORM>
+        <PHON kindOf="standard">padama kaku tu ma[r|ɾ]ijuħaj pabatika[r|ɾ] a wawa</PHON>
+        <TRANSL xml:lang="zho">我幫忙扶著不會騎單車的小孩。</TRANSL>
+        <W id="AKIW_SZY_2012_EX_087AW1">
+            <FORM kindOf="original">pa-dama</FORM>
+            <FORM kindOf="standard">pa-dama</FORM>
+            <PHON kindOf="standard">padama</PHON>
+            <TRANSL xml:lang="zho">使役-扶</TRANSL>
+            <M id="AKIW_SZY_2012_EX_087AW1M1">
+                <FORM kindOf="original">pa</FORM>
+                <FORM kindOf="standard">pa</FORM>
+                <PHON kindOf="standard">pa</PHON>
+                <TRANSL xml:lang="zho">使役</TRANSL>
+            </M>
+            <M id="AKIW_SZY_2012_EX_087AW1M2">
+                <FORM kindOf="original">dama</FORM>
+                <FORM kindOf="standard">dama</FORM>
+                <PHON kindOf="standard">dama</PHON>
+                <TRANSL xml:lang="zho">扶</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_087AW2">
+            <FORM kindOf="original">kaku</FORM>
+            <FORM kindOf="standard">kaku</FORM>
+            <PHON kindOf="standard">kaku</PHON>
+            <TRANSL xml:lang="zho">我.主格</TRANSL>
+            <M id="AKIW_SZY_2012_EX_087AW2M1">
+                <FORM kindOf="original">kaku</FORM>
+                <FORM kindOf="standard">kaku</FORM>
+                <PHON kindOf="standard">kaku</PHON>
+                <TRANSL xml:lang="zho">我.主格</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_087AW3">
+            <FORM kindOf="original">tu</FORM>
+            <FORM kindOf="standard">tu</FORM>
+            <PHON kindOf="standard">tu</PHON>
+            <TRANSL xml:lang="zho">斜格</TRANSL>
+            <M id="AKIW_SZY_2012_EX_087AW3M1">
+                <FORM kindOf="original">tu</FORM>
+                <FORM kindOf="standard">tu</FORM>
+                <PHON kindOf="standard">tu</PHON>
+                <TRANSL xml:lang="zho">斜格</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_087AW4">
+            <FORM kindOf="original">ma-liyuh-ay</FORM>
+            <FORM kindOf="standard">ma-liyuh-ay</FORM>
+            <PHON kindOf="standard">ma[r|ɾ]ijuħaj</PHON>
+            <TRANSL xml:lang="zho">MA-不會-AY</TRANSL>
+            <M id="AKIW_SZY_2012_EX_087AW4M1">
+                <FORM kindOf="original">ma</FORM>
+                <FORM kindOf="standard">ma</FORM>
+                <PHON kindOf="standard">ma</PHON>
+                <TRANSL xml:lang="zho">MA</TRANSL>
+            </M>
+            <M id="AKIW_SZY_2012_EX_087AW4M2">
+                <FORM kindOf="original">liyuh</FORM>
+                <FORM kindOf="standard">liyuh</FORM>
+                <PHON kindOf="standard">[r|ɾ]ijuħ</PHON>
+                <TRANSL xml:lang="zho">不會</TRANSL>
+            </M>
+            <M id="AKIW_SZY_2012_EX_087AW4M3">
+                <FORM kindOf="original">ay</FORM>
+                <FORM kindOf="standard">ay</FORM>
+                <PHON kindOf="standard">aj</PHON>
+                <TRANSL xml:lang="zho">AY</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_087AW5">
+            <FORM kindOf="original">pa-batikal</FORM>
+            <FORM kindOf="standard">pa-batikal</FORM>
+            <PHON kindOf="standard">pabatika[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho">騎-單車</TRANSL>
+            <M id="AKIW_SZY_2012_EX_087AW5M1">
+                <FORM kindOf="original">pa</FORM>
+                <FORM kindOf="standard">pa</FORM>
+                <PHON kindOf="standard">pa</PHON>
+                <TRANSL xml:lang="zho">騎</TRANSL>
+            </M>
+            <M id="AKIW_SZY_2012_EX_087AW5M2">
+                <FORM kindOf="original">batikal</FORM>
+                <FORM kindOf="standard">batikal</FORM>
+                <PHON kindOf="standard">batika[r|ɾ]</PHON>
+                <TRANSL xml:lang="zho">單車</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_087AW6">
+            <FORM kindOf="original">a</FORM>
+            <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
+            <TRANSL xml:lang="zho">繫詞</TRANSL>
+            <M id="AKIW_SZY_2012_EX_087AW6M1">
+                <FORM kindOf="original">a</FORM>
+                <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="zho">繫詞</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_087AW7">
+            <FORM kindOf="original">wawa</FORM>
+            <FORM kindOf="standard">wawa</FORM>
+            <PHON kindOf="standard">wawa</PHON>
+            <TRANSL xml:lang="zho">小孩</TRANSL>
+            <M id="AKIW_SZY_2012_EX_087AW7M1">
+                <FORM kindOf="original">wawa</FORM>
+                <FORM kindOf="standard">wawa</FORM>
+                <PHON kindOf="standard">wawa</PHON>
+                <TRANSL xml:lang="zho">小孩</TRANSL>
+            </M>
+        </W>
+    </S>
     <S id="AKIW_SZY_2012_EX_087B" source="PDF page 118; example 87b">
         <FORM kindOf="original">mi-dama kaku tu ma-lilil-ay a ba-balaki.</FORM>
         <FORM kindOf="standard">midama kaku tu malililay a babalaki.</FORM>
@@ -12976,6 +13195,168 @@
                 <PHON kindOf="standard">niza</PHON>
                 <TRANSL xml:lang="zho">他.屬格</TRANSL>
             </M>
+        </W>
+    </S>
+    <S id="AKIW_SZY_2012_EX_088A" source="PDF page 119; example 88a">
+        <FORM kindOf="original">cacay ku luma' i buyu' ni Panay.</FORM>
+        <FORM kindOf="standard">cacay ku luma' i buyu' ni Panay.</FORM>
+        <PHON kindOf="standard">ʦaʦaj ku [r|ɾ]uma[ʔ|ʡ] i buju[ʔ|ʡ] ni panaj</PHON>
+        <TRANSL xml:lang="zho">Panay 在山上只有一間房屋。</TRANSL>
+        <W id="AKIW_SZY_2012_EX_088AW1">
+            <FORM kindOf="original">cacay</FORM>
+            <FORM kindOf="standard">cacay</FORM>
+            <PHON kindOf="standard">ʦaʦaj</PHON>
+            <TRANSL xml:lang="zho">一</TRANSL>
+            <M id="AKIW_SZY_2012_EX_088AW1M1">
+                <FORM kindOf="original">cacay</FORM>
+                <FORM kindOf="standard">cacay</FORM>
+                <PHON kindOf="standard">ʦaʦaj</PHON>
+                <TRANSL xml:lang="zho">一</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_088AW2">
+            <FORM kindOf="original">ku</FORM>
+            <FORM kindOf="standard">ku</FORM>
+            <PHON kindOf="standard">ku</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
+            <M id="AKIW_SZY_2012_EX_088AW2M1">
+                <FORM kindOf="original">ku</FORM>
+                <FORM kindOf="standard">ku</FORM>
+                <PHON kindOf="standard">ku</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_088AW3">
+            <FORM kindOf="original">luma'</FORM>
+            <FORM kindOf="standard">luma'</FORM>
+            <PHON kindOf="standard">[r|ɾ]uma[ʔ|ʡ]</PHON>
+            <TRANSL xml:lang="zho">房子</TRANSL>
+            <M id="AKIW_SZY_2012_EX_088AW3M1">
+                <FORM kindOf="original">luma'</FORM>
+                <FORM kindOf="standard">luma'</FORM>
+                <PHON kindOf="standard">[r|ɾ]uma[ʔ|ʡ]</PHON>
+                <TRANSL xml:lang="zho">房子</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_088AW4">
+            <FORM kindOf="original">i</FORM>
+            <FORM kindOf="standard">i</FORM>
+            <PHON kindOf="standard">i</PHON>
+            <TRANSL xml:lang="zho">處所格</TRANSL>
+            <M id="AKIW_SZY_2012_EX_088AW4M1">
+                <FORM kindOf="original">i</FORM>
+                <FORM kindOf="standard">i</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="zho">處所格</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_088AW5">
+            <FORM kindOf="original">buyu'</FORM>
+            <FORM kindOf="standard">buyu'</FORM>
+            <PHON kindOf="standard">buju[ʔ|ʡ]</PHON>
+            <TRANSL xml:lang="zho">山上</TRANSL>
+            <M id="AKIW_SZY_2012_EX_088AW5M1">
+                <FORM kindOf="original">buyu'</FORM>
+                <FORM kindOf="standard">buyu'</FORM>
+                <PHON kindOf="standard">buju[ʔ|ʡ]</PHON>
+                <TRANSL xml:lang="zho">山上</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_088AW6">
+            <FORM kindOf="original">ni</FORM>
+            <FORM kindOf="standard">ni</FORM>
+            <PHON kindOf="standard">ni</PHON>
+            <TRANSL xml:lang="zho">屬格</TRANSL>
+            <M id="AKIW_SZY_2012_EX_088AW6M1">
+                <FORM kindOf="original">ni</FORM>
+                <FORM kindOf="standard">ni</FORM>
+                <PHON kindOf="standard">ni</PHON>
+                <TRANSL xml:lang="zho">屬格</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_088AW7">
+            <FORM kindOf="original">Panay</FORM>
+            <FORM kindOf="standard">Panay</FORM>
+            <PHON kindOf="standard">panaj</PHON>
+            <TRANSL xml:lang="zho">人名</TRANSL>
+            <M id="AKIW_SZY_2012_EX_088AW7M1">
+                <FORM kindOf="original">Panay</FORM>
+                <FORM kindOf="standard">Panay</FORM>
+                <PHON kindOf="standard">panaj</PHON>
+                <TRANSL xml:lang="zho">人名</TRANSL>
+            </M>
+        </W>
+    </S>
+    <S id="AKIW_SZY_2012_EX_088B" source="PDF page 119; example 88b">
+        <FORM kindOf="original">la-cacay ku ni-zateng nu mita.</FORM>
+        <FORM kindOf="standard">lacacay ku nizateng nu mita.</FORM>
+        <PHON kindOf="standard">[r|ɾ]aʦaʦaj ku nizatəŋ nu mita</PHON>
+        <TRANSL xml:lang="zho">我們的理念一致。</TRANSL>
+        <W id="AKIW_SZY_2012_EX_088BW1">
+            <FORM kindOf="original">la-cacay</FORM>
+            <FORM kindOf="standard">la-cacay</FORM>
+            <PHON kindOf="standard">[r|ɾ]aʦaʦaj</PHON>
+            <TRANSL xml:lang="zho">變成-一</TRANSL>
+            <M id="AKIW_SZY_2012_EX_088BW1M1">
+                <FORM kindOf="original">la</FORM>
+                <FORM kindOf="standard">la</FORM>
+                <PHON kindOf="standard">[r|ɾ]a</PHON>
+                <TRANSL xml:lang="zho">變成</TRANSL>
+            </M>
+            <M id="AKIW_SZY_2012_EX_088BW1M2">
+                <FORM kindOf="original">cacay</FORM>
+                <FORM kindOf="standard">cacay</FORM>
+                <PHON kindOf="standard">ʦaʦaj</PHON>
+                <TRANSL xml:lang="zho">一</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_088BW2">
+            <FORM kindOf="original">ku</FORM>
+            <FORM kindOf="standard">ku</FORM>
+            <PHON kindOf="standard">ku</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
+            <M id="AKIW_SZY_2012_EX_088BW2M1">
+                <FORM kindOf="original">ku</FORM>
+                <FORM kindOf="standard">ku</FORM>
+                <PHON kindOf="standard">ku</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_088BW3">
+            <FORM kindOf="original">ni-zateng</FORM>
+            <FORM kindOf="standard">ni-zateng</FORM>
+            <PHON kindOf="standard">nizatəŋ</PHON>
+            <TRANSL xml:lang="zho">NI-想</TRANSL>
+            <M id="AKIW_SZY_2012_EX_088BW3M1">
+                <FORM kindOf="original">ni</FORM>
+                <FORM kindOf="standard">ni</FORM>
+                <PHON kindOf="standard">ni</PHON>
+                <TRANSL xml:lang="zho">NI</TRANSL>
+            </M>
+            <M id="AKIW_SZY_2012_EX_088BW3M2">
+                <FORM kindOf="original">zateng</FORM>
+                <FORM kindOf="standard">zateng</FORM>
+                <PHON kindOf="standard">zatəŋ</PHON>
+                <TRANSL xml:lang="zho">想</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_088BW4">
+            <FORM kindOf="original">nu</FORM>
+            <FORM kindOf="standard">nu</FORM>
+            <PHON kindOf="standard">nu</PHON>
+            <TRANSL xml:lang="zho">屬格</TRANSL>
+            <M id="AKIW_SZY_2012_EX_088BW4M1">
+                <FORM kindOf="original">nu</FORM>
+                <FORM kindOf="standard">nu</FORM>
+                <PHON kindOf="standard">nu</PHON>
+                <TRANSL xml:lang="zho">屬格</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_088BW5">
+            <FORM kindOf="original">mita</FORM>
+            <FORM kindOf="standard">mita</FORM>
+            <PHON kindOf="standard">mita</PHON>
+            <TRANSL xml:lang="zho">m-我們.屬格</TRANSL>
         </W>
     </S>
     <S id="AKIW_SZY_2012_EX_088C" source="PDF page 119; example 88c">
@@ -13209,6 +13590,48 @@
                 <FORM kindOf="standard">nani'</FORM>
                 <PHON kindOf="standard">nani[ʔ|ʡ]</PHON>
                 <TRANSL xml:lang="zho">貓</TRANSL>
+            </M>
+        </W>
+    </S>
+    <S id="AKIW_SZY_2012_EX_090A" source="PDF page 120; example 90a">
+        <FORM kindOf="original">lahuk han tu.</FORM>
+        <FORM kindOf="standard">lahuk han tu.</FORM>
+        <PHON kindOf="standard">[r|ɾ]aħuk ħan tu</PHON>
+        <TRANSL xml:lang="zho">吃午餐吧。</TRANSL>
+        <W id="AKIW_SZY_2012_EX_090AW1">
+            <FORM kindOf="original">lahuk</FORM>
+            <FORM kindOf="standard">lahuk</FORM>
+            <PHON kindOf="standard">[r|ɾ]aħuk</PHON>
+            <TRANSL xml:lang="zho">午餐</TRANSL>
+            <M id="AKIW_SZY_2012_EX_090AW1M1">
+                <FORM kindOf="original">lahuk</FORM>
+                <FORM kindOf="standard">lahuk</FORM>
+                <PHON kindOf="standard">[r|ɾ]aħuk</PHON>
+                <TRANSL xml:lang="zho">午餐</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_090AW2">
+            <FORM kindOf="original">han</FORM>
+            <FORM kindOf="standard">han</FORM>
+            <PHON kindOf="standard">ħan</PHON>
+            <TRANSL xml:lang="zho">HAN</TRANSL>
+            <M id="AKIW_SZY_2012_EX_090AW2M1">
+                <FORM kindOf="original">han</FORM>
+                <FORM kindOf="standard">han</FORM>
+                <PHON kindOf="standard">ħan</PHON>
+                <TRANSL xml:lang="zho">HAN</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_090AW3">
+            <FORM kindOf="original">tu</FORM>
+            <FORM kindOf="standard">tu</FORM>
+            <PHON kindOf="standard">tu</PHON>
+            <TRANSL xml:lang="zho">TU</TRANSL>
+            <M id="AKIW_SZY_2012_EX_090AW3M1">
+                <FORM kindOf="original">tu</FORM>
+                <FORM kindOf="standard">tu</FORM>
+                <PHON kindOf="standard">tu</PHON>
+                <TRANSL xml:lang="zho">TU</TRANSL>
             </M>
         </W>
     </S>
@@ -15848,7 +16271,7 @@
         <FORM kindOf="original">mahinac kaku a mi-buting.</FORM>
         <FORM kindOf="standard">mahinac kaku a mibuting.</FORM>
         <PHON kindOf="standard">maħinaʦ kaku a mibutiŋ</PHON>
-        <TRANSL xml:lang="zho">我每次都捕不到魚。</TRANSL>
+        <TRANSL xml:lang="zho" notes="The source prints 補 ('mend') here; the translation reads 捕 ('catch'), the evident meaning.">我每次都捕不到魚。</TRANSL>
         <W id="AKIW_SZY_2012_EX_105AW1">
             <FORM kindOf="original">mahinac</FORM>
             <FORM kindOf="standard">mahinac</FORM>

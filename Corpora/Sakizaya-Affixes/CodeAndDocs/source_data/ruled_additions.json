@@ -1,0 +1,552 @@
+{
+ "_note": "Records the maintainer ruled into the corpus that the expert transcription (manual_edits.xml) does not contain. Each example is gated on extraction_report.csv (same form) and each table row on source_data/late_table_rows.csv. Words and morphemes follow the expert transcription's own convention: a word and its gloss split at hyphens give one bare morpheme per piece; an unhyphenated word with an unhyphenated gloss gives one morpheme; otherwise no morphemes (checked: this reproduces 236 of the 238 expert example records exactly; the other two are 17d's null prefix and 29a's comma). Page-checked against PDF pages 103, 118, 119, 120, 163, 166, 167 on 2026-11-07.",
+ "examples": [
+  {
+   "id": "AKIW_SZY_2012_EX_087A",
+   "after": "AKIW_SZY_2012_EX_086C",
+   "source": "PDF page 118; example 87a",
+   "form": "pa-dama kaku tu ma-liyuh-ay pa-batikal a wawa.",
+   "translation": "我幫忙扶著不會騎單車的小孩。",
+   "words": [
+    [
+     "pa-dama",
+     "使役-扶",
+     [
+      [
+       "pa",
+       "使役"
+      ],
+      [
+       "dama",
+       "扶"
+      ]
+     ]
+    ],
+    [
+     "kaku",
+     "我.主格",
+     [
+      [
+       "kaku",
+       "我.主格"
+      ]
+     ]
+    ],
+    [
+     "tu",
+     "斜格",
+     [
+      [
+       "tu",
+       "斜格"
+      ]
+     ]
+    ],
+    [
+     "ma-liyuh-ay",
+     "MA-不會-AY",
+     [
+      [
+       "ma",
+       "MA"
+      ],
+      [
+       "liyuh",
+       "不會"
+      ],
+      [
+       "ay",
+       "AY"
+      ]
+     ]
+    ],
+    [
+     "pa-batikal",
+     "騎-單車",
+     [
+      [
+       "pa",
+       "騎"
+      ],
+      [
+       "batikal",
+       "單車"
+      ]
+     ]
+    ],
+    [
+     "a",
+     "繫詞",
+     [
+      [
+       "a",
+       "繫詞"
+      ]
+     ]
+    ],
+    [
+     "wawa",
+     "小孩",
+     [
+      [
+       "wawa",
+       "小孩"
+      ]
+     ]
+    ]
+   ],
+   "card": "s153-87a90a3",
+   "ruling": "Round 2, 2026-11-06, card s153-87a90a2 (\"other\": \"I need more context. I can't see the surrounding text.\"); round 3, 2026-11-07, card s153-87a90a3: \"Restore them\"."
+  },
+  {
+   "id": "AKIW_SZY_2012_EX_090A",
+   "after": "AKIW_SZY_2012_EX_089B",
+   "source": "PDF page 120; example 90a",
+   "form": "lahuk han tu.",
+   "translation": "吃午餐吧。",
+   "words": [
+    [
+     "lahuk",
+     "午餐",
+     [
+      [
+       "lahuk",
+       "午餐"
+      ]
+     ]
+    ],
+    [
+     "han",
+     "HAN",
+     [
+      [
+       "han",
+       "HAN"
+      ]
+     ]
+    ],
+    [
+     "tu",
+     "TU",
+     [
+      [
+       "tu",
+       "TU"
+      ]
+     ]
+    ]
+   ],
+   "card": "s153-87a90a3",
+   "ruling": "Round 2, 2026-11-06, card s153-87a90a2 (\"other\": \"I need more context. I can't see the surrounding text.\"); round 3, 2026-11-07, card s153-87a90a3: \"Restore them\"."
+  },
+  {
+   "id": "AKIW_SZY_2012_EX_075A",
+   "after": "AKIW_SZY_2012_EX_074B",
+   "source": "PDF page 103; example 75a",
+   "form": "sanal han tu nu mita tayza ci Panay-an.",
+   "translation": "我們上午再去 Panay那裏。",
+   "words": [
+    [
+     "sanal",
+     "上午",
+     [
+      [
+       "sanal",
+       "上午"
+      ]
+     ]
+    ],
+    [
+     "han",
+     "HAN",
+     [
+      [
+       "han",
+       "HAN"
+      ]
+     ]
+    ],
+    [
+     "tu",
+     "TU",
+     [
+      [
+       "tu",
+       "TU"
+      ]
+     ]
+    ],
+    [
+     "nu",
+     "屬格",
+     [
+      [
+       "nu",
+       "屬格"
+      ]
+     ]
+    ],
+    [
+     "mita",
+     "m-我們.屬格",
+     []
+    ],
+    [
+     "tayza",
+     "去",
+     [
+      [
+       "tayza",
+       "去"
+      ]
+     ]
+    ],
+    [
+     "ci",
+     "斜格",
+     [
+      [
+       "ci",
+       "斜格"
+      ]
+     ]
+    ],
+    [
+     "Panay-an",
+     "人名-斜格",
+     [
+      [
+       "Panay",
+       "人名"
+      ],
+      [
+       "an",
+       "斜格"
+      ]
+     ]
+    ]
+   ],
+   "card": "s153-rep-49a75a",
+   "ruling": "Round 2, 2026-11-06, card s153-rep-49a75a: \"Keep both printings\" + \"Note in note attribute the inconsistency.\"",
+   "translation_from": "AKIW_SZY_2012_EX_049A (the same printed translation; the kept printing's exact string, so the two do not differ by spacing)"
+  },
+  {
+   "id": "AKIW_SZY_2012_EX_088A",
+   "after": "AKIW_SZY_2012_EX_087C",
+   "source": "PDF page 119; example 88a",
+   "form": "cacay ku luma' i buyu' ni Panay.",
+   "translation": "Panay 在山上只有一間房屋。",
+   "words": [
+    [
+     "cacay",
+     "一",
+     [
+      [
+       "cacay",
+       "一"
+      ]
+     ]
+    ],
+    [
+     "ku",
+     "主格",
+     [
+      [
+       "ku",
+       "主格"
+      ]
+     ]
+    ],
+    [
+     "luma'",
+     "房子",
+     [
+      [
+       "luma'",
+       "房子"
+      ]
+     ]
+    ],
+    [
+     "i",
+     "處所格",
+     [
+      [
+       "i",
+       "處所格"
+      ]
+     ]
+    ],
+    [
+     "buyu'",
+     "山上",
+     [
+      [
+       "buyu'",
+       "山上"
+      ]
+     ]
+    ],
+    [
+     "ni",
+     "屬格",
+     [
+      [
+       "ni",
+       "屬格"
+      ]
+     ]
+    ],
+    [
+     "Panay",
+     "人名",
+     [
+      [
+       "Panay",
+       "人名"
+      ]
+     ]
+    ]
+   ],
+   "card": "s153-rep-27a88a",
+   "ruling": "Round 2, 2026-11-06, card s153-rep-27a88a: \"Keep both printings\"",
+   "translation_from": "AKIW_SZY_2012_EX_027A (the same printed translation; the kept printing's exact string, so the two do not differ by spacing)"
+  },
+  {
+   "id": "AKIW_SZY_2012_EX_088B",
+   "after": "AKIW_SZY_2012_EX_088A",
+   "source": "PDF page 119; example 88b",
+   "form": "la-cacay ku ni-zateng nu mita.",
+   "translation": "我們的理念一致。",
+   "words": [
+    [
+     "la-cacay",
+     "變成-一",
+     [
+      [
+       "la",
+       "變成"
+      ],
+      [
+       "cacay",
+       "一"
+      ]
+     ]
+    ],
+    [
+     "ku",
+     "主格",
+     [
+      [
+       "ku",
+       "主格"
+      ]
+     ]
+    ],
+    [
+     "ni-zateng",
+     "NI-想",
+     [
+      [
+       "ni",
+       "NI"
+      ],
+      [
+       "zateng",
+       "想"
+      ]
+     ]
+    ],
+    [
+     "nu",
+     "屬格",
+     [
+      [
+       "nu",
+       "屬格"
+      ]
+     ]
+    ],
+    [
+     "mita",
+     "m-我們.屬格",
+     []
+    ]
+   ],
+   "card": "s153-rep-27b88b",
+   "ruling": "Round 2, 2026-11-06, card s153-rep-27b88b: \"Keep both printings\"",
+   "translation_from": "AKIW_SZY_2012_EX_027B (the same printed translation; the kept printing's exact string, so the two do not differ by spacing)"
+  }
+ ],
+ "table_rows": [
+  {
+   "id": "AKIW_SZY_2012_TABLE_ROW_491",
+   "seq": 491,
+   "page": 163,
+   "source_table": "table 108",
+   "form": "ma-la-wacu",
+   "meaning": [
+    "虛弱"
+   ],
+   "affix": "ma-la-",
+   "affix_function": "與文化相關詞彙",
+   "base": "wacu",
+   "base_meaning": [
+    "狗"
+   ],
+   "card": "s153-late",
+   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\"",
+   "affix_function_note": "As printed: the title of table 108 (PDF page 163), which has no separate function column; late_table_rows.csv shortens it to 文化相關詞彙."
+  },
+  {
+   "id": "AKIW_SZY_2012_TABLE_ROW_492",
+   "seq": 492,
+   "page": 163,
+   "source_table": "table 108",
+   "form": "ma-lalikid",
+   "meaning": [
+    "豐年祭"
+   ],
+   "affix": "ma-",
+   "affix_function": "與文化相關詞彙",
+   "base": "lalikid",
+   "base_meaning": [
+    "被流走"
+   ],
+   "card": "s153-late",
+   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\"",
+   "affix_function_note": "As printed: the title of table 108 (PDF page 163), which has no separate function column; late_table_rows.csv shortens it to 文化相關詞彙."
+  },
+  {
+   "id": "AKIW_SZY_2012_TABLE_ROW_493",
+   "seq": 493,
+   "page": 163,
+   "source_table": "table 108",
+   "form": "pa-habay",
+   "meaning": [
+    "養育",
+    "餵養"
+   ],
+   "affix": "pa-",
+   "affix_function": "與文化相關詞彙",
+   "base": "habay",
+   "base_meaning": [
+    "小米"
+   ],
+   "card": "s153-late",
+   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\"",
+   "affix_function_note": "As printed: the title of table 108 (PDF page 163), which has no separate function column; late_table_rows.csv shortens it to 文化相關詞彙."
+  },
+  {
+   "id": "AKIW_SZY_2012_TABLE_ROW_495",
+   "seq": 495,
+   "page": 163,
+   "source_table": "table 108",
+   "form": "si-sepi",
+   "meaning": [
+    "有福氣的"
+   ],
+   "affix": "si-",
+   "affix_function": "與文化相關詞彙",
+   "base": "sepi",
+   "base_meaning": [
+    "夢"
+   ],
+   "card": "s153-late",
+   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\"",
+   "affix_function_note": "As printed: the title of table 108 (PDF page 163), which has no separate function column; late_table_rows.csv shortens it to 文化相關詞彙."
+  },
+  {
+   "id": "AKIW_SZY_2012_TABLE_ROW_496",
+   "seq": 496,
+   "page": 163,
+   "source_table": "table 108",
+   "form": "mu-sepi-ay",
+   "meaning": [
+    "幸運的"
+   ],
+   "affix": "mu-...-ay",
+   "affix_function": "與文化相關詞彙",
+   "base": "sepi",
+   "base_meaning": [
+    "夢"
+   ],
+   "card": "s153-late",
+   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\"",
+   "affix_function_note": "As printed: the title of table 108 (PDF page 163), which has no separate function column; late_table_rows.csv shortens it to 文化相關詞彙."
+  },
+  {
+   "id": "AKIW_SZY_2012_TABLE_ROW_506",
+   "seq": 506,
+   "page": 166,
+   "source_table": "table 109",
+   "form": "ma-ngawa'",
+   "meaning": [
+    "缺齒"
+   ],
+   "affix": "ma-",
+   "affix_function": "動詞化詞綴",
+   "base": "ngawa'",
+   "base_meaning": [
+    "角"
+   ],
+   "card": "s153-late",
+   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\""
+  },
+  {
+   "id": "AKIW_SZY_2012_TABLE_ROW_517",
+   "seq": 517,
+   "page": 167,
+   "source_table": "table 109",
+   "form": "pa-talaw",
+   "meaning": [
+    "使之驚嚇"
+   ],
+   "affix": "pa-",
+   "affix_function": "使役動詞",
+   "base": "talaw",
+   "base_meaning": [
+    "受驚"
+   ],
+   "card": "s153-late",
+   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\""
+  },
+  {
+   "id": "AKIW_SZY_2012_TABLE_ROW_523",
+   "seq": 523,
+   "page": 167,
+   "source_table": "table 109",
+   "form": "ama-aw",
+   "meaning": [
+    "親暱稱爸爸"
+   ],
+   "affix": "-aw",
+   "affix_function": "「表示親暱」的用法",
+   "base": "ama",
+   "base_meaning": [
+    "爸爸"
+   ],
+   "card": "s153-late",
+   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\"",
+   "affix_function_note": "As printed in table 109 (PDF page 167); late_table_rows.csv shortens it to 表示親暱."
+  },
+  {
+   "id": "AKIW_SZY_2012_TABLE_ROW_525",
+   "seq": 525,
+   "page": 167,
+   "source_table": "table 109",
+   "form": "sept-ay",
+   "meaning": [
+    "四的"
+   ],
+   "affix": "-ay",
+   "affix_function": "名物化",
+   "base": "sept",
+   "base_meaning": [
+    "四"
+   ],
+   "card": "s153-late",
+   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\""
+  }
+ ]
+}

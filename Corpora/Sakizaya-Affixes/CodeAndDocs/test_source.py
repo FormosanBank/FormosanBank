@@ -32,12 +32,15 @@ class ReviewedSourceTests(unittest.TestCase):
         self.assertEqual(form(sentence, "standard"), "imelang ci Taymu kiyu sidinget.")
         self.assertEqual(form(word), "∅-imelang")
         self.assertEqual([form(m) for m in word.findall("M")], ["∅", "imelang"])
-        self.assertEqual(word.findall("M")[0].findall("TRANSL"), [])
+        # Maintainer, 2026-11-06 (card s153-unglossed): "A · <UNCLEAR/> for both (POL-061)".
+        null_gloss = word.findall("M")[0].findall("TRANSL")
+        self.assertEqual(len(null_gloss), 1)
+        self.assertIsNotNone(null_gloss[0].find("UNCLEAR"))
         self.assertEqual(word.findall("M")[1].findtext("TRANSL"), "生病")
         self.assertEqual(sentence.findtext("TRANSL"), "Taymu 生病所以流鼻涕。")
 
     def test_corrected_chinese_and_genitive_survive(self):
-        # Scan pp. 33, 37 and Joshua's August 10 OCR review.
+        # Scan pp. 33, 37 and Joshua's August 10 OCR review (confirmed by the maintainer 2026-11-07).
         self.assertEqual(self.nodes["AKIW_SZY_2012_EX_003W4"].findtext("TRANSL"), "屬格")
         self.assertEqual(self.nodes["AKIW_SZY_2012_EX_015"].findtext("TRANSL"), "我的肩膀受傷了。")
         self.assertEqual(self.nodes["AKIW_SZY_2012_EX_015W3"].findtext("TRANSL"), "肩膀")
@@ -49,14 +52,16 @@ class ReviewedSourceTests(unittest.TestCase):
         self.assertEqual(form(sentence), "a-mumul")
         self.assertEqual(sentence.findtext("TRANSL"), "即將出發")
         self.assertEqual([(form(m), m.findtext("TRANSL")) for m in word.findall("M")],
-                         [("a-", "即將進行"), ("mumul", "出發")])
+                         [("a", "即將進行"), ("mumul", "出發")])
         self.assertEqual(word.findall("M")[1].findtext("TRANSL[@ver='alt']"), "走")
 
-    def test_circumfix_original_and_standard_are_distinct(self):
-        # Scan p. 145, row 365; Madeline's August 14 notation decision.
+    def test_circumfix_uses_standard_notation(self):
+        # Scan p. 145, row 365, printed ma-...-ay. Maintainer, 2026-11-07 (card s153-stdtable):
+        # "Do change circumfixes to standard notation. In this case `ka-an`."
         morph = self.nodes["AKIW_SZY_2012_TABLE_ROW_365W1M1"]
-        self.assertEqual(form(morph), "ma-...-ay")
-        self.assertEqual(form(morph, "standard"), "ma--ay")
+        self.assertEqual(form(morph), "ma-ay")
+        self.assertEqual(form(morph, "standard"), "ma-ay")
+        self.assertFalse(any("..." in (form(m) or "") for root in self.roots for m in root.iter("M")))
         self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_365W1M2"]), "limula'")
 
     def test_repeated_apostrophes_are_retained(self):
@@ -72,11 +77,12 @@ class ReviewedSourceTests(unittest.TestCase):
         self.assertEqual(form(b), "mulusu' ku tanang nay zais.")
         self.assertEqual(form(a, "standard"), form(b, "standard"))
 
-    def test_missing_source_gloss_is_not_invented(self):
-        # Madeline removed the inherited function gloss in table row 20.
+    def test_unglossed_affix_is_marked_unclear(self):
+        # Madeline removed the inherited function gloss in table row 20; no gloss is invented.
+        # Maintainer, 2026-11-06 (card s153-unglossed): "A · <UNCLEAR/> for both (POL-061)".
         affix = self.nodes["AKIW_SZY_2012_TABLE_ROW_020W1M1"]
-        self.assertEqual(form(affix), "ka-")
-        self.assertEqual(affix.findall("TRANSL"), [])
+        self.assertEqual(form(affix), "ka")
+        self.assertEqual([t.find("UNCLEAR") is not None and not (t.text or "").strip() for t in affix.findall("TRANSL")], [True])
 
     def test_expert_alternate_translation_survives_syntax_repair(self):
         # Expert row 133 had a malformed tag containing the second reading.
@@ -85,9 +91,14 @@ class ReviewedSourceTests(unittest.TestCase):
                          [(None, "歇一下"), ("alt", "休息一下")])
 
     def test_expert_summary_exclusion_and_original_phon_omission(self):
-        # Madeline's August 13–14 review excludes the entire late dataset.
+        # Madeline's August 13–14 review excluded the late dataset; the maintainer added back
+        # the 9 rows found nowhere else (2026-11-06, card s153-late: "B · Add the 9 unique rows").
         self.assertFalse(any("SUMMARY_ROW" in sid for sid in self.nodes))
-        self.assertEqual(sum(len(root.findall("S")) for root in self.roots), 677)
+        late = sorted(s.get("id") for root in self.roots for s in root.findall("S")
+                      if "late summary table" in s.get("source", ""))
+        self.assertEqual(late, [f"AKIW_SZY_2012_TABLE_ROW_{n}"
+                                for n in (491, 492, 493, 495, 496, 506, 517, 523, 525)])
+        self.assertEqual(sum(len(root.findall("S")) for root in self.roots), 691)
         self.assertFalse(any(root.findall(".//PHON[@kindOf='original']") for root in self.roots))
         for key in ("083C", "091E"):
             self.assertNotIn(f"AKIW_SZY_2012_EX_{key}", self.nodes)
@@ -159,7 +170,8 @@ class ReviewedSourceTests(unittest.TestCase):
                 self.assertEqual(morph.findtext("TRANSL"), gloss)
 
     def test_scoped_source_gloss_exceptions(self):
-        # Joshua's August 10 ruling; fixture readings come from expert commit 45d58b0.
+        # Joshua's August 10 ruling (confirmed by the maintainer 2026-11-07); fixture readings come
+        # from expert commit 45d58b0, plus the twelve words of the 2026-11 ruled records.
         from lxml import etree
 
         tools = Path(os.environ.get("FORMOSANBANK_ROOT", CODE.parents[2]))
@@ -171,9 +183,9 @@ class ReviewedSourceTests(unittest.TestCase):
         with (CODE / "source_data/gloss_exceptions.csv").open(newline="", encoding="utf-8") as handle:
             cases = list(csv.DictReader(handle))
         expected = {case["word_id"] for case in cases}
-        self.assertEqual(len(cases), 450)
-        self.assertEqual(len(expected), 450)
-        self.assertEqual(sum("TABLE_ROW" in wid for wid in expected), 403)
+        self.assertEqual(len(cases), 462)
+        self.assertEqual(len(expected), 462)
+        self.assertEqual(sum("TABLE_ROW" in wid for wid in expected), 413)
         for case in cases:
             with self.subTest(word=case["word_id"]):
                 word = self.nodes[case["word_id"]]
@@ -185,20 +197,49 @@ class ReviewedSourceTests(unittest.TestCase):
                 self.assertEqual(finding.rule_id, "G001")
                 actual.append(re.search(r"W=([^\s]+)", finding.location).group(1))
         # Footnote 15 (scan p. 39) also glosses a composite prefix as one 工焦.
-        self.assertEqual(len(actual), 451)
+        self.assertEqual(len(actual), 463)
         self.assertEqual(set(actual), expected | {"AKIW_SZY_2012_FN_015W1"})
 
     def test_table_meanings_are_not_split_into_fictitious_glosses(self):
         # Each reviewed six-column row has one whole-word meaning and two source analyses.
         sentences = [s for root in self.roots for s in root.findall("S")
                      if "TABLE_ROW" in s.get("id", "")]
-        self.assertEqual(len(sentences), 432)
+        self.assertEqual(len(sentences), 441)
         for sentence in sentences:
             with self.subTest(row=sentence.get("id")):
                 self.assertEqual(len(sentence.findall("W")), 1)
                 word = sentence.find("W")
                 self.assertEqual(word.findtext("TRANSL"), sentence.findtext("TRANSL"))
                 self.assertEqual(len(word.findall("M")), 2)
+
+
+    def test_maintainer_rulings_2026_11(self):
+        # Rounds 1-4 of the port audit (2026-11-06/07); every value is the printed one.
+        def transl(sid):
+            return [(t.get("ver"), t.text) for t in self.nodes[sid].findall("TRANSL")]
+        self.assertEqual(transl("AKIW_SZY_2012_EX_040B"), [(None, "我們現在上山採竹筍。")])
+        for row, text in (("078", "吹口琴"), ("087", "採柿子"), ("088", "採葡萄"), ("092", "採番茄"),
+                          ("094", "採竹筍"), ("290", "掃過"), ("295", "被審問"), ("311", "六的"),
+                          ("368", "斷了的線、繩子"), ("152", "弄哭，延伸有勉強逼之意")):
+            for sid in (f"AKIW_SZY_2012_TABLE_ROW_{row}", f"AKIW_SZY_2012_TABLE_ROW_{row}W1"):
+                self.assertEqual(transl(sid), [(None, text)], sid)
+        self.assertEqual(transl("AKIW_SZY_2012_TABLE_ROW_093")[0], (None, "採菜"))
+        self.assertEqual(transl("AKIW_SZY_2012_TABLE_ROW_096W1M2"), [(None, "白頭翁鳥")])
+        self.assertEqual(transl("AKIW_SZY_2012_TABLE_ROW_400W1M2"), [(None, "目送")])
+        self.assertIn("補", self.nodes["AKIW_SZY_2012_EX_105A"].find("TRANSL").get("notes"))
+        self.assertEqual(form(self.nodes["AKIW_SZY_2012_EX_029AW3"]), "duba'")
+        for sid in ("049A", "075A"):
+            self.assertIn("different gloss line",
+                          self.nodes[f"AKIW_SZY_2012_EX_{sid}"].find("FORM[@kindOf='original']").get("notes"))
+        for sid in ("087A", "090A", "075A", "088A", "088B"):
+            self.assertIn(f"AKIW_SZY_2012_EX_{sid}", self.nodes)
+        # Table morphemes in word order, hyphens only as circumfix notation.
+        word = self.nodes["AKIW_SZY_2012_TABLE_ROW_280W1"]
+        self.assertEqual([(form(m), m.findtext("TRANSL")) for m in word.findall("M")],
+                         [("lekal", "起來"), ("a", "勸使")])
+        self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_348W1M1"]), "ka-an")
+        table = [m for root in self.roots for m in root.iter("M") if "TABLE_ROW" in m.get("id")]
+        self.assertTrue(all("-" not in form(m) or re.fullmatch(r"[^-]+-[^-]+", form(m)) for m in table))
 
 
 class TranscriptionBuildTests(unittest.TestCase):
