@@ -13,12 +13,18 @@ Files in this folder:
 
 | File | What it does |
 |---|---|
-| `export_review.py` | dev repo XML + `review/review_config.json` → `review/review_baseline.json` + `review/review_page.html` |
+| `export_review.py` | dev repo XML + `review/review_config.json` → `review/review_baseline.json` + `review/review_page.html`, plus one image per cited PDF page in `--images-out` |
 | `review_page.template.html` | the page; the exporter fills in title, guide and data |
 | `apply_review.py` | the student's file (or a dump of the page's store) → `review/review_corrections.tsv` + `review/review_log.tsv` |
 
-Run them with FormosanBank's `.venv/bin/python` (it has lxml). Everything they
-write goes in the dev repo's `review/` folder. Dev repos commit straight to main.
+Run them with FormosanBank's `.venv/bin/python` (it has lxml and PyMuPDF). Everything they
+write goes in the dev repo's `review/` folder, except the page images. Dev repos commit straight to main.
+
+**Every card shows the book.** Maintainer, 2026-11-06: *"Yes, change the skill to always include
+screenshots."* The student checks each card against a picture of the page on the card: the example
+cut out where it can be found, the whole page otherwise, and a *Show the whole page* button either
+way. Without it the student needs the PDF open beside the page; the first seven pages (2026-11-06)
+shipped without pictures until he asked *"Otherwise, what is the reviewer checking?"*
 
 Earlier rounds, for reference: Chang Seediq (`Formosan-Seediq-Chang-Reference-Grammar`,
 https://claude.ai/artifact/BgZYpZeavuYmdbGwzsguKT) and Chang Kavalan
@@ -69,6 +75,32 @@ pages by finding each example's text on its page (Debusser: 1,066 of 1,090
 confirmed). State in `pdf_note` whether page numbers are PDF or printed pages;
 if printed, give the offset and check it is constant.
 
+### 4b. Page images
+
+Add a `page_images` block to the config (keys in the `export_review.py` docstring). The exporter
+refuses to run without one.
+
+- `pdf`: the restored PDF from step 2, under the repo's ignored `Private/`.
+- `pages`: a regex over the card's readable locator; group 1 is a page number or a range
+  (`"printed p\\. ([\\d-]+)"` as written in the JSON), with `offset` when the locator gives printed pages (Tsou: +20).
+- `locate`: `"text"` where the PDF has a text layer (check: `sum(1 for p in doc if p.get_text().strip())`).
+  The exporter finds the sentence in the page's text, cuts from it to the end of its translation,
+  reads two-column pages column by column, and tries the neighbouring pages when the named one
+  lacks the sentence (flag `other_page`); a sentence found nowhere shows its whole page (flag
+  `not_on_page`). `"none"` for a scanned PDF: whole pages.
+- `boxes`: a TSV of cuts (`record, page, x0, y0, x1, y1` as page fractions) where the corpus has
+  coordinates of its own but the PDF has no text layer. Sung Seediq's `review/make_record_info.py`
+  writes one from the reader's positioned text.
+
+`--images-out` must be outside the dev repo: the images are the book, and the repo keeps the book
+out of git. Use the session scratchpad (`<scratchpad>/pages/<corpus>`). At 140 dpi grayscale JPEG
+(the default) a page is 50–160 KB and diacritics stay legible (Tsou `ʉ ʔ`).
+
+**Read the cuts.** For each corpus, stack six random cuts into one image and look at them; check
+the `not_on_page` and `other_page` counts the exporter prints. First runs found: a 4-"line" fallback
+that stopped mid-example (an interlinear row is several PDF lines), a word list cut across both
+columns, and a headword matched inside an earlier entry.
+
 ### 5. Config, dry run, and reading the flags (pause ▣)
 
 Write `review/review_config.json` (keys in the `export_review.py` docstring),
@@ -97,14 +129,22 @@ corpus-wide, so it belongs in the guide, not on every card.
 ### 7. Export, check, publish
 
 ```bash
-.venv/bin/python .claude/skills/student-proofreading-page/export_review.py --repo ../Formosan-<Name>
+.venv/bin/python .claude/skills/student-proofreading-page/export_review.py --repo ../Formosan-<Name> \
+    --images-out <scratchpad>/pages/<corpus>
 ```
 
 Extract the inline `<script>` and run `node --check` on it. Publish
 `review/review_page.html` with `capabilities: {"db": {}, "user": {}, "downloads": true}`
-and `icon: "checklist"`. Then run one ArtifactData `list` of `edits` (expect
+and `icon: "checklist"`, and the images as `files` from `<images-out>/files.json`
+(`{"pages/p0053.jpg": "<path>"}`). One publish takes at most 255 files and 64 MB, so split a
+larger set over several publishes to the same `url` (each adds to the files already there; a
+version holds at most 511). Then run one ArtifactData `list` of `edits` (expect
 empty). **Never write a test document to a live store**: in 2026-09 a deleted test
 document came back from a browser that had cached it.
+
+Adding or changing pictures does not change a card's hash (it covers only what the student
+edits), so re-exporting for pictures alone is safe while a student is working; check that the
+new baseline's hashes equal the old ones before publishing.
 
 ### 8. Hand over
 
