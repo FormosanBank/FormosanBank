@@ -17,10 +17,9 @@ inventories one directory up, and these files:
 
 The corpus test reads:
 
-- `gloss_exceptions.csv`: the words whose gloss is segmented differently from
-  their form, as printed: whole-word meanings beside a table's affix and root
-  columns (409 table rows), and the thesis's unsegmented pronouns, case-marked
-  nouns and composite affixes (49 examples). The test requires exactly these
+- `gloss_exceptions.csv`: the 22 example words whose gloss is segmented
+  differently from their form, as printed: the thesis's unsegmented pronouns,
+  case-marked nouns and composite affixes. The test requires exactly these
   readings and fails on any other G001 finding. Footnote 15's composite prefix
   has its own test.
 

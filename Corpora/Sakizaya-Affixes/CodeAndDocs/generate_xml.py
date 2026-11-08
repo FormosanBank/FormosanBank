@@ -7,6 +7,7 @@ import argparse
 import copy
 import csv
 import json
+import re
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
@@ -252,42 +253,54 @@ def apply_ruled_corrections(xml_root: Path) -> None:
         _write(trees[kind], path)
 
 
-def normalise_table_morphemes(xml_root: Path) -> None:
-    """Morphemes of the affix-inventory rows in word order, hyphens only as notation.
+def drop_table_analysis(xml_root: Path) -> None:
+    """Each affix-inventory row is its printed word and its definition: no W, no M.
 
-    The tables list the affix column before the root column. A suffix therefore follows
-    its root here; a prefix and a circumfix (whose first part opens the word) stay first.
-    Hyphens are dropped from every morpheme except a circumfix's single hyphen at the
-    root's place, and a circumfix printed with ... (ka-...-an) is written ka-an.
+    The tables give a segmented word and a definition, not a gloss; reading glosses off their
+    affix and root columns is too uncertain (maintainer, 2026-11-08, card s153-q358: "We have a
+    segmented word and a definition, but no glosses. Figuring out the glossing from the table is
+    too uncertain."). Every W translation is also on its S, so only the W/M tiers go.
     """
     path = _xml_paths(xml_root)["table_rows"]
     tree = ET.parse(path)
     for sentence in tree.getroot().findall("S"):
-        word = sentence.find("W")
-        morphs = word.findall("M")
-        if len(morphs) != 2:
-            raise ValueError(f"Table row without exactly two morphemes: {sentence.get('id')}")
-        affix_form = morphs[0].find("FORM[@kindOf='original']")
-        root_form = morphs[1].find("FORM[@kindOf='original']")
-        text = affix_form.text
-        if "..." in text:
-            before, after = text.split("...")
-            affix_form.text = before.rstrip("-").replace("-", "") + "-" + after.lstrip("-").replace("-", "")
-            ordered = morphs
-        elif text.endswith("-") and not text.startswith("-"):
-            affix_form.text = text.replace("-", "")
-            ordered = morphs
-        elif text.startswith("-") and not text.endswith("-"):
-            affix_form.text = text.replace("-", "")
-            ordered = [morphs[1], morphs[0]]
-        else:
-            raise ValueError(f"Unexpected affix shape {text!r}: {sentence.get('id')}")
-        root_form.text = root_form.text.replace("-", "")
-        for morph in morphs:
-            word.remove(morph)
-        for index, morph in enumerate(ordered, 1):
-            morph.set("id", f"{word.get('id')}M{index}")
-            word.append(morph)
+        words = sentence.findall("W")
+        if len(words) != 1 or sentence.find("TRANSL") is None:
+            raise ValueError(f"Table row is not one word with a definition: {sentence.get('id')}")
+        sentence.remove(words[0])
+    _write(tree, path)
+
+
+SPLIT_M_WORDS = {"mita": 8, "maku": 19}
+
+
+def segment_m_words(xml_root: Path) -> None:
+    """mita and maku are written m-ita and m-aku, as two morphemes.
+
+    The source prints the word whole and glosses it in two pieces (m-我們.屬格); the word FORM
+    and the morphemes follow the gloss (maintainer, 2026-11-08, cards s153-qmita "B · FORM m-ita,
+    morphemes m + ita" and s153-qmaku "Yes, segment maku the same way"). The sentence line keeps
+    the printed word.
+    """
+    path = _xml_paths(xml_root)["examples"]
+    tree = ET.parse(path)
+    seen = {key: 0 for key in SPLIT_M_WORDS}
+    for word in tree.getroot().iter("W"):
+        form = word.find("FORM[@kindOf='original']")
+        if form is None or (form.text or "").lower() not in SPLIT_M_WORDS:
+            continue
+        gloss = re.fullmatch(r"([mM])-(.+)", word.findtext("TRANSL") or "")
+        if word.find("M") is not None or gloss is None:
+            raise ValueError(f"Unexpected {form.text!r} record: {word.get('id')}")
+        head, rest = form.text[0], form.text[1:]
+        seen[form.text.lower()] += 1
+        form.text = f"{head}-{rest}"
+        for index, (piece, meaning) in enumerate(((head, gloss.group(1)), (rest, gloss.group(2))), 1):
+            morph = ET.SubElement(word, "M", {"id": f"{word.get('id')}M{index}"})
+            ET.SubElement(morph, "FORM", {"kindOf": "original"}).text = piece
+            _transl(morph, [meaning])
+    if seen != SPLIT_M_WORDS:
+        raise ValueError(f"Expected {SPLIT_M_WORDS}, found {seen}")
     _write(tree, path)
 
 
@@ -321,6 +334,7 @@ if __name__ == "__main__":
         add_supplemental_examples(args.xml_root)
         add_ruled_records(args.xml_root)
         apply_ruled_corrections(args.xml_root)
-        normalise_table_morphemes(args.xml_root)
+        segment_m_words(args.xml_root)
+        drop_table_analysis(args.xml_root)
     else:
         build(output=args.xml_root)

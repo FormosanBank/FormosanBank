@@ -18,9 +18,10 @@ analyses follow an expert transcription of the thesis by Madeline Boese
 
 Two TEXT files under `XML/Sakizaya/` contain 686 S: 244 numbered-example
 readings, six footnote/prose examples and 436 affix entries (432 main-table rows
-and 4 rows of the late summary tables), with 1,797 W, 2,595 M, 5,078 original
-and 5,078 standard FORM, 5,078 standard PHON, 738 S translations and 4,480
-untiered W/M source glosses. No source-supplied phonetic transcription is
+and 4 rows of the late summary tables), with 1,361 W, 1,777 M, 3,824 original
+and 3,824 standard FORM, 3,824 standard PHON, 738 S translations and 3,138
+untiered W/M source glosses. The affix entries are the printed word and its
+definition; the examples carry the word-by-word glosses and morphemes. No source-supplied phonetic transcription is
 included.
 
 Of the thesis's 814 example and table units (261 numbered occurrences, 434
@@ -63,14 +64,10 @@ Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
 
 ## Notes and caveats
 
-- **Table-row translations are whole-word meanings, not glosses.** In the affix
-  tables, a word's translation is its meaning as a whole word; its morphemes
-  carry the table's affix and root columns. In the examples, the source
-  sometimes glosses an unsegmented word as a complex form (`maku` ↔
-  `m-我.屬格`); such words keep that gloss and have no M.
-- **Examples printed twice are two S.** 27a/88a, 27b/88b, 49a/75a and 69a/82a
-  are each kept twice because their printed glosses or analyses differ, so
-  their sentences count twice.
+- **mita and maku are written m-ita and m-aku.** The source prints these words
+  whole but glosses them in two pieces (`m-我們.屬格`, `m-我.屬格`); their
+  word-by-word gloss (W) is written `m-ita` / `m-aku`, with the morphemes `m` +
+  `ita` / `aku`. The sentence keeps the printed `mita` / `maku`.
 
 ## Reproduction and processing
 
@@ -108,8 +105,9 @@ only when every step has succeeded.
    `source_data/ruled_additions.json` (examples 75a, 87a, 88a, 88b, 90a and 4
    late rows, each checked against its inventory row); applies the corrections
    in `source_data/ruled_corrections.tsv` (each row names the value it expects,
-   so a changed input stops the build); and puts the table-row morphemes in word
-   order with circumfixes written `X-Y`.
+   so a changed input stops the build); writes `mita` and `maku` as `m-ita` and
+   `m-aku`, two morphemes each; and removes the word-by-word gloss and morphemes
+   from the table rows, which keep the printed word and its definition.
 4. `QC/cleaning/clean_xml.py`, with its report kept out of `XML/` (POL-033).
 5. `QC/utilities/standardize.py --remove_accents --segmented-without-m-tier`:
    the source already spells in the standard orthography, so no conversion
