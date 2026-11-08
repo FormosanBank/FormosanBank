@@ -143,34 +143,6 @@ were approved by a person; the table counts them per file.
 No translations collected through the site's translation pages yet. When there are, each file is listed here with its sentence count and how many of its attached Mandarin translations began as machine translation and were then approved by a person.
 <!-- SITE TRANSLATION COUNTS END -->
 
-#### Notes on the 2025 translation
-
-These translations preserve historical manual text. Use current
-[POLICIES.md](../../POLICIES.md) and the committed English GitBook documentation
-for project guidance. Records include headings and lists as well as prose. The
-manual reflects its 2025 source, including historical licence wording. Source
-names, language lists, repeated citations, and the literal English/Chinese
-licence-link labels remain part of the corpus. Names, English/Chinese
-code-switching and licence-link labels are retained; generated PHON may contain
-uncertainty stars for unsupported borrowed letters, including where it is
-applied to non-Paiwan names.
-
-Two records carry known defects, left in place rather than corrected: in the
-Welcome roster the group heading `Advisory Board` sits inline among the personal
-names, because the source sets the two lists in one column; and the
-language-list record's Mandarin tier reproduces the source's untranslated Latin
-list rather than Mandarin. In detail:
-
-- `Welcome` S `p1_people` runs the roster as one line, so the group heading
-  `Advisory Board` sits inline among the personal names. The source sets the
-  Principal Investigators and Advisory Board lists in one column.
-- `Formosan_Languages` S `p5_languages` has a `TRANSL xml:lang="zho"` holding
-  the source's untranslated Latin language list rather than Mandarin. The
-  source document's Mandarin translator left that list in Latin; the Mandarin
-  edition of the FormosanBank manual does translate the names.
-
-Records that are lists of names count toward this corpus's word totals.
-
 ## Reproduction and processing
 
 ### How to reproduce
