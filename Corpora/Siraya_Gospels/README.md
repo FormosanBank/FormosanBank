@@ -1,189 +1,122 @@
 # Siraya Gospels of Gravius
 
-## License and AI Use
+Gravius's 1661 Matthew and John, transcribed from the Siraya and Dutch columns, with King James English and Chinese Union Version translations. Gravius's 1661 Matthew and John were printed in Siraya alongside Dutch. This corpus retains the hand-corrected Siraya transcription and its Dutch readings, with King James English and Chinese Union Version reference translations.
 
-This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+## Languages and dialects
 
-In the 1600s, Gravius translated John and Matthew to Siraya. The translations were published side-by-side with a Dutch translation.
+All 49 XML files (under `XML/Siraya/John/` and `XML/Siraya/Matthew/`) declare `xml:lang="fos"` (Siraya) and `dialect="Siraya"` on `<TEXT>`. The Siraya text is the sentence-level `FORM`; the Dutch column of the print is carried as `TRANSL xml:lang="nld"`, alongside English (`eng`, King James Version) and Chinese (`zho`, Chinese Union Version) translations.
 
-These were digitized through a combination of OCR and hand correction (though the Dutch has not yet been fully corrected.)
+## Source
 
-We added an English translation in the form of the King James Bible, and a Chinese translation in the form of the Chinese Union version. Both are public domain.
+Daniël Gravius's *Het Heylige Evangelium Matthei en Johannis* (Amsterdam, 1661), which prints the Gospels of Matthew and John in Siraya alongside Dutch.
 
-***
+The corpus has 49 chapters and 1,951 verse records. There are 49 chapters and 1,951 printed verse records: 1,071 in Matthew and 880 in John. Chapter and verse IDs retain the published `Siraya_Dutch_*` and `verse*` identities. All published chapter and verse IDs remain.
 
-**Notes**
+The two source scans are identified in the corpus's [source manifest](CodeAndDocs/source_manifest.json), and the retained King James and Chinese Union Version editions in its [reference-translation manifest](CodeAndDocs/reference_translations/manifest.json).
 
-* The Dutch translations of Matthew are incomplete and error-prone. They are included for now but should not be used. 
+[Source card](https://3.basecamp.com/3340659/buckets/31258415/card_tables/cards/7289698742). This is the original development repository; the later Gravius project duplicated this corpus.
 
-* The Dutch is quite hard to read. b and v are probably confused frequently.
+Audio: None.
 
-* Matthew 25:11 has an æ̈ character (æ̈ with an umlaut). It almost certainly occurs somewhere else, but none made it into the XML.
+#### Source alignment
 
-***
+Each XML file is one chapter and each S is one printed verse, following the recorded chapter/verse decision. Matthew has 1,071 verses; John has 880. Modern John 1:38 spans printed verses 38 and 39: the split comes before “What seek ye?” / “你們要甚麼？”. Subsequent John 1 references are one verse behind the printed IDs.
 
-**Versificiation**
+Chapter headings mistakenly appended to 25 final Matthew verses are separated from verse content; the preserved baseline and correction records retain the old text.
 
-The Siraya John 1 has 52 verses, whereas more modern version (even King James) have 51. Claude Sonnet 4.6 used the Dutch translations to come up with this analysis:
+The CUV parser keeps poetry and paragraph continuation lines, source punctuation, verse footnotes in translation notes, and section cross-references on the section's first verse. It does not append section headings or cross-references to spoken text. Four verses absent from this CUV edition's main text remain without a Chinese TRANSL: Matthew 18:11 and 23:14, John 5:4 and 7:53. Source footnote readings remain notes rather than invented main-edition verses.
 
-Looking at the KJV vs the Dutch translations in the XML, the divergence is clear at verse 38/39:
+[Correction history](CodeAndDocs/transcription_history.md) preserves prior lexical decisions. [Current corrections](CodeAndDocs/corrections.md) identifies restored maintainer edits and the narrow source repairs. Retired notebooks are historical evidence only; their OCR substitutions must not be rerun over the corrected corpus.
 
-XML verse38 (Dutch): "Ende Jesus hem omkeerende ende siende haer bolgen/ seyde tot harr." → "Jesus turned and saw them following, and said to them" — only the first half of KJV 1:38
-XML verse39 (Dutch): "Wat soeckt ghy... Rabbi... waer woont ghye" → "What seek ye? Rabbi... where dwellest thou?" — the second half of KJV 1:38
-KJV 1:38 is: "Then Jesus turned, and saw them following, and saith unto them, What seek ye? They said unto him, Rabbi... where dwellest thou?"
+## Statistics
 
-The 1661 Gravius text split KJV 1:38 into two separate verses. From that point on, the XML numbering is exactly one ahead of KJV:
+The table of word counts, audio, translations and glossing is generated from
+`statistics/Siraya_Gospels_corpora_stats.csv` and appears on this corpus's page
+on the [FormosanBank site](https://formosanbank.github.io/FormosanBank/).
 
-XML verse	KJV verse
-38	first half of 1:38
-39	second half of 1:38
-40	1:39
-41	1:40
-…	…
-51	1:50
-52	1:51
-So when adding English translations, for John chapter 1, verses 1–37 map 1:1 directly, then verses 39–52 map to KJV verses 38–51.
+## How to cite
 
-***
+If you use this corpus, or anything derived from it, in a publication, cite both
+FormosanBank and:
 
-**Quality Control**
+- Gravius, Daniël. 1661. *Het Heylige Evangelium Matthei en Johannis ofte Hagnau Ka D'llig Matiktik. Ka na sasoulat ti Mattheus, ti Johannes appa.* Amsterdam: Michiel Hartogh.
+- The King James Bible.
+- The Chinese Union Version of the Bible.
 
-Quality Control Modifications
+## License
 
-Below is a list of preliminary lexical adjustments made to Siraya words broked up by line breaks in the text by hyphen -. 
-They have been consolidated based on full word appearances in surrounding verses. 
+**License:** public domain
+**Rights source:** Joshua Hartshorne, 2026-03-21; evidence: ask maintainer
 
-A-lid -> Alid
-ma-mang -> mamang
-kianna -> ki anna
-kan-na -> kanna
-tatau -> ta tau 
-ræ-mæh -> ræmæh 
-te-ni -> teni
-ty-ni -> tyni
-Tama-mat-tæ'i-tan -> Tama-mattæ'i-tan
-ba-lei -> balei
-ap-pa -> appa
-kmyt-ta -> kmytta
-mat'-moei -> mat'moei 
-Joan-nes -> Joannes
-kana-dap -> kanadap
-E-saïas -> Esaïas
-Fa-riseen -> Fariseen 
-Be-thabara -> Bethabara
-Rab-bi -> Rabbi 
-Jo-na -> Jona 
-Mo-ses -> Moses
-Mat-tæ -> Mattæ
-Naza-reth -> Nazareth 
-Natha-naël -> Nathanaël 
-Jo-den -> Joden 
-ma-riang -> mariang 
-mali-touk -> malitouk 
-Je-sus -> Jesus 
-Ni-kodemus -> Nikodemus
-as-si -> assi 
-pa-mut -> pamut
-Chri-stus -> Christus 
-Samari-tanen -> Samaritanen 
-Ja-cob -> Jacob
-ra-loum -> raloum  
-dmier-ri -> dmierri  
-Ju-dea -> Judea 
-Je-rusalem -> Jerusalem
-mis-sing -> missing 
-A-lak -> Alak 
-pas-tæ -> pattæ
-vavou-las -> vavoulas 
-Je-den -> Joden 
-Filip-pus -> Filippus 
-R ab-bi -> Rabbi 
-ra -> râ
-Jesuss -> Jesus  
-R a-ma -> Rama 
-yul-lum -> vullum 
-vul-um -> vullum
-te-nitou -> teni tou
-KamamangKk'atta -> Kamamang k'atta
-Ka-pernaum -> Kapernaum 
-Pæhta-tutæu -> Pæhtatæutæu   
-at-ta -> atta 
-Ta-touhko -> Tatouhko
-Fari-seen -> Fariseen 
-va-rau -> varau
-A-braham -> Abraham
-ty- ni -> tyni 
-Samari-taen -> Samaritaen
-Abra-ham -> Abraham 
-ta-ma -> tama 
-Jeru-salem -> Jerusalem
-Betha-nia -> Bethania
-Mar-tha -> Martha
-La-zarus -> Lazarus
-Pahtatæu-tæu -> Pahtatæutæu
-Ma-ria -> Maria 
-Ka-jafas -> Kajafas
-Esra-im -> Esraim
-Nar-dus -> Nardus  
-kaasfi -> ka assi 
-Hiad-doudoung -> Hiaddoudoung
-Hiaddou-doung -> Hiaddou-doung
-Si-mon -> Simon
-Pe-trus -> Petrus 
-Iska-riot -> Iskariot
-Ju-das -> Judas 
-Asfsi -> Assi 
-hmas -> hmaä
-mak-ka -> makka 
-Ra-man -> Raman
-Mei-rang -> Meirang
-Ra-ma -> Rama 
-afssi -> assi 
-ma-dallia -> madallia 
-myh-ka -> myhka 
-ka-væ -> kavæ
-Pahta-tæutæu -> Pahtatæutæu
-Na-zareth -> Nazareth 
-Pahtatæu-tæuugh -> Pahtatæutæuugh
-Da-dyllo -> Dadyllo
-Pah-tatæutæu -> Pahtatæutæu 
-Annatani -> Annata ni
-ym-hou -> ymhou
-Pi-latus -> Pilatus
-ba-vau -> bavau
-Barra-bas -> Barrabas  
-Pila-tus -> Pilatus 
-Tatouh-ko -> Tatouhko 
-He-breen -> Hebreen  
-Ma-gdalena -> Magdalena
-Pæhtatæu-tæu -> Pæhtatæutæu 
-Pah-tateutæu -> Pahtateutæu 
-Pahta-tæu -> Pahta-tæu
-R ab-bouni -> Rabbouni
-Ra-ram -> Raram 
-R a-ram -> Raram  
-Ph-tatæutu -> Pæh-tatæutæu
-An-nata -> Annata
+This preserves the rights recorded when the corpus was published. The John scan's Royal Danish Library cover marks the work public domain; the retained [CUV copyright page](CodeAndDocs/reference_translations/cmn-cu89t_usfm/copr.htm) declares the same for that edition. The KJV extract is retained with its source identity. Source scans stay private and are not build inputs. See the central [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md) for FormosanBank's existing use terms.
 
-After these changes were made by hand, we wrote code to accomplish the same thing automatically. `fix_linebreak_hyphens.py` will remove a hyphen if at least two examples of the hyphenless Siraya word were found elsewhere in the text prior to any changes. It outputs two useful log files:
+The existing public-domain designation covers the historical Gospels and retained KJV/CUV reference editions. See the corpus README for rights provenance and the central [Terms of Use](https://formosanbank.github.io/FormosanBank/additional-resources/terms-of-use/).
 
-* `hyphen_removals.csv` 
+## Notes and caveats
 
-This was set to be quite conservative and only apply if the version with the hyphen was infrequent and the alternative was very frequent. However, this does sometimes result in removing hyphens that were not the result of a line break. This is perhaps desirable behavior. To be safe, this is applied only to the "standard" tier.
+- Dutch OCR remains incomplete and error-prone, especially Matthew. The published instruction to retain it for now but not use it remains in effect. Nine verse readings are absent: John 11:6; Matthew 5:19, 9:26, 10:10, 10:41, 11:7, 11:29, 11:30 and 16:11. Character confusions such as b/v and f/long-s remain; this update repairs known alignment regressions and does not claim a complete Dutch transcription review. The Dutch transcription remains incomplete and error-prone, particularly in Matthew. It is retained under the existing decision but should not be used without further correction; b/v confusion is common. Nine Dutch readings are missing.
+- John 1 divides modern verse 38 into printed verses 38 and 39. English and Chinese are split at that boundary, with later references offset through the end of the chapter.
+- Four verses absent from this CUV edition's main text have no Chinese translation: Matthew 18:11 and 23:14, John 5:4 and 7:53. Available source footnote readings are retained as notes.
+- Siraya orthography is **not checked** under POL-058 because its standard is blank. Historical accents, meaningful hyphens, authorial parentheses and the combining `æ̈` glyph are retained. John 12:28 and 12:33 preserve unbalanced punctuation visible in the scan. PHON and W/M gloss tiers are unavailable. Siraya has no designated modern standard, so orthography comparison is **not checked** under POL-058. The copied standard tier retains the approved fixed line-break corrections; PHON is absent.
+- Historical spelling and rare combining-diaeresis letters remain, including the restored John 5:11 glyph. John 12:28 and 12:33 retain punctuation imbalances visible in the scan.
+- The 2026-08 re-transcription is superseded by the preserved published corrections plus the scoped repairs documented here. Its old whole-output hashes are not a source-fidelity verdict for this build.
 
-### Reproducing the `standard` tier
+## Reproduction and processing
 
-`CodeAndDocs/regenerate_standard_tier.py` rebuilds the `standard` FORM of every
-sentence from its `original` FORM, applying **only** the documented line-break
-removals in `CodeAndDocs/hyphen_removals.csv` (158 distinct forms / 199
-occurrences). All other hyphens — the morpheme/orthographic ones — are kept, and
-the standard tier inherits the original tier's punctuation (e.g. editorial
-`(...)`, single `-`). Run it from the corpus root:
+### How to reproduce
+
+From a FormosanBank checkout, using its Python environment:
 
 ```bash
-python CodeAndDocs/regenerate_standard_tier.py
+bash Corpora/Siraya_Gospels/CodeAndDocs/generate_xml.sh
 ```
 
-The fixed CSV is applied (rather than re-deriving the removals by frequency)
-because later QC edits to the `original` tier shift token frequencies and would
-otherwise change which hyphens are treated as line breaks.
+From this private repository, set `FORMOSANBANK_ROOT` to the current shared checkout and `PYTHON` to its Python executable, then run:
+
+```bash
+bash CodeAndDocs/generate_xml.sh
+```
+
+The FormosanBank commit the published XML was last built with is recorded in
+[CodeAndDocs/provenance.json](CodeAndDocs/provenance.json) (POL-052; provenance
+only, a rebuild always runs the current tools).
+
+The build restores the committed [published transcription baseline](CodeAndDocs/baseline), imports the retained reference translations, applies [recorded corrections](CodeAndDocs/manual_edits.xml), cleans with the shared tools, copies original to standard, and applies the fixed Siraya line-break corrections. It needs no source download, ignored PDF, private second clone or historical tools checkout. It requires no private scan or old OCR environment. All final XML is under `XML/Siraya/`. XML and reproduction inputs are in `Corpora/Siraya_Gospels`. `QC_OUTPUT_DIR` can direct temporary warnings outside the repository.
+
+The build starts from the preserved published transcription, imports the retained KJV/CUV editions, applies recorded corrections, then runs shared cleaning and standardization followed by the fixed Siraya hyphen mappings. [Reproduction instructions](#how-to-reproduce) link the actual [tool provenance](CodeAndDocs/provenance.json).
+
+[Source manifest](CodeAndDocs/source_manifest.json) records the baseline commit, scan identities and all 49 chapter page ranges. The original transcription is non-regenerable under POL-035: hand-corrected XML is the baseline, not a fresh OCR pass. [Provenance](CodeAndDocs/provenance.json) records the actual shared-tool commit used to build the output; it does not select or restrict the tools.
+
+**POL-047 deviation:** Siraya has no defined standard or supported source phonology profile, so PHON is omitted. After shared `standardize.py --copy`, the corpus-specific `regenerate_standard_tier.py` applies the fixed `hyphen_removals.csv` decisions merged by Joshua on 2026-08-03. This retains the documented 158 line-break mappings without removing other hyphens. The copied standard tier does not assert a modern standardized spelling system. Reproduction starts from fresh input each time; validation is separate.
+
+[Recorded repairs](CodeAndDocs/corrections.md) restore the June 8 Dutch corrections and repair scan-confirmed OCR errors. Twenty-five following-chapter headings are removed from verse FORM without removing verses. The CUV parser retains poetry and paragraph continuations, with footnotes and section references in translation notes. The [earlier lexical correction history](CodeAndDocs/transcription_history.md) and fixed standard-tier mappings remain preserved.
+
+### What each step does
+
+`CodeAndDocs/generate_xml.sh` runs with `set -euo pipefail`, so any failing step stops the build. It works in a fresh staging folder `CodeAndDocs/.build.XXXXXX/` (deleted on exit). `FORMOSANBANK_ROOT` (default: the checkout three levels above `CodeAndDocs/`) chooses the shared tools, `PYTHON` (default `python3`) the interpreter, and `QC_OUTPUT_DIR` (default: a new temporary folder) where cleaning warnings go. Python needs `lxml` (corpus `requirements.txt`) plus FormosanBank's own requirements. The steps, in order:
+
+1. **`CodeAndDocs/generate_xml.py --output-dir <stage>/XML`** reads the 49 baseline files under `CodeAndDocs/baseline/Siraya/{John,Matthew}/chapter*.xml`, the reference-translation `manifest.json`, the KJV extract `eng-kjv-nltk-gutenberg.tsv` and the two CUV USFM books (`70-MATcmn-cu89t.usfm`, `73-JHNcmn-cu89t.usfm`). For each file it:
+   - deletes every `FORM kindOf="standard"` and every `PHON` (both are rebuilt or omitted later);
+   - for each `S`, reads the verse number from its `verse<N>` id; in John 1, verses 39 and later are looked up as verse N−1 (the printed split of modern 1:38);
+   - fills each existing `TRANSL xml:lang="eng"` with the KJV verse text and each existing `TRANSL xml:lang="zho"` with the CUV verse text, setting a `notes` attribute when the CUV verse has footnotes or section cross-references (joined with ` / `). It only fills `TRANSL` elements the baseline already has; it creates none. The Dutch `TRANSL xml:lang="nld"` and the original `FORM` are left as the baseline has them;
+   - stops with an error if one of the four CUV-omitted verses (listed in the manifest) has a Chinese `TRANSL`;
+   - for John 1:38 and 1:39, splits the English and Chinese verse at the manifest's marker (`What seek ye?` / `「你們要甚麼？」`): verse 38 gets the text before it, verse 39 the marker and what follows, and the build stops if the marker is not found exactly once;
+   - writes the file to the stage, indented with four spaces.
+
+   The CUV reader (`CodeAndDocs/reference_translations.py`) joins a verse's continuation lines (`\q1`, `\m`, `\p`); drops `\s1` section headings; turns each `\r` line into a note `Parallel passages: …` on the first verse of the section; moves `\f … \f*` footnotes into notes; strips inline `\pn`, `\add`, `\fv`, `\ft` markers; and stops on any other USFM marker or duplicate verse. The KJV reader stops on a duplicate verse.
+
+2. **`QC/cleaning/apply_manual_edits.py --corpora_path <stage>/XML --manual_file CodeAndDocs/manual_edits.xml`** replaces the recorded sentences with their corrected versions: 77 complete `S` records across 34 files (described in [corrections.md](CodeAndDocs/corrections.md)). It regenerates the human-readable changelog `CodeAndDocs/manual_edits.md`.
+
+3. **`QC/cleaning/clean_xml.py --corpora_path <stage>/XML --warnings_dir <QC_OUTPUT_DIR>`** normalizes Unicode and HTML entities in place and writes `cleaner_warnings.csv` to the warnings folder, outside the published XML. Its apostrophe-as-quotation correction runs only for languages with a `QC/validation/reference/<Language>/attestation.txt`; there is no Siraya folder there, so it does not apply to this corpus (read from the folder listing; not run). Its quote-correction log path resolves inside the staging folder, which is deleted.
+
+4. **`QC/utilities/standardize.py --corpora_path <stage>/XML --copy`** creates a `FORM kindOf="standard"` in every `S` as an exact copy of the original `FORM` (pure duplication, no spelling change).
+
+5. **`CodeAndDocs/regenerate_standard_tier.py --xml-dir <stage>/XML/Siraya`** rewrites every standard `FORM` as its original `FORM` with the line-break hyphens listed in `CodeAndDocs/hyphen_removals.csv` removed (199 rows, 158 distinct hyphenated forms). Words are matched case-insensitively as runs of Latin letters, apostrophes and hyphens; a match is left alone when its hyphen touches an editorial bracket (`word-(`, `)-word`, `]-word`); an initial capital is kept. All other hyphens stay. It prints how many standard FORMs it rewrote.
+
+6. **`rsync -a --delete <stage>/XML/ Corpora/Siraya_Gospels/XML/`** replaces the published XML with the staged build; files the build did not produce are deleted.
+
+7. **Provenance.** If the FormosanBank checkout has a `.git`, its `HEAD` commit is written to [CodeAndDocs/provenance.json](CodeAndDocs/provenance.json); otherwise the existing file must already be there or the build stops.
+
+8. The script prints the warnings folder path.
+
+Not run by `generate_xml.sh`: `CodeAndDocs/test_source_alignment.py` (a separate check) and the retired notebooks in `CodeAndDocs/legacy_notebooks/`.

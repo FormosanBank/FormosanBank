@@ -2,17 +2,22 @@
 # generate_xml.sh — THE entry point for Corpora/WakelinTexts (POL-047).
 #
 #   1. generate_xml.py         corpus-local: builds the original tier from the
-#                              pre-correction snapshot and resolves the
+#                              pre-correction snapshot, resolves the
 #                              source's slash alternations per
-#                              alternative_decisions.json
+#                              alternative_decisions.json, and applies
+#                              print_corrections.json
 #   2. clean_xml.py            shared original-tier canonicalization
 #                              (typographic quotes/dashes/tildes, null glyphs,
 #                              entities)
-#   3. resolve_parentheses.py  corpus-local: resolves the article's ( ) in the
-#                              original tier, before any derived tier is built
+#   3. resolve_parentheses.py  corpus-local, --tier original: moves the
+#                              uncertainty marker (unctn) to @notes; the
+#                              article's ( ) stay in the original tier
 #   4. standardize.py          builds the standard tier
 #                              (Yami_Wakelin_113.tsv)
-#   5. apply_r_caron_words.py  corpus-local: the five 'r-caron' words
+#   5a. resolve_parentheses.py corpus-local, --tier standard: removes the
+#                              article's ( ) from the standard tier, keeping
+#                              the letters (maintainer, 2026-10-15)
+#   5b. apply_r_caron_words.py corpus-local: the five 'r-caron' words
 #   6. add_phonology.py        PHON for both tiers (Wakelin profile for
 #                              original, Ortho113 for standard)
 #
@@ -25,10 +30,13 @@
 # POL-047 deviation: two corpus-local steps are interleaved with the shared
 # ones, and one of them sits in a position POL-047 does not contemplate.
 #
-#   - Local step 3 (resolve_parentheses.py) runs between clean and standardize,
-#     so every derived tier is built from an original that carries no
-#     parenthesis (POL-028). See ../README.md, pipeline step 3.
-#   - Local step 5 (apply_r_caron_words.py) runs BETWEEN POL-047 steps 4 and 5
+#   - Local step 3 (resolve_parentheses.py --tier original) runs between clean
+#     and standardize, so the uncertainty marker reaches neither tier.
+#   - Local step 5a (resolve_parentheses.py --tier standard) runs after
+#     standardize: the article's ( ) mark a probable discrepancy, kept in the
+#     original tier and removed from the standard one (POL-028 as amended
+#     2026-10-15). See ../README.md, pipeline step 3.
+#   - Local step 5b (apply_r_caron_words.py) runs BETWEEN POL-047 steps 4 and 5
 #     — before add_phonology.py, where POL-047 says a corpus-local corrections
 #     script "belongs after step 5". It must run before, because PHON is
 #     generated from the standard tier and has to reflect the corrected words.
@@ -89,8 +97,8 @@ rm -rf "$XML"
 step "2. clean_xml"
 "$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$XML"
 
-step "3. resolve_parentheses (original tier; standardize derives the rest)"
-"$PY" "$CODEDOCS/resolve_parentheses.py" --xml-dir "$XML"
+step "3. resolve_parentheses --tier original (uncertainty marker to @notes; the article's ( ) kept)"
+"$PY" "$CODEDOCS/resolve_parentheses.py" --xml-dir "$XML" --tier original
 
 step "4. standardize (Wakelin -> Ortho113)"
 "$PY" "$BANK/QC/utilities/standardize.py" \
@@ -98,7 +106,10 @@ step "4. standardize (Wakelin -> Ortho113)"
   --tsv_path "$BANK/Orthographies/ConversionTables/Yami_Wakelin_113.tsv" \
   --segmented-without-m-tier
 
-step "5. apply_r_caron_words (standard tier only)"
+step "5a. resolve_parentheses --tier standard (the article's ( ) removed, letters kept)"
+"$PY" "$CODEDOCS/resolve_parentheses.py" --xml-dir "$XML" --tier standard
+
+step "5b. apply_r_caron_words (standard tier only)"
 "$PY" "$CODEDOCS/apply_r_caron_words.py" \
   --xml-dir "$XML" --words "$CODEDOCS/r_caron_words.tsv"
 

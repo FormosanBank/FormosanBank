@@ -2,7 +2,6 @@
 
 Consumed by:
   - QC/validation/rules/hard.py (V036)
-  - QC/utilities/fix_dialects.py
   - QC/validation/validate_dialect.py
   - QC/utilities/add_phonology.py (single-vs-multi-dialect column resolution)
   - QC/utilities/standardize.py (single-vs-multi-dialect column resolution)
@@ -102,7 +101,8 @@ def is_multi_dialect_language(language: str) -> bool:
 
 
 def default_dialect_for_lang_code(lang_code: str) -> str:
-    """Return the value fix_dialects.py should write for a TEXT missing @dialect.
+    """Return the default @dialect for a TEXT that lacks one (was written by the
+    retired fix_dialects.py; kept for callers that need the same resolution).
 
     Single-dialect languages: the language name itself (e.g., "Tsou").
     Multi-dialect languages: "unknown" (caller must identify it manually).

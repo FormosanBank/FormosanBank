@@ -109,7 +109,7 @@ S ids. No `*(X)` obligatory instances exist in this corpus. **No action.**
 ### 6. CLEAN outcome / latent hazard — Song-Kanakanavu-Grammar strips all parens blindly
 
 `raw_data/official_text.jsonl` p.134 has the same two Kanakanavu `(*kara)`
-examples as NTU's grammar section (both derive from Song 2018): 11-2c
+examples as NTU's grammar section (both derive from Sung 2018): 11-2c
 `nikʉmʉʉn kara Pani (*kara) mamíriki?` and 11-2d
 `'esi kara marivura'ʉ(kara)'uva (*kara) nguain tamna manu?`. Published as
 S0228/S0229 with the grammatical *kara* placement only, and the `source=`

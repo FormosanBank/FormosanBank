@@ -121,7 +121,7 @@ def make_root(pseud, pseud_stem, audio_under, dialect):
     root.set("xml:lang", "pwn")
     root.set("source", f"NTU Paiwan Data, Participant {pseud}, file {pseud_stem}")
     root.set("audio", audio_under)
-    root.set("copyright", "CC-BY")
+    root.set("copyright", "CC BY 4.0")
     root.set("citation", CITATION)
     root.set("BibTeX_citation", BIBTEX)
     root.set("dialect", dialect)

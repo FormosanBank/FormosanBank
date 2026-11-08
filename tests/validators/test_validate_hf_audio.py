@@ -168,7 +168,38 @@ def test_local_paiwan_contract_includes_sources_and_generated_clips(
     }
 
 
-def test_ilrdf_rukai_uses_manifested_batch_routes(tmp_path, monkeypatch):
+def test_name_shard_is_first_hex_digit_of_sha256_of_utf8_name():
+    # Literal values, computed independently with
+    # hashlib.sha256(name.encode("utf-8")).hexdigest()[0].
+    assert parity.name_shard("first.mp3") == "6"
+    assert parity.name_shard("second.mp3") == "d"
+    assert parity.name_shard("Yami_1.mp3") == "b"
+    assert parity.name_shard("\u0289_test.mp3") == "e"
+
+
+def test_ilrdf_sharded_languages_use_name_shard_folders(tmp_path, monkeypatch):
+    monkeypatch.setattr(parity, "REPO_ROOT", tmp_path)
+    _write_xml(
+        tmp_path / "Corpora/ILRDF/XML/Rukai/Rukai.xml",
+        ["first.mp3", "second.mp3"],
+    )
+    _write_xml(tmp_path / "Corpora/ILRDF/XML/Yami/Yami.xml", ["Yami_1.mp3"])
+    _write_xml(tmp_path / "Corpora/ILRDF/XML/Amis/Amis.xml", ["Amis_1.mp3"])
+    dataset = {
+        "path_mode": "ilrdf",
+        "xml_root": "Corpora/ILRDF/XML",
+        "sharded_languages": ["Rukai", "Yami"],
+    }
+
+    assert parity.expected_remote_paths(dataset) == {
+        "Rukai/Rukai/6/first.mp3",
+        "Rukai/Rukai/d/second.mp3",
+        "Yami/Yami/b/Yami_1.mp3",
+        "Amis/Amis/Amis_1.mp3",
+    }
+
+
+def test_ilrdf_rukai_has_no_batch_folders_any_more(tmp_path, monkeypatch):
     monkeypatch.setattr(parity, "REPO_ROOT", tmp_path)
     _write_xml(
         tmp_path / "Corpora/ILRDF/XML/Rukai/Rukai.xml",
@@ -181,9 +212,33 @@ def test_ilrdf_rukai_uses_manifested_batch_routes(tmp_path, monkeypatch):
     }
 
     assert parity.expected_remote_paths(dataset) == {
-        "Rukai/Rukai/batch_1/first.mp3",
-        "Rukai/Rukai/batch_2/second.mp3",
+        "Rukai/Rukai/first.mp3",
+        "Rukai/Rukai/second.mp3",
     }
+
+
+@pytest.mark.parametrize("value", ["Rukai", [1], ["Rukai", ""]])
+def test_contract_rejects_malformed_sharded_languages(tmp_path, monkeypatch, value):
+    monkeypatch.setattr(parity, "REPO_ROOT", tmp_path)
+    manifest = _write_contract(tmp_path)
+    document = json.loads(manifest.read_text(encoding="utf-8"))
+    document["datasets"][0]["sharded_languages"] = value
+    manifest.write_text(json.dumps(document), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="sharded_languages"):
+        parity.load_contract(manifest)
+
+
+def test_contract_accepts_sharded_languages(tmp_path, monkeypatch):
+    monkeypatch.setattr(parity, "REPO_ROOT", tmp_path)
+    manifest = _write_contract(tmp_path)
+    document = json.loads(manifest.read_text(encoding="utf-8"))
+    document["datasets"][0]["sharded_languages"] = ["Bunun", "Rukai", "Yami"]
+    manifest.write_text(json.dumps(document), encoding="utf-8")
+
+    loaded, _, _ = parity.load_contract(manifest)
+
+    assert loaded["datasets"][0]["sharded_languages"] == ["Bunun", "Rukai", "Yami"]
 
 
 def test_contract_requires_pinned_commit_sha(tmp_path, monkeypatch):
@@ -467,3 +522,30 @@ def test_a_404_is_not_retried(monkeypatch):
     with pytest.raises(Exception):
         parity.validate_hf_inventory(manifest, permissions, api=api)
     assert api.calls["list_datasets"] == 1  # tried once, not retried
+
+
+def test_git_listing_returns_non_ascii_names_unquoted(tmp_path, monkeypatch):
+    # A real git repository, listed by the real git_repo_files: git quotes a
+    # non-ASCII name unless told otherwise, and a quoted name matches nothing.
+    import subprocess
+
+    source = tmp_path / "Test"
+    names = ["Yami/Yami/0/Yami_1003_漁人.mp3", "Amis/Amis/Amis_1.mp3"]
+    for name in names:
+        (source / name).parent.mkdir(parents=True, exist_ok=True)
+        (source / name).write_bytes(b"audio")
+
+    def git(*args):
+        return subprocess.run(
+            ["git", "-c", "user.name=t", "-c", "user.email=t@example.org",
+             "-c", "commit.gpgsign=false", *args],
+            cwd=source, check=True, capture_output=True, text=True,
+        ).stdout.strip()
+
+    git("init", "--quiet")
+    git("add", ".")
+    git("commit", "--quiet", "-m", "fixture")
+    revision = git("rev-parse", "HEAD")
+    monkeypatch.setattr(parity, "HF_DATASET_GIT_URL", f"file://{tmp_path}/{{repo_id}}")
+
+    assert parity.git_repo_files("Test", revision) == set(names)

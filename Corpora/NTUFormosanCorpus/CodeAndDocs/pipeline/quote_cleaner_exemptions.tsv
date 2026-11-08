@@ -1,0 +1,5 @@
+# Original-tier text the shared quote cleaner (QC/cleaning/clean_xml.py, #262) mistakes for a quotation, put back right
+# after clean_xml runs (ruling 2026-10-16: "fold both inside NTU's build"). 'cleaned' must occur exactly once in the
+# sentence's original FORM after the cleaner, or the build stops; 'restored' is the source's text.
+language	s_id	cleaned	restored	evidence
+Amis	Amis_Nr-frog_cinhua_S_60	tuna "pung, sa'an ku falucu' nira a miceli",	tuna 'pung, sa'an ku falucu' nira a miceli',	source units 60-61: ‘pung glossed hole (also S_58, S_68 as 'pung); mi-celi’ glossed AF-call; the ' are glottal letters, not quotation marks

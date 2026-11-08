@@ -115,3 +115,41 @@ def test_conversion_table_reference_warns(tmp_path):
     assert proc.returncode == 0
     assert "P006" in proc.stdout
     assert "Puyuma_Cauquelin_113.tsv" in proc.stdout
+
+
+# ---------------------------------------------------------------------------
+# 2026-10-17 (skills review E3): P004 and P006 false negatives/positives
+# ---------------------------------------------------------------------------
+
+def test_hash_inside_a_url_is_a_link_not_a_pin(tmp_path):
+    """PR #170 linked an upstream data commit, PR #163 its own history; neither pins FormosanBank."""
+    corpus = _mini_corpus(tmp_path)
+    (corpus / "README.md").write_text(
+        "Source data: the upstream commit at "
+        "https://github.com/other/data/commit/0123456789abcdef0123456789abcdef01234567 .\n"
+        "History: [the reproduction run](https://github.com/FormosanBank/FormosanBank/commit/"
+        "fedcba9876543210fedcba9876543210fedcba98).\n",
+        encoding="utf-8")
+    proc = _run(corpus)
+    assert "P004" not in proc.stdout, proc.stdout
+
+
+def test_pin_outside_a_url_is_still_checked(tmp_path):
+    corpus = _mini_corpus(tmp_path)
+    (corpus / "README.md").write_text(
+        "Built against FormosanBank commit 0123456789abcdef0123456789abcdef01234567.\n",
+        encoding="utf-8")
+    proc = _run(corpus)
+    assert "P004" in proc.stdout and "not reachable" in proc.stdout, proc.stdout
+
+
+def test_corpus_local_conversion_table_warns_too(tmp_path):
+    """PRs #153 and #150 standardized through CodeAndDocs/<table>.tsv and got 0 WARN."""
+    corpus = _mini_corpus(tmp_path)
+    (corpus / "CodeAndDocs" / "generate_xml.sh").write_text(
+        'python QC/utilities/standardize.py --tsv_path "$HERE/CodeAndDocs/Amis_local_113.tsv"\n',
+        encoding="utf-8")
+    proc = _run(corpus)
+    assert proc.returncode == 0
+    assert "P006" in proc.stdout
+    assert "Amis_local_113.tsv" in proc.stdout and "corpus-local" in proc.stdout, proc.stdout

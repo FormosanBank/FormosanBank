@@ -185,7 +185,7 @@ def create_xml(articles_path, xml_path, lang_code, lang, citations_to_remove):
             root.set("id", f"Wiki_{dir}_{title}")
             root.set("xml:lang", lang_code)
             root.set("source", f"{lang} Wikipedia, article: {title}")
-            root.set("copyright", "CC BY-SA")
+            root.set("copyright", "CC BY-SA 4.0")
             root.set("citation", f"{title}. ({date}). In Wikipedia [{lang}]. https://{lang_code}.wikipedia.org/wiki/{title}")
             root.set("BibTeX_citation", f"@misc{{Wiki_{lang_code}_{title}, title = {title}, year = {today.year}, month = {month}, day = {today.day}, note = {{In Wikipedia [{lang}]}}, url = {{https://{lang_code}.wikipedia.org/wiki/{title}}} }}")
 

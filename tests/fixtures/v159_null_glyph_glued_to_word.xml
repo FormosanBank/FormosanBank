@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fixture for V159 (SOFT): a null-morpheme glyph glued to a word in the
+     S-standard tier. S_1: canonical ∅ glued (the NTU source pattern, which
+     the standard tier should have dropped). S_2: Ø at a word edge (null glyph
+     or a Scandinavian capital — a human decides). S_3: word-internal ø in a
+     Danish name, which must NOT be flagged (it is a letter). S_4: a null that
+     stands alone between separators, which clean_xml already canonicalises
+     and V159 leaves to it. -->
+<TEXT id="v159" citation="c" BibTeX_citation="b" copyright="CC BY-NC 4.0" xml:lang="ami" dialect="Coastal">
+  <S id="S_1">
+    <FORM kindOf="original">nikoru∅maku</FORM>
+    <FORM kindOf="standard">nikoru∅maku</FORM>
+  </S>
+  <S id="S_2">
+    <FORM kindOf="original">Østerskær a niyaro'</FORM>
+    <FORM kindOf="standard">Østerskær a niyaro'</FORM>
+  </S>
+  <S id="S_3">
+    <FORM kindOf="original">o Grønland ko ngangan</FORM>
+    <FORM kindOf="standard">o Grønland ko ngangan</FORM>
+  </S>
+  <S id="S_4">
+    <FORM kindOf="original">ma-∅-kaen</FORM>
+    <FORM kindOf="standard">ma-∅-kaen</FORM>
+  </S>
+</TEXT>

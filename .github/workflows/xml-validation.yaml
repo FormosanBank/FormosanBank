@@ -73,9 +73,25 @@ jobs:
           # baseline for. Under :(glob), '*' stops at '/' and '**' does not,
           # so only the canonical Corpora/<name>/XML/ tree matches, which is
           # what the comment above always claimed.
-          git diff --name-only --diff-filter=AM \
+          #
+          # core.quotePath=false is load-bearing too. By default git prints a
+          # path with non-ASCII bytes C-quoted ("Corpora/.../Cond\303\251.xml"),
+          # a name no file has. The validators then read 0 files and write an
+          # empty findings CSV, so the step below passed on files it never
+          # opened, and validate_glosses wrote no CSV at all, failing stage 2.
+          git -c core.quotePath=false diff --name-only --diff-filter=AM \
             "origin/${{ github.base_ref }}...HEAD" \
             -- ':(glob)Corpora/*/XML/**/*.xml' > changed_xml.txt
+          # Every listed path must be a file; one that is not would be checked
+          # vacuously, so stop here instead.
+          missing=0
+          while IFS= read -r file; do
+            if [ ! -f "$file" ]; then
+              echo "::error::Listed as changed but not a file: $file"
+              missing=1
+            fi
+          done < changed_xml.txt
+          [ "$missing" -eq 0 ] || exit 1
           count=$(wc -l < changed_xml.txt)
           echo "count=$count" >> "$GITHUB_OUTPUT"
           echo "Changed canonical XML files: $count"
@@ -83,6 +99,15 @@ jobs:
             echo "Files:"
             cat changed_xml.txt
           fi
+      - name: A changed corpus may not shelter on a pending list
+        if: steps.changed.outputs.count != '0'
+        run: |
+          # The four root-level pending lists skip legacy corpora in pytest.
+          # They only shrink, and a PR that rebuilds a corpus is when its line
+          # goes; without this step a re-port could leave its corpus listed and
+          # never be gated by those tests.
+          python QC/validation/check_pending_lists.py --changed changed_xml.txt
+
       - name: Block newly introduced hard XML and text findings
         if: steps.changed.outputs.count != '0'
         run: |

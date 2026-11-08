@@ -59,3 +59,17 @@ def test_extract_standard_text_ignores_a_variant_only_sentence(tmp_path):
         "</TEXT>"
     )
     assert extract_standard_text(root) == ""
+
+def test_codeanddocs_snapshot_is_not_a_training_document(tmp_path):
+    _write(tmp_path, "C/XML/a.xml", _xml("ami", "Coastal", "fafa"))
+    _write(tmp_path, "C/CodeAndDocs/pre_correction_snapshot/XML/a.xml",
+           _xml("ami", "Coastal", "fafa"))
+    docs, _ = iter_labeled_documents(tmp_path, "ami")
+    assert [str(d.path.relative_to(tmp_path)) for d in docs] == ["C/XML/a.xml"]
+
+def test_a_root_inside_codeanddocs_is_still_read(tmp_path):
+    # builds that stage into CodeAndDocs/ and point the tool there must still work
+    stage = tmp_path / "C" / "CodeAndDocs" / "Final_XML"
+    _write(stage, "a.xml", _xml("ami", "Coastal", "fafa"))
+    docs, _ = iter_labeled_documents(stage, "ami")
+    assert len(docs) == 1

@@ -84,3 +84,39 @@ def test_pathspec_selects_published_xml_and_not_a_snapshot(tmp_path):
         "a POL-035 snapshot is a build input and must not be validated as "
         "published data"
     )
+
+
+# By default git C-quotes a path with non-ASCII bytes
+# ("Corpora/.../Cond\303\251.xml"), a name no file has. The validators read 0
+# files from it and xml-validation's stage 1 passed 211 Wikipedia files it never
+# opened; validate_glosses wrote no CSV and stage 2 crashed.
+QUOTE_PATH_WORKFLOWS = WORKFLOWS + ("hf-audio-parity.yaml",)
+NON_ASCII = "Corpora/Example/XML/Amis/Alpha_Condé.xml"
+
+
+@pytest.mark.parametrize("name", QUOTE_PATH_WORKFLOWS)
+def test_workflow_lists_changed_paths_unquoted(name):
+    listings = [line for line in _workflow(name).splitlines()
+                if "--name-only" in line and not line.lstrip().startswith("#")]
+    assert listings and all("-c core.quotePath=false" in l for l in listings), (
+        f"{name} must list changed paths with git -c core.quotePath=false"
+    )
+
+
+def test_non_ascii_path_is_listed_as_its_real_name(tmp_path):
+    run = lambda *a: subprocess.run(  # noqa: E731
+        a, cwd=tmp_path, capture_output=True, text=True, check=True)
+    run("git", "init", "-q")
+    run("git", "config", "user.email", "t@t")
+    run("git", "config", "user.name", "t")
+    target = tmp_path / NON_ASCII
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text("<TEXT/>", encoding="utf-8")
+    run("git", "add", "-A")
+    run("git", "commit", "-qm", "one")
+
+    listed = run("git", "-c", "core.quotePath=false", "show", "--name-only",
+                 "--format=", "HEAD", "--", ":(glob)Corpora/*/XML/**/*.xml"
+                 ).stdout.splitlines()
+    assert listed == [NON_ASCII]
+    assert (tmp_path / listed[0]).is_file()

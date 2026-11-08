@@ -20,6 +20,7 @@ Rules:
 - V065 SOFT: every W element should have at least one TRANSL child.
 - V066 HARD: '=' (clitic boundary) in a W FORM must appear in at least one child M FORM.
 - V067 HARD: '<' or '>' in an M FORM is forbidden; infix Ms must use '-X-' notation.
+- V164 SOFT: a W FORM made only of punctuation or symbols is not a word.
 
 V062/V064/V065 form the **gloss-presence family**: gloss coverage and
 gloss notation are *reported*, never fatal. Some corpora legitimately
@@ -28,6 +29,7 @@ prose rather than Leipzig angle brackets; both are worth surfacing in
 case they are unintended, but neither can block publication.
 """
 import re
+import unicodedata
 from collections import Counter
 from pathlib import Path
 
@@ -35,11 +37,14 @@ from lxml import etree
 
 from QC.validation._corpus_index import CorpusIndex
 from QC.validation._finding import Finding, Severity
+from QC.validation.rules._form_text import form_text as whole_form_text
+from QC.validation.rules._form_text import form_words_text
 from QC.validation.rules._reconstruct import (
     DEFAULT_SIMILARITY_THRESHOLD,
     letter_skeleton,
     similarity,
 )
+from QC.validation.rules._gloss_text import gloss_text
 from QC.xml_forms import find_base_form
 
 
@@ -72,11 +77,11 @@ def _extract_s_direct_text(s_elem: etree._Element) -> str:
     CSV output.
     """
     original = find_base_form(s_elem, "original")
-    if original is not None and original.text:
-        return original.text.strip()
+    if original is not None and form_words_text(original).strip():
+        return form_words_text(original).strip()
     any_form = find_base_form(s_elem)
-    if any_form is not None and any_form.text:
-        return any_form.text.strip()
+    if any_form is not None and form_words_text(any_form).strip():
+        return form_words_text(any_form).strip()
     return (s_elem.text or "").strip()
 
 
@@ -128,13 +133,17 @@ def _w_form_with_inline_infixes_marked(form_text: str, w_elem: etree._Element) -
 
 
 def _get_w_form(w_elem: etree._Element) -> str:
-    """Return W's preferred FORM text. Original > any FORM > ''."""
+    """Return W's preferred FORM text. Original > any FORM > ''.
+
+    Each <UNCLEAR/> reads as one "?" piece, so V061 counts an unclear
+    morpheme (``<UNCLEAR/>=maku`` -> 2) as the M tier does.
+    """
     original = find_base_form(w_elem, "original")
-    if original is not None and original.text:
-        return original.text.strip()
+    if original is not None and form_words_text(original).strip():
+        return form_words_text(original).strip()
     any_form = find_base_form(w_elem)
-    if any_form is not None and any_form.text:
-        return any_form.text.strip()
+    if any_form is not None and form_words_text(any_form).strip():
+        return form_words_text(any_form).strip()
     return ''
 
 
@@ -343,7 +352,7 @@ def v063_W_FORM_retains_segmentation(
         s_original = find_base_form(s, "original")
         if s_original is None:
             continue
-        s_count = _count_segmentation_chars(s_original.text or "")
+        s_count = _count_segmentation_chars(whole_form_text(s_original))
         if s_count <= 3:
             continue
         ws = [child for child in s if child.tag == "W"]
@@ -355,7 +364,7 @@ def v063_W_FORM_retains_segmentation(
         for w in ws:
             for form in w.findall('./FORM'):
                 kind = form.get("kindOf")
-                marker_count = _count_segmentation_chars(form.text or "")
+                marker_count = _count_segmentation_chars(whole_form_text(form))
                 if kind == "original":
                     original_sum += marker_count
                 elif kind == "standard":
@@ -441,7 +450,7 @@ def v062_infix_M_needs_angle_gloss(
         form_text = None
         for child in m:
             if child.tag == "FORM":
-                form_text = (child.text or "").strip()
+                form_text = whole_form_text(child).strip()
                 break
         if form_text is None or not _INFIX_PATTERN.match(form_text):
             continue
@@ -451,7 +460,7 @@ def v062_infix_M_needs_angle_gloss(
         has_angle_gloss = False
         for child in parent_w:
             if child.tag == "TRANSL":
-                text = child.text or ""
+                text = gloss_text(child)
                 if "<" in text and ">" in text:
                     has_angle_gloss = True
                     break
@@ -559,7 +568,7 @@ def v065_every_W_has_TRANSL(
 def _m_forms(m_elem: etree._Element) -> list[str]:
     """Return all direct-child FORM text values of an M element."""
     return [
-        (child.text or "")
+        whole_form_text(child)
         for child in m_elem
         if child.tag == "FORM"
     ]
@@ -643,7 +652,7 @@ def v067_no_angle_brackets_in_M_FORM(
         for child in m:
             if child.tag != "FORM":
                 continue
-            text = child.text or ""
+            text = whole_form_text(child)
             if "<" in text or ">" in text:
                 offending_forms.append((child.get("kindOf"), text))
         if not offending_forms:
@@ -699,16 +708,16 @@ def v068_M_reconstructs_W(
         w_form = find_base_form(w, "original")
         if w_form is None:
             continue
-        w_skel = letter_skeleton(w_form.text)
+        w_skel = letter_skeleton(whole_form_text(w_form))
         if not w_skel:
             continue
         m_skel: Counter = Counter()
         saw_m_form = False
         for m in ms:
             m_form = find_base_form(m, "original")
-            if m_form is not None and (m_form.text or "").strip():
+            if m_form is not None and whole_form_text(m_form).strip():
                 saw_m_form = True
-                m_skel += letter_skeleton(m_form.text)
+                m_skel += letter_skeleton(whole_form_text(m_form))
         if not saw_m_form:
             continue  # M FORMs missing -> V011/V012/other rules own this
         sim = similarity(w_skel, m_skel)
@@ -726,7 +735,7 @@ def v068_M_reconstructs_W(
             message=(
                 f"W id={w_id!r}: child M FORMs reconstruct only {sim:.0%} of the "
                 f"W FORM letters; the morphemes may belong to a different word. "
-                f"W FORM={w_form.text!r}"
+                f"W FORM={whole_form_text(w_form)!r}"
             ),
             path=path,
             location=loc,
@@ -847,7 +856,7 @@ def v070_gloss_code_as_FORM(
     for parent_tag in ("W", "M"):
         for elem in tree.iter(parent_tag):
             for form in elem.findall("FORM"):
-                text = (form.text or "").strip()
+                text = whole_form_text(form).strip()
                 core = text.strip("-=")
                 if not core:
                     continue
@@ -937,7 +946,7 @@ def gloss_languages(tree: etree._ElementTree) -> set:
     glossed = 0
     for w in tree.iter("W"):
         present = {t.get(_XML_LANG) for t in w.findall("TRANSL")
-                   if (t.text or "").strip()}
+                   if gloss_text(t)}
         present = {l for l in present if l}
         if not present:
             continue
@@ -977,7 +986,7 @@ def v153_gloss_pieces_match_morphemes(
             continue
         n = _morphemes_implied(form)
         for t in w.findall("TRANSL"):
-            gloss = (t.text or "").strip()
+            gloss = gloss_text(t)
             if not gloss:
                 continue
             if _gloss_pieces(gloss) != n:
@@ -1056,8 +1065,8 @@ def v154_gloss_script_matches_language(
     example = ""
     for parent in list(tree.iter("W")) + list(tree.iter("M")):
         for t in parent.findall("TRANSL"):
-            lang, text = t.get(_XML_LANG), (t.text or "").strip()
-            others = {o.get(_XML_LANG): (o.text or "").strip()
+            lang, text = t.get(_XML_LANG), gloss_text(t)
+            others = {o.get(_XML_LANG): gloss_text(o)
                       for o in parent.findall("TRANSL") if o is not t}
             if not odd(text, lang, others):
                 continue
@@ -1071,7 +1080,7 @@ def v154_gloss_script_matches_language(
                     for w in sentence.findall("W"):
                         if w is parent:
                             continue
-                        sib = {o.get(_XML_LANG): (o.text or "").strip()
+                        sib = {o.get(_XML_LANG): gloss_text(o)
                                for o in w.findall("TRANSL")}
                         if odd(sib.get(lang, ""), lang,
                                {k: v for k, v in sib.items() if k != lang}):
@@ -1122,7 +1131,7 @@ def v155_gloss_language_set_incomplete(
     example = ""
     for w in tree.iter("W"):
         present = {t.get(_XML_LANG) for t in w.findall("TRANSL")
-                   if (t.text or "").strip()}
+                   if gloss_text(t)}
         present = {l for l in present if l}
         if not present or present >= langs:
             continue
@@ -1147,6 +1156,64 @@ def v155_gloss_language_set_incomplete(
     )]
 
 
+# ---------------------------------------------------------------------------
+# V164: a word FORM that is only punctuation (SOFT)
+# ---------------------------------------------------------------------------
+
+# Characters that look like punctuation or symbols to Unicode but are letters or
+# morpheme markers in FormosanBank forms: the glottal-stop letters, the stress
+# mark, the morpheme boundaries and the null-morpheme glyphs. A FORM holding any
+# of them is not "only punctuation".
+_V164_NOT_PUNCTUATION = frozenset("'ʼ’ˈ^-=<>~∅Øø")
+
+
+def _only_punctuation(text: str) -> bool:
+    chars = [ch for ch in text if not ch.isspace()]
+    return bool(chars) and all(
+        unicodedata.category(ch)[0] in "PS" and ch not in _V164_NOT_PUNCTUATION
+        for ch in chars)
+
+
+def v164_W_form_only_punctuation(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V164 SOFT: a W FORM made only of punctuation or symbols is not a word.
+
+    A word (W) FORM, any kindOf and any variant, whose text -- ignoring any
+    <UNCLEAR/> -- is nothing but Unicode punctuation (P*) and symbol (S*)
+    characters: ePark's '?' glossed '？' and '.' glossed '句號', NTU's Bunun '.'
+    glossed '(咳嗽)'. The sentence's punctuation, or a transcription mark, has
+    been given a word of its own. Letters and morpheme markers that Unicode
+    classes as punctuation or symbols (' ʼ ’ ˈ ^ - = < > ~ ∅ Ø ø) make a FORM a
+    word. A FORM that is only <UNCLEAR/> is not checked.
+
+    Maintainer, 2026-10-18: "we shouldn't have W FORMs that consist entirely of
+    punctuation. That would be a good SOFT validator to have, for this corpus but
+    also others." Fires once per W, naming its first such FORM.
+    """
+    findings: list[Finding] = []
+    for w in tree.iter("W"):
+        hits = [(f.get("kindOf"), "".join(f.itertext())) for f in w.findall("FORM")
+                if _only_punctuation("".join(f.itertext()))]
+        if not hits:
+            continue
+        w_id = w.get("id") or ""
+        kind, text = hits[0]
+        findings.append(Finding(
+            rule_id="V164",
+            severity=Severity.SOFT,
+            message=(f"V164 SOFT W_form_only_punctuation: W id={w_id!r} FORM "
+                     f"kindOf={kind!r} is only punctuation ({text!r}); "
+                     f"{len(hits)} such FORM(s) on this W"),
+            path=path,
+            location=f"W={w_id}" if w_id else "W",
+            character=text.strip()[:10],
+        ))
+    return findings
+
+
 RULES: list = [
     v060_W_count_matches_word_count,
     v061_M_count_matches_form_segmentation,
@@ -1163,5 +1230,7 @@ RULES: list = [
     v153_gloss_pieces_match_morphemes,
     v154_gloss_script_matches_language,
     v155_gloss_language_set_incomplete,
+    # word FORMs that are only punctuation (2026-10-18, NTU review)
+    v164_W_form_only_punctuation,
 ]
 CROSS_FILE_RULES: list = []

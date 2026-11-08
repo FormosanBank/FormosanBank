@@ -11,7 +11,7 @@ from pathlib import Path
 from lxml import etree
 
 # Make the QC package importable so we can reuse the shared dialect inventory
-# (the same single-vs-multi-dialect source used by fix_dialects.py and V036).
+# (the same single-vs-multi-dialect source used by V036).
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
@@ -116,6 +116,22 @@ def _strip_seg_hyphens(text: str) -> str:
     return _SEG_HYPHEN.sub(_replace, text)
 
 
+# Infix brackets touching a word: ASCII (POL-014's W-tier notation, k<um>a'en)
+# or the guillemets a source may print on the sentence line (k‹um›a'en).
+_INFIX_BRACKETS = re.compile(r"(?<=\w)[<‹]([^\s<>‹›]+)[>›]|[<‹]([^\s<>‹›]+)[>›](?=\w)")
+
+
+def _strip_infix_brackets(text: str) -> str:
+    """Remove infix brackets from a word, keeping the infix: k‹um›a'en -> kuma'en.
+
+    Brackets are never letters, so this runs in every C012 branch -- but only
+    where C012 runs at all (sentences with an M tier, or the opt-in flag), so
+    running prose such as Wikipedia articles that discuss infixes, or carry
+    stray markup like m<nowiki>'apung, is untouched.
+    """
+    return _INFIX_BRACKETS.sub(lambda m: m.group(1) or m.group(2), text)
+
+
 def _process_standard_hyphens(
     text: str,
     xml_file: str,
@@ -133,7 +149,8 @@ def _process_standard_hyphens(
     (unless --hard-remove-segmentation is set, in which case strip anyway
     and DO NOT warn).
 
-    The '=' clitic marker is always stripped (it's never a letter).
+    The '=' clitic marker is always stripped (it's never a letter), and so
+    are infix brackets (< > or ‹ ›) inside a word, keeping the infix itself.
 
     Null morphemes are NOT deleted here (they were prior to the 2026-08-09
     null-morpheme spec): remove_null_units() strips them from S-level
@@ -145,7 +162,7 @@ def _process_standard_hyphens(
     """
     if lang_code and _hyphen_is_letter(lang_code, ortho_path):
         if hard_remove_segmentation:
-            return _strip_seg_hyphens(text).replace("=", "")
+            return _strip_infix_brackets(_strip_seg_hyphens(text).replace("=", ""))
         # Preserve hyphens, warn per occurrence — but skip null-adjacent
         # hyphens (annotation, not letters).
         if warnings is not None:
@@ -157,9 +174,10 @@ def _process_standard_hyphens(
                 ):
                     continue
                 warnings.add("c012", xml_file, s_id, ch, i)
-        return text.replace("=", "")  # clitic stripped even when preserving '-'
+        # clitic and infix brackets stripped even when preserving '-'
+        return _strip_infix_brackets(text.replace("=", ""))
     # Hyphen is not a letter → strip both
-    return _strip_seg_hyphens(text).replace("=", "")
+    return _strip_infix_brackets(_strip_seg_hyphens(text).replace("=", ""))
 
 
 def _apply_standard_hyphens(element, lang_code, ortho_path, hard_remove,

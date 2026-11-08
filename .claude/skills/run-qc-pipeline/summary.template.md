@@ -30,6 +30,7 @@
 | `validate_duplicate_sentences.py` (same-file dupes) | {{DUPES_RESULT}} | {{DUPES_NOTES}} |
 | `validate_glosses.py` | {{GLOSSES_RESULT_OR_NA}} | {{GLOSSES_NOTES}} |
 | `validate_audio.py` | {{AUDIO_RESULT_OR_NA}} | {{AUDIO_NOTES}} <!-- "skipped — audio not local" if applicable --> |
+| The corpus's own tests (`CodeAndDocs/tests`, `tests/`) | {{CORPUS_TESTS_RESULT}} | {{CORPUS_TESTS_NOTES}} <!-- pass count; "no source-accounting test" is an open item --> |
 
 ## Soft checks (info-only)
 
@@ -37,6 +38,20 @@
 |---|---|---|
 | Orthography similarity vs reference | {{ORTHO_SIM}} | Thresholds uncalibrated (B Phase B4 work) |
 | Vocabulary overlap vs reference | {{VOCAB_OVERLAP}} | Cross-genre comparisons may be noisy |
+
+Quoted from the logs (one line per language/dialect group; these are the evidence, the numbers above are the digest):
+
+```
+{{SUMMARY_ORTHOGRAPHY_LINES}}   <!-- every `SUMMARY orthography | …` line from 05d_validate_orthography.log -->
+{{SUMMARY_VOCABULARY_LINES}}    <!-- every `SUMMARY vocabulary | …` line from 05e_validate_vocabulary.log -->
+```
+
+## Declared vs detected
+
+<!-- Paste the three tables from 05d2_declared_vs_detected.log: dialect
+     (TEXT/@dialect vs the detector), original-tier orthography vs the
+     declared source orthography, standard tier vs Ortho113. List every row
+     marked MISMATCH here with what you make of it; the operator rules. -->
 | Cross-file duplicate sentences (within corpus) | {{DUPES_SOFT_COUNT}} | May be legitimate (repeated proverbs etc.) |
 
 ## Dialect distribution
@@ -51,7 +66,8 @@
 
 ## Known limitations of this summary
 
-- `validate_xml.py` may fail after Phase 4 (`add_phonology.py`) purely because the DTD currently has no `<PHON>` element. This is schema/code drift, not a corpus error. Resolving belongs to B's reconciliation work.
+- `<PHON>` is valid under `QC/validation/xml_template.xsd`, so a `validate_xml.py` failure after Phase 4 is a corpus error, never schema drift.
+- `validate_orthography.py` and `validate_vocabulary.py` always exit 0; their numbers above are only meaningful if read against the thresholds and against the other published corpora of the language.
 
 ## Ready to port?
 

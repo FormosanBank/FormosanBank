@@ -1,0 +1,219 @@
+geometry_row	record_id	field	value
+7	R008	gloss	次-三-我 AF-來 這裡
+7	R008	translation	我來這裡三次了
+15	R016	gloss	多 生小孩-PF 屬格 awe
+23	R024	form	b-n-eebu laqi rudan
+30	R031	gloss	pawan 主格 AF-吃 飯
+30	R031	word_gloss_json	"[[""pawan"", ""pawan""], [""(ka)"", ""主格""], [""m-ekan"", ""AF-吃""], [""ido"", ""飯""]]"
+32	R033	form	ido (ka) puq-un na pawan
+35	R036	gloss	AF-吃 飯 主格 我
+35	R036	word_gloss_json	"[[""m-ekan"", ""AF-吃""], [""ido"", ""飯""], [""ka"", ""主格""], [""yaku"", ""我""]]"
+37	R038	form	laqi nii
+37	R038	gloss	小孩 這個
+37	R038	translation	這個小孩
+41	R042	form	kingan huling
+41	R042	gloss	一 狗
+41	R042	translation	一隻狗
+45	R046	form	kingan huling paru
+45	R046	gloss	一 狗 大
+45	R046	translation	一隻大狗
+57	R058	form	m-ekan ido (ka) yaku/laqi
+57	R058	gloss	AF-吃 飯 主格 我/小孩
+57	R058	word_gloss_json	"[[""m-ekan"", ""AF-吃""], [""ido"", ""飯""], [""(ka)"", ""主格""], [""yaku/laqi"", ""我/小孩""]]"
+58	R059	form	puq-un yaku/laqi (ka) ido
+58	R059	gloss	吃-PF 我/小孩 主格 飯
+63	R064	form	bube-un-ku na laqi
+64	R065	marker	c.
+65	R066	gloss	RF-煮-我 菜 屬格 awe
+65	R066	word_gloss_json	"[[""su-hanguc-ku"", ""RF-煮-我""], [""sama"", ""菜""], [""na"", ""屬格""], [""awe"", ""awe""]]"
+72	R073	form	wada-ku m-ekan ido
+72	R073	gloss	完成貌-我 AF-吃 飯
+76	R077	form	yaku/*ku
+76	R077	gloss	我
+77	R078	form	yaku/*ku ge m-ekan ido
+77	R078	gloss	我 主題 AF-吃 飯
+78	R079	form	yaku/*ku ka m-ekan ido
+78	R079	gloss	我 主格 AF-吃 飯
+78	R079	translation	在吃飯的人是我
+79	R080	gloss	AF-吃 飯 主格 我
+79	R080	word_gloss_json	"[[""m-ekan"", ""AF-吃""], [""ido"", ""飯""], [""ka"", ""主格""], [""yaku/*ku"", ""我""]]"
+80	R081	form	b-n-eebu-su laqi
+80	R081	translation	你打了小孩或小孩打了你
+84	R085	form	sapah-mu/naku
+84	R085	gloss	房子-我的/我的
+85	R086	form	naku/*mu (ka) sapah
+85	R086	gloss	我的 主格 房子
+88	R089	gloss	煮-我-自己 飯 主格 我
+88	R089	word_gloss_json	"[[""pure-ku-naq"", ""煮-我-自己""], [""ido"", ""飯""], [""(ka)"", ""主格""], [""yaku"", ""我""]]"
+89	R090	gloss	我-自己 主格 煮 飯
+92	R093	form	kuxun-na-naq ka laqi-na
+94	R095	form	kula-un-ku-na m-un-ekan ido
+95	R096	form	m-ekan-kuᵢ ido ka yakuᵢ
+96	R097	form	puq-un-naᵢ pawanᵢ ido
+99	R100	form	kuxun-su-na/*na-su
+102	R103	gloss	AF-喝 水 主格 小孩
+102	R103	word_gloss_json	"[[""m-imah"", ""AF-喝""], [""qsiya"", ""水""], [""(ka)"", ""主格""], [""laqi"", ""小孩""]]"
+103	R104	form	mah-un na laqi (ka) qsiya
+103	R104	gloss	喝-PF 屬格 小孩 主格 水
+107	R108	form	s-um-ebuc ricah (ka) laqi
+116	R117	form	biq-an pila na tama (ka) laqi
+118	R119	gloss	鎖-LF 屬格 爸爸 主格 房子-我的
+119	R120	gloss	多 主格 錢 借-LF-我 爸爸
+119	R120	word_gloss_json	"[[""egu"", ""多""], [""(ka)"", ""主格""], [""pila"", ""錢""], [""kuburex-an-mu"", ""借-LF-我""], [""tama"", ""爸爸""]]"
+122	R123	form	ruhug-un na tama (ka) sapah-mu
+122	R123	gloss	鎖-PF 屬格 爸爸 主格 房子-我的
+125	R126	form	pumah-un qsiya na bubu (ka) laqi
+125	R126	gloss	餵-PF 水 屬格 媽媽 主格 小孩
+125	R126	translation	媽媽餵水給小孩喝
+125	R126	review_notes	direct scan review across PDF pages 104-105
+126	R127	form	piimah/*p-um-imah qsiya laqi (ka) bubu
+126	R127	gloss	餵-AF 水 小孩 主格 媽媽
+126	R127	word_gloss_json	"[[""piimah/*p-um-imah"", ""餵-AF""], [""qsiya"", ""水""], [""laqi"", ""小孩""], [""(ka)"", ""主格""], [""bubu"", ""媽媽""]]"
+127	R128	form	puq-un na laqi (ka) ido
+127	R128	gloss	吃-PF 屬格 小孩 主格 飯
+128	R129	form	puq-un-na ka ido
+129	R130	gloss	喝-LF 水 屬格 小孩 主格 房子 臥室
+129	R130	word_gloss_json	"[[""mah-an"", ""喝-LF""], [""qsiya"", ""水""], [""na"", ""屬格""], [""laqi"", ""小孩""], [""(ka)"", ""主格""], [""sapah"", ""房子""], [""taqian"", ""臥室""]]"
+130	R131	gloss	喝-LF-他 水 主格 房子 臥室
+132	R133	gloss	RF-吃-他 飯 主格 筷子
+132	R133	word_gloss_json	"[[""se-ekan-na"", ""RF-吃-他""], [""ido"", ""飯""], [""(ka)"", ""主格""], [""atak"", ""筷子""]]"
+138	R139	form	taqi-an
+138	R139	gloss	睡-LF
+138	R139	translation	臥室
+138	R139	review_notes	translation supplied by the same lexical table at printed page 59 / PDF page 75
+141	R142	form	biq-an-na pila rudan (ciga/*kusun) ka laqi
+144	R145	form	b-un-eebu/*b-un-ube-un na rudan (ka) laqi
+144	R145	gloss	打-完成貌/打-完成貌-PF 屬格 老人 主格 小孩
+149	R150	form	m-aha-su inu (kusun/*saya/*ciga)
+149	R150	gloss	AF-去-你 哪裡 明天/現在/昨天
+149	R150	word_gloss_json	"[[""m-aha-su"", ""AF-去-你""], [""inu"", ""哪裡""], [""(kusun/*saya/*ciga)"", ""明天/現在/昨天""]]"
+152	R153	gloss	未來式-喝 水 主格 我
+152	R153	word_gloss_json	"[[""mi-imah"", ""未來式-喝""], [""qsiya"", ""水""], [""ka"", ""主格""], [""yaku"", ""我""]]"
+154	R155	form	soxari muku-q-um-uyox
+154	R155	translation	好像快要下雨了
+157	R158	gloss	給-完成貌 錢 小孩 昨天/現在/明天 主格 老人
+158	R159	gloss	完成貌 AF-給 錢 小孩 昨天/現在/明天 主格 老人
+159	R160	gloss	已經 AF-完成貌-吃 飯 主格 我
+162	R163	form	asi ka m-un-ekan ido, m-usa m-eepah klaali
+162	R163	gloss	應該 ∅ AF-完成貌-吃 飯 AF-去 AF-工作 天天
+162	R163	word_gloss_json	"[[""asi"", ""應該""], [""ka"", ""∅""], [""m-un-ekan"", ""AF-完成貌-吃""], [""ido,"", ""飯""], [""m-usa"", ""AF-去""], [""m-eepah"", ""AF-工作""], [""klaali"", ""天天""]]"
+167	R168	gloss	AF-完成貌-吃 飯 主格 我
+167	R168	word_gloss_json	"[[""m-un-ekan"", ""AF-完成貌-吃""], [""ido"", ""飯""], [""ka"", ""主格""], [""yaku"", ""我""]]"
+176	R177	form	gaga m-ekan ido ka heya
+176	R177	gloss	持續貌 AF-吃 飯 主格 他
+195	R196	gloss	切-AF 主格 肉
+199	R200	gloss	切-LF-他 肉 主格 廚房
+199	R200	word_gloss_json	"[[""kuret-an-na"", ""切-LF-他""], [""wawa"", ""肉""], [""ka"", ""主格""], [""purayan"", ""廚房""]]"
+207	R208	form	ini-ku ekan/puq-i/*m-ekan/*puq-un ido
+207	R208	gloss	沒-我 吃/吃-PF/AF-吃/吃-PF 飯
+210	R211	gloss	不-我 喜歡 他
+211	R212	form	ini ku-naqah heya
+214	R215	form	uxe naqah heya
+214	R215	translation	他人不壞
+217	R218	form	uxe-su-mu biq-un
+218	R219	form	iya kuberiq! uxe sino nii! ini-ku imah sino nana, mu-kela-ku uxe sino nii. uka sino, uxe-ku m-ekan ido.
+218	R219	gloss	別 騙 不是 酒 這 沒-我 喝 酒 還（沒） AF-知道-我 不是 酒 這 沒有 酒 不要-我 AF-吃 飯
+218	R219	translation	不要騙（我）！這不是酒！我還沒喝酒，我知道這不是酒。沒有酒，我不要吃飯
+218	R219	review_notes	direct scan review across PDF pages 130-131
+219	R220	gloss	∅ AF-完成貌-吃 飯 你
+219	R220	word_gloss_json	"[[""yee"", ""∅""], [""m-un-ekan"", ""AF-完成貌-吃""], [""ido"", ""飯""], [""isu"", ""你""]]"
+220	R221	form	m-un-ekan ido isu
+221	R222	form	yee-su m-un-ekan ido
+221	R222	gloss	∅-你 AF-完成貌-吃 飯
+225	R226	form	maanu puq-un-su
+225	R226	gloss	什麼 吃-PF-你
+232	R233	gloss	小孩 的 walis 他
+237	R238	form	h-um-uwa-su lux ini eyah ciga
+237	R238	gloss	為什麼-AF-你 ∅ 沒 來 昨天
+237	R238	word_gloss_json	"[[""h-um-uwa-su"", ""為什麼-AF-你""], [""lux"", ""∅""], [""ini"", ""沒""], [""eyah"", ""來""], [""ciga"", ""昨天""]]"
+238	R239	gloss	病-我 所以 ∅ 沒 來
+238	R239	word_gloss_json	"[[""munalux-ku"", ""病-我""], [""kiya"", ""所以""], [""ka"", ""∅""], [""ini"", ""沒""], [""eyah"", ""來""]]"
+240	R241	gloss	用-AF-我 棍子 打-AF 梅子
+253	R254	form	m-imah maanu (ka) pawan
+253	R254	gloss	AF-喝 什麼 主格 pawan
+257	R258	form	wada holi knuwan ka baki
+257	R258	gloss	去 埔里 何時 主格 爺爺
+263	R264	form	laqi nima/kenu beebu huling
+264	R265	translation	誰的/哪個小孩打狗？
+264	R265	review_notes	translation shared explicitly with source example 11a on the same page
+268	R269	gloss	哪 主格 種-PF 樹 屬格 pawan
+268	R269	translation	pawan 種的是哪棵樹呢？
+274	R275	form	h-(um)-uwa kes-un/m-esa s-um-ebuc ricah rudan
+278	R279	gloss	多少 人 未來式-來 明天
+278	R279	word_gloss_json	"[[""knehenu/piya/pupiya"", ""多少""], [""seediq"", ""人""], [""me-eyah"", ""未來式-來""], [""kusun"", ""明天""]]"
+281	R282	translation	你打梅子是為什麼呢？
+291	R292	gloss	他 阻止-AF 打 你 主格 我
+293	R294	form	se-hetun-ku-na beebu isu
+296	R297	form	mu-kela-ku m-un-eyah ka isu ciga
+296	R297	gloss	AF-知道-我 AF-完成貌-來 主格 你 昨天
+297	R298	form	teheyi-ku maha m-beyah walis ka pawan
+300	R301	form	egu riyung wada puq-un na laqi ka ido
+300	R301	gloss	多 很 完成貌 吃-PF 屬格 小孩 關係詞 飯
+301	R302	form	egu riyung wada m-ekan ido ka laqi
+301	R302	gloss	多 很 完成貌 AF-吃 飯 關係詞 小孩
+302	R303	form	egu riyung ido ka wada puq-un na laqi
+303	R304	form	egu riyung laqi ka wada m-ekan ido
+304	R305	form	egu riyung wada puq-un ido laqi
+304	R305	gloss	多 很 完成貌 吃-PF 飯 小孩
+305	R306	form	egu riyung wada-na puq-un ido laqi
+305	R306	gloss	多 很 完成貌-他 吃-PF 飯 小孩
+311	R312	gloss	多 很 錢 pawan 跟 walis
+315	R316	form	ani sa seediq kcce-un-daha, wada-daha ini trmay-i
+315	R316	gloss	但 是 人 嫌-PF-他們 起始貌-他們 沒 洗-PF
+316	R317	gloss	未來式-來-你 幾 天 這裡
+316	R317	word_gloss_json	"[[""me-eyah-su"", ""未來式-來-你""], [""piya"", ""幾""], [""ali"", ""天""], [""hini?"", ""這裡""]]"
+319	R320	form	ani naq rudan ka walis, ani sa klaali m-usa m-eepah neepah nana
+319	R320	gloss	雖然 老人 主格 walis 但 是 天天 AF-去 AF-工作 田 仍然
+319	R320	translation	雖然 walis 已經老了，但是他仍然每天去田裡工作
+319	R320	word_gloss_json	"[[""ani"", ""雖然""], [""naq"", ""∅""], [""rudan"", ""老人""], [""ka"", ""主格""], [""walis,"", ""walis""], [""ani"", ""但""], [""sa"", ""是""], [""klaali"", ""天天""], [""m-usa"", ""AF-去""], [""m-eepah"", ""AF-工作""], [""neepah"", ""田""], [""nana"", ""仍然""]]"
+319	R320	review_notes	direct scan review across PDF pages 156-157
+320	R321	form	ani naq rudan ka walis, ani sa klaali m-usa m-eepah neepah nana
+320	R321	gloss	雖 然 老人 主格 walis 但 是 天天 AF-去 AF-工作 田 仍然
+321	R322	gloss	老人 主格 walis 但 是 天天 AF-去 AF-工作 田 仍然
+322	R323	form	ani-ku naq rudan (ani sa) klaali m-usa m-eepah neepah nana
+322	R323	gloss	雖然-我 老人 但 是 天天 AF-去 AF-工作 田 仍然
+322	R323	translation	雖然我已經老了，但是我仍然每天去田裡工作
+322	R323	word_gloss_json	"[[""ani-ku"", ""雖然-我""], [""naq"", ""老""], [""rudan"", ""人""], [""(ani"", ""但""], [""sa)"", ""是""], [""klaali"", ""天天""], [""m-usa"", ""AF-去""], [""m-eepah"", ""AF-工作""], [""neepah"", ""田""], [""nana"", ""仍然""]]"
+322	R323	review_notes	direct scan review across PDF pages 157-158; optional connector expanded
+323	R324	gloss	老人 主格 我 但 是 天天 AF-去-我 AF-工作 田 仍然
+327	R328	form	anu q-um-uyux, kiya ka ini-ku usa m-eepah
+327	R328	gloss	因為 下雨-AF 所以 ∅ 沒-我 去 AF-工作
+328	R329	form	anu q-um-uyux, ini-ku usa m-eepah
+329	R330	form	q-um-uyux, kiya ka ini-ku usa m-eepah
+329	R330	gloss	下雨-AF 所以 ∅ 沒-我 去 AF-工作
+329	R330	word_gloss_json	"[[""q-um-uyux,"", ""下雨-AF""], [""kiya"", ""所以""], [""ka"", ""∅""], [""ini-ku"", ""沒-我""], [""usa"", ""去""], [""m-eepah"", ""AF-工作""]]"
+330	R331	form	anu munalux-ku, kiya ka ini-ku usa m-eepah
+330	R331	gloss	因為 生病-我 所以 ∅ 沒-我 去 AF-工作
+330	R331	word_gloss_json	"[[""anu"", ""因為""], [""munalux-ku,"", ""生病-我""], [""kiya"", ""所以""], [""ka"", ""∅""], [""ini-ku"", ""沒-我""], [""usa"", ""去""], [""m-eepah"", ""AF-工作""]]"
+334	R335	form	netun-su mu-uyas, mpu-uyas-ku uri
+334	R335	gloss	如果-你 AF-唱 未來式-唱-我 也
+335	R336	form	netun-ku qubeheni, m-aha-ku skiya
+335	R336	gloss	如果-我 鳥 AF-去-我 飛
+336	R337	form	ado-su ka mu-uyas, mpu-uyas-ku uri
+336	R337	gloss	如果-你 ∅ AF-唱 未來式-唱-我 也
+337	R338	form	ado-ku ka qubeheni, maha-ku skiya
+337	R338	gloss	如果-我 ∅ 鳥 AF-去-我 飛
+338	R339	form	nasi-su mu-uyas, mpuuyas-ku uri
+338	R339	gloss	如果-你 AF-唱 未來式-唱-我 也
+338	R339	translation	如果你唱我就會跟著唱
+338	R339	review_notes	direct scan review across PDF pages 160-161
+339	R340	form	nasi-ku qubeheni, maha-ku skiya
+339	R340	gloss	如果-我 鳥 AF-去-我 飛
+339	R340	translation	如果我是鳥，我就會飛
+339	R340	review_notes	translation shared by the exact semantic construction in source examples 23b and 24b
+342	R343	form	bobo-ku m-un-ekan ido, musa-ku mu-kukesa ngerac
+342	R343	gloss	後-我 AF-完成貌-吃 飯 AF-去-我 AF-走 庭院
+343	R344	gloss	AF-完成貌-吃-我 飯 之後 ∅ AF-去-我 AF-走 庭院
+344	R345	gloss	AF-完成貌-吃-我 飯 AF-去-我 AF-走 庭院 之後 ∅
+344	R345	word_gloss_json	"[[""m-un-ekan-ku"", ""AF-完成貌-吃-我""], [""ido"", ""飯""], [""m-usa-ku"", ""AF-去-我""], [""mu-kukesa"", ""AF-走""], [""ngerac"", ""庭院""], [""bobo"", ""之後""], [""na"", ""∅""]]"
+346	R347	gloss	AF-吃-你 飯 主格 你 的時候 ∅ AF-去-我 洗-AF 身 主格 我
+346	R347	word_gloss_json	"[[""m-ekan-su"", ""AF-吃-你""], [""ido"", ""飯""], [""ka"", ""主格""], [""isu"", ""你""], [""di"", ""的時候""], [""ge"", ""∅""], [""m-aha-ku"", ""AF-去-我""], [""turima"", ""洗-AF""], [""heyi"", ""身""], [""ka"", ""主格""], [""yaku"", ""我""]]"
+348	R349	form	m-ekan-su ido ka isu ciida, m-aha-ku turima heyi ka yaku
+348	R349	gloss	AF-吃-你 飯 主格 你 的時候 AF-去-我 洗-AF 身 主格 我
+348	R349	translation	你吃飯的時候，我將去洗澡
+348	R349	review_notes	direct scan review across PDF pages 163-164
+349	R350	gloss	AF-吃-你 飯 的時候 主格 你 AF-去-我 洗-AF 身 主格 我
+349	R350	word_gloss_json	"[[""m-ekan-su"", ""AF-吃-你""], [""ido"", ""飯""], [""ciida"", ""的時候""], [""ka"", ""主格""], [""isu"", ""你""], [""m-aha-ku"", ""AF-去-我""], [""turima"", ""洗-AF""], [""heyi"", ""身""], [""ka"", ""主格""], [""yaku"", ""我""]]"
+350	R351	gloss	的時候 AF-吃-你 飯 主格 你 AF-去-我 洗-AF 身 主格 我
+351	R352	gloss	的時候 AF-唱 主格 我
+351	R352	word_gloss_json	"[[""ciida"", ""的時候""], [""mu-uyas"", ""AF-唱""], [""ka"", ""主格""], [""yaku"", ""我""]]"

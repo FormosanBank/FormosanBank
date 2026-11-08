@@ -1,0 +1,13 @@
+# Per-reading settings for POL-028 splits (pol028.py). One row per (record, reading); records with no row use the defaults:
+# base = the reading WITHOUT the optional morpheme, keeps the published id; '-opt' = the reading WITH it; both carry the record's
+# translations. 'takes' = which reading this sentence is (with|without). sentence_text overrides the text when NTU's sentence line
+# does not mark the option. zho/eng replace that language's translation ('-' = none). notes go on the original-tier FORM.
+source_file	record	reading	takes	sentence_text	zho	eng	notes	ruling
+sentence/Bunun_Isbukun/30.json	5	base	without		外面本來就很熱	-		#4, 2026-10-15: "The first translation is for the version with the na=. (It's irrealis)." The only English ("It must be hot outside.") renders 外面一定很熱, so it is placed with na= and the base has no English (confirmed 2026-10-16: "sure").
+sentence/Bunun_Isbukun/30.json	5	opt	with		外面一定很熱	It must be hot outside.		#4, as above
+sentence/Bunun_Isbukun/63.json	499	base	without		外面本來就很熱	-		#4 (63.json copy), as above
+sentence/Bunun_Isbukun/63.json	499	opt	with		外面一定很熱	It must be hot outside.		#4 (63.json copy), as above
+sentence/Rukai_Vedai/20200508-CL-7.json	19	base	without		不，我不會回去你那邊。	No, I don't want to go back to you.		#13, review page 2026-10-16 "as proposed"
+sentence/Rukai_Vedai/20200508-CL-7.json	19	opt	with		不，我將不會回去你那邊。	No, I will not want to go back to you.		#13, as above
+sentence/Rukai_Vedai/20200529-FW-Ryan.json	6	base	with		這房間裡的人把這個電話互相傳了下去。		NTU's sentence line has ma- with no parentheses; its word analysis ((ma-)pa-twaramarama, '(RECP-)CAUS-pass') and Chinese translation ((互相)) mark ma- as optional. Published as two sentences (POL-028): this one follows the sentence line, with ma-; the sentence with the same id plus '-opt' is the reading without it.	#18, review page 2026-10-16: A, "Add a note attribute to both versions explaining what you did."
+sentence/Rukai_Vedai/20200529-FW-Ryan.json	6	opt	without	kay yakay danne kay lasitu patwaramarama kay dinva.	這房間裡的人把這個電話傳了下去。		The reading without the optional ma- (RECP, 互相) that NTU's word analysis and Chinese translation mark with parentheses. NTU's sentence line has ma- and no parentheses, so this sentence text is that line with ma- removed; the sentence with the same id without '-opt' follows the line as written.	#18, as above

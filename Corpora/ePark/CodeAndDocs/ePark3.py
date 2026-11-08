@@ -51,7 +51,7 @@ def create_root(ePark, dialect, lang):
     root.set("xml:lang", lang)
     root.set("source", f"ePark3 {ePark} {dialect}")
     root.set("audio", "diarized")
-    root.set("copyright", "CC-BY-NC-SA")
+    root.set("copyright", "CC BY-NC-SA 4.0")
     root.set("citation", "Indigenous Languages Research and Development Foundation. (2020). 族語E樂園. https://web.klokah.tw/")
     root.set("BibTeX_citation", "@misc{ePark, author = {Indigenous Languages Research and Development Foundation}, title = {族語E樂園}, year = {2020}, url = {https://web.klokah.tw/} }")
     return root

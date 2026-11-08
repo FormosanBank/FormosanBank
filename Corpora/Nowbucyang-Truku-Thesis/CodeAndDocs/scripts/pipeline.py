@@ -1,14 +1,8 @@
 from __future__ import annotations
 
 import argparse
-import csv
-import json
-import os
 import re
-import shutil
-import sys
-import unicodedata
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree as ET
@@ -26,7 +20,6 @@ from common import (
     has_latin,
     load_config,
     log,
-    normalize_ws,
     page_image_path,
     page_text_path,
     read_csv_dicts,
@@ -225,9 +218,11 @@ def _pdf_paths(cfg: dict[str, Any]) -> tuple[Path, Path]:
 
 def _source_pdf_hashes(cfg: dict[str, Any]) -> tuple[str, str]:
     original, decrypted = _pdf_paths(cfg)
+    metadata = read_csv_dicts(ROOT / "data/processed/source_metadata.csv")
+    recorded = metadata[0] if metadata else {}
     return (
-        sha256_file(original) if original.exists() else "",
-        sha256_file(decrypted) if decrypted.exists() else "",
+        sha256_file(original) if original.exists() else recorded.get("source_pdf_sha256", ""),
+        sha256_file(decrypted) if decrypted.exists() else recorded.get("decrypted_pdf_sha256", ""),
     )
 
 
@@ -342,7 +337,7 @@ def decrypt_pdf(cfg: dict[str, Any]) -> None:
         "decrypted_pdf_sha256": decrypted_hash,
         "page_count": _pdf_page_count(decrypted),
         "ocr_used": "no",
-        "notes": (row.get("notes") or "") + " Decrypted working PDF created outside Final_XML.",
+        "notes": (row.get("notes") or "") + " Decrypted working PDF created outside XML.",
     })
     write_csv(ROOT / "data/processed/pdf_inventory.csv", [row], PDF_INVENTORY_FIELDS)
     log("decrypt_pdf", f"decrypted {original} -> {decrypted} sha256={decrypted_hash}")
@@ -1210,7 +1205,7 @@ def extract_tables(cfg: dict[str, Any]) -> None:
                             "cell_clean": cell_text,
                             "parse_confidence": "medium",
                             "xml_eligible_candidate": "false",
-                            "notes": "Extracted as sidecar table data; table rows are not emitted to Final_XML by default.",
+                            "notes": "Extracted as sidecar table data; table rows are not emitted to XML by default.",
                         })
 
     if not table_rows:
@@ -1263,7 +1258,7 @@ def map_language(cfg: dict[str, Any]) -> None:
         "XML_dialect_attribute_value": "",
         "mapping_confidence": "high",
         "validation_status": "validated_against_formosan_repo_audit_and_qc: Formosan language folder is Truku; xml:lang uses ISO 639-3 code trv",
-        "notes": "Final XML uses Final_XML/Truku with xml:lang=\"trv\". Glottocode omitted because it was not locally verified for this source.",
+        "notes": "Final XML uses XML/Truku with xml:lang=\"trv\". Glottocode omitted because it was not locally verified for this source.",
     }]
     write_csv(ROOT / "data/processed/language_mapping.csv", mapping, [
         "source_language_label_raw", "thesis_language_label_raw", "FormosanBank_language_name", "ISO_639_3",
@@ -1309,7 +1304,7 @@ def map_language(cfg: dict[str, Any]) -> None:
         "- PDF page 5: English abstract states the Truku language data come from Dumung and Tkijig Tribes in Sioulin Township, Hualien County.",
         "- PDF pages 17-18: research method and speaker table identify fieldwork with Dumung / 銅門 and Tkijig / 崇德 speakers.",
         "- PDF pages 26 onward: numbered linguistic examples contain Truku form lines, Chinese gloss/morpheme lines, and Chinese free translations.",
-        "- PDF pages in chapters 2-4: morphology tables and lexical/morphological records are present; these are preserved in sidecar data and not emitted to Final_XML by default.",
+        "- PDF pages in chapters 2-4: morphology tables and lexical/morphological records are present; these are preserved in sidecar data and not emitted to XML by default.",
         "- Extraction provenance: qpdf decryption, pdftotext -layout selected page text, PyMuPDF/pdfplumber comparison, PyMuPDF page-image rendering.",
     ]
     (ROOT / "data/processed/source_facts.md").write_text("\n".join(facts) + "\n", encoding="utf-8")
@@ -1324,7 +1319,7 @@ def map_language(cfg: dict[str, Any]) -> None:
         "- ocr_fallback: only_if_needed_and_reviewed",
         "- machine_translation: prohibited",
         "- create_final_xml: true",
-        "- final_xml_output: Final_XML/Truku",
+        "- final_xml_output: XML/Truku",
         "",
         source_copyright(),
     ]
@@ -1457,7 +1452,7 @@ def dedupe_examples(cfg: dict[str, Any]) -> None:
 def _existing_formosan_xml_files() -> list[Path]:
     candidates = []
     for repo in ROOT.parent.glob("Formosan-*"):
-        final = repo / "Final_XML"
+        final = repo / "XML"
         if not final.exists() or repo.resolve() == ROOT.resolve():
             continue
         for xml in final.rglob("*.xml"):
@@ -1539,6 +1534,10 @@ def dedupe_against_formosanbank(cfg: dict[str, Any]) -> None:
 
 
 def _sentence_id(row: dict[str, Any], fallback_idx: int, variant_suffix: str = "") -> str:
+    if row.get("sentence_id"):
+        if variant_suffix not in {"", "b"}:
+            raise ValueError("Reviewed source addition needs an explicit variant ID mapping")
+        return row["sentence_id"] + ("-opt" if variant_suffix else "")
     chap = row.get("chapter_number") or "X"
     num = str(row.get("example_number") or fallback_idx).zfill(3)
     letter = (row.get("subexample_letter") or "").upper()
@@ -1697,41 +1696,78 @@ def _split_cleaned_morpheme_parts(cleaned: str, preserve_clitic_markers: bool = 
 
 
 def _infix_reanalysis_parts(parts: list[str]) -> list[str] | None:
-    if len(parts) != 3:
+    if len(parts) < 3:
         return None
-    left, infix, right = parts
-    if any(part.startswith("=") for part in parts):
+    left, infix, right, *suffixes = parts
+    if any(part.startswith("=") for part in (left, infix, right)):
         return None
     if len(infix) > 2 or not re.fullmatch(r"[A-Za-z]+", infix):
         return None
-    return [f"{left}-{right}", f"-{infix}-"]
+    return [f"{left}-{right}", f"-{infix}-", *suffixes]
+
+
+def _word_gloss_groups(form_tokens: list[str], gloss_tokens: list[str]) -> list[list[int]]:
+    """Match source columns, joining a standalone clitic to its preceding word."""
+    if len(form_tokens) == len(gloss_tokens):
+        return [[i] for i in range(len(form_tokens))]
+    groups: list[list[int]] = []
+    for i, token in enumerate(form_tokens):
+        if token.startswith("=") and groups:
+            groups[-1].append(i)
+        else:
+            groups.append([i])
+    return groups if len(groups) == len(gloss_tokens) else []
+
+
+def _word_groups_align(
+    form_tokens: list[str], form_parts_by_word: list[list[str]], gloss_tokens: list[str]
+) -> bool:
+    groups = _word_gloss_groups(form_tokens, gloss_tokens)
+    return bool(groups) and all(
+        sum(len(form_parts_by_word[i]) for i in group) == len(_split_gloss_parts_for_xml(gloss))
+        for group, gloss in zip(groups, gloss_tokens)
+    )
+
+
+def _source_word_glosses(form_tokens: list[str], gloss_tokens: list[str]) -> dict[int, str]:
+    """Keep source word-gloss spelling, splitting off explicit clitic columns."""
+    result: dict[int, str] = {}
+    for group, gloss in zip(_word_gloss_groups(form_tokens, gloss_tokens), gloss_tokens):
+        if len(group) == 1:
+            result[group[0]] = gloss
+            continue
+        if any(len(_split_morpheme_parts_for_xml(form_tokens[i])) != 1 for i in group[1:]):
+            continue
+        boundaries = [m.start() for m in re.finditer(r"[-=](?![^<]*>)", gloss)]
+        if len(boundaries) < len(group) - 1:
+            continue
+        cuts = [-1, *boundaries[-(len(group) - 1):], len(gloss)]
+        result.update({i: gloss[start + 1:end] for i, start, end in zip(group, cuts, cuts[1:])})
+    return result
 
 
 def _apply_infix_reanalysis(
     form_tokens: list[str],
     form_parts_by_word: list[list[str]],
     gloss_tokens: list[str],
-    gloss_part_count: int,
 ) -> tuple[list[list[str]], list[str]]:
-    if not any("<" in token and ">" in token for token in gloss_tokens):
-        return form_parts_by_word, []
-    delta = sum(len(parts) for parts in form_parts_by_word) - gloss_part_count
-    if delta <= 0:
-        return form_parts_by_word, []
     adjusted = [list(parts) for parts in form_parts_by_word]
     notes: list[str] = []
-    for idx, parts in enumerate(adjusted):
-        if delta <= 0:
-            break
-        reanalysed = _infix_reanalysis_parts(parts)
-        if not reanalysed:
+    for group, gloss in zip(_word_gloss_groups(form_tokens, gloss_tokens), gloss_tokens):
+        # The author's angle notation alone is not sufficient. The matching
+        # source word must have exactly one extra boundary (May 20 ruling).
+        if len(re.findall(r"<[^>]+>", gloss)) != 1:
+            continue
+        count = sum(len(adjusted[i]) for i in group)
+        if count != len(_split_gloss_parts_for_xml(gloss)) + 1:
+            continue
+        idx = group[0]
+        reanalysed = _infix_reanalysis_parts(adjusted[idx])
+        if reanalysed is None:
             continue
         adjusted[idx] = reanalysed
-        delta -= len(parts) - len(reanalysed)
         notes.append(f"infix_reanalysis {form_tokens[idx]} -> {'+'.join(reanalysed)}")
-    if delta == 0:
-        return adjusted, notes
-    return form_parts_by_word, []
+    return adjusted, notes
 
 
 def _flatten_morpheme_parts(values: list[str]) -> list[str]:
@@ -1798,12 +1834,14 @@ def _is_alt_translation(text: str, inside: str) -> bool:
     return cm >= 4 and ci >= 3 and ci >= 0.5 * cm
 
 
-def _add_translations(parent: ET.Element, text: str, lang: str) -> None:
+def _add_translations(parent: ET.Element, text: str, lang: str, parenthetical_role: str = "") -> None:
     """Emit the source translation; if it carries a genuine alternative rendering
     in parentheses, split it into a primary TRANSL plus a TRANSL ver="alt"."""
     text = clean_inline(text)
+    if not text:
+        return
     m = _F2_CJK_PAREN.search(text)
-    if m and _is_alt_translation(text, m.group(1)):
+    if m and (parenthetical_role == "literal" or _is_alt_translation(text, m.group(1))):
         primary = clean_inline(_F2_CJK_PAREN.sub("", text).replace("=", " "))
         primary = re.sub(r"\s+([。！？，、；：])", r"\1", primary)
         _add_translation(parent, primary, lang)
@@ -1821,12 +1859,41 @@ _INFIX_M_FORM = re.compile(r"-[^-\s]+-")
 
 
 def _reconstruct_word_gloss(m_forms: list[str], m_glosses: list[str]) -> str:
-    base: list[str] = []
-    infixes: list[str] = []
+    pieces: list[str] = []
     for mf, mg in zip(m_forms, m_glosses):
-        (infixes if _INFIX_M_FORM.fullmatch((mf or "").strip()) else base).append(mg)
-    word = "-".join(g for g in base if g)
-    return word + "".join(f"<{g}>" for g in infixes if g)
+        if _INFIX_M_FORM.fullmatch((mf or "").strip()) and pieces:
+            pieces[-1] += f"<{mg}>"
+        else:
+            pieces.append(mg)
+    return "-".join(pieces)
+
+
+def _canonical_infix_word(word_form: str, m_forms: list[str]) -> str:
+    if len(m_forms) < 2 or not _INFIX_M_FORM.fullmatch(m_forms[1]):
+        return word_form
+    left, gap, right = m_forms[0].partition("-")
+    if not gap or not left or not right:
+        return word_form
+    result = f"{left}<{m_forms[1][1:-1]}>{right}"
+    for suffix in m_forms[2:]:
+        result += ("" if suffix.startswith("=") else "-") + suffix
+    if re.sub(r"[-<>]", "", result) != re.sub(r"[-<>]", "", word_form):
+        raise ValueError(f"Infix analysis changes source letters: {word_form} -> {result}")
+    return result
+
+
+def _add_manual_source_word_glosses(sentence: ET.Element, gloss_line: str) -> None:
+    words = sentence.findall("W")
+    tokens = [w.findtext("FORM[@kindOf='original']", "") for w in words]
+    glosses = _source_word_glosses(tokens, _gloss_tokens_for_alignment(gloss_line))
+    for i, gloss in glosses.items():
+        word = words[i]
+        # An explicit prior gloss wins. Fill only when the source line agrees
+        # with every reviewed M gloss, so raw extraction cannot undo an edit.
+        if word.find("TRANSL") is None and word.findall("M"):
+            reviewed = [m.findtext("TRANSL") for m in word.findall("M")]
+            if reviewed == _split_gloss_parts_for_xml(gloss):
+                _add_translation(word, gloss, "zho")
 
 
 def _add_word_level_translations(root: ET.Element, lang: str) -> int:
@@ -1839,6 +1906,10 @@ def _add_word_level_translations(root: ET.Element, lang: str) -> int:
     """
     added = 0
     for w in root.iter("W"):
+        original = w.find("FORM[@kindOf='original']")
+        if original is not None:
+            forms = [m.findtext("FORM[@kindOf='original']", "") for m in w.findall("M")]
+            original.text = _canonical_infix_word(original.text or "", forms)
         if w.find("TRANSL") is not None:
             continue  # already has a W-level TRANSL
         ms = w.findall("M")
@@ -2134,20 +2205,17 @@ def _build_variant(
 def _morphemes_align(segmented_form: str, gloss_line: str) -> bool:
     """True iff morpheme glosses would align for this form+gloss.
 
-    Mirrors the alignment test in _add_words_and_glosses (flatten form
-    morphemes + gloss parts, apply infix reanalysis, compare counts) so the
+    Mirrors the source-column alignment test in _add_words_and_glosses so the
     variant builder can predict whether a given form/gloss pairing will gloss
     cleanly before emitting it.
     """
     gloss_tokens = _gloss_tokens_for_alignment(gloss_line)
     form_tokens = _word_tokens_for_xml_sentence(segmented_form)
     form_parts_by_word = [_split_morpheme_parts_for_xml(t) for t in form_tokens]
-    gloss_parts = _flatten_gloss_parts(gloss_tokens)
     form_parts_by_word, _ = _apply_infix_reanalysis(
-        form_tokens, form_parts_by_word, gloss_tokens, len(gloss_parts)
+        form_tokens, form_parts_by_word, gloss_tokens
     )
-    form_part_count = sum(len(p) for p in form_parts_by_word)
-    return bool(gloss_parts) and form_part_count == len(gloss_parts)
+    return _word_groups_align(form_tokens, form_parts_by_word, gloss_tokens)
 
 
 def _optional_word_span(core_words: list[str], withopt_words: list[str]) -> "tuple[int | None, int]":
@@ -2189,9 +2257,8 @@ def _optional_split_glosses(base: str, gloss: str) -> "tuple[str, str] | None":
     if not _morphemes_align(withopt_form, gloss):
         return None
     gloss_tokens = _gloss_tokens_for_alignment(gloss)
-    gloss_parts = _flatten_gloss_parts(gloss_tokens)
     form_parts = [_split_morpheme_parts_for_xml(t) for t in withopt_words]
-    form_parts, _ = _apply_infix_reanalysis(withopt_words, form_parts, gloss_tokens, len(gloss_parts))
+    form_parts, _ = _apply_infix_reanalysis(withopt_words, form_parts, gloss_tokens)
     # Flat morpheme-index range occupied by the optional word block.
     before = sum(len(form_parts[i]) for i in range(opt_start))
     opt_len = sum(len(form_parts[i]) for i in range(opt_start, opt_start + opt_k))
@@ -2261,16 +2328,13 @@ def _add_words_and_glosses(
     segmented_tokens = _word_tokens_for_xml_sentence(segmented_form)
     form_tokens = segmented_tokens
     form_parts_by_word = [_split_morpheme_parts_for_xml(token) for token in segmented_tokens]
-    gloss_parts = _flatten_gloss_parts(gloss_tokens)
     form_parts_by_word, infix_notes = _apply_infix_reanalysis(
         form_tokens,
         form_parts_by_word,
         gloss_tokens,
-        len(gloss_parts),
     )
-    form_part_count = sum(len(parts) for parts in form_parts_by_word)
-    align_morphemes = bool(gloss_parts) and form_part_count == len(gloss_parts)
-    align_words = bool(gloss_tokens) and len(form_tokens) == len(gloss_tokens)
+    align_morphemes = _word_groups_align(form_tokens, form_parts_by_word, gloss_tokens)
+    source_word_glosses = _source_word_glosses(form_tokens, gloss_tokens)
     audit = {
         "example_record_id": row.get("example_record_id", ""),
         "sentence_id": sentence_id,
@@ -2291,28 +2355,36 @@ def _add_words_and_glosses(
         audit["reason"] = "no_parseable_form_tokens"
         return audit
 
-    gloss_idx = 0
     for w_idx, word_form in enumerate(form_tokens, start=1):
         w_id = f"{sentence_id}W{w_idx}"
         w_el = ET.SubElement(sentence_el, "W", {"id": w_id})
         _add_original_and_standard_forms(w_el, word_form, word_form)
+        if w_idx - 1 in source_word_glosses:
+            _add_translation(w_el, source_word_glosses[w_idx - 1], translation_lang)
         morphemes = form_parts_by_word[w_idx - 1] or [_clean_word_form_for_xml(word_form)]
+        word_gloss_parts = _split_gloss_parts_for_xml(source_word_glosses.get(w_idx - 1, ""))
+        word_morphemes_align = len(word_gloss_parts) == len(morphemes)
         audit["word_count_emitted"] += 1
         audit["morpheme_count_emitted"] += len(morphemes)
-        for m_idx, morph_form in enumerate(morphemes, start=1):
+        # Collapsing q-m-pah-an joins old M1/M3 into the root and retains
+        # the existing suffix's M4 identity. Never recycle M3 for that suffix.
+        slots = list(range(1, len(morphemes) + 1))
+        source_parts = _split_morpheme_parts_for_xml(word_form)
+        if len(source_parts) == len(morphemes) + 1 and len(morphemes) >= 2 and _INFIX_M_FORM.fullmatch(morphemes[1]):
+            slots = [1, 2, *range(4, len(source_parts) + 1)]
+        for gloss_idx, (m_idx, morph_form) in enumerate(zip(slots, morphemes)):
             m_el = ET.SubElement(w_el, "M", {"id": f"{w_id}M{m_idx}"})
             # Standard tier is a verbatim copy of original at every level (see
             # the S-level note above); QC tools de-segment/standardize it later.
             _add_original_and_standard_forms(m_el, morph_form, morph_form)
-            if align_morphemes:
-                _add_translation(m_el, gloss_parts[gloss_idx], translation_lang)
-                gloss_idx += 1
+            if word_morphemes_align:
+                _add_translation(m_el, word_gloss_parts[gloss_idx], translation_lang)
     if align_morphemes:
         audit["alignment_status"] = "morpheme_aligned"
-        audit["reason"] = "form_morpheme_count_matches_source_gloss_morpheme_count"
-    elif align_words:
-        audit["alignment_status"] = "words_only"
-        audit["reason"] = "word_count_matches_source_gloss_token_count_but_word_level_gloss_not_emitted"
+        audit["reason"] = "each_source_word_and_clitic_group_matches_its_gloss"
+    elif source_word_glosses:
+        audit["alignment_status"] = "word_aligned"
+        audit["reason"] = "source_word_glosses_retained_with_only_aligned_morpheme_glosses"
     elif not row.get("gloss_line_clean"):
         audit["alignment_status"] = "words_only"
         audit["reason"] = "no_source_gloss_line"
@@ -2331,17 +2403,53 @@ def _add_words_and_glosses(
 MANUAL_SENTENCES_FILE = ROOT / "data/manual/manual_sentences.xml"
 
 
+def _reviewed_source_additions(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Recover reviewed interlinear examples from preserved raw source blocks."""
+    decisions = ROOT / "data/manual/source_additions.csv"
+    if not decisions.is_file():
+        raise FileNotFoundError(f"Missing required source-addition decisions: {decisions}")
+    parents = {row["example_record_id"]: row for row in rows}
+    raw = {row["example_record_id"]: row for row in read_jsonl(ROOT / "data/processed/examples_raw.jsonl")}
+    additions = []
+    for decision in read_csv_dicts(decisions):
+        record_id = decision["source_record_id"]
+        start = int(decision["first_line"]) - 1
+        count = int(decision["line_count"])
+        if count not in {2, 3}:
+            raise ValueError("An interlinear addition needs FORM, gloss and an optional free translation")
+        lines = raw[record_id]["raw_text_combined"].splitlines()[start:start + count]
+        if len(lines) != count or sha256_text("\n".join(lines)) != decision["source_lines_sha256"]:
+            raise ValueError(f"Source lines changed for reviewed addition {decision['sentence_id']}")
+        form, gloss = [clean_inline(line) for line in lines[:2]]
+        translation = clean_inline(lines[2]) if count == 3 else ""
+        row = dict(parents[record_id])
+        row.update({
+            "example_record_id": f"{record_id}_EXTRA_{start + 1}",
+            "sentence_id": decision["sentence_id"],
+            "example_label_clean": decision["example_label"],
+            "subexample_letter": decision["subexample_letter"],
+            "truku_line_clean": form,
+            "gloss_line_clean": gloss,
+            "chinese_translation_clean": translation,
+            "translation_parenthetical_role": decision["translation_parenthetical_role"],
+            "pair_sha256": sha256_text(form + "\n" + translation),
+            "notes": f"Recovered from source block {record_id}, lines {start + 1}-{start + count}.",
+            "xml_eligible": True,
+            "rejection_reason": "",
+            "duplicate_action": "keep",
+        })
+        additions.append(row)
+    return additions
+
+
 def build_formosanbank_xml(cfg: dict[str, Any]) -> None:
     ensure_dirs()
     rows = read_jsonl(ROOT / "data/processed/quality_filtered_examples.jsonl")
     if not rows:
-        quality_filter(cfg)
-        rows = read_jsonl(ROOT / "data/processed/quality_filtered_examples.jsonl")
-    if not (ROOT / "data/processed/duplicates.csv").exists():
-        dedupe_examples(cfg)
-        rows = read_jsonl(ROOT / "data/processed/quality_filtered_examples.jsonl")
-    if not (ROOT / "data/processed/overlap_candidates.csv").exists():
-        dedupe_against_formosanbank(cfg)
+        raise ValueError("Missing committed quality_filtered_examples.jsonl; refresh sources separately.")
+    # Append additions with explicit source IDs; inserting into the legacy
+    # ordinal input order would renumber previously published collision IDs.
+    rows.extend(_reviewed_source_additions(read_jsonl(ROOT / "data/processed/examples_clean.jsonl")))
     original, decrypted = _pdf_paths(cfg)
     original_hash, decrypted_hash = _source_pdf_hashes(cfg)
     output_dir = ROOT / cfg["xml"]["output_dir"] / cfg["xml"]["language_folder"]
@@ -2385,9 +2493,9 @@ def build_formosanbank_xml(cfg: dict[str, Any]) -> None:
         }
     index_rows = []
     gloss_by_example = {r["example_record_id"]: r["gloss_record_id"] for r in read_jsonl(ROOT / "data/processed/gloss_records.jsonl")}
-    overlap_ids = {r["example_record_id"] for r in read_csv_dicts(ROOT / "data/processed/overlap_candidates.csv")}
     gloss_alignment_rows = []
     variant_audit_rows = []
+    manual_source_glosses: dict[tuple[str, tuple[str, ...]], str] = {}
     slash_qc_lines = [
         "# Manual QC: Slash Option Preservation",
         "",
@@ -2420,6 +2528,11 @@ def build_formosanbank_xml(cfg: dict[str, Any]) -> None:
         for variant in variants:
             sid = _sentence_id(row, idx, variant["variant_suffix"])
             if sid in manual_override_ids:
+                key = (sid, tuple(_word_tokens_for_xml_sentence(variant["segmented_form_xml"])))
+                gloss = variant["gloss_line_xml"]
+                if key in manual_source_glosses and manual_source_glosses[key] != gloss:
+                    raise ValueError(f"Ambiguous source gloss line for manual sentence {sid}")
+                manual_source_glosses[key] = gloss
                 continue  # superseded by the verbatim copy in manual_sentences.xml
             if sid in seen_ids:
                 sid = f"{sid}_{idx:04d}_{variant['variant_index']:02d}"
@@ -2428,7 +2541,10 @@ def build_formosanbank_xml(cfg: dict[str, Any]) -> None:
             sentence_standard_form = variant["standard_form_xml"]
             s = ET.SubElement(root, "S", {"id": sid})
             _add_original_and_standard_forms(s, sentence_form, sentence_standard_form, always_standard=True)
-            _add_translations(s, variant.get("translation") or row["chinese_translation_clean"], cfg["xml"]["source_translation_lang"])
+            _add_translations(
+                s, variant.get("translation") or row["chinese_translation_clean"],
+                cfg["xml"]["source_translation_lang"], row.get("translation_parenthetical_role", ""),
+            )
             if variant.get("emit_words", True):
                 gloss_alignment_rows.append(_add_words_and_glosses(
                     s,
@@ -2468,7 +2584,7 @@ def build_formosanbank_xml(cfg: dict[str, Any]) -> None:
                 "gloss_record_id": gloss_by_example.get(row["example_record_id"], ""),
                 "extraction_method": "text_layer_pdftotext_layout_with_line_heuristics",
                 "extraction_confidence": row.get("extraction_confidence", ""),
-                "overlap_status": "candidate" if row["example_record_id"] in overlap_ids else "none",
+                "overlap_status": "not_checked_by_build",
                 "quality_status": "accepted",
                 "citation": citation(),
                 "permission_status": "full_rights_obtained",
@@ -2516,6 +2632,9 @@ def build_formosanbank_xml(cfg: dict[str, Any]) -> None:
             # NB: automated S with this id were skipped above, so for an override
             # the id is NOT yet in seen_ids and the manual copy is appended here.
             seen_ids.add(sid)
+            key = (sid, tuple(w.findtext("FORM[@kindOf='original']", "") for w in manual_s.findall("W")))
+            if key in manual_source_glosses:
+                _add_manual_source_word_glosses(manual_s, manual_source_glosses[key])
             root.append(manual_s)
             index_rows.append({
                 "xml_file": rel(xml_path),
@@ -2703,7 +2822,7 @@ def validate_formosanbank_xml(cfg: dict[str, Any]) -> None:
     failures = []
     for path in xml_dir.rglob("*") if xml_dir.exists() else []:
         if path.is_file() and path.suffix != ".xml":
-            failures.append(f"Final_XML contains non-XML file: {rel(path)}")
+            failures.append(f"XML contains non-XML file: {rel(path)}")
     for xml in xml_files:
         failures.extend(_validate_xml_file(xml, index_ids, cfg))
 
@@ -2784,167 +2903,6 @@ def validate_formosanbank_xml(cfg: dict[str, Any]) -> None:
     log("validate_formosanbank_xml", "validation PASS")
 
 
-def generate_reports(cfg: dict[str, Any]) -> None:
-    """Regenerate the dev-repo sidecar reports.
-
-    WARNING: this step writes ROOT/README.md with the *dev-repo* README
-    text. Inside the published corpus (Corpora/Nowbucyang-Truku-Thesis)
-    ROOT is the CodeAndDocs parent, so running it would clobber the
-    corpus README. make_xml.sh deliberately does not call it.
-    """
-    ensure_dirs()
-    pages = read_csv_dicts(ROOT / "data/processed/pages.csv")
-    raw = read_jsonl(ROOT / "data/processed/examples_raw.jsonl")
-    clean = read_jsonl(ROOT / "data/processed/examples_clean.jsonl")
-    eligible = read_jsonl(ROOT / "data/processed/quality_filtered_examples.jsonl")
-    rejected = read_csv_dicts(ROOT / "data/processed/rejected_records.csv")
-    xml_index = read_csv_dicts(ROOT / "data/processed/xml_index.csv")
-    tables = read_csv_dicts(ROOT / "data/processed/morphology_tables.csv")
-    alignment_audit = read_csv_dicts(ROOT / "data/processed/gloss_alignment_audit.csv")
-    xml_path = ROOT / cfg["xml"]["output_dir"] / cfg["xml"]["language_folder"] / cfg["xml"]["output_file"]
-    xml_counts = {"S": 0, "W": 0, "M": 0, "FORM": 0, "TRANSL": 0}
-    if xml_path.exists():
-        xml_root = ET.parse(xml_path).getroot()
-        for key in xml_counts:
-            xml_counts[key] = len(xml_root.findall(key if key == "S" else f".//{key}"))
-
-    def coverage(rows: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
-        counts = Counter(str(r.get(key, "") or "unknown") for r in rows)
-        return [{key: k, "record_count": v} for k, v in sorted(counts.items())]
-
-    write_csv(ROOT / "data/processed/coverage_by_page.csv", coverage(clean, "page_number_one_based"), ["page_number_one_based", "record_count"])
-    write_csv(ROOT / "data/processed/coverage_by_chapter.csv", coverage(clean, "chapter_number"), ["chapter_number", "record_count"])
-    write_csv(ROOT / "data/processed/coverage_by_section.csv", coverage(clean, "section_number"), ["section_number", "record_count"])
-    w_m_sentence_count = sum(1 for r in alignment_audit if int(r.get("word_count_emitted") or 0) > 0)
-    morph_gloss_sentence_count = sum(1 for r in alignment_audit if r.get("alignment_status") == "morpheme_aligned")
-    word_gloss_sentence_count = sum(1 for r in alignment_audit if r.get("alignment_status") == "word_gloss_aligned")
-    words_only_sentence_count = sum(1 for r in alignment_audit if r.get("alignment_status") == "words_only")
-    type_rows = [
-        {"example_type": "xml_eligible", "record_count": len(eligible)},
-        {"example_type": "rejected", "record_count": len(rejected)},
-        {"example_type": "with_gloss", "record_count": sum(1 for r in clean if r.get("gloss_line_clean"))},
-        {"example_type": "xml_with_w_m", "record_count": w_m_sentence_count},
-        {"example_type": "xml_with_morpheme_level_glosses", "record_count": morph_gloss_sentence_count},
-        {"example_type": "xml_with_word_level_glosses", "record_count": word_gloss_sentence_count},
-        {"example_type": "xml_words_only_no_reliable_gloss_alignment", "record_count": words_only_sentence_count},
-        {"example_type": "table_sidecar_rows", "record_count": len(tables)},
-    ]
-    write_csv(ROOT / "data/processed/coverage_by_example_type.csv", type_rows, ["example_type", "record_count"])
-
-    import_lines = [
-        "# Import Report",
-        "",
-        f"- Source: {SOURCE_ID}",
-        f"- Final XML path: `Final_XML/{cfg['xml']['language_folder']}/{cfg['xml']['output_file']}`",
-        f"- XML S elements ready for import: {len(xml_index)}",
-        f"- XML W elements emitted: {xml_counts['W']}",
-        f"- XML M elements emitted: {xml_counts['M']}",
-        f"- Sentence records with W/M: {w_m_sentence_count}",
-        f"- Sentence records with morpheme-level source glosses: {morph_gloss_sentence_count}",
-        f"- Sentence records with word-level gloss translations: {word_gloss_sentence_count}",
-        f"- Sentence records with W/M but no reliable source gloss alignment: {words_only_sentence_count}",
-        "- Machine translation used: no",
-        "- OCR used in XML: no",
-        "- Source glosses are encoded only as morpheme-level `M/TRANSL` where alignment is reliable; unaligned W/M forms are left unglossed and documented in `data/processed/gloss_alignment_audit.csv`.",
-        "- Morphology tables are preserved as sidecars and excluded from sentence XML unless they yielded an XML-eligible example.",
-        "- Slash-option expansions and parenthesized examples that need human translation/QC review are listed in `data/processed/manual_qc_slash_options.txt` and `data/processed/manual_qc_parentheses.txt`.",
-        "- Final_XML cleanliness: checked by `scripts/pipeline.py --step validate_formosanbank_xml`.",
-        "- FormosanBank punctuation/structure QC passes. Source segmentation is preserved in original S/W forms; sentence-level standard forms are de-segmented for standardized search/use.",
-        "",
-        "Import status: ready for FormosanBank import if `validation_report.md` final summary remains PASS.",
-    ]
-    (ROOT / "data/processed/import_report.md").write_text("\n".join(import_lines) + "\n", encoding="utf-8")
-
-    qc_lines = [
-        "# XML Quality Review",
-        "",
-        "## Reference Comparison",
-        "",
-        "- Requested reference path `/Users/hunterschep/FormosanBankRepos/Formosan-Rik-Bunun` was not present locally.",
-        "- Installed Rik De Busser reference inspected: `/Users/hunterschep/FormosanBankRepos/Formosan-Bunun-Debusser-Dissertation/Final_XML/Bunun/Bunun.xml`.",
-        "- Matching conventions adopted: `TEXT` root, direct `S` children only, `S/W/M` IDs only, one `FORM kindOf=\"original\"` at each S/W/M tier with optional `FORM kindOf=\"standard\"`, and `TRANSL` with only `xml:lang`.",
-        "- No `class`, `sclass`, `NOTE`, or `AUDIO` elements are emitted in this corpus XML.",
-        "- The thesis source identifies the orthography as Ortho94. FormosanBank XSD only allows `original`, `standard`, and `alternate` in `FORM@kindOf`, so Ortho94 is recorded in sidecar metadata and the `TEXT@source` attribute rather than as a `kindOf` value.",
-        "",
-        "## Current XML Counts",
-        "",
-        f"- S: {xml_counts['S']}",
-        f"- W: {xml_counts['W']}",
-        f"- M: {xml_counts['M']}",
-        f"- FORM: {xml_counts['FORM']}",
-        f"- TRANSL: {xml_counts['TRANSL']}",
-        f"- Sentences with W/M: {w_m_sentence_count}",
-        f"- Sentences with morpheme-level source glosses: {morph_gloss_sentence_count}",
-        f"- Sentences with word-level gloss translations: {word_gloss_sentence_count}",
-        f"- Sentences with W/M but no reliable source gloss alignment: {words_only_sentence_count}",
-        "",
-        "## Gloss Policy",
-        "",
-        "- Sentence-level `TRANSL xml:lang=\"zho\"` contains only source-published Chinese free translations.",
-        "- Morpheme-level `TRANSL xml:lang=\"zho\"` contains source gloss parts only when the source gloss morpheme sequence aligns to the XML form morphemes.",
-        "- Word-level `TRANSL` is not emitted for source glosses; when morpheme-level alignment is not reliable, W/M forms are left unglossed rather than placing Leipzig glosses at W.",
-        "- If source glosses still do not align after safe normalization, W/M forms are emitted without invented gloss translations; the reason is recorded in `gloss_alignment_audit.csv`.",
-        "- Sentence-level `FORM kindOf=\"original\"` and W-level `FORM` values preserve source segmentation (`-`, `=`, `<...>`, `Ø`) where present. Sentence-level `FORM kindOf=\"standard\"` removes segmentation/null/parenthetical markers conservatively.",
-        "- Slash options are preserved in XML original forms when the alternatives are grammatical; starred alternatives are omitted. The source free translation is kept unchanged and flagged in `manual_qc_slash_options.txt` for hand QC.",
-        "- Parentheses are not used as a blanket rejection criterion. Parenthesized examples are included when otherwise XML-eligible and flagged in `manual_qc_parentheses.txt`.",
-        "",
-        "## Validation",
-        "",
-        "- `scripts/pipeline.py --step validate_formosanbank_xml` passed with zero failures.",
-        "- `/Users/hunterschep/FormosanBankRepos/FormosanBank/QC/validation/validate_xml.py by_path --path Final_XML` passed with zero issues.",
-        "- `/Users/hunterschep/FormosanBankRepos/FormosanBank/QC/validation/validate_glosses.py Final_XML --check_morpho` found no W-count mismatches. Its M-count heuristic reports expected infix reanalysis cases where one source W form is intentionally represented as a discontinuous base M plus an infix M; the current QC run reports 21 such cases in `logs/formosan_qc/glosses/validation_m_mismatches.csv`.",
-        "- `/Users/hunterschep/FormosanBankRepos/FormosanBank/QC/validation/validate_punct.py by_path --path Final_XML` exited 0 and reported PASS.",
-    ]
-    (ROOT / "data/processed/xml_quality_review.md").write_text("\n".join(qc_lines) + "\n", encoding="utf-8")
-
-    orthography_lines = [
-        "# Orthography Report",
-        "",
-        "- Source orthography: Ortho94, as noted in the thesis/source review comments.",
-        "- XML handling: sentence-level `FORM kindOf=\"original\"` and W-level `FORM` keep source segmentation. Sentence-level `FORM kindOf=\"standard\"` removes segmentation/null/parenthetical markers conservatively.",
-        "- XSD constraint: FormosanBank `FORM@kindOf` only permits `original`, `standard`, or `alternate`; `Ortho94` is therefore recorded in `TEXT@source` and this sidecar report, not as a `kindOf` value.",
-        "- Null `Ø` markers are preserved in original S/W forms where present and removed from sentence-level standard forms.",
-        "- No machine translation or OCR-derived text is used in XML.",
-    ]
-    (ROOT / "data/processed/orthography_report.md").write_text("\n".join(orthography_lines) + "\n", encoding="utf-8")
-
-    readme = [
-        "# Formosan-Lowking-Truku-WordFormation",
-        "",
-        "This package extracts XML-eligible Truku linguistic examples from Lowking Wei-Cheng Hsu / 許韋晟, 2008, 太魯閣語構詞法研究 [Word Formation in Truku].",
-        "",
-        "The workflow uses qpdf decryption and PDF text-layer extraction (`pdftotext -layout`, PyMuPDF, pdfplumber). OCR was not used.",
-        "",
-        "Final validated XML is under `Final_XML/Truku/`, with `xml:lang=\"trv\"`. Raw PDFs, extracted text, page images, parser sidecars, gloss records, morphology-table records, reports, and scripts are outside `Final_XML/`.",
-        "",
-        "The XML includes sentence-level Truku/Chinese pairs and W/M gloss annotation for source examples whose Truku word tokens align reliably with the source gloss line. Alignment skips are documented in `data/processed/gloss_alignment_audit.csv`.",
-        "",
-        "The thesis/source review notes Ortho94 orthography. Because FormosanBank XML only permits `original`, `standard`, and `alternate` as `FORM@kindOf` values, Ortho94 is recorded in `TEXT@source` and `data/processed/orthography_report.md`.",
-        "",
-        "Manual QC lists for slash-option translations and parenthesized examples are in `data/processed/manual_qc_slash_options.txt` and `data/processed/manual_qc_parentheses.txt`.",
-        "",
-        "Run the pipeline step-by-step with the commands listed in `scripts/config.yaml` and the project prompt, ending with:",
-        "",
-        "```bash",
-        "python3 scripts/pipeline.py --step validate_formosanbank_xml --config scripts/config.yaml",
-        "python3 scripts/pipeline.py --step generate_reports --config scripts/config.yaml",
-        "```",
-    ]
-    (ROOT / "README.md").write_text("\n".join(readme) + "\n", encoding="utf-8")
-
-    manifest_rows = []
-    for base in [ROOT / "data", ROOT / "Final_XML", ROOT / "scripts", ROOT / "README.md"]:
-        paths = [base] if base.is_file() else sorted(p for p in base.rglob("*") if p.is_file())
-        for path in paths:
-            manifest_rows.append({
-                "path": rel(path),
-                "sha256": sha256_file(path),
-                "bytes": path.stat().st_size,
-            })
-    write_csv(ROOT / "data/processed/manifest.csv", manifest_rows, ["path", "sha256", "bytes"])
-    log("generate_reports", f"generated reports and manifest with {len(manifest_rows)} files")
-
-
 STEP_FUNCS = {
     "inspect_pdf": inspect_pdf,
     "decrypt_pdf": decrypt_pdf,
@@ -2961,7 +2919,6 @@ STEP_FUNCS = {
     "dedupe_against_formosanbank": dedupe_against_formosanbank,
     "build_formosanbank_xml": build_formosanbank_xml,
     "validate_formosanbank_xml": validate_formosanbank_xml,
-    "generate_reports": generate_reports,
 }
 
 

@@ -479,6 +479,14 @@ def main(args, langs):
         for corp in corpus.keys():
             if corpus[corp]:
                 o_info = extract_orthographic_info(corpus[corp])
+                if not o_info['character_frequency']:
+                    # Characters seen fewer than 5 times are dropped as noise, so a group with very little text
+                    # (Poinsot's Amis/Coastal file: "alomdas podok") is left with no characters at all; plotting
+                    # that crashed. Skip the group, and write no orthographic_info, so validate_orthography.py
+                    # skips it too.
+                    print(f"WARNING: {language} / {corp}: too little text to profile "
+                          f"({len(corpus[corp].split())} words; no character occurs 5 times). Skipped.")
+                    continue
                 if args.by_dialect:
                     output_folder = os.path.join(logs_dir, language, corp)
                 else:
