@@ -1190,10 +1190,15 @@ Four constraints, and they are the entry:
   `(rule, file, location)`.
 - **No wildcards.** Exact `(rule_id, file, location)` only.
 - **Only judgement rules may be waived** — `WAIVABLE_RULES` in
-  `QC/validation/_waivers.py`, today `{V129}`. A structural finding (schema,
+  `QC/validation/_waivers.py`, today `{V129, V145}`. A structural finding (schema,
   ids, tier relationships) states a fact about the XML that is fixable by
   definition, so a waiver there is always the wrong tool. Adding an id to
   that set is a policy decision made in its own pull request.
+  (Amended 2026-11-07: V145 added. Maintainer, on the Wild-Lehmann Kanakanavu
+  decision page, round 6: *"Approve a shared change: add V145 to the waivable
+  rules (QC/validation/_waivers.py) and amend POL-054, in its own FormosanBank
+  pull request; then waive it here"*. V145 stays HARD; a waiver covers one
+  file and states its reason.)
 
 `python QC/validation/waivers.py propose --csv <findings.csv>` appends the
 mechanical half (rule, file, location) as `TODO` rows for a human to justify;
