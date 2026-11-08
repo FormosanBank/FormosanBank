@@ -1,0 +1,424 @@
+{
+  "description": "Source example fields that were parsed but excluded from XML because they do not have the non-empty Amis FORM and translation required by FormosanBank.",
+  "rejected_example_count": 22,
+  "examples": [
+    {
+      "source_ordinal": 2185,
+      "source_file": "_sources/amis-moedict/docs/s/c.json",
+      "entry_title": "c",
+      "definition": "阿美語輔音之一。",
+      "raw_example": "￹￺￻處在詞終時略有送氣，讀如〔7`h~ 〕。",
+      "cleaned_form": "",
+      "cleaned_final_translation": "處在詞終時略有送氣，讀如〔7h 〕。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 2185
+      }
+    },
+    {
+      "source_ordinal": 4848,
+      "source_file": "_sources/amis-moedict/docs/s/e.json",
+      "entry_title": "e",
+      "definition": "阿美語元音之一，屬元音，音值為〔∂〕。",
+      "raw_example": "￹￺￻如`'efa~（馬）讀如`'~`f~`a~ ， e`n~e`m~（六）讀如`'~`n~e`m~。",
+      "cleaned_form": "",
+      "cleaned_final_translation": "如'efa（馬）讀如'fa， enem（六）讀如'nem。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 4848
+      }
+    },
+    {
+      "source_ordinal": 7456,
+      "source_file": "_sources/amis-moedict/docs/s/kaadayayen.json",
+      "entry_title": "kaadayayen",
+      "definition": "Ka'ada'adaan",
+      "raw_example": "￹部落名。今台東縣關山鎮電光里。￺￻",
+      "cleaned_form": "部落名。今台東縣關山鎮電光里。",
+      "cleaned_final_translation": "",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "cjk_in_form_unsplittable"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 2,
+        "example_index": 1,
+        "source_ordinal": 7456
+      }
+    },
+    {
+      "source_ordinal": 15392,
+      "source_file": "_sources/amis-moedict/docs/s/malilafangay.json",
+      "entry_title": "malilafangay",
+      "definition": "指挽留招待的（客人）。",
+      "raw_example": "￹￺￻",
+      "cleaned_form": "",
+      "cleaned_final_translation": "",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 2,
+        "example_index": 2,
+        "source_ordinal": 15392
+      }
+    },
+    {
+      "source_ordinal": 22046,
+      "source_file": "_sources/amis-moedict/docs/s/midatengan.json",
+      "entry_title": "midatengan",
+      "definition": "指摘下來的菜及其地方。",
+      "raw_example": "￹￺￻你採了什麼菜?",
+      "cleaned_form": "",
+      "cleaned_final_translation": "你採了什麼菜?",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 2,
+        "example_index": 2,
+        "source_ordinal": 22046
+      }
+    },
+    {
+      "source_ordinal": 22071,
+      "source_file": "_sources/amis-moedict/docs/s/midemak.json",
+      "entry_title": "midemak",
+      "definition": "做事，工作，從事活動。",
+      "raw_example": "￹￺￻您在何處工作?",
+      "cleaned_form": "",
+      "cleaned_final_translation": "您在何處工作?",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 2,
+        "source_ordinal": 22071
+      }
+    },
+    {
+      "source_ordinal": 29929,
+      "source_file": "_sources/amis-moedict/docs/s/misaki'emeran.json",
+      "entry_title": "misaki'emeran",
+      "definition": "",
+      "raw_example": "￹￺￻他多什麼東西出力使勁呢？",
+      "cleaned_form": "",
+      "cleaned_final_translation": "他多什麼東西出力使勁呢？",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 2,
+        "definition_index": 2,
+        "example_index": 1,
+        "source_ordinal": 29929
+      }
+    },
+    {
+      "source_ordinal": 31354,
+      "source_file": "_sources/amis-moedict/docs/s/miso'emay.json",
+      "entry_title": "miso'emay",
+      "definition": "含著，口含著。",
+      "raw_example": "￹￺￻",
+      "cleaned_form": "",
+      "cleaned_final_translation": "",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 2,
+        "source_ordinal": 31354
+      }
+    },
+    {
+      "source_ordinal": 32399,
+      "source_file": "_sources/amis-moedict/docs/s/n.json",
+      "entry_title": "n",
+      "definition": "阿美語輔音之一。",
+      "raw_example": "￹￺￻屬舌尖中濁鼻音，音值為[ n ]。",
+      "cleaned_form": "",
+      "cleaned_final_translation": "屬舌尖中濁鼻音，音值為[ n ]。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 32399
+      }
+    },
+    {
+      "source_ordinal": 32487,
+      "source_file": "_sources/amis-moedict/docs/s/nanawang.json",
+      "entry_title": "nanawang",
+      "definition": "遊蕩，玩耍。",
+      "raw_example": "￹娛樂，遊戲，自娛，遊玩。￺￻",
+      "cleaned_form": "娛樂，遊戲，自娛，遊玩。",
+      "cleaned_final_translation": "",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "cjk_in_form_unsplittable"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 32487
+      }
+    },
+    {
+      "source_ordinal": 32555,
+      "source_file": "_sources/amis-moedict/docs/s/nano…taha….json",
+      "entry_title": "nano…taha…",
+      "definition": "表示時間的起訖。",
+      "raw_example": "￹￺￻從…至…，自從…到 …。",
+      "cleaned_form": "",
+      "cleaned_final_translation": "從…至…，自從…到 …。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 32555
+      }
+    },
+    {
+      "source_ordinal": 32956,
+      "source_file": "_sources/amis-moedict/docs/s/o.json",
+      "entry_title": "o",
+      "definition": "阿美語母音之一。",
+      "raw_example": "￹￺￻屬舌面圓唇母音，音值為[ o ~ u ]，有[ u、o ]等變體。",
+      "cleaned_form": "",
+      "cleaned_final_translation": "屬舌面圓唇母音，音值為[ o u ]，有[ u、o ]等變體。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 32956
+      }
+    },
+    {
+      "source_ordinal": 33014,
+      "source_file": "_sources/amis-moedict/docs/s/p.json",
+      "entry_title": "p",
+      "definition": "阿美語輔音之一。",
+      "raw_example": "￹￺￻屬雙唇清塞音，不送氣，音值為[ p ]。",
+      "cleaned_form": "",
+      "cleaned_final_translation": "屬雙唇清塞音，不送氣，音值為[ p ]。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 33014
+      }
+    },
+    {
+      "source_ordinal": 34743,
+      "source_file": "_sources/amis-moedict/docs/s/palayapay.json",
+      "entry_title": "palayapay",
+      "definition": "Palayapay",
+      "raw_example": "￹部落名稱。今台灣台東縣鹿野鄉和平部落。￺￻",
+      "cleaned_form": "部落名稱。今台灣台東縣鹿野鄉和平部落。",
+      "cleaned_final_translation": "",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "cjk_in_form_unsplittable"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 3,
+        "example_index": 1,
+        "source_ordinal": 34743
+      }
+    },
+    {
+      "source_ordinal": 35031,
+      "source_file": "_sources/amis-moedict/docs/s/pangcah.json",
+      "entry_title": "pangcah",
+      "definition": "阿美族人自稱之一(由日語的番人和閩南語番社的諧音而來)。",
+      "raw_example": "￹`O~ `nani~ 番人 `a~ `sowal~ `no~ `Dipon~ `ko~ `Pangcah~ `hananay~.￺￻Pangcah 是由日語番人諧音的借詞。",
+      "cleaned_form": "O nani 番人 a sowal no Dipon ko Pangcah hananay.",
+      "cleaned_final_translation": "Pangcah 是由日語番人諧音的借詞。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "cjk_in_form_unsplittable"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 2,
+        "source_ordinal": 35031
+      }
+    },
+    {
+      "source_ordinal": 35128,
+      "source_file": "_sources/amis-moedict/docs/s/papaadadaen.json",
+      "entry_title": "papaadadaen",
+      "definition": "指要傳染疾病的（人）。",
+      "raw_example": "￹`Papaadadaen~ 久no ci`lifong~ay `tamdaw~.￺￻傳染疾病的人。",
+      "cleaned_form": "Papaadadaen 久no cilifongay tamdaw.",
+      "cleaned_final_translation": "傳染疾病的人。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "cjk_in_form_unsplittable"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 2,
+        "example_index": 1,
+        "source_ordinal": 35128
+      }
+    },
+    {
+      "source_ordinal": 45515,
+      "source_file": "_sources/amis-moedict/docs/s/sapitenep.json",
+      "entry_title": "sapitenep",
+      "definition": "補貼，補充。",
+      "raw_example": "￹補充，充實。￺￻",
+      "cleaned_form": "補充，充實。",
+      "cleaned_final_translation": "",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "cjk_in_form_unsplittable"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 45515
+      }
+    },
+    {
+      "source_ordinal": 47837,
+      "source_file": "_sources/amis-moedict/docs/s/tangli.json",
+      "entry_title": "tangli",
+      "definition": "老闆，師傅。",
+      "raw_example": "￹￺￻〔閩南話借詞〕 。",
+      "cleaned_form": "",
+      "cleaned_final_translation": "〔閩南話借詞〕。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 47837
+      }
+    },
+    {
+      "source_ordinal": 48876,
+      "source_file": "_sources/amis-moedict/docs/s/tingsi.json",
+      "entry_title": "tingsi",
+      "definition": "鍋鏟，鐵鏟。",
+      "raw_example": "￹￺￻〔閩南語借詞〕 。",
+      "cleaned_form": "",
+      "cleaned_final_translation": "〔閩南語借詞〕。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 48876
+      }
+    },
+    {
+      "source_ordinal": 49261,
+      "source_file": "_sources/amis-moedict/docs/s/w.json",
+      "entry_title": "w",
+      "definition": "阿美語輔音之一，屬雙唇濁半母音。",
+      "raw_example": "￹￺￻音值為[ w ]。",
+      "cleaned_form": "",
+      "cleaned_final_translation": "音值為[ w ]。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 49261
+      }
+    },
+    {
+      "source_ordinal": 49389,
+      "source_file": "_sources/amis-moedict/docs/s/x.json",
+      "entry_title": "x",
+      "definition": "阿美語的輔音之一。",
+      "raw_example": "￹￺￻屬舌面後清擦音，音值[ x ]。",
+      "cleaned_form": "",
+      "cleaned_final_translation": "屬舌面後清擦音，音值[ x ]。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 49389
+      }
+    },
+    {
+      "source_ordinal": 49395,
+      "source_file": "_sources/amis-moedict/docs/s/y.json",
+      "entry_title": "y",
+      "definition": "阿美語的輔音之一。",
+      "raw_example": "￹￺￻屬舌面中濁半母音，音值為[ j ]。",
+      "cleaned_form": "",
+      "cleaned_final_translation": "屬舌面中濁半母音，音值為[ j ]。",
+      "cleaned_middle_translation": "",
+      "reject_reasons": [
+        "empty_form"
+      ],
+      "notes": {
+        "heteronym_index": 1,
+        "definition_index": 1,
+        "example_index": 1,
+        "source_ordinal": 49395
+      }
+    }
+  ]
+}

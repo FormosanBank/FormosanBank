@@ -1,0 +1,5 @@
+# tests/corpora/test_xml_dir_holds_only_xml.py: a published XML/ tree holds
+# only .xml files. Corpora listed here predate the rule and still carry
+# tracked report files inside XML/. The list only shrinks: delete a corpus's
+# line in the PR that removes its stray files. A new corpus is never added.
+ePark

@@ -155,6 +155,13 @@
    ]
   },
   {
+   "source_row": 122,
+   "raw_form": "pasagoualalingaua ng",
+   "output_form": "pasagoualalingauang",
+   "notes": "The source's table cell wraps this word across two lines (pasagoualalingaua / ng); it is one word, as van der Vlis prints it.",
+   "ruling": "maintainer 2026-10-15, decision page round 5 (PDF p. 9 shown): fix to one word"
+  },
+  {
    "source_row": 147,
    "raw_form": "sangia [Adelaar: final 'a' unexplained]",
    "output_form": "sangia",
@@ -775,11 +782,11 @@
  "alternate_form_rules": {
   "strip_bracketed": true,
   "drop_text_after_headword": true,
-  "reason": "Van der Vlis's own infix parses are not published -- the corpus follows Joby -- so text following the headword is dropped, and with it the spellings inside those parses, which are in his orthography rather than the manuscript's.",
+  "reason": "Van der Vlis's own infix parses are not published -- the corpus follows Joby -- so text following the headword is dropped, and with it the spellings inside those parses, which are in his orthography rather than the manuscript's. A keep_tail row publishes the text after the headword instead.",
   "keep_tail": [
    {
     "source_row": 1060,
-    "reason": "`vuxot` is a second spelling, not a parse."
+    "reason": "`vuxot` is a second spelling, not a parse. Van der Vlis's cell has `vougot` and `vuxot` on separate lines (PDF p. 75); only the second spelling, the text after the headword, is published (maintainer 2026-10-15, decision page round 5)."
    }
   ],
   "drop_entirely": [

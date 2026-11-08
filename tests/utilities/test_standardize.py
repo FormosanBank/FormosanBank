@@ -793,6 +793,70 @@ def test_standardize_skips_c012_for_unsegmented_sentence(tmp_path):
     assert _std_text(root) == "Proto-Austronesian ka-en"
 
 
+# --- C012: infix brackets (2026-11-08) ---------------------------------------
+#
+# Infix brackets on a word -- ASCII k<um>a'en (POL-014) or the guillemets a
+# source prints, k‹um›a'en -- are segmentation markup, stripped from the
+# S-level standard FORM wherever C012 runs, keeping the infix. Where C012 does
+# not run (no M tier: running prose), they are left alone.
+
+def _infix_xml(sentence, word="x", lang="ami", with_m=True):
+    m = '<M id="M1"><FORM kindOf="original">x</FORM></M>' if with_m else ""
+    return ('<TEXT id="t" citation="c" copyright="c" xml:lang="%s">'
+            '<S id="S1"><FORM kindOf="original">%s</FORM>'
+            '<W id="W1"><FORM kindOf="original">%s</FORM>%s</W></S></TEXT>'
+            % (lang, sentence, word, m))
+
+
+def test_c012_strips_ascii_infix_brackets(tmp_path):
+    root = _write_collection(tmp_path, _infix_xml("ka-k&lt;um&gt;a'en-an ni ofad."))
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "kakuma'enan ni ofad."
+
+
+def test_c012_strips_guillemet_infix_brackets(tmp_path):
+    root = _write_collection(tmp_path, _infix_xml("q‹um›uni=isu tangi?", lang="ckv"))
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "qumuniisu tangi?"
+
+
+def test_c012_strips_infix_brackets_where_hyphen_is_a_letter(tmp_path):
+    """Thao keeps '-' as a letter; its infix brackets still go."""
+    root = _write_collection(tmp_path, _infix_xml("masa q&lt;m&gt;aʃiʃi ðaʃuq.", lang="ssf"))
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "masa qmaʃiʃi ðaʃuq."
+
+
+def test_c012_leaves_infix_brackets_in_unsegmented_prose(tmp_path):
+    """No M tier (e.g. a Wikipedia article about infixes): untouched."""
+    xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="tay">'
+           '<S id="S1"><FORM kindOf="original">say t‹m›aroq cikay</FORM></S></TEXT>')
+    root = _write_collection(tmp_path, xml)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "say t‹m›aroq cikay"
+
+
+def test_c012_infix_brackets_kept_on_word_tier(tmp_path):
+    root = _write_collection(tmp_path, _infix_xml("k&lt;um&gt;a'en", word="k&lt;um&gt;a'en"))
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    tree = ET.parse(root / "XML" / "t.xml")
+    assert tree.find(".//S/FORM[@kindOf='standard']").text == "kuma'en"
+    assert tree.find(".//W/FORM[@kindOf='standard']").text == "k<um>a'en"
+
+
+def test_c012_leaves_free_standing_angle_brackets(tmp_path):
+    """Brackets that do not touch a word are not infix notation."""
+    root = _write_collection(tmp_path, _infix_xml("taininia &lt;ahlaina&gt;? a &gt; b"))
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "taininia <ahlaina>? a > b"
+
+
 # --- C012: --segmented-without-m-tier (opt-in, off by default) ----------------
 #
 # The M tier is C012's proxy for "this sentence is morpheme-segmented". A

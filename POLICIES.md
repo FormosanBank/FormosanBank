@@ -61,12 +61,11 @@ recommendation). Cite the ID rather than re-deciding the question.
 
 This file (`FormosanBank/POLICIES.md`) is **canonical** — it versions together
 with the code that implements the rulings, and entries cite rule IDs and
-scripts by name. A rendered copy is published in the GitBook at
-`en-us/the-bank-architecture/policies.md` with a header marking it as synced;
-the GitBook repo regenerates it with `python sync_upstream_docs.py`, and its
-`tests/test_upstream_doc_sync.py` drift check (a byte-comparison against a
-FormosanBank checkout) fails when the copy diverges. The GitBook's
-[FormosanBank XML Format](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/formosanbank-xml-format)
+scripts by name. The documentation site renders it as a page
+([FormosanBank Policies](https://formosanbank.github.io/FormosanBank/the-bank-architecture/policies/)) every time
+the site is built, so there is no copy to drift (until 2026-10 a synced copy
+lived in the separate GitBook repo, policed by a drift test). The site's
+[FormosanBank XML Format](https://formosanbank.github.io/FormosanBank/the-bank-architecture/formosanbank-xml-format/)
 page remains the narrative description of the format; where it states a
 convention, the matching POL entry cites it rather than duplicating prose.
 
@@ -254,6 +253,25 @@ constraint without UPA violations.
 from a missing FORM = never transcribed). Not counted as a token.
 `standardize.py` preserves it when duplicating original → standard.
 
+**Amended 2026-10-17.** `<UNCLEAR/>` is the bank's one marker for this, at
+every level (S, W and M FORM, and PHON). A source's own marker for an
+untranscribed word (NTU's `X` / `XX`) is replaced by `<UNCLEAR/>`. A FORM that
+is nothing but `<UNCLEAR/>` has no lower tiers: an S whose FORM is only
+`<UNCLEAR/>` has no W, and a W whose FORM is only `<UNCLEAR/>` has no M. Word
+counts read the whole FORM, so words after an inline `<UNCLEAR/>` are counted
+and the gap is not. A sentence translation that is wholly unknown is not
+emitted (no TRANSL); a word or morpheme gloss that is wholly unknown is
+`<TRANSL><UNCLEAR/></TRANSL>`. Inside a gloss, an unknown piece is
+`<UNCLEAR/>` (`if-main-<UNCLEAR/>-outsider-nom`). A source's mark of
+uncertainty about a gloss it did give (`LIG?`, `他?`) is kept as written.
+Maintainer (2026-10-17, Unknown-Content Markers review): NTU's untranscribed
+words → *"A. All tiers"*; *"Keep the tag"* (not a text marker); *"if the
+translation is unknown (? or ?? etc), we shouldn't use <UNCLEAR/> but actually
+just not emit a translation. Similarly <UNCLEAR /> FORM text should not result
+in lower tiers. So if the S FORM is simply <UNCLEAR/>, no Ws. If the W FORM is
+<UNCLEAR />, no Ms under it."*, read as *"B. Glosses UNCLEAR; sentence
+translations omitted"*; wording approved.
+
 ### POL-022 · RULED · 2026-08-10 · duplicate sentences
 **Narratives may repeat; reference resources may not.** In narrative and
 spontaneous-speech corpora, exact duplicate sentences are *fine* — natural
@@ -273,7 +291,13 @@ the corpus's CodeAndDocs declares a dedup step* — a leftover duplicate
 then signals a pipeline defect, not a content question. The within-file
 vs cross-file distinction survives as the finding's `scope`.
 
-### POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12)
+### POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12; presence requirement withdrawn 2026-10-17 by POL-057)
+**Withdrawn in part (2026-10-17, POL-057):** the requirement below that every
+W in a parsed sentence gets at least one M no longer applies. A W with no M
+means its segmentation is unknown, which is legitimate. V144 stays as a SOFT
+prompt to confirm such words are deliberately unsegmented; V145 is now HARD.
+The rest of this entry is kept as the record of the original ruling.
+
 **The unit of morphological analysis is the sentence, not the file.** In a
 sentence that carries *some* morphological parsing, **every W gets at least
 one M**; a W with exactly one M there is read as "analyzed as
@@ -293,10 +317,12 @@ others alone are the normal, honest case (YeddaPalemeqBlog: 494 parsed
 sentences, 161 unparsed), and under the file-level reading a single parsed
 sentence turned every unparsed sentence in the file into a finding.
 
-Enforced as SOFT findings in `validate_xml.py`; SOFT because some existing
-corpora trip these and will need fixing over time:
-- **V144** — M-less W inside a *parsed sentence* (per sentence).
-- **V145** — an M level in a file where **no** sentence carries any parsing
+Enforced in `validate_xml.py` (as amended 2026-10-17):
+- **V144** (SOFT) — M-less W inside a *parsed sentence* (per sentence);
+  since POL-057 a prompt to confirm the word is deliberately unsegmented,
+  not a defect.
+- **V145** (HARD since 2026-10-17) — an M level in a file where **no**
+  sentence carries any parsing
   (per **file**, deliberately). "Every M mirrors its W" is evidence of a
   fake tier only in bulk: one short sentence whose words really are
   monomorphemic looks identical to a mirror tier, and single-M Ws are
@@ -306,6 +332,103 @@ corpora trip these and will need fixing over time:
 
 (Resolves the Bunun-Topic-Focus degenerate-single-M question: its 51
 single-M Ws are conforming as long as no W lacks an M.)
+
+### POL-057 · RULED · 2026-10-17 · an M records a morphological analysis
+**M elements record parsing that was actually done.** A W with two or more Ms
+was segmented. A W with exactly **one** M asserts that the word is
+**monomorphemic**. A W with **no** M means its segmentation is unknown. So a W
+gets a single M only "if the source told us it was monomorphemic, or we have
+some other good reason to believe so (ie evidence from data for the same
+dialect)". An M is never created just so that a word has one.
+
+**For maintainers:** build code must not insert a single M for any reason
+other than such an analysis (for example, to satisfy the old POL-023
+requirement). Where a pipeline did that, regenerate without that step. No
+validator checks this. Whether a single M is justified is a linguistic
+judgement, reviewed in the reproduction code.
+
+**Withdraws** POL-023's requirement that every W in a parsed sentence gets at
+least one M. Two POL-023 checks remain: **V144** (SOFT) reports M-less Ws in a
+parsed sentence so the reviewer can confirm they are deliberate, and **V145**
+(HARD) rejects a file that has an M tier but no segmented word anywhere.
+
+Maintainer (2026-10-15): *"a W with a single M is assumed to be monomorphemic.
+So we should only have a W with a single M if the source told us it was
+monomorphemic, or we have some other good reason to believe so (ie evidence
+from data for the same dialect). This overrules a previous policy that insisted
+that all Ws have at least one M. Instead, we leave open having no M in order to
+indicate unknown segmentation. In cases where we previously created a single M
+to respect the old policy, we should regenerate without that M-creation."*
+Maintainer (2026-10-17): *"I wanted to rescind the previous requirement that
+every W have an M. And I wanted a policy (with no validator attached) saying
+that Ms indicate parsing, so a single M means monomorphemic. That's mostly
+instructions to the maintainers."* On the checks: *"V144 as providing SOFT
+warnings can be kept. It's good to be aware that there are missing Ms and
+confirm that's intentional. V145 can be retained. That's a HARD validator,
+please. Formosan languages are not monomorphemic, so if there is an M tier but
+no split words anywhere, that's weird."* Replaces PR #212.
+
+### POL-060 · RULED · 2026-10-14 · words that share one gloss
+**Words the source glosses as one unit are one `W`.** When a source prints a
+single gloss under two or more words, those words form a single `W`: its FORM
+is the words as printed, space-separated, and it carries the gloss once.
+Chang's Seediq grammar, for example, glosses `ani naq` as 雖然, `di ge` as
+的時候 and `kiya ka` as 所以 — each is one `W`. The words are not split into a
+`W` apiece with the gloss on the first and a `∅` placeholder on the rest.
+
+**Why:** the gloss is the source's unit of analysis. Splitting asserts a word
+boundary the analysis does not draw, and the `∅` placeholder looks exactly
+like a word the source leaves unglossed, so a reader cannot tell "this word
+has no gloss" from "this word's gloss is on its neighbour". Maintainer
+(2026-10-14): *"when two words share the same gloss, they get a single <W>
+block. That's a general rule."*
+
+**Consequences.** Its `M` children, if any, follow the segmentation the source
+prints inside the unit (POL-057).
+**V060** (`W_count_matches_word_count`, SOFT) compares the number of `W` with
+the number of whitespace-delimited words in the sentence, so it reports every
+multi-word `W`. That is intended: the SOFT finding asks whoever reviews the
+corpus to confirm each multi-word `W` is deliberate. Raised by: the 2026-10 student review of the Chang 2000 Seediq
+grammar dev repo, where 40 such units had been split.
+
+### POL-061 · RULED · 2026-10-15 · a word with no gloss
+**A word or morpheme the source leaves unglossed is glossed `?`.** When a
+source prints no gloss under a word — and the word does not share its
+neighbour's gloss (POL-060) — its W gloss is `?`, not `∅` and not a missing
+TRANSL. Inside a segmented gloss the missing piece is `?` too: `yee-su`, where
+the source glosses only the pronoun, is `?-你`, and its M `yee` is `?`.
+
+**Why:** `∅` is the null-morpheme marker (POL-012) and asserts a silent
+morpheme, which an unglossed word is not. `?` is already how corpora carry a
+gloss the source itself leaves uncertain (HundredPaiwanStories 356 `?`,
+NTUFormosanCorpus 63 `?`, YeddaPalemeqBlog 2), and for a user the two cases
+read the same: the source does not give this word's meaning. A source's own
+`??` or `?` marker is kept as written (POL-036). Maintainer (2026-10-15):
+*"Where a gloss is missing entirely (not one of the shared cases), we insert
+the gloss `?`, and then treat accordingly. I _think_ ? is used elsewhere for
+uncertain glosses (most likely NTU). If this is confirmed, then make sure it's
+in a policy."* First applied in the Chang Seediq grammar dev repo.
+
+**Amended 2026-10-17 (supersedes the `?` above).** A word or morpheme the
+source leaves unglossed, or glosses `?` / `??`, is glossed `<UNCLEAR/>`
+(POL-021): `yee-su` is `<UNCLEAR/>-你`, and its M `yee` is `<UNCLEAR/>`. This
+covers sources' own `?` and `??` markers too, so POL-036's "kept as written"
+no longer applies to them. Maintainer (2026-10-17): *"For POL-061, it makes
+sense to deliberately gloss someting as having an unknown gloss in order to
+distinguish "forgot to gloss" from "couldn't gloss". But in that case, for
+consistency, let's use <UNCLEAR />"*; sources' own markers → *"B. A + placeholders"*
+(exact `?`/`??` and `?` used as a placeholder inside a gloss).
+
+**Amended 2026-10-18 (whole sentences).** When the source glosses no word of a
+sentence, its words carry no gloss (no TRANSL): the author is not glossing that
+sentence. `<UNCLEAR/>` marks a gloss the source itself marks unknown (`?`, `??`,
+`X`), a word the source leaves unglossed inside a glossed sentence, or a gloss
+FormosanBank cannot work out from the source. Maintainer (2026-10-18): *"It's
+different when the source doesn't gloss an entire sentence. In that case, the
+author simply isn't glossing that sentence. That's very different from the
+uathor marking the gloss as "?" or similar. Or when we, as FormosanBank
+maintainers, can't figure out what the source intended."*; wording approved on
+the Nowbucyang gloss review, round 2.
 
 ### POL-024 · RULED · 2026-08-10 · parentheticals in translations
 Two different things, treated differently:
@@ -338,6 +461,17 @@ attribute carries no information (V151). Glosbe currently carries 4,157
 such S-level `kindOf` attributes; V151 ships SOFT rather than HARD until
 they are remediated (see `claudeplans/2026-09-08-alternate-form-worklist.md`).
 Amended 2026-09-08.
+
+In a dictionary headword entry, each sense after the first is a `ver="alt"` TRANSL.
+
+Alternatives written with a slash inside one translation (`s/he`, `a/the`,
+`if/when`) are alternative translations too: one TRANSL per reading, all but
+the first `ver="alt"`. A slash can also be ordinary text (a list, a fraction,
+a URL), so the check stays SOFT (V122) and each split is made case by case.
+Maintainer ruling, 2026-11-07: *"There should not be slash alternatives in a
+translation. Any test has to be soft rule (slashes might appear for other
+reasons). But generally this should result in alternative translations."*
+Amended 2026-11-07 (maintainer clicked "Approve this paragraph (own PR)").
 
 ### POL-026 · RULED · 2026-08-10 · optional material in examples
 A source sentence with optional words — `x y (z)` — becomes **two S
@@ -423,14 +557,43 @@ allowlist (V084 for TRANSL, V156 for FORM).
   varies. A word-list corpus whose `S` is a word is the S-level case.
 - **Optional material is resolved by scope.** What forces a separate `S`
   block is not whether the variation sits inside a word, but whether the
-  **sentence's word inventory changes**. A whole optional *word* —
-  `x y (z)` — changes the W tier and the gloss alignment, so it becomes two
-  `S` blocks (POL-026), the second taking the first's id plus `-opt`.
-  Optional material that leaves the word count unchanged — `puken-(en)`,
-  `(u)m-lavi`, and equally a whole short word alternating `a`/`u` — becomes
-  a `ver="alt"` variant FORM on the word that varies, never a second
-  sentence.
-  Neither mechanism leaves parentheses in a published FORM.
+  **sentence's word inventory changes, or the glossing does**. A whole
+  optional *word* — `x y (z)` — changes the W tier and the gloss alignment,
+  so it becomes two `S` blocks (POL-026), the second taking the first's id
+  plus `-opt`. An optional *morpheme* becomes separate `S` blocks **when the
+  source glosses it, so the two readings would be glossed differently**:
+  Seediq-Chang's `h-(um)-uwa` is `huwa` 怎樣 or `h-um-uwa` 怎樣-AF, and NTU
+  Bunun's `kangavas(=an)` is `kangavas` 'mango' or `kangavas=an`
+  'mango=MED.NOM'. A variant FORM has no W or M tier of its own, so it
+  cannot carry the second gloss. In the maintainer's words (2026-10-15):
+  *"differences in morphemes necessitate different sentence blocks only if
+  they are glossed and would result in different glossing. Basically, I
+  want the glossing to be clear."* Everything else — optional letters inside
+  a single morpheme, a whole short word alternating `a`/`u`, and an optional
+  morpheme in data whose words carry no glosses (Blust's Thao dictionary
+  examples, the Utrecht word list) — becomes a `ver="alt"` variant FORM on
+  the node that varies, never a second sentence. Neither mechanism leaves
+  parentheses in a published FORM, except as below.
+
+  **Amended 2026-10-15; this supersedes** (POL-050) this bullet's wording as
+  revised 2026-09-09, under which optional material that "leaves the word
+  count unchanged" was always a variant. Raised by the Seediq-Chang audit,
+  where `h-(um)-uwa` (R275) had been made obligatory rather than resolved.
+  Per-corpus rulings on the variants already published are recorded in
+  `claudeplans/2026-10-15-segmentation-variant-worklist.md`.
+
+  **WakelinTexts' parentheses are not optional material** (maintainer,
+  2026-10-15). The article's key defines `( )` only as "in data, probable
+  discrepancy", so `puken-(en)`, `manuyung-(e)`, `(u)m-lavi` and the rest
+  are neither split nor variants: *"The parentheses should be retained in
+  the original tier, removed in the standard tier. ... The reason is that
+  while the author was uncertain, we do not have anything else to go on."*
+  Retained in the **sentence FORM only**: *"sentence FORM only, not the Ws
+  or Ms."* Words, morphemes and the standard tier keep the bracketed
+  letters without the brackets. This supersedes, for this notation only,
+  item 2 of the 2026-09-09 revision above (which resolved Wakelin's
+  original tier like the standard one) and the rule that no published FORM
+  keeps parentheses.
 - **Naming the extra blocks.** Wherever one source cell or sentence yields
   more than one `S` — optional material above, or a competing lexeme — the
   first block keeps its published id and the second takes that id plus
@@ -446,6 +609,8 @@ allowlist (V084 for TRANSL, V156 for FORM).
   applies to them: an `-opt` id is never renumbered afterwards, and a
   later-discovered third reading takes `-opt3` rather than shifting
   anything.
+- ILRDF_Dicts: where the source prints an alternative in parentheses in both the
+  sentence and its translation, the sentence MAY be kept as printed (maintainer ruling 2026-10-16).
 
 ---
 
@@ -519,6 +684,24 @@ should be preserved. A standardized gloss can be added as a separate
 kindOf='standard' translation"); companion to POL-001's source-fidelity
 guarantee, applied to the gloss tier.
 
+### POL-062 · RULED · 2026-08-12 · W/M-level translations are not cleaned
+`clean_xml` normalizes S-level `TRANSL` text but deliberately leaves
+**word- and morpheme-level `TRANSL` (gloss) content alone**. Rationale:
+those tiers are not used for machine translation — they are read by
+humans — so the extra material a source packs into a gloss (etymology,
+root notes, dialect comments, alternative spellings, parenthetical
+asides) is *information to keep*, not noise to strip. A gloss that reads
+`"bring, AV. The root is kacu 'bring'."` stays exactly as the source
+wrote it. Consequences: parentheses, slashes and prose inside W/M
+glosses are not defects (V121/V122-style findings on gloss text are
+review material at most), and gloss standardization remains additive
+(POL-036) — a normalized code is added as a separate
+`TRANSL[@kindOf="standard"]`, never by rewriting the original gloss.
+Raised by: the 2026-08-12 Yedda review, where `clean_xml` was observed
+to skip W/M TRANSL repo-wide; that behavior is intended, not a bug.
+*(Numbered 2026-10-15. Ruled 2026-08-12 and drafted as POL-041 on branch `work/b3-yedda`, which never
+reached main; POL-041 was later assigned to W-tier presence.)*
+
 ### POL-037 · RULED · 2026-08-11 · stable public identifiers
 Published identifiers are **stable**: a `TEXT/@id` must never collide with
 (or be reused from) an already-published `TEXT/@id`, and S/W/M ids —
@@ -529,6 +712,27 @@ silently orphans both. Regeneration pipelines must therefore produce the
 same ids run over run; an id scheme change is a breaking change to
 announce, not a cleanup. Made explicit from the id rules implicit in the
 GitBook XML-format page.
+
+**Clarified 2026-08-12 (maintainer):** the rule is *not* "ids never
+change" — it is **do not change them without a compelling reason, and if
+you do, be very careful about what the change breaks.** Tidiness is not a
+compelling reason: when reworking a published sentence, **keeping the
+original numbering with gaps is preferred over renumbering** (e.g. a
+sentence that loses two words keeps `W1 W2 W5 W8` rather than being
+resequenced `W1…W4`). Beyond external citation, the concrete breakage is
+internal:
+`manual_edits.xml` records are keyed by id (S id, and the W/M ids inside
+the recorded block), so an *upstream* id change — a parser tweak that
+renumbers words, a re-split sentence, an intake script that reorders —
+silently invalidates the matching hand edits. `apply_manual_edits.py`
+will then either no-op (the record's id no longer exists) or apply to
+the wrong sentence, and because the pipeline's step 0 legitimately
+no-ops on already-edited XML (POL-030), a broken record is **hard to
+distinguish from a healthy one**. When an id change is genuinely
+warranted: state the reason, list every changed id in the corpus README,
+re-capture any affected `manual_edits.xml` records against the new ids,
+and verify `apply_manual_edits.py` still reports the expected edit count
+(not a silent rise in no-ops).
 
 ### POL-038 · RULED · 2026-08-11 · data files change only via code
 XML files and raw scrape files are **only ever modified by committed
@@ -613,6 +817,12 @@ licence is not a licence declaration, and free text admits errors no reader
 catches (`CC NC-BY` shipped in RauDong across 20 files). Where a value names no
 version it is 4.0.
 
+**Granted versions are kept (2026-10-16).** Where a rights holder granted a
+specific earlier or ported licence version, that version is kept as granted and
+added to the vocabulary rather than mapped to 4.0 (Virginia_Fey_Dictionary:
+`CC BY-NC 3.0`; Safolu-Amis-Dictionary: `CC BY-NC-SA 3.0 TW`). The "no version
+means 4.0" rule applies only when the grant names no version.
+
 **No exceptions.** A corpus whose rights cannot be expressed as one of these
 values is not published in FormosanBank, however genuine the permission behind
 it. Permission that does not amount to a licence is recorded in the corpus
@@ -651,8 +861,14 @@ structured lines and prose beneath:
 The licence must equal the corpus's `@copyright`; the date is when permission
 was granted or last confirmed. `evidence: ask maintainer` rather than naming a
 system — the evidence store may change, the instruction to a reader will not.
-The prose explains where the right came from and is required but unchecked. The
-GitBook corpus page carries the same licence in its `## Copyright` section.
+The prose explains where the right came from and is required but unchecked.
+
+**Amended 2026-10-18** (supersedes the section name above and the GitBook
+`## Copyright` sentence, per POL-050): the README is now the corpus's only
+documentation, rendered as its page on the documentation site, and the section
+holding these two lines is **`## License`** (layout in POL-055). The two lines,
+their values and their check are unchanged. Maintainer, 2026-10-18: clicked
+"Approve these headings and the three amendments".
 
 **Interrogated at merge.** Any change to a corpus's licence, in either
 direction, fails `.github/workflows/rights-comparison.yaml`, which compares the
@@ -663,8 +879,8 @@ explicit maintainer override, which is deliberately the hardest step in the
 mechanism. There is no label-based bypass; the friction is the control
 (maintainer, 2026-09-05).
 Implemented by: `QC/validation/rights_delta.py`,
-`tests/corpora/test_rights_documentation.py`, and the GitBook repo's
-`manage_corpus_pages.py check --strict`.
+`tests/corpora/test_readme_sections.py` (the `rights` check, using
+`docs/tools/readme_layout.py`), and `docs/tools/manage_corpus_pages.py check --strict`.
 
 ### POL-045 · RULED · 2026-09-05 · audio rights
 **Audio inherits the XML licence.** Audio published for a corpus carries that
@@ -896,10 +1112,13 @@ so the record is machine-readable and can be checked:
 ```
 
 `formosanbank_commit` (a full 40-character SHA) is required; `_note` and `built`
-are optional. The corpus README's reproduction section **links to the file**
-rather than repeating the SHA, so there is one copy to keep current; the GitBook
-page's `## Corpus Processing` section does the same. A SHA transcribed into
-prose is a second copy that drifts.
+are optional. The corpus README's **`## Reproduction and processing`** section
+(under `### How to reproduce`) **links to the file** rather than repeating the
+SHA, so there is one copy to keep current. A SHA transcribed into prose is a
+second copy that drifts. (Amended 2026-10-18, per POL-050: the README is the
+only corpus document, so the former GitBook `## Corpus Processing` copy of this
+link is gone; maintainer clicked "Approve these headings and the three
+amendments".)
 
 **Enforced** by `tests/corpora/test_provenance.py`: the file must exist, parse,
 and carry a well-formed commit, and the README must link it. Corpora that
@@ -980,10 +1199,15 @@ Four constraints, and they are the entry:
   `(rule, file, location)`.
 - **No wildcards.** Exact `(rule_id, file, location)` only.
 - **Only judgement rules may be waived** — `WAIVABLE_RULES` in
-  `QC/validation/_waivers.py`, today `{V129}`. A structural finding (schema,
+  `QC/validation/_waivers.py`, today `{V129, V145}`. A structural finding (schema,
   ids, tier relationships) states a fact about the XML that is fixable by
   definition, so a waiver there is always the wrong tool. Adding an id to
   that set is a policy decision made in its own pull request.
+  (Amended 2026-11-07: V145 added. Maintainer, on the Wild-Lehmann Kanakanavu
+  decision page, round 6: *"Approve a shared change: add V145 to the waivable
+  rules (QC/validation/_waivers.py) and amend POL-054, in its own FormosanBank
+  pull request; then waive it here"*. V145 stays HARD; a waiver covers one
+  file and states its reason.)
 
 `python QC/validation/waivers.py propose --csv <findings.csv>` appends the
 mechanical half (rule, file, location) as `TODO` rows for a human to justify;
@@ -1018,21 +1242,30 @@ finding-based validators get it), `QC/validation/waivers.py`,
 `tests/validators/test_waivers.py`. First user: `Corpora/SEALS33`, whose
 corpus-local `check_hard_findings.py` this replaces (POL-046).
 
-### POL-055 · RULED · 2026-09-09 · corpus documentation
-Every corpus README and every GitBook corpus page carries a
-**`Notes and Issues`** section: the known limitations, source defects,
-unresolved data problems and caveats a user needs *before* using the corpus —
-OCR artifacts left in place, missing audio, hand edits, orthography assumptions.
-Write `None known.` when there are none; the section is never simply absent.
+### POL-055 · RULED · 2026-09-09, amended 2026-10-18 · corpus documentation
+**One document per corpus: its README.** Each corpus is described once, in
+`Corpora/<corpus>/README.md`; the documentation site renders that file as the
+corpus page (registered in `docs/site/corpus_pages.csv`). Its sections, each
+once, in this order (maintainer, 2026-10-18):
 
-**One name.** The section is `Notes and Issues` in both places. Seven GitBook
-pages currently say `Corpus Notes`, one says `Notes` and one `Minor notes`;
-those are legacy spellings to migrate, not alternatives. Nothing lints the name
-today, which is why fixing it needs an entry rather than a convention.
+```
+# <Corpus name>
+## Languages and dialects       (say so when the source does not record the dialect)
+## Source                       (brief description of the source; audio here)
+## Statistics                   (the site inserts the generated table here)
+## How to cite
+## License                      (POL-044's two lines, then the evidence or where to find it)
+## Notes and caveats
+## Reproduction and processing
+### How to reproduce            (usually two .sh files; links provenance.json, POL-052)
+### What each step does         (blow by blow through the scripts)
+```
 
-**Where it goes.** On a GitBook page, immediately after the statistics block and
-before `Access Details` — a caveat a reader meets after the numbers and before
-the download link. In a corpus README, after `Audio`.
+**Notes and caveats** holds the known limitations, source defects, unresolved
+data problems and caveats a user needs *before* using the corpus — OCR artifacts
+left in place, missing audio, hand edits, orthography assumptions, and import
+decisions not everyone would agree with. Write `None known.` when there are
+none; the section is never simply absent.
 
 **What it is not.** Not process history, not a changelog, not the QC findings
 list. It is the short set of things that would mislead someone who compared this
@@ -1041,10 +1274,20 @@ worked example: a dialect whose source does not record schwa, a source that
 writes word-final vowels double, an unglossed particle, and one gloss inferred
 rather than transcribed.
 
-Implemented by: the `port-corpus-in` templates
-(`README.template.md`, `corpus_page.template.md`) and their `{{NOTES_AND_ISSUES}}`
-placeholder. Not yet linted; `manage_corpus_pages.py check` verifies the four
-integration points and not page structure.
+**Amended 2026-10-18** (per POL-050). Supersedes the 2026-09-09 text, which
+required a section named `Notes and Issues` "in both places" (README and GitBook
+page) and placed it after `Audio` in the README and after the statistics block
+on the GitBook page. The README and the GitBook page are merged into the one
+document above; the section is now `Notes and caveats`. Maintainer, 2026-10-18,
+on the format: "Notes & Caveats <-- describes issues users should be aware of,
+including major decisions in importing that perhaps not everyone would agree
+with"; on the headings: clicked "Approve these headings and the three
+amendments".
+
+Implemented by: `docs/tools/readme_layout.py` (the layout),
+`tests/corpora/test_readme_sections.py` (the `structure` check; legacy READMEs
+in `readme_sections_pending.txt`), `docs/tools/manage_corpus_pages.py check
+--strict` (in `tests.yaml`), and the `port-corpus-in` `README.template.md`.
 
 ### POL-056 · RULED · 2026-09-09 · conversion tables
 A conversion table (`Orthographies/ConversionTables/<Language>_<Scheme>_113.tsv`)
@@ -1089,8 +1332,8 @@ phoneme-level section so a deletion is not invisible in aggregate.
 
 Enforced by `tests/utilities/test_standardize_rule_application.py`, which asserts
 that **every rule in every committed table produces exactly its own
-replacement** — the sweep that found the 17. Documented for users on the GitBook
-`standardize` page under "How rules are applied".
+replacement** — the sweep that found the 17. Documented for users on the
+documentation site's `standardize.py` page under "How rules are applied".
 
 ### POL-058 · RULED · 2026-09-11 · orthography checks need a standard
 **A language with no standard orthography gets no orthography check.** Where

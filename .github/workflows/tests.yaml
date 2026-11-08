@@ -8,6 +8,13 @@ on:
       - 'Corpora/**'
       - 'requirements.txt'
       - 'pyproject.toml'
+      - 'docs/tools/**'
+      - 'docs/site/**'
+      - 'docs/theme/**'
+      - 'docs/translations/**'
+      - 'mkdocs.yml'
+      - 'requirements-site.txt'
+      - 'readme_sections_pending.txt'
       - '.github/workflows/tests.yaml'
   push:
     branches: [main]
@@ -17,6 +24,13 @@ on:
       - 'Corpora/**'
       - 'requirements.txt'
       - 'pyproject.toml'
+      - 'docs/tools/**'
+      - 'docs/site/**'
+      - 'docs/theme/**'
+      - 'docs/translations/**'
+      - 'mkdocs.yml'
+      - 'requirements-site.txt'
+      - 'readme_sections_pending.txt'
       - '.github/workflows/tests.yaml'
 
 jobs:
@@ -34,6 +48,8 @@ jobs:
           pip install -r requirements.txt
       - name: Run pytest
         run: pytest
+      - name: Corpus pages registered and READMEs in the approved layout
+        run: python docs/tools/manage_corpus_pages.py check --strict
       - name: Upload coverage report
         if: always()
         uses: actions/upload-artifact@v4

@@ -63,15 +63,16 @@ def test_csv_contents(mini_corpus, tmp_path):
     assert int(rows[("trv", "unknown")]["word_count"]) == 3
     assert int(rows[("ami", "")]["word_count"]) == 1
 
-    # Parse-error pseudo-row: zero in all Gitbook-displayed fields so
-    # update_corpus_stats.py's row_has_data() filters it out.
+    # Parse-error pseudo-row: zero in every displayed field, so the site's
+    # docs/tools/site_stats.py drops it (no language, no words).
     err = rows[("", "")]
     assert int(err["parse_errors"]) == 1
     assert int(err["word_count"]) == 0
 
-    # Gitbook contract: every column its update_corpus_stats.py reads exists.
+    # Site contract: every column docs/tools/site_stats.py reads exists.
     for col in ("language", "dialect", "word_count", "segmented_words",
                 "glossed_words", "eng_transl_count", "zho_transl_count",
+                "jpn_transl_count", "nld_transl_count", "transcribed_words",
                 "transcribed_audio_count", "transcribed_audio_seconds",
                 "untranscribed_audio_count", "untranscribed_audio_seconds",
                 "file_count"):

@@ -1,0 +1,319 @@
+record_id	reviewed	changed	note
+C5-002	yes		
+C5-003	yes		
+C5-004	yes		
+C5-005	yes		
+C5-006	yes		
+C5-007	yes		
+C5-008	yes	superseded: Merged with C5-009 by the gloss-bracket rule in transcribe_chapter5.py (ruled 2026-10-14/15); the build now produces the reviewer's merged example itself.	This example was cut off.（樹枝）clarifies that it is the branches that are being shaken, not the people themselves.
+C5-009	no	superseded: Merged into C5-008 by the gloss-bracket rule in transcribe_chapter5.py (ruled 2026-10-14/15).	Delete, this is part of the previous example (already added there)
+C5-010	yes		
+C5-011	yes		Printed this way in the book.
+C5-012	yes		
+C5-013	yes		Printed this way in the book.
+C5-014	yes		
+C5-015	yes		Printed this way in the book.
+C5-016	yes		
+C5-017	yes		Hyphenation mismatch printed this way in the book. The quotation marks can probably be removed, this is just reported speech in the narrative.
+C5-018	yes		I did some digging, baso could be a different type of grain
+C5-019	yes		Again, baso is probably a different type of grain
+C5-020	yes		
+C5-021	yes		
+C5-022	yes		
+C5-023	yes		
+C5-024	yes		
+C5-025	yes		Printed this way in the book.
+C5-026	yes		Printed this way in the book.
+C5-027	yes		
+C5-028	yes		Printed this way in the book.
+C5-029	yes		
+C5-030	yes		Printed this way in the book.
+C5-031	yes		Printed this way in the book.
+C5-032	yes		Printed this way in the book.
+C5-033	yes		
+C5-034	yes		
+C5-035	yes		Notes on translation: names are lower cased in other examples. （才能從事這項祭祀）clarifies the connection to the previous sentence, this part is not in the Seediq sentence itself.
+C5-036	yes		
+C5-037	yes		"Hyphenation mismatch is printed this way in the book. ""walis buni"" is a person's name, not sure if it should be one column or two"
+C5-038	yes		Hyphenation mismatch is printed this way in the book. names are lower cased in most other translations.
+C5-039	yes		
+C5-040	yes		Hyphenation mismatch is printed this way in the book.
+R001	yes		
+R002	yes		
+R004	yes		
+R006	yes		
+R008	yes		
+R010	yes		
+R011	yes		
+R012	yes		
+R014	yes		
+R016	yes		
+R020	yes		
+R021	yes		"Don't know if it matters but this was only recognized as ""example b"" not 1b. This is the case in all sub-examples"
+R024	yes		Printed this way in the book.
+R025	yes		Printed this way in the book.
+R026	yes	translation	
+R027	yes	translation	
+R028	yes		
+R029	yes		
+R030	yes		
+R031	yes		
+R033	yes		
+R035	yes		
+R036	yes		
+R037	yes		
+R038	yes		
+R039	yes		
+R042	yes		
+R044	yes		The two translations mean more or less the same , and in this case / separates two complete phrases (全部的人 vs. 大家)
+R046	yes		
+R050	yes		Printed this way in the book.
+R051	yes		Printed this way in the book.
+R052	yes		
+R053	yes		The example is either with BOTH laqi and gaga or ONLY temi. It's impossible to fix the boxes to reflect that.
+R058	yes		
+R059	yes		
+R060	yes		Printed this way in the book.
+R064	yes		
+R065	yes		
+R066	yes		
+R067	yes		
+R068	yes		
+R069	yes	translation	
+R070	yes		looks good, just careful with -mu it can attach to laqi as well
+R071	yes		
+R073	yes		
+R076	yes		
+R077	yes		Might want to remove the /*ku since it's explicitly NOT an alternative
+R078	yes		Might want to remove the /*ku since it's explicitly NOT an alternative
+R079	yes		Might want to remove the /*ku since it's explicitly NOT an alternative
+R080	no		
+R081	yes	translation	"Two possible free translations. Other such examples have a slash or =, here the ""or"" is written out. Mismatch in hyphens is printed this way in the book."
+R082	yes		Printed this way in the book.
+R083	yes		
+R085	yes		There is a space after the slash in the book, indicating that it can be either one word 'sapah-mu' or two 'sapah naku'. The space is not written in the glosses, only the Seediq part.
+R086	yes		Might want to remove the /*mu since it's explicitly NOT an alternative
+R087	yes		
+R088	yes		
+R089	yes	translation	Translation had been taken from example c
+R090	yes		The translation in the book has an error (duplicate 的), didn't fix here to keep it the same as in the book
+R092	yes	words	
+R093	yes		
+R095	yes	words,translation	[] were not mentioned in the instructions, but they appear in this example, so I added them in. If they shouldn't be here, 【】should probably also be removed from the free translation.
+R096	yes		"Subscript indicates that both morphemes refer to the same entity. Might want to remove this annotation?
+The free translation also emphasizes the pronoun reduplication by adding another （我）"
+R097	yes		Subscript indicates that both morphemes refer to the same entity. Might want to remove this annotation?
+R098	yes		Might want to remove  /*na-ku and the corresponding /他-我 since it's explicitly NOT an alternative
+R099	yes		Might want to remove  /*ku-sa and the corresponding /*我-你 since it's explicitly NOT an alternative
+R100	yes		Might want to remove  /*na-su and the corresponding /*他-你 since it's explicitly NOT an alternative
+R101	yes		
+R103	yes		Here, the two free translations separated by the slash are 那小孩喝水 and 這小孩喝水. In some other translations, the slash separates two entire sentences rather than words. This needs to be checked manually for each example.
+R104	yes		"Here, the two free translations separated by the slash are 那小孩喝那（杯）水 and 那小孩喝這（杯）水. In some other translations, the slash separates two entire sentences rather than words. This needs to be checked manually for each example. 
+Also, I am assuming that 喝-PF is an already corrected version of the mistake in the book (glossed as 吃-PF, I checked the dictionary, it should be 喝)"
+R106	yes		Here, the two free translations separated by the slash are 小孩在那廚房喝水 and 小孩在這廚房喝水.
+R107	yes		Here, the two free translations separated by the slash are 小孩在用那杯子喝水 and 小孩在用這杯子喝水.
+R108	yes		Printed this way in the book.
+R109	yes		
+R110	yes		
+R111	yes	translation	
+R112	yes		
+R113	yes		
+R114	yes		
+R115	yes		Two free translations are connected by =. The first is more literal translation, the second a more natural one.
+R116	yes		
+R117	yes		
+R118	yes		
+R119	yes		
+R120	yes		
+R121	yes		
+R122	yes		
+R124	no		
+R125	yes		
+R126	yes		
+R127	yes	glosses	Unsure if the parentheses in the book are full width （）or half width (). Half width is my best guess. Also the second incorrect variant should probably be removed later
+R128	yes		
+R129	yes		
+R130	yes		
+R131	yes	glosses	
+R132	yes		
+R133	yes	glosses	
+R136	yes		
+R137	yes		
+R138	yes		
+R139	yes		
+R140	yes		"Incorrect sub examples may need to be removed. In the free translation, it is this substring: ""/*昨天/*明天"""
+R141	yes		"Incorrect sub example may need to be removed. In the free translation, it is this substring: ""/*昨天"""
+R142	yes		"Incorrect sub example may need to be removed. In the free translation, it is this substring: ""/*明天"""
+R143	yes	glosses	
+R144	yes	glosses	Might want to remove /*mu-mekan. The parentheses looked more like single width in the book but not sure.
+R145	yes		Hyphenation mismatch is printed this way in the book. Might want to remove /*b-un-ube-un and /打-完成貌-PF.
+R146	yes		
+R147	yes		
+R148	yes		
+R149	yes		
+R150	yes		Might want to remove /*saya/*ciga and /現在/昨天
+R151	yes		
+R152	yes		
+R153	yes		
+R154	yes		
+R155	yes		Printed this way in the book.
+R156	yes		
+R157	yes		
+R158	yes		Mismatching hyphenation printed this way in the book. might want to remove /*saya/*kusun and /現在/明天.
+R159	yes		Might want to remove /*saya/*kusun and /現在/明天.
+R160	yes		
+R162	yes		
+R163	yes		
+R168	yes		
+R169	yes		
+R171	yes		
+R173	yes		The book explains that *() on the 2nd word means that this word CANNOT be omitted. So it does not indicate an incorrect example here.
+R175	yes		
+R176	yes		
+R177	yes		
+R178	yes		
+R179	yes		
+R180	yes		
+R181	yes	glosses	
+R182	yes		Printed this way in the book.
+R183	yes		
+R184	yes		
+R185	yes		
+R186	yes		
+R187	yes		
+R190	yes		
+R191	yes		
+R192	yes		
+R193	yes		gaga means 那個, but can be used in place of m-enaq to mean 在 . Probably isn't AF-在 then
+R194	yes		
+R195	yes		
+R196	yes		
+R197	yes		
+R198	yes		
+R199	yes	translation	
+R200	yes		
+R202	yes		
+R203	yes		
+R204	yes		
+R205	yes		
+R207	yes		
+R208	yes		Careful during processing, both puq-i and *puq-un are glossed as 吃-PF
+R209	yes		
+R210	yes		
+R211	yes		
+R212	yes		Printed this way in the book.
+R213	yes	glosses	Mismatched hyphens are printed this way in the book. Unsure about saya ali. but 今天 is definitely a one word, and is used in other sentences for 今天 or 現在. I would gloss saya as 現在 (now) and ali as 天 or 日子 (day): https://www.ilrdf.org.tw/ilrdc/ilrdc.tw/grammar/index7d0f.html?l=5&p=18
+R214	yes		
+R215	yes		Contrast with R212
+R216	yes		The slash in the free translation marks 要 and 能 as alternatives.
+R217	yes		
+R218	yes		
+R219	yes		
+R220	yes		yee is a word indicating a yes/no question, closest Chinese equivalent is 嗎
+R221	yes		In the book, there is an arrow indicating that voice is raised to make it a question. Probably hard to reflect that here
+R222	yes		Again, yee is a question word like 嗎
+R224	yes		
+R225	yes	translation	
+R226	yes		
+R227	yes		
+R228	yes		
+R229	yes		
+R230	yes		
+R231	yes		
+R232	yes		
+R233	yes		
+R234	yes		
+R235	yes		
+R236	yes		
+R237	yes		"If this sentence is to be used indepentently of the previous one, I would change the free translation to ""三隻狗"". The previous question is ""how many dogs do you have"" and the response is literally ""three dogs"" but the free translation is just ""3 (measure word)""."
+R238	yes		Mismatched hyphens printed this way in the book. Unsure about lux, not glossed. If I understand correctly it's part of 為什麼 (why). It appears in asi lux 因此: https://www.ilrdf.org.tw/ilrdc/ilrdc.tw/grammar/index7d0f.html?l=5&p=18
+R239	yes		"ka is part of ""kiya ka"": https://www.ilrdf.org.tw/ilrdc/ilrdc.tw/grammar/index7d0f.html?l=5&p=18"
+R240	yes		Printed this way in the book.
+R241	yes		Column 1 has a double slash -- in the book. Column 3 printed this way in the book. If this is supposed to be used independently of the previous question, I would use 我用棍子打梅子。as the free translation, otherwise half the meaning is missing.
+R243	yes	words,translation	
+R244	yes		
+R246	yes		
+R248	yes		
+R250	yes		
+R251	yes		
+R252	yes		
+R254	yes	translation	
+R256	yes		
+R258	yes		
+R260	yes		
+R261	yes		
+R264	yes	glosses	
+R265	yes		
+R266	yes		Slash in the free translation is for 誰的/哪棵. 那棵 is for kenu which is glossed as 哪個 above.
+R269	yes		
+R271	yes		
+R273	yes		Printed this way in the book. But I'm guessing 為什麼-AF/-PF is shorthand for 為什麼-AF/為什麼-PF!!!!!!
+R275	yes		Printed this way in the book.
+R277	yes		Printed this way in the book.
+R279	yes		
+R280	yes		
+R281	yes		
+R282	yes		
+R283	yes		
+R286	yes		
+R287	yes		
+R289	yes		Printed this way in the book.
+R290	yes	translation	Printed this way in the book.
+R291	yes		Printed this way in the book.
+R292	yes		Printed this way in the book.
+R293	yes		
+R294	yes		
+R295	yes		Printed this way in the book.
+R297	yes	words	"In the book, the example is written with square brackets to indicate that this part is what is known: 
+mu-kela-ku [m-un-eyah ka isu ciga]. Unlike a previous example, the Chinese translation does not get the 【】brackets."
+R298	yes	words,translation	"In the book, the example is written with square brackets to indicate that this part is what is believed: 
+teheyi-ku [maha m-beyah walis ka pawan]"
+R299	yes		
+R300	yes		
+R301	yes	words	"with brackets in the original for highlighting a grammar point:
+egu riyung 【wada puq-un na laqi】 ka ido"
+R302	yes	words	"with brackets in the original for highlighting a grammar point:
+egu riyung 【wada m-ekan ido】 ka laqi"
+R303	yes	words	"with brackets in the original for highlighting a grammar point:
+egu riyung ido ka 【wada puq-un na laqi】"
+R304	yes	words	"with brackets in the original for highlighting a grammar point:
+egu riyung laqi ka 【wada m-ekan ido】"
+R305	yes	words	"with brackets in the original for highlighting a grammar point:
+egu riyung wada 【puq-un ido laqi】"
+R306	yes	words	"with brackets in the original for highlighting a grammar point:
+egu riyung 【wada-na puq-un ido laqi】"
+R307	yes		
+R308	yes		Printed this way in the book.
+R309	yes		
+R310	yes		Printed this way in the book.
+R311	yes	translation	
+R312	yes	glosses,translation	
+R314	yes	words	
+R315	yes	words,glosses	
+R316	yes	words,glosses	
+R317	yes		
+R318	yes		
+R320	yes	glosses	In the book it's 'musa' without the hyphen, but it appears to have already been corrected.
+R321	yes	glosses,translation	"Oddly enough, there appears to be whiteout on the gloss for ""ani sa"". Going by the previous sentence, it's probably 但是 + ∅"
+R322	yes	words,glosses	
+R323	yes	words,glosses	'ani naq' belongs together according to the explanation in the book, 'ku' can be inserted. Note the parentheses around 'ani sa' span two columns.
+R324	yes	words,glosses	
+R328	yes		Printed this way in the book.
+R329	yes		Printed this way in the book.
+R330	yes		Printed this way in the book.
+R331	yes		
+R335	yes		
+R336	yes		
+R337	yes		It seems 'ado ka' is one expression, and 'su' is inserted
+R338	yes		It seems 'ado ka' is one expression, and 'ku' is inserted
+R339	yes		Printed this way in the book.
+R340	yes		The translation is missing in the book but I assume it was added here based on R338
+R342	yes	words	
+R343	yes		Printed this way in the book, but compare R342 where it is m-usa-ku!
+R344	yes	words	
+R345	yes	words	
+R347	yes	words,glosses	In the book it is only 洗, but apparently this has already been corrected to 洗-AF. I made it match the next two examples.
+R349	yes	glosses	Mistake in the book, is glossed as AF-去-你, but has been corrected before i got this file.
+R350	yes	words,glosses	Mistake in the book, is glossed as AF-去-你, but has been corrected before i got this file.
+R351	yes	words,glosses	
+R352	yes	words	

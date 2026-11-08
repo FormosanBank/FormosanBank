@@ -88,6 +88,23 @@ def test_upsert_replaces_corpus_rows_keeps_others(tmp_path):
     assert ("Other", "tay", "Sekolik") in rows  # untouched
 
 
+def test_upsert_preserves_legacy_blank_dialect_for_other_corpus(tmp_path):
+    _write(tmp_path, HEADER
+           + "ePark,ami,Coastal,100.0,0.0,5,0,2026-06-10\n"
+           + "ILRDF_Dicts,ckv,,39304.0,0.0,8241,0,2026-06-12\n")
+    audio_durations.upsert_audio_durations(
+        tmp_path, "ePark",
+        [{"language": "ami", "dialect": "Coastal",
+          "transcribed_audio_seconds": 200.0, "untranscribed_audio_seconds": 0.0,
+          "transcribed_audio_count": 6, "untranscribed_audio_count": 0}],
+        computed_at="2026-06-12",
+    )
+
+    text = (tmp_path / "audio_durations.csv").read_text(encoding="utf-8")
+    assert "ILRDF_Dicts,ckv,,39304.0,0.0,8241,0,2026-06-12" in text
+    assert "ILRDF_Dicts,ckv,unknown" not in text
+
+
 def test_upsert_creates_file_when_missing(tmp_path):
     audio_durations.upsert_audio_durations(
         tmp_path, "NewCorpus",

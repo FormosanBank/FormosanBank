@@ -50,7 +50,7 @@ def ensure_dirs() -> None:
         "data/scripts",
         "scripts",
         "logs",
-        "Final_XML",
+        "XML",
     ]:
         (ROOT / rel).mkdir(parents=True, exist_ok=True)
 
@@ -210,7 +210,7 @@ def bibtex() -> str:
 
 
 def source_copyright() -> str:
-    return "© Lowking Wei-Cheng Hsu / 許韋晟. Used by FormosanBank with permission."
+    return "CC BY-NC 4.0"
 
 
 def confidence_rank(value: str) -> int:

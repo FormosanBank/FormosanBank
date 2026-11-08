@@ -85,7 +85,10 @@ def build_maps(codedocs_dir):
         cleaning that strips ``=``/``-``/``.`` inside words.
         """
         base = tok.replace("[", "").replace("]", "")
-        seeds = {base, _strip_source_punct(base)}
+        # base.rstrip("\\_"): the source's trailing markup gone but the
+        # punctuation kept, as published ('yau1],\\' -> 'yau1,'); without it
+        # the comma-final overlap markers were never matched (2026-10-14).
+        seeds = {base, _strip_source_punct(base), base.rstrip("\\_")}
         for v in list(seeds):
             seeds.add(v.rstrip(".,!?"))
         out = set(seeds)

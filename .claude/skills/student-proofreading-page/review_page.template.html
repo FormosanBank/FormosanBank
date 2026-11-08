@@ -1,0 +1,863 @@
+<title>__TITLE__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;600&display=swap">
+<style>
+/* Layout: one sticky progress bar, then a single column of proofreading cards, 20 per page. */
+:root {
+  --bg: #F3F4F7;
+  --surface: #FFFFFF;
+  --sunken: #EEF0F4;
+  --ink: #1A2130;
+  --muted: #5E6778;
+  --line: #D9DDE5;
+  --accent: #2B4C8C;
+  --accent-soft: #E3EAF7;
+  --mark: #B5401F;
+  --mark-soft: #FBE9E2;
+  --flag: #8A5F00;
+  --flag-soft: #FFF3D6;
+  --ok: #2E7D4F;
+  --ok-soft: #E2F3E8;
+  --focus: #2B4C8C;
+  --lang: "Noto Sans Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --han: "Noto Serif TC", "Songti TC", "PMingLiU", "MingLiU", serif;
+  --ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #12161E; --surface: #1A202B; --sunken: #151A23; --ink: #E6E9EF;
+    --muted: #9AA3B2; --line: #2C3442; --accent: #8FB0F0; --accent-soft: #22304A;
+    --mark: #F08A65; --mark-soft: #3A2219; --flag: #E3B341; --flag-soft: #33290F;
+    --ok: #6FCF97; --ok-soft: #173325; --focus: #8FB0F0;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #12161E; --surface: #1A202B; --sunken: #151A23; --ink: #E6E9EF;
+  --muted: #9AA3B2; --line: #2C3442; --accent: #8FB0F0; --accent-soft: #22304A;
+  --mark: #F08A65; --mark-soft: #3A2219; --flag: #E3B341; --flag-soft: #33290F;
+  --ok: #6FCF97; --ok-soft: #173325; --focus: #8FB0F0;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--ui); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 1100px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px; }
+h1 { font-size: 1.35rem; font-weight: 600; margin: 0; text-wrap: balance; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); padding-block: 12px; }
+.bar-in { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
+.bar .grow { flex: 1 1 240px; min-width: 0; }
+.sub { color: var(--muted); font-size: .85rem; }
+.meter { height: 6px; background: var(--sunken); border-radius: 3px; overflow: hidden; margin-top: 6px; max-width: 360px; }
+.meter > i { display: block; height: 100%; background: var(--ok); width: 0; transition: width .3s; }
+.nums { font-variant-numeric: tabular-nums; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 6px 12px; font-size: .9rem; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.btn.small { padding: 3px 9px; font-size: .82rem; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.mode { margin-top: 14px; border-radius: 8px; padding: 10px 14px; font-size: .9rem; border: 1px solid var(--line); background: var(--surface); }
+.mode strong { font-weight: 600; }
+.mode.server { border-color: var(--ok); background: var(--ok-soft); }
+.mode.local { border-color: var(--flag); background: var(--flag-soft); }
+.saved { font-size: .82rem; color: var(--muted); }
+
+details.guide { margin-top: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 16px; }
+details.guide summary { cursor: pointer; font-weight: 600; }
+.guide-body { max-width: 72ch; }
+.guide-body h3 { font-size: .95rem; margin: 16px 0 4px; }
+.guide-body li { margin-block: 4px; }
+.guide-body code, .inline-lang { font-family: var(--lang); font-size: .92em; }
+.inline-han { font-family: var(--han); }
+
+/* filters */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-block: 18px 12px; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 4px 12px; font-size: .85rem; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.chip .nums { opacity: .75; margin-left: 4px; }
+.search { flex: 1 1 200px; min-width: 0; max-width: 320px; border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 5px 10px; }
+.filesel { min-width: 0; max-width: 100%; border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 5px 8px; font-size: .85rem; }
+.pager { display: flex; gap: 8px; align-items: center; justify-content: flex-end; flex-wrap: wrap; margin-block: 12px; font-size: .88rem; }
+
+/* record card */
+.list { display: grid; gap: 14px; }
+.rec { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 10px; min-width: 0; }
+.rec.is-reviewed { border-color: color-mix(in srgb, var(--ok) 55%, var(--line)); }
+.rec-head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+.rid { font-family: var(--lang); font-weight: 500; font-size: .95rem; overflow-wrap: anywhere; }
+.loc { color: var(--muted); font-size: .88rem; overflow-wrap: anywhere; min-width: 0; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+.tag { font-size: .75rem; letter-spacing: .02em; border-radius: 4px; padding: 1px 7px; background: var(--sunken); color: var(--muted); }
+.tag.flag { background: var(--flag-soft); color: var(--flag); }
+.tag.done { background: var(--ok-soft); color: var(--ok); }
+.tag.edit { background: var(--mark-soft); color: var(--mark); }
+.note-banner { font-size: .86rem; background: var(--sunken); border-radius: 6px; padding: 6px 10px; color: var(--muted); overflow-wrap: anywhere; }
+.note-banner .inline-lang { color: var(--ink); }
+
+/* the book's page: the example cut out, or the whole page */
+.src { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #fff; }
+.src-cut { position: relative; width: 100%; overflow: hidden; }
+.src-cut img { position: absolute; max-width: none; height: auto; display: block; }
+.src-page { position: relative; max-height: 75vh; overflow: auto; }
+.src-page img { width: 100%; height: auto; display: block; }
+.src-page .box { position: absolute; outline: 3px solid var(--flag); outline-offset: 0; pointer-events: none; }
+.src-bar { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; justify-content: space-between; padding: 5px 10px; font-size: .8rem; color: var(--muted); background: var(--sunken); border-top: 1px solid var(--line); }
+.src-bar .btn { padding: 3px 10px; font-size: .8rem; }
+
+.igt-wrap { overflow-x: auto; padding-bottom: 4px; }
+.igt { display: flex; gap: 6px; align-items: flex-start; width: max-content; }
+.rowlabels, .col { display: grid; grid-template-rows: 18px 36px 36px auto; gap: 4px; }
+.rowlabels span { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); align-self: center; }
+.col .n { font-size: .7rem; color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; }
+.cell { height: 36px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); padding: 0 8px; min-width: 3.5ch; }
+.cell.w { font-family: var(--lang); font-size: .95rem; }
+.cell.g { font-family: var(--ui); font-size: .92rem; }
+.cell.g.han { font-family: var(--han); font-size: 1.02rem; }
+.cell.changed { border-color: var(--mark); background: var(--mark-soft); }
+.cell.bad { border-color: var(--flag); box-shadow: inset 0 -2px 0 var(--flag); }
+.cell.missing { border-style: dashed; background: transparent; color: var(--muted); font-size: .75rem; display: grid; place-items: center; }
+.col .was { font-size: .74rem; color: var(--mark); text-decoration: line-through; text-align: center; max-width: 16ch; overflow-wrap: anywhere; min-height: 1em; }
+.col .was .h { font-family: var(--han); }
+
+.tools { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: .82rem; color: var(--muted); }
+.tools .lbl { margin-right: 4px; }
+.warn { font-size: .86rem; color: var(--flag); display: grid; gap: 2px; }
+.warn:empty { display: none; }
+.field { display: grid; gap: 4px; min-width: 0; }
+.field > label { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.sent, .tr { border: 1px solid var(--line); border-radius: 6px; background: var(--bg); padding: 6px 10px; resize: vertical; min-height: 2.4em; width: 100%; }
+.sent { font-family: var(--lang); font-size: .98rem; }
+.tr { font-family: var(--ui); font-size: .98rem; }
+.tr.han { font-family: var(--han); font-size: 1.05rem; }
+.sent.changed, .tr.changed { border-color: var(--mark); background: var(--mark-soft); }
+.was-line { font-size: .8rem; color: var(--mark); overflow-wrap: anywhere; }
+.was-line:empty { display: none; }
+.was-line s.han { font-family: var(--han); }
+.was-line s.lang { font-family: var(--lang); }
+.absent { font-size: .86rem; color: var(--muted); font-style: italic; }
+.note { border: 1px solid var(--line); border-radius: 6px; background: var(--bg); padding: 6px 10px; resize: vertical; min-height: 2.2em; width: 100%; font-size: .9rem; }
+.rec-foot { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.rev { border: 1px solid var(--ok); color: var(--ok); background: transparent; border-radius: 6px; padding: 6px 14px; font-weight: 500; }
+.rev[aria-pressed="true"] { background: var(--ok); color: var(--surface); }
+.rec-foot .spacer { flex: 1; }
+
+.copybox { margin-top: 14px; background: var(--surface); border: 1px solid var(--accent); border-radius: 8px; padding: 12px 14px; display: grid; gap: 8px; }
+.copybox textarea { width: 100%; height: 140px; font-family: var(--lang); font-size: .78rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--bg); padding: 8px 16px; border-radius: 6px; font-size: .9rem; z-index: 9; max-width: calc(100% - 32px); }
+.empty { color: var(--muted); padding: 24px; text-align: center; }
+@media (prefers-reduced-motion: reduce) { .meter > i { transition: none; } }
+</style>
+
+<div class="bar">
+  <div class="wrap bar-in" style="padding-block:0">
+    <div class="grow">
+      <h1>__TITLE__</h1>
+      <div class="sub nums" id="progress-text">Loading…</div>
+      <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+    </div>
+    <div class="actions">
+      <span class="saved" id="saved-state"></span>
+      <button class="btn primary" id="btn-download" type="button">Download corrections</button>
+      <button class="btn" id="btn-load" type="button">Load saved file</button>
+      <input type="file" id="file-in" accept=".json,application/json" hidden>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="mode" id="mode">Connecting…</div>
+  <section class="copybox" id="copybox" hidden>
+    <div id="copy-help">Saving a file is not available here. Copy the text below and paste it into an email to the maintainer, or into a plain-text file ending in <code>.json</code>.</div>
+    <textarea id="copy-text" readonly aria-label="Corrections as text"></textarea>
+    <div class="actions"><button class="btn primary" id="btn-copy" type="button">Copy</button><button class="btn" id="btn-copy-close" type="button">Close</button></div>
+  </section>
+
+  <details class="guide" id="guide">
+    <summary>How to review</summary>
+    <div class="guide-body">
+<!--__GUIDE__-->
+    </div>
+  </details>
+
+  <div class="filters" role="group" aria-label="Filter cards">
+    <button class="chip" type="button" data-filter="all" aria-pressed="true">All<span class="nums" data-count="all"></span></button>
+    <button class="chip" type="button" data-filter="todo" aria-pressed="false">Not reviewed<span class="nums" data-count="todo"></span></button>
+    <button class="chip" type="button" data-filter="flagged" aria-pressed="false">Flagged<span class="nums" data-count="flagged"></span></button>
+    <button class="chip" type="button" data-filter="changed" aria-pressed="false">Changed<span class="nums" data-count="changed"></span></button>
+    <button class="chip" type="button" data-filter="notes" aria-pressed="false">With a note<span class="nums" data-count="notes"></span></button>
+    <select class="filesel" id="file-filter" aria-label="Show one file" hidden></select>
+    <input class="search" id="search" type="search" placeholder="Find: a card id, a page, a word…" aria-label="Find a card">
+  </div>
+  <div class="pager" id="pager-top"></div>
+  <div class="list" id="list"></div>
+  <div class="pager" id="pager-bottom"></div>
+</main>
+<div class="toast" id="toast" hidden></div>
+
+<script type="application/json" id="baseline">/*__BASELINE__*/</script>
+<script>
+(function () {
+  "use strict";
+  var BASE = JSON.parse(document.getElementById("baseline").textContent);
+  var FORMAT = BASE.format;
+  var CFG = BASE.page;               // language, gloss_script, word_tier, download_prefix, files
+  var RECORDS = BASE.records;
+  var BY_ID = {};
+  RECORDS.forEach(function (r) { BY_ID[r.record] = r; });
+  var LS_KEY = "proofread:" + FORMAT;
+  var PAGE_SIZE = 20;
+  var HAN_GLOSS = CFG.gloss_script === "han";
+  var WORDS_ON = CFG.word_tier !== "none";
+
+  // unsynced: record id -> updatedAt of an edit the server has not yet confirmed.
+  var state = { edits: {}, unsynced: {}, filter: "all", file: "", query: "", page: 0, lastDownloadCount: null };
+  var mode = "starting";            // "server" | "local"
+  var db = null, downloads = null;
+  var timers = {}, inflight = {}, pending = {};
+  var focus = null;                 // {rid, row, idx}
+  var changeCounter = 0;
+
+  // ---------- helpers ----------
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k];
+      if (v === null || v === undefined || v === false) return;
+      if (k === "text") n.textContent = v;
+      else if (k === "className") n.className = v;
+      else if (k.slice(0, 2) === "on") n.addEventListener(k.slice(2), v);
+      else n.setAttribute(k, v === true ? "" : v);
+    });
+    (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return n;
+  }
+  function toast(msg) {
+    var t = document.getElementById("toast");
+    t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._t); toast._t = setTimeout(function () { t.hidden = true; }, 3500);
+  }
+  function hasHan(s) { return /[㐀-鿿豈-﫿]/.test(s); }
+  function visualLen(s) { var n = 0; for (var ch of s) n += /[　-鿿豈-﫿＀-￯]/.test(ch) ? 2 : 1; return n; }
+  function morphemes(t) {
+    var infixes = (t.match(/<[^<>]+>/g) || []).length;
+    var rest = t.replace(/<[^<>]+>/g, "");
+    return rest.split(/[-=]/).filter(function (p) { return p.trim(); }).length + infixes;
+  }
+  function sameArr(a, b) { if (a.length !== b.length) return false; for (var i = 0; i < a.length; i++) if (a[i] !== b[i]) return false; return true; }
+  function oneLine(s) { return String(s).replace(/\s*\n\s*/g, " "); }
+
+  // ---------- state ----------
+  function fresh(r) {
+    return { base: r.hash, sentence: r.sentence, words: r.words.slice(), glosses: r.glosses.slice(),
+             translations: r.translations.map(function (t) { return t.text; }), note: "", reviewed: false, updatedAt: 0 };
+  }
+  // An edit that came from the server or a file may lack a field; fill it from the baseline.
+  function normalize(e, r) {
+    var f = fresh(r);
+    return { base: e.base, sentence: typeof e.sentence === "string" ? e.sentence : f.sentence,
+             words: Array.isArray(e.words) ? e.words.map(String) : f.words,
+             glosses: Array.isArray(e.glosses) ? e.glosses.map(String) : f.glosses,
+             translations: Array.isArray(e.translations) && e.translations.length === f.translations.length ? e.translations.map(String) : f.translations,
+             note: String(e.note || ""), reviewed: !!e.reviewed, updatedAt: e.updatedAt || 0 };
+  }
+  function current(rid) {
+    var e = state.edits[rid], r = BY_ID[rid];
+    if (e && e.base === r.hash) return e;
+    return fresh(r);
+  }
+  function editable(rid) {
+    var e = state.edits[rid];
+    if (!e || e.base !== BY_ID[rid].hash) { e = current(rid); state.edits[rid] = e; }
+    return e;
+  }
+  function trChanged(e, r) { return !sameArr(e.translations, r.translations.map(function (t) { return t.text; })); }
+  function isChanged(rid) {
+    var e = state.edits[rid], r = BY_ID[rid];
+    if (!e || e.base !== r.hash) return false;
+    return e.sentence !== r.sentence || !sameArr(e.words, r.words) || !sameArr(e.glosses, r.glosses) || trChanged(e, r);
+  }
+  function hasNote(rid) { var e = state.edits[rid]; return !!(e && e.base === BY_ID[rid].hash && e.note && e.note.trim()); }
+  function isReviewed(rid) { var e = state.edits[rid]; return !!(e && e.base === BY_ID[rid].hash && e.reviewed); }
+  function touch(rid) {
+    var e = editable(rid);
+    e.updatedAt = Date.now();
+    state.unsynced[rid] = e.updatedAt;
+    changeCounter++;
+    scheduleSave(rid);
+    updateCounts();
+  }
+
+  // ---------- persistence ----------
+  function saveLocal() {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify({ edits: state.edits, unsynced: state.unsynced, lastDownloadCount: state.lastDownloadCount, changeCounter: changeCounter }));
+    } catch (e) { /* storage blocked: the server or a downloaded file is the only copy */ }
+  }
+  function loadLocal() {
+    try {
+      var raw = localStorage.getItem(LS_KEY);
+      if (raw) {
+        var d = JSON.parse(raw);
+        state.edits = {};
+        Object.keys(d.edits || {}).forEach(function (rid) { if (BY_ID[rid]) state.edits[rid] = normalize(d.edits[rid], BY_ID[rid]); });
+        state.unsynced = d.unsynced || {};
+        state.lastDownloadCount = d.lastDownloadCount == null ? null : d.lastDownloadCount;
+        changeCounter = d.changeCounter || 0;
+      }
+    } catch (e) { /* ignore */ }
+    try {
+      var ui = JSON.parse(localStorage.getItem(LS_KEY + ":ui") || "{}");
+      if (ui.filter) state.filter = ui.filter;
+      if (typeof ui.file === "string") state.file = ui.file;
+      if (typeof ui.page === "number") state.page = ui.page;
+    } catch (e) { /* ignore */ }
+  }
+  function saveUi() { try { localStorage.setItem(LS_KEY + ":ui", JSON.stringify({ filter: state.filter, file: state.file, page: state.page })); } catch (e) {} }
+
+  function scheduleSave(rid) {
+    saveLocal();
+    setSaved("Saving…");
+    clearTimeout(timers[rid]);
+    timers[rid] = setTimeout(function () { writeServer(rid); }, 700);
+    updateLocalNudge();
+  }
+  function plain(e) {
+    return { base: e.base, sentence: e.sentence, words: e.words.slice(), glosses: e.glosses.slice(), translations: e.translations.slice(),
+             note: e.note || "", reviewed: !!e.reviewed, updatedAt: e.updatedAt || 0 };
+  }
+  function writeServer(rid, retried) {
+    if (mode !== "server" || !db) { setSaved(mode === "local" ? "Saved in this browser" : ""); return; }
+    if (inflight[rid]) { pending[rid] = true; return; }
+    inflight[rid] = true;
+    var stamp = state.edits[rid].updatedAt;
+    db.doc("edits/" + rid).set(plain(state.edits[rid])).then(function () {
+      if (state.unsynced[rid] === stamp) { delete state.unsynced[rid]; saveLocal(); }
+      setSaved("Saved to server " + new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
+    }).catch(function (err) {
+      var code = err && err.code;
+      if (code === "invalid_argument" || code === "not_granted" || code === "revoked" || code === "capability_disabled" || code === "capability_removed") {
+        setMode("local", "The server did not accept your changes, so they are kept in this browser instead.");
+      } else if (!retried && (code === "unavailable" || code === "resource_exhausted")) {
+        pending[rid] = false;
+        setTimeout(function () { inflight[rid] = false; writeServer(rid, true); }, 1500 + Math.random() * 1500);
+        return "retrying";
+      } else {
+        setSaved("Could not reach the server; kept in this browser");
+      }
+    }).then(function (r) {
+      if (r === "retrying") return;
+      inflight[rid] = false;
+      if (pending[rid]) { pending[rid] = false; writeServer(rid); }
+    });
+  }
+  function setSaved(t) { document.getElementById("saved-state").textContent = t; }
+
+  function setMode(m, why) {
+    mode = m;
+    var box = document.getElementById("mode");
+    box.className = "mode " + m;
+    box.textContent = "";
+    if (m === "server") {
+      box.appendChild(el("strong", { text: "Your work saves automatically to the shared server." }));
+      box.appendChild(document.createTextNode(" You can close this page at any time and pick up where you left off, on any computer. The maintainer can see your corrections as you go."));
+      setSaved("");
+    } else {
+      box.appendChild(el("strong", { text: "Your work saves in this browser only." }));
+      box.appendChild(document.createTextNode(" " + (why ? why + " " : "") + "Reopening this page in the same browser brings your work back, but clearing browsing data or switching computers loses it. At the end of each session, click Download corrections and keep the file. To continue on another computer, use Load saved file. When you finish, email the file to the maintainer."));
+      box.appendChild(el("div", { id: "nudge", className: "sub" }));
+      setSaved("Saved in this browser");
+      updateLocalNudge();
+    }
+  }
+  function updateLocalNudge() {
+    var n = document.getElementById("nudge");
+    if (!n) return;
+    if (state.lastDownloadCount === null) n.textContent = changeCounter ? "You have not downloaded your corrections yet." : "";
+    else {
+      var since = changeCounter - state.lastDownloadCount;
+      n.textContent = since > 0 ? since + " change" + (since === 1 ? "" : "s") + " since your last download." : "Your last download includes all your changes.";
+    }
+  }
+
+  // ---------- server connection ----------
+  function connect() {
+    var api = window.claude && window.claude.use ? window.claude : null;
+    if (!api) { setMode("local"); return; }
+    api.use("downloads").then(function (d) { downloads = d; }).catch(function () {});
+    Promise.all([api.use("db").catch(function () { return null; }), api.use("user").catch(function () { return null; })])
+      .then(function (res) {
+        db = res[0];
+        var user = res[1];
+        if (!db) { setMode("local"); return; }
+        var canP = user ? user.can("data.write").catch(function () { return null; }) : Promise.resolve(null);
+        return canP.then(function (can) {
+          if (can === false) { db = null; setMode("local", "This page is open to you for viewing, not for saving to the server."); return; }
+          setMode("server");
+          subscribe();
+        });
+      }).catch(function () { setMode("local"); });
+  }
+  function subscribe() {
+    var first = true;
+    db.collection("edits").onSnapshot(function (snap) {
+      var seen = {};
+      snap.docs.forEach(function (d) {
+        if (!d.exists || !BY_ID[d.id]) return;
+        var remote = d.data();
+        // A document made against a different baseline is not this page's to show.
+        if (remote.base !== BY_ID[d.id].hash) return;
+        seen[d.id] = true;
+        var local = state.edits[d.id];
+        if (!local || (remote.updatedAt || 0) > (local.updatedAt || 0)) {
+          state.edits[d.id] = normalize(remote, BY_ID[d.id]);
+          if (state.unsynced[d.id] && state.unsynced[d.id] <= (remote.updatedAt || 0)) delete state.unsynced[d.id];
+          if (!(focus && focus.rid === d.id)) rerenderCard(d.id);
+        }
+      });
+      // The server is the record: a card it no longer holds, with no unconfirmed
+      // edit here, goes back to the original text in this browser too.
+      Object.keys(state.edits).forEach(function (rid) {
+        if (!seen[rid] && !state.unsynced[rid]) {
+          delete state.edits[rid];
+          if (!(focus && focus.rid === rid)) rerenderCard(rid);
+        }
+      });
+      if (first) {
+        first = false;
+        // Only edits made here that the server never confirmed go up.
+        Object.keys(state.unsynced).forEach(function (rid) {
+          if (BY_ID[rid] && state.edits[rid] && state.edits[rid].base === BY_ID[rid].hash) writeServer(rid);
+          else delete state.unsynced[rid];
+        });
+      }
+      saveLocal();
+      updateCounts();
+    }, function () { setMode("local", "The connection to the server was lost."); });
+  }
+
+  // ---------- filtering ----------
+  function matches(r) {
+    var rid = r.record;
+    if (state.file && r.file !== state.file) return false;
+    if (state.filter === "todo" && isReviewed(rid)) return false;
+    if (state.filter === "flagged" && !r.flags.length) return false;
+    if (state.filter === "changed" && !isChanged(rid)) return false;
+    if (state.filter === "notes" && !hasNote(rid)) return false;
+    var q = state.query.trim().toLowerCase();
+    if (!q) return true;
+    var e = current(rid);
+    var hay = [rid, r.locator, r.file, e.sentence, e.words.join(" "), e.glosses.join(" "), e.translations.join(" ")].join(" ").toLowerCase();
+    return q.split(/\s+/).every(function (t) { return hay.indexOf(t) >= 0; });
+  }
+  function updateCounts() {
+    var c = { all: RECORDS.length, todo: 0, flagged: 0, changed: 0, notes: 0 };
+    var reviewed = 0;
+    RECORDS.forEach(function (r) {
+      var rid = r.record;
+      if (isReviewed(rid)) reviewed++; else c.todo++;
+      if (r.flags.length) c.flagged++;
+      if (isChanged(rid)) c.changed++;
+      if (hasNote(rid)) c.notes++;
+    });
+    document.querySelectorAll("[data-count]").forEach(function (s) { s.textContent = c[s.getAttribute("data-count")]; });
+    document.getElementById("progress-text").textContent =
+      reviewed + " of " + RECORDS.length + " sentences reviewed · " + c.changed + " changed · " + c.notes + " with a note";
+    document.getElementById("meter").style.width = (100 * reviewed / RECORDS.length) + "%";
+  }
+
+  // ---------- rendering ----------
+  function renderList() {
+    var list = document.getElementById("list");
+    var shown = RECORDS.filter(matches);
+    var pages = Math.max(1, Math.ceil(shown.length / PAGE_SIZE));
+    if (state.page >= pages) state.page = pages - 1;
+    if (state.page < 0) state.page = 0;
+    list.textContent = "";
+    var slice = shown.slice(state.page * PAGE_SIZE, (state.page + 1) * PAGE_SIZE);
+    if (!slice.length) list.appendChild(el("div", { className: "empty", text: "No cards match." }));
+    slice.forEach(function (r) { list.appendChild(renderCard(r)); });
+    ["pager-top", "pager-bottom"].forEach(function (id) { renderPager(document.getElementById(id), pages, shown.length); });
+    document.querySelectorAll("[data-filter]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-filter") === state.filter)); });
+    saveUi();
+  }
+  function renderPager(box, pages, total) {
+    box.textContent = "";
+    box.appendChild(el("span", { className: "nums", text: total + " card" + (total === 1 ? "" : "s") + " · page " + (state.page + 1) + " of " + pages }));
+    box.appendChild(el("button", { className: "btn small", type: "button", text: "Previous", disabled: state.page === 0,
+      onclick: function () { state.page--; renderList(); window.scrollTo(0, 0); } }));
+    box.appendChild(el("button", { className: "btn small", type: "button", text: "Next", disabled: state.page >= pages - 1,
+      onclick: function () { state.page++; renderList(); window.scrollTo(0, 0); } }));
+  }
+  function rerenderCard(rid) {
+    var old = document.getElementById("rec-" + rid);
+    if (old) old.replaceWith(renderCard(BY_ID[rid]));
+  }
+
+  function sizeCol(col, w, g) {
+    var n = Math.max(4, visualLen(w || "") + 2, visualLen(g || "") * (HAN_GLOSS ? 1.15 : 1) + 2);
+    col.querySelectorAll(".cell").forEach(function (c) { c.style.width = n + "ch"; });
+  }
+  function autosize(ta) { ta.style.height = "auto"; ta.style.height = (ta.scrollHeight + 2) + "px"; }
+
+  // The book's page for one card. With a box: the example cut out, and a button for the whole page
+  // (the box outlined). Without one: the whole page, scrollable.
+  function renderSource(im) {
+    var whole = !im.box;
+    var wrap = el("figure", { className: "src" });
+    var view = el("div");
+    var caption = el("span", { text: "Book, PDF p. " + im.page + (im.box ? "" : " (find the example on this page)") });
+    var toggle = im.box ? el("button", { className: "btn", type: "button" }) : null;
+    function draw() {
+      view.innerHTML = "";
+      var img = el("img", { src: im.file, alt: "PDF page " + im.page + " of the book", loading: "lazy", width: String(im.w), height: String(im.h) });
+      if (!whole) {
+        var b = im.box, bw = b[2] - b[0], bh = b[3] - b[1];
+        view.className = "src-cut";
+        view.style.aspectRatio = (bw * im.w) + " / " + (bh * im.h);
+        img.style.width = (100 / bw) + "%";
+        img.style.left = (-b[0] / bw * 100) + "%";
+        img.style.top = (-b[1] / bh * 100) + "%";
+        view.appendChild(img);
+      } else {
+        view.className = "src-page";
+        view.style.aspectRatio = "";
+        var holder = el("div", { style: "position:relative" }, [img]);
+        if (im.box) {
+          var b2 = im.box;
+          holder.appendChild(el("div", { className: "box", style: "left:" + (b2[0] * 100) + "%;top:" + (b2[1] * 100) + "%;width:" + ((b2[2] - b2[0]) * 100) + "%;height:" + ((b2[3] - b2[1]) * 100) + "%" }));
+        }
+        view.appendChild(holder);
+        // bring the outlined example into view (the img's width/height attributes give the
+        // page its height before the image has loaded)
+        if (im.box) requestAnimationFrame(function () { view.scrollTop = Math.max(0, im.box[1] * holder.offsetHeight - 40); });
+      }
+      if (toggle) toggle.textContent = whole ? "Show the example only" : "Show the whole page";
+    }
+    if (toggle) toggle.addEventListener("click", function () { whole = !whole; draw(); });
+    draw();
+    wrap.appendChild(view);
+    wrap.appendChild(el("figcaption", { className: "src-bar" }, [caption, toggle]));
+    return wrap;
+  }
+
+  function renderCard(r) {
+    var rid = r.record, e = current(rid);
+    var card = el("article", { className: "rec" + (isReviewed(rid) ? " is-reviewed" : ""), id: "rec-" + rid, "data-rid": rid });
+
+    var tags = el("div", { className: "tags" });
+    r.flags.forEach(function (f) { tags.appendChild(el("span", { className: "tag flag", text: (FLAGS[f] || [f])[0], title: (FLAGS[f] || ["", ""])[1] })); });
+    if (isChanged(rid)) tags.appendChild(el("span", { className: "tag edit", text: "changed" }));
+    if (isReviewed(rid)) tags.appendChild(el("span", { className: "tag done", text: "reviewed" }));
+    card.appendChild(el("div", { className: "rec-head" }, [
+      el("span", { className: "rid", text: rid }),
+      el("span", { className: "loc", text: r.locator }),
+      CFG.files.length > 1 ? el("span", { className: "loc", text: "· " + r.file_label }) : null,
+      tags
+    ]));
+    if (r.gloss_source === "line") card.appendChild(el("div", { className: "note-banner", text: "Our data stores this example's glosses as one line, not word by word. They have been spread across the words in order as a first guess. Check that each gloss sits under the right word." }));
+    if (r.alternates.length) {
+      var alt = el("div", { className: "note-banner" }, ["Our data also records these other spellings of this sentence: "]);
+      r.alternates.forEach(function (a, k) { if (k) alt.appendChild(document.createTextNode(" · ")); alt.appendChild(el("span", { className: "inline-lang", text: a })); });
+      alt.appendChild(document.createTextNode(". If one is wrong, say so in the note."));
+      card.appendChild(alt);
+    }
+    if (r.more_glosses) card.appendChild(el("div", { className: "note-banner", text: "Some words here have a second gloss in our data, not shown in the boxes: " + r.more_glosses + ". If one is wrong, say so in the note." }));
+    r.scrape_notes.forEach(function (n) { card.appendChild(el("div", { className: "note-banner", text: "Note from the scrape: " + n })); });
+    (r.images || []).forEach(function (im) { card.appendChild(renderSource(im)); });
+
+    // sentence
+    var sId = "s-" + rid;
+    var sent = el("textarea", { className: "sent" + (e.sentence !== r.sentence ? " changed" : ""), id: sId, rows: "1", spellcheck: "false" });
+    sent.value = e.sentence;
+    sent.addEventListener("input", function () {
+      var ed = editable(rid); ed.sentence = oneLine(sent.value);
+      sent.classList.toggle("changed", ed.sentence !== r.sentence);
+      renderWasLine("swas-" + rid, ed.sentence, r.sentence, "lang"); autosize(sent); touch(rid); refreshCardChrome(rid);
+    });
+    card.appendChild(el("div", { className: "field" }, [el("label", { "for": sId, text: r.sentence_label || (CFG.language + " sentence" + (r.words.length ? ", as the book prints it" : "")) }), sent, el("div", { className: "was-line", id: "swas-" + rid })]));
+
+    // interlinear table
+    if (WORDS_ON && r.words.length) {
+      var igt = el("div", { className: "igt" });
+      igt.appendChild(el("div", { className: "rowlabels" }, [el("span"), el("span", { text: "Word" }), el("span", { text: "Gloss" }), el("span")]));
+      var n = Math.max(e.words.length, e.glosses.length);
+      for (var i = 0; i < n; i++) igt.appendChild(renderCol(rid, e, r, i));
+      card.appendChild(el("div", { className: "igt-wrap" }, [igt]));
+      card.appendChild(el("div", { className: "tools" }, [
+        el("span", { className: "lbl", text: "Selected box:" }),
+        toolBtn("Insert box before", function (f, ed) { arr(ed, f.row).splice(f.idx, 0, ""); return { row: f.row, idx: f.idx }; }),
+        toolBtn("Insert box after", function (f, ed) { arr(ed, f.row).splice(f.idx + 1, 0, ""); return { row: f.row, idx: f.idx + 1 }; }),
+        toolBtn("Delete box", function (f, ed) { arr(ed, f.row).splice(f.idx, 1); return { row: f.row, idx: Math.max(0, f.idx - 1) }; }),
+        toolBtn("Insert column after", function (f, ed) { ed.words.splice(f.idx + 1, 0, ""); ed.glosses.splice(f.idx + 1, 0, ""); return { row: "words", idx: f.idx + 1 }; }),
+        toolBtn("Delete column", function (f, ed) { ed.words.splice(f.idx, 1); ed.glosses.splice(f.idx, 1); return { row: f.row, idx: Math.max(0, f.idx - 1) }; })
+      ]));
+      card.appendChild(el("div", { className: "warn", id: "warn-" + rid }));
+    } else if (WORDS_ON) {
+      card.appendChild(el("div", { className: "absent", text: "Our data has no word-by-word line for this sentence. If the book prints words with glosses under them here, say so in the note." }));
+    }
+
+    // translations
+    if (!r.translations.length) card.appendChild(el("div", { className: "absent", text: "Our data has no free translation for this sentence. If the book prints one, copy it into the note." }));
+    r.translations.forEach(function (t, k) {
+      var tId = "t-" + rid + "-" + k;
+      var han = t.lang === "zho" || hasHan(t.text);
+      var ta = el("textarea", { className: "tr" + (han ? " han" : "") + (e.translations[k] !== t.text ? " changed" : ""), id: tId, rows: "1" });
+      ta.value = e.translations[k];
+      ta.addEventListener("input", function () {
+        var ed = editable(rid); ed.translations[k] = oneLine(ta.value);
+        ta.classList.toggle("changed", ed.translations[k] !== t.text);
+        renderWasLine("twas-" + rid + "-" + k, ed.translations[k], t.text, han ? "han" : ""); autosize(ta); touch(rid); refreshCardChrome(rid);
+      });
+      var label = (t.ver === "alt" ? "Alternative translation" : "Free translation") + " (" + (LANGS[t.lang] || t.lang) + ")";
+      card.appendChild(el("div", { className: "field" }, [el("label", { "for": tId, text: label }), ta, el("div", { className: "was-line", id: "twas-" + rid + "-" + k })]));
+    });
+
+    var noteId = "note-" + rid;
+    var note = el("textarea", { className: "note", id: noteId, rows: "1", placeholder: "Questions, or anything the boxes cannot express" });
+    note.value = e.note || "";
+    note.addEventListener("input", function () { editable(rid).note = note.value; autosize(note); touch(rid); updateCounts(); });
+    card.appendChild(el("div", { className: "field" }, [el("label", { "for": noteId, text: "Note for the maintainer" }), note]));
+
+    var rev = el("button", { className: "rev", type: "button", "aria-pressed": String(isReviewed(rid)),
+      text: isReviewed(rid) ? "Reviewed ✓" : "Mark reviewed" });
+    rev.addEventListener("click", function () {
+      var ed = editable(rid); ed.reviewed = !ed.reviewed; touch(rid); rerenderCard(rid);
+      if (state.filter === "todo" && ed.reviewed) toast(rid + " marked reviewed");
+    });
+    var reset = el("button", { className: "btn small", type: "button", text: "Undo my changes to this card", disabled: !isChanged(rid) });
+    reset.addEventListener("click", function () {
+      var ed = editable(rid), f = fresh(r);
+      ed.sentence = f.sentence; ed.words = f.words; ed.glosses = f.glosses; ed.translations = f.translations;
+      touch(rid); rerenderCard(rid); toast("Restored " + rid + " to the original text");
+    });
+    card.appendChild(el("div", { className: "rec-foot" }, [rev, el("span", { className: "spacer" }), reset]));
+
+    setTimeout(function () {
+      renderWarnings(rid);
+      renderWasLine("swas-" + rid, e.sentence, r.sentence, "lang");
+      r.translations.forEach(function (t, k) { renderWasLine("twas-" + rid + "-" + k, e.translations[k], t.text, t.lang === "zho" ? "han" : ""); });
+      card.querySelectorAll("textarea").forEach(autosize);
+    }, 0);
+    return card;
+  }
+
+  function arr(ed, row) { return row === "words" ? ed.words : ed.glosses; }
+  function toolBtn(label, fn) {
+    return el("button", { className: "btn small", type: "button", text: label,
+      onmousedown: function (ev) { ev.preventDefault(); },   // keep focus on the box
+      onclick: function (ev) {
+        var card = ev.target.closest(".rec"), rid = card.getAttribute("data-rid");
+        if (!focus || focus.rid !== rid) { toast("Click a box in this card first"); return; }
+        var ed = editable(rid);
+        var next = fn(focus, ed);
+        touch(rid);
+        rerenderCard(rid);
+        focusCell(rid, next.row, Math.min(next.idx, arr(ed, next.row).length - 1));
+      } });
+  }
+  function focusCell(rid, row, idx) {
+    var c = document.querySelector('#rec-' + CSS.escape(rid) + ' .cell[data-row="' + row + '"][data-idx="' + idx + '"]');
+    if (c) c.focus();
+  }
+
+  function renderCol(rid, e, r, i) {
+    var col = el("div", { className: "col" });
+    col.appendChild(el("span", { className: "n", text: String(i + 1) }));
+    ["words", "glosses"].forEach(function (row) {
+      var a = row === "words" ? e.words : e.glosses, orig = row === "words" ? r.words : r.glosses;
+      if (i >= a.length) {
+        col.appendChild(el("button", { className: "cell missing", type: "button", text: "+ add",
+          onclick: function () { var ed = editable(rid); arr(ed, row).push(""); touch(rid); rerenderCard(rid); focusCell(rid, row, arr(ed, row).length - 1); } }));
+        return;
+      }
+      var cls = "cell " + (row === "words" ? "w" : "g" + (HAN_GLOSS ? " han" : "")) + (a[i] !== orig[i] ? " changed" : "");
+      var inp = el("input", { className: cls,
+        id: "c-" + rid + "-" + row + "-" + i, "data-row": row, "data-idx": String(i), type: "text", spellcheck: "false", autocomplete: "off",
+        "aria-label": (row === "words" ? "Word " : "Gloss ") + (i + 1) });
+      inp.value = a[i];
+      inp.addEventListener("focus", function () { focus = { rid: rid, row: row, idx: i }; });
+      inp.addEventListener("blur", function () { setTimeout(function () { if (focus && focus.rid === rid && document.activeElement && !document.activeElement.closest("#rec-" + CSS.escape(rid))) focus = null; }, 0); });
+      inp.addEventListener("input", function () {
+        var ed = editable(rid); arr(ed, row)[i] = inp.value.trim().replace(/\s+/g, " ");
+        inp.classList.toggle("changed", arr(ed, row)[i] !== orig[i]);
+        sizeCol(col, ed.words[i] || "", ed.glosses[i] || "");
+        renderWas(col, r, ed, i);
+        touch(rid); renderWarnings(rid); refreshCardChrome(rid);
+      });
+      col.appendChild(inp);
+    });
+    col.appendChild(el("div", { className: "was" }));
+    sizeCol(col, e.words[i] || "", e.glosses[i] || "");
+    renderWas(col, r, e, i);
+    return col;
+  }
+  function renderWas(col, r, e, i) {
+    var box = col.querySelector(".was"); box.textContent = "";
+    var parts = [];
+    if (i < e.words.length && e.words[i] !== r.words[i] && r.words[i] !== undefined) parts.push(r.words[i]);
+    if (i < e.glosses.length && e.glosses[i] !== r.glosses[i] && r.glosses[i] !== undefined) parts.push(r.glosses[i]);
+    parts.forEach(function (p, k) {
+      if (k) box.appendChild(document.createTextNode(" / "));
+      box.appendChild(el("span", { className: hasHan(p) ? "h" : "", text: p || "(empty)" }));
+    });
+    box.title = parts.length ? "Original: " + parts.join(" / ") : "";
+  }
+  function renderWasLine(id, now, was, cls) {
+    var box = document.getElementById(id); if (!box) return;
+    box.textContent = "";
+    if (now !== was) { box.appendChild(document.createTextNode("Original: ")); box.appendChild(el("s", { className: cls, text: was || "(empty)" })); }
+  }
+  function refreshCardChrome(rid) {
+    var card = document.getElementById("rec-" + rid); if (!card) return;
+    var tags = card.querySelector(".tags"), tag = tags.querySelector(".tag.edit");
+    if (isChanged(rid) && !tag) tags.appendChild(el("span", { className: "tag edit", text: "changed" }));
+    if (!isChanged(rid) && tag) tag.remove();
+    var reset = card.querySelector(".rec-foot .btn"); if (reset) reset.disabled = !isChanged(rid);
+    updateCounts();
+  }
+  function renderWarnings(rid) {
+    var box = document.getElementById("warn-" + rid); if (!box) return;
+    var e = current(rid), r = BY_ID[rid], msgs = [];
+    var card = document.getElementById("rec-" + rid);
+    card.querySelectorAll(".cell.bad").forEach(function (c) { c.classList.remove("bad"); });
+    function bad(row, i) { var c = card.querySelector('.cell[data-row="' + row + '"][data-idx="' + i + '"]'); if (c) c.classList.add("bad"); }
+    if (e.words.length !== e.glosses.length)
+      msgs.push("The word row has " + e.words.length + " boxes and the gloss row has " + e.glosses.length + ". Every word needs its own gloss box; leave it empty where the book prints no gloss.");
+    var anyGloss = e.glosses.some(function (g) { return g; });
+    var empties = [], blankGloss = [], multi = [], glossSpace = [], counts = [];
+    e.words.forEach(function (v, i) {
+      if (!v) { empties.push(i + 1); bad("words", i); }
+      if (/\s/.test(v)) multi.push(i + 1);
+    });
+    e.glosses.forEach(function (v, i) {
+      if (!v && anyGloss && i < e.words.length) blankGloss.push(i + 1);
+      if (HAN_GLOSS && /\s/.test(v)) glossSpace.push(i + 1);
+    });
+    for (var i = 0; i < Math.min(e.words.length, e.glosses.length); i++) {
+      var w = e.words[i], g = e.glosses[i];
+      if (/[-=<]/.test(w) && g && !/\s/.test(w) && morphemes(w) !== morphemes(g)) { counts.push(i + 1); bad("glosses", i); }
+    }
+    if (empties.length) msgs.push("Empty word box in column " + empties.join(", ") + ". Type the word or delete the box.");
+    if (blankGloss.length) msgs.push("No gloss in column " + blankGloss.join(", ") + ". That is right only if the book prints no gloss under that word.");
+    if (multi.length) msgs.push("Column " + multi.join(", ") + " holds more than one word. That is right only when the book prints one gloss under those words together; otherwise split them with Insert box after.");
+    if (glossSpace.length) msgs.push("The gloss in column " + glossSpace.join(", ") + " has a space in it. If it is two glosses, split them with Insert box after.");
+    if (counts.length) msgs.push("Column " + counts.join(", ") + ": the word and its gloss have a different number of hyphenated parts. Check it against the book; it may be printed that way.");
+    box.textContent = "";
+    msgs.forEach(function (m) { box.appendChild(el("div", { text: m })); });
+  }
+
+  var LANGS = { eng: "English", zho: "Chinese", jpn: "Japanese" };
+  var FLAGS = {
+    parts: ["parts differ", "A hyphenated word and its gloss have a different number of parts."],
+    bracket: ["unmatched bracket", "A word or gloss with an unmatched bracket: a bracket may have drifted in from the next column."],
+    no_gloss: ["word without gloss", "Some words have glosses and some do not. Check whether the book prints a gloss under each word."],
+    no_glosses: ["no glosses", "None of these words has a gloss. Check whether the book prints glosses under them."],
+    words_sentence: ["words ≠ sentence", "The letters in the word boxes do not add up to the letters of the sentence: a word may be missing, extra, or spelled differently in one of them."],
+    split_gloss: ["split gloss?", "Two neighbouring glosses join into a gloss used elsewhere: one gloss may have been split across two columns."],
+    split_word: ["split word?", "A one-character gloss that is part of this word's usual gloss: a gloss may have been split across two words."],
+    line_count: ["gloss count differs", "Our gloss line has a different number of glosses than there are words, so the guess at where each gloss goes is probably wrong somewhere."],
+    unclear: ["unreadable spot", "The scrape could not read part of this example and marked it <UNCLEAR/>. If you can read the book there, replace <UNCLEAR/> with what it prints."],
+    no_translation: ["no translation", "Our data has no free translation for this sentence."],
+    other_page: ["on another page", "The example was not on the page the card names, but on the page next to it, which is the one shown. Check you are looking at the right example."],
+    not_on_page: ["not found on page", "The automatic check could not find this sentence on the page shown, so the whole page is shown. The example may be on another page, or our text differs a lot from the book."]
+  };
+  Object.keys(CFG.flag_labels || {}).forEach(function (k) { FLAGS[k] = CFG.flag_labels[k]; });
+
+  // ---------- download / load ----------
+  function exportPayload() {
+    var edits = {};
+    Object.keys(state.edits).forEach(function (rid) {
+      var e = state.edits[rid];
+      if (!BY_ID[rid] || e.base !== BY_ID[rid].hash) return;
+      if (!e.updatedAt) return;
+      edits[rid] = plain(e);
+    });
+    return { format: FORMAT, exported: new Date().toISOString(), edits: edits };
+  }
+  function doDownload() {
+    var text = JSON.stringify(exportPayload(), null, 1);
+    var name = CFG.download_prefix + "-" + new Date().toISOString().slice(0, 10) + ".json";
+    function done() { state.lastDownloadCount = changeCounter; saveLocal(); updateLocalNudge(); toast("Downloaded " + name); }
+    if (!downloads) { showCopy(text); return; }
+    downloads.save({ filename: name, data: text }).then(done).catch(function (err) {
+      var code = err && err.code;
+      if (code === "declined") return;
+      if (code === "rate_limited") { toast("A save prompt is already open."); return; }
+      showCopy(text);
+    });
+  }
+  function showCopy(text) {
+    document.getElementById("copy-text").value = text;
+    document.getElementById("copybox").hidden = false;
+    document.getElementById("copybox").scrollIntoView({ block: "nearest" });
+  }
+  function doLoad(file) {
+    var fr = new FileReader();
+    fr.onload = function () {
+      var d;
+      try { d = JSON.parse(fr.result); } catch (e) { toast("That file is not a saved review file."); return; }
+      if (!d || d.format !== FORMAT || typeof d.edits !== "object") { toast("That file is from a different review and cannot be loaded here."); return; }
+      var taken = 0, stale = 0, older = 0;
+      Object.keys(d.edits).forEach(function (rid) {
+        var inc = d.edits[rid];
+        if (!BY_ID[rid] || !inc || inc.base !== BY_ID[rid].hash) { stale++; return; }
+        var cur = state.edits[rid];
+        if (cur && (cur.updatedAt || 0) > (inc.updatedAt || 0)) { older++; return; }
+        state.edits[rid] = normalize(inc, BY_ID[rid]);
+        if (!state.edits[rid].updatedAt) state.edits[rid].updatedAt = Date.now();
+        taken++;
+        state.unsynced[rid] = state.edits[rid].updatedAt;
+        scheduleSave(rid);
+      });
+      renderList(); updateCounts();
+      toast("Loaded " + taken + " card" + (taken === 1 ? "" : "s") + (older ? "; kept " + older + " newer here" : "") + (stale ? "; skipped " + stale + " from an older version" : ""));
+    };
+    fr.readAsText(file);
+  }
+
+  // ---------- wiring ----------
+  document.getElementById("btn-download").addEventListener("click", doDownload);
+  document.getElementById("btn-load").addEventListener("click", function () { document.getElementById("file-in").click(); });
+  document.getElementById("file-in").addEventListener("change", function (ev) { var f = ev.target.files[0]; if (f) doLoad(f); ev.target.value = ""; });
+  document.getElementById("btn-copy").addEventListener("click", function () {
+    var ta = document.getElementById("copy-text");
+    var p = navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(ta.value) : Promise.reject();
+    p.then(function () { toast("Copied"); state.lastDownloadCount = changeCounter; saveLocal(); updateLocalNudge(); })
+     .catch(function () { ta.focus(); ta.select(); toast("Press Ctrl+C (or ⌘C) to copy"); });
+  });
+  document.getElementById("btn-copy-close").addEventListener("click", function () { document.getElementById("copybox").hidden = true; });
+  document.querySelectorAll("[data-filter]").forEach(function (b) {
+    b.addEventListener("click", function () { state.filter = b.getAttribute("data-filter"); state.page = 0; renderList(); });
+  });
+  var fileSel = document.getElementById("file-filter");
+  if (CFG.files.length > 1) {
+    fileSel.hidden = false;
+    fileSel.appendChild(el("option", { value: "", text: "All " + CFG.files.length + " files" }));
+    CFG.files.forEach(function (f) { fileSel.appendChild(el("option", { value: f.file, text: f.label + " (" + f.count + ")" })); });
+    fileSel.addEventListener("change", function () { state.file = fileSel.value; state.page = 0; renderList(); });
+  }
+  var searchT;
+  document.getElementById("search").addEventListener("input", function (ev) {
+    clearTimeout(searchT);
+    searchT = setTimeout(function () { state.query = ev.target.value; state.page = 0; renderList(); }, 200);
+  });
+  window.addEventListener("beforeunload", function () { saveLocal(); });
+
+  loadLocal();
+  if (state.file && !CFG.files.some(function (f) { return f.file === state.file; })) state.file = "";
+  fileSel.value = state.file;
+  try { if (!localStorage.getItem(LS_KEY + ":seen")) { document.getElementById("guide").open = true; localStorage.setItem(LS_KEY + ":seen", "1"); } }
+  catch (e) { document.getElementById("guide").open = true; }
+  renderList();
+  updateCounts();
+  connect();
+})();
+</script>

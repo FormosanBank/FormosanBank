@@ -63,9 +63,16 @@ TODO_REASON = "TODO"
 #: published FORM is notation -- most often a Neogrammarian reconstruction
 #: label -- and only a human reading the source can tell the two apart.
 #:
+#: V145 (an M level in a file where no word is segmented) was added on
+#: 2026-11-07. It stays HARD: across a whole file, "every M mirrors its W" is
+#: usually a copied tier. But a short text whose source never splits a word,
+#: where the maintainer ruled that a one-piece gloss is enough for a single M,
+#: looks the same, and only a human reading the source can tell them apart
+#: (first case: Wild-Lehmann Kanakanavu, moo_2013_narration_2).
+#:
 #: Adding an id here is a policy decision, not a convenience. Do it in a PR
 #: that says which rule and why.
-WAIVABLE_RULES = frozenset({"V129"})
+WAIVABLE_RULES = frozenset({"V129", "V145"})
 
 
 class WaiverError(ValueError):

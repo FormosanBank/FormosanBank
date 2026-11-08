@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  V158 positive fixture: terminal punctuation fused to the next word.
+
+  Shape: three S, standard FORMs. xml:lang="ami".
+  S_1: '!' glued to the following word (no space after it)   -> 1 finding
+  S_2: a space before the sentence-final '?'                  -> 1 finding
+  S_3: correctly spaced; a '?' followed by a closing quote    -> 0 findings
+  (Safolu, 2026-10-16: "There should be no space before a ? or a ! and there
+  should be space between any ! or ? and a following Amis character.")
+-->
+<TEXT id="TEST_V158" citation="test" BibTeX_citation="@test{test}" copyright="CC BY-NC 4.0" xml:lang="ami" dialect="Coastal">
+  <S id="S_1">
+    <FORM kindOf="original">Maolah kako!Tayra ko wawa.</FORM>
+    <FORM kindOf="standard">Maolah kako!Tayra ko wawa.</FORM>
+  </S>
+  <S id="S_2">
+    <FORM kindOf="original">Nga'ay ho ?</FORM>
+    <FORM kindOf="standard">Nga'ay ho ?</FORM>
+  </S>
+  <S id="S_3">
+    <FORM kindOf="original">Maolah kako! Tayra ko wawa. "Nga'ay ho?"</FORM>
+    <FORM kindOf="standard">Maolah kako! Tayra ko wawa. "Nga'ay ho?"</FORM>
+  </S>
+</TEXT>

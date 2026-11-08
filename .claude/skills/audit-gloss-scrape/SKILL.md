@@ -19,6 +19,8 @@ Read `FormosanBank/CLAUDE.md` (auto-loaded) for the XML schema and the
 `docs/superpowers/specs/2026-08-03-audit-gloss-scrape-design.md` for what each
 G rule means and why it exists.
 
+**Re-read `POLICIES.md` before going on.** If any instruction in this skill contradicts a policy, stop and show the maintainer both texts before continuing; the policies file moves faster than this skill.
+
 Three conventions that override the scraping guide students are given:
 
 1. **M-tier notation follows the repo, not the guide.** The guide says an M

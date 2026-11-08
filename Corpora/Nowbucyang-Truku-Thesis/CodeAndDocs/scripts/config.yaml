@@ -15,7 +15,7 @@ rights:
   permission_confirmed: true
   full_rights_obtained: true
   create_final_xml: true
-  output_dir: "Final_XML"
+  output_dir: "XML"
 
 extraction:
   primary_method: "pdf_text_layer"
@@ -57,7 +57,7 @@ normalization:
   normalize_whitespace: true
 
 xml:
-  output_dir: "Final_XML"
+  output_dir: "XML"
   language_folder: "Truku"
   output_file: "Hsu_Lowking_Truku_WordFormation_2008.xml"
   source_translation_lang: "zho"

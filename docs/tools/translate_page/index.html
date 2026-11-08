@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Translate FormosanBank into {{LANGUAGE_NAME}}</title>
+<style>
+  :root { --bg:#fbfbf8; --panel:#fff; --ink:#24262b; --muted:#5f6670; --line:#dde1e6; --accent:#2b5f8a; --ok:#2f7a3b; --warn:#9a5b12; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#16191d; --panel:#1f2328; --ink:#e6e8eb; --muted:#9aa3ad; --line:#333a42; --accent:#7fb2dc; --ok:#7cc488; --warn:#e2a95b; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", "Noto Sans", "Noto Sans TC", sans-serif; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 20px max(16px, env(safe-area-inset-left)); }
+  h1 { font-size: 1.6rem; margin: 0 0 .25em; }
+  h2 { font-size: 1.15rem; margin: 1.2em 0 .4em; }
+  p { margin: .4em 0; }
+  .muted { color: var(--muted); font-size: .92rem; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin: 12px 0; }
+  label { font-weight: 600; display:block; margin-top:.5em; }
+  input[type=text], select, textarea { width: 100%; font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
+  textarea { min-height: 7em; }
+  button { font: inherit; padding: 8px 14px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+  button.secondary { background: transparent; color: var(--accent); }
+  button:disabled { opacity: .5; cursor: default; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,2fr); gap: 16px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+  #pages { max-height: 70vh; overflow: auto; padding: 0; margin: 0; list-style: none; }
+  #pages li button { width: 100%; text-align: left; background: transparent; color: var(--ink); border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 7px 4px; }
+  #pages li button[aria-current=true] { background: var(--line); }
+  .count { float: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .source { font-size: 1.05rem; padding: 10px 12px; border-left: 3px solid var(--accent); background: var(--bg); white-space: pre-wrap; }
+  .hint { padding: 8px 10px; border-radius: 6px; border: 1px solid var(--warn); color: var(--warn); }
+  .done { color: var(--ok); font-weight: 600; }
+  code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .9em; }
+  .copy { font-size: .85rem; padding: 4px 8px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Translate FormosanBank into {{LANGUAGE_NAME}}</h1>
+  <p class="muted">Translate the <a href="../../">FormosanBank documentation</a> one sentence at a time. Your work stays in this browser; save it to a file to keep it or to continue on another computer, and email that file when you want it added to the site.</p>
+
+  <div class="panel" id="consent">
+    <p><strong>Permission.</strong> When you email your work to Joshua Hartshorne (joshua.hartshorne@sydney.edu.au), you agree that FormosanBank may publish it on the FormosanBank website and in the FormosanBank corpus under the CC BY-NC 4.0 license, credited to you by the name you entered.</p>
+    <div class="grid">
+      <div><label for="translator">Your name (as it should be credited)</label><input type="text" id="translator" autocomplete="name"></div>
+      <div><label for="dialect">Your dialect</label><input type="text" id="dialect" list="dialects" placeholder="for example: Eastern"><datalist id="dialects"></datalist></div>
+    </div>
+  </div>
+
+  <div class="panel row">
+    <span id="overall" class="muted">Loading…</span>
+    <span style="flex:1"></span>
+    <button type="button" id="save">Download my work</button>
+    <label class="secondary" style="margin:0"><button type="button" class="secondary" id="openbtn">Open saved work</button><input type="file" id="open" accept=".json,application/json" hidden></label>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <h2>Pages</h2>
+      <ul id="pages"></ul>
+    </div>
+    <div class="panel" id="work">
+      <h2 id="pagetitle">Choose a page</h2>
+      <div id="unit" hidden>
+        <p class="muted" id="position"></p>
+        <div class="source" id="english"></div>
+        <div id="mandarinbox" hidden><p class="muted">Approved Mandarin:</p><div class="source" id="mandarin"></div></div>
+        <p class="hint" id="prefill" hidden></p>
+        <label for="translation">Your translation</label>
+        <textarea id="translation" spellcheck="false"></textarea>
+        <p><label style="display:inline;font-weight:400"><input type="checkbox" id="approved"> This translation is correct (approved)</label></p>
+        <p class="muted">Typing marks a translation as approved; untick the box if it is only a draft. Text in <code>`backticks`</code> is code: copy it unchanged. In shared labels, keep words in <code>{braces}</code> exactly as they are.</p>
+        <div class="row"><button type="button" class="secondary" id="prev">Previous</button><button type="button" id="next">Next</button><span class="muted" id="saved"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Send your work</h2>
+    <p>1. Click <strong>Download my work</strong>. 2. Email the file to <code id="email">joshua.hartshorne@sydney.edu.au</code> <button type="button" class="secondary copy" id="copyemail">Copy address</button> (<a id="mailto" href="mailto:joshua.hartshorne@sydney.edu.au">open your email program</a>).</p>
+    <p class="muted">If the download does not work on your device, copy this text and paste it into the email instead: <button type="button" class="secondary copy" id="copywork">Copy my work</button></p>
+    <textarea id="worktext" readonly hidden></textarea>
+  </div>
+</div>
+<script>
+(function () {
+  const CODE = "{{LANGUAGE_CODE}}", NAME = "{{LANGUAGE_NAME}}", KEY = "fb-translate-" + CODE;
+  const FORMAT = "formosanbank-translation/1";
+  const $ = (id) => document.getElementById(id);
+  let data = null, state = { translator: "", dialect: "", items: {} }, page = null, index = 0;
+
+  function load() { try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s && s.items) state = s; } catch (e) {} }
+  function persist() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); $("saved").textContent = "Saved in this browser."; }
+    catch (e) { $("saved").textContent = "Could not save in this browser: download your work to keep it."; }
+  }
+  function current(english) {
+    const mine = state.items[english];
+    if (mine) return { translation: mine.translation, approved: mine.approved, origin: mine.origin || "human", mine: true };
+    const ex = data.existing[english];
+    if (ex) return { translation: ex.translation, approved: ex.approved, origin: ex.origin, mine: false };
+    return { translation: "", approved: false, origin: "", mine: false };
+  }
+  function isDone(english) { const c = current(english); return c.approved && c.translation.trim() !== ""; }
+  function pages() { return [{ id: "__labels__", title: "Shared labels (headings, tables, figures, names)", units: data.labels }].concat(data.pages); }
+
+  function renderMenu() {
+    const ul = $("pages"); ul.textContent = "";
+    let all = 0, done = 0;
+    pages().forEach((p) => {
+      const d = p.units.filter(isDone).length; all += p.units.length; done += d;
+      const li = document.createElement("li"), b = document.createElement("button");
+      b.type = "button"; b.textContent = p.title; b.setAttribute("aria-current", page && page.id === p.id ? "true" : "false");
+      const c = document.createElement("span"); c.className = "count"; c.textContent = d + " / " + p.units.length;
+      if (d === p.units.length) c.classList.add("done");
+      b.appendChild(c); b.addEventListener("click", () => { page = p; index = firstOpen(p); renderMenu(); renderUnit(); });
+      li.appendChild(b); ul.appendChild(li);
+    });
+    $("overall").textContent = done + " of " + all + " sentences and labels approved for " + NAME + ".";
+  }
+  function firstOpen(p) { const i = p.units.findIndex((u) => !isDone(u)); return i < 0 ? 0 : i; }
+
+  function renderUnit() {
+    if (!page) return;
+    $("pagetitle").textContent = page.title; $("unit").hidden = false;
+    const english = page.units[index], c = current(english);
+    $("position").textContent = "Item " + (index + 1) + " of " + page.units.length;
+    $("english").textContent = english;
+    const zh = data.mandarin && data.mandarin[english];
+    $("mandarinbox").hidden = !zh; if (zh) $("mandarin").textContent = zh;
+    $("translation").value = c.translation;
+    $("approved").checked = c.approved;
+    const hints = { mt: "This is a machine translation. Check it, correct it, and tick the box to approve it.",
+                    "previous-website": "This comes from an earlier version of the website and may not match the English exactly. Check it and tick the box to approve it.",
+                    "corpus-match": "This is an earlier translation of the same English sentence. Check it and tick the box to approve it." };
+    const hint = !c.mine && !c.approved ? hints[c.origin] : null;
+    $("prefill").hidden = !hint; if (hint) $("prefill").textContent = hint;
+    $("prev").disabled = index === 0; $("next").textContent = index === page.units.length - 1 ? "Done" : "Next";
+    $("saved").textContent = "";
+  }
+  function record(approvedChanged) {
+    const english = page.units[index], c = current(english);
+    const text = $("translation").value;
+    let approved = $("approved").checked;
+    if (!approvedChanged && text !== c.translation) { approved = text.trim() !== ""; $("approved").checked = approved; }
+    state.items[english] = { translation: text, approved: approved, origin: (c.mine ? c.origin : (text === c.translation ? c.origin : "human")) || "human" };
+    persist(); renderMenu();
+  }
+  function payload() {
+    return { format: FORMAT, language: CODE, translator: state.translator.trim(), dialect: state.dialect.trim(),
+             saved_at: new Date().toISOString(),
+             items: Object.entries(state.items).filter(([, v]) => v.translation.trim()).map(([english, v]) => ({ english, translation: v.translation, approved: v.approved, origin: v.origin })) };
+  }
+  function download() {
+    if (!state.translator.trim()) { alertBox("Please enter your name first, so your work can be credited."); return; }
+    const text = JSON.stringify(payload(), null, 1);
+    const blob = new Blob([text], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "formosanbank-" + CODE + "-" + state.translator.trim().replace(/\W+/g, "-") + "-" + new Date().toISOString().slice(0, 10) + ".json";
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  function alertBox(msg) { $("overall").textContent = msg; }
+  function openFile(file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const p = JSON.parse(reader.result);
+        if (p.format !== FORMAT || p.language !== CODE) throw new Error("This file is not a saved " + NAME + " translation.");
+        state.translator = p.translator || state.translator; state.dialect = p.dialect || state.dialect;
+        (p.items || []).forEach((it) => { state.items[it.english] = { translation: it.translation, approved: !!it.approved, origin: it.origin || "human" }; });
+        $("translator").value = state.translator; $("dialect").value = state.dialect;
+        persist(); renderMenu(); renderUnit(); alertBox("Opened " + (p.items || []).length + " saved translations.");
+      } catch (e) { alertBox("Could not open that file: " + e.message); }
+    };
+    reader.readAsText(file);
+  }
+  function copy(text, button) {
+    const done = () => { button.textContent = "Copied"; setTimeout(() => (button.textContent = button.dataset.label), 1500); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, () => fallback());
+    else fallback();
+    function fallback() { const t = $("worktext"); t.hidden = false; t.value = text; t.select(); }
+  }
+
+  load();
+  $("translator").value = state.translator; $("dialect").value = state.dialect;
+  $("translator").addEventListener("input", (e) => { state.translator = e.target.value; persist(); });
+  $("dialect").addEventListener("input", (e) => { state.dialect = e.target.value; persist(); });
+  $("translation").addEventListener("input", () => record(false));
+  $("approved").addEventListener("change", () => record(true));
+  $("prev").addEventListener("click", () => { if (index > 0) { index--; renderUnit(); } });
+  $("next").addEventListener("click", () => { if (index < page.units.length - 1) { index++; renderUnit(); } else { index = firstOpen(page); renderUnit(); } });
+  $("save").addEventListener("click", download);
+  $("openbtn").addEventListener("click", () => $("open").click());
+  $("open").addEventListener("change", (e) => { if (e.target.files[0]) openFile(e.target.files[0]); });
+  ["copyemail", "copywork"].forEach((id) => { $(id).dataset.label = $(id).textContent; });
+  $("copyemail").addEventListener("click", (e) => copy("joshua.hartshorne@sydney.edu.au", e.target));
+  $("copywork").addEventListener("click", (e) => copy(JSON.stringify(payload()), e.target));
+  $("mailto").href = "mailto:joshua.hartshorne@sydney.edu.au?subject=" + encodeURIComponent("FormosanBank " + NAME + " translation");
+
+  fetch("data.json").then((r) => r.json()).then((d) => {
+    data = d; renderMenu();
+  }).catch(() => alertBox("The sentence list could not be loaded. Please try again later."));
+})();
+</script>
+</body>
+</html>

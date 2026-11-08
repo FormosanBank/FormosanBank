@@ -26,18 +26,43 @@ from pathlib import Path
 # via importlib in tests (where sys.path may not include either directory).
 _utils = Path(__file__).resolve().parents[0]
 _qc = Path(__file__).resolve().parents[1]
-for _p in (_utils, _qc):
+for _p in (_utils, _qc, _qc / "validation"):
     if str(_p) not in sys.path:
         sys.path.insert(0, str(_p))
 
 import audio_durations
 import corpus_counts
 from get_corpus_stats import stats_paths
+from validate_hf_audio import name_shard
 
 try:
     from mutagen.mp3 import MP3 as MutagenMP3
 except ImportError:
     MutagenMP3 = None
+
+try:
+    import av
+except ImportError:
+    av = None
+
+
+def _container_duration(file_path: str):
+    """Duration of a .webm/.mp4 recording via PyAV.
+
+    Browser-made WebM often has no duration in its header (590 of ILRDF's
+    2,162); then the audio packets are read through and the last one's end
+    time is used."""
+    with av.open(file_path) as container:
+        if container.duration:
+            return container.duration / av.time_base
+        if not container.streams.audio:
+            return None
+        stream = container.streams.audio[0]
+        end = 0
+        for packet in container.demux(stream):
+            if packet.pts is not None:
+                end = max(end, packet.pts + (packet.duration or 0))
+        return float(end * stream.time_base) or None
 
 
 def _get_audio_duration(file_path: str):
@@ -50,6 +75,10 @@ def _get_audio_duration(file_path: str):
         if file_path.endswith(".wav"):
             with wave.open(file_path, "rb") as wf:
                 return wf.getnframes() / wf.getframerate()
+        if file_path.endswith((".webm", ".mp4")):
+            if av is None:
+                return None
+            return _container_duration(file_path)
     except Exception:
         return None
     return None
@@ -76,17 +105,23 @@ def _resolve_audio_path(elem, xml_file: Path, corpus_root, audio_base: Path):
         candidates += [audio_base / audio_filename, audio_base / alt_filename]
     else:
         candidates = [audio_base / audio_filename, audio_base / alt_filename]
+    # Hugging Face allows 10,000 files per folder, so large languages are
+    # stored in 16 subfolders named by name_shard() (ILRDF Bunun/Rukai/Yami).
+    candidates += [c.parent / name_shard(c.name) / c.name for c in candidates]
     return next((c for c in candidates if c.is_file()), None)
 
 
-def compute_seconds_by_bucket(xml_dir: Path) -> tuple[dict, int, int, int]:
+def compute_seconds_by_bucket(xml_dir: Path) -> tuple[dict, int, int, int, list]:
     """Sum (transcribed, untranscribed) seconds per (language, dialect).
 
-    Returns (buckets, n_elements, n_missing_files, n_mp3_skipped_no_mutagen)."""
+    Returns (buckets, n_elements, n_missing_files, n_mp3_skipped_no_mutagen,
+    unreadable_paths) — a file that is found but whose length cannot be read
+    adds nothing to its bucket and is listed, never silently counted as 0 s."""
     buckets = defaultdict(lambda: [0.0, 0.0])
     n_elements = 0
     n_missing = 0
     n_mp3_skipped = 0
+    unreadable: list[Path] = []
     for xml_file in sorted(Path(xml_dir).rglob("*.xml")):
         try:
             root = ET.parse(xml_file).getroot()
@@ -117,9 +152,11 @@ def compute_seconds_by_bucket(xml_dir: Path) -> tuple[dict, int, int, int]:
                     n_mp3_skipped += 1
                     continue
                 duration = _get_audio_duration(str(path))
-                if duration is not None:
+                if duration is None:
+                    unreadable.append(path)
+                else:
                     buckets[key][slot] += duration
-    return buckets, n_elements, n_missing, n_mp3_skipped
+    return buckets, n_elements, n_missing, n_mp3_skipped, unreadable
 
 
 def update_corpus(corpus_path: Path, computed_at: str | None = None) -> int:
@@ -127,7 +164,13 @@ def update_corpus(corpus_path: Path, computed_at: str | None = None) -> int:
     xml_dir = corpus_path / "XML" if (corpus_path / "XML").is_dir() else corpus_path
     stats_dir, corpus_name = stats_paths(corpus_path)
 
-    seconds, n_elements, n_missing, n_mp3_skipped = compute_seconds_by_bucket(xml_dir)
+    seconds, n_elements, n_missing, n_mp3_skipped, unreadable = (
+        compute_seconds_by_bucket(xml_dir))
+    if unreadable:
+        print(f"[update_audio_stats] WARNING: {len(unreadable)}/{n_elements} "
+              f"audio file(s) found but their length could not be read; they "
+              f"add 0 s (first: {unreadable[0]}). .webm/.mp4 need PyAV - "
+              f"pip install av.", file=sys.stderr)
     if n_mp3_skipped:
         print(f"[update_audio_stats] WARNING: {n_mp3_skipped} .mp3 file(s) "
               f"encountered but mutagen is not installed; their durations were "

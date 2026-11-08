@@ -67,6 +67,17 @@ class TestSelectSentenceForm:
         assert corpus_counts.select_sentence_form(_sentence()) is None
         assert corpus_counts.select_sentence_form(_sentence(("original", ""))) is None
 
+    def test_words_after_inline_unclear_are_counted(self):
+        s = ET.fromstring(
+            '<S><FORM kindOf="standard">son na, Watan! gyahi tanux nyux<UNCLEAR/> Hayun uwah ma</FORM></S>'
+        )
+        text = corpus_counts.select_sentence_form(s)
+        assert corpus_counts.count_words(text) == 9
+
+    def test_form_opening_with_unclear_is_not_empty(self):
+        s = ET.fromstring('<S><FORM kindOf="standard"><UNCLEAR/> Hayun uwah ma</FORM></S>')
+        assert corpus_counts.count_words(corpus_counts.select_sentence_form(s)) == 3
+
     def test_ignores_w_level_forms(self):
         # S-tier only: a FORM nested under W must not be selected.
         s = ET.Element("S")

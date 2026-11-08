@@ -55,6 +55,7 @@ from lxml import etree
 
 from QC.validation._corpus_index import CorpusIndex
 from QC.validation._finding import Finding, Severity
+from QC.validation.rules._form_text import form_text as whole_form_text
 from QC.validation.rules._reconstruct import (
     DEFAULT_SIMILARITY_THRESHOLD,
     letter_skeleton,
@@ -169,6 +170,8 @@ def _orthography_letters(lang: str, subdir: str | None = None) -> frozenset[str]
     `subdir` restricts the search to Orthographies/<subdir>/<Lang>.tsv;
     None searches every Orthographies/*/<Lang>.tsv. Multi-character letters
     are decomposed, following _orthography_allowed_chars.
+    A '.' that occurs only inside multi-character letters is left out (see
+    below).
 
     The unrestricted form is deliberately broad: nothing in the XML records
     which source orthography a corpus's original tier was written in, so a
@@ -184,6 +187,7 @@ def _orthography_letters(lang: str, subdir: str | None = None) -> frozenset[str]
         _ortho_letter_cache[key] = frozenset()
         return _ortho_letter_cache[key]
     chars: set[str] = set()
+    single: set[str] = set()
     for tsv_path in _ORTHOGRAPHIES_ROOT.glob(f"{subdir or '*'}/{name}.tsv"):
         try:
             with tsv_path.open(encoding="utf-8") as fh:
@@ -191,12 +195,71 @@ def _orthography_letters(lang: str, subdir: str | None = None) -> frozenset[str]
                 for line in fh:
                     parts = line.split("\t")
                     if parts:
-                        chars.update(parts[0].strip())
+                        letter = parts[0].strip()
+                        chars.update(letter)
+                        if len(letter) == 1:
+                            single.add(letter)
         except OSError:
             continue
+    # Ortho113 Thao writes l + h as `l.h` and t + h as `t.h`, so '.' occurs
+    # only inside those letters and never ends a word: a final '.' is a
+    # period (decision page card r3-v135, 2026-10-18). Only '.': Saisiyat's
+    # ':' also appears only inside letters (`o:e`, `a:e`) in its profile, yet
+    # ends words as the length mark (`hahila:`).
+    if "." in chars and "." not in single:
+        chars.discard(".")
     result = frozenset(chars)
     _ortho_letter_cache[key] = result
     return result
+
+
+_DECLARED_TABLE_FLAG = re.compile(r'--tsv_path[ =]+"?([^"\s]+)"?')
+_DECLARED_TABLE_NAME = re.compile(r"^([A-Za-z]+)_([A-Za-z0-9]+)_113\.tsv$")
+_declared_cache: dict[Path, dict[str, str]] = {}
+
+
+def _declared_source_orthographies(path: Path) -> dict[str, str]:
+    """{language name: source orthography folder} declared by the corpus's
+    CodeAndDocs/generate_xml.sh through its conversion tables
+    (`--tsv_path …/Amis_Church_113.tsv` → {"Amis": "Church"}; `94` is
+    Ortho94), read as declared_vs_detected.py reads them but per language,
+    since one script may standardize several languages. The corpus is the
+    nearest folder above the file that has CodeAndDocs/generate_xml.sh;
+    without one, or with only shell variables in the table names, nothing is
+    declared.
+    """
+    for folder in path.resolve().parents:
+        if folder in _declared_cache:
+            return _declared_cache[folder]
+        script = folder / "CodeAndDocs" / "generate_xml.sh"
+        if not script.is_file():
+            continue
+        declared: dict[str, str] = {}
+        try:
+            text = script.read_text(encoding="utf-8")
+        except OSError:
+            text = ""
+        for m in _DECLARED_TABLE_FLAG.finditer(text):
+            n = _DECLARED_TABLE_NAME.match(Path(m.group(1)).name)
+            if n:
+                source = n.group(2)
+                declared.setdefault(n.group(1), "Ortho" + source if source.isdigit() else source)
+        _declared_cache[folder] = declared
+        return declared
+    return {}
+
+
+def _original_tier_letters(lang: str, path: Path) -> frozenset[str]:
+    """Letters of the original tier: those of the source orthography the
+    corpus declares for this language, when Orthographies/<Source>/<Lang>.tsv
+    exists; otherwise every profile's letters (_orthography_letters(lang)),
+    as before.
+    """
+    name = _ISO_TO_ORTHO_NAME.get(lang)
+    source = _declared_source_orthographies(path).get(name or "")
+    if source and (_ORTHOGRAPHIES_ROOT / source / f"{name}.tsv").is_file():
+        return _orthography_letters(lang, source)
+    return _orthography_letters(lang)
 
 
 def _resolve_language(tree: etree._ElementTree) -> str:
@@ -205,6 +268,13 @@ def _resolve_language(tree: etree._ElementTree) -> str:
     if root.tag == "TEXT":
         return root.get(_XML_LANG) or ""
     return ""
+
+
+def _form_or_transl_text(elem: etree._Element) -> str:
+    """A FORM read whole, past any inline <UNCLEAR/>; a TRANSL as ``.text``."""
+    if elem.tag == "FORM":
+        return whole_form_text(elem)
+    return elem.text or ""
 
 
 def _s_standard_form_text(s: etree._Element) -> str | None:
@@ -229,7 +299,7 @@ def _direct_form_by_kind(elem: etree._Element, kind: str) -> str | None:
     the base (maintainer ruling 2026-09-10).
     """
     form = find_base_form(elem, kind)
-    return (form.text or "") if form is not None else None
+    return whole_form_text(form) if form is not None else None
 
 
 def _iter_standard_texts(s: etree._Element):
@@ -531,7 +601,7 @@ def v116_non_ascii_in_form(
     for form in tree.iter("FORM"):
         if form.get("kindOf") == "original":
             continue
-        text = form.text or ""
+        text = whole_form_text(form)
         for ch in text:
             if ord(ch) <= 127:
                 continue
@@ -641,7 +711,7 @@ def v121_parens_slashes_in_W_or_M_FORM(
         for child in parent:
             if child.tag != "FORM":
                 continue
-            text = child.text or ""
+            text = whole_form_text(child)
             if _PAREN_OR_SLASH_RE.search(text):
                 p_id = parent.get("id") or ""
                 findings.append(Finding(
@@ -672,7 +742,7 @@ def v122_parens_slashes_anywhere(
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         for ch in text:
             if ch in "()/":
                 findings.append(_soft_finding(
@@ -736,7 +806,7 @@ def v123_null_in_WM_std_requires_sister_original_null(
 def _form_contains_null(elem: etree._Element) -> bool:
     """Return True if elem has any direct-child FORM whose text contains '∅'."""
     for child in elem:
-        if child.tag == "FORM" and child.text and NULL_SYMBOL in child.text:
+        if child.tag == "FORM" and NULL_SYMBOL in whole_form_text(child):
             return True
     return False
 
@@ -932,7 +1002,7 @@ def v127_smart_quotes_in_FORM_hard(
     """
     findings: list[Finding] = []
     for form in tree.iter("FORM"):
-        text = form.text or ""
+        text = whole_form_text(form)
         offenders = sorted({ch for ch in text if ch in _SMART_QUOTE_SET})
         if not offenders:
             continue
@@ -987,7 +1057,7 @@ def v128_control_chars_in_FORM_TRANSL(
     """
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         offenders = _disallowed_control_chars(text)
         if not offenders:
             continue
@@ -1027,7 +1097,7 @@ def v129_asterisk_in_standard_FORM(
     """V129 HARD (TR11): '*' in any FORM, either tier (original or standard)."""
     findings: list[Finding] = []
     for form in tree.iter("FORM"):
-        text = form.text or ""
+        text = whole_form_text(form)
         if "*" not in text:
             continue
         parent = form.getparent()
@@ -1121,7 +1191,7 @@ def v131_zero_width_or_BOM_in_FORM_TRANSL(
     """V131 HARD (TR16): zero-width or BOM in FORM or TRANSL."""
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         offenders = sorted({ch for ch in text if ch in _ZERO_WIDTH_CHARS})
         if not offenders:
             continue
@@ -1170,7 +1240,7 @@ def v132_html_entities_in_FORM_TRANSL(
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         for match in _HTML_ENTITY_RE.findall(text):
             findings.append(_soft_finding(
                 rule_id="V132",
@@ -1236,7 +1306,7 @@ def v134_angle_brackets_in_S_FORM(
         for child in s:
             if child.tag != "FORM":
                 continue
-            text = child.text or ""
+            text = whole_form_text(child)
             for ch in text:
                 if ch in "<>":
                     findings.append(_soft_finding(
@@ -1292,9 +1362,11 @@ def v135_trailing_punct_mismatch(
     One finding per offending S."""
     lang = _resolve_language(tree)
     # The two tiers are in different orthographies, so they get different
-    # letter sets: the original tier may be in any profiled source
-    # orthography, the standard tier is in Ortho113 by definition (POL-002).
-    original_letters = _orthography_letters(lang)
+    # letter sets: the original tier is in the source orthography the corpus
+    # declares (any profiled one when it declares none), the standard tier is
+    # in Ortho113 by definition (POL-002). A Church text ending in `mahacra?`
+    # ends in a question mark; a Montgomery one ending in `roma?` does not.
+    original_letters = _original_tier_letters(lang, path)
     standard_letters = _orthography_letters(lang, "Ortho113")
     findings: list[Finding] = []
     for s in tree.iter("S"):
@@ -1376,7 +1448,7 @@ def v136_mixed_script_confusables(
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for form in tree.iter("FORM"):
-        text = form.text or ""
+        text = whole_form_text(form)
         scripts = {s for s in (_script_for(ch) for ch in text) if s is not None}
         if len(scripts) >= 2:
             findings.append(_soft_finding(
@@ -1437,7 +1509,7 @@ def v137_trailing_decimal_footnote_in_S_FORM_TRANSL(
         # onto a morpheme), as does S-level TRANSL.
         if parent_tag == "TRANSL" and host_tag in ("W", "M"):
             continue
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         for match in _FOOTNOTE_RE.finditer(text):
             location = (
                 f"{host_tag}={host_id} {parent_tag}"
@@ -1487,7 +1559,7 @@ def v138_superscript_digit_footnote(
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         for ch in text:
             if ch in _SUPERSCRIPT_DIGITS:
                 findings.append(_soft_finding(
@@ -1578,7 +1650,7 @@ def v139_bracketed_digit_footnote(
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
-        text = elem.text or ""
+        text = _form_or_transl_text(elem)
         for match in _BRACKETED_DIGIT_RE.findall(text):
             findings.append(_soft_finding(
                 rule_id="V139",
@@ -1620,16 +1692,16 @@ def v141_W_reconstructs_S(
         s_form = find_base_form(s, "original")
         if s_form is None:
             continue
-        s_skel = letter_skeleton(s_form.text)
+        s_skel = letter_skeleton(whole_form_text(s_form))
         if not s_skel:
             continue
         w_skel: Counter = Counter()
         saw_w_form = False
         for w in ws:
             w_form = find_base_form(w, "original")
-            if w_form is not None and (w_form.text or "").strip():
+            if w_form is not None and whole_form_text(w_form).strip():
                 saw_w_form = True
-                w_skel += letter_skeleton(w_form.text)
+                w_skel += letter_skeleton(whole_form_text(w_form))
         if not saw_w_form:
             continue  # W FORMs missing -> structural rules own this
         sim = similarity(s_skel, w_skel)
@@ -1642,7 +1714,7 @@ def v141_W_reconstructs_S(
             message=(
                 f"S id={s_id!r}: child W FORMs reconstruct only {sim:.0%} of the "
                 f"S FORM letters; the word tier may be misaligned with the "
-                f"sentence. S FORM={s_form.text!r}"
+                f"sentence. S FORM={whole_form_text(s_form)!r}"
             ),
             path=path,
             location=f"S={s_id}" if s_id else "S",
@@ -1695,7 +1767,7 @@ def v142_unmarked_grammaticality(
     findings: list[Finding] = []
     for s in tree.iter("S"):
         for form in s.findall("FORM"):
-            text = (form.text or "").lstrip()
+            text = whole_form_text(form).lstrip()
             if text.startswith("? "):
                 findings.append(_soft_finding(
                     rule_id="V142",
@@ -1856,6 +1928,91 @@ def v146_phon_variant_group_malformed(
     return findings
 
 
+# V158: terminal punctuation fused to the next word (Safolu ruling, 2026-10-16).
+_FUSED_PUNCT_BEFORE_LETTER = re.compile(r"[!?](?=[^\W\d_])")
+_SPACE_BEFORE_TERMINAL_PUNCT = re.compile(r"\s[!?]")
+
+
+def v158_fused_terminal_punctuation(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V158 SOFT: '!' or '?' glued to the following word, or a space before
+    '!'/'?', in S-standard FORM.
+
+    A source that prints ``Tayra!ko wawa`` or ``nga'ay ho ?`` has lost or
+    gained a space at a sentence boundary; add_phonology then renders the
+    two words as one, and the word tier cannot align. Maintainer ruling
+    (Safolu, 2026-10-16): "There should be no space before a ? or a ! and
+    there should be space between any ! or ? and a following Amis
+    character." Standard tier only: in Ferrell's Paiwan, Montgomery's Amis
+    and Tsuchida's Pazeh ``?`` writes the glottal stop in the ORIGINAL tier,
+    and no standard orthography uses it as a letter. One finding per
+    offending position."""
+    lang = _resolve_language(tree)
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
+        for m in _FUSED_PUNCT_BEFORE_LETTER.finditer(text):
+            findings.append(_soft_finding(
+                rule_id="V158",
+                message=("V158 SOFT fused_terminal_punctuation: '?' or '!' glued "
+                         "to the next word in S-standard FORM"),
+                path=path,
+                elem=s,
+                language=lang,
+                character=m.group(0),
+            ))
+        for m in _SPACE_BEFORE_TERMINAL_PUNCT.finditer(text):
+            findings.append(_soft_finding(
+                rule_id="V158",
+                message=("V158 SOFT fused_terminal_punctuation: space before "
+                         "'?' or '!' in S-standard FORM"),
+                path=path,
+                elem=s,
+                language=lang,
+                character=m.group(0).strip(),
+            ))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# V159: a null-morpheme glyph glued to a word in the S-standard tier
+# ---------------------------------------------------------------------------
+# A null morpheme written inline (Ø, ø or the canonical ∅) belongs to the
+# ORIGINAL tier, where it is faithful to the source; `clean_xml` canonicalises
+# a null that stands alone between separators and the standard tier is meant
+# to drop them. One that is still glued to letters in the STANDARD tier was
+# missed by both. The glyph ø/Ø is also a letter in Danish and Norwegian
+# names (Grønland, Børn), so only a word-EDGE ø/Ø is reported, and the
+# message says it may be a foreign letter; the canonical ∅ is never a letter,
+# so it is reported wherever it touches one.
+_NULL_CANONICAL_GLUED = re.compile(r"[^\W\d_]∅|∅[^\W\d_]")
+_NULL_LATIN_AT_WORD_EDGE = re.compile(r"(?<!\S)[øØ](?=[^\W\d_])|(?<=[^\W\d_])[øØ](?!\S)")
+
+
+def v159_null_glyph_glued_to_word(tree, path, index) -> list[Finding]:
+    """V159 SOFT null_glyph_glued_to_word: a null-morpheme glyph (∅ anywhere,
+    or ø/Ø at a word edge) touching a letter in the S-standard FORM."""
+    lang = _resolve_language(tree)
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
+        for m in _NULL_CANONICAL_GLUED.finditer(text):
+            findings.append(_soft_finding(
+                rule_id="V159",
+                message="V159 SOFT null_glyph_glued_to_word: canonical null ∅ glued to a word in "
+                        "S-standard FORM (the standard tier should not carry null morphemes)",
+                path=path, elem=s, language=lang, character="∅"))
+        for m in _NULL_LATIN_AT_WORD_EDGE.finditer(text):
+            findings.append(_soft_finding(
+                rule_id="V159",
+                message="V159 SOFT null_glyph_glued_to_word: ø/Ø at a word edge in S-standard FORM; "
+                        "a null-morpheme glyph left in the text, or a Danish/Norwegian letter in a name "
+                        "(check the word)",
+                path=path, elem=s, language=lang, character=m.group(0)))
+    return findings
+
+
 def v147_phon_legacy_tilde_variant(
     tree: etree._ElementTree,
     path: Path,
@@ -1929,5 +2086,9 @@ RULES: list = [
     # V146/V147: PHON variant-group notation (POL-013)
     v146_phon_variant_group_malformed,
     v147_phon_legacy_tilde_variant,
+    # V158: '!'/'?' fused to the next word, or a space before it (Safolu, 2026-10-16)
+    v158_fused_terminal_punctuation,
+    # V159: 2026-10-17 skills-review round 3 (D10): detection only, cleaner untouched
+    v159_null_glyph_glued_to_word,
 ]
 CROSS_FILE_RULES: list = []
