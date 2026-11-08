@@ -1,39 +1,123 @@
-# Tsukida Seediq correlative clauses
+# Tsukida (2014): Seediq correlative clauses
 
-Truku Seediq (`trv`, dialect `Truku`) examples from Naomi Tsukida's 2014 chapter, “Correlative clauses in Seediq,” printed pages 69–79 in [Papers from 12-ICAL, Volume 2](https://openresearch-repository.anu.edu.au/items/8bfb8bf0-2f58-4eae-947c-bf9af50faf9f).
+Seediq example sentences from Naomi Tsukida's chapter "Correlative clauses in
+Seediq", with the author's word-by-word glosses and English translations.
 
-The reviewed inventory accounts for all 39 numbered source units: 26 included, seven comparison-language examples, five starred examples and the explicitly repeated example 28a excluded. Optional constituents in examples 6 and 9 each produce two aligned variants. Final XML has 28 S, 201 W and 254 M, with 483 original and 483 standard FORM/PHON parents, 29 free translations and no audio.
+## Languages and dialects
 
-All source words, glosses, clause brackets and translations from the expert-reviewed version are retained. The starred interpretation of grammatical example 13 remains excluded. Fourteen later-added mirror M elements from examples 3 and 6 are omitted under POL-023; their W forms and glosses remain. Reviewed infix roots, stacked infixes and clitics are preserved. XML lives under `XML/Truku/`; IDs use immutable source/example keys with `-opt` for the two expanded readings (POL-028).
+Seediq (ISO 639-3 `trv`), dialect DeluValley. The one TEXT file under
+`XML/Seediq/` carries `xml:lang="trv"` and `dialect="DeluValley"`. The chapter
+names the dialect Teruku.
 
-## Audio
+## Source
 
-None supplied by the source.
+Tsukida, Naomi. 2014. Correlative clauses in Seediq. In I Wayan Arka and
+N. L. K. Mas Indrawati (eds.), *Papers from 12-ICAL, Volume 2: Argument
+realisations and related constructions in Austronesian languages*, printed
+pages 69–79 (PDF pages 74–84). Asia-Pacific Linguistics.
+[Open Research repository](https://openresearch-repository.anu.edu.au/items/8bfb8bf0-2f58-4eae-947c-bf9af50faf9f).
 
-## Notes and Issues
+The chapter has 39 numbered example units. The corpus contains the 26 Seediq
+ones. It leaves out the seven examples in other languages (Hindi, Warlpiri,
+Diyari, English), the five the chapter stars as ungrammatical, and example 28a,
+which repeats example 7. Examples 6 and 9 print an optional phrase in
+parentheses, so each is two S (the longer one has an `-opt` id).
 
-The reviewed source apostrophe preserves 130 glottal stops across 111 original PHON values. Current standard PHON omits them. Ortho113 uses doubled `ee` in some spellings, but supplies no general conversion for this source's apostrophes; see the [conversion decision](CodeAndDocs/README.md). Technical port readiness is pending that decision. Eleven source form/gloss pairs use flat infix notation; their reviewed analyses and both source and standardized glosses are preserved despite audit warnings.
+`XML/Seediq/tsukida_2014_correlative_clauses_in_seediq.xml` contains 28 S,
+201 W and 268 M, with 497 original and 497 standard FORM, 497 original and 497
+standard PHON, and 33 English translations. There is no audio.
 
-## Rights
+## Statistics
+
+The table of word counts, audio, translations and glossing is generated from
+`statistics/Naomi-Tsukida-Correlative-Clauses-Seediq_corpora_stats.csv` and
+appears on this corpus's page on the
+[FormosanBank site](https://formosanbank.github.io/FormosanBank/).
+
+## How to cite
+
+If you use this corpus, or anything derived from it, in a publication, cite both
+FormosanBank and:
+
+Tsukida, Naomi. 2014. Correlative clauses in Seediq. In I Wayan Arka and
+N. L. K. Mas Indrawati (eds.), *Papers from 12-ICAL, Volume 2: Argument
+realisations and related constructions in Austronesian languages*, 69–79.
+Asia-Pacific Linguistics.
+
+See the FormosanBank [Terms of Use](https://formosanbank.github.io/FormosanBank/additional-resources/terms-of-use/).
+
+## License
 
 **License:** CC BY 4.0
 
-**Rights source:** Naomi Tsukida / Asia-Pacific Linguistics, 2025-06-04; evidence: ask maintainer
+**Rights source:** the chapter's own licence statement (Tsukida 2014, published CC BY 4.0); evidence: ask maintainer
 
-The chapter's first page explicitly grants CC BY 4.0. The date above records the maintainer's verification of that published grant, not a new grant date. Source transcriptions and article extracts used by the build retain this attribution.
+Creative Commons Attribution 4.0 International (CC BY 4.0).
 
-## Reproduce
+## Notes and caveats
 
-From a FormosanBank checkout with its documented Python dependencies:
+- **Glottal stop.** The source uses a glottal stop, written with an apostrophe
+  (`'`). It is removed from the standard tier because the standard orthography
+  lacks glottal stops.
+- **Spelling of the standard tier.** The standard tier applies only ŋ → ng and
+  deletes the apostrophe. Tsukida writes many vowels e that the DeluValley
+  teaching materials do not (deha / dha ‘two’, sehiga / shiga ‘yesterday’), and
+  these are kept, because which ones to drop is not a letter-for-letter rule.
+
+## Reproduction and processing
+
+### How to reproduce
+
+From a FormosanBank checkout, with its Python dependencies installed:
 
 ```bash
+source .venv/bin/activate
 bash Corpora/Naomi-Tsukida-Correlative-Clauses-Seediq/CodeAndDocs/generate_xml.sh
+python -m pytest -q Corpora/Naomi-Tsukida-Correlative-Clauses-Seediq/CodeAndDocs/tests
 ```
 
-In the development repository, set `FORMOSANBANK_ROOT` to a current FormosanBank checkout and run `bash CodeAndDocs/generate_xml.sh`. `PYTHON` selects the installed Python interpreter. No Git metadata, network request, private file or historical tooling checkout is required. The build updates its [provenance record](CodeAndDocs/provenance.json) from the supplied FormosanBank Git checkout; a Git-free export retains that record. Provenance never gates a rebuild.
+`generate_xml.sh` uses the checkout three levels above `CodeAndDocs/` and
+`python3`; `FORMOSANBANK_ROOT` and `PYTHON` name others. The FormosanBank commit
+the published XML was last built with is recorded in
+[CodeAndDocs/provenance.json](CodeAndDocs/provenance.json) (POL-052; provenance
+only, a rebuild always runs the current tools).
 
-**POL-047 deviation:** Seven source bracket values are restored after cleaning and before standardization, preserving the clause spans and translations in the source-reviewed version. Source refresh and validation are separate commands.
+### What each step does
 
-Generation starts from the committed transcription tables in `CodeAndDocs/raw_data/`, applies recorded corrections, cleans, standardizes `ŋ` to `ng`, and generates both PHON tiers with shared tools. Original PHON uses the [source profile](CodeAndDocs/source_orthography/Seediq.tsv), supported by [Tsukida's Teruku phoneme description](https://lingdy.aa-ken.jp/wp-content/uploads/2012/01/120217_naomi_tsukida_h.pdf), page 2 footnote 1; standard PHON uses the registered standard. This corrects the old build's use of Ortho94 instead of the profile it validated.
+Everything is built in a temporary staging directory and installed into `XML/`
+only when every step has succeeded.
 
-Validate existing output with `QC_REPORT_DIR=/outside/corpus/reports bash CodeAndDocs/validate.sh`, using the same environment. Review the CSVs and logs: command success alone is not a source or port-readiness verdict. [Source and review notes](CodeAndDocs/README.md) explain the exact scoped findings and reproduction inputs.
+1. `build_xml.py` builds the S, W and M records from the transcription tables
+   in `CodeAndDocs/raw_data/`: `reviewed_examples.tsv` (all 39 units, as
+   printed), `reviewed_variants.tsv` (the two readings of examples 6 and 9) and
+   `reviewed_morpheme_alignments.tsv` (the morphemes of the 11 words with an
+   infix). It removes the square brackets around relative clauses in examples
+   18, 19 and the second 27, in the Seediq and in 19's translation; writes
+   infixes in angle brackets on the word tier (`b<en>arig=na`); and makes each
+   slash alternative in a translation (`s/he`, `a/the`) its own translation,
+   the second with `ver="alt"`, from `raw_data/translation_alternatives.tsv`.
+   It also writes the coverage ledgers in `CodeAndDocs/intermediate/`.
+2. `QC/cleaning/clean_xml.py`, with its report kept out of `XML/` (POL-033).
+3. `standardize_with_clitic_spaces.py` runs `QC/utilities/standardize.py` with
+   the shared `Orthographies/ConversionTables/Seediq_Tsukida_113.tsv`
+   (`ŋ` → `ng`, `'` deleted). Around it, the step writes each sentence's `=`
+   as a space and restores the original afterwards, so clitics are separate
+   words in the standard sentence (`hiyi su`) while the original tier, word
+   FORMs and glosses keep `=` (`hiyi=su`).
+4. `QC/utilities/add_phonology.py --orthography Tsukida` generates the PHON
+   tiers; the original tier is read with the shared `Orthographies/Tsukida/`
+   profile.
+5. The staged XML replaces `XML/`, and `provenance.json` records the tools.
+
+**POL-047 deviation:** step 3 edits the sentence-level original FORM for the
+duration of standardization, then restores it; the step stops if any original
+does not come back exactly.
+
+`CodeAndDocs/check_source_alignment.py` (read-only) checks the published XML
+against the transcription tables, and `CodeAndDocs/validate.sh` runs it with
+the tests and the shared validators, writing reports outside the corpus. The
+transcription tables and `intermediate/article_pages_074_084_*.txt` (the
+chapter's text, for the source checks) are the source baseline (POL-035); the
+source PDF (SHA-256
+`fab9b60ce52e47530805204c1d5beed02e52e63972e8315d9a1996c8e79248f1`) is not
+needed to rebuild.

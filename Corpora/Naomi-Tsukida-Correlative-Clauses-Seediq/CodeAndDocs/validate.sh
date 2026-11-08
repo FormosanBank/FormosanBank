@@ -34,17 +34,17 @@ for tier in original standard; do
     run "duplicates-$tier" "$PY" "$FB/QC/validation/validate_duplicate_sentences.py" \
         by_path --path "$ROOT/XML" --tier "$tier" --output "$REPORT/duplicates-$tier.csv"
     run "extract-$tier" "$PY" "$FB/QC/orthography/orthography_extract.py" \
-        --corpora_path "$ROOT/XML" --corpus all --language Truku --kindOf "$tier" \
+        --corpora_path "$ROOT/XML" --corpus all --language Seediq --kindOf "$tier" \
         --by_dialect true --output_dir "$REPORT/orthography-$tier"
     run "orthography-$tier" "$PY" "$FB/QC/validation/validate_orthography.py" \
-        --o_info "$REPORT/orthography-$tier" --reference "$FB/QC/validation/reference" --language Truku
+        --o_info "$REPORT/orthography-$tier" --reference "$FB/QC/validation/reference" --language Seediq
 done
 run vocabulary "$PY" "$FB/QC/validation/validate_vocabulary.py" \
-    --o_info "$REPORT/orthography-standard" --reference "$FB/QC/validation/reference" --language Truku
-run conversion-Truku "$PY" "$FB/QC/validation/validate_conversion_table.py" \
-    "$HERE/source_orthography/Seediq.tsv" "$FB/Orthographies/Ortho113/Seediq.tsv" \
-    "$HERE/raw_data/source_to_ortho113.tsv" --dialect Truku \
-    --output "$REPORT/conversion-Truku.md"
+    --o_info "$REPORT/orthography-standard" --reference "$FB/QC/validation/reference" --language Seediq
+run conversion-DeluValley "$PY" "$FB/QC/validation/validate_conversion_table.py" \
+    "$FB/Orthographies/Tsukida/Seediq.tsv" "$FB/Orthographies/Ortho113/Seediq.tsv" \
+    "$FB/Orthographies/ConversionTables/Seediq_Tsukida_113.tsv" --dialect DeluValley \
+    --output "$REPORT/conversion-DeluValley.md"
 run dialect "$PY" "$FB/QC/validation/validate_dialect.py" --path "$ROOT/XML"
 run registries "$PY" "$FB/QC/validation/validate_registries.py" \
     --repo-root "$FB" --csv "$REPORT/registries.csv"

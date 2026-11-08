@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 import re
 import unicodedata
 import xml.etree.ElementTree as ET
@@ -15,7 +16,7 @@ import build_xml
 CODE = Path(__file__).resolve().parent
 ROOT = CODE.parent
 DIRECT_CHECKS = CODE / "intermediate" / "direct_source_checks.csv"
-UNPARSED = {"tsukida2014_seediq_S002", "tsukida2014_seediq_S005", "tsukida2014_seediq_S005-opt"}
+BANK = Path(os.environ.get("FORMOSANBANK_ROOT", CODE.parents[2]))
 REVIEWER_FLAGGED_SENTENCE_IDS = {
     "tsukida2014_seediq_S005",
     "tsukida2014_seediq_S006",
@@ -56,12 +57,15 @@ def direct_forms(element: ET.Element) -> dict[str, str]:
 def conversion_table() -> list[tuple[str, str]]:
     return [
         (row["original"], row["standard"])
-        for row in build_xml.read_tsv(CODE / "raw_data" / "source_to_ortho113.tsv")
+        for row in build_xml.read_tsv(
+            BANK / "Orthographies" / "ConversionTables" / "Seediq_Tsukida_113.tsv"
+        )
     ]
 
 
 def expected_standard(text: str, *, sentence: bool) -> str:
-    value = text
+    # Sentence level: clitics become separate words (standardize_with_clitic_spaces.py).
+    value = text.replace("=", " ") if sentence else text
     for original, standard in conversion_table():
         value = value.replace(original, standard)
     value = unicodedata.normalize(
@@ -74,8 +78,7 @@ def expected_standard(text: str, *, sentence: bool) -> str:
     )
     if not sentence:
         return value
-    value = re.sub(r"(?<!\d)-(?!\d)", "", value)
-    return value.replace("=", "")
+    return re.sub(r"(?<!\d)-(?!\d)", "", value)
 
 
 def check_word_structure(sentence: ET.Element, record: dict[str, str]) -> None:
@@ -88,16 +91,17 @@ def check_word_structure(sentence: ET.Element, record: dict[str, str]) -> None:
     ):
         require(word.get("id") == f"{record['id']}W{word_index}", "Unexpected W id")
         forms = direct_forms(word)
+        morpheme_rows, canonical_gloss = build_xml.morpheme_alignment(
+            record, word_index, original, gloss, reviewed
+        )
+        bracketed = build_xml.infix_brackets(original, [form for form, _ in morpheme_rows])
         require(
-            forms.get("original") == original,
+            forms.get("original") == bracketed,
             f"W original mismatch at {word.get('id')}",
         )
         require(
-            forms.get("standard") == expected_standard(original, sentence=False),
+            forms.get("standard") == expected_standard(bracketed, sentence=False),
             f"W standard mismatch at {word.get('id')}",
-        )
-        morpheme_rows, canonical_gloss = build_xml.morpheme_alignment(
-            record, word_index, original, gloss, reviewed
         )
         expected_word_glosses = [
             ("original" if canonical_gloss else "", gloss)
@@ -115,8 +119,6 @@ def check_word_structure(sentence: ET.Element, record: dict[str, str]) -> None:
         )
 
         morphemes = word.findall("M")
-        if record["id"] in UNPARSED:
-            morpheme_rows = []
         require(
             len(morphemes) == len(morpheme_rows),
             f"M count mismatch at {word.get('id')}",
@@ -175,23 +177,25 @@ def main() -> None:
         "Starred source unit leaked into XML",
     )
 
+    alternatives = build_xml.read_translation_alternatives()
     for sentence_id, record in record_by_id.items():
         sentence = sentence_by_id[sentence_id]
         forms = direct_forms(sentence)
+        original = build_xml.drop_brackets(record["original"])
         require(
-            forms.get("original") == record["original"],
+            forms.get("original") == original,
             f"S original mismatch at {sentence_id}",
         )
         require(
-            forms.get("standard")
-            == expected_standard(record["original"], sentence=True),
+            forms.get("standard") == expected_standard(original, sentence=True),
             f"S standard mismatch at {sentence_id}",
         )
         require(
             sentence.get("source") == record["source_locator"],
             f"Source locator mismatch at {sentence_id}",
         )
-        expected_translations = [record["translation"]] if record["translation"] else []
+        translation = build_xml.drop_brackets(record["translation"])
+        expected_translations = alternatives.get(translation, [translation]) if translation else []
         if record["translation_alt"] and record["translation_alt_in_xml"] == "yes":
             expected_translations.append(record["translation_alt"])
         require(
@@ -202,11 +206,10 @@ def main() -> None:
         check_word_structure(sentence, record)
 
     require(len(root.findall(".//W")) == 201, "Expected 201 W elements")
-    require(len(root.findall(".//M")) == 254, "Expected 254 M elements")
+    require(len(root.findall(".//M")) == 268, "Expected 268 M elements")
     require(
-        all(word.findall("M") for sentence in sentences
-            if sentence.get("id") not in UNPARSED for word in sentence.findall("W")),
-        "A parsed sentence is missing M structure",
+        all(word.findall("M") for sentence in sentences for word in sentence.findall("W")),
+        "A word is missing M structure",
     )
 
     ledger = read_csv(build_xml.SOURCE_LEDGER)
@@ -275,8 +278,8 @@ def main() -> None:
                 not any(unicodedata.category(char).startswith("P") for char in phon_text),
                 f"Punctuation remains in PHON at {parent.get('id')}",
             )
-    require(standard_form_count == 483, "Expected 483 FORM/PHON parents")
-    require(len(root.findall(".//PHON")) == 966, "Expected 966 PHON tiers")
+    require(standard_form_count == 497, "Expected 497 FORM/PHON parents")
+    require(len(root.findall(".//PHON")) == 994, "Expected 994 PHON tiers")
 
     require(not (ROOT / "Final_XML").exists(), "Legacy Final_XML output remains")
     xml_files = sorted(
@@ -284,7 +287,7 @@ def main() -> None:
         for path in (ROOT / "XML").rglob("*.xml")
     )
     require(
-        xml_files == ["XML/Truku/tsukida_2014_correlative_clauses_in_seediq.xml"],
+        xml_files == ["XML/Seediq/tsukida_2014_correlative_clauses_in_seediq.xml"],
         "Unexpected development XML layout",
     )
 
@@ -292,8 +295,8 @@ def main() -> None:
         "article_pages_reviewed": 11,
         "excluded_source_units": 13,
         "created_sentence_variants": 4,
-        "final_morphemes": 254,
-        "final_phonology_tiers": 966,
+        "final_morphemes": 268,
+        "final_phonology_tiers": 994,
         "final_sentences": 28,
         "final_words": 201,
         "included_source_units": 26,
@@ -304,7 +307,7 @@ def main() -> None:
         "unresolved_source_alignment_findings": 0,
     }
     print(json.dumps(summary, sort_keys=True))
-    print("Source alignment passed: 39 units, 11 pages, 28 S, 201 W, 254 M, 966 PHON.")
+    print("Source alignment passed: 39 units, 11 pages, 28 S, 201 W, 268 M, 994 PHON.")
 
 
 if __name__ == "__main__":

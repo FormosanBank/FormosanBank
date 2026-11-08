@@ -13,7 +13,6 @@ ROOT = CODE.parent
 sys.path.insert(0, str(CODE))
 
 import build_xml  # noqa: E402
-import restore_source_notation  # noqa: E402
 
 
 REVIEWER_FLAGGED_IDS = {
@@ -42,7 +41,7 @@ def corpus_model():
 
 def test_development_output_path_is_canonical_xml():
     assert build_xml.XML_PATH == (
-        ROOT / "XML/Truku/tsukida_2014_correlative_clauses_in_seediq.xml"
+        ROOT / "XML/Seediq/tsukida_2014_correlative_clauses_in_seediq.xml"
     )
     assert not (ROOT / "Final_XML").exists()
 
@@ -76,11 +75,12 @@ def test_every_included_sentence_has_source_aligned_words():
     }
     assert no_words == set()
     assert len(tree.getroot().findall(".//W")) == 201
-    assert len(tree.getroot().findall(".//M")) == 254
-    unparsed = {"tsukida2014_seediq_S002", "tsukida2014_seediq_S005", "tsukida2014_seediq_S005-opt"}
-    assert {s.get("id") for s in tree.getroot().findall("S") if not s.findall("W/M")} == unparsed
-    assert all(w.findall("M") for s in tree.getroot().findall("S")
-               if s.get("id") not in unparsed for w in s.findall("W"))
+    assert len(tree.getroot().findall(".//M")) == 268
+    # Sentences with no split word keep one M per word (maintainer: "Give them
+    # single Ms, like the five corpora").
+    assert all(w.findall("M") for w in tree.getroot().iter("W"))
+    s002 = tree.getroot().find("S[@id='tsukida2014_seediq_S002']")
+    assert [w.findtext("M/FORM") for w in s002.findall("W")] == ["deha", "huliŋ", "kumu", "gaga"]
     for record in records:
         words, note = build_xml.word_alignment(record)
         assert len(words) == len(record["gloss"].split())
@@ -110,10 +110,12 @@ def test_reviewed_infixes_have_reconstructable_morphemes():
         "standard",
     ]
     assert all(gloss.get("ver") is None for gloss in word.findall("TRANSL"))
+    assert word.findtext("FORM[@kindOf='original']") == "b<en>arig=na"  # POL-014
     double_infix = root.find(
         "S[@id='tsukida2014_seediq_S020']/W[@id='tsukida2014_seediq_S020W1']"
     )
     assert double_infix is not None
+    assert double_infix.findtext("FORM[@kindOf='original']") == "S<em><en>teruŋ=ku"
     assert [form.text for form in double_infix.findall("M/FORM[@kindOf='original']")] == [
         "S-teruŋ",
         "-em-",
@@ -149,15 +151,20 @@ def test_analytical_wrappers_are_removed_only_at_word_edges():
     assert build_xml.lexical_word("hiya).") == "hiya"
     assert build_xml.lexical_word("[p-en-huqil") == "p-en-huqil"
     assert build_xml.lexical_word("se'diq].") == "se'diq"
+    # The four m-en-X words have no infix morpheme and stay as printed.
+    assert build_xml.infix_brackets("m-en-egay", ["m", "en", "egay"]) == "m-en-egay"
 
 
 def test_original_forms_and_translations_are_preserved():
     _, _, tree = corpus_model()
     root = tree.getroot()
     by_id = {sentence.get("id"): sentence for sentence in root.findall("S")}
+    # Clause brackets are not published (S018-S021, S029; 19a/19b translations).
     assert by_id["tsukida2014_seediq_S018"].find("FORM").text == (
-        "Wada qeduriq ka se'diq [p-en-huqil rebiq-an]."
+        "Wada qeduriq ka se'diq p-en-huqil rebiq-an."
     )
+    assert not any("[" in (s.findtext("FORM") or "") + "".join(t.text or "" for t in s.findall("TRANSL"))
+                   for s in by_id.values())
     assert [
         item.text for item in by_id["tsukida2014_seediq_S016"].findall("TRANSL")
     ] == [
@@ -166,10 +173,15 @@ def test_original_forms_and_translations_are_preserved():
     ]
     assert [
         item.text for item in by_id["tsukida2014_seediq_S020"].findall("TRANSL")
-    ] == ["I met [the man who gave Rubiq a book]."]
+    ] == ["I met the man who gave Rubiq a book."]
+    # POL-025: slash alternatives become one TRANSL per reading, the second ver="alt".
     assert [
-        item.text for item in by_id["tsukida2014_seediq_S009"].findall("TRANSL")
-    ] == ["Yudaw who is speaking to a/the guest is from America."]
+        (item.get("ver"), item.text) for item in by_id["tsukida2014_seediq_S009"].findall("TRANSL")
+    ] == [(None, "Yudaw who is speaking to a guest is from America."),
+          ("alt", "Yudaw who is speaking to the guest is from America.")]
+    assert [item.text for item in by_id["tsukida2014_seediq_S005"].findall("TRANSL")] == [
+        "As for that child, she is good.", "As for that child, he is good."]
+    assert not any("/" in (t.text or "") for s in by_id.values() for t in s.findall("TRANSL"))
 
 
 def test_optional_constituents_are_expanded_with_aligned_glosses():
@@ -217,27 +229,6 @@ def test_starred_and_duplicate_source_units_stay_excluded():
     assert source_interpretation["translation_alt_in_xml"] == "no"
 
 
-def test_source_notation_restoration_is_fail_closed_and_idempotent(tmp_path):
-    _, _, tree = corpus_model()
-    path = tmp_path / "corpus.xml"
-    root = tree.getroot()
-    for sentence_id, (
-        cleaned,
-        _,
-    ) in restore_source_notation.ORIGINAL_RESTORATIONS.items():
-        root.find(f"S[@id='{sentence_id}']/FORM[@kindOf='original']").text = cleaned
-    for sentence_id, (
-        cleaned,
-        _,
-    ) in restore_source_notation.TRANSLATION_RESTORATIONS.items():
-        root.find(f"S[@id='{sentence_id}']/TRANSL").text = cleaned
-    tree.write(path, encoding="utf-8", xml_declaration=True)
-    assert restore_source_notation.process(path) == (7, 7)
-    assert restore_source_notation.process(path) == (7, 0)
-    restored = ET.parse(path).getroot()
-    assert restored.find("S[@id='tsukida2014_seediq_S029']/FORM").text.startswith("[")
-
-
 def test_build_outputs_are_deterministic(tmp_path):
     rows, records, tree = corpus_model()
     other = build_xml.build_tree(build_xml.included_records(rows))
@@ -272,7 +263,7 @@ def test_direct_checks_cover_difficult_cases():
 def test_approved_source_infix_findings_have_exact_scope():
     from lxml import etree
 
-    bank = Path(os.environ["FORMOSANBANK_ROOT"])
+    bank = Path(os.environ.get("FORMOSANBANK_ROOT", ROOT.parents[1]))
     sys.path.insert(0, str(bank))
     from QC.validation.rules.gloss_scrape import g001_marker_skeleton_parity
 
@@ -285,13 +276,26 @@ def test_approved_source_infix_findings_have_exact_scope():
     ]
 
 
-def test_original_phon_uses_the_documented_tsukida_profile():
+def test_original_phon_uses_the_shared_tsukida_profile():
+    # Orthographies/Tsukida/Seediq.tsv: Ortho113 DeluValley letters plus ŋ and ' = ʔ.
     root = ET.parse(build_xml.XML_PATH).getroot()
+    assert root.get("dialect") == "DeluValley"
     words = root.find("S[@id='tsukida2014_seediq_S002']").findall("W")
     assert words[3].findtext("FORM[@kindOf='original']") == "gaga"
-    assert words[3].findtext("PHON[@kindOf='original']") == "ɣaɣa"
+    assert words[3].findtext("PHON[@kindOf='original']") == "gaga"
     assert words[1].findtext("FORM[@kindOf='original']") == "huliŋ"
-    assert words[1].findtext("PHON[@kindOf='original']") == "ħuɮiŋ"
+    assert words[1].findtext("PHON[@kindOf='original']") == "ħuliŋ"
+
+
+def test_clitics_are_separate_words_in_the_standard_sentence_only():
+    root = ET.parse(build_xml.XML_PATH).getroot()
+    s001 = root.find("S[@id='tsukida2014_seediq_S001']")
+    assert s001.findtext("FORM[@kindOf='original']") == "Malu ka hiyi=su?"
+    assert s001.findtext("FORM[@kindOf='standard']") == "Malu ka hiyi su?"
+    assert s001.find("W[3]").findtext("FORM[@kindOf='standard']") == "hiyi=su"
+    assert s001.find("W[3]").findtext("TRANSL") == "body=2SG.GEN"
+    s027 = root.find("S[@id='tsukida2014_seediq_S027']")
+    assert s027.findtext("FORM[@kindOf='standard']").startswith("Pekedusun ta na ka ita u,")
 
 
 def test_reviewed_source_apostrophe_is_pronounced():
@@ -300,7 +304,7 @@ def test_reviewed_source_apostrophe_is_pronounced():
     expected = {
         "tsukida2014_seediq_S003W2": ("'u", "ʔu"),
         "tsukida2014_seediq_S018W4": ("se'diq", "səʔdiq"),
-        "tsukida2014_seediq_S002W4": ("gaga", "ɣaɣa"),
+        "tsukida2014_seediq_S002W4": ("gaga", "gaga"),
     }
     words = {word.get("id"): word for word in root.iter("W")}
     for identity, (source, phon) in expected.items():

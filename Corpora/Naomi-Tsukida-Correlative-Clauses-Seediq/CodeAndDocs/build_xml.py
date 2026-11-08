@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import csv
 import re
 import xml.etree.ElementTree as ET
@@ -14,8 +15,17 @@ ROOT = CODE.parent
 INPUT = CODE / "raw_data" / "reviewed_examples.tsv"
 MORPHEME_INPUT = CODE / "raw_data" / "reviewed_morpheme_alignments.tsv"
 VARIANT_INPUT = CODE / "raw_data" / "reviewed_variants.tsv"
+TRANSLATION_ALTERNATIVES = CODE / "raw_data" / "translation_alternatives.tsv"
 XML_NAME = "tsukida_2014_correlative_clauses_in_seediq.xml"
-XML_PATH = ROOT / "XML" / "Truku" / XML_NAME
+XML_PATH = ROOT / "XML" / "Seediq" / XML_NAME
+# Records whose printed sentence (and, for 19a/19b, translation) brackets a relative
+# clause; the brackets are not published (maintainer: "Drop them from the original
+# tier." / "Drop them there too" + "Obviously keep the text.").
+BRACKETED_FORMS = {
+    "tsukida2014_seediq_S018", "tsukida2014_seediq_S019", "tsukida2014_seediq_S020",
+    "tsukida2014_seediq_S021", "tsukida2014_seediq_S029",
+}
+BRACKETED_TRANSLATIONS = {"tsukida2014_seediq_S020", "tsukida2014_seediq_S021"}
 SOURCE_LEDGER = CODE / "intermediate" / "source_ledger.csv"
 PAGE_INVENTORY = CODE / "intermediate" / "page_inventory.csv"
 NOTATION_AUDIT = CODE / "intermediate" / "source_notation_audit.csv"
@@ -100,6 +110,27 @@ def read_variants(path: Path = VARIANT_INPUT) -> dict[str, list[dict[str, str]]]
     if len(ids) != len(set(ids)):
         raise ValueError("Reviewed variant ids must be unique")
     return variants
+
+
+def read_translation_alternatives(
+    path: Path = TRANSLATION_ALTERNATIVES,
+) -> dict[str, list[str]]:
+    """Printed translations with slash alternatives, and the readings each becomes.
+
+    POL-025 (amended 2026-11-08): one TRANSL per reading, all but the first
+    ver="alt". Keyed on the exact printed text, so a changed source stops the build.
+    """
+    table = {}
+    for row in read_tsv(path):
+        readings = row["readings"].split("|")
+        if len(readings) < 2 or row["source_translation"] in table:
+            raise ValueError(f"Bad translation-alternatives row: {row['source_translation']!r}")
+        table[row["source_translation"]] = readings
+    return table
+
+
+def drop_brackets(text: str) -> str:
+    return text.replace("[", "").replace("]", "")
 
 
 def validate_rows(rows: list[dict[str, str]]) -> None:
@@ -256,6 +287,22 @@ def morpheme_alignment(
     return list(zip(form_parts, gloss_parts)), ""
 
 
+def infix_brackets(word: str, morpheme_forms: list[str]) -> str:
+    """POL-014: the word tier marks infixes with angle brackets, b-en-arig=na -> b<en>arig=na.
+
+    The source writes an infix between hyphens. Only words whose morphemes include an
+    infix (-X-) change; the four m-en-X words stay as printed (no infix morpheme).
+    """
+    infixes = [form[1:-1] for form in morpheme_forms
+               if len(form) > 2 and form.startswith("-") and form.endswith("-")]
+    if not infixes:
+        return word
+    pieces = word.split("-")
+    if pieces[1 : 1 + len(infixes)] != infixes:
+        raise ValueError(f"Infixes {infixes} not where expected in {word!r}")
+    return pieces[0] + "".join(f"<{i}>" for i in infixes) + "-".join(pieces[1 + len(infixes) :])
+
+
 def add_word_structure(
     sentence: ET.Element,
     record: dict[str, str],
@@ -268,10 +315,11 @@ def add_word_structure(
         word_element = ET.SubElement(
             sentence, "W", {"id": f"{record['id']}W{word_index}"}
         )
-        ET.SubElement(word_element, "FORM", {"kindOf": "original"}).text = word
+        form_element = ET.SubElement(word_element, "FORM", {"kindOf": "original"})
         morphemes, canonical_gloss = morpheme_alignment(
             record, word_index, word, gloss, reviewed
         )
+        form_element.text = infix_brackets(word, [form for form, _ in morphemes])
         source_gloss_attributes = {"xml:lang": "eng"}
         if canonical_gloss:
             source_gloss_attributes["kindOf"] = "original"
@@ -300,21 +348,16 @@ def add_word_structure(
                 "TRANSL",
                 {"xml:lang": "eng"},
             ).text = gloss_part
-    # POL-023: examples 3 and 6 have no morpheme segmentation in the source.
-    parsed = any(
-        len(word.findall("M")) > 1
-        or any(m.findtext("FORM") != word.findtext("FORM") for m in word.findall("M"))
-        for word in sentence.findall("W")
-    )
-    if not parsed:
-        for word in sentence.findall("W"):
-            for morpheme in word.findall("M"):
-                word.remove(morpheme)
     return alignment_note
 
 
 def build_tree(records: list[dict[str, str]]) -> ET.ElementTree:
     reviewed_morphemes = read_morpheme_alignments()
+    alternatives = read_translation_alternatives()
+    used_alternatives: set[str] = set()
+    bracketed = {r["id"] for r in records if "[" in r["original"] or "]" in r["original"]}
+    if bracketed != BRACKETED_FORMS:
+        raise ValueError(f"Bracketed records changed: {sorted(bracketed ^ BRACKETED_FORMS)}")
     root = ET.Element(
         "TEXT",
         {
@@ -327,7 +370,7 @@ def build_tree(records: list[dict[str, str]]) -> ET.ElementTree:
                 "Tsukida 2014, Correlative clauses in Seediq, PDF pp. 74-84 / "
                 f"printed pp. 69-79; source PDF SHA-256 {SOURCE_PDF_SHA256}"
             ),
-            "dialect": "Truku",
+            "dialect": "DeluValley",
         },
     )
     for record in records:
@@ -336,13 +379,25 @@ def build_tree(records: list[dict[str, str]]) -> ET.ElementTree:
             "S",
             {"id": record["id"], "source": record["source_locator"]},
         )
-        ET.SubElement(sentence, "FORM", {"kindOf": "original"}).text = record[
-            "original"
-        ]
-        if record["translation"]:
-            ET.SubElement(sentence, "TRANSL", {"xml:lang": "eng"}).text = record[
-                "translation"
-            ]
+        ET.SubElement(sentence, "FORM", {"kindOf": "original"}).text = drop_brackets(
+            record["original"]
+        )
+        translation = record["translation"]
+        if ("[" in translation) != (record["id"] in BRACKETED_TRANSLATIONS):
+            raise ValueError(f"Bracketed translation changed: {record['id']}")
+        translation = drop_brackets(translation)
+        readings = [translation]
+        if "/" in translation:
+            if translation not in alternatives:
+                raise ValueError(f"Slash translation without readings: {record['id']}")
+            readings = alternatives[translation]
+            used_alternatives.add(translation)
+        if translation:
+            ET.SubElement(sentence, "TRANSL", {"xml:lang": "eng"}).text = readings[0]
+            for reading in readings[1:]:
+                ET.SubElement(
+                    sentence, "TRANSL", {"xml:lang": "eng", "ver": "alt"}
+                ).text = reading
         if (
             record["translation_alt"]
             and record["translation_alt_in_xml"] == "yes"
@@ -363,6 +418,8 @@ def build_tree(records: list[dict[str, str]]) -> ET.ElementTree:
     }
     if used_alignments != set(reviewed_morphemes):
         raise ValueError("Reviewed morpheme alignment table has unused rows")
+    if used_alternatives != set(alternatives):
+        raise ValueError("Translation-alternatives table has unused rows")
     ET.indent(root, space="    ")
     return ET.ElementTree(root)
 
@@ -545,11 +602,15 @@ def write_source_map(records: list[dict[str, str]]) -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--xml-root", type=Path, default=ROOT / "XML",
+                        help="directory to write XML/Seediq/... into (the build passes a staging dir)")
+    args = parser.parse_args()
     rows = read_tsv()
     validate_rows(rows)
     records = included_records(rows)
     tree = build_tree(records)
-    write_xml(tree)
+    write_xml(tree, args.xml_root / "Seediq" / XML_NAME)
     write_source_ledger(rows)
     write_page_inventory()
     write_notation_audit(rows)
