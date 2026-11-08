@@ -16,17 +16,19 @@ tables. The Chinese translations, alternative meanings, notes and morpheme
 analyses follow an expert transcription of the thesis by Madeline Boese
 (`CodeAndDocs/manual_edits.xml`). The source PDF is not distributed here.
 
-Two TEXT files under `XML/Sakizaya/` contain 691 S: 244 numbered-example
-readings, six footnote/prose examples and 441 affix entries (432 main-table rows
-and 9 rows of the late summary tables), with 1,802 W, 2,605 M, 5,098 original
-and 5,098 standard FORM, 5,098 standard PHON, 744 S translations and 4,496
+Two TEXT files under `XML/Sakizaya/` contain 686 S: 244 numbered-example
+readings, six footnote/prose examples and 436 affix entries (432 main-table rows
+and 4 rows of the late summary tables), with 1,797 W, 2,595 M, 5,078 original
+and 5,078 standard FORM, 5,078 standard PHON, 738 S translations and 4,480
 untiered W/M source glosses. No source-supplied phonetic transcription is
 included.
 
 Of the thesis's 814 example and table units (261 numbered occurrences, 434
 main-table rows, 113 late summary rows and six footnote/prose examples), the
 corpus leaves out eleven exact repeats, the nine examples the source stars as
-ungrammatical, and the 104 late summary rows that repeat a main-table row.
+ungrammatical, the 104 late summary rows that repeat a main-table row, and the
+five rows of table 108, which list culture-related words and give no affix
+function.
 Phonology demonstrations, paradigms, lexical discussion and quoted analyses of
 other languages are not included; this is not a transcription of every
 linguistic item in the thesis. Example 23c prints an optional phrase, so it is
@@ -103,8 +105,8 @@ only when every step has succeeded.
    two readings (the shorter one has `-opt` IDs and only its own W, M and
    translation); adds the footnote and prose examples and four alternative
    translations in `source_data/supplemental_examples.json`; adds the records in
-   `source_data/ruled_additions.json` (examples 75a, 87a, 88a, 88b, 90a and the
-   9 late rows, each checked against its inventory row); applies the corrections
+   `source_data/ruled_additions.json` (examples 75a, 87a, 88a, 88b, 90a and 4
+   late rows, each checked against its inventory row); applies the corrections
    in `source_data/ruled_corrections.tsv` (each row names the value it expects,
    so a changed input stops the build); and puts the table-row morphemes in word
    order with circumfixes written `X-Y`.

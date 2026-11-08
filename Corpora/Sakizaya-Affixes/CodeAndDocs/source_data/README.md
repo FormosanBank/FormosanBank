@@ -7,11 +7,11 @@ inventories one directory up, and these files:
 - `supplemental_examples.json`: six footnote and prose examples and four
   alternative Chinese translations, with stable IDs and page locators.
 - `ruled_additions.json`: records the transcription lacks (examples 75a, 87a,
-  88a, 88b, 90a and late table rows 491–525), each checked against its inventory
+  88a, 88b, 90a and late table rows 506, 517, 523 and 525), each checked against its inventory
   row.
 - `late_table_rows.csv`: rows 435–547 of the late summary tables, with pages,
-  table numbers, forms and meanings; the corpus includes the 9 rows found
-  nowhere else in the thesis.
+  table numbers, forms and meanings; the corpus includes the four rows of
+  table 109 found nowhere else in the thesis.
 - `ruled_corrections.tsv`: corrections to the transcription; each row names the
   value it expects, so a changed input stops the build.
 
@@ -19,7 +19,7 @@ The corpus test reads:
 
 - `gloss_exceptions.csv`: the words whose gloss is segmented differently from
   their form, as printed: whole-word meanings beside a table's affix and root
-  columns (413 table rows), and the thesis's unsegmented pronouns, case-marked
+  columns (409 table rows), and the thesis's unsegmented pronouns, case-marked
   nouns and composite affixes (49 examples). The test requires exactly these
   readings and fails on any other G001 finding. Footnote 15's composite prefix
   has its own test.

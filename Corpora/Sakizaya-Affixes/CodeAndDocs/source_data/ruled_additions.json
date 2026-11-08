@@ -1,5 +1,5 @@
 {
- "_note": "Records the maintainer ruled into the corpus that the expert transcription (manual_edits.xml) does not contain. Each example is gated on extraction_report.csv (same form) and each table row on source_data/late_table_rows.csv. Words and morphemes follow the expert transcription's own convention: a word and its gloss split at hyphens give one bare morpheme per piece; an unhyphenated word with an unhyphenated gloss gives one morpheme; otherwise no morphemes (checked: this reproduces 236 of the 238 expert example records exactly; the other two are 17d's null prefix and 29a's comma). Page-checked against PDF pages 103, 118, 119, 120, 163, 166, 167 on 2026-11-07.",
+ "_note": "Records the maintainer ruled into the corpus that the expert transcription (manual_edits.xml) does not contain. Each example is gated on extraction_report.csv (same form) and each table row on source_data/late_table_rows.csv. Words and morphemes follow the expert transcription's own convention: a word and its gloss split at hyphens give one bare morpheme per piece; an unhyphenated word with an unhyphenated gloss gives one morpheme; otherwise no morphemes (checked: this reproduces 236 of the 238 expert example records exactly; the other two are 17d's null prefix and 29a's comma). Page-checked against PDF pages 103, 118, 119, 120, 166, 167 on 2026-11-07.",
  "examples": [
   {
    "id": "AKIW_SZY_2012_EX_087A",
@@ -379,102 +379,6 @@
   }
  ],
  "table_rows": [
-  {
-   "id": "AKIW_SZY_2012_TABLE_ROW_491",
-   "seq": 491,
-   "page": 163,
-   "source_table": "table 108",
-   "form": "ma-la-wacu",
-   "meaning": [
-    "虛弱"
-   ],
-   "affix": "ma-la-",
-   "affix_function": "與文化相關詞彙",
-   "base": "wacu",
-   "base_meaning": [
-    "狗"
-   ],
-   "card": "s153-late",
-   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\"",
-   "affix_function_note": "As printed: the third column header of table 108 (PDF page 163); the table has no function column; late_table_rows.csv shortens it to 文化相關詞彙."
-  },
-  {
-   "id": "AKIW_SZY_2012_TABLE_ROW_492",
-   "seq": 492,
-   "page": 163,
-   "source_table": "table 108",
-   "form": "ma-lalikid",
-   "meaning": [
-    "豐年祭"
-   ],
-   "affix": "ma-",
-   "affix_function": "與文化相關詞彙",
-   "base": "lalikid",
-   "base_meaning": [
-    "被流走"
-   ],
-   "card": "s153-late",
-   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\"",
-   "affix_function_note": "As printed: the third column header of table 108 (PDF page 163); the table has no function column; late_table_rows.csv shortens it to 文化相關詞彙."
-  },
-  {
-   "id": "AKIW_SZY_2012_TABLE_ROW_493",
-   "seq": 493,
-   "page": 163,
-   "source_table": "table 108",
-   "form": "pa-habay",
-   "meaning": [
-    "養育",
-    "餵養"
-   ],
-   "affix": "pa-",
-   "affix_function": "與文化相關詞彙",
-   "base": "habay",
-   "base_meaning": [
-    "小米"
-   ],
-   "card": "s153-late",
-   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\"",
-   "affix_function_note": "As printed: the third column header of table 108 (PDF page 163); the table has no function column; late_table_rows.csv shortens it to 文化相關詞彙."
-  },
-  {
-   "id": "AKIW_SZY_2012_TABLE_ROW_495",
-   "seq": 495,
-   "page": 163,
-   "source_table": "table 108",
-   "form": "si-sepi",
-   "meaning": [
-    "有福氣的"
-   ],
-   "affix": "si-",
-   "affix_function": "與文化相關詞彙",
-   "base": "sepi",
-   "base_meaning": [
-    "夢"
-   ],
-   "card": "s153-late",
-   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\"",
-   "affix_function_note": "As printed: the third column header of table 108 (PDF page 163); the table has no function column; late_table_rows.csv shortens it to 文化相關詞彙."
-  },
-  {
-   "id": "AKIW_SZY_2012_TABLE_ROW_496",
-   "seq": 496,
-   "page": 163,
-   "source_table": "table 108",
-   "form": "mu-sepi-ay",
-   "meaning": [
-    "幸運的"
-   ],
-   "affix": "mu-...-ay",
-   "affix_function": "與文化相關詞彙",
-   "base": "sepi",
-   "base_meaning": [
-    "夢"
-   ],
-   "card": "s153-late",
-   "ruling": "Round 1, 2026-11-06, card s153-late: \"B · Add the 9 unique rows\"",
-   "affix_function_note": "As printed: the third column header of table 108 (PDF page 163); the table has no function column; late_table_rows.csv shortens it to 文化相關詞彙."
-  },
   {
    "id": "AKIW_SZY_2012_TABLE_ROW_506",
    "seq": 506,

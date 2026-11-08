@@ -91,14 +91,15 @@ class ReviewedSourceTests(unittest.TestCase):
                          [(None, "歇一下"), ("alt", "休息一下")])
 
     def test_expert_summary_exclusion_and_original_phon_omission(self):
-        # Madeline's August 13–14 review excluded the late dataset; the maintainer added back
-        # the 9 rows found nowhere else (2026-11-06, card s153-late: "B · Add the 9 unique rows").
+        # Late summary rows found nowhere else in the thesis (2026-11-06, card s153-late:
+        # "B · Add the 9 unique rows"), less table 108's five (2026-11-08, card s153-latefn:
+        # "I would drop these.").
         self.assertFalse(any("SUMMARY_ROW" in sid for sid in self.nodes))
         late = sorted(s.get("id") for root in self.roots for s in root.findall("S")
                       if "late summary table" in s.get("source", ""))
         self.assertEqual(late, [f"AKIW_SZY_2012_TABLE_ROW_{n}"
-                                for n in (491, 492, 493, 495, 496, 506, 517, 523, 525)])
-        self.assertEqual(sum(len(root.findall("S")) for root in self.roots), 691)
+                                for n in (506, 517, 523, 525)])
+        self.assertEqual(sum(len(root.findall("S")) for root in self.roots), 686)
         self.assertFalse(any(root.findall(".//PHON[@kindOf='original']") for root in self.roots))
         for key in ("083C", "091E"):
             self.assertNotIn(f"AKIW_SZY_2012_EX_{key}", self.nodes)
@@ -183,9 +184,9 @@ class ReviewedSourceTests(unittest.TestCase):
         with (CODE / "source_data/gloss_exceptions.csv").open(newline="", encoding="utf-8") as handle:
             cases = list(csv.DictReader(handle))
         expected = {case["word_id"] for case in cases}
-        self.assertEqual(len(cases), 462)
-        self.assertEqual(len(expected), 462)
-        self.assertEqual(sum("TABLE_ROW" in wid for wid in expected), 413)
+        self.assertEqual(len(cases), 458)
+        self.assertEqual(len(expected), 458)
+        self.assertEqual(sum("TABLE_ROW" in wid for wid in expected), 409)
         for case in cases:
             with self.subTest(word=case["word_id"]):
                 word = self.nodes[case["word_id"]]
@@ -197,14 +198,14 @@ class ReviewedSourceTests(unittest.TestCase):
                 self.assertEqual(finding.rule_id, "G001")
                 actual.append(re.search(r"W=([^\s]+)", finding.location).group(1))
         # Footnote 15 (scan p. 39) also glosses a composite prefix as one 工焦.
-        self.assertEqual(len(actual), 463)
+        self.assertEqual(len(actual), 459)
         self.assertEqual(set(actual), expected | {"AKIW_SZY_2012_FN_015W1"})
 
     def test_table_meanings_are_not_split_into_fictitious_glosses(self):
         # Each reviewed six-column row has one whole-word meaning and two source analyses.
         sentences = [s for root in self.roots for s in root.findall("S")
                      if "TABLE_ROW" in s.get("id", "")]
-        self.assertEqual(len(sentences), 441)
+        self.assertEqual(len(sentences), 436)
         for sentence in sentences:
             with self.subTest(row=sentence.get("id")):
                 self.assertEqual(len(sentence.findall("W")), 1)
