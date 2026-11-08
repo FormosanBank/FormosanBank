@@ -42,8 +42,8 @@ for language in Amis Kavalan; do
         --o_info "$REPORT/orthography-$language-standard" --reference "$FB/QC/validation/reference" --language "$language"
 done
 run conversion-Amis "$PY" "$FB/QC/validation/validate_conversion_table.py" \
-    "$HERE/Orthographies/LinAmis/Amis.tsv" "$FB/Orthographies/Ortho113/Amis.tsv" \
-    "$HERE/Orthographies/ConversionTables/Amis_LinAmis_113.tsv" --dialect Xiuguluan \
+    "$FB/Orthographies/Ortho94/Amis.tsv" "$FB/Orthographies/Ortho113/Amis.tsv" \
+    "$FB/Orthographies/ConversionTables/Amis_94_113.tsv" --dialect Coastal \
     --output "$REPORT/conversion-Amis.md"
 run dialect "$PY" "$FB/QC/validation/validate_dialect.py" --path "$ROOT/XML"
 run registries "$PY" "$FB/QC/validation/validate_registries.py" \

@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <TEXT id="lin_2015_kavalan_interrogative_verbs" xml:lang="ckv" dialect="Kavalan" glottocode="kava1241" source="https://hdl.handle.net/1885/14354; Lin (2015), pp. 253-289; source dialect note: Hsinshe Kavalan, Hsinshe village, Hualien County; sentence examples extracted from numbered examples" copyright="CC BY 4.0" citation="Lin, Dong-yi. 2015. The syntactic derivations of interrogative verbs in Amis and Kavalan. In Elizabeth Zeitoun, Stacy F. Teng, and Joy J. Wu (eds.), New Advances in Formosan Linguistics, 253-289. Asia-Pacific Linguistics." BibTeX_citation="@incollection{lin2015AmisKavalanInterrogativeVerbs,title={The syntactic derivations of interrogative verbs in Amis and Kavalan},author={Lin, Dong-yi},booktitle={New Advances in Formosan Linguistics},editor={Zeitoun, Elizabeth and Teng, Stacy F. and Wu, Joy J.},pages={253--289},publisher={Asia-Pacific Linguistics},year={2015}}">
     <S id="S_kavalan_001" source="source occurrences 2a (printed p. 254; PDF page 2), 7a (printed p. 257; PDF page 5); repeated reference example represented by one S">
-        <FORM kindOf="original">qumuni=isu tangi?</FORM>
+        <FORM kindOf="original">q‹um›uni=isu tangi?</FORM>
         <PHON kindOf="original">qumuniisu taŋi</PHON>
         <FORM kindOf="standard">qumuniisu tangi?</FORM>
         <PHON kindOf="standard">qumuniisu taŋi</PHON>
@@ -330,7 +330,7 @@
         </W>
     </S>
     <S id="S_kavalan_005" source="example 4a (printed p. 255; PDF page 3)">
-        <FORM kindOf="original">tanian qman=isu tu babuy?</FORM>
+        <FORM kindOf="original">tanian q‹m›an=isu tu babuy?</FORM>
         <PHON kindOf="original">tanian qmanisu tu βaβuj</PHON>
         <FORM kindOf="standard">tanian qmanisu tu babuy?</FORM>
         <PHON kindOf="standard">tanian qmanisu tu βaβuj</PHON>
@@ -408,7 +408,7 @@
     </S>
     <S id="S_kavalan_006" source="source occurrences 4b (printed p. 255; PDF page 3), 29b (printed p. 268; PDF page 16); repeated reference example represented by one S">
         <FORM kindOf="original">tanian tanuz-an na tuliq ya wasu?</FORM>
-        <PHON kindOf="original">tanian tanu[z|r]an na turiq ja wasu</PHON>
+        <PHON kindOf="original">tanian tanuzan na turiq ja wasu</PHON>
         <FORM kindOf="standard">tanian tanuzan na tuliq ya wasu?</FORM>
         <PHON kindOf="standard">tanian tanu[z|r]an na turiq ja wasu</PHON>
         <TRANSL xml:lang="eng">Where do the bees chase the dog?</TRANSL>
@@ -428,13 +428,13 @@
         </W>
         <W id="S_kavalan_006_W02">
             <FORM kindOf="original">tanuz-an</FORM>
-            <PHON kindOf="original">tanu[z|r]an</PHON>
+            <PHON kindOf="original">tanuzan</PHON>
             <FORM kindOf="standard">tanuz-an</FORM>
             <PHON kindOf="standard">tanu[z|r]an</PHON>
             <TRANSL kindOf="original" xml:lang="eng">chase-PV</TRANSL>
             <M id="S_kavalan_006_W02_M01">
                 <FORM kindOf="original">tanuz</FORM>
-                <PHON kindOf="original">tanu[z|r]</PHON>
+                <PHON kindOf="original">tanuz</PHON>
                 <FORM kindOf="standard">tanuz</FORM>
                 <PHON kindOf="standard">tanu[z|r]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">chase</TRANSL>
@@ -506,19 +506,19 @@
     </S>
     <S id="S_kavalan_007" source="example 4c (printed p. 255; PDF page 3)">
         <FORM kindOf="original">tanuz-an na tuliq ya wasu tanian?</FORM>
-        <PHON kindOf="original">tanu[z|r]an na turiq ja wasu tanian</PHON>
+        <PHON kindOf="original">tanuzan na turiq ja wasu tanian</PHON>
         <FORM kindOf="standard">tanuzan na tuliq ya wasu tanian?</FORM>
         <PHON kindOf="standard">tanu[z|r]an na turiq ja wasu tanian</PHON>
         <TRANSL xml:lang="eng">Where do the bees chase the dog?</TRANSL>
         <W id="S_kavalan_007_W01">
             <FORM kindOf="original">tanuz-an</FORM>
-            <PHON kindOf="original">tanu[z|r]an</PHON>
+            <PHON kindOf="original">tanuzan</PHON>
             <FORM kindOf="standard">tanuz-an</FORM>
             <PHON kindOf="standard">tanu[z|r]an</PHON>
             <TRANSL kindOf="original" xml:lang="eng">chase-PV</TRANSL>
             <M id="S_kavalan_007_W01_M01">
                 <FORM kindOf="original">tanuz</FORM>
-                <PHON kindOf="original">tanu[z|r]</PHON>
+                <PHON kindOf="original">tanuz</PHON>
                 <FORM kindOf="standard">tanuz</FORM>
                 <PHON kindOf="standard">tanu[z|r]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">chase</TRANSL>
@@ -674,7 +674,7 @@
     </S>
     <S id="S_kavalan_009" source="example 21a (printed p. 264; PDF page 12)">
         <FORM kindOf="original">sabiqbiq=ti ya zanum 'nay.</FORM>
-        <PHON kindOf="original">saβiqβiqti ja [z|r]anum ʔnaj</PHON>
+        <PHON kindOf="original">saβiqβiqti ja zanum ʔnaj</PHON>
         <FORM kindOf="standard">sabiqbiqti ya zanum 'nay.</FORM>
         <PHON kindOf="standard">saβiqβiqti ja [z|r]anum ʔnaj</PHON>
         <TRANSL xml:lang="eng">The water has boiled.</TRANSL>
@@ -715,13 +715,13 @@
         </W>
         <W id="S_kavalan_009_W03">
             <FORM kindOf="original">zanum</FORM>
-            <PHON kindOf="original">[z|r]anum</PHON>
+            <PHON kindOf="original">zanum</PHON>
             <FORM kindOf="standard">zanum</FORM>
             <PHON kindOf="standard">[z|r]anum</PHON>
             <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
             <M id="S_kavalan_009_W03_M01">
                 <FORM kindOf="original">zanum</FORM>
-                <PHON kindOf="original">[z|r]anum</PHON>
+                <PHON kindOf="original">zanum</PHON>
                 <FORM kindOf="standard">zanum</FORM>
                 <PHON kindOf="standard">[z|r]anum</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
@@ -744,7 +744,7 @@
     </S>
     <S id="S_kavalan_010" source="example 21c (printed p. 264; PDF page 12)">
         <FORM kindOf="original">pa-sabiqbiq=ti=iku tu zanum.</FORM>
-        <PHON kindOf="original">pasaβiqβiqtiiku tu [z|r]anum</PHON>
+        <PHON kindOf="original">pasaβiqβiqtiiku tu zanum</PHON>
         <FORM kindOf="standard">pasabiqbiqtiiku tu zanum.</FORM>
         <PHON kindOf="standard">pasaβiqβiqtiiku tu [z|r]anum</PHON>
         <TRANSL xml:lang="eng">I boiled water.</TRANSL>
@@ -800,13 +800,13 @@
         </W>
         <W id="S_kavalan_010_W03">
             <FORM kindOf="original">zanum</FORM>
-            <PHON kindOf="original">[z|r]anum</PHON>
+            <PHON kindOf="original">zanum</PHON>
             <FORM kindOf="standard">zanum</FORM>
             <PHON kindOf="standard">[z|r]anum</PHON>
             <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
             <M id="S_kavalan_010_W03_M01">
                 <FORM kindOf="original">zanum</FORM>
-                <PHON kindOf="original">[z|r]anum</PHON>
+                <PHON kindOf="original">zanum</PHON>
                 <FORM kindOf="standard">zanum</FORM>
                 <PHON kindOf="standard">[z|r]anum</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
@@ -815,7 +815,7 @@
     </S>
     <S id="S_kavalan_011" source="example 21d (printed p. 264; PDF page 12)">
         <FORM kindOf="original">sabiqbiq-an-ku ya zanum 'nay.</FORM>
-        <PHON kindOf="original">saβiqβiqanku ja [z|r]anum ʔnaj</PHON>
+        <PHON kindOf="original">saβiqβiqanku ja zanum ʔnaj</PHON>
         <FORM kindOf="standard">sabiqbiqanku ya zanum 'nay.</FORM>
         <PHON kindOf="standard">saβiqβiqanku ja [z|r]anum ʔnaj</PHON>
         <TRANSL xml:lang="eng">I boiled the water.</TRANSL>
@@ -863,13 +863,13 @@
         </W>
         <W id="S_kavalan_011_W03">
             <FORM kindOf="original">zanum</FORM>
-            <PHON kindOf="original">[z|r]anum</PHON>
+            <PHON kindOf="original">zanum</PHON>
             <FORM kindOf="standard">zanum</FORM>
             <PHON kindOf="standard">[z|r]anum</PHON>
             <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
             <M id="S_kavalan_011_W03_M01">
                 <FORM kindOf="original">zanum</FORM>
-                <PHON kindOf="original">[z|r]anum</PHON>
+                <PHON kindOf="original">zanum</PHON>
                 <FORM kindOf="standard">zanum</FORM>
                 <PHON kindOf="standard">[z|r]anum</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
@@ -954,7 +954,7 @@
         </W>
     </S>
     <S id="S_kavalan_013" source="example 23c (printed p. 265; PDF page 13)">
-        <FORM kindOf="original">tmalumbi ta-liab-an na takan ya sunis a yau.</FORM>
+        <FORM kindOf="original">t‹m›alumbi ta-liab-an na takan ya sunis a yau.</FORM>
         <PHON kindOf="original">tmarumβi tariaβan na takan ja sunis a jau</PHON>
         <FORM kindOf="standard">tmalumbi taliaban na takan ya sunis a yau.</FORM>
         <PHON kindOf="standard">tmarumβi tariaβan na takan ja sunis a jau</PHON>
@@ -1481,19 +1481,19 @@
     </S>
     <S id="S_kavalan_017" source="example 29a (printed p. 268; PDF page 16)">
         <FORM kindOf="original">tanuz-an na tuliq tanian ya wasu?</FORM>
-        <PHON kindOf="original">tanu[z|r]an na turiq tanian ja wasu</PHON>
+        <PHON kindOf="original">tanuzan na turiq tanian ja wasu</PHON>
         <FORM kindOf="standard">tanuzan na tuliq tanian ya wasu?</FORM>
         <PHON kindOf="standard">tanu[z|r]an na turiq tanian ja wasu</PHON>
         <TRANSL xml:lang="eng">Where do the bees chase the dog?</TRANSL>
         <W id="S_kavalan_017_W01">
             <FORM kindOf="original">tanuz-an</FORM>
-            <PHON kindOf="original">tanu[z|r]an</PHON>
+            <PHON kindOf="original">tanuzan</PHON>
             <FORM kindOf="standard">tanuz-an</FORM>
             <PHON kindOf="standard">tanu[z|r]an</PHON>
             <TRANSL kindOf="original" xml:lang="eng">chase-PV</TRANSL>
             <M id="S_kavalan_017_W01_M01">
                 <FORM kindOf="original">tanuz</FORM>
-                <PHON kindOf="original">tanu[z|r]</PHON>
+                <PHON kindOf="original">tanuz</PHON>
                 <FORM kindOf="standard">tanuz</FORM>
                 <PHON kindOf="standard">tanu[z|r]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">chase</TRANSL>
@@ -1697,7 +1697,7 @@
         </W>
     </S>
     <S id="S_kavalan_019" source="example 41a (printed p. 272; PDF page 20)">
-        <FORM kindOf="original">kin-tani-an-su=pa pmukun ya sunis?</FORM>
+        <FORM kindOf="original">kin-tani-an-su=pa p‹m›ukun ya sunis?</FORM>
         <PHON kindOf="original">kintaniansupa pmukun ja sunis</PHON>
         <FORM kindOf="standard">kintaniansupa pmukun ya sunis?</FORM>
         <PHON kindOf="standard">kintaniansupa pmukun ja sunis</PHON>
@@ -1795,7 +1795,7 @@
         </W>
     </S>
     <S id="S_kavalan_020" source="example 41b (printed p. 272; PDF page 20); Published gloss '&lt;AV&gt;take' is retained despite the free translation 'bite'.">
-        <FORM kindOf="original">u-tani-an na wasu qmaRat ya saku?</FORM>
+        <FORM kindOf="original">u-tani-an na wasu q‹m›aRat ya saku?</FORM>
         <PHON kindOf="original">utanian na wasu qmaʁat ja saku</PHON>
         <FORM kindOf="standard">utanian na wasu qmaRat ya saku?</FORM>
         <PHON kindOf="standard">utanian na wasu qmaʁat ja saku</PHON>
@@ -2007,19 +2007,19 @@
     </S>
     <S id="S_kavalan_022" source="example 48a (printed p. 276; PDF page 24); Optional secondary verb pizi is expanded under POL-026.; optional material included under POL-026">
         <FORM kindOf="original">tazian-an-ku pizi ya kelisiw-ku.</FORM>
-        <PHON kindOf="original">ta[z|r]iananku pi[z|r]i ja kərisiwku</PHON>
+        <PHON kindOf="original">taziananku pizi ja kərisiwku</PHON>
         <FORM kindOf="standard">taziananku pizi ya kelisiwku.</FORM>
         <PHON kindOf="standard">ta[z|r]iananku pi[z|r]i ja kərisiwku</PHON>
         <TRANSL xml:lang="eng">I put my money here.</TRANSL>
         <W id="S_kavalan_022_W01">
             <FORM kindOf="original">tazian-an-ku</FORM>
-            <PHON kindOf="original">ta[z|r]iananku</PHON>
+            <PHON kindOf="original">taziananku</PHON>
             <FORM kindOf="standard">tazian-an-ku</FORM>
             <PHON kindOf="standard">ta[z|r]iananku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">here-PV-1SG.ERG</TRANSL>
             <M id="S_kavalan_022_W01_M01">
                 <FORM kindOf="original">tazian</FORM>
-                <PHON kindOf="original">ta[z|r]ian</PHON>
+                <PHON kindOf="original">tazian</PHON>
                 <FORM kindOf="standard">tazian</FORM>
                 <PHON kindOf="standard">ta[z|r]ian</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">here</TRANSL>
@@ -2041,13 +2041,13 @@
         </W>
         <W id="S_kavalan_022_W02">
             <FORM kindOf="original">pizi</FORM>
-            <PHON kindOf="original">pi[z|r]i</PHON>
+            <PHON kindOf="original">pizi</PHON>
             <FORM kindOf="standard">pizi</FORM>
             <PHON kindOf="standard">pi[z|r]i</PHON>
             <TRANSL kindOf="original" xml:lang="eng">put</TRANSL>
             <M id="S_kavalan_022_W02_M01">
                 <FORM kindOf="original">pizi</FORM>
-                <PHON kindOf="original">pi[z|r]i</PHON>
+                <PHON kindOf="original">pizi</PHON>
                 <FORM kindOf="standard">pizi</FORM>
                 <PHON kindOf="standard">pi[z|r]i</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">put</TRANSL>
@@ -2091,19 +2091,19 @@
     </S>
     <S id="S_kavalan_022-opt" source="example 48a (printed p. 276; PDF page 24); Optional secondary verb pizi is expanded under POL-026.; optional material omitted under POL-026">
         <FORM kindOf="original">tazian-an-ku ya kelisiw-ku.</FORM>
-        <PHON kindOf="original">ta[z|r]iananku ja kərisiwku</PHON>
+        <PHON kindOf="original">taziananku ja kərisiwku</PHON>
         <FORM kindOf="standard">taziananku ya kelisiwku.</FORM>
         <PHON kindOf="standard">ta[z|r]iananku ja kərisiwku</PHON>
         <TRANSL xml:lang="eng">I put my money here.</TRANSL>
         <W id="S_kavalan_022-opt_W01">
             <FORM kindOf="original">tazian-an-ku</FORM>
-            <PHON kindOf="original">ta[z|r]iananku</PHON>
+            <PHON kindOf="original">taziananku</PHON>
             <FORM kindOf="standard">tazian-an-ku</FORM>
             <PHON kindOf="standard">ta[z|r]iananku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">here-PV-1SG.ERG</TRANSL>
             <M id="S_kavalan_022-opt_W01_M01">
                 <FORM kindOf="original">tazian</FORM>
-                <PHON kindOf="original">ta[z|r]ian</PHON>
+                <PHON kindOf="original">tazian</PHON>
                 <FORM kindOf="standard">tazian</FORM>
                 <PHON kindOf="standard">ta[z|r]ian</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">here</TRANSL>
@@ -2161,7 +2161,7 @@
     </S>
     <S id="S_kavalan_023" source="example 48b (printed p. 276; PDF page 24); Optional secondary verb pizi is expanded under POL-026.; optional material included under POL-026">
         <FORM kindOf="original">tawian-an-ku pizi ya kelisiw-ku.</FORM>
-        <PHON kindOf="original">tawiananku pi[z|r]i ja kərisiwku</PHON>
+        <PHON kindOf="original">tawiananku pizi ja kərisiwku</PHON>
         <FORM kindOf="standard">tawiananku pizi ya kelisiwku.</FORM>
         <PHON kindOf="standard">tawiananku pi[z|r]i ja kərisiwku</PHON>
         <TRANSL xml:lang="eng">I put my money there.</TRANSL>
@@ -2195,13 +2195,13 @@
         </W>
         <W id="S_kavalan_023_W02">
             <FORM kindOf="original">pizi</FORM>
-            <PHON kindOf="original">pi[z|r]i</PHON>
+            <PHON kindOf="original">pizi</PHON>
             <FORM kindOf="standard">pizi</FORM>
             <PHON kindOf="standard">pi[z|r]i</PHON>
             <TRANSL kindOf="original" xml:lang="eng">put</TRANSL>
             <M id="S_kavalan_023_W02_M01">
                 <FORM kindOf="original">pizi</FORM>
-                <PHON kindOf="original">pi[z|r]i</PHON>
+                <PHON kindOf="original">pizi</PHON>
                 <FORM kindOf="standard">pizi</FORM>
                 <PHON kindOf="standard">pi[z|r]i</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">put</TRANSL>
@@ -2419,7 +2419,7 @@
         </W>
     </S>
     <S id="S_kavalan_026" source="example 52c (printed p. 277; PDF page 25)">
-        <FORM kindOf="original">paqanas-an-ku tmayta ya sudad.</FORM>
+        <FORM kindOf="original">paqanas-an-ku t‹m›ayta ya sudad.</FORM>
         <PHON kindOf="original">paqanasanku tmajta ja suɮaɮ</PHON>
         <FORM kindOf="standard">paqanasanku tmayta ya sudad.</FORM>
         <PHON kindOf="standard">paqanasanku tmajta ja suɮaɮ</PHON>
@@ -2672,7 +2672,7 @@
     </S>
     <S id="S_kavalan_029" source="example 56a (printed p. 280; PDF page 28)">
         <FORM kindOf="original">sudad zau</FORM>
-        <PHON kindOf="original">suɮaɮ [z|r]au</PHON>
+        <PHON kindOf="original">suɮaɮ zau</PHON>
         <FORM kindOf="standard">sudad zau</FORM>
         <PHON kindOf="standard">suɮaɮ [z|r]au</PHON>
         <TRANSL xml:lang="eng">this book</TRANSL>
@@ -2682,30 +2682,44 @@
             <FORM kindOf="standard">sudad</FORM>
             <PHON kindOf="standard">suɮaɮ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            <M id="S_kavalan_029_W01_M01">
+                <FORM kindOf="original">sudad</FORM>
+                <PHON kindOf="original">suɮaɮ</PHON>
+                <FORM kindOf="standard">sudad</FORM>
+                <PHON kindOf="standard">suɮaɮ</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            </M>
         </W>
         <W id="S_kavalan_029_W02">
             <FORM kindOf="original">zau</FORM>
-            <PHON kindOf="original">[z|r]au</PHON>
+            <PHON kindOf="original">zau</PHON>
             <FORM kindOf="standard">zau</FORM>
             <PHON kindOf="standard">[z|r]au</PHON>
             <TRANSL kindOf="original" xml:lang="eng">this</TRANSL>
+            <M id="S_kavalan_029_W02_M01">
+                <FORM kindOf="original">zau</FORM>
+                <PHON kindOf="original">zau</PHON>
+                <FORM kindOf="standard">zau</FORM>
+                <PHON kindOf="standard">[z|r]au</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">this</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_kavalan_030" source="example 56b (printed p. 280; PDF page 28)">
         <FORM kindOf="original">zau=ay sudad</FORM>
-        <PHON kindOf="original">[z|r]auaj suɮaɮ</PHON>
+        <PHON kindOf="original">zauaj suɮaɮ</PHON>
         <FORM kindOf="standard">zauay sudad</FORM>
         <PHON kindOf="standard">[z|r]auaj suɮaɮ</PHON>
         <TRANSL xml:lang="eng">this book</TRANSL>
         <W id="S_kavalan_030_W01">
             <FORM kindOf="original">zau=ay</FORM>
-            <PHON kindOf="original">[z|r]auaj</PHON>
+            <PHON kindOf="original">zauaj</PHON>
             <FORM kindOf="standard">zau=ay</FORM>
             <PHON kindOf="standard">[z|r]auaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">this=REL</TRANSL>
             <M id="S_kavalan_030_W01_M01">
                 <FORM kindOf="original">zau</FORM>
-                <PHON kindOf="original">[z|r]au</PHON>
+                <PHON kindOf="original">zau</PHON>
                 <FORM kindOf="standard">zau</FORM>
                 <PHON kindOf="standard">[z|r]au</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">this</TRANSL>
@@ -2735,7 +2749,7 @@
     </S>
     <S id="S_kavalan_031" source="example 56c (printed p. 280; PDF page 28)">
         <FORM kindOf="original">sudad zaku</FORM>
-        <PHON kindOf="original">suɮaɮ [z|r]aku</PHON>
+        <PHON kindOf="original">suɮaɮ zaku</PHON>
         <FORM kindOf="standard">sudad zaku</FORM>
         <PHON kindOf="standard">suɮaɮ [z|r]aku</PHON>
         <TRANSL xml:lang="eng">my book</TRANSL>
@@ -2745,30 +2759,44 @@
             <FORM kindOf="standard">sudad</FORM>
             <PHON kindOf="standard">suɮaɮ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            <M id="S_kavalan_031_W01_M01">
+                <FORM kindOf="original">sudad</FORM>
+                <PHON kindOf="original">suɮaɮ</PHON>
+                <FORM kindOf="standard">sudad</FORM>
+                <PHON kindOf="standard">suɮaɮ</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            </M>
         </W>
         <W id="S_kavalan_031_W02">
             <FORM kindOf="original">zaku</FORM>
-            <PHON kindOf="original">[z|r]aku</PHON>
+            <PHON kindOf="original">zaku</PHON>
             <FORM kindOf="standard">zaku</FORM>
             <PHON kindOf="standard">[z|r]aku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">1SG.POSS</TRANSL>
+            <M id="S_kavalan_031_W02_M01">
+                <FORM kindOf="original">zaku</FORM>
+                <PHON kindOf="original">zaku</PHON>
+                <FORM kindOf="standard">zaku</FORM>
+                <PHON kindOf="standard">[z|r]aku</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">1SG.POSS</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_kavalan_032" source="example 56d (printed p. 280; PDF page 28)">
         <FORM kindOf="original">zaku=ay sudad</FORM>
-        <PHON kindOf="original">[z|r]akuaj suɮaɮ</PHON>
+        <PHON kindOf="original">zakuaj suɮaɮ</PHON>
         <FORM kindOf="standard">zakuay sudad</FORM>
         <PHON kindOf="standard">[z|r]akuaj suɮaɮ</PHON>
         <TRANSL xml:lang="eng">my book</TRANSL>
         <W id="S_kavalan_032_W01">
             <FORM kindOf="original">zaku=ay</FORM>
-            <PHON kindOf="original">[z|r]akuaj</PHON>
+            <PHON kindOf="original">zakuaj</PHON>
             <FORM kindOf="standard">zaku=ay</FORM>
             <PHON kindOf="standard">[z|r]akuaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">1SG.POSS=REL</TRANSL>
             <M id="S_kavalan_032_W01_M01">
                 <FORM kindOf="original">zaku</FORM>
-                <PHON kindOf="original">[z|r]aku</PHON>
+                <PHON kindOf="original">zaku</PHON>
                 <FORM kindOf="standard">zaku</FORM>
                 <PHON kindOf="standard">[z|r]aku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.POSS</TRANSL>
@@ -2904,20 +2932,20 @@
     </S>
     <S id="S_kavalan_034" source="example 59b (printed p. 281; PDF page 29)">
         <FORM kindOf="original">[zanitiana=ay kelisiw] ya ala-an=ay ni utay?</FORM>
-        <PHON kindOf="original">[z|r]anitianaaj kərisiw ja araanaj ni utaj</PHON>
+        <PHON kindOf="original">zanitianaaj kərisiw ja araanaj ni utaj</PHON>
         <FORM kindOf="standard">zanitianaay kelisiw ya alaanay ni utay?</FORM>
         <PHON kindOf="standard">[z|r]anitianaaj kərisiw ja araanaj ni utaj</PHON>
         <TRANSL xml:lang="eng">Whose money does Utay take?</TRANSL>
         <TRANSL xml:lang="eng" ver="alt">The stuff that Utay takes is whose money?</TRANSL>
         <W id="S_kavalan_034_W01">
             <FORM kindOf="original">zanitiana=ay</FORM>
-            <PHON kindOf="original">[z|r]anitianaaj</PHON>
+            <PHON kindOf="original">zanitianaaj</PHON>
             <FORM kindOf="standard">zanitiana=ay</FORM>
             <PHON kindOf="standard">[z|r]anitianaaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">whose=REL</TRANSL>
             <M id="S_kavalan_034_W01_M01">
                 <FORM kindOf="original">zanitiana</FORM>
-                <PHON kindOf="original">[z|r]anitiana</PHON>
+                <PHON kindOf="original">zanitiana</PHON>
                 <FORM kindOf="standard">zanitiana</FORM>
                 <PHON kindOf="standard">[z|r]anitiana</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">whose</TRANSL>

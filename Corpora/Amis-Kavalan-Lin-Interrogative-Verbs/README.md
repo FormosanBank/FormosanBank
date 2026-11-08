@@ -1,56 +1,115 @@
-# Lin Amis and Kavalan interrogative verbs
+# Lin (2015): Amis and Kavalan interrogative verbs
 
-Dong-yi Lin (2015), “The syntactic derivations of interrogative verbs in Amis and Kavalan,” *New Advances in Formosan Linguistics*, pp. 253–289. [ANU source](https://hdl.handle.net/1885/14354).
+Lin, Dong-yi. 2015. The syntactic derivations of interrogative verbs in Amis and
+Kavalan. In Elizabeth Zeitoun, Stacy F. Teng and Joy J. Wu (eds.), *New Advances
+in Formosan Linguistics*, 253–289. Asia-Pacific Linguistics
+([ANU repository](https://hdl.handle.net/1885/14354)). The corpus contains the
+chapter's numbered Amis and Kavalan examples with their word and morpheme glosses
+and English translations.
 
-**Status:** the source and build repairs are complete. Technical readiness remains blocked by evidence for the Amis source phonology described below. Do not treat the earlier readiness reports as approval.
+## Languages and dialects
 
-## Source and coverage
+- **Amis** (ISO 639-3 `ami`, glottocode `cent2104`): `XML/Amis/`, `dialect="Coastal"`.
+  The chapter describes its Amis as "Central Amis, which is spoken in Changpin
+  village, Taitung County".
+- **Kavalan** (ISO 639-3 `ckv`, glottocode `kava1241`): `XML/Kavalan/`,
+  `dialect="Kavalan"`. The chapter's Kavalan is Hsinshe Kavalan, from Hsinshe
+  village, Hualien County.
 
-The source PDF has 38 pages, including the final blank page, all reviewed against the transcription. SHA-256: `fb39fca379012a953ed21bc82d39c2545adc0227aa870a009841ed318aece28d`.
+## Source
 
-The committed [source table](CodeAndDocs/extracted_examples.tsv) records 96 Formosan occurrences: 49 Amis and 47 Kavalan. The [exclusion ledger](CodeAndDocs/excluded_source_units.tsv) accounts for 19 starred and two marginal occurrences under POL-016, plus 18 theory or other-language units. The 75 admitted occurrences include seven repeated reference examples, represented by 68 canonical identities. Six optional whole words expand under POL-026; two optional prefixes use W/M FORM variants under POL-028. The result is 74 S records (38 Amis, 36 Kavalan), 336 W and 490 M. The shorter prefix readings remain represented without duplicate sentences.
+The chapter's numbered examples, as printed (pp. 253–289). The transcription the
+build reads is [CodeAndDocs/extracted_examples.tsv](CodeAndDocs/extracted_examples.tsv).
 
-Printed Amis 5b was missing from the old ledger; it remains excluded. Amis 6a and Kavalan 52a retain the source's translation parentheses. Footnote 6 explicitly corrects Amis 14a to “I will tenderise only the meat.” The source table retains the superseded body reading, which is no longer presented as an equal translation. Original sentence forms retain the constituent brackets in 59a/b and 60a/b; standard sentence forms omit them. The repeated 7a prints `just now`; canonical 2a retains its printed `just.now`.
+Two TEXT files contain 74 S (38 Amis, 36 Kavalan), 336 W and 504 M, with 89
+sentence translations (15 of them alternative translations, `ver="alt"`) and 840
+word and morpheme glosses.
 
-Source W/M glosses, literal readings, infix gaps and all optional readings are preserved. Kavalan 41b retains the printed `<AV>take` gloss despite its “bite” translation. The source-to-S mapping is stored explicitly; base IDs remain stable and extra whole-word readings now use the required `-opt` suffix. Historical page-review and alignment reports are retained as earlier evidence, including their now-corrected omissions.
+The chapter has 96 numbered Amis and Kavalan occurrences (49 Amis, 47 Kavalan).
+The corpus leaves out the 19 the source stars as ungrammatical and the 2 it marks
+as marginal (POL-016); 18 further units are theoretical structures or examples
+from other languages. Seven examples are printed twice and appear once. The
+excluded units are listed in
+[CodeAndDocs/excluded_source_units.tsv](CodeAndDocs/excluded_source_units.tsv).
 
-## Orthography and open decision
+Audio: none in the source.
 
-The chapter identifies Central Amis from Changpin and Hsinshe Kavalan. Current FormosanBank aliases represent these as Xiuguluan and Kavalan. Madeline's August 13 review accepted the grammaticality repairs and W/M forms and requested standard FORM and PHON; her orthography comment was “I think Lin is using Ortho113.”
+## Statistics
 
-The existing [Amis profile](CodeAndDocs/Orthographies/LinAmis/Amis.tsv) and letter mapping are retained pending source evidence. They distinguish `q` from apostrophe but assign both printed `u` and `o` to `[o|u]`. Lin quotes Wu, whose phonetic key distinguishes those vowels, and also uses his own fieldwork. The available review does not explicitly approve this custom profile. A matching conversion-table result is not independent confirmation of its sounds. A source-backed profile or a specific maintainer ruling is required before a positive readiness verdict. Kavalan uses Ortho113.
+The table of word counts, audio, translations and glossing is generated from
+`statistics/Amis-Kavalan-Lin-Interrogative-Verbs_corpora_stats.csv` and appears on
+this corpus's page on the [FormosanBank site](https://formosanbank.github.io/FormosanBank/).
 
-## Audio
+## How to cite
 
-None.
+If you use this corpus, or anything derived from it, in a publication, cite both
+FormosanBank and:
 
-## Notes and Issues
+Lin, Dong-yi. 2015. The syntactic derivations of interrogative verbs in Amis and
+Kavalan. In Elizabeth Zeitoun, Stacy F. Teng and Joy J. Wu (eds.), *New Advances
+in Formosan Linguistics*, 253–289. Canberra: Asia-Pacific Linguistics.
 
-The Amis sound profile remains unconfirmed, so its PHON and conversion are not ready for use. Source gloss anomalies and original constituent brackets are retained. Alternative spellings occur at W/M; optional whole words have separate aligned S records. Counts in older review reports predate this distinction.
+See the FormosanBank [Terms of Use](https://formosanbank.github.io/FormosanBank/additional-resources/terms-of-use/).
 
-## Rebuild and validate
-
-Build from the committed transcription with current FormosanBank tools. No source download, private file, network request or old Git object is needed. Build provenance is recorded in [provenance.json](CodeAndDocs/provenance.json); it is not a tool pin.
-
-```bash
-FORMOSANBANK_ROOT=/path/to/FormosanBank PYTHON=/path/to/python3 \
-  ./CodeAndDocs/generate_xml.sh
-
-python3 -m unittest discover -s CodeAndDocs/tests -v
-
-FORMOSANBANK_ROOT=/path/to/FormosanBank PYTHON=/path/to/python3 \
-  QC_REPORT_DIR=/path/outside/the/corpus \
-  ./CodeAndDocs/validate.sh
-```
-
-The entry point rebuilds `XML/`, applies any recorded manual edits, cleans, standardizes and adds phonology. Shared tools own standard FORM and PHON (POL-002/003). Validation is separate and runs every check even when one fails; inspect findings and actual reference coverage. It does not adjudicate warnings or declare readiness.
-
-**POL-047 deviation:** after the shared derived-tier steps, `build_xml.py --restore-brackets` restores the four original S constituent brackets from the source table. The intermediate S forms omit these silent analysis markers, so the standard sentence and PHON tiers remain marker-free. Passing square brackets directly to the current phonology tool retains them as though they were IPA-alternative brackets. This final step changes only four original S forms, verifies their expected intermediate values, and leaves shared-generated tiers untouched.
-
-## Rights
+## License
 
 **License:** CC BY 4.0
 
-**Rights source:** Dong-yi Lin, 2025-01-28 (licence notice recorded); evidence: ask maintainer
+**Rights source:** the chapter's own licence statement (Lin 2015, published CC BY 4.0); evidence: ask maintainer
 
-The chapter's first page carries the author's 2015 copyright notice and explicitly releases it under CC BY 4.0. The ANU evidence was recorded on January 28, 2025. XML uses that exact vocabulary value. Source files and the preserved evidence screenshot are unnecessary for rebuilding the transcription.
+Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+## Notes and caveats
+
+None known.
+
+## Reproduction and processing
+
+### How to reproduce
+
+From a FormosanBank checkout, with its Python dependencies installed:
+
+```bash
+source .venv/bin/activate
+./Corpora/Amis-Kavalan-Lin-Interrogative-Verbs/CodeAndDocs/generate_xml.sh
+python -m unittest discover -s Corpora/Amis-Kavalan-Lin-Interrogative-Verbs/CodeAndDocs/tests
+QC_REPORT_DIR=/path/outside/the/corpus ./Corpora/Amis-Kavalan-Lin-Interrogative-Verbs/CodeAndDocs/validate.sh
+```
+
+`generate_xml.sh` uses the checkout three levels above `CodeAndDocs/` and
+`python3`; `FORMOSANBANK_ROOT` and `PYTHON` name others. The FormosanBank commit
+the published XML was last built with is recorded in
+[CodeAndDocs/provenance.json](CodeAndDocs/provenance.json) (POL-052; provenance
+only, a rebuild always runs the current tools). `validate.sh` runs the validators
+separately; the build does not.
+
+### What each step does
+
+Everything is built in a temporary staging directory and installed into `XML/`
+only when every step has succeeded.
+
+1. `build_xml.py` builds the S, W and M records from the transcription. A
+   printed optional word gives two S (the shorter with `-opt` IDs, POL-026); a
+   printed optional prefix gives `ver="alt"` word and morpheme FORMs (POL-028).
+   The sentence line keeps the printed infix marks `‹ ›`; the word tier writes
+   them `< >` (POL-014). The four constituent brackets of examples 59–60 are
+   left off for now (step 7).
+2. `QC/cleaning/apply_manual_edits.py`, only if `CodeAndDocs/manual_edits.xml`
+   exists (it does not at present).
+3. `QC/cleaning/clean_xml.py`, with its report kept out of `XML/` (POL-033).
+4. `QC/utilities/standardize.py`: Amis with
+   `Orthographies/ConversionTables/Amis_94_113.tsv` (Coastal column), Kavalan
+   with `Orthographies/ConversionTables/Kavalan_94_113.tsv`. The source spells in
+   Ortho94.
+5. `apply_standard_exceptions.py` applies `standard_tier_exceptions.tsv`: in
+   example 14a, the one word with `q` (which Ortho94 lacks), `q` becomes `'` in
+   its standard FORMs.
+6. `QC/utilities/add_phonology.py --orthography Ortho94` for both languages.
+7. `build_xml.py --restore-brackets` puts the printed constituent brackets back
+   on the four original sentences of examples 59–60; their standard sentences
+   and phonology have none.
+8. The staged XML replaces `XML/`, and `provenance.json` records the tools.
+
+**POL-047 deviation:** step 5 edits the standard tier after standardization, for
+one sentence; step 7 edits the original tier after phonology, for four sentences.
+Each checks that the text it edits is the text it expects and stops otherwise.

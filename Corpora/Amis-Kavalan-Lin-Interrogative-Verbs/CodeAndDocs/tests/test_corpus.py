@@ -50,12 +50,14 @@ class SourceTests(unittest.TestCase):
         self.assertEqual(example("Amis", "6a").readings, ("(Somebody) pours water into the cup.",))
         self.assertEqual(example("Kavalan", "52a").readings, ("I do (it) in that way.",))
 
-    def test_footnote_erratum_supersedes_the_body_reading(self):
+    def test_footnote_reading_first_printed_reading_alternative(self):
+        # Footnote 6's correction is the base translation; the printed one is ver="alt".
         item = example("Amis", "14a")
         self.assertEqual(item.translation, "I will tenderise the meat a little.")
-        self.assertEqual(item.readings, ("I will tenderise only the meat.",))
+        self.assertEqual(item.readings, ("I will tenderise only the meat.", "I will tenderise the meat a little."))
         sentence = generated("Amis").find("S[@id='S_amis_011']")
-        self.assertEqual([t.text for t in sentence.findall("TRANSL")], list(item.readings))
+        self.assertEqual([(t.text, t.get("ver")) for t in sentence.findall("TRANSL")],
+                         [("I will tenderise only the meat.", None), ("I will tenderise the meat a little.", "alt")])
         self.assertIn("Footnote 6", sentence.get("source"))
         self.assertIn("tuniq-en", item.printed)
 
@@ -140,7 +142,7 @@ class SourceTests(unittest.TestCase):
 
     def test_protected_corpus_inventory_and_machine_tier_ownership(self):
         # Kavalan's two redundant 24a/b spellings now share their existing W/M.
-        for language, sentences, words, morphemes in (("Amis", 38, 179, 254), ("Kavalan", 36, 157, 236)):
+        for language, sentences, words, morphemes in (("Amis", 38, 179, 264), ("Kavalan", 36, 157, 240)):
             root = generated(language)
             self.assertEqual(len(root.findall("S")), sentences)
             self.assertEqual(len(root.findall(".//W")), words)
@@ -149,6 +151,28 @@ class SourceTests(unittest.TestCase):
             self.assertEqual(root.get("glottocode"), {"Amis": "cent2104", "Kavalan": "kava1241"}[language])
             self.assertEqual(root.findall(".//FORM[@kindOf='standard']"), [])
             self.assertEqual(root.findall(".//PHON"), [])
+
+    def test_amis_dialect_is_coastal(self):
+        self.assertEqual(generated("Amis").get("dialect"), "Coastal")
+        self.assertEqual(generated("Kavalan").get("dialect"), "Kavalan")
+
+    def test_sentences_without_a_split_word_have_one_m_per_word(self):
+        for language, ids in (("Amis", ("S_amis_031", "S_amis_032", "S_amis_032-opt")),
+                              ("Kavalan", ("S_kavalan_029", "S_kavalan_031"))):
+            root = generated(language)
+            for sid in ids:
+                for word in root.find(f"S[@id='{sid}']").findall("W"):
+                    morphemes = word.findall("M")
+                    self.assertEqual(len(morphemes), 1, word.get("id"))
+                    self.assertEqual(morphemes[0].findtext("FORM"), word.findtext("FORM"))
+                    self.assertEqual(morphemes[0].findtext("TRANSL"), word.findtext("TRANSL"))
+            self.assertEqual([s.get("id") for s in root.findall("S")
+                              if s.find("W") is not None and s.find(".//M") is None], [])
+
+    def test_printed_infix_brackets_stay_on_the_sentence_line(self):
+        sentence = generated("Kavalan").find("S[@id='S_kavalan_001']")
+        self.assertEqual(sentence.findtext("FORM[@kindOf='original']"), "q‹um›uni=isu tangi?")
+        self.assertEqual(sentence.find("W/FORM").text, "q<um>uni=isu")
 
     def test_final_constituent_brackets_are_original_only(self):
         # Four constituent analyses on printed p.281; standard surfaces omit them.

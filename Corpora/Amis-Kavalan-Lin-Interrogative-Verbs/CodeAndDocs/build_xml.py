@@ -47,7 +47,7 @@ COPYRIGHT = "CC BY 4.0"
 LANGUAGES = {
     "Amis": {
         "xml_lang": "ami",
-        "dialect": "Xiuguluan",
+        "dialect": "Coastal",
         "glottocode": "cent2104",
         "source_dialect": "Central Amis, Changpin village, Taitung County",
     },
@@ -197,8 +197,8 @@ def normalize_source_form(text: str, *, preserve_infix: bool = False) -> str:
     )
     if preserve_infix:
         normalized = normalized.replace("‹", "<").replace("›", ">")
-    else:
-        normalized = normalized.replace("‹", "").replace("›", "")
+    # Otherwise the printed ‹ › stay on the sentence line (POL-014); the shared
+    # standardizer removes them from the standard sentence.
     return re.sub(r"\s+", " ", normalized).strip()
 
 
@@ -347,7 +347,6 @@ def add_word_tiers(sentence: ET.Element, variant: FormVariant) -> str:
         aligned_morphemes(form_word, gloss_word)
         for form_word, gloss_word in word_pairs
     ]
-    sentence_is_parsed = any(len(forms) >= 2 for forms, _ in analyses)
 
     for word_index, ((form_word, gloss_word), (form_morphemes, gloss_morphemes)) in enumerate(
         zip(word_pairs, analyses, strict=True), start=1
@@ -373,10 +372,11 @@ def add_word_tiers(sentence: ET.Element, variant: FormVariant) -> str:
 
         if not form_morphemes and any(mark in form_word for mark in "-=<>"):
             raise ValueError(f"Unresolved segmented alignment: {word.attrib['id']} {form_word!r} / {gloss_word!r}")
-        if sentence_is_parsed and len(form_morphemes) < 2:
+        if len(form_morphemes) < 2:
+            # An unsplit word is one M (POL-057), also in a sentence where no word splits.
             form_morphemes = [form_word]
             gloss_morphemes = [gloss_word]
-        if not sentence_is_parsed or len(form_morphemes) != len(gloss_morphemes):
+        if len(form_morphemes) != len(gloss_morphemes):
             continue
         for morph_index, (form_morph, gloss_morph) in enumerate(
             zip(form_morphemes, gloss_morphemes, strict=True), start=1
@@ -462,21 +462,21 @@ def make_text(language: str, examples: list[Example]) -> ET.Element:
     return root
 
 
-def write_xml() -> None:
+def write_xml(xml_root: Path = XML_ROOT) -> None:
     by_language: dict[str, list[Example]] = {}
     for example in admitted_examples():
         by_language.setdefault(example.language, []).append(example)
 
     for language, examples in sorted(by_language.items()):
-        language_dir = XML_ROOT / language
+        language_dir = xml_root / language
         language_dir.mkdir(parents=True, exist_ok=True)
         out_path = language_dir / f"lin_2015_{language.lower()}_interrogative_verbs.xml"
         out_path.write_text(prettify(make_text(language, examples)), encoding="utf-8")
 
 
-def restore_brackets() -> None:
+def restore_brackets(xml_root: Path = XML_ROOT) -> None:
     """Restore source constituent brackets after deriving marker-free sentence tiers."""
-    for path in sorted(XML_ROOT.rglob("*.xml")):
+    for path in sorted(xml_root.rglob("*.xml")):
         tree = ET.parse(path)
         root = tree.getroot()
         expected = {e.xml_id: e.printed for e in EXAMPLES if e.printed.startswith("[")}
@@ -498,8 +498,10 @@ def restore_brackets() -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--restore-brackets", action="store_true")
+    parser.add_argument("--xml-root", type=Path, default=XML_ROOT,
+                        help="where to write (generate_xml.sh passes its staging directory)")
     args = parser.parse_args()
     if args.restore_brackets:
-        restore_brackets()
+        restore_brackets(args.xml_root)
     else:
-        write_xml()
+        write_xml(args.xml_root)

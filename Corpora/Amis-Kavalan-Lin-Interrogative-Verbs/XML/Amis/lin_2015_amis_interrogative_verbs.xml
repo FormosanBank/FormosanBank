@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="lin_2015_amis_interrogative_verbs" xml:lang="ami" dialect="Xiuguluan" glottocode="cent2104" source="https://hdl.handle.net/1885/14354; Lin (2015), pp. 253-289; source dialect note: Central Amis, Changpin village, Taitung County; sentence examples extracted from numbered examples" copyright="CC BY 4.0" citation="Lin, Dong-yi. 2015. The syntactic derivations of interrogative verbs in Amis and Kavalan. In Elizabeth Zeitoun, Stacy F. Teng, and Joy J. Wu (eds.), New Advances in Formosan Linguistics, 253-289. Asia-Pacific Linguistics." BibTeX_citation="@incollection{lin2015AmisKavalanInterrogativeVerbs,title={The syntactic derivations of interrogative verbs in Amis and Kavalan},author={Lin, Dong-yi},booktitle={New Advances in Formosan Linguistics},editor={Zeitoun, Elizabeth and Teng, Stacy F. and Wu, Joy J.},pages={253--289},publisher={Asia-Pacific Linguistics},year={2015}}">
+<TEXT id="lin_2015_amis_interrogative_verbs" xml:lang="ami" dialect="Coastal" glottocode="cent2104" source="https://hdl.handle.net/1885/14354; Lin (2015), pp. 253-289; source dialect note: Central Amis, Changpin village, Taitung County; sentence examples extracted from numbered examples" copyright="CC BY 4.0" citation="Lin, Dong-yi. 2015. The syntactic derivations of interrogative verbs in Amis and Kavalan. In Elizabeth Zeitoun, Stacy F. Teng, and Joy J. Wu (eds.), New Advances in Formosan Linguistics, 253-289. Asia-Pacific Linguistics." BibTeX_citation="@incollection{lin2015AmisKavalanInterrogativeVerbs,title={The syntactic derivations of interrogative verbs in Amis and Kavalan},author={Lin, Dong-yi},booktitle={New Advances in Formosan Linguistics},editor={Zeitoun, Elizabeth and Teng, Stacy F. and Wu, Joy J.},pages={253--289},publisher={Asia-Pacific Linguistics},year={2015}}">
     <S id="S_amis_001" source="source occurrences 1a (printed p. 254; PDF page 2), 8a (printed p. 257; PDF page 5); repeated reference example represented by one S">
         <FORM kindOf="original">mi-maan ci panay?</FORM>
         <PHON kindOf="original">mimaan ʦi panaj</PHON>
@@ -58,7 +58,7 @@
     </S>
     <S id="S_amis_002" source="source occurrences 1b (printed p. 254; PDF page 2), 8c (printed p. 257; PDF page 5), 25a (printed p. 266; PDF page 14); repeated reference example represented by one S">
         <FORM kindOf="original">na maan-en isu k-u-ra wacu?</FORM>
-        <PHON kindOf="original">na maanən is[o|u] k[o|u]ra waʦ[o|u]</PHON>
+        <PHON kindOf="original">na maanən isu kura waʦu</PHON>
         <FORM kindOf="standard">na maanen iso kora waco?</FORM>
         <PHON kindOf="standard">na maanən is[o|u] k[o|u]ra waʦ[o|u]</PHON>
         <TRANSL xml:lang="eng">What did you do to that dog?</TRANSL>
@@ -99,13 +99,13 @@
         </W>
         <W id="S_amis_002_W03">
             <FORM kindOf="original">isu</FORM>
-            <PHON kindOf="original">is[o|u]</PHON>
+            <PHON kindOf="original">isu</PHON>
             <FORM kindOf="standard">iso</FORM>
             <PHON kindOf="standard">is[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
             <M id="S_amis_002_W03_M01">
                 <FORM kindOf="original">isu</FORM>
-                <PHON kindOf="original">is[o|u]</PHON>
+                <PHON kindOf="original">isu</PHON>
                 <FORM kindOf="standard">iso</FORM>
                 <PHON kindOf="standard">is[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
@@ -113,7 +113,7 @@
         </W>
         <W id="S_amis_002_W04">
             <FORM kindOf="original">k-u-ra</FORM>
-            <PHON kindOf="original">k[o|u]ra</PHON>
+            <PHON kindOf="original">kura</PHON>
             <FORM kindOf="standard">k-o-ra</FORM>
             <PHON kindOf="standard">k[o|u]ra</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN-that</TRANSL>
@@ -126,7 +126,7 @@
             </M>
             <M id="S_amis_002_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -141,13 +141,13 @@
         </W>
         <W id="S_amis_002_W05">
             <FORM kindOf="original">wacu</FORM>
-            <PHON kindOf="original">waʦ[o|u]</PHON>
+            <PHON kindOf="original">waʦu</PHON>
             <FORM kindOf="standard">waco</FORM>
             <PHON kindOf="standard">waʦ[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
             <M id="S_amis_002_W05_M01">
                 <FORM kindOf="original">wacu</FORM>
-                <PHON kindOf="original">waʦ[o|u]</PHON>
+                <PHON kindOf="original">waʦu</PHON>
                 <FORM kindOf="standard">waco</FORM>
                 <PHON kindOf="standard">waʦ[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
@@ -156,19 +156,19 @@
     </S>
     <S id="S_amis_003" source="source occurrences 5a (printed p. 255; PDF page 3), 28a (printed p. 268; PDF page 16); repeated reference example represented by one S">
         <FORM kindOf="original">icuwa-en isu k-u payci?</FORM>
-        <PHON kindOf="original">iʦ[o|u]waən is[o|u] k[o|u] pajʦi</PHON>
+        <PHON kindOf="original">iʦuwaən isu ku pajʦi</PHON>
         <FORM kindOf="standard">icowaen iso ko payci?</FORM>
         <PHON kindOf="standard">iʦ[o|u]waən is[o|u] k[o|u] pajʦi</PHON>
         <TRANSL xml:lang="eng">Where do you put the money?</TRANSL>
         <W id="S_amis_003_W01">
             <FORM kindOf="original">icuwa-en</FORM>
-            <PHON kindOf="original">iʦ[o|u]waən</PHON>
+            <PHON kindOf="original">iʦuwaən</PHON>
             <FORM kindOf="standard">icowa-en</FORM>
             <PHON kindOf="standard">iʦ[o|u]waən</PHON>
             <TRANSL kindOf="original" xml:lang="eng">where-PV</TRANSL>
             <M id="S_amis_003_W01_M01">
                 <FORM kindOf="original">icuwa</FORM>
-                <PHON kindOf="original">iʦ[o|u]wa</PHON>
+                <PHON kindOf="original">iʦuwa</PHON>
                 <FORM kindOf="standard">icowa</FORM>
                 <PHON kindOf="standard">iʦ[o|u]wa</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
@@ -183,13 +183,13 @@
         </W>
         <W id="S_amis_003_W02">
             <FORM kindOf="original">isu</FORM>
-            <PHON kindOf="original">is[o|u]</PHON>
+            <PHON kindOf="original">isu</PHON>
             <FORM kindOf="standard">iso</FORM>
             <PHON kindOf="standard">is[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
             <M id="S_amis_003_W02_M01">
                 <FORM kindOf="original">isu</FORM>
-                <PHON kindOf="original">is[o|u]</PHON>
+                <PHON kindOf="original">isu</PHON>
                 <FORM kindOf="standard">iso</FORM>
                 <PHON kindOf="standard">is[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
@@ -197,7 +197,7 @@
         </W>
         <W id="S_amis_003_W03">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -210,7 +210,7 @@
             </M>
             <M id="S_amis_003_W03_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -233,15 +233,15 @@
     </S>
     <S id="S_amis_004" source="example 6a (printed p. 256; PDF page 4)">
         <FORM kindOf="original">mi-sni' t-u nanum i takid.</FORM>
-        <PHON kindOf="original">misniʔ t[o|u] nan[o|u]m i taki[ɬ|ɮ]</PHON>
-        <FORM kindOf="standard">misni^ to nanom i takid.</FORM>
-        <PHON kindOf="standard">misniʔ t[o|u] nan[o|u]m i taki[ɬ|ɮ]</PHON>
+        <PHON kindOf="original">misniʡ tu nanum i takiɬ</PHON>
+        <FORM kindOf="standard">misni' to nanom i takid.</FORM>
+        <PHON kindOf="standard">misniʡ t[o|u] nan[o|u]m i taki[ɬ|ɮ]</PHON>
         <TRANSL xml:lang="eng">(Somebody) pours water into the cup.</TRANSL>
         <W id="S_amis_004_W01">
             <FORM kindOf="original">mi-sni'</FORM>
-            <PHON kindOf="original">misniʔ</PHON>
-            <FORM kindOf="standard">mi-sni^</FORM>
-            <PHON kindOf="standard">misniʔ</PHON>
+            <PHON kindOf="original">misniʡ</PHON>
+            <FORM kindOf="standard">mi-sni'</FORM>
+            <PHON kindOf="standard">misniʡ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-pour</TRANSL>
             <M id="S_amis_004_W01_M01">
                 <FORM kindOf="original">mi</FORM>
@@ -252,15 +252,15 @@
             </M>
             <M id="S_amis_004_W01_M02">
                 <FORM kindOf="original">sni'</FORM>
-                <PHON kindOf="original">sniʔ</PHON>
-                <FORM kindOf="standard">sni^</FORM>
-                <PHON kindOf="standard">sniʔ</PHON>
+                <PHON kindOf="original">sniʡ</PHON>
+                <FORM kindOf="standard">sni'</FORM>
+                <PHON kindOf="standard">sniʡ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">pour</TRANSL>
             </M>
         </W>
         <W id="S_amis_004_W02">
             <FORM kindOf="original">t-u</FORM>
-            <PHON kindOf="original">t[o|u]</PHON>
+            <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">t-o</FORM>
             <PHON kindOf="standard">t[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">OBL-CN</TRANSL>
@@ -273,7 +273,7 @@
             </M>
             <M id="S_amis_004_W02_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -281,13 +281,13 @@
         </W>
         <W id="S_amis_004_W03">
             <FORM kindOf="original">nanum</FORM>
-            <PHON kindOf="original">nan[o|u]m</PHON>
+            <PHON kindOf="original">nanum</PHON>
             <FORM kindOf="standard">nanom</FORM>
             <PHON kindOf="standard">nan[o|u]m</PHON>
             <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
             <M id="S_amis_004_W03_M01">
                 <FORM kindOf="original">nanum</FORM>
-                <PHON kindOf="original">nan[o|u]m</PHON>
+                <PHON kindOf="original">nanum</PHON>
                 <FORM kindOf="standard">nanom</FORM>
                 <PHON kindOf="standard">nan[o|u]m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
@@ -309,13 +309,13 @@
         </W>
         <W id="S_amis_004_W05">
             <FORM kindOf="original">takid</FORM>
-            <PHON kindOf="original">taki[ɬ|ɮ]</PHON>
+            <PHON kindOf="original">takiɬ</PHON>
             <FORM kindOf="standard">takid</FORM>
             <PHON kindOf="standard">taki[ɬ|ɮ]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">cup</TRANSL>
             <M id="S_amis_004_W05_M01">
                 <FORM kindOf="original">takid</FORM>
-                <PHON kindOf="original">taki[ɬ|ɮ]</PHON>
+                <PHON kindOf="original">takiɬ</PHON>
                 <FORM kindOf="standard">takid</FORM>
                 <PHON kindOf="standard">taki[ɬ|ɮ]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">cup</TRANSL>
@@ -324,13 +324,13 @@
     </S>
     <S id="S_amis_005" source="example 6b (printed p. 256; PDF page 4)">
         <FORM kindOf="original">mi-nanum=ho kaku.</FORM>
-        <PHON kindOf="original">minan[o|u]mħ[o|u] kak[o|u]</PHON>
+        <PHON kindOf="original">minanumħo kaku</PHON>
         <FORM kindOf="standard">minanomho kako.</FORM>
         <PHON kindOf="standard">minan[o|u]mħ[o|u] kak[o|u]</PHON>
         <TRANSL xml:lang="eng">I am still drinking water.</TRANSL>
         <W id="S_amis_005_W01">
             <FORM kindOf="original">mi-nanum=ho</FORM>
-            <PHON kindOf="original">minan[o|u]mħ[o|u]</PHON>
+            <PHON kindOf="original">minanumħo</PHON>
             <FORM kindOf="standard">mi-nanom=ho</FORM>
             <PHON kindOf="standard">minan[o|u]mħ[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-drink=IPFV</TRANSL>
@@ -343,14 +343,14 @@
             </M>
             <M id="S_amis_005_W01_M02">
                 <FORM kindOf="original">nanum</FORM>
-                <PHON kindOf="original">nan[o|u]m</PHON>
+                <PHON kindOf="original">nanum</PHON>
                 <FORM kindOf="standard">nanom</FORM>
                 <PHON kindOf="standard">nan[o|u]m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">drink</TRANSL>
             </M>
             <M id="S_amis_005_W01_M03">
                 <FORM kindOf="original">=ho</FORM>
-                <PHON kindOf="original">ħ[o|u]</PHON>
+                <PHON kindOf="original">ħo</PHON>
                 <FORM kindOf="standard">=ho</FORM>
                 <PHON kindOf="standard">ħ[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">IPFV</TRANSL>
@@ -358,13 +358,13 @@
         </W>
         <W id="S_amis_005_W02">
             <FORM kindOf="original">kaku</FORM>
-            <PHON kindOf="original">kak[o|u]</PHON>
+            <PHON kindOf="original">kaku</PHON>
             <FORM kindOf="standard">kako</FORM>
             <PHON kindOf="standard">kak[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">1SG.ABS</TRANSL>
             <M id="S_amis_005_W02_M01">
                 <FORM kindOf="original">kaku</FORM>
-                <PHON kindOf="original">kak[o|u]</PHON>
+                <PHON kindOf="original">kaku</PHON>
                 <FORM kindOf="standard">kako</FORM>
                 <PHON kindOf="standard">kak[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.ABS</TRANSL>
@@ -415,14 +415,14 @@
     </S>
     <S id="S_amis_007" source="example 10a (printed p. 259; PDF page 7); Source separates two translation readings with a slash.">
         <FORM kindOf="original">mi-nanum ci aki t-u nanum.</FORM>
-        <PHON kindOf="original">minan[o|u]m ʦi aki t[o|u] nan[o|u]m</PHON>
+        <PHON kindOf="original">minanum ʦi aki tu nanum</PHON>
         <FORM kindOf="standard">minanom ci aki to nanom.</FORM>
         <PHON kindOf="standard">minan[o|u]m ʦi aki t[o|u] nan[o|u]m</PHON>
         <TRANSL xml:lang="eng">Aki is going to drink water.</TRANSL>
         <TRANSL xml:lang="eng" ver="alt">Aki is drinking water.</TRANSL>
         <W id="S_amis_007_W01">
             <FORM kindOf="original">mi-nanum</FORM>
-            <PHON kindOf="original">minan[o|u]m</PHON>
+            <PHON kindOf="original">minanum</PHON>
             <FORM kindOf="standard">mi-nanom</FORM>
             <PHON kindOf="standard">minan[o|u]m</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-water</TRANSL>
@@ -435,7 +435,7 @@
             </M>
             <M id="S_amis_007_W01_M02">
                 <FORM kindOf="original">nanum</FORM>
-                <PHON kindOf="original">nan[o|u]m</PHON>
+                <PHON kindOf="original">nanum</PHON>
                 <FORM kindOf="standard">nanom</FORM>
                 <PHON kindOf="standard">nan[o|u]m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
@@ -471,7 +471,7 @@
         </W>
         <W id="S_amis_007_W04">
             <FORM kindOf="original">t-u</FORM>
-            <PHON kindOf="original">t[o|u]</PHON>
+            <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">t-o</FORM>
             <PHON kindOf="standard">t[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">OBL-CN</TRANSL>
@@ -484,7 +484,7 @@
             </M>
             <M id="S_amis_007_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -492,13 +492,13 @@
         </W>
         <W id="S_amis_007_W05">
             <FORM kindOf="original">nanum</FORM>
-            <PHON kindOf="original">nan[o|u]m</PHON>
+            <PHON kindOf="original">nanum</PHON>
             <FORM kindOf="standard">nanom</FORM>
             <PHON kindOf="standard">nan[o|u]m</PHON>
             <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
             <M id="S_amis_007_W05_M01">
                 <FORM kindOf="original">nanum</FORM>
-                <PHON kindOf="original">nan[o|u]m</PHON>
+                <PHON kindOf="original">nanum</PHON>
                 <FORM kindOf="standard">nanom</FORM>
                 <PHON kindOf="standard">nan[o|u]m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
@@ -507,14 +507,14 @@
     </S>
     <S id="S_amis_008" source="example 10b (printed p. 259; PDF page 7); Source separates two translation readings with a slash.">
         <FORM kindOf="original">mi-palu ci sawmah ci mayaw-an.</FORM>
-        <PHON kindOf="original">mipaɾ[o|u] ʦi sawmaħ ʦi majawan</PHON>
+        <PHON kindOf="original">mipaɾu ʦi sawmaħ ʦi majawan</PHON>
         <FORM kindOf="standard">mipalo ci sawmah ci mayawan.</FORM>
         <PHON kindOf="standard">mipaɾ[o|u] ʦi sawmaħ ʦi majawan</PHON>
         <TRANSL xml:lang="eng">Sawmah is going to beat Mayaw.</TRANSL>
         <TRANSL xml:lang="eng" ver="alt">Sawmah is beating Mayaw.</TRANSL>
         <W id="S_amis_008_W01">
             <FORM kindOf="original">mi-palu</FORM>
-            <PHON kindOf="original">mipaɾ[o|u]</PHON>
+            <PHON kindOf="original">mipaɾu</PHON>
             <FORM kindOf="standard">mi-palo</FORM>
             <PHON kindOf="standard">mipaɾ[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-beat</TRANSL>
@@ -527,7 +527,7 @@
             </M>
             <M id="S_amis_008_W01_M02">
                 <FORM kindOf="original">palu</FORM>
-                <PHON kindOf="original">paɾ[o|u]</PHON>
+                <PHON kindOf="original">paɾu</PHON>
                 <FORM kindOf="standard">palo</FORM>
                 <PHON kindOf="standard">paɾ[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">beat</TRANSL>
@@ -599,13 +599,13 @@
     </S>
     <S id="S_amis_009" source="example 11a (printed p. 259; PDF page 7)">
         <FORM kindOf="original">ma-adah=tu kaku.</FORM>
-        <PHON kindOf="original">maa[ɬ|ɮ]aħt[o|u] kak[o|u]</PHON>
+        <PHON kindOf="original">maaɬaħtu kaku</PHON>
         <FORM kindOf="standard">maadahto kako.</FORM>
         <PHON kindOf="standard">maa[ɬ|ɮ]aħt[o|u] kak[o|u]</PHON>
         <TRANSL xml:lang="eng">I have recovered (from illness).</TRANSL>
         <W id="S_amis_009_W01">
             <FORM kindOf="original">ma-adah=tu</FORM>
-            <PHON kindOf="original">maa[ɬ|ɮ]aħt[o|u]</PHON>
+            <PHON kindOf="original">maaɬaħtu</PHON>
             <FORM kindOf="standard">ma-adah=to</FORM>
             <PHON kindOf="standard">maa[ɬ|ɮ]aħt[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-recover=PFV</TRANSL>
@@ -618,14 +618,14 @@
             </M>
             <M id="S_amis_009_W01_M02">
                 <FORM kindOf="original">adah</FORM>
-                <PHON kindOf="original">a[ɬ|ɮ]aħ</PHON>
+                <PHON kindOf="original">aɬaħ</PHON>
                 <FORM kindOf="standard">adah</FORM>
                 <PHON kindOf="standard">a[ɬ|ɮ]aħ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">recover</TRANSL>
             </M>
             <M id="S_amis_009_W01_M03">
                 <FORM kindOf="original">=tu</FORM>
-                <PHON kindOf="original">t[o|u]</PHON>
+                <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">=to</FORM>
                 <PHON kindOf="standard">t[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PFV</TRANSL>
@@ -633,13 +633,13 @@
         </W>
         <W id="S_amis_009_W02">
             <FORM kindOf="original">kaku</FORM>
-            <PHON kindOf="original">kak[o|u]</PHON>
+            <PHON kindOf="original">kaku</PHON>
             <FORM kindOf="standard">kako</FORM>
             <PHON kindOf="standard">kak[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">1SG.ABS</TRANSL>
             <M id="S_amis_009_W02_M01">
                 <FORM kindOf="original">kaku</FORM>
-                <PHON kindOf="original">kak[o|u]</PHON>
+                <PHON kindOf="original">kaku</PHON>
                 <FORM kindOf="standard">kako</FORM>
                 <PHON kindOf="standard">kak[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.ABS</TRANSL>
@@ -648,13 +648,13 @@
     </S>
     <S id="S_amis_010" source="example 11b (printed p. 259; PDF page 7)">
         <FORM kindOf="original">ma-ruhem=tu k-u pawli.</FORM>
-        <PHON kindOf="original">mar[o|u]ħəmt[o|u] k[o|u] pawɾi</PHON>
+        <PHON kindOf="original">maruħəmtu ku pawɾi</PHON>
         <FORM kindOf="standard">marohemto ko pawli.</FORM>
         <PHON kindOf="standard">mar[o|u]ħəmt[o|u] k[o|u] pawɾi</PHON>
         <TRANSL xml:lang="eng">The banana is ripe (just now).</TRANSL>
         <W id="S_amis_010_W01">
             <FORM kindOf="original">ma-ruhem=tu</FORM>
-            <PHON kindOf="original">mar[o|u]ħəmt[o|u]</PHON>
+            <PHON kindOf="original">maruħəmtu</PHON>
             <FORM kindOf="standard">ma-rohem=to</FORM>
             <PHON kindOf="standard">mar[o|u]ħəmt[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-ripe=PFV</TRANSL>
@@ -667,14 +667,14 @@
             </M>
             <M id="S_amis_010_W01_M02">
                 <FORM kindOf="original">ruhem</FORM>
-                <PHON kindOf="original">r[o|u]ħəm</PHON>
+                <PHON kindOf="original">ruħəm</PHON>
                 <FORM kindOf="standard">rohem</FORM>
                 <PHON kindOf="standard">r[o|u]ħəm</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ripe</TRANSL>
             </M>
             <M id="S_amis_010_W01_M03">
                 <FORM kindOf="original">=tu</FORM>
-                <PHON kindOf="original">t[o|u]</PHON>
+                <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">=to</FORM>
                 <PHON kindOf="standard">t[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PFV</TRANSL>
@@ -682,7 +682,7 @@
         </W>
         <W id="S_amis_010_W02">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -695,7 +695,7 @@
             </M>
             <M id="S_amis_010_W02_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -718,19 +718,20 @@
     </S>
     <S id="S_amis_011" source="example 14a (printed p. 260; PDF page 8); Footnote 6 corrects the body translation to &quot;I will tenderise only the meat.&quot; (Joy Wu, pers. comm.).">
         <FORM kindOf="original">tuniq-en aku ku ti'ti' aca.</FORM>
-        <PHON kindOf="original">t[o|u]niʡən ak[o|u] k[o|u] tiʔtiʔ aʦa</PHON>
-        <FORM kindOf="standard">toni'en ako ko ti^ti^ aca.</FORM>
-        <PHON kindOf="standard">t[o|u]niʡən ak[o|u] k[o|u] tiʔtiʔ aʦa</PHON>
+        <PHON kindOf="original">tuni*ən aku ku tiʡtiʡ aʦa</PHON>
+        <FORM kindOf="standard">toni'en ako ko ti'ti' aca.</FORM>
+        <PHON kindOf="standard">t[o|u]niʡən ak[o|u] k[o|u] tiʡtiʡ aʦa</PHON>
         <TRANSL xml:lang="eng">I will tenderise only the meat.</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">I will tenderise the meat a little.</TRANSL>
         <W id="S_amis_011_W01">
             <FORM kindOf="original">tuniq-en</FORM>
-            <PHON kindOf="original">t[o|u]niʡən</PHON>
+            <PHON kindOf="original">tuni*ən</PHON>
             <FORM kindOf="standard">toni'-en</FORM>
             <PHON kindOf="standard">t[o|u]niʡən</PHON>
             <TRANSL kindOf="original" xml:lang="eng">soft-PV</TRANSL>
             <M id="S_amis_011_W01_M01">
                 <FORM kindOf="original">tuniq</FORM>
-                <PHON kindOf="original">t[o|u]niʡ</PHON>
+                <PHON kindOf="original">tuni*</PHON>
                 <FORM kindOf="standard">toni'</FORM>
                 <PHON kindOf="standard">t[o|u]niʡ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">soft</TRANSL>
@@ -745,13 +746,13 @@
         </W>
         <W id="S_amis_011_W02">
             <FORM kindOf="original">aku</FORM>
-            <PHON kindOf="original">ak[o|u]</PHON>
+            <PHON kindOf="original">aku</PHON>
             <FORM kindOf="standard">ako</FORM>
             <PHON kindOf="standard">ak[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">1SG.ERG</TRANSL>
             <M id="S_amis_011_W02_M01">
                 <FORM kindOf="original">aku</FORM>
-                <PHON kindOf="original">ak[o|u]</PHON>
+                <PHON kindOf="original">aku</PHON>
                 <FORM kindOf="standard">ako</FORM>
                 <PHON kindOf="standard">ak[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.ERG</TRANSL>
@@ -759,13 +760,13 @@
         </W>
         <W id="S_amis_011_W03">
             <FORM kindOf="original">ku</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">ko</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
             <M id="S_amis_011_W03_M01">
                 <FORM kindOf="original">ku</FORM>
-                <PHON kindOf="original">k[o|u]</PHON>
+                <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ko</FORM>
                 <PHON kindOf="standard">k[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
@@ -773,15 +774,15 @@
         </W>
         <W id="S_amis_011_W04">
             <FORM kindOf="original">ti'ti'</FORM>
-            <PHON kindOf="original">tiʔtiʔ</PHON>
-            <FORM kindOf="standard">ti^ti^</FORM>
-            <PHON kindOf="standard">tiʔtiʔ</PHON>
+            <PHON kindOf="original">tiʡtiʡ</PHON>
+            <FORM kindOf="standard">ti'ti'</FORM>
+            <PHON kindOf="standard">tiʡtiʡ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">meat</TRANSL>
             <M id="S_amis_011_W04_M01">
                 <FORM kindOf="original">ti'ti'</FORM>
-                <PHON kindOf="original">tiʔtiʔ</PHON>
-                <FORM kindOf="standard">ti^ti^</FORM>
-                <PHON kindOf="standard">tiʔtiʔ</PHON>
+                <PHON kindOf="original">tiʡtiʡ</PHON>
+                <FORM kindOf="standard">ti'ti'</FORM>
+                <PHON kindOf="standard">tiʡtiʡ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">meat</TRANSL>
             </M>
         </W>
@@ -802,13 +803,13 @@
     </S>
     <S id="S_amis_012" source="example 15a (printed p. 260; PDF page 8)">
         <FORM kindOf="original">ranam-en=ho.</FORM>
-        <PHON kindOf="original">ranamənħ[o|u]</PHON>
+        <PHON kindOf="original">ranamənħo</PHON>
         <FORM kindOf="standard">ranamenho.</FORM>
         <PHON kindOf="standard">ranamənħ[o|u]</PHON>
         <TRANSL xml:lang="eng">Eat the same thing for the breakfast again!</TRANSL>
         <W id="S_amis_012_W01">
             <FORM kindOf="original">ranam-en=ho</FORM>
-            <PHON kindOf="original">ranamənħ[o|u]</PHON>
+            <PHON kindOf="original">ranamənħo</PHON>
             <FORM kindOf="standard">ranam-en=ho</FORM>
             <PHON kindOf="standard">ranamənħ[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">breakfast-PV=IPFV</TRANSL>
@@ -828,7 +829,7 @@
             </M>
             <M id="S_amis_012_W01_M03">
                 <FORM kindOf="original">=ho</FORM>
-                <PHON kindOf="original">ħ[o|u]</PHON>
+                <PHON kindOf="original">ħo</PHON>
                 <FORM kindOf="standard">=ho</FORM>
                 <PHON kindOf="standard">ħ[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">IPFV</TRANSL>
@@ -837,13 +838,13 @@
     </S>
     <S id="S_amis_013" source="example 15b (printed p. 261; PDF page 9)">
         <FORM kindOf="original">mi-nanum=ho ci panay t-u sayta.</FORM>
-        <PHON kindOf="original">minan[o|u]mħ[o|u] ʦi panaj t[o|u] sajta</PHON>
+        <PHON kindOf="original">minanumħo ʦi panaj tu sajta</PHON>
         <FORM kindOf="standard">minanomho ci panay to sayta.</FORM>
         <PHON kindOf="standard">minan[o|u]mħ[o|u] ʦi panaj t[o|u] sajta</PHON>
         <TRANSL xml:lang="eng">Panay is still drinking soda.</TRANSL>
         <W id="S_amis_013_W01">
             <FORM kindOf="original">mi-nanum=ho</FORM>
-            <PHON kindOf="original">minan[o|u]mħ[o|u]</PHON>
+            <PHON kindOf="original">minanumħo</PHON>
             <FORM kindOf="standard">mi-nanom=ho</FORM>
             <PHON kindOf="standard">minan[o|u]mħ[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-water=IPFV</TRANSL>
@@ -856,14 +857,14 @@
             </M>
             <M id="S_amis_013_W01_M02">
                 <FORM kindOf="original">nanum</FORM>
-                <PHON kindOf="original">nan[o|u]m</PHON>
+                <PHON kindOf="original">nanum</PHON>
                 <FORM kindOf="standard">nanom</FORM>
                 <PHON kindOf="standard">nan[o|u]m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
             </M>
             <M id="S_amis_013_W01_M03">
                 <FORM kindOf="original">=ho</FORM>
-                <PHON kindOf="original">ħ[o|u]</PHON>
+                <PHON kindOf="original">ħo</PHON>
                 <FORM kindOf="standard">=ho</FORM>
                 <PHON kindOf="standard">ħ[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">IPFV</TRANSL>
@@ -899,7 +900,7 @@
         </W>
         <W id="S_amis_013_W04">
             <FORM kindOf="original">t-u</FORM>
-            <PHON kindOf="original">t[o|u]</PHON>
+            <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">t-o</FORM>
             <PHON kindOf="standard">t[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">OBL-CN</TRANSL>
@@ -912,7 +913,7 @@
             </M>
             <M id="S_amis_013_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -934,17 +935,17 @@
         </W>
     </S>
     <S id="S_amis_014" source="example 19a (printed p. 262; PDF page 10)">
-        <FORM kindOf="original">ka-kuma'en-an ni ofad t-u 'epah k-u luma aku.</FORM>
-        <PHON kindOf="original">kak[o|u]maʔənan ni [o|u]fa[ɬ|ɮ] t[o|u] ʔəpaħ k[o|u] ɾ[o|u]ma ak[o|u]</PHON>
-        <FORM kindOf="standard">kakoma^enan ni ofad to ^epah ko loma ako.</FORM>
-        <PHON kindOf="standard">kak[o|u]maʔənan ni [o|u]fa[ɬ|ɮ] t[o|u] ʔəpaħ k[o|u] ɾ[o|u]ma ak[o|u]</PHON>
+        <FORM kindOf="original">ka-k‹um›a'en-an ni ofad t-u 'epah k-u luma aku.</FORM>
+        <PHON kindOf="original">kakumaʡənan ni ofaɬ tu ʡəpaħ ku ɾuma aku</PHON>
+        <FORM kindOf="standard">kakoma'enan ni ofad to 'epah ko loma ako.</FORM>
+        <PHON kindOf="standard">kak[o|u]maʡənan ni [o|u]fa[ɬ|ɮ] t[o|u] ʡəpaħ k[o|u] ɾ[o|u]ma ak[o|u]</PHON>
         <TRANSL xml:lang="eng">Ofad drinks (wine) at my place.</TRANSL>
         <TRANSL xml:lang="eng" ver="alt">My place is where Ofad drinks (wine).</TRANSL>
         <W id="S_amis_014_W01">
             <FORM kindOf="original">ka-k&lt;um&gt;a'en-an</FORM>
-            <PHON kindOf="original">kak[o|u]maʔənan</PHON>
-            <FORM kindOf="standard">ka-k&lt;om&gt;a^en-an</FORM>
-            <PHON kindOf="standard">kak[o|u]maʔənan</PHON>
+            <PHON kindOf="original">kakumaʡənan</PHON>
+            <FORM kindOf="standard">ka-k&lt;om&gt;a'en-an</FORM>
+            <PHON kindOf="standard">kak[o|u]maʡənan</PHON>
             <TRANSL kindOf="original" xml:lang="eng">KA-&lt;UM&gt;eat-LA</TRANSL>
             <M id="S_amis_014_W01_M01">
                 <FORM kindOf="original">ka</FORM>
@@ -955,14 +956,14 @@
             </M>
             <M id="S_amis_014_W01_M02">
                 <FORM kindOf="original">k-a'en</FORM>
-                <PHON kindOf="original">kaʔən</PHON>
-                <FORM kindOf="standard">k-a^en</FORM>
-                <PHON kindOf="standard">kaʔən</PHON>
+                <PHON kindOf="original">kaʡən</PHON>
+                <FORM kindOf="standard">k-a'en</FORM>
+                <PHON kindOf="standard">kaʡən</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">eat</TRANSL>
             </M>
             <M id="S_amis_014_W01_M03">
                 <FORM kindOf="original">-um-</FORM>
-                <PHON kindOf="original">[o|u]m</PHON>
+                <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-om-</FORM>
                 <PHON kindOf="standard">[o|u]m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">UM</TRANSL>
@@ -991,13 +992,13 @@
         </W>
         <W id="S_amis_014_W03">
             <FORM kindOf="original">ofad</FORM>
-            <PHON kindOf="original">[o|u]fa[ɬ|ɮ]</PHON>
+            <PHON kindOf="original">ofaɬ</PHON>
             <FORM kindOf="standard">ofad</FORM>
             <PHON kindOf="standard">[o|u]fa[ɬ|ɮ]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
             <M id="S_amis_014_W03_M01">
                 <FORM kindOf="original">ofad</FORM>
-                <PHON kindOf="original">[o|u]fa[ɬ|ɮ]</PHON>
+                <PHON kindOf="original">ofaɬ</PHON>
                 <FORM kindOf="standard">ofad</FORM>
                 <PHON kindOf="standard">[o|u]fa[ɬ|ɮ]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
@@ -1005,7 +1006,7 @@
         </W>
         <W id="S_amis_014_W04">
             <FORM kindOf="original">t-u</FORM>
-            <PHON kindOf="original">t[o|u]</PHON>
+            <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">t-o</FORM>
             <PHON kindOf="standard">t[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">OBL-CN</TRANSL>
@@ -1018,7 +1019,7 @@
             </M>
             <M id="S_amis_014_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -1026,21 +1027,21 @@
         </W>
         <W id="S_amis_014_W05">
             <FORM kindOf="original">'epah</FORM>
-            <PHON kindOf="original">ʔəpaħ</PHON>
-            <FORM kindOf="standard">^epah</FORM>
-            <PHON kindOf="standard">ʔəpaħ</PHON>
+            <PHON kindOf="original">ʡəpaħ</PHON>
+            <FORM kindOf="standard">'epah</FORM>
+            <PHON kindOf="standard">ʡəpaħ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">wine</TRANSL>
             <M id="S_amis_014_W05_M01">
                 <FORM kindOf="original">'epah</FORM>
-                <PHON kindOf="original">ʔəpaħ</PHON>
-                <FORM kindOf="standard">^epah</FORM>
-                <PHON kindOf="standard">ʔəpaħ</PHON>
+                <PHON kindOf="original">ʡəpaħ</PHON>
+                <FORM kindOf="standard">'epah</FORM>
+                <PHON kindOf="standard">ʡəpaħ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">wine</TRANSL>
             </M>
         </W>
         <W id="S_amis_014_W06">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -1053,7 +1054,7 @@
             </M>
             <M id="S_amis_014_W06_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -1061,13 +1062,13 @@
         </W>
         <W id="S_amis_014_W07">
             <FORM kindOf="original">luma</FORM>
-            <PHON kindOf="original">ɾ[o|u]ma</PHON>
+            <PHON kindOf="original">ɾuma</PHON>
             <FORM kindOf="standard">loma</FORM>
             <PHON kindOf="standard">ɾ[o|u]ma</PHON>
             <TRANSL kindOf="original" xml:lang="eng">house</TRANSL>
             <M id="S_amis_014_W07_M01">
                 <FORM kindOf="original">luma</FORM>
-                <PHON kindOf="original">ɾ[o|u]ma</PHON>
+                <PHON kindOf="original">ɾuma</PHON>
                 <FORM kindOf="standard">loma</FORM>
                 <PHON kindOf="standard">ɾ[o|u]ma</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">house</TRANSL>
@@ -1075,13 +1076,13 @@
         </W>
         <W id="S_amis_014_W08">
             <FORM kindOf="original">aku</FORM>
-            <PHON kindOf="original">ak[o|u]</PHON>
+            <PHON kindOf="original">aku</PHON>
             <FORM kindOf="standard">ako</FORM>
             <PHON kindOf="standard">ak[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">1SG.GEN</TRANSL>
             <M id="S_amis_014_W08_M01">
                 <FORM kindOf="original">aku</FORM>
-                <PHON kindOf="original">ak[o|u]</PHON>
+                <PHON kindOf="original">aku</PHON>
                 <FORM kindOf="standard">ako</FORM>
                 <PHON kindOf="standard">ak[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.GEN</TRANSL>
@@ -1090,7 +1091,7 @@
     </S>
     <S id="S_amis_015" source="example 19b (printed p. 263; PDF page 11)">
         <FORM kindOf="original">mi-cikay-an ni ofad i pitilidan k-u cudad.</FORM>
-        <PHON kindOf="original">miʦikajan ni [o|u]fa[ɬ|ɮ] i pitiɾi[ɬ|ɮ]an k[o|u] ʦ[o|u][ɬ|ɮ]a[ɬ|ɮ]</PHON>
+        <PHON kindOf="original">miʦikajan ni ofaɬ i pitiɾiɬan ku ʦuɬaɬ</PHON>
         <FORM kindOf="standard">micikayan ni ofad i pitilidan ko codad.</FORM>
         <PHON kindOf="standard">miʦikajan ni [o|u]fa[ɬ|ɮ] i pitiɾi[ɬ|ɮ]an k[o|u] ʦ[o|u][ɬ|ɮ]a[ɬ|ɮ]</PHON>
         <TRANSL xml:lang="eng">Ofad runs to school to get the book.</TRANSL>
@@ -1140,13 +1141,13 @@
         </W>
         <W id="S_amis_015_W03">
             <FORM kindOf="original">ofad</FORM>
-            <PHON kindOf="original">[o|u]fa[ɬ|ɮ]</PHON>
+            <PHON kindOf="original">ofaɬ</PHON>
             <FORM kindOf="standard">ofad</FORM>
             <PHON kindOf="standard">[o|u]fa[ɬ|ɮ]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
             <M id="S_amis_015_W03_M01">
                 <FORM kindOf="original">ofad</FORM>
-                <PHON kindOf="original">[o|u]fa[ɬ|ɮ]</PHON>
+                <PHON kindOf="original">ofaɬ</PHON>
                 <FORM kindOf="standard">ofad</FORM>
                 <PHON kindOf="standard">[o|u]fa[ɬ|ɮ]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
@@ -1168,13 +1169,13 @@
         </W>
         <W id="S_amis_015_W05">
             <FORM kindOf="original">pitilidan</FORM>
-            <PHON kindOf="original">pitiɾi[ɬ|ɮ]an</PHON>
+            <PHON kindOf="original">pitiɾiɬan</PHON>
             <FORM kindOf="standard">pitilidan</FORM>
             <PHON kindOf="standard">pitiɾi[ɬ|ɮ]an</PHON>
             <TRANSL kindOf="original" xml:lang="eng">school</TRANSL>
             <M id="S_amis_015_W05_M01">
                 <FORM kindOf="original">pitilidan</FORM>
-                <PHON kindOf="original">pitiɾi[ɬ|ɮ]an</PHON>
+                <PHON kindOf="original">pitiɾiɬan</PHON>
                 <FORM kindOf="standard">pitilidan</FORM>
                 <PHON kindOf="standard">pitiɾi[ɬ|ɮ]an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">school</TRANSL>
@@ -1182,7 +1183,7 @@
         </W>
         <W id="S_amis_015_W06">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -1195,7 +1196,7 @@
             </M>
             <M id="S_amis_015_W06_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -1203,13 +1204,13 @@
         </W>
         <W id="S_amis_015_W07">
             <FORM kindOf="original">cudad</FORM>
-            <PHON kindOf="original">ʦ[o|u][ɬ|ɮ]a[ɬ|ɮ]</PHON>
+            <PHON kindOf="original">ʦuɬaɬ</PHON>
             <FORM kindOf="standard">codad</FORM>
             <PHON kindOf="standard">ʦ[o|u][ɬ|ɮ]a[ɬ|ɮ]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
             <M id="S_amis_015_W07_M01">
                 <FORM kindOf="original">cudad</FORM>
-                <PHON kindOf="original">ʦ[o|u][ɬ|ɮ]a[ɬ|ɮ]</PHON>
+                <PHON kindOf="original">ʦuɬaɬ</PHON>
                 <FORM kindOf="standard">codad</FORM>
                 <PHON kindOf="standard">ʦ[o|u][ɬ|ɮ]a[ɬ|ɮ]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
@@ -1217,17 +1218,17 @@
         </W>
     </S>
     <S id="S_amis_016" source="example 19c (printed p. 263; PDF page 11)">
-        <FORM kindOf="original">sa-ka-kuma'en ni ofad t-u futing k-u alapit.</FORM>
-        <PHON kindOf="original">sakak[o|u]maʔən ni [o|u]fa[ɬ|ɮ] t[o|u] f[o|u]tiŋ k[o|u] aɾapit</PHON>
-        <FORM kindOf="standard">sakakoma^en ni ofad to foting ko alapit.</FORM>
-        <PHON kindOf="standard">sakak[o|u]maʔən ni [o|u]fa[ɬ|ɮ] t[o|u] f[o|u]tiŋ k[o|u] aɾapit</PHON>
+        <FORM kindOf="original">sa-ka-k‹um›a'en ni ofad t-u futing k-u alapit.</FORM>
+        <PHON kindOf="original">sakakumaʡən ni ofaɬ tu futiŋ ku aɾapit</PHON>
+        <FORM kindOf="standard">sakakoma'en ni ofad to foting ko alapit.</FORM>
+        <PHON kindOf="standard">sakak[o|u]maʡən ni [o|u]fa[ɬ|ɮ] t[o|u] f[o|u]tiŋ k[o|u] aɾapit</PHON>
         <TRANSL xml:lang="eng">Ofad eats fish with the chopsticks.</TRANSL>
         <TRANSL xml:lang="eng" ver="alt">The chopsticks are what Ofad uses to eat fish.</TRANSL>
         <W id="S_amis_016_W01">
             <FORM kindOf="original">sa-ka-k&lt;um&gt;a'en</FORM>
-            <PHON kindOf="original">sakak[o|u]maʔən</PHON>
-            <FORM kindOf="standard">sa-ka-k&lt;om&gt;a^en</FORM>
-            <PHON kindOf="standard">sakak[o|u]maʔən</PHON>
+            <PHON kindOf="original">sakakumaʡən</PHON>
+            <FORM kindOf="standard">sa-ka-k&lt;om&gt;a'en</FORM>
+            <PHON kindOf="standard">sakak[o|u]maʡən</PHON>
             <TRANSL kindOf="original" xml:lang="eng">IA-KA-&lt;UM&gt;eat</TRANSL>
             <M id="S_amis_016_W01_M01">
                 <FORM kindOf="original">sa</FORM>
@@ -1245,14 +1246,14 @@
             </M>
             <M id="S_amis_016_W01_M03">
                 <FORM kindOf="original">k-a'en</FORM>
-                <PHON kindOf="original">kaʔən</PHON>
-                <FORM kindOf="standard">k-a^en</FORM>
-                <PHON kindOf="standard">kaʔən</PHON>
+                <PHON kindOf="original">kaʡən</PHON>
+                <FORM kindOf="standard">k-a'en</FORM>
+                <PHON kindOf="standard">kaʡən</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">eat</TRANSL>
             </M>
             <M id="S_amis_016_W01_M04">
                 <FORM kindOf="original">-um-</FORM>
-                <PHON kindOf="original">[o|u]m</PHON>
+                <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-om-</FORM>
                 <PHON kindOf="standard">[o|u]m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">UM</TRANSL>
@@ -1274,13 +1275,13 @@
         </W>
         <W id="S_amis_016_W03">
             <FORM kindOf="original">ofad</FORM>
-            <PHON kindOf="original">[o|u]fa[ɬ|ɮ]</PHON>
+            <PHON kindOf="original">ofaɬ</PHON>
             <FORM kindOf="standard">ofad</FORM>
             <PHON kindOf="standard">[o|u]fa[ɬ|ɮ]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
             <M id="S_amis_016_W03_M01">
                 <FORM kindOf="original">ofad</FORM>
-                <PHON kindOf="original">[o|u]fa[ɬ|ɮ]</PHON>
+                <PHON kindOf="original">ofaɬ</PHON>
                 <FORM kindOf="standard">ofad</FORM>
                 <PHON kindOf="standard">[o|u]fa[ɬ|ɮ]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
@@ -1288,7 +1289,7 @@
         </W>
         <W id="S_amis_016_W04">
             <FORM kindOf="original">t-u</FORM>
-            <PHON kindOf="original">t[o|u]</PHON>
+            <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">t-o</FORM>
             <PHON kindOf="standard">t[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">OBL-CN</TRANSL>
@@ -1301,7 +1302,7 @@
             </M>
             <M id="S_amis_016_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -1309,13 +1310,13 @@
         </W>
         <W id="S_amis_016_W05">
             <FORM kindOf="original">futing</FORM>
-            <PHON kindOf="original">f[o|u]tiŋ</PHON>
+            <PHON kindOf="original">futiŋ</PHON>
             <FORM kindOf="standard">foting</FORM>
             <PHON kindOf="standard">f[o|u]tiŋ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">fish</TRANSL>
             <M id="S_amis_016_W05_M01">
                 <FORM kindOf="original">futing</FORM>
-                <PHON kindOf="original">f[o|u]tiŋ</PHON>
+                <PHON kindOf="original">futiŋ</PHON>
                 <FORM kindOf="standard">foting</FORM>
                 <PHON kindOf="standard">f[o|u]tiŋ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">fish</TRANSL>
@@ -1323,7 +1324,7 @@
         </W>
         <W id="S_amis_016_W06">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -1336,7 +1337,7 @@
             </M>
             <M id="S_amis_016_W06_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -1359,7 +1360,7 @@
     </S>
     <S id="S_amis_017" source="example 20 (printed p. 263; PDF page 11)">
         <FORM kindOf="original">ma-talaw ci lekal t-u maan?</FORM>
-        <PHON kindOf="original">mataɾaw ʦi ɾəkaɾ t[o|u] maan</PHON>
+        <PHON kindOf="original">mataɾaw ʦi ɾəkaɾ tu maan</PHON>
         <FORM kindOf="standard">matalaw ci lekal to maan?</FORM>
         <PHON kindOf="standard">mataɾaw ʦi ɾəkaɾ t[o|u] maan</PHON>
         <TRANSL xml:lang="eng">What is Lekal afraid of?</TRANSL>
@@ -1414,7 +1415,7 @@
         </W>
         <W id="S_amis_017_W04">
             <FORM kindOf="original">t-u</FORM>
-            <PHON kindOf="original">t[o|u]</PHON>
+            <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">t-o</FORM>
             <PHON kindOf="standard">t[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">OBL-CN</TRANSL>
@@ -1427,7 +1428,7 @@
             </M>
             <M id="S_amis_017_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -1450,7 +1451,7 @@
     </S>
     <S id="S_amis_018" source="example 25b (printed p. 266; PDF page 14)">
         <FORM kindOf="original">na maan-en ni panay mi-padang kisu?</FORM>
-        <PHON kindOf="original">na maanən ni panaj mipa[ɬ|ɮ]aŋ kis[o|u]</PHON>
+        <PHON kindOf="original">na maanən ni panaj mipaɬaŋ kisu</PHON>
         <FORM kindOf="standard">na maanen ni panay mipadang kiso?</FORM>
         <PHON kindOf="standard">na maanən ni panaj mipa[ɬ|ɮ]aŋ kis[o|u]</PHON>
         <TRANSL xml:lang="eng">How did Panay help you?</TRANSL>
@@ -1519,7 +1520,7 @@
         </W>
         <W id="S_amis_018_W05">
             <FORM kindOf="original">mi-padang</FORM>
-            <PHON kindOf="original">mipa[ɬ|ɮ]aŋ</PHON>
+            <PHON kindOf="original">mipaɬaŋ</PHON>
             <FORM kindOf="standard">mi-padang</FORM>
             <PHON kindOf="standard">mipa[ɬ|ɮ]aŋ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-help</TRANSL>
@@ -1532,7 +1533,7 @@
             </M>
             <M id="S_amis_018_W05_M02">
                 <FORM kindOf="original">padang</FORM>
-                <PHON kindOf="original">pa[ɬ|ɮ]aŋ</PHON>
+                <PHON kindOf="original">paɬaŋ</PHON>
                 <FORM kindOf="standard">padang</FORM>
                 <PHON kindOf="standard">pa[ɬ|ɮ]aŋ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">help</TRANSL>
@@ -1540,13 +1541,13 @@
         </W>
         <W id="S_amis_018_W06">
             <FORM kindOf="original">kisu</FORM>
-            <PHON kindOf="original">kis[o|u]</PHON>
+            <PHON kindOf="original">kisu</PHON>
             <FORM kindOf="standard">kiso</FORM>
             <PHON kindOf="standard">kis[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">2SG.ABS</TRANSL>
             <M id="S_amis_018_W06_M01">
                 <FORM kindOf="original">kisu</FORM>
-                <PHON kindOf="original">kis[o|u]</PHON>
+                <PHON kindOf="original">kisu</PHON>
                 <FORM kindOf="standard">kiso</FORM>
                 <PHON kindOf="standard">kis[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ABS</TRANSL>
@@ -1554,27 +1555,27 @@
         </W>
     </S>
     <S id="S_amis_019" source="example 30a (printed p. 268; PDF page 16)">
-        <FORM kindOf="original">kuma'en kisu t-u hemay icuwa?</FORM>
-        <PHON kindOf="original">k[o|u]maʔən kis[o|u] t[o|u] ħəmaj iʦ[o|u]wa</PHON>
-        <FORM kindOf="standard">koma^en kiso to hemay icowa?</FORM>
-        <PHON kindOf="standard">k[o|u]maʔən kis[o|u] t[o|u] ħəmaj iʦ[o|u]wa</PHON>
+        <FORM kindOf="original">k‹um›a'en kisu t-u hemay icuwa?</FORM>
+        <PHON kindOf="original">kumaʡən kisu tu ħəmaj iʦuwa</PHON>
+        <FORM kindOf="standard">koma'en kiso to hemay icowa?</FORM>
+        <PHON kindOf="standard">k[o|u]maʡən kis[o|u] t[o|u] ħəmaj iʦ[o|u]wa</PHON>
         <TRANSL xml:lang="eng">Where do you eat?</TRANSL>
         <W id="S_amis_019_W01">
             <FORM kindOf="original">k&lt;um&gt;a'en</FORM>
-            <PHON kindOf="original">k[o|u]maʔən</PHON>
-            <FORM kindOf="standard">k&lt;om&gt;a^en</FORM>
-            <PHON kindOf="standard">k[o|u]maʔən</PHON>
+            <PHON kindOf="original">kumaʡən</PHON>
+            <FORM kindOf="standard">k&lt;om&gt;a'en</FORM>
+            <PHON kindOf="standard">k[o|u]maʡən</PHON>
             <TRANSL kindOf="original" xml:lang="eng">&lt;AV&gt;eat</TRANSL>
             <M id="S_amis_019_W01_M01">
                 <FORM kindOf="original">k-a'en</FORM>
-                <PHON kindOf="original">kaʔən</PHON>
-                <FORM kindOf="standard">k-a^en</FORM>
-                <PHON kindOf="standard">kaʔən</PHON>
+                <PHON kindOf="original">kaʡən</PHON>
+                <FORM kindOf="standard">k-a'en</FORM>
+                <PHON kindOf="standard">kaʡən</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">eat</TRANSL>
             </M>
             <M id="S_amis_019_W01_M02">
                 <FORM kindOf="original">-um-</FORM>
-                <PHON kindOf="original">[o|u]m</PHON>
+                <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-om-</FORM>
                 <PHON kindOf="standard">[o|u]m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">AV</TRANSL>
@@ -1582,13 +1583,13 @@
         </W>
         <W id="S_amis_019_W02">
             <FORM kindOf="original">kisu</FORM>
-            <PHON kindOf="original">kis[o|u]</PHON>
+            <PHON kindOf="original">kisu</PHON>
             <FORM kindOf="standard">kiso</FORM>
             <PHON kindOf="standard">kis[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">2SG.ABS</TRANSL>
             <M id="S_amis_019_W02_M01">
                 <FORM kindOf="original">kisu</FORM>
-                <PHON kindOf="original">kis[o|u]</PHON>
+                <PHON kindOf="original">kisu</PHON>
                 <FORM kindOf="standard">kiso</FORM>
                 <PHON kindOf="standard">kis[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ABS</TRANSL>
@@ -1596,7 +1597,7 @@
         </W>
         <W id="S_amis_019_W03">
             <FORM kindOf="original">t-u</FORM>
-            <PHON kindOf="original">t[o|u]</PHON>
+            <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">t-o</FORM>
             <PHON kindOf="standard">t[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">OBL-CN</TRANSL>
@@ -1609,7 +1610,7 @@
             </M>
             <M id="S_amis_019_W03_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -1631,13 +1632,13 @@
         </W>
         <W id="S_amis_019_W05">
             <FORM kindOf="original">icuwa</FORM>
-            <PHON kindOf="original">iʦ[o|u]wa</PHON>
+            <PHON kindOf="original">iʦuwa</PHON>
             <FORM kindOf="standard">icowa</FORM>
             <PHON kindOf="standard">iʦ[o|u]wa</PHON>
             <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
             <M id="S_amis_019_W05_M01">
                 <FORM kindOf="original">icuwa</FORM>
-                <PHON kindOf="original">iʦ[o|u]wa</PHON>
+                <PHON kindOf="original">iʦuwa</PHON>
                 <FORM kindOf="standard">icowa</FORM>
                 <PHON kindOf="standard">iʦ[o|u]wa</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
@@ -1645,20 +1646,20 @@
         </W>
     </S>
     <S id="S_amis_020" source="example 30b (printed p. 268; PDF page 16)">
-        <FORM kindOf="original">icuwa kuma'en kisu t-u hemay?</FORM>
-        <PHON kindOf="original">iʦ[o|u]wa k[o|u]maʔən kis[o|u] t[o|u] ħəmaj</PHON>
-        <FORM kindOf="standard">icowa koma^en kiso to hemay?</FORM>
-        <PHON kindOf="standard">iʦ[o|u]wa k[o|u]maʔən kis[o|u] t[o|u] ħəmaj</PHON>
+        <FORM kindOf="original">icuwa k‹um›a'en kisu t-u hemay?</FORM>
+        <PHON kindOf="original">iʦuwa kumaʡən kisu tu ħəmaj</PHON>
+        <FORM kindOf="standard">icowa koma'en kiso to hemay?</FORM>
+        <PHON kindOf="standard">iʦ[o|u]wa k[o|u]maʡən kis[o|u] t[o|u] ħəmaj</PHON>
         <TRANSL xml:lang="eng">Where do you eat?</TRANSL>
         <W id="S_amis_020_W01">
             <FORM kindOf="original">icuwa</FORM>
-            <PHON kindOf="original">iʦ[o|u]wa</PHON>
+            <PHON kindOf="original">iʦuwa</PHON>
             <FORM kindOf="standard">icowa</FORM>
             <PHON kindOf="standard">iʦ[o|u]wa</PHON>
             <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
             <M id="S_amis_020_W01_M01">
                 <FORM kindOf="original">icuwa</FORM>
-                <PHON kindOf="original">iʦ[o|u]wa</PHON>
+                <PHON kindOf="original">iʦuwa</PHON>
                 <FORM kindOf="standard">icowa</FORM>
                 <PHON kindOf="standard">iʦ[o|u]wa</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
@@ -1666,20 +1667,20 @@
         </W>
         <W id="S_amis_020_W02">
             <FORM kindOf="original">k&lt;um&gt;a'en</FORM>
-            <PHON kindOf="original">k[o|u]maʔən</PHON>
-            <FORM kindOf="standard">k&lt;om&gt;a^en</FORM>
-            <PHON kindOf="standard">k[o|u]maʔən</PHON>
+            <PHON kindOf="original">kumaʡən</PHON>
+            <FORM kindOf="standard">k&lt;om&gt;a'en</FORM>
+            <PHON kindOf="standard">k[o|u]maʡən</PHON>
             <TRANSL kindOf="original" xml:lang="eng">&lt;AV&gt;eat</TRANSL>
             <M id="S_amis_020_W02_M01">
                 <FORM kindOf="original">k-a'en</FORM>
-                <PHON kindOf="original">kaʔən</PHON>
-                <FORM kindOf="standard">k-a^en</FORM>
-                <PHON kindOf="standard">kaʔən</PHON>
+                <PHON kindOf="original">kaʡən</PHON>
+                <FORM kindOf="standard">k-a'en</FORM>
+                <PHON kindOf="standard">kaʡən</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">eat</TRANSL>
             </M>
             <M id="S_amis_020_W02_M02">
                 <FORM kindOf="original">-um-</FORM>
-                <PHON kindOf="original">[o|u]m</PHON>
+                <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-om-</FORM>
                 <PHON kindOf="standard">[o|u]m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">AV</TRANSL>
@@ -1687,13 +1688,13 @@
         </W>
         <W id="S_amis_020_W03">
             <FORM kindOf="original">kisu</FORM>
-            <PHON kindOf="original">kis[o|u]</PHON>
+            <PHON kindOf="original">kisu</PHON>
             <FORM kindOf="standard">kiso</FORM>
             <PHON kindOf="standard">kis[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">2SG.ABS</TRANSL>
             <M id="S_amis_020_W03_M01">
                 <FORM kindOf="original">kisu</FORM>
-                <PHON kindOf="original">kis[o|u]</PHON>
+                <PHON kindOf="original">kisu</PHON>
                 <FORM kindOf="standard">kiso</FORM>
                 <PHON kindOf="standard">kis[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ABS</TRANSL>
@@ -1701,7 +1702,7 @@
         </W>
         <W id="S_amis_020_W04">
             <FORM kindOf="original">t-u</FORM>
-            <PHON kindOf="original">t[o|u]</PHON>
+            <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">t-o</FORM>
             <PHON kindOf="standard">t[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">OBL-CN</TRANSL>
@@ -1714,7 +1715,7 @@
             </M>
             <M id="S_amis_020_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -1737,19 +1738,19 @@
     </S>
     <S id="S_amis_021" source="example 38 (printed p. 271; PDF page 19)">
         <FORM kindOf="original">icuwa-en isu mi-na'ang k-u riku'?</FORM>
-        <PHON kindOf="original">iʦ[o|u]waən is[o|u] minaʔaŋ k[o|u] rik[o|u]ʔ</PHON>
-        <FORM kindOf="standard">icowaen iso mina^ang ko riko^?</FORM>
-        <PHON kindOf="standard">iʦ[o|u]waən is[o|u] minaʔaŋ k[o|u] rik[o|u]ʔ</PHON>
+        <PHON kindOf="original">iʦuwaən isu minaʡaŋ ku rikuʡ</PHON>
+        <FORM kindOf="standard">icowaen iso mina'ang ko riko'?</FORM>
+        <PHON kindOf="standard">iʦ[o|u]waən is[o|u] minaʡaŋ k[o|u] rik[o|u]ʡ</PHON>
         <TRANSL xml:lang="eng">Where do you pack the clothes?</TRANSL>
         <W id="S_amis_021_W01">
             <FORM kindOf="original">icuwa-en</FORM>
-            <PHON kindOf="original">iʦ[o|u]waən</PHON>
+            <PHON kindOf="original">iʦuwaən</PHON>
             <FORM kindOf="standard">icowa-en</FORM>
             <PHON kindOf="standard">iʦ[o|u]waən</PHON>
             <TRANSL kindOf="original" xml:lang="eng">where-PV</TRANSL>
             <M id="S_amis_021_W01_M01">
                 <FORM kindOf="original">icuwa</FORM>
-                <PHON kindOf="original">iʦ[o|u]wa</PHON>
+                <PHON kindOf="original">iʦuwa</PHON>
                 <FORM kindOf="standard">icowa</FORM>
                 <PHON kindOf="standard">iʦ[o|u]wa</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
@@ -1764,13 +1765,13 @@
         </W>
         <W id="S_amis_021_W02">
             <FORM kindOf="original">isu</FORM>
-            <PHON kindOf="original">is[o|u]</PHON>
+            <PHON kindOf="original">isu</PHON>
             <FORM kindOf="standard">iso</FORM>
             <PHON kindOf="standard">is[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
             <M id="S_amis_021_W02_M01">
                 <FORM kindOf="original">isu</FORM>
-                <PHON kindOf="original">is[o|u]</PHON>
+                <PHON kindOf="original">isu</PHON>
                 <FORM kindOf="standard">iso</FORM>
                 <PHON kindOf="standard">is[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
@@ -1778,9 +1779,9 @@
         </W>
         <W id="S_amis_021_W03">
             <FORM kindOf="original">mi-na'ang</FORM>
-            <PHON kindOf="original">minaʔaŋ</PHON>
-            <FORM kindOf="standard">mi-na^ang</FORM>
-            <PHON kindOf="standard">minaʔaŋ</PHON>
+            <PHON kindOf="original">minaʡaŋ</PHON>
+            <FORM kindOf="standard">mi-na'ang</FORM>
+            <PHON kindOf="standard">minaʡaŋ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-pack</TRANSL>
             <M id="S_amis_021_W03_M01">
                 <FORM kindOf="original">mi</FORM>
@@ -1791,15 +1792,15 @@
             </M>
             <M id="S_amis_021_W03_M02">
                 <FORM kindOf="original">na'ang</FORM>
-                <PHON kindOf="original">naʔaŋ</PHON>
-                <FORM kindOf="standard">na^ang</FORM>
-                <PHON kindOf="standard">naʔaŋ</PHON>
+                <PHON kindOf="original">naʡaŋ</PHON>
+                <FORM kindOf="standard">na'ang</FORM>
+                <PHON kindOf="standard">naʡaŋ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">pack</TRANSL>
             </M>
         </W>
         <W id="S_amis_021_W04">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -1812,7 +1813,7 @@
             </M>
             <M id="S_amis_021_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -1820,22 +1821,22 @@
         </W>
         <W id="S_amis_021_W05">
             <FORM kindOf="original">riku'</FORM>
-            <PHON kindOf="original">rik[o|u]ʔ</PHON>
-            <FORM kindOf="standard">riko^</FORM>
-            <PHON kindOf="standard">rik[o|u]ʔ</PHON>
+            <PHON kindOf="original">rikuʡ</PHON>
+            <FORM kindOf="standard">riko'</FORM>
+            <PHON kindOf="standard">rik[o|u]ʡ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">clothes</TRANSL>
             <M id="S_amis_021_W05_M01">
                 <FORM kindOf="original">riku'</FORM>
-                <PHON kindOf="original">rik[o|u]ʔ</PHON>
-                <FORM kindOf="standard">riko^</FORM>
-                <PHON kindOf="standard">rik[o|u]ʔ</PHON>
+                <PHON kindOf="original">rikuʡ</PHON>
+                <FORM kindOf="standard">riko'</FORM>
+                <PHON kindOf="standard">rik[o|u]ʡ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">clothes</TRANSL>
             </M>
         </W>
     </S>
     <S id="S_amis_022" source="example 42a (printed p. 273; PDF page 21)">
         <FORM kindOf="original">pina-en ni ofad k-u paysu?</FORM>
-        <PHON kindOf="original">pinaən ni [o|u]fa[ɬ|ɮ] k[o|u] pajs[o|u]</PHON>
+        <PHON kindOf="original">pinaən ni ofaɬ ku pajsu</PHON>
         <FORM kindOf="standard">pinaen ni ofad ko payso?</FORM>
         <PHON kindOf="standard">pinaən ni [o|u]fa[ɬ|ɮ] k[o|u] pajs[o|u]</PHON>
         <TRANSL xml:lang="eng">How much money does Ofad want?</TRANSL>
@@ -1877,13 +1878,13 @@
         </W>
         <W id="S_amis_022_W03">
             <FORM kindOf="original">ofad</FORM>
-            <PHON kindOf="original">[o|u]fa[ɬ|ɮ]</PHON>
+            <PHON kindOf="original">ofaɬ</PHON>
             <FORM kindOf="standard">ofad</FORM>
             <PHON kindOf="standard">[o|u]fa[ɬ|ɮ]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
             <M id="S_amis_022_W03_M01">
                 <FORM kindOf="original">ofad</FORM>
-                <PHON kindOf="original">[o|u]fa[ɬ|ɮ]</PHON>
+                <PHON kindOf="original">ofaɬ</PHON>
                 <FORM kindOf="standard">ofad</FORM>
                 <PHON kindOf="standard">[o|u]fa[ɬ|ɮ]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
@@ -1891,7 +1892,7 @@
         </W>
         <W id="S_amis_022_W04">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -1904,7 +1905,7 @@
             </M>
             <M id="S_amis_022_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -1912,13 +1913,13 @@
         </W>
         <W id="S_amis_022_W05">
             <FORM kindOf="original">paysu</FORM>
-            <PHON kindOf="original">pajs[o|u]</PHON>
+            <PHON kindOf="original">pajsu</PHON>
             <FORM kindOf="standard">payso</FORM>
             <PHON kindOf="standard">pajs[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">money</TRANSL>
             <M id="S_amis_022_W05_M01">
                 <FORM kindOf="original">paysu</FORM>
-                <PHON kindOf="original">pajs[o|u]</PHON>
+                <PHON kindOf="original">pajsu</PHON>
                 <FORM kindOf="standard">payso</FORM>
                 <PHON kindOf="standard">pajs[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">money</TRANSL>
@@ -1927,7 +1928,7 @@
     </S>
     <S id="S_amis_023" source="example 42b (printed p. 273; PDF page 21)">
         <FORM kindOf="original">pa-pina-en isu mi-lawup k-u wawa?</FORM>
-        <PHON kindOf="original">papinaən is[o|u] miɾaw[o|u]p k[o|u] wawa</PHON>
+        <PHON kindOf="original">papinaən isu miɾawup ku wawa</PHON>
         <FORM kindOf="standard">papinaen iso milawop ko wawa?</FORM>
         <PHON kindOf="standard">papinaən is[o|u] miɾaw[o|u]p k[o|u] wawa</PHON>
         <TRANSL xml:lang="eng">How many children will you chase?</TRANSL>
@@ -1961,13 +1962,13 @@
         </W>
         <W id="S_amis_023_W02">
             <FORM kindOf="original">isu</FORM>
-            <PHON kindOf="original">is[o|u]</PHON>
+            <PHON kindOf="original">isu</PHON>
             <FORM kindOf="standard">iso</FORM>
             <PHON kindOf="standard">is[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
             <M id="S_amis_023_W02_M01">
                 <FORM kindOf="original">isu</FORM>
-                <PHON kindOf="original">is[o|u]</PHON>
+                <PHON kindOf="original">isu</PHON>
                 <FORM kindOf="standard">iso</FORM>
                 <PHON kindOf="standard">is[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
@@ -1975,7 +1976,7 @@
         </W>
         <W id="S_amis_023_W03">
             <FORM kindOf="original">mi-lawup</FORM>
-            <PHON kindOf="original">miɾaw[o|u]p</PHON>
+            <PHON kindOf="original">miɾawup</PHON>
             <FORM kindOf="standard">mi-lawop</FORM>
             <PHON kindOf="standard">miɾaw[o|u]p</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-chase</TRANSL>
@@ -1988,7 +1989,7 @@
             </M>
             <M id="S_amis_023_W03_M02">
                 <FORM kindOf="original">lawup</FORM>
-                <PHON kindOf="original">ɾaw[o|u]p</PHON>
+                <PHON kindOf="original">ɾawup</PHON>
                 <FORM kindOf="standard">lawop</FORM>
                 <PHON kindOf="standard">ɾaw[o|u]p</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">chase</TRANSL>
@@ -1996,7 +1997,7 @@
         </W>
         <W id="S_amis_023_W04">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -2009,7 +2010,7 @@
             </M>
             <M id="S_amis_023_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -2032,7 +2033,7 @@
     </S>
     <S id="S_amis_024" source="example 44 (printed p. 273; PDF page 21)">
         <FORM kindOf="original">pina k-u mi-ala-an ni utay a payci?</FORM>
-        <PHON kindOf="original">pina k[o|u] miaɾaan ni [o|u]taj a pajʦi</PHON>
+        <PHON kindOf="original">pina ku miaɾaan ni utaj a pajʦi</PHON>
         <FORM kindOf="standard">pina ko mialaan ni otay a payci?</FORM>
         <PHON kindOf="standard">pina k[o|u] miaɾaan ni [o|u]taj a pajʦi</PHON>
         <TRANSL xml:lang="eng">How much money did Utay take?</TRANSL>
@@ -2053,7 +2054,7 @@
         </W>
         <W id="S_amis_024_W02">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -2066,7 +2067,7 @@
             </M>
             <M id="S_amis_024_W02_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -2116,13 +2117,13 @@
         </W>
         <W id="S_amis_024_W05">
             <FORM kindOf="original">utay</FORM>
-            <PHON kindOf="original">[o|u]taj</PHON>
+            <PHON kindOf="original">utaj</PHON>
             <FORM kindOf="standard">otay</FORM>
             <PHON kindOf="standard">[o|u]taj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
             <M id="S_amis_024_W05_M01">
                 <FORM kindOf="original">utay</FORM>
-                <PHON kindOf="original">[o|u]taj</PHON>
+                <PHON kindOf="original">utaj</PHON>
                 <FORM kindOf="standard">otay</FORM>
                 <PHON kindOf="standard">[o|u]taj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
@@ -2159,7 +2160,7 @@
     </S>
     <S id="S_amis_025" source="example 49a (printed p. 276; PDF page 24); Optional secondary verb pateli is expanded under POL-026.; optional material included under POL-026">
         <FORM kindOf="original">itini-en ni panay pateli k-u payci.</FORM>
-        <PHON kindOf="original">itiniən ni panaj patəɾi k[o|u] pajʦi</PHON>
+        <PHON kindOf="original">itiniən ni panaj patəɾi ku pajʦi</PHON>
         <FORM kindOf="standard">itinien ni panay pateli ko payci.</FORM>
         <PHON kindOf="standard">itiniən ni panaj patəɾi k[o|u] pajʦi</PHON>
         <TRANSL xml:lang="eng">Panay put the money here.</TRANSL>
@@ -2228,7 +2229,7 @@
         </W>
         <W id="S_amis_025_W05">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -2241,7 +2242,7 @@
             </M>
             <M id="S_amis_025_W05_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -2264,7 +2265,7 @@
     </S>
     <S id="S_amis_025-opt" source="example 49a (printed p. 276; PDF page 24); Optional secondary verb pateli is expanded under POL-026.; optional material omitted under POL-026">
         <FORM kindOf="original">itini-en ni panay k-u payci.</FORM>
-        <PHON kindOf="original">itiniən ni panaj k[o|u] pajʦi</PHON>
+        <PHON kindOf="original">itiniən ni panaj ku pajʦi</PHON>
         <FORM kindOf="standard">itinien ni panay ko payci.</FORM>
         <PHON kindOf="standard">itiniən ni panaj k[o|u] pajʦi</PHON>
         <TRANSL xml:lang="eng">Panay put the money here.</TRANSL>
@@ -2319,7 +2320,7 @@
         </W>
         <W id="S_amis_025-opt_W04">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -2332,7 +2333,7 @@
             </M>
             <M id="S_amis_025-opt_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -2355,7 +2356,7 @@
     </S>
     <S id="S_amis_026" source="example 49b (printed p. 276; PDF page 24); Optional secondary verb pateli is expanded under POL-026.; optional material included under POL-026">
         <FORM kindOf="original">itiraw-en ni panay pateli k-u payci.</FORM>
-        <PHON kindOf="original">itirawən ni panaj patəɾi k[o|u] pajʦi</PHON>
+        <PHON kindOf="original">itirawən ni panaj patəɾi ku pajʦi</PHON>
         <FORM kindOf="standard">itirawen ni panay pateli ko payci.</FORM>
         <PHON kindOf="standard">itirawən ni panaj patəɾi k[o|u] pajʦi</PHON>
         <TRANSL xml:lang="eng">Panay put the money there.</TRANSL>
@@ -2424,7 +2425,7 @@
         </W>
         <W id="S_amis_026_W05">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -2437,7 +2438,7 @@
             </M>
             <M id="S_amis_026_W05_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -2460,7 +2461,7 @@
     </S>
     <S id="S_amis_026-opt" source="example 49b (printed p. 276; PDF page 24); Optional secondary verb pateli is expanded under POL-026.; optional material omitted under POL-026">
         <FORM kindOf="original">itiraw-en ni panay k-u payci.</FORM>
-        <PHON kindOf="original">itirawən ni panaj k[o|u] pajʦi</PHON>
+        <PHON kindOf="original">itirawən ni panaj ku pajʦi</PHON>
         <FORM kindOf="standard">itirawen ni panay ko payci.</FORM>
         <PHON kindOf="standard">itirawən ni panaj k[o|u] pajʦi</PHON>
         <TRANSL xml:lang="eng">Panay put the money there.</TRANSL>
@@ -2515,7 +2516,7 @@
         </W>
         <W id="S_amis_026-opt_W04">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -2528,7 +2529,7 @@
             </M>
             <M id="S_amis_026-opt_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -2551,21 +2552,21 @@
     </S>
     <S id="S_amis_027" source="example 53 (printed p. 277; PDF page 25)">
         <FORM kindOf="original">ha'en-en k-u kamay.</FORM>
-        <PHON kindOf="original">ħaʔənən k[o|u] kamaj</PHON>
-        <FORM kindOf="standard">ha^enen ko kamay.</FORM>
-        <PHON kindOf="standard">ħaʔənən k[o|u] kamaj</PHON>
+        <PHON kindOf="original">ħaʡənən ku kamaj</PHON>
+        <FORM kindOf="standard">ha'enen ko kamay.</FORM>
+        <PHON kindOf="standard">ħaʡənən k[o|u] kamaj</PHON>
         <TRANSL xml:lang="eng">Make your hand like this!</TRANSL>
         <W id="S_amis_027_W01">
             <FORM kindOf="original">ha'en-en</FORM>
-            <PHON kindOf="original">ħaʔənən</PHON>
-            <FORM kindOf="standard">ha^en-en</FORM>
-            <PHON kindOf="standard">ħaʔənən</PHON>
+            <PHON kindOf="original">ħaʡənən</PHON>
+            <FORM kindOf="standard">ha'en-en</FORM>
+            <PHON kindOf="standard">ħaʡənən</PHON>
             <TRANSL kindOf="original" xml:lang="eng">this.way-PV</TRANSL>
             <M id="S_amis_027_W01_M01">
                 <FORM kindOf="original">ha'en</FORM>
-                <PHON kindOf="original">ħaʔən</PHON>
-                <FORM kindOf="standard">ha^en</FORM>
-                <PHON kindOf="standard">ħaʔən</PHON>
+                <PHON kindOf="original">ħaʡən</PHON>
+                <FORM kindOf="standard">ha'en</FORM>
+                <PHON kindOf="standard">ħaʡən</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">this.way</TRANSL>
             </M>
             <M id="S_amis_027_W01_M02">
@@ -2578,7 +2579,7 @@
         </W>
         <W id="S_amis_027_W02">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -2591,7 +2592,7 @@
             </M>
             <M id="S_amis_027_W02_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -2614,19 +2615,19 @@
     </S>
     <S id="S_amis_028" source="example 55a (printed p. 279; PDF page 27)">
         <FORM kindOf="original">ihakuwa ma-alaw isu ci panay?</FORM>
-        <PHON kindOf="original">iħak[o|u]wa maaɾaw is[o|u] ʦi panaj</PHON>
+        <PHON kindOf="original">iħakuwa maaɾaw isu ʦi panaj</PHON>
         <FORM kindOf="standard">ihakowa maalaw iso ci panay?</FORM>
         <PHON kindOf="standard">iħak[o|u]wa maaɾaw is[o|u] ʦi panaj</PHON>
         <TRANSL xml:lang="eng">When do you see Panay?</TRANSL>
         <W id="S_amis_028_W01">
             <FORM kindOf="original">ihakuwa</FORM>
-            <PHON kindOf="original">iħak[o|u]wa</PHON>
+            <PHON kindOf="original">iħakuwa</PHON>
             <FORM kindOf="standard">ihakowa</FORM>
             <PHON kindOf="standard">iħak[o|u]wa</PHON>
             <TRANSL kindOf="original" xml:lang="eng">when</TRANSL>
             <M id="S_amis_028_W01_M01">
                 <FORM kindOf="original">ihakuwa</FORM>
-                <PHON kindOf="original">iħak[o|u]wa</PHON>
+                <PHON kindOf="original">iħakuwa</PHON>
                 <FORM kindOf="standard">ihakowa</FORM>
                 <PHON kindOf="standard">iħak[o|u]wa</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">when</TRANSL>
@@ -2655,13 +2656,13 @@
         </W>
         <W id="S_amis_028_W03">
             <FORM kindOf="original">isu</FORM>
-            <PHON kindOf="original">is[o|u]</PHON>
+            <PHON kindOf="original">isu</PHON>
             <FORM kindOf="standard">iso</FORM>
             <PHON kindOf="standard">is[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
             <M id="S_amis_028_W03_M01">
                 <FORM kindOf="original">isu</FORM>
-                <PHON kindOf="original">is[o|u]</PHON>
+                <PHON kindOf="original">isu</PHON>
                 <FORM kindOf="standard">iso</FORM>
                 <PHON kindOf="standard">is[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
@@ -2698,7 +2699,7 @@
     </S>
     <S id="S_amis_029" source="example 55c (printed p. 279; PDF page 27)">
         <FORM kindOf="original">naw ma-ulah ci panay ci lekal-an?</FORM>
-        <PHON kindOf="original">naw ma[o|u]ɾaħ ʦi panaj ʦi ɾəkaɾan</PHON>
+        <PHON kindOf="original">naw mauɾaħ ʦi panaj ʦi ɾəkaɾan</PHON>
         <FORM kindOf="standard">naw maolah ci panay ci lekalan?</FORM>
         <PHON kindOf="standard">naw ma[o|u]ɾaħ ʦi panaj ʦi ɾəkaɾan</PHON>
         <TRANSL xml:lang="eng">Why does Panay like Lekal?</TRANSL>
@@ -2718,7 +2719,7 @@
         </W>
         <W id="S_amis_029_W02">
             <FORM kindOf="original">ma-ulah</FORM>
-            <PHON kindOf="original">ma[o|u]ɾaħ</PHON>
+            <PHON kindOf="original">mauɾaħ</PHON>
             <FORM kindOf="standard">ma-olah</FORM>
             <PHON kindOf="standard">ma[o|u]ɾaħ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-like</TRANSL>
@@ -2731,7 +2732,7 @@
             </M>
             <M id="S_amis_029_W02_M02">
                 <FORM kindOf="original">ulah</FORM>
-                <PHON kindOf="original">[o|u]ɾaħ</PHON>
+                <PHON kindOf="original">uɾaħ</PHON>
                 <FORM kindOf="standard">olah</FORM>
                 <PHON kindOf="standard">[o|u]ɾaħ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">like</TRANSL>
@@ -2802,8 +2803,8 @@
         </W>
     </S>
     <S id="S_amis_030" source="example 57b (printed p. 280; PDF page 28); optional material included under POL-026">
-        <FORM kindOf="original">cmikay k-u-ni a wawa.</FORM>
-        <PHON kindOf="original">ʦmikaj k[o|u]ni a wawa</PHON>
+        <FORM kindOf="original">c‹m›ikay k-u-ni a wawa.</FORM>
+        <PHON kindOf="original">ʦmikaj kuni a wawa</PHON>
         <FORM kindOf="standard">cmikay koni a wawa.</FORM>
         <PHON kindOf="standard">ʦmikaj k[o|u]ni a wawa</PHON>
         <TRANSL xml:lang="eng">This child is running.</TRANSL>
@@ -2830,7 +2831,7 @@
         </W>
         <W id="S_amis_030_W02">
             <FORM kindOf="original">k-u-ni</FORM>
-            <PHON kindOf="original">k[o|u]ni</PHON>
+            <PHON kindOf="original">kuni</PHON>
             <FORM kindOf="standard">k-o-ni</FORM>
             <PHON kindOf="standard">k[o|u]ni</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN-this</TRANSL>
@@ -2843,7 +2844,7 @@
             </M>
             <M id="S_amis_030_W02_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -2886,8 +2887,8 @@
         </W>
     </S>
     <S id="S_amis_030-opt" source="example 57b (printed p. 280; PDF page 28); optional material omitted under POL-026">
-        <FORM kindOf="original">cmikay k-u-ni wawa.</FORM>
-        <PHON kindOf="original">ʦmikaj k[o|u]ni wawa</PHON>
+        <FORM kindOf="original">c‹m›ikay k-u-ni wawa.</FORM>
+        <PHON kindOf="original">ʦmikaj kuni wawa</PHON>
         <FORM kindOf="standard">cmikay koni wawa.</FORM>
         <PHON kindOf="standard">ʦmikaj k[o|u]ni wawa</PHON>
         <TRANSL xml:lang="eng">This child is running.</TRANSL>
@@ -2914,7 +2915,7 @@
         </W>
         <W id="S_amis_030-opt_W02">
             <FORM kindOf="original">k-u-ni</FORM>
-            <PHON kindOf="original">k[o|u]ni</PHON>
+            <PHON kindOf="original">kuni</PHON>
             <FORM kindOf="standard">k-o-ni</FORM>
             <PHON kindOf="standard">k[o|u]ni</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN-this</TRANSL>
@@ -2927,7 +2928,7 @@
             </M>
             <M id="S_amis_030-opt_W02_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -2957,51 +2958,86 @@
     </S>
     <S id="S_amis_031" source="example 57c (printed p. 280; PDF page 28)">
         <FORM kindOf="original">wacu nu maku</FORM>
-        <PHON kindOf="original">waʦ[o|u] n[o|u] mak[o|u]</PHON>
+        <PHON kindOf="original">waʦu nu maku</PHON>
         <FORM kindOf="standard">waco no mako</FORM>
         <PHON kindOf="standard">waʦ[o|u] n[o|u] mak[o|u]</PHON>
         <TRANSL xml:lang="eng">my dog</TRANSL>
         <W id="S_amis_031_W01">
             <FORM kindOf="original">wacu</FORM>
-            <PHON kindOf="original">waʦ[o|u]</PHON>
+            <PHON kindOf="original">waʦu</PHON>
             <FORM kindOf="standard">waco</FORM>
             <PHON kindOf="standard">waʦ[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <M id="S_amis_031_W01_M01">
+                <FORM kindOf="original">wacu</FORM>
+                <PHON kindOf="original">waʦu</PHON>
+                <FORM kindOf="standard">waco</FORM>
+                <PHON kindOf="standard">waʦ[o|u]</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            </M>
         </W>
         <W id="S_amis_031_W02">
             <FORM kindOf="original">nu</FORM>
-            <PHON kindOf="original">n[o|u]</PHON>
+            <PHON kindOf="original">nu</PHON>
             <FORM kindOf="standard">no</FORM>
             <PHON kindOf="standard">n[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">GEN</TRANSL>
+            <M id="S_amis_031_W02_M01">
+                <FORM kindOf="original">nu</FORM>
+                <PHON kindOf="original">nu</PHON>
+                <FORM kindOf="standard">no</FORM>
+                <PHON kindOf="standard">n[o|u]</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">GEN</TRANSL>
+            </M>
         </W>
         <W id="S_amis_031_W03">
             <FORM kindOf="original">maku</FORM>
-            <PHON kindOf="original">mak[o|u]</PHON>
+            <PHON kindOf="original">maku</PHON>
             <FORM kindOf="standard">mako</FORM>
             <PHON kindOf="standard">mak[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">1SG.POSS</TRANSL>
+            <M id="S_amis_031_W03_M01">
+                <FORM kindOf="original">maku</FORM>
+                <PHON kindOf="original">maku</PHON>
+                <FORM kindOf="standard">mako</FORM>
+                <PHON kindOf="standard">mak[o|u]</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">1SG.POSS</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_amis_032" source="example 57d (printed p. 280; PDF page 28); optional material included under POL-026">
         <FORM kindOf="original">nu maku a wacu</FORM>
-        <PHON kindOf="original">n[o|u] mak[o|u] a waʦ[o|u]</PHON>
+        <PHON kindOf="original">nu maku a waʦu</PHON>
         <FORM kindOf="standard">no mako a waco</FORM>
         <PHON kindOf="standard">n[o|u] mak[o|u] a waʦ[o|u]</PHON>
         <TRANSL xml:lang="eng">my dog</TRANSL>
         <W id="S_amis_032_W01">
             <FORM kindOf="original">nu</FORM>
-            <PHON kindOf="original">n[o|u]</PHON>
+            <PHON kindOf="original">nu</PHON>
             <FORM kindOf="standard">no</FORM>
             <PHON kindOf="standard">n[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">GEN</TRANSL>
+            <M id="S_amis_032_W01_M01">
+                <FORM kindOf="original">nu</FORM>
+                <PHON kindOf="original">nu</PHON>
+                <FORM kindOf="standard">no</FORM>
+                <PHON kindOf="standard">n[o|u]</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">GEN</TRANSL>
+            </M>
         </W>
         <W id="S_amis_032_W02">
             <FORM kindOf="original">maku</FORM>
-            <PHON kindOf="original">mak[o|u]</PHON>
+            <PHON kindOf="original">maku</PHON>
             <FORM kindOf="standard">mako</FORM>
             <PHON kindOf="standard">mak[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">1SG.POSS</TRANSL>
+            <M id="S_amis_032_W02_M01">
+                <FORM kindOf="original">maku</FORM>
+                <PHON kindOf="original">maku</PHON>
+                <FORM kindOf="standard">mako</FORM>
+                <PHON kindOf="standard">mak[o|u]</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">1SG.POSS</TRANSL>
+            </M>
         </W>
         <W id="S_amis_032_W03">
             <FORM kindOf="original">a</FORM>
@@ -3009,27 +3045,48 @@
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
             <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            <M id="S_amis_032_W03_M01">
+                <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            </M>
         </W>
         <W id="S_amis_032_W04">
             <FORM kindOf="original">wacu</FORM>
-            <PHON kindOf="original">waʦ[o|u]</PHON>
+            <PHON kindOf="original">waʦu</PHON>
             <FORM kindOf="standard">waco</FORM>
             <PHON kindOf="standard">waʦ[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <M id="S_amis_032_W04_M01">
+                <FORM kindOf="original">wacu</FORM>
+                <PHON kindOf="original">waʦu</PHON>
+                <FORM kindOf="standard">waco</FORM>
+                <PHON kindOf="standard">waʦ[o|u]</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_amis_032-opt" source="example 57d (printed p. 280; PDF page 28); optional material omitted under POL-026">
         <FORM kindOf="original">maku a wacu</FORM>
-        <PHON kindOf="original">mak[o|u] a waʦ[o|u]</PHON>
+        <PHON kindOf="original">maku a waʦu</PHON>
         <FORM kindOf="standard">mako a waco</FORM>
         <PHON kindOf="standard">mak[o|u] a waʦ[o|u]</PHON>
         <TRANSL xml:lang="eng">my dog</TRANSL>
         <W id="S_amis_032-opt_W01">
             <FORM kindOf="original">maku</FORM>
-            <PHON kindOf="original">mak[o|u]</PHON>
+            <PHON kindOf="original">maku</PHON>
             <FORM kindOf="standard">mako</FORM>
             <PHON kindOf="standard">mak[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">1SG.POSS</TRANSL>
+            <M id="S_amis_032-opt_W01_M01">
+                <FORM kindOf="original">maku</FORM>
+                <PHON kindOf="original">maku</PHON>
+                <FORM kindOf="standard">mako</FORM>
+                <PHON kindOf="standard">mak[o|u]</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">1SG.POSS</TRANSL>
+            </M>
         </W>
         <W id="S_amis_032-opt_W02">
             <FORM kindOf="original">a</FORM>
@@ -3037,31 +3094,45 @@
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
             <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            <M id="S_amis_032-opt_W02_M01">
+                <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            </M>
         </W>
         <W id="S_amis_032-opt_W03">
             <FORM kindOf="original">wacu</FORM>
-            <PHON kindOf="original">waʦ[o|u]</PHON>
+            <PHON kindOf="original">waʦu</PHON>
             <FORM kindOf="standard">waco</FORM>
             <PHON kindOf="standard">waʦ[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <M id="S_amis_032-opt_W03_M01">
+                <FORM kindOf="original">wacu</FORM>
+                <PHON kindOf="original">waʦu</PHON>
+                <FORM kindOf="standard">waco</FORM>
+                <PHON kindOf="standard">waʦ[o|u]</PHON>
+                <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_amis_033" source="example 60a (printed p. 281; PDF page 29)">
         <FORM kindOf="original">[icuwaay a wacu] k-u ka-ulah-an isu?</FORM>
-        <PHON kindOf="original">iʦ[o|u]waaj a waʦ[o|u] k[o|u] ka[o|u]ɾaħan is[o|u]</PHON>
+        <PHON kindOf="original">iʦuwaaj a waʦu ku kauɾaħan isu</PHON>
         <FORM kindOf="standard">icowaay a waco ko kaolahan iso?</FORM>
         <PHON kindOf="standard">iʦ[o|u]waaj a waʦ[o|u] k[o|u] ka[o|u]ɾaħan is[o|u]</PHON>
         <TRANSL xml:lang="eng">Which dog do you like?</TRANSL>
         <TRANSL xml:lang="eng" ver="alt">What you like is which dog?</TRANSL>
         <W id="S_amis_033_W01">
             <FORM kindOf="original">icuwaay</FORM>
-            <PHON kindOf="original">iʦ[o|u]waaj</PHON>
+            <PHON kindOf="original">iʦuwaaj</PHON>
             <FORM kindOf="standard">icowaay</FORM>
             <PHON kindOf="standard">iʦ[o|u]waaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">which</TRANSL>
             <M id="S_amis_033_W01_M01">
                 <FORM kindOf="original">icuwaay</FORM>
-                <PHON kindOf="original">iʦ[o|u]waaj</PHON>
+                <PHON kindOf="original">iʦuwaaj</PHON>
                 <FORM kindOf="standard">icowaay</FORM>
                 <PHON kindOf="standard">iʦ[o|u]waaj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">which</TRANSL>
@@ -3083,13 +3154,13 @@
         </W>
         <W id="S_amis_033_W03">
             <FORM kindOf="original">wacu</FORM>
-            <PHON kindOf="original">waʦ[o|u]</PHON>
+            <PHON kindOf="original">waʦu</PHON>
             <FORM kindOf="standard">waco</FORM>
             <PHON kindOf="standard">waʦ[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
             <M id="S_amis_033_W03_M01">
                 <FORM kindOf="original">wacu</FORM>
-                <PHON kindOf="original">waʦ[o|u]</PHON>
+                <PHON kindOf="original">waʦu</PHON>
                 <FORM kindOf="standard">waco</FORM>
                 <PHON kindOf="standard">waʦ[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
@@ -3097,7 +3168,7 @@
         </W>
         <W id="S_amis_033_W04">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -3110,7 +3181,7 @@
             </M>
             <M id="S_amis_033_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -3118,7 +3189,7 @@
         </W>
         <W id="S_amis_033_W05">
             <FORM kindOf="original">ka-ulah-an</FORM>
-            <PHON kindOf="original">ka[o|u]ɾaħan</PHON>
+            <PHON kindOf="original">kauɾaħan</PHON>
             <FORM kindOf="standard">ka-olah-an</FORM>
             <PHON kindOf="standard">ka[o|u]ɾaħan</PHON>
             <TRANSL kindOf="original" xml:lang="eng">KA-like-LA</TRANSL>
@@ -3131,7 +3202,7 @@
             </M>
             <M id="S_amis_033_W05_M02">
                 <FORM kindOf="original">ulah</FORM>
-                <PHON kindOf="original">[o|u]ɾaħ</PHON>
+                <PHON kindOf="original">uɾaħ</PHON>
                 <FORM kindOf="standard">olah</FORM>
                 <PHON kindOf="standard">[o|u]ɾaħ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">like</TRANSL>
@@ -3146,13 +3217,13 @@
         </W>
         <W id="S_amis_033_W06">
             <FORM kindOf="original">isu</FORM>
-            <PHON kindOf="original">is[o|u]</PHON>
+            <PHON kindOf="original">isu</PHON>
             <FORM kindOf="standard">iso</FORM>
             <PHON kindOf="standard">is[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
             <M id="S_amis_033_W06_M01">
                 <FORM kindOf="original">isu</FORM>
-                <PHON kindOf="original">is[o|u]</PHON>
+                <PHON kindOf="original">isu</PHON>
                 <FORM kindOf="standard">iso</FORM>
                 <PHON kindOf="standard">is[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
@@ -3161,7 +3232,7 @@
     </S>
     <S id="S_amis_034" source="example 60b (printed p. 281; PDF page 29)">
         <FORM kindOf="original">[nima a wacu] k-u mi-kalat-ay t-u pusi aku?</FORM>
-        <PHON kindOf="original">nima a waʦ[o|u] k[o|u] mikaɾataj t[o|u] p[o|u]si ak[o|u]</PHON>
+        <PHON kindOf="original">nima a waʦu ku mikaɾataj tu pusi aku</PHON>
         <FORM kindOf="standard">nima a waco ko mikalatay to posi ako?</FORM>
         <PHON kindOf="standard">nima a waʦ[o|u] k[o|u] mikaɾataj t[o|u] p[o|u]si ak[o|u]</PHON>
         <TRANSL xml:lang="eng">Whose dog bites my cat?</TRANSL>
@@ -3196,13 +3267,13 @@
         </W>
         <W id="S_amis_034_W03">
             <FORM kindOf="original">wacu</FORM>
-            <PHON kindOf="original">waʦ[o|u]</PHON>
+            <PHON kindOf="original">waʦu</PHON>
             <FORM kindOf="standard">waco</FORM>
             <PHON kindOf="standard">waʦ[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
             <M id="S_amis_034_W03_M01">
                 <FORM kindOf="original">wacu</FORM>
-                <PHON kindOf="original">waʦ[o|u]</PHON>
+                <PHON kindOf="original">waʦu</PHON>
                 <FORM kindOf="standard">waco</FORM>
                 <PHON kindOf="standard">waʦ[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
@@ -3210,7 +3281,7 @@
         </W>
         <W id="S_amis_034_W04">
             <FORM kindOf="original">k-u</FORM>
-            <PHON kindOf="original">k[o|u]</PHON>
+            <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">k-o</FORM>
             <PHON kindOf="standard">k[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS-CN</TRANSL>
@@ -3223,7 +3294,7 @@
             </M>
             <M id="S_amis_034_W04_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -3259,7 +3330,7 @@
         </W>
         <W id="S_amis_034_W06">
             <FORM kindOf="original">t-u</FORM>
-            <PHON kindOf="original">t[o|u]</PHON>
+            <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">t-o</FORM>
             <PHON kindOf="standard">t[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">OBL-CN</TRANSL>
@@ -3272,7 +3343,7 @@
             </M>
             <M id="S_amis_034_W06_M02">
                 <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">[o|u]</PHON>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CN</TRANSL>
@@ -3280,13 +3351,13 @@
         </W>
         <W id="S_amis_034_W07">
             <FORM kindOf="original">pusi</FORM>
-            <PHON kindOf="original">p[o|u]si</PHON>
+            <PHON kindOf="original">pusi</PHON>
             <FORM kindOf="standard">posi</FORM>
             <PHON kindOf="standard">p[o|u]si</PHON>
             <TRANSL kindOf="original" xml:lang="eng">cat</TRANSL>
             <M id="S_amis_034_W07_M01">
                 <FORM kindOf="original">pusi</FORM>
-                <PHON kindOf="original">p[o|u]si</PHON>
+                <PHON kindOf="original">pusi</PHON>
                 <FORM kindOf="standard">posi</FORM>
                 <PHON kindOf="standard">p[o|u]si</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">cat</TRANSL>
@@ -3294,13 +3365,13 @@
         </W>
         <W id="S_amis_034_W08">
             <FORM kindOf="original">aku</FORM>
-            <PHON kindOf="original">ak[o|u]</PHON>
+            <PHON kindOf="original">aku</PHON>
             <FORM kindOf="standard">ako</FORM>
             <PHON kindOf="standard">ak[o|u]</PHON>
             <TRANSL kindOf="original" xml:lang="eng">1SG.GEN</TRANSL>
             <M id="S_amis_034_W08_M01">
                 <FORM kindOf="original">aku</FORM>
-                <PHON kindOf="original">ak[o|u]</PHON>
+                <PHON kindOf="original">aku</PHON>
                 <FORM kindOf="standard">ako</FORM>
                 <PHON kindOf="standard">ak[o|u]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.GEN</TRANSL>
