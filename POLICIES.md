@@ -464,6 +464,15 @@ Amended 2026-09-08.
 
 In a dictionary headword entry, each sense after the first is a `ver="alt"` TRANSL.
 
+Alternatives written with a slash inside one translation (`s/he`, `a/the`,
+`if/when`) are alternative translations too: one TRANSL per reading, all but
+the first `ver="alt"`. A slash can also be ordinary text (a list, a fraction,
+a URL), so the check stays SOFT (V122) and each split is made case by case.
+Maintainer ruling, 2026-11-07: *"There should not be slash alternatives in a
+translation. Any test has to be soft rule (slashes might appear for other
+reasons). But generally this should result in alternative translations."*
+Amended 2026-11-07 (maintainer clicked "Approve this paragraph (own PR)").
+
 ### POL-026 · RULED · 2026-08-10 · optional material in examples
 A source sentence with optional words — `x y (z)` — becomes **two S
 blocks**: `x y` and `x y z`. Care at conversion time: the gloss tier of

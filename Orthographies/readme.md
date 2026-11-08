@@ -54,6 +54,7 @@ record the review evidence used to build them.
 | `Cauquelin` | Puyuma | 10145149843 | No source-to-Ortho113 conversion is asserted for unresolved vowel correspondences. |
 | `Tsuchida` | Pazeh | 10150746084 | Produces original PHON; no Ortho113 Pazeh table currently exists. |
 | `Ochiai` | Seediq | 10152216849 | Implements the reviewed source mappings and conversion table. |
+| `Tsukida` | Seediq | Maintainer approval 2026-11-07, port-audit decision page (card t150-scheme: "Approve the Tsukida scheme (own PR) + the README sentence") | Tsukida (2014), *Correlative clauses in Seediq*: Ortho113's DeluValley letters, except that she writes `ŋ` for `ng` and an apostrophe read as ʔ. The conversion table maps `ŋ → ng` and deletes `'`, for which Ortho113 has no letter. The schwa `e` she writes where DeluValley teaching materials write none is not converted: which ones those materials drop is not a letter rule. |
 | `Asai2026` | Kanakanavu | Madeline Boese review (c and s palatalize before i) | The original tier of Asai et al. (2026) *Kanakanavu texts*: IPA letters ʔ ŋ ə, with `l` and `r` distinct. Capital letters are lower-cased in PHON. |
 
 Tsuchida's Saisiyat source supplies bracketed phonology directly rather than
