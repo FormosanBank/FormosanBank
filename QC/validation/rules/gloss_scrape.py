@@ -39,6 +39,7 @@ from lxml import etree
 from QC.xml_forms import find_base_form
 
 from QC.validation._finding import Finding, Severity
+from QC.validation.rules._form_text import form_text as whole_form_text
 from QC.validation.rules._gloss_text import gloss_text
 
 # Segmentation / notation markers, per the FormosanBank gloss conventions.
@@ -103,11 +104,11 @@ def _form_text(elem: etree._Element, kind: str = "original") -> str:
     so a W's lookup never picks up an M's FORM.
     """
     preferred = find_base_form(elem, kind)
-    if preferred is not None and preferred.text:
-        return preferred.text.strip()
+    if preferred is not None and whole_form_text(preferred).strip():
+        return whole_form_text(preferred).strip()
     any_form = find_base_form(elem)
-    if any_form is not None and any_form.text:
-        return any_form.text.strip()
+    if any_form is not None and whole_form_text(any_form).strip():
+        return whole_form_text(any_form).strip()
     return ""
 
 
@@ -542,7 +543,7 @@ def g006_non_canonical_null_symbol(
     findings: list[Finding] = []
     for elem in tree.iter("M", "W", "S"):
         for form in elem.findall("./FORM"):
-            text = (form.text or "").strip()
+            text = whole_form_text(form).strip()
             if not text:
                 continue
             for variant in NULL_VARIANTS:

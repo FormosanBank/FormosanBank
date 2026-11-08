@@ -63,6 +63,7 @@ if str(_DISC_HERE.parents[2]) not in sys.path:
     sys.path.insert(0, str(_DISC_HERE.parents[2]))
 from QC.validation._discovery import discover_xml_files as _discover_xml_files  # noqa: E402
 from QC.xml_forms import find_base_form  # noqa: E402
+from QC.validation.rules._form_text import form_text  # noqa: E402
 from QC.corpus_counts import resolve_language  # noqa: E402
 
 
@@ -140,7 +141,7 @@ def extract_sentences(xml_path: str, kind_of: str = "standard"):
         # whose variants coincide are not duplicates of each other.
         form = find_base_form(s, kind_of)
         if form is not None:
-            text = form.text or ""
+            text = form_text(form)
             if normalize_for_comparison(text):
                 out.append((sid, text, sentence_meaning(s)))
     return out
