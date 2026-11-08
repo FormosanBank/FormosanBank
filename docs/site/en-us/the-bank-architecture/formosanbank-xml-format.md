@@ -120,6 +120,8 @@ An `<S>` may be empty when an utterance has not yet been transcribed, although t
 
 An optional `notes` attribute can record a transcription note, review status, or other human-readable qualification — including what the source actually printed where the tier departs from it.
 
+A null-morpheme marker `∅` stays in the original tier and in word and morpheme FORMs, where the analysis lives. `standardize.py` removes it from the sentence-level standard FORM, except when the standard tier is made with `--copy` (a plain duplicate of the original). An asterisked reconstruction label such as `*-∅` is not a null marker and is kept.
+
 #### Variant readings
 
 Where a source offers more than one reading of the same form — a second witness's spelling, a cell giving two spellings, material the source brackets as optional — the extra readings are published as **variant FORMs**: `ver="alt"` on a FORM whose `kindOf` names the tier it varies from.
@@ -268,6 +270,8 @@ This is different from a missing FORM. A missing FORM means that no transcriptio
 When creating M levels for a word with an infix, the infix FORM should begin and end with `-`. The FORM for the surrounding morpheme should use `-` where the infix occurred. For example, `a-b-c` is represented by morpheme FORMs `a-c` and `-b-`.
 
 Circumfixes can be handled in an analogous way, although some source glossing conventions treat their two parts as a prefix and a suffix.
+
+A FORM that writes an infix in angle brackets (`s<em>eljec-an`) stores the brackets escaped in the XML file (`s&lt;em&gt;eljec-an`), so an XML parser returns them as ordinary text. A tool that then strips anything shaped like an HTML tag from that text will delete the infix: `<em>` is also an HTML tag.
 
 #### Clitics
 

@@ -80,50 +80,11 @@ and [AI Use Addendum](https://github.com/FormosanBank/FormosanBank/blob/main/AI-
   `test_waivers_cover_the_reconstruction_title_only` in
   `CodeAndDocs/tests/test_pipeline.py`, which checks that the waivers cover
   S25 of the two files and nothing else.)
-* The source supplies the Saisiyat reconstruction title in row 25; an earlier
-  copy had put its English title in the Saisiyat FORM. Preserve the translated
-  title and its three reconstructed labels `*-ʔ`, `*-h`, `*-∅`. These are
-  linguistic reconstructions, not ungrammaticality judgments. The
-  [merged corpus ruling](https://github.com/FormosanBank/FormosanBank/commit/b0f882702e52a9d9aa7eafe0197f4570743810f1)
-  explicitly retained the title and its source-inherent validation exception.
+
 * The Saisiyat file uses `:` for vowel length; it is retained in PHON for
   Saisiyat but treated as punctuation for Seediq.
-* The source conference abbreviation and paragraph boundaries are retained.
-  Mandarin punctuation follows the source with current Chinese quote
-  normalization.
-* The Mandarin conference abbreviation, row-9 paragraph boundary and Saisiyat
-  word boundary follow the source. Row-9 Mandarin punctuation is restored after
-  an older pass processed that translation under an incorrect language code;
-  current Chinese quote normalization still applies.
+
 * There is no audio or word/morpheme analysis.
-
-#### Two Seediq S IDs change (POL-037 exception)
-
-Published TEXT identities are preserved, and so is every sentence identity
-except two. The Seediq file previously had source rows 21 and 22 transposed, so
-Seediq S21 and Saisiyat S21 named different talks. The two languages are now
-aligned on content: **Seediq S21 is “Word stress in Yami” (previously S22), and
-Seediq S22 is “Piuma Paiwan stress in directional evaluation” (previously
-S21).** If you have cited Seediq S21 or S22 from an earlier release, remap those
-two references; no other identity in either file has changed.
-
-Both published TEXT IDs are preserved. **Two published S IDs are not.** The
-hand-built Seediq file had source rows 21 and 22 transposed, so published
-Seediq S21 carried the Piuma Paiwan stress title while Saisiyat S21 carried
-the Yami one — the two parallel files described different talks under the
-same ID. The maintainer ruled on 2026-09-09 that matching content across the
-two languages is worth breaking ID stability here:
-
-| ID | Seediq, as published | Seediq, now | Saisiyat (unchanged) |
-| --- | --- | --- | --- |
-| S21 | Piuma Paiwan stress in directional evaluation | **Word stress in Yami** | Word stress in Yami |
-| S22 | Word stress in Yami | **Piuma Paiwan stress in directional evaluation** | Piuma Paiwan stress in directional evaluation |
-
-No other ID in either file moves, and every remaining ID equals its source-row
-number. Anyone citing SEALS33 Seediq S21 or S22 from a release before this one
-must remap. This is the only POL-037 break in the corpus; it supersedes the
-earlier revision of this branch, which held both IDs in place with a
-`published_id()` mapping and accepted the cross-language mismatch instead.
 
 ## Reproduction and processing
 

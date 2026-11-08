@@ -188,25 +188,6 @@ it has no `c`, `j` or `o`, all of which Sato uses, and applying it produces
 both unmapped letters and silent errors. Generating a phonology from it would
 assert readings the source does not support, so neither tier is generated.
 
-- **No standard tier, by design.** Pazeh has no designated standard
-  orthography — its `standards.csv` cell is deliberately blank — so there is
-  nothing to transliterate into. `validate_xml.py` reports SOFT
-  `V014 count_missing_standard_form` × 83; that is expected, not a defect.
-  The corpus is consequently excluded from cross-corpus comparisons, which
-  default to `--kindOf standard`.
-- **No phonology tier.** We do not know the phonology of Sato's romanization.
-  `Orthographies/Tsuchida/Pazeh.tsv` describes a different orthography — it
-  has no `c`, `j` or `o`, all of which Sato uses — and generating PHON from it
-  produces both unmapped-letter `*` marks and silent errors (every `h` becomes
-  pharyngeal `ħ`, `rubuh` becomes `ɾoboħ`). `add_phonology.py` is deliberately
-  not run.
-
-**The orthography is not validated against a reference.** FormosanBank has no
-`QC/validation/reference/Pazeh/`, so the orthography and vocabulary checks that
-other corpora pass cannot run for this language at all. The character
-inventory is 21 ASCII letters with no diacritics, checked by hand; nothing more
-than that has been verified against external Pazeh sources.
-
 **The dialect is unrecorded.** Pazeh has two dialects, Pazeh (巴宰) and Kaxabu
 (噶哈巫). The source does not say which this is, so every text carries
 `dialect="unknown"`. Taisha-shō is Pazeh territory, but the corpus does not
@@ -215,11 +196,6 @@ assert what the source does not state.
 - **`dialect="unknown"`.** The source does not identify a Pazeh variety.
   `dialects.csv` lists both Pazeh dialects (Pazeh and Kaxabu), but the corpus
   does not assign either.
-
-Separately from the seven points above: **the 1934 date recorded by an earlier
-pass was wrong.** The issue is April 1931; see
-`CodeAndDocs/docs/source_manifest.md` for the correction and for two points
-that remain unresolved.
 
 ## Reproduction and processing
 

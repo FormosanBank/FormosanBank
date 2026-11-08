@@ -77,25 +77,16 @@ Under the resulting tables, **78.7% of the corpus's morph tokens** reach a form 
 
 * **`?` is a letter, not punctuation — it is a glottal stop.** It occurs 49 times, word-internally and word-finally, on all three tiers — `tau?` 'person', `uvi?` 'potato', `kayu?` 'tree' — and in plainly declarative sentences. Two sources confirm the identification. The official orthography specification *removed* [ʔ] from the Yami consonant table and moved it to the notes, where it states that the letter `’` marks the glottal stop, "a consonant that causes a pause or breaks a syllable", kept by community decision but left out of the tables. And the article's own errata delete `?` exactly twice, both times before a vowel-initial word — the hiatus where a glottal is automatic — and leave it everywhere else. Do not strip it as punctuation, and do not read a sentence containing it as a question. Note that modern Yami writes the glottal letter medially and initially but essentially never word-finally, which is where all of Wakelin's occurrences are.
 * **Sentences keep the article's parentheses; words, morphemes and the standard tier do not.** The article's key defines `( )` as "in data, probable discrepancy": the transcriber was unsure of the bracketed letters, as in `(n)aku`, `puken-(en)`, `(u)m-lavi`. Since nothing else records these words, each sentence in the original tier shows exactly what the article prints, and its words, its morphemes and the standard tier read the fuller form with the brackets removed (`puken-en`). They are not treated as optional material: no reading is chosen, no variant is made, and no sentence is split. Eight sentences carry them.
-* **Hyphens mark morpheme boundaries** and are kept exactly as printed, at every level of the original tier.
+
 * **`ǥ` is a distinct letter from `g`.** The typescript writes two g's — a plain one, and a g overstruck with a horizontal bar — and the published XML writes the second as `ǥ` (U+01E5), in five words: `vaǥay` 'house', `kalaǥen`, `anyaǥay`, `laǥet` 'bad', `aǥapen` 'take'. It is phonemic, not scan noise: the bar falls only on `g`, plain-g words like `kangkang` and `ragaw` are never barred, and every token of a barred word is barred. Post-errata it corresponds exactly to modern Yami `h` [ɰ] — `vaǥay` ~ *vahay*, `aǥapen` ~ *ahapen*, `laǥet` ~ *rahet*. The hand-typed XML had flattened it to plain `g`, merging two phonemes; that has been corrected, verified word by word at 400 dpi.
 * **`ř` is also a letter of the transcription**, in twelve words (`kařwan`, `vařit`, `k-ařima-raw`, `vařangyam`, `řerchip`, …). It too had been flattened, to plain `r`.
 * **The article's own errata are applied.** The publication ends with an "Errata Addenda" of about fifty `for X read Y` corrections, and the published text is the corrected reading throughout. Where an erratum conflicts with another signal from the page, the erratum wins.
-* An earlier release shipped a `standard` tier produced by `Yami_Wakelin_113.tsv`, a "conversion table" whose only rule deleted hyphens and which mapped no letters at all. That tier asserted nothing; both it and the table have been removed.
 
 #### Known caveats
 
-- **The three source discrepancies once listed as open are fixed in the published XML**, although [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md) still lists them as open. Each was an erratum applied to some tiers of a sentence but not others, and each now reads the errata's text on every tier: `Kangkang/S39` reads `ama-na-m` (errata A39), `Kalaku2/S8W1` reads `aep-en-mu-rana` like its sentence, and `Kwaway/S4W2M2` reads `aep` inside a word that reads `tunanal-aep-an`. The other findings from that audit have been ruled on and are fixed.
 - **`Kangkang/S34` publishes no word or morpheme glosses.** The article gives three gloss units for two printed words, so nothing can be aligned; only the sentence-level free translation is published.
 - **The original tier's sentence FORMs keep the article's parentheses; nothing else does.** The key defines `( )` as "in data, probable discrepancy": the transcriber was unsure of the bracketed letters, and nothing else records the word, so each sentence shows exactly what the article prints, while its words, its morphemes and the standard tier read the fuller form (maintainer, 2026-10-15). Eight sentences: `Kalaku3/S7` `(n)aku-yakuyab-yab`, `Kalaku3/S10` `puken-(en)`, `Kangkang/S18` `(u)kanen-da`, `Kangkang/S34` `puken-ku(a)`, `Kwaway/S21` `manuyung-(e)`, `Kwaway/S45` `(n)u-kipung`, `Kwaway/S52` `(u)m-lavi`, `Kwaway/S53` `chi-ka-(y)bubu`. They are not variants and are not split. The validator reports them as `V122` (SOFT).
 - Many words carry no morpheme tier. That is the article's own selective analysis plus the two gloss rules above, not a conversion loss: 5 words had a mis-aligned `M` tier removed (listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv)), and every gloss reading only `unan` was dropped because the article uses it to mean "unanalyzed".
-- `Kwaway.xml` S36 and S40 are the same sentence. This is a narrative, and the repetition is in the article; both are retained under POL-022.
-
-#### A renamed file
-
-Text F was given by Saman Sunagu, not by Saman Kalaku. It was published as `Kalaku4` until 2026-09-07, when the file and its `TEXT/@id` were **renamed to `Sunagu`** to name the right speaker. POL-037 makes published identifiers stable, so this is a breaking change announced rather than a cleanup: an external citation of `WakelinTexts/Kalaku4` will not resolve. The sentence, word and morpheme ids inside the file are unchanged.
-
-**Text F's file and `TEXT/@id` were renamed `Kalaku4` → `Sunagu` on 7 September 2026.** The text was given by Saman Sunagu, not by Saman Kalaku, and the old name said otherwise. Published identifiers are normally stable, so this is a breaking change announced rather than a quiet cleanup: a citation of `WakelinTexts/Kalaku4` will no longer resolve, and should be read as `WakelinTexts/Sunagu`. The sentence, word and morpheme identifiers inside the file are unchanged.
 
 #### Orthography
 
@@ -209,66 +200,6 @@ A third, applied across the corpus: **a gloss for a single morpheme is written w
 
 A second, smaller correction: **`Kwaway/S9`'s gloss is written `bamboo.strips`, not `bamboo-strips`.** A third, across the corpus: **a gloss for a single morpheme is written with dots, not hyphens** — `(one.after.another)`, `long.time.ago`, `kill.with.boiling.water`. Under the Leipzig conventions a hyphen marks a morpheme boundary and a period joins the parts of one gloss, so the article's hyphens read as morpheme boundaries that are not there.
 
-This was done in two passes and the second is what makes the morpheme tier usable, so both are listed in full below. **No word's alignment is changed by notation alone** — the build's unit counting was already parenthesis-aware — but where a hyphenated gloss sat on a *single* morpheme the count genuinely disagreed, and the word lost its morpheme tier for a reason that was an artifact of English. Repairing those took the count of words publishing no morphemes from **21 to 6**.
-
-It was done in two passes. The first covered the 54 glosses written inside parentheses; the second covered those outside them, where the gloss belongs to a single morpheme — and that second pass is what makes the morpheme tier usable, because a hyphenated gloss on a one-morpheme word made the counts disagree and cost the word its morphemes. Repairing them took the number of words publishing no morpheme tier from **21 to 5**. The full list of every repaired gloss is in the corpus README, here.
-
-**Pass 1 — inside parentheses (54 glosses).** Every parenthesised multi-word gloss: `(one.after.another)`, `(long.time.ago)`, `(sit.with.legs.straight.out)`, `(1st.person.imp)`, `(next.morning)`, `(dear.little.one)`, `(spend.the.night)`, `(betel.nut.basket)`, and the rest. The 162 parenthesised abbreviation markers that contain no hyphen are untouched (`(unctn)`, `(pl)`, `(dual)`, `(sg)`, `(come)`), as are hyphens outside parentheses, which are real morpheme boundaries: `house-their(dual)` is unchanged and `unan-(one.after.another)-us-completely` keeps its three outer hyphens.
-
-**Pass 2 — outside parentheses, where the gloss belongs to one morpheme.** Every one:
-
-| where | word | was | now |
-|---|---|---|---|
-| `Sunagu/S1W3` | `kakwa` | `long-time-ago` | `long.time.ago` |
-| `Sunagu/S2W3` | `madegdeg` | `early-morning` | `early.morning` |
-| `Sunagu/S4W6` | `utwen` | `cold-food` | `cold.food` |
-| `Sunagu/S7W4` | `nikumagat` | `ship-wreck` | `ship.wreck` |
-| `Sunagu/S15W3` | `kari` | `get-out` | `get.out` |
-| `Sunagu/S19W2` | `kari` | `get-out` | `get.out` |
-| `Sunagu/S16W4` | `chyaa?` | `it-doesn't-matter` | `it.doesn't.matter` |
-| `Kangkang/S41W4` | `dinalulut` | `stick-weapons` | `stick.weapons` |
-| `Kangkang/S42W4` | `apwapwasena` | `pick-up-stones` | `pick.up.stones` |
-| `Kwaway/S33W8` | `vaunda` | `take-up(unctn)` | `take.up(unctn)` |
-
-Each of those ten is a one-morpheme word, so the word gloss and its morpheme gloss both change. Four more are morpheme glosses whose word gloss was already correct:
-
-| where | morpheme | was | now |
-|---|---|---|---|
-| `Kangkang/S33W1M1` | `simuskem` | `kill-with-boiling-water` | `kill.with.boiling.water` |
-| `Kangkang/S33W1M4` | `muskem` | `killed-with-boiling-water` | `killed.with.boiling.water` |
-| `Kangkang/S40W1M2` | `atey` | `stone-wall` | `stone.wall` |
-| `Kangkang/S40W4M2` | `manginanawa` | `be-careful` | `be.careful` |
-
-Two words needed the gloss put back together as well as dotted, because the transcription had split a single-morpheme gloss across the root and the `-em` narration suffix:
-
-| where | word | was | now |
-|---|---|---|---|
-| `Kalaku1/S1W4` | `ilaud-em` | word `foreign-country`; `ilaud` 'foreign', `em` 'country' | word `foreign.country`; `ilaud` 'foreign.country', `em` unglossed (then `PAR`) |
-| `Kangkang/S35W5` | `chinwat-em` | word `boiling-water`; `chinwat` 'boiling', `em` 'water' | word `boiling.water`; `chinwat` 'boiling.water', `em` unglossed (then `PAR`) |
-
-And two word glosses live in `CodeAndDocs/alternative_decisions.json` rather than the snapshot, because they belong to a split sentence's branch. They are now **derived from the branch's own morphemes** instead of being written out by hand, so they cannot drift again:
-
-| where | was | now |
-|---|---|---|
-| `Kangkang/S33` | `kill-with-boiling-water` | `kill.with.boiling.water` |
-| `Kangkang/S33b` | `if(unctn)-not-killed-with-boiling-water` | `if(unctn)-not-killed.with.boiling.water` |
-
-Untouched throughout: the 162 parenthesised abbreviation markers with no hyphen (`(unctn)`, `(pl)`, `(dual)`), hyphens outside parentheses that are real morpheme boundaries, and sentence-level free translations, which are not glosses.
-
-**Five words still publish no morpheme tier**, and all five are correct: `Kangkang/S34`'s three words, where the article gives three gloss units for two printed words so nothing can be aligned; and `Kangkang/S39W5` and `S40W5` `ta-ka-mu`, three morphemes against the two-unit gloss `we-incl(EA)` because the source glosses only two of them. (`Sunagu/S2bW5` `d-imurud`, once a sixth, is now glossed `from-Imurud` and keeps its two morphemes.)
-
-The five words that still publish no morpheme tier are all genuine: `Kangkang/S34`'s three words, where the article gives three gloss units for two printed words, and `Kangkang/S39W5` and `S40W5`, where the article glosses two of three morphemes.
-
-A further class of repair sits behind that number. The article's key defines `unan` as "unanalyzed", and wherever its printed gloss line was shorter than a word's segmentation the transcription padded the morpheme tier with `unan` — 31 words. In 28 the padded morpheme is the `-em`/`-m` suffix the article says is untranslated, so it records a real fact. Three were inventions with no basis in the print and are corrected, including `Sunagu/S2W8`, which the article glosses `from Imurud` where the transcription had `from` plus an invented `unan`.
-
-Two of the 54 in pass 1 were also genuinely broken, with the parenthesised unit split across two morphemes; those are recorded in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md) §E: `Kalaku1/S4W1` (`(next` + `morning)`) and `Kwaway/S43W2` (`imp)unan` stranded on the morpheme `a`).
-
-Both are recorded in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md), which also lists the corrections made *to* the hand-typed snapshot where it had departed from the article.
-
-Both corrections, and the corrections made to the hand-typed snapshot where it had departed from the article, are listed in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md).
-
-A checked comparison of the snapshot against the article and its errata is published at [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md); it still lists three findings as open, but all three are now fixed in the published XML (see Known caveats above). The FormosanBank commit this corpus was built against is recorded in [`CodeAndDocs/provenance.json`](CodeAndDocs/provenance.json).
-
 #### Glosses: `unan`, and words whose morphemes do not line up
 
 Two rules are applied corpus-wide when the XML is built (maintainer, 2026-09-06):
@@ -276,20 +207,6 @@ Two rules are applied corpus-wide when the XML is built (maintainer, 2026-09-06)
 - **`unan` is not a gloss.** It is the article's "unanalyzed" marker — it records that the transcriber supplied *nothing*. A `TRANSL` whose entire text is `unan` is therefore **not published**, at any level, rather than shipped as though it meant something. Composite glosses that merely contain it (`unan-past(unctn)-accompany-completely`) are untouched: there the `unan` marks one morpheme inside an analysis that does exist.
 - **The `-em`/`-m` narration suffix is glossed `PAR`.** The article's own NOTE says this suffix "occurs throughout without a translation given", and the hand transcription duplicated whatever gloss stood on the preceding morpheme onto it (`vanuad`/'wharf' followed by `em`/'wharf'). The build replaces that with `PAR` and appends `-PAR` to the word's gloss. This is the article's note applied to the tier rather than a correction to it, and it is **not** in the snapshot — it happens during processing, so the snapshot stays a record of what was typed. The gloss is not invented: Rau & Dong gloss the modern cognate `am` as 助 'particle' (423×) and 呢 (369×), the rest of FormosanBank's Yami data glosses `am` as `PAR` across 4,679 tokens, and `-em` ~ `am` is exactly the `e` ~ `a` correspondence the article's own "/e/ and /a/ fluctuate freely" note predicts. It applies only to a **word-final** suffix — `m` is a prefix elsewhere (`a-m-angay`) and is left alone. **37 words** are glossed this way, and because the suffix was the reason they carried one morpheme more than their gloss had units, **all 37 of them keep a morpheme tier they would otherwise have lost.**
 - **A word whose morphemes do not line up with its gloss gets no morphemes.** If the number of `M` children disagrees with the number of units in the word's gloss, the word keeps its word-level gloss and its `M` tier is dropped, rather than publishing a mis-aligned analysis. `Kangkang/S33` is the clear case: `simuskem` is one morpheme glossed `kill-with-boiling-water`, and splitting that gloss across morphemes would invent an analysis the article never gave. A word left with no gloss at all by the first rule likewise keeps no `M`.
-
-Two rules govern the glosses:
-
-* **`unan` is the article's "unanalyzed" marker, not a gloss.** A translation whose entire text is `unan` is not published, at any level — it recorded that the transcriber supplied nothing. Composite glosses that merely contain it, like `unan-past(unctn)-accompany-completely`, keep their `unan`; the `(unctn)` within them moves to the translation's `notes` attribute along with every other occurrence of the marker.
-* **The `-em`/`-m` "narration suffix" is glossed `PAR`.** The article's own note says it "occurs throughout without a translation given", and the hand transcription duplicated the preceding morpheme's gloss onto it. The build replaces that with `PAR` — the gloss Rau & Dong and the rest of FormosanBank's Yami data give the modern cognate `am`. It is applied during processing, not written into the source snapshot, and only to a word-final suffix. 37 words are affected, and all 37 of them keep a morpheme tier they would otherwise have lost.
-* **A word whose morphemes do not line up with its gloss carries no morphemes.** It keeps its word-level gloss and its `M` tier is dropped, rather than publishing an analysis the article never gave — `simuskem` is one morpheme glossed `kill-with-boiling-water`. 5 words are affected, listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv). The commonest case was once the `-em`/`-m` "narration" suffix, which the article itself says occurs throughout without a translation; since that suffix is glossed `PAR`, none of the five is.
-
-Gloss units are counted on hyphens *outside* parentheses, so `unan-(one-after-another)-us-completely` is four units and not six; and a gloss that carries the source's own slash alternation across the whole word (`unan-not-I-you(pl)/unan-curse-I-you(pl)`, `Kwaway/S25`) counts as aligned if either side matches. A word is also treated as unreliably segmented when a **morpheme gloss carries half a parenthesis** — the transcription split a parenthesised multi-word unit across two morphemes, writing `(next-morning)` as `(next` + `morning)` — since half a gloss is not a gloss.
-
-**5 words lose their `M` tier this way** — down from 54 before the narration suffix was glossed, and from 21 before the dot convention reached unparenthesised glosses — and every one is listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv), regenerated on every build. What remains is listed word by word under "A correction to the source" above; all five are genuine, not artifacts.
-
-Both rules make `validate_glosses` louder, on purpose: `V064 every_M_has_TRANSL` and `V065 every_W_has_TRANSL` now fire as SOFT findings wherever the article gave no gloss. That is the honest state of the data — the alternative is to publish `unan` as though it were a translation.
-
-Both rules mean many words and morphemes carry no gloss at all. That is the honest state of the data: the alternative is to publish `unan` as though it were a translation. `Kangkang/S34` goes furthest: the article gives three gloss units for two printed words, so that sentence publishes no word or morpheme glosses at all and only its free translation stands.
 
 ## Reproduction and processing
 

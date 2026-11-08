@@ -171,23 +171,6 @@ list rather than Mandarin. In detail:
 
 Records that are lists of names count toward this corpus's word totals.
 
-#### Orthography and source notation
-
-The source uses Eastern Paiwan spelling compatible with the registered
-Ortho113 Paiwan profile. Original FORM preserves that spelling; shared cleaning
-normalizes typography. Standard FORM uses the current `--remove_accents` mode,
-including accent folding in borrowed names. The earlier global u-to-o transform
-is obsolete: it corrupted the English loan `open-source` to `open-soorce`.
-Joshua's correction remains preserved by the current shared pipeline.
-
-`(amilikan|ciniukukan)` on page 8 names the English/Chinese licence links. It is
-literal metalinguistic content, not optional utterance material. Retain it and
-its translations without creating extra sentences. `pu’ui` on page 9 has a
-word-internal apostrophe, normalized to `pu'ui`; it is not quotation furniture.
-Names, Chinese code-switching, parenthesized language labels, numbers, and
-source punctuation remain intact even where validators flag them. PHON uses
-Ortho113 for both tiers; unmapped loan characters may yield uncertainty stars.
-
 ## Reproduction and processing
 
 ### How to reproduce

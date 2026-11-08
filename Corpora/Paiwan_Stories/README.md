@@ -75,18 +75,6 @@ illustration and publisher rights.
 
 ## Notes and caveats
 
-The restored Maljialjian passage uses `S6a`, between the existing S6 and S7;
-all published TEXT and sentence IDs remain stable. The recovered Maljialjian
-passage uses `S6a`, preserving every published TEXT and sentence ID.
-
-Chinese translations omitted or shifted in the earlier corpus are restored
-from the sources. Omitted or shifted Chinese translations are restored from
-the sources.
-
-Published quotation corrections and comma/exclamation typography are retained
-in the transcription; `repair_records.py` records the ID and locator repair.
-Published quotation corrections and documented typography are retained.
-
 The Word source has 15 table rows containing 16 passages; row 4 holds two units.
 
 There is no source word or morpheme analysis.

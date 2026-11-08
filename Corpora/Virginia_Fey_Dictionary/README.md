@@ -13,7 +13,7 @@ points users ask about first: in the digital edition a sentence-initial capital
 `G` is ng too, so S3846 reads `Nga'ayto` and S4934 `Nga'ayho`. This does not
 recover phonemic contrasts absent from the source. Printed page 345 confirms
 `O kalatolo / kalitolo konini.`; like every slash cell, it gives one sentence
-per option (S6717 and S6717-opt). Both are explained under "Notes and caveats".
+per option (S6717 and S6717-opt). The second is explained under "Notes and caveats".
 
 ## Languages and dialects
 
@@ -90,17 +90,9 @@ Commercial AI use requires prior written permission.
 
 ## Notes and caveats
 
-Source review remains incomplete; this output is not ready to port. The
-[corpus PR #170](https://github.com/FormosanBank/FormosanBank/pull/170) lists the
-remaining decisions. A successful build or XML check does not settle them.
-
 - The digital source was checked against raw text, corrected Word files and
   conversion history. This is not a complete review of the printed dictionary.
-- The digital edition writes the ng sound as `g` (printed guide, page 20), and its
-  converter changed only lowercase `g`. A sentence-initial capital `G` is ng too,
-  so S3846 reads `Nga'ayto` and S4934 `Nga'ayho` in both tiers (maintainer ruling
-  2026-10-17). This narrow mapping does not recover phonemic contrasts absent
-  from the source.
+
 - [Printed page 345](https://drive.google.com/file/d/1eNMbHjQfC-ZR77ha17S_441hx9ZcsDhm/view)
   confirms `O kalatolo / kalitolo konini.` The page does not classify the pair
   as competing words or pronunciation variants; that decision remains open. The
@@ -109,24 +101,7 @@ remaining decisions. A successful build or XML check does not settle them.
   including glottal versus pharyngealized stops. Wu Ming-yi modernized the
   digital spelling, but this does not establish that the distinction was
   recovered. Generated PHON must not be treated as source transcription.
-- A sentence may have several English or Chinese translations. Where two source
-  rows give the identical Amis sentence, they are one sentence and the second
-  row's translations are alternates. No W/M analysis is supplied.
-- Source translations that were split or cleaned remain recoverable in TRANSL
-  notes. Later readings use `ver="alt"`. A FORM `notes` attribute keeps the
-  source cell only where it carries content beyond the corrected text: the full
-  cell of a split slash cell, and S1193's stray English `Literally`. The sheet's
-  converter-damaged text is not repeated in notes; it remains in the frozen
-  sheet copy (maintainer ruling 2026-10-17).
-- Sentences whose original FORM is identical are one sentence (POL-025,
-  maintainer ruling 2026-10-17): the later record merges into the earliest and
-  its translations become `ver="alt"`. Eight such pairs exist; the merged-away
-  ids S2843, S3026, S5023, S5280, S5703, S6241 and S6916 are retired (main had
-  already retired them), and S5991-opt, which the build creates from the slash
-  cell `talakal / tilo ni Idek.`, is merged into S1945 in the same step, so it
-  never appears in the published XML. Records that the source repair made
-  different (S1899/S1900, S5141/S5142) stay separate. Historical published IDs
-  stay stable. New S readings use `-opt`.
+
 - One published sentence is removed: S6908 `ceco.`, the third option of the
   slash cell `sasoken a kowa' / cacoscosen a kowa' / ceco.` (Pith Paper Plant),
   because it is not clear how it should be read (maintainer ruling 2026-10-17);

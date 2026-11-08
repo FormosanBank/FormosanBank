@@ -59,7 +59,6 @@ The existing public-domain designation covers the historical Gospels and retaine
 - Four verses absent from this CUV edition's main text have no Chinese translation: Matthew 18:11 and 23:14, John 5:4 and 7:53. Available source footnote readings are retained as notes.
 - Siraya orthography is **not checked** under POL-058 because its standard is blank. Historical accents, meaningful hyphens, authorial parentheses and the combining `æ̈` glyph are retained. John 12:28 and 12:33 preserve unbalanced punctuation visible in the scan. PHON and W/M gloss tiers are unavailable. Siraya has no designated modern standard, so orthography comparison is **not checked** under POL-058. The copied standard tier retains the approved fixed line-break corrections; PHON is absent.
 - Historical spelling and rare combining-diaeresis letters remain, including the restored John 5:11 glyph. John 12:28 and 12:33 retain punctuation imbalances visible in the scan.
-- The 2026-08 re-transcription is superseded by the preserved published corrections plus the scoped repairs documented here. Its old whole-output hashes are not a source-fidelity verdict for this build.
 
 ## Reproduction and processing
 

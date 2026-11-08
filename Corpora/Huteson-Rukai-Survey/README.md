@@ -88,11 +88,6 @@ every gloss in the corpus is now the source's, with the single marked exception
 noted below. The change to already-published identifiers this caused is listed
 in the [processing notes](CodeAndDocs/README.md).
 
-**Translation shorthands become alternatives.** Four source translation
-shorthands (`S/he`, `ran/is running`) expand into same-S alternatives (POL-025).
-Naturalistic `(how to)` and `(his)` remain, and the source gloss `ACT/REAL` is
-preserved. No source sentence is removed.
-
 #### Properties of the source
 
 Four things a user should know before comparing this corpus with FormosanBank's
@@ -116,14 +111,6 @@ comparing Maolin across corpora should expect this: of 41 Maolin word types, 23
 match the bank's spelling directly and a further 7 match once word-final
 doubling is collapsed. Whether the doubling is phonemic length or predictable
 final lengthening is unresolved.
-
-**The particle `na` is never glossed.** All seven occurrences are blank in the
-source's aligned display and no meaning has been coined for them: the word, and
-its morpheme where the sentence is parsed, carry a FORM and no translation.
-Standardizing these glosses is left for a future pass. Seven further word-gloss
-cells are blank for the same reason, and Tona 9's `a-kakə` carries one fused
-source gloss `1S.TOP` for two morphemes without either being given an invented
-meaning.
 
 **One gloss is inferred, not from the source.** Page 43 leaves the `ki` column
 of Tona 14 blank. Every other `ki` in the corpus — six of them — is glossed

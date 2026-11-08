@@ -70,16 +70,6 @@ The central [FormosanBank terms](https://github.com/FormosanBank/FormosanBank/bl
 
 The committed metadata extracts are not independently checked against Paradisec. Joshua accepted this limit for the closed AIT1 deposit, recorded in 1997 and 1998 and published in 2016, in [FormosanBank #197](https://github.com/FormosanBank/FormosanBank/pull/197). The extracts enumerate 61 source files and archival fields absent from our XML, and have been unchanged since the corpus's first commit. The 30 matching MP3s are treated as delivery copies of the WAV masters; the remaining file, `AIT1-001-2df.pdf`, has not been inspected or included.
 
-Joshua accepted two source limits on 2026-09-07 in [#197](https://github.com/FormosanBank/FormosanBank/pull/197): the 30 matching MP3s are treated as delivery copies of the WAV masters, and no metadata refresh mechanism is required for this closed archival deposit. Reproduction does not independently verify the extract against PARADISEC. The remaining source part, `AIT1-001-2df.pdf`, has not been inspected or included.
-
-The recordings are untranscribed. Metadata provenance and MP3/WAV equivalence retain the accepted limits described above; the source PDF remains uninspected. The source verifier is corpus-specific, and its remote listing is suitable for this 30-WAV inventory rather than a general large-dataset audit.
-
-The four metadata files are flattened extracts wrapped as `{"metadata": {...}}`, not complete RO-Crates. They contain 61 source parts and archival fields absent from our XML, and have been unchanged since the corpus's first commit. The XML follows from those extracts plus the separately granted licence. Unresolved graph references, including the extract's licence pointer, do not supply additional rights evidence.
-
-Remote audio verification compares paths, sizes and hosted SHA-256 object IDs. It does not listen to the recordings or independently verify Paradisec. The verifier covers this 30-WAV inventory; it is not a general audit tool for larger datasets. If local hashes differ, move those copies aside before downloading and checking again.
-
-If local verification fails, move the differing copies aside before downloading and checking again. Earlier private builds produced 16 kHz mono derivatives; those must not be mistaken for the originals. Any future ASR derivative needs its own reviewed output, as Joshua specified in [#168](https://github.com/FormosanBank/FormosanBank/pull/168#issuecomment-5565082860). Authorized uploads use the shared `QC/utilities/upload_to_hf.py`, after source-byte verification.
-
 ## Reproduction and processing
 
 ### How to reproduce

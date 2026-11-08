@@ -81,10 +81,6 @@ Every departure from the printed text is recorded against a named record and a r
 
 #### Orthography, tiers and phonology
 
-- **Orthography is Ortho113.** Detector and reviewer evidence agree: the source
-  uses `ʉ` and `r`, has no `l` (its own discussion notes `r` covers the former
-  `l`/`r` contrast), and maps `r` to the IPA variants `r` and `ɾ`. The current
-  detector selects Ortho113 for both XML files.
 - **Stress accents** (`á í ú …`) are kept in the original tier and folded in the
   standard tier (step 7); PHON is accent-free on both tiers.
 - **Stress accents** (`á é í ó ú`) mark stress in the book, not distinct letters. They are kept in the original tier and folded out of the standard tier; PHON is accent-free on both tiers.
@@ -94,12 +90,6 @@ Every departure from the printed text is recorded against a named record and a r
   stress accents and by the one song sentence below. Do not read "standard" here
   as evidence of a spelling change.
 - **The standard tier is nearly the original tier.** The book's orthography already *is* Ortho113, so nothing is transliterated: across the whole corpus the standard tier differs from the original only by the folded stress accents and by the one song example below. Do not read "standard" here as evidence of a spelling change.
-- **PHON uses pipe notation for phonemic variants** (POL-013): Ortho113 maps
-  Kanakanavu `r` to `[r|ɾ]`, so `[r|ɾ]` in a PHON tier means "either of these",
-  not a literal bracket. It appears in 4,922 PHON elements of the grammar file
-  and 678 of the dictionary file (5,600 in all). PHON is otherwise
-  marker-free: no `-`, `=` or infix brackets, and no stress accents.
-- **Phonetic tiers use pipe notation for phonemic variants.** Ortho113 maps Kanakanavu `r` to `[r|ɾ]`, so a bracketed pipe in PHON means "either of these", not a literal bracket. PHON is otherwise marker-free and accent-free.
 
 #### Translations and glosses
 
@@ -121,27 +111,6 @@ Every departure from the printed text is recorded against a named record and a r
 
 #### Segmentation and interlinear conventions
 
-- **Segmentation lives on `W`/`M`, never on `S`.** Sentence-level FORMs are
-  running text: no `-`, no `=`, no `<…>` on either tier (the two hyphens that do
-  appear are em dashes — see below). `W` and `M` FORMs keep the source's
-  notation in **both** tiers: 733 `W` with `-`, 484 with `=`, 117 with `<…>`.
-- **Segmentation lives on the word and morpheme tiers, never on the sentence tier.** Sentence forms are running text on both tiers. Word and morpheme forms keep the source's `-`, `=` and `<…>` on both tiers.
-- **Interlinear conventions.** W forms keep the source's `-`, `=` and `<…>` notation. An infixed root keeps a gap hyphen and the infix is written `-X-` (`t<um>a-túturu` → `t-a`, `-um-`, `túturu`); each clitic morpheme keeps a leading `=` (`te=musu` → `te`, `=musu`).
-- **Infixes follow POL-014.** A `W` keeps the source's angle brackets
-  (`t<um>a-túturu`); at `M` level the infixed root is one morpheme written with a
-  gap hyphen at the infixation point and the infix is written between hyphens —
-  `t-a` · `-um-` · `túturu`. So an `M` FORM containing an internal `-` is a root
-  with an infix gap, not an unsplit word.
-- **Clitics follow POL-015.** The `=` marks the clitic, not its host:
-  `te=musu` is analysed `te` + `=musu`. Every clitic in this corpus is an
-  enclitic (21 distinct forms — `=cu`, `=ku`, `=maku`, `=in`, `=kasu`, `=musu`,
-  `=kee`, `=kara`, `=pa`, `=kani` and others), so every clitic `M` carries a
-  **leading** `=` and no `M` carries a trailing one. The matching gloss carries
-  the marker too (`=他.屬格`).
-- **Parenthesised optional material is removed from `W` forms.** `build_xml.py`
-  deletes any `(…)` in a printed word form (step 4). In the current data this
-  affects one word: `’arup(a)-ara` in `S0410` (reader p. 179) is published as
-  `’arup-ara`.
 - **Partial glossing is preserved, not invented.** On five page images the printed form and gloss lines do not align one-to-one. Those words are still segmented, but a morpheme the book does not gloss separately carries no gloss of its own; the word-level gloss is always present.
 - **Partial morpheme glossing (4 `M`):** reader pages 182, 248, and 258 print
   segmented forms without a separately aligned gloss for every unit. Their `W`
@@ -206,8 +175,6 @@ Every departure from the printed text is recorded against a named record and a r
 - **Three examples come from the book's punctuation table (Appendix 1, p. 190), and its marks are not what they look like.**
   - *The song.* Row 10 of that table defines a hyphen used **in songs, to break lyrics to fit the musical score** — not morpheme boundaries. The one song example keeps those hyphens exactly as printed in the original tier. Its standard tier gives the running words, whose boundaries were recovered from an independent attestation of the same song: deleting the hyphens is not enough, since the last line would run together into a single word. This is the only place in the corpus where the standard tier is set from a source-checked decision rather than derived.
   - *The dash.* Row 8 defines `--`, written with two hyphens, as the Kanakanavu spelling of the **em dash** (破折號), whose Chinese equivalent is `―`. It is punctuation introducing an explanation or a list, not segmentation. The build renders it as a single `-` in the original tier, which the standard tier then inherits unchanged — so the two examples using it show a `-` that is a dash, not a morpheme boundary. They are the corpus's only two occurrences of a hyphen in a sentence-level standard form.
-
-- **Everything above is checkable.** No validator reports a HARD finding. The remaining warnings are the documented source properties on this page — the unglossed sentences, the two em dashes, the four unglossed morphemes, the host+clitic word count, and the repeated forms — and the corpus README lists them one by one with counts.
 
 #### Recorded per-record corrections
 

@@ -118,14 +118,6 @@ that names no version is 4.0).
   * Different subcorpora appear to use different orthographies; the determination
     for each subcorpus is listed under step 8 of "What each step does" below.
 
-- The ePark source frequently runs a word straight into a following parenthetical
-  (e.g. `manokos(manakboz)`). A space is added in sentences without word segmentation,
-  but in word-segmented sentences (all in `jiu_jie_jiao_cai_nine_level_materials`)
-  the parenthetical is left attached on purpose (step 10 below).
-
-- Some `TEXT` elements carry an empty `glottocode=""` attribute: `add_dialects.py`
-  writes the `glottocode` column of `dialects.csv` even when it is blank (step 4 below).
-
 - Reproduction is incomplete. The XML cannot be fully rebuilt from this folder
   alone: there is no single build script, some steps were done by hand, the
   source audio for the sentence-pattern subcorpora was not retained, and some

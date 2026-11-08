@@ -177,8 +177,6 @@ The corpus is distributed under CC BY-NC 4.0, the value recorded in the `copyrig
 
 * Speaker labels (`T:`) are not words and are removed from the word tier and the sentence text. That includes labels naming several speakers at once, `Y,M:`, `W,G,S:` (ruling 2026-10-18: "Any number of single capital letters followed by a colon, ignore intervening commas => speaker label."; 23 such labels in 22 Tsou sentences).
 
-* Word and morpheme ids are never renumbered (POL-037). When a word is removed, the others keep their ids and the numbering has a gap (`None-1_S_21` starts at `W1`). Every removed id is listed, with its reason and ruling, in [`CodeAndDocs/withdrawn_ids.tsv`](CodeAndDocs/withdrawn_ids.tsv) (34 ids, 2026-10-18).
-
 * A small subset of sentences in the Grammar subcorpus have no word-by-word glosses (the original data does not include them).
 
 * The original data has a lot of prosodic markup and other dialog markup. This has all been removed.
@@ -197,17 +195,9 @@ The corpus is distributed under CC BY-NC 4.0, the value recorded in the `copyrig
   * *Unknown sentence translations*: 6 translations in 4 sentences that were only `?` or `XXX` were removed.
   * `<UNCLEAR/>` is not counted as a word, so the corpus word count falls by the 609 untranscribed words.
 
-* **Word and morpheme FORMs carry no punctuation; sentence FORMs keep it.** NTU wrote each word's punctuation into its word and morpheme forms (`haca,`); the last build step (`CodeAndDocs/pipeline/strip_word_punctuation.py`) deletes it: 79,048 characters (`,` 64,192; `.` 13,426; `?` 594; `"` 474; `!` 362) over both tiers. `'` is a letter (the glottal stop) and `-` `=` `<` `>` `~` `∅` are morpheme markers, so they stay. A character that is not clearly punctuation in a language is left everywhere in that language for now (Seediq `'`). A character that is punctuation only at the end of a word is removed only there: `.` inside Atayal `asi.ki.na` stays, and so does a Rukai `?` straight after `-` or `=`, where it marks an unknown morpheme (`pa-pacay-?`). The full rules are under "What each step does" (phase D) below.
-
 * **Bunun sentences published once (rulings 2026-10-16).** NTU's release has a revised copy of the Bunun sentence collection, `sentence/Bunun_Isbukun/63.json` (upstream `63_revised.json`, no speaker or date), alongside the original files. 875 of its 920 records repeat a record of another file; `pipeline/bunun63_pairs.tsv` (written by `pipeline/make_bunun63_pairs.py`) pairs them, on identical word lists or on a shared translation with word lists at least 60% alike. At the end of the Sentences build, after all cleaning, `pipeline/dedupe_bunun63.py` compares each pair as published: identical copies keep the other file's sentence and drop the 63.json one; copies that differ only in notes keep the more recent or more complete note; copies that differ in translation become one sentence with the other copy's translations as alternatives (`ver="alt"`; a translation written `A / B` becomes A plus alternative B); and where the sentence text is the same but the analysis differs (mostly reduplication written `ma-ba-baliv` 'AF-RED-buy' in the revision against `ma<ba>baliv` 'AF<RED>buy'), the revision's analysis is kept and the other copy dropped. Where the sentence text itself differs, a difference only in punctuation or word division keeps the revision, and a difference in letters keeps the other file's copy, whose spellings other Bunun corpora mostly use (`saia` 1,254 times against the revision's `saiia` 49). All 875 pairs are resolved: 897 sentences are dropped (Bunun Sentences 2,096 → 1,199) and 113 alternative translations added. The build's per-pair report is `logs/bunun63_dedupe.tsv`.
 
-* A free translation written as two renderings, `A / B` ("I have three younger brothers. / There are my three younger brothers."), is published as a translation plus an alternative translation (`ver="alt"`): 48 Sentences translations (`pipeline/split_two_renderings.py`; ruling 2026-10-16).
-
-* Kavalan `KavNr-frog_abas` S_138: NTU wrote the line as the transcriber's label `((VOICEOVER:mai=ti))` — the words *mai=ti* spoken by a voice-over. It is published as the speech (`maiti.`), with the label in a FORM note (`pipeline/p2_source_repairs.xml`).
-
 * Three stories exist twice in NTU's release, as two transcriptions of one recording: Seediq `sdqNr-taboo_pawan` and `sdqNr-tattoo2_pawan`, and Tsou `TsouNr-pear-story-3` / `TsouNr-pear-zheng-2`. The corpus uses the newer text, which has no audio timing; each record takes its time span and recording from NTU's timed transcription of the same text (`pipeline/audio_timing_grafts.tsv`, written by `pipeline/make_audio_timing_grafts.py`, which checks that the two versions have the same records and sentence ends). The Seediq word lists differ from the timed versions mainly in analysis (`kesa-un` vs `kes-un`), not in the sentence lines, which use the usual spellings (`kesun`).
-
-* The Kanakanavu sentence subcorpus writes "∅" inside some words (32 occurrences; the source writes 2 of them as "Ø", which the build canonicalizes), and the Sakizaya grammar writes a null prefix slot "ø". These are the linguists' null-morpheme annotation: a morpheme that is present in the analysis but has no phonological content (e.g. a phonologically empty relativizer, glossed REL). FormosanBank's convention (per the 2026-08 null-morpheme specification) canonicalizes the marker glyph to `∅` (U+2205) and keeps it in the original tier and on the word/morpheme tiers — where the morphological analysis lives — while removing it from sentence-level standard FORMs; in the PHON tier null morphemes are silent (a wholly-null morpheme carries PHON `∅` so the tier is never empty). See the corpus [README](#what-each-step-does) for details.
 
 * Some English glosses contain Mandarin (e.g. `eng="使役-太陽=完成貌"`), most likely because the glossers were Mandarin-dominant. These are left as they are in the source.
 
@@ -215,40 +205,9 @@ The corpus is distributed under CC BY-NC 4.0, the value recorded in the `copyrig
 
 * Some sentences are glossed only in English in the source (no Chinese gloss exists), and some source gloss rows are *echo rows* (the gloss cells just repeat the wordform — common for names and untranslated items). Neither is repairable from the source. A further small set has the Chinese gloss available in a duplicate of the same word elsewhere in the source, repairable on request.
 
-* Six source JSONs in the sentence subcorpus assign the same record id to two *different* sentences (e.g. `sentence/Bunun_Isbukun/46.json` numbers its records 1,2,3,3,4,...). Because S ids embed the record id, both sentences would receive the same S id (and identical W/M ids below it). The second occurrence (in document order) is disambiguated with a `-2` suffix: `46_S_3` and `46_S_3-2`. For those sentences the NTU line-number provenance is inherently ambiguous — the collision is in the NTU backend itself. Affected: `46_S_3`, `03-4_S_15`, `43_S_2` (Bunun); `3_S_201` (Kanakanavu); `20200530-FW-Andrea-1_S_6`, `20200530-FW-Yongfu-1_S_13` (Rukai).
-
-* **Variant readings.** Optional *letters* inside a morpheme (`ka(z)`, `(s)aiv=ik`) and slash
-alternations whose readings are spelling variants of one another stay one sentence: the node
-carries its tier's base FORM plus a sibling `FORM[@kindOf="original" ver="alt"]`, and
-`standardize.py` derives the matching `FORM[@kindOf="standard" ver="alt"]`. **126 variants**,
-in 18 files. A *glossed* optional morpheme or clitic (`kangavas(=an)` 'mango(=MED.NOM)') is
-different (POL-028 as amended 2026-10-15): the two readings are glossed differently, so each is
-a sentence of its own with its own word and morpheme tiers — the base keeps the published id, the
-other reading is `<id>-opt`. An optional *phrase* (`(nau tu)`, `(kane ku butulu)?`) is split the
-same way (POL-026); a record with both gets `-opt3` (phrase) and `-opt4` (both). Built by
-`pipeline/pol028.py`: 30 records with a glossed optional morpheme and 6 with an optional phrase
-(37 added sentences; 3 more come from whole optional words followed by punctuation, such as `(ngi-palay).`, which the POL-026 step now recognizes). Both readings carry the record's translation, except where the translation
-itself marks the option (`（將）`, `(互相)`, `(吃豬肉)`): then each reading takes its own wording;
-per-reading settings ruled by the maintainer are in `pipeline/pol028_readings.tsv`. In a story the
-`-opt` sentence has no AUDIO: the recording has one reading only. Where NTU has a sentence line,
-both readings take their text from it; otherwise from the word list with the segmentation marks
-removed.
-
-  Until 2026-09-10 these were written `kindOf="alternate"`, the spelling POL-028
-  deprecated on 2026-09-09 (one day after this corpus was first published here).
-  That spelling names no tier, so a variant could not say which base it varied
-  from and `standardize.py` could not derive its standard counterpart — which is
-  why the standard tier previously had no variants at all. The migration changed
-  attributes only: no FORM text, PHON, TRANSL or W/M structure differs from the
-  previously published XML, and all 55 tests in `CodeAndDocs/qa` scored
-  identically to their baseline. Competing *lexemes* are not variants; they keep
-  the first reading and record the rest in `@notes` for a POL-027 pass.
-
 #### Orthography
 
 The NTU source is written in **Ortho94**, the orthography released in ROC year 94 which Ortho113 later revised. The corpus is processed as Ortho94 throughout: the original phonemic tier is generated from Ortho94's letter-to-sound rules, and the standard tier is produced by converting 94 → 113 per language, since Ortho113 is FormosanBank's common orthography.
-
-This is a change from earlier processing, which declared the original tier to be Ortho113 and produced the standard tier by stripping accents without any letter conversion — describing the source as an orthography it was not written in.
 
 Eight of the corpus's ten languages carry an empty conversion table (Atayal, Bunun, Kanakanavu, Kavalan, Rukai, Saisiyat, Seediq and Tsou); only the Amis and Sakizaya tables have letter rows. Bunun and Tsou need no letter conversion, their Ortho94 and Ortho113 spellings agreeing; Kanakanavu genuinely differs but cannot be converted in this direction, because Ortho113 introduced letters Ortho94 did not have. This repository does not record why the Atayal, Kavalan, Rukai, Saisiyat and Seediq tables are empty. Accents are removed and capital variants derived in all cases regardless.
 
@@ -404,8 +363,7 @@ The Sentences and Stories builders also define steps 12 (withdraw a word or
 morpheme analysis the tiers do not support) and 13 (a single mirror morpheme for
 an unsegmented word); the build does not run them. Inside the Sentences and
 Stories builders, `pipeline/pol028.py` makes one sentence per reading of a record
-with a glossed optional morpheme or an optional phrase (see "Variant readings"
-under Notes and caveats), and the Stories builder applies
+with a glossed optional morpheme or an optional phrase, and the Stories builder applies
 `pipeline/audio_timing_grafts.tsv` (see the note on stories that exist twice).
 All three builders apply `pipeline/gloss_shift_repairs.tsv` (rows with status
 `accepted`), `pipeline/p2_source_repairs.xml` and
@@ -542,7 +500,7 @@ every `ʉ` became `*` (2,193 of 3,981 sentences). The 34 `l`, which Ortho113 lac
 **Phase D, markers.** For Sentences only, first
 `pipeline/split_two_renderings.py` (a translation `A / B` → a translation plus an
 alternative) and `pipeline/dedupe_bunun63.py` (report `logs/bunun63_dedupe.tsv`);
-both are described under Notes and caveats. Then, for every subcorpus:
+the second is described under Notes and caveats. Then, for every subcorpus:
 
 1. `pipeline/mark_unclear.py --placeholders CodeAndDocs/unclear_gloss_placeholders.tsv`
    (report `logs/unclear_<Subcorpus>.tsv`). It runs after the shared

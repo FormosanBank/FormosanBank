@@ -55,10 +55,6 @@ The source article is published under Creative Commons Attribution 4.0 Internati
 
 Morphology remains partial: 140 of 211 W elements have no M child, and the four unglossed footnote examples have no W tier. These produce SOFT V144 and V148 findings. The [merged corpus decision](https://github.com/FormosanBank/FormosanBank/commit/64654b68a) requires a linguistic ruling before adding the missing M analyses. [Issue #102](https://github.com/FormosanBank/FormosanBank/issues/102) was closed as not planned on September 9, 2026, without a replacement ruling. The published partial analysis is preserved.
 
-A note on segmentation notation: Li's interlinear markers (`-` and `=` for morpheme/clitic boundaries, `<...>` for infixes) are preserved in the `original` tier and in the word/morpheme tiers, where they carry the morphological analysis. The **sentence-level** `standard` tier is flattened running text with no markers — in this source the hyphen is always a morpheme boundary, never a letter (Li writes the Thao glottal stop as `ʔ`).
-
-The original tier is not a byte-for-byte copy of the print: the source corrections listed under "Source corrections" above (the `S → ʃ` / `D → ð` repairs and the English and punctuation fixes) are applied before any tier is built. The printed readings are kept in `CodeAndDocs/reviewed_examples.tsv`.
-
 ## Reproduction and processing
 
 ### How to reproduce
