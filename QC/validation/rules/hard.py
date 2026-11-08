@@ -15,6 +15,7 @@ from QC.validation._corpus_index import CorpusIndex
 from QC.validation._dialect_inventory import valid_dialects
 from QC.validation._finding import Finding, Severity
 from QC.validation._rights import load_rights_vocabulary
+from QC.validation.rules._form_text import form_text as whole_form_text
 from QC.validation.rules.soft import _carries_parsing, _children, _sentence_words, _tree_language
 
 
@@ -696,7 +697,7 @@ def _audio_clip_key(audio: etree._Element, root: etree._Element) -> tuple:
 def _original_form_text(s: etree._Element) -> str:
     for form in s.findall("FORM"):
         if form.get("kindOf") == "original" and form.get("ver") is None:
-            return " ".join((form.text or "").split())
+            return " ".join(whole_form_text(form).split())
     return ""
 
 
@@ -904,7 +905,7 @@ def _parent_form_is_null(parent: etree._Element) -> bool:
     well-formed corpora.
     """
     for child in parent:
-        if child.tag == "FORM" and (child.text or "").strip() == _NULL_SYMBOL_CHAR:
+        if child.tag == "FORM" and whole_form_text(child).strip() == _NULL_SYMBOL_CHAR:
             return True
     return False
 
