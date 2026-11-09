@@ -259,6 +259,8 @@ The validator requires `start < end`. An AUDIO without its own `file` must have 
 
 This is different from a missing FORM. A missing FORM means that no transcription is available; `<UNCLEAR/>` records that transcription was attempted but the content could not be recovered. Token-counting tools do not count it as a token.
 
+`<UNCLEAR/>` is used for glosses when the gloss is reported by the original source as unknown or unclear. This is distinct from a gloss being missing without an explanation or when the glosses and segmentations do not match up one-to-one, in which case the gloss is left blank (POL-061).
+
 ***
 
 ### Special Rules
