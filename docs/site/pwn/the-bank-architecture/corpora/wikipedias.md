@@ -89,10 +89,20 @@ In addition to the thorough work done during processing to ensure the resulting 
 
 ***
 
-### **Processing Notes**
+### **Notes and caveats**
 
 * Given the multilingual nature of Wikipedia articles, users should note the presence of occasional non-Formosan text (e.g., English characters or Chinese text). While these have been minimized, they may still appear at low frequencies.
-* The current Wikipedia XML files do not record a `dialect` attribute. New and repaired files should use `dialect="unknown"` when the source variety cannot be identified, as required by the current validator.
+
+Please beware that due to the nature of the wikipedias corpus (being collected from public online article and heavily containing non-Formosan text), there are some limitations in the corpus that should be pointed out.
+
+* In cleaning out citations, our code does have some false alarms, cutting out significant text. But that's fairly rare and not easily fixed. Below are some detected examples. Check the citation removal logs linked above if needed.
+  * Articles/Seediq/Nakahara.txt
+  * Articles/Seediq/Kobah.txt
+  * Articles/Seediq/Smangus.txt
+  * Articles/Seediq/Tausa.txt
+  * Articles/Seediq/Pratan.txt
+  * Articles/Seediq/Bubun.txt
+  * And some others. Mostly Seediq.
 
 ***
 
@@ -104,22 +114,6 @@ Although the data doesn't have associated audio or translations, it still can be
 * Useful for developing tools like spell checkers and predictive text.
 * Could be used for building surprisal and preplexity models, which would facilitate Quality Assurance of further collected data
 * A stepping stone for creating digital resources and applications, such as dictionaries, and grammar-check tools, tailored to these languages.
-
-***
-
-### **Limitations**
-
-Please beware that due to the nature of the wikipedias corpus (being collected from public online article and heavily containing non-Formosan text), there are some limitations in the corpus that should be pointed out.
-
-* in the `<FORM kindOf="standard">`, part of the standrdaization that is done to the data is replacing all u's with o's. This is because in Formosan languages, these two represent the same letter phonetically. However, since there is a low frequency occurrence of English words in the Wikipedias corpus that weren't excluded out in the processing and QC, these English words would also have u's switched to o's. For the time being it's hard to single out English words when applying that standardization. the letter u isn't that common in English, and there isn't that much English code-switching in the corpus after cleaning, so we don't expect this to be a major issue.
-* In cleaning out citations, our code does have some false alarms, cutting out significant text. But that's fairly rare and not easily fixed. Below are some detected examples. Check the citation removal logs linked above if needed.
-  * Articles/Seediq/Nakahara.txt
-  * Articles/Seediq/Kobah.txt
-  * Articles/Seediq/Smangus.txt
-  * Articles/Seediq/Tausa.txt
-  * Articles/Seediq/Pratan.txt
-  * Articles/Seediq/Bubun.txt
-  * And some others. Mostly Seediq.
 
 ***
 

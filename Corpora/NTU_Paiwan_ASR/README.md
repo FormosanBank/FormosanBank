@@ -52,7 +52,7 @@ The current public corpus contains 260 XML files from 16 speakers across Norther
   **distinct individuals**.
 
 (The 3,156 audio references are one per transcribed sentence, less the 3 sentences
-that have no `AUDIO` element (see "Notes and caveats"), plus one per stub:
+that have no `AUDIO` element, plus one per stub:
 3,101 − 3 + 58 = 3,156.)
 
 #### Two kinds of recording
@@ -147,23 +147,8 @@ names no version is 4.0).
 
 ## Notes and caveats
 
-- The very end of the audio for `02SC105-1_Belmira.xml` is silent; its last two audio segments were
-  removed from the XML for that reason.
 - Spontaneous recordings whose only transcription is the one-minute window appear as the
   `*_untranscribed.xml` stubs described above — this is expected, not missing data.
-- Three source lines that offered alternative wordings (in parentheses or with a
-  slash) were each published as two sentences, one per alternative: `a1` / `a1-alt2`
-  and `a3` / `a3-alt2` in `Paiwan/Nira/02JN106-3_Nira.xml`, and `a11` / `a11-alt2`
-  in `Paiwan/Zendar/02SN106-2_Zendar.xml`. Both copies keep the full source line in
-  the original `FORM`'s `notes` attribute ("source alternative notation expanded
-  from …"). The `-alt2` copies have no `AUDIO` element (the recording is on the
-  first copy), and the shared words are counted twice in word counts. The script
-  that made this split is not among the published scripts.
-- The published Year-1 scripts do not reproduce the published Year-1 XML exactly:
-  `CodeAndDocs/main.py` writes `TEXT/@id` as `Li-May_Pwn<Speaker>_<file>` and
-  `@source` as `Li-May Paiwan Data, …`, while the published files carry
-  `NTU_Pwn_<Speaker>_<file>` and `NTU Paiwan Data, …`. The step that made that
-  change, and the Belmira hand edit above, are not recorded in `CodeAndDocs/`.
 
 #### Privacy
 

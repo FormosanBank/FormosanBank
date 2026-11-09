@@ -30,7 +30,7 @@ phonology. It uses current FormosanBank tools; the actual build revision is
 recorded in [provenance.json](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Paiwan_Stories/CodeAndDocs/provenance.json).
 Source documents are not fetched during reproduction.
 
-## Notes and Issues
+## Notes and caveats
 
 The recovered Maljialjian passage uses `S6a`, preserving every published TEXT
 and sentence ID. Omitted or shifted Chinese translations are restored from

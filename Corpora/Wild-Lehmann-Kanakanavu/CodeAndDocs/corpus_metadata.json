@@ -1,0 +1,15 @@
+{
+  "_note": "Corpus-level values generate_xml.py writes onto every TEXT. Per-text values (title, URL, recorder, speaker) are read from each page. citation: maintainer, round 1 (2026-11-06): 'We need a single citation for the entire corpus, not one that is story-by-story. Please use Wild, Ilka 2018, Voice and transitivity in Kanakanavu. Unpubl. PhD dissertation University of Erfurt.' copyright: round 1 answer CC BY-NC 4.0.",
+  "text_id_prefix": "WildLehmann_Kanakanavu",
+  "file_prefix": "WildLehmann_Kanakanavu",
+  "language_dir": "Kanakanavu",
+  "xml_lang": "xnb",
+  "dialect": "Kanakanavu",
+  "copyright": "CC BY-NC 4.0",
+  "citation": "Wild, Ilka 2018, Voice and transitivity in Kanakanavu. Unpubl. PhD dissertation University of Erfurt.",
+  "bibtex": "@phdthesis{Wild2018Kanakanavu,author={Ilka Wild},title={Voice and transitivity in Kanakanavu},school={University of Erfurt},year={2018},note={Unpublished PhD dissertation}}",
+  "source_tsuchida_suffix": "The original transcription and analysis are published in Tsuchida, Shigeru (2003). Kanakanavu Texts (Austronesian Formosan). Osaka: Osaka Gakuin University (Endangered Languages of the Pacific Rim Publications Series A3-014).",
+  "tsuchida_ofte_note": "Tsuchida (2003) original free translation (OFTE line)",
+  "video_audio_ext": ".wav",
+  "_video_audio_ext_note": "Extension of each page's video audio as attached in the XML. Maintainer, round 3 (audio-format): \"wav\". Made from the maintainer's .m4a extraction (ffmpeg stream copy of the .mp4 audio, 2026-11-07) with: cd Audio && for f in *.m4a; do ffmpeg -n -i \"$f\" \"${f%.m4a}.wav\"; done. .wav because the bank's duration statistics (QC/utilities/update_audio_stats.py) read .wav but not .m4a."
+}

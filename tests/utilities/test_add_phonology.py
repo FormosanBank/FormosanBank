@@ -214,7 +214,7 @@ def test_does_not_inject_whitespace_into_partial_UNCLEAR(tmp_path):
             "qe qo ɕi či aw wa aj ja",
         ),
         (
-            "Zhang",
+            "TaiwanNandao",
             "Kavalan",
             "Kavalan",
             "siqulusay temawaRiku",
