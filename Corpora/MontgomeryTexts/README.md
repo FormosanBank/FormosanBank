@@ -18,7 +18,7 @@ Three Amis (`xml:lang="ami"`, `dialect="unknown"`) narrative texts published in 
 | `XML/Amis/Fire_and_Water.xml` | *NAMAR ATO NANOM* ("Fire and Water") | 11 | 100 |
 | `XML/Amis/Silo.xml` | *SIRO* ("Silo") | 11 | 86 |
 
-The article uses a 1962 SIL field transcription that it never names; it was identified afterwards (see Notes and caveats). Each file's first sentence is the text's **printed title**, which the article sets over its own word-aligned English gloss line, so the titles are published as sentences like any other.
+The article uses a 1962 SIL field transcription that it never names; it was identified afterwards (see Notes and caveats). Many thanks are owed to Hsu Cheng-Wen "Akiw", who helped identify the orthography. Each file's first sentence is the text's **printed title**, which the article sets over its own word-aligned English gloss line, so the titles are published as sentences like any other.
 
 Each file's `S1` is the text's **printed title**. The article sets each title over its own word-aligned English gloss line, in the same two-line format it uses for every numbered example, so the titles are translated text and are published as sentences like any other. `S2` onward are the article's numbered examples 1..n.
 
@@ -80,10 +80,6 @@ The status of the diacritic on `f` (which is rare — one word, `ma-sasi?af̆a?a
 #### Hyphens
 
 The import of hyphens, which are used sporadically, has not been ascertained. In the published data they are treated as morpheme boundaries: kept on the word tier, and removed from sentence-level `standard` forms so that tier reads as running text.
-
-#### Akiw's notes
-
-Many thanks are owed to Hsu Cheng-Wen "Akiw", who helped identify the orthography.
 
 ## Reproduction and processing
 
