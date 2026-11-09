@@ -1,0 +1,6 @@
+# Hugging Face dataset for this corpus's audio (QC/utilities/upload_to_hf.py reads this).
+# One dataset, files at Kanakanavu/<file> (audio_sources.json path_mode: language_file).
+# Upload with CodeAndDocs/upload_audio_to_hf.sh, which stages exactly the files the
+# XML names into Audio_hf/ and creates the dataset PRIVATE until the corpus is
+# published (POL-045).
+repo: FormosanBank/Wild-Lehmann-Kanakanavu

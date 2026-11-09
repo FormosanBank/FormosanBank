@@ -58,7 +58,7 @@ The ePark corpus was developed through collaboration between ILRDF, educators, l
 
 ***
 
-### **Corpus Notes**
+### **Notes and caveats**
 
 * In the Amis corpus of ePark, the letter b occurs a number of times, even though it isn't part of the official orthography. Specifically, there are only 4 sentences with occurrences of the letter b, and the b's occur in two words: “Coylienboy” and Coy-lien-boy (which seems to be broken down version of the first word). Both of them are quoted, so this isn't an indication of an issue, orthography-wise, with the corpus.
 * Similar to b, there are 13 occurances in the Amis corpus of the letter z, even though it's not part of the orthography. all of the occurrences are happening in the two words Sakizaya and E-ziday, which seem to be quoted as well.

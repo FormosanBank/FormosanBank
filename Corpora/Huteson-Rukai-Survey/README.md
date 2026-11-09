@@ -76,26 +76,9 @@ The corpus is also subject to FormosanBank's
 
 ## Notes and caveats
 
-#### Import decisions
-
-**Tona 4 is two words, reversing an expert review.** Madeline Boese's August
-2026 review corrected `ḍ` to `ɖ` and restored Tona 15's literal alternate
-translation; both survive. That review also joined Tona 4's `saokwa mamitə`
-into one word; **that join has been reversed** — page 42's gloss line prints two
-columns, `very` and `fat`, and the gloss is the tie-breaker for word division.
-The standardized gloss `very.fat` that the join required has gone with it, so
-every gloss in the corpus is now the source's, with the single marked exception
-noted below. The change to already-published identifiers this caused is listed
-in the [processing notes](CodeAndDocs/README.md).
-
-**Translation shorthands become alternatives.** Four source translation
-shorthands (`S/he`, `ran/is running`) expand into same-S alternatives (POL-025).
-Naturalistic `(how to)` and `(his)` remain, and the source gloss `ACT/REAL` is
-preserved. No source sentence is removed.
-
 #### Properties of the source
 
-Four things a user should know before comparing this corpus with FormosanBank's
+Two things a user should know before comparing this corpus with FormosanBank's
 other Rukai data. All are properties of the 2003 source, not defects in the
 port.
 
@@ -116,24 +99,6 @@ comparing Maolin across corpora should expect this: of 41 Maolin word types, 23
 match the bank's spelling directly and a further 7 match once word-final
 doubling is collapsed. Whether the doubling is phonemic length or predictable
 final lengthening is unresolved.
-
-**The particle `na` is never glossed.** All seven occurrences are blank in the
-source's aligned display and no meaning has been coined for them: the word, and
-its morpheme where the sentence is parsed, carry a FORM and no translation.
-Standardizing these glosses is left for a future pass. Seven further word-gloss
-cells are blank for the same reason, and Tona 9's `a-kakə` carries one fused
-source gloss `1S.TOP` for two morphemes without either being given an invented
-meaning.
-
-**One gloss is inferred, not from the source.** Page 43 leaves the `ki` column
-of Tona 14 blank. Every other `ki` in the corpus — six of them — is glossed
-`NOM`, and none is glossed anything else, so `NOM` is supplied here. It is the only gloss in the
-corpus that is not the source's, and it is marked in the data with a `notes`
-attribute saying so.
-
-**Case marking differs from the bank's other Rukai sources.** Huteson glosses
-`ki` as `NOM`; ePark and NTUFormosanCorpus gloss it
-`OBL` or `GEN`, never `NOM`. The source's own analysis is preserved.
 
 ## Reproduction and processing
 

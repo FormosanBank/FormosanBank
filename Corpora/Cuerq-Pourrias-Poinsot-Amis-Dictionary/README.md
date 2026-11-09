@@ -114,11 +114,6 @@ covered by the dictionary's licence. This section records source evidence and sc
 
 ## Notes and caveats
 
-**Spelling.** The book uses a Church-style Amis spelling: `g` for ŋ, `o` where Southern Amis is now written `u`, and
-`f` where Southern Amis now writes `v`. The standardized tier converts this to the Ortho113 standard: `g`→`ng` throughout,
-and `o`→`u` and `f`→`v` in the Southern files. The compiler wrote Sakizaya in the same spelling, and the Sakizaya
-standard tier is converted with `g`→`ng`, `o`→`u`, `f`→`b`, `r`→`l`.
-
 **One entry per form.** A head word and each form listed with it (derived forms, `=` equivalents, and pairs of forms
 printed with one shared definition) are separate entries with the same translation. Forms that differ by one or two
 letters within one entry and dialect, with identical translations, are kept together as alternative spellings of one
@@ -128,46 +123,7 @@ from them.
 **Dialect labels are the book's.** Where the book labels a reading with a variety, that reading appears only in that
 variety's file. Words with no label of their own inherit the label of the head word they are listed under.
 
-**Translations in other languages.** Scientific names printed in the entries are kept as Latin translations, and English,
-French and German names as translations in those languages, each marked in its notes. The compiler's "(?)" is kept as the
-note "translation uncertain".
-
-**Known gaps.** 54 printed lines were marked blank by mistake in the 2020 transcription and are not yet in the corpus. Ten
-entries that could not be read with confidence were left out. About 25 entries mix a dialect label with several Amis forms
-in a way the book does not make unambiguous, and some Amis phrases quoted inside Chinese definitions remain in notes. All
-of these are listed in the corpus README for future work.
-
-#### Open issues
-
-The maintainer decided on 2026-10-17 to publish what is built now and leave these for later. Each item says where it
-stands and how to pick it up.
-
-1. **54 printed lines the 2020 volunteers marked blank, but which have text on the scan.** They are not in the data yet.
-   A student transcription page is ready: https://claude.ai/artifact/2nBDcNWUcujmqFkNzTW71k (the maintainer must share
-   it). Each card shows five scan lines and the database text of the lines above and below. The student types the
-   missing line, downloads their work as a JSON file (`format: poinsot-blank-lines/1`, edits keyed `p###-l##`), and can
-   reload a partial file to continue. The card list is in `CodeAndDocs/data/blank_line_transcription_cards.json` and
-   the page template in `CodeAndDocs/transcription_page/template.html`. To apply: check each transcription against the
-   scan, then add it to `restored_lines.tsv` (page, line, the source line it follows, text, evidence). Some may
-   continue the entry above rather than start a new one; in that case join them through `line_wraps.tsv` or a text
-   correction. Pages: 23, 77, 90, 126, 164, 293, 315, 317, 341, 342, 346, 356, 358, 359, 363, 365, 366, 371–373, 375,
-   377, 379, 380, 383–385, 455, 460, 469, 480, 489, 491, 507, 514, 517, 519–522, 529, 530, 572.
-2. **25 lines where a dialect marker shares a `；` piece with Amis forms or examples**, so the scope rule doesn't settle
-   which words it marks. The build applies the scope rule as written, which may be wrong for these. Source lines
-   (`pourrias-poinsot.txt`): 9058, 10491, 10649, 11394, 11960, 12258, 12279, 12453, 12542, 12550, 12564, 13375,
-   14276, 15332, 15352, 15498, 15581, 15585, 15687, 15773, 16002, 16231, 16861, 17023, 17567. To decide one, record
-   it in `marker_scope.tsv` (`accepted`), or give its result in `card_rulings.json` (`corrected`). The two failing
-   tests then pass.
-3. **30 lines with Amis text inside a Chinese translation**, often a whole Amis sentence the parser didn't recognise as
-   an example. Until decided, each run is cut from the Chinese and kept in a note `source text: …`. They are listed in
-   `latin_runs.tsv` with class `amis-in-chinese`. Source lines: 103, 1368, 3234, 3370, 3766, 4514, 4662, 4775, 4898,
-   5238, 5311, 5869, 9909, 11034, 11145, 11961, 12053, 12971, 13154, 13885, 13987, 14260, 14574, 15083, 15478,
-   15881, 16607, 16756, 16886, 17254. Per line, decide whether the run stays in the Chinese (class `keep`), becomes an
-   example (`card_rulings.json`), or stays a note (class `note`).
-4. **Line 4827** (`hakowa = hacowa：很多 …`) starts on the same printed line (p.157 l.24) where line 4826 ends. It looks like
-   a real separate entry printed on the same line, but this hasn't been checked against the scan.
-5. **Line 8651** (`ldi’ - {N} = di’i：睡在別人旁邊 Ido = rdo：滿的；…`): `Ido` sits among `l`-words under the head `ldi’`,
-   so the book may print `ldo` (a typed capital I for a lowercase l). Kept as typed; not checked against the scan.
+**Known gaps.** 54 printed lines were marked blank by mistake in the 2020 release and are not yet in the corpus. Ten entries that could not be read with confidence were left out. About 25 entries mix a dialect label with several Amis forms in a way the book does not make unambiguous, and some Amis phrases quoted inside Chinese definitions are kept in notes rather than as examples.
 
 ## Reproduction and processing
 
@@ -344,7 +300,7 @@ is lost (every source line, Amis word and Chinese run appears somewhere), the ru
 or rejected with a reason (53: 10 ruled exclusions in `exclusions.tsv`, 43 printed continuations joined to the line
 above in `line_wraps.tsv`). Current result: **61 of 63 pass**. The 2 failing tests
 (`test_mixed_marker_pieces_are_accounted_for`, `test_every_item_in_a_dialect_file_was_marked_with_that_dialect`) are the
-25 unruled mixed-marker lines under Open issues (Notes and caveats). They are expected to fail until those lines are decided.
+25 unruled mixed-marker lines listed under “Known gaps” in Notes and caveats. They are expected to fail until those lines are decided.
 
 #### Files
 
@@ -360,6 +316,6 @@ Everything the build needs is under `CodeAndDocs/`:
   pages 5–353 were ruled for deletion.
 - `audit_entry_format.py`: reports entries that depart from the expected format (`data/format_audit.tsv`).
   `find_glued_entries.py`: regenerates `data/line_splits.tsv`.
-- `transcription_page/`: the student transcription page for the 54 blank-marked lines (Open issues, item 1).
+- `transcription_page/`: the student transcription page for the 54 blank-marked lines.
 - `tests/`: the corpus tests.
 - `provenance.json`: the FormosanBank commit of the last build (POL-052).

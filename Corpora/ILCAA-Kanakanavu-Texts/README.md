@@ -83,46 +83,8 @@ with attribution retained here. All 48 files carry `CC BY 4.0`.
 
 ## Notes and caveats
 
-- **The standard tier is a transliteration into Ortho113.** The book writes Kanakanavu with IPA-style letters (`ʔ`, `ŋ`, `ə`). The standard tier writes `ʔ` as `'`, `ŋ` as `ng` and `ə` as `e`. It also writes `l` as `r`, as Ortho113 has a single `r`. Two distinctions are therefore lost in the standard tier: `ə` versus the rarer native `e`, and `l` versus `r`. The original tier keeps both.
-  The standard tier merges `ə` and the rarer native `e` into `e`, and `l` and `r` into `r`,
-  as Ortho113 does. The original tier keeps both distinctions.
-- Standard PHON follows Ortho113 (POL-003). The source's conditioned c/s
-  pronunciation stays in original PHON; the former private standard override
-  is retired. The two tiers therefore differ in those environments.
-- **The capital glottal stop `Ɂ` is written `ʔ`.** Four of the narratives and three introduction examples print the glottal stop with this glyph. The original tier writes it as the ordinary `ʔ`, so a search for `ʔ` finds all of them.
-  The printed capital glottal stop `Ɂ` (four narratives and three introduction examples) is written `ʔ` in the original
-  tier from the start and is then the ordinary `ʔ`. Capitalization is not phonemic, so
-  shared PHON lower-cases names.
-- **Infix brackets stay in the original sentence form, not the standard one.** The original tier keeps the book's `<um>`; the standard sentence form drops the brackets. Word and morpheme forms keep their segmentation marks (`-`, `=`, `<...>`) as printed, and the morpheme tier carries the infix as `-um-`.
-  Infix angle brackets stay in the original sentence FORM and are dropped from the standard
-  sentence FORM; W and M forms keep their segmentation marks. Hyphens are removed from the
-  standard FORM of the lexical records, too.
-- **Spelling variants the book prints in parentheses are kept as alternatives.** For example `mu-usa (= mu-kusa)` is one sentence whose word carries `mu-kusa` as an alternative reading. Nine pairs are handled this way. Where the two readings would be glossed differently, or the book prints whole optional words, the second reading is its own sentence, with the same ID plus `-opt`.
-  The source parser resolves nine spelling/pronunciation variants and the old
-  V1/V2 IDs. Tsuchida's notation key resolves ha/sua in two passages. Page 195
-  example 35 (ha/sua and iihaa/iisua) stays two S readings (maintainer, 2026-10-18).
-- **The example-23 clauses.** The book prints square brackets around the pseudo-cleft clause in examples 23a to 23d. The original sentence form shows them as parentheses; the standard form and the word and morpheme forms have none.
-  In examples 23a-d the clause brackets are written as parentheses in the original sentence
-  FORM (shared cleaning) and are absent from the standard FORM and from every W and M.
-  Clause grouping stays at S; shared cleaning normalizes its brackets to
-  parentheses and PHON omits them. These clauses are not optional material.
-- **`əhə kai` is one word.** In Naparamaci example 68 the book prints a single gloss, "interjection", under the two words, so they are published as one word and one morpheme.
-  Naparamaci example 68 prints one gloss under two words, so `əhə kai` is one W and one M.
-- **Not every sentence has word-level analysis.** The introduction's word lists and the footnote entries are single words that the book does not segment; they carry a translation and no word or morpheme tier. Only three of the introduction's lexical examples come with the book's own morpheme analysis.
-  Introduction lexical material has two transcription groups (Asai 2026 and
-  Tsuchida 1976). Table 1 is not published (see above).
-  Table 2's 16 pronouns have a
-  verified segmental route; their stress marks remain in original FORM.
-  Supplemental records preserve printed readings; only three analyzed prose
-  examples supply W/M tiers.
+- **Not every record is a sentence.** The introduction's word lists and the footnote entries are single words; they carry a translation and no word-by-word or morpheme analysis (W and M elements).
 - **Not included.** The introduction's Table 1 (historical transcriptions by Tsuchida 1969, Szakos 1999 and the 2007 Basic Vocabulary) and two prose examples next to it are left out by decision. The village-labelled phonetic comparison on page 15 is also left out, because the book gives no written form for it.
-  The village-labelled phonetic comparison remains open in the ledger.
-- **Printed translation parentheses are kept.** The book's own clarifications, for example `Thereupon, (the girl) left`, stay in the English translations. One translation prints an em dash that the shared cleaning step writes as a hyphen.
-  One English translation prints an em dash that shared cleaning writes as a hyphen
-  (`clean_xml.py` writes every dash as `-`); the maintainer ruled to leave it.
-- **Repeated passages are kept.** Repetition within a story is source data and is not removed.
-- The earlier ten-page expert review and historical samples cover those records
-  only. They do not establish a current visual review of every page or reading.
 
 ## Reproduction and processing
 
@@ -202,7 +164,7 @@ It never certifies a visual review.
    - writes `ILCAA_KanakanavuTexts_footnote_lexemes.xml` (57 S) from [footnote_lexemes.jsonl](CodeAndDocs/footnote_lexemes.jsonl) via `scripts/footnote_lexemes.py`. It stops if the footnote inventory differs from the PDF, if a footnote's SHA-256 has changed, or if a recorded form or translation does not appear in its footnote. Each S has the form, any printed variants as `FORM ver="alt"`, its translations, and the footnote text in the FORM's `notes`;
    - writes `ILCAA_KanakanavuTexts_intro_Asai2026.xml` (53 S) and `ILCAA_KanakanavuTexts_intro_Tsuchida1976.xml` (16 S) from [introduction_lexemes.json](CodeAndDocs/introduction_lexemes.json) via `scripts/introduction_lexemes.py`. It stops if any of the 11 listed pages' text has changed or a recorded reading is not on its page. The three records with the book's own analysis get one W with its M tier;
    - writes coverage and notation reports (`source_unit_coverage.csv`, `source_notation_audit.csv`) into the staging folder.
-6. **Shared cleaning:** `QC/cleaning/clean_xml.py --corpora_path <staging>/build/xml_drafts`. Among other normalizations it writes square brackets as parentheses and every dash as `-` (the example-23 brackets and the em dash in Notes and caveats). Its warnings file lands in the staging folder and is not published.
+6. **Shared cleaning:** `QC/cleaning/clean_xml.py --corpora_path <staging>/build/xml_drafts`. Among other normalizations it writes square brackets as parentheses and every dash as `-`. Its warnings file lands in the staging folder and is not published.
 7. **For each XML file, in turn:**
    - `QC/utilities/standardize.py --tsv_path Orthographies/ConversionTables/Kanakanavu_Asai2026_113.tsv --target_column standard --segmented-without-m-tier --corpora_path <file>` writes the standard FORMs. The table maps `ŋ`→`ng`, `l`→`r`, `r`→`r`, `ʔ`→`'`, `ə`→`e`. `--segmented-without-m-tier` removes the morpheme hyphens from the standard S FORM of the lexical records, which have no M tier (maintainer, 2026-10-18: the hyphens "should be deleted in the standard S FORM");
    - `scripts/strip_standard_brackets.py <file>` removes `<` and `>` from every sentence-level standard FORM, and also `(` and `)` from the standard FORMs of examples 23a-d (the `clause_brackets` rows of `notation_decisions.tsv`). Original FORMs are not touched;

@@ -94,18 +94,11 @@ the signature or grant date.
 - **204 sentences follow the dictionary editors' later revision, not the
   printed book** (see "Upstream editors' edits" under
   [Per-sentence decisions](#per-sentence-decisions)).
-- Source field 35128 still contains an unexplained `久` on the publisher's page
-  and stays excluded.
+
 - The upstream editors have also added about 900 examples that are not in the
   printed book. They are not included.
 - The source history includes both PDF-to-TXT and DOCX conversion. A clean JSON
   file does not establish that it is free of earlier extraction errors.
-- The original tier keeps the source's spelling, which distinguishes `o` and
-  `u` and mixes legacy `g` with current `ng` for /ŋ/; the standard tier
-  converts both (see [docs/orthography_evidence.md](docs/orthography_evidence.md)).
-- The files under `data/formosanbank_audit/` are a historical ledger from an
-  earlier parser (their own READMEs say so: 49,179 sentences, 22 rejected
-  records). They do not describe the current build.
 
 ## Reproduction and processing
 
