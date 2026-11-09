@@ -86,10 +86,12 @@ the signature or grant date.
 ## Notes and caveats
 
 - **204 sentences follow the dictionary editors' later revision, not the
-  printed book** (see "Upstream editors' edits" under
-  [Per-sentence decisions](#per-sentence-decisions)).
-- **916 sentences (`S49424`–`S50337`) are examples the dictionary editors
-  added; the printed book does not have them.**
+  printed book** (their entries in
+  [`safolu_source_overrides.json`](CodeAndDocs/safolu_source_overrides.json)
+  have reasons beginning "Upstream editors' edit").
+- **About 18,300 sentences (36%) are examples the dictionary's editors added
+  after 2022; the printed book does not have them.** Nothing in the source marks
+  which ones, so the XML does not either.
 - The source history includes both PDF-to-TXT and DOCX conversion. A clean JSON
   file does not establish that it is free of earlier extraction errors.
 
@@ -222,51 +224,20 @@ In order (`CodeAndDocs/generate_xml.sh`), all inside a temporary staging folder
 
 #### Per-sentence decisions
 
-Every entry in `safolu_source_overrides.json` names the cleaned source text it
-expects (the build stops if upstream text no longer matches) and its reason.
-343 entries: 48 earlier source repairs, 288 sentences decided in the
-maintainer's review (2026-10-16/17), and 7 of the editors' added examples
-(2026-11-09):
+`generate_xml.py` reads every per-sentence decision from these files; each
+entry gives its reason.
 
-- **Parentheses and slashes (48):** 41 parenthesis examples, 5 slash
-  alternatives, S42869 (keeps its parenthetical in FORM and translation) and
-  S07064 (two sentences). Each is kept as printed, has the parenthetical removed,
-  becomes one sentence with an alternative FORM (`ver="alt"`), or becomes two
-  sentences, as decided per example. Rule used for the undecided ones: "if the
-  paranthetical contains a single word that differs from the previous word in
-  less than 25% of it's letters AND there is no paranthetical in the
-  translation, then also go with `One S + alt variant`."
-- **Translations (36):** where the g0v source broke an example at an internal
-  `!` or `?` (the second Amis clause landed in the Chinese field and the Chinese
-  was cut), the full translation from the printed text
-  ([miaoski/amis-safolu](https://github.com/miaoski/amis-safolu) `dict/*.txt`)
-  is used, or the maintainer's own text.
-- **Upstream editors' edits (204).** Since our snapshot (2026-05-08) the
-  dictionary's editors have revised examples in `g0v/amis-moedict` (pinned here at
-  `4cb82539d`, 2026-10-16). Maintainer: "Look at fixes by the editors since our
-  download. See if there are any that we don't have. If so, adopt their fix."
-  Edits changing at most 3 letters and 1 character were adopted; Chinese-only
-  edits were adopted unless they only added a parenthetical; where both the
-  Amis and the Chinese changed by 25% or more, the editors' version is published
-  as a separate sentence (`-opt`) beside the original; the rest were decided one
-  by one. **These 204 sentences follow the editors' revision, not the printed
-  book.** List them with
-  `grep -o '"reason": "Upstream editors[^"]*"' CodeAndDocs/safolu_source_overrides.json`
-  (each entry's `expected_cleaned_*` fields hold the pinned text, `emitted` what
-  is published).
-- **Printed examples the source lacked (4):** `S49420`–`S49423` (mikapkapan,
-  miparoay, miwingawingay, paro), with the editors' Chinese; each entry in
-  `printed_additions.json` records where the book prints it.
-- **Examples the editors added (914):** the 918 examples in `docs/s` at
-  `4cb82539d` that are not in the snapshot, less the 4 that equal a printed
-  addition, captured by
-  [`upstream_additions.py`](CodeAndDocs/upstream_additions.py) into
-  `upstream_additions.json`. Entry by entry, an example only in the snapshot is
-  paired with the most similar example only at the pin (difflib ratio of Amis +
-  Chinese above 0.6) and counted as an edit (above); every unpaired example at
-  the pin is an addition.
-  Recapture with `python3 CodeAndDocs/upstream_additions.py /path/to/clean/amis-moedict`
-  (the checkout must be at `4cb82539d`).
-
-The review itself (questions, examples and answers) is recorded in FormosanBank's
-`claudeplans/sweep-qa-decision-log.md`.
+- [`safolu_source_overrides.json`](CodeAndDocs/safolu_source_overrides.json):
+  343 source fields that are repaired or decided. Each entry names the cleaned
+  source text it expects (the build stops if upstream no longer matches) and
+  what is published (`emitted`). The rules used for whole groups of entries are
+  in the file's `description`.
+- [`printed_additions.json`](CodeAndDocs/printed_additions.json): the 4
+  examples the book prints but the source lacks, with where the book prints
+  each.
+- [`upstream_additions.json`](CodeAndDocs/upstream_additions.json): the 914
+  examples the editors added after the snapshot, captured by
+  [`upstream_additions.py`](CodeAndDocs/upstream_additions.py), whose header
+  gives the rule that tells an addition from an edit.
+- [`legacy_expansion_ids.json`](CodeAndDocs/legacy_expansion_ids.json): ids
+  that earlier builds gave to extra sentences, kept fixed.
