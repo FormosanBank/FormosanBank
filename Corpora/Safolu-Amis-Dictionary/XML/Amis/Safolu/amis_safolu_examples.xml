@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TEXT id="amis_safolu_examples" citation="Tsai, Chung-Han (Safolu Kacaw Lalanges). (n.d.). Amis dictionary. Provided to the g0v Amis Moedict project." BibTeX_citation="@misc{tsai_amis_dictionary, author={{Tsai Chung-Han (Safolu Kacaw Lalanges)}}, title={Amis dictionary}, year={n.d.}, note={Provided to the g0v Amis Moedict project}}" copyright="CC BY-NC-SA 3.0 TW" xml:lang="ami" source="Safolu/Tsai dictionary, g0v/amis-moedict@e7c6976a0766e9b0aeb7083e2c06db60f5485252 docs/s." glottocode="amis1246" dialect="Coastal">
+<TEXT id="amis_safolu_examples" citation="Tsai, Chung-Han (Safolu Kacaw Lalanges). (n.d.). Amis dictionary. Provided to the g0v Amis Moedict project." BibTeX_citation="@misc{tsai_amis_dictionary, author={{Tsai Chung-Han (Safolu Kacaw Lalanges)}}, title={Amis dictionary}, year={n.d.}, note={Provided to the g0v Amis Moedict project}}" copyright="CC BY-NC-SA 3.0 TW" xml:lang="ami" source="Safolu/Tsai dictionary, g0v/amis-moedict@e7c6976a0766e9b0aeb7083e2c06db60f5485252 docs/s, with the editors' later revisions and additions at 4cb82539d7e51e7211e262d4dbaecaa41a772b2f." glottocode="amis1246" dialect="Coastal">
     <S id="S00001">
         <FORM kindOf="original">O maan ko 'a'acaen iso saw?</FORM>
         <PHON kindOf="original">o maan ko ʡaʡaʦaən iso saw</PHON>
@@ -345862,10 +345862,17 @@
         <TRANSL xml:lang="zho">一定會，肯定</TRANSL>
     </S>
     <S id="S49456">
-        <FORM kindOf="original">caay ka 'idi/caay ka 'omla.</FORM>
-        <PHON kindOf="original">ʦaaj ka ʡiɬiʦaaj ka ʡomɾa</PHON>
-        <FORM kindOf="standard">caay ka 'idi/caay ka 'omla.</FORM>
-        <PHON kindOf="standard">ʦaaj ka ʡi[ɬ|ɮ]iʦaaj ka ʡ[o|u]mɾa</PHON>
+        <FORM kindOf="original">caay ka 'idi.</FORM>
+        <PHON kindOf="original">ʦaaj ka ʡiɬi</PHON>
+        <FORM kindOf="standard">caay ka 'idi.</FORM>
+        <PHON kindOf="standard">ʦaaj ka ʡi[ɬ|ɮ]i</PHON>
+        <TRANSL xml:lang="zho">慷慨。</TRANSL>
+    </S>
+    <S id="S49456-opt">
+        <FORM kindOf="original">caay ka 'omla.</FORM>
+        <PHON kindOf="original">ʦaaj ka ʡomɾa</PHON>
+        <FORM kindOf="standard">caay ka 'omla.</FORM>
+        <PHON kindOf="standard">ʦaaj ka ʡ[o|u]mɾa</PHON>
         <TRANSL xml:lang="zho">慷慨。</TRANSL>
     </S>
     <S id="S49457">
@@ -345932,17 +345939,31 @@
         <TRANSL xml:lang="zho">沒恥辱，不適當;不知羞恥。</TRANSL>
     </S>
     <S id="S49466">
-        <FORM kindOf="original">caay ka herek/caay ka lepon.</FORM>
-        <PHON kindOf="original">ʦaaj ka ħərəkʦaaj ka ɾəpon</PHON>
-        <FORM kindOf="standard">caay ka herek/caay ka lepon.</FORM>
-        <PHON kindOf="standard">ʦaaj ka ħərəkʦaaj ka ɾəp[o|u]n</PHON>
+        <FORM kindOf="original">caay ka herek.</FORM>
+        <PHON kindOf="original">ʦaaj ka ħərək</PHON>
+        <FORM kindOf="standard">caay ka herek.</FORM>
+        <PHON kindOf="standard">ʦaaj ka ħərək</PHON>
+        <TRANSL xml:lang="zho">未完成的。</TRANSL>
+    </S>
+    <S id="S49466-opt">
+        <FORM kindOf="original">caay ka lepon.</FORM>
+        <PHON kindOf="original">ʦaaj ka ɾəpon</PHON>
+        <FORM kindOf="standard">caay ka lepon.</FORM>
+        <PHON kindOf="standard">ʦaaj ka ɾəp[o|u]n</PHON>
         <TRANSL xml:lang="zho">未完成的。</TRANSL>
     </S>
     <S id="S49467">
-        <FORM kindOf="original">caay ka kihar/awaay ko kihar.</FORM>
-        <PHON kindOf="original">ʦaaj ka kiħarawaaj ko kiħar</PHON>
-        <FORM kindOf="standard">caay ka kihar/awaay ko kihar.</FORM>
-        <PHON kindOf="standard">ʦaaj ka kiħarawaaj k[o|u] kiħar</PHON>
+        <FORM kindOf="original">caay ka kihar.</FORM>
+        <PHON kindOf="original">ʦaaj ka kiħar</PHON>
+        <FORM kindOf="standard">caay ka kihar.</FORM>
+        <PHON kindOf="standard">ʦaaj ka kiħar</PHON>
+        <TRANSL xml:lang="zho">工作上無憂無慮的人。</TRANSL>
+    </S>
+    <S id="S49467-opt">
+        <FORM kindOf="original">awaay ko kihar.</FORM>
+        <PHON kindOf="original">awaaj ko kiħar</PHON>
+        <FORM kindOf="standard">awaay ko kihar.</FORM>
+        <PHON kindOf="standard">awaaj k[o|u] kiħar</PHON>
         <TRANSL xml:lang="zho">工作上無憂無慮的人。</TRANSL>
     </S>
     <S id="S49468">
@@ -346065,10 +346086,17 @@
         <TRANSL xml:lang="zho">不;沒這會事!</TRANSL>
     </S>
     <S id="S49485">
-        <FORM kindOf="original">caay ko ci'oningay/caay ko cikaditay.</FORM>
-        <PHON kindOf="original">ʦaaj ko ʦiʡoniŋajʦaaj ko ʦikaɬitaj</PHON>
-        <FORM kindOf="standard">caay ko ci'oningay/caay ko cikaditay.</FORM>
-        <PHON kindOf="standard">ʦaaj k[o|u] ʦiʡ[o|u]niŋajʦaaj k[o|u] ʦika[ɬ|ɮ]itaj</PHON>
+        <FORM kindOf="original">caay ko ci'oningay.</FORM>
+        <PHON kindOf="original">ʦaaj ko ʦiʡoniŋaj</PHON>
+        <FORM kindOf="standard">caay ko ci'oningay.</FORM>
+        <PHON kindOf="standard">ʦaaj k[o|u] ʦiʡ[o|u]niŋaj</PHON>
+        <TRANSL xml:lang="zho">潔白的;無瑕疵的。</TRANSL>
+    </S>
+    <S id="S49485-opt">
+        <FORM kindOf="original">caay ko cikaditay.</FORM>
+        <PHON kindOf="original">ʦaaj ko ʦikaɬitaj</PHON>
+        <FORM kindOf="standard">caay ko cikaditay.</FORM>
+        <PHON kindOf="standard">ʦaaj k[o|u] ʦika[ɬ|ɮ]itaj</PHON>
         <TRANSL xml:lang="zho">潔白的;無瑕疵的。</TRANSL>
     </S>
     <S id="S49486">
@@ -346170,10 +346198,17 @@
         <TRANSL xml:lang="zho">不屈服;禁止;禁制。</TRANSL>
     </S>
     <S id="S49500">
-        <FORM kindOf="original">caay pitengil(caay picinga).</FORM>
-        <PHON kindOf="original">ʦaaj pitəŋiɾʦaaj piʦiŋa</PHON>
-        <FORM kindOf="standard">caay pitengil(caay picinga).</FORM>
-        <PHON kindOf="standard">ʦaaj pitəŋiɾʦaaj piʦiŋa</PHON>
+        <FORM kindOf="original">caay pitengil.</FORM>
+        <PHON kindOf="original">ʦaaj pitəŋiɾ</PHON>
+        <FORM kindOf="standard">caay pitengil.</FORM>
+        <PHON kindOf="standard">ʦaaj pitəŋiɾ</PHON>
+        <TRANSL xml:lang="zho">不服從的;不聽話。</TRANSL>
+    </S>
+    <S id="S49500-opt">
+        <FORM kindOf="original">caay picinga.</FORM>
+        <PHON kindOf="original">ʦaaj piʦiŋa</PHON>
+        <FORM kindOf="standard">caay picinga.</FORM>
+        <PHON kindOf="standard">ʦaaj piʦiŋa</PHON>
         <TRANSL xml:lang="zho">不服從的;不聽話。</TRANSL>
     </S>
     <S id="S49501">
@@ -348232,7 +348267,7 @@
         <PHON kindOf="original">mipispis kako to papaħ no ɬatəŋ</PHON>
         <FORM kindOf="standard">Mipispis kako to papah no dateng.</FORM>
         <PHON kindOf="standard">mipispis kak[o|u] t[o|u] papaħ n[o|u] [ɬ|ɮ]atəŋ</PHON>
-        <TRANSL xml:lang="zho">我把菜葉一片一片)摘下來。</TRANSL>
+        <TRANSL xml:lang="zho">我把菜葉一片一片摘下來。</TRANSL>
     </S>
     <S id="S49796">
         <FORM kindOf="original">Mirenasan a fonos.</FORM>
@@ -349416,6 +349451,13 @@
         <FORM kindOf="standard">Cikaka ko pa'ayaway to tayal.</FORM>
         <PHON kindOf="standard">ʦikaka k[o|u] paʡajawaj t[o|u] tajaɾ</PHON>
         <TRANSL xml:lang="zho">先開工的是哥哥。</TRANSL>
+    </S>
+    <S id="S49966">
+        <FORM kindOf="original" notes="(徒: 2-45)">Pa'edeng, pa'edendeg han a pafeli.a</FORM>
+        <PHON kindOf="original">paʡəɬəŋ paʡəɬənɬəŋ ħan a pa[f|v|b]əɾia</PHON>
+        <FORM kindOf="standard">Pa'edeng, pa'edendeng han a pafeli.a</FORM>
+        <PHON kindOf="standard">paʡə[ɬ|ɮ]əŋ paʡə[ɬ|ɮ]ən[ɬ|ɮ]əŋ ħan a pafəɾia</PHON>
+        <TRANSL xml:lang="zho">按照各人的需要給。</TRANSL>
     </S>
     <S id="S49967">
         <FORM kindOf="original">Paciyor cingra caay ka dademak.</FORM>

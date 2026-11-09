@@ -349,6 +349,7 @@ def extract_generated_moedict_examples(
                     raw_example=raw_example,
                     notes=record_notes,
                     variants=tuple(normalize_bang_spacing(v) for v in override["emitted"][index - 1].get("variants", [])) if override else (),
+                    form_notes=override["emitted"][index - 1].get("form_notes") if override else None,
                 )
             )
 
@@ -375,7 +376,7 @@ def safolu_corpus():
         citation="Tsai, Chung-Han (Safolu Kacaw Lalanges). (n.d.). Amis dictionary. Provided to the g0v Amis Moedict project.",
         bibtex_citation="@misc{tsai_amis_dictionary, author={{Tsai Chung-Han (Safolu Kacaw Lalanges)}}, title={Amis dictionary}, year={n.d.}, note={Provided to the g0v Amis Moedict project}}",
         copyright="CC BY-NC-SA 3.0 TW",
-        source=f"Safolu/Tsai dictionary, g0v/amis-moedict@{manifest['source_commit']} docs/s.",
+        source=f"Safolu/Tsai dictionary, g0v/amis-moedict@{manifest['source_commit']} docs/s, with the editors' later revisions and additions at {UPSTREAM_COMMIT}.",
         glottocode="amis1246", dialect="Coastal",
         extraction_note="Every source example field is retained or recorded as unresolved or apparatus. Shared tools own downstream processing.",
         source_repositories={"g0v/amis-moedict": manifest["source_commit"]},

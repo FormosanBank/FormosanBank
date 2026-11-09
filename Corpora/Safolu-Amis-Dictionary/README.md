@@ -1,6 +1,6 @@
 # Safolu Amis Dictionary
 
-The Safolu Amis Dictionary is a collection of 50,316 Amis example sentences with Mandarin (Chinese) translations, drawn from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵). The data comes from the generated JSON of the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project (`docs/s`; see [amis.moedict.tw](https://amis.moedict.tw/)), checked against the dictionary's printed text.
+The Safolu Amis Dictionary is a collection of 50,322 Amis example sentences with Mandarin (Chinese) translations, drawn from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵). The data comes from the generated JSON of the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project (`docs/s`; see [amis.moedict.tw](https://amis.moedict.tw/)), checked against the dictionary's printed text.
 Safolu Kacaw Lalanges (Tsai Chung-Han) dictionary examples, distributed by
 the g0v Amis Moedict project. Virginia Fey and Poinsot are separate corpora.
 
@@ -27,28 +27,23 @@ No source W/M annotation or audio.
 raw example, definition, title and stable source locator. The examples the
 dictionary editors added upstream after that snapshot are held, in the same raw
 form, in [CodeAndDocs/upstream_additions.json](CodeAndDocs/upstream_additions.json)
-(914 examples at `g0v/amis-moedict` commit `4cb82539d`). Headwords and
+(914 examples at `g0v/amis-moedict` commit `4cb82539d`). The g0v project
+files every example in `docs/s` under 蔡中涵大辭典 (Tsai Chung-Han's dictionary),
+including the examples its dictionary editors have added since the 2022 import,
+and this corpus follows that labelling. Headwords and
 definitions provide context; there is no word segmentation or glossing, so the
 corpus has no W or M tier.
 
-The build emits 50,438 records: 49,522 from the 49,419 snapshot fields (20 fields
+The build emits 50,444 records: 49,522 from the 49,419 snapshot fields (20 fields
 are excluded and recorded; some fields yield two sentences), 4 examples added
-from the printed book, and 912 of the editors' 914 added examples (2 are excluded
-and recorded). Shared dictionary dedup then removes 122 exact duplicates, leaving
-**50,316 sentences**. Published ids stay fixed; a second
+from the printed book, and 918 from the editors' 914 added examples (1 is
+excluded and recorded; some yield two sentences). Shared dictionary dedup then
+removes 122 exact duplicates, leaving **50,322 sentences**. Published ids stay fixed; a second
 reading of a source example keeps the base id and adds `-opt`, `-opt3`, etc.
 
 #### Audio
 
 None.
-
-#### Changes from the previous release
-
-Compared with the previously published file (49,406 sentences):
-
-- **Added (910):** `S49424`–`S50337`, examples the dictionary editors added
-  upstream that the printed book does not have.
-- **Removed, changed:** none.
 
 ## Statistics
 
@@ -90,29 +85,22 @@ the signature or grant date.
 
 ## Notes and caveats
 
-- **1,114 sentences come from the dictionary editors' later work, not the
-  printed book:** 204 follow the editors' revision of a printed example (see
-  "Upstream editors' edits" under [Per-sentence decisions](#per-sentence-decisions)),
-  and 910 (`S49424`–`S50337`) are examples the editors added.
+- **204 sentences follow the dictionary editors' later revision, not the
+  printed book** (see "Upstream editors' edits" under
+  [Per-sentence decisions](#per-sentence-decisions)).
+- **916 sentences (`S49424`–`S50337`) are examples the dictionary editors
+  added; the printed book does not have them.**
 - The source history includes both PDF-to-TXT and DOCX conversion. A clean JSON
   file does not establish that it is free of earlier extraction errors.
 
 ## Reproduction and processing
-
-**Status:** rebuilt 2026-11-09 from the pinned source with every decision from the
-maintainer's Safolu review applied (PR #157) and the dictionary editors' added
-examples. Two rebuilds are byte-identical;
-validate_xml, validate_text and validate_glosses report 0 HARD findings.
-
-[Basecamp card](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/7112980917)
-and [corpus PR #157](https://github.com/FormosanBank/FormosanBank/pull/157).
 
 The build reads a committed snapshot of the source (49,419 example fields at `g0v/amis-moedict` commit `e7c6976`, 2026-05-08) and never fetches anything. Its steps, all in the repository:
 
 * **Parsing** into one sentence per example. Where a source field holds two readings (a parenthesised or slashed alternative), it becomes either one sentence with an alternative form or two sentences, as decided example by example in a maintainer review.
 * **Per-sentence decisions** from that review (2026-10-16/17), each recorded with its reason: full translations from the printed text where the digitised source cut them short, and decisions on 48 parenthesis and slash examples.
 * **The dictionary editors' later corrections.** The editors have kept revising the dictionary upstream since our snapshot. 204 of their edits are adopted (pinned at `g0v/amis-moedict` commit `4cb82539d`, 2026-10-16), so **these 204 sentences follow the editors' revision, not the printed book**. Four examples printed in the book but missing from the source are added.
-* **The dictionary editors' added examples.** At the same pin the editors have added 914 examples that the printed book does not have; 910 are published as `S49424`–`S50337` (one empty field and one with Chinese inside the Amis are excluded and recorded; 2 are exact duplicates).
+* **The dictionary editors' added examples.** At the same pin the editors have added 914 examples that the printed book does not have; they are published as 916 sentences, `S49424`–`S50337` (one empty field is excluded and recorded; 2 are exact duplicates).
 * **Spacing:** no space before `?` or `!`, and a space after them before the next word.
 * **Standard tier** via the Church-to-Ortho113 conversion table (Coastal), and **pronunciation** from the Church orthography table.
 * **Duplicates** are removed only when both the standard text and the translations are identical (122 sentences).
@@ -181,8 +169,8 @@ In order (`CodeAndDocs/generate_xml.sh`), all inside a temporary staging folder
    - A stray `)` / `）` at the start of a form is dropped.
    - Where an override exists for the field, the cleaned form and translation
      must equal the override's `expected_cleaned_*` text or the build stops;
-     the override's `emitted` list then gives the sentence(s), translation(s)
-     and any alternative FORMs (`ver="alt"`).
+     the override's `emitted` list then gives the sentence(s), translation(s),
+     any alternative FORMs (`ver="alt"`) and any note on the FORM (`notes`).
    - Where the form is empty, the Amis is recovered from the start of the
      Chinese field (a leading loanword note such as `(閩南語借詞)` stays with the
      translation), or from a single `` `…~ ``-marked Amis phrase inside it.
@@ -236,8 +224,9 @@ In order (`CodeAndDocs/generate_xml.sh`), all inside a temporary staging folder
 
 Every entry in `safolu_source_overrides.json` names the cleaned source text it
 expects (the build stops if upstream text no longer matches) and its reason.
-336 entries: 48 earlier source repairs, and 288 sentences decided in the
-maintainer's review (2026-10-16/17):
+343 entries: 48 earlier source repairs, 288 sentences decided in the
+maintainer's review (2026-10-16/17), and 7 of the editors' added examples
+(2026-11-09):
 
 - **Parentheses and slashes (48):** 41 parenthesis examples, 5 slash
   alternatives, S42869 (keeps its parenthetical in FORM and translation) and

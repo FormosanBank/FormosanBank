@@ -51,6 +51,23 @@ class SourceTests(unittest.TestCase):
         # the one empty upstream field is excluded and recorded
         self.assertIn(("miterakan", ["empty_form"]), [(r["entry_title"], r["reject_reasons"]) for r in self.rejected])
 
+    def test_round13_answers(self):
+        # Safolu review round 13 (2026-11-09), cards r13-*
+        for sid, first, second in (("S49456", "caay ka 'idi.", "caay ka 'omla."), ("S49466", "caay ka herek.", "caay ka lepon."),
+                                   ("S49467", "caay ka kihar.", "awaay ko kihar."), ("S49485", "caay ko ci’oningay.", "caay ko cikaditay."),
+                                   ("S49500", "caay pitengil.", "caay picinga.")):
+            with self.subTest(sid=sid):  # "Two sentences"
+                self.assertEqual((self.by_id[sid].form, self.by_id[sid + "-opt"].form), (first, second))
+                self.assertEqual(self.by_id[sid].translations, self.by_id[sid + "-opt"].translations)
+        row = self.by_id["S49966"]  # "Publish; reference to FORM notes"
+        self.assertEqual((row.form, row.form_notes, row.translations[0].text),
+                         ("Pa'edeng, pa'edendeg han a pafeli.a", "(徒: 2-45)", "按照各人的需要給。"))
+        form = helpers.build_text_tree(self.corpus, [row]).getroot().find("S/FORM")
+        self.assertEqual(form.attrib, {"kindOf": "original", "notes": "(徒: 2-45)"})
+        self.assertEqual(self.by_id["S49795"].translations[0].text, "我把菜葉一片一片摘下來。")  # "Remove the )"
+        self.assertEqual(self.corpus.source, "Safolu/Tsai dictionary, g0v/amis-moedict@e7c6976a0766e9b0aeb7083e2c06db60f5485252 docs/s, "
+                         "with the editors' later revisions and additions at 4cb82539d7e51e7211e262d4dbaecaa41a772b2f.")
+
     def test_same_spelling_different_meanings_survive(self):
         first, second = self.by_id["S00110"], self.by_id["S00112"]
         self.assertEqual(first.form, "O 'a'atalen ko felac.")
