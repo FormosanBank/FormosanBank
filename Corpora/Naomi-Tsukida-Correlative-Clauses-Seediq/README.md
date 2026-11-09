@@ -64,8 +64,8 @@ Creative Commons Attribution 4.0 International (CC BY 4.0).
   teaching materials do not (deha / dha ‘two’, sehiga / shiga ‘yesterday’), and
   these are kept, because which ones to drop is not a letter-for-letter rule.
 - **Orthography.** Tsukida does not specify the orthography used. References to
-  papers by her that we have not seen suggest some differences in phonemes
-  assumed than the standard orthographies, but we cannot yet confirm.
+  papers by her that we have not seen suggest that she assumes some phonemes
+  differently from the standard orthographies, but we cannot yet confirm this.
 
 ## Reproduction and processing
 
