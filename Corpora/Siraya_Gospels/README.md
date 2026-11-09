@@ -54,11 +54,9 @@ The existing public-domain designation covers the historical Gospels and retaine
 
 ## Notes and caveats
 
-- Dutch OCR remains incomplete and error-prone, especially Matthew. The published instruction to retain it for now but not use it remains in effect. Nine verse readings are absent: John 11:6; Matthew 5:19, 9:26, 10:10, 10:41, 11:7, 11:29, 11:30 and 16:11. Character confusions such as b/v and f/long-s remain; this update repairs known alignment regressions and does not claim a complete Dutch transcription review. The Dutch transcription remains incomplete and error-prone, particularly in Matthew. It is retained under the existing decision but should not be used without further correction; b/v confusion is common. Nine Dutch readings are missing.
-- John 1 divides modern verse 38 into printed verses 38 and 39. English and Chinese are split at that boundary, with later references offset through the end of the chapter.
-- Four verses absent from this CUV edition's main text have no Chinese translation: Matthew 18:11 and 23:14, John 5:4 and 7:53. Available source footnote readings are retained as notes.
+- The Dutch translations are uncorrected OCR: incomplete and error-prone, especially in Matthew (b/v and f/long-s confusions are common), and nine verses have no Dutch reading (John 11:6; Matthew 5:19, 9:26, 10:10, 10:41, 11:7, 11:29, 11:30, 16:11). Do not rely on the Dutch without checking the scan.
+
 - Siraya orthography is **not checked** under POL-058 because its standard is blank. Historical accents, meaningful hyphens, authorial parentheses and the combining `æ̈` glyph are retained. John 12:28 and 12:33 preserve unbalanced punctuation visible in the scan. PHON and W/M gloss tiers are unavailable. Siraya has no designated modern standard, so orthography comparison is **not checked** under POL-058. The copied standard tier retains the approved fixed line-break corrections; PHON is absent.
-- Historical spelling and rare combining-diaeresis letters remain, including the restored John 5:11 glyph. John 12:28 and 12:33 retain punctuation imbalances visible in the scan.
 
 ## Reproduction and processing
 

@@ -161,56 +161,9 @@ evidence pointer belong here, not in the attribute.
   hyphenated onto the preceding word (`sapah-mu`, elsewhere `sapah mu`). The
   significance of this is not currently clear. The standard tier keeps the book's spelling; it removes the morpheme hyphens, so the pronoun is joined to the word before it (`sapahmu`).
 
-* **Where the published text corrects the book.** Everywhere else the original tier follows the printed page. These are the only places where the data departs from the print, and each carries a `notes` attribute: they are listed in the table under "In detail" below.
-* **A printing error left as printed.** The translation of 1c (p. 78) reads 煮飯的的人是我自己, with 的 doubled; its `notes` says so.
-* **Brackets and spacing.** Square and lenticular brackets (an embedded clause, or emphasis) are removed from the Seediq and the translations; the sentence's `notes` records what was bracketed. Parentheses are full-width in Chinese and ASCII in Seediq. Translations have no space beside a Latin-script name (`我相信pawan會打敗walis的。`).
+**The book's analytic apparatus is not in the text.** Square and lenticular brackets (embedded clauses, emphasis) are removed from the Seediq and the translations, and the sentence's `notes` records what was bracketed. Coindexation subscripts (`yakuᵢ`) and focus labels (受事焦點) are dropped and recorded nowhere; both are recoverable from the gloss.
 
 * **Review notes.** Notes from a 2026 proofreading of the whole corpus against the book are in `notes` attributes, attributed to the source the reviewer cited.
-
-#### In detail
-
-- **Where the published text corrects the book itself.** Everywhere else the
-  original tier follows the printed page: OCR and scrape errors were corrected
-  *toward* the print, in Hunter's scan review and in the 2026-10 student review,
-  whose every edit was checked against the scan. These are the only places where
-  what we publish departs from what the book prints. Each was ruled by the
-  maintainer (2026-10-14/15) and carries a `notes` attribute on the element it
-  changes:
-
-  | Book (printed page, example) | Book prints | Published | Why |
-  |---|---|---|---|
-  | p. 83, 2b | `mah-un` glossed 吃-PF | 喝-PF | the object is 水 'water'; a dictionary gives 喝 |
-  | pp. 119–120, 11b | 用-AF--我 | 用-AF-我 | the double hyphen is a typo |
-  | p. 140, 17a | `musa meepah` | `m-usa m-eepah` | hyphenated as in the book's other examples |
-  | p. 145, 25b | no translation | the translation of 23b/24b | the parallel examples |
-  | p. 147, 28a | `m-aha-ku` glossed AF-去-你 | AF-去-我 | `-ku` is first person, as in 29a–c |
-  | p. 147, 28a | `turima` glossed 洗 | 洗（AF） | to match 29a–c |
-  | pp. 147–148, 29a–c | `m-aha-ku` glossed AF-去-你 | AF-去-我 | `-ku` is first person |
-  | p. 108, 5 | one gloss, AF-在, under `m-enaq/gaga` | the `gaga` reading glossed 在 | the book glosses bare `gaga` 在 in 6b; the AF belongs to the `m-` of `m-enaq` |
-
-- **A known printing error is left as printed:** the translation of 1c (p. 78,
-  `yaku-naq (ka) pure ido`) reads 煮飯的的人是我自己, with 的 doubled; its `notes`
-  says so.
-- **Square and lenticular brackets are removed** from the Seediq and the
-  translations (the book uses them for an embedded clause or for emphasis; each
-  affected sentence's FORM `notes` records what was bracketed). **Parentheses are
-  standardized**: full-width in Chinese, ASCII in Seediq. **Translations carry no
-  spaces beside a Latin name** (`我相信pawan會打敗walis的。`), though the book sets
-  one; a space between two Latin words stays (`Awi Tone`).
-
-- **Notes from the 2026-10 student review** are in `notes` attributes, attributed
-  to the source the reviewer named (the book, a dictionary, the ILRDF online
-  grammar) or otherwise to the review.
-
-#### Import decisions
-
-**Coindexation subscripts are dropped at intake and recorded nowhere.** The
-source uses a subscript `ᵢ` to tie a bound pronoun to its antecedent. That is the
-linguist's apparatus rather than Seediq spelling — the same class of thing as the
-focus labels (受事焦點) this build also leaves out, and like them it is
-recoverable from the morphosyntactic gloss. Keeping it made `yaku` and `yakuᵢ`
-distinct tokens in every count and attestation dictionary, and forced
-`add_phonology` to emit its unmapped-letter marker `*` (POL-003).
 
 ## Reproduction and processing
 

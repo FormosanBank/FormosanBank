@@ -29,7 +29,21 @@ Six Yami (`xml:lang="tao"`, `dialect="Yami"`) narrative texts, collected on Orch
 | `XML/Yami/Kalaku3.xml` | E. | Saman Kalaku, 13 September 1956 | 11 | 56 | 92 |
 | `XML/Yami/Sunagu.xml` | F. | Saman Sunagu, January 1957 | 24 | 161 | 189 |
 
-Sentence counts exceed the article's printed sentence numbers because seven printed alternations are published as separate sentences — see [Alternations](#alternations-the-sources-slash-notation) below.
+Sentence counts exceed the article's printed sentence numbers because seven printed alternations are published as separate sentences.
+
+#### KEY to symbols and abbreviations (from the article)
+
+```
+CM     construction marker      pl     plural
+NM     name marker              incl   inclusive
+unan   unanalyzed               VR     verbalizer
+unctn  uncertain                rdpl   reduplication
+imp    imperative               intrg  interrogative
+EA     added from data of Erin Asai
+( )    in data, probable discrepancy
+```
+
+The article also notes that the 'narration' suffix `-em`/`-m` occurs throughout without a translation given, and that phonemes /e/ and /a/ fluctuate freely.
 
 ## Statistics
 
@@ -84,21 +98,9 @@ Under the resulting tables, **78.7% of the corpus's morph tokens** reach a form 
 
 #### Known caveats
 
-- **`Kangkang/S34` publishes no word or morpheme glosses.** The article gives three gloss units for two printed words, so nothing can be aligned; only the sentence-level free translation is published.
-- **The original tier's sentence FORMs keep the article's parentheses; nothing else does.** The key defines `( )` as "in data, probable discrepancy": the transcriber was unsure of the bracketed letters, and nothing else records the word, so each sentence shows exactly what the article prints, while its words, its morphemes and the standard tier read the fuller form (maintainer, 2026-10-15). Eight sentences: `Kalaku3/S7` `(n)aku-yakuyab-yab`, `Kalaku3/S10` `puken-(en)`, `Kangkang/S18` `(u)kanen-da`, `Kangkang/S34` `puken-ku(a)`, `Kwaway/S21` `manuyung-(e)`, `Kwaway/S45` `(n)u-kipung`, `Kwaway/S52` `(u)m-lavi`, `Kwaway/S53` `chi-ka-(y)bubu`. They are not variants and are not split. The validator reports them as `V122` (SOFT).
 - Many words carry no morpheme tier. That is the article's own selective analysis plus the two gloss rules above, not a conversion loss: 5 words had a mis-aligned `M` tier removed (listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv)), and every gloss reading only `unan` was dropped because the article uses it to mean "unanalyzed".
 
 #### Orthography
-
-**The article states no writing system, but it has been worked out and is now profiled.** The transcription matched no existing profile: it uses `u` where modern Yami spelling uses `o`, `e` for a vowel the article describes only as fluctuating with `a`, and it has no `'`, `j`, or `z`. The reconstruction is recorded in **[`Orthographies/Wakelin/README.md`](../../Orthographies/Wakelin/README.md)**, with the phoneme table in `Orthographies/Wakelin/Yami.tsv` and the conversion to Ortho113 in `Orthographies/ConversionTables/Yami_Wakelin_113.tsv`.
-
-The writing system is now profiled. `Orthographies/Wakelin/Yami.tsv` gives the phoneme values for the article's own orthography and drives PHON on the original tier; `Orthographies/ConversionTables/Yami_Wakelin_113.tsv` converts it to Ortho113 to build the standard tier, whose PHON then comes from the Ortho113 Yami profile in the ordinary way. In short: `u` is the phoneme Ortho113 writes `o`, `ch` is /ʨ/, `ǥ` is a barred g equal to modern `h` [ɰ], `?` is a glottal stop, `r` is [ɻ], and a consonant plus `w` or `y` corresponds to modern `Co`/`Ci`. The five `ř` words whose modern equivalent is known are standardized individually by a committed word list; the rest keep `ř` and star in PHON.
-
-**Where those tables come from.** They were not inherited from anywhere — the 1958 article names no writing system, and no previous profile for it existed. They were derived in September 2026 from three kinds of evidence: the article's own key and its Errata Addenda; the internal distribution of the letters (`c` occurs only in `ch`; `o` occurs in four word types against 510 tokens of `u`); and **attestation testing against every other Yami corpus in FormosanBank** — 12,831 word types over 135,435 tokens from RauDong, ePark, ILRDF_Dicts and Presidential_Apologies — preferring candidate readings whose glosses agree on both sides. Each rule's evidence is set out individually in the orthography README, along with what the tables do *not* fix. An earlier note in this file that `Yami_Wakelin_113.tsv` "should not be taken seriously" referred to a **different, long-deleted** table of the same name, whose single rule deleted hyphens and mapped no letters; nothing of it survives here.
-
-The tables were not inherited from anywhere. They were derived in September 2026 from the article's own key and errata, from the internal distribution of its letters, and by testing candidate readings against every other Yami corpus in FormosanBank — 12,831 word types over 135,435 tokens — preferring readings whose glosses agree on both sides. Every rule's evidence, and what the tables do not fix, is set out in the orthography README.
-
-In short: `u` is the phoneme Ortho113 writes `o` (worth 28 points of attestation on its own, and the article's own errata correct `o`→`u` twice); `ch` is the digraph for /ʨ/; `ǥ` is a barred g and equals modern `h` [ɰ]; `?` is a glottal stop; `r` is [ɻ] and covers both modern `r` and `z`; and a consonant followed by `w` or `y` corresponds to modern `Co`/`Ci`. Under those rules **78.7% of the corpus's morph tokens** reach a form attested in FormosanBank's other Yami data, against a 45.9% baseline. The one letter left unresolved is `ř` — see below.
 
 It does have three symbols worth knowing about before using the data:
 
@@ -137,76 +139,6 @@ Two further limits worth stating plainly:
 
 - **The standard tier cannot represent the word-final glottal stop.** `?` is a glottal stop (see below), but modern Yami writes `’` medially and initially and essentially never word-finally — 8 occurrences in 135,435 tokens of the bank's other Yami data, all apparent typos. The conversion therefore deletes it, and a distinction the article records is lost in transliteration. This is a property of the target orthography, not a judgement about the source.
 - **`e` is mapped to /ə/ following Ortho113, and that is the least settled letter.** The article says /e/ and /a/ "fluctuate freely", `pengsu` corresponds to modern `pongso`, and the `-em` suffix corresponds to modern `am` — so some `e` is not a schwa. No conditioning rule tested better than leaving it alone.
-
-#### Source notation preserved in the original tier
-
-Two notations from the printed article survive in the text and are faithful to it — they are not conversion artifacts:
-
-- **`( )` marks a probable discrepancy** in the data, per the article's own key: `(n)aku`, `ku(a)`, `puken-(en)`. **The sentence FORM of the original tier keeps these parentheses; words, morphemes and the standard tier do not**, and keep the bracketed letters (`puken-en`). They are not optional material and not variants: the transcriber was unsure, and there is nothing else to go on (maintainer, 2026-10-15). In `Sunagu.xml` sentence S2 the parentheses instead wrap each side of a slash alternation, `(imurud nu tau)/(tau d-imurud)`; that sentence is split into two (see Alternations below), which carry no parentheses.
-- **`/` separated alternative readings** in the article: `am/namen`, `varit/yaked`, `pipangn-epen/pipangungn-epen/pipangengne-eben`. **No published FORM keeps a slash** — every one is resolved, either into `alternate` siblings or into separate sentences. See [Alternations](#alternations-the-sources-slash-notation) below.
-
-Hyphens mark morpheme boundaries, and are kept exactly as the article prints them, at every level of the original tier. (In corpora that have a standard tier, sentence-level standard FORMs normally have these hyphens removed so that tier reads as running text. This corpus's standard tier is treated the same way: the original tier's sentence FORM reads `mang-anak-u-em`, as the article does, and the standard tier's reads `manganakoem` (`Kalaku3/S1`); word and morpheme FORMs keep their hyphens on both tiers.)
-
-#### KEY to symbols and abbreviations (from the article)
-
-```
-CM     construction marker      pl     plural
-NM     name marker              incl   inclusive
-unan   unanalyzed               VR     verbalizer
-unctn  uncertain                rdpl   reduplication
-imp    imperative               intrg  interrogative
-EA     added from data of Erin Asai
-( )    in data, probable discrepancy
-```
-
-The article also notes that the 'narration' suffix `-em`/`-m` occurs throughout without a translation given, and that phonemes /e/ and /a/ fluctuate freely.
-
-#### Alternations: the source's slash notation
-
-The article prints 18 alternations with a slash — `nipi/niripi`, `varit/yaked`, `akak-aep-an/(mangday su aep)`. These record **the transcriber's uncertainty about what was said**, not alternatives the speaker offered. That distinction matters: POL-027 turns a speaker's alternatives into one sentence per option, and applying it here would manufacture sentences the narrator never produced.
-
-Each alternation is therefore classified by hand in `CodeAndDocs/alternative_decisions.json`, which records the printed string, the decision and the reason for all 18 (POL-039 — the table is data, not code). Two rules:
-
-- **A clear spelling variant** — mostly overlapping letters, and the same gloss — is published as a `FORM` with `ver="alt"` sibling **on the node that varies and on its word**, never on the sentence. A sentence-level alternate for a one-morpheme spelling difference is noise, and where one sentence carries two independent alternations (`Kalaku1/S17`) it is worse than noise: it can only show one of them, which reads as a claim that the other did not vary. The sentence FORM therefore carries the primary reading and the variation sits on the W and M that vary. 9 alternations: `nipi/niripi`, the `nem ~ namen` pronoun (six times), `mi-kalakala/mi-karakara`, and `pipangn-epen/pipangungn-epen/pipangengne-eben`, which is three-way.
-- **One is published in its segmented reading only.** `Kwaway/S51` prints `mikabak-abay-u/mikabakabayu`, and the article glosses the two differently: `unan-waste-unan(unctn)` and `wails`. Ruled 2026-10-15: *"Remove the unglossed version entirely, put in a note with an explanation"*, the unsegmented one. The word publishes `mikabak-abay-u`, and its FORM's `notes` records the other reading.
-- **Everything else** — different lexemes, different glosses, or a word against a phrase — becomes **separate sentences**. 8 alternations. A reading that replaces a whole word rather than one morpheme inside it inherits no morphemes: `Kalaku1/S6b`'s `namen-em` gets none, because the source's `ngaran` and `amn` are not in it. The first branch keeps the printed sentence number and the rest take `b`, `c`, …: `Kwaway/S48` and `Kwaway/S48b`. POL-037 forbids renumbering an already-published bare id, so there is no `S48a`.
-
-Every call in the table has been reviewed. The two that were once borderline are settled: `Kalaku1/S6` becomes two sentences, `ngaran-amn` and `namen-em`, both glossed `name-we`; and `Kwaway/S2`'s single-vowel `a`/`u` stays a spelling variant, because the alternation is one vowel and not one word.
-
-The article prints 18 alternations with a slash — `nipi/niripi`, `varit/yaked`, `akak-aep-an/(mangday su aep)`. These record **the transcriber's uncertainty**, not alternatives the speaker offered, so they are not automatically split into one sentence per option. Each is classified by hand in `CodeAndDocs/alternative_decisions.json`: a clear spelling variant (overlapping letters, same gloss) becomes a `ver="alt"` variant FORM sibling **on the node that varies and on its word**, never on the sentence; anything else — different lexemes, different glosses, a word against a phrase — becomes separate sentences, the first keeping the printed sentence number and the rest taking `b`, `c`, …. A reading that replaces a whole word rather than one morpheme inside it inherits no morphemes. **No published FORM keeps a slash.**
-
-`Kangkang/S18` prints `kan(u)kanen-da`, with the `(u)` set against the `k` of `kanen-da`. The snapshot typed it as `kan(u) kanen-da` and the build used to publish `kan` with an alternate `kan-u`. Ruled 2026-10-15: *"These are not alternations, and the u appears to be attached to kanen anyway."* So `print_corrections.json` moves the `(u)` onto the next word, and it is handled like the article's other parentheses: the sentence reads `kan (u)kanen-da`, the word `ukanen-da`, and the standard tier `kan okanenda` (word `okanen-da`).
-
-It is handled like the article's other brackets and attached to that word: the sentence reads `kan (u)kanen-da`, the word `ukanen-da`, and the standard tier `kan okanenda` (word `okanen-da`). It was formerly published as `kan` with an alternate `kan-u`. `Kwaway/S51` prints `mikabak-abay-u/mikabakabayu`, glossing the two readings differently; only the segmented one is published, with a note recording the other.
-
-#### A correction to the source
-
-**`Kalaku1/S11`'s last two glosses are printed in the wrong order, and the corpus corrects them.** This is a deliberate departure from the article, not a transcription of it.
-
-**`Kalaku1/S11`'s last two glosses are printed in the wrong order, and the corpus corrects them.** This is a deliberate departure from the article rather than a transcription of it, recorded here so it is not mistaken for an error.
-
-The article prints `dy-aru-pa-sira` above `unan-many-still/again-them` and `a-ni-padi/machyura-rana` above `unan-past(unctn)-accompany-completely`. Swapped, the slash divides the *word* rather than one morpheme inside it — and it divides the gloss at the same point, so both halves come out even:
-
-| published sentence | word | gloss | morphemes : gloss units |
-| --- | --- | --- | ---: |
-| `S11` | `a-ni-padi` | `unan-many-still` | 3 : 3 |
-| `S11b` | `machyura-rana` | `again-them` | 2 : 2 |
-
-`dy-aru-pa-sira` is glossed `unan-past(unctn)-accompany-completely` in both. That is: sentence `S11` has `a-ni-padi` glossed `unan-many-still` (3 morphemes, 3 units) and `S11b` has `machyura-rana` glossed `again-them` (2 and 2), with `dy-aru-pa-sira` glossed `unan-past(unctn)-accompany-completely` in both.
-
-A second, smaller correction: **`Kwaway/S9`'s gloss `bamboo-strips` is written `bamboo.strips`**.
-
-A third, applied across the corpus: **a gloss for a single morpheme is written with dots, not hyphens.** Under the Leipzig conventions a hyphen marks a morpheme boundary and a period joins the parts of one gloss, so the article's `(one-after-another)` and `long-time-ago` both read as several morphemes where they are one.
-
-A second, smaller correction: **`Kwaway/S9`'s gloss is written `bamboo.strips`, not `bamboo-strips`.** A third, across the corpus: **a gloss for a single morpheme is written with dots, not hyphens** — `(one.after.another)`, `long.time.ago`, `kill.with.boiling.water`. Under the Leipzig conventions a hyphen marks a morpheme boundary and a period joins the parts of one gloss, so the article's hyphens read as morpheme boundaries that are not there.
-
-#### Glosses: `unan`, and words whose morphemes do not line up
-
-Two rules are applied corpus-wide when the XML is built (maintainer, 2026-09-06):
-
-- **`unan` is not a gloss.** It is the article's "unanalyzed" marker — it records that the transcriber supplied *nothing*. A `TRANSL` whose entire text is `unan` is therefore **not published**, at any level, rather than shipped as though it meant something. Composite glosses that merely contain it (`unan-past(unctn)-accompany-completely`) are untouched: there the `unan` marks one morpheme inside an analysis that does exist.
-- **The `-em`/`-m` narration suffix is glossed `PAR`.** The article's own NOTE says this suffix "occurs throughout without a translation given", and the hand transcription duplicated whatever gloss stood on the preceding morpheme onto it (`vanuad`/'wharf' followed by `em`/'wharf'). The build replaces that with `PAR` and appends `-PAR` to the word's gloss. This is the article's note applied to the tier rather than a correction to it, and it is **not** in the snapshot — it happens during processing, so the snapshot stays a record of what was typed. The gloss is not invented: Rau & Dong gloss the modern cognate `am` as 助 'particle' (423×) and 呢 (369×), the rest of FormosanBank's Yami data glosses `am` as `PAR` across 4,679 tokens, and `-em` ~ `am` is exactly the `e` ~ `a` correspondence the article's own "/e/ and /a/ fluctuate freely" note predicts. It applies only to a **word-final** suffix — `m` is a prefix elsewhere (`a-m-angay`) and is left alone. **37 words** are glossed this way, and because the suffix was the reason they carried one morpheme more than their gloss had units, **all 37 of them keep a morpheme tier they would otherwise have lost.**
-- **A word whose morphemes do not line up with its gloss gets no morphemes.** If the number of `M` children disagrees with the number of units in the word's gloss, the word keeps its word-level gloss and its `M` tier is dropped, rather than publishing a mis-aligned analysis. `Kangkang/S33` is the clear case: `simuskem` is one morpheme glossed `kill-with-boiling-water`, and splitting that gloss across morphemes would invent an analysis the article never gave. A word left with no gloss at all by the first rule likewise keeps no `M`.
 
 ## Reproduction and processing
 
@@ -273,7 +205,7 @@ The published XML is rebuilt from the snapshot by `CodeAndDocs/generate_xml.sh`,
 
 Two of those are corpus-local additions to the canonical POL-047 order, and the second sits where POL-047 does not contemplate: the `ř` word list runs **between** POL-047's standardization and phonology steps, because `PHON` is generated from the standard tier and has to reflect the corrected words. Both are declared on the corpus README's `**POL-047 deviation:**` line. (The first, `resolve_parentheses.py`, runs twice: step 3 and step 5a.)
 
-1. **Generate the original tier** — `CodeAndDocs/generate_xml.py`. Reads the snapshot, applies `alternative_decisions.json` and the gloss rules, writes `XML/`. This is the corpus-local parsing step POL-046 exempts from "shared tools first". In the order the code runs, for each snapshot file: it refuses a snapshot that already carries a `standard` FORM or a `PHON`; applies `print_corrections.json` (each node's expected snapshot text is checked first, and a mismatch stops the build); applies each of the 18 `alternative_decisions.json` entries (9 `variant`, 8 `split`, 1 `keep_primary`; see [Alternations](#alternations-the-sources-slash-notation)); glosses the word-final `-em`/`-m` suffix `PAR`; applies the two gloss rules (drop `TRANSL` reading only `unan`; drop the `M` tier of a word whose morpheme count does not match its gloss units, or whose morpheme gloss carries half a parenthesis); rewrites the snapshot's old `kindOf="alternate"` spelling as `kindOf="original" ver="alt"`; and writes the file. It then fails the build if any FORM still contains a slash, or if a morpheme's text does not occur in its own word, and writes the dropped-`M` list to `CodeAndDocs/gloss_alignment_review.tsv`.
+1. **Generate the original tier** — `CodeAndDocs/generate_xml.py`. Reads the snapshot, applies `alternative_decisions.json` and the gloss rules, writes `XML/`. This is the corpus-local parsing step POL-046 exempts from "shared tools first". In the order the code runs, for each snapshot file: it refuses a snapshot that already carries a `standard` FORM or a `PHON`; applies `print_corrections.json` (each node's expected snapshot text is checked first, and a mismatch stops the build); applies each of the 18 `alternative_decisions.json` entries (9 `variant`, 8 `split`, 1 `keep_primary`); glosses the word-final `-em`/`-m` suffix `PAR`; applies the two gloss rules (drop `TRANSL` reading only `unan`; drop the `M` tier of a word whose morpheme count does not match its gloss units, or whose morpheme gloss carries half a parenthesis); rewrites the snapshot's old `kindOf="alternate"` spelling as `kindOf="original" ver="alt"`; and writes the file. It then fails the build if any FORM still contains a slash, or if a morpheme's text does not occur in its own word, and writes the dropped-`M` list to `CodeAndDocs/gloss_alignment_review.tsv`.
 2. **Clean** — `QC/cleaning/clean_xml.py`. Unicode NFC, entity decoding, typographic look-alikes. The hand-typed text is near-ASCII (only `ř` and `ǥ`), so this currently changes nothing; it is the guarantee that it stays that way. It is run with `--corpora_path XML/` only.
 3. **The article's uncertainty marks, original tier** — `CodeAndDocs/resolve_parentheses.py --tier original`, run before `standardize.py`.
 

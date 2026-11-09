@@ -68,7 +68,7 @@ The central [FormosanBank terms](https://github.com/FormosanBank/FormosanBank/bl
 
 ## Notes and caveats
 
-The committed metadata extracts are not independently checked against Paradisec. Joshua accepted this limit for the closed AIT1 deposit, recorded in 1997 and 1998 and published in 2016, in [FormosanBank #197](https://github.com/FormosanBank/FormosanBank/pull/197). The extracts enumerate 61 source files and archival fields absent from our XML, and have been unchanged since the corpus's first commit. The 30 matching MP3s are treated as delivery copies of the WAV masters; the remaining file, `AIT1-001-2df.pdf`, has not been inspected or included.
+The deposit's one PDF, `AIT1-001-2df.pdf`, has not been inspected or included.
 
 ## Reproduction and processing
 

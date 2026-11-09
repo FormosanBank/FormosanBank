@@ -83,24 +83,7 @@ The import of hyphens, which are used sporadically, has not been ascertained. In
 
 #### Akiw's notes
 
-Many thanks are owed to Hsu Cheng-Wen "Akiw", who helped identify the orthography. Her notes follow.
-
-1. Letter Correspondences
-
-These are some identified differences between the original orthography and the current standard. They are the table under "Orthography" above; Akiw headed its columns Original | Ortho113. Her note on the diacritic on `f` is under "The uncertain letter" above.
-
-2. Omission of the central vowel “e”
-
-It appears that the central vowel is missing in many places:
-
-- mahřek -> maherek ("finish")
-- tstsay -> cecay ("one")
-- pafri -> pafeli ("give")
-
-3. Glides are used inconsistently.
-
-- soar → sowal (“words”)
-- tsiwro → ciwlo(“elders” / 長老— loanword )
+Many thanks are owed to Hsu Cheng-Wen "Akiw", who helped identify the orthography.
 
 ## Reproduction and processing
 

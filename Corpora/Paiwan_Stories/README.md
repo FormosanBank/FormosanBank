@@ -75,10 +75,6 @@ illustration and publisher rights.
 
 ## Notes and caveats
 
-The Word source has 15 table rows containing 16 passages; row 4 holds two units.
-
-There is no source word or morpheme analysis.
-
 Historical alignment files are unavailable, so no sentence timings are inferred.
 Historical sentence-alignment files are unavailable. The three published WAVs
 are preserved without resampling or inferred timings.

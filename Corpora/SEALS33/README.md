@@ -69,7 +69,6 @@ and [AI Use Addendum](https://github.com/FormosanBank/FormosanBank/blob/main/AI-
 
 ## Notes and caveats
 
-* The Seediq dialect is unknown (see "Languages and dialects" above).
 * S25 is a title containing reconstructed proto-forms (`*-ʔ, *-h, *-∅`), not an
   ungrammatical example. Both titles remain included under the merged corpus
   ruling. The Saisiyat FORM now follows the actual Saisiyat source title instead
@@ -83,8 +82,6 @@ and [AI Use Addendum](https://github.com/FormosanBank/FormosanBank/blob/main/AI-
 
 * The Saisiyat file uses `:` for vowel length; it is retained in PHON for
   Saisiyat but treated as punctuation for Seediq.
-
-* There is no audio or word/morpheme analysis.
 
 ## Reproduction and processing
 

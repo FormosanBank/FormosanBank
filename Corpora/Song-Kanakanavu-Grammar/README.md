@@ -36,7 +36,7 @@ pp. 193-206), cross-checked against the duplicate Chinese-sorted Appendix 2B
 | Interlinear analyses | 650 (with `W`/`M`) | — |
 | Words / morphemes | 3,477 `W` / 5,048 `M` | — |
 
-There is no audio (see Notes and caveats).
+There is no audio.
 
 ## Statistics
 
@@ -75,22 +75,6 @@ and non-commercial use are required; see the FormosanBank
 
 ## Notes and caveats
 
-The text was scraped from the official Alilin e-reader and reconciled page by page against the source page images. The book's own orthography discussion (reader pp. 31–44) describes the Ortho113 inventory — `ʉ` and `r`, no `l` — so no orthographic conversion is applied: the standard tier differs from the original tier only where the source's own apparatus does not belong in a standard surface.
-
-Every departure from the printed text is recorded against a named record and a reader page, with two exceptions that the code applies by rule: the source-language labels `（日語）`/`（借詞）` are stripped from dictionary headwords, and parenthesised material is deleted from word (`W`) forms (one word in the current data). Both are described below. The full list is in the corpus [README](#recorded-per-record-corrections), and the reasoning behind the standard-tier decisions is in [`standard_surface_review.md`](CodeAndDocs/docs/standard_surface_review.md).
-
-#### Orthography, tiers and phonology
-
-- **Stress accents** (`á í ú …`) are kept in the original tier and folded in the
-  standard tier (step 7); PHON is accent-free on both tiers.
-- **Stress accents** (`á é í ó ú`) mark stress in the book, not distinct letters. They are kept in the original tier and folded out of the standard tier; PHON is accent-free on both tiers.
-- **The standard tier is nearly the original tier.** Kanakanavu's source
-  orthography already *is* Ortho113, so no transliteration happens: across the
-  whole corpus the standard tier differs from the original only by the folded
-  stress accents and by the one song sentence below. Do not read "standard" here
-  as evidence of a spelling change.
-- **The standard tier is nearly the original tier.** The book's orthography already *is* Ortho113, so nothing is transliterated: across the whole corpus the standard tier differs from the original only by the folded stress accents and by the one song example below. Do not read "standard" here as evidence of a spelling change.
-
 #### Translations and glosses
 
 - **Everything is Mandarin; there is no English.** All 10,090 `TRANSL` elements
@@ -109,151 +93,9 @@ Every departure from the printed text is recorded against a named record and a r
   inside explanatory parentheses in sentence translations (`kani`, `misee`,
   `ara-`).
 
-#### Segmentation and interlinear conventions
-
-- **Partial glossing is preserved, not invented.** On five page images the printed form and gloss lines do not align one-to-one. Those words are still segmented, but a morpheme the book does not gloss separately carries no gloss of its own; the word-level gloss is always present.
-- **Partial morpheme glossing (4 `M`):** reader pages 182, 248, and 258 print
-  segmented forms without a separately aligned gloss for every unit. Their `W`
-  glosses are preserved exactly, while four `M` elements intentionally omit
-  `TRANSL` rather than receiving inferred labels. Their parent `W` always keeps
-  its word-level gloss, so no gloss content is lost. These are the corpus's V064
-  findings.
-- **Words without a morpheme analysis (2 of 3,477 `W`):** pages 68 and 128 print
-  one whole-word gloss for `m-u'iara` and `ma-marang`. The words carry no `M`
-  children rather than an invented segmentation.
-
 #### What is included and excluded
 
-- **No audio.** The source is a printed book; there are no `AUDIO` elements and
-  no recordings exist for this corpus.
-- **No audio.** The source is a printed book; no recordings exist for this corpus.
-- **No `alternate` FORMs.** Source variants are materialized as separate `S`
-  entries (dictionary) rather than as an alternate tier.
-- **Dictionary variants:** slash/semicolon alternatives and optional `(…)`
-  material are materialized into separate single-form entries; bound prefixes
-  (trailing `-`) are excluded; cross-record duplicate variants are dropped.
-  Apart from the source-language labels in the next bullet but one, nothing is
-  deleted by a blanket rule — every exclusion is a recorded decision
-  (`dictionary_ledger.csv` exclusions and `standard_surface_decisions.tsv`).
-- **Dictionary variants are split, not concatenated.** Slash and semicolon alternatives and optional `(…)` material in Appendix 2A become separate single-form entries. Bound citation forms (a trailing hyphen, with no free-standing surface in the book) are excluded, and split variants that duplicate another record are dropped. Every exclusion is a recorded decision.
-- **Source-language labels on dictionary headwords are not published.**
-  Appendix 2A marks some headwords `（日語）` (Japanese) or `（借詞）` (loanword),
-  e.g. `kasa（日語）`, `kunga’a（借詞）`. `extract_dictionary.py` strips these
-  labels from the form (step 1), and they appear nowhere in the ledger or the
-  XML. The positioned text shows 14 such labels on reader pp. 195-206.
-- **Sentences without an interlinear analysis (49 of 699):** 47 are the
-  punctuation examples of Appendix 1 (pp. 187-191) and 2 are body examples the
-  book leaves unglossed. The book prints no word gloss for any of them and none
-  was invented. These are the corpus's V148 findings.
-- **49 of the 699 sentences have no interlinear analysis.** 47 are the punctuation examples of Appendix 1 (pp. 187–191, a punctuation table rather than a glossed text) and 2 are body examples the book leaves unglossed. The book prints no word gloss for any of them, and none was invented.
-- **Excluded sentences (14):** 6 noun-phrase fragments, 5 source-starred
-  ungrammatical forms, and 3 examples with no printed Chinese translation. See
-  `source_ledger.csv`.
-- **14 source examples were excluded**: 6 noun-phrase fragments, 5 forms the book marks ungrammatical, and 3 examples printed without a Chinese translation. Each exclusion is recorded with its reason in the corpus's source ledger.
-- **Repeated surface forms (63 groups, 130 `S`):** 34 dictionary groups are
-  homographs with different translations, one preserves two original stress
-  variants that fold to the same standard form, and 28 grammar groups repeat at
-  distinct source locators. There is no exact or same-locator duplicate.
-- **Repeated forms are deliberate, and are distinct attestations.** 63 groups recur: 28 are grammar examples the book reuses to illustrate different points, 34 are dictionary homographs with different translations, and one is a pair of stress variants that fold to the same standard form. Each `S` carries its own `source` attribute naming the page and label it came from. There is no exact same-locator duplicate, and nothing is deduplicated.
-
-#### The typesetting slip and the punctuation table
-
-- **`takananga` (p.69) — a typesetting slip in the book, repaired in the
-  original tier.** Reader p.69 example 4-9 prints `takananga` in its sentence
-  line and `takanaga` one line below in its own aligned analysis. Confirmed
-  against the page image, so this is what the book prints, not a scraping
-  artifact. The reading is not in doubt: `takananga` occurs 22× across the
-  corpus — including in that same example's sentence line — while `takanaga`
-  occurs exactly twice, both inside that one analysis. The bare `g` is also not
-  an Ortho113 letter, so before the repair it had no phonological mapping and
-  surfaced as `*` in the original PHON. The repair is a recorded manual edit
-  (`CodeAndDocs/manual_edits.xml`, applied by the shared
-  `apply_manual_edits.py` at build step 5) to the **original** tier; the
-  standard tier and both PHON tiers regenerate from it. The extraction ledgers
-  still record exactly what the page prints.
-- **One repaired typesetting slip.** On reader p. 69 the aligned analysis line prints `takanaga` where the sentence line of the same example prints `takananga` (`takananga` occurs 22× in the corpus, `takanaga` twice — both inside that one analysis). It is repaired in the original tier as a recorded manual edit, so the standard tier and the phonetic tiers regenerate from the corrected form; the extraction ledgers still record exactly what the page prints.
-- **Three examples come from the book's punctuation table (Appendix 1, p. 190), and its marks are not what they look like.**
-  - *The song.* Row 10 of that table defines a hyphen used **in songs, to break lyrics to fit the musical score** — not morpheme boundaries. The one song example keeps those hyphens exactly as printed in the original tier. Its standard tier gives the running words, whose boundaries were recovered from an independent attestation of the same song: deleting the hyphens is not enough, since the last line would run together into a single word. This is the only place in the corpus where the standard tier is set from a source-checked decision rather than derived.
-  - *The dash.* Row 8 defines `--`, written with two hyphens, as the Kanakanavu spelling of the **em dash** (破折號), whose Chinese equivalent is `―`. It is punctuation introducing an explanation or a list, not segmentation. The build renders it as a single `-` in the original tier, which the standard tier then inherits unchanged — so the two examples using it show a `-` that is a dash, not a morpheme boundary. They are the corpus's only two occurrences of a hyphen in a sentence-level standard form.
-
-#### Recorded per-record corrections
-
-Everything below is applied by name to a specific record, never by a blanket
-rule. The tables in this section name the reader page each entry was checked
-against; the code tables summarised in the next paragraph are keyed by record
-id only, and each record's `source` attribute in the XML names its reader page.
-
-Besides the tables below, the build applies these record-keyed tables, which
-correct what the e-reader's text layer got wrong so that the analysis matches
-the printed page: `GLOSS_OVERRIDES` in `extract_interlinear.py` (corrected
-glosses for 59 words in 28 sentences, where the text layer merged two adjacent
-printed gloss cells), `TOKEN_JOIN_OVERRIDES` in the same script (one form split
-by the text layer, rejoined as `katʉrʉpʉ=cu`), and `FORM_CORRECTIONS` in
-`extract_dictionary.py` (22 dictionary headwords with OCR-style doubled or split
-letters, e.g. `aaka` → `aka`, `sas patʉ` → `sasápatʉ`).
-
-**Applied to the `original` tier at extraction** (`extract_interlinear.py`,
-step 3 — before any standard tier exists):
-
-| Record | Reader page | What the source prints | What is recorded |
-| --- | --- | --- | --- |
-| `S0318` W3 | 156 (ex. 13-2a) | `t<in>i-taini`, gloss `重疊<完成貌>丟` | M `t-i` 重疊 · `-in-` `<完成貌>` · `taini` 丟 |
-| `S0422` W2 | 182 (ex. 15-8a) | `m-ukʉrʉ`, one whole-word gloss `拿著` | M `m` · `ukʉrʉ`, **both without an M gloss** |
-| `S0609` W15 | 243 (narrative 26) | `ka-cangcangarʉ-a`, gloss `處在-重疊-快樂-關係詞` | M `ka` 處在- · `cangcangarʉ` 重疊-快樂- · `a` 關係詞 (no boundary is printed inside `cangcangarʉ`, so its two gloss units stay grouped) |
-| `S0636` W5 | 248 (narrative 53) | `pa-arivivini-ʉn`, gloss `使動-跟隨在後` | M `pa` 使動- · `arivivini` 跟隨在後 · `ʉn` **without an M gloss** |
-| `S0678` W6 | 258 (narrative 38) | `t<um>a-túturu`, gloss `<主事焦點>-告知` | M `t-a` **without an M gloss** · `-um-` `<主事焦點>-` · `túturu` 告知 |
-
-`ANALYSIS_OVERRIDES` in the same script gives the whole word/gloss list for
-three sentences (`S0141`, p. 106; `S0221`, p. 131; `S0544`, p. 232) whose layout
-cannot be recovered from the positioned text without inventing a word boundary;
-the code comment says each was checked against the page image. It is keyed by
-record id; the code does not cite the page in place.
-
-**Applied to the `original` tier as a recorded manual edit**
-(`CodeAndDocs/manual_edits.xml`, step 5) — the shared mechanism for repairing
-an error in the original, from which every derived tier regenerates:
-
-| Record | Reader page | Printed | Recorded |
-| --- | --- | --- | --- |
-| `S0012` W4 + its host M | 69 | `takanaga=kasu` / `takanaga` | `takananga=kasu` / `takananga` |
-
-**Applied to the sentence translation** (`build_xml.py`, step 4). The book adds
-an analytic paraphrase in parentheses to two translations; the primary
-`TRANSL` keeps the translation, and the full printed text is kept in that
-`TRANSL`'s `notes` attribute:
-
-| Record | Reader page | Printed translation (kept in `notes`) | Primary `TRANSL` |
-| --- | --- | --- | --- |
-| `S0143` | 108 (ex. 7-1b) | `我有錢。（=我的錢存在）` | `我有錢。` |
-| `S0149` | 109 (ex. 7-3b) | `我沒有錢。（=我的錢沒有）` | `我沒有錢。` |
-
-**Applied to the `standard` tier only** (`normalize_standard_forms.py`, step 8).
-Just one, and only because the original must stay faithful to the printed page
-(POL-001) while the standard tier carries running words:
-
-| Record | Reader page | `original` keeps | `standard` gets |
-| --- | --- | --- | --- |
-| `S0477` | 190 | the lyric-division hyphens exactly as printed | `mati'ara'aravang 'aa 'aravang vatu 'aravang vatu! tisa'ʉ ku 'apasʉ.` |
-
-Reader p.190's punctuation table (Appendix 1, row 10, 連結號) defines that
-hyphen as a *song* mark — it breaks lyrics to fit the musical score, not
-morphemes. Deleting the hyphens is not enough to recover words: the printed
-`ti-sa-'ʉku-'a-pa-sʉ` would collapse to a single `tisa'ʉku'apasʉ`, where the
-attested reading is three words. The boundaries come from an independent
-attestation of the same song, pinned by commit and SHA-256 in
-`docs/standard_surface_review.md`.
-
-The other two grammar decisions (`S0469`, `S0472`) change no text at all. Row 8
-of the same p.190 table defines `--` as the halfwidth spelling of 破折號, the
-em dash whose fullwidth Chinese equivalent is `―`; `build_xml.py` renders it as
-a single `-` in the **original** tier, so the standard tier inherits it
-unchanged and the decision rows only attach a `notes` string. (This is why
-`validate_text` reports two V133 `-`-in-standard findings: the mark is
-punctuation, but it is spelled like a segmentation hyphen.)
-
-The dictionary's 125 remaining decisions in `standard_surface_decisions.tsv`
-change nothing at this step: `build_xml.py` has already emitted one clean
-surface per entry, and step 8 only *verifies* that state.
+- **Source-language labels on dictionary headwords are not published.** Appendix 2A marks some headwords `（日語）` (Japanese) or `（借詞）` (loanword), e.g. `kasa（日語）`; the 14 labels are stripped and appear nowhere in the XML.
 
 ## Reproduction and processing
 
@@ -482,7 +324,7 @@ commit differs from the one in `provenance.json`.
    entry, and the two break-punctuation sentences are unchanged text carrying a
    `notes` attribute. The step also asserts that no analysis marker survives in
    any sentence-level standard form. Ordinary prose parentheses are left
-   unchanged. See "Recorded per-record corrections" above (under Notes and caveats).
+   unchanged.
    It stops if the manifest no longer has exactly 128 decisions (125 dictionary,
    3 grammar, 11 bound exclusions, 140 extra entries), if the hyphen-bearing
    grammar sentences are not exactly the three with decisions, if a decision's

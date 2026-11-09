@@ -71,30 +71,11 @@ profile gives `g` and `l` different sound values in standard PHON.
 
 #### Glosses, word division and translations
 
-Three examples have word glosses but no free translation. Some source glosses
-do not align to individual written morphemes; retain the word gloss without
-inventing finer analysis. The author's inconsistent infix and clitic gloss
-notation is preserved.
-
-`skiya` in C02_E001D (`asu skiya`, printed gloss `船 ∅-飛`) is the W
-`∅-skiya` with a null M `∅` (gloss `∅`, a new id, …W2M2) before the M `skiya`
-(gloss `飛`, its published id …W2M1). The sentence's original FORM is
-`asu ∅-skiya`: the `∅-` is not printed in the thesis and was added, with a
-`notes` attribute saying so, to match the word and morpheme analysis.
-In one sentence (`asu ∅-skiya`) FormosanBank added the `∅` the thesis's gloss
-implies; a note on that sentence says so.
-
-`Nnita` (C03_E003A) keeps one unglossed M. Three parentheticals the thesis prints after a free translation are notes on
-that translation, not alternative translations: `(* 螢火蟲出來了)` in C04_E008C
-(the starred reading the sentence does not have) and `(在路上)` / `(已看到人)`
-in C01_E028A / C01_E028B.
+Some source glosses do not align with individual written morphemes; the word gloss is kept and no finer analysis is invented. The author's inconsistent infix and clitic gloss notation is preserved.
 
 #### Scope
 
-Lexical and derivation tables remain source evidence outside the published
-sentence/interlinear-example scope. See the
-[source decisions](CodeAndDocs/source-decisions.md) for the scoped conversion
-ruling and retained repetitions.
+Only the thesis's sentences and interlinear examples are published; its lexical and derivation tables are not.
 
 ## Reproduction and processing
 

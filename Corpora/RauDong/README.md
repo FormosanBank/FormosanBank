@@ -74,15 +74,6 @@ prohibited without prior written permission.
   `mapa-sila-siláp-i`, `veza-no-dehdeh`, `vozovóza`,
   `nimakalkalima-so-nakem` (×2), `pángap`, `kong-koan`.
 
-#### Orthography
-
-Rau & Dong write Yami in the letters of the ROC-94 official orthography — `ng
-p b t d k g ' v c j s z h m n r l w y i e a o`, with no `f`, `q` or `u` — plus
-an acute accent on vowels (`á é í ó`). The accent marks **lexical stress**,
-not a distinct vowel. It is part of the source's spelling, so the `original`
-tier keeps it; FormosanBank's common orthography does not write stress, so the
-`standard` tier does not have it.
-
 #### Notation inside the FORM tiers
 
 - **`-`** marks morpheme boundaries in the `original` tier at all three

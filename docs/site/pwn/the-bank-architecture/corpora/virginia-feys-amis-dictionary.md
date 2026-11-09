@@ -50,7 +50,7 @@ The processing pipeline for converting the dictionary data into FormosanBank’s
 
 ***
 
-### **Corpus Notes**
+### **Notes and caveats**
 
 * According to Li et al. (2024), "Fey’s (1986) dictionary ... misses certain phonemic contrasts, such as the distinction between the glottal stop and the pharyngealized stop, for example, e.g., Central Amis ’op’op ‘frog’ vs. qopo ‘assemble’." However, the repo from which this corpus is derived states that "Thanks to Mr. Wu Ming-yi for rewriting the old Catholic spelling into the newer spelling of the original Minzu Kung Hui version." It is not clear whether this addressed the concerns raised by Li and colleagues, but the orthography seems to be a good match for our reference corpus.
 * There are often multiple translations into the same non-Formosan language for a particular sentence. Thus do not assume there is only one element per target language.

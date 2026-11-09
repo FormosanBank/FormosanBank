@@ -13,7 +13,7 @@ points users ask about first: in the digital edition a sentence-initial capital
 `G` is ng too, so S3846 reads `Nga'ayto` and S4934 `Nga'ayho`. This does not
 recover phonemic contrasts absent from the source. Printed page 345 confirms
 `O kalatolo / kalitolo konini.`; like every slash cell, it gives one sentence
-per option (S6717 and S6717-opt). The second is explained under "Notes and caveats".
+per option (S6717 and S6717-opt).
 
 ## Languages and dialects
 
@@ -93,20 +93,10 @@ Commercial AI use requires prior written permission.
 - The digital source was checked against raw text, corrected Word files and
   conversion history. This is not a complete review of the printed dictionary.
 
-- [Printed page 345](https://drive.google.com/file/d/1eNMbHjQfC-ZR77ha17S_441hx9ZcsDhm/view)
-  confirms `O kalatolo / kalitolo konini.` The page does not classify the pair
-  as competing words or pronunciation variants; that decision remains open. The
-  build gives one sentence per option (S6717 and S6717-opt).
 - Li, Joby and Zeitoun (2024) note that Fey misses some phonemic contrasts,
   including glottal versus pharyngealized stops. Wu Ming-yi modernized the
   digital spelling, but this does not establish that the distinction was
   recovered. Generated PHON must not be treated as source transcription.
-
-- One published sentence is removed: S6908 `ceco.`, the third option of the
-  slash cell `sasoken a kowa' / cacoscosen a kowa' / ceco.` (Pith Paper Plant),
-  because it is not clear how it should be read (maintainer ruling 2026-10-17);
-  its id is retired, and the full cell remains in the FORM notes of S2761 and
-  S6907.
 
 #### References
 

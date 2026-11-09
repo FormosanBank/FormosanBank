@@ -149,72 +149,9 @@ prohibited without prior written permission.
 
 ## Notes and caveats
 
-#### In brief
-
-Each item is described in full in the section named in brackets.
-
-- **No morpheme is glossed.** All 6,492 `M` elements have no `TRANSL`; the
-  blog segments words but glosses only whole words, in prose. ["Reading the
-  tiers"]
-- **731 of the 5,643 `W` elements have no `TRANSL`**, because the source gave
-  no explanation for that word in that example; glosses are never borrowed
-  from another post. ["Reading the tiers"]
-- **Sixteen sentences have no `W` tier** (`S268_1`, `S269_1`,
-  `S378_1`–`S381_1`, `S393_1`, `S533_1`, `S545_1`–`S545_8`): the blog prints
-  them as bare phrases. ["Reading the tiers"]
-- **Eight word glosses the blogger marked as unknown are `<UNCLEAR/>`**, with
-  her comment moved to `notes` where there was one; one more (`S313_1W3`) is
-  glossed `to find` with her explanation in `notes`. All 9 are listed in
-  `CodeAndDocs/data/formosanbank_audit/unclear_gloss_review.tsv`. ["Reading
-  the tiers"]
-
-- **Six series numbers are absent: 66, 183, 197, 480, 519 and 543.** The
-  corpus is not a complete run of the series. ["Source coverage"]
-- **Three recordings are omitted** (`S24_1`, `S483_1`, `S535_1` and their
-  `_1b` alternatives), because each recording reads both alternative
-  wordings. ["Source reconciliation"]
-- **The standard tier drops two Mandarin accents** in `S303_1` (`yípó` →
-  `yipo`, `āyí` → `ayi`), and `S652653654_2`'s standard FORM drops the
-  source's segmentation hyphens. ["Morpheme tier and standard-tier accents"]
-
 #### Corpus notes
 
-These notes were first written for the corpus's GitBook page; they overlap with
-the sections above.
-
-**Coverage**
-
-* The corpus covers the author's numbered "Paiwan Every Day" series, not the whole blog. The live Blogger feed holds 846 posts; the other posts are essays, announcements, and other non-series material that was never in scope.
-* The corpus holds 668 source records drawn from 641 post URLs, and the 2026-08-23 live-source audit matched every one of them against the feed. Six numbers in the series are nevertheless absent — 66, 183, 197, 480, 519, and 543. They have been missing since the corpus was first added and the reason is not recorded, so treat this as very nearly, but not quite, a complete run of the series.
-* The audit restored 24 incomplete or omitted sentence translations and 41 exact word glosses. Phrase-level definitions were not assigned to individual words.
-
-**Glossing**
-
-* Examples are not necessarily glossed word by word; repeated words and common function words are often unglossed in the source. Glosses were matched within a single example only — a gloss is never reused from another example, since it may not be contextually correct. Where no gloss can be found, the `<W>` element's `<FORM>` is just a copy of the word in the example and no `<TRANSL>` is provided.
-* Sometimes the same word is spelled differently in the main text and in the glosses. We have assumed the main text is correct and the gloss is incorrect; in those cases the gloss is ignored.
-* Word glosses the author marks as unknown are published as `<UNCLEAR/>` rather than a literal `?`: one gloss that is only `?` (`S77_1W5` `nu`), and seven that begin with `?` followed by the author's comment (`? I cannot find this word.`), whose full text moves to the gloss's `notes` attribute. One more, `S313_1W3` `k<ar>im`, is glossed `to find` with the author's explanation in `notes`. All nine are listed in `CodeAndDocs/data/formosanbank_audit/unclear_gloss_review.tsv`. A `?` attached to a word in a gloss (`LIG?`, `right?`) is the author's own hedge and is kept.
-* **This corpus is segmented but not glossed at the morpheme level.** The author glosses *words*, in prose, and never glosses individual morphemes, so no `<M>` element carries a `<TRANSL>` — and none ever has, in any version of this corpus. A morpheme has a form and a position and nothing else. That is why "Glossed words" above reads 0 while "Morphologically segmented" reads 4,475: segmentation and glossing are separate things here and only the first is present. Supplying morpheme glosses would be original linguistic work rather than data recovery.
-* Sixteen sentences carry no `<W>` tier at all — the blog prints them as bare phrase entries with no word breakdown, so there is nothing to segment. They have no words and no morphemes.
-
-**Morpheme (`<M>`) elements**
-
 * Where the author parsed words into segments, those segments are preserved in `<M>` elements. Within such a sentence, a word we could not find a parse for is assumed to be monomorphemic and gets a single `<M>` — which is almost certainly incorrect in some cases.
-* Where the author parsed *nothing* in a sentence, that sentence carries **no `<M>` elements at all**. An earlier version of this corpus gave every word a single `<M>` mirroring the word, which asserted a monomorphemic analysis the author never made. Those mirror morphemes have been removed, so 1,165 of the 5,643 `<W>` elements now have no `<M>` child. This is why "Morphologically segmented" above counts 4,475 rather than the full word count.
-* Where a word contains an infix, the author marks it inline in the word itself with angle brackets — `s<em>eljec-an`, `p<in>a-cun-an` — and that notation is what the `<M>` tier is derived from. She then explains the infix in prose in the word's gloss rather than in Leipzig `<AV>` notation, so the analysis is present but written differently from most glossed corpora.
-* In short: the presence of an `<M>` tier is itself information — it tells you the author analysed that sentence. This follows the bank-wide rule that morphological analysis is scoped per sentence, not per file; see [The FormosanBank XML format](https://formosanbank.github.io/FormosanBank/the-bank-architecture/formosanbank-xml-format/) for POL-023.
-
-**Orthography**
-
-* The `original` tier keeps the source spelling exactly as the blog writes it. The `standard` tier is derived from it with FormosanBank's common conventions applied: source segmentation hyphens are removed (they belong on the `<W>` and `<M>` tiers), and diacritics that mark prosody rather than spelling are stripped. In this corpus that affects exactly two words — the Mandarin kin terms quoted in one sentence, where `yípó` and `āyí` become `yipo` and `ayi` in the standard tier only. Paiwan spells with no accented letter, so nothing here is protected; in a language that does, such as Puyuma with its `ē`, the letter survives.
-
-**Notation**
-
-* Infixes are written with angle brackets inside the word, as the source writes them: `s<em>eljec-an`, `p<in>a-cun-an`. These are XML-escaped in the file (`s&lt;em&gt;eljec-an`), so any XML parser returns them as text. They are source notation, not markup — stripping tags naively will corrupt these words.
-
-**Alternatives, audio, and duplicates**
-
-* Where the source offers alternative wordings of one sentence — `qali/drava`, `tjangtjang / siyak`, `abar (yasi)` — each alternative becomes its own sentence record. The recordings for those three are excluded from the corpus: the author pronounces both alternatives in turn, which is not a recording of either single sentence and would be an ungrammatical utterance of the combined one. The files remain available as declared extras of the public audio dataset.
-* Two duplicate sentence groups come from separate blog posts with distinct source URLs and audio, so both attestations are retained.
 
 ## Reproduction and processing
 

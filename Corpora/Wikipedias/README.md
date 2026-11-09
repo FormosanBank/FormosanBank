@@ -131,14 +131,7 @@ prohibited without prior written permission. Wikipedia text is CC BY-SA.
 
 ## Notes and caveats
 
-- **`dialect="unknown"` everywhere**: Wikipedia articles carry no dialect
-  identification. For Seediq this means the corpus counts as Seediq, not
-  Truku, under FormosanBank counting rules (trv counts as Truku only with
-  an explicit `dialect="Truku"`).
-- **Non-Formosan text** (from the old processing notes): Given the multilingual nature of Wikipedia articles,
-  users should note the presence of occasional non-Formosan text (e.g., English
-  characters or Chinese text). While these have been minimized, they may still
-  appear at low frequencies.
+- **Non-Formosan text.** Wikipedia articles are multilingual, so English, Chinese and other non-Formosan text appears in the sentences. It has been reduced but not removed.
 - **PHON is provisional**: with dialect unknown, IPA uses default columns;
   dialect-dependent sounds appear as `[x|y]` variant groups. The corpus
   is phonologized under a blanket Ortho113 assumption, which the source
@@ -164,12 +157,8 @@ prohibited without prior written permission. Wikipedia text is CC BY-SA.
 
 #### Limitations
 
-Please beware that due to the nature of the wikipedias corpus (being collected
-from public online article and heavily containing non-Formosan text), there are
-some limitations in the corpus that should be pointed out.
-
 * The standard tier (`<FORM kindOf="standard">`) is a copy of the original with accents removed. It does not convert spelling, so any English or other non-Formosan words are left as they are.
-* The historical citation cutter sometimes stopped at an early reference heading and removed the article text after it. The 30 Seediq cases identified so far are repaired (see "The published corpus" above), including Nakahara, Kobah, Pratan and Bubun (body text) and Smangus (author credit). `Tausa`, which this page used to list as an example, is not among the 30. Other articles cut the same way, if any, have not been looked for.
+* **Some articles may be truncated.** An earlier processing step sometimes cut the article text at an early reference heading. The 30 Seediq cases found have been repaired; the other languages have not been checked.
 
 ## Reproduction and processing
 

@@ -82,17 +82,10 @@ This corpus is subject to its source license and the central FormosanBank terms 
 
 ## Notes and caveats
 
-#### Known source anomalies
-
-- **Rows 223–233** fill the two van der Vlis columns in the opposite order, a run that begins at manuscript page marker 12 and spans PDF pages 16–17. Confirmed against the source; the published predecessor reproduced the same anomaly, publishing the Siraya form as its own Dutch translation. The build swaps them back. For eleven consecutive entries, beginning at the manuscript's own page 12, the source table fills its two van der Vlis columns in the opposite order to the rest of the table. The build restores the intended order. This is worth recording because the earlier published version of this corpus reproduced the anomaly, printing the Siraya form as its own Dutch translation.
-- Row 122 is published as one word, `pasagoualalingauang`. Joby's table cell wraps it across two lines (`pasagoualalingaua` / `ng`, PDF p. 9), which the text layer reads as a space; van der Vlis sets it solid, so there is no variant (maintainer, 2026-10-15). The FORM's `notes` says so. One entry, `pasagoualalingauang` 'mirror', is published as one word: Joby's table cell wraps it across two lines, which reads as a space in the text layer, and van der Vlis sets it solid.
-- Row 1060's van der Vlis cell has two lines, `vougot` and `vuxot` (PDF p. 75). Only `vuxot`, the second spelling, is published as the variant (maintainer, 2026-10-15). For `vougot` 'to bind', van der Vlis gives a second spelling, `vuxot`, published as its variant.
 #### Import decisions
 
 - There are no `standard` `FORM` or `PHON` tiers, because FormosanBank has no Siraya standard orthography or phonology profile (see Source).
-- Van der Vlis's own infix parses in column 4 are not published; the corpus follows Joby, so text after the headword in that column is dropped, except at row 1060 (`CodeAndDocs/source_decisions.json`, `alternate_form_rules`).
-- Joby describes the manuscript as containing 1,072 lemmas, but the database has 1,061 detectable table rows; the build takes the database row as the unit and does not split any row to make up the difference (`CodeAndDocs/source_decisions.json`, `unit_model`).
-- Fifteen forms occur in two separate source rows each; both rows are kept as separate records (`CodeAndDocs/source_decisions.json`, `repeat_policy`).
+- Van der Vlis's own infix parses (column 4) are not published; the corpus follows Joby's table, so text after the headword in that column is dropped.
 
 ## Reproduction and processing
 

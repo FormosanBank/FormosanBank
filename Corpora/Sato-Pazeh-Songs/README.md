@@ -22,7 +22,7 @@ All three XML files under `XML/Pazeh/` carry `xml:lang="pzh"`,
 | `Nanpo_Dozoku_1931_Hanran_go_Jinmin_Bunkyo_no_Uta.xml` | III 氾濫後人民分居之歌 (Song of Post-Flood Dispersion) | 23 |
 
 The source does not record the dialect. Pazeh has two dialects, Pazeh (巴宰)
-and Kaxabu (噶哈巫); see **The dialect is unrecorded** under Notes and caveats.
+and Kaxabu (噶哈巫).
 
 The Japanese translations are tagged `TRANSL[@xml:lang="jpn"]`.
 
@@ -123,9 +123,7 @@ The corpus is also subject to FormosanBank's
 
 ## Notes and caveats
 
-Seven things a user should know before comparing this corpus with FormosanBank's
-other material. All are properties of the 1931 source or of the state of Pazeh
-documentation, not defects in the port.
+These are properties of the 1931 source or of the state of Pazeh documentation, not defects in the port.
 
 **Sato's philological notes are not extracted.** Each of the three sections is
 followed by a block of line-by-line notes (試註) — notes 1–21 for section I,
@@ -135,28 +133,11 @@ inventoried in the corpus's source ledger and were used during transcription
 to resolve line-wraps and readings, but none of their content is in the XML.
 They are the richest unextracted material in the source.
 
-- **The article's Japanese notes are not extracted.** Each of the three
-  sections is followed by 試註, a substantial block of Sato's philological
-  notes on individual lines — notes 1–21 for section I, through note 41 for
-  section II, through note 24 for section III. These are inventoried as
-  excluded blocks in `CodeAndDocs/intermediate/source_blocks.csv` and were
-  used to resolve line-wraps and readings, but none of their content is in
-  the XML. They are the richest unextracted material in the source and
-  could and should be captured — most plausibly as sentence-level
-  `TRANSL[@kindOf]` or as notes attached to the lines they gloss.
-
 **There is a second translation, also not extracted.** Each section closes with
 a free Japanese rendering of the whole song (大意), occupying most of three
 further printed pages. It was excluded because it does not align line-by-line
 with the sentence tier, but it is in substance a second translation of the same
 text.
-
-- **There appears to be a second translation, also not extracted.** Each
-  section also closes with 大意, a free Japanese rendering of the whole song.
-  It is not aligned line-by-line with the `FORM` rows, which is why it was
-  excluded, but it is in substance a second translation of the same text and
-  a reader would want it. Extracting it means deciding how to represent a
-  whole-text translation that does not map onto sentences.
 
 **Hyphens are syllable dividers, not morpheme boundaries.** 137 of 356 tokens
 contain a hyphen — `Tap-ba-nan`, `Sap-bung-nga-kai-sih`, `ki-kit-ta-ai`.
@@ -164,18 +145,9 @@ Everywhere else in FormosanBank a hyphen inside a FORM marks morpheme
 segmentation. Anything that strips or interprets hyphens will be wrong on this
 corpus.
 
-- **Hyphens are syllable dividers, not morpheme boundaries.** 137 of 356
-  tokens contain `-` (`Tap-ba-nan`, `Sap-bung-nga-kai-sih`). Everywhere else
-  in FormosanBank a hyphen in a FORM marks morpheme segmentation. Anything
-  that strips or interprets hyphens will be wrong here.
-
 **Doubled consonants are probably not geminates.** The sequences `bb kk nn rr
 dd hh mm tt ss pp` occur 24 times. They most likely mark syllable closure in
 Sato's romanization rather than consonant length, but this is not settled.
-
-- **Doubled consonants are probably not geminates.** `bb kk nn rr dd hh mm tt
-  ss pp` occur 24 times; they most likely mark syllable closure in Sato's
-  romanization rather than length.
 
 **There is no standard tier and no phonology tier.** Pazeh has no designated
 standard orthography in FormosanBank — its `standards.csv` cell is deliberately
@@ -187,15 +159,6 @@ romanization known. A Pazeh scheme does exist in the bank
 it has no `c`, `j` or `o`, all of which Sato uses, and applying it produces
 both unmapped letters and silent errors. Generating a phonology from it would
 assert readings the source does not support, so neither tier is generated.
-
-**The dialect is unrecorded.** Pazeh has two dialects, Pazeh (巴宰) and Kaxabu
-(噶哈巫). The source does not say which this is, so every text carries
-`dialect="unknown"`. Taisha-shō is Pazeh territory, but the corpus does not
-assert what the source does not state.
-
-- **`dialect="unknown"`.** The source does not identify a Pazeh variety.
-  `dialects.csv` lists both Pazeh dialects (Pazeh and Kaxabu), but the corpus
-  does not assign either.
 
 ## Reproduction and processing
 

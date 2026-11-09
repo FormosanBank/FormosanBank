@@ -155,7 +155,7 @@ The corpus is distributed under CC BY-NC 4.0, the value recorded in the `copyrig
 
 * It is known that the audio does not always match the text. It is not clear how common this is.
 
-* NTU's word-by-word glosses are sometimes shifted by one word relative to the words they gloss. The shifts found so far have been reviewed and repaired (see [`CodeAndDocs/pipeline/gloss_shift_repairs.tsv`](CodeAndDocs/pipeline/gloss_shift_repairs.tsv) and [`gloss_cell_decisions.tsv`](CodeAndDocs/pipeline/gloss_cell_decisions.tsv)); others may remain.
+* NTU's word-by-word glosses are sometimes shifted by one word relative to the words they gloss. The shifts found so far have been repaired; others may remain.
 
 * At the time the NTU Formosan Corpus was created, there were no clear conventions as to whether to write a clitic as a stand-alone word. However, the glosses almost always treat the clitic as attached to another word. As a result, a written word and a `W` element do not always correspond one-to-one.
 
@@ -165,7 +165,7 @@ The corpus is distributed under CC BY-NC 4.0, the value recorded in the `copyrig
 
 * In some words, the wordform and its morpheme glosses differ in the number of segments. Many of these cases appear to be due to the wordform not being segmented; others may be due to the wordforms and glosses being out of alignment.
 
-* The original data often contains transcriber notes or translation notes inline, in parentheses. These are removed from the text and preserved in a `notes` attribute: commentary inside a free translation goes to `TRANSL/@notes` (5,911 translations, in 4,403 sentences), and commentary in the sentence text itself goes to `FORM/@notes` (6,114 sentences, a figure that also includes the notes described in the next item, plus 1,339 at the word level). Every parenthetical span is extracted, whether the source wrote ASCII `(...)` or fullwidth `（...）` and wherever in the string it sits; the `notes` attribute holds the source string as written, so nothing is lost. Word- and morpheme-level glosses are left exactly as the source wrote them, since those are glosses rather than commentary. A small residue survives: 28 free translations still carry a parenthetical inline (23 of them with no `notes` attribute, so those are not recorded anywhere else), and 16 have unbalanced parentheses that cannot be resolved automatically. The online version of the NTU Formosan Corpus is meant to be read by a human and remains the better place to browse the annotations: the `id` of the XML file (check the `TEXT` header element) tells you what the file is there, and the `id` of the `S` element tells you which line.
+* NTU's inline transcriber and translation notes, in parentheses, are removed from the text and kept as written in `notes` attributes: notes inside a free translation go to `TRANSL/@notes`, notes in the sentence text to `FORM/@notes`. Word and morpheme glosses are left exactly as NTU wrote them. The online NTU Formosan Corpus remains the better place to browse the annotations: the `TEXT` id names the file there and the `S` id the line.
 
 * The original data also has notes written below the free translation. Many of these simply state the source of the information, but others explain words or give further examples. They are kept, in the `notes` attribute of the sentence's original-tier `FORM`, together with the parenthetical notes described above. Where those notes give example sentences with translations, each example is also published as a sentence of its own at the end of its story (18 sentences, from 4 stories; listed in [`CodeAndDocs/pipeline/note_sentences.tsv`](CodeAndDocs/pipeline/note_sentences.tsv)). Their `S` ids end in `-note` and a number, and their `FORM` notes say they are not part of the recording.
 
@@ -175,29 +175,13 @@ The corpus is distributed under CC BY-NC 4.0, the value recorded in the `copyrig
 
 * The Rukai marker `_` is not used in the text.
 
-* Speaker labels (`T:`) are not words and are removed from the word tier and the sentence text. That includes labels naming several speakers at once, `Y,M:`, `W,G,S:` (ruling 2026-10-18: "Any number of single capital letters followed by a colon, ignore intervening commas => speaker label."; 23 such labels in 22 Tsou sentences).
-
 * A small subset of sentences in the Grammar subcorpus have no word-by-word glosses (the original data does not include them).
 
 * The original data has a lot of prosodic markup and other dialog markup. This has all been removed.
 
-* The original tier keeps NTU's spelling and word division. Where NTU's sentence text writes as one word what NTU's own glosses treat as two, the standard tier writes the two words, as glossed (7 sentences, listed in [`CodeAndDocs/pipeline/standard_word_splits.tsv`](CodeAndDocs/pipeline/standard_word_splits.tsv)): Sakizaya `itiza` → `i tiza` and `paza'ci` → `paza' ci`, Kanakanavu `tia'apacangcangarʉʉn` → `tia 'apacangcangarʉʉn`.
-
 * Code-switched words that NTU left unglossed are glossed with the name of the language in parentheses: `(Mandarin)` (47 words), `(Hakka)` (4), `(Japanese)` (4) and `(Chinese)` (2). A word written in Han characters is its own Chinese gloss.
 
-* In the Seediq conversation `sdqCon-dialog5_dakis_takun 2020s`, where a speaker switches to a stretch of Mandarin that the sentence's translation does not cover, that stretch is published as a sentence of its own, with a note saying so (44 sentences). Four utterances where a short Mandarin phrase sits inside a translated Seediq sentence are kept whole.
-
 * NTU transcribes the Stories in intonation units. Units are joined into one sentence up to NTU's sentence-end mark, except that a unit with its own translation ends its sentence. NTU writes an untranscribed word `X` (also `XX`, `XXX`, `XXXX`); FormosanBank publishes it as `<UNCLEAR/>` (see the next note).
-
-* **Content NTU could not transcribe or gloss is written `<UNCLEAR/>`.** This is the last step of the build (`CodeAndDocs/pipeline/mark_unclear.py`). Almost all of it is in the Stories subcorpus; Sentences has 10 word and 24 morpheme glosses. Every case, with the ruling behind it, is listed under "What each step does" (phase D) below.
-  * *Untranscribed words*: 609 in the sentence text of 510 sentences are `<UNCLEAR/>` in both sentence FORMs and both sentence PHONs, with NTU's punctuation kept (`piala haca, <UNCLEAR/>, aku tuni kalitang, ...`). In the word tier, 582 such words have `<UNCLEAR/>` as FORM, PHON and gloss. The 563 morphemes under those words, each a copy of the word (`XX` glossed `X`), were removed. Thirteen words written `X` that NTU did gloss (e.g. `FS`, `father`) keep their gloss and morphemes; only their FORM is `<UNCLEAR/>`. Where `X` is only part of a word (`mi-XX,`), only that part is `<UNCLEAR/>` (`mi-<UNCLEAR/>`).
-  * *Unknown glosses*: a word or morpheme gloss that is only `?`, `??` or `???` is `<UNCLEAR/>` (418 word glosses, 542 morpheme glosses). A `?` inside a longer gloss (`banana-??`; 125 glosses) is left as written.
-  * *Unknown sentence translations*: 6 translations in 4 sentences that were only `?` or `XXX` were removed.
-  * `<UNCLEAR/>` is not counted as a word, so the corpus word count falls by the 609 untranscribed words.
-
-* **Bunun sentences published once (rulings 2026-10-16).** NTU's release has a revised copy of the Bunun sentence collection, `sentence/Bunun_Isbukun/63.json` (upstream `63_revised.json`, no speaker or date), alongside the original files. 875 of its 920 records repeat a record of another file; `pipeline/bunun63_pairs.tsv` (written by `pipeline/make_bunun63_pairs.py`) pairs them, on identical word lists or on a shared translation with word lists at least 60% alike. At the end of the Sentences build, after all cleaning, `pipeline/dedupe_bunun63.py` compares each pair as published: identical copies keep the other file's sentence and drop the 63.json one; copies that differ only in notes keep the more recent or more complete note; copies that differ in translation become one sentence with the other copy's translations as alternatives (`ver="alt"`; a translation written `A / B` becomes A plus alternative B); and where the sentence text is the same but the analysis differs (mostly reduplication written `ma-ba-baliv` 'AF-RED-buy' in the revision against `ma<ba>baliv` 'AF<RED>buy'), the revision's analysis is kept and the other copy dropped. Where the sentence text itself differs, a difference only in punctuation or word division keeps the revision, and a difference in letters keeps the other file's copy, whose spellings other Bunun corpora mostly use (`saia` 1,254 times against the revision's `saiia` 49). All 875 pairs are resolved: 897 sentences are dropped (Bunun Sentences 2,096 → 1,199) and 113 alternative translations added. The build's per-pair report is `logs/bunun63_dedupe.tsv`.
-
-* Three stories exist twice in NTU's release, as two transcriptions of one recording: Seediq `sdqNr-taboo_pawan` and `sdqNr-tattoo2_pawan`, and Tsou `TsouNr-pear-story-3` / `TsouNr-pear-zheng-2`. The corpus uses the newer text, which has no audio timing; each record takes its time span and recording from NTU's timed transcription of the same text (`pipeline/audio_timing_grafts.tsv`, written by `pipeline/make_audio_timing_grafts.py`, which checks that the two versions have the same records and sentence ends). The Seediq word lists differ from the timed versions mainly in analysis (`kesa-un` vs `kes-un`), not in the sentence lines, which use the usual spellings (`kesun`).
 
 * Some English glosses contain Mandarin (e.g. `eng="使役-太陽=完成貌"`), most likely because the glossers were Mandarin-dominant. These are left as they are in the source.
 
@@ -210,14 +194,6 @@ The corpus is distributed under CC BY-NC 4.0, the value recorded in the `copyrig
 The NTU source is written in **Ortho94**, the orthography released in ROC year 94 which Ortho113 later revised. The corpus is processed as Ortho94 throughout: the original phonemic tier is generated from Ortho94's letter-to-sound rules, and the standard tier is produced by converting 94 → 113 per language, since Ortho113 is FormosanBank's common orthography.
 
 Eight of the corpus's ten languages carry an empty conversion table (Atayal, Bunun, Kanakanavu, Kavalan, Rukai, Saisiyat, Seediq and Tsou); only the Amis and Sakizaya tables have letter rows. Bunun and Tsou need no letter conversion, their Ortho94 and Ortho113 spellings agreeing; Kanakanavu genuinely differs but cannot be converted in this direction, because Ortho113 introduced letters Ortho94 did not have. This repository does not record why the Atayal, Kavalan, Rukai, Saisiyat and Seediq tables are empty. Accents are removed and capital variants derived in all cases regardless.
-
-#### Quality checks
-
-FormosanBank's validators decide whether a corpus's XML is *legal*. This corpus additionally carries a suite that measures how well it holds together as a **glossed** corpus — whether the word tier accounts for the sentence, whether every morpheme a word's form implies actually has a morpheme element, and whether the glosses sit in the right language slots. A file can be perfectly valid and still score poorly on these.
-
-Almost none of those tests can honestly reach 100%: the source contains sentences nobody segmented and words nobody glossed, and suppressing that fact would be worse than reporting it. So the recorded score is the specification — a baseline file holds what each test achieves on the corpus as published, and any rebuild is compared against it, with drops reported as regressions and rises reported so the baseline can be moved deliberately.
-
-The suite and its baseline live in the corpus's `CodeAndDocs/qa/` directory in the [FormosanBank repository](CodeAndDocs/qa).
 
 ## Reproduction and processing
 
@@ -499,8 +475,8 @@ every `ʉ` became `*` (2,193 of 3,981 sentences). The 34 `l`, which Ortho113 lac
 
 **Phase D, markers.** For Sentences only, first
 `pipeline/split_two_renderings.py` (a translation `A / B` → a translation plus an
-alternative) and `pipeline/dedupe_bunun63.py` (report `logs/bunun63_dedupe.tsv`);
-the second is described under Notes and caveats. Then, for every subcorpus:
+alternative) and `pipeline/dedupe_bunun63.py` (report `logs/bunun63_dedupe.tsv`).
+Then, for every subcorpus:
 
 1. `pipeline/mark_unclear.py --placeholders CodeAndDocs/unclear_gloss_placeholders.tsv`
    (report `logs/unclear_<Subcorpus>.tsv`). It runs after the shared

@@ -232,44 +232,10 @@ The online dictionary's current [copyright statement](https://e-dictionary.ilrdf
 
 #### Summary
 
-Each item is described in full in the section named in brackets.
-
-- **1,251 sentences are no longer in ILRDF's current dictionary.** They are
-  kept as FormosanBank published them from its 2024 scrape and carry an
-  `S/@source` saying so. ["Sentences from the 2024 scrape — 1,251"]
-- **24 `?` are left where the source lost a letter.** In Kanakanavu, Saaroa
-  and Tsou the source sometimes has a literal `?` where **ʉ** was lost; 61
-  were restored, but these 24 could not be confirmed and are left visible
-  rather than guessed. ["Recovered `?` corruption — 61 tokens"]
-- **1,438 recordings are published without a transcription** (as `AUDIO`
-  directly under `TEXT`), including the 244 that FormosanBank's 2024
-  publication had attached to several different sentences. ["Recordings"]
-- **99,963 recordings are not published**; every one, and why, is in
-  [CodeAndDocs/docs/audio_not_published.csv](CodeAndDocs/docs/audio_not_published.csv).
-  ["Recordings", "Excluded content"]
-
-The same points in brief, with one more:
-
 * **1,251 sentences are no longer in ILRDF's current dictionary.** They are kept as FormosanBank published them in 2024 and carry an `S/@source` saying so.
 * **24 `?` are left where the source lost a letter** (Kanakanavu, Saaroa and Tsou), because the intended word could not be confirmed.
 * **1,438 recordings are published without a transcription**, as `AUDIO` directly under `TEXT`, with `AUDIO/@source` naming the example it belongs to.
 * **13 sentences have no recording**, because every recording the source has for them is broken or could not be downloaded.
-
-#### Sentences from the 2024 scrape — 1,251
-
-**Sentences from the 2024 scrape — 1,251.** 1,251 sentences FormosanBank published in 2024 are no longer in ILRDF's current dictionary. They are kept as published then (same id, original text, translation and recording) and marked with `S/@source="ILRDF online dictionary, 2024 scrape …; no longer in ILRDF's current dictionary"`. Their standard tier and phonology are regenerated like every other record's.
-
-1,251 sentences FormosanBank published from its 2024 scrape are no longer in
-ILRDF's current dictionary. They are kept as published then — same id,
-original text, translation and recording — from a committed snapshot of that
-XML ([CodeAndDocs/source_data/main_2024/](CodeAndDocs/source_data/main_2024/),
-POL-035), and marked with `S/@source="ILRDF online dictionary, 2024 scrape …;
-no longer in ILRDF's current dictionary"`. Their standard tier and phonology
-are regenerated like every other record's.
-
-| Amis | Atayal | Bunun | Kanakanavu | Kavalan | Paiwan | Puyuma | Rukai | Saaroa | Saisiyat | Sakizaya | Seediq | Thao | Truku | Tsou | Yami |
-|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 4 | 89 | 6 | 537 | 138 | 3 | 36 | 2 | 209 | 38 | 1 | 29 | 22 | 6 | 116 | 15 |
 
 #### Phonology and the standard tier
 
@@ -284,40 +250,11 @@ The standard tier is the original with accents removed (`standardize.py
 --remove_accents`): no conversion table is applied, so the standard tier keeps
 the source's spelling.
 
-#### Recovered `?` corruption — 61 tokens
-
-**Recovered `?` corruption — 61 tokens.** The source has lost the letter **ʉ** in places, leaving a literal `?`. Where the intended word can be confirmed it is restored automatically; where it cannot, the `?` is left visible rather than guessed at. The repair touches only Kanakanavu, Saaroa and Tsou, and only a `?` with a Formosan letter on *both* sides, so a sentence-final question mark is never affected. The candidate word must already occur, intact, elsewhere in the same language. Of 85 candidates, **61 were repaired — every one to ʉ** — and **24 were left unrepaired**.
-
-The source has lost the letter **ʉ** in places, leaving a literal `?`. Where
-the intended word can be confirmed, it is restored automatically; where it
-cannot, the `?` is left visible rather than guessed at. The repair applies
-only to Kanakanavu, Saaroa and Tsou, and only to a `?` with a Formosan letter
-on **both** sides. The candidate must already occur, intact, elsewhere in the
-same language's snapshot. Of 85 candidates, **61 were repaired — every one to
-ʉ** — and **24 were left unrepaired**.
-
 #### Source-side alternatives
 
-* where the reading is not clear, the record is not published as text: 620 records, every one listed in [`split_report.csv`](CodeAndDocs/docs/split_report.csv).
-
-**Recordings of alternatives.** When the source prints alternatives in one
-item, its recording is not attached to any of the resulting sentences: it is
-published as untranscribed audio, an `AUDIO` that is a direct child of
-`TEXT`, with `AUDIO/@source` naming the example it belongs to (maintainer
-ruling 2026-10-16, ILRDF only). 486 recordings are published this way;
-with the 708 replaced 2024 recordings and the 244 recordings printed for
-several sentences (below), 1,438 untranscribed recordings in all.
-
-**Headwords with an attached bracket.** Headword notation such as
-`uculru(wa)` (an attached bracket marking an optional ending) is not left as
-the source writes it: the build cannot classify the bracket, so the headword
-is not published. `uculru(wa)` (Rukai) is listed as `dropped` in
-[CodeAndDocs/docs/split_report.csv](CodeAndDocs/docs/split_report.csv), and
-so is `aono(mamcino)`.
+* **620 records whose alternative wordings could not be read unambiguously are not published as text**; each is listed in [`split_report.csv`](CodeAndDocs/docs/split_report.csv).
 
 #### Recordings
-
-**Recordings.** Every recording was fingerprinted once and the result frozen, so the build never downloads anything.
 
 * **One `S` per distinct recording; identical copies kept once.** The same sentence is often printed under several headwords, each copy with its own recording. Byte-identical copies are published once (98,529 copies). A sentence with *k* different recordings becomes *k* `S` with the same text and translations (15,599 added `S`).
 * **FormosanBank's 2024 recording first.** Where the 2024 recording is byte-identical to a 2026 one, the file keeps its existing name. Where the 2026 source has a different usable recording, the 2026 one goes on the sentence under a new file name, and the 2024 recording is kept without a transcription (708 recordings).

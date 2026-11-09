@@ -112,18 +112,6 @@ that names no version is 4.0).
 
 - The sound files corresponding to individual words in `jiu_jie_jiao_cai_nine_level_materials` are iffy. The original datasource had some errors in it. We cleaned it up quite a bit, but it is likely some inaccuracies remain. Use with caution.
 
-- The corpus appears to use the standard orthography ("Ortho113" in FormosanBank nomenclature), with some exceptions:
-
-  * Ortho113 specifies that only the Nanshi dialect uses `u`, while the other dialects use `o`. However, there are a fair number of `o`s and `u`s throughout the dialect, irrespective of dialect. The `standard` tier normalizes these to match the standard orthography. For the IPA transcriptions of the `original` tier, we recognize either `o` or `u` as referring to the same phoneme.
-  * Different subcorpora appear to use different orthographies; the determination
-    for each subcorpus is listed under step 8 of "What each step does" below.
-
-- Reproduction is incomplete. The XML cannot be fully rebuilt from this folder
-  alone: there is no single build script, some steps were done by hand, the
-  source audio for the sentence-pattern subcorpora was not retained, and some
-  properties of the published XML are produced by no script here (listed at the
-  end of "What each step does").
-
 ## Reproduction and processing
 
 ### How to reproduce

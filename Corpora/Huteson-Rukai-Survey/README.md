@@ -78,7 +78,7 @@ The corpus is also subject to FormosanBank's
 
 #### Properties of the source
 
-Four things a user should know before comparing this corpus with FormosanBank's
+Two things a user should know before comparing this corpus with FormosanBank's
 other Rukai data. All are properties of the 2003 source, not defects in the
 port.
 
