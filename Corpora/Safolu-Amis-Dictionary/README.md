@@ -1,6 +1,6 @@
 # Safolu Amis Dictionary
 
-The Safolu Amis Dictionary is a collection of 49,406 Amis example sentences with Mandarin (Chinese) translations, drawn from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵). The data comes from the generated JSON of the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project (`docs/s`; see [amis.moedict.tw](https://amis.moedict.tw/)), checked against the dictionary's printed text.
+The Safolu Amis Dictionary is a collection of 50,316 Amis example sentences with Mandarin (Chinese) translations, drawn from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵). The data comes from the generated JSON of the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project (`docs/s`; see [amis.moedict.tw](https://amis.moedict.tw/)), checked against the dictionary's printed text.
 Safolu Kacaw Lalanges (Tsai Chung-Han) dictionary examples, distributed by
 the g0v Amis Moedict project. Virginia Fey and Poinsot are separate corpora.
 
@@ -24,14 +24,18 @@ No source W/M annotation or audio.
 [The source manifest](CodeAndDocs/source_manifest.json) identifies the pinned
 `g0v/amis-moedict` `docs/s` input: 42,273 lexical files, 57,361 definitions and
 49,419 example fields. The committed compressed snapshot retains each complete
-raw example, definition, title and stable source locator. Headwords and
+raw example, definition, title and stable source locator. The examples the
+dictionary editors added upstream after that snapshot are held, in the same raw
+form, in [CodeAndDocs/upstream_additions.json](CodeAndDocs/upstream_additions.json)
+(914 examples at `g0v/amis-moedict` commit `4cb82539d`). Headwords and
 definitions provide context; there is no word segmentation or glossing, so the
 corpus has no W or M tier.
 
-The build emits 49,526 records: 49,522 from the 49,419 source fields (20 fields
-are excluded and recorded; some fields yield two sentences) plus 4 examples
-added from the printed book. Shared dictionary dedup then removes 120 exact
-duplicates, leaving **49,406 sentences**. Published ids stay fixed; a second
+The build emits 50,438 records: 49,522 from the 49,419 snapshot fields (20 fields
+are excluded and recorded; some fields yield two sentences), 4 examples added
+from the printed book, and 912 of the editors' 914 added examples (2 are excluded
+and recorded). Shared dictionary dedup then removes 122 exact duplicates, leaving
+**50,316 sentences**. Published ids stay fixed; a second
 reading of a source example keeps the base id and adds `-opt`, `-opt3`, etc.
 
 #### Audio
@@ -40,16 +44,11 @@ None.
 
 #### Changes from the previous release
 
-Compared with the previously published file (49,181 sentences):
+Compared with the previously published file (49,406 sentences):
 
-- **Removed (4):** S00401, S00623, S00692, S00869, exact duplicates of other
-  sentences under the standard-tier rule.
-- **Added (229):** 142 source examples the old build had lost (140 were merged
-  into another sentence with the same FORM, often with a different meaning; 2
-  were dropped), 83 second readings (`-opt`), and the 4 printed examples.
-- **Changed:** 164 original FORMs and 128 translations (the decisions above and
-  the source repairs); 25 sentences have an alternative FORM and 7 an
-  alternative translation. PHON is regenerated from the Church table.
+- **Added (910):** `S49424`–`S50337`, examples the dictionary editors added
+  upstream that the printed book does not have.
+- **Removed, changed:** none.
 
 ## Statistics
 
@@ -91,19 +90,18 @@ the signature or grant date.
 
 ## Notes and caveats
 
-- **204 sentences follow the dictionary editors' later revision, not the
-  printed book** (see "Upstream editors' edits" under
-  [Per-sentence decisions](#per-sentence-decisions)).
-
-- The upstream editors have also added about 900 examples that are not in the
-  printed book. They are not included.
+- **1,114 sentences come from the dictionary editors' later work, not the
+  printed book:** 204 follow the editors' revision of a printed example (see
+  "Upstream editors' edits" under [Per-sentence decisions](#per-sentence-decisions)),
+  and 910 (`S49424`–`S50337`) are examples the editors added.
 - The source history includes both PDF-to-TXT and DOCX conversion. A clean JSON
   file does not establish that it is free of earlier extraction errors.
 
 ## Reproduction and processing
 
-**Status:** rebuilt 2026-10-17 from the pinned source with every decision from the
-maintainer's Safolu review applied (PR #157). Two rebuilds are byte-identical;
+**Status:** rebuilt 2026-11-09 from the pinned source with every decision from the
+maintainer's Safolu review applied (PR #157) and the dictionary editors' added
+examples. Two rebuilds are byte-identical;
 validate_xml, validate_text and validate_glosses report 0 HARD findings.
 
 [Basecamp card](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/7112980917)
@@ -114,9 +112,10 @@ The build reads a committed snapshot of the source (49,419 example fields at `g0
 * **Parsing** into one sentence per example. Where a source field holds two readings (a parenthesised or slashed alternative), it becomes either one sentence with an alternative form or two sentences, as decided example by example in a maintainer review.
 * **Per-sentence decisions** from that review (2026-10-16/17), each recorded with its reason: full translations from the printed text where the digitised source cut them short, and decisions on 48 parenthesis and slash examples.
 * **The dictionary editors' later corrections.** The editors have kept revising the dictionary upstream since our snapshot. 204 of their edits are adopted (pinned at `g0v/amis-moedict` commit `4cb82539d`, 2026-10-16), so **these 204 sentences follow the editors' revision, not the printed book**. Four examples printed in the book but missing from the source are added.
+* **The dictionary editors' added examples.** At the same pin the editors have added 914 examples that the printed book does not have; 910 are published as `S49424`–`S50337` (one empty field and one with Chinese inside the Amis are excluded and recorded; 2 are exact duplicates).
 * **Spacing:** no space before `?` or `!`, and a space after them before the next word.
 * **Standard tier** via the Church-to-Ortho113 conversion table (Coastal), and **pronunciation** from the Church orthography table.
-* **Duplicates** are removed only when both the standard text and the translations are identical (120 sentences).
+* **Duplicates** are removed only when both the standard text and the translations are identical (122 sentences).
 
 The [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Safolu-Amis-Dictionary/README.md) gives the details, the full list of decisions, and how to reproduce the corpus.
 (This page is that README; the details follow.)
@@ -195,7 +194,10 @@ In order (`CodeAndDocs/generate_xml.sh`), all inside a temporary staging folder
      sentences by earlier builds are kept from
      [legacy_expansion_ids.json](CodeAndDocs/legacy_expansion_ids.json), new
      ones get `-opt`, `-opt3`, ….
-   - The 4 printed additions are appended as `S49420`–`S49423`.
+   - The 4 printed additions are appended as `S49420`–`S49423`, then the
+     editors' added examples from `upstream_additions.json`, whose ordinals
+     continue from 49424 (so their ids are `S49424`–`S50337`); they go through
+     the same parsing, overrides and exclusions as the snapshot's fields.
    - It writes `XML/Amis/Safolu/amis_safolu_examples.xml` (original FORM and
      TRANSL only) with the `TEXT` attributes above. The excluded fields are
      written out only when `--report-dir <folder outside the repository>` is
@@ -223,7 +225,7 @@ In order (`CodeAndDocs/generate_xml.sh`), all inside a temporary staging folder
    Run as `by_path --path <staging>/XML --apply` (defaults `--scope file`,
    `--tier standard`): it compares the base standard FORM (never a `ver="alt"`
    one) plus all translations, keeps the first sentence by id and deletes the
-   rest (120 in this build).
+   rest (122 in this build).
 6. An inline Python step writes `provenance.json` with the FormosanBank
    checkout's `git rev-parse HEAD` (without Git metadata it keeps the previous
    file and prints a warning).
@@ -266,6 +268,16 @@ maintainer's review (2026-10-16/17):
 - **Printed examples the source lacked (4):** `S49420`–`S49423` (mikapkapan,
   miparoay, miwingawingay, paro), with the editors' Chinese; each entry in
   `printed_additions.json` records where the book prints it.
+- **Examples the editors added (914):** the 918 examples in `docs/s` at
+  `4cb82539d` that are not in the snapshot, less the 4 that equal a printed
+  addition, captured by
+  [`upstream_additions.py`](CodeAndDocs/upstream_additions.py) into
+  `upstream_additions.json`. Entry by entry, an example only in the snapshot is
+  paired with the most similar example only at the pin (difflib ratio of Amis +
+  Chinese above 0.6) and counted as an edit (above); every unpaired example at
+  the pin is an addition.
+  Recapture with `python3 CodeAndDocs/upstream_additions.py /path/to/clean/amis-moedict`
+  (the checkout must be at `4cb82539d`).
 
 The review itself (questions, examples and answers) is recorded in FormosanBank's
 `claudeplans/sweep-qa-decision-log.md`.

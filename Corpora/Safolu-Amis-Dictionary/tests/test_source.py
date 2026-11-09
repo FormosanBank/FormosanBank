@@ -16,6 +16,7 @@ sys.path.insert(0, os.environ["FORMOSANBANK_ROOT"])
 pipeline = importlib.import_module("generate_xml")
 helpers = importlib.import_module("moedict_formosanbank")
 snapshot = importlib.import_module("source_snapshot")
+upstream = importlib.import_module("upstream_additions")
 dedup = importlib.import_module("QC.cleaning.remove_duplicate_sentences")
 
 
@@ -26,12 +27,29 @@ class SourceTests(unittest.TestCase):
         cls.by_id = {row.sentence_id: row for row in cls.records}
 
     def test_every_source_field_is_accounted_for(self):
-        # records added from the printed book (printed_additions.json) have no source field
+        # records added from the printed book (printed_additions.json) have no source field;
+        # the editors' later additions (upstream_additions.json) continue the ordinals from 49424
         represented = {row.notes["source_ordinal"] for row in self.records if row.notes["source_ordinal"] is not None}
         excluded = {row["source_ordinal"] for row in self.rejected}
+        additions = {row["source_ordinal"] for row in upstream.load_additions()}
         self.assertFalse(represented & excluded)
-        self.assertEqual(represented | excluded, set(range(1, 49420)))
+        self.assertEqual(represented | excluded, set(range(1, 49420)) | additions)
         self.assertEqual(len(self.by_id), len(self.records))
+
+    def test_editors_additions_follow_the_printed_ones(self):
+        rows = upstream.load_additions()
+        self.assertEqual((len(rows), rows[0]["source_ordinal"], rows[-1]["source_ordinal"]), (914, 49424, 50337))
+        ids = [r.sentence_id for r in self.records]
+        self.assertEqual(ids[ids.index("S49423") + 1], "S49424")
+        row = self.by_id["S49424"]
+        self.assertEqual((row.form, row.translations[0].text), ("O ngangan no omah konini a 'alaneng.", "這田埂是水田的界線。"))
+        self.assertEqual(row.notes["upstream_addition_commit"], upstream.UPSTREAM_COMMIT)
+        # the printed additions (S49420-S49423) are not captured a second time
+        printed = {(r.form, r.translations[0].text) for r in self.records if r.sentence_id in ("S49420", "S49421", "S49422", "S49423")}
+        from_additions = {(r.form, r.translations[0].text) for r in self.records if r.notes.get("upstream_addition_commit")}
+        self.assertFalse(printed & from_additions)
+        # the one empty upstream field is excluded and recorded
+        self.assertIn(("miterakan", ["empty_form"]), [(r["entry_title"], r["reject_reasons"]) for r in self.rejected])
 
     def test_same_spelling_different_meanings_survive(self):
         first, second = self.by_id["S00110"], self.by_id["S00112"]
