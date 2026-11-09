@@ -55,7 +55,7 @@
     Acceptable: a dialect the source states, or the maintainer's ruling quoted; `trv` is Seediq or Truku by the dialect attribute, never by the code.
     Example: Seediq-Chang — "Tegudaya" set with no reason while the book says 霧社方言; ILRDF v2 relabelled 62,484 Truku records `unknown`.
 
-11. **Rights.** `TEXT/@copyright` an exact value from `rights_vocabulary.csv`; the README's Rights block (POL-042/043/044).
+11. **Rights.** `TEXT/@copyright` an exact value from `rights_vocabulary.csv`; the README's `## License` section (POL-042/043/044).
     How: the 4b table rows; `rights_delta.py` is red by design on any change.
     Acceptable: never downgrade from absence (POL-043) — a claim replaced by prose because the evidence was not found is a finding against the PR.
 

@@ -21,7 +21,7 @@ TBD.
 
 TBD.
 
-## Rights
+## License
 
 **License:** TBD
 **Rights source:** TBD, YYYY-MM-DD; evidence: ask maintainer
@@ -76,7 +76,7 @@ TBD.
 
 When this corpus is ready to port into FormosanBank/Corpora/:
 - [ ] Last `run-qc-pipeline` run passed and the summary is acceptable
-- [ ] README is no longer all TBDs; Rights and Notes and caveats are filled in
+- [ ] README is no longer all TBDs; License and Notes and caveats are filled in
 - [ ] `CodeAndDocs/generate_xml.sh` is the only entry point, runs from a FormosanBank checkout alone, and writes `provenance.json`
 - [ ] `CodeAndDocs/tests/test_source_accounting.py` is filled in and passes
 - [ ] No private source data remains in the dev repo (or is gitignored)
