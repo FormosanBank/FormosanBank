@@ -8,7 +8,7 @@ icon: screwdriver-wrench
 
 ## What it's for
 
-Not part of the routine QC pipeline: run once per corpus when its audio is first published, or after it changes. For keeping an already-published dataset in parity with the XML, use [sync_hf_audio.py](sync-hf-audio.md) instead.
+Not part of the routine QC pipeline: run once per corpus when its audio is first published, or after it changes. For repairing an already-published dataset of clips cut from a recording, use [sync_hf_audio.py](sync-hf-audio.md); to check any dataset against the XML, use [validate_hf_audio.py](validate-hf-audio.md).
 
 ## When to run it
 
@@ -39,5 +39,5 @@ python QC/utilities/upload_to_hf.py --path . --audio-dir Final_audio --dry-run
 
 - [QC Pipeline overview](README.md)
 - [Audio duration stats](audio-duration-stats.md) — `audio_durations.csv` seconds
-- [sync_hf_audio.py](sync-hf-audio.md) — keep a published dataset in parity with the XML
+- [sync_hf_audio.py](sync-hf-audio.md) — repair a published dataset of clips cut from a recording
 - [Porting a Corpus In](../porting-a-corpus.md)

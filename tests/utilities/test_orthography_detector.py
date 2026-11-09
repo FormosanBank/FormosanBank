@@ -17,6 +17,7 @@ from QC.utilities.orthography_detector import (
     extract_letters,
     extract_text_from_xml,
     load_orthography_data,
+    orthographic_punctuation,
 )
 
 _ORTHOGRAPHIES_DIR = str(Path(__file__).resolve().parents[2] / "Orthographies")
@@ -196,3 +197,65 @@ def test_punctuation_that_is_a_letter_somewhere_survives(tmp_path):
     xml = _write_xml(tmp_path, "ma?ang si?i", lang="tao", dialect="unknown")
     text, _, _ = extract_text_from_xml(xml)
     assert "?" in text
+
+
+# --- Punctuation: excluded unless some orthography uses it in a letter -------
+# Maintainer, 2026-11-09: "It should exclude all punctuation EXCEPT punctuation
+# known to appear in some Formosan orthography (regardless of language)."
+
+
+def test_orthographic_punctuation_pools_every_language():
+    """Marks are collected from every language's tables, whole letters apart
+    from marks that only occur inside a multi-character letter."""
+    data = {
+        "Thao": {"default": {"X": {"a", "l.h", "-"}}},
+        "Amis": {"Coastal": {"Y": {"^", "'", "a"}}},
+    }
+    letters, graphemes = orthographic_punctuation(data)
+    assert letters == frozenset({"-", "^", "'"})
+    assert graphemes == ("l.h",)
+
+
+def test_markup_and_punctuation_no_orthography_uses_are_not_scored(tmp_path):
+    """Clitic '=', infix guillemets, brackets, parentheses, ';', '/', '…' and
+    quotation marks are a letter in no table, so none reaches the scorer; the
+    letters around them do, and are not run together."""
+    xml = _write_xml(tmp_path, "hiyi=su k‹um›a'en [tu] (lima); a/b … “x”")
+    text, _, _ = extract_text_from_xml(xml)
+    letters, _counts = extract_letters(text)
+    assert not letters & set("=‹›[]();/…“”"), f"punctuation reached scoring: {text!r}"
+    assert "hiyi su" in text and "k um a'en" in text
+
+
+def test_period_is_kept_only_inside_a_letter(tmp_path):
+    """'.' is part of Thao 'l.h'/'t.h' but a letter by itself nowhere: the
+    letter survives, a sentence-final period does not."""
+    xml = _write_xml(tmp_path, "l.ha t.hi kaku.", lang="ssf", dialect="")
+    text, _, _ = extract_text_from_xml(xml)
+    assert "l.h" in text and "t.h" in text
+    assert text.count(".") == 2, f"only the periods inside l.h and t.h should remain: {text!r}"
+
+
+def test_punctuation_letter_of_another_language_is_kept(tmp_path):
+    """'^' is a letter only in Amis/Sakizaya tables, but it is kept for a
+    Seediq text too: the rule is regardless of language."""
+    xml = _write_xml(tmp_path, "pa^ah")
+    text, _, _ = extract_text_from_xml(xml)
+    assert "^" in text
+
+
+def test_markup_no_longer_lowers_the_score(tmp_path):
+    """A clitic-marked, punctuated sentence scores exactly as its bare twin."""
+    (tmp_path / "a").mkdir()
+    (tmp_path / "b").mkdir()
+    marked = _write_xml(tmp_path / "a", "Malu ka hiyi=su.", dialect="DeluValley")
+    bare = _write_xml(tmp_path / "b", "Malu ka hiyi su", dialect="DeluValley")
+    data = load_orthography_data(_ORTHOGRAPHIES_DIR)
+    ortho = data["Seediq"]["DeluValley"]["Ortho113"]
+
+    def score(path):
+        text, _, _ = extract_text_from_xml(path, orthography_data=data)
+        letters, counts = extract_letters(text)
+        return calculate_orthography_score(letters, set(ortho), counts, text)[0]
+
+    assert score(marked) == score(bare)

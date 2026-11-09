@@ -328,6 +328,12 @@ by `AUDIO/@url` with ffmpeg, uploads them and deletes the clips nothing
 references any more, in a single Hub commit; it then prints the revision SHA
 and file count to record in `audio_sources.json`. Run it after any rebuild
 that changes sentence boundaries, and re-run `validate_hf_audio.py` afterwards.
+It is only for datasets of `.mp3` clips cut from a source recording (AUDIO with
+`url`, `start` and `end`, e.g. the NTU Stories): if any AUDIO under `--xml`
+lacks those, or the dataset holds other audio files (`.wav`, whole
+recordings), it stops without reporting, since it cannot see those files and
+would otherwise propose deleting them. Check such corpora with
+`validate_hf_audio.py --corpus <name>`.
 
 ## Corpus Metrics
 

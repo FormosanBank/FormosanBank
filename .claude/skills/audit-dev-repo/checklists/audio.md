@@ -7,9 +7,9 @@
 3. **Audio identity.** sha256 per file; the container's first bytes against the extension (V106 — WebM/Opus and MP4 under `.mp3` names reached a dataset); byte-identical "duplicate" recordings versus different ones.
    How: `validate_audio.py` on local files; the Hugging Face LFS listing without downloading.
 
-4. **Hub parity.** The XML's `AUDIO/@file` set equals the dataset's files (`validate_hf_audio.py`, blocking in CI); `sync_hf_audio.py` dry run before the PR; `--apply` is the maintainer's call; the revision SHA goes into `audio_sources.json`.
+4. **Hub parity.** The XML's `AUDIO/@file` set equals the dataset's files (`validate_hf_audio.py --corpus <name>`, blocking in CI; `--local` with the files downloaded); the revision SHA goes into `audio_sources.json`.
 
-5. **Boundary changes after text edits.** A rebuild that changes sentence spans leaves clips to re-slice; `sync_hf_audio.py` lists them.
+5. **Boundary changes after text edits.** A rebuild that changes sentence spans leaves clips to re-slice; for clips cut from a source recording (AUDIO with `url`, `start`, `end`), `sync_hf_audio.py` lists them (it stops on any other kind of audio); `--apply` is the maintainer's call.
    Example: NTU — 96 clips to slice before parity passed.
 
 6. **No download script writes XML.** Audio download is not a build step (POL-038/047); `download_audio_data.sh` and any `post_download` hook in `audio_sources.json` only fetch (the static test warns on a hook that writes).

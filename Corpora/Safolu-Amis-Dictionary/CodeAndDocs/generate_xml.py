@@ -31,6 +31,7 @@ from moedict_formosanbank import (
 )
 
 from source_snapshot import MANIFEST, load_rows
+from upstream_additions import UPSTREAM_COMMIT, load_additions
 
 
 DEFAULT_XML_OUT_DIR = ROOT / "XML"
@@ -348,6 +349,7 @@ def extract_generated_moedict_examples(
                     raw_example=raw_example,
                     notes=record_notes,
                     variants=tuple(normalize_bang_spacing(v) for v in override["emitted"][index - 1].get("variants", [])) if override else (),
+                    form_notes=override["emitted"][index - 1].get("form_notes") if override else None,
                 )
             )
 
@@ -374,16 +376,23 @@ def safolu_corpus():
         citation="Tsai, Chung-Han (Safolu Kacaw Lalanges). (n.d.). Amis dictionary. Provided to the g0v Amis Moedict project.",
         bibtex_citation="@misc{tsai_amis_dictionary, author={{Tsai Chung-Han (Safolu Kacaw Lalanges)}}, title={Amis dictionary}, year={n.d.}, note={Provided to the g0v Amis Moedict project}}",
         copyright="CC BY-NC-SA 3.0 TW",
-        source=f"Safolu/Tsai dictionary, g0v/amis-moedict@{manifest['source_commit']} docs/s.",
+        source=f"Safolu/Tsai dictionary, g0v/amis-moedict@{manifest['source_commit']} docs/s, with the editors' later revisions and additions at {UPSTREAM_COMMIT}.",
         glottocode="amis1246", dialect="Coastal",
         extraction_note="Every source example field is retained or recorded as unresolved or apparatus. Shared tools own downstream processing.",
         source_repositories={"g0v/amis-moedict": manifest["source_commit"]},
     )
+    # The editors' later additions (upstream_additions.json, ordinals 49424 on) go through the same
+    # parsing, overrides and exclusions as the snapshot's fields; they are emitted after the printed additions.
+    snapshot_rows, addition_rows = load_rows(), load_additions()
     records, rejected = extract_generated_moedict_examples(
-        load_rows(), SAFOLU_TEXT_ID, "zho", "eng", load_source_overrides()
+        snapshot_rows + addition_rows, SAFOLU_TEXT_ID, "zho", "eng", load_source_overrides()
     )
-    records += printed_additions()
-    return corpus, records, rejected
+    first_addition = addition_rows[0]["source_ordinal"]
+    from_snapshot = [r for r in records if r.notes["source_ordinal"] < first_addition]
+    from_additions = [r for r in records if r.notes["source_ordinal"] >= first_addition]
+    for record in from_additions:
+        record.notes["upstream_addition_commit"] = UPSTREAM_COMMIT
+    return corpus, from_snapshot + printed_additions() + from_additions, rejected
 
 
 def printed_additions(path: Path = PRINTED_ADDITIONS_PATH) -> list[ExampleRecord]:

@@ -8,12 +8,14 @@ icon: cloud-arrow-up
 
 ## What it's for
 
-[validate_hf_audio.py](validate-hf-audio.md) *reports* drift between a corpus's `<AUDIO file=…>` references and the dataset that hosts them, and CI fails on it. This script *repairs* it. Drift appears whenever a rebuild changes sentence boundaries (new clip names, stale old ones) or adds sentences with audio.
+[validate_hf_audio.py](validate-hf-audio.md) *reports* drift between a corpus's `<AUDIO file=…>` references and the dataset that hosts them, and CI fails on it. This script *repairs* it, for one kind of dataset: `.mp3` clips cut from a longer source recording, where every `AUDIO` names its clip, the recording (`url`) and the span (`start`, `end`), as in the NTU Stories. Drift appears whenever a rebuild changes sentence boundaries (new clip names, stale old ones) or adds sentences with audio.
+
+It does not handle whole recordings attached to a text, or clips that were already cut (an `AUDIO` with a file but no `url`, `start` or `end`), or audio stored in other formats such as `.wav`. It cannot see those files, so it would report parity it never checked or propose deleting files the XML does reference. When it finds any, it stops without reporting and names them; check such a corpus with [validate_hf_audio.py](validate-hf-audio.md) `--corpus <name>`.
 
 ## How it works
 
-1. Reads every `AUDIO` element under `--xml` (working tree, or a git revision with `--from-ref` so a branch can be synced without checking it out) and keys each clip as `<language dir>/<file>`; the first `start`/`end` seen for a name wins, elements missing `url`, `start` or `end` are ignored.
-2. Lists the dataset's `.mp3` files anonymously.
+1. Reads every `AUDIO` element under `--xml` (working tree, or a git revision with `--from-ref` so a branch can be synced without checking it out) and keys each clip as `<language dir>/<file>`; the first `start`/`end` seen for a name wins. If any element names a file but lacks `url`, `start` or `end`, it stops (see above).
+2. Lists the dataset's files anonymously; it stops if any audio file there is not `.mp3`.
 3. Prints the two differences: **missing** (to slice from the whole-story recording named by `AUDIO/@url` and upload) and **extras** (to delete).
 4. Without `--apply` it stops there. With `--apply` it checks write access first, slices with `ffmpeg`, and sends one commit; it then prints the revision SHA and file count to record in `audio_sources.json`.
 
@@ -53,7 +55,7 @@ Prints counts (referenced by the XML, present on the Hub, to upload, to delete) 
 
 ## When to run it
 
-After any rebuild that changes sentence boundaries or adds audio, before the PR is merged, and again whenever `validate_hf_audio.py` reports missing or extra files. The dry run is part of the port skill's audio step; `--apply` is the maintainer's call.
+For a corpus of clips cut from a source recording: after any rebuild that changes sentence boundaries or adds audio, before the PR is merged, and again whenever `validate_hf_audio.py` reports missing or extra files. `--apply` is the maintainer's call. A port checks audio with `validate_hf_audio.py --corpus <name>`, which covers every kind of audio.
 
 ## Related
 

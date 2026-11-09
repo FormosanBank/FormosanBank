@@ -59,6 +59,7 @@ class ExampleRecord:
     raw_example: str
     notes: dict[str, Any]
     variants: tuple[str, ...] = ()
+    form_notes: str | None = None  # FORM/@notes on the original FORM, e.g. a reference moved out of the text
 
     def to_metadata(self) -> dict[str, Any]:
         payload = asdict(self)
@@ -144,7 +145,8 @@ def build_text_tree(corpus: Corpus, records: list[ExampleRecord]) -> ET.ElementT
 
     for record in records:
         sentence = ET.SubElement(root, "S", {"id": record.sentence_id})
-        ET.SubElement(sentence, "FORM", FORM_ORIGINAL_ATTR).text = record.form
+        form_attr = dict(FORM_ORIGINAL_ATTR, **({"notes": record.form_notes} if record.form_notes else {}))
+        ET.SubElement(sentence, "FORM", form_attr).text = record.form
         for variant in record.variants:
             ET.SubElement(sentence, "FORM", {"kindOf": "original", "ver": "alt"}).text = variant
         for translation in record.translations:

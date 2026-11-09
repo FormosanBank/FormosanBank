@@ -106,18 +106,23 @@ cp <source README> "<formosanbank_path>/Corpora/<corpus_name>/README.md"   # or 
 
 **Audio parity with Hugging Face (if has_audio).** The XML's `<AUDIO file=…>`
 references are the contract CI checks against the Hub (`validate_hf_audio.py`,
-blocking). Before the PR, show the operator the dry run of the sync tool for
-the corpus's dataset — it lists the clips the XML references that the Hub
-lacks and the Hub files nothing references any more, and changes nothing
-without `--apply`:
+blocking). It covers every kind of audio: whole recordings attached to a text,
+clips already cut, and clips sliced from a recording. Before the PR, run it for
+the corpus (it reads the corpus's entry in `audio_sources.json`, so draft that
+entry first) and quote the result:
 
 ```bash
-<python> <formosanbank_path>/QC/utilities/sync_hf_audio.py \
-  --repo FormosanBank/<dataset> --xml "<formosanbank_path>/Corpora/<corpus_name>/XML"
+# with the dataset's files downloaded into Corpora/<corpus_name>/Audio/ (e.g. before it is public):
+<python> <formosanbank_path>/QC/validation/validate_hf_audio.py --local --corpus <corpus_name>
+# against the Hub (the dataset must be public: the check reads it without credentials):
+<python> <formosanbank_path>/QC/validation/validate_hf_audio.py --corpus <corpus_name>
 ```
 
-Running it with `--apply` (write token, ffmpeg) is the operator's call and a
-separate step; record the revision SHA it prints in `audio_sources.json`.
+Record the dataset's revision SHA and file count in `audio_sources.json`.
+`QC/utilities/sync_hf_audio.py` is only for repairing a dataset of clips cut
+from a source recording (AUDIO with `url`, `start` and `end`, as in the NTU
+Stories) after a rebuild changed the clips; it stops on any other kind of
+audio. Running it with `--apply` (write token, ffmpeg) is the operator's call.
 
 Drop nothing from the source dev repo unless explicitly approved.
 
@@ -417,7 +422,7 @@ Print:
 - Spot-check results
 - Cross-corpus duplicate check: match count per language + CSV path(s), or why it was skipped
 - Declared vs detected: the three tables from `declared_vs_detected.py`, every MISMATCH row called out
-- Audio parity (if has_audio): the `sync_hf_audio.py` dry-run counts (referenced / on the Hub / to upload / to delete)
+- Audio parity (if has_audio): the `validate_hf_audio.py --corpus` result line (local and, once the dataset is public, online)
 - Documentation site: registered as `<slug>` in `docs/site/corpus_pages.csv`; `build_site.py` result line
 - Stats table from `<corpus_name>_corpora_stats.csv` (audio columns pending if the audio-durations step was skipped).
 - Open items, e.g.:
