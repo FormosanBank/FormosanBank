@@ -131,14 +131,7 @@ prohibited without prior written permission. Wikipedia text is CC BY-SA.
 
 ## Notes and caveats
 
-- **`dialect="unknown"` everywhere**: Wikipedia articles carry no dialect
-  identification. For Seediq this means the corpus counts as Seediq, not
-  Truku, under FormosanBank counting rules (trv counts as Truku only with
-  an explicit `dialect="Truku"`).
-- **Non-Formosan text** (from the old processing notes): Given the multilingual nature of Wikipedia articles,
-  users should note the presence of occasional non-Formosan text (e.g., English
-  characters or Chinese text). While these have been minimized, they may still
-  appear at low frequencies.
+- **Non-Formosan text.** Wikipedia articles are multilingual, so English, Chinese and other non-Formosan text appears in the sentences. It has been reduced but not removed.
 - **PHON is provisional**: with dialect unknown, IPA uses default columns;
   dialect-dependent sounds appear as `[x|y]` variant groups. The corpus
   is phonologized under a blanket Ortho113 assumption, which the source
@@ -164,61 +157,8 @@ prohibited without prior written permission. Wikipedia text is CC BY-SA.
 
 #### Limitations
 
-Please beware that due to the nature of the wikipedias corpus (being collected
-from public online article and heavily containing non-Formosan text), there are
-some limitations in the corpus that should be pointed out.
-
 * The standard tier (`<FORM kindOf="standard">`) is a copy of the original with accents removed. It does not convert spelling, so any English or other non-Formosan words are left as they are.
-* The historical citation cutter sometimes stopped at an early reference heading and removed the article text after it. The 30 Seediq cases identified so far are repaired (see "The published corpus" above), including Nakahara, Kobah, Pratan and Bubun (body text) and Smangus (author credit). `Tausa`, which this page used to list as an example, is not among the 30. Other articles cut the same way, if any, have not been looked for.
-
-#### Withdrawn articles: redirect copies
-
-The scrape listed every page title on each wiki, including redirect titles,
-so 490 articles were downloaded twice: once under their own title and once
-under a title that redirects to it (e.g. `Amis/Abraham_Lincoln.xml` is the
-article `Aparaham Linken` reached through the redirect `Abraham Lincoln`).
-The copies are deleted (maintainer ruling 2026-10-18: "Yes, delete (record
-the ids as withdrawn)"): 108 Amis, 81 Atayal, 17 Paiwan, 194 Sakizaya and
-90 Seediq.
-
-- [`CodeAndDocs/source_redirects.csv`](CodeAndDocs/source_redirects.csv)
-  lists each deleted file and id, the kept article, the source titles, the
-  evidence (wiki revision or redirect-log URLs) and the SHA-256 of the
-  cleaned original FORM. `drop_redirect_copies.py` checks every copy before
-  deleting any: same TEXT ids as listed, one S each, and the copy's original
-  FORM identical to the kept article's and to the recorded hash. Any
-  mismatch stops the build with nothing deleted.
-- [`CodeAndDocs/old_to_new_ids.csv`](CodeAndDocs/old_to_new_ids.csv)
-  records the 490 withdrawn `TEXT/@id`s (`old_id`), the id of the kept
-  article with the same text (`new_id`), `change` = `withdrawn: redirect
-  copy`, and the reason. No withdrawn id is reused.
-- Six of the recorded hashes were re-recorded on 2026-10-18 when the
-  deletion was ported onto the current build: the kept articles
-  `Amis/Ina.xml`, `Atayal/’tayal.xml` (three copies),
-  `Sakizaya/Fo-lu-lun-se.xml` and `Sakizaya/Lo-ma.xml` contain `''`, which
-  the 2026-10-14 apostrophe step now writes as `"`. The copies still match
-  their kept articles exactly.
-
-Text is not lost: every withdrawn article's original FORM is published,
-character for character, under the kept id. Token counts do fall, because
-the copies were counted twice before: 1,311,509 tokens in all (Amis
-1,131,630; Sakizaya 82,013; Seediq 65,191; Atayal 25,635; Paiwan 7,040).
-Most of the Amis drop is one article: 50 redirect titles (US presidents and
-`United_states`, among others) all led to the 21,766-token `Amis/Amilika.xml`
-("America"), so the corpus held 51 copies of it. The 490 copies belong to
-362 kept articles.
-
-#### One file per article
-
-- **One file per article**: the 29 twice-downloaded articles now have a
-  single file each (pipeline step 3), and the 490 copies downloaded under
-  redirect titles are withdrawn (step 7b; see above). One kept file has a
-  `(1)` in its name, `Sakizaya/Oro’raw (1).xml`, because the scrape never
-  wrote a counter-less copy (`Atayal/msin (1).xml`, the other such file,
-  is one of the 490 redirect copies); the file names carry no meaning,
-  the `TEXT/@id` does. Sentence-level duplication *across*
-  articles (wiki boilerplate) is still reported SOFT by the
-  duplicate-sentence validator — this corpus declares no dedup step.
+* **Some articles may be truncated.** An earlier processing step sometimes cut the article text at an early reference heading. The 30 Seediq cases found have been repaired; the other languages have not been checked.
 
 ## Reproduction and processing
 
@@ -311,8 +251,7 @@ one higher.
    It is run with `--corpora_path XML/` only. A `quote_corrections.csv` row
    from this step would be unexpected, since this corpus has no TRANSLs.
 7b. **`drop_redirect_copies.py`** — deletes 490 articles that the scrape
-   downloaded a second time under a redirect title; see "Withdrawn
-   articles: redirect copies" above, under "Notes and caveats". It runs after `clean_xml` because the
+   downloaded a second time under a redirect title. It runs after `clean_xml` because the
    hashes it checks are of the cleaned original FORM.
    It reads `CodeAndDocs/source_redirects.csv` and checks all 490 rows before
    deleting any file.

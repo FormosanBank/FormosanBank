@@ -75,22 +75,9 @@ public domain. The source, Latham (1862), is in the public domain.
 
 ## Notes and caveats
 
-**The Gabelentz "Sida" column is not published.** Its 24 cells on printed
-pp. 316–318 are transcribed in `source_ledger.tsv` with status
-`excluded_unidentified_variety`, and are emitted to no XML. Gabelentz heads the
-column "Sida"; publishing it under `fos` would assert that Sida is the "Sideia"
-of the Klaproth/Vander Vlis table on p. 315, and FormosanBank does not make that
-identification. The transcription is kept so the decision can be revisited
-without redoing the work — if the identification is ever settled, flipping 24
-ledger rows republishes them under their original IDs.
-
-**The Gabelentz "Sida" column is not published.** Latham's tables on printed pp. 316–318 carry a third Formosan column headed "Sida". Publishing it as Siraya would assert that Sida is the "Sideia" of the Klaproth/Vander Vlis table on p. 315, and FormosanBank does not make that identification. Its 24 cells are transcribed in the source ledger and marked excluded, so the decision is reversible without redoing the work, but no `S` record is emitted for them and 22 previously published records were withdrawn.
+**The Gabelentz "Sida" column is not published.** Latham's tables on printed pp. 316–318 carry a third Formosan column headed "Sida". Publishing it as Siraya would assert that Sida is the "Sideia" of the Klaproth/Vander Vlis table on p. 315, and FormosanBank does not make that identification. Its 24 cells are transcribed in the source ledger, so the decision can be revisited.
 
 **The two Sideia readings are published as pronunciation variation within Siraya**, not as distinct dialects. Klaproth and Vander Vlis readings of the same entry are separate `S` records (for example `S_klaproth_formosan_sideia_two` `ranka` and `S_vander_vlis_sideia_two` `so`); the only Siraya `FORM ver="alt"` is `soa`, the second reading in the Vander Vlis cell for Two. Latham's presentation suggests these may be two dialects; the corpus records that here rather than encoding it.
-
-**The file name says more than the file contains.** `latham_1862_sideia_sida.xml`
-and its `TEXT/@id` both carry "sida", from when the Sida column was published in
-it. POL-037 forbids renaming a published `TEXT/@id`, so both stay.
 
 **The file name says more than the file contains.** The Siraya file is `latham_1862_sideia_sida.xml` and its `TEXT` id is `latham_1862_sideia_sida`, from when the Sida column was published in it. Published identifiers are never renamed, so both keep the old name.
 

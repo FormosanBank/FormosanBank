@@ -73,87 +73,6 @@ prohibited without prior written permission.
   their morpheme tier does not reconstruct the word: `ngomon-an`, `ngomon`,
   `mapa-sila-siláp-i`, `veza-no-dehdeh`, `vozovóza`,
   `nimakalkalima-so-nakem` (×2), `pángap`, `kong-koan`.
-- **Unknown glosses are `<UNCLEAR/>`** (POL-021 and POL-061 as amended
-  2026-10-17; the amendments are in PR #297). The source glosses
-  six morphemes `?` in both Chinese and English and leaves the five words
-  above them unglossed: text 5 `kominazazang` and `minipinizozongan`, text 9
-  `naway`, text 12 `s:yak` (a morpheme of a glossed word), text 14 `viknaz`,
-  text 18 `nipapo`. Those 22 glosses (12 morpheme, 10 word) are
-  `<TRANSL xml:lang="..."><UNCLEAR/></TRANSL>`. Text 9 sentence 23 has no
-  sentence translation: the source gives only `句意不詳` / `(Sentence meaning
-  not clear`, and a wholly unknown sentence translation is not emitted. The
-  source's doubt about a gloss it does give is kept as written (text 2,
-  `sombing` glossed `糞(日語?)`). The changes are listed row by row in
-  `CodeAndDocs/unclear_glosses.tsv`.
-- **One sentence appears twice** in text 16, at sentence 22 and sentence 50
-  (`i-ké-yngen na no oo na ni ina na a ka no ama na am,`). The two occurrences
-  sit in unrelated passages and the source gives each its own Chinese and
-  English translation, so this is repetition in the narrative, not a
-  duplicated extraction. Both are kept.
-- **Parentheses and slashes.** `validate_text.py` reports 204 V122 findings,
-  one per `(`, `)` or `/` character: 196 in translations, which are part of
-  the published translations, not conversion artifacts, and 8 in the
-  sentence FORMs (both tiers) of text 11 sentence 12 and text 13 sentence 13,
-  whose parentheses are in the delivered text. (205 before text 9 sentence
-  23's English translation was omitted; see above.)
-- Translations frequently have explanatory parantheticals. A few of these
-  have been removed, but most remain.
-- There are differences relative to the reference text in terms of the
-  frequency of glottal stops.
-
-![Yami Frequency Comparison](CodeAndDocs/Yami_frequency_comparison.png)
-
-#### Tiers
-
-Each `S`, `W` and `M` carries an `original` and a `standard` FORM, and a PHON
-for each.
-
-- **`original`** is Rau & Dong's own spelling, unmodified.
-- **`standard`** is the same text with the lexical accent removed (see below)
-  and, at sentence level only, with the morpheme-segmentation hyphens taken
-  out so the sentence reads as running text. Word- and morpheme-level standard
-  FORMs keep their hyphens.
-- **PHON `original`** is derived from the `Orthographies/Ortho94` Yami
-  profile, **PHON `standard`** from `Orthographies/Ortho113`.
-
-In short:
-
-* The original text has morphemes marked with hyphens. These are retained in
-  the "original" tier at all three levels. The "standard" tier removes them
-  from the sentence only, so the sentence reads as running text (`maniring`);
-  standard word and morpheme forms keep them (`ma-niring`).
-* Lexical accent is marked in the original tier but removed in the standard
-  tier.
-* The pronunciation (PHON) tiers were regenerated with the current tools in
-  October 2026: variant vowels are written `[o|u]`, morpheme hyphens and
-  punctuation are not part of PHON, accented vowels map to their plain vowel,
-  and the standard tier's `z` is `r` (a bug had made it `ɻ`, merging z and r).
-* Glosses the book marks `?` are published as `<UNCLEAR/>`, as are the few
-  word glosses left empty inside glossed sentences; one sentence whose
-  translation the book marks as not clear (text 9, S23) carries no
-  translation.
-
-#### Orthography
-
-Rau & Dong write Yami in the letters of the ROC-94 official orthography — `ng
-p b t d k g ' v c j s z h m n r l w y i e a o`, with no `f`, `q` or `u` — plus
-an acute accent on vowels (`á é í ó`). The accent marks **lexical stress**,
-not a distinct vowel. It is part of the source's spelling, so the `original`
-tier keeps it; FormosanBank's common orthography does not write stress, so the
-`standard` tier does not have it.
-
-Two consequences a data user should know:
-
-- `add_phonology` folds the stress accent before mapping (it marks stress, not
-  a different segment), so accented vowels come out as the plain vowel in
-  **original** PHON: `ma-níring` → `maniriŋ`. Before that shared change
-  (2026-09-05) they came out as `*` (1,098 PHON values); the rebuild recorded in
-  `CodeAndDocs/provenance.json` replaced all of them.
-- 29 PHON values per tier (58 in all, original and standard) still contain
-  `*`. In 20 of each 29 the form quotes Chinese (`國小二三年級`, `mi開開玩笑`,
-  `nim要理i`); those characters have no Yami phonological value. The other 9
-  of each 29 are the `UNK` morphemes described below: Ortho94 and Ortho113
-  have no Yami `u`, so `UNK` comes out as `*nk`.
 
 #### Notation inside the FORM tiers
 
@@ -161,9 +80,7 @@ Two consequences a data user should know:
   levels, and in the `standard` tier at word and morpheme level.
 - **`:`** marks the point of infixation inside an infixed root at morpheme
   level. `k-om-an` 'eat (AF)' is two morphemes: `om` (AF) and `k:an` (eat).
-- **`'`** is the glottal-stop **letter**, not an apostrophe or a quote mark
-  (132 occurrences per tier, original and standard alike: 44 each at sentence,
-  word and morpheme level). Quotations are written with `"`.
+
 - **`UNK`** appears as a morpheme FORM and gloss in 9 places where the source
   gives no morpheme analysis for the word.
 - A handful of sentences contain Chinese words code-switched into the Yami

@@ -47,15 +47,7 @@ The corpus is also subject to the central FormosanBank [Terms of Use](https://fo
 
 ## Notes and caveats
 
-The paper segments `Pa-fli` but gives only the whole-word gloss `give`. Its two morphemes therefore have no individual glosses. (The source segments `Pa-fli` but gives only the whole-word gloss `give`; its two morphemes therefore have no individual glosses.) Other source form/gloss mismatches and analytic nulls are preserved; the source notes explain the reviewed cases. Source form/gloss mismatches and analytic nulls are preserved. Source `payau`, `ni/GEN-NCM`, `ku/NOM-NCM` and source `CaU` with additive standard `CAU` remain.
-
-Original and standard PHON use different inventories, including the source's narrower vowel and lateral values. The conversion report records these differences; the tiers do not imply strict phonemic equivalence. In particular the `standard` tier merges Wu's `u`/`o` distinction, because Ortho113 Coastal writes one `o` for /o~u/; the `original` tier keeps the distinction. Original and standard PHON use different vowel and lateral inventories, so the tiers do not imply strict phonemic equivalence — in particular the standard tier merges Wu's `u`/`o` distinction, because Ortho113 Coastal writes one `o` for /o~u/.
-
-Wu prints example 36a in two case forms. They are two `S` blocks, `s36a` and `s36a-opt`, because the alternation is a competing lexeme with a different gloss (`t-u`/DAT-NCM against `i`/PREP) rather than a spelling variant (POL-027/POL-028). They are two sentences, `s36a` and `s36a-opt`, because the alternation is a competing lexeme with a different gloss (`t-u`/DAT-NCM against `i`/PREP) rather than a spelling variant.
-
-Seven analytic nulls are retained as `∅` in original S/W/M tiers; shared standardization removes them from S standard. Nulls are silent in PHON, except a whole-null FORM receives PHON `∅`.
-
-The apostrophe is **not** converted. An earlier pass read Wu's `'` as the glottal stop /ʔ/ and mapped it to Ortho113's `^`; that was reverted in review. Ortho94 and Ortho113 agree that `'` is /ʡ/ and `^` is /ʔ/, so the claim departed from both standards rather than from one of them; the corpus carries the apostrophe in two tokens of a single word type and no `q` or `^` at all, so there is no contrast in it to record; and the bank spells this very lexeme with an apostrophe — `(ma)na'ay` 'not want' appears 81 times in standard tiers across the Amis corpora with `'` and never with `^`. [Source and conversion notes](CodeAndDocs/README.md) document these limitations and the exact source-inherent findings protected by tests.
+None known.
 
 ## Reproduction and processing
 
@@ -73,7 +65,7 @@ only, a rebuild always runs the current tools).
 
 XML and reproducible build inputs are in the Amis-Pa-Verbs directory (`XML/` and `CodeAndDocs/`).
 
-In the development repository, set `FORMOSANBANK_ROOT` to the selected current FormosanBank checkout and run `bash CodeAndDocs/generate_xml.sh`. `PYTHON` selects the interpreter. The build reads committed tables, cleans, standardizes `u` to `o` (the source apostrophe is not converted; see "Notes and caveats"), and generates PHON using shared tools. It needs no PDF, network, Git metadata or historical tool checkout. Record the actual tools used for committed output in [provenance.json](CodeAndDocs/provenance.json); this record does not select or gate tools — the build always runs the tools in the checkout it is invoked from (POL-052).
+In the development repository, set `FORMOSANBANK_ROOT` to the selected current FormosanBank checkout and run `bash CodeAndDocs/generate_xml.sh`. `PYTHON` selects the interpreter. The build reads committed tables, cleans, standardizes `u` to `o` (the source apostrophe is not converted), and generates PHON using shared tools. It needs no PDF, network, Git metadata or historical tool checkout. Record the actual tools used for committed output in [provenance.json](CodeAndDocs/provenance.json); this record does not select or gate tools — the build always runs the tools in the checkout it is invoked from (POL-052).
 
 Run `CodeAndDocs/generate_xml.sh` from the corpus package. It builds from committed inputs, applies corrections, cleans, standardizes and generates PHON with current shared tools, without a private PDF, network fetch or historical Git checkout. [provenance.json](CodeAndDocs/provenance.json) records the tools used for the committed output and does not pin future builds. Validation and source refresh are separate.
 

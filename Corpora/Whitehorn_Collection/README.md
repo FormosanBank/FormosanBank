@@ -20,8 +20,8 @@ file's `TEXT`):
 | `XML/Seediq/` | `trv` (Seediq) | `unknown` | 1 |
 
 For all but the two Southern Paiwan recordings, the source does not record a
-dialect FormosanBank recognises. See "Notes and caveats" for the 46 Paiwan
-recordings Whitehorn labels "north-west". The one `trv` file has `dialect="unknown"`, which FormosanBank reads as
+dialect FormosanBank recognises.
+The one `trv` file has `dialect="unknown"`, which FormosanBank reads as
 Seediq, not Truku.
 
 ## Source
@@ -76,26 +76,8 @@ This corpus is subject to its source license and the central FormosanBank terms 
 ## Notes and caveats
 
 * Recording quality is about what you would expect, given the age.
-* The recordings are not transcribed, so each XML file carries record-level metadata and an audio link, with no sentence tiers.
-* Whitehorn labels 46 of the Paiwan recordings "north-west", written variously as `(NW)`, `(? NW)`, `(north-west)` and `(north-west dialect)`. Northwest is not one of FormosanBank's Paiwan dialects, so those records carry `dialect="unknown"` rather than being mapped onto Northern. Only two recordings state a dialect FormosanBank recognises, and both are Southern Paiwan.
+
 * One tape has no XML record. The accession form for `Whitehorn_Paiwan_03A_01` describes a BBC Radio 3 broadcast from February 1993, *Songs to help the crops grow* — eight chants assigned by item number to Bunun (nos. 1, 2, 3, 5, 6), Amis (nos. 4, 8) and Atayal (no. 7) — but gives times for the tape side only as a whole, `00.00` to `c.19.00`. Without per-track times it cannot be split into one record per language, so the released master is published as an audio extra only. Those Bunun chants are the only Bunun material in the collection.
-
-#### One tape has no XML record
-
-The accession form `Whitehorn_Paiwan_03A_01` (tape 2010.3, side 1) describes a
-BBC Radio 3 broadcast from February 1993, *Songs to help the crops grow*: eight
-chants from Taiwan with English commentaries. The form assigns the chants to
-three languages by item number — Bunun (nos. 1, 2, 3, 5, 6), Amis (nos. 4, 8)
-and Atayal (no. 7) — but gives times for the tape side only as a whole,
-`00.00` to `c.19.00`. Every other tape side in the collection carries per-track
-start and stop times, which is what allows it to be split into separate `TEXT`
-records, one language each. This one gives no times for the individual chants,
-so it cannot be split without listening to the recording.
-
-There is therefore no XML record for this tape, and the Bunun chants on it are
-the only Bunun material anywhere in the collection. The released master audio
-remains available as a declared extra
-(`Paiwan/Whitehorn_Paiwan_03A_01.mp3` in [audio_extras.json](../../audio_extras.json)).
 
 ## Reproduction and processing
 

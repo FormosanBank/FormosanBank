@@ -59,19 +59,11 @@ public-domain status, when, and where the evidence is are not recorded here.
 
 ## Notes and caveats
 
-- FormosanBank currently designates no standard orthography for
-  Babuza-Favorlang, so this corpus has no standard or PHON tier. Because
-  FormosanBank currently designates no standard orthography for
-  Babuza-Favorlang, the source spelling is preserved without a standard or
-  PHON tier. Each sentence has only a `FORM kindOf="original"` and, where
-  Campbell gives one, an English `TRANSL`.
+- FormosanBank has no standard orthography for Babuza-Favorlang, so each sentence has only the original spelling: no standard tier and no PHON.
 - Only 365 of the 1,049 sentences have an English translation: the sermons
   are printed without one.
 - The Dutch column is not published: the source alignment audit says the
   available Fraktur OCR is not reliable enough for a source-faithful tier.
-- Private source files are not included here. The full from-source build
-  (below) cannot be run from this repository; the published XML is rebuilt
-  from the tracked reviewed-record ledger instead.
 
 ## Reproduction and processing
 
