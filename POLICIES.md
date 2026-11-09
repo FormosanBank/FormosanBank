@@ -238,6 +238,14 @@ and validators treat `'` as a letter, not as paired punctuation
 (`clean_xml`'s c002 warning on single-quote variants in Chinese TRANSL
 exists for exactly this reason). Cross-ref POL-010.
 
+### POL-063 · RULED · 2026-11-08 · final punctuation
+**In most cases, every sentence and every sentence-level translation ends in its script's sentence-final mark.** A Formosan FORM ends in `.`, `?` or `!`; a Chinese translation in `。`, `？` or `！`; an English one in `.`, `?` or `!`. Where the source prints none, the period is added: `.` in Latin script, `。` in Chinese. The sentence-final mark for the sentence and translation should match (e.g., both being script-appropriate periods). Maintainer (2026-11-06, Chang Kavalan grammar): *"sentences and their translations should end in periods appropriate to the script being used."*
+
+- **Word lists.** For word lists, the S FORM does not typically end in sentence-final punctuation. 
+- **Songs and partial utterances** Where the source ends a translation with a comma, semicolon, or colon because the text goes on (a line of a song), the comma is retained. 
+- **Scope.** Sentence-level FORM and TRANSL only. Word and morpheme glosses are not sentences (POL-062).
+- **Where it is applied.** In the Chang Kavalan grammar's build today. A shared step that applies it when other corpora are rebuilt is future work (POL-046).
+
 ---
 
 ## 3. Structure
