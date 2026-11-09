@@ -265,7 +265,8 @@ def normalise_table_morphemes(xml_root: Path) -> None:
     morpheme per piece (rows 261 and 308, the only two; maintainer, 2026-11-09, cards
     s153-r9-261 "So 3 morphemes total: kala-pa-bekbek." and s153-r9-308 "Again, 3 total
     morphemes. Should be segmented as mi-buting-ay at both W and M levels."). The word's
-    own FORM is corrected to match in ruled_corrections.tsv; the build stops if the two
+    own FORM, and its sentence line (card s153-r10-sline, "Sentence line too"), are
+    corrected to match in ruled_corrections.tsv; the build stops if word and morphemes
     disagree.
     """
     path = _xml_paths(xml_root)["table_rows"]

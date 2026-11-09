@@ -257,8 +257,11 @@ class ReviewedSourceTests(unittest.TestCase):
             self.assertEqual(form(word), word_form)
             self.assertEqual([form(m) for m in word.findall("M")], morphs)
             self.assertEqual([m.findall("TRANSL") for m in word.findall("M")], [[], [], []])
-        self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_261"]), "kalapa-bekbek")
-        self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_308"]), "mibuting-ay")
+        # The sentence line too (2026-11-09, card s153-r10-sline: "Sentence line too").
+        self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_261"]), "kala-pa-bekbek")
+        self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_308"]), "mi-buting-ay")
+        self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_261"], "standard"), "kalapabekbek")
+        self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_308"], "standard"), "mibutingay")
         # POL-063 (2026-11-09, card s153-r9-pol063: "Apply now (as shown)").
         fn9 = self.nodes["AKIW_SZY_2012_FN_009A"]
         self.assertEqual((form(fn9), form(fn9, "standard"), fn9.findtext("TRANSL")),
