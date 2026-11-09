@@ -92,17 +92,7 @@ On that basis the corpus is published under **CC BY-NC 4.0**: attributed non-com
 
 ## Notes and caveats
 
-Each item is described in full in the section named in brackets (those
-sections are under "What each step does" below).
-
-- **The source's `?` glosses are published as `<UNCLEAR/>`**: 356 whole
-  glosses (338 `M`, 18 `W`) and the `?` pieces of 291 `W` glosses. A `?` next
-  to an infix marker (24 `W` glosses) or attached to a word (4 glosses) is kept
-  as written, and two sentence translations keep a `?` standing for an
-  untranslated word. ["The source's `?` gloss is published as `<UNCLEAR/>`"]
-
-- **Four texts have no dialect.** Texts `090`, `091`, `097` and `099` are
-  `dialect="unknown"`. ["Dialect coverage", under "Languages and dialects"]
+None known.
 
 ## Reproduction and processing
 

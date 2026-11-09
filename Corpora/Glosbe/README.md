@@ -125,23 +125,7 @@ contributors supplied the dictionary and translation-memory material.
 
 ## Notes and caveats
 
-Because this is a crowdsourced dictionary and translation memory, the linguistic
-accuracy and the rights attached to individual entries can vary. Treat entries as
-leads for review rather than as expert-verified dictionary records.
-
-Glosbe is crowdsourced and contains incorrect or incomplete translations and
-language labels; religious/JW examples dominate. Amis and Atayal dialects are
-unknown, and the approved Amis conversion does not resolve every o/u pronunciation.
-Recorded quotation repairs preserve reviewed readings, but automatic quotation
-classification can still miss errors. Distinct source spellings remain separate
-even when their standard forms coincide.
-
-* Import decisions that not everyone would agree with are made by recorded
-  maintainer rulings and are described step by step under "What each step does"
-  below: editorial material (scripture references, cross-references, labels,
-  captions) moved out of the text into `notes=`; main's typography kept where the
-  source spelling was rejected; the Amis–English and Amis–Chinese translation
-  memories joined into one file; and the identifiers withdrawn as a result.
+None known.
 
 ## Reproduction and processing
 

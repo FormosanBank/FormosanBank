@@ -83,21 +83,8 @@ with attribution retained here. All 48 files carry `CC BY 4.0`.
 
 ## Notes and caveats
 
-- **The standard tier is a transliteration into Ortho113.** The book writes Kanakanavu with IPA-style letters (`ʔ`, `ŋ`, `ə`). The standard tier writes `ʔ` as `'`, `ŋ` as `ng` and `ə` as `e`. It also writes `l` as `r`, as Ortho113 has a single `r`. Two distinctions are therefore lost in the standard tier: `ə` versus the rarer native `e`, and `l` versus `r`. The original tier keeps both.
-  The standard tier merges `ə` and the rarer native `e` into `e`, and `l` and `r` into `r`,
-  as Ortho113 does. The original tier keeps both distinctions.
-
-- **`əhə kai` is one word.** In Naparamaci example 68 the book prints a single gloss, "interjection", under the two words, so they are published as one word and one morpheme.
-  Naparamaci example 68 prints one gloss under two words, so `əhə kai` is one W and one M.
-- **Not every sentence has word-level analysis.** The introduction's word lists and the footnote entries are single words that the book does not segment; they carry a translation and no word or morpheme tier. Only three of the introduction's lexical examples come with the book's own morpheme analysis.
-  Introduction lexical material has two transcription groups (Asai 2026 and
-  Tsuchida 1976). Table 1 is not published (see above).
-  Table 2's 16 pronouns have a
-  verified segmental route; their stress marks remain in original FORM.
-  Supplemental records preserve printed readings; only three analyzed prose
-  examples supply W/M tiers.
+- **Not every record is a sentence.** The introduction's word lists and the footnote entries are single words; they carry a translation and no word-by-word or morpheme analysis (W and M elements).
 - **Not included.** The introduction's Table 1 (historical transcriptions by Tsuchida 1969, Szakos 1999 and the 2007 Basic Vocabulary) and two prose examples next to it are left out by decision. The village-labelled phonetic comparison on page 15 is also left out, because the book gives no written form for it.
-  The village-labelled phonetic comparison remains open in the ledger.
 
 ## Reproduction and processing
 
