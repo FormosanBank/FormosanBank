@@ -21,7 +21,7 @@ TBD.
 
 TBD.
 
-## Rights
+## License
 
 **License:** TBD
 **Rights source:** TBD, YYYY-MM-DD; evidence: ask maintainer
@@ -52,11 +52,15 @@ bash CodeAndDocs/generate_xml.sh      # the one entry point (POL-047)
 
 TBD.
 
-## Notes and Issues
+## Notes and caveats
 
-<!-- Known limitations, source defects, unresolved data problems and caveats a
-     user needs before using this corpus (POL-055). "None known." if none. The
-     port README keeps this section under exactly this name. -->
+<!-- POL-055. Known limitations, source defects, unresolved data problems and
+     caveats a user needs before using this corpus: decisions a user might
+     disagree with, or that would make them misread the data. Not bank-wide
+     rules, the decision-making process, or standard OCR-correction processes.
+     Add or change a note only when the maintainer asks for it or approves it;
+     most corpora have fewer than 5. "None known." if none. The port README
+     keeps this section under exactly this name. -->
 
 None known.
 
@@ -72,7 +76,7 @@ TBD.
 
 When this corpus is ready to port into FormosanBank/Corpora/:
 - [ ] Last `run-qc-pipeline` run passed and the summary is acceptable
-- [ ] README is no longer all TBDs; Rights and Notes and Issues are filled in
+- [ ] README is no longer all TBDs; License and Notes and caveats are filled in
 - [ ] `CodeAndDocs/generate_xml.sh` is the only entry point, runs from a FormosanBank checkout alone, and writes `provenance.json`
 - [ ] `CodeAndDocs/tests/test_source_accounting.py` is filled in and passes
 - [ ] No private source data remains in the dev repo (or is gitignored)

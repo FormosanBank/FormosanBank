@@ -35,7 +35,7 @@
 
 7. **Null-morpheme glyphs and placeholders added in processing, not printed.**
    How: a provenance census of every `∅`/`ø`/`Ø`/`?` against the scan; read the build for where they are created.
-   Acceptable: POL-012 (the cleaner canonicalises a separated null to `∅`), POL-060 (a shared gloss is one W), POL-061 (an unglossed word is glossed `?`). POL-061 and the 2026-09-04 HundredPaiwanStories ruling point opposite ways; surface both, do not pick.
+   Acceptable: POL-012 (the cleaner canonicalises a separated null to `∅`), POL-060 (a shared gloss is one W), POL-061 (`<UNCLEAR/>` where the source itself marks a gloss unknown or unclear). Not acceptable: a `?` or `<UNCLEAR/>` gloss where the source simply gives none; POL-061 leaves that gloss blank.
    Example: Seediq-Chang — 41 `∅` none of which the book or the raw OCR has.
 
 8. **Segmentation markers stripped from the original or W tier; infix notation rewritten; `standardize` fusing hyphenated pronouns.**
@@ -55,7 +55,7 @@
     Acceptable: a dialect the source states, or the maintainer's ruling quoted; `trv` is Seediq or Truku by the dialect attribute, never by the code.
     Example: Seediq-Chang — "Tegudaya" set with no reason while the book says 霧社方言; ILRDF v2 relabelled 62,484 Truku records `unknown`.
 
-11. **Rights.** `TEXT/@copyright` an exact value from `rights_vocabulary.csv`; the README's Rights block (POL-042/043/044).
+11. **Rights.** `TEXT/@copyright` an exact value from `rights_vocabulary.csv`; the README's `## License` section (POL-042/043/044).
     How: the 4b table rows; `rights_delta.py` is red by design on any change.
     Acceptable: never downgrade from absence (POL-043) — a claim replaced by prose because the evidence was not found is a finding against the PR.
 

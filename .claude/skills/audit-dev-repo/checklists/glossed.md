@@ -8,7 +8,7 @@
    How: read the builder for where Ms are created; count single-M words per corpus and put the number to the maintainer.
    Example: roughly 176,000 single copy-Ms across Blust, Yedda, Huteson, Nowbucyang and NTU before the ruling.
 
-3. **Placeholders.** `∅`, `?`, `—` added in processing; POL-060 (a word the source glosses as one unit is one W), POL-061 (an unglossed word is glossed `?`) against the 2026-09-04 HundredPaiwanStories ruling — surface both.
+3. **Placeholders.** `∅`, `?`, `—` added in processing; POL-060 (a word the source glosses as one unit is one W), POL-061 (`<UNCLEAR/>` only where the source marks a gloss unknown; a gloss the source does not give is left blank, so a `?` or `<UNCLEAR/>` the build adds there is a finding).
    How: provenance census against the scan (every-corpus item 7).
 
 4. **Infix and clitic notation.** `<X>` infixes must survive into the W tier and reconstruct the root (G004); `=` clitics propagate (V-rules on clitic markers); book hyphens are not rewritten to the bank's convention silently.
