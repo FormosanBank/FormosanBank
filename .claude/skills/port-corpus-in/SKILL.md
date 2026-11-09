@@ -208,11 +208,12 @@ non-Claude porters run the same gate — point them at it too):
   --corpus_path "<source_path>" --repo-root "<formosanbank_path>"
 <python> <formosanbank_path>/QC/validation/validate_port_readiness.py \
   --corpus_path "<formosanbank_path>/Corpora/<corpus_name>" \
-  --repo-root "<formosanbank_path>"
+  --repo-root "<formosanbank_path>" --source "<source_path>"
 ```
 
-Exit 1 (HARD: tracked Private/ content, unknown xml:lang, non-canonical
-dialect) blocks the port. WARNs need operator judgment: P004 = README /
+Exit 1 (HARD: private material in the ported copy, unknown xml:lang,
+non-canonical dialect) blocks the port. P001, the private-material check, runs
+only on the ported copy (see the privacy leak check below). WARNs need operator judgment: P004 = README /
 `qc_status.json` / `reproducibility.md` pin different or unreachable
 FormosanBank commits (ask which is authoritative and fix the others);
 P005 = `statistics/audio_durations.csv` stale for this corpus (run
@@ -286,53 +287,29 @@ cd <formosanbank_path>
 - Target files are discovered by looking for `<Language>` as a path component under `Corpora/`, so published corpora with *flat* XML layouts are not scanned as targets — a clean result is informative, not exhaustive.
 - Matches are **informational, not blockers** — and per POL-022, expectations differ by corpus type: narratives may legitimately repeat sentences (within and across corpora built from the same materials), while for dictionaries, wordlists, and grammar example collections overlap is worth scrutinizing (repeats should generally be excluded unless the attestations carry distinct provenance). Report the match count and CSV path in the Phase 6 summary; the operator decides whether overlap warrants dropping or annotating anything before opening the PR.
 
-**Privacy leak check.** If any top-level directory of `<source_path>` whose
-name begins with `Private` exists — `Private/`, but also `Private:Source/`,
-`Private-data/` and the like (the Amis Kuo-Sung dev repo keeps its PDF in
-`Private:Source/`, which a check on `Private/` alone never saw) — verify
-nothing from it landed in the published corpus. Two layers:
+**Privacy leak check.** This is P001 of the port-readiness run on the ported
+copy with `--source` (above); it gates the port itself, not the dev repo
+(maintainer, 2026-11-09: "we should gate the port itself, ensuring that the
+Private folder and its content isn't ported"). It looks at every top-level
+directory of `<source_path>` whose name begins with `Private`: `Private/`, but
+also `Private:Source/`, `Private-data/` and the like (the Amis Kuo-Sung dev
+repo keeps its PDF in `Private:Source/`, which a check on `Private/` alone
+never saw). Two layers:
 
-1. **Content-hash check (hard error).** For every file under `<source_path>/Private/`, compute a SHA-256 hash. For every file under `<formosanbank_path>/Corpora/<corpus_name>/`, compute its hash. Any match means a private file's exact content has leaked to the public corpus, regardless of filename — that's a real leak. Abort the port: do not declare Phase 5 success; surface the matching pair(s); recommend the user delete the offending file(s) (or revert the entire port with `rm -r <formosanbank_path>/Corpora/<corpus_name>/`) and investigate how it happened.
-2. **Basename collision check (warning, not blocker).** Any file in the published corpus whose basename matches a basename anywhere under `Private/` — even with different content. This catches plausible name reuse (e.g., a `Private/README.md` of operator notes and a public `README.md`). Surface the list for operator review; do not block.
+1. **P001 HARD.** The ported copy contains a directory whose name begins with
+   `Private`, or a file whose bytes equal a non-empty file under the dev repo's
+   `Private*` directories, whatever its name. That is a real leak. Abort the
+   port: do not declare Phase 5 success; surface the matching pair(s);
+   recommend the user delete the offending file(s) (or revert the entire port
+   with `rm -r <formosanbank_path>/Corpora/<corpus_name>/`) and investigate how
+   it happened. An empty file (the scaffold's `Private/.gitkeep`) carries no
+   content and is not compared.
+2. **P001 WARN.** A ported file shares its name with a private file but not its
+   content (e.g. a `Private/README.md` of operator notes and a public
+   `README.md`). Surface the list for operator review; do not block.
 
-Suggested implementation (run from the model, not pre-baked into a helper):
-
-```bash
-python3 <<'EOF'
-import hashlib, sys
-from pathlib import Path
-privs = [p for p in Path("<source_path>").iterdir() if p.is_dir() and p.name.startswith("Private")]
-target = Path("<formosanbank_path>/Corpora/<corpus_name>")
-if not privs:
-    print("OK: no Private* dir in source.")
-    sys.exit(0)
-print("private dirs:", [p.name for p in privs])
-def h(p):
-    H = hashlib.sha256()
-    with open(p, "rb") as f:
-        for c in iter(lambda: f.read(8192), b""):
-            H.update(c)
-    return H.hexdigest()
-priv_files = [f for priv in privs for f in priv.rglob("*") if f.is_file()]
-priv_by_hash = {h(f): f for f in priv_files}
-priv_names = {f.name for f in priv_files}
-content_leaks, name_collisions = [], []
-for tf in target.rglob("*"):
-    if not tf.is_file(): continue
-    if h(tf) in priv_by_hash:
-        content_leaks.append((tf, priv_by_hash[h(tf)]))
-    if tf.name in priv_names:
-        name_collisions.append(tf)
-if content_leaks:
-    print("HARD ERROR: private content leaked to public corpus:")
-    for t, p in content_leaks: print(f"  {t}  <-  {p}")
-    sys.exit(2)
-if name_collisions:
-    print("Warning: target filenames also exist under Private/ (different content):")
-    for n in name_collisions: print(f"  {n}")
-print("OK: no private content leaked.")
-EOF
-```
+What the dev repo itself tracks under `Private/` is not checked: only what is
+ported matters.
 
 ### Phase 4b: Is the attestation dictionary stale?
 

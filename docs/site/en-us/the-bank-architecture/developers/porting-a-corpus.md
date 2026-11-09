@@ -76,12 +76,12 @@ Run the mechanical port-readiness gate — on the source dev repo (ideally you a
 
 ```bash
 python QC/validation/validate_port_readiness.py --corpus_path ../Formosan-<Name>
-python QC/validation/validate_port_readiness.py --corpus_path Corpora/<Name>
+python QC/validation/validate_port_readiness.py --corpus_path Corpora/<Name> --source ../Formosan-<Name>
 ```
 
-It exits 1 on blockers (git-tracked `Private/` content, unknown `xml:lang`, non-canonical dialect) and warns on judgment calls (divergent commit pins in README/sidecars, stale audio statistics, unvalidated conversion tables). See [validate\_port\_readiness.py](qc-pipeline/validate-port-readiness.md) for the full check list.
+It exits 1 on blockers (private material in the ported copy, unknown `xml:lang`, non-canonical dialect) and warns on judgment calls (divergent commit pins in README/sidecars, stale audio statistics, unvalidated conversion tables). See [validate\_port\_readiness.py](qc-pipeline/validate-port-readiness.md) for the full check list.
 
-Then confirm the published XML still conforms, and run the privacy-leak check.
+Then confirm the published XML still conforms.
 
 ```bash
 python QC/validation/validate_xml.py by_path --path Corpora/<Name>/XML --no-exit-on-hard
@@ -89,10 +89,12 @@ python QC/validation/validate_xml.py by_path --path Corpora/<Name>/XML --no-exit
 
 `--no-exit-on-hard` lets you inspect findings rather than aborting on the first one; HARD findings still appear on stderr. Spot-check file counts and total size against the source.
 
-**Privacy-leak check (only if `Private/` exists).** Two layers:
+**Privacy-leak check.** This is `P001` of the port-readiness run on the ported copy with `--source`. Two layers:
 
-1. **Content-hash check (hard error).** Hash every file under `Private/` and every file under `Corpora/<Name>/`. Any matching hash means private content leaked, regardless of filename — abort the port, surface the pair, and revert (`rm -r Corpora/<Name>/`).
-2. **Basename-collision check (warning).** Any published file whose *basename* also appears under `Private/` (even with different content) — surface for review; not a blocker.
+1. **Hard error.** The ported copy contains a directory whose name begins with `Private`, or a file whose bytes equal a non-empty file under the dev repo's `Private*` directories, regardless of filename: private content leaked. Abort the port, surface the pair, and revert (`rm -r Corpora/<Name>/`).
+2. **Warning.** A published file whose name also appears under `Private/` (with different content): surface for review; not a blocker.
+
+What the dev repo itself tracks under `Private/` is not checked; only what is ported matters.
 
 ### 5. Add to the documentation site
 

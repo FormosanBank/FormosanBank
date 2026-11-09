@@ -39,7 +39,8 @@ used 2026-11-06 on six repos.
 Re-read POLICIES.md POL-012, 016, 017, 018, 024–027, 060 and 061. The guide that
 `export_review.py` writes (`guide_html`) is a plain-language summary of them:
 one gloss under two words goes in one box (POL-060); no gloss printed means an
-empty box (POL-061; the build writes `<UNCLEAR/>`); starred examples are
+empty box, and the gloss stays blank (POL-061: `<UNCLEAR/>` only where the
+book itself marks a gloss unknown or unclear); starred examples are
 excluded, never re-starred (POL-016); optional and alternative readings are
 separate cards (POL-026/027); `'` is never a quotation mark (POL-018). If a
 policy has changed, stop and show the maintainer both texts before building.
@@ -175,7 +176,8 @@ Record the page URL in memory and in the decision log.
    hand-editing XML (POL-038). The corrections TSV is an input the build reads at
    the stage where it still has words and glosses (before morpheme splitting,
    standardization and phonology), refusing any row whose `was` no longer matches.
-   An empty gloss box becomes `<UNCLEAR/>` (POL-061); a word box holding several
+   An empty gloss box leaves the gloss blank, with no TRANSL (POL-061 keeps
+   `<UNCLEAR/>` for glosses the book itself marks unknown or unclear); a word box holding several
    words becomes one `W` (POL-060). The Chang Seediq build
    (`review_corrections.tsv` + `review_adjudication.tsv`) is a worked example.
 5. **Verify.** Regenerate, run all three validators (xml, text, glosses; all gate
