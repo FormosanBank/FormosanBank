@@ -24,6 +24,65 @@ if str(_REPO_ROOT) not in sys.path:
 from QC.corpus_counts import is_reproduction_path
 from QC.utilities._accents import accented_letters, strip_accents
 
+import unicodedata
+
+_DEFAULT_ORTHOGRAPHIES_DIR = _REPO_ROOT / "Orthographies"
+_default_orthography_data: Optional[Dict] = None
+
+
+def _is_punctuation(ch: str) -> bool:
+    """Punctuation or symbol: Unicode general category P* or S* (``.``, ``=``, ``‹``, ``^``, ``。``)."""
+    return unicodedata.category(ch)[0] in "PS"
+
+
+def orthographic_punctuation(orthography_data: Dict) -> Tuple[frozenset, Tuple[str, ...]]:
+    """Punctuation that some Formosan orthography uses in a letter, whatever the language.
+
+    Returns ``(letters, graphemes)``:
+
+    * ``letters`` — punctuation characters that are a whole letter in some table of
+      some language (from Orthographies/ as of 2026-11: ``'``, ``-``, ``?``, ``:``,
+      ``_``, ``^``);
+    * ``graphemes`` — the multi-character letters that contain punctuation (``l.h``,
+      ``t.h`` in Ortho113/Thao; ``a:e``, ``o:e`` in Ortho113/Saisiyat; ``n_g`` in the
+      Atayal tables), longest first.
+
+    Every language's tables count for every text: a mark one orthography uses as a
+    letter is never thrown away before scoring.
+    """
+    letters, graphemes = set(), set()
+    for dialects in orthography_data.values():
+        for orthographies in dialects.values():
+            for inventory in orthographies.values():
+                for grapheme in inventory:
+                    if len(grapheme) == 1:
+                        if _is_punctuation(grapheme):
+                            letters.add(grapheme)
+                    elif any(_is_punctuation(ch) for ch in grapheme):
+                        graphemes.add(grapheme)
+    return frozenset(letters), tuple(sorted(graphemes, key=lambda g: (-len(g), g)))
+
+
+def strip_non_orthographic_punctuation(text: str, letters: frozenset, graphemes: Tuple[str, ...]) -> str:
+    """Replace with a space every punctuation character that no orthography uses as a letter.
+
+    A mark that is a whole letter somewhere (``'``, ``-``, ``?``) is kept everywhere. A
+    mark that only occurs inside a multi-character letter is kept only inside that
+    letter: ``.`` survives in Thao ``l.h`` but a sentence-final period goes. Everything
+    else (``=``, ``‹ ›``, ``< >``, ``[ ]``, ``( )``, ``;``, ``/``, ``…``, quotation
+    marks, CJK punctuation) is replaced by a space, so it is neither scored nor able to
+    join the letters on either side into a false digraph.
+    """
+    strip = {ch for ch in set(text) if ch not in letters and _is_punctuation(ch)}
+    if not strip:
+        return text
+    char_class = "[" + "".join(re.escape(ch) for ch in sorted(strip)) + "]"
+    inside = [g for g in graphemes if any(ch in strip for ch in g)]
+    if not inside:
+        return re.sub(char_class, " ", text)
+    pattern = re.compile("(" + "|".join(re.escape(g) for g in inside) + ")|" + char_class)
+    return pattern.sub(lambda m: m.group(1) or " ", text)
+
 
 def _attested_accents(target_language_data: Dict, dialect: str) -> frozenset:
     """Accented letters this language (or dialect) attests in its orthographies.
@@ -197,8 +256,8 @@ def extract_text_from_xml(xml_file: str, use_standard: bool = False, orthography
         # Combine all extracted text snippets into one string for analysis
         combined_text = ' '.join(texts)
 
-        # Clean the text: remove numbers, commas, exclamation marks, and the
-        # null-morpheme marker.
+        # Clean the text: remove numbers, the null-morpheme marker, and every
+        # punctuation mark that no Formosan orthography uses as a letter.
         #
         # '\u2205' is analytic notation, not a letter: POL-012 makes it the
         # canonical null-morpheme marker on every tier, and it is a letter in
@@ -207,14 +266,6 @@ def extract_text_from_xml(xml_file: str, use_standard: bool = False, orthography
         # every orthography equally and depressed the match for any corpus
         # that analyses nulls — Amis-Pa-Verbs' seven nulls cost it about ten
         # points against Ortho94 without telling anyone anything.
-        #
-        # Deliberately NOT stripped, though they look like punctuation:
-        # '?' is a letter in four tables (Ferrell/Paiwan, Montgomery/Amis,
-        # Tsuchida/Pazeh, Wakelin/Yami), and '.', ':' and '_' appear inside
-        # multi-character letters ('l.h'/'t.h' in Ortho113/Thao, 'a:e'/'o:e'
-        # in Ortho113/Saisiyat, 'n_g' in the Atayal tables). Keep letters,
-        # apostrophes, hyphens, and anything else that might be
-        # linguistically significant.
         # Remove the null *unit* — the marker plus its bridging hyphen(s) —
         # not just the glyph. POL-012 defines the unit that way, and dropping
         # the marker alone would leave a stray '-' behind ('\u2205-ci' -> '-ci'),
@@ -222,7 +273,24 @@ def extract_text_from_xml(xml_file: str, use_standard: bool = False, orthography
         # simply move the penalty rather than remove it. A hyphen not adjacent
         # to a null is untouched: '-' is a letter in the Bunun and Thao tables.
         cleaned_text = re.sub(r'-?\u2205-?', ' ', combined_text)
-        cleaned_text = re.sub(r'[0-9",!]', ' ', cleaned_text)
+        cleaned_text = re.sub(r'[0-9]', ' ', cleaned_text)
+
+        # Punctuation (maintainer, 2026-11-09: "It should exclude all
+        # punctuation EXCEPT punctuation known to appear in some Formosan
+        # orthography (regardless of language)."). Markup and punctuation such
+        # as '=', '‹ ›', '[ ]', a sentence-final '.', ',' or '!' penalised
+        # every orthography and depressed every original-tier score. Kept:
+        # any mark that is a letter in some table of any language ('?' in
+        # four tables, '-' in Bunun and Thao, "'", ':', '_', '^'), and a mark
+        # inside a multi-character letter where it forms that letter ('.' in
+        # Thao 'l.h'/'t.h', ':' in Saisiyat 'a:e', '_' in Atayal 'n_g').
+        global _default_orthography_data
+        tables = orthography_data
+        if tables is None:
+            if _default_orthography_data is None:
+                _default_orthography_data = load_orthography_data(str(_DEFAULT_ORTHOGRAPHIES_DIR))
+            tables = _default_orthography_data
+        cleaned_text = strip_non_orthographic_punctuation(cleaned_text, *orthographic_punctuation(tables))
 
         # Strip accents so a prosodic accent (e.g. Glosbe stress marks) scores
         # as its bare vowel instead of an unexpected token. Accents that this
