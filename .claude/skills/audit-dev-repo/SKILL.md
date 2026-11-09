@@ -174,9 +174,11 @@ POL id; read the entry rather than this summary):
   it (V144 SOFT / V145 HARD cover only the degenerate cases) — read the builder
   for where Ms are created, and count single-M words.
 - POL-060 (2026-10-14): words the source glosses as one unit are one W.
-- POL-061 (2026-10-15): an unglossed word is glossed `?`. The 2026-09-04
-  HundredPaiwanStories ruling went the other way (no `?` gloss, an absent TRANSL);
-  surface both to the maintainer rather than choosing.
+- POL-061 (2026-11-09): `<UNCLEAR/>` only for a gloss the source itself reports
+  as unknown or unclear (its own `?`, `??`, `X`). A gloss missing without
+  explanation, or one that does not line up with the segmentation, is left blank
+  (no TRANSL). A `?` or `<UNCLEAR/>` gloss the build adds where the source prints
+  nothing is a finding.
 - POL-028 as amended 2026-10-15: a segmentation difference makes a separate S
   only if it is glossed and the glossing differs; otherwise `ver="alt"`.
 - POL-059: published layout is `XML/` plus a language-named directory.

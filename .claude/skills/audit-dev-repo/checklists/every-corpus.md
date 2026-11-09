@@ -35,7 +35,7 @@
 
 7. **Null-morpheme glyphs and placeholders added in processing, not printed.**
    How: a provenance census of every `∅`/`ø`/`Ø`/`?` against the scan; read the build for where they are created.
-   Acceptable: POL-012 (the cleaner canonicalises a separated null to `∅`), POL-060 (a shared gloss is one W), POL-061 (an unglossed word is glossed `?`). POL-061 and the 2026-09-04 HundredPaiwanStories ruling point opposite ways; surface both, do not pick.
+   Acceptable: POL-012 (the cleaner canonicalises a separated null to `∅`), POL-060 (a shared gloss is one W), POL-061 (`<UNCLEAR/>` where the source itself marks a gloss unknown or unclear). Not acceptable: a `?` or `<UNCLEAR/>` gloss where the source simply gives none; POL-061 leaves that gloss blank.
    Example: Seediq-Chang — 41 `∅` none of which the book or the raw OCR has.
 
 8. **Segmentation markers stripped from the original or W tier; infix notation rewritten; `standardize` fusing hyphenated pronouns.**
