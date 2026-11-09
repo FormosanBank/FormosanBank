@@ -15,9 +15,12 @@ SCRIPT = (
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
-def _run(corpus: Path, repo_root: Path | None = None) -> subprocess.CompletedProcess:
+def _run(corpus: Path, repo_root: Path | None = None,
+         source: Path | None = None) -> subprocess.CompletedProcess:
     argv = [sys.executable, str(SCRIPT), "--corpus_path", str(corpus),
             "--repo-root", str(repo_root or REPO_ROOT)]
+    if source is not None:
+        argv += ["--source", str(source)]
     return subprocess.run(argv, capture_output=True, text=True)
 
 
@@ -60,27 +63,69 @@ def test_unknown_language_is_hard(tmp_path):
     assert "P002" in proc.stdout
 
 
-def test_tracked_private_content_is_hard(tmp_path):
-    corpus = _mini_corpus(tmp_path)
-    (corpus / "Private").mkdir()
-    (corpus / "Private" / "source.pdf").write_text("secret", encoding="utf-8")
-    _git(corpus, "init", "-q")
-    _git(corpus, "add", "-A")
+def _ported_copy(tmp_path: Path, dev: Path) -> Path:
+    """A copy of the dev repo's XML/ and CodeAndDocs/ under Corpora/, as a port makes it."""
+    import shutil
+    corpus = tmp_path / "bank" / "Corpora" / "Mini"
+    corpus.mkdir(parents=True)
+    for part in ("XML", "CodeAndDocs"):
+        shutil.copytree(dev / part, corpus / part)
+    return corpus
+
+
+def test_dev_repo_private_content_is_not_checked(tmp_path):
+    # Maintainer, 2026-11-09: the gate is on the port, not on what the dev repo tracks.
+    dev = _mini_corpus(tmp_path)
+    (dev / "Private").mkdir()
+    (dev / "Private" / "source.pdf").write_text("secret", encoding="utf-8")
+    _git(dev, "init", "-q")
+    _git(dev, "add", "-A")
+    proc = _run(dev)
+    assert proc.returncode == 0, proc.stdout
+    assert "P001" not in proc.stdout
+
+
+def test_private_directory_in_ported_copy_is_hard(tmp_path):
+    corpus = _ported_copy(tmp_path, _mini_corpus(tmp_path))
+    (corpus / "CodeAndDocs" / "Private:Source").mkdir()
+    (corpus / "CodeAndDocs" / "Private:Source" / "book.pdf").write_text("x", encoding="utf-8")
     proc = _run(corpus)
     assert proc.returncode == 1
-    assert "P001" in proc.stdout
+    assert "P001 HARD: private directory in the ported corpus: CodeAndDocs/Private:Source" in proc.stdout
 
 
-def test_untracked_private_content_not_hard(tmp_path):
-    corpus = _mini_corpus(tmp_path)
-    (corpus / "Private").mkdir()
-    (corpus / "Private" / "source.pdf").write_text("secret", encoding="utf-8")
-    (corpus / ".gitignore").write_text("Private/\n", encoding="utf-8")
-    _git(corpus, "init", "-q")
-    _git(corpus, "add", "-A")
-    proc = _run(corpus)
+def test_private_content_in_ported_copy_is_hard(tmp_path):
+    dev = _mini_corpus(tmp_path)
+    (dev / "Private").mkdir()
+    (dev / "Private" / "key.txt").write_text("secret key", encoding="utf-8")
+    corpus = _ported_copy(tmp_path, dev)
+    (corpus / "CodeAndDocs" / "notes.txt").write_text("secret key", encoding="utf-8")   # same bytes, new name
+    proc = _run(corpus, source=dev)
+    assert proc.returncode == 1
+    assert "P001 HARD: CodeAndDocs/notes.txt has the same content as Private/key.txt" in proc.stdout
+
+
+def test_clean_port_passes_and_empty_private_file_is_not_a_leak(tmp_path):
+    dev = _mini_corpus(tmp_path)
+    (dev / "Private").mkdir()
+    (dev / "Private" / ".gitkeep").write_text("", encoding="utf-8")
+    (dev / "Private" / "key.txt").write_text("secret key", encoding="utf-8")
+    corpus = _ported_copy(tmp_path, dev)
+    (corpus / "CodeAndDocs" / "empty.txt").write_text("", encoding="utf-8")
+    proc = _run(corpus, source=dev)
     assert proc.returncode == 0, proc.stdout
-    assert "P001 HARD" not in proc.stdout
+    assert "P001" not in proc.stdout
+
+
+def test_private_file_name_in_ported_copy_warns(tmp_path):
+    dev = _mini_corpus(tmp_path)
+    (dev / "Private").mkdir()
+    (dev / "Private" / "README.md").write_text("operator notes", encoding="utf-8")
+    corpus = _ported_copy(tmp_path, dev)
+    (corpus / "CodeAndDocs" / "README.md").write_text("public notes", encoding="utf-8")
+    proc = _run(corpus, source=dev)
+    assert proc.returncode == 0, proc.stdout
+    assert "P001 WARN: CodeAndDocs/README.md shares its name with Private/README.md" in proc.stdout
 
 
 def test_divergent_commit_pins_warn(tmp_path):

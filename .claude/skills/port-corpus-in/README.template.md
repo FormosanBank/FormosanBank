@@ -3,7 +3,7 @@
 <!-- This README is the corpus's only documentation: the FormosanBank site
      (https://formosanbank.github.io/FormosanBank/) renders it as the corpus
      page. Headings are fixed (tests/corpora/test_readme_sections.py; POL-044,
-     POL-052 and POL-055 as amended 2026-10-18): keep every one, in this order.
+     POL-052 and POL-055): keep every one, in this order.
      Optionally, a one-paragraph plain-language summary may sit here, above the
      first section. -->
 
@@ -56,8 +56,10 @@ FormosanBank and:
 <!-- POL-055. What a user needs to know before using this corpus: known
      limitations, source defects, unresolved data problems, OCR artifacts left
      in place, missing audio, hand-made edits, orthography assumptions, and
-     import decisions not everyone would agree with. Not process history.
-     Write "None known." if there are none. -->
+     import decisions not everyone would agree with. Not bank-wide rules, the
+     decision-making process, or standard OCR-correction processes. Add or
+     change a note only when the maintainer asks for it or approves it; most
+     corpora have fewer than 5. Write "None known." if there are none. -->
 
 {{NOTES_AND_CAVEATS}}
 
