@@ -108,7 +108,7 @@ Everything in the **cleaning & standardization** pipeline modifies XML *in place
 * [validate_audio.py](validate-audio.md) — broken/silent/mis-ranged audio
 * [content_delta.py](content-delta.md) — removed, renamed or relabelled published XML, red for override
 * [validate_hf_audio.py](validate-hf-audio.md) — Hub ↔ XML audio parity (blocking in CI)
-* [sync_hf_audio.py](sync-hf-audio.md) — repair a dataset to match the XML (dry run by default)
+* [sync_hf_audio.py](sync-hf-audio.md) — repair a dataset of clips cut from a recording to match the XML (dry run by default)
 
 ### Cleaning
 

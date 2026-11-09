@@ -37,13 +37,14 @@ def _s(sid: str, audio: str) -> str:
             f'<FORM kindOf="standard">x</FORM>{audio}</S>\n')
 
 
-def _xml_dir(tmp_path: Path) -> Path:
+def _xml_dir(tmp_path: Path, *, with_unsliceable: bool = False) -> Path:
     xml = tmp_path / "XML"
     (xml / "Amis").mkdir(parents=True)
+    no_url = _s("S3", f'<AUDIO file="a_S3.mp3" start="3" end="4"/>') if with_unsliceable else ""  # no url
     (xml / "Amis" / "a.xml").write_text(TEXT.format(tid="a", body=(
         _s("S1", f'<AUDIO file="a_S1.mp3" url="{URL}" start="0" end="1.5"/>')
         + _s("S2", f'<AUDIO file="a_S2.mp3" url="{URL}" start="1.5" end="3"/>')
-        + _s("S3", f'<AUDIO file="a_S3.mp3" start="3" end="4"/>')         # no url: skipped
+        + no_url
         + _s("S4", f'<AUDIO file="a_S1.mp3" url="{URL}" start="9" end="10"/>')  # duplicate name: first wins
     )), encoding="utf-8")
     (xml / "Puyuma").mkdir()
@@ -54,7 +55,7 @@ def _xml_dir(tmp_path: Path) -> Path:
 
 def test_referenced_clips_keys_by_language_dir_and_keeps_the_first_span(tmp_path):
     m = _load()
-    clips = m.referenced_clips(_xml_dir(tmp_path))
+    clips = m.referenced_clips(_xml_dir(tmp_path, with_unsliceable=True))   # the no-url clip is skipped
     assert clips == {
         "Amis/a_S1.mp3": (URL, 0.0, 1.5),
         "Amis/a_S2.mp3": (URL, 1.5, 3.0),
@@ -120,6 +121,43 @@ def test_apply_without_write_access_stops_before_touching_anything(tmp_path, mon
     with pytest.raises(SystemExit) as exc:
         m.main()
     assert "--apply needs write access" in str(exc.value)
+
+
+def test_whole_recording_audio_stops_before_reporting_anything(tmp_path, monkeypatch, capsys):
+    # Wild-Lehmann-Kanakanavu, 2026-11-09: TEXT-level AUDIO with no url or times. The tool
+    # saw 0 referenced files, 3 .mp3 on the Hub, and proposed deleting all 3.
+    m = _load()
+    xml = tmp_path / "XML"
+    (xml / "Kanakanavu").mkdir(parents=True)
+    (xml / "Kanakanavu" / "k.xml").write_text(TEXT.format(tid="k", body=
+        '<AUDIO file="story1.mp3"/>\n' + _s("S1", "")), encoding="utf-8")
+    _fake_hub(monkeypatch, ["Kanakanavu/story1.mp3"])
+    monkeypatch.setattr(sys, "argv", ["sync_hf_audio.py", "--repo", "FormosanBank/K", "--xml", str(xml)])
+    with pytest.raises(SystemExit) as exc:
+        m.main()
+    assert "STOPPED" in str(exc.value)
+    assert "1 AUDIO element(s) naming a file with no url, start or end" in str(exc.value)
+    assert "to delete" not in capsys.readouterr().out
+
+
+def test_unsliceable_clip_in_a_clip_corpus_stops_too(tmp_path, monkeypatch):
+    m = _load()
+    _fake_hub(monkeypatch, ["Amis/a_S1.mp3", "Amis/a_S2.mp3", "Amis/a_S3.mp3", "Puyuma/p_S1.mp3"])
+    monkeypatch.setattr(sys, "argv", ["sync_hf_audio.py", "--repo", "FormosanBank/X",
+                                      "--xml", str(_xml_dir(tmp_path, with_unsliceable=True))])
+    with pytest.raises(SystemExit, match=r"1 AUDIO element\(s\) .* e\.g\. Amis/a_S3\.mp3"):
+        m.main()
+
+
+def test_non_mp3_audio_on_the_hub_stops_the_tool(tmp_path, monkeypatch, capsys):
+    # Tang and Yedda keep .wav files: the tool saw 0 on both sides and said "already in parity".
+    m = _load()
+    _fake_hub(monkeypatch, ["Amis/a_S1.mp3", "Amis/a_S2.mp3", "Puyuma/p_S1.mp3", "Amis/whole.wav"])
+    monkeypatch.setattr(sys, "argv", ["sync_hf_audio.py", "--repo", "FormosanBank/X",
+                                      "--xml", str(_xml_dir(tmp_path))])
+    with pytest.raises(SystemExit, match=r"1 non-\.mp3 audio file\(s\) on the Hub, e\.g\. Amis/whole\.wav"):
+        m.main()
+    assert "already in parity" not in capsys.readouterr().out
 
 
 def test_missing_xml_dir_is_an_error(tmp_path, monkeypatch):

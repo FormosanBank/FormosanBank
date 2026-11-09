@@ -44,6 +44,9 @@ from collections import defaultdict
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO_ROOT))
+
+from QC.validation.validate_hf_audio import is_audio  # noqa: E402  (one list of audio file types)
 
 
 def _iter_xml(xml_dir: Path, ref: str | None):
@@ -96,7 +99,25 @@ def referenced_clips(xml_dir: Path, ref: str | None = None) -> dict[str, tuple[s
     return out
 
 
-def hub_files(api, repo_id: str) -> set[str]:
+def unsliceable_audio(xml_dir: Path, ref: str | None = None) -> list[str]:
+    """Hub paths of AUDIO elements this tool cannot account for.
+
+    An AUDIO that names a file but has no source url, start or end is a whole
+    recording (TEXT-level audio) or a clip already cut: there is nothing to
+    slice it from, and the tool would otherwise count its file on the Hub as
+    unreferenced and propose deleting it.
+    """
+    out = []
+    for language, tree in _iter_xml(xml_dir, ref):
+        for audio in tree.getroot().iter("AUDIO"):
+            name = audio.get("file")
+            if name and not (audio.get("url") and audio.get("start") is not None
+                             and audio.get("end") is not None):
+                out.append(f"{language}/{name}" if language else name)
+    return out
+
+
+def hub_listing(api, repo_id: str) -> list[str]:
     # The error classes live in huggingface_hub.errors from 1.0 and in
     # huggingface_hub.utils before it; this repo pins 0.29.1 but the script is
     # run wherever the token is, so accept either and fall back to Exception.
@@ -111,9 +132,15 @@ def hub_files(api, repo_id: str) -> set[str]:
             EntryNotFoundError = RepositoryNotFoundError = Exception
 
     try:
-        listing = api.list_repo_files(repo_id=repo_id, repo_type="dataset")
+        return list(api.list_repo_files(repo_id=repo_id, repo_type="dataset"))
     except (EntryNotFoundError, RepositoryNotFoundError) as exc:
         raise SystemExit(f"cannot read {repo_id}: {exc}")
+
+
+def hub_files(api, repo_id: str, listing: list[str] | None = None) -> set[str]:
+    """The dataset's .mp3 files: the clips this tool slices and uploads."""
+    if listing is None:
+        listing = hub_listing(api, repo_id)
     return {name for name in listing if name.lower().endswith(".mp3")}
 
 
@@ -199,7 +226,26 @@ def main() -> int:
     # token=False would refuse it, which is wrong for anyone already logged in.
     api = HfApi(token=args.token or None)
     wanted = referenced_clips(args.xml, args.from_ref)
-    have = hub_files(api, args.repo)
+    listing = hub_listing(api, args.repo)
+    have = hub_files(api, args.repo, listing)
+
+    # This tool repairs datasets of clips cut from a source recording. Anything
+    # else in the XML or on the Hub is invisible to it: it would report parity
+    # it never checked, or propose deleting files the XML does reference.
+    blind = unsliceable_audio(args.xml, args.from_ref)
+    other = sorted(n for n in listing if is_audio(n) and not n.lower().endswith(".mp3"))
+    if blind or other:
+        lines = [f"{args.repo}: STOPPED. This tool only repairs datasets of .mp3 clips cut "
+                 "from a source recording (AUDIO with url, start and end). It cannot see:"]
+        if blind:
+            lines.append(f"  {len(blind)} AUDIO element(s) naming a file with no url, start or "
+                         f"end (a whole recording, or a clip already cut), e.g. {blind[0]}")
+        if other:
+            lines.append(f"  {len(other)} non-.mp3 audio file(s) on the Hub, e.g. {other[0]}")
+        lines.append("so it cannot tell what is missing or extra. Check parity with "
+                     "QC/validation/validate_hf_audio.py --corpus <corpus> "
+                     "(add --local to check downloaded files, e.g. before the dataset is public).")
+        raise SystemExit("\n".join(lines))
 
     missing = sorted(set(wanted) - have)
     extras = sorted(have - set(wanted))
