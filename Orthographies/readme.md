@@ -48,8 +48,8 @@ record the review evidence used to build them.
 | `TaiwanNandao` | Puyuma | 10141444256 | Penultimate schwa needs syllable and stress analysis. |
 | `TaiwanNandao` | Paiwan | 10155208202 | Verb-class final `i` needs lexical information. |
 | `TaiwanNandao` | Seediq | 10155470797 | Implements the reviewed source mappings without corpus-specific overrides. |
+| `TaiwanNandao` | Kavalan | 10135905572 | Implements the reviewed uvular and glide context rules. Chang (2000), *Kavalan reference grammar*, in the same 台灣南島語言 series; it writes `r` for the flap [ɾ] and `l` for the lateral fricative, and `Kavalan_TaiwanNandao_113.tsv` converts them to Ortho113's `l` and `d`. |
 | `Huang` | Bunun | 10131205489 | Implements the documented Glide source mappings and context rules. |
-| `Zhang` | Kavalan | 10135905572 | Implements the reviewed uvular and glide context rules. |
 | `Li` | Rukai | 10136983267 | Preserves case-sensitive source distinctions such as `T` and `t`. |
 | `Cauquelin` | Puyuma | 10145149843 | No source-to-Ortho113 conversion is asserted for unresolved vowel correspondences. |
 | `Tsuchida` | Pazeh | 10150746084 | Produces original PHON; no Ortho113 Pazeh table currently exists. |

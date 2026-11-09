@@ -16,7 +16,7 @@ They exist to answer one question: *is this string a real word in this language?
 
 ### Phonology rule sidecars
 
-`Orthographies/<Scheme>/<Language>.rules.tsv` — **15 files** across seven schemes (Ortho113, Ortho94, TaiwanNandao, MinEd, Huang, Cauquelin, Tsuchida, Zhang). Each sits beside its conversion table and holds ordered, context-sensitive rewrite rules applied *after* the table's flat character mapping:
+`Orthographies/<Scheme>/<Language>.rules.tsv` — **16 files** across eight schemes (Ortho113, Ortho94, TaiwanNandao, MinEd, Huang, Cauquelin, Tsuchida, Asai2026). Each sits beside its conversion table and holds ordered, context-sensitive rewrite rules applied *after* the table's flat character mapping:
 
 ```tsv
 pattern	replacement	description
