@@ -18,11 +18,11 @@ analyses follow an expert transcription of the thesis by Madeline Boese
 
 Two TEXT files under `XML/Sakizaya/` contain 686 S: 244 numbered-example
 readings, six footnote/prose examples and 436 affix entries (432 main-table rows
-and 4 rows of the late summary tables), with 1,361 W, 1,777 M, 3,824 original
-and 3,824 standard FORM, 3,824 standard PHON, 738 S translations and 3,138
-untiered W/M source glosses. The affix entries are the printed word and its
-definition; the examples carry the word-by-word glosses and morphemes. No source-supplied phonetic transcription is
-included.
+and 4 rows of the late summary tables), with 1,797 W, 2,649 M, 5,132 original
+and 5,132 standard FORM, 5,132 standard PHON, 738 S translations and 3,138
+untiered W/M source glosses. Each affix entry is the printed word, segmented
+into its affix and root, with its definition; its word and morphemes carry no
+gloss. No source-supplied phonetic transcription is included.
 
 Of the thesis's 814 example and table units (261 numbered occurrences, 434
 main-table rows, 113 late summary rows and six footnote/prose examples), the
@@ -106,8 +106,9 @@ only when every step has succeeded.
    late rows, each checked against its inventory row); applies the corrections
    in `source_data/ruled_corrections.tsv` (each row names the value it expects,
    so a changed input stops the build); writes `mita` and `maku` as `m-ita` and
-   `m-aku`, two morphemes each; and removes the word-by-word gloss and morphemes
-   from the table rows, which keep the printed word and its definition.
+   `m-aku`, two morphemes each; puts the table-row morphemes in word order with
+   circumfixes written `X-Y`; and removes the table rows' word and morpheme
+   glosses, so each row keeps its segmented word and its definition.
 4. `QC/cleaning/clean_xml.py`, with its report kept out of `XML/` (POL-033).
 5. `QC/utilities/standardize.py --remove_accents --segmented-without-m-tier`:
    the source already spells in the standard orthography, so no conversion

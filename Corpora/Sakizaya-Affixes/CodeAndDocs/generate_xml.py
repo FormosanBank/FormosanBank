@@ -253,13 +253,53 @@ def apply_ruled_corrections(xml_root: Path) -> None:
         _write(trees[kind], path)
 
 
-def drop_table_analysis(xml_root: Path) -> None:
-    """Each affix-inventory row is its printed word and its definition: no W, no M.
+def normalise_table_morphemes(xml_root: Path) -> None:
+    """Morphemes of the affix-inventory rows in word order, hyphens only as notation.
+
+    The tables list the affix column before the root column. A suffix therefore follows
+    its root here; a prefix and a circumfix (whose first part opens the word) stay first.
+    Hyphens are dropped from every morpheme except a circumfix's single hyphen at the
+    root's place, and a circumfix printed with ... (ka-...-an) is written ka-an.
+    """
+    path = _xml_paths(xml_root)["table_rows"]
+    tree = ET.parse(path)
+    for sentence in tree.getroot().findall("S"):
+        word = sentence.find("W")
+        morphs = word.findall("M")
+        if len(morphs) != 2:
+            raise ValueError(f"Table row without exactly two morphemes: {sentence.get('id')}")
+        affix_form = morphs[0].find("FORM[@kindOf='original']")
+        root_form = morphs[1].find("FORM[@kindOf='original']")
+        text = affix_form.text
+        if "..." in text:
+            before, after = text.split("...")
+            affix_form.text = before.rstrip("-").replace("-", "") + "-" + after.lstrip("-").replace("-", "")
+            ordered = morphs
+        elif text.endswith("-") and not text.startswith("-"):
+            affix_form.text = text.replace("-", "")
+            ordered = morphs
+        elif text.startswith("-") and not text.endswith("-"):
+            affix_form.text = text.replace("-", "")
+            ordered = [morphs[1], morphs[0]]
+        else:
+            raise ValueError(f"Unexpected affix shape {text!r}: {sentence.get('id')}")
+        root_form.text = root_form.text.replace("-", "")
+        for morph in morphs:
+            word.remove(morph)
+        for index, morph in enumerate(ordered, 1):
+            morph.set("id", f"{word.get('id')}M{index}")
+            word.append(morph)
+    _write(tree, path)
+
+
+def strip_table_glosses(xml_root: Path) -> None:
+    """Each affix-inventory row keeps its word and morphemes, with no gloss on either.
 
     The tables give a segmented word and a definition, not a gloss; reading glosses off their
     affix and root columns is too uncertain (maintainer, 2026-11-08, card s153-q358: "We have a
     segmented word and a definition, but no glosses. Figuring out the glossing from the table is
-    too uncertain."). Every W translation is also on its S, so only the W/M tiers go.
+    too uncertain."; 2026-11-09, card s153-qtable: "Actually, we do want the W and the Ms, just no
+    glosses for the W or Ms."). The definition stays on the S.
     """
     path = _xml_paths(xml_root)["table_rows"]
     tree = ET.parse(path)
@@ -267,7 +307,9 @@ def drop_table_analysis(xml_root: Path) -> None:
         words = sentence.findall("W")
         if len(words) != 1 or sentence.find("TRANSL") is None:
             raise ValueError(f"Table row is not one word with a definition: {sentence.get('id')}")
-        sentence.remove(words[0])
+        for node in (words[0], *words[0].findall("M")):
+            for transl in node.findall("TRANSL"):
+                node.remove(transl)
     _write(tree, path)
 
 
@@ -335,6 +377,7 @@ if __name__ == "__main__":
         add_ruled_records(args.xml_root)
         apply_ruled_corrections(args.xml_root)
         segment_m_words(args.xml_root)
-        drop_table_analysis(args.xml_root)
+        normalise_table_morphemes(args.xml_root)
+        strip_table_glosses(args.xml_root)
     else:
         build(output=args.xml_root)

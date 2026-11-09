@@ -45,15 +45,29 @@ class ReviewedSourceTests(unittest.TestCase):
         self.assertEqual(self.nodes["AKIW_SZY_2012_EX_015"].findtext("TRANSL"), "我的肩膀受傷了。")
         self.assertEqual(self.nodes["AKIW_SZY_2012_EX_015W3"].findtext("TRANSL"), "肩膀")
 
-    def test_table_rows_are_word_and_definition(self):
+    def test_table_rows_have_word_and_morphemes_without_glosses(self):
         # Scan p. 53, table 13. Maintainer, 2026-11-08 (card s153-q358): "We have a segmented word
-        # and a definition, but no glosses. Figuring out the glossing from the table is too uncertain."
+        # and a definition, but no glosses. Figuring out the glossing from the table is too uncertain.";
+        # 2026-11-09 (card s153-qtable): "we do want the W and the Ms, just no glosses for the W or Ms."
         sentence = self.nodes["AKIW_SZY_2012_TABLE_ROW_001"]
+        word = sentence.find("W")
         self.assertEqual(form(sentence), "a-mumul")
         self.assertEqual(sentence.findtext("TRANSL"), "即將出發")
+        self.assertEqual(form(word), "a-mumul")
+        self.assertEqual([form(m) for m in word.findall("M")], ["a", "mumul"])
         tables = [r for r in self.roots if r.get("id", "").endswith("TABLE_ROWS")]
         self.assertEqual(len(tables), 1)
-        self.assertEqual(tables[0].findall(".//W") + tables[0].findall(".//M"), [])
+        self.assertEqual([t for node in tables[0].iter() if node.tag in ("W", "M")
+                          for t in node.findall("TRANSL")], [])
+
+    def test_circumfix_uses_standard_notation(self):
+        # Scan p. 145, row 365, printed ma-...-ay. Maintainer, 2026-11-07 (card s153-stdtable):
+        # "Do change circumfixes to standard notation. In this case `ka-an`."
+        morph = self.nodes["AKIW_SZY_2012_TABLE_ROW_365W1M1"]
+        self.assertEqual(form(morph), "ma-ay")
+        self.assertEqual(form(morph, "standard"), "ma-ay")
+        self.assertFalse(any("..." in (form(m) or "") for root in self.roots for m in root.iter("M")))
+        self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_365W1M2"]), "limula'")
 
     def test_repeated_apostrophes_are_retained(self):
         # Scan p. 147, row 376. The two source apostrophes are meaningful.
@@ -70,7 +84,7 @@ class ReviewedSourceTests(unittest.TestCase):
 
     def test_unglossed_null_prefix_is_marked_unclear(self):
         # Maintainer, 2026-11-06 (card s153-unglossed): "A · <UNCLEAR/> for both (POL-061)";
-        # the other (table row 20) went with the table rows' morphemes on 2026-11-08.
+        # the other (table row 20) has no gloss, like every table-row morpheme (card s153-qtable).
         null = self.nodes["AKIW_SZY_2012_EX_017DW1M1"]
         self.assertEqual(form(null), "∅")
         self.assertEqual([t.find("UNCLEAR") is not None and not (t.text or "").strip() for t in null.findall("TRANSL")], [True])
@@ -193,7 +207,8 @@ class ReviewedSourceTests(unittest.TestCase):
         for sentence in sentences:
             with self.subTest(row=sentence.get("id")):
                 self.assertTrue(sentence.findtext("TRANSL"))
-                self.assertIsNone(sentence.find("W"))
+                self.assertEqual(len(sentence.findall("W")), 1)
+                self.assertEqual(len(sentence.find("W").findall("M")), 2)
 
 
     def test_maintainer_rulings_2026_11(self):
@@ -223,6 +238,14 @@ class ReviewedSourceTests(unittest.TestCase):
         split = [w for root in self.roots for w in root.iter("W") if form(w).lower() in ("m-ita", "m-aku")]
         self.assertEqual(len(split), 27)
         self.assertFalse([w for root in self.roots for w in root.iter("W") if form(w).lower() in ("mita", "maku")])
+        # Table morphemes in word order, hyphens only as circumfix notation (2026-11-08, card
+        # s153-mcalls2: "AKIW_SZY_2012_TABLE_ROW_348W1 is fine.").
+        word = self.nodes["AKIW_SZY_2012_TABLE_ROW_280W1"]
+        self.assertEqual([form(m) for m in word.findall("M")], ["lekal", "a"])
+        self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_348W1M1"]), "ka-an")
+        table = [m for root in self.roots for m in root.iter("M") if "TABLE_ROW" in m.get("id")]
+        self.assertEqual(len(table), 872)
+        self.assertTrue(all("-" not in form(m) or re.fullmatch(r"[^-]+-[^-]+", form(m)) for m in table))
 
 
 class TranscriptionBuildTests(unittest.TestCase):

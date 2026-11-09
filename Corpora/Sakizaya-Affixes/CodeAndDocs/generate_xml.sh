@@ -8,7 +8,7 @@
 #   2. QC/cleaning/apply_manual_edits.py the 670-record expert transcription (W, M, readings)
 #   3. generate_xml.py --complete-transcription
 #        23c optional reading, footnote/prose supplement, ruled records and corrections,
-#        table morphemes in word order with circumfixes written X-Y
+#        table morphemes in word order with circumfixes written X-Y, no table W/M glosses
 #   4. QC/cleaning/clean_xml.py          (report kept out of XML/, POL-033)
 #   5. QC/utilities/standardize.py --remove_accents --segmented-without-m-tier
 #        the thesis already spells in Ortho113, so the standard tier is the original
