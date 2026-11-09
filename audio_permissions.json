@@ -64,6 +64,24 @@
       ]
     },
     {
+      "permission_id": "wild-lehmann-kanakanavu",
+      "corpus": "Wild-Lehmann-Kanakanavu",
+      "source": "Recordings from kanakanavu.info (Ilka Wild, 2013-2014; Shigeru Tsuchida, 1969)",
+      "status": "published_public",
+      "license": "CC BY-NC 4.0",
+      "hf_license": "cc-by-nc-4.0",
+      "version_basis": "latest_version_per_publication_policy",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/Wild-Lehmann-Kanakanavu/XML",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
+      "hf_repositories": [
+        {
+          "repo_id": "FormosanBank/Wild-Lehmann-Kanakanavu",
+          "access": "public"
+        }
+      ]
+    },
+    {
       "permission_id": "ilrdf-dictionaries",
       "corpus": "ILRDF_Dicts",
       "source": "Indigenous Languages Research and Development Foundation dictionaries",
