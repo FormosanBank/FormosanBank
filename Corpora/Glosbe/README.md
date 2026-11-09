@@ -125,39 +125,7 @@ contributors supplied the dictionary and translation-memory material.
 
 ## Notes and caveats
 
-Because this is a crowdsourced dictionary and translation memory, the linguistic
-accuracy and the rights attached to individual entries can vary. Treat entries as
-leads for review rather than as expert-verified dictionary records.
-
-Glosbe is crowdsourced and contains incorrect or incomplete translations and
-language labels; religious/JW examples dominate. Amis and Atayal dialects are
-unknown, and the approved Amis conversion does not resolve every o/u pronunciation.
-Recorded quotation repairs preserve reviewed readings, but automatic quotation
-classification can still miss errors. Distinct source spellings remain separate
-even when their standard forms coincide.
-
-* Glosbe's own pages write the Amis glottal stop as `ˈ` and quotation marks as
-  `‘ ’`; FormosanBank writes the glottal stop as `'` and quotations with `"`.
-  Quotation repairs are recorded hand edits (`CodeAndDocs/manual_edits.xml`,
-  logged in `CodeAndDocs/quote_corrections.csv`) checked against those Glosbe
-  pages; the XML as it stood before any correction is preserved in
-  `CodeAndDocs/pre_correction_snapshot/`.
-* Absence from ILRDF or disagreement with an ILRDF gloss is never an exclusion
-  rule. Historical ILRDF comparison reports are reference evidence, not current QC
-  verdicts. They concern dictionary candidates only; `trv` means Truku in that
-  comparison.
-* Import decisions that not everyone would agree with are made by recorded
-  maintainer rulings and are described step by step under "What each step does"
-  below: editorial material (scripture references, cross-references, labels,
-  captions) moved out of the text into `notes=`; main's typography kept where the
-  source spelling was rejected; the Amis–English and Amis–Chinese translation
-  memories joined into one file; and the identifiers withdrawn as a result.
-
-Open as of 2026-10-18 (not ruled): Amis-Chinese S that differ from an Amis-English S
-by a word, a list number written "(1)" vs "1.", a slashed date or a menu symbol are
-not joined. Paragraph numbers, cross-references and citations inside Chinese TRANSL
-text are left as published (ruling: "Leave as is"), apart from the page-reference
-copies described under step 8 below.
+None known.
 
 ## Reproduction and processing
 

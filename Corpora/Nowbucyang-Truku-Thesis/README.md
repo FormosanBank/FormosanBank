@@ -66,86 +66,16 @@ The thesis is used with the author's permission (`rights_status=full_rights_obta
 
 #### Orthography
 
-The source specifies Ortho94 on PDF page 22, with its tables on pages 23–24.
-Original FORM preserves source spelling and analysis, except for the nine
-sentences Joshua ruled should have no W/M or segmentation notation.
-The current shared tools generate standard FORM and both PHON tiers, using
-the Seediq conversion tables and their Truku column. Original PHON uses
-Ortho94; standard PHON follows the current project standard.
-
 Original PHON follows the source's Ortho94 values; the current Ortho113
 profile gives `g` and `l` different sound values in standard PHON.
 
 #### Glosses, word division and translations
 
-Three examples have word glosses but no free translation. Some source glosses
-do not align to individual written morphemes; retain the word gloss without
-inventing finer analysis. The author's inconsistent infix and clitic gloss
-notation is preserved.
-
-`CodeAndDocs/apply_gloss_rulings.py` applies the maintainer's 2026-10-18 gloss
-rulings to the build; each step quotes the ruling it implements. `niya na`,
-which the thesis glosses jointly as `尚未` (C03_E037A_0206_01, C03_E039C), is
-one W with one M (POL-060); the FORM notes recording the joint gloss are kept.
-C01_E011E (`N-tama ka patas gaga.`, PDF page 32) carries the thesis's gloss
-line `屬-爸爸 主格 書 那`; its printed paraphrase `Patas tama ka gaga.` is the
-separate, unglossed C01_E011E2.
-Where the thesis prints more written morphemes than gloss pieces and the
-maintainer ruled the pieces cannot be matched, each M is glossed `<UNCLEAR/>`
-and the W keeps the printed gloss: the four-morpheme infix words `S-n-lu-an`
-(C01_E021D), `T-n-tak-an` (C01_E023E), `H-n-puy-an` (C01_E024B) and
-`h-n-qil-an` (C02_E004A), and `n-hda-an` 完成 (C02_E004B). Whole sentences the
-thesis does not gloss stay unglossed: `<UNCLEAR/>` is for a gloss the source
-marks as unclear or that the maintainers cannot recover, not for a sentence
-the author chose not to gloss.
-
-`skiya` in C02_E001D (`asu skiya`, printed gloss `船 ∅-飛`) is the W
-`∅-skiya` with a null M `∅` (gloss `∅`, a new id, …W2M2) before the M `skiya`
-(gloss `飛`, its published id …W2M1). The sentence's original FORM is
-`asu ∅-skiya`: the `∅-` is not printed in the thesis and was added, with a
-`notes` attribute saying so, to match the word and morpheme analysis.
-In one sentence (`asu ∅-skiya`) FormosanBank added the `∅` the thesis's gloss
-implies; a note on that sentence says so.
-
-The thesis writes a clitic as its own token (`Ini =ku`) but usually prints one
-gloss token for host and clitic (`不-我`). Those 95 pairs, listed with their
-printed form and gloss lines in `CodeAndDocs/data/manual/clitic_merges.tsv`,
-are one W each (POL-060): FORM `Ini =ku`, gloss `不-我`, the host's Ms then the
-clitic's M, all keeping their published ids. Three clitics with their own
-printed gloss token stay separate W (`Hpuy-an =nami` 煮-LF 我們, C01_E024A;
-`Gaga =su` and `Gisu =su` 正在 你, C01_E027A/B). `S-n-rus =mu` (C03_E012A),
-`B-n-arig =ku` (C04_E003B) are one W in infix notation (`S<n>rus =mu`
-擦-n-我: Ms `S-rus` 擦, `-n-` n, `=mu` 我; `B<n>arig =ku` 買-n-我 likewise).
-`Mgay =ku` (C01_E011D, C01_E011D2) is one W glossed `AF-給=我`, with M `Mgay`
-`<UNCLEAR/>` and M `=ku` 我.
-
-Words the thesis glosses as one unit are one word in the word tier
-(FormosanBank POL-060): the thesis writes a clitic as its own token (`Ini =ku`)
-but usually prints one gloss for host and clitic (`不-我`), so those 95 pairs
-are single words. The sentence text is unchanged.
-
-`Nnita` (C03_E003A) keeps one unglossed M. Three parentheticals the thesis prints after a free translation are notes on
-that translation, not alternative translations: `(* 螢火蟲出來了)` in C04_E008C
-(the starred reading the sentence does not have) and `(在路上)` / `(已看到人)`
-in C01_E028A / C01_E028B.
+Some source glosses do not align with individual written morphemes; the word gloss is kept and no finer analysis is invented. The author's inconsistent infix and clitic gloss notation is preserved.
 
 #### Scope
 
-Lexical and derivation tables remain source evidence outside the published
-sentence/interlinear-example scope. See the
-[source decisions](CodeAndDocs/source-decisions.md) for the scoped conversion
-ruling and retained repetitions.
-
-#### Preserved decisions
-
-See [source-decisions.md](CodeAndDocs/source-decisions.md). The existing
-`data/manual/manual_sentences.xml` overrides/additions and all nine original
-`manual_edits.xml` records are retained. Further records preserve the reviewed
-punctuation-differing translations, partial source glosses and repeated examples'
-alternative gloss readings.
-The three distinct-provenance duplicate groups are retained, including
-`C01_E026A_0079_01` / `C03_E034b`. Source-backed morphemes are never removed
-because their gloss is absent; V064 is SOFT under current policy.
+Only the thesis's sentences and interlinear examples are published; its lexical and derivation tables are not.
 
 ## Reproduction and processing
 
@@ -238,7 +168,7 @@ There is no `validate.sh` for this corpus.
    and the two repeated-example gloss readings); the changelog it writes is
    copied back to `CodeAndDocs/manual_edits.md`.
 4. **`apply_gloss_rulings.py`** (corpus script) applies the 2026-10-18 gloss
-   rulings described under "Notes and caveats" in this order: `niya na` as one
+   rulings in this order: `niya na` as one
    W; the C01_E011E thesis glosses; `<UNCLEAR/>` on the M of the five words;
    the `∅-skiya` null M and sentence note; the 95 host + clitic merges from
    `clitic_merges.tsv`; the three parenthetical translations moved to notes;

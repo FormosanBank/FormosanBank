@@ -160,7 +160,7 @@ In order to comply with the official Romanization system promulgated by the Coun
 
 ***
 
-## **Corpus Notes**
+## **Notes and caveats**
 
 *   In our efforts to maintain the integrity of the corpus, we occasionally reconstructed the original text when only morphologically-segmented text was available. The aim is to provide a comprehensive linguistic resource that remains true to the original usage and syntactic structuring. For instance, consider these components in the NTU Corpus:
 

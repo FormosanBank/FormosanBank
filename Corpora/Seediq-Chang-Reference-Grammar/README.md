@@ -160,154 +160,10 @@ evidence pointer belong here, not in the attribute.
   other corpora leave out (`munekan`, elsewhere `mnekan`), and pronouns are
   hyphenated onto the preceding word (`sapah-mu`, elsewhere `sapah mu`). The
   significance of this is not currently clear. The standard tier keeps the book's spelling; it removes the morpheme hyphens, so the pronoun is joined to the word before it (`sapahmu`).
-* **One printed example can be several sentences.** Where the book prints optional material in parentheses or alternatives with a slash, each grammatical reading is its own sentence (ids `R275`, `R275-opt`, …), and its translation is adjusted where the printed one covers more than one reading. A reading identical to an earlier example is published once.
-* **One word per printed gloss.** Where the book prints one gloss under two words (e.g. `ani naq` 雖然, `kiya ka` 所以), the two are a single word element. A pronoun printed inside such a pair (`ani-ku naq`) is written as an infix, `ani<ku>naq` 雖然<我>.
-* **Infixes.** At the word tier, an infixed word is written with angle brackets, e.g. `b<n>eebu` glossed `打<完成貌>`. Sentences keep the book's hyphens (`b-n-eebu`). Where the book glosses each hyphen piece in a row (`m-un-ekan` AF-完成貌-吃), the morphemes follow the book.
-* **Unglossed words.** A word the book leaves unglossed has the gloss `<UNCLEAR/>`, e.g. the question particle `yee`, `lux` in `h-um-uwa-su lux`, sentence-initial `soka` (17 glosses: 8 words, 9 morphemes). In one gloss only part is unknown: `yee-su` is glossed `<UNCLEAR/>-你`. No sentence or word form, and no sentence translation, is `<UNCLEAR/>`.
-* **Where the published text corrects the book.** Everywhere else the original tier follows the printed page. These are the only places where the data departs from the print, and each carries a `notes` attribute: they are listed in the table under "In detail" below.
-* **A printing error left as printed.** The translation of 1c (p. 78) reads 煮飯的的人是我自己, with 的 doubled; its `notes` says so.
-* **Brackets and spacing.** Square and lenticular brackets (an embedded clause, or emphasis) are removed from the Seediq and the translations; the sentence's `notes` records what was bracketed. Parentheses are full-width in Chinese and ASCII in Seediq. Translations have no space beside a Latin-script name (`我相信pawan會打敗walis的。`).
-* **`da/di`** is published as `da`, with `di` as a variant FORM (`ver="alt"`).
+
+**The book's analytic apparatus is not in the text.** Square and lenticular brackets (embedded clauses, emphasis) are removed from the Seediq and the translations, and the sentence's `notes` records what was bracketed. Coindexation subscripts (`yakuᵢ`) and focus labels (受事焦點) are dropped and recorded nowhere; both are recoverable from the gloss.
+
 * **Review notes.** Notes from a 2026 proofreading of the whole corpus against the book are in `notes` attributes, attributed to the source the reviewer cited.
-
-#### In detail
-
-- **One W per printed gloss (POL-060).** Where the book prints one gloss under two
-  words, the two are a single W: `ani naq` 雖然, `ani sa` 但是, `kiya ka` 所以,
-  `ado ka` 如果, `bobo na` 之後, `di ge` 的時候, `daha ka` 跟, `asi ka` 應該/一定,
-  `saya ali` 今天, `uka ka` 沒有, `cubeyo hayan` 從前. Seven of these the book names
-  as single connectives in its own prose (printed pp. 138–146); the other four
-  follow the gloss's position on the page. These sentences have fewer W than
-  words, which V060 reports as SOFT by design.
-- **A pronoun inside such a pair is written as an infix.** The book prints
-  `ani-ku naq`, `ado-su ka` and `ado-ku ka`, with the pronoun between the two
-  words of the connective. The W is `ani<ku>naq` glossed `雖然<我>` (likewise
-  `ado<su>ka` 如果<你>, `ado<ku>ka` 如果<我>), split into M per POL-014. The
-  sentence-level FORM keeps the printed `ani-ku naq`, but the W's PHON runs the
-  words together (`anikunaq`). Each such W says so in its gloss's `notes`.
-- **Infixed words are written with angle brackets at the word tier (POL-014),
-  but the sentences keep the book's hyphens.** Where the book glosses a root
-  interrupted by an infix, e.g. `b-n-eebu` 打-完成貌, the word is `b<n>eebu`
-  glossed `打<完成貌>`, and its morphemes are the root `b-eebu` 打 and the infix
-  `-n-` 完成貌 (61 words, ruled 2026-10-15). Where the book instead glosses each
-  hyphen piece, e.g. `m-un-ekan` AF-完成貌-吃, the word follows the book: three
-  morphemes in a row, `m` AF + `un` 完成貌 + `ekan` 吃, and the printed gloss (18
-  words: `m-un-ekan`, `m-un-ekan-ku`, `m-un-usa`, `m-un-eyah`, `m-un-eyah-su`,
-  `k-um-ubunux`; ruled 2026-10-15).
-- **Morpheme FORMs carry no punctuation.** Quote marks, full-width punctuation and
-  ASCII `.,;:?!` are removed from morphemes; words and sentences keep theirs as
-  printed (ruled 2026-10-15).
-- **`laqi/sapah-mu` (R070) is read as `laqi-mu` / `sapah-mu`**: the book prints the
-  `-mu` (我的) once, on the second alternative, and it belongs to both (ruled
-  2026-10-16; `slash_scope.tsv`).
-- **A word the book leaves unglossed has the gloss `<UNCLEAR/>`**, e.g. the
-  question particle `yee`, `lux` in `h-um-uwa-su lux`, sentence-initial `soka`.
-  POL-061 inserted `?` for these; the maintainer ruled on 2026-10-17 that this
-  corpus's own `?` glosses become `<UNCLEAR/>` ("Our own POL-061 ? glosses become
-  <UNCLEAR/>" -> "Yes"). `build_xml.py` still uses `?` internally while splitting
-  glosses into morphemes, then `unclear_glosses()` replaces every W/M gloss piece
-  that is exactly `?` with the element, keeping the TRANSL's attributes:
-  `<TRANSL xml:lang="zho"><UNCLEAR/></TRANSL>` for a whole gloss (17: 9 M, 8 W),
-  and `<TRANSL …><UNCLEAR/>-你</TRANSL>` for the one partial gloss, `yee-su`
-  (R222). No sentence FORM, word FORM or sentence translation is `<UNCLEAR/>`.
-- **Where the published text corrects the book itself.** Everywhere else the
-  original tier follows the printed page: OCR and scrape errors were corrected
-  *toward* the print, in Hunter's scan review and in the 2026-10 student review,
-  whose every edit was checked against the scan. These are the only places where
-  what we publish departs from what the book prints. Each was ruled by the
-  maintainer (2026-10-14/15) and carries a `notes` attribute on the element it
-  changes:
-
-  | Book (printed page, example) | Book prints | Published | Why |
-  |---|---|---|---|
-  | p. 83, 2b | `mah-un` glossed 吃-PF | 喝-PF | the object is 水 'water'; a dictionary gives 喝 |
-  | pp. 119–120, 11b | 用-AF--我 | 用-AF-我 | the double hyphen is a typo |
-  | p. 140, 17a | `musa meepah` | `m-usa m-eepah` | hyphenated as in the book's other examples |
-  | p. 145, 25b | no translation | the translation of 23b/24b | the parallel examples |
-  | p. 147, 28a | `m-aha-ku` glossed AF-去-你 | AF-去-我 | `-ku` is first person, as in 29a–c |
-  | p. 147, 28a | `turima` glossed 洗 | 洗（AF） | to match 29a–c |
-  | pp. 147–148, 29a–c | `m-aha-ku` glossed AF-去-你 | AF-去-我 | `-ku` is first person |
-  | p. 108, 5 | one gloss, AF-在, under `m-enaq/gaga` | the `gaga` reading glossed 在 | the book glosses bare `gaga` 在 in 6b; the AF belongs to the `m-` of `m-enaq` |
-
-- **A known printing error is left as printed:** the translation of 1c (p. 78,
-  `yaku-naq (ka) pure ido`) reads 煮飯的的人是我自己, with 的 doubled; its `notes`
-  says so.
-- **Square and lenticular brackets are removed** from the Seediq and the
-  translations (the book uses them for an embedded clause or for emphasis; each
-  affected sentence's FORM `notes` records what was bracketed). **Parentheses are
-  standardized**: full-width in Chinese, ASCII in Seediq. **Translations carry no
-  spaces beside a Latin name** (`我相信pawan會打敗walis的。`), though the book sets
-  one; a space between two Latin words stays (`Awi Tone`).
-- **`da/di` is published as `da` with `di` as a variant FORM** (`ver="alt"`),
-  not as two sentences: both are glossed 起始貌 under one translation.
-- **`h-(um)-uwa` (R275) is published both ways**, `huwa` and `h-um-uwa`, as
-  separate sentences, because the optional infix changes the W/M tier.
-- **Notes from the 2026-10 student review** are in `notes` attributes, attributed
-  to the source the reviewer named (the book, a dictionary, the ILRDF online
-  grammar) or otherwise to the review.
-
-#### Import decisions
-
-**Starred parentheses are directional** (POL-017): `*(X)` marks X *obligatory*, so
-X is published without its star; `(*X)` marks X *forbidden*, so X is dropped. The
-two are not interchangeable — handling them alike is what published R173 and R174
-as the starred string `tena m-ekan ido ka yaku`.
-
-**Coindexation subscripts are dropped at intake and recorded nowhere.** The
-source uses a subscript `ᵢ` to tie a bound pronoun to its antecedent. That is the
-linguist's apparatus rather than Seediq spelling — the same class of thing as the
-focus labels (受事焦點) this build also leaves out, and like them it is
-recoverable from the morphosyntactic gloss. Keeping it made `yaku` and `yakuᵢ`
-distinct tokens in every count and attestation dictionary, and forced
-`add_phonology` to emit its unmapped-letter marker `*` (POL-003).
-
-**Alternation scope.** A slash alternates one word with one word:
-`laqi/heya`, `ini/uxe`. Chang braces the alternation when its scope is *wider*
-than one word — `{laqi gaga/temi}` alternates `laqi gaga` 'that child' with
-`temi`, not `gaga` with `temi`. The slash is the pivot: everything to its left
-inside the braces belongs to the first reading, everything to its right to the
-second. `brace_alternation()` raises rather than guesses on any shape it cannot
-read, because the book contains exactly one braced example and a second one
-deserves a human's eye. Where the parentheses enclose a starred alternation —
-`(saya/*ciga/*kusun)`, `(kusun/*ciga)` — they only mark the scope of the
-alternatives; the one surviving reading is obligatory, not optional, and yields a
-single sentence.
-
-**Optional whole words split the sentence** (POL-028). `x y (z)` changes the
-sentence's word inventory and the gloss alignment, so it becomes two `S` blocks:
-53 records are of this shape, each giving a pair. The split is made on the
-**original** tier, so `standardize.py` derives each reading's standard tier from
-its own original. Ids follow POL-028 — one base id per source record, further
-readings taking `-opt`, then `-opt3`, `-opt4`; there is deliberately no `-opt2`.
-The base id is the record's own id (`R275`, `R275-opt`; chapter 5 `C5-002`), so
-neither adding a record nor adding a reading renumbers anything else (POL-037,
-ruled 2026-10-16).
-
-**Optional material inside a word splits the sentence too**, because it changes
-the word's morpheme segmentation (POL-028 as amended 2026-10-15). R275 prints
-`h-(um)-uwa`: the bare reading `huwa` (怎樣) is one M, `h-um-uwa` (怎樣-AF) is
-two, so they are separate `S` blocks, bare first as for `(ka)`.
-`optional_morpheme_options()` drops the optional morpheme's gloss from the bare
-reading by finding it among the full reading's M, and raises when optional
-letters are not a whole morpheme, since those would be a variant instead.
-Combined with that record's `kes-un/m-esa`, R275 gives four sentences
-(`R275` … `R275-opt4`), all with the one printed translation.
-
-**Two readings of one word are a variant, not two sentences** (POL-028). The
-book's `da/di` (起始貌, R181–R185, printed p. 104) gives one S each: `da` is
-the base and `di` a `FORM kindOf="original" ver="alt"` on the S, the W and the
-M, and `standardize.py` derives the standard-tier variant from it. Which slashes
-are variants is a ruling about the source, kept per record in
-`CodeAndDocs/word_variants.tsv`; every other slash gives one S per option
-(POL-027).
-
-**Each distinct sentence is published once.** Chang reuses examples across
-chapters, so the same sentence arrives from several source records. The first is
-kept; every merged record's locator rides along in that sentence's `S/@source`,
-so nothing about provenance is lost; and where a merged copy carried a different
-Mandarin rendering — an aspect 了, a progressive 在, a cleft 是 — that rendering
-is kept as a `TRANSL[@ver="alt"]`. All 15 merges are listed in
-`CodeAndDocs/deduplicated_variants.tsv` with what differed (POL-051).
 
 ## Reproduction and processing
 
@@ -653,7 +509,7 @@ Findings from the 2026-09-11 dev-repo audit, with their status:
   already carried by the morphosyntactic gloss (`-un` PF, `-an` LF, `s-`/`su-` RF),
   so nothing is lost.
 - ~~Render infix glosses inline, and reconcile `maha-ku`~~ — **both closed
-  2026-09-11.** Infix glosses are now written inline (`AF<完成貌>-吃` then; since 2026-10-15 `打<完成貌>`, see Notes and caveats), taking
+  2026-09-11.** Infix glosses are now written inline (`AF<完成貌>-吃` then; since 2026-10-15 `打<完成貌>`), taking
   V153 from 26 findings to 8.
 
   The `maha-ku` half was **withdrawn as a mistaken finding**. An earlier audit
