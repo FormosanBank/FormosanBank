@@ -18,8 +18,8 @@ analyses follow an expert transcription of the thesis by Madeline Boese
 
 Two TEXT files under `XML/Sakizaya/` contain 686 S: 244 numbered-example
 readings, six footnote/prose examples and 436 affix entries (432 main-table rows
-and 4 rows of the late summary tables), with 1,797 W, 2,649 M, 5,132 original
-and 5,132 standard FORM, 5,132 standard PHON, 738 S translations and 3,138
+and 4 rows of the late summary tables), with 1,797 W, 2,651 M, 5,134 original
+and 5,134 standard FORM, 5,134 standard PHON, 738 S translations and 3,138
 untiered W/M source glosses. Each affix entry is the printed word, segmented
 into its affix and root, with its definition; its word and morphemes carry no
 gloss. No source-supplied phonetic transcription is included.
@@ -68,6 +68,11 @@ Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
   whole but glosses them in two pieces (`m-我們.屬格`, `m-我.屬格`); their
   word-by-word gloss (W) is written `m-ita` / `m-aku`, with the morphemes `m` +
   `ita` / `aku`. The sentence keeps the printed `mita` / `maku`.
+- **The circumfix ka-si-…-an is one morpheme, kasi-an.** The source lists
+  `ka-si-...-an` as a circumfix. FormosanBank convention is to treat circumfixes
+  as a single morpheme (but printed as with a hyphen where the inserted word
+  goes), so the morpheme layer has a single M for this circumfix, spelled
+  `kasi-an`.
 
 ## Reproduction and processing
 
@@ -106,9 +111,12 @@ only when every step has succeeded.
    late rows, each checked against its inventory row); applies the corrections
    in `source_data/ruled_corrections.tsv` (each row names the value it expects,
    so a changed input stops the build); writes `mita` and `maku` as `m-ita` and
-   `m-aku`, two morphemes each; puts the table-row morphemes in word order with
-   circumfixes written `X-Y`; and removes the table rows' word and morpheme
-   glosses, so each row keeps its segmented word and its definition.
+   `m-aku`, two morphemes each; ends each example sentence and translation that
+   the source leaves unpunctuated with a period (POL-063); puts the table-row
+   morphemes in word order with circumfixes written `X-Y`, splitting a root
+   printed with a hyphen into one morpheme per piece; and removes the table
+   rows' word and morpheme glosses, so each row keeps its segmented word and its
+   definition.
 4. `QC/cleaning/clean_xml.py`, with its report kept out of `XML/` (POL-033).
 5. `QC/utilities/standardize.py --remove_accents --segmented-without-m-tier`:
    the source already spells in the standard orthography, so no conversion

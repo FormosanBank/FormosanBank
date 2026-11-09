@@ -260,6 +260,13 @@ def normalise_table_morphemes(xml_root: Path) -> None:
     its root here; a prefix and a circumfix (whose first part opens the word) stay first.
     Hyphens are dropped from every morpheme except a circumfix's single hyphen at the
     root's place, and a circumfix printed with ... (ka-...-an) is written ka-an.
+
+    A hyphen inside the root column marks a morpheme boundary: the root becomes one
+    morpheme per piece (rows 261 and 308, the only two; maintainer, 2026-11-09, cards
+    s153-r9-261 "So 3 morphemes total: kala-pa-bekbek." and s153-r9-308 "Again, 3 total
+    morphemes. Should be segmented as mi-buting-ay at both W and M levels."). The word's
+    own FORM is corrected to match in ruled_corrections.tsv; the build stops if the two
+    disagree.
     """
     path = _xml_paths(xml_root)["table_rows"]
     tree = ET.parse(path)
@@ -270,25 +277,71 @@ def normalise_table_morphemes(xml_root: Path) -> None:
             raise ValueError(f"Table row without exactly two morphemes: {sentence.get('id')}")
         affix_form = morphs[0].find("FORM[@kindOf='original']")
         root_form = morphs[1].find("FORM[@kindOf='original']")
+        pieces = root_form.text.strip("-").split("-")
+        roots = [morphs[1]]
+        for piece in pieces[1:]:
+            extra = copy.deepcopy(morphs[1])
+            extra.find("FORM[@kindOf='original']").text = piece
+            roots.append(extra)
+        root_form.text = pieces[0]
         text = affix_form.text
         if "..." in text:
             before, after = text.split("...")
             affix_form.text = before.rstrip("-").replace("-", "") + "-" + after.lstrip("-").replace("-", "")
-            ordered = morphs
+            ordered = [morphs[0], *roots]
         elif text.endswith("-") and not text.startswith("-"):
             affix_form.text = text.replace("-", "")
-            ordered = morphs
+            ordered = [morphs[0], *roots]
         elif text.startswith("-") and not text.endswith("-"):
             affix_form.text = text.replace("-", "")
-            ordered = [morphs[1], morphs[0]]
+            ordered = [*roots, morphs[0]]
         else:
             raise ValueError(f"Unexpected affix shape {text!r}: {sentence.get('id')}")
-        root_form.text = root_form.text.replace("-", "")
+        if len(roots) > 1:
+            joined = "-".join(m.find("FORM[@kindOf='original']").text for m in ordered)
+            if word.find("FORM[@kindOf='original']").text != joined:
+                raise ValueError(f"Split root without a matching word FORM ({joined!r}): {sentence.get('id')}")
         for morph in morphs:
             word.remove(morph)
         for index, morph in enumerate(ordered, 1):
             morph.set("id", f"{word.get('id')}M{index}")
             word.append(morph)
+    _write(tree, path)
+
+
+SENTENCE_END = (".", "?", "!")
+CHINESE_END = ("。", "？", "！")
+
+
+def add_final_marks(xml_root: Path) -> None:
+    """POL-063: each example sentence and each of its translations ends in a final mark.
+
+    Where the source prints none, the sentence gets "." ("!" when its translation ends
+    in "！", so the two match) and each Chinese translation gets "。". The table rows are a
+    word list and keep none (maintainer, 2026-11-09, card s153-r9-pol063: "Apply now (as
+    shown)", 14 examples: 8 sentences, 12 translations).
+    """
+    path = _xml_paths(xml_root)["examples"]
+    tree = ET.parse(path)
+    sentences, forms, translations = set(), 0, 0
+    for sentence in tree.getroot().findall("S"):
+        form = sentence.find("FORM[@kindOf='original']")
+        transl = sentence.findall("TRANSL")
+        primary = next(t for t in transl if t.get("ver") is None)
+        if len(form) or any(len(t) or t.get(XML_LANG) != "zho" for t in transl):
+            raise ValueError(f"Final mark next to markup, or a non-Chinese translation: {sentence.get('id')}")
+        if not form.text.rstrip().endswith(SENTENCE_END):
+            form.text = form.text.rstrip() + ("!" if primary.text.rstrip().endswith("！") else ".")
+            sentences.add(sentence.get("id"))
+            forms += 1
+        for t in transl:
+            if not t.text.rstrip().endswith(CHINESE_END):
+                t.text = t.text.rstrip() + "。"
+                sentences.add(sentence.get("id"))
+                translations += 1
+    if (len(sentences), forms, translations) != (14, 8, 12):
+        raise ValueError(f"POL-063: expected 14 examples (8 sentences, 12 translations), found "
+                         f"{len(sentences)} ({forms}, {translations})")
     _write(tree, path)
 
 
@@ -377,6 +430,7 @@ if __name__ == "__main__":
         add_ruled_records(args.xml_root)
         apply_ruled_corrections(args.xml_root)
         segment_m_words(args.xml_root)
+        add_final_marks(args.xml_root)
         normalise_table_morphemes(args.xml_root)
         strip_table_glosses(args.xml_root)
     else:

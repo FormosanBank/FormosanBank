@@ -124,9 +124,9 @@ class ReviewedSourceTests(unittest.TestCase):
         for suffix in ("009A", "009B", "010", "014"):
             self.assertEqual(self.nodes[f"AKIW_SZY_2012_FN_{suffix}"].findall("W"), [])
         self.assertEqual(form(self.nodes["AKIW_SZY_2012_FN_010"]),
-                         "kaku kusa balakiy-ay i niyazu'")
+                         "kaku kusa balakiy-ay i niyazu'.")  # final period: POL-063
         self.assertEqual(form(self.nodes["AKIW_SZY_2012_FN_010"], "standard"),
-                         "kaku kusa balakiyay i niyazu'")
+                         "kaku kusa balakiyay i niyazu'.")
         # Scan p. 39, footnote 15: sa-pa- is the single glossed 工焦 complex.
         sentence = self.nodes["AKIW_SZY_2012_FN_015"]
         self.assertEqual(form(sentence), "sa-pa-lamel ni ina tu buting ku banlay.")
@@ -136,8 +136,8 @@ class ReviewedSourceTests(unittest.TestCase):
 
     def test_page_spanning_prose_example_keeps_all_four_glosses(self):
         sentence = self.nodes["AKIW_SZY_2012_P130_PROSE"]
-        self.assertEqual(form(sentence), "tayza kaku i Taypak")
-        self.assertEqual(sentence.findtext("TRANSL"), "我去臺北")
+        self.assertEqual(form(sentence), "tayza kaku i Taypak.")  # final marks: POL-063
+        self.assertEqual(sentence.findtext("TRANSL"), "我去臺北。")
         self.assertEqual([w.findtext("TRANSL") for w in sentence.findall("W")],
                          ["去", "我", "處所格", "臺北"])
         self.assertEqual(sentence.findall(".//M"), [])
@@ -145,10 +145,11 @@ class ReviewedSourceTests(unittest.TestCase):
     def test_author_translation_alternatives_do_not_replace_expert_readings(self):
         # Scan pp. 130-131: footnotes 98-100 and the full 100a prose paraphrase.
         readings = {
-            "099A": ("春天的天氣很好。", "春天天氣好"),
-            "099B": ("樹在春天開花。", "樹的花在春天的時候開"),
-            "100A": ("我每天清晨運動。", "我每天清晨會運動身體"),
-            "100B": ("我都在清晨時刻起床。", "我清晨的時候起床得很早"),
+            # The alternatives' final 。 is added by the build (POL-063, card s153-r9-pol063).
+            "099A": ("春天的天氣很好。", "春天天氣好。"),
+            "099B": ("樹在春天開花。", "樹的花在春天的時候開。"),
+            "100A": ("我每天清晨運動。", "我每天清晨會運動身體。"),
+            "100B": ("我都在清晨時刻起床。", "我清晨的時候起床得很早。"),
         }
         for suffix, (primary, alternative) in readings.items():
             sentence = self.nodes[f"AKIW_SZY_2012_EX_{suffix}"]
@@ -208,7 +209,10 @@ class ReviewedSourceTests(unittest.TestCase):
             with self.subTest(row=sentence.get("id")):
                 self.assertTrue(sentence.findtext("TRANSL"))
                 self.assertEqual(len(sentence.findall("W")), 1)
-                self.assertEqual(len(sentence.find("W").findall("M")), 2)
+                self.assertEqual(len(sentence.find("W").findall("M")),
+                                 3 if sentence.get("id")[-3:] in ("261", "308") else 2)
+                # Table rows are a word list: no final mark (POL-063).
+                self.assertFalse(form(sentence).endswith((".", "?", "!")))
 
 
     def test_maintainer_rulings_2026_11(self):
@@ -244,7 +248,29 @@ class ReviewedSourceTests(unittest.TestCase):
         self.assertEqual([form(m) for m in word.findall("M")], ["lekal", "a"])
         self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_348W1M1"]), "ka-an")
         table = [m for root in self.roots for m in root.iter("M") if "TABLE_ROW" in m.get("id")]
-        self.assertEqual(len(table), 872)
+        self.assertEqual(len(table), 874)
+        # A hyphen inside the root column splits it (2026-11-09, cards s153-r9-261, s153-r9-308).
+        for row, word_form, morphs in (("261", "kala-pa-bekbek", ["kala", "pa", "bekbek"]),
+                                       ("308", "mi-buting-ay", ["mi", "buting", "ay"])):
+            sentence = self.nodes[f"AKIW_SZY_2012_TABLE_ROW_{row}"]
+            word = sentence.find("W")
+            self.assertEqual(form(word), word_form)
+            self.assertEqual([form(m) for m in word.findall("M")], morphs)
+            self.assertEqual([m.findall("TRANSL") for m in word.findall("M")], [[], [], []])
+        self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_261"]), "kalapa-bekbek")
+        self.assertEqual(form(self.nodes["AKIW_SZY_2012_TABLE_ROW_308"]), "mibuting-ay")
+        # POL-063 (2026-11-09, card s153-r9-pol063: "Apply now (as shown)").
+        fn9 = self.nodes["AKIW_SZY_2012_FN_009A"]
+        self.assertEqual((form(fn9), form(fn9, "standard"), fn9.findtext("TRANSL")),
+                         ("u singsi kaku.", "u singsi kaku.", "我是老師。"))
+        self.assertEqual(form(self.nodes["AKIW_SZY_2012_EX_114A"]), "ka-tayza mi-anin tu silaw!")
+        self.assertEqual([t.text for t in self.nodes["AKIW_SZY_2012_EX_099A"].findall("TRANSL")],
+                         ["春天的天氣很好。", "春天天氣好。"])
+        examples = [s for root in self.roots for s in root.findall("S") if "TABLE_ROW" not in s.get("id")]
+        for sentence in examples:
+            self.assertTrue(form(sentence).endswith((".", "?", "!")), sentence.get("id"))
+            for transl in sentence.findall("TRANSL"):
+                self.assertTrue(transl.text.endswith(("。", "？", "！")), sentence.get("id"))
         self.assertTrue(all("-" not in form(m) or re.fullmatch(r"[^-]+-[^-]+", form(m)) for m in table))
 
 
