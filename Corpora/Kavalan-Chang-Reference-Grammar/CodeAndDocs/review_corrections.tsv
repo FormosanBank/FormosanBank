@@ -1,0 +1,71 @@
+unit_id	field	was	now	reviewer_note
+p039l-e002	words	"[""yau"", ""uzis-an"", ""m-uzis""]"	"[""yau"", ""uzisan"", ""muzis""]"	!!! I changed it to how it is written in the book, but this doesn't seem to be a properly glossed example. Earlier in the same example we do have uzis-an, with -an denoting the place where something happens or the undergoer of the action. In the example below, usizan is written together and glossed as 浴室 (bathroom - the place where the bath happens, I suppose). muzis is actually the actor voice form but it is not annotated in the example.
+p039l-e002	glosses	"[""在"", ""浴室"", ""AF-洗澡""]"	"[""在"", ""浴室"", ""洗澡""]"	!!! I changed it to how it is written in the book, but this doesn't seem to be a properly glossed example. Earlier in the same example we do have uzis-an, with -an denoting the place where something happens or the undergoer of the action. In the example below, usizan is written together and glossed as 浴室 (bathroom - the place where the bath happens, I suppose). muzis is actually the actor voice form but it is not annotated in the example.
+p039r-e002	words	"[""si-kaw-kawma"", ""tama-ku""]"	"[""sikawkawma"", ""tama-ku""]"	It's si-kaw-kawma earlier in the example to show the reduplication, but the final glossed example doesn't have the hyphens.
+p040l-e001	words	"[""nianiana"", ""qan=pa=iku""]"	"[""nianiana"", ""qan=an=ku""]"	changes from the handwritten annotation
+p041l-e001	translation	=utay 在打 tuyaw。	utay 在打 tuyaw。	the second translation (#tuyaw 在打 utay) is wrong. this is described in the text. the = sign was there to indicate that this is the correct translation, # marks the wrong one.
+p045r-e002	words	"[""supaR-an-na"", ""tu"", ""babar-an-ku=ti=isu""]"	"[""spaR-an-na"", ""tu"", ""babar-an-ku=ti=isu""]"	
+p049l-e001	glosses	"[""處所格-豐濱-處所格=動貌=我""]"	"[""處所格-豐濱=動貌=我""]"	"ta...an is a circumfix (explained in the body of the text). The AI that was used for OCR seems to have spotted that and changed the annotation. 
+(My personal opinion: keep the ""wrong"" version, it matches p049l-e003 and makes more sense)"
+p050l-e001	words	"[""yau"", ""kin-'siq"", ""tazungan"", ""ti-utay-an""]"	"[""yau"", ""paqenanum"", ""tazungan"", ""ti-utay-an""]"	!!! this is from a handwritten correction. There is no correction for the glossing though. it can't be the same since there is a dash.
+p050l-e001	glosses	"[""有"", ""類別詞-一"", ""女人"", ""類別詞-人名-處所格""]"	"[""有"", ""?"", ""女人"", ""類別詞-人名-處所格""]"	!!! this is from a handwritten correction. There is no correction for the glossing though. it can't be the same since there is a dash.
+p050r-e002	glosses	"[""人"", ""這/那""]"	"[""人"", ""這""]"	with razat 'nay the second box should be 那
+p050r-e003	glosses	"[""這/那"", ""關係詞"", ""人""]"	"[""這"", ""關係詞"", ""人""]"	with 'nay ay razat the first box should be 那. No period in the free translation in this one unlike the previous ones, for whatever reason
+p050r-e003	translation	這個人。	這個人	with 'nay ay razat the first box should be 那. No period in the free translation in this one unlike the previous ones, for whatever reason
+p051l-e001	glosses	"[""這時候"", ""熱-AF"", ""處所-外面""]"	"[""這時候"", ""出太陽-AF"", ""處所-外面""]"	from a handwritten annotation
+p051l-e001	translation	這時候外面很熱。	這時候外面出太陽。	from a handwritten annotation
+p051l-e002	glosses	"[""那時候"", ""累""]"	"[""以前"", ""累""]"	"masang is annotated with 以前 manually - probably indicating that 以前 is a more accurate translation than 那時候. 那時候 itself is then annotated with nawsiahap, presumably a more direct translation of 那時候. The page also has an annotation of ""kainai - 很久以前"" which would likely be another alternative for a meaning of a more distant past."
+p051l-e002	translation	那時候生活很艱苦。	以前生活很艱苦。	"masang is annotated with 以前 manually - probably indicating that 以前 is a more accurate translation than 那時候. 那時候 itself is then annotated with nawsiahap, presumably a more direct translation of 那時候. The page also has an annotation of ""kainai - 很久以前"" which would likely be another alternative for a meaning of a more distant past."
+p051l-e003	glosses	"[""熱-AF"", ""處所-外面"", ""這時候""]"	"[""出太陽-AF"", ""處所-外面"", ""這時候""]"	Translation and gloss corrected in accordance with example 4a on the same page.
+p051l-e003	translation	這時候外面很熱。	這時候外面出太陽。	Translation and gloss corrected in accordance with example 4a on the same page.
+p051l-e004	glosses	"[""累"", ""那時候""]"	"[""累"", ""以前""]"	Translation and gloss corrected in accordance with annotation of 4b on same page.
+p051l-e004	translation	那時候生活很艱苦。	以前生活很艱苦。	Translation and gloss corrected in accordance with annotation of 4b on same page.
+p058l-e002	glosses	"[""打-AF"", ""類別詞-人名"", ""我""]"	"[""打-AF-"", ""類別詞-人名"", ""我""]"	Unsure what the purpose of the two dashes is (showing an infix)? But this is how it is written in the book
+p058l-e003	glosses	"[""吃-AF"", ""類別詞-人名"", ""我（處所）""]"	"[""吃-AF-"", ""類別詞-人名"", ""我（處所）""]"	"Trailing dash as in p058l-e002. Presumably indicates an infix? 
+Also double check parenthesis type, should probably be consistent across all examples （）vs. ()"
+p058l-e004	glosses	"[""吃-AF"", ""類別詞-人名"", ""我（處所）""]"	"[""吃-AF-"", ""類別詞-人名"", ""我（處所）""]"	Trailing dash as in p058l-e002. Presumably indicates an infix?
+p058r-e001	glosses	"[""去=未來式=我"", ""你（終點）"", ""吃-AF"", ""晚餐""]"	"[""去=未來式=我"", ""你（終點）"", ""吃-AF-"", ""晚餐""]"	Trailing dash as in p058l-e002. Presumably indicates an infix?
+p060l-e001	glosses	"[""打-AF"", ""受格"", ""小孩"", ""主格"", ""老人""]"	"[""打-AF-"", ""受格"", ""小孩"", ""主格"", ""老人""]"	Trailing dash as before.
+p062r-e003	glosses	"[""打-AF"", ""受格"", ""小孩"", ""主格"", ""老人"", ""現在""]"	"[""打-AF-"", ""受格"", ""小孩"", ""主格"", ""老人"", ""現在""]"	trailing hyphen as before
+p067r-e003	words	"[""q-em-an"", ""tu"", ""'may"", ""ya"", ""razat,"", ""q-em-an"", ""tu"", ""suway"", ""ya"", ""qabaw""]"	"[""q-em-an"", ""tu"", ""'may"", ""ya"", ""razat"", ""q-em-an"", ""tu"", ""suway"", ""ya"", ""qabaw""]"	Comma wasn't there in the original (although I think there should actually be one?). Two trailing hyphens
+p067r-e003	glosses	"[""吃-AF"", ""受格"", ""飯"", ""主格"", ""人"", ""吃-AF"", ""受格"", ""草"", ""主格"", ""牛""]"	"[""吃-AF-"", ""受格"", ""飯"", ""主格"", ""人"", ""吃-AF-"", ""受格"", ""草"", ""主格"", ""牛""]"	Comma wasn't there in the original (although I think there should actually be one?). Two trailing hyphens
+p072r-e003	glosses	"[""打-AF"", ""類別詞-人名"", ""受格"", ""小孩""]"	"[""打-AF-"", ""類別詞-人名"", ""受格"", ""小孩""]"	Both translations are valid. Note the trailing hyphen.
+p072r-e004	glosses	"[""吃-AF"", ""類別詞-人名"", ""受格"", ""酒""]"	"[""吃-AF-"", ""類別詞-人名"", ""受格"", ""酒""]"	Both translations are valid. Note the trailing hyphen.
+p073l-e001	glosses	"[""在"", ""打-AF"", ""類別詞-人名"", ""受格"", ""小孩""]"	"[""在"", ""打-AF-"", ""類別詞-人名"", ""受格"", ""小孩""]"	Note the trailing hyphen.
+p073l-e002	glosses	"[""在"", ""吃-AF"", ""類別詞-人名"", ""受格"", ""酒""]"	"[""在"", ""吃-AF-"", ""類別詞-人名"", ""受格"", ""酒""]"	Note the trailing hyphen.
+p073l-e006	glosses	"[""吃-AF"", ""類別詞-人名"", ""受格"", ""酒"", ""昨天""]"	"[""吃-AF-"", ""類別詞-人名"", ""受格"", ""酒"", ""昨天""]"	Note the trailing hyphen.
+p076l-e003	words	"[""te-baRi=ti"", ""a"", ""talas-niq""]"	"[""te-baRi=ti"", ""a"", ""lalas-niq""]"	Original was ralas, in handwritten annotation looks like lalas. talas is definitely incorrect. Dictionary says 'dadas' for 檳榔. The change in the free translation is also from a handwritten annotation.
+p076l-e003	translation	我們的檳榔熟了。	我們的檳榔紅了。	Original was ralas, in handwritten annotation looks like lalas. talas is definitely incorrect. Dictionary says 'dadas' for 檳榔. The change in the free translation is also from a handwritten annotation.
+p077l-e003	glosses	"[""打-AF"", ""受格"", ""小孩"", ""主格"", ""老人""]"	"[""打-AF-"", ""受格"", ""小孩"", ""主格"", ""老人""]"	Trailing hyphen.
+p077r-e004	glosses	"[""在"", ""吃-AF"", ""類別詞-人名"", ""受格"", ""酒""]"	"[""在"", ""吃-AF-"", ""類別詞-人名"", ""受格"", ""酒""]"	Trailing hyphen
+p078l-e002	glosses	"[""持續貌-說"", ""父親-我的""]"	"[""-持續貌-說"", ""父親-我的""]"	The additional hyphen in the beginning is printed this way in the book.
+p080l-e002	words	"[""qan-ika"", ""ya"", ""Raaq""]"	"[""qan-ika"", ""(ya)"", ""Raaq""]"	Both translations are valid.
+p080l-e003	words	"[""'etung-ika"", ""ya"", ""tenayan""]"	"[""'etung-ika"", ""(ya)"", ""tenayan""]"	Both translations are valid.
+p081l-e001	words	"[""mai"", ""tu"", ""qarelan""]"	"[""mai"", ""tu"", ""qalelan""]"	Correction from a handwritten annotation.
+p085l-e001	glosses	"[""誰"", ""打-AF"", ""受格"", ""小孩""]"	"[""誰"", ""打-AF-"", ""受格"", ""小孩""]"	trailing hyphen
+p085l-e003	glosses	"[""打-AF"", ""受格"", ""誰"", ""主格"", ""小孩""]"	"[""打-AF-"", ""受格"", ""誰"", ""主格"", ""小孩""]"	trailing dash presumably indicates infix
+p086r-e003	glosses	"[""什麼-你"", ""掉-AF"", ""關係詞""]"	"[""什麼-你"", ""掉-AF-"", ""關係詞""]"	trailing dash presumably because of infix
+p087l-e001	glosses	"[""看到-AF"", ""你"", ""受格"", ""什麼""]"	"[""看到-AF-"", ""你"", ""受格"", ""什麼""]"	trailing dash infix
+p087r-e003	glosses	"[""哪裡"", ""家-你的""]"	"[""哪裡"", ""家-你""]"	
+p088l-e002	glosses	"[""去哪裡=未來式=你""]"	"[""去哪裡-未來式=你""]"	The Kavalan is separated with a = (quni=a) but the gloss is separated by a dash in the book
+p088l-e003	glosses	"[""從-苗栗=我"", ""AF-來""]"	"[""從-苗栗-我"", ""AF-來""]"	dash/equals sign inconsistency printed in the book
+p091l-e002	glosses	"[""為什麼=你"", ""打-AF"", ""受格"", ""小孩""]"	"[""為什麼=你"", ""打-AF-"", ""受格"", ""小孩""]"	trailing hyphen
+p094l-e002	words	"[""mwaza"", ""'may"", ""[qan-an"", ""na"", ""sunis]""]"	"[""mwaza"", ""'may"", ""【qan-an"", ""na"", ""sunis】""]"	Changed the bracket style to match the book.
+p094l-e003	words	"[""mazmum"", ""sunis"", ""[q-em-an"", ""tu"", ""'may]""]"	"[""mazmum"", ""sunis"", ""【q-em-an"", ""tu"", ""'may】""]"	Changed the bracket style to match the book. The hyphenation mismatch is printed this way in the book.
+p096r-e001	glosses	"[""雖然"", ""老-動貌"", ""他"", ""那邊-仍然"", ""處所格-山上-處所格"", ""工作""]"	"[""雖然"", ""老-動貌"", ""他"", ""那邊-仍然"", ""處所-山上-處所"", ""工作""]"	While I made the change to match the book, perhaps double check whether this is consistent with other examples. 處所 could be shorthand for 處所格. Compare p082r-e005 where ta is in a separate box and both 'ta' and 'an' are annotated with the full 處所格
+p098r-e003	glosses	"[""小-你的"", ""SI"", ""AF-坐"", ""受格"", ""飛機"", ""疑問助詞""]"	"[""-你的"", ""SI"", ""AF-坐"", ""受格"", ""飛機"", ""疑問助詞""]"	There is a white blank in the book, not the character 小. It should be something like 小 or 小時候, though, based on the translation and other glosses.
+p099l-e003	words	"[""pun=ta"", ""q-em-an"", ""tu"", ""'may,"", ""awka=ita"", ""q-em-an"", ""tu"", ""Raaq""]"	"[""pun=ita"", ""q-em-an"", ""tu"", ""'may,"", ""awka=ita"", ""q-em-an"", ""tu"", ""Raaq""]"	Correction from a handwritten insertion.
+p100r-e002	glosses	"[""玩=要=我"", ""處所格-家-你"", ""今天晚上""]"	"[""玩=要=我"", ""處所格-家--你"", ""今天晚上""]"	"!!! Matches the book, but a couple of notes. This is a song that may have some issues in the glossing 
+1. The double hyphen is printed this way in the book. I am guessing there should be another 處所格 in between there (like ta-...-an in p098l-e003) 
+2. Some inconsistencies in the use of = and -. 'ta=' is glossed as '處所格-'. '-su' might be '=su' based on other examples?  
+3. the comma at the end of the free translation is only there because this is a line in a song. might want to remove it"
+p101l-e005	words	"[""tantanur-an-ku""]"	"[""tantanuz-an-ku""]"	"1. Correction from a handwritten annotation. 
+2. This is a line in a song, the comma in the free translation could be removed."
+p101r-e001	words	"[""sin-sinngut-an-ku"", ""qena-rapan-na""]"	"[""sin-sinngut-an-ku"", ""qena-zapan-na""]"	"1. Correction from a handwritten annotation. 
+2. This is a line in a song, the comma in the free translation could be removed.  
+3. Hyphenation mismatch is printed this way in the book."
+p101r-e002	words	"[""nianu"", ""su-sukir"", ""timaikuan""]"	"[""nianu"", ""se-sumkir"", ""timaikuan""]"	"1. Correction from a handwritten annotation. 
+2. This is a line in a song, the comma in the free translation could be removed.  
+3. Hyphenation mismatch is printed this way in the book. 
+4. I am certain about the su->se change, but sukir->sumkir is not 100% clear in the book. It looks like it's supposed to be a replacement, with sumkir meaning 回答. The dictionary only has sumkil (回應), but not sukir or sumkir."
+p103l-e005	glosses	"[""類別詞-多少"", ""主格"", ""小孩-你的""]"	"[""類別詞-多少"", ""主格"", ""小孩=你的""]"	Changed - to = to match the book, but this is probably a misprint either in the Kavalan or the gloss.
