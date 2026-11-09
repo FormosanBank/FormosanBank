@@ -4,9 +4,13 @@ Run this before porting a corpus from its dev repo into Corpora/ (and
 again on the ported copy). It mechanizes the port-blocking problems that
 recent audits kept finding by hand (2026-08 audit season):
 
-  P001 HARD  git-tracked content under a Private/ directory
-             (the "Private:Source gitignore hazard": private source
-             material that would be published by a push)
+  P001 HARD  private material in the ported corpus: a directory whose name
+             begins with "Private" inside a corpus under Corpora/ (or given
+             --source), or, with --source <dev repo>, a file whose bytes equal
+             a non-empty file under the dev repo's Private* directories.
+             WARN when a ported file only shares its name with one. A dev
+             repo's own Private/ is not checked: it may hold anything, and
+             only what is ported matters.
   P002 HARD  TEXT/@xml:lang not a known Formosan ISO 639-3 code
   P003 HARD  TEXT/@dialect not canonical for the language per dialects.csv
              ("unknown" is allowed; missing dialect is reported)
@@ -24,13 +28,15 @@ Exit 1 iff any HARD finding. WARNs need human judgment and never block.
 
 Usage:
     python QC/validation/validate_port_readiness.py --corpus_path <dir>
-        [--repo-root <FormosanBank checkout>]
+        [--repo-root <FormosanBank checkout>] [--source <dev repo>]
 
 <dir> is the corpus root (the directory holding XML/ and CodeAndDocs/),
-either a dev repo or Corpora/<Name>.
+either a dev repo or Corpora/<Name>. Pass --source with the dev repo when
+checking the ported copy, so P001 can compare against its Private* files.
 """
 import argparse
 import csv
+import hashlib
 import re
 import subprocess
 import sys
@@ -76,19 +82,60 @@ def _xml_files(corpus_path: Path) -> list[Path]:
     return sorted(p for p in root.rglob("*.xml"))
 
 
-def check_private_tracked(corpus_path: Path, report: Report) -> None:
-    """P001: git-tracked files under any Private/ path segment."""
-    proc = subprocess.run(
-        ["git", "ls-files", "--", str(corpus_path)],
-        capture_output=True, text=True, cwd=corpus_path if corpus_path.is_dir() else None,
-    )
-    if proc.returncode != 0:
-        report.add("P001", "WARN",
-                   "not a git checkout; Private/ tracking not checkable here")
+def _is_private_name(name: str) -> bool:
+    # Private/, but also Private:Source/, Private-data/ and the like.
+    return name.lower().startswith("private")
+
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1 << 20), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def check_private_not_ported(corpus_path: Path, source: Path | None,
+                             report: Report) -> None:
+    """P001: nothing private is in the ported corpus.
+
+    Maintainer, 2026-11-09: "we should remove that gate. Instead, we should
+    gate the port itself, ensuring that the Private folder and its content
+    isn't ported." A dev repo's own Private/ is therefore not examined; the
+    ported copy is.
+    """
+    ported = source is not None or corpus_path.parent.name == "Corpora"
+    if not ported:
         return
-    for line in proc.stdout.splitlines():
-        if any(part.lower() == "private" for part in Path(line).parts):
-            report.add("P001", "HARD", f"git-tracked file under Private/: {line}")
+    for path in sorted(corpus_path.rglob("*")):
+        if path.is_dir() and _is_private_name(path.name):
+            report.add("P001", "HARD",
+                       f"private directory in the ported corpus: "
+                       f"{path.relative_to(corpus_path)}")
+    if source is None:
+        return
+    private_files = [f for d in sorted(source.iterdir())
+                     if d.is_dir() and _is_private_name(d.name)
+                     for f in sorted(d.rglob("*"))
+                     if f.is_file() and f.stat().st_size > 0]   # an empty file carries no content
+    if not private_files:
+        return
+    by_hash = {_sha256(f): f for f in private_files}
+    by_name = {f.name: f for f in private_files}
+    for path in sorted(corpus_path.rglob("*")):
+        if not path.is_file():
+            continue
+        relative = path.relative_to(corpus_path)
+        match = by_hash.get(_sha256(path)) if path.stat().st_size > 0 else None
+        if match is not None:
+            report.add("P001", "HARD",
+                       f"{relative} has the same content as "
+                       f"{match.relative_to(source)} in the dev repo")
+        elif path.name in by_name:
+            report.add("P001", "WARN",
+                       f"{relative} shares its name with "
+                       f"{by_name[path.name].relative_to(source)} (different "
+                       f"content); check it is not private")
 
 
 def check_language_and_dialect(corpus_path: Path, report: Report) -> None:
@@ -238,14 +285,22 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--repo-root", type=Path, default=_HERE.parents[2],
                         help="FormosanBank checkout for pin/audio checks "
                              "(default: this one)")
+    parser.add_argument("--source", type=Path,
+                        help="the dev repo the corpus was ported from: P001 "
+                             "then checks that none of its Private* files "
+                             "reached --corpus_path")
     args = parser.parse_args(argv)
     corpus_path = args.corpus_path.resolve()
     if not corpus_path.is_dir():
         print(f"Error: {corpus_path} is not a directory", file=sys.stderr)
         return 1
+    source = args.source.resolve() if args.source else None
+    if source is not None and not source.is_dir():
+        print(f"Error: --source {source} is not a directory", file=sys.stderr)
+        return 1
 
     report = Report()
-    check_private_tracked(corpus_path, report)
+    check_private_not_ported(corpus_path, source, report)
     check_language_and_dialect(corpus_path, report)
     check_commit_pins(corpus_path, args.repo_root, report)
     check_audio_stats(corpus_path, args.repo_root, report)

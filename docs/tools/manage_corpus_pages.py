@@ -42,9 +42,18 @@ def read_rows(path: Path = CSV_PATH) -> list[dict]:
         return list(csv.DictReader(handle))
 
 
+def _line_ending(path: Path) -> str:
+    """The file's own line ending (the committed CSV uses CRLF), so adding a row is a one-line diff."""
+    try:
+        return "\r\n" if b"\r\n" in path.read_bytes() else "\n"
+    except FileNotFoundError:
+        return "\n"
+
+
 def write_rows(rows: list[dict], path: Path = CSV_PATH) -> None:
+    ending = _line_ending(path)
     with open(path, "w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=FIELDS, lineterminator="\n")
+        writer = csv.DictWriter(handle, fieldnames=FIELDS, lineterminator=ending)
         writer.writeheader()
         writer.writerows(rows)
 
