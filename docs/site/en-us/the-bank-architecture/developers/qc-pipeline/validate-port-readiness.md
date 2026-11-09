@@ -18,7 +18,7 @@ It complements the rule-based validators: they check the **XML content**; this c
 
 | ID | Check |
 | --- | --- |
-| `P001` | A git-tracked file sits under a `Private/` directory. `Private/` holds development-only material (keys, notes, restricted source data) that must never ship; a tracked file there would be published by the next push. |
+| `P001` | Private material reached the ported corpus. `Private/` (or `Private:Source/`, `Private-data/` …) in a dev repo holds development-only material (keys, notes, restricted source data) that must never ship. The check runs on the ported copy: it fails if the copy contains a directory whose name begins with `Private`, or, with `--source <dev repo>`, a file whose bytes equal a non-empty file in the dev repo's `Private*` directories, whatever its name. A ported file that only shares its name with a private file is a WARN. What the dev repo itself tracks under `Private/` is not checked. |
 | `P002` | A `TEXT/@xml:lang` is not a known Formosan ISO 639-3 code. |
 | `P003` | A `TEXT/@dialect` is missing or not canonical for its language per `dialects.csv` (`unknown` is allowed). |
 
@@ -38,11 +38,11 @@ Run from the FormosanBank repo root after `source .venv/bin/activate`:
 # Before porting: point it at the dev repo root (the dir holding XML/)
 python QC/validation/validate_port_readiness.py --corpus_path ../Formosan-<Name>
 
-# After porting: check the published copy too
-python QC/validation/validate_port_readiness.py --corpus_path Corpora/<Name>
+# After porting: check the published copy too, naming the dev repo it came from
+python QC/validation/validate_port_readiness.py --corpus_path Corpora/<Name> --source ../Formosan-<Name>
 ```
 
-`--repo-root` overrides which FormosanBank checkout is used for the commit-pin and audio-statistics checks (default: the checkout the script lives in).
+`--source` names the dev repo the corpus was ported from, so `P001` can compare the ported files with its `Private*` files. `--repo-root` overrides which FormosanBank checkout is used for the commit-pin and audio-statistics checks (default: the checkout the script lives in).
 
 Output is one line per finding plus a `port-readiness: N HARD, M WARN` summary. Exit code is 1 if and only if there is at least one HARD finding, so the script can gate automation as well as humans.
 
