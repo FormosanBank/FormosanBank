@@ -54,6 +54,16 @@ def _row(corpus, slug):
     return {"corpus": corpus, "slug": slug, "nav_label": corpus, "descriptors": "", "zh_page": "", "pwn_page": ""}
 
 
+@pytest.mark.parametrize("ending", ["\r\n", "\n"])
+def test_write_keeps_the_files_line_endings(tmp_path, ending):
+    # Adding a row rewrote the CRLF corpus_pages.csv with LF, a whole-file diff (2026-11-09).
+    path = tmp_path / "corpus_pages.csv"
+    before = ending.join([",".join(mcp.FIELDS), "A,a-page,A,,,", ""])
+    path.write_bytes(before.encode("utf-8"))
+    mcp.write_rows(mcp.add(mcp.read_rows(path), "B", "b-page", "B"), path)
+    assert path.read_bytes() == (before + "B,b-page,B,,," + ending).encode("utf-8")
+
+
 def test_add_is_idempotent_and_refuses_duplicate_slug():
     rows = mcp.add([], "A", "a-page", "A")
     assert mcp.add(rows, "A", "other", "A") == rows
