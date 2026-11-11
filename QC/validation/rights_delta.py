@@ -39,8 +39,8 @@ class _Inconsistent(str):
     """
 
 
-def licenses_at(corpora_path: Path) -> dict[str, str]:
-    """Corpus name -> licence, for every corpus that publishes XML.
+def licenses_at(corpora_path: Path, corpora: set[str] | None = None) -> dict[str, str]:
+    """Corpus name -> licence, for every corpus that publishes XML (or only those in `corpora`).
 
     A corpus whose XML carries more than one distinct copyright value maps
     to an `_Inconsistent` sentinel instead of propagating `corpus_license`'s
@@ -51,6 +51,8 @@ def licenses_at(corpora_path: Path) -> dict[str, str]:
     result: dict[str, str] = {}
     for corpus_dir in sorted(Path(corpora_path).iterdir()):
         if not corpus_dir.is_dir():
+            continue
+        if corpora is not None and corpus_dir.name not in corpora:
             continue
         try:
             value = corpus_license(corpus_dir)
@@ -95,9 +97,12 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", required=True, type=Path)
     parser.add_argument("--head", required=True, type=Path)
+    parser.add_argument("--corpus", action="append", default=None,
+                        help="Compare only this corpus (repeatable); default: every corpus.")
     args = parser.parse_args(argv)
 
-    base, head = licenses_at(args.base), licenses_at(args.head)
+    only = set(args.corpus) if args.corpus else None
+    base, head = licenses_at(args.base, only), licenses_at(args.head, only)
     new = added(base, head)
     if new:
         print("New corpora (not a licence change; listed for the record):")
