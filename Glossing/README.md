@@ -47,6 +47,18 @@ modified (POL-036, POL-062).
   documented glossing conventions (with sources), code inventory, internal
   inconsistencies, and deviations from Leipzig.
 
+### Cross-source flagging (single-source codes)
+
+The maintainer's procedure (2026-11-11), run when a corpus's table is seeded:
+1. "If a smaller source has a code that a larger one (at least 1,000 glossed
+   words) does not, that is something to be flagged for inspection."
+2. "If there are two sources each of which have at least 1,000 glossed words,
+   and one uses a gloss code that the other does not, that is something to be
+   flagged."
+3. "For a single-source gloss, check the other corpora for that language for
+   the same word. If it appears, flag it. Count how many times it appears and
+   with what gloss." — performed regardless of the outcome of 1 and 2.
+
 Definitions come from the corpus's own documentation and original sources
 first; project-wide design decisions are recorded in
 `claudeplans/2026-11-11-gloss-standardization-design.md`.

@@ -10,12 +10,12 @@ LOC	6059	KEEP	LOC	Leipzig: listed; standard tier keeps it	zho twin: 處格×4438
 PF	5960	CONVERT	PV	voice: NTU point D patient focus; standard PV	zho twin: 受焦×5405; 受格×28
 1SG	5841	KEEP	1SG	Leipzig: legal composition; kept	zho twin: 第一人稱單數×21; 我×4
 TOP	4926	KEEP	TOP	Leipzig: listed; standard tier keeps it	zho twin: 主題×4639; 主題標記×190
-PART	4914	UNDECIDED		undocumented; definition needed	zho twin: 語助詞×4669; 助詞×23
+PART	4914	KEEP	PART	maintainer vocabulary ruling v2 2026-11-11 (supplementary_codes.tsv)	zho twin: 語助詞×4669; 助詞×23
 RED	4809	UNDECIDED		NTU docs point C.ii/iii; target pending (notation, not abbreviation)	zho twin: 重疊×4395; 重複×33
 NEG	4789	KEEP	NEG	Leipzig: listed; standard tier keeps it	zho twin: 否定×4478; 否定詞×168
-LNK	4776	UNDECIDED		undocumented; definition needed	zho twin: 連詞×2434; 連繫詞×2307
+LNK	4776	KEEP	LNK	maintainer vocabulary ruling v1 2026-11-11 (supplementary_codes.tsv)	zho twin: 連詞×2434; 連繫詞×2307
 DM	4547	UNDECIDED		undocumented; definition needed	zho twin: TOP×14; 然後×4
-PN	3980	UNDECIDED		undocumented; definition needed	zho twin: 人名×1587; 地名×748
+PN	3980	KEEP	PN	maintainer vocabulary ruling v6 2026-11-11 (supplementary_codes.tsv)	zho twin: 人名×1587; 地名×748
 LF	3880	CONVERT	LV	voice: NTU point D locative focus; standard LV	zho twin: 處焦×3353; 處格×41
 DIST	3449	KEEP	DIST	Leipzig: listed; standard tier keeps it	zho twin: 遠距×3130; 遠指×122
 FS	3295	UNDECIDED		undocumented; definition needed	
@@ -27,17 +27,17 @@ RLS	2344	UNDECIDED		undocumented; definition needed	zho twin: 實現×2113; 完�
 VIS	2045	UNDECIDED		undocumented; definition needed	zho twin: 可見×2011; 不可見×2
 PROX	1858	KEEP	PROX	Leipzig: listed; standard tier keeps it	zho twin: 近指×1542; 近距×230
 COMP	1848	KEEP	COMP	Leipzig: listed; standard tier keeps it	zho twin: 補語詞×1787; 補語×14
-CONJ	1828	UNDECIDED		undocumented; definition needed	zho twin: 連接詞×1724; 且×38
+CONJ	1828	KEEP	CONJ	maintainer vocabulary ruling v9 2026-11-11 (supplementary_codes.tsv)	zho twin: 連接詞×1724; 且×38
 CAU	1751	CONVERT	CAUS	NTU point F.i departure; back to Leipzig CAUS per maintainer 2026-11-11	zho twin: 使役×1379; 使動×171
 FUT	1692	KEEP	FUT	Leipzig: listed; standard tier keeps it	zho twin: 未來×1359; 未來式×187
 2SG	1685	KEEP	2SG	Leipzig: legal composition; kept	zho twin: 第二人稱單數×10; 3SG×4
 1IPL	1632	UNDECIDED		undocumented; definition needed	zho twin: 1PL×11; 1EPL×4
 COS	1613	UNDECIDED		undocumented; definition needed	zho twin: 改變狀態×583; 狀態改變×330
 REL	1530	KEEP	REL	Leipzig: listed; standard tier keeps it	zho twin: 關係詞×1461; 關係×12
-CN	1524	UNDECIDED		undocumented; definition needed	zho twin: 量詞×5; 籃子×2
+CN	1524	KEEP	CN	maintainer vocabulary ruling v4 2026-11-11 (supplementary_codes.tsv)	zho twin: 量詞×5; 籃子×2
 POSS	1492	KEEP	POSS	Leipzig: listed; standard tier keeps it	zho twin: 所有格×1217; 可能×72
 AV	1468	KEEP	AV	voice: undocumented spelling of AF; same standard	zho twin: 主焦×1309; 主格×5
-STAT	1414	UNDECIDED		undocumented; definition needed	zho twin: 狀態×1134; 靜態×18
+STAT	1414	KEEP	STAT	maintainer vocabulary ruling v3 2026-11-11 (supplementary_codes.tsv)	zho twin: 狀態×1134; 靜態×18
 KA	1306	UNDECIDED		undocumented; definition needed	zho twin: 耙梳×1
 NMLZ	1257	KEEP	NMLZ	Leipzig: listed; standard tier keeps it	zho twin: 名物化×1172; 處所×4
 ACC	1183	KEEP	ACC	Leipzig: listed; standard tier keeps it	zho twin: 受格×1166; 受焦×6
@@ -74,7 +74,7 @@ KAN	412	UNDECIDED		undocumented; definition needed	zho twin: 轉述×6; 不確�
 REFL	411	KEEP	REFL	Leipzig: listed; standard tier keeps it	zho twin: 反身×369; 主動×4
 2S	394	UNDECIDED		undocumented; definition needed	zho twin: 第二人稱單數×354; 第二人稱複數×4
 IF	392	CONVERT	OV	voice: NTU point D referential/instrumental = the variable 4th voice; maintainer 2026-11-11: OV	zho twin: 工焦×291; 工具焦×65
-NCM	360	UNDECIDED		undocumented; definition needed	zho twin: 人名標記×42; 類別詞×20
+NCM	360	CONVERT	PN	maintainer vocabulary ruling v5 (per your note: fold name markers into PN; your button said PNM — flagged for confirmation) 2026-11-11	zho twin: 人名標記×42; 類別詞×20
 REC	332	CONVERT	RECP	NTU point F.iv departure; back to Leipzig RECP per maintainer 2026-11-11	zho twin: 交互×182; 重現×65
 P	320	KEEP	P	Leipzig: listed; standard tier keeps it	zho twin: 複數×286; 複雜×2
 FAC	316	UNDECIDED		undocumented; definition needed	zho twin: 表事實×147; 事實貌×1
@@ -563,19 +563,19 @@ AFCA	1	UNDECIDED		undocumented; definition needed	zho twin: 主焦CA×1
 重疊	5039	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RED×4395
 處格	4865	CONVERT	LOC	pairs LOC×4,438; Leipzig LOC	eng twin: LOC×4438; LF×41
 主題	4787	CONVERT	TOP	pairs TOP×4,639; Leipzig TOP	eng twin: TOP×4639
-語助詞	4724	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PART×4669; AUX×6
+語助詞	4724	CONVERT	PART	maintainer vocabulary ruling v2 + g4 2026-11-11	eng twin: PART×4669; AUX×6
 否定	4511	CONVERT	NEG	pairs NEG; Leipzig NEG	eng twin: NEG×4478
 處焦	3885	CONVERT	LV	pairs LF×3,353; voice standard LV	eng twin: LF×3353; LV×48
 遠距	3304	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: DIST×3130; MED×6
 存在	3179	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXIST×2985; EXI×18
 非實現	3033	CONVERT	IRR	pairs IRR; Leipzig IRR	eng twin: IRR×2599
 助動詞	3000	CONVERT	AUX	pairs AUX; Leipzig AUX	eng twin: AUX×2982
-連繫詞	2512	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LNK×2307; TU×6
+連繫詞	2512	CONVERT	LNK	maintainer vocabulary ruling v1 + g4 Latin codes 2026-11-11	eng twin: LNK×2307; TU×6
 名物化	2478	CONVERT	NMLZ	pairs NMZ/NMLZ; Leipzig NMLZ per point-F ruling	eng twin: NMLZ×1172; NMZ×1015
-連詞	2440	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LNK×2434
+連詞	2440	CONVERT	CONJ	maintainer vocabulary ruling v9 + g4 2026-11-11	eng twin: LNK×2434
 實現	2367	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RLS×2113; REAL×27
 完成貌	2346	CONVERT	PFV	variant of 完成; pairs PFV×1,511	eng twin: PFV×1511
-人名	2338	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PN×1587
+人名	2338	CONVERT	PN	maintainer vocabulary ruling v5/v6 + g4 2026-11-11	eng twin: PN×1587
 使役	2059	CONVERT	CAUS	pairs CAU/CAUS; Leipzig CAUS per point-F ruling	eng twin: CAU×1379; CAUS×484
 可見	2058	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: VIS×2011
 人	1881	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HUM×342
@@ -600,7 +600,7 @@ AFCA	1	UNDECIDED		undocumented; definition needed	zho twin: 主焦CA×1
 條件詞	840	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COND×840
 附著屬格	840	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: BG×779; BN×10
 我	790	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: I×8
-地名	784	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PN×748
+地名	784	CONVERT	PN	maintainer vocabulary ruling v6 pn-only + g4 2026-11-11	eng twin: PN×748
 Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CA×22
 祈使	761	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IMP×573
 知識詞	734	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EVI×717
@@ -624,7 +624,7 @@ Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng 
 工焦	366	CONVERT	OV	pairs IF×291; 4th voice; maintainer 2026-11-11: OV	eng twin: IF×291; IV×50
 非人	359	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NHUM×274; NH×8
 想要	356	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: WOD×15
-助詞	352	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PTC×43; PART×23
+助詞	352	CONVERT	PART	maintainer vocabulary ruling v2 + g4 2026-11-11	eng twin: PTC×43; PART×23
 包含	330	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INCL×231
 一定	312	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEC×140
 近距	306	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROX×230
