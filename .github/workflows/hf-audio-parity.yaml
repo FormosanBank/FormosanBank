@@ -91,6 +91,9 @@ jobs:
     if: needs.scope.outputs.run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: read
+      issues: write  # only for the failure report below
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -109,3 +112,23 @@ jobs:
         env:
           HF_TOKEN: ''
         run: python QC/validation/validate_hf_audio.py
+      - name: Report a failed nightly run as an issue
+        # GitHub emails scheduled-run failures only to whoever created the
+        # workflow or last edited its schedule line; for this workflow that is
+        # no longer an active maintainer. An issue reaches everyone watching
+        # the repository. One open issue collects repeat failures as comments.
+        if: failure() && github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="Nightly Hugging Face audio check failed"
+          body="The scheduled hf-audio-parity run failed: $RUN_URL"
+          number=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "in:title \"$title\"" --json number,title \
+            --jq ".[] | select(.title == \"$title\") | .number" | head -1)
+          if [ -n "$number" ]; then
+            gh issue comment "$number" --repo "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body"
+          fi
