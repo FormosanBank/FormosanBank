@@ -24,18 +24,18 @@ The **Formosan Wikipedias Corpus** was created by sourcing articles from publicl
 2. **Preprocessing and Cleaning**
    * Articles were cleaned to remove URLs, extraneous punctuation, and citation markers. Irrelevant content (e.g., non-Formosan text) was also removed.
    * The following logs were generated for quality assurance:
-     * [**`link_removal.log`**](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/link_removal.log): Lists URLs removed from the text.
-     * [**`citations_remove.log`**](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/citations_remove.log): Tracks removed citation sections.
-     * [**`remove_possible_citations.log`**](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/remove_possible_citations.log): Records sequence numbers and periods (common citation markers) that were removed.
-     * [**`encoding_detection.log`**](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/encoding_detection.log): Notes encoding issues and fixes for articles.
-     * [**`citation_marker_removal.log`**](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/citation_marker_removal.log): Tracks citation markers removed from within the text.
+     * **`link_removal.log`**: Lists URLs removed from the text.
+     * **`citations_remove.log`**: Tracks removed citation sections.
+     * **`remove_possible_citations.log`**: Records sequence numbers and periods (common citation markers) that were removed.
+     * **`encoding_detection.log`**: Notes encoding issues and fixes for articles.
+     * **`citation_marker_removal.log`**: Tracks citation markers removed from within the text.
 3. **Removing Non-Formosan Text**
    * Text in non-Formosan languages, such as English, Chinese, or other non-Latin scripts, was identified and removed.
    * Specific logs were generated for this step:
-     * [**`remove_Annotations.log`**](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/remove_Annotations.log): Tracks removal of non-Formosan commentary in parentheses.
-     * [**`remove_large_blocks.log`**](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/remove_large_blocks.log): Logs large non-Latin text blocks removed.
-     * [**`remove_character_strings.log`**](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/remove_character_strings.log): Notes removal of continuous segments of non-Latin text.
-     * [**`remove_empty_parentheses.log`**](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/remove_empty_parentheses.log): Tracks removal of empty parentheses.
+     * **`remove_Annotations.log`**: Tracks removal of non-Formosan commentary in parentheses.
+     * **`remove_large_blocks.log`**: Logs large non-Latin text blocks removed.
+     * **`remove_character_strings.log`**: Notes removal of continuous segments of non-Latin text.
+     * **`remove_empty_parentheses.log`**: Tracks removal of empty parentheses.
 4. **XML Structuring**
    * The cleaned articles were converted into the FormosanBank XML format, where each article was structured with a `<FORM>` element for the main text.
    * Metadata, including the article title and language code, was added to the XML files for organizational purposes.
