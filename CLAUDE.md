@@ -99,6 +99,10 @@ The full pipeline is documented in [QC/README.md](QC/README.md). The typical ord
 
 - **Reproducible hand edits.** `QC/utilities/capture_manual_edits.py` records hand edits to a corpus's XML (diffed against git) into `<corpus>/CodeAndDocs/manual_edits.xml`; `QC/cleaning/apply_manual_edits.py` re-applies them first in the cleaning pipeline, keeps no-op records with a salient warning (`--prune` removes them — an explicit maintenance action for when the upstream build has absorbed the fix), and writes a `manual_edits.md` changelog. Shared logic lives in `QC/cleaning/manual_edits_common.py`. See `claudeplans/2026-06-15-manual-edits-reproducibility-design.md`.
 
+## Running tests
+
+While developing, run only the test files for what you changed: its own tests, any test that names it (search `tests/` for the file name), and, for a script cited in `.claude/skills/`, `tests/skills/test_skill_citations.py`, which runs every cited script with `--help`. Run the whole suite again during development only when there is a specific concern. Report which test files ran; never describe a targeted run as "the tests pass". The one full run before a merge is the pull request's CI run. If the CI rejects based on the full run, do a full run locally after any attempted fix.
+
 ## Corpus metrics and token deltas (CI-coupled)
 
 [QC/corpus_counts.py](QC/corpus_counts.py) is the single source of truth for counting rules (used by `get_corpus_stats.py`, `corpus_metrics.py`, and `count_tokens.py`): tokens come from sentence-level `FORM` only (standard tier, original fallback) and are whitespace chunks containing at least one letter or digit; language identity comes from `xml:lang` + `dialect` (`trv` + dialect `Truku` → Truku, otherwise Seediq). These scripts feed two GitHub Actions:
