@@ -1,0 +1,10 @@
+rule	vs_source	finding
+rule2	NTU-Sakizaya	codes here but not in NTU-Sakizaya: CA, EN, HEN, I, LILIL, M, NU, PAY, 助詞, 受格, 工焦, 普名標記, 繫詞, 處所格
+rule3	-	處所格 (×107, single-source): carrier words 1; other-source glosses: no same-word hits in other sources
+rule3	-	繫詞 (×72, single-source): carrier words 0; other-source glosses: no same-word hits in other sources
+rule3	-	普名標記 (×24, single-source): carrier words 0; other-source glosses: no same-word hits in other sources
+rule3	-	EN (×11, single-source): carrier words 6; other-source glosses: no same-word hits in other sources
+rule3	-	助詞 (×10, single-source): carrier words 0; other-source glosses: no same-word hits in other sources
+rule3	-	工焦 (×8, single-source): carrier words 7; other-source glosses: no same-word hits in other sources
+rule3	-	I (×6, single-source): carrier words 3; other-source glosses: no same-word hits in other sources
+rule3	-	PAY (×4, single-source): carrier words 2; other-source glosses: no same-word hits in other sources
