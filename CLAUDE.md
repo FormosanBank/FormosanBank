@@ -17,7 +17,7 @@ Reasons:
 
 If a task involves *creating* or *substantially reworking* a corpus rather than maintaining the published version, the work likely belongs in the corpus-specific dev repo, not here.
 
-To audit a dev repo's preprocessing before porting, use the `audit-dev-repo` skill (briefing: [claudeplans/2026-06-09-dev-repo-audit-briefing.md](claudeplans/2026-06-09-dev-repo-audit-briefing.md)).
+To audit a dev repo's preprocessing before porting, use the `audit-dev-repo` skill (briefing: [.claude/skills/audit-dev-repo/briefing.md](.claude/skills/audit-dev-repo/briefing.md)).
 
 ## Related repos
 

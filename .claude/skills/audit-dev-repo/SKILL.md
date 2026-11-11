@@ -12,7 +12,7 @@ conclusions or write the report without the maintainer signing off on each conce
 ## Step 0 — Get oriented (REQUIRED, before touching the repo)
 
 Read, in this order, and do not skip:
-1. `claudeplans/2026-06-09-dev-repo-audit-briefing.md` — the objectives, our
+1. `briefing.md` (in this skill's folder) — the objectives, our
    conventions, the current pipeline, and the **concern → tool map**. This is the
    spine of the audit.
 2. `FormosanBank/CLAUDE.md` (auto-loaded) and `QC/README.md` — conventions + pipeline order.
