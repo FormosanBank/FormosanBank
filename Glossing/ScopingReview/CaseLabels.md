@@ -202,3 +202,32 @@ frequencies, which differ by text type, and understates identity.
 - NTU:GEN (n=679) vs Amis-Kavalan-Lin-Interrogative-Verbs:ERG (n=17): A⊆B 17% · B⊆A 100%
 - Amis-Kavalan-Lin-Interrogative-Verbs:ERG (n=17) vs Amis-Pa-Verbs:GEN (n=10): A⊆B 65% · B⊆A 50%
 - NTU:主格 (n=814) vs Amis-Pa-Verbs:NOM (n=29): A⊆B 65% · B⊆A 34%
+
+## Contingency test (maintainer's framing: same morpheme, different labels?)
+
+Marker morphemes attested (>=3 tokens) in >=2 sources, cross-classified by
+each source's case labels (zho labels translated to English names only;
+受格→ACC kept distinct from OBL). 50 shared morphemes agree; 10 flagged —
+all are analysis-label pairs (GEN↔ERG, NOM↔ABS, OBL↔DAT, OBL↔ACC) except:
+- Kanakanavu `na`: genuinely bifunctional — NTU itself splits 處格×258 vs
+  斜格×38; Song 處格×88; ILCAA OBL×14. Needs its own ruling.
+- Sakizaya `misu` 'your': NTU 所有格×8 vs akiw 屬格×5 (POSS/GEN border).
+Zero cases of a source partitioning the markers differently.
+
+### Sakizaya flags
+- `misu`: NTU: POSS×8 | Sakizaya-Affixes: GEN×5
+
+### Kanakanavu flags
+- `na`: NTU: LOCcase×258, OBL×38 | ILCAA-Kanakanavu-Texts: OBL×14 | Song-Kanakanavu-Grammar: LOCcase×88
+
+### Amis flags
+- `isu`: NTU: GEN×22 | Amis-Kavalan-Lin-Interrogative-Verbs: ERG×6
+- `ni`: NTU: GEN×14 | Amis-Kavalan-Lin-Interrogative-Verbs: ERG×10
+- `an`: NTU: OBL×6, LOCcase×1 | Amis-Pa-Verbs: DAT×9
+- `k`: Amis-Kavalan-Lin-Interrogative-Verbs: ABS×19 | Amis-Pa-Verbs: NOM×12
+- `t`: Amis-Kavalan-Lin-Interrogative-Verbs: OBL×9 | Amis-Pa-Verbs: DAT×14
+
+### Kavalan flags
+- `ni`: NTU: GEN×106 | Kavalan-Chang-Reference-Grammar: GEN×16 | Amis-Kavalan-Lin-Interrogative-Verbs: ERG×3
+- `ya`: NTU: NOM×579 | Kavalan-Chang-Reference-Grammar: NOM×75 | Amis-Kavalan-Lin-Interrogative-Verbs: ABS×28
+- `tu`: NTU: OBL×1163, ACC×1 | Kavalan-Chang-Reference-Grammar: ACC×125 | Amis-Kavalan-Lin-Interrogative-Verbs: OBL×3
