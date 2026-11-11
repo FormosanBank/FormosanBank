@@ -13,15 +13,13 @@ modified (POL-036, POL-062).
   column and in the scoping reviews.
 - **Codes are Latin-only in every standard tier**, including Chinese-language
   gloss tiers; the lexical part of a gloss stays in its tier's language,
-  marked by `xml:lang` (maintainer, 2026-11-11).
+  marked by `xml:lang`.
 - **Voice names**: `AV` (actor), `PV` (patient), `LV` (locative), and `OV`
   ("other voice") for the cross-linguistically variable fourth voice
   (instrumental / benefactive / referential / reason), so comparison across
-  languages does not depend on taking a stand on its characterization
-  (maintainer, 2026-11-11).
+  languages does not depend on taking a stand on its characterization.
 - **Language-specific codes** default to the usage of the language's reference
-  grammar; the maintainer may override, preferring cross-language consistency
-  where feasible (maintainer, 2026-11-11).
+  grammar, overridable in favor of cross-language consistency where feasible.
 - *Proposed, not yet ruled*: verbs in moods where two voices collapse are
   glossed with a pair notation (e.g. `PV/LV`) rather than left unglossed —
   such tokens are excluded from voice *analysis* but must still be glossed.
@@ -49,15 +47,15 @@ modified (POL-036, POL-062).
 
 ### Cross-source flagging (single-source codes)
 
-The maintainer's procedure (2026-11-11), run when a corpus's table is seeded:
-1. "If a smaller source has a code that a larger one (at least 1,000 glossed
-   words) does not, that is something to be flagged for inspection."
-2. "If there are two sources each of which have at least 1,000 glossed words,
-   and one uses a gloss code that the other does not, that is something to be
-   flagged."
-3. "For a single-source gloss, check the other corpora for that language for
-   the same word. If it appears, flag it. Count how many times it appears and
-   with what gloss." — performed regardless of the outcome of 1 and 2.
+Run when a corpus's table is seeded:
+1. If a smaller source has a code that a larger one (at least 1,000 glossed
+   words) does not, flag it for inspection.
+2. If two sources each have at least 1,000 glossed words and one uses a gloss
+   code that the other does not, flag it.
+3. For a single-source gloss code, check the other corpora for that language
+   for the same word; if it appears, flag it, counting how many times it
+   appears and with what gloss. Step 3 is performed regardless of the outcome
+   of steps 1 and 2.
 
 Definitions come from the corpus's own documentation and original sources
 first; project-wide design decisions are recorded in
