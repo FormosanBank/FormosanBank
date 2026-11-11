@@ -1,0 +1,8 @@
+code	meaning	status	basis	notes
+AV	actor voice	RULED	maintainer 2026-11-11; Leipzig has no voice-label inventory	stable across languages
+PV	patient voice	RULED	maintainer 2026-11-11	stable across languages
+LV	locative voice	RULED	maintainer 2026-11-11	absent in Kavalan (2-voice); real in Kanakanavu per r4 ruling (ILCAA 148 tokens + Tsuchida 1976) despite Song grammar's lost-claim
+OV	other voice (the cross-linguistically variable 4th: instrumental/benefactive/referential/reason)	RULED	maintainer 2026-11-11: "The 4th voice is the one that varies so much across languages... let's just call it OV for 'other voice'. This simplifies cross-language comparison without having to take a stand on how it should be characterized." Premise verified across 17 (source,language) pairs	replaces source labels IF/RF/IV/BV/BF/RsnV/工焦/指焦/受惠焦點 etc.
+X/Y	two categories collapsed (gloss cannot decide between X and Y)	PROPOSED	maintainer 2026-11-11: mood-collapse tokens "we should absolutely gloss... Maybe something like '.IV/PV'"	e.g. PV/LV for merged imperatives and for NTU Seediq's annotator label 受事／處所焦點; notation not yet ruled
+UV	undergoer voice (cover for all non-actor voices, where the source does not distinguish them)	PROPOSED	NTU Kavalan and YeddaPalemeqBlog residue use a single non-actor label; Yedda split per r2 leaves an ⟨in⟩-only residue	only where no finer category is recoverable without our own analysis
+FIL	filler word	PROPOSED	maintainer 2026-11-11: "FIL is filler word. It should be specific to the spoken corpora" (confirmed: NTU Stories 15,765 / Sentences 4 / Grammar 0)	adoption as a standard code pending

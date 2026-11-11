@@ -39,6 +39,10 @@ modified (POL-036, POL-062).
   model of `Orthographies/Ortho113/<Language>.rules.tsv`. Strings these rules
   cannot segment are copied verbatim and surface in the conversion run's
   residue report.
+- **`supplementary_codes.tsv`** — the vocabulary of all non-Leipzig codes we
+  standardize to (RULED vs PROPOSED, each with its basis). Grows as rulings
+  land; nothing enters a conversion table's `standard` column unless it is
+  Leipzig-listed or in this file.
 - **`ScopingReview/<Corpus>.md`** — the corpus's scoping findings: its
   documented glossing conventions (with sources), code inventory, internal
   inconsistencies, and deviations from Leipzig.
