@@ -13,6 +13,8 @@ name: hf-audio-parity
 # The decision is deliberately one-sided: it only ever skips when every changed
 # path is inside a corpus known to have no audio. A change to the contract
 # itself, an unclassifiable path, schedule and workflow_dispatch all run.
+# Pushes to main are scoped like pull requests (2026-11-11); the nightly run
+# still checks the Hub every day.
 
 on:
   pull_request:
@@ -59,18 +61,25 @@ jobs:
       - name: Decide
         id: decide
         run: |
-          # Only a pull request is scoped. A push to main, the nightly run and
-          # a manual dispatch always validate: they are the longitudinal signal
-          # on the Hub's actual state, not a check on a diff.
-          if [ "${{ github.event_name }}" != "pull_request" ]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "${{ github.event_name }}: always validates."
-            exit 0
-          fi
+          # A pull request and a push to main are scoped the same way. The
+          # nightly run and a manual dispatch always validate: they are the
+          # longitudinal signal on the Hub's actual state, not a check on a diff.
+          case "${{ github.event_name }}" in
+            pull_request) range="origin/${{ github.base_ref }}...HEAD" ;;
+            push) range="${{ github.event.before }}...HEAD" ;;
+            *) echo "run=true" >> "$GITHUB_OUTPUT"
+               echo "${{ github.event_name }}: always validates."
+               exit 0 ;;
+          esac
           # core.quotePath=false: a C-quoted path ("Corpora/...") has no
           # Corpora/ first part, so hf_audio_scope.py would not see its corpus.
-          git -c core.quotePath=false diff --name-only \
-            "origin/${{ github.base_ref }}...HEAD" > changed.txt
+          # A push whose old tip is missing (new branch, rewritten history)
+          # cannot be diffed, so it validates.
+          if ! git -c core.quotePath=false diff --name-only "$range" > changed.txt; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "push: cannot diff $range; validating."
+            exit 0
+          fi
           echo "Changed files:"; cat changed.txt
           python QC/validation/hf_audio_scope.py --changed-files changed.txt \
             | tee decision.txt
