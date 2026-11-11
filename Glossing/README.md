@@ -44,6 +44,15 @@ modified (POL-036, POL-062).
 - **`ScopingReview/<Corpus>.md`** — the corpus's scoping findings: its
   documented glossing conventions (with sources), code inventory, internal
   inconsistencies, and deviations from Leipzig.
+- **`GlossDictionaries/<Language>.tsv`** — the language's ruled gloss codes:
+  two columns, `gloss · definition`, one row for every code the conversion
+  tables map onto for that language. A code that is not in the table is an
+  original source gloss whose meaning is still to be decided.
+  `GlossDictionaries/corpus_languages.tsv` records which languages each
+  corpus covers. `tests/glossing/test_gloss_dictionaries.py` enforces that
+  every mapped-to code of every corpus/language pair is defined here, and
+  the documentation site renders each language's table directly from its
+  TSV (`docs/tools/language_pages.py`), so there is nothing to sync by hand.
 
 ### Cross-source flagging (single-source codes)
 
