@@ -1,720 +1,721 @@
-source_code	count	status	standard	basis	notes
-AF	22208	CONVERT	AV	voice: NTU point D agent focus; standard AV	zho twin: 主焦×19520; 主格×119
-NOM	20932	KEEP	NOM	Leipzig: listed; standard tier keeps it	zho twin: 主格×20283; 主焦×100 | row-approved 2026-11-11
-GEN	14056	KEEP	GEN	Leipzig: listed; standard tier keeps it	zho twin: 屬格×13603; 主格×18 | row-approved 2026-11-11
-OBL	9688	KEEP	OBL	Leipzig: listed; standard tier keeps it	zho twin: 斜格×9369; 受格×26 | row-approved 2026-11-11
-PFV	8995	KEEP	PFV	Leipzig: listed; standard tier keeps it	zho twin: 完成×6991; 完成貌×1511 | row-approved 2026-11-11
-FIL	8135	UNDECIDED	FIL	maintainer 2026-11-11: 'FIL is filler word… specific to the spoken corpora' (confirmed: Stories 15,765/Sentences 4/Grammar 0); not in Leipzig — supplementary-standard entry pending	zho twin: 填補詞×478; 啊×8 | row-approved 2026-11-11
-3SG	7222	KEEP	3SG	Leipzig: legal composition; kept	zho twin: 3S×6; 3PL×5 | row-approved 2026-11-11
-LOC	6059	KEEP	LOC	Leipzig: listed; standard tier keeps it	zho twin: 處格×4438; 處所×1169 | row-approved 2026-11-11
-PF	5960	CONVERT	PV	voice: NTU point D patient focus; standard PV	zho twin: 受焦×5405; 受格×28 | approved; his note: investigate the 28 受格 pairings — done: zho-tier slips writing 受格 for 受焦 (e.g. Tsou say.PF/說.受格); eng tier correct
-1SG	5841	KEEP	1SG	Leipzig: legal composition; kept	zho twin: 第一人稱單數×21; 我×4 | row-approved 2026-11-11
-TOP	4926	KEEP	TOP	Leipzig: listed; standard tier keeps it	zho twin: 主題×4639; 主題標記×190 | row-approved 2026-11-11
-PART	4914	KEEP	PART	maintainer vocabulary ruling v2 2026-11-11 (supplementary_codes.tsv)	zho twin: 語助詞×4669; 助詞×23 | row-approved 2026-11-11
-RED	4809	KEEP	RED	NTU docs point C.ii/iii; target pending (notation, not abbreviation)	zho twin: 重疊×4395; 重複×33 | approved; meaning per his note: the marker for reduplication
-NEG	4789	KEEP	NEG	Leipzig: listed; standard tier keeps it	zho twin: 否定×4478; 否定詞×168 | row-approved 2026-11-11
-LNK	4776	KEEP	LNK	maintainer vocabulary ruling v1 2026-11-11 (supplementary_codes.tsv)	zho twin: 連詞×2434; 連繫詞×2307 | row-approved 2026-11-11
-DM	4547	UNDECIDED		undocumented; definition needed	zho twin: TOP×14; 然後×4 | investigated per his note: zho twin 言談標記 'discourse marker', zho tier uses DM directly — discourse marker, not demonstrative
-PN	3980	KEEP	PN	maintainer vocabulary ruling v6 2026-11-11 (supplementary_codes.tsv)	zho twin: 人名×1587; 地名×748 | row-approved 2026-11-11
-LF	3880	CONVERT	LV	voice: NTU point D locative focus; standard LV	zho twin: 處焦×3353; 處格×41 | row-approved 2026-11-11
-DIST	3449	KEEP	DIST	Leipzig: listed; standard tier keeps it	zho twin: 遠距×3130; 遠指×122 | row-approved 2026-11-11
-FS	3295	UNDECIDED		undocumented; definition needed	investigated per his note: forms are word-initial fragments (m ×202, s ×127, dehe…) in both tiers — false start (DuBois); spoken-corpus discourse code
-EXIST	3181	UNDECIDED		undocumented; definition needed	zho twin: 存在×2985; 存在詞×144 | investigated per his note: zho twin 存在 ×2,985 / 存在詞 ×144 — existential
-AUX	2998	KEEP	AUX	Leipzig: listed; standard tier keeps it	zho twin: 助動詞×2982; 語助詞×6 | row-approved 2026-11-11
-IRR	2984	KEEP	IRR	Leipzig: listed; standard tier keeps it	zho twin: 非實現×2599; 未實現×93 | row-approved 2026-11-11
-3PL	2354	KEEP	3PL	Leipzig: legal composition; kept	zho twin: 3SG×5; PL×2 | row-approved 2026-11-11
-RLS	2344	KEEP	RLS	"maintainer row-review 2026-11-11: ""approved as a marker for realis"""	zho twin: 實現×2113; 完成×12 | the 12 完成-paired cases = Rukai realis -a- where the zho tier wrote 完成 for 實現 (tier inconsistency, eng correct)
-VIS	2045	UNDECIDED		undocumented; definition needed	zho twin: 可見×2011; 不可見×2
-PROX	1858	KEEP	PROX	Leipzig: listed; standard tier keeps it	zho twin: 近指×1542; 近距×230
-COMP	1848	KEEP	COMP	Leipzig: listed; standard tier keeps it	zho twin: 補語詞×1787; 補語×14 | row-approved 2026-11-11
-CONJ	1828	KEEP	CONJ	maintainer vocabulary ruling v9 2026-11-11 (supplementary_codes.tsv)	zho twin: 連接詞×1724; 且×38 | row-approved 2026-11-11
-CAU	1751	CONVERT	CAUS	NTU point F.i departure; back to Leipzig CAUS per maintainer 2026-11-11	zho twin: 使役×1379; 使動×171 | row-approved 2026-11-11
-FUT	1692	KEEP	FUT	Leipzig: listed; standard tier keeps it	zho twin: 未來×1359; 未來式×187 | row-approved 2026-11-11
-2SG	1685	KEEP	2SG	Leipzig: legal composition; kept	zho twin: 第二人稱單數×10; 3SG×4 | row-approved 2026-11-11
-1IPL	1632	UNDECIDED		undocumented; definition needed	zho twin: 1PL×11; 1EPL×4 | row-approved 2026-11-11
-COS	1613	KEEP	COS	"maintainer row-review 2026-11-11: ""approved as marker for change of state"""	zho twin: 改變狀態×583; 狀態改變×330
-REL	1530	KEEP	REL	Leipzig: listed; standard tier keeps it	zho twin: 關係詞×1461; 關係×12 | row-approved 2026-11-11
-CN	1524	KEEP	CN	maintainer vocabulary ruling v4 2026-11-11 (supplementary_codes.tsv)	zho twin: 量詞×5; 籃子×2 | row-approved 2026-11-11
-POSS	1492	KEEP	POSS	Leipzig: listed; standard tier keeps it	zho twin: 所有格×1217; 可能×72 | approved as possessive; his note's 72 可能 cases investigated: Rukai maka-/law- glossed POSS.MOD ↔ 可能.情態 = POSSIBILITY modal — NTU's POSS covers two categories; the POSS.MOD composite flagged for its own decision
-AV	1468	KEEP	AV	voice: undocumented spelling of AF; same standard	zho twin: 主焦×1309; 主格×5 | row-approved 2026-11-11
-STAT	1414	KEEP	STAT	maintainer vocabulary ruling v3 2026-11-11 (supplementary_codes.tsv)	zho twin: 狀態×1134; 靜態×18 | row-approved 2026-11-11
-KA	1306	UNDECIDED		undocumented; definition needed	zho twin: 耙梳×1
-NMLZ	1257	KEEP	NMLZ	Leipzig: listed; standard tier keeps it	zho twin: 名物化×1172; 處所×4 | row-approved 2026-11-11
-ACC	1183	KEEP	ACC	Leipzig: listed; standard tier keeps it	zho twin: 受格×1166; 受焦×6 | row-approved 2026-11-11
-PROG	1110	KEEP	PROG	Leipzig: listed; standard tier keeps it	zho twin: 進行×1022; 進行貌×72 | row-approved 2026-11-11
-NMZ	1080	CONVERT	NMLZ	NTU point F.iii departure; back to Leipzig NMLZ per maintainer 2026-11-11	zho twin: 名物化×1015; 名物話×6
-1PL	1052	KEEP	1PL	Leipzig: legal composition; kept	zho twin: 1SG×4; 1Pl×2 | row-approved 2026-11-11
-PREP	987	KEEP	PREP	"maintainer row-review 2026-11-11: ""approved for preposition"" (not in Leipzig; registered)"	zho twin: 介系詞×963; 介詞×18
-BN	980	UNDECIDED		undocumented; definition needed	zho twin: 附著主格×867; 附著屬格×10
-NAF	944	UNDECIDED		maintainer 2026-11-11 (affix page c5): adopt case-by-case handling; 4 Atayal tokens, each needs its own call	zho twin: 非主焦×911; 主焦×20 | row-approved 2026-11-11
-INV	928	KEEP	INV	"maintainer row-review 2026-11-11: ""approved for invisible""; zho twin 不可見 ×916"	zho twin: 不可見×916
-BG	852	UNDECIDED		undocumented; definition needed	zho twin: 附著屬格×779; 附著主格×9
-COND	850	KEEP	COND	Leipzig: listed; standard tier keeps it	zho twin: 條件詞×840; 連接詞×4
-1S	840	UNDECIDED		undocumented; definition needed	zho twin: 第一人稱單數×765; 第一人稱單數主格×2
-Q	839	KEEP	Q	Leipzig: listed; standard tier keeps it	zho twin: 疑問×710; 疑問詞×41
-1EPL	811	UNDECIDED		undocumented; definition needed	zho twin: 1IPL×2
-IMP	806	KEEP	IMP	Leipzig: listed; standard tier keeps it	zho twin: 祈使×573; 命令式×92
-INT	790	UNDECIDED		undocumented; definition needed	zho twin: 感嘆×626; 感嘆詞×102
-EVI	738	UNDECIDED		undocumented; definition needed	zho twin: 知識詞×717; 之事詞×2
-SA	716	UNDECIDED		undocumented; definition needed	zho twin: IF×2
-HAB	662	UNDECIDED		undocumented; definition needed	zho twin: 習慣×652; 主焦×4
-ACT	658	UNDECIDED		undocumented; definition needed	zho twin: 主動×624; 主格×8
-PST	638	KEEP	PST	Leipzig: listed; standard tier keeps it	zho twin: 過去×619; 離去×2
-MED	584	UNDECIDED		undocumented; definition needed	zho twin: 中距×510; 遠距×6
-BC	583	UNDECIDED		undocumented; definition needed	zho twin: u×2
-HUM	540	UNDECIDED		undocumented; definition needed	zho twin: 人×342; 屬人×8
-CAUS	539	KEEP	CAUS	Leipzig: listed; standard tier keeps it	zho twin: 使役×484; 使×6 | row-approved 2026-11-11
-2PL	514	KEEP	2PL	Leipzig: legal composition; kept	zho twin: 2SG×2
-AY	496	UNDECIDED		undocumented; definition needed	
-HAN	462	UNDECIDED		undocumented; definition needed	
-3S	454	UNDECIDED		undocumented; definition needed	zho twin: 第三人稱單數×408; 第一人稱單數×2
-PV	437	KEEP	PV	voice: undocumented spelling of PF; same standard	zho twin: 受焦×407; 受格×4 | row-approved 2026-11-11
-NHUM	435	UNDECIDED		undocumented; definition needed	zho twin: 非人×274
-KAN	412	UNDECIDED		undocumented; definition needed	zho twin: 轉述×6; 不確定×4
-REFL	411	KEEP	REFL	Leipzig: listed; standard tier keeps it	zho twin: 反身×369; 主動×4
-2S	394	UNDECIDED		undocumented; definition needed	zho twin: 第二人稱單數×354; 第二人稱複數×4
-IF	392	CONVERT	OV	voice: NTU point D referential/instrumental = the variable 4th voice; maintainer 2026-11-11: OV	zho twin: 工焦×291; 工具焦×65 | row-approved 2026-11-11
-NCM	360	CONVERT	PN	maintainer vocabulary ruling v5 (per your note: fold name markers into PN; your button said PNM — flagged for confirmation) 2026-11-11	zho twin: 人名標記×42; 類別詞×20 | row-approved 2026-11-11
-REC	332	CONVERT	RECP	NTU point F.iv departure; back to Leipzig RECP per maintainer 2026-11-11	zho twin: 交互×182; 重現×65
-P	320	KEEP	P	Leipzig: listed; standard tier keeps it	zho twin: 複數×286; 複雜×2
-FAC	316	UNDECIDED		undocumented; definition needed	zho twin: 表事實×147; 事實貌×1
-NI	312	UNDECIDED		undocumented; definition needed	
-FO	308	UNDECIDED		undocumented; definition needed	zho twin: 自由斜格×302; 自由主題格×4
-PI	302	UNDECIDED		undocumented; definition needed	
-NEU	285	UNDECIDED		undocumented; definition needed	zho twin: 中性格×273; 屬格×2
-PASS	278	KEEP	PASS	Leipzig: listed; standard tier keeps it	zho twin: 被動×264; 被動式×2
-RF	275	CONVERT	OV	voice: NTU point D referential focus = 4th voice; maintainer 2026-11-11: OV	zho twin: 指焦×176; 參焦×61
-CLF	264	KEEP	CLF	Leipzig: listed; standard tier keeps it	zho twin: 量詞×26
-INCL	254	KEEP	INCL	Leipzig: listed; standard tier keeps it	zho twin: 包含×231; 包含式×16
-TA	246	UNDECIDED		undocumented; definition needed	zho twin: 採×1; T×1
-AN	246	UNDECIDED		undocumented; definition needed	zho twin: 處焦×4
-MOD	236	UNDECIDED		undocumented; definition needed	zho twin: 情態×229
-X	234	UNDECIDED		undocumented; definition needed	zho twin: 反正×2
-MAZA	234	UNDECIDED		undocumented; definition needed	
-EXCL	228	KEEP	EXCL	Leipzig: listed; standard tier keeps it	zho twin: 排除×209; 主格×2
-I	206	UNDECIDED		undocumented; definition needed	zho twin: 我×8
-INVIS	200	UNDECIDED		undocumented; definition needed	zho twin: 不可見×200
-PAST	162	UNDECIDED		undocumented; definition needed	zho twin: 過去×65; 表過去×54
-TU	150	UNDECIDED		undocumented; definition needed	zho twin: 連繫詞×6; 做×2
-NEC	146	UNDECIDED		undocumented; definition needed	zho twin: 一定×140
-MA	142	UNDECIDED		undocumented; definition needed	
-SI	142	UNDECIDED		undocumented; definition needed	zho twin: 男人×1
-QA	141	UNDECIDED		undocumented; definition needed	
-A	133	KEEP	A	Leipzig: listed; standard tier keeps it	zho twin: 名物化×2; A學校×2
-BF	120	CONVERT	OV	maintainer row-review 2026-11-11: benefactive voice (zho twins 予焦×61/與焦×20/受惠焦×10) → OV per the 4th-voice ruling	zho twin: 予焦×61; 與焦×20
-T	114	UNDECIDED		undocumented; definition needed	
-3P	108	UNDECIDED		undocumented; definition needed	zho twin: 第三人稱複數×98; 第三人稱單數×4
-RECP	104	KEEP	RECP	Leipzig: listed; standard tier keeps it	zho twin: 互相×91; 相互×4
-ASP	96	UNDECIDED		undocumented; definition needed	zho twin: 動貌×90; 語助詞×4
-SG	94	KEEP	SG	Leipzig: listed; standard tier keeps it	zho twin: 單數×30; 1SG×6
-HYP	92	UNDECIDED		undocumented; definition needed	zho twin: 假設×90; 未來×2
-U	92	UNDECIDED		undocumented; definition needed	
-MU	88	UNDECIDED		undocumented; definition needed	
-PL	86	KEEP	PL	Leipzig: listed; standard tier keeps it	zho twin: 複數×72; 處焦×2
-UH	86	UNDECIDED		undocumented; definition needed	
-RES	79	KEEP	RES	Leipzig: listed; standard tier keeps it	zho twin: 致使×66; 實現×1
-NA	78	KEEP	NA	Leipzig: legal composition; kept	
-UNI	78	UNDECIDED		undocumented; definition needed	
-CA	76	UNDECIDED		NTU docs point C.i (Ca redup); target pending (notation, not abbreviation)	zho twin: CA重疊×41; Ca重疊×22
-NGU	75	UNDECIDED		undocumented; definition needed	
-CONT	70	UNDECIDED		undocumented; definition needed	zho twin: 持續×68; 持續誒×1
-PA	68	UNDECIDED		undocumented; definition needed	
-HAW	64	UNDECIDED		undocumented; definition needed	
-IMPFV	64	UNDECIDED		undocumented; definition needed	zho twin: 未完成×61; 未完成貌×2
-LV	58	KEEP	LV	"maintainer row-review 2026-11-11: ""This is locative voice (LV)"""	zho twin: 處焦×48; 受焦×2
-IV	58	CONVERT	OV	"maintainer row-review 2026-11-11: ""This is OV… listed as instrumental voice, but we're converting"""	zho twin: 工焦×50; 公教×2
-2P	58	UNDECIDED		undocumented; definition needed	zho twin: 第二人稱複數×52; 第二人稱×2
-ANA	58	UNDECIDED		undocumented; definition needed	
-ARI	50	UNDECIDED		undocumented; definition needed	
-MAKA	48	UNDECIDED		undocumented; definition needed	zho twin: 當MAKA×2
-DE	46	UNDECIDED		undocumented; definition needed	zho twin: 的×42
-BA	44	UNDECIDED		undocumented; definition needed	zho twin: 把×4
-PTC	44	UNDECIDED		undocumented; definition needed	zho twin: 助詞×43
-IN	44	UNDECIDED		undocumented; definition needed	
-PFVAF	41	UNDECIDED		undocumented; definition needed	zho twin: 完成主焦×33; 主焦主焦×1
-YU	40	UNDECIDED		undocumented; definition needed	
-N	36	KEEP	N	Leipzig: listed; standard tier keeps it	
-AH	36	UNDECIDED		undocumented; definition needed	zho twin: 阿×2; 阿!×2
-DAT	36	KEEP	DAT	Leipzig: listed; standard tier keeps it	zho twin: 予格×34
-KI	32	UNDECIDED		undocumented; definition needed	
-CI	32	UNDECIDED		undocumented; definition needed	
-QENA	32	UNDECIDED		undocumented; definition needed	
-S	30	KEEP	S	Leipzig: listed; standard tier keeps it	
-YA	30	UNDECIDED		undocumented; definition needed	
-II	28	UNDECIDED		undocumented; definition needed	
-LUS	28	UNDECIDED		undocumented; definition needed	zho twin: LU×4
-EXPER	28	UNDECIDED		undocumented; definition needed	zho twin: 經驗×28
-PLACE	28	UNDECIDED		undocumented; definition needed	zho twin: 地方×24; 地方標記×4
-REAL	27	UNDECIDED		undocumented; definition needed	zho twin: 實現×27
-FT	26	UNDECIDED		undocumented; definition needed	zho twin: 自由主題格×26
-VOC	26	KEEP	VOC	Leipzig: listed; standard tier keeps it	zho twin: 呼格×24; 呼告×1
-CU	26	UNDECIDED		undocumented; definition needed	
-TAKU	26	UNDECIDED		undocumented; definition needed	
-AVA	26	UNDECIDED		undocumented; definition needed	
-ANIM	26	UNDECIDED		undocumented; definition needed	zho twin: 有生命×26
-KU	24	UNDECIDED		undocumented; definition needed	
-HA	22	UNDECIDED		undocumented; definition needed	
-NGI	22	UNDECIDED		undocumented; definition needed	
-IYA	22	UNDECIDED		undocumented; definition needed	
-RA	21	UNDECIDED		undocumented; definition needed	
-KONG	20	UNDECIDED		undocumented; definition needed	
-MATI	20	UNDECIDED		undocumented; definition needed	
-MIN	20	UNDECIDED		undocumented; definition needed	
-EXHORT	20	UNDECIDED		undocumented; definition needed	
-1IP	19	UNDECIDED		undocumented; definition needed	zho twin: 1IPL×2
-INAN	19	UNDECIDED		undocumented; definition needed	zho twin: 無生命×17; 非生命×2
-SAKA	18	UNDECIDED		undocumented; definition needed	
-EXI	18	UNDECIDED		undocumented; definition needed	zho twin: 存在×18
-MG	16	UNDECIDED		undocumented; definition needed	zho twin: 主焦×2
-HE	16	UNDECIDED		undocumented; definition needed	
-KIN	16	UNDECIDED		undocumented; definition needed	
-WOD	16	UNDECIDED		undocumented; definition needed	zho twin: 想要×15
-1P	16	UNDECIDED		undocumented; definition needed	zho twin: 第一人稱複數×13
-KUA	16	UNDECIDED		undocumented; definition needed	
-OPT	16	UNDECIDED		undocumented; definition needed	zho twin: 祈願×16
-KAMA	16	UNDECIDED		undocumented; definition needed	
-HOR	16	UNDECIDED		undocumented; definition needed	zho twin: 勸告式×8; 勸告×4
-TE	16	UNDECIDED		undocumented; definition needed	
-AFRED	15	UNDECIDED		undocumented; definition needed	zho twin: 主焦重疊×13
-KAFA	15	UNDECIDED		undocumented; definition needed	zho twin: K主焦A×11; K主格A×2
-TN	14	UNDECIDED		undocumented; definition needed	
-NAV	14	UNDECIDED		undocumented; definition needed	zho twin: 非主焦×14
-INS	14	KEEP	INS	Leipzig: listed; standard tier keeps it	zho twin: 工具格×10; 工格×2
-KALA	14	UNDECIDED		undocumented; definition needed	
-NIKA	14	UNDECIDED		undocumented; definition needed	
-MI	14	UNDECIDED		undocumented; definition needed	
-NAN	14	UNDECIDED		undocumented; definition needed	
-SAIZA	14	UNDECIDED		undocumented; definition needed	
-EXH	14	UNDECIDED		undocumented; definition needed	
-OK	12	UNDECIDED		undocumented; definition needed	zho twin: 好×6; 好啊×4
-UN	12	UNDECIDED		undocumented; definition needed	
-TARU	12	UNDECIDED		undocumented; definition needed	
-AKU	12	UNDECIDED		undocumented; definition needed	
-DUDUUT	12	UNDECIDED		undocumented; definition needed	
-IFPFV	12	CONVERT	OV.PFV	"maintainer row-review 2026-11-11: ""OV.PFV (other voice, perfective)""; zho twin 工焦完成貌"	zho twin: 工焦完成貌×7; 工焦完成×4
-PAKA2	12	UNDECIDED		undocumented; definition needed	
-VA	12	UNDECIDED		undocumented; definition needed	
-IMA	12	UNDECIDED		undocumented; definition needed	
-PIN	12	UNDECIDED		undocumented; definition needed	
-IS	11	CONVERT	OV	maintainer row-review 2026-11-11: zho twin 工焦 — instrument → OV	zho twin: 工焦×3
-TAVA	11	UNDECIDED		undocumented; definition needed	zho twin: T主焦A×7; T主焦×1
-SII	11	UNDECIDED		undocumented; definition needed	zho twin: 花×1
-1EP	10	UNDECIDED		undocumented; definition needed	
-BV	10	CONVERT	OV	maintainer row-review 2026-11-11: benefactive voice (zho twins 予焦/與焦) → OV	zho twin: 予焦×6; 與焦×2
-NFAC	10	UNDECIDED		undocumented; definition needed	zho twin: 非事實×10
-NO	10	UNDECIDED		undocumented; definition needed	
-PAKA	10	UNDECIDED		undocumented; definition needed	
-KINAU	10	UNDECIDED		undocumented; definition needed	
-ORD	10	UNDECIDED		undocumented; definition needed	zho twin: 序數×10
-TAI	10	UNDECIDED		undocumented; definition needed	
-KIA	10	UNDECIDED		undocumented; definition needed	
-KINA	10	UNDECIDED		undocumented; definition needed	
-XX	10	UNDECIDED		undocumented; definition needed	
-REDAF	10	UNDECIDED		undocumented; definition needed	zho twin: 重疊主焦×9
-KANI	10	UNDECIDED		undocumented; definition needed	
-UNGWA	10	UNDECIDED		undocumented; definition needed	
-ME	10	UNDECIDED		undocumented; definition needed	
-TO	10	UNDECIDED		undocumented; definition needed	
-KAVA	9	UNDECIDED		undocumented; definition needed	zho twin: K主焦A×9
-3SGGEN	8	UNDECIDED		undocumented; definition needed	zho twin: 3SG屬格×2
-MK	8	UNDECIDED		undocumented; definition needed	
-EXSIT	8	UNDECIDED		undocumented; definition needed	zho twin: 存在×6; 存在詞×2
-KN	8	UNDECIDED		undocumented; definition needed	
-MANA	8	UNDECIDED		undocumented; definition needed	
-TAKA	8	UNDECIDED		undocumented; definition needed	
-MAU	8	UNDECIDED		undocumented; definition needed	
-SU	8	UNDECIDED		undocumented; definition needed	
-LA	8	UNDECIDED		undocumented; definition needed	
-SUA	8	UNDECIDED		undocumented; definition needed	
-WA	8	UNDECIDED		undocumented; definition needed	
-WAW	8	UNDECIDED		undocumented; definition needed	
-BI	8	UNDECIDED		undocumented; definition needed	
-US	8	UNDECIDED		undocumented; definition needed	zho twin: 美國×8
-IZA	8	UNDECIDED		undocumented; definition needed	
-WANAY	8	UNDECIDED		undocumented; definition needed	
-NH	8	UNDECIDED		undocumented; definition needed	zho twin: 非人×8
-QUOT	8	KEEP	QUOT	Leipzig: listed; standard tier keeps it	zho twin: 疑問×2
-MARA	8	UNDECIDED		undocumented; definition needed	
-MARI	8	UNDECIDED		undocumented; definition needed	
-MINA	8	UNDECIDED		undocumented; definition needed	
-REDAV	7	UNDECIDED		undocumented; definition needed	zho twin: 重疊主焦×6
-TAFA	7	UNDECIDED		undocumented; definition needed	zho twin: T主焦A×6; 主焦×1
-PS	6	UNDECIDED		undocumented; definition needed	
-RECIP	6	UNDECIDED		undocumented; definition needed	zho twin: 相互×6
-AFPFV	6	UNDECIDED		undocumented; definition needed	zho twin: 主焦完成×3; 主焦完成貌×2
-LINK	6	UNDECIDED		undocumented; definition needed	zho twin: 連繫詞×4; 連詞×2
-NON	6	UNDECIDED		undocumented; definition needed	zho twin: 主格×6
-AVI	6	UNDECIDED		undocumented; definition needed	
-M	6	KEEP	M	Leipzig: listed; standard tier keeps it	
-ZA	6	UNDECIDED		undocumented; definition needed	
-HALU	6	UNDECIDED		undocumented; definition needed	
-KALI	6	UNDECIDED		undocumented; definition needed	
-E	6	UNDECIDED		undocumented; definition needed	
-MAS	6	UNDECIDED		undocumented; definition needed	zho twin: 斜格×2
-INJ	6	UNDECIDED		undocumented; definition needed	zho twin: 感嘆詞×4; 感嘆×2
-DUUT	6	UNDECIDED		undocumented; definition needed	
-NASA	6	UNDECIDED		undocumented; definition needed	
-LE	6	UNDECIDED		undocumented; definition needed	zho twin: 了×2
-AAH	6	UNDECIDED		undocumented; definition needed	zho twin: 哎呀×2
-PARI	6	UNDECIDED		undocumented; definition needed	
-KAAN	6	UNDECIDED		undocumented; definition needed	
-INTJ	6	UNDECIDED		undocumented; definition needed	zho twin: 感嘆×4; 驚嘆×2
-INH	6	UNDECIDED		undocumented; definition needed	zho twin: 非人×5
-MUSU	6	UNDECIDED		undocumented; definition needed	
-NUM	6	UNDECIDED		undocumented; definition needed	zho twin: 人×4; 屬人×2
-OH	6	UNDECIDED		undocumented; definition needed	zho twin: 喔×4
-GEM	4	UNDECIDED		undocumented; definition needed	zho twin: 屬格×4
-K	4	UNDECIDED		undocumented; definition needed	
-2EPL	4	UNDECIDED		undocumented; definition needed	
-MN	4	UNDECIDED		undocumented; definition needed	
-1IPLNOM	4	UNDECIDED		undocumented; definition needed	
-MP	4	UNDECIDED		undocumented; definition needed	
-EXIXT	4	UNDECIDED		undocumented; definition needed	zho twin: 存在×4
-EMPH	4	UNDECIDED		undocumented; definition needed	zho twin: 強調×4
-NAKI	4	UNDECIDED		undocumented; definition needed	
-TI	4	UNDECIDED		undocumented; definition needed	
-KAU	4	UNDECIDED		undocumented; definition needed	
-PAI	4	UNDECIDED		undocumented; definition needed	
-MARU	4	UNDECIDED		undocumented; definition needed	
-MANNER	4	UNDECIDED		undocumented; definition needed	zho twin: 方式×4
-FN	4	UNDECIDED		undocumented; definition needed	
-LUKA	4	UNDECIDED		undocumented; definition needed	
-TARA	4	UNDECIDED		undocumented; definition needed	
-LU	4	UNDECIDED		undocumented; definition needed	
-NP	4	KEEP	NP	Leipzig: legal composition; kept	zho twin: 人名×4
-TALA	4	UNDECIDED		undocumented; definition needed	
-BANG	4	UNDECIDED		undocumented; definition needed	
-AW	4	UNDECIDED		undocumented; definition needed	
-3SGNOM	4	UNDECIDED		undocumented; definition needed	
-LI	4	UNDECIDED		undocumented; definition needed	
-MEI	4	UNDECIDED		undocumented; definition needed	
-ISAW	4	UNDECIDED		undocumented; definition needed	
-TALI	4	UNDECIDED		undocumented; definition needed	
-DOST	4	UNDECIDED		undocumented; definition needed	zho twin: 遠距×4
-POT	4	UNDECIDED		undocumented; definition needed	zho twin: 可能×3
-TUTUT	4	UNDECIDED		undocumented; definition needed	
-VIST	4	UNDECIDED		undocumented; definition needed	zho twin: 可見×4
-O	4	UNDECIDED		undocumented; definition needed	
-NU	4	UNDECIDED		undocumented; definition needed	
-NAW	4	UNDECIDED		undocumented; definition needed	
-1IPLGEN	4	UNDECIDED		undocumented; definition needed	
-NYA	4	UNDECIDED		undocumented; definition needed	
-QAY	4	UNDECIDED		undocumented; definition needed	
-AI	4	UNDECIDED		undocumented; definition needed	
-MATA	4	UNDECIDED		undocumented; definition needed	
-EE	4	UNDECIDED		undocumented; definition needed	
-PROS	4	UNDECIDED		undocumented; definition needed	zho twin: 進行×4
-CAFA	4	UNDECIDED		undocumented; definition needed	zho twin: C主焦A×3; CA重疊主焦×1
-EXT	4	UNDECIDED		undocumented; definition needed	zho twin: 存在×4
-PARA	4	UNDECIDED		undocumented; definition needed	
-TEEN	4	UNDECIDED		undocumented; definition needed	
-POSOO	4	UNDECIDED		undocumented; definition needed	
-KUCU	4	UNDECIDED		undocumented; definition needed	
-PO	4	UNDECIDED		undocumented; definition needed	
-CO	4	UNDECIDED		undocumented; definition needed	
-PATA	4	UNDECIDED		undocumented; definition needed	
-KAS	4	UNDECIDED		undocumented; definition needed	
-PRF	4	KEEP	PRF	Leipzig: listed; standard tier keeps it	zho twin: 完成×4
-PRS	4	KEEP	PRS	Leipzig: listed; standard tier keeps it	zho twin: 實現×2; 現在×1
-DUR	4	KEEP	DUR	Leipzig: listed; standard tier keeps it	zho twin: 持續×4
-ADVRS	4	UNDECIDED		undocumented; definition needed	zho twin: 轉折×4
-STAV	4	UNDECIDED		undocumented; definition needed	zho twin: 狀態×2
-CLA	4	UNDECIDED		undocumented; definition needed	
-PFVAV	4	UNDECIDED		undocumented; definition needed	zho twin: 完成主焦×4
-HNUM	4	UNDECIDED		undocumented; definition needed	zho twin: 非人×4
-NPI	4	UNDECIDED		undocumented; definition needed	
-MARO	4	UNDECIDED		undocumented; definition needed	
-H	4	UNDECIDED		undocumented; definition needed	
-CAUPFV	3	UNDECIDED		undocumented; definition needed	zho twin: 使役完成×1; 使役完成使役×1
-AFPFVRED	3	UNDECIDED		undocumented; definition needed	zho twin: 主焦完成重疊×3
-ISPFV	3	UNDECIDED		undocumented; definition needed	zho twin: 工焦完成貌×3
-EN	3	UNDECIDED		undocumented; definition needed	
-AVRED	3	UNDECIDED		undocumented; definition needed	zho twin: 主焦重疊×2; 主格重疊×1
-SAFA	3	UNDECIDED		undocumented; definition needed	zho twin: S主焦A×2
-RAVA	3	UNDECIDED		undocumented; definition needed	zho twin: R主焦A×3
-TNG	2	UNDECIDED		undocumented; definition needed	
-PG	2	UNDECIDED		undocumented; definition needed	
-KOM	2	UNDECIDED		undocumented; definition needed	zho twin: 主格×2
-1EPF	2	UNDECIDED		undocumented; definition needed	zho twin: 1EPL×2
-1EPLNOM	2	UNDECIDED		undocumented; definition needed	
-SO	2	UNDECIDED		undocumented; definition needed	
-3EPL	2	UNDECIDED		undocumented; definition needed	
-PIRI	2	UNDECIDED		undocumented; definition needed	
-PIRING	2	UNDECIDED		undocumented; definition needed	
-SN	2	UNDECIDED		undocumented; definition needed	
-PT	2	UNDECIDED		undocumented; definition needed	
-MS	2	UNDECIDED		undocumented; definition needed	
-PEV	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2
-LP	2	UNDECIDED		undocumented; definition needed	zho twin: 處焦×1
-MT	2	UNDECIDED		undocumented; definition needed	
-TG	2	UNDECIDED		undocumented; definition needed	
-PERF	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2
-PAR	2	UNDECIDED		undocumented; definition needed	zho twin: 助詞×2
-PFP	2	UNDECIDED		undocumented; definition needed	zho twin: 介紹P×2
-FUF	2	UNDECIDED		undocumented; definition needed	zho twin: 未來×2
-2SGGEN	2	UNDECIDED		undocumented; definition needed	
-NOA	2	UNDECIDED		undocumented; definition needed	
-RT	2	UNDECIDED		undocumented; definition needed	
-PFC	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2
-XXX	2	UNDECIDED		undocumented; definition needed	
-ZOU	2	UNDECIDED		undocumented; definition needed	
-EMP	2	UNDECIDED		undocumented; definition needed	zho twin: 強調×2
-GI	2	UNDECIDED		undocumented; definition needed	
-PFVRED	2	UNDECIDED		undocumented; definition needed	zho twin: 完成重疊×2
-PAN	2	UNDECIDED		undocumented; definition needed	
-QUES	2	UNDECIDED		undocumented; definition needed	zho twin: 疑問×2
-DET	2	KEEP	DET	Leipzig: listed; standard tier keeps it	zho twin: 限定×2
-NMLLZ	2	UNDECIDED		undocumented; definition needed	zho twin: 名物化×2
-PARAMIA	2	UNDECIDED		undocumented; definition needed	
-NMA	2	UNDECIDED		undocumented; definition needed	zho twin: 名物化×2
-RLSRED	2	UNDECIDED		undocumented; definition needed	zho twin: 實現重疊×1
-YARA	2	UNDECIDED		undocumented; definition needed	
-DAU	2	UNDECIDED		undocumented; definition needed	
-NAMA	2	UNDECIDED		undocumented; definition needed	
-KUNA	2	UNDECIDED		undocumented; definition needed	
-MIANI	2	UNDECIDED		undocumented; definition needed	
-EXCLM	2	UNDECIDED		undocumented; definition needed	zho twin: 感嘆詞×2
-BE	2	UNDECIDED		undocumented; definition needed	
-PIA	2	UNDECIDED		undocumented; definition needed	
-MIA	2	UNDECIDED		undocumented; definition needed	
-TINU	2	UNDECIDED		undocumented; definition needed	
-ATA	2	UNDECIDED		undocumented; definition needed	
-SATU	2	UNDECIDED		undocumented; definition needed	
-SANGU	2	UNDECIDED		undocumented; definition needed	
-LRI	2	UNDECIDED		undocumented; definition needed	
-TATA	2	UNDECIDED		undocumented; definition needed	
-TAU	2	UNDECIDED		undocumented; definition needed	
-LAU	2	UNDECIDED		undocumented; definition needed	
-TUA	2	UNDECIDED		undocumented; definition needed	
-LRINGA	2	UNDECIDED		undocumented; definition needed	
-LUKU	2	UNDECIDED		undocumented; definition needed	
-BURU	2	UNDECIDED		undocumented; definition needed	
-PR	2	UNDECIDED		undocumented; definition needed	zho twin: 近指×2
-RLZ	2	UNDECIDED		undocumented; definition needed	zho twin: 實現×2
-PINGI	2	UNDECIDED		undocumented; definition needed	
-ASI	2	UNDECIDED		undocumented; definition needed	
-NE	2	UNDECIDED		undocumented; definition needed	
-NIA	2	UNDECIDED		undocumented; definition needed	
-AMANIGO	2	UNDECIDED		undocumented; definition needed	
-PVF	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2
-KOTAKA	2	UNDECIDED		undocumented; definition needed	
-LAO	2	UNDECIDED		undocumented; definition needed	
-AMANI	2	UNDECIDED		undocumented; definition needed	
-AMIYATA	2	UNDECIDED		undocumented; definition needed	
-VOTHA	2	UNDECIDED		undocumented; definition needed	
-SAYA	2	UNDECIDED		undocumented; definition needed	
-W	2	UNDECIDED		undocumented; definition needed	
-HIYA	2	UNDECIDED		undocumented; definition needed	
-MALA	2	UNDECIDED		undocumented; definition needed	
-HIAM	2	UNDECIDED		undocumented; definition needed	
-YATA	2	UNDECIDED		undocumented; definition needed	
-AM	2	UNDECIDED		undocumented; definition needed	
-KAI	2	UNDECIDED		undocumented; definition needed	
-MAKI	2	UNDECIDED		undocumented; definition needed	
-PAH	2	UNDECIDED		undocumented; definition needed	
-TADA	2	UNDECIDED		undocumented; definition needed	
-FU	2	UNDECIDED		undocumented; definition needed	zho twin: 未來貌×2
-PSAT	2	UNDECIDED		undocumented; definition needed	zho twin: 過去貌×2
-MATABI	2	UNDECIDED		undocumented; definition needed	
-NANI	2	UNDECIDED		undocumented; definition needed	
-HYW	2	UNDECIDED		undocumented; definition needed	
-FSFSAF	2	UNDECIDED		undocumented; definition needed	zho twin: FSFS主焦×2
-KWA	2	UNDECIDED		undocumented; definition needed	
-SMAL	2	UNDECIDED		undocumented; definition needed	
-BABA	2	UNDECIDED		undocumented; definition needed	
-TEK	2	UNDECIDED		undocumented; definition needed	
-SANU	2	UNDECIDED		undocumented; definition needed	
-KAW	2	UNDECIDED		undocumented; definition needed	
-DIM	2	UNDECIDED		undocumented; definition needed	zho twin: 指小×2
-TANG	2	UNDECIDED		undocumented; definition needed	
-ZAV	2	UNDECIDED		undocumented; definition needed	
-ATU	2	UNDECIDED		undocumented; definition needed	
-LN	2	UNDECIDED		undocumented; definition needed	zho twin: 處焦×1
-ORR	2	UNDECIDED		undocumented; definition needed	zho twin: 非實現×2
-TUTUTUTUT	2	UNDECIDED		undocumented; definition needed	
-CIS	2	UNDECIDED		undocumented; definition needed	
-PFVCLF	2	UNDECIDED		undocumented; definition needed	zho twin: 完成貌量詞×2
-1PI	2	UNDECIDED		undocumented; definition needed	
-CL	2	UNDECIDED		undocumented; definition needed	
-EVID	2	UNDECIDED		undocumented; definition needed	zho twin: 據說×1
-IU	2	UNDECIDED		undocumented; definition needed	
-AT	2	UNDECIDED		undocumented; definition needed	
-HAU	2	UNDECIDED		undocumented; definition needed	
-REF	2	UNDECIDED		undocumented; definition needed	zho twin: 相互×2
-MAMI	2	UNDECIDED		undocumented; definition needed	
-OYA	2	UNDECIDED		undocumented; definition needed	
-HATU	2	UNDECIDED		undocumented; definition needed	
-SAKI	2	UNDECIDED		undocumented; definition needed	
-NAKA	2	UNDECIDED		undocumented; definition needed	
-TURU	2	UNDECIDED		undocumented; definition needed	
-KA1	2	UNDECIDED		undocumented; definition needed	
-ALA	2	UNDECIDED		undocumented; definition needed	
-ACA	2	UNDECIDED		undocumented; definition needed	
-GGEN	2	UNDECIDED		undocumented; definition needed	zho twin: 屬格×2
-PENA	2	UNDECIDED		undocumented; definition needed	
-SIM	2	UNDECIDED		undocumented; definition needed	zho twin: 相互×2
-ZAKA	2	UNDECIDED		undocumented; definition needed	
-RANAW	2	UNDECIDED		undocumented; definition needed	
-SAIZI	2	UNDECIDED		undocumented; definition needed	
-QAWMANG	2	UNDECIDED		undocumented; definition needed	
-SEBALAS	2	UNDECIDED		undocumented; definition needed	
-KAKU	2	UNDECIDED		undocumented; definition needed	
-KUSI	2	UNDECIDED		undocumented; definition needed	
-SIQATAZAI	2	UNDECIDED		undocumented; definition needed	
-QASANA	2	UNDECIDED		undocumented; definition needed	
-SISI	2	UNDECIDED		undocumented; definition needed	
-KAYA	2	UNDECIDED		undocumented; definition needed	
-UTA	2	UNDECIDED		undocumented; definition needed	
-QANI	2	UNDECIDED		undocumented; definition needed	
-ADA	2	UNDECIDED		undocumented; definition needed	
-NAMANI	2	UNDECIDED		undocumented; definition needed	
-ZI	2	UNDECIDED		undocumented; definition needed	
-KAWKA	2	UNDECIDED		undocumented; definition needed	
-QIZI	2	UNDECIDED		undocumented; definition needed	
-NAYI	2	UNDECIDED		undocumented; definition needed	
-FFV	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2
-PFT	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2
-PFVSI	2	UNDECIDED		undocumented; definition needed	zho twin: 完成SI×2
-CLS	2	UNDECIDED		undocumented; definition needed	zho twin: 量詞×2
-SYA	2	UNDECIDED		undocumented; definition needed	
-ISEE	2	UNDECIDED		undocumented; definition needed	
-KAKIA	2	UNDECIDED		undocumented; definition needed	
-IOO	2	UNDECIDED		undocumented; definition needed	
-POLITE	2	UNDECIDED		undocumented; definition needed	zho twin: 禮貌×2
-ISIA	2	UNDECIDED		undocumented; definition needed	
-IIN	2	UNDECIDED		undocumented; definition needed	
-IIVA	2	UNDECIDED		undocumented; definition needed	
-ARA	2	UNDECIDED		undocumented; definition needed	
-TIAN	2	UNDECIDED		undocumented; definition needed	zho twin: TIAN(叮嚀)×2
-NAFA	2	UNDECIDED		undocumented; definition needed	zho twin: 主焦×2
-SUMA	2	UNDECIDED		undocumented; definition needed	
-SE	2	UNDECIDED		undocumented; definition needed	
-IRRS	2	UNDECIDED		undocumented; definition needed	zho twin: 非實現×2
-1PLNOM	2	UNDECIDED		undocumented; definition needed	
-EXC	2	UNDECIDED		undocumented; definition needed	
-EXL	2	UNDECIDED		undocumented; definition needed	zho twin: 排除×2
-IFF	2	UNDECIDED		undocumented; definition needed	zho twin: 非實現×2
-AVAF	2	UNDECIDED		undocumented; definition needed	zho twin: 主焦×1
-POSO	2	UNDECIDED		undocumented; definition needed	
-INHU	2	UNDECIDED		undocumented; definition needed	zho twin: 非人×2
-KUEI	2	UNDECIDED		undocumented; definition needed	
-SINPAKA	2	UNDECIDED		undocumented; definition needed	
-PFVIF	2	UNDECIDED		undocumented; definition needed	zho twin: 完成IF×1; 完成工焦×1
-PUSU	2	UNDECIDED		undocumented; definition needed	
-RE	2	UNDECIDED		undocumented; definition needed	
-CANIARA	2	UNDECIDED		undocumented; definition needed	
-MIKOO	2	UNDECIDED		undocumented; definition needed	
-AMAN	2	UNDECIDED		undocumented; definition needed	
-UM	2	UNDECIDED		undocumented; definition needed	
-SIPISIPI	2	UNDECIDED		undocumented; definition needed	
-KNOCKING	2	UNDECIDED		undocumented; definition needed	
-SOUNDS	2	UNDECIDED		undocumented; definition needed	
-TUUH	2	UNDECIDED		undocumented; definition needed	
-IAI	2	UNDECIDED		undocumented; definition needed	
-CF	2	UNDECIDED		undocumented; definition needed	zho twin: 量詞×2
-CUKUE	2	UNDECIDED		undocumented; definition needed	
-ONOM	2	UNDECIDED		undocumented; definition needed	zho twin: 狀聲×2
-EPL	2	UNDECIDED		undocumented; definition needed	
-AG	2	UNDECIDED		undocumented; definition needed	zho twin: 主焦×2
-PINA	2	UNDECIDED		undocumented; definition needed	
-BO	2	UNDECIDED		undocumented; definition needed	zho twin: 自由斜格×2
-CASU	2	UNDECIDED		undocumented; definition needed	zho twin: 使役×2
-BNH	2	UNDECIDED		undocumented; definition needed	zho twin: 附著主格×1; 第一人稱複數(包含)×1
-INGA	2	UNDECIDED		undocumented; definition needed	
-RLE	2	UNDECIDED		undocumented; definition needed	zho twin: 關係詞×2
-NG	2	UNDECIDED		undocumented; definition needed	
-NAI	2	UNDECIDED		undocumented; definition needed	
-RELF	2	UNDECIDED		undocumented; definition needed	zho twin: 自己×1
-KING	2	UNDECIDED		undocumented; definition needed	
-WOU	2	UNDECIDED		undocumented; definition needed	zho twin: 想要×2
-TIA	2	UNDECIDED		undocumented; definition needed	
-TARUA	2	UNDECIDED		undocumented; definition needed	
-TAW	2	UNDECIDED		undocumented; definition needed	
-PACI	2	UNDECIDED		undocumented; definition needed	
-TAN	2	UNDECIDED		undocumented; definition needed	
-MASI	2	UNDECIDED		undocumented; definition needed	
-COP	2	KEEP	COP	Leipzig: listed; standard tier keeps it	zho twin: 是×2
-SAVA	2	UNDECIDED		undocumented; definition needed	zho twin: S主焦A×1; S主焦×1
-1SGGEN	2	UNDECIDED		undocumented; definition needed	
-IPM	2	UNDECIDED		undocumented; definition needed	zho twin: 使役×2
-RV	2	UNDECIDED		undocumented; definition needed	zho twin: 原因焦點×2
-TAPFV	1	UNDECIDED		undocumented; definition needed	zho twin: TA完成×1
-SUAETE	1	UNDECIDED		undocumented; definition needed	
-PFVMU	1	UNDECIDED		undocumented; definition needed	zho twin: 完成貌MU×1
-IFCAU	1	UNDECIDED		undocumented; definition needed	zho twin: 工焦使役×1
-IFPFVCAU	1	UNDECIDED		undocumented; definition needed	zho twin: 工焦完成貌使役×1
-REFLREFL	1	UNDECIDED		undocumented; definition needed	zho twin: 反身×1
-REFLPFVREFL	1	UNDECIDED		undocumented; definition needed	zho twin: 完成貌反身×1
-PFVIV	1	UNDECIDED		undocumented; definition needed	zho twin: 完成工焦×1
-CAAF	1	UNDECIDED		undocumented; definition needed	zho twin: CA重疊主焦×1
-TAF	1	UNDECIDED		undocumented; definition needed	
-REFLPFV	1	UNDECIDED		undocumented; definition needed	zho twin: 反身完成貌×1
-REDNEG	1	UNDECIDED		undocumented; definition needed	zho twin: 重疊否定×1
-AVPFV	1	UNDECIDED		undocumented; definition needed	zho twin: 主事完成主焦×1
-SIPFVI	1	UNDECIDED		undocumented; definition needed	
-AFCA	1	UNDECIDED		undocumented; definition needed	zho twin: 主焦CA×1
-主格	23655	CONVERT	NOM	pairs NOM×20,283; Leipzig NOM; Latin codes per g4	eng twin: NOM×20283; AF×119
-主焦	23389	CONVERT	AV	pairs AF×19,520; voice standard AV	eng twin: AF×19520; AV×1309
-屬格	15617	CONVERT	GEN	pairs GEN×13,603; Leipzig GEN	eng twin: GEN×13603; NOM×13
-斜格	10149	CONVERT	OBL	pairs OBL×9,369; Leipzig OBL	eng twin: OBL×9369
-完成	7604	CONVERT	PFV	pairs PFV×6,991; Leipzig PFV	eng twin: PFV×6991; RLS×12
-受焦	6327	CONVERT	PV	pairs PF×5,405; voice standard PV	eng twin: PF×5405; PV×407
-然後	5076	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CONJ×24
-重疊	5039	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RED×4395
-處格	4865	CONVERT	LOC	pairs LOC×4,438; Leipzig LOC	eng twin: LOC×4438; LF×41
-主題	4787	CONVERT	TOP	pairs TOP×4,639; Leipzig TOP	eng twin: TOP×4639
-語助詞	4724	CONVERT	PART	maintainer vocabulary ruling v2 + g4 2026-11-11	eng twin: PART×4669; AUX×6
-否定	4511	CONVERT	NEG	pairs NEG; Leipzig NEG	eng twin: NEG×4478
-處焦	3885	CONVERT	LV	pairs LF×3,353; voice standard LV	eng twin: LF×3353; LV×48
-遠距	3304	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: DIST×3130; MED×6
-存在	3179	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXIST×2985; EXI×18
-非實現	3033	CONVERT	IRR	pairs IRR; Leipzig IRR	eng twin: IRR×2599
-助動詞	3000	CONVERT	AUX	pairs AUX; Leipzig AUX	eng twin: AUX×2982
-連繫詞	2512	CONVERT	LNK	maintainer vocabulary ruling v1 + g4 Latin codes 2026-11-11	eng twin: LNK×2307; TU×6
-名物化	2478	CONVERT	NMLZ	pairs NMZ/NMLZ; Leipzig NMLZ per point-F ruling	eng twin: NMLZ×1172; NMZ×1015
-連詞	2440	CONVERT	CONJ	maintainer vocabulary ruling v9 + g4 2026-11-11	eng twin: LNK×2434
-實現	2367	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RLS×2113; REAL×27
-完成貌	2346	CONVERT	PFV	variant of 完成; pairs PFV×1,511	eng twin: PFV×1511
-人名	2338	CONVERT	PN	maintainer vocabulary ruling v5/v6 + g4 2026-11-11	eng twin: PN×1587
-使役	2059	CONVERT	CAUS	pairs CAU/CAUS; Leipzig CAUS per point-F ruling	eng twin: CAU×1379; CAUS×484
-可見	2058	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: VIS×2011
-人	1881	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HUM×342
-補語詞	1792	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COMP×1787
-連接詞	1746	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CONJ×1724
-關係詞	1650	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REL×1461
-近指	1570	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROX×1542
-狀態	1474	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: STAT×1134
-未來	1452	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FUT×1359
-所有格	1259	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: POSS×1217; GEN×10
-受格	1233	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ACC×1166; PF×28
-介系詞	1233	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PREP×963
-處所	1188	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LOC×1169
-不可見	1122	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INV×916; INVIS×200
-進行	1028	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROG×1022
-過去	1021	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PST×619; PFV×67
-附著主格	978	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: BN×867; BG×9
-非主焦	934	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NAF×911; NAV×14
-好	905	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: OK×6
-否定詞	864	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEG×168
-第一人稱單數	862	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 1S×765; 1SG×21
-條件詞	840	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COND×840
-附著屬格	840	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: BG×779; BN×10
-我	790	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: I×8
-地名	784	CONVERT	PN	maintainer vocabulary ruling v6 pn-only + g4 2026-11-11	eng twin: PN×748
-Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CA×22
-祈使	761	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IMP×573
-知識詞	734	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EVI×717
-疑問	720	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: Q×710
-習慣	662	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HAB×652
-改變狀態	659	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COS×583
-主動	650	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ACT×624
-感嘆	634	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INT×626
-專有名詞	608	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PN×606
-可能	602	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: POSS×72
-上面	588	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: TOP×24
-狀態改變	574	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COS×330
-中距	565	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: MED×510
-使動	498	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CAU×171
-填補詞	478	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FIL×478
-人名標記	476	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NCM×42
-第三人稱單數	427	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 3S×408
-反身	406	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REFL×369
-第二人稱單數	399	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 2S×354; 2SG×10
-複數	386	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: P×286; PL×72
-工焦	366	CONVERT	OV	pairs IF×291; 4th voice; maintainer 2026-11-11: OV	eng twin: IF×291; IV×50
-非人	359	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NHUM×274; NH×8
-想要	356	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: WOD×15
-助詞	352	CONVERT	PART	maintainer vocabulary ruling v2 + g4 2026-11-11	eng twin: PTC×43; PART×23
-包含	330	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INCL×231
-一定	312	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEC×140
-近距	306	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROX×230
-自由斜格	306	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FO×302
-排除	287	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXCL×209
-中性格	273	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEU×273
-被動	272	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PASS×264
-情態	236	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: MOD×229
-有	216	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXIST×16
-主題標記	214	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: TOP×190
-進行貌	210	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROG×72
-交互	206	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REC×182
-表事實	206	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FAC×147
-未來式	204	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FUT×187
-指焦	187	CONVERT	OV	pairs RF×176; 4th voice; maintainer 2026-11-11: OV	eng twin: RF×176
-所有	180	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: POSS×68
-互相	163	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RECP×91; REC×55
-存在詞	158	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXIST×144
-工具焦點	152	CONVERT	OV	variant of 工焦	eng twin: IF×8
-未實現	130	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IRR×93
-處所格	124	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LOC×124
-遠指	122	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: DIST×122
-表過去	118	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PAST×54
-感嘆詞	108	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INT×102
-第三人稱複數	100	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 3P×98
-地方	97	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PLACE×24
-命令式	96	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IMP×92
-動貌	94	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ASP×90
-假設	94	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HYP×90
-致使	90	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RES×66
-予焦	84	CONVERT	OV	benefactive (pairs BF) → OV (2026-11-11)	eng twin: BF×61; BV×6
-量詞	84	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CLF×26; CN×5
-持續	78	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CONT×68
-完成主焦	71	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PFVAF×33; AF×30
-非現實	70	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IRR×66
-參焦	68	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RF×61
-靜態	68	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: STAT×18
-工具焦	66	CONVERT	OV	variant of 工焦	eng twin: IF×65
-重現	65	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REC×65
-未完成	62	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IMPFV×61
-第二人稱複數	58	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 2P×52
-疑問詞	56	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: Q×41
-命令	56	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IMP×49
-沒有	52	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEG×42
-的	50	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: DE×42
-重複	48	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RED×33
-CA重疊	45	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CA×41
-且	44	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CONJ×38
-未來貌	44	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FUT×42
-經驗	44	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXPER×28
-過去貌	42	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PAST×35
-主焦重疊	39	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RED×22; AFRED×13
-予格	36	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: DAT×34
-自由主題格	30	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FT×26
-單數	30	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: SG×30
-驚嘆	26	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INT×24
-有生命	26	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ANIM×26
-主事	25	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ACT×6
-關係	24	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REL×12
-相互	24	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RECIP×6
-呼格	24	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: VOC×24
-與焦	22	CONVERT	OV	maintainer row-review 2026-11-11: benefactive (eng twins BF/BV) → OV	eng twin: BF×20
-K主焦A	21	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: KAFA×11; KAVA×9
-役使	20	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CAU×14
-問題	20	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: Q×14
-參考焦	20	CONVERT	OV	variant of 指焦/RF	eng twin: RF×18
-第一人稱複數	20	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 1P×13
-介詞	20	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PREP×18
-類別詞	20	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NCM×20
-使	18	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CAUS×6
-美國	18	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: US×8
-重疊主焦	18	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REDAF×9; REDAV×6
-無生命	17	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INAN×17
-包含式	16	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INCL×16
-序數	16	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ORD×10
-祈願	16	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: OPT×16
-T主焦A	15	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: TAVA×7; TAFA×6
-補語	14	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COMP×14
-助	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PART×10
-啊	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FIL×8
-補語連接詞	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COMP×12
-非事實	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NFAC×10
-勸告式	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HOR×8
-連擊詞	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LNK×10
-受惠焦	10	CONVERT	OV	benefactive (pairs BF; cf. s44 受惠焦點 ruling) → OV (2026-11-11)	eng twin: BF×10
-工具格	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INS×10
-屬人	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HUM×8
-工焦完成貌	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IFPFV×7
-名物話	8	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NMZ×6
-關係化	6	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REL×6
-轉述	6	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: KAN×6
-原因焦點	8	CONVERT	OV	s25 ruling (原因焦點 'reason focus' rides the instrument-voice sia- prefix; folds into the 4th voice) + OV ruling (2026-11-11)	zho tier only; eng twin RF/RsnV below pair threshold
-受事／處所焦點	22	CONVERT	PV/LV	s45 + collapse notation: the annotator's own both-ways label (PV-or-LV undecidable) (2026-11-11)	lives in residue strings (受事／處所焦點.祈使 etc., both ／ and / spellings, ~22 tokens); needs a Layer-B rule for the ／ separator before conversion applies
+source_code	count	status	standard	basis	notes	language_overrides
+AF	22208	CONVERT	AV	voice: NTU point D agent focus; standard AV	zho twin: 主焦×19520; 主格×119	
+NOM	20932	KEEP	NOM	Leipzig: listed; standard tier keeps it	zho twin: 主格×20283; 主焦×100 | row-approved 2026-11-11	
+GEN	14056	KEEP	GEN	Leipzig: listed; standard tier keeps it	zho twin: 屬格×13603; 主格×18 | row-approved 2026-11-11	
+OBL	9688	KEEP	OBL	Leipzig: listed; standard tier keeps it	zho twin: 斜格×9369; 受格×26 | row-approved 2026-11-11	
+PFV	8995	KEEP	PFV	Leipzig: listed; standard tier keeps it	zho twin: 完成×6991; 完成貌×1511 | row-approved 2026-11-11	
+FIL	8135	UNDECIDED	FIL	maintainer 2026-11-11: 'FIL is filler word… specific to the spoken corpora' (confirmed: Stories 15,765/Sentences 4/Grammar 0); not in Leipzig — supplementary-standard entry pending	zho twin: 填補詞×478; 啊×8 | row-approved 2026-11-11	
+3SG	7222	KEEP	3SG	Leipzig: legal composition; kept	zho twin: 3S×6; 3PL×5 | row-approved 2026-11-11	
+LOC	6059	KEEP	LOC	Leipzig: listed; standard tier keeps it	zho twin: 處格×4438; 處所×1169 | row-approved 2026-11-11	
+PF	5960	CONVERT	PV	voice: NTU point D patient focus; standard PV	zho twin: 受焦×5405; 受格×28 | approved; his note: investigate the 28 受格 pairings — done: zho-tier slips writing 受格 for 受焦 (e.g. Tsou say.PF/說.受格); eng tier correct	
+1SG	5841	KEEP	1SG	Leipzig: legal composition; kept	zho twin: 第一人稱單數×21; 我×4 | row-approved 2026-11-11	
+TOP	4926	KEEP	TOP	Leipzig: listed; standard tier keeps it	zho twin: 主題×4639; 主題標記×190 | row-approved 2026-11-11	
+PART	4914	KEEP	PART	maintainer vocabulary ruling v2 2026-11-11 (supplementary_codes.tsv)	zho twin: 語助詞×4669; 助詞×23 | row-approved 2026-11-11	
+RED	4809	KEEP	RED	NTU docs point C.ii/iii; target pending (notation, not abbreviation)	zho twin: 重疊×4395; 重複×33 | approved; meaning per his note: the marker for reduplication	
+NEG	4789	KEEP	NEG	Leipzig: listed; standard tier keeps it	zho twin: 否定×4478; 否定詞×168 | row-approved 2026-11-11	
+LNK	4776	KEEP	LNK	maintainer vocabulary ruling v1 2026-11-11 (supplementary_codes.tsv)	zho twin: 連詞×2434; 連繫詞×2307 | row-approved 2026-11-11	
+DM	4547	UNDECIDED		undocumented; definition needed	zho twin: TOP×14; 然後×4 | investigated per his note: zho twin 言談標記 'discourse marker', zho tier uses DM directly — discourse marker, not demonstrative	
+PN	3980	KEEP	PN	maintainer vocabulary ruling v6 2026-11-11 (supplementary_codes.tsv)	zho twin: 人名×1587; 地名×748 | row-approved 2026-11-11	
+LF	3880	CONVERT	LV	voice: NTU point D locative focus; standard LV	zho twin: 處焦×3353; 處格×41 | row-approved 2026-11-11	"Kavalan→PV (maintainer 2026-11-11: ""Kavalan UV -> PV is approved"" — Kavalan has 2 voices; its -an voice converts by function; NTU Kavalan eng tier writes it LF ×1,223)"
+DIST	3449	KEEP	DIST	Leipzig: listed; standard tier keeps it	zho twin: 遠距×3130; 遠指×122 | row-approved 2026-11-11	
+FS	3295	UNDECIDED		undocumented; definition needed	investigated per his note: forms are word-initial fragments (m ×202, s ×127, dehe…) in both tiers — false start (DuBois); spoken-corpus discourse code	
+EXIST	3181	UNDECIDED		undocumented; definition needed	zho twin: 存在×2985; 存在詞×144 | investigated per his note: zho twin 存在 ×2,985 / 存在詞 ×144 — existential	
+AUX	2998	KEEP	AUX	Leipzig: listed; standard tier keeps it	zho twin: 助動詞×2982; 語助詞×6 | row-approved 2026-11-11	
+IRR	2984	KEEP	IRR	Leipzig: listed; standard tier keeps it	zho twin: 非實現×2599; 未實現×93 | row-approved 2026-11-11	
+3PL	2354	KEEP	3PL	Leipzig: legal composition; kept	zho twin: 3SG×5; PL×2 | row-approved 2026-11-11	
+RLS	2344	KEEP	RLS	"maintainer row-review 2026-11-11: ""approved as a marker for realis"""	zho twin: 實現×2113; 完成×12 | the 12 完成-paired cases = Rukai realis -a- where the zho tier wrote 完成 for 實現 (tier inconsistency, eng correct)	
+VIS	2045	UNDECIDED		undocumented; definition needed	zho twin: 可見×2011; 不可見×2	
+PROX	1858	KEEP	PROX	Leipzig: listed; standard tier keeps it	zho twin: 近指×1542; 近距×230	
+COMP	1848	KEEP	COMP	Leipzig: listed; standard tier keeps it	zho twin: 補語詞×1787; 補語×14 | row-approved 2026-11-11	
+CONJ	1828	KEEP	CONJ	maintainer vocabulary ruling v9 2026-11-11 (supplementary_codes.tsv)	zho twin: 連接詞×1724; 且×38 | row-approved 2026-11-11	
+CAU	1751	CONVERT	CAUS	NTU point F.i departure; back to Leipzig CAUS per maintainer 2026-11-11	zho twin: 使役×1379; 使動×171 | row-approved 2026-11-11	
+FUT	1692	KEEP	FUT	Leipzig: listed; standard tier keeps it	zho twin: 未來×1359; 未來式×187 | row-approved 2026-11-11	
+2SG	1685	KEEP	2SG	Leipzig: legal composition; kept	zho twin: 第二人稱單數×10; 3SG×4 | row-approved 2026-11-11	
+1IPL	1632	UNDECIDED		undocumented; definition needed	zho twin: 1PL×11; 1EPL×4 | row-approved 2026-11-11	
+COS	1613	KEEP	COS	"maintainer row-review 2026-11-11: ""approved as marker for change of state"""	zho twin: 改變狀態×583; 狀態改變×330	
+REL	1530	KEEP	REL	Leipzig: listed; standard tier keeps it	zho twin: 關係詞×1461; 關係×12 | row-approved 2026-11-11	
+CN	1524	KEEP	CN	maintainer vocabulary ruling v4 2026-11-11 (supplementary_codes.tsv)	zho twin: 量詞×5; 籃子×2 | row-approved 2026-11-11	
+POSS	1492	KEEP	POSS	Leipzig: listed; standard tier keeps it	zho twin: 所有格×1217; 可能×72 | approved as possessive; his note's 72 可能 cases investigated: Rukai maka-/law- glossed POSS.MOD ↔ 可能.情態 = POSSIBILITY modal — NTU's POSS covers two categories; the POSS.MOD composite flagged for its own decision	
+AV	1468	KEEP	AV	voice: undocumented spelling of AF; same standard	zho twin: 主焦×1309; 主格×5 | row-approved 2026-11-11	
+STAT	1414	KEEP	STAT	maintainer vocabulary ruling v3 2026-11-11 (supplementary_codes.tsv)	zho twin: 狀態×1134; 靜態×18 | row-approved 2026-11-11	
+KA	1306	UNDECIDED		undocumented; definition needed	zho twin: 耙梳×1	
+NMLZ	1257	KEEP	NMLZ	Leipzig: listed; standard tier keeps it	zho twin: 名物化×1172; 處所×4 | row-approved 2026-11-11	
+ACC	1183	KEEP	ACC	Leipzig: listed; standard tier keeps it	zho twin: 受格×1166; 受焦×6 | row-approved 2026-11-11	
+PROG	1110	KEEP	PROG	Leipzig: listed; standard tier keeps it	zho twin: 進行×1022; 進行貌×72 | row-approved 2026-11-11	
+NMZ	1080	CONVERT	NMLZ	NTU point F.iii departure; back to Leipzig NMLZ per maintainer 2026-11-11	zho twin: 名物化×1015; 名物話×6	
+1PL	1052	KEEP	1PL	Leipzig: legal composition; kept	zho twin: 1SG×4; 1Pl×2 | row-approved 2026-11-11	
+PREP	987	KEEP	PREP	"maintainer row-review 2026-11-11: ""approved for preposition"" (not in Leipzig; registered)"	zho twin: 介系詞×963; 介詞×18	
+BN	980	UNDECIDED		undocumented; definition needed	zho twin: 附著主格×867; 附著屬格×10	
+NAF	944	UNDECIDED		maintainer 2026-11-11 (affix page c5): adopt case-by-case handling; 4 Atayal tokens, each needs its own call	zho twin: 非主焦×911; 主焦×20 | row-approved 2026-11-11	
+INV	928	KEEP	INV	"maintainer row-review 2026-11-11: ""approved for invisible""; zho twin 不可見 ×916"	zho twin: 不可見×916	
+BG	852	UNDECIDED		undocumented; definition needed	zho twin: 附著屬格×779; 附著主格×9	
+COND	850	KEEP	COND	Leipzig: listed; standard tier keeps it	zho twin: 條件詞×840; 連接詞×4	
+1S	840	UNDECIDED		undocumented; definition needed	zho twin: 第一人稱單數×765; 第一人稱單數主格×2	
+Q	839	KEEP	Q	Leipzig: listed; standard tier keeps it	zho twin: 疑問×710; 疑問詞×41	
+1EPL	811	UNDECIDED		undocumented; definition needed	zho twin: 1IPL×2	
+IMP	806	KEEP	IMP	Leipzig: listed; standard tier keeps it	zho twin: 祈使×573; 命令式×92	
+INT	790	UNDECIDED		undocumented; definition needed	zho twin: 感嘆×626; 感嘆詞×102	
+EVI	738	UNDECIDED		undocumented; definition needed	zho twin: 知識詞×717; 之事詞×2	
+SA	716	UNDECIDED		undocumented; definition needed	zho twin: IF×2	
+HAB	662	UNDECIDED		undocumented; definition needed	zho twin: 習慣×652; 主焦×4	
+ACT	658	UNDECIDED		undocumented; definition needed	zho twin: 主動×624; 主格×8	
+PST	638	KEEP	PST	Leipzig: listed; standard tier keeps it	zho twin: 過去×619; 離去×2	
+MED	584	UNDECIDED		undocumented; definition needed	zho twin: 中距×510; 遠距×6	
+BC	583	UNDECIDED		undocumented; definition needed	zho twin: u×2	
+HUM	540	UNDECIDED		undocumented; definition needed	zho twin: 人×342; 屬人×8	
+CAUS	539	KEEP	CAUS	Leipzig: listed; standard tier keeps it	zho twin: 使役×484; 使×6 | row-approved 2026-11-11	
+2PL	514	KEEP	2PL	Leipzig: legal composition; kept	zho twin: 2SG×2	
+AY	496	UNDECIDED		undocumented; definition needed		
+HAN	462	UNDECIDED		undocumented; definition needed		
+3S	454	UNDECIDED		undocumented; definition needed	zho twin: 第三人稱單數×408; 第一人稱單數×2	
+PV	437	KEEP	PV	voice: undocumented spelling of PF; same standard	zho twin: 受焦×407; 受格×4 | row-approved 2026-11-11	
+NHUM	435	UNDECIDED		undocumented; definition needed	zho twin: 非人×274	
+KAN	412	UNDECIDED		undocumented; definition needed	zho twin: 轉述×6; 不確定×4	
+REFL	411	KEEP	REFL	Leipzig: listed; standard tier keeps it	zho twin: 反身×369; 主動×4	
+2S	394	UNDECIDED		undocumented; definition needed	zho twin: 第二人稱單數×354; 第二人稱複數×4	
+IF	392	CONVERT	OV	voice: NTU point D referential/instrumental = the variable 4th voice; maintainer 2026-11-11: OV	zho twin: 工焦×291; 工具焦×65 | row-approved 2026-11-11	
+NCM	360	CONVERT	PN	maintainer vocabulary ruling v5 (per your note: fold name markers into PN; your button said PNM — flagged for confirmation) 2026-11-11	zho twin: 人名標記×42; 類別詞×20 | row-approved 2026-11-11	
+REC	332	CONVERT	RECP	NTU point F.iv departure; back to Leipzig RECP per maintainer 2026-11-11	zho twin: 交互×182; 重現×65	
+P	320	KEEP	P	Leipzig: listed; standard tier keeps it	zho twin: 複數×286; 複雜×2	
+FAC	316	UNDECIDED		undocumented; definition needed	zho twin: 表事實×147; 事實貌×1	
+NI	312	UNDECIDED		undocumented; definition needed		
+FO	308	UNDECIDED		undocumented; definition needed	zho twin: 自由斜格×302; 自由主題格×4	
+PI	302	UNDECIDED		undocumented; definition needed		
+NEU	285	UNDECIDED		undocumented; definition needed	zho twin: 中性格×273; 屬格×2	
+PASS	278	KEEP	PASS	Leipzig: listed; standard tier keeps it	zho twin: 被動×264; 被動式×2	
+RF	275	CONVERT	OV	voice: NTU point D referential focus = 4th voice; maintainer 2026-11-11: OV	zho twin: 指焦×176; 參焦×61	
+CLF	264	KEEP	CLF	Leipzig: listed; standard tier keeps it	zho twin: 量詞×26	
+INCL	254	KEEP	INCL	Leipzig: listed; standard tier keeps it	zho twin: 包含×231; 包含式×16	
+TA	246	UNDECIDED		undocumented; definition needed	zho twin: 採×1; T×1	
+AN	246	UNDECIDED		undocumented; definition needed	zho twin: 處焦×4	
+MOD	236	UNDECIDED		undocumented; definition needed	zho twin: 情態×229	
+X	234	UNDECIDED		undocumented; definition needed	zho twin: 反正×2	
+MAZA	234	UNDECIDED		undocumented; definition needed		
+EXCL	228	KEEP	EXCL	Leipzig: listed; standard tier keeps it	zho twin: 排除×209; 主格×2	
+I	206	UNDECIDED		undocumented; definition needed	zho twin: 我×8	
+INVIS	200	UNDECIDED		undocumented; definition needed	zho twin: 不可見×200	
+PAST	162	UNDECIDED		undocumented; definition needed	zho twin: 過去×65; 表過去×54	
+TU	150	UNDECIDED		undocumented; definition needed	zho twin: 連繫詞×6; 做×2	
+NEC	146	UNDECIDED		undocumented; definition needed	zho twin: 一定×140	
+MA	142	UNDECIDED		undocumented; definition needed		
+SI	142	UNDECIDED		undocumented; definition needed	zho twin: 男人×1	
+QA	141	UNDECIDED		undocumented; definition needed		
+A	133	KEEP	A	Leipzig: listed; standard tier keeps it	zho twin: 名物化×2; A學校×2	
+BF	120	CONVERT	OV	maintainer row-review 2026-11-11: benefactive voice (zho twins 予焦×61/與焦×20/受惠焦×10) → OV per the 4th-voice ruling	zho twin: 予焦×61; 與焦×20	
+T	114	UNDECIDED		undocumented; definition needed		
+3P	108	UNDECIDED		undocumented; definition needed	zho twin: 第三人稱複數×98; 第三人稱單數×4	
+RECP	104	KEEP	RECP	Leipzig: listed; standard tier keeps it	zho twin: 互相×91; 相互×4	
+ASP	96	UNDECIDED		undocumented; definition needed	zho twin: 動貌×90; 語助詞×4	
+SG	94	KEEP	SG	Leipzig: listed; standard tier keeps it	zho twin: 單數×30; 1SG×6	
+HYP	92	UNDECIDED		undocumented; definition needed	zho twin: 假設×90; 未來×2	
+U	92	UNDECIDED		undocumented; definition needed		
+MU	88	UNDECIDED		undocumented; definition needed		
+PL	86	KEEP	PL	Leipzig: listed; standard tier keeps it	zho twin: 複數×72; 處焦×2	
+UH	86	UNDECIDED		undocumented; definition needed		
+RES	79	KEEP	RES	Leipzig: listed; standard tier keeps it	zho twin: 致使×66; 實現×1	
+NA	78	KEEP	NA	Leipzig: legal composition; kept		
+UNI	78	UNDECIDED		undocumented; definition needed		
+CA	76	UNDECIDED		NTU docs point C.i (Ca redup); target pending (notation, not abbreviation)	zho twin: CA重疊×41; Ca重疊×22	
+NGU	75	UNDECIDED		undocumented; definition needed		
+CONT	70	UNDECIDED		undocumented; definition needed	zho twin: 持續×68; 持續誒×1	
+PA	68	UNDECIDED		undocumented; definition needed		
+HAW	64	UNDECIDED		undocumented; definition needed		
+IMPFV	64	UNDECIDED		undocumented; definition needed	zho twin: 未完成×61; 未完成貌×2	
+LV	58	KEEP	LV	"maintainer row-review 2026-11-11: ""This is locative voice (LV)"""	zho twin: 處焦×48; 受焦×2	
+IV	58	CONVERT	OV	"maintainer row-review 2026-11-11: ""This is OV… listed as instrumental voice, but we're converting"""	zho twin: 工焦×50; 公教×2	
+2P	58	UNDECIDED		undocumented; definition needed	zho twin: 第二人稱複數×52; 第二人稱×2	
+ANA	58	UNDECIDED		undocumented; definition needed		
+ARI	50	UNDECIDED		undocumented; definition needed		
+MAKA	48	UNDECIDED		undocumented; definition needed	zho twin: 當MAKA×2	
+DE	46	UNDECIDED		undocumented; definition needed	zho twin: 的×42	
+BA	44	UNDECIDED		undocumented; definition needed	zho twin: 把×4	
+PTC	44	UNDECIDED		undocumented; definition needed	zho twin: 助詞×43	
+IN	44	UNDECIDED		undocumented; definition needed		
+PFVAF	41	UNDECIDED		undocumented; definition needed	zho twin: 完成主焦×33; 主焦主焦×1	
+YU	40	UNDECIDED		undocumented; definition needed		
+N	36	KEEP	N	Leipzig: listed; standard tier keeps it		
+AH	36	UNDECIDED		undocumented; definition needed	zho twin: 阿×2; 阿!×2	
+DAT	36	KEEP	DAT	Leipzig: listed; standard tier keeps it	zho twin: 予格×34	
+KI	32	UNDECIDED		undocumented; definition needed		
+CI	32	UNDECIDED		undocumented; definition needed		
+QENA	32	UNDECIDED		undocumented; definition needed		
+S	30	KEEP	S	Leipzig: listed; standard tier keeps it		
+YA	30	UNDECIDED		undocumented; definition needed		
+II	28	UNDECIDED		undocumented; definition needed		
+LUS	28	UNDECIDED		undocumented; definition needed	zho twin: LU×4	
+EXPER	28	UNDECIDED		undocumented; definition needed	zho twin: 經驗×28	
+PLACE	28	UNDECIDED		undocumented; definition needed	zho twin: 地方×24; 地方標記×4	
+REAL	27	UNDECIDED		undocumented; definition needed	zho twin: 實現×27	
+FT	26	UNDECIDED		undocumented; definition needed	zho twin: 自由主題格×26	
+VOC	26	KEEP	VOC	Leipzig: listed; standard tier keeps it	zho twin: 呼格×24; 呼告×1	
+CU	26	UNDECIDED		undocumented; definition needed		
+TAKU	26	UNDECIDED		undocumented; definition needed		
+AVA	26	UNDECIDED		undocumented; definition needed		
+ANIM	26	UNDECIDED		undocumented; definition needed	zho twin: 有生命×26	
+KU	24	UNDECIDED		undocumented; definition needed		
+HA	22	UNDECIDED		undocumented; definition needed		
+NGI	22	UNDECIDED		undocumented; definition needed		
+IYA	22	UNDECIDED		undocumented; definition needed		
+RA	21	UNDECIDED		undocumented; definition needed		
+KONG	20	UNDECIDED		undocumented; definition needed		
+MATI	20	UNDECIDED		undocumented; definition needed		
+MIN	20	UNDECIDED		undocumented; definition needed		
+EXHORT	20	UNDECIDED		undocumented; definition needed		
+1IP	19	UNDECIDED		undocumented; definition needed	zho twin: 1IPL×2	
+INAN	19	UNDECIDED		undocumented; definition needed	zho twin: 無生命×17; 非生命×2	
+SAKA	18	UNDECIDED		undocumented; definition needed		
+EXI	18	UNDECIDED		undocumented; definition needed	zho twin: 存在×18	
+MG	16	UNDECIDED		undocumented; definition needed	zho twin: 主焦×2	
+HE	16	UNDECIDED		undocumented; definition needed		
+KIN	16	UNDECIDED		undocumented; definition needed		
+WOD	16	UNDECIDED		undocumented; definition needed	zho twin: 想要×15	
+1P	16	UNDECIDED		undocumented; definition needed	zho twin: 第一人稱複數×13	
+KUA	16	UNDECIDED		undocumented; definition needed		
+OPT	16	UNDECIDED		undocumented; definition needed	zho twin: 祈願×16	
+KAMA	16	UNDECIDED		undocumented; definition needed		
+HOR	16	UNDECIDED		undocumented; definition needed	zho twin: 勸告式×8; 勸告×4	
+TE	16	UNDECIDED		undocumented; definition needed		
+AFRED	15	UNDECIDED		undocumented; definition needed	zho twin: 主焦重疊×13	
+KAFA	15	UNDECIDED		undocumented; definition needed	zho twin: K主焦A×11; K主格A×2	
+TN	14	UNDECIDED		undocumented; definition needed		
+NAV	14	UNDECIDED		undocumented; definition needed	zho twin: 非主焦×14	
+INS	14	KEEP	INS	Leipzig: listed; standard tier keeps it	zho twin: 工具格×10; 工格×2	
+KALA	14	UNDECIDED		undocumented; definition needed		
+NIKA	14	UNDECIDED		undocumented; definition needed		
+MI	14	UNDECIDED		undocumented; definition needed		
+NAN	14	UNDECIDED		undocumented; definition needed		
+SAIZA	14	UNDECIDED		undocumented; definition needed		
+EXH	14	UNDECIDED		undocumented; definition needed		
+OK	12	UNDECIDED		undocumented; definition needed	zho twin: 好×6; 好啊×4	
+UN	12	UNDECIDED		undocumented; definition needed		
+TARU	12	UNDECIDED		undocumented; definition needed		
+AKU	12	UNDECIDED		undocumented; definition needed		
+DUDUUT	12	UNDECIDED		undocumented; definition needed		
+IFPFV	12	CONVERT	OV.PFV	"maintainer row-review 2026-11-11: ""OV.PFV (other voice, perfective)""; zho twin 工焦完成貌"	zho twin: 工焦完成貌×7; 工焦完成×4	
+PAKA2	12	UNDECIDED		undocumented; definition needed		
+VA	12	UNDECIDED		undocumented; definition needed		
+IMA	12	UNDECIDED		undocumented; definition needed		
+PIN	12	UNDECIDED		undocumented; definition needed		
+IS	11	CONVERT	OV	maintainer row-review 2026-11-11: zho twin 工焦 — instrument → OV	zho twin: 工焦×3	
+TAVA	11	UNDECIDED		undocumented; definition needed	zho twin: T主焦A×7; T主焦×1	
+SII	11	UNDECIDED		undocumented; definition needed	zho twin: 花×1	
+1EP	10	UNDECIDED		undocumented; definition needed		
+BV	10	CONVERT	OV	maintainer row-review 2026-11-11: benefactive voice (zho twins 予焦/與焦) → OV	zho twin: 予焦×6; 與焦×2	
+NFAC	10	UNDECIDED		undocumented; definition needed	zho twin: 非事實×10	
+NO	10	UNDECIDED		undocumented; definition needed		
+PAKA	10	UNDECIDED		undocumented; definition needed		
+KINAU	10	UNDECIDED		undocumented; definition needed		
+ORD	10	UNDECIDED		undocumented; definition needed	zho twin: 序數×10	
+TAI	10	UNDECIDED		undocumented; definition needed		
+KIA	10	UNDECIDED		undocumented; definition needed		
+KINA	10	UNDECIDED		undocumented; definition needed		
+XX	10	UNDECIDED		undocumented; definition needed		
+REDAF	10	UNDECIDED		undocumented; definition needed	zho twin: 重疊主焦×9	
+KANI	10	UNDECIDED		undocumented; definition needed		
+UNGWA	10	UNDECIDED		undocumented; definition needed		
+ME	10	UNDECIDED		undocumented; definition needed		
+TO	10	UNDECIDED		undocumented; definition needed		
+KAVA	9	UNDECIDED		undocumented; definition needed	zho twin: K主焦A×9	
+3SGGEN	8	UNDECIDED		undocumented; definition needed	zho twin: 3SG屬格×2	
+MK	8	UNDECIDED		undocumented; definition needed		
+EXSIT	8	UNDECIDED		undocumented; definition needed	zho twin: 存在×6; 存在詞×2	
+KN	8	UNDECIDED		undocumented; definition needed		
+MANA	8	UNDECIDED		undocumented; definition needed		
+TAKA	8	UNDECIDED		undocumented; definition needed		
+MAU	8	UNDECIDED		undocumented; definition needed		
+SU	8	UNDECIDED		undocumented; definition needed		
+LA	8	UNDECIDED		undocumented; definition needed		
+SUA	8	UNDECIDED		undocumented; definition needed		
+WA	8	UNDECIDED		undocumented; definition needed		
+WAW	8	UNDECIDED		undocumented; definition needed		
+BI	8	UNDECIDED		undocumented; definition needed		
+US	8	UNDECIDED		undocumented; definition needed	zho twin: 美國×8	
+IZA	8	UNDECIDED		undocumented; definition needed		
+WANAY	8	UNDECIDED		undocumented; definition needed		
+NH	8	UNDECIDED		undocumented; definition needed	zho twin: 非人×8	
+QUOT	8	KEEP	QUOT	Leipzig: listed; standard tier keeps it	zho twin: 疑問×2	
+MARA	8	UNDECIDED		undocumented; definition needed		
+MARI	8	UNDECIDED		undocumented; definition needed		
+MINA	8	UNDECIDED		undocumented; definition needed		
+REDAV	7	UNDECIDED		undocumented; definition needed	zho twin: 重疊主焦×6	
+TAFA	7	UNDECIDED		undocumented; definition needed	zho twin: T主焦A×6; 主焦×1	
+PS	6	UNDECIDED		undocumented; definition needed		
+RECIP	6	UNDECIDED		undocumented; definition needed	zho twin: 相互×6	
+AFPFV	6	UNDECIDED		undocumented; definition needed	zho twin: 主焦完成×3; 主焦完成貌×2	
+LINK	6	UNDECIDED		undocumented; definition needed	zho twin: 連繫詞×4; 連詞×2	
+NON	6	UNDECIDED		undocumented; definition needed	zho twin: 主格×6	
+AVI	6	UNDECIDED		undocumented; definition needed		
+M	6	KEEP	M	Leipzig: listed; standard tier keeps it		
+ZA	6	UNDECIDED		undocumented; definition needed		
+HALU	6	UNDECIDED		undocumented; definition needed		
+KALI	6	UNDECIDED		undocumented; definition needed		
+E	6	UNDECIDED		undocumented; definition needed		
+MAS	6	UNDECIDED		undocumented; definition needed	zho twin: 斜格×2	
+INJ	6	UNDECIDED		undocumented; definition needed	zho twin: 感嘆詞×4; 感嘆×2	
+DUUT	6	UNDECIDED		undocumented; definition needed		
+NASA	6	UNDECIDED		undocumented; definition needed		
+LE	6	UNDECIDED		undocumented; definition needed	zho twin: 了×2	
+AAH	6	UNDECIDED		undocumented; definition needed	zho twin: 哎呀×2	
+PARI	6	UNDECIDED		undocumented; definition needed		
+KAAN	6	UNDECIDED		undocumented; definition needed		
+INTJ	6	UNDECIDED		undocumented; definition needed	zho twin: 感嘆×4; 驚嘆×2	
+INH	6	UNDECIDED		undocumented; definition needed	zho twin: 非人×5	
+MUSU	6	UNDECIDED		undocumented; definition needed		
+NUM	6	UNDECIDED		undocumented; definition needed	zho twin: 人×4; 屬人×2	
+OH	6	UNDECIDED		undocumented; definition needed	zho twin: 喔×4	
+GEM	4	UNDECIDED		undocumented; definition needed	zho twin: 屬格×4	
+K	4	UNDECIDED		undocumented; definition needed		
+2EPL	4	UNDECIDED		undocumented; definition needed		
+MN	4	UNDECIDED		undocumented; definition needed		
+1IPLNOM	4	UNDECIDED		undocumented; definition needed		
+MP	4	UNDECIDED		undocumented; definition needed		
+EXIXT	4	UNDECIDED		undocumented; definition needed	zho twin: 存在×4	
+EMPH	4	UNDECIDED		undocumented; definition needed	zho twin: 強調×4	
+NAKI	4	UNDECIDED		undocumented; definition needed		
+TI	4	UNDECIDED		undocumented; definition needed		
+KAU	4	UNDECIDED		undocumented; definition needed		
+PAI	4	UNDECIDED		undocumented; definition needed		
+MARU	4	UNDECIDED		undocumented; definition needed		
+MANNER	4	UNDECIDED		undocumented; definition needed	zho twin: 方式×4	
+FN	4	UNDECIDED		undocumented; definition needed		
+LUKA	4	UNDECIDED		undocumented; definition needed		
+TARA	4	UNDECIDED		undocumented; definition needed		
+LU	4	UNDECIDED		undocumented; definition needed		
+NP	4	KEEP	NP	Leipzig: legal composition; kept	zho twin: 人名×4	
+TALA	4	UNDECIDED		undocumented; definition needed		
+BANG	4	UNDECIDED		undocumented; definition needed		
+AW	4	UNDECIDED		undocumented; definition needed		
+3SGNOM	4	UNDECIDED		undocumented; definition needed		
+LI	4	UNDECIDED		undocumented; definition needed		
+MEI	4	UNDECIDED		undocumented; definition needed		
+ISAW	4	UNDECIDED		undocumented; definition needed		
+TALI	4	UNDECIDED		undocumented; definition needed		
+DOST	4	UNDECIDED		undocumented; definition needed	zho twin: 遠距×4	
+POT	4	UNDECIDED		undocumented; definition needed	zho twin: 可能×3	
+TUTUT	4	UNDECIDED		undocumented; definition needed		
+VIST	4	UNDECIDED		undocumented; definition needed	zho twin: 可見×4	
+O	4	UNDECIDED		undocumented; definition needed		
+NU	4	UNDECIDED		undocumented; definition needed		
+NAW	4	UNDECIDED		undocumented; definition needed		
+1IPLGEN	4	UNDECIDED		undocumented; definition needed		
+NYA	4	UNDECIDED		undocumented; definition needed		
+QAY	4	UNDECIDED		undocumented; definition needed		
+AI	4	UNDECIDED		undocumented; definition needed		
+MATA	4	UNDECIDED		undocumented; definition needed		
+EE	4	UNDECIDED		undocumented; definition needed		
+PROS	4	UNDECIDED		undocumented; definition needed	zho twin: 進行×4	
+CAFA	4	UNDECIDED		undocumented; definition needed	zho twin: C主焦A×3; CA重疊主焦×1	
+EXT	4	UNDECIDED		undocumented; definition needed	zho twin: 存在×4	
+PARA	4	UNDECIDED		undocumented; definition needed		
+TEEN	4	UNDECIDED		undocumented; definition needed		
+POSOO	4	UNDECIDED		undocumented; definition needed		
+KUCU	4	UNDECIDED		undocumented; definition needed		
+PO	4	UNDECIDED		undocumented; definition needed		
+CO	4	UNDECIDED		undocumented; definition needed		
+PATA	4	UNDECIDED		undocumented; definition needed		
+KAS	4	UNDECIDED		undocumented; definition needed		
+PRF	4	KEEP	PRF	Leipzig: listed; standard tier keeps it	zho twin: 完成×4	
+PRS	4	KEEP	PRS	Leipzig: listed; standard tier keeps it	zho twin: 實現×2; 現在×1	
+DUR	4	KEEP	DUR	Leipzig: listed; standard tier keeps it	zho twin: 持續×4	
+ADVRS	4	UNDECIDED		undocumented; definition needed	zho twin: 轉折×4	
+STAV	4	UNDECIDED		undocumented; definition needed	zho twin: 狀態×2	
+CLA	4	UNDECIDED		undocumented; definition needed		
+PFVAV	4	UNDECIDED		undocumented; definition needed	zho twin: 完成主焦×4	
+HNUM	4	UNDECIDED		undocumented; definition needed	zho twin: 非人×4	
+NPI	4	UNDECIDED		undocumented; definition needed		
+MARO	4	UNDECIDED		undocumented; definition needed		
+H	4	UNDECIDED		undocumented; definition needed		
+CAUPFV	3	UNDECIDED		undocumented; definition needed	zho twin: 使役完成×1; 使役完成使役×1	
+AFPFVRED	3	UNDECIDED		undocumented; definition needed	zho twin: 主焦完成重疊×3	
+ISPFV	3	UNDECIDED		undocumented; definition needed	zho twin: 工焦完成貌×3	
+EN	3	UNDECIDED		undocumented; definition needed		
+AVRED	3	UNDECIDED		undocumented; definition needed	zho twin: 主焦重疊×2; 主格重疊×1	
+SAFA	3	UNDECIDED		undocumented; definition needed	zho twin: S主焦A×2	
+RAVA	3	UNDECIDED		undocumented; definition needed	zho twin: R主焦A×3	
+TNG	2	UNDECIDED		undocumented; definition needed		
+PG	2	UNDECIDED		undocumented; definition needed		
+KOM	2	UNDECIDED		undocumented; definition needed	zho twin: 主格×2	
+1EPF	2	UNDECIDED		undocumented; definition needed	zho twin: 1EPL×2	
+1EPLNOM	2	UNDECIDED		undocumented; definition needed		
+SO	2	UNDECIDED		undocumented; definition needed		
+3EPL	2	UNDECIDED		undocumented; definition needed		
+PIRI	2	UNDECIDED		undocumented; definition needed		
+PIRING	2	UNDECIDED		undocumented; definition needed		
+SN	2	UNDECIDED		undocumented; definition needed		
+PT	2	UNDECIDED		undocumented; definition needed		
+MS	2	UNDECIDED		undocumented; definition needed		
+PEV	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2	
+LP	2	UNDECIDED		undocumented; definition needed	zho twin: 處焦×1	
+MT	2	UNDECIDED		undocumented; definition needed		
+TG	2	UNDECIDED		undocumented; definition needed		
+PERF	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2	
+PAR	2	UNDECIDED		undocumented; definition needed	zho twin: 助詞×2	
+PFP	2	UNDECIDED		undocumented; definition needed	zho twin: 介紹P×2	
+FUF	2	UNDECIDED		undocumented; definition needed	zho twin: 未來×2	
+2SGGEN	2	UNDECIDED		undocumented; definition needed		
+NOA	2	UNDECIDED		undocumented; definition needed		
+RT	2	UNDECIDED		undocumented; definition needed		
+PFC	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2	
+XXX	2	UNDECIDED		undocumented; definition needed		
+ZOU	2	UNDECIDED		undocumented; definition needed		
+EMP	2	UNDECIDED		undocumented; definition needed	zho twin: 強調×2	
+GI	2	UNDECIDED		undocumented; definition needed		
+PFVRED	2	UNDECIDED		undocumented; definition needed	zho twin: 完成重疊×2	
+PAN	2	UNDECIDED		undocumented; definition needed		
+QUES	2	UNDECIDED		undocumented; definition needed	zho twin: 疑問×2	
+DET	2	KEEP	DET	Leipzig: listed; standard tier keeps it	zho twin: 限定×2	
+NMLLZ	2	UNDECIDED		undocumented; definition needed	zho twin: 名物化×2	
+PARAMIA	2	UNDECIDED		undocumented; definition needed		
+NMA	2	UNDECIDED		undocumented; definition needed	zho twin: 名物化×2	
+RLSRED	2	UNDECIDED		undocumented; definition needed	zho twin: 實現重疊×1	
+YARA	2	UNDECIDED		undocumented; definition needed		
+DAU	2	UNDECIDED		undocumented; definition needed		
+NAMA	2	UNDECIDED		undocumented; definition needed		
+KUNA	2	UNDECIDED		undocumented; definition needed		
+MIANI	2	UNDECIDED		undocumented; definition needed		
+EXCLM	2	UNDECIDED		undocumented; definition needed	zho twin: 感嘆詞×2	
+BE	2	UNDECIDED		undocumented; definition needed		
+PIA	2	UNDECIDED		undocumented; definition needed		
+MIA	2	UNDECIDED		undocumented; definition needed		
+TINU	2	UNDECIDED		undocumented; definition needed		
+ATA	2	UNDECIDED		undocumented; definition needed		
+SATU	2	UNDECIDED		undocumented; definition needed		
+SANGU	2	UNDECIDED		undocumented; definition needed		
+LRI	2	UNDECIDED		undocumented; definition needed		
+TATA	2	UNDECIDED		undocumented; definition needed		
+TAU	2	UNDECIDED		undocumented; definition needed		
+LAU	2	UNDECIDED		undocumented; definition needed		
+TUA	2	UNDECIDED		undocumented; definition needed		
+LRINGA	2	UNDECIDED		undocumented; definition needed		
+LUKU	2	UNDECIDED		undocumented; definition needed		
+BURU	2	UNDECIDED		undocumented; definition needed		
+PR	2	UNDECIDED		undocumented; definition needed	zho twin: 近指×2	
+RLZ	2	UNDECIDED		undocumented; definition needed	zho twin: 實現×2	
+PINGI	2	UNDECIDED		undocumented; definition needed		
+ASI	2	UNDECIDED		undocumented; definition needed		
+NE	2	UNDECIDED		undocumented; definition needed		
+NIA	2	UNDECIDED		undocumented; definition needed		
+AMANIGO	2	UNDECIDED		undocumented; definition needed		
+PVF	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2	
+KOTAKA	2	UNDECIDED		undocumented; definition needed		
+LAO	2	UNDECIDED		undocumented; definition needed		
+AMANI	2	UNDECIDED		undocumented; definition needed		
+AMIYATA	2	UNDECIDED		undocumented; definition needed		
+VOTHA	2	UNDECIDED		undocumented; definition needed		
+SAYA	2	UNDECIDED		undocumented; definition needed		
+W	2	UNDECIDED		undocumented; definition needed		
+HIYA	2	UNDECIDED		undocumented; definition needed		
+MALA	2	UNDECIDED		undocumented; definition needed		
+HIAM	2	UNDECIDED		undocumented; definition needed		
+YATA	2	UNDECIDED		undocumented; definition needed		
+AM	2	UNDECIDED		undocumented; definition needed		
+KAI	2	UNDECIDED		undocumented; definition needed		
+MAKI	2	UNDECIDED		undocumented; definition needed		
+PAH	2	UNDECIDED		undocumented; definition needed		
+TADA	2	UNDECIDED		undocumented; definition needed		
+FU	2	UNDECIDED		undocumented; definition needed	zho twin: 未來貌×2	
+PSAT	2	UNDECIDED		undocumented; definition needed	zho twin: 過去貌×2	
+MATABI	2	UNDECIDED		undocumented; definition needed		
+NANI	2	UNDECIDED		undocumented; definition needed		
+HYW	2	UNDECIDED		undocumented; definition needed		
+FSFSAF	2	UNDECIDED		undocumented; definition needed	zho twin: FSFS主焦×2	
+KWA	2	UNDECIDED		undocumented; definition needed		
+SMAL	2	UNDECIDED		undocumented; definition needed		
+BABA	2	UNDECIDED		undocumented; definition needed		
+TEK	2	UNDECIDED		undocumented; definition needed		
+SANU	2	UNDECIDED		undocumented; definition needed		
+KAW	2	UNDECIDED		undocumented; definition needed		
+DIM	2	UNDECIDED		undocumented; definition needed	zho twin: 指小×2	
+TANG	2	UNDECIDED		undocumented; definition needed		
+ZAV	2	UNDECIDED		undocumented; definition needed		
+ATU	2	UNDECIDED		undocumented; definition needed		
+LN	2	UNDECIDED		undocumented; definition needed	zho twin: 處焦×1	
+ORR	2	UNDECIDED		undocumented; definition needed	zho twin: 非實現×2	
+TUTUTUTUT	2	UNDECIDED		undocumented; definition needed		
+CIS	2	UNDECIDED		undocumented; definition needed		
+PFVCLF	2	UNDECIDED		undocumented; definition needed	zho twin: 完成貌量詞×2	
+1PI	2	UNDECIDED		undocumented; definition needed		
+CL	2	UNDECIDED		undocumented; definition needed		
+EVID	2	UNDECIDED		undocumented; definition needed	zho twin: 據說×1	
+IU	2	UNDECIDED		undocumented; definition needed		
+AT	2	UNDECIDED		undocumented; definition needed		
+HAU	2	UNDECIDED		undocumented; definition needed		
+REF	2	UNDECIDED		undocumented; definition needed	zho twin: 相互×2	
+MAMI	2	UNDECIDED		undocumented; definition needed		
+OYA	2	UNDECIDED		undocumented; definition needed		
+HATU	2	UNDECIDED		undocumented; definition needed		
+SAKI	2	UNDECIDED		undocumented; definition needed		
+NAKA	2	UNDECIDED		undocumented; definition needed		
+TURU	2	UNDECIDED		undocumented; definition needed		
+KA1	2	UNDECIDED		undocumented; definition needed		
+ALA	2	UNDECIDED		undocumented; definition needed		
+ACA	2	UNDECIDED		undocumented; definition needed		
+GGEN	2	UNDECIDED		undocumented; definition needed	zho twin: 屬格×2	
+PENA	2	UNDECIDED		undocumented; definition needed		
+SIM	2	UNDECIDED		undocumented; definition needed	zho twin: 相互×2	
+ZAKA	2	UNDECIDED		undocumented; definition needed		
+RANAW	2	UNDECIDED		undocumented; definition needed		
+SAIZI	2	UNDECIDED		undocumented; definition needed		
+QAWMANG	2	UNDECIDED		undocumented; definition needed		
+SEBALAS	2	UNDECIDED		undocumented; definition needed		
+KAKU	2	UNDECIDED		undocumented; definition needed		
+KUSI	2	UNDECIDED		undocumented; definition needed		
+SIQATAZAI	2	UNDECIDED		undocumented; definition needed		
+QASANA	2	UNDECIDED		undocumented; definition needed		
+SISI	2	UNDECIDED		undocumented; definition needed		
+KAYA	2	UNDECIDED		undocumented; definition needed		
+UTA	2	UNDECIDED		undocumented; definition needed		
+QANI	2	UNDECIDED		undocumented; definition needed		
+ADA	2	UNDECIDED		undocumented; definition needed		
+NAMANI	2	UNDECIDED		undocumented; definition needed		
+ZI	2	UNDECIDED		undocumented; definition needed		
+KAWKA	2	UNDECIDED		undocumented; definition needed		
+QIZI	2	UNDECIDED		undocumented; definition needed		
+NAYI	2	UNDECIDED		undocumented; definition needed		
+FFV	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2	
+PFT	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2	
+PFVSI	2	UNDECIDED		undocumented; definition needed	zho twin: 完成SI×2	
+CLS	2	UNDECIDED		undocumented; definition needed	zho twin: 量詞×2	
+SYA	2	UNDECIDED		undocumented; definition needed		
+ISEE	2	UNDECIDED		undocumented; definition needed		
+KAKIA	2	UNDECIDED		undocumented; definition needed		
+IOO	2	UNDECIDED		undocumented; definition needed		
+POLITE	2	UNDECIDED		undocumented; definition needed	zho twin: 禮貌×2	
+ISIA	2	UNDECIDED		undocumented; definition needed		
+IIN	2	UNDECIDED		undocumented; definition needed		
+IIVA	2	UNDECIDED		undocumented; definition needed		
+ARA	2	UNDECIDED		undocumented; definition needed		
+TIAN	2	UNDECIDED		undocumented; definition needed	zho twin: TIAN(叮嚀)×2	
+NAFA	2	UNDECIDED		undocumented; definition needed	zho twin: 主焦×2	
+SUMA	2	UNDECIDED		undocumented; definition needed		
+SE	2	UNDECIDED		undocumented; definition needed		
+IRRS	2	UNDECIDED		undocumented; definition needed	zho twin: 非實現×2	
+1PLNOM	2	UNDECIDED		undocumented; definition needed		
+EXC	2	UNDECIDED		undocumented; definition needed		
+EXL	2	UNDECIDED		undocumented; definition needed	zho twin: 排除×2	
+IFF	2	UNDECIDED		undocumented; definition needed	zho twin: 非實現×2	
+AVAF	2	UNDECIDED		undocumented; definition needed	zho twin: 主焦×1	
+POSO	2	UNDECIDED		undocumented; definition needed		
+INHU	2	UNDECIDED		undocumented; definition needed	zho twin: 非人×2	
+KUEI	2	UNDECIDED		undocumented; definition needed		
+SINPAKA	2	UNDECIDED		undocumented; definition needed		
+PFVIF	2	UNDECIDED		undocumented; definition needed	zho twin: 完成IF×1; 完成工焦×1	
+PUSU	2	UNDECIDED		undocumented; definition needed		
+RE	2	UNDECIDED		undocumented; definition needed		
+CANIARA	2	UNDECIDED		undocumented; definition needed		
+MIKOO	2	UNDECIDED		undocumented; definition needed		
+AMAN	2	UNDECIDED		undocumented; definition needed		
+UM	2	UNDECIDED		undocumented; definition needed		
+SIPISIPI	2	UNDECIDED		undocumented; definition needed		
+KNOCKING	2	UNDECIDED		undocumented; definition needed		
+SOUNDS	2	UNDECIDED		undocumented; definition needed		
+TUUH	2	UNDECIDED		undocumented; definition needed		
+IAI	2	UNDECIDED		undocumented; definition needed		
+CF	2	UNDECIDED		undocumented; definition needed	zho twin: 量詞×2	
+CUKUE	2	UNDECIDED		undocumented; definition needed		
+ONOM	2	UNDECIDED		undocumented; definition needed	zho twin: 狀聲×2	
+EPL	2	UNDECIDED		undocumented; definition needed		
+AG	2	UNDECIDED		undocumented; definition needed	zho twin: 主焦×2	
+PINA	2	UNDECIDED		undocumented; definition needed		
+BO	2	UNDECIDED		undocumented; definition needed	zho twin: 自由斜格×2	
+CASU	2	UNDECIDED		undocumented; definition needed	zho twin: 使役×2	
+BNH	2	UNDECIDED		undocumented; definition needed	zho twin: 附著主格×1; 第一人稱複數(包含)×1	
+INGA	2	UNDECIDED		undocumented; definition needed		
+RLE	2	UNDECIDED		undocumented; definition needed	zho twin: 關係詞×2	
+NG	2	UNDECIDED		undocumented; definition needed		
+NAI	2	UNDECIDED		undocumented; definition needed		
+RELF	2	UNDECIDED		undocumented; definition needed	zho twin: 自己×1	
+KING	2	UNDECIDED		undocumented; definition needed		
+WOU	2	UNDECIDED		undocumented; definition needed	zho twin: 想要×2	
+TIA	2	UNDECIDED		undocumented; definition needed		
+TARUA	2	UNDECIDED		undocumented; definition needed		
+TAW	2	UNDECIDED		undocumented; definition needed		
+PACI	2	UNDECIDED		undocumented; definition needed		
+TAN	2	UNDECIDED		undocumented; definition needed		
+MASI	2	UNDECIDED		undocumented; definition needed		
+COP	2	KEEP	COP	Leipzig: listed; standard tier keeps it	zho twin: 是×2	
+SAVA	2	UNDECIDED		undocumented; definition needed	zho twin: S主焦A×1; S主焦×1	
+1SGGEN	2	UNDECIDED		undocumented; definition needed		
+IPM	2	UNDECIDED		undocumented; definition needed	zho twin: 使役×2	
+RV	2	UNDECIDED		undocumented; definition needed	zho twin: 原因焦點×2	
+TAPFV	1	UNDECIDED		undocumented; definition needed	zho twin: TA完成×1	
+SUAETE	1	UNDECIDED		undocumented; definition needed		
+PFVMU	1	UNDECIDED		undocumented; definition needed	zho twin: 完成貌MU×1	
+IFCAU	1	UNDECIDED		undocumented; definition needed	zho twin: 工焦使役×1	
+IFPFVCAU	1	UNDECIDED		undocumented; definition needed	zho twin: 工焦完成貌使役×1	
+REFLREFL	1	UNDECIDED		undocumented; definition needed	zho twin: 反身×1	
+REFLPFVREFL	1	UNDECIDED		undocumented; definition needed	zho twin: 完成貌反身×1	
+PFVIV	1	UNDECIDED		undocumented; definition needed	zho twin: 完成工焦×1	
+CAAF	1	UNDECIDED		undocumented; definition needed	zho twin: CA重疊主焦×1	
+TAF	1	UNDECIDED		undocumented; definition needed		
+REFLPFV	1	UNDECIDED		undocumented; definition needed	zho twin: 反身完成貌×1	
+REDNEG	1	UNDECIDED		undocumented; definition needed	zho twin: 重疊否定×1	
+AVPFV	1	UNDECIDED		undocumented; definition needed	zho twin: 主事完成主焦×1	
+SIPFVI	1	UNDECIDED		undocumented; definition needed		
+AFCA	1	UNDECIDED		undocumented; definition needed	zho twin: 主焦CA×1	
+主格	23655	CONVERT	NOM	pairs NOM×20,283; Leipzig NOM; Latin codes per g4	eng twin: NOM×20283; AF×119	
+主焦	23389	CONVERT	AV	pairs AF×19,520; voice standard AV	eng twin: AF×19520; AV×1309	
+屬格	15617	CONVERT	GEN	pairs GEN×13,603; Leipzig GEN	eng twin: GEN×13603; NOM×13	
+斜格	10149	CONVERT	OBL	pairs OBL×9,369; Leipzig OBL	eng twin: OBL×9369	
+完成	7604	CONVERT	PFV	pairs PFV×6,991; Leipzig PFV	eng twin: PFV×6991; RLS×12	
+受焦	6327	CONVERT	PV	pairs PF×5,405; voice standard PV	eng twin: PF×5405; PV×407	
+然後	5076	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CONJ×24	
+重疊	5039	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RED×4395	
+處格	4865	CONVERT	LOC	pairs LOC×4,438; Leipzig LOC	eng twin: LOC×4438; LF×41	
+主題	4787	CONVERT	TOP	pairs TOP×4,639; Leipzig TOP	eng twin: TOP×4639	
+語助詞	4724	CONVERT	PART	maintainer vocabulary ruling v2 + g4 2026-11-11	eng twin: PART×4669; AUX×6	
+否定	4511	CONVERT	NEG	pairs NEG; Leipzig NEG	eng twin: NEG×4478	
+處焦	3885	CONVERT	LV	pairs LF×3,353; voice standard LV	eng twin: LF×3353; LV×48	"Kavalan→PV (maintainer 2026-11-11: ""Kavalan UV -> PV is approved"" — Kavalan has 2 voices; its -an voice converts by function; NTU Kavalan zho tier writes it 處焦 ×580+)"
+遠距	3304	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: DIST×3130; MED×6	
+存在	3179	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXIST×2985; EXI×18	
+非實現	3033	CONVERT	IRR	pairs IRR; Leipzig IRR	eng twin: IRR×2599	
+助動詞	3000	CONVERT	AUX	pairs AUX; Leipzig AUX	eng twin: AUX×2982	
+連繫詞	2512	CONVERT	LNK	maintainer vocabulary ruling v1 + g4 Latin codes 2026-11-11	eng twin: LNK×2307; TU×6	
+名物化	2478	CONVERT	NMLZ	pairs NMZ/NMLZ; Leipzig NMLZ per point-F ruling	eng twin: NMLZ×1172; NMZ×1015	
+連詞	2440	CONVERT	CONJ	maintainer vocabulary ruling v9 + g4 2026-11-11	eng twin: LNK×2434	
+實現	2367	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RLS×2113; REAL×27	
+完成貌	2346	CONVERT	PFV	variant of 完成; pairs PFV×1,511	eng twin: PFV×1511	
+人名	2338	CONVERT	PN	maintainer vocabulary ruling v5/v6 + g4 2026-11-11	eng twin: PN×1587	
+使役	2059	CONVERT	CAUS	pairs CAU/CAUS; Leipzig CAUS per point-F ruling	eng twin: CAU×1379; CAUS×484	
+可見	2058	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: VIS×2011	
+人	1881	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HUM×342	
+補語詞	1792	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COMP×1787	
+連接詞	1746	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CONJ×1724	
+關係詞	1650	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REL×1461	
+近指	1570	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROX×1542	
+狀態	1474	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: STAT×1134	
+未來	1452	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FUT×1359	
+所有格	1259	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: POSS×1217; GEN×10	
+受格	1233	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ACC×1166; PF×28	
+介系詞	1233	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PREP×963	
+處所	1188	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LOC×1169	
+不可見	1122	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INV×916; INVIS×200	
+進行	1028	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROG×1022	
+過去	1021	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PST×619; PFV×67	
+附著主格	978	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: BN×867; BG×9	
+非主焦	934	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NAF×911; NAV×14	
+好	905	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: OK×6	
+否定詞	864	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEG×168	
+第一人稱單數	862	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 1S×765; 1SG×21	
+條件詞	840	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COND×840	
+附著屬格	840	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: BG×779; BN×10	
+我	790	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: I×8	
+地名	784	CONVERT	PN	maintainer vocabulary ruling v6 pn-only + g4 2026-11-11	eng twin: PN×748	
+Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CA×22	
+祈使	761	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IMP×573	
+知識詞	734	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EVI×717	
+疑問	720	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: Q×710	
+習慣	662	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HAB×652	
+改變狀態	659	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COS×583	
+主動	650	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ACT×624	
+感嘆	634	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INT×626	
+專有名詞	608	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PN×606	
+可能	602	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: POSS×72	
+上面	588	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: TOP×24	
+狀態改變	574	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COS×330	
+中距	565	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: MED×510	
+使動	498	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CAU×171	
+填補詞	478	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FIL×478	
+人名標記	476	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NCM×42	
+第三人稱單數	427	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 3S×408	
+反身	406	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REFL×369	
+第二人稱單數	399	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 2S×354; 2SG×10	
+複數	386	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: P×286; PL×72	
+工焦	366	CONVERT	OV	pairs IF×291; 4th voice; maintainer 2026-11-11: OV	eng twin: IF×291; IV×50	
+非人	359	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NHUM×274; NH×8	
+想要	356	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: WOD×15	
+助詞	352	CONVERT	PART	maintainer vocabulary ruling v2 + g4 2026-11-11	eng twin: PTC×43; PART×23	
+包含	330	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INCL×231	
+一定	312	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEC×140	
+近距	306	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROX×230	
+自由斜格	306	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FO×302	
+排除	287	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXCL×209	
+中性格	273	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEU×273	
+被動	272	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PASS×264	
+情態	236	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: MOD×229	
+有	216	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXIST×16	
+主題標記	214	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: TOP×190	
+進行貌	210	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROG×72	
+交互	206	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REC×182	
+表事實	206	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FAC×147	
+未來式	204	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FUT×187	
+指焦	187	CONVERT	OV	pairs RF×176; 4th voice; maintainer 2026-11-11: OV	eng twin: RF×176	
+所有	180	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: POSS×68	
+互相	163	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RECP×91; REC×55	
+存在詞	158	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXIST×144	
+工具焦點	152	CONVERT	OV	variant of 工焦	eng twin: IF×8	
+未實現	130	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IRR×93	
+處所格	124	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LOC×124	
+遠指	122	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: DIST×122	
+表過去	118	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PAST×54	
+感嘆詞	108	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INT×102	
+第三人稱複數	100	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 3P×98	
+地方	97	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PLACE×24	
+命令式	96	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IMP×92	
+動貌	94	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ASP×90	
+假設	94	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HYP×90	
+致使	90	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RES×66	
+予焦	84	CONVERT	OV	benefactive (pairs BF) → OV (2026-11-11)	eng twin: BF×61; BV×6	
+量詞	84	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CLF×26; CN×5	
+持續	78	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CONT×68	
+完成主焦	71	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PFVAF×33; AF×30	
+非現實	70	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IRR×66	
+參焦	68	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RF×61	
+靜態	68	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: STAT×18	
+工具焦	66	CONVERT	OV	variant of 工焦	eng twin: IF×65	
+重現	65	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REC×65	
+未完成	62	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IMPFV×61	
+第二人稱複數	58	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 2P×52	
+疑問詞	56	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: Q×41	
+命令	56	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IMP×49	
+沒有	52	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEG×42	
+的	50	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: DE×42	
+重複	48	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RED×33	
+CA重疊	45	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CA×41	
+且	44	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CONJ×38	
+未來貌	44	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FUT×42	
+經驗	44	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXPER×28	
+過去貌	42	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PAST×35	
+主焦重疊	39	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RED×22; AFRED×13	
+予格	36	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: DAT×34	
+自由主題格	30	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FT×26	
+單數	30	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: SG×30	
+驚嘆	26	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INT×24	
+有生命	26	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ANIM×26	
+主事	25	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ACT×6	
+關係	24	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REL×12	
+相互	24	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RECIP×6	
+呼格	24	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: VOC×24	
+與焦	22	CONVERT	OV	maintainer row-review 2026-11-11: benefactive (eng twins BF/BV) → OV	eng twin: BF×20	
+K主焦A	21	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: KAFA×11; KAVA×9	
+役使	20	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CAU×14	
+問題	20	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: Q×14	
+參考焦	20	CONVERT	OV	variant of 指焦/RF	eng twin: RF×18	
+第一人稱複數	20	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 1P×13	
+介詞	20	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PREP×18	
+類別詞	20	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NCM×20	
+使	18	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CAUS×6	
+美國	18	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: US×8	
+重疊主焦	18	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REDAF×9; REDAV×6	
+無生命	17	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INAN×17	
+包含式	16	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INCL×16	
+序數	16	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ORD×10	
+祈願	16	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: OPT×16	
+T主焦A	15	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: TAVA×7; TAFA×6	
+補語	14	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COMP×14	
+助	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PART×10	
+啊	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FIL×8	
+補語連接詞	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COMP×12	
+非事實	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NFAC×10	
+勸告式	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HOR×8	
+連擊詞	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LNK×10	
+受惠焦	10	CONVERT	OV	benefactive (pairs BF; cf. s44 受惠焦點 ruling) → OV (2026-11-11)	eng twin: BF×10	
+工具格	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INS×10	
+屬人	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HUM×8	
+工焦完成貌	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IFPFV×7	
+名物話	8	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NMZ×6	
+關係化	6	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REL×6	
+轉述	6	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: KAN×6	
+原因焦點	8	CONVERT	OV	s25 ruling (原因焦點 'reason focus' rides the instrument-voice sia- prefix; folds into the 4th voice) + OV ruling (2026-11-11)	zho tier only; eng twin RF/RsnV below pair threshold	
+受事／處所焦點	22	CONVERT	PV/LV	s45 + collapse notation: the annotator's own both-ways label (PV-or-LV undecidable) (2026-11-11)	lives in residue strings (受事／處所焦點.祈使 etc., both ／ and / spellings, ~22 tokens); needs a Layer-B rule for the ／ separator before conversion applies	
+非主焦	934	UNDECIDED		non-actor-focus cover label (Tsou NAV twin); no cross-language ruling		"Kavalan→PV (maintainer 2026-11-11: ""Kavalan UV -> PV is approved"" — Kavalan has 2 voices; its -an voice converts by function)"
