@@ -65,7 +65,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Run pytest
-        run: pytest
+        run: pytest -n auto --dist loadgroup
       - name: Corpus pages registered and READMEs in the approved layout
         run: python docs/tools/manage_corpus_pages.py check --strict
       - name: Upload coverage report

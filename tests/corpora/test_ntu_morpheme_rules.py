@@ -31,6 +31,11 @@ import drop_punctuation_morphemes as dpm  # noqa: E402
 XL = "{http://www.w3.org/XML/1998/namespace}lang"
 
 
+# Under pytest-xdist (--dist loadgroup) every NTU file that loads the whole corpus
+# (1.5-1.7 GB each) runs on one worker, so they never load at the same time.
+pytestmark = pytest.mark.xdist_group("ntu")
+
+
 def M(form, eng="", zho=""):
     t = "".join(f'<TRANSL xml:lang="{l}">{g}</TRANSL>' for l, g in (("eng", eng), ("zho", zho)) if g)
     return f'<M><FORM kindOf="original">{form}</FORM>{t}</M>'

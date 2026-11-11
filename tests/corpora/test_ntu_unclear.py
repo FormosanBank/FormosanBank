@@ -120,6 +120,11 @@ SAMPLE = """<?xml version="1.0" ?>
 </TEXT>"""
 
 
+# Under pytest-xdist (--dist loadgroup) every NTU file that loads the whole corpus
+# (1.5-1.7 GB each) runs on one worker, so they never load at the same time.
+pytestmark = pytest.mark.xdist_group("ntu")
+
+
 def _run(tmp_path, table_rows=None):
     xml_dir = tmp_path / "xml"
     xml_dir.mkdir()
