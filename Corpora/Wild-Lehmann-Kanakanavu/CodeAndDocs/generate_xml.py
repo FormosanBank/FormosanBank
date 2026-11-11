@@ -69,7 +69,12 @@ source's brackets (`<AV>`), as in ILCAA-Kanakanavu-Texts.
 Glosses (POL-021/POL-061 as amended 2026-10-17): a GE cell that is empty,
 `?`, `??` or `???` becomes <UNCLEAR/>; inside a hyphen-split gloss, a piece
 that is exactly one of those becomes <UNCLEAR/>. Any other `?` is the
-source's mark of uncertainty about a gloss it did give and is kept as written.
+source's mark of uncertainty about a gloss it did give: it is removed from the
+gloss and the TRANSL gets notes="uncertain" (`COND(?)` -> `COND`; `go?` -> `go`).
+Where a `?` run sits between two letters it separated alternatives and becomes
+`/` (`father?uncle?` -> `father/uncle`). Maintainer (2026-11-11): "They mark
+uncertainty. Remove them from the gloss and put "uncertain" in the note for
+that TRANSL." Left as written: `go-?/certain (TB)??` (UNCERTAIN_KEPT).
 
 A free translation that is empty is not emitted.
 
@@ -103,6 +108,8 @@ HERE = Path(__file__).resolve().parent
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 SITE = "https://kanakanavu.info/language-documentation/"
 UNKNOWN_GLOSS = {"", "?", "??", "???"}
+# Glosses whose `?` marks are left as written: what each `?` means here is not settled.
+UNCERTAIN_KEPT = {"go-?/certain (TB)??"}
 INFIX = re.compile(r"<([^<>]*)>")
 LABEL = re.compile(r"[<(][A-Z][A-Za-z0-9.:]*[>)]")   # a bracketed capital label in a gloss, e.g. (AV)
 
@@ -239,12 +246,33 @@ def aligned(fp, gp) -> bool:
     return all((f.startswith("-") and f.endswith("-")) == g.startswith("<") for f, g in zip(fp, gp))
 
 
+def strip_uncertain(piece: str) -> tuple[str, bool]:
+    """Remove the source's uncertainty marks from a gloss (or gloss piece) it did give.
+
+    -> (the gloss without them, whether any were removed). `(?)` and `?` are dropped;
+    a `?` run between two letters separated alternatives (`father?uncle?`) and becomes
+    `/`, the site's own separator for alternative glosses (`CONT/please?`).
+    """
+    if "?" not in piece or piece in UNKNOWN_GLOSS or piece in UNCERTAIN_KEPT:
+        return piece, False
+    out = piece.replace("(?)", "")
+    out = re.sub(r"(?<=[^\W\d_])\?+(?=[^\W\d_])", "/", out)
+    return out.replace("?", "").strip(), True
+
+
 def add_gloss(parent, text: str) -> None:
-    """W/M gloss with the POL-061 <UNCLEAR/> rule."""
+    """W/M gloss with the POL-061 <UNCLEAR/> rule and the uncertainty note."""
     t = etree.SubElement(parent, "TRANSL", {XML_LANG: "eng", "kindOf": "original"})
     if text in UNKNOWN_GLOSS:
         etree.SubElement(t, "UNCLEAR")
         return
+    if text in UNCERTAIN_KEPT:
+        t.text = text
+        return
+    pieces = [p if p in UNKNOWN_GLOSS else strip_uncertain(p) for p in text.split("-")]
+    if any(isinstance(p, tuple) and p[1] for p in pieces):
+        t.set("notes", "uncertain")
+    text = "-".join(p if isinstance(p, str) else p[0] for p in pieces)
     parts = text.split("-")
     if len(parts) > 1 and any(p in UNKNOWN_GLOSS for p in parts):
         last = None
