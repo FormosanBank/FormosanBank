@@ -144,3 +144,61 @@ proposed 受格→ACC must become 受格→OBL-equivalent.
   - 0.56  NTU:主格 ~ Sakizaya-Affixes:主格
   - 0.52  NTU:處格 ~ Sakizaya-Affixes:處所格
   - 0.35  NTU:NOM ~ Sakizaya-Affixes:主格
+
+## Inventory containment (the system test; added after interpretability review)
+
+A⊆B = share of label A's tokens whose marker form is also attested under
+B's label. Same category ⇒ the smaller source is ~fully contained in the
+larger (≈100%); the reverse may be lower from long-tail sampling or
+segmentation depth alone. Distribution overlap (above) compares usage
+frequencies, which differ by text type, and understates identity.
+
+### Kanakanavu
+- NTU:處格 (n=198) vs Song-Kanakanavu-Grammar:處格 (n=88): A⊆B 99% · B⊆A 100%
+- NTU:屬格 (n=762) vs Song-Kanakanavu-Grammar:屬格 (n=171): A⊆B 97% · B⊆A 100%
+- NTU:主格 (n=2016) vs Song-Kanakanavu-Grammar:主格 (n=348): A⊆B 97% · B⊆A 98%
+- NTU:NOM (n=1740) vs Song-Kanakanavu-Grammar:主格 (n=348): A⊆B 97% · B⊆A 98%
+- NTU:處所格 (n=65) vs Song-Kanakanavu-Grammar:處格 (n=88): A⊆B 94% · B⊆A 100%
+- NTU:GEN (n=606) vs Song-Kanakanavu-Grammar:屬格 (n=171): A⊆B 95% · B⊆A 97%
+- NTU:NOM (n=1740) vs ILCAA-Kanakanavu-Texts:NOM (n=995): A⊆B 87% · B⊆A 96%
+- NTU:主格 (n=2016) vs ILCAA-Kanakanavu-Texts:NOM (n=995): A⊆B 86% · B⊆A 96%
+
+### Kavalan
+- Kavalan-Chang-Reference-Grammar:受格 (n=125) vs Amis-Kavalan-Lin-Interrogative-Verbs:OBL (n=3): A⊆B 100% · B⊆A 100%
+- NTU:斜格 (n=606) vs Kavalan-Chang-Reference-Grammar:受格 (n=125): A⊆B 96% · B⊆A 100%
+- NTU:斜格 (n=606) vs Amis-Kavalan-Lin-Interrogative-Verbs:OBL (n=3): A⊆B 96% · B⊆A 100%
+- NTU:OBL (n=607) vs Kavalan-Chang-Reference-Grammar:受格 (n=125): A⊆B 96% · B⊆A 100%
+- NTU:OBL (n=607) vs Amis-Kavalan-Lin-Interrogative-Verbs:OBL (n=3): A⊆B 96% · B⊆A 100%
+- NTU:處格 (n=854) vs Kavalan-Chang-Reference-Grammar:處所格 (n=47): A⊆B 96% · B⊆A 94%
+- NTU:屬格 (n=2145) vs Amis-Kavalan-Lin-Interrogative-Verbs:ERG (n=25): A⊆B 87% · B⊆A 100%
+- NTU:GEN (n=2148) vs Amis-Kavalan-Lin-Interrogative-Verbs:ERG (n=25): A⊆B 87% · B⊆A 100%
+
+### Seediq
+- NTU:主格 (n=1655) vs Naomi-Tsukida-Correlative-Clauses-Seediq:NOM (n=35): A⊆B 92% · B⊆A 100%
+- NTU:NOM (n=1210) vs Naomi-Tsukida-Correlative-Clauses-Seediq:NOM (n=35): A⊆B 91% · B⊆A 100%
+- Seediq-Chang-Reference-Grammar:主格 (n=138) vs Naomi-Tsukida-Correlative-Clauses-Seediq:NOM (n=35): A⊆B 100% · B⊆A 83%
+- NTU:屬格 (n=1470) vs Naomi-Tsukida-Correlative-Clauses-Seediq:GEN (n=11): A⊆B 76% · B⊆A 100%
+- NTU:GEN (n=1154) vs Naomi-Tsukida-Correlative-Clauses-Seediq:GEN (n=11): A⊆B 75% · B⊆A 100%
+- Seediq-Chang-Reference-Grammar:屬格 (n=57) vs Naomi-Tsukida-Correlative-Clauses-Seediq:GEN (n=11): A⊆B 100% · B⊆A 64%
+- NTU:主格 (n=1655) vs Seediq-Chang-Reference-Grammar:主格 (n=138): A⊆B 62% · B⊆A 100%
+- NTU:NOM (n=1210) vs Seediq-Chang-Reference-Grammar:主格 (n=138): A⊆B 56% · B⊆A 100%
+
+### Sakizaya
+- NTU:處格 (n=10) vs Sakizaya-Affixes:處所格 (n=54): A⊆B 90% · B⊆A 98%
+- NTU:屬格 (n=873) vs Sakizaya-Affixes:屬格 (n=156): A⊆B 81% · B⊆A 90%
+- NTU:主格 (n=1450) vs Sakizaya-Affixes:主格 (n=194): A⊆B 65% · B⊆A 96%
+- NTU:GEN (n=575) vs Sakizaya-Affixes:屬格 (n=156): A⊆B 70% · B⊆A 90%
+- NTU:斜格 (n=516) vs Sakizaya-Affixes:斜格 (n=93): A⊆B 57% · B⊆A 89%
+- NTU:NOM (n=870) vs Sakizaya-Affixes:主格 (n=194): A⊆B 46% · B⊆A 93%
+- NTU:OBL (n=283) vs Sakizaya-Affixes:斜格 (n=93): A⊆B 27% · B⊆A 82%
+- NTU:處格 (n=10) vs Sakizaya-Affixes:主格 (n=194): A⊆B 10% · B⊆A 58%
+
+### Amis
+- Amis-Kavalan-Lin-Interrogative-Verbs:OBL (n=11) vs Amis-Pa-Verbs:DAT (n=23): A⊆B 100% · B⊆A 100%
+- Amis-Kavalan-Lin-Interrogative-Verbs:ABS (n=26) vs Amis-Pa-Verbs:NOM (n=29): A⊆B 88% · B⊆A 76%
+- NTU:屬格 (n=678) vs Amis-Kavalan-Lin-Interrogative-Verbs:GEN (n=4): A⊆B 44% · B⊆A 100%
+- NTU:GEN (n=679) vs Amis-Kavalan-Lin-Interrogative-Verbs:GEN (n=4): A⊆B 43% · B⊆A 100%
+- NTU:屬格 (n=678) vs Amis-Kavalan-Lin-Interrogative-Verbs:ERG (n=17): A⊆B 17% · B⊆A 100%
+- NTU:GEN (n=679) vs Amis-Kavalan-Lin-Interrogative-Verbs:ERG (n=17): A⊆B 17% · B⊆A 100%
+- Amis-Kavalan-Lin-Interrogative-Verbs:ERG (n=17) vs Amis-Pa-Verbs:GEN (n=10): A⊆B 65% · B⊆A 50%
+- NTU:主格 (n=814) vs Amis-Pa-Verbs:NOM (n=29): A⊆B 65% · B⊆A 34%
