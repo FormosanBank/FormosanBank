@@ -22,13 +22,23 @@ name: audio-validation
 on:
   pull_request:
     paths:
-      - 'Corpora/**.xml'
+      # Only corpora with audio files committed to the repo; every other
+      # corpus's audio is on Hugging Face and is never present in CI, so the
+      # job had nothing to check there. tests/validators/
+      # test_audio_validation_trigger.py fails if a corpus gains committed
+      # audio without being listed here.
+      - 'Corpora/Paiwan_Stories/**'
       - 'QC/validation/validate_audio.py'
       - '.github/workflows/audio-validation.yaml'
   push:
     branches: [main]
     paths:
-      - 'Corpora/**.xml'
+      # Only corpora with audio files committed to the repo; every other
+      # corpus's audio is on Hugging Face and is never present in CI, so the
+      # job had nothing to check there. tests/validators/
+      # test_audio_validation_trigger.py fails if a corpus gains committed
+      # audio without being listed here.
+      - 'Corpora/Paiwan_Stories/**'
       - 'QC/validation/validate_audio.py'
       - '.github/workflows/audio-validation.yaml'
 
