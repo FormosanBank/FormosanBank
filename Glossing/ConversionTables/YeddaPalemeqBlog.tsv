@@ -3,7 +3,6 @@ LIG	151	CONVERT	LNK	v1 ruling
 GEN	125	KEEP	GEN	Leipzig-listed/composed or registry code		
 AV	110	KEEP	AV	Leipzig-listed/composed or registry code		
 OBL	109	KEEP	OBL	Leipzig-listed/composed or registry code		
-I	96	UNDECIDED				
 UV	82	CONVERT		r2 ruling: split by diagnostic affix (-an→LV, si-→OV, -en→PV; ⟨in⟩-only stays UV) — applied by the rules file, not atom-for-atom		
 NOM	58	KEEP	NOM	Leipzig-listed/composed or registry code		
 RED	49	UNDECIDED				
@@ -20,8 +19,6 @@ SING	6	UNDECIDED
 IMP	5	KEEP	IMP	Leipzig-listed/composed or registry code		
 NMZ	5	UNDECIDED				
 P	3	KEEP	P	Leipzig-listed/composed or registry code		
-ILRDF	3	UNDECIDED				
-RF	3	CONVERT	OV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
 COS	3	KEEP	COS	Leipzig-listed/composed or registry code		
 NAF	2	UNDECIDED				
 NP	2	KEEP	NP	Leipzig-listed/composed or registry code		
