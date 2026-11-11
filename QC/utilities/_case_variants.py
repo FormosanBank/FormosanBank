@@ -6,8 +6,6 @@ This module derives Title-case and ALL-CAPS variants of lowercase rules —
 except where a capital is a distinct grapheme of the source orthography
 (e.g. Li's Rukai ``T`` = /ʈ/), detected via the source orthography
 profile resolved from the conversion table's filename.
-
-Spec: docs/superpowers/specs/2026-08-09-standardize-capitalization-design.md
 """
 import csv
 import re

@@ -98,11 +98,3 @@ The asymmetry: `Corpora/**` changes trigger **validator** runs (because validato
 findings whose fix landed in FormosanBank code — see the README there.
 An audit remediation is complete when its fixture and test exist
 (also stated as step 6 of the `audit-dev-repo` skill).
-
-## Related design docs
-
-- [2026-05-28-a-test-infrastructure-design.md](../.claude/plans/2026-05-28-a-test-infrastructure-design.md) — the test suite design.
-- [2026-05-28-a-test-infrastructure-implementation.md](../.claude/plans/2026-05-28-a-test-infrastructure-implementation.md) — the implementation plan (Tasks 1–8).
-- [2026-05-29-xml-validation-design.md](../.claude/plans/2026-05-29-xml-validation-design.md) — rule-by-rule validation spec; `tests/validators/test_validate_xml.py` is its test counterpart.
-- [2026-05-29-clean-xml-extension-tests-design.md](../.claude/plans/2026-05-29-clean-xml-extension-tests-design.md) — rule-by-rule cleaner-extension spec; `tests/cleaners/test_clean_xml_extensions.py` is its test counterpart.
-- [2026-05-27-roadmap.md](../.claude/plans/2026-05-27-roadmap.md) — sub-projects A–E. xfail tests largely target sub-project B's deferred work.

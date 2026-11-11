@@ -99,7 +99,6 @@ rebuild the derived tiers. Net effect: an edit made *only* to a standard
 FORM or PHON is invisible to capture and futile anyway — edit the original
 and let regeneration propagate. All standard-tier cleaning lives in
 `standardize.py`, none in `clean_xml.py`.
-Spec: `docs/superpowers/specs/2026-08-09-standardize-owns-standard-cleaning-design.md`.
 
 ### POL-003 · RULED · 2026-08-09 · PHON tier
 PHON is derived and machine-owned (`add_phonology.py` regenerates it;
@@ -108,8 +107,7 @@ segmentation markers (`-`, `=`, infix brackets) are not represented; infix
 *content* is, since it is pronounced. Unmapped punctuation is dropped;
 unmapped letters surface as `*`. Standard PHON uses the language's designated
 standard orthography per `standards.csv` (blank entry = standard PHON
-deliberately skipped). Sources: GitBook XML-format page §PHON;
-`docs/superpowers/specs/2026-08-09-per-language-standard-orthography-design.md`.
+deliberately skipped). Source: GitBook XML-format page §PHON.
 
 ### POL-004 · RULED · long-standing · cross-corpus comparison
 Cross-corpus/orthographic statistics use `kindOf="standard"`; token counting
@@ -154,8 +152,7 @@ silent in PHON; a whole-null FORM gets PHON `∅`. A dev repo may keep the
 source's glyph (`ø`/`Ø`) while work is in progress — two 2026-08 audits
 chose to — but that choice does not survive publication: `clean_xml`
 canonicalizes the glyph the first time the corpus runs through the
-pipeline, so there is no per-corpus opt-out of `∅` in published data. Spec:
-`docs/superpowers/specs/2026-08-09-null-morpheme-handling-design.md`.
+pipeline, so there is no per-corpus opt-out of `∅` in published data.
 
 ### POL-013 · RULED · 2026-09-03 · the tilde
 1. **Semantics — RULED (2026-08-10).** Phonemic variants on the PHON tier
@@ -167,8 +164,7 @@ pipeline, so there is no per-corpus opt-out of `∅` in published data. Spec:
    (FORM tiers) only. The two `Bunun.rules.tsv` context-resolution patterns
    carry the regex-escaped form `\[ʦ\|ʨ\](?=i)`. Guards: V154 (tilde
    notation in a profile), V146 (malformed group in PHON), V147 (`~` in
-   PHON — regenerate). Spec:
-   `docs/superpowers/specs/2026-08-10-phon-variant-notation-design.md`.
+   PHON — regenerate).
 2. **Codepoint — RULED (2026-08-10).** Tilde look-alikes canonicalize to
    ASCII `~` U+007E: U+223C TILDE OPERATOR (what LaTeX-typeset PDFs emit
    for the reduplication tilde — e.g. Bril 2024's `RED∼stem`) and U+301C
@@ -434,7 +430,7 @@ gloss: `original` is the source's own gloss, `standard` a standardized one.
 On an S-level TRANSL — a free translation — there is no such axis and the
 attribute carries no information (V151). Glosbe currently carries 4,157
 such S-level `kindOf` attributes; V151 ships SOFT rather than HARD until
-they are remediated (see `claudeplans/2026-09-08-alternate-form-worklist.md`).
+they are remediated.
 
 In a dictionary headword entry, each sense after the first is a `ver="alt"` TRANSL.
 
@@ -782,7 +778,6 @@ README (POL-044), not in `@copyright`.
 representable and is deliberately not designed for; the case does not exist
 today. Implemented by: V160 (`copyright_present`) and V161
 (`copyright_in_vocabulary`), both HARD, in `QC/validation/rules/rights.py`.
-Spec: `docs/superpowers/specs/2026-09-05-rights-enforcement-design.md`.
 
 ### POL-043 · RULED · 2026-09-05 · existing rights claims
 An existing rights claim in published XML is **never removed or weakened on the
