@@ -1,0 +1,8 @@
+pattern	replacement	description
+\.	KEEP-SEPARATOR	period separates category atoms (LGR Rule 4; NTU writes 1IPL.GEN) — split, look up each atom
+-	KEEP-SEPARATOR	hyphen = morpheme boundary in W-level glosses (LGR Rule 2) — split
+=	KEEP-SEPARATOR	equals = clitic boundary (LGR Rule 2) — split
+<([^<>]+)>	KEEP-BRACKETS	angle brackets = infix (LGR Rule 9 / NTU point C.iii) — keep brackets, look up inner atom(s)
+\(Mandarin\)	PENDING-RULING	code-switch marker, 94 tokens — handling undecided
+1P\((IN|EX)\)	PENDING-RULING	parenthesized clusivity person codes (~160 tokens in residue) — target shape undecided (ties to the clusivity decision)
+…	RESIDUE	anything else unsegmentable is copied verbatim and listed in the residue report
