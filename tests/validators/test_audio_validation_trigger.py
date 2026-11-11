@@ -3,7 +3,7 @@
 Every other corpus's audio lives on Hugging Face and is never present in CI, so
 the workflow is triggered by those corpora's paths alone. This test keeps the
 list in step with the repository: a corpus that gains committed audio must be
-added to both trigger lists, or its audio would never be checked.
+added to the trigger list, or its audio would never be checked.
 """
 import subprocess
 from pathlib import Path
@@ -28,7 +28,7 @@ def test_every_corpus_with_committed_audio_triggers_the_workflow():
     triggers = workflow.get("on", workflow.get(True))
     corpora = _corpora_with_committed_audio()
     assert corpora, "expected at least one corpus with committed audio (Paiwan_Stories)"
-    for event in ("pull_request", "push"):
+    for event in ("pull_request",):  # PR-only since the after-merge baseline was dropped
         paths = triggers[event]["paths"]
         missing = sorted(c for c in corpora if f"Corpora/{c}/**" not in paths)
         assert not missing, f"{event}: add 'Corpora/<name>/**' for {missing}"
