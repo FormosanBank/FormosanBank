@@ -49,3 +49,6 @@ QC/utilities/OCR Audit/macos dist/
 # Documentation site build outputs
 .build/
 /site/
+
+# Wikipedias cleaning logs: kept by the maintainer, not distributed (2026-11-11)
+Corpora/Wikipedias/CodeAndDocs/*.log

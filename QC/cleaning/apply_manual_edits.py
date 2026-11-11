@@ -2,8 +2,6 @@
 pipeline. Applies upsert/insert/delete from CodeAndDocs/manual_edits.xml,
 prunes entries that are no-ops against the current (pre-manual) XML O (with
 a console warning), and regenerates CodeAndDocs/manual_edits.md.
-
-See claudeplans/2026-06-15-manual-edits-reproducibility-design.md.
 """
 from __future__ import annotations
 

@@ -144,7 +144,4 @@ detection, human) → `standardize` → `add_phonology` → validators.
 ## Reading list (on demand, not all up front)
 
 - Conventions: `FormosanBank/CLAUDE.md`, `QC/README.md`.
-- "What clean_xml should/shouldn't touch": `claudeplans/2026-05-29-clean-xml-extension-tests-design.md`.
 - Orthography references: `QC/validation/reference/<Language>/`, `Orthographies/Ortho113/<Language>.tsv`, `dialects.csv`.
-- Validator output model: `claudeplans/2026-06-09-validator-output-summary-design.md`.
-- Assistant backlog context: roadmap `claudeplans/2026-05-27-roadmap.md` §C.2.

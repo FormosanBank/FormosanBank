@@ -2,8 +2,8 @@
 
 The reconstruction baseline is Joshua Hartshorne's published August 12 work
 in FormosanBank commit `c52665d0ef8c94d130f597819bec4a4cbe777b76`.
-Its evidence is `claudeplans/phase-b-reports/Nowbucyang-Truku-Thesis.md` and
-the corpus README in that revision. The private predecessor is not a newer
+Its evidence is the Phase B report (`claudeplans/phase-b-reports/Nowbucyang-Truku-Thesis.md`,
+in git history up to commit `17bd955c7`) and the corpus README in that revision. The private predecessor is not a newer
 source authority: its removal of unglossed M and reviewed repetitions is
 not carried forward.
 

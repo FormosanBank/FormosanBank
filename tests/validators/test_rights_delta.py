@@ -104,3 +104,12 @@ def test_inconsistent_on_both_sides_is_still_reported(tmp_path):
     lines = compare(licenses_at(base), licenses_at(head))
     assert len(lines) == 1
     assert "A" in lines[0]
+
+
+def test_corpus_option_compares_only_the_named_corpora(tmp_path):
+    """CI passes --corpus for each touched corpus; an untouched one is not read."""
+    base = _tree(tmp_path, "base", {"A": "CC BY 4.0", "B": "CC BY 4.0"})
+    head = _tree(tmp_path, "head", {"A": "CC BY 4.0", "B": "CC BY-NC 4.0"})
+    assert main(["--base", str(base), "--head", str(head), "--corpus", "A"]) == 0
+    assert main(["--base", str(base), "--head", str(head), "--corpus", "B"]) == 1
+    assert main(["--base", str(base), "--head", str(head)]) == 1

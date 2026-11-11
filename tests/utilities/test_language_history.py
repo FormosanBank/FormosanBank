@@ -124,3 +124,33 @@ def test_extend_diverged_tip_rebuilds(repo, tmp_path):
     language_history.write_csv(rows, out)
     rebuilt = language_history.extend(repo, out)
     assert rebuilt == [{k: str(v) for k, v in r.items()} for r in language_history.rebuild(repo)]
+
+
+def _rows_key(rows):
+    return [tuple(str(r[f]) for f in language_history.HISTORY_FIELDS) for r in rows]
+
+
+def test_extend_rereads_only_touched_corpora_and_matches_a_rebuild(repo, tmp_path):
+    """From the rows cached at c1, extend must equal a full rebuild, including c3,
+    where A's last un-dialected file is deleted and its bucket must disappear."""
+    full = language_history._as_text(language_history.rebuild(repo))
+    c1 = _git(repo, "rev-parse", "HEAD~2")
+    cache = tmp_path / "h.csv"
+    language_history.write_csv([r for r in full if r["commit"] == c1], cache)
+    extended = language_history.extend(repo, cache)
+    assert _rows_key(extended) == _rows_key(full)
+    c3 = _git(repo, "rev-parse", "HEAD")
+    assert ("A", "Amis", "unknown") not in {(r["corpus"], r["language"], r["dialect"])
+                                           for r in extended if r["commit"] == c3}
+
+
+def test_a_counting_rule_change_rereads_everything(repo, tmp_path, capsys):
+    full = language_history._as_text(language_history.rebuild(repo))
+    c1 = _git(repo, "rev-parse", "HEAD~2")
+    cache = tmp_path / "h.csv"
+    language_history.write_csv([r for r in full if r["commit"] == c1], cache)
+    _write(repo, "languages.csv", "code,name\nami,Amis\n")
+    _git(repo, "add", "-A"); _git(repo, "commit", "-q", "-m", "rules")
+    extended = language_history.extend(repo, cache)
+    assert "counting rules changed" in capsys.readouterr().err
+    assert _rows_key(extended) == _rows_key(full)

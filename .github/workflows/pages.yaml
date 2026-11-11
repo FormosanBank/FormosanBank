@@ -15,6 +15,21 @@ name: Documentation site
 on:
   push:
     branches: [main]
+    # A merge whose changed files ALL start Corpus Metrics (its push paths,
+    # copied here) is built once, by the workflow_run trigger below, after the
+    # new statistics are committed. Building it here as well only produced a
+    # site that was replaced minutes later. If Corpus Metrics fails, such a
+    # merge is not published until the next successful run.
+    paths-ignore:
+      - "Corpora/**"
+      - "QC/corpus_metrics.py"
+      - "QC/corpus_counts.py"
+      - "QC/language_history.py"
+      - "QC/utilities/audio_durations.py"
+      - "QC/utilities/get_corpus_stats.py"
+      - "QC/reference/corpus_benchmarks.json"
+      - "statistics/audio_durations.csv"
+      - ".github/workflows/corpus-metrics.yaml"
   pull_request:
   workflow_dispatch:
   workflow_run:
