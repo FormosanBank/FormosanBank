@@ -146,7 +146,8 @@ fi
 
 # The source's unknown-gloss marker: a W/M gloss that is only "?" becomes
 # <UNCLEAR/>, and a "?" piece inside a gloss does too, but only for the
-# glosses listed in unclear_gloss_placeholders.tsv (104 glosses). Runs
+# glosses listed in unclear_gloss_placeholders.tsv (122 glosses); any other
+# "?" in a W/M gloss is an uncertainty mark: removed, notes="uncertain". Runs
 # last, after every step that re-indents the XML, because ET.indent would
 # put whitespace inside a TRANSL that holds only <UNCLEAR/>.
 UNCLEAR=$(
@@ -154,7 +155,7 @@ UNCLEAR=$(
         --corpora-path "$BUILD_ROOT/XML"
 )
 echo "$UNCLEAR"
-EXPECTED_UNCLEAR=$'unclear_w_glosses=18\nunclear_m_glosses=338\nplaceholder_w_glosses=291\nplaceholder_m_glosses=0\nomitted_sentence_translations=0'
+EXPECTED_UNCLEAR=$'unclear_w_glosses=18\nunclear_m_glosses=338\nplaceholder_w_glosses=315\nplaceholder_m_glosses=0\nuncertain_w_glosses=2\nuncertain_m_glosses=2\nomitted_sentence_translations=0'
 if [[ "$UNCLEAR" != "$EXPECTED_UNCLEAR" ]]; then
     echo "unexpected unknown-gloss conversion result" >&2
     exit 1

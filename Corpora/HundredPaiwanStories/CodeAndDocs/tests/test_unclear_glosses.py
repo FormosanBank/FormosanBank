@@ -4,6 +4,10 @@ Maintainer's rulings, 2026-10-17: "B. A, plus ? used as a placeholder inside
 a gloss", where A = "Convert glosses that are exactly ? or ??"; "B. Glosses
 UNCLEAR; sentence translations omitted"; "if the S FORM is simply
 <UNCLEAR/>, no Ws. If the W FORM is <UNCLEAR />, no Ms under it."
+Maintainer, 2026-11-11, on "?<perf>"-type glosses: "Treat them as unknown
+pieces if that results in the right number of pieces. Otherwise, treat the ?
+as a marker of uncertainty on the neighboring gloss." Any other ? on a gloss
+is removed with notes="uncertain" (POL-021 as amended 2026-11-11).
 """
 from __future__ import annotations
 
@@ -109,7 +113,7 @@ class PublishedUnclearGlossTests(unittest.TestCase):
                 else:
                     placeholder[level] += 1
         self.assertEqual(whole, {"M": 338, "W": 18})
-        self.assertEqual(placeholder, {"W": 291})
+        self.assertEqual(placeholder, {"W": 315})
         for tree in self.trees.values():
             for unclear in tree.iter("UNCLEAR"):
                 self.assertEqual(unclear.getparent().tag, "TRANSL")
@@ -148,10 +152,23 @@ class PublishedUnclearGlossTests(unittest.TestCase):
                 text = "".join(transl.itertext())
                 if "?" in text:
                     remaining[text] += 1
-        # A ? next to an infix marker or attached to a word stays as written.
-        self.assertEqual(sum(remaining.values()), 28)
-        self.assertEqual(remaining["?<af>-complete"], 2)
-        self.assertEqual(remaining["decide?"], 2)
+        # A ? before an infix label is a piece; one attached to a word is an
+        # uncertainty mark, now in notes. None is left.
+        self.assertEqual(sum(remaining.values()), 0)
+
+    def test_infix_host_and_uncertain_glosses(self) -> None:
+        published = Counter(
+            etree.tostring(transl, encoding="unicode", with_tail=False)
+            for tree in self.trees.values()
+            for transl in tree.iter("TRANSL")
+        )
+        head = '<TRANSL xml:lang="eng" kindOf="original">'
+        self.assertEqual(published[head + "<UNCLEAR/>&lt;af&gt;-complete</TRANSL>"], 2)
+        self.assertEqual(published[head + "<UNCLEAR/>&lt;perf&gt;-create-lf</TRANSL>"], 2)
+        uncertain = '<TRANSL xml:lang="eng" kindOf="original" notes="uncertain">'
+        self.assertEqual(published[uncertain + "decide</TRANSL>"], 2)
+        self.assertEqual(published[uncertain + "decide&lt;perf&gt;</TRANSL>"], 1)
+        self.assertEqual(published[uncertain + "past-decide&lt;af&gt;</TRANSL>"], 1)
 
     def test_no_sentence_translation_or_form_is_unclear(self) -> None:
         for tree in self.trees.values():
@@ -167,7 +184,7 @@ class PublishedUnclearGlossTests(unittest.TestCase):
         with DEFAULT_PLACEHOLDERS.open(encoding="utf-8", newline="") as handle:
             rows = list(csv.reader(handle, delimiter="\t"))
         self.assertEqual(rows[0], ["gloss", "lang"])
-        self.assertEqual(len(rows) - 1, 104)
+        self.assertEqual(len(rows) - 1, 122)
         self.assertEqual({row[1] for row in rows[1:]}, {"eng"})
         self.assertIn(["if-main-?-outsider-nom", "eng"], rows)
 
@@ -201,7 +218,10 @@ class ConversionTests(unittest.TestCase):
         self.assertIn(">if-main-<UNCLEAR/>-outsider-nom<", gloss("s1W1"))
         self.assertIn("><UNCLEAR/><", gloss("s1W1M0"))
         self.assertIn(">?-what<", gloss("s1W2"))  # not listed: kept
-        self.assertIn(">LIG?<", gloss("s1W3"))  # attached to a word: kept
+        self.assertEqual(  # attached to a word: uncertainty (POL-021)
+            gloss("s1W3"),
+            '<TRANSL xml:lang="eng" kindOf="original" notes="uncertain">LIG</TRANSL>',
+        )
         self.assertEqual(
             gloss("s1W4"),
             '<TRANSL xml:lang="eng" kindOf="original" notes="kept"><UNCLEAR/></TRANSL>',
