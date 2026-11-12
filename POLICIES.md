@@ -264,7 +264,15 @@ and the gap is not. A sentence translation that is wholly unknown is not
 emitted (no TRANSL); a word or morpheme gloss that is wholly unknown (as POL-061 defines
 it) is `<TRANSL><UNCLEAR/></TRANSL>`. Inside a gloss, an unknown piece is
 `<UNCLEAR/>` (`if-main-<UNCLEAR/>-outsider-nom`). A source's mark of
-uncertainty about a gloss it did give (`LIG?`, `他?`) is kept as written.
+uncertainty about a gloss it did give (`COND(?)`, `go?`, `LIG?`, `他?`) is
+removed from the gloss, and that TRANSL gets `notes="uncertain"`
+(`COND(?)` → `COND` with `notes="uncertain"`); POL-036's and POL-062's "kept as
+written" do not apply to these marks. Not followed yet by NTUFormosanCorpus
+(`他?`, `MED.OBL?`), HundredPaiwanStories (`decide?`), YeddaPalemeqBlog (`LIG?`,
+`ligature (?)`) and RauDong (`糞(日語?)`).
+Maintainer (2026-11-11, Wild-Lehmann-Kanakanavu): *"They mark uncertainty.
+Remove them from the gloss and put "uncertain" in the note for that TRANSL."*;
+on making that this policy: *"Yes, update."*
 Maintainer (2026-10-17, Unknown-Content Markers review): NTU's untranscribed
 words → *"A. All tiers"*; *"Keep the tag"* (not a text marker); *"if the
 translation is unknown (? or ?? etc), we shouldn't use <UNCLEAR/> but actually
