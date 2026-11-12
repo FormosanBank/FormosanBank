@@ -1,5 +1,5 @@
 source_code	count	status	standard	basis	notes	language_overrides
-AF	22208	CONVERT	AV	voice: NTU point D agent focus; standard AV	zho twin: 主焦×19520; 主格×119	
+AF	22208	CONVERT	AV	voice: NTU point D agent focus; standard AV	zho twin: 主焦×19520; 主格×119	"Rukai→ACT (maintainer 2026-11-12: ""AF -> ACT, as proposed above"" — w- is the active prefix, 4 AF glosses are slips for ACT)"
 NOM	20932	KEEP	NOM	Leipzig: listed; standard tier keeps it	zho twin: 主格×20283; 主焦×100 | row-approved 2026-11-11	
 GEN	14056	KEEP	GEN	Leipzig: listed; standard tier keeps it	zho twin: 屬格×13603; 主格×18 | row-approved 2026-11-11	
 OBL	9688	KEEP	OBL	Leipzig: listed; standard tier keeps it	zho twin: 斜格×9369; 受格×26 | row-approved 2026-11-11	
@@ -36,7 +36,7 @@ COS	1613	KEEP	COS	"maintainer row-review 2026-11-11: ""approved as marker for ch
 REL	1530	KEEP	REL	Leipzig: listed; standard tier keeps it	zho twin: 關係詞×1461; 關係×12 | row-approved 2026-11-11	
 CN	1524	KEEP	CN	maintainer vocabulary ruling v4 2026-11-11 (supplementary_codes.tsv)	zho twin: 量詞×5; 籃子×2 | row-approved 2026-11-11	
 POSS	1492	KEEP	POSS	Leipzig: listed; standard tier keeps it	zho twin: 所有格×1217; 可能×72 | approved as possessive; his note's 72 可能 cases investigated: Rukai maka-/law- glossed POSS.MOD ↔ 可能.情態 = POSSIBILITY modal — NTU's POSS covers two categories; the POSS.MOD composite flagged for its own decision	
-AV	1468	KEEP	AV	voice: undocumented spelling of AF; same standard	zho twin: 主焦×1309; 主格×5 | row-approved 2026-11-11	
+AV	1468	KEEP	AV	voice: undocumented spelling of AF; same standard	zho twin: 主焦×1309; 主格×5 | row-approved 2026-11-11	Bunun→#AV (maintainer 2026-11-12: av-a-dii words glossed as themselves; # marks a not-understood word glossed as itself)
 STAT	1414	KEEP	STAT	maintainer vocabulary ruling v3 2026-11-11 (supplementary_codes.tsv)	zho twin: 狀態×1134; 靜態×18 | row-approved 2026-11-11	
 KA	1306	UNDECIDED		undocumented; definition needed	zho twin: 耙梳×1	
 NMLZ	1257	KEEP	NMLZ	Leipzig: listed; standard tier keeps it	zho twin: 名物化×1172; 處所×4 | row-approved 2026-11-11	
@@ -660,7 +660,7 @@ Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng 
 持續	78	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CONT×68	
 完成主焦	71	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PFVAF×33; AF×30	
 非現實	70	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IRR×66	
-參焦	68	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RF×61	
+參焦	68	CONVERT	OV	"maintainer 2026-11-12: ""參焦, CV -> OV""; eng twin verified RF (Seediq s×30)"	eng twin: RF×61	
 靜態	68	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: STAT×18	
 工具焦	66	CONVERT	OV	variant of 工焦	eng twin: IF×65	
 重現	65	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REC×65	

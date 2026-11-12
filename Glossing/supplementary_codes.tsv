@@ -16,3 +16,5 @@ RLS	realis	RULED	maintainer row-review 2026-11-11: "This is approved as a marker
 COS	change of state	RULED	maintainer row-review 2026-11-11: "Approved as marker for 'change of state'"	consistent across NTU, ILCAA, Wild-Lehmann, Liu
 PREP	preposition	RULED	maintainer row-review 2026-11-11: "Approved for 'preposition'"	not in Leipzig
 INV	invisible (visibility deixis)	RULED	maintainer row-review 2026-11-11: "Approved for 'invisible'"	zho twin 不可見 ×916; pairs with VIS
+ACT	active voice (Rukai active/passive system, not a focus voice)	RULED	maintainer 2026-11-12: "AF -> ACT, as proposed above" (Rukai w-/o- active prefix; grammar: 主動 o-, 標記 o 同時表示動態和實現)	NTU Rukai 主動/ACT ×313; Huteson ACT ×4
+#X	a not-understood word glossed as itself (the # marks the convention)	RULED	maintainer 2026-11-12: "glossing a word that is not understood as itself. Let's start a convention of glossing them with a prefix #. So #AV for these."	first case: Bunun av-a-dii, glossed AV = the word itself; # is legal in XML text

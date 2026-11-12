@@ -20,7 +20,7 @@ DICTS = ROOT / "Glossing" / "GlossDictionaries"
 # up individually; the X/Y and category-dot notations themselves are
 # defined in Glossing/README.md.
 ATOM_SPLIT = re.compile(r"[./／]")
-OVERRIDE = re.compile(r"(\w+)→([A-Za-z0-9./]+)")
+OVERRIDE = re.compile(r"(\w+)→([#A-Za-z0-9./]+)")
 
 
 def conversion_tables():
