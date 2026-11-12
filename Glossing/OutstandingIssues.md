@@ -58,9 +58,15 @@ the bottom with their ruling.
   say.PF ×4 / look.for.PF ×1 (the known say.PF family) plus one pronoun
   whose eng tier reads 3PL.GEN. The case-page 處格→LOC (n=3) row
   therefore rests on slips; proposed (drop), pending the maintainer.
-- **Saisiyat -an: focus vs nominalizer** — the grammar's 處所焦點 -an is
-  glossed NMZ (名物化 ×93) by NTU; same morpheme, two analyses. Needs a
-  Notes & Caveats line at publication.
+- **Saisiyat -an: focus vs nominalizer** — maintainer-confirmed todo
+  (2026-11-12, with Saisiyat voice approved on this condition). The
+  facts: NTU Saisiyat uses the locative-voice family exactly ONCE in the
+  whole corpus (one 處焦, and it sits on ray — the locative marker, so a
+  slip), and the -an morpheme (×99) is reliably glossed as the
+  nominalizer: 名物化/NMZ ×93, lexical 處所 'location' ×3, 受焦 ×1,
+  unglossed ×2. The grammar's 處所焦點 -an and NTU's NMZ -an are the
+  same morpheme under two analyses; a Notes & Caveats line is due at
+  publication.
 - **ILCAA Kanakanavu CV ×114** (si; absent from B602's own abbreviation
   list) — suggestion on the voice audit page: → OV, matching NTU's si-.
 - **Amis-Pa-Verbs UV ×41** — en ×13 matches NTU PV -en; Ma ×7 ambiguous
