@@ -186,7 +186,7 @@ def test_unknown_glosses_and_sentence_translations(tmp_path):
 
 def test_question_piece_before_an_infix_label(tmp_path):
     _, ids = _run(tmp_path)
-    assert [_inner(t) for t in ids["s3_W0"].findall("TRANSL")] == ["<UNCLEAR />&lt;PFV&gt;", "什?"]   # 什? not ruled
+    assert [_inner(t) for t in ids["s3_W0"].findall("TRANSL")] == ["<UNCLEAR />&lt;PFV&gt;", "什?"]   # not in UNCERTAIN_GLOSSES
 
 
 def test_sentence_that_is_only_unclear_has_no_words(tmp_path):

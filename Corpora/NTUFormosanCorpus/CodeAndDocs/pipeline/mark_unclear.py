@@ -81,7 +81,8 @@ What it does, per sentence (S):
    of which you suggested should be treated as uncertainty"; 可?: "agreed";
    taniara?: "I would treat this as uncertainty". 一.?量詞: "treat as unclear"
    -> 一.<UNCLEAR/>量詞 (UNCLEAR_PIECE_GLOSSES). Other attached ? stay as
-   written (什? is open; ?P is ruling 7; 這是鹿角嗎? is a question).
+   written (?P is ruling 7; 這是鹿角嗎? is a question). 什? on maanu was a typo for
+   什麼, corrected at load time by gloss_cell_decisions.tsv ("Fix maanu.").
 
 Runs last in each subcorpus build, after the shared standardize/add_phonology
 steps: those read FORM.text, so a FORM holding <UNCLEAR/> earlier in the build
