@@ -21,3 +21,9 @@ test -f "$FB/QC/cleaning/clean_xml.py"
     --target_column Coastal
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$ROOT/XML" \
     --language Amis --orthography "$FB/Orthographies/Ortho94"
+
+# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/Amis-Pa-Verbs.tsv
+"$PY" "$FB/QC/glossing/apply_gloss_standard.py" \
+    --path "$ROOT/XML" \
+    --table "$FB/Glossing/ConversionTables/Amis-Pa-Verbs.tsv" \
+    --rules "$FB/Glossing/ConversionTables/Amis-Pa-Verbs.rules.tsv" --write

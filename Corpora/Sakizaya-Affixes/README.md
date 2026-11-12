@@ -133,3 +133,5 @@ private scan, OCR cache or download is needed.
 **POL-047 deviation:** original PHON is omitted because the source supplies no
 phonetic transcription, and the source-specific completion step (step 3)
 follows the manual transcription and precedes cleaning.
+
+**Standard gloss tier** (final step): `QC/glossing/apply_gloss_standard.py` adds `TRANSL kindOf="standard"` glosses beside every original gloss (POL-036 — the original tier is never changed), converting each gloss code according to this corpus's standardization list, [Glossing/ConversionTables/Sakizaya-Affixes.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/Sakizaya-Affixes.tsv) (segmentation conventions in [Sakizaya-Affixes.rules.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/Sakizaya-Affixes.rules.tsv)). Codes without a ruled mapping are copied verbatim, so the standard tier is always complete; the project-wide approach, vocabulary and per-language gloss dictionaries are documented in [Glossing/README.md](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/README.md).

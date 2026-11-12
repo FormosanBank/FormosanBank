@@ -117,4 +117,10 @@ step "6. add_phonology (Wakelin profile for original, Ortho113 for standard)"
 "$PY" "$BANK/QC/utilities/add_phonology.py" \
   --corpora_path "$XML" --orthography Wakelin
 
+# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/WakelinTexts.tsv
+"$PY" "$BANK/QC/glossing/apply_gloss_standard.py" \
+    --path "$XML" \
+    --table "$BANK/Glossing/ConversionTables/WakelinTexts.tsv" \
+    --rules "$BANK/Glossing/ConversionTables/WakelinTexts.rules.tsv" --write
+
 step "Done. Review + delete any $XML/*_warnings.csv sidecars (POL-033)."

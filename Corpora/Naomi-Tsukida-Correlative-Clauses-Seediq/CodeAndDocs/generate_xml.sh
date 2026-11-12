@@ -36,6 +36,12 @@ fi
 "$PY" "$HERE/standardize_with_clitic_spaces.py" "$FB" "$STAGE/XML" --python "$PY"
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$STAGE/XML" --orthography Tsukida
 
+# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/Naomi-Tsukida-Correlative-Clauses-Seediq.tsv
+"$PY" "$FB/QC/glossing/apply_gloss_standard.py" \
+    --path "$STAGE/XML" \
+    --table "$FB/Glossing/ConversionTables/Naomi-Tsukida-Correlative-Clauses-Seediq.tsv" \
+    --rules "$FB/Glossing/ConversionTables/Naomi-Tsukida-Correlative-Clauses-Seediq.rules.tsv" --write
+
 # per-run reports the shared tools write next to the XML are not published (POL-033)
 find "$STAGE/XML" -name '*.csv' -exec mv -t "$REPORTS" {} +
 if find "$STAGE/XML" -type f ! -name '*.xml' -print -quit | grep -q .; then

@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TEXT id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY" xml:lang="xnb" dialect="Kanakanavu" citation="Asai, E., Mei, K., Li, P. J.-k., &amp; Tsuchida, S. (2026). Kanakanavu texts (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies." BibTeX_citation="@book{AsaiMeiLiTsuchida2026KanakanavuTexts,author={Erin Asai and Kuang Mei and Paul Jen-kuei Li and Shigeru Tsuchida},editor={Paul Jen-kuei Li},title={Kanakanavu Texts},year={2026},publisher={Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},isbn={978-4-86337-602-1},note={With the assistance of Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0}}" copyright="CC BY 4.0" source="Kanakanavu Texts (2026), Part 1, Text 6, Erin Asai, printed pages 48-48, source PDF B602_KanakanavuText.pdf">
     <S id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0001">
         <FORM kindOf="original">"vua-u=ku tuutu taŋətaŋə, ciina."</FORM>
@@ -12,12 +12,14 @@
             <FORM kindOf="standard">vua-u=ku</FORM>
             <PHON kindOf="standard">vuauku</PHON>
             <TRANSL xml:lang="eng" kindOf="original">give-UV.IMP=1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">give-PV.IMP=1SG.NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0001_W001_M01">
                 <FORM kindOf="original">vua</FORM>
                 <PHON kindOf="original">vua</PHON>
                 <FORM kindOf="standard">vua</FORM>
                 <PHON kindOf="standard">vua</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">give</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">give</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0001_W001_M02">
                 <FORM kindOf="original">u</FORM>
@@ -25,6 +27,7 @@
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">UV.IMP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV.IMP</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0001_W001_M03">
                 <FORM kindOf="original">=ku</FORM>
@@ -32,6 +35,7 @@
                 <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.NOM</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0001_W002">
@@ -40,12 +44,14 @@
             <FORM kindOf="standard">tuutu</FORM>
             <PHON kindOf="standard">tuutu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">seed</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">seed</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0001_W002_M01">
                 <FORM kindOf="original">tuutu</FORM>
                 <PHON kindOf="original">tuutu</PHON>
                 <FORM kindOf="standard">tuutu</FORM>
                 <PHON kindOf="standard">tuutu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">seed</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">seed</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0001_W003">
@@ -54,12 +60,14 @@
             <FORM kindOf="standard">tangetange</FORM>
             <PHON kindOf="standard">taŋetaŋe</PHON>
             <TRANSL xml:lang="eng" kindOf="original">pumpkin</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">pumpkin</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0001_W003_M01">
                 <FORM kindOf="original">taŋətaŋə</FORM>
                 <PHON kindOf="original">taŋətaŋə</PHON>
                 <FORM kindOf="standard">tangetange</FORM>
                 <PHON kindOf="standard">taŋetaŋe</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">pumpkin</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">pumpkin</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0001_W004">
@@ -68,12 +76,14 @@
             <FORM kindOf="standard">ciina</FORM>
             <PHON kindOf="standard">ʦiina</PHON>
             <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">mother</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0001_W004_M01">
                 <FORM kindOf="original">ciina</FORM>
                 <PHON kindOf="original">tʂiina</PHON>
                 <FORM kindOf="standard">ciina</FORM>
                 <PHON kindOf="standard">ʦiina</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">mother</TRANSL>
             </M>
         </W>
     </S>
@@ -89,12 +99,14 @@
             <FORM kindOf="standard">ma-kinara</FORM>
             <PHON kindOf="standard">makina[r|ɾ]a</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-ask.for</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-ask.for</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0002_W001_M01">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0002_W001_M02">
                 <FORM kindOf="original">kinala</FORM>
@@ -102,6 +114,7 @@
                 <FORM kindOf="standard">kinara</FORM>
                 <PHON kindOf="standard">kina[r|ɾ]a</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">ask.for</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ask.for</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0002_W002">
@@ -110,12 +123,14 @@
             <FORM kindOf="standard">cuumusu</FORM>
             <PHON kindOf="standard">ʦuumusu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">father.2SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">father.2SG.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0002_W002_M01">
                 <FORM kindOf="original">cuumusu</FORM>
                 <PHON kindOf="original">ʦuumusu</PHON>
                 <FORM kindOf="standard">cuumusu</FORM>
                 <PHON kindOf="standard">ʦuumusu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">father.2SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">father.2SG.GEN</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0002_W003">
@@ -124,12 +139,14 @@
             <FORM kindOf="standard">ma-kinara</FORM>
             <PHON kindOf="standard">makina[r|ɾ]a</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-ask.for</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-ask.for</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0002_W003_M01">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0002_W003_M02">
                 <FORM kindOf="original">kinala</FORM>
@@ -137,6 +154,7 @@
                 <FORM kindOf="standard">kinara</FORM>
                 <PHON kindOf="standard">kina[r|ɾ]a</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">ask.for</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ask.for</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0002_W004">
@@ -145,12 +163,14 @@
             <FORM kindOf="standard">vai=su</FORM>
             <PHON kindOf="standard">vaisu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">sibling=2SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">sibling=2SG.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0002_W004_M01">
                 <FORM kindOf="original">vai</FORM>
                 <PHON kindOf="original">vai</PHON>
                 <FORM kindOf="standard">vai</FORM>
                 <PHON kindOf="standard">vai</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">sibling</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">sibling</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0002_W004_M02">
                 <FORM kindOf="original">=su</FORM>
@@ -158,6 +178,7 @@
                 <FORM kindOf="standard">=su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">2SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -173,12 +194,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">not.have</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">not.have</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0003_W001_M01">
                 <FORM kindOf="original">ʔakia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">not.have</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">not.have</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0003_W002">
@@ -187,12 +210,14 @@
             <FORM kindOf="standard">vua</FORM>
             <PHON kindOf="standard">vua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">give</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">give</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0003_W002_M01">
                 <FORM kindOf="original">vua</FORM>
                 <PHON kindOf="original">vua</PHON>
                 <FORM kindOf="standard">vua</FORM>
                 <PHON kindOf="standard">vua</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">give</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">give</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0003_W003">
@@ -201,12 +226,14 @@
             <FORM kindOf="standard">kasua</FORM>
             <PHON kindOf="standard">kasua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">2SG.OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.OBL</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0003_W003_M01">
                 <FORM kindOf="original">kasua</FORM>
                 <PHON kindOf="original">kasua</PHON>
                 <FORM kindOf="standard">kasua</FORM>
                 <PHON kindOf="standard">kasua</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">2SG.OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.OBL</TRANSL>
             </M>
         </W>
     </S>
@@ -222,12 +249,14 @@
             <FORM kindOf="standard">nuu</FORM>
             <PHON kindOf="standard">nuu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">if</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0004_W001_M01">
                 <FORM kindOf="original">nuu</FORM>
                 <PHON kindOf="original">nuu</PHON>
                 <FORM kindOf="standard">nuu</FORM>
                 <PHON kindOf="standard">nuu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">if</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0004_W002">
@@ -238,6 +267,7 @@
             <PHON kindOf="standard">makaasu</PHON>
             <FORM kindOf="standard" ver="alt">makaasua</FORM>
             <TRANSL xml:lang="eng" kindOf="original">in.that.way</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">in.that.way</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0004_W002_M01">
                 <FORM kindOf="original">makaasu</FORM>
                 <PHON kindOf="original">makaasu</PHON>
@@ -246,6 +276,7 @@
                 <PHON kindOf="standard">makaasu</PHON>
                 <FORM kindOf="standard" ver="alt">makaasua</FORM>
                 <TRANSL xml:lang="eng" kindOf="original">in.that.way</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">in.that.way</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0004_W003">
@@ -254,12 +285,14 @@
             <FORM kindOf="standard">'inia</FORM>
             <PHON kindOf="standard">ʔinia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">3.OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3.OBL</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0004_W003_M01">
                 <FORM kindOf="original">ʔinia</FORM>
                 <PHON kindOf="original">ʔinia</PHON>
                 <FORM kindOf="standard">'inia</FORM>
                 <PHON kindOf="standard">ʔinia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">3.OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3.OBL</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0004_W004">
@@ -268,12 +301,14 @@
             <FORM kindOf="standard">ngekau=ku='ai</FORM>
             <PHON kindOf="standard">ŋekaukuʔai</PHON>
             <TRANSL xml:lang="eng" kindOf="original">monkey=1SG.NOM=perhaps</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">monkey=1SG.NOM=perhaps</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0004_W004_M01">
                 <FORM kindOf="original">ŋəkau</FORM>
                 <PHON kindOf="original">ŋəkau</PHON>
                 <FORM kindOf="standard">ngekau</FORM>
                 <PHON kindOf="standard">ŋekau</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">monkey</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">monkey</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0004_W004_M02">
                 <FORM kindOf="original">=ku</FORM>
@@ -281,6 +316,7 @@
                 <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.NOM</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0004_W004_M03">
                 <FORM kindOf="original">=ʔai</FORM>
@@ -288,6 +324,7 @@
                 <FORM kindOf="standard">='ai</FORM>
                 <PHON kindOf="standard">ʔai</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">perhaps</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">perhaps</TRANSL>
             </M>
         </W>
     </S>
@@ -303,12 +340,14 @@
             <FORM kindOf="standard">ara</FORM>
             <PHON kindOf="standard">a[r|ɾ]a</PHON>
             <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">take</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0005_W001_M01">
                 <FORM kindOf="original">ala</FORM>
                 <PHON kindOf="original">aɾa</PHON>
                 <FORM kindOf="standard">ara</FORM>
                 <PHON kindOf="standard">a[r|ɾ]a</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">take</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0005_W002">
@@ -317,12 +356,14 @@
             <FORM kindOf="standard">'inia</FORM>
             <PHON kindOf="standard">ʔinia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">3.OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3.OBL</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0005_W002_M01">
                 <FORM kindOf="original">ʔinia</FORM>
                 <PHON kindOf="original">ʔinia</PHON>
                 <FORM kindOf="standard">'inia</FORM>
                 <PHON kindOf="standard">ʔinia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">3.OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3.OBL</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0005_W003">
@@ -331,12 +372,14 @@
             <FORM kindOf="standard">kaaru</FORM>
             <PHON kindOf="standard">kaa[r|ɾ]u</PHON>
             <TRANSL xml:lang="eng" kindOf="original">wood</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">wood</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0005_W003_M01">
                 <FORM kindOf="original">kaalu</FORM>
                 <PHON kindOf="original">kaaɾu</PHON>
                 <FORM kindOf="standard">kaaru</FORM>
                 <PHON kindOf="standard">kaa[r|ɾ]u</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">wood</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">wood</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0005_W004">
@@ -345,12 +388,14 @@
             <FORM kindOf="standard">seceng-en</FORM>
             <PHON kindOf="standard">seʦeŋen</PHON>
             <TRANSL xml:lang="eng" kindOf="original">insert-UV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">insert-PV</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0005_W004_M01">
                 <FORM kindOf="original">səcəŋ</FORM>
                 <PHON kindOf="original">səʦəŋ</PHON>
                 <FORM kindOf="standard">seceng</FORM>
                 <PHON kindOf="standard">seʦeŋ</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">insert</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">insert</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0005_W004_M02">
                 <FORM kindOf="original">ən</FORM>
@@ -358,6 +403,7 @@
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">en</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">UV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0005_W005">
@@ -366,12 +412,14 @@
             <FORM kindOf="standard">ta-ta'ica-ini</FORM>
             <PHON kindOf="standard">tataʔiʦaini</PHON>
             <TRANSL xml:lang="eng" kindOf="original">RED-buttoks-3.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED-buttoks-3.GEN</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0005_W005_M01">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0005_W005_M02">
                 <FORM kindOf="original">taʔica</FORM>
@@ -379,6 +427,7 @@
                 <FORM kindOf="standard">ta'ica</FORM>
                 <PHON kindOf="standard">taʔiʦa</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">buttoks</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">buttoks</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0005_W005_M03">
                 <FORM kindOf="original">ini</FORM>
@@ -386,6 +435,7 @@
                 <FORM kindOf="standard">ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">3.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -401,12 +451,14 @@
             <FORM kindOf="standard">mu-a-para</FORM>
             <PHON kindOf="standard">muapa[r|ɾ]a</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-IRR-climb</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-IRR-climb</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0006_W001_M01">
                 <FORM kindOf="original">mu</FORM>
                 <PHON kindOf="original">mu</PHON>
                 <FORM kindOf="standard">mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0006_W001_M02">
                 <FORM kindOf="original">a</FORM>
@@ -414,6 +466,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">IRR</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0006_W001_M03">
                 <FORM kindOf="original">para</FORM>
@@ -421,6 +474,7 @@
                 <FORM kindOf="standard">para</FORM>
                 <PHON kindOf="standard">pa[r|ɾ]a</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">climb</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">climb</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0006_W002">
@@ -429,12 +483,14 @@
             <FORM kindOf="standard">ra-karu-karu-a</FORM>
             <PHON kindOf="standard">[r|ɾ]aka[r|ɾ]uka[r|ɾ]ua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">many-RED-tree-LOC</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">many-RED-tree-LOC</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0006_W002_M01">
                 <FORM kindOf="original">ra</FORM>
                 <PHON kindOf="original">ra</PHON>
                 <FORM kindOf="standard">ra</FORM>
                 <PHON kindOf="standard">[r|ɾ]a</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">many</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">many</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0006_W002_M02">
                 <FORM kindOf="original">kalu</FORM>
@@ -442,6 +498,7 @@
                 <FORM kindOf="standard">karu</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]u</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0006_W002_M03">
                 <FORM kindOf="original">kalu</FORM>
@@ -449,6 +506,7 @@
                 <FORM kindOf="standard">karu</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]u</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">tree</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">tree</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0006_W002_M04">
                 <FORM kindOf="original">a</FORM>
@@ -456,6 +514,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
         </W>
     </S>
@@ -471,12 +530,14 @@
             <FORM kindOf="standard">t&lt;um&gt;parapara</FORM>
             <PHON kindOf="standard">tumpa[r|ɾ]apa[r|ɾ]a</PHON>
             <TRANSL xml:lang="eng" kindOf="original">leap&lt;AV&gt;</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">leap&lt;AV&gt;</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0007_W001_M01">
                 <FORM kindOf="original">t-palapala</FORM>
                 <PHON kindOf="original">tpaɾapaɾa</PHON>
                 <FORM kindOf="standard">t-parapara</FORM>
                 <PHON kindOf="standard">tpa[r|ɾ]apa[r|ɾ]a</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">leap</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">leap</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0007_W001_M02">
                 <FORM kindOf="original">-um-</FORM>
@@ -484,6 +545,7 @@
                 <FORM kindOf="standard">-um-</FORM>
                 <PHON kindOf="standard">um</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">&lt;AV&gt;</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">&lt;AV&gt;</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0007_W002">
@@ -492,12 +554,14 @@
             <FORM kindOf="standard">ngekau=cu</FORM>
             <PHON kindOf="standard">ŋekauʦu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">monkey=COS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">monkey=COS</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0007_W002_M01">
                 <FORM kindOf="original">ŋəkau</FORM>
                 <PHON kindOf="original">ŋəkau</PHON>
                 <FORM kindOf="standard">ngekau</FORM>
                 <PHON kindOf="standard">ŋekau</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">monkey</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">monkey</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_006_TRANSFORMING_INTO_A_MONKEY_S0007_W002_M02">
                 <FORM kindOf="original">=cu</FORM>
@@ -505,6 +569,7 @@
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
         </W>
     </S>

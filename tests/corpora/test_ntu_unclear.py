@@ -429,12 +429,13 @@ def test_uncertainty_marks_are_notes(sentences):
 
 def test_unknown_classifier_piece_is_unclear(sentences):
     got = [_inner(t) for s in sentences for w in s.findall("W") for n in [w, *w.findall("M")]
-           for t in n.findall("TRANSL") if "量詞" in _inner(t) and "UNCLEAR" in _inner(t)]
+           for t in n.findall("TRANSL")
+           if t.get("kindOf") != "standard" and "量詞" in _inner(t) and "UNCLEAR" in _inner(t)]
     assert got == ["一.<UNCLEAR />量詞"] * 2
 
 
 def test_held_words_are_unchanged(sentences):
-    found = {w.get("id"): [t.text for t in w.findall("TRANSL")] for s in sentences for w in s.findall("W")
+    found = {w.get("id"): [t.text for t in w.findall("TRANSL") if t.get("kindOf") != "standard"] for s in sentences for w in s.findall("W")
              if w.get("id") in HELD}
     assert set(found) == set(HELD)
     for wid, gloss in HELD.items():
@@ -573,7 +574,8 @@ def test_rukai_question_pieces_are_unclear(texts):
     for wid, form in UNKNOWN_PIECES.items():
         assert [_inner(f) for f in words[wid].findall("FORM")] == [form, form], wid
     assert [_inner(f) for f in words["20200529-FW-Lixing-1_S_18_W2"].find("M").findall("FORM")] == ["<UNCLEAR />la"] * 2
-    assert [t.text for t in words["20200529-FW-Lixing-1_S_18_W2"].findall("TRANSL")] == ["?複數-男生", "?P-boy"]
+    assert [t.text for t in words["20200529-FW-Lixing-1_S_18_W2"].findall("TRANSL")
+            if t.get("kindOf") != "standard"] == ["?複數-男生", "?P-boy"]
     s18 = next(s for t in rukai for s in t.iter("S") if s.get("id") == "20200529-FW-Lixing-1_S_18")
     assert [_inner(f) for f in s18.findall("FORM")] == ["waecenge ka <UNCLEAR />lalasu ki kidringi."] * 2
 
@@ -607,7 +609,8 @@ def test_gloss_label_in_a_form_is_unclear(texts):
     assert [_inner(f) for f in w.findall("FORM")] == ["<UNCLEAR />kara-peen=kasu"] * 2
     assert [_inner(f) for f in w.find("M").findall("FORM")] == ["<UNCLEAR />kara"] * 2
     assert [_inner(p) for p in w.findall("PHON")] == ["<UNCLEAR />ka[r|ɾ]apeenkasu"] * 2
-    assert [t.text for t in w.findall("TRANSL")] == ["主焦.喝-多少=2SG.主格", "AV.drink-how.many=2SG.NOM"]
+    assert [t.text for t in w.findall("TRANSL")
+            if t.get("kindOf") != "standard"] == ["主焦.喝-多少=2SG.主格", "AV.drink-how.many=2SG.NOM"]
     labels = [(n.get("id"), "".join(f.itertext())) for t in texts for n in [*t.iter("W"), *t.iter("M")]
               for f in n.findall("FORM") if "".join(f.itertext()).startswith("AV.")]
     assert labels == []

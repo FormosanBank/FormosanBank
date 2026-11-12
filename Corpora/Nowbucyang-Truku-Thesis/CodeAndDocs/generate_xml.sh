@@ -28,6 +28,12 @@ cp "$STAGE/CodeAndDocs/manual_edits.md" "$HERE/manual_edits.md"
 "$PY" "$HERE/replay_reviewed_merges.py" --formosanbank "$FB" --xml "$BUILD/Truku/Hsu_Lowking_Truku_WordFormation_2008.xml"
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$BUILD" --orthography Ortho94
 
+# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/Nowbucyang-Truku-Thesis.tsv
+"$PY" "$FB/QC/glossing/apply_gloss_standard.py" \
+    --path "$BUILD" \
+    --table "$FB/Glossing/ConversionTables/Nowbucyang-Truku-Thesis.tsv" \
+    --rules "$FB/Glossing/ConversionTables/Nowbucyang-Truku-Thesis.rules.tsv" --write
+
 cp "$STAGE/CodeAndDocs/data/processed/"*.csv "$REPORTS/"
 cp "$STAGE/CodeAndDocs/data/processed/"*.txt "$REPORTS/"
 find "$BUILD" -name '*warnings.csv' -exec mv {} "$REPORTS/" \;

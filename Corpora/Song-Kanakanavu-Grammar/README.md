@@ -339,3 +339,5 @@ commit differs from the one in `provenance.json`.
 
 Last, the script deletes `XML/cleaner_warnings.csv` and prints
 `Rebuilt …/XML/Kanakanavu/`.
+
+**Standard gloss tier** (final step): `QC/glossing/apply_gloss_standard.py` adds `TRANSL kindOf="standard"` glosses beside every original gloss (POL-036 — the original tier is never changed), converting each gloss code according to this corpus's standardization list, [Glossing/ConversionTables/Song-Kanakanavu-Grammar.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/Song-Kanakanavu-Grammar.tsv) (segmentation conventions in [Song-Kanakanavu-Grammar.rules.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/Song-Kanakanavu-Grammar.rules.tsv)). Codes without a ruled mapping are copied verbatim, so the standard tier is always complete; the project-wide approach, vocabulary and per-language gloss dictionaries are documented in [Glossing/README.md](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/README.md).

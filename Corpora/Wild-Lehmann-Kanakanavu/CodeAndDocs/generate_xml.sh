@@ -50,6 +50,12 @@ mkdir -p "$STAGE/XML"
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$STAGE/XML" \
     --language "Kanakanavu" --orthography "Ortho113"
 
+# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/Wild-Lehmann-Kanakanavu.tsv
+"$PY" "$FB/QC/glossing/apply_gloss_standard.py" \
+    --path "$STAGE/XML" \
+    --table "$FB/Glossing/ConversionTables/Wild-Lehmann-Kanakanavu.tsv" \
+    --rules "$FB/Glossing/ConversionTables/Wild-Lehmann-Kanakanavu.rules.tsv" --write
+
 # Install: the published tree is replaced wholesale, so a removed source unit
 # disappears from XML/ too (nothing stale survives a rebuild).
 rm -rf "$CORPUS/XML"; cp -r "$STAGE/XML" "$CORPUS/XML"
