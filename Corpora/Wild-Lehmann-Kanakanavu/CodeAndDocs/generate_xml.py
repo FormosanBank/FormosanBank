@@ -74,7 +74,11 @@ gloss and the TRANSL gets notes="uncertain" (`COND(?)` -> `COND`; `go?` -> `go`)
 Where a `?` run sits between two letters it separated alternatives and becomes
 `/` (`father?uncle?` -> `father/uncle`). Maintainer (2026-11-11): "They mark
 uncertainty. Remove them from the gloss and put "uncertain" in the note for
-that TRANSL." Left as written: `go-?/certain (TB)??` (UNCERTAIN_KEPT).
+that TRANSL." The `/` reading was confirmed: "Yes, go ahead and use the
+slash format." One gloss is dropped (GLOSS_DROPPED): `go-?/certain (TB)??` on
+`mua` (2014_Moo_02_55_W01) gets no TRANSL and no M. Maintainer (2026-11-11):
+"I think the gloss should just be deleted for that W and there should be no
+child Ms."
 
 A free translation that is empty is not emitted.
 
@@ -108,8 +112,8 @@ HERE = Path(__file__).resolve().parent
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 SITE = "https://kanakanavu.info/language-documentation/"
 UNKNOWN_GLOSS = {"", "?", "??", "???"}
-# Glosses whose `?` marks are left as written: what each `?` means here is not settled.
-UNCERTAIN_KEPT = {"go-?/certain (TB)??"}
+# Glosses not emitted at all (no TRANSL, no M); see the docstring.
+GLOSS_DROPPED = {"go-?/certain (TB)??"}
 INFIX = re.compile(r"<([^<>]*)>")
 LABEL = re.compile(r"[<(][A-Z][A-Za-z0-9.:]*[>)]")   # a bracketed capital label in a gloss, e.g. (AV)
 
@@ -253,7 +257,7 @@ def strip_uncertain(piece: str) -> tuple[str, bool]:
     a `?` run between two letters separated alternatives (`father?uncle?`) and becomes
     `/`, the site's own separator for alternative glosses (`CONT/please?`).
     """
-    if "?" not in piece or piece in UNKNOWN_GLOSS or piece in UNCERTAIN_KEPT:
+    if "?" not in piece or piece in UNKNOWN_GLOSS:
         return piece, False
     out = piece.replace("(?)", "")
     out = re.sub(r"(?<=[^\W\d_])\?+(?=[^\W\d_])", "/", out)
@@ -265,9 +269,6 @@ def add_gloss(parent, text: str) -> None:
     t = etree.SubElement(parent, "TRANSL", {XML_LANG: "eng", "kindOf": "original"})
     if text in UNKNOWN_GLOSS:
         etree.SubElement(t, "UNCLEAR")
-        return
-    if text in UNCERTAIN_KEPT:
-        t.text = text
         return
     pieces = [p if p in UNKNOWN_GLOSS else strip_uncertain(p) for p in text.split("-")]
     if any(isinstance(p, tuple) and p[1] for p in pieces):
@@ -449,6 +450,9 @@ def emit_sentence(root, sid: str, cells: list, rows: dict, meta: dict, report: d
             form.set("notes", note)
         if alt:
             etree.SubElement(w, "FORM", {"kindOf": "original", "ver": "alt"}).text = alt
+        if gloss in GLOSS_DROPPED:
+            report["W gloss dropped (no TRANSL, no M)"] += 1
+            continue
         add_gloss(w, gloss)
         fp, gp = form_pieces(word), gloss_pieces(gloss)
         if fp is None:
