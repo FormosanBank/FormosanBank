@@ -267,9 +267,9 @@ it) is `<TRANSL><UNCLEAR/></TRANSL>`. Inside a gloss, an unknown piece is
 uncertainty about a gloss it did give (`COND(?)`, `go?`, `LIG?`, `他?`) is
 removed from the gloss, and that TRANSL gets `notes="uncertain"`
 (`COND(?)` → `COND` with `notes="uncertain"`); POL-036's and POL-062's "kept as
-written" do not apply to these marks. Not followed yet by NTUFormosanCorpus
-(`什?` on `maanu`, under review) and YeddaPalemeqBlog (`right?`, `ligature?`,
-`after? I am actually not sure.` and other short glosses not yet reviewed).
+written" do not apply to these marks. Not followed yet by YeddaPalemeqBlog
+(`right?`, `ligature?`, `after? I am actually not sure.` and other short glosses
+not yet reviewed); tracked in [#343](https://github.com/FormosanBank/FormosanBank/issues/343).
 Maintainer (2026-11-11, Wild-Lehmann-Kanakanavu): *"They mark uncertainty.
 Remove them from the gloss and put "uncertain" in the note for that TRANSL."*;
 on making that this policy: *"Yes, update."*
@@ -407,7 +407,7 @@ Not followed yet by Seediq-Chang-Reference-Grammar (18 `<UNCLEAR/>` glosses for
 words the book leaves unglossed) or Nowbucyang-Truku-Thesis (21 `<UNCLEAR/>`
 morpheme glosses where gloss pieces and morphemes do not line up); no change to
 their data is planned now (maintainer, 2026-11-08: *"No additional task or
-standardization is required at this time."*).
+standardization is required at this time."*). Tracked in [#344](https://github.com/FormosanBank/FormosanBank/issues/344).
 
 ### POL-024 · RULED · 2026-08-10 · parentheticals in translations
 Two different things, treated differently:
@@ -955,8 +955,8 @@ exists under the canonical name and is executable, no older entry point survives
 beside it, it is self-contained (POL-048, no deviation clause), it runs no
 `QC/validation/`, and the shared steps it does call are in canonical relative
 order — all static, all cheap. Corpora that predate this entry are listed in
-`generate_xml_pending.txt` at the repo root; the list only shrinks, and a new or
-re-ported corpus is never added to it. **Idempotency is not covered** — that
+`generate_xml_pending.txt` at the repo root (tracked in [#345](https://github.com/FormosanBank/FormosanBank/issues/345)); the list
+only shrinks, and a new or re-ported corpus is never added to it. **Idempotency is not covered** — that
 needs the build actually run, which is too expensive for every corpus on every
 pull request, so for now it is a reviewer's job.
 
@@ -1082,8 +1082,8 @@ second copy that drifts.
 
 **Enforced** by `tests/corpora/test_provenance.py`: the file must exist, parse,
 and carry a well-formed commit, and the README must link it. Corpora that
-predate this entry are listed in `provenance_pending.txt` at the repo root — a
-list that only ever shrinks, and that a new or rebuilt corpus is never added to.
+predate this entry are listed in `provenance_pending.txt` at the repo root
+(tracked in [#346](https://github.com/FormosanBank/FormosanBank/issues/346)) — a list that only ever shrinks, and that a new or rebuilt corpus is never added to.
 
 **The record is documentation, never a gate.** `generate_xml.sh` runs with the
 tools in the checkout it is invoked from — normally `main` at HEAD — not with
@@ -1247,7 +1247,7 @@ what they are looking at."* The paragraph above is the maintainer's wording
 
 Implemented by: `docs/tools/readme_layout.py` (the layout),
 `tests/corpora/test_readme_sections.py` (the `structure` check; legacy READMEs
-in `readme_sections_pending.txt`), `docs/tools/manage_corpus_pages.py check
+in `readme_sections_pending.txt`, tracked in [#347](https://github.com/FormosanBank/FormosanBank/issues/347)), `docs/tools/manage_corpus_pages.py check
 --strict` (in `tests.yaml`), and the `port-corpus-in` `README.template.md`.
 
 ### POL-056 · RULED · 2026-09-09 · conversion tables
