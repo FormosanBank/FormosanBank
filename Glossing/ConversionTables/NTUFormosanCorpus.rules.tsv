@@ -7,3 +7,5 @@ pattern	replacement	description
 [()\[\]（）]	INVESTIGATE	maintainer rules-review 2026-11-11: 'parentheses and square brackets probably shouldn't be in the glosses and should be investigated where they occur' — occurrences: parens ~886 tokens ((Mandarin) ×94, 1P(IN)/1P(EX) clusivity ~160, rest in residue); square brackets: none found; fullwidth ／ in 受事／處所焦點 strings
 1P\((IN|EX)\)	PENDING-RULING	parenthesized clusivity person codes (~160 tokens in residue) — target shape undecided (ties to the clusivity decision)
 …	RESIDUE	anything else unsegmentable is copied verbatim and listed in the residue report
+NAF&-i	CONTEXT-CONVERT→OV	maintainer-confirmed 2026-11-12 (c5 case-by-case): pa-spung-i (jid 15058) = the paper's expert-checked IF assignment → OV; the other NAF words (san/kasau/agan, no -i morpheme) stay unmapped
+非主焦&-i	CONTEXT-CONVERT→OV	zho twin of the NAF&-i rule (same token)
