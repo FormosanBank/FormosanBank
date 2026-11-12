@@ -32,6 +32,7 @@ tree (e.g. the pre-change XML, on which these tests fail).
 from __future__ import annotations
 
 import os
+from collections import Counter
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -126,7 +127,7 @@ SAMPLE = """<?xml version="1.0" ?>
         <W id="s3_W0">
             <FORM kindOf="original">ma&lt;i&gt;</FORM>
             <TRANSL xml:lang="eng" kindOf="original">?&lt;PFV&gt;</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="original">他?</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">什?</TRANSL>
         </W>
         <W id="s3_W1">
             <FORM kindOf="original">X</FORM>
@@ -185,7 +186,7 @@ def test_unknown_glosses_and_sentence_translations(tmp_path):
 
 def test_question_piece_before_an_infix_label(tmp_path):
     _, ids = _run(tmp_path)
-    assert [_inner(t) for t in ids["s3_W0"].findall("TRANSL")] == ["<UNCLEAR />&lt;PFV&gt;", "他?"]
+    assert [_inner(t) for t in ids["s3_W0"].findall("TRANSL")] == ["<UNCLEAR />&lt;PFV&gt;", "什?"]   # 什? not ruled
 
 
 def test_sentence_that_is_only_unclear_has_no_words(tmp_path):
@@ -404,6 +405,32 @@ def test_sentence_that_is_only_unclear_has_no_words_published(sentences):
             if not any(ch.isalnum() for ch in rest):
                 bad.append(s.get("id"))
     assert bad == []
+
+
+UNCERTAIN_AFTER = {   # ruling 8 (2026-11-11): published gloss -> how many carry notes="uncertain"
+    ("zho", "他"): 2, ("zho", "帥"): 4,
+    ("zho", "原本-豬=中距.斜格"): 2, ("eng", "origin-pig=MED.OBL"): 2,
+    ("zho", "中距.斜格"): 2, ("eng", "MED.OBL"): 2,
+    ("zho", "可.中距-那裡"): 1, ("zho", "可.中距"): 1, ("eng", "taniara"): 2,
+}
+
+
+def test_uncertainty_marks_are_notes(sentences):
+    found = Counter()
+    for s in sentences:
+        for w in s.findall("W"):
+            for n in [w, *w.findall("M")]:
+                for t in n.findall("TRANSL"):
+                    if t.get("notes") == "uncertain":
+                        found[(t.get(XML_LANG), _inner(t))] += 1
+                    assert (t.get(XML_LANG), _inner(t)) not in {(l, g) for l, g in mu.UNCERTAIN_GLOSSES}, n.get("id")
+    assert found == Counter(UNCERTAIN_AFTER)
+
+
+def test_unknown_classifier_piece_is_unclear(sentences):
+    got = [_inner(t) for s in sentences for w in s.findall("W") for n in [w, *w.findall("M")]
+           for t in n.findall("TRANSL") if "量詞" in _inner(t) and "UNCLEAR" in _inner(t)]
+    assert got == ["一.<UNCLEAR />量詞"] * 2
 
 
 def test_held_words_are_unchanged(sentences):

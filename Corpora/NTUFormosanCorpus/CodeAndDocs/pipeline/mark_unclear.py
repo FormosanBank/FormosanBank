@@ -74,6 +74,15 @@ What it does, per sentence (S):
    an infix label: ma<i> glossed ?<PFV> -> <UNCLEAR/><PFV>, two pieces in the form
    and two in the gloss (maintainer, 2026-11-11: "Yes, <UNCLEAR/><PFV>").
 
+8. A ? marking NTU's doubt about a gloss it did give (POL-021 as amended
+   2026-11-11): the ? is removed and the TRANSL gets notes="uncertain", for the
+   glosses listed in UNCERTAIN_GLOSSES (他?, 帥?, MED.OBL? / 中距.斜格?, 可?.中距,
+   taniara?). Maintainer, 2026-11-11: "Agreed about the others you listed, all
+   of which you suggested should be treated as uncertainty"; 可?: "agreed";
+   taniara?: "I would treat this as uncertainty". 一.?量詞: "treat as unclear"
+   -> 一.<UNCLEAR/>量詞 (UNCLEAR_PIECE_GLOSSES). Other attached ? stay as
+   written (什? is open; ?P is ruling 7; 這是鹿角嗎? is a question).
+
 Runs last in each subcorpus build, after the shared standardize/add_phonology
 steps: those read FORM.text, so a FORM holding <UNCLEAR/> earlier in the build
 would be transliterated only up to the marker.
@@ -124,6 +133,21 @@ UNKNOWN_PIECE_WORDS = {
     ("dru", "20200529-FW-Lixing-1_S_18_W2"), # ?la-lasu
     ("dru", "20200531-FW-yuki_S_3_W0"),      # ?ma-adrau-nga
 }
+# Ruling 8 (2026-11-11): (xml:lang, gloss as NTU wrote it) -> the gloss without
+# its uncertainty mark; the TRANSL gets notes="uncertain".
+UNCERTAIN_GLOSSES = {
+    ("zho", "他?"): "他",
+    ("zho", "帥?"): "帥",
+    ("zho", "原本-豬=中距.斜格?"): "原本-豬=中距.斜格",
+    ("eng", "origin-pig=MED.OBL?"): "origin-pig=MED.OBL",
+    ("zho", "中距.斜格?"): "中距.斜格",
+    ("eng", "MED.OBL?"): "MED.OBL",
+    ("zho", "可?.中距-那裡"): "可.中距-那裡",
+    ("zho", "可?.中距"): "可.中距",
+    ("eng", "taniara?"): "taniara",
+}
+# Ruling 8: glosses whose ? is an unknown piece the piece pattern does not reach.
+UNCLEAR_PIECE_GLOSSES = {("zho", "一.?量詞")}
 QUESTION = re.compile(r"\?")
 QUESTION_OPENING_TOKEN = re.compile(r"(?<!\S)\?(?=[^\W\d_])")
 
@@ -429,6 +453,17 @@ def process_sentence(s, counts, report, rel, lang=None):
                     set_mixed(tr, [None])
                     counts[f"{level} gloss ?/??/??? -> UNCLEAR"] += 1
                     log(f"{level} gloss unknown", f"{node.get('id')} xml:lang={tr.get(XML_LANG)}", before, "<UNCLEAR/>")
+                elif (tr.get(XML_LANG), before) in UNCERTAIN_GLOSSES:
+                    tr.text = UNCERTAIN_GLOSSES[(tr.get(XML_LANG), before)]
+                    tr.set("notes", "uncertain")
+                    counts[f"{level} gloss ? -> notes=uncertain (ruling 8)"] += 1
+                    log(f"{level} gloss uncertain (ruling 8)", f"{node.get('id')} xml:lang={tr.get(XML_LANG)}",
+                        before, etree.tostring(tr, encoding="unicode", with_tail=False))
+                elif (tr.get(XML_LANG), before) in UNCLEAR_PIECE_GLOSSES:
+                    n = replace_matches(tr, QUESTION, 0)
+                    counts[f"{level} gloss ? piece -> UNCLEAR (ruling 8)"] += n
+                    log(f"{level} gloss ? piece (ruling 8)", f"{node.get('id')} xml:lang={tr.get(XML_LANG)}", before,
+                        etree.tostring(tr, encoding="unicode", with_tail=False))
                 elif PLACEHOLDER_PIECE.search(before):
                     n = replace_matches(tr, PLACEHOLDER_PIECE, 0)
                     counts[f"{level} gloss placeholder ? -> UNCLEAR"] += n
