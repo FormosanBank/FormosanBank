@@ -103,7 +103,7 @@ step "2. standardize --remove_accents"
 step "3. add_phonology (original: Ortho94; standard: Ortho113)"
 "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Ortho94 --corpora_path "$XML"
 
-step "4. apply_unclear_glosses (POL-021/POL-061; table: unclear_glosses.tsv)"
+step "4. apply_unclear_glosses (POL-021/POL-061; tables: unclear_glosses.tsv, gloss_notes.tsv)"
 "$PY" "$CODEDOCS/apply_unclear_glosses.py" --corpora_path "$XML"
 
 step "Done. Review + delete any *_warnings.csv sidecars under $XML (POL-033)."

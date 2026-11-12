@@ -260,7 +260,8 @@ The reviewed decisions, source files, source checksums, authority pins, generato
 11. **`scripts/apply_unclear_glosses.py --corpora-path XML`** writes the
     source's `?` glosses as `<UNCLEAR/>`. The build stops unless it prints
     `unclear_w_glosses=18`, `unclear_m_glosses=338`,
-    `placeholder_w_glosses=291`, `placeholder_m_glosses=0` and
+    `placeholder_w_glosses=315`, `placeholder_m_glosses=0`,
+    `uncertain_w_glosses=2`, `uncertain_m_glosses=2` and
     `omitted_sentence_translations=0`. See "The source's `?` gloss is
     published as `<UNCLEAR/>`" below.
 12. **Validators.** A folder of links to every other corpus in the checkout is
@@ -457,24 +458,30 @@ fails if one ever is).
 A `?` that is one piece of a longer gloss is converted too, gloss by gloss:
 [`CodeAndDocs/unclear_gloss_placeholders.tsv`](CodeAndDocs/unclear_gloss_placeholders.tsv)
 (columns `gloss`, `lang`) lists the glosses to convert, and in each listed
-gloss every `?` bounded by `-`, `=`, `.`, whitespace or the ends of the string
-becomes `<UNCLEAR/>`:
+gloss every `?` bounded by `-`, `=`, `.`, whitespace or the ends of the string,
+or followed by an infix label, becomes `<UNCLEAR/>`:
 
 | source gloss | published |
 | --- | --- |
 | `?-what` | `<UNCLEAR/>-what` |
 | `stat-exact-?` | `stat-exact-<UNCLEAR/>` |
 | `if-main-?-outsider-nom` | `if-main-<UNCLEAR/>-outsider-nom` |
+| `?<perf>-create-lf` (on `k<in>a-qati-an`) | `<UNCLEAR/><perf>-create-lf` |
 
-The table lists 104 distinct glosses, all `eng`, covering all 291 `W` glosses
+The table lists 122 distinct glosses, all `eng`, covering all 315 `W` glosses
 of this kind (maintainer's ruling, 2026-10-17: "All rows in this corpus:
 placeholder → UNCLEAR"). A table row that matches no gloss fails the build.
+18 of the rows are a `?` before an infix label (24 `W` glosses): the `?` is the
+gloss of the infix's host (`k-a` in `k<in>a-qati-an`), whose own `M` gloss is
+`<UNCLEAR/>`; each of these glosses has as many pieces as its word has
+morphemes (maintainer, 2026-11-11: "Treat them as unknown pieces if that
+results in the right number of pieces. Otherwise, treat the ? as a marker of
+uncertainty on the neighboring gloss.").
 
-Two kinds of `?` are still published as written, because the `?` is not
-bounded by one of those delimiters: a `?` next to an infix marker (24 `W`
-glosses, e.g. `?<af>-complete`, `?<perf>-loc-that-still`) and a `?` attached to
-a word (4 glosses: `decide?` on two `M`, `decide?<perf>` and
-`past-decide?<af>` on `W`). Sentence translations are not glosses and are not
+A `?` attached to a word is the source's mark of uncertainty (POL-021): it is
+removed and the `TRANSL` gets `notes="uncertain"`. This is `decide?` (4
+glosses: two `M`, `decide?<perf>` and `past-decide?<af>` on `W`), now `decide`,
+`decide<perf>` and `past-decide<af>`. Sentence translations are not glosses and are not
 touched; two of them contain a `?` standing for an untranslated word
 (`Well if you had ?, …`).
 

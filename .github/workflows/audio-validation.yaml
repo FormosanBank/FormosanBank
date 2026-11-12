@@ -1,34 +1,26 @@
 name: audio-validation
 
-# Runs the always-on broken-audio checks (validate_audio.py) against
-# corpus data. Mirrors the two-job pattern of xml-validation.yaml:
+# Runs the always-on broken-audio checks (validate_audio.py) on pull requests,
+# for each corpus the PR touches that has audio committed to the repo.
+# HARD findings (V100-V103: missing / unloadable / silent / invalid_range)
+# block the PR. SOFT findings (V104-V105: duration / words-per-sec) log but
+# don't fail.
 #
-# 1. PR-changed files: validate any corpus whose XML changed in the PR.
-#    HARD findings (V100-V103: missing / unloadable / silent / invalid_range)
-#    block the PR. SOFT findings (V104-V105: duration / words-per-sec)
-#    log but don't fail.
-#
-# 2. Full-Corpora baseline (push to main): runs informationally
-#    (--no-exit-on-hard) and uploads the broken_audio.csv as an artifact.
-#
-# Audio files are gitignored; this CI cannot validate the actual audio
-# binaries unless a corpus has an Audio/ directory checked in. XML QC
-# owns structural range validation. File existence, decoding, and silence
-# checks run only where local audio is actually available. Exact public
-# XML-to-Hugging-Face file parity and source permissions are enforced by
-# hf-audio-parity.yaml. The full-Corpora baseline does not download audio;
-# see run_audio_downloads.sh for the local workflow.
+# There is no after-merge run: an informational full-Corpora baseline used to
+# run on every push to main, but nothing consumed its reports (maintainer,
+# 2026-11-11). Audio files are gitignored except where a corpus commits them;
+# XML QC owns structural range validation, and exact public XML-to-Hugging-Face
+# parity and source permissions are enforced by hf-audio-parity.yaml.
 
 on:
   pull_request:
     paths:
-      - 'Corpora/**.xml'
-      - 'QC/validation/validate_audio.py'
-      - '.github/workflows/audio-validation.yaml'
-  push:
-    branches: [main]
-    paths:
-      - 'Corpora/**.xml'
+      # Only corpora with audio files committed to the repo; every other
+      # corpus's audio is on Hugging Face and is never present in CI, so the
+      # job had nothing to check there. tests/validators/
+      # test_audio_validation_trigger.py fails if a corpus gains committed
+      # audio without being listed here.
+      - 'Corpora/Paiwan_Stories/**'
       - 'QC/validation/validate_audio.py'
       - '.github/workflows/audio-validation.yaml'
 
@@ -116,62 +108,3 @@ jobs:
           name: audio-validation-pr-logs
           path: /tmp/audio-logs/
           retention-days: 30
-
-  validate-baseline:
-    name: Full-Corpora audio baseline (informational, not blocking)
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-          cache: 'pip'
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Install ffmpeg
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg
-      - name: Run validate_audio.py across each corpus (informational)
-        run: |
-          mkdir -p /tmp/audio-logs
-          for corpus in Corpora/*/; do
-            corpus=${corpus%/}
-            xml_dir="$corpus/XML"
-            audio_dir="$corpus/Audio"
-            [ -d "$xml_dir" ] || continue
-            if [ ! -d "$audio_dir" ] || ! find "$audio_dir" -type f \
-                 \( -iname '*.mp3' -o -iname '*.wav' -o -iname '*.flac' \
-                    -o -iname '*.ogg' -o -iname '*.m4a' \) -print -quit \
-                 | grep -q .; then
-              echo "Skipping $corpus — no local audio files."
-              continue
-            fi
-            log_dir="/tmp/audio-logs/$(basename "$corpus")"
-            echo "=== $corpus ==="
-            python QC/validation/validate_audio.py \
-              --xml_path "$xml_dir" \
-              --path "$audio_dir" \
-              --log_dir "$log_dir" \
-              --no-exit-on-hard || true
-          done
-          echo "=== Headline broken_audio counts per corpus ==="
-          for dir in /tmp/audio-logs/*/; do
-            corpus_name=$(basename "$dir")
-            csv="$dir/broken_audio.csv"
-            if [ -f "$csv" ]; then
-              # subtract 1 for the header row
-              n=$(($(wc -l < "$csv") - 1))
-              echo "$corpus_name: $n broken-audio row(s)"
-            fi
-          done
-        env:
-          PYTHONPATH: ${{ github.workspace }}
-      - name: Upload audio-validation logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: audio-validation-baseline-logs
-          path: /tmp/audio-logs/
-          retention-days: 90

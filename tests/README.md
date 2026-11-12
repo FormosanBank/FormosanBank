@@ -70,9 +70,9 @@ The `strict=True` discipline is non-negotiable: it's what makes the test suite u
 
 ## CI workflow scope
 
-The pytest workflow ([`.github/workflows/tests.yaml`](../.github/workflows/tests.yaml)) triggers on pushes/PRs that touch `QC/**`, `tests/**`, `Corpora/**`, `requirements.txt`, `pyproject.toml`, or the workflow file itself. The `Corpora/**` trigger is intentional: two tests transitively read `Corpora/` — [`test_find_duplicate_sentences.py`](utilities/test_find_duplicate_sentences.py) walks Glosbe XML, and the V081 cross-corpus id collision check (sub-project B) will walk every published corpus once implemented. A change to `Corpora/` can therefore flip those tests, so we run them.
+The pytest workflow ([`.github/workflows/tests.yaml`](../.github/workflows/tests.yaml)) runs the whole suite on every pull request and push to `main` that touches a file the suite reads: the code (`QC/**`, `tests/**`, `docs/tools/**`); the data (`Corpora/**`, which all of `tests/corpora/` and many validator tests read, and `Orthographies/**`); the documentation sources the site tests read (`docs/site/**`, `docs/theme/**`, `docs/translations/**`, `mkdocs.yml`); the skill instructions (`.claude/skills/**`, checked by [`test_skill_citations.py`](skills/test_skill_citations.py)); the workflow files (`.github/workflows/**`, parsed by [`test_ci_changed_xml_pathspec.py`](validators/test_ci_changed_xml_pathspec.py) and [`test_hf_audio_scope.py`](validators/test_hf_audio_scope.py)); the root registries (`languages.csv`, `dialects.csv`, `standards.csv`, `audio_sources.json`); the three pending lists; and the dependency files (`requirements.txt`, `requirements-site.txt`, `pyproject.toml`). When a test starts reading another file from the live tree, add that file to both path lists in `tests.yaml`; otherwise a pull request that changes only that file merges without the test running.
 
-The asymmetry: `Corpora/**` changes trigger **validator** runs (because validators are pure-read and a corpus change could legitimately move a real corpus into or out of compliance), but we do NOT auto-run **cleaners** (`clean_xml.py`, `remove_non_working_audio.py`) on Corpora changes. Cleaners mutate files in place; running them in CI on PR base data would either be a no-op (if the diff is unrelated) or destructive (if it modifies real files). Cleaners are tested via fixtures only.
+The asymmetry: `Corpora/**` changes trigger **validator** runs (because validators are pure-read and a corpus change could legitimately move a real corpus into or out of compliance), but we do NOT auto-run **cleaners** (`clean_xml.py`) on Corpora changes. Cleaners mutate files in place; running them in CI on PR base data would either be a no-op (if the diff is unrelated) or destructive (if it modifies real files). Cleaners are tested via fixtures only.
 
 ## Adding a test
 
@@ -98,11 +98,3 @@ The asymmetry: `Corpora/**` changes trigger **validator** runs (because validato
 findings whose fix landed in FormosanBank code — see the README there.
 An audit remediation is complete when its fixture and test exist
 (also stated as step 6 of the `audit-dev-repo` skill).
-
-## Related design docs
-
-- [2026-05-28-a-test-infrastructure-design.md](../.claude/plans/2026-05-28-a-test-infrastructure-design.md) — the test suite design.
-- [2026-05-28-a-test-infrastructure-implementation.md](../.claude/plans/2026-05-28-a-test-infrastructure-implementation.md) — the implementation plan (Tasks 1–8).
-- [2026-05-29-xml-validation-design.md](../.claude/plans/2026-05-29-xml-validation-design.md) — rule-by-rule validation spec; `tests/validators/test_validate_xml.py` is its test counterpart.
-- [2026-05-29-clean-xml-extension-tests-design.md](../.claude/plans/2026-05-29-clean-xml-extension-tests-design.md) — rule-by-rule cleaner-extension spec; `tests/cleaners/test_clean_xml_extensions.py` is its test counterpart.
-- [2026-05-27-roadmap.md](../.claude/plans/2026-05-27-roadmap.md) — sub-projects A–E. xfail tests largely target sub-project B's deferred work.

@@ -4,8 +4,6 @@ Dumb snapshotter: for each <S>, compare the working tree (W) against a git
 baseline (B, default HEAD) on the strip() basis. B != W -> record strip(W);
 present in B but absent in W -> record a delete; new id -> record with an
 `after` placement hint. No O, no changelog, no pruning (apply does those).
-
-See claudeplans/2026-06-15-manual-edits-reproducibility-design.md.
 """
 from __future__ import annotations
 

@@ -15,6 +15,8 @@ Only append columns, never rename or remove.
 """
 import argparse
 import csv
+import hashlib
+import subprocess
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -63,6 +65,57 @@ def stats_paths(corpus_path: Path) -> tuple[Path, str]:
 # to disagree on the file set).
 corpus_xml_dirs = corpus_counts.corpus_xml_dirs
 _collect_corpus_records = corpus_counts.collect_corpus_records
+
+
+# What a corpus's CSV depends on besides its own files. If any of these changes,
+# every corpus is regenerated (their git ids are part of each fingerprint).
+_CODE_INPUTS = (
+    "QC/utilities/get_corpus_stats.py", "QC/utilities/audio_durations.py",
+    "QC/corpus_counts.py", "QC/xml_forms.py", "languages.csv",
+)
+SOURCES_FILE = "corpora_stats_sources.csv"  # beside the CSVs; not *_corpora_stats.csv
+
+
+def _git(repo_root: Path, *args: str) -> str | None:
+    proc = subprocess.run(["git", *args], cwd=repo_root, capture_output=True, text=True)
+    return proc.stdout.strip() if proc.returncode == 0 else None
+
+
+def fingerprint(corpus_dir: Path) -> str | None:
+    """The inputs a corpus's CSV is computed from, as one hash; None if unknowable.
+
+    None (always regenerate) when the corpus folder or a code input has
+    uncommitted edits, or git is unavailable: the committed ids would not
+    describe the files actually read.
+    """
+    stats_dir, name = stats_paths(corpus_dir)
+    repo_root = stats_dir.parent
+    if _git(repo_root, "status", "--porcelain", "--", f"Corpora/{name}", *_CODE_INPUTS) != "":
+        return None
+    parts = [f"corpus {_git(repo_root, 'rev-parse', f'HEAD:Corpora/{name}')}"]
+    for rel in _CODE_INPUTS:
+        parts.append(f"{rel} {_git(repo_root, 'rev-parse', f'HEAD:{rel}')}")
+    durations = audio_durations.load_for_corpus(stats_dir, name)
+    parts.append("audio " + repr(sorted(durations.items())))
+    if any(p.split(" ", 1)[1] in ("None", "") for p in parts[:-1]):
+        return None
+    return hashlib.sha256("\n".join(parts).encode()).hexdigest()
+
+
+def load_sources(stats_dir: Path) -> dict[str, str]:
+    path = stats_dir / SOURCES_FILE
+    if not path.is_file():
+        return {}
+    with open(path, newline="", encoding="utf-8") as f:
+        return {row["corpus"]: row["fingerprint"] for row in csv.DictReader(f)}
+
+
+def save_sources(stats_dir: Path, sources: dict[str, str]) -> None:
+    with open(stats_dir / SOURCES_FILE, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["corpus", "fingerprint"])
+        writer.writeheader()
+        for corpus in sorted(sources):
+            writer.writerow({"corpus": corpus, "fingerprint": sources[corpus]})
 
 
 def process_corpus(corpus_path: Path, strict: bool) -> int:
@@ -144,6 +197,10 @@ def main() -> int:
                         help="Collection root used with --all (default: repo Corpora/).")
     parser.add_argument("--strict", action="store_true",
                         help="Exit nonzero if any XML file fails to parse.")
+    parser.add_argument("--changed-only", action="store_true",
+                        help=f"With --all: regenerate only corpora whose inputs differ from those "
+                             f"recorded in statistics/{SOURCES_FILE} (or whose CSV is missing), "
+                             "and record the new ones.")
     args = parser.parse_args()
 
     if args.report_stale_audio:
@@ -173,9 +230,27 @@ def main() -> int:
             print(f"No corpus directories with XML/ in {corpora_root}", file=sys.stderr)
             return 1
         worst = 0
+        stats_dir = stats_paths(corpus_dirs[0])[0]
+        sources = load_sources(stats_dir) if args.changed_only else {}
+        skipped = 0
         for corpus_dir in corpus_dirs:
+            fp = fingerprint(corpus_dir) if args.changed_only else None
+            csv_path = stats_dir / f"{corpus_dir.name}_corpora_stats.csv"
+            if fp is not None and sources.get(corpus_dir.name) == fp and csv_path.is_file():
+                skipped += 1
+                continue
             print(f"Processing {corpus_dir.name} …")
-            worst = max(worst, process_corpus(corpus_dir, args.strict))
+            code = process_corpus(corpus_dir, args.strict)
+            worst = max(worst, code)
+            if args.changed_only:
+                if fp is not None and code == 0:
+                    sources[corpus_dir.name] = fp
+                else:
+                    sources.pop(corpus_dir.name, None)
+        if args.changed_only:
+            names = {d.name for d in corpus_dirs}
+            save_sources(stats_dir, {c: v for c, v in sources.items() if c in names})
+            print(f"Unchanged inputs, skipped: {skipped} of {len(corpus_dirs)} corpora")
         return worst
     return process_corpus(Path(args.corpora_path), args.strict)
 

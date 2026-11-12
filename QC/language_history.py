@@ -135,6 +135,31 @@ class Walker:
             self._set(path, record)
         return len(changes)
 
+    def corpus_rows(self, commit: str, corpora: set[str]) -> list[dict]:
+        """Rows for just these corpora at ``commit``, read from their files there."""
+        if not corpora:
+            return []
+        listing = corpus_metrics.run_git_bytes(
+            ["ls-tree", "-r", "-z", commit, "--", *(f"Corpora/{c}" for c in sorted(corpora))],
+            self.repo_root,
+        ).stdout
+        items = []
+        for entry in listing.split(b"\0"):
+            if not entry:
+                continue
+            meta, _, raw = entry.partition(b"\t")
+            fields = meta.decode().split()
+            path = raw.decode("utf-8", errors="replace")
+            if len(fields) >= 3 and fields[1] == "blob" and corpus_counts.is_published_xml(path):
+                items.append((path, fields[2]))
+        saved = self.state
+        self.state = {}
+        for path, record in self._records(items).items():
+            self._set(path, record)
+        rows = self.rows(commit)
+        self.state = saved
+        return rows
+
     def rows(self, commit: str) -> list[dict]:
         totals: dict[tuple, dict] = defaultdict(lambda: dict.fromkeys(VALUE_FIELDS, 0))
         for record in self.state.values():
@@ -191,6 +216,39 @@ def write_csv(rows: list[dict], path: Path) -> None:
         writer.writerows(_as_text(rows))
 
 
+# Code and data the counts depend on. If any changed since the cached tip, the
+# cached rows were computed under other rules and cannot be reused: re-read all.
+RULE_INPUTS = ("QC/corpus_counts.py", "QC/xml_forms.py", "QC/language_history.py", "languages.csv")
+
+
+def _rules_changed(repo_root: Path, tip: str) -> bool:
+    proc = corpus_metrics.run_git_bytes(["diff", "--name-only", tip, "HEAD", "--", *RULE_INPUTS], repo_root)
+    return bool(proc.stdout.strip())
+
+
+def _extend_scoped(repo_root: Path, rows: list[dict], tip: str, commits: list[str]) -> list[dict]:
+    """New rows, re-reading only the corpora each commit changed.
+
+    A corpus a commit did not touch has the same files, hence the same rows, as
+    at the commit before; only its date and commit columns change. A touched
+    corpus is recomputed from all of its files at that commit, so a bucket
+    appears or disappears exactly as a full read would decide."""
+    previous = [row for row in rows if row["commit"] == tip]
+    walker = Walker(repo_root)
+    out: list[dict] = []
+    for index, commit in enumerate(commits, start=1):
+        touched = {c.path.split("/")[1] for c in corpus_metrics.changed_xml_files(repo_root, commit)}
+        date = corpus_metrics.commit_date(repo_root, commit)
+        kept = [{**row, "date": date, "commit": commit} for row in previous if row["corpus"] not in touched]
+        fresh = _as_text(walker.corpus_rows(commit, touched))
+        current = sorted(kept + fresh, key=lambda r: (r["corpus"], r["language"], r["dialect"]))
+        out.extend(current)
+        previous = current
+        progress(f"[{index}/{len(commits)}] {commit[:9]} re-read {len(touched)} corpus/corpora: "
+                 f"{', '.join(sorted(touched))}")
+    return out
+
+
 def extend(repo_root: Path, csv_path: Path) -> list[dict]:
     """The cached rows plus rows for XML-changing commits after the cached tip."""
     repo_root = Path(repo_root)
@@ -205,6 +263,10 @@ def extend(repo_root: Path, csv_path: Path) -> list[dict]:
     if not commits:
         progress("extend: no new XML-changing commits")
         return rows
+    if not _rules_changed(repo_root, tip):
+        progress(f"extend: from the cached rows at {tip[:9]}, adding {len(commits)} commit(s)")
+        return rows + _extend_scoped(repo_root, rows, tip, commits)
+    progress(f"extend: counting rules changed since {tip[:9]}; re-reading every corpus")
     progress(f"extend: seeding from {tip[:9]}, adding {len(commits)} commit(s)")
     walker = Walker(repo_root)
     walker.seed(tip)

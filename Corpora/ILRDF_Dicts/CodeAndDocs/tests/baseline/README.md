@@ -21,5 +21,4 @@ These matched `CodeAndDocs/docs/qc_report.md` (since deleted), so the committed 
 report describes.
 
 Every count change from this baseline must be explained in the QC report's
-change-classification table. See
-`docs/superpowers/plans/2026-09-05-ilrdf-dicts-v2.md`, Task 10.
+change-classification table.

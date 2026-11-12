@@ -142,9 +142,20 @@ class PublishedUnclearGlossTests(unittest.TestCase):
                     self.assertIsNone(child.find("UNCLEAR"))
 
     def test_attached_question_marks_are_kept(self) -> None:
-        expected = {"S652653654_1W5": "LIG?", "S644645_2W4": "right?"}
+        # Not ruled: kept as written.
+        self.assertEqual(self.word("S644645_2W4").find("TRANSL").text, "right?")
+
+    def test_ruled_uncertainty_marks_move_to_notes(self) -> None:
+        # Maintainer, 2026-11-11 (POL-021): "LIG? -> LIG + uncertainty", ...
+        expected = {
+            "S652653654_1W5": "LIG", "S120_1W1": "ligature", "S121_1W1": "ligature",
+            "S456_1W5": "complementizer", "S426_1W11": "function word",
+            "S495_1W6": "subject case marker", "S538_1W12": "to/towards",
+            "S422_1W22": "bring/send",
+        }
         for word_id, gloss in expected.items():
-            self.assertEqual(self.word(word_id).find("TRANSL").text, gloss)
+            transl = self.word(word_id).find("TRANSL")
+            self.assertEqual((transl.text, transl.get("notes")), (gloss, "uncertain"), word_id)
 
     def test_audit_lists_every_change(self) -> None:
         with (AUDIT / "unclear_gloss_review.tsv").open(encoding="utf-8") as handle:
@@ -156,7 +167,12 @@ class PublishedUnclearGlossTests(unittest.TestCase):
             for word_id, (_, old) in RULED_UNCLEAR.items()
         }
         expected.add(("S313_1W3", FIND_GLOSS, "0", "ruled_gloss_to_notes"))
-        self.assertEqual(len(rows), 9)
+        with build_xml.UNCERTAIN_GLOSS_TABLE.open(encoding="utf-8") as handle:
+            expected |= {
+                (r["w_id"], r["old_gloss"], "0", "ruled_uncertain")
+                for r in csv.DictReader(handle, delimiter="\t", quoting=csv.QUOTE_NONE)
+            }
+        self.assertEqual(len(rows), 17)
         self.assertEqual(got, expected)
 
     def test_shipped_placeholder_table_has_no_rows(self) -> None:

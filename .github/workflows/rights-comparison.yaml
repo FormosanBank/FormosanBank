@@ -67,12 +67,38 @@ jobs:
         fi
         echo "base_ref=$BASE_REF" >> "$GITHUB_OUTPUT"
 
-    - name: Materialize the base tree
+    - name: Which corpora did this change touch?
+      id: scope
+      env:
+        EVENT: ${{ github.event_name }}
+        BASE: ${{ steps.base.outputs.base_ref }}
       run: |
-        rm -rf /tmp/base && mkdir -p /tmp/base
-        git archive "${{ steps.base.outputs.base_ref }}" Corpora | tar -x -C /tmp/base
+        # Only a touched corpus can change licence. Every corpus is compared when
+        # the rights code, the vocabulary or this workflow changed, and on a
+        # manual run.
+        range="$BASE...HEAD"; [ "$EVENT" = workflow_dispatch ] && range=""
+        python3 QC/validation/touched_corpora.py --range "$range" --out touched.txt \
+          --code QC/validation/rights_delta.py --code QC/validation/_rights.py \
+          --code rights_vocabulary.csv --code QC/validation/touched_corpora.py \
+          --code .github/workflows/rights-comparison.yaml >> "$GITHUB_OUTPUT"
+
+    - name: Materialize the base tree (touched corpora only)
+      if: steps.scope.outputs.scope != 'none'
+      env:
+        BASE: ${{ steps.base.outputs.base_ref }}
+      run: |
+        rm -rf /tmp/base && mkdir -p /tmp/base/Corpora
+        paths=()
+        while IFS= read -r corpus; do
+          # A corpus new in this change has no old version to unpack.
+          git cat-file -e "$BASE:Corpora/$corpus" 2>/dev/null && paths+=("Corpora/$corpus")
+        done < touched.txt
+        [ ${#paths[@]} -eq 0 ] || git archive "$BASE" "${paths[@]}" | tar -x -C /tmp/base
 
     - name: Compare corpus licences
+      if: steps.scope.outputs.scope != 'none'
       run: |
+        args=()
+        while IFS= read -r corpus; do args+=(--corpus "$corpus"); done < touched.txt
         python3 QC/validation/rights_delta.py \
-          --base /tmp/base/Corpora --head Corpora
+          --base /tmp/base/Corpora --head Corpora "${args[@]}"

@@ -17,7 +17,7 @@ Reasons:
 
 If a task involves *creating* or *substantially reworking* a corpus rather than maintaining the published version, the work likely belongs in the corpus-specific dev repo, not here.
 
-To audit a dev repo's preprocessing before porting, use the `audit-dev-repo` skill (briefing: [claudeplans/2026-06-09-dev-repo-audit-briefing.md](claudeplans/2026-06-09-dev-repo-audit-briefing.md)).
+To audit a dev repo's preprocessing before porting, use the `audit-dev-repo` skill (briefing: [.claude/skills/audit-dev-repo/briefing.md](.claude/skills/audit-dev-repo/briefing.md)).
 
 ## Related repos
 
@@ -97,7 +97,11 @@ The full pipeline is documented in [QC/README.md](QC/README.md). The typical ord
 
 `clean_xml.py` modify XML in place — diff before committing.
 
-- **Reproducible hand edits.** `QC/utilities/capture_manual_edits.py` records hand edits to a corpus's XML (diffed against git) into `<corpus>/CodeAndDocs/manual_edits.xml`; `QC/cleaning/apply_manual_edits.py` re-applies them first in the cleaning pipeline, keeps no-op records with a salient warning (`--prune` removes them — an explicit maintenance action for when the upstream build has absorbed the fix), and writes a `manual_edits.md` changelog. Shared logic lives in `QC/cleaning/manual_edits_common.py`. See `claudeplans/2026-06-15-manual-edits-reproducibility-design.md`.
+- **Reproducible hand edits.** `QC/utilities/capture_manual_edits.py` records hand edits to a corpus's XML (diffed against git) into `<corpus>/CodeAndDocs/manual_edits.xml`; `QC/cleaning/apply_manual_edits.py` re-applies them first in the cleaning pipeline, keeps no-op records with a salient warning (`--prune` removes them — an explicit maintenance action for when the upstream build has absorbed the fix), and writes a `manual_edits.md` changelog. Shared logic lives in `QC/cleaning/manual_edits_common.py`.
+
+## Running tests
+
+While developing, run only the test files for what you changed: its own tests, any test that names it (search `tests/` for the file name), and, for a script cited in `.claude/skills/`, `tests/skills/test_skill_citations.py`, which runs every cited script with `--help`. Run the whole suite again during development only when there is a specific concern. Report which test files ran; never describe a targeted run as "the tests pass". The one full run before a merge is the pull request's CI run. If the CI rejects based on the full run, do a full run locally after any attempted fix.
 
 ## Corpus metrics and token deltas (CI-coupled)
 
