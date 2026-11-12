@@ -189,6 +189,12 @@ done
         --xml XML \
         --no-source \
         --csv reports/qc/scrape.csv
+
+    # Standard gloss tier (POL-036, additive): Glossing/ConversionTables/HundredPaiwanStories.tsv
+    "$PYTHON_BIN" "$BANK/QC/glossing/apply_gloss_standard.py" \
+        --path XML \
+        --table "$BANK/Glossing/ConversionTables/HundredPaiwanStories.tsv" \
+        --rules "$BANK/Glossing/ConversionTables/HundredPaiwanStories.rules.tsv" --write
 )
 
 "$PYTHON_BIN" - "$BUILD_ROOT/reports" <<'PY'

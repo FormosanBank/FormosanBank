@@ -44,6 +44,12 @@ for xml in "$XML_STAGE/Kanakanavu/"*.xml; do
     "$PY" "$CODEDOCS/scripts/strip_standard_brackets.py" "$xml"
     "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography "$BANK/Orthographies/Asai2026" \
         --corpora_path "$xml" --preserve-existing-original
+
+# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/ILCAA-Kanakanavu-Texts.tsv
+"$PY" "$BANK/QC/glossing/apply_gloss_standard.py" \
+    --path "$XML_STAGE" \
+    --table "$BANK/Glossing/ConversionTables/ILCAA-Kanakanavu-Texts.tsv" \
+    --rules "$BANK/Glossing/ConversionTables/ILCAA-Kanakanavu-Texts.rules.tsv" --write
 done
 
 # POL-052: say which FormosanBank commit the published bytes were built against. Informational

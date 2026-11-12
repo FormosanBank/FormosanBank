@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TEXT id="NTU_Stry_Kanakanavu_kkvNr_sad_song_Muu" citation="NTU Corpus of Formosan Languages" BibTeX_citation="" copyright="CC BY-NC 4.0" xml:lang="xnb" dialect="Kanakanavu">
     <S id="kkvNr_sad_song_Muu_S_1">
         <FORM kindOf="original" notes="這句話並不是指兩個人第一次見面，而是指最近第一次會面。cani在此指「首次」。 ma-tUUnsu有「會面」、「見面」、「接（某人）」等意思；重疊是因為主詞為複數。">canipakita matUntUnUsU.</FORM>
@@ -7,21 +7,25 @@
         <PHON kindOf="standard">ʦanipakita matuntunusu</PHON>
         <TRANSL xml:lang="zho">我們首次會面。</TRANSL>
         <TRANSL xml:lang="eng" notes="We met for the first time (recently).">We met for the first time .</TRANSL>
-        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="0.0" end="8.08" file="kkvNr_sad_song_Muu_S0.mp3"/>
+        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="0.0" end="8.08" file="kkvNr_sad_song_Muu_S0.mp3" />
         <W id="kkvNr_sad_song_Muu_S_1_W0">
             <FORM kindOf="original">cani=pa=kita</FORM>
             <PHON kindOf="original">ʦanipakita</PHON>
             <FORM kindOf="standard">cani=pa=kita</FORM>
             <PHON kindOf="standard">ʦanipakita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">一=還=1PL.包含.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">一=還=1PL.包含.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">one=still=1PL.INCL.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">one=still=1PL.INCL.NOM</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_1_W0M0">
                 <FORM kindOf="original">cani</FORM>
                 <PHON kindOf="original">ʦani</PHON>
                 <FORM kindOf="standard">cani</FORM>
                 <PHON kindOf="standard">ʦani</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">一</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">one</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_1_W0M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -29,7 +33,9 @@
                 <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">還</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">還</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">still</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">still</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_1_W0M2">
                 <FORM kindOf="original">=kita</FORM>
@@ -37,7 +43,9 @@
                 <FORM kindOf="standard">=kita</FORM>
                 <PHON kindOf="standard">kita</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1PL.包含.主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1PL.包含.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1PL.INCL.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1PL.INCL.NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_1_W1">
@@ -46,14 +54,18 @@
             <FORM kindOf="standard">ma-tUn-tUnUsU</FORM>
             <PHON kindOf="standard">matuntunusu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-重疊-會面</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-重疊-會面</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-RED-meet</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-RED-meet</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_1_W1M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">AV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_1_W1M1">
                 <FORM kindOf="original">tUn</FORM>
@@ -61,7 +73,9 @@
                 <FORM kindOf="standard">tUn</FORM>
                 <PHON kindOf="standard">tun</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">重疊</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_1_W1M2">
                 <FORM kindOf="original">tUnUsU</FORM>
@@ -69,7 +83,9 @@
                 <FORM kindOf="standard">tUnUsU</FORM>
                 <PHON kindOf="standard">tunusu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">會面</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">會面</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">meet</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">meet</TRANSL>
             </M>
         </W>
     </S>
@@ -80,21 +96,25 @@
         <PHON kindOf="standard">tania[r|ɾ]a soni pimoamua[r|ɾ]a kita pa[r|ɾ]aʦani</PHON>
         <TRANSL xml:lang="zho">我們隨興地唱唱歌吧。</TRANSL>
         <TRANSL xml:lang="eng">Let's sing songs at will.</TRANSL>
-        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="8.08" end="23.74" file="kkvNr_sad_song_Muu_S1.mp3"/>
+        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="8.08" end="23.74" file="kkvNr_sad_song_Muu_S1.mp3" />
         <W id="kkvNr_sad_song_Muu_S_2_W0">
             <FORM kindOf="original">taniara</FORM>
             <PHON kindOf="original">tania[r|ɾ]a</PHON>
             <FORM kindOf="standard">taniara</FORM>
             <PHON kindOf="standard">tania[r|ɾ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">日</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">日</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">day</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">day</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_2_W0M0">
                 <FORM kindOf="original">taniara</FORM>
                 <PHON kindOf="original">tania[r|ɾ]a</PHON>
                 <FORM kindOf="standard">taniara</FORM>
                 <PHON kindOf="standard">tania[r|ɾ]a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">日</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">日</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">day</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">day</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_2_W1">
@@ -103,14 +123,18 @@
             <FORM kindOf="standard">soni</FORM>
             <PHON kindOf="standard">soni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">今天</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">今天</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">today</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">today</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_2_W1M0">
                 <FORM kindOf="original">soni</FORM>
                 <PHON kindOf="original">soni</PHON>
                 <FORM kindOf="standard">soni</FORM>
                 <PHON kindOf="standard">soni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">今天</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">今天</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">today</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">today</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_2_W2">
@@ -119,14 +143,18 @@
             <FORM kindOf="standard">pi-moamuar-a</FORM>
             <PHON kindOf="standard">pimoamua[r|ɾ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">歌唱-隨興-主焦.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">歌唱-隨興-AV.祈使</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">sing-at.will-AF.IMP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">sing-at.will-AV.IMP</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_2_W2M0">
                 <FORM kindOf="original">pi</FORM>
                 <PHON kindOf="original">pi</PHON>
                 <FORM kindOf="standard">pi</FORM>
                 <PHON kindOf="standard">pi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">歌唱</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">歌唱</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">sing</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">sing</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_2_W2M1">
                 <FORM kindOf="original">moamuar</FORM>
@@ -134,7 +162,9 @@
                 <FORM kindOf="standard">moamuar</FORM>
                 <PHON kindOf="standard">moamua[r|ɾ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">隨興</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">隨興</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">at.will</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">at.will</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_2_W2M2">
                 <FORM kindOf="original">a</FORM>
@@ -142,7 +172,9 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦.祈使</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">AV.祈使</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF.IMP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV.IMP</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_2_W3">
@@ -151,14 +183,18 @@
             <FORM kindOf="standard">=kita</FORM>
             <PHON kindOf="standard">kita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">=1PL.包含.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">=1PL.包含.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">=1PL.INCL.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">=1PL.INCL.NOM</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_2_W3M0">
                 <FORM kindOf="original">=kita</FORM>
                 <PHON kindOf="original">kita</PHON>
                 <FORM kindOf="standard">=kita</FORM>
                 <PHON kindOf="standard">kita</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1PL.包含.主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1PL.包含.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1PL.INCL.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1PL.INCL.NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_2_W4">
@@ -167,14 +203,18 @@
             <FORM kindOf="standard">paracani</FORM>
             <PHON kindOf="standard">pa[r|ɾ]aʦani</PHON>
             <TRANSL xml:lang="zho" kindOf="original">歌唱</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">歌唱</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">sing</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">sing</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_2_W4M0">
                 <FORM kindOf="original">paracani</FORM>
                 <PHON kindOf="original">pa[r|ɾ]aʦani</PHON>
                 <FORM kindOf="standard">paracani</FORM>
                 <PHON kindOf="standard">pa[r|ɾ]aʦani</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">歌唱</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">歌唱</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">sing</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">sing</TRANSL>
             </M>
         </W>
     </S>
@@ -185,21 +225,25 @@
         <PHON kindOf="standard">na nimoʦuŋkuʦuku ʦuŋkuʦu ʔuai</PHON>
         <TRANSL xml:lang="zho">我原本已經通過藤橋了。</TRANSL>
         <TRANSL xml:lang="eng">I have originally gone through the rattan bridge.</TRANSL>
-        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="23.74" end="32.59" file="kkvNr_sad_song_Muu_S2.mp3"/>
+        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="23.74" end="32.59" file="kkvNr_sad_song_Muu_S2.mp3" />
         <W id="kkvNr_sad_song_Muu_S_4_W0">
             <FORM kindOf="original">na</FORM>
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL xml:lang="zho" kindOf="original">原本</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">原本</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">originally</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">originally</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_4_W0M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">原本</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">原本</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">originally</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">originally</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_4_W1">
@@ -208,14 +252,18 @@
             <FORM kindOf="standard">ni-mo-cungkucu=ku</FORM>
             <PHON kindOf="standard">nimoʦuŋkuʦuku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">完成-主焦-橋=1SG.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">PFV-AV-橋=1SG.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PFV-AF-bridge=1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV-AV-bridge=1SG.NOM</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_4_W1M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PFV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_4_W1M1">
                 <FORM kindOf="original">mo</FORM>
@@ -223,7 +271,9 @@
                 <FORM kindOf="standard">mo</FORM>
                 <PHON kindOf="standard">mo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">AV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_4_W1M2">
                 <FORM kindOf="original">cungkucu</FORM>
@@ -231,7 +281,9 @@
                 <FORM kindOf="standard">cungkucu</FORM>
                 <PHON kindOf="standard">ʦuŋkuʦu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">橋</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">橋</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">bridge</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bridge</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_4_W1M3">
                 <FORM kindOf="original">=ku</FORM>
@@ -239,7 +291,9 @@
                 <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1SG.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_4_W2">
@@ -248,14 +302,18 @@
             <FORM kindOf="standard">cungkucu</FORM>
             <PHON kindOf="standard">ʦuŋkuʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">橋</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">橋</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">bridge</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bridge</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_4_W2M0">
                 <FORM kindOf="original">cungkucu</FORM>
                 <PHON kindOf="original">ʦuŋkuʦu</PHON>
                 <FORM kindOf="standard">cungkucu</FORM>
                 <PHON kindOf="standard">ʦuŋkuʦu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">橋</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">橋</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">bridge</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bridge</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_4_W3">
@@ -264,14 +322,18 @@
             <FORM kindOf="standard">'uai</FORM>
             <PHON kindOf="standard">ʔuai</PHON>
             <TRANSL xml:lang="zho" kindOf="original">黃藤</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">黃藤</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">yellow.rattan</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">yellow.rattan</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_4_W3M0">
                 <FORM kindOf="original">'uai</FORM>
                 <PHON kindOf="original">ʔuai</PHON>
                 <FORM kindOf="standard">'uai</FORM>
                 <PHON kindOf="standard">ʔuai</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">黃藤</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">黃藤</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">yellow.rattan</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">yellow.rattan</TRANSL>
             </M>
         </W>
     </S>
@@ -282,21 +344,25 @@
         <PHON kindOf="standard">nimoa[r|ɾ]aha a[r|ɾ]aʦiasu</PHON>
         <TRANSL xml:lang="zho">天已經亮了。</TRANSL>
         <TRANSL xml:lang="eng" notes="It's already dawn. (lit. It already became bright.)">It's already dawn.</TRANSL>
-        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="32.59" end="39.94" file="kkvNr_sad_song_Muu_S3.mp3"/>
+        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="32.59" end="39.94" file="kkvNr_sad_song_Muu_S3.mp3" />
         <W id="kkvNr_sad_song_Muu_S_5_W0">
             <FORM kindOf="original">ni-mo-araha</FORM>
             <PHON kindOf="original">nimoa[r|ɾ]aha</PHON>
             <FORM kindOf="standard">ni-mo-araha</FORM>
             <PHON kindOf="standard">nimoa[r|ɾ]aha</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">完成-主焦-<UNCLEAR/></TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PFV-AF-<UNCLEAR/></TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">完成-主焦-<UNCLEAR /></TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">PFV-AV-<UNCLEAR /></TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PFV-AF-<UNCLEAR /></TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV-AV-<UNCLEAR /></TRANSL>
             <M id="kkvNr_sad_song_Muu_S_5_W0M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PFV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_5_W0M1">
                 <FORM kindOf="original">mo</FORM>
@@ -304,15 +370,17 @@
                 <FORM kindOf="standard">mo</FORM>
                 <PHON kindOf="standard">mo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">AV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_5_W0M2">
                 <FORM kindOf="original">araha</FORM>
                 <PHON kindOf="original">a[r|ɾ]aha</PHON>
                 <FORM kindOf="standard">araha</FORM>
                 <PHON kindOf="standard">a[r|ɾ]aha</PHON>
-                <TRANSL xml:lang="zho" kindOf="original"><UNCLEAR/></TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original"><UNCLEAR/></TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original"><UNCLEAR /></TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original"><UNCLEAR /></TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_5_W1">
@@ -321,14 +389,18 @@
             <FORM kindOf="standard">ara-ciasU</FORM>
             <PHON kindOf="standard">a[r|ɾ]aʦiasu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變成-明亮</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">變成-明亮</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-bright</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">become-bright</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_5_W1M0">
                 <FORM kindOf="original">ara</FORM>
                 <PHON kindOf="original">a[r|ɾ]a</PHON>
                 <FORM kindOf="standard">ara</FORM>
                 <PHON kindOf="standard">a[r|ɾ]a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">變成</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">變成</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">become</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">become</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_5_W1M1">
                 <FORM kindOf="original">ciasU</FORM>
@@ -336,7 +408,9 @@
                 <FORM kindOf="standard">ciasU</FORM>
                 <PHON kindOf="standard">ʦiasu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">明亮</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">明亮</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">bright</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bright</TRANSL>
             </M>
         </W>
     </S>
@@ -347,21 +421,25 @@
         <PHON kindOf="standard">pakuninanu ʔesi kia mima</PHON>
         <TRANSL xml:lang="zho">我很遺憾，我在喝酒。</TRANSL>
         <TRANSL xml:lang="eng" notes="I feel sorry, (because) I have been drinking.">I feel sorry, I have been drinking.</TRANSL>
-        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="39.94" end="51.5" file="kkvNr_sad_song_Muu_S4.mp3"/>
+        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="39.94" end="51.5" file="kkvNr_sad_song_Muu_S4.mp3" />
         <W id="kkvNr_sad_song_Muu_S_6_W0">
             <FORM kindOf="original">pakUninanu</FORM>
             <PHON kindOf="original">pakuninanu</PHON>
             <FORM kindOf="standard">pakUninanu</FORM>
             <PHON kindOf="standard">pakuninanu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">遺憾</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">遺憾</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">feel.sorry</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">feel.sorry</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_6_W0M0">
                 <FORM kindOf="original">pakUninanu</FORM>
                 <PHON kindOf="original">pakuninanu</PHON>
                 <FORM kindOf="standard">pakUninanu</FORM>
                 <PHON kindOf="standard">pakuninanu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遺憾</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">遺憾</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">feel.sorry</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">feel.sorry</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_6_W1">
@@ -370,14 +448,18 @@
             <FORM kindOf="standard">'esi</FORM>
             <PHON kindOf="standard">ʔesi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">進行</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PROG</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_6_W1M0">
                 <FORM kindOf="original">'esi</FORM>
                 <PHON kindOf="original">ʔesi</PHON>
                 <FORM kindOf="standard">'esi</FORM>
                 <PHON kindOf="standard">ʔesi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">進行</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PROG</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_6_W2">
@@ -386,14 +468,18 @@
             <FORM kindOf="standard">=kia</FORM>
             <PHON kindOf="standard">kia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">=1SG.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">=1SG.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">=1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">=1SG.NOM</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_6_W2M0">
                 <FORM kindOf="original">=kia</FORM>
                 <PHON kindOf="original">kia</PHON>
                 <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1SG.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_6_W3">
@@ -402,14 +488,18 @@
             <FORM kindOf="standard">m-ima</FORM>
             <PHON kindOf="standard">mima</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-喝</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-喝</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-drink</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-drink</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_6_W3M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">AV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_6_W3M1">
                 <FORM kindOf="original">ima</FORM>
@@ -417,7 +507,9 @@
                 <FORM kindOf="standard">ima</FORM>
                 <PHON kindOf="standard">ima</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">喝</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">喝</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">drink</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">drink</TRANSL>
             </M>
         </W>
     </S>
@@ -428,21 +520,25 @@
         <PHON kindOf="standard">nomani kusai ʔesi sipa[r|ɾ]a sa mama[r|ɾ]iupu unee tapunia</PHON>
         <TRANSL xml:lang="zho" notes="究竟是誰在對岸那裏揮手？（看到）白色的紅隼鳥。">究竟是誰在對岸那裏揮手？ 白色的紅隼鳥。</TRANSL>
         <TRANSL xml:lang="eng" notes="Who exactly is waving hands on the opposite bank? (I see) a white red-billed eagle.">Who exactly is waving hands on the opposite bank? a white red-billed eagle.</TRANSL>
-        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="51.5" end="67.15" file="kkvNr_sad_song_Muu_S5.mp3"/>
+        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="51.5" end="67.15" file="kkvNr_sad_song_Muu_S5.mp3" />
         <W id="kkvNr_sad_song_Muu_S_8_W0">
             <FORM kindOf="original">nomani</FORM>
             <PHON kindOf="original">nomani</PHON>
             <FORM kindOf="standard">nomani</FORM>
             <PHON kindOf="standard">nomani</PHON>
             <TRANSL xml:lang="zho" kindOf="original">是誰</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">是誰</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">who.is</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">who.is</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_8_W0M0">
                 <FORM kindOf="original">nomani</FORM>
                 <PHON kindOf="original">nomani</PHON>
                 <FORM kindOf="standard">nomani</FORM>
                 <PHON kindOf="standard">nomani</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">是誰</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">是誰</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">who.is</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">who.is</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_8_W1">
@@ -451,14 +547,18 @@
             <FORM kindOf="standard">kusai</FORM>
             <PHON kindOf="standard">kusai</PHON>
             <TRANSL xml:lang="zho" kindOf="original">究竟</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">究竟</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">exactly</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">exactly</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_8_W1M0">
                 <FORM kindOf="original">kusai</FORM>
                 <PHON kindOf="original">kusai</PHON>
                 <FORM kindOf="standard">kusai</FORM>
                 <PHON kindOf="standard">kusai</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">究竟</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">究竟</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">exactly</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">exactly</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_8_W2">
@@ -467,14 +567,18 @@
             <FORM kindOf="standard">'esi</FORM>
             <PHON kindOf="standard">ʔesi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">進行</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PROG</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_8_W2M0">
                 <FORM kindOf="original">'esi</FORM>
                 <PHON kindOf="original">ʔesi</PHON>
                 <FORM kindOf="standard">'esi</FORM>
                 <PHON kindOf="standard">ʔesi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">進行</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PROG</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_8_W3">
@@ -483,14 +587,18 @@
             <FORM kindOf="standard">sipara</FORM>
             <PHON kindOf="standard">sipa[r|ɾ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">對岸</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">對岸</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">opposite.bank</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">opposite.bank</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_8_W3M0">
                 <FORM kindOf="original">sipara</FORM>
                 <PHON kindOf="original">sipa[r|ɾ]a</PHON>
                 <FORM kindOf="standard">sipara</FORM>
                 <PHON kindOf="standard">sipa[r|ɾ]a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">對岸</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">對岸</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">opposite.bank</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">opposite.bank</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_8_W4">
@@ -499,14 +607,18 @@
             <FORM kindOf="standard">sa</FORM>
             <PHON kindOf="standard">sa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">那裏</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">那裏</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">there</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_8_W4M0">
                 <FORM kindOf="original">sa</FORM>
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
                 <PHON kindOf="standard">sa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">那裏</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">那裏</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">there</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_8_W5">
@@ -515,14 +627,18 @@
             <FORM kindOf="standard">ma-mariUpU</FORM>
             <PHON kindOf="standard">mama[r|ɾ]iupu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">重疊-揮手.主焦</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">重疊-揮手.AV</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">RED-wave.hands.AF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED-wave.hands.AV</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_8_W5M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">重疊</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_8_W5M1">
                 <FORM kindOf="original">mariUpU</FORM>
@@ -530,7 +646,9 @@
                 <FORM kindOf="standard">mariUpU</FORM>
                 <PHON kindOf="standard">ma[r|ɾ]iupu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">揮手.主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">揮手.AV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">wave.hands.AF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">wave.hands.AV</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_8_W6">
@@ -539,14 +657,18 @@
             <FORM kindOf="standard">unee</FORM>
             <PHON kindOf="standard">unee</PHON>
             <TRANSL xml:lang="zho" kindOf="original">紅隼鳥</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">紅隼鳥</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">red.billed.eagle</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">red.billed.eagle</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_8_W6M0">
                 <FORM kindOf="original">unee</FORM>
                 <PHON kindOf="original">unee</PHON>
                 <FORM kindOf="standard">unee</FORM>
                 <PHON kindOf="standard">unee</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">紅隼鳥</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">紅隼鳥</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">red.billed.eagle</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">red.billed.eagle</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_8_W7">
@@ -555,14 +677,18 @@
             <FORM kindOf="standard">tapunia</FORM>
             <PHON kindOf="standard">tapunia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">白色</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">白色</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">white</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">white</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_8_W7M0">
                 <FORM kindOf="original">tapunia</FORM>
                 <PHON kindOf="original">tapunia</PHON>
                 <FORM kindOf="standard">tapunia</FORM>
                 <PHON kindOf="standard">tapunia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">白色</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">白色</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">white</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">white</TRANSL>
             </M>
         </W>
     </S>
@@ -573,21 +699,25 @@
         <PHON kindOf="standard">makai ʦuma unee unee tapunia</PHON>
         <TRANSL xml:lang="zho">好像是紅隼鳥的爸爸。</TRANSL>
         <TRANSL xml:lang="eng">It seems to be the father of a white red-billed eagle.</TRANSL>
-        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="67.15" end="78.68" file="kkvNr_sad_song_Muu_S6.mp3"/>
+        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="67.15" end="78.68" file="kkvNr_sad_song_Muu_S6.mp3" />
         <W id="kkvNr_sad_song_Muu_S_10_W0">
             <FORM kindOf="original">makai</FORM>
             <PHON kindOf="original">makai</PHON>
             <FORM kindOf="standard">makai</FORM>
             <PHON kindOf="standard">makai</PHON>
             <TRANSL xml:lang="zho" kindOf="original">像是.主焦</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">像是.AV</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">seem.AF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">seem.AV</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_10_W0M0">
                 <FORM kindOf="original">makai</FORM>
                 <PHON kindOf="original">makai</PHON>
                 <FORM kindOf="standard">makai</FORM>
                 <PHON kindOf="standard">makai</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">像是.主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">像是.AV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">seem.AF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">seem.AV</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_10_W1">
@@ -596,14 +726,18 @@
             <FORM kindOf="standard">cuma</FORM>
             <PHON kindOf="standard">ʦuma</PHON>
             <TRANSL xml:lang="zho" kindOf="original">爸爸</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">爸爸</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">father</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">father</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_10_W1M0">
                 <FORM kindOf="original">cuma</FORM>
                 <PHON kindOf="original">ʦuma</PHON>
                 <FORM kindOf="standard">cuma</FORM>
                 <PHON kindOf="standard">ʦuma</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">爸爸</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">爸爸</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">father</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">father</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_10_W2">
@@ -612,14 +746,18 @@
             <FORM kindOf="standard">unee</FORM>
             <PHON kindOf="standard">unee</PHON>
             <TRANSL xml:lang="zho" kindOf="original">紅隼鳥</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">紅隼鳥</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">red.billed.eagle</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">red.billed.eagle</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_10_W2M0">
                 <FORM kindOf="original">unee</FORM>
                 <PHON kindOf="original">unee</PHON>
                 <FORM kindOf="standard">unee</FORM>
                 <PHON kindOf="standard">unee</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">紅隼鳥</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">紅隼鳥</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">red.billed.eagle</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">red.billed.eagle</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_10_W3">
@@ -628,14 +766,18 @@
             <FORM kindOf="standard">unee</FORM>
             <PHON kindOf="standard">unee</PHON>
             <TRANSL xml:lang="zho" kindOf="original">紅隼鳥</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">紅隼鳥</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">red.billed.eagle</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">red.billed.eagle</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_10_W3M0">
                 <FORM kindOf="original">unee</FORM>
                 <PHON kindOf="original">unee</PHON>
                 <FORM kindOf="standard">unee</FORM>
                 <PHON kindOf="standard">unee</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">紅隼鳥</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">紅隼鳥</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">red.billed.eagle</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">red.billed.eagle</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_10_W4">
@@ -644,14 +786,18 @@
             <FORM kindOf="standard">tapunia</FORM>
             <PHON kindOf="standard">tapunia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">白色</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">白色</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">white</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">white</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_10_W4M0">
                 <FORM kindOf="original">tapunia</FORM>
                 <PHON kindOf="original">tapunia</PHON>
                 <FORM kindOf="standard">tapunia</FORM>
                 <PHON kindOf="standard">tapunia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">白色</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">白色</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">white</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">white</TRANSL>
             </M>
         </W>
     </S>
@@ -662,21 +808,25 @@
         <PHON kindOf="standard">ʦanipakita matuntunusu kintutu[r|ɾ]aŋa</PHON>
         <TRANSL xml:lang="zho">我們兄弟姊妹們首次會面。</TRANSL>
         <TRANSL xml:lang="eng" notes="We brothers and sisters met for the first time (recently).">We brothers and sisters met for the first time .</TRANSL>
-        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="78.68" end="90.2" file="kkvNr_sad_song_Muu_S7.mp3"/>
+        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="78.68" end="90.2" file="kkvNr_sad_song_Muu_S7.mp3" />
         <W id="kkvNr_sad_song_Muu_S_11_W0">
             <FORM kindOf="original">cani=pa=kita</FORM>
             <PHON kindOf="original">ʦanipakita</PHON>
             <FORM kindOf="standard">cani=pa=kita</FORM>
             <PHON kindOf="standard">ʦanipakita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">一=還=1PL.包含.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">一=還=1PL.包含.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">one=still=1PL.INCL.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">one=still=1PL.INCL.NOM</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_11_W0M0">
                 <FORM kindOf="original">cani</FORM>
                 <PHON kindOf="original">ʦani</PHON>
                 <FORM kindOf="standard">cani</FORM>
                 <PHON kindOf="standard">ʦani</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">一</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">one</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_11_W0M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -684,7 +834,9 @@
                 <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">還</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">還</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">still</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">still</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_11_W0M2">
                 <FORM kindOf="original">=kita</FORM>
@@ -692,7 +844,9 @@
                 <FORM kindOf="standard">=kita</FORM>
                 <PHON kindOf="standard">kita</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1PL.包含.主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1PL.包含.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1PL.INCL.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1PL.INCL.NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_11_W1">
@@ -701,14 +855,18 @@
             <FORM kindOf="standard">ma-tUn-tUnUsU</FORM>
             <PHON kindOf="standard">matuntunusu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-重疊-會面</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-重疊-會面</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-RED-meet</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-RED-meet</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_11_W1M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">AV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_11_W1M1">
                 <FORM kindOf="original">tUn</FORM>
@@ -716,7 +874,9 @@
                 <FORM kindOf="standard">tUn</FORM>
                 <PHON kindOf="standard">tun</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">重疊</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_11_W1M2">
                 <FORM kindOf="original">tUnUsU</FORM>
@@ -724,7 +884,9 @@
                 <FORM kindOf="standard">tUnUsU</FORM>
                 <PHON kindOf="standard">tunusu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">會面</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">會面</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">meet</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">meet</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_11_W2">
@@ -733,14 +895,18 @@
             <FORM kindOf="standard">kin-tu-turang-a</FORM>
             <PHON kindOf="standard">kintutu[r|ɾ]aŋa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">關係-重疊-兄弟-A</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">關係-重疊-兄弟-A</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">relationship-RED-brother-A</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">relationship-RED-brother-A</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_11_W2M0">
                 <FORM kindOf="original">kin</FORM>
                 <PHON kindOf="original">kin</PHON>
                 <FORM kindOf="standard">kin</FORM>
                 <PHON kindOf="standard">kin</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">關係</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">關係</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">relationship</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">relationship</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_11_W2M1">
                 <FORM kindOf="original">tu</FORM>
@@ -748,7 +914,9 @@
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">重疊</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_11_W2M2">
                 <FORM kindOf="original">turang</FORM>
@@ -756,7 +924,9 @@
                 <FORM kindOf="standard">turang</FORM>
                 <PHON kindOf="standard">tu[r|ɾ]aŋ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">兄弟</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">兄弟</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">brother</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">brother</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_11_W2M3">
                 <FORM kindOf="original">a</FORM>
@@ -764,7 +934,9 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">A</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">A</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">A</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">A</TRANSL>
             </M>
         </W>
     </S>
@@ -775,21 +947,25 @@
         <PHON kindOf="standard">pimoka[r|ɾ]aupaupaŋa nipoʦanuma</PHON>
         <TRANSL xml:lang="zho">請隨興地唱、請隨興地喝已經摻過水的。</TRANSL>
         <TRANSL xml:lang="eng" notes="Please sing and drink (the wine) mixed with water.">Please sing and drink mixed with water.</TRANSL>
-        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="90.2" end="103.85" file="kkvNr_sad_song_Muu_S8.mp3"/>
+        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="90.2" end="103.85" file="kkvNr_sad_song_Muu_S8.mp3" />
         <W id="kkvNr_sad_song_Muu_S_12_W0">
             <FORM kindOf="original">pi-mo-kara-upa-upang-a</FORM>
             <PHON kindOf="original">pimoka[r|ɾ]aupaupaŋa</PHON>
             <FORM kindOf="standard">pi-mo-kara-upa-upang-a</FORM>
             <PHON kindOf="standard">pimoka[r|ɾ]aupaupaŋa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">歌唱-主焦-喝-重疊-隨興-主焦.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">歌唱-AV-喝-重疊-隨興-AV.祈使</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">sing-AF-drink-RED-at.will-AF.IMP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">sing-AV-drink-RED-at.will-AV.IMP</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_12_W0M0">
                 <FORM kindOf="original">pi</FORM>
                 <PHON kindOf="original">pi</PHON>
                 <FORM kindOf="standard">pi</FORM>
                 <PHON kindOf="standard">pi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">歌唱</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">歌唱</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">sing</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">sing</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_12_W0M1">
                 <FORM kindOf="original">mo</FORM>
@@ -797,7 +973,9 @@
                 <FORM kindOf="standard">mo</FORM>
                 <PHON kindOf="standard">mo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">AV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_12_W0M2">
                 <FORM kindOf="original">kara</FORM>
@@ -805,7 +983,9 @@
                 <FORM kindOf="standard">kara</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">喝</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">喝</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">drink</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">drink</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_12_W0M3">
                 <FORM kindOf="original">upa</FORM>
@@ -813,7 +993,9 @@
                 <FORM kindOf="standard">upa</FORM>
                 <PHON kindOf="standard">upa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">重疊</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_12_W0M4">
                 <FORM kindOf="original">upang</FORM>
@@ -821,7 +1003,9 @@
                 <FORM kindOf="standard">upang</FORM>
                 <PHON kindOf="standard">upaŋ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">隨興</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">隨興</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">at.will</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">at.will</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_12_W0M5">
                 <FORM kindOf="original">a</FORM>
@@ -829,7 +1013,9 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦.祈使</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">AV.祈使</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF.IMP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV.IMP</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_12_W1">
@@ -838,14 +1024,18 @@
             <FORM kindOf="standard">ni-po-canum-a</FORM>
             <PHON kindOf="standard">nipoʦanuma</PHON>
             <TRANSL xml:lang="zho" kindOf="original">完成.受焦-PO-水-關係詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">PFV.PV-PO-水-關係詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PFV.PF-PO-water-REL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV.PV-PO-water-REL</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_12_W1M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">完成.受焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PFV.PV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PFV.PF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV.PV</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_12_W1M1">
                 <FORM kindOf="original">po</FORM>
@@ -853,7 +1043,9 @@
                 <FORM kindOf="standard">po</FORM>
                 <PHON kindOf="standard">po</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">PO</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PO</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PO</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PO</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_12_W1M2">
                 <FORM kindOf="original">canum</FORM>
@@ -861,7 +1053,9 @@
                 <FORM kindOf="standard">canum</FORM>
                 <PHON kindOf="standard">ʦanum</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">水</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">水</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_12_W1M3">
                 <FORM kindOf="original">a</FORM>
@@ -869,7 +1063,9 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">關係詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">REL</TRANSL>
             </M>
         </W>
     </S>
@@ -880,21 +1076,25 @@
         <PHON kindOf="standard">ʦa[r|ɾ]ikia ʦu[r|ɾ]u</PHON>
         <TRANSL xml:lang="zho">我真可憐。</TRANSL>
         <TRANSL xml:lang="eng">I am really poor.</TRANSL>
-        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="103.85" end="106.14" file="kkvNr_sad_song_Muu_S9.mp3"/>
+        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="103.85" end="106.14" file="kkvNr_sad_song_Muu_S9.mp3" />
         <W id="kkvNr_sad_song_Muu_S_13_W0">
             <FORM kindOf="original">cari=kia</FORM>
             <PHON kindOf="original">ʦa[r|ɾ]ikia</PHON>
             <FORM kindOf="standard">cari=kia</FORM>
             <PHON kindOf="standard">ʦa[r|ɾ]ikia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可憐=1SG.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可憐=1SG.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">poor=1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">poor=1SG.NOM</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_13_W0M0">
                 <FORM kindOf="original">cari</FORM>
                 <PHON kindOf="original">ʦa[r|ɾ]i</PHON>
                 <FORM kindOf="standard">cari</FORM>
                 <PHON kindOf="standard">ʦa[r|ɾ]i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">可憐</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">可憐</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">poor</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">poor</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_13_W0M1">
                 <FORM kindOf="original">=kia</FORM>
@@ -902,7 +1102,9 @@
                 <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1SG.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_13_W1">
@@ -911,14 +1113,18 @@
             <FORM kindOf="standard">curu</FORM>
             <PHON kindOf="standard">ʦu[r|ɾ]u</PHON>
             <TRANSL xml:lang="zho" kindOf="original">真的</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">真的</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">really</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">really</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_13_W1M0">
                 <FORM kindOf="original">curu</FORM>
                 <PHON kindOf="original">ʦu[r|ɾ]u</PHON>
                 <FORM kindOf="standard">curu</FORM>
                 <PHON kindOf="standard">ʦu[r|ɾ]u</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">真的</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">真的</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">really</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">really</TRANSL>
             </M>
         </W>
     </S>
@@ -929,21 +1135,25 @@
         <PHON kindOf="standard">ma[r|ɾ]aŋʦikia</PHON>
         <TRANSL xml:lang="zho">我老了。</TRANSL>
         <TRANSL xml:lang="eng">I am already old.</TRANSL>
-        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="106.14" end="107.77" file="kkvNr_sad_song_Muu_S10.mp3"/>
+        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="106.14" end="107.77" file="kkvNr_sad_song_Muu_S10.mp3" />
         <W id="kkvNr_sad_song_Muu_S_14_W0">
             <FORM kindOf="original">marang=ci=kia</FORM>
             <PHON kindOf="original">ma[r|ɾ]aŋʦikia</PHON>
             <FORM kindOf="standard">marang=ci=kia</FORM>
             <PHON kindOf="standard">ma[r|ɾ]aŋʦikia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">年老.主焦=COS=1SG.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">年老.AV=COS=1SG.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">age.AF=COS=1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">age.AV=COS=1SG.NOM</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_14_W0M0">
                 <FORM kindOf="original">marang</FORM>
                 <PHON kindOf="original">ma[r|ɾ]aŋ</PHON>
                 <FORM kindOf="standard">marang</FORM>
                 <PHON kindOf="standard">ma[r|ɾ]aŋ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">年老.主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">年老.AV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">age.AF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">age.AV</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_14_W0M1">
                 <FORM kindOf="original">=ci</FORM>
@@ -951,7 +1161,9 @@
                 <FORM kindOf="standard">=ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">COS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_14_W0M2">
                 <FORM kindOf="original">=kia</FORM>
@@ -959,7 +1171,9 @@
                 <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1SG.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.NOM</TRANSL>
             </M>
         </W>
     </S>
@@ -970,21 +1184,25 @@
         <PHON kindOf="standard">a[r|ɾ]asiŋsiŋa muʔu</PHON>
         <TRANSL xml:lang="zho">Mu'u，要受到祝福喔！</TRANSL>
         <TRANSL xml:lang="eng">Be blessed, Mu'u!</TRANSL>
-        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="107.77" end="110.28" file="kkvNr_sad_song_Muu_S11.mp3"/>
+        <AUDIO url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_sad_song_Muu.mp3" start="107.77" end="110.28" file="kkvNr_sad_song_Muu_S11.mp3" />
         <W id="kkvNr_sad_song_Muu_S_15_W0">
             <FORM kindOf="original">arasingsing-a</FORM>
             <PHON kindOf="original">a[r|ɾ]asiŋsiŋa</PHON>
             <FORM kindOf="standard">arasingsing-a</FORM>
             <PHON kindOf="standard">a[r|ɾ]asiŋsiŋa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">受到祝福-主焦.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">受到祝福-AV.祈使</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.blessed-AF.IMP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">be.blessed-AV.IMP</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_15_W0M0">
                 <FORM kindOf="original">arasingsing</FORM>
                 <PHON kindOf="original">a[r|ɾ]asiŋsiŋ</PHON>
                 <FORM kindOf="standard">arasingsing</FORM>
                 <PHON kindOf="standard">a[r|ɾ]asiŋsiŋ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">受到祝福</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">受到祝福</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">be.blessed</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">be.blessed</TRANSL>
             </M>
             <M id="kkvNr_sad_song_Muu_S_15_W0M1">
                 <FORM kindOf="original">a</FORM>
@@ -992,7 +1210,9 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦.祈使</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">AV.祈使</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF.IMP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV.IMP</TRANSL>
             </M>
         </W>
         <W id="kkvNr_sad_song_Muu_S_15_W1">
@@ -1001,14 +1221,18 @@
             <FORM kindOf="standard">Mu'u</FORM>
             <PHON kindOf="standard">muʔu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">Mu'u</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">Mu'u</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">Mu'u</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">Mu'u</TRANSL>
             <M id="kkvNr_sad_song_Muu_S_15_W1M0">
                 <FORM kindOf="original">Mu'u</FORM>
                 <PHON kindOf="original">muʔu</PHON>
                 <FORM kindOf="standard">Mu'u</FORM>
                 <PHON kindOf="standard">muʔu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">Mu'u</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">Mu'u</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">Mu'u</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">Mu'u</TRANSL>
             </M>
         </W>
     </S>

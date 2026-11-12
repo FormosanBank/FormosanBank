@@ -46,6 +46,12 @@ mkdir -p "$MPLCONFIGDIR"
 "$python_bin" "$formosanbank_path/QC/utilities/add_phonology.py" \
     --corpora_path XML
 
+# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/Seediq-Chang-Reference-Grammar.tsv
+"$python_bin" "$formosanbank_path/QC/glossing/apply_gloss_standard.py" \
+    --path XML \
+    --table "$formosanbank_path/Glossing/ConversionTables/Seediq-Chang-Reference-Grammar.tsv" \
+    --rules "$formosanbank_path/Glossing/ConversionTables/Seediq-Chang-Reference-Grammar.rules.tsv" --write
+
 after_commit="$(git -C "$formosanbank_path" rev-parse HEAD)"
 after_status="$(dependency_status)"
 if [[ "$after_commit" != "$before_commit" || "$after_status" != "$before_status" ]]; then

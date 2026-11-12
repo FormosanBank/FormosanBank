@@ -32,6 +32,12 @@ mkdir -p "$REPORTS"
 # 5. Phonology.
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$CORPUS_ROOT/XML" \
     --orthography Ortho113
+
+# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/YeddaPalemeqBlog.tsv
+"$PY" "$FB/QC/glossing/apply_gloss_standard.py" \
+    --path "$CORPUS_ROOT/XML" \
+    --table "$FB/Glossing/ConversionTables/YeddaPalemeqBlog.tsv" \
+    --rules "$FB/Glossing/ConversionTables/YeddaPalemeqBlog.rules.tsv" --write
 # Corpus-local, after 5: hashes and counts of the output, for validate.sh.
 "$PY" "$HERE/scripts/finalize_manifest.py" > "$REPORTS/manifest.log"
 
