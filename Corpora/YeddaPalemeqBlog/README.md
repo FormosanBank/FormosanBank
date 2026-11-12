@@ -295,7 +295,10 @@ them:
      `notes="Restored from the live source after frozen-scrape review."`.
    - It requires exactly 671 distinct sentence IDs, indents the tree, applies
      `gloss_to_notes.tsv` (each row must match the word's form and its exact
-     gloss, or the build stops), then turns whole-`?` word and morpheme glosses
+     gloss, or the build stops), then `uncertain_glosses.tsv`: 8 word glosses
+     where the author's `?` marks doubt about the gloss she gives (`LIG?`,
+     `ligature (?)`, `to, towards?`, …) lose the mark and get
+     `notes="uncertain"` (`LIG`, `ligature`, `to/towards`; POL-021), then turns whole-`?` word and morpheme glosses
      and any `unclear_gloss_placeholders.tsv` rows into `<UNCLEAR/>` (a table
      row that matches no gloss stops the build).
    - It writes `XML/Paiwan/Paiwan_Yedda_Blog.xml` and the audit tables in
