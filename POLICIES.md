@@ -268,8 +268,8 @@ uncertainty about a gloss it did give (`COND(?)`, `go?`, `LIG?`, `他?`) is
 removed from the gloss, and that TRANSL gets `notes="uncertain"`
 (`COND(?)` → `COND` with `notes="uncertain"`); POL-036's and POL-062's "kept as
 written" do not apply to these marks. Not followed yet by NTUFormosanCorpus
-(`他?`, `MED.OBL?`), HundredPaiwanStories (`decide?`), YeddaPalemeqBlog (`LIG?`,
-`ligature (?)`) and RauDong (`糞(日語?)`).
+(`他?`, `MED.OBL?`), YeddaPalemeqBlog (`LIG?`, `ligature (?)`) and RauDong
+(`糞(日語?)`).
 Maintainer (2026-11-11, Wild-Lehmann-Kanakanavu): *"They mark uncertainty.
 Remove them from the gloss and put "uncertain" in the note for that TRANSL."*;
 on making that this policy: *"Yes, update."*
