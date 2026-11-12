@@ -23,8 +23,13 @@ when
   ``?``/``??``/``???``, or any S translation is exactly such a marker (a case
   the table does not cover).
 
-A source's doubt about a gloss it did give (text 2 M 8_22_1 ``糞(日語?)``) is
-not a wholly unknown gloss and is left as written.
+A source's doubt about a gloss it did give is not a wholly unknown gloss. It
+is moved into the TRANSL's ``notes`` by the rows of ``gloss_notes.tsv`` (text,
+level, id, lang, snapshot_text, gloss, notes): text 2 ``sombing`` is glossed
+``糞(日語?)`` on its morpheme 8_22_1 and ``糞日語`` on its word 8_22, the doubt
+being whether the word is Japanese, not its meaning; both become ``糞`` with
+``notes="日語?"``. Maintainer (2026-11-11): "Put 日語? in notes. So the gloss is
+just 糞."
 
 It runs last in generate_xml.sh, after add_phonology: the shared standardize
 and add_phonology steps do not handle ``<UNCLEAR/>`` inside TRANSL. Files are
@@ -48,6 +53,8 @@ from lxml import etree
 
 HERE = Path(__file__).resolve().parent
 DEFAULT_TABLE = HERE / "unclear_glosses.tsv"
+NOTES_TABLE = HERE / "gloss_notes.tsv"
+NOTES_COLUMNS = ["text", "level", "id", "lang", "snapshot_text", "gloss", "notes"]
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 COLUMNS = ["text", "level", "id", "lang", "snapshot_text", "action"]
 ACTION_FOR_LEVEL = {"S": "omit", "W": "unclear", "M": "unclear"}
@@ -71,6 +78,37 @@ def load_table(path: Path) -> list[dict[str, str]]:
             raise ValueError(
                 f"{path.name}: a {row['level']} row's action must be {expected!r}: {row}")
     return rows
+
+
+def load_notes_table(path: Path) -> list[dict[str, str]]:
+    with path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t", quoting=csv.QUOTE_NONE)
+        if reader.fieldnames != NOTES_COLUMNS:
+            raise ValueError(f"{path.name}: header must be {NOTES_COLUMNS}, got {reader.fieldnames}")
+        rows = list(reader)
+    for row in rows:
+        if row["level"] not in ("W", "M") or not row["gloss"] or not row["notes"]:
+            raise ValueError(f"{path.name}: a row needs level W or M, a gloss and notes: {row}")
+    return rows
+
+
+def apply_note_rows(root: etree._Element, rows: list[dict[str, str]], stats: Counter) -> None:
+    for row in rows:
+        where = f"{row['text']} {row['level']} {row['id']} {row['lang']}"
+        matches = [e for e in root.iter(row["level"]) if e.get("id") == row["id"]]
+        if len(matches) != 1:
+            raise ValueError(f"{where}: {len(matches)} elements with that id")
+        transls = [t for t in matches[0].findall("TRANSL") if t.get(XML_LANG) == row["lang"]]
+        if len(transls) != 1:
+            raise ValueError(f"{where}: {len(transls)} TRANSL with that xml:lang")
+        transl = transls[0]
+        if len(transl) or (transl.text or "") != row["snapshot_text"] or transl.get("notes") is not None:
+            raise ValueError(
+                f"{where}: TRANSL is {etree.tostring(transl, encoding='unicode').strip()!r}, "
+                f"table expects text {row['snapshot_text']!r} and no notes")
+        transl.text = row["gloss"]
+        transl.set("notes", row["notes"])
+        stats[f"noted_{row['level'].lower()}_glosses"] += 1
 
 
 def leftovers(root: etree._Element) -> list[str]:
@@ -122,11 +160,14 @@ def write_preserving_declaration(path: Path, tree: etree._ElementTree) -> None:
     path.write_bytes((declaration + b"\n" if declaration is not None else b"") + body + trailing)
 
 
-def apply(corpora_path: Path, table_path: Path) -> Counter:
+def apply(corpora_path: Path, table_path: Path, notes_path: Path = NOTES_TABLE) -> Counter:
     rows = load_table(table_path)
     by_text: dict[str, list[dict[str, str]]] = {}
     for row in rows:
         by_text.setdefault(row["text"], []).append(row)
+    notes_by_text: dict[str, list[dict[str, str]]] = {}
+    for row in load_notes_table(notes_path):
+        notes_by_text.setdefault(row["text"], []).append(row)
 
     stats: Counter = Counter()
     trees = {}
@@ -139,9 +180,11 @@ def apply(corpora_path: Path, table_path: Path) -> Counter:
         trees[text_id] = (path, tree)
         if text_id in by_text:
             apply_rows(tree.getroot(), by_text[text_id], stats)
+        if text_id in notes_by_text:
+            apply_note_rows(tree.getroot(), notes_by_text[text_id], stats)
         problems.extend(leftovers(tree.getroot()))
 
-    unknown = sorted(set(by_text) - set(trees))
+    unknown = sorted((set(by_text) | set(notes_by_text)) - set(trees))
     if unknown:
         raise ValueError(f"{table_path.name}: no file has TEXT id {unknown}")
     if problems:
@@ -149,7 +192,7 @@ def apply(corpora_path: Path, table_path: Path) -> Counter:
             "wholly unknown glosses/translations not in the table:\n  " + "\n  ".join(problems))
 
     # Nothing is written until every check above has passed.
-    for text_id in by_text:
+    for text_id in sorted(set(by_text) | set(notes_by_text)):
         path, tree = trees[text_id]
         write_preserving_declaration(path, tree)
         stats["files_changed"] += 1
@@ -166,8 +209,8 @@ def main() -> int:
     except ValueError as error:
         print(f"apply_unclear_glosses: {error}", file=sys.stderr)
         return 1
-    for key in ("unclear_w_glosses", "unclear_m_glosses",
-                "omitted_sentence_translations", "files_changed"):
+    for key in ("unclear_w_glosses", "unclear_m_glosses", "noted_w_glosses",
+                "noted_m_glosses", "omitted_sentence_translations", "files_changed"):
         print(f"{key}={stats[key]}")
     return 0
 
