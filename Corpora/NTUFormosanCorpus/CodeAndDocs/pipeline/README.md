@@ -85,13 +85,14 @@ NTU's own "unknown" markers as the schema's `<UNCLEAR/>` element (rulings
 2026-10-17): an untranscribed word (`X`, `XX`, `XXX`, `XXXX`) in the sentence
 FORM and PHON, and in the word's FORM, PHON and `X` gloss, with the word's `M`
 removed; a word or morpheme gloss that is only `?`, `??` or `???`; a `?` piece
-inside a longer gloss only where `../unclear_gloss_placeholders.tsv` lists that
-gloss (shipped empty); a sentence translation that is only `?` or `XXX` is
+inside a longer gloss (`banana-??` → `banana-<UNCLEAR/>`, `?<PFV>` →
+`<UNCLEAR/><PFV>`; POL-061); a sentence translation that is only `?` or `XXX` is
 removed; and a sentence that is nothing but `<UNCLEAR/>` loses its word tier.
 Rulings 2026-10-18: an untranscribed word's FORM is a bare `<UNCLEAR/>`, without
 the punctuation NTU attached; a word written `X` whose gloss is something else
-(`FS`, `PART`, `father`, ...; 13 words) gets `<UNCLEAR/>` as its FORM only, its
-PHON, glosses and morphemes kept as NTU wrote them; and an `X` run that is part
+(`FS`, `PART`, `father`, ...; 13 words) gets `<UNCLEAR/>` as its FORM, keeps its
+PHON and real glosses, has a `??` gloss written `<UNCLEAR/>`, and has no `M`
+(POL-021; maintainer, 2026-11-11); and an `X` run that is part
 of a word gets `<UNCLEAR/>` for that part only (`mi-XX,` → `mi-<UNCLEAR/>`, 7
 words; the sentence token `我的XX在XX那邊` → `我的<UNCLEAR/>在<UNCLEAR/>那邊`). It
 runs after `run_standard_and_phon.sh` because the
@@ -233,10 +234,6 @@ Per POL-039, item-specific corrections live in data files, not in code:
   (`M`, `OH`, `HAY`), 404 cells. Each row names the value it expects to find.
 - `gloss_shift_repairs.tsv` — gloss-shift corrections (see below), applied at
   load time by all three builders; only rows with status `accepted` take effect
-- `../unclear_gloss_placeholders.tsv` — glosses (columns `gloss`, `lang`) in
-  which `mark_unclear.py` writes each `?` that stands as a whole gloss piece
-  (bounded by `-`, `=`, `.`, a space, or the ends) as `<UNCLEAR/>`. The
-  maintainer decides these gloss by gloss; the table ships with no rows.
 - `../word_form_characters.tsv` — every character other than a letter or digit
   in a word or morpheme FORM, per language (`lang`, `char`, `codepoint`,
   `class`, `action`, `note`), read by `strip_word_punctuation.py`: `delete`,

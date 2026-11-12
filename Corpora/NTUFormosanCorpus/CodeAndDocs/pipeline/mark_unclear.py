@@ -26,9 +26,11 @@ What it does, per sentence (S):
      strip_word_punctuation.py, the step after this one).
    * A W whose FORM is X+ but whose gloss is something else (FS, PART, father,
      ?? ...; 13 words). Ruling 2026-10-18: "FORM -> <UNCLEAR/>, keep the real
-     gloss (and its morphemes)". Every FORM of the word becomes a bare
-     <UNCLEAR/>; its PHON, glosses (including a ?? gloss) and M are left as NTU
-     wrote them. Each one is listed in the report.
+     gloss". Every FORM of the word becomes a bare <UNCLEAR/>; its PHON and real
+     glosses stay. A ?/??/??? gloss becomes <UNCLEAR/> (POL-061) and its M are
+     removed (POL-021: a W whose FORM is only <UNCLEAR/> has no M). Maintainer,
+     2026-11-11: "Yes, convert under current POLs", and for all 13, "Drop their
+     morphemes too". Each one is listed in the report.
    * X as part of a word. Ruling 2026-10-18: "Convert the X part only
      (mi-<UNCLEAR/>)". In every FORM of any other W (mi-XX, -> mi-<UNCLEAR/>,),
      and in every S-level FORM (我的XX在XX那邊 -> 我的<UNCLEAR/>在<UNCLEAR/>那邊), a
@@ -64,10 +66,22 @@ What it does, per sentence (S):
    tier) becomes <UNCLEAR/> (alupu-<UNCLEAR/>=ini), and so does a ? opening a
    token of their sentence FORMs (?lalasu -> <UNCLEAR/>lalasu). Glosses (?P
    included) and PHON (which has no reading for the ?) are unchanged.
-5. Placeholders: a ? standing as a whole gloss piece (bounded by -, =, ., space or
-   the ends of the gloss) is replaced by <UNCLEAR/> only in glosses listed in
-   ../unclear_gloss_placeholders.tsv (columns gloss, lang). The maintainer decides
-   these row by row; the table ships empty.
+5. Placeholders: a ?, ?? or ??? standing as a whole gloss piece (bounded by -, =,
+   ., space or the ends of the gloss, or followed by an infix label <...>) is
+   replaced by <UNCLEAR/> in every W and M gloss (POL-061; ruling 2 above).
+   Maintainer, 2026-11-11: "Remove the empty table restriction" (the conversion
+   had been limited to glosses listed in a table that shipped empty). A ? before
+   an infix label: ma<i> glossed ?<PFV> -> <UNCLEAR/><PFV>, two pieces in the form
+   and two in the gloss (maintainer, 2026-11-11: "Yes, <UNCLEAR/><PFV>").
+
+8. A ? marking NTU's doubt about a gloss it did give (POL-021 as amended
+   2026-11-11): the ? is removed and the TRANSL gets notes="uncertain", for the
+   glosses listed in UNCERTAIN_GLOSSES (他?, 帥?, MED.OBL? / 中距.斜格?, 可?.中距,
+   taniara?). Maintainer, 2026-11-11: "Agreed about the others you listed, all
+   of which you suggested should be treated as uncertainty"; 可?: "agreed";
+   taniara?: "I would treat this as uncertainty". 一.?量詞: "treat as unclear"
+   -> 一.<UNCLEAR/>量詞 (UNCLEAR_PIECE_GLOSSES). Other attached ? stay as
+   written (什? is open; ?P is ruling 7; 這是鹿角嗎? is a question).
 
 Runs last in each subcorpus build, after the shared standardize/add_phonology
 steps: those read FORM.text, so a FORM holding <UNCLEAR/> earlier in the build
@@ -76,7 +90,7 @@ would be transliterated only up to the marker.
 A file is rewritten only if something in it changed. Idempotent: a second run
 finds no markers left. ``--report`` writes one TSV row per change.
 
-usage: mark_unclear.py --xml_dir <dir> [--placeholders <tsv>] [--report <tsv>]
+usage: mark_unclear.py --xml_dir <dir> [--report <tsv>]
 """
 import argparse
 import csv
@@ -103,8 +117,9 @@ PHON_X = re.compile(r"(?<!\S)(?:x+|\*+)(?!\S)")
 PART_X = re.compile(r"(?<![A-Za-z])X+(?![A-Za-z])")
 UNKNOWN_GLOSS = re.compile(r"^\s*[?？]{1,3}\s*$")
 UNKNOWN_S_TRANSL = re.compile(r"^\s*(?:[?？]{1,3}|X+)\s*$")
-# A ? piece inside a longer gloss: bounded by - = . whitespace or the ends.
-PLACEHOLDER_PIECE = re.compile(r"(?:^|(?<=[-=.\s]))[?？]{1,3}(?=$|[-=.\s])")
+# A ? piece inside a longer gloss: bounded by - = . whitespace or the ends, or
+# followed by an infix label (?<PFV>).
+PLACEHOLDER_PIECE = re.compile(r"(?:^|(?<=[-=.\s]))[?？]{1,3}(?=$|[-=.\s<])")
 
 
 # Ruling 6 (2026-10-18): (xml:lang, W id) -> (the label in its FORMs, the label's
@@ -118,6 +133,21 @@ UNKNOWN_PIECE_WORDS = {
     ("dru", "20200529-FW-Lixing-1_S_18_W2"), # ?la-lasu
     ("dru", "20200531-FW-yuki_S_3_W0"),      # ?ma-adrau-nga
 }
+# Ruling 8 (2026-11-11): (xml:lang, gloss as NTU wrote it) -> the gloss without
+# its uncertainty mark; the TRANSL gets notes="uncertain".
+UNCERTAIN_GLOSSES = {
+    ("zho", "他?"): "他",
+    ("zho", "帥?"): "帥",
+    ("zho", "原本-豬=中距.斜格?"): "原本-豬=中距.斜格",
+    ("eng", "origin-pig=MED.OBL?"): "origin-pig=MED.OBL",
+    ("zho", "中距.斜格?"): "中距.斜格",
+    ("eng", "MED.OBL?"): "MED.OBL",
+    ("zho", "可?.中距-那裡"): "可.中距-那裡",
+    ("zho", "可?.中距"): "可.中距",
+    ("eng", "taniara?"): "taniara",
+}
+# Ruling 8: glosses whose ? is an unknown piece the piece pattern does not reach.
+UNCLEAR_PIECE_GLOSSES = {("zho", "一.?量詞")}
 QUESTION = re.compile(r"\?")
 QUESTION_OPENING_TOKEN = re.compile(r"(?<!\S)\?(?=[^\W\d_])")
 
@@ -218,20 +248,6 @@ def write_like(path, root):
     path.write_text(raw[:start] + body + raw[end:], encoding="utf-8")
 
 
-def load_placeholders(path):
-    if path is None or not path.exists():
-        return set()
-    lines = [ln for ln in path.read_text(encoding="utf-8").splitlines()
-             if ln.strip() and not ln.startswith("#")]
-    rows = list(csv.DictReader(lines, delimiter="\t", quoting=csv.QUOTE_NONE))
-    for r in rows:
-        if set(r) != {"gloss", "lang"}:
-            raise SystemExit(f"mark_unclear: {path}: expected columns gloss, lang; got {sorted(r)}")
-        if not PLACEHOLDER_PIECE.search(r["gloss"]):
-            raise SystemExit(f"mark_unclear: {path}: listed gloss {r['gloss']!r} has no ? piece")
-    return {(r["gloss"], r["lang"]) for r in rows}
-
-
 def is_x_word(w):
     forms = w.findall("FORM")
     return bool(forms) and all(not has_children(f) and X_WHOLE.match(f.text or "") for f in forms)
@@ -309,7 +325,7 @@ def unclear_question_pieces(s, lang, counts, log):
                 etree.tostring(form, encoding="unicode", with_tail=False))
 
 
-def process_sentence(s, placeholders, counts, report, rel, lang=None):
+def process_sentence(s, counts, report, rel, lang=None):
     sid = s.get("id")
 
     def log(kind, where, before, after):
@@ -375,13 +391,26 @@ def process_sentence(s, placeholders, counts, report, rel, lang=None):
         wid = w.get("id")
         if is_x_word(w):
             if x_word_held(w):
-                # Ruling 2 (2026-10-18): FORM only; PHON, glosses and M stay.
+                # Ruling 2 (2026-10-18): FORM -> <UNCLEAR/>, real glosses and PHON
+                # stay; an unknown gloss is <UNCLEAR/> (POL-061) and the M go
+                # (POL-021; maintainer 2026-11-11, "Drop their morphemes too").
                 counts["X word with real gloss: FORM -> UNCLEAR (ruling 2)"] += 1
                 glosses = " | ".join(f"{t.get(XML_LANG)}={text_of(t)}" for t in w.findall("TRANSL"))
                 log("X word with real gloss: FORM -> UNCLEAR", wid,
                     " | ".join(f.text for f in w.findall("FORM")), glosses)
                 for form in w.findall("FORM"):
                     set_mixed(form, [None])
+                for tr in w.findall("TRANSL"):
+                    if not has_children(tr) and UNKNOWN_GLOSS.match(tr.text or ""):
+                        counts["W gloss ?/??/??? -> UNCLEAR"] += 1
+                        log("W gloss unknown", f"{wid} xml:lang={tr.get(XML_LANG)}", tr.text, "<UNCLEAR/>")
+                        set_mixed(tr, [None])
+                ms = w.findall("M")
+                counts["M removed (X word with real gloss)"] += len(ms)
+                for m in ms:
+                    log("M removed: X word with real gloss", m.get("id"),
+                        etree.tostring(m, encoding="unicode", with_tail=False), "")
+                    remove_keep_layout(m)
                 continue
             counts["W X words -> UNCLEAR"] += 1
             for form in w.findall("FORM"):
@@ -401,7 +430,7 @@ def process_sentence(s, placeholders, counts, report, rel, lang=None):
             continue
 
         # A word whose FORMs are all a bare <UNCLEAR/> was handled above (a second
-        # run): its glosses stay as they are, a ruling-2 word's ?? included.
+        # run): nothing is left to do.
         if all(is_bare_unclear(f) for f in w.findall("FORM")) and w.findall("FORM"):
             continue
 
@@ -424,7 +453,18 @@ def process_sentence(s, placeholders, counts, report, rel, lang=None):
                     set_mixed(tr, [None])
                     counts[f"{level} gloss ?/??/??? -> UNCLEAR"] += 1
                     log(f"{level} gloss unknown", f"{node.get('id')} xml:lang={tr.get(XML_LANG)}", before, "<UNCLEAR/>")
-                elif (before, tr.get(XML_LANG)) in placeholders:
+                elif (tr.get(XML_LANG), before) in UNCERTAIN_GLOSSES:
+                    tr.text = UNCERTAIN_GLOSSES[(tr.get(XML_LANG), before)]
+                    tr.set("notes", "uncertain")
+                    counts[f"{level} gloss ? -> notes=uncertain (ruling 8)"] += 1
+                    log(f"{level} gloss uncertain (ruling 8)", f"{node.get('id')} xml:lang={tr.get(XML_LANG)}",
+                        before, etree.tostring(tr, encoding="unicode", with_tail=False))
+                elif (tr.get(XML_LANG), before) in UNCLEAR_PIECE_GLOSSES:
+                    n = replace_matches(tr, QUESTION, 0)
+                    counts[f"{level} gloss ? piece -> UNCLEAR (ruling 8)"] += n
+                    log(f"{level} gloss ? piece (ruling 8)", f"{node.get('id')} xml:lang={tr.get(XML_LANG)}", before,
+                        etree.tostring(tr, encoding="unicode", with_tail=False))
+                elif PLACEHOLDER_PIECE.search(before):
                     n = replace_matches(tr, PLACEHOLDER_PIECE, 0)
                     counts[f"{level} gloss placeholder ? -> UNCLEAR"] += n
                     log(f"{level} gloss placeholder", f"{node.get('id')} xml:lang={tr.get(XML_LANG)}", before,
@@ -434,11 +474,8 @@ def process_sentence(s, placeholders, counts, report, rel, lang=None):
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--xml_dir", required=True, type=Path)
-    ap.add_argument("--placeholders", type=Path,
-                    default=Path(__file__).resolve().parent.parent / "unclear_gloss_placeholders.tsv")
     ap.add_argument("--report", type=Path)
     args = ap.parse_args(argv)
-    placeholders = load_placeholders(args.placeholders)
     counts, report, files = Counter(), [], 0
     for path in sorted(args.xml_dir.rglob("*.xml")):
         tree = etree.parse(str(path))
@@ -446,11 +483,10 @@ def main(argv=None):
         rel = str(path.relative_to(args.xml_dir))
         lang = tree.getroot().get(XML_LANG)
         for s in tree.getroot().iter("S"):
-            process_sentence(s, placeholders, counts, report, rel, lang)
+            process_sentence(s, counts, report, rel, lang)
         if report[before:]:
             write_like(path, tree.getroot())
             files += 1
-    print(f"placeholder table rows: {len(placeholders)}")
     for key in sorted(counts):
         print(f"  {key}: {counts[key]}")
     print(f"files rewritten: {files}")

@@ -6,9 +6,10 @@ Corpora/NTUFormosanCorpus/CodeAndDocs/pipeline/mark_unclear.py:
 1. Untranscribed words (NTU's X / XX / XXX): "A. All tiers: sentence FORM, word
    FORM, word gloss, PHON; drop the M under it (no analysis exists, POL-057)".
 2. Unknown glosses: "B. A, plus ? used as a placeholder inside a gloss", A =
-   "Convert glosses that are exactly ? or ??". Placeholders inside a longer gloss
-   are converted only where unclear_gloss_placeholders.tsv lists the gloss (the
-   table ships empty).
+   "Convert glosses that are exactly ? or ??". A ? piece inside a longer gloss is
+   converted everywhere (POL-061; maintainer, 2026-11-11: "Remove the empty table
+   restriction"), also before an infix label (?<PFV> -> <UNCLEAR/><PFV>; "Yes,
+   <UNCLEAR/><PFV>").
 3. "B. Glosses UNCLEAR; sentence translations omitted".
 4. "if the S FORM is simply <UNCLEAR/>, no Ws. If the W FORM is <UNCLEAR />, no Ms
    under it."
@@ -19,7 +20,9 @@ Maintainer's rulings, 2026-10-18 (mark_unclear.py and strip_word_punctuation.py)
    FORMs or M FORMs anyway. Delete everywhere in NTU." What is punctuation is
    decided per language in CodeAndDocs/word_form_characters.tsv.
 6. The 13 X words with a real gloss: "FORM -> <UNCLEAR/>, keep the real gloss (and
-   its morphemes)".
+   its morphemes)"; since 2026-11-11 under POL-021/POL-061 ("Yes, convert under
+   current POLs"; "Drop their morphemes too"): a ?? gloss is <UNCLEAR/> and the
+   word has no M.
 7. X as part of a word: "Convert the X part only (mi-<UNCLEAR/>)".
 
 The first group runs the step on small hand-written sentences; the second holds
@@ -29,6 +32,7 @@ tree (e.g. the pre-change XML, on which these tests fail).
 from __future__ import annotations
 
 import os
+from collections import Counter
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -47,12 +51,13 @@ NTU_XML = Path(os.environ.get("NTU_XML_DIR") or ROOT / "Corpora" / "NTUFormosanC
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
 # The 13 words whose FORM is X but whose gloss is something else. Ruling
-# 2026-10-18: FORM -> <UNCLEAR/>, gloss and morphemes kept; a change to this list
-# is a change to the corpus that should be looked at.
+# 2026-10-18: FORM -> <UNCLEAR/>, gloss kept; since 2026-11-11 a ?? gloss is
+# <UNCLEAR/> (None below: the TRANSL has no text) and the word has no M. A change
+# to this list is a change to the corpus that should be looked at.
 HELD = {
     "AtaNr-moving_Takun_S_106_W0": "FS",
-    "AtaNr-proposal_Takun_S_143_W0": "??",
-    "kkvNr_millet_Muu_S_56_W2": "??",
+    "AtaNr-proposal_Takun_S_143_W0": None,
+    "kkvNr_millet_Muu_S_56_W2": "那個那個",
     "SaiNr-holiday_kalaeh a _oemaw_S_73_W2": "(Mandarin)",
     "SaiNr-holiday_kalaeh a _oemaw_S_78_W6": "after",
     "SaiNr-kathethel2_kalaeh a oemaw_S_1_W14": "(Mandarin)",
@@ -117,6 +122,23 @@ SAMPLE = """<?xml version="1.0" ?>
             <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
         </W>
     </S>
+    <S id="s3">
+        <FORM kindOf="original">mai X</FORM>
+        <W id="s3_W0">
+            <FORM kindOf="original">ma&lt;i&gt;</FORM>
+            <TRANSL xml:lang="eng" kindOf="original">?&lt;PFV&gt;</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">什?</TRANSL>
+        </W>
+        <W id="s3_W1">
+            <FORM kindOf="original">X</FORM>
+            <TRANSL xml:lang="zho" kindOf="original">那個那個</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
+            <M id="s3_W1M0">
+                <FORM kindOf="original">X</FORM>
+                <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
+            </M>
+        </W>
+    </S>
 </TEXT>"""
 
 
@@ -125,14 +147,11 @@ SAMPLE = """<?xml version="1.0" ?>
 pytestmark = pytest.mark.xdist_group("ntu")
 
 
-def _run(tmp_path, table_rows=None):
+def _run(tmp_path):
     xml_dir = tmp_path / "xml"
     xml_dir.mkdir()
     (xml_dir / "a.xml").write_text(SAMPLE, encoding="utf-8")
-    table = tmp_path / "placeholders.tsv"
-    table.write_text("gloss\tlang\n" + "".join(f"{g}\t{l}\n" for g, l in table_rows or []),
-                     encoding="utf-8")
-    assert mu.main(["--xml_dir", str(xml_dir), "--placeholders", str(table)]) == 0
+    assert mu.main(["--xml_dir", str(xml_dir)]) == 0
     text = (xml_dir / "a.xml").read_text(encoding="utf-8")
     return text, {e.get("id"): e for e in ET.fromstring(text.split("\n", 1)[1]).iter() if e.get("id")}
 
@@ -162,7 +181,12 @@ def test_unknown_glosses_and_sentence_translations(tmp_path):
     assert [t.get(XML_LANG) for t in ids["s1"].findall("TRANSL")] == ["zho"]   # eng "?" omitted
     assert _inner(ids["s1_W0"].find("TRANSL")) == "<UNCLEAR />"                 # ??
     assert _inner(ids["s1_W0M0"].find("TRANSL")) == "<UNCLEAR />"               # full-width ？
-    assert _inner(ids["s1_W2"].find("TRANSL")) == "1SG-?"                       # placeholder, not listed
+    assert _inner(ids["s1_W2"].find("TRANSL")) == "1SG-<UNCLEAR />"             # ? piece (POL-061)
+
+
+def test_question_piece_before_an_infix_label(tmp_path):
+    _, ids = _run(tmp_path)
+    assert [_inner(t) for t in ids["s3_W0"].findall("TRANSL")] == ["<UNCLEAR />&lt;PFV&gt;", "什?"]   # 什? not ruled
 
 
 def test_sentence_that_is_only_unclear_has_no_words(tmp_path):
@@ -173,11 +197,14 @@ def test_sentence_that_is_only_unclear_has_no_words(tmp_path):
     assert s2.findall("W") == [] and s2.findall("TRANSL") == []
 
 
-def test_x_word_with_a_real_gloss_gets_an_unclear_form_only(tmp_path):
+def test_x_word_with_a_real_gloss_keeps_it_and_loses_its_morphemes(tmp_path):
     _, ids = _run(tmp_path)
     w = ids["s1_W3"]
     assert _inner(w.find("FORM")) == "<UNCLEAR />" and w.find("TRANSL").text == "FS"
-    assert [_inner(f) for f in w.find("M").findall("FORM")] == ["X."]     # M kept as is
+    assert w.findall("M") == []                                           # POL-021
+    w = ids["s3_W1"]
+    assert [_inner(t) for t in w.findall("TRANSL")] == ["那個那個", "<UNCLEAR />"]
+    assert w.findall("M") == []
 
 
 def test_x_part_of_a_word(tmp_path):
@@ -194,9 +221,7 @@ def test_x_part_of_a_word(tmp_path):
         <W id="s1_W1"><FORM kindOf="original">Xinyi</FORM></W>
     </S>
 </TEXT>""", encoding="utf-8")
-    table = tmp_path / "placeholders.tsv"
-    table.write_text("gloss\tlang\n", encoding="utf-8")
-    assert mu.main(["--xml_dir", str(xml_dir), "--placeholders", str(table)]) == 0
+    assert mu.main(["--xml_dir", str(xml_dir)]) == 0
     ids = {e.get("id"): e for e in ET.parse(xml_dir / "a.xml").getroot().iter() if e.get("id")}
     assert _inner(ids["s1"].find("FORM")) == "kafana'an miXX, 我的<UNCLEAR />在<UNCLEAR />那邊 Xinyi"
     assert _inner(ids["s1_W0"].find("FORM")) == "mi-<UNCLEAR />,"
@@ -305,25 +330,8 @@ def test_word_punctuation_unlisted_character_stops(tmp_path):
 
 def test_second_run_changes_nothing(tmp_path):
     text, _ = _run(tmp_path)
-    table = tmp_path / "placeholders.tsv"
-    assert mu.main(["--xml_dir", str(tmp_path / "xml"), "--placeholders", str(table)]) == 0
+    assert mu.main(["--xml_dir", str(tmp_path / "xml")]) == 0
     assert (tmp_path / "xml" / "a.xml").read_text(encoding="utf-8") == text
-
-
-def test_placeholder_table_row_converts_only_that_gloss(tmp_path):
-    _, ids = _run(tmp_path, [("1SG-?", "eng")])
-    assert _inner(ids["s1_W2"].find("TRANSL")) == "1SG-<UNCLEAR />"
-
-
-def test_placeholder_table_row_is_language_specific(tmp_path):
-    _, ids = _run(tmp_path, [("1SG-?", "zho")])
-    assert _inner(ids["s1_W2"].find("TRANSL")) == "1SG-?"
-
-
-def test_shipped_placeholder_table_is_empty():
-    rows = [ln for ln in (CODEDOCS / "unclear_gloss_placeholders.tsv").read_text(encoding="utf-8").splitlines()
-            if ln.strip()]
-    assert rows == ["gloss\tlang"]
 
 
 # ----------------------------------------------------------- the published XML
@@ -358,8 +366,6 @@ def test_x_words_are_unclear_and_have_no_morphemes(sentences):
     bad = []
     for s in sentences:
         for w in s.findall("W"):
-            if _held(w):
-                continue
             if any(re.fullmatch(r'\s*[.,!?;:"“”()]*X+[.,!?;:"“”()]*\s*', f.text or "") and len(f) == 0
                    for f in w.findall("FORM")):
                 bad.append(w.get("id"))
@@ -371,10 +377,17 @@ def test_x_words_are_unclear_and_have_no_morphemes(sentences):
 
 
 def test_no_gloss_is_only_a_question_mark(sentences):
-    bad = [(n.get("id"), t.text) for s in sentences for w in s.findall("W") if not _held(w)
+    bad = [(n.get("id"), t.text) for s in sentences for w in s.findall("W")
            for n in [w, *w.findall("M")] for t in n.findall("TRANSL")
            if len(t) == 0 and UNKNOWN.match(t.text or "")]
     assert bad == [], f"{len(bad)} W/M gloss(es) are still ?/??/???, e.g. {bad[:5]}"
+
+
+def test_no_gloss_holds_a_question_mark_piece(sentences):
+    bad = [(n.get("id"), "".join(t.itertext())) for s in sentences for w in s.findall("W")
+           for n in [w, *w.findall("M")] for t in n.findall("TRANSL")
+           if mu.PLACEHOLDER_PIECE.search("".join(t.itertext()))]
+    assert bad == [], f"{len(bad)} W/M gloss(es) still hold a ? piece, e.g. {bad[:5]}"
 
 
 def test_no_sentence_translation_is_only_a_marker(sentences):
@@ -392,6 +405,32 @@ def test_sentence_that_is_only_unclear_has_no_words_published(sentences):
             if not any(ch.isalnum() for ch in rest):
                 bad.append(s.get("id"))
     assert bad == []
+
+
+UNCERTAIN_AFTER = {   # ruling 8 (2026-11-11): published gloss -> how many carry notes="uncertain"
+    ("zho", "他"): 2, ("zho", "帥"): 4,
+    ("zho", "原本-豬=中距.斜格"): 2, ("eng", "origin-pig=MED.OBL"): 2,
+    ("zho", "中距.斜格"): 2, ("eng", "MED.OBL"): 2,
+    ("zho", "可.中距-那裡"): 1, ("zho", "可.中距"): 1, ("eng", "taniara"): 2,
+}
+
+
+def test_uncertainty_marks_are_notes(sentences):
+    found = Counter()
+    for s in sentences:
+        for w in s.findall("W"):
+            for n in [w, *w.findall("M")]:
+                for t in n.findall("TRANSL"):
+                    if t.get("notes") == "uncertain":
+                        found[(t.get(XML_LANG), _inner(t))] += 1
+                    assert (t.get(XML_LANG), _inner(t)) not in {(l, g) for l, g in mu.UNCERTAIN_GLOSSES}, n.get("id")
+    assert found == Counter(UNCERTAIN_AFTER)
+
+
+def test_unknown_classifier_piece_is_unclear(sentences):
+    got = [_inner(t) for s in sentences for w in s.findall("W") for n in [w, *w.findall("M")]
+           for t in n.findall("TRANSL") if "量詞" in _inner(t) and "UNCLEAR" in _inner(t)]
+    assert got == ["一.<UNCLEAR />量詞"] * 2
 
 
 def test_held_words_are_unchanged(sentences):
@@ -593,7 +632,7 @@ def test_mark_unclear_replaces_the_listed_gloss_label(tmp_path):
     xml_dir.mkdir()
     (xml_dir / "a.xml").write_text(sample, encoding="utf-8")
     for _ in range(2):    # idempotent
-        assert mu.main(["--xml_dir", str(xml_dir), "--placeholders", str(tmp_path / "none.tsv")]) == 0
+        assert mu.main(["--xml_dir", str(xml_dir)]) == 0
     ids = {e.get("id"): e for e in ET.parse(xml_dir / "a.xml").getroot().iter() if e.get("id")}
     assert _inner(ids["3_S_456"].find("FORM")) == "<UNCLEAR />karapeenkasu pai'ici?"
     assert _inner(ids["3_S_456"].find("PHON")) == "<UNCLEAR />ka[r|ɾ]apeenkasu paiʔiʦi"
@@ -619,7 +658,7 @@ def test_x_words_with_a_real_gloss_have_an_unclear_form(sentences):
     assert set(words) == set(HELD)
     for wid, w in words.items():
         assert [_inner(f) for f in w.findall("FORM")] == ["<UNCLEAR />"] * len(w.findall("FORM")) != [], wid
-        assert w.findall("M"), wid                                        # morphemes kept
+        assert w.findall("M") == [], wid                                  # POL-021
 
 
 def test_x_part_of_a_word_published(sentences):
