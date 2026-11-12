@@ -148,3 +148,80 @@ def test_dry_run_changes_nothing(tmp_path):
     p = run(d, t, r, write=False)
     assert p.returncode == 0
     assert (d / "a.xml").read_text(encoding="utf-8") == before
+
+
+# ---- context rules (r2 Yedda UV split; maintainer 2026-11-12: "Conversion
+# tool is going to need to implement context rules.") ----
+
+CTX_TABLE = [
+    ("UV", "82", "CONVERT", "", "r2: split by diagnostic affix", "", ""),
+    ("AF", "10", "CONVERT", "AV", "voice ruling", "", ""),
+]
+CTX_RULES = RULES + [
+    ("UV&-an", "CONTEXT-CONVERT→LV", "UV word whose morphemes include -an"),
+    ("UV&si-", "CONTEXT-CONVERT→OV", "UV word with si-"),
+    ("UV&-en", "CONTEXT-CONVERT→PV", "UV word with -en"),
+    ("UV&⟨in⟩-only", "KEEP-UV", "no diagnostic affix: stays UV"),
+]
+CTX_XML = """<TEXT xml:lang="pwn" id="t2">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>tjaljan</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">plant-UV</TRANSL>
+    <M id="m11"><FORM>tjalj</FORM><TRANSL xml:lang="eng" kindOf="original">plant</TRANSL></M>
+    <M id="m12"><FORM>-an</FORM><TRANSL xml:lang="eng" kindOf="original">UV</TRANSL></M>
+  </W>
+  <W id="w2"><FORM>sikan</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">UV-eat</TRANSL>
+    <M id="m21"><FORM>si-</FORM><TRANSL xml:lang="eng" kindOf="original">UV</TRANSL></M>
+    <M id="m22"><FORM>kan</FORM><TRANSL xml:lang="eng" kindOf="original">eat</TRANSL></M>
+  </W>
+  <W id="w3"><FORM>kanen</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">eat-UV</TRANSL>
+    <M id="m31"><FORM>kan</FORM><TRANSL xml:lang="eng" kindOf="original">eat</TRANSL></M>
+    <M id="m32"><FORM>-en</FORM><TRANSL xml:lang="eng" kindOf="original">UV</TRANSL></M>
+  </W>
+  <W id="w4"><FORM>kinum</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">eat&lt;UV&gt;</TRANSL>
+    <M id="m41"><FORM>kinum</FORM><TRANSL xml:lang="eng" kindOf="original">eat.UV</TRANSL></M>
+  </W>
+  <W id="w5"><FORM>sibuy</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">UV.give</TRANSL>
+  </W>
+</S>
+</TEXT>"""
+
+
+def make_ctx_corpus(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(CTX_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(CTX_TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(CTX_RULES)
+    return d, t, r
+
+
+def test_context_rules_split_by_word_morphology(tmp_path):
+    d, t, r = make_ctx_corpus(tmp_path)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    _, g = glosses(d)
+    assert g["w1"][("standard",)] == "plant-LV"   # word has -an
+    assert g["w2"][("standard",)] == "OV-eat"     # word has si-
+    assert g["w3"][("standard",)] == "eat-PV"     # word has -en
+    assert g["w4"][("standard",)] == "eat<UV>"    # no diagnostic affix: kept
+    # M-level glosses inherit the WORD's morpheme context
+    assert g["m12"][("standard",)] == "LV"
+    assert g["m21"][("standard",)] == "OV"
+    assert g["m41"][("standard",)] == "eat.UV"
+    # unsegmented word: the word's own shape satisfies an affix pattern
+    assert g["w5"][("standard",)] == "OV.give"

@@ -70,42 +70,98 @@ class Table:
         return atom                          # KEEP and UNDECIDED copy
 
 
+AFFIX_MARKS = "-=<>⟨⟩"
+
+
+def form_core(form: str) -> str:
+    """A morpheme form with affix punctuation removed (also word-internally:
+    a source may write an infixed prefix as s-i), lowercased."""
+    return re.sub(f"[{re.escape(AFFIX_MARKS)} ]", "", form).lower()
+
+
+def context_matches(pattern: str, context_forms) -> bool:
+    """Does a context-rule form pattern match the word?
+
+    context_forms holds the cores of the word's segmented morpheme FORMs plus,
+    marked "~"-prefixed, the whole word's own form — so that an unsegmented
+    word (Yedda) can satisfy an affix pattern by its shape: "-an" matches a
+    morpheme an or a word ending in an; "si-" a morpheme si or a word starting
+    with si; a bare pattern only an exact morpheme.
+    """
+    core = form_core(pattern)
+    if not core:
+        return False
+    for f in context_forms:
+        if f.startswith("~"):
+            word = f[1:]
+            if pattern.startswith("-") and word.endswith(core):
+                return True
+            if pattern.endswith("-") and word.startswith(core):
+                return True
+        elif f == core:
+            return True
+    return False
+
+
 class Rules:
-    """Separator and residue behavior from the corpus's .rules.tsv."""
+    """Separator, residue and context-rule behavior from the corpus's .rules.tsv."""
 
     def __init__(self, path: pathlib.Path):
         self.separators: list[str] = []
         self.keep_brackets = False
         self.residue_chars = ""
+        # (atom, form core, target), in file order: "UV&-an / CONTEXT-CONVERT→LV"
+        # means an atom UV on a word one of whose morphemes is -an becomes LV.
+        # An atom with context rules but no matching form is kept as-is (the
+        # rules file states that fallback, e.g. "UV&⟨in⟩-only / KEEP-UV").
+        self.context_rules: list[tuple[str, str, str]] = []
         with open(path, newline="", encoding="utf-8") as handle:
             for row in csv.DictReader(handle, delimiter="\t"):
                 repl = row["replacement"]
                 pat = row["pattern"]
-                if repl in ("KEEP-SEPARATOR", "INFIX-BREAK"):
+                ctx = re.fullmatch(r"CONTEXT-CONVERT→(\S+)", repl)
+                if ctx and "&" in pat:
+                    atom, form = pat.split("&", 1)
+                    self.context_rules.append((atom, form.strip(), ctx.group(1)))
+                elif "&" in pat:
+                    continue                    # documented fallback (KEEP-*)
+                elif repl in ("KEEP-SEPARATOR", "INFIX-BREAK"):
                     self.separators.append(pat)
                 elif repl == "KEEP-BRACKETS":
                     self.keep_brackets = True
                 elif repl in ("INVESTIGATE", "RESIDUE") and pat not in ("…",):
                     self.residue_chars += pat.strip("[]")
+        self.context_atoms = {a for a, _f, _t in self.context_rules}
         sep = "|".join(self.separators) or r"\."
         self.split_re = re.compile(f"({sep})")
         self.residue_re = re.compile(f"[{re.escape(self.residue_chars)}]") \
             if self.residue_chars else None
 
 
-def convert_gloss(gloss: str, table: Table, rules: Rules, language: str):
-    """Returns (standard_text, is_residue)."""
+def convert_gloss(gloss: str, table: Table, rules: Rules, language: str,
+                  context_forms: frozenset = frozenset()):
+    """Returns (standard_text, is_residue). context_forms are the cores of
+    the word's morpheme FORMs, for the rules file's context rules."""
     if rules.residue_re and rules.residue_re.search(gloss):
         return gloss, True
+
+    def std_atom(atom: str) -> str:
+        if atom in rules.context_atoms:
+            for rule_atom, pattern, target in rules.context_rules:
+                if rule_atom == atom and context_matches(pattern, context_forms):
+                    return target
+            return atom                       # no diagnostic form: kept
+        return table.standard_for(atom, language)
+
     out = []
     for part in re.split(r"(<[^<>]+>)", gloss) if rules.keep_brackets else [gloss]:
         if part.startswith("<") and part.endswith(">") and rules.keep_brackets:
             inner = part[1:-1]
-            pieces = [table.standard_for(a, language) if i % 2 == 0 and a else a
+            pieces = [std_atom(a) if i % 2 == 0 and a else a
                       for i, a in enumerate(rules.split_re.split(inner))]
             out.append("<" + "".join(pieces) + ">")
         else:
-            pieces = [table.standard_for(a, language) if i % 2 == 0 and a else a
+            pieces = [std_atom(a) if i % 2 == 0 and a else a
                       for i, a in enumerate(rules.split_re.split(part))]
             out.append("".join(pieces))
     return "".join(out), False
@@ -117,45 +173,63 @@ def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
     root = tree.getroot()
     language = language_of(root)
     changed = False
-    for parent in root.iter():
-        if parent.tag not in ("W", "M"):
-            continue
-        existing_standard = {t.get(XMLLANG) for t in parent.findall("TRANSL")
-                             if t.get("kindOf") == "standard"}
-        for transl in list(parent.findall("TRANSL")):
-            kind = transl.get("kindOf")
-            lang = transl.get(XMLLANG)
-            if kind == "standard" or lang not in GLOSS_LANGS \
-                    or not (transl.text or "").strip():
-                continue
-            if kind is None:
-                transl.set("kindOf", "original")   # g5 stamp
-                stats["stamped"] += 1
-                changed = True
-            if lang in existing_standard:
-                stats["preexisting_standard_kept"] += 1
-                continue
-            std, is_res = convert_gloss(transl.text.strip(), table, rules,
-                                        language)
-            if is_res:
-                stats["residue"] += 1
-                residue[transl.text.strip()[:60]] += 1
-            elif std != transl.text.strip():
-                stats["converted"] += 1
-            else:
-                stats["copied"] += 1
-            new = ET.Element("TRANSL")
-            new.set(XMLLANG, lang)
-            new.set("kindOf", "standard")
-            new.text = std
-            new.tail = transl.tail
-            idx = list(parent).index(transl)
-            parent.insert(idx + 1, new)
-            existing_standard.add(lang)
-            changed = True
-            stats["standard_added"] += 1
+    for word in root.iter("W"):
+        morphs = word.findall("M")
+        if rules.context_rules:
+            cores = {form_core(f.text) for m in morphs
+                     for f in m.findall("FORM") if f.text}
+            if not morphs:
+                # unsegmented word: its own shape may satisfy affix patterns
+                cores |= {"~" + form_core(f.text)
+                          for f in word.findall("FORM") if f.text}
+            context = frozenset(cores)
+        else:
+            context = frozenset()
+        for parent in [word] + morphs:
+            changed |= _process_element(parent, table, rules, write, stats,
+                                        residue, language, context)
     if write and changed:
         tree.write(path, encoding="UTF-8", xml_declaration=True)
+    return changed
+
+
+def _process_element(parent, table, rules, write, stats, residue, language,
+                 context) -> bool:
+    changed = False
+    existing_standard = {t.get(XMLLANG) for t in parent.findall("TRANSL")
+                         if t.get("kindOf") == "standard"}
+    for transl in list(parent.findall("TRANSL")):
+        kind = transl.get("kindOf")
+        lang = transl.get(XMLLANG)
+        if kind == "standard" or lang not in GLOSS_LANGS \
+                or not (transl.text or "").strip():
+            continue
+        if kind is None:
+            transl.set("kindOf", "original")   # g5 stamp
+            stats["stamped"] += 1
+            changed = True
+        if lang in existing_standard:
+            stats["preexisting_standard_kept"] += 1
+            continue
+        std, is_res = convert_gloss(transl.text.strip(), table, rules,
+                                    language, context)
+        if is_res:
+            stats["residue"] += 1
+            residue[transl.text.strip()[:60]] += 1
+        elif std != transl.text.strip():
+            stats["converted"] += 1
+        else:
+            stats["copied"] += 1
+        new = ET.Element("TRANSL")
+        new.set(XMLLANG, lang)
+        new.set("kindOf", "standard")
+        new.text = std
+        new.tail = transl.tail
+        idx = list(parent).index(transl)
+        parent.insert(idx + 1, new)
+        existing_standard.add(lang)
+        changed = True
+        stats["standard_added"] += 1
     return changed
 
 

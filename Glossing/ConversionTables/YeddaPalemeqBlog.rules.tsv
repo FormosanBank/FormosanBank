@@ -9,3 +9,4 @@ UV&-an	CONTEXT-CONVERT→LV	r2 ruling: UV-glossed word whose morphemes include -
 UV&si-	CONTEXT-CONVERT→OV	r2 ruling: UV word with si-/s-i → OV
 UV&-en	CONTEXT-CONVERT→PV	r2 ruling: UV word with -en → PV
 UV&⟨in⟩-only	KEEP-UV	r2 ruling: no diagnostic affix (⟨in⟩ is aspect per HPS) → stays UV
+[\s,;]+	KEEP-SEPARATOR	prose glosses (this corpus glosses in sentences): whitespace/commas separate atoms so codes like UV/IF isolate; unknown words pass through unchanged
