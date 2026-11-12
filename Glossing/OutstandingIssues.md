@@ -29,8 +29,21 @@ the bottom with their ruling.
   and determiners are frequent).
 - **Tsou NAF/非主焦 ×437/431 and NAV ×14** — the preverbal auxiliaries
   (i, o, os, oho); undecided, needs its own ruling (voice audit page).
-- **Kavalan 非主焦/NAF ×32 (suffix -a with genitive agent)** — reverted
-  to UNDECIDED after the misapplied override; fold into PV or keep open?
+- **Kavalan 非主焦/NAF ×32 (suffix -a with genitive agent)** — RULED to
+  stay undecided (maintainer, 2026-11-12). What we know: every token is
+  V-a + a 屬格 clitic (kita 1IPL ×24, ka 1SG ×7, one 未來-marked);
+  -a clauses are nearly case-marker-free (tu ×7/ya ×4/na ×3 in 30
+  sentences) vs the -an→PV clauses' full marking (na ×138/tu ×124/ya ×84
+  in 514); translations run hortative ('let's …'). Neither grammar
+  documents a suffix -a: the 語法概論's imperatives are -ka/-ika and its
+  hortatives use =pa + sentence-final ka; Chang 2000 has no such form.
+- **Kavalan-Chang IF ti-/te- ×3** (ti-kiras ×2, te-kiras ×1) — converts
+  →OV on Chang's own label only: no other source has the morpheme (NTU's
+  ti = PFV clitic / personal marker) and the 語法概論 documents no
+  instrumental ti-/te-. Park the 3 tokens instead if preferred.
+- **Saisiyat -an: focus vs nominalizer** — the grammar's 處所焦點 -an is
+  glossed NMZ (名物化 ×93) by NTU; same morpheme, two analyses. Needs a
+  Notes & Caveats line at publication.
 - **ILCAA Kanakanavu CV ×114** (si; absent from B602's own abbreviation
   list) — suggestion on the voice audit page: → OV, matching NTU's si-.
 - **Amis-Pa-Verbs UV ×41** — en ×13 matches NTU PV -en; Ma ×7 ambiguous
