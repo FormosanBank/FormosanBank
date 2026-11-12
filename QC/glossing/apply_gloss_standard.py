@@ -201,8 +201,15 @@ def _process_element(parent, table, rules, write, stats, residue, language,
     for transl in list(parent.findall("TRANSL")):
         kind = transl.get("kindOf")
         lang = transl.get(XMLLANG)
-        if kind == "standard" or lang not in GLOSS_LANGS \
-                or not (transl.text or "").strip():
+        # A gloss may hold child elements (POL-021 <UNCLEAR/>); its text then
+        # lives in transl.text AND the children's tails. Convert each text
+        # segment, keep the children in place.
+        segments = [("text", transl.text or "")] + \
+                   [(child, child.tail or "") for child in transl]
+        has_content = any(s.strip() for _, s in segments)
+        if kind == "standard" or lang not in GLOSS_LANGS or not has_content \
+                or transl.get("ver"):
+            # ver= marks a variant reading: left untouched, no standard derived
             continue
         if kind is None:
             transl.set("kindOf", "original")   # g5 stamp
@@ -211,19 +218,35 @@ def _process_element(parent, table, rules, write, stats, residue, language,
         if lang in existing_standard:
             stats["preexisting_standard_kept"] += 1
             continue
-        std, is_res = convert_gloss(transl.text.strip(), table, rules,
-                                    language, context)
-        if is_res:
+        full = "".join(s for _, s in segments).strip()
+        converted_segments = []
+        any_res = False
+        for where, seg in segments:
+            if seg.strip():
+                std_seg, is_res = convert_gloss(seg.strip(), table, rules,
+                                                language, context)
+                any_res = any_res or is_res
+            else:
+                std_seg = seg
+            converted_segments.append((where, std_seg))
+        if any_res:   # any residue segment: the whole gloss copies verbatim
+            converted_segments = segments
             stats["residue"] += 1
-            residue[transl.text.strip()[:60]] += 1
-        elif std != transl.text.strip():
+            residue[full[:60]] += 1
+        elif "".join(s for _, s in converted_segments) != "".join(
+                s for _, s in segments):
             stats["converted"] += 1
         else:
             stats["copied"] += 1
         new = ET.Element("TRANSL")
         new.set(XMLLANG, lang)
         new.set("kindOf", "standard")
-        new.text = std
+        new.text = converted_segments[0][1]
+        for (child, _), (_w, std_tail) in zip(segments[1:],
+                                              converted_segments[1:]):
+            copy = ET.Element(child.tag, dict(child.attrib))
+            copy.tail = std_tail
+            new.append(copy)
         new.tail = transl.tail
         idx = list(parent).index(transl)
         parent.insert(idx + 1, new)

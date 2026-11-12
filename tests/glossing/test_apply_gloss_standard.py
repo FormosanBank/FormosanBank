@@ -225,3 +225,91 @@ def test_context_rules_split_by_word_morphology(tmp_path):
     assert g["m41"][("standard",)] == "eat.UV"
     # unsegmented word: the word's own shape satisfies an affix pattern
     assert g["w5"][("standard",)] == "OV.give"
+
+
+# ---- POL-021 UNCLEAR children: mixed-content glosses must convert without
+# losing the element or any text segment ----
+
+UNCLEAR_XML = """<TEXT xml:lang="tay" id="t3">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>abc</FORM>
+    <TRANSL xml:lang="eng" kindOf="original"><UNCLEAR />-eat-AF</TRANSL>
+  </W>
+  <W id="w2"><FORM>def</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">LF-<UNCLEAR />=go-AF</TRANSL>
+  </W>
+  <W id="w3"><FORM>ghi</FORM>
+    <TRANSL xml:lang="eng" kindOf="original"><UNCLEAR /></TRANSL>
+  </W>
+</S>
+</TEXT>"""
+
+
+def test_unclear_children_preserved_and_segments_converted(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(UNCLEAR_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(RULES)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    root = ET.parse(d / "a.xml").getroot()
+    std = {}
+    for w in root.iter("W"):
+        for tr in w.findall("TRANSL"):
+            if tr.get("kindOf") == "standard":
+                std[w.get("id")] = ET.tostring(tr, encoding="unicode")
+    # leading UNCLEAR kept, following atoms converted
+    assert "<UNCLEAR />-eat-AV" in std["w1"].replace("<UNCLEAR/>", "<UNCLEAR />")
+    # interior UNCLEAR kept, atoms on BOTH sides converted (LF→LV before it)
+    assert "LV-" in std["w2"] and "=go-AV" in std["w2"] and "UNCLEAR" in std["w2"]
+    # pure-UNCLEAR gloss: no standard tier is added (nothing to convert)
+    assert "w3" not in std
+
+
+def test_variant_ver_transl_left_untouched(tmp_path):
+    """A TRANSL with ver= is a variant reading: no kindOf stamp, no standard
+    tier derived from it, and no duplicate-original violation created."""
+    xml = """<TEXT xml:lang="tay" id="t4">
+<S id="s1"><FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>abc</FORM>
+    <M id="m1"><FORM>s</FORM>
+      <TRANSL xml:lang="eng">AF</TRANSL>
+      <TRANSL xml:lang="eng" ver="alt" notes="source reading">s</TRANSL>
+    </M>
+  </W>
+</S></TEXT>"""
+    d = tmp_path / "XML"; d.mkdir(parents=True)
+    (d / "a.xml").write_text(xml, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(RULES)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    root = ET.parse(d / "a.xml").getroot()
+    m = root.find(".//M")
+    trs = m.findall("TRANSL")
+    vers = [tr for tr in trs if tr.get("ver")]
+    assert len(vers) == 1 and vers[0].get("kindOf") is None   # untouched
+    originals = [tr for tr in trs if tr.get("kindOf") == "original"]
+    standards = [tr for tr in trs if tr.get("kindOf") == "standard"]
+    assert len(originals) == 1 and len(standards) == 1
+    assert standards[0].text == "AV"
