@@ -41,6 +41,23 @@ the bottom with their ruling.
   →OV on Chang's own label only: no other source has the morpheme (NTU's
   ti = PFV clitic / personal marker) and the 語法概論 documents no
   instrumental ti-/te-. Park the 3 tokens instead if preferred.
+- **Seediq: Tsukida's OBL (suffix -an ×7) and NTU's 受格 (×3)** — RULED
+  unmapped (maintainer, 2026-11-12: "Tsukida's OBL should be left
+  unmapped for now. It goes on our list of todos, with an explanation of
+  the issue. Same with NTU's 受格."). The issue: Tsukida case-glosses the
+  -an suffix (rebiq-an) that every other source treats as locative
+  voice/derivation (NTU glosses it LF); NTU's three 受格 tokens are
+  slips. At apply time, per-language unmapping = a language override
+  mapping the label to itself (copied verbatim).
+- **Truku: Nowbucyang 受格 ×2** (lqi-an, ktu-an — 受格 glossed on
+  -an-suffixed nouns) — the same -an categorial puzzle as Tsukida's OBL;
+  proposed to follow the Seediq ruling (unmapped), pending the
+  maintainer's word.
+- **Tsou: zho 處格 ×3 and 受格 ×6 are mostly voice slips** — 處格's eng
+  twins are LF (see.LF ×2, can.LF: 處格 typed for 處焦) and 受格's are
+  say.PF ×4 / look.for.PF ×1 (the known say.PF family) plus one pronoun
+  whose eng tier reads 3PL.GEN. The case-page 處格→LOC (n=3) row
+  therefore rests on slips; proposed (drop), pending the maintainer.
 - **Saisiyat -an: focus vs nominalizer** — the grammar's 處所焦點 -an is
   glossed NMZ (名物化 ×93) by NTU; same morpheme, two analyses. Needs a
   Notes & Caveats line at publication.
