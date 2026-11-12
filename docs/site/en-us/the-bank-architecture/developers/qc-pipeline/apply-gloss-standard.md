@@ -17,8 +17,9 @@ For every `W` and `M` gloss (`TRANSL` whose `xml:lang` is a gloss language):
 - The gloss is segmented by the corpus's **rules file** (`Glossing/ConversionTables/<Corpus>.rules.tsv`): separators (`.`, `-`, `=`), infix brackets, and any corpus-specific conventions (for example prose separators for a corpus that glosses in sentences).
 - Each atom is looked up in the corpus's **conversion table** (`Glossing/ConversionTables/<Corpus>.tsv`): `CONVERT` rows map to their standard code, `KEEP` and `UNDECIDED` rows copy the atom unchanged. `language_overrides` apply per language (`trv` resolves to Seediq or Truku by the `dialect` attribute); an override to the code itself means "unmapped for this language".
 - **Context rules** (`CONTEXT-CONVERT→X` lines in the rules file) convert an atom only on words whose morphemes include a diagnostic affix; unsegmented words may satisfy an affix pattern by their own shape.
-- Glosses containing characters the rules flag (for example parentheses) are copied verbatim and listed in the **residue report**. Glosses with `<UNCLEAR/>` children convert their text segments and keep the children; `TRANSL`s with `ver=` (variant readings) are left entirely untouched.
-- A bare original gloss is stamped `kindOf="original"`; pre-existing standard glosses are never overwritten.
+- Glosses containing characters the rules flag (for example parentheses) are copied verbatim and listed in the **residue report**. Glosses with `<UNCLEAR/>` children convert their text segments and keep the children.
+- `TRANSL`s with `ver=` (variant readings) are standardized like any other gloss, and their standard `TRANSL` carries the same `ver` value — so when a word has two glosses in one language, both appear in the standard tier, discriminated by `ver` exactly as the originals are. Multiple gloss languages on one element each get their own standard.
+- A bare original gloss without `ver=` is stamped `kindOf="original"` (a `ver=` variant stays unstamped, since the schema forbids two same-language originals); pre-existing standard glosses are never overwritten.
 
 ## Usage
 

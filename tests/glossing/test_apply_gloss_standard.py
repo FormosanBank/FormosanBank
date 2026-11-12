@@ -277,15 +277,18 @@ def test_unclear_children_preserved_and_segments_converted(tmp_path):
     assert "w3" not in std
 
 
-def test_variant_ver_transl_left_untouched(tmp_path):
-    """A TRANSL with ver= is a variant reading: no kindOf stamp, no standard
-    tier derived from it, and no duplicate-original violation created."""
+def test_variant_ver_transl_standardized_with_ver(tmp_path):
+    """A TRANSL with ver= is a variant reading: it gets no kindOf stamp (V022
+    forbids two same-lang originals), but it IS standardized — its standard
+    TRANSL carries the same ver value (V085 discriminates same-lang standards
+    by ver). Multiple gloss languages coexist; dedup is per (lang, ver)."""
     xml = """<TEXT xml:lang="tay" id="t4">
 <S id="s1"><FORM kindOf="original">x</FORM>
   <W id="w1"><FORM>abc</FORM>
     <M id="m1"><FORM>s</FORM>
       <TRANSL xml:lang="eng">AF</TRANSL>
-      <TRANSL xml:lang="eng" ver="alt" notes="source reading">s</TRANSL>
+      <TRANSL xml:lang="eng" ver="alt" notes="source reading">LF-AF</TRANSL>
+      <TRANSL xml:lang="zho">主事焦點</TRANSL>
     </M>
   </W>
 </S></TEXT>"""
@@ -307,9 +310,23 @@ def test_variant_ver_transl_left_untouched(tmp_path):
     root = ET.parse(d / "a.xml").getroot()
     m = root.find(".//M")
     trs = m.findall("TRANSL")
-    vers = [tr for tr in trs if tr.get("ver")]
-    assert len(vers) == 1 and vers[0].get("kindOf") is None   # untouched
+    # The variant original keeps its ver, stays unstamped, text unchanged
+    variant_originals = [tr for tr in trs
+                         if tr.get("ver") and tr.get("kindOf") != "standard"]
+    assert len(variant_originals) == 1
+    assert variant_originals[0].get("kindOf") is None
+    assert variant_originals[0].text == "LF-AF"
     originals = [tr for tr in trs if tr.get("kindOf") == "original"]
-    standards = [tr for tr in trs if tr.get("kindOf") == "standard"]
-    assert len(originals) == 1 and len(standards) == 1
-    assert standards[0].text == "AV"
+    assert len(originals) == 2   # eng AF + zho, both stamped
+    # Every gloss, variant included, gets a standard carrying its ver
+    standards = {(tr.get("{http://www.w3.org/XML/1998/namespace}lang"),
+                  tr.get("ver")): tr.text
+                 for tr in trs if tr.get("kindOf") == "standard"}
+    assert standards == {("eng", None): "AV",
+                         ("eng", "alt"): "LV-AV",
+                         ("zho", None): "主事焦點"}
+    # Idempotent: a second run adds nothing (dedup keyed on (lang, ver))
+    p2 = run(d, t, r)
+    assert p2.returncode == 0, p2.stderr
+    root2 = ET.parse(d / "a.xml").getroot()
+    assert len(root2.find(".//M").findall("TRANSL")) == len(trs)

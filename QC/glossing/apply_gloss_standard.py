@@ -196,26 +196,28 @@ def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
 def _process_element(parent, table, rules, write, stats, residue, language,
                  context) -> bool:
     changed = False
-    existing_standard = {t.get(XMLLANG) for t in parent.findall("TRANSL")
+    existing_standard = {(t.get(XMLLANG), t.get("ver"))
+                         for t in parent.findall("TRANSL")
                          if t.get("kindOf") == "standard"}
     for transl in list(parent.findall("TRANSL")):
         kind = transl.get("kindOf")
         lang = transl.get(XMLLANG)
+        ver = transl.get("ver")
         # A gloss may hold child elements (POL-021 <UNCLEAR/>); its text then
         # lives in transl.text AND the children's tails. Convert each text
         # segment, keep the children in place.
         segments = [("text", transl.text or "")] + \
                    [(child, child.tail or "") for child in transl]
         has_content = any(s.strip() for _, s in segments)
-        if kind == "standard" or lang not in GLOSS_LANGS or not has_content \
-                or transl.get("ver"):
-            # ver= marks a variant reading: left untouched, no standard derived
+        if kind == "standard" or lang not in GLOSS_LANGS or not has_content:
             continue
-        if kind is None:
+        if kind is None and not ver:
+            # ver= variants stay unstamped: V022 forbids two same-lang
+            # kindOf="original" TRANSLs and is not ver-aware
             transl.set("kindOf", "original")   # g5 stamp
             stats["stamped"] += 1
             changed = True
-        if lang in existing_standard:
+        if (lang, ver) in existing_standard:
             stats["preexisting_standard_kept"] += 1
             continue
         full = "".join(s for _, s in segments).strip()
@@ -241,6 +243,9 @@ def _process_element(parent, table, rules, write, stats, residue, language,
         new = ET.Element("TRANSL")
         new.set(XMLLANG, lang)
         new.set("kindOf", "standard")
+        if ver:
+            # V085: same-lang standards are discriminated by ver
+            new.set("ver", ver)
         new.text = converted_segments[0][1]
         for (child, _), (_w, std_tail) in zip(segments[1:],
                                               converted_segments[1:]):
@@ -250,7 +255,7 @@ def _process_element(parent, table, rules, write, stats, residue, language,
         new.tail = transl.tail
         idx = list(parent).index(transl)
         parent.insert(idx + 1, new)
-        existing_standard.add(lang)
+        existing_standard.add((lang, ver))
         changed = True
         stats["standard_added"] += 1
     return changed
