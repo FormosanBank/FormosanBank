@@ -74,8 +74,16 @@ the bottom with their ruling.
 - **Rukai POSS-as-possibility-modal** (POSS.MOD ↔ 可能.情態 ×72) —
   composite flagged in the NTU row review, undecided.
 - **Sakizaya `misu`** POSS ×8 vs GEN ×5 border (case audit page).
-- **YeddaPalemeqBlog UV ⟨in⟩-only residue** stays UV per r2; the
-  conversion tool does not implement context rules yet.
+- **YeddaPalemeqBlog UV: UNMAPPED, deferred here** (maintainer,
+  2026-11-12: "We should not map Yedda's UV, and instead defer to our
+  todo list. Why? Because it sometimes maps to PV in HPS and sometimes
+  to perfective! And most of the time it's actually telling us about a
+  different word, not the one it is the gloss for. So this requires more
+  effort to handle."). This supersedes the earlier r2 affix-split: the
+  UV row is UNDECIDED again and the UV context rules are removed from
+  the rules file. Evidence on file: HPS glosses Yedda's -en words pf but
+  its ⟨in⟩ words perfective (aspect), and most UV mentions sit in prose
+  describing a neighboring word.
 - **RauDong NF ×658 "nominal affix"** (and VF) — surfaced by the
   gloss-dictionary gate 2026-11-11; not Leipzig, needs a decision.
 - **NTU 1S/2S/3S-style person codes and the small NTU composites**
