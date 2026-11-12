@@ -282,3 +282,5 @@ Rukai's standard orthography table, `Orthographies/Ortho113/Rukai.tsv`.
 
 The [processing notes](CodeAndDocs/README.md) record the reproduction pipeline
 and the source-derived findings retained for review.
+
+**Standard gloss tier** (final step): `QC/glossing/apply_gloss_standard.py` adds `TRANSL kindOf="standard"` glosses beside every original gloss (POL-036 — the original tier is never changed), converting each gloss code according to this corpus's standardization list, [Glossing/ConversionTables/Huteson-Rukai-Survey.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/Huteson-Rukai-Survey.tsv) (segmentation conventions in [Huteson-Rukai-Survey.rules.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/Huteson-Rukai-Survey.rules.tsv)). Codes without a ruled mapping are copied verbatim, so the standard tier is always complete; the project-wide approach, vocabulary and per-language gloss dictionaries are documented in [Glossing/README.md](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/README.md).

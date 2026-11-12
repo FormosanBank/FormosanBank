@@ -344,3 +344,5 @@ them:
 8. **Provenance:** if the FormosanBank checkout is a git repository and its
    current commit differs from the one in `CodeAndDocs/provenance.json`, the
    script rewrites that file with the new commit and today's date.
+
+**Standard gloss tier** (final step): `QC/glossing/apply_gloss_standard.py` adds `TRANSL kindOf="standard"` glosses beside every original gloss (POL-036 — the original tier is never changed), converting each gloss code according to this corpus's standardization list, [Glossing/ConversionTables/YeddaPalemeqBlog.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/YeddaPalemeqBlog.tsv) (segmentation conventions in [YeddaPalemeqBlog.rules.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/YeddaPalemeqBlog.rules.tsv)). Codes without a ruled mapping are copied verbatim, so the standard tier is always complete; the project-wide approach, vocabulary and per-language gloss dictionaries are documented in [Glossing/README.md](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/README.md).

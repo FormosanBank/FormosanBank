@@ -140,6 +140,7 @@ only, a rebuild always runs the current tools).
 The build writes into a temporary directory and replaces `XML/` and `CodeAndDocs/PT/`
 wholesale, so a rebuild on a clean checkout leaves `git status` empty.
 
+**Standard gloss tier** (final step): `QC/glossing/apply_gloss_standard.py` adds `TRANSL kindOf="standard"` glosses beside every original gloss (POL-036 — the original tier is never changed), converting each gloss code according to this corpus's standardization list, [Glossing/ConversionTables/Wild-Lehmann-Kanakanavu.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/Wild-Lehmann-Kanakanavu.tsv) (segmentation conventions in [Wild-Lehmann-Kanakanavu.rules.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/Wild-Lehmann-Kanakanavu.rules.tsv)). Codes without a ruled mapping are copied verbatim, so the standard tier is always complete; the project-wide approach, vocabulary and per-language gloss dictionaries are documented in [Glossing/README.md](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/README.md).
 ### Audio on Hugging Face
 
 The 11 recordings the XML names are hosted as one Hugging Face dataset,
