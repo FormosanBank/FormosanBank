@@ -25128,3 +25128,23 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   overrides (Saisiyat→NEG, Kanakanavu→NEG.EXIST) / other.
 - U1 (his Q: does the grammar say anything?) — the Paiwan 語法概論 does not treat se-/sa-/li-/⟨ar⟩ (searched
   forms + 非自主/非意志); definitions rest on Early & Whitehorn Ch.1 + Ferrell; Yedda has no analogues.
+
+### 2026-11-15 (cont. 10) — RULED: U1 register, M10 leave; M9 answered; card S rebuilt row-by-row
+- U1 — choice `register` + "But add to our todo list in glossing to revisit this, particularly when we get
+  more glossed Paiwan data." → QUAL + INVOL registered (his words in basis); HPS qal ×161 → QUAL, invol
+  ×181 → INVOL; rebuild verified 388 pairs zero outside targets; Paiwan dict updated; revisit entry in
+  Glossing/OutstandingIssues.md.
+- M10 — choice `leave` + "And put in our todo list in the glossing folder!" → 沒有 stays UNDECIDED; full
+  write-up (seven negators, citations, meiyou-form flag) added to Glossing/OutstandingIssues.md.
+- M9 — his Q "Do any other sources or grammars for other languages distinguish counterfactual from
+  irrealis?" — answered on the card: grammars yes (Rukai ni- 反事實 PDF 105 + §14.2.3; Saisiyat naw
+  違反事實; Tsou nte inside 未實現; Truku/Atayal/Thao mentions), corpus codes no (only IRR + NTU COND ×850).
+  Card open: fold→IRR / register HYP / leave.
+- Card S — his spec: "Please make the table into something I can approve, reject, or request modifications
+  to line-by-line. Add additions for things listed as separators by the collaborators but not on the table
+  yet. Also, I want to as much as possible be able to handle these using the glosses themselves. So for
+  instance, are ma-/ka- in Rukai glossed as STAT, as ma-(STAT)/ka-(STAT), or just ma-/ka-?" → rebuilt as
+  46 rows (39 proposed separators + 7 proposed non-separators), each with the verified gloss handle (the
+  Rukai answer: gloss is just STAT; ma-/ka- live only in the FORM tier) and its own buttons. Handle checks
+  run in the corpus: Rukai ngi-=REFL ×152 (minority self/manner/NGI flagged), Tsou poa=CAU ×2, Bunun
+  min-='become' ×81, Kanakanavu ara-='become' ×82 (homophones take/go — select by gloss).

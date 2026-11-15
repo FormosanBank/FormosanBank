@@ -89,3 +89,17 @@ the bottom with their ruling.
 - **NTU 1S/2S/3S-style person codes and the small NTU composites**
   (完成主焦, 參焦 ×68, 主焦重疊, K主焦A, T主焦A, 工焦完成貌) — UNDECIDED
   rows in their tables.
+
+- **NTU 沒有 ×52 — left UNDECIDED (maintainer card M10, 2026-11-15: `leave` + "And put
+  in our todo list in the glossing folder!").** The zho gloss 沒有 covers seven
+  different language-specific negators: plain negators (Saisiyat 'oka'/'okay §10.1.1,
+  Rukai kai — not covered by the Mantauran-dialect 語法概論, Tsou o'te §10.1.2.1,
+  Kavalan mai, Atayal meyo, Bunun nii) and negative existentials (Kanakanavu 'akia
+  否定存在動詞 PDF 69, Tsou uk'a PDF 89, Bunun uka). A single conversion would merge
+  the two kinds; within Tsou even per-language overrides can't split them. One Rukai
+  token's form is literally `meiyou` — possible Mandarin echo, worth inspection.
+- **QUAL / INVOL (HPS qal ×161, invol ×181) — registered and converted 2026-11-15
+  (card U1), to be REVISITED** (maintainer: "add to our todo list in glossing to
+  revisit this, particularly when we get more glossed Paiwan data."). The Paiwan
+  語法概論 does not treat the underlying prefixes (li-/sa-/⟨ar⟩; se-); the codes rest
+  on Early & Whitehorn's Ch.1 definitions alone, and Yedda has no analogues yet.
