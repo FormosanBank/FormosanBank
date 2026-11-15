@@ -37,6 +37,7 @@ from upstream_additions import UPSTREAM_COMMIT, load_additions
 DEFAULT_XML_OUT_DIR = ROOT / "XML"
 DEFAULT_OVERRIDES_PATH = ROOT / "CodeAndDocs" / "safolu_source_overrides.json"
 PRINTED_ADDITIONS_PATH = ROOT / "CodeAndDocs" / "printed_additions.json"
+DEFINITION_EXAMPLES_PATH = ROOT / "CodeAndDocs" / "definition_examples.json"
 
 # The canonical XML is grouped language-first (XML/Amis/<Source>/) to match
 # FormosanBank's Corpora/<Name>/XML/<Language>/ convention.
@@ -392,7 +393,7 @@ def safolu_corpus():
     from_additions = [r for r in records if r.notes["source_ordinal"] >= first_addition]
     for record in from_additions:
         record.notes["upstream_addition_commit"] = UPSTREAM_COMMIT
-    return corpus, from_snapshot + printed_additions() + from_additions, rejected
+    return corpus, from_snapshot + printed_additions() + from_additions + definition_examples(), rejected
 
 
 def printed_additions(path: Path = PRINTED_ADDITIONS_PATH) -> list[ExampleRecord]:
@@ -410,6 +411,27 @@ def printed_additions(path: Path = PRINTED_ADDITIONS_PATH) -> list[ExampleRecord
             translations=[Translation("zho", item["translation"])],
             raw_example="",
             notes={"source_ordinal": None, "added_from_print": item["printed"], "upstream_commit": payload["upstream_commit"]},
+        ))
+    return added
+
+
+def definition_examples(path: Path = DEFINITION_EXAMPLES_PATH) -> list[ExampleRecord]:
+    """Example sentences the source has in a headword's definition field (see definition_examples.json), appended
+    after every other record with new ids. The headword file (headwords/generate_headwords.py) leaves them out of
+    the headword translations."""
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    added = []
+    for item in payload["additions"]:
+        added.append(ExampleRecord(
+            sentence_id=item["sentence_id"],
+            source_file=f"docs/s/{item['entry']}.json@{payload['upstream_commit']}",
+            source_line=None,
+            entry_title=item["entry"],
+            definition="",
+            form=normalize_bang_spacing(item["form"]),
+            translations=[Translation("zho", item["translation"])],
+            raw_example="",
+            notes={"source_ordinal": None, "from": item["from"], "upstream_commit": payload["upstream_commit"]},
         ))
     return added
 
