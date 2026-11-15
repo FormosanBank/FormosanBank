@@ -1,14 +1,16 @@
 # Safolu Amis Dictionary
 
-The Safolu Amis Dictionary is a collection of 50,322 Amis example sentences with Mandarin (Chinese) translations, drawn from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵). The data comes from the generated JSON of the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project (`docs/s`; see [amis.moedict.tw](https://amis.moedict.tw/)), checked against the dictionary's printed text.
+The Safolu Amis Dictionary is a collection of 50,327 Amis example sentences with Mandarin (Chinese) translations and 42,571 headword entries, drawn from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵). The data comes from the generated JSON of the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project (`docs/s`; see [amis.moedict.tw](https://amis.moedict.tw/)), checked against the dictionary's printed text.
 Safolu Kacaw Lalanges (Tsai Chung-Han) dictionary examples, distributed by
 the g0v Amis Moedict project. Virginia Fey and Poinsot are separate corpora.
 
 ## Languages and dialects
 
-Amis (`ami`), Coastal provenance. The corpus is one file,
+Amis (`ami`), Coastal provenance. The corpus has two files: the example sentences,
 [XML/Amis/Safolu/amis_safolu_examples.xml](XML/Amis/Safolu/amis_safolu_examples.xml),
-whose `TEXT` carries `xml:lang="ami"`, `glottocode="amis1246"` and
+and the headword entries,
+[XML/Amis/Safolu/amis_safolu_headwords.xml](XML/Amis/Safolu/amis_safolu_headwords.xml).
+Both `TEXT`s carry `xml:lang="ami"`, `glottocode="amis1246"` and
 `dialect="Coastal"`.
 
 `Coastal` is a source-provenance label: it records the author's documented
@@ -21,6 +23,13 @@ classification of each of the 49,000-plus examples. The evidence is in
 Each sentence carries the source text (`original` tier), a copy in the FormosanBank standard orthography (`standard` tier, Ortho113), and an IPA transcription of each. The corpus stops at the sentence level: it has no audio and no word or morpheme segmentation, because the dictionary's examples carry none.
 No source W/M annotation or audio.
 
+Each headword entry is one `S` per headword: the headword (original and standard `FORM`, `PHON`) and one Chinese
+`TRANSL` per sense, senses after the first as `ver="alt"` (POL-025). A part-of-speech or borrowing label printed
+with a sense is on that `TRANSL`'s `notes` (e.g. `notes="語氣助詞"`, `notes="日語借詞"`); the headword's stem and
+reduplication tag, as the dictionary prints them after the headword, are on the `FORM`'s `notes`
+(`Tag: [疊 2] | Stem: 'aca`). Words spelled alike get one `S` each where the dictionary prints them as separate
+entries or with different capitalisation (`faridaw` 小米 / `Faridaw` 平埔人).
+
 [The source manifest](CodeAndDocs/source_manifest.json) identifies the pinned
 `g0v/amis-moedict` `docs/s` input: 42,273 lexical files, 57,361 definitions and
 49,419 example fields. The committed compressed snapshot retains each complete
@@ -32,13 +41,19 @@ files every example in `docs/s` under 蔡中涵大辭典 (Tsai Chung-Han's dicti
 including the examples its dictionary editors have added since the 2022 import,
 and this corpus follows that labelling. Headwords and
 definitions provide context; there is no word segmentation or glossing, so the
-corpus has no W or M tier.
+corpus has no W or M tier. The headword entries come from the same `docs/s`, with the text of the editors' version
+(`4cb82539d`): [CodeAndDocs/headwords/headword_manifest.json](CodeAndDocs/headwords/headword_manifest.json)
+identifies the committed snapshot (42,345 headword files, 57,267 senses, in the examples' source order).
 
 The build emits 50,444 records: 49,522 from the 49,419 snapshot fields (20 fields
 are excluded and recorded; some fields yield two sentences), 4 examples added
-from the printed book, and 918 from the editors' 914 added examples (1 is
-excluded and recorded; some yield two sentences). Shared dictionary dedup then
-removes 122 exact duplicates, leaving **50,322 sentences**. Published ids stay fixed; a second
+from the printed book, 918 from the editors' 914 added examples (1 is
+excluded and recorded; some yield two sentences), and 158 example sentences that the source has in a headword's
+definition field ([CodeAndDocs/definition_examples.json](CodeAndDocs/definition_examples.json)). 153 pairs of
+sentences with the same standard text but different translations are then combined
+([CodeAndDocs/same_sentence_merges.tsv](CodeAndDocs/same_sentence_merges.tsv)), and shared dictionary dedup
+removes 122 exact duplicates, leaving **50,327 sentences**. Published ids stay fixed, except the 153 retired by
+those combinations (the `drop_id` column); a second
 reading of a source example keeps the base id and adds `-opt`, `-opt3`, etc.
 
 #### Audio
@@ -94,6 +109,9 @@ the signature or grant date.
   which ones, so the XML does not either.
 - The source history includes both PDF-to-TXT and DOCX conversion. A clean JSON
   file does not establish that it is free of earlier extraction errors.
+- 57 items appeared to Claude to have had single definitions split into two. These have been repaired, but not all
+  have been checked by a human. See a list at
+  [CodeAndDocs/headwords/repaired_breaks_unchecked.tsv](CodeAndDocs/headwords/repaired_breaks_unchecked.tsv).
 
 ## Reproduction and processing
 
@@ -105,7 +123,10 @@ The build reads a committed snapshot of the source (49,419 example fields at `g0
 * **The dictionary editors' added examples.** At the same pin the editors have added 914 examples that the printed book does not have; they are published as 916 sentences, `S49424`–`S50337` (one empty field is excluded and recorded; 2 are exact duplicates).
 * **Spacing:** no space before `?` or `!`, and a space after them before the next word.
 * **Standard tier** via the Church-to-Ortho113 conversion table (Coastal), and **pronunciation** from the Church orthography table.
-* **Duplicates** are removed only when both the standard text and the translations are identical (122 sentences).
+* **Example sentences in the definition field.** 158 example sentences that the source has in a headword's definition field are added as `S50338`–`S50495`; where the source document broke one across paragraphs it is rebuilt from the pieces. Three more are already published with a different translation; theirs is added to the published sentence as `ver="alt"` (POL-025: S02224, S19851, S20552).
+* **Headword entries** from a committed snapshot of the headword fields (editors' version `4cb82539d`), with the decisions listed under "Headword entries" below.
+* **The same sentence with different translations** (153 pairs, [same_sentence_merges.tsv](CodeAndDocs/same_sentence_merges.tsv)): two real translations become one sentence with the second as `ver="alt"` (131; where the two print the Amis differently, the second spelling is kept as an alternative `FORM`); a typo is deleted (2); a translation that is a strict substring of the other is deleted (17); a sentence with no translation is deleted (3). Maintainer: "two real translations -> use the ver="alt" option", "A typo variant -> delete the typo", "delete the fragment", "delete the one with the empty translation".
+* **Duplicates** are removed only when both the standard text and the translations are identical (122 example sentences, 28 headword entries).
 
 The [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Safolu-Amis-Dictionary/README.md) gives the details, the full list of decisions, and how to reproduce the corpus.
 (This page is that README; the details follow.)
@@ -187,40 +208,50 @@ In order (`CodeAndDocs/generate_xml.sh`), all inside a temporary staging folder
    - The 4 printed additions are appended as `S49420`–`S49423`, then the
      editors' added examples from `upstream_additions.json`, whose ordinals
      continue from 49424 (so their ids are `S49424`–`S50337`); they go through
-     the same parsing, overrides and exclusions as the snapshot's fields.
+     the same parsing, overrides and exclusions as the snapshot's fields. Last
+     come the 158 example sentences from definition fields
+     ([`definition_examples.json`](CodeAndDocs/definition_examples.json)),
+     `S50338`–`S50495`; the 3 already published with a different translation add it to that sentence as `ver="alt"`.
+     Finally the 153 pairs in
+     [`same_sentence_merges.tsv`](CodeAndDocs/same_sentence_merges.tsv) are combined as that file's `action`
+     column says; the build stops if a pair's translation no longer matches the file.
    - It writes `XML/Amis/Safolu/amis_safolu_examples.xml` (original FORM and
      TRANSL only) with the `TEXT` attributes above. The excluded fields are
      written out only when `--report-dir <folder outside the repository>` is
      passed (`excluded-fields.json`); `generate_xml.sh` does not pass it.
-2. `QC/cleaning/clean_xml.py` (shared cleaning: quote style, stray spaces).
+2. `CodeAndDocs/headwords/generate_headwords.py` writes
+   `XML/Amis/Safolu/amis_safolu_headwords.xml` (original FORM and TRANSL only) from the committed snapshot and the
+   lists described under "Headword entries" below; `generate_xml.sh` passes the switches the maintainer's
+   decisions chose.
+3. `QC/cleaning/clean_xml.py` (shared cleaning: quote style, stray spaces).
    Run as `--corpora_path <staging>/XML`. It also strips zero-width
    characters, decodes leftover HTML entities, normalizes caret variants to
    `^`, converts full-width punctuation to ASCII in FORM (Chinese translations
    keep their punctuation), collapses whitespace and trims repeated `!`, `?`
    and `-`.
-3. `QC/utilities/standardize.py` with `Orthographies/ConversionTables/Amis_Church_113.tsv`,
+4. `QC/utilities/standardize.py` with `Orthographies/ConversionTables/Amis_Church_113.tsv`,
    column `Coastal`, makes the standard tier (it also turns `u` into `o` and
    `g` into `ng`).
    Alternative FORMs get a standard copy too (25 in the published XML).
-4. `QC/utilities/add_phonology.py --orthography Church` writes PHON. Maintainer:
+5. `QC/utilities/add_phonology.py --orthography Church` writes PHON. Maintainer:
    original PHON from "Church/Amis.tsv as is — And then use the Church_113
    converter to make the standard tier."
    Original PHON comes from `Orthographies/Church/Amis.tsv`; standard PHON
    comes from the Ortho113 Amis table, column resolved from the dialect.
-5. `QC/cleaning/remove_duplicate_sentences.py` removes a sentence only when its
-   standard FORM **and** its translations equal another's; differing
-   translations keep both sentences, as separate sentences (they are not
-   merged into one as alternative translations). Maintainer: "Don't dedup based on
+6. `QC/cleaning/remove_duplicate_sentences.py` removes a sentence only when its
+   standard FORM **and** its translations equal another's (sentences with the same standard FORM and different
+   translations were already combined by `generate_xml.py`, above). Maintainer: "Don't dedup based on
    the original tier. Dedup if standard tiers are identical."
    Run as `by_path --path <staging>/XML --apply` (defaults `--scope file`,
    `--tier standard`): it compares the base standard FORM (never a `ver="alt"`
    one) plus all translations, keeps the first sentence by id and deletes the
-   rest (122 in this build).
-6. An inline Python step writes `provenance.json` with the FormosanBank
+   rest (122 example sentences and 28 headword entries in this build; the headword entries removed have the same
+   standard headword and the same senses as another, e.g. `pusi` / `posi` 貓).
+7. An inline Python step writes `provenance.json` with the FormosanBank
    checkout's `git rev-parse HEAD` (without Git metadata it keeps the previous
    file and prints a warning).
-7. The staged XML is copied to `XML/Amis/Safolu/amis_safolu_examples.xml` and
-   the provenance to `CodeAndDocs/provenance.json`.
+8. The staged XML is copied to `XML/Amis/Safolu/amis_safolu_examples.xml` and
+   `XML/Amis/Safolu/amis_safolu_headwords.xml`, and the provenance to `CodeAndDocs/provenance.json`.
 
 #### Per-sentence decisions
 
@@ -241,3 +272,47 @@ entry gives its reason.
   gives the rule that tells an addition from an edit.
 - [`legacy_expansion_ids.json`](CodeAndDocs/legacy_expansion_ids.json): ids
   that earlier builds gave to extra sentences, kept fixed.
+- [`definition_examples.json`](CodeAndDocs/definition_examples.json): the 161
+  example sentences from definition fields, each with the text it came from;
+  a sentence already published with the same translation is not added again,
+  and one published with a different translation adds it to that sentence as
+  `ver="alt"` (`alt_translation_of`; 3).
+
+#### Headword entries
+
+`generate_headwords.py` reads
+[`headword_source.jsonl.gz`](CodeAndDocs/headwords/headword_source.jsonl.gz) (refreshed only by
+[`headword_snapshot.py`](CodeAndDocs/headwords/headword_snapshot.py)) and these lists, all in
+`CodeAndDocs/headwords/`:
+
+- [`pos_labels.tsv`](CodeAndDocs/headwords/pos_labels.tsv): every bracketed label that opens a sense, and whether it
+  counts as a part of speech. Those that do go to the sense's `TRANSL/@notes`, as in ILRDF_Dicts; a label standing
+  alone applies to the senses after it in the same upstream entry. The others stay in the text.
+- [`borrow_labels.tsv`](CodeAndDocs/headwords/borrow_labels.tsv): every borrowing label as printed (〈日語借詞〉,
+  (閩南語借詞), …) and its note text. A label inside a sense goes to that `TRANSL/@notes`; a sense that is only a label
+  goes to the `FORM`'s notes.
+- [`repaired_breaks.tsv`](CodeAndDocs/headwords/repaired_breaks.tsv): 152 translations that the converter broke in
+  two (at a paragraph break in the source document, or after a 。 inside brackets), each pair checked against the
+  converter's own input and against the 2015 conversion of the printed manuscript. They are rejoined; where the
+  2015 text has characters the converter's input lost at the break (5), those are restored.
+  [`repaired_breaks_unchecked.tsv`](CodeAndDocs/headwords/repaired_breaks_unchecked.tsv) lists the 57 that the
+  2015 text cannot check.
+- [`example_pieces_removed.tsv`](CodeAndDocs/headwords/example_pieces_removed.tsv): headword translations that are
+  only a piece of an example sentence (now in the examples file); they are not published as translations.
+- [`homophone_split.tsv`](CodeAndDocs/headwords/homophone_split.tsv): headwords whose upstream entries share no
+  meaning; each entry gets its own `S` (entries joined by a repaired break stay together).
+- [`missed_headwords.tsv`](CodeAndDocs/headwords/missed_headwords.tsv): 29 headword lines the converter did not
+  recognise, so their senses were filed under the headword before; 18 are split out (or joined to their own
+  headword where upstream has one), and
+  [`lost_headwords.tsv`](CodeAndDocs/headwords/lost_headwords.tsv) restores 7 that upstream lost, from the
+  converter's input.
+- [`restored_senses.tsv`](CodeAndDocs/headwords/restored_senses.tsv) and
+  [`corrected_senses.tsv`](CodeAndDocs/headwords/corrected_senses.tsv): senses the converter's input lost or
+  broke, from the 2015 text (each row cites the line).
+
+Also left out of the headword translations: a sense that is only a cross-reference (同 X) or has no Chinese; a
+heading such as 主要表示：; senses marked as an affix (前綴, 後綴, including when written without brackets) and
+headwords with no sense left; affix headwords written with `-` or `…`; the sound descriptions of the letter
+entries (`'`, `c`, … `y`; `a`, `i` and `o` keep their word senses). A reduplication tag left behind as a sense
+(〔疊 2〕) becomes the `FORM`'s `Tag:` note. How the lists were derived from the converter's database and the 2015
+text is in [`headwords/derivation/`](CodeAndDocs/headwords/derivation/).
