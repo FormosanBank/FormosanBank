@@ -24992,3 +24992,9 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
 ### ⏳ OPEN (derivational page, round 2)
 - Cards A (NTU zho twins), B (Kanakanavu REC=重現), G (reciprocal rest); all 14 language sections unanswered.
 - Follow-up: HPS infix-bracket atoms never convert (`eat<af>`, now also 39 `cause<af>` + 9 `stat<perf>`).
+  CLARIFIED 2026-11-15 (maintainer asked whether `cause<af>` should be two Ms): it already is — HPS segments
+  infixes into their own M (p<en>a-ula = M -en-/AV + M p-a/CAUS + M ula/lack) and every M-level gloss converted
+  (M-level leftovers 0, verified). The 1,349 bracket-bearing glosses are all W-level whole-word summary lines
+  (each with segmented M children beneath); the missing KEEP-BRACKETS row only leaves that W line internally
+  inconsistent with its own M line (1,067 glosses). Same for Wild `INCH-ring-ring(AV)` (mari-kirling-kirling):
+  M mari → COS converted; only the W summary line keeps INCH, held verbatim by the parens-residue rule.

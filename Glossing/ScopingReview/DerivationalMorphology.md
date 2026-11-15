@@ -63,16 +63,21 @@ diff (every changed line involves the target atoms; 0 HARD validator
 findings; `tests/glossing` 30 passed).
 
 - C (`fold`): INCH → COS in Li-Conjunction-Thao (2 tokens) and
-  Wild-Lehmann-Kanakanavu (3 of 4; the 4th is inside the residue gloss
-  `INCH-ring-ring(AV)`, copied verbatim per the parentheses rule). INCH
-  stays unregistered.
+  Wild-Lehmann-Kanakanavu. Every M-level INCH converted; the one leftover
+  atom is in the W-level whole-word gloss `INCH-ring-ring(AV)` (word
+  mari-kirling-kirling), copied verbatim per the parentheses-residue rule
+  while its M child mari is glossed COS. INCH stays unregistered.
 - D (`approve`): Song-Kanakanavu 使動 → CAUS, 86/86 tokens.
-- E (`approve`): HPS new row `cause` → CAUS; 1,259/1,298 atoms. The other
-  39 sit in infix-bracket atoms (`cause<af>`), which the HPS converter has
-  never split (pre-existing: `eat<af>` etc., 2,723 standard-tier lines) —
-  follow-up, not silently fixed.
-- F (`approve`): HPS `stat` → STAT, 1,931/1,940 atoms (9 in the same
-  infix-bracket situation). ⚠ The maintainer's note on this card was cut
+- E (`approve`): HPS new row `cause` → CAUS. Every M-level `cause`
+  converted (M-level leftovers: 0). 39 atoms remain only in W-level
+  whole-word glosses like `cause<af>-lack` (word p<en>a-ula), whose M
+  children are fully segmented and converted (M -en- → AV, M p-a → CAUS,
+  M ula → lack): HPS writes the W gloss in Leipzig infix-bracket notation
+  and its rules file lacks the KEEP-BRACKETS row every other corpus has,
+  so `cause<af>` is one unsplittable atom there. W-tier-consistency
+  follow-up only; no morpheme data is unconverted.
+- F (`approve`): HPS `stat` → STAT — same situation, 9 W-level bracket
+  atoms, M-level leftovers 0. ⚠ The maintainer's note on this card was cut
   off mid-sentence ("Do they say ") — asked in chat.
 - H (`approve`): NTU STAV → STAT, 4/4 (Rukai); zho twins 狀態 wait on card A.
 
