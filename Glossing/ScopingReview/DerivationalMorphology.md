@@ -47,12 +47,25 @@ Grammar claims are the 語法概論 volume's; corpus counts are audit-rule tier-
 | Tsou | free word poa (primary) + pa'-/p'- | **no stative affix** (auxiliary/negator diagnosis) | =cu aspect clitic only | none (iachi, glosses only) | yupa- (glosses only) — corpus matches |
 | Yami | pa-; -en on statives; maka-/paka-/pipa-/pi-/pika-/mapa-… | ma- three-ways ambiguous (plain/abilitative) + ka-…-an; RauDong SV → STAT | micya-/mipa- 「愈來愈」; -om- inception | one mi- side-remark only | masi- (table-only); RauDong REC = mi- forms |
 
-## Proposals: still open (artifact cards, round 2)
+## Proposals: still open (artifact cards, round 3)
 
 - A: NTU zho derivational codes → Latin twins (使役/使動/役使/使→CAUS, 狀態/靜態→STAT,
-  改變狀態/狀態改變→COS, 反身→REFL, 交互/互相→RECP); 重現 excluded.
+  改變狀態/狀態改變→COS, 反身→REFL, 交互/互相→RECP); 重現 excluded; Bunun 狀態 carved out to A2.
+- A2: Bunun 狀態/state ×42, forms al ×40 / tal ×1 / a-l ×1. The maintainer asked (card A note,
+  2026-11-15) what the grammar says about `al`. Answer: 布農語語法概論 §6 (PDF 146) —
+  「姿勢動詞和某些動詞可以附加前綴al-來凸顯持續的姿態或動作，相當於中文的「著」」, glossed
+  持續貌2 "durative 2" (fn.26: 「用「持續」來標註持續貌標記-al」; 持續貌1 = clitic =ang); the
+  grammar's own example 6-30b m-al-'anuhu 主事焦點-持續貌2-坐 is the very word NTU glosses
+  AF-state-sit. So NTU's 狀態/state here names the grammar's durative, not a stative. Options
+  on the card: Bunun-only override → DUR (Leipzig) / STAT with card A / leave / other.
 - B: NTU Kanakanavu REC ×34 (重現, ⟨n⟩) — mis-covered by the bank-wide REC→RECP ruling.
-- G: remaining reciprocal codes → RECP (RauDong REC ×18 + 互相 ×16; Seediq-Chang 互相 ×2).
+  2026-11-15: maintainer clicked `modify` with an empty note — asked what change he intends.
+- P1–P3 (Wild-Lehmann parenthesized glosses, maintainer-requested cards 2026-11-15): 81 tokens,
+  39 distinct (W 63 / M 18), all verbatim+flagged under the parens-INVESTIGATE rule. P1 voice/mood
+  tags ×55 (go (AV), hear(UV), try (HORT), …); P2 numeral(person) ×22; P3 sikaisiisi (ritual) ×4.
+  Context on the cards: Leipzig Rule 7 sanctions round parens for inherent categories (tree(G4));
+  Rule 6 square brackets; any rewrite option needs a small shared-converter extension (parens
+  handling), which the card choice would be the approval request for.
 
 ## Ruled on the decision page 2026-11-15, applied the same day
 
@@ -82,6 +95,17 @@ findings; `tests/glossing` 30 passed).
 - H (`approve`): NTU STAV → STAT, 4/4 (Rukai); zho twins 狀態 wait on card A.
 
 Dictionary entries added for coverage: Paiwan CAUS + STAT, Thao COS.
+
+Round-3 additions (2026-11-15, applied the same way, diff-verified):
+
+- G (`approve`): RauDong REC ×18 + 互相 ×16 → RECP; Seediq-Chang 互相 ×2 →
+  RECP. 34 + 2 changed pairs, zero unrelated lines. Yami dictionary: +RECP.
+- HPS KEEP-BRACKETS (maintainer, chat 2026-11-15: "OK, let's add
+  KEEP-BRACKETS for HPS."): row added to the HPS rules file; standard tier
+  rebuilt; 1,073 W-line glosses re-aligned with their M lines (eat<af> →
+  eat<AV>, cause<af>-lack → CAUS<AV>-lack); every changed line contains a
+  bracket. Codes inside brackets still UNDECIDED (perf ×367 proposed PFV,
+  red, qal) stay lowercase until the HPS batch is ruled.
 
 ## Notes for the verb-individuation list
 

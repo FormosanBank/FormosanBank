@@ -24998,3 +24998,17 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   (each with segmented M children beneath); the missing KEEP-BRACKETS row only leaves that W line internally
   inconsistent with its own M line (1,067 glosses). Same for Wild `INCH-ring-ring(AV)` (mari-kirling-kirling):
   M mari → COS converted; only the W summary line keeps INCH, held verbatim by the parens-residue rule.
+
+### 2026-11-15 (cont.) — RULED: card G, HPS KEEP-BRACKETS; Bunun al answered; Wild parens cards posted
+- Card G — choice `approve` ("Convert all three → RECP") → RauDong REC ×18 + 互相 ×16, Seediq-Chang 互相 ×2
+  → RECP (34+2 pairs, zero unrelated lines; Yami dict +RECP).
+- HPS KEEP-BRACKETS — his chat words: "OK, let's add KEEP-BRACKETS for HPS." → row added to
+  HundredPaiwanStories.rules.tsv (corpus-local), tier rebuilt: 1,073 W-line glosses re-aligned with their
+  M lines (eat<af>→eat<AV>); perf/red/qal inside brackets stay UNDECIDED pending the HPS batch.
+- Bunun `al` (his card-A question) — grammar answer found: 布農語語法概論 PDF 146, al- = 持續貌2 durative
+  (「凸顯持續的姿態或動作，相當於中文的「著」」; fn.26 names -al). New card A2: Bunun 狀態/state ×42 →
+  DUR override vs STAT vs leave. Bunun carved out of card A.
+- Card B — he clicked `modify` with an EMPTY note; asked on the page and in chat what change he intends.
+- New cards P1–P3 (his request): Wild-Lehmann parens inventory (81 tokens / 39 distinct: voice ×55,
+  numeral(person) ×22, sikaisiisi(ritual) ×4) with LGR Rule 7/6 quotes; rewrite options would need a
+  parens extension to the shared converter — the card choice is the approval request for that.
