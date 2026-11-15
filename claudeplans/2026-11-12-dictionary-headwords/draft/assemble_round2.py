@@ -15,10 +15,10 @@ for c in S + F:
     if c["id"] == "r2-embedded":
         c["cols"] = [{"key": "ok", "head": "New example S"}]; c["keyhead"] = "Headword"; c["srchead"] = "Definition field as printed"
 X = json.load(open(W / "round2_extra_cards.json", encoding="utf-8"))
-cards = S + X + F
+cards = [c for c in X if c["id"] == "r2-sections"] + S + [c for c in X if c["id"] != "r2-sections"] + F
 q = lambda s: html.escape(s)
 LOG = [
- ("Sections 23 / 24 (chat)", "Do not record headwords from section 23 of Safolu. For section 24, include only headwords that do not appear in sections 1-22.", "Applied per sense from the converter's database: 370 section-23 senses and 77 section-24 senses dropped; 29 headwords printed only in section 23 left out. Shown in full on two cards below, plus a card for 41 words where the ruling and upstream's merging collide."),
+ ("Sections 23 / 24 (chat)", "Do not record headwords from section 23 of Safolu. For section 24, include only headwords that do not appear in sections 1-22.  Then: \"can you please undo that for now? And then update the card.\"", "On hold: not applied. Every card on this page is now computed with sections 23 and 24 treated like any other entry. The question is open again on the first card."),
  ("s-homophones", "Follow the book's entries, check the rest. Note: \"My decision here does NOT apply to section 23 or section 24. \"", "Not applied yet: needs its own review page for the main-section headwords printed as more than one entry (next round)."),
  ("s-version", "Editors' version (4cb82539d)", "Applied: the draft reads 4cb82539d."),
  ("s-xref", "Leave it out", "Applied."),
@@ -46,8 +46,8 @@ rows = "".join(f"<tr><td class='mono'>{q(a)}</td><td>{q(b)}</td><td>{q(c)}</td><
 log = f"""<section class="panel"><h2>Round 1: what you decided and what I applied</h2>
 <p class="muted">Read from this page's answer store on 2026-11-15 (17 of 18 cards answered) plus your chat message. Your words are quoted as saved.</p>
 <div class="scroll"><table class="log"><thead><tr><th>Card</th><th>Your answer</th><th>What I did (observed in the draft build)</th></tr></thead><tbody>{rows}</tbody></table></div>
-<p><b>Draft result with everything above applied</b> (Safolu, editors' version): 42,289 headword S if the 41 merged words are kept, 42,248 if not. Fey: 4,704 headword S. Nothing is committed to the corpora yet.</p></section>"""
-intro = ("Round 2 holds only what is still open: how your section 23/24 ruling plays out (shown in full so you can check it), "
+<p><b>Draft result with everything above applied</b> (Safolu, editors' version, sections 23/24 treated like any other entry): 42,321 headword S, 56,446 TRANSL. Fey: 4,704 headword S. Nothing is committed to the corpora yet.</p></section>"""
+intro = ("Round 2 holds only what is still open: sections 23 and 24 (your ruling is on hold, so the question is open again), "
          "the part-of-speech labels (with the answer to your question), the heading card again, the borrowing-label list you asked to see, "
          "the check round for example sentences moving to the examples file, the translations the converter broke in two (checked against its own input and the 2015 text), "
          "the repeated headwords that are not homophones, and two Fey cards. Cards that are lists have a <b>flag</b> button on each row: "

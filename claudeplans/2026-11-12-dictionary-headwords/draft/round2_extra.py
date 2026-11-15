@@ -91,14 +91,65 @@ cards.append({"id": "r2-homs-notreview", "corpus": "Safolu", "flag": True,
               "title": "Repeated headwords that are not homophones: publish as one S without a review",
               "count": f"{len(nh)} headwords ({bins['not homophones: overlapping meanings']} whose entries share meaning, {bins['not homophones: repeats or fragments only']} whose extra entries are only repeats, cross-references or fragments)",
               "question": "Publish these as one S each (all senses under one headword) without reviewing them one by one? Flag any that is really two words.",
-              "body": ["Your choice for repeated headwords was 'Follow the book's entries, check the rest'. In the pinned JSON 1,234 headwords have 2+ entries. Settled already: 236 have one entry left after your section 23/24 ruling; capitalised entries get their own S (your rulings; 28 headwords); word-for-word identical entries are kept once (your ruling).",
+              "body": ["Your choice for repeated headwords was 'Follow the book's entries, check the rest'. In the pinned JSON 1,234 headwords have 2+ entries. Counted here with sections 23 and 24 treated like any other entry (your section ruling is on hold). Settled already: capitalised entries get their own S (your rulings; 28 headwords); word-for-word identical entries are kept once (your ruling; " + str(bins["not homophones: identical repeat"]) + " headwords).",
                        "Of the rest, I compared each pair of entries on the Chinese characters that carry meaning (leaving out 指 要 的 了 被 把 and similar, and bracketed labels). Bins: " + "; ".join(f"{k}: {v}" for k, v in bins.most_common()) + ".",
-                       "I read a random sample from each bin: 'overlapping meanings' 15 of 15 one word; 'repeats or fragments only' 8 of 8 one word; 'no shared meaning' about 12 of 20 real homophones; 'unclear' about 3 of 20. Many of the 'not homophone' cases are the converter breaking one printed entry into pieces (see the broken-translation cards).",
-                       "The 300 'no shared meaning' and 259 'unclear' headwords go on their own review page next, with each headword's entries side by side; Lidaw (a village and a cliff under one capitalised S) and ceroh (an uncapitalised copy of the place Ceroh) go there too."],
+                       "I read a random sample from each bin (drawn with the section ruling applied, before it was put on hold): 'overlapping meanings' 15 of 15 one word; 'repeats or fragments only' 8 of 8 one word; 'no shared meaning' about 12 of 20 real homophones; 'unclear' about 3 of 20. Many of the 'not homophone' cases are the converter breaking one printed entry into pieces (see the broken-translation cards).",
+                       "The " + str(bins["plausibly homophones: no shared meaning"]) + " 'no shared meaning' and " + str(bins["unclear"]) + " 'unclear' headwords go on their own review page next, with each headword's entries side by side; Lidaw (a village and a cliff under one capitalised S) and ceroh (an uncapitalised copy of the place Ceroh) go there too."],
               "options": [{"key": "one", "label": "One S each, flagged rows to the review", "rec": True, "desc": f"{len(nh)} headwords published with all their senses in one S."},
                           {"key": "review", "label": "Review all of them too", "desc": f"They join the review page ({len(nh)} more headwords)."}],
               "cols": [{"key": "one", "head": "Published"}], "keyhead": "Headword", "srchead": "Its entries (‖ separates entries)",
               "items": [dict(i, source=[" ‖ ".join(i["source"])]) for i in hitems]})
+# ---- sections 23 / 24 (ruling on hold): what each option publishes
+L = list(csv.DictReader(open(W / "section_rulings_4cb8.tsv", encoding="utf-8"), delimiter="\t"))
+byw = collections.defaultdict(list)
+for x in L:
+    byw[x["headword"]].append(x)
+RUL = json.load(open(W / "section_rulings_4cb8.json", encoding="utf-8"))
+SPECIAL = {"=.json", "ch-mapping.json", "index.json", "lenToRegex.json", "precomputed.json", "stem-words.json"}
+import json as _j
+EB = {p.stem: _j.loads(p.read_text(encoding="utf-8")) for p in (W.parent / "src/4cb8/docs/s").glob("*.json") if p.name not in SPECIAL}
+stem_of = {e["t"]: k for k, e in EB.items()}
+only_because = [e["t"] for k, e in EB.items() if len(e["h"]) >= 2 and k in RUL and sum(1 for h in RUL[k] if any(a == "keep" for a in h)) <= 1]
+tv = {r["t"]: r["verdict"] for r in T}
+ob = collections.Counter(tv.get(w, "?") for w in only_because)
+lab = {"main": "1-22", "23": "23", "24": "24", "later": "1-22", "none": "?"}
+def uniq(xs):
+    o = []
+    for x in xs:
+        if x not in o:
+            o.append(x)
+    return o
+sitems = []
+for w in sorted(byw, key=lambda w: (byw[w][0]["printed_in"], w)):
+    v = byw[w]; pin = v[0]["printed_in"]
+    if pin == "24":
+        continue  # loanwords printed only in section 24: published under every option
+    keepA = [x["text"] for x in v if x["action"] == "keep"]
+    if not keepA and "main" in pin:  # upstream merged the two versions; the earlier ruling's option kept the headword
+        keepA = uniq([x["text"] for x in v]) + ["(kept: printed in 1-22; upstream merged its versions into this sense)"]
+    keepC = [x["text"] for x in v if x["action"] != "drop-23"]
+    allB = uniq([x["text"] for x in v])
+    cell = lambda xs: [(["—", t] if t.startswith("(kept") else ["TRANSL zho" + (" alt" if i else ""), t]) for i, t in enumerate(xs)] or [["—", "headword not published"]]
+    sitems.append({"key": w, "source": [" ‖ ".join(f"[{lab.get(x['matched_section'], x['matched_section'])}] {x['text']}" for x in v) + f"   (printed in: {pin.replace('main', '1-22')})"],
+                   "cells": {"none": cell(allB), "drop23": cell(keepC), "ruling": cell(keepA)}})
+n_only23 = sum(1 for w in byw if byw[w][0]["printed_in"] == "23")
+n_only24 = sum(1 for w in byw if byw[w][0]["printed_in"] == "24")
+LOGS = {k: open(W / f"log_opt{k}.txt", encoding="utf-8").read() for k in "ABC"}
+num = lambda k, pat: re.search(r"(\d+) " + pat, LOGS[k]).group(1)
+cards.insert(0, {"id": "r2-sections", "corpus": "Safolu", "flag": False,
+              "title": "Sections 23 and 24: your ruling is on hold, so the question is open again",
+              "count": f"{len(sitems)} headwords printed both in sections 1-22 and in section 23 or 24, or only in section 23 ({n_only23}); the {n_only24} loanwords printed only in section 24 are published under every option",
+              "question": "What should happen to the entries that come from section 23 (the ' chapter, an older version of the 'a/'e words) and section 24 (the loanword list)?",
+              "body": ["You asked: \"can you please undo that for now? And then update the card.\" Done: the drafts and every other card on this page are now computed with sections 23 and 24 treated like any other entry.",
+                       "What the sections are (from the manuscript and the converter's database): section 23 is the chapter for the letter ' and holds only 'a... and 'e... words; most are also printed under A or E in a different, usually older wording (e.g. 'adideman: section 01 有桑樹的地方 'place with mulberry trees', section 23 桑樹的種類 'a kind of mulberry'). Section 24 is a list of loanwords, each labelled 〈日語借詞〉 etc.; most of its words appear nowhere else, but some are also printed in sections 1-22, sometimes as a different word (mita: section 14 我們 'we', section 24 電錶 'meter').",
+                       f"In the pinned JSON, {len(only_because)} headwords are repeated only because of a section 23/24 entry. Treated like any other entry, they fall into these bins: " + "; ".join(f"{k}: {n}" for k, n in ob.most_common()) + ".",
+                       "Each row: every upstream sense of the headword, tagged with the section it was traced to (from the converter's database, matched by text), and what each option publishes. Under 'treat like any other entry' a word-for-word repeated sense is kept once (your ruling); the repeated-headword review then applies as for any headword.",
+                       "This is about the headword file only. The published examples file (amis_safolu_examples.xml) already contains examples from section 23/24 entries (303 and 38 sentences); no option here changes it."],
+              "options": [{"key": "none", "label": "Treat them like any other entry", "desc": f"Draft: {num('B', 'S written')} S, {num('B', 'TRANSL written')} TRANSL. Repeats handled by the identical-entry ruling and the repeated-headword review."},
+                          {"key": "drop23", "label": "Leave out section 23 only", "desc": f"Draft: {num('C', 'S written')} S, {num('C', 'TRANSL written')} TRANSL. Section 24 treated like any other entry."},
+                          {"key": "ruling", "label": "Your earlier ruling", "desc": f"Leave out section 23; for section 24 only headwords not in sections 1-22. Draft: {num('A', 'S written')} S, {num('A', 'TRANSL written')} TRANSL (the 41 words upstream merged are kept)."}],
+              "keyhead": "Headword", "srchead": "Its upstream senses, with the section each comes from",
+              "items": sitems})
 json.dump(cards, open(W / "round2_extra_cards.json", "w", encoding="utf-8"), ensure_ascii=False)
 for c in cards:
     print(f"{c['id']:20s} items={len(c['items']):4d}  {c['count']}")

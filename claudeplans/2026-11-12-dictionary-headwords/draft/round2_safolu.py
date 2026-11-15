@@ -6,7 +6,8 @@ Reads  draft/section_rulings_4cb8.json (apply_section_rulings.py), src/4cb8/docs
 Writes draft/round2_safolu_cards.json, draft/borrow_labels.tsv, draft/pos_labels.tsv, draft/embedded_examples.tsv
 
 Round 1 rulings applied before anything is listed (decision log 2026-11-15):
-  sections: drop senses traced to section 23; drop section-24 senses of headwords printed in 01-22
+  sections (unless --no-sections; the ruling is on hold since 2026-11-15): drop senses traced to section 23;
+  drop section-24 senses of headwords printed in 01-22
   s-version editors; s-xref drop; s-nochinese drop; s-affix omit; s-nosense omit
 """
 import collections, csv, json, pathlib, re, sys
@@ -18,6 +19,9 @@ from safolu_headwords import clean, classify, SPECIAL  # noqa: E402
 
 EB = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in (W / "src/4cb8/docs/s").glob("*.json") if p.name not in SPECIAL}
 RUL = json.load(open(W / "draft/section_rulings_4cb8.json", encoding="utf-8"))
+USE_SECTIONS = "--no-sections" not in sys.argv  # 2026-11-15: the section 23/24 ruling is on hold -> run with --no-sections
+if not USE_SECTIONS:
+    RUL = {}
 AFFIX = lambda t: t.startswith("-") or t.endswith("-") or "…" in t
 EMB = re.compile(r"^([A-Za-z'^ ,.!?\-]+?)[.!?]?\s*([㐀-鿿].*)$")
 HEAD = re.compile(r"[：:]\s*$")
@@ -275,6 +279,8 @@ cards.append({"id": "r2-embedded", "corpus": "Safolu", "flag": True, "title": "E
               "options": [{"key": "ok", "label": "Add them (flagged rows aside)", "rec": True, "desc": "Flagged rows are left out."},
                           {"key": "other", "label": "Something else (see note)", "desc": ""}],
               "items": eitems})
+if not USE_SECTIONS:
+    cards = [c for c in cards if c["id"] not in ("r2-merged", "r2-sec23", "r2-sec24")]
 json.dump(cards, open(W / "draft/round2_safolu_cards.json", "w", encoding="utf-8"), ensure_ascii=False)
 for c in cards:
     print(f"{c['id']:14s} items={len(c['items']):5d}  {c['count']}")

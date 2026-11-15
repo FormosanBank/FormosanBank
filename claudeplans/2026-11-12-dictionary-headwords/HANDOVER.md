@@ -5,9 +5,11 @@ published (11 cards), waiting for answers.** No corpus has been changed. The rou
 decision log (`claudeplans/sweep-qa-decision-log.md`, entry "2026-11-12 — Dictionary headwords") and in section 8 below.
 
 - Decision page: https://claude.ai/artifact/1N7xc3PCVuYYsmyynos5S4 (version 3 = round 2)
+- **Section 23/24 ruling ON HOLD** (maintainer 2026-11-15: "can you please undo that for now?"): drafts and lists are computed
+  with `--no-sections`; the question is card r2-sections (options: treat like any other entry / drop 23 only / earlier ruling).
 - Round 2 card ids (db collection `answers`, one doc per card: `{choice, note, flags, at}`; `flags` = item keys the
   maintainer marked wrong; done flag doc `meta/round2`): r2-merged, r2-sec23, r2-sec24, r2-pos, r2-poslabels, r2-heading,
-  r2-borrow, r2-loanonly, r2-embedded, r2-cut-paste, r2-cut-lost, r2-cut-unchecked, r2-homs-notreview, r2-f-affix, r2-f-fixme (page version 4; extra cards from round2_extra.py).
+  r2-borrow, r2-loanonly, r2-embedded, r2-sections, r2-cut-paste, r2-cut-lost, r2-cut-unchecked, r2-homs-notreview, r2-f-affix, r2-f-fixme (page version 4; extra cards from round2_extra.py).
 - After round 2: a separate review page for main-section Safolu headwords printed as more than one entry
   (s-homophones = "Follow the book's entries, check the rest", not for sections 23/24).
 - Base used for all counts: `origin/main` at `525ad4932`.
@@ -318,3 +320,21 @@ Not yet in the generator (wait for round 2): borrowing labels to TRANSL notes (r
 part-of-speech labels, headings, loan-label-only senses, the 99 example sentences into the examples file, homophone
 splitting for main sections. Generator changes not shown on a card: none (circumfix `…` headwords dropped under s-affix,
 which listed them; Fey's draft-only "source sheet line N" notes removed — no option showed them).
+
+## 9. Current rebuild (section ruling on hold, page version 5)
+
+```bash
+COMMON="--base $WORK/src/e7c6976/docs/s --pin $WORK/src/4cb8/docs/s --pin-commit 4cb82539d7e51e7211e262d4dbaecaa41a772b2f \
+  --xref drop --label notes --nochinese drop --affix drop --stem-tag notes --syn-rel none --embedded drop"
+python3 -I safolu_headwords.py $COMMON --out $WORK/draft/out_optB/XML/Amis/Safolu/amis_safolu_headwords.xml > log_optB.txt   # 42,321 S (current)
+python3 -I safolu_headwords.py $COMMON --sections $WORK/draft/section_rulings_4cb8.json --merged keep --keep-24 \
+  --out $WORK/draft/out_optC/XML/Amis/Safolu/amis_safolu_headwords.xml > log_optC.txt                                # 42,290 S (drop 23 only)
+python3 -I safolu_headwords.py $COMMON --sections $WORK/draft/section_rulings_4cb8.json --merged keep \
+  --out $WORK/draft/out_optA/XML/Amis/Safolu/amis_safolu_headwords.xml > log_optA.txt                                # 42,289 S (earlier ruling)
+python3 -I cut_check.py $WORK $WORK/draft/out_optB/XML/Amis/Safolu/amis_safolu_headwords.xml && python3 -I cut_2015.py $WORK
+python3 -I homophone_triage.py $WORK --no-sections
+python3 -I round2_safolu.py $WORK --no-sections
+python3 -I round2_extra.py $WORK
+python3 -I assemble_round2.py $WORK
+```
+cut_2015.py reproduces the earlier inline 2015 comparison byte for byte on the earlier draft (152 confirmed: 90/5/24/33).

@@ -79,6 +79,8 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
         "dialect": "Coastal",
     })
     sec_acts, printed = load_sections(args.sections)
+    if args.keep_24:
+        sec_acts = {k: [["keep" if a == "drop-24" else a for a in h] for h in v] for k, v in sec_acts.items()}
     for ordinal, name, entry in entries(args.base, args.pin):
         stats["headword files"] += 1
         title = entry["t"].strip()
@@ -196,6 +198,7 @@ def main() -> int:
     p.add_argument("--sections", type=Path, help="section_rulings_4cb8.json from apply_section_rulings.py")
     p.add_argument("--merged", choices=["keep", "drop"], default="keep")
     p.add_argument("--embedded", choices=["keep", "drop"], default="keep")
+    p.add_argument("--keep-24", action="store_true", help="with --sections: drop section-23 senses only")
     p.add_argument("--log", type=Path)
     a = p.parse_args()
     tree, stats, log = build(a)

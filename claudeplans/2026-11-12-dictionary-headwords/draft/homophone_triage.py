@@ -23,6 +23,8 @@ sys.path.insert(0, str(W / "draft"))
 from safolu_headwords import clean, classify, SPECIAL  # noqa: E402
 D = W / "src/4cb8/docs/s"
 R = json.load(open(W / "draft/section_rulings_4cb8.json", encoding="utf-8"))
+if "--no-sections" in sys.argv:  # the section 23/24 ruling is on hold (2026-11-15)
+    R = {}
 PLACE = re.compile(r"部落|地名|地區|村|鄉|鎮|縣|市|社區|山名|河名|溪名")
 EMB = re.compile(r"^([A-Za-z'^ ,.!?\-]+?)[.!?]?\s*([㐀-鿿].*)$")
 STOP = set("指要的了是被把將即使讓去吧在有一種個者之所於與和或等也很不為地方時候情況處人做用使得著過可能會就再又還都對其此該這那某各每及以而並且又")
