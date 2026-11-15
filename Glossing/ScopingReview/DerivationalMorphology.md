@@ -161,7 +161,15 @@ back to `no` — the COS phase clitics do not separate, while the become-affixes
 (ruled via COS) do. The reconciliation question — COS- (hyphen/affix) separates,
 =COS (clitic) does not — is card Q4 on the page, awaiting the maintainer.
 
-**Open**: Q1 comparative code (CMPR vs keep lexical), Q2 make→CAUS (sane-/alang
-split), Q3 remove→REV, Q4 the COS boundary rule, Q5 the 'arup converter change;
-make/more are separators regardless (sep26/28 `yes`). MULT stays outside
-verb-individuation scope (numeral derivation).
+**COS boundary rule (Q4 `boundary`, 2026-11-15):** COS attached by hyphen
+(affix) separates; COS attached by `=` (clitic) does not.
+
+**Applied 2026-11-15 (round 16):** remove → REV (registered; all tokens
+verified su-/s-u affix per the maintainer's caveat); the 'arup converter
+change (context fallback → table; REC&'arup- row; side effect: the ruled
+Tsou 非主焦→NAF override activated, 260 lines, flagged).
+
+**Open**: Q1 comparative code (CMPR vs keep lexical; NTU 比較 ×61 and Song ×17
+exist lexically), Q2 make→CAUS (recommended leave: true prefix usage ≈5
+tokens vs ~106 root/verb tokens); make/more are separators regardless
+(sep26/28 `yes`). MULT stays outside verb-individuation scope.

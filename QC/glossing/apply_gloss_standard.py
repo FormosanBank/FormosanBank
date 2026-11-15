@@ -175,7 +175,9 @@ def convert_gloss(gloss: str, table: Table, rules: Rules, language: str,
             for rule_atom, pattern, target in rules.context_rules:
                 if rule_atom == atom and context_matches(pattern, context_forms):
                     return target
-            return atom                       # no diagnostic form: kept
+            # No diagnostic form: fall through to the table (maintainer card
+            # Q5, 2026-11-15). A table row with an empty standard still keeps
+            # the atom, which preserves the documented Yedda UV fallback.
         return table.standard_for(atom, language)
 
     def convert_flat(text: str) -> str:

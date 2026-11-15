@@ -25219,3 +25219,18 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
 - Page regenerated clean per his request ("regenerate so I can answer your questions"): 9 cards, each
   answerable — Q1 CMPR, Q2 make/alang, Q3 REV, Q4 COS boundary, Q5 'arup shared tweak, Q6/Q7 lost
   Amis/Bunun notes, Q8/Q9 the two cut-off fragments. Settled history collapsed at the bottom.
+
+### 2026-11-15 (cont. 15) — RULED: Q3/Q4/Q5 applied; Q6–Q9 closed; Q1/Q2 answered
+- Q4 `boundary` → RULED: COS- (affix) separates, =COS (clitic) does not.
+- Q5 `yes` → SHARED CHANGE made test-first (34 tests pass): context-rule fallback now falls through to the
+  table; NTU rules row REC&'arup-→RECP; 'arup-ara eng = RECP-take. Side effect flagged per the override's
+  own "flag if unwanted": the ruled-but-blocked Tsou 非主焦→NAF override activated (260 lines, AUX.非主焦 →
+  AUX.NAF — also satisfies Latin-only g4). Verified: nothing else changed; validators 0 HARD.
+- Q3 `rev` + "Make sure this only applies to the those affixes, not lexical verbs." → verified all HPS
+  remove tokens are the su-/s-u affix; REV registered; remove ×138 → REV; other corpora's reversive
+  lexical glosses untouched (todo stands).
+- Q6/Q7 `nothing` — no Amis/Bunun notes existed. Q8/Q9 `nothing` — the card-F and #SI fragments had no
+  questions behind them; both conversions stand.
+- Q1 answered (comparatives elsewhere: NTU 比較 ×61 = maraa/mastaan/paska, Song ×17, RauDong 更 ×1 — all
+  lexical, no code) and Q2 answered (true make- prefix usage ≈5 tokens vs ~106 root/verb; leave
+  recommended) — both await his click (round 16, two cards).

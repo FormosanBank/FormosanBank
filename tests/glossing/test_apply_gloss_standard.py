@@ -406,3 +406,46 @@ def test_note_parens_moved_to_notes_attribute(tmp_path):
     assert len(std) == 1
     assert std[0].text == "sikaisiisi"
     assert std[0].get("notes") == "(ritual)"
+
+
+# ---- context-rule fallback falls through to the table (maintainer card Q5
+# 2026-11-15, choice "yes": the 'arup exception needs REC&'arup-, and atoms
+# with context rules in OTHER words must still convert by the table) ----
+
+FALLBACK_RULES = RULES + [
+    ("AF&zz-", "CONTEXT-CONVERT→XX", "AF on a zz- word becomes XX"),
+]
+FALLBACK_XML = """<TEXT xml:lang="tay" id="t6">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>zzat</FORM>
+    <M id="m1"><FORM>zz-</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+    <M id="m2"><FORM>at</FORM><TRANSL xml:lang="eng" kindOf="original">eat</TRANSL></M>
+  </W>
+  <W id="w2"><FORM>kmen</FORM>
+    <M id="m3"><FORM>kmen</FORM><TRANSL xml:lang="eng" kindOf="original">AF-eat</TRANSL></M>
+  </W>
+</S>
+</TEXT>"""
+
+
+def test_context_fallback_goes_to_table(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(FALLBACK_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(FALLBACK_RULES)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    _, g = glosses(d)
+    assert g["m1"][("standard",)] == "XX"       # context rule fires on the zz- word
+    assert g["m3"][("standard",)] == "AF-eat"[:0] + "AV-eat"  # no zz-: falls through to the table (AF->AV), not kept
