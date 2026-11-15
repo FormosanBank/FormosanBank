@@ -252,3 +252,37 @@ Then one build each, `tests/corpora`, and push and PR commands for the maintaine
 When the corpora are built and merged, the real build scripts belong in each corpus's `CodeAndDocs/`. This branch can then be deleted.
 
 Not committed, because they're regenerable or large: the upstream JSON exports (178 MB each), the printed-text clone (262 MB), the draft XML outputs, and `cards.json`.
+
+## 7. Sections 23 and 24 of the Safolu text (asked 2026-11-15)
+
+The source is miaoski/amis-safolu `dict/*.txt` at f512d5b, plus that repo's history (237 commits).
+
+**Both sections were chapters of the manuscript itself.** The first conversion (commit ab2ad61, 2015-08-23, "Converted by Conrad") already had 24 PDF-derived files, among them `head_23-阿美語輔音.pdf.txt` and `head_24-阿美族常用借詞.pdf.txt`. The README says *"感謝 cpyang 將 PDF 原稿轉為 TXT 檔"* ("thanks to cpyang for converting the PDF manuscript to TXT").
+
+**Section 23, 阿美語輔音 ("Amis consonant"): the ' (glottal stop) letter chapter.**
+
+- It opens with an entry for the letter `'` itself, the way every letter chapter opens.
+- It holds only `'a…` entries (547) and `'e…` entries (117), ending at `'eyofen`. There is no `'i/'o/'u`.
+- The main sections also file '-initial words under their vowel: A 547, E 195, I 132, O 129. A's opening entry says *"a 元音處於音節開頭與收尾時，有輕微喉塞化"* ("vowel a at the start or end of a syllable is slightly glottalised").
+- 611 headwords are in both section 23 and A/E:
+  - 170 are printed word for word the same.
+  - A has the (stem) annotation and section 23 lacks it in 123 cases; the reverse happens in 2.
+  - A's entry is longer in 84 cases, section 23's in 52.
+  - Examples: `'acis`, where A adds 女性不孕 "infertile (of a woman)"; `'adideman`, A 有桑樹的地方 "place with mulberry trees" vs 23 桑樹的種類 "a kind of mulberry".
+- 23 headwords are only in section 23. They include the `'` letter entry, `'acefolay a fu'is` (A has `fo'is`), and conversion fragments (`'a'edefen a mipaloma to kilang koni a`).
+- **Inference, unconfirmed:** section 23 looks like an earlier draft from when ' was its own initial letter, left in the manuscript after the a/e words were refiled and revised under A/E.
+- g0v merged 23 a/e into A/E in 2016 (5d5381a; sorting "Dismiss "'" character"), then "make duplicate words as heteronyms" (cdceb25).
+- Upstream JSON keeps both versions as separate `h`, from a later revision: the `'acamen` 23-version example reads 等一下我就去把蘆葦砍 there, but 我馬上把蘆葦砍來 in the 2015 text.
+- The published examples already hold both copies: S00222 我等一下就把蘆葦砍來！ and S00223 等一下我就去把蘆葦砍來！, the same Amis sentence.
+
+**Section 24, 阿美族常用借詞 ("loanwords commonly used by the Amis").**
+
+- 616 entries, each labelled 〈…借詞〉: Japanese 459, Hokkien 119, Han 34, English 9, …
+- 480 headwords (lowercased) appear in no other section. 469 of them are upstream JSON headwords. These 11 are not, and are unchecked: ^efaw, funka, kacidinto, kilisto kristo, kyokay, lakuda, mamikutay, tinicukay, wansi, yis, yisu.
+- 123 headwords are also in a main section:
+  - ~100 are the same loan, and the main entry already labels it, with `[…借詞]` or `(…借詞)`.
+  - ~9 are the same word, unlabelled in the main entry: kalang, kofa, minato, kawkaw, okang, paysin, sasifin, patiyamay, misifin.
+  - 13 are different words spelled alike: iki, kasa, sato, kato, kita, misa, mita, pakingking, safa, safi, safitay, tama, tofa.
+  - 1 is a fragment (ahowid).
+  - The sorting into these four groups is my reading of the definitions.
+- None of the 123 are printed word for word the same as in the main section.
