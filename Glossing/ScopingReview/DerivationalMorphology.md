@@ -47,25 +47,17 @@ Grammar claims are the 語法概論 volume's; corpus counts are audit-rule tier-
 | Tsou | free word poa (primary) + pa'-/p'- | **no stative affix** (auxiliary/negator diagnosis) | =cu aspect clitic only | none (iachi, glosses only) | yupa- (glosses only) — corpus matches |
 | Yami | pa-; -en on statives; maka-/paka-/pipa-/pi-/pika-/mapa-… | ma- three-ways ambiguous (plain/abilitative) + ka-…-an; RauDong SV → STAT | micya-/mipa- 「愈來愈」; -om- inception | one mi- side-remark only | masi- (table-only); RauDong REC = mi- forms |
 
-## Proposals: still open (artifact cards, round 3)
-
-- A: NTU zho derivational codes → Latin twins (使役/使動/役使/使→CAUS, 狀態/靜態→STAT,
-  改變狀態/狀態改變→COS, 反身→REFL, 交互/互相→RECP); 重現 excluded; Bunun 狀態 carved out to A2.
-- A2: Bunun 狀態/state ×42, forms al ×40 / tal ×1 / a-l ×1. The maintainer asked (card A note,
-  2026-11-15) what the grammar says about `al`. Answer: 布農語語法概論 §6 (PDF 146) —
-  「姿勢動詞和某些動詞可以附加前綴al-來凸顯持續的姿態或動作，相當於中文的「著」」, glossed
-  持續貌2 "durative 2" (fn.26: 「用「持續」來標註持續貌標記-al」; 持續貌1 = clitic =ang); the
-  grammar's own example 6-30b m-al-'anuhu 主事焦點-持續貌2-坐 is the very word NTU glosses
-  AF-state-sit. So NTU's 狀態/state here names the grammar's durative, not a stative. Options
-  on the card: Bunun-only override → DUR (Leipzig) / STAT with card A / leave / other.
+## Proposals: still open (artifact cards, round 4)
 - B: NTU Kanakanavu REC ×34 (重現, ⟨n⟩) — mis-covered by the bank-wide REC→RECP ruling.
   2026-11-15: maintainer clicked `modify` with an empty note — asked what change he intends.
-- P1–P3 (Wild-Lehmann parenthesized glosses, maintainer-requested cards 2026-11-15): 81 tokens,
-  39 distinct (W 63 / M 18), all verbatim+flagged under the parens-INVESTIGATE rule. P1 voice/mood
-  tags ×55 (go (AV), hear(UV), try (HORT), …); P2 numeral(person) ×22; P3 sikaisiisi (ritual) ×4.
-  Context on the cards: Leipzig Rule 7 sanctions round parens for inherent categories (tree(G4));
-  Rule 6 square brackets; any rewrite option needs a small shared-converter extension (parens
-  handling), which the card choice would be the approval request for.
+- P1–P2 (Wild-Lehmann parenthesized glosses): P1 voice/mood tags ×55 — maintainer asked
+  (card note 2026-11-15) why round parens over X.Y; answered on the card (LGR 4 vs 6 vs 7
+  make different claims: overt portmanteau vs non-overt category vs inherent category) and a
+  go.AV option added. P2 numeral(person) ×22 unanswered. Implementation of any rewrite (and of
+  the ruled P3) needs a parens extension to the shared converter — approval to be requested
+  with the diff once P1/P2 are decided.
+- P3 sikaisiisi (ritual) ×4 — RULED `drop` 2026-11-15 (standard = sikaisiisi, "(ritual)" to the
+  TRANSL notes attribute); implementation pending with P1/P2 (shared-converter extension).
 
 ## Ruled on the decision page 2026-11-15, applied the same day
 
@@ -106,6 +98,18 @@ Round-3 additions (2026-11-15, applied the same way, diff-verified):
   eat<AV>, cause<af>-lack → CAUS<AV>-lack); every changed line contains a
   bracket. Codes inside brackets still UNDECIDED (perf ×367 proposed PFV,
   red, qal) stay lowercase until the HPS batch is ruled.
+
+Round-4 additions (2026-11-15, applied the same way, diff-verified):
+
+- A (`approve`): NTU zho twins → Latin: 使動 ×498, 役使 ×20, 使 ×18 → CAUS; 狀態 ×1,474
+  (non-Bunun), 靜態 ×68 → STAT; 改變狀態 ×659, 狀態改變 ×574 → COS; 反身 ×406 → REFL;
+  交互 ×206, 互相 ×163 → RECP. (使役 was already CONVERT under the CAU ruling; 重現 held
+  for card B.) NTU rebuilt: 4,162 changed pairs, all carrying a target atom or its standard.
+- A2 (`dur`): Bunun-only overrides 狀態 → DUR and eng state → DUR (new `state` row carries
+  the override; empty standard so the lexical gloss passes through elsewhere — Rukai's
+  state ×4 untouched). Basis: 布農語語法概論 PDF 146, al- = 持續貌2 durative. Bunun
+  dictionary +DUR. Validators: 0 new HARD; 2 pre-existing V067 (original-FORM 'hoN2T>',
+  'shiaolingLM>' in NTU Stories, present at HEAD and in NTU's own source JSONs).
 
 ## Notes for the verb-individuation list
 

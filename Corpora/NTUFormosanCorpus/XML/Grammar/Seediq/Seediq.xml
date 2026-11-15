@@ -1161,14 +1161,14 @@
             <FORM kindOf="standard">k-seyang</FORM>
             <PHON kindOf="standard">ksejaŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-生氣</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-生氣</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-生氣</TRANSL>
             <M id="04_S_8_W2M0">
                 <FORM kindOf="original">k</FORM>
                 <PHON kindOf="original">k</PHON>
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="04_S_8_W2M1">
                 <FORM kindOf="original">seyang</FORM>
@@ -1971,14 +1971,14 @@
             <FORM kindOf="standard">k-chaya</FORM>
             <PHON kindOf="standard">kʦħaja</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-做那樣</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-做那樣</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-做那樣</TRANSL>
             <M id="04_S_16_W1M0">
                 <FORM kindOf="original">k</FORM>
                 <PHON kindOf="original">k</PHON>
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="04_S_16_W1M1">
                 <FORM kindOf="original">chaya</FORM>
@@ -2265,7 +2265,7 @@
             <FORM kindOf="standard">p&lt;n&gt;heyu-an=mu</FORM>
             <PHON kindOf="standard">pnħejuanmu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動&lt;完成貌&gt;站立-處所焦點=我.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動&lt;PFV&gt;站立-處所焦點=我.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;站立-處所焦點=我.GEN</TRANSL>
             <M id="04_S_18_W4M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -2877,14 +2877,14 @@
             <FORM kindOf="standard">p-adis-an-un</FORM>
             <PHON kindOf="standard">padisanun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-帶-處所焦點-受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-帶-處所焦點-受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-帶-處所焦點-受事焦點</TRANSL>
             <M id="04_S_25_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="04_S_25_W1M1">
                 <FORM kindOf="original">adis</FORM>
@@ -3045,7 +3045,7 @@
             <FORM kindOf="standard">m-p-tgesa</FORM>
             <PHON kindOf="standard">mptgesa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主事焦點-使動-教</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">主事焦點-使動-教</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">主事焦點-CAUS-教</TRANSL>
             <M id="04_S_26_W0M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -3060,7 +3060,7 @@
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="04_S_26_W0M2">
                 <FORM kindOf="original">tgesa</FORM>
@@ -3133,7 +3133,7 @@
             <FORM kindOf="standard">p&lt;n&gt;eyah</FORM>
             <PHON kindOf="standard">pnejaħ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動&lt;完成貌&gt;來</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動&lt;PFV&gt;來</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;來</TRANSL>
             <M id="04_S_27_W1M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -3817,14 +3817,14 @@
             <FORM kindOf="standard">p-uqi-un</FORM>
             <PHON kindOf="standard">puqiun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-吃-受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-吃-受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-吃-受事焦點</TRANSL>
             <M id="04_S_35_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="04_S_35_W1M1">
                 <FORM kindOf="original">uqi</FORM>
@@ -4169,14 +4169,14 @@
             <FORM kindOf="standard">k-dengu=na</FORM>
             <PHON kindOf="standard">kdeŋuna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-乾=他.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-乾=他.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-乾=他.GEN</TRANSL>
             <M id="04_S_38_W4M0">
                 <FORM kindOf="original">k</FORM>
                 <PHON kindOf="original">k</PHON>
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="04_S_38_W4M1">
                 <FORM kindOf="original">dengu</FORM>
@@ -7967,14 +7967,14 @@
             <FORM kindOf="standard">k-chaya</FORM>
             <PHON kindOf="standard">kʦħaja</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-做那樣</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-做那樣</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-做那樣</TRANSL>
             <M id="05_S_33_W1M0">
                 <FORM kindOf="original">k</FORM>
                 <PHON kindOf="original">k</PHON>
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="05_S_33_W1M1">
                 <FORM kindOf="original">chaya</FORM>
@@ -8095,14 +8095,14 @@
             <FORM kindOf="standard">p-s-beyax</FORM>
             <PHON kindOf="standard">psbejax</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-有-力量</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-有-力量</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-有-力量</TRANSL>
             <M id="05_S_34_W3M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="05_S_34_W3M1">
                 <FORM kindOf="original">s</FORM>
@@ -10620,14 +10620,14 @@
             <FORM kindOf="standard">p-adis-an-an</FORM>
             <PHON kindOf="standard">padisanan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-帶-處所焦點-處所焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-帶-處所焦點-處所焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-帶-處所焦點-處所焦點</TRANSL>
             <M id="06_S_19_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="06_S_19_W1M1">
                 <FORM kindOf="original">adis</FORM>
@@ -11735,14 +11735,14 @@
             <FORM kindOf="standard">p-lukus-an=ku=na</FORM>
             <PHON kindOf="standard">plukusankuna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-衣服-處所焦點=我.主格=他.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-衣服-處所焦點=我.NOM=他.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-衣服-處所焦點=我.NOM=他.GEN</TRANSL>
             <M id="06_S_30_W0M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="06_S_30_W0M1">
                 <FORM kindOf="original">lukus</FORM>
@@ -11921,14 +11921,14 @@
             <FORM kindOf="standard">p-lukus-an=ku=na</FORM>
             <PHON kindOf="standard">plukusankuna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-衣服-處所焦點=我.主格=他.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-衣服-處所焦點=我.NOM=他.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-衣服-處所焦點=我.NOM=他.GEN</TRANSL>
             <M id="06_S_32_W0M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="06_S_32_W0M1">
                 <FORM kindOf="original">lukus</FORM>
@@ -13099,7 +13099,7 @@
             <FORM kindOf="standard">k&lt;n&gt;bbiyan</FORM>
             <PHON kindOf="standard">knbbijan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態&lt;完成貌&gt;傍晚</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態&lt;PFV&gt;傍晚</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT&lt;PFV&gt;傍晚</TRANSL>
             <M id="06_S_43_W5M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -13301,14 +13301,14 @@
             <FORM kindOf="standard">p-betaq</FORM>
             <PHON kindOf="standard">pbetaq</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-刺</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-刺</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-刺</TRANSL>
             <M id="06_S_45_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="06_S_45_W1M1">
                 <FORM kindOf="original">betaq</FORM>
@@ -13485,7 +13485,7 @@
             <FORM kindOf="standard">k&lt;n&gt;paru=na</FORM>
             <PHON kindOf="standard">knpaɾuna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態&lt;完成貌&gt;大=他.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態&lt;PFV&gt;大=他.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT&lt;PFV&gt;大=他.GEN</TRANSL>
             <M id="06_S_46_W6M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -14435,14 +14435,14 @@
             <FORM kindOf="standard">p-osa-an</FORM>
             <PHON kindOf="standard">posaan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-去-處所焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-去-處所焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-去-處所焦點</TRANSL>
             <M id="07_S_7_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="07_S_7_W1M1">
                 <FORM kindOf="original">osa</FORM>
@@ -15221,14 +15221,14 @@
             <FORM kindOf="standard">p-osa-an</FORM>
             <PHON kindOf="standard">posaan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-去-處所焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-去-處所焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-去-處所焦點</TRANSL>
             <M id="07_S_15_W2M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="07_S_15_W2M1">
                 <FORM kindOf="original">osa</FORM>
@@ -15629,14 +15629,14 @@
             <FORM kindOf="standard">p-uqi-e=ta</FORM>
             <PHON kindOf="standard">puqieta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-吃-受事／處所焦點.規勸=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-吃-PV/LV.規勸=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-吃-PV/LV.規勸=我們.包含.GEN</TRANSL>
             <M id="08_S_6_W0M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="08_S_6_W0M1">
                 <FORM kindOf="original">uqi</FORM>
@@ -16045,7 +16045,7 @@
             <FORM kindOf="standard">p-p-uqi-un</FORM>
             <PHON kindOf="standard">ppuqiun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">重疊-使動-吃-受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">重疊-使動-吃-受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">重疊-CAUS-吃-受事焦點</TRANSL>
             <M id="08_S_11_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
@@ -16060,7 +16060,7 @@
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="08_S_11_W1M2">
                 <FORM kindOf="original">uqi</FORM>
@@ -16165,7 +16165,7 @@
             <FORM kindOf="standard">p-p-uqi-un=daha</FORM>
             <PHON kindOf="standard">ppuqiundaħa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">重疊-使動-吃-受事焦點=他們.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">重疊-使動-吃-受事焦點=他們.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">重疊-CAUS-吃-受事焦點=他們.GEN</TRANSL>
             <M id="08_S_12_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
@@ -16180,7 +16180,7 @@
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="08_S_12_W1M2">
                 <FORM kindOf="original">uqi</FORM>
@@ -16365,14 +16365,14 @@
             <FORM kindOf="standard">p-uq-i</FORM>
             <PHON kindOf="standard">puqi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-吃-受事／處所焦點.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-吃-PV/LV.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-吃-PV/LV.祈使</TRANSL>
             <M id="08_S_14_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="08_S_14_W1M1">
                 <FORM kindOf="original">uq</FORM>
@@ -16621,14 +16621,14 @@
             <FORM kindOf="standard">q-naqah</FORM>
             <PHON kindOf="standard">qnaqaħ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-壞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-壞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-壞</TRANSL>
             <M id="08_S_17_W1M0">
                 <FORM kindOf="original">q</FORM>
                 <PHON kindOf="original">q</PHON>
                 <FORM kindOf="standard">q</FORM>
                 <PHON kindOf="standard">q</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="08_S_17_W1M1">
                 <FORM kindOf="original">naqah</FORM>
@@ -17007,7 +17007,7 @@
             <FORM kindOf="standard">p-p-uqi-un=na</FORM>
             <PHON kindOf="standard">ppuqiunna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">重疊-使動-吃-受事焦點=他.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">重疊-使動-吃-受事焦點=他.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">重疊-CAUS-吃-受事焦點=他.GEN</TRANSL>
             <M id="08_S_22_W2M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
@@ -17022,7 +17022,7 @@
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="08_S_22_W2M2">
                 <FORM kindOf="original">uqi</FORM>
@@ -17423,14 +17423,14 @@
             <FORM kindOf="standard">p-oda-un=ku=na</FORM>
             <PHON kindOf="standard">podaunkuna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-經過-受事焦點=我.主格=他.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-經過-受事焦點=我.NOM=他.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-經過-受事焦點=我.NOM=他.GEN</TRANSL>
             <M id="09_S_2_W0M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_2_W0M1">
                 <FORM kindOf="original">oda</FORM>
@@ -17743,14 +17743,14 @@
             <FORM kindOf="standard">p-adis-o=su</FORM>
             <PHON kindOf="standard">padisosu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-帶-受事焦點.祈使=你.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-帶-受事焦點.祈使=你.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-帶-受事焦點.祈使=你.GEN</TRANSL>
             <M id="09_S_4_W0M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_4_W0M1">
                 <FORM kindOf="original">adis</FORM>
@@ -17959,14 +17959,14 @@
             <FORM kindOf="standard">p-bsukan</FORM>
             <PHON kindOf="standard">pbsukan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-主事焦點.酒醉</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-主事焦點.酒醉</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-主事焦點.酒醉</TRANSL>
             <M id="09_S_6_W0M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_6_W0M1">
                 <FORM kindOf="original">bsukan</FORM>
@@ -18143,14 +18143,14 @@
             <FORM kindOf="standard">p-s-tilux-un=mu</FORM>
             <PHON kindOf="standard">pstiluxunmu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-s-熱-受事焦點=我.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-s-熱-受事焦點=我.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-s-熱-受事焦點=我.GEN</TRANSL>
             <M id="09_S_8_W0M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_8_W0M1">
                 <FORM kindOf="original">s</FORM>
@@ -18391,14 +18391,14 @@
             <FORM kindOf="standard">p-bhege</FORM>
             <PHON kindOf="standard">pbħege</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-白</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-白</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-白</TRANSL>
             <M id="09_S_10_W2M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_10_W2M1">
                 <FORM kindOf="original">bhege</FORM>
@@ -18631,14 +18631,14 @@
             <FORM kindOf="standard">p-q-biciq</FORM>
             <PHON kindOf="standard">pqbiʦiq</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-靜態-小</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-靜態-小</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-STAT-小</TRANSL>
             <M id="09_S_12_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_12_W1M1">
                 <FORM kindOf="original">q</FORM>
@@ -18646,7 +18646,7 @@
                 <FORM kindOf="standard">q</FORM>
                 <PHON kindOf="standard">q</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="09_S_12_W1M2">
                 <FORM kindOf="original">biciq</FORM>
@@ -19259,7 +19259,7 @@
             <FORM kindOf="standard">p-p-osa</FORM>
             <PHON kindOf="standard">pposa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">重疊-使動-去</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">重疊-使動-去</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">重疊-CAUS-去</TRANSL>
             <M id="09_S_17_W2M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
@@ -19274,7 +19274,7 @@
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_17_W2M2">
                 <FORM kindOf="original">osa</FORM>
@@ -19379,7 +19379,7 @@
             <FORM kindOf="standard">p-p-heyu</FORM>
             <PHON kindOf="standard">ppħeju</PHON>
             <TRANSL xml:lang="zho" kindOf="original">重疊-使動-站立</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">重疊-使動-站立</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">重疊-CAUS-站立</TRANSL>
             <M id="09_S_18_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
@@ -19394,7 +19394,7 @@
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_18_W1M2">
                 <FORM kindOf="original">heyu</FORM>
@@ -19677,14 +19677,14 @@
             <FORM kindOf="standard">p-puuyas</FORM>
             <PHON kindOf="standard">ppuujas</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-讀書</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-讀書</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-讀書</TRANSL>
             <M id="09_S_19_W2M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_19_W2M1">
                 <FORM kindOf="original">puuyas</FORM>
@@ -19797,14 +19797,14 @@
             <FORM kindOf="standard">p-s-rutiq</FORM>
             <PHON kindOf="standard">psɾutiq</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-s-髒</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-s-髒</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-s-髒</TRANSL>
             <M id="09_S_20_W3M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_20_W3M1">
                 <FORM kindOf="original">s</FORM>
@@ -19885,14 +19885,14 @@
             <FORM kindOf="standard">p-s-rutiq</FORM>
             <PHON kindOf="standard">psɾutiq</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-s-髒</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-s-髒</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-s-髒</TRANSL>
             <M id="09_S_21_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_21_W1M1">
                 <FORM kindOf="original">s</FORM>
@@ -19997,14 +19997,14 @@
             <FORM kindOf="standard">p-s-rutiq-un</FORM>
             <PHON kindOf="standard">psɾutiqun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-s-髒-受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-s-髒-受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-s-髒-受事焦點</TRANSL>
             <M id="09_S_22_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_22_W1M1">
                 <FORM kindOf="original">s</FORM>
@@ -20247,14 +20247,14 @@
             <FORM kindOf="standard">p-qiyuc</FORM>
             <PHON kindOf="standard">pqijuʦ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-咬</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-咬</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-咬</TRANSL>
             <M id="09_S_24_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_24_W1M1">
                 <FORM kindOf="original">qiyuc</FORM>
@@ -20391,14 +20391,14 @@
             <FORM kindOf="standard">p-qiyuc</FORM>
             <PHON kindOf="standard">pqijuʦ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-咬</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-咬</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-咬</TRANSL>
             <M id="09_S_25_W3M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_25_W3M1">
                 <FORM kindOf="original">qiyuc</FORM>
@@ -20495,14 +20495,14 @@
             <FORM kindOf="standard">p-qiyuc-un</FORM>
             <PHON kindOf="standard">pqijuʦun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-咬-受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-咬-受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-咬-受事焦點</TRANSL>
             <M id="09_S_26_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_26_W1M1">
                 <FORM kindOf="original">qiyuc</FORM>
@@ -20623,14 +20623,14 @@
             <FORM kindOf="standard">p-qiyuc-un</FORM>
             <PHON kindOf="standard">pqijuʦun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-咬-受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-咬-受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-咬-受事焦點</TRANSL>
             <M id="09_S_27_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="09_S_27_W1M1">
                 <FORM kindOf="original">qiyuc</FORM>
@@ -20959,14 +20959,14 @@
             <FORM kindOf="standard">p-languy-un</FORM>
             <PHON kindOf="standard">plaŋujun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-游泳-受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-游泳-受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-游泳-受事焦點</TRANSL>
             <M id="10_S_4_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="10_S_4_W1M1">
                 <FORM kindOf="original">languy</FORM>
@@ -21199,7 +21199,7 @@
             <FORM kindOf="standard">ps-q-rahuq</FORM>
             <PHON kindOf="standard">psqɾaħuq</PHON>
             <TRANSL xml:lang="zho" kindOf="original">ps-靜態-漏掉</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">ps-靜態-漏掉</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">ps-STAT-漏掉</TRANSL>
             <M id="10_S_6_W1M0">
                 <FORM kindOf="original">ps</FORM>
                 <PHON kindOf="original">ps</PHON>
@@ -21214,7 +21214,7 @@
                 <FORM kindOf="standard">q</FORM>
                 <PHON kindOf="standard">q</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="10_S_6_W1M2">
                 <FORM kindOf="original">rahuq</FORM>
@@ -27996,14 +27996,14 @@
             <FORM kindOf="standard">p-uqi-un</FORM>
             <PHON kindOf="standard">puqiun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-吃-受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-吃-受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-吃-受事焦點</TRANSL>
             <M id="11_S_38_W4M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="11_S_38_W4M1">
                 <FORM kindOf="original">uqi</FORM>
@@ -28601,7 +28601,7 @@
             <FORM kindOf="standard">p&lt;n&gt;eyah=su</FORM>
             <PHON kindOf="standard">pnejaħsu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動&lt;完成貌&gt;來自=你.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動&lt;PFV&gt;來自=你.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;來自=你.NOM</TRANSL>
             <M id="11_S_45_W0M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -32552,14 +32552,14 @@
             <FORM kindOf="standard">p-raguh</FORM>
             <PHON kindOf="standard">pɾaguħ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-開</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-開</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-開</TRANSL>
             <M id="12_S_19_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="12_S_19_W1M1">
                 <FORM kindOf="original">raguh</FORM>
@@ -33310,7 +33310,7 @@
             <FORM kindOf="standard">m-k-seyang</FORM>
             <PHON kindOf="standard">mksejaŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主事焦點-靜態-吵架</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">主事焦點-靜態-吵架</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">主事焦點-STAT-吵架</TRANSL>
             <M id="13_S_5_W2M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -33325,7 +33325,7 @@
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="13_S_5_W2M2">
                 <FORM kindOf="original">seyang</FORM>
@@ -33478,7 +33478,7 @@
             <FORM kindOf="standard">m&lt;n&gt;k-seyang</FORM>
             <PHON kindOf="standard">mnksejaŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主事焦點&lt;完成貌&gt;靜態-吵架</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">主事焦點&lt;PFV&gt;靜態-吵架</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">主事焦點&lt;PFV&gt;STAT-吵架</TRANSL>
             <M id="13_S_6_W3M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -33714,14 +33714,14 @@
             <FORM kindOf="standard">p-setuq</FORM>
             <PHON kindOf="standard">psetuq</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-斷</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-斷</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-斷</TRANSL>
             <M id="13_S_8_W2M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="13_S_8_W2M1">
                 <FORM kindOf="original">setuq</FORM>
@@ -35966,7 +35966,7 @@
             <FORM kindOf="standard">m-p-k-beyax=ku</FORM>
             <PHON kindOf="standard">mpkbejaxku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主事焦點-未來-靜態-用力=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">主事焦點-未來-靜態-用力=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">主事焦點-未來-STAT-用力=我.NOM</TRANSL>
             <M id="13_S_25_W6M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -35989,7 +35989,7 @@
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="13_S_25_W6M3">
                 <FORM kindOf="original">beyax</FORM>
@@ -37941,14 +37941,14 @@
             <FORM kindOf="standard">p-s-qerul-un</FORM>
             <PHON kindOf="standard">psqeɾulun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-s-燒焦-受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-s-燒焦-受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-s-燒焦-受事焦點</TRANSL>
             <M id="13_S_36_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="13_S_36_W1M1">
                 <FORM kindOf="original">s</FORM>
@@ -38115,7 +38115,7 @@
             <FORM kindOf="standard">p&lt;n&gt;heyu-an</FORM>
             <PHON kindOf="standard">pnħejuan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動&lt;完成貌&gt;站立-處所焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動&lt;PFV&gt;站立-處所焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;站立-處所焦點</TRANSL>
             <M id="13_S_37_W3M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -38653,14 +38653,14 @@
             <FORM kindOf="standard">k-rcilung=na</FORM>
             <PHON kindOf="standard">kɾʦiluŋna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-湖泊=它.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-湖泊=它.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-湖泊=它.GEN</TRANSL>
             <M id="13_S_40_W4M0">
                 <FORM kindOf="original">k</FORM>
                 <PHON kindOf="original">k</PHON>
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="13_S_40_W4M1">
                 <FORM kindOf="original">rcilung</FORM>
@@ -39583,7 +39583,7 @@
             <FORM kindOf="standard">p&lt;n&gt;heyu-an</FORM>
             <PHON kindOf="standard">pnħejuan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動&lt;完成貌&gt;站立-處所焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動&lt;PFV&gt;站立-處所焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;站立-處所焦點</TRANSL>
             <M id="14_S_3_W4M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -39705,7 +39705,7 @@
             <FORM kindOf="standard">p&lt;n&gt;heyu-an=na</FORM>
             <PHON kindOf="standard">pnħejuanna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動&lt;完成貌&gt;站立-處所焦點=他.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動&lt;PFV&gt;站立-處所焦點=他.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;站立-處所焦點=他.GEN</TRANSL>
             <M id="14_S_4_W3M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -41171,14 +41171,14 @@
             <FORM kindOf="standard">p-lamu-un</FORM>
             <PHON kindOf="standard">plamuun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-採-受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-採-受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-採-受事焦點</TRANSL>
             <M id="14_S_12_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="14_S_12_W1M1">
                 <FORM kindOf="original">lamu</FORM>
@@ -41235,14 +41235,14 @@
             <FORM kindOf="standard">p-k-seyang</FORM>
             <PHON kindOf="standard">pksejaŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-靜態-生氣</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-靜態-生氣</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-STAT-生氣</TRANSL>
             <M id="14_S_12_W4M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="14_S_12_W4M1">
                 <FORM kindOf="original">k</FORM>
@@ -41250,7 +41250,7 @@
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="14_S_12_W4M2">
                 <FORM kindOf="original">seyang</FORM>
@@ -42151,7 +42151,7 @@
             <FORM kindOf="standard">p-pa-adis</FORM>
             <PHON kindOf="standard">ppaadis</PHON>
             <TRANSL xml:lang="zho" kindOf="original">重疊-使動-帶</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">重疊-使動-帶</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">重疊-CAUS-帶</TRANSL>
             <M id="14_S_17_W3M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
@@ -42166,7 +42166,7 @@
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="14_S_17_W3M2">
                 <FORM kindOf="original">adis</FORM>
@@ -43311,14 +43311,14 @@
             <FORM kindOf="standard">k-rbuni</FORM>
             <PHON kindOf="standard">kɾbuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-聾子</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-聾子</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-聾子</TRANSL>
             <M id="14_S_22_W9M0">
                 <FORM kindOf="original">k</FORM>
                 <PHON kindOf="original">k</PHON>
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="14_S_22_W9M1">
                 <FORM kindOf="original">rbuni</FORM>
@@ -44282,14 +44282,14 @@
             <FORM kindOf="standard">p-gimax-i</FORM>
             <PHON kindOf="standard">pgimaxi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-混合-受事焦點.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-混合-受事焦點.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-混合-受事焦點.祈使</TRANSL>
             <M id="15_S_5_W4M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="15_S_5_W4M1">
                 <FORM kindOf="original">gimax</FORM>
@@ -45762,14 +45762,14 @@
             <FORM kindOf="standard">p-qluli-un=daha</FORM>
             <PHON kindOf="standard">pqluliundaħa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-漂流-受事焦點=他們.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-漂流-受事焦點=他們.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-漂流-受事焦點=他們.GEN</TRANSL>
             <M id="15_S_17_W0M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="15_S_17_W0M1">
                 <FORM kindOf="original">qluli</FORM>
@@ -51885,7 +51885,7 @@
             <FORM kindOf="standard">p&lt;n&gt;s-lutuc-an</FORM>
             <PHON kindOf="standard">pnslutuʦan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動&lt;完成貌&gt;參考焦點-接起來-處所焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動&lt;PFV&gt;參考焦點-接起來-處所焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;參考焦點-接起來-處所焦點</TRANSL>
             <M id="ap1_S_2_W4M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -54498,14 +54498,14 @@
             <FORM kindOf="standard">p-seelih</FORM>
             <PHON kindOf="standard">pseeliħ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-減少</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-減少</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-減少</TRANSL>
             <M id="ap1_S_19_W3M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="ap1_S_19_W3M1">
                 <FORM kindOf="original">seelih</FORM>
@@ -56520,7 +56520,7 @@
             <FORM kindOf="standard">p&lt;n&gt;rengo-an=daha</FORM>
             <PHON kindOf="standard">pnɾeŋoandaħa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動&lt;完成貌&gt;講-處所焦點=他們.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動&lt;PFV&gt;講-處所焦點=他們.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;講-處所焦點=他們.GEN</TRANSL>
             <M id="ap1_S_30_W2M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -56586,14 +56586,14 @@
             <FORM kindOf="standard">p-seli-un=daha</FORM>
             <PHON kindOf="standard">pseliundaħa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-集合-受事焦點=他們.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-集合-受事焦點=他們.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-集合-受事焦點=他們.GEN</TRANSL>
             <M id="ap1_S_31_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="ap1_S_31_W1M1">
                 <FORM kindOf="original">seli</FORM>
@@ -58040,14 +58040,14 @@
             <FORM kindOf="standard">p-lukus-an=daha</FORM>
             <PHON kindOf="standard">plukusandaħa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-穿著-處所焦點=他們.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-穿著-處所焦點=他們.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-穿著-處所焦點=他們.GEN</TRANSL>
             <M id="ap1_S_38_W0M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="ap1_S_38_W0M1">
                 <FORM kindOf="original">lukus</FORM>
@@ -58128,14 +58128,14 @@
             <FORM kindOf="standard">p-adis-an=daha</FORM>
             <PHON kindOf="standard">padisandaħa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-帶-處所焦點=他們.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-帶-處所焦點=他們.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-帶-處所焦點=他們.GEN</TRANSL>
             <M id="ap1_S_38_W4M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="ap1_S_38_W4M1">
                 <FORM kindOf="original">adis</FORM>
@@ -61302,14 +61302,14 @@
             <FORM kindOf="standard">ms-s-riyux</FORM>
             <PHON kindOf="standard">mssɾijux</PHON>
             <TRANSL xml:lang="zho" kindOf="original">互相-參考焦點-輪流</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">互相-參考焦點-輪流</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">RECP-參考焦點-輪流</TRANSL>
             <M id="ap2_S_3_W0M0">
                 <FORM kindOf="original">ms</FORM>
                 <PHON kindOf="original">ms</PHON>
                 <FORM kindOf="standard">ms</FORM>
                 <PHON kindOf="standard">ms</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">互相</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">互相</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">RECP</TRANSL>
             </M>
             <M id="ap2_S_3_W0M1">
                 <FORM kindOf="original">s</FORM>
@@ -61334,14 +61334,14 @@
             <FORM kindOf="standard">p-t-hido</FORM>
             <PHON kindOf="standard">ptħido</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-生-太陽</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-生-太陽</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-生-太陽</TRANSL>
             <M id="ap2_S_3_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="ap2_S_3_W1M1">
                 <FORM kindOf="original">t</FORM>
@@ -62022,7 +62022,7 @@
             <FORM kindOf="standard">k&lt;n&gt;baka</FORM>
             <PHON kindOf="standard">knbaka</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態&lt;完成貌&gt;足夠</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態&lt;PFV&gt;足夠</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT&lt;PFV&gt;足夠</TRANSL>
             <M id="ap2_S_6_W7M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -62344,7 +62344,7 @@
             <FORM kindOf="standard">m-p-k-rana</FORM>
             <PHON kindOf="standard">mpkɾana</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主事焦點-未來-靜態-增加</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">主事焦點-未來-靜態-增加</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">主事焦點-未來-STAT-增加</TRANSL>
             <M id="ap2_S_8_W8M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -62367,7 +62367,7 @@
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="ap2_S_8_W8M3">
                 <FORM kindOf="original">rana</FORM>
@@ -62900,7 +62900,7 @@
             <FORM kindOf="standard">p&lt;n&gt;rengo-an=daha</FORM>
             <PHON kindOf="standard">pnɾeŋoandaħa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動&lt;完成貌&gt;講-處所焦點=他們.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動&lt;PFV&gt;講-處所焦點=他們.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;講-處所焦點=他們.GEN</TRANSL>
             <M id="ap2_S_11_W2M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -64206,14 +64206,14 @@
             <FORM kindOf="standard">k-le-eluw</FORM>
             <PHON kindOf="standard">kleeluw</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-重疊-路</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-重疊-路</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-重疊-路</TRANSL>
             <M id="ap2_S_18_W5M0">
                 <FORM kindOf="original">k</FORM>
                 <PHON kindOf="original">k</PHON>
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="ap2_S_18_W5M1">
                 <FORM kindOf="original">le</FORM>
@@ -66266,14 +66266,14 @@
             <FORM kindOf="standard">k-beyax</FORM>
             <PHON kindOf="standard">kbejax</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-力量</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-力量</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-力量</TRANSL>
             <M id="ap2_S_29_W1M0">
                 <FORM kindOf="original">k</FORM>
                 <PHON kindOf="original">k</PHON>
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="ap2_S_29_W1M1">
                 <FORM kindOf="original">beyax</FORM>
@@ -66362,14 +66362,14 @@
             <FORM kindOf="standard">k-tilux</FORM>
             <PHON kindOf="standard">ktilux</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-熱</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-熱</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-熱</TRANSL>
             <M id="ap2_S_29_W6M0">
                 <FORM kindOf="original">k</FORM>
                 <PHON kindOf="original">k</PHON>
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="ap2_S_29_W6M1">
                 <FORM kindOf="original">tilux</FORM>
@@ -66718,14 +66718,14 @@
             <FORM kindOf="standard">p-alix-an=na</FORM>
             <PHON kindOf="standard">palixanna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-放掉-處所焦點=他.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-放掉-處所焦點=他.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-放掉-處所焦點=他.GEN</TRANSL>
             <M id="ap2_S_32_W0M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="ap2_S_32_W0M1">
                 <FORM kindOf="original">alix</FORM>
@@ -67128,14 +67128,14 @@
             <FORM kindOf="standard">p-snegul-i</FORM>
             <PHON kindOf="standard">psneguli</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-跟著-受事焦點.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動-跟著-受事焦點.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-跟著-受事焦點.祈使</TRANSL>
             <M id="ap2_S_34_W2M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使動</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="ap2_S_34_W2M1">
                 <FORM kindOf="original">snegul</FORM>
@@ -67404,14 +67404,14 @@
             <FORM kindOf="standard">q-bsiyaq</FORM>
             <PHON kindOf="standard">qbsijaq</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-久</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-久</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-久</TRANSL>
             <M id="ap2_S_36_W1M0">
                 <FORM kindOf="original">q</FORM>
                 <PHON kindOf="original">q</PHON>
                 <FORM kindOf="standard">q</FORM>
                 <PHON kindOf="standard">q</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="ap2_S_36_W1M1">
                 <FORM kindOf="original">bsiyaq</FORM>
@@ -68932,7 +68932,7 @@
             <FORM kindOf="standard">p&lt;n&gt;s-lutuc-an</FORM>
             <PHON kindOf="standard">pnslutuʦan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動&lt;完成貌&gt;參考焦點-接起來-處所焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使動&lt;PFV&gt;參考焦點-接起來-處所焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;參考焦點-接起來-處所焦點</TRANSL>
             <M id="ap2_S_44_W4M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -69524,14 +69524,14 @@
             <FORM kindOf="standard">k-le-eluw</FORM>
             <PHON kindOf="standard">kleeluw</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-重疊-路</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-重疊-路</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-重疊-路</TRANSL>
             <M id="ap2_S_46_W12M0">
                 <FORM kindOf="original">k</FORM>
                 <PHON kindOf="original">k</PHON>
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="ap2_S_46_W12M1">
                 <FORM kindOf="original">le</FORM>
@@ -69628,14 +69628,14 @@
             <FORM kindOf="standard">k-s-siyo</FORM>
             <PHON kindOf="standard">kssijo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">靜態-重疊-旁邊</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態-重疊-旁邊</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT-重疊-旁邊</TRANSL>
             <M id="ap2_S_47_W3M0">
                 <FORM kindOf="original">k</FORM>
                 <PHON kindOf="original">k</PHON>
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="ap2_S_47_W3M1">
                 <FORM kindOf="original">s</FORM>
@@ -70372,7 +70372,7 @@
             <FORM kindOf="standard">m-k-le-eluw</FORM>
             <PHON kindOf="standard">mkleeluw</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主事焦點-靜態-重疊-路</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">主事焦點-靜態-重疊-路</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">主事焦點-STAT-重疊-路</TRANSL>
             <M id="ap2_S_51_W1M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -70387,7 +70387,7 @@
                 <FORM kindOf="standard">k</FORM>
                 <PHON kindOf="standard">k</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">靜態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">靜態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="ap2_S_51_W1M2">
                 <FORM kindOf="original">le</FORM>

@@ -433,18 +433,18 @@
             <FORM kindOf="standard">al-ipu-a=s</FORM>
             <PHON kindOf="standard">a[l|ɬ]ipuas</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態-照顧-處焦=屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態-照顧-LV=GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">DUR-照顧-LV=GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">state-take.care-LF=GEN</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">state-take.care-LV=GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">DUR-take.care-LV=GEN</TRANSL>
             <M id="bnNr-frog_Adus_S_5_W6M0">
                 <FORM kindOf="original">al</FORM>
                 <PHON kindOf="original">a[l|ɬ]</PHON>
                 <FORM kindOf="standard">al</FORM>
                 <PHON kindOf="standard">a[l|ɬ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DUR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">state</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">state</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">DUR</TRANSL>
             </M>
             <M id="bnNr-frog_Adus_S_5_W6M1">
                 <FORM kindOf="original">ipu</FORM>
@@ -1348,7 +1348,7 @@
             <FORM kindOf="standard">pa-si-si-skun</FORM>
             <PHON kindOf="standard">paɕiɕiskun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">交互-重疊-拉-一起</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">交互-重疊-拉-一起</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">RECP-重疊-拉-一起</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">REC-RED-pull-together</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RECP-RED-pull-together</TRANSL>
             <M id="bnNr-frog_Adus_S_12_W4M0">
@@ -1357,7 +1357,7 @@
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">交互</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">交互</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RECP</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RECP</TRANSL>
             </M>
@@ -1497,7 +1497,7 @@
             <FORM kindOf="standard">min-na-tasipal=in</FORM>
             <PHON kindOf="standard">minnataɕipa[l|ɬ]in</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變成-到-對面=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變成-到-對面=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">變成-到-對面=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-to-opposite=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">become-to-opposite=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_15_W1M0">
@@ -1536,7 +1536,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -2243,7 +2243,7 @@
             <FORM kindOf="standard">min-na-diip=in</FORM>
             <PHON kindOf="standard">minnadiipin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變成-到-那裡=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變成-到-那裡=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">變成-到-那裡=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-to-there=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">become-to-there=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_20_W1M0">
@@ -2282,7 +2282,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -2313,7 +2313,7 @@
             <FORM kindOf="standard">inkaduan=in</FORM>
             <PHON kindOf="standard">inkaduanin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">找變成.到=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">找變成.到=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">找變成.到=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">find=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">find=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_20_W3M0">
@@ -2332,7 +2332,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -2831,7 +2831,7 @@
             <FORM kindOf="standard">min-na-diip=in</FORM>
             <PHON kindOf="standard">minnadiipin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變成-到-那裡=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變成-到-那裡=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">變成-到-那裡=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-to-there=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">become-to-there=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_24_W2M0">
@@ -2870,7 +2870,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -2901,7 +2901,7 @@
             <FORM kindOf="standard">i-diip=in</FORM>
             <PHON kindOf="standard">idiipin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">在-那裡=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">在-那裡=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">在-那裡=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.at-there=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">be.at-there=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_24_W4M0">
@@ -2930,7 +2930,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -3309,9 +3309,9 @@
             <FORM kindOf="standard">m-al-mangha</FORM>
             <PHON kindOf="standard">ma[l|ɬ]maŋ[x|χ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-狀態-抬頭</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-狀態-抬頭</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-DUR-抬頭</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-state-raise.one's.head</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">AV-state-raise.one's.head</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-DUR-raise.one's.head</TRANSL>
             <M id="bnNr-frog_Adus_S_27_W3M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -3328,9 +3328,9 @@
                 <FORM kindOf="standard">al</FORM>
                 <PHON kindOf="standard">a[l|ɬ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DUR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">state</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">state</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">DUR</TRANSL>
             </M>
             <M id="bnNr-frog_Adus_S_27_W3M2">
                 <FORM kindOf="original">mangha</FORM>
@@ -3906,9 +3906,9 @@
             <FORM kindOf="standard">m-al-ma-mangdav</FORM>
             <PHON kindOf="standard">ma[l|ɬ]mamaŋdav</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-狀態-重疊-從懸崖往下看</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-狀態-重疊-從懸崖往下看</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-DUR-重疊-從懸崖往下看</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-state-RED-look.down.from.cliff</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">AV-state-RED-look.down.from.cliff</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-DUR-RED-look.down.from.cliff</TRANSL>
             <M id="bnNr-frog_Adus_S_32_W6M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -3925,9 +3925,9 @@
                 <FORM kindOf="standard">al</FORM>
                 <PHON kindOf="standard">a[l|ɬ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DUR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">state</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">state</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">DUR</TRANSL>
             </M>
             <M id="bnNr-frog_Adus_S_32_W6M2">
                 <FORM kindOf="original">ma</FORM>
@@ -5146,9 +5146,9 @@
             <FORM kindOf="standard">m-al-kazingking</FORM>
             <PHON kindOf="standard">ma[l|ɬ]kaðiŋkiŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-狀態-懸掛</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-狀態-懸掛</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-DUR-懸掛</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-state-suspend</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">AV-state-suspend</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-DUR-suspend</TRANSL>
             <M id="bnNr-frog_Adus_S_41_W12M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -5165,9 +5165,9 @@
                 <FORM kindOf="standard">al</FORM>
                 <PHON kindOf="standard">a[l|ɬ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DUR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">state</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">state</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">DUR</TRANSL>
             </M>
             <M id="bnNr-frog_Adus_S_41_W12M2">
                 <FORM kindOf="original">kazingking</FORM>
@@ -5922,7 +5922,7 @@
             <FORM kindOf="standard">min-na-tasipal=in=cia</FORM>
             <PHON kindOf="standard">minnataɕipa[l|ɬ]inʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變成-到-對面=改變狀態=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變成-到-對面=改變狀態=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">變成-到-對面=COS=遠距.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-to-opposite=COS=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">become-to-opposite=COS=DIST.OBL</TRANSL>
             <M id="bnNr-frog_Adus_S_50_W1M0">
@@ -5961,7 +5961,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -6162,7 +6162,7 @@
             <FORM kindOf="standard">min-na-tasipal=in</FORM>
             <PHON kindOf="standard">minnataɕipa[l|ɬ]in</PHON>
             <TRANSL xml:lang="zho" kindOf="original">到-對面=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">到-對面=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">到-對面=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-to-opposite=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">become-to-opposite=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_50_W10M0">
@@ -6191,7 +6191,7 @@
                 <FORM kindOf="standard">tasipal</FORM>
                 <PHON kindOf="standard">taɕipa[l|ɬ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">opposite</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">opposite</TRANSL>
             </M>
@@ -7028,7 +7028,7 @@
             <FORM kindOf="standard">miku=in</FORM>
             <PHON kindOf="standard">mikuin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">如何=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">如何=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">如何=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">how=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">how=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_59_W1M0">
@@ -7047,7 +7047,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -7447,9 +7447,9 @@
             <FORM kindOf="standard">m-al-kalapat</FORM>
             <PHON kindOf="standard">ma[l|ɬ]ka[l|ɬ]apat</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-狀態-懸崖</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-狀態-懸崖</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-DUR-懸崖</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-state-cliff</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">AV-state-cliff</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-DUR-cliff</TRANSL>
             <M id="bnNr-frog_Adus_S_61_W6M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -7466,9 +7466,9 @@
                 <FORM kindOf="standard">al</FORM>
                 <PHON kindOf="standard">a[l|ɬ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DUR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">state</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">state</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">DUR</TRANSL>
             </M>
             <M id="bnNr-frog_Adus_S_61_W6M2">
                 <FORM kindOf="original">kalapat</FORM>
@@ -7906,7 +7906,7 @@
             <FORM kindOf="standard">cin-sivus=in</FORM>
             <PHON kindOf="standard">ʨinɕivuɕin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">突然-轉頭=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">突然-轉頭=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">突然-轉頭=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">sudden-turn.head=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">sudden-turn.head=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_64_W12M0">
@@ -7935,7 +7935,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -9241,9 +9241,9 @@
             <FORM kindOf="standard">m-al-kalapat</FORM>
             <PHON kindOf="standard">ma[l|ɬ]ka[l|ɬ]apat</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-狀態-懸崖</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-狀態-懸崖</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-DUR-懸崖</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-state-cliff</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">AV-state-cliff</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-DUR-cliff</TRANSL>
             <M id="bnNr-frog_Adus_S_79_W7M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -9260,9 +9260,9 @@
                 <FORM kindOf="standard">al</FORM>
                 <PHON kindOf="standard">a[l|ɬ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DUR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">state</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">state</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">DUR</TRANSL>
             </M>
             <M id="bnNr-frog_Adus_S_79_W7M2">
                 <FORM kindOf="original">kalapat</FORM>
@@ -10356,9 +10356,9 @@
             <FORM kindOf="standard">m-al&lt;ta&gt;taunghu</FORM>
             <PHON kindOf="standard">ma[l|ɬ]tatauŋ[x|χ]u</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-狀態&lt;重疊&gt;正上方</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-狀態&lt;重疊&gt;正上方</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-DUR&lt;重疊&gt;正上方</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-state&lt;RED&gt;right.above</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">AV-state&lt;RED&gt;right.above</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-DUR&lt;RED&gt;right.above</TRANSL>
             <M id="bnNr-frog_Adus_S_87_W0M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -12338,7 +12338,7 @@
             <FORM kindOf="standard">aiz=in</FORM>
             <PHON kindOf="standard">aiðin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">EXIST=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">EXIST=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_104_W7M0">
@@ -12357,7 +12357,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -12776,7 +12776,7 @@
             <FORM kindOf="standard">i-tasipal=in</FORM>
             <PHON kindOf="standard">itaɕipa[l|ɬ]in</PHON>
             <TRANSL xml:lang="zho" kindOf="original">在-對面=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">在-對面=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">在-對面=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.at-opposite=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">be.at-opposite=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_107_W5M0">
@@ -12805,7 +12805,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -13472,7 +13472,7 @@
             <FORM kindOf="standard">m-un-'apav=in</FORM>
             <PHON kindOf="standard">munʔapavin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-前進-外面=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-前進-外面=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-前進-外面=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-head.to-outside=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-head.to-outside=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_114_W3M0">
@@ -13511,7 +13511,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -13921,7 +13921,7 @@
             <FORM kindOf="standard">a-ska-diip=in</FORM>
             <PHON kindOf="standard">askadiipin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-途中某處-那裡=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-途中某處-那裡=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-途中某處-那裡=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-somewhere.on.the.way-there=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-somewhere.on.the.way-there=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_117_W1M0">
@@ -13960,7 +13960,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -14419,7 +14419,7 @@
             <FORM kindOf="standard">aiz=in</FORM>
             <PHON kindOf="standard">aiðin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">EXIST=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">EXIST=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_120_W1M0">
@@ -14438,7 +14438,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -14639,7 +14639,7 @@
             <FORM kindOf="standard">min-na-diip=in</FORM>
             <PHON kindOf="standard">minnadiipin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變成-到-那裡=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變成-到-那裡=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">變成-到-那裡=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-to-there=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">become-to-there=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_120_W9M0">
@@ -14678,7 +14678,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -14709,7 +14709,7 @@
             <FORM kindOf="standard">a-diip=in</FORM>
             <PHON kindOf="standard">adiipin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-那裡=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-那裡=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-那裡=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-there=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-there=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_120_W11M0">
@@ -14738,7 +14738,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -14779,7 +14779,7 @@
             <FORM kindOf="standard">inkaduan=in</FORM>
             <PHON kindOf="standard">inkaduanin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">找到=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">找到=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">找到=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">find=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">find=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_120_W13M0">
@@ -14798,7 +14798,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -15436,7 +15436,7 @@
             <FORM kindOf="standard">aiz=in</FORM>
             <PHON kindOf="standard">aiðin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">EXIST=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">EXIST=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_127_W2M0">
@@ -15455,7 +15455,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -15815,7 +15815,7 @@
             <FORM kindOf="standard">sangan=in</FORM>
             <PHON kindOf="standard">saŋanin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">瞬間=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">瞬間=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">瞬間=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">a.moment=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">a.moment=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_130_W4M0">
@@ -15834,7 +15834,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -16344,7 +16344,7 @@
             <FORM kindOf="standard">min-aiz=in</FORM>
             <PHON kindOf="standard">minaiðin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變成-存在=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變成-存在=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">變成-存在=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-EXIST=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">become-EXIST=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_133_W14M0">
@@ -16373,7 +16373,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -16842,7 +16842,7 @@
             <FORM kindOf="standard">un-dusa-an=in</FORM>
             <PHON kindOf="standard">undusaanin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">人一起-二-處焦=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">人一起-二-LV=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">人一起-二-LV=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">people.together-two-LF=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">people.together-two-LV=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_138_W4M0">
@@ -16881,7 +16881,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -16982,9 +16982,9 @@
             <FORM kindOf="standard">m-al&lt;ta&gt;takzang</FORM>
             <PHON kindOf="standard">ma[l|ɬ]tatakðaŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主格-狀態&lt;重疊&gt;躺</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">NOM-狀態&lt;重疊&gt;躺</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NOM-DUR&lt;重疊&gt;躺</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-state&lt;RED&gt;lie</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">AV-state&lt;RED&gt;lie</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-DUR&lt;RED&gt;lie</TRANSL>
             <M id="bnNr-frog_Adus_S_138_W9M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -17051,7 +17051,7 @@
             <FORM kindOf="standard">m-un-'apav=in</FORM>
             <PHON kindOf="standard">munʔapavin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-前進-外面=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-前進-外面=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-前進-外面=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-head.to-outside=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-head.to-outside=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_140_W0M0">
@@ -17090,7 +17090,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -17280,7 +17280,7 @@
             <FORM kindOf="standard">m-al&lt;si&gt;sivit</FORM>
             <PHON kindOf="standard">ma[l|ɬ]ɕiɕivit</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-狀態&lt;重疊&gt;觀察</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-狀態&lt;重疊&gt;觀察</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-DUR&lt;重疊&gt;觀察</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-STAT&lt;RED&gt;observe</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-STAT&lt;RED&gt;observe</TRANSL>
             <M id="bnNr-frog_Adus_S_142_W2M0">
@@ -17419,7 +17419,7 @@
             <FORM kindOf="standard">m-un-'apav=in</FORM>
             <PHON kindOf="standard">munʔapavin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-前進-外面=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-前進-外面=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-前進-外面=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-head.to-outside=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-head.to-outside=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_143_W1M0">
@@ -17458,7 +17458,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -18963,9 +18963,9 @@
             <FORM kindOf="standard">m-al-ma-mangdav</FORM>
             <PHON kindOf="standard">ma[l|ɬ]mamaŋdav</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-狀態-Ca重疊-從懸崖往下看</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-狀態-Ca重疊-從懸崖往下看</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-DUR-Ca重疊-從懸崖往下看</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-state-Ca-look.down.from.cliff</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">AV-state-Ca-look.down.from.cliff</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-DUR-Ca-look.down.from.cliff</TRANSL>
             <M id="bnNr-frog_Adus_S_156_W2M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -18982,9 +18982,9 @@
                 <FORM kindOf="standard">al</FORM>
                 <PHON kindOf="standard">a[l|ɬ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DUR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">state</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">state</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">DUR</TRANSL>
             </M>
             <M id="bnNr-frog_Adus_S_156_W2M2">
                 <FORM kindOf="original">ma</FORM>
@@ -19630,7 +19630,7 @@
             <FORM kindOf="standard">min-na-diip=in</FORM>
             <PHON kindOf="standard">minnadiipin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變成-到-那裡=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變成-到-那裡=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">變成-到-那裡=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-to-there=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">become-to-there=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_165_W1M0">
@@ -19669,7 +19669,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -19740,7 +19740,7 @@
             <FORM kindOf="standard">a-diip=in</FORM>
             <PHON kindOf="standard">adiipin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-那裡=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-那裡=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-那裡=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-there=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-there=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_165_W5M0">
@@ -19769,7 +19769,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -19899,7 +19899,7 @@
             <FORM kindOf="standard">ma-naskal=in</FORM>
             <PHON kindOf="standard">manaska[l|ɬ]in</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-快樂=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-快樂=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-快樂=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-happy=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-happy=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_167_W1M0">
@@ -19928,7 +19928,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -19979,7 +19979,7 @@
             <FORM kindOf="standard">aiz=in</FORM>
             <PHON kindOf="standard">aiðin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">EXIST=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">EXIST=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_167_W4M0">
@@ -19998,7 +19998,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -20327,7 +20327,7 @@
             <FORM kindOf="standard">min-na-diip=in</FORM>
             <PHON kindOf="standard">minnadiipin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變成-到-那裡=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變成-到-那裡=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">變成-到-那裡=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-to-there=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">become-to-there=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_171_W2M0">
@@ -20366,7 +20366,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -20397,7 +20397,7 @@
             <FORM kindOf="standard">ku-da-daza=in</FORM>
             <PHON kindOf="standard">kudadaðain</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-重疊-上面=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">去-重疊-上面=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">去-重疊-上面=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-RED-upside=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">go-RED-upside=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_171_W4M0">
@@ -20436,7 +20436,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -20536,7 +20536,7 @@
             <FORM kindOf="standard">a-diip=in</FORM>
             <PHON kindOf="standard">adiipin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-那裡=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-那裡=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-那裡=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-there=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-there=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_173_W0M0">
@@ -20565,7 +20565,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -20576,7 +20576,7 @@
             <FORM kindOf="standard">supah=in</FORM>
             <PHON kindOf="standard">supa[x|χ]in</PHON>
             <TRANSL xml:lang="zho" kindOf="original">多=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">多=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">多=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">many=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">many=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_173_W1M0">
@@ -20595,7 +20595,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -20696,7 +20696,7 @@
             <FORM kindOf="standard">inkaduan=in</FORM>
             <PHON kindOf="standard">inkaduanin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">找到=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">找到=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">找到=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">find=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">find=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_173_W5M0">
@@ -20715,7 +20715,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -20755,7 +20755,7 @@
             <FORM kindOf="standard">ma-naskal=in</FORM>
             <PHON kindOf="standard">manaska[l|ɬ]in</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-快樂=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-快樂=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-快樂=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-happy=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-happy=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_175_W0M0">
@@ -20784,7 +20784,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -21692,7 +21692,7 @@
             <FORM kindOf="standard">ma-naskal=in</FORM>
             <PHON kindOf="standard">manaska[l|ɬ]in</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-快樂=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-快樂=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-快樂=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-happy=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-happy=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_182_W5M0">
@@ -21721,7 +21721,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -21802,7 +21802,7 @@
             <FORM kindOf="standard">min-aiz=in</FORM>
             <PHON kindOf="standard">minaiðin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變-存在=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變-存在=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">變-存在=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">change-EXIST=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">change-EXIST=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_182_W9M0">
@@ -21831,7 +21831,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -22232,7 +22232,7 @@
             <FORM kindOf="standard">na=m-u-daan=in</FORM>
             <PHON kindOf="standard">namudaanin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-去-路=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">IRR=AV-去-路=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IRR=AV-去-路=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IRR=AF-go-road=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">IRR=AV-go-road=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_188_W0M0">
@@ -22281,7 +22281,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -22461,7 +22461,7 @@
             <FORM kindOf="standard">na=sidahda=in</FORM>
             <PHON kindOf="standard">naɕida[x|χ]dain</PHON>
             <TRANSL xml:lang="zho" kindOf="original">非實現=遠離=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">IRR=遠離=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IRR=遠離=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IRR=leave=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">IRR=leave=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_189_W0M0">
@@ -22490,7 +22490,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -22720,7 +22720,7 @@
             <FORM kindOf="standard">na=m-u-daan=in</FORM>
             <PHON kindOf="standard">namudaanin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-去-路=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">IRR=AV-去-路=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IRR=AV-去-路=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IRR=AF-go-road=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">IRR=AV-go-road=COS</TRANSL>
             <M id="bnNr-frog_Adus_S_190_W7M0">
@@ -22769,7 +22769,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>

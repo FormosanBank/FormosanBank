@@ -25012,3 +25012,16 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
 - New cards P1–P3 (his request): Wild-Lehmann parens inventory (81 tokens / 39 distinct: voice ×55,
   numeral(person) ×22, sikaisiisi(ritual) ×4) with LGR Rule 7/6 quotes; rewrite options would need a
   parens extension to the shared converter — the card choice is the approval request for that.
+
+### 2026-11-15 (cont. 2) — RULED: cards A, A2, P3; P1 question answered
+- Card A — choice `approve` ("Approve all rows above (Bunun 狀態 decided by A2)") → ten NTU zho rows → Latin
+  twins (使動/役使/使→CAUS, 狀態/靜態→STAT, 改變狀態/狀態改變→COS, 反身→REFL, 交互/互相→RECP); NTU rebuilt,
+  4,162 changed pairs, zero lines without a target atom. 重現 still held for card B.
+- Card A2 — choice `dur` → Bunun-only overrides 狀態→DUR, eng state→DUR (grammar: al- = 持續貌2, PDF 146);
+  Rukai eng state ×4 stays lexical; Bunun dict +DUR.
+- Card P3 — choice `drop` → RULED: standard sikaisiisi, "(ritual)" to notes. IMPLEMENTATION PENDING with
+  P1/P2 (needs parens extension to shared apply_gloss_standard.py; approval to be requested with the diff).
+- Card P1 — his note asks round-parens vs X.Y; answered on the card + chat (LGR 4/6/7 distinction), go.AV
+  option added. P2 open; card B still `modify` with empty note.
+- Observed, not fixed: 2 pre-existing V067 HARD in NTU Stories original FORMs (hoN2T>, shiaolingLM> — at
+  HEAD and in NTU's source JSONs; CodeAndDocs/scripts/repair_l2_markers.py references these L2 markers).

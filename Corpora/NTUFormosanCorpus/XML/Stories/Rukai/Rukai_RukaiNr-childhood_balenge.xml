@@ -490,7 +490,7 @@
             <FORM kindOf="standard">ka-dalame=aku</FORM>
             <PHON kindOf="standard">kadalaməaku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.非實現-喜歡=第一人稱單數.附著主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR-喜歡=第一人稱單數.附著主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR-喜歡=第一人稱單數.附著主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-like=1S.BN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-like=1S.BN</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_5_W4M0">
@@ -499,7 +499,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.非實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>
@@ -1567,7 +1567,7 @@
             <FORM kindOf="standard">ma-tuase</FORM>
             <PHON kindOf="standard">matuasə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.實現-離開</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.實現-離開</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.實現-離開</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.RLS-leave</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.RLS-leave</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_13_W10M0">
@@ -1576,7 +1576,7 @@
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.實現</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.RLS</TRANSL>
             </M>
@@ -2104,7 +2104,7 @@
             <FORM kindOf="standard">maka-malra</FORM>
             <PHON kindOf="standard">makamaɭa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">互相-拿</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">互相-拿</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">RECP-拿</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">RECP-take</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RECP-take</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_19_W7M0">
@@ -2113,7 +2113,7 @@
                 <FORM kindOf="standard">maka</FORM>
                 <PHON kindOf="standard">maka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">互相</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">互相</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RECP</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RECP</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RECP</TRANSL>
             </M>
@@ -2234,7 +2234,7 @@
             <FORM kindOf="standard">maka-malra-ane</FORM>
             <PHON kindOf="standard">makamaɭaanə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">互相-拿-名物化</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">互相-拿-NMLZ</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">RECP-拿-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">RECP-take-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RECP-take-NMLZ</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_19_W13M0">
@@ -2243,7 +2243,7 @@
                 <FORM kindOf="standard">maka</FORM>
                 <PHON kindOf="standard">maka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">互相</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">互相</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RECP</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RECP</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RECP</TRANSL>
             </M>
@@ -2931,7 +2931,7 @@
             <FORM kindOf="standard">ka-tuase</FORM>
             <PHON kindOf="standard">katuasə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.離開-去</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.離開-去</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.離開-去</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-leave</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-leave</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_25_W6M0">
@@ -2940,7 +2940,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.離開</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.離開</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.離開</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>
@@ -3607,7 +3607,7 @@
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.實現</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.RLS</TRANSL>
             </M>
@@ -5091,7 +5091,7 @@
             <FORM kindOf="standard">ka-amani</FORM>
             <PHON kindOf="standard">kaamani</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.非實現-是</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR-是</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR-是</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-be</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-be</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_47_W1M0">
@@ -5100,7 +5100,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.非實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>
@@ -8140,7 +8140,7 @@
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.實現</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.RLS</TRANSL>
             </M>
@@ -9325,7 +9325,7 @@
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.實現</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.RLS</TRANSL>
             </M>
@@ -12231,7 +12231,7 @@
             <FORM kindOf="standard">ki-ta-ngi-dra&lt;ka&gt;kale-ane</FORM>
             <PHON kindOf="standard">kitaŋiɖakakaləanə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">KI-名物化-反身-&lt;重疊&gt;起立-名物化</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">KI-NMLZ-反身-&lt;重疊&gt;起立-NMLZ</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">KI-NMLZ-REFL-&lt;重疊&gt;起立-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">KI-NMLZ-REFL-&lt;RED&gt;stand-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">KI-NMLZ-REFL-&lt;RED&gt;stand-NMLZ</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_111_W13M0">
@@ -12260,7 +12260,7 @@
                 <FORM kindOf="standard">ngi</FORM>
                 <PHON kindOf="standard">ŋi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">反身</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">反身</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">REFL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REFL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">REFL</TRANSL>
             </M>
@@ -12669,7 +12669,7 @@
             <FORM kindOf="standard">ka-tuase</FORM>
             <PHON kindOf="standard">katuasə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.實現-離開</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.實現-離開</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.實現-離開</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-leave</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-leave</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_117_W4M0">
@@ -12678,7 +12678,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.實現</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>
@@ -13287,7 +13287,7 @@
             <FORM kindOf="standard">ka-tuase</FORM>
             <PHON kindOf="standard">katuasə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.非實現-離開</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR-離開</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR-離開</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-leave</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-leave</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_128_W3M0">
@@ -13296,7 +13296,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.非實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>
@@ -13467,7 +13467,7 @@
             <FORM kindOf="standard">ki-ta-ngi-dra&lt;ka&gt;kale-ane</FORM>
             <PHON kindOf="standard">kitaŋiɖakakaləanə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">KI-名物化-反身-&lt;重疊&gt;起立-名物化</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">KI-NMLZ-反身-&lt;重疊&gt;起立-NMLZ</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">KI-NMLZ-REFL-&lt;重疊&gt;起立-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">KI-NMLZ-REFL-&lt;RED&gt;stand-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">KI-NMLZ-REFL-&lt;RED&gt;stand-NMLZ</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_128_W11M0">
@@ -13496,7 +13496,7 @@
                 <FORM kindOf="standard">ngi</FORM>
                 <PHON kindOf="standard">ŋi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">反身</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">反身</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">REFL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REFL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">REFL</TRANSL>
             </M>
@@ -15110,7 +15110,7 @@
             <FORM kindOf="standard">ma-pa-pangale</FORM>
             <PHON kindOf="standard">mapapaŋalə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.實現-重疊-多</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.實現-重疊-多</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.實現-重疊-多</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.RLS-RED-more</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.RLS-RED-more</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_149_W4M0">
@@ -15119,7 +15119,7 @@
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.實現</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.RLS</TRANSL>
             </M>
@@ -15568,7 +15568,7 @@
             <FORM kindOf="standard">ka-tuase</FORM>
             <PHON kindOf="standard">katuasə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.非實現-離開</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR-離開</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR-離開</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-leave</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-leave</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_157_W1M0">
@@ -15577,7 +15577,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.非實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>
@@ -15977,7 +15977,7 @@
             <FORM kindOf="standard">ka-tuase</FORM>
             <PHON kindOf="standard">katuasə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.非現實-離開</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.非現實-離開</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.非現實-離開</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-leave</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-leave</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_160_W10M0">
@@ -15986,7 +15986,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.非現實</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.非現實</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.非現實</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>
@@ -17032,7 +17032,7 @@
             <FORM kindOf="standard">ngi-miya=nga</FORM>
             <PHON kindOf="standard">ŋimijaŋa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">反身-像=完成貌</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">反身-像=PFV</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">REFL-像=PFV</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">REFL-like=PFV</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">REFL-like=PFV</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_175_W2M0">
@@ -17041,7 +17041,7 @@
                 <FORM kindOf="standard">ngi</FORM>
                 <PHON kindOf="standard">ŋi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">反身</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">反身</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">REFL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REFL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">REFL</TRANSL>
             </M>
@@ -17531,7 +17531,7 @@
             <FORM kindOf="standard">ka-dalame=aku</FORM>
             <PHON kindOf="standard">kadalaməaku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.非實現-喜歡=第一人稱單數.附著主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR-喜歡=第一人稱單數.附著主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR-喜歡=第一人稱單數.附著主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-like=1S.BN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-like=1S.BN</TRANSL>
             <M id="RukaiNr-childhood_balenge_S_179_W5M0">
@@ -17540,7 +17540,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.非實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>

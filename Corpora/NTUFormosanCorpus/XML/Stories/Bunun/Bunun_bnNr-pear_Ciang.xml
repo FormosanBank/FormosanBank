@@ -2502,7 +2502,7 @@
             <FORM kindOf="standard">aip=in=cin</FORM>
             <PHON kindOf="standard">aipinʨin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">今天=改變狀態=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">今天=改變狀態=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">今天=COS=遠距.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">today=COS=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">today=COS=DIST.OBL</TRANSL>
             <M id="bnNr-pear_Ciang_S_37_W0M0">
@@ -2521,7 +2521,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -3979,7 +3979,7 @@
             <TRANSL xml:lang="zho" kindOf="original">躲藏</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">躲藏</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-state-hide</TRANSL>
-        <TRANSL xml:lang="eng" kindOf="standard">AV-state-hide</TRANSL>
+        <TRANSL xml:lang="eng" kindOf="standard">AV-DUR-hide</TRANSL>
         </W>
         <W id="bnNr-pear_Ciang_S_53_W7">
             <FORM kindOf="original">m-al-habin</FORM>
@@ -5286,7 +5286,7 @@
             <FORM kindOf="standard">m-ap-u-nahtung</FORM>
             <PHON kindOf="standard">mapuna[x|χ]tuŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-互相-去-終點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-互相-去-終點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-RECP-去-終點</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-REC-go-ending</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-RECP-go-ending</TRANSL>
             <M id="bnNr-pear_Ciang_S_68_W0M0">
@@ -5305,7 +5305,7 @@
                 <FORM kindOf="standard">ap</FORM>
                 <PHON kindOf="standard">ap</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">互相</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">互相</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RECP</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RECP</TRANSL>
             </M>
@@ -10548,7 +10548,7 @@
             <FORM kindOf="standard">kaaz=in</FORM>
             <PHON kindOf="standard">kaaðin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">就=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">就=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">就=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">just=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">just=COS</TRANSL>
             <M id="bnNr-pear_Ciang_S_114_W11M0">
@@ -10567,7 +10567,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -10807,7 +10807,7 @@
             <FORM kindOf="standard">matmuz=in</FORM>
             <PHON kindOf="standard">matmuðin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">滿=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">滿=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">滿=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">full=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">full=COS</TRANSL>
             <M id="bnNr-pear_Ciang_S_116_W9M0">
@@ -10826,7 +10826,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -10906,7 +10906,7 @@
             <FORM kindOf="standard">kaz=in</FORM>
             <PHON kindOf="standard">kaðin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">就=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">就=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">就=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">just=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">just=COS</TRANSL>
             <M id="bnNr-pear_Ciang_S_118_W1M0">
@@ -10925,7 +10925,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -11006,7 +11006,7 @@
             <FORM kindOf="standard">uk=in</FORM>
             <PHON kindOf="standard">ukin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定.存在=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">NEG.存在=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.存在=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NEG.EXIST=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">NEG.EXIST=COS</TRANSL>
             <M id="bnNr-pear_Ciang_S_118_W5M0">
@@ -11025,7 +11025,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -11504,7 +11504,7 @@
             <FORM kindOf="standard">k-ana-'anak=in</FORM>
             <PHON kindOf="standard">kanaʔanakin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">做-重疊-自己=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">做-重疊-自己=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">做-重疊-自己=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">do-RED-self=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">do-RED-self=COS</TRANSL>
             <M id="bnNr-pear_Ciang_S_124_W0M0">
@@ -11543,7 +11543,7 @@
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
