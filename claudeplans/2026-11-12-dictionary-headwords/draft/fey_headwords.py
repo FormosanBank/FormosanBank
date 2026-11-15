@@ -47,7 +47,7 @@ def main() -> int:
     ap.add_argument("--xref", choices=["drop", "translation"], default="drop")
     ap.add_argument("--affix", choices=["keep", "drop"], default="keep")
     ap.add_argument("--see-also", choices=["none", "notes"], default="none")
-    ap.add_argument("--fixme", choices=["keep", "drop"], default="keep",
+    ap.add_argument("--fixme", choices=["keep", "drop", "part"], default="keep",
                     help="drop: a Chinese sense marked (FIXME) is not published; its English TRANSL says so in notes")
     a = ap.parse_args()
 
@@ -93,7 +93,15 @@ def main() -> int:
                     continue
             if "FIXME" in zho.upper():
                 stats["Chinese senses marked FIXME"] += 1
-                if a.fixme == "drop":
+                parts = [x.strip() for x in zho.split("；")]
+                if a.fixme == "part" and len(parts) > 1:
+                    bad = [x for x in parts if "FIXME" in x.upper()]
+                    zho = "；".join(x for x in parts if "FIXME" not in x.upper())
+                    marked = "；".join(re.sub(r"\s*\(FIXME\)\s*", "", x, flags=re.I) for x in bad)
+                    if eng:
+                        eng_notes[eng] = f'Part of the source\'s Chinese translation, {marked}, was marked "FIXME" and has been dropped.'
+                    stats["Chinese FIXME: only the marked part dropped"] += 1
+                elif a.fixme in ("drop", "part"):
                     zho = ""
                     if eng:
                         eng_notes[eng] = FIXME_NOTE

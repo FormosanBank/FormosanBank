@@ -16,6 +16,7 @@ from collections import Counter
 from pathlib import Path
 
 XML_NS = "http://www.w3.org/XML/1998/namespace"
+CUTS, POSL, BORROW, BORROW_RAW = set(), set(), {}, {}
 ET.register_namespace("xml", XML_NS)
 SPECIAL = {"=.json", "ch-mapping.json", "index.json", "lenToRegex.json",
            "precomputed.json", "stem-words.json"}
@@ -23,6 +24,22 @@ CJK = re.compile(r"[㐀-鿿]")
 XREF = re.compile(r"^(同|參見|參閱|參看|詳見|見)\s*")
 LABEL = re.compile(r"〔[^〕]*〕|\[[^\]]*\]")
 EMB = re.compile(r"^([A-Za-z'^ ,.!?\-]+?)[.!?]?\s*([\u3400-\u9fff].*)$")
+
+
+def load_tsv(path):
+    import csv
+    return list(csv.DictReader(open(path, encoding="utf-8"), delimiter="\t")) if path else []
+
+
+LEAD = re.compile(r"^[（(]([^（）()]{1,14})[）)]\s*[。.]?\s*")
+
+
+def tidy(x):
+    """text after a label is moved out: collapse spaces, doubled 。, trailing commas"""
+    x = re.sub(r"\s+", " ", x).strip()
+    x = re.sub(r"\s+([。，、；])", r"\1", x)
+    x = re.sub(r"。+", "。", x)
+    return x.strip(" ，,、；;")
 
 
 def load_sections(path):
@@ -78,6 +95,12 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
         "glottocode": "amis1246",
         "dialect": "Coastal",
     })
+    global CUTS, POSL, BORROW, BORROW_RAW
+    CUTS = {(r["FORM"], r["piece_1"], r["piece_2"]) for r in load_tsv(args.cuts) if r.get("check_2015") == "pasting reproduces 2015"}
+    POSL = {r["label"] for r in load_tsv(args.pos) if r.get("treated_as_part_of_speech") == "yes"}
+    rows = load_tsv(args.borrow)
+    BORROW = {r["label_as_printed"]: r["note_text"] for r in rows}
+    BORROW_RAW = {r["label_as_printed"]: r["label_as_printed"] for r in rows}
     sec_acts, printed = load_sections(args.sections)
     if args.keep_24:
         sec_acts = {k: [["keep" if a == "drop-24" else a for a in h] for h in v] for k, v in sec_acts.items()}
@@ -142,8 +165,8 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
                         continue
                     if args.nochinese == "drop":
                         continue
-                if sense not in groups[form]:
-                    groups[form].append(sense)
+                if sense not in [x for x, _ in groups[form]]:
+                    groups[form].append((sense, hi))
                 else:
                     stats["repeated sense text merged"] += 1
                 if args.syn_rel == "notes":
@@ -152,8 +175,42 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
                             note = f"{label}: {clean(w)}"
                             if note not in notes_by_form[form]:
                                 notes_by_form[form].append(note)
-        for k, (form, senses) in enumerate(groups.items(), 1):
+        for k, (form, pairs) in enumerate(groups.items(), 1):
             notes = list(notes_by_form.get(form, []))
+            # r2-cut-paste (RULED): rejoin translations the converter broke at a source paragraph break
+            i = 0
+            while i + 1 < len(pairs):
+                if (form, pairs[i][0], pairs[i + 1][0]) in CUTS:
+                    pairs[i:i + 2] = [(pairs[i][0] + pairs[i + 1][0], pairs[i][1])]
+                    stats["broken translations rejoined"] += 1
+                i += 1
+            # r2-pos (RULED): part-of-speech labels to TRANSL notes; a label standing alone applies to the
+            # following senses of the same upstream entry, up to the next label
+            out, cur = [], {}
+            for x, hi in pairs:
+                m = LEAD.match(x); L = m.group(1).strip() if m else None
+                if L in POSL and not x[m.end():].strip(" 。."):
+                    cur[hi] = L; stats["part-of-speech label standing alone, moved to notes"] += 1; continue
+                if L in POSL:
+                    out.append([x[m.end():].strip(), [L]]); stats["part-of-speech label at start of sense, moved to notes"] += 1; continue
+                out.append([x, [cur[hi]] if cur.get(hi) else []])
+            # r2-borrow (RULED, borrow_labels.tsv): borrowing labels to TRANSL notes; r2-loanonly (RULED): a sense that
+            # is only a label goes to FORM notes
+            senses, tnotes = [], []
+            for x, tn in out:
+                hit = [lab for lab in BORROW if lab in x]
+                for lab in hit:
+                    x = x.replace(lab, "")
+                    tn.append(BORROW[lab])
+                if hit:
+                    stats["borrowing labels moved to TRANSL notes"] += len(hit)
+                    x = tidy(x)
+                    if not x.strip(" 。.，,"):
+                        notes.extend(BORROW_RAW[l] for l in hit); stats["sense that is only a borrowing label, moved to FORM notes"] += 1
+                        continue
+                if x in senses:
+                    stats["repeated sense text merged"] += 1; continue
+                senses.append(x); tnotes.append(tn)
             if args.stem_tag == "notes":
                 if entry.get("stem"):
                     notes.insert(0, f"Stem: {entry['stem']}")
@@ -173,6 +230,8 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
                 a = {f"{{{XML_NS}}}lang": "zho"}
                 if i:
                     a["ver"] = "alt"
+                if tnotes[i]:
+                    a["notes"] = " | ".join(dict.fromkeys(tnotes[i]))
                 ET.SubElement(s, "TRANSL", a).text = sense
             stats["S written"] += 1
             stats["TRANSL written"] += len(senses)
@@ -199,6 +258,9 @@ def main() -> int:
     p.add_argument("--merged", choices=["keep", "drop"], default="keep")
     p.add_argument("--embedded", choices=["keep", "drop"], default="keep")
     p.add_argument("--keep-24", action="store_true", help="with --sections: drop section-23 senses only")
+    p.add_argument("--cuts", type=Path, help="cut_confirmed.tsv: rejoin the breaks whose pasted text matches the 2015 text")
+    p.add_argument("--pos", type=Path, help="pos_labels.tsv: labels marked yes go to TRANSL notes")
+    p.add_argument("--borrow", type=Path, help="borrow_labels.tsv: borrowing labels go to TRANSL notes")
     p.add_argument("--log", type=Path)
     a = p.parse_args()
     tree, stats, log = build(a)

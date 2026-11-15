@@ -338,3 +338,22 @@ python3 -I round2_extra.py $WORK
 python3 -I assemble_round2.py $WORK
 ```
 cut_2015.py reproduces the earlier inline 2015 comparison byte for byte on the earlier draft (152 confirmed: 90/5/24/33).
+
+## 10. Round 2 answers applied; round 3 page (version 6)
+
+Round 2 answers (copied from the page db into `answers/`) are quoted in the decision log. Applied in the generators:
+borrowing labels to TRANSL notes (borrow_labels.tsv), part-of-speech labels to TRANSL notes (pos_labels.tsv; the
+maintainer wants this TSV in CodeAndDocs/ and linked from the README's pipeline section), loan-only senses to FORM
+notes, 90 broken translations rejoined (cut_confirmed_r2.tsv rows "pasting reproduces 2015"), Fey prefixes out, Fey
+FIXME: only the marked part dropped.
+
+```bash
+python3 -I safolu_headwords.py $COMMON --cuts cut_confirmed_r2.tsv --pos pos_labels.tsv --borrow borrow_labels.tsv \
+  --out $WORK/draft/out_r2/XML/Amis/Safolu/amis_safolu_headwords.xml           # 42,318 S, 56,271 TRANSL
+python3 -I fey_headwords.py --sheet .../virginia_fey_source.csv --split keep --xref drop --see-also notes --fixme part \
+  --affix drop --out $WORK/draft/fey_r2/XML/Amis/Amis_headwords.xml            # 4,696 S
+python3 -I embedded_rebuild.py $WORK                                          # 70 of 103 example sentences rebuilt across paragraph breaks
+python3 -I round3.py $WORK                                                    # -> dictionary-headwords-round3.html
+```
+Round 3 card ids: r2-sections, r2-poslabels (flags kept), r2-heading, r2-cut-lost, r2-cut-unchecked, r2-homs-notreview,
+r3-embedded-rebuilt, r3-tags, r3-label-pos, r3-amis-tails. Done flag: `meta/round3`.
