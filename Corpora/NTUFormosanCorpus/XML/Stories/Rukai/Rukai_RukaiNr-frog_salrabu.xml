@@ -54,7 +54,7 @@
             <FORM kindOf="standard">i-a-kay</FORM>
             <PHON kindOf="standard">iakaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-實現-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-實現-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">處所-RLS-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-RLS-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-RLS-this</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_1_W2M0">
@@ -73,7 +73,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -174,7 +174,7 @@
             <FORM kindOf="standard">ka-dalame</FORM>
             <PHON kindOf="standard">kadalamə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.未實現-喜歡</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">STAT.未實現-喜歡</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR-喜歡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRRlike</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRRlike</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_1_W7M0">
@@ -183,7 +183,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.未實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">STAT.未實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRRlike</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRRlike</TRANSL>
             </M>
@@ -590,7 +590,7 @@
             <FORM kindOf="standard">pu-a</FORM>
             <PHON kindOf="standard">pua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">放-實現</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">放-實現</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">放-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">place-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">place-RLS</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_6_W3M0">
@@ -609,7 +609,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -1459,9 +1459,9 @@
             <FORM kindOf="standard">mu-a-inua=ini</FORM>
             <PHON kindOf="standard">muainuaini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-實現-哪裡=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">去-實現-哪裡=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">去-RLS-哪裡=第三人稱單數.附著屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-REAL-where=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">go-REAL-where=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">go-RLS-where=3S.BG</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_20_W0M0">
                 <FORM kindOf="original">mu</FORM>
                 <PHON kindOf="original">mu</PHON>
@@ -1478,9 +1478,9 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REAL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">REAL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
             <M id="RukaiNr-frog_salrabu_S_20_W0M2">
                 <FORM kindOf="original">inua</FORM>
@@ -1678,9 +1678,9 @@
             <FORM kindOf="standard">mu-a-adringi</FORM>
             <PHON kindOf="standard">muaaɖiŋi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-實現-裡面</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">去-實現-裡面</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">去-RLS-裡面</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-REAL-inside</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">go-REAL-inside</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">go-RLS-inside</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_21_W7M0">
                 <FORM kindOf="original">mu</FORM>
                 <PHON kindOf="original">mu</PHON>
@@ -1697,9 +1697,9 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REAL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">REAL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
             <M id="RukaiNr-frog_salrabu_S_21_W7M2">
                 <FORM kindOf="original">adringi</FORM>
@@ -2016,7 +2016,7 @@
             <FORM kindOf="standard">mu-a</FORM>
             <PHON kindOf="standard">mua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-實現</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">去-實現</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">去-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">go-RLS</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_28_W1M0">
@@ -2035,7 +2035,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -2046,7 +2046,7 @@
             <FORM kindOf="standard">mu-a</FORM>
             <PHON kindOf="standard">mua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-實現</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">去-實現</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">去-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">go-RLS</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_28_W2M0">
@@ -2065,7 +2065,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -2365,7 +2365,7 @@
             <FORM kindOf="standard">mu-a</FORM>
             <PHON kindOf="standard">mua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-實現</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">去-實現</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">去-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">go-RLS</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_31_W5M0">
@@ -2384,7 +2384,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -2805,7 +2805,7 @@
             <FORM kindOf="standard">mu-a</FORM>
             <PHON kindOf="standard">mua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-實現</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">去-實現</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">去-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">go-RLS</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_31_W26M0">
@@ -2824,7 +2824,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -2835,7 +2835,7 @@
             <FORM kindOf="standard">mu-a</FORM>
             <PHON kindOf="standard">mua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-實現</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">去-實現</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">去-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">go-RLS</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_31_W27M0">
@@ -2854,7 +2854,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -3334,9 +3334,9 @@
             <FORM kindOf="standard">a=si</FORM>
             <PHON kindOf="standard">asi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">為什麼=SI</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">為什麼=SI</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">為什麼=#SI</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">why=SI</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">why=SI</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">why=#SI</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_37_W19M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -3353,9 +3353,9 @@
                 <FORM kindOf="standard">=si</FORM>
                 <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">SI</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">SI</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">#SI</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SI</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SI</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">#SI</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_salrabu_S_37_W20">
@@ -3822,7 +3822,7 @@
             <FORM kindOf="standard">a-iya</FORM>
             <PHON kindOf="standard">aija</PHON>
             <TRANSL xml:lang="zho" kindOf="original">實現-說</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">實現-說</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">RLS-說</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">RLS-say</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS-say</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_43_W8M0">
@@ -3831,7 +3831,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -3981,7 +3981,7 @@
             <FORM kindOf="standard">mu-a</FORM>
             <PHON kindOf="standard">mua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-實現</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">去-實現</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">去-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">go-RLS</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_47_W2M0">
@@ -4000,7 +4000,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -4788,9 +4788,9 @@
             <FORM kindOf="standard">tu-a-li-li-lisi</FORM>
             <PHON kindOf="standard">tualililisi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">TU-實現-重疊-重疊-壞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">TU-實現-重疊-重疊-壞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">TU-RLS-重疊-重疊-壞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TU-REAL-RED-RED-bad</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">TU-REAL-RED-RED-bad</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">TU-RLS-RED-RED-bad</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_54_W12M0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
@@ -4807,9 +4807,9 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REAL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">REAL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
             <M id="RukaiNr-frog_salrabu_S_54_W12M2">
                 <FORM kindOf="original">li</FORM>
@@ -9020,7 +9020,7 @@
             <FORM kindOf="standard">ma-tua-tuase</FORM>
             <PHON kindOf="standard">matuatuasə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.實現-重疊-離開</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">STAT.實現-重疊-離開</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.RLS-重疊-離開</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.RLS-RED-leave</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.RLS-RED-leave</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_94_W28M0">
@@ -9029,7 +9029,7 @@
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">STAT.實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.RLS</TRANSL>
             </M>
@@ -9967,7 +9967,7 @@
             <FORM kindOf="standard">a-iya-iya</FORM>
             <PHON kindOf="standard">aijaija</PHON>
             <TRANSL xml:lang="zho" kindOf="original">實現-&lt;重疊&gt;-說</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">實現-&lt;重疊&gt;-說</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">RLS-&lt;重疊&gt;-說</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">RLS-&lt;RED&gt;-say</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS-&lt;RED&gt;-say</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_106_W19M0">
@@ -9976,7 +9976,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -12229,7 +12229,7 @@
             <FORM kindOf="standard">ma-kay-kay</FORM>
             <PHON kindOf="standard">makajkaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.實現-重疊-這裡</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">STAT.實現-重疊-這裡</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.RLS-重疊-這裡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.RLS-RED-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.RLS-RED-this</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_127_W3M0">
@@ -12238,7 +12238,7 @@
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">STAT.實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.RLS</TRANSL>
             </M>
@@ -12359,7 +12359,7 @@
             <FORM kindOf="standard">sa-mu-a</FORM>
             <PHON kindOf="standard">samua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">當-去-實現</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">當-去-實現</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">當-去-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">when-go-RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">when-go-RLS</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_127_W8M0">
@@ -12388,7 +12388,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -13517,7 +13517,7 @@
             <FORM kindOf="standard">i-a-kay</FORM>
             <PHON kindOf="standard">iakaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-實現-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-實現-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">處所-RLS-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-RLS-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-RLS-this</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_133_W13M0">
@@ -13536,7 +13536,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -14275,7 +14275,7 @@
             <FORM kindOf="standard">lri</FORM>
             <PHON kindOf="standard">ɭi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">未來</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">FUT</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">FUT</TRANSL>
             <M id="RukaiNr-frog_salrabu_S_140_W17M0">
@@ -14284,7 +14284,7 @@
                 <FORM kindOf="standard">lri</FORM>
                 <PHON kindOf="standard">ɭi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">未來</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">FUT</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">FUT</TRANSL>
             </M>

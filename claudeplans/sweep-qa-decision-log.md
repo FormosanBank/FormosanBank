@@ -25092,3 +25092,23 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   all ITER->MULT, 0 ITER tokens remain, 0 lines outside ITER/MULT. tests/glossing 33 passed.
 - Still open: the 'arup-ara eng exception (now MULT-take; zho correctly RECP-拿) pending his word on the
   converter tweak (context-rule fallback -> table + REC&'arup- row).
+
+### 2026-11-15 (cont. 8) — RULED: M1–M7 applied with bank-wide analogue sweep; U3 #SI; HORT/OPT registered
+- His instruction (chat): "our collaborators were only looking at a few languages and only at some sources…
+  if we are doing conversions for the corpora they looked at, we should be looking for the analogous items
+  in other corpora and languages." → full UNDECIDED-row sweep of every table for the mood families.
+- Applied (cards M1–M7 approve/register + the sweep): NEG: 否定詞 (NTU 864, Song 274). IRR: Song 非實現 268;
+  NTU 未實現/非現實/ORR/IRRS/IFF. RLS (realis twins, registered code): NTU 實現 2,367 / REAL / RLZ. IMP: NTU
+  祈使 761 / 命令式 96 / 命令 56; HPS imp 393; Song 祈使 76; Kavalan-Chang 祈使 14; RauDong 祈使 2. HORT
+  (REGISTERED, card M4 "register"): HPS hort 203; NTU EXHORT 20 (Saisiyat) / HOR 16 / 勸告式 12 (Rukai).
+  FUT: NTU 未來 1,452 / 未來式 204 / 未來貌 44 / FUF / FU; Song 6; RauDong 4+FU 2. SBJV: RauDong SUB 1,314.
+  OPT (REGISTERED, card M7 "register"): NTU OPT/祈願 16 (Amis). U3 (`hash`): NTU SI → #SI (6 languages).
+- Five corpora rebuilt (NTU, Song, HPS, Kavalan-Chang, RauDong): 17,640 changed lines, zero outside the
+  ruled atoms; validators 0 HARD; tests 33 passed. Dictionaries: +HORT/+OPT/+#SI (NTU languages, Paiwan),
+  +SBJV (Yami).
+- NOT swept, carded instead: M8 IMPFV/未完成 (aspect, proposed IPFV), M9 HYP/假設 92/90 (not Leipzig),
+  M10 沒有 52 (mixed NEG vs NEG.EXIST twins); REDNEG ×1 + RLSRED ×2 flagged in notes only.
+- U1 (his question "Can you give me some examples of these two?") — answered on the card: qal = li-/sa-/⟨ar⟩
+  (limutseng 'angry', qarawqawqaw 'shouting away'); invol = se- (seḍelas 'slipped', setsevungi 'met by
+  chance'). U2 RULED `codify` with his note (grammar comparison + Yedda analogues) — proposal table next.
+- U3's note truncated AGAIN ("What did t") — focused-textarea blur never fired; asked in chat.

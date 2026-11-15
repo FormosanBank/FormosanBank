@@ -170,14 +170,14 @@
             <FORM kindOf="standard">koo=musu</FORM>
             <PHON kindOf="standard">koomusu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=你.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=你.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=你.GEN</TRANSL>
             <M id="03_S_3_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="03_S_3_W0M1">
                 <FORM kindOf="original">=musu</FORM>
@@ -921,14 +921,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="04_S_6_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="04_S_6_W1">
@@ -993,14 +993,14 @@
             <FORM kindOf="standard">koo=pa</FORM>
             <PHON kindOf="standard">koopa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=還</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=還</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=還</TRANSL>
             <M id="04_S_7_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="04_S_7_W0M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -1399,14 +1399,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="04_S_11_W0M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="04_S_11_W1">
@@ -1463,7 +1463,7 @@
             <FORM kindOf="standard">mate'i-a</FORM>
             <PHON kindOf="standard">mateʔia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">留-祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">留-祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">留-IMP.主事焦點</TRANSL>
             <M id="04_S_12_W0M0">
                 <FORM kindOf="original">mate'i</FORM>
                 <PHON kindOf="original">mateʔi</PHON>
@@ -1478,7 +1478,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.主事焦點</TRANSL>
             </M>
         </W>
         <W id="04_S_12_W1">
@@ -1535,7 +1535,7 @@
             <FORM kindOf="standard">'apa-caca-o</FORM>
             <PHON kindOf="standard">ʔapaʦaʦao</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-笑-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS-笑-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-笑-IMP.受事焦點</TRANSL>
             <M id="04_S_13_W0M0">
                 <FORM kindOf="original">'apa</FORM>
                 <PHON kindOf="original">ʔapa</PHON>
@@ -1558,7 +1558,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="04_S_13_W1">
@@ -1599,14 +1599,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             <M id="04_S_14_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             </M>
         </W>
         <W id="04_S_14_W1">
@@ -2399,7 +2399,7 @@
             <FORM kindOf="standard">arikʉrʉ-o</FORM>
             <PHON kindOf="standard">a[r|ɾ]ikɨ[r|ɾ]ɨo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">舂搗-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">舂搗-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">舂搗-IMP.受事焦點</TRANSL>
             <M id="04_S_25_W0M0">
                 <FORM kindOf="original">arikʉrʉ</FORM>
                 <PHON kindOf="original">a[r|ɾ]ikɨ[r|ɾ]ɨ</PHON>
@@ -2414,7 +2414,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="04_S_25_W1">
@@ -3351,14 +3351,14 @@
             <FORM kindOf="standard">koo=ku</FORM>
             <PHON kindOf="standard">kooku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我.NOM</TRANSL>
             <M id="04_S_38_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="04_S_38_W0M1">
                 <FORM kindOf="original">=ku</FORM>
@@ -3471,14 +3471,14 @@
             <FORM kindOf="standard">ka'anʉ=ku</FORM>
             <PHON kindOf="standard">kaʔanɨku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我.NOM</TRANSL>
             <M id="04_S_39_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="04_S_39_W0M1">
                 <FORM kindOf="original">=ku</FORM>
@@ -3527,14 +3527,14 @@
             <FORM kindOf="standard">'akuni=kita</FORM>
             <PHON kindOf="standard">ʔakunikita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我們.包含.NOM</TRANSL>
             <M id="04_S_40_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="04_S_40_W0M1">
                 <FORM kindOf="original">=kita</FORM>
@@ -4427,14 +4427,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="05_S_8_W7M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="05_S_8_W8">
@@ -4483,14 +4483,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="05_S_9_W0M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="05_S_9_W1">
@@ -4843,14 +4843,14 @@
             <FORM kindOf="standard">ka'anʉ=kim</FORM>
             <PHON kindOf="standard">kaʔanɨkim</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我們.排除.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我們.排除.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我們.排除.NOM</TRANSL>
             <M id="05_S_13_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="05_S_13_W0M1">
                 <FORM kindOf="original">=kim</FORM>
@@ -5283,14 +5283,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="05_S_19_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="05_S_19_W1">
@@ -7511,14 +7511,14 @@
             <FORM kindOf="standard">koo=kee</FORM>
             <PHON kindOf="standard">kookee</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=他.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=他.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=他.GEN</TRANSL>
             <M id="06_S_12_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="06_S_12_W0M1">
                 <FORM kindOf="original">=kee</FORM>
@@ -8976,7 +8976,7 @@
             <FORM kindOf="standard">vanai-a</FORM>
             <PHON kindOf="standard">vanaia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">原因-祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">原因-祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">原因-IMP.主事焦點</TRANSL>
             <M id="06_S_23_W0M0">
                 <FORM kindOf="original">vanai</FORM>
                 <PHON kindOf="original">vanai</PHON>
@@ -8991,7 +8991,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.主事焦點</TRANSL>
             </M>
         </W>
         <W id="06_S_23_W1">
@@ -9096,7 +9096,7 @@
             <FORM kindOf="standard">pa-ti-manʉngʉ-o</FORM>
             <PHON kindOf="standard">patimanɨŋɨo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-TI-好-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS-TI-好-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-TI-好-IMP.受事焦點</TRANSL>
             <M id="06_S_24_W0M0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
@@ -9127,7 +9127,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="06_S_24_W1">
@@ -9160,7 +9160,7 @@
             <FORM kindOf="standard">vua-o</FORM>
             <PHON kindOf="standard">vuao</PHON>
             <TRANSL xml:lang="zho" kindOf="original">給-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">給-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">給-IMP.受事焦點</TRANSL>
             <M id="06_S_25_W0M0">
                 <FORM kindOf="original">vua</FORM>
                 <PHON kindOf="original">vua</PHON>
@@ -9175,7 +9175,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="06_S_25_W1">
@@ -11084,7 +11084,7 @@
             <FORM kindOf="standard">iavatu-a-'e</FORM>
             <PHON kindOf="standard">iavatuaʔe</PHON>
             <TRANSL xml:lang="zho" kindOf="original">來-祈使.主事焦點-叮嚀語氣詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">來-祈使.主事焦點-叮嚀語氣詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">來-IMP.主事焦點-叮嚀語氣詞</TRANSL>
             <M id="06_S_45_W2M0">
                 <FORM kindOf="original">iávatu</FORM>
                 <PHON kindOf="original">iavatu</PHON>
@@ -11099,7 +11099,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.主事焦點</TRANSL>
             </M>
             <M id="06_S_45_W2M2">
                 <FORM kindOf="original">'e</FORM>
@@ -11188,7 +11188,7 @@
             <FORM kindOf="standard">kʉnʉ-o-'e</FORM>
             <PHON kindOf="standard">kɨnɨoʔe</PHON>
             <TRANSL xml:lang="zho" kindOf="original">吃-祈使.受事焦點-叮嚀語氣詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">吃-祈使.受事焦點-叮嚀語氣詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">吃-IMP.受事焦點-叮嚀語氣詞</TRANSL>
             <M id="06_S_46_W2M0">
                 <FORM kindOf="original">kʉnʉ</FORM>
                 <PHON kindOf="original">kɨnɨ</PHON>
@@ -11203,7 +11203,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
             <M id="06_S_46_W2M2">
                 <FORM kindOf="original">'e</FORM>
@@ -11772,7 +11772,7 @@
             <FORM kindOf="standard">k&lt;ʉm&gt;ʉnʉ-a=cu</FORM>
             <PHON kindOf="standard">kɨmɨnɨaʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主事焦點&gt;吃-祈使.主事焦點=狀態改變</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">&lt;主事焦點&gt;吃-祈使.主事焦點=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">&lt;主事焦點&gt;吃-IMP.主事焦點=COS</TRANSL>
             <M id="06_S_53_W0M0_0">
                 <FORM kindOf="original">-ʉm-</FORM>
                 <PHON kindOf="original">ɨm</PHON>
@@ -11797,7 +11797,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.主事焦點</TRANSL>
             </M>
             <M id="06_S_53_W0M2">
                 <FORM kindOf="original">=cu</FORM>
@@ -11838,14 +11838,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="06_S_54_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="06_S_54_W1">
@@ -12198,14 +12198,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="07_S_5_W0M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="07_S_5_W1">
@@ -12270,14 +12270,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="07_S_6_W0M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="07_S_6_W1">
@@ -12318,14 +12318,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="07_S_7_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="07_S_7_W1">
@@ -12398,7 +12398,7 @@
             <FORM kindOf="standard">pa-ara-'akia</FORM>
             <PHON kindOf="standard">paa[r|ɾ]aʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-變成-存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS-變成-存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-變成-存在.NEG</TRANSL>
             <M id="07_S_8_W0M0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
@@ -12421,7 +12421,7 @@
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="07_S_8_W1">
@@ -12454,14 +12454,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="07_S_9_W0M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="07_S_9_W1">
@@ -12542,7 +12542,7 @@
             <FORM kindOf="standard">arapana'ʉ-a</FORM>
             <PHON kindOf="standard">a[r|ɾ]apanaʔɨa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">跑-祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">跑-祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">跑-IMP.主事焦點</TRANSL>
             <M id="08_S_1_W0M0">
                 <FORM kindOf="original">arapana'ʉ</FORM>
                 <PHON kindOf="original">a[r|ɾ]apanaʔɨ</PHON>
@@ -12557,7 +12557,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.主事焦點</TRANSL>
             </M>
         </W>
     </S>
@@ -12574,7 +12574,7 @@
             <FORM kindOf="standard">arapana'ʉ-a</FORM>
             <PHON kindOf="standard">a[r|ɾ]apanaʔɨa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">跑-祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">跑-祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">跑-IMP.主事焦點</TRANSL>
             <M id="08_S_2_W0M0">
                 <FORM kindOf="original">arapana'ʉ</FORM>
                 <PHON kindOf="original">a[r|ɾ]apanaʔɨ</PHON>
@@ -12589,7 +12589,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.主事焦點</TRANSL>
             </M>
         </W>
         <W id="08_S_2_W1">
@@ -12621,7 +12621,7 @@
             <FORM kindOf="standard">mima-a</FORM>
             <PHON kindOf="standard">mimaa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">喝-祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">喝-祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">喝-IMP.主事焦點</TRANSL>
             <M id="08_S_3_W0M0">
                 <FORM kindOf="original">mima</FORM>
                 <PHON kindOf="original">mima</PHON>
@@ -12636,7 +12636,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.主事焦點</TRANSL>
             </M>
         </W>
         <W id="08_S_3_W1">
@@ -12669,7 +12669,7 @@
             <FORM kindOf="standard">iavatu-a</FORM>
             <PHON kindOf="standard">iavatua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">過來-祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">過來-祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">過來-IMP.主事焦點</TRANSL>
             <M id="08_S_4_W0M0">
                 <FORM kindOf="original">iávatu</FORM>
                 <PHON kindOf="original">iavatu</PHON>
@@ -12684,7 +12684,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.主事焦點</TRANSL>
             </M>
         </W>
         <W id="08_S_4_W1">
@@ -12847,7 +12847,7 @@
             <FORM kindOf="standard">ima-o</FORM>
             <PHON kindOf="standard">imao</PHON>
             <TRANSL xml:lang="zho" kindOf="original">喝-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">喝-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">喝-IMP.受事焦點</TRANSL>
             <M id="08_S_7_W0M0">
                 <FORM kindOf="original">ima</FORM>
                 <PHON kindOf="original">ima</PHON>
@@ -12862,7 +12862,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="08_S_7_W1">
@@ -13223,14 +13223,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="08_S_11_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="08_S_11_W1">
@@ -13303,14 +13303,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="08_S_12_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="08_S_12_W1">
@@ -13375,14 +13375,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="08_S_13_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="08_S_13_W1">
@@ -13431,14 +13431,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="08_S_14_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="08_S_14_W1">
@@ -13495,14 +13495,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="08_S_15_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="08_S_15_W1">
@@ -13599,14 +13599,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="08_S_16_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="08_S_16_W1">
@@ -13695,14 +13695,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="08_S_17_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="08_S_17_W1">
@@ -15377,14 +15377,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_2_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_2_W1">
@@ -15449,14 +15449,14 @@
             <FORM kindOf="standard">ka'anʉ=ku</FORM>
             <PHON kindOf="standard">kaʔanɨku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我.NOM</TRANSL>
             <M id="10_S_3_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="10_S_3_W0M1">
                 <FORM kindOf="original">=ku</FORM>
@@ -15529,14 +15529,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_4_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_4_W1">
@@ -15609,14 +15609,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_5_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_5_W1">
@@ -15745,14 +15745,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_6_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_6_W1">
@@ -15865,14 +15865,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_7_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_7_W1">
@@ -15921,14 +15921,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_8_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_8_W1">
@@ -16089,14 +16089,14 @@
             <FORM kindOf="standard">ka'anʉ=pa</FORM>
             <PHON kindOf="standard">kaʔanɨpa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=還</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=還</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=還</TRANSL>
             <M id="10_S_9_W5M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="10_S_9_W5M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -16249,14 +16249,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_10_W5M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_10_W6">
@@ -16401,14 +16401,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_11_W4M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_11_W5">
@@ -16513,14 +16513,14 @@
             <FORM kindOf="standard">koo=ku</FORM>
             <PHON kindOf="standard">kooku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我.NOM</TRANSL>
             <M id="10_S_12_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="10_S_12_W0M1">
                 <FORM kindOf="original">=ku</FORM>
@@ -16585,14 +16585,14 @@
             <FORM kindOf="standard">koo=maku</FORM>
             <PHON kindOf="standard">koomaku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我.GEN</TRANSL>
             <M id="10_S_13_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="10_S_13_W0M1">
                 <FORM kindOf="original">=maku</FORM>
@@ -16665,14 +16665,14 @@
             <FORM kindOf="standard">koo</FORM>
             <PHON kindOf="standard">koo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_14_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_14_W1">
@@ -16777,14 +16777,14 @@
             <FORM kindOf="standard">koo</FORM>
             <PHON kindOf="standard">koo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_15_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_15_W1">
@@ -16897,14 +16897,14 @@
             <FORM kindOf="standard">koo</FORM>
             <PHON kindOf="standard">koo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_16_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_16_W1">
@@ -16961,14 +16961,14 @@
             <FORM kindOf="standard">koo</FORM>
             <PHON kindOf="standard">koo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_17_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_17_W1">
@@ -17033,14 +17033,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="10_S_18_W0M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_18_W1">
@@ -17131,14 +17131,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="10_S_20_W0M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_20_W1">
@@ -17187,14 +17187,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="10_S_21_W0M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_21_W1">
@@ -17235,14 +17235,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="10_S_22_W0M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_22_W1">
@@ -17291,14 +17291,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             <M id="10_S_23_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             </M>
         </W>
         <W id="10_S_23_W1">
@@ -17331,14 +17331,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             <M id="10_S_24_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             </M>
         </W>
         <W id="10_S_24_W1">
@@ -17411,14 +17411,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             <M id="10_S_25_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             </M>
         </W>
         <W id="10_S_25_W1">
@@ -17523,14 +17523,14 @@
             <FORM kindOf="standard">'akuni-'e</FORM>
             <PHON kindOf="standard">ʔakuniʔe</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞-叮嚀語氣詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞-叮嚀語氣詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG-叮嚀語氣詞</TRANSL>
             <M id="10_S_26_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="10_S_26_W0M1">
                 <FORM kindOf="original">'e</FORM>
@@ -17699,14 +17699,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_27_W4M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_27_W5">
@@ -17715,14 +17715,14 @@
             <FORM kindOf="standard">ka'anʉ=ku</FORM>
             <PHON kindOf="standard">kaʔanɨku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我.NOM</TRANSL>
             <M id="10_S_27_W5M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="10_S_27_W5M1">
                 <FORM kindOf="original">=ku</FORM>
@@ -17901,14 +17901,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_28_W3M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_28_W4">
@@ -17917,14 +17917,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_28_W4M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_28_W5">
@@ -17957,14 +17957,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_29_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_29_W1">
@@ -18013,14 +18013,14 @@
             <FORM kindOf="standard">ka'anʉ=ku</FORM>
             <PHON kindOf="standard">kaʔanɨku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我.NOM</TRANSL>
             <M id="10_S_29_W3M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="10_S_29_W3M1">
                 <FORM kindOf="original">=ku</FORM>
@@ -18077,14 +18077,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_30_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_30_W1">
@@ -18149,14 +18149,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_30_W4M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_30_W5">
@@ -18285,14 +18285,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="10_S_31_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_31_W1">
@@ -18301,14 +18301,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="10_S_31_W1M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="10_S_31_W2">
@@ -19342,14 +19342,14 @@
             <FORM kindOf="standard">ka'aan</FORM>
             <PHON kindOf="standard">kaʔaan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="11_S_10_W3M0">
                 <FORM kindOf="original">ka'aan</FORM>
                 <PHON kindOf="original">kaʔaan</PHON>
                 <FORM kindOf="standard">ka'aan</FORM>
                 <PHON kindOf="standard">kaʔaan</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
     </S>
@@ -23847,14 +23847,14 @@
             <FORM kindOf="standard">ka'anʉ=ku</FORM>
             <PHON kindOf="standard">kaʔanɨku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我.NOM</TRANSL>
             <M id="12_S_3_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="12_S_3_W0M1">
                 <FORM kindOf="original">=ku</FORM>
@@ -23975,14 +23975,14 @@
             <FORM kindOf="standard">ka'anʉ=ku</FORM>
             <PHON kindOf="standard">kaʔanɨku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我.NOM</TRANSL>
             <M id="12_S_4_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="12_S_4_W0M1">
                 <FORM kindOf="original">=ku</FORM>
@@ -24063,14 +24063,14 @@
             <FORM kindOf="standard">ka'anʉ=ku</FORM>
             <PHON kindOf="standard">kaʔanɨku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我.NOM</TRANSL>
             <M id="12_S_4_W5M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="12_S_4_W5M1">
                 <FORM kindOf="original">=ku</FORM>
@@ -27241,14 +27241,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="13_S_11_W6M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="13_S_11_W7">
@@ -27771,14 +27771,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="13_S_18_W1M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="13_S_18_W2">
@@ -27909,14 +27909,14 @@
             <FORM kindOf="standard">ka'anʉ=ku</FORM>
             <PHON kindOf="standard">kaʔanɨku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我.NOM</TRANSL>
             <M id="13_S_19_W3M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="13_S_19_W3M1">
                 <FORM kindOf="original">=ku</FORM>
@@ -28487,14 +28487,14 @@
             <FORM kindOf="standard">ka'anʉ=cu=ku</FORM>
             <PHON kindOf="standard">kaʔanɨʦuku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=狀態改變=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=COS=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=COS=我.NOM</TRANSL>
             <M id="13_S_22_W4M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="13_S_22_W4M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -28865,14 +28865,14 @@
             <FORM kindOf="standard">koo=kee</FORM>
             <PHON kindOf="standard">kookee</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=他.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=他.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=他.GEN</TRANSL>
             <M id="13_S_25_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="13_S_25_W0M1">
                 <FORM kindOf="original">=kee</FORM>
@@ -29201,14 +29201,14 @@
             <FORM kindOf="standard">'akia=pa</FORM>
             <PHON kindOf="standard">ʔakiapa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞=還</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞=還</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG=還</TRANSL>
             <M id="13_S_26_W10M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
             <M id="13_S_26_W10M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -29701,7 +29701,7 @@
             <FORM kindOf="standard">pati-manʉngʉ-o</FORM>
             <PHON kindOf="standard">patimanɨŋɨo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">PATI-好-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">PATI-好-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">PATI-好-IMP.受事焦點</TRANSL>
             <M id="13_S_30_W0M0">
                 <FORM kindOf="original">pati</FORM>
                 <PHON kindOf="original">pati</PHON>
@@ -29724,7 +29724,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="13_S_30_W1">
@@ -29877,7 +29877,7 @@
             <FORM kindOf="standard">kesoni-o</FORM>
             <PHON kindOf="standard">kesonio</PHON>
             <TRANSL xml:lang="zho" kindOf="original">問-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">問-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">問-IMP.受事焦點</TRANSL>
             <M id="13_S_31_W3M0">
                 <FORM kindOf="original">kesoni</FORM>
                 <PHON kindOf="original">kesoni</PHON>
@@ -29892,7 +29892,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="13_S_31_W4">
@@ -30125,14 +30125,14 @@
             <FORM kindOf="standard">nuari</FORM>
             <PHON kindOf="standard">nua[r|ɾ]i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">未來</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">FUT</TRANSL>
             <M id="13_S_32_W6M0">
                 <FORM kindOf="original">nuari</FORM>
                 <PHON kindOf="original">nua[r|ɾ]i</PHON>
                 <FORM kindOf="standard">nuari</FORM>
                 <PHON kindOf="standard">nua[r|ɾ]i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">未來</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">FUT</TRANSL>
             </M>
         </W>
     </S>
@@ -30237,14 +30237,14 @@
             <FORM kindOf="standard">ka'anʉ=cu</FORM>
             <PHON kindOf="standard">kaʔanɨʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=狀態改變</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=COS</TRANSL>
             <M id="13_S_33_W4M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="13_S_33_W4M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -30493,7 +30493,7 @@
             <FORM kindOf="standard">pasi-o</FORM>
             <PHON kindOf="standard">pasio</PHON>
             <TRANSL xml:lang="zho" kindOf="original">說-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">說-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">說-IMP.受事焦點</TRANSL>
             <M id="13_S_35_W0M0">
                 <FORM kindOf="original">pasi</FORM>
                 <PHON kindOf="original">pasi</PHON>
@@ -30508,7 +30508,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="13_S_35_W1">
@@ -30669,7 +30669,7 @@
             <FORM kindOf="standard">pasi-o</FORM>
             <PHON kindOf="standard">pasio</PHON>
             <TRANSL xml:lang="zho" kindOf="original">說-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">說-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">說-IMP.受事焦點</TRANSL>
             <M id="13_S_36_W1M0">
                 <FORM kindOf="original">pasi</FORM>
                 <PHON kindOf="original">pasi</PHON>
@@ -30684,7 +30684,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="13_S_36_W2">
@@ -30733,14 +30733,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             <M id="13_S_36_W4M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             </M>
         </W>
         <W id="13_S_36_W5">
@@ -30823,7 +30823,7 @@
             <FORM kindOf="standard">pasi-o</FORM>
             <PHON kindOf="standard">pasio</PHON>
             <TRANSL xml:lang="zho" kindOf="original">說-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">說-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">說-IMP.受事焦點</TRANSL>
             <M id="13_S_37_W1M0">
                 <FORM kindOf="original">pasi</FORM>
                 <PHON kindOf="original">pasi</PHON>
@@ -30838,7 +30838,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="13_S_37_W2">
@@ -30871,7 +30871,7 @@
             <FORM kindOf="standard">sʉngʉrʉ-o</FORM>
             <PHON kindOf="standard">sɨŋɨ[r|ɾ]ɨo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">浸泡-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">浸泡-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">浸泡-IMP.受事焦點</TRANSL>
             <M id="13_S_37_W3M0">
                 <FORM kindOf="original">sʉngʉrʉ</FORM>
                 <PHON kindOf="original">sɨŋɨ[r|ɾ]ɨ</PHON>
@@ -30886,7 +30886,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="13_S_37_W4">
@@ -31343,14 +31343,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="13_S_42_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="13_S_42_W1">
@@ -31495,14 +31495,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="13_S_43_W2M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="13_S_43_W3">
@@ -31567,14 +31567,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             <M id="13_S_44_W0M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             </M>
         </W>
         <W id="13_S_44_W1">
@@ -31958,7 +31958,7 @@
             <FORM kindOf="standard">kipatʉsʉ-o</FORM>
             <PHON kindOf="standard">kipatɨsɨo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">用力-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">用力-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">用力-IMP.受事焦點</TRANSL>
             <M id="14_S_2_W0M1">
                 <FORM kindOf="original">kipatʉsʉ</FORM>
                 <PHON kindOf="original">kipatɨsɨ</PHON>
@@ -31973,7 +31973,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="14_S_2_W1">
@@ -32077,7 +32077,7 @@
             <FORM kindOf="standard">kipatʉsʉ-o</FORM>
             <PHON kindOf="standard">kipatɨsɨo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">用力-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">用力-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">用力-IMP.受事焦點</TRANSL>
             <M id="14_S_2-opt_W0M1">
                 <FORM kindOf="original">kipatʉsʉ</FORM>
                 <PHON kindOf="original">kipatɨsɨ</PHON>
@@ -32092,7 +32092,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="14_S_2-opt_W1">
@@ -33509,14 +33509,14 @@
             <FORM kindOf="standard">koo=pa=ku</FORM>
             <PHON kindOf="standard">koopaku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=還=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=還=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=還=我.NOM</TRANSL>
             <M id="14_S_11_W1M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="14_S_11_W1M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -33637,14 +33637,14 @@
             <FORM kindOf="standard">koo=pa=kasu</FORM>
             <PHON kindOf="standard">koopakasu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=還=你.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=還=你.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=還=你.NOM</TRANSL>
             <M id="14_S_12_W1M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="14_S_12_W1M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -33709,7 +33709,7 @@
             <FORM kindOf="standard">cʉ'ʉrʉ-o=pa</FORM>
             <PHON kindOf="standard">ʦɨʔɨ[r|ɾ]ɨopa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">看-祈使.受事焦點=還</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">看-祈使.受事焦點=還</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">看-IMP.受事焦點=還</TRANSL>
             <M id="14_S_12_W4M0">
                 <FORM kindOf="original">cʉ'ʉrʉ</FORM>
                 <PHON kindOf="original">ʦɨʔɨ[r|ɾ]ɨ</PHON>
@@ -33724,7 +33724,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
             <M id="14_S_12_W4M2">
                 <FORM kindOf="original">=pa</FORM>
@@ -34327,7 +34327,7 @@
             <FORM kindOf="standard">kamanʉngʉ-a</FORM>
             <PHON kindOf="standard">kamanɨŋɨa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">製作-祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">製作-祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">製作-IMP.主事焦點</TRANSL>
             <M id="14_S_16_W6M0">
                 <FORM kindOf="original">kamanʉngʉ</FORM>
                 <PHON kindOf="original">kamanɨŋɨ</PHON>
@@ -34342,7 +34342,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.主事焦點</TRANSL>
             </M>
         </W>
         <W id="14_S_16_W7">
@@ -34839,14 +34839,14 @@
             <FORM kindOf="standard">ka'anʉ=cu=ku</FORM>
             <PHON kindOf="standard">kaʔanɨʦuku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=狀態改變=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=COS=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=COS=我.NOM</TRANSL>
             <M id="14_S_22_W3M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="14_S_22_W3M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -34975,14 +34975,14 @@
             <FORM kindOf="standard">ka'anʉ=cu=ku</FORM>
             <PHON kindOf="standard">kaʔanɨʦuku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=狀態改變=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=COS=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=COS=我.NOM</TRANSL>
             <M id="14_S_23_W3M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="14_S_23_W3M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -35287,7 +35287,7 @@
             <FORM kindOf="standard">kasakʉnʉ-o</FORM>
             <PHON kindOf="standard">kasakɨnɨo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">珍惜-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">珍惜-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">珍惜-IMP.受事焦點</TRANSL>
             <M id="14_S_26_W0M0">
                 <FORM kindOf="original">kasakʉnʉ</FORM>
                 <PHON kindOf="original">kasakɨnɨ</PHON>
@@ -35302,7 +35302,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="14_S_26_W1">
@@ -35399,14 +35399,14 @@
             <FORM kindOf="standard">'akia=cu</FORM>
             <PHON kindOf="standard">ʔakiaʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞=狀態改變</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG=COS</TRANSL>
             <M id="14_S_26_W6M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
             <M id="14_S_26_W6M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -35615,7 +35615,7 @@
             <FORM kindOf="standard">pati-manʉngʉ-o</FORM>
             <PHON kindOf="standard">patimanɨŋɨo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">PATI-好-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">PATI-好-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">PATI-好-IMP.受事焦點</TRANSL>
             <M id="14_S_28_W0M0">
                 <FORM kindOf="original">pati</FORM>
                 <PHON kindOf="original">pati</PHON>
@@ -35638,7 +35638,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="14_S_28_W1">
@@ -35711,14 +35711,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="14_S_28_W4M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="14_S_28_W5">
@@ -36047,14 +36047,14 @@
             <FORM kindOf="standard">ka'anʉ=cu</FORM>
             <PHON kindOf="standard">kaʔanɨʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=狀態改變</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=COS</TRANSL>
             <M id="14_S_30_W1M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="14_S_30_W1M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -36177,14 +36177,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="14_S_30_W7M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="14_S_30_W8">
@@ -36426,14 +36426,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="14_S_32_W7M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="14_S_32_W8">
@@ -37947,14 +37947,14 @@
             <FORM kindOf="standard">ka'anʉ=ku</FORM>
             <PHON kindOf="standard">kaʔanɨku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我.NOM</TRANSL>
             <M id="15_S_10_W6M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="15_S_10_W6M1">
                 <FORM kindOf="original">=ku</FORM>
@@ -38421,14 +38421,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="15_S_14_W1M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="15_S_14_W2">
@@ -40909,14 +40909,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="15_S_28_W9M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="15_S_28_W10">
@@ -49119,14 +49119,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="ap1_S_2_W8M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="ap1_S_2_W9">
@@ -49223,14 +49223,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap1_S_3_W4M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap1_S_3_W5">
@@ -49271,14 +49271,14 @@
             <FORM kindOf="standard">nukanmana</FORM>
             <PHON kindOf="standard">nukanmana</PHON>
             <TRANSL xml:lang="zho" kindOf="original">何時.未來</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">何時.未來</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">何時.FUT</TRANSL>
             <M id="ap1_S_3_W7M0">
                 <FORM kindOf="original">nukanmana</FORM>
                 <PHON kindOf="original">nukanmana</PHON>
                 <FORM kindOf="standard">nukanmana</FORM>
                 <PHON kindOf="standard">nukanmana</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">何時.未來</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">何時.未來</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">何時.FUT</TRANSL>
             </M>
         </W>
         <W id="ap1_S_3_W8">
@@ -49503,14 +49503,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="ap1_S_7_W0M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="ap1_S_7_W1">
@@ -49591,14 +49591,14 @@
             <FORM kindOf="standard">nuari</FORM>
             <PHON kindOf="standard">nua[r|ɾ]i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">未來</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">FUT</TRANSL>
             <M id="ap1_S_7_W5M0">
                 <FORM kindOf="original">nuari</FORM>
                 <PHON kindOf="original">nua[r|ɾ]i</PHON>
                 <FORM kindOf="standard">nuari</FORM>
                 <PHON kindOf="standard">nua[r|ɾ]i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">未來</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">FUT</TRANSL>
             </M>
         </W>
     </S>
@@ -51383,14 +51383,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="ap1_S_22_W0M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="ap1_S_22_W1">
@@ -51561,14 +51561,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="ap1_S_23_W4M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
     </S>
@@ -51697,14 +51697,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap1_S_25_W1M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap1_S_25_W2">
@@ -52131,14 +52131,14 @@
             <FORM kindOf="standard">koo=kee</FORM>
             <PHON kindOf="standard">kookee</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=他.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=他.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=他.GEN</TRANSL>
             <M id="ap1_S_31_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="ap1_S_31_W0M1">
                 <FORM kindOf="original">=kee</FORM>
@@ -52411,14 +52411,14 @@
             <FORM kindOf="standard">koo</FORM>
             <PHON kindOf="standard">koo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap1_S_33_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap1_S_33_W1">
@@ -52899,14 +52899,14 @@
             <FORM kindOf="standard">ka'anʉ=pa</FORM>
             <PHON kindOf="standard">kaʔanɨpa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=還</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=還</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=還</TRANSL>
             <M id="ap1_S_38_W1M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="ap1_S_38_W1M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -54288,7 +54288,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.主事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.主事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.主事焦點</TRANSL>
             </M>
             <M id="ap1_S_47_W10M3">
                 <FORM kindOf="original">=pa</FORM>
@@ -54891,14 +54891,14 @@
             <FORM kindOf="standard">koo</FORM>
             <PHON kindOf="standard">koo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap1_S_53_W2M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap1_S_53_W3">
@@ -55179,14 +55179,14 @@
             <FORM kindOf="standard">'akuni</FORM>
             <PHON kindOf="standard">ʔakuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             <M id="ap1_S_55_W2M0">
                 <FORM kindOf="original">'akuni</FORM>
                 <PHON kindOf="original">ʔakuni</PHON>
                 <FORM kindOf="standard">'akuni</FORM>
                 <PHON kindOf="standard">ʔakuni</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞.祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞.祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG.IMP</TRANSL>
             </M>
         </W>
         <W id="ap1_S_55_W3">
@@ -55315,7 +55315,7 @@
             <FORM kindOf="standard">uranʉ-o</FORM>
             <PHON kindOf="standard">u[r|ɾ]anɨo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">幫忙-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">幫忙-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">幫忙-IMP.受事焦點</TRANSL>
             <M id="ap1_S_55_W10M0">
                 <FORM kindOf="original">uranʉ</FORM>
                 <PHON kindOf="original">u[r|ɾ]anɨ</PHON>
@@ -55330,7 +55330,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="ap1_S_55_W11">
@@ -55491,7 +55491,7 @@
             <FORM kindOf="standard">sovungu-o</FORM>
             <PHON kindOf="standard">sovuŋuo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">分送-祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">分送-祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">分送-IMP.受事焦點</TRANSL>
             <M id="ap1_S_55_W19M0">
                 <FORM kindOf="original">sovungu</FORM>
                 <PHON kindOf="original">sovuŋu</PHON>
@@ -55506,7 +55506,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
         </W>
         <W id="ap1_S_55_W20">
@@ -57659,14 +57659,14 @@
             <FORM kindOf="standard">koo</FORM>
             <PHON kindOf="standard">koo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap1_S_75_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap1_S_75_W1">
@@ -58517,14 +58517,14 @@
             <FORM kindOf="standard">koo=pa</FORM>
             <PHON kindOf="standard">koopa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=還</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=還</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=還</TRANSL>
             <M id="ap1_S_82_W1M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="ap1_S_82_W1M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -58957,14 +58957,14 @@
             <FORM kindOf="standard">'akia=cu</FORM>
             <PHON kindOf="standard">ʔakiaʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞=狀態改變</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG=COS</TRANSL>
             <M id="ap1_S_85_W0M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
             <M id="ap1_S_85_W0M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -59397,14 +59397,14 @@
             <FORM kindOf="standard">'akia=cu</FORM>
             <PHON kindOf="standard">ʔakiaʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞=狀態改變</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG=COS</TRANSL>
             <M id="ap1_S_89_W2M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
             <M id="ap1_S_89_W2M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -59783,14 +59783,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap1_S_93_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap1_S_93_W1">
@@ -60079,14 +60079,14 @@
             <FORM kindOf="standard">ka'anʉ=cu</FORM>
             <PHON kindOf="standard">kaʔanɨʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=狀態改變</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=COS</TRANSL>
             <M id="ap1_S_95_W4M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="ap1_S_95_W4M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -60399,14 +60399,14 @@
             <FORM kindOf="standard">koo</FORM>
             <PHON kindOf="standard">koo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap1_S_98_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap1_S_98_W1">
@@ -60567,14 +60567,14 @@
             <FORM kindOf="standard">ka'anʉ=cu</FORM>
             <PHON kindOf="standard">kaʔanɨʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=狀態改變</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=COS</TRANSL>
             <M id="ap1_S_99_W3M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="ap1_S_99_W3M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -61655,14 +61655,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap2_S_10_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap2_S_10_W1">
@@ -61743,14 +61743,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="ap2_S_10_W5M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="ap2_S_10_W6">
@@ -63391,14 +63391,14 @@
             <FORM kindOf="standard">ka'anʉ=kita</FORM>
             <PHON kindOf="standard">kaʔanɨkita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我們.包含.NOM</TRANSL>
             <M id="ap2_S_26_W5M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="ap2_S_26_W5M1">
                 <FORM kindOf="original">=kita</FORM>
@@ -64163,7 +64163,7 @@
             <FORM kindOf="standard">'apa-kʉnʉ-o-'e</FORM>
             <PHON kindOf="standard">ʔapakɨnɨoʔe</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-吃-祈使.受事焦點-叮嚀語氣詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS-吃-祈使.受事焦點-叮嚀語氣詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-吃-IMP.受事焦點-叮嚀語氣詞</TRANSL>
             <M id="ap2_S_30_W6M0">
                 <FORM kindOf="original">'apa</FORM>
                 <PHON kindOf="original">ʔapa</PHON>
@@ -64186,7 +64186,7 @@
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">o</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受事焦點</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">祈使.受事焦點</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IMP.受事焦點</TRANSL>
             </M>
             <M id="ap2_S_30_W6M3">
                 <FORM kindOf="original">'e</FORM>
@@ -64411,7 +64411,7 @@
             <FORM kindOf="standard">ara-'akia=cu</FORM>
             <PHON kindOf="standard">a[r|ɾ]aʔakiaʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變-存在.否定詞=狀態改變</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變-存在.否定詞=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">變-存在.NEG=COS</TRANSL>
             <M id="ap2_S_31_W2M0">
                 <FORM kindOf="original">ara</FORM>
                 <PHON kindOf="original">a[r|ɾ]a</PHON>
@@ -64426,7 +64426,7 @@
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
             <M id="ap2_S_31_W2M2">
                 <FORM kindOf="original">=cu</FORM>
@@ -65165,14 +65165,14 @@
             <FORM kindOf="standard">ka'anʉ=kim</FORM>
             <PHON kindOf="standard">kaʔanɨkim</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我們.排除.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=我們.排除.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我們.排除.NOM</TRANSL>
             <M id="ap2_S_36_W5M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="ap2_S_36_W5M1">
                 <FORM kindOf="original">=kim</FORM>
@@ -66145,14 +66145,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap2_S_44_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap2_S_44_W1">
@@ -66241,14 +66241,14 @@
             <FORM kindOf="standard">ka'anʉ=pa</FORM>
             <PHON kindOf="standard">kaʔanɨpa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=還</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=還</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=還</TRANSL>
             <M id="ap2_S_44_W5M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="ap2_S_44_W5M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -66473,14 +66473,14 @@
             <FORM kindOf="standard">'akia=cu</FORM>
             <PHON kindOf="standard">ʔakiaʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞=狀態改變</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG=COS</TRANSL>
             <M id="ap2_S_47_W1M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
             <M id="ap2_S_47_W1M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -69139,14 +69139,14 @@
             <FORM kindOf="standard">'akia=pa</FORM>
             <PHON kindOf="standard">ʔakiapa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞=還</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞=還</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG=還</TRANSL>
             <M id="ap3_S_10_W3M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
             <M id="ap3_S_10_W3M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -70983,14 +70983,14 @@
             <FORM kindOf="standard">'akia=pa</FORM>
             <PHON kindOf="standard">ʔakiapa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞=還</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞=還</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG=還</TRANSL>
             <M id="ap3_S_21_W5M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
             <M id="ap3_S_21_W5M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -71707,14 +71707,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="ap3_S_26_W1M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="ap3_S_26_W2">
@@ -71963,14 +71963,14 @@
             <FORM kindOf="standard">koo=pa</FORM>
             <PHON kindOf="standard">koopa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=還</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=還</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=還</TRANSL>
             <M id="ap3_S_27_W1M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="ap3_S_27_W1M1">
                 <FORM kindOf="original">=pa</FORM>
@@ -72113,14 +72113,14 @@
             <FORM kindOf="standard">ka'anʉ=cu</FORM>
             <PHON kindOf="standard">kaʔanɨʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=狀態改變</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=COS</TRANSL>
             <M id="ap3_S_28_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
             <M id="ap3_S_28_W0M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -72963,14 +72963,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             <M id="ap3_S_36_W1M0">
                 <FORM kindOf="original">'akia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="ap3_S_36_W2">
@@ -73371,14 +73371,14 @@
             <FORM kindOf="standard">koo</FORM>
             <PHON kindOf="standard">koo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap3_S_38_W4M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap3_S_38_W5">
@@ -74371,14 +74371,14 @@
             <FORM kindOf="standard">koo</FORM>
             <PHON kindOf="standard">koo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap3_S_47_W0M0">
                 <FORM kindOf="original">koo</FORM>
                 <PHON kindOf="original">koo</PHON>
                 <FORM kindOf="standard">koo</FORM>
                 <PHON kindOf="standard">koo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap3_S_47_W1">
@@ -74645,14 +74645,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap3_S_48_W7M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap3_S_48_W8">
@@ -74981,7 +74981,7 @@
             <FORM kindOf="standard">pa-ara-'akia</FORM>
             <PHON kindOf="standard">paa[r|ɾ]aʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-變成-存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS-變成-存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-變成-存在.NEG</TRANSL>
             <M id="ap3_S_53_W0M0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
@@ -75004,7 +75004,7 @@
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">存在.否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在.否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在.NEG</TRANSL>
             </M>
         </W>
         <W id="ap3_S_53_W1">
@@ -76109,14 +76109,14 @@
             <FORM kindOf="standard">ka'anʉ</FORM>
             <PHON kindOf="standard">kaʔanɨ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             <M id="ap3_S_58_W0M0">
                 <FORM kindOf="original">ka'anʉ</FORM>
                 <PHON kindOf="original">kaʔanɨ</PHON>
                 <FORM kindOf="standard">ka'anʉ</FORM>
                 <PHON kindOf="standard">kaʔanɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">否定詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ap3_S_58_W1">
