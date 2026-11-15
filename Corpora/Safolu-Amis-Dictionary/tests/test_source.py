@@ -54,11 +54,16 @@ class SourceTests(unittest.TestCase):
     def test_round13_answers(self):
         # Safolu review round 13 (2026-11-09), cards r13-*
         for sid, first, second in (("S49456", "caay ka 'idi.", "caay ka 'omla."), ("S49466", "caay ka herek.", "caay ka lepon."),
-                                   ("S49467", "caay ka kihar.", "awaay ko kihar."), ("S49485", "caay ko ci’oningay.", "caay ko cikaditay."),
-                                   ("S49500", "caay pitengil.", "caay picinga.")):
+                                   ("S49467", "caay ka kihar.", "awaay ko kihar."), ("S49485", "caay ko ci’oningay.", "caay ko cikaditay.")):
             with self.subTest(sid=sid):  # "Two sentences"
                 self.assertEqual((self.by_id[sid].form, self.by_id[sid + "-opt"].form), (first, second))
                 self.assertEqual(self.by_id[sid].translations, self.by_id[sid + "-opt"].translations)
+        # S49500 "Two sentences": caay pitengil. and caay picinga. are both published. caay picinga. is also S49494 with a
+        # fuller translation, so S49500-opt was combined into it (same_sentence_merges.tsv, delete_fragment;
+        # maintainer 2026-11-15: "delete the fragment")
+        self.assertEqual(self.by_id["S49500"].form, "caay pitengil.")
+        self.assertNotIn("S49500-opt", self.by_id)
+        self.assertEqual((self.by_id["S49494"].form.lower(), self.by_id["S49494"].translations[0].text), ("caay picinga.", "不服從的;不聽話的;不回覆。"))
         row = self.by_id["S49966"]  # "Publish; reference to FORM notes"
         self.assertEqual((row.form, row.form_notes, row.translations[0].text),
                          ("Pa'edeng, pa'edendeg han a pafeli.a", "(徒: 2-45)", "按照各人的需要給。"))
@@ -68,12 +73,13 @@ class SourceTests(unittest.TestCase):
         self.assertEqual(self.corpus.source, "Safolu/Tsai dictionary, g0v/amis-moedict@e7c6976a0766e9b0aeb7083e2c06db60f5485252 docs/s, "
                          "with the editors' later revisions and additions at 4cb82539d7e51e7211e262d4dbaecaa41a772b2f.")
 
-    def test_same_spelling_different_meanings_survive(self):
-        first, second = self.by_id["S00110"], self.by_id["S00112"]
-        self.assertEqual(first.form, "O 'a'atalen ko felac.")
-        self.assertEqual(first.form, second.form)
-        self.assertNotEqual(first.translations, second.translations)
-        tree = helpers.build_text_tree(self.corpus, [first, second])
+    def test_same_sentence_with_two_translations_is_one_s(self):
+        # POL-025; maintainer 2026-11-15: "two real translations -> use the ver="alt" option" (same_sentence_merges.tsv)
+        row = self.by_id["S00110"]
+        self.assertEqual(row.form, "O 'a'atalen ko felac.")
+        self.assertNotIn("S00112", self.by_id)
+        self.assertEqual([(t.text, t.ver) for t in row.translations], [("要把米量一量。", None), ("要把米滔出出來。", "alt")])
+        tree = helpers.build_text_tree(self.corpus, [row])
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "source.xml"
             tree.write(path, encoding="utf-8")

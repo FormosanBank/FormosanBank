@@ -5,7 +5,7 @@ Example sentences and phrases from Virginia Fey's (1986) *Amis Dictionary*
 2,042 Amis example records with English and Mandarin readings from Virginia
 Fey’s dictionary and its maintained digital edition. The current development
 output contains 2,042 S records from 2,012 source examples, in
-`XML/Amis/Amis.xml`. It preserves source spelling and multiple meanings; no
+`XML/Amis/Amis.xml`, and 4,696 headword entries, in `XML/Amis/Amis_headwords.xml`. It preserves source spelling and multiple meanings; no
 audio or W/M analysis is supplied. This candidate remains under review. The
 statistics below describe the checked-in candidate XML. On the old
 documentation site this corpus was called Virginia Fey's Amis Dictionary. Two
@@ -17,8 +17,9 @@ per option (S6717 and S6717-opt).
 
 ## Languages and dialects
 
-The language is Amis (`ami`), dialect Xiuguluan. The corpus is one file,
-`XML/Amis/Amis.xml`, whose `TEXT` element carries `xml:lang="ami"` and
+The language is Amis (`ami`), dialect Xiuguluan. The corpus has two files, the
+example sentences in `XML/Amis/Amis.xml` and the headword entries in
+`XML/Amis/Amis_headwords.xml`; both `TEXT` elements carry `xml:lang="ami"` and
 `dialect="Xiuguluan"`. The source is routed to Xiuguluan: the dictionary's
 introduction (printed page 13) identifies the main text as Central Amis; the
 FormosanBank registry calls this dialect Xiuguluan.
@@ -89,6 +90,9 @@ The corpus is also subject to the central FormosanBank
 Commercial AI use requires prior written permission.
 
 ## Notes and caveats
+
+- Original source does not distinguish polysemy from homophony. Thus in the wordlist, any homophones are listed
+  under a single headword, with the different homophones' meanings given as different senses.
 
 - The digital source was checked against raw text, corrected Word files and
   conversion history. This is not a complete review of the printed dictionary.
@@ -224,24 +228,31 @@ order and stops at the first failure (`set -euo pipefail`).
      moving the later ones' translations over as `ver="alt"` and dropping
      repeats; the result must equal the 8 merges recorded in the JSON.
    It then writes the file and prints a one-line summary of the counts.
-5. **`QC/cleaning/clean_xml.py --corpora_path XML`** (shared cleaning:
+5. **[generate_headwords.py](CodeAndDocs/generate_headwords.py)** writes
+   `XML/Amis/Amis_headwords.xml` from the frozen spreadsheet's headword column (詞條): one `S` per headword, one
+   English and one Chinese `TRANSL` per sense row (英文解釋 / 中文解釋), senses after the first `ver="alt"`
+   (POL-025). Of the sheet's 4,848 headwords, 144 whose only sense is a cross-reference ("refer to X" / 詳見 X)
+   and 8 prefix entries (`ala-`, `haki-`, …) are left out. The see-also column (參見) goes to the `FORM`'s notes
+   (`See also: miki'a'am`). A Chinese translation the sheet marks `(FIXME)` is not published (only its marked
+   part, where the cell has others), and the English translation of that sense says so in its notes.
+6. **`QC/cleaning/clean_xml.py --corpora_path XML`** (shared cleaning:
    punctuation, whitespace, quote and character normalization). No
    `--warnings_dir` is passed, so the per-run `cleaner_warnings.csv` is written
    into `XML/` when there are warnings and removed when there are none; actual
    quote rewrites are appended to `CodeAndDocs/quote_corrections.csv`.
-6. **`QC/utilities/standardize.py --corpora_path XML --tsv_path Orthographies/ConversionTables/Amis_Church_113.tsv --target_column Xiuguluan`**
+7. **`QC/utilities/standardize.py --corpora_path XML --tsv_path Orthographies/ConversionTables/Amis_Church_113.tsv --target_column Xiuguluan`**
    writes the standard `FORM` from the original `FORM` using the Xiuguluan
    column of the shared Amis table, deriving capital-letter rules from the
    table's source profile. Warnings go to `XML/standardize_warnings.csv`.
-7. **`QC/utilities/add_phonology.py --corpora_path XML --orthography Ortho113`**
+8. **`QC/utilities/add_phonology.py --corpora_path XML --orthography Ortho113`**
    writes `PHON` for the original and the standard tier from the shared
    Ortho113 tables (the IPA column is chosen from the dialect).
-8. **`QC/cleaning/remove_duplicate_sentences.py by_path --path XML --apply`**
+9. **`QC/cleaning/remove_duplicate_sentences.py by_path --path XML --apply`**
    (defaults: within the file, standard tier). Two `S` count as duplicates only
    if their standard `FORM` and their full set of translations both match; the
    first by `S` id is kept, and any translation of a removed `S` the survivor
    lacks is added to it as `ver="alt"`.
-9. **Provenance.** If the tools checkout is a Git repository, its `HEAD` commit
+10. **Provenance.** If the tools checkout is a Git repository, its `HEAD` commit
    is written to [CodeAndDocs/provenance.json](CodeAndDocs/provenance.json);
    otherwise the existing file must be present and the script says to verify
    the export's tools revision separately.
