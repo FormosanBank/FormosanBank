@@ -24,7 +24,7 @@ Three evidence sources, kept distinct:
 | COS | change of state | registered |
 | REFL | reflexive | Leipzig |
 | RECP | reciprocal | Leipzig; NTU REC → RECP ruled |
-| INCH | inchoative | **not Leipzig, not registered** — open (artifact card C) |
+| INCH | inchoative | folded into COS (card C choice `fold`, 2026-11-15); stays unregistered |
 
 ## Candidate affixes by language
 
@@ -47,16 +47,36 @@ Grammar claims are the 語法概論 volume's; corpus counts are audit-rule tier-
 | Tsou | free word poa (primary) + pa'-/p'- | **no stative affix** (auxiliary/negator diagnosis) | =cu aspect clitic only | none (iachi, glosses only) | yupa- (glosses only) — corpus matches |
 | Yami | pa-; -en on statives; maka-/paka-/pipa-/pi-/pika-/mapa-… | ma- three-ways ambiguous (plain/abilitative) + ka-…-an; RauDong SV → STAT | micya-/mipa- 「愈來愈」; -om- inception | one mi- side-remark only | masi- (table-only); RauDong REC = mi- forms |
 
-## Open proposals (artifact cards, round 1)
+## Proposals: still open (artifact cards, round 2)
 
 - A: NTU zho derivational codes → Latin twins (使役/使動/役使/使→CAUS, 狀態/靜態→STAT,
   改變狀態/狀態改變→COS, 反身→REFL, 交互/互相→RECP); 重現 excluded.
 - B: NTU Kanakanavu REC ×34 (重現, ⟨n⟩) — mis-covered by the bank-wide REC→RECP ruling.
-- C: INCH — register vs fold into COS vs leave (Li-Thao ×2, Wild ×4).
-- D: Song-Kanakanavu 使動 ×86 → CAUS.
-- E/F: HundredPaiwanStories `cause` ×649 → CAUS; `stat` ×1,926 → STAT.
 - G: remaining reciprocal codes → RECP (RauDong REC ×18 + 互相 ×16; Seediq-Chang 互相 ×2).
-- H: NTU STAV ×4 → STAT.
+
+## Ruled on the decision page 2026-11-15, applied the same day
+
+Answers read from the page database (choice values quoted); applied by
+stripping the affected corpora's generated standard tiers and re-running
+`QC/glossing/apply_gloss_standard.py` with the updated tables, verified by
+diff (every changed line involves the target atoms; 0 HARD validator
+findings; `tests/glossing` 30 passed).
+
+- C (`fold`): INCH → COS in Li-Conjunction-Thao (2 tokens) and
+  Wild-Lehmann-Kanakanavu (3 of 4; the 4th is inside the residue gloss
+  `INCH-ring-ring(AV)`, copied verbatim per the parentheses rule). INCH
+  stays unregistered.
+- D (`approve`): Song-Kanakanavu 使動 → CAUS, 86/86 tokens.
+- E (`approve`): HPS new row `cause` → CAUS; 1,259/1,298 atoms. The other
+  39 sit in infix-bracket atoms (`cause<af>`), which the HPS converter has
+  never split (pre-existing: `eat<af>` etc., 2,723 standard-tier lines) —
+  follow-up, not silently fixed.
+- F (`approve`): HPS `stat` → STAT, 1,931/1,940 atoms (9 in the same
+  infix-bracket situation). ⚠ The maintainer's note on this card was cut
+  off mid-sentence ("Do they say ") — asked in chat.
+- H (`approve`): NTU STAV → STAT, 4/4 (Rukai); zho twins 狀態 wait on card A.
+
+Dictionary entries added for coverage: Paiwan CAUS + STAT, Thao COS.
 
 ## Notes for the verb-individuation list
 

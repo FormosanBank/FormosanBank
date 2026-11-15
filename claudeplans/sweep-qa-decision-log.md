@@ -24977,3 +24977,18 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   "build" check; fix (Option A drop the rule / Option B deploy-key bypass) not
   yet picked; failed run needs re-running after.
 - Full context for a cold-start session: claudeplans/2026-11-15-handoff-new-machine.md.
+
+### 2026-11-15 — RULED on the derivational decision page (answers read from its database, choices quoted)
+- Card C INCH — choice `fold` ("Convert INCH → COS") → Li-Conjunction-Thao (2 tokens) + Wild-Lehmann-Kanakanavu
+  (3/4; 1 in residue gloss `INCH-ring-ring(AV)` stays verbatim). INCH stays unregistered.
+- Card D — choice `approve` ("Convert 使動 → CAUS") → Song-Kanakanavu 86/86.
+- Card E — choice `approve` ("Add table row: cause → CAUS") → HPS 1,259/1,298 atoms (39 in unsplit infix-bracket
+  atoms like `cause<af>` — pre-existing HPS converter limitation, logged as follow-up).
+- Card F — choice `approve` ("Convert stat → STAT") → HPS 1,931/1,940 (9 ditto). His note was cut off mid-word
+  ("Do they say ") — asked in chat.
+- Card H — choice `approve` ("Convert STAV → STAT") → NTU 4/4 (Rukai).
+- Applied by strip + re-run of apply_gloss_standard.py on the 5 corpora; diff-verified (0 unrelated lines,
+  0 HARD findings, tests/glossing 30 passed). Dictionaries: +Paiwan CAUS/STAT, +Thao COS.
+### ⏳ OPEN (derivational page, round 2)
+- Cards A (NTU zho twins), B (Kanakanavu REC=重現), G (reciprocal rest); all 14 language sections unanswered.
+- Follow-up: HPS infix-bracket atoms never convert (`eat<af>`, now also 39 `cause<af>` + 9 `stat<perf>`).
