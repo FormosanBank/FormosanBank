@@ -25025,3 +25025,15 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   option added. P2 open; card B still `modify` with empty note.
 - Observed, not fixed: 2 pre-existing V067 HARD in NTU Stories original FORMs (hoN2T>, shiaolingLM> — at
   HEAD and in NTU's source JSONs; CodeAndDocs/scripts/repair_l2_markers.py references these L2 markers).
+
+### 2026-11-15 (cont. 3) — RULED: P1 = Rule 7; converter parens support built; P3 implemented
+- Card P1 — his chat words: "OK, you have convinced me that these should remain Rule 7. But that also means
+  our gloss standardizer needs to handle such cases appropriately." → shared-converter extension approved.
+- apply_gloss_standard.py: new rules keywords KEEP-PARENS (LGR Rule 7 chunk: parens kept, atoms inside
+  converted, preceding space dropped, exempt from residue) and NOTE-PARENS (chunk removed from standard
+  text, stored on the standard TRANSL's notes attribute). Unmatched parens stay residue. TDD: 3 new tests
+  (red first), tests/glossing 33 passed.
+- Wild rules rows: \((?:AV|UV|HORT)\) KEEP-PARENS; \(ritual\) NOTE-PARENS. Rebuild: 29 changed pairs, all
+  paren-related, zero (person) lines — go (AV)→go(AV) ×20 (+dance/climb/attend/try), INCH-ring-ring(AV)→
+  COS-ring-ring(AV) (card C's last leftover), sikaisiisi (ritual)→ notes="(ritual)" sikaisiisi ×4 (P3
+  implemented). Residue now exactly the 22 unruled (person) tokens (card P2). validate_xml/glosses 0 HARD.

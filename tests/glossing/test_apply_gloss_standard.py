@@ -330,3 +330,79 @@ def test_variant_ver_transl_standardized_with_ver(tmp_path):
     assert p2.returncode == 0, p2.stderr
     root2 = ET.parse(d / "a.xml").getroot()
     assert len(root2.find(".//M").findall("TRANSL")) == len(trs)
+
+
+# ---- LGR Rule 7 parens + notes-attribute parens (maintainer 2026-11-15:
+# "these should remain Rule 7. But that also means our gloss standardizer
+# needs to handle such cases appropriately."; card P3 "drop") ----
+
+PAREN_RULES = RULES + [
+    (r"\((?:AF|AV|UV|HORT)\)", "KEEP-PARENS",
+     "LGR Rule 7 inherent-category tag: keep parens, convert inside, strip preceding space"),
+    (r"\(ritual\)", "NOTE-PARENS",
+     "clarifier moves to the standard TRANSL's notes attribute"),
+]
+PAREN_XML = """<TEXT xml:lang="tay" id="t5">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>a</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">go (AF)</TRANSL>
+  </W>
+  <W id="w2"><FORM>b</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">LF-ring(AF)</TRANSL>
+  </W>
+  <W id="w3"><FORM>c</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">one(person)</TRANSL>
+  </W>
+  <W id="w4"><FORM>d</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">sikaisiisi (ritual)</TRANSL>
+  </W>
+</S>
+</TEXT>"""
+
+
+def make_paren_corpus(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(PAREN_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(PAREN_RULES)
+    return d, t, r
+
+
+def test_keep_parens_rule7_kept_converted_space_stripped(tmp_path):
+    d, t, r = make_paren_corpus(tmp_path)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    _, g = glosses(d)
+    assert g["w1"][("standard",)] == "go(AV)"       # space stripped, AF->AV inside
+    assert g["w2"][("standard",)] == "LV-ring(AV)"  # outside and inside both convert
+    assert g["w1"][("original",)] == "go (AF)"      # original untouched
+
+
+def test_unmatched_parens_still_residue(tmp_path):
+    d, t, r = make_paren_corpus(tmp_path)
+    p = run(d, t, r)
+    _, g = glosses(d)
+    assert g["w3"][("standard",)] == "one(person)"  # verbatim, still flagged
+    assert "one(person)" in p.stdout
+
+
+def test_note_parens_moved_to_notes_attribute(tmp_path):
+    d, t, r = make_paren_corpus(tmp_path)
+    run(d, t, r)
+    root = ET.parse(d / "XML" / "a.xml" if (d / "XML").exists() else d / "a.xml").getroot()
+    w4 = [w for w in root.iter("W") if w.get("id") == "w4"][0]
+    std = [tr for tr in w4.findall("TRANSL") if tr.get("kindOf") == "standard"]
+    assert len(std) == 1
+    assert std[0].text == "sikaisiisi"
+    assert std[0].get("notes") == "(ritual)"
