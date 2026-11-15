@@ -96,7 +96,9 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
         "dialect": "Coastal",
     })
     global CUTS, POSL, BORROW, BORROW_RAW
-    CUTS = {(r["FORM"], r["piece_1"], r["piece_2"]) for r in load_tsv(args.cuts) if r.get("check_2015") == "pasting reproduces 2015"}
+    # r2-cut-paste (RULED): breaks the 2015 text confirms; r2-cut-unchecked (RULED): breaks it cannot check
+    PASTE = {"pasting reproduces 2015", "not locatable in 2015 text", "headword not in 2015 text"}
+    CUTS = {(r["FORM"], r["piece_1"], r["piece_2"]) for r in load_tsv(args.cuts) if r.get("check_2015") in PASTE}
     POSL = {r["label"] for r in load_tsv(args.pos) if r.get("treated_as_part_of_speech") == "yes"}
     rows = load_tsv(args.borrow)
     BORROW = {r["label_as_printed"]: r["note_text"] for r in rows}

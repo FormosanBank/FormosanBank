@@ -357,3 +357,14 @@ python3 -I round3.py $WORK                                                    # 
 ```
 Round 3 card ids: r2-sections, r2-poslabels (flags kept), r2-heading, r2-cut-lost, r2-cut-unchecked, r2-homs-notreview,
 r3-embedded-rebuilt, r3-tags, r3-label-pos, r3-amis-tails. Done flag: `meta/round3`.
+
+## 11. Round 3 answers applied; round 4 page (version 7)
+
+Applied: 短語 marked as a part of speech in pos_labels.tsv; the 57 breaks the 2015 text cannot check are pasted too
+(generator pastes every cut_confirmed_r2.tsv row except "characters lost at the break"); their list is
+`draft/repaired_breaks_unchecked.tsv`. At the build: put that TSV (and pos_labels.tsv, borrow_labels.tsv) in the corpus's
+CodeAndDocs/, add the maintainer's caveat to README Notes & Caveats with `[INSERT LINK HERE]` replaced by the TSV link,
+and name the TSV in the README's processing-pipeline section (decision log, round 3 answers, r2-cut-unchecked).
+Draft: `out_r3` 42,318 S, 56,145 TRANSL. Page: `python3 -I round4.py $WORK` (reads the round 3 page for its cards/log).
+Round 4 card ids: r2-sections, r2-heading, r2-cut-lost, r2-homs-notreview, r3-embedded-rebuilt, r3-tags, r3-label-pos,
+r3-amis-tails, r4-affixes, r4-letters. Done flag `meta/round4`.
