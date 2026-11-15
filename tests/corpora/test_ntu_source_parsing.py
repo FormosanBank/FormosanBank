@@ -34,6 +34,11 @@ sys.path.insert(0, str(CODEDOCS / "pipeline"))
 import pipeline_stories as ps  # noqa: E402
 
 
+# Under pytest-xdist (--dist loadgroup) every NTU file that loads the whole corpus
+# (1.5-1.7 GB each) runs on one worker, so they never load at the same time.
+pytestmark = pytest.mark.xdist_group("ntu")
+
+
 def _inner(el):
     return (el.text or "") + "".join(ET.tostring(c, encoding="unicode") for c in el)
 

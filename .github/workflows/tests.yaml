@@ -15,7 +15,16 @@ on:
       - 'mkdocs.yml'
       - 'requirements-site.txt'
       - 'readme_sections_pending.txt'
-      - '.github/workflows/tests.yaml'
+      # Files that tests read from the live tree (each named in a test):
+      - 'generate_xml_pending.txt'      # tests/corpora/test_generate_xml.py
+      - 'provenance_pending.txt'        # tests/corpora/test_provenance.py
+      - 'audio_sources.json'            # tests/validators/test_hf_audio_scope.py
+      - 'languages.csv'                 # QC/corpus_counts.py, run by validator tests
+      - 'dialects.csv'                  # QC/validation/_dialect_inventory.py
+      - 'standards.csv'                 # QC/validation/_dialect_inventory.py
+      - 'Orthographies/**'              # tests/utilities/test_orthography_table_integrity.py
+      - '.claude/skills/**'             # tests/skills/test_skill_citations.py
+      - '.github/workflows/**'          # tests/validators/test_ci_changed_xml_pathspec.py, test_hf_audio_scope.py
   push:
     branches: [main]
     paths:
@@ -31,7 +40,16 @@ on:
       - 'mkdocs.yml'
       - 'requirements-site.txt'
       - 'readme_sections_pending.txt'
-      - '.github/workflows/tests.yaml'
+      # Files that tests read from the live tree (each named in a test):
+      - 'generate_xml_pending.txt'      # tests/corpora/test_generate_xml.py
+      - 'provenance_pending.txt'        # tests/corpora/test_provenance.py
+      - 'audio_sources.json'            # tests/validators/test_hf_audio_scope.py
+      - 'languages.csv'                 # QC/corpus_counts.py, run by validator tests
+      - 'dialects.csv'                  # QC/validation/_dialect_inventory.py
+      - 'standards.csv'                 # QC/validation/_dialect_inventory.py
+      - 'Orthographies/**'              # tests/utilities/test_orthography_table_integrity.py
+      - '.claude/skills/**'             # tests/skills/test_skill_citations.py
+      - '.github/workflows/**'          # tests/validators/test_ci_changed_xml_pathspec.py, test_hf_audio_scope.py
 
 jobs:
   pytest:
@@ -47,7 +65,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Run pytest
-        run: pytest
+        run: pytest -n auto --dist loadgroup
       - name: Corpus pages registered and READMEs in the approved layout
         run: python docs/tools/manage_corpus_pages.py check --strict
       - name: Upload coverage report

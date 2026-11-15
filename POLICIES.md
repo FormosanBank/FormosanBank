@@ -99,7 +99,6 @@ rebuild the derived tiers. Net effect: an edit made *only* to a standard
 FORM or PHON is invisible to capture and futile anyway — edit the original
 and let regeneration propagate. All standard-tier cleaning lives in
 `standardize.py`, none in `clean_xml.py`.
-Spec: `docs/superpowers/specs/2026-08-09-standardize-owns-standard-cleaning-design.md`.
 
 ### POL-003 · RULED · 2026-08-09 · PHON tier
 PHON is derived and machine-owned (`add_phonology.py` regenerates it;
@@ -108,8 +107,7 @@ segmentation markers (`-`, `=`, infix brackets) are not represented; infix
 *content* is, since it is pronounced. Unmapped punctuation is dropped;
 unmapped letters surface as `*`. Standard PHON uses the language's designated
 standard orthography per `standards.csv` (blank entry = standard PHON
-deliberately skipped). Sources: GitBook XML-format page §PHON;
-`docs/superpowers/specs/2026-08-09-per-language-standard-orthography-design.md`.
+deliberately skipped). Source: GitBook XML-format page §PHON.
 
 ### POL-004 · RULED · long-standing · cross-corpus comparison
 Cross-corpus/orthographic statistics use `kindOf="standard"`; token counting
@@ -154,8 +152,7 @@ silent in PHON; a whole-null FORM gets PHON `∅`. A dev repo may keep the
 source's glyph (`ø`/`Ø`) while work is in progress — two 2026-08 audits
 chose to — but that choice does not survive publication: `clean_xml`
 canonicalizes the glyph the first time the corpus runs through the
-pipeline, so there is no per-corpus opt-out of `∅` in published data. Spec:
-`docs/superpowers/specs/2026-08-09-null-morpheme-handling-design.md`.
+pipeline, so there is no per-corpus opt-out of `∅` in published data.
 
 ### POL-013 · RULED · 2026-09-03 · the tilde
 1. **Semantics — RULED (2026-08-10).** Phonemic variants on the PHON tier
@@ -167,8 +164,7 @@ pipeline, so there is no per-corpus opt-out of `∅` in published data. Spec:
    (FORM tiers) only. The two `Bunun.rules.tsv` context-resolution patterns
    carry the regex-escaped form `\[ʦ\|ʨ\](?=i)`. Guards: V154 (tilde
    notation in a profile), V146 (malformed group in PHON), V147 (`~` in
-   PHON — regenerate). Spec:
-   `docs/superpowers/specs/2026-08-10-phon-variant-notation-design.md`.
+   PHON — regenerate).
 2. **Codepoint — RULED (2026-08-10).** Tilde look-alikes canonicalize to
    ASCII `~` U+007E: U+223C TILDE OPERATOR (what LaTeX-typeset PDFs emit
    for the reduplication tilde — e.g. Bril 2024's `RED∼stem`) and U+301C
@@ -268,7 +264,15 @@ and the gap is not. A sentence translation that is wholly unknown is not
 emitted (no TRANSL); a word or morpheme gloss that is wholly unknown (as POL-061 defines
 it) is `<TRANSL><UNCLEAR/></TRANSL>`. Inside a gloss, an unknown piece is
 `<UNCLEAR/>` (`if-main-<UNCLEAR/>-outsider-nom`). A source's mark of
-uncertainty about a gloss it did give (`LIG?`, `他?`) is kept as written.
+uncertainty about a gloss it did give (`COND(?)`, `go?`, `LIG?`, `他?`) is
+removed from the gloss, and that TRANSL gets `notes="uncertain"`
+(`COND(?)` → `COND` with `notes="uncertain"`); POL-036's and POL-062's "kept as
+written" do not apply to these marks. Not followed yet by YeddaPalemeqBlog
+(`right?`, `ligature?`, `after? I am actually not sure.` and other short glosses
+not yet reviewed); tracked in [#343](https://github.com/FormosanBank/FormosanBank/issues/343).
+Maintainer (2026-11-11, Wild-Lehmann-Kanakanavu): *"They mark uncertainty.
+Remove them from the gloss and put "uncertain" in the note for that TRANSL."*;
+on making that this policy: *"Yes, update."*
 Maintainer (2026-10-17, Unknown-Content Markers review): NTU's untranscribed
 words → *"A. All tiers"*; *"Keep the tag"* (not a text marker); *"if the
 translation is unknown (? or ?? etc), we shouldn't use <UNCLEAR/> but actually
@@ -403,7 +407,7 @@ Not followed yet by Seediq-Chang-Reference-Grammar (18 `<UNCLEAR/>` glosses for
 words the book leaves unglossed) or Nowbucyang-Truku-Thesis (21 `<UNCLEAR/>`
 morpheme glosses where gloss pieces and morphemes do not line up); no change to
 their data is planned now (maintainer, 2026-11-08: *"No additional task or
-standardization is required at this time."*).
+standardization is required at this time."*). Tracked in [#344](https://github.com/FormosanBank/FormosanBank/issues/344).
 
 ### POL-024 · RULED · 2026-08-10 · parentheticals in translations
 Two different things, treated differently:
@@ -434,7 +438,7 @@ gloss: `original` is the source's own gloss, `standard` a standardized one.
 On an S-level TRANSL — a free translation — there is no such axis and the
 attribute carries no information (V151). Glosbe currently carries 4,157
 such S-level `kindOf` attributes; V151 ships SOFT rather than HARD until
-they are remediated (see `claudeplans/2026-09-08-alternate-form-worklist.md`).
+they are remediated.
 
 In a dictionary headword entry, each sense after the first is a `ver="alt"` TRANSL.
 
@@ -782,7 +786,6 @@ README (POL-044), not in `@copyright`.
 representable and is deliberately not designed for; the case does not exist
 today. Implemented by: V160 (`copyright_present`) and V161
 (`copyright_in_vocabulary`), both HARD, in `QC/validation/rules/rights.py`.
-Spec: `docs/superpowers/specs/2026-09-05-rights-enforcement-design.md`.
 
 ### POL-043 · RULED · 2026-09-05 · existing rights claims
 An existing rights claim in published XML is **never removed or weakened on the
@@ -952,8 +955,8 @@ exists under the canonical name and is executable, no older entry point survives
 beside it, it is self-contained (POL-048, no deviation clause), it runs no
 `QC/validation/`, and the shared steps it does call are in canonical relative
 order — all static, all cheap. Corpora that predate this entry are listed in
-`generate_xml_pending.txt` at the repo root; the list only shrinks, and a new or
-re-ported corpus is never added to it. **Idempotency is not covered** — that
+`generate_xml_pending.txt` at the repo root (tracked in [#345](https://github.com/FormosanBank/FormosanBank/issues/345)); the list
+only shrinks, and a new or re-ported corpus is never added to it. **Idempotency is not covered** — that
 needs the build actually run, which is too expensive for every corpus on every
 pull request, so for now it is a reviewer's job.
 
@@ -1079,8 +1082,8 @@ second copy that drifts.
 
 **Enforced** by `tests/corpora/test_provenance.py`: the file must exist, parse,
 and carry a well-formed commit, and the README must link it. Corpora that
-predate this entry are listed in `provenance_pending.txt` at the repo root — a
-list that only ever shrinks, and that a new or rebuilt corpus is never added to.
+predate this entry are listed in `provenance_pending.txt` at the repo root
+(tracked in [#346](https://github.com/FormosanBank/FormosanBank/issues/346)) — a list that only ever shrinks, and that a new or rebuilt corpus is never added to.
 
 **The record is documentation, never a gate.** `generate_xml.sh` runs with the
 tools in the checkout it is invoked from — normally `main` at HEAD — not with
@@ -1244,7 +1247,7 @@ what they are looking at."* The paragraph above is the maintainer's wording
 
 Implemented by: `docs/tools/readme_layout.py` (the layout),
 `tests/corpora/test_readme_sections.py` (the `structure` check; legacy READMEs
-in `readme_sections_pending.txt`), `docs/tools/manage_corpus_pages.py check
+in `readme_sections_pending.txt`, tracked in [#347](https://github.com/FormosanBank/FormosanBank/issues/347)), `docs/tools/manage_corpus_pages.py check
 --strict` (in `tests.yaml`), and the `port-corpus-in` `README.template.md`.
 
 ### POL-056 · RULED · 2026-09-09 · conversion tables

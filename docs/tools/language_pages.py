@@ -44,6 +44,37 @@ SERIES_STYLES = (
 )
 EXCLUDED_FROM_SECOND_FIGURE = frozenset({"Wikipedias"})
 LANGUAGES_DIR = "languages"
+GLOSS_DICTIONARIES = Path(__file__).resolve().parents[2] / "Glossing" / "GlossDictionaries"
+
+
+def gloss_dictionary_section(language: str) -> list[str]:
+    """The language's ruled gloss codes, read from Glossing/GlossDictionaries.
+
+    The TSV is the single source of truth (tests/glossing/test_gloss_dictionaries.py
+    keeps it in step with the conversion tables); the site renders it directly,
+    so there is nothing to sync by hand. No TSV, no section.
+    """
+    path = GLOSS_DICTIONARIES / f"{language}.tsv"
+    if not path.exists():
+        return []
+    with path.open(encoding="utf-8") as handle:
+        rows = [row for row in csv.DictReader(handle, delimiter="\t") if row.get("gloss")]
+    if not rows:
+        return []
+    lines = [
+        "## Ruled gloss codes",
+        "",
+        "Gloss codes that FormosanBank's standard gloss tier maps onto for this language, "
+        "with their meanings. A code that is **not** in this table is an original source "
+        "gloss whose standardization is still to be decided.",
+        "",
+        "| Gloss | Meaning |",
+        "| --- | --- |",
+    ]
+    for row in sorted(rows, key=lambda r: r["gloss"]):
+        lines.append(f"| `{row['gloss']}` | {row['definition']} |")
+    lines.append("")
+    return lines
 
 
 @dataclass(frozen=True)
@@ -185,6 +216,8 @@ def language_page(
         page = labels.get(corpus)
         name = f"[{page.nav_label}](../{site_stats_relative(page)})" if page else corpus
         lines.append(f"* {name}: {site_stats.fmt_count(by_corpus[corpus]['word_count'])} words")
+    lines += [""]
+    lines += gloss_dictionary_section(language)
     lines += [
         "",
         "## Growth over time",

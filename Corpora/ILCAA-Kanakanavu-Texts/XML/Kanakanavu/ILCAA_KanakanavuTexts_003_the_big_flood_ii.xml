@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TEXT id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II" xml:lang="xnb" dialect="Kanakanavu" citation="Asai, E., Mei, K., Li, P. J.-k., &amp; Tsuchida, S. (2026). Kanakanavu texts (P. J.-k. Li, Ed.). Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies." BibTeX_citation="@book{AsaiMeiLiTsuchida2026KanakanavuTexts,author={Erin Asai and Kuang Mei and Paul Jen-kuei Li and Shigeru Tsuchida},editor={Paul Jen-kuei Li},title={Kanakanavu Texts},year={2026},publisher={Research Institute for Languages and Cultures of Asia and Africa, Tokyo University of Foreign Studies},isbn={978-4-86337-602-1},note={With the assistance of Yi-Chun Chen, Hsiu-min Huang, and Amy Ming-luan Chen. Licensed under CC BY 4.0}}" copyright="CC BY 4.0" source="Kanakanavu Texts (2026), Part 1, Text 3, Erin Asai, printed pages 42-43, source PDF B602_KanakanavuText.pdf">
     <S id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001">
         <FORM kindOf="original">ni-kuli-sivatə cakəranə sua vərəŋa, i-vatu sua canumu tatia.</FORM>
@@ -12,12 +12,14 @@
             <FORM kindOf="standard">ni-kuri-sivate</FORM>
             <PHON kindOf="standard">niku[r|ɾ]isivate</PHON>
             <TRANSL xml:lang="eng" kindOf="original">PFV-block-sideways</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV-block-sideways</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W001_M01">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W001_M02">
                 <FORM kindOf="original">kuli</FORM>
@@ -25,6 +27,7 @@
                 <FORM kindOf="standard">kuri</FORM>
                 <PHON kindOf="standard">ku[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">block</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">block</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W001_M03">
                 <FORM kindOf="original">sivatə</FORM>
@@ -32,6 +35,7 @@
                 <FORM kindOf="standard">sivate</FORM>
                 <PHON kindOf="standard">sivate</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">sideways</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">sideways</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W002">
@@ -40,12 +44,14 @@
             <FORM kindOf="standard">cakerane</FORM>
             <PHON kindOf="standard">ʦake[r|ɾ]ane</PHON>
             <TRANSL xml:lang="eng" kindOf="original">river</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">river</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W002_M01">
                 <FORM kindOf="original">cakəranə</FORM>
                 <PHON kindOf="original">ʦakəranə</PHON>
                 <FORM kindOf="standard">cakerane</FORM>
                 <PHON kindOf="standard">ʦake[r|ɾ]ane</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">river</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">river</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W003">
@@ -54,12 +60,14 @@
             <FORM kindOf="standard">sua</FORM>
             <PHON kindOf="standard">sua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W003_M01">
                 <FORM kindOf="original">sua</FORM>
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua</FORM>
                 <PHON kindOf="standard">sua</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NOM</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W004">
@@ -68,12 +76,14 @@
             <FORM kindOf="standard">verenga</FORM>
             <PHON kindOf="standard">ve[r|ɾ]eŋa</PHON>
             <TRANSL xml:lang="eng" kindOf="original">eel</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">eel</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W004_M01">
                 <FORM kindOf="original">vərəŋa</FORM>
                 <PHON kindOf="original">vərəŋa</PHON>
                 <FORM kindOf="standard">verenga</FORM>
                 <PHON kindOf="standard">ve[r|ɾ]eŋa</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">eel</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">eel</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W005">
@@ -82,12 +92,14 @@
             <FORM kindOf="standard">i-vatu</FORM>
             <PHON kindOf="standard">ivatu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">I-come</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">I-come</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W005_M01">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">I</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">I</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W005_M02">
                 <FORM kindOf="original">vatu</FORM>
@@ -95,6 +107,7 @@
                 <FORM kindOf="standard">vatu</FORM>
                 <PHON kindOf="standard">vatu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">come</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">come</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W006">
@@ -103,12 +116,14 @@
             <FORM kindOf="standard">sua</FORM>
             <PHON kindOf="standard">sua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W006_M01">
                 <FORM kindOf="original">sua</FORM>
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua</FORM>
                 <PHON kindOf="standard">sua</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NOM</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W007">
@@ -117,12 +132,14 @@
             <FORM kindOf="standard">canumu</FORM>
             <PHON kindOf="standard">ʦanumu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W007_M01">
                 <FORM kindOf="original">canumu</FORM>
                 <PHON kindOf="original">ʦanumu</PHON>
                 <FORM kindOf="standard">canumu</FORM>
                 <PHON kindOf="standard">ʦanumu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W008">
@@ -131,12 +148,14 @@
             <FORM kindOf="standard">tatia</FORM>
             <PHON kindOf="standard">tatia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">big</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">big</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0001_W008_M01">
                 <FORM kindOf="original">tatia</FORM>
                 <PHON kindOf="original">tatia</PHON>
                 <FORM kindOf="standard">tatia</FORM>
                 <PHON kindOf="standard">tatia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">big</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">big</TRANSL>
             </M>
         </W>
     </S>
@@ -152,12 +171,14 @@
             <FORM kindOf="standard">mata-cuvu-cuvungu</FORM>
             <PHON kindOf="standard">mataʦuvuʦuvuŋu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV.get-RED-gather</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV.get-RED-gather</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0002_W001_M01">
                 <FORM kindOf="original">mata</FORM>
                 <PHON kindOf="original">mata</PHON>
                 <FORM kindOf="standard">mata</FORM>
                 <PHON kindOf="standard">mata</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV.get</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV.get</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0002_W001_M02">
                 <FORM kindOf="original">cuvu</FORM>
@@ -165,6 +186,7 @@
                 <FORM kindOf="standard">cuvu</FORM>
                 <PHON kindOf="standard">ʦuvu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0002_W001_M03">
                 <FORM kindOf="original">cuvuŋu</FORM>
@@ -172,6 +194,7 @@
                 <FORM kindOf="standard">cuvungu</FORM>
                 <PHON kindOf="standard">ʦuvuŋu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">gather</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">gather</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0002_W002">
@@ -180,12 +203,14 @@
             <FORM kindOf="standard">sua</FORM>
             <PHON kindOf="standard">sua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0002_W002_M01">
                 <FORM kindOf="original">sua</FORM>
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua</FORM>
                 <PHON kindOf="standard">sua</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NOM</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0002_W003">
@@ -194,12 +219,14 @@
             <FORM kindOf="standard">cau</FORM>
             <PHON kindOf="standard">ʦau</PHON>
             <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">person</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0002_W003_M01">
                 <FORM kindOf="original">cau</FORM>
                 <PHON kindOf="original">ʦau</PHON>
                 <FORM kindOf="standard">cau</FORM>
                 <PHON kindOf="standard">ʦau</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">person</TRANSL>
             </M>
         </W>
     </S>
@@ -215,12 +242,14 @@
             <FORM kindOf="standard">ni-mu-'una</FORM>
             <PHON kindOf="standard">nimuʔuna</PHON>
             <TRANSL xml:lang="eng" kindOf="original">PFV-AV-live</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV-AV-live</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0003_W001_M01">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0003_W001_M02">
                 <FORM kindOf="original">mu</FORM>
@@ -228,6 +257,7 @@
                 <FORM kindOf="standard">mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0003_W001_M03">
                 <FORM kindOf="original">ʔuna</FORM>
@@ -235,6 +265,7 @@
                 <FORM kindOf="standard">'una</FORM>
                 <PHON kindOf="standard">ʔuna</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">live</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">live</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0003_W002">
@@ -243,12 +274,14 @@
             <FORM kindOf="standard">tanu'ung'incu</FORM>
             <PHON kindOf="standard">tanuʔuŋʔinʦu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">place.name</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">place.name</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0003_W002_M01">
                 <FORM kindOf="original">tanuʔuŋʔincu</FORM>
                 <PHON kindOf="original">tanuʔuŋʔinʦu</PHON>
                 <FORM kindOf="standard">tanu'ung'incu</FORM>
                 <PHON kindOf="standard">tanuʔuŋʔinʦu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">place.name</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">place.name</TRANSL>
             </M>
         </W>
     </S>
@@ -264,12 +297,14 @@
             <FORM kindOf="standard">karanana</FORM>
             <PHON kindOf="standard">ka[r|ɾ]anana</PHON>
             <TRANSL xml:lang="eng" kindOf="original">others</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">others</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0004_W001_M01">
                 <FORM kindOf="original">kalanana</FORM>
                 <PHON kindOf="original">kaɾanana</PHON>
                 <FORM kindOf="standard">karanana</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]anana</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">others</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">others</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0004_W002">
@@ -278,12 +313,14 @@
             <FORM kindOf="standard">ni-mu-'una</FORM>
             <PHON kindOf="standard">nimuʔuna</PHON>
             <TRANSL xml:lang="eng" kindOf="original">PFV-AV-live</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV-AV-live</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0004_W002_M01">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0004_W002_M02">
                 <FORM kindOf="original">mu</FORM>
@@ -291,6 +328,7 @@
                 <FORM kindOf="standard">mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0004_W002_M03">
                 <FORM kindOf="original">ʔuna</FORM>
@@ -298,6 +336,7 @@
                 <FORM kindOf="standard">'una</FORM>
                 <PHON kindOf="standard">ʔuna</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">live</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">live</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0004_W003">
@@ -306,12 +345,14 @@
             <FORM kindOf="standard">nauserana</FORM>
             <PHON kindOf="standard">nause[r|ɾ]ana</PHON>
             <TRANSL xml:lang="eng" kindOf="original">place.name</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">place.name</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0004_W003_M01">
                 <FORM kindOf="original">nausərana</FORM>
                 <PHON kindOf="original">nausərana</PHON>
                 <FORM kindOf="standard">nauserana</FORM>
                 <PHON kindOf="standard">nause[r|ɾ]ana</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">place.name</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">place.name</TRANSL>
             </M>
         </W>
     </S>
@@ -327,12 +368,14 @@
             <FORM kindOf="standard">ma-memeke</FORM>
             <PHON kindOf="standard">mamemeke</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-worry</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-worry</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0005_W001_M01">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0005_W001_M02">
                 <FORM kindOf="original">məməkə</FORM>
@@ -340,6 +383,7 @@
                 <FORM kindOf="standard">memeke</FORM>
                 <PHON kindOf="standard">memeke</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">worry</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">worry</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0005_W002">
@@ -348,12 +392,14 @@
             <FORM kindOf="standard">'akia</FORM>
             <PHON kindOf="standard">ʔakia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">not.have</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">not.have</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0005_W002_M01">
                 <FORM kindOf="original">ʔakia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">not.have</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">not.have</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0005_W003">
@@ -362,12 +408,14 @@
             <FORM kindOf="standard">apuru</FORM>
             <PHON kindOf="standard">apu[r|ɾ]u</PHON>
             <TRANSL xml:lang="eng" kindOf="original">fire</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">fire</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0005_W003_M01">
                 <FORM kindOf="original">apulu</FORM>
                 <PHON kindOf="original">apuɾu</PHON>
                 <FORM kindOf="standard">apuru</FORM>
                 <PHON kindOf="standard">apu[r|ɾ]u</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">fire</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">fire</TRANSL>
             </M>
         </W>
     </S>
@@ -383,12 +431,14 @@
             <FORM kindOf="standard">pu-kari-kari=kani</FORM>
             <PHON kindOf="standard">puka[r|ɾ]ika[r|ɾ]ikani</PHON>
             <TRANSL xml:lang="eng" kindOf="original">say-RED-word=said</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">say-RED-word=said</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0006_W001_M01">
                 <FORM kindOf="original">pu</FORM>
                 <PHON kindOf="original">pu</PHON>
                 <FORM kindOf="standard">pu</FORM>
                 <PHON kindOf="standard">pu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">say</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0006_W001_M02">
                 <FORM kindOf="original">kari</FORM>
@@ -396,6 +446,7 @@
                 <FORM kindOf="standard">kari</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0006_W001_M03">
                 <FORM kindOf="original">kari</FORM>
@@ -403,6 +454,7 @@
                 <FORM kindOf="standard">kari</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">word</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">word</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0006_W001_M04">
                 <FORM kindOf="original">=kani</FORM>
@@ -410,6 +462,7 @@
                 <FORM kindOf="standard">=kani</FORM>
                 <PHON kindOf="standard">kani</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">said</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">said</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0006_W002">
@@ -418,12 +471,14 @@
             <FORM kindOf="standard">'una-'incu</FORM>
             <PHON kindOf="standard">ʔunaʔinʦu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">have-good.luck.dream</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">have-good.luck.dream</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0006_W002_M01">
                 <FORM kindOf="original">ʔuna</FORM>
                 <PHON kindOf="original">ʔuna</PHON>
                 <FORM kindOf="standard">'una</FORM>
                 <PHON kindOf="standard">ʔuna</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">have</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">have</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0006_W002_M02">
                 <FORM kindOf="original">ʔincu</FORM>
@@ -431,6 +486,7 @@
                 <FORM kindOf="standard">'incu</FORM>
                 <PHON kindOf="standard">ʔinʦu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">good.luck.dream</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">good.luck.dream</TRANSL>
             </M>
         </W>
     </S>
@@ -446,12 +502,14 @@
             <FORM kindOf="standard">i-vatu</FORM>
             <PHON kindOf="standard">ivatu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">I-come</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">I-come</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0007_W001_M01">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">I</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">I</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0007_W001_M02">
                 <FORM kindOf="original">vatu</FORM>
@@ -459,6 +517,7 @@
                 <FORM kindOf="standard">vatu</FORM>
                 <PHON kindOf="standard">vatu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">come</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">come</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0007_W002">
@@ -467,12 +526,14 @@
             <FORM kindOf="standard">sua</FORM>
             <PHON kindOf="standard">sua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0007_W002_M01">
                 <FORM kindOf="original">sua</FORM>
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua</FORM>
                 <PHON kindOf="standard">sua</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NOM</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0007_W003">
@@ -481,12 +542,14 @@
             <FORM kindOf="standard">ta'urungu</FORM>
             <PHON kindOf="standard">taʔu[r|ɾ]uŋu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">muntjac</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">muntjac</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0007_W003_M01">
                 <FORM kindOf="original">taʔuruŋu</FORM>
                 <PHON kindOf="original">taʔuruŋu</PHON>
                 <FORM kindOf="standard">ta'urungu</FORM>
                 <PHON kindOf="standard">taʔu[r|ɾ]uŋu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">muntjac</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">muntjac</TRANSL>
             </M>
         </W>
     </S>
@@ -502,12 +565,14 @@
             <FORM kindOf="standard">ka'ane</FORM>
             <PHON kindOf="standard">kaʔane</PHON>
             <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NEG</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0008_W001_M01">
                 <FORM kindOf="original">kaʔanə</FORM>
                 <PHON kindOf="original">kaʔanə</PHON>
                 <FORM kindOf="standard">ka'ane</FORM>
                 <PHON kindOf="standard">kaʔane</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NEG</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0008_W002">
@@ -516,12 +581,14 @@
             <FORM kindOf="standard">m-ia-'icepe</FORM>
             <PHON kindOf="standard">miaʔiʦepe</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-IA-fear</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-IA-fear</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0008_W002_M01">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0008_W002_M02">
                 <FORM kindOf="original">ia</FORM>
@@ -529,6 +596,7 @@
                 <FORM kindOf="standard">ia</FORM>
                 <PHON kindOf="standard">ia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">IA</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">IA</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0008_W002_M03">
                 <FORM kindOf="original">ʔicəpə</FORM>
@@ -536,6 +604,7 @@
                 <FORM kindOf="standard">'icepe</FORM>
                 <PHON kindOf="standard">ʔiʦepe</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">fear</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">fear</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0008_W003">
@@ -544,12 +613,14 @@
             <FORM kindOf="standard">canumu</FORM>
             <PHON kindOf="standard">ʦanumu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0008_W003_M01">
                 <FORM kindOf="original">canumu</FORM>
                 <PHON kindOf="original">ʦanumu</PHON>
                 <FORM kindOf="standard">canumu</FORM>
                 <PHON kindOf="standard">ʦanumu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             </M>
         </W>
     </S>
@@ -565,12 +636,14 @@
             <FORM kindOf="standard">mu-caane</FORM>
             <PHON kindOf="standard">muʦaane</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-leave</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-leave</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0009_W001_M01">
                 <FORM kindOf="original">mu</FORM>
                 <PHON kindOf="original">mu</PHON>
                 <FORM kindOf="standard">mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0009_W001_M02">
                 <FORM kindOf="original">caanə</FORM>
@@ -578,6 +651,7 @@
                 <FORM kindOf="standard">caane</FORM>
                 <PHON kindOf="standard">ʦaane</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">leave</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">leave</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0009_W002">
@@ -586,12 +660,14 @@
             <FORM kindOf="standard">mu-kusa</FORM>
             <PHON kindOf="standard">mukusa</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-go.toward</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-go.toward</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0009_W002_M01">
                 <FORM kindOf="original">mu</FORM>
                 <PHON kindOf="original">mu</PHON>
                 <FORM kindOf="standard">mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0009_W002_M02">
                 <FORM kindOf="original">kusa</FORM>
@@ -599,6 +675,7 @@
                 <FORM kindOf="standard">kusa</FORM>
                 <PHON kindOf="standard">kusa</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">go.toward</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">go.toward</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0009_W003">
@@ -607,12 +684,14 @@
             <FORM kindOf="standard">nauserana</FORM>
             <PHON kindOf="standard">nause[r|ɾ]ana</PHON>
             <TRANSL xml:lang="eng" kindOf="original">place.name</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">place.name</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0009_W003_M01">
                 <FORM kindOf="original">nausərana</FORM>
                 <PHON kindOf="original">nausərana</PHON>
                 <FORM kindOf="standard">nauserana</FORM>
                 <PHON kindOf="standard">nause[r|ɾ]ana</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">place.name</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">place.name</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0009_W004">
@@ -621,12 +700,14 @@
             <FORM kindOf="standard">um-avici</FORM>
             <PHON kindOf="standard">umaviʦi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">AV-bring</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-bring</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0009_W004_M01">
                 <FORM kindOf="original">um</FORM>
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">um</FORM>
                 <PHON kindOf="standard">um</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0009_W004_M02">
                 <FORM kindOf="original">avici</FORM>
@@ -634,6 +715,7 @@
                 <FORM kindOf="standard">avici</FORM>
                 <PHON kindOf="standard">aviʦi</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">bring</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bring</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0009_W005">
@@ -642,12 +724,14 @@
             <FORM kindOf="standard">apuru</FORM>
             <PHON kindOf="standard">apu[r|ɾ]u</PHON>
             <TRANSL xml:lang="eng" kindOf="original">fire</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">fire</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0009_W005_M01">
                 <FORM kindOf="original">apulu</FORM>
                 <PHON kindOf="original">apuɾu</PHON>
                 <FORM kindOf="standard">apuru</FORM>
                 <PHON kindOf="standard">apu[r|ɾ]u</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">fire</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">fire</TRANSL>
             </M>
         </W>
     </S>
@@ -663,12 +747,14 @@
             <FORM kindOf="standard">ma-cang-cangare</FORM>
             <PHON kindOf="standard">maʦaŋʦaŋa[r|ɾ]e</PHON>
             <TRANSL xml:lang="eng" kindOf="original">STA-RED-happy</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT-RED-happy</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0010_W001_M01">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">STA</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0010_W001_M02">
                 <FORM kindOf="original">caŋ</FORM>
@@ -676,6 +762,7 @@
                 <FORM kindOf="standard">cang</FORM>
                 <PHON kindOf="standard">ʦaŋ</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0010_W001_M03">
                 <FORM kindOf="original">caŋarə</FORM>
@@ -683,6 +770,7 @@
                 <FORM kindOf="standard">cangare</FORM>
                 <PHON kindOf="standard">ʦaŋa[r|ɾ]e</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">happy</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">happy</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0010_W002">
@@ -691,12 +779,14 @@
             <FORM kindOf="standard">cau</FORM>
             <PHON kindOf="standard">ʦau</PHON>
             <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">person</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0010_W002_M01">
                 <FORM kindOf="original">cau</FORM>
                 <PHON kindOf="original">ʦau</PHON>
                 <FORM kindOf="standard">cau</FORM>
                 <PHON kindOf="standard">ʦau</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">person</TRANSL>
             </M>
         </W>
     </S>
@@ -712,12 +802,14 @@
             <FORM kindOf="standard">pu-kari-kari</FORM>
             <PHON kindOf="standard">puka[r|ɾ]ika[r|ɾ]i</PHON>
             <TRANSL xml:lang="eng" kindOf="original">tell-RED-word</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">tell-RED-word</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0011_W001_M01">
                 <FORM kindOf="original">pu</FORM>
                 <PHON kindOf="original">pu</PHON>
                 <FORM kindOf="standard">pu</FORM>
                 <PHON kindOf="standard">pu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">tell</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">tell</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0011_W001_M02">
                 <FORM kindOf="original">kari</FORM>
@@ -725,6 +817,7 @@
                 <FORM kindOf="standard">kari</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0011_W001_M03">
                 <FORM kindOf="original">kari</FORM>
@@ -732,6 +825,7 @@
                 <FORM kindOf="standard">kari</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">word</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">word</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0011_W002">
@@ -740,12 +834,14 @@
             <FORM kindOf="standard">'una-'incu</FORM>
             <PHON kindOf="standard">ʔunaʔinʦu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">have-good.luck.dream</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">have-good.luck.dream</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0011_W002_M01">
                 <FORM kindOf="original">ʔuna</FORM>
                 <PHON kindOf="original">ʔuna</PHON>
                 <FORM kindOf="standard">'una</FORM>
                 <PHON kindOf="standard">ʔuna</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">have</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">have</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0011_W002_M02">
                 <FORM kindOf="original">ʔincu</FORM>
@@ -753,6 +849,7 @@
                 <FORM kindOf="standard">'incu</FORM>
                 <PHON kindOf="standard">ʔinʦu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">good.luck.dream</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">good.luck.dream</TRANSL>
             </M>
         </W>
     </S>
@@ -768,12 +865,14 @@
             <FORM kindOf="standard">i-vatu</FORM>
             <PHON kindOf="standard">ivatu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">I-come</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">I-come</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0012_W001_M01">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">I</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">I</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0012_W001_M02">
                 <FORM kindOf="original">vatu</FORM>
@@ -781,6 +880,7 @@
                 <FORM kindOf="standard">vatu</FORM>
                 <PHON kindOf="standard">vatu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">come</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">come</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0012_W002">
@@ -789,12 +889,14 @@
             <FORM kindOf="standard">sua</FORM>
             <PHON kindOf="standard">sua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0012_W002_M01">
                 <FORM kindOf="original">sua</FORM>
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua</FORM>
                 <PHON kindOf="standard">sua</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NOM</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0012_W003">
@@ -803,12 +905,14 @@
             <FORM kindOf="standard">vavuru</FORM>
             <PHON kindOf="standard">vavu[r|ɾ]u</PHON>
             <TRANSL xml:lang="eng" kindOf="original">wild.pig</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">wild.pig</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0012_W003_M01">
                 <FORM kindOf="original">vavulu</FORM>
                 <PHON kindOf="original">vavuɾu</PHON>
                 <FORM kindOf="standard">vavuru</FORM>
                 <PHON kindOf="standard">vavu[r|ɾ]u</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">wild.pig</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">wild.pig</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0012_W004">
@@ -817,12 +921,14 @@
             <FORM kindOf="standard">k&lt;um&gt;aene</FORM>
             <PHON kindOf="standard">kumaene</PHON>
             <TRANSL xml:lang="eng" kindOf="original">eat&lt;AV&gt;</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">eat&lt;AV&gt;</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0012_W004_M01">
                 <FORM kindOf="original">k-aənə</FORM>
                 <PHON kindOf="original">kaənə</PHON>
                 <FORM kindOf="standard">k-aene</FORM>
                 <PHON kindOf="standard">kaene</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">eat</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0012_W004_M02">
                 <FORM kindOf="original">-um-</FORM>
@@ -830,6 +936,7 @@
                 <FORM kindOf="standard">-um-</FORM>
                 <PHON kindOf="standard">um</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">&lt;AV&gt;</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">&lt;AV&gt;</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0012_W005">
@@ -838,12 +945,14 @@
             <FORM kindOf="standard">verenga</FORM>
             <PHON kindOf="standard">ve[r|ɾ]eŋa</PHON>
             <TRANSL xml:lang="eng" kindOf="original">eel</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">eel</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0012_W005_M01">
                 <FORM kindOf="original">vərəŋa</FORM>
                 <PHON kindOf="original">vərəŋa</PHON>
                 <FORM kindOf="standard">verenga</FORM>
                 <PHON kindOf="standard">ve[r|ɾ]eŋa</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">eel</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">eel</TRANSL>
             </M>
         </W>
     </S>
@@ -859,12 +968,14 @@
             <FORM kindOf="standard">'akia=cu</FORM>
             <PHON kindOf="standard">ʔakiaʦu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">not.have=COS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">not.have=COS</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0013_W001_M01">
                 <FORM kindOf="original">ʔakia</FORM>
                 <PHON kindOf="original">ʔakia</PHON>
                 <FORM kindOf="standard">'akia</FORM>
                 <PHON kindOf="standard">ʔakia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">not.have</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">not.have</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0013_W001_M02">
                 <FORM kindOf="original">=cu</FORM>
@@ -872,6 +983,7 @@
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0013_W002">
@@ -880,12 +992,14 @@
             <FORM kindOf="standard">canumu</FORM>
             <PHON kindOf="standard">ʦanumu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0013_W002_M01">
                 <FORM kindOf="original">canumu</FORM>
                 <PHON kindOf="original">ʦanumu</PHON>
                 <FORM kindOf="standard">canumu</FORM>
                 <PHON kindOf="standard">ʦanumu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             </M>
         </W>
     </S>
@@ -901,12 +1015,14 @@
             <FORM kindOf="standard">pu-kari-kari</FORM>
             <PHON kindOf="standard">puka[r|ɾ]ika[r|ɾ]i</PHON>
             <TRANSL xml:lang="eng" kindOf="original">say-RED-word</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">say-RED-word</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W001_M01">
                 <FORM kindOf="original">pu</FORM>
                 <PHON kindOf="original">pu</PHON>
                 <FORM kindOf="standard">pu</FORM>
                 <PHON kindOf="standard">pu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">say</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W001_M02">
                 <FORM kindOf="original">kari</FORM>
@@ -914,6 +1030,7 @@
                 <FORM kindOf="standard">kari</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">RED</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W001_M03">
                 <FORM kindOf="original">kari</FORM>
@@ -921,6 +1038,7 @@
                 <FORM kindOf="standard">kari</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">word</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">word</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W002">
@@ -929,12 +1047,14 @@
             <FORM kindOf="standard">sua</FORM>
             <PHON kindOf="standard">sua</PHON>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W002_M01">
                 <FORM kindOf="original">sua</FORM>
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua</FORM>
                 <PHON kindOf="standard">sua</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NOM</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W003">
@@ -943,12 +1063,14 @@
             <FORM kindOf="standard">vavuru</FORM>
             <PHON kindOf="standard">vavu[r|ɾ]u</PHON>
             <TRANSL xml:lang="eng" kindOf="original">wild.pig</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">wild.pig</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W003_M01">
                 <FORM kindOf="original">vavulu</FORM>
                 <PHON kindOf="original">vavuɾu</PHON>
                 <FORM kindOf="standard">vavuru</FORM>
                 <PHON kindOf="standard">vavu[r|ɾ]u</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">wild.pig</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">wild.pig</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W004">
@@ -957,12 +1079,14 @@
             <FORM kindOf="standard">vua-u=ku</FORM>
             <PHON kindOf="standard">vuauku</PHON>
             <TRANSL xml:lang="eng" kindOf="original">give-UV.IMP=1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">give-PV.IMP=1SG.NOM</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W004_M01">
                 <FORM kindOf="original">vua</FORM>
                 <PHON kindOf="original">vua</PHON>
                 <FORM kindOf="standard">vua</FORM>
                 <PHON kindOf="standard">vua</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">give</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">give</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W004_M02">
                 <FORM kindOf="original">u</FORM>
@@ -970,6 +1094,7 @@
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">UV.IMP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV.IMP</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W004_M03">
                 <FORM kindOf="original">=ku</FORM>
@@ -977,6 +1102,7 @@
                 <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.NOM</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W005">
@@ -985,12 +1111,14 @@
             <FORM kindOf="standard">kaen-a</FORM>
             <PHON kindOf="standard">kaena</PHON>
             <TRANSL xml:lang="eng" kindOf="original">eat-NMLZ</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">eat-NMLZ</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W005_M01">
                 <FORM kindOf="original">kaən</FORM>
                 <PHON kindOf="original">kaən</PHON>
                 <FORM kindOf="standard">kaen</FORM>
                 <PHON kindOf="standard">kaen</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">eat</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0014_W005_M02">
                 <FORM kindOf="original">a</FORM>
@@ -998,6 +1126,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">NMLZ</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NMLZ</TRANSL>
             </M>
         </W>
     </S>
@@ -1013,12 +1142,14 @@
             <FORM kindOf="standard">vua-en-ai</FORM>
             <PHON kindOf="standard">vuaenai</PHON>
             <TRANSL xml:lang="eng" kindOf="original">give-UV-NEUT</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">give-PV-NEUT</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0015_W001_M01">
                 <FORM kindOf="original">vua</FORM>
                 <PHON kindOf="original">vua</PHON>
                 <FORM kindOf="standard">vua</FORM>
                 <PHON kindOf="standard">vua</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">give</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">give</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0015_W001_M02">
                 <FORM kindOf="original">ən</FORM>
@@ -1026,6 +1157,7 @@
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">en</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">UV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0015_W001_M03">
                 <FORM kindOf="original">ai</FORM>
@@ -1033,6 +1165,7 @@
                 <FORM kindOf="standard">ai</FORM>
                 <PHON kindOf="standard">ai</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">NEUT</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NEUT</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0015_W002">
@@ -1041,12 +1174,14 @@
             <FORM kindOf="standard">'inia</FORM>
             <PHON kindOf="standard">ʔinia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">3PL.OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3PL.OBL</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0015_W002_M01">
                 <FORM kindOf="original">ʔinia</FORM>
                 <PHON kindOf="original">ʔinia</PHON>
                 <FORM kindOf="standard">'inia</FORM>
                 <PHON kindOf="standard">ʔinia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">3PL.OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3PL.OBL</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0015_W003">
@@ -1055,12 +1190,14 @@
             <FORM kindOf="standard">nakeve</FORM>
             <PHON kindOf="standard">nakeve</PHON>
             <TRANSL xml:lang="eng" kindOf="original">thing</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">thing</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0015_W003_M01">
                 <FORM kindOf="original">nakəvə</FORM>
                 <PHON kindOf="original">nakəvə</PHON>
                 <FORM kindOf="standard">nakeve</FORM>
                 <PHON kindOf="standard">nakeve</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">thing</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">thing</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0015_W004">
@@ -1069,12 +1206,14 @@
             <FORM kindOf="standard">pira</FORM>
             <PHON kindOf="standard">pi[r|ɾ]a</PHON>
             <TRANSL xml:lang="eng" kindOf="original">give</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">give</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0015_W004_M01">
                 <FORM kindOf="original">pira</FORM>
                 <PHON kindOf="original">pira</PHON>
                 <FORM kindOf="standard">pira</FORM>
                 <PHON kindOf="standard">pi[r|ɾ]a</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">give</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">give</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0015_W005">
@@ -1083,12 +1222,14 @@
             <FORM kindOf="standard">vangevange</FORM>
             <PHON kindOf="standard">vaŋevaŋe</PHON>
             <TRANSL xml:lang="eng" kindOf="original">all</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">all</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0015_W005_M01">
                 <FORM kindOf="original">vaŋəvaŋə</FORM>
                 <PHON kindOf="original">vaŋəvaŋə</PHON>
                 <FORM kindOf="standard">vangevange</FORM>
                 <PHON kindOf="standard">vaŋevaŋe</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">all</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">all</TRANSL>
             </M>
         </W>
     </S>
@@ -1104,12 +1245,14 @@
             <FORM kindOf="standard">nuari</FORM>
             <PHON kindOf="standard">nua[r|ɾ]i</PHON>
             <TRANSL xml:lang="eng" kindOf="original">from.now.on</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">from.now.on</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W001_M01">
                 <FORM kindOf="original">nuari</FORM>
                 <PHON kindOf="original">nuari</PHON>
                 <FORM kindOf="standard">nuari</FORM>
                 <PHON kindOf="standard">nua[r|ɾ]i</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">from.now.on</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">from.now.on</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W002">
@@ -1118,12 +1261,14 @@
             <FORM kindOf="standard">ia</FORM>
             <PHON kindOf="standard">ia</PHON>
             <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">TOP</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W002_M01">
                 <FORM kindOf="original">ia</FORM>
                 <PHON kindOf="original">ia</PHON>
                 <FORM kindOf="standard">ia</FORM>
                 <PHON kindOf="standard">ia</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">TOP</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W003">
@@ -1132,12 +1277,14 @@
             <FORM kindOf="standard">ka-caarai-au=ku='ai</FORM>
             <PHON kindOf="standard">kaʦaa[r|ɾ]aiaukuʔai</PHON>
             <TRANSL xml:lang="eng" kindOf="original">have-pity-IMP=1SG.NOM=perhaps</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">have-pity-IMP=1SG.NOM=perhaps</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W003_M01">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">have</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">have</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W003_M02">
                 <FORM kindOf="original">caalai</FORM>
@@ -1145,6 +1292,7 @@
                 <FORM kindOf="standard">caarai</FORM>
                 <PHON kindOf="standard">ʦaa[r|ɾ]ai</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">pity</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">pity</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W003_M03">
                 <FORM kindOf="original">au</FORM>
@@ -1152,6 +1300,7 @@
                 <FORM kindOf="standard">au</FORM>
                 <PHON kindOf="standard">au</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">IMP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">IMP</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W003_M04">
                 <FORM kindOf="original">=ku</FORM>
@@ -1159,6 +1308,7 @@
                 <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.NOM</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W003_M05">
                 <FORM kindOf="original">=ʔai</FORM>
@@ -1166,6 +1316,7 @@
                 <FORM kindOf="standard">='ai</FORM>
                 <PHON kindOf="standard">ʔai</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">perhaps</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">perhaps</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W004">
@@ -1174,12 +1325,14 @@
             <FORM kindOf="standard">a-pa-kaene</FORM>
             <PHON kindOf="standard">apakaene</PHON>
             <TRANSL xml:lang="eng" kindOf="original">IRR-CAUS-eat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">IRR-CAUS-eat</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W004_M01">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">IRR</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W004_M02">
                 <FORM kindOf="original">pa</FORM>
@@ -1187,6 +1340,7 @@
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">CAUS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W004_M03">
                 <FORM kindOf="original">kaənə</FORM>
@@ -1194,6 +1348,7 @@
                 <FORM kindOf="standard">kaene</FORM>
                 <PHON kindOf="standard">kaene</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">eat</TRANSL>
             </M>
         </W>
         <W id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W005">
@@ -1202,12 +1357,14 @@
             <FORM kindOf="standard">ni-emeke-an=mu</FORM>
             <PHON kindOf="standard">niemekeanmu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">PFV-plant-LV=2PL.AGT</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV-plant-LV=2PL.AGT</TRANSL>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W005_M01">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W005_M02">
                 <FORM kindOf="original">əməkə</FORM>
@@ -1215,6 +1372,7 @@
                 <FORM kindOf="standard">emeke</FORM>
                 <PHON kindOf="standard">emeke</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">plant</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">plant</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W005_M03">
                 <FORM kindOf="original">an</FORM>
@@ -1222,6 +1380,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">LV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LV</TRANSL>
             </M>
             <M id="ILCAA_KANAKANAVU_TEXTS_003_THE_BIG_FLOOD_II_S0016_W005_M04">
                 <FORM kindOf="original">=mu</FORM>
@@ -1229,6 +1388,7 @@
                 <FORM kindOf="standard">=mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">2PL.AGT</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2PL.AGT</TRANSL>
             </M>
         </W>
     </S>

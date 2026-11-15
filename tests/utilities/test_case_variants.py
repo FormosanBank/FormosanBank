@@ -4,7 +4,6 @@ Case-variant derivation lets conversion tables list only lowercase rules;
 standardize.py derives Title/ALL-CAPS variants unless the capital is a
 distinct grapheme of the source orthography (per the source profile,
 resolved from the table's filename).
-Spec: docs/superpowers/specs/2026-08-09-standardize-capitalization-design.md
 """
 import pytest
 

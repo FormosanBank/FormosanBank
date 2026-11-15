@@ -96,14 +96,13 @@ finish_tiers() {     # $1 = work dir, $2 = subcorpus name (for report file names
 }
 
 # NTU's unknown-content markers -> <UNCLEAR/> (rulings 2026-10-17; mark_unclear.py):
-# untranscribed X words, ?/??/??? glosses, ?/XXX sentence translations, and the
-# ? pieces listed in ../unclear_gloss_placeholders.tsv. Runs last, after the
+# untranscribed X words, ?/??/??? glosses and ? pieces inside a gloss (POL-061),
+# ?/XXX sentence translations. Runs last, after the
 # shared standardize/add_phonology steps, which read FORM.text and would
 # convert a FORM holding <UNCLEAR/> only up to the marker. It prints every
 # counter (TAIL=40) and lists each change, and each held X word, in logs/.
 mark_unclear() {     # $1 = work dir, $2 = subcorpus name (for the report file name)
   TAIL=40 run "mark_unclear" "$PIPE/mark_unclear.py" --xml_dir "$1" \
-      --placeholders "$CODEDOCS/unclear_gloss_placeholders.tsv" \
       --report "$CORPUS/logs/unclear_${2}.tsv"
 }
 

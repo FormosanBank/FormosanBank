@@ -22,18 +22,18 @@
 2. 前置處理與清理
    * 清理文章以移除URL、無關的標點符號及引用標記，與語言結構無關的內容也一併刪除（例如：非臺灣南島語之文本）。
    * 為了保證品質，生成以下記錄檔：
-     * [link\_removal.log](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/link_removal.log)：列出所有從文本中刪除的URL。
-     * [citations\_remove.log](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/citations_remove.log)：追蹤移除的引用區塊。
-     * [remove\_possible\_citations.log](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/remove_possible_citations.log)：記錄被刪除的序號和句點（常見引用標記）。
-     * [encoding\_detection.log](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/encoding_detection.log)：記錄文章的編碼問題和修正。
-     * [citation\_marker\_removal.log](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/citation_marker_removal.log)：追蹤從文本中刪除的引用標記。
+     * link\_removal.log：列出所有從文本中刪除的URL。
+     * citations\_remove.log：追蹤移除的引用區塊。
+     * remove\_possible\_citations.log：記錄被刪除的序號和句點（常見引用標記）。
+     * encoding\_detection.log：記錄文章的編碼問題和修正。
+     * citation\_marker\_removal.log：追蹤從文本中刪除的引用標記。
 3. 移除非臺灣南島語文本
    * 識別並移除非臺灣南島語的文本（例如：英語、華語或其他非拉丁文字）。
    * 為此移除步驟生成了特定的記錄檔：
-     * [remove\_Annotations.log](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/remove_Annotations.log)：追蹤去除括號內非臺灣南島語的註解。
-     * [remove\_large\_blocks.log](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/remove_large_blocks.log)：記錄移除的大型非拉丁文字區塊。
-     * [remove\_character\_strings.log](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/remove_character_strings.log)：記錄去除連續的非拉丁文字段落。
-     * [remove\_empty\_parentheses.log](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Wikipedias/CodeAndDocs/remove_empty_parentheses.log)：追蹤去除空括號。
+     * remove\_Annotations.log：追蹤去除括號內非臺灣南島語的註解。
+     * remove\_large\_blocks.log：記錄移除的大型非拉丁文字區塊。
+     * remove\_character\_strings.log：記錄去除連續的非拉丁文字段落。
+     * remove\_empty\_parentheses.log：追蹤去除空括號。
 4. XML架構
    * 清理過的文章轉換為FormosanBank XML格式，每篇文章的主要內容皆以`<FORM>`元素來架構。
    * 後設資料如文章標題和語言代碼會加入到XML檔案中。

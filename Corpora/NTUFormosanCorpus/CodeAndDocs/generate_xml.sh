@@ -40,6 +40,12 @@ step "Build XML from the source JSONs (pipeline/build_subcorpora.sh)"
 step "Re-apply recorded hand edits (no-op when manual_edits.xml is absent)"
 if [[ -f "$CODEDOCS/manual_edits.xml" ]]; then
   "$PY" "$BANK/QC/cleaning/apply_manual_edits.py" --corpus "$CORPUS"
+
+  # Standard gloss tier (POL-036, additive): Glossing/ConversionTables/NTUFormosanCorpus.tsv
+  "$PY" "$BANK/QC/glossing/apply_gloss_standard.py" \
+      --path "$ROOT/XML" \
+      --table "$BANK/Glossing/ConversionTables/NTUFormosanCorpus.tsv" \
+      --rules "$BANK/Glossing/ConversionTables/NTUFormosanCorpus.rules.tsv" --write
 else
   echo "  no manual_edits.xml; nothing to re-apply"
 fi

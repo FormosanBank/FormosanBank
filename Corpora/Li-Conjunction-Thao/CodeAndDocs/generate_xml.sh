@@ -14,6 +14,12 @@ test -f "$FB/QC/cleaning/clean_xml.py"
     --target_column standard --hard-remove-segmentation
 "$PY" "$HERE/scripts/flatten_standard_segmentation.py" "$ROOT/XML"
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$ROOT/XML" --orthography Li
+
+# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/Li-Conjunction-Thao.tsv
+"$PY" "$FB/QC/glossing/apply_gloss_standard.py" \
+    --path "$ROOT/XML" \
+    --table "$FB/Glossing/ConversionTables/Li-Conjunction-Thao.tsv" \
+    --rules "$FB/Glossing/ConversionTables/Li-Conjunction-Thao.rules.tsv" --write
 "$PY" - "$FB" "$HERE/provenance.json" <<'PY'
 import json
 import subprocess

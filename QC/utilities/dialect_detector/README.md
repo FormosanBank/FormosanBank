@@ -142,6 +142,3 @@ the data*, not hand-set. Below the calibrated threshold the model abstains
 | `evaluate.py` | `cross_validate`, `calibrate_threshold`, metrics, per-language report. |
 | `cli.py`, `__main__.py` | `train` / `predict` / `evaluate` / `crossvalidate`. |
 
-Design and rationale: [`claudeplans/2026-06-11-dialect-detector-plan.md`](../../../claudeplans/2026-06-11-dialect-detector-plan.md)
-and the implementation plan alongside it. Roadmap status: §F of
-[`claudeplans/2026-05-27-roadmap.md`](../../../claudeplans/2026-05-27-roadmap.md).

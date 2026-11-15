@@ -226,8 +226,7 @@ dictionary: apostrophes used as quotation marks become `"` (`c031`), stranded
 glottals separated by whitespace are rejoined to their word (`c032`) — both
 logged to the **durable, committed** `quote_corrections.csv` (append-only;
 POL-035) — while ambiguous cases go to the ephemeral `cleaner_warnings.csv`
-as `c030` warnings (suppressed for the Wikipedias corpus; POL-033). See
-`docs/superpowers/specs/2026-08-10-quote-glottal-correction-design.md`.
+as `c030` warnings (suppressed for the Wikipedias corpus; POL-033).
 
 The rules run in this order (`QC/utilities/classify_quotes.py`,
 `apply_quote_corrections`; maintainer rulings of 2026-10-14):

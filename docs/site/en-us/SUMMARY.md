@@ -85,6 +85,7 @@
     * [suppress\_transl\_annotations.py](the-bank-architecture/developers/qc-pipeline/suppress-transl-annotations.md)
     * [orthography\_extract.py](the-bank-architecture/developers/qc-pipeline/orthography-extract.md)
     * [standardize.py](the-bank-architecture/developers/qc-pipeline/standardize.md)
+    * [apply\_gloss\_standard.py](the-bank-architecture/developers/qc-pipeline/apply-gloss-standard.md)
     * [add\_phonology.py](the-bank-architecture/developers/qc-pipeline/add-phonology.md)
     * [orthography\_detector.py](the-bank-architecture/developers/qc-pipeline/orthography-detector.md)
     * [dialect\_detector](the-bank-architecture/developers/qc-pipeline/dialect-detector.md)
@@ -103,6 +104,11 @@
   * [Running an Audit](the-bank-architecture/developers/running-an-audit.md)
   * [Porting a Corpus In](the-bank-architecture/developers/porting-a-corpus.md)
   * [Using the Claude Skills](the-bank-architecture/developers/using-the-claude-skills.md)
+
+## Standardization
+
+* [Orthography](standardization/orthography.md)
+* [Glossing](standardization/glossing.md)
 
 ## Additional Resources
 

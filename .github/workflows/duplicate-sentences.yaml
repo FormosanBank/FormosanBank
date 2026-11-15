@@ -16,7 +16,7 @@ on:
       - ".github/workflows/duplicate-sentences.yaml"
 
 # This workflow runs the within-corpus duplicate-sentence detector against
-# every corpus under Corpora/.  It is informational: a finding does not fail
+# each corpus the change touched (every corpus when its code changed).  It is informational: a finding does not fail
 # the build.  The remover (QC/cleaning/remove_duplicate_sentences.py) is
 # intentionally NOT run from CI - removal touches data and must be opt-in.
 
@@ -26,18 +26,44 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # to diff against the PR base / the push's old tip
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
+      - name: Which corpora did this change touch?
+        id: scope
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          # The detector is within-corpus, so an untouched corpus cannot change.
+          # Every corpus is checked when the detector, code it imports, or this
+          # workflow changed, and on a manual run.
+          case "$EVENT" in
+            pull_request) range="origin/$BASE_REF...HEAD" ;;
+            push) [ -n "$BEFORE" ] && [ "$BEFORE" != 0000000000000000000000000000000000000000 ] && range="$BEFORE...HEAD" || range="" ;;
+            *) range="" ;;
+          esac
+          python3 QC/validation/touched_corpora.py --range "$range" --out touched.txt \
+            --code QC/validation/validate_duplicate_sentences.py \
+            --code QC/validation/_discovery.py --code QC/validation/rules/ \
+            --code QC/xml_forms.py --code QC/corpus_counts.py --code languages.csv \
+            --code QC/validation/touched_corpora.py \
+            --code .github/workflows/duplicate-sentences.yaml >> "$GITHUB_OUTPUT"
+
       - name: Detect duplicate sentences (per-corpus)
+        if: steps.scope.outputs.scope != 'none'
         run: |
           mkdir -p duplicate-findings
           set -e
-          for corpus_dir in Corpora/*/XML; do
-            corpus_name=$(basename "$(dirname "$corpus_dir")")
+          while IFS= read -r corpus_name; do
+            corpus_dir="Corpora/$corpus_name/XML"
+            [ -d "$corpus_dir" ] || continue  # deleted or renamed in this change
             out="duplicate-findings/${corpus_name}.csv"
             echo "==> $corpus_name"
             # Pins the informational intent documented above. Without
@@ -57,9 +83,10 @@ jobs:
               --output "$out"; then
               echo "::warning title=duplicate-sentences::$corpus_name exited nonzero; its findings are incomplete"
             fi
-          done
+          done < touched.txt
 
       - name: Summarize findings
+        if: steps.scope.outputs.scope != 'none'
         run: |
           {
             echo "## Duplicate Sentence Findings"
@@ -76,6 +103,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload duplicate findings
+        if: steps.scope.outputs.scope != 'none'
         uses: actions/upload-artifact@v4
         with:
           name: duplicate-sentences

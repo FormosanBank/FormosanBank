@@ -50,7 +50,12 @@ jobs:
 
       - name: Generate per-corpus statistics CSVs
         run: |
-          python3 QC/utilities/get_corpus_stats.py --all --strict
+          # --changed-only: regenerate only corpora whose inputs (folder, the
+          # statistics code, their audio-duration rows) differ from those recorded
+          # in statistics/corpora_stats_sources.csv; every corpus on the first run
+          # or when the code changes. A lost statistics commit is repaired on the
+          # next run, because its corpus's recorded inputs no longer match.
+          python3 QC/utilities/get_corpus_stats.py --all --strict --changed-only
 
       - name: Generate corpus metrics
         run: |
@@ -90,6 +95,7 @@ jobs:
             statistics/corpus_mandarin_words_over_time.png \
             statistics/corpus_glossed_words_over_time.png \
             statistics/language_history.csv \
+            statistics/corpora_stats_sources.csv \
             statistics/*_corpora_stats.csv
           if git diff --cached --quiet; then
             echo "No statistics changes."

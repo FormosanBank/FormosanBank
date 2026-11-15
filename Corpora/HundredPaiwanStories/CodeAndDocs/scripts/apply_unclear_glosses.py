@@ -26,6 +26,20 @@ bounded by ``-``, ``=``, ``.``, whitespace or the ends of the string becomes
 ``<UNCLEAR/>``; a ``?`` attached to a word (``LIG?``) is kept. A listed row
 that matches no gloss, or matches a gloss with no such piece, is an error.
 
+A ``?`` followed by an infix label counts as a piece: ``?<perf>-create-lf``
+on ``k<in>a-qati-an`` is ``<UNCLEAR/><perf>-create-lf``, the ``?`` being the
+gloss of the infix's host ``k-a`` (whose M gloss is already ``<UNCLEAR/>``).
+Maintainer, 2026-11-11: "Treat them as unknown pieces if that results in the
+right number of pieces. Otherwise, treat the ? as a marker of uncertainty on
+the neighboring gloss." The 18 such glosses (24 words) are listed in the
+table; each has as many pieces as its word has morphemes.
+
+Any other ``?`` left in a W or M gloss is the source's mark of uncertainty
+about the gloss it gives (POL-021 as amended 2026-11-11): it is removed and
+the TRANSL gets ``notes="uncertain"`` (``decide?<perf>`` -> ``decide<perf>``;
+two words, ``l<in>anaw`` and ``na-l<em>anaw``, where counting the ``?`` as a
+piece would give three pieces for two morphemes).
+
 This runs last, after normalize_sentence_standards.py and before the
 validators, so no later step re-indents the XML: ``ET.indent`` (used by the
 corpus's own scripts) would put whitespace inside a TRANSL whose only
@@ -56,7 +70,7 @@ MARK = "[?？]{1,3}"
 WHOLE_MARKER = re.compile(MARK)
 # A marker standing as a whole gloss piece: bounded by - = . whitespace or
 # the ends of the string on both sides.
-PIECE = re.compile(rf"(?<![^-=.\s]){MARK}(?![^-=.\s])")
+PIECE = re.compile(rf"(?<![^-=.\s]){MARK}(?![^-=.\s<])")   # or before an infix label
 
 
 def load_placeholders(path: Path) -> set[tuple[str, str]]:
@@ -149,6 +163,14 @@ def convert_tree(
                 used.add(key)
                 stats[f"placeholder_{level.lower()}_glosses"] += 1
                 changed = True
+            elif WHOLE_MARKER.search(text) and not PIECE.search(text):
+                # Attached to a word (decide?): uncertainty. An unlisted ? piece
+                # (not in the table) stays as written.
+                transl.text = WHOLE_MARKER.sub("", text)
+                notes = transl.get("notes")
+                transl.set("notes", f"{notes}; uncertain" if notes else "uncertain")
+                stats[f"uncertain_{level.lower()}_glosses"] += 1
+                changed = True
     return changed
 
 
@@ -187,6 +209,8 @@ REPORTED = (
     "unclear_m_glosses",
     "placeholder_w_glosses",
     "placeholder_m_glosses",
+    "uncertain_w_glosses",
+    "uncertain_m_glosses",
     "omitted_sentence_translations",
 )
 

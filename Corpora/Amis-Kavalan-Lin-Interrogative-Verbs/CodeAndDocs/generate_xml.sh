@@ -42,6 +42,12 @@ fi
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$STAGE/XML/Kavalan" --orthography Ortho94
 "$PY" "$HERE/build_xml.py" --restore-brackets --xml-root "$STAGE/XML"
 
+# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/Amis-Kavalan-Lin-Interrogative-Verbs.tsv
+"$PY" "$FB/QC/glossing/apply_gloss_standard.py" \
+    --path "$STAGE/XML" \
+    --table "$FB/Glossing/ConversionTables/Amis-Kavalan-Lin-Interrogative-Verbs.tsv" \
+    --rules "$FB/Glossing/ConversionTables/Amis-Kavalan-Lin-Interrogative-Verbs.rules.tsv" --write
+
 # per-run reports the shared tools write next to the XML are not published (POL-033)
 find "$STAGE/XML" -name '*.csv' -exec mv -t "$REPORTS" {} +
 if find "$STAGE/XML" -type f ! -name '*.xml' -print -quit | grep -q .; then

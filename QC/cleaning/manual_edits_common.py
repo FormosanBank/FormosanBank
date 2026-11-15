@@ -1,7 +1,6 @@
 """Shared helpers for the manual-edits capture/apply pair.
 
-manual_edits.xml records hand edits to a corpus's XML as full <S> blocks
-(see claudeplans/2026-06-15-manual-edits-reproducibility-design.md):
+manual_edits.xml records hand edits to a corpus's XML as full <S> blocks:
 
     <MANUAL_EDITS>
       <FILE path="Amis/story01.xml">

@@ -108,15 +108,52 @@ jobs:
     - name: Create artifact directory
       run: mkdir -p token-count-artifacts
 
-    - name: Run token count on compare ref
+    - name: Which corpora did this change touch?
+      id: scope
+      env:
+        EVENT: ${{ github.event_name }}
+        BASE: ${{ steps.base.outputs.base_ref }}
       run: |
-        python3 QC/count_tokens.py Corpora > token-count-artifacts/current_token_count.json
+        # An untouched corpus counts the same before and after, so only touched
+        # corpora are counted. Everything is counted when the counting code or
+        # this workflow changed, and on a manual run.
+        range="$BASE...HEAD"; [ "$EVENT" = workflow_dispatch ] && range=""
+        python3 QC/validation/touched_corpora.py --range "$range" --out touched.txt \
+          --code QC/count_tokens.py --code QC/corpus_counts.py --code QC/xml_forms.py \
+          --code QC/tokens_delta.py --code QC/plot_counts.py --code QC/plot_deltas.py \
+          --code languages.csv --code QC/validation/touched_corpora.py \
+          --code .github/workflows/token-comparison.yaml >> "$GITHUB_OUTPUT"
+
+    - name: Run token count on compare ref
+      env:
+        SCOPE: ${{ steps.scope.outputs.scope }}
+      run: |
+        if [ "$SCOPE" = all ]; then
+          python3 QC/count_tokens.py Corpora > token-count-artifacts/current_token_count.json
+        else
+          # Only the touched corpora, unpacked as committed at HEAD.
+          rm -rf /tmp/tc-head && mkdir -p /tmp/tc-head
+          paths=(); while IFS= read -r c; do git cat-file -e "HEAD:Corpora/$c" 2>/dev/null && paths+=("Corpora/$c"); done < touched.txt
+          mkdir -p /tmp/tc-head/Corpora
+          [ ${#paths[@]} -eq 0 ] || git archive HEAD "${paths[@]}" | tar -x -C /tmp/tc-head
+          python3 QC/count_tokens.py /tmp/tc-head/Corpora > token-count-artifacts/current_token_count.json
+        fi
 
     - name: Run token count on base ref
+      env:
+        SCOPE: ${{ steps.scope.outputs.scope }}
+        BASE: ${{ steps.base.outputs.base_ref }}
       run: |
-        git worktree add --detach /tmp/token-count-base "${{ steps.base.outputs.base_ref }}"
-        python3 QC/count_tokens.py /tmp/token-count-base/Corpora > token-count-artifacts/base_token_count.json
-        git worktree remove --force /tmp/token-count-base
+        if [ "$SCOPE" = all ]; then
+          git worktree add --detach /tmp/token-count-base "$BASE"
+          python3 QC/count_tokens.py /tmp/token-count-base/Corpora > token-count-artifacts/base_token_count.json
+          git worktree remove --force /tmp/token-count-base
+        else
+          rm -rf /tmp/tc-base && mkdir -p /tmp/tc-base/Corpora
+          paths=(); while IFS= read -r c; do git cat-file -e "$BASE:Corpora/$c" 2>/dev/null && paths+=("Corpora/$c"); done < touched.txt
+          [ ${#paths[@]} -eq 0 ] || git archive "$BASE" "${paths[@]}" | tar -x -C /tmp/tc-base
+          python3 QC/count_tokens.py /tmp/tc-base/Corpora > token-count-artifacts/base_token_count.json
+        fi
 
     - name: Compute token deltas
       run: |
@@ -140,11 +177,16 @@ jobs:
         delta_total = current_total - base_total
         rows = sorted(((lang, vals[0]) for lang, vals in deltas.items() if vals[0]), key=lambda row: abs(row[1]), reverse=True)
 
+        scoped = "${{ steps.scope.outputs.scope }}" != "all"
+        label = "Touched corpora: " if scoped else ""
         print("# Token Count Delta")
         print()
         print("Baseline source: `${{ steps.base.outputs.base_source }}`")
-        print(f"Base total: `{base_total:,}`")
-        print(f"Current total: `{current_total:,}`")
+        if scoped:
+            print("Counted only the corpora this change touched: " + ", ".join(
+                Path("touched.txt").read_text().split()) + ".")
+        print(f"{label}before: `{base_total:,}`" if scoped else f"Base total: `{base_total:,}`")
+        print(f"{label}after: `{current_total:,}`" if scoped else f"Current total: `{current_total:,}`")
         print(f"Delta: `{delta_total:+,}`")
         print()
         print("| Language | Delta |")
@@ -155,8 +197,12 @@ jobs:
 
     - name: Generate token plots
       working-directory: token-count-artifacts
+      env:
+        SCOPE: ${{ steps.scope.outputs.scope }}
       run: |
         python3 ../QC/plot_deltas.py token_delta.json
+        # Plots of current counts would show only the touched corpora; skip them.
+        [ "$SCOPE" = all ] || exit 0
         python3 ../QC/plot_counts.py current_token_count.json 0
         mv plot.png language_dialect_counts.png
         python3 ../QC/plot_counts.py current_token_count.json 1

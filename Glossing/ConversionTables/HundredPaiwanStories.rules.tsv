@@ -1,0 +1,6 @@
+pattern	replacement	description
+\.	KEEP-SEPARATOR	period separates atoms (LGR Rule 4)
+-	KEEP-SEPARATOR	hyphen = normal morpheme break (source doc)
+=	INFIX-BREAK	source doc: '=' is an INFIX morpheme break, NOT a clitic (opposite of Leipzig) — segment but record infixation
+[()\[\]（）]	INVESTIGATE	maintainer rules-review 2026-11-11
+…	RESIDUE	unsegmentable → verbatim + residue report

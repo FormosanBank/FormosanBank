@@ -75,6 +75,12 @@ fi
 "$PYTHON" "$FORMOSANBANK_PATH/QC/utilities/add_phonology.py" \
   --corpora_path "$XML_PATH" --orthography Ortho113
 
+# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/Song-Kanakanavu-Grammar.tsv
+"$PYTHON" "$FORMOSANBANK_PATH/QC/glossing/apply_gloss_standard.py" \
+    --path "$XML_PATH" \
+    --table "$FORMOSANBANK_PATH/Glossing/ConversionTables/Song-Kanakanavu-Grammar.tsv" \
+    --rules "$FORMOSANBANK_PATH/Glossing/ConversionTables/Song-Kanakanavu-Grammar.rules.tsv" --write
+
 # Per-run cleaner triage is reviewed during QC and is not canonical corpus data.
 rm -f "$XML_PATH/cleaner_warnings.csv"
 

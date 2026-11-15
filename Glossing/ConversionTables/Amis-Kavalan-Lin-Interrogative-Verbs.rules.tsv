@@ -1,0 +1,7 @@
+pattern	replacement	description
+\.	KEEP-SEPARATOR	period separates category atoms (LGR Rule 4) — split, look up each atom
+-	KEEP-SEPARATOR	hyphen = morpheme boundary (LGR Rule 2) — split
+=	KEEP-SEPARATOR	equals = clitic boundary (LGR Rule 2) — split
+<([^<>]+)>	KEEP-BRACKETS	angle brackets = infix (LGR Rule 9) — keep brackets, look up inner atom(s)
+[()\[\]（）]	INVESTIGATE	maintainer rules-review 2026-11-11: parens/brackets shouldn't be in glosses; flag occurrences
+…	RESIDUE	anything unsegmentable is copied verbatim and listed in the residue report

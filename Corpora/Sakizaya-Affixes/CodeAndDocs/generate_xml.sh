@@ -50,4 +50,10 @@ fi
 rm -rf "$ROOT/XML"
 cp -r "$STAGE/XML" "$ROOT/XML"
 "$PY" "$HERE/generate_xml.py" --record-provenance "$FB"
+
+# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/Sakizaya-Affixes.tsv
+"$PY" "$FB/QC/glossing/apply_gloss_standard.py" \
+    --path "$STAGE/XML" \
+    --table "$FB/Glossing/ConversionTables/Sakizaya-Affixes.tsv" \
+    --rules "$FB/Glossing/ConversionTables/Sakizaya-Affixes.rules.tsv" --write
 echo "generate_xml.sh: built $(find "$ROOT/XML" -name '*.xml' | wc -l) XML file(s) with FormosanBank $(git -C "$FB" rev-parse --short HEAD 2>/dev/null || echo '(no Git metadata)')"

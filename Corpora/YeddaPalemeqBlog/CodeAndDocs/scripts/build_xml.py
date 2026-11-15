@@ -35,6 +35,14 @@ PLACEHOLDER_PIECE = re.compile(r"(?<![^\-=.\s])[?？]+(?![^\-=.\s])")
 # new_gloss, where the literal `<UNCLEAR/>` means the gloss is <UNCLEAR/>.
 # Header `w_id<TAB>form<TAB>lang<TAB>old_gloss<TAB>new_gloss`.
 GLOSS_TO_NOTES_TABLE = ROOT / "gloss_to_notes.tsv"
+# The author's mark of uncertainty on a gloss she did give (POL-021 as amended
+# 2026-11-11): the gloss becomes new_gloss and the TRANSL gets notes="uncertain".
+# Same header as gloss_to_notes.tsv. Maintainer (2026-11-11): "LIG? -> LIG +
+# uncertainty", "ligature (?) -> ligature + uncertainty", "to, towards? ->
+# to/towards + uncertainty", "bring or send? I don't know this word. ->
+# bring/send + uncertainty" (and complementizer?, function word?, subject case
+# marker?).
+UNCERTAIN_GLOSS_TABLE = ROOT / "uncertain_glosses.tsv"
 UNCLEAR_SENTINEL = "<UNCLEAR/>"
 
 
@@ -689,8 +697,14 @@ def set_mixed_unclear(translation: ET.Element, segments: list[str]) -> None:
         marker.tail = segment or None
 
 
-def move_glosses_to_notes(root: ET.Element, table: Path) -> list[dict[str, str]]:
+def move_glosses_to_notes(
+    root: ET.Element, table: Path, notes: str | None = None,
+    resolution: str = "ruled_gloss_to_notes",
+) -> list[dict[str, str]]:
     """Apply the ruled gloss_to_notes.tsv rows; fail on any mismatch.
+
+    The TRANSL's notes are the old gloss, or `notes` when given
+    (uncertain_glosses.tsv: notes="uncertain").
 
     Must run after ET.indent, like mark_unclear_glosses.
     """
@@ -719,7 +733,7 @@ def move_glosses_to_notes(root: ET.Element, table: Path) -> list[dict[str, str]]
                 "gloss as a text-only TRANSL without notes"
             )
         translation = translations[0]
-        translation.set("notes", rule["old_gloss"])
+        translation.set("notes", rule["old_gloss"] if notes is None else notes)
         if rule["new_gloss"] == UNCLEAR_SENTINEL:
             translation.text = None
             set_mixed_unclear(translation, ["", ""])
@@ -734,7 +748,7 @@ def move_glosses_to_notes(root: ET.Element, table: Path) -> list[dict[str, str]]
                 "lang": rule["lang"],
                 "source_gloss": rule["old_gloss"],
                 "unclear_count": str(len(translation)),
-                "resolution": "ruled_gloss_to_notes",
+                "resolution": resolution,
             }
         )
     return rows
@@ -935,6 +949,9 @@ def main() -> None:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     ET.indent(tree, space="  ")
     unclear_rows = move_glosses_to_notes(root, GLOSS_TO_NOTES_TABLE)
+    unclear_rows += move_glosses_to_notes(
+        root, UNCERTAIN_GLOSS_TABLE, notes="uncertain", resolution="ruled_uncertain"
+    )
     unclear_rows += mark_unclear_glosses(
         root, read_placeholder_table(UNCLEAR_PLACEHOLDER_TABLE)
     )

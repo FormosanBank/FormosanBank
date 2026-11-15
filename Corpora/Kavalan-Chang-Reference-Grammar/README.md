@@ -175,6 +175,8 @@ against the book in a web page, and two scripts carry the corrections back:
 
 ```bash
 python CodeAndDocs/export_review.py      # -> review_baseline.json + review_page.html
+
+**Standard gloss tier** (final step): `QC/glossing/apply_gloss_standard.py` adds `TRANSL kindOf="standard"` glosses beside every original gloss (POL-036 — the original tier is never changed), converting each gloss code according to this corpus's standardization list, [Glossing/ConversionTables/Kavalan-Chang-Reference-Grammar.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/Kavalan-Chang-Reference-Grammar.tsv) (segmentation conventions in [Kavalan-Chang-Reference-Grammar.rules.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/Kavalan-Chang-Reference-Grammar.rules.tsv)). Codes without a ruled mapping are copied verbatim, so the standard tier is always complete; the project-wide approach, vocabulary and per-language gloss dictionaries are documented in [Glossing/README.md](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/README.md).
 #   ... review_page.html is published as a claude.ai artifact; the reviewer works there ...
 python CodeAndDocs/apply_review.py <downloaded.json | dumped edits/ directory>
                                          # -> review_corrections.tsv + review_log.tsv

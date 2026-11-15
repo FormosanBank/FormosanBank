@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TEXT id="lin_2015_kavalan_interrogative_verbs" xml:lang="ckv" dialect="Kavalan" glottocode="kava1241" source="https://hdl.handle.net/1885/14354; Lin (2015), pp. 253-289; source dialect note: Hsinshe Kavalan, Hsinshe village, Hualien County; sentence examples extracted from numbered examples" copyright="CC BY 4.0" citation="Lin, Dong-yi. 2015. The syntactic derivations of interrogative verbs in Amis and Kavalan. In Elizabeth Zeitoun, Stacy F. Teng, and Joy J. Wu (eds.), New Advances in Formosan Linguistics, 253-289. Asia-Pacific Linguistics." BibTeX_citation="@incollection{lin2015AmisKavalanInterrogativeVerbs,title={The syntactic derivations of interrogative verbs in Amis and Kavalan},author={Lin, Dong-yi},booktitle={New Advances in Formosan Linguistics},editor={Zeitoun, Elizabeth and Teng, Stacy F. and Wu, Joy J.},pages={253--289},publisher={Asia-Pacific Linguistics},year={2015}}">
     <S id="S_kavalan_001" source="source occurrences 2a (printed p. 254; PDF page 2), 7a (printed p. 257; PDF page 5); repeated reference example represented by one S">
         <FORM kindOf="original">q‹um›uni=isu tangi?</FORM>
@@ -12,12 +12,14 @@
             <FORM kindOf="standard">q&lt;um&gt;uni=isu</FORM>
             <PHON kindOf="standard">qumuniisu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">&lt;AV&gt;do.what=2SG.ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">&lt;AV&gt;do.what=2SG.ABS</TRANSL>
             <M id="S_kavalan_001_W01_M01">
                 <FORM kindOf="original">q-uni</FORM>
                 <PHON kindOf="original">quni</PHON>
                 <FORM kindOf="standard">q-uni</FORM>
                 <PHON kindOf="standard">quni</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">do.what</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">do.what</TRANSL>
             </M>
             <M id="S_kavalan_001_W01_M02">
                 <FORM kindOf="original">-um-</FORM>
@@ -25,6 +27,7 @@
                 <FORM kindOf="standard">-um-</FORM>
                 <PHON kindOf="standard">um</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="S_kavalan_001_W01_M03">
                 <FORM kindOf="original">=isu</FORM>
@@ -32,6 +35,7 @@
                 <FORM kindOf="standard">=isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_001_W02">
@@ -40,12 +44,14 @@
             <FORM kindOf="standard">tangi</FORM>
             <PHON kindOf="standard">taŋi</PHON>
             <TRANSL kindOf="original" xml:lang="eng">just.now</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">just.now</TRANSL>
             <M id="S_kavalan_001_W02_M01">
                 <FORM kindOf="original">tangi</FORM>
                 <PHON kindOf="original">taŋi</PHON>
                 <FORM kindOf="standard">tangi</FORM>
                 <PHON kindOf="standard">taŋi</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">just.now</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">just.now</TRANSL>
             </M>
         </W>
     </S>
@@ -61,12 +67,14 @@
             <FORM kindOf="standard">quni-an</FORM>
             <PHON kindOf="standard">qunian</PHON>
             <TRANSL kindOf="original" xml:lang="eng">do.what-PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">do.what-PV</TRANSL>
             <M id="S_kavalan_002_W01_M01">
                 <FORM kindOf="original">quni</FORM>
                 <PHON kindOf="original">quni</PHON>
                 <FORM kindOf="standard">quni</FORM>
                 <PHON kindOf="standard">quni</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">do.what</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">do.what</TRANSL>
             </M>
             <M id="S_kavalan_002_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -74,6 +82,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_002_W02">
@@ -82,12 +91,14 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             <M id="S_kavalan_002_W02_M01">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_002_W03">
@@ -96,12 +107,14 @@
             <FORM kindOf="standard">wasu</FORM>
             <PHON kindOf="standard">wasu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog</TRANSL>
             <M id="S_kavalan_002_W03_M01">
                 <FORM kindOf="original">wasu</FORM>
                 <PHON kindOf="original">wasu</PHON>
                 <FORM kindOf="standard">wasu</FORM>
                 <PHON kindOf="standard">wasu</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_002_W04">
@@ -110,12 +123,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_002_W04_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_002_W05">
@@ -124,12 +139,14 @@
             <FORM kindOf="standard">saku</FORM>
             <PHON kindOf="standard">saku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">cat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">cat</TRANSL>
             <M id="S_kavalan_002_W05_M01">
                 <FORM kindOf="original">saku</FORM>
                 <PHON kindOf="original">saku</PHON>
                 <FORM kindOf="standard">saku</FORM>
                 <PHON kindOf="standard">saku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">cat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">cat</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_002_W06">
@@ -138,12 +155,14 @@
             <FORM kindOf="standard">'nay</FORM>
             <PHON kindOf="standard">ʔnaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             <M id="S_kavalan_002_W06_M01">
                 <FORM kindOf="original">'nay</FORM>
                 <PHON kindOf="original">ʔnaj</PHON>
                 <FORM kindOf="standard">'nay</FORM>
                 <PHON kindOf="standard">ʔnaj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             </M>
         </W>
     </S>
@@ -159,12 +178,14 @@
             <FORM kindOf="standard">quni-an-su</FORM>
             <PHON kindOf="standard">quniansu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">do.how-PV-2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">do.how-PV-2SG.ERG</TRANSL>
             <M id="S_kavalan_003_W01_M01">
                 <FORM kindOf="original">quni</FORM>
                 <PHON kindOf="original">quni</PHON>
                 <FORM kindOf="standard">quni</FORM>
                 <PHON kindOf="standard">quni</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">do.how</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">do.how</TRANSL>
             </M>
             <M id="S_kavalan_003_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -172,6 +193,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_003_W01_M03">
                 <FORM kindOf="original">su</FORM>
@@ -179,6 +201,7 @@
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_003_W02">
@@ -187,12 +210,14 @@
             <FORM kindOf="standard">m-kala</FORM>
             <PHON kindOf="standard">mkaɾa</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-find</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-find</TRANSL>
             <M id="S_kavalan_003_W02_M01">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="S_kavalan_003_W02_M02">
                 <FORM kindOf="original">kala</FORM>
@@ -200,6 +225,7 @@
                 <FORM kindOf="standard">kala</FORM>
                 <PHON kindOf="standard">kaɾa</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">find</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">find</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_003_W03">
@@ -208,12 +234,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_003_W03_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_003_W04">
@@ -222,12 +250,14 @@
             <FORM kindOf="standard">sunis</FORM>
             <PHON kindOf="standard">sunis</PHON>
             <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             <M id="S_kavalan_003_W04_M01">
                 <FORM kindOf="original">sunis</FORM>
                 <PHON kindOf="original">sunis</PHON>
                 <FORM kindOf="standard">sunis</FORM>
                 <PHON kindOf="standard">sunis</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_003_W05">
@@ -236,12 +266,14 @@
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
             <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LNK</TRANSL>
             <M id="S_kavalan_003_W05_M01">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LNK</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_003_W06">
@@ -250,12 +282,14 @@
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
             <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             <M id="S_kavalan_003_W06_M01">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             </M>
         </W>
     </S>
@@ -271,12 +305,14 @@
             <FORM kindOf="standard">tanian-an-su</FORM>
             <PHON kindOf="standard">tanianansu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">where-PV-2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">where-PV-2SG.ERG</TRANSL>
             <M id="S_kavalan_004_W01_M01">
                 <FORM kindOf="original">tanian</FORM>
                 <PHON kindOf="original">tanian</PHON>
                 <FORM kindOf="standard">tanian</FORM>
                 <PHON kindOf="standard">tanian</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">where</TRANSL>
             </M>
             <M id="S_kavalan_004_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -284,6 +320,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_004_W01_M03">
                 <FORM kindOf="original">su</FORM>
@@ -291,6 +328,7 @@
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_004_W02">
@@ -299,12 +337,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_004_W02_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_004_W03">
@@ -313,12 +353,14 @@
             <FORM kindOf="standard">kelisiw-su</FORM>
             <PHON kindOf="standard">kəɾisiwsu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">money-2SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money-2SG.GEN</TRANSL>
             <M id="S_kavalan_004_W03_M01">
                 <FORM kindOf="original">kelisiw</FORM>
                 <PHON kindOf="original">kəɾisiw</PHON>
                 <FORM kindOf="standard">kelisiw</FORM>
                 <PHON kindOf="standard">kəɾisiw</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">money</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money</TRANSL>
             </M>
             <M id="S_kavalan_004_W03_M02">
                 <FORM kindOf="original">su</FORM>
@@ -326,6 +368,7 @@
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -341,12 +384,14 @@
             <FORM kindOf="standard">tanian</FORM>
             <PHON kindOf="standard">tanian</PHON>
             <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">where</TRANSL>
             <M id="S_kavalan_005_W01_M01">
                 <FORM kindOf="original">tanian</FORM>
                 <PHON kindOf="original">tanian</PHON>
                 <FORM kindOf="standard">tanian</FORM>
                 <PHON kindOf="standard">tanian</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">where</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_005_W02">
@@ -355,12 +400,14 @@
             <FORM kindOf="standard">q&lt;m&gt;an=isu</FORM>
             <PHON kindOf="standard">qmanisu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">&lt;AV&gt;eat=2SG.ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">&lt;AV&gt;eat=2SG.ABS</TRANSL>
             <M id="S_kavalan_005_W02_M01">
                 <FORM kindOf="original">q-an</FORM>
                 <PHON kindOf="original">qan</PHON>
                 <FORM kindOf="standard">q-an</FORM>
                 <PHON kindOf="standard">qan</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">eat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">eat</TRANSL>
             </M>
             <M id="S_kavalan_005_W02_M02">
                 <FORM kindOf="original">-m-</FORM>
@@ -368,6 +415,7 @@
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="S_kavalan_005_W02_M03">
                 <FORM kindOf="original">=isu</FORM>
@@ -375,6 +423,7 @@
                 <FORM kindOf="standard">=isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_005_W03">
@@ -383,12 +432,14 @@
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">OBL</TRANSL>
             <M id="S_kavalan_005_W03_M01">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">OBL</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_005_W04">
@@ -397,12 +448,14 @@
             <FORM kindOf="standard">babuy</FORM>
             <PHON kindOf="standard">βaβuj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">pig</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">pig</TRANSL>
             <M id="S_kavalan_005_W04_M01">
                 <FORM kindOf="original">babuy</FORM>
                 <PHON kindOf="original">βaβuj</PHON>
                 <FORM kindOf="standard">babuy</FORM>
                 <PHON kindOf="standard">βaβuj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">pig</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">pig</TRANSL>
             </M>
         </W>
     </S>
@@ -418,12 +471,14 @@
             <FORM kindOf="standard">tanian</FORM>
             <PHON kindOf="standard">tanian</PHON>
             <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">where</TRANSL>
             <M id="S_kavalan_006_W01_M01">
                 <FORM kindOf="original">tanian</FORM>
                 <PHON kindOf="original">tanian</PHON>
                 <FORM kindOf="standard">tanian</FORM>
                 <PHON kindOf="standard">tanian</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">where</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_006_W02">
@@ -432,12 +487,14 @@
             <FORM kindOf="standard">tanuz-an</FORM>
             <PHON kindOf="standard">tanu[z|r]an</PHON>
             <TRANSL kindOf="original" xml:lang="eng">chase-PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">chase-PV</TRANSL>
             <M id="S_kavalan_006_W02_M01">
                 <FORM kindOf="original">tanuz</FORM>
                 <PHON kindOf="original">tanuz</PHON>
                 <FORM kindOf="standard">tanuz</FORM>
                 <PHON kindOf="standard">tanu[z|r]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">chase</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">chase</TRANSL>
             </M>
             <M id="S_kavalan_006_W02_M02">
                 <FORM kindOf="original">an</FORM>
@@ -445,6 +502,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_006_W03">
@@ -453,12 +511,14 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             <M id="S_kavalan_006_W03_M01">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_006_W04">
@@ -467,12 +527,14 @@
             <FORM kindOf="standard">tuliq</FORM>
             <PHON kindOf="standard">tuɾiq</PHON>
             <TRANSL kindOf="original" xml:lang="eng">bee</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bee</TRANSL>
             <M id="S_kavalan_006_W04_M01">
                 <FORM kindOf="original">tuliq</FORM>
                 <PHON kindOf="original">tuɾiq</PHON>
                 <FORM kindOf="standard">tuliq</FORM>
                 <PHON kindOf="standard">tuɾiq</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">bee</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bee</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_006_W05">
@@ -481,12 +543,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_006_W05_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_006_W06">
@@ -495,12 +559,14 @@
             <FORM kindOf="standard">wasu</FORM>
             <PHON kindOf="standard">wasu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog</TRANSL>
             <M id="S_kavalan_006_W06_M01">
                 <FORM kindOf="original">wasu</FORM>
                 <PHON kindOf="original">wasu</PHON>
                 <FORM kindOf="standard">wasu</FORM>
                 <PHON kindOf="standard">wasu</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog</TRANSL>
             </M>
         </W>
     </S>
@@ -516,12 +582,14 @@
             <FORM kindOf="standard">tanuz-an</FORM>
             <PHON kindOf="standard">tanu[z|r]an</PHON>
             <TRANSL kindOf="original" xml:lang="eng">chase-PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">chase-PV</TRANSL>
             <M id="S_kavalan_007_W01_M01">
                 <FORM kindOf="original">tanuz</FORM>
                 <PHON kindOf="original">tanuz</PHON>
                 <FORM kindOf="standard">tanuz</FORM>
                 <PHON kindOf="standard">tanu[z|r]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">chase</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">chase</TRANSL>
             </M>
             <M id="S_kavalan_007_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -529,6 +597,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_007_W02">
@@ -537,12 +606,14 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             <M id="S_kavalan_007_W02_M01">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_007_W03">
@@ -551,12 +622,14 @@
             <FORM kindOf="standard">tuliq</FORM>
             <PHON kindOf="standard">tuɾiq</PHON>
             <TRANSL kindOf="original" xml:lang="eng">bee</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bee</TRANSL>
             <M id="S_kavalan_007_W03_M01">
                 <FORM kindOf="original">tuliq</FORM>
                 <PHON kindOf="original">tuɾiq</PHON>
                 <FORM kindOf="standard">tuliq</FORM>
                 <PHON kindOf="standard">tuɾiq</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">bee</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bee</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_007_W04">
@@ -565,12 +638,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_007_W04_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_007_W05">
@@ -579,12 +654,14 @@
             <FORM kindOf="standard">wasu</FORM>
             <PHON kindOf="standard">wasu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog</TRANSL>
             <M id="S_kavalan_007_W05_M01">
                 <FORM kindOf="original">wasu</FORM>
                 <PHON kindOf="original">wasu</PHON>
                 <FORM kindOf="standard">wasu</FORM>
                 <PHON kindOf="standard">wasu</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_007_W06">
@@ -593,12 +670,14 @@
             <FORM kindOf="standard">tanian</FORM>
             <PHON kindOf="standard">tanian</PHON>
             <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">where</TRANSL>
             <M id="S_kavalan_007_W06_M01">
                 <FORM kindOf="original">tanian</FORM>
                 <PHON kindOf="original">tanian</PHON>
                 <FORM kindOf="standard">tanian</FORM>
                 <PHON kindOf="standard">tanian</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">where</TRANSL>
             </M>
         </W>
     </S>
@@ -614,12 +693,14 @@
             <FORM kindOf="standard">quni-an-su</FORM>
             <PHON kindOf="standard">quniansu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">do.what-PV-2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">do.what-PV-2SG.ERG</TRANSL>
             <M id="S_kavalan_008_W01_M01">
                 <FORM kindOf="original">quni</FORM>
                 <PHON kindOf="original">quni</PHON>
                 <FORM kindOf="standard">quni</FORM>
                 <PHON kindOf="standard">quni</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">do.what</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">do.what</TRANSL>
             </M>
             <M id="S_kavalan_008_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -627,6 +708,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_008_W01_M03">
                 <FORM kindOf="original">su</FORM>
@@ -634,6 +716,7 @@
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_008_W02">
@@ -642,12 +725,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_008_W02_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_008_W03">
@@ -656,12 +741,14 @@
             <FORM kindOf="standard">sunis-ku</FORM>
             <PHON kindOf="standard">sunisku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">child-1SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child-1SG.GEN</TRANSL>
             <M id="S_kavalan_008_W03_M01">
                 <FORM kindOf="original">sunis</FORM>
                 <PHON kindOf="original">sunis</PHON>
                 <FORM kindOf="standard">sunis</FORM>
                 <PHON kindOf="standard">sunis</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             </M>
             <M id="S_kavalan_008_W03_M02">
                 <FORM kindOf="original">ku</FORM>
@@ -669,6 +756,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -684,12 +772,14 @@
             <FORM kindOf="standard">sabiqbiq=ti</FORM>
             <PHON kindOf="standard">saβiqβiqti</PHON>
             <TRANSL kindOf="original" xml:lang="eng">boil=PFV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">boil=PFV</TRANSL>
             <M id="S_kavalan_009_W01_M01">
                 <FORM kindOf="original">sabiqbiq</FORM>
                 <PHON kindOf="original">saβiqβiq</PHON>
                 <FORM kindOf="standard">sabiqbiq</FORM>
                 <PHON kindOf="standard">saβiqβiq</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">boil</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">boil</TRANSL>
             </M>
             <M id="S_kavalan_009_W01_M02">
                 <FORM kindOf="original">=ti</FORM>
@@ -697,6 +787,7 @@
                 <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PFV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_009_W02">
@@ -705,12 +796,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_009_W02_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_009_W03">
@@ -719,12 +812,14 @@
             <FORM kindOf="standard">zanum</FORM>
             <PHON kindOf="standard">[z|r]anum</PHON>
             <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             <M id="S_kavalan_009_W03_M01">
                 <FORM kindOf="original">zanum</FORM>
                 <PHON kindOf="original">zanum</PHON>
                 <FORM kindOf="standard">zanum</FORM>
                 <PHON kindOf="standard">[z|r]anum</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_009_W04">
@@ -733,12 +828,14 @@
             <FORM kindOf="standard">'nay</FORM>
             <PHON kindOf="standard">ʔnaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             <M id="S_kavalan_009_W04_M01">
                 <FORM kindOf="original">'nay</FORM>
                 <PHON kindOf="original">ʔnaj</PHON>
                 <FORM kindOf="standard">'nay</FORM>
                 <PHON kindOf="standard">ʔnaj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             </M>
         </W>
     </S>
@@ -755,12 +852,14 @@
             <FORM kindOf="standard">pa-sabiqbiq=ti=iku</FORM>
             <PHON kindOf="standard">pasaβiqβiqtiiku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">CAUS-boil=PFV=1SG.ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">CAUS-boil=PFV=1SG.ABS</TRANSL>
             <M id="S_kavalan_010_W01_M01">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">CAUS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="S_kavalan_010_W01_M02">
                 <FORM kindOf="original">sabiqbiq</FORM>
@@ -768,6 +867,7 @@
                 <FORM kindOf="standard">sabiqbiq</FORM>
                 <PHON kindOf="standard">saβiqβiq</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">boil</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">boil</TRANSL>
             </M>
             <M id="S_kavalan_010_W01_M03">
                 <FORM kindOf="original">=ti</FORM>
@@ -775,6 +875,7 @@
                 <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PFV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV</TRANSL>
             </M>
             <M id="S_kavalan_010_W01_M04">
                 <FORM kindOf="original">=iku</FORM>
@@ -782,6 +883,7 @@
                 <FORM kindOf="standard">=iku</FORM>
                 <PHON kindOf="standard">iku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_010_W02">
@@ -790,12 +892,14 @@
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">OBL</TRANSL>
             <M id="S_kavalan_010_W02_M01">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">OBL</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_010_W03">
@@ -804,12 +908,14 @@
             <FORM kindOf="standard">zanum</FORM>
             <PHON kindOf="standard">[z|r]anum</PHON>
             <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             <M id="S_kavalan_010_W03_M01">
                 <FORM kindOf="original">zanum</FORM>
                 <PHON kindOf="original">zanum</PHON>
                 <FORM kindOf="standard">zanum</FORM>
                 <PHON kindOf="standard">[z|r]anum</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             </M>
         </W>
     </S>
@@ -825,12 +931,14 @@
             <FORM kindOf="standard">sabiqbiq-an-ku</FORM>
             <PHON kindOf="standard">saβiqβiqanku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">boil-PV-1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">boil-PV-1SG.ERG</TRANSL>
             <M id="S_kavalan_011_W01_M01">
                 <FORM kindOf="original">sabiqbiq</FORM>
                 <PHON kindOf="original">saβiqβiq</PHON>
                 <FORM kindOf="standard">sabiqbiq</FORM>
                 <PHON kindOf="standard">saβiqβiq</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">boil</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">boil</TRANSL>
             </M>
             <M id="S_kavalan_011_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -838,6 +946,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_011_W01_M03">
                 <FORM kindOf="original">ku</FORM>
@@ -845,6 +954,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_011_W02">
@@ -853,12 +963,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_011_W02_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_011_W03">
@@ -867,12 +979,14 @@
             <FORM kindOf="standard">zanum</FORM>
             <PHON kindOf="standard">[z|r]anum</PHON>
             <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             <M id="S_kavalan_011_W03_M01">
                 <FORM kindOf="original">zanum</FORM>
                 <PHON kindOf="original">zanum</PHON>
                 <FORM kindOf="standard">zanum</FORM>
                 <PHON kindOf="standard">[z|r]anum</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">water</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">water</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_011_W04">
@@ -881,12 +995,14 @@
             <FORM kindOf="standard">'nay</FORM>
             <PHON kindOf="standard">ʔnaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             <M id="S_kavalan_011_W04_M01">
                 <FORM kindOf="original">'nay</FORM>
                 <PHON kindOf="original">ʔnaj</PHON>
                 <FORM kindOf="standard">'nay</FORM>
                 <PHON kindOf="standard">ʔnaj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             </M>
         </W>
     </S>
@@ -902,12 +1018,14 @@
             <FORM kindOf="standard">qaynep-an-ku</FORM>
             <PHON kindOf="standard">qajnəpanku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">sleep-PV-1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">sleep-PV-1SG.ERG</TRANSL>
             <M id="S_kavalan_012_W01_M01">
                 <FORM kindOf="original">qaynep</FORM>
                 <PHON kindOf="original">qajnəp</PHON>
                 <FORM kindOf="standard">qaynep</FORM>
                 <PHON kindOf="standard">qajnəp</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">sleep</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">sleep</TRANSL>
             </M>
             <M id="S_kavalan_012_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -915,6 +1033,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_012_W01_M03">
                 <FORM kindOf="original">ku</FORM>
@@ -922,6 +1041,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_012_W02">
@@ -930,12 +1050,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_012_W02_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_012_W03">
@@ -944,12 +1066,14 @@
             <FORM kindOf="standard">qaynepan</FORM>
             <PHON kindOf="standard">qajnəpan</PHON>
             <TRANSL kindOf="original" xml:lang="eng">bed</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bed</TRANSL>
             <M id="S_kavalan_012_W03_M01">
                 <FORM kindOf="original">qaynepan</FORM>
                 <PHON kindOf="original">qajnəpan</PHON>
                 <FORM kindOf="standard">qaynepan</FORM>
                 <PHON kindOf="standard">qajnəpan</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">bed</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bed</TRANSL>
             </M>
         </W>
     </S>
@@ -965,12 +1089,14 @@
             <FORM kindOf="standard">t&lt;m&gt;alumbi</FORM>
             <PHON kindOf="standard">tmaɾumβi</PHON>
             <TRANSL kindOf="original" xml:lang="eng">&lt;AV&gt;hide</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">&lt;AV&gt;hide</TRANSL>
             <M id="S_kavalan_013_W01_M01">
                 <FORM kindOf="original">t-alumbi</FORM>
                 <PHON kindOf="original">taɾumβi</PHON>
                 <FORM kindOf="standard">t-alumbi</FORM>
                 <PHON kindOf="standard">taɾumβi</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">hide</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">hide</TRANSL>
             </M>
             <M id="S_kavalan_013_W01_M02">
                 <FORM kindOf="original">-m-</FORM>
@@ -978,6 +1104,7 @@
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_013_W02">
@@ -986,12 +1113,14 @@
             <FORM kindOf="standard">ta-liab-an</FORM>
             <PHON kindOf="standard">taɾiaβan</PHON>
             <TRANSL kindOf="original" xml:lang="eng">LOC-underside-LOC</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LOC-underside-LOC</TRANSL>
             <M id="S_kavalan_013_W02_M01">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">LOC</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
             <M id="S_kavalan_013_W02_M02">
                 <FORM kindOf="original">liab</FORM>
@@ -999,6 +1128,7 @@
                 <FORM kindOf="standard">liab</FORM>
                 <PHON kindOf="standard">ɾiaβ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">underside</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">underside</TRANSL>
             </M>
             <M id="S_kavalan_013_W02_M03">
                 <FORM kindOf="original">an</FORM>
@@ -1006,6 +1136,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">LOC</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_013_W03">
@@ -1014,12 +1145,14 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL kindOf="original" xml:lang="eng">GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">GEN</TRANSL>
             <M id="S_kavalan_013_W03_M01">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">GEN</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_013_W04">
@@ -1028,12 +1161,14 @@
             <FORM kindOf="standard">takan</FORM>
             <PHON kindOf="standard">takan</PHON>
             <TRANSL kindOf="original" xml:lang="eng">table</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">table</TRANSL>
             <M id="S_kavalan_013_W04_M01">
                 <FORM kindOf="original">takan</FORM>
                 <PHON kindOf="original">takan</PHON>
                 <FORM kindOf="standard">takan</FORM>
                 <PHON kindOf="standard">takan</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">table</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">table</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_013_W05">
@@ -1042,12 +1177,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_013_W05_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_013_W06">
@@ -1056,12 +1193,14 @@
             <FORM kindOf="standard">sunis</FORM>
             <PHON kindOf="standard">sunis</PHON>
             <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             <M id="S_kavalan_013_W06_M01">
                 <FORM kindOf="original">sunis</FORM>
                 <PHON kindOf="original">sunis</PHON>
                 <FORM kindOf="standard">sunis</FORM>
                 <PHON kindOf="standard">sunis</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_013_W07">
@@ -1070,12 +1209,14 @@
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
             <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LNK</TRANSL>
             <M id="S_kavalan_013_W07_M01">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LNK</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_013_W08">
@@ -1084,12 +1225,14 @@
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
             <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             <M id="S_kavalan_013_W08_M01">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             </M>
         </W>
     </S>
@@ -1105,12 +1248,14 @@
             <FORM kindOf="standard">talumbi-an</FORM>
             <PHON kindOf="standard">taɾumβian</PHON>
             <TRANSL kindOf="original" xml:lang="eng">hide-PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">hide-PV</TRANSL>
             <M id="S_kavalan_014_W01_M01">
                 <FORM kindOf="original">talumbi</FORM>
                 <PHON kindOf="original">taɾumβi</PHON>
                 <FORM kindOf="standard">talumbi</FORM>
                 <PHON kindOf="standard">taɾumβi</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">hide</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">hide</TRANSL>
             </M>
             <M id="S_kavalan_014_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -1118,6 +1263,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_014_W02">
@@ -1126,12 +1272,14 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             <M id="S_kavalan_014_W02_M01">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_014_W03">
@@ -1140,12 +1288,14 @@
             <FORM kindOf="standard">sunis</FORM>
             <PHON kindOf="standard">sunis</PHON>
             <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             <M id="S_kavalan_014_W03_M01">
                 <FORM kindOf="original">sunis</FORM>
                 <PHON kindOf="original">sunis</PHON>
                 <FORM kindOf="standard">sunis</FORM>
                 <PHON kindOf="standard">sunis</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_014_W04">
@@ -1154,12 +1304,14 @@
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
             <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LNK</TRANSL>
             <M id="S_kavalan_014_W04_M01">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LNK</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_014_W05">
@@ -1168,12 +1320,14 @@
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
             <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             <M id="S_kavalan_014_W05_M01">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_014_W06">
@@ -1182,12 +1336,14 @@
             <FORM kindOf="standard">ta-liab-an</FORM>
             <PHON kindOf="standard">taɾiaβan</PHON>
             <TRANSL kindOf="original" xml:lang="eng">LOC-underside-LOC</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LOC-underside-LOC</TRANSL>
             <M id="S_kavalan_014_W06_M01">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">LOC</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
             <M id="S_kavalan_014_W06_M02">
                 <FORM kindOf="original">liab</FORM>
@@ -1195,6 +1351,7 @@
                 <FORM kindOf="standard">liab</FORM>
                 <PHON kindOf="standard">ɾiaβ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">underside</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">underside</TRANSL>
             </M>
             <M id="S_kavalan_014_W06_M03">
                 <FORM kindOf="original">an</FORM>
@@ -1202,6 +1359,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">LOC</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_014_W07">
@@ -1210,12 +1368,14 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL kindOf="original" xml:lang="eng">GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">GEN</TRANSL>
             <M id="S_kavalan_014_W07_M01">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">GEN</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_014_W08">
@@ -1224,12 +1384,14 @@
             <FORM kindOf="standard">takan</FORM>
             <PHON kindOf="standard">takan</PHON>
             <TRANSL kindOf="original" xml:lang="eng">table</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">table</TRANSL>
             <M id="S_kavalan_014_W08_M01">
                 <FORM kindOf="original">takan</FORM>
                 <PHON kindOf="original">takan</PHON>
                 <FORM kindOf="standard">takan</FORM>
                 <PHON kindOf="standard">takan</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">table</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">table</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_014_W09">
@@ -1238,12 +1400,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_014_W09_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_014_W10">
@@ -1252,12 +1416,14 @@
             <FORM kindOf="standard">tina-na</FORM>
             <PHON kindOf="standard">tinana</PHON>
             <TRANSL kindOf="original" xml:lang="eng">mother-3GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">mother-3GEN</TRANSL>
             <M id="S_kavalan_014_W10_M01">
                 <FORM kindOf="original">tina</FORM>
                 <PHON kindOf="original">tina</PHON>
                 <FORM kindOf="standard">tina</FORM>
                 <PHON kindOf="standard">tina</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">mother</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">mother</TRANSL>
             </M>
             <M id="S_kavalan_014_W10_M02">
                 <FORM kindOf="original">na</FORM>
@@ -1265,6 +1431,7 @@
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">3GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -1282,6 +1449,7 @@
             <PHON kindOf="standard">naquniansu</PHON>
             <FORM kindOf="standard" ver="alt">quni-an-su</FORM>
             <TRANSL kindOf="original" xml:lang="eng">do.what-PV-2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">do.what-PV-2SG.ERG</TRANSL>
             <M id="S_kavalan_015_W01_M01">
                 <FORM kindOf="original">naquni</FORM>
                 <PHON kindOf="original">naquni</PHON>
@@ -1290,6 +1458,7 @@
                 <PHON kindOf="standard">naquni</PHON>
                 <FORM kindOf="standard" ver="alt">quni</FORM>
                 <TRANSL kindOf="original" xml:lang="eng">do.what</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">do.what</TRANSL>
             </M>
             <M id="S_kavalan_015_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -1297,6 +1466,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_015_W01_M03">
                 <FORM kindOf="original">su</FORM>
@@ -1304,6 +1474,7 @@
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_015_W02">
@@ -1312,12 +1483,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_015_W02_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_015_W03">
@@ -1326,12 +1499,14 @@
             <FORM kindOf="standard">sunis</FORM>
             <PHON kindOf="standard">sunis</PHON>
             <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             <M id="S_kavalan_015_W03_M01">
                 <FORM kindOf="original">sunis</FORM>
                 <PHON kindOf="original">sunis</PHON>
                 <FORM kindOf="standard">sunis</FORM>
                 <PHON kindOf="standard">sunis</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_015_W04">
@@ -1340,12 +1515,14 @@
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
             <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LNK</TRANSL>
             <M id="S_kavalan_015_W04_M01">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LNK</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_015_W05">
@@ -1354,12 +1531,14 @@
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
             <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             <M id="S_kavalan_015_W05_M01">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             </M>
         </W>
     </S>
@@ -1377,6 +1556,7 @@
             <PHON kindOf="standard">naquniansu</PHON>
             <FORM kindOf="standard" ver="alt">quni-an-su</FORM>
             <TRANSL kindOf="original" xml:lang="eng">do.how-PV-2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">do.how-PV-2SG.ERG</TRANSL>
             <M id="S_kavalan_016_W01_M01">
                 <FORM kindOf="original">naquni</FORM>
                 <PHON kindOf="original">naquni</PHON>
@@ -1385,6 +1565,7 @@
                 <PHON kindOf="standard">naquni</PHON>
                 <FORM kindOf="standard" ver="alt">quni</FORM>
                 <TRANSL kindOf="original" xml:lang="eng">do.how</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">do.how</TRANSL>
             </M>
             <M id="S_kavalan_016_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -1392,6 +1573,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_016_W01_M03">
                 <FORM kindOf="original">su</FORM>
@@ -1399,6 +1581,7 @@
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_016_W02">
@@ -1407,12 +1590,14 @@
             <FORM kindOf="standard">m-kala</FORM>
             <PHON kindOf="standard">mkaɾa</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-find</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-find</TRANSL>
             <M id="S_kavalan_016_W02_M01">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="S_kavalan_016_W02_M02">
                 <FORM kindOf="original">kala</FORM>
@@ -1420,6 +1605,7 @@
                 <FORM kindOf="standard">kala</FORM>
                 <PHON kindOf="standard">kaɾa</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">find</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">find</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_016_W03">
@@ -1428,12 +1614,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_016_W03_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_016_W04">
@@ -1442,12 +1630,14 @@
             <FORM kindOf="standard">sunis</FORM>
             <PHON kindOf="standard">sunis</PHON>
             <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             <M id="S_kavalan_016_W04_M01">
                 <FORM kindOf="original">sunis</FORM>
                 <PHON kindOf="original">sunis</PHON>
                 <FORM kindOf="standard">sunis</FORM>
                 <PHON kindOf="standard">sunis</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_016_W05">
@@ -1456,12 +1646,14 @@
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
             <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LNK</TRANSL>
             <M id="S_kavalan_016_W05_M01">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">LNK</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LNK</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_016_W06">
@@ -1470,12 +1662,14 @@
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
             <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             <M id="S_kavalan_016_W06_M01">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             </M>
         </W>
     </S>
@@ -1491,12 +1685,14 @@
             <FORM kindOf="standard">tanuz-an</FORM>
             <PHON kindOf="standard">tanu[z|r]an</PHON>
             <TRANSL kindOf="original" xml:lang="eng">chase-PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">chase-PV</TRANSL>
             <M id="S_kavalan_017_W01_M01">
                 <FORM kindOf="original">tanuz</FORM>
                 <PHON kindOf="original">tanuz</PHON>
                 <FORM kindOf="standard">tanuz</FORM>
                 <PHON kindOf="standard">tanu[z|r]</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">chase</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">chase</TRANSL>
             </M>
             <M id="S_kavalan_017_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -1504,6 +1700,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_017_W02">
@@ -1512,12 +1709,14 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             <M id="S_kavalan_017_W02_M01">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_017_W03">
@@ -1526,12 +1725,14 @@
             <FORM kindOf="standard">tuliq</FORM>
             <PHON kindOf="standard">tuɾiq</PHON>
             <TRANSL kindOf="original" xml:lang="eng">bee</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bee</TRANSL>
             <M id="S_kavalan_017_W03_M01">
                 <FORM kindOf="original">tuliq</FORM>
                 <PHON kindOf="original">tuɾiq</PHON>
                 <FORM kindOf="standard">tuliq</FORM>
                 <PHON kindOf="standard">tuɾiq</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">bee</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bee</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_017_W04">
@@ -1540,12 +1741,14 @@
             <FORM kindOf="standard">tanian</FORM>
             <PHON kindOf="standard">tanian</PHON>
             <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">where</TRANSL>
             <M id="S_kavalan_017_W04_M01">
                 <FORM kindOf="original">tanian</FORM>
                 <PHON kindOf="original">tanian</PHON>
                 <FORM kindOf="standard">tanian</FORM>
                 <PHON kindOf="standard">tanian</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">where</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_017_W05">
@@ -1554,12 +1757,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_017_W05_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_017_W06">
@@ -1568,12 +1773,14 @@
             <FORM kindOf="standard">wasu</FORM>
             <PHON kindOf="standard">wasu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog</TRANSL>
             <M id="S_kavalan_017_W06_M01">
                 <FORM kindOf="original">wasu</FORM>
                 <PHON kindOf="original">wasu</PHON>
                 <FORM kindOf="standard">wasu</FORM>
                 <PHON kindOf="standard">wasu</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog</TRANSL>
             </M>
         </W>
     </S>
@@ -1589,12 +1796,14 @@
             <FORM kindOf="standard">tanian-an</FORM>
             <PHON kindOf="standard">tanianan</PHON>
             <TRANSL kindOf="original" xml:lang="eng">where-PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">where-PV</TRANSL>
             <M id="S_kavalan_018_W01_M01">
                 <FORM kindOf="original">tanian</FORM>
                 <PHON kindOf="original">tanian</PHON>
                 <FORM kindOf="standard">tanian</FORM>
                 <PHON kindOf="standard">tanian</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">where</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">where</TRANSL>
             </M>
             <M id="S_kavalan_018_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -1602,6 +1811,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_018_W02">
@@ -1610,12 +1820,14 @@
             <FORM kindOf="standard">ni</FORM>
             <PHON kindOf="standard">ni</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             <M id="S_kavalan_018_W02_M01">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_018_W03">
@@ -1624,12 +1836,14 @@
             <FORM kindOf="standard">abas</FORM>
             <PHON kindOf="standard">aβas</PHON>
             <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PN</TRANSL>
             <M id="S_kavalan_018_W03_M01">
                 <FORM kindOf="original">abas</FORM>
                 <PHON kindOf="original">aβas</PHON>
                 <FORM kindOf="standard">abas</FORM>
                 <PHON kindOf="standard">aβas</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PN</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_018_W04">
@@ -1638,12 +1852,14 @@
             <FORM kindOf="standard">m-Rupu</FORM>
             <PHON kindOf="standard">mʁupu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">AV-shut</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV-shut</TRANSL>
             <M id="S_kavalan_018_W04_M01">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
             <M id="S_kavalan_018_W04_M02">
                 <FORM kindOf="original">Rupu</FORM>
@@ -1651,6 +1867,7 @@
                 <FORM kindOf="standard">Rupu</FORM>
                 <PHON kindOf="standard">ʁupu</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">shut</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">shut</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_018_W05">
@@ -1659,12 +1876,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_018_W05_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_018_W06">
@@ -1673,12 +1892,14 @@
             <FORM kindOf="standard">adam</FORM>
             <PHON kindOf="standard">aɮam</PHON>
             <TRANSL kindOf="original" xml:lang="eng">bird</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bird</TRANSL>
             <M id="S_kavalan_018_W06_M01">
                 <FORM kindOf="original">adam</FORM>
                 <PHON kindOf="original">aɮam</PHON>
                 <FORM kindOf="standard">adam</FORM>
                 <PHON kindOf="standard">aɮam</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">bird</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">bird</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_018_W07">
@@ -1687,12 +1908,14 @@
             <FORM kindOf="standard">'nay</FORM>
             <PHON kindOf="standard">ʔnaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             <M id="S_kavalan_018_W07_M01">
                 <FORM kindOf="original">'nay</FORM>
                 <PHON kindOf="original">ʔnaj</PHON>
                 <FORM kindOf="standard">'nay</FORM>
                 <PHON kindOf="standard">ʔnaj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that</TRANSL>
             </M>
         </W>
     </S>
@@ -1708,12 +1931,14 @@
             <FORM kindOf="standard">kin-tani-an-su=pa</FORM>
             <PHON kindOf="standard">kintaniansupa</PHON>
             <TRANSL kindOf="original" xml:lang="eng">HUM-how.many-PV-2SG.ERG=FUT</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">HUM-how.many-PV-2SG.ERG=FUT</TRANSL>
             <M id="S_kavalan_019_W01_M01">
                 <FORM kindOf="original">kin</FORM>
                 <PHON kindOf="original">kin</PHON>
                 <FORM kindOf="standard">kin</FORM>
                 <PHON kindOf="standard">kin</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">HUM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">HUM</TRANSL>
             </M>
             <M id="S_kavalan_019_W01_M02">
                 <FORM kindOf="original">tani</FORM>
@@ -1721,6 +1946,7 @@
                 <FORM kindOf="standard">tani</FORM>
                 <PHON kindOf="standard">tani</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">how.many</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">how.many</TRANSL>
             </M>
             <M id="S_kavalan_019_W01_M03">
                 <FORM kindOf="original">an</FORM>
@@ -1728,6 +1954,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_019_W01_M04">
                 <FORM kindOf="original">su</FORM>
@@ -1735,6 +1962,7 @@
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.ERG</TRANSL>
             </M>
             <M id="S_kavalan_019_W01_M05">
                 <FORM kindOf="original">=pa</FORM>
@@ -1742,6 +1970,7 @@
                 <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">FUT</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">FUT</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_019_W02">
@@ -1750,12 +1979,14 @@
             <FORM kindOf="standard">p&lt;m&gt;ukun</FORM>
             <PHON kindOf="standard">pmukun</PHON>
             <TRANSL kindOf="original" xml:lang="eng">&lt;AV&gt;beat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">&lt;AV&gt;beat</TRANSL>
             <M id="S_kavalan_019_W02_M01">
                 <FORM kindOf="original">p-ukun</FORM>
                 <PHON kindOf="original">pukun</PHON>
                 <FORM kindOf="standard">p-ukun</FORM>
                 <PHON kindOf="standard">pukun</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">beat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">beat</TRANSL>
             </M>
             <M id="S_kavalan_019_W02_M02">
                 <FORM kindOf="original">-m-</FORM>
@@ -1763,6 +1994,7 @@
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_019_W03">
@@ -1771,12 +2003,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_019_W03_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_019_W04">
@@ -1785,12 +2019,14 @@
             <FORM kindOf="standard">sunis</FORM>
             <PHON kindOf="standard">sunis</PHON>
             <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             <M id="S_kavalan_019_W04_M01">
                 <FORM kindOf="original">sunis</FORM>
                 <PHON kindOf="original">sunis</PHON>
                 <FORM kindOf="standard">sunis</FORM>
                 <PHON kindOf="standard">sunis</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             </M>
         </W>
     </S>
@@ -1806,12 +2042,14 @@
             <FORM kindOf="standard">u-tani-an</FORM>
             <PHON kindOf="standard">utanian</PHON>
             <TRANSL kindOf="original" xml:lang="eng">NHUM-how.many-PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NHUM-how.many-PV</TRANSL>
             <M id="S_kavalan_020_W01_M01">
                 <FORM kindOf="original">u</FORM>
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">NHUM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NHUM</TRANSL>
             </M>
             <M id="S_kavalan_020_W01_M02">
                 <FORM kindOf="original">tani</FORM>
@@ -1819,6 +2057,7 @@
                 <FORM kindOf="standard">tani</FORM>
                 <PHON kindOf="standard">tani</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">how.many</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">how.many</TRANSL>
             </M>
             <M id="S_kavalan_020_W01_M03">
                 <FORM kindOf="original">an</FORM>
@@ -1826,6 +2065,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_020_W02">
@@ -1834,12 +2074,14 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             <M id="S_kavalan_020_W02_M01">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_020_W03">
@@ -1848,12 +2090,14 @@
             <FORM kindOf="standard">wasu</FORM>
             <PHON kindOf="standard">wasu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog</TRANSL>
             <M id="S_kavalan_020_W03_M01">
                 <FORM kindOf="original">wasu</FORM>
                 <PHON kindOf="original">wasu</PHON>
                 <FORM kindOf="standard">wasu</FORM>
                 <PHON kindOf="standard">wasu</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">dog</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_020_W04">
@@ -1862,12 +2106,14 @@
             <FORM kindOf="standard">q&lt;m&gt;aRat</FORM>
             <PHON kindOf="standard">qmaʁat</PHON>
             <TRANSL kindOf="original" xml:lang="eng">&lt;AV&gt;take</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">&lt;AV&gt;take</TRANSL>
             <M id="S_kavalan_020_W04_M01">
                 <FORM kindOf="original">q-aRat</FORM>
                 <PHON kindOf="original">qaʁat</PHON>
                 <FORM kindOf="standard">q-aRat</FORM>
                 <PHON kindOf="standard">qaʁat</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">take</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">take</TRANSL>
             </M>
             <M id="S_kavalan_020_W04_M02">
                 <FORM kindOf="original">-m-</FORM>
@@ -1875,6 +2121,7 @@
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_020_W05">
@@ -1883,12 +2130,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_020_W05_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_020_W06">
@@ -1897,12 +2146,14 @@
             <FORM kindOf="standard">saku</FORM>
             <PHON kindOf="standard">saku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">cat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">cat</TRANSL>
             <M id="S_kavalan_020_W06_M01">
                 <FORM kindOf="original">saku</FORM>
                 <PHON kindOf="original">saku</PHON>
                 <FORM kindOf="standard">saku</FORM>
                 <PHON kindOf="standard">saku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">cat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">cat</TRANSL>
             </M>
         </W>
     </S>
@@ -1919,12 +2170,14 @@
             <FORM kindOf="standard">u-tani</FORM>
             <PHON kindOf="standard">utani</PHON>
             <TRANSL kindOf="original" xml:lang="eng">NHUM-how.many</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NHUM-how.many</TRANSL>
             <M id="S_kavalan_021_W01_M01">
                 <FORM kindOf="original">u</FORM>
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">NHUM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">NHUM</TRANSL>
             </M>
             <M id="S_kavalan_021_W01_M02">
                 <FORM kindOf="original">tani</FORM>
@@ -1932,6 +2185,7 @@
                 <FORM kindOf="standard">tani</FORM>
                 <PHON kindOf="standard">tani</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">how.many</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">how.many</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_021_W02">
@@ -1940,12 +2194,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_021_W02_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_021_W03">
@@ -1954,12 +2210,14 @@
             <FORM kindOf="standard">ni-ala-su</FORM>
             <PHON kindOf="standard">niaɾasu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">PFV-take-2SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV-take-2SG.GEN</TRANSL>
             <M id="S_kavalan_021_W03_M01">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PFV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV</TRANSL>
             </M>
             <M id="S_kavalan_021_W03_M02">
                 <FORM kindOf="original">ala</FORM>
@@ -1967,6 +2225,7 @@
                 <FORM kindOf="standard">ala</FORM>
                 <PHON kindOf="standard">aɾa</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">take</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">take</TRANSL>
             </M>
             <M id="S_kavalan_021_W03_M03">
                 <FORM kindOf="original">su</FORM>
@@ -1974,6 +2233,7 @@
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.GEN</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_021_W04">
@@ -1982,12 +2242,14 @@
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">OBL</TRANSL>
             <M id="S_kavalan_021_W04_M01">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">OBL</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_021_W05">
@@ -1996,12 +2258,14 @@
             <FORM kindOf="standard">kelisiw</FORM>
             <PHON kindOf="standard">kəɾisiw</PHON>
             <TRANSL kindOf="original" xml:lang="eng">money</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money</TRANSL>
             <M id="S_kavalan_021_W05_M01">
                 <FORM kindOf="original">kelisiw</FORM>
                 <PHON kindOf="original">kəɾisiw</PHON>
                 <FORM kindOf="standard">kelisiw</FORM>
                 <PHON kindOf="standard">kəɾisiw</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">money</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money</TRANSL>
             </M>
         </W>
     </S>
@@ -2017,12 +2281,14 @@
             <FORM kindOf="standard">tazian-an-ku</FORM>
             <PHON kindOf="standard">ta[z|r]iananku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">here-PV-1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">here-PV-1SG.ERG</TRANSL>
             <M id="S_kavalan_022_W01_M01">
                 <FORM kindOf="original">tazian</FORM>
                 <PHON kindOf="original">tazian</PHON>
                 <FORM kindOf="standard">tazian</FORM>
                 <PHON kindOf="standard">ta[z|r]ian</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">here</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">here</TRANSL>
             </M>
             <M id="S_kavalan_022_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -2030,6 +2296,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_022_W01_M03">
                 <FORM kindOf="original">ku</FORM>
@@ -2037,6 +2304,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_022_W02">
@@ -2045,12 +2313,14 @@
             <FORM kindOf="standard">pizi</FORM>
             <PHON kindOf="standard">pi[z|r]i</PHON>
             <TRANSL kindOf="original" xml:lang="eng">put</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">put</TRANSL>
             <M id="S_kavalan_022_W02_M01">
                 <FORM kindOf="original">pizi</FORM>
                 <PHON kindOf="original">pizi</PHON>
                 <FORM kindOf="standard">pizi</FORM>
                 <PHON kindOf="standard">pi[z|r]i</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">put</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">put</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_022_W03">
@@ -2059,12 +2329,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_022_W03_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_022_W04">
@@ -2073,12 +2345,14 @@
             <FORM kindOf="standard">kelisiw-ku</FORM>
             <PHON kindOf="standard">kəɾisiwku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">money-1SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money-1SG.GEN</TRANSL>
             <M id="S_kavalan_022_W04_M01">
                 <FORM kindOf="original">kelisiw</FORM>
                 <PHON kindOf="original">kəɾisiw</PHON>
                 <FORM kindOf="standard">kelisiw</FORM>
                 <PHON kindOf="standard">kəɾisiw</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">money</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money</TRANSL>
             </M>
             <M id="S_kavalan_022_W04_M02">
                 <FORM kindOf="original">ku</FORM>
@@ -2086,6 +2360,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -2101,12 +2376,14 @@
             <FORM kindOf="standard">tazian-an-ku</FORM>
             <PHON kindOf="standard">ta[z|r]iananku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">here-PV-1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">here-PV-1SG.ERG</TRANSL>
             <M id="S_kavalan_022-opt_W01_M01">
                 <FORM kindOf="original">tazian</FORM>
                 <PHON kindOf="original">tazian</PHON>
                 <FORM kindOf="standard">tazian</FORM>
                 <PHON kindOf="standard">ta[z|r]ian</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">here</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">here</TRANSL>
             </M>
             <M id="S_kavalan_022-opt_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -2114,6 +2391,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_022-opt_W01_M03">
                 <FORM kindOf="original">ku</FORM>
@@ -2121,6 +2399,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_022-opt_W02">
@@ -2129,12 +2408,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_022-opt_W02_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_022-opt_W03">
@@ -2143,12 +2424,14 @@
             <FORM kindOf="standard">kelisiw-ku</FORM>
             <PHON kindOf="standard">kəɾisiwku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">money-1SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money-1SG.GEN</TRANSL>
             <M id="S_kavalan_022-opt_W03_M01">
                 <FORM kindOf="original">kelisiw</FORM>
                 <PHON kindOf="original">kəɾisiw</PHON>
                 <FORM kindOf="standard">kelisiw</FORM>
                 <PHON kindOf="standard">kəɾisiw</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">money</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money</TRANSL>
             </M>
             <M id="S_kavalan_022-opt_W03_M02">
                 <FORM kindOf="original">ku</FORM>
@@ -2156,6 +2439,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -2171,12 +2455,14 @@
             <FORM kindOf="standard">tawian-an-ku</FORM>
             <PHON kindOf="standard">tawiananku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">there-PV-1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">there-PV-1SG.ERG</TRANSL>
             <M id="S_kavalan_023_W01_M01">
                 <FORM kindOf="original">tawian</FORM>
                 <PHON kindOf="original">tawian</PHON>
                 <FORM kindOf="standard">tawian</FORM>
                 <PHON kindOf="standard">tawian</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">there</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">there</TRANSL>
             </M>
             <M id="S_kavalan_023_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -2184,6 +2470,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_023_W01_M03">
                 <FORM kindOf="original">ku</FORM>
@@ -2191,6 +2478,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_023_W02">
@@ -2199,12 +2487,14 @@
             <FORM kindOf="standard">pizi</FORM>
             <PHON kindOf="standard">pi[z|r]i</PHON>
             <TRANSL kindOf="original" xml:lang="eng">put</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">put</TRANSL>
             <M id="S_kavalan_023_W02_M01">
                 <FORM kindOf="original">pizi</FORM>
                 <PHON kindOf="original">pizi</PHON>
                 <FORM kindOf="standard">pizi</FORM>
                 <PHON kindOf="standard">pi[z|r]i</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">put</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">put</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_023_W03">
@@ -2213,12 +2503,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_023_W03_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_023_W04">
@@ -2227,12 +2519,14 @@
             <FORM kindOf="standard">kelisiw-ku</FORM>
             <PHON kindOf="standard">kəɾisiwku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">money-1SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money-1SG.GEN</TRANSL>
             <M id="S_kavalan_023_W04_M01">
                 <FORM kindOf="original">kelisiw</FORM>
                 <PHON kindOf="original">kəɾisiw</PHON>
                 <FORM kindOf="standard">kelisiw</FORM>
                 <PHON kindOf="standard">kəɾisiw</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">money</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money</TRANSL>
             </M>
             <M id="S_kavalan_023_W04_M02">
                 <FORM kindOf="original">ku</FORM>
@@ -2240,6 +2534,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -2255,12 +2550,14 @@
             <FORM kindOf="standard">tawian-an-ku</FORM>
             <PHON kindOf="standard">tawiananku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">there-PV-1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">there-PV-1SG.ERG</TRANSL>
             <M id="S_kavalan_023-opt_W01_M01">
                 <FORM kindOf="original">tawian</FORM>
                 <PHON kindOf="original">tawian</PHON>
                 <FORM kindOf="standard">tawian</FORM>
                 <PHON kindOf="standard">tawian</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">there</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">there</TRANSL>
             </M>
             <M id="S_kavalan_023-opt_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -2268,6 +2565,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_023-opt_W01_M03">
                 <FORM kindOf="original">ku</FORM>
@@ -2275,6 +2573,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_023-opt_W02">
@@ -2283,12 +2582,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_023-opt_W02_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_023-opt_W03">
@@ -2297,12 +2598,14 @@
             <FORM kindOf="standard">kelisiw-ku</FORM>
             <PHON kindOf="standard">kəɾisiwku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">money-1SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money-1SG.GEN</TRANSL>
             <M id="S_kavalan_023-opt_W03_M01">
                 <FORM kindOf="original">kelisiw</FORM>
                 <PHON kindOf="original">kəɾisiw</PHON>
                 <FORM kindOf="standard">kelisiw</FORM>
                 <PHON kindOf="standard">kəɾisiw</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">money</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money</TRANSL>
             </M>
             <M id="S_kavalan_023-opt_W03_M02">
                 <FORM kindOf="original">ku</FORM>
@@ -2310,6 +2613,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -2325,12 +2629,14 @@
             <FORM kindOf="standard">nayau-an-ku</FORM>
             <PHON kindOf="standard">najauanku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">that.way-PV-1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that.way-PV-1SG.ERG</TRANSL>
             <M id="S_kavalan_024_W01_M01">
                 <FORM kindOf="original">nayau</FORM>
                 <PHON kindOf="original">najau</PHON>
                 <FORM kindOf="standard">nayau</FORM>
                 <PHON kindOf="standard">najau</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">that.way</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that.way</TRANSL>
             </M>
             <M id="S_kavalan_024_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -2338,6 +2644,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_024_W01_M03">
                 <FORM kindOf="original">ku</FORM>
@@ -2345,6 +2652,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.ERG</TRANSL>
             </M>
         </W>
     </S>
@@ -2360,12 +2668,14 @@
             <FORM kindOf="standard">nayau-an-na</FORM>
             <PHON kindOf="standard">najauanna</PHON>
             <TRANSL kindOf="original" xml:lang="eng">that.way-PV-3ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that.way-PV-3ERG</TRANSL>
             <M id="S_kavalan_025_W01_M01">
                 <FORM kindOf="original">nayau</FORM>
                 <PHON kindOf="original">najau</PHON>
                 <FORM kindOf="standard">nayau</FORM>
                 <PHON kindOf="standard">najau</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">that.way</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">that.way</TRANSL>
             </M>
             <M id="S_kavalan_025_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -2373,6 +2683,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_025_W01_M03">
                 <FORM kindOf="original">na</FORM>
@@ -2380,6 +2691,7 @@
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">3ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_025_W02">
@@ -2388,12 +2700,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_025_W02_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_025_W03">
@@ -2402,12 +2716,14 @@
             <FORM kindOf="standard">sunis-na</FORM>
             <PHON kindOf="standard">sunisna</PHON>
             <TRANSL kindOf="original" xml:lang="eng">child-3SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child-3SG.GEN</TRANSL>
             <M id="S_kavalan_025_W03_M01">
                 <FORM kindOf="original">sunis</FORM>
                 <PHON kindOf="original">sunis</PHON>
                 <FORM kindOf="standard">sunis</FORM>
                 <PHON kindOf="standard">sunis</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             </M>
             <M id="S_kavalan_025_W03_M02">
                 <FORM kindOf="original">na</FORM>
@@ -2415,6 +2731,7 @@
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">3SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3SG.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -2430,12 +2747,14 @@
             <FORM kindOf="standard">paqanas-an-ku</FORM>
             <PHON kindOf="standard">paqanasanku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">slow-PV-1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">slow-PV-1SG.ERG</TRANSL>
             <M id="S_kavalan_026_W01_M01">
                 <FORM kindOf="original">paqanas</FORM>
                 <PHON kindOf="original">paqanas</PHON>
                 <FORM kindOf="standard">paqanas</FORM>
                 <PHON kindOf="standard">paqanas</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">slow</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">slow</TRANSL>
             </M>
             <M id="S_kavalan_026_W01_M02">
                 <FORM kindOf="original">an</FORM>
@@ -2443,6 +2762,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_026_W01_M03">
                 <FORM kindOf="original">ku</FORM>
@@ -2450,6 +2770,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_026_W02">
@@ -2458,12 +2779,14 @@
             <FORM kindOf="standard">t&lt;m&gt;ayta</FORM>
             <PHON kindOf="standard">tmajta</PHON>
             <TRANSL kindOf="original" xml:lang="eng">&lt;AV&gt;see</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">&lt;AV&gt;see</TRANSL>
             <M id="S_kavalan_026_W02_M01">
                 <FORM kindOf="original">t-ayta</FORM>
                 <PHON kindOf="original">tajta</PHON>
                 <FORM kindOf="standard">t-ayta</FORM>
                 <PHON kindOf="standard">tajta</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">see</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">see</TRANSL>
             </M>
             <M id="S_kavalan_026_W02_M02">
                 <FORM kindOf="original">-m-</FORM>
@@ -2471,6 +2794,7 @@
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">AV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">AV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_026_W03">
@@ -2479,12 +2803,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_026_W03_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_026_W04">
@@ -2493,12 +2819,14 @@
             <FORM kindOf="standard">sudad</FORM>
             <PHON kindOf="standard">suɮaɮ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">book</TRANSL>
             <M id="S_kavalan_026_W04_M01">
                 <FORM kindOf="original">sudad</FORM>
                 <PHON kindOf="original">suɮaɮ</PHON>
                 <FORM kindOf="standard">sudad</FORM>
                 <PHON kindOf="standard">suɮaɮ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">book</TRANSL>
             </M>
         </W>
     </S>
@@ -2514,12 +2842,14 @@
             <FORM kindOf="standard">qumni</FORM>
             <PHON kindOf="standard">qumni</PHON>
             <TRANSL kindOf="original" xml:lang="eng">when</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">when</TRANSL>
             <M id="S_kavalan_027_W01_M01">
                 <FORM kindOf="original">qumni</FORM>
                 <PHON kindOf="original">qumni</PHON>
                 <FORM kindOf="standard">qumni</FORM>
                 <PHON kindOf="standard">qumni</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">when</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">when</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_027_W02">
@@ -2528,12 +2858,14 @@
             <FORM kindOf="standard">tayta-an-su</FORM>
             <PHON kindOf="standard">tajtaansu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">see-PV-2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">see-PV-2SG.ERG</TRANSL>
             <M id="S_kavalan_027_W02_M01">
                 <FORM kindOf="original">tayta</FORM>
                 <PHON kindOf="original">tajta</PHON>
                 <FORM kindOf="standard">tayta</FORM>
                 <PHON kindOf="standard">tajta</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">see</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">see</TRANSL>
             </M>
             <M id="S_kavalan_027_W02_M02">
                 <FORM kindOf="original">an</FORM>
@@ -2541,6 +2873,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_027_W02_M03">
                 <FORM kindOf="original">su</FORM>
@@ -2548,6 +2881,7 @@
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_027_W03">
@@ -2556,12 +2890,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_027_W03_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_027_W04">
@@ -2570,12 +2906,14 @@
             <FORM kindOf="standard">ti-buya</FORM>
             <PHON kindOf="standard">tiβuja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">NCM-PN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PN-PN</TRANSL>
             <M id="S_kavalan_027_W04_M01">
                 <FORM kindOf="original">ti</FORM>
                 <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">NCM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PN</TRANSL>
             </M>
             <M id="S_kavalan_027_W04_M02">
                 <FORM kindOf="original">buya</FORM>
@@ -2583,6 +2921,7 @@
                 <FORM kindOf="standard">buya</FORM>
                 <PHON kindOf="standard">βuja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PN</TRANSL>
             </M>
         </W>
     </S>
@@ -2598,12 +2937,14 @@
             <FORM kindOf="standard">mana</FORM>
             <PHON kindOf="standard">mana</PHON>
             <TRANSL kindOf="original" xml:lang="eng">why</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">why</TRANSL>
             <M id="S_kavalan_028_W01_M01">
                 <FORM kindOf="original">mana</FORM>
                 <PHON kindOf="original">mana</PHON>
                 <FORM kindOf="standard">mana</FORM>
                 <PHON kindOf="standard">mana</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">why</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">why</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_028_W02">
@@ -2612,12 +2953,14 @@
             <FORM kindOf="standard">ala-an-su</FORM>
             <PHON kindOf="standard">aɾaansu</PHON>
             <TRANSL kindOf="original" xml:lang="eng">take-PV-2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">take-PV-2SG.ERG</TRANSL>
             <M id="S_kavalan_028_W02_M01">
                 <FORM kindOf="original">ala</FORM>
                 <PHON kindOf="original">aɾa</PHON>
                 <FORM kindOf="standard">ala</FORM>
                 <PHON kindOf="standard">aɾa</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">take</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">take</TRANSL>
             </M>
             <M id="S_kavalan_028_W02_M02">
                 <FORM kindOf="original">an</FORM>
@@ -2625,6 +2968,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_028_W02_M03">
                 <FORM kindOf="original">su</FORM>
@@ -2632,6 +2976,7 @@
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">2SG.ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2SG.ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_028_W03">
@@ -2640,12 +2985,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_028_W03_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_028_W04">
@@ -2654,12 +3001,14 @@
             <FORM kindOf="standard">kelisiw-ku</FORM>
             <PHON kindOf="standard">kəɾisiwku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">money-1SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money-1SG.GEN</TRANSL>
             <M id="S_kavalan_028_W04_M01">
                 <FORM kindOf="original">kelisiw</FORM>
                 <PHON kindOf="original">kəɾisiw</PHON>
                 <FORM kindOf="standard">kelisiw</FORM>
                 <PHON kindOf="standard">kəɾisiw</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">money</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money</TRANSL>
             </M>
             <M id="S_kavalan_028_W04_M02">
                 <FORM kindOf="original">ku</FORM>
@@ -2667,6 +3016,7 @@
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -2682,12 +3032,14 @@
             <FORM kindOf="standard">sudad</FORM>
             <PHON kindOf="standard">suɮaɮ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">book</TRANSL>
             <M id="S_kavalan_029_W01_M01">
                 <FORM kindOf="original">sudad</FORM>
                 <PHON kindOf="original">suɮaɮ</PHON>
                 <FORM kindOf="standard">sudad</FORM>
                 <PHON kindOf="standard">suɮaɮ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">book</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_029_W02">
@@ -2696,12 +3048,14 @@
             <FORM kindOf="standard">zau</FORM>
             <PHON kindOf="standard">[z|r]au</PHON>
             <TRANSL kindOf="original" xml:lang="eng">this</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">this</TRANSL>
             <M id="S_kavalan_029_W02_M01">
                 <FORM kindOf="original">zau</FORM>
                 <PHON kindOf="original">zau</PHON>
                 <FORM kindOf="standard">zau</FORM>
                 <PHON kindOf="standard">[z|r]au</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">this</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">this</TRANSL>
             </M>
         </W>
     </S>
@@ -2717,12 +3071,14 @@
             <FORM kindOf="standard">zau=ay</FORM>
             <PHON kindOf="standard">[z|r]auaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">this=REL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">this=REL</TRANSL>
             <M id="S_kavalan_030_W01_M01">
                 <FORM kindOf="original">zau</FORM>
                 <PHON kindOf="original">zau</PHON>
                 <FORM kindOf="standard">zau</FORM>
                 <PHON kindOf="standard">[z|r]au</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">this</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">this</TRANSL>
             </M>
             <M id="S_kavalan_030_W01_M02">
                 <FORM kindOf="original">=ay</FORM>
@@ -2730,6 +3086,7 @@
                 <FORM kindOf="standard">=ay</FORM>
                 <PHON kindOf="standard">aj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">REL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">REL</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_030_W02">
@@ -2738,12 +3095,14 @@
             <FORM kindOf="standard">sudad</FORM>
             <PHON kindOf="standard">suɮaɮ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">book</TRANSL>
             <M id="S_kavalan_030_W02_M01">
                 <FORM kindOf="original">sudad</FORM>
                 <PHON kindOf="original">suɮaɮ</PHON>
                 <FORM kindOf="standard">sudad</FORM>
                 <PHON kindOf="standard">suɮaɮ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">book</TRANSL>
             </M>
         </W>
     </S>
@@ -2759,12 +3118,14 @@
             <FORM kindOf="standard">sudad</FORM>
             <PHON kindOf="standard">suɮaɮ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">book</TRANSL>
             <M id="S_kavalan_031_W01_M01">
                 <FORM kindOf="original">sudad</FORM>
                 <PHON kindOf="original">suɮaɮ</PHON>
                 <FORM kindOf="standard">sudad</FORM>
                 <PHON kindOf="standard">suɮaɮ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">book</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_031_W02">
@@ -2773,12 +3134,14 @@
             <FORM kindOf="standard">zaku</FORM>
             <PHON kindOf="standard">[z|r]aku</PHON>
             <TRANSL kindOf="original" xml:lang="eng">1SG.POSS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             <M id="S_kavalan_031_W02_M01">
                 <FORM kindOf="original">zaku</FORM>
                 <PHON kindOf="original">zaku</PHON>
                 <FORM kindOf="standard">zaku</FORM>
                 <PHON kindOf="standard">[z|r]aku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.POSS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             </M>
         </W>
     </S>
@@ -2794,12 +3157,14 @@
             <FORM kindOf="standard">zaku=ay</FORM>
             <PHON kindOf="standard">[z|r]akuaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">1SG.POSS=REL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS=REL</TRANSL>
             <M id="S_kavalan_032_W01_M01">
                 <FORM kindOf="original">zaku</FORM>
                 <PHON kindOf="original">zaku</PHON>
                 <FORM kindOf="standard">zaku</FORM>
                 <PHON kindOf="standard">[z|r]aku</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">1SG.POSS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             </M>
             <M id="S_kavalan_032_W01_M02">
                 <FORM kindOf="original">=ay</FORM>
@@ -2807,6 +3172,7 @@
                 <FORM kindOf="standard">=ay</FORM>
                 <PHON kindOf="standard">aj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">REL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">REL</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_032_W02">
@@ -2815,12 +3181,14 @@
             <FORM kindOf="standard">sudad</FORM>
             <PHON kindOf="standard">suɮaɮ</PHON>
             <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">book</TRANSL>
             <M id="S_kavalan_032_W02_M01">
                 <FORM kindOf="original">sudad</FORM>
                 <PHON kindOf="original">suɮaɮ</PHON>
                 <FORM kindOf="standard">sudad</FORM>
                 <PHON kindOf="standard">suɮaɮ</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">book</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">book</TRANSL>
             </M>
         </W>
     </S>
@@ -2837,12 +3205,14 @@
             <FORM kindOf="standard">mayni=ay</FORM>
             <PHON kindOf="standard">majniaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">which=REL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">which=REL</TRANSL>
             <M id="S_kavalan_033_W01_M01">
                 <FORM kindOf="original">mayni</FORM>
                 <PHON kindOf="original">majni</PHON>
                 <FORM kindOf="standard">mayni</FORM>
                 <PHON kindOf="standard">majni</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">which</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">which</TRANSL>
             </M>
             <M id="S_kavalan_033_W01_M02">
                 <FORM kindOf="original">=ay</FORM>
@@ -2850,6 +3220,7 @@
                 <FORM kindOf="standard">=ay</FORM>
                 <PHON kindOf="standard">aj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">REL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">REL</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_033_W02">
@@ -2858,12 +3229,14 @@
             <FORM kindOf="standard">sunis</FORM>
             <PHON kindOf="standard">sunis</PHON>
             <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             <M id="S_kavalan_033_W02_M01">
                 <FORM kindOf="original">sunis</FORM>
                 <PHON kindOf="original">sunis</PHON>
                 <FORM kindOf="standard">sunis</FORM>
                 <PHON kindOf="standard">sunis</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">child</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_033_W03">
@@ -2872,12 +3245,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_033_W03_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_033_W04">
@@ -2886,12 +3261,14 @@
             <FORM kindOf="standard">tayta-an</FORM>
             <PHON kindOf="standard">tajtaan</PHON>
             <TRANSL kindOf="original" xml:lang="eng">see-PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">see-PV</TRANSL>
             <M id="S_kavalan_033_W04_M01">
                 <FORM kindOf="original">tayta</FORM>
                 <PHON kindOf="original">tajta</PHON>
                 <FORM kindOf="standard">tayta</FORM>
                 <PHON kindOf="standard">tajta</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">see</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">see</TRANSL>
             </M>
             <M id="S_kavalan_033_W04_M02">
                 <FORM kindOf="original">an</FORM>
@@ -2899,6 +3276,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_033_W05">
@@ -2907,12 +3285,14 @@
             <FORM kindOf="standard">ni</FORM>
             <PHON kindOf="standard">ni</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             <M id="S_kavalan_033_W05_M01">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_033_W06">
@@ -2921,12 +3301,14 @@
             <FORM kindOf="standard">imuy</FORM>
             <PHON kindOf="standard">imuj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PN</TRANSL>
             <M id="S_kavalan_033_W06_M01">
                 <FORM kindOf="original">imuy</FORM>
                 <PHON kindOf="original">imuj</PHON>
                 <FORM kindOf="standard">imuy</FORM>
                 <PHON kindOf="standard">imuj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PN</TRANSL>
             </M>
         </W>
     </S>
@@ -2943,12 +3325,14 @@
             <FORM kindOf="standard">zanitiana=ay</FORM>
             <PHON kindOf="standard">[z|r]anitianaaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">whose=REL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">whose=REL</TRANSL>
             <M id="S_kavalan_034_W01_M01">
                 <FORM kindOf="original">zanitiana</FORM>
                 <PHON kindOf="original">zanitiana</PHON>
                 <FORM kindOf="standard">zanitiana</FORM>
                 <PHON kindOf="standard">[z|r]anitiana</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">whose</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">whose</TRANSL>
             </M>
             <M id="S_kavalan_034_W01_M02">
                 <FORM kindOf="original">=ay</FORM>
@@ -2956,6 +3340,7 @@
                 <FORM kindOf="standard">=ay</FORM>
                 <PHON kindOf="standard">aj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">REL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">REL</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_034_W02">
@@ -2964,12 +3349,14 @@
             <FORM kindOf="standard">kelisiw</FORM>
             <PHON kindOf="standard">kəɾisiw</PHON>
             <TRANSL kindOf="original" xml:lang="eng">money</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money</TRANSL>
             <M id="S_kavalan_034_W02_M01">
                 <FORM kindOf="original">kelisiw</FORM>
                 <PHON kindOf="original">kəɾisiw</PHON>
                 <FORM kindOf="standard">kelisiw</FORM>
                 <PHON kindOf="standard">kəɾisiw</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">money</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">money</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_034_W03">
@@ -2978,12 +3365,14 @@
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             <M id="S_kavalan_034_W03_M01">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ABS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ABS</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_034_W04">
@@ -2992,12 +3381,14 @@
             <FORM kindOf="standard">ala-an=ay</FORM>
             <PHON kindOf="standard">aɾaanaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">take-PV=REL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">take-PV=REL</TRANSL>
             <M id="S_kavalan_034_W04_M01">
                 <FORM kindOf="original">ala</FORM>
                 <PHON kindOf="original">aɾa</PHON>
                 <FORM kindOf="standard">ala</FORM>
                 <PHON kindOf="standard">aɾa</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">take</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">take</TRANSL>
             </M>
             <M id="S_kavalan_034_W04_M02">
                 <FORM kindOf="original">an</FORM>
@@ -3005,6 +3396,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV</TRANSL>
             </M>
             <M id="S_kavalan_034_W04_M03">
                 <FORM kindOf="original">=ay</FORM>
@@ -3012,6 +3404,7 @@
                 <FORM kindOf="standard">=ay</FORM>
                 <PHON kindOf="standard">aj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">REL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">REL</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_034_W05">
@@ -3020,12 +3413,14 @@
             <FORM kindOf="standard">ni</FORM>
             <PHON kindOf="standard">ni</PHON>
             <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             <M id="S_kavalan_034_W05_M01">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">ERG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">ERG</TRANSL>
             </M>
         </W>
         <W id="S_kavalan_034_W06">
@@ -3034,12 +3429,14 @@
             <FORM kindOf="standard">utay</FORM>
             <PHON kindOf="standard">utaj</PHON>
             <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PN</TRANSL>
             <M id="S_kavalan_034_W06_M01">
                 <FORM kindOf="original">utay</FORM>
                 <PHON kindOf="original">utaj</PHON>
                 <FORM kindOf="standard">utay</FORM>
                 <PHON kindOf="standard">utaj</PHON>
                 <TRANSL kindOf="original" xml:lang="eng">PN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PN</TRANSL>
             </M>
         </W>
     </S>

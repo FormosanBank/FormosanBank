@@ -28,6 +28,11 @@ NTU_XML = (
 TIERS = ("original", "standard")
 
 
+# Under pytest-xdist (--dist loadgroup) every NTU file that loads the whole corpus
+# (1.5-1.7 GB each) runs on one worker, so they never load at the same time.
+pytestmark = pytest.mark.xdist_group("ntu")
+
+
 def _xml_files() -> list[Path]:
     return sorted(NTU_XML.rglob("*.xml"))
 

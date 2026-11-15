@@ -20,6 +20,8 @@ mkdir -p "$XML"
 cp -R "$CODEDOCS/pre_correction_snapshot/." "$XML/"
 "$PY" "$CODEDOCS/fix_duplicate_ids.py" --path "$XML"
 "$PY" "$CODEDOCS/reconcile_source.py" --path "$XML/Amis/Amis.xml"
+# Headword entries from the committed source sheet (defaults = the maintainer's rulings; see generate_headwords.py)
+"$PY" "$CODEDOCS/generate_headwords.py" --sheet "$CODEDOCS/source/virginia_fey_source.csv" --out "$XML/Amis/Amis_headwords.xml"
 "$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$XML"
 "$PY" "$BANK/QC/utilities/standardize.py" --corpora_path "$XML" \
     --tsv_path "$BANK/Orthographies/ConversionTables/Amis_Church_113.tsv" --target_column Xiuguluan

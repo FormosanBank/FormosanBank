@@ -1,0 +1,24 @@
+rule	vs_source	finding
+rule2	NTU-Kanakanavu	codes here but not in NTU-Kanakanavu: 1EXCL, 1INCL, 3AGT, AAV, AGT, AKI, AKU, ALA, ALI, ALU, ANI, AP, APA, ARU, AVbury, CLCT, CV, DUR, ERE, ESE, IA, INI, IPI, KE, KI
+rule2	Wild-Lehmann-Kanakanavu	codes here but not in Wild-Lehmann-Kanakanavu: 1EXCL, 1INCL, 1PL, 3AGT, 3PL, 3SG, AAV, AGT, AI, AKI, AKU, ALA, ALI, ALU, ANI, AP, APA, ARA, ARI, ARU, AVbury, CLCT, CV, DUR, ERE
+rule2	Song-Kanakanavu-Grammar	codes here but not in Song-Kanakanavu-Grammar: 1EXCL, 1INCL, 1PL, 1SG, 2PL, 2SG, 3AGT, 3PL, 3SG, AAV, AGT, AI, AKI, AKU, ALA, ALI, ALU, ANI, AP, APA, ARA, ARI, ARU, AV, AVbury
+rule3	-	NEUT (×390, single-source): carrier words 110; other-source glosses: no same-word hits in other sources
+rule3	-	AGT (×330, single-source): carrier words 116; other-source glosses: NTU-Kanakanavu:話=1SG.屬格×7; NTU-Kanakanavu:話=1SG.所有格×2; NTU-Kanakanavu:非實現=1SG.屬格×2; NTU-Kanakanavu:非實現=1SG.主格×1
+rule3	-	STA (×244, single-source): carrier words 62; other-source glosses: NTU-Kanakanavu:主焦-熱×1; NTU-Kanakanavu:主焦-煮熟=COS×1
+rule3	-	DUR (×230, single-source): carrier words 15; other-source glosses: NTU-Kanakanavu:當×9; NTU-Kanakanavu:FS×1; NTU-Kanakanavu:時候×1
+rule3	-	1INCL (×200, single-source): carrier words 60; other-source glosses: NTU-Kanakanavu:1PL.主格.包含×11; NTU-Kanakanavu:1IPL.主格×6; NTU-Kanakanavu:1PL.包含.斜格×4; NTU-Kanakanavu:我們×2
+rule3	-	1EXCL (×126, single-source): carrier words 40; other-source glosses: NTU-Kanakanavu:1PL.主格.包含×11; NTU-Kanakanavu:1PL.斜格.排除×10; NTU-Kanakanavu:1IPL.主格×6; NTU-Kanakanavu:1PL.主格×2
+rule3	-	CV (×114, single-source): carrier words 32; other-source glosses: no same-word hits in other sources
+rule3	-	ALI (×74, single-source): carrier words 13; other-source glosses: no same-word hits in other sources
+rule3	-	RECP (×54, single-source): carrier words 16; other-source glosses: NTU-Kanakanavu:主事焦點-重疊-話語×4; Song-Kanakanavu-Grammar:主事焦點-重疊-話語×4; NTU-Kanakanavu:主焦-重疊-話×1; NTU-Kanakanavu:主焦-講話×1
+rule3	-	ORD (×40, single-source): carrier words 14; other-source glosses: no same-word hits in other sources
+rule3	-	TANI (×33, single-source): carrier words 8; other-source glosses: no same-word hits in other sources
+rule3	-	RU (×32, single-source): carrier words 10; other-source glosses: no same-word hits in other sources
+rule3	-	PAKI (×28, single-source): carrier words 6; other-source glosses: no same-word hits in other sources
+rule3	-	IA (×20, single-source): carrier words 6; other-source glosses: no same-word hits in other sources
+rule3	-	KU (×18, single-source): carrier words 5; other-source glosses: no same-word hits in other sources
+rule3	-	SI (×16, single-source): carrier words 7; other-source glosses: no same-word hits in other sources
+rule3	-	PASA (×16, single-source): carrier words 5; other-source glosses: no same-word hits in other sources
+rule3	-	TANIAV (×15, single-source): carrier words 0; other-source glosses: no same-word hits in other sources
+rule3	-	ALA (×14, single-source): carrier words 7; other-source glosses: no same-word hits in other sources
+rule3	-	USU (×12, single-source): carrier words 6; other-source glosses: no same-word hits in other sources
