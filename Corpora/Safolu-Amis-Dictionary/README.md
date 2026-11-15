@@ -1,6 +1,6 @@
 # Safolu Amis Dictionary
 
-The Safolu Amis Dictionary is a collection of 50,483 Amis example sentences with Mandarin (Chinese) translations and 42,571 headword entries, drawn from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵). The data comes from the generated JSON of the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project (`docs/s`; see [amis.moedict.tw](https://amis.moedict.tw/)), checked against the dictionary's printed text.
+The Safolu Amis Dictionary is a collection of 50,480 Amis example sentences with Mandarin (Chinese) translations and 42,571 headword entries, drawn from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵). The data comes from the generated JSON of the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project (`docs/s`; see [amis.moedict.tw](https://amis.moedict.tw/)), checked against the dictionary's printed text.
 Safolu Kacaw Lalanges (Tsai Chung-Han) dictionary examples, distributed by
 the g0v Amis Moedict project. Virginia Fey and Poinsot are separate corpora.
 
@@ -48,9 +48,9 @@ identifies the committed snapshot (42,345 headword files, 57,267 senses, in the 
 The build emits 50,444 records: 49,522 from the 49,419 snapshot fields (20 fields
 are excluded and recorded; some fields yield two sentences), 4 examples added
 from the printed book, 918 from the editors' 914 added examples (1 is
-excluded and recorded; some yield two sentences), and 161 example sentences that the source has in a headword's
+excluded and recorded; some yield two sentences), and 158 example sentences that the source has in a headword's
 definition field ([CodeAndDocs/definition_examples.json](CodeAndDocs/definition_examples.json)). Shared dictionary
-dedup then removes 122 exact duplicates, leaving **50,483 sentences**. Published ids stay fixed; a second
+dedup then removes 122 exact duplicates, leaving **50,480 sentences**. Published ids stay fixed; a second
 reading of a source example keeps the base id and adds `-opt`, `-opt3`, etc.
 
 #### Audio
@@ -120,7 +120,7 @@ The build reads a committed snapshot of the source (49,419 example fields at `g0
 * **The dictionary editors' added examples.** At the same pin the editors have added 914 examples that the printed book does not have; they are published as 916 sentences, `S49424`–`S50337` (one empty field is excluded and recorded; 2 are exact duplicates).
 * **Spacing:** no space before `?` or `!`, and a space after them before the next word.
 * **Standard tier** via the Church-to-Ortho113 conversion table (Coastal), and **pronunciation** from the Church orthography table.
-* **Example sentences in the definition field.** 161 example sentences that the source has in a headword's definition field are added as `S50338`–`S50498`; where the source document broke one across paragraphs it is rebuilt from the pieces.
+* **Example sentences in the definition field.** 158 example sentences that the source has in a headword's definition field are added as `S50338`–`S50495`; where the source document broke one across paragraphs it is rebuilt from the pieces. Three more are already published with a different translation; theirs is added to the published sentence as `ver="alt"` (POL-025: S02224, S19851, S20552).
 * **Headword entries** from a committed snapshot of the headword fields (editors' version `4cb82539d`), with the decisions listed under "Headword entries" below.
 * **Duplicates** are removed only when both the standard text and the translations are identical (122 example sentences, 28 headword entries).
 
@@ -205,9 +205,9 @@ In order (`CodeAndDocs/generate_xml.sh`), all inside a temporary staging folder
      editors' added examples from `upstream_additions.json`, whose ordinals
      continue from 49424 (so their ids are `S49424`–`S50337`); they go through
      the same parsing, overrides and exclusions as the snapshot's fields. Last
-     come the 161 example sentences from definition fields
+     come the 158 example sentences from definition fields
      ([`definition_examples.json`](CodeAndDocs/definition_examples.json)),
-     `S50338`–`S50498`.
+     `S50338`–`S50495`; the 3 already published with a different translation add it to that sentence as `ver="alt"`.
    - It writes `XML/Amis/Safolu/amis_safolu_examples.xml` (original FORM and
      TRANSL only) with the `TEXT` attributes above. The excluded fields are
      written out only when `--report-dir <folder outside the repository>` is
@@ -268,7 +268,9 @@ entry gives its reason.
   that earlier builds gave to extra sentences, kept fixed.
 - [`definition_examples.json`](CodeAndDocs/definition_examples.json): the 161
   example sentences from definition fields, each with the text it came from;
-  a sentence already published with the same translation is not added again.
+  a sentence already published with the same translation is not added again,
+  and one published with a different translation adds it to that sentence as
+  `ver="alt"` (`alt_translation_of`; 3).
 
 #### Headword entries
 

@@ -1,5 +1,5 @@
 {
- "description": "Example sentences that the source has in a headword's definition field rather than its example field (rebuilt where the source document broke them across paragraphs), and the examples of headwords restored from the converter's input. Added after the other records with new ids; a sentence already published with the same translation is not added again. Maintainer rulings 2026-11-12 to 2026-11-15 (decision log, \"Dictionary headwords\"); the lists they come from are in CodeAndDocs/headwords/.",
+ "description": "Example sentences that the source has in a headword's definition field rather than its example field (rebuilt where the source document broke them across paragraphs), and the examples of headwords restored from the converter's input. Added after the other records with new ids; a sentence already published with the same translation is not added again, and one already published with a different translation adds that translation to the published sentence as ver=\"alt\" (POL-025). Maintainer rulings 2026-11-12 to 2026-11-15 (decision log, \"Dictionary headwords\"); the lists they come from are in CodeAndDocs/headwords/.",
  "upstream_commit": "4cb82539d7e51e7211e262d4dbaecaa41a772b2f",
  "additions": [
   {
@@ -261,7 +261,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "to hahodhoden a titi.把要烤的",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50366"
+   "alt_translation_of": "S02224"
   },
   {
    "entry": "micefisan",
@@ -270,7 +270,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "faelohay a tilid.那本新書突然被搶走了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50367"
+   "sentence_id": "S50366"
   },
   {
    "entry": "micepetay",
@@ -279,7 +279,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ko wawa to takora'.小孩正在捉青蛙。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50368"
+   "sentence_id": "S50367"
   },
   {
    "entry": "micipatan",
@@ -288,7 +288,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ako koya makapahay a sasing.我把那張漂亮的照片貼上去了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50369"
+   "sentence_id": "S50368"
   },
   {
    "entry": "micipohan",
@@ -297,7 +297,7 @@
    "from": "definition field",
    "source_text": "Micipohan to ko laway ako.我的臉化過妝了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50370"
+   "sentence_id": "S50369"
   },
   {
    "entry": "micocokay",
@@ -306,7 +306,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ko ising i kayam ako to rinom.醫生在我手上打針了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50371"
+   "sentence_id": "S50370"
   },
   {
    "entry": "midongdong",
@@ -315,7 +315,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "lilis no riyar. 沿著海岸走。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50372"
+   "sentence_id": "S50371"
   },
   {
    "entry": "mifatisan",
@@ -324,7 +324,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ko sapa'orip a kakaenen.已將救濟糧分配到位了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50373"
+   "sentence_id": "S50372"
   },
   {
    "entry": "mifolfolay",
@@ -333,7 +333,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "kako to 'aol.我在砍碎竹子。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50374"
+   "sentence_id": "S50373"
   },
   {
    "entry": "mifowakay",
@@ -342,7 +342,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ko mitangtangan a holo i sasioyan.在鍋裡煮開的米飯冒著泡沫了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50375"
+   "sentence_id": "S50374"
   },
   {
    "entry": "miletekan",
@@ -351,7 +351,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "koya ta'angayay a kilang.我把那一棵大樹砍伐了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50376"
+   "sentence_id": "S50375"
   },
   {
    "entry": "milietanan",
@@ -360,7 +360,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "tawki ko matayalay a tamdaw.老闆盤剝的是幹活人的錢。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50377"
+   "sentence_id": "S50376"
   },
   {
    "entry": "miloloday",
@@ -369,7 +369,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "kako to tana.我在捲毯子。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50378"
+   "sentence_id": "S50377"
   },
   {
    "entry": "milomekan",
@@ -378,7 +378,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "milomekan koya waco a miseti'.不可打狗。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50379"
+   "sentence_id": "S50378"
   },
   {
    "entry": "milomekay",
@@ -387,7 +387,7 @@
    "from": "definition field",
    "source_text": "Milomekay ko wawa to 'oner.孩子在狠狠地打蛇。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50380"
+   "sentence_id": "S50379"
   },
   {
    "entry": "mimokonay",
@@ -396,7 +396,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "to fongoh ira.我在打他的頭。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50381"
+   "sentence_id": "S50380"
   },
   {
    "entry": "mingidipay",
@@ -405,7 +405,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "cinira takowanan i aotal.他在屋外偷看我了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50382"
+   "sentence_id": "S50381"
   },
   {
    "entry": "mingihngihay",
@@ -414,7 +414,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "cinira to kaying.他在",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50383"
+   "sentence_id": "S50382"
   },
   {
    "entry": "mingohahay",
@@ -423,7 +423,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "kako ci Alikan.我",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50384"
+   "sentence_id": "S50383"
   },
   {
    "entry": "mingosngosan",
@@ -432,7 +432,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "wawa ko saytaw.孩子把蘿蔔生吃了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50385"
+   "sentence_id": "S50384"
   },
   {
    "entry": "minokayan",
@@ -441,7 +441,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ako koya niyaro' niyam i mamihecaan.我去年回去我們村過。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50386"
+   "sentence_id": "S50385"
   },
   {
    "entry": "mipa'oripay",
@@ -450,7 +450,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "koya maomahay to 'oner.有個農夫救了一條蛇。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50387"
+   "sentence_id": "S50386"
   },
   {
    "entry": "mipacemotan",
@@ -459,7 +459,7 @@
    "from": "definition field",
    "source_text": "Mipacemotan ako kora 'enip.那隻鱉被我釣上來了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50388"
+   "sentence_id": "S50387"
   },
   {
    "entry": "mipacician",
@@ -468,7 +468,7 @@
    "from": "definition field",
    "source_text": "Mipacician ira kami a maomah.我們在他強迫之下勞動。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50389"
+   "sentence_id": "S50388"
   },
   {
    "entry": "mipacidalan",
@@ -477,7 +477,7 @@
    "from": "definition field",
    "source_text": "Mipacidalan kora panay.把這些稻穀拿去曬太陽。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50390"
+   "sentence_id": "S50389"
   },
   {
    "entry": "mipacocoan",
@@ -486,7 +486,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ako ko wawa itawanan.我在別人那裡給孩子餵過奶了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50391"
+   "sentence_id": "S50390"
   },
   {
    "entry": "mipadihekoan",
@@ -495,7 +495,7 @@
    "from": "definition field",
    "source_text": "Mipadihekoan ko pitilidan i tiposan.在冬天我們給學校送暖氣了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50392"
+   "sentence_id": "S50391"
   },
   {
    "entry": "mipafeliay",
@@ -504,7 +504,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "kako to fiyaw to tamako ato 'icep.我給我的鄰居香煙和檳榔。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50393"
+   "sentence_id": "S50392"
   },
   {
    "entry": "mipakaenengay",
@@ -513,7 +513,7 @@
    "from": "definition field",
    "source_text": "Mipakaenengay ko wawa tora mimingay a 'ayam.孩子看得見那隻小鳥了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50394"
+   "sentence_id": "S50393"
   },
   {
    "entry": "mipalifonay",
@@ -522,7 +522,7 @@
    "from": "definition field",
    "source_text": "Mipalifonay cinira kamiyanan.他給我們發工錢了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50395"
+   "sentence_id": "S50394"
   },
   {
    "entry": "mipalikingway",
@@ -531,7 +531,7 @@
    "from": "definition field",
    "source_text": "Mipalikingway cinira to kohaw.他在湯裡放辣椒了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50396"
+   "sentence_id": "S50395"
   },
   {
    "entry": "mipapica'edongay",
@@ -540,7 +540,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "cinira to widang ira to kiping.他交代他的朋友穿大衣了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50397"
+   "sentence_id": "S50396"
   },
   {
    "entry": "mipapidipotay",
@@ -549,7 +549,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "cinira takowanan toya malitengay.他交代我去關照那個老人了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50398"
+   "sentence_id": "S50397"
   },
   {
    "entry": "mipapinokayan",
@@ -558,7 +558,7 @@
    "from": "definition field",
    "source_text": "Mipapinokayan no kakitaan ko kapah i sefi no niyaro'.部落領袖叫青年組回去村裡的集會所了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50399"
+   "sentence_id": "S50398"
   },
   {
    "entry": "mipapiparacan",
@@ -567,7 +567,7 @@
    "from": "definition field",
    "source_text": "Mipapiparacan ako cinira a mafuti'.我讓人干擾他睡覺的。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50400"
+   "sentence_id": "S50399"
   },
   {
    "entry": "mipapiradomay",
@@ -576,7 +576,7 @@
    "from": "definition field",
    "source_text": "Mipapiradomay ci ina to kaka ako to nanom.媽媽叫我姐姐去挑水了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50401"
+   "sentence_id": "S50400"
   },
   {
    "entry": "mipapisalamaay",
@@ -585,7 +585,7 @@
    "from": "definition field",
    "source_text": "Mipapisalamaay cinira kamiyanan. 他讓我們玩耍了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50402"
+   "sentence_id": "S50401"
   },
   {
    "entry": "mipapisanga'ay",
@@ -594,7 +594,7 @@
    "from": "definition field",
    "source_text": "Mipapisanga'ay ci wama ciKolasan to sapidimata to nanom a paetang.父親請Kolas去造挑水用的水桶了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50403"
+   "sentence_id": "S50402"
   },
   {
    "entry": "mipapita'elifay",
@@ -603,7 +603,7 @@
    "from": "definition field",
    "source_text": "Mipapita'elifay kako caniraan tora rarengosan.我讓他們越過草地了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50404"
+   "sentence_id": "S50403"
   },
   {
    "entry": "miparingatan",
@@ -612,7 +612,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ko sasing iso.你的照片貼上了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50405"
+   "sentence_id": "S50404"
   },
   {
    "entry": "mirakatay",
@@ -621,7 +621,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "canira i lalan.他們在路上行走。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50406"
+   "sentence_id": "S50405"
   },
   {
    "entry": "mirikap",
@@ -630,7 +630,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ko mato'asay ato faki.老人和叔",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50407"
+   "sentence_id": "S50406"
   },
   {
    "entry": "misahorod",
@@ -639,7 +639,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "anini a dadaya i sefi. 我們今晚在集會所有聚會。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50408"
+   "sentence_id": "S50407"
   },
   {
    "entry": "misakacica'ay",
@@ -648,7 +648,7 @@
    "from": "definition field",
    "source_text": "Misakacica'ay ko fanawlan anini. 今天整部落的人出去採橡樹汁。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50409"
+   "sentence_id": "S50408"
   },
   {
    "entry": "misaki'emeray",
@@ -657,7 +657,7 @@
    "from": "definition field",
    "source_text": "Misaki'emeray canira a mikangkang.他們在使勁地犁地了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50410"
+   "sentence_id": "S50409"
   },
   {
    "entry": "misiyak",
@@ -666,7 +666,7 @@
    "from": "definition field",
    "source_text": "Misiyak to panay a mipawali.把稻穀鋪散在地曬乾。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50411"
+   "sentence_id": "S50410"
   },
   {
    "entry": "mitepikan",
@@ -675,7 +675,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "kaka ko sawfan ako. 姐姐把我的被子疊好了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50412"
+   "sentence_id": "S50411"
   },
   {
    "entry": "miti'ti'",
@@ -684,7 +684,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "pakalongay ko mama no kapah. 年齡階級的級長鞭打最下面的階級。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50413"
+   "sentence_id": "S50412"
   },
   {
    "entry": "moleso'",
@@ -693,7 +693,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "nanom nani pa'etang.水從水桶滲",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50414"
+   "sentence_id": "S50413"
   },
   {
    "entry": "natestesay",
@@ -702,7 +702,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ko riko' iso. 你的衣服很漂亮",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50415"
+   "sentence_id": "S50414"
   },
   {
    "entry": "natestesay",
@@ -711,7 +711,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "Tanestesay a tosya. 美觀的汽",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50416"
+   "sentence_id": "S50415"
   },
   {
    "entry": "ngangayafan",
@@ -720,7 +720,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "a tomireng i ngangayafan. 我站",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50417"
+   "sentence_id": "S50416"
   },
   {
    "entry": "omi",
@@ -729,7 +729,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "to ko falo nona omi.梅花開花了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50418"
+   "sentence_id": "S50417"
   },
   {
    "entry": "pa'oning",
@@ -738,7 +738,7 @@
    "from": "definition field",
    "source_text": "Pa'oning kiso to pising ako. 你讓我丟面子。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50419"
+   "sentence_id": "S50418"
   },
   {
    "entry": "pakairaay",
@@ -747,7 +747,7 @@
    "from": "definition field",
    "source_text": "kora 'ayam a ma^efer. 那隻鳥從那裏飛行了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50420"
+   "sentence_id": "S50419"
   },
   {
    "entry": "palaylayay",
@@ -756,7 +756,7 @@
    "from": "definition field",
    "source_text": "Palaylayay ko kapah nani riyar tayra i sefi.年輕人跳著雨傘舞回到集會所。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50421"
+   "sentence_id": "S50420"
   },
   {
    "entry": "papipafeliay",
@@ -765,7 +765,7 @@
    "from": "definition field",
    "source_text": "Papipafeliay cinira takowanan to riko'. 他託人給我衣服了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50422"
+   "sentence_id": "S50421"
   },
   {
    "entry": "papiradomay",
@@ -774,7 +774,7 @@
    "from": "definition field",
    "source_text": "Papiradomay caniraan i tefon. 叫她們去井邊打水了。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50423"
+   "sentence_id": "S50422"
   },
   {
    "entry": "parawisen",
@@ -783,7 +783,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "kako tora mica'itan i layal a sasifin. 給我把晾在竹竿上的毛巾勾取下來。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50424"
+   "sentence_id": "S50423"
   },
   {
    "entry": "pi'eso",
@@ -792,7 +792,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "pi'eso no tao.不要被人教唆。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50425"
+   "sentence_id": "S50424"
   },
   {
    "entry": "sacacacaken",
@@ -801,7 +801,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ko konga, nga' komaen. 把蕃",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50426"
+   "sentence_id": "S50425"
   },
   {
    "entry": "safirofirosa",
@@ -810,7 +810,7 @@
    "from": "definition field",
    "source_text": "Safirofirosa a milaheci to tayal. 趕著完工。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50427"
+   "sentence_id": "S50426"
   },
   {
    "entry": "saka'eca",
@@ -819,7 +819,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ka samangah no tao. 我學習知",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50428"
+   "sentence_id": "S50427"
   },
   {
    "entry": "saka^epedsa",
@@ -828,7 +828,7 @@
    "from": "definition field",
    "source_text": "Saka^epedasa kona parok kapaen.這個棉花摸起來有柔軟的感覺。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50429"
+   "sentence_id": "S50428"
   },
   {
    "entry": "sako^esan",
@@ -837,7 +837,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "sa ko 'odal.蜂蜜很甜。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50430"
+   "sentence_id": "S50429"
   },
   {
    "entry": "sako^esan",
@@ -846,7 +846,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ko sowal ningra.他很會說",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50431"
+   "sentence_id": "S50430"
   },
   {
    "entry": "sapalisomad",
@@ -855,7 +855,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "faloco' konini a radiw.這首歌使",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50432"
+   "sentence_id": "S50431"
   },
   {
    "entry": "sapipatawyiw",
@@ -864,7 +864,7 @@
    "from": "definition field",
    "source_text": "Sapipatawyiw to dateng.菜給一點醬油。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50433"
+   "sentence_id": "S50432"
   },
   {
    "entry": "sapipatawyiwaw",
@@ -873,7 +873,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ciina amitangtang to foting.媽",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50434"
+   "sentence_id": "S50433"
   },
   {
    "entry": "sapipeloc",
@@ -882,7 +882,7 @@
    "from": "definition field",
    "source_text": "sapipeloc to pitaw. 鬆脫鋤頭用的。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50435"
+   "sentence_id": "S50434"
   },
   {
    "entry": "sayal",
@@ -891,7 +891,7 @@
    "from": "definition field",
    "source_text": "Sayal to roray.休息。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50436"
+   "sentence_id": "S50435"
   },
   {
    "entry": "tadengalay",
@@ -900,7 +900,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "kalikien a lomowad ! 天亮了，快",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50437"
+   "sentence_id": "S50436"
   },
   {
    "entry": "to^eman",
@@ -909,7 +909,7 @@
    "from": "definition field (rebuilt across the source's paragraph breaks)",
    "source_text": "ko romi'ad, minokay to kita. 天暗了，我們回去吧。",
    "ruling": "s-embedded \"Move to the examples file\"; r3-embedded-rebuilt \"Add the rebuilt sentences\"",
-   "sentence_id": "S50438"
+   "sentence_id": "S50437"
   },
   {
    "entry": "cacedo'en",
@@ -918,7 +918,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "riko'. 要浸泡的衣服。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50439"
+   "sentence_id": "S50438"
   },
   {
    "entry": "canglalan a folad",
@@ -927,7 +927,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "a folad. 滿月的月亮是圓的。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50440"
+   "sentence_id": "S50439"
   },
   {
    "entry": "ciem",
@@ -936,7 +936,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "demak. 他常噘嘴凝思這件事。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50441"
+   "sentence_id": "S50440"
   },
   {
    "entry": "cikang",
@@ -945,7 +945,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "talo'an. 工寮呈馬鞍形。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50442"
+   "sentence_id": "S50441"
   },
   {
    "entry": "co^eco",
@@ -954,7 +954,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "a mararamod.(未經父母同意)結婚、同居。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50443"
+   "sentence_id": "S50442"
   },
   {
    "entry": "honi saho",
@@ -963,7 +963,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "a palowad. 剛剛出發。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50444"
+   "sentence_id": "S50443"
   },
   {
    "entry": "kaci'emi",
@@ -972,7 +972,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "a mipaloma. 帶上麥子到田裡種。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50445"
+   "sentence_id": "S50444"
   },
   {
    "entry": "kandaw",
@@ -981,7 +981,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "killing.樹葉是綠色的。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50446"
+   "sentence_id": "S50445"
   },
   {
    "entry": "karasmasan",
@@ -990,7 +990,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "papacem. 下毛毛雨的早晨。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50447"
+   "sentence_id": "S50446"
   },
   {
    "entry": "karipa'an",
@@ -999,7 +999,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "a dateng. 我們擔心我們種的菜讓別人踩了。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50448"
+   "sentence_id": "S50447"
   },
   {
    "entry": "ki'edaw",
@@ -1008,7 +1008,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "ki'edaw. 長三跨步。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50449"
+   "sentence_id": "S50448"
   },
   {
    "entry": "maco^erong",
@@ -1017,7 +1017,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "kasoy itini.木材堆積在這裡。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50450"
+   "sentence_id": "S50449"
   },
   {
    "entry": "mafesi",
@@ -1026,7 +1026,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "fanges ningra.他的皮膚起泡了。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50451"
+   "sentence_id": "S50450"
   },
   {
    "entry": "mala'aliay",
@@ -1035,7 +1035,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "cikacaw. 我和Kacaw是連襟。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50452"
+   "sentence_id": "S50451"
   },
   {
    "entry": "mararokoh",
@@ -1044,7 +1044,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "iloma' saan. 那位年輕人得自閉症整天窩在家裡。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50453"
+   "sentence_id": "S50452"
   },
   {
    "entry": "masaroma",
@@ -1053,7 +1053,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "romi'ad. 天氣要變了。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50454"
+   "sentence_id": "S50453"
   },
   {
    "entry": "mata'osay",
@@ -1062,7 +1062,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "paliding.牛車的前頭翹起來了。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50455"
+   "alt_translation_of": "S19851"
   },
   {
    "entry": "matera",
@@ -1071,7 +1071,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "mata.眼睛被雨水滴了。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50456"
+   "sentence_id": "S50454"
   },
   {
    "entry": "mawakangay",
@@ -1080,7 +1080,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "cingra. 他仰面仆倒下來了。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50457"
+   "alt_translation_of": "S20552"
   },
   {
    "entry": "mi^epod",
@@ -1089,7 +1089,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "nani tosiya.從車上把行李卸下。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50458"
+   "sentence_id": "S50455"
   },
   {
    "entry": "micamel",
@@ -1098,7 +1098,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "ato tafok. 把水泥和沙混合攪拌。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50459"
+   "sentence_id": "S50456"
   },
   {
    "entry": "midamayay",
@@ -1107,7 +1107,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "cinira.她在採集青苔。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50460"
+   "sentence_id": "S50457"
   },
   {
    "entry": "miferot",
@@ -1116,7 +1116,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "nira.他突然離去。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50461"
+   "sentence_id": "S50458"
   },
   {
    "entry": "mihedong",
@@ -1125,7 +1125,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "to niyaro'.年輕人保護部落。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50462"
+   "sentence_id": "S50459"
   },
   {
    "entry": "mihoka'",
@@ -1134,7 +1134,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "no tamina.把船隻的繩索鬆綁。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50463"
+   "sentence_id": "S50460"
   },
   {
    "entry": "mika'eka",
@@ -1143,7 +1143,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "cingra.他呵呵大笑。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50464"
+   "sentence_id": "S50461"
   },
   {
    "entry": "mikahotay",
@@ -1152,7 +1152,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "hemay.她用手抓糯米飯來吃。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50465"
+   "sentence_id": "S50462"
   },
   {
    "entry": "mikoliniw",
@@ -1161,7 +1161,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "to mami'. 那小孩去偷竊橘子。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50466"
+   "sentence_id": "S50463"
   },
   {
    "entry": "milolongan",
@@ -1170,7 +1170,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "lamelo.把小米穗捆起來了。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50467"
+   "sentence_id": "S50464"
   },
   {
    "entry": "mimit",
@@ -1179,7 +1179,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "ningra.他拿了一小撮。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50468"
+   "sentence_id": "S50465"
   },
   {
    "entry": "minayat",
@@ -1188,7 +1188,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "romi'ad.延長時間。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50469"
+   "sentence_id": "S50466"
   },
   {
    "entry": "mipadekay",
@@ -1197,7 +1197,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "kiso takowanan.你對我偏心了。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50470"
+   "sentence_id": "S50467"
   },
   {
    "entry": "misakafooy",
@@ -1206,7 +1206,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "ningra.他是製陶工藝人。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50471"
+   "sentence_id": "S50468"
   },
   {
    "entry": "mitamekan",
@@ -1215,7 +1215,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "no siri. 把羊肉烤了。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50472"
+   "sentence_id": "S50469"
   },
   {
    "entry": "mitapayan",
@@ -1224,7 +1224,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "ko tamako. 煙葉烘乾了。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50473"
+   "sentence_id": "S50470"
   },
   {
    "entry": "mitodohan",
@@ -1233,7 +1233,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "koya lotok. 把那片森林焚燒了。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50474"
+   "sentence_id": "S50471"
   },
   {
    "entry": "mitoroy",
@@ -1242,7 +1242,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "no tamako.我把香煙的一截遞給他。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50475"
+   "sentence_id": "S50472"
   },
   {
    "entry": "mosikiw",
@@ -1251,7 +1251,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "ko pinengneng.有偏見。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50476"
+   "sentence_id": "S50473"
   },
   {
    "entry": "omi'",
@@ -1260,7 +1260,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "wama.父親的仁慈。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50477"
+   "sentence_id": "S50474"
   },
   {
    "entry": "paca'edong",
@@ -1269,7 +1269,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "paliding.把牛套到車軛裡。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50478"
+   "sentence_id": "S50475"
   },
   {
    "entry": "pangkiw",
@@ -1278,7 +1278,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "a romi'ad. 半天。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50479"
+   "sentence_id": "S50476"
   },
   {
    "entry": "paonol",
@@ -1287,7 +1287,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "to demak.放任他去做。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50480"
+   "sentence_id": "S50477"
   },
   {
    "entry": "pasatimolay",
@@ -1296,7 +1296,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "futi'. 向南長眠（一般指瀕危的彌留者或死人）。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50481"
+   "sentence_id": "S50478"
   },
   {
    "entry": "patiwa",
@@ -1305,7 +1305,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "tara tokos.舅舅到山上時會請樹神保佑。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50482"
+   "sentence_id": "S50479"
   },
   {
    "entry": "pikilim",
@@ -1314,7 +1314,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "fitangal kakaenan（kakaenen） no mita ! 去找木瓜我們充饑吧！",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50483"
+   "sentence_id": "S50480"
   },
   {
    "entry": "pisiyakan",
@@ -1323,7 +1323,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "panay itini.這裡是曬穀場。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50484"
+   "sentence_id": "S50481"
   },
   {
    "entry": "pitoay",
@@ -1332,7 +1332,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "toki. 七點鐘。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50485"
+   "sentence_id": "S50482"
   },
   {
    "entry": "sa'ong",
@@ -1341,7 +1341,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "ama'orad. 好像要下雨了要帶雨傘。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50486"
+   "sentence_id": "S50483"
   },
   {
    "entry": "sacaniis",
@@ -1350,7 +1350,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "ko futi'.睡不安心。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50487"
+   "sentence_id": "S50484"
   },
   {
    "entry": "sacaniis",
@@ -1359,7 +1359,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "no tamina.風浪大時船行上下顛簸。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50488"
+   "sentence_id": "S50485"
   },
   {
    "entry": "saciker",
@@ -1368,7 +1368,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "konini. 這是工寮門閂。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50489"
+   "sentence_id": "S50486"
   },
   {
    "entry": "safaw",
@@ -1377,7 +1377,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "safaw. 二十三。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50490"
+   "sentence_id": "S50487"
   },
   {
    "entry": "sakahemaw",
@@ -1386,7 +1386,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "ko faloco'.感到很輕鬆。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50491"
+   "sentence_id": "S50488"
   },
   {
    "entry": "sakinafa",
@@ -1395,7 +1395,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "sakinafa. 揹孩子的揹帶。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50492"
+   "sentence_id": "S50489"
   },
   {
    "entry": "so^etelay",
@@ -1404,7 +1404,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "rarengosan. 這草地潮濕了。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50493"
+   "sentence_id": "S50490"
   },
   {
    "entry": "warawar",
@@ -1413,7 +1413,7 @@
    "from": "translation that started with Amis text (rebuilt across the source's paragraph breaks)",
    "source_text": "harateng.心亂如麻。",
    "ruling": "r3-amis-tails \"Rebuild them as example sentences\"; r5-tails; r6-tails-held",
-   "sentence_id": "S50494"
+   "sentence_id": "S50491"
   },
   {
    "entry": "mimingay",
@@ -1422,7 +1422,7 @@
    "from": "2015 text dict/13-M-3.txt lines 778-780; the converter input lost \"小了，很小了。Mimingay ko\" (r6-tails-held RULED)",
    "source_text": "",
    "ruling": "r6-tails-held",
-   "sentence_id": "S50495"
+   "sentence_id": "S50492"
   },
   {
    "entry": "mica^emot",
@@ -1431,7 +1431,7 @@
    "from": "converter input (r7-missed-lost RULED)",
    "source_text": "",
    "ruling": "r7-missed-lost \"Publish them from the converter's input\"; r8-lost-show",
-   "sentence_id": "S50496"
+   "sentence_id": "S50493"
   },
   {
    "entry": "nipalimo'ot",
@@ -1440,7 +1440,7 @@
    "from": "converter input (r7-missed-lost RULED)",
    "source_text": "",
    "ruling": "r7-missed-lost \"Publish them from the converter's input\"; r8-lost-show",
-   "sentence_id": "S50497"
+   "sentence_id": "S50494"
   },
   {
    "entry": "nipa'orip",
@@ -1449,7 +1449,7 @@
    "from": "converter input (r7-missed-lost RULED)",
    "source_text": "",
    "ruling": "r7-missed-lost \"Publish them from the converter's input\"; r8-lost-show",
-   "sentence_id": "S50498"
+   "sentence_id": "S50495"
   }
  ]
 }

@@ -13,6 +13,7 @@ work that should not block publishing Safolu.
 from __future__ import annotations
 
 import argparse
+import dataclasses
 import json
 import re
 from pathlib import Path
@@ -393,7 +394,15 @@ def safolu_corpus():
     from_additions = [r for r in records if r.notes["source_ordinal"] >= first_addition]
     for record in from_additions:
         record.notes["upstream_addition_commit"] = UPSTREAM_COMMIT
-    return corpus, from_snapshot + printed_additions() + from_additions + definition_examples(), rejected
+    records = from_snapshot + printed_additions() + from_additions
+    new, alts = definition_examples()
+    # POL-025: a definition-field example already published with a different translation adds that translation to
+    # the published sentence as ver="alt" instead of becoming a second S
+    position = {r.sentence_id: i for i, r in enumerate(records)}
+    for target, translation in alts:
+        i = position[target]
+        records[i] = dataclasses.replace(records[i], translations=list(records[i].translations) + [translation])
+    return corpus, records + new, rejected
 
 
 def printed_additions(path: Path = PRINTED_ADDITIONS_PATH) -> list[ExampleRecord]:
@@ -415,13 +424,17 @@ def printed_additions(path: Path = PRINTED_ADDITIONS_PATH) -> list[ExampleRecord
     return added
 
 
-def definition_examples(path: Path = DEFINITION_EXAMPLES_PATH) -> list[ExampleRecord]:
-    """Example sentences the source has in a headword's definition field (see definition_examples.json), appended
-    after every other record with new ids. The headword file (headwords/generate_headwords.py) leaves them out of
-    the headword translations."""
+def definition_examples(path: Path = DEFINITION_EXAMPLES_PATH) -> tuple[list[ExampleRecord], list[tuple[str, Translation]]]:
+    """Example sentences the source has in a headword's definition field (see definition_examples.json): new
+    sentences appended after every other record with new ids, and (alt_translation_of) translations to add to an
+    already published sentence. The headword file (headwords/generate_headwords.py) leaves them out of the headword
+    translations."""
     payload = json.loads(path.read_text(encoding="utf-8"))
-    added = []
+    added, alts = [], []
     for item in payload["additions"]:
+        if "alt_translation_of" in item:
+            alts.append((item["alt_translation_of"], Translation("zho", item["translation"], ver="alt")))
+            continue
         added.append(ExampleRecord(
             sentence_id=item["sentence_id"],
             source_file=f"docs/s/{item['entry']}.json@{payload['upstream_commit']}",
@@ -433,7 +446,7 @@ def definition_examples(path: Path = DEFINITION_EXAMPLES_PATH) -> list[ExampleRe
             raw_example="",
             notes={"source_ordinal": None, "from": item["from"], "upstream_commit": payload["upstream_commit"]},
         ))
-    return added
+    return added, alts
 
 
 def main():
