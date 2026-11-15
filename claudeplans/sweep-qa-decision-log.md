@@ -25161,3 +25161,21 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
 - Flagged to the maintainer (his call, analysis side): the 2026-09-28 ruling "-an nominalizations count as
   locative voice" for voice COUNTING now has source-side counter-evidence for Saisiyat (many -an words are
   plain lexical nouns). Recorded in Glossing/OutstandingIssues.md with the related -an items.
+
+### 2026-11-15 (cont. 11) — RULED: M9 CFACT; sep rows; become→COS; sepn6 flip
+- M9 — his note: "Register CFACT and map to that. Put in our todos that we anticipate this showing up in
+  future for Rukai `ni-` and possibly Truku, Atayal, and Thao. While we are at it, do the morphemes the
+  grammars mention as counterfactual show up anywhere in our corpora?" → CFACT registered; NTU HYP ×92 +
+  假設 ×94 → CFACT; dictionaries +CFACT; anticipation todo written. Corpus-search answer: markers barely
+  present, never glossed counterfactual (Seediq nasi = 'pear' ×23 + 條件詞/如果 ×11; Saisiyat naw ×7
+  條件詞/只/好像; Rukai ni ×12 mixed, non-Mantauran; Atayal aki ×1 在; Truku naa none).
+- sep19/20/23 — become → COS: Bunun+Kanakanavu overrides (eng become; zho 變成/變) + HPS become ×130 row.
+  NTU 2,040 + HPS 264 changed lines, zero outside targets; ara take/go homophony todo; 33 tests pass.
+- Separator rows recorded: sep01–18 yes; sep25 yes (+todo; all 'have' = pu-, his question answered);
+  sep38/39 yes; sepn1–5+7 no; **sepn6 (COS phase clitics) flipped by him to separator=YES** — flagged once
+  that this also separates =cu/=in/=ti tokens via the COS handle, same as the become-affixes.
+- sep27 ("Why do they say this is n/a?") answered: sheet's n/a = "No minimal pairs found", (yes) = their
+  default-separate. sep37 ("Is this an imperative??") answered: yes, source's imp code, →IMP.
+- U2 code-proposal table posted (12 rows): PROPR (have), CMPR (more, his sep26), his COS suggestion for
+  make (flagged: denominalizer), REV (remove), keep-lexical for go.to/put/via/do.at/emerge/apart/pretend,
+  pair pending. Open rows: sep21/22/24 + the U2 table.

@@ -116,3 +116,20 @@ the bottom with their ruling.
   受格 (above). The ANALYSIS-side counting rule "-an nominalizations count as
   locative voice" (maintainer, 2026-09-28, austronesian-voice repo) is a separate
   decision that this email bears on for Saisiyat.
+
+- **CFACT (counterfactual) — registered 2026-11-15 (card M9: "Register CFACT and map
+  to that. Put in our todos that we anticipate this showing up in future for Rukai
+  `ni-` and possibly Truku, Atayal, and Thao.").** Currently only NTU Tsou nte/n
+  (HYP/假設) maps to it. The grammars' other counterfactual markers are barely in
+  our corpora and never glossed as counterfactual: Rukai ni- (Mantauran grammar PDF
+  105; NTU Rukai ni ×12 = NI/名物化/完成貌/mixed — different dialect), Truku naa
+  「本來會」 (no corpus hits; nasi in Seediq data = 'pear' ×23 + 條件詞/如果 ×11),
+  Atayal aki (×1, glossed 在), Saisiyat naw (×7: 條件詞/只/好像), Thao (no affix —
+  conditional constructions). Revisit when such tokens appear.
+- **Kanakanavu ara- homophony (sep20, 2026-11-15: "The 'take' and 'go' entries go
+  into the todos in glossing folder.").** ara 'become' ×82 → COS (done); the same
+  form is glossed take ×61 and go ×12 — lexical homophones left as-is; check when
+  standardizing Kanakanavu lexical glosses.
+- **HPS 'have' (pu-) ×220 — separator yes (sep25) + "this needs to go on todo list
+  for standardization."** All 'have' tokens are the one morpheme pu-/p-u (verified);
+  code proposal (PROPR?) on the page's U2 table.

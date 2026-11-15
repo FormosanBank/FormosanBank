@@ -94,6 +94,7 @@ MAZA	234	UNDECIDED		undocumented; definition needed
 EXCL	228	KEEP	EXCL	Leipzig: listed; standard tier keeps it	zho twin: 排除×209; 主格×2	
 I	206	UNDECIDED		undocumented; definition needed	zho twin: 我×8	
 INVIS	200	UNDECIDED		undocumented; definition needed	zho twin: 不可見×200	
+become	170	KEEP		lexical gloss elsewhere; Bunun/Kanakanavu tokens ruled on sep19/sep20		"Bunun→COS (sep19/sep20 2026-11-15: ""Needs to be mapped to COS, and then made separator."" / ""convert 'become' to COS in gloss."") Kanakanavu→COS (same)"
 PAST	162	UNDECIDED		undocumented; definition needed	zho twin: 過去×65; 表過去×54	
 TU	150	UNDECIDED		undocumented; definition needed	zho twin: 連繫詞×6; 做×2	
 NEC	146	UNDECIDED		undocumented; definition needed	zho twin: 一定×140	
@@ -106,8 +107,9 @@ T	114	UNDECIDED		undocumented; definition needed
 3P	108	UNDECIDED		undocumented; definition needed	zho twin: 第三人稱複數×98; 第三人稱單數×4	
 RECP	104	KEEP	RECP	Leipzig: listed; standard tier keeps it	zho twin: 互相×91; 相互×4	
 ASP	96	UNDECIDED		undocumented; definition needed	zho twin: 動貌×90; 語助詞×4	
+變成	95	KEEP		lexical gloss elsewhere; Bunun/Kanakanavu tokens ruled on sep19/sep20		"Bunun→COS (sep19/sep20 2026-11-15: ""Needs to be mapped to COS, and then made separator."" / ""convert 'become' to COS in gloss."") Kanakanavu→COS (same)"
 SG	94	KEEP	SG	Leipzig: listed; standard tier keeps it	zho twin: 單數×30; 1SG×6	
-HYP	92	UNDECIDED		undocumented; definition needed	zho twin: 假設×90; 未來×2	
+HYP	92	CONVERT	CFACT	"card M9 2026-11-15: ""Register CFACT and map to that."""	zho twin: 假設×90; 未來×2	
 U	92	UNDECIDED		undocumented; definition needed		
 MU	88	UNDECIDED		undocumented; definition needed		
 PL	86	KEEP	PL	Leipzig: listed; standard tier keeps it	zho twin: 複數×72; 處焦×2	
@@ -142,6 +144,7 @@ CI	32	UNDECIDED		undocumented; definition needed
 QENA	32	UNDECIDED		undocumented; definition needed		
 S	30	KEEP	S	Leipzig: listed; standard tier keeps it		
 YA	30	UNDECIDED		undocumented; definition needed		
+變	30	KEEP		lexical gloss elsewhere; Bunun/Kanakanavu tokens ruled on sep19/sep20		"Bunun→COS (sep19/sep20 2026-11-15: ""Needs to be mapped to COS, and then made separator."" / ""convert 'become' to COS in gloss."") Kanakanavu→COS (same)"
 II	28	UNDECIDED		undocumented; definition needed		
 LUS	28	UNDECIDED		undocumented; definition needed	zho twin: LU×4	
 EXPER	28	UNDECIDED		undocumented; definition needed	zho twin: 經驗×28	
@@ -655,7 +658,7 @@ Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng 
 地方	97	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PLACE×24	
 命令式	96	CONVERT	IMP	"approved on the derivational decision page 2026-11-15 (card M3) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	eng twin: IMP×92	
 動貌	94	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ASP×90	
-假設	94	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HYP×90	
+假設	94	CONVERT	CFACT	"card M9 2026-11-15: ""Register CFACT and map to that."""	eng twin: HYP×90	
 致使	90	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RES×66	
 予焦	84	CONVERT	OV	benefactive (pairs BF) → OV (2026-11-11)	eng twin: BF×61; BV×6	
 量詞	84	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CLF×26; CN×5	
