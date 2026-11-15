@@ -25148,3 +25148,16 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   Rukai answer: gloss is just STAT; ma-/ka- live only in the FORM tier) and its own buttons. Handle checks
   run in the corpus: Rukai ngi-=REFL ×152 (minority self/manner/NGI flagged), Tsou poa=CAU ×2, Bunun
   min-='become' ×81, Kanakanavu ara-='become' ×82 (homophones take/go — select by gloss).
+
+### 2026-11-16 — SOURCE-CREATOR RULING: NTU Saisiyat -an stays NMZ (Li-May Sung)
+- Her words (email shared by the maintainer): "Glossing -an as NMZ (nominalizer) doesn't necessarily
+  conflict with glossing it as LV voice in many Formosan languages. … lots of the -an derived words mean
+  nominal entities such as bicylce, animal or bottle etc. At this moment, I would like to have the NTU
+  Saisiyat glossings stay as they are."
+- Comparison run against our standardization: CONFORMANT, nothing to change. NTU Saisiyat voice inventory
+  is AF ×1,132 / PF ×396 / RF ×88 (+IF ×1) → AV/PV/OV per the 2026-11-11 voice rulings; no LV was ever
+  created; -an NMZ ×97 converts only NMZ→NMLZ (Leipzig spelling, point F.iii) — categorial analysis
+  untouched; original tier untouched by design (POL-036/POL-062).
+- Flagged to the maintainer (his call, analysis side): the 2026-09-28 ruling "-an nominalizations count as
+  locative voice" for voice COUNTING now has source-side counter-evidence for Saisiyat (many -an words are
+  plain lexical nouns). Recorded in Glossing/OutstandingIssues.md with the related -an items.

@@ -103,3 +103,16 @@ the bottom with their ruling.
   revisit this, particularly when we get more glossed Paiwan data."). The Paiwan
   語法概論 does not treat the underlying prefixes (li-/sa-/⟨ar⟩; se-); the codes rest
   on Early & Whitehorn's Ch.1 definitions alone, and Yedda has no analogues yet.
+
+- **NTU Saisiyat -an: stays NMZ per the corpus creator (Li-May Sung, email to the
+  maintainer, 2026-11-15/16):** "Glossing -an as NMZ (nominalizer) doesn't
+  necessarily conflict with glossing it as LV voice in many Formosan languages. I
+  took a quick look at our Saisiyat stories, lots of the -an derived words mean
+  nominal entities such as bicylce, animal or bottle etc. At this moment, I would
+  like to have the NTU Saisiyat glossings stay as they are." Our standard tier
+  already conforms: NTU Saisiyat voices are AF/PF/RF → AV/PV/OV (no LV anywhere),
+  and -an NMZ ×97 (form an ×93) converts only in spelling (NMZ → Leipzig NMLZ),
+  never to a voice. Related open -an items: Tsukida Seediq OBL, Nowbucyang Truku
+  受格 (above). The ANALYSIS-side counting rule "-an nominalizations count as
+  locative voice" (maintainer, 2026-09-28, austronesian-voice repo) is a separate
+  decision that this email bears on for Saisiyat.
