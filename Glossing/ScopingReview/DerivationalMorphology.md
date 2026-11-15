@@ -50,14 +50,8 @@ Grammar claims are the 語法概論 volume's; corpus counts are audit-rule tier-
 ## Proposals: still open (artifact cards, round 4)
 - B: NTU Kanakanavu REC ×34 (重現, ⟨n⟩) — mis-covered by the bank-wide REC→RECP ruling.
   2026-11-15: maintainer clicked `modify` with an empty note — asked what change he intends.
-- P1–P2 (Wild-Lehmann parenthesized glosses): P1 voice/mood tags ×55 — maintainer asked
-  (card note 2026-11-15) why round parens over X.Y; answered on the card (LGR 4 vs 6 vs 7
-  make different claims: overt portmanteau vs non-overt category vs inherent category) and a
-  go.AV option added. P2 numeral(person) ×22 unanswered. Implementation of any rewrite (and of
-  the ruled P3) needs a parens extension to the shared converter — approval to be requested
-  with the diff once P1/P2 are decided.
-- P3 sikaisiisi (ritual) ×4 — RULED `drop` 2026-11-15 (standard = sikaisiisi, "(ritual)" to the
-  TRANSL notes attribute); implementation pending with P1/P2 (shared-converter extension).
+- P2 (Wild numeral(person) ×22) — unanswered; the converter now supports paren handling, so
+  any pick needs only a Wild rules-file row.
 
 ## Ruled on the decision page 2026-11-15, applied the same day
 
@@ -110,6 +104,18 @@ Round-4 additions (2026-11-15, applied the same way, diff-verified):
   state ×4 untouched). Basis: 布農語語法概論 PDF 146, al- = 持續貌2 durative. Bunun
   dictionary +DUR. Validators: 0 new HARD; 2 pre-existing V067 (original-FORM 'hoN2T>',
   'shiaolingLM>' in NTU Stories, present at HEAD and in NTU's own source JSONs).
+
+Round-5 (2026-11-15): P1 RULED Rule 7 in chat ("OK, you have convinced me that
+these should remain Rule 7. But that also means our gloss standardizer needs to
+handle such cases appropriately.") — approval for the shared-converter change.
+apply_gloss_standard.py gained two rules keywords (built test-first, 33 tests
+pass): KEEP-PARENS (LGR Rule 7 chunk: parens kept, atoms inside converted,
+preceding space dropped, exempt from residue) and NOTE-PARENS (chunk moved to
+the standard TRANSL's notes attribute). Wild rules rows added; Wild rebuilt —
+29 changed pairs, all paren-related: go (AV) → go(AV) ×20 (+dance/climb/
+attend/try), INCH-ring-ring(AV) → COS-ring-ring(AV) (card C's last leftover),
+and P3 implemented: sikaisiisi (ritual) → notes="(ritual)" sikaisiisi ×4.
+Residue is now exactly the 22 unruled (person) tokens (card P2). 0 HARD.
 
 ## Notes for the verb-individuation list
 
