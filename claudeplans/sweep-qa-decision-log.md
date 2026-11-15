@@ -25037,3 +25037,18 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   paren-related, zero (person) lines — go (AV)→go(AV) ×20 (+dance/climb/attend/try), INCH-ring-ring(AV)→
   COS-ring-ring(AV) (card C's last leftover), sikaisiisi (ritual)→ notes="(ritual)" sikaisiisi ×4 (P3
   implemented). Residue now exactly the 22 unruled (person) tokens (card P2). validate_xml/glosses 0 HARD.
+
+### 2026-11-15 (cont. 4) — RULED: P2; card B answered; page note-bug fixed; language cards replaced
+- Card P2 — his note: "Move \"person\" to the note attribute." → NOTE-PARENS \(person\) row; Wild rebuilt:
+  22 tokens now notes="(person)" with bare numeral text. Wild residue report now EMPTY. Tests 33 passed.
+- Card B (his chat question: "I want to know what the reference grammar has to say about that `-n-`
+  morpheme.") — ANSWERED: 卡那卡那富語語法概論 表3.12 (PDF 63) header 「十倍數 (ma-...-n)」: ma-…-n derives
+  tens (cusa 'two' → mapusan 'twenty', turu → matuun 'thirty'); makaan glossed 「一次」 'once' (ex.43 PDF
+  247); -n never glossed standalone; reciprocal is 'arupa-. Corpus matches (mapusan ngica'ʉ 'twenty
+  earthworms'; nimakapusanpaku 「第二次」). Card B options now: ITER / register MULT / unmap / keep RECP.
+- Page bug found (explains every lost note incl. card B's and card F's "Do they say "): notes saved only at
+  button-click; typing afterwards was dropped. Fixed — textarea change-events now save.
+- His feedback: language cards "very hard to use. I'm actually not sure what your question on each one is."
+  → the 14 per-language approve/modify rows removed (they stated no question); replaced by ONE card S under
+  the separator summary: adopt the middle column as the candidate verb-individuation list, modify names
+  cells. His earlier Amis/Bunun `modify` clicks had notes eaten by the bug — asked again.

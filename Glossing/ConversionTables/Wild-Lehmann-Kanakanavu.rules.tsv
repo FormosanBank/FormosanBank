@@ -5,5 +5,6 @@ pattern	replacement	description
 <([^<>]+)>	KEEP-BRACKETS	angle brackets = infix (LGR Rule 9) — keep brackets, look up inner atom(s)
 \((?:AV|UV|HORT)\)	KEEP-PARENS	"LGR Rule 7 inherent-category tags (maintainer 2026-11-15: ""these should remain Rule 7""): keep parens, convert inside, strip preceding space"
 \(ritual\)	NOTE-PARENS	"card P3 ""drop"" 2026-11-15: clarifier moves to the standard TRANSL notes attribute"
+\(person\)	NOTE-PARENS	"card P2 2026-11-15 (""Move 'person' to the note attribute.""): clarifier moves to the standard TRANSL notes attribute"
 [()\[\]（）]	INVESTIGATE	maintainer rules-review 2026-11-11: parens/brackets shouldn't be in glosses; flag occurrences
 …	RESIDUE	anything unsegmentable is copied verbatim and listed in the residue report
