@@ -25209,3 +25209,13 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   origin/main still had 387 standard-tier lines with unconverted 主事焦點 (their in-place pass missed
   bracket/residue cases); the full rebuild leaves 35, all residue-rule cases. 33 tests passed; NTU/Grammar
   validate_glosses 0 HARD. (Noted: the maintainer pushed the branch; origin had it through 72a532ffd.)
+
+### 2026-11-15 (cont. 14) — stale-tab answers consumed; page regenerated (round 15)
+- His 22:24–22:27 clicks were on the round-12 version (rounds 13–14 published 22:29/22:52) — all saved and
+  consumed: sep24 `no` → REFL NOT a separator code; sep27 `yes` → pair IS a separator (lexical atom; code
+  todo); sepn6 flipped to `no` → COS phase clitics do NOT separate. Reconciliation with the ruled
+  become-affix separators is page card Q4 (proposal: COS- separates, =COS does not). sep19/20 + M9 notes on
+  the stale page re-asked already-applied conversions — confirmed done, nothing re-run.
+- Page regenerated clean per his request ("regenerate so I can answer your questions"): 9 cards, each
+  answerable — Q1 CMPR, Q2 make/alang, Q3 REV, Q4 COS boundary, Q5 'arup shared tweak, Q6/Q7 lost
+  Amis/Bunun notes, Q8/Q9 the two cut-off fragments. Settled history collapsed at the bottom.

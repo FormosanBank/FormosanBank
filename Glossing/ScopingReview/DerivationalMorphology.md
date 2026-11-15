@@ -154,6 +154,14 @@ DUR (sepn7), IMP ("it's not a separator, it's a mood and is handled
 differently" — sep37, 2026-11-15); moods/aspect generally (IRR, CFACT, IPFV,
 FUT, …) are not separators.
 
-**Open**: REFL (Rukai ngi- ×152 — the only affixal reflexive; sep24 unanswered);
-pair (todo); make (sane- vs the alang root — held, see page); MULT (numeral
-derivation, outside verb-individuation scope).
+**Rulings of 2026-11-15 (late round, stale-tab answers consumed):** REFL is NOT
+a separator code (sep24 `no` — Rukai ngi- does not split verbs); `pair` IS a
+separator via its lexical atom (sep27 `yes`; code still a todo); sepn6 flipped
+back to `no` — the COS phase clitics do not separate, while the become-affixes
+(ruled via COS) do. The reconciliation question — COS- (hyphen/affix) separates,
+=COS (clitic) does not — is card Q4 on the page, awaiting the maintainer.
+
+**Open**: Q1 comparative code (CMPR vs keep lexical), Q2 make→CAUS (sane-/alang
+split), Q3 remove→REV, Q4 the COS boundary rule, Q5 the 'arup converter change;
+make/more are separators regardless (sep26/28 `yes`). MULT stays outside
+verb-individuation scope (numeral derivation).
