@@ -25052,3 +25052,18 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   → the 14 per-language approve/modify rows removed (they stated no question); replaced by ONE card S under
   the separator summary: adopt the middle column as the candidate verb-individuation list, modify names
   cells. His earlier Amis/Bunun `modify` clicks had notes eaten by the bug — asked again.
+
+### 2026-11-15 (cont. 5) — RULED: card B applied; separator-coverage question answered
+- Card B — his note (v7): "Let's do REC->ITER, 重現->ITER except for when they gloss `'arup`, which gets
+  glossed RECP." → Kanakanavu-only overrides REC→ITER, 重現→ITER, +再現→ITER (×1 variant spelling found).
+  NTU rebuilt: 136 changed pairs, all REC/重現/再現; verified ⟨n⟩-REC is Kanakanavu-only (all other
+  languages' REC = 交互/互相 true reciprocals, stay RECP). Kanakanavu dict +ITER. tests 33 passed.
+  ⚠ OPEN: the 'arup exception — eng standard reads ITER-take (zho correctly RECP-拿). Implementing his
+  exception needs a shared-converter change (context-rule fallback → table lookup, + REC&'arup- context
+  row); approval asked on the page and in chat. NOT implemented without his word.
+- His coverage question ("If we treat STAT and CAUS as indicated derived forms... do we miss any
+  'separators' marked by the collaborators?") — answered YES with counts (HPS M-level): have 220, imp 203,
+  more 148, pair 118, make 111, qal 103, remove 79, become(ka-) 66, go.to 53, put 32, via 25, do.at 25,
+  emerge 16, apart 11, pretend 2, '?'-glossed qa/o/ta/ve/a/qe, + Amis SI ×18 (NTU). All lexical atoms in
+  the standard tier (usable as separators without new codes). Atayal/Yami fully covered (CAU ✓, SV→STAT ✓);
+  separator-NO items (Paiwan self/do/invol, Atayal/Yami REC) correctly excluded. Added to card S evidence.

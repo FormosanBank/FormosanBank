@@ -75,7 +75,7 @@ REFL	411	KEEP	REFL	Leipzig: listed; standard tier keeps it	zho twin: 反身×369
 2S	394	UNDECIDED		undocumented; definition needed	zho twin: 第二人稱單數×354; 第二人稱複數×4	
 IF	392	CONVERT	OV	voice: NTU point D referential/instrumental = the variable 4th voice; maintainer 2026-11-11: OV	zho twin: 工焦×291; 工具焦×65 | row-approved 2026-11-11	
 NCM	360	CONVERT	PN	maintainer vocabulary ruling v5 (per your note: fold name markers into PN; your button said PNM — flagged for confirmation) 2026-11-11	zho twin: 人名標記×42; 類別詞×20 | row-approved 2026-11-11	
-REC	332	CONVERT	RECP	NTU point F.iv departure; back to Leipzig RECP per maintainer 2026-11-11	zho twin: 交互×182; 重現×65	
+REC	332	CONVERT	RECP	NTU point F.iv departure; back to Leipzig RECP per maintainer 2026-11-11	zho twin: 交互×182; 重現×65	"Kanakanavu→ITER (card B 2026-11-15: ""Let's do REC->ITER, 重現->ITER except for when they gloss 'arup, which gets glossed RECP."" Grammar: ma-...-n = 十倍數 tens circumfix, 表3.12 PDF 63; ⟨n⟩ is the numeral multiplicative; ⚠ the 1 'arup token is wrongly ITER until the form-conditioned exception is implementable)"
 P	320	KEEP	P	Leipzig: listed; standard tier keeps it	zho twin: 複數×286; 複雜×2	
 FAC	316	UNDECIDED		undocumented; definition needed	zho twin: 表事實×147; 事實貌×1	
 NI	312	UNDECIDED		undocumented; definition needed		
@@ -664,7 +664,7 @@ Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng 
 參焦	68	CONVERT	OV	"maintainer 2026-11-12: ""參焦, CV -> OV""; eng twin verified RF (Seediq s×30)"	eng twin: RF×61	
 靜態	68	CONVERT	STAT	approved on the derivational decision page 2026-11-15 (DerivationalMorphology.md card A)	eng twin: STAT×18	
 工具焦	66	CONVERT	OV	variant of 工焦	eng twin: IF×65	
-重現	65	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REC×65	
+重現	65	CONVERT		"card B 2026-11-15: ""Let's do REC->ITER, 重現->ITER except for when they gloss 'arup, which gets glossed RECP."" Grammar: ma-...-n = tens circumfix (十倍數), PDF 63 — Kanakanavu-only code, mapped via override"	eng twin: REC×65	"Kanakanavu→ITER (card B 2026-11-15: ""Let's do REC->ITER, 重現->ITER except for when they gloss 'arup, which gets glossed RECP."" Grammar: ma-...-n = tens circumfix (十倍數), PDF 63)"
 未完成	62	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IMPFV×61	
 第二人稱複數	58	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 2P×52	
 疑問詞	56	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: Q×41	
@@ -719,3 +719,4 @@ T主焦A	15	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng t
 轉述	6	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: KAN×6	
 原因焦點	8	CONVERT	OV	s25 ruling (原因焦點 'reason focus' rides the instrument-voice sia- prefix; folds into the 4th voice) + OV ruling (2026-11-11)	zho tier only; eng twin RF/RsnV below pair threshold	
 受事／處所焦點	22	CONVERT	PV/LV	s45 + collapse notation: the annotator's own both-ways label (PV-or-LV undecidable) (2026-11-11)	lives in residue strings (受事／處所焦點.祈使 etc., both ／ and / spellings, ~22 tokens); needs a Layer-B rule for the ／ separator before conversion applies	
+再現	1	CONVERT		"card B 2026-11-15: ""Let's do REC->ITER, 重現->ITER except for when they gloss 'arup, which gets glossed RECP."" Grammar: ma-...-n = tens circumfix (十倍數), PDF 63 — variant spelling of 重現, Kanakanavu-only"		"Kanakanavu→ITER (card B 2026-11-15: ""Let's do REC->ITER, 重現->ITER except for when they gloss 'arup, which gets glossed RECP."" Grammar: ma-...-n = tens circumfix (十倍數), PDF 63)"
