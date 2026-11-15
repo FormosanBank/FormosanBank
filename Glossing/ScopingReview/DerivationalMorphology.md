@@ -12,7 +12,8 @@ Three evidence sources, kept distinct:
 - **Collaborators** — the AffixCategorization spreadsheet (Paiwan/Amis/Atayal/Yami
   sheets); its `SEPARATOR?` column records their verb-individuation call per affix.
 - **Corpora** — gloss-code counts (audit rule: M-level, W when unsegmented, per
-  tier) with the morpheme forms behind each code.
+  tier) with the morpheme forms behind each code. Full per-(corpus, language,
+  code) rows with top-5 forms: `deriv_counts.json` in this directory.
 
 ## Standard vocabulary status
 
