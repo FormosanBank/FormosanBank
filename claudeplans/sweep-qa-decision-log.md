@@ -25199,3 +25199,13 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
 - card_m_hyp v12 note (resaved after another lost note) — all items already done in round 13; answers
   restated to him in chat.
 - Still open on the page: sep24 (reframed: is REFL a separator code?), sep27, u2_more, u2_make, u2_remove.
+
+### 2026-11-15 (cont. 13) — origin/main merged into the branch
+- Main gained #351 (another session's unvoiced-verbs audit: NTU full-form voice rows 主事焦點→AV ×2,371,
+  受事焦點→PV ×819, 處所焦點→LV ×240) and #352 (Safolu/Fey headwords — no overlap). Merge 634a8921d: the
+  table auto-merged (their 3 rows + ours); the 5 conflicted NTU XML files resolved by taking main's copies
+  and then strip+rebuilding all of NTU from the merged table. Verified: all our codes present (CFACT 186,
+  MULT 136, DUR 180, #SI 290, HORT 55, OPT 32, IPFV 128 atoms) AND their full-form conversions improved —
+  origin/main still had 387 standard-tier lines with unconverted 主事焦點 (their in-place pass missed
+  bracket/residue cases); the full rebuild leaves 35, all residue-rule cases. 33 tests passed; NTU/Grammar
+  validate_glosses 0 HARD. (Noted: the maintainer pushed the branch; origin had it through 72a532ffd.)
