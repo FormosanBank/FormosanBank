@@ -18,6 +18,7 @@ from pathlib import Path
 XML_NS = "http://www.w3.org/XML/1998/namespace"
 CUTS, POSL, BORROW, BORROW_RAW, PIECES = {}, set(), {}, {}, {}
 LETTER = re.compile(r"阿美語[族的]?[元輔母]音之一|阿美語的?輔音之一")
+STRONG = re.compile(r"^(用法如下：)?(（\d）)?\s*[(（〔\[]?\s*(複合|復合)?(前綴|後綴|前後綴)(詞)?\s*[)）〕\]]?\s*[。，,:：]?")
 DESC = re.compile(r"音值|元音|輔音|母音|詞尾|詞首|詞終|讀如|讀時|送氣|喉塞化|顎化|齶化|長音化|方言區|發音|音節|鼻音|塞音|擦音|邊音|顫音|半母音|舌面|舌尖|舌葉|雙唇|唇齒|聲門|喉門")
 ET.register_namespace("xml", XML_NS)
 SPECIAL = {"=.json", "ch-mapping.json", "index.json", "lenToRegex.json",
@@ -240,8 +241,15 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
                 senses.append(x); tnotes.append(tn)
             # r3-embedded-rebuilt (RULED): pieces absorbed into a rebuilt example sentence are not headword translations
             if PIECES.get(form):
-                keep = [(x, tn) for x, tn in zip(senses, tnotes) if x not in PIECES[form]]
-                stats["example-sentence pieces removed from headword senses"] += len(senses) - len(keep)
+                keep = []
+                for x, tn in zip(senses, tnotes):
+                    if x in PIECES[form]:
+                        stats["example-sentence pieces removed from headword senses"] += 1
+                        if tn and keep:  # a borrowing/part-of-speech note on the piece moves to the sense before it
+                            keep[-1][1].extend(n for n in tn if n not in keep[-1][1])
+                            stats["note moved from a removed piece to the sense before it"] += 1
+                        continue
+                    keep.append((x, tn))
                 senses, tnotes = [x for x, _ in keep], [tn for _, tn in keep]
             if entry_pos.get(form):
                 tnotes = [tn + [entry_pos[form]] for tn in tnotes]
@@ -253,6 +261,21 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
                         stats["affix sense left out (marked 前綴/後綴)"] += 1
                         log.append(("affix-sense-dropped", form, x, tn))
                         continue
+                    keep.append((x, tn))
+                senses, tnotes = [x for x, _ in keep], [tn for _, tn in keep]
+            if args.headings == "drop":
+                # r2-heading (RULED): a sense that is only a heading ending in a colon (主要表示： etc.) is left out
+                keep = [(x, tn) for x, tn in zip(senses, tnotes) if not re.search(r"[：:]\s*$", x)]
+                stats["colon headings left out"] += len(senses) - len(keep)
+                senses, tnotes = [x for x, _ in keep], [tn for _, tn in keep]
+            if args.affix_strong:
+                # r5-affix-approval (RULED): senses whose text starts with 前綴 / 複合前綴 / 後綴 without brackets, the 詞綴 note,
+                # and a's (1)前綴詞 are affix meanings too
+                keep = []
+                for x, tn in zip(senses, tnotes):
+                    if STRONG.match(x) and STRONG.match(x).group(4) or any("詞綴" in n for n in tn):
+                        stats["affix sense left out (approved list)"] += 1
+                        log.append(("affix-approved-dropped", form, x, tn)); continue
                     keep.append((x, tn))
                 senses, tnotes = [x for x, _ in keep], [tn for _, tn in keep]
             if args.letters == "drop-desc" and any(LETTER.search(x) for x in senses):
@@ -319,6 +342,8 @@ def main() -> int:
     p.add_argument("--affix-rule", action="store_true", help="r4-affixes: leave out senses marked 前綴/後綴")
     p.add_argument("--letters", choices=["keep", "drop-desc"], default="keep", help="r4-letters")
     p.add_argument("--pieces", type=Path, help="example_pieces_removed.tsv: translations absorbed into rebuilt example sentences")
+    p.add_argument("--headings", choices=["keep", "drop"], default="keep", help="r2-heading")
+    p.add_argument("--affix-strong", action="store_true", help="r5-affix-approval: unbracketed 前綴/後綴 senses, 詞綴 note")
     p.add_argument("--log", type=Path)
     a = p.parse_args()
     tree, stats, log = build(a)

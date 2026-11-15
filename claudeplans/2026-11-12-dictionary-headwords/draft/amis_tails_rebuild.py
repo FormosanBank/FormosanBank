@@ -34,14 +34,21 @@ for s in ET.parse(X).getroot().iter("S"):
         pre = ""
         if j == 0 and prev and not END.search(prev.strip()):
             pre = re.split(r"[。！？]", prev)[-1].strip()
+            kk = k - 1
+            while pre and re.match(r"^[a-z]", pre) and kk > 0 and not END.search(paras[kk - 1].strip()):
+                kk -= 1
+                pre = (re.split(r"[。！？]", paras[kk])[-1].strip() + " " + pre).strip()
         elif j > 0:
             # the start is earlier in the same paragraph: take its text after the last 。！？ before the tail
             raw_before = p[:p.find(x[:6])] if x[:6] in p else ""
             pre = re.split(r"[。！？]", raw_before)[-1].strip()
         nxt = paras[k + 1] if k + 1 < len(paras) else ""
         post = re.match(r"^[^。！？]*[。！？]?", nxt).group(0).strip() if (not END.search(x) and nxt) else ""
+        lab = re.match(r"^\s*([〔\[（(][^〕\]）)]*[〕\]）)])\s*", pre)
+        if lab:
+            pre = pre[lab.end():]
         full = (pre + " " + x if pre else x) + post
-        m = re.match(r"^([A-Za-z'^ ,.!?\-]+?)[.!?]?\s*([㐀-鿿].*)$", full)
+        m = re.match(r"^([A-Za-z'^ ,.!?\-]+?(?:[（(][A-Za-z'^ ,\-]*[）)][A-Za-z'^ ,.!?\-]*?)*)[.!?]?\s*([（(〔\[]?[㐀-鿿].*)$", full)
         if not pre:
             rows.append([form, s.get("id"), x, "could not rebuild", "", "", "no Amis sentence start found before it"]); continue
         if not m:

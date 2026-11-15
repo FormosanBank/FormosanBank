@@ -385,3 +385,26 @@ Examples to add at the build: the 103 definition-field sentences (embedded_rebui
 Stem: the author's, from the source headword line `'acaen('aca)` via parsing-terms.rb -> JSON `stem`.
 Round 5 card ids: r2-sections, r2-heading, r2-homs-notreview, r5-affix-approval, r5-letters-split, r5-pieces, r5-tails.
 Done flag `meta/round5`.
+
+## 13. Round 5 answers applied; round 6 page (version 9) — current state
+
+Sections 23/24: RULED "treat them like any other entry" (no --sections). Current draft:
+
+```bash
+R6="--cuts cut_confirmed_r2.tsv --pos pos_labels.tsv --borrow borrow_labels.tsv --restore-lost --tags norm --label-pos transl \
+  --affix-rule --letters drop-desc --headings drop --affix-strong"
+python3 -I safolu_headwords.py $COMMON $R6 --out $WORK/draft/out_r6_nopieces/XML/Amis/Safolu/amis_safolu_headwords.xml
+python3 -I embedded_rebuild.py $WORK && python3 -I amis_tails_rebuild.py $WORK $WORK/draft/out_r6_nopieces/XML/Amis/Safolu/amis_safolu_headwords.xml
+python3 -I example_pieces.py $WORK $WORK/draft/out_r6_nopieces/XML/Amis/Safolu/amis_safolu_headwords.xml   # 87 pieces
+python3 -I safolu_headwords.py $COMMON $R6 --pieces example_pieces_removed.tsv \
+  --out $WORK/draft/out_r6/XML/Amis/Safolu/amis_safolu_headwords.xml --log $WORK/draft/log_r6.json            # 42,284 S, 55,919 TRANSL
+python3 -I round6.py $WORK
+```
+Examples for amis_safolu_examples.xml at the build: embedded_rebuild.tsv (103 rows) + amis_tails_rebuild.tsv "rebuilt" rows
+except ona, paonol, mimingay (56) = 159; dedup against the published examples at the build.
+Fixed this round: rebuild tools now strip a leading bracketed label (ciem 〔閩南語借詞〕), walk back over several paragraphs
+while the sentence start is lowercase (index bug fixed), split Amis/Chinese when the Chinese opens with a bracket or
+the Amis has a bracketed word (co^eco, pikilim); a removed piece's notes move to the sense before it; Amis-tail pieces
+are only the rebuilt translation itself (a looser match had removed kandaw 綠色 etc.; caught before publishing).
+Round 6 card ids: r6-tails-held, r6-missed-headwords (29), r6-homs-plausible (302), r6-homs-unclear (301); done flag
+`meta/round6`. After round 6: implement splits (homophones per upstream h; missed headwords), then the real build.

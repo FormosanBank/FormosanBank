@@ -37,13 +37,25 @@ for it in emb:
         if not head_cont and not tail_cont:
             status = "complete in the source"
         else:
-            pre = re.split(r"[。！？]", prev)[-1].strip() if head_cont else ""
+            pre = ""
+            if head_cont:
+                pre = re.split(r"[。！？]", prev)[-1].strip()
+                kk = k - 1
+                while pre and re.match(r"^[a-z]", pre) and kk > 0 and not END.search(paras[kk - 1].strip()):
+                    kk -= 1
+                    pre = (re.split(r"[。！？]", paras[kk])[-1].strip() + " " + pre).strip()
+            lab = re.match(r"^\s*([〔\[（(][^〕\]）)]*[〕\]）)])\s*", pre)
+            label = lab.group(1) if lab else ""
+            if lab:
+                pre = pre[lab.end():]
             post = re.match(r"^[^。！？]*[。！？]?", nxt).group(0).strip() if tail_cont else ""
             full = (pre + " " + field if pre else field) + post
-            m = re.match(r"^([A-Za-z'^ ,.!?\-]+?)[.!?]?\s*([㐀-鿿].*)$", full)
-            if m:
+            m = re.match(r"^([A-Za-z'^ ,.!?\-]+?(?:[（(][A-Za-z'^ ,\-]*[）)][A-Za-z'^ ,.!?\-]*?)*)[.!?]?\s*([（(〔\[]?[㐀-鿿].*)$", full)
+            if m and re.sub(r"[\s.,!?。，！？]", "", m.group(1) + m.group(2)) != re.sub(r"[\s.,!?。，！？]", "", field):
                 full_a, full_z = m.group(1).strip(), m.group(2).strip()
-            status = "rebuilt across paragraph breaks"
+                status = "rebuilt across paragraph breaks" + (f" (label {label} before the sentence)" if label else "")
+            else:
+                status = "complete in the source"
     in2015 = any(nos(full_a + full_z)[:40] in b or (nos(full_a) in b and nos(full_z) in b) for b in pr.get(hw.lower(), []))
     C[(status, "2015 matches" if in2015 else ("headword not in 2015" if not pr.get(hw.lower()) else "2015 differs"))] += 1
     rows.append([key, field, status, full_a, full_z, "yes" if in2015 else "no"])
