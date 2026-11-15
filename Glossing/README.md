@@ -24,6 +24,29 @@ modified (POL-036, POL-062).
   glossed with a pair notation (e.g. `PV/LV`) rather than left unglossed —
   such tokens are excluded from voice *analysis* but must still be glossed.
 
+## Voice on forms with no voice affix (Leipzig Rule 7)
+
+Ruled by the maintainer on 2026-11-15 (unvoiced-verbs audit, https://claude.ai/artifact/HLiGFJQqfFCxAbFAZm8CDy):
+"Rule 7 (see(AV))", in FormosanBank, for "All 12,001 with a lexical gloss; the 3,684 on affixes/auxiliaries stay
+as they are".
+
+- When a gloss fuses one voice code with a lexical gloss (Leipzig Rule 4, `AV.see`, `say.AF`), the standard tier
+  writes it as an inherent category in round brackets (Leipzig Rule 7): `see(AV)`, `say(AV)`, `FUT.go(AV)`.
+  A group whose other pieces are all codes (an affix or auxiliary such as `AUX.AV`, `PV.IMP`) keeps the period.
+- Exception to the 2026-11-11 ruling "parens/brackets shouldn't be in glosses": a parenthesis attached to a gloss
+  and holding only codes (`die(AV)`, `打（AF）`) is a Rule 7 category; it is converted (`打(AV)`) instead of being
+  copied as residue. Every other parenthesis is still flagged (rules files: `RULE7-PARENS`).
+- Bare forms the sources leave without a voice gloss get one only by an explicit rule,
+  `<gloss>&=<stem>  CONTEXT-ADD→<VOICE>` in the corpus's rules file: on a word whose form (lower case, `=` clitics
+  removed) is `<stem>` and which carries no voice code at all, the morpheme glossed `<gloss>` gets `(<VOICE>)`.
+  The rules come from the audit's rulings: HundredPaiwanStories bare aya/vaik ("Add them as AV (780 words)");
+  NTU Bunun bare tupa/ta'aza/huud ("Those plus huud (74)"); and, in six corpora, stems voice-glossed elsewhere
+  ("Only when the stem is voice-glossed at least 3 times AND at least twice as often as it is not
+  voice-glossed."). The stems that did not qualify are listed in `ScopingReview/bare_forms_not_given_voice.tsv`
+  (see OutstandingIssues.md).
+- `QC/glossing/apply_gloss_standard.py --redo-changed` re-derives existing standard glosses under these rules,
+  replacing one only if it is exactly what the tool produced before (hand-made standards are left alone).
+
 ## The files
 
 - **`ConversionTables/<Corpus>.tsv`** — one row per atomic gloss code:

@@ -15,6 +15,20 @@ language are left exactly as they are (preexisting hand-made standards are
 never overwritten). Originals are never modified beyond the kindOf stamp
 (POL-036/POL-062). S-level TRANSLs are never touched (V151).
 
+Leipzig Rule 7 for voice (maintainer, 2026-11-15, unvoiced-verbs audit: Rule 7 "see(AV)", "All 12,001 with a
+lexical gloss; the 3,684 on affixes/auxiliaries stay as they are"):
+  * a gloss piece group that fuses ONE voice code (AV/PV/LV/OV) with a lexical gloss by periods (Rule 4,
+    ``AV.see``) is written ``see(AV)``; groups whose other pieces are all codes (affixes, auxiliaries:
+    ``AUX.AV``, ``PV.IMP``) stay as they are. A piece is lexical when it is not a code of the table.
+  * a rules file may declare ``RULE7-PARENS``: parentheses attached to a gloss and holding only codes
+    (``die(AV)``, ``打（AF）``) are then a Rule 7 category, converted, and no longer residue; all other
+    parentheses stay residue (maintainer, 2026-11-11: "parens/brackets shouldn't be in glosses").
+  * ``<gloss>&=<stem>  CONTEXT-ADD→<V>`` rules add a voice the source leaves unglossed: on a word whose
+    form (lower case, = clitics removed) is <stem> and which carries no voice code at all, the morpheme
+    whose original gloss is exactly <gloss> gets ``(<V>)`` in every standard tier.
+``--redo-changed`` re-derives EXISTING standard glosses: one is replaced only if it is exactly what this tool
+produced before these rules (so hand-made standards stay untouched) and the new rules change it.
+
 Dry-run by default; ``--write`` modifies the XML in place. Run:
 
   python QC/glossing/apply_gloss_standard.py --corpus NTUFormosanCorpus [--write]
@@ -40,6 +54,32 @@ ISO_TO_LANGUAGE = {
 }
 
 
+VOICES = ("AV", "PV", "LV", "OV")
+LEXICAL = re.compile(r"[a-z\u3400-\u9fff]")
+RULE7_GROUP = re.compile(r"(?<=\S)[(（]([^()（）]+)[)）]")
+CHUNK_SPLIT = re.compile(r"([-=<>\s]+)")
+
+
+def rule7_voice(text: str, table: "Table") -> str:
+    """Rule 4 -> Rule 7 for voice: in each period-joined group, one voice code fused with a lexical gloss
+    (AV.see, say.AV, AV.FUT.go) becomes see(AV) / say(AV) / FUT.go(AV). Groups with no lexical piece
+    (AUX.AV, PV.IMP) and groups already holding parentheses are left alone."""
+    out = []
+    for chunk in CHUNK_SPLIT.split(text):
+        pieces = chunk.split(".")
+        if len(pieces) > 1 and "(" not in chunk and ")" not in chunk:
+            v = [p for p in pieces if p in VOICES]
+            lex = [p for p in pieces if p not in VOICES and p not in table.codes and LEXICAL.search(p)]
+            if len(v) == 1 and lex:
+                chunk = ".".join(p for p in pieces if p not in VOICES) + f"({v[0]})"
+        out.append(chunk)
+    return "".join(out)
+
+
+def add_voice(text: str, voice: str) -> str:
+    return text if text.endswith(")") else f"{text}({voice})"
+
+
 def language_of(root: ET.Element) -> str:
     iso = root.get(XMLLANG) or ""
     if iso == "trv":  # trv is Seediq-or-Truku; the dialect attribute decides
@@ -57,6 +97,9 @@ class Table:
                 for part in re.findall(r"(\S+?)→(\S+)", row.get("language_overrides") or ""):
                     overrides[part[0]] = part[1]
                 self.map[code] = (row["status"], row.get("standard") or "", overrides)
+        # every code the table knows (source codes, standards, override targets): what is NOT here is lexical
+        self.codes = set(self.map) | {s for _t, s, _o in self.map.values() if s} \
+            | {x for _t, _s, o in self.map.values() for x in o.values()}
 
     def standard_for(self, atom: str, language: str) -> str:
         entry = self.map.get(atom)
@@ -115,10 +158,20 @@ class Rules:
         # An atom with context rules but no matching form is kept as-is (the
         # rules file states that fallback, e.g. "UV&⟨in⟩-only / KEEP-UV").
         self.context_rules: list[tuple[str, str, str]] = []
+        self.rule7_parens = False
+        self.add_rules: dict[tuple[str, str], str] = {}     # (word stem, morpheme gloss) -> voice
         with open(path, newline="", encoding="utf-8") as handle:
             for row in csv.DictReader(handle, delimiter="\t"):
                 repl = row["replacement"]
                 pat = row["pattern"]
+                add = re.fullmatch(r"CONTEXT-ADD→(\S+)", repl)
+                if add and "&=" in pat:
+                    gloss, stem = pat.rsplit("&=", 1)
+                    self.add_rules[(stem.strip().lower(), gloss.strip())] = add.group(1)
+                    continue
+                if repl == "RULE7-PARENS":
+                    self.rule7_parens = True
+                    continue
                 ctx = re.fullmatch(r"CONTEXT-CONVERT→(\S+)", repl)
                 if ctx and "&" in pat:
                     atom, form = pat.split("&", 1)
@@ -139,11 +192,22 @@ class Rules:
 
 
 def convert_gloss(gloss: str, table: Table, rules: Rules, language: str,
-                  context_forms: frozenset = frozenset()):
+                  context_forms: frozenset = frozenset(), new: bool = True):
     """Returns (standard_text, is_residue). context_forms are the cores of
-    the word's morpheme FORMs, for the rules file's context rules."""
+    the word's morpheme FORMs, for the rules file's context rules. new=False
+    reproduces the behavior before the Rule 7 rules (used by --redo-changed)."""
+    original = gloss
+    groups: list[str] = []
+    if new and rules.rule7_parens:
+        def keep(m):
+            inner = [a for a in re.split(r"[.\s]+", m.group(1)) if a]
+            if inner and all(a in table.codes for a in inner):
+                groups.append(".".join(table.standard_for(a, language) for a in inner))
+                return f"\uE000{len(groups) - 1}\uE001"
+            return m.group(0)
+        gloss = RULE7_GROUP.sub(keep, gloss)
     if rules.residue_re and rules.residue_re.search(gloss):
-        return gloss, True
+        return original, True
 
     def std_atom(atom: str) -> str:
         if atom in rules.context_atoms:
@@ -164,11 +228,31 @@ def convert_gloss(gloss: str, table: Table, rules: Rules, language: str,
             pieces = [std_atom(a) if i % 2 == 0 and a else a
                       for i, a in enumerate(rules.split_re.split(part))]
             out.append("".join(pieces))
-    return "".join(out), False
+    text = "".join(out)
+    for i, g in enumerate(groups):
+        text = text.replace(f"\uE000{i}\uE001", f"({g})")
+    if new:
+        text = rule7_voice(text, table)
+    return text, False
+
+
+def _word_has_voice(elements, table, rules, language, context) -> bool:
+    """Does any original gloss of the word (W or its M) carry a voice code once converted (old rules)?"""
+    for el in elements:
+        for t in el.findall("TRANSL"):
+            if t.get("kindOf") == "standard" or t.get(XMLLANG) not in GLOSS_LANGS:
+                continue
+            text = "".join(t.itertext()).strip()
+            if not text:
+                continue
+            conv, _res = convert_gloss(text, table, rules, language, context, new=False)
+            if any(p in VOICES for p in re.split(r"[.\-=<>\s/()（）]+", conv)):
+                return True
+    return False
 
 
 def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
-                 stats: collections.Counter, residue: collections.Counter):
+                 stats: collections.Counter, residue: collections.Counter, redo: bool = False):
     tree = ET.parse(path)
     root = tree.getroot()
     language = language_of(root)
@@ -185,16 +269,29 @@ def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
             context = frozenset(cores)
         else:
             context = frozenset()
+        to_add = {}
+        if rules.add_rules:
+            wf = next((f.text for f in word.findall("FORM") if f.get("kindOf") in (None, "original") and f.text),
+                      None) or next((f.text for f in word.findall("FORM") if f.text), "") or ""
+            stem = wf.strip().lower().split("=")[0]
+            if any(k[0] == stem for k in rules.add_rules) and \
+                    not _word_has_voice([word] + morphs, table, rules, language, context):
+                for m in morphs:
+                    for t in m.findall("TRANSL"):
+                        v = rules.add_rules.get((stem, "".join(t.itertext()).strip()))
+                        if v and t.get("kindOf") != "standard":
+                            to_add[id(m)] = v
         for parent in [word] + morphs:
             changed |= _process_element(parent, table, rules, write, stats,
-                                        residue, language, context)
+                                        residue, language, context, redo=redo,
+                                        voice_to_add=to_add.get(id(parent)))
     if write and changed:
         tree.write(path, encoding="UTF-8", xml_declaration=True)
     return changed
 
 
 def _process_element(parent, table, rules, write, stats, residue, language,
-                 context) -> bool:
+                 context, redo: bool = False, voice_to_add: str | None = None) -> bool:
     changed = False
     existing_standard = {(t.get(XMLLANG), t.get("ver"))
                          for t in parent.findall("TRANSL")
@@ -217,10 +314,31 @@ def _process_element(parent, table, rules, write, stats, residue, language,
             transl.set("kindOf", "original")   # g5 stamp
             stats["stamped"] += 1
             changed = True
-        if (lang, ver) in existing_standard:
-            stats["preexisting_standard_kept"] += 1
-            continue
         full = "".join(s for _, s in segments).strip()
+        if (lang, ver) in existing_standard:
+            std = next((t for t in parent.findall("TRANSL") if t.get("kindOf") == "standard"
+                        and t.get(XMLLANG) == lang and t.get("ver") == ver), None)
+            if not redo or std is None:
+                stats["preexisting_standard_kept"] += 1
+                continue
+            if len(std) or len(transl):               # <UNCLEAR/> children: not re-derived
+                stats["redo_skipped_children"] += 1
+                continue
+            old, _r = convert_gloss(full, table, rules, language, context, new=False)
+            new_text, res = convert_gloss(full, table, rules, language, context, new=True)
+            if voice_to_add and not res:
+                new_text = add_voice(new_text, voice_to_add)
+                stats["voice_added"] += 1
+            cur = (std.text or "").strip()
+            if cur != old.strip():
+                stats["handmade_standard_kept"] += 1
+            elif new_text != cur:
+                std.text = new_text
+                stats["redone"] += 1
+                changed = True
+            else:
+                stats["preexisting_standard_kept"] += 1
+            continue
         converted_segments = []
         any_res = False
         for where, seg in segments:
@@ -240,6 +358,9 @@ def _process_element(parent, table, rules, write, stats, residue, language,
             stats["converted"] += 1
         else:
             stats["copied"] += 1
+        if voice_to_add and not any_res and len(converted_segments) == 1:
+            converted_segments = [("text", add_voice(converted_segments[0][1], voice_to_add))]
+            stats["voice_added"] += 1
         new = ET.Element("TRANSL")
         new.set(XMLLANG, lang)
         new.set("kindOf", "standard")
@@ -269,6 +390,8 @@ def main():
     ap.add_argument("--path", help="explicit XML file/dir (with --table/--rules)")
     ap.add_argument("--table")
     ap.add_argument("--rules")
+    ap.add_argument("--redo-changed", action="store_true",
+                    help="re-derive existing tool-made standard glosses that the Rule 7 rules change")
     ap.add_argument("--write", action="store_true",
                     help="modify XML in place (default: dry run)")
     args = ap.parse_args()
@@ -292,7 +415,7 @@ def main():
     nfiles = 0
     for f in files:
         try:
-            process_file(f, table, rules, args.write, stats, residue)
+            process_file(f, table, rules, args.write, stats, residue, redo=args.redo_changed)
             nfiles += 1
         except ET.ParseError as err:
             print(f"PARSE ERROR {f}: {err}", file=sys.stderr)

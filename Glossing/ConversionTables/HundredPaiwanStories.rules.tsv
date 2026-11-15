@@ -2,5 +2,8 @@ pattern	replacement	description
 \.	KEEP-SEPARATOR	period separates atoms (LGR Rule 4)
 -	KEEP-SEPARATOR	hyphen = normal morpheme break (source doc)
 =	INFIX-BREAK	source doc: '=' is an INFIX morpheme break, NOT a clitic (opposite of Leipzig) — segment but record infixation
+x(CODE)	RULE7-PARENS	maintainer 2026-11-15 (unvoiced-verbs audit, unv_notation_r4 "Rule 7 (see(AV)), with an exception to the 2026-11-11 parentheses ruling…"; unv_tool_r5 "Yes, as described"): a parenthesis attached to a gloss and holding only codes (die(AV), 打（AF）) is a Leipzig Rule 7 category — converted, not residue
 [()\[\]（）]	INVESTIGATE	maintainer rules-review 2026-11-11
 …	RESIDUE	unsegmentable → verbatim + residue report
+say&=aya	CONTEXT-ADD→AV	maintainer 2026-11-15 (unvoiced-verbs audit, unv_paiwan_bare_r2): "Add them as AV (780 words)"
+leave&=vaik	CONTEXT-ADD→AV	maintainer 2026-11-15 (unvoiced-verbs audit, unv_paiwan_bare_r2): "Add them as AV (780 words)"

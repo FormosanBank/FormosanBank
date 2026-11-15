@@ -3,5 +3,8 @@ pattern	replacement	description
 -	KEEP-SEPARATOR	hyphen = morpheme boundary (LGR Rule 2) — split
 =	KEEP-SEPARATOR	equals = clitic boundary (LGR Rule 2) — split
 <([^<>]+)>	KEEP-BRACKETS	angle brackets = infix (LGR Rule 9) — keep brackets, look up inner atom(s)
+x(CODE)	RULE7-PARENS	maintainer 2026-11-15 (unvoiced-verbs audit, unv_notation_r4 "Rule 7 (see(AV)), with an exception to the 2026-11-11 parentheses ruling…"; unv_tool_r5 "Yes, as described"): a parenthesis attached to a gloss and holding only codes (die(AV), 打（AF）) is a Leipzig Rule 7 category — converted, not residue
 [()\[\]（）]	INVESTIGATE	maintainer rules-review 2026-11-11: parens/brackets shouldn't be in glosses; flag occurrences
 …	RESIDUE	anything unsegmentable is copied verbatim and listed in the residue report
+end&=kavos-an	CONTEXT-ADD→LV	maintainer 2026-11-15 (unvoiced-verbs audit, unv_same_stem_r3): "Only when the stem is voice-glossed at least 3 times AND at least twice as often as it is not voice-glossed."
+be_at&=yan-an	CONTEXT-ADD→LV	maintainer 2026-11-15 (unvoiced-verbs audit, unv_same_stem_r3): "Only when the stem is voice-glossed at least 3 times AND at least twice as often as it is not voice-glossed."

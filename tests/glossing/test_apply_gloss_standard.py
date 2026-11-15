@@ -223,8 +223,9 @@ def test_context_rules_split_by_word_morphology(tmp_path):
     assert g["m12"][("standard",)] == "LV"
     assert g["m21"][("standard",)] == "OV"
     assert g["m41"][("standard",)] == "eat.UV"
-    # unsegmented word: the word's own shape satisfies an affix pattern
-    assert g["w5"][("standard",)] == "OV.give"
+    # unsegmented word: the word's own shape satisfies an affix pattern; voice fused with a lexical
+    # gloss is written Leipzig Rule 7 (maintainer, 2026-11-15), so OV.give -> give(OV)
+    assert g["w5"][("standard",)] == "give(OV)"
 
 
 # ---- POL-021 UNCLEAR children: mixed-content glosses must convert without

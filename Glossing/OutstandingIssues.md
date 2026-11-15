@@ -6,6 +6,25 @@ the bottom with their ruling.
 
 ## Open
 
+- **Bare forms glossed with and without voice, not given voice** (2026-11-15). The same stem is
+  voice-glossed in some sentences and left unglossed in others; only stems meeting the maintainer's criterion
+  ("Only when the stem is voice-glossed at least 3 times AND at least twice as often as it is not
+  voice-glossed.") got voice (CONTEXT-ADD rules). The other 240 stems (1,612 words) are in
+  `ScopingReview/bare_forms_not_given_voice.tsv` with the reason (voice-glossed < 3 times; < 2x as often as
+  unmarked; several voices). Largest: Kanakanavu misa (voice-glossed 18, unmarked 150), Bunun sadu (15/84).
+  The NTU maintainer is being asked about NTU's 458 such forms (list in austronesian-voice
+  results/lemma/unvoiced/ntu_forms.csv). Evidence: austronesian-voice src/lemma/unvoiced_audit.py.
+- **Parentheses other than Rule 7** (2026-11-15): HPS `(name)`, ePark `（人名）`, NTU `(Mandarin)`, Yedda's prose
+  `(OBL)`, NTU `1P(IN)`… stay flagged; how to suppress/handle them is a GitHub issue ("Glossing: parentheses in
+  glosses: allow Leipzig Rule 7 stem(CODE), handle all other parentheses").
+- **V122 counts Rule 7 parentheses** (2026-11-15): the SOFT rule parens_slashes_anywhere now flags every
+  `see(AV)` (NTU 4,687 → 50,969 findings). Exempting `(CODE)` in standard-tier glosses is a shared-validator
+  change awaiting the maintainer.
+- **2 NTU word glosses stay Rule 4** (`-carry.PV` / `-帶.PV`): they hold an `<UNCLEAR/>` child, which
+  `--redo-changed` does not re-derive.
+- **NTU full-form voice labels without rows** (from PR #351): 參考焦點 ×66, 受惠焦點 ×34; labels fused to a
+  lexical gloss with no separator (主事焦點吃 etc., ~25); 受事/處所焦點 with a half-width slash ×2.
+
 - **Amis locative `i` (NTU 處格/LOC, ×192/×191).** No approved mapping
   (maintainer, 2026-11-11). Reason: disagreement between NTU and the
   reference grammar — NTU glosses `i` as a locative case (處格/LOC), while
