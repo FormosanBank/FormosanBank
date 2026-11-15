@@ -22,6 +22,17 @@ SPECIAL = {"=.json", "ch-mapping.json", "index.json", "lenToRegex.json",
 CJK = re.compile(r"[㐀-鿿]")
 XREF = re.compile(r"^(同|參見|參閱|參看|詳見|見)\s*")
 LABEL = re.compile(r"〔[^〕]*〕|\[[^\]]*\]")
+EMB = re.compile(r"^([A-Za-z'^ ,.!?\-]+?)[.!?]?\s*([\u3400-\u9fff].*)$")
+
+
+def load_sections(path):
+    """section_rulings json + tsv (apply_section_rulings.py): {stem: [[action per d] per h]}, {headword: printed_in}"""
+    if not path:
+        return {}, {}
+    import csv
+    acts = json.loads(Path(path).read_text(encoding="utf-8"))
+    printed = {r["headword"]: r["printed_in"] for r in csv.DictReader(open(Path(path).with_suffix(".tsv"), encoding="utf-8"), delimiter="\t")}
+    return acts, printed
 
 
 def clean(text: str) -> str:
@@ -67,9 +78,21 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
         "glottocode": "amis1246",
         "dialect": "Coastal",
     })
+    sec_acts, printed = load_sections(args.sections)
     for ordinal, name, entry in entries(args.base, args.pin):
         stats["headword files"] += 1
         title = entry["t"].strip()
+        acts = sec_acts.get(name[:-5])
+        if acts and all(a != "keep" for h in acts for a in h):
+            if "main" in printed.get(title, "") and args.merged == "keep":
+                stats["merged upstream (printed in 01-22 and 23/24): kept"] += 1
+                acts = None
+            elif "main" in printed.get(title, ""):
+                stats["merged upstream (printed in 01-22 and 23/24): dropped"] += 1
+        if args.affix == "drop" and "…" in title:
+            stats["affix headwords dropped"] += 1
+            log.append(("affix-dropped", title))
+            continue
         if args.affix == "drop" and (title.startswith("-") or title.endswith("-")):
             stats["affix headwords dropped"] += 1
             log.append(("affix-dropped", title))
@@ -77,13 +100,20 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
         # group senses by the form they belong to: heteronym `name` if it differs, else the title
         groups: dict[str, list[str]] = {}
         notes_by_form: dict[str, list[str]] = {}
-        for het in entry.get("h", []):
+        for hi, het in enumerate(entry.get("h", [])):
             form = (het.get("name") or "").strip() or title
             groups.setdefault(form, [])
             notes_by_form.setdefault(form, [])
-            for d in het.get("d", []):
+            for di, d in enumerate(het.get("d", [])):
                 stats["senses in source"] += 1
+                if acts and acts[hi][di] != "keep":
+                    stats[f"senses dropped by section ruling: {acts[hi][di]}"] += 1
+                    continue
                 sense = clean(d.get("f", ""))
+                m = EMB.match(sense)
+                if args.embedded == "drop" and m and len(m.group(1).split()) >= 3:
+                    stats["embedded example sentences taken out of the headword senses"] += 1
+                    continue
                 kind = classify(sense)
                 stats[f"sense kind: {kind}"] += 1
                 if kind == "empty":
@@ -163,6 +193,9 @@ def main() -> int:
     p.add_argument("--stem-tag", choices=["none", "notes"], default="none")
     p.add_argument("--syn-rel", choices=["none", "notes"], default="none")
     p.add_argument("--keep-senseless", action="store_true")
+    p.add_argument("--sections", type=Path, help="section_rulings_4cb8.json from apply_section_rulings.py")
+    p.add_argument("--merged", choices=["keep", "drop"], default="keep")
+    p.add_argument("--embedded", choices=["keep", "drop"], default="keep")
     p.add_argument("--log", type=Path)
     a = p.parse_args()
     tree, stats, log = build(a)

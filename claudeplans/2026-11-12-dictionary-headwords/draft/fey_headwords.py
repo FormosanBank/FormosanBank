@@ -17,6 +17,7 @@ from pathlib import Path
 XML_NS = "http://www.w3.org/XML/1998/namespace"
 ET.register_namespace("xml", XML_NS)
 XREF_ENG = re.compile(r"^(refer to|see)\s+\S+\.?$", re.I)
+FIXME_NOTE = 'The source\'s Chinese translation of this sense was marked "FIXME" and has been dropped.'
 XREF_ZHO = re.compile(r"^(詳見|參見|參看|參閱|見)\s*[A-Za-z'^ ,\-]+[。.]?$")
 
 
@@ -46,6 +47,8 @@ def main() -> int:
     ap.add_argument("--xref", choices=["drop", "translation"], default="drop")
     ap.add_argument("--affix", choices=["keep", "drop"], default="keep")
     ap.add_argument("--see-also", choices=["none", "notes"], default="none")
+    ap.add_argument("--fixme", choices=["keep", "drop"], default="keep",
+                    help="drop: a Chinese sense marked (FIXME) is not published; its English TRANSL says so in notes")
     a = ap.parse_args()
 
     rows = list(csv.DictReader(a.sheet.open(encoding="utf-8")))
@@ -80,12 +83,22 @@ def main() -> int:
             continue
         eng_out: list[str] = []
         zho_out: list[str] = []
+        eng_notes: dict[str, str] = {}
+        fixme_form_note = False
         for eng, zho in e["senses"]:
             stats["senses"] += 1
             if XREF_ENG.match(eng) or XREF_ZHO.match(zho):
                 stats["cross-reference senses"] += 1
                 if a.xref == "drop":
                     continue
+            if "FIXME" in zho.upper():
+                stats["Chinese senses marked FIXME"] += 1
+                if a.fixme == "drop":
+                    zho = ""
+                    if eng:
+                        eng_notes[eng] = FIXME_NOTE
+                    else:
+                        fixme_form_note = True
             for t in split_eng(eng, a.split):
                 if t not in eng_out:
                     eng_out.append(t)
@@ -96,15 +109,22 @@ def main() -> int:
             stats["headwords with no sense left, not published"] += 1
             continue
         s = ET.SubElement(root, "S", {"id": f"H{n:04d}"})
-        fa = {"kindOf": "original", "notes": f"source sheet line {e['line']}"}
+        fnotes = []
         if a.see_also == "notes" and e["see"]:
-            fa["notes"] += " | See also: " + ", ".join(e["see"])
+            fnotes.append("See also: " + ", ".join(e["see"]))
+        if fixme_form_note:
+            fnotes.append(FIXME_NOTE)
+        fa = {"kindOf": "original"}
+        if fnotes:
+            fa["notes"] = " | ".join(fnotes)
         ET.SubElement(s, "FORM", fa).text = form
         for lang, items in (("eng", eng_out), ("zho", zho_out)):
             for i, t in enumerate(items):
                 at = {f"{{{XML_NS}}}lang": lang}
                 if i:
                     at["ver"] = "alt"
+                if lang == "eng" and t in eng_notes:
+                    at["notes"] = eng_notes[t]
                 ET.SubElement(s, "TRANSL", at).text = t
             stats[f"TRANSL {lang}"] += len(items)
         stats["S written"] += 1

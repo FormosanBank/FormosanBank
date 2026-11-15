@@ -1,12 +1,15 @@
 # Dictionary headwords (Safolu + Virginia Fey): handover
 
-Status on 2026-11-15: **waiting for the maintainer's answers on the round 1 decision page.**
-No corpus has been changed. Nothing is built or published. Everything in this folder is
-draft analysis to resume from.
+Status on 2026-11-15 (updated after round 1 answers): **round 1 answered and applied to the drafts; round 2 page
+published (11 cards), waiting for answers.** No corpus has been changed. The round 1 answers, quoted, are in the
+decision log (`claudeplans/sweep-qa-decision-log.md`, entry "2026-11-12 — Dictionary headwords") and in section 8 below.
 
-- Decision page (18 cards): https://claude.ai/artifact/1N7xc3PCVuYYsmyynos5S4 (v2)
-- Answers when this was written: **none**. Both db collections, `answers` and `meta`, were empty
-  (checked with ArtifactData `list` on 2026-11-15).
+- Decision page: https://claude.ai/artifact/1N7xc3PCVuYYsmyynos5S4 (version 3 = round 2)
+- Round 2 card ids (db collection `answers`, one doc per card: `{choice, note, flags, at}`; `flags` = item keys the
+  maintainer marked wrong; done flag doc `meta/round2`): r2-merged, r2-sec23, r2-sec24, r2-pos, r2-poslabels, r2-heading,
+  r2-borrow, r2-loanonly, r2-embedded, r2-f-affix, r2-f-fixme.
+- After round 2: a separate review page for main-section Safolu headwords printed as more than one entry
+  (s-homophones = "Follow the book's entries, check the rest", not for sections 23/24).
 - Base used for all counts: `origin/main` at `525ad4932`.
 
 ## 1. What the maintainer asked (verbatim)
@@ -286,3 +289,32 @@ The source is miaoski/amis-safolu `dict/*.txt` at f512d5b, plus that repo's hist
   - 1 is a fragment (ahowid).
   - The sorting into these four groups is my reading of the definitions.
 - None of the 123 are printed word for word the same as in the main section.
+
+## 8. Round 1 answers applied (2026-11-15)
+
+Rebuild the round 2 state (from `$WORK/draft`, after section 4's setup):
+
+```bash
+python3 -I section_map.py $WORK $WORK/src/4cb8/docs/s $WORK/draft/secmap_4cb8.json   # which printed section each upstream h/d comes from
+python3 -I apply_section_rulings.py $WORK          # -> section_rulings_4cb8.json/.tsv (per-sense keep/drop-23/drop-24)
+python3 -I safolu_headwords.py --base $WORK/src/e7c6976/docs/s --pin $WORK/src/4cb8/docs/s \
+  --pin-commit 4cb82539d7e51e7211e262d4dbaecaa41a772b2f --out $WORK/draft/out_r1rulings_keep/XML/Amis/Safolu/amis_safolu_headwords.xml \
+  --xref drop --label notes --nochinese drop --affix drop --stem-tag notes --syn-rel none \
+  --sections $WORK/draft/section_rulings_4cb8.json --merged keep --embedded drop      # 42,289 S (42,248 with --merged drop)
+python3 -I fey_headwords.py --sheet $WORK/main-ro/Corpora/Virginia_Fey_Dictionary/CodeAndDocs/source/virginia_fey_source.csv \
+  --split keep --xref drop --see-also notes --fixme drop --out $WORK/draft/fey_r1/XML/Amis/Amis_headwords.xml   # 4,704 S
+python3 -I round2_safolu.py $WORK                  # -> round2_safolu_cards.json, borrow_labels.tsv, pos_labels.tsv, embedded_examples.tsv
+python3 -I assemble_round2.py $WORK                # -> dictionary-headwords-round2.html (round2_fey_cards.json is hand-written)
+```
+
+How sections are traced: the converter's own SQLite db (miaoski/amis-safolu `db/amis-sqlite3-db.sqlite3`, f512d5b) creates
+`raw_contents` file by file (parsing.rb FILE_LIST): id <= 40941 = sections 01-22, 40942-41609 = section 23 (starts with
+the letter entry `'`), `loanword=1` = section 24 (41610-42234). Its section 23 runs to `'imeced`, i.e. a later manuscript
+than the 2015 text. Upstream merged and edited many entries since, so `apply_section_rulings.py` matches each upstream
+sense one-to-one to a db sense by text similarity (score < 0.75 marked for review on the page). A first per-entry (h)
+version wrongly dropped sato's main senses; the per-sense version is the one in use.
+
+Not yet in the generator (wait for round 2): borrowing labels to TRANSL notes (reads borrow_labels.tsv once checked),
+part-of-speech labels, headings, loan-label-only senses, the 99 example sentences into the examples file, homophone
+splitting for main sections. Generator changes not shown on a card: none (circumfix `…` headwords dropped under s-affix,
+which listed them; Fey's draft-only "source sheet line N" notes removed — no option showed them).

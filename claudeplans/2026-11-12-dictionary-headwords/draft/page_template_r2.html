@@ -1,0 +1,217 @@
+<title>Dictionary Headwords Round 2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<style>
+/* Layout: one reading column of decision cards; a sticky tally bar; option outputs side by side in scrollable tables. */
+:root{
+  --bg:#f6f7f5; --panel:#ffffff; --ink:#1d2421; --muted:#5d6a64; --line:#d9dfdb;
+  --accent:#1f6f5c; --accent-soft:#e1efe9; --rec:#8a5a00; --rec-soft:#fbf0d9; --chosen:#1f6f5c; --chosen-ink:#ffffff;
+  --code-bg:#f0f3f1; --warn:#9b2c2c;
+  --display:"Source Serif 4", Georgia, "Noto Serif TC", serif;
+  --body:"IBM Plex Sans", "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", "Noto Sans Mono CJK TC", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#151a18; --panel:#1d2421; --ink:#e6ece9; --muted:#9fb0a8; --line:#33403a;
+  --accent:#5cc4a6; --accent-soft:#1f3a32; --rec:#e9b45a; --rec-soft:#3a2e17; --chosen:#5cc4a6; --chosen-ink:#0d1412;
+  --code-bg:#232c28; --warn:#f08a8a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#151a18; --panel:#1d2421; --ink:#e6ece9; --muted:#9fb0a8; --line:#33403a;
+  --accent:#5cc4a6; --accent-soft:#1f3a32; --rec:#e9b45a; --rec-soft:#3a2e17; --chosen:#5cc4a6; --chosen-ink:#0d1412;
+  --code-bg:#232c28; --warn:#f08a8a; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+main{max-width:1100px;margin:0 auto;padding-block:28px 80px;display:grid;gap:28px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:2rem} h2{font-size:1.35rem} h3{font-size:1.1rem}
+p{margin:0;max-width:72ch} .muted{color:var(--muted)}
+.prose{display:grid;gap:10px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px;display:grid;gap:14px;min-width:0}
+table{border-collapse:collapse;font-size:.9rem;width:100%}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;letter-spacing:.03em;text-transform:uppercase}
+.scroll{overflow-x:auto;min-width:0}
+code,.mono{font-family:var(--mono);font-size:.84rem}
+.chip{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 16px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.bar .tally{font-weight:600;font-variant-numeric:tabular-nums}
+.bar .status{color:var(--muted);font-size:.85rem}
+button{font:inherit;cursor:pointer;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:6px 12px}
+button:hover{border-color:var(--accent)}
+button:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--chosen-ink)}
+.card{scroll-margin-top:80px}
+.card header{display:grid;gap:6px}
+.count{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.9rem}
+.q{font-weight:600}
+.opts{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.opt{text-align:left;display:grid;gap:4px;padding:10px 12px;border-radius:8px}
+.opt .lbl{font-weight:600;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.opt .d{font-size:.85rem;color:var(--muted)}
+.opt.on{background:var(--chosen);border-color:var(--chosen);color:var(--chosen-ink)}
+.opt.on .d{color:var(--chosen-ink);opacity:.9}
+.rec{font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;background:var(--rec-soft);color:var(--rec);padding:1px 6px;border-radius:4px}
+textarea{width:100%;box-sizing:border-box;min-height:56px;font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);padding:8px}
+.cell{display:grid;gap:2px}
+.ln{font-family:var(--mono);font-size:.8rem;white-space:pre-wrap;word-break:break-word}
+.ln b{font-weight:500;color:var(--muted)}
+.ln.not{color:var(--warn)}
+td.src{color:var(--muted);font-size:.82rem;max-width:260px}
+.state{font-size:.8rem;font-weight:600}
+.state.done{color:var(--accent)} .state.open{color:var(--rec)}
+.toc{display:flex;flex-wrap:wrap;gap:6px}
+.toc a{font-size:.82rem;color:var(--accent);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.toc a.done{background:var(--accent-soft)}
+button.flag{font-size:.75rem;padding:2px 8px;white-space:nowrap}
+button.flag.on{background:var(--warn);border-color:var(--warn);color:var(--panel)}
+tr.flagged td{background:var(--rec-soft)}
+.log td{font-size:.85rem}
+blockquote{margin:0;padding-left:12px;border-left:3px solid var(--line);color:var(--muted)}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style>
+
+<main>
+  <header class="prose">
+    <span class="chip">FormosanBank · decisions round 2</span>
+    <h1>Dictionary headwords: Safolu and Fey</h1>
+    <p>__INTRO__</p>
+  </header>
+
+  __LOG__
+
+  <div class="bar" id="bar">
+    <span class="tally" id="tally">0 decided</span>
+    <button id="acceptAll" type="button">Accept the recommendation on every undecided card</button>
+    <button id="doneBtn" class="primary" type="button">I've answered: mark round done</button>
+    <span class="status" id="status">Connecting to the answer store…</span>
+  </div>
+  <nav class="toc" id="toc"></nav>
+  <div id="cards" style="display:grid;gap:28px"></div>
+
+  <section class="panel">
+    <h2>Anything else</h2>
+    <label for="generalNote" class="muted">A note on anything not covered above.</label>
+    <textarea id="generalNote" placeholder="Optional"></textarea>
+    <p class="muted">When you're finished, press <b>I've answered: mark round done</b> above, then tell me in chat. The page can't notify me on its own.</p>
+  </section>
+</main>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+(function(){
+  const cards = JSON.parse(document.getElementById('data').textContent);
+  const answers = {}; let db = null; let doneFlag = false;
+  const $ = (t, a = {}, ...kids) => { const e = document.createElement(t); for (const [k, v] of Object.entries(a)) { if (k === 'class') e.className = v; else if (k === 'text') e.textContent = v; else e.setAttribute(k, v); } for (const k of kids) if (k != null) e.append(k); return e; };
+  const statusEl = document.getElementById('status');
+  function setStatus(t){ statusEl.textContent = t; }
+
+  function cellNode(lines){
+    const c = $('div', {class:'cell'});
+    for (const [k, v] of lines){
+      const l = $('div', {class: 'ln' + (k === '—' ? ' not' : '')});
+      if (k === '—') l.textContent = v; else { l.append($('b', {text: k + ' '}), document.createTextNode(v)); }
+      c.append(l);
+    }
+    return c;
+  }
+
+  function render(){
+    const host = document.getElementById('cards'); host.textContent = '';
+    const toc = document.getElementById('toc'); toc.textContent = '';
+    let decided = 0;
+    for (const card of cards){
+      const a = answers[card.id] || {};
+      if (a.choice) decided++;
+      toc.append($('a', {href: '#' + card.id, class: a.choice ? 'done' : '', text: (card.corpus === 'Fey' ? 'Fey · ' : 'Safolu · ') + card.title}));
+      const sec = $('section', {class: 'panel card', id: card.id});
+      const hdr = $('header', {},
+        $('div', {style: 'display:flex;gap:8px;align-items:center;flex-wrap:wrap'}, $('span', {class: 'chip', text: card.corpus === 'Fey' ? 'Virginia Fey' : 'Safolu'}), $('span', {class: 'state ' + (a.choice ? 'done' : 'open'), text: (a.choice ? 'Decided: ' + ((card.options.find(o => o.key === a.choice) || {}).label || a.choice) : 'Open') + ((a.flags || []).length ? ' · ' + a.flags.length + ' row(s) flagged' : '')})),
+        $('h2', {text: card.title}), $('div', {class: 'count', text: card.count}), $('p', {class: 'q', text: card.question}));
+      sec.append(hdr);
+      for (const b of card.body) sec.append($('p', {class: 'muted', text: b}));
+      const opts = $('div', {class: 'opts', role: 'group', 'aria-label': card.title});
+      for (const o of card.options){
+        const btn = $('button', {type: 'button', class: 'opt' + (a.choice === o.key ? ' on' : ''), 'aria-pressed': a.choice === o.key ? 'true' : 'false', id: card.id + '--' + o.key},
+          $('span', {class: 'lbl'}, document.createTextNode(o.label), o.rec ? $('span', {class: 'rec', text: 'Recommended'}) : null), $('span', {class: 'd', text: o.desc}));
+        btn.addEventListener('click', () => save(card.id, {choice: o.key}));
+        opts.append(btn);
+      }
+      sec.append(opts);
+      const ta = $('textarea', {id: card.id + '--note', placeholder: 'Note (optional)'}); ta.value = a.note || '';
+      ta.addEventListener('change', () => save(card.id, {note: ta.value}));
+      sec.append(ta);
+      if (card.items.length){
+        const wrap = $('div', {class: 'scroll'}); const tbl = $('table');
+        const hasSrc = card.items.some(i => i.source);
+        const thr = $('tr', {}, card.flag ? $('th', {text: 'Wrong?'}) : null, $('th', {text: card.keyhead || 'Headword'}), hasSrc ? $('th', {text: card.srchead || 'Source senses'}) : null);
+        const colOpts = card.cols || card.options;
+        for (const o of colOpts) thr.append($('th', {text: o.head || ('If “' + o.label + '”')}));
+        tbl.append($('thead', {}, thr));
+        const tb = $('tbody'); const LIMIT = 25;
+        card.items.forEach((it, i) => {
+          let flagTd = null;
+          if (card.flag){
+            const fl = (a.flags || []).includes(it.key);
+            const fb = $('button', {type: 'button', class: 'flag' + (fl ? ' on' : ''), 'aria-pressed': fl ? 'true' : 'false', title: 'Flag this row as wrong', text: fl ? '⚑ flagged' : 'flag'});
+            fb.addEventListener('click', () => { const cur = new Set((answers[card.id] || {}).flags || []); if (cur.has(it.key)) cur.delete(it.key); else cur.add(it.key); save(card.id, {flags: [...cur]}); });
+            flagTd = $('td', {}, fb);
+          }
+          const tr = $('tr', {class: (a.flags || []).includes(it.key) ? 'flagged' : ''}, flagTd, $('td', {class: 'mono', text: it.key}), hasSrc ? $('td', {class: 'src', text: (it.source || []).join(' ‖ ')}) : null);
+          for (const o of colOpts) tr.append($('td', {}, cellNode(it.cells[o.key] || [['—', '(same as source)']])));
+          if (i >= LIMIT) tr.hidden = true;
+          tb.append(tr);
+        });
+        tbl.append(tb); wrap.append(tbl); sec.append($('h3', {text: 'What each option publishes (' + card.items.length + ' rows shown in full' + (card.items.length > LIMIT ? '; first ' + LIMIT + ' open' : '') + ')'}), wrap);
+        if (card.items.length > LIMIT){
+          const more = $('button', {type: 'button', text: 'Show all ' + card.items.length + ' rows'});
+          more.addEventListener('click', () => { for (const r of tb.rows) r.hidden = false; more.remove(); });
+          sec.append(more);
+        }
+      }
+      if (card.extra){
+        const d = $('details'); d.append($('summary', {text: card.extra.title}));
+        const t = $('table'); const b = $('tbody');
+        for (const r of card.extra.rows) b.append($('tr', {}, $('td', {class: 'mono', text: r.key}), $('td', {text: r.senses.join(' ‖ ')})));
+        t.append(b); d.append($('div', {class: 'scroll'}, t)); sec.append(d);
+      }
+      host.append(sec);
+    }
+    document.getElementById('tally').textContent = decided + ' of ' + cards.length + ' decided' + (doneFlag ? ' · round marked done' : '');
+  }
+
+  let queue = Promise.resolve();
+  function save(id, patch){
+    answers[id] = Object.assign({}, answers[id] || {}, patch);
+    render();
+    if (!db){ setStatus('Not saved: the answer store is not available in this view.'); return; }
+    const body = Object.assign({}, answers[id], {at: new Date().toISOString()});
+    queue = queue.then(() => db.doc('answers/' + id).set(body)).then(() => setStatus('Saved')).catch(e => setStatus('Save failed (' + (e && e.code || 'error') + '). Your choice is shown but not stored.'));
+  }
+
+  document.getElementById('acceptAll').addEventListener('click', () => {
+    for (const c of cards){ if (!(answers[c.id] && answers[c.id].choice)){ const r = c.options.find(o => o.rec); if (r) save(c.id, {choice: r.key}); } }
+  });
+  document.getElementById('doneBtn').addEventListener('click', () => {
+    doneFlag = true; render();
+    if (!db){ setStatus('Not saved: the answer store is not available in this view.'); return; }
+    queue = queue.then(() => db.doc('meta/round2').set({done: true, note: document.getElementById('generalNote').value, at: new Date().toISOString()})).then(() => setStatus('Round marked done. Tell me in chat.')).catch(e => setStatus('Save failed (' + (e && e.code || 'error') + ').'));
+  });
+  document.getElementById('generalNote').addEventListener('change', (e) => {
+    if (!db) return;
+    queue = queue.then(() => db.doc('meta/round2').set({done: doneFlag, note: e.target.value, at: new Date().toISOString()})).catch(() => {});
+  });
+
+  render();
+  (async () => {
+    try { db = window.claude && window.claude.use ? await window.claude.use('db') : null; } catch (e) { db = null; }
+    if (!db){ setStatus('Answers can only be saved when you open this page signed in on claude.ai.'); return; }
+    const timer = setTimeout(() => setStatus('The answer store has not answered yet; choices may not be saved.'), 10000);
+    db.collection('answers').onSnapshot(snap => {
+      if (!snap.metadata.fromCache) clearTimeout(timer);
+      for (const d of snap.docs){ const v = d.data(); answers[d.id] = {choice: v.choice, note: v.note, flags: v.flags || []}; }
+      setStatus('Connected. Choices save as you click.'); render();
+    }, e => { clearTimeout(timer); setStatus('Answer store error (' + e.code + ').'); });
+    db.doc('meta/round2').onSnapshot(s => { if (s.exists){ const v = s.data(); doneFlag = !!v.done; const n = document.getElementById('generalNote'); if (document.activeElement !== n) n.value = v.note || ''; render(); } }, () => {});
+  })();
+})();
+</script>
