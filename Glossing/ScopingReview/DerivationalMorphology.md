@@ -128,3 +128,32 @@ Residue is now exactly the 22 unruled (person) tokens (card P2). 0 HARD.
 - Excluded as out of scope: Sakizaya FAC (factual mood), Wakelin VR (verbalizer),
   RauDong VF (catch-all "verbal affix"; its forms include causative material — open
   item), ePark (word-translation corpus, outside gloss standardization per g6).
+
+
+## The verb-individuation separator list (ruled on the decision page, 2026-11-15)
+
+Ruling principle (maintainer, chat 2026-11-15): "you don't need to ask me whether
+to accept a particular morpheme a separator if the associated gloss is already
+determined to be a separator (like COS and CAUS)." Separator status attaches to
+the GLOSS (code or lexical atom), not to (language, morpheme) pairs.
+
+**Separator codes** (any W/M gloss difference in these atoms splits verbs):
+- CAUS (sep01–14 all yes, every language incl. Tsou poa)
+- STAT (sep15–18 yes)
+- COS (sep19/20/23 "mapped to COS, and then made separator" + sepn6 flipped to
+  yes — so the phase clitics =cu/=in/=ti separate too)
+- QUAL (sep38), PROPR (sep25 + u2_have), #SI (sep39, Amis si-)
+
+**Separator lexical atoms** (HPS; codes deliberately left undecided, u2 notes
+"leave as undecided"): remove (su-), go.to (ɫe-), put (pi-), via (maka-),
+do.at (tje-), emerge (pe-), apart (tju-), pretend (mi-); more (tja-) pending a
+code (COMP is taken by complementizer ×1,848 — CMPR proposed).
+
+**Not separators**: self/ki- and do (sepn1/2), INVOL (sepn3), RECP (sepn4/5),
+DUR (sepn7), IMP ("it's not a separator, it's a mood and is handled
+differently" — sep37, 2026-11-15); moods/aspect generally (IRR, CFACT, IPFV,
+FUT, …) are not separators.
+
+**Open**: REFL (Rukai ngi- ×152 — the only affixal reflexive; sep24 unanswered);
+pair (todo); make (sane- vs the alang root — held, see page); MULT (numeral
+derivation, outside verb-individuation scope).

@@ -25179,3 +25179,23 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
 - U2 code-proposal table posted (12 rows): PROPR (have), CMPR (more, his sep26), his COS suggestion for
   make (flagged: denominalizer), REV (remove), keep-lexical for go.to/put/via/do.at/emerge/apart/pretend,
   pair pending. Open rows: sep21/22/24 + the U2 table.
+
+### 2026-11-15 (cont. 12) — RULED: gloss-level separator principle; sep29-37; u2 answers; PROPR applied
+- His chat rule: "you don't need to ask me whether to accept a particular morpheme a separator if the
+  associated gloss is already determined to be a separator (like COS and CAUS)." → separator status
+  attaches to gloss codes/atoms; sep21 (Thao min-) + sep22 (Wild mari-) auto-resolved via COS. The full
+  ruled separator list written to Glossing/ScopingReview/DerivationalMorphology.md.
+- sep29–36 `yes` ×8 (remove/go.to/put/via/do.at/emerge/apart/pretend — separators via lexical atoms; codes
+  left undecided per his u2 notes "leave as undecided"). sep37: "So map to IMP. And then it's not a
+  separator, it's a mood and is handled differently." (imp→IMP was already done; mood ruled non-separator.)
+- u2_have `as suggested` → PROPR registered, HPS have ×433 → PROPR; rebuild verified (440 pairs, zero
+  outside targets). u2_pair → todo (mare- ~ grammar's reciprocal mare'a). u2_remove — his question
+  answered: reversive-like lexical glosses in 6 other corpora (listed in OutstandingIssues.md), no code
+  anywhere; REV proposal pending his pick.
+- u2_more — his COMP question answered: COMP is Leipzig complementizer and already KEEP ×1,848 in NTU
+  (補語詞); CMPR proposed to avoid collision; pending.
+- u2_make — his "CAUS" note HELD, not applied: atom `make` covers sane- AND the root alang (si-alang-an) +
+  standalone verb sane ×14; atom-level conversion would stamp CAUS on verb/root glosses; options on card.
+- card_m_hyp v12 note (resaved after another lost note) — all items already done in round 13; answers
+  restated to him in chat.
+- Still open on the page: sep24 (reframed: is REFL a separator code?), sep27, u2_more, u2_make, u2_remove.

@@ -133,3 +133,13 @@ the bottom with their ruling.
 - **HPS 'have' (pu-) ×220 — separator yes (sep25) + "this needs to go on todo list
   for standardization."** All 'have' tokens are the one morpheme pu-/p-u (verified);
   code proposal (PROPR?) on the page's U2 table.
+
+- **HPS 'pair' (mare-/pare- ×118) — left unmapped (u2_pair, 2026-11-15: "Leave as
+  undecided, put in todo.").** The dominant form mare- matches the Paiwan 語法概論's
+  reciprocal-context mare'a examples; if an expert confirms reciprocal, RECP is the
+  natural target. Revisit with expert input.
+- **Reversive candidates bank-wide (u2_remove question, 2026-11-15).** HPS remove
+  (su-) ×79 is separator-yes but unmapped; similar lexical glosses elsewhere:
+  NTU remove ×12 / take.off ×6 / 脫 ×2 / un ×1, RauDong 'un' atoms ×16, Nowbucyang
+  un ×4, ILCAA take.off ×2 + remove ×2, Wild take.off ×1, Song 脫 ×1. No code
+  anywhere; REV registration would cover them if wanted later.
