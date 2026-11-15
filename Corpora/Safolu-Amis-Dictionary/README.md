@@ -1,6 +1,6 @@
 # Safolu Amis Dictionary
 
-The Safolu Amis Dictionary is a collection of 50,480 Amis example sentences with Mandarin (Chinese) translations and 42,571 headword entries, drawn from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵). The data comes from the generated JSON of the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project (`docs/s`; see [amis.moedict.tw](https://amis.moedict.tw/)), checked against the dictionary's printed text.
+The Safolu Amis Dictionary is a collection of 50,327 Amis example sentences with Mandarin (Chinese) translations and 42,571 headword entries, drawn from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵). The data comes from the generated JSON of the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project (`docs/s`; see [amis.moedict.tw](https://amis.moedict.tw/)), checked against the dictionary's printed text.
 Safolu Kacaw Lalanges (Tsai Chung-Han) dictionary examples, distributed by
 the g0v Amis Moedict project. Virginia Fey and Poinsot are separate corpora.
 
@@ -49,8 +49,11 @@ The build emits 50,444 records: 49,522 from the 49,419 snapshot fields (20 field
 are excluded and recorded; some fields yield two sentences), 4 examples added
 from the printed book, 918 from the editors' 914 added examples (1 is
 excluded and recorded; some yield two sentences), and 158 example sentences that the source has in a headword's
-definition field ([CodeAndDocs/definition_examples.json](CodeAndDocs/definition_examples.json)). Shared dictionary
-dedup then removes 122 exact duplicates, leaving **50,480 sentences**. Published ids stay fixed; a second
+definition field ([CodeAndDocs/definition_examples.json](CodeAndDocs/definition_examples.json)). 153 pairs of
+sentences with the same standard text but different translations are then combined
+([CodeAndDocs/same_sentence_merges.tsv](CodeAndDocs/same_sentence_merges.tsv)), and shared dictionary dedup
+removes 122 exact duplicates, leaving **50,327 sentences**. Published ids stay fixed, except the 153 retired by
+those combinations (the `drop_id` column); a second
 reading of a source example keeps the base id and adds `-opt`, `-opt3`, etc.
 
 #### Audio
@@ -122,6 +125,7 @@ The build reads a committed snapshot of the source (49,419 example fields at `g0
 * **Standard tier** via the Church-to-Ortho113 conversion table (Coastal), and **pronunciation** from the Church orthography table.
 * **Example sentences in the definition field.** 158 example sentences that the source has in a headword's definition field are added as `S50338`–`S50495`; where the source document broke one across paragraphs it is rebuilt from the pieces. Three more are already published with a different translation; theirs is added to the published sentence as `ver="alt"` (POL-025: S02224, S19851, S20552).
 * **Headword entries** from a committed snapshot of the headword fields (editors' version `4cb82539d`), with the decisions listed under "Headword entries" below.
+* **The same sentence with different translations** (153 pairs, [same_sentence_merges.tsv](CodeAndDocs/same_sentence_merges.tsv)): two real translations become one sentence with the second as `ver="alt"` (131; where the two print the Amis differently, the second spelling is kept as an alternative `FORM`); a typo is deleted (2); a translation that is a strict substring of the other is deleted (17); a sentence with no translation is deleted (3). Maintainer: "two real translations -> use the ver="alt" option", "A typo variant -> delete the typo", "delete the fragment", "delete the one with the empty translation".
 * **Duplicates** are removed only when both the standard text and the translations are identical (122 example sentences, 28 headword entries).
 
 The [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Safolu-Amis-Dictionary/README.md) gives the details, the full list of decisions, and how to reproduce the corpus.
@@ -208,6 +212,9 @@ In order (`CodeAndDocs/generate_xml.sh`), all inside a temporary staging folder
      come the 158 example sentences from definition fields
      ([`definition_examples.json`](CodeAndDocs/definition_examples.json)),
      `S50338`–`S50495`; the 3 already published with a different translation add it to that sentence as `ver="alt"`.
+     Finally the 153 pairs in
+     [`same_sentence_merges.tsv`](CodeAndDocs/same_sentence_merges.tsv) are combined as that file's `action`
+     column says; the build stops if a pair's translation no longer matches the file.
    - It writes `XML/Amis/Safolu/amis_safolu_examples.xml` (original FORM and
      TRANSL only) with the `TEXT` attributes above. The excluded fields are
      written out only when `--report-dir <folder outside the repository>` is
@@ -232,9 +239,8 @@ In order (`CodeAndDocs/generate_xml.sh`), all inside a temporary staging folder
    Original PHON comes from `Orthographies/Church/Amis.tsv`; standard PHON
    comes from the Ortho113 Amis table, column resolved from the dialect.
 6. `QC/cleaning/remove_duplicate_sentences.py` removes a sentence only when its
-   standard FORM **and** its translations equal another's; differing
-   translations keep both sentences, as separate sentences (they are not
-   merged into one as alternative translations). Maintainer: "Don't dedup based on
+   standard FORM **and** its translations equal another's (sentences with the same standard FORM and different
+   translations were already combined by `generate_xml.py`, above). Maintainer: "Don't dedup based on
    the original tier. Dedup if standard tiers are identical."
    Run as `by_path --path <staging>/XML --apply` (defaults `--scope file`,
    `--tier standard`): it compares the base standard FORM (never a `ver="alt"`

@@ -141,6 +141,7 @@
         <FORM kindOf="standard">Mipitpit kako to heci no 'adidem.</FORM>
         <PHON kindOf="standard">mipitpit kak[o|u] t[o|u] ħəʦi n[o|u] ʡa[ɬ|ɮ]i[ɬ|ɮ]əm</PHON>
         <TRANSL xml:lang="zho">我在採集桑樹的果子。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我在摘取桑樹的果子。</TRANSL>
     </S>
     <S id="S00021">
         <FORM kindOf="original">O 'a'adingalen ira itini.</FORM>
@@ -407,6 +408,7 @@
         <FORM kindOf="standard">'A'alacamen ira anosawni.</FORM>
         <PHON kindOf="standard">ʡaʡaɾaʦamən ira an[o|u]sawni</PHON>
         <TRANSL xml:lang="zho">他馬上（等會兒）要去採蘆葦。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">他等一會就要去採蘆葦。</TRANSL>
     </S>
     <S id="S00058">
         <FORM kindOf="original">Adihay to ko 'a'alacamen ako.</FORM>
@@ -415,19 +417,13 @@
         <PHON kindOf="standard">a[ɬ|ɮ]iħaj t[o|u] k[o|u] ʡaʡaɾaʦamən ak[o|u]</PHON>
         <TRANSL xml:lang="zho">我要砍的蘆葦很多。</TRANSL>
     </S>
-    <S id="S00059">
-        <FORM kindOf="original">'A'alacamen ira anosawni.</FORM>
-        <PHON kindOf="original">ʡaʡaɾaʦamən ira anosawni</PHON>
-        <FORM kindOf="standard">'A'alacamen ira anosawni.</FORM>
-        <PHON kindOf="standard">ʡaʡaɾaʦamən ira an[o|u]sawni</PHON>
-        <TRANSL xml:lang="zho">他等一會就要去採蘆葦。</TRANSL>
-    </S>
     <S id="S00061">
         <FORM kindOf="original">O 'a'aladen ako cinira.</FORM>
         <PHON kindOf="original">o ʡaʡaɾaɬən ako ʦinira</PHON>
         <FORM kindOf="standard">O 'a'aladen ako cinira.</FORM>
         <PHON kindOf="standard">[o|u] ʡaʡaɾa[ɬ|ɮ]ən ak[o|u] ʦinira</PHON>
         <TRANSL xml:lang="zho">我將要阻擋他。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我要阻擋他。</TRANSL>
     </S>
     <S id="S00062">
         <FORM kindOf="original">O 'a'aladen ako a tamdaw.</FORM>
@@ -435,20 +431,7 @@
         <FORM kindOf="standard">O 'a'aladen ako a tamdaw.</FORM>
         <PHON kindOf="standard">[o|u] ʡaʡaɾa[ɬ|ɮ]ən ak[o|u] a tam[ɬ|ɮ]aw</PHON>
         <TRANSL xml:lang="zho">我將要阻擋的人。</TRANSL>
-    </S>
-    <S id="S00063">
-        <FORM kindOf="original">O 'a'aladen ako cinira.</FORM>
-        <PHON kindOf="original">o ʡaʡaɾaɬən ako ʦinira</PHON>
-        <FORM kindOf="standard">O 'a'aladen ako cinira.</FORM>
-        <PHON kindOf="standard">[o|u] ʡaʡaɾa[ɬ|ɮ]ən ak[o|u] ʦinira</PHON>
-        <TRANSL xml:lang="zho">我要阻擋他。</TRANSL>
-    </S>
-    <S id="S00064">
-        <FORM kindOf="original">O 'a'aladen ako a tamdaw.</FORM>
-        <PHON kindOf="original">o ʡaʡaɾaɬən ako a tamɬaw</PHON>
-        <FORM kindOf="standard">O 'a'aladen ako a tamdaw.</FORM>
-        <PHON kindOf="standard">[o|u] ʡaʡaɾa[ɬ|ɮ]ən ak[o|u] a tam[ɬ|ɮ]aw</PHON>
-        <TRANSL xml:lang="zho">我要阻擋的人。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我要阻擋的人。</TRANSL>
     </S>
     <S id="S00065">
         <FORM kindOf="original">O 'a'alayen ira kora dofot.</FORM>
@@ -772,6 +755,7 @@
         <FORM kindOf="standard">O 'a'atalen ko felac.</FORM>
         <PHON kindOf="standard">[o|u] ʡaʡataɾən k[o|u] fəɾaʦ</PHON>
         <TRANSL xml:lang="zho">要把米量一量。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">要把米滔出出來。</TRANSL>
     </S>
     <S id="S00111">
         <FORM kindOf="original">O maan ko 'a'atalen iso?</FORM>
@@ -779,20 +763,7 @@
         <FORM kindOf="standard">O maan ko 'a'atalen iso?</FORM>
         <PHON kindOf="standard">[o|u] maan k[o|u] ʡaʡataɾən is[o|u]</PHON>
         <TRANSL xml:lang="zho">你要計量什麼東西？</TRANSL>
-    </S>
-    <S id="S00112">
-        <FORM kindOf="original">O 'a'atalen ko felac.</FORM>
-        <PHON kindOf="original">o ʡaʡataɾən ko [f|v|b]əɾaʦ</PHON>
-        <FORM kindOf="standard">O 'a'atalen ko felac.</FORM>
-        <PHON kindOf="standard">[o|u] ʡaʡataɾən k[o|u] fəɾaʦ</PHON>
-        <TRANSL xml:lang="zho">要把米滔出出來。</TRANSL>
-    </S>
-    <S id="S00113">
-        <FORM kindOf="original">O maan ko 'a'atalen iso?</FORM>
-        <PHON kindOf="original">o maan ko ʡaʡataɾən iso</PHON>
-        <FORM kindOf="standard">O maan ko 'a'atalen iso?</FORM>
-        <PHON kindOf="standard">[o|u] maan k[o|u] ʡaʡataɾən is[o|u]</PHON>
-        <TRANSL xml:lang="zho">你要裝什麼東西？</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">你要裝什麼東西？</TRANSL>
     </S>
     <S id="S00114">
         <FORM kindOf="original">O 'a'atapaen niyam.</FORM>
@@ -961,6 +932,7 @@
         <FORM kindOf="standard">O 'a'ecicen ira ko 'asisiw.</FORM>
         <PHON kindOf="standard">[o|u] ʡaʡəʦiʦən ira k[o|u] ʡasisiw</PHON>
         <TRANSL xml:lang="zho">他要焚燒稻草（稻草是他要焚燒的）。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">稻草被他用火燙燒。</TRANSL>
     </S>
     <S id="S00140">
         <FORM kindOf="original">'A'ecicen a kilang.</FORM>
@@ -968,20 +940,7 @@
         <FORM kindOf="standard">'A'ecicen a kilang.</FORM>
         <PHON kindOf="standard">ʡaʡəʦiʦən a kiɾaŋ</PHON>
         <TRANSL xml:lang="zho">要火燒的木頭。</TRANSL>
-    </S>
-    <S id="S00141">
-        <FORM kindOf="original">O 'a'ecicen ira ko 'asisiw.</FORM>
-        <PHON kindOf="original">o ʡaʡəʦiʦən ira ko ʡasisiw</PHON>
-        <FORM kindOf="standard">O 'a'ecicen ira ko 'asisiw.</FORM>
-        <PHON kindOf="standard">[o|u] ʡaʡəʦiʦən ira k[o|u] ʡasisiw</PHON>
-        <TRANSL xml:lang="zho">稻草被他用火燙燒。</TRANSL>
-    </S>
-    <S id="S00142">
-        <FORM kindOf="original">'A'ecicen a kilang.</FORM>
-        <PHON kindOf="original">ʡaʡəʦiʦən a kiɾaŋ</PHON>
-        <FORM kindOf="standard">'A'ecicen a kilang.</FORM>
-        <PHON kindOf="standard">ʡaʡəʦiʦən a kiɾaŋ</PHON>
-        <TRANSL xml:lang="zho">要火燙燒木頭。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">要火燙燒木頭。</TRANSL>
     </S>
     <S id="S00143">
         <FORM kindOf="original">'A'eciwen ako koni a radiw.</FORM>
@@ -1542,13 +1501,7 @@
         <FORM kindOf="standard">'Acamen ako anosawni.</FORM>
         <PHON kindOf="standard">ʡaʦamən ak[o|u] an[o|u]sawni</PHON>
         <TRANSL xml:lang="zho">我等一下就把蘆葦砍來！</TRANSL>
-    </S>
-    <S id="S00223">
-        <FORM kindOf="original">'Acamen ako anosawni.</FORM>
-        <PHON kindOf="original">ʡaʦamən ako anosawni</PHON>
-        <FORM kindOf="standard">'Acamen ako anosawni.</FORM>
-        <PHON kindOf="standard">ʡaʦamən ak[o|u] an[o|u]sawni</PHON>
-        <TRANSL xml:lang="zho">等一下我就去把蘆葦砍來！</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">等一下我就去把蘆葦砍來！</TRANSL>
     </S>
     <S id="S00224">
         <FORM kindOf="original">Mi'acaw to nanom ci Lekal sapananom ci akongan.</FORM>
@@ -1977,13 +1930,6 @@
         <PHON kindOf="standard">[o|u] ʡa[ɬ|ɮ]iʦawan kina ɾ[o|u]t[o|u]k</PHON>
         <TRANSL xml:lang="zho">這座山全是大理石板塊。</TRANSL>
     </S>
-    <S id="S00290">
-        <FORM kindOf="original">Mipitpit kako to heci no 'adidem.</FORM>
-        <PHON kindOf="original">mipitpit kako to ħəʦi no ʡaɬiɬəm</PHON>
-        <FORM kindOf="standard">Mipitpit kako to heci no 'adidem.</FORM>
-        <PHON kindOf="standard">mipitpit kak[o|u] t[o|u] ħəʦi n[o|u] ʡa[ɬ|ɮ]i[ɬ|ɮ]əm</PHON>
-        <TRANSL xml:lang="zho">我在摘取桑樹的果子。</TRANSL>
-    </S>
     <S id="S00291">
         <FORM kindOf="original">O 'adideman ko mapalomaay tina pala.</FORM>
         <PHON kindOf="original">o ʡaɬiɬəman ko mapaɾomaaj tina paɾa</PHON>
@@ -2249,13 +2195,7 @@
         <FORM kindOf="standard">'Adopen niyam koya lokedaw anocila.</FORM>
         <PHON kindOf="standard">ʡa[ɬ|ɮ][o|u]pən nijam k[o|u]ja ɾ[o|u]kə[ɬ|ɮ]aw an[o|u]ʦiɾa</PHON>
         <TRANSL xml:lang="zho">我們明天把那頭豹子獵捕。</TRANSL>
-    </S>
-    <S id="S00334">
-        <FORM kindOf="original">'Adopen niyam koya lokedaw anocila.</FORM>
-        <PHON kindOf="original">ʡaɬopən nijam koja ɾokəɬaw anoʦiɾa</PHON>
-        <FORM kindOf="standard">'Adopen niyam koya lokedaw anocila.</FORM>
-        <PHON kindOf="standard">ʡa[ɬ|ɮ][o|u]pən nijam k[o|u]ja ɾ[o|u]kə[ɬ|ɮ]aw an[o|u]ʦiɾa</PHON>
-        <TRANSL xml:lang="zho">我們明天要把那頭豹子獵捕。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我們明天要把那頭豹子獵捕。</TRANSL>
     </S>
     <S id="S00335">
         <FORM kindOf="original">'Afadeng no kasay.</FORM>
@@ -2432,6 +2372,7 @@
         <FORM kindOf="standard">'Afaten namo koya hasa'adipel!</FORM>
         <PHON kindOf="standard">ʡafatən nam[o|u] k[o|u]ja ħasaʡa[ɬ|ɮ]ipəɾ</PHON>
         <TRANSL xml:lang="zho">你們去把要做籬笆的芒草桿砍來！</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">你們去把要做籬笆的芒草枝砍來！</TRANSL>
     </S>
     <S id="S00364">
         <FORM kindOf="original">Papi 'afaten no mama ci Nikar.</FORM>
@@ -2439,13 +2380,6 @@
         <FORM kindOf="standard">Papi 'afaten no mama ci Nikar.</FORM>
         <PHON kindOf="standard">papi ʡafatən n[o|u] mama ʦi nikar</PHON>
         <TRANSL xml:lang="zho">爸爸差Nikar去砍伐芒草桿。</TRANSL>
-    </S>
-    <S id="S00365">
-        <FORM kindOf="original">'Afaten namo koya hasa'adipel!</FORM>
-        <PHON kindOf="original">ʡa[f|v|b]atən namo koja ħasaʡaɬipəɾ</PHON>
-        <FORM kindOf="standard">'Afaten namo koya hasa'adipel!</FORM>
-        <PHON kindOf="standard">ʡafatən nam[o|u] k[o|u]ja ħasaʡa[ɬ|ɮ]ipəɾ</PHON>
-        <TRANSL xml:lang="zho">你們去把要做籬笆的芒草枝砍來！</TRANSL>
     </S>
     <S id="S00366">
         <FORM kindOf="original">O sikawasay no niyaro' ko mami'afedo'ay.</FORM>
@@ -2530,13 +2464,6 @@
         <FORM kindOf="standard">'Afiliden ko wawa.</FORM>
         <PHON kindOf="standard">ʡafiɾi[ɬ|ɮ]ən k[o|u] wawa</PHON>
         <TRANSL xml:lang="zho">把孩子抱起來一下。</TRANSL>
-    </S>
-    <S id="S00378">
-        <FORM kindOf="original">'Afiliden ko wawa.</FORM>
-        <PHON kindOf="original">ʡa[f|v|b]iɾiɬən ko wawa</PHON>
-        <FORM kindOf="standard">'Afiliden ko wawa.</FORM>
-        <PHON kindOf="standard">ʡafiɾi[ɬ|ɮ]ən k[o|u] wawa</PHON>
-        <TRANSL xml:lang="zho">把孩子抱起來。</TRANSL>
     </S>
     <S id="S00379">
         <FORM kindOf="original">Nipalomaan ni faki a 'afinong awaay ko heci.</FORM>
@@ -2698,13 +2625,7 @@
         <FORM kindOf="standard">'Ahemaw a tengilen.</FORM>
         <PHON kindOf="standard">ʡaħəmaw a təŋiɾən</PHON>
         <TRANSL xml:lang="zho">聽起來很輕柔。</TRANSL>
-    </S>
-    <S id="S00406">
-        <FORM kindOf="original">'Ahemaw a tengilen.</FORM>
-        <PHON kindOf="original">ʡaħəmaw a təŋiɾən</PHON>
-        <FORM kindOf="standard">'Ahemaw a tengilen.</FORM>
-        <PHON kindOf="standard">ʡaħəmaw a təŋiɾən</PHON>
-        <TRANSL xml:lang="zho">聽起來沒什麼分量。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">聽起來沒什麼分量。</TRANSL>
     </S>
     <S id="S00407">
         <FORM kindOf="original">'Ahemaway koni a lipa iso.</FORM>
@@ -2885,6 +2806,7 @@
         <FORM kindOf="standard">Ma'akonalay ko tato'asan ni Namoh.</FORM>
         <PHON kindOf="standard">maʡak[o|u]naɾaj k[o|u] tat[o|u]ʡasan ni nam[o|u]ħ</PHON>
         <TRANSL xml:lang="zho">Namoh有禿毛頭的遺傳。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">Namoh的親族是禿頂的。</TRANSL>
     </S>
     <S id="S00437">
         <FORM kindOf="original">Ma'analay ci Namoh.</FORM>
@@ -3158,6 +3080,7 @@
         <FORM kindOf="standard">'Alepaday a kaying.</FORM>
         <PHON kindOf="standard">ʡaɾəpa[ɬ|ɮ]aj a kajiŋ</PHON>
         <TRANSL xml:lang="zho">成群結隊的小姐。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">成群結隊的姑娘。</TRANSL>
     </S>
     <S id="S00479">
         <FORM kindOf="original">'Alepaday ko tatayra a tamdaw.</FORM>
@@ -3165,13 +3088,6 @@
         <FORM kindOf="standard">'Alepaday ko tatayra a tamdaw.</FORM>
         <PHON kindOf="standard">ʡaɾəpa[ɬ|ɮ]aj k[o|u] tatajra a tam[ɬ|ɮ]aw</PHON>
         <TRANSL xml:lang="zho">要去的人成群結隊的。</TRANSL>
-    </S>
-    <S id="S00480">
-        <FORM kindOf="original">'Alepaday a kaying.</FORM>
-        <PHON kindOf="original">ʡaɾəpaɬaj a kajiŋ</PHON>
-        <FORM kindOf="standard">'Alepaday a kaying.</FORM>
-        <PHON kindOf="standard">ʡaɾəpa[ɬ|ɮ]aj a kajiŋ</PHON>
-        <TRANSL xml:lang="zho">成群結隊的姑娘。</TRANSL>
     </S>
     <S id="S00481">
         <FORM kindOf="original">'Alepadsa canira a misalama.</FORM>
@@ -3340,13 +3256,7 @@
         <FORM kindOf="standard">'Alingayen iso anocila.</FORM>
         <PHON kindOf="standard">ʡaɾiŋajən is[o|u] an[o|u]ʦiɾa</PHON>
         <TRANSL xml:lang="zho">你明天去割白茅草。</TRANSL>
-    </S>
-    <S id="S00507">
-        <FORM kindOf="original">'Alingayen iso anocila.</FORM>
-        <PHON kindOf="original">ʡaɾiŋajən iso anoʦiɾa</PHON>
-        <FORM kindOf="standard">'Alingayen iso anocila.</FORM>
-        <PHON kindOf="standard">ʡaɾiŋajən is[o|u] an[o|u]ʦiɾa</PHON>
-        <TRANSL xml:lang="zho">你明天去砍白茅草。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">你明天去砍白茅草。</TRANSL>
     </S>
     <S id="S00508">
         <FORM kindOf="original">Mi'alip.</FORM>
@@ -3361,6 +3271,7 @@
         <FORM kindOf="standard">Mala'alip ko mararamoday.</FORM>
         <PHON kindOf="standard">maɾaʡaɾip k[o|u] mararam[o|u][ɬ|ɮ]aj</PHON>
         <TRANSL xml:lang="zho">夫妻交媾。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">夫妻在做愛。</TRANSL>
     </S>
     <S id="S00510">
         <FORM kindOf="original">Miyatmiyat sa ko 'alipaonay.</FORM>
@@ -3466,13 +3377,7 @@
         <FORM kindOf="standard">'Aliwalen koni haw!</FORM>
         <PHON kindOf="standard">ʡaɾiwaɾən k[o|u]ni ħaw</PHON>
         <TRANSL xml:lang="zho">把這棵槭樹砍去吧！</TRANSL>
-    </S>
-    <S id="S00526">
-        <FORM kindOf="original">'Aliwalen koni haw!</FORM>
-        <PHON kindOf="original">ʡaɾiwaɾən koni ħaw</PHON>
-        <FORM kindOf="standard">'Aliwalen koni haw!</FORM>
-        <PHON kindOf="standard">ʡaɾiwaɾən k[o|u]ni ħaw</PHON>
-        <TRANSL xml:lang="zho">這竹子可以砍來當釣竿嗎?</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">這竹子可以砍來當釣竿嗎?</TRANSL>
     </S>
     <S id="S00527">
         <FORM kindOf="original">Ma'aliwatec no saso'ot no kolong ko kamay no kaka.</FORM>
@@ -3711,13 +3616,7 @@
         <FORM kindOf="standard">Aka 'alopalen ko mako!</FORM>
         <PHON kindOf="standard">aka ʡaɾ[o|u]paɾən k[o|u] mak[o|u]</PHON>
         <TRANSL xml:lang="zho">不要摘我的柿子！</TRANSL>
-    </S>
-    <S id="S00562">
-        <FORM kindOf="original">Aka 'alopalen ko mako!</FORM>
-        <PHON kindOf="original">aka ʡaɾopaɾən ko mako</PHON>
-        <FORM kindOf="standard">Aka 'alopalen ko mako!</FORM>
-        <PHON kindOf="standard">aka ʡaɾ[o|u]paɾən k[o|u] mak[o|u]</PHON>
-        <TRANSL xml:lang="zho">不要砍我的柿子樹！</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">不要砍我的柿子樹！</TRANSL>
     </S>
     <S id="S00563">
         <FORM kindOf="original">Adihay ko 'alopaynay i lawac no cinemnemay to dadayadaya.</FORM>
@@ -3880,13 +3779,6 @@
         <PHON kindOf="standard">saʡamanaɾ sa taŋaɾ n[o|u]ra kapaħ</PHON>
         <TRANSL xml:lang="zho">那青年的頭都禿毛了。</TRANSL>
     </S>
-    <S id="S00586">
-        <FORM kindOf="original">Ma'akonalay ko tato'asan ni Namoh.</FORM>
-        <PHON kindOf="original">maʡakonaɾaj ko tatoʡasan ni namoħ</PHON>
-        <FORM kindOf="standard">Ma'akonalay ko tato'asan ni Namoh.</FORM>
-        <PHON kindOf="standard">maʡak[o|u]naɾaj k[o|u] tat[o|u]ʡasan ni nam[o|u]ħ</PHON>
-        <TRANSL xml:lang="zho">Namoh的親族是禿頂的。</TRANSL>
-    </S>
     <S id="S00587">
         <FORM kindOf="original">'Amanalay a takos.</FORM>
         <PHON kindOf="original">ʡamanaɾaj a takos</PHON>
@@ -4019,13 +3911,7 @@
         <FORM kindOf="standard">Mapatayay to kora 'anac, 'anacen to!</FORM>
         <PHON kindOf="standard">mapatajaj t[o|u] k[o|u]ra ʡanaʦ ʡanaʦən t[o|u]</PHON>
         <TRANSL xml:lang="zho">那棵柳樹已經死了，砍了吧！</TRANSL>
-    </S>
-    <S id="S00607">
-        <FORM kindOf="original">Mapatayay to kora 'anac, 'anacen to!</FORM>
-        <PHON kindOf="original">mapatajaj to kora ʡanaʦ ʡanaʦən to</PHON>
-        <FORM kindOf="standard">Mapatayay to kora 'anac, 'anacen to!</FORM>
-        <PHON kindOf="standard">mapatajaj t[o|u] k[o|u]ra ʡanaʦ ʡanaʦən t[o|u]</PHON>
-        <TRANSL xml:lang="zho">那棵山苧已經枯萎了，砍了吧！</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">那棵山苧已經枯萎了，砍了吧！</TRANSL>
     </S>
     <S id="S00608">
         <FORM kindOf="original">Ira tayni ci 'Anal.</FORM>
@@ -4201,13 +4087,7 @@
         <FORM kindOf="standard">'Angaden koni kakaenen.</FORM>
         <PHON kindOf="standard">ʡaŋa[ɬ|ɮ]ən k[o|u]ni kakaənən</PHON>
         <TRANSL xml:lang="zho">把食物整塊拿去。</TRANSL>
-    </S>
-    <S id="S00634">
-        <FORM kindOf="original">'Angaden koni kakaenen.</FORM>
-        <PHON kindOf="original">ʡaŋaɬən koni kakaənən</PHON>
-        <FORM kindOf="standard">'Angaden koni kakaenen.</FORM>
-        <PHON kindOf="standard">ʡaŋa[ɬ|ɮ]ən k[o|u]ni kakaənən</PHON>
-        <TRANSL xml:lang="zho">把食物整塊拿好。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">把食物整塊拿好。</TRANSL>
     </S>
     <S id="S00635">
         <FORM kindOf="original">'Angangac sa ko karayan anini.</FORM>
@@ -4509,13 +4389,7 @@
         <FORM kindOf="standard">Pakakaay ko 'angsot itini.</FORM>
         <PHON kindOf="standard">pakakaaj k[o|u] ʡaŋs[o|u]t itini</PHON>
         <TRANSL xml:lang="zho">這裡的燒焦味濃極了。</TRANSL>
-    </S>
-    <S id="S00688">
-        <FORM kindOf="original">Pakakaay ko 'angsot itini.</FORM>
-        <PHON kindOf="original">pakakaaj ko ʡaŋsot itini</PHON>
-        <FORM kindOf="standard">Pakakaay ko 'angsot itini.</FORM>
-        <PHON kindOf="standard">pakakaaj k[o|u] ʡaŋs[o|u]t itini</PHON>
-        <TRANSL xml:lang="zho">這裡的燒焦味很濃。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">這裡的燒焦味很濃。</TRANSL>
     </S>
     <S id="S00689">
         <FORM kindOf="original">'Angsotay ko itiraay to itiniay.</FORM>
@@ -4870,6 +4744,7 @@
         <FORM kindOf="standard">'Aos no riyal</FORM>
         <PHON kindOf="standard">ʡa[o|u]s n[o|u] rijaɾ</PHON>
         <TRANSL xml:lang="zho">海螺。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">海小螺。</TRANSL>
     </S>
     <S id="S00745">
         <FORM kindOf="original">Micelem miala ci Lisin to 'aos no riyal.</FORM>
@@ -4877,13 +4752,6 @@
         <FORM kindOf="standard">Micelem miala ci Lisin to 'aos no riyal.</FORM>
         <PHON kindOf="standard">miʦəɾəm miaɾa ʦi ɾisin t[o|u] ʡa[o|u]s n[o|u] rijaɾ</PHON>
         <TRANSL xml:lang="zho">Lisin去潛水撿海螺。</TRANSL>
-    </S>
-    <S id="S00746">
-        <FORM kindOf="original">'Aos no riyal</FORM>
-        <PHON kindOf="original">ʡaos no rijaɾ</PHON>
-        <FORM kindOf="standard">'Aos no riyal</FORM>
-        <PHON kindOf="standard">ʡa[o|u]s n[o|u] rijaɾ</PHON>
-        <TRANSL xml:lang="zho">海小螺。</TRANSL>
     </S>
     <S id="S00747">
         <FORM kindOf="original">Mipodpod kako to 'aosan.</FORM>
@@ -4905,13 +4773,7 @@
         <FORM kindOf="standard">Aka 'aosen a nisalama!</FORM>
         <PHON kindOf="standard">aka ʡa[o|u]sən a nisaɾama</PHON>
         <TRANSL xml:lang="zho">不要捉蝸牛玩！</TRANSL>
-    </S>
-    <S id="S00750">
-        <FORM kindOf="original">Aka 'aosen a nisalama!</FORM>
-        <PHON kindOf="original">aka ʡaosən a nisaɾama</PHON>
-        <FORM kindOf="standard">Aka 'aosen a nisalama!</FORM>
-        <PHON kindOf="standard">aka ʡa[o|u]sən a nisaɾama</PHON>
-        <TRANSL xml:lang="zho">不要捉小蝸牛玩！</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">不要捉小蝸牛玩！</TRANSL>
     </S>
     <S id="S00751">
         <FORM kindOf="original">Adihay i Nowarian ko 'aowang.</FORM>
@@ -5150,6 +5012,7 @@
         <FORM kindOf="standard">'Apengpengay a tamdaw.</FORM>
         <PHON kindOf="standard">ʡapəŋpəŋaj a tam[ɬ|ɮ]aw</PHON>
         <TRANSL xml:lang="zho">胖墩的人。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">胖墩兒。</TRANSL>
     </S>
     <S id="S00792">
         <FORM kindOf="original">'Apengpengay cinira caka pakafilo a romakat.</FORM>
@@ -5157,13 +5020,6 @@
         <FORM kindOf="standard">'Apengpengay cinira caka pakafilo a romakat.</FORM>
         <PHON kindOf="standard">ʡapəŋpəŋaj ʦinira ʦaka pakafiɾ[o|u] a r[o|u]makat</PHON>
         <TRANSL xml:lang="zho">他胖墩墩的走不了路。</TRANSL>
-    </S>
-    <S id="S00793">
-        <FORM kindOf="original">'Apengpengay a tamdaw.</FORM>
-        <PHON kindOf="original">ʡapəŋpəŋaj a tamɬaw</PHON>
-        <FORM kindOf="standard">'Apengpengay a tamdaw.</FORM>
-        <PHON kindOf="standard">ʡapəŋpəŋaj a tam[ɬ|ɮ]aw</PHON>
-        <TRANSL xml:lang="zho">胖墩兒。</TRANSL>
     </S>
     <S id="S00794">
         <FORM kindOf="original">'Apesak ko hemay.</FORM>
@@ -5192,6 +5048,7 @@
         <FORM kindOf="standard">'Apesakay a hemay.</FORM>
         <PHON kindOf="standard">ʡapəsakaj a ħəmaj</PHON>
         <TRANSL xml:lang="zho">沒黏性的飯。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">沒黏性的粥。</TRANSL>
     </S>
     <S id="S00798">
         <FORM kindOf="original">'Apesakay ko horo.</FORM>
@@ -5199,13 +5056,6 @@
         <FORM kindOf="standard">'Apesakay ko horo.</FORM>
         <PHON kindOf="standard">ʡapəsakaj k[o|u] ħ[o|u]r[o|u]</PHON>
         <TRANSL xml:lang="zho">飯沒有黏性。</TRANSL>
-    </S>
-    <S id="S00799">
-        <FORM kindOf="original">'Apesakay a hemay.</FORM>
-        <PHON kindOf="original">ʡapəsakaj a ħəmaj</PHON>
-        <FORM kindOf="standard">'Apesakay a hemay.</FORM>
-        <PHON kindOf="standard">ʡapəsakaj a ħəmaj</PHON>
-        <TRANSL xml:lang="zho">沒黏性的粥。</TRANSL>
     </S>
     <S id="S00800">
         <FORM kindOf="original">'Api a pawli.</FORM>
@@ -5339,19 +5189,13 @@
         <FORM kindOf="standard">'Aporaway a 'asisiw.</FORM>
         <PHON kindOf="standard">ʡap[o|u]rawaj a ʡasisiw</PHON>
         <TRANSL xml:lang="zho">堆滿滿而冒尖的稻草。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">堆滿而冒尖的稻草。</TRANSL>
     </S>
     <S id="S00819">
         <FORM kindOf="original">'Aporaway ko</FORM>
         <PHON kindOf="original">ʡaporawaj ko</PHON>
         <FORM kindOf="standard">'Aporaway ko</FORM>
         <PHON kindOf="standard">ʡap[o|u]rawaj k[o|u]</PHON>
-    </S>
-    <S id="S00820">
-        <FORM kindOf="original">'Aporaway a 'asisiw.</FORM>
-        <PHON kindOf="original">ʡaporawaj a ʡasisiw</PHON>
-        <FORM kindOf="standard">'Aporaway a 'asisiw.</FORM>
-        <PHON kindOf="standard">ʡap[o|u]rawaj a ʡasisiw</PHON>
-        <TRANSL xml:lang="zho">堆滿而冒尖的稻草。</TRANSL>
     </S>
     <S id="S00821">
         <FORM kindOf="original">Ci'icel mi'apotol to pawti ci Safolo.</FORM>
@@ -5806,13 +5650,7 @@
         <FORM kindOf="standard">Aka 'arien ko dadingoan ako!</FORM>
         <PHON kindOf="standard">aka ʡariən k[o|u] [ɬ|ɮ]a[ɬ|ɮ]iŋ[o|u]an ak[o|u]</PHON>
         <TRANSL xml:lang="zho">不要打破我的眼鏡。</TRANSL>
-    </S>
-    <S id="S00894">
-        <FORM kindOf="original">Aka 'arien ko dadingoan ako!</FORM>
-        <PHON kindOf="original">aka ʡariən ko ɬaɬiŋoan ako</PHON>
-        <FORM kindOf="standard">Aka 'arien ko dadingoan ako!</FORM>
-        <PHON kindOf="standard">aka ʡariən k[o|u] [ɬ|ɮ]a[ɬ|ɮ]iŋ[o|u]an ak[o|u]</PHON>
-        <TRANSL xml:lang="zho">不要打碎我的眼鏡。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">不要打碎我的眼鏡。</TRANSL>
     </S>
     <S id="S00895">
         <FORM kindOf="original">O 'arikak ko sapariri' a mipatiked.</FORM>
@@ -6170,13 +6008,7 @@
         <FORM kindOf="standard">'Atapaen ako.</FORM>
         <PHON kindOf="standard">ʡatapaən ak[o|u]</PHON>
         <TRANSL xml:lang="zho">我一定要抓'atapa魚。</TRANSL>
-    </S>
-    <S id="S00948">
-        <FORM kindOf="original">'Atapaen ako.</FORM>
-        <PHON kindOf="original">ʡatapaən ako</PHON>
-        <FORM kindOf="standard">'Atapaen ako.</FORM>
-        <PHON kindOf="standard">ʡatapaən ak[o|u]</PHON>
-        <TRANSL xml:lang="zho">我要抓到國寶魚。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我要抓到國寶魚。</TRANSL>
     </S>
     <S id="S00949">
         <FORM kindOf="original">Pakaka ko 'atarang itini.</FORM>
@@ -7045,13 +6877,7 @@
         <FORM kindOf="standard">'Edongen ko kiping!</FORM>
         <PHON kindOf="standard">ʡə[ɬ|ɮ][o|u]ŋən k[o|u] kipiŋ</PHON>
         <TRANSL xml:lang="zho">把傳統服飾的上衣穿上！</TRANSL>
-    </S>
-    <S id="S01080">
-        <FORM kindOf="original">'Edongen ko kiping!</FORM>
-        <PHON kindOf="original">ʡəɬoŋən ko kipiŋ</PHON>
-        <FORM kindOf="standard">'Edongen ko kiping!</FORM>
-        <PHON kindOf="standard">ʡə[ɬ|ɮ][o|u]ŋən k[o|u] kipiŋ</PHON>
-        <TRANSL xml:lang="zho">把傳統上衣穿上！</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">把傳統上衣穿上！</TRANSL>
     </S>
     <S id="S01081">
         <FORM kindOf="original">O cecay a 'edop no hana.</FORM>
@@ -7108,13 +6934,7 @@
         <FORM kindOf="standard">'Efawen ko kamaomahan niyam!</FORM>
         <PHON kindOf="standard">ʡəfawən k[o|u] kama[o|u]maħan nijam</PHON>
         <TRANSL xml:lang="zho">把我們的農活包了吧！</TRANSL>
-    </S>
-    <S id="S01089">
-        <FORM kindOf="original">'Efawen ko kamaomahan niyam!</FORM>
-        <PHON kindOf="original">ʡə[f|v|b]awən ko kamaomaħan nijam</PHON>
-        <FORM kindOf="standard">'Efawen ko kamaomahan niyam!</FORM>
-        <PHON kindOf="standard">ʡəfawən k[o|u] kama[o|u]maħan nijam</PHON>
-        <TRANSL xml:lang="zho">把我們的農田包了吧！</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">把我們的農田包了吧！</TRANSL>
     </S>
     <S id="S01090">
         <FORM kindOf="original">'Efecen ningra ko tao a somowal.</FORM>
@@ -7136,6 +6956,7 @@
         <FORM kindOf="standard">'Efecen ko tadasay.</FORM>
         <PHON kindOf="standard">ʡəfəʦən k[o|u] ta[ɬ|ɮ]asaj</PHON>
         <TRANSL xml:lang="zho">把頭帕纏上。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">把頭巾纏繞頭部。</TRANSL>
     </S>
     <S id="S01093">
         <FORM kindOf="original">Ma'efec iso ko sanokay ako.</FORM>
@@ -7150,13 +6971,6 @@
         <FORM kindOf="standard">'Efecen iso kako minokay.</FORM>
         <PHON kindOf="standard">ʡəfəʦən is[o|u] kak[o|u] min[o|u]kaj</PHON>
         <TRANSL xml:lang="zho">你阻止我回家。</TRANSL>
-    </S>
-    <S id="S01095">
-        <FORM kindOf="original">'Efecen ko tadasay.</FORM>
-        <PHON kindOf="original">ʡə[f|v|b]əʦən ko taɬasaj</PHON>
-        <FORM kindOf="standard">'Efecen ko tadasay.</FORM>
-        <PHON kindOf="standard">ʡəfəʦən k[o|u] ta[ɬ|ɮ]asaj</PHON>
-        <TRANSL xml:lang="zho">把頭巾纏繞頭部。</TRANSL>
     </S>
     <S id="S01096">
         <FORM kindOf="original">Efek han ni Sera ko ya tatiihay tamdaw.</FORM>
@@ -7521,6 +7335,7 @@
         <FORM kindOf="standard">'Emecen ko li'el ira.</FORM>
         <PHON kindOf="standard">ʡəməʦən k[o|u] ɾiʡəɾ ira</PHON>
         <TRANSL xml:lang="zho">把他的脖子夾住。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">把他的脖子掐住住。</TRANSL>
     </S>
     <S id="S01152">
         <FORM kindOf="original">'Emecen a mipatay.</FORM>
@@ -7528,13 +7343,6 @@
         <FORM kindOf="standard">'Emecen a mipatay.</FORM>
         <PHON kindOf="standard">ʡəməʦən a mipataj</PHON>
         <TRANSL xml:lang="zho">掐死。</TRANSL>
-    </S>
-    <S id="S01153">
-        <FORM kindOf="original">'Emecen ko li'el ira.</FORM>
-        <PHON kindOf="original">ʡəməʦən ko ɾiʡəɾ ira</PHON>
-        <FORM kindOf="standard">'Emecen ko li'el ira.</FORM>
-        <PHON kindOf="standard">ʡəməʦən k[o|u] ɾiʡəɾ ira</PHON>
-        <TRANSL xml:lang="zho">把他的脖子掐住住。</TRANSL>
     </S>
     <S id="S01154">
         <FORM kindOf="original">O sapad a 'emel.</FORM>
@@ -7661,13 +7469,7 @@
         <FORM kindOf="standard">Pa'icelay a 'enecen.</FORM>
         <PHON kindOf="standard">paʡiʦəɾaj a ʡənəʦən</PHON>
         <TRANSL xml:lang="zho">（他）捏得很用力了。</TRANSL>
-    </S>
-    <S id="S01172">
-        <FORM kindOf="original">Pa'icelay a 'enecen.</FORM>
-        <PHON kindOf="original">paʡiʦəɾaj a ʡənəʦən</PHON>
-        <FORM kindOf="standard">Pa'icelay a 'enecen.</FORM>
-        <PHON kindOf="standard">paʡiʦəɾaj a ʡənəʦən</PHON>
-        <TRANSL xml:lang="zho">（他）很用力的壓住了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">（他）很用力的壓住了。</TRANSL>
     </S>
     <S id="S01173">
         <FORM kindOf="original">'Enem ko toki.</FORM>
@@ -7794,13 +7596,6 @@
         <FORM kindOf="standard">'Enocen ko sapaiyo.</FORM>
         <PHON kindOf="standard">ʡən[o|u]ʦən k[o|u] sapaij[o|u]</PHON>
         <TRANSL xml:lang="zho">把藥吞下去。</TRANSL>
-    </S>
-    <S id="S01191">
-        <FORM kindOf="original">'Enor no tingting.</FORM>
-        <PHON kindOf="original">ʡənor no tiŋtiŋ</PHON>
-        <FORM kindOf="standard">'Enor no tingting.</FORM>
-        <PHON kindOf="standard">ʡən[o|u]r n[o|u] tiŋtiŋ</PHON>
-        <TRANSL xml:lang="zho">秤坨。</TRANSL>
     </S>
     <S id="S01192">
         <FORM kindOf="original">'Enor no tingting.</FORM>
@@ -8061,25 +7856,13 @@
         <PHON kindOf="standard">maɾ[o|u]ʡəri[ɬ|ɮ] n[o|u] sapatikə[ɬ|ɮ] k[o|u]na ʡa[o|u]ɾ</PHON>
         <TRANSL xml:lang="zho">這竹子可以做釣魚竿。</TRANSL>
     </S>
-    <S id="S01229">
-        <FORM kindOf="original">Malo'erid no sapatiked kona 'aol.</FORM>
-        <PHON kindOf="original">maɾoʡəriɬ no sapatikəɬ kona ʡaoɾ</PHON>
-        <FORM kindOf="standard">Malo'erid no sapatiked kona 'aol.</FORM>
-        <PHON kindOf="standard">maɾ[o|u]ʡəri[ɬ|ɮ] n[o|u] sapatikə[ɬ|ɮ] k[o|u]na ʡa[o|u]ɾ</PHON>
-    </S>
     <S id="S01230">
         <FORM kindOf="original">'Eriden to ako ko 'a'adopen.</FORM>
         <PHON kindOf="original">ʡəriɬən to ako ko ʡaʡaɬopən</PHON>
         <FORM kindOf="standard">'Eriden to ako ko 'a'adopen.</FORM>
         <PHON kindOf="standard">ʡəri[ɬ|ɮ]ən t[o|u] ak[o|u] k[o|u] ʡaʡa[ɬ|ɮ][o|u]pən</PHON>
         <TRANSL xml:lang="zho">我用套竿把野獸捕捉了。</TRANSL>
-    </S>
-    <S id="S01231">
-        <FORM kindOf="original">'Eriden to ako ko 'a'adopen.</FORM>
-        <PHON kindOf="original">ʡəriɬən to ako ko ʡaʡaɬopən</PHON>
-        <FORM kindOf="standard">'Eriden to ako ko 'a'adopen.</FORM>
-        <PHON kindOf="standard">ʡəri[ɬ|ɮ]ən t[o|u] ak[o|u] k[o|u] ʡaʡa[ɬ|ɮ][o|u]pən</PHON>
-        <TRANSL xml:lang="zho">我用套圈把野獸捕捉了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我用套圈把野獸捕捉了。</TRANSL>
     </S>
     <S id="S01232">
         <FORM kindOf="original">'Eroc sato ko sinang no fonos to pita'ta'an to kasoy.</FORM>
@@ -8864,6 +8647,7 @@
         <FORM kindOf="standard">Mi'imac to impic.</FORM>
         <PHON kindOf="standard">miʡimaʦ t[o|u] impiʦ</PHON>
         <TRANSL xml:lang="zho">削鉛筆。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">把鉛筆削尖。</TRANSL>
     </S>
     <S id="S01345">
         <FORM kindOf="original">'Imacen ko 'aol ha'adipel.</FORM>
@@ -9228,6 +9012,7 @@
         <FORM kindOf="standard">Mi'isa'is ko kolong i kilang.</FORM>
         <PHON kindOf="standard">miʡisaʡis k[o|u] k[o|u]ɾ[o|u]ŋ i kiɾaŋ</PHON>
         <TRANSL xml:lang="zho">牛藉樹根摩擦身體。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">牛在樹幹上磨擦身體。</TRANSL>
     </S>
     <S id="S01397">
         <FORM kindOf="original">'Isa'isen kona sapad to tawasi.</FORM>
@@ -10541,9 +10326,12 @@
     <S id="S01584">
         <FORM kindOf="original">kafoti'an</FORM>
         <PHON kindOf="original">ka[f|v|b]otiʡan</PHON>
+        <FORM kindOf="original" ver="alt">kafuti'an</FORM>
         <FORM kindOf="standard">kafoti'an</FORM>
         <PHON kindOf="standard">kaf[o|u]tiʡan</PHON>
+        <FORM kindOf="standard" ver="alt">kafoti'an</FORM>
         <TRANSL xml:lang="zho">睡覺的地方或時間。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">睡覺時間、地點。</TRANSL>
     </S>
     <S id="S01585">
         <FORM kindOf="original">tifekan</FORM>
@@ -11117,6 +10905,7 @@
         <FORM kindOf="standard">Awa ko mimimiming aca a fali.</FORM>
         <PHON kindOf="standard">awa k[o|u] mimimimiŋ aʦa a faɾi</PHON>
         <TRANSL xml:lang="zho">哪怕一點點風也沒有。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">一點兒風也沒有。</TRANSL>
     </S>
     <S id="S01664">
         <FORM kindOf="original">Mana tayni aca kiso?</FORM>
@@ -11830,6 +11619,7 @@
         <FORM kindOf="standard">Aka pitamako!</FORM>
         <PHON kindOf="standard">aka pitamak[o|u]</PHON>
         <TRANSL xml:lang="zho">不要抽煙！</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">禁止吸煙！</TRANSL>
     </S>
     <S id="S01765">
         <FORM kindOf="original">Aka toka a matayal.</FORM>
@@ -13631,6 +13421,7 @@
         <FORM kindOf="standard">A macowa to katayni to a malafi.</FORM>
         <PHON kindOf="standard">a maʦ[o|u]wa t[o|u] katajni t[o|u] a maɾafi</PHON>
         <TRANSL xml:lang="zho">不管怎麼樣一定要來吃晚飯。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">不管怎麼樣要來吃晚餐。</TRANSL>
     </S>
     <S id="S02021">
         <FORM kindOf="original">Mimaan kiso anomamiheca saw?</FORM>
@@ -17620,13 +17411,6 @@
         <PHON kindOf="standard">maʦaħʦaħ k[o|u] rakat ni faki</PHON>
         <TRANSL xml:lang="zho">舅舅走路時在喘氣。</TRANSL>
     </S>
-    <S id="S02592">
-        <FORM kindOf="original">Macahedal to ko romi'ad.</FORM>
-        <PHON kindOf="original">maʦaħəɬaɾ to ko romiʡaɬ</PHON>
-        <FORM kindOf="standard">Macahedal to ko romi'ad.</FORM>
-        <PHON kindOf="standard">maʦaħə[ɬ|ɮ]aɾ t[o|u] k[o|u] r[o|u]miʡa[ɬ|ɮ]</PHON>
-        <TRANSL xml:lang="zho">天放晴了。</TRANSL>
-    </S>
     <S id="S02593">
         <FORM kindOf="original">Micahefak to tayal.</FORM>
         <PHON kindOf="original">miʦaħə[f|v|b]ak to tajaɾ</PHON>
@@ -19954,6 +19738,7 @@
         <FORM kindOf="standard">Macekok kako to katayni namo.</FORM>
         <PHON kindOf="standard">maʦək[o|u]k kak[o|u] t[o|u] katajni nam[o|u]</PHON>
         <TRANSL xml:lang="zho">我驚訝你們的到來。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">你們來讓我吃驚。</TRANSL>
     </S>
     <S id="S02926">
         <FORM kindOf="original">Cekoksa ko faloco' ako, caayto kaala ko fafuti'en ako.</FORM>
@@ -20430,13 +20215,7 @@
         <FORM kindOf="standard">Cengelsa to riko'.</FORM>
         <PHON kindOf="standard">ʦəŋəɾsa t[o|u] rik[o|u]ʡ</PHON>
         <TRANSL xml:lang="zho">於是衣服就染上了顏色。</TRANSL>
-    </S>
-    <S id="S02994">
-        <FORM kindOf="original">Cengelsa to riko'.</FORM>
-        <PHON kindOf="original">ʦəŋəɾsa to rikoʡ</PHON>
-        <FORM kindOf="standard">Cengelsa to riko'.</FORM>
-        <PHON kindOf="standard">ʦəŋəɾsa t[o|u] rik[o|u]ʡ</PHON>
-        <TRANSL xml:lang="zho">染上衣服。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">染上衣服。</TRANSL>
     </S>
     <S id="S02995">
         <FORM kindOf="original">Cicenget ko kolong.</FORM>
@@ -22166,6 +21945,7 @@
         <FORM kindOf="standard">Cicipingay a tilid.</FORM>
         <PHON kindOf="standard">ʦiʦipiŋaj a tiɾi[ɬ|ɮ]</PHON>
         <TRANSL xml:lang="zho">附加詞綴的字。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">有派生詞的字。</TRANSL>
     </S>
     <S id="S03242">
         <FORM kindOf="original">Cicipingay ko tarodo' a tamdaw.</FORM>
@@ -22173,13 +21953,6 @@
         <FORM kindOf="standard">Cicipingay ko tarodo' a tamdaw.</FORM>
         <PHON kindOf="standard">ʦiʦipiŋaj k[o|u] tar[o|u][ɬ|ɮ][o|u]ʡ a tam[ɬ|ɮ]aw</PHON>
         <TRANSL xml:lang="zho">手指多了一趾頭的人。</TRANSL>
-    </S>
-    <S id="S03243">
-        <FORM kindOf="original">Cicipingay a tilid.</FORM>
-        <PHON kindOf="original">ʦiʦipiŋaj a tiɾiɬ</PHON>
-        <FORM kindOf="standard">Cicipingay a tilid.</FORM>
-        <PHON kindOf="standard">ʦiʦipiŋaj a tiɾi[ɬ|ɮ]</PHON>
-        <TRANSL xml:lang="zho">有派生詞的字。</TRANSL>
     </S>
     <S id="S03244">
         <FORM kindOf="original">Misanga' to cicir.</FORM>
@@ -23976,6 +23749,7 @@
         <FORM kindOf="standard">Mifetik ko cikawasay.</FORM>
         <PHON kindOf="standard">mifətik k[o|u] ʦikawasaj</PHON>
         <TRANSL xml:lang="zho">巫師用手指彈酒祭祖靈。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">巫師在舉行滴酒祭。</TRANSL>
     </S>
     <S id="S03501">
         <FORM kindOf="original">Caay pakafilo to cikay ako cangra.</FORM>
@@ -24865,6 +24639,7 @@
         <FORM kindOf="standard">Cilinay kita to ka'oradan a romi'ad.</FORM>
         <PHON kindOf="standard">ʦiɾinaj kita t[o|u] kaʡ[o|u]ra[ɬ|ɮ]an a r[o|u]miʡa[ɬ|ɮ]</PHON>
         <TRANSL xml:lang="zho">下雨天我們要撐傘。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">下雨天我們打傘。</TRANSL>
     </S>
     <S id="S03628">
         <FORM kindOf="original">Cilinayay ci safa tayra i pitilidan.</FORM>
@@ -27574,6 +27349,7 @@
         <FORM kindOf="standard">Fesiw sa ko timela.</FORM>
         <PHON kindOf="standard">fəsiw sa k[o|u] timəɾa</PHON>
         <TRANSL xml:lang="zho">子彈呼嘯而過。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">弓彈急速飛過。</TRANSL>
     </S>
     <S id="S04015">
         <FORM kindOf="original">Ciwa' no harateng.</FORM>
@@ -32045,6 +31821,7 @@
         <FORM kindOf="standard">Tahasifed ko wa'a no siri i demedemetan.</FORM>
         <PHON kindOf="standard">taħasifə[ɬ|ɮ] k[o|u] waʡa n[o|u] siri i [ɬ|ɮ]əmə[ɬ|ɮ]əmətan</PHON>
         <TRANSL xml:lang="zho">羊角被灌木叢絆住了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">羊角掛到草叢。</TRANSL>
     </S>
     <S id="S04655">
         <FORM kindOf="original">Iraay ko 'a'adopen i demedmetan.</FORM>
@@ -32997,6 +32774,7 @@
         <FORM kindOf="standard">Misadoa to ko kakarayan i naikoran faliyos.</FORM>
         <PHON kindOf="standard">misa[ɬ|ɮ][o|u]a t[o|u] k[o|u] kakarajan i naik[o|u]ran faɾij[o|u]s</PHON>
         <TRANSL xml:lang="zho">暴風雨後天空平靜。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">颱風過後天空很平靜。</TRANSL>
     </S>
     <S id="S04790">
         <FORM kindOf="original">Docoh sa ci Sera to fonos micocok tiya fafoy.</FORM>
@@ -33025,6 +32803,7 @@
         <FORM kindOf="standard">Madodem ko romi'ad.</FORM>
         <PHON kindOf="standard">ma[ɬ|ɮ][o|u][ɬ|ɮ]əm k[o|u] r[o|u]miʡa[ɬ|ɮ]</PHON>
         <TRANSL xml:lang="zho">天已昏暗了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">天色昏暗。</TRANSL>
     </S>
     <S id="S04794">
         <FORM kindOf="original">O dodoh no 'aol.</FORM>
@@ -33362,13 +33141,6 @@
         <PHON kindOf="standard">[ɬ|ɮ]a[ɬ|ɮ][o|u]t[o|u]sən n[o|u] t[o|u]ɾ[o|u]ʦ k[o|u] t[o|u]ʡas n[o|u] ʡamis a p[o|u]nka</PHON>
         <TRANSL xml:lang="zho">阿美族的後代要承襲傳統文化。</TRANSL>
     </S>
-    <S id="S04842">
-        <FORM kindOf="original">Misadoa to ko kakarayan i naikoran faliyos.</FORM>
-        <PHON kindOf="original">misaɬoa to ko kakarajan i naikoran [f|v|b]aɾijos</PHON>
-        <FORM kindOf="standard">Misadoa to ko kakarayan i naikoran faliyos.</FORM>
-        <PHON kindOf="standard">misa[ɬ|ɮ][o|u]a t[o|u] k[o|u] kakarajan i naik[o|u]ran faɾij[o|u]s</PHON>
-        <TRANSL xml:lang="zho">颱風過後天空很平靜。</TRANSL>
-    </S>
     <S id="S04843">
         <FORM kindOf="original">Ca'enget ko dowax.</FORM>
         <PHON kindOf="original">ʦaʡəŋət ko ɬowax</PHON>
@@ -33567,6 +33339,7 @@
         <FORM kindOf="standard">Fa'edeten ho ko fasaw.</FORM>
         <PHON kindOf="standard">faʡə[ɬ|ɮ]ətən ħ[o|u] k[o|u] fasaw</PHON>
         <TRANSL xml:lang="zho">把剰飯加熱一下。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">把剩飯熱一下。</TRANSL>
     </S>
     <S id="S04870">
         <FORM kindOf="original">Fa'eket kona pawti a 'orongen.</FORM>
@@ -35436,6 +35209,7 @@
         <FORM kindOf="standard">Mifahfah ko cikawasay.</FORM>
         <PHON kindOf="standard">mifaħfaħ k[o|u] ʦikawasaj</PHON>
         <TRANSL xml:lang="zho">巫師在作法驅邪。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">巫師施法驅逐惡靈。</TRANSL>
     </S>
     <S id="S05137">
         <FORM kindOf="original">Fahfahen ko totoy iso.</FORM>
@@ -37004,13 +36778,6 @@
         <FORM kindOf="standard">Fasaw a holo.</FORM>
         <PHON kindOf="standard">fasaw a ħ[o|u]ɾ[o|u]</PHON>
         <TRANSL xml:lang="zho">冷飯。</TRANSL>
-    </S>
-    <S id="S05361">
-        <FORM kindOf="original">Fa'edeten ho ko fasaw.</FORM>
-        <PHON kindOf="original">[f|v|b]aʡəɬətən ħo ko [f|v|b]asaw</PHON>
-        <FORM kindOf="standard">Fa'edeten ho ko fasaw.</FORM>
-        <PHON kindOf="standard">faʡə[ɬ|ɮ]ətən ħ[o|u] k[o|u] fasaw</PHON>
-        <TRANSL xml:lang="zho">把剩飯熱一下。</TRANSL>
     </S>
     <S id="S05362">
         <FORM kindOf="original">Fasawen ko fa'det no loma'.</FORM>
@@ -39854,9 +39621,12 @@
     <S id="S05768">
         <FORM kindOf="original">Tosa a folad.</FORM>
         <PHON kindOf="original">tosa a [f|v|b]oɾaɬ</PHON>
+        <FORM kindOf="original" ver="alt">Tosa a fulad.</FORM>
         <FORM kindOf="standard">Tosa a folad.</FORM>
         <PHON kindOf="standard">t[o|u]sa a f[o|u]ɾa[ɬ|ɮ]</PHON>
+        <FORM kindOf="standard" ver="alt">Tosa a folad.</FORM>
         <TRANSL xml:lang="zho">二個月。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">二月。</TRANSL>
     </S>
     <S id="S05769">
         <FORM kindOf="original">Mililifon kami to folafolad.</FORM>
@@ -44953,6 +44723,7 @@
         <FORM kindOf="standard">Karafiyal kiso hani!</FORM>
         <PHON kindOf="standard">karafijaɾ kis[o|u] ħani</PHON>
         <TRANSL xml:lang="zho">看你疲勞不堪的樣子啊！</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">瞧你疲勞不堪的樣子啊！</TRANSL>
     </S>
     <S id="S06498">
         <FORM kindOf="original">Tayra cangra hanima?</FORM>
@@ -47859,12 +47630,6 @@
         <PHON kindOf="standard">aka ħitərtərən</PHON>
         <TRANSL xml:lang="zho">不要屁股著地！</TRANSL>
     </S>
-    <S id="S06913">
-        <FORM kindOf="original">Caay katayni kiso hiwa.</FORM>
-        <PHON kindOf="original">ʦaaj katajni kiso ħiwa</PHON>
-        <FORM kindOf="standard">Caay katayni kiso hiwa.</FORM>
-        <PHON kindOf="standard">ʦaaj katajni kis[o|u] ħiwa</PHON>
-    </S>
     <S id="S06914">
         <FORM kindOf="original">Hiwatid sa ko aro' ningra.</FORM>
         <PHON kindOf="original">ħiwatiɬ sa ko aroʡ niŋra</PHON>
@@ -49453,6 +49218,7 @@
         <FORM kindOf="standard">Ikakaay ko kako'esit a fakeloh.</FORM>
         <PHON kindOf="standard">ikakaaj k[o|u] kak[o|u]ʡəsit a fakəɾ[o|u]ħ</PHON>
         <TRANSL xml:lang="zho">比較硬的石頭。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">非常堅硬的石頭。</TRANSL>
     </S>
     <S id="S07140">
         <FORM kindOf="original">Ikakaay ko kanga'ay no 'orip ningra.</FORM>
@@ -50755,6 +50521,7 @@
         <FORM kindOf="standard">Ma'iyof no fali ko kafong.</FORM>
         <PHON kindOf="standard">maʡij[o|u]f n[o|u] faɾi k[o|u] kaf[o|u]ŋ</PHON>
         <TRANSL xml:lang="zho">帽子被風吹掉。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">帽子被風吹走。</TRANSL>
     </S>
     <S id="S07326">
         <FORM kindOf="original">Iyofen ko losok.</FORM>
@@ -50930,13 +50697,6 @@
         <FORM kindOf="standard">Manikaw to ka'edah i kalifongan.</FORM>
         <PHON kindOf="standard">manikaw t[o|u] kaʡə[ɬ|ɮ]aħ i kaɾif[o|u]ŋan</PHON>
         <TRANSL xml:lang="zho">瘟疫流行期間很缺酒精。</TRANSL>
-    </S>
-    <S id="S07351">
-        <FORM kindOf="original">Ikakaay ko kako'esit a fakeloh.</FORM>
-        <PHON kindOf="original">ikakaaj ko kakoʡəsit a [f|v|b]akəɾoħ</PHON>
-        <FORM kindOf="standard">Ikakaay ko kako'esit a fakeloh.</FORM>
-        <PHON kindOf="standard">ikakaaj k[o|u] kak[o|u]ʡəsit a fakəɾ[o|u]ħ</PHON>
-        <TRANSL xml:lang="zho">非常堅硬的石頭。</TRANSL>
     </S>
     <S id="S07352">
         <FORM kindOf="original">O sapipatines ko ka'edongay a fakeloh.</FORM>
@@ -51356,13 +51116,6 @@
         <FORM kindOf="standard">I lalielan ko ka'oningan no riko'.</FORM>
         <PHON kindOf="standard">i ɾaɾiəɾan k[o|u] kaʡ[o|u]niŋan n[o|u] rik[o|u]ʡ</PHON>
         <TRANSL xml:lang="zho">領子是衣服骯髒之處。</TRANSL>
-    </S>
-    <S id="S07412">
-        <FORM kindOf="original">Cilinay kita to ka'oradan a romi'ad.</FORM>
-        <PHON kindOf="original">ʦiɾinaj kita to kaʡoraɬan a romiʡaɬ</PHON>
-        <FORM kindOf="standard">Cilinay kita to ka'oradan a romi'ad.</FORM>
-        <PHON kindOf="standard">ʦiɾinaj kita t[o|u] kaʡ[o|u]ra[ɬ|ɮ]an a r[o|u]miʡa[ɬ|ɮ]</PHON>
-        <TRANSL xml:lang="zho">下雨天我們打傘。</TRANSL>
     </S>
     <S id="S07413">
         <FORM kindOf="original">Ka'oripan ko omah.</FORM>
@@ -52334,6 +52087,7 @@
         <FORM kindOf="standard">Malifawa ko kaci'ing ako.</FORM>
         <PHON kindOf="standard">maɾifawa k[o|u] kaʦiʡiŋ ak[o|u]</PHON>
         <TRANSL xml:lang="zho">我臉頰腫起來。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我下額腫痛。</TRANSL>
     </S>
     <S id="S07553">
         <FORM kindOf="original">Itira i kaci'iwian no lalan a matatala kita.</FORM>
@@ -53607,6 +53361,7 @@
         <FORM kindOf="standard">Kadado'edo no sofoc.</FORM>
         <PHON kindOf="standard">ka[ɬ|ɮ]a[ɬ|ɮ][o|u]ʡə[ɬ|ɮ][o|u] n[o|u] s[o|u]f[o|u]ʦ</PHON>
         <TRANSL xml:lang="zho">家族系譜樹。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">家譜。</TRANSL>
     </S>
     <S id="S07735">
         <FORM kindOf="original">Do'edoen ko kadado'edo no tatayaen.</FORM>
@@ -53621,13 +53376,6 @@
         <FORM kindOf="standard">Lahecien ko kadado'edo no tayal.</FORM>
         <PHON kindOf="standard">ɾaħəʦiən k[o|u] ka[ɬ|ɮ]a[ɬ|ɮ][o|u]ʡə[ɬ|ɮ][o|u] n[o|u] tajaɾ</PHON>
         <TRANSL xml:lang="zho">請按順序完成。</TRANSL>
-    </S>
-    <S id="S07737">
-        <FORM kindOf="original">Kadado'edo no sofoc.</FORM>
-        <PHON kindOf="original">kaɬaɬoʡəɬo no so[f|v|b]oʦ</PHON>
-        <FORM kindOf="standard">Kadado'edo no sofoc.</FORM>
-        <PHON kindOf="standard">ka[ɬ|ɮ]a[ɬ|ɮ][o|u]ʡə[ɬ|ɮ][o|u] n[o|u] s[o|u]f[o|u]ʦ</PHON>
-        <TRANSL xml:lang="zho">家譜。</TRANSL>
     </S>
     <S id="S07738">
         <FORM kindOf="original">Kadao'edo no 'orip.</FORM>
@@ -62554,13 +62302,6 @@
         <PHON kindOf="standard">[o|u] karafiraŋaj tam[ɬ|ɮ]aw ʦi ʦaŋɾaħ</PHON>
         <TRANSL xml:lang="zho">Canglah 是愛生氣的人。</TRANSL>
     </S>
-    <S id="S09007">
-        <FORM kindOf="original">Karafiyal kiso hani!</FORM>
-        <PHON kindOf="original">kara[f|v|b]ijaɾ kiso ħani</PHON>
-        <FORM kindOf="standard">Karafiyal kiso hani!</FORM>
-        <PHON kindOf="standard">karafijaɾ kis[o|u] ħani</PHON>
-        <TRANSL xml:lang="zho">瞧你疲勞不堪的樣子啊！</TRANSL>
-    </S>
     <S id="S09008">
         <FORM kindOf="original">Maliteng to i,karafiyalay mafoti'.</FORM>
         <PHON kindOf="original">maɾitəŋ to ikara[f|v|b]ijaɾaj ma[f|v|b]otiʡ</PHON>
@@ -62979,6 +62720,7 @@
         <FORM kindOf="standard">Mikafitay i riko' ko ceka no karapolotay.</FORM>
         <PHON kindOf="standard">mikafitaj i rik[o|u]ʡ k[o|u] ʦəka n[o|u] karap[o|u]ɾ[o|u]taj</PHON>
         <TRANSL xml:lang="zho">咸豐草的刺會鈎在衣服上。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">鬼針草的刺會鈎在衣服上。</TRANSL>
     </S>
     <S id="S09068">
         <FORM kindOf="original">O tadamaanay a cikaen ko karapoy.</FORM>
@@ -63867,13 +63609,6 @@
         <PHON kindOf="standard">kar[o|u]t[o|u][ɬ|ɮ] k[o|u] [o|u]maħ</PHON>
         <TRANSL xml:lang="zho">水田崎嶇不平。</TRANSL>
     </S>
-    <S id="S09195">
-        <FORM kindOf="original">Mikafitay i riko' ko ceka no karapolotay.</FORM>
-        <PHON kindOf="original">mika[f|v|b]itaj i rikoʡ ko ʦəka no karapoɾotaj</PHON>
-        <FORM kindOf="standard">Mikafitay i riko' ko ceka no karapolotay.</FORM>
-        <PHON kindOf="standard">mikafitaj i rik[o|u]ʡ k[o|u] ʦəka n[o|u] karap[o|u]ɾ[o|u]taj</PHON>
-        <TRANSL xml:lang="zho">鬼針草的刺會鈎在衣服上。</TRANSL>
-    </S>
     <S id="S09196">
         <FORM kindOf="original">Mihawikid kami to karpes a mikasoy.</FORM>
         <PHON kindOf="original">miħawikiɬ kami to karpəs a mikasoj</PHON>
@@ -64405,6 +64140,7 @@
         <FORM kindOf="standard">Masasiromaroma ko kasasa'ersa'er no matayalay i sefo.</FORM>
         <PHON kindOf="standard">masasir[o|u]mar[o|u]ma k[o|u] kasasaʡərsaʡər n[o|u] matajaɾaj i səf[o|u]</PHON>
         <TRANSL xml:lang="zho">在政府內工作有不同的職位。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">各級政府部門有不同的工作。</TRANSL>
     </S>
     <S id="S09272">
         <FORM kindOf="original">Sepatay ko kasasa'ersa'er no finawlan i Iado.</FORM>
@@ -65672,6 +65408,7 @@
         <FORM kindOf="standard">Tolas no katomirengan.</FORM>
         <PHON kindOf="standard">t[o|u]ɾas n[o|u] kat[o|u]mirəŋan</PHON>
         <TRANSL xml:lang="zho">終點站。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">警戒線。</TRANSL>
     </S>
     <S id="S09453">
         <FORM kindOf="original">Komaen kako to heci no katop.</FORM>
@@ -66182,13 +65919,6 @@
         <FORM kindOf="standard">O kayto koma pasowalay i pasalamaan.</FORM>
         <PHON kindOf="standard">[o|u] kajt[o|u] k[o|u]ma pas[o|u]waɾaj i pasaɾamaan</PHON>
         <TRANSL xml:lang="zho">出遊時嚮導故解說。</TRANSL>
-    </S>
-    <S id="S09526">
-        <FORM kindOf="original">kafuti'an</FORM>
-        <PHON kindOf="original">ka[f|v|b]utiʡan</PHON>
-        <FORM kindOf="standard">kafoti'an</FORM>
-        <PHON kindOf="standard">kaf[o|u]tiʡan</PHON>
-        <TRANSL xml:lang="zho">睡覺時間、地點。</TRANSL>
     </S>
     <S id="S09527">
         <FORM kindOf="original">kaka^mangan</FORM>
@@ -73218,6 +72948,7 @@
         <FORM kindOf="standard">Mikorkor to sera.</FORM>
         <PHON kindOf="standard">mik[o|u]rk[o|u]r t[o|u] səra</PHON>
         <TRANSL xml:lang="zho">挖地。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">挖土。</TRANSL>
     </S>
     <S id="S10525">
         <FORM kindOf="original">Korkoren ako itira i pa'enan ko ta'angayay a refong.</FORM>
@@ -74940,6 +74671,7 @@
         <FORM kindOf="standard">o palakawan hananay no Fata'an ko fanaw.</FORM>
         <PHON kindOf="standard">[o|u] paɾakawan ħananaj n[o|u] fataʡan k[o|u] fanaw</PHON>
         <TRANSL xml:lang="zho">富田魚池叫palakawan.</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">富田叫養魚池為palakawan。</TRANSL>
     </S>
     <S id="S10772">
         <FORM kindOf="original">Tadamaanay cingra yo ma'oripho saka lakawas saan a kahemeken no tamdaw.</FORM>
@@ -75934,6 +75666,7 @@
         <FORM kindOf="standard">Malalico to sowal cangra.</FORM>
         <PHON kindOf="standard">maɾaɾiʦ[o|u] t[o|u] s[o|u]waɾ ʦaŋra</PHON>
         <TRANSL xml:lang="zho">他們持不同的意見。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">他們在爭論。</TRANSL>
     </S>
     <S id="S10914">
         <FORM kindOf="original">Milico ko sowal ningra.</FORM>
@@ -77955,6 +77688,7 @@
         <FORM kindOf="standard">Milayal to papah no tamako.</FORM>
         <PHON kindOf="standard">miɾajaɾ t[o|u] papaħ n[o|u] tamak[o|u]</PHON>
         <TRANSL xml:lang="zho">把煙葉掛著晾乾。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">晾乾煙葉。</TRANSL>
     </S>
     <S id="S11203">
         <FORM kindOf="original">Layalen ko maceleday a panay.</FORM>
@@ -78997,13 +78731,6 @@
         <PHON kindOf="standard">ɾifat n[o|u] ak[o|u]ma</PHON>
         <TRANSL xml:lang="zho">魔鬼的誘惑。</TRANSL>
     </S>
-    <S id="S11349">
-        <FORM kindOf="original">Malifawa ko kaci'ing ako.</FORM>
-        <PHON kindOf="original">maɾi[f|v|b]awa ko kaʦiʡiŋ ako</PHON>
-        <FORM kindOf="standard">Malifawa ko kaci'ing ako.</FORM>
-        <PHON kindOf="standard">maɾifawa k[o|u] kaʦiʡiŋ ak[o|u]</PHON>
-        <TRANSL xml:lang="zho">我下額腫痛。</TRANSL>
-    </S>
     <S id="S11350">
         <FORM kindOf="original">O lifes ko fali anini.</FORM>
         <PHON kindOf="original">o ɾi[f|v|b]əs ko [f|v|b]aɾi anini</PHON>
@@ -79647,6 +79374,7 @@
         <FORM kindOf="standard">Mililifon kami anocila.</FORM>
         <PHON kindOf="standard">miɾiɾif[o|u]n kami an[o|u]ʦiɾa</PHON>
         <TRANSL xml:lang="zho">明天我領薪。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">明天我們領工資。</TRANSL>
     </S>
     <S id="S11442">
         <FORM kindOf="original">Lilifonen i tawki.</FORM>
@@ -80333,6 +80061,7 @@
         <FORM kindOf="standard">Milipot to tamako.</FORM>
         <PHON kindOf="standard">miɾip[o|u]t t[o|u] tamak[o|u]</PHON>
         <TRANSL xml:lang="zho">捲菸葉。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">捲煙兒。</TRANSL>
     </S>
     <S id="S11540">
         <FORM kindOf="original">Cica^edong to lipot.</FORM>
@@ -80655,6 +80384,7 @@
         <FORM kindOf="standard">Militingas to herek no kaen.</FORM>
         <PHON kindOf="standard">miɾitiŋas t[o|u] ħərək n[o|u] kaən</PHON>
         <TRANSL xml:lang="zho">吃過飯剔除牙垢。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">吃過飯要剔牙齒。</TRANSL>
     </S>
     <S id="S11586">
         <FORM kindOf="original">Litingasen no wawa ko tingal no malitengay.</FORM>
@@ -82135,13 +81865,7 @@
         <FORM kindOf="standard">Lakelal no losa'.</FORM>
         <PHON kindOf="standard">ɾakəɾaɾ n[o|u] ɾ[o|u]saʡ</PHON>
         <TRANSL xml:lang="zho">淚痕。</TRANSL>
-    </S>
-    <S id="S11798">
-        <FORM kindOf="original">Lakelal no losa'.</FORM>
-        <PHON kindOf="original">ɾakəɾaɾ no ɾosaʡ</PHON>
-        <FORM kindOf="standard">Lakelal no losa'.</FORM>
-        <PHON kindOf="standard">ɾakəɾaɾ n[o|u] ɾ[o|u]saʡ</PHON>
-        <TRANSL xml:lang="zho">(宗)塵世。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">(宗)塵世。</TRANSL>
     </S>
     <S id="S11799">
         <FORM kindOf="original">Maomah kami i losalosayan.</FORM>
@@ -82358,6 +82082,7 @@
         <FORM kindOf="standard">Milowan to lifon.</FORM>
         <PHON kindOf="standard">miɾ[o|u]wan t[o|u] ɾif[o|u]n</PHON>
         <TRANSL xml:lang="zho">扣薪。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">扣除工資。</TRANSL>
     </S>
     <S id="S11830">
         <FORM kindOf="original">Lowanen ko dafong iso!</FORM>
@@ -84927,13 +84652,7 @@
         <FORM kindOf="standard">Ma'iwil kako toya sowal ningra.</FORM>
         <PHON kindOf="standard">maʡiwiɾ kak[o|u] t[o|u]ja s[o|u]waɾ niŋra</PHON>
         <TRANSL xml:lang="zho">我對他的話感到傷心。</TRANSL>
-    </S>
-    <S id="S12197">
-        <FORM kindOf="original">Ma'iwil kako toya sowal ningra.</FORM>
-        <PHON kindOf="original">maʡiwiɾ kako toja sowaɾ niŋra</PHON>
-        <FORM kindOf="standard">Ma'iwil kako toya sowal ningra.</FORM>
-        <PHON kindOf="standard">maʡiwiɾ kak[o|u] t[o|u]ja s[o|u]waɾ niŋra</PHON>
-        <TRANSL xml:lang="zho">我對他的話感到猜忌。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我對他的話感到猜忌。</TRANSL>
     </S>
     <S id="S12198">
         <FORM kindOf="original">Ma'iwilay ci kaka a masacecay i niyaro'.</FORM>
@@ -84969,13 +84688,7 @@
         <FORM kindOf="standard">Ma'iyof to koya tamdaw.</FORM>
         <PHON kindOf="standard">maʡij[o|u]f t[o|u] k[o|u]ja tam[ɬ|ɮ]aw</PHON>
         <TRANSL xml:lang="zho">那人被風吹了。</TRANSL>
-    </S>
-    <S id="S12203">
-        <FORM kindOf="original">Ma'iyof to koya tamdaw.</FORM>
-        <PHON kindOf="original">maʡijo[f|v|b] to koja tamɬaw</PHON>
-        <FORM kindOf="standard">Ma'iyof to koya tamdaw.</FORM>
-        <PHON kindOf="standard">maʡij[o|u]f t[o|u] k[o|u]ja tam[ɬ|ɮ]aw</PHON>
-        <TRANSL xml:lang="zho">那人改變主意了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">那人改變主意了。</TRANSL>
     </S>
     <S id="S12204">
         <FORM kindOf="original">Ma'ocil no waco kiso.</FORM>
@@ -88852,13 +88565,6 @@
         <PHON kindOf="standard">maʦək[o|u]k kak[o|u]</PHON>
         <TRANSL xml:lang="zho">我感到恐懼（我被嚇）。</TRANSL>
     </S>
-    <S id="S12751">
-        <FORM kindOf="original">Macekok kako to katayni namo.</FORM>
-        <PHON kindOf="original">maʦəkok kako to katajni namo</PHON>
-        <FORM kindOf="standard">Macekok kako to katayni namo.</FORM>
-        <PHON kindOf="standard">maʦək[o|u]k kak[o|u] t[o|u] katajni nam[o|u]</PHON>
-        <TRANSL xml:lang="zho">你們來讓我吃驚。</TRANSL>
-    </S>
     <S id="S12752">
         <FORM kindOf="original">Macekokay kako pakatengil to matiniay a sowal.</FORM>
         <PHON kindOf="original">maʦəkokaj kako pakatəŋiɾ to matiniaj a sowaɾ</PHON>
@@ -90643,13 +90349,6 @@
         <PHON kindOf="standard">maʦ[o|u]r[o|u]kaj a kaħaʦəʦaʦəʦaj ɾ[o|u]ma a miɾiɾiw</PHON>
         <TRANSL xml:lang="zho">都逐一的通知到的每一戶人家。</TRANSL>
     </S>
-    <S id="S13007">
-        <FORM kindOf="original">A macowa to katayni to a malafi.</FORM>
-        <PHON kindOf="original">a maʦowa to katajni to a maɾa[f|v|b]i</PHON>
-        <FORM kindOf="standard">A macowa to katayni to a malafi.</FORM>
-        <PHON kindOf="standard">a maʦ[o|u]wa t[o|u] katajni t[o|u] a maɾafi</PHON>
-        <TRANSL xml:lang="zho">不管怎麼樣要來吃晚餐。</TRANSL>
-    </S>
     <S id="S13008">
         <FORM kindOf="original">Macowaco' ko nanom i midimata'an a pa'etang.</FORM>
         <PHON kindOf="original">maʦowaʦoʡ ko nanom i miɬimataʡan a paʡətaŋ</PHON>
@@ -91617,13 +91316,6 @@
         <FORM kindOf="standard">Mado^etay ko romi'ad anini, helongen ko riko'!</FORM>
         <PHON kindOf="standard">ma[ɬ|ɮ][o|u]ʔətaj k[o|u] r[o|u]miʡa[ɬ|ɮ] anini ħəɾ[o|u]ŋən k[o|u] rik[o|u]ʡ</PHON>
         <TRANSL xml:lang="zho">今天天氣悶熱了，把衣服脫下來了！</TRANSL>
-    </S>
-    <S id="S13147">
-        <FORM kindOf="original">Madodem ko romi'ad.</FORM>
-        <PHON kindOf="original">maɬoɬəm ko romiʡaɬ</PHON>
-        <FORM kindOf="standard">Madodem ko romi'ad.</FORM>
-        <PHON kindOf="standard">ma[ɬ|ɮ][o|u][ɬ|ɮ]əm k[o|u] r[o|u]miʡa[ɬ|ɮ]</PHON>
-        <TRANSL xml:lang="zho">天色昏暗。</TRANSL>
     </S>
     <S id="S13148">
         <FORM kindOf="original">Madodemay no to^m ko cidal.</FORM>
@@ -95627,6 +95319,7 @@
         <FORM kindOf="standard">Mahemeken kona wawa tona posi, sasalamahan ningra.</FORM>
         <PHON kindOf="standard">maħəməkən k[o|u]na wawa t[o|u]na p[o|u]si sasaɾamaħan niŋra</PHON>
         <TRANSL xml:lang="zho">這個孩子對貓特別感興趣，於是經常玩牠。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">這孩子對貓感到興趣，就老玩它。</TRANSL>
     </S>
     <S id="S13719">
         <FORM kindOf="original">Mahemhem ko romi'ad.</FORM>
@@ -95767,13 +95460,7 @@
         <FORM kindOf="standard">Mahicayay to ko podaw.</FORM>
         <PHON kindOf="standard">maħiʦajaj t[o|u] k[o|u] p[o|u][ɬ|ɮ]aw</PHON>
         <TRANSL xml:lang="zho">魩仔魚捕撈上來了。</TRANSL>
-    </S>
-    <S id="S13740">
-        <FORM kindOf="original">Mahicayay to ko pudaw.</FORM>
-        <PHON kindOf="original">maħiʦajaj to ko puɬaw</PHON>
-        <FORM kindOf="standard">Mahicayay to ko podaw.</FORM>
-        <PHON kindOf="standard">maħiʦajaj t[o|u] k[o|u] p[o|u][ɬ|ɮ]aw</PHON>
-        <TRANSL xml:lang="zho">被捕撈上來了魩仔魚。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">被捕撈上來了魩仔魚。</TRANSL>
     </S>
     <S id="S13741">
         <FORM kindOf="original">Mahicera no cikawasay.</FORM>
@@ -96334,13 +96021,7 @@
         <FORM kindOf="standard">Mahongkoay to ko panay.</FORM>
         <PHON kindOf="standard">maħ[o|u]ŋk[o|u]aj t[o|u] k[o|u] panaj</PHON>
         <TRANSL xml:lang="zho">剛割下來的稻穀放進鼓風機篩選。</TRANSL>
-    </S>
-    <S id="S13822">
-        <FORM kindOf="original">Mahongkoay to ko panay.</FORM>
-        <PHON kindOf="original">maħoŋkoaj to ko panaj</PHON>
-        <FORM kindOf="standard">Mahongkoay to ko panay.</FORM>
-        <PHON kindOf="standard">maħ[o|u]ŋk[o|u]aj t[o|u] k[o|u] panaj</PHON>
-        <TRANSL xml:lang="zho">稻子已經用鼓風機篩掉雜草。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">稻子已經用鼓風機篩掉雜草。</TRANSL>
     </S>
     <S id="S13823">
         <FORM kindOf="original">Mahoni ko kakeleng.</FORM>
@@ -96663,6 +96344,7 @@
         <FORM kindOf="standard">Maino'ay to kako i sawni.</FORM>
         <PHON kindOf="standard">main[o|u]ʡaj t[o|u] kak[o|u] i sawni</PHON>
         <TRANSL xml:lang="zho">我剛洗澡了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我剛剛洗完澡。</TRANSL>
     </S>
     <S id="S13869">
         <FORM kindOf="original">Maino'ay i 'a'aloan a ka^emangay.</FORM>
@@ -96712,13 +96394,6 @@
         <FORM kindOf="standard">Maisaway a adadaay.</FORM>
         <PHON kindOf="standard">maisawaj a a[ɬ|ɮ]a[ɬ|ɮ]aaj</PHON>
         <TRANSL xml:lang="zho">吃飯沒胃口的病人。</TRANSL>
-    </S>
-    <S id="S13876">
-        <FORM kindOf="original">Ma'iyof no fali ko kafong.</FORM>
-        <PHON kindOf="original">maʡijo[f|v|b] no [f|v|b]aɾi ko ka[f|v|b]oŋ</PHON>
-        <FORM kindOf="standard">Ma'iyof no fali ko kafong.</FORM>
-        <PHON kindOf="standard">maʡij[o|u]f n[o|u] faɾi k[o|u] kaf[o|u]ŋ</PHON>
-        <TRANSL xml:lang="zho">帽子被風吹走。</TRANSL>
     </S>
     <S id="S13877">
         <FORM kindOf="original">Ma'iyofay no fali ko dawdaw mapadeng.</FORM>
@@ -97622,6 +97297,7 @@
         <FORM kindOf="standard">Makakeritay to pona.</FORM>
         <PHON kindOf="standard">makakəritaj t[o|u] p[o|u]na</PHON>
         <TRANSL xml:lang="zho">同母或同父的兄弟姊妹。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">同母異父的兄弟姐妹。</TRANSL>
     </S>
     <S id="S14006">
         <FORM kindOf="original">Makaketer ko malasangay.</FORM>
@@ -102039,13 +101715,6 @@
         <FORM kindOf="standard">Mala'aliay kako ato</FORM>
         <PHON kindOf="standard">maɾaʡaɾiaj kak[o|u] at[o|u]</PHON>
     </S>
-    <S id="S14637">
-        <FORM kindOf="original">Mala'alip ko mararamoday.</FORM>
-        <PHON kindOf="original">maɾaʡaɾip ko mararamoɬaj</PHON>
-        <FORM kindOf="standard">Mala'alip ko mararamoday.</FORM>
-        <PHON kindOf="standard">maɾaʡaɾip k[o|u] mararam[o|u][ɬ|ɮ]aj</PHON>
-        <TRANSL xml:lang="zho">夫妻在做愛。</TRANSL>
-    </S>
     <S id="S14638">
         <FORM kindOf="original">Mala'alipay ko mararamoday.</FORM>
         <PHON kindOf="original">maɾaʡaɾipaj ko mararamoɬaj</PHON>
@@ -104117,13 +103786,6 @@
         <FORM kindOf="standard">Malalico ko sowal ningra.</FORM>
         <PHON kindOf="standard">maɾaɾiʦ[o|u] k[o|u] s[o|u]waɾ niŋra</PHON>
         <TRANSL xml:lang="zho">他持相反的意見。</TRANSL>
-    </S>
-    <S id="S14934">
-        <FORM kindOf="original">Malalico to sowal cangra.</FORM>
-        <PHON kindOf="original">maɾaɾiʦo to sowaɾ ʦaŋra</PHON>
-        <FORM kindOf="standard">Malalico to sowal cangra.</FORM>
-        <PHON kindOf="standard">maɾaɾiʦ[o|u] t[o|u] s[o|u]waɾ ʦaŋra</PHON>
-        <TRANSL xml:lang="zho">他們在爭論。</TRANSL>
     </S>
     <S id="S14935">
         <FORM kindOf="original">Malalifelifet ko wawa a mi'iwas to tamina.</FORM>
@@ -106861,6 +106523,7 @@
         <FORM kindOf="standard">Malifot kako a misaholo to papacem.</FORM>
         <PHON kindOf="standard">maɾif[o|u]t kak[o|u] a misaħ[o|u]ɾ[o|u] t[o|u] papaʦəm</PHON>
         <TRANSL xml:lang="zho">早晨做飯我感到麻煩。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我早晨做飯感到很麻煩。</TRANSL>
     </S>
     <S id="S15326">
         <FORM kindOf="original">Malifotay a miala to salahok.</FORM>
@@ -109995,6 +109658,7 @@
         <FORM kindOf="standard">Mamerakay ko 'orad.</FORM>
         <PHON kindOf="standard">mamərakaj k[o|u] ʡ[o|u]ra[ɬ|ɮ]</PHON>
         <TRANSL xml:lang="zho">稀稀落落地下著雨。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">雨稀稀落落地下著。</TRANSL>
     </S>
     <S id="S15775">
         <FORM kindOf="original">Mamerakay a ma'orad.</FORM>
@@ -110002,13 +109666,6 @@
         <FORM kindOf="standard">Mamerakay a ma'orad.</FORM>
         <PHON kindOf="standard">mamərakaj a maʡ[o|u]ra[ɬ|ɮ]</PHON>
         <TRANSL xml:lang="zho">稀稀落落地下起雨來。</TRANSL>
-    </S>
-    <S id="S15776">
-        <FORM kindOf="original">Mamerakay ko 'orad.</FORM>
-        <PHON kindOf="original">mamərakaj ko ʡoraɬ</PHON>
-        <FORM kindOf="standard">Mamerakay ko 'orad.</FORM>
-        <PHON kindOf="standard">mamərakaj k[o|u] ʡ[o|u]ra[ɬ|ɮ]</PHON>
-        <TRANSL xml:lang="zho">雨稀稀落落地下著。</TRANSL>
     </S>
     <S id="S15777">
         <FORM kindOf="original">Mameras ko pinangan ningra.</FORM>
@@ -111386,6 +111043,7 @@
         <FORM kindOf="standard">Manayat ko komo a tengtengen.</FORM>
         <PHON kindOf="standard">manajat k[o|u] k[o|u]m[o|u] a təŋtəŋən</PHON>
         <TRANSL xml:lang="zho">橡皮筋拉起來會伸長。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">橡皮筋拉拽起來會延長。</TRANSL>
     </S>
     <S id="S15974">
         <FORM kindOf="original">Manayatay ko tayal ningra.</FORM>
@@ -113030,6 +112688,7 @@
         <FORM kindOf="standard">Maolah ko wawa a misalama.</FORM>
         <PHON kindOf="standard">ma[o|u]ɾaħ k[o|u] wawa a misaɾama</PHON>
         <TRANSL xml:lang="zho">孩子愛玩。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">小孩愛玩耍。</TRANSL>
     </S>
     <S id="S16209">
         <FORM kindOf="original">Maolahay cingra to posi.</FORM>
@@ -113107,13 +112766,7 @@
         <FORM kindOf="standard">Maomahay ci kaka i tatokosan.</FORM>
         <PHON kindOf="standard">ma[o|u]maħaj ʦi kaka i tat[o|u]k[o|u]san</PHON>
         <TRANSL xml:lang="zho">哥哥在山上工作。</TRANSL>
-    </S>
-    <S id="S16220">
-        <FORM kindOf="original">Maomahay ci kaka i tatokosan.</FORM>
-        <PHON kindOf="original">maomaħaj ʦi kaka i tatokosan</PHON>
-        <FORM kindOf="standard">Maomahay ci kaka i tatokosan.</FORM>
-        <PHON kindOf="standard">ma[o|u]maħaj ʦi kaka i tat[o|u]k[o|u]san</PHON>
-        <TRANSL xml:lang="zho">哥哥在山上勞動。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">哥哥在山上勞動。</TRANSL>
     </S>
     <S id="S16221">
         <FORM kindOf="original">Maomi' ko faloco' no wina.</FORM>
@@ -113716,6 +113369,7 @@
         <FORM kindOf="standard">Mapa'odaxay ko kafi ako.</FORM>
         <PHON kindOf="standard">mapaʡ[o|u][ɬ|ɮ]axaj k[o|u] kafi ak[o|u]</PHON>
         <TRANSL xml:lang="zho">我的咖啡放糖了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">放了糖的咖啡。</TRANSL>
     </S>
     <S id="S16307">
         <FORM kindOf="original">Mapa'odaxay no wina a safa.</FORM>
@@ -113723,13 +113377,6 @@
         <FORM kindOf="standard">Mapa'odaxay no wina a safa.</FORM>
         <PHON kindOf="standard">mapaʡ[o|u][ɬ|ɮ]axaj n[o|u] wina a safa</PHON>
         <TRANSL xml:lang="zho">得到母親送的糖的弟弟。</TRANSL>
-    </S>
-    <S id="S16308">
-        <FORM kindOf="original">Mapa'odaxay ko kafi ako.</FORM>
-        <PHON kindOf="original">mapaʡoɬaxaj ko ka[f|v|b]i ako</PHON>
-        <FORM kindOf="standard">Mapa'odaxay ko kafi ako.</FORM>
-        <PHON kindOf="standard">mapaʡ[o|u][ɬ|ɮ]axaj k[o|u] kafi ak[o|u]</PHON>
-        <TRANSL xml:lang="zho">放了糖的咖啡。</TRANSL>
     </S>
     <S id="S16309">
         <FORM kindOf="original">Mapa'orip ko siri.</FORM>
@@ -114569,13 +114216,7 @@
         <FORM kindOf="standard">Mapadawdaway ko dingki a kafoti'an.</FORM>
         <PHON kindOf="standard">mapa[ɬ|ɮ]aw[ɬ|ɮ]awaj k[o|u] [ɬ|ɮ]iŋki a kaf[o|u]tiʡan</PHON>
         <TRANSL xml:lang="zho">臥室的電燈被點亮了。</TRANSL>
-    </S>
-    <S id="S16429">
-        <FORM kindOf="original">Mapadawdaway ko dingki a kafoti'an.</FORM>
-        <PHON kindOf="original">mapaɬawɬawaj ko ɬiŋki a ka[f|v|b]otiʡan</PHON>
-        <FORM kindOf="standard">Mapadawdaway ko dingki a kafoti'an.</FORM>
-        <PHON kindOf="standard">mapa[ɬ|ɮ]aw[ɬ|ɮ]awaj k[o|u] [ɬ|ɮ]iŋki a kaf[o|u]tiʡan</PHON>
-        <TRANSL xml:lang="zho">電燈被點亮的臥室。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">電燈被點亮的臥室。</TRANSL>
     </S>
     <S id="S16430">
         <FORM kindOf="original">Mapadefak ko misamatangan.</FORM>
@@ -116304,6 +115945,7 @@
         <FORM kindOf="standard">Mapakapiay ko riko' no wawa.</FORM>
         <PHON kindOf="standard">mapakapiaj k[o|u] rik[o|u]ʡ n[o|u] wawa</PHON>
         <TRANSL xml:lang="zho">小孩增添了一件衣服。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">小孩被增添了一件衣服。</TRANSL>
     </S>
     <S id="S16677">
         <FORM kindOf="original">Mapakapiay a riko'.</FORM>
@@ -119865,13 +119507,6 @@
         <PHON kindOf="standard">maparik[o|u]ʡaj ʦaŋra t[o|u] makapaħaj a rik[o|u]ʡ i paʡaɾiwaʦan</PHON>
         <TRANSL xml:lang="zho">他們可在假日裡可穿上漂亮的衣服了。</TRANSL>
     </S>
-    <S id="S17185">
-        <FORM kindOf="original">Mapariko'ay cangra to makapahay a riko' i pa'aliwacan.</FORM>
-        <PHON kindOf="original">maparikoʡaj ʦaŋra to makapaħaj a rikoʡ i paʡaɾiwaʦan</PHON>
-        <FORM kindOf="standard">Mapariko'ay cangra to makapahay a riko' i pa'aliwacan.</FORM>
-        <PHON kindOf="standard">maparik[o|u]ʡaj ʦaŋra t[o|u] makapaħaj a rik[o|u]ʡ i paʡaɾiwaʦan</PHON>
-        <TRANSL xml:lang="zho">他們可在假日裡可穿上漂亮的衣服。</TRANSL>
-    </S>
     <S id="S17186">
         <FORM kindOf="original">Maparingat ko kadokap.</FORM>
         <PHON kindOf="original">mapariŋat ko kaɬokap</PHON>
@@ -120529,6 +120164,7 @@
         <FORM kindOf="standard">Mapasifekangay cingra a matolo'.</FORM>
         <PHON kindOf="standard">mapasifəkaŋaj ʦiŋra a mat[o|u]ɾ[o|u]ʡ</PHON>
         <TRANSL xml:lang="zho">他四腳朝天的滑倒了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">他面朝上面滑倒。</TRANSL>
     </S>
     <S id="S17279">
         <FORM kindOf="original">Mapasifekangay ko matolo' a tamdaw.</FORM>
@@ -122506,9 +122142,12 @@
     <S id="S17561">
         <FORM kindOf="original">Mapedik ko tangila nora waco.</FORM>
         <PHON kindOf="original">mapəɬik ko taŋiɾa nora waʦo</PHON>
+        <FORM kindOf="original" ver="alt">Mapedik ko tagila nora waco.</FORM>
         <FORM kindOf="standard">Mapedik ko tangila nora waco.</FORM>
         <PHON kindOf="standard">mapə[ɬ|ɮ]ik k[o|u] taŋiɾa n[o|u]ra waʦ[o|u]</PHON>
+        <FORM kindOf="standard" ver="alt">Mapedik ko tangila nora waco.</FORM>
         <TRANSL xml:lang="zho">那隻狗的耳朵垂下來。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">那隻狗的耳朵下垂。</TRANSL>
     </S>
     <S id="S17562">
         <FORM kindOf="original">Mapedikay ko tangila nora waco.</FORM>
@@ -122565,13 +122204,7 @@
         <FORM kindOf="standard">Mapedoxay no 'edo kano patafoan.</FORM>
         <PHON kindOf="standard">mapə[ɬ|ɮ][o|u]xaj n[o|u] ʡə[ɬ|ɮ][o|u] kan[o|u] pataf[o|u]an</PHON>
         <TRANSL xml:lang="zho">這個飯盒被老鼠咬了一個洞。</TRANSL>
-    </S>
-    <S id="S17570">
-        <FORM kindOf="original">Mapedoxay no 'edo kano patafoan.</FORM>
-        <PHON kindOf="original">mapəɬoxaj no ʡəɬo kano pata[f|v|b]oan</PHON>
-        <FORM kindOf="standard">Mapedoxay no 'edo kano patafoan.</FORM>
-        <PHON kindOf="standard">mapə[ɬ|ɮ][o|u]xaj n[o|u] ʡə[ɬ|ɮ][o|u] kan[o|u] pataf[o|u]an</PHON>
-        <TRANSL xml:lang="zho">被老鼠咬了一個洞的飯盒。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">被老鼠咬了一個洞的飯盒。</TRANSL>
     </S>
     <S id="S17571">
         <FORM kindOf="original">Mapedped ko miki'araway to yakiw.</FORM>
@@ -124341,13 +123974,7 @@
         <FORM kindOf="standard">Maposposay ko po'ot.</FORM>
         <PHON kindOf="standard">map[o|u]sp[o|u]saj k[o|u] p[o|u]ʡ[o|u]t</PHON>
         <TRANSL xml:lang="zho">小刀磨損了。</TRANSL>
-    </S>
-    <S id="S17824">
-        <FORM kindOf="original">Maposposay ko po'ot.</FORM>
-        <PHON kindOf="original">maposposaj ko poʡot</PHON>
-        <FORM kindOf="standard">Maposposay ko po'ot.</FORM>
-        <PHON kindOf="standard">map[o|u]sp[o|u]saj k[o|u] p[o|u]ʡ[o|u]t</PHON>
-        <TRANSL xml:lang="zho">磨損的小刀。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">磨損的小刀。</TRANSL>
     </S>
     <S id="S17825">
         <FORM kindOf="original">Mapoton ko wikol no posi.</FORM>
@@ -124439,13 +124066,6 @@
         <FORM kindOf="standard">Mapoyapoyay a panay anini.</FORM>
         <PHON kindOf="standard">map[o|u]jap[o|u]jaj a panaj anini</PHON>
         <TRANSL xml:lang="zho">現在孕穗的水稻。</TRANSL>
-    </S>
-    <S id="S17838">
-        <FORM kindOf="original">Mapasifekangay cingra a matolo'.</FORM>
-        <PHON kindOf="original">mapasi[f|v|b]əkaŋaj ʦiŋra a matoɾoʡ</PHON>
-        <FORM kindOf="standard">Mapasifekangay cingra a matolo'.</FORM>
-        <PHON kindOf="standard">mapasifəkaŋaj ʦiŋra a mat[o|u]ɾ[o|u]ʡ</PHON>
-        <TRANSL xml:lang="zho">他面朝上面滑倒。</TRANSL>
     </S>
     <S id="S17839">
         <FORM kindOf="original">Mapulusi</FORM>
@@ -127502,6 +127122,7 @@
         <FORM kindOf="standard">Polongen ko paro no loma' a masa'opo.</FORM>
         <PHON kindOf="standard">p[o|u]ɾ[o|u]ŋən k[o|u] par[o|u] n[o|u] ɾ[o|u]maʡ a masaʡ[o|u]p[o|u]</PHON>
         <TRANSL xml:lang="zho">叫全家人聚集在一起。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">叫一家人團聚在一起。</TRANSL>
     </S>
     <S id="S18277">
         <FORM kindOf="original">Masa'opoay ko mitiliday i paputal.</FORM>
@@ -131028,13 +130649,7 @@
         <FORM kindOf="standard">Masakiroay ko foting.</FORM>
         <PHON kindOf="standard">masakir[o|u]aj k[o|u] f[o|u]tiŋ</PHON>
         <TRANSL xml:lang="zho">小魚被醃製起來。</TRANSL>
-    </S>
-    <S id="S18780">
-        <FORM kindOf="original">Masakiroay ko foting.</FORM>
-        <PHON kindOf="original">masakiroaj ko [f|v|b]otiŋ</PHON>
-        <FORM kindOf="standard">Masakiroay ko foting.</FORM>
-        <PHON kindOf="standard">masakir[o|u]aj k[o|u] f[o|u]tiŋ</PHON>
-        <TRANSL xml:lang="zho">魚被醃製起來了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">魚被醃製起來了。</TRANSL>
     </S>
     <S id="S18781">
         <FORM kindOf="original">Masakiroay a tinai' no foting.</FORM>
@@ -131840,13 +131455,7 @@
         <FORM kindOf="standard">Aka ka masalita'ata'angay ko wayway.</FORM>
         <PHON kindOf="standard">aka ka masaɾitaʡataʡaŋaj k[o|u] wajwaj</PHON>
         <TRANSL xml:lang="zho">做人不要盛氣凌人。</TRANSL>
-    </S>
-    <S id="S18898">
-        <FORM kindOf="original">Aka ka masalita'ata'angay ko wayway.</FORM>
-        <PHON kindOf="original">aka ka masaɾitaʡataʡaŋaj ko wajwaj</PHON>
-        <FORM kindOf="standard">Aka ka masalita'ata'angay ko wayway.</FORM>
-        <PHON kindOf="standard">aka ka masaɾitaʡataʡaŋaj k[o|u] wajwaj</PHON>
-        <TRANSL xml:lang="zho">做人不可傲慢了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">做人不可傲慢了。</TRANSL>
     </S>
     <S id="S18899">
         <FORM kindOf="original">Masalita'ata'angay a wawa.</FORM>
@@ -132085,6 +131694,7 @@
         <FORM kindOf="standard">Masamangahay ningra kami.</FORM>
         <PHON kindOf="standard">masamaŋaħaj niŋra kami</PHON>
         <TRANSL xml:lang="zho">我們被他的謊言所蒙騙。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我們受他的騙了。</TRANSL>
     </S>
     <S id="S18933">
         <FORM kindOf="original">O masamangahay ningra kami.</FORM>
@@ -132092,13 +131702,6 @@
         <FORM kindOf="standard">O masamangahay ningra kami.</FORM>
         <PHON kindOf="standard">[o|u] masamaŋaħaj niŋra kami</PHON>
         <TRANSL xml:lang="zho">我們受他的謊言所蒙騙了。</TRANSL>
-    </S>
-    <S id="S18934">
-        <FORM kindOf="original">Masamangahay ningra kami.</FORM>
-        <PHON kindOf="original">masamaŋaħaj niŋra kami</PHON>
-        <FORM kindOf="standard">Masamangahay ningra kami.</FORM>
-        <PHON kindOf="standard">masamaŋaħaj niŋra kami</PHON>
-        <TRANSL xml:lang="zho">我們受他的騙了。</TRANSL>
     </S>
     <S id="S18935">
         <FORM kindOf="original">Masamatini ano romamihecaan.</FORM>
@@ -132561,13 +132164,7 @@
         <FORM kindOf="standard">Masangasif to ko sakalafi.</FORM>
         <PHON kindOf="standard">masaŋasif t[o|u] k[o|u] sakaɾafi</PHON>
         <TRANSL xml:lang="zho">晚飯煮好了。</TRANSL>
-    </S>
-    <S id="S19001">
-        <FORM kindOf="original">Masangasif to ko sakalafi.</FORM>
-        <PHON kindOf="original">masaŋasi[f|v|b] to ko sakaɾa[f|v|b]i</PHON>
-        <FORM kindOf="standard">Masangasif to ko sakalafi.</FORM>
-        <PHON kindOf="standard">masaŋasif t[o|u] k[o|u] sakaɾafi</PHON>
-        <TRANSL xml:lang="zho">水燒開了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">水燒開了。</TRANSL>
     </S>
     <S id="S19002">
         <FORM kindOf="original">Masangasifay to ni kaka ko sakalafi.</FORM>
@@ -133219,6 +132816,7 @@
         <FORM kindOf="standard">Masapo'opo'oay ko 'aol.</FORM>
         <PHON kindOf="standard">masap[o|u]ʡ[o|u]p[o|u]ʡ[o|u]aj k[o|u] ʡa[o|u]ɾ</PHON>
         <TRANSL xml:lang="zho">竹子呈一節一節的形狀。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">竹子有很多竹節。</TRANSL>
     </S>
     <S id="S19095">
         <FORM kindOf="original">masapokopokohay</FORM>
@@ -134554,13 +134152,6 @@
         <FORM kindOf="standard">Masasiromaay ko harateng no Masasiromaay tamdaw.</FORM>
         <PHON kindOf="standard">masasir[o|u]maaj k[o|u] ħaratəŋ n[o|u] masasir[o|u]maaj tam[ɬ|ɮ]aw</PHON>
         <TRANSL xml:lang="zho">不同的人有不同的想法。</TRANSL>
-    </S>
-    <S id="S19286">
-        <FORM kindOf="original">Masasiromaroma ko kasasa'ersa'er no matayalay i sefo.</FORM>
-        <PHON kindOf="original">masasiromaroma ko kasasaʡərsaʡər no matajaɾaj i sə[f|v|b]o</PHON>
-        <FORM kindOf="standard">Masasiromaroma ko kasasa'ersa'er no matayalay i sefo.</FORM>
-        <PHON kindOf="standard">masasir[o|u]mar[o|u]ma k[o|u] kasasaʡərsaʡər n[o|u] matajaɾaj i səf[o|u]</PHON>
-        <TRANSL xml:lang="zho">各級政府部門有不同的工作。</TRANSL>
     </S>
     <S id="S19287">
         <FORM kindOf="original">Masasitikelo ko cecay a cefang.</FORM>
@@ -136447,13 +136038,6 @@
         <PHON kindOf="standard">masəpənaj n[o|u] ta[o|u] k[o|u]ra mat[o|u]kaaj tam[ɬ|ɮ]aw</PHON>
         <TRANSL xml:lang="zho">懶惰的人為他人所不敬了。</TRANSL>
     </S>
-    <S id="S19555">
-        <FORM kindOf="original">Masepsepay ci Kolas.</FORM>
-        <PHON kindOf="original">masəpsəpaj ʦi koɾas</PHON>
-        <FORM kindOf="standard">Masepsepay ci Kolas.</FORM>
-        <PHON kindOf="standard">masəpsəpaj ʦi k[o|u]ɾas</PHON>
-        <TRANSL xml:lang="zho">古拉斯先生被拍打。</TRANSL>
-    </S>
     <S id="S19556">
         <FORM kindOf="original">Masepsepay ci Kolas.</FORM>
         <PHON kindOf="original">masəpsəpaj ʦi koɾas</PHON>
@@ -136957,6 +136541,7 @@
         <FORM kindOf="standard">Masikeda no adada kako inacila.</FORM>
         <PHON kindOf="standard">masikə[ɬ|ɮ]a n[o|u] a[ɬ|ɮ]a[ɬ|ɮ]a kak[o|u] inaʦiɾa</PHON>
         <TRANSL xml:lang="zho">我昨天生病了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">前天我生病了。(被病魔投中)</TRANSL>
     </S>
     <S id="S19628">
         <FORM kindOf="original">Masikeday a paloma'.</FORM>
@@ -138210,13 +137795,7 @@
         <FORM kindOf="standard">Masopritay ko heci no panay.</FORM>
         <PHON kindOf="standard">mas[o|u]pritaj k[o|u] ħəʦi n[o|u] panaj</PHON>
         <TRANSL xml:lang="zho">用手把莖上的稻穗剝落脫粒下來。</TRANSL>
-    </S>
-    <S id="S19807">
-        <FORM kindOf="original">Masopritay ko heci no panay.</FORM>
-        <PHON kindOf="original">masopritaj ko ħəʦi no panaj</PHON>
-        <FORM kindOf="standard">Masopritay ko heci no panay.</FORM>
-        <PHON kindOf="standard">mas[o|u]pritaj k[o|u] ħəʦi n[o|u] panaj</PHON>
-        <TRANSL xml:lang="zho">莖上的稻穗用手剝落脫粒下來了。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">莖上的稻穗用手剝落脫粒下來了。</TRANSL>
     </S>
     <S id="S19808">
         <FORM kindOf="original">Masopsop ko nanom a mala'alo.</FORM>
@@ -141959,6 +141538,7 @@
         <FORM kindOf="standard">Matepo koya ohong.</FORM>
         <PHON kindOf="standard">matəp[o|u] k[o|u]ja [o|u]ħ[o|u]ŋ</PHON>
         <TRANSL xml:lang="zho">那本書掉落地上之聲。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">那本書噗咚一聲掉下來。</TRANSL>
     </S>
     <S id="S20342">
         <FORM kindOf="original">Matepoay no wawa ko kaysing.</FORM>
@@ -146703,13 +146283,6 @@
         <PHON kindOf="standard">miʡiɾ[o|u]saj kak[o|u] t[o|u] safa ak[o|u]</PHON>
         <TRANSL xml:lang="zho">我正在給我弟弟擦屁股。</TRANSL>
     </S>
-    <S id="S21022">
-        <FORM kindOf="original">Mi'imac to impic.</FORM>
-        <PHON kindOf="original">miʡimaʦ to impiʦ</PHON>
-        <FORM kindOf="standard">Mi'imac to impic.</FORM>
-        <PHON kindOf="standard">miʡimaʦ t[o|u] impiʦ</PHON>
-        <TRANSL xml:lang="zho">把鉛筆削尖。</TRANSL>
-    </S>
     <S id="S21023">
         <FORM kindOf="original">Mi'imac to 'aol.</FORM>
         <PHON kindOf="original">miʡimaʦ to ʡaoɾ</PHON>
@@ -146974,13 +146547,6 @@
         <FORM kindOf="standard">Mi'is'is kako to ngisngis ako.</FORM>
         <PHON kindOf="standard">miʡisʡis kak[o|u] t[o|u] ŋisŋis ak[o|u]</PHON>
         <TRANSL xml:lang="zho">我刮鬍子。</TRANSL>
-    </S>
-    <S id="S21061">
-        <FORM kindOf="original">Mi'isa'is ko kolong i kilang.</FORM>
-        <PHON kindOf="original">miʡisaʡis ko koɾoŋ i kiɾaŋ</PHON>
-        <FORM kindOf="standard">Mi'isa'is ko kolong i kilang.</FORM>
-        <PHON kindOf="standard">miʡisaʡis k[o|u] k[o|u]ɾ[o|u]ŋ i kiɾaŋ</PHON>
-        <TRANSL xml:lang="zho">牛在樹幹上磨擦身體。</TRANSL>
     </S>
     <S id="S21062">
         <FORM kindOf="original">Mi'isa'isan ako i hecek ko caenget no koror.</FORM>
@@ -152526,13 +152092,6 @@
         <FORM kindOf="standard">I sakacowaay ko micocokay to rinom a ising?</FORM>
         <PHON kindOf="standard">i sakaʦ[o|u]waaj k[o|u] miʦ[o|u]ʦ[o|u]kaj t[o|u] rin[o|u]m a isiŋ</PHON>
     </S>
-    <S id="S21856">
-        <FORM kindOf="original">Micocop to 'ongto ko malitengay.</FORM>
-        <PHON kindOf="original">miʦoʦop to ʡoŋto ko maɾitəŋaj</PHON>
-        <FORM kindOf="standard">Micocop to 'ongto ko malitengay.</FORM>
-        <PHON kindOf="standard">miʦ[o|u]ʦ[o|u]p t[o|u] ʡ[o|u]ŋt[o|u] k[o|u] maɾitəŋaj</PHON>
-        <TRANSL xml:lang="zho">老人在抽煙。</TRANSL>
-    </S>
     <S id="S21857">
         <FORM kindOf="original">Micocop to 'ongto ko malitengay.</FORM>
         <PHON kindOf="original">miʦoʦop to ʡoŋto ko maɾitəŋaj</PHON>
@@ -155496,13 +155055,6 @@
         <PHON kindOf="standard">mifafa t[o|u] wawa a ma[o|u]maħ</PHON>
         <TRANSL xml:lang="zho">揹著小孩工作。</TRANSL>
     </S>
-    <S id="S22285">
-        <FORM kindOf="original">Mifahfah ko cikawasay.</FORM>
-        <PHON kindOf="original">mi[f|v|b]aħ[f|v|b]aħ ko ʦikawasaj</PHON>
-        <FORM kindOf="standard">Mifahfah ko cikawasay.</FORM>
-        <PHON kindOf="standard">mifaħfaħ k[o|u] ʦikawasaj</PHON>
-        <TRANSL xml:lang="zho">巫師施法驅逐惡靈。</TRANSL>
-    </S>
     <S id="S22286">
         <FORM kindOf="original">Mifakciw kako to paloma'an a sera.</FORM>
         <PHON kindOf="original">mi[f|v|b]akʦiw kako to paɾomaʡan a səra</PHON>
@@ -156687,13 +156239,6 @@
         <PHON kindOf="original">mi[f|v|b]ərot ko nokaj</PHON>
         <FORM kindOf="standard">Miferot ko nokay</FORM>
         <PHON kindOf="standard">mifər[o|u]t k[o|u] n[o|u]kaj</PHON>
-    </S>
-    <S id="S22456">
-        <FORM kindOf="original">Mifetik ko cikawasay.</FORM>
-        <PHON kindOf="original">mi[f|v|b]ətik ko ʦikawasaj</PHON>
-        <FORM kindOf="standard">Mifetik ko cikawasay.</FORM>
-        <PHON kindOf="standard">mifətik k[o|u] ʦikawasaj</PHON>
-        <TRANSL xml:lang="zho">巫師在舉行滴酒祭。</TRANSL>
     </S>
     <S id="S22457">
         <FORM kindOf="original">Mifetik to kawas no kakarayan.</FORM>
@@ -159655,6 +159200,7 @@
         <FORM kindOf="standard">Mihaterteray ko kapolin ako.</FORM>
         <PHON kindOf="standard">miħatərtəraj k[o|u] kap[o|u]ɾin ak[o|u]</PHON>
         <TRANSL xml:lang="zho">一屁股跌坐在地上。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">在屁股著地滑倒了。</TRANSL>
     </S>
     <S id="S22882">
         <FORM kindOf="original">Mihaterteran ko fiher no tosiya.</FORM>
@@ -159669,13 +159215,6 @@
         <FORM kindOf="standard">Mihaterteran a kalileng.</FORM>
         <PHON kindOf="standard">miħatərtəran a kaɾiɾəŋ</PHON>
         <TRANSL xml:lang="zho">滑動的輪子。</TRANSL>
-    </S>
-    <S id="S22884">
-        <FORM kindOf="original">Mihaterteray ko kapolin ako.</FORM>
-        <PHON kindOf="original">miħatərtəraj ko kapoɾin ako</PHON>
-        <FORM kindOf="standard">Mihaterteray ko kapolin ako.</FORM>
-        <PHON kindOf="standard">miħatərtəraj k[o|u] kap[o|u]ɾin ak[o|u]</PHON>
-        <TRANSL xml:lang="zho">在屁股著地滑倒了。</TRANSL>
     </S>
     <S id="S22885">
         <FORM kindOf="original">Cinira ko mihaterteray to fiher.</FORM>
@@ -169678,13 +169217,6 @@
         <PHON kindOf="standard">mik[o|u]rijat t[o|u] mata k[o|u]ra maɾitəŋaj</PHON>
         <TRANSL xml:lang="zho">那位老人皺著眉頭。</TRANSL>
     </S>
-    <S id="S24316">
-        <FORM kindOf="original">Mikorkor to sera.</FORM>
-        <PHON kindOf="original">mikorkor to səra</PHON>
-        <FORM kindOf="standard">Mikorkor to sera.</FORM>
-        <PHON kindOf="standard">mik[o|u]rk[o|u]r t[o|u] səra</PHON>
-        <TRANSL xml:lang="zho">挖土。</TRANSL>
-    </S>
     <S id="S24317">
         <FORM kindOf="original">Mikorkor to konga.</FORM>
         <PHON kindOf="original">mikorkor to koŋa</PHON>
@@ -170020,6 +169552,7 @@
         <FORM kindOf="standard">Pacoracoren no mikowanay kami a palasofitay.</FORM>
         <PHON kindOf="standard">paʦ[o|u]raʦ[o|u]rən n[o|u] mik[o|u]wanaj kami a paɾas[o|u]fitaj</PHON>
         <TRANSL xml:lang="zho">政府徵召我們去當兵。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">政府把我們召去當兵。</TRANSL>
     </S>
     <S id="S24365">
         <FORM kindOf="original">Mikowang to tomay.</FORM>
@@ -171763,13 +171296,6 @@
         <FORM kindOf="standard">Milayal to lamelo.</FORM>
         <PHON kindOf="standard">miɾajaɾ t[o|u] ɾaməɾ[o|u]</PHON>
         <TRANSL xml:lang="zho">懸掛小米晾乾。</TRANSL>
-    </S>
-    <S id="S24615">
-        <FORM kindOf="original">Milayal to papah no tamako.</FORM>
-        <PHON kindOf="original">miɾajaɾ to papaħ no tamako</PHON>
-        <FORM kindOf="standard">Milayal to papah no tamako.</FORM>
-        <PHON kindOf="standard">miɾajaɾ t[o|u] papaħ n[o|u] tamak[o|u]</PHON>
-        <TRANSL xml:lang="zho">晾乾煙葉。</TRANSL>
     </S>
     <S id="S24616">
         <FORM kindOf="original">Milayal to lofoc.</FORM>
@@ -173721,13 +173247,6 @@
         <PHON kindOf="standard">[o|u] ʦima k[o|u] miɾiɾi[ɬ|ɮ]aj</PHON>
         <TRANSL xml:lang="zho">誰在抬東西？</TRANSL>
     </S>
-    <S id="S24895">
-        <FORM kindOf="original">Mililifon kami anocila.</FORM>
-        <PHON kindOf="original">miɾiɾi[f|v|b]on kami anoʦiɾa</PHON>
-        <FORM kindOf="standard">Mililifon kami anocila.</FORM>
-        <PHON kindOf="standard">miɾiɾif[o|u]n kami an[o|u]ʦiɾa</PHON>
-        <TRANSL xml:lang="zho">明天我們領工資。</TRANSL>
-    </S>
     <S id="S24896">
         <FORM kindOf="original">Mililifonan to naira inacila.</FORM>
         <PHON kindOf="original">miɾiɾi[f|v|b]onan to naira inaʦiɾa</PHON>
@@ -174316,13 +173835,6 @@
         <PHON kindOf="standard">miɾip[o|u]t t[o|u] rik[o|u]ʡ</PHON>
         <TRANSL xml:lang="zho">包衣服。</TRANSL>
     </S>
-    <S id="S24980">
-        <FORM kindOf="original">Milipot to tamako.</FORM>
-        <PHON kindOf="original">miɾipot to tamako</PHON>
-        <FORM kindOf="standard">Milipot to tamako.</FORM>
-        <PHON kindOf="standard">miɾip[o|u]t t[o|u] tamak[o|u]</PHON>
-        <TRANSL xml:lang="zho">捲煙兒。</TRANSL>
-    </S>
     <S id="S24981">
         <FORM kindOf="original">Milipotan to ira ko 'odax.</FORM>
         <PHON kindOf="original">miɾipotan to ira ko ʡoɬax</PHON>
@@ -174700,13 +174212,6 @@
         <FORM kindOf="standard">Cinira ko militina'iay to diyong a sayxo.</FORM>
         <PHON kindOf="standard">ʦinira k[o|u] miɾitinaʡiaj t[o|u] [ɬ|ɮ]ij[o|u]ŋ a sajx[o|u]</PHON>
         <TRANSL xml:lang="zho">他是套豬內臟的師傅。</TRANSL>
-    </S>
-    <S id="S25035">
-        <FORM kindOf="original">Militingas to herek no kaen.</FORM>
-        <PHON kindOf="original">miɾitiŋas to ħərək no kaən</PHON>
-        <FORM kindOf="standard">Militingas to herek no kaen.</FORM>
-        <PHON kindOf="standard">miɾitiŋas t[o|u] ħərək n[o|u] kaən</PHON>
-        <TRANSL xml:lang="zho">吃過飯要剔牙齒。</TRANSL>
     </S>
     <S id="S25036">
         <FORM kindOf="original">Militingasan ira ci mamo.</FORM>
@@ -176140,13 +175645,6 @@
         <PHON kindOf="standard">miɾ[o|u]wan t[o|u] sata</PHON>
         <TRANSL xml:lang="zho">減稅。</TRANSL>
     </S>
-    <S id="S25241">
-        <FORM kindOf="original">Milowan to lifon.</FORM>
-        <PHON kindOf="original">miɾowan to ɾi[f|v|b]on</PHON>
-        <FORM kindOf="standard">Milowan to lifon.</FORM>
-        <PHON kindOf="standard">miɾ[o|u]wan t[o|u] ɾif[o|u]n</PHON>
-        <TRANSL xml:lang="zho">扣除工資。</TRANSL>
-    </S>
     <S id="S25242">
         <FORM kindOf="original">Milowanan ko paro no pawti.</FORM>
         <PHON kindOf="original">miɾowanan ko paro no pawti</PHON>
@@ -176727,13 +176225,6 @@
         <FORM kindOf="standard">O tada makakaay ko fokil nina wawa, cowa kafana' to mimimiming aca a pakiraan.</FORM>
         <PHON kindOf="standard">[o|u] ta[ɬ|ɮ]a makakaaj k[o|u] f[o|u]kiɾ nina wawa ʦ[o|u]wa kafanaʡ t[o|u] mimimimiŋ aʦa a pakiraan</PHON>
         <TRANSL xml:lang="zho">這個小孩太蠢了，一點點辦法也不懂。</TRANSL>
-    </S>
-    <S id="S25325">
-        <FORM kindOf="original">Awa ko mimimiming aca a fali.</FORM>
-        <PHON kindOf="original">awa ko mimimimiŋ aʦa a [f|v|b]aɾi</PHON>
-        <FORM kindOf="standard">Awa ko mimimiming aca a fali.</FORM>
-        <PHON kindOf="standard">awa k[o|u] mimimimiŋ aʦa a faɾi</PHON>
-        <TRANSL xml:lang="zho">一點兒風也沒有。</TRANSL>
     </S>
     <S id="S25326">
         <FORM kindOf="original">Mimimit to kodasing.</FORM>
@@ -179265,13 +178756,6 @@
         <FORM kindOf="standard">Mino'an niyam a ongsin</FORM>
         <PHON kindOf="standard">min[o|u]ʡan nijam a [o|u]ŋsin</PHON>
         <TRANSL xml:lang="zho">我們洗過的溫泉。</TRANSL>
-    </S>
-    <S id="S25688">
-        <FORM kindOf="original">Maino'ay to kako i sawni.</FORM>
-        <PHON kindOf="original">mainoʡaj to kako i sawni</PHON>
-        <FORM kindOf="standard">Maino'ay to kako i sawni.</FORM>
-        <PHON kindOf="standard">main[o|u]ʡaj t[o|u] kak[o|u] i sawni</PHON>
-        <TRANSL xml:lang="zho">我剛剛洗完澡。</TRANSL>
     </S>
     <S id="S25689">
         <FORM kindOf="original">Maino'ay a ka^emangay i 'alo.</FORM>
@@ -191823,6 +191307,7 @@
         <FORM kindOf="standard">Miparo to panay i pawti.</FORM>
         <PHON kindOf="standard">mipar[o|u] t[o|u] panaj i pawti</PHON>
         <TRANSL xml:lang="zho">在麻袋裡裝稻穀。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">把稻穀裝入麻袋。</TRANSL>
     </S>
     <S id="S27482">
         <FORM kindOf="original">Padangen kako a miparo to paliding!</FORM>
@@ -200949,6 +200434,7 @@
         <FORM kindOf="standard">Mironang ko kolong i potapota'an.</FORM>
         <PHON kindOf="standard">mir[o|u]naŋ k[o|u] k[o|u]ɾ[o|u]ŋ i p[o|u]tap[o|u]taʡan</PHON>
         <TRANSL xml:lang="zho">牛在泥塘打滾。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">牛在泥塘裡打滾。</TRANSL>
     </S>
     <S id="S28787">
         <FORM kindOf="original">Mironangan no kolong a fanaw.</FORM>
@@ -203356,6 +202842,7 @@
         <FORM kindOf="standard">Misaamorawan a tafok.</FORM>
         <PHON kindOf="standard">misaam[o|u]rawan a taf[o|u]k</PHON>
         <TRANSL xml:lang="zho">所堆積的沙子。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">堆成山形的沙子。</TRANSL>
     </S>
     <S id="S29130">
         <FORM kindOf="original">Misaamoraway kako to sera.</FORM>
@@ -207283,13 +206770,6 @@
         <PHON kindOf="standard">misaħiŋħiŋ ʦi wina anini a r[o|u]miʡa[ɬ|ɮ]</PHON>
         <TRANSL xml:lang="zho">媽媽今天準備了特別的禮物。</TRANSL>
     </S>
-    <S id="S29689">
-        <FORM kindOf="original">Malifot kako a misaholo to papacem.</FORM>
-        <PHON kindOf="original">maɾi[f|v|b]ot kako a misaħoɾo to papaʦəm</PHON>
-        <FORM kindOf="standard">Malifot kako a misaholo to papacem.</FORM>
-        <PHON kindOf="standard">maɾif[o|u]t kak[o|u] a misaħ[o|u]ɾ[o|u] t[o|u] papaʦəm</PHON>
-        <TRANSL xml:lang="zho">我早晨做飯感到很麻煩。</TRANSL>
-    </S>
     <S id="S29690">
         <FORM kindOf="original">Misaholoan to ko sakalahok niyam.</FORM>
         <PHON kindOf="original">misaħoɾoan to ko sakaɾaħok nijam</PHON>
@@ -207973,6 +207453,7 @@
         <FORM kindOf="standard">Misakalanga ci kaka.</FORM>
         <PHON kindOf="standard">misakaɾaŋa ʦi kaka</PHON>
         <TRANSL xml:lang="zho">哥哥在做三角架。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">哥哥在做三腳架。</TRANSL>
     </S>
     <S id="S29788">
         <FORM kindOf="original">Misakaliki a comikay.</FORM>
@@ -209219,6 +208700,7 @@
         <FORM kindOf="standard">Misakimoodan a toron.</FORM>
         <PHON kindOf="standard">misakim[o|u][o|u][ɬ|ɮ]an a t[o|u]r[o|u]n</PHON>
         <TRANSL xml:lang="zho">做成圓的糯米糕。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">整塊的糯米糕。</TRANSL>
     </S>
     <S id="S29967">
         <FORM kindOf="original">Misakimo'oday kako a mimo'ong to 'epang.</FORM>
@@ -209324,13 +208806,6 @@
         <FORM kindOf="standard">Misakimoodan ako ko maymay a mimo'ong.</FORM>
         <PHON kindOf="standard">misakim[o|u][o|u][ɬ|ɮ]an ak[o|u] k[o|u] majmaj a mim[o|u]ʡ[o|u]ŋ</PHON>
         <TRANSL xml:lang="zho">我把鴨子整個地烤出來了。</TRANSL>
-    </S>
-    <S id="S29982">
-        <FORM kindOf="original">Misakimoodan a toron.</FORM>
-        <PHON kindOf="original">misakimooɬan a toron</PHON>
-        <FORM kindOf="standard">Misakimoodan a toron.</FORM>
-        <PHON kindOf="standard">misakim[o|u][o|u][ɬ|ɮ]an a t[o|u]r[o|u]n</PHON>
-        <TRANSL xml:lang="zho">整塊的糯米糕。</TRANSL>
     </S>
     <S id="S29983">
         <FORM kindOf="original">Misakimooday kako a mimo'ong to 'epang.</FORM>
@@ -210710,13 +210185,6 @@
         <FORM kindOf="standard">Misalalongay a kapah.</FORM>
         <PHON kindOf="standard">misaɾaɾ[o|u]ŋaj a kapaħ</PHON>
         <TRANSL xml:lang="zho">建田寮的小夥子。</TRANSL>
-    </S>
-    <S id="S30180">
-        <FORM kindOf="original">Maolah ko wawa a misalama.</FORM>
-        <PHON kindOf="original">maoɾaħ ko wawa a misaɾama</PHON>
-        <FORM kindOf="standard">Maolah ko wawa a misalama.</FORM>
-        <PHON kindOf="standard">ma[o|u]ɾaħ k[o|u] wawa a misaɾama</PHON>
-        <TRANSL xml:lang="zho">小孩愛玩耍。</TRANSL>
     </S>
     <S id="S30181">
         <FORM kindOf="original">Misalamaan ako koni a tosiya.</FORM>
@@ -212297,13 +211765,6 @@
         <FORM kindOf="standard">Misaamorawan a mitaring ko tafok.</FORM>
         <PHON kindOf="standard">misaam[o|u]rawan a mitariŋ k[o|u] taf[o|u]k</PHON>
         <TRANSL xml:lang="zho">把沙子堆成山形了。</TRANSL>
-    </S>
-    <S id="S30407">
-        <FORM kindOf="original">Misaamorawan a tafok.</FORM>
-        <PHON kindOf="original">misaamorawan a ta[f|v|b]ok</PHON>
-        <FORM kindOf="standard">Misaamorawan a tafok.</FORM>
-        <PHON kindOf="standard">misaam[o|u]rawan a taf[o|u]k</PHON>
-        <TRANSL xml:lang="zho">堆成山形的沙子。</TRANSL>
     </S>
     <S id="S30408">
         <FORM kindOf="original">Misaamoraway ko matayalay to si'elac.</FORM>
@@ -216069,13 +215530,7 @@
         <FORM kindOf="standard">Misatamako ci mamo.</FORM>
         <PHON kindOf="standard">misatamak[o|u] ʦi mam[o|u]</PHON>
         <TRANSL xml:lang="zho">阿嬤在做煙捲。</TRANSL>
-    </S>
-    <S id="S30946">
-        <FORM kindOf="original">Misatamako ci mamo.</FORM>
-        <PHON kindOf="original">misatamako ʦi mamo</PHON>
-        <FORM kindOf="standard">Misatamako ci mamo.</FORM>
-        <PHON kindOf="standard">misatamak[o|u] ʦi mam[o|u]</PHON>
-        <TRANSL xml:lang="zho">阿嬤在種煙捲。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">阿嬤在種煙捲。</TRANSL>
     </S>
     <S id="S30947">
         <FORM kindOf="original">Misatamakoan to ko lipot.</FORM>
@@ -218519,6 +217974,7 @@
         <FORM kindOf="standard">Misinael to adadaay.</FORM>
         <PHON kindOf="standard">misinaəɾ t[o|u] a[ɬ|ɮ]a[ɬ|ɮ]aaj</PHON>
         <TRANSL xml:lang="zho">看護病人。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">照顧病人。</TRANSL>
     </S>
     <S id="S31296">
         <FORM kindOf="original">Misingato a matayal ci Arik.</FORM>
@@ -219661,6 +219117,7 @@
         <FORM kindOf="standard">Aka pacefaen a misopa'!</FORM>
         <PHON kindOf="standard">aka paʦəfaən a mis[o|u]paʡ</PHON>
         <TRANSL xml:lang="zho">不要隨地吐痰！</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">不要隨便吐痰！</TRANSL>
     </S>
     <S id="S31460">
         <FORM kindOf="original">Misopa'an no finawlan kora maco'osay tamdaw.</FORM>
@@ -219731,6 +219188,7 @@
         <FORM kindOf="standard">Misoperit to falisan.</FORM>
         <PHON kindOf="standard">mis[o|u]pərit t[o|u] faɾisan</PHON>
         <TRANSL xml:lang="zho">把高粱的果粒擼脫下來。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">把陸稻擼下粒子。</TRANSL>
     </S>
     <S id="S31470">
         <FORM kindOf="original">Misoperitay kora wawa to panay.</FORM>
@@ -220963,6 +220421,7 @@
         <FORM kindOf="standard">Mitakos to to'as i 'ayaw no kailisinan.</FORM>
         <PHON kindOf="standard">mitak[o|u]s t[o|u] t[o|u]ʡas i ʡajaw n[o|u] kaiɾisinan</PHON>
         <TRANSL xml:lang="zho">豐年祭傳遞信息給祖靈。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">豐年祭前要去召喚祖靈來參加。</TRANSL>
     </S>
     <S id="S31646">
         <FORM kindOf="original">Mitakosan to ko maninaay tona demak.</FORM>
@@ -223415,6 +222874,7 @@
         <FORM kindOf="standard">Mitihtih to alafoh.</FORM>
         <PHON kindOf="standard">mitiħtiħ t[o|u] aɾaf[o|u]ħ</PHON>
         <TRANSL xml:lang="zho">彈掉塵土。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">拍打灰塵。</TRANSL>
     </S>
     <S id="S31995">
         <FORM kindOf="original">Mitihtihan a posak.</FORM>
@@ -223422,13 +222882,6 @@
         <FORM kindOf="standard">Mitihtihan a posak.</FORM>
         <PHON kindOf="standard">mitiħtiħan a p[o|u]sak</PHON>
         <TRANSL xml:lang="zho">飯粒拍掉了。</TRANSL>
-    </S>
-    <S id="S31996">
-        <FORM kindOf="original">Mitihtih to alafoh.</FORM>
-        <PHON kindOf="original">mitiħtiħ to aɾa[f|v|b]oħ</PHON>
-        <FORM kindOf="standard">Mitihtih to alafoh.</FORM>
-        <PHON kindOf="standard">mitiħtiħ t[o|u] aɾaf[o|u]ħ</PHON>
-        <TRANSL xml:lang="zho">拍打灰塵。</TRANSL>
     </S>
     <S id="S31997">
         <FORM kindOf="original">Mitihtih to posak i riko' a tamdaw.</FORM>
@@ -224303,6 +223756,7 @@
         <FORM kindOf="standard">Mitolon to kawas.</FORM>
         <PHON kindOf="standard">mit[o|u]ɾ[o|u]n t[o|u] kawas</PHON>
         <TRANSL xml:lang="zho">祈禱神明。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">向神禱告。</TRANSL>
     </S>
     <S id="S32119">
         <FORM kindOf="original">Mitolon kita to saki ciKacawan.</FORM>
@@ -230194,13 +229648,6 @@
         <PHON kindOf="standard">[o|u][ɬ|ɮ][o|u]ʡn[o|u] fi[ɬ|ɮ]aʦ</PHON>
         <TRANSL xml:lang="zho">珍珠。</TRANSL>
     </S>
-    <S id="S32963">
-        <FORM kindOf="original">sasaodo'en a fokeloh.</FORM>
-        <PHON kindOf="original">sasaoɬoʡən a [f|v|b]okəɾoħ</PHON>
-        <FORM kindOf="standard">sasaodo'en a fokeloh.</FORM>
-        <PHON kindOf="standard">sasa[o|u][ɬ|ɮ][o|u]ʡən a f[o|u]kəɾ[o|u]ħ</PHON>
-        <TRANSL xml:lang="zho">寶石。</TRANSL>
-    </S>
     <S id="S32964">
         <FORM kindOf="original">Ciriko' to ofa.</FORM>
         <PHON kindOf="original">ʦirikoʡ to o[f|v|b]a</PHON>
@@ -231387,13 +230834,6 @@
         <FORM kindOf="standard">Pa'ericen ci Foyan katayni malafi han.</FORM>
         <PHON kindOf="standard">paʡəriʦən ʦi f[o|u]jan katajni maɾafi ħan</PHON>
         <TRANSL xml:lang="zho">給福巿先生打電話請他來吃晚飯。</TRANSL>
-    </S>
-    <S id="S33134">
-        <FORM kindOf="original">Pa'esol to kotang.</FORM>
-        <PHON kindOf="original">paʡəsoɾ to kotaŋ</PHON>
-        <FORM kindOf="standard">Pa'esol to kotang.</FORM>
-        <PHON kindOf="standard">paʡəs[o|u]ɾ t[o|u] k[o|u]taŋ</PHON>
-        <TRANSL xml:lang="zho">扔標槍。</TRANSL>
     </S>
     <S id="S33135">
         <FORM kindOf="original">Pa'esol a miontoay to kotang.</FORM>
@@ -232744,13 +232184,6 @@
         <PHON kindOf="standard">paʦəfaən nira a k[o|u]maən t[o|u] sapaij[o|u]</PHON>
         <TRANSL xml:lang="zho">他亂吃藥。</TRANSL>
     </S>
-    <S id="S33328">
-        <FORM kindOf="original">Aka pacefaen a misopa'!</FORM>
-        <PHON kindOf="original">aka paʦə[f|v|b]aən a misopaʡ</PHON>
-        <FORM kindOf="standard">Aka pacefaen a misopa'!</FORM>
-        <PHON kindOf="standard">aka paʦəfaən a mis[o|u]paʡ</PHON>
-        <TRANSL xml:lang="zho">不要隨便吐痰！</TRANSL>
-    </S>
     <S id="S33329">
         <FORM kindOf="original">O pacefafaray konini a tilid no nitilidan.</FORM>
         <PHON kindOf="original">o paʦə[f|v|b]a[f|v|b]araj konini a tiɾiɬ no nitiɾiɬan</PHON>
@@ -233149,6 +232582,7 @@
         <FORM kindOf="standard">Pacinas to cecay a padakopak a pafeli to pilidan.</FORM>
         <PHON kindOf="standard">paʦinas t[o|u] ʦəʦaj a pa[ɬ|ɮ]ak[o|u]pak a pafəɾi t[o|u] piɾi[ɬ|ɮ]an</PHON>
         <TRANSL xml:lang="zho">撕一紙給他寫字。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">撕一張紙給他寫字。</TRANSL>
     </S>
     <S id="S33386">
         <FORM kindOf="original">Pacinasay to kiradom.</FORM>
@@ -233782,13 +233216,6 @@
         <PHON kindOf="standard">paʦ[o|u]raʦ[o|u]raj pakatajaɾ a ta[o|u]ki</PHON>
         <TRANSL xml:lang="zho">催促工作的老闆。</TRANSL>
     </S>
-    <S id="S33477">
-        <FORM kindOf="original">Pacoracoren no mikowanay kami a palasofitay.</FORM>
-        <PHON kindOf="original">paʦoraʦorən no mikowanaj kami a paɾaso[f|v|b]itaj</PHON>
-        <FORM kindOf="standard">Pacoracoren no mikowanay kami a palasofitay.</FORM>
-        <PHON kindOf="standard">paʦ[o|u]raʦ[o|u]rən n[o|u] mik[o|u]wanaj kami a paɾas[o|u]fitaj</PHON>
-        <TRANSL xml:lang="zho">政府把我們召去當兵。</TRANSL>
-    </S>
     <S id="S33478">
         <FORM kindOf="original">Pacpacen niyam ko panay anini.</FORM>
         <PHON kindOf="original">paʦpaʦən nijam ko panaj anini</PHON>
@@ -233865,13 +233292,6 @@
         <FORM kindOf="standard">Maomah i padakaan ci mama.</FORM>
         <PHON kindOf="standard">ma[o|u]maħ i pa[ɬ|ɮ]akaan ʦi mama</PHON>
         <TRANSL xml:lang="zho">爸爸在玉米田工作。</TRANSL>
-    </S>
-    <S id="S33489">
-        <FORM kindOf="original">Pacinas to cecay a padakopak a pafeli to pilidan.</FORM>
-        <PHON kindOf="original">paʦinas to ʦəʦaj a paɬakopak a pa[f|v|b]əɾi to piɾiɬan</PHON>
-        <FORM kindOf="standard">Pacinas to cecay a padakopak a pafeli to pilidan.</FORM>
-        <PHON kindOf="standard">paʦinas t[o|u] ʦəʦaj a pa[ɬ|ɮ]ak[o|u]pak a pafəɾi t[o|u] piɾi[ɬ|ɮ]an</PHON>
-        <TRANSL xml:lang="zho">撕一張紙給他寫字。</TRANSL>
     </S>
     <S id="S33490">
         <FORM kindOf="original">O penen ko padal itiyaho.</FORM>
@@ -240789,6 +240209,7 @@
         <FORM kindOf="standard">Papakokoten ako kora mi'ecoay to sera ako.</FORM>
         <PHON kindOf="standard">papak[o|u]k[o|u]tən ak[o|u] k[o|u]ra miʡəʦ[o|u]aj t[o|u] səra ak[o|u]</PHON>
         <TRANSL xml:lang="zho">我酚控告那位侵占我土地的人。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我要控告那佔我地的人。</TRANSL>
     </S>
     <S id="S34477">
         <FORM kindOf="original">Pakolod to minokayay.</FORM>
@@ -241889,13 +241310,6 @@
         <PHON kindOf="standard">faɾaħən k[o|u] ħa[ɬ|ɮ]əʦ i paɾakawan</PHON>
         <TRANSL xml:lang="zho">把垃圾丟進垃圾桶內。</TRANSL>
     </S>
-    <S id="S34634">
-        <FORM kindOf="original">o palakawan hananay no Fata'an ko fanaw.</FORM>
-        <PHON kindOf="original">o paɾakawan ħananaj no [f|v|b]ataʡan ko [f|v|b]anaw</PHON>
-        <FORM kindOf="standard">o palakawan hananay no Fata'an ko fanaw.</FORM>
-        <PHON kindOf="standard">[o|u] paɾakawan ħananaj n[o|u] fataʡan k[o|u] fanaw</PHON>
-        <TRANSL xml:lang="zho">富田叫養魚池為palakawan。</TRANSL>
-    </S>
     <S id="S34635">
         <FORM kindOf="original">Palakawas to 'oner ko Paywan a finacadan..</FORM>
         <PHON kindOf="original">paɾakawas to ʡonər ko pajwan a [f|v|b]inaʦaɬan</PHON>
@@ -242882,6 +242296,7 @@
         <FORM kindOf="standard">O paliding ko sapicolo' to panay.</FORM>
         <PHON kindOf="standard">[o|u] paɾi[ɬ|ɮ]iŋ k[o|u] sapiʦ[o|u]ɾ[o|u]ʡ t[o|u] panaj</PHON>
         <TRANSL xml:lang="zho">用牛車搬運稻米。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">用車運稻穀。</TRANSL>
     </S>
     <S id="S34777">
         <FORM kindOf="original">Palidingen ko maamaan ako a mipanokay.</FORM>
@@ -243211,13 +242626,6 @@
         <FORM kindOf="standard">Palimangta' ko patay noya kapah masongtol no tosiya.</FORM>
         <PHON kindOf="standard">paɾimaŋtaʡ k[o|u] pataj n[o|u]ja kapaħ mas[o|u]ŋt[o|u]ɾ n[o|u] t[o|u]sija</PHON>
         <TRANSL xml:lang="zho">那位年青人活生生的被車子撞死。</TRANSL>
-    </S>
-    <S id="S34824">
-        <FORM kindOf="original">Palimangta'en a somowal aka ka simeden.</FORM>
-        <PHON kindOf="original">paɾimaŋtaʡən a somowaɾ aka ka siməɬən</PHON>
-        <FORM kindOf="standard">Palimangta'en a somowal aka ka simeden.</FORM>
-        <PHON kindOf="standard">paɾimaŋtaʡən a s[o|u]m[o|u]waɾ aka ka simə[ɬ|ɮ]ən</PHON>
-        <TRANSL xml:lang="zho">直截了當地把話說。</TRANSL>
     </S>
     <S id="S34825">
         <FORM kindOf="original">Palimangta'ay ko patay noya kapah masongtol no tosiya.</FORM>
@@ -246050,13 +245458,7 @@
         <FORM kindOf="standard">Papakapien ko matayalay.</FORM>
         <PHON kindOf="standard">papakapiən k[o|u] matajaɾaj</PHON>
         <TRANSL xml:lang="zho">要增加人手。</TRANSL>
-    </S>
-    <S id="S35231">
-        <FORM kindOf="original">Papakapien ko matayalay.</FORM>
-        <PHON kindOf="original">papakapiən ko matajaɾaj</PHON>
-        <FORM kindOf="standard">Papakapien ko matayalay.</FORM>
-        <PHON kindOf="standard">papakapiən k[o|u] matajaɾaj</PHON>
-        <TRANSL xml:lang="zho">要增加工人。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">要增加工人。</TRANSL>
     </S>
     <S id="S35232">
         <FORM kindOf="original">Papakapien ko kacikadang.</FORM>
@@ -246113,13 +245515,6 @@
         <FORM kindOf="standard">Papaketemen a okak no fafoy.</FORM>
         <PHON kindOf="standard">papakətəmən a [o|u]kak n[o|u] faf[o|u]j</PHON>
         <TRANSL xml:lang="zho">要啃的豬骨頭。</TRANSL>
-    </S>
-    <S id="S35240">
-        <FORM kindOf="original">Papakokoten ako kora mi'ecoay to sera ako.</FORM>
-        <PHON kindOf="original">papakokotən ako kora miʡəʦoaj to səra ako</PHON>
-        <FORM kindOf="standard">Papakokoten ako kora mi'ecoay to sera ako.</FORM>
-        <PHON kindOf="standard">papak[o|u]k[o|u]tən ak[o|u] k[o|u]ra miʡəʦ[o|u]aj t[o|u] səra ak[o|u]</PHON>
-        <TRANSL xml:lang="zho">我要控告那佔我地的人。</TRANSL>
     </S>
     <S id="S35241">
         <FORM kindOf="original">Papakokoten a tamdaw.</FORM>
@@ -246267,6 +245662,7 @@
         <FORM kindOf="standard">Cecay a rekad ko papalidingen.</FORM>
         <PHON kindOf="standard">ʦəʦaj a rəka[ɬ|ɮ] k[o|u] papaɾi[ɬ|ɮ]iŋən</PHON>
         <TRANSL xml:lang="zho">要運載的（東西）有整整一車皮。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">要裝載一車。</TRANSL>
     </S>
     <S id="S35262">
         <FORM kindOf="original">Papalidongen kora nipawalian a panay i potal.</FORM>
@@ -246967,12 +246363,6 @@
         <FORM kindOf="standard">Paparingoen ko wawa.</FORM>
         <PHON kindOf="standard">papariŋ[o|u]ən k[o|u] wawa</PHON>
         <TRANSL xml:lang="zho">要給小孩子烤火取暖。</TRANSL>
-    </S>
-    <S id="S35363">
-        <FORM kindOf="original">Pariri' to malitengay.</FORM>
-        <PHON kindOf="original">paririʡ to maɾitəŋaj</PHON>
-        <FORM kindOf="standard">Pariri' to malitengay.</FORM>
-        <PHON kindOf="standard">paririʡ t[o|u] maɾitəŋaj</PHON>
     </S>
     <S id="S35364">
         <FORM kindOf="original">Paparod to fa'elohay a loma'.</FORM>
@@ -250940,13 +250330,6 @@
         <PHON kindOf="standard">parawisən k[o|u] t[o|u]ra tatar[o|u]an n[o|u] ʡiʦəp</PHON>
         <TRANSL xml:lang="zho">請你遞給我那檳榔小籃子。</TRANSL>
     </S>
-    <S id="S35927">
-        <FORM kindOf="original">Parawraway to finawlan ko demak iso.</FORM>
-        <PHON kindOf="original">parawrawaj to [f|v|b]inawɾan ko ɬəmak iso</PHON>
-        <FORM kindOf="standard">Parawraway to finawlan ko demak iso.</FORM>
-        <PHON kindOf="standard">parawrawaj t[o|u] finawɾan k[o|u] [ɬ|ɮ]əmak is[o|u]</PHON>
-        <TRANSL xml:lang="zho">你做的事使大家困擾。</TRANSL>
-    </S>
     <S id="S35928">
         <FORM kindOf="original">Parawraway to finawlan ko demak iso.</FORM>
         <PHON kindOf="original">parawrawaj to [f|v|b]inawɾan ko ɬəmak iso</PHON>
@@ -251925,6 +251308,7 @@
         <FORM kindOf="standard">Pasamo to sowal.</FORM>
         <PHON kindOf="standard">pasam[o|u] t[o|u] s[o|u]waɾ</PHON>
         <TRANSL xml:lang="zho">臨時性地說要點。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">發表一點意見。</TRANSL>
     </S>
     <S id="S36067">
         <FORM kindOf="original">Pasamo to tayal anini.</FORM>
@@ -255898,6 +255282,7 @@
         <FORM kindOf="standard">Patektek i ngangan no omah.</FORM>
         <PHON kindOf="standard">patəktək i ŋaŋan n[o|u] [o|u]maħ</PHON>
         <TRANSL xml:lang="zho">在田地的界線樹立木椿。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">在田地的界線樹木椿。</TRANSL>
     </S>
     <S id="S36633">
         <FORM kindOf="original">Patektekay ko matayalay to dinki i lawac no lalan.</FORM>
@@ -256849,13 +256234,6 @@
         <PHON kindOf="standard">pat[o|u]kərsa ʦinira a s[o|u]m[o|u]waɾ</PHON>
         <TRANSL xml:lang="zho">他頂撞著說。</TRANSL>
     </S>
-    <S id="S36770">
-        <FORM kindOf="original">Patolon to sowal.</FORM>
-        <PHON kindOf="original">patoɾon to sowaɾ</PHON>
-        <FORM kindOf="standard">Patolon to sowal.</FORM>
-        <PHON kindOf="standard">pat[o|u]ɾ[o|u]n t[o|u] s[o|u]waɾ</PHON>
-        <TRANSL xml:lang="zho">帶話。</TRANSL>
-    </S>
     <S id="S36771">
         <FORM kindOf="original">Patolon a dademak.</FORM>
         <PHON kindOf="original">patoɾon a ɬaɬəmak</PHON>
@@ -257744,13 +257122,6 @@
         <FORM kindOf="standard">Pedik to tatipelok misanga' to hikoki.</FORM>
         <PHON kindOf="standard">pə[ɬ|ɮ]ik t[o|u] tatipəɾ[o|u]k misaŋaʡ t[o|u] ħik[o|u]ki</PHON>
         <TRANSL xml:lang="zho">折紙做飛機。</TRANSL>
-    </S>
-    <S id="S36898">
-        <FORM kindOf="original">Mapedik ko tagila nora waco.</FORM>
-        <PHON kindOf="original">mapəɬik ko taŋiɾa nora waʦo</PHON>
-        <FORM kindOf="standard">Mapedik ko tangila nora waco.</FORM>
-        <PHON kindOf="standard">mapə[ɬ|ɮ]ik k[o|u] taŋiɾa n[o|u]ra waʦ[o|u]</PHON>
-        <TRANSL xml:lang="zho">那隻狗的耳朵下垂。</TRANSL>
     </S>
     <S id="S36899">
         <FORM kindOf="original">Mapedik ko tagila nora maliyangay a wawa.</FORM>
@@ -259011,13 +258382,6 @@
         <FORM kindOf="standard">Cowa pinanom.</FORM>
         <PHON kindOf="standard">ʦ[o|u]wa pinan[o|u]m</PHON>
         <TRANSL xml:lang="zho">不喝水。</TRANSL>
-    </S>
-    <S id="S37080">
-        <FORM kindOf="original">Aka pitamako!</FORM>
-        <PHON kindOf="original">aka pitamako</PHON>
-        <FORM kindOf="standard">Aka pitamako!</FORM>
-        <PHON kindOf="standard">aka pitamak[o|u]</PHON>
-        <TRANSL xml:lang="zho">禁止吸煙！</TRANSL>
     </S>
     <S id="S37081">
         <FORM kindOf="original">Piadef to sasingaran!</FORM>
@@ -262258,13 +261622,7 @@
         <FORM kindOf="standard">pikiloma'</FORM>
         <PHON kindOf="standard">pikiɾ[o|u]maʡ</PHON>
         <TRANSL xml:lang="zho">請寄居在家；</TRANSL>
-    </S>
-    <S id="S37543">
-        <FORM kindOf="original">pikiloma'</FORM>
-        <PHON kindOf="original">pikiɾomaʡ</PHON>
-        <FORM kindOf="standard">pikiloma'</FORM>
-        <PHON kindOf="standard">pikiɾ[o|u]maʡ</PHON>
-        <TRANSL xml:lang="zho">寄居在家的</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">寄居在家的</TRANSL>
     </S>
     <S id="S37544">
         <FORM kindOf="original">Pikicafay to wina a tayni i kasaopoan no malitengay.</FORM>
@@ -265281,13 +264639,6 @@
         <FORM kindOf="standard">pipaising.</FORM>
         <PHON kindOf="standard">pipaisiŋ</PHON>
         <TRANSL xml:lang="zho">去看醫生</TRANSL>
-    </S>
-    <S id="S37976">
-        <FORM kindOf="original">pipaising.</FORM>
-        <PHON kindOf="original">pipaisiŋ</PHON>
-        <FORM kindOf="standard">pipaising.</FORM>
-        <PHON kindOf="standard">pipaisiŋ</PHON>
-        <TRANSL xml:lang="zho">看醫生。</TRANSL>
     </S>
     <S id="S37977">
         <FORM kindOf="original">Pipa^efer tora topi.</FORM>
@@ -268655,6 +268006,7 @@
         <FORM kindOf="standard">pisaloma'</FORM>
         <PHON kindOf="standard">pisaɾ[o|u]maʡ</PHON>
         <TRANSL xml:lang="zho">去蓋房子吧！</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">蓋房子的</TRANSL>
     </S>
     <S id="S38458">
         <FORM kindOf="original">pisa'opo</FORM>
@@ -268662,20 +268014,7 @@
         <FORM kindOf="standard">pisa'opo</FORM>
         <PHON kindOf="standard">pisaʡ[o|u]p[o|u]</PHON>
         <TRANSL xml:lang="zho">去集合、集中吧！</TRANSL>
-    </S>
-    <S id="S38459">
-        <FORM kindOf="original">pisaloma'</FORM>
-        <PHON kindOf="original">pisaɾomaʡ</PHON>
-        <FORM kindOf="standard">pisaloma'</FORM>
-        <PHON kindOf="standard">pisaɾ[o|u]maʡ</PHON>
-        <TRANSL xml:lang="zho">蓋房子的</TRANSL>
-    </S>
-    <S id="S38460">
-        <FORM kindOf="original">pisa'opo</FORM>
-        <PHON kindOf="original">pisaʡopo</PHON>
-        <FORM kindOf="standard">pisa'opo</FORM>
-        <PHON kindOf="standard">pisaʡ[o|u]p[o|u]</PHON>
-        <TRANSL xml:lang="zho">集合的，集中的。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">集合的，集中的。</TRANSL>
     </S>
     <S id="S38461">
         <FORM kindOf="original">Pisa^epah kako o fafahiyan.</FORM>
@@ -271942,13 +271281,6 @@
         <PHON kindOf="standard">p[o|u]ʡənər k[o|u]ra tam[ɬ|ɮ]aw</PHON>
         <TRANSL xml:lang="zho">那個人個子矮小。</TRANSL>
     </S>
-    <S id="S38929">
-        <FORM kindOf="original">Masapo'opo'oay ko 'aol.</FORM>
-        <PHON kindOf="original">masapoʡopoʡoaj ko ʡaoɾ</PHON>
-        <FORM kindOf="standard">Masapo'opo'oay ko 'aol.</FORM>
-        <PHON kindOf="standard">masap[o|u]ʡ[o|u]p[o|u]ʡ[o|u]aj k[o|u] ʡa[o|u]ɾ</PHON>
-        <TRANSL xml:lang="zho">竹子有很多竹節。</TRANSL>
-    </S>
     <S id="S38930">
         <FORM kindOf="original">O po'o no 'aol.</FORM>
         <PHON kindOf="original">o poʡo no ʡaoɾ</PHON>
@@ -272339,13 +271671,6 @@
         <FORM kindOf="standard">Polong no 'aca ira, falo a rimood sepat a payci.</FORM>
         <PHON kindOf="standard">p[o|u]ɾ[o|u]ŋ n[o|u] ʡaʦa ira faɾ[o|u] a rim[o|u][o|u][ɬ|ɮ] səpat a pajʦi</PHON>
         <TRANSL xml:lang="zho">它的價格合計八元四角。</TRANSL>
-    </S>
-    <S id="S38987">
-        <FORM kindOf="original">Polongen ko paro no loma' a masa'opo.</FORM>
-        <PHON kindOf="original">poɾoŋən ko paro no ɾomaʡ a masaʡopo</PHON>
-        <FORM kindOf="standard">Polongen ko paro no loma' a masa'opo.</FORM>
-        <PHON kindOf="standard">p[o|u]ɾ[o|u]ŋən k[o|u] par[o|u] n[o|u] ɾ[o|u]maʡ a masaʡ[o|u]p[o|u]</PHON>
-        <TRANSL xml:lang="zho">叫一家人團聚在一起。</TRANSL>
     </S>
     <S id="S38988">
         <FORM kindOf="original">O poneng to ko 'orip ningra.</FORM>
@@ -273562,13 +272887,7 @@
         <FORM kindOf="standard">Rarasi'en ko potal.</FORM>
         <PHON kindOf="standard">rarasiʡən k[o|u] p[o|u]taɾ</PHON>
         <TRANSL xml:lang="zho">庭院要灑水。</TRANSL>
-    </S>
-    <S id="S39161">
-        <FORM kindOf="original">Rarasi'en ko potal.</FORM>
-        <PHON kindOf="original">rarasiʡən ko potaɾ</PHON>
-        <FORM kindOf="standard">Rarasi'en ko potal.</FORM>
-        <PHON kindOf="standard">rarasiʡən k[o|u] p[o|u]taɾ</PHON>
-        <TRANSL xml:lang="zho">要灑水的庭院。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">要灑水的庭院。</TRANSL>
     </S>
     <S id="S39162">
         <FORM kindOf="original">O raratohen ako koya ma'odangay a tamdaw.</FORM>
@@ -274737,13 +274056,6 @@
         <FORM kindOf="standard">Refongen ko tapang nora kilang!</FORM>
         <PHON kindOf="standard">rəf[o|u]ŋən k[o|u] tapaŋ n[o|u]ra kiɾaŋ</PHON>
         <TRANSL xml:lang="zho">把那棵樹幹打個洞吧！</TRANSL>
-    </S>
-    <S id="S39329">
-        <FORM kindOf="original">Cecay a rekad ko papalidingen.</FORM>
-        <PHON kindOf="original">ʦəʦaj a rəkaɬ ko papaɾiɬiŋən</PHON>
-        <FORM kindOf="standard">Cecay a rekad ko papalidingen.</FORM>
-        <PHON kindOf="standard">ʦəʦaj a rəka[ɬ|ɮ] k[o|u] papaɾi[ɬ|ɮ]iŋən</PHON>
-        <TRANSL xml:lang="zho">要裝載一車。</TRANSL>
     </S>
     <S id="S39330">
         <FORM kindOf="original">Pina a rekad ko tatiliden ako?</FORM>
@@ -276074,13 +275386,6 @@
         <FORM kindOf="standard">O ronai' ko sapilikop to ciraraway a tamdam itiyaho.</FORM>
         <PHON kindOf="standard">[o|u] r[o|u]naiʡ k[o|u] sapiɾik[o|u]p t[o|u] ʦirarawaj a tam[ɬ|ɮ]am itijaħ[o|u]</PHON>
         <TRANSL xml:lang="zho">早期用鐵鍊包圍犯人。</TRANSL>
-    </S>
-    <S id="S39521">
-        <FORM kindOf="original">Mironang ko kolong i potapota'an.</FORM>
-        <PHON kindOf="original">mironaŋ ko koɾoŋ i potapotaʡan</PHON>
-        <FORM kindOf="standard">Mironang ko kolong i potapota'an.</FORM>
-        <PHON kindOf="standard">mir[o|u]naŋ k[o|u] k[o|u]ɾ[o|u]ŋ i p[o|u]tap[o|u]taʡan</PHON>
-        <TRANSL xml:lang="zho">牛在泥塘裡打滾。</TRANSL>
     </S>
     <S id="S39522">
         <FORM kindOf="original">O ronem ni wama kinian.</FORM>
@@ -285308,13 +284613,6 @@
         <FORM kindOf="standard">Sakalalo'odsa ko Amirika atoya Taripan.</FORM>
         <PHON kindOf="standard">sakaɾaɾ[o|u]ʡ[o|u][ɬ|ɮ]sa k[o|u] amirika at[o|u]ja taripan</PHON>
         <TRANSL xml:lang="zho">美國和塔利班正處在戰爭狀態。</TRANSL>
-    </S>
-    <S id="S40839">
-        <FORM kindOf="original">Misakalanga ci kaka.</FORM>
-        <PHON kindOf="original">misakaɾaŋa ʦi kaka</PHON>
-        <FORM kindOf="standard">Misakalanga ci kaka.</FORM>
-        <PHON kindOf="standard">misakaɾaŋa ʦi kaka</PHON>
-        <TRANSL xml:lang="zho">哥哥在做三腳架。</TRANSL>
     </S>
     <S id="S40840">
         <FORM kindOf="original">Tata'ang ko sakalat no tamarang.</FORM>
@@ -295128,13 +294426,6 @@
         <PHON kindOf="standard">sapiʦ[o|u]ɾəkaw i ʡajaw n[o|u] ɾaħ[o|u]k a miɾaħəʦi t[o|u] tajaɾ</PHON>
         <TRANSL xml:lang="zho">中午以前想去做一下完成工作。</TRANSL>
     </S>
-    <S id="S42234">
-        <FORM kindOf="original">O paliding ko sapicolo' to panay.</FORM>
-        <PHON kindOf="original">o paɾiɬiŋ ko sapiʦoɾoʡ to panaj</PHON>
-        <FORM kindOf="standard">O paliding ko sapicolo' to panay.</FORM>
-        <PHON kindOf="standard">[o|u] paɾi[ɬ|ɮ]iŋ k[o|u] sapiʦ[o|u]ɾ[o|u]ʡ t[o|u] panaj</PHON>
-        <TRANSL xml:lang="zho">用車運稻穀。</TRANSL>
-    </S>
     <S id="S42235">
         <FORM kindOf="original">Sapicolo'aw kami to fokeloh a pakatamina.</FORM>
         <PHON kindOf="original">sapiʦoɾoʡaw kami to [f|v|b]okəɾoħ a pakatamina</PHON>
@@ -302387,13 +301678,7 @@
         <FORM kindOf="standard">Sapilolod a sikal.</FORM>
         <PHON kindOf="standard">sapiɾ[o|u]ɾ[o|u][ɬ|ɮ] a sikaɾ</PHON>
         <TRANSL xml:lang="zho">捲草蓆的工具。</TRANSL>
-    </S>
-    <S id="S43268">
-        <FORM kindOf="original">Sapilolod a sikal.</FORM>
-        <PHON kindOf="original">sapiɾoɾoɬ a sikaɾ</PHON>
-        <FORM kindOf="standard">Sapilolod a sikal.</FORM>
-        <PHON kindOf="standard">sapiɾ[o|u]ɾ[o|u][ɬ|ɮ] a sikaɾ</PHON>
-        <TRANSL xml:lang="zho">席捲用的草蓆。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">席捲用的草蓆。</TRANSL>
     </S>
     <S id="S43269">
         <FORM kindOf="original">Sapilolodaw ira tora kiradom.</FORM>
@@ -302534,13 +301819,7 @@
         <FORM kindOf="standard">Ira to ko sapilosiyang ako.</FORM>
         <PHON kindOf="standard">ira t[o|u] k[o|u] sapiɾ[o|u]sijaŋ ak[o|u]</PHON>
         <TRANSL xml:lang="zho">我有例證說明。</TRANSL>
-    </S>
-    <S id="S43289">
-        <FORM kindOf="original">Ira to ko sapilosiyang ako.</FORM>
-        <PHON kindOf="original">ira to ko sapiɾosijaŋ ako</PHON>
-        <FORM kindOf="standard">Ira to ko sapilosiyang ako.</FORM>
-        <PHON kindOf="standard">ira t[o|u] k[o|u] sapiɾ[o|u]sijaŋ ak[o|u]</PHON>
-        <TRANSL xml:lang="zho">我有傳播工具。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我有傳播工具。</TRANSL>
     </S>
     <S id="S43290">
         <FORM kindOf="original">Sapilosiyangaw ira to tapangan no nidemakan ira.</FORM>
@@ -312129,13 +311408,7 @@
         <FORM kindOf="standard">Sapisahalafin to demak.</FORM>
         <PHON kindOf="standard">sapisaħaɾafin t[o|u] [ɬ|ɮ]əmak</PHON>
         <TRANSL xml:lang="zho">持久做事的方式。</TRANSL>
-    </S>
-    <S id="S44654">
-        <FORM kindOf="original">Sapisahalafin to demak.</FORM>
-        <PHON kindOf="original">sapisaħaɾa[f|v|b]in to ɬəmak</PHON>
-        <FORM kindOf="standard">Sapisahalafin to demak.</FORM>
-        <PHON kindOf="standard">sapisaħaɾafin t[o|u] [ɬ|ɮ]əmak</PHON>
-        <TRANSL xml:lang="zho">使工作持久的方法。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">使工作持久的方法。</TRANSL>
     </S>
     <S id="S44655">
         <FORM kindOf="original">Sapisahalafinaw ako a mitilid to no 'Amis a sowal.</FORM>
@@ -312143,13 +311416,7 @@
         <FORM kindOf="standard">Sapisahalafinaw ako a mitilid to no 'Amis a sowal.</FORM>
         <PHON kindOf="standard">sapisaħaɾafinaw ak[o|u] a mitiɾi[ɬ|ɮ] t[o|u] n[o|u] ʡamis a s[o|u]waɾ</PHON>
         <TRANSL xml:lang="zho">我想堅持學習阿美族語言。</TRANSL>
-    </S>
-    <S id="S44656">
-        <FORM kindOf="original">Sapisahalafinaw ako a mitilid to no 'Amis a sowal.</FORM>
-        <PHON kindOf="original">sapisaħaɾa[f|v|b]inaw ako a mitiɾiɬ to no ʡamis a sowaɾ</PHON>
-        <FORM kindOf="standard">Sapisahalafinaw ako a mitilid to no 'Amis a sowal.</FORM>
-        <PHON kindOf="standard">sapisaħaɾafinaw ak[o|u] a mitiɾi[ɬ|ɮ] t[o|u] n[o|u] ʡamis a s[o|u]waɾ</PHON>
-        <TRANSL xml:lang="zho">我想用久一點的時間學阿美語。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">我想用久一點的時間學阿美語。</TRANSL>
     </S>
     <S id="S44657">
         <FORM kindOf="original">Sapisahalafinaw niyam a milo'od.</FORM>
@@ -312549,13 +311816,6 @@
         <FORM kindOf="standard">sapisakaniw to payso a apyso.</FORM>
         <PHON kindOf="standard">sapisakaniw t[o|u] pajs[o|u] a apjs[o|u]</PHON>
         <TRANSL xml:lang="zho">騙人家錢的金錢。</TRANSL>
-    </S>
-    <S id="S44714">
-        <FORM kindOf="original">Sapisakaniwaw ira takowanan.</FORM>
-        <PHON kindOf="original">sapisakaniwaw ira takowanan</PHON>
-        <FORM kindOf="standard">Sapisakaniwaw ira takowanan.</FORM>
-        <PHON kindOf="standard">sapisakaniwaw ira tak[o|u]wanan</PHON>
-        <TRANSL xml:lang="zho">他想開我的玩笑。</TRANSL>
     </S>
     <S id="S44715">
         <FORM kindOf="original">Sapisakaniwaw ira takowanan.</FORM>
@@ -318932,13 +318192,7 @@
         <FORM kindOf="standard">Sapito^etoaw ira a dademak.</FORM>
         <PHON kindOf="standard">sapit[o|u]ʔət[o|u]aw ira a [ɬ|ɮ]a[ɬ|ɮ]əmak</PHON>
         <TRANSL xml:lang="zho">她想直接做。</TRANSL>
-    </S>
-    <S id="S45619">
-        <FORM kindOf="original">Sapito^etoaw ira a dademak.</FORM>
-        <PHON kindOf="original">sapitoʔətoaw ira a ɬaɬəmak</PHON>
-        <FORM kindOf="standard">Sapito^etoaw ira a dademak.</FORM>
-        <PHON kindOf="standard">sapit[o|u]ʔət[o|u]aw ira a [ɬ|ɮ]a[ɬ|ɮ]əmak</PHON>
-        <TRANSL xml:lang="zho">她想繼續做。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">她想繼續做。</TRANSL>
     </S>
     <S id="S45620">
         <FORM kindOf="original">Sapitoda a tangol.</FORM>
@@ -321535,13 +320789,6 @@
         <FORM kindOf="standard">Sasalamaen a 'acocol.</FORM>
         <PHON kindOf="standard">sasaɾamaən a ʡaʦ[o|u]ʦ[o|u]ɾ</PHON>
         <TRANSL xml:lang="zho">要玩耍用的陀螺。</TRANSL>
-    </S>
-    <S id="S45980">
-        <FORM kindOf="original">Mahemeken kona wawa tona posi, sasalamahan ningra.</FORM>
-        <PHON kindOf="original">maħəməkən kona wawa tona posi sasaɾamaħan niŋra</PHON>
-        <FORM kindOf="standard">Mahemeken kona wawa tona posi, sasalamahan ningra.</FORM>
-        <PHON kindOf="standard">maħəməkən k[o|u]na wawa t[o|u]na p[o|u]si sasaɾamaħan niŋra</PHON>
-        <TRANSL xml:lang="zho">這孩子對貓感到興趣，就老玩它。</TRANSL>
     </S>
     <S id="S45981">
         <FORM kindOf="original">Matokaay kona tamdaw, sasalamasa to romi'ami'ad ca kamaomah.</FORM>
@@ -325255,13 +324502,6 @@
         <PHON kindOf="standard">sawiħawiħ n[o|u] tamina</PHON>
         <TRANSL xml:lang="zho">船舵。</TRANSL>
     </S>
-    <S id="S46511">
-        <FORM kindOf="original">Sawihawih no foting.</FORM>
-        <PHON kindOf="original">sawiħawiħ no [f|v|b]otiŋ</PHON>
-        <FORM kindOf="standard">Sawihawih no foting.</FORM>
-        <PHON kindOf="standard">sawiħawiħ n[o|u] f[o|u]tiŋ</PHON>
-        <TRANSL xml:lang="zho">魚尾。</TRANSL>
-    </S>
     <S id="S46512">
         <FORM kindOf="original">Sawikiten canira tatosa o cima ko matatodongay?</FORM>
         <PHON kindOf="original">sawikitən ʦanira tatosa o ʦima ko matatoɬoŋaj</PHON>
@@ -326675,13 +325915,6 @@
         <PHON kindOf="standard">masikə[ɬ|ɮ]a n[o|u] f[o|u]kəɾ[o|u]ħ k[o|u]ra ta[o|u]sija</PHON>
         <TRANSL xml:lang="zho">車子被石頭擊中。</TRANSL>
     </S>
-    <S id="S46714">
-        <FORM kindOf="original">Masikeda no adada kako inacila.</FORM>
-        <PHON kindOf="original">masikəɬa no aɬaɬa kako inaʦiɾa</PHON>
-        <FORM kindOf="standard">Masikeda no adada kako inacila.</FORM>
-        <PHON kindOf="standard">masikə[ɬ|ɮ]a n[o|u] a[ɬ|ɮ]a[ɬ|ɮ]a kak[o|u] inaʦiɾa</PHON>
-        <TRANSL xml:lang="zho">前天我生病了。(被病魔投中)</TRANSL>
-    </S>
     <S id="S46715">
         <FORM kindOf="original">Sikedaen to ko 'a'adopen.</FORM>
         <PHON kindOf="original">sikəɬaən to ko ʡaʡaɬopən</PHON>
@@ -326933,6 +326166,7 @@
         <FORM kindOf="standard">Simeden ko payso iso, ta caay katakaw.</FORM>
         <PHON kindOf="standard">simə[ɬ|ɮ]ən k[o|u] pajs[o|u] is[o|u] ta ʦaaj katakaw</PHON>
         <TRANSL xml:lang="zho">把你的錢藏好，才不會被偷。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">把你的錢藏好，這樣就不會被偷了。</TRANSL>
     </S>
     <S id="S46751">
         <FORM kindOf="original">Simelang ko mahaenay a wakawak.</FORM>
@@ -327024,13 +326258,6 @@
         <FORM kindOf="standard">Sina'osalayen niyam, nga'ayay a kaenen!</FORM>
         <PHON kindOf="standard">sinaʡ[o|u]saɾajən nijam ŋaʡajaj a kaənən</PHON>
         <TRANSL xml:lang="zho">我們摘莧菜吧，好吃呢！</TRANSL>
-    </S>
-    <S id="S46764">
-        <FORM kindOf="original">Misinael to adadaay.</FORM>
-        <PHON kindOf="original">misinaəɾ to aɬaɬaaj</PHON>
-        <FORM kindOf="standard">Misinael to adadaay.</FORM>
-        <PHON kindOf="standard">misinaəɾ t[o|u] a[ɬ|ɮ]a[ɬ|ɮ]aaj</PHON>
-        <TRANSL xml:lang="zho">照顧病人。</TRANSL>
     </S>
     <S id="S46765">
         <FORM kindOf="original">Sanga'ayen ko adadaay a sinaelen!</FORM>
@@ -328752,13 +327979,6 @@
         <PHON kindOf="standard">s[o|u]pə[ɬ|ɮ]ən k[o|u] ʦisafawaj a pajs[o|u] i kiŋk[o|u]</PHON>
         <TRANSL xml:lang="zho">把剩餘的錢存到銀行裡。</TRANSL>
     </S>
-    <S id="S47009">
-        <FORM kindOf="original">Misoperit to falisan.</FORM>
-        <PHON kindOf="original">misopərit to [f|v|b]aɾisan</PHON>
-        <FORM kindOf="standard">Misoperit to falisan.</FORM>
-        <PHON kindOf="standard">mis[o|u]pərit t[o|u] faɾisan</PHON>
-        <TRANSL xml:lang="zho">把陸稻擼下粒子。</TRANSL>
-    </S>
     <S id="S47010">
         <FORM kindOf="original">Soperithan ningra ko lamelo.</FORM>
         <PHON kindOf="original">sopəritħan niŋra ko ɾaməɾo</PHON>
@@ -329284,13 +328504,6 @@
         <PHON kindOf="standard">[o|u] taʡi n[o|u] tam[ɬ|ɮ]aw k[o|u] sapak[o|u]jasi t[o|u] pinaɾ[o|u]ma</PHON>
         <TRANSL xml:lang="zho">用人的糞便給農作物施肥。</TRANSL>
     </S>
-    <S id="S47085">
-        <FORM kindOf="original">Mata'i ko marad.</FORM>
-        <PHON kindOf="original">mataʡi ko maraɬ</PHON>
-        <FORM kindOf="standard">Mata'i ko marad.</FORM>
-        <PHON kindOf="standard">mataʡi k[o|u] mara[ɬ|ɮ]</PHON>
-        <TRANSL xml:lang="zho">鐡生鏽。</TRANSL>
-    </S>
     <S id="S47086">
         <FORM kindOf="original">Ta'ingen no siri ko wa'a.</FORM>
         <PHON kindOf="original">taʡiŋən no siri ko waʡa</PHON>
@@ -329311,13 +328524,6 @@
         <FORM kindOf="standard">Ta'isen ko riko' ako!</FORM>
         <PHON kindOf="standard">taʡisən k[o|u] rik[o|u]ʡ ak[o|u]</PHON>
         <TRANSL xml:lang="zho">把我的衣服補一下！</TRANSL>
-    </S>
-    <S id="S47089">
-        <FORM kindOf="original">Ciadada to ta'elokan a kan ci Pihay.</FORM>
-        <PHON kindOf="original">ʦiaɬaɬa to taʡəɾokan a kan ʦi piħaj</PHON>
-        <FORM kindOf="standard">Ciadada to ta'elokan a kan ci Pihay.</FORM>
-        <PHON kindOf="standard">ʦia[ɬ|ɮ]a[ɬ|ɮ]a t[o|u] taʡəɾ[o|u]kan a kan ʦi piħaj</PHON>
-        <TRANSL xml:lang="zho">畢還</TRANSL>
     </S>
     <S id="S47090">
         <FORM kindOf="original">O ta'o ko sapicahok to nanom.</FORM>
@@ -329479,13 +328685,6 @@
         <FORM kindOf="standard">Mihorac to wadis, ta malali'op, ta mikales kako.</FORM>
         <PHON kindOf="standard">miħ[o|u]raʦ t[o|u] wa[ɬ|ɮ]is ta maɾaɾiʡ[o|u]p ta mikaɾəs kak[o|u]</PHON>
         <TRANSL xml:lang="zho">我去刷牙，而後去洗臉和梳頭。</TRANSL>
-    </S>
-    <S id="S47113">
-        <FORM kindOf="original">Simeden ko payso iso, ta caay katakaw.</FORM>
-        <PHON kindOf="original">siməɬən ko pajso iso ta ʦaaj katakaw</PHON>
-        <FORM kindOf="standard">Simeden ko payso iso, ta caay katakaw.</FORM>
-        <PHON kindOf="standard">simə[ɬ|ɮ]ən k[o|u] pajs[o|u] is[o|u] ta ʦaaj katakaw</PHON>
-        <TRANSL xml:lang="zho">把你的錢藏好，這樣就不會被偷了。</TRANSL>
     </S>
     <S id="S47114">
         <FORM kindOf="original">Ta^edip to olay.</FORM>
@@ -331340,13 +330539,6 @@
         <PHON kindOf="standard">taħasi[ɬ|ɮ]ajaj a tam[ɬ|ɮ]aw</PHON>
         <TRANSL xml:lang="zho">殿後的人（留下來的人）。</TRANSL>
     </S>
-    <S id="S47380">
-        <FORM kindOf="original">Tahasifed ko wa'a no siri i demedemetan.</FORM>
-        <PHON kindOf="original">taħasi[f|v|b]əɬ ko waʡa no siri i ɬəməɬəmətan</PHON>
-        <FORM kindOf="standard">Tahasifed ko wa'a no siri i demedemetan.</FORM>
-        <PHON kindOf="standard">taħasifə[ɬ|ɮ] k[o|u] waʡa n[o|u] siri i [ɬ|ɮ]əmə[ɬ|ɮ]əmətan</PHON>
-        <TRANSL xml:lang="zho">羊角掛到草叢。</TRANSL>
-    </S>
     <S id="S47381">
         <FORM kindOf="original">Tahasifeday ko riko' ako i ca'ang no kilang.</FORM>
         <PHON kindOf="original">taħasi[f|v|b]əɬaj ko rikoʡ ako i ʦaʡaŋ no kiɾaŋ</PHON>
@@ -332312,13 +331504,6 @@
         <PHON kindOf="standard">pakətiŋən k[o|u] k[o|u]ɾ[o|u]ŋ i tak[o|u]rawitan n[o|u] kaŋkaŋ</PHON>
         <TRANSL xml:lang="zho">把牛套在犁的牽引鈎。</TRANSL>
     </S>
-    <S id="S47519">
-        <FORM kindOf="original">Mitakos to to'as i 'ayaw no kailisinan.</FORM>
-        <PHON kindOf="original">mitakos to toʡas i ʡajaw no kaiɾisinan</PHON>
-        <FORM kindOf="standard">Mitakos to to'as i 'ayaw no kailisinan.</FORM>
-        <PHON kindOf="standard">mitak[o|u]s t[o|u] t[o|u]ʡas i ʡajaw n[o|u] kaiɾisinan</PHON>
-        <TRANSL xml:lang="zho">豐年祭前要去召喚祖靈來參加。</TRANSL>
-    </S>
     <S id="S47520">
         <FORM kindOf="original">Takosen cangra!</FORM>
         <PHON kindOf="original">takosən ʦaŋra</PHON>
@@ -333270,13 +332455,7 @@
         <FORM kindOf="standard">Talatiihay a tamdaw.</FORM>
         <PHON kindOf="standard">taɾatiiħaj a tam[ɬ|ɮ]aw</PHON>
         <TRANSL xml:lang="zho">做夢的人。</TRANSL>
-    </S>
-    <S id="S47656">
-        <FORM kindOf="original">Talatiihay a tamdaw.</FORM>
-        <PHON kindOf="original">taɾatiiħaj a tamɬaw</PHON>
-        <FORM kindOf="standard">Talatiihay a tamdaw.</FORM>
-        <PHON kindOf="standard">taɾatiiħaj a tam[ɬ|ɮ]aw</PHON>
-        <TRANSL xml:lang="zho">受災難的人。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">受災難的人。</TRANSL>
     </S>
     <S id="S47657">
         <FORM kindOf="original">Talatimol kami a patiyam.</FORM>
@@ -340060,13 +339239,6 @@
         <PHON kindOf="standard">təktəkən k[o|u] niwikwikan</PHON>
         <TRANSL xml:lang="zho">手編的竹籃打緊。</TRANSL>
     </S>
-    <S id="S48626">
-        <FORM kindOf="original">Patektek i ngangan no omah.</FORM>
-        <PHON kindOf="original">patəktək i ŋaŋan no omaħ</PHON>
-        <FORM kindOf="standard">Patektek i ngangan no omah.</FORM>
-        <PHON kindOf="standard">patəktək i ŋaŋan n[o|u] [o|u]maħ</PHON>
-        <TRANSL xml:lang="zho">在田地的界線樹木椿。</TRANSL>
-    </S>
     <S id="S48627">
         <FORM kindOf="original">Natektek ko tireng ningra.</FORM>
         <PHON kindOf="original">natəktək ko tirəŋ niŋra</PHON>
@@ -340557,13 +339729,6 @@
         <PHON kindOf="standard">təŋtəŋ t[o|u] saɾiɾ</PHON>
         <TRANSL xml:lang="zho">拉魚網。</TRANSL>
     </S>
-    <S id="S48697">
-        <FORM kindOf="original">Manayat ko komo a tengtengen.</FORM>
-        <PHON kindOf="original">manajat ko komo a təŋtəŋən</PHON>
-        <FORM kindOf="standard">Manayat ko komo a tengtengen.</FORM>
-        <PHON kindOf="standard">manajat k[o|u] k[o|u]m[o|u] a təŋtəŋən</PHON>
-        <TRANSL xml:lang="zho">橡皮筋拉拽起來會延長。</TRANSL>
-    </S>
     <S id="S48698">
         <FORM kindOf="original">Tengtenghan no kolong kora paliding.</FORM>
         <PHON kindOf="original">təŋtəŋħan no koɾoŋ kora paɾiɬiŋ</PHON>
@@ -340787,13 +339952,6 @@
         <FORM kindOf="standard">Tepo to 'ikay.</FORM>
         <PHON kindOf="standard">təp[o|u] t[o|u] ʡikaj</PHON>
         <TRANSL xml:lang="zho">敲碎一塊土壤聲。</TRANSL>
-    </S>
-    <S id="S48730">
-        <FORM kindOf="original">Matepo koya ohong.</FORM>
-        <PHON kindOf="original">matəpo koja oħoŋ</PHON>
-        <FORM kindOf="standard">Matepo koya ohong.</FORM>
-        <PHON kindOf="standard">matəp[o|u] k[o|u]ja [o|u]ħ[o|u]ŋ</PHON>
-        <TRANSL xml:lang="zho">那本書噗咚一聲掉下來。</TRANSL>
     </S>
     <S id="S48731">
         <FORM kindOf="original">Tepoc han kora mihifalatay i lalan a aol.</FORM>
@@ -342145,6 +341303,7 @@
         <FORM kindOf="standard">Matatiwtiw ko ngiha' a romadiw.</FORM>
         <PHON kindOf="standard">matatiwtiw k[o|u] ŋiħaʡ a r[o|u]ma[ɬ|ɮ]iw</PHON>
         <TRANSL xml:lang="zho">歌聲參差不齊。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">唱歌合聲不和諧。</TRANSL>
     </S>
     <S id="S48924">
         <FORM kindOf="original">Tiwtiwen ko tayal ira!</FORM>
@@ -342978,13 +342137,6 @@
         <FORM kindOf="standard">Tolangen ko simal no tosiya.</FORM>
         <PHON kindOf="standard">t[o|u]ɾaŋən k[o|u] simaɾ n[o|u] t[o|u]sija</PHON>
         <TRANSL xml:lang="zho">給汽車加油。</TRANSL>
-    </S>
-    <S id="S49042">
-        <FORM kindOf="original">Tolas no katomirengan.</FORM>
-        <PHON kindOf="original">toɾas no katomirəŋan</PHON>
-        <FORM kindOf="standard">Tolas no katomirengan.</FORM>
-        <PHON kindOf="standard">t[o|u]ɾas n[o|u] kat[o|u]mirəŋan</PHON>
-        <TRANSL xml:lang="zho">警戒線。</TRANSL>
     </S>
     <S id="S49043">
         <FORM kindOf="original">Awa ko tolas no ta'angayay a riyar.</FORM>
@@ -344255,13 +343407,6 @@
         <PHON kindOf="standard">t[o|u]rt[o|u]rsa k[o|u] ʡajam i pataɾ t[o|u] fəɾaʦ</PHON>
         <TRANSL xml:lang="zho">鳥在院子啄食。</TRANSL>
     </S>
-    <S id="S49224">
-        <FORM kindOf="original">Tosa a fulad.</FORM>
-        <PHON kindOf="original">tosa a [f|v|b]uɾaɬ</PHON>
-        <FORM kindOf="standard">Tosa a folad.</FORM>
-        <PHON kindOf="standard">t[o|u]sa a f[o|u]ɾa[ɬ|ɮ]</PHON>
-        <TRANSL xml:lang="zho">二月。</TRANSL>
-    </S>
     <S id="S49225">
         <FORM kindOf="original">Tosa ko cokap.</FORM>
         <PHON kindOf="original">tosa ko ʦokap</PHON>
@@ -344918,20 +344063,6 @@
         <FORM kindOf="standard">O focod a wawa.</FORM>
         <PHON kindOf="standard">[o|u] f[o|u]ʦ[o|u][ɬ|ɮ] a wawa</PHON>
         <TRANSL xml:lang="zho">私生子。</TRANSL>
-    </S>
-    <S id="S49320">
-        <FORM kindOf="original">Fa'inayan a wawa.</FORM>
-        <PHON kindOf="original">[f|v|b]aʡinajan a wawa</PHON>
-        <FORM kindOf="standard">Fa'inayan a wawa.</FORM>
-        <PHON kindOf="standard">faʡinajan a wawa</PHON>
-        <TRANSL xml:lang="zho">男孩。</TRANSL>
-    </S>
-    <S id="S49321">
-        <FORM kindOf="original">Fafahiyan a wawa.</FORM>
-        <PHON kindOf="original">[f|v|b]a[f|v|b]aħijan a wawa</PHON>
-        <FORM kindOf="standard">Fafahiyan a wawa.</FORM>
-        <PHON kindOf="standard">fafaħijan a wawa</PHON>
-        <TRANSL xml:lang="zho">女孩。</TRANSL>
     </S>
     <S id="S49322">
         <FORM kindOf="original">O wawadawaden ako ko riko' i lalipaan.</FORM>
@@ -346207,13 +345338,6 @@
         <PHON kindOf="standard">ʦaaj pitəŋiɾ</PHON>
         <TRANSL xml:lang="zho">不服從的;不聽話。</TRANSL>
     </S>
-    <S id="S49500-opt">
-        <FORM kindOf="original">caay picinga.</FORM>
-        <PHON kindOf="original">ʦaaj piʦiŋa</PHON>
-        <FORM kindOf="standard">caay picinga.</FORM>
-        <PHON kindOf="standard">ʦaaj piʦiŋa</PHON>
-        <TRANSL xml:lang="zho">不服從的;不聽話。</TRANSL>
-    </S>
     <S id="S49501">
         <FORM kindOf="original">caay to.</FORM>
         <PHON kindOf="original">ʦaaj to</PHON>
@@ -346395,13 +345519,6 @@
         <FORM kindOf="standard">Fesiw sa ko tosiya a mitaelif.</FORM>
         <PHON kindOf="standard">fəsiw sa k[o|u] t[o|u]sija a mitaəɾif</PHON>
         <TRANSL xml:lang="zho">車子急速超過。</TRANSL>
-    </S>
-    <S id="S49528">
-        <FORM kindOf="original">Fesiw sa ko timela.</FORM>
-        <PHON kindOf="original">[f|v|b]əsiw sa ko timəɾa</PHON>
-        <FORM kindOf="standard">Fesiw sa ko timela.</FORM>
-        <PHON kindOf="standard">fəsiw sa k[o|u] timəɾa</PHON>
-        <TRANSL xml:lang="zho">弓彈急速飛過。</TRANSL>
     </S>
     <S id="S49529">
         <FORM kindOf="original">Mafitangaran ko panay.</FORM>
@@ -347061,13 +346178,6 @@
         <PHON kindOf="standard">maniwaniwaj t[o|u] k[o|u] [ɬ|ɮ]aŋaħ</PHON>
         <TRANSL xml:lang="zho">鍋子涮過了。</TRANSL>
     </S>
-    <S id="S49623">
-        <FORM kindOf="original">Mapakapiay ko riko' no wawa.</FORM>
-        <PHON kindOf="original">mapakapiaj ko rikoʡ no wawa</PHON>
-        <FORM kindOf="standard">Mapakapiay ko riko' no wawa.</FORM>
-        <PHON kindOf="standard">mapakapiaj k[o|u] rik[o|u]ʡ n[o|u] wawa</PHON>
-        <TRANSL xml:lang="zho">小孩被增添了一件衣服。</TRANSL>
-    </S>
     <S id="S49624">
         <FORM kindOf="original">Mapapitinooyay ko cacifayinay a kaying.</FORM>
         <PHON kindOf="original">mapapitinoojaj ko ʦaʦi[f|v|b]ajinaj a kajiŋ</PHON>
@@ -347123,13 +346233,6 @@
         <FORM kindOf="standard">Matatapi'ay ningra kako to pipscing to foting.</FORM>
         <PHON kindOf="standard">matatapiʡaj niŋra kak[o|u] t[o|u] pipsʦiŋ t[o|u] f[o|u]tiŋ</PHON>
         <TRANSL xml:lang="zho">潛水射魚我再的被他打敗。</TRANSL>
-    </S>
-    <S id="S49632">
-        <FORM kindOf="original">Matatiwtiw ko ngiha' a romadiw.</FORM>
-        <PHON kindOf="original">matatiwtiw ko ŋiħaʡ a romaɬiw</PHON>
-        <FORM kindOf="standard">Matatiwtiw ko ngiha' a romadiw.</FORM>
-        <PHON kindOf="standard">matatiwtiw k[o|u] ŋiħaʡ a r[o|u]ma[ɬ|ɮ]iw</PHON>
-        <TRANSL xml:lang="zho">唱歌合聲不和諧。</TRANSL>
     </S>
     <S id="S49633">
         <FORM kindOf="original">Matiwtiw to tosa anoca tolo ko mihecaan kami a malikaka.</FORM>
@@ -349679,13 +348782,6 @@
         <PHON kindOf="standard">aka parapiʦən k[o|u] maɾitəŋaj t[o|u]na [ɬ|ɮ]əmak</PHON>
         <TRANSL xml:lang="zho">這件事不要連累老人。</TRANSL>
     </S>
-    <S id="S49998">
-        <FORM kindOf="original">Miparo to panay i pawti.</FORM>
-        <PHON kindOf="original">miparo to panaj i pawti</PHON>
-        <FORM kindOf="standard">Miparo to panay i pawti.</FORM>
-        <PHON kindOf="standard">mipar[o|u] t[o|u] panaj i pawti</PHON>
-        <TRANSL xml:lang="zho">把稻穀裝入麻袋。</TRANSL>
-    </S>
     <S id="S49999">
         <FORM kindOf="original">Pasalongay a mi'inip to 'epah.</FORM>
         <PHON kindOf="original">pasaɾoŋaj a miʡinip to ʡəpaħ</PHON>
@@ -349741,6 +348837,7 @@
         <FORM kindOf="standard">Na i taloday a patay.</FORM>
         <PHON kindOf="standard">na i taɾ[o|u][ɬ|ɮ]aj a pataj</PHON>
         <TRANSL xml:lang="zho">在外地因故死亡。</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">在外地因事故死亡。</TRANSL>
     </S>
     <S id="S50007">
         <FORM kindOf="original">Mapadeto' ko 'orip ningra.</FORM>
@@ -350561,13 +349658,6 @@
         <PHON kindOf="standard">[o|u] pikafitan n[o|u] ka[o|u]s n[o|u] p[o|u]na</PHON>
         <TRANSL xml:lang="zho">臍帶連接胎兒與母親的地方。</TRANSL>
     </S>
-    <S id="S50124">
-        <FORM kindOf="original">Makakeritay to pona.</FORM>
-        <PHON kindOf="original">makakəritaj to pona</PHON>
-        <FORM kindOf="standard">Makakeritay to pona.</FORM>
-        <PHON kindOf="standard">makakəritaj t[o|u] p[o|u]na</PHON>
-        <TRANSL xml:lang="zho">同母異父的兄弟姐妹。</TRANSL>
-    </S>
     <S id="S50125">
         <FORM kindOf="original">masasiketay ko pona.</FORM>
         <PHON kindOf="original">masasikətaj ko pona</PHON>
@@ -350763,13 +349853,6 @@
         <FORM kindOf="standard">Pasamo to wawa.</FORM>
         <PHON kindOf="standard">pasam[o|u] t[o|u] wawa</PHON>
         <TRANSL xml:lang="zho">給小孩施一點小惠。</TRANSL>
-    </S>
-    <S id="S50153">
-        <FORM kindOf="original">Pasamo to sowal.</FORM>
-        <PHON kindOf="original">pasamo to sowaɾ</PHON>
-        <FORM kindOf="standard">Pasamo to sowal.</FORM>
-        <PHON kindOf="standard">pasam[o|u] t[o|u] s[o|u]waɾ</PHON>
-        <TRANSL xml:lang="zho">發表一點意見。</TRANSL>
     </S>
     <S id="S50154">
         <FORM kindOf="original">Awaay ko sana' a 'a'adopen i Taywan.</FORM>
@@ -351127,13 +350210,6 @@
         <FORM kindOf="standard">O talod han no Ciwkangan ko penen.</FORM>
         <PHON kindOf="standard">[o|u] taɾ[o|u][ɬ|ɮ] ħan n[o|u] ʦiwkaŋan k[o|u] pənən</PHON>
         <TRANSL xml:lang="zho">長光部落的人稱蘆葦草為Talod。(成功一帶稱penen)</TRANSL>
-    </S>
-    <S id="S50206">
-        <FORM kindOf="original">Na i taloday a patay.</FORM>
-        <PHON kindOf="original">na i taɾoɬaj a pataj</PHON>
-        <FORM kindOf="standard">Na i taloday a patay.</FORM>
-        <PHON kindOf="standard">na i taɾ[o|u][ɬ|ɮ]aj a pataj</PHON>
-        <TRANSL xml:lang="zho">在外地因事故死亡。</TRANSL>
     </S>
     <S id="S50207">
         <FORM kindOf="original">Malatalotalodan ko potal no misiyajayay.</FORM>
@@ -351631,13 +350707,6 @@
         <FORM kindOf="standard">Patolon to sowal.</FORM>
         <PHON kindOf="standard">pat[o|u]ɾ[o|u]n t[o|u] s[o|u]waɾ</PHON>
         <TRANSL xml:lang="zho">帶話交代。</TRANSL>
-    </S>
-    <S id="S50278">
-        <FORM kindOf="original">Mitolon to kawas.</FORM>
-        <PHON kindOf="original">mitoɾon to kawas</PHON>
-        <FORM kindOf="standard">Mitolon to kawas.</FORM>
-        <PHON kindOf="standard">mit[o|u]ɾ[o|u]n t[o|u] kawas</PHON>
-        <TRANSL xml:lang="zho">向神禱告。</TRANSL>
     </S>
     <S id="S50279">
         <FORM kindOf="original">Kohetingay ko tomay no Taywan.</FORM>

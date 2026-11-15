@@ -39,6 +39,7 @@ DEFAULT_XML_OUT_DIR = ROOT / "XML"
 DEFAULT_OVERRIDES_PATH = ROOT / "CodeAndDocs" / "safolu_source_overrides.json"
 PRINTED_ADDITIONS_PATH = ROOT / "CodeAndDocs" / "printed_additions.json"
 DEFINITION_EXAMPLES_PATH = ROOT / "CodeAndDocs" / "definition_examples.json"
+SAME_SENTENCE_PATH = ROOT / "CodeAndDocs" / "same_sentence_merges.tsv"
 
 # The canonical XML is grouped language-first (XML/Amis/<Source>/) to match
 # FormosanBank's Corpora/<Name>/XML/<Language>/ convention.
@@ -402,7 +403,46 @@ def safolu_corpus():
     for target, translation in alts:
         i = position[target]
         records[i] = dataclasses.replace(records[i], translations=list(records[i].translations) + [translation])
-    return corpus, records + new, rejected
+    kept, dropped = merge_same_sentences(records + new)
+    # a source field whose only sentence was combined away is accounted for as excluded, with where it went
+    still = {r.notes.get("source_ordinal") for r in kept}
+    for record, action, keep_id in dropped:
+        ordinal = record.notes.get("source_ordinal")
+        if ordinal is not None and ordinal not in still:
+            rejected.append({"source_ordinal": ordinal, "source_file": record.source_file, "entry_title": record.entry_title,
+                             "definition": record.definition, "raw_example": record.raw_example, "cleaned_form": record.form,
+                             "cleaned_final_translation": " | ".join(t.text for t in record.translations),
+                             "reject_reasons": [f"same_sentence_merges.tsv {action}: combined with {keep_id}"]})
+    return corpus, kept, rejected
+
+
+def merge_same_sentences(records: list[ExampleRecord], path: Path = SAME_SENTENCE_PATH) -> tuple[list[ExampleRecord], list[tuple[ExampleRecord, str, str]]]:
+    """Pairs of sentences whose standard FORM is the same but whose translations differ (same_sentence_merges.tsv).
+    Maintainer, 2026-11-15: two real translations -> ver="alt" on one S (POL-025); a typo variant -> delete the
+    typo; one translation a strict substring of the other -> delete the fragment; an empty translation -> delete
+    that S. Each row names both ids and their texts; the build stops if a pair's text no longer matches."""
+    import csv
+    nows = lambda t: re.sub(r"\s+", "", t or "")
+    by_id = {r.sentence_id: i for i, r in enumerate(records)}
+    drop, dropped = set(), []
+    for row in csv.DictReader(path.open(encoding="utf-8"), delimiter="\t"):
+        k, d = by_id.get(row["keep_id"]), by_id.get(row["drop_id"])
+        if k is None or d is None:
+            raise SystemExit(f"same_sentence_merges.tsv: {row['keep_id']} or {row['drop_id']} is not in the build")
+        keep, gone = records[k], records[d]
+        for record, column in ((keep, "keep_translation"), (gone, "drop_translation")):
+            if nows("".join(t.text for t in record.translations)) != nows(row[column].replace(" | ", "")):
+                raise SystemExit(f"same_sentence_merges.tsv: {record.sentence_id} no longer has the recorded translation")
+        if row["action"] == "alt":
+            have = {nows(t.text) for t in keep.translations}
+            extra = [Translation(t.lang, t.text, t.notes, "alt") for t in gone.translations if nows(t.text) not in have]
+            variants = keep.variants + ((gone.form,) if nows(gone.form) != nows(keep.form) and gone.form not in keep.variants else ())
+            records[k] = dataclasses.replace(keep, translations=list(keep.translations) + extra, variants=variants)
+        elif row["action"] not in ("delete_typo", "delete_fragment", "delete_empty"):
+            raise SystemExit(f"same_sentence_merges.tsv: unknown action {row['action']}")
+        drop.add(row["drop_id"])
+        dropped.append((gone, row["action"], row["keep_id"]))
+    return [r for r in records if r.sentence_id not in drop], dropped
 
 
 def printed_additions(path: Path = PRINTED_ADDITIONS_PATH) -> list[ExampleRecord]:
