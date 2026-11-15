@@ -120,7 +120,7 @@ NGU	75	UNDECIDED		undocumented; definition needed
 CONT	70	UNDECIDED		undocumented; definition needed	zho twin: 持續×68; 持續誒×1	
 PA	68	UNDECIDED		undocumented; definition needed		
 HAW	64	UNDECIDED		undocumented; definition needed		
-IMPFV	64	UNDECIDED		undocumented; definition needed	zho twin: 未完成×61; 未完成貌×2	
+IMPFV	64	CONVERT	IPFV	approved on the derivational decision page 2026-11-15 (card M8)	zho twin: 未完成×61; 未完成貌×2	
 LV	58	KEEP	LV	"maintainer row-review 2026-11-11: ""This is locative voice (LV)"""	zho twin: 處焦×48; 受焦×2	
 IV	58	CONVERT	OV	"maintainer row-review 2026-11-11: ""This is OV… listed as instrumental voice, but we're converting"""	zho twin: 工焦×50; 公教×2	
 2P	58	UNDECIDED		undocumented; definition needed	zho twin: 第二人稱複數×52; 第二人稱×2	
@@ -539,6 +539,7 @@ SAVA	2	UNDECIDED		undocumented; definition needed	zho twin: S主焦A×1; S主焦
 1SGGEN	2	UNDECIDED		undocumented; definition needed		
 IPM	2	UNDECIDED		undocumented; definition needed	zho twin: 使役×2	
 RV	2	UNDECIDED		undocumented; definition needed	zho twin: 原因焦點×2	
+未完成貌	2	CONVERT	IPFV	approved on the derivational decision page 2026-11-15 (card M8) — variant spelling of 未完成		
 TAPFV	1	UNDECIDED		undocumented; definition needed	zho twin: TA完成×1	
 SUAETE	1	UNDECIDED		undocumented; definition needed		
 PFVMU	1	UNDECIDED		undocumented; definition needed	zho twin: 完成貌MU×1	
@@ -665,7 +666,7 @@ Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng 
 靜態	68	CONVERT	STAT	approved on the derivational decision page 2026-11-15 (DerivationalMorphology.md card A)	eng twin: STAT×18	
 工具焦	66	CONVERT	OV	variant of 工焦	eng twin: IF×65	
 重現	65	CONVERT		"card B 2026-11-15: ""Let's do REC->ITER, 重現->ITER except for when they gloss 'arup, which gets glossed RECP."" Grammar: ma-...-n = tens circumfix (十倍數), PDF 63 — Kanakanavu-only code, mapped via override"	eng twin: REC×65	"Kanakanavu→MULT (card B 2026-11-15: ""Let's do REC->ITER, 重現->ITER except for when they gloss 'arup, which gets glossed RECP."" Grammar: ma-...-n = tens circumfix (十倍數), PDF 63) | switched ITER->MULT per maintainer 2026-11-15: ""I would have chosen MULT."""
-未完成	62	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IMPFV×61	
+未完成	62	CONVERT	IPFV	approved on the derivational decision page 2026-11-15 (card M8)	eng twin: IMPFV×61	
 第二人稱複數	58	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 2P×52	
 疑問詞	56	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: Q×41	
 命令	56	CONVERT	IMP	"approved on the derivational decision page 2026-11-15 (card M3) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	eng twin: IMP×49	

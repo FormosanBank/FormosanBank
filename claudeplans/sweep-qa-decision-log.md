@@ -25112,3 +25112,19 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   (limutseng 'angry', qarawqawqaw 'shouting away'); invol = se- (seḍelas 'slipped', setsevungi 'met by
   chance'). U2 RULED `codify` with his note (grammar comparison + Yedda analogues) — proposal table next.
 - U3's note truncated AGAIN ("What did t") — focused-textarea blur never fired; asked in chat.
+
+### 2026-11-15 (cont. 9) — RULED: M8 IPFV; M9/M10/U1 researched and answered on the page
+- M8 — choice `approve` → NTU IMPFV ×64 / 未完成 ×62 / 未完成貌 ×2 (row added) → IPFV. NTU rebuilt: 128 pairs,
+  zero outside targets; dicts +IPFV; 33 tests passed.
+- M9 (his Q: "How is this morpheme handled in the reference grammar? Are we sure this isn't irrealis or
+  conditional?") — HYP is Tsou nte ×39/n ×6 (+honci ×1, Atayal atu' ×1); 鄒語語法概論 PDF 84: 「表達反事實的
+  未實現態助動詞nte/nto」 = counterfactual IRREALIS aux; honci = complement-clause conjunction (ch.13).
+  Card options now: fold→IRR (grammar) / register HYP / leave.
+- M10 (his Qs: same morpheme? grammar? other sources?) — DIFFERENT morphemes: Saisiyat 'oka'/'okay (plain
+  negators, §10.1.1: 'okik nominal+stative, 'okay action verbs), Rukai kai (the 語法概論 is Mantauran:
+  -ka/ki-/okaodho 表10.1 PDF 125 — kai not covered, dialect gap), Tsou o'te (general, §10.1.2.1) vs uk'a
+  (existential/possessive, PDF 89), Kanakanavu 'akia (否定存在動詞, PDF 69), Bunun nii/uka, Kavalan mai,
+  Atayal meyo; Rukai form 'meiyou' ×1 looks like Mandarin echo — flagged. Options: leave / partial
+  overrides (Saisiyat→NEG, Kanakanavu→NEG.EXIST) / other.
+- U1 (his Q: does the grammar say anything?) — the Paiwan 語法概論 does not treat se-/sa-/li-/⟨ar⟩ (searched
+  forms + 非自主/非意志); definitions rest on Early & Whitehorn Ch.1 + Ferrell; Yedda has no analogues.
