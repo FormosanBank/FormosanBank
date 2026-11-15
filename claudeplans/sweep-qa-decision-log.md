@@ -25084,3 +25084,11 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   U2 HPS 13 meaning-word prefixes keep-lexical vs codify (grammar: tja- = 比較級 comparative, §16.3 PDF
   171; 'pair' rides mare- ×106 matching the grammar's mare'a) · U3 NTU SI ×142 = morpheme si glossed as
   itself in both tiers across 6 languages (→#SI vs leave vs Amis-expert treatment).
+
+### 2026-11-15 (cont. 7) — RULED: ITER switched to MULT
+- His words: "I would have chosen MULT." (on the corrected premise that ITER is not Leipzig-listed either).
+- Registry row replaced: MULT 'numeral multiplicative', RULED, his quote in basis; ITER removed everywhere
+  (registry, NTU overrides, Kanakanavu dictionary). NTU rebuilt: 272 changed lines = the same 136 pairs,
+  all ITER->MULT, 0 ITER tokens remain, 0 lines outside ITER/MULT. tests/glossing 33 passed.
+- Still open: the 'arup-ara eng exception (now MULT-take; zho correctly RECP-拿) pending his word on the
+  converter tweak (context-rule fallback -> table + REC&'arup- row).
