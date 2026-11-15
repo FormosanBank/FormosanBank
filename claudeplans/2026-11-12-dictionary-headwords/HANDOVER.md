@@ -368,3 +368,20 @@ and name the TSV in the README's processing-pipeline section (decision log, roun
 Draft: `out_r3` 42,318 S, 56,145 TRANSL. Page: `python3 -I round4.py $WORK` (reads the round 3 page for its cards/log).
 Round 4 card ids: r2-sections, r2-heading, r2-cut-lost, r2-homs-notreview, r3-embedded-rebuilt, r3-tags, r3-label-pos,
 r3-amis-tails, r4-affixes, r4-letters. Done flag `meta/round4`.
+
+## 12. Round 4 answers applied; round 5 page (version 8)
+
+```bash
+python3 -I safolu_headwords.py $COMMON --cuts cut_confirmed_r2.tsv --pos pos_labels.tsv --borrow borrow_labels.tsv \
+  --restore-lost --tags norm --label-pos transl --affix-rule --letters drop-desc --pieces example_pieces_removed.tsv \
+  --out $WORK/draft/out_r5/XML/Amis/Safolu/amis_safolu_headwords.xml --log $WORK/draft/log_r5.json   # 42,290 S, 56,031 TRANSL
+python3 -I amis_tails_rebuild.py $WORK $WORK/draft/out_r5/XML/Amis/Safolu/amis_safolu_headwords.xml   # 56 rebuilt / 14 not / 4 stay
+python3 -I round5.py $WORK
+```
+New switches: --restore-lost (r2-cut-lost), --tags norm (r3-tags), --label-pos transl (r3-label-pos), --affix-rule
+(r4-affixes: senses noted/bracketed 前綴/後綴, incl. (複合前綴)), --letters drop-desc (r4-letters), --pieces (29 pieces of
+the 70 rebuilt examples that were still headword translations; my oversight, shown on card r5-pieces).
+Examples to add at the build: the 103 definition-field sentences (embedded_rebuild.tsv: 70 rebuilt + 33 whole).
+Stem: the author's, from the source headword line `'acaen('aca)` via parsing-terms.rb -> JSON `stem`.
+Round 5 card ids: r2-sections, r2-heading, r2-homs-notreview, r5-affix-approval, r5-letters-split, r5-pieces, r5-tails.
+Done flag `meta/round5`.

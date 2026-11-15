@@ -16,7 +16,9 @@ from collections import Counter
 from pathlib import Path
 
 XML_NS = "http://www.w3.org/XML/1998/namespace"
-CUTS, POSL, BORROW, BORROW_RAW = set(), set(), {}, {}
+CUTS, POSL, BORROW, BORROW_RAW, PIECES = {}, set(), {}, {}, {}
+LETTER = re.compile(r"阿美語[族的]?[元輔母]音之一|阿美語的?輔音之一")
+DESC = re.compile(r"音值|元音|輔音|母音|詞尾|詞首|詞終|讀如|讀時|送氣|喉塞化|顎化|齶化|長音化|方言區|發音|音節|鼻音|塞音|擦音|邊音|顫音|半母音|舌面|舌尖|舌葉|雙唇|唇齒|聲門|喉門")
 ET.register_namespace("xml", XML_NS)
 SPECIAL = {"=.json", "ch-mapping.json", "index.json", "lenToRegex.json",
            "precomputed.json", "stem-words.json"}
@@ -95,10 +97,18 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
         "glottocode": "amis1246",
         "dialect": "Coastal",
     })
-    global CUTS, POSL, BORROW, BORROW_RAW
+    global CUTS, POSL, BORROW, BORROW_RAW, PIECES
+    for r in load_tsv(args.pieces):
+        PIECES.setdefault(r["headword"], set()).add(r["translation_removed"])
     # r2-cut-paste (RULED): breaks the 2015 text confirms; r2-cut-unchecked (RULED): breaks it cannot check
     PASTE = {"pasting reproduces 2015", "not locatable in 2015 text", "headword not in 2015 text"}
-    CUTS = {(r["FORM"], r["piece_1"], r["piece_2"]) for r in load_tsv(args.cuts) if r.get("check_2015") in PASTE}
+    CUTS = {}
+    for r in load_tsv(args.cuts):
+        if r.get("check_2015") in PASTE:
+            CUTS[(r["FORM"], r["piece_1"], r["piece_2"])] = r["piece_1"] + r["piece_2"]
+        elif r.get("check_2015") == "characters lost at the break" and args.restore_lost:
+            # r2-cut-lost (RULED): restore the characters the 2015 text has at the break
+            CUTS[(r["FORM"], r["piece_1"], r["piece_2"])] = r["piece_1"] + r["lost_chars"] + r["piece_2"]
     POSL = {r["label"] for r in load_tsv(args.pos) if r.get("treated_as_part_of_speech") == "yes"}
     rows = load_tsv(args.borrow)
     BORROW = {r["label_as_printed"]: r["note_text"] for r in rows}
@@ -127,6 +137,8 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
         # group senses by the form they belong to: heteronym `name` if it differs, else the title
         groups: dict[str, list[str]] = {}
         notes_by_form: dict[str, list[str]] = {}
+        tag_from_sense: dict[str, str] = {}
+        entry_pos: dict[str, str] = {}
         for hi, het in enumerate(entry.get("h", [])):
             form = (het.get("name") or "").strip() or title
             groups.setdefault(form, [])
@@ -154,6 +166,19 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
                     else:
                         continue
                 if kind == "label":
+                    lab = re.match(r"^[〔\[]\s*([^〕\]]+?)\s*[〕\]][。.]?$", sense)
+                    inner = lab.group(1) if lab else ""
+                    if args.tags == "norm" and inner.startswith("疊"):
+                        # r3-tags (RULED): a 〔疊 N〕 left behind as a sense becomes one Tag note
+                        num = re.search(r"\d", inner)
+                        tag_from_sense[form] = f"[疊 {num.group(0)}]" if num else "[疊]"
+                        stats["疊 tag left as a sense, made a Tag note"] += 1
+                        continue
+                    if args.label_pos == "transl" and inner in POSL:
+                        # r3-label-pos (RULED): a part-of-speech label standing alone in 〔 〕 goes on the translations
+                        entry_pos[form] = inner
+                        stats["part-of-speech label in 〔 〕 standing alone, moved to TRANSL notes"] += 1
+                        continue
                     if args.label == "translation":
                         pass
                     elif args.label == "notes":
@@ -183,7 +208,7 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
             i = 0
             while i + 1 < len(pairs):
                 if (form, pairs[i][0], pairs[i + 1][0]) in CUTS:
-                    pairs[i:i + 2] = [(pairs[i][0] + pairs[i + 1][0], pairs[i][1])]
+                    pairs[i:i + 2] = [(CUTS[(form, pairs[i][0], pairs[i + 1][0])], pairs[i][1])]
                     stats["broken translations rejoined"] += 1
                 i += 1
             # r2-pos (RULED): part-of-speech labels to TRANSL notes; a label standing alone applies to the
@@ -213,11 +238,36 @@ def build(args) -> tuple[ET.ElementTree, Counter, list]:
                 if x in senses:
                     stats["repeated sense text merged"] += 1; continue
                 senses.append(x); tnotes.append(tn)
+            # r3-embedded-rebuilt (RULED): pieces absorbed into a rebuilt example sentence are not headword translations
+            if PIECES.get(form):
+                keep = [(x, tn) for x, tn in zip(senses, tnotes) if x not in PIECES[form]]
+                stats["example-sentence pieces removed from headword senses"] += len(senses) - len(keep)
+                senses, tnotes = [x for x, _ in keep], [tn for _, tn in keep]
+            if entry_pos.get(form):
+                tnotes = [tn + [entry_pos[form]] for tn in tnotes]
+            if args.affix_rule:
+                # r4-affixes (RULED): senses marked explicitly as affixes (前綴 / 後綴 in brackets, now a note) are left out
+                keep = []
+                for x, tn in zip(senses, tnotes):
+                    if any(("前綴" in n or "後綴" in n) for n in tn) or re.match(r"^[〔\[(（]\s*(複合|復合)?(前綴|後綴|前後綴)\s*[〕\])）]", x):
+                        stats["affix sense left out (marked 前綴/後綴)"] += 1
+                        log.append(("affix-sense-dropped", form, x, tn))
+                        continue
+                    keep.append((x, tn))
+                senses, tnotes = [x for x, _ in keep], [tn for _, tn in keep]
+            if args.letters == "drop-desc" and any(LETTER.search(x) for x in senses):
+                # r4-letters (RULED): the letter entries' sound descriptions are left out; word senses stay
+                keep = [(x, tn) for x, tn in zip(senses, tnotes) if not DESC.search(x)]
+                stats["letter-entry sound descriptions left out"] += len(senses) - len(keep)
+                log.append(("letter-split", form, [x for x in senses if DESC.search(x)], [x for x, _ in keep]))
+                senses, tnotes = [x for x, _ in keep], [tn for _, tn in keep]
             if args.stem_tag == "notes":
                 if entry.get("stem"):
                     notes.insert(0, f"Stem: {entry['stem']}")
                 if entry.get("tag"):
                     notes.insert(0, f"Tag: {entry['tag']}")
+                elif tag_from_sense.get(form):
+                    notes.insert(0, f"Tag: {tag_from_sense[form]}")
             if not senses and not (args.keep_senseless and notes):
                 stats["headword forms with no sense, not published"] += 1
                 log.append(("no-sense", form, notes))
@@ -263,6 +313,12 @@ def main() -> int:
     p.add_argument("--cuts", type=Path, help="cut_confirmed.tsv: rejoin the breaks whose pasted text matches the 2015 text")
     p.add_argument("--pos", type=Path, help="pos_labels.tsv: labels marked yes go to TRANSL notes")
     p.add_argument("--borrow", type=Path, help="borrow_labels.tsv: borrowing labels go to TRANSL notes")
+    p.add_argument("--restore-lost", action="store_true", help="r2-cut-lost: restore characters lost at a break from the 2015 text")
+    p.add_argument("--tags", choices=["leave", "norm"], default="leave", help="r3-tags: a 〔疊 N〕 sense becomes one Tag note")
+    p.add_argument("--label-pos", choices=["form", "transl"], default="form", help="r3-label-pos")
+    p.add_argument("--affix-rule", action="store_true", help="r4-affixes: leave out senses marked 前綴/後綴")
+    p.add_argument("--letters", choices=["keep", "drop-desc"], default="keep", help="r4-letters")
+    p.add_argument("--pieces", type=Path, help="example_pieces_removed.tsv: translations absorbed into rebuilt example sentences")
     p.add_argument("--log", type=Path)
     a = p.parse_args()
     tree, stats, log = build(a)
