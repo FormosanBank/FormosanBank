@@ -14,7 +14,8 @@ for c in S + F:
         c["cols"] = [{"key": "ok", "head": "Senses · example after the move · note text"}]; c["keyhead"] = "Label as printed"; c["srchead"] = "Example as printed"
     if c["id"] == "r2-embedded":
         c["cols"] = [{"key": "ok", "head": "New example S"}]; c["keyhead"] = "Headword"; c["srchead"] = "Definition field as printed"
-cards = S + F
+X = json.load(open(W / "round2_extra_cards.json", encoding="utf-8"))
+cards = S + X + F
 q = lambda s: html.escape(s)
 LOG = [
  ("Sections 23 / 24 (chat)", "Do not record headwords from section 23 of Safolu. For section 24, include only headwords that do not appear in sections 1-22.", "Applied per sense from the converter's database: 370 section-23 senses and 77 section-24 senses dropped; 29 headwords printed only in section 23 left out. Shown in full on two cards below, plus a card for 41 words where the ruling and upstream's merging collide."),
@@ -36,6 +37,10 @@ LOG = [
  ("f-see", "Put them in FORM notes", "Applied: notes=\"See also: …\"."),
  ("f-fixme", "Drop those Chinese senses. Note: \"Add in note that a Chinese sense was marked \"fixme\" and as been dropped.\"", "Applied to all 6 cells; the English TRANSL of that sense carries the note. Two cells are only partly marked: one card below."),
  ("f-affix", "No answer saved", "Asked again below."),
+ ("Capitalised place names (chat)", "Ruled: if a headword appears twice, once capitalized and with a place name meaning and once not capitalized and not as a place name, it is a homophone and can get two entries.", "Applied: the draft already gives a capitalised entry its own S."),
+ ("Capitalisation (chat)", "Ruled: pairs of headwords that differ in capitalization are homophones and get two entries.", "Applied: 28 headwords get two S (e.g. H03999 faridaw 小米 / H03999-2 Faridaw 平埔人)."),
+ ("Identical entries (chat)", "Also, obviously word-for-word identical cases, we delete one and keep the other.", "Applied: a word-for-word repeated sense is kept once (31 in the draft)."),
+ ("Converter cuts (chat)", "Can you confirm by comparing your suspected converted cuts to the source? That is, compare the original (pre-parser) to what you get after pasting the fragments together?", "Done: 152 breaks confirmed against the converter's own input; 90 also match the 2015 text when pasted; 5 lost characters at the break. Three cards below."),
 ]
 rows = "".join(f"<tr><td class='mono'>{q(a)}</td><td>{q(b)}</td><td>{q(c)}</td></tr>" for a, b, c in LOG)
 log = f"""<section class="panel"><h2>Round 1: what you decided and what I applied</h2>
@@ -44,8 +49,9 @@ log = f"""<section class="panel"><h2>Round 1: what you decided and what I applie
 <p><b>Draft result with everything above applied</b> (Safolu, editors' version): 42,289 headword S if the 41 merged words are kept, 42,248 if not. Fey: 4,704 headword S. Nothing is committed to the corpora yet.</p></section>"""
 intro = ("Round 2 holds only what is still open: how your section 23/24 ruling plays out (shown in full so you can check it), "
          "the part-of-speech labels (with the answer to your question), the heading card again, the borrowing-label list you asked to see, "
-         "the check round for example sentences moving to the examples file, and two Fey cards. Cards that are lists have a <b>flag</b> button on each row: "
-         "flag anything wrong. The review of main-section headwords printed as more than one entry (your 'follow the book' choice) comes on its own page next.")
+         "the check round for example sentences moving to the examples file, the translations the converter broke in two (checked against its own input and the 2015 text), "
+         "the repeated headwords that are not homophones, and two Fey cards. Cards that are lists have a <b>flag</b> button on each row: "
+         "flag anything wrong. The review of the 559 repeated headwords that may be homophones comes on its own page next.")
 t = open(W / "page_template_r2.html", encoding="utf-8").read()
 t = t.replace("__INTRO__", intro).replace("__LOG__", log).replace("__DATA__", json.dumps(cards, ensure_ascii=False).replace("</", "<\\/"))
 (W / "dictionary-headwords-round2.html").write_text(t, encoding="utf-8")

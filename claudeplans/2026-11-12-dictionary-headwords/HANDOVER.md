@@ -7,7 +7,7 @@ decision log (`claudeplans/sweep-qa-decision-log.md`, entry "2026-11-12 — Dict
 - Decision page: https://claude.ai/artifact/1N7xc3PCVuYYsmyynos5S4 (version 3 = round 2)
 - Round 2 card ids (db collection `answers`, one doc per card: `{choice, note, flags, at}`; `flags` = item keys the
   maintainer marked wrong; done flag doc `meta/round2`): r2-merged, r2-sec23, r2-sec24, r2-pos, r2-poslabels, r2-heading,
-  r2-borrow, r2-loanonly, r2-embedded, r2-f-affix, r2-f-fixme.
+  r2-borrow, r2-loanonly, r2-embedded, r2-cut-paste, r2-cut-lost, r2-cut-unchecked, r2-homs-notreview, r2-f-affix, r2-f-fixme (page version 4; extra cards from round2_extra.py).
 - After round 2: a separate review page for main-section Safolu headwords printed as more than one entry
   (s-homophones = "Follow the book's entries, check the rest", not for sections 23/24).
 - Base used for all counts: `origin/main` at `525ad4932`.
