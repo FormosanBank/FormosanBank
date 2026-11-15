@@ -25067,3 +25067,20 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   emerge 16, apart 11, pretend 2, '?'-glossed qa/o/ta/ve/a/qe, + Amis SI ×18 (NTU). All lexical atoms in
   the standard tier (usable as separators without new codes). Atayal/Yami fully covered (CAU ✓, SV→STAT ✓);
   separator-NO items (Paiwan self/do/invol, Atayal/Yami REC) correctly excluded. Added to card S evidence.
+
+### 2026-11-15 (cont. 6) — ITER correction; round-8 cards posted (his moods + separator leftovers)
+- ⚠ CORRECTION: card B's ITER option was labeled "Leipzig iterative" — WRONG (0 occurrences in the LGR PDF,
+  verified; also unregistered). ITER now registered in supplementary_codes.tsv under his card-B words, with
+  the correction in the row's notes. He is asked whether ITER stands (the alternative he declined, MULT,
+  would equally have needed registration — the premise difference was false).
+- His request (chat): "Something else to add to our candidates for standardization: negation, irrealis,
+  hortative, and imperative mood." → bank-wide survey of all tables; new cards, every target checked
+  against the LGR appendix individually:
+  M1 否定詞→NEG (NTU ×864, Song ×274) · M2 Song 非實現→IRR ×268 · M3 →IMP: NTU 祈使 ×761, HPS imp ×393,
+  Song 祈使 ×76, Kavalan-Chang 祈使 ×14, RauDong 祈使 ×2 · M4 HPS hort ×203 (HORT NOT Leipzig: register/
+  fold-to-IMP/leave) · M5 未來→FUT (NTU ×1,452, Song ×6, RauDong ×4) · M6 RauDong SUB→SBJV ×1,314 ·
+  M7 NTU OPT/祈願 ×16 (OPT NOT Leipzig: register/leave).
+- Separator-leftover cards: U1 HPS qal ×161 + invol ×181 (QUAL/INVOL not Leipzig: register/leave) ·
+  U2 HPS 13 meaning-word prefixes keep-lexical vs codify (grammar: tja- = 比較級 comparative, §16.3 PDF
+  171; 'pair' rides mare- ×106 matching the grammar's mare'a) · U3 NTU SI ×142 = morpheme si glossed as
+  itself in both tiers across 6 languages (→#SI vs leave vs Amis-expert treatment).
