@@ -25258,3 +25258,18 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   free-standing stay lexical `more`; 576 changed lines, zero outside more/CMPR; 0 HARD.
 - Every question on the derivational decision page is now settled (page round 18, v20). Record:
   Glossing/ScopingReview/DerivationalMorphology.md; todos: Glossing/OutstandingIssues.md.
+
+### 2026-11-16 (cont. 3) — collaborator review page built (candidate affixes, non-sheet languages)
+- His spec: one page per language the collaborators didn't cover; glosses on verbs (verb = token with a
+  voice gloss); candidate = all-caps OR lowercase co-occurring with a lower-diversity lowercase gloss;
+  exclusions = the ruled codes (IMP STAT NEG CAUS IRR COS CMPR REFL RECP INVOL DUR MULT CFACT IPFV FUT
+  HORT OPT SBJV) + voice atoms; per gloss: forms+counts (verb tokens only), grammar notes, ≤3 examples,
+  separator/not + comment; persistence by download/re-upload (collaborators can't write to the page);
+  "make sure that all boxes… are actually read".
+- Built: https://claude.ai/artifact/1rfKLsKTzu93bTMHuZSQBt — 830 glosses over 10 languages (Bunun 113,
+  Kanakanavu 249, Kavalan 86, Rukai 24, Saisiyat 41, Sakizaya 86, Seediq 102, Thao 3, Truku 11, Tsou 115).
+  Download via the downloads capability (viewer blocks plain blob links) + copy-box fallback; answers
+  serialized by reading every radio/textarea LIVE off the DOM at download time; input-event capture +
+  localStorage courtesy; format tag deriv-collab-1. Extractor + data committed to claudeplans/.
+- NOTED to him: the literal criteria admit high-diversity lexical glosses (eat, go, say) and un-ruled codes
+  (RLS, PFV, NOM, GEN, pronouns) — mirrors the collaborators' own sheet format; criteria can be tightened.
