@@ -25234,3 +25234,12 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
 - Q1 answered (comparatives elsewhere: NTU 比較 ×61 = maraa/mastaan/paska, Song ×17, RauDong 更 ×1 — all
   lexical, no code) and Q2 answered (true make- prefix usage ≈5 tokens vs ~106 root/verb; leave
   recommended) — both await his click (round 16, two cards).
+
+### 2026-11-16 — RULED: Q2 make stays lexical; Q1 follow-up answered
+- Q2 — "Leave as undecided and put on todo list, with this information." → make stays a lexical gloss
+  (separator via sep28); the sane-/alang breakdown written to OutstandingIssues.md.
+- Q1 follow-up ("None of those are affixes, though, right?") — confirmed: Kanakanavu maraa ×49 and Bunun
+  mastaan ×10 are standalone words (Rukai/Tsou/Kavalan even use Mandarin-loan forms bijiao/pi.jiao); only
+  3 bound tokens bank-wide (Kavalan paska= ×2, Kanakanavu mara- ×1). HPS tja- is the only productive
+  comparative affix — and the only comparative where verb-individuation is at stake. Card Q1 (register
+  CMPR vs keep lexical) is the last open item on the page.

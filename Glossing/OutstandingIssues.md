@@ -143,3 +143,13 @@ the bottom with their ruling.
   NTU remove ×12 / take.off ×6 / 脫 ×2 / un ×1, RauDong 'un' atoms ×16, Nowbucyang
   un ×4, ILCAA take.off ×2 + remove ×2, Wild take.off ×1, Song 脫 ×1. No code
   anywhere; REV registration would cover them if wanted later.
+
+- **HPS 'make' (sane-) — left unmapped (q_make, 2026-11-16: "Leave as undecided and
+  put on todo list, with this information.").** The information: of 112 M-level
+  `make` tokens, the true denominal-prefix pattern (make-NOUN: dumpling, wing,
+  child, +2 imp) is ≈5 tokens; the rest are sane-as-root (non-initial or
+  voice-inflected ×81, e.g. ki-sane 'do-make', s⟨em⟩ane 'make<af>'), standalone
+  verb sane ×14, and the root alang in nominalizations ×11 (si-alang-an). An
+  atom-level make→CAUS would mislabel ~106 verb/root tokens to catch ~5; position-
+  conditioned conversion is not supported. `make` IS a separator via its lexical
+  atom (sep28). Revisit if position conditions are ever added to the converter.
