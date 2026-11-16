@@ -17,9 +17,6 @@ the bottom with their ruling.
 - **Parentheses other than Rule 7** (2026-11-15): HPS `(name)`, ePark `（人名）`, NTU `(Mandarin)`, Yedda's prose
   `(OBL)`, NTU `1P(IN)`… stay flagged; how to suppress/handle them is a GitHub issue ("Glossing: parentheses in
   glosses: allow Leipzig Rule 7 stem(CODE), handle all other parentheses").
-- **V122 counts Rule 7 parentheses** (2026-11-15): the SOFT rule parens_slashes_anywhere now flags every
-  `see(AV)` (NTU 4,687 → 50,969 findings). Exempting `(CODE)` in standard-tier glosses is a shared-validator
-  change awaiting the maintainer.
 - **2 NTU word glosses stay Rule 4** (`-carry.PV` / `-帶.PV`): they hold an `<UNCLEAR/>` child, which
   `--redo-changed` does not re-derive.
 - **NTU full-form voice labels without rows** (from PR #351): 參考焦點 ×66, 受惠焦點 ×34; labels fused to a
@@ -108,3 +105,12 @@ the bottom with their ruling.
 - **NTU 1S/2S/3S-style person codes and the small NTU composites**
   (完成主焦, 參焦 ×68, 主焦重疊, K主焦A, T主焦A, 工焦完成貌) — UNDECIDED
   rows in their tables.
+
+## Resolved
+
+- **V122 counted Rule 7 parentheses** (opened 2026-11-15, resolved 2026-11-16): the SOFT rule
+  parens_slashes_anywhere flagged every `see(AV)` (NTU 4,687 → 50,969 findings). Ruling (maintainer,
+  2026-11-16): "exempt any gloss registered gloss code (including Leipzig codes) found inside parentheses when
+  there is also other content in the gloss". V122 now skips such parentheses in word and morpheme glosses
+  (codes from `leipzig_codes.tsv` and RULED rows of `supplementary_codes.tsv`). The 12 Chang glosses
+  `他(屬格)` / `你(屬格)` stay flagged until 屬格 (UNDECIDED, proposed → GEN) is ruled.

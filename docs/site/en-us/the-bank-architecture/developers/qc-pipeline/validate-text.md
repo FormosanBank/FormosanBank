@@ -44,7 +44,7 @@ Tiers read: `FORM` (distinguishing `kindOf="original"` vs `kindOf="standard"`) a
 | `V114` | Two or more consecutive spaces in `S`-standard FORM. |
 | `V115` | Mismatched smart-quote pairs in `S`-standard FORM. |
 | `V116` | Non-ASCII characters in FORM (excluding CJK and the language's orthography letters; skips `original` tier). |
-| `V122` | Parentheses or `/` anywhere in FORM or TRANSL. This is review-only so source records are not rejected solely for these characters. |
+| `V122` | Parentheses or `/` anywhere in FORM or TRANSL. This is review-only so source records are not rejected solely for these characters. Not flagged: in a word or morpheme gloss, parentheses holding only Leipzig or registered gloss codes when the gloss has other text, such as the Leipzig Rule 7 `see(AV)` (codes: `Glossing/leipzig_codes.tsv`, `Glossing/supplementary_codes.tsv`). |
 | `V126` | `=` (leftover clitic marker) in `S`-standard FORM. |
 | `V132` | HTML entity-like residue (`&amp;`, `&lt;`, …) in FORM or TRANSL — likely double-encoded source. |
 | `V133` | `-` (leftover segmentation marker) in `S`-standard FORM. |

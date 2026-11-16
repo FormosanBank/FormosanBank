@@ -36,6 +36,12 @@ as they are".
 - Exception to the 2026-11-11 ruling "parens/brackets shouldn't be in glosses": a parenthesis attached to a gloss
   and holding only codes (`die(AV)`, `打（AF）`) is a Rule 7 category; it is converted (`打(AV)`) instead of being
   copied as residue. Every other parenthesis is still flagged (rules files: `RULE7-PARENS`).
+- `validate_text` rule V122 (parentheses and slashes) skips these brackets (maintainer, 2026-11-16: "exempt any
+  gloss registered gloss code (including Leipzig codes) found inside parentheses when there is also other content
+  in the gloss"): in a word or morpheme gloss, a parenthesis whose content is only codes from
+  `leipzig_codes.tsv` or RULED rows of `supplementary_codes.tsv`, joined by periods, is not flagged when the gloss
+  has other text. A gloss that is only `(OBL)`, or a parenthesis holding an undecided code such as `他(屬格)`, is
+  still flagged.
 - Bare forms the sources leave without a voice gloss get one only by an explicit rule,
   `<gloss>&=<stem>  CONTEXT-ADD→<VOICE>` in the corpus's rules file: on a word whose form (lower case, `=` clitics
   removed) is `<stem>` and which carries no voice code at all, the morpheme glossed `<gloss>` gets `(<VOICE>)`.
@@ -64,6 +70,10 @@ as they are".
   standardize to (RULED vs PROPOSED, each with its basis). Grows as rulings
   land; nothing enters a conversion table's `standard` column unless it is
   Leipzig-listed or in this file.
+- **`leipzig_codes.tsv`** — the 83 standard abbreviations of the Leipzig
+  Glossing Rules (`code · meaning`), copied from the appendix "List of
+  Standard Abbreviations" of `Leipzig-Glossing-Rules.pdf` (PDF pages 8–10).
+  Read by `validate_text` rule V122.
 - **`ScopingReview/<Corpus>.md`** — the corpus's scoping findings: its
   documented glossing conventions (with sources), code inventory, internal
   inconsistencies, and deviations from Leipzig.
