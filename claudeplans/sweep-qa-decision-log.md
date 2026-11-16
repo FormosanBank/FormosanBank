@@ -25243,3 +25243,9 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   3 bound tokens bank-wide (Kavalan paska= ×2, Kanakanavu mara- ×1). HPS tja- is the only productive
   comparative affix — and the only comparative where verb-individuation is at stake. Card Q1 (register
   CMPR vs keep lexical) is the last open item on the page.
+
+### 2026-11-16 (cont.) — Q1 tja boundness check (his "it looks like 'tja' is actually lexical")
+- Token-by-token: HPS `more` is BOUND in 141/148 (word-initial tja-vulung ×24, tja-bulay, tja-ma-nguaq;
+  word-internal stacking pu-tja-uma~uma-ɫ, ka-tja-i-sangas-u); 7 standalone. Matches the grammar's 前綴
+  claim. The earlier "tja-stative" phrasing was my shorthand for tja- prefixed to a stative verb —
+  corrected on the card. Q1 (CMPR vs keep lexical) remains the one open item.
