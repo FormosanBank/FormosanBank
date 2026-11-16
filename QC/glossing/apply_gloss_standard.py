@@ -26,6 +26,10 @@ lexical gloss; the 3,684 on affixes/auxiliaries stay as they are"):
   * ``<gloss>&=<stem>  CONTEXT-ADD→<V>`` rules add a voice the source leaves unglossed: on a word whose
     form (lower case, = clitics removed) is <stem> and which carries no voice code at all, the morpheme
     whose original gloss is exactly <gloss> gets ``(<V>)`` in every standard tier.
+A rules file may also declare ``<exact gloss>  WHOLE-GLOSS→<CODE>``: a gloss (or gloss segment) that is exactly
+``<exact gloss>`` (after stripping outer whitespace) becomes ``<CODE>`` (maintainer, 2026-11-16, unvoiced-verbs audit
+whole_gloss_rule_r8: "Yes"), e.g. Yedda ``ligature (LIG)`` -> LNK, HPS ``(name)`` -> PN. The pattern is literal text,
+not a regular expression, and nothing but an exact match converts.
 ``--redo-changed`` re-derives EXISTING standard glosses: one is replaced only if it is exactly what this tool
 produced before these rules (so hand-made standards stay untouched) and the new rules change it.
 
@@ -160,6 +164,7 @@ class Rules:
         self.context_rules: list[tuple[str, str, str]] = []
         self.rule7_parens = False
         self.add_rules: dict[tuple[str, str], str] = {}     # (word stem, morpheme gloss) -> voice
+        self.whole_gloss: dict[str, str] = {}               # exact whole gloss -> standard
         with open(path, newline="", encoding="utf-8") as handle:
             for row in csv.DictReader(handle, delimiter="\t"):
                 repl = row["replacement"]
@@ -168,6 +173,10 @@ class Rules:
                 if add and "&=" in pat:
                     gloss, stem = pat.rsplit("&=", 1)
                     self.add_rules[(stem.strip().lower(), gloss.strip())] = add.group(1)
+                    continue
+                whole = re.fullmatch(r"WHOLE-GLOSS→(\S+)", repl)
+                if whole:
+                    self.whole_gloss[pat.strip()] = whole.group(1)
                     continue
                 if repl == "RULE7-PARENS":
                     self.rule7_parens = True
@@ -196,6 +205,8 @@ def convert_gloss(gloss: str, table: Table, rules: Rules, language: str,
     """Returns (standard_text, is_residue). context_forms are the cores of
     the word's morpheme FORMs, for the rules file's context rules. new=False
     reproduces the behavior before the Rule 7 rules (used by --redo-changed)."""
+    if gloss.strip() in rules.whole_gloss:
+        return rules.whole_gloss[gloss.strip()], False
     original = gloss
     groups: list[str] = []
     if new and rules.rule7_parens:

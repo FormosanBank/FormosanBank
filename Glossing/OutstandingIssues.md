@@ -14,11 +14,20 @@ the bottom with their ruling.
   unmarked; several voices). Largest: Kanakanavu misa (voice-glossed 18, unmarked 150), Bunun sadu (15/84).
   The NTU maintainer is being asked about NTU's 458 such forms (list in austronesian-voice
   results/lemma/unvoiced/ntu_forms.csv). Evidence: austronesian-voice src/lemma/unvoiced_audit.py.
-- **Parentheses other than Rule 7** (2026-11-15): HPS `(name)`, ePark `（人名）`, NTU `(Mandarin)`, Yedda's prose
-  `(OBL)`, NTU `1P(IN)`… stay flagged; how to suppress/handle them is a GitHub issue ("Glossing: parentheses in
-  glosses: allow Leipzig Rule 7 stem(CODE), handle all other parentheses").
-- **2 NTU word glosses stay Rule 4** (`-carry.PV` / `-帶.PV`): they hold an `<UNCLEAR/>` child, which
-  `--redo-changed` does not re-derive.
+- **Parentheses other than Rule 7** (2026-11-15; updated 2026-11-16): ePark `（人名）`, NTU `(Mandarin)`, HPS
+  `(name)-(name)` ×1 and `go<perf>-(place)-nom` ×1 (the only `(name)`/`(place)` not covering the whole gloss),
+  Yedda `ligture (LIG)` ×1 (typo) and `ligature?` ×1… stay flagged; how to handle them is a GitHub issue
+  ("Glossing: parentheses in glosses: allow Leipzig Rule 7 stem(CODE), handle all other parentheses"). HPS
+  `(inc)`/`(exc)`, whole-gloss `(name)`/`(place)`, Yedda `ligature (LIG)` and NTU Rukai `1P(IN)`/`1P(EX)` are now
+  converted (see Resolved).
+- **NTU Kanakanavu `IN` = the suffix -in/=en, meaning undefined** (2026-11-16): 44 English + 52 Chinese glosses
+  (ride-where-IN, respond=IN; one twin pair reads CAU-do-how.many-PV vs 使役-做-多少-IN). Glossed `#IN` (as
+  itself) per the maintainer; to ask the NTU maintainer what it stands for.
+- **NTU Rukai =nay/nayane glossed (IN) ×3** (2026-11-16): the same forms are (EX) 排除 ×56; all 3 are in
+  20200530-FW-Ludwig S1–S3, both tiers agreeing. Converted as written (INCL); to ask the NTU maintainer.
+- **NTU's generate_xml.sh runs apply_gloss_standard only when manual_edits.xml exists** (2026-11-16): the call sits
+  inside the `if [[ -f manual_edits.xml ]]` branch, and NTU has no manual_edits.xml, so a full rebuild would not
+  write the standard gloss tier. Not changed; awaiting the maintainer.
 - **NTU full-form voice labels without rows** (from PR #351): 參考焦點 ×66, 受惠焦點 ×34; labels fused to a
   lexical gloss with no separator (主事焦點吃 etc., ~25); 受事/處所焦點 with a half-width slash ×2.
 
@@ -107,6 +116,17 @@ the bottom with their ruling.
   rows in their tables.
 
 ## Resolved
+
+- **HPS (inc)/(exc), (name)/(place); NTU IN/EX, 包含/排除; Yedda ligature** (resolved 2026-11-16, unvoiced-verbs
+  audit round 8): HPS inc → INCL ("INCL (Leipzig; nothing to register)"), exc → EXCL ("Yes, exc → EXCL
+  (Leipzig)"), whole-gloss (name)/(place) → PN ("A: standard tier → PN; original unchanged"); NTU IN → INCL for
+  Rukai and #IN for Kanakanavu, EX → EXCL, 包含/包含式 → INCL, 排除/排除式 → EXCL ("Approved EXCEPT for the -in/=en
+  suffix in Kanakanavu, which should be glossed as #IN."); Yedda ligature and whole-gloss ligature (LIG) → LNK
+  ("LNK, as ruled on 2026-11-11 (no new code)").
+- **2 NTU word glosses stayed Rule 4** (`-carry.PV` / `-帶.PV`, `<UNCLEAR/>` child; resolved 2026-11-16): the
+  standard tier was rebuilt from scratch, which converts them (`-carry(PV)`).
+- **356 NTU standard glosses still read 主事焦點/受事焦點** (Grammar/Kanakanavu 145, Grammar/Seediq 211; labels
+  inside angle brackets, missed by PR #351; resolved 2026-11-16, maintainer: "Yes, fix them in the same PR").
 
 - **V122 counted Rule 7 parentheses** (opened 2026-11-15, resolved 2026-11-16): the SOFT rule
   parens_slashes_anywhere flagged every `see(AV)` (NTU 4,687 → 50,969 findings). Ruling (maintainer,

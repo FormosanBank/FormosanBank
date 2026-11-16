@@ -133,7 +133,7 @@ MAKA	48	UNDECIDED		undocumented; definition needed	zho twin: 當MAKA×2
 DE	46	UNDECIDED		undocumented; definition needed	zho twin: 的×42	
 BA	44	UNDECIDED		undocumented; definition needed	zho twin: 把×4	
 PTC	44	UNDECIDED		undocumented; definition needed	zho twin: 助詞×43	
-IN	44	UNDECIDED		undocumented; definition needed		
+IN	44	UNDECIDED		maintainer 2026-11-16 (unvoiced-verbs audit round 8, ntu_in_ex_r8): "Approved EXCEPT for the -in/=en suffix in Kanakanavu, which should be glossed as #IN." Rukai IN = inclusive (zho twin 包含 195/203); Kanakanavu IN glosses the suffix -in/=en, undefined by NTU, glossed as itself (#)		Rukai→INCL Kanakanavu→#IN
 PFVAF	41	UNDECIDED		undocumented; definition needed	zho twin: 完成主焦×33; 主焦主焦×1	
 YU	40	UNDECIDED		undocumented; definition needed		
 N	36	UNDECIDED			seeded KEEP in error: not in the Leipzig abbreviation list (gloss-dictionary gate, 2026-11-11); definition TBD	
@@ -628,11 +628,11 @@ Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng 
 非人	359	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NHUM×274; NH×8	
 想要	356	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: WOD×15	
 助詞	352	CONVERT	PART	maintainer vocabulary ruling v2 + g4 2026-11-11	eng twin: PTC×43; PART×23	
-包含	330	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INCL×231	
+包含	330	CONVERT	INCL	maintainer 2026-11-16 (unvoiced-verbs audit round 8, ntu_in_ex_r8): "Approved EXCEPT for the -in/=en suffix in Kanakanavu, which should be glossed as #IN."	eng twin: INCL×231	
 一定	312	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEC×140	
 近距	306	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROX×230	
 自由斜格	306	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FO×302	
-排除	287	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXCL×209	
+排除	287	CONVERT	EXCL	maintainer 2026-11-16 (unvoiced-verbs audit round 8, ntu_in_ex_r8): "Approved EXCEPT for the -in/=en suffix in Kanakanavu, which should be glossed as #IN."	eng twin: EXCL×209	
 中性格	273	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEU×273	
 被動	272	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PASS×264	
 情態	236	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: MOD×229	
@@ -701,7 +701,7 @@ K主焦A	21	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng t
 美國	18	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: US×8	
 重疊主焦	18	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REDAF×9; REDAV×6	
 無生命	17	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INAN×17	
-包含式	16	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INCL×16	
+包含式	16	CONVERT	INCL	maintainer 2026-11-16 (unvoiced-verbs audit round 8, ntu_in_ex_r8): "Approved EXCEPT for the -in/=en suffix in Kanakanavu, which should be glossed as #IN."	eng twin: INCL×16	
 序數	16	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ORD×10	
 祈願	16	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: OPT×16	
 T主焦A	15	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: TAVA×7; TAFA×6	
@@ -721,3 +721,5 @@ T主焦A	15	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng t
 轉述	6	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: KAN×6	
 原因焦點	8	CONVERT	OV	s25 ruling (原因焦點 'reason focus' rides the instrument-voice sia- prefix; folds into the 4th voice) + OV ruling (2026-11-11)	zho tier only; eng twin RF/RsnV below pair threshold	
 受事／處所焦點	22	CONVERT	PV/LV	s45 + collapse notation: the annotator's own both-ways label (PV-or-LV undecidable) (2026-11-11)	lives in residue strings (受事／處所焦點.祈使 etc., both ／ and / spellings, ~22 tokens); needs a Layer-B rule for the ／ separator before conversion applies	
+EX	118	CONVERT	EXCL	maintainer 2026-11-16 (unvoiced-verbs audit round 8, ntu_in_ex_r8): "Approved EXCEPT for the -in/=en suffix in Kanakanavu, which should be glossed as #IN." Rukai only; zho twin 排除 114/118	eng tier, inside 1P(EX)	
+排除式	6	CONVERT	EXCL	maintainer 2026-11-16 (unvoiced-verbs audit round 8, ntu_in_ex_r8): "Approved EXCEPT for the -in/=en suffix in Kanakanavu, which should be glossed as #IN."	symmetric with 包含式	

@@ -36,6 +36,10 @@ as they are".
 - Exception to the 2026-11-11 ruling "parens/brackets shouldn't be in glosses": a parenthesis attached to a gloss
   and holding only codes (`die(AV)`, `打（AF）`) is a Rule 7 category; it is converted (`打(AV)`) instead of being
   copied as residue. Every other parenthesis is still flagged (rules files: `RULE7-PARENS`).
+- A rules file may also replace one exact whole gloss: `<exact gloss>  WHOLE-GLOSS→<CODE>` (maintainer,
+  2026-11-16: "Yes"). Only a gloss that is exactly that text converts; the pattern is literal, not a regular
+  expression. In use: HundredPaiwanStories `(name)` and `(place)` → `PN` ("A: standard tier → PN; original
+  unchanged"); YeddaPalemeqBlog `ligature (LIG)` → `LNK` ("LNK, as ruled on 2026-11-11 (no new code)").
 - `validate_text` rule V122 (parentheses and slashes) skips these brackets (maintainer, 2026-11-16: "exempt any
   gloss registered gloss code (including Leipzig codes) found inside parentheses when there is also other content
   in the gloss"): in a word or morpheme gloss, a parenthesis whose content is only codes from

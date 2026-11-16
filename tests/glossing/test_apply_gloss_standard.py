@@ -435,3 +435,24 @@ def test_redo_changed_replaces_tool_made_and_keeps_hand_made_standards(tmp_path)
     assert p.returncode == 0, p.stderr
     assert m_standards(d) == {"w1m1": ["eat(AV)"], "w2m1": ["AV.eat.it"], "w3m1": ["say(AV)"]}
     assert "redone=2" in p.stdout and "handmade_standard_kept=1" in p.stdout
+
+
+def test_whole_gloss_rule_converts_only_an_exact_whole_gloss(tmp_path):
+    # maintainer 2026-11-16 (unvoiced-verbs audit, whole_gloss_rule_r8): "Yes" to a rule that replaces one exact
+    # whole gloss. Shapes are real: HPS "(name)", "(name)-(name)"; Yedda "ligature (LIG)".
+    d, t, r = make_r7_corpus(tmp_path, [
+        _w("w1", "Tjukutjuku", "(name)"),                 # exact match: -> PN
+        _w("w2", "Kuɫe-Pulelelelengan", "(name)-(name)"),  # not the whole gloss: residue, copied as is
+        _w("w3", "a", "ligature (LIG)"),                  # exact match, with a space inside: -> LNK
+        _w("w4", "a", "ligature (LIG)?"),                 # one character more: residue, copied as is
+        _w("w5", "kui", "(place)"),                       # no rule for it: residue, copied as is
+    ])
+    with open(r, "a", encoding="utf-8") as h:
+        h.write("(name)\tWHOLE-GLOSS→PN\tHPS names\nligature (LIG)\tWHOLE-GLOSS→LNK\tYedda prose gloss\n")
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    assert m_standards(d) == {"w1m1": ["PN"], "w2m1": ["(name)-(name)"], "w3m1": ["LNK"],
+                              "w4m1": ["ligature (LIG)?"], "w5m1": ["(place)"]}
+    root = ET.parse(d / "a.xml").getroot()
+    assert [tr.text for tr in root.iter("TRANSL") if tr.get("kindOf") == "original"] == \
+        ["(name)", "(name)-(name)", "ligature (LIG)", "ligature (LIG)?", "(place)"]   # POL-036: originals untouched
