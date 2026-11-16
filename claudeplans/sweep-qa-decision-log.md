@@ -25273,3 +25273,13 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   localStorage courtesy; format tag deriv-collab-1. Extractor + data committed to claudeplans/.
 - NOTED to him: the literal criteria admit high-diversity lexical glosses (eat, go, say) and un-ruled codes
   (RLS, PFV, NOM, GEN, pronouns) — mirrors the collaborators' own sheet format; criteria can be tightened.
+
+### 2026-11-16 (cont. 4) — collaborator page filtered per his ruling
+- His words: "Exclude clitics, person/number codes, RLS, PFV, PST, PROG, LNK, AUX, and the zho twins
+  thereof. Add a frequency floor of 5." → applied: person/number+case atoms 97 rows, clitic-attached
+  (=-forms majority) 40, the named codes + zho twins (incl. unconverted stragglers 表過去/祈使/規勸 etc.)
+  18, floor<5 242. 830 → 433 rows over 9 languages (Thao dropped entirely). Page v3 republished.
+- Still pending his call: the lexical-root flood (go/eat/take/say…) — he asked how bound-form detection
+  works before ruling on the distribution-based root filter (answered in chat: boundness is structural
+  M-in-multi-morpheme-W vs sole-M word, but saturates on verbs since every verb has a voice M; only the
+  combination/diversity asymmetry separates affix from root).
