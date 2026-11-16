@@ -449,3 +449,45 @@ def test_context_fallback_goes_to_table(tmp_path):
     _, g = glosses(d)
     assert g["m1"][("standard",)] == "XX"       # context rule fires on the zz- word
     assert g["m3"][("standard",)] == "AF-eat"[:0] + "AV-eat"  # no zz-: falls through to the table (AF->AV), not kept
+
+
+# ---- +bound context pattern (maintainer q_cmpr 2026-11-16: "convert only
+# more/tja- -> CMPR, and only when tja is bound (not when free-standing)") ----
+
+BOUND_RULES = RULES + [
+    ("AF&+bound", "CONTEXT-CONVERT→BB", "AF only in multi-morpheme words"),
+]
+BOUND_XML = """<TEXT xml:lang="tay" id="t7">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>tja-vulung</FORM>
+    <M id="m1"><FORM>tja</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+    <M id="m2"><FORM>vulung</FORM><TRANSL xml:lang="eng" kindOf="original">old</TRANSL></M>
+  </W>
+  <W id="w2"><FORM>tja</FORM>
+    <M id="m3"><FORM>tja</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+  </W>
+</S>
+</TEXT>"""
+
+
+def test_bound_context_pattern(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(BOUND_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows([("NOM", "80", "KEEP", "NOM", "Leipzig", "", "")])
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(BOUND_RULES)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    _, g = glosses(d)
+    assert g["m1"][("standard",)] == "BB"   # bound: rule fires
+    assert g["m3"][("standard",)] == "AF"   # free-standing: falls to table, kept

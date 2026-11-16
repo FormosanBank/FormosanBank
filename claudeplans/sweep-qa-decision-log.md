@@ -25249,3 +25249,12 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   word-internal stacking pu-tja-uma~uma-ɫ, ka-tja-i-sangas-u); 7 standalone. Matches the grammar's 前綴
   claim. The earlier "tja-stative" phrasing was my shorthand for tja- prefixed to a stative verb —
   corrected on the card. Q1 (CMPR vs keep lexical) remains the one open item.
+
+### 2026-11-16 (cont. 2) — RULED: Q1 applied; DERIVATIONAL ROUND COMPLETE
+- Q1 — his words: "Register CMPR 'comparative' and convert only more/tja- -> CMPR, and only when tja is
+  bound (not when free-standing)." → converter gained the reserved `+bound` context pattern (word has ≥2
+  M children; test-first, 35 tests pass) — shared change made under this ruling's own words (quoted in
+  the commit trailer). CMPR registered; HPS rules row more&+bound→CMPR. Verified: 141 bound → CMPR, all 7
+  free-standing stay lexical `more`; 576 changed lines, zero outside more/CMPR; 0 HARD.
+- Every question on the derivational decision page is now settled (page round 18, v20). Record:
+  Glossing/ScopingReview/DerivationalMorphology.md; todos: Glossing/OutstandingIssues.md.

@@ -169,7 +169,13 @@ verified su-/s-u affix per the maintainer's caveat); the 'arup converter
 change (context fallback → table; REC&'arup- row; side effect: the ruled
 Tsou 非主焦→NAF override activated, 260 lines, flagged).
 
-**Open**: Q1 comparative code (CMPR vs keep lexical; NTU 比較 ×61 and Song ×17
-exist lexically), Q2 make→CAUS (recommended leave: true prefix usage ≈5
-tokens vs ~106 root/verb tokens); make/more are separators regardless
-(sep26/28 `yes`). MULT stays outside verb-individuation scope.
+**Final rulings (2026-11-16):** Q1 — CMPR registered; HPS more → CMPR **only
+when bound** ("Register CMPR 'comparative' and convert only more/tja- -> CMPR,
+and only when tja is bound (not when free-standing)"): 141 bound tokens →
+CMPR, 7 free-standing stay lexical `more` (converter gained the reserved
+`+bound` context pattern, test-first). Q2 — make stays lexical, breakdown in
+OutstandingIssues.md. make/more are separators regardless (sep26/28 `yes`).
+MULT stays outside verb-individuation scope.
+
+**ROUND COMPLETE** — every question on the derivational decision page is
+settled as of 2026-11-16.

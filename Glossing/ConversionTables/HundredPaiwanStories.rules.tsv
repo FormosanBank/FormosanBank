@@ -5,3 +5,4 @@ pattern	replacement	description
 <([^<>]+)>	KEEP-BRACKETS	angle brackets = infix (LGR Rule 9) — keep brackets, look up inner atom(s); added per maintainer 2026-11-15 ('OK, let's add KEEP-BRACKETS for HPS.')
 [()\[\]（）]	INVESTIGATE	maintainer rules-review 2026-11-11
 …	RESIDUE	unsegmentable → verbatim + residue report
+more&+bound	CONTEXT-CONVERT→CMPR	"maintainer q_cmpr 2026-11-16: ""Register CMPR 'comparative' and convert only more/tja- -> CMPR, and only when tja is bound (not when free-standing)."" Free-standing more falls through to the table (no row) and stays lexical."

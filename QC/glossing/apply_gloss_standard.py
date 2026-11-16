@@ -94,6 +94,10 @@ def context_matches(pattern: str, context_forms) -> bool:
     morpheme an or a word ending in an; "si-" a morpheme si or a word starting
     with si; a bare pattern only an exact morpheme.
     """
+    if pattern == "+bound":
+        # Reserved pattern: the word is morphologically complex (>= 2 M
+        # children) — maintainer q_cmpr 2026-11-16 ("only when tja is bound")
+        return "#multi" in context_forms
     core = form_core(pattern)
     if not core:
         return False
@@ -228,6 +232,8 @@ def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
         if rules.context_rules:
             cores = {form_core(f.text) for m in morphs
                      for f in m.findall("FORM") if f.text}
+            if len(morphs) >= 2:
+                cores.add("#multi")   # for the reserved "+bound" pattern
             if not morphs:
                 # unsegmented word: its own shape may satisfy affix patterns
                 cores |= {"~" + form_core(f.text)
