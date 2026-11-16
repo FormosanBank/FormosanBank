@@ -88,7 +88,10 @@ for corpus in corpora:
                         caps_flag[a]=is_caps(a)
                         if len(examples[(lang,a)])<12:
                             sf=next((x.text for x in s.findall('FORM') if x.get('kindOf')=='original' and x.text),'') or next((x.text for x in s.findall('FORM') if x.text),'')
-                            examples[(lang,a)].append({'corpus':corpus,'s':(sf or '')[:110],'w':wf,'wg':wg[:60],'t':(transl_of(s) or '')[:110]})
+                            wge=std(w,('eng',)) or ' '.join(filter(None,(std(m2,('eng',)) for m2 in (ms or [w]))))
+                            wgz=std(w,('zho',)) or ' '.join(filter(None,(std(m2,('zho',)) for m2 in (ms or [w]))))
+                            examples[(lang,a)].append({'corpus':corpus,'s':(sf or '')[:110],'w':wf,
+                                'wg_eng':wge[:70],'wg_zho':wgz[:70],'t':(transl_of(s) or '')[:110]})
 # qualification
 # diversity per (lang,corpus,gloss) for non-caps
 div={k: len(cooc[k]) for k in cooc}
@@ -112,7 +115,7 @@ for lang in sorted(cand):
         rows.append({'gloss':a,'caps':bool(caps_flag.get(a)),'n':n,
             'forms':forms[(lang,a)].most_common(8),
             'sources':srcs[(lang,a)].most_common(),
-            'examples':examples[(lang,a)][:3]})
+            'examples':examples[(lang,a)][:5]})
     out[lang]=rows
 json.dump(out,open('/tmp/claude-1000/-workspace-FormosanBank/60537d4b-20d6-4615-9fc1-97174a4ba4aa/scratchpad/collab_candidates.json','w'),ensure_ascii=False,indent=1)
 for lang in out: print(lang, len(out[lang]), 'candidates;', 'top:', ', '.join(r['gloss'] for r in out[lang][:8]))

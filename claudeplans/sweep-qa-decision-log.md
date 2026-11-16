@@ -25283,3 +25283,11 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   works before ruling on the distribution-based root filter (answered in chat: boundness is structural
   M-in-multi-morpheme-W vs sole-M word, but saturates on verbs since every verb has a voice M; only the
   combination/diversity asymmetry separates affix from root).
+
+### 2026-11-16 (cont. 5) — collaborator page: 5 examples, dual glosses, floor 10
+- His words: "when providing examples, let's provide 5. When there are mandarin glosses and english
+  glosses, provide both. Also, raise our frequency floor to 10." → re-extracted with 5 examples per gloss,
+  each example showing eng AND zho word glosses where both tiers exist (verified: e.g.
+  AV-head.to⟨RED⟩farmland · AV-前進⟨重疊⟩農田); floor 10 → 291 rows over 9 languages (Bunun 49,
+  Kanakanavu 93, Kavalan 21, Rukai 3, Saisiyat 14, Sakizaya 27, Seediq 35, Truku 1, Tsou 48). Page v4.
+- Root-filter decision still pending (go/eat/take/say rows remain).
