@@ -25306,3 +25306,12 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   LOC's zho label is 處所 (not 處格), OBL residue = OBL ×10 self + 主格 ×2; Saisiyat NOM/主格 aligned
   (579/577), DAT = 予格, pronoun-only ×18; Sakizaya + Seediq eng-vs-zho count gaps = missing eng tiers
   (∅-eng 主格 ×623 / ×461); Truku 受格 strays listed (lqi-an, ktu-an); Tsou 處格/受格 slip pairings listed.
+
+### 2026-11-17 (cont.) — Bunun follow-up: the 處格↔LF tokens verified as verbal -an
+- His Q: "For the stray LFs, are we sure they are stray? That is, they use the morpheme expected for a
+  noun, not the one expected for a verb?" — Answer (token-by-token, on the page v29): all 13 are suffixal
+  -an (9 on verb roots incl. PFV-infixed c⟨in⟩unghabin-an / h⟨in⟩ud-an, 4 deriving place-nouns lukis-an /
+  iskaan-an / ucia-an), i.e. the VERBAL/derivational morpheme — while the genuine 處格↔LOC ×594 tokens all
+  use the sia family (sia ×454, sain, sai, =sia, sian, i) before noun phrases. The zho 處格 label is the
+  slip; LF is the coherent reading; the 13 join the known -an family (Tsukida OBL, Truku 受格, Saisiyat
+  NMZ per Li-May).
