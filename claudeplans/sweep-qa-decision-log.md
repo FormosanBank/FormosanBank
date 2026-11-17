@@ -25396,3 +25396,17 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   the other tier", now spelled out; the data has ONE literal ∅: ni-po'ocipi-∅=musu, NTU's own null
   slot). Seediq/Truku/Tsou/Kavalan notes were the prior round, already answered.
 - 39 glossing tests pass; HPS + NTU gloss validators exit 0 (no HARD).
+
+### 2026-11-17 (cont.) — RULED: the Rukai (包含)/(排除) person glosses convert too
+- His words: "The (包含) is marking inclusive plural. If you aren't handling (包含)->(INCL), then it must
+  be the other agent. Anyway, for these we should still do 附著主格->NOM. I'm not entirely clear why the
+  code we have won't do that already."
+- Why the code didn't: one paren character makes a WHOLE gloss residue (the INVESTIGATE check is
+  per-gloss), so nothing inside 第一人稱複數(包含).附著主格 was ever looked up. No other agent handles it.
+- Fix: KEEP-PARENS row `\((?:包含|排除)\)` in NTUFormosanCorpus.rules.tsv (same mechanism as
+  Wild-Lehmann). Rebuild: +307 glosses convert — (包含)→(INCL), (排除)→(EXCL), 附著主格→NOM all fire
+  (第一人稱複數(包含).附著主格 → 第一人稱複數(INCL).NOM ×39 etc.); residue 885→578.
+- 附著主格 now standard-converted everywhere except 3 tokens blocked by the separate 同行(人) chunk
+  (asked: keep (人)/(HUM) or note them?). eng twins 1P(IN).BN etc. still residue via (IN)/(EX) —
+  asked whether to mirror ((IN)→(INCL)). BN/BG/FO/FT family explained to him; BN→NOM proposed, not
+  applied (no ruling yet).
