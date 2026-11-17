@@ -132,7 +132,7 @@
             <FORM kindOf="standard">na-pu-cekelj</FORM>
             <PHON kindOf="standard">napuʦəkəʎ</PHON>
             <TRANSL xml:lang="eng" kindOf="original">past-have-spouse</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">past-have-spouse</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">past-PROPR-spouse</TRANSL>
             <M id="041S1W7M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
@@ -147,7 +147,7 @@
                 <FORM kindOf="standard">pu</FORM>
                 <PHON kindOf="standard">pu</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">have</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">have</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PROPR</TRANSL>
             </M>
             <M id="041S1W7M2">
                 <FORM kindOf="original">tsekeɫ</FORM>
@@ -387,14 +387,14 @@
             <FORM kindOf="standard">ma-qadaw</FORM>
             <PHON kindOf="standard">maqadaw</PHON>
             <TRANSL xml:lang="eng" kindOf="original">stat-sun</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">stat-sun</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT-sun</TRANSL>
             <M id="041S2W7M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">stat</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">stat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="041S2W7M1">
                 <FORM kindOf="original">qadaw</FORM>
@@ -625,7 +625,7 @@
             <FORM kindOf="standard">p&lt;in&gt;a-selem-an</FORM>
             <PHON kindOf="standard">pinasəɣəman</PHON>
             <TRANSL xml:lang="eng" kindOf="original">cause&lt;perf&gt;-dark-lf</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">cause&lt;perf&gt;-dark-LV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">CAUS&lt;perf&gt;-dark-LV</TRANSL>
             <M id="041S4W5M0">
                 <FORM kindOf="original">-in-</FORM>
                 <PHON kindOf="original">in</PHON>
@@ -640,7 +640,7 @@
                 <FORM kindOf="standard">p-a</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">cause</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">cause</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="041S4W5M2">
                 <FORM kindOf="original">selem</FORM>
@@ -784,14 +784,14 @@
             <FORM kindOf="standard">pa-cun-an</FORM>
             <PHON kindOf="standard">paʦunan</PHON>
             <TRANSL xml:lang="eng" kindOf="original">cause-see-lf</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">cause-see-LV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">CAUS-see-LV</TRANSL>
             <M id="041S5W5M0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">cause</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">cause</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">CAUS</TRANSL>
             </M>
             <M id="041S5W5M1">
                 <FORM kindOf="original">tsun</FORM>
@@ -1053,7 +1053,7 @@
             <FORM kindOf="standard">si-ka-qilji</FORM>
             <PHON kindOf="standard">sikaqiʎi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">if-become-forbidden</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">OV-become-forbidden</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">OV-COS-forbidden</TRANSL>
             <M id="041S7W2M0">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">si</PHON>
@@ -1068,7 +1068,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">become</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">become</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
             <M id="041S7W2M2">
                 <FORM kindOf="original">qiɫi</FORM>
@@ -1148,7 +1148,7 @@
             <FORM kindOf="standard">sa-u</FORM>
             <PHON kindOf="standard">sau</PHON>
             <TRANSL xml:lang="eng" kindOf="original">go-imp</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">go-imp</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">go-IMP</TRANSL>
             <M id="041S8W1M0">
                 <FORM kindOf="original">sa</FORM>
                 <PHON kindOf="original">sa</PHON>
@@ -1163,7 +1163,7 @@
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">imp</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">imp</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">IMP</TRANSL>
             </M>
         </W>
         <W id="041S8W2">
@@ -1172,7 +1172,7 @@
             <FORM kindOf="standard">sa-tjatjan-u</FORM>
             <PHON kindOf="standard">sacacanu</PHON>
             <TRANSL xml:lang="eng" kindOf="original">go-spring-imp</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">go-spring-imp</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">go-spring-IMP</TRANSL>
             <M id="041S8W2M0">
                 <FORM kindOf="original">sa</FORM>
                 <PHON kindOf="original">sa</PHON>
@@ -1195,7 +1195,7 @@
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">imp</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">imp</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">IMP</TRANSL>
             </M>
         </W>
         <W id="041S8W3">
@@ -1618,14 +1618,14 @@
             <FORM kindOf="standard">ma-lipat</FORM>
             <PHON kindOf="standard">maɣipat</PHON>
             <TRANSL xml:lang="eng" kindOf="original">stat-disappear</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">stat-disappear</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT-disappear</TRANSL>
             <M id="041S10W11M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">stat</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">stat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="041S10W11M1">
                 <FORM kindOf="original">lipat</FORM>
@@ -1913,14 +1913,14 @@
             <FORM kindOf="standard">ma-lipat</FORM>
             <PHON kindOf="standard">maɣipat</PHON>
             <TRANSL xml:lang="eng" kindOf="original">stat-disappear</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">stat-disappear</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT-disappear</TRANSL>
             <M id="041S10-omitW11M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">stat</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">stat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="041S10-omitW11M1">
                 <FORM kindOf="original">lipat</FORM>
@@ -2510,14 +2510,14 @@
             <FORM kindOf="standard">ka-garang-i</FORM>
             <PHON kindOf="standard">kagaRaŋi</PHON>
             <TRANSL xml:lang="eng" kindOf="original">become-scold-pf</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">become-scold-PV</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS-scold-PV</TRANSL>
             <M id="041S13W11M0">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">become</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">become</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
             <M id="041S13W11M1">
                 <FORM kindOf="original">garang</FORM>
@@ -2740,14 +2740,14 @@
             <FORM kindOf="standard">ma-aya</FORM>
             <PHON kindOf="standard">maaja</PHON>
             <TRANSL xml:lang="eng" kindOf="original">stat-be.thus</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">stat-be.thus</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT-be.thus</TRANSL>
             <M id="041S15W2M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">stat</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">stat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="041S15W2M1">
                 <FORM kindOf="original">aya</FORM>
@@ -3106,14 +3106,14 @@
             <FORM kindOf="standard">ma-ulaw</FORM>
             <PHON kindOf="standard">mauɣaw</PHON>
             <TRANSL xml:lang="eng" kindOf="original">stat-lost</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">stat-lost</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT-lost</TRANSL>
             <M id="041S17W2M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
                 <TRANSL xml:lang="eng" kindOf="original">stat</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">stat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT</TRANSL>
             </M>
             <M id="041S17W2M1">
                 <FORM kindOf="original">ulaw</FORM>

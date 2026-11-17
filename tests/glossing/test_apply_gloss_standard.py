@@ -343,6 +343,8 @@ R7_TABLE = [
     ("AF", "100", "CONVERT", "AV", "voice ruling", "", ""),
     ("PF", "100", "CONVERT", "PV", "voice ruling", "", ""),
     ("AUX", "10", "KEEP", "AUX", "Leipzig", "", ""),
+    # NTU's shape: a lexical gloss with a row only for a per-language override (KEEP, empty standard)
+    ("become", "170", "KEEP", "", "lexical gloss elsewhere", "", "Bunun→COS"),
 ]
 R7_RULES = [
     (r"\.", "KEEP-SEPARATOR", "period"),
@@ -390,10 +392,12 @@ def test_rule7_voice_fused_with_a_lexical_gloss_moves_into_parentheses(tmp_path)
         _w("w1", "kmen", "AF.eat"),        # Rule 4 voice + lexical gloss -> Rule 7
         _w("w2", "na", "AUX.AF"),          # voice on an auxiliary: no lexical piece, stays Rule 4
         _w("w3", "ki", "PF.FUT.go"),       # other codes stay in the group
+        _w("w4", "ma", "AF.become"),       # lexical despite its override-only table row (NTU, merge with #355)
     ])
     p = run(d, t, r)
     assert p.returncode == 0, p.stderr
-    assert m_standards(d) == {"w1m1": ["eat(AV)"], "w2m1": ["AUX.AV"], "w3m1": ["FUT.go(PV)"]}
+    assert m_standards(d) == {"w1m1": ["eat(AV)"], "w2m1": ["AUX.AV"], "w3m1": ["FUT.go(PV)"],
+                              "w4m1": ["become(AV)"]}
 
 
 def test_rule7_parens_converts_code_parens_and_leaves_others_as_residue(tmp_path):
@@ -456,3 +460,212 @@ def test_whole_gloss_rule_converts_only_an_exact_whole_gloss(tmp_path):
     root = ET.parse(d / "a.xml").getroot()
     assert [tr.text for tr in root.iter("TRANSL") if tr.get("kindOf") == "original"] == \
         ["(name)", "(name)-(name)", "ligature (LIG)", "ligature (LIG)?", "(place)"]   # POL-036: originals untouched
+# ---- LGR Rule 7 parens + notes-attribute parens (maintainer 2026-11-15:
+# "these should remain Rule 7. But that also means our gloss standardizer
+# needs to handle such cases appropriately."; card P3 "drop") ----
+
+PAREN_RULES = RULES + [
+    ("x (CODE)", "RULE7-PARENS-SPACED",
+     "LGR Rule 7 code-only parens after a gloss, also after a space (dropped); replaces KEEP-PARENS "
+     "(maintainer 2026-11-17: 'Bracket fold: Approved.')"),
+    (r"\(ritual\)", "NOTE-PARENS",
+     "clarifier moves to the standard TRANSL's notes attribute"),
+]
+PAREN_XML = """<TEXT xml:lang="tay" id="t5">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>a</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">go (AF)</TRANSL>
+  </W>
+  <W id="w2"><FORM>b</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">LF-ring(AF)</TRANSL>
+  </W>
+  <W id="w3"><FORM>c</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">one(person)</TRANSL>
+  </W>
+  <W id="w4"><FORM>d</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">sikaisiisi (ritual)</TRANSL>
+  </W>
+</S>
+</TEXT>"""
+
+
+def make_paren_corpus(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(PAREN_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(PAREN_RULES)
+    return d, t, r
+
+
+def test_rule7_parens_spaced_kept_converted_space_stripped(tmp_path):
+    d, t, r = make_paren_corpus(tmp_path)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    _, g = glosses(d)
+    assert g["w1"][("standard",)] == "go(AV)"       # space stripped, AF->AV inside
+    assert g["w2"][("standard",)] == "LV-ring(AV)"  # outside and inside both convert
+    assert g["w1"][("original",)] == "go (AF)"      # original untouched
+
+
+def test_unmatched_parens_still_residue(tmp_path):
+    d, t, r = make_paren_corpus(tmp_path)
+    p = run(d, t, r)
+    _, g = glosses(d)
+    assert g["w3"][("standard",)] == "one(person)"  # verbatim, still flagged
+    assert "one(person)" in p.stdout
+
+
+def test_note_parens_moved_to_notes_attribute(tmp_path):
+    d, t, r = make_paren_corpus(tmp_path)
+    run(d, t, r)
+    root = ET.parse(d / "XML" / "a.xml" if (d / "XML").exists() else d / "a.xml").getroot()
+    w4 = [w for w in root.iter("W") if w.get("id") == "w4"][0]
+    std = [tr for tr in w4.findall("TRANSL") if tr.get("kindOf") == "standard"]
+    assert len(std) == 1
+    assert std[0].text == "sikaisiisi"
+    assert std[0].get("notes") == "(ritual)"
+
+
+# ---- context-rule fallback falls through to the table (maintainer card Q5
+# 2026-11-15, choice "yes": the 'arup exception needs REC&'arup-, and atoms
+# with context rules in OTHER words must still convert by the table) ----
+
+FALLBACK_RULES = RULES + [
+    ("AF&zz-", "CONTEXT-CONVERT→XX", "AF on a zz- word becomes XX"),
+]
+FALLBACK_XML = """<TEXT xml:lang="tay" id="t6">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>zzat</FORM>
+    <M id="m1"><FORM>zz-</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+    <M id="m2"><FORM>at</FORM><TRANSL xml:lang="eng" kindOf="original">eat</TRANSL></M>
+  </W>
+  <W id="w2"><FORM>kmen</FORM>
+    <M id="m3"><FORM>kmen</FORM><TRANSL xml:lang="eng" kindOf="original">AF-eat</TRANSL></M>
+  </W>
+</S>
+</TEXT>"""
+
+
+def test_context_fallback_goes_to_table(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(FALLBACK_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(FALLBACK_RULES)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    _, g = glosses(d)
+    assert g["m1"][("standard",)] == "XX"       # context rule fires on the zz- word
+    assert g["m3"][("standard",)] == "AF-eat"[:0] + "AV-eat"  # no zz-: falls through to the table (AF->AV), not kept
+
+
+# ---- +bound context pattern (maintainer q_cmpr 2026-11-16: "convert only
+# more/tja- -> CMPR, and only when tja is bound (not when free-standing)") ----
+
+BOUND_RULES = RULES + [
+    ("AF&+bound", "CONTEXT-CONVERT→BB", "AF only in multi-morpheme words"),
+]
+BOUND_XML = """<TEXT xml:lang="tay" id="t7">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>tja-vulung</FORM>
+    <M id="m1"><FORM>tja</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+    <M id="m2"><FORM>vulung</FORM><TRANSL xml:lang="eng" kindOf="original">old</TRANSL></M>
+  </W>
+  <W id="w2"><FORM>tja</FORM>
+    <M id="m3"><FORM>tja</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+  </W>
+</S>
+</TEXT>"""
+
+
+def test_bound_context_pattern(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(BOUND_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows([("NOM", "80", "KEEP", "NOM", "Leipzig", "", "")])
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(BOUND_RULES)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    _, g = glosses(d)
+    assert g["m1"][("standard",)] == "BB"   # bound: rule fires
+    assert g["m3"][("standard",)] == "AF"   # free-standing: falls to table, kept
+
+
+def test_rule7_parens_without_spaced_needs_the_parens_attached(tmp_path):
+    # Without RULE7-PARENS-SPACED a space before the parens keeps the gloss residue: prose glosses define codes
+    # that way (Yedda "conjunction (CONJ)"), so accepting the space is a per-corpus choice.
+    d, t, r = make_r7_corpus(tmp_path, [_w("w1", "a", "go (AF)"), _w("w2", "b", "go(AF)")])
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    assert m_standards(d) == {"w1m1": ["go (AF)"], "w2m1": ["go(AV)"]}
+
+
+INFIX_XML = """<TEXT xml:lang="trv" id="t6">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM kindOf="original">r&lt;em&gt;eŋaw</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">AF-talk</TRANSL>
+    <M id="w1m1"><FORM kindOf="original">r-eŋaw</FORM><TRANSL xml:lang="eng" kindOf="original">talk</TRANSL></M>
+    <M id="w1m2"><FORM kindOf="original">-em-</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+  </W>
+  <W id="w2"><FORM kindOf="original">S&lt;em&gt;&lt;en&gt;teruŋ=ku</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">AF-PRF-meet=1SG.NOM</TRANSL>
+    <M id="w2m1"><FORM kindOf="original">S-teruŋ</FORM><TRANSL xml:lang="eng" kindOf="original">meet</TRANSL></M>
+    <M id="w2m2"><FORM kindOf="original">-em-</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+    <M id="w2m3"><FORM kindOf="original">-en-</FORM><TRANSL xml:lang="eng" kindOf="original">PRF</TRANSL></M>
+    <M id="w2m4"><FORM kindOf="original">=ku</FORM><TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL></M>
+  </W>
+  <W id="w3"><FORM kindOf="original">m-ita</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">AF-see</TRANSL>
+    <M id="w3m1"><FORM kindOf="original">m-</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+    <M id="w3m2"><FORM kindOf="original">ita</FORM><TRANSL xml:lang="eng" kindOf="original">see</TRANSL></M>
+  </W>
+</S>
+</TEXT>"""
+
+
+def test_infix_gloss_brackets_on_words_with_an_infix_morpheme(tmp_path):
+    # Naomi-Tsukida shapes (maintainer 2026-11-17: "All this should go into our pending PR"): the gloss of a
+    # morpheme written -X- (POL-014) goes in angle brackets in the word gloss, LGR Rule 9; a prefix does not.
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(INFIX_XML, encoding="utf-8")
+    _d, t, r = make_r7_corpus(tmp_path / "tables", [])
+    with open(r, "a", encoding="utf-8") as h:
+        h.write("-X-\tINFIX-GLOSS-BRACKETS\tLGR Rule 9\n")
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    root = ET.parse(d / "a.xml").getroot()
+    std = {w.get("id"): [x.text for x in w.findall("TRANSL") if x.get("kindOf") == "standard"] for w in root.iter("W")}
+    assert std == {"w1": ["<AV>talk"], "w2": ["<AV><PRF>meet=1SG.NOM"], "w3": ["AV-see"]}

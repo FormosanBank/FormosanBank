@@ -653,7 +653,7 @@
             <TRANSL xml:lang="zho" kindOf="original">靜態.虛-想睡_睏</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">靜態.虛-想睡_睏</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SV.SUB-sleepy</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">STAT.SUB-sleepy</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT.SBJV-sleepy</TRANSL>
             <M id="2_10_1">
                 <FORM kindOf="original">á</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -662,7 +662,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">靜態.虛</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">靜態.虛</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SV.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">STAT.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT.SBJV</TRANSL>
             </M>
             <M id="2_10_2">
                 <FORM kindOf="original">kaha</FORM>
@@ -743,7 +743,7 @@
             <TRANSL xml:lang="zho" kindOf="original">虛.睡覺</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">虛.睡覺</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SUB.sleep</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.sleep</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.sleep</TRANSL>
             <M id="2_14_1">
                 <FORM kindOf="original">ngítkeh</FORM>
                 <PHON kindOf="original">ŋitkəʁ</PHON>
@@ -752,7 +752,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">虛.睡覺</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛.睡覺</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SUB.sleep</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.sleep</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.sleep</TRANSL>
             </M>
         </W>
         <W id="2_15">
@@ -993,7 +993,7 @@
             <TRANSL xml:lang="zho" kindOf="original">虛.返家</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">虛.返家</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SUB.go_home</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.go_home</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.go_home</TRANSL>
             <M id="2_26_1">
                 <FORM kindOf="original">ngóli</FORM>
                 <PHON kindOf="original">ŋ[o|u]li</PHON>
@@ -1002,7 +1002,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">虛.返家</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛.返家</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SUB.go_home</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.go_home</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.go_home</TRANSL>
             </M>
         </W>
         <W id="2_27">
@@ -1281,7 +1281,7 @@
             <TRANSL xml:lang="zho" kindOf="original">虛.去-名綴</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">虛.去-名綴</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SUB.go-NF</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.go-NF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.go-NF</TRANSL>
             <M id="3_12_1">
                 <FORM kindOf="original">angay</FORM>
                 <PHON kindOf="original">aŋaj</PHON>
@@ -1290,7 +1290,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">虛.去</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛.去</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SUB.go</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.go</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.go</TRANSL>
             </M>
             <M id="3_12_2">
                 <FORM kindOf="original">an</FORM>
@@ -1371,7 +1371,7 @@
             <TRANSL xml:lang="zho" kindOf="original">虛.講-工焦.虛</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">虛.講-虛(OV)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SUB.tell-IF.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.tell-OV.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.tell-OV.SBJV</TRANSL>
             <M id="3_16_1">
                 <FORM kindOf="original">manci</FORM>
                 <PHON kindOf="original">manci</PHON>
@@ -1380,7 +1380,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">虛.講</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛.講</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SUB.tell</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.tell</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.tell</TRANSL>
             </M>
             <M id="3_16_2">
                 <FORM kindOf="original">an</FORM>
@@ -1390,7 +1390,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">工焦.虛</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛(OV)</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">IF.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">OV.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">OV.SBJV</TRANSL>
             </M>
         </W>
         <W id="3_17">
@@ -1441,7 +1441,7 @@
             <TRANSL xml:lang="zho" kindOf="original">叫醒-受焦.虛</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">叫醒-虛(PV)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">wake_up-PF.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">wake_up-PV.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">wake_up-PV.SBJV</TRANSL>
             <M id="3_19_1">
                 <FORM kindOf="original">yokay</FORM>
                 <PHON kindOf="original">j[o|u]kaj</PHON>
@@ -1460,7 +1460,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">受焦.虛</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛(PV)</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PF.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">PV.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV.SBJV</TRANSL>
             </M>
         </W>
     </S>
@@ -1839,7 +1839,7 @@
             <TRANSL xml:lang="zho" kindOf="original">虛.去-名綴</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">虛.去-名綴</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SUB.go-NF</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.go-NF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.go-NF</TRANSL>
             <M id="4_17_1">
                 <FORM kindOf="original">angay</FORM>
                 <PHON kindOf="original">aŋaj</PHON>
@@ -1848,7 +1848,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">虛.去</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛.去</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SUB.go</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.go</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.go</TRANSL>
             </M>
             <M id="4_17_2">
                 <FORM kindOf="original">an</FORM>
@@ -3283,7 +3283,7 @@
             <TRANSL xml:lang="zho" kindOf="original">靜態.虛-想睡</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">靜態.虛-想睡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SV.SUB-sleepy</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">STAT.SUB-sleepy</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT.SBJV-sleepy</TRANSL>
             <M id="7_23_1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -3292,7 +3292,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">靜態.虛</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">靜態.虛</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SV.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">STAT.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT.SBJV</TRANSL>
             </M>
             <M id="7_23_2">
                 <FORM kindOf="original">kaha</FORM>
@@ -4567,7 +4567,7 @@
             <TRANSL xml:lang="zho" kindOf="original">虛-看見.受焦.虛</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">虛-看見.虛(PV)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SUB-see.PF.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB-see.SUB(PV)</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV-see.SBJV(PV)</TRANSL>
             <M id="10_14_1">
                 <FORM kindOf="original">á</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -4576,7 +4576,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">虛</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV</TRANSL>
             </M>
             <M id="10_14_2">
                 <FORM kindOf="original">sta</FORM>
@@ -4586,7 +4586,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">看見.受焦.虛</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">看見.虛(PV)</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">see.PF.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">see.SUB(PV)</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">see.SBJV(PV)</TRANSL>
             </M>
         </W>
         <W id="10_15">
@@ -4975,7 +4975,7 @@
             <TRANSL xml:lang="zho" kindOf="original">叫醒-處焦.虛</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">叫醒-虛(LV)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">wake_up-LF.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">wake_up-LV.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">wake_up-LV.SBJV</TRANSL>
             <M id="11_10_1">
                 <FORM kindOf="original">yokay</FORM>
                 <PHON kindOf="original">j[o|u]kaj</PHON>
@@ -4994,7 +4994,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">處焦.虛</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛(LV)</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LF.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">LV.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LV.SBJV</TRANSL>
             </M>
         </W>
         <W id="11_11">
@@ -5883,7 +5883,7 @@
             <TRANSL xml:lang="zho" kindOf="original">叫醒-受焦.虛</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">叫醒-虛(PV)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">wake_up-PF.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">wake_up-PV.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">wake_up-PV.SBJV</TRANSL>
             <M id="12_26_1">
                 <FORM kindOf="original">yokay</FORM>
                 <PHON kindOf="original">j[o|u]kaj</PHON>
@@ -5902,7 +5902,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">受焦.虛</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛(PV)</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PF.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">PV.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV.SBJV</TRANSL>
             </M>
         </W>
         <W id="12_27">
@@ -7237,7 +7237,7 @@
             <TRANSL xml:lang="zho" kindOf="original">虛.做芋糕-受焦.虛</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">虛.做芋糕-虛(PV)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SUB.make_taro_cake-PF.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.make_taro_cake-PV.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.make_taro_cake-PV.SBJV</TRANSL>
             <M id="15_14_1">
                 <FORM kindOf="original">ngmáy</FORM>
                 <PHON kindOf="original">ŋmaj</PHON>
@@ -7246,7 +7246,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">虛.做芋糕</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛.做芋糕</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SUB.make_taro_cake</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.make_taro_cake</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.make_taro_cake</TRANSL>
             </M>
             <M id="15_14_2">
                 <FORM kindOf="original">a</FORM>
@@ -7256,7 +7256,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">受焦.虛</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛(PV)</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PF.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">PV.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PV.SBJV</TRANSL>
             </M>
         </W>
         <W id="15_15">
@@ -8123,7 +8123,7 @@
             <TRANSL xml:lang="zho" kindOf="original">虛.出發</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">虛.出發</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SUB.depart</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.depart</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.depart</TRANSL>
             <M id="17_9_1">
                 <FORM kindOf="original">nibo</FORM>
                 <PHON kindOf="original">nib[o|u]</PHON>
@@ -8132,7 +8132,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">虛.出發</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛.出發</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SUB.depart</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.depart</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.depart</TRANSL>
             </M>
         </W>
         <W id="17_10">
@@ -9903,7 +9903,7 @@
             <TRANSL xml:lang="zho" kindOf="original">靜態.虛-是真的</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">靜態.虛-是真的</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SV.SUB-real</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">STAT.SUB-real</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT.SBJV-real</TRANSL>
             <M id="22_10_1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -9912,7 +9912,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">靜態.虛</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">靜態.虛</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SV.SUB</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">STAT.SUB</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">STAT.SBJV</TRANSL>
             </M>
             <M id="22_10_2">
                 <FORM kindOf="original">noyong</FORM>
@@ -10113,7 +10113,7 @@
             <TRANSL xml:lang="zho" kindOf="original">虛.先</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">虛.先</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SUB.first</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.first</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.first</TRANSL>
             <M id="22_20_1">
                 <FORM kindOf="original">mánma</FORM>
                 <PHON kindOf="original">manma</PHON>
@@ -10122,7 +10122,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">虛.先</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">虛.先</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SUB.first</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SUB.first</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">SBJV.first</TRANSL>
             </M>
         </W>
         <W id="22_21">

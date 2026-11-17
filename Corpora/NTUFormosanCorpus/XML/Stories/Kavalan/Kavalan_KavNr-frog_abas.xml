@@ -14,7 +14,7 @@
             <FORM kindOf="standard">sikawma=pa=iku</FORM>
             <PHON kindOf="standard">sikawmapaiku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">說=未來=1SG.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">說=未來=1SG.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">說=FUT=1SG.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">speak=FUT=1SG.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">speak=FUT=1SG.NOM</TRANSL>
             <M id="KavNr-frog_abas_S_1_W0M0">
@@ -33,7 +33,7 @@
                 <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">未來</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">FUT</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">FUT</TRANSL>
             </M>
@@ -4209,18 +4209,18 @@
             <FORM kindOf="standard">si-kubu-an-na</FORM>
             <PHON kindOf="standard">sikuβuanna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">SI-帽子-處焦-3SG.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">SI-帽子-PV-3SG.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">#SI-帽子-PV-3SG.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">SI-hat-LF-3SG.GEN</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SI-hat-PV-3SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">#SI-hat-PV-3SG.GEN</TRANSL>
             <M id="KavNr-frog_abas_S_24_W2M0">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">SI</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">SI</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">#SI</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SI</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SI</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">#SI</TRANSL>
             </M>
             <M id="KavNr-frog_abas_S_24_W2M1">
                 <FORM kindOf="original">kubu</FORM>
@@ -5804,9 +5804,9 @@
             <FORM kindOf="standard">s&lt;n&gt;i-kubu</FORM>
             <PHON kindOf="standard">snikuβu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;完成&gt;SI-帽子</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">&lt;PFV&gt;SI-帽子</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">&lt;PFV&gt;#SI-帽子</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;SI-hat</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">&lt;PFV&gt;SI-hat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">&lt;PFV&gt;#SI-hat</TRANSL>
             <M id="KavNr-frog_abas_S_31_W5M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -5823,9 +5823,9 @@
                 <FORM kindOf="standard">s-i</FORM>
                 <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">SI</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">SI</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">#SI</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SI</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SI</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">#SI</TRANSL>
             </M>
             <M id="KavNr-frog_abas_S_31_W5M1">
                 <FORM kindOf="original">kubu</FORM>
@@ -6302,9 +6302,9 @@
             <FORM kindOf="standard">s&lt;n&gt;i-kubu</FORM>
             <PHON kindOf="standard">snikuβu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;完成&gt;SI-帽子</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">&lt;PFV&gt;SI-帽子</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">&lt;PFV&gt;#SI-帽子</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;SI-hat</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">&lt;PFV&gt;SI-hat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">&lt;PFV&gt;#SI-hat</TRANSL>
             <M id="KavNr-frog_abas_S_33_W8M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -6321,9 +6321,9 @@
                 <FORM kindOf="standard">s-i</FORM>
                 <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">SI</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">SI</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">#SI</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">SI</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">SI</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">#SI</TRANSL>
             </M>
             <M id="KavNr-frog_abas_S_33_W8M1">
                 <FORM kindOf="original">kubu</FORM>
@@ -11787,7 +11787,7 @@
             <FORM kindOf="standard">zaqis=pa=ita</FORM>
             <PHON kindOf="standard">[z|r]aqispaita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">爬=未來=1IPL.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">爬=未來=1IPL.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">爬=FUT=1IPL.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">climb=FUT=1IPL.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">climb=FUT=1IPL.NOM</TRANSL>
             <M id="KavNr-frog_abas_S_69_W5M0">
@@ -11806,7 +11806,7 @@
                 <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">未來</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">FUT</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">FUT</TRANSL>
             </M>
@@ -12953,7 +12953,7 @@
             <FORM kindOf="standard">zaqis=pa=iku</FORM>
             <PHON kindOf="standard">[z|r]aqispaiku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">爬=未來=1SG.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">爬=未來=1SG.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">爬=FUT=1SG.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">climb=FUT=1SG.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">climb=FUT=1SG.NOM</TRANSL>
             <M id="KavNr-frog_abas_S_80_W4M0">
@@ -12972,7 +12972,7 @@
                 <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">未來</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">FUT</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">FUT</TRANSL>
             </M>
@@ -13013,7 +13013,7 @@
             <FORM kindOf="standard">zaqis=pa=iku</FORM>
             <PHON kindOf="standard">[z|r]aqispaiku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">爬=未來=1SG.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">爬=未來=1SG.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">爬=FUT=1SG.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">climb=FUT=1SG.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">climb=FUT=1SG.NOM</TRANSL>
             <M id="KavNr-frog_abas_S_80_W6M0">
@@ -13032,7 +13032,7 @@
                 <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">未來</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">FUT</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">FUT</TRANSL>
             </M>
@@ -18114,7 +18114,7 @@
             <FORM kindOf="standard">qalimek-ka</FORM>
             <PHON kindOf="standard">qaɾiməkka</PHON>
             <TRANSL xml:lang="zho" kindOf="original">安靜-祈使</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">安靜-祈使</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">安靜-IMP</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">quiet-IMP</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">quiet-IMP</TRANSL>
             <M id="KavNr-frog_abas_S_112_W9M0">
@@ -18133,7 +18133,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">祈使</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">IMP</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">IMP</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">IMP</TRANSL>
             </M>

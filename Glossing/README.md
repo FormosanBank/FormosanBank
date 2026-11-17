@@ -36,6 +36,14 @@ as they are".
 - Exception to the 2026-11-11 ruling "parens/brackets shouldn't be in glosses": a parenthesis attached to a gloss
   and holding only codes (`die(AV)`, `打（AF）`) is a Rule 7 category; it is converted (`打(AV)`) instead of being
   copied as residue. Every other parenthesis is still flagged (rules files: `RULE7-PARENS`).
+  `RULE7-PARENS-SPACED` also accepts a space between the gloss and the parentheses and drops it
+  (`go (AV)` → `go(AV)`); it is set per corpus (Wild-Lehmann only), because prose glosses define codes the same
+  way (Yedda `conjunction (CONJ)`). It replaced the earlier `KEEP-PARENS` (maintainer, 2026-11-17: "Bracket fold:
+  Approved.").
+- Infixes (LGR Rule 9): with `INFIX-GLOSS-BRACKETS` in a corpus's rules file, the gloss of each morpheme whose
+  original FORM is written `-X-` (POL-014) is put in angle brackets in the word's standard gloss: `AV-talk` →
+  `<AV>talk` for r-em-eŋaw. Set for Naomi-Tsukida only, whose source writes these with hyphens; the other
+  corpora's sources already bracket them.
 - A rules file may also replace one exact whole gloss: `<exact gloss>  WHOLE-GLOSS→<CODE>` (maintainer,
   2026-11-16: "Yes"). Only a gloss that is exactly that text converts; the pattern is literal, not a regular
   expression. In use: HundredPaiwanStories `(name)` and `(place)` → `PN` ("A: standard tier → PN; original

@@ -89,7 +89,6 @@ def read_morpheme_alignments(
         alignments[key] = {
             "word_form": row["word_form"],
             "source_word_gloss": row["source_word_gloss"],
-            "canonical_word_gloss": row["canonical_word_gloss"],
             "morphemes": list(zip(forms, glosses)),
             "evidence": row["evidence"],
         }
@@ -266,25 +265,25 @@ def morpheme_alignment(
     word: str,
     gloss: str,
     reviewed: dict[tuple[str, int], dict[str, object]],
-) -> tuple[list[tuple[str, str]], str]:
+) -> list[tuple[str, str]]:
     override = reviewed.get((record["id"], word_index))
     if override is not None:
         if override["word_form"] != word or override["source_word_gloss"] != gloss:
             raise ValueError(
                 f"Reviewed morpheme alignment drift at {record['id']} W{word_index}"
             )
-        return override["morphemes"], str(override["canonical_word_gloss"])
+        return override["morphemes"]
 
     form_parts = split_form(word)
     gloss_parts = split_gloss(gloss)
     if len(form_parts) <= 1:
-        return [(word, gloss)], ""
+        return [(word, gloss)]
     if len(form_parts) != len(gloss_parts):
         raise ValueError(
             f"Unreviewed morpheme mismatch at {record['id']} W{word_index}: "
             f"{word!r} versus {gloss!r}"
         )
-    return list(zip(form_parts, gloss_parts)), ""
+    return list(zip(form_parts, gloss_parts))
 
 
 def infix_brackets(word: str, morpheme_forms: list[str]) -> str:
@@ -316,24 +315,11 @@ def add_word_structure(
             sentence, "W", {"id": f"{record['id']}W{word_index}"}
         )
         form_element = ET.SubElement(word_element, "FORM", {"kindOf": "original"})
-        morphemes, canonical_gloss = morpheme_alignment(
-            record, word_index, word, gloss, reviewed
-        )
+        morphemes = morpheme_alignment(record, word_index, word, gloss, reviewed)
         form_element.text = infix_brackets(word, [form for form, _ in morphemes])
-        source_gloss_attributes = {"xml:lang": "eng"}
-        if canonical_gloss:
-            source_gloss_attributes["kindOf"] = "original"
-        ET.SubElement(
-            word_element,
-            "TRANSL",
-            source_gloss_attributes,
-        ).text = gloss
-        if canonical_gloss:
-            ET.SubElement(
-                word_element,
-                "TRANSL",
-                {"xml:lang": "eng", "kindOf": "standard"},
-            ).text = canonical_gloss
+        # The word's standard gloss (infix glosses in angle brackets, LGR Rule 9) is written by the shared
+        # QC/glossing/apply_gloss_standard.py (INFIX-GLOSS-BRACKETS in the corpus's rules file), not here.
+        ET.SubElement(word_element, "TRANSL", {"xml:lang": "eng"}).text = gloss
         for morpheme_index, (form_part, gloss_part) in enumerate(
             morphemes, start=1
         ):

@@ -115,6 +115,70 @@ the bottom with their ruling.
   (完成主焦, 參焦 ×68, 主焦重疊, K主焦A, T主焦A, 工焦完成貌) — UNDECIDED
   rows in their tables.
 
+- **NTU 沒有 ×52 — left UNDECIDED (maintainer card M10, 2026-11-15: `leave` + "And put
+  in our todo list in the glossing folder!").** The zho gloss 沒有 covers seven
+  different language-specific negators: plain negators (Saisiyat 'oka'/'okay §10.1.1,
+  Rukai kai — not covered by the Mantauran-dialect 語法概論, Tsou o'te §10.1.2.1,
+  Kavalan mai, Atayal meyo, Bunun nii) and negative existentials (Kanakanavu 'akia
+  否定存在動詞 PDF 69, Tsou uk'a PDF 89, Bunun uka). A single conversion would merge
+  the two kinds; within Tsou even per-language overrides can't split them. One Rukai
+  token's form is literally `meiyou` — possible Mandarin echo, worth inspection.
+- **QUAL / INVOL (HPS qal ×161, invol ×181) — registered and converted 2026-11-15
+  (card U1), to be REVISITED** (maintainer: "add to our todo list in glossing to
+  revisit this, particularly when we get more glossed Paiwan data."). The Paiwan
+  語法概論 does not treat the underlying prefixes (li-/sa-/⟨ar⟩; se-); the codes rest
+  on Early & Whitehorn's Ch.1 definitions alone, and Yedda has no analogues yet.
+
+- **NTU Saisiyat -an: stays NMZ per the corpus creator (Li-May Sung, email to the
+  maintainer, 2026-11-15/16):** "Glossing -an as NMZ (nominalizer) doesn't
+  necessarily conflict with glossing it as LV voice in many Formosan languages. I
+  took a quick look at our Saisiyat stories, lots of the -an derived words mean
+  nominal entities such as bicylce, animal or bottle etc. At this moment, I would
+  like to have the NTU Saisiyat glossings stay as they are." Our standard tier
+  already conforms: NTU Saisiyat voices are AF/PF/RF → AV/PV/OV (no LV anywhere),
+  and -an NMZ ×97 (form an ×93) converts only in spelling (NMZ → Leipzig NMLZ),
+  never to a voice. Related open -an items: Tsukida Seediq OBL, Nowbucyang Truku
+  受格 (above). The ANALYSIS-side counting rule "-an nominalizations count as
+  locative voice" (maintainer, 2026-09-28, austronesian-voice repo) is a separate
+  decision that this email bears on for Saisiyat.
+
+- **CFACT (counterfactual) — registered 2026-11-15 (card M9: "Register CFACT and map
+  to that. Put in our todos that we anticipate this showing up in future for Rukai
+  `ni-` and possibly Truku, Atayal, and Thao.").** Currently only NTU Tsou nte/n
+  (HYP/假設) maps to it. The grammars' other counterfactual markers are barely in
+  our corpora and never glossed as counterfactual: Rukai ni- (Mantauran grammar PDF
+  105; NTU Rukai ni ×12 = NI/名物化/完成貌/mixed — different dialect), Truku naa
+  「本來會」 (no corpus hits; nasi in Seediq data = 'pear' ×23 + 條件詞/如果 ×11),
+  Atayal aki (×1, glossed 在), Saisiyat naw (×7: 條件詞/只/好像), Thao (no affix —
+  conditional constructions). Revisit when such tokens appear.
+- **Kanakanavu ara- homophony (sep20, 2026-11-15: "The 'take' and 'go' entries go
+  into the todos in glossing folder.").** ara 'become' ×82 → COS (done); the same
+  form is glossed take ×61 and go ×12 — lexical homophones left as-is; check when
+  standardizing Kanakanavu lexical glosses.
+- **HPS 'have' (pu-) ×220 — separator yes (sep25) + "this needs to go on todo list
+  for standardization."** All 'have' tokens are the one morpheme pu-/p-u (verified);
+  code proposal (PROPR?) on the page's U2 table.
+
+- **HPS 'pair' (mare-/pare- ×118) — left unmapped (u2_pair, 2026-11-15: "Leave as
+  undecided, put in todo.").** The dominant form mare- matches the Paiwan 語法概論's
+  reciprocal-context mare'a examples; if an expert confirms reciprocal, RECP is the
+  natural target. Revisit with expert input.
+- **Reversive candidates bank-wide (u2_remove question, 2026-11-15).** HPS remove
+  (su-) ×79 is separator-yes but unmapped; similar lexical glosses elsewhere:
+  NTU remove ×12 / take.off ×6 / 脫 ×2 / un ×1, RauDong 'un' atoms ×16, Nowbucyang
+  un ×4, ILCAA take.off ×2 + remove ×2, Wild take.off ×1, Song 脫 ×1. No code
+  anywhere; REV registration would cover them if wanted later.
+
+- **HPS 'make' (sane-) — left unmapped (q_make, 2026-11-16: "Leave as undecided and
+  put on todo list, with this information.").** The information: of 112 M-level
+  `make` tokens, the true denominal-prefix pattern (make-NOUN: dumpling, wing,
+  child, +2 imp) is ≈5 tokens; the rest are sane-as-root (non-initial or
+  voice-inflected ×81, e.g. ki-sane 'do-make', s⟨em⟩ane 'make<af>'), standalone
+  verb sane ×14, and the root alang in nominalizations ×11 (si-alang-an). An
+  atom-level make→CAUS would mislabel ~106 verb/root tokens to catch ~5; position-
+  conditioned conversion is not supported. `make` IS a separator via its lexical
+  atom (sep28). Revisit if position conditions are ever added to the converter.
+
 ## Resolved
 
 - **HPS (inc)/(exc), (name)/(place); NTU IN/EX, 包含/排除; Yedda ligature** (resolved 2026-11-16, unvoiced-verbs

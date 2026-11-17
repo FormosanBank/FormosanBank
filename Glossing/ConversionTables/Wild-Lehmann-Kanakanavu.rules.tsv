@@ -4,6 +4,9 @@ pattern	replacement	description
 =	KEEP-SEPARATOR	equals = clitic boundary (LGR Rule 2) — split
 <([^<>]+)>	KEEP-BRACKETS	angle brackets = infix (LGR Rule 9) — keep brackets, look up inner atom(s)
 x(CODE)	RULE7-PARENS	maintainer 2026-11-15 (unvoiced-verbs audit, unv_notation_r4 "Rule 7 (see(AV)), with an exception to the 2026-11-11 parentheses ruling…"; unv_tool_r5 "Yes, as described"): a parenthesis attached to a gloss and holding only codes (die(AV), 打（AF）) is a Leipzig Rule 7 category — converted, not residue
+x (CODE)	RULE7-PARENS-SPACED	maintainer 2026-11-15 ("these should remain Rule 7"; formerly the KEEP-PARENS row \((?:AV|UV|HORT)\)) + 2026-11-17 ("Bracket fold: Approved."): code-only parens after a gloss, also after a space, which is dropped (go (AV) -> go(AV))
+\(ritual\)	NOTE-PARENS	"card P3 ""drop"" 2026-11-15: clarifier moves to the standard TRANSL notes attribute"
+\(person\)	NOTE-PARENS	"card P2 2026-11-15 (""Move 'person' to the note attribute.""): clarifier moves to the standard TRANSL notes attribute"
 [()\[\]（）]	INVESTIGATE	maintainer rules-review 2026-11-11: parens/brackets shouldn't be in glosses; flag occurrences
 …	RESIDUE	anything unsegmentable is copied verbatim and listed in the residue report
 come&=ivatu	CONTEXT-ADD→AV	maintainer 2026-11-15 (unvoiced-verbs audit, unv_same_stem_r3): "Only when the stem is voice-glossed at least 3 times AND at least twice as often as it is not voice-glossed."

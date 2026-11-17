@@ -10,7 +10,11 @@ For every W/M-level TRANSL gloss in the target XML:
 
 A gloss the rules cannot segment (it contains characters the rules mark
 INVESTIGATE/RESIDUE, e.g. parentheses) is copied verbatim and listed in the
-residue report. Elements that already carry a standard TRANSL for that
+residue report. ``NOTE-PARENS <regex>`` (maintainer 2026-11-15) marks
+clarifier chunks that are removed from the standard text and stored on the
+standard TRANSL's ``notes`` attribute. LGR Rule 7 parentheses are handled by
+``RULE7-PARENS`` / ``RULE7-PARENS-SPACED`` (below). Other parens remain
+residue. Elements that already carry a standard TRANSL for that
 language are left exactly as they are (preexisting hand-made standards are
 never overwritten). Originals are never modified beyond the kindOf stamp
 (POL-036/POL-062). S-level TRANSLs are never touched (V151).
@@ -23,6 +27,14 @@ lexical gloss; the 3,684 on affixes/auxiliaries stay as they are"):
   * a rules file may declare ``RULE7-PARENS``: parentheses attached to a gloss and holding only codes
     (``die(AV)``, ``打（AF）``) are then a Rule 7 category, converted, and no longer residue; all other
     parentheses stay residue (maintainer, 2026-11-11: "parens/brackets shouldn't be in glosses").
+    ``RULE7-PARENS-SPACED`` also accepts whitespace between the gloss and such parentheses and drops it
+    (``go (AV)`` -> ``go(AV)``); it is per corpus because prose glosses define codes the same way
+    (Yedda ``conjunction (CONJ)``). It replaces the former KEEP-PARENS (maintainer, 2026-11-17: "Bracket
+    fold: Approved.").
+  * a rules file may declare ``INFIX-GLOSS-BRACKETS``: in a word-level gloss, the gloss of each morpheme
+    whose original FORM is an infix written ``-X-`` (POL-014) is put in angle brackets, LGR Rule 9:
+    ``AV-talk`` -> ``<AV>talk`` for r-em-eŋaw (maintainer, 2026-11-17: "All this should go into our
+    pending PR").
   * ``<gloss>&=<stem>  CONTEXT-ADD→<V>`` rules add a voice the source leaves unglossed: on a word whose
     form (lower case, = clitics removed) is <stem> and which carries no voice code at all, the morpheme
     whose original gloss is exactly <gloss> gets ``(<V>)`` in every standard tier.
@@ -61,6 +73,8 @@ ISO_TO_LANGUAGE = {
 VOICES = ("AV", "PV", "LV", "OV")
 LEXICAL = re.compile(r"[a-z\u3400-\u9fff]")
 RULE7_GROUP = re.compile(r"(?<=\S)[(（]([^()（）]+)[)）]")
+RULE7_GROUP_SPACED = re.compile(r"\s*[(（]([^()（）]+)[)）]")
+INFIX_FORM = re.compile(r"-[^-=\s]+-")
 CHUNK_SPLIT = re.compile(r"([-=<>\s]+)")
 
 
@@ -78,6 +92,14 @@ def rule7_voice(text: str, table: "Table") -> str:
                 chunk = ".".join(p for p in pieces if p not in VOICES) + f"({v[0]})"
         out.append(chunk)
     return "".join(out)
+
+
+def bracket_infixes(text: str, infix_glosses) -> str:
+    """LGR Rule 9 on a word gloss: each infix morpheme's gloss g, written ``g-`` at the start or after a
+    boundary (- = >), becomes ``<g>``: AV-talk -> <AV>talk, AV-PRF-meet -> <AV><PRF>meet."""
+    for g in infix_glosses:
+        text = re.sub(r"(^|(?<=[-=>]))" + re.escape(g) + r"-", "<" + g.replace("\\", "\\\\") + ">", text, count=1)
+    return text
 
 
 def add_voice(text: str, voice: str) -> str:
@@ -101,8 +123,11 @@ class Table:
                 for part in re.findall(r"(\S+?)→(\S+)", row.get("language_overrides") or ""):
                     overrides[part[0]] = part[1]
                 self.map[code] = (row["status"], row.get("standard") or "", overrides)
-        # every code the table knows (source codes, standards, override targets): what is NOT here is lexical
-        self.codes = set(self.map) | {s for _t, s, _o in self.map.values() if s} \
+        # every code the table knows (source codes, standards, override targets): what is NOT here is lexical.
+        # A KEEP row with an empty standard is a lexical gloss that has a row only for its per-language
+        # overrides (NTU become/變成/變/state: "lexical gloss elsewhere", Bunun→COS), so it stays lexical.
+        lexical_rows = {c for c, (t, s, _o) in self.map.items() if t == "KEEP" and not s}
+        self.codes = (set(self.map) - lexical_rows) | {s for _t, s, _o in self.map.values() if s} \
             | {x for _t, _s, o in self.map.values() for x in o.values()}
 
     def standard_for(self, atom: str, language: str) -> str:
@@ -135,6 +160,10 @@ def context_matches(pattern: str, context_forms) -> bool:
     morpheme an or a word ending in an; "si-" a morpheme si or a word starting
     with si; a bare pattern only an exact morpheme.
     """
+    if pattern == "+bound":
+        # Reserved pattern: the word is morphologically complex (>= 2 M
+        # children) — maintainer q_cmpr 2026-11-16 ("only when tja is bound")
+        return "#multi" in context_forms
     core = form_core(pattern)
     if not core:
         return False
@@ -157,12 +186,15 @@ class Rules:
         self.separators: list[str] = []
         self.keep_brackets = False
         self.residue_chars = ""
+        note_parens: list[str] = []
         # (atom, form core, target), in file order: "UV&-an / CONTEXT-CONVERT→LV"
         # means an atom UV on a word one of whose morphemes is -an becomes LV.
         # An atom with context rules but no matching form is kept as-is (the
         # rules file states that fallback, e.g. "UV&⟨in⟩-only / KEEP-UV").
         self.context_rules: list[tuple[str, str, str]] = []
         self.rule7_parens = False
+        self.rule7_spaced = False
+        self.infix_gloss_brackets = False
         self.add_rules: dict[tuple[str, str], str] = {}     # (word stem, morpheme gloss) -> voice
         self.whole_gloss: dict[str, str] = {}               # exact whole gloss -> standard
         with open(path, newline="", encoding="utf-8") as handle:
@@ -181,6 +213,12 @@ class Rules:
                 if repl == "RULE7-PARENS":
                     self.rule7_parens = True
                     continue
+                if repl == "RULE7-PARENS-SPACED":
+                    self.rule7_parens = self.rule7_spaced = True
+                    continue
+                if repl == "INFIX-GLOSS-BRACKETS":
+                    self.infix_gloss_brackets = True
+                    continue
                 ctx = re.fullmatch(r"CONTEXT-CONVERT→(\S+)", repl)
                 if ctx and "&" in pat:
                     atom, form = pat.split("&", 1)
@@ -191,8 +229,15 @@ class Rules:
                     self.separators.append(pat)
                 elif repl == "KEEP-BRACKETS":
                     self.keep_brackets = True
+                elif repl == "NOTE-PARENS":
+                    note_parens.append(pat)
                 elif repl in ("INVESTIGATE", "RESIDUE") and pat not in ("…",):
                     self.residue_chars += pat.strip("[]")
+        # Clarifier chunks (moved to the standard TRANSL's notes attribute);
+        # whitespace before the chunk is consumed; recognized before the
+        # residue check.
+        self.note_parens_re = re.compile(
+            r"\s*(" + "|".join(note_parens) + r")") if note_parens else None
         self.context_atoms = {a for a, _f, _t in self.context_rules}
         sep = "|".join(self.separators) or r"\."
         self.split_re = re.compile(f"({sep})")
@@ -202,49 +247,69 @@ class Rules:
 
 def convert_gloss(gloss: str, table: Table, rules: Rules, language: str,
                   context_forms: frozenset = frozenset(), new: bool = True):
-    """Returns (standard_text, is_residue). context_forms are the cores of
-    the word's morpheme FORMs, for the rules file's context rules. new=False
-    reproduces the behavior before the Rule 7 rules (used by --redo-changed)."""
+    """Returns (standard_text, is_residue, note). context_forms are the cores
+    of the word's morpheme FORMs, for the rules file's context rules. ``note``
+    holds any NOTE-PARENS chunks removed from the text (empty otherwise).
+    new=False reproduces the behavior before the 2026-11-15 voice Rule 7 rules
+    (RULE7-PARENS, the Rule 4 -> Rule 7 voice restyle; used by --redo-changed).
+
+    Order: an exact WHOLE-GLOSS match; NOTE-PARENS chunks moved to the note;
+    RULE7-PARENS code-only groups after a gloss (masked; with -SPACED, also
+    after whitespace, which is dropped); the residue check on what is left;
+    conversion; the voice restyle."""
     if gloss.strip() in rules.whole_gloss:
-        return rules.whole_gloss[gloss.strip()], False
+        return rules.whole_gloss[gloss.strip()], False, ""
     original = gloss
+    note = ""
+    if rules.note_parens_re and rules.note_parens_re.search(gloss):
+        note = " ".join(m.group(1)
+                        for m in rules.note_parens_re.finditer(gloss))
+        gloss = rules.note_parens_re.sub("", gloss)
     groups: list[str] = []
     if new and rules.rule7_parens:
         def keep(m):
+            if not m.string[:m.start()].strip():
+                return m.group(0)             # nothing before it: not attached to a gloss
             inner = [a for a in re.split(r"[.\s]+", m.group(1)) if a]
             if inner and all(a in table.codes for a in inner):
                 groups.append(".".join(table.standard_for(a, language) for a in inner))
                 return f"\uE000{len(groups) - 1}\uE001"
             return m.group(0)
-        gloss = RULE7_GROUP.sub(keep, gloss)
-    if rules.residue_re and rules.residue_re.search(gloss):
-        return original, True
+        gloss = (RULE7_GROUP_SPACED if rules.rule7_spaced else RULE7_GROUP).sub(keep, gloss)
 
     def std_atom(atom: str) -> str:
         if atom in rules.context_atoms:
             for rule_atom, pattern, target in rules.context_rules:
                 if rule_atom == atom and context_matches(pattern, context_forms):
                     return target
-            return atom                       # no diagnostic form: kept
+            # No diagnostic form: fall through to the table (maintainer card
+            # Q5, 2026-11-15). A table row with an empty standard still keeps
+            # the atom, which preserves the documented Yedda UV fallback.
         return table.standard_for(atom, language)
 
-    out = []
-    for part in re.split(r"(<[^<>]+>)", gloss) if rules.keep_brackets else [gloss]:
-        if part.startswith("<") and part.endswith(">") and rules.keep_brackets:
-            inner = part[1:-1]
-            pieces = [std_atom(a) if i % 2 == 0 and a else a
-                      for i, a in enumerate(rules.split_re.split(inner))]
-            out.append("<" + "".join(pieces) + ">")
-        else:
-            pieces = [std_atom(a) if i % 2 == 0 and a else a
-                      for i, a in enumerate(rules.split_re.split(part))]
-            out.append("".join(pieces))
-    text = "".join(out)
+    def convert_flat(text: str) -> str:
+        out = []
+        for part in (re.split(r"(<[^<>]+>)", text)
+                     if rules.keep_brackets else [text]):
+            if part.startswith("<") and part.endswith(">") and rules.keep_brackets:
+                inner = part[1:-1]
+                pieces = [std_atom(a) if i % 2 == 0 and a else a
+                          for i, a in enumerate(rules.split_re.split(inner))]
+                out.append("<" + "".join(pieces) + ">")
+            else:
+                pieces = [std_atom(a) if i % 2 == 0 and a else a
+                          for i, a in enumerate(rules.split_re.split(part))]
+                out.append("".join(pieces))
+        return "".join(out)
+
+    if rules.residue_re and rules.residue_re.search(gloss):
+        return original, True, ""
+    text = convert_flat(gloss).strip()
     for i, g in enumerate(groups):
         text = text.replace(f"\uE000{i}\uE001", f"({g})")
     if new:
         text = rule7_voice(text, table)
-    return text, False
+    return text, False, note
 
 
 def _word_has_voice(elements, table, rules, language, context) -> bool:
@@ -256,7 +321,7 @@ def _word_has_voice(elements, table, rules, language, context) -> bool:
             text = "".join(t.itertext()).strip()
             if not text:
                 continue
-            conv, _res = convert_gloss(text, table, rules, language, context, new=False)
+            conv, _res, _note = convert_gloss(text, table, rules, language, context, new=False)
             if any(p in VOICES for p in re.split(r"[.\-=<>\s/()（）]+", conv)):
                 return True
     return False
@@ -273,6 +338,8 @@ def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
         if rules.context_rules:
             cores = {form_core(f.text) for m in morphs
                      for f in m.findall("FORM") if f.text}
+            if len(morphs) >= 2:
+                cores.add("#multi")   # for the reserved "+bound" pattern
             if not morphs:
                 # unsegmented word: its own shape may satisfy affix patterns
                 cores |= {"~" + form_core(f.text)
@@ -292,17 +359,31 @@ def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
                         v = rules.add_rules.get((stem, "".join(t.itertext()).strip()))
                         if v and t.get("kindOf") != "standard":
                             to_add[id(m)] = v
+        infixes: dict[str, list[str]] = {}
+        if rules.infix_gloss_brackets:
+            # glosses of the word's infix morphemes (original FORM -X-, POL-014), per gloss language
+            for m in morphs:
+                form = next((f.text for f in m.findall("FORM")
+                             if f.get("kindOf") in (None, "original") and f.text), "") or ""
+                if INFIX_FORM.fullmatch(form.strip()):
+                    for t in m.findall("TRANSL"):
+                        text = "".join(t.itertext()).strip()
+                        if t.get("kindOf") != "standard" and t.get(XMLLANG) in GLOSS_LANGS and text:
+                            infixes.setdefault(t.get(XMLLANG), []).append(
+                                convert_gloss(text, table, rules, language, context)[0])
         for parent in [word] + morphs:
             changed |= _process_element(parent, table, rules, write, stats,
                                         residue, language, context, redo=redo,
-                                        voice_to_add=to_add.get(id(parent)))
+                                        voice_to_add=to_add.get(id(parent)),
+                                        infixes=infixes if parent is word else None)
     if write and changed:
         tree.write(path, encoding="UTF-8", xml_declaration=True)
     return changed
 
 
 def _process_element(parent, table, rules, write, stats, residue, language,
-                 context, redo: bool = False, voice_to_add: str | None = None) -> bool:
+                 context, redo: bool = False, voice_to_add: str | None = None,
+                 infixes: dict | None = None) -> bool:
     changed = False
     existing_standard = {(t.get(XMLLANG), t.get("ver"))
                          for t in parent.findall("TRANSL")
@@ -335,8 +416,10 @@ def _process_element(parent, table, rules, write, stats, residue, language,
             if len(std) or len(transl):               # <UNCLEAR/> children: not re-derived
                 stats["redo_skipped_children"] += 1
                 continue
-            old, _r = convert_gloss(full, table, rules, language, context, new=False)
-            new_text, res = convert_gloss(full, table, rules, language, context, new=True)
+            old, _r, _n = convert_gloss(full, table, rules, language, context, new=False)
+            new_text, res, new_note = convert_gloss(full, table, rules, language, context, new=True)
+            if infixes and infixes.get(lang) and not res:
+                new_text = bracket_infixes(new_text, infixes[lang])
             if voice_to_add and not res:
                 new_text = add_voice(new_text, voice_to_add)
                 stats["voice_added"] += 1
@@ -345,6 +428,8 @@ def _process_element(parent, table, rules, write, stats, residue, language,
                 stats["handmade_standard_kept"] += 1
             elif new_text != cur:
                 std.text = new_text
+                if new_note:
+                    std.set("notes", new_note)
                 stats["redone"] += 1
                 changed = True
             else:
@@ -352,11 +437,14 @@ def _process_element(parent, table, rules, write, stats, residue, language,
             continue
         converted_segments = []
         any_res = False
+        note_parts = []
         for where, seg in segments:
             if seg.strip():
-                std_seg, is_res = convert_gloss(seg.strip(), table, rules,
-                                                language, context)
+                std_seg, is_res, seg_note = convert_gloss(
+                    seg.strip(), table, rules, language, context)
                 any_res = any_res or is_res
+                if seg_note:
+                    note_parts.append(seg_note)
             else:
                 std_seg = seg
             converted_segments.append((where, std_seg))
@@ -369,6 +457,9 @@ def _process_element(parent, table, rules, write, stats, residue, language,
             stats["converted"] += 1
         else:
             stats["copied"] += 1
+        if infixes and infixes.get(lang) and not any_res and len(converted_segments) == 1:
+            converted_segments = [("text", bracket_infixes(converted_segments[0][1], infixes[lang]))]
+            stats["infix_bracketed"] += 1
         if voice_to_add and not any_res and len(converted_segments) == 1:
             converted_segments = [("text", add_voice(converted_segments[0][1], voice_to_add))]
             stats["voice_added"] += 1
@@ -378,6 +469,9 @@ def _process_element(parent, table, rules, write, stats, residue, language,
         if ver:
             # V085: same-lang standards are discriminated by ver
             new.set("ver", ver)
+        if note_parts and not any_res:
+            # NOTE-PARENS chunks removed from the text live on the notes attr
+            new.set("notes", " ".join(note_parts))
         new.text = converted_segments[0][1]
         for (child, _), (_w, std_tail) in zip(segments[1:],
                                               converted_segments[1:]):
