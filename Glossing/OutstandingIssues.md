@@ -178,7 +178,7 @@ the bottom with their ruling.
   atom-level make→CAUS would mislabel ~106 verb/root tokens to catch ~5; position-
   conditioned conversion is not supported. `make` IS a separator via its lexical
   atom (sep28). Revisit if position conditions are ever added to the converter.
-- **Rule 7 for non-voice codes the source bracketed: keep the brackets, or periods everywhere?** (2026-11-17,
+- **Rule 7 for non-voice codes the source bracketed: keep the brackets, or periods everywhere?** (GitHub #357; 2026-11-17,
   maintainer: "send to outstanding issues"). The rulings on Rule 7 cover voice only: unv_notation_r4 "Rule 7
   (see(AV)), with an exception to the 2026-11-11 parentheses ruling …", unv_scope_r5 "All 12,001 with a lexical
   gloss; the 3,684 on affixes/auxiliaries stay as they are", card P1 (Wild-Lehmann voice tags) "these should remain
@@ -191,7 +191,7 @@ the bottom with their ruling.
   (Rule 4, periods). For case in the Chang grammars the maintainer ruled period notation ("We will need our
   standardization to convert to use period notation (他.GEN) during standardization"). Open: keep the source's
   brackets for non-voice codes, or write them with periods everywhere (we.INCL, 1P.INCL)?
-- **Affixes glossed as themselves in words with no voice code** (2026-11-17, maintainer on the unvoiced-verbs
+- **Affixes glossed as themselves in words with no voice code** (GitHub #359; 2026-11-17, maintainer on the unvoiced-verbs
   audit, round 10: "Leave as glossed; list them (with the tables) in OutstandingIssues for the source
   maintainers"). 994 words carry no voice code anywhere but contain a morpheme glossed as itself (e.g. Sakizaya
   sa "SA", Seediq <n>) whose form some glosser of the same language glosses with a voice code at least 3 times.
@@ -206,11 +206,11 @@ the bottom with their ruling.
   least 3 times and twice as often as not (column meets_threshold); 182 were already found by the unvoiced-verbs
   audit (column in_unvoiced_audit; 22 of them on bare_forms_not_given_voice.tsv, the other 160 never voice-glossed
   as a stem). No change made; for the corpus maintainers.
-- **Chinese-tier Rule 7 glosses whose English twin is codes only** (2026-11-17): after RauDong's labels
-  虛/使/祈/疊/動綴 became codes, a few zho glosses still read as Rule 7 because their Chinese piece may itself be a
-  label, not a lexical gloss: RauDong 要(AV) (eng AV.CAUS), 參與(AV) and 能(AV) (eng AV); NTU 期使(PV) (eng PV.IMP;
-  期使 is probably a typo of 祈使), 大(AV) (eng PROG), 花(AV) (eng AV.SII), 擁抱(AV), 抓(AV) (eng AV). One each;
-  to put to the maintainer.
+- **Chinese-tier Rule 7 glosses whose English twin is codes only** (GitHub #358; 2026-11-17): after RauDong's
+  labels 虛/使/祈/疊/動綴 became codes, 10 zho glosses (9 distinct) still read as Rule 7 although their Chinese piece
+  may be a label rather than a lexical gloss: NTU 大(AV) x2 (eng PROG), 花(AV) (eng AV.SII), 擁抱(AV) and 抓(AV)
+  (eng AV), 期使(PV) (eng PV.IMP; probably a typo of 祈使); RauDong 要(AV) (eng AV.CAUS), 參與(AV) and 能(AV) (eng AV),
+  互(AV) (eng AV.RECP). To put to the maintainer.
 
 ## Resolved
 
