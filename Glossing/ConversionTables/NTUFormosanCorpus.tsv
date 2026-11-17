@@ -46,10 +46,10 @@ PROG	1110	KEEP	PROG	Leipzig: listed; standard tier keeps it	zho twin: 進行×10
 NMZ	1080	CONVERT	NMLZ	NTU point F.iii departure; back to Leipzig NMLZ per maintainer 2026-11-11	zho twin: 名物化×1015; 名物話×6	
 1PL	1052	KEEP	1PL	Leipzig: legal composition; kept	zho twin: 1SG×4; 1Pl×2 | row-approved 2026-11-11	
 PREP	987	KEEP	PREP	"maintainer row-review 2026-11-11: ""approved for preposition"" (not in Leipzig; registered)"	zho twin: 介系詞×963; 介詞×18	
-BN	980	UNDECIDED		undocumented; definition needed	zho twin: 附著主格×867; 附著屬格×10	
+BN	980	CONVERT	NOM	maintainer 2026-11-17 (case page Rukai note #3/#4): "BN->NOM" / "BG, 附著屬格 -> GEN; FO, 自由斜格 -> OBL. Please point this out in notes and caveats for this corpus." All tokens are Rukai (dru)	zho twin: 附著主格×867; 附著屬格×10 — bound nominative	
 NAF	944	UNDECIDED		maintainer 2026-11-11 (affix page c5): adopt case-by-case handling; 4 Atayal tokens, each needs its own call	"zho twin: 非主焦×911; 主焦×20 | row-approved 2026-11-11 | per-token outcomes confirmed 2026-11-12 (""OK""): pa-spung-i→OV (context rule; paper checked-cluster IF), san/kasau/agan unmapped (undefined/absent in the checked clusters); Notes & Caveats line due at publication per c5"	"Tsou→NAF (maintainer 2026-11-12: ""Sounds like NAF->NAF…""; NAV folds to NAF as the same auxiliary class — flag if unwanted)"
 INV	928	KEEP	INV	"maintainer row-review 2026-11-11: ""approved for invisible""; zho twin 不可見 ×916"	zho twin: 不可見×916	
-BG	852	UNDECIDED		undocumented; definition needed	zho twin: 附著屬格×779; 附著主格×9	
+BG	852	CONVERT	GEN	maintainer 2026-11-17 (case page Rukai note #3/#4): "BN->NOM" / "BG, 附著屬格 -> GEN; FO, 自由斜格 -> OBL. Please point this out in notes and caveats for this corpus." All tokens are Rukai (dru)	zho twin: 附著屬格×779; 附著主格×9 — bound genitive	
 COND	850	KEEP	COND	Leipzig: listed; standard tier keeps it	zho twin: 條件詞×840; 連接詞×4	
 1S	840	UNDECIDED		undocumented; definition needed	zho twin: 第一人稱單數×765; 第一人稱單數主格×2	
 Q	839	KEEP	Q	Leipzig: listed; standard tier keeps it	zho twin: 疑問×710; 疑問詞×41	
@@ -81,7 +81,7 @@ REC	332	CONVERT	RECP	NTU point F.iv departure; back to Leipzig RECP per maintain
 P	320	KEEP	P	Leipzig: listed; standard tier keeps it	zho twin: 複數×286; 複雜×2	
 FAC	316	UNDECIDED		undocumented; definition needed	zho twin: 表事實×147; 事實貌×1	
 NI	312	UNDECIDED		undocumented; definition needed		
-FO	308	UNDECIDED		undocumented; definition needed	zho twin: 自由斜格×302; 自由主題格×4	
+FO	308	CONVERT	OBL	maintainer 2026-11-17 (case page Rukai note #3/#4): "BN->NOM" / "BG, 附著屬格 -> GEN; FO, 自由斜格 -> OBL. Please point this out in notes and caveats for this corpus." All tokens are Rukai (dru)	zho twin: 自由斜格×302; 自由主題格×4 — free oblique	
 PI	302	UNDECIDED		undocumented; definition needed		
 NEU	285	UNDECIDED		undocumented; definition needed	zho twin: 中性格×273; 屬格×2	
 PASS	278	KEEP	PASS	Leipzig: listed; standard tier keeps it	zho twin: 被動×264; 被動式×2	
@@ -606,7 +606,7 @@ AFCA	1	UNDECIDED		undocumented; definition needed	zho twin: 主焦CA×1
 否定詞	864	CONVERT	NEG	"approved on the derivational decision page 2026-11-15 (card M1) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	eng twin: NEG×168	
 第一人稱單數	862	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 1S×765; 1SG×21	
 條件詞	840	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COND×840	
-附著屬格	840	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: BG×779; BN×10	
+附著屬格	840	CONVERT	GEN	maintainer 2026-11-17 (case page Rukai note #3/#4): "BN->NOM" / "BG, 附著屬格 -> GEN; FO, 自由斜格 -> OBL. Please point this out in notes and caveats for this corpus." All tokens are Rukai (dru)	eng twin: BG×779; BN×10	
 我	790	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: I×8	
 地名	784	CONVERT	PN	maintainer vocabulary ruling v6 pn-only + g4 2026-11-11	eng twin: PN×748	
 Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CA×22	
@@ -636,7 +636,7 @@ Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng 
 包含	330	CONVERT	INCL	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: INCL×231	
 一定	312	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEC×140	
 近距	306	CONVERT	PROX	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: PROX×230	
-自由斜格	306	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FO×302	
+自由斜格	306	CONVERT	OBL	maintainer 2026-11-17 (case page Rukai note #3/#4): "BN->NOM" / "BG, 附著屬格 -> GEN; FO, 自由斜格 -> OBL. Please point this out in notes and caveats for this corpus." All tokens are Rukai (dru)	eng twin: FO×302	
 排除	287	CONVERT	EXCL	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: EXCL×209	
 中性格	273	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEU×273	
 被動	272	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PASS×264	
@@ -685,7 +685,7 @@ CA重疊	45	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng t
 經驗	44	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXPER×28	
 過去貌	42	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PAST×35	
 主焦重疊	39	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RED×22; AFRED×13	
-予格	36	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: DAT×34	
+予格	36	UNDECIDED		maintainer 2026-11-17 (Saisiyat note): "予格 → DAT" — Saisiyat-scoped because the lone Tsou token is the benefactive voice suffix -neni (eng twin BF), part of the open Tsou voice question	eng twin: DAT×34 (Saisiyat); Tsou ×1 = neni/BF	Saisiyat→DAT
 自由主題格	30	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FT×26	
 單數	30	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: SG×30	
 驚嘆	26	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INT×24	

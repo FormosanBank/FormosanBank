@@ -5,4 +5,5 @@ pattern	replacement	description
 <([^<>]+)>	KEEP-BRACKETS	angle brackets = infix (LGR Rule 9) — keep brackets, look up inner atom(s)
 [()\[\]（）]	INVESTIGATE	maintainer rules-review 2026-11-11: parens/brackets shouldn't be in glosses; flag occurrences
 …	RESIDUE	anything unsegmentable is copied verbatim and listed in the residue report
-（([^（）]+)）	EMBEDDED-CODE	fullwidth parens attach a code to a lexical gloss (打（AF）) — rewrite period-joined (LGR Rule 4), look up inner code
+（((?!(?:AF|PF)）)[^（）]+)）	EMBEDDED-CODE	fullwidth parens attach a code to a lexical gloss (打（AF）) — rewrite period-joined (LGR Rule 4), look up inner code
+（(?:AF|PF)）	KEEP-PARENS	"voice code fused with a lexical gloss: Rule 7 parens, 打（AF）→打(AV) — maintainer 2026-11-17 via the rule7-voice session: ""RUle 7, consistent with the rest of bank."" Case codes stay period-joined (他.GEN)"

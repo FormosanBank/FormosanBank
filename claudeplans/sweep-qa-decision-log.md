@@ -25410,3 +25410,35 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   (asked: keep (人)/(HUM) or note them?). eng twins 1P(IN).BN etc. still residue via (IN)/(EX) —
   asked whether to mirror ((IN)→(INCL)). BN/BG/FO/FT family explained to him; BN→NOM proposed, not
   applied (no ruling yet).
+
+### 2026-11-17 (cont.) — case-page round 3 consumed (his 08:57–09:21 notes + done click); 7 rulings applied
+- RULED (Rukai #2): "Yes, please keep those chunks." → KEEP-PARENS (人|HUM); last 3 附著主格 convert.
+- RULED (Rukai #3/#4): "BN->NOM" / "BG, 附著屬格 -> GEN; FO, 自由斜格 -> OBL. Please point this out in notes
+  and caveats for this corpus." → five NTU rows CONVERT (all tokens dru): BN→NOM ×816, BG→GEN ×731,
+  附著屬格→GEN ×840, FO→OBL ×284, 自由斜格→OBL ×306 in the rebuild; remainders (BN ×163, BG ×121, FO ×24)
+  are inside 1P(IN)/(EX) paren glosses owned by glossing/rule7-voice (his "IN, EX are being handled as
+  INCL, EXCL" = that branch; ruled there 2026-11-16, merges first — NOT duplicated here). README caveat
+  added under Notes and caveats → Minor notes (readme tests: 112 passed).
+- Rukai #1: acknowledged — "自由主格" in my earlier answer was MY error (no such label; zho = bare 主格 on
+  free forms ↔ eng NOM ×583, 附著主格 on bound; FT/自由主題格 ×26 stays unruled).
+- RULED (Paiwan #1): "nu/of and na/'by/of' should be -> GEN as well. Just be careful not to convert those
+  when glossed as something else." → of&nu, by&na, of&na context rules; rebuild of→GEN ×214, by→GEN ×2
+  only; when/your(p)/past/STAT verified untouched; zero of/by on non-target morphemes.
+- RULED (Paiwan #2): "OK a/c -> NOM." → HPS c→NOM ×6,328 (atom c verified to gloss only the form a).
+- Paiwan #3 answered: ku/su are free-standing single-morpheme words (ku 'I' ×108/'my' ×95, su ×84/×78).
+- RULED (Saisiyat): "予格 → DAT" → Saisiyat→DAT override ×34; the lone Tsou 予格 token is the -neni
+  benefactive suffix (eng BF) and is excluded (belongs to the Tsou voice question).
+- RULED (Seediq): "所有格 -> POSS" (already applied bank-wide earlier today) + "OBL -> UNDECIDED" recorded
+  as a Seediq-mapping amendment; NTU OBL row stays KEEP (row-approved 2026-11-11; KEEP and UNDECIDED are
+  output-identical — both copy OBL verbatim).
+- Tsou NOT applied (his note is a question): evidence says 受格/處格/與格 mark voice on verbs (aiti see-LV,
+  eainca say-PV, zoepzeni hold.up.high-OV) EXCEPT one genuine pronoun case (i-he 3PL.受格). Form-scoped
+  conversion staged, awaiting his word.
+- RULED (Chang voice notation, Rule 7 — relayed verbatim by the rule7-voice session: "RUle 7, consistent
+  with the rest of bank."): Chang voice brackets 打（AF） now → 打(AV) (KEEP-PARENS (AF|PF) + lookahead in
+  EMBEDDED-CODE); case stays period (他.GEN). Diffs: Seediq-Chang 62, Kavalan-Chang 52 TRANSLs, pure
+  .AV/.PV → (AV)/(PV) restyles.
+- Found while validating: NTU has 2 pre-existing V067 HARD findings (M FORM 'hoN2T>', 'shiaolingLM>')
+  present on origin/main, unwaived (no NTU qc_waivers.tsv); earlier "0 HARD" readings were masked by
+  piping validator output through tail/head (exit code read from the pipe, not the validator). Not
+  introduced by this branch; flagged to the maintainer.

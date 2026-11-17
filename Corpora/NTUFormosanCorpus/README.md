@@ -171,6 +171,9 @@ The corpus is distributed under CC BY-NC 4.0, the value recorded in the `copyrig
 
 #### Minor notes
 
+* NTU's Rukai glosses use a private four-way case vocabulary with no documentation: 附著主格/BN ('bound nominative'), 附著屬格/BG ('bound genitive'), 自由斜格/FO ('free oblique'), 自由主題格/FT ('free topic'). In the standard gloss tier these are mapped to the bank's case codes — BN and 附著主格 → NOM, BG and 附著屬格 → GEN, FO and 自由斜格 → OBL (maintainer ruling, 2026-11-17) — so the bound/free distinction is carried by the original tier only. FT/自由主題格 has no ruled mapping yet and is copied as is.
+
+
 * The Amis text does not use the `^` glottal stop. `^` does appear in the original, but as a discourse marker. 
 
 * The Rukai marker `_` is not used in the text.
