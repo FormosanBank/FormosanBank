@@ -14,7 +14,7 @@
             <FORM kindOf="standard">i-a-kay</FORM>
             <PHON kindOf="standard">iakaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-實現-這</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-實現-這</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">處所-RLS-這</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-RLS-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-RLS-this</TRANSL>
             <M id="RukaiNr-pear_tagas_S_1_W0M0">
@@ -33,7 +33,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -593,7 +593,7 @@
             <FORM kindOf="standard">ka-tuase</FORM>
             <PHON kindOf="standard">katuasə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.非實現-離開</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR-離開</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR-離開</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-leave</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-leave</TRANSL>
             <M id="RukaiNr-pear_tagas_S_4_W13M0">
@@ -602,7 +602,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.非實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>
@@ -1181,7 +1181,7 @@
             <FORM kindOf="standard">ka-tua-tuase</FORM>
             <PHON kindOf="standard">katuatuasə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.非實現-重疊-離開</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR-重疊-離開</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR-重疊-離開</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-RED-leave</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-RED-leave</TRANSL>
             <M id="RukaiNr-pear_tagas_S_13_W6M0">
@@ -1190,7 +1190,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.非實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>
@@ -1221,7 +1221,7 @@
             <FORM kindOf="standard">mapa-pungupungu</FORM>
             <PHON kindOf="standard">mapapuŋupuŋu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">互相-撞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">互相-撞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">RECP-撞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">RECP-crash</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RECP-crash</TRANSL>
             <M id="RukaiNr-pear_tagas_S_13_W7M0">
@@ -1230,7 +1230,7 @@
                 <FORM kindOf="standard">mapa</FORM>
                 <PHON kindOf="standard">mapa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">互相</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">互相</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RECP</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RECP</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RECP</TRANSL>
             </M>
@@ -2056,7 +2056,7 @@
             <FORM kindOf="standard">ki-a-kamadha-madha</FORM>
             <PHON kindOf="standard">kiakamaðamaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">採-實現-芒果-重疊</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">採-實現-芒果-重疊</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">採-RLS-芒果-重疊</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">get-RLS-mango-RED</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">get-RLS-mango-RED</TRANSL>
             <M id="RukaiNr-pear_tagas_S_24_W5M0">
@@ -2075,7 +2075,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -2385,7 +2385,7 @@
             <FORM kindOf="standard">w-a-malra</FORM>
             <PHON kindOf="standard">wamaɭa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主動-實現-拿了</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">主動-實現-拿了</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">主動-RLS-拿了</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">ACT-RLS-take</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">ACT-RLS-take</TRANSL>
             <M id="RukaiNr-pear_tagas_S_28_W10M0">
@@ -2404,7 +2404,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -2744,7 +2744,7 @@
             <FORM kindOf="standard">ka-valringivingi</FORM>
             <PHON kindOf="standard">kavaɭiŋiviŋi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.非實現-失望</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR-失望</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR-失望</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-be.disappointed</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-be.disappointed</TRANSL>
             <M id="RukaiNr-pear_tagas_S_31_W11M0">
@@ -2753,7 +2753,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.非實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>
@@ -2974,7 +2974,7 @@
             <FORM kindOf="standard">ka-valringivingi</FORM>
             <PHON kindOf="standard">kavaɭiŋiviŋi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.非實現-失望</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR-失望</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR-失望</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-be.disappointed</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-be.disappointed</TRANSL>
             <M id="RukaiNr-pear_tagas_S_31_W20M0">
@@ -2983,7 +2983,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.非實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>
@@ -3233,7 +3233,7 @@
             <FORM kindOf="standard">i-a-kay</FORM>
             <PHON kindOf="standard">iakaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-實現-這</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-實現-這</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">處所-RLS-這</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-RLS-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-RLS-this</TRANSL>
             <M id="RukaiNr-pear_tagas_S_38_W1M0">
@@ -3252,7 +3252,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -3293,7 +3293,7 @@
             <FORM kindOf="standard">i-a-kay</FORM>
             <PHON kindOf="standard">iakaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-實現-這</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-實現-這</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">處所-RLS-這</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-RLS-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-RLS-this</TRANSL>
             <M id="RukaiNr-pear_tagas_S_38_W3M0">
@@ -3312,7 +3312,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -3751,7 +3751,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">RLS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">RLS</TRANSL>
             </M>
@@ -3782,7 +3782,7 @@
             <FORM kindOf="standard">ka-ra-ravale</FORM>
             <PHON kindOf="standard">kararavalə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狀態.非實現-重疊-懷疑</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR-重疊-懷疑</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR-重疊-懷疑</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">STAT.IRR-RED-doubt</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR-RED-doubt</TRANSL>
             <M id="RukaiNr-pear_tagas_S_39_W12M0">
@@ -3791,7 +3791,7 @@
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">狀態.非實現</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">狀態.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">STAT.IRR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">STAT.IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">STAT.IRR</TRANSL>
             </M>
