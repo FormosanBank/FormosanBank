@@ -14,7 +14,7 @@
             <FORM kindOf="standard">a-dii</FORM>
             <PHON kindOf="standard">adii</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-那裡</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-那裡</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.DIST-那裡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-there</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-there</TRANSL>
             <M id="bnNr-pear_Talum_S_1_W0M0">
@@ -23,7 +23,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">可見.遠距</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">可見.遠距</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">可見.DIST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">VIS.DIST</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST</TRANSL>
             </M>
@@ -573,7 +573,7 @@
             <FORM kindOf="standard">kalala=cia</FORM>
             <PHON kindOf="standard">ka[l|ɬ]a[l|ɬ]aʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">籃子=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">籃子=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">籃子=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">basket=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">basket=DIST.OBL</TRANSL>
             <M id="bnNr-pear_Talum_S_4_W15M0">
@@ -592,7 +592,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -1480,7 +1480,7 @@
             <FORM kindOf="standard">a-sia</FORM>
             <PHON kindOf="standard">aɕia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-處格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-LOC</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.DIST-LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-LOC</TRANSL>
             <M id="bnNr-pear_Talum_S_11_W18M0">
@@ -1489,7 +1489,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">可見.遠距</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">可見.遠距</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">可見.DIST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">VIS.DIST</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST</TRANSL>
             </M>
@@ -1539,7 +1539,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_16_W0M0">
@@ -1558,7 +1558,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -1569,7 +1569,7 @@
             <FORM kindOf="standard">ma-daingaz=a</FORM>
             <PHON kindOf="standard">madaiŋaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-老=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-老=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-老=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-old=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-old=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_16_W1M0">
@@ -1598,7 +1598,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -2504,7 +2504,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_21_W4M0">
@@ -2523,7 +2523,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -2534,7 +2534,7 @@
             <FORM kindOf="standard">ma-daingaz=a</FORM>
             <PHON kindOf="standard">madaiŋaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-老=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-老=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-老=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-old=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-old=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_21_W5M0">
@@ -2563,7 +2563,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -2943,7 +2943,7 @@
             <FORM kindOf="standard">ma-daingaz=a</FORM>
             <PHON kindOf="standard">madaiŋaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-老=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-老=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-老=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-old.man=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-old.man=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_25_W12M0">
@@ -2972,7 +2972,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -3142,7 +3142,7 @@
             <FORM kindOf="standard">kalala=a</FORM>
             <PHON kindOf="standard">ka[l|ɬ]a[l|ɬ]aa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">籃子=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">籃子=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">籃子=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">basket=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">basket=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_28_W4M0">
@@ -3161,7 +3161,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -3291,7 +3291,7 @@
             <FORM kindOf="standard">kalala=a</FORM>
             <PHON kindOf="standard">ka[l|ɬ]a[l|ɬ]aa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">籃子=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">籃子=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">籃子=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">basket=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">basket=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_29_W4M0">
@@ -3310,7 +3310,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -3420,7 +3420,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_30_W1M0">
@@ -3439,7 +3439,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -3450,7 +3450,7 @@
             <FORM kindOf="standard">ma-daingaz=a</FORM>
             <PHON kindOf="standard">madaiŋaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-老=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-老=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-老=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-old=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-old=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_30_W2M0">
@@ -3479,7 +3479,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -4139,7 +4139,7 @@
             <FORM kindOf="standard">tauntaun=a</FORM>
             <PHON kindOf="standard">tauntauna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">圓圈=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">圓圈=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">圓圈=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">circle=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">circle=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_32_W20M0">
@@ -4158,7 +4158,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -4209,7 +4209,7 @@
             <FORM kindOf="standard">a-sia</FORM>
             <PHON kindOf="standard">aɕia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-處格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-LOC</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.DIST-LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-LOC</TRANSL>
             <M id="bnNr-pear_Talum_S_32_W23M0">
@@ -4218,7 +4218,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">可見.遠距</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">可見.遠距</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">可見.DIST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">VIS.DIST</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST</TRANSL>
             </M>
@@ -4348,7 +4348,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_35_W1M0">
@@ -4367,7 +4367,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -4448,7 +4448,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_35_W5M0">
@@ -4467,7 +4467,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -4796,7 +4796,7 @@
             <FORM kindOf="standard">minduduaz=a</FORM>
             <PHON kindOf="standard">minduduaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">男生=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">男生=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">男生=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">boy=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">boy=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_37_W4M0">
@@ -4815,7 +4815,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -4866,7 +4866,7 @@
             <FORM kindOf="standard">daan=cia</FORM>
             <PHON kindOf="standard">daanʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">路=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">路=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">路=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">road=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">road=DIST.OBL</TRANSL>
             <M id="bnNr-pear_Talum_S_37_W7M0">
@@ -4885,7 +4885,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -5402,7 +5402,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_41_W0M0">
@@ -5421,7 +5421,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -5452,7 +5452,7 @@
             <FORM kindOf="standard">a-dii</FORM>
             <PHON kindOf="standard">adii</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-那裡</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-那裡</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.DIST-那裡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-there</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-there</TRANSL>
             <M id="bnNr-pear_Talum_S_41_W2M0">
@@ -5461,7 +5461,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">可見.遠距</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">可見.遠距</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">可見.DIST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">VIS.DIST</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST</TRANSL>
             </M>
@@ -5482,7 +5482,7 @@
             <FORM kindOf="standard">uvaaz=a</FORM>
             <PHON kindOf="standard">uvaaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">孩子=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">孩子=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">孩子=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">child=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">child=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_41_W3M0">
@@ -5501,7 +5501,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -5562,7 +5562,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_41_W6M0">
@@ -5581,7 +5581,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -5841,7 +5841,7 @@
             <FORM kindOf="standard">isaicia</FORM>
             <PHON kindOf="standard">isaiʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             <M id="bnNr-pear_Talum_S_42_W5M0">
@@ -5850,7 +5850,7 @@
                 <FORM kindOf="standard">isaicia</FORM>
                 <PHON kindOf="standard">isaiʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             </M>
@@ -6110,7 +6110,7 @@
             <FORM kindOf="standard">a-dii</FORM>
             <PHON kindOf="standard">adii</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-那裡</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-那裡</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.DIST-那裡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-there</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-there</TRANSL>
             <M id="bnNr-pear_Talum_S_44_W1M0">
@@ -6119,7 +6119,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">可見.遠距</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">可見.遠距</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">可見.DIST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">VIS.DIST</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST</TRANSL>
             </M>
@@ -6140,7 +6140,7 @@
             <FORM kindOf="standard">uvaaz=a</FORM>
             <PHON kindOf="standard">uvaaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">孩子=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">孩子=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">孩子=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">child=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">child=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_44_W2M0">
@@ -6159,7 +6159,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -6220,7 +6220,7 @@
             <FORM kindOf="standard">lapat=a</FORM>
             <PHON kindOf="standard">[l|ɬ]apata</PHON>
             <TRANSL xml:lang="zho" kindOf="original">芭樂=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">芭樂=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">芭樂=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">guava=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">guava=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_44_W5M0">
@@ -6239,7 +6239,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -6509,7 +6509,7 @@
             <FORM kindOf="standard">maupa-cia</FORM>
             <PHON kindOf="standard">maupaʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">像-遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">像-遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">像-DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.like-DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">be.like-DIST.OBL</TRANSL>
             <M id="bnNr-pear_Talum_S_46_W0M0">
@@ -6528,7 +6528,7 @@
                 <FORM kindOf="standard">cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -6688,7 +6688,7 @@
             <FORM kindOf="standard">ma-daingaz=a</FORM>
             <PHON kindOf="standard">madaiŋaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-老=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-老=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-老=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-old=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-old=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_48_W0M0">
@@ -6717,7 +6717,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -7366,7 +7366,7 @@
             <FORM kindOf="standard">a-ska-dii</FORM>
             <PHON kindOf="standard">askadii</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-途中某處-那裡</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-途中某處-那裡</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.DIST-途中某處-那裡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-somewhere.on.the.way-there</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-somewhere.on.the.way-there</TRANSL>
             <M id="bnNr-pear_Talum_S_51_W6M0">
@@ -7375,7 +7375,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">可見.遠距</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">可見.遠距</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">可見.DIST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">VIS.DIST</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST</TRANSL>
             </M>
@@ -7446,7 +7446,7 @@
             <FORM kindOf="standard">uvaaz=a</FORM>
             <PHON kindOf="standard">uvaaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">孩子=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">孩子=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">孩子=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">child=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">child=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_51_W8M0">
@@ -7465,7 +7465,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -7625,7 +7625,7 @@
             <FORM kindOf="standard">uvaaz=a</FORM>
             <PHON kindOf="standard">uvaaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">孩子=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">孩子=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">孩子=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">child=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">child=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Talum_S_56_W1M0">
@@ -7644,7 +7644,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -7655,7 +7655,7 @@
             <FORM kindOf="standard">maupa=cia</FORM>
             <PHON kindOf="standard">maupaʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">像=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">像=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">像=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">do.like=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">do.like=DIST.OBL</TRANSL>
             <M id="bnNr-pear_Talum_S_56_W2M0">
@@ -7674,7 +7674,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -7875,7 +7875,7 @@
             <FORM kindOf="standard">i-sain=cia</FORM>
             <PHON kindOf="standard">isainʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">在-處格.近距=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">在-LOC.近距=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">在-LOC.PROX=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.at-LOC.PROX=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">be.at-LOC.PROX=DIST.OBL</TRANSL>
             <M id="bnNr-pear_Talum_S_56_W10M0">
@@ -7894,7 +7894,7 @@
                 <FORM kindOf="standard">sain</FORM>
                 <PHON kindOf="standard">sain</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處格.近距</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">LOC.近距</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC.PROX</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC.PROX</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC.PROX</TRANSL>
             </M>
@@ -7904,7 +7904,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -8015,7 +8015,7 @@
             <FORM kindOf="standard">isaicia</FORM>
             <PHON kindOf="standard">isaiʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             <M id="bnNr-pear_Talum_S_56_W15M0">
@@ -8024,7 +8024,7 @@
                 <FORM kindOf="standard">isaicia</FORM>
                 <PHON kindOf="standard">isaiʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             </M>

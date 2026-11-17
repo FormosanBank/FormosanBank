@@ -574,7 +574,7 @@ AFCA	1	UNDECIDED		undocumented; definition needed	zho twin: 主焦CA×1
 語助詞	4724	CONVERT	PART	maintainer vocabulary ruling v2 + g4 2026-11-11	eng twin: PART×4669; AUX×6	
 否定	4511	CONVERT	NEG	pairs NEG; Leipzig NEG	eng twin: NEG×4478	
 處焦	3885	CONVERT	LV	pairs LF×3,353; voice standard LV	eng twin: LF×3353; LV×48	"Kavalan→PV (maintainer 2026-11-11: ""Kavalan UV -> PV is approved"" — Kavalan has 2 voices; its -an voice converts by function; NTU Kavalan zho tier writes it 處焦 ×580+)"
-遠距	3304	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: DIST×3130; MED×6	
+遠距	3304	CONVERT	DIST	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: DIST×3130; MED×6	
 存在	3179	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXIST×2985; EXI×18	
 非實現	3033	CONVERT	IRR	pairs IRR; Leipzig IRR	eng twin: IRR×2599	
 助動詞	3000	CONVERT	AUX	pairs AUX; Leipzig AUX	eng twin: AUX×2982	
@@ -593,13 +593,13 @@ AFCA	1	UNDECIDED		undocumented; definition needed	zho twin: 主焦CA×1
 近指	1570	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROX×1542	
 狀態	1474	CONVERT	STAT	approved on the derivational decision page 2026-11-15 (DerivationalMorphology.md card A)	eng twin: STAT×1134	"Bunun→DUR (card A2 choice ""dur"" 2026-11-15: 布農語語法概論 PDF 146, al- is 持續貌2 durative, like Mandarin 著; fn.26 names -al)"
 未來	1452	CONVERT	FUT	"approved on the derivational decision page 2026-11-15 (card M5) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	eng twin: FUT×1359	
-所有格	1259	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: POSS×1217; GEN×10	"Rukai→GEN (case page Rukai note 2026-11-17: ""所有格->GEN""; Rukai 所有格 ×5 all pair with eng GEN, unlike the POSS pairing elsewhere)"
+所有格	1259	CONVERT	POSS	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: POSS×1217; GEN×10	"Rukai→GEN (case page Rukai note 2026-11-17: ""所有格->GEN""; Rukai 所有格 ×5 all pair with eng GEN, unlike the POSS pairing elsewhere)"
 受格	1233	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ACC×1166; PF×28	
 介系詞	1233	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PREP×963	
 處所	1188	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LOC×1169	
 不可見	1122	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INV×916; INVIS×200	
 進行	1028	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROG×1022	
-過去	1021	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PST×619; PFV×67	
+過去	1021	CONVERT	PST	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: PST×619; PFV×67	
 附著主格	978	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: BN×867; BG×9	
 非主焦	934	UNDECIDED		zho-tier code; non-actor-focus cover label (Tsou NAV twin); no cross-language ruling	eng twin: NAF×911; NAV×14 | Kavalan ×32 = suffix -a with GEN agent (tungaw-a-kita), NOT the -an voice — the 2026-11-11 Kavalan UV→PV ruling does not cover it; needs own ruling (voice audit page) | Atayal ×4: see the NAF row per-token outcomes (confirmed 2026-11-12)	"Tsou→NAF (maintainer 2026-11-12: ""Sounds like NAF->NAF…""; NAV folds to NAF as the same auxiliary class — flag if unwanted)"
 好	905	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: OK×6	
@@ -624,7 +624,7 @@ Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng 
 中距	565	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: MED×510	
 使動	498	CONVERT	CAUS	approved on the derivational decision page 2026-11-15 (DerivationalMorphology.md card A)	eng twin: CAU×171	
 填補詞	478	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FIL×478	
-人名標記	476	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NCM×42	
+人名標記	476	CONVERT	PN	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: NCM×42	
 第三人稱單數	427	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 3S×408	
 反身	406	CONVERT	REFL	approved on the derivational decision page 2026-11-15 (DerivationalMorphology.md card A)	eng twin: REFL×369	
 第二人稱單數	399	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 2S×354; 2SG×10	
@@ -633,11 +633,11 @@ Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng 
 非人	359	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NHUM×274; NH×8	
 想要	356	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: WOD×15	
 助詞	352	CONVERT	PART	maintainer vocabulary ruling v2 + g4 2026-11-11	eng twin: PTC×43; PART×23	
-包含	330	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INCL×231	
+包含	330	CONVERT	INCL	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: INCL×231	
 一定	312	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEC×140	
-近距	306	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROX×230	
+近距	306	CONVERT	PROX	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: PROX×230	
 自由斜格	306	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FO×302	
-排除	287	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXCL×209	
+排除	287	CONVERT	EXCL	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: EXCL×209	
 中性格	273	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEU×273	
 被動	272	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PASS×264	
 情態	236	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: MOD×229	

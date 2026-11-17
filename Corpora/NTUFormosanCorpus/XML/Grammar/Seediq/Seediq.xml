@@ -873,7 +873,7 @@
             <FORM kindOf="standard">alang=miyan</FORM>
             <PHON kindOf="standard">alaŋmijan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">部落=我們.排除.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">部落=我們.排除.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">部落=我們.EXCL.GEN</TRANSL>
             <M id="04_S_5_W0M0">
                 <FORM kindOf="original">alang</FORM>
                 <PHON kindOf="original">alaŋ</PHON>
@@ -888,7 +888,7 @@
                 <FORM kindOf="standard">=miyan</FORM>
                 <PHON kindOf="standard">mijan</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.排除.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.排除.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.EXCL.GEN</TRANSL>
             </M>
         </W>
         <W id="04_S_5_W1">
@@ -5993,7 +5993,7 @@
             <FORM kindOf="standard">nii=nami</FORM>
             <PHON kindOf="standard">niinami</PHON>
             <TRANSL xml:lang="zho" kindOf="original">進行貌=我們.排除.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">進行貌=我們.排除.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">進行貌=我們.EXCL.NOM</TRANSL>
             <M id="05_S_14_W0M0">
                 <FORM kindOf="original">nii</FORM>
                 <PHON kindOf="original">nii</PHON>
@@ -6008,7 +6008,7 @@
                 <FORM kindOf="standard">=nami</FORM>
                 <PHON kindOf="standard">nami</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.排除.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.排除.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.EXCL.NOM</TRANSL>
             </M>
         </W>
         <W id="05_S_14_W1">
@@ -6073,7 +6073,7 @@
             <FORM kindOf="standard">mqaras=nami</FORM>
             <PHON kindOf="standard">mqaɾasnami</PHON>
             <TRANSL xml:lang="zho" kindOf="original">高興=我們.排除.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">高興=我們.排除.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">高興=我們.EXCL.NOM</TRANSL>
             <M id="05_S_15_W0M0">
                 <FORM kindOf="original">mqaras</FORM>
                 <PHON kindOf="original">mqaɾas</PHON>
@@ -6088,7 +6088,7 @@
                 <FORM kindOf="standard">=nami</FORM>
                 <PHON kindOf="standard">nami</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.排除.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.排除.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.EXCL.NOM</TRANSL>
             </M>
         </W>
         <W id="05_S_15_W1">
@@ -6467,7 +6467,7 @@
             <FORM kindOf="standard">alang=nami</FORM>
             <PHON kindOf="standard">alaŋnami</PHON>
             <TRANSL xml:lang="zho" kindOf="original">部落=我們.排除.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">部落=我們.排除.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">部落=我們.EXCL.GEN</TRANSL>
             <M id="05_S_19_W0M0">
                 <FORM kindOf="original">alang</FORM>
                 <PHON kindOf="original">alaŋ</PHON>
@@ -6482,7 +6482,7 @@
                 <FORM kindOf="standard">=nami</FORM>
                 <PHON kindOf="standard">nami</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.排除.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.排除.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.EXCL.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -6973,14 +6973,14 @@
             <FORM kindOf="standard">ndheya</FORM>
             <PHON kindOf="standard">ndħeja</PHON>
             <TRANSL xml:lang="zho" kindOf="original">他們.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">他們.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">他們.POSS</TRANSL>
             <M id="05_S_26_W0M0">
                 <FORM kindOf="original">ndheya</FORM>
                 <PHON kindOf="original">ndħeja</PHON>
                 <FORM kindOf="standard">ndheya</FORM>
                 <PHON kindOf="standard">ndħeja</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">他們.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">他們.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">他們.POSS</TRANSL>
             </M>
         </W>
         <W id="05_S_26_W1">
@@ -7133,14 +7133,14 @@
             <FORM kindOf="standard">naku</FORM>
             <PHON kindOf="standard">naku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">我.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我.POSS</TRANSL>
             <M id="05_S_27_W3M0">
                 <FORM kindOf="original">naku</FORM>
                 <PHON kindOf="original">naku</PHON>
                 <FORM kindOf="standard">naku</FORM>
                 <PHON kindOf="standard">naku</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我.POSS</TRANSL>
             </M>
         </W>
         <W id="05_S_27_W4">
@@ -7221,14 +7221,14 @@
             <FORM kindOf="standard">nisu</FORM>
             <PHON kindOf="standard">nisu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">你.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">你.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">你.POSS</TRANSL>
             <M id="05_S_27_W7M0">
                 <FORM kindOf="original">nisu</FORM>
                 <PHON kindOf="original">nisu</PHON>
                 <FORM kindOf="standard">nisu</FORM>
                 <PHON kindOf="standard">nisu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">你.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">你.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">你.POSS</TRANSL>
             </M>
         </W>
     </S>
@@ -8047,14 +8047,14 @@
             <FORM kindOf="standard">ita</FORM>
             <PHON kindOf="standard">ita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">我們.包含</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL</TRANSL>
             <M id="05_S_34_W0M0">
                 <FORM kindOf="original">ita</FORM>
                 <PHON kindOf="original">ita</PHON>
                 <FORM kindOf="standard">ita</FORM>
                 <PHON kindOf="standard">ita</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL</TRANSL>
             </M>
         </W>
         <W id="05_S_34_W1">
@@ -8127,7 +8127,7 @@
             <FORM kindOf="standard">lngelung-an=ta</FORM>
             <PHON kindOf="standard">lŋeluŋanta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">想-處所焦點=我們.包含</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">想-LV=我們.包含</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">想-LV=我們.INCL</TRANSL>
             <M id="05_S_34_W4M0">
                 <FORM kindOf="original">lngelung</FORM>
                 <PHON kindOf="original">lŋeluŋ</PHON>
@@ -8150,7 +8150,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL</TRANSL>
             </M>
         </W>
     </S>
@@ -10170,7 +10170,7 @@
             <FORM kindOf="standard">ta-apa=miyan</FORM>
             <PHON kindOf="standard">taapamijan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">ta-搭乘=我們.排除.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">ta-搭乘=我們.排除.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">ta-搭乘=我們.EXCL.GEN</TRANSL>
             <M id="06_S_16_W1M0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
@@ -10193,7 +10193,7 @@
                 <FORM kindOf="standard">=miyan</FORM>
                 <PHON kindOf="standard">mijan</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.排除.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.排除.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.EXCL.GEN</TRANSL>
             </M>
         </W>
         <W id="06_S_16_W2">
@@ -12049,7 +12049,7 @@
             <FORM kindOf="standard">bekuy-un=ta</FORM>
             <PHON kindOf="standard">bekujunta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">綑綁-受事焦點=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">綑綁-PV=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">綑綁-PV=我們.INCL.GEN</TRANSL>
             <M id="06_S_33_W0M0">
                 <FORM kindOf="original">bekuy</FORM>
                 <PHON kindOf="original">bekuj</PHON>
@@ -12072,7 +12072,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="06_S_33_W1">
@@ -15469,7 +15469,7 @@
             <FORM kindOf="standard">ekan=ta</FORM>
             <PHON kindOf="standard">ekanta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主事焦點.吃=我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV.吃=我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV.吃=我們.INCL.NOM</TRANSL>
             <M id="08_S_4_W0M0">
                 <FORM kindOf="original">ekan</FORM>
                 <PHON kindOf="original">ekan</PHON>
@@ -15484,7 +15484,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.NOM</TRANSL>
             </M>
         </W>
         <W id="08_S_4_W1">
@@ -15629,7 +15629,7 @@
             <FORM kindOf="standard">p-uqi-e=ta</FORM>
             <PHON kindOf="standard">puqieta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使動-吃-受事／處所焦點.規勸=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS-吃-PV/LV.規勸=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-吃-PV/LV.規勸=我們.INCL.GEN</TRANSL>
             <M id="08_S_6_W0M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
@@ -15660,7 +15660,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="08_S_6_W1">
@@ -15709,7 +15709,7 @@
             <FORM kindOf="standard">asug-o=ta</FORM>
             <PHON kindOf="standard">asugota</PHON>
             <TRANSL xml:lang="zho" kindOf="original">分配-受事／處所焦點.規勸=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">分配-PV/LV.規勸=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">分配-PV/LV.規勸=我們.INCL.GEN</TRANSL>
             <M id="08_S_7_W0M0">
                 <FORM kindOf="original">asug</FORM>
                 <PHON kindOf="original">asug</PHON>
@@ -15732,7 +15732,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="08_S_7_W1">
@@ -16133,7 +16133,7 @@
             <FORM kindOf="standard">pure-ane=ta</FORM>
             <PHON kindOf="standard">puɾeaneta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">煮-受惠焦點.規勸=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">煮-受惠焦點.規勸=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">煮-受惠焦點.規勸=我們.INCL.GEN</TRANSL>
             <M id="08_S_12_W0M0">
                 <FORM kindOf="original">pure</FORM>
                 <PHON kindOf="original">puɾe</PHON>
@@ -16156,7 +16156,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="08_S_12_W1">
@@ -16341,7 +16341,7 @@
             <FORM kindOf="standard">iya=ta</FORM>
             <PHON kindOf="standard">ijata</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">NEG=我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我們.INCL.NOM</TRANSL>
             <M id="08_S_14_W0M0">
                 <FORM kindOf="original">iya</FORM>
                 <PHON kindOf="original">ija</PHON>
@@ -16356,7 +16356,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.NOM</TRANSL>
             </M>
         </W>
         <W id="08_S_14_W1">
@@ -16421,7 +16421,7 @@
             <FORM kindOf="standard">iya=ta</FORM>
             <PHON kindOf="standard">ijata</PHON>
             <TRANSL xml:lang="zho" kindOf="original">否定詞=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">NEG=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NEG=我們.INCL.GEN</TRANSL>
             <M id="08_S_15_W0M0">
                 <FORM kindOf="original">iya</FORM>
                 <PHON kindOf="original">ija</PHON>
@@ -16436,7 +16436,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="08_S_15_W1">
@@ -29055,7 +29055,7 @@
             <FORM kindOf="standard">maha=ta</FORM>
             <PHON kindOf="standard">maħata</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主事焦點.去=我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV.去=我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV.去=我們.INCL.NOM</TRANSL>
             <M id="11_S_50_W2M0">
                 <FORM kindOf="original">maha</FORM>
                 <PHON kindOf="original">maħa</PHON>
@@ -29070,7 +29070,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.NOM</TRANSL>
             </M>
         </W>
         <W id="11_S_50_W3">
@@ -29232,7 +29232,7 @@
             <FORM kindOf="standard">maha=ta</FORM>
             <PHON kindOf="standard">maħata</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主事焦點.去=我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV.去=我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV.去=我們.INCL.NOM</TRANSL>
             <M id="11_S_52_W0M0">
                 <FORM kindOf="original">maha</FORM>
                 <PHON kindOf="original">maħa</PHON>
@@ -29247,7 +29247,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.NOM</TRANSL>
             </M>
         </W>
         <W id="11_S_52_W1">
@@ -29596,7 +29596,7 @@
             <FORM kindOf="standard">huwa=ta</FORM>
             <PHON kindOf="standard">ħuwata</PHON>
             <TRANSL xml:lang="zho" kindOf="original">如何=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">如何=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">如何=我們.INCL.GEN</TRANSL>
             <M id="11_S_55_W0M0">
                 <FORM kindOf="original">huwa</FORM>
                 <PHON kindOf="original">ħuwa</PHON>
@@ -29611,7 +29611,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="11_S_55_W1">
@@ -31802,7 +31802,7 @@
             <FORM kindOf="standard">m-heyu=nami</FORM>
             <PHON kindOf="standard">mħejunami</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主事焦點-站=我們.排除.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-站=我們.排除.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-站=我們.EXCL.NOM</TRANSL>
             <M id="12_S_12_W0M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -31825,7 +31825,7 @@
                 <FORM kindOf="standard">=nami</FORM>
                 <PHON kindOf="standard">nami</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.排除.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.排除.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.EXCL.NOM</TRANSL>
             </M>
         </W>
         <W id="12_S_12_W1">
@@ -31882,7 +31882,7 @@
             <FORM kindOf="standard">tloong=ta</FORM>
             <PHON kindOf="standard">tlooŋta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主事焦點.坐=我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV.坐=我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV.坐=我們.INCL.NOM</TRANSL>
             <M id="12_S_13_W0M0">
                 <FORM kindOf="original">tloong</FORM>
                 <PHON kindOf="original">tlooŋ</PHON>
@@ -31897,7 +31897,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.NOM</TRANSL>
             </M>
         </W>
         <W id="12_S_13_W1">
@@ -32824,7 +32824,7 @@
             <FORM kindOf="standard">rudan=ta</FORM>
             <PHON kindOf="standard">ɾudanta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">老者=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">老者=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">老者=我們.INCL.GEN</TRANSL>
             <M id="13_S_1_W3M0">
                 <FORM kindOf="original">rudan</FORM>
                 <PHON kindOf="original">ɾudan</PHON>
@@ -32839,7 +32839,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="13_S_1_W4">
@@ -36174,7 +36174,7 @@
             <FORM kindOf="standard">m-maha=ta</FORM>
             <PHON kindOf="standard">mmaħata</PHON>
             <TRANSL xml:lang="zho" kindOf="original">重疊-主事焦點.去=我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">重疊-AV.去=我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">重疊-AV.去=我們.INCL.NOM</TRANSL>
             <M id="13_S_26_W4M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -36197,7 +36197,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.NOM</TRANSL>
             </M>
         </W>
         <W id="13_S_26_W5">
@@ -37629,7 +37629,7 @@
             <FORM kindOf="standard">bubu=ta</FORM>
             <PHON kindOf="standard">bubuta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">媽媽=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">媽媽=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">媽媽=我們.INCL.GEN</TRANSL>
             <M id="13_S_34_W2M0">
                 <FORM kindOf="original">bubu</FORM>
                 <PHON kindOf="original">bubu</PHON>
@@ -37644,7 +37644,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="13_S_34_W3">
@@ -38349,7 +38349,7 @@
             <FORM kindOf="standard">kesa-un=ta</FORM>
             <PHON kindOf="standard">kesaunta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">說-受事焦點=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">說-PV=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">說-PV=我們.INCL.GEN</TRANSL>
             <M id="13_S_38_W4M0">
                 <FORM kindOf="original">kesa</FORM>
                 <PHON kindOf="original">kesa</PHON>
@@ -38372,7 +38372,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="13_S_38_W5">
@@ -40373,7 +40373,7 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL xml:lang="zho" kindOf="original">抵達=我們.排除.主格</TRANSL>
-        <TRANSL xml:lang="zho" kindOf="standard">抵達=我們.排除.NOM</TRANSL>
+        <TRANSL xml:lang="zho" kindOf="standard">抵達=我們.EXCL.NOM</TRANSL>
         </W>
         <W id="14_S_8_W2">
             <FORM kindOf="original">dehuk=miyan</FORM>
@@ -40431,7 +40431,7 @@
             <FORM kindOf="standard">asi=miyan</FORM>
             <PHON kindOf="standard">asimijan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">馬上=我們.排除.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">馬上=我們.排除.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">馬上=我們.EXCL.NOM</TRANSL>
             <M id="14_S_8_W5M0">
                 <FORM kindOf="original">asi</FORM>
                 <PHON kindOf="original">asi</PHON>
@@ -40446,7 +40446,7 @@
                 <FORM kindOf="standard">=miyan</FORM>
                 <PHON kindOf="standard">mijan</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.排除.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.排除.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.EXCL.NOM</TRANSL>
             </M>
         </W>
         <W id="14_S_8_W6">
@@ -54434,7 +54434,7 @@
             <FORM kindOf="standard">nasi=ta</FORM>
             <PHON kindOf="standard">nasita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">如果=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">如果=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">如果=我們.INCL.GEN</TRANSL>
             <M id="ap1_S_19_W0M0">
                 <FORM kindOf="original">nasi</FORM>
                 <PHON kindOf="original">nasi</PHON>
@@ -54449,7 +54449,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="ap1_S_19_W1">
@@ -56862,7 +56862,7 @@
             <FORM kindOf="standard">ima=ta</FORM>
             <PHON kindOf="standard">imata</PHON>
             <TRANSL xml:lang="zho" kindOf="original">誰=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">誰=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">誰=我們.INCL.GEN</TRANSL>
             <M id="ap1_S_33_W1M0">
                 <FORM kindOf="original">ima</FORM>
                 <PHON kindOf="original">ima</PHON>
@@ -56877,7 +56877,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="ap1_S_33_W2">
@@ -57168,7 +57168,7 @@
             <FORM kindOf="standard">s-upu-o=ta</FORM>
             <PHON kindOf="standard">supuota</PHON>
             <TRANSL xml:lang="zho" kindOf="original">參考焦點-一起-受事焦點.祈使=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">參考焦點-一起-PV.IMP=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">參考焦點-一起-PV.IMP=我們.INCL.GEN</TRANSL>
             <M id="ap1_S_33_W18M0">
                 <FORM kindOf="original">s</FORM>
                 <PHON kindOf="original">s</PHON>
@@ -57199,7 +57199,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="ap1_S_33_W19">
@@ -62304,7 +62304,7 @@
             <FORM kindOf="standard">ma=ta</FORM>
             <PHON kindOf="standard">mata</PHON>
             <TRANSL xml:lang="zho" kindOf="original">和=我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">和=我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">和=我們.INCL.NOM</TRANSL>
             <M id="ap2_S_8_W6M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
@@ -62319,7 +62319,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.NOM</TRANSL>
             </M>
         </W>
         <W id="ap2_S_8_W7">
@@ -62466,7 +62466,7 @@
             <FORM kindOf="standard">osa-un=ta</FORM>
             <PHON kindOf="standard">osaunta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-受事焦點=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">去-PV=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">去-PV=我們.INCL.GEN</TRANSL>
             <M id="ap2_S_9_W2M0">
                 <FORM kindOf="original">osa</FORM>
                 <PHON kindOf="original">osa</PHON>
@@ -62489,7 +62489,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="ap2_S_9_W3">
@@ -67332,7 +67332,7 @@
             <FORM kindOf="standard">rahuq-un=ta</FORM>
             <PHON kindOf="standard">ɾaħuqunta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">漏射-受事焦點=我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">漏射-PV=我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">漏射-PV=我們.INCL.GEN</TRANSL>
             <M id="ap2_S_35_W4M0">
                 <FORM kindOf="original">rahuq</FORM>
                 <PHON kindOf="original">ɾaħuq</PHON>
@@ -67355,7 +67355,7 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.包含.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.包含.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.INCL.GEN</TRANSL>
             </M>
         </W>
         <W id="ap2_S_35_W5">
@@ -68990,7 +68990,7 @@
             <FORM kindOf="standard">alang=miyan</FORM>
             <PHON kindOf="standard">alaŋmijan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">部落=我們.排除.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">部落=我們.排除.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">部落=我們.EXCL.GEN</TRANSL>
             <M id="ap2_S_44_W6M0">
                 <FORM kindOf="original">alang</FORM>
                 <PHON kindOf="original">alaŋ</PHON>
@@ -69005,7 +69005,7 @@
                 <FORM kindOf="standard">=miyan</FORM>
                 <PHON kindOf="standard">mijan</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">我們.排除.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">我們.排除.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">我們.EXCL.GEN</TRANSL>
             </M>
         </W>
     </S>
