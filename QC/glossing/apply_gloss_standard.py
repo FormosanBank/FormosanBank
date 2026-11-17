@@ -10,7 +10,13 @@ For every W/M-level TRANSL gloss in the target XML:
 
 A gloss the rules cannot segment (it contains characters the rules mark
 INVESTIGATE/RESIDUE, e.g. parentheses) is copied verbatim and listed in the
-residue report. Elements that already carry a standard TRANSL for that
+residue report. Two rules keywords refine parenthesis handling (maintainer
+2026-11-15): ``KEEP-PARENS <regex>`` marks LGR Rule 7 inherent-category
+chunks — kept with their parens, atoms inside converted, preceding space
+dropped, exempt from the residue check; ``NOTE-PARENS <regex>`` marks
+clarifier chunks that are removed from the standard text and stored on the
+standard TRANSL's ``notes`` attribute. Parens matching neither remain
+residue. Elements that already carry a standard TRANSL for that
 language are left exactly as they are (preexisting hand-made standards are
 never overwritten). Originals are never modified beyond the kindOf stamp
 (POL-036/POL-062). S-level TRANSLs are never touched (V151).
@@ -88,6 +94,10 @@ def context_matches(pattern: str, context_forms) -> bool:
     morpheme an or a word ending in an; "si-" a morpheme si or a word starting
     with si; a bare pattern only an exact morpheme.
     """
+    if pattern == "+bound":
+        # Reserved pattern: the word is morphologically complex (>= 2 M
+        # children) — maintainer q_cmpr 2026-11-16 ("only when tja is bound")
+        return "#multi" in context_forms
     core = form_core(pattern)
     if not core:
         return False
@@ -110,6 +120,8 @@ class Rules:
         self.separators: list[str] = []
         self.keep_brackets = False
         self.residue_chars = ""
+        keep_parens: list[str] = []
+        note_parens: list[str] = []
         # (atom, form core, target), in file order: "UV&-an / CONTEXT-CONVERT→LV"
         # means an atom UV on a word one of whose morphemes is -an becomes LV.
         # An atom with context rules but no matching form is kept as-is (the
@@ -129,8 +141,20 @@ class Rules:
                     self.separators.append(pat)
                 elif repl == "KEEP-BRACKETS":
                     self.keep_brackets = True
+                elif repl == "KEEP-PARENS":
+                    keep_parens.append(pat)
+                elif repl == "NOTE-PARENS":
+                    note_parens.append(pat)
                 elif repl in ("INVESTIGATE", "RESIDUE") and pat not in ("…",):
                     self.residue_chars += pat.strip("[]")
+        # LGR Rule 7 chunks (kept, atoms inside converted) and clarifier
+        # chunks (moved to the standard TRANSL's notes attribute). Both
+        # consume whitespace before the chunk (Rule 7 writes tree(G4), not
+        # tree (G4)); both are recognized before the residue check.
+        self.keep_parens_re = re.compile(
+            r"(\s*(?:" + "|".join(keep_parens) + r"))") if keep_parens else None
+        self.note_parens_re = re.compile(
+            r"\s*(" + "|".join(note_parens) + r")") if note_parens else None
         self.context_atoms = {a for a, _f, _t in self.context_rules}
         sep = "|".join(self.separators) or r"\."
         self.split_re = re.compile(f"({sep})")
@@ -140,31 +164,61 @@ class Rules:
 
 def convert_gloss(gloss: str, table: Table, rules: Rules, language: str,
                   context_forms: frozenset = frozenset()):
-    """Returns (standard_text, is_residue). context_forms are the cores of
-    the word's morpheme FORMs, for the rules file's context rules."""
-    if rules.residue_re and rules.residue_re.search(gloss):
-        return gloss, True
+    """Returns (standard_text, is_residue, note). context_forms are the cores
+    of the word's morpheme FORMs, for the rules file's context rules. ``note``
+    holds any NOTE-PARENS chunks removed from the text (empty otherwise)."""
+    original = gloss
+    note = ""
+    if rules.note_parens_re and rules.note_parens_re.search(gloss):
+        note = " ".join(m.group(1)
+                        for m in rules.note_parens_re.finditer(gloss))
+        gloss = rules.note_parens_re.sub("", gloss)
 
     def std_atom(atom: str) -> str:
         if atom in rules.context_atoms:
             for rule_atom, pattern, target in rules.context_rules:
                 if rule_atom == atom and context_matches(pattern, context_forms):
                     return target
-            return atom                       # no diagnostic form: kept
+            # No diagnostic form: fall through to the table (maintainer card
+            # Q5, 2026-11-15). A table row with an empty standard still keeps
+            # the atom, which preserves the documented Yedda UV fallback.
         return table.standard_for(atom, language)
 
+    def convert_flat(text: str) -> str:
+        out = []
+        for part in (re.split(r"(<[^<>]+>)", text)
+                     if rules.keep_brackets else [text]):
+            if part.startswith("<") and part.endswith(">") and rules.keep_brackets:
+                inner = part[1:-1]
+                pieces = [std_atom(a) if i % 2 == 0 and a else a
+                          for i, a in enumerate(rules.split_re.split(inner))]
+                out.append("<" + "".join(pieces) + ">")
+            else:
+                pieces = [std_atom(a) if i % 2 == 0 and a else a
+                          for i, a in enumerate(rules.split_re.split(part))]
+                out.append("".join(pieces))
+        return "".join(out)
+
+    # Split out LGR Rule 7 paren chunks first: they are kept (parens and
+    # all, preceding space dropped), their inner atoms converted, and they
+    # are exempt from the residue check, which applies to the rest only.
+    segments = (rules.keep_parens_re.split(gloss)
+                if rules.keep_parens_re else [gloss])
+    plain = "".join(seg for i, seg in enumerate(segments) if i % 2 == 0)
+    if rules.residue_re and rules.residue_re.search(plain):
+        return original, True, ""
+
     out = []
-    for part in re.split(r"(<[^<>]+>)", gloss) if rules.keep_brackets else [gloss]:
-        if part.startswith("<") and part.endswith(">") and rules.keep_brackets:
-            inner = part[1:-1]
-            pieces = [std_atom(a) if i % 2 == 0 and a else a
-                      for i, a in enumerate(rules.split_re.split(inner))]
-            out.append("<" + "".join(pieces) + ">")
+    for i, seg in enumerate(segments):
+        if i % 2 == 1:                        # a protected Rule 7 chunk
+            chunk = seg.lstrip()
+            inner = chunk[1:-1]
+            pieces = [std_atom(a) if j % 2 == 0 and a else a
+                      for j, a in enumerate(rules.split_re.split(inner))]
+            out.append("(" + "".join(pieces) + ")")
         else:
-            pieces = [std_atom(a) if i % 2 == 0 and a else a
-                      for i, a in enumerate(rules.split_re.split(part))]
-            out.append("".join(pieces))
-    return "".join(out), False
+            out.append(convert_flat(seg))
+    return "".join(out).strip(), False, note
 
 
 def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
@@ -178,6 +232,8 @@ def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
         if rules.context_rules:
             cores = {form_core(f.text) for m in morphs
                      for f in m.findall("FORM") if f.text}
+            if len(morphs) >= 2:
+                cores.add("#multi")   # for the reserved "+bound" pattern
             if not morphs:
                 # unsegmented word: its own shape may satisfy affix patterns
                 cores |= {"~" + form_core(f.text)
@@ -223,11 +279,14 @@ def _process_element(parent, table, rules, write, stats, residue, language,
         full = "".join(s for _, s in segments).strip()
         converted_segments = []
         any_res = False
+        note_parts = []
         for where, seg in segments:
             if seg.strip():
-                std_seg, is_res = convert_gloss(seg.strip(), table, rules,
-                                                language, context)
+                std_seg, is_res, seg_note = convert_gloss(
+                    seg.strip(), table, rules, language, context)
                 any_res = any_res or is_res
+                if seg_note:
+                    note_parts.append(seg_note)
             else:
                 std_seg = seg
             converted_segments.append((where, std_seg))
@@ -246,6 +305,9 @@ def _process_element(parent, table, rules, write, stats, residue, language,
         if ver:
             # V085: same-lang standards are discriminated by ver
             new.set("ver", ver)
+        if note_parts and not any_res:
+            # NOTE-PARENS chunks removed from the text live on the notes attr
+            new.set("notes", " ".join(note_parts))
         new.text = converted_segments[0][1]
         for (child, _), (_w, std_tail) in zip(segments[1:],
                                               converted_segments[1:]):

@@ -10,7 +10,7 @@ P	1544	KEEP	P	Leipzig-listed/composed or registry code
 主焦	1453	CONVERT	AV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
 AF	1433	CONVERT	AV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
 1	1362	KEEP	1	Leipzig-listed/composed or registry code		
-SUB	1314	UNDECIDED			proposed → SBJV (documented meaning; batch approval pending)	
+SUB	1314	CONVERT	SBJV	"approved on the derivational decision page 2026-11-15 (card M6) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	proposed → SBJV (documented meaning; batch approval pending)	
 RED	1237	UNDECIDED			documented code; definition in ScopingReview	
 AUX	1170	KEEP	AUX	Leipzig-listed/composed or registry code		
 LOC	976	KEEP	LOC	Leipzig-listed/composed or registry code		
@@ -46,16 +46,16 @@ IMP	43	KEEP	IMP	Leipzig-listed/composed or registry code
 ONOM	34	UNDECIDED			documented code; definition in ScopingReview	
 OR	32	UNDECIDED			documented code; definition in ScopingReview	
 UNK	18	UNDECIDED				
-REC	18	UNDECIDED			proposed → RECP (documented meaning; batch approval pending)	
-互相	16	UNDECIDED				
+REC	18	CONVERT	RECP	approved on the derivational decision page 2026-11-15 (DerivationalMorphology.md card G)		
+互相	16	CONVERT	RECP	approved on the derivational decision page 2026-11-15 (DerivationalMorphology.md card G)		
 完成	8	UNDECIDED				
 AFeat	8	UNDECIDED				
 OK	6	UNDECIDED				
-未來	4	UNDECIDED				
+未來	4	CONVERT	FUT	"approved on the derivational decision page 2026-11-15 (card M5) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""		
 F	4	UNDECIDED			seeded KEEP in error: not in the Leipzig abbreviation list (gloss-dictionary gate, 2026-11-11); definition TBD	
 AFcry	4	UNDECIDED				
 AFRED	3	UNDECIDED				
-祈使	2	UNDECIDED				
+祈使	2	CONVERT	IMP	"approved on the derivational decision page 2026-11-15 (card M3) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""		
 所有格	2	UNDECIDED				
 AFrow	2	UNDECIDED				
 AFhow	2	UNDECIDED				
@@ -66,7 +66,7 @@ AR	2	UNDECIDED
 AUS	2	UNDECIDED				
 HM	2	UNDECIDED				
 AFso	2	UNDECIDED				
-FU	2	UNDECIDED			proposed → FUT (documented meaning; batch approval pending)	
+FU	2	CONVERT	FUT	"approved on the derivational decision page 2026-11-15 (card M5) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	proposed → FUT (documented meaning; batch approval pending)	
 LIC	2	UNDECIDED				
 PAAFeat	2	UNDECIDED				
 FUT	2	KEEP	FUT	Leipzig-listed/composed or registry code		

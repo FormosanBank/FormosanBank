@@ -9,3 +9,4 @@ pattern	replacement	description
 …	RESIDUE	anything else unsegmentable is copied verbatim and listed in the residue report
 NAF&-i	CONTEXT-CONVERT→OV	maintainer-confirmed 2026-11-12 (c5 case-by-case): pa-spung-i (jid 15058) = the paper's expert-checked IF assignment → OV; the other NAF words (san/kasau/agan, no -i morpheme) stay unmapped
 非主焦&-i	CONTEXT-CONVERT→OV	zho twin of the NAF&-i rule (same token)
+REC&'arup-	CONTEXT-CONVERT→RECP	"card Q5 ""yes"" 2026-11-15 + card B exception: REC on an 'arup- word is the true reciprocal and gets RECP; all other REC falls through to the table (Kanakanavu→MULT override, RECP elsewhere)"

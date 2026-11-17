@@ -26,6 +26,7 @@ signal. Page v2 adds cards s-homophones, f-homophones (18 total).
 ⏳ OPEN: 18 cards on https://claude.ai/artifact/1N7xc3PCVuYYsmyynos5S4 (db collection `answers`, doc ids = card ids;
 done flag `meta/round1`): s-homophones, f-homophones, s-version, s-xref, s-label, s-nochinese, s-embedded, s-heading, s-affix, s-nosense, s-stemtag,
 s-synrel, s-borrow, f-split, f-xref, f-fixme, f-affix, f-see. After answers: one branch/PR for both corpora (corpus folders only).
+<<<<<<< HEAD
 **2026-11-15 handover (maintainer switching computers):** drafts, page source and a resume guide committed on branch
 `plans/dictionary-headwords-handover`, folder `claudeplans/2026-11-12-dictionary-headwords/` — start at its `HANDOVER.md`.
 Answers on the page at handover: none (db `answers` and `meta` both empty).
@@ -181,6 +182,8 @@ in S04886 男孩子。), delete_empty 3. Examples 50,327 S; every other S unchan
 earlier ruling once: round 13 "Two sentences" S49500-opt (caay picinga.) deleted as fragment of S49494 (same sentence,
 fuller translation) — both readings stay published. Corpus tests updated accordingly (20 pass). ⏳ for the maintainer to
 confirm: the 12 punctuation-only substrings and S49500-opt.
+=======
+>>>>>>> b10af81682fe737f20ce22d1eba21ec874e3e8f4
 
 ---
 ## 2026-11-09 — Local branch cleanup (shared checkout)
@@ -25120,3 +25123,299 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
 - Yedda unreviewed short glosses — *"DOn't worry now. That's a different task."* → stays on POL-021 list / #343.
 - Issues created by maintainer: #343 POL-021, #344 POL-061, #345 generate_xml_pending, #346 provenance_pending,
   #347 readme_sections_pending; linked from POLICIES.md + pending files, d408113af.
+<<<<<<< HEAD
+=======
+
+### ⏳ OPEN (2026-11-15 — machine-switch handoff; status note, no rulings here)
+- Derivational-morphology round 1 awaiting answers: page
+  https://claude.ai/artifact/TaLCcmnb2HjxiYmC7zRaZB (db collection deriv_langs).
+  Record: Glossing/ScopingReview/DerivationalMorphology.md.
+- Case round awaiting answers: page
+  https://claude.ai/artifact/NCCiEyZBdqbprWoSY1N3WR (5/13 approved 2026-11-13);
+  Truku 受格 + Tsou 處格→LOC written up in Glossing/OutstandingIssues.md.
+- CI: Corpus Metrics push to main rejected by ruleset 27020744's required
+  "build" check; fix (Option A drop the rule / Option B deploy-key bypass) not
+  yet picked; failed run needs re-running after.
+- Full context for a cold-start session: claudeplans/2026-11-15-handoff-new-machine.md.
+
+### 2026-11-15 — RULED on the derivational decision page (answers read from its database, choices quoted)
+- Card C INCH — choice `fold` ("Convert INCH → COS") → Li-Conjunction-Thao (2 tokens) + Wild-Lehmann-Kanakanavu
+  (3/4; 1 in residue gloss `INCH-ring-ring(AV)` stays verbatim). INCH stays unregistered.
+- Card D — choice `approve` ("Convert 使動 → CAUS") → Song-Kanakanavu 86/86.
+- Card E — choice `approve` ("Add table row: cause → CAUS") → HPS 1,259/1,298 atoms (39 in unsplit infix-bracket
+  atoms like `cause<af>` — pre-existing HPS converter limitation, logged as follow-up).
+- Card F — choice `approve` ("Convert stat → STAT") → HPS 1,931/1,940 (9 ditto). His note was cut off mid-word
+  ("Do they say ") — asked in chat.
+- Card H — choice `approve` ("Convert STAV → STAT") → NTU 4/4 (Rukai).
+- Applied by strip + re-run of apply_gloss_standard.py on the 5 corpora; diff-verified (0 unrelated lines,
+  0 HARD findings, tests/glossing 30 passed). Dictionaries: +Paiwan CAUS/STAT, +Thao COS.
+### ⏳ OPEN (derivational page, round 2)
+- Cards A (NTU zho twins), B (Kanakanavu REC=重現), G (reciprocal rest); all 14 language sections unanswered.
+- Follow-up: HPS infix-bracket atoms never convert (`eat<af>`, now also 39 `cause<af>` + 9 `stat<perf>`).
+  CLARIFIED 2026-11-15 (maintainer asked whether `cause<af>` should be two Ms): it already is — HPS segments
+  infixes into their own M (p<en>a-ula = M -en-/AV + M p-a/CAUS + M ula/lack) and every M-level gloss converted
+  (M-level leftovers 0, verified). The 1,349 bracket-bearing glosses are all W-level whole-word summary lines
+  (each with segmented M children beneath); the missing KEEP-BRACKETS row only leaves that W line internally
+  inconsistent with its own M line (1,067 glosses). Same for Wild `INCH-ring-ring(AV)` (mari-kirling-kirling):
+  M mari → COS converted; only the W summary line keeps INCH, held verbatim by the parens-residue rule.
+
+### 2026-11-15 (cont.) — RULED: card G, HPS KEEP-BRACKETS; Bunun al answered; Wild parens cards posted
+- Card G — choice `approve` ("Convert all three → RECP") → RauDong REC ×18 + 互相 ×16, Seediq-Chang 互相 ×2
+  → RECP (34+2 pairs, zero unrelated lines; Yami dict +RECP).
+- HPS KEEP-BRACKETS — his chat words: "OK, let's add KEEP-BRACKETS for HPS." → row added to
+  HundredPaiwanStories.rules.tsv (corpus-local), tier rebuilt: 1,073 W-line glosses re-aligned with their
+  M lines (eat<af>→eat<AV>); perf/red/qal inside brackets stay UNDECIDED pending the HPS batch.
+- Bunun `al` (his card-A question) — grammar answer found: 布農語語法概論 PDF 146, al- = 持續貌2 durative
+  (「凸顯持續的姿態或動作，相當於中文的「著」」; fn.26 names -al). New card A2: Bunun 狀態/state ×42 →
+  DUR override vs STAT vs leave. Bunun carved out of card A.
+- Card B — he clicked `modify` with an EMPTY note; asked on the page and in chat what change he intends.
+- New cards P1–P3 (his request): Wild-Lehmann parens inventory (81 tokens / 39 distinct: voice ×55,
+  numeral(person) ×22, sikaisiisi(ritual) ×4) with LGR Rule 7/6 quotes; rewrite options would need a
+  parens extension to the shared converter — the card choice is the approval request for that.
+
+### 2026-11-15 (cont. 2) — RULED: cards A, A2, P3; P1 question answered
+- Card A — choice `approve` ("Approve all rows above (Bunun 狀態 decided by A2)") → ten NTU zho rows → Latin
+  twins (使動/役使/使→CAUS, 狀態/靜態→STAT, 改變狀態/狀態改變→COS, 反身→REFL, 交互/互相→RECP); NTU rebuilt,
+  4,162 changed pairs, zero lines without a target atom. 重現 still held for card B.
+- Card A2 — choice `dur` → Bunun-only overrides 狀態→DUR, eng state→DUR (grammar: al- = 持續貌2, PDF 146);
+  Rukai eng state ×4 stays lexical; Bunun dict +DUR.
+- Card P3 — choice `drop` → RULED: standard sikaisiisi, "(ritual)" to notes. IMPLEMENTATION PENDING with
+  P1/P2 (needs parens extension to shared apply_gloss_standard.py; approval to be requested with the diff).
+- Card P1 — his note asks round-parens vs X.Y; answered on the card + chat (LGR 4/6/7 distinction), go.AV
+  option added. P2 open; card B still `modify` with empty note.
+- Observed, not fixed: 2 pre-existing V067 HARD in NTU Stories original FORMs (hoN2T>, shiaolingLM> — at
+  HEAD and in NTU's source JSONs; CodeAndDocs/scripts/repair_l2_markers.py references these L2 markers).
+
+### 2026-11-15 (cont. 3) — RULED: P1 = Rule 7; converter parens support built; P3 implemented
+- Card P1 — his chat words: "OK, you have convinced me that these should remain Rule 7. But that also means
+  our gloss standardizer needs to handle such cases appropriately." → shared-converter extension approved.
+- apply_gloss_standard.py: new rules keywords KEEP-PARENS (LGR Rule 7 chunk: parens kept, atoms inside
+  converted, preceding space dropped, exempt from residue) and NOTE-PARENS (chunk removed from standard
+  text, stored on the standard TRANSL's notes attribute). Unmatched parens stay residue. TDD: 3 new tests
+  (red first), tests/glossing 33 passed.
+- Wild rules rows: \((?:AV|UV|HORT)\) KEEP-PARENS; \(ritual\) NOTE-PARENS. Rebuild: 29 changed pairs, all
+  paren-related, zero (person) lines — go (AV)→go(AV) ×20 (+dance/climb/attend/try), INCH-ring-ring(AV)→
+  COS-ring-ring(AV) (card C's last leftover), sikaisiisi (ritual)→ notes="(ritual)" sikaisiisi ×4 (P3
+  implemented). Residue now exactly the 22 unruled (person) tokens (card P2). validate_xml/glosses 0 HARD.
+
+### 2026-11-15 (cont. 4) — RULED: P2; card B answered; page note-bug fixed; language cards replaced
+- Card P2 — his note: "Move \"person\" to the note attribute." → NOTE-PARENS \(person\) row; Wild rebuilt:
+  22 tokens now notes="(person)" with bare numeral text. Wild residue report now EMPTY. Tests 33 passed.
+- Card B (his chat question: "I want to know what the reference grammar has to say about that `-n-`
+  morpheme.") — ANSWERED: 卡那卡那富語語法概論 表3.12 (PDF 63) header 「十倍數 (ma-...-n)」: ma-…-n derives
+  tens (cusa 'two' → mapusan 'twenty', turu → matuun 'thirty'); makaan glossed 「一次」 'once' (ex.43 PDF
+  247); -n never glossed standalone; reciprocal is 'arupa-. Corpus matches (mapusan ngica'ʉ 'twenty
+  earthworms'; nimakapusanpaku 「第二次」). Card B options now: ITER / register MULT / unmap / keep RECP.
+- Page bug found (explains every lost note incl. card B's and card F's "Do they say "): notes saved only at
+  button-click; typing afterwards was dropped. Fixed — textarea change-events now save.
+- His feedback: language cards "very hard to use. I'm actually not sure what your question on each one is."
+  → the 14 per-language approve/modify rows removed (they stated no question); replaced by ONE card S under
+  the separator summary: adopt the middle column as the candidate verb-individuation list, modify names
+  cells. His earlier Amis/Bunun `modify` clicks had notes eaten by the bug — asked again.
+
+### 2026-11-15 (cont. 5) — RULED: card B applied; separator-coverage question answered
+- Card B — his note (v7): "Let's do REC->ITER, 重現->ITER except for when they gloss `'arup`, which gets
+  glossed RECP." → Kanakanavu-only overrides REC→ITER, 重現→ITER, +再現→ITER (×1 variant spelling found).
+  NTU rebuilt: 136 changed pairs, all REC/重現/再現; verified ⟨n⟩-REC is Kanakanavu-only (all other
+  languages' REC = 交互/互相 true reciprocals, stay RECP). Kanakanavu dict +ITER. tests 33 passed.
+  ⚠ OPEN: the 'arup exception — eng standard reads ITER-take (zho correctly RECP-拿). Implementing his
+  exception needs a shared-converter change (context-rule fallback → table lookup, + REC&'arup- context
+  row); approval asked on the page and in chat. NOT implemented without his word.
+- His coverage question ("If we treat STAT and CAUS as indicated derived forms... do we miss any
+  'separators' marked by the collaborators?") — answered YES with counts (HPS M-level): have 220, imp 203,
+  more 148, pair 118, make 111, qal 103, remove 79, become(ka-) 66, go.to 53, put 32, via 25, do.at 25,
+  emerge 16, apart 11, pretend 2, '?'-glossed qa/o/ta/ve/a/qe, + Amis SI ×18 (NTU). All lexical atoms in
+  the standard tier (usable as separators without new codes). Atayal/Yami fully covered (CAU ✓, SV→STAT ✓);
+  separator-NO items (Paiwan self/do/invol, Atayal/Yami REC) correctly excluded. Added to card S evidence.
+
+### 2026-11-15 (cont. 6) — ITER correction; round-8 cards posted (his moods + separator leftovers)
+- ⚠ CORRECTION: card B's ITER option was labeled "Leipzig iterative" — WRONG (0 occurrences in the LGR PDF,
+  verified; also unregistered). ITER now registered in supplementary_codes.tsv under his card-B words, with
+  the correction in the row's notes. He is asked whether ITER stands (the alternative he declined, MULT,
+  would equally have needed registration — the premise difference was false).
+- His request (chat): "Something else to add to our candidates for standardization: negation, irrealis,
+  hortative, and imperative mood." → bank-wide survey of all tables; new cards, every target checked
+  against the LGR appendix individually:
+  M1 否定詞→NEG (NTU ×864, Song ×274) · M2 Song 非實現→IRR ×268 · M3 →IMP: NTU 祈使 ×761, HPS imp ×393,
+  Song 祈使 ×76, Kavalan-Chang 祈使 ×14, RauDong 祈使 ×2 · M4 HPS hort ×203 (HORT NOT Leipzig: register/
+  fold-to-IMP/leave) · M5 未來→FUT (NTU ×1,452, Song ×6, RauDong ×4) · M6 RauDong SUB→SBJV ×1,314 ·
+  M7 NTU OPT/祈願 ×16 (OPT NOT Leipzig: register/leave).
+- Separator-leftover cards: U1 HPS qal ×161 + invol ×181 (QUAL/INVOL not Leipzig: register/leave) ·
+  U2 HPS 13 meaning-word prefixes keep-lexical vs codify (grammar: tja- = 比較級 comparative, §16.3 PDF
+  171; 'pair' rides mare- ×106 matching the grammar's mare'a) · U3 NTU SI ×142 = morpheme si glossed as
+  itself in both tiers across 6 languages (→#SI vs leave vs Amis-expert treatment).
+
+### 2026-11-15 (cont. 7) — RULED: ITER switched to MULT
+- His words: "I would have chosen MULT." (on the corrected premise that ITER is not Leipzig-listed either).
+- Registry row replaced: MULT 'numeral multiplicative', RULED, his quote in basis; ITER removed everywhere
+  (registry, NTU overrides, Kanakanavu dictionary). NTU rebuilt: 272 changed lines = the same 136 pairs,
+  all ITER->MULT, 0 ITER tokens remain, 0 lines outside ITER/MULT. tests/glossing 33 passed.
+- Still open: the 'arup-ara eng exception (now MULT-take; zho correctly RECP-拿) pending his word on the
+  converter tweak (context-rule fallback -> table + REC&'arup- row).
+
+### 2026-11-15 (cont. 8) — RULED: M1–M7 applied with bank-wide analogue sweep; U3 #SI; HORT/OPT registered
+- His instruction (chat): "our collaborators were only looking at a few languages and only at some sources…
+  if we are doing conversions for the corpora they looked at, we should be looking for the analogous items
+  in other corpora and languages." → full UNDECIDED-row sweep of every table for the mood families.
+- Applied (cards M1–M7 approve/register + the sweep): NEG: 否定詞 (NTU 864, Song 274). IRR: Song 非實現 268;
+  NTU 未實現/非現實/ORR/IRRS/IFF. RLS (realis twins, registered code): NTU 實現 2,367 / REAL / RLZ. IMP: NTU
+  祈使 761 / 命令式 96 / 命令 56; HPS imp 393; Song 祈使 76; Kavalan-Chang 祈使 14; RauDong 祈使 2. HORT
+  (REGISTERED, card M4 "register"): HPS hort 203; NTU EXHORT 20 (Saisiyat) / HOR 16 / 勸告式 12 (Rukai).
+  FUT: NTU 未來 1,452 / 未來式 204 / 未來貌 44 / FUF / FU; Song 6; RauDong 4+FU 2. SBJV: RauDong SUB 1,314.
+  OPT (REGISTERED, card M7 "register"): NTU OPT/祈願 16 (Amis). U3 (`hash`): NTU SI → #SI (6 languages).
+- Five corpora rebuilt (NTU, Song, HPS, Kavalan-Chang, RauDong): 17,640 changed lines, zero outside the
+  ruled atoms; validators 0 HARD; tests 33 passed. Dictionaries: +HORT/+OPT/+#SI (NTU languages, Paiwan),
+  +SBJV (Yami).
+- NOT swept, carded instead: M8 IMPFV/未完成 (aspect, proposed IPFV), M9 HYP/假設 92/90 (not Leipzig),
+  M10 沒有 52 (mixed NEG vs NEG.EXIST twins); REDNEG ×1 + RLSRED ×2 flagged in notes only.
+- U1 (his question "Can you give me some examples of these two?") — answered on the card: qal = li-/sa-/⟨ar⟩
+  (limutseng 'angry', qarawqawqaw 'shouting away'); invol = se- (seḍelas 'slipped', setsevungi 'met by
+  chance'). U2 RULED `codify` with his note (grammar comparison + Yedda analogues) — proposal table next.
+- U3's note truncated AGAIN ("What did t") — focused-textarea blur never fired; asked in chat.
+
+### 2026-11-15 (cont. 9) — RULED: M8 IPFV; M9/M10/U1 researched and answered on the page
+- M8 — choice `approve` → NTU IMPFV ×64 / 未完成 ×62 / 未完成貌 ×2 (row added) → IPFV. NTU rebuilt: 128 pairs,
+  zero outside targets; dicts +IPFV; 33 tests passed.
+- M9 (his Q: "How is this morpheme handled in the reference grammar? Are we sure this isn't irrealis or
+  conditional?") — HYP is Tsou nte ×39/n ×6 (+honci ×1, Atayal atu' ×1); 鄒語語法概論 PDF 84: 「表達反事實的
+  未實現態助動詞nte/nto」 = counterfactual IRREALIS aux; honci = complement-clause conjunction (ch.13).
+  Card options now: fold→IRR (grammar) / register HYP / leave.
+- M10 (his Qs: same morpheme? grammar? other sources?) — DIFFERENT morphemes: Saisiyat 'oka'/'okay (plain
+  negators, §10.1.1: 'okik nominal+stative, 'okay action verbs), Rukai kai (the 語法概論 is Mantauran:
+  -ka/ki-/okaodho 表10.1 PDF 125 — kai not covered, dialect gap), Tsou o'te (general, §10.1.2.1) vs uk'a
+  (existential/possessive, PDF 89), Kanakanavu 'akia (否定存在動詞, PDF 69), Bunun nii/uka, Kavalan mai,
+  Atayal meyo; Rukai form 'meiyou' ×1 looks like Mandarin echo — flagged. Options: leave / partial
+  overrides (Saisiyat→NEG, Kanakanavu→NEG.EXIST) / other.
+- U1 (his Q: does the grammar say anything?) — the Paiwan 語法概論 does not treat se-/sa-/li-/⟨ar⟩ (searched
+  forms + 非自主/非意志); definitions rest on Early & Whitehorn Ch.1 + Ferrell; Yedda has no analogues.
+
+### 2026-11-15 (cont. 10) — RULED: U1 register, M10 leave; M9 answered; card S rebuilt row-by-row
+- U1 — choice `register` + "But add to our todo list in glossing to revisit this, particularly when we get
+  more glossed Paiwan data." → QUAL + INVOL registered (his words in basis); HPS qal ×161 → QUAL, invol
+  ×181 → INVOL; rebuild verified 388 pairs zero outside targets; Paiwan dict updated; revisit entry in
+  Glossing/OutstandingIssues.md.
+- M10 — choice `leave` + "And put in our todo list in the glossing folder!" → 沒有 stays UNDECIDED; full
+  write-up (seven negators, citations, meiyou-form flag) added to Glossing/OutstandingIssues.md.
+- M9 — his Q "Do any other sources or grammars for other languages distinguish counterfactual from
+  irrealis?" — answered on the card: grammars yes (Rukai ni- 反事實 PDF 105 + §14.2.3; Saisiyat naw
+  違反事實; Tsou nte inside 未實現; Truku/Atayal/Thao mentions), corpus codes no (only IRR + NTU COND ×850).
+  Card open: fold→IRR / register HYP / leave.
+- Card S — his spec: "Please make the table into something I can approve, reject, or request modifications
+  to line-by-line. Add additions for things listed as separators by the collaborators but not on the table
+  yet. Also, I want to as much as possible be able to handle these using the glosses themselves. So for
+  instance, are ma-/ka- in Rukai glossed as STAT, as ma-(STAT)/ka-(STAT), or just ma-/ka-?" → rebuilt as
+  46 rows (39 proposed separators + 7 proposed non-separators), each with the verified gloss handle (the
+  Rukai answer: gloss is just STAT; ma-/ka- live only in the FORM tier) and its own buttons. Handle checks
+  run in the corpus: Rukai ngi-=REFL ×152 (minority self/manner/NGI flagged), Tsou poa=CAU ×2, Bunun
+  min-='become' ×81, Kanakanavu ara-='become' ×82 (homophones take/go — select by gloss).
+
+### 2026-11-16 — SOURCE-CREATOR RULING: NTU Saisiyat -an stays NMZ (Li-May Sung)
+- Her words (email shared by the maintainer): "Glossing -an as NMZ (nominalizer) doesn't necessarily
+  conflict with glossing it as LV voice in many Formosan languages. … lots of the -an derived words mean
+  nominal entities such as bicylce, animal or bottle etc. At this moment, I would like to have the NTU
+  Saisiyat glossings stay as they are."
+- Comparison run against our standardization: CONFORMANT, nothing to change. NTU Saisiyat voice inventory
+  is AF ×1,132 / PF ×396 / RF ×88 (+IF ×1) → AV/PV/OV per the 2026-11-11 voice rulings; no LV was ever
+  created; -an NMZ ×97 converts only NMZ→NMLZ (Leipzig spelling, point F.iii) — categorial analysis
+  untouched; original tier untouched by design (POL-036/POL-062).
+- Flagged to the maintainer (his call, analysis side): the 2026-09-28 ruling "-an nominalizations count as
+  locative voice" for voice COUNTING now has source-side counter-evidence for Saisiyat (many -an words are
+  plain lexical nouns). Recorded in Glossing/OutstandingIssues.md with the related -an items.
+
+### 2026-11-15 (cont. 11) — RULED: M9 CFACT; sep rows; become→COS; sepn6 flip
+- M9 — his note: "Register CFACT and map to that. Put in our todos that we anticipate this showing up in
+  future for Rukai `ni-` and possibly Truku, Atayal, and Thao. While we are at it, do the morphemes the
+  grammars mention as counterfactual show up anywhere in our corpora?" → CFACT registered; NTU HYP ×92 +
+  假設 ×94 → CFACT; dictionaries +CFACT; anticipation todo written. Corpus-search answer: markers barely
+  present, never glossed counterfactual (Seediq nasi = 'pear' ×23 + 條件詞/如果 ×11; Saisiyat naw ×7
+  條件詞/只/好像; Rukai ni ×12 mixed, non-Mantauran; Atayal aki ×1 在; Truku naa none).
+- sep19/20/23 — become → COS: Bunun+Kanakanavu overrides (eng become; zho 變成/變) + HPS become ×130 row.
+  NTU 2,040 + HPS 264 changed lines, zero outside targets; ara take/go homophony todo; 33 tests pass.
+- Separator rows recorded: sep01–18 yes; sep25 yes (+todo; all 'have' = pu-, his question answered);
+  sep38/39 yes; sepn1–5+7 no; **sepn6 (COS phase clitics) flipped by him to separator=YES** — flagged once
+  that this also separates =cu/=in/=ti tokens via the COS handle, same as the become-affixes.
+- sep27 ("Why do they say this is n/a?") answered: sheet's n/a = "No minimal pairs found", (yes) = their
+  default-separate. sep37 ("Is this an imperative??") answered: yes, source's imp code, →IMP.
+- U2 code-proposal table posted (12 rows): PROPR (have), CMPR (more, his sep26), his COS suggestion for
+  make (flagged: denominalizer), REV (remove), keep-lexical for go.to/put/via/do.at/emerge/apart/pretend,
+  pair pending. Open rows: sep21/22/24 + the U2 table.
+
+### 2026-11-15 (cont. 12) — RULED: gloss-level separator principle; sep29-37; u2 answers; PROPR applied
+- His chat rule: "you don't need to ask me whether to accept a particular morpheme a separator if the
+  associated gloss is already determined to be a separator (like COS and CAUS)." → separator status
+  attaches to gloss codes/atoms; sep21 (Thao min-) + sep22 (Wild mari-) auto-resolved via COS. The full
+  ruled separator list written to Glossing/ScopingReview/DerivationalMorphology.md.
+- sep29–36 `yes` ×8 (remove/go.to/put/via/do.at/emerge/apart/pretend — separators via lexical atoms; codes
+  left undecided per his u2 notes "leave as undecided"). sep37: "So map to IMP. And then it's not a
+  separator, it's a mood and is handled differently." (imp→IMP was already done; mood ruled non-separator.)
+- u2_have `as suggested` → PROPR registered, HPS have ×433 → PROPR; rebuild verified (440 pairs, zero
+  outside targets). u2_pair → todo (mare- ~ grammar's reciprocal mare'a). u2_remove — his question
+  answered: reversive-like lexical glosses in 6 other corpora (listed in OutstandingIssues.md), no code
+  anywhere; REV proposal pending his pick.
+- u2_more — his COMP question answered: COMP is Leipzig complementizer and already KEEP ×1,848 in NTU
+  (補語詞); CMPR proposed to avoid collision; pending.
+- u2_make — his "CAUS" note HELD, not applied: atom `make` covers sane- AND the root alang (si-alang-an) +
+  standalone verb sane ×14; atom-level conversion would stamp CAUS on verb/root glosses; options on card.
+- card_m_hyp v12 note (resaved after another lost note) — all items already done in round 13; answers
+  restated to him in chat.
+- Still open on the page: sep24 (reframed: is REFL a separator code?), sep27, u2_more, u2_make, u2_remove.
+
+### 2026-11-15 (cont. 13) — origin/main merged into the branch
+- Main gained #351 (another session's unvoiced-verbs audit: NTU full-form voice rows 主事焦點→AV ×2,371,
+  受事焦點→PV ×819, 處所焦點→LV ×240) and #352 (Safolu/Fey headwords — no overlap). Merge 634a8921d: the
+  table auto-merged (their 3 rows + ours); the 5 conflicted NTU XML files resolved by taking main's copies
+  and then strip+rebuilding all of NTU from the merged table. Verified: all our codes present (CFACT 186,
+  MULT 136, DUR 180, #SI 290, HORT 55, OPT 32, IPFV 128 atoms) AND their full-form conversions improved —
+  origin/main still had 387 standard-tier lines with unconverted 主事焦點 (their in-place pass missed
+  bracket/residue cases); the full rebuild leaves 35, all residue-rule cases. 33 tests passed; NTU/Grammar
+  validate_glosses 0 HARD. (Noted: the maintainer pushed the branch; origin had it through 72a532ffd.)
+
+### 2026-11-15 (cont. 14) — stale-tab answers consumed; page regenerated (round 15)
+- His 22:24–22:27 clicks were on the round-12 version (rounds 13–14 published 22:29/22:52) — all saved and
+  consumed: sep24 `no` → REFL NOT a separator code; sep27 `yes` → pair IS a separator (lexical atom; code
+  todo); sepn6 flipped to `no` → COS phase clitics do NOT separate. Reconciliation with the ruled
+  become-affix separators is page card Q4 (proposal: COS- separates, =COS does not). sep19/20 + M9 notes on
+  the stale page re-asked already-applied conversions — confirmed done, nothing re-run.
+- Page regenerated clean per his request ("regenerate so I can answer your questions"): 9 cards, each
+  answerable — Q1 CMPR, Q2 make/alang, Q3 REV, Q4 COS boundary, Q5 'arup shared tweak, Q6/Q7 lost
+  Amis/Bunun notes, Q8/Q9 the two cut-off fragments. Settled history collapsed at the bottom.
+
+### 2026-11-15 (cont. 15) — RULED: Q3/Q4/Q5 applied; Q6–Q9 closed; Q1/Q2 answered
+- Q4 `boundary` → RULED: COS- (affix) separates, =COS (clitic) does not.
+- Q5 `yes` → SHARED CHANGE made test-first (34 tests pass): context-rule fallback now falls through to the
+  table; NTU rules row REC&'arup-→RECP; 'arup-ara eng = RECP-take. Side effect flagged per the override's
+  own "flag if unwanted": the ruled-but-blocked Tsou 非主焦→NAF override activated (260 lines, AUX.非主焦 →
+  AUX.NAF — also satisfies Latin-only g4). Verified: nothing else changed; validators 0 HARD.
+- Q3 `rev` + "Make sure this only applies to the those affixes, not lexical verbs." → verified all HPS
+  remove tokens are the su-/s-u affix; REV registered; remove ×138 → REV; other corpora's reversive
+  lexical glosses untouched (todo stands).
+- Q6/Q7 `nothing` — no Amis/Bunun notes existed. Q8/Q9 `nothing` — the card-F and #SI fragments had no
+  questions behind them; both conversions stand.
+- Q1 answered (comparatives elsewhere: NTU 比較 ×61 = maraa/mastaan/paska, Song ×17, RauDong 更 ×1 — all
+  lexical, no code) and Q2 answered (true make- prefix usage ≈5 tokens vs ~106 root/verb; leave
+  recommended) — both await his click (round 16, two cards).
+
+### 2026-11-16 — RULED: Q2 make stays lexical; Q1 follow-up answered
+- Q2 — "Leave as undecided and put on todo list, with this information." → make stays a lexical gloss
+  (separator via sep28); the sane-/alang breakdown written to OutstandingIssues.md.
+- Q1 follow-up ("None of those are affixes, though, right?") — confirmed: Kanakanavu maraa ×49 and Bunun
+  mastaan ×10 are standalone words (Rukai/Tsou/Kavalan even use Mandarin-loan forms bijiao/pi.jiao); only
+  3 bound tokens bank-wide (Kavalan paska= ×2, Kanakanavu mara- ×1). HPS tja- is the only productive
+  comparative affix — and the only comparative where verb-individuation is at stake. Card Q1 (register
+  CMPR vs keep lexical) is the last open item on the page.
+
+### 2026-11-16 (cont.) — Q1 tja boundness check (his "it looks like 'tja' is actually lexical")
+- Token-by-token: HPS `more` is BOUND in 141/148 (word-initial tja-vulung ×24, tja-bulay, tja-ma-nguaq;
+  word-internal stacking pu-tja-uma~uma-ɫ, ka-tja-i-sangas-u); 7 standalone. Matches the grammar's 前綴
+  claim. The earlier "tja-stative" phrasing was my shorthand for tja- prefixed to a stative verb —
+  corrected on the card. Q1 (CMPR vs keep lexical) remains the one open item.
+
+### 2026-11-16 (cont. 2) — RULED: Q1 applied; DERIVATIONAL ROUND COMPLETE
+- Q1 — his words: "Register CMPR 'comparative' and convert only more/tja- -> CMPR, and only when tja is
+  bound (not when free-standing)." → converter gained the reserved `+bound` context pattern (word has ≥2
+  M children; test-first, 35 tests pass) — shared change made under this ruling's own words (quoted in
+  the commit trailer). CMPR registered; HPS rules row more&+bound→CMPR. Verified: 141 bound → CMPR, all 7
+  free-standing stay lexical `more`; 576 changed lines, zero outside more/CMPR; 0 HARD.
+- Every question on the derivational decision page is now settled (page round 18, v20). Record:
+  Glossing/ScopingReview/DerivationalMorphology.md; todos: Glossing/OutstandingIssues.md.
+>>>>>>> b10af81682fe737f20ce22d1eba21ec874e3e8f4

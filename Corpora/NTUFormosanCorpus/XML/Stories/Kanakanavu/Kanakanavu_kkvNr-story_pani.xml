@@ -801,7 +801,7 @@
             <FORM kindOf="standard">cʉr-oo</FORM>
             <PHON kindOf="standard">ʦɨ[r|ɾ]oo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">看-祈使.受焦</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">看-祈使.PV</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">看-IMP.PV</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">see-IMP.PF</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">see-IMP.PV</TRANSL>
             <M id="kkvNr-story_pani_S_14_W0M0">
@@ -820,7 +820,7 @@
                 <FORM kindOf="standard">oo</FORM>
                 <PHON kindOf="standard">oo</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">祈使.受焦</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">祈使.PV</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">IMP.PV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">IMP.PF</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">IMP.PV</TRANSL>
             </M>
@@ -6652,18 +6652,18 @@
             <FORM kindOf="standard">ara-tatia=cu=ku</FORM>
             <PHON kindOf="standard">a[r|ɾ]atatiaʦuku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變成-大.主焦=COS=1SG.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變成-大.AV=COS=1SG.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">COS-大.AV=COS=1SG.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-big.AF=COS=1SG.NOM</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">become-big.AV=COS=1SG.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS-big.AV=COS=1SG.NOM</TRANSL>
             <M id="kkvNr-story_pani_S_94_W2M0">
                 <FORM kindOf="original">ara</FORM>
                 <PHON kindOf="original">a[r|ɾ]a</PHON>
                 <FORM kindOf="standard">ara</FORM>
                 <PHON kindOf="standard">a[r|ɾ]a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">變成</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">變成</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">become</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">become</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
             <M id="kkvNr-story_pani_S_94_W2M1">
                 <FORM kindOf="original">tatia</FORM>
@@ -7884,7 +7884,7 @@
             <FORM kindOf="standard">'una=cu</FORM>
             <PHON kindOf="standard">ʔunaʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在=改變狀態</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">存在=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">存在=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">EXIST=COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">EXIST=COS</TRANSL>
             <M id="kkvNr-story_pani_S_106_W0M0">
@@ -7903,7 +7903,7 @@
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
@@ -9276,18 +9276,18 @@
             <FORM kindOf="standard">ara-'itumuru</FORM>
             <PHON kindOf="standard">a[r|ɾ]aʔitumu[r|ɾ]u</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變-多</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變-多</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">COS-多</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-full</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">become-full</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS-full</TRANSL>
             <M id="kkvNr-story_pani_S_114_W0M0">
                 <FORM kindOf="original">ara</FORM>
                 <PHON kindOf="original">a[r|ɾ]a</PHON>
                 <FORM kindOf="standard">ara</FORM>
                 <PHON kindOf="standard">a[r|ɾ]a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">變</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">變</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">become</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">become</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
             <M id="kkvNr-story_pani_S_114_W0M1">
                 <FORM kindOf="original">'itumuru</FORM>
@@ -10877,18 +10877,18 @@
             <FORM kindOf="standard">ara-'akia</FORM>
             <PHON kindOf="standard">a[r|ɾ]aʔakia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">變-否定.存在</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">變-NEG.存在</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">COS-NEG.存在</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-NEG.EXIST</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">become-NEG.EXIST</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS-NEG.EXIST</TRANSL>
             <M id="kkvNr-story_pani_S_124_W13M0">
                 <FORM kindOf="original">ara</FORM>
                 <PHON kindOf="original">a[r|ɾ]a</PHON>
                 <FORM kindOf="standard">ara</FORM>
                 <PHON kindOf="standard">a[r|ɾ]a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">變</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">變</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">become</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">become</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
             <M id="kkvNr-story_pani_S_124_W13M1">
                 <FORM kindOf="original">'akia</FORM>
@@ -11364,7 +11364,7 @@
             <FORM kindOf="standard">p-asi-n=kan=kee</FORM>
             <PHON kindOf="standard">pasinkankee</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使-說-受焦=KAN=3SG.屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">使-說-PV=KAN=3SG.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-說-PV=KAN=3SG.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-say-PF=KAN=3SG.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">CAUS-say-PV=KAN=3SG.GEN</TRANSL>
             <M id="kkvNr-story_pani_S_129_W0M0">
@@ -11373,7 +11373,7 @@
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">使</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">使</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">CAUS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">CAUS</TRANSL>
             </M>
@@ -11466,7 +11466,7 @@
             <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             <TRANSL xml:lang="zho" kindOf="standard">IRR</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IRRS</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">IRRS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">IRR</TRANSL>
             <M id="kkvNr-story_pani_S_129_W3M0">
                 <FORM kindOf="original">tia</FORM>
                 <PHON kindOf="original">tia</PHON>
@@ -11475,7 +11475,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="standard">IRR</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">IRRS</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">IRRS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">IRR</TRANSL>
             </M>
         </W>
         <W id="kkvNr-story_pani_S_129_W4">
@@ -11943,9 +11943,9 @@
             <FORM kindOf="standard">ni-ara-masinang</FORM>
             <PHON kindOf="standard">nia[r|ɾ]amasinaŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">完成-變成-紅色</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">PFV-變成-紅色</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">PFV-COS-紅色</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PFV-become-red</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">PFV-become-red</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">PFV-COS-red</TRANSL>
             <M id="kkvNr-story_pani_S_130_W13M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
@@ -11962,9 +11962,9 @@
                 <FORM kindOf="standard">ara</FORM>
                 <PHON kindOf="standard">a[r|ɾ]a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">變成</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">變成</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">become</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">become</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">COS</TRANSL>
             </M>
             <M id="kkvNr-story_pani_S_130_W13M2">
                 <FORM kindOf="original">masinang</FORM>
