@@ -178,6 +178,19 @@ the bottom with their ruling.
   atom-level make→CAUS would mislabel ~106 verb/root tokens to catch ~5; position-
   conditioned conversion is not supported. `make` IS a separator via its lexical
   atom (sep28). Revisit if position conditions are ever added to the converter.
+- **Rule 7 for non-voice codes the source bracketed: keep the brackets, or periods everywhere?** (2026-11-17,
+  maintainer: "send to outstanding issues"). The rulings on Rule 7 cover voice only: unv_notation_r4 "Rule 7
+  (see(AV)), with an exception to the 2026-11-11 parentheses ruling …", unv_scope_r5 "All 12,001 with a lexical
+  gloss; the 3,684 on affixes/auxiliaries stay as they are", card P1 (Wild-Lehmann voice tags) "these should remain
+  Rule 7", and for the Chang grammars "RUle 7, consistent with the rest of bank." RULE7-PARENS, however, keeps any
+  code-only parentheses the source wrote (codes = anything in the corpus table), so 2,718 standard glosses carry a
+  non-voice code in Rule 7 brackets, e.g. HPS f.we(inc) -> f.we(INCL) (x1,364, approved from before/after tables),
+  NTU Rukai 1P(IN) -> 1P(INCL). The same category therefore appears in two notations depending on the source: NTU
+  Kanakanavu 我們.包含 -> 我們.INCL (period) vs NTU Rukai 1P(INCL) and HPS we(INCL) (brackets). Leipzig Rule 7 is for
+  "Inherent, non-overt categories such as gender" (PDF p. 6); clusivity or case shown by a pronoun's form is overt
+  (Rule 4, periods). For case in the Chang grammars the maintainer ruled period notation ("We will need our
+  standardization to convert to use period notation (他.GEN) during standardization"). Open: keep the source's
+  brackets for non-voice codes, or write them with periods everywhere (we.INCL, 1P.INCL)?
 - **Chinese-tier Rule 7 glosses whose English twin is codes only** (2026-11-17): after RauDong's labels
   虛/使/祈/疊/動綴 became codes, a few zho glosses still read as Rule 7 because their Chinese piece may itself be a
   label, not a lexical gloss: RauDong 要(AV) (eng AV.CAUS), 參與(AV) and 能(AV) (eng AV); NTU 期使(PV) (eng PV.IMP;
