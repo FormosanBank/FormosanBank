@@ -6,3 +6,7 @@ pattern	replacement	description
 [()\[\]（）]	INVESTIGATE	maintainer rules-review 2026-11-11
 …	RESIDUE	unsegmentable → verbatim + residue report
 more&+bound	CONTEXT-CONVERT→CMPR	"maintainer q_cmpr 2026-11-16: ""Register CMPR 'comparative' and convert only more/tja- -> CMPR, and only when tja is bound (not when free-standing)."" Free-standing more falls through to the table (no row) and stays lexical."
+by&nua	CONTEXT-CONVERT→GEN	"maintainer 2026-11-17 (case page Paiwan note): ""For HPS's nua/by, ni/of, let's gloss those as GEN."" — nua ×619 is glossed only by/of and every multi-morph nua word is a genitive construction (nua-zua)"
+of&nua	CONTEXT-CONVERT→GEN	same ruling — the of-glossed half of nua
+by&ni	CONTEXT-CONVERT→GEN	"same ruling — ni ×336 is glossed only by/of; multi-morph ni words are all genitive constructions (ni-madju, ni-aken, ni-sun)"
+of&ni	CONTEXT-CONVERT→GEN	same ruling — the of-glossed half of ni. NOTE: nu/of ×200 and na/by-of ×4 are NOT covered (the ruling names nua and ni only)

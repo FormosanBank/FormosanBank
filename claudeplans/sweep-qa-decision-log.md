@@ -25374,3 +25374,25 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
 - Flagged for his eye (converted by the blanket pattern; revisit if wrong): 還（沒）×2 → 還.沒
   ('still (not)' — the bracket is not a grammatical code) and 知道=動貌（-他）/動貌（-他） → …動貌.-他
   (the bracket holds '-他' with its hyphen, yielding an odd '.-' sequence).
+
+### 2026-11-17 (cont.) — case-page follow-up round consumed: 2 rulings applied, 4 languages answered
+- RULED (Rukai note + chat "附著主格->NOM for Rukai, please!"): NTU 附著主格 ×978 → NOM (every token is
+  Rukai dru/Wutai ×977, so plain CONVERT is Rukai-scoped by the data). Rebuild: exactly 817 glosses
+  changed, all 附著主格→NOM. OPEN: his note also says "自由主格-> NOM" but NO 自由主格 label exists in the
+  data (free-pronoun labels are 自由主題格/FT ×30 and 自由斜格/FO ×306) — asked whether he meant 自由主題格.
+  ~160 附著主格 tokens inside parenthesized person glosses (第一人稱複數(包含).附著主格) remain paren-residue.
+  eng twin BN ×867 stays UNDECIDED (not named).
+- RULED (Paiwan note): "For HPS's nua/by, ni/of, let's gloss those as GEN." → four context rules
+  (by/of & nua/ni → GEN) in HundredPaiwanStories.rules.tsv. Rebuild: nua→GEN ×619 (all nua tokens),
+  ni→GEN ×336 (all ni tokens), nothing else; verified nu/'of' ×200 and na ×4 untouched (not named in
+  the ruling — asked whether they should follow). Safety shown first: every multi-morph nua/ni word is
+  itself a genitive construction (ni-madju, ni-aken, nua-zua …).
+- ANSWERED on the page (v32): Paiwan c/a (gloss c sits ONLY on form a ×5,783; a is also pl ×177 and
+  empty ×93 — nothing else is c) and ku/nu/su (present only as pronouns/lexical, never case-glossed);
+  Saisiyat 予格 (row exists, UNDECIDED ×36, eng twin DAT ×34; proposed 予格→DAT per his approved
+  vocabulary "DAT (Saisiyat)" — awaiting his word); Sakizaya count gaps (主格 3,055 = 1,808 with-eng
+  ≈ NOM 1,816 + 1,247 no-eng tier; 屬格 1,816 = 1,198 ≈ GEN 1,194 + 618 no-eng; 所有格 twin = POSS;
+  pronouns glossed 3SG.屬格↔3SG.GEN style); Kanakanavu ∅ (the page's own shorthand for "no gloss on
+  the other tier", now spelled out; the data has ONE literal ∅: ni-po'ocipi-∅=musu, NTU's own null
+  slot). Seediq/Truku/Tsou/Kavalan notes were the prior round, already answered.
+- 39 glossing tests pass; HPS + NTU gloss validators exit 0 (no HARD).
