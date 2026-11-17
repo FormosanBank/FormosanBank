@@ -26,7 +26,6 @@ signal. Page v2 adds cards s-homophones, f-homophones (18 total).
 ⏳ OPEN: 18 cards on https://claude.ai/artifact/1N7xc3PCVuYYsmyynos5S4 (db collection `answers`, doc ids = card ids;
 done flag `meta/round1`): s-homophones, f-homophones, s-version, s-xref, s-label, s-nochinese, s-embedded, s-heading, s-affix, s-nosense, s-stemtag,
 s-synrel, s-borrow, f-split, f-xref, f-fixme, f-affix, f-see. After answers: one branch/PR for both corpora (corpus folders only).
-<<<<<<< HEAD
 **2026-11-15 handover (maintainer switching computers):** drafts, page source and a resume guide committed on branch
 `plans/dictionary-headwords-handover`, folder `claudeplans/2026-11-12-dictionary-headwords/` — start at its `HANDOVER.md`.
 Answers on the page at handover: none (db `answers` and `meta` both empty).
@@ -182,8 +181,6 @@ in S04886 男孩子。), delete_empty 3. Examples 50,327 S; every other S unchan
 earlier ruling once: round 13 "Two sentences" S49500-opt (caay picinga.) deleted as fragment of S49494 (same sentence,
 fuller translation) — both readings stay published. Corpus tests updated accordingly (20 pass). ⏳ for the maintainer to
 confirm: the 12 punctuation-only substrings and S49500-opt.
-=======
->>>>>>> b10af81682fe737f20ce22d1eba21ec874e3e8f4
 
 ---
 ## 2026-11-09 — Local branch cleanup (shared checkout)
@@ -25123,8 +25120,6 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
 - Yedda unreviewed short glosses — *"DOn't worry now. That's a different task."* → stays on POL-021 list / #343.
 - Issues created by maintainer: #343 POL-021, #344 POL-061, #345 generate_xml_pending, #346 provenance_pending,
   #347 readme_sections_pending; linked from POLICIES.md + pending files, d408113af.
-<<<<<<< HEAD
-=======
 
 ### ⏳ OPEN (2026-11-15 — machine-switch handoff; status note, no rulings here)
 - Derivational-morphology round 1 awaiting answers: page
@@ -25418,4 +25413,3 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   free-standing stay lexical `more`; 576 changed lines, zero outside more/CMPR; 0 HARD.
 - Every question on the derivational decision page is now settled (page round 18, v20). Record:
   Glossing/ScopingReview/DerivationalMorphology.md; todos: Glossing/OutstandingIssues.md.
->>>>>>> b10af81682fe737f20ce22d1eba21ec874e3e8f4
