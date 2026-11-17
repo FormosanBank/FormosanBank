@@ -98,6 +98,14 @@ def context_matches(pattern: str, context_forms) -> bool:
         # Reserved pattern: the word is morphologically complex (>= 2 M
         # children) — maintainer q_cmpr 2026-11-16 ("only when tja is bound")
         return "#multi" in context_forms
+    # Opt-in positional forms (2026-11-17, the Bunun an- false positive):
+    # "X$" matches only a NON-INITIAL morpheme with core X; "^X" only an
+    # INITIAL one. The long-standing "-X"/"X-" forms are unchanged (any
+    # morpheme by core; word shape for unsegmented words).
+    if pattern.endswith("$"):
+        return ("#i+:" + form_core(pattern[:-1])) in context_forms
+    if pattern.startswith("^"):
+        return ("#i0:" + form_core(pattern[1:])) in context_forms
     core = form_core(pattern)
     if not core:
         return False
@@ -108,6 +116,8 @@ def context_matches(pattern: str, context_forms) -> bool:
                 return True
             if pattern.endswith("-") and word.startswith(core):
                 return True
+        elif f.startswith("#"):
+            continue
         elif f == core:
             return True
     return False
@@ -122,11 +132,11 @@ class Rules:
         self.residue_chars = ""
         keep_parens: list[str] = []
         note_parens: list[str] = []
-        # (atom, form core, target), in file order: "UV&-an / CONTEXT-CONVERT→LV"
-        # means an atom UV on a word one of whose morphemes is -an becomes LV.
-        # An atom with context rules but no matching form is kept as-is (the
-        # rules file states that fallback, e.g. "UV&⟨in⟩-only / KEEP-UV").
-        self.context_rules: list[tuple[str, str, str]] = []
+        # (atom, form core, target, language-or-None), in file order:
+        # "UV&-an / CONTEXT-CONVERT→LV" means an atom UV on a word one of
+        # whose morphemes is -an becomes LV; "處格@Bunun&-an" scopes the rule
+        # to Bunun. An atom with no matching rule falls through to the table.
+        self.context_rules: list[tuple[str, str, str, str | None]] = []
         with open(path, newline="", encoding="utf-8") as handle:
             for row in csv.DictReader(handle, delimiter="\t"):
                 repl = row["replacement"]
@@ -134,7 +144,12 @@ class Rules:
                 ctx = re.fullmatch(r"CONTEXT-CONVERT→(\S+)", repl)
                 if ctx and "&" in pat:
                     atom, form = pat.split("&", 1)
-                    self.context_rules.append((atom, form.strip(), ctx.group(1)))
+                    # "ATOM@Language&form" scopes the rule to one language
+                    # (maintainer, 2026-11-17); a bare atom applies to all.
+                    lang = None
+                    if "@" in atom:
+                        atom, lang = atom.split("@", 1)
+                    self.context_rules.append((atom, form.strip(), ctx.group(1), lang))
                 elif "&" in pat:
                     continue                    # documented fallback (KEEP-*)
                 elif repl in ("KEEP-SEPARATOR", "INFIX-BREAK"):
@@ -155,7 +170,7 @@ class Rules:
             r"(\s*(?:" + "|".join(keep_parens) + r"))") if keep_parens else None
         self.note_parens_re = re.compile(
             r"\s*(" + "|".join(note_parens) + r")") if note_parens else None
-        self.context_atoms = {a for a, _f, _t in self.context_rules}
+        self.context_atoms = {a for a, _f, _t, _l in self.context_rules}
         sep = "|".join(self.separators) or r"\."
         self.split_re = re.compile(f"({sep})")
         self.residue_re = re.compile(f"[{re.escape(self.residue_chars)}]") \
@@ -176,8 +191,9 @@ def convert_gloss(gloss: str, table: Table, rules: Rules, language: str,
 
     def std_atom(atom: str) -> str:
         if atom in rules.context_atoms:
-            for rule_atom, pattern, target in rules.context_rules:
-                if rule_atom == atom and context_matches(pattern, context_forms):
+            for rule_atom, pattern, target, rule_lang in rules.context_rules:
+                if rule_atom == atom and (rule_lang is None or rule_lang == language) \
+                        and context_matches(pattern, context_forms):
                     return target
             # No diagnostic form: fall through to the table (maintainer card
             # Q5, 2026-11-15). A table row with an empty standard still keeps
@@ -230,8 +246,16 @@ def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
     for word in root.iter("W"):
         morphs = word.findall("M")
         if rules.context_rules:
-            cores = {form_core(f.text) for m in morphs
-                     for f in m.findall("FORM") if f.text}
+            cores = set()
+            for i, m in enumerate(morphs):
+                for f in m.findall("FORM"):
+                    if not f.text:
+                        continue
+                    core = form_core(f.text)
+                    cores.add(core)
+                    # positional marks for the opt-in "X$" (non-initial) and
+                    # "^X" (initial) context patterns (2026-11-17)
+                    cores.add(("#i0:" if i == 0 else "#i+:") + core)
             if len(morphs) >= 2:
                 cores.add("#multi")   # for the reserved "+bound" pattern
             if not morphs:

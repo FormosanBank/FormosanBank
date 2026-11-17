@@ -491,3 +491,90 @@ def test_bound_context_pattern(tmp_path):
     _, g = glosses(d)
     assert g["m1"][("standard",)] == "BB"   # bound: rule fires
     assert g["m3"][("standard",)] == "AF"   # free-standing: falls to table, kept
+
+
+# ---- language-scoped context rules (maintainer, case page Bunun note
+# 2026-11-17: "We need to fix the zho side specifically for those items.
+# This probably requires some new functionality." — 處格 on Bunun -an words
+# must become LV while Kavalan's genuine locative marker an stays LOC) ----
+
+SCOPED_RULES = RULES + [
+    ("AF@Kavalan&-an", "CONTEXT-CONVERT→KK", "AF on -an words, Kavalan only"),
+]
+SCOPED_XML = """<TEXT xml:lang="{lang}" id="t8">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>tayan</FORM>
+    <M id="m1"><FORM>tay</FORM><TRANSL xml:lang="eng" kindOf="original">see</TRANSL></M>
+    <M id="m2"><FORM>-an</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+  </W>
+</S>
+</TEXT>"""
+
+
+def _scoped(tmp_path, lang):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(SCOPED_XML.format(lang=lang), encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(SCOPED_RULES)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    return glosses(d)[1]
+
+
+def test_language_scoped_context_rule(tmp_path):
+    g = _scoped(tmp_path, "ckv")               # Kavalan: rule fires
+    assert g["m2"][("standard",)] == "KK"
+    g = _scoped(tmp_path / "b", "tay")         # Atayal: rule skipped, table applies
+    assert g["m2"][("standard",)] == "AV"
+
+
+# ---- positional context patterns: "-an" must mean a NON-INITIAL morpheme,
+# "an-" an INITIAL one (Bunun an-sain-un false positive, 2026-11-17: the
+# prefix an- must not satisfy the suffix pattern -an) ----
+
+POS_XML = """<TEXT xml:lang="tay" id="t9">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>an-sain</FORM>
+    <M id="m1"><FORM>an</FORM><TRANSL xml:lang="eng" kindOf="original">carry</TRANSL></M>
+    <M id="m2"><FORM>sain</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+  </W>
+  <W id="w2"><FORM>tay-an</FORM>
+    <M id="m3"><FORM>tay</FORM><TRANSL xml:lang="eng" kindOf="original">see</TRANSL></M>
+    <M id="m4"><FORM>an</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+  </W>
+</S>
+</TEXT>"""
+
+
+def test_suffix_pattern_requires_non_initial_morpheme(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(POS_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(RULES + [("AF&an$", "CONTEXT-CONVERT→SS", "AF on words whose an is non-initial")])
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    _, g = glosses(d)
+    assert g["m2"][("standard",)] == "AV"   # word's an is INITIAL (prefix): rule must NOT fire; table applies
+    assert g["m4"][("standard",)] == "SS"   # word's an is non-initial (suffix): rule fires

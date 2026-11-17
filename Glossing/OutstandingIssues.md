@@ -150,6 +150,15 @@ the bottom with their ruling.
   child, +2 imp) is ≈5 tokens; the rest are sane-as-root (non-initial or
   voice-inflected ×81, e.g. ki-sane 'do-make', s⟨em⟩ane 'make<af>'), standalone
   verb sane ×14, and the root alang in nominalizations ×11 (si-alang-an). An
-  atom-level make→CAUS would mislabel ~106 verb/root tokens to catch ~5; position-
-  conditioned conversion is not supported. `make` IS a separator via its lexical
-  atom (sep28). Revisit if position conditions are ever added to the converter.
+  atom-level make→CAUS would mislabel ~106 verb/root tokens to catch ~5. `make` IS
+  a separator via its lexical atom (sep28). UPDATE 2026-11-17: opt-in positional
+  context patterns (`^X` initial / `X$` non-initial) now exist (added for the Bunun
+  處格 fix), so a `make&^sane → CAUS` rule is now technically possible — but the
+  ~5-token payoff still needs the maintainer to re-open this; not implemented.
+
+- **Bunun iskus-a=s — 1 token keeps zho 處格 on a verbal suffix (2026-11-17).** The
+  Bunun 處格-on-verbal-an fix (`處格@Bunun&an$ → LV`, maintainer's "fix the zho side"
+  ruling) covers the 13 suffixal -an tokens but not this one, whose suffix is the
+  -a allomorph ('lead.along-LF=...', Bunun.xml). A `-a` context pattern over-fires
+  on any word containing a morpheme a; no pattern isolates this single token.
+  Candidate future fix: a per-token manual edit, if ever worth it.

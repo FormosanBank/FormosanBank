@@ -25315,3 +25315,25 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   use the sia family (sia ×454, sain, sai, =sia, sian, i) before noun phrases. The zho 處格 label is the
   slip; LF is the coherent reading; the 13 join the known -an family (Tsukida OBL, Truku 受格, Saisiyat
   NMZ per Li-May).
+
+### 2026-11-17 (cont.) — RULED: Bunun 處格-on-verbal-an fixed on the zho side (new machinery: positional + language-scoped context rules)
+- His words (case page Bunun note, 2026-11-17): "The mislabel involving LF is on the zho side: 處格 (a
+  noun-case label) got stamped onto the verbal/derivational -an suffix; the eng LF is the coherent
+  reading. We need to fix the zho side specifically for those items. This probably requires some new
+  functionality."
+- New functionality in QC/glossing/apply_gloss_standard.py (test-first, 37/37 tests pass):
+  (a) language-scoped context rules — `ATOM@Language&pattern` fires only on words of that language
+  (needed because Kavalan's genuine locative marker IS an); (b) opt-in positional form patterns —
+  `X$` matches only a NON-INITIAL morpheme spelled X, `^X` only an initial one (needed because
+  form_core strips affix punctuation, so a plain `an` pattern also matched the Bunun PREFIX an- in
+  an-sain-un / an-sia, where 處格 sits on the sain/sia morpheme and is the genuine locative). Plain
+  patterns keep their old position-blind behavior — no settled rule (NAF&-i etc.) changes.
+- Rules row: `處格@Bunun&an$ → CONTEXT-CONVERT→LV` with his words in the description.
+- Result (strip+rebuild, 621,300 standard TRANSLs stripped and re-added): exactly 13 word tokens
+  changed, 26 TRANSLs (13 W + 13 M copies), all zho LOC→LV, 7 Bunun files, nothing else:
+  c⟨in⟩unghabin-an, da⟨i⟩dingi-an, dangi-an, h⟨in⟩ud-an, h⟨in⟩uud-an, habas-an, iskaan-an,
+  kat⟨da⟩da-an, kaunga-an=suu, lukis-an, pacidu-an=ku, ucia-an, uka-an (the 12 known + uka-an whose
+  eng twin is spelled "Lf"). an-sain-un / an-sia untouched (correctly: genuine locative on sain/sia).
+- Accepted limitation, logged in Glossing/OutstandingIssues.md: 1 token with the -a allomorph
+  (iskus-a=s 'lead.along-LF=...') keeps zho 處格 — an `-a` pattern over-fires on any word containing a
+  morpheme a, and no sane pattern isolates this one token.

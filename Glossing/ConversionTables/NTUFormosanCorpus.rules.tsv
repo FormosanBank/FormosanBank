@@ -10,3 +10,4 @@ pattern	replacement	description
 NAF&-i	CONTEXT-CONVERT→OV	maintainer-confirmed 2026-11-12 (c5 case-by-case): pa-spung-i (jid 15058) = the paper's expert-checked IF assignment → OV; the other NAF words (san/kasau/agan, no -i morpheme) stay unmapped
 非主焦&-i	CONTEXT-CONVERT→OV	zho twin of the NAF&-i rule (same token)
 REC&'arup-	CONTEXT-CONVERT→RECP	"card Q5 ""yes"" 2026-11-15 + card B exception: REC on an 'arup- word is the true reciprocal and gets RECP; all other REC falls through to the table (Kanakanavu→MULT override, RECP elsewhere)"
+處格@Bunun&an$	CONTEXT-CONVERT→LV	"case page Bunun note 2026-11-17: ""The mislabel involving LF is on the zho side: 處格 (a noun-case label) got stamped onto the verbal/derivational -an suffix; the eng LF is the coherent reading. We need to fix the zho side specifically for those items."" — Bunun 處格 on -an words is the verbal LF/LV, not the noun locative (which is the sia family); Kavalan untouched (its genuine locative marker IS an)"
