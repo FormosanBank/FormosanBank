@@ -25337,3 +25337,40 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
 - Accepted limitation, logged in Glossing/OutstandingIssues.md: 1 token with the -a allomorph
   (iskus-a=s 'lead.along-LF=...') keeps zho 處格 — an `-a` pattern over-fires on any word containing a
   morpheme a, and no sane pattern isolates this one token.
+
+### 2026-11-17 (cont.) — RULED: the seven composite-member conversions
+- His words: "Yes, go ahead and add those conversions." (in reply to the proposed seven: 遠距→DIST,
+  近距→PROX, 包含→INCL, 排除→EXCL, 過去→PST, 人名標記→PN, 所有格→POSS).
+- NTU rows set to CONVERT (所有格 keeps the Rukai→GEN override). Analogues checked per his 2026-11-16
+  bank-wide instruction before inclusion:
+  - Song-Kanakanavu 包含 ×30 → INCL (all tokens are 我們.包含.主格/屬格 = 1PL inclusive). Song 過去 ×2
+    NOT converted — both tokens are the word miana '當時/formerly', a lexical temporal adverb, not the
+    tense label; left UNDECIDED with a note.
+  - RauDong (Rukai) 過去 ×454 → PST (forms: ni ×136 = the Rukai past prefix, noka ×9, …);
+    所有格 ×2 → GEN (RauDong is Rukai, so the Rukai 所有格→GEN ruling applies, not POSS).
+- Rebuilds (strip+rebuild, counts in/out equal everywhere): NTU 6,854 TRANSLs changed — atom accounting:
+  遠距→DIST ×3272, 所有格→POSS ×1244, 過去→PST ×1022, 人名標記→PN ×476, 包含→INCL ×332, 近距→PROX ×289,
+  排除→EXCL ×287, nothing else. RauDong 474 TRANSLs (過去→PST ×472, 所有格→GEN ×2). Song 30 TRANSLs
+  (all 包含→INCL). 39 glossing tests pass; gloss validators exit 0 (no HARD) on all three.
+- Still UNDECIDED from the composite batch: 中距/MED, 存在/EXIST, 中性格/NEUT, RauDong 虛.
+
+### 2026-11-17 (cont.) — RULED: Chang fullwidth-paren codes become period notation (EMBEDDED-CODE implemented)
+- His words: "We will need our standardization to convert to use period notation (他.GEN) during
+  standardization, but leaving the original tier alone." (on Chang's 他（屬格） bracket notation).
+- The Seediq-Chang rules file had declared `EMBEDDED-CODE` since table setup but the converter never
+  implemented it (those glosses fell to the paren-residue path, copied verbatim). Now implemented in
+  QC/glossing/apply_gloss_standard.py, test-first (2 new tests; 39/39 pass): a rules row
+  `<regex with the code as group 1> EMBEDDED-CODE` rewrites 他（屬格） → 他.屬格 before segmentation,
+  so the inner code converts like any other atom; an UNDECIDED inner atom is copied verbatim into the
+  period notation (他.主格 until 主格 is ruled) and its row stays on the to-do list. Originals untouched.
+- Kavalan-Chang rules file given the same EMBEDDED-CODE row. 屬格 → GEN ruled in BOTH Chang tables (his
+  simulated target); 主格 and the other proposed rows remain UNDECIDED awaiting his batch approval.
+- Rebuilds: Seediq-Chang 188 TRANSLs changed (屬格→GEN ×114 bare; his exact examples: 他（屬格）×5→他.GEN,
+  喝-LF-他（屬格）×2→喝-LV-他.GEN, RF-吃-他（屬格）×2→OV-吃-他.GEN, 吃-PF-他（屬格）×1→吃-PV-他.GEN; plus all
+  other bracketed codes period-joined, e.g. 打（AF）×20→打.AV). Kavalan-Chang 156 TRANSLs (屬格→GEN ×86;
+  你（屬格）→你.GEN, 怎樣-你（屬格）=未來式→怎樣-你.GEN=未來式; role-label brackets 我（終點/賓語/處所/起點）
+  period-joined with labels still UNDECIDED). Residue in both corpora is now zero. Gloss validators
+  exit 0; Seediq-Chang's SOFT set verified identical to the pre-change baseline (stash check).
+- Flagged for his eye (converted by the blanket pattern; revisit if wrong): 還（沒）×2 → 還.沒
+  ('still (not)' — the bracket is not a grammatical code) and 知道=動貌（-他）/動貌（-他） → …動貌.-他
+  (the bracket holds '-他' with its hyphen, yielding an odd '.-' sequence).

@@ -13,7 +13,10 @@ INVESTIGATE/RESIDUE, e.g. parentheses) is copied verbatim and listed in the
 residue report. Two rules keywords refine parenthesis handling (maintainer
 2026-11-15): ``KEEP-PARENS <regex>`` marks LGR Rule 7 inherent-category
 chunks — kept with their parens, atoms inside converted, preceding space
-dropped, exempt from the residue check; ``NOTE-PARENS <regex>`` marks
+dropped, exempt from the residue check; ``EMBEDDED-CODE <regex>`` (maintainer
+2026-11-17) rewrites a bracketed code attached to a lexical gloss as
+period-joined — 他（屬格） → 他.GEN — converting the inner code (group 1 of
+the regex) like any other atom; ``NOTE-PARENS <regex>`` marks
 clarifier chunks that are removed from the standard text and stored on the
 standard TRANSL's ``notes`` attribute. Parens matching neither remain
 residue. Elements that already carry a standard TRANSL for that
@@ -132,6 +135,7 @@ class Rules:
         self.residue_chars = ""
         keep_parens: list[str] = []
         note_parens: list[str] = []
+        embedded: list[str] = []
         # (atom, form core, target, language-or-None), in file order:
         # "UV&-an / CONTEXT-CONVERT→LV" means an atom UV on a word one of
         # whose morphemes is -an becomes LV; "處格@Bunun&-an" scopes the rule
@@ -160,6 +164,8 @@ class Rules:
                     keep_parens.append(pat)
                 elif repl == "NOTE-PARENS":
                     note_parens.append(pat)
+                elif repl == "EMBEDDED-CODE":
+                    embedded.append(pat)
                 elif repl in ("INVESTIGATE", "RESIDUE") and pat not in ("…",):
                     self.residue_chars += pat.strip("[]")
         # LGR Rule 7 chunks (kept, atoms inside converted) and clarifier
@@ -170,6 +176,12 @@ class Rules:
             r"(\s*(?:" + "|".join(keep_parens) + r"))") if keep_parens else None
         self.note_parens_re = re.compile(
             r"\s*(" + "|".join(note_parens) + r")") if note_parens else None
+        # EMBEDDED-CODE (maintainer 2026-11-17, Chang 他（屬格）): a bracketed
+        # code attached to a lexical gloss is rewritten period-joined (LGR
+        # Rule 4) in the standard tier — 他（屬格） → 他.屬格 — before
+        # segmentation, so the inner code converts like any other atom. Each
+        # pattern must capture the inner code as group 1.
+        self.embedded_res = [re.compile(p) for p in embedded]
         self.context_atoms = {a for a, _f, _t, _l in self.context_rules}
         sep = "|".join(self.separators) or r"\."
         self.split_re = re.compile(f"({sep})")
@@ -184,6 +196,8 @@ def convert_gloss(gloss: str, table: Table, rules: Rules, language: str,
     holds any NOTE-PARENS chunks removed from the text (empty otherwise)."""
     original = gloss
     note = ""
+    for cre in rules.embedded_res:   # 他（屬格） → 他.屬格 (notation first)
+        gloss = cre.sub(lambda m: "." + m.group(1), gloss)
     if rules.note_parens_re and rules.note_parens_re.search(gloss):
         note = " ".join(m.group(1)
                         for m in rules.note_parens_re.finditer(gloss))

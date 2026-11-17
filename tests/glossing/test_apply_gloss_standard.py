@@ -578,3 +578,69 @@ def test_suffix_pattern_requires_non_initial_morpheme(tmp_path):
     _, g = glosses(d)
     assert g["m2"][("standard",)] == "AV"   # word's an is INITIAL (prefix): rule must NOT fire; table applies
     assert g["m4"][("standard",)] == "SS"   # word's an is non-initial (suffix): rule fires
+
+
+# ---- EMBEDDED-CODE: a fullwidth-paren code attached to a lexical gloss is
+# rewritten period-joined (LGR Rule 4), the inner atom converted by the table
+# (maintainer 2026-11-17, Chang 他（屬格）: "We will need our standardization
+# to convert to use period notation (他.GEN) during standardization, but
+# leaving the original tier alone.") ----
+
+EMB_TABLE = TABLE + [
+    ("屬格", "9", "CONVERT", "GEN", "ruling", "", ""),
+]
+EMB_RULES = RULES + [
+    ("（([^（）]+)）", "EMBEDDED-CODE",
+     "fullwidth parens attach a code — rewrite period-joined, look up inner"),
+]
+EMB_XML = """<TEXT xml:lang="trv" id="t9">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>a</FORM>
+    <TRANSL xml:lang="zho" kindOf="original">他（屬格）</TRANSL>
+  </W>
+  <W id="w2"><FORM>b</FORM>
+    <TRANSL xml:lang="zho" kindOf="original">LF-吃-他（屬格）</TRANSL>
+  </W>
+  <W id="w3"><FORM>c</FORM>
+    <TRANSL xml:lang="zho" kindOf="original">他（FIL）</TRANSL>
+  </W>
+</S>
+</TEXT>"""
+
+
+def make_embedded_corpus(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(EMB_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(EMB_TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(EMB_RULES)
+    return d, t, r
+
+
+def test_embedded_code_rewritten_period_joined(tmp_path):
+    d, t, r = make_embedded_corpus(tmp_path)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    _, g = glosses(d)
+    assert g["w1"][("standard",)] == "他.GEN"          # （屬格）→ .GEN
+    assert g["w2"][("standard",)] == "LV-吃-他.GEN"    # composite: all atoms convert
+    assert g["w1"][("original",)] == "他（屬格）"       # original untouched
+
+
+def test_embedded_code_undecided_inner_copied_verbatim(tmp_path):
+    d, t, r = make_embedded_corpus(tmp_path)
+    run(d, t, r)
+    _, g = glosses(d)
+    # notation standardized even while the inner atom awaits a ruling;
+    # the FIL row still reads UNDECIDED in the table (the to-do list)
+    assert g["w3"][("standard",)] == "他.FIL"
