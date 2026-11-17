@@ -669,3 +669,42 @@ def test_infix_gloss_brackets_on_words_with_an_infix_morpheme(tmp_path):
     root = ET.parse(d / "a.xml").getroot()
     std = {w.get("id"): [x.text for x in w.findall("TRANSL") if x.get("kindOf") == "standard"] for w in root.iter("W")}
     assert std == {"w1": ["<AV>talk"], "w2": ["<AV><PRF>meet=1SG.NOM"], "w3": ["AV-see"]}
+
+
+TWIN_XML = """<TEXT xml:lang="trv" id="t7">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM kindOf="original">k&lt;m&gt;barux</FORM>
+    <M id="m1"><FORM kindOf="original">-m-</FORM>
+      <TRANSL xml:lang="zho" kindOf="original">&lt;AF&gt;</TRANSL><TRANSL xml:lang="eng" kindOf="original">&lt;m&gt;</TRANSL></M>
+    <M id="m2"><FORM kindOf="original">-n-</FORM>
+      <TRANSL xml:lang="zho" kindOf="original">&lt;AF&gt;</TRANSL><TRANSL xml:lang="eng" kindOf="original">&lt;n&gt;</TRANSL></M>
+  </W>
+  <W id="w2"><FORM kindOf="original">s&lt;m&gt;ari</FORM>
+    <M id="m3"><FORM kindOf="original">-m-</FORM>
+      <TRANSL xml:lang="zho" kindOf="original">&lt;PFV&gt;</TRANSL><TRANSL xml:lang="eng" kindOf="original">&lt;m&gt;</TRANSL></M>
+  </W>
+</S>
+</TEXT>"""
+
+
+def test_twin_voice_replaces_a_self_gloss_with_the_other_tiers_voice(tmp_path):
+    # maintainer 2026-11-17: "If a verb has an affix that is self-glossed in one language but glossed as a voice
+    # marker in the other language AND its form is one that often appears voice-glossed, replace the self-gloss
+    # with the voice gloss." Shape: NTU Seediq grammar k<m>barux, -m- glossed zho <主事焦點> / eng <m>.
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(TWIN_XML, encoding="utf-8")
+    _d, t, r = make_r7_corpus(tmp_path / "tables", [])
+    with open(r, "a", encoding="utf-8") as h:
+        h.write("<([^<>]+)>\tKEEP-BRACKETS\tinfix\nm@Seediq\tTWIN-VOICE\tform m, Seediq\n")
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    root = ET.parse(d / "a.xml").getroot()
+    std = {m.get("id"): {x.get("{http://www.w3.org/XML/1998/namespace}lang"): x.text for x in m.findall("TRANSL")
+                         if x.get("kindOf") == "standard"} for m in root.iter("M")}
+    assert std["m1"] == {"zho": "<AV>", "eng": "<AV>"}    # listed form, other tier a voice code: replaced
+    assert std["m2"] == {"zho": "<AV>", "eng": "<n>"}     # form n not listed: kept
+    assert std["m3"] == {"zho": "<PFV>", "eng": "<m>"}    # other tier is not a voice code: kept
+    assert [x.text for x in root.iter("TRANSL") if x.get("kindOf") == "original"] == \
+        ["<AF>", "<m>", "<AF>", "<n>", "<PFV>", "<m>"]    # POL-036: originals untouched

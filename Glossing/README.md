@@ -40,6 +40,12 @@ as they are".
   (`go (AV)` → `go(AV)`); it is set per corpus (Wild-Lehmann only), because prose glosses define codes the same
   way (Yedda `conjunction (CONJ)`). It replaced the earlier `KEEP-PARENS` (maintainer, 2026-11-17: "Bracket fold:
   Approved.").
+- Self-glossed voice affixes (`<form>@<Language>  TWIN-VOICE`, NTU): when a morpheme's gloss only repeats its
+  form in one gloss language (`<m>`) and is a voice code in the other (`<AV>`), the voice code replaces the
+  self-gloss, for forms that are often voice-glossed (maintainer, 2026-11-17: "If a verb has an affix that is
+  self-glossed in one language but glossed as a voice marker in the other language AND its form is one that often
+  appears voice-glossed, replace the self-gloss with the voice gloss."). Rows: Seediq m; Kanakanavu um, ʉm, vm;
+  Atayal um (175 glosses). Not Kavalan an, Amis sa, Seediq mg (voice-glossed about half the time or rarely).
 - Infixes (LGR Rule 9): with `INFIX-GLOSS-BRACKETS` in a corpus's rules file, the gloss of each morpheme whose
   original FORM is written `-X-` (POL-014) is put in angle brackets in the word's standard gloss: `AV-talk` →
   `<AV>talk` for r-em-eŋaw. Set for Naomi-Tsukida only, whose source writes these with hyphens; the other

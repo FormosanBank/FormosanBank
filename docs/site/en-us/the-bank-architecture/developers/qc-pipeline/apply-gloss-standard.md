@@ -20,6 +20,7 @@ For every `W` and `M` gloss (`TRANSL` whose `xml:lang` is a gloss language):
 - **Rule 7 voice**: a gloss fusing one voice code with a lexical gloss (`AV.see`) is written `see(AV)`; a parenthesis attached to a gloss and holding only codes (`die(AV)`) is converted rather than flagged when the rules file declares `RULE7-PARENS` (maintainer, 2026-11-15).
 - **Rule 7 parentheses after a space** (`RULE7-PARENS-SPACED`, per corpus): `go (AV)` → `go(AV)`.
 - **Infix glosses in angle brackets** (`INFIX-GLOSS-BRACKETS`, per corpus; LGR Rule 9): in a word gloss, the gloss of a morpheme written `-X-` becomes `<X>`, e.g. `AV-talk` → `<AV>talk`.
+- **Self-glossed voice affixes** (`<form>@<Language>  TWIN-VOICE`): a morpheme glossed as itself in one gloss language takes the other language's voice code, e.g. eng `<m>` → `<AV>` beside zho `<AV>`.
 - **Whole-gloss replacement** (`<exact gloss>  WHOLE-GLOSS→<CODE>` lines): a gloss that is exactly that text becomes `<CODE>`, e.g. `(name)` → `PN` (maintainer, 2026-11-16).
 - **Added voice** (`<gloss>&=<stem>  CONTEXT-ADD→<VOICE>` lines): on a word whose form is `<stem>` and which carries no voice code, the morpheme glossed `<gloss>` gets `(<VOICE>)`.
 - Glosses containing characters the rules flag (for example other parentheses) are copied verbatim and listed in the **residue report**. Glosses with `<UNCLEAR/>` children convert their text segments and keep the children.

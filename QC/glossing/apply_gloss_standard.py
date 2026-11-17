@@ -42,6 +42,11 @@ A rules file may also declare ``<exact gloss>  WHOLE-GLOSS→<CODE>``: a gloss (
 ``<exact gloss>`` (after stripping outer whitespace) becomes ``<CODE>`` (maintainer, 2026-11-16, unvoiced-verbs audit
 whole_gloss_rule_r8: "Yes"), e.g. Yedda ``ligature (LIG)`` -> LNK, HPS ``(name)`` -> PN. The pattern is literal text,
 not a regular expression, and nothing but an exact match converts.
+A rules file may declare ``<form>@<Language>  TWIN-VOICE``: on a morpheme of that language whose original FORM is
+<form> (affix marks removed), when one gloss language's new standard only repeats the form (``<m>``) and the other
+language's standard is a voice code and nothing else (``<AV>``), the voice code replaces the self-gloss (maintainer,
+2026-11-17: "If a verb has an affix that is self-glossed in one language but glossed as a voice marker in the other
+language AND its form is one that often appears voice-glossed, replace the self-gloss with the voice gloss.").
 ``--redo-changed`` re-derives EXISTING standard glosses: one is replaced only if it is exactly what this tool
 produced before these rules (so hand-made standards stay untouched) and the new rules change it.
 
@@ -197,6 +202,7 @@ class Rules:
         self.infix_gloss_brackets = False
         self.add_rules: dict[tuple[str, str], str] = {}     # (word stem, morpheme gloss) -> voice
         self.whole_gloss: dict[str, str] = {}               # exact whole gloss -> standard
+        self.twin_voice: set[tuple[str, str]] = set()      # (form core, language) for TWIN-VOICE
         with open(path, newline="", encoding="utf-8") as handle:
             for row in csv.DictReader(handle, delimiter="\t"):
                 repl = row["replacement"]
@@ -215,6 +221,10 @@ class Rules:
                     continue
                 if repl == "RULE7-PARENS-SPACED":
                     self.rule7_parens = self.rule7_spaced = True
+                    continue
+                if repl == "TWIN-VOICE" and "@" in pat:
+                    form, lang = pat.rsplit("@", 1)
+                    self.twin_voice.add((form_core(form.strip()), lang.strip()))
                     continue
                 if repl == "INFIX-GLOSS-BRACKETS":
                     self.infix_gloss_brackets = True
@@ -372,12 +382,38 @@ def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
                             infixes.setdefault(t.get(XMLLANG), []).append(
                                 convert_gloss(text, table, rules, language, context)[0])
         for parent in [word] + morphs:
+            before = {id(t) for t in parent.findall("TRANSL") if t.get("kindOf") == "standard"}
             changed |= _process_element(parent, table, rules, write, stats,
                                         residue, language, context, redo=redo,
                                         voice_to_add=to_add.get(id(parent)),
                                         infixes=infixes if parent is word else None)
+            if rules.twin_voice and parent is not word:
+                changed |= _twin_voice(parent, rules, language, before, stats)
     if write and changed:
         tree.write(path, encoding="UTF-8", xml_declaration=True)
+    return changed
+
+
+def _twin_voice(m, rules, language, before, stats) -> bool:
+    """TWIN-VOICE: a newly written standard gloss that only repeats the morpheme's form takes the voice code of
+    the other gloss language's standard, if that is a voice code and nothing else."""
+    form = next((f.text for f in m.findall("FORM") if f.get("kindOf") in (None, "original") and f.text), "") or ""
+    fc = form_core(form.strip())
+    if (fc, language) not in rules.twin_voice:
+        return False
+    std = {t.get(XMLLANG): t for t in m.findall("TRANSL")
+           if t.get("kindOf") == "standard" and t.get(XMLLANG) in GLOSS_LANGS and not t.get("ver")}
+    changed = False
+    for lang, t in std.items():
+        if id(t) in before or len(t) or form_core((t.text or "").strip()) != fc:
+            continue
+        for other_lang, o in std.items():
+            atoms = [a for a in re.split(r"[.\-=<>\s()（）]+", o.text or "") if a]
+            if other_lang != lang and atoms and all(a in VOICES for a in atoms):
+                t.text = o.text
+                stats["twin_voice"] += 1
+                changed = True
+                break
     return changed
 
 
