@@ -25597,3 +25597,30 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   present on origin/main, unwaived (no NTU qc_waivers.tsv); earlier "0 HARD" readings were masked by
   piping validator output through tail/head (exit code read from the pipe, not the validator). Not
   introduced by this branch; flagged to the maintainer.
+
+### 2026-11-17 (cont.) — merged origin/main (rule7-voice #354) + case-page round 4
+- MERGE 64be1d5ae: main's RULE7-PARENS/TWIN-VOICE/WHOLE-GLOSS machinery + this branch's EMBEDDED-CODE,
+  @Lang context scoping, positional X$/^X — EMBEDDED-CODE ordered BEFORE the Rule 7 mask so Chang case
+  stays 他.GEN while voice takes 打(AV) (identical to main's voice output). Six corpora strip+rebuilt;
+  final tree vs origin/main = exactly this branch's rulings (atom-accounted; BN→NOM now the full ×980 —
+  rule7-voice's (IN)/(EX) unblocking reached the paren glosses). My KEEP-PARENS rows dropped (keyword
+  removed on main; RULE7-PARENS + table rows cover (包含)/(排除)/(人)/(HUM) — verified). RauDong's
+  non-ASCII-named Yami file needed restoring from origin/main (git path-quoting made checkout skip it;
+  caught because the strip crashed on the conflict markers). 47 glossing tests pass.
+- V067 investigation (maintainer: "these are some kinds of broken tags... look at raw"): CONFIRMED broken
+  source tags. Raw JSONs: Seediq <L2ThoN2T>. = opener <L2T + word hoN + closer missing its L (should be
+  L2T>); Tsou <L2MshiaolingLM>._ = closer missing its 2 (shiaoling = the name Shiao-Ling). The corpus's
+  own repair_l2_markers.py maps BOTH ('hoN2T>'→'hoN', 'shiaolingLM>'→'shiaoling'), 28 of its ~30 mapped
+  tokens are clean in the published XML, but a dry run now skips ALL 188 files on its round-trip guard
+  (the rebuilt XML no longer re-serializes byte-identically under its lxml check). Put to the maintainer:
+  fix in the NTU pipeline, relax the guard, or record 2 manual edits.
+- Round 4 notes (22:08–22:14) consumed: his three "did you update the table?" complaints were right in a
+  deeper way — HPS c/by/of (Paiwan), 予格 (Saisiyat) and the Rukai BN/BG/FO family were MISSING from the
+  page's mapping tables entirely (whitelist gap, same class as 2026-11-11). Rows added as APPLIED with
+  computed form profiles; Seediq 所有格 moved to a → POSS group and its OBL group re-badged UNDECIDED per
+  his amendment (data unchanged either way).
+- Rukai FT (conditional ruling "If not, then 自由主題格/FT -> NOM. Otherwise, please tell me more."):
+  evidence FOUND → "tell me more" branch, NOT converted. 語法概論 (Mantauran) §5.3.1.4 主題人稱代名詞 is
+  a distinct series from §5.3.1.1 主格; 「自由形代名詞是主題代名詞」; ex. (5-34) shows topic ilrae AND
+  nominative =lrai co-occurring in one clause. Caveat noted: grammar = Mantauran, NTU = Wutai. FT/
+  自由主題格 rows added to the table as pending; TOP mentioned as the conventional code if wanted.
