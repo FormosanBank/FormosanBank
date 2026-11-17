@@ -191,6 +191,21 @@ the bottom with their ruling.
   (Rule 4, periods). For case in the Chang grammars the maintainer ruled period notation ("We will need our
   standardization to convert to use period notation (他.GEN) during standardization"). Open: keep the source's
   brackets for non-voice codes, or write them with periods everywhere (we.INCL, 1P.INCL)?
+- **Affixes glossed as themselves in words with no voice code** (2026-11-17, maintainer on the unvoiced-verbs
+  audit, round 10: "Leave as glossed; list them (with the tables) in OutstandingIssues for the source
+  maintainers"). 994 words carry no voice code anywhere but contain a morpheme glossed as itself (e.g. Sakizaya
+  sa "SA", Seediq <n>) whose form some glosser of the same language glosses with a voice code at least 3 times.
+  Full list, one row per word with each form's language-wide gloss counts:
+  `ScopingReview/self_glossed_voice_affixes.tsv`. By corpus: NTU Sakizaya 368, Amis 238, Seediq 75, Kanakanavu 64,
+  Kavalan 51, Bunun 48, Saisiyat 6, Atayal 4, Tsou 1; Sakizaya-Affixes 78; ILCAA 30; Nowbucyang (Truku) 20; Song
+  6; Lin (Amis) 3; Amis-Pa-Verbs 2. Largest forms (language-wide: voice / itself / other code / lexical): Amis sa
+  198 words (24/223/5/38), Sakizaya ka 161 (46/227/6/61), Sakizaya sa 135 (55/143/418/256, mostly DM), Sakizaya ni
+  125 (12/173/41/78), Sakizaya pi 65, Seediq n 53 (59/139/166/15, mostly PFV), Kavalan an 49 (698/50/603/51),
+  Kanakanavu a 48. Most look like deliberate self-glosses (the same forms are often glossed DM, LOC, NMLZ, GEN,
+  PFV), and many words are nouns or numerals by their own word glosses. 115 words are on forms voice-glossed at
+  least 3 times and twice as often as not (column meets_threshold); 182 were already found by the unvoiced-verbs
+  audit (column in_unvoiced_audit; 22 of them on bare_forms_not_given_voice.tsv, the other 160 never voice-glossed
+  as a stem). No change made; for the corpus maintainers.
 - **Chinese-tier Rule 7 glosses whose English twin is codes only** (2026-11-17): after RauDong's labels
   虛/使/祈/疊/動綴 became codes, a few zho glosses still read as Rule 7 because their Chinese piece may itself be a
   label, not a lexical gloss: RauDong 要(AV) (eng AV.CAUS), 參與(AV) and 能(AV) (eng AV); NTU 期使(PV) (eng PV.IMP;
