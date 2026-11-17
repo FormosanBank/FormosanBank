@@ -25291,3 +25291,18 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   AV-head.to⟨RED⟩farmland · AV-前進⟨重疊⟩農田); floor 10 → 291 rows over 9 languages (Bunun 49,
   Kanakanavu 93, Kavalan 21, Rukai 3, Saisiyat 14, Sakizaya 27, Seediq 35, Truku 1, Tsou 48). Page v4.
 - Root-filter decision still pending (go/eat/take/say rows remain).
+
+### 2026-11-17 — case page: his 2026-11-17 notes consumed; one ruling applied; answers published
+- RULED (Rukai note): "所有格->GEN" → Rukai-only override on the NTU 所有格 row (×5 tokens, zho 所有格 ↔ eng
+  GEN); NTU rebuilt, exactly 10 lines changed; 35 tests passed. The bank-wide 所有格 (POSS ×1,217) stays
+  UNDECIDED.
+- Answers published into the case page (v28), one block per language, from the eng↔zho twin cross-tabs +
+  form-level checks + grammar passages. Highlights: Bunun 處格↔LOC ×594; Bunun mas/=s all Junqun, grammar
+  §5.1.2 「屬格／斜格標記mas」 PDF 99 = one dual-function marker (not dialects); Kanakanavu case is binary
+  (主格 sua / 處格 na, §5.1) so na-LOC ×337 vs OBL ×19 is relabeling, other OBL = pronoun paradigm, nguain
+  = 3SG pronoun in both sources; Kavalan 語法概論 §5.2.1.5 所有格人稱代名詞 zaku paradigm (unsegmented,
+  matches POSS); Paiwan 主格標記 ti/tia/a §5.1.1 → HPS c = nominative a (form-uniform ×3,166), nua/ni
+  reliable genitives (nu NOT reliable), Yedda NOM pronouns exist at W level + grammar §5.2.1.1; Rukai
+  LOC's zho label is 處所 (not 處格), OBL residue = OBL ×10 self + 主格 ×2; Saisiyat NOM/主格 aligned
+  (579/577), DAT = 予格, pronoun-only ×18; Sakizaya + Seediq eng-vs-zho count gaps = missing eng tiers
+  (∅-eng 主格 ×623 / ×461); Truku 受格 strays listed (lqi-an, ktu-an); Tsou 處格/受格 slip pairings listed.
