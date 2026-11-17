@@ -178,6 +178,11 @@ the bottom with their ruling.
   atom-level make→CAUS would mislabel ~106 verb/root tokens to catch ~5; position-
   conditioned conversion is not supported. `make` IS a separator via its lexical
   atom (sep28). Revisit if position conditions are ever added to the converter.
+- **Chinese-tier Rule 7 glosses whose English twin is codes only** (2026-11-17): after RauDong's labels
+  虛/使/祈/疊/動綴 became codes, a few zho glosses still read as Rule 7 because their Chinese piece may itself be a
+  label, not a lexical gloss: RauDong 要(AV) (eng AV.CAUS), 參與(AV) and 能(AV) (eng AV); NTU 期使(PV) (eng PV.IMP;
+  期使 is probably a typo of 祈使), 大(AV) (eng PROG), 花(AV) (eng AV.SII), 擁抱(AV), 抓(AV) (eng AV). One each;
+  to put to the maintainer.
 
 ## Resolved
 
