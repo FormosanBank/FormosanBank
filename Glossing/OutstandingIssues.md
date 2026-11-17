@@ -6,6 +6,31 @@ the bottom with their ruling.
 
 ## Open
 
+- **Bare forms glossed with and without voice, not given voice** (2026-11-15). The same stem is
+  voice-glossed in some sentences and left unglossed in others; only stems meeting the maintainer's criterion
+  ("Only when the stem is voice-glossed at least 3 times AND at least twice as often as it is not
+  voice-glossed.") got voice (CONTEXT-ADD rules). The other 240 stems (1,612 words) are in
+  `ScopingReview/bare_forms_not_given_voice.tsv` with the reason (voice-glossed < 3 times; < 2x as often as
+  unmarked; several voices). Largest: Kanakanavu misa (voice-glossed 18, unmarked 150), Bunun sadu (15/84).
+  The NTU maintainer is being asked about NTU's 458 such forms (list in austronesian-voice
+  results/lemma/unvoiced/ntu_forms.csv). Evidence: austronesian-voice src/lemma/unvoiced_audit.py.
+- **Parentheses other than Rule 7** (2026-11-15; updated 2026-11-16): ePark `（人名）`, NTU `(Mandarin)`, HPS
+  `(name)-(name)` ×1 and `go<perf>-(place)-nom` ×1 (the only `(name)`/`(place)` not covering the whole gloss),
+  Yedda `ligture (LIG)` ×1 (typo) and `ligature?` ×1… stay flagged; how to handle them is a GitHub issue
+  ("Glossing: parentheses in glosses: allow Leipzig Rule 7 stem(CODE), handle all other parentheses"). HPS
+  `(inc)`/`(exc)`, whole-gloss `(name)`/`(place)`, Yedda `ligature (LIG)` and NTU Rukai `1P(IN)`/`1P(EX)` are now
+  converted (see Resolved).
+- **NTU Kanakanavu `IN` = the suffix -in/=en, meaning undefined** (2026-11-16): 44 English + 52 Chinese glosses
+  (ride-where-IN, respond=IN; one twin pair reads CAU-do-how.many-PV vs 使役-做-多少-IN). Glossed `#IN` (as
+  itself) per the maintainer; to ask the NTU maintainer what it stands for.
+- **NTU Rukai =nay/nayane glossed (IN) ×3** (2026-11-16): the same forms are (EX) 排除 ×56; all 3 are in
+  20200530-FW-Ludwig S1–S3, both tiers agreeing. Converted as written (INCL); to ask the NTU maintainer.
+- **NTU's generate_xml.sh runs apply_gloss_standard only when manual_edits.xml exists** (2026-11-16): the call sits
+  inside the `if [[ -f manual_edits.xml ]]` branch, and NTU has no manual_edits.xml, so a full rebuild would not
+  write the standard gloss tier. Not changed; awaiting the maintainer.
+- **NTU full-form voice labels without rows** (from PR #351): 參考焦點 ×66, 受惠焦點 ×34; labels fused to a
+  lexical gloss with no separator (主事焦點吃 etc., ~25); 受事/處所焦點 with a half-width slash ×2.
+
 - **Amis locative `i` (NTU 處格/LOC, ×192/×191).** No approved mapping
   (maintainer, 2026-11-11). Reason: disagreement between NTU and the
   reference grammar — NTU glosses `i` as a locative case (處格/LOC), while
@@ -153,3 +178,56 @@ the bottom with their ruling.
   atom-level make→CAUS would mislabel ~106 verb/root tokens to catch ~5; position-
   conditioned conversion is not supported. `make` IS a separator via its lexical
   atom (sep28). Revisit if position conditions are ever added to the converter.
+- **Rule 7 for non-voice codes the source bracketed: keep the brackets, or periods everywhere?** (2026-11-17,
+  maintainer: "send to outstanding issues"). The rulings on Rule 7 cover voice only: unv_notation_r4 "Rule 7
+  (see(AV)), with an exception to the 2026-11-11 parentheses ruling …", unv_scope_r5 "All 12,001 with a lexical
+  gloss; the 3,684 on affixes/auxiliaries stay as they are", card P1 (Wild-Lehmann voice tags) "these should remain
+  Rule 7", and for the Chang grammars "RUle 7, consistent with the rest of bank." RULE7-PARENS, however, keeps any
+  code-only parentheses the source wrote (codes = anything in the corpus table), so 2,718 standard glosses carry a
+  non-voice code in Rule 7 brackets, e.g. HPS f.we(inc) -> f.we(INCL) (x1,364, approved from before/after tables),
+  NTU Rukai 1P(IN) -> 1P(INCL). The same category therefore appears in two notations depending on the source: NTU
+  Kanakanavu 我們.包含 -> 我們.INCL (period) vs NTU Rukai 1P(INCL) and HPS we(INCL) (brackets). Leipzig Rule 7 is for
+  "Inherent, non-overt categories such as gender" (PDF p. 6); clusivity or case shown by a pronoun's form is overt
+  (Rule 4, periods). For case in the Chang grammars the maintainer ruled period notation ("We will need our
+  standardization to convert to use period notation (他.GEN) during standardization"). Open: keep the source's
+  brackets for non-voice codes, or write them with periods everywhere (we.INCL, 1P.INCL)?
+- **Affixes glossed as themselves in words with no voice code** (2026-11-17, maintainer on the unvoiced-verbs
+  audit, round 10: "Leave as glossed; list them (with the tables) in OutstandingIssues for the source
+  maintainers"). 994 words carry no voice code anywhere but contain a morpheme glossed as itself (e.g. Sakizaya
+  sa "SA", Seediq <n>) whose form some glosser of the same language glosses with a voice code at least 3 times.
+  Full list, one row per word with each form's language-wide gloss counts:
+  `ScopingReview/self_glossed_voice_affixes.tsv`. By corpus: NTU Sakizaya 368, Amis 238, Seediq 75, Kanakanavu 64,
+  Kavalan 51, Bunun 48, Saisiyat 6, Atayal 4, Tsou 1; Sakizaya-Affixes 78; ILCAA 30; Nowbucyang (Truku) 20; Song
+  6; Lin (Amis) 3; Amis-Pa-Verbs 2. Largest forms (language-wide: voice / itself / other code / lexical): Amis sa
+  198 words (24/223/5/38), Sakizaya ka 161 (46/227/6/61), Sakizaya sa 135 (55/143/418/256, mostly DM), Sakizaya ni
+  125 (12/173/41/78), Sakizaya pi 65, Seediq n 53 (59/139/166/15, mostly PFV), Kavalan an 49 (698/50/603/51),
+  Kanakanavu a 48. Most look like deliberate self-glosses (the same forms are often glossed DM, LOC, NMLZ, GEN,
+  PFV), and many words are nouns or numerals by their own word glosses. 115 words are on forms voice-glossed at
+  least 3 times and twice as often as not (column meets_threshold); 182 were already found by the unvoiced-verbs
+  audit (column in_unvoiced_audit; 22 of them on bare_forms_not_given_voice.tsv, the other 160 never voice-glossed
+  as a stem). No change made; for the corpus maintainers.
+- **Chinese-tier Rule 7 glosses whose English twin is codes only** (2026-11-17): after RauDong's labels
+  虛/使/祈/疊/動綴 became codes, a few zho glosses still read as Rule 7 because their Chinese piece may itself be a
+  label, not a lexical gloss: RauDong 要(AV) (eng AV.CAUS), 參與(AV) and 能(AV) (eng AV); NTU 期使(PV) (eng PV.IMP;
+  期使 is probably a typo of 祈使), 大(AV) (eng PROG), 花(AV) (eng AV.SII), 擁抱(AV), 抓(AV) (eng AV). One each;
+  to put to the maintainer.
+
+## Resolved
+
+- **HPS (inc)/(exc), (name)/(place); NTU IN/EX, 包含/排除; Yedda ligature** (resolved 2026-11-16, unvoiced-verbs
+  audit round 8): HPS inc → INCL ("INCL (Leipzig; nothing to register)"), exc → EXCL ("Yes, exc → EXCL
+  (Leipzig)"), whole-gloss (name)/(place) → PN ("A: standard tier → PN; original unchanged"); NTU IN → INCL for
+  Rukai and #IN for Kanakanavu, EX → EXCL, 包含/包含式 → INCL, 排除/排除式 → EXCL ("Approved EXCEPT for the -in/=en
+  suffix in Kanakanavu, which should be glossed as #IN."); Yedda ligature and whole-gloss ligature (LIG) → LNK
+  ("LNK, as ruled on 2026-11-11 (no new code)").
+- **2 NTU word glosses stayed Rule 4** (`-carry.PV` / `-帶.PV`, `<UNCLEAR/>` child; resolved 2026-11-16): the
+  standard tier was rebuilt from scratch, which converts them (`-carry(PV)`).
+- **356 NTU standard glosses still read 主事焦點/受事焦點** (Grammar/Kanakanavu 145, Grammar/Seediq 211; labels
+  inside angle brackets, missed by PR #351; resolved 2026-11-16, maintainer: "Yes, fix them in the same PR").
+
+- **V122 counted Rule 7 parentheses** (opened 2026-11-15, resolved 2026-11-16): the SOFT rule
+  parens_slashes_anywhere flagged every `see(AV)` (NTU 4,687 → 50,969 findings). Ruling (maintainer,
+  2026-11-16): "exempt any gloss registered gloss code (including Leipzig codes) found inside parentheses when
+  there is also other content in the gloss". V122 now skips such parentheses in word and morpheme glosses
+  (codes from `leipzig_codes.tsv` and RULED rows of `supplementary_codes.tsv`). The 12 Chang glosses
+  `他(屬格)` / `你(屬格)` stay flagged until 屬格 (UNDECIDED, proposed → GEN) is ruled.

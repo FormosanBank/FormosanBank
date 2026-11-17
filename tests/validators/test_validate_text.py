@@ -711,6 +711,47 @@ def test_V122_slash_in_TRANSL_soft(tmp_path):
     )
 
 
+# V122 exemption (maintainer, 2026-11-16): "exempt any gloss registered gloss code (including Leipzig codes) found
+# inside parentheses when there is also other content in the gloss". Glosses below are real published shapes.
+
+def _v122_findings(gloss: str, level: str = "W") -> list:
+    transl = f'<TRANSL xml:lang="eng" kindOf="standard">{gloss}</TRANSL>'
+    if level == "W":
+        body = f'<W id="W1"><FORM kindOf="original">w</FORM>{transl}</W>'
+    elif level == "M":
+        body = f'<W id="W1"><FORM kindOf="original">w</FORM><M id="M1"><FORM kindOf="original">w</FORM>{transl}</M></W>'
+    else:
+        body = transl
+    xml = (
+        '<TEXT id="T" citation="c" BibTeX_citation="b" copyright="CC BY-NC 4.0" xml:lang="pwn"><S id="S_1">'
+        f'<FORM kindOf="original">w</FORM>{body}</S></TEXT>'
+    )
+    tree = etree.parse(BytesIO(xml.encode("utf-8")))
+    return [f for f in text_rules.v122_parens_slashes_anywhere(tree, Path("v122.xml"), None) if f.rule_id == "V122"]
+
+
+@pytest.mark.parametrize("gloss, level", [
+    ("leave(AV)", "W"),               # HundredPaiwanStories: a registered code (Leipzig Rule 7)
+    ("muntjac=(DIST.NOM)", "M"),      # NTUFormosanCorpus: two Leipzig codes joined by '.'
+    ("in or at, locative (LOC)", "W"),  # YeddaPalemeqBlog: prose with a Leipzig code
+])
+def test_V122_exempts_codes_in_parens_beside_other_gloss_text(gloss, level):
+    assert _v122_findings(gloss, level) == []
+
+
+@pytest.mark.parametrize("gloss, level, flagged", [
+    ("(OBL)", "W", 2),            # NTUFormosanCorpus: the code is the whole gloss, no other content
+    ("f.we(inc)", "W", 2),        # HundredPaiwanStories: 'inc' is not a registered code
+    ("um(FIL)", "W", 2),          # FIL is only PROPOSED in supplementary_codes.tsv, not registered
+    ("see(AV) (name)", "W", 2),   # only the (name) parens are flagged; (AV) is exempt
+    ("go (AV)", "S", 2),          # a sentence translation is not a word or morpheme gloss
+])
+def test_V122_still_flags_other_parens(gloss, level, flagged):
+    findings = _v122_findings(gloss, level)
+    assert len(findings) == flagged
+    assert all(f.severity == Severity.SOFT for f in findings)
+
+
 # -----------------------------------------------------------------------------
 # W6: TR4 — null in W/M standard FORM ⇒ also in sister original FORM (HARD)
 # -----------------------------------------------------------------------------

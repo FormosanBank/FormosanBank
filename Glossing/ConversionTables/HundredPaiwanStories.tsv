@@ -26,3 +26,5 @@ remove	138	CONVERT	REV	"q_rev ""rev"" 2026-11-15; verified: all remove tokens ar
 become	130	CONVERT	COS	"sep23 2026-11-15: ""Map to COS, after which it becomes separator."""		
 compl	96	UNDECIDED			documented code; definition in ScopingReview	
 excl	10	UNDECIDED			documented code; definition in ScopingReview	
+inc	862	CONVERT	INCL	maintainer 2026-11-16 (unvoiced-verbs audit round 8, hps_inc_code_r8): "INCL (Leipzig; nothing to register)"	only in we(inc)/our(inc) and variants	
+exc	502	CONVERT	EXCL	maintainer 2026-11-16 (unvoiced-verbs audit round 8, hps_exc_r8): "Yes, exc → EXCL (Leipzig)"	only in we(exc)/our(exc) and variants; bare 'excl' is a different item	

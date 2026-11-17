@@ -40,15 +40,15 @@ step "Build XML from the source JSONs (pipeline/build_subcorpora.sh)"
 step "Re-apply recorded hand edits (no-op when manual_edits.xml is absent)"
 if [[ -f "$CODEDOCS/manual_edits.xml" ]]; then
   "$PY" "$BANK/QC/cleaning/apply_manual_edits.py" --corpus "$CORPUS"
-
-  # Standard gloss tier (POL-036, additive): Glossing/ConversionTables/NTUFormosanCorpus.tsv
-  "$PY" "$BANK/QC/glossing/apply_gloss_standard.py" \
-      --path "$ROOT/XML" \
-      --table "$BANK/Glossing/ConversionTables/NTUFormosanCorpus.tsv" \
-      --rules "$BANK/Glossing/ConversionTables/NTUFormosanCorpus.rules.tsv" --write
 else
   echo "  no manual_edits.xml; nothing to re-apply"
 fi
+
+step "Standard gloss tier (POL-036, additive): Glossing/ConversionTables/NTUFormosanCorpus.tsv"
+"$PY" "$BANK/QC/glossing/apply_gloss_standard.py" \
+    --path "$CORPUS/XML" \
+    --table "$BANK/Glossing/ConversionTables/NTUFormosanCorpus.tsv" \
+    --rules "$BANK/Glossing/ConversionTables/NTUFormosanCorpus.rules.tsv" --write
 
 # POL-052: record the tools commit. A note, never a gate.
 commit="$(git -C "$BANK" rev-parse HEAD 2>/dev/null || true)"

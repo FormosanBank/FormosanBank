@@ -2,7 +2,12 @@ pattern	replacement	description
 \.	KEEP-SEPARATOR	period separates atoms (LGR Rule 4)
 -	KEEP-SEPARATOR	hyphen = normal morpheme break (source doc)
 =	INFIX-BREAK	source doc: '=' is an INFIX morpheme break, NOT a clitic (opposite of Leipzig) — segment but record infixation
-<([^<>]+)>	KEEP-BRACKETS	angle brackets = infix (LGR Rule 9) — keep brackets, look up inner atom(s); added per maintainer 2026-11-15 ('OK, let's add KEEP-BRACKETS for HPS.')
+x(CODE)	RULE7-PARENS	maintainer 2026-11-15 (unvoiced-verbs audit, unv_notation_r4 "Rule 7 (see(AV)), with an exception to the 2026-11-11 parentheses ruling…"; unv_tool_r5 "Yes, as described"): a parenthesis attached to a gloss and holding only codes (die(AV), 打（AF）) is a Leipzig Rule 7 category — converted, not residue
 [()\[\]（）]	INVESTIGATE	maintainer rules-review 2026-11-11
 …	RESIDUE	unsegmentable → verbatim + residue report
+say&=aya	CONTEXT-ADD→AV	maintainer 2026-11-15 (unvoiced-verbs audit, unv_paiwan_bare_r2): "Add them as AV (780 words)"
+leave&=vaik	CONTEXT-ADD→AV	maintainer 2026-11-15 (unvoiced-verbs audit, unv_paiwan_bare_r2): "Add them as AV (780 words)"
+(name)	WHOLE-GLOSS→PN	maintainer 2026-11-16 (unvoiced-verbs audit round 8, hps_name_r8): "A: standard tier → PN; original unchanged"; PN registered: proper noun, absorbs 人名, 地名
+(place)	WHOLE-GLOSS→PN	maintainer 2026-11-16 (unvoiced-verbs audit round 8, hps_name_r8): "A: standard tier → PN; original unchanged"; PN registered: proper noun, absorbs 人名, 地名
+<([^<>]+)>	KEEP-BRACKETS	angle brackets = infix (LGR Rule 9) — keep brackets, look up inner atom(s); added per maintainer 2026-11-15 ('OK, let's add KEEP-BRACKETS for HPS.')
 more&+bound	CONTEXT-CONVERT→CMPR	"maintainer q_cmpr 2026-11-16: ""Register CMPR 'comparative' and convert only more/tja- -> CMPR, and only when tja is bound (not when free-standing)."" Free-standing more falls through to the table (no row) and stays lexical."

@@ -17,7 +17,13 @@ For every `W` and `M` gloss (`TRANSL` whose `xml:lang` is a gloss language):
 - The gloss is segmented by the corpus's **rules file** (`Glossing/ConversionTables/<Corpus>.rules.tsv`): separators (`.`, `-`, `=`), infix brackets, and any corpus-specific conventions (for example prose separators for a corpus that glosses in sentences).
 - Each atom is looked up in the corpus's **conversion table** (`Glossing/ConversionTables/<Corpus>.tsv`): `CONVERT` rows map to their standard code, `KEEP` and `UNDECIDED` rows copy the atom unchanged. `language_overrides` apply per language (`trv` resolves to Seediq or Truku by the `dialect` attribute); an override to the code itself means "unmapped for this language".
 - **Context rules** (`CONTEXT-CONVERT→X` lines in the rules file) convert an atom only on words whose morphemes include a diagnostic affix; unsegmented words may satisfy an affix pattern by their own shape.
-- Glosses containing characters the rules flag (for example parentheses) are copied verbatim and listed in the **residue report**. Glosses with `<UNCLEAR/>` children convert their text segments and keep the children.
+- **Rule 7 voice**: a gloss fusing one voice code with a lexical gloss (`AV.see`) is written `see(AV)`; a parenthesis attached to a gloss and holding only codes (`die(AV)`) is converted rather than flagged when the rules file declares `RULE7-PARENS` (maintainer, 2026-11-15).
+- **Rule 7 parentheses after a space** (`RULE7-PARENS-SPACED`, per corpus): `go (AV)` → `go(AV)`.
+- **Infix glosses in angle brackets** (`INFIX-GLOSS-BRACKETS`, per corpus; LGR Rule 9): in a word gloss, the gloss of a morpheme written `-X-` becomes `<X>`, e.g. `AV-talk` → `<AV>talk`.
+- **Self-glossed voice affixes** (`<form>@<Language>  TWIN-VOICE`): a morpheme glossed as itself in one gloss language takes the other language's voice code, e.g. eng `<m>` → `<AV>` beside zho `<AV>`.
+- **Whole-gloss replacement** (`<exact gloss>  WHOLE-GLOSS→<CODE>` lines): a gloss that is exactly that text becomes `<CODE>`, e.g. `(name)` → `PN` (maintainer, 2026-11-16).
+- **Added voice** (`<gloss>&=<stem>  CONTEXT-ADD→<VOICE>` lines): on a word whose form is `<stem>` and which carries no voice code, the morpheme glossed `<gloss>` gets `(<VOICE>)`.
+- Glosses containing characters the rules flag (for example other parentheses) are copied verbatim and listed in the **residue report**. Glosses with `<UNCLEAR/>` children convert their text segments and keep the children.
 - `TRANSL`s with `ver=` (variant readings) are standardized like any other gloss, and their standard `TRANSL` carries the same `ver` value — so when a word has two glosses in one language, both appear in the standard tier, discriminated by `ver` exactly as the originals are. Multiple gloss languages on one element each get their own standard.
 - A bare original gloss without `ver=` is stamped `kindOf="original"` (a `ver=` variant stays unstamped, since the schema forbids two same-language originals); pre-existing standard glosses are never overwritten.
 
@@ -31,7 +37,7 @@ python QC/glossing/apply_gloss_standard.py --path <XML dir> \
     --rules Glossing/ConversionTables/<Corpus>.rules.tsv --write
 ```
 
-Without `--write` it is a dry run that prints the conversion statistics (converted / copied / residue / standard\_added). Every glossed corpus's `CodeAndDocs/generate_xml.sh` runs this as its final step.
+`--redo-changed` re-derives existing standard glosses that these rules change, replacing one only if it is exactly what the tool produced before (hand-made standards stay). Without `--write` it is a dry run that prints the conversion statistics (converted / copied / residue / standard\_added). Every glossed corpus's `CodeAndDocs/generate_xml.sh` runs this as its final step.
 
 ## Tests
 

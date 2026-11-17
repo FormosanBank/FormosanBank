@@ -47,6 +47,8 @@ Rule ID assignments (B9.4):
        V146 TR24 malformed [x|y] variant group in PHON (SOFT)
        V147 TR25 legacy x~y variant notation in PHON (SOFT)
 """
+import csv
+import functools
 import re
 from collections import Counter
 from pathlib import Path
@@ -728,23 +730,61 @@ def v121_parens_slashes_in_W_or_M_FORM(
     return findings
 
 
+_GLOSSING_DIR = _QC_ROOT / "Glossing"
+_V122_GROUP = re.compile(r"\(([^()]+)\)")
+
+
+@functools.lru_cache(maxsize=1)
+def _registered_gloss_codes() -> frozenset[str]:
+    """Leipzig codes (Glossing/leipzig_codes.tsv) plus the ruled codes of Glossing/supplementary_codes.tsv."""
+    codes: set[str] = set()
+    with (_GLOSSING_DIR / "leipzig_codes.tsv").open(encoding="utf-8") as handle:
+        codes.update(row["code"] for row in csv.DictReader(handle, delimiter="\t"))
+    with (_GLOSSING_DIR / "supplementary_codes.tsv").open(encoding="utf-8") as handle:
+        codes.update(row["code"] for row in csv.DictReader(handle, delimiter="\t")
+                     if row["status"].startswith("RULED"))
+    return frozenset(codes)
+
+
+def _v122_exempt_parens(elem: etree._Element, text: str) -> set[int]:
+    """Positions in ``text`` of the parens V122 skips (see its docstring)."""
+    parent = elem.getparent()
+    if elem.tag != "TRANSL" or parent is None or parent.tag not in ("W", "M"):
+        return set()
+    codes = _registered_gloss_codes()
+    exempt: set[int] = set()
+    for m in _V122_GROUP.finditer(text):
+        outside = (text[:m.start()] + text[m.end():]).strip()
+        if outside and all(part in codes for part in m.group(1).split(".")):
+            exempt.update((m.start(), m.end() - 1))
+    return exempt
+
+
 def v122_parens_slashes_anywhere(
     tree: etree._ElementTree,
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V122 SOFT (TR3): parens or '/' anywhere in FORM or TRANSL.
+    """V122 SOFT (TR3): parens or '/' anywhere in FORM or TRANSL, except parens holding only gloss codes in a word or morpheme gloss that has other text.
 
     Closes roadmap C023 ('/' = alternative forms) and C024 (parens in
     free translations: flag-only, no auto-normalize). One finding per
     occurrence so the SOFT CSV pins each row to the offending element.
+
+    Exempt (maintainer, 2026-11-16: "exempt any gloss registered gloss code
+    (including Leipzig codes) found inside parentheses when there is also
+    other content in the gloss"): the two parens of a group in a W- or
+    M-level TRANSL whose content is registered or Leipzig codes only
+    (joined by '.'), when the gloss has text outside that group, e.g. the
+    Leipzig Rule 7 see(AV). A gloss that is only '(OBL)' is still flagged.
     """
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
         text = _form_or_transl_text(elem)
-        for ch in text:
-            if ch in "()/":
+        exempt = _v122_exempt_parens(elem, text)
+        for i, ch in enumerate(text):
+            if ch in "()/" and i not in exempt:
                 findings.append(_soft_finding(
                     rule_id="V122",
                     message=(
