@@ -101,14 +101,9 @@ def test_reviewed_infixes_have_reconstructable_morphemes():
         "-en-",
         "=na",
     ]
-    assert [translation.text for translation in word.findall("TRANSL")] == [
-        "CV.PRF-buy=3SG.GEN",
-        "<CV.PRF>buy=3SG.GEN",
-    ]
-    assert [item.get("kindOf") for item in word.findall("TRANSL")] == [
-        "original",
-        "standard",
-    ]
+    # the build writes only the source gloss; the standard gloss comes from the shared gloss tool
+    assert [translation.text for translation in word.findall("TRANSL")] == ["CV.PRF-buy=3SG.GEN"]
+    assert [item.get("kindOf") for item in word.findall("TRANSL")] == [None]
     assert all(gloss.get("ver") is None for gloss in word.findall("TRANSL"))
     assert word.findtext("FORM[@kindOf='original']") == "b<en>arig=na"  # POL-014
     double_infix = root.find(
@@ -124,26 +119,26 @@ def test_reviewed_infixes_have_reconstructable_morphemes():
     ]
 
 
-def test_source_gloss_is_tiered_only_when_paired_with_standard():
+def test_build_writes_no_standard_gloss():
+    # Standard glosses, including the infix brackets (LGR Rule 9) of the 11 infixed words, are written by
+    # QC/glossing/apply_gloss_standard.py (INFIX-GLOSS-BRACKETS in the corpus's rules file), not by the build
+    # (maintainer 2026-11-17: "All this should go into our pending PR").
     _, _, tree = corpus_model()
     root = tree.getroot()
-    paired_words = [
-        word
-        for word in root.findall(".//W")
-        if word.find("TRANSL[@kindOf='standard']") is not None
-    ]
-    assert len(paired_words) == 11
-    assert all(
-        len(word.findall("TRANSL[@kindOf='original']")) == 1
-        for word in paired_words
-    )
-    assert all(
-        translation.get("kindOf") is None
-        for word in root.findall(".//W")
-        if word.find("TRANSL[@kindOf='standard']") is None
-        for translation in word.findall("TRANSL")
-    )
-    assert root.findall(".//M/TRANSL[@kindOf='original']") == []
+    assert root.findall(".//TRANSL[@kindOf='standard']") == []
+    assert root.findall(".//TRANSL[@kindOf='original']") == []
+
+
+def test_published_infix_glosses_come_out_bracketed():
+    published = ET.parse(
+        Path(__file__).resolve().parents[2] / "XML" / "Seediq" / "tsukida_2014_correlative_clauses_in_seediq.xml"
+    ).getroot()
+    def standard(word_id):
+        word = published.find(f".//W[@id='{word_id}']")
+        return word.findtext("TRANSL[@kindOf='standard']")
+    assert standard("tsukida2014_seediq_S006W3") == "<CV.PRF>buy=3SG.GEN"
+    assert standard("tsukida2014_seediq_S020W1") == "<AV><PRF>meet=1SG.NOM"
+    assert standard("tsukida2014_seediq_S009W2") == "<AV>talk"
 
 
 def test_analytical_wrappers_are_removed_only_at_word_edges():

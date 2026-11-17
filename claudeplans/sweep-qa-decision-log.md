@@ -26,6 +26,161 @@ signal. Page v2 adds cards s-homophones, f-homophones (18 total).
 ⏳ OPEN: 18 cards on https://claude.ai/artifact/1N7xc3PCVuYYsmyynos5S4 (db collection `answers`, doc ids = card ids;
 done flag `meta/round1`): s-homophones, f-homophones, s-version, s-xref, s-label, s-nochinese, s-embedded, s-heading, s-affix, s-nosense, s-stemtag,
 s-synrel, s-borrow, f-split, f-xref, f-fixme, f-affix, f-see. After answers: one branch/PR for both corpora (corpus folders only).
+**2026-11-15 handover (maintainer switching computers):** drafts, page source and a resume guide committed on branch
+`plans/dictionary-headwords-handover`, folder `claudeplans/2026-11-12-dictionary-headwords/` — start at its `HANDOVER.md`.
+Answers on the page at handover: none (db `answers` and `meta` both empty).
+**2026-11-15 round 1 answers (read from the page db 2026-11-15; 17 of 18 answered):**
+- Maintainer in chat, same day: *"Do not record headwords from section 23 of Safolu. For section 24, include only
+  headwords that do not appear in sections 1-22."* → RULED.
+- s-homophones = "Follow the book's entries, check the rest", note: *"My decision here does NOT apply to section 23 or
+  section 24. "* → RULED (main sections only; review cards still to come).
+- s-version = "Editors' version (4cb82539d)" → RULED. s-xref = "Leave it out" → RULED. s-label = "Put it in FORM notes"
+  → RULED. s-nochinese = "Leave it out" → RULED. s-embedded = "Move to the examples file" → RULED (option text: "after a
+  check round"). s-affix = "Leave them out" → RULED. s-nosense = "Leave them out" → RULED. s-stemtag = "Put them in FORM
+  notes" → RULED. s-synrel = "Don't publish them" → RULED.
+- s-borrow = "Move it to TRANSL notes", note: *"Have a list of these in a tsv, rather than listing them within the code.
+  That way I can check the list. Also show me the list to check!"* → RULED; list owed.
+- s-heading: no choice; note: *"Many of these senses include part-of-speech information: （前後綴）（語氣助詞）（後綴）
+  How have we been capturing that more generally in this corpus?"* → ⏳ OPEN (question to answer).
+- f-homophones = "One S per headword", note: *"Notes & Caveats should say: "Original source does not distinguish polysemy
+  from homophony. Thus in the wordlist, any homophones are listed under a single headword, with the different homophones'
+  meanings given as different senses.""* → RULED.
+- f-split = "Keep each sense whole" → RULED. f-xref = "Leave them out" → RULED. f-see = "Put them in FORM notes" → RULED.
+- f-fixme = "Drop those Chinese senses", note: *"Add in note that a Chinese sense was marked "fixme" and as been
+  dropped."* → RULED.
+- f-affix: no answer → ⏳ OPEN.
+**Applied to drafts 2026-11-15** (branch `plans/dictionary-headwords-handover` 00a091c19, HANDOVER.md §8): Safolu 42,289 S
+(370 section-23 + 77 section-24 senses dropped per sense via the converter's db; 29 section-23-only headwords out);
+Fey 4,704 S. ⏳ OPEN, round 2 on the same page (v3), card ids r2-merged (41 words printed in 01-22 whose only upstream
+sense matches the 23/24 wording), r2-sec23, r2-sec24 (check lists), r2-pos (answer to the s-heading question: only
+ILRDF_Dicts records POS, on TRANSL/@notes), r2-poslabels, r2-heading, r2-borrow (the TSV list asked for), r2-loanonly,
+r2-embedded (check round, 99 sentences), r2-f-affix, r2-f-fixme (2 cells only partly marked). Then: s-homophones
+review page for main sections.
+**Maintainer, chat 2026-11-15:** *"Ruled: if a headword appears twice, once capitalized and with a place name meaning and
+once not capitalized and not as a place name, it is a homophone and can get two entries."* → RULED (Safolu).
+Context: pinned JSON 4cb82539d has 1,234 headword files with 2+ h; 255 of them only because of sections 23/24.
+**Maintainer, chat 2026-11-15:** *"Ruled: pairs of headwords that differ in capitalization are homophones and get two
+entries."* → RULED (Safolu; extends the place-name ruling above to every capitalised/lowercase pair, e.g. faridaw 小米
+/ Faridaw 平埔人, nikar / Nikar 女性人名, patong 交棒 / Patong 日記).
+**Maintainer, chat 2026-11-15:** *"Also, obviously word-for-word identical cases, we delete one and keep the other."*
+→ RULED (Safolu repeated headwords: identical entries collapse to one).
+Asked same message: confirm suspected converter cuts by comparing the pasted-together fragments with the pre-parser text.
+→ Done: 152 breaks confirmed in the converter's input (db raw_contents); vs 2015 text: 90 paste exactly, 5 lost
+characters at the break (hacaen 復, tili'ien 對, mipasikiwan 對, tona 與, papitoay 具有), 57 uncheckable. Page v4 adds
+⏳ OPEN cards r2-cut-paste, r2-cut-lost, r2-cut-unchecked, r2-homs-notreview (395 non-homophone repeats as one S).
+**Maintainer, chat 2026-11-15:** quoting the section ruling (*"Do not record headwords from section 23 of Safolu. For
+section 24, include only headwords that do not appear in sections 1-22."*): *"can you please undo that for now? And then
+update the card."* → the section 23/24 ruling is ON HOLD (not applied in the drafts); ⏳ OPEN again as card r2-sections.
+**2026-11-15 round 2 answers (page db, read when the maintainer said "Please consume."; 9 of 13 answered, round not marked done):**
+- r2-borrow = "The list is right" → RULED (borrow_labels.tsv as is).
+- r2-loanonly = "FORM notes, like the 〔 〕 ones" → RULED.
+- r2-pos = "Move it to TRANSL notes (as ILRDF)", note: *"Please do this using a tsv of parts of speech for better
+  transparency. The TSV should be linked to in the appropriate part of the doc's description of the processing
+  pipeline."* → RULED.
+- r2-poslabels = "Change it (see note)", flags 刀 水 做 牲口 動物 東西 關於 植物 穀物 狗 人 用手, note: *"The ones I have
+  flagged so far can be left alone. Right now, to expand so I can see the additional rows, every time I flag something
+  it collapses again. Can you prevent that?"* → flagged labels stay in the text (confirmed "no"); ⏳ rest still being checked.
+- r2-cut-paste = "Paste them back together" → RULED (90).
+- r2-cut-lost: no choice; note: *"Which versions result in grammatical Chinese? "* → ⏳ OPEN (question to answer).
+- r2-embedded = "Add them (flagged rows aside)", 13 flags, note: *"Some of these were clearly sentence fragments. I think
+  I flagged them all. I don't know if they are part of your identified broken lines. "* → RULED for the unflagged 90;
+  ⏳ flagged 13 to check against the broken-line lists.
+- r2-f-affix = "Leave them out" → RULED. r2-f-fixme = "Drop only the marked part" → RULED.
+- Unanswered: r2-sections, r2-heading, r2-cut-unchecked, r2-homs-notreview.
+**Applied to drafts 2026-11-15** (branch `plans/dictionary-headwords-handover`, HANDOVER.md §10): Safolu 42,318 S, Fey 4,696 S.
+Found while checking the embedded flags: 70 of the 103 definition-field example sentences (all 13 flagged + 57 more)
+are broken across source paragraphs; rebuilt. Also: the round 1 s-label card's "almost all 〔疊 2〕" was WRONG (~140 of
+165 are borrowing labels, 20 疊 tags, 4 POS labels). ⏳ OPEN, round 3 page (v6): r2-sections, r2-poslabels (rest),
+r2-heading, r2-cut-lost (grammar question answered on card), r2-cut-unchecked, r2-homs-notreview, r3-embedded-rebuilt,
+r3-tags, r3-label-pos, r3-amis-tails.
+**2026-11-15 round 3 answers (page db, read when the maintainer said "Please consume."; 3 answered, round not marked done):**
+- r2-cut-unchecked = "Paste them back together", note: *"For notes and caveats: 57 items appeared to Claude to have had
+  single definitions split into two. These have been repaired, but not all have been checked by a human. See a list at
+  [INSERT LINK HERE].\n-----\nNote that I intend for you to link to the TSV and replace the `[INSERT LINK HERE]`. That
+  same tsv should be noted in the processing pipeline section of the doc."* → RULED (caveat text + TSV link at build).
+- r2-poslabels = "The yes/no column is right", flag 短語, note: *""短語" can be treated as a part of speech. Otherwise
+  parantheticals that you marked as not part of speech can be left in the definitons."* → RULED (POS list = 13 + 短語).
+- r2-heading: no choice; note: *"Please give me a list of the forms specifically. What is the phrase followed by a
+  colon?"* → ⏳ OPEN (list owed).
+**Applied 2026-11-15:** 147 breaks rejoined (90 + 57), 205 POS labels to TRANSL notes; Safolu 42,318 S / 56,145 TRANSL;
+list `repaired_breaks_unchecked.tsv` for the caveat link. Heading list answered on the card: 主要表示： in 9 of 11; most
+of those headwords are hyphen-less prefixes. ⏳ OPEN, round 4 page (v7): r2-sections, r2-heading, r2-cut-lost,
+r2-homs-notreview, r3-embedded-rebuilt, r3-tags, r3-label-pos (now 6 with 〔短語〕), r3-amis-tails (82), r4-affixes
+(81 hyphen-less affix headwords), r4-letters (21 alphabet-letter entries).
+**2026-11-15 round 4 answers (page db; round marked done 13:44; 7 of 10 answered):**
+- r2-cut-lost = "Restore from the 2015 text" → RULED (5).
+- r3-embedded-rebuilt = "Add the rebuilt sentences (flagged rows aside)", no flags → RULED (70).
+- r3-tags = "One 'Tag: [疊 N]' note each", note: *"But where are you getting the stem from? "* → RULED; question to answer.
+- r3-label-pos = "Notes on the translations (as your part-of-speech ruling)" → RULED.
+- r3-amis-tails = "Rebuild them as example sentences (next round)", flags afa, a, f, k, note: *"Where the definition starts
+  with a single word in latin characters following by mandarin with no intervening punctuation, leave as translation.
+  Attempt rebuilding the others. "* → RULED (rebuilt results shown before anything is added).
+- r4-affixes: no choice; note: *"Senses that are marked explicitly as affixes (後綴 or 前綴 in parentheses or brackets, now
+  listed as a note attribute) should be left out. Others can be assumed to be non-affix senses unless you have a strong
+  reason to believe they are affix meanings (in which case, please explain and list for my approval). "* → RULED (rule).
+- r4-letters = "Leave out the sound descriptions, keep word senses" → RULED (a, i, o split shown next page).
+- Unanswered: r2-sections, r2-heading, r2-homs-notreview.
+**Applied 2026-11-15** (HANDOVER.md §12): Safolu 42,290 S / 56,031 TRANSL. My oversight found and fixed: 29 pieces of the
+70 rebuilt examples were still headword translations (removed; malingses left with no sense) → shown on r5-pieces.
+Stem answer: author's own, printed after the headword ('acaen('aca), parsing-terms.rb → JSON stem. ⏳ OPEN, round 5 page
+(v8): r2-sections, r2-heading (7 left), r2-homs-notreview, r5-affix-approval (48), r5-letters-split, r5-pieces, r5-tails.
+**Maintainer, chat 2026-11-15 (while round 5 was open):** *"The H02336 translated as "O" can be rebuilt. You found a rebuild of
+"〔閩南語借詞〕 OKalingko ko ciem ako. 我的親家). That is a paranthetical at the beginning saying there's a loanword. Put that in
+a note and you've got a good example sentence. (I assume example sentences are going into the sentence XML, not our
+dictionary headword XML file.)"* → applied: example "O Kalingko ko ciem ako." / "我的親家母住花蓮。" (2015 text agrees);
+〔閩南語借詞〕 → TRANSL notes on 親家母，嬸子 (2015 prints it under the headword). Yes: examples go to amis_safolu_examples.xml.
+*"Similarly: "Co^eco saan a mararamod.(未經父母同意)結婚、同居。" you say can't be split into Amis + Chinese, but it looks like
+it can be??"* → my split pattern bug (Chinese opening with a bracket); fixed, also rebuilds pikilim.
+*"Another: "① fali anini.今天風小了。" Looks like it works fine if you get rid of the numerical marker ① ."* → the
+converter input lost text there; 2015 text: "① 小了，很小了。 / Mimingay ko fali anini. / 今天風小了。" → put to him.
+*"Otherwise, can consume."*
+**2026-11-15 round 5 answers (page db):** r2-sections = "Treat them like any other entry" → RULED (replaces the on-hold
+23/24 ruling). r2-heading = "Leave them out" → RULED. r2-homs-notreview = "One S each, flagged rows to the review" → RULED
+(468). r5-affix-approval = "Leave these out too" → RULED (48). r5-letters-split = "The split is right" → RULED.
+r5-pieces = "Right to remove them" → RULED. r5-tails: no choice, flags co^eco, mimingay (see chat above) → ⏳ rows I
+marked ⚑ and mimingay put back to him; the rest applied as "Add the rebuilt sentences" (my reading of "can consume").
+Found while fixing ciem: 29 headword lines the converter missed (sub-headwords filed under the previous headword).
+**Applied 2026-11-15** (HANDOVER.md §13): Safolu 42,284 S / 55,919 TRANSL; 159 new example sentences for the build.
+⏳ OPEN, round 6 page (v9): r6-tails-held (ona, paonol, mimingay), r6-missed-headwords (29), r6-homs-plausible (302,
+default separate), r6-homs-unclear (301, default one).
+**2026-11-15 round 6 answers (page db; round marked done 14:41; all 4 answered):** r6-homs-plausible = "Separate S per
+entry (flagged rows one S)", no flags → RULED (302). r6-homs-unclear = "One S each (flagged rows separate)", no flags →
+RULED (301). r6-missed-headwords = "Split them out as their own headwords (show me first)" → RULED (results to show).
+r6-tails-held: note *"The "ona" one is a translation. \nThe other two are example sentences. "* → RULED (paonol, mimingay
+as examples; mimingay from the 2015 text as shown). Chat same message: *"BUt also can you tell me where the notes about
+what the word's stem is come from?"* → answered: the author prints it after the headword ('acaen('aca), parsing-terms.rb → JSON stem.
+**Applied 2026-11-15** (HANDOVER.md §14): Safolu 42,584 S; 161 examples for the build. Correction made without asking
+(not a ruling change): 26 of the 302 "homophones" were halves of one broken sentence → one S (repaired break). ⏳ OPEN,
+round 7 page (v10): r7-missed-split (18, shown before applying), r7-missed-lost (7), r7-homs-oneprinted (54 split
+headwords the 2015 text prints as ONE entry — my card had mislabelled upstream entries as "printed entries").
+**2026-11-15 round 7 answers (page db; marked done 20:37; all 3 answered):** r7-missed-split = "Apply the splits (flagged
+rows aside)", no flags → RULED (18). r7-missed-lost = "Publish them from the converter's input (show me first)", no flags
+→ RULED (7; entries shown before they go in). r7-homs-oneprinted = "Keep them split" → RULED (54 stay split).
+**Applied 2026-11-15** (HANDOVER.md §15): Safolu 42,599 S / 55,935 TRANSL; 165 examples for the build; Fey 4,696 S.
+⏳ OPEN, round 8 page (v11): r8-lost-show (the 7 restored headwords), r8-build (go-ahead for the real build, plan on card).
+**2026-11-15 round 8 answers (page db; marked done 20:50):** r8-lost-show = "Publish as shown (flagged rows aside)", no
+flags → RULED. r8-build = "Go ahead" → RULED (build as planned on the card: both corpora, one PR, corpus folders only).
+**BUILT 2026-11-15:** branch `corpus/dictionary-headwords` commit 74a39ae5e (35 files, both corpus folders only).
+Safolu headwords 42,571 S, examples 50,483 S (+161; published S unchanged); Fey headwords 4,696 S. 0 HARD; tests pass;
+site builds. Awaiting the maintainer's push + PR. Pre-existing, separate: Fey audit_source_alignment.py 518 findings on main.
+**Maintainer, chat 2026-11-15:** *"so these should be published as alternate translations on the same example sentence,
+right?"* (the 3 definition-field examples already published with a different translation) → yes, POL-025; fixed in
+6ff97470e: S02224, S19851, S20552 gain a ver="alt" zho TRANSL; 158 new S (S50338-S50495); examples 50,480 S.
+*"Do we have other Safolu example sentences that should be combined using the ver functionality?"* → 153 standard FORMs
+held by 2 S each (306 S), the same on main (predates POL-025; the Safolu README's dedup step says differing
+translations stay separate S). Kinds: real alternative translations, typo variants (秤坨/秤砣), one translation cut
+short (S47089 畢還), one empty (S06913, S35363). ⏳ OPEN: review card(s) proposed, not built.
+**Maintainer, chat 2026-11-15 (RULED):** *"For other Safolu sentences needing combination: "Two real translations" -> use
+the ver="alt" option. "A typo variant" -> delete the typo. Use a TSV list for this so it's recorded. "One translation cut
+short" -> I assume this means that one translation is a strict substring of the other. In that case, delete the fragment.
+"One S with an empty translation" -> delete the one with the empty translation. That can go in this PR."*
+**Applied 2026-11-15** (corpus/dictionary-headwords e8a92c9c1; CodeAndDocs/same_sentence_merges.tsv, 153 rows): alt 131
+(3 with differing original spelling keep it as an original FORM ver="alt"), delete_typo 2 (S01191 秤坨→keep S01192 秤砣;
+S47085 鐡→keep S19838 鐵), delete_fragment 17 (12 of them substrings only when the final 。 is ignored, e.g. S49320 男孩。
+in S04886 男孩子。), delete_empty 3. Examples 50,327 S; every other S unchanged; 0 standard FORMs left on 2+ S. Meets an
+earlier ruling once: round 13 "Two sentences" S49500-opt (caay picinga.) deleted as fragment of S49494 (same sentence,
+fuller translation) — both readings stay published. Corpus tests updated accordingly (20 pass). ⏳ for the maintainer to
+confirm: the 12 punctuation-only substrings and S49500-opt.
 
 ---
 ## 2026-11-09 — Local branch cleanup (shared checkout)

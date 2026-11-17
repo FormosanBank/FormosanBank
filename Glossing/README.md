@@ -24,6 +24,53 @@ modified (POL-036, POL-062).
   glossed with a pair notation (e.g. `PV/LV`) rather than left unglossed —
   such tokens are excluded from voice *analysis* but must still be glossed.
 
+## Voice on forms with no voice affix (Leipzig Rule 7)
+
+Ruled by the maintainer on 2026-11-15 (unvoiced-verbs audit, https://claude.ai/artifact/HLiGFJQqfFCxAbFAZm8CDy):
+"Rule 7 (see(AV))", in FormosanBank, for "All 12,001 with a lexical gloss; the 3,684 on affixes/auxiliaries stay
+as they are".
+
+- When a gloss fuses one voice code with a lexical gloss (Leipzig Rule 4, `AV.see`, `say.AF`), the standard tier
+  writes it as an inherent category in round brackets (Leipzig Rule 7): `see(AV)`, `say(AV)`, `FUT.go(AV)`.
+  A group whose other pieces are all codes (an affix or auxiliary such as `AUX.AV`, `PV.IMP`) keeps the period.
+- Exception to the 2026-11-11 ruling "parens/brackets shouldn't be in glosses": a parenthesis attached to a gloss
+  and holding only codes (`die(AV)`, `打（AF）`) is a Rule 7 category; it is converted (`打(AV)`) instead of being
+  copied as residue. Every other parenthesis is still flagged (rules files: `RULE7-PARENS`).
+  `RULE7-PARENS-SPACED` also accepts a space between the gloss and the parentheses and drops it
+  (`go (AV)` → `go(AV)`); it is set per corpus (Wild-Lehmann only), because prose glosses define codes the same
+  way (Yedda `conjunction (CONJ)`). It replaced the earlier `KEEP-PARENS` (maintainer, 2026-11-17: "Bracket fold:
+  Approved.").
+- Self-glossed voice affixes (`<form>@<Language>  TWIN-VOICE`, NTU): when a morpheme's gloss only repeats its
+  form in one gloss language (`<m>`) and is a voice code in the other (`<AV>`), the voice code replaces the
+  self-gloss, for forms that are often voice-glossed (maintainer, 2026-11-17: "If a verb has an affix that is
+  self-glossed in one language but glossed as a voice marker in the other language AND its form is one that often
+  appears voice-glossed, replace the self-gloss with the voice gloss."). Rows: Seediq m; Kanakanavu um, ʉm, vm;
+  Atayal um (175 glosses). Not Kavalan an, Amis sa, Seediq mg (voice-glossed about half the time or rarely).
+- Infixes (LGR Rule 9): with `INFIX-GLOSS-BRACKETS` in a corpus's rules file, the gloss of each morpheme whose
+  original FORM is written `-X-` (POL-014) is put in angle brackets in the word's standard gloss: `AV-talk` →
+  `<AV>talk` for r-em-eŋaw. Set for Naomi-Tsukida only, whose source writes these with hyphens; the other
+  corpora's sources already bracket them.
+- A rules file may also replace one exact whole gloss: `<exact gloss>  WHOLE-GLOSS→<CODE>` (maintainer,
+  2026-11-16: "Yes"). Only a gloss that is exactly that text converts; the pattern is literal, not a regular
+  expression. In use: HundredPaiwanStories `(name)` and `(place)` → `PN` ("A: standard tier → PN; original
+  unchanged"); YeddaPalemeqBlog `ligature (LIG)` → `LNK` ("LNK, as ruled on 2026-11-11 (no new code)").
+- `validate_text` rule V122 (parentheses and slashes) skips these brackets (maintainer, 2026-11-16: "exempt any
+  gloss registered gloss code (including Leipzig codes) found inside parentheses when there is also other content
+  in the gloss"): in a word or morpheme gloss, a parenthesis whose content is only codes from
+  `leipzig_codes.tsv` or RULED rows of `supplementary_codes.tsv`, joined by periods, is not flagged when the gloss
+  has other text. A gloss that is only `(OBL)`, or a parenthesis holding an undecided code such as `他(屬格)`, is
+  still flagged.
+- Bare forms the sources leave without a voice gloss get one only by an explicit rule,
+  `<gloss>&=<stem>  CONTEXT-ADD→<VOICE>` in the corpus's rules file: on a word whose form (lower case, `=` clitics
+  removed) is `<stem>` and which carries no voice code at all, the morpheme glossed `<gloss>` gets `(<VOICE>)`.
+  The rules come from the audit's rulings: HundredPaiwanStories bare aya/vaik ("Add them as AV (780 words)");
+  NTU Bunun bare tupa/ta'aza/huud ("Those plus huud (74)"); and, in six corpora, stems voice-glossed elsewhere
+  ("Only when the stem is voice-glossed at least 3 times AND at least twice as often as it is not
+  voice-glossed."). The stems that did not qualify are listed in `ScopingReview/bare_forms_not_given_voice.tsv`
+  (see OutstandingIssues.md).
+- `QC/glossing/apply_gloss_standard.py --redo-changed` re-derives existing standard glosses under these rules,
+  replacing one only if it is exactly what the tool produced before (hand-made standards are left alone).
+
 ## The files
 
 - **`ConversionTables/<Corpus>.tsv`** — one row per atomic gloss code:
@@ -41,6 +88,10 @@ modified (POL-036, POL-062).
   standardize to (RULED vs PROPOSED, each with its basis). Grows as rulings
   land; nothing enters a conversion table's `standard` column unless it is
   Leipzig-listed or in this file.
+- **`leipzig_codes.tsv`** — the 83 standard abbreviations of the Leipzig
+  Glossing Rules (`code · meaning`), copied from the appendix "List of
+  Standard Abbreviations" of `Leipzig-Glossing-Rules.pdf` (PDF pages 8–10).
+  Read by `validate_text` rule V122.
 - **`ScopingReview/<Corpus>.md`** — the corpus's scoping findings: its
   documented glossing conventions (with sources), code inventory, internal
   inconsistencies, and deviations from Leipzig.

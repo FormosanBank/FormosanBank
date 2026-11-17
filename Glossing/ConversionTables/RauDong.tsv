@@ -11,7 +11,7 @@ P	1544	KEEP	P	Leipzig-listed/composed or registry code
 AF	1433	CONVERT	AV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
 1	1362	KEEP	1	Leipzig-listed/composed or registry code		
 SUB	1314	CONVERT	SBJV	"approved on the derivational decision page 2026-11-15 (card M6) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	proposed → SBJV (documented meaning; batch approval pending)	
-RED	1237	UNDECIDED			documented code; definition in ScopingReview	
+RED	1237	KEEP	RED	maintainer 2026-11-17: "RauDong RED->RED"; RED registered (supplementary_codes.tsv)	documented code; definition in ScopingReview	
 AUX	1170	KEEP	AUX	Leipzig-listed/composed or registry code		
 LOC	976	KEEP	LOC	Leipzig-listed/composed or registry code		
 處格	966	UNDECIDED				
@@ -92,3 +92,8 @@ AFPAdrop	1	UNDECIDED
 AFPAreturn	1	UNDECIDED				
 AFend	1	UNDECIDED				
 PAAFadhere	1	UNDECIDED				
+虛	1314	CONVERT	SBJV	maintainer 2026-11-17: "2. Sounds good." (convert RauDong's Chinese labels to their English twins' codes; 動綴 stays undecided)	zho twin of SUB (eng SUB -> SBJV): 受焦.虛 = PF.SUB	
+使	121	CONVERT	CAUS	maintainer 2026-11-17: "2. Sounds good." (convert RauDong's Chinese labels to their English twins' codes; 動綴 stays undecided)	zho twin of CAU (-> CAUS)	
+祈	41	CONVERT	IMP	maintainer 2026-11-17: "2. Sounds good." (convert RauDong's Chinese labels to their English twins' codes; 動綴 stays undecided)	zho twin of IMP	
+疊	1240	CONVERT	RED	maintainer 2026-11-17: "2. Sounds good." (convert RauDong's Chinese labels to their English twins' codes; 動綴 stays undecided); maintainer 2026-11-17: "RauDong RED->RED"	zho twin of RED	
+動綴	526	UNDECIDED		maintainer 2026-11-17: "2. Sounds good." (convert RauDong's Chinese labels to their English twins' codes; 動綴 stays undecided)	zho twin of VF (UNDECIDED); a code row so it is not read as a lexical gloss	

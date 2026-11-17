@@ -71,7 +71,7 @@ the validator names on its `Details:` line, never to the terminal.
 | V116 | `non_ascii_in_form` | SOFT | file | count non-ASCII characters in ALL FORM tiers. |
 | V120 | `null_in_S_standard` | SOFT | file | null symbol '∅' in S-level standard FORM is a warning. |
 | V121 | `parens_slashes_in_W_or_M_FORM` | HARD | file | parens or '/' in W- or M-level FORM is forbidden. |
-| V122 | `parens_slashes_anywhere` | SOFT | file | parens or '/' anywhere in FORM or TRANSL. |
+| V122 | `parens_slashes_anywhere` | SOFT | file | parens or '/' anywhere in FORM or TRANSL, except parens holding only gloss codes in a word or morpheme gloss that has other text. |
 | V123 | `null_in_WM_std_requires_sister_original_null` | HARD | file | if a W- or M-level standard FORM contains the null symbol, the W's or M's direct-child kindOf='original' FORM must also contain it. |
 | V124 | `null_in_M_requires_parent_W_and_S_original` | HARD | file | if an M FORM contains '∅', the parent W must also have a FORM containing '∅', AND the S-level original-tier FORM must also contain '∅'. |
 | V125 | `null_in_W_requires_child_M_and_S_original` | HARD | file | if a W FORM contains '∅', AT LEAST ONE child M FORM must also contain '∅', AND the S-level original-tier FORM must contain '∅'. |
