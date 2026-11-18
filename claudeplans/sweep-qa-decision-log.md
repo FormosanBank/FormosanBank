@@ -25644,3 +25644,17 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   next full pipeline rebuild. NTU validate_glosses now exits 0 with NO HARD findings (V067: 2 → 0).
 - origin/main checked after his "the other agent's PR has now hit": already merged (64be1d5ae covers
   #354; no commits on main since bfa02c02a).
+
+### 2026-11-18 — case-page round 5 consumed: FT→TOP and the Tsou voice plan applied
+- RULED (Rukai): "自由主題格/FT -> TOP (Assuming that person is still glossed on these items, so they are
+  recognized as pronouns.) Otherise approved." — condition verified (member-wise conversion leaves person
+  atoms: 1S.FT → 1S.TOP); TOP is Leipzig (leipzig_codes.tsv:82) and already in the Rukai dictionary.
+  Rebuild: 自由主題格→TOP ×30, FT→TOP ×26. Rukai case mapping now fully settled.
+- RULED (Tsou): "Please apply plan for those five verb forms. Otherwise, approved." — six Tsou-scoped
+  context rules (處格@Tsou&aiti/peelʉi→LV, 受格@Tsou&eainca/enca/'i'ima→PV, 與格@Tsou&zoepzeni→OV).
+  Rebuild ×18 TRANSLs; outputs take Rule 7 parens (說(PV), 看(LV)) via the merged voice machinery —
+  consistent with the Chang ruling — and the eng twins (say.PF/see.LF/hold.high.BF) convert to the same
+  codes, so both tiers agree. i-he '3PL.受格' (eng 3PL.GEN) untouched (falls through; 受格 UNDECIDED).
+  Still open: the lone Tsou 予格 token (teoteai-neni, eng BF→OV) — asked whether it follows.
+- Paiwan/Saisiyat/Seediq flipped to approve (their table-update questions satisfied). NTU gloss validator
+  exit 0, 0 HARD; 47 glossing tests pass. Page v36.

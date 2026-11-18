@@ -153,7 +153,7 @@ LUS	28	UNDECIDED		undocumented; definition needed	zho twin: LU×4
 EXPER	28	UNDECIDED		undocumented; definition needed	zho twin: 經驗×28	
 PLACE	28	UNDECIDED		undocumented; definition needed	zho twin: 地方×24; 地方標記×4	
 REAL	27	CONVERT	RLS	"approved on the derivational decision page 2026-11-15 (card M2) — realis twin of the irrealis family (RLS registered) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	zho twin: 實現×27	
-FT	26	UNDECIDED		undocumented; definition needed	zho twin: 自由主題格×26	
+FT	26	CONVERT	TOP	maintainer 2026-11-18 (case page Rukai note): "自由主題格/FT -> TOP (Assuming that person is still glossed on these items, so they are recognized as pronouns.)" — person features are untouched (member-wise conversion: 1S.FT → 1S.TOP); TOP is Leipzig	zho twin: 自由主題格×26 — free topic pronouns (all Rukai)	
 VOC	26	KEEP	VOC	Leipzig: listed; standard tier keeps it	zho twin: 呼格×24; 呼告×1	
 CU	26	UNDECIDED		undocumented; definition needed		
 TAKU	26	UNDECIDED		undocumented; definition needed		
@@ -686,7 +686,7 @@ CA重疊	45	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng t
 過去貌	42	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PAST×35	
 主焦重疊	39	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: RED×22; AFRED×13	
 予格	36	UNDECIDED		maintainer 2026-11-17 (Saisiyat note): "予格 → DAT" — Saisiyat-scoped because the lone Tsou token is the benefactive voice suffix -neni (eng twin BF), part of the open Tsou voice question	eng twin: DAT×34 (Saisiyat); Tsou ×1 = neni/BF	Saisiyat→DAT
-自由主題格	30	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FT×26	
+自由主題格	30	CONVERT	TOP	maintainer 2026-11-18 (case page Rukai note): "自由主題格/FT -> TOP (Assuming that person is still glossed on these items, so they are recognized as pronouns.)" — person features are untouched (member-wise conversion: 1S.FT → 1S.TOP); TOP is Leipzig	eng twin: FT×26	
 單數	30	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: SG×30	
 驚嘆	26	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INT×24	
 有生命	26	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ANIM×26	
