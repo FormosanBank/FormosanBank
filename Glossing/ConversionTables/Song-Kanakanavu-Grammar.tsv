@@ -1,18 +1,18 @@
 source_code	count	status	standard	basis	notes	language_overrides
 主事焦點	704	CONVERT	AV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
-主格	698	UNDECIDED			proposed → NOM (documented meaning; batch approval pending)	
-屬格	342	UNDECIDED			proposed → GEN (documented meaning; batch approval pending)	
+主格	698	CONVERT	NOM	maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36)	proposed → NOM (documented meaning; batch approval pending)	
+屬格	342	CONVERT	GEN	maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36)	proposed → GEN (documented meaning; batch approval pending)	
 人名	284	CONVERT	PN	v5/v6 + g4		
 受事焦點	276	CONVERT	PV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
 否定詞	274	CONVERT	NEG	"approved on the derivational decision page 2026-11-15 (card M1) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""		
 非實現	268	CONVERT	IRR	"approved on the derivational decision page 2026-11-15 (card M2) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""		
 完成貌	254	UNDECIDED			proposed → PFV (documented meaning; batch approval pending)	
 重疊	184	UNDECIDED				
-處格	176	UNDECIDED				
+處格	176	CONVERT	LOC	maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36)		
 存在	134	UNDECIDED				
 主題	132	UNDECIDED				
 使動	86	CONVERT	CAUS	approved on the derivational decision page 2026-11-15 (DerivationalMorphology.md card D)		
-斜格	84	UNDECIDED			proposed → OBL (documented meaning; batch approval pending)	
+斜格	84	CONVERT	OBL	maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36)	proposed → OBL (documented meaning; batch approval pending)	
 祈使	76	CONVERT	IMP	"approved on the derivational decision page 2026-11-15 (card M3) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	proposed → IMP (documented meaning; batch approval pending)	
 工具焦點	42	CONVERT	OV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
 包含	30	CONVERT	INCL	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows) — analogous item per his 2026-11-16 bank-wide instruction; all 30 in 我們.包含.主格/屬格 (1PL inclusive)		

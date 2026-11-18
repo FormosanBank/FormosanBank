@@ -240,3 +240,9 @@ the bottom with their ruling.
   there is also other content in the gloss". V122 now skips such parentheses in word and morpheme glosses
   (codes from `leipzig_codes.tsv` and RULED rows of `supplementary_codes.tsv`). The 12 Chang glosses
   `他(屬格)` / `你(屬格)` stay flagged until 屬格 (UNDECIDED, proposed → GEN) is ruled.
+
+- **Tsou 予格 ×1 (teoteai-neni) — UNDECIDED, on the todo list (maintainer 2026-11-18:
+  "The lone 予格 token should be UNDECIDED and go on our todo list.").** The zho label
+  予格 sits on the benefactive voice suffix -neni; the eng twin BF converts to OV (4th-voice
+  ruling), so the standard tiers currently disagree on this one morpheme (zho 予格 verbatim,
+  eng OV). The 予格 row stays UNDECIDED with its Saisiyat→DAT override; nothing fires for Tsou.

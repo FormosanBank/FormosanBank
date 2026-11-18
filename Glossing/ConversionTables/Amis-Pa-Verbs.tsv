@@ -2,7 +2,8 @@ source_code	count	status	standard	basis	notes	language_overrides
 NCM	96	CONVERT	PN	v5/v6 ruling		
 NOM	58	KEEP	NOM	Leipzig-listed/composed or registry code		
 CAU	56	CONVERT	CAUS	v8 ruling (bank-wide)		
-DAT	46	KEEP	DAT	Leipzig-listed/composed or registry code		
+CaU	2	CONVERT	CAUS	case variant of CAU in the source (UV-CaU-give, s32bw0m0); same v8 bank-wide CAU→CAUS ruling. Surfaced 2026-11-18 when the full rebuild replaced two early hand-made standard glosses that had normalized CaU→CAU and never received UV→PV		
+DAT	46	CONVERT	OBL	maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36)		
 UV	41	CONVERT	PV	"maintainer 2026-11-12 (chat): ""Amis-Pa-Verbs UV -> PV. Otherwise, approved."""	documented code; definition in ScopingReview	
 1S	22	UNDECIDED			proposed → 1SG (documented meaning; batch approval pending)	
 GEN	20	KEEP	GEN	Leipzig-listed/composed or registry code		
@@ -11,7 +12,6 @@ PREP	12	KEEP	PREP	Leipzig-listed/composed or registry code
 3S	4	UNDECIDED			proposed → 3SG (documented meaning; batch approval pending)	
 LNK	4	KEEP	LNK	Leipzig-listed/composed or registry code		
 MA	4	UNDECIDED				
-CaU	2	UNDECIDED				
 NEG	2	KEEP	NEG	Leipzig-listed/composed or registry code		
 IMP	2	KEEP	IMP	Leipzig-listed/composed or registry code		
 ASP	2	UNDECIDED			documented code; definition in ScopingReview	

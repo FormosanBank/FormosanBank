@@ -25658,3 +25658,31 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   Still open: the lone Tsou 予格 token (teoteai-neni, eng BF→OV) — asked whether it follows.
 - Paiwan/Saisiyat/Seediq flipped to approve (their table-update questions satisfied). NTU gloss validator
   exit 0, 0 HARD; 47 glossing tests pass. Page v36.
+
+### 2026-11-18 — RULED: the approved case mapping applied bank-wide; all glossed corpora rebuilt
+- His words: "The lone 予格 token should be UNDECIDED and go on our todo list. Otherwise, this is now all
+  approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline."
+- Tsou 予格: already UNDECIDED-behaving (Saisiyat→DAT override only); todo entry added to
+  OutstandingIssues.md.
+- The page's mapping tables (v36) implemented as the spec. New table state, atom-accounted in the
+  rebuild of all 17 glossed corpora (16,281 changed TRANSLs; nothing outside the approved atoms):
+  RauDong 屬格→GEN ×3952 · 主格→NOM ×2216 · 處格→LOC ×966 · 斜格→OBL ×504; HPS obl→OBL ×2268 ·
+  loc→LOC ×1621; NTU 處所→LOC ×1116 (Rukai+Kanakanavu overrides) · 受格→ACC ×1053 (Atayal+Saisiyat)
+  · 受格/ACC→OBL ×262 (Rukai/Kanakanavu overrides + the Bunun mas/pronoun-series fold rules; the
+  -un/tu voice slips stay verbatim as approved) · 中性格→NEU ×271 (Atayal override; NEU registered per
+  the approved vocabulary line) · POSS→GEN ×199 (Kanakanavu clitics; tamna keeps POSS via context
+  rules — verified: tamna standard = POSS ×121, GEN ×0) · 處所格→LOC ×120; Song 主格/屬格/斜格/處格
+  ×1297; Kavalan-Chang 受格→OBL ×250 · 主格→NOM ×208 · 處所格→LOC ×84; Nowbucyang 主格→NOM ×352;
+  Seediq-Chang 主格→NOM ×276; Amis-Kavalan-Lin ABS→NOM ×114 · ERG→GEN ×84; Amis-Pa-Verbs DAT→OBL ×46.
+  Not converted, per the amendments: Seediq/Tsukida OBL (UNDECIDED), Tsou 受格 he token, Seediq 受格 ×3 /
+  Amis ×1 strays, non-approved-language 處所 (ckv ×19, xsy ×7), Yedda ∈word prose rows, Amis i (open).
+- CORRECTION of 2026-11-17 work: RauDong is YAMI (tao, 794 sentences, sole language) — not Rukai as my
+  basis texts claimed. Its 所有格 row re-ruled GEN→POSS under the bank-wide 所有格→POSS ruling (diff ×2);
+  過去→PST stands (the Yami past-perfective prefix ni-), basis corrected in the row.
+- Amis-Pa-Verbs: the full rebuild replaced two early HAND-MADE standard glosses (UV-CAU-give, CaU) —
+  the regenerated output is more ruled, not less: UV→PV (his 2026-11-12 ruling finally reaches the
+  token) and CaU→CAUS via a new case-variant row (deduped against a pre-existing UNDECIDED CaU row that
+  was silently shadowing it — Table takes the last duplicate). No other hand-made standards surfaced in
+  any corpus diff.
+- 47 glossing tests pass (the dictionary test caught NEU needing Atayal-only scoping — fixed — and two
+  missing dictionary entries: Truku NOM, Yami POSS); gloss validators exit 0 on NTU, RauDong, HPS, Song.

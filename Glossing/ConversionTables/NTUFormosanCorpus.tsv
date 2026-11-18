@@ -36,12 +36,12 @@ FUT	1692	KEEP	FUT	Leipzig: listed; standard tier keeps it	zho twin: 未來×1359
 COS	1613	KEEP	COS	"maintainer row-review 2026-11-11: ""approved as marker for change of state"""	zho twin: 改變狀態×583; 狀態改變×330	
 REL	1530	KEEP	REL	Leipzig: listed; standard tier keeps it	zho twin: 關係詞×1461; 關係×12 | row-approved 2026-11-11	
 CN	1524	KEEP	CN	maintainer vocabulary ruling v4 2026-11-11 (supplementary_codes.tsv)	zho twin: 量詞×5; 籃子×2 | row-approved 2026-11-11	
-POSS	1492	KEEP	POSS	Leipzig: listed; standard tier keeps it	zho twin: 所有格×1217; 可能×72 | approved as possessive; his note's 72 可能 cases investigated: Rukai maka-/law- glossed POSS.MOD ↔ 可能.情態 = POSSIBILITY modal — NTU's POSS covers two categories; the POSS.MOD composite flagged for its own decision	
+POSS	1492	KEEP	POSS	Leipzig: listed; standard tier keeps it	zho twin: 所有格×1217; 可能×72 | approved as possessive; his note's 72 可能 cases investigated: Rukai maka-/law- glossed POSS.MOD ↔ 可能.情態 = POSSIBILITY modal — NTU's POSS covers two categories; the POSS.MOD composite flagged for its own decision | Kanakanavu clitic POSS → GEN per the 2026-11-11 tamna ruling; tamna keeps POSS via context rule	Kanakanavu→GEN
 AV	1468	KEEP	AV	voice: undocumented spelling of AF; same standard	zho twin: 主焦×1309; 主格×5 | row-approved 2026-11-11	Bunun→#AV (maintainer 2026-11-12: av-a-dii words glossed as themselves; # marks a not-understood word glossed as itself)
 STAT	1414	KEEP	STAT	maintainer vocabulary ruling v3 2026-11-11 (supplementary_codes.tsv)	zho twin: 狀態×1134; 靜態×18 | row-approved 2026-11-11	
 KA	1306	UNDECIDED		undocumented; definition needed	zho twin: 耙梳×1	
 NMLZ	1257	KEEP	NMLZ	Leipzig: listed; standard tier keeps it	zho twin: 名物化×1172; 處所×4 | row-approved 2026-11-11	
-ACC	1183	KEEP	ACC	Leipzig: listed; standard tier keeps it	zho twin: 受格×1166; 受焦×6 | row-approved 2026-11-11	
+ACC	1183	KEEP	ACC	Leipzig: listed; standard tier keeps it	zho twin: 受格×1166; 受焦×6 | row-approved 2026-11-11 | Kanakanavu ACC folds into OBL per the approved mapping; Bunun via context rules (same fold/drop split as 受格)	Kanakanavu→OBL
 PROG	1110	KEEP	PROG	Leipzig: listed; standard tier keeps it	zho twin: 進行×1022; 進行貌×72 | row-approved 2026-11-11	
 NMZ	1080	CONVERT	NMLZ	NTU point F.iii departure; back to Leipzig NMLZ per maintainer 2026-11-11	zho twin: 名物化×1015; 名物話×6	
 1PL	1052	KEEP	1PL	Leipzig: legal composition; kept	zho twin: 1SG×4; 1Pl×2 | row-approved 2026-11-11	
@@ -83,7 +83,7 @@ FAC	316	UNDECIDED		undocumented; definition needed	zho twin: 表事實×147; 事
 NI	312	UNDECIDED		undocumented; definition needed		
 FO	308	CONVERT	OBL	maintainer 2026-11-17 (case page Rukai note #3/#4): "BN->NOM" / "BG, 附著屬格 -> GEN; FO, 自由斜格 -> OBL. Please point this out in notes and caveats for this corpus." All tokens are Rukai (dru)	zho twin: 自由斜格×302; 自由主題格×4 — free oblique	
 PI	302	UNDECIDED		undocumented; definition needed		
-NEU	285	UNDECIDED		undocumented; definition needed	zho twin: 中性格×273; 屬格×2	
+NEU	285	UNDECIDED		registered 2026-11-18 per the approved vocabulary line (NEU (Atayal)) + maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36)	zho twin: 中性格×273; 屬格×2	Atayal→NEU
 PASS	278	KEEP	PASS	Leipzig: listed; standard tier keeps it	zho twin: 被動×264; 被動式×2	
 RF	275	CONVERT	OV	voice: NTU point D referential focus = 4th voice; maintainer 2026-11-11: OV	zho twin: 指焦×176; 參焦×61	
 CLF	264	KEEP	CLF	Leipzig: listed; standard tier keeps it	zho twin: 量詞×26	
@@ -593,10 +593,10 @@ AFCA	1	UNDECIDED		undocumented; definition needed	zho twin: 主焦CA×1
 近指	1570	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROX×1542	
 狀態	1474	CONVERT	STAT	approved on the derivational decision page 2026-11-15 (DerivationalMorphology.md card A)	eng twin: STAT×1134	"Bunun→DUR (card A2 choice ""dur"" 2026-11-15: 布農語語法概論 PDF 146, al- is 持續貌2 durative, like Mandarin 著; fn.26 names -al)"
 未來	1452	CONVERT	FUT	"approved on the derivational decision page 2026-11-15 (card M5) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	eng twin: FUT×1359	
-所有格	1259	CONVERT	POSS	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: POSS×1217; GEN×10	"Rukai→GEN (case page Rukai note 2026-11-17: ""所有格->GEN""; Rukai 所有格 ×5 all pair with eng GEN, unlike the POSS pairing elsewhere)"
-受格	1233	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ACC×1166; PF×28	
+所有格	1259	CONVERT	POSS	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: POSS×1217; GEN×10	"Rukai→GEN (case page Rukai note 2026-11-17: ""所有格->GEN""; Rukai 所有格 ×5 all pair with eng GEN, unlike the POSS pairing elsewhere)" Kanakanavu→GEN
+受格	1233	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: ACC×1166; PF×28 | maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36) — Bunun via mas/pronoun-series context rules (the -un/tu voice slips drop, i.e. stay verbatim); Tsou via the voice rules + i-he verbatim; Seediq ×3 and Amis ×1 strays stay verbatim	Atayal→ACC Saisiyat→ACC Rukai→OBL Kanakanavu→OBL
 介系詞	1233	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PREP×963	
-處所	1188	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LOC×1169	
+處所	1188	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LOC×1169 | maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36) — other languages' 處所 (ckv ×19, xsy ×7) not in the approved tables, left verbatim	Rukai→LOC Kanakanavu→LOC
 不可見	1122	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INV×916; INVIS×200	
 進行	1028	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PROG×1022	
 過去	1021	CONVERT	PST	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: PST×619; PFV×67	
@@ -638,7 +638,7 @@ Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng 
 近距	306	CONVERT	PROX	maintainer 2026-11-17: "Yes, go ahead and add those conversions." (the proposed seven composite-member rows)	eng twin: PROX×230	
 自由斜格	306	CONVERT	OBL	maintainer 2026-11-17 (case page Rukai note #3/#4): "BN->NOM" / "BG, 附著屬格 -> GEN; FO, 自由斜格 -> OBL. Please point this out in notes and caveats for this corpus." All tokens are Rukai (dru)	eng twin: FO×302	
 排除	287	CONVERT	EXCL	maintainer 2026-11-16 (unvoiced-verbs audit round 8, ntu_in_ex_r8): "Approved EXCEPT for the -in/=en suffix in Kanakanavu, which should be glossed as #IN."	eng twin: EXCL×209	
-中性格	273	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEU×273	
+中性格	273	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NEU×273 | maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36) — NEU registered (approved vocabulary: NEU (Atayal))	Atayal→NEU
 被動	272	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PASS×264	
 情態	236	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: MOD×229	
 有	216	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXIST×16	
@@ -653,7 +653,7 @@ Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng 
 存在詞	158	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: EXIST×144	
 工具焦點	152	CONVERT	OV	variant of 工焦	eng twin: IF×8	
 未實現	130	CONVERT	IRR	"approved on the derivational decision page 2026-11-15 (card M2) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	eng twin: IRR×93	
-處所格	124	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LOC×124	
+處所格	124	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LOC×124 | maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36)	Kanakanavu→LOC
 遠指	122	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: DIST×122	
 表過去	118	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: PAST×54	
 感嘆詞	108	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INT×102	
