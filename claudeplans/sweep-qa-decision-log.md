@@ -25624,3 +25624,23 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   a distinct series from §5.3.1.1 主格; 「自由形代名詞是主題代名詞」; ex. (5-34) shows topic ilrae AND
   nominative =lrai co-occurring in one clause. Caveat noted: grammar = Mantauran, NTU = Wutai. FT/
   自由主題格 rows added to the table as pending; TOP mentioned as the conventional code if wanted.
+
+### 2026-11-18 — RULED: the two V067 broken-tag fixes absorbed into the NTU pipeline
+- His words: "Absorb the two fixes into the NTU pipeline itself."
+- Pipeline: two malformed-closer alternatives added to _L2M_RE in CodeAndDocs/scripts/utils.py (the
+  mechanism all builders share via strip_l2m), with the same single-source-typo comment style as the
+  2026-10-18 '<T2...' precedent: '2T>' (closer missing its L; <L2ThoN2T>. → hoN, sdqNr-ricah_uma R14)
+  and 'LM>' / bare 'LM' (closer missing its 2; <L2MshiaolingLM>._ and the ori stream's shiaolingLM. →
+  shiaoling, TsouConv-typhoon R245). Unit-verified against all legacy cases (jidensha, hikokiL2J,
+  s<en>aqay untouched, maML2, <L2haiya); 3 new parametrized cases in tests/corpora/
+  test_ntu_source_parsing.py (23 passed).
+- Published XML fixed to match what the fixed pipeline now produces, mirroring repair_l2_markers.py's
+  witness semantics (ET serialization so the diff is exactly the targeted lines — the first attempt via
+  lxml reformatted 1,428 lines and was reverted): Seediq W+M FORM hoN2T>→hoN with orig+std PHON
+  ħon*t→ħon (original witness PASSED; matches the sentence tier's existing ma ħon); Tsou S+W+M FORM
+  →shiaoling with STANDARD PHON shiaoɗiŋɗm→shiaoɗiŋ (standard self-witness passed). Tsou's 3
+  ORIGINAL-tier PHONs keep sxiaoɗiŋɗm: their witness fails because they were computed under the old
+  phonology profile (sx-, jax-), the exact class repair_l2_markers reports and skips — they heal on the
+  next full pipeline rebuild. NTU validate_glosses now exits 0 with NO HARD findings (V067: 2 → 0).
+- origin/main checked after his "the other agent's PR has now hit": already merged (64be1d5ae covers
+  #354; no commits on main since bfa02c02a).

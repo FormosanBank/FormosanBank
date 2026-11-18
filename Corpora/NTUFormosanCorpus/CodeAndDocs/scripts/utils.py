@@ -74,6 +74,16 @@ _L2M_RE = re.compile(
     r'|[A-Z]L2(?![A-Za-z])'   # bare transposed: maML2
     r'|(?<![A-Za-z])L2[A-Z](?=[A-Za-z])'  # bare opener: L2Jmaemotte
     r'|L2[A-Z]?(?![A-Za-z])'  # bare closing: hikokiL2J, luL2M
+    # Closers with one character dropped, each a single source typo
+    # (maintainer, 2026-11-18: "Absorb the two fixes into the NTU pipeline
+    # itself."): '<L2ThoN2T>.' (sdqNr-ricah_uma 2021s record 14) closes with
+    # '2T>' -- the L dropped -- around the Taiwanese particle hoN, and
+    # '<L2MshiaolingLM>._' (TsouConv-typhoon record 245) closes with 'LM>'
+    # -- the 2 dropped -- around the name shiaoling. Both were previously
+    # repaired only post-hoc by repair_l2_markers.py's token map.
+    r'|(?<=[A-Za-z])2[A-Z]>'  # closer missing its L: hoN2T>
+    r'|(?<=[a-z])L[A-Z]>'     # closer missing its 2: shiaolingLM>
+    r'|(?<=[a-z])LM(?![A-Za-z0-9])'  # the same 2-less closer, brackets gone (ori stream): 'shiaolingLM.'
 )
 
 # A Mandarin tag pair with no 'L2' at all, wrapping the word: '<Mpi.jiaoM>'
