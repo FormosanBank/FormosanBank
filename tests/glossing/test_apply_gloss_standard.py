@@ -708,3 +708,156 @@ def test_twin_voice_replaces_a_self_gloss_with_the_other_tiers_voice(tmp_path):
     assert std["m3"] == {"zho": "<PFV>", "eng": "<m>"}    # other tier is not a voice code: kept
     assert [x.text for x in root.iter("TRANSL") if x.get("kindOf") == "original"] == \
         ["<AF>", "<m>", "<AF>", "<n>", "<PFV>", "<m>"]    # POL-036: originals untouched
+
+
+# ---- language-scoped context rules (maintainer, case page Bunun note
+# 2026-11-17: "We need to fix the zho side specifically for those items.
+# This probably requires some new functionality." — 處格 on Bunun -an words
+# must become LV while Kavalan's genuine locative marker an stays LOC) ----
+
+SCOPED_RULES = RULES + [
+    ("AF@Kavalan&-an", "CONTEXT-CONVERT→KK", "AF on -an words, Kavalan only"),
+]
+SCOPED_XML = """<TEXT xml:lang="{lang}" id="t8">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>tayan</FORM>
+    <M id="m1"><FORM>tay</FORM><TRANSL xml:lang="eng" kindOf="original">see</TRANSL></M>
+    <M id="m2"><FORM>-an</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+  </W>
+</S>
+</TEXT>"""
+
+
+def _scoped(tmp_path, lang):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(SCOPED_XML.format(lang=lang), encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(SCOPED_RULES)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    return glosses(d)[1]
+
+
+def test_language_scoped_context_rule(tmp_path):
+    g = _scoped(tmp_path, "ckv")               # Kavalan: rule fires
+    assert g["m2"][("standard",)] == "KK"
+    g = _scoped(tmp_path / "b", "tay")         # Atayal: rule skipped, table applies
+    assert g["m2"][("standard",)] == "AV"
+
+
+# ---- positional context patterns: "-an" must mean a NON-INITIAL morpheme,
+# "an-" an INITIAL one (Bunun an-sain-un false positive, 2026-11-17: the
+# prefix an- must not satisfy the suffix pattern -an) ----
+
+POS_XML = """<TEXT xml:lang="tay" id="t9">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>an-sain</FORM>
+    <M id="m1"><FORM>an</FORM><TRANSL xml:lang="eng" kindOf="original">carry</TRANSL></M>
+    <M id="m2"><FORM>sain</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+  </W>
+  <W id="w2"><FORM>tay-an</FORM>
+    <M id="m3"><FORM>tay</FORM><TRANSL xml:lang="eng" kindOf="original">see</TRANSL></M>
+    <M id="m4"><FORM>an</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M>
+  </W>
+</S>
+</TEXT>"""
+
+
+def test_suffix_pattern_requires_non_initial_morpheme(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(POS_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(RULES + [("AF&an$", "CONTEXT-CONVERT→SS", "AF on words whose an is non-initial")])
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    _, g = glosses(d)
+    assert g["m2"][("standard",)] == "AV"   # word's an is INITIAL (prefix): rule must NOT fire; table applies
+    assert g["m4"][("standard",)] == "SS"   # word's an is non-initial (suffix): rule fires
+
+
+# ---- EMBEDDED-CODE: a fullwidth-paren code attached to a lexical gloss is
+# rewritten period-joined (LGR Rule 4), the inner atom converted by the table
+# (maintainer 2026-11-17, Chang 他（屬格）: "We will need our standardization
+# to convert to use period notation (他.GEN) during standardization, but
+# leaving the original tier alone.") ----
+
+EMB_TABLE = TABLE + [
+    ("屬格", "9", "CONVERT", "GEN", "ruling", "", ""),
+]
+EMB_RULES = RULES + [
+    ("（([^（）]+)）", "EMBEDDED-CODE",
+     "fullwidth parens attach a code — rewrite period-joined, look up inner"),
+]
+EMB_XML = """<TEXT xml:lang="trv" id="t9">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>a</FORM>
+    <TRANSL xml:lang="zho" kindOf="original">他（屬格）</TRANSL>
+  </W>
+  <W id="w2"><FORM>b</FORM>
+    <TRANSL xml:lang="zho" kindOf="original">LF-吃-他（屬格）</TRANSL>
+  </W>
+  <W id="w3"><FORM>c</FORM>
+    <TRANSL xml:lang="zho" kindOf="original">他（FIL）</TRANSL>
+  </W>
+</S>
+</TEXT>"""
+
+
+def make_embedded_corpus(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(EMB_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows(EMB_TABLE)
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(EMB_RULES)
+    return d, t, r
+
+
+def test_embedded_code_rewritten_period_joined(tmp_path):
+    d, t, r = make_embedded_corpus(tmp_path)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    _, g = glosses(d)
+    assert g["w1"][("standard",)] == "他.GEN"          # （屬格）→ .GEN
+    assert g["w2"][("standard",)] == "LV-吃-他.GEN"    # composite: all atoms convert
+    assert g["w1"][("original",)] == "他（屬格）"       # original untouched
+
+
+def test_embedded_code_undecided_inner_copied_verbatim(tmp_path):
+    d, t, r = make_embedded_corpus(tmp_path)
+    run(d, t, r)
+    _, g = glosses(d)
+    # notation standardized even while the inner atom awaits a ruling;
+    # the FIL row still reads UNDECIDED in the table (the to-do list)
+    assert g["w3"][("standard",)] == "他.FIL"

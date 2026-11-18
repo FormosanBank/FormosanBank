@@ -124,7 +124,7 @@
             <FORM kindOf="standard">itu</FORM>
             <PHON kindOf="standard">itu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_1_W4M0">
@@ -133,7 +133,7 @@
                 <FORM kindOf="standard">itu</FORM>
                 <PHON kindOf="standard">itu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">POSS</TRANSL>
             </M>
@@ -144,7 +144,7 @@
             <FORM kindOf="standard">habas-an</FORM>
             <PHON kindOf="standard">[x|χ]abasan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">多年-處格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">多年-LOC</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">多年-LV</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">a.long.period-LF</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">a.long.period-LV</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_1_W5M0">
@@ -163,7 +163,7 @@
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LV</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LV</TRANSL>
             </M>
@@ -443,7 +443,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_2_W7M0">
@@ -462,7 +462,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -1051,7 +1051,7 @@
             <FORM kindOf="standard">maupa=cin</FORM>
             <PHON kindOf="standard">maupaʨin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">如此=近距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">如此=近距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">如此=PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.like=PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">be.like=PROX.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_7_W0M0">
@@ -1070,7 +1070,7 @@
                 <FORM kindOf="standard">=cin</FORM>
                 <PHON kindOf="standard">ʨin</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">近距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">近距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PROX.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">PROX.OBL</TRANSL>
             </M>
@@ -1250,7 +1250,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_8_W7M0">
@@ -1269,7 +1269,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -1389,7 +1389,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_9_W1M0">
@@ -1408,7 +1408,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -2127,7 +2127,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_12_W1M0">
@@ -2146,7 +2146,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -2287,7 +2287,7 @@
             <FORM kindOf="standard">p&lt;in&gt;i-lumah=cia</FORM>
             <PHON kindOf="standard">pini[l|ɬ]uma[x|χ]ʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役&lt;完成貌&gt;在-家=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU&lt;PFV&gt;be.at-house=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">CAUS&lt;PFV&gt;be.at-house=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_12_W8M0_0">
@@ -2326,7 +2326,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -2377,7 +2377,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_12_W11M0">
@@ -2396,7 +2396,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -2407,7 +2407,7 @@
             <FORM kindOf="standard">p&lt;in&gt;i-lumah=a</FORM>
             <PHON kindOf="standard">pini[l|ɬ]uma[x|χ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役&lt;完成貌&gt;在-家=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU&lt;PFV&gt;be.at-house=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">CAUS&lt;PFV&gt;be.at-house=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_12_W12M0_0">
@@ -2446,7 +2446,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -2806,7 +2806,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_15_W2M0">
@@ -2825,7 +2825,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -2836,7 +2836,7 @@
             <FORM kindOf="standard">isaicia</FORM>
             <PHON kindOf="standard">isaiʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_15_W3M0">
@@ -2845,7 +2845,7 @@
                 <FORM kindOf="standard">isaicia</FORM>
                 <PHON kindOf="standard">isaiʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             </M>
@@ -2856,7 +2856,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_15_W4M0">
@@ -2875,7 +2875,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -2966,7 +2966,7 @@
             <FORM kindOf="standard">p&lt;in&gt;i-lumah=cia</FORM>
             <PHON kindOf="standard">pini[l|ɬ]uma[x|χ]ʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役&lt;完成貌&gt;在-家=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU&lt;PFV&gt;be.at-house=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">CAUS&lt;PFV&gt;be.at-house=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_15_W9M0_0">
@@ -3005,7 +3005,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -3306,7 +3306,7 @@
             <FORM kindOf="standard">amin=a</FORM>
             <PHON kindOf="standard">amina</PHON>
             <TRANSL xml:lang="zho" kindOf="original">全部=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">全部=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">全部=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">all=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">all=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_15_W22M0">
@@ -3325,7 +3325,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -3436,7 +3436,7 @@
             <FORM kindOf="standard">i-lumah-a=cin</FORM>
             <PHON kindOf="standard">i[l|ɬ]uma[x|χ]aʨin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">在-家-祈使=近距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">在-家-IMP=近距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">在-家-IMP=PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.at-house-IMP=PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">be.at-house-IMP=PROX.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_15_W27M0">
@@ -3475,7 +3475,7 @@
                 <FORM kindOf="standard">=cin</FORM>
                 <PHON kindOf="standard">ʨin</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">近距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">近距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PROX.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">PROX.OBL</TRANSL>
             </M>
@@ -3646,7 +3646,7 @@
             <FORM kindOf="standard">ka&lt;i&gt;maduh=cia</FORM>
             <PHON kindOf="standard">kaimadu[x|χ]ʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">做&lt;完成貌&gt;小米=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">做&lt;PFV&gt;小米=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">做&lt;PFV&gt;小米=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">do&lt;PFV&gt;millet=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">do&lt;PFV&gt;millet=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_15_W34M0_0">
@@ -3675,7 +3675,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -4115,7 +4115,7 @@
             <FORM kindOf="standard">sain</FORM>
             <PHON kindOf="standard">sain</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格.近距</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">LOC.近距</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC.PROX</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC.PROX</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC.PROX</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_19_W16M0">
@@ -4124,7 +4124,7 @@
                 <FORM kindOf="standard">sain</FORM>
                 <PHON kindOf="standard">sain</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處格.近距</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">LOC.近距</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC.PROX</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC.PROX</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC.PROX</TRANSL>
             </M>
@@ -4585,7 +4585,7 @@
             <FORM kindOf="standard">maupa=cia</FORM>
             <PHON kindOf="standard">maupaʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">如此=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">如此=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">如此=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.like=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">be.like=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_19_W35M0">
@@ -4604,7 +4604,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -5013,7 +5013,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_23_W3M0">
@@ -5032,7 +5032,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -5083,7 +5083,7 @@
             <FORM kindOf="standard">p&lt;in&gt;i-lumah=a</FORM>
             <PHON kindOf="standard">pini[l|ɬ]uma[x|χ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役&lt;完成貌&gt;在-家=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU&lt;PFV&gt;be.at-house=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">CAUS&lt;PFV&gt;be.at-house=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_23_W6M0_0">
@@ -5122,7 +5122,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -5333,7 +5333,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_23_W17M0">
@@ -5352,7 +5352,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -6660,7 +6660,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_29_W12M0">
@@ -6679,7 +6679,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -6690,7 +6690,7 @@
             <FORM kindOf="standard">cilas=a</FORM>
             <PHON kindOf="standard">ʨi[l|ɬ]asa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">米=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">米=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">米=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">rice=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">rice=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_29_W13M0">
@@ -6709,7 +6709,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -8012,7 +8012,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_37_W3M0">
@@ -8031,7 +8031,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -8042,7 +8042,7 @@
             <FORM kindOf="standard">ka&lt;i&gt;maduh=a</FORM>
             <PHON kindOf="standard">kaimadu[x|χ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">做&lt;完成貌&gt;小米=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">做&lt;PFV&gt;小米=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">做&lt;PFV&gt;小米=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">do&lt;PFV&gt;millet=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">do&lt;PFV&gt;millet=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_37_W4M0_0">
@@ -8071,7 +8071,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -8529,7 +8529,7 @@
             <FORM kindOf="standard">p&lt;in&gt;i-lumah=a</FORM>
             <PHON kindOf="standard">pini[l|ɬ]uma[x|χ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役&lt;完成貌&gt;在-家=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-PFV-be.at-house=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">CAUS-PFV-be.at-house=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_40_W3M0">
@@ -8620,7 +8620,7 @@
             <FORM kindOf="standard">isu</FORM>
             <PHON kindOf="standard">isu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">2SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">2SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">2SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_41_W2M0">
@@ -8629,7 +8629,7 @@
                 <FORM kindOf="standard">isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">2SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">2SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">2SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">2SG.POSS</TRANSL>
             </M>
@@ -8841,7 +8841,7 @@
             <FORM kindOf="standard">kaimin=a</FORM>
             <PHON kindOf="standard">kaimina</PHON>
             <TRANSL xml:lang="zho" kindOf="original">1EPL.主格=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">1EPL.NOM=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">1EPL.NOM=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">1EPL.NOM=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1EPL.NOM=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_42_W2M0">
@@ -8860,7 +8860,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -9000,7 +9000,7 @@
             <FORM kindOf="standard">ka&lt;i&gt;-maduh=a</FORM>
             <PHON kindOf="standard">kaimadu[x|χ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">做&lt;完成貌&gt;-小米=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">做&lt;PFV&gt;-小米=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">做&lt;PFV&gt;-小米=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">make&lt;PFV&gt;-millet=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">make&lt;PFV&gt;-millet=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_43_W3M0_0">
@@ -9039,7 +9039,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -9877,7 +9877,7 @@
             <FORM kindOf="standard">ma-kadav=a</FORM>
             <PHON kindOf="standard">makadava</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-冷冷的=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">AV-冷冷的=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">AV-冷冷的=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-cold=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">AV-cold=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_46_W8M0">
@@ -9906,7 +9906,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -10006,7 +10006,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_47_W3M0">
@@ -10025,7 +10025,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -10235,7 +10235,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_48_W4M0">
@@ -10254,7 +10254,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -10265,7 +10265,7 @@
             <FORM kindOf="standard">nusung=a</FORM>
             <PHON kindOf="standard">nusuŋa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">臼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">臼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">臼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mortar=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">mortar=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_48_W5M0">
@@ -10284,7 +10284,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -10474,7 +10474,7 @@
             <FORM kindOf="standard">na=maz=a</FORM>
             <PHON kindOf="standard">namaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">非實現=什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">IRR=什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">IRR=什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IRR=what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">IRR=what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_50_W0M0">
@@ -10503,7 +10503,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -10671,7 +10671,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_51_W2M0">
@@ -10690,7 +10690,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -10809,7 +10809,7 @@
             <FORM kindOf="standard">a-dii</FORM>
             <PHON kindOf="standard">adii</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-那裡</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-那裡</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.DIST-那裡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-there</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-there</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_51_W8M0">
@@ -10818,7 +10818,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">可見.遠距</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">可見.遠距</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">可見.DIST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">VIS.DIST</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST</TRANSL>
             </M>
@@ -11116,7 +11116,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_54_W1M0">
@@ -11135,7 +11135,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -11730,7 +11730,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_58_W2M0">
@@ -11749,7 +11749,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -11760,7 +11760,7 @@
             <FORM kindOf="standard">p&lt;in&gt;i-lumah=a</FORM>
             <PHON kindOf="standard">pini[l|ɬ]uma[x|χ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役&lt;完成貌&gt;在-家=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-PFV-be.at-house=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">CAUS-PFV-be.at-house=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_58_W3M0">
@@ -12132,7 +12132,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_61_W3M0">
@@ -12151,7 +12151,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -12291,7 +12291,7 @@
             <FORM kindOf="standard">isu</FORM>
             <PHON kindOf="standard">isu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">2SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">2SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">2SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_62_W1M0">
@@ -12300,7 +12300,7 @@
                 <FORM kindOf="standard">isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">2SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">2SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">2SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">2SG.POSS</TRANSL>
             </M>
@@ -12331,7 +12331,7 @@
             <FORM kindOf="standard">maluspingaz=a</FORM>
             <PHON kindOf="standard">ma[l|ɬ]uspiŋaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">女生=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">女生=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">女生=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">woman=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">woman=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_62_W3M0">
@@ -12350,7 +12350,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -12599,7 +12599,7 @@
             <FORM kindOf="standard">a-dii</FORM>
             <PHON kindOf="standard">adii</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-那裡</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-那裡</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.DIST-那裡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-there</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-there</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_65_W3M0">
@@ -12608,7 +12608,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">可見.遠距</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">可見.遠距</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">可見.DIST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">VIS.DIST</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST</TRANSL>
             </M>
@@ -12848,7 +12848,7 @@
             <FORM kindOf="standard">tapaz=a</FORM>
             <PHON kindOf="standard">tapaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">串=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">串=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">串=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">string=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">string=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_66_W6M0">
@@ -12867,7 +12867,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -12878,7 +12878,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_66_W7M0">
@@ -12897,7 +12897,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -12908,7 +12908,7 @@
             <FORM kindOf="standard">maduh=a</FORM>
             <PHON kindOf="standard">madu[x|χ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">小米=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">小米=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">小米=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">millet=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">millet=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_66_W8M0">
@@ -12927,7 +12927,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -13376,7 +13376,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_70_W2M0">
@@ -13395,7 +13395,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -13426,7 +13426,7 @@
             <FORM kindOf="standard">p&lt;in&gt;i-lumah=a</FORM>
             <PHON kindOf="standard">pini[l|ɬ]uma[x|χ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役&lt;完成貌&gt;在-家=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU&lt;PFV&gt;be.at-house=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">CAUS&lt;PFV&gt;be.at-house=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_70_W4M0_0">
@@ -13465,7 +13465,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -14678,7 +14678,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_80_W1M0">
@@ -14697,7 +14697,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -14708,7 +14708,7 @@
             <FORM kindOf="standard">p&lt;in&gt;i-lumah=a</FORM>
             <PHON kindOf="standard">pini[l|ɬ]uma[x|χ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役&lt;完成貌&gt;在-家=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU&lt;PFV&gt;be.at-house=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">CAUS&lt;PFV&gt;be.at-house=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_80_W2M0_0">
@@ -14747,7 +14747,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -15227,7 +15227,7 @@
             <FORM kindOf="standard">mai-nangsa</FORM>
             <PHON kindOf="standard">mainaŋsa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">過去-小米痙</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">過去-小米痙</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">PST-小米痙</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">past-stem</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">past-stem</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_83_W9M0">
@@ -15236,7 +15236,7 @@
                 <FORM kindOf="standard">mai</FORM>
                 <PHON kindOf="standard">mai</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">過去</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">past</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">past</TRANSL>
             </M>
@@ -15277,7 +15277,7 @@
             <FORM kindOf="standard">maduh=cia</FORM>
             <PHON kindOf="standard">madu[x|χ]ʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">小米=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">小米=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">小米=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">millet=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">millet=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_83_W11M0">
@@ -15296,7 +15296,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -15366,7 +15366,7 @@
             <FORM kindOf="standard">isaicia</FORM>
             <PHON kindOf="standard">isaiʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_88_W2M0">
@@ -15375,7 +15375,7 @@
                 <FORM kindOf="standard">isaicia</FORM>
                 <PHON kindOf="standard">isaiʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             </M>
@@ -15386,7 +15386,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_88_W3M0">
@@ -15405,7 +15405,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -15416,7 +15416,7 @@
             <FORM kindOf="standard">bantas=a</FORM>
             <PHON kindOf="standard">bantasa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">腳=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">腳=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">腳=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">leg=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">leg=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_88_W4M0">
@@ -15435,7 +15435,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -15446,7 +15446,7 @@
             <FORM kindOf="standard">bikni=a</FORM>
             <PHON kindOf="standard">biknia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">小腿=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">小腿=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">小腿=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">lower.leg=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">lower.leg=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_88_W5M0">
@@ -15465,7 +15465,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -15784,7 +15784,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_91_W2M0">
@@ -15803,7 +15803,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -15814,7 +15814,7 @@
             <FORM kindOf="standard">isaicia</FORM>
             <PHON kindOf="standard">isaiʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_91_W3M0">
@@ -15823,7 +15823,7 @@
                 <FORM kindOf="standard">isaicia</FORM>
                 <PHON kindOf="standard">isaiʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             </M>
@@ -15874,7 +15874,7 @@
             <FORM kindOf="standard">nangsa=cia</FORM>
             <PHON kindOf="standard">naŋsaʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">莖=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">莖=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">莖=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">stem=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">stem=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_91_W6M0">
@@ -15893,7 +15893,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -17271,7 +17271,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_108_W2M0">
@@ -17290,7 +17290,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -17301,7 +17301,7 @@
             <FORM kindOf="standard">itu</FORM>
             <PHON kindOf="standard">itu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_108_W3M0">
@@ -17310,7 +17310,7 @@
                 <FORM kindOf="standard">itu</FORM>
                 <PHON kindOf="standard">itu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">POSS</TRANSL>
             </M>
@@ -17321,7 +17321,7 @@
             <FORM kindOf="standard">uvaaz=cia</FORM>
             <PHON kindOf="standard">uvaaðʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">孩子=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">孩子=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">孩子=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">child=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">child=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_108_W4M0">
@@ -17340,7 +17340,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -17365,7 +17365,7 @@
             <TRANSL xml:lang="eng" notes="gloss borrowed: 'maz=a' is glossed this way in 195 of its 207 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="zho" notes="gloss borrowed: 'maz=a' is glossed this way in 205 of its 207 other occurrences in this language; the source gloss was displaced (gloss-shift repair)" kindOf="original">什麼=遠距.主格</TRANSL>
-        <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+        <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
         </W>
         <W id="bnNr-lazy-daughter_Hanaivaz_S_108_W6">
             <FORM kindOf="original">tama</FORM>
@@ -17503,7 +17503,7 @@
             <FORM kindOf="standard">ka&lt;i&gt;-p&lt;in&gt;i-lumah=cia</FORM>
             <PHON kindOf="standard">kaipini[l|ɬ]uma[x|χ]ʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">做&lt;完成貌&gt;-使役&lt;完成貌&gt;在-家=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">做&lt;PFV&gt;-CAUS&lt;PFV&gt;在-家=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">做&lt;PFV&gt;-CAUS&lt;PFV&gt;在-家=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">do&lt;PFV&gt;-CAU-PFV-be.at-house=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">do&lt;PFV&gt;-CAUS-PFV-be.at-house=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_108_W12M0">
@@ -17808,7 +17808,7 @@
             <FORM kindOf="standard">ka&lt;i&gt;-p&lt;in&gt;i-lumah-an=cia</FORM>
             <PHON kindOf="standard">kaipini[l|ɬ]uma[x|χ]anʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">做&lt;完成貌&gt;-使役&lt;完成貌&gt;在-家=處焦=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">做&lt;PFV&gt;-CAUS&lt;PFV&gt;在-家=LV=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">做&lt;PFV&gt;-CAUS&lt;PFV&gt;在-家=LV=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">do&lt;PFV&gt;-CAU-PFV-be.at-house=LF=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">do&lt;PFV&gt;-CAUS-PFV-be.at-house=LV=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_111_W3M0">
@@ -17909,7 +17909,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W1M0">
@@ -17928,7 +17928,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -17939,7 +17939,7 @@
             <FORM kindOf="standard">taini-ka&lt;i&gt;-p&lt;in&gt;i-lumah=cia</FORM>
             <PHON kindOf="standard">tainikaipini[l|ɬ]uma[x|χ]ʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">擁有-做&lt;完成貌&gt;-使役&lt;完成貌&gt;在-家=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">擁有-做&lt;PFV&gt;-CAUS&lt;PFV&gt;在-家=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">擁有-做&lt;PFV&gt;-CAUS&lt;PFV&gt;在-家=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">own-do&lt;PFV&gt;-CAU&lt;PFV&gt;be.at-house=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">own-do&lt;PFV&gt;-CAUS&lt;PFV&gt;be.at-house=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W2M0">
@@ -18008,7 +18008,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -18119,7 +18119,7 @@
             <FORM kindOf="standard">isu</FORM>
             <PHON kindOf="standard">isu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">2SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">2SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">2SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_114_W6M0">
@@ -18128,7 +18128,7 @@
                 <FORM kindOf="standard">isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">2SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">2SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">2SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">2SG.POSS</TRANSL>
             </M>
@@ -18776,7 +18776,7 @@
             <FORM kindOf="standard">isu</FORM>
             <PHON kindOf="standard">isu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">2SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">2SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">2SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_122_W5M0">
@@ -18785,7 +18785,7 @@
                 <FORM kindOf="standard">isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">2SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">2SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">2SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">2SG.POSS</TRANSL>
             </M>
@@ -18895,7 +18895,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_123_W2M0">
@@ -18914,7 +18914,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -19173,7 +19173,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_125_W3M0">
@@ -19192,7 +19192,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -19203,7 +19203,7 @@
             <FORM kindOf="standard">isaicia</FORM>
             <PHON kindOf="standard">isaiʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_125_W4M0">
@@ -19212,7 +19212,7 @@
                 <FORM kindOf="standard">isaicia</FORM>
                 <PHON kindOf="standard">isaiʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             </M>
@@ -20205,7 +20205,7 @@
             <FORM kindOf="standard">lukis=cia</FORM>
             <PHON kindOf="standard">[l|ɬ]ukisʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">樹木=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">樹木=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">樹木=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">tree=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">tree=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_135_W7M0">
@@ -20224,7 +20224,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -20360,7 +20360,7 @@
             <FORM kindOf="standard">itu</FORM>
             <PHON kindOf="standard">itu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_137_W1M0">
@@ -20369,7 +20369,7 @@
                 <FORM kindOf="standard">itu</FORM>
                 <PHON kindOf="standard">itu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">POSS</TRANSL>
             </M>
@@ -20599,7 +20599,7 @@
             <FORM kindOf="standard">itu</FORM>
             <PHON kindOf="standard">itu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_138_W6M0">
@@ -20608,7 +20608,7 @@
                 <FORM kindOf="standard">itu</FORM>
                 <PHON kindOf="standard">itu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">POSS</TRANSL>
             </M>
@@ -20818,7 +20818,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_142_W5M0">
@@ -20837,7 +20837,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -20937,7 +20937,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_143_W2M0">
@@ -20956,7 +20956,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -21375,7 +21375,7 @@
             <FORM kindOf="standard">cina=cia</FORM>
             <PHON kindOf="standard">ʨinaʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">媽媽=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">媽媽=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">媽媽=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mother=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">mother=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_148_W2M0">
@@ -21394,7 +21394,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -21668,7 +21668,7 @@
             <FORM kindOf="standard">inak</FORM>
             <PHON kindOf="standard">inak</PHON>
             <TRANSL xml:lang="zho" kindOf="original">1SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">1SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_150_W7M0">
@@ -21677,7 +21677,7 @@
                 <FORM kindOf="standard">inak</FORM>
                 <PHON kindOf="standard">inak</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">1SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             </M>
@@ -21747,7 +21747,7 @@
             <FORM kindOf="standard">inak</FORM>
             <PHON kindOf="standard">inak</PHON>
             <TRANSL xml:lang="zho" kindOf="original">1SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">1SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_151_W0M0">
@@ -21756,7 +21756,7 @@
                 <FORM kindOf="standard">inak</FORM>
                 <PHON kindOf="standard">inak</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">1SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             </M>
@@ -21869,7 +21869,7 @@
             <FORM kindOf="standard">ulalai=cin</FORM>
             <PHON kindOf="standard">u[l|ɬ]a[l|ɬ]aiʨin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">綁腿巾=近距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">綁腿巾=近距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">綁腿巾=PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">shin.pad=PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">shin.pad=PROX.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_151_W6M0">
@@ -21888,7 +21888,7 @@
                 <FORM kindOf="standard">=cin</FORM>
                 <PHON kindOf="standard">ʨin</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">近距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">近距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PROX.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">PROX.OBL</TRANSL>
             </M>
@@ -22038,7 +22038,7 @@
             <FORM kindOf="standard">cina=cia</FORM>
             <PHON kindOf="standard">ʨinaʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">媽媽=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">媽媽=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">媽媽=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mother=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">mother=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_152_W4M0">
@@ -22057,7 +22057,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -22158,7 +22158,7 @@
             <FORM kindOf="standard">inak</FORM>
             <PHON kindOf="standard">inak</PHON>
             <TRANSL xml:lang="zho" kindOf="original">1SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">1SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_152_W9M0">
@@ -22167,7 +22167,7 @@
                 <FORM kindOf="standard">inak</FORM>
                 <PHON kindOf="standard">inak</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">1SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             </M>
@@ -22460,7 +22460,7 @@
             <FORM kindOf="standard">maupa=cin</FORM>
             <PHON kindOf="standard">maupaʨin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">如此=近距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">如此=近距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">如此=PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.like=PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">be.like=PROX.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_156_W2M0">
@@ -22479,7 +22479,7 @@
                 <FORM kindOf="standard">=cin</FORM>
                 <PHON kindOf="standard">ʨin</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">近距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">近距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PROX.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">PROX.OBL</TRANSL>
             </M>
@@ -22649,7 +22649,7 @@
             <FORM kindOf="standard">inak</FORM>
             <PHON kindOf="standard">inak</PHON>
             <TRANSL xml:lang="zho" kindOf="original">1SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">1SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_158_W2M0">
@@ -22658,7 +22658,7 @@
                 <FORM kindOf="standard">inak</FORM>
                 <PHON kindOf="standard">inak</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">1SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             </M>
@@ -22771,7 +22771,7 @@
             <FORM kindOf="standard">ulalai=cin</FORM>
             <PHON kindOf="standard">u[l|ɬ]a[l|ɬ]aiʨin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">綁腿巾=近距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">綁腿巾=近距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">綁腿巾=PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">shin.pad=PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">shin.pad=PROX.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_158_W8M0">
@@ -22790,7 +22790,7 @@
                 <FORM kindOf="standard">=cin</FORM>
                 <PHON kindOf="standard">ʨin</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">近距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">近距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PROX.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PROX.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">PROX.OBL</TRANSL>
             </M>
@@ -22880,7 +22880,7 @@
             <FORM kindOf="standard">isaicia</FORM>
             <PHON kindOf="standard">isaiʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_159_W2M0">
@@ -22889,7 +22889,7 @@
                 <FORM kindOf="standard">isaicia</FORM>
                 <PHON kindOf="standard">isaiʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS</TRANSL>
             </M>
@@ -23095,7 +23095,7 @@
             <FORM kindOf="standard">isaincia</FORM>
             <PHON kindOf="standard">isainʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">3SG.所有格.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.POSS.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_160_W0M0">
@@ -23104,7 +23104,7 @@
                 <FORM kindOf="standard">isaincia</FORM>
                 <PHON kindOf="standard">isainʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.所有格.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">3SG.所有格.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">3SG.POSS.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.POSS.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">3SG.POSS.OBL</TRANSL>
             </M>
@@ -23135,7 +23135,7 @@
             <FORM kindOf="standard">ludun=cia</FORM>
             <PHON kindOf="standard">[l|ɬ]udunʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">山=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">山=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">山=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mountain=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">mountain=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_160_W2M0">
@@ -23154,7 +23154,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -23609,7 +23609,7 @@
             <FORM kindOf="standard">cina=a</FORM>
             <PHON kindOf="standard">ʨinaa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">媽媽=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">媽媽=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">媽媽=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mother=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">mother=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_165_W1M0">
@@ -23628,7 +23628,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -23639,7 +23639,7 @@
             <FORM kindOf="standard">maupa=cia</FORM>
             <PHON kindOf="standard">maupaʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">如此=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">如此=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">如此=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.like=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">be.like=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_165_W2M0">
@@ -23658,7 +23658,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -23759,7 +23759,7 @@
             <FORM kindOf="standard">uvaaz=cia</FORM>
             <PHON kindOf="standard">uvaaðʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">孩子=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">孩子=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">孩子=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">child=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">child=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_165_W6M0">
@@ -23778,7 +23778,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -24157,7 +24157,7 @@
             <FORM kindOf="standard">maupa=cia</FORM>
             <PHON kindOf="standard">maupaʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">如此=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">如此=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">如此=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.like=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">be.like=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_172_W1M0">
@@ -24176,7 +24176,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -24237,7 +24237,7 @@
             <FORM kindOf="standard">cina=cia</FORM>
             <PHON kindOf="standard">ʨinaʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">媽媽=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">媽媽=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">媽媽=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mother=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">mother=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_172_W4M0">
@@ -24256,7 +24256,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -24326,7 +24326,7 @@
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">什麼=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">什麼=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">what=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_173_W2M0">
@@ -24345,7 +24345,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -24476,7 +24476,7 @@
             <FORM kindOf="standard">itu</FORM>
             <PHON kindOf="standard">itu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_173_W9M0">
@@ -24485,7 +24485,7 @@
                 <FORM kindOf="standard">itu</FORM>
                 <PHON kindOf="standard">itu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">POSS</TRANSL>
             </M>
@@ -24496,7 +24496,7 @@
             <FORM kindOf="standard">mai</FORM>
             <PHON kindOf="standard">mai</PHON>
             <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">過去</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">PST</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">past</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">past</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_173_W10M0">
@@ -24505,7 +24505,7 @@
                 <FORM kindOf="standard">mai</FORM>
                 <PHON kindOf="standard">mai</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">過去</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">past</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">past</TRANSL>
             </M>
@@ -24932,7 +24932,7 @@
             <FORM kindOf="standard">isu</FORM>
             <PHON kindOf="standard">isu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">2SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">2SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">2SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_177_W2M0">
@@ -24941,7 +24941,7 @@
                 <FORM kindOf="standard">isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">2SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">2SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">2SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">2SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">2SG.POSS</TRANSL>
             </M>
@@ -25559,7 +25559,7 @@
             <FORM kindOf="standard">lukis=cia</FORM>
             <PHON kindOf="standard">[l|ɬ]ukisʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">樹木=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">樹木=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">樹木=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">tree=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">tree=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_182_W11M0">
@@ -25578,7 +25578,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -25946,7 +25946,7 @@
             <FORM kindOf="standard">uvaaz=a</FORM>
             <PHON kindOf="standard">uvaaða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">孩子=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">孩子=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">孩子=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">child=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">child=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_189_W3M0">
@@ -25965,7 +25965,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -26026,7 +26026,7 @@
             <FORM kindOf="standard">nak</FORM>
             <PHON kindOf="standard">nak</PHON>
             <TRANSL xml:lang="zho" kindOf="original">1SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">1SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_189_W6M0">
@@ -26035,7 +26035,7 @@
                 <FORM kindOf="standard">nak</FORM>
                 <PHON kindOf="standard">nak</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">1SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             </M>
@@ -26195,7 +26195,7 @@
             <FORM kindOf="standard">inak</FORM>
             <PHON kindOf="standard">inak</PHON>
             <TRANSL xml:lang="zho" kindOf="original">1SG.所有格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">1SG.所有格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_191_W2M0">
@@ -26204,7 +26204,7 @@
                 <FORM kindOf="standard">inak</FORM>
                 <PHON kindOf="standard">inak</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">1SG.所有格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">1SG.所有格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">1SG.POSS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.POSS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">1SG.POSS</TRANSL>
             </M>
@@ -26434,7 +26434,7 @@
             <FORM kindOf="standard">cina=a</FORM>
             <PHON kindOf="standard">ʨinaa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">媽媽=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">媽媽=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">媽媽=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mother=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">mother=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_193_W1M0">
@@ -26453,7 +26453,7 @@
                 <FORM kindOf="standard">=a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.NOM</TRANSL>
             </M>
@@ -27261,7 +27261,7 @@
             <FORM kindOf="standard">a-dii</FORM>
             <PHON kindOf="standard">adii</PHON>
             <TRANSL xml:lang="zho" kindOf="original">可見.遠距-那裡</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">可見.遠距-那裡</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">可見.DIST-那裡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">VIS.DIST-there</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST-there</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_202_W2M0">
@@ -27270,7 +27270,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">可見.遠距</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">可見.遠距</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">可見.DIST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">VIS.DIST</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">VIS.DIST</TRANSL>
             </M>
@@ -27291,7 +27291,7 @@
             <FORM kindOf="standard">mai-'uni</FORM>
             <PHON kindOf="standard">maiʔuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">過去-UNI</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">過去-UNI</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">PST-UNI</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">past-UNI</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">past-UNI</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_202_W3M0">
@@ -27300,7 +27300,7 @@
                 <FORM kindOf="standard">mai</FORM>
                 <PHON kindOf="standard">mai</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">過去</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">past</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">past</TRANSL>
             </M>
@@ -27321,7 +27321,7 @@
             <FORM kindOf="standard">p&lt;in&gt;i-lumah=a</FORM>
             <PHON kindOf="standard">pini[l|ɬ]uma[x|χ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役&lt;完成貌&gt;在-家=遠距.主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=遠距.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-PFV-be.at-house=DIST.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">CAUS-PFV-be.at-house=DIST.NOM</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_202_W4M0">
@@ -27905,7 +27905,7 @@
             <FORM kindOf="standard">maupa=cia</FORM>
             <PHON kindOf="standard">maupaʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">如此=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">如此=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">如此=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.like=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">be.like=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_209_W7M0">
@@ -27924,7 +27924,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>
@@ -28289,7 +28289,7 @@
             <FORM kindOf="standard">mai-'uni</FORM>
             <PHON kindOf="standard">maiʔuni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">過去-UNI</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">過去-UNI</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">PST-UNI</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">past-UNI</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">past-UNI</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_216_W0M0">
@@ -28298,7 +28298,7 @@
                 <FORM kindOf="standard">mai</FORM>
                 <PHON kindOf="standard">mai</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">過去</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">PST</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">past</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">past</TRANSL>
             </M>
@@ -28339,7 +28339,7 @@
             <FORM kindOf="standard">p&lt;in&gt;i-lumah=cia</FORM>
             <PHON kindOf="standard">pini[l|ɬ]uma[x|χ]ʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役&lt;完成貌&gt;在-家=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS&lt;PFV&gt;在-家=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-PFV-be.at-house=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">CAUS-PFV-be.at-house=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_216_W2M0">
@@ -28580,7 +28580,7 @@
             <FORM kindOf="standard">kaupa=cia</FORM>
             <PHON kindOf="standard">kaupaʨia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">全部=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">全部=遠距.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">全部=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">all=DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">all=DIST.OBL</TRANSL>
             <M id="bnNr-lazy-daughter_Hanaivaz_S_222_W0M0">
@@ -28599,7 +28599,7 @@
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">遠距.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">DIST.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">DIST.OBL</TRANSL>
             </M>

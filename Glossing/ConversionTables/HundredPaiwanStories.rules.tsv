@@ -11,3 +11,10 @@ leave&=vaik	CONTEXT-ADD→AV	maintainer 2026-11-15 (unvoiced-verbs audit, unv_pa
 (place)	WHOLE-GLOSS→PN	maintainer 2026-11-16 (unvoiced-verbs audit round 8, hps_name_r8): "A: standard tier → PN; original unchanged"; PN registered: proper noun, absorbs 人名, 地名
 <([^<>]+)>	KEEP-BRACKETS	angle brackets = infix (LGR Rule 9) — keep brackets, look up inner atom(s); added per maintainer 2026-11-15 ('OK, let's add KEEP-BRACKETS for HPS.')
 more&+bound	CONTEXT-CONVERT→CMPR	"maintainer q_cmpr 2026-11-16: ""Register CMPR 'comparative' and convert only more/tja- -> CMPR, and only when tja is bound (not when free-standing)."" Free-standing more falls through to the table (no row) and stays lexical."
+by&nua	CONTEXT-CONVERT→GEN	"maintainer 2026-11-17 (case page Paiwan note): ""For HPS's nua/by, ni/of, let's gloss those as GEN."" — nua ×619 is glossed only by/of and every multi-morph nua word is a genitive construction (nua-zua)"
+of&nua	CONTEXT-CONVERT→GEN	same ruling — the of-glossed half of nua
+by&ni	CONTEXT-CONVERT→GEN	"same ruling — ni ×336 is glossed only by/of; multi-morph ni words are all genitive constructions (ni-madju, ni-aken, ni-sun)"
+of&ni	CONTEXT-CONVERT→GEN	same ruling — the of-glossed half of ni. NOTE: nu/of ×200 and na/by-of ×4 are NOT covered (the ruling names nua and ni only)
+of&nu	CONTEXT-CONVERT→GEN	"maintainer 2026-11-17 (Paiwan note #1): ""nu/of and na/'by/of' should be -> GEN as well. Just be careful not to convert those when glossed as something else."" — only the atom of/by converts (when ×816, your(p) ×96 etc. untouched); verified zero of/by glosses on non-target morphemes"
+by&na	CONTEXT-CONVERT→GEN	same ruling — na glossed by ×2
+of&na	CONTEXT-CONVERT→GEN	same ruling — na glossed of ×2; na's other glosses (past ×323, STAT ×67, then ×51) are different atoms and untouched

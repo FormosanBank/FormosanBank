@@ -34,7 +34,7 @@
             <FORM kindOf="standard">y-a-kay</FORM>
             <PHON kindOf="standard">jakaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-實現-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-RLS-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-RLS-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-RLS-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-RLS-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_1_W1M0">
@@ -43,7 +43,7 @@
                 <FORM kindOf="standard">y</FORM>
                 <PHON kindOf="standard">j</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -163,7 +163,7 @@
             <FORM kindOf="standard">ikay</FORM>
             <PHON kindOf="standard">ikaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-this</TRANSL>
         <TRANSL xml:lang="eng" kindOf="standard">LOC-this</TRANSL>
         </W>
@@ -193,9 +193,9 @@
             <FORM kindOf="standard">malra=ini</FORM>
             <PHON kindOf="standard">maɭaini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">拿=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">拿=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">拿=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">take=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">take=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">take=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_2_W3M0">
                 <FORM kindOf="original">malra</FORM>
                 <PHON kindOf="original">maɭa</PHON>
@@ -212,9 +212,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_2_W4">
@@ -819,9 +819,9 @@
             <FORM kindOf="standard">taupungu=ini</FORM>
             <PHON kindOf="standard">taupuŋuini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狗=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">dog=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_7_W2M0">
                 <FORM kindOf="original">taupungu</FORM>
                 <PHON kindOf="original">taupuŋu</PHON>
@@ -838,9 +838,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_7_W3">
@@ -2392,9 +2392,9 @@
             <FORM kindOf="standard">iyaw=ini</FORM>
             <PHON kindOf="standard">ijawini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">青蛙=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">青蛙=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">青蛙=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">frog=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">frog=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">frog=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_21_W3M0">
                 <FORM kindOf="original">iyaw</FORM>
                 <PHON kindOf="original">ijaw</PHON>
@@ -2411,9 +2411,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_21_W4">
@@ -2582,9 +2582,9 @@
             <FORM kindOf="standard">iyaw=li</FORM>
             <PHON kindOf="standard">ijawli</PHON>
             <TRANSL xml:lang="zho" kindOf="original">青蛙=第一人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">青蛙=第一人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">青蛙=第一人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">frog=1S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">frog=1S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">frog=1S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_21_W11M0">
                 <FORM kindOf="original">iyaw</FORM>
                 <PHON kindOf="original">ijaw</PHON>
@@ -2601,9 +2601,9 @@
                 <FORM kindOf="standard">=li</FORM>
                 <PHON kindOf="standard">li</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第一人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">1S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_21_W12">
@@ -2901,16 +2901,16 @@
             <FORM kindOf="standard">ta-pe-apece-ane=ini</FORM>
             <PHON kindOf="standard">tapəapəʦəanəini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-重疊-睡-名物化=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-重疊-睡-NMLZ=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-重疊-睡-NMLZ=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-RED-sleep-NMLZ=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">LOC-RED-sleep-NMLZ=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LOC-RED-sleep-NMLZ=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_26_W10M0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -2950,9 +2950,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -3050,9 +3050,9 @@
             <FORM kindOf="standard">a=ini</FORM>
             <PHON kindOf="standard">aini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">疑問=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">疑問=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">疑問=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">Q=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">Q=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">Q=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_28_W3M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -3069,9 +3069,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_28_W4">
@@ -3140,9 +3140,9 @@
             <FORM kindOf="standard">ali=su</FORM>
             <PHON kindOf="standard">alisu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">女性朋友=第二人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">女性朋友=第二人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">女性朋友=第二人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">female.friend=2S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">female.friend=2S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">female.friend=2S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_28_W7M0">
                 <FORM kindOf="original">ali</FORM>
                 <PHON kindOf="original">ali</PHON>
@@ -3159,9 +3159,9 @@
                 <FORM kindOf="standard">=su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第二人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第二人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第二人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">2S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">2S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_28_W8">
@@ -3279,18 +3279,18 @@
             <FORM kindOf="standard">naw=kai</FORM>
             <PHON kindOf="standard">nawkai</PHON>
             <TRANSL xml:lang="zho" kindOf="original">第一人稱單數.附著主格=否定詞</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.附著主格=NEG</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.NOM=NEG</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">1S.BN=NEG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">1S.BN=NEG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1S.NOM=NEG</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_30_W4M0">
                 <FORM kindOf="original">naw</FORM>
                 <PHON kindOf="original">naw</PHON>
                 <FORM kindOf="standard">naw</FORM>
                 <PHON kindOf="standard">naw</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第一人稱單數.附著主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.附著主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1S.BN</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">1S.BN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1S.NOM</TRANSL>
             </M>
             <M id="RukaiNr-frog_Kainguane_S_30_W4M1">
                 <FORM kindOf="original">=kai</FORM>
@@ -3548,7 +3548,7 @@
             <FORM kindOf="standard">ta-pe-apec-ane</FORM>
             <PHON kindOf="standard">tapəapəʦanə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-重疊-睡-名物化</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-重疊-睡-NMLZ</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-重疊-睡-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-RED-sleep-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-RED-sleep-NMLZ</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_32_W6M0">
@@ -3557,7 +3557,7 @@
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -3708,9 +3708,9 @@
             <FORM kindOf="standard">kece=li</FORM>
             <PHON kindOf="standard">kəʦəli</PHON>
             <TRANSL xml:lang="zho" kindOf="original">鞋=第一人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">鞋=第一人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">鞋=第一人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">shoe=1S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">shoe=1S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">shoe=1S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_32_W11M0">
                 <FORM kindOf="original">kece</FORM>
                 <PHON kindOf="original">kəʦə</PHON>
@@ -3727,9 +3727,9 @@
                 <FORM kindOf="standard">=li</FORM>
                 <PHON kindOf="standard">li</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第一人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">1S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_32_W12">
@@ -3798,9 +3798,9 @@
             <FORM kindOf="standard">kece=ini</FORM>
             <PHON kindOf="standard">kəʦəini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">鞋=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">鞋=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">鞋=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">shoe=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">shoe=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">shoe=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_32_W15M0">
                 <FORM kindOf="original">kece</FORM>
                 <PHON kindOf="original">kəʦə</PHON>
@@ -3817,9 +3817,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_32_W16">
@@ -4051,9 +4051,9 @@
             <FORM kindOf="standard">amigece=ini</FORM>
             <PHON kindOf="standard">amigəʦəini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">雨鞋=3S.BG</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">雨鞋=3S.BG</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">雨鞋=3S.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">rubbers=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">rubbers=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">rubbers=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_37_W8M0">
                 <FORM kindOf="original">amigece</FORM>
                 <PHON kindOf="original">amigəʦə</PHON>
@@ -4070,9 +4070,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">3S.BG</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">3S.BG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">3S.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_37_W9">
@@ -5973,9 +5973,9 @@
             <FORM kindOf="standard">taupunge=ini</FORM>
             <PHON kindOf="standard">taupuŋəini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狗=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">dog=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_55_W15M0">
                 <FORM kindOf="original">taupunge</FORM>
                 <PHON kindOf="original">taupuŋə</PHON>
@@ -5992,9 +5992,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_55_W16">
@@ -6122,9 +6122,9 @@
             <FORM kindOf="standard">amani=su</FORM>
             <PHON kindOf="standard">amanisu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">就是=第二人稱單數.附著主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">就是=第二人稱單數.附著主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">就是=第二人稱單數.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">it.is.exactly=2S.BN</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">it.is.exactly=2S.BN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">it.is.exactly=2S.NOM</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_61_W0M0">
                 <FORM kindOf="original">amani</FORM>
                 <PHON kindOf="original">amani</PHON>
@@ -6141,9 +6141,9 @@
                 <FORM kindOf="standard">=su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第二人稱單數.附著主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第二人稱單數.附著主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第二人稱單數.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">2S.BN</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">2S.BN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2S.NOM</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_61_W1">
@@ -6281,9 +6281,9 @@
             <FORM kindOf="standard">amani=su</FORM>
             <PHON kindOf="standard">amanisu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">就是=第二人稱單數.附著主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">就是=第二人稱單數.附著主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">就是=第二人稱單數.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">it.is.exactly=2S.BN</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">it.is.exactly=2S.BN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">it.is.exactly=2S.NOM</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_63_W0M0">
                 <FORM kindOf="original">amani</FORM>
                 <PHON kindOf="original">amani</PHON>
@@ -6300,9 +6300,9 @@
                 <FORM kindOf="standard">=su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第二人稱單數.附著主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第二人稱單數.附著主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第二人稱單數.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">2S.BN</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">2S.BN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2S.NOM</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_63_W1">
@@ -6510,9 +6510,9 @@
             <FORM kindOf="standard">taupungu=ini</FORM>
             <PHON kindOf="standard">taupuŋuini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狗=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">dog=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_64_W2M0">
                 <FORM kindOf="original">taupungu</FORM>
                 <PHON kindOf="original">taupuŋu</PHON>
@@ -6529,9 +6529,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_64_W3">
@@ -6698,9 +6698,9 @@
             <FORM kindOf="standard">iyaw=li</FORM>
             <PHON kindOf="standard">ijawli</PHON>
             <TRANSL xml:lang="zho" kindOf="original">青蛙=第一人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">青蛙=第一人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">青蛙=第一人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">frog=1S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">frog=1S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">frog=1S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_71_W2M0">
                 <FORM kindOf="original">iyaw</FORM>
                 <PHON kindOf="original">ijaw</PHON>
@@ -6717,9 +6717,9 @@
                 <FORM kindOf="standard">=li</FORM>
                 <PHON kindOf="standard">li</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第一人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">1S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_71_W3">
@@ -6987,9 +6987,9 @@
             <FORM kindOf="standard">taupungu=ini</FORM>
             <PHON kindOf="standard">taupuŋuini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狗=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">dog=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_72_W6M0">
                 <FORM kindOf="original">taupungu</FORM>
                 <PHON kindOf="original">taupuŋu</PHON>
@@ -7006,9 +7006,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_72_W7">
@@ -7196,7 +7196,7 @@
             <FORM kindOf="standard">i-kay</FORM>
             <PHON kindOf="standard">ikaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_75_W4M0">
@@ -7205,7 +7205,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -7495,9 +7495,9 @@
             <FORM kindOf="standard">lingau=ini</FORM>
             <PHON kindOf="standard">liŋauini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">聲音=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">聲音=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">聲音=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">voice=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">voice=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">voice=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_78_W5M0">
                 <FORM kindOf="original">lingau</FORM>
                 <PHON kindOf="original">liŋau</PHON>
@@ -7514,9 +7514,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_78_W6">
@@ -7894,9 +7894,9 @@
             <FORM kindOf="standard">lingau=lini</FORM>
             <PHON kindOf="standard">liŋaulini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">聲音=第三人稱複數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">聲音=第三人稱複數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">聲音=第三人稱複數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">voice=3P.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">voice=3P.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">voice=3P.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_82_W4M0">
                 <FORM kindOf="original">lingau</FORM>
                 <PHON kindOf="original">liŋau</PHON>
@@ -7913,9 +7913,9 @@
                 <FORM kindOf="standard">=lini</FORM>
                 <PHON kindOf="standard">lini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱複數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱複數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱複數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3P.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3P.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3P.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_82_W5">
@@ -8483,7 +8483,7 @@
             <FORM kindOf="standard">ta-i-kay-ane</FORM>
             <PHON kindOf="standard">taikajanə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">名物化-處所-這個-名物化</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">NMLZ-處所-這個-NMLZ</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">NMLZ-LOC-這個-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NMLZ-LOC-this-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">NMLZ-LOC-this-NMLZ</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_85_W8M0">
@@ -8502,7 +8502,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -8743,7 +8743,7 @@
             <FORM kindOf="standard">i-kay</FORM>
             <PHON kindOf="standard">ikaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_85_W19M0">
@@ -8752,7 +8752,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -9513,7 +9513,7 @@
             <PHON kindOf="standard">taŋatuanə</PHON>
             <FORM kindOf="standard" ver="alt">ta-angatu-ane</FORM>
             <TRANSL xml:lang="zho" kindOf="original">處所-樹-名物化</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-樹-NMLZ</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-樹-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-tree-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-tree-NMLZ</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_94_W3M0">
@@ -9522,7 +9522,7 @@
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -9635,7 +9635,7 @@
             <PHON kindOf="standard">taŋatuanə</PHON>
             <FORM kindOf="standard" ver="alt">ta-angatu-ane</FORM>
             <TRANSL xml:lang="zho" kindOf="original">處所-樹-名物化</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-樹-NMLZ</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-樹-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-tree-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-tree-NMLZ</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_94_W8M0">
@@ -9644,7 +9644,7 @@
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -11002,7 +11002,7 @@
             <FORM kindOf="standard">i-kay</FORM>
             <PHON kindOf="standard">ikaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_106_W9M0">
@@ -11011,7 +11011,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -11092,7 +11092,7 @@
             <FORM kindOf="standard">i-kay</FORM>
             <PHON kindOf="standard">ikaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_106_W13M0">
@@ -11101,7 +11101,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -11778,7 +11778,7 @@
             <FORM kindOf="standard">i-kay</FORM>
             <PHON kindOf="standard">ikaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_114_W1M0">
@@ -11787,7 +11787,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -11868,7 +11868,7 @@
             <FORM kindOf="standard">i-kay</FORM>
             <PHON kindOf="standard">ikaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_114_W5M0">
@@ -11877,7 +11877,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -12296,7 +12296,7 @@
             <FORM kindOf="standard">i-a-kay</FORM>
             <PHON kindOf="standard">iakaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-實現-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-RLS-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-RLS-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-RLS-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-RLS-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_119_W3M0">
@@ -12305,7 +12305,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -13740,18 +13740,18 @@
             <FORM kindOf="standard">nayane</FORM>
             <PHON kindOf="standard">najanə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">第一人稱複數(排除).自由斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">第一人稱複數(EXCL).自由斜格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">第一人稱複數(EXCL).OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">1P(EX).FO</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">1P(EXCL).FO</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1P(EXCL).OBL</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_129_W5M0">
                 <FORM kindOf="original">nayane</FORM>
                 <PHON kindOf="original">najanə</PHON>
                 <FORM kindOf="standard">nayane</FORM>
                 <PHON kindOf="standard">najanə</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第一人稱複數(排除).自由斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第一人稱複數(EXCL).自由斜格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第一人稱複數(EXCL).OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1P(EX).FO</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">1P(EXCL).FO</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1P(EXCL).OBL</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_129_W6">
@@ -14059,9 +14059,9 @@
             <FORM kindOf="standard">taupungu=ini</FORM>
             <PHON kindOf="standard">taupuŋuini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狗=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">dog=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_131_W3M0">
                 <FORM kindOf="original">taupungu</FORM>
                 <PHON kindOf="original">taupuŋu</PHON>
@@ -14078,9 +14078,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -14678,18 +14678,18 @@
             <FORM kindOf="standard">iniane</FORM>
             <PHON kindOf="standard">inianə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.自由斜格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.自由斜格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.OBL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3S.FO</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.FO</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.OBL</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_132_W26M0">
                 <FORM kindOf="original">iniane</FORM>
                 <PHON kindOf="original">inianə</PHON>
                 <FORM kindOf="standard">iniane</FORM>
                 <PHON kindOf="standard">inianə</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.自由斜格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.自由斜格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.OBL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.FO</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.FO</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.OBL</TRANSL>
             </M>
         </W>
     </S>
@@ -15246,9 +15246,9 @@
             <FORM kindOf="standard">taupungu=ini</FORM>
             <PHON kindOf="standard">taupuŋuini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狗=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">dog=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_142_W5M0">
                 <FORM kindOf="original">taupungu</FORM>
                 <PHON kindOf="original">taupuŋu</PHON>
@@ -15265,9 +15265,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -16980,9 +16980,9 @@
             <FORM kindOf="standard">taupunge=ini</FORM>
             <PHON kindOf="standard">taupuŋəini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狗=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">dog=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_160_W3M0">
                 <FORM kindOf="original">taupunge</FORM>
                 <PHON kindOf="original">taupuŋə</PHON>
@@ -16999,9 +16999,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_160_W4">
@@ -17070,9 +17070,9 @@
             <FORM kindOf="standard">a=su</FORM>
             <PHON kindOf="standard">asu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">為什麼=第二人稱單數.附著主格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">為什麼=第二人稱單數.附著主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">為什麼=第二人稱單數.NOM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">why=2S.BN</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">why=2S.BN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">why=2S.NOM</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_160_W7M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -17089,9 +17089,9 @@
                 <FORM kindOf="standard">=su</FORM>
                 <PHON kindOf="standard">su</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第二人稱單數.附著主格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第二人稱單數.附著主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第二人稱單數.NOM</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">2S.BN</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">2S.BN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">2S.NOM</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_160_W8">
@@ -17240,9 +17240,9 @@
             <FORM kindOf="standard">tauki=li</FORM>
             <PHON kindOf="standard">taukili</PHON>
             <TRANSL xml:lang="zho" kindOf="original">老闆=第一人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">老闆=第一人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">老闆=第一人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">boss=1S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">boss=1S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">boss=1S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_160_W15M0">
                 <FORM kindOf="original">tauki</FORM>
                 <PHON kindOf="original">tauki</PHON>
@@ -17259,9 +17259,9 @@
                 <FORM kindOf="standard">=li</FORM>
                 <PHON kindOf="standard">li</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第一人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">1S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_160_W16">
@@ -17629,16 +17629,16 @@
             <FORM kindOf="standard">ta-kela-ane=lini</FORM>
             <PHON kindOf="standard">takəlaanəlini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-來-名物化=第三人稱複數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-來-NMLZ=第三人稱複數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-來-NMLZ=第三人稱複數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-come-NMLZ=3P.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">LOC-come-NMLZ=3P.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">LOC-come-NMLZ=3P.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_164_W9M0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -17668,9 +17668,9 @@
                 <FORM kindOf="standard">=lini</FORM>
                 <PHON kindOf="standard">lini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱複數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱複數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱複數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3P.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3P.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3P.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -18576,7 +18576,7 @@
             <FORM kindOf="standard">tai-lebe-ane</FORM>
             <PHON kindOf="standard">tailəbəanə</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-下面-名物化</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-下面-NMLZ</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-下面-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-below-NMLZ</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-below-NMLZ</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_175_W10M0">
@@ -18585,7 +18585,7 @@
                 <FORM kindOf="standard">tai</FORM>
                 <PHON kindOf="standard">tai</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -18676,7 +18676,7 @@
             <FORM kindOf="standard">i-a-kay</FORM>
             <PHON kindOf="standard">iakaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-實現-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-RLS-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-RLS-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-RLS-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-RLS-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_175_W14M0">
@@ -18685,7 +18685,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -19663,9 +19663,9 @@
             <FORM kindOf="standard">taupungu=ini</FORM>
             <PHON kindOf="standard">taupuŋuini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">狗=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">狗=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">dog=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">dog=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_186_W10M0">
                 <FORM kindOf="original">taupungu</FORM>
                 <PHON kindOf="original">taupuŋu</PHON>
@@ -19682,9 +19682,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_186_W11">
@@ -20132,7 +20132,7 @@
             <FORM kindOf="standard">i-kay</FORM>
             <PHON kindOf="standard">ikaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_193_W7M0">
@@ -20141,7 +20141,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -20222,7 +20222,7 @@
             <FORM kindOf="standard">i-a-kay</FORM>
             <PHON kindOf="standard">iakaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-實現-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-RLS-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-RLS-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-RLS-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-RLS-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_193_W11M0">
@@ -20231,7 +20231,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -20322,9 +20322,9 @@
             <FORM kindOf="standard">mu-a=lini</FORM>
             <PHON kindOf="standard">mualini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-實現=第三人稱複數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">去-RLS=第三人稱複數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">去-RLS=第三人稱複數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-RLS=3P.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">go-RLS=3P.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">go-RLS=3P.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_193_W15M0">
                 <FORM kindOf="original">mu</FORM>
                 <PHON kindOf="original">mu</PHON>
@@ -20351,9 +20351,9 @@
                 <FORM kindOf="standard">=lini</FORM>
                 <PHON kindOf="standard">lini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱複數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱複數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱複數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3P.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3P.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3P.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_193_W16">
@@ -21346,7 +21346,7 @@
             <FORM kindOf="standard">i-kay</FORM>
             <PHON kindOf="standard">ikaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_207_W7M0">
@@ -21355,7 +21355,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -21486,7 +21486,7 @@
             <FORM kindOf="standard">i-a-kay</FORM>
             <PHON kindOf="standard">iakaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所-實現-這個</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">處所-RLS-這個</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">LOC-RLS-這個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-RLS-this</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC-RLS-this</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_207_W13M0">
@@ -21495,7 +21495,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">處所</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">LOC</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <TRANSL xml:lang="eng" kindOf="standard">LOC</TRANSL>
             </M>
@@ -22393,9 +22393,9 @@
             <FORM kindOf="standard">pa-palral=ini</FORM>
             <PHON kindOf="standard">papaɭalini</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役-同伴=第三人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS-同伴=第三人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-同伴=第三人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-companion=3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">CAUS-companion=3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">CAUS-companion=3S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_221_W8M0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
@@ -22422,9 +22422,9 @@
                 <FORM kindOf="standard">=ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第三人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第三人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">3S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">3S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_221_W9">
@@ -23130,9 +23130,9 @@
             <FORM kindOf="standard">pa-palra=ta</FORM>
             <PHON kindOf="standard">papaɭata</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役-同伴=第一人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="zho" kindOf="standard">CAUS-同伴=第一人稱單數.附著屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">CAUS-同伴=第一人稱單數.GEN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-companion=1S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">CAUS-companion=1S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">CAUS-companion=1S.GEN</TRANSL>
             <M id="RukaiNr-frog_Kainguane_S_225_W9M0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
@@ -23159,9 +23159,9 @@
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">第一人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.附著屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="standard">第一人稱單數.GEN</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1S.BG</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard">1S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard">1S.GEN</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-frog_Kainguane_S_225_W10">

@@ -25413,3 +25413,276 @@ Done 2026-11-12 on `fix/gloss-question-marks-ntu-hps` (first two commits merged 
   free-standing stay lexical `more`; 576 changed lines, zero outside more/CMPR; 0 HARD.
 - Every question on the derivational decision page is now settled (page round 18, v20). Record:
   Glossing/ScopingReview/DerivationalMorphology.md; todos: Glossing/OutstandingIssues.md.
+
+### 2026-11-16 (cont. 3) — collaborator review page built (candidate affixes, non-sheet languages)
+- His spec: one page per language the collaborators didn't cover; glosses on verbs (verb = token with a
+  voice gloss); candidate = all-caps OR lowercase co-occurring with a lower-diversity lowercase gloss;
+  exclusions = the ruled codes (IMP STAT NEG CAUS IRR COS CMPR REFL RECP INVOL DUR MULT CFACT IPFV FUT
+  HORT OPT SBJV) + voice atoms; per gloss: forms+counts (verb tokens only), grammar notes, ≤3 examples,
+  separator/not + comment; persistence by download/re-upload (collaborators can't write to the page);
+  "make sure that all boxes… are actually read".
+- Built: https://claude.ai/artifact/1rfKLsKTzu93bTMHuZSQBt — 830 glosses over 10 languages (Bunun 113,
+  Kanakanavu 249, Kavalan 86, Rukai 24, Saisiyat 41, Sakizaya 86, Seediq 102, Thao 3, Truku 11, Tsou 115).
+  Download via the downloads capability (viewer blocks plain blob links) + copy-box fallback; answers
+  serialized by reading every radio/textarea LIVE off the DOM at download time; input-event capture +
+  localStorage courtesy; format tag deriv-collab-1. Extractor + data committed to claudeplans/.
+- NOTED to him: the literal criteria admit high-diversity lexical glosses (eat, go, say) and un-ruled codes
+  (RLS, PFV, NOM, GEN, pronouns) — mirrors the collaborators' own sheet format; criteria can be tightened.
+
+### 2026-11-16 (cont. 4) — collaborator page filtered per his ruling
+- His words: "Exclude clitics, person/number codes, RLS, PFV, PST, PROG, LNK, AUX, and the zho twins
+  thereof. Add a frequency floor of 5." → applied: person/number+case atoms 97 rows, clitic-attached
+  (=-forms majority) 40, the named codes + zho twins (incl. unconverted stragglers 表過去/祈使/規勸 etc.)
+  18, floor<5 242. 830 → 433 rows over 9 languages (Thao dropped entirely). Page v3 republished.
+- Still pending his call: the lexical-root flood (go/eat/take/say…) — he asked how bound-form detection
+  works before ruling on the distribution-based root filter (answered in chat: boundness is structural
+  M-in-multi-morpheme-W vs sole-M word, but saturates on verbs since every verb has a voice M; only the
+  combination/diversity asymmetry separates affix from root).
+
+### 2026-11-16 (cont. 5) — collaborator page: 5 examples, dual glosses, floor 10
+- His words: "when providing examples, let's provide 5. When there are mandarin glosses and english
+  glosses, provide both. Also, raise our frequency floor to 10." → re-extracted with 5 examples per gloss,
+  each example showing eng AND zho word glosses where both tiers exist (verified: e.g.
+  AV-head.to⟨RED⟩farmland · AV-前進⟨重疊⟩農田); floor 10 → 291 rows over 9 languages (Bunun 49,
+  Kanakanavu 93, Kavalan 21, Rukai 3, Saisiyat 14, Sakizaya 27, Seediq 35, Truku 1, Tsou 48). Page v4.
+- Root-filter decision still pending (go/eat/take/say rows remain).
+
+### 2026-11-17 — case page: his 2026-11-17 notes consumed; one ruling applied; answers published
+- RULED (Rukai note): "所有格->GEN" → Rukai-only override on the NTU 所有格 row (×5 tokens, zho 所有格 ↔ eng
+  GEN); NTU rebuilt, exactly 10 lines changed; 35 tests passed. The bank-wide 所有格 (POSS ×1,217) stays
+  UNDECIDED.
+- Answers published into the case page (v28), one block per language, from the eng↔zho twin cross-tabs +
+  form-level checks + grammar passages. Highlights: Bunun 處格↔LOC ×594; Bunun mas/=s all Junqun, grammar
+  §5.1.2 「屬格／斜格標記mas」 PDF 99 = one dual-function marker (not dialects); Kanakanavu case is binary
+  (主格 sua / 處格 na, §5.1) so na-LOC ×337 vs OBL ×19 is relabeling, other OBL = pronoun paradigm, nguain
+  = 3SG pronoun in both sources; Kavalan 語法概論 §5.2.1.5 所有格人稱代名詞 zaku paradigm (unsegmented,
+  matches POSS); Paiwan 主格標記 ti/tia/a §5.1.1 → HPS c = nominative a (form-uniform ×3,166), nua/ni
+  reliable genitives (nu NOT reliable), Yedda NOM pronouns exist at W level + grammar §5.2.1.1; Rukai
+  LOC's zho label is 處所 (not 處格), OBL residue = OBL ×10 self + 主格 ×2; Saisiyat NOM/主格 aligned
+  (579/577), DAT = 予格, pronoun-only ×18; Sakizaya + Seediq eng-vs-zho count gaps = missing eng tiers
+  (∅-eng 主格 ×623 / ×461); Truku 受格 strays listed (lqi-an, ktu-an); Tsou 處格/受格 slip pairings listed.
+
+### 2026-11-17 (cont.) — Bunun follow-up: the 處格↔LF tokens verified as verbal -an
+- His Q: "For the stray LFs, are we sure they are stray? That is, they use the morpheme expected for a
+  noun, not the one expected for a verb?" — Answer (token-by-token, on the page v29): all 13 are suffixal
+  -an (9 on verb roots incl. PFV-infixed c⟨in⟩unghabin-an / h⟨in⟩ud-an, 4 deriving place-nouns lukis-an /
+  iskaan-an / ucia-an), i.e. the VERBAL/derivational morpheme — while the genuine 處格↔LOC ×594 tokens all
+  use the sia family (sia ×454, sain, sai, =sia, sian, i) before noun phrases. The zho 處格 label is the
+  slip; LF is the coherent reading; the 13 join the known -an family (Tsukida OBL, Truku 受格, Saisiyat
+  NMZ per Li-May).
+
+### 2026-11-17 (cont.) — RULED: Bunun 處格-on-verbal-an fixed on the zho side (new machinery: positional + language-scoped context rules)
+- His words (case page Bunun note, 2026-11-17): "The mislabel involving LF is on the zho side: 處格 (a
+  noun-case label) got stamped onto the verbal/derivational -an suffix; the eng LF is the coherent
+  reading. We need to fix the zho side specifically for those items. This probably requires some new
+  functionality."
+- New functionality in QC/glossing/apply_gloss_standard.py (test-first, 37/37 tests pass):
+  (a) language-scoped context rules — `ATOM@Language&pattern` fires only on words of that language
+  (needed because Kavalan's genuine locative marker IS an); (b) opt-in positional form patterns —
+  `X$` matches only a NON-INITIAL morpheme spelled X, `^X` only an initial one (needed because
+  form_core strips affix punctuation, so a plain `an` pattern also matched the Bunun PREFIX an- in
+  an-sain-un / an-sia, where 處格 sits on the sain/sia morpheme and is the genuine locative). Plain
+  patterns keep their old position-blind behavior — no settled rule (NAF&-i etc.) changes.
+- Rules row: `處格@Bunun&an$ → CONTEXT-CONVERT→LV` with his words in the description.
+- Result (strip+rebuild, 621,300 standard TRANSLs stripped and re-added): exactly 13 word tokens
+  changed, 26 TRANSLs (13 W + 13 M copies), all zho LOC→LV, 7 Bunun files, nothing else:
+  c⟨in⟩unghabin-an, da⟨i⟩dingi-an, dangi-an, h⟨in⟩ud-an, h⟨in⟩uud-an, habas-an, iskaan-an,
+  kat⟨da⟩da-an, kaunga-an=suu, lukis-an, pacidu-an=ku, ucia-an, uka-an (the 12 known + uka-an whose
+  eng twin is spelled "Lf"). an-sain-un / an-sia untouched (correctly: genuine locative on sain/sia).
+- Accepted limitation, logged in Glossing/OutstandingIssues.md: 1 token with the -a allomorph
+  (iskus-a=s 'lead.along-LF=...') keeps zho 處格 — an `-a` pattern over-fires on any word containing a
+  morpheme a, and no sane pattern isolates this one token.
+
+### 2026-11-17 (cont.) — RULED: the seven composite-member conversions
+- His words: "Yes, go ahead and add those conversions." (in reply to the proposed seven: 遠距→DIST,
+  近距→PROX, 包含→INCL, 排除→EXCL, 過去→PST, 人名標記→PN, 所有格→POSS).
+- NTU rows set to CONVERT (所有格 keeps the Rukai→GEN override). Analogues checked per his 2026-11-16
+  bank-wide instruction before inclusion:
+  - Song-Kanakanavu 包含 ×30 → INCL (all tokens are 我們.包含.主格/屬格 = 1PL inclusive). Song 過去 ×2
+    NOT converted — both tokens are the word miana '當時/formerly', a lexical temporal adverb, not the
+    tense label; left UNDECIDED with a note.
+  - RauDong (Rukai) 過去 ×454 → PST (forms: ni ×136 = the Rukai past prefix, noka ×9, …);
+    所有格 ×2 → GEN (RauDong is Rukai, so the Rukai 所有格→GEN ruling applies, not POSS).
+- Rebuilds (strip+rebuild, counts in/out equal everywhere): NTU 6,854 TRANSLs changed — atom accounting:
+  遠距→DIST ×3272, 所有格→POSS ×1244, 過去→PST ×1022, 人名標記→PN ×476, 包含→INCL ×332, 近距→PROX ×289,
+  排除→EXCL ×287, nothing else. RauDong 474 TRANSLs (過去→PST ×472, 所有格→GEN ×2). Song 30 TRANSLs
+  (all 包含→INCL). 39 glossing tests pass; gloss validators exit 0 (no HARD) on all three.
+- Still UNDECIDED from the composite batch: 中距/MED, 存在/EXIST, 中性格/NEUT, RauDong 虛.
+
+### 2026-11-17 (cont.) — RULED: Chang fullwidth-paren codes become period notation (EMBEDDED-CODE implemented)
+- His words: "We will need our standardization to convert to use period notation (他.GEN) during
+  standardization, but leaving the original tier alone." (on Chang's 他（屬格） bracket notation).
+- The Seediq-Chang rules file had declared `EMBEDDED-CODE` since table setup but the converter never
+  implemented it (those glosses fell to the paren-residue path, copied verbatim). Now implemented in
+  QC/glossing/apply_gloss_standard.py, test-first (2 new tests; 39/39 pass): a rules row
+  `<regex with the code as group 1> EMBEDDED-CODE` rewrites 他（屬格） → 他.屬格 before segmentation,
+  so the inner code converts like any other atom; an UNDECIDED inner atom is copied verbatim into the
+  period notation (他.主格 until 主格 is ruled) and its row stays on the to-do list. Originals untouched.
+- Kavalan-Chang rules file given the same EMBEDDED-CODE row. 屬格 → GEN ruled in BOTH Chang tables (his
+  simulated target); 主格 and the other proposed rows remain UNDECIDED awaiting his batch approval.
+- Rebuilds: Seediq-Chang 188 TRANSLs changed (屬格→GEN ×114 bare; his exact examples: 他（屬格）×5→他.GEN,
+  喝-LF-他（屬格）×2→喝-LV-他.GEN, RF-吃-他（屬格）×2→OV-吃-他.GEN, 吃-PF-他（屬格）×1→吃-PV-他.GEN; plus all
+  other bracketed codes period-joined, e.g. 打（AF）×20→打.AV). Kavalan-Chang 156 TRANSLs (屬格→GEN ×86;
+  你（屬格）→你.GEN, 怎樣-你（屬格）=未來式→怎樣-你.GEN=未來式; role-label brackets 我（終點/賓語/處所/起點）
+  period-joined with labels still UNDECIDED). Residue in both corpora is now zero. Gloss validators
+  exit 0; Seediq-Chang's SOFT set verified identical to the pre-change baseline (stash check).
+- Flagged for his eye (converted by the blanket pattern; revisit if wrong): 還（沒）×2 → 還.沒
+  ('still (not)' — the bracket is not a grammatical code) and 知道=動貌（-他）/動貌（-他） → …動貌.-他
+  (the bracket holds '-他' with its hyphen, yielding an odd '.-' sequence).
+
+### 2026-11-17 (cont.) — case-page follow-up round consumed: 2 rulings applied, 4 languages answered
+- RULED (Rukai note + chat "附著主格->NOM for Rukai, please!"): NTU 附著主格 ×978 → NOM (every token is
+  Rukai dru/Wutai ×977, so plain CONVERT is Rukai-scoped by the data). Rebuild: exactly 817 glosses
+  changed, all 附著主格→NOM. OPEN: his note also says "自由主格-> NOM" but NO 自由主格 label exists in the
+  data (free-pronoun labels are 自由主題格/FT ×30 and 自由斜格/FO ×306) — asked whether he meant 自由主題格.
+  ~160 附著主格 tokens inside parenthesized person glosses (第一人稱複數(包含).附著主格) remain paren-residue.
+  eng twin BN ×867 stays UNDECIDED (not named).
+- RULED (Paiwan note): "For HPS's nua/by, ni/of, let's gloss those as GEN." → four context rules
+  (by/of & nua/ni → GEN) in HundredPaiwanStories.rules.tsv. Rebuild: nua→GEN ×619 (all nua tokens),
+  ni→GEN ×336 (all ni tokens), nothing else; verified nu/'of' ×200 and na ×4 untouched (not named in
+  the ruling — asked whether they should follow). Safety shown first: every multi-morph nua/ni word is
+  itself a genitive construction (ni-madju, ni-aken, nua-zua …).
+- ANSWERED on the page (v32): Paiwan c/a (gloss c sits ONLY on form a ×5,783; a is also pl ×177 and
+  empty ×93 — nothing else is c) and ku/nu/su (present only as pronouns/lexical, never case-glossed);
+  Saisiyat 予格 (row exists, UNDECIDED ×36, eng twin DAT ×34; proposed 予格→DAT per his approved
+  vocabulary "DAT (Saisiyat)" — awaiting his word); Sakizaya count gaps (主格 3,055 = 1,808 with-eng
+  ≈ NOM 1,816 + 1,247 no-eng tier; 屬格 1,816 = 1,198 ≈ GEN 1,194 + 618 no-eng; 所有格 twin = POSS;
+  pronouns glossed 3SG.屬格↔3SG.GEN style); Kanakanavu ∅ (the page's own shorthand for "no gloss on
+  the other tier", now spelled out; the data has ONE literal ∅: ni-po'ocipi-∅=musu, NTU's own null
+  slot). Seediq/Truku/Tsou/Kavalan notes were the prior round, already answered.
+- 39 glossing tests pass; HPS + NTU gloss validators exit 0 (no HARD).
+
+### 2026-11-17 (cont.) — RULED: the Rukai (包含)/(排除) person glosses convert too
+- His words: "The (包含) is marking inclusive plural. If you aren't handling (包含)->(INCL), then it must
+  be the other agent. Anyway, for these we should still do 附著主格->NOM. I'm not entirely clear why the
+  code we have won't do that already."
+- Why the code didn't: one paren character makes a WHOLE gloss residue (the INVESTIGATE check is
+  per-gloss), so nothing inside 第一人稱複數(包含).附著主格 was ever looked up. No other agent handles it.
+- Fix: KEEP-PARENS row `\((?:包含|排除)\)` in NTUFormosanCorpus.rules.tsv (same mechanism as
+  Wild-Lehmann). Rebuild: +307 glosses convert — (包含)→(INCL), (排除)→(EXCL), 附著主格→NOM all fire
+  (第一人稱複數(包含).附著主格 → 第一人稱複數(INCL).NOM ×39 etc.); residue 885→578.
+- 附著主格 now standard-converted everywhere except 3 tokens blocked by the separate 同行(人) chunk
+  (asked: keep (人)/(HUM) or note them?). eng twins 1P(IN).BN etc. still residue via (IN)/(EX) —
+  asked whether to mirror ((IN)→(INCL)). BN/BG/FO/FT family explained to him; BN→NOM proposed, not
+  applied (no ruling yet).
+
+### 2026-11-17 (cont.) — case-page round 3 consumed (his 08:57–09:21 notes + done click); 7 rulings applied
+- RULED (Rukai #2): "Yes, please keep those chunks." → KEEP-PARENS (人|HUM); last 3 附著主格 convert.
+- RULED (Rukai #3/#4): "BN->NOM" / "BG, 附著屬格 -> GEN; FO, 自由斜格 -> OBL. Please point this out in notes
+  and caveats for this corpus." → five NTU rows CONVERT (all tokens dru): BN→NOM ×816, BG→GEN ×731,
+  附著屬格→GEN ×840, FO→OBL ×284, 自由斜格→OBL ×306 in the rebuild; remainders (BN ×163, BG ×121, FO ×24)
+  are inside 1P(IN)/(EX) paren glosses owned by glossing/rule7-voice (his "IN, EX are being handled as
+  INCL, EXCL" = that branch; ruled there 2026-11-16, merges first — NOT duplicated here). README caveat
+  added under Notes and caveats → Minor notes (readme tests: 112 passed).
+- Rukai #1: acknowledged — "自由主格" in my earlier answer was MY error (no such label; zho = bare 主格 on
+  free forms ↔ eng NOM ×583, 附著主格 on bound; FT/自由主題格 ×26 stays unruled).
+- RULED (Paiwan #1): "nu/of and na/'by/of' should be -> GEN as well. Just be careful not to convert those
+  when glossed as something else." → of&nu, by&na, of&na context rules; rebuild of→GEN ×214, by→GEN ×2
+  only; when/your(p)/past/STAT verified untouched; zero of/by on non-target morphemes.
+- RULED (Paiwan #2): "OK a/c -> NOM." → HPS c→NOM ×6,328 (atom c verified to gloss only the form a).
+- Paiwan #3 answered: ku/su are free-standing single-morpheme words (ku 'I' ×108/'my' ×95, su ×84/×78).
+- RULED (Saisiyat): "予格 → DAT" → Saisiyat→DAT override ×34; the lone Tsou 予格 token is the -neni
+  benefactive suffix (eng BF) and is excluded (belongs to the Tsou voice question).
+- RULED (Seediq): "所有格 -> POSS" (already applied bank-wide earlier today) + "OBL -> UNDECIDED" recorded
+  as a Seediq-mapping amendment; NTU OBL row stays KEEP (row-approved 2026-11-11; KEEP and UNDECIDED are
+  output-identical — both copy OBL verbatim).
+- Tsou NOT applied (his note is a question): evidence says 受格/處格/與格 mark voice on verbs (aiti see-LV,
+  eainca say-PV, zoepzeni hold.up.high-OV) EXCEPT one genuine pronoun case (i-he 3PL.受格). Form-scoped
+  conversion staged, awaiting his word.
+- RULED (Chang voice notation, Rule 7 — relayed verbatim by the rule7-voice session: "RUle 7, consistent
+  with the rest of bank."): Chang voice brackets 打（AF） now → 打(AV) (KEEP-PARENS (AF|PF) + lookahead in
+  EMBEDDED-CODE); case stays period (他.GEN). Diffs: Seediq-Chang 62, Kavalan-Chang 52 TRANSLs, pure
+  .AV/.PV → (AV)/(PV) restyles.
+- Found while validating: NTU has 2 pre-existing V067 HARD findings (M FORM 'hoN2T>', 'shiaolingLM>')
+  present on origin/main, unwaived (no NTU qc_waivers.tsv); earlier "0 HARD" readings were masked by
+  piping validator output through tail/head (exit code read from the pipe, not the validator). Not
+  introduced by this branch; flagged to the maintainer.
+
+### 2026-11-17 (cont.) — merged origin/main (rule7-voice #354) + case-page round 4
+- MERGE 64be1d5ae: main's RULE7-PARENS/TWIN-VOICE/WHOLE-GLOSS machinery + this branch's EMBEDDED-CODE,
+  @Lang context scoping, positional X$/^X — EMBEDDED-CODE ordered BEFORE the Rule 7 mask so Chang case
+  stays 他.GEN while voice takes 打(AV) (identical to main's voice output). Six corpora strip+rebuilt;
+  final tree vs origin/main = exactly this branch's rulings (atom-accounted; BN→NOM now the full ×980 —
+  rule7-voice's (IN)/(EX) unblocking reached the paren glosses). My KEEP-PARENS rows dropped (keyword
+  removed on main; RULE7-PARENS + table rows cover (包含)/(排除)/(人)/(HUM) — verified). RauDong's
+  non-ASCII-named Yami file needed restoring from origin/main (git path-quoting made checkout skip it;
+  caught because the strip crashed on the conflict markers). 47 glossing tests pass.
+- V067 investigation (maintainer: "these are some kinds of broken tags... look at raw"): CONFIRMED broken
+  source tags. Raw JSONs: Seediq <L2ThoN2T>. = opener <L2T + word hoN + closer missing its L (should be
+  L2T>); Tsou <L2MshiaolingLM>._ = closer missing its 2 (shiaoling = the name Shiao-Ling). The corpus's
+  own repair_l2_markers.py maps BOTH ('hoN2T>'→'hoN', 'shiaolingLM>'→'shiaoling'), 28 of its ~30 mapped
+  tokens are clean in the published XML, but a dry run now skips ALL 188 files on its round-trip guard
+  (the rebuilt XML no longer re-serializes byte-identically under its lxml check). Put to the maintainer:
+  fix in the NTU pipeline, relax the guard, or record 2 manual edits.
+- Round 4 notes (22:08–22:14) consumed: his three "did you update the table?" complaints were right in a
+  deeper way — HPS c/by/of (Paiwan), 予格 (Saisiyat) and the Rukai BN/BG/FO family were MISSING from the
+  page's mapping tables entirely (whitelist gap, same class as 2026-11-11). Rows added as APPLIED with
+  computed form profiles; Seediq 所有格 moved to a → POSS group and its OBL group re-badged UNDECIDED per
+  his amendment (data unchanged either way).
+- Rukai FT (conditional ruling "If not, then 自由主題格/FT -> NOM. Otherwise, please tell me more."):
+  evidence FOUND → "tell me more" branch, NOT converted. 語法概論 (Mantauran) §5.3.1.4 主題人稱代名詞 is
+  a distinct series from §5.3.1.1 主格; 「自由形代名詞是主題代名詞」; ex. (5-34) shows topic ilrae AND
+  nominative =lrai co-occurring in one clause. Caveat noted: grammar = Mantauran, NTU = Wutai. FT/
+  自由主題格 rows added to the table as pending; TOP mentioned as the conventional code if wanted.
+
+### 2026-11-18 — RULED: the two V067 broken-tag fixes absorbed into the NTU pipeline
+- His words: "Absorb the two fixes into the NTU pipeline itself."
+- Pipeline: two malformed-closer alternatives added to _L2M_RE in CodeAndDocs/scripts/utils.py (the
+  mechanism all builders share via strip_l2m), with the same single-source-typo comment style as the
+  2026-10-18 '<T2...' precedent: '2T>' (closer missing its L; <L2ThoN2T>. → hoN, sdqNr-ricah_uma R14)
+  and 'LM>' / bare 'LM' (closer missing its 2; <L2MshiaolingLM>._ and the ori stream's shiaolingLM. →
+  shiaoling, TsouConv-typhoon R245). Unit-verified against all legacy cases (jidensha, hikokiL2J,
+  s<en>aqay untouched, maML2, <L2haiya); 3 new parametrized cases in tests/corpora/
+  test_ntu_source_parsing.py (23 passed).
+- Published XML fixed to match what the fixed pipeline now produces, mirroring repair_l2_markers.py's
+  witness semantics (ET serialization so the diff is exactly the targeted lines — the first attempt via
+  lxml reformatted 1,428 lines and was reverted): Seediq W+M FORM hoN2T>→hoN with orig+std PHON
+  ħon*t→ħon (original witness PASSED; matches the sentence tier's existing ma ħon); Tsou S+W+M FORM
+  →shiaoling with STANDARD PHON shiaoɗiŋɗm→shiaoɗiŋ (standard self-witness passed). Tsou's 3
+  ORIGINAL-tier PHONs keep sxiaoɗiŋɗm: their witness fails because they were computed under the old
+  phonology profile (sx-, jax-), the exact class repair_l2_markers reports and skips — they heal on the
+  next full pipeline rebuild. NTU validate_glosses now exits 0 with NO HARD findings (V067: 2 → 0).
+- origin/main checked after his "the other agent's PR has now hit": already merged (64be1d5ae covers
+  #354; no commits on main since bfa02c02a).
+
+### 2026-11-18 — case-page round 5 consumed: FT→TOP and the Tsou voice plan applied
+- RULED (Rukai): "自由主題格/FT -> TOP (Assuming that person is still glossed on these items, so they are
+  recognized as pronouns.) Otherise approved." — condition verified (member-wise conversion leaves person
+  atoms: 1S.FT → 1S.TOP); TOP is Leipzig (leipzig_codes.tsv:82) and already in the Rukai dictionary.
+  Rebuild: 自由主題格→TOP ×30, FT→TOP ×26. Rukai case mapping now fully settled.
+- RULED (Tsou): "Please apply plan for those five verb forms. Otherwise, approved." — six Tsou-scoped
+  context rules (處格@Tsou&aiti/peelʉi→LV, 受格@Tsou&eainca/enca/'i'ima→PV, 與格@Tsou&zoepzeni→OV).
+  Rebuild ×18 TRANSLs; outputs take Rule 7 parens (說(PV), 看(LV)) via the merged voice machinery —
+  consistent with the Chang ruling — and the eng twins (say.PF/see.LF/hold.high.BF) convert to the same
+  codes, so both tiers agree. i-he '3PL.受格' (eng 3PL.GEN) untouched (falls through; 受格 UNDECIDED).
+  Still open: the lone Tsou 予格 token (teoteai-neni, eng BF→OV) — asked whether it follows.
+- Paiwan/Saisiyat/Seediq flipped to approve (their table-update questions satisfied). NTU gloss validator
+  exit 0, 0 HARD; 47 glossing tests pass. Page v36.
+
+### 2026-11-18 — RULED: the approved case mapping applied bank-wide; all glossed corpora rebuilt
+- His words: "The lone 予格 token should be UNDECIDED and go on our todo list. Otherwise, this is now all
+  approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline."
+- Tsou 予格: already UNDECIDED-behaving (Saisiyat→DAT override only); todo entry added to
+  OutstandingIssues.md.
+- The page's mapping tables (v36) implemented as the spec. New table state, atom-accounted in the
+  rebuild of all 17 glossed corpora (16,281 changed TRANSLs; nothing outside the approved atoms):
+  RauDong 屬格→GEN ×3952 · 主格→NOM ×2216 · 處格→LOC ×966 · 斜格→OBL ×504; HPS obl→OBL ×2268 ·
+  loc→LOC ×1621; NTU 處所→LOC ×1116 (Rukai+Kanakanavu overrides) · 受格→ACC ×1053 (Atayal+Saisiyat)
+  · 受格/ACC→OBL ×262 (Rukai/Kanakanavu overrides + the Bunun mas/pronoun-series fold rules; the
+  -un/tu voice slips stay verbatim as approved) · 中性格→NEU ×271 (Atayal override; NEU registered per
+  the approved vocabulary line) · POSS→GEN ×199 (Kanakanavu clitics; tamna keeps POSS via context
+  rules — verified: tamna standard = POSS ×121, GEN ×0) · 處所格→LOC ×120; Song 主格/屬格/斜格/處格
+  ×1297; Kavalan-Chang 受格→OBL ×250 · 主格→NOM ×208 · 處所格→LOC ×84; Nowbucyang 主格→NOM ×352;
+  Seediq-Chang 主格→NOM ×276; Amis-Kavalan-Lin ABS→NOM ×114 · ERG→GEN ×84; Amis-Pa-Verbs DAT→OBL ×46.
+  Not converted, per the amendments: Seediq/Tsukida OBL (UNDECIDED), Tsou 受格 he token, Seediq 受格 ×3 /
+  Amis ×1 strays, non-approved-language 處所 (ckv ×19, xsy ×7), Yedda ∈word prose rows, Amis i (open).
+- CORRECTION of 2026-11-17 work: RauDong is YAMI (tao, 794 sentences, sole language) — not Rukai as my
+  basis texts claimed. Its 所有格 row re-ruled GEN→POSS under the bank-wide 所有格→POSS ruling (diff ×2);
+  過去→PST stands (the Yami past-perfective prefix ni-), basis corrected in the row.
+- Amis-Pa-Verbs: the full rebuild replaced two early HAND-MADE standard glosses (UV-CAU-give, CaU) —
+  the regenerated output is more ruled, not less: UV→PV (his 2026-11-12 ruling finally reaches the
+  token) and CaU→CAUS via a new case-variant row (deduped against a pre-existing UNDECIDED CaU row that
+  was silently shadowing it — Table takes the last duplicate). No other hand-made standards surfaced in
+  any corpus diff.
+- 47 glossing tests pass (the dictionary test caught NEU needing Atayal-only scoping — fixed — and two
+  missing dictionary entries: Truku NOM, Yami POSS); gloss validators exit 0 on NTU, RauDong, HPS, Song.

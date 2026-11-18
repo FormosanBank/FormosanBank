@@ -54,6 +54,13 @@ def _inner(el):
     ("<L2JjidenshaL2J>", "jidensha"),
     ("k<um>an", "k<um>an"),                 # infix notation untouched
     ("<PF.PFV>", "<PF.PFV>"),
+    # Closers with one character dropped (maintainer 2026-11-18: "Absorb the
+    # two fixes into the NTU pipeline itself."): sdqNr-ricah_uma 2021s R14
+    # closes with '2T>' (L dropped), TsouConv-typhoon R245 with 'LM>' (2
+    # dropped; the ori stream also drops the brackets: 'shiaolingLM.').
+    ("<L2ThoN2T>.\\\\", "hoN."),
+    ("<L2MshiaolingLM>._", "shiaoling."),
+    ("shiaolingLM.", "shiaoling."),
 ])
 def test_code_switch_tags_stripped(raw, clean):
     assert strip_l2m(strip_prosodic_markers(raw))[0] == clean

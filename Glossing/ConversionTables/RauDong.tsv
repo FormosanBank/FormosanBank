@@ -1,11 +1,11 @@
 source_code	count	status	standard	basis	notes	language_overrides
 GEN	3970	KEEP	GEN	Leipzig-listed/composed or registry code		
-屬格	3952	UNDECIDED				
+屬格	3952	CONVERT	GEN	maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36)		
 S	3330	KEEP	S	Leipzig-listed/composed or registry code		
 PAR	3082	CONVERT	PART	v2 ruling		
 3	2772	KEEP	3	Leipzig-listed/composed or registry code		
 NOM	2348	KEEP	NOM	Leipzig-listed/composed or registry code		
-主格	2216	UNDECIDED				
+主格	2216	CONVERT	NOM	maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36)		
 P	1544	KEEP	P	Leipzig-listed/composed or registry code		
 主焦	1453	CONVERT	AV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
 AF	1433	CONVERT	AV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
@@ -14,7 +14,7 @@ SUB	1314	CONVERT	SBJV	"approved on the derivational decision page 2026-11-15 (ca
 RED	1237	KEEP	RED	maintainer 2026-11-17: "RauDong RED->RED"; RED registered (supplementary_codes.tsv)	documented code; definition in ScopingReview	
 AUX	1170	KEEP	AUX	Leipzig-listed/composed or registry code		
 LOC	976	KEEP	LOC	Leipzig-listed/composed or registry code		
-處格	966	UNDECIDED				
+處格	966	CONVERT	LOC	maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36)		
 LIN	746	CONVERT	LNK	v1 ruling		
 PF	728	CONVERT	PV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
 受焦	718	CONVERT	PV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
@@ -22,10 +22,10 @@ PF	728	CONVERT	PV	voice ruling 2026-11-11 (AV/PV/LV/OV)
 NF	658	UNDECIDED			seeded KEEP in error: not in the Leipzig abbreviation list (gloss-dictionary gate, 2026-11-11); definition TBD	
 VF	536	UNDECIDED			documented code; definition in ScopingReview	
 OBL	506	KEEP	OBL	Leipzig-listed/composed or registry code		
-斜格	504	UNDECIDED				
+斜格	504	CONVERT	OBL	maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36)		
 SV	502	CONVERT	STAT	v3 ruling		
 PA	484	CONVERT	PST/PFV	v7 ruling: collapse notation; source defines PA as past OR perfective		
-過去	454	UNDECIDED				
+過去	454	CONVERT	PST	maintainer 2026-11-17 "Yes, go ahead and add those conversions." — basis corrected 2026-11-18: RauDong is YAMI; ni- is the Yami/Tao past-perfective prefix (not Rukai as first written)		
 NEG	406	KEEP	NEG	Leipzig-listed/composed or registry code		
 處焦	367	CONVERT	LV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
 LF	355	CONVERT	LV	voice ruling 2026-11-11 (AV/PV/LV/OV)		
@@ -56,7 +56,7 @@ F	4	UNDECIDED			seeded KEEP in error: not in the Leipzig abbreviation list (glos
 AFcry	4	UNDECIDED				
 AFRED	3	UNDECIDED				
 祈使	2	CONVERT	IMP	"approved on the derivational decision page 2026-11-15 (card M3) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""		
-所有格	2	UNDECIDED				
+所有格	2	CONVERT	POSS	CORRECTED 2026-11-18: RauDong is YAMI (tao), not Rukai — the 2026-11-17 GEN basis misattributed the language. Bank-wide 所有格→POSS ruling applies (Rukai exception does not).		
 AFrow	2	UNDECIDED				
 AFhow	2	UNDECIDED				
 REDAFidiot	2	UNDECIDED				
