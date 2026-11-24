@@ -6,12 +6,13 @@ ROOT="$(cd "$HERE/.." && pwd)"
 FB="${FORMOSANBANK_ROOT:-$(cd "$HERE/../../.." && pwd)}"
 PY="${PYTHON:-python3}"
 XML="$ROOT/XML"
+REPORTS="${QC_OUTPUT_DIR:-$(mktemp -d "${TMPDIR:-/tmp}/glosbe-build-reports.XXXXXX")}"  # cleaner warnings stay outside XML/ (POL-033)
 CT="$FB/Orthographies/ConversionTables"
 
 test -f "$FB/QC/cleaning/clean_xml.py"
 "$PY" "$HERE/process_source.py" --formosanbank-root "$FB"
 "$PY" "$FB/QC/cleaning/apply_manual_edits.py" --corpora_path "$XML"
-(cd "$ROOT" && "$PY" "$FB/QC/cleaning/clean_xml.py" --corpora_path XML ${QC_OUTPUT_DIR:+--warnings_dir "$QC_OUTPUT_DIR"})
+(cd "$ROOT" && "$PY" "$FB/QC/cleaning/clean_xml.py" --corpora_path XML --warnings_dir "$REPORTS")
 "$PY" "$HERE/process_source.py" --remove-duplicates "$FB" ${GLOSBE_WRITE_MERGE_LEDGER:+--write-ledger}
 "$PY" "$HERE/process_source.py" --apply-rulings "$FB"
 "$PY" "$HERE/process_source.py" --apply-aliases "$FB"
@@ -26,3 +27,4 @@ test -f "$FB/QC/cleaning/clean_xml.py"
 "$PY" "$FB/QC/utilities/add_phonology.py" --orthography Ortho94 --corpora_path "$XML/Truku"
 "$PY" "$FB/QC/utilities/add_phonology.py" --orthography Ortho94 --corpora_path "$XML/Saisiyat"
 "$PY" "$HERE/process_source.py" --record-provenance "$FB"
+printf 'Cleaner warnings: %s\n' "$REPORTS"

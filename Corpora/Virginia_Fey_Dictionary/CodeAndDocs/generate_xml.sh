@@ -12,6 +12,7 @@ else
     BANK="$(cd "$CORPUS/../FormosanBank" && pwd)"
 fi
 PY="${PYTHON:-python3}"
+REPORTS="${QC_OUTPUT_DIR:-$(mktemp -d "${TMPDIR:-/tmp}/virginia-fey-build-reports.XXXXXX")}"  # cleaner warnings stay outside XML/ (POL-033)
 test -f "$BANK/QC/cleaning/clean_xml.py"
 test -f "$CODEDOCS/pre_correction_snapshot/Amis/Amis.xml"
 
@@ -22,7 +23,7 @@ cp -R "$CODEDOCS/pre_correction_snapshot/." "$XML/"
 "$PY" "$CODEDOCS/reconcile_source.py" --path "$XML/Amis/Amis.xml"
 # Headword entries from the committed source sheet (defaults = the maintainer's rulings; see generate_headwords.py)
 "$PY" "$CODEDOCS/generate_headwords.py" --sheet "$CODEDOCS/source/virginia_fey_source.csv" --out "$XML/Amis/Amis_headwords.xml"
-"$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$XML"
+"$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$XML" --warnings_dir "$REPORTS"
 "$PY" "$BANK/QC/utilities/standardize.py" --corpora_path "$XML" \
     --tsv_path "$BANK/Orthographies/ConversionTables/Amis_Church_113.tsv" --target_column Xiuguluan
 "$PY" "$BANK/QC/utilities/add_phonology.py" --corpora_path "$XML" --orthography Ortho113
@@ -45,3 +46,4 @@ else:
     if not destination.is_file():
         raise SystemExit("The export must retain CodeAndDocs/provenance.json.")
 PROVENANCE_PY
+printf 'Cleaner warnings: %s\n' "$REPORTS"
