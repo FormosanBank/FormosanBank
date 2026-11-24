@@ -151,34 +151,25 @@ def test_printed_pa_fli_boundary_has_no_invented_morpheme_gloss() -> None:
     assert all(m.find("TRANSL") is None for m in morphs)
 
 
-def test_source_gloss_typo_has_additive_standard_gloss() -> None:
+def test_source_gloss_typo_is_left_to_the_shared_gloss_step() -> None:
+    """build_xml.py writes only the source gloss; the standard one (PV-CAUS-give)
+    comes from Glossing/ConversionTables/Amis-Pa-Verbs.tsv in generate_xml.sh."""
     root = build_root()
     word = root.find("S[@id='s32b']/W[@id='s32bw0']")
     morph = root.find("S[@id='s32b']/W[@id='s32bw0']/M[@id='s32bw0m1']")
     assert word is not None and morph is not None
-    assert word.find("TRANSL[@kindOf='original']").text == "UV-CaU-give"
-    assert word.find("TRANSL[@kindOf='standard']").text == "UV-CAU-give"
-    assert morph.find("TRANSL[@kindOf='original']").text == "CaU"
-    assert morph.find("TRANSL[@kindOf='standard']").text == "CAU"
+    assert [(g.get("kindOf"), g.text) for g in word.findall("TRANSL")] == [(None, "UV-CaU-give")]
+    assert [(g.get("kindOf"), g.text) for g in morph.findall("TRANSL")] == [(None, "CaU")]
 
 
-def test_every_word_has_m_and_only_paired_source_glosses_are_tiered() -> None:
+def test_every_word_has_m_and_build_xml_writes_no_standard_gloss() -> None:
     root = build_root()
     assert all(word.findall("M") for word in root.findall(".//W"))
     analyzed_nodes = root.findall(".//W") + root.findall(".//M")
-    paired = [
-        node
-        for node in analyzed_nodes
-        if node.find("TRANSL[@kindOf='standard']") is not None
-    ]
-    assert len(paired) == 2
     assert all(
-        node.find("TRANSL[@kindOf='original']") is not None for node in paired
-    )
-    assert all(
-        node.find("TRANSL").get("kindOf") is None
+        gloss.get("kindOf") is None
         for node in analyzed_nodes
-        if node not in paired and node.find("TRANSL") is not None
+        for gloss in node.findall("TRANSL")
     )
 
 
@@ -340,31 +331,6 @@ def test_source_attribute_comes_from_the_manifest() -> None:
     assert manifest[0]["url"] in source
     assert manifest[0]["sha256"] in source
     assert len(manifest[0]["sha256"]) == 64
-
-
-def test_gloss_standardization_is_table_driven() -> None:
-    """The CaU -> CAU normalization lives in a TSV, not in the code (POL-039).
-
-    POL-036 makes gloss standardization additive: the source gloss is kept
-    and the standardized one recorded alongside it.
-    """
-    pairs = BUILD_XML.read_gloss_standardizations()
-    assert ("CaU", "CAU") in pairs
-    # longest source first, so a longer label is never clipped by a prefix
-    assert [len(original) for original, _ in pairs] == sorted(
-        (len(original) for original, _ in pairs), reverse=True
-    )
-
-    word = build_root().find("S[@id='s32b']/W[@id='s32bw0']")
-    glosses = word.findall("TRANSL")
-    assert [(g.get("kindOf"), g.text) for g in glosses] == [
-        ("original", "UV-CaU-give"),
-        ("standard", "UV-CAU-give"),
-    ]
-    # No `ver` on either: `kindOf` discriminates them, and `ver` means
-    # "alternative reading" (POL-025), which a standardization is not. V085
-    # demanded one until it learned to group on kindOf (2026-09-11).
-    assert all(g.get("ver") is None for g in glosses)
 
 
 def test_translation_notes_come_from_the_source_table() -> None:

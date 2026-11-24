@@ -11,7 +11,6 @@ from xml.etree import ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_TABLE = ROOT / "CodeAndDocs/source_examples.tsv"
 SOURCE_MANIFEST = ROOT / "CodeAndDocs/source_manifest.tsv"
-GLOSS_STANDARDIZATION = ROOT / "CodeAndDocs/gloss_standardization.tsv"
 XML_PATH = ROOT / "XML/Amis/pa-verbs.xml"
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
@@ -78,22 +77,6 @@ def read_source_attribute() -> str:
     return f"{row['url']}; source PDF sha256 {row['sha256']}"
 
 
-def read_gloss_standardizations() -> list[tuple[str, str]]:
-    """Load the source-backed gloss normalizations (POL-039).
-
-    Substring substitutions applied to a source gloss to produce its
-    standardized counterpart, longest source first so a longer label is
-    never clipped by a shorter one that is its prefix.
-    """
-    rows = tsv_rows(GLOSS_STANDARDIZATION)
-    require(bool(rows), "Gloss standardization table is empty")
-    pairs = [(row["original"], row["standard"]) for row in rows]
-    for original, standard in pairs:
-        require(bool(original) and bool(standard),
-                "Gloss standardization rows must be fully populated")
-    return sorted(pairs, key=lambda pair: len(pair[0]), reverse=True)
-
-
 def sentence_word(token: str) -> str:
     """Remove W-tier segmentation while retaining analytic null notation."""
 
@@ -115,15 +98,6 @@ def morphemes(form: str, gloss: str) -> list[tuple[str, str | None]]:
     return [(form, gloss)]
 
 
-def standardized_gloss(value: str, pairs: list[tuple[str, str]]) -> str | None:
-    """Apply the committed gloss normalizations; None when nothing changes."""
-
-    normalized = value
-    for original, standard in pairs:
-        normalized = normalized.replace(original, standard)
-    return normalized if normalized != value else None
-
-
 def add_translation(
     parent: ET.Element,
     value: str,
@@ -143,26 +117,13 @@ def add_translation(
     node.text = value
 
 
-def add_source_gloss(
-    parent: ET.Element, value: str, pairs: list[tuple[str, str]]
-) -> None:
-    standard = standardized_gloss(value, pairs)
-    add_translation(
-        parent,
-        value,
-        kind_of="original" if standard is not None else None,
-    )
-    if standard is not None:
-        # No `ver`: `kindOf` already discriminates the pair, and `ver` means
-        # "alternative reading" (POL-025), which a standardization is not.
-        # V085 grouped on xml:lang alone until 2026-09-11 and demanded one
-        # here; it now groups on kindOf too, so POL-036's shape is publishable
-        # as written.
-        add_translation(parent, standard, kind_of="standard")
+def add_source_gloss(parent: ET.Element, value: str) -> None:
+    """Write the source gloss. Its standard counterpart comes from the shared
+    gloss step (Glossing/ConversionTables/Amis-Pa-Verbs.tsv) in generate_xml.sh."""
+    add_translation(parent, value)
 
 
 def build_tree(rows: list[dict[str, str]]) -> ET.ElementTree:
-    gloss_pairs = read_gloss_standardizations()
     with (ROOT / "CodeAndDocs/morpheme_ids.tsv").open(newline="") as handle:
         morph_ids = {
             (row["word_id"], int(row["index"])): row["id"]
@@ -213,7 +174,7 @@ def build_tree(rows: list[dict[str, str]]) -> ET.ElementTree:
             word = ET.SubElement(sentence, "W", {"id": word_id})
             word_form = ET.SubElement(word, "FORM", {"kindOf": "original"})
             word_form.text = form
-            add_source_gloss(word, gloss, gloss_pairs)
+            add_source_gloss(word, gloss)
             for morph_index, (morph_form, morph_gloss) in enumerate(
                 morphemes(form, gloss)
             ):
@@ -225,7 +186,7 @@ def build_tree(rows: list[dict[str, str]]) -> ET.ElementTree:
                 morph_form_node = ET.SubElement(morph, "FORM", {"kindOf": "original"})
                 morph_form_node.text = morph_form
                 if morph_gloss is not None:
-                    add_source_gloss(morph, morph_gloss, gloss_pairs)
+                    add_source_gloss(morph, morph_gloss)
 
     return ET.ElementTree(root)
 
