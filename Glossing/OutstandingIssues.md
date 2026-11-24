@@ -6,6 +6,9 @@ the bottom with their ruling.
 
 ## Open
 
+- **NTU Bunun misspelled linker labels, deferred** (maintainer 2026-11-24, linker-or-conjunction page, card bunun_typos:
+  "Defer with the other low-frequency anomalies"): 8 Bunun *tu* words with eng LNK whose zho gloss is 連擊詞 ×5 (row
+  UNDECIDED), 聯繫詞 ×1, 連繫詞詞 ×1, 繫詞 ×1 (no rows) — copied verbatim on the zho standard tier.
 - **Bare forms glossed with and without voice, not given voice** (2026-11-15). The same stem is
   voice-glossed in some sentences and left unglossed in others; only stems meeting the maintainer's criterion
   ("Only when the stem is voice-glossed at least 3 times AND at least twice as often as it is not
