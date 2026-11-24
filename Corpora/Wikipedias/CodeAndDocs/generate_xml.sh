@@ -18,6 +18,7 @@ CORPUS="$(dirname "$HERE")"
 ROOT="$(cd "${1:-$CORPUS/../..}" && pwd)"
 PYTHON="${PYTHON:-python3}"
 XML="$CORPUS/XML"
+REPORTS="${QC_OUTPUT_DIR:-$(mktemp -d "${TMPDIR:-/tmp}/wikipedias-build-reports.XXXXXX")}"  # cleaner warnings stay outside XML/ (POL-033)
 SNAP="$HERE/pre_correction_snapshot"
 
 # POL-052: provenance.json records the FormosanBank commit the published XML
@@ -68,7 +69,7 @@ done
 # 6. Punctuation/Unicode cleanup (writes per-run cleaner_warnings.csv next
 #    to XML/ — review then delete per POL-033; any quote_corrections.csv
 #    row here is unexpected: this corpus has no TRANSLs).
-"$PYTHON" "$ROOT/QC/cleaning/clean_xml.py" --corpora_path "$XML"
+"$PYTHON" "$ROOT/QC/cleaning/clean_xml.py" --corpora_path "$XML" --warnings_dir "$REPORTS"
 
 # 6b. Delete the 490 copies of articles that the scrape downloaded a second
 #     time under a redirect title (source_redirects.csv: each copy, the kept
@@ -85,3 +86,4 @@ done
 
 # 8. PHON tiers, default IPA column (dialect unknown).
 "$PYTHON" "$ROOT/QC/utilities/add_phonology.py" --corpora_path "$XML" --orthography Ortho113
+printf 'Cleaner warnings: %s\n' "$REPORTS"

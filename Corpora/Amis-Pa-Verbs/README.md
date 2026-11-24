@@ -83,11 +83,11 @@ This corpus has its own build test suite at [`CodeAndDocs/tests/`](CodeAndDocs/t
 
 #### 1. `CodeAndDocs/build_xml.py`
 
-Reads `source_examples.tsv` (it must have exactly the expected columns and 29 rows with unique ids), `source_manifest.tsv` (exactly one source with a URL and a 64-character SHA-256), `gloss_standardization.tsv` and `morpheme_ids.tsv`, and writes `XML/Amis/pa-verbs.xml`.
+Reads `source_examples.tsv` (it must have exactly the expected columns and 29 rows with unique ids), `source_manifest.tsv` (exactly one source with a URL and a 64-character SHA-256) and `morpheme_ids.tsv`, and writes `XML/Amis/pa-verbs.xml`.
 
 - `<TEXT>`: `xml:lang="ami"`, `dialect="Coastal"`, `copyright="CC BY-NC-SA 4.0"`, the citation and BibTeX written in the script, and `source` built from the manifest as "<url>; source PDF sha256 <hash>".
 - Each row becomes one `S`. Its original `FORM` is the row's segmented words with `-`, `<`, `>` and `=` removed (a word beginning `∅-` is kept as written), plus the row's sentence ending (empty, `.` or `!`). Its English `TRANSL` is `translation_1` (with its note, if any); `translation_2`, when present, is a second `TRANSL` with `ver="alt"`.
-- Each word becomes a `W` with the original `FORM` and its gloss. If `gloss_standardization.tsv` changes the gloss (its one row: `CaU` → `CAU`), the source gloss is written as `TRANSL kindOf="original"` and the normalized one as `TRANSL kindOf="standard"`.
+- Each word becomes a `W` with the original `FORM` and its source gloss. Standard glosses are added later by the shared gloss step (so the source typo `UV-CaU-give` gets the standard `PV-CAUS-give` from `Glossing/ConversionTables/Amis-Pa-Verbs.tsv`).
 - A word containing `-` is split into one `M` per part. If the number of form parts and gloss parts differ, the parts are kept with no gloss (this is `Pa-fli`/`give`); otherwise each part gets its gloss. A word without `-` is one `M`. M ids come from `morpheme_ids.tsv` where listed (`s32aw0m_a`, `s32aw0m_b` replace the retired `s32aw0m0`), otherwise `<word id>m<index>`.
 
 The committed transcription tables preserve source spelling, W glosses, translations, exclusions and stable source IDs. The current source review restores obligatory `i/PREP` in example 32c (`*(i)`), 22 printed sentence endings and the two printed parts of `Pa-fli`. The latter retains W gloss `give`; its M parts have no individually supplied gloss and remain unglossed. No sentence or free translation is removed. Excluded examples are listed with their reasons in `CodeAndDocs/rejected_source_examples.tsv`; `source_coverage.tsv` accounts for every page and `direct_source_checks.tsv` keeps the raw notation of the difficult cases.
