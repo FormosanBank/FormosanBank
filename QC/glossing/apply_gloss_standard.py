@@ -51,6 +51,10 @@ A rules file may declare ``<form>@<Language>  TWIN-VOICE``: on a morpheme of tha
 language's standard is a voice code and nothing else (``<AV>``), the voice code replaces the self-gloss (maintainer,
 2026-11-17: "If a verb has an affix that is self-glossed in one language but glossed as a voice marker in the other
 language AND its form is one that often appears voice-glossed, replace the self-gloss with the voice gloss.").
+``ATOM&<pattern>  CONTEXT-CONVERT→<CODE>`` patterns may join several conditions with ``&`` (all must hold). Besides a
+morpheme form, ``^X``/``X$`` and ``+bound``: ``+free`` = the word is a single morpheme; ``>A|B`` = the NEXT word in the
+same sentence has atom A or B in its original gloss; ``!>X|Y`` = it has none of them (maintainer, 2026-11-24, Paiwan a
+page q1: "NLK before a voice-marked word for sure."), e.g. HPS ``c&+free&>af|pf|lf|if&!>nom  CONTEXT-CONVERT→LNK``.
 ``--redo-changed`` re-derives EXISTING standard glosses: one is replaced only if it is exactly what this tool
 produced before these rules (so hand-made standards stay untouched) and the new rules change it.
 
@@ -169,6 +173,19 @@ def context_matches(pattern: str, context_forms) -> bool:
     morpheme an or a word ending in an; "si-" a morpheme si or a word starting
     with si; a bare pattern only an exact morpheme.
     """
+    if "&" in pattern:
+        # Conditions joined by "&" must all hold (maintainer 2026-11-24, Paiwan a page q1).
+        return all(context_matches(p.strip(), context_forms) for p in pattern.split("&"))
+    if pattern == "+free":
+        # Reserved: the word is a single morpheme (the complement of +bound).
+        return "#multi" not in context_forms
+    if pattern.startswith("!>"):
+        # Reserved: the NEXT word's original gloss has none of these atoms.
+        return not any("#next:" + a in context_forms for a in pattern[2:].split("|"))
+    if pattern.startswith(">"):
+        # Reserved: the NEXT word in the same sentence has one of these atoms
+        # in its original gloss (">af|pf": a voice-marked next word).
+        return any("#next:" + a in context_forms for a in pattern[1:].split("|"))
     if pattern == "+bound":
         # Reserved pattern: the word is morphologically complex (>= 2 M
         # children) — maintainer q_cmpr 2026-11-16 ("only when tja is bound")
@@ -372,6 +389,13 @@ def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
     root = tree.getroot()
     language = language_of(root)
     changed = False
+    # the next W sibling of each word (same parent, i.e. same sentence), for
+    # the ">X" / "!>X" next-word context patterns (2026-11-24)
+    next_word = {}
+    for parent in root.iter():
+        ws = parent.findall("W")
+        for a, b in zip(ws, ws[1:]):
+            next_word[id(a)] = b
     for word in root.iter("W"):
         morphs = word.findall("M")
         if rules.context_rules:
@@ -391,6 +415,11 @@ def process_file(path: pathlib.Path, table: Table, rules: Rules, write: bool,
                 # unsegmented word: its own shape may satisfy affix patterns
                 cores |= {"~" + form_core(f.text)
                           for f in word.findall("FORM") if f.text}
+            nxt = next_word.get(id(word))
+            if nxt is not None:
+                for t in nxt.findall("TRANSL"):
+                    if t.get("kindOf") in (None, "original"):
+                        cores |= {"#next:" + a for a in re.split(r"\W+", "".join(t.itertext())) if a}
             context = frozenset(cores)
         else:
             context = frozenset()
