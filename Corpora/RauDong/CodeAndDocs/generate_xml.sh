@@ -104,13 +104,14 @@ step "2. standardize --remove_accents"
 step "3. add_phonology (original: Ortho94; standard: Ortho113)"
 "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Ortho94 --corpora_path "$XML"
 
-# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/RauDong.tsv
+step "4. apply_unclear_glosses (POL-021/POL-061; tables: unclear_glosses.tsv, gloss_notes.tsv)"
+"$PY" "$CODEDOCS/apply_unclear_glosses.py" --corpora_path "$XML"
+
+step "5. standard gloss tier (POL-036, additive; after step 4, which expects one gloss per language)"
+# Glossing/ConversionTables/RauDong.tsv
 "$PY" "$BANK/QC/glossing/apply_gloss_standard.py" \
     --path "$XML" \
     --table "$BANK/Glossing/ConversionTables/RauDong.tsv" \
     --rules "$BANK/Glossing/ConversionTables/RauDong.rules.tsv" --write
-
-step "4. apply_unclear_glosses (POL-021/POL-061; tables: unclear_glosses.tsv, gloss_notes.tsv)"
-"$PY" "$CODEDOCS/apply_unclear_glosses.py" --corpora_path "$XML"
 
 step "Done. Cleaner warnings (not published, POL-033): $REPORTS"
