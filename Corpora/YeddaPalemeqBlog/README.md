@@ -7,8 +7,8 @@ source is [Yedda Palemeq's blog](https://yeddapalemeq.blogspot.com/).
 **Many sentences are segmented into morphemes, but nothing is glossed at the
 morpheme level.** The `M` tier records the author's own segmentation; it carries
 no translations, and never has. Word-level glosses are prose explanations rather
-than interlinear glosses. See "Reading the tiers" below before using either
-tier.
+than interlinear glosses, so this corpus has no standard (`kindOf="standard"`)
+gloss tier. See "Notes and caveats" below before using either tier.
 
 ## Languages and dialects
 
@@ -31,7 +31,7 @@ source-defined alternative splits. Some examples also occur in independently
 sourced FormosanBank collections; they are retained here with their blog
 provenance.
 
-**Many sentences are segmented into morphemes, but nothing is glossed at the morpheme level.** The `<M>` tier records the author's own segmentation and carries no translations — it never has. Word-level glosses are prose explanations rather than interlinear glosses. See *Corpus Notes* below before using either tier.
+**Many sentences are segmented into morphemes, but nothing is glossed at the morpheme level.** The `<M>` tier records the author's own segmentation and carries no translations — it never has. Word-level glosses are prose explanations rather than interlinear glosses, so there is no standard gloss tier. See *Corpus Notes* below before using either tier.
 
 #### Corpus inventory
 
@@ -41,7 +41,7 @@ provenance.
 - 5,585 TRANSL elements
 - 665 AUDIO references
 - Canonical XML SHA-256:
-  `0ede251235c455644e540aa67e32df5e3f8fcb68925ac85ef776f20c5be2b43f`
+  `0cde9e06456a58aea259d3283fa6edd944bf474de25e776f230cd6910d0651ac`
 
 The original transcription uses the established Yedda Ortho113 route. The
 standard FORM tier is derived from the original tier, and both PHON tiers are
@@ -152,6 +152,7 @@ prohibited without prior written permission.
 #### Corpus notes
 
 * Where the author parsed words into segments, those segments are preserved in `<M>` elements. Within such a sentence, a word we could not find a parse for is assumed to be monomorphemic and gets a single `<M>` — which is almost certainly incorrect in some cases.
+* **There is no standard gloss tier.** Each word gloss is Yedda's own prose, for example `weave net, actor voice (AV). The root is tjenun 'weave'.` (word `tj<em>enun`). Grammatical information (voice, case, aspect, the root and its meaning) is written into those sentences, sometimes about a related word rather than the glossed one, and cannot be converted to standard gloss codes the way other corpora's glosses are. The glosses are kept only as `TRANSL kindOf="original"`; read them as explanations, not as interlinear glosses.
 
 ## Reproduction and processing
 
@@ -306,8 +307,9 @@ them:
      `source_coverage.tsv`, `issue_1_review.tsv`, `source_variant_review.tsv`,
      `source_translation_review.tsv`, `source_word_translation_review.tsv` and
      `source_review_summary.md`.
-2. **Manual edits:** none. The corpus has no `CodeAndDocs/manual_edits.xml`,
-   and `generate_xml.sh` does not call `apply_manual_edits.py`.
+2. **Manual edits:** none. `generate_xml.sh` calls
+   `QC/cleaning/apply_manual_edits.py`, which finds no
+   `CodeAndDocs/manual_edits.xml` and does nothing.
 3. **`QC/cleaning/clean_xml.py --corpora_path XML --warnings_dir
    $BUILD_LOG_DIR`**, the shared cleaner. It replaces non-breaking spaces,
    normalizes `TRANSL` language codes `en`/`zh` to `eng`/`zho`, normalizes the
@@ -335,14 +337,17 @@ them:
 6. **`QC/utilities/add_phonology.py --corpora_path XML --orthography
    Ortho113`** writes both `PHON` tiers from the original and standard FORMs
    using the Ortho113 tables in `Orthographies/`.
-7. **`scripts/finalize_manifest.py`** writes
+7. **`scripts/label_original_glosses.py --corpora_path XML`** labels every
+   word and morpheme gloss `kindOf="original"` (English or Chinese, with text,
+   no `ver`, no `kindOf` yet). No standard gloss is written: see "Notes and
+   caveats".
+8. **`scripts/finalize_manifest.py`** writes
    `CodeAndDocs/data/formosanbank_audit/manifest.json`: the SHA-256 of the
    snapshot, of the XML and of each audit file, the element counts (`S`, `W`,
    `M`, `FORM`, `PHON`, `TRANSL`, `AUDIO`) and the fixed review totals. Its
    printout goes to `$BUILD_LOG_DIR/manifest.log`. `validate.sh`'s
    `verify_handoff.py` later checks the XML against this manifest.
-8. **Provenance:** if the FormosanBank checkout is a git repository and its
+9. **Provenance:** if the FormosanBank checkout is a git repository and its
    current commit differs from the one in `CodeAndDocs/provenance.json`, the
    script rewrites that file with the new commit and today's date.
 
-**Standard gloss tier** (final step): `QC/glossing/apply_gloss_standard.py` adds `TRANSL kindOf="standard"` glosses beside every original gloss (POL-036 — the original tier is never changed), converting each gloss code according to this corpus's standardization list, [Glossing/ConversionTables/YeddaPalemeqBlog.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/YeddaPalemeqBlog.tsv) (segmentation conventions in [YeddaPalemeqBlog.rules.tsv](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/ConversionTables/YeddaPalemeqBlog.rules.tsv)). Codes without a ruled mapping are copied verbatim, so the standard tier is always complete; the project-wide approach, vocabulary and per-language gloss dictionaries are documented in [Glossing/README.md](https://github.com/FormosanBank/FormosanBank/blob/main/Glossing/README.md).

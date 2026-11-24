@@ -35,11 +35,10 @@ mkdir -p "$REPORTS"
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$CORPUS_ROOT/XML" \
     --orthography Ortho113
 
-# Standard gloss tier (POL-036, additive): Glossing/ConversionTables/YeddaPalemeqBlog.tsv
-"$PY" "$FB/QC/glossing/apply_gloss_standard.py" \
-    --path "$CORPUS_ROOT/XML" \
-    --table "$FB/Glossing/ConversionTables/YeddaPalemeqBlog.tsv" \
-    --rules "$FB/Glossing/ConversionTables/YeddaPalemeqBlog.rules.tsv" --write
+# Corpus-local, after 5: label the word/morpheme glosses kindOf="original".
+# There is no standard gloss tier: Yedda glosses words in free prose, not in
+# gloss codes (see the script's docstring and the README).
+"$PY" "$HERE/scripts/label_original_glosses.py" --corpora_path "$CORPUS_ROOT/XML"
 # Corpus-local, after 5: hashes and counts of the output, for validate.sh.
 "$PY" "$HERE/scripts/finalize_manifest.py" > "$REPORTS/manifest.log"
 
