@@ -49,10 +49,15 @@ ACCEPTED_GAP_MORPHEME = "M=078S4W19M0c"
 # No S.FORM.original entry: the source's only parenthesised material in a
 # sentence FORM was the "(?)" annotation, now moved to a notes attribute by
 # scripts/apply_manual_corrections.py before standardize.py runs.
+# The standard gloss tier (apply_gloss_standard.py) copies the source's
+# parenthesised pronoun glosses -- f.you(s), we(INCL) -- and adds Rule 7
+# voice parentheses -- say(AV), leave(AV).
 EXPECTED_V122_TIERS = {
     "M.TRANSL.original": 3790,
+    "M.TRANSL.standard": 3940,
     "S.TRANSL.unspecified": 448,
     "W.TRANSL.original": 3790,
+    "W.TRANSL.standard": 2386,
 }
 INFIX_FORM = re.compile(r"^-[^-]+-$")
 INTERNAL_DASH = re.compile(r"(?<=[^-])-(?=[^-])")
@@ -208,7 +213,8 @@ def verify_accepted_gloss_gap(elements, gloss_rows, scrape_rows) -> None:
         raise ValueError(f"{morpheme_id} has a TRANSL; the source supplies none")
     if any(not item.findall("TRANSL") for item in morphemes[:-1]):
         raise ValueError(f"{word_id} has an unexpected second unglossed morpheme")
-    word_translations = word.findall("TRANSL")
+    # The source's own gloss; the standard tier adds a second, derived one.
+    word_translations = [item for item in word.findall("TRANSL") if item.get("kindOf") != "standard"]
     if len(word_translations) != 1 or not word_translations[0].get("notes"):
         raise ValueError(f"{word_id} must carry one W TRANSL whose notes record the gap")
 

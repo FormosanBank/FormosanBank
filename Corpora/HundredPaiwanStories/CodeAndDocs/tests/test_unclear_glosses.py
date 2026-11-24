@@ -100,8 +100,8 @@ class PublishedUnclearGlossTests(unittest.TestCase):
         placeholder: Counter = Counter()
         for tree in self.trees.values():
             for transl in tree.iter("TRANSL"):
-                if transl.find("UNCLEAR") is None:
-                    continue
+                if transl.find("UNCLEAR") is None or transl.get("kindOf") == "standard":
+                    continue  # the standard tier copies the source's placeholders
                 level = transl.getparent().tag
                 self.assertIn(level, {"W", "M"})
                 self.assertEqual(
@@ -244,8 +244,13 @@ class ConversionTests(unittest.TestCase):
         # convert with a one-row table: every whole "?" gloss converts, and
         # of the placeholder glosses only the listed one does.
         shutil.copytree(XML_ROOT, self.xml, dirs_exist_ok=True)
+        # The build converts "?" before it writes the standard gloss tier, so
+        # the copy drops that tier; the gloss tool serializes <UNCLEAR />.
         for path in self.xml.rglob("*.xml"):
-            path.write_bytes(path.read_bytes().replace(b"<UNCLEAR/>", b"?"))
+            raw = re.sub(
+                rb'\n[ \t]*<TRANSL [^>]*kindOf="standard"[^>]*>.*?</TRANSL>', b"", path.read_bytes()
+            )
+            path.write_bytes(re.sub(rb"<UNCLEAR ?/>", b"?", raw))
         table = write_table(self.temp / "t.tsv", [("if-main-?-outsider-nom", "eng")])
         stats = apply(self.xml, table)
         self.assertEqual(stats["unclear_w_glosses"], 18)

@@ -281,7 +281,10 @@ class CorpusTests(unittest.TestCase):
             word_translation.get("notes"),
             "No source gloss was supplied for final -i.",
         )
-        self.assertEqual(len(word.findall("TRANSL")), 1)
+        # The source's gloss; the standard tier adds a derived second one.
+        self.assertEqual(
+            len([t for t in word.findall("TRANSL") if t.get("kindOf") != "standard"]), 1
+        )
 
         # No "?" of our own in this word. "?" is a real gloss in this source
         # -- it writes one for morphemes it cannot identify, 337 times -- so
