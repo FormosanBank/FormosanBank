@@ -19,7 +19,9 @@ mkdir -p "$REPORTS"
 
 # 1. Corpus-local generator: frozen snapshot + reviewed repairs -> original tier.
 "$PY" "$HERE/scripts/build_xml.py"
-# 2. No manual_edits.xml in this corpus.
+# 2. Recorded hand edits (CodeAndDocs/manual_edits.xml), re-applied before any cleaning.
+"$PY" "$FB/QC/cleaning/apply_manual_edits.py" --corpora_path "$CORPUS_ROOT/XML" \
+    --manual_file "$HERE/manual_edits.xml"
 # 3. Shared cleaner; its warnings go outside the published tree.
 "$PY" "$FB/QC/cleaning/clean_xml.py" --corpora_path "$CORPUS_ROOT/XML" \
     --warnings_dir "$REPORTS"
