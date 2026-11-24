@@ -249,7 +249,7 @@ TAFA	7	UNDECIDED		undocumented; definition needed	zho twin: T主焦A×6; 主焦�
 PS	6	UNDECIDED		undocumented; definition needed		
 RECIP	6	UNDECIDED		undocumented; definition needed	zho twin: 相互×6	
 AFPFV	6	UNDECIDED		undocumented; definition needed	zho twin: 主焦完成×3; 主焦完成貌×2	
-LINK	6	UNDECIDED		undocumented; definition needed	zho twin: 連繫詞×4; 連詞×2	
+LINK	6	CONVERT	LNK	maintainer 2026-11-24 (linker-or-conjunction page BDnGUnh5j5wws4RdZQKYrS, card eng_link) chose: "LINK → LNK in the NTU table"	zho twin: 連繫詞×4; 連詞×2	
 NON	6	UNDECIDED		undocumented; definition needed	zho twin: 主格×6	
 AVI	6	UNDECIDED		undocumented; definition needed		
 M	6	UNDECIDED			seeded KEEP in error: not in the Leipzig abbreviation list (gloss-dictionary gate, 2026-11-11); definition TBD	
@@ -580,7 +580,7 @@ AFCA	1	UNDECIDED		undocumented; definition needed	zho twin: 主焦CA×1
 助動詞	3000	CONVERT	AUX	pairs AUX; Leipzig AUX	eng twin: AUX×2982	
 連繫詞	2512	CONVERT	LNK	maintainer vocabulary ruling v1 + g4 Latin codes 2026-11-11	eng twin: LNK×2307; TU×6	
 名物化	2478	CONVERT	NMLZ	pairs NMZ/NMLZ; Leipzig NMLZ per point-F ruling	eng twin: NMLZ×1172; NMZ×1015	
-連詞	2440	CONVERT	CONJ	maintainer vocabulary ruling v9 + g4 2026-11-11	eng twin: LNK×2434	
+連詞	2440	CONVERT	LNK	maintainer 2026-11-24 (linker-or-conjunction page BDnGUnh5j5wws4RdZQKYrS, card lnk_ntu_lianci) chose option A: "連詞 → LNK in NTU, keeping Atayal ru / ru' as CONJ"; supersedes the v9 mapping (the v9 card had listed NTU's 連詞 as a conjunction spelling)	eng twin: LNK×2434; Atayal ru, ru' (eng CONJ, 2 words) stay CONJ via the rules file	
 實現	2367	CONVERT	RLS	"approved on the derivational decision page 2026-11-15 (card M2) — realis twin of the irrealis family (RLS registered) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	eng twin: RLS×2113; REAL×27	
 完成貌	2346	CONVERT	PFV	variant of 完成; pairs PFV×1,511	eng twin: PFV×1511	
 人名	2338	CONVERT	PN	maintainer vocabulary ruling v5/v6 + g4 2026-11-11	eng twin: PN×1587	

@@ -8,6 +8,79 @@ read this instead of scrolling chat history.
 **OPEN items are marked ⏳; everything else is settled.**
 
 ---
+## 2026-11-24 — NTU 連詞 is a linker: cards 1, 3, 4 applied (branch glossing/ntu-lianci-linker); ⏳ RauDong build question
+
+**Question (maintainer):** *"Please compare the specific morphemes so glossed against what the grammars say. Do they match?"*
+**Answer:** yes. 1,604 words had standard twins disagreeing on LNK (NTU 1,231: 1,217 zho 連詞→CONJ + 14 misc.; RauDong 373:
+369 zho 繫 unconverted + 4 助|LIN). In every language whose 語法概論 covers the same morpheme the grammar calls it a linker — Amis *a*
+連繫詞 (PDF 75), Kavalan *a* 聯繫詞 (PDF 101), Sakizaya *a* 連繫詞 (PDF 55), Saisiyat *ka/i/a* 連語 (PDF 68/80/164), Bunun *tu*
+連繫詞 (PDF 70), Yami *a* 繫詞 (PDF 83); Atayal only partly checkable (grammar Squliq, NTU Wenshui); Rukai/Kanakanavu/Seediq
+(4 words) not checkable. NTU pairs 連詞 with eng LNK on 1,217 of 1,220 words; its conjunction label is 連接詞. The v9
+vocabulary card had listed NTU's 連詞 as a conjunction spelling. Page: https://claude.ai/artifact/BDnGUnh5j5wws4RdZQKYrS
+(db `answers`).
+
+**Maintainer's answers (2026-11-24, from the page; no notes):**
+- lnk_ntu_lianci → option A, *"連詞 → LNK in NTU, keeping Atayal ru / ru' as CONJ"*. DONE: NTU table row 連詞 → LNK; rules
+  `連詞@Atayal&ru` / `連詞@Atayal&ru'` CONTEXT-CONVERT→CONJ; supplementary_codes CONJ note no longer claims NTU's 連詞.
+- eng_link → *"LINK → LNK in the NTU table"*. DONE.
+- bunun_typos → *"Defer with the other low-frequency anomalies"*. Listed in Glossing/OutstandingIssues.md (Open).
+- raudong_xi → *"Add 繫 → LNK to RauDong.tsv"*. NOT YET APPLIED — see the open item below.
+
+**Verification (NTU rebuilt with its generate_xml.sh in a worktree at origin/main 49a744a87):** 2,442 standard-TRANSL lines
+changed — zho CONJ→LNK ×2,436 (1,218 W + 1,218 M; Atayal ru/ru' still CONJ‖CONJ), eng LINK→LNK ×6 — and nothing else
+after the Tsou drift below was left out. Disagreeing words bank-wide after both rebuilds: 17 (Bunun 12: 8 deferred labels,
+TU ×3, 處格|LNK ×1; RauDong 5: 助|LIN ×4, 繫|CON ×1 as predicted). validate_text / validate_glosses / validate_xml
+findings on NTU identical to main's; tests/glossing + test_validate_registries 62 passed; tests/corpora/test_ntu_* 168
+passed (run one file at a time — the combined run is OOM-killed); NTU qa/check_regressions output identical to main's.
+
+### ⏳ OPEN: RauDong's generate_xml.sh fails on main (pre-existing) — card 2 waits on it
+Unmodified origin/main 49a744a87: `apply_unclear_glosses: 12. rarakeh、kanakan a ka no cai M 42_1_2 eng: 2 TRANSL with that
+xml:lang`, exit 1 — the gloss-standard step (added before it in 2357ee91a) gives the element a second eng TRANSL. Running
+apply_unclear_glosses BEFORE the gloss step reproduces main's 20 published files byte-identically (exit 0); with the 繫 row
+the same build changes exactly 740 lines, all `繫`→`LNK` on zho standard TRANSLs. Question: reorder the two steps in
+Corpora/RauDong/CodeAndDocs/generate_xml.sh and then apply card 2? (Edits held uncommitted in the worktree.)
+**Cause (2026-11-24):** two eng TRANSLs per glossed element is the design (POL-036: kindOf="original" + kindOf="standard"
+siblings, e.g. M 42_1_1 AF/AV). apply_unclear_glosses.py (dfb7f296d, 2026-10-18) selects TRANSLs by xml:lang only and
+requires exactly one. Introduced by 2357ee91a (2026-11-12), which inserted the gloss step BEFORE step 4 and was checked
+with `bash -n` only; the standard tier itself was written by running apply_gloss_standard on the published XML (UNCLEAR
+already applied), so the script was never executed. b88e5d58a (2026-11-18, "rebuild all 17") cannot have run it either.
+
+### ✅ FIXED 2026-11-24: NTU's build no longer reproduced two published Tsou files (pre-existing)
+Unmodified origin/main rebuild changes 15 lines in Tsou_TsouConv-informants.xml and Tsou_TsouConv-typhoon.xml: published
+*tokuvecu* (FORM) / *tokuveʦu* (PHON) become `<M2JtokuvecuM` / `m**tokuveʦum` — scripts/repair_l2_markers.py maps
+`<M2JtokuvecuM2J>` and `M2JtokuvecuM2J`, not this shape. It adds a HARD V067 and 6 SOFT V137. Left out of this branch
+(the two files kept as published). Needs a pipeline fix.
+**Cause (2026-11-24):** 9b9e8380d (2026-11-18) added `(?<=[A-Za-z])2[A-Z]>` to _L2M_RE in scripts/utils.py for hoN2T>.
+It also eats the `2J>` of the source token `<M2JtokuvecuM2J>` (story JSON, 1 occurrence): strip_l2m returns
+`<M2JtokuvecuM` (before 9b9e8380d it returned the token unchanged), so repair_l2_markers.py's exact-match map
+(`<M2JtokuvecuM2J>` → tokuvecu) no longer fires. Not caught because that commit aligned the published XML by hand-scoped
+repair instead of a full rebuild.
+**Correction:** the 15 drift lines were two different things — 12 in informants (*tokuvecu* → `<M2JtokuvecuM`, the
+build was wrong) and 3 in typhoon (original PHON `sxiaoɗiŋɗm` → `sxiaoɗiŋ`, the build was RIGHT: the 2026-11-18 entry's
+"heal on the next full pipeline rebuild"). 7dfc130ea wrongly kept both files as published.
+**Maintainer (2026-11-24):** *"Obviously, we should be fixing such things in the build and rebuilding. We should have
+policies for that already."* (POL-038: data change only via committed code, "never ad hoc"; POL-047: re-running the entry
+point over a clean checkout leaves `git status` empty; POL-052: rebuild with the current tools. 9b9e8380d aligned the
+published XML with an uncommitted script instead of rebuilding.)
+**Fix:** scripts/utils.py `_NO_L_PAIR_RE` pre-pass in strip_l2m: an L-less tag pair whose opener and closer agree
+(`<M2JtokuvecuM2J>`) keeps the word. Audit over all 131,462 distinct source tokens (378 JSONs): vs main exactly 1 token
+changes (that one); vs pre-9b9e8380d exactly 3 (hoN, shiaoling, tokuvecu). Two test cases added (test_ntu_source_parsing:
+25 passed). Full NTU rebuild: 4 lines change vs 7dfc130ea — the 3 typhoon PHONs heal, and *tokuvecu*'s W FORM gains
+`notes="code-switch"` like the other 1,304 code-switched FORMs. Tsou validator findings identical to main's;
+tests/corpora/test_ntu_* 170 passed. NTU's build now reproduces its committed XML.
+
+### ⏳ OPEN: NTU qa/baseline.tsv is stale; validate.sh's regression step is skipped
+check_regressions.py reports 2/7/5 "regressions" (grammar/sentences/stories) on main's published XML too, e.g. sentences
+"JSON record has an S block" 100.0 → 95.1. validate.sh calls qa/run_regression.sh, which does not exist, so the step
+always prints "skipped".
+
+### ⏳ OPEN (small): registry LNK note
+supplementary_codes.tsv LNK says "replaces LIN (RauDong), LIG (Yedda, Li-Thao), 繫詞/連繫詞"; it does not list NTU 連詞
+or RauDong 繫. Not in the chosen options' text, so not changed. Add them?
+**Maintainer (2026-11-24, chat):** *"OK we should update that when we get to our PR."* — read as: add NTU 連詞 and
+RauDong 繫 to the LNK note in the PR (interpretation to be confirmed; may instead refer to the stale QA baseline).
+
+---
 ## 2026-11-12 — ⏳ Dictionary headwords: Safolu + Fey missing; round 1 page published
 
 **Maintainer:** *"Apparently when we processed Safolu, we pulled just the example sentences and didn't pull headword entries

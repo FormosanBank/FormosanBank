@@ -92,6 +92,15 @@ _L2M_RE = re.compile(
 # notation ('c<Um>Ura') can never match.
 _BARE_M_PAIR_RE = re.compile(r'<M([a-z][^<>\s]*?)M>')
 
+# A tag pair with the L dropped from BOTH ends, opener and closer identical:
+# '<M2JtokuvecuM2J>' (TsouConv-informants; the source's only one). Without this
+# pre-pass the closer-missing-L alternative of _L2M_RE ('2[A-Z]>', for hoN2T>)
+# ate the '2J>' and left '<M2JtokuvecuM', which repair_l2_markers.py's exact
+# token map no longer matched (a regression of 2026-11-18, found 2026-11-24).
+# The back-references require the two halves to agree, so '<L2ThoN2T>' (opener
+# L2T, closer N2T) is never taken for a pair.
+_NO_L_PAIR_RE = re.compile(r'<(?P<a>[A-KM-Z])2(?P<b>[A-Z])(?P<word>[a-z][^<>\s]*?)(?P=a)2(?P=b)>')
+
 # Matches infix morpheme notation: <n>, <m>, <PF.PFV>, etc.
 # Angle-bracket spans whose content is NOT an L2 code-switch marker.
 _INFIX_RE = re.compile(r'<([^>]+)>')
@@ -165,6 +174,9 @@ def strip_l2m(form):
     is_code_switch : bool
         True if any marker was found and stripped.
     """
+    if _NO_L_PAIR_RE.search(form):
+        form = _NO_L_PAIR_RE.sub(r'\g<word>', form)
+        return _L2M_RE.sub('', form), True
     if _BARE_M_PAIR_RE.search(form):
         form = _BARE_M_PAIR_RE.sub(r'\1', form)
         return _L2M_RE.sub('', form), True
