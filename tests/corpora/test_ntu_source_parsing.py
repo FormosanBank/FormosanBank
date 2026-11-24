@@ -61,6 +61,11 @@ def _inner(el):
     ("<L2ThoN2T>.\\\\", "hoN."),
     ("<L2MshiaolingLM>._", "shiaoling."),
     ("shiaolingLM.", "shiaoling."),
+    # A pair with the L dropped from both ends (TsouConv-informants): the
+    # closer-missing-L rule above must not eat its '2J>' (regression found
+    # 2026-11-24: it produced '<M2JtokuvecuM').
+    ("<M2JtokuvecuM2J>", "tokuvecu"),
+    ("<M2JtokuvecuM2J>,", "tokuvecu,"),
 ])
 def test_code_switch_tags_stripped(raw, clean):
     assert strip_l2m(strip_prosodic_markers(raw))[0] == clean

@@ -39,12 +39,35 @@ xml:lang`, exit 1 — the gloss-standard step (added before it in 2357ee91a) giv
 apply_unclear_glosses BEFORE the gloss step reproduces main's 20 published files byte-identically (exit 0); with the 繫 row
 the same build changes exactly 740 lines, all `繫`→`LNK` on zho standard TRANSLs. Question: reorder the two steps in
 Corpora/RauDong/CodeAndDocs/generate_xml.sh and then apply card 2? (Edits held uncommitted in the worktree.)
+**Cause (2026-11-24):** two eng TRANSLs per glossed element is the design (POL-036: kindOf="original" + kindOf="standard"
+siblings, e.g. M 42_1_1 AF/AV). apply_unclear_glosses.py (dfb7f296d, 2026-10-18) selects TRANSLs by xml:lang only and
+requires exactly one. Introduced by 2357ee91a (2026-11-12), which inserted the gloss step BEFORE step 4 and was checked
+with `bash -n` only; the standard tier itself was written by running apply_gloss_standard on the published XML (UNCLEAR
+already applied), so the script was never executed. b88e5d58a (2026-11-18, "rebuild all 17") cannot have run it either.
 
-### ⏳ OPEN: NTU's build no longer reproduces two published Tsou files (pre-existing)
+### ✅ FIXED 2026-11-24: NTU's build no longer reproduced two published Tsou files (pre-existing)
 Unmodified origin/main rebuild changes 15 lines in Tsou_TsouConv-informants.xml and Tsou_TsouConv-typhoon.xml: published
 *tokuvecu* (FORM) / *tokuveʦu* (PHON) become `<M2JtokuvecuM` / `m**tokuveʦum` — scripts/repair_l2_markers.py maps
 `<M2JtokuvecuM2J>` and `M2JtokuvecuM2J`, not this shape. It adds a HARD V067 and 6 SOFT V137. Left out of this branch
 (the two files kept as published). Needs a pipeline fix.
+**Cause (2026-11-24):** 9b9e8380d (2026-11-18) added `(?<=[A-Za-z])2[A-Z]>` to _L2M_RE in scripts/utils.py for hoN2T>.
+It also eats the `2J>` of the source token `<M2JtokuvecuM2J>` (story JSON, 1 occurrence): strip_l2m returns
+`<M2JtokuvecuM` (before 9b9e8380d it returned the token unchanged), so repair_l2_markers.py's exact-match map
+(`<M2JtokuvecuM2J>` → tokuvecu) no longer fires. Not caught because that commit aligned the published XML by hand-scoped
+repair instead of a full rebuild.
+**Correction:** the 15 drift lines were two different things — 12 in informants (*tokuvecu* → `<M2JtokuvecuM`, the
+build was wrong) and 3 in typhoon (original PHON `sxiaoɗiŋɗm` → `sxiaoɗiŋ`, the build was RIGHT: the 2026-11-18 entry's
+"heal on the next full pipeline rebuild"). 7dfc130ea wrongly kept both files as published.
+**Maintainer (2026-11-24):** *"Obviously, we should be fixing such things in the build and rebuilding. We should have
+policies for that already."* (POL-038: data change only via committed code, "never ad hoc"; POL-047: re-running the entry
+point over a clean checkout leaves `git status` empty; POL-052: rebuild with the current tools. 9b9e8380d aligned the
+published XML with an uncommitted script instead of rebuilding.)
+**Fix:** scripts/utils.py `_NO_L_PAIR_RE` pre-pass in strip_l2m: an L-less tag pair whose opener and closer agree
+(`<M2JtokuvecuM2J>`) keeps the word. Audit over all 131,462 distinct source tokens (378 JSONs): vs main exactly 1 token
+changes (that one); vs pre-9b9e8380d exactly 3 (hoN, shiaoling, tokuvecu). Two test cases added (test_ntu_source_parsing:
+25 passed). Full NTU rebuild: 4 lines change vs 7dfc130ea — the 3 typhoon PHONs heal, and *tokuvecu*'s W FORM gains
+`notes="code-switch"` like the other 1,304 code-switched FORMs. Tsou validator findings identical to main's;
+tests/corpora/test_ntu_* 170 passed. NTU's build now reproduces its committed XML.
 
 ### ⏳ OPEN: NTU qa/baseline.tsv is stale; validate.sh's regression step is skipped
 check_regressions.py reports 2/7/5 "regressions" (grammar/sentences/stories) on main's published XML too, e.g. sentences
@@ -54,6 +77,8 @@ always prints "skipped".
 ### ⏳ OPEN (small): registry LNK note
 supplementary_codes.tsv LNK says "replaces LIN (RauDong), LIG (Yedda, Li-Thao), 繫詞/連繫詞"; it does not list NTU 連詞
 or RauDong 繫. Not in the chosen options' text, so not changed. Add them?
+**Maintainer (2026-11-24, chat):** *"OK we should update that when we get to our PR."* — read as: add NTU 連詞 and
+RauDong 繫 to the LNK note in the PR (interpretation to be confirmed; may instead refer to the stale QA baseline).
 
 ---
 ## 2026-11-12 — ⏳ Dictionary headwords: Safolu + Fey missing; round 1 page published
