@@ -72,6 +72,7 @@ CORPUS="$(dirname "$CODEDOCS")"                            # corpus root
 BANK="${1:-${FORMOSANBANK_ROOT:-$(cd "$CORPUS/../.." && pwd)}}"
 BANK="$(cd "$BANK" && pwd)"
 XML="$CORPUS/XML"
+REPORTS="${QC_OUTPUT_DIR:-$(mktemp -d "${TMPDIR:-/tmp}/raudong-build-reports.XXXXXX")}"  # cleaner warnings stay outside XML/ (POL-033)
 SNAPSHOT="$CODEDOCS/pre_correction_snapshot/XML"
 
 PY="${PYTHON:-$BANK/.venv/bin/python}"
@@ -95,7 +96,7 @@ rm -rf "$XML"
 cp -r "$SNAPSHOT" "$XML"
 
 step "1. clean_xml"
-"$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$XML"
+"$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$XML" --warnings_dir "$REPORTS"
 
 step "2. standardize --remove_accents"
 "$PY" "$BANK/QC/utilities/standardize.py" --remove_accents --corpora_path "$XML"
@@ -112,4 +113,4 @@ step "3. add_phonology (original: Ortho94; standard: Ortho113)"
 step "4. apply_unclear_glosses (POL-021/POL-061; tables: unclear_glosses.tsv, gloss_notes.tsv)"
 "$PY" "$CODEDOCS/apply_unclear_glosses.py" --corpora_path "$XML"
 
-step "Done. Review + delete any *_warnings.csv sidecars under $XML (POL-033)."
+step "Done. Cleaner warnings (not published, POL-033): $REPORTS"
