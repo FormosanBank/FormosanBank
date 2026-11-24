@@ -8,7 +8,7 @@ read this instead of scrolling chat history.
 **OPEN items are marked ⏳; everything else is settled.**
 
 ---
-## 2026-11-24 — NTU 連詞 is a linker: cards 1, 3, 4 applied (branch glossing/ntu-lianci-linker); ⏳ RauDong build question
+## 2026-11-24 — NTU 連詞 is a linker: cards 1–4 applied (NTU: #362; RauDong 繫: branch glossing/raudong-xi-lnk)
 
 **Question (maintainer):** *"Please compare the specific morphemes so glossed against what the grammars say. Do they match?"*
 **Answer:** yes. 1,604 words had standard twins disagreeing on LNK (NTU 1,231: 1,217 zho 連詞→CONJ + 14 misc.; RauDong 373:
@@ -24,7 +24,7 @@ vocabulary card had listed NTU's 連詞 as a conjunction spelling. Page: https:/
   `連詞@Atayal&ru` / `連詞@Atayal&ru'` CONTEXT-CONVERT→CONJ; supplementary_codes CONJ note no longer claims NTU's 連詞.
 - eng_link → *"LINK → LNK in the NTU table"*. DONE.
 - bunun_typos → *"Defer with the other low-frequency anomalies"*. Listed in Glossing/OutstandingIssues.md (Open).
-- raudong_xi → *"Add 繫 → LNK to RauDong.tsv"*. NOT YET APPLIED — see the open item below.
+- raudong_xi → *"Add 繫 → LNK to RauDong.tsv"*. DONE on glossing/raudong-xi-lnk (after the build fix below).
 
 **Verification (NTU rebuilt with its generate_xml.sh in a worktree at origin/main 49a744a87):** 2,442 standard-TRANSL lines
 changed — zho CONJ→LNK ×2,436 (1,218 W + 1,218 M; Atayal ru/ru' still CONJ‖CONJ), eng LINK→LNK ×6 — and nothing else
@@ -33,7 +33,12 @@ TU ×3, 處格|LNK ×1; RauDong 5: 助|LIN ×4, 繫|CON ×1 as predicted). valid
 findings on NTU identical to main's; tests/glossing + test_validate_registries 62 passed; tests/corpora/test_ntu_* 168
 passed (run one file at a time — the combined run is OOM-killed); NTU qa/check_regressions output identical to main's.
 
-### ⏳ OPEN: RauDong's generate_xml.sh fails on main (pre-existing) — card 2 waits on it
+### ✅ FIXED 2026-11-24: RauDong's generate_xml.sh failed on main (pre-existing) — card 2 then applied
+**Resolution:** the reorder landed on main in #363 (12caccaf0, another session). At main 7cf4718b0 the RauDong build exits
+0 with an empty git status. Card 2 (glossing/raudong-xi-lnk): RauDong.tsv row `繫 740 CONVERT LNK`; rebuild changes
+exactly 740 lines, all `<TRANSL xml:lang="zho" kindOf="standard">繫</TRANSL>` → `LNK` (standard 繫 740→0; original 繫
+740 untouched); validate_xml / validate_text / validate_glosses findings identical to main's.
+**Original report:**
 Unmodified origin/main 49a744a87: `apply_unclear_glosses: 12. rarakeh、kanakan a ka no cai M 42_1_2 eng: 2 TRANSL with that
 xml:lang`, exit 1 — the gloss-standard step (added before it in 2357ee91a) gives the element a second eng TRANSL. Running
 apply_unclear_glosses BEFORE the gloss step reproduces main's 20 published files byte-identically (exit 0); with the 繫 row
@@ -74,11 +79,13 @@ check_regressions.py reports 2/7/5 "regressions" (grammar/sentences/stories) on 
 "JSON record has an S block" 100.0 → 95.1. validate.sh calls qa/run_regression.sh, which does not exist, so the step
 always prints "skipped".
 
-### ⏳ OPEN (small): registry LNK note
+### ✅ DONE 2026-11-24: registry LNK note
 supplementary_codes.tsv LNK says "replaces LIN (RauDong), LIG (Yedda, Li-Thao), 繫詞/連繫詞"; it does not list NTU 連詞
 or RauDong 繫. Not in the chosen options' text, so not changed. Add them?
 **Maintainer (2026-11-24, chat):** *"OK we should update that when we get to our PR."* — read as: add NTU 連詞 and
 RauDong 繫 to the LNK note in the PR (interpretation to be confirmed; may instead refer to the stale QA baseline).
+**Maintainer (2026-11-24, chat), on the proposal to add both in one branch:** *"Agreed."* → LNK note now reads "replaces
+LIN and 繫 (RauDong), LIG (Yedda, Li-Thao), 連詞 (NTU), 繫詞/連繫詞" (glossing/raudong-xi-lnk).
 
 ---
 ## 2026-11-12 — ⏳ Dictionary headwords: Safolu + Fey missing; round 1 page published
