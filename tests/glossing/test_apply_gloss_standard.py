@@ -861,3 +861,64 @@ def test_embedded_code_undecided_inner_copied_verbatim(tmp_path):
     # notation standardized even while the inner atom awaits a ruling;
     # the FIL row still reads UNDECIDED in the table (the to-do list)
     assert g["w3"][("standard",)] == "他.FIL"
+
+
+# ---- next-word context (maintainer 2026-11-24, Paiwan a page q1: "NLK before a
+# voice-marked word for sure.") — "+free" = the word is one morpheme;
+# ">A|B" = the NEXT word in the same sentence has source-gloss atom A or B;
+# "!>X" = it has none of X; conditions joined by "&" must all hold ----
+
+NEXT_RULES = RULES + [
+    ("c&+free&>af|pf&!>nom", "CONTEXT-CONVERT→LNK", "standalone c before a voice-marked word"),
+]
+NEXT_XML = """<TEXT xml:lang="pwn" id="t9">
+<S id="s1">
+  <FORM kindOf="original">x</FORM>
+  <W id="w1"><FORM>a</FORM><TRANSL xml:lang="eng" kindOf="original">c</TRANSL>
+    <M id="m1"><FORM>a</FORM><TRANSL xml:lang="eng" kindOf="original">c</TRANSL></M></W>
+  <W id="w2"><FORM>s&lt;em&gt;a</FORM><TRANSL xml:lang="eng" kindOf="original">go&lt;af&gt;</TRANSL></W>
+  <W id="w3"><FORM>a</FORM><TRANSL xml:lang="eng" kindOf="original">c</TRANSL></W>
+  <W id="w4"><FORM>si-tsuay-an</FORM><TRANSL xml:lang="eng" kindOf="original">if-long.time-nom</TRANSL></W>
+  <W id="w5"><FORM>a</FORM><TRANSL xml:lang="eng" kindOf="original">c</TRANSL></W>
+  <W id="w6"><FORM>vavayan</FORM><TRANSL xml:lang="eng" kindOf="original">female</TRANSL></W>
+  <W id="w7"><FORM>a-zua</FORM><TRANSL xml:lang="eng" kindOf="original">c-that</TRANSL>
+    <M id="m7a"><FORM>a</FORM><TRANSL xml:lang="eng" kindOf="original">c</TRANSL></M>
+    <M id="m7b"><FORM>zua</FORM><TRANSL xml:lang="eng" kindOf="original">that</TRANSL></M></W>
+  <W id="w8"><FORM>k-pf</FORM><TRANSL xml:lang="eng" kindOf="original">eat-pf</TRANSL></W>
+  <W id="w9"><FORM>a</FORM><TRANSL xml:lang="eng" kindOf="original">c</TRANSL></W>
+</S>
+<S id="s2">
+  <FORM kindOf="original">y</FORM>
+  <W id="w10"><FORM>s&lt;em&gt;a</FORM><TRANSL xml:lang="eng" kindOf="original">go&lt;af&gt;</TRANSL></W>
+</S>
+</TEXT>"""
+
+
+def test_next_word_context_pattern(tmp_path):
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "a.xml").write_text(NEXT_XML, encoding="utf-8")
+    t = tmp_path / "table.tsv"
+    with open(t, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["source_code", "count", "status", "standard", "basis",
+                    "notes", "language_overrides"])
+        w.writerows([("c", "9", "CONVERT", "NOM", "ruling", "", ""),
+                     ("af", "2", "CONVERT", "AV", "ruling", "", ""),
+                     ("pf", "1", "CONVERT", "PV", "ruling", "", "")])
+    r = tmp_path / "rules.tsv"
+    with open(r, "w", newline="") as h:
+        w = csv.writer(h, delimiter="\t", lineterminator="\n")
+        w.writerow(["pattern", "replacement", "description"])
+        w.writerows(NEXT_RULES)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    _, g = glosses(d)
+    assert g["w1"][("standard",)] == "LNK"      # next word go<af>: fires, word level
+    assert g["m1"][("standard",)] == "LNK"      # ... and morpheme level
+    assert g["w3"][("standard",)] == "NOM"      # next word has nom: excluded
+    assert g["w5"][("standard",)] == "NOM"      # next word has no voice code
+    assert g["m7a"][("standard",)] == "NOM"     # a- inside a-zua: not +free
+    assert g["w7"][("standard",)] == "NOM-that"
+    assert g["w9"][("standard",)] == "NOM"      # sentence-final: s2's first word does not count
+    assert g["w2"][("standard",)] == "go<AV>"   # other words unaffected
