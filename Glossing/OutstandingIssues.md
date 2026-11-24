@@ -221,6 +221,34 @@ the bottom with their ruling.
   期使 is probably a typo of 祈使), 大(AV) (eng PROG), 花(AV) (eng AV.SII), 擁抱(AV), 抓(AV) (eng AV). One each;
   to put to the maintainer.
 
+- **HPS standalone `a` (`c` "construct marker") not before a voice-marked word — 2,092 copied as `c`
+  (2026-11-24, Paiwan a page round 2 r5: "UNDECIDED"; r1: "All other cases should revert to 'c' and remain
+  UNDECIDED.").** Only the 527 before a word whose source gloss has af/pf/lf/if became LNK. Paiwan *a* is both
+  the non-personal nominative marker and the linker (排灣語語法概論 PDF p.56 「有一個連繫詞a，出現在動詞之間、動詞和否定詞之間或
+  名詞之間」, p.73 「非人名的主格標記a」); Early & Whitehorn gloss both `c` and use `f` "focus" (now NOM) only for ti and the
+  nominative pronouns; Ferrell 1982 p.53: "a (equational construction marker for noun phrase)". Nothing we hold
+  marks part of speech (Ferrell has no category field), so nouns and modifiers after *a* cannot be told apart
+  mechanically. The 2,092 by the next word's source gloss: bare English word 836, other multi-part 429,
+  reduplicated 228, another function code 188, stat 148, possessive 119, num 77, ti / nominative pronoun 33,
+  voice code + nom (nominalized) 29 (left as c by the maintainer: "Leave them as c (527 → LNK)"), name 5.
+  YeddaPalemeqBlog splits its *a* LIG 729 / nominative 769 / unglossed 278. Evidence page:
+  https://claude.ai/artifact/Agn19a9QEMKWCpGtLC6MUx
+- **HPS `a-zua` 'c-that' ×409 (+ a-za~zua ×9, a-zua~zua ×1) — copied as `c` (2026-11-24, round 2 r2: "leave as
+  UNDECIDED and put this specific issue in our todos for gloss standardization.").** Sources disagree: YeddaPalemeqBlog's
+  glossers call this *a-* the subject case marker ("that. a 'subject case marker'; the root is zua 'that, those'.", 10
+  tokens) and *azua* "that, nominative demonstrative pronoun" (2); 排灣語語法概論 PDF p.72 (5-3a) writes *a zua vavayan*
+  as two words glossed 主格 那 女人; Ferrell 1982 p.362 has *a-zua* 'that, those' and *nu-a-zua a tsautsau* 'of those
+  people', where *a-zua* follows the genitive *nu-*. In HPS the stem also takes i- loc ×172, ta-/tua- obl ×42,
+  nua- by/of ×19.
+- **HPS `a-ravats` 'c-true' ×112 — copied as `c` (2026-11-24, round 2 r3: "and leave c and UNDECIDED and in our
+  todos.").** No source calls this *a-* nominative: Ferrell 1982 p.243 "ravats true / a ravats genuine(ly), truly;
+  very / ui a ravats yes, that's true!"; 排灣語語法概論 PDF p.144 writes *aravac* as one word glossed 很 'very', between
+  two linkers (*gemaljusun a aravac a 'eman* 慢<主焦>=你.主格 連繫詞 很 連繫詞 吃<主焦>); YeddaPalemeqBlog *aravac*
+  'very, quite' ×110. Typical HPS use: *masalu aravats azua vavayan* 'The girl was very pleased.'
+- **HPS `a-i-tsu` 'c-loc-this' ×13 and `a-nema-aya` 'c-what-say' ×1 — copied as `c` (2026-11-24, round 2 r4: "and
+  leave c and UNDECIDED and in our todos.").** Not yet researched; 排灣語語法概論 PDF p.60 writes *[a icu a vurati]* 主題
+  'this sweet potato (topic)' with *a icu* as two words, unglossed.
+
 ## Resolved
 
 - **HPS (inc)/(exc), (name)/(place); NTU IN/EX, 包含/排除; Yedda ligature** (resolved 2026-11-16, unvoiced-verbs

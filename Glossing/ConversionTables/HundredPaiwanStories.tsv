@@ -1,6 +1,6 @@
 source_code	count	status	standard	basis	notes	language_overrides
-c	6328	CONVERT	NOM	maintainer 2026-11-17 (case page Paiwan note): "OK a/c -> NOM." — atom c glosses only the form a (standalone and a- in a-zua etc.)	documented code; definition in ScopingReview	
-f	3024	UNDECIDED			documented code; definition in ScopingReview	
+c	6328	UNDECIDED		maintainer 2026-11-24 (Paiwan a page, round 2, r1): "All other cases should revert to 'c' and remain UNDECIDED." — replaces the 2026-11-17 c→NOM ("OK a/c -> NOM."). Only standalone a before a voice-marked word converts (to LNK, rules file); a-zua, a-ravats, a-i-tsu, a-nema-aya and the other standalone a copy as c (see ../OutstandingIssues.md)	documented code; definition in ScopingReview	
+f	3024	CONVERT	NOM	maintainer 2026-11-24 (Paiwan a page, q3: chose "Yes: f → NOM") — Early & Whitehorn's 'focus' glosses only the nominative ti and the nominative pronouns aken, sun, amen, itjen, mun, tjen	documented code; definition in ScopingReview	
 obl	2300	CONVERT	OBL	maintainer 2026-11-18: "Otherwise, this is now all approved and you can rebuild the glossed corpora with the gloss standardization in the pipeline." (case page mapping tables, v36)	proposed → OBL (documented meaning; batch approval pending)	
 stat	1926	CONVERT	STAT	approved on the derivational decision page 2026-11-15 (DerivationalMorphology.md card F)		
 af	1628	CONVERT	AV	HPS documented lowercase voice + voice ruling 2026-11-11 (AV/PV/LV/OV)		
