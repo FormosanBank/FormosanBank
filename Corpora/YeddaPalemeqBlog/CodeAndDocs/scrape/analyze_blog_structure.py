@@ -7,7 +7,31 @@ import argparse
 import html
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString, Tag
+
+
+def visible_text(element):
+    """Return an element's text as a reader sees it on the blog.
+
+    Keeps the whitespace the HTML has at tag boundaries, reads <br> as a space,
+    turns non-breaking spaces into spaces, collapses whitespace runs to one
+    space, and trims the ends.
+
+    Do not use get_text(strip=True) for text that goes into the corpus: it trims
+    every text fragment and joins them with nothing, so
+    "the root is <i>kan </i>'eat'" becomes "the root iskan'eat'". Nor
+    get_text(" ", strip=True): it adds a space at every tag boundary, so
+    "<i>ki-vava</i>: to drink" becomes "ki-vava : to drink".
+    """
+    parts = []
+    for node in element.descendants:
+        if isinstance(node, Tag):
+            if node.name == 'br':
+                parts.append(' ')
+        elif type(node) is NavigableString:  # not comments, scripts, CDATA
+            parts.append(str(node))
+    return re.sub(r'\s+', ' ', ''.join(parts).replace(' ', ' ')).strip()
+
 
 # Define yellow text elements to ignore for specific blog posts
 # Format: (url_identifier, [list_of_exact_text_matches_to_ignore])
@@ -33,7 +57,9 @@ def preprocess_gloss(gloss_text):
     Preprocess gloss text to fix specific formatting issues.
     Currently handles: "a;LIG" -> "a: LIG"
     """
-    if gloss_text.strip() == "a;LIG":
+    # The blog has "<i>a;</i> LIG"; compared without whitespace so this fires
+    # whether or not the space between the fragments is kept (see visible_text).
+    if re.sub(r'\s+', '', gloss_text) == "a;LIG":
         return "a: LIG"
     return gloss_text
 
@@ -83,7 +109,7 @@ def handle_664665_special_case(soup):
                     if any(indicator in sample_text.lower() for indicator in 
                            [':', 'actor focus', 'person', 'root is', 'gen', 'nom', 'obl', 'lig']):
                         # For 664/665: Block 1 has simple "pai" gloss, Block 2 gets all numbered glosses
-                        all_gloss_items = [preprocess_gloss(li.get_text(strip=True)) for li in items]
+                        all_gloss_items = [preprocess_gloss(visible_text(li)) for li in items]
                         block1['glosses'] = ['pai: look, thereupon, filler to initiate a new topic']
                         block2['glosses'] = all_gloss_items if all_gloss_items else []
                         
@@ -98,7 +124,7 @@ def handle_664665_special_case(soup):
                         break
         
         # Look for translation
-        full_text = ''.join(list(post_body.stripped_strings))
+        full_text = visible_text(post_body)
         translation_patterns = ["Free translation:", "English translation:", "In English:", "Translation:", "Ferrell's translation:", "Ferrell's translation(p. 59):", "In Engllish:"]
         stop_patterns = ['Word gloss:', 'Glossary:', 'Morphological breakdown:', 'Reading:', 'Voice file:', 'Audio:', 'Listen:', 'From klokah.org']
         
@@ -213,26 +239,26 @@ def handle_652653654_special_case(soup):
             # Block 2 gets the numbered list
             items = all_lists[0].find_all('li')
             if items:
-                block2['glosses'] = [preprocess_gloss(li.get_text(strip=True)) for li in items]
+                block2['glosses'] = [preprocess_gloss(visible_text(li)) for li in items]
         else:
             # Traditional assignment for posts with multiple numbered lists
             # Block 1 glosses (first ol)
             if len(all_lists) >= 1:
                 items = all_lists[0].find_all('li')
                 if items:
-                    block1['glosses'] = [preprocess_gloss(li.get_text(strip=True)) for li in items]
+                    block1['glosses'] = [preprocess_gloss(visible_text(li)) for li in items]
             
             # Block 2 glosses (second ol)
             if len(all_lists) >= 2:
                 items = all_lists[1].find_all('li')
                 if items:
-                    block2['glosses'] = [preprocess_gloss(li.get_text(strip=True)) for li in items]
+                    block2['glosses'] = [preprocess_gloss(visible_text(li)) for li in items]
                     
             # Block 3 glosses (third ol)
             if len(all_lists) >= 3:
                 items = all_lists[2].find_all('li')
                 if items:
-                    block3['glosses'] = [preprocess_gloss(li.get_text(strip=True)) for li in items]
+                    block3['glosses'] = [preprocess_gloss(visible_text(li)) for li in items]
         
         # Extract audio URLs
         iframes = post_body.find_all('iframe')
@@ -649,7 +675,7 @@ def find_example_blocks(soup, url=None):
                                    [':', 'actor focus', 'person', 'root is', 'gen', 'nom', 'obl', 'lig', 'will', 'disappear', 'custom', 'first', 'language']):
                                 glosses = []
                                 for li in items:
-                                    gloss_text = li.get_text(strip=True)
+                                    gloss_text = visible_text(li)
                                     if ':' in gloss_text and len(gloss_text) > 3:
                                         glosses.append(preprocess_gloss(gloss_text))
                                 
@@ -803,18 +829,20 @@ def find_example_blocks(soup, url=None):
     
     return blocks
 
-def analyze_blog_posts(max_posts=None, show_details=False, specific_urls=None, return_blocks=False):
+def analyze_blog_posts(max_posts=None, show_details=False, specific_urls=None, return_blocks=False,
+                       html_dir='html_cache'):
     """Analyze Paiwan Every Day blog posts.
-    
+
     Args:
         max_posts: Maximum number of posts to analyze (None for all)
         show_details: Whether to show detailed content for each block
         specific_urls: List of specific URLs to analyze (None for all)
         return_blocks: If True, return all processed blocks instead of analysis
+        html_dir: Folder written by download_html.py (holds url_mapping.json)
     """
-    
+
     # Load URL mapping
-    with open('html_cache/url_mapping.json', 'r') as f:
+    with open(os.path.join(html_dir, 'url_mapping.json'), 'r') as f:
         url_mapping = json.load(f)
     
     mismatches = []
@@ -871,7 +899,7 @@ def analyze_blog_posts(max_posts=None, show_details=False, specific_urls=None, r
         if max_posts and count > max_posts:
             break
         
-        filepath = f'html_cache/{filename}'
+        filepath = os.path.join(html_dir, filename)
         if not os.path.exists(filepath):
             continue
             
@@ -1162,26 +1190,30 @@ def extract_word_from_gloss(gloss):
 def extract_word_from_gloss_with_parentheses_handling(gloss):
     """Extract word from gloss, handling parentheses and alternative forms by trying different variations."""
     base_word = extract_word_from_gloss(gloss)
-    
+    # The blog writes these headwords "<i>ku </i>or <i>'u</i>". The rules below
+    # were written against text with the spaces lost ("kuor'u"), so they are
+    # checked against the headword with whitespace removed.
+    compact = re.sub(r'\s+', '', base_word)
+
     # Handle alternative form patterns like "kuor'u:" and "'uorku:"
-    if base_word.startswith("kuor‘u") or base_word.startswith("‘uorku") or base_word.startswith("’uorku"):
+    if compact.startswith("kuor‘u") or compact.startswith("‘uorku") or compact.startswith("’uorku"):
         # These indicate the word could be either "ku" or "'u"
         return ["ku", "‘u" ,"’u", "'u"]  # Include variations with different apostrophe styles and without apostrophes   
 
     # Handle 'aorka
-    if base_word.startswith("'aorka") or base_word.startswith("‘aorka") or base_word.startswith("’aorka"):
+    if compact.startswith("'aorka") or compact.startswith("‘aorka") or compact.startswith("’aorka"):
         return ["'a", "ka", "‘a", "’a"]  # Include both with and without apostrophe
 
     # Handle virasiorvurati
-    if base_word.startswith("virasiorvurati"):
+    if compact.startswith("virasiorvurati"):
         return ["virasi", "vurati"]  # Include the original form
 
     # Handle ‘atuaorkatua
-    if base_word.startswith("‘atuaorkatua") or base_word.startswith("’atuaorkatua") or base_word.startswith("'atuaorkatua"):
+    if compact.startswith("‘atuaorkatua") or compact.startswith("’atuaorkatua") or compact.startswith("'atuaorkatua"):
         return ["'atua", "katua", "‘atua", "’atua"]  # Include both with and without apostrophe
 
     # Handle taortua
-    if base_word.startswith("taortua"):
+    if compact.startswith("taortua"):
         return ["ta", "tua"]  # Include the original form
 
     # If no parentheses, return original
@@ -1190,7 +1222,6 @@ def extract_word_from_gloss_with_parentheses_handling(gloss):
     
     # Create variations:
     # 1. Without parentheses and their content
-    import re
     without_parentheses = re.sub(r'\([^)]*\)', '', base_word).strip()
     
     # 2. With parentheses content but without the parentheses themselves
@@ -1391,8 +1422,10 @@ def create_xml(blocks):
             corrected_glosses = []
             for gloss in block['glosses']:
                 gloss = gloss.replace("yí pó", "yípó").replace("ā yí", "āyí")
-                if gloss == "tja-(k)/'(a)ma: our father.tja- 'our, 1st peron PL GEN INCL'; the root iskamaor 'ama'father, dad'.":
-                    corrected_glosses.append("tja-'ma: our father.tja- 'our, 1st peron PL GEN INCL'; the root iskamaor 'ama'father, dad'.")
+                # Matched on the headword, not the whole gloss, so the repair
+                # survives the gloss's own whitespace (see visible_text).
+                if gloss.startswith("tja-(k)/'(a)ma:"):
+                    corrected_glosses.append("tja-'ma:" + gloss[len("tja-(k)/'(a)ma:"):])
                 elif gloss == "ka-kuda- (a)n":
                     corrected_glosses.append("ka-kuda-n")
                 else:
@@ -1481,7 +1514,7 @@ def prettify_xml(elem):
     reparsed = minidom.parseString(rough_string)
     return reparsed.toprettyxml(indent="  ")
 
-def generate_xml():
+def generate_xml(html_dir='html_cache'):
     """Generate XML from all blog posts."""
     print("Starting XML generation from blog structure analysis...")
     
@@ -1490,7 +1523,7 @@ def generate_xml():
     
     # Collect all blocks using existing analysis logic
     print("Collecting blog posts for XML generation...")
-    blocks = analyze_blog_posts(return_blocks=True)
+    blocks = analyze_blog_posts(return_blocks=True, html_dir=html_dir)
     print(f"\nFound {len(blocks)} total text blocks")
     
     # Filter out blocks without valid Paiwan text
@@ -1517,12 +1550,15 @@ if __name__ == "__main__":
     parser.add_argument('--details', action='store_true', help='Show detailed content for each block')
     parser.add_argument('--urls', nargs='+', help='Specific URLs to analyze')
     parser.add_argument('--generate-xml', action='store_true', help='Generate XML from all blog posts')
-    
+    parser.add_argument('--html-dir', default='html_cache',
+                        help='Folder of cached HTML written by download_html.py (default: html_cache)')
+
     args = parser.parse_args()
-    
+
     if args.generate_xml:
-        generate_xml()
+        generate_xml(html_dir=args.html_dir)
     else:
         # Convert URL list if provided
         specific_urls = args.urls if args.urls else None
-        analyze_blog_posts(max_posts=args.max_posts, show_details=args.details, specific_urls=specific_urls)
+        analyze_blog_posts(max_posts=args.max_posts, show_details=args.details, specific_urls=specific_urls,
+                           html_dir=args.html_dir)
