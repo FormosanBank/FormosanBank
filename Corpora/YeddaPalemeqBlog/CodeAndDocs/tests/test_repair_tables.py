@@ -121,5 +121,65 @@ class RepairTableTests(unittest.TestCase):
             bx.check_variant_sources(fresh_root())
 
 
+class GlossWhitespaceTests(unittest.TestCase):
+    def setUp(self) -> None:
+        bx.SKIPPED.clear()
+        self.tmp = tempfile.TemporaryDirectory()
+        self.saved = bx.GLOSS_WHITESPACE_TABLE
+        self.rows = read(bx.GLOSS_WHITESPACE_TABLE)
+
+    def tearDown(self) -> None:
+        bx.GLOSS_WHITESPACE_TABLE = self.saved
+        bx.SKIPPED.clear()
+        self.tmp.cleanup()
+
+    def use(self, rows: list[dict[str, str]]) -> None:
+        path = Path(self.tmp.name) / "gloss_whitespace_repairs.tsv"
+        write(path, rows, bx.GLOSS_WHITESPACE_HEADER)
+        bx.GLOSS_WHITESPACE_TABLE = path
+
+    def test_every_row_changes_whitespace_only_and_applies(self) -> None:
+        self.assertEqual(len(self.rows), 1127)
+        for row in self.rows:
+            self.assertNotEqual(row["snapshot_gloss"], row["repaired_gloss"])
+            self.assertEqual(
+                bx.WHITESPACE.sub("", row["snapshot_gloss"]),
+                bx.WHITESPACE.sub("", row["repaired_gloss"]),
+            )
+        self.assertEqual(bx.repair_gloss_whitespace(fresh_root()), 1127)
+        self.assertEqual(bx.SKIPPED, [])
+
+    def test_example_the_root_is_kan(self) -> None:
+        root = fresh_root()
+        bx.repair_gloss_whitespace(root)
+        word = bx.find_word(bx.find_sentence(root, "S375_1"), "S375_1W5")
+        self.assertEqual(
+            word.find("TRANSL").text,
+            "make or prepare food, actor voice (AV). san- 'construct, work on'; "
+            "kakanen 'food' with the root kan.",
+        )
+
+    def test_second_pass_skips_every_row(self) -> None:
+        root = fresh_root()
+        bx.repair_gloss_whitespace(root)
+        self.assertEqual(bx.repair_gloss_whitespace(root), 0)
+        self.assertEqual(len(bx.SKIPPED), 1127)
+
+    def test_row_that_changes_letters_is_refused(self) -> None:
+        rows = [dict(self.rows[0])]
+        rows[0]["repaired_gloss"] = rows[0]["repaired_gloss"] + "x"
+        self.use(rows)
+        with self.assertRaisesRegex(SystemExit, "changes more than whitespace"):
+            bx.repair_gloss_whitespace(fresh_root())
+
+    def test_unexpected_gloss_stops(self) -> None:
+        root = fresh_root()
+        row = self.rows[0]
+        word = bx.find_word(bx.find_sentence(root, row["w_id"].rsplit("W", 1)[0]), row["w_id"])
+        word.find("TRANSL").text = "SOME OTHER GLOSS"
+        with self.assertRaisesRegex(SystemExit, f"gloss_whitespace_repairs.tsv: row {row['w_id']} "):
+            bx.repair_gloss_whitespace(root)
+
+
 if __name__ == "__main__":
     unittest.main()

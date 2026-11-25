@@ -74,6 +74,16 @@ SOURCE_WORD_TRANSLATION_TABLE = ROOT / "source_word_translation_repairs.tsv"
 SOURCE_WORD_TRANSLATION_HEADER = ["w_id", "form", "source_head", "translation"]
 
 
+# Word glosses whose spaces the old scraper dropped at italics (its
+# get_text(strip=True)); repaired_gloss is the fixed scraper's reading of the
+# downloaded blog HTML. A row may change whitespace only: the build refuses a
+# row whose two glosses differ once all whitespace is removed. Applied first,
+# to the snapshot's own word ids, before any other repair.
+GLOSS_WHITESPACE_TABLE = ROOT / "gloss_whitespace_repairs.tsv"
+GLOSS_WHITESPACE_HEADER = ["w_id", "form", "lang", "snapshot_gloss", "repaired_gloss"]
+WHITESPACE = re.compile(r"\s+")
+
+
 def read_table(path: Path, header: list[str]) -> list[dict[str, str]]:
     with path.open(encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle, delimiter="\t", quoting=csv.QUOTE_NONE)
@@ -201,6 +211,39 @@ def replace_with_variants(
     root.remove(source)
     for offset, variant in enumerate(variants):
         root.insert(index + offset, variant)
+
+
+def repair_gloss_whitespace(root: ET.Element) -> int:
+    """Put back the spaces in word glosses; returns how many were repaired."""
+    repaired = 0
+    for row in read_table(GLOSS_WHITESPACE_TABLE, GLOSS_WHITESPACE_HEADER):
+        word_id, old, new = row["w_id"], row["snapshot_gloss"], row["repaired_gloss"]
+        if WHITESPACE.sub("", old) != WHITESPACE.sub("", new):
+            raise SystemExit(
+                f"{GLOSS_WHITESPACE_TABLE.name}: row {word_id} changes more than whitespace"
+            )
+        word = find_word(find_sentence(root, word_id.rsplit("W", 1)[0]), word_id)
+        if (original_form(word).text or "") != row["form"]:
+            raise SystemExit(
+                f"{GLOSS_WHITESPACE_TABLE.name}: {word_id} is not {row['form']!r}"
+            )
+        translations = [
+            t for t in word.findall("TRANSL") if t.get(XML_LANG) == row["lang"]
+        ]
+        if len(translations) != 1 or len(translations[0]):
+            raise SystemExit(
+                f"{GLOSS_WHITESPACE_TABLE.name}: {word_id} has no single text-only "
+                f"{row['lang']} gloss"
+            )
+        found = translations[0].text or ""
+        if found == old:
+            translations[0].text = new
+            repaired += 1
+        elif found == new:
+            skipped(GLOSS_WHITESPACE_TABLE, word_id)
+        else:
+            stop(GLOSS_WHITESPACE_TABLE, word_id, found)
+    return repaired
 
 
 def check_variant_sources(root: ET.Element) -> dict[str, dict[str, str]]:
@@ -708,6 +751,7 @@ def main() -> None:
         raise SystemExit("Frozen source snapshot must contain 668 unique sentence IDs")
 
     strip_derived_tiers(root)
+    spaced = repair_gloss_whitespace(root)
     variants = check_variant_sources(root)
     split_alternatives(root)
     annotate_source_segmentation(root)
@@ -732,6 +776,7 @@ def main() -> None:
         source_ids, issue_rows, translation_rows, word_translation_rows, unclear_rows,
         variants,
     )
+    print(f"Word glosses with their spaces put back: {spaced}")
     for row in SKIPPED:
         print(f"Skipped, repaired text already present: {row}")
     print(

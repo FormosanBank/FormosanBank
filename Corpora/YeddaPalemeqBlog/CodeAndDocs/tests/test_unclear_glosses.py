@@ -29,8 +29,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import build_xml  # noqa: E402
 
 FIND_GLOSS = (
-    "to find. I do not know what -ar-means, but it seems to denote agency like "
-    "-em- or -en-? The root iskim'find people, find object'."
+    "to find. I do not know what -ar- means, but it seems to denote agency like "
+    "-em- or -en-? The root is kim 'find people, find object'."
 )
 RULED_UNCLEAR = {
     "S419_1W20": ("siayang", "? I can't make this word."),
@@ -45,14 +45,14 @@ RULED_UNCLEAR = {
     "S617_1W4": (
         "an",
         "? As far as the syntax goes, I think it should be the oblique "
-        "casetaortua. However, the recording sounds likean. Could it "
-        "bema-djadjas-anwith the LOC marker? I am not sure. I don't know how "
+        "case ta or tua. However, the recording sounds like an. Could it "
+        "be ma-djadjas-an with the LOC marker? I am not sure. I don't know how "
         "to explain this.",
     ),
     "S640_1W6": (
         "nu",
-        "? Usuallynuis your (2nd personal plural GEN). Here why the elder "
-        "saysnuis unknown to me.",
+        "? Usually nu is your (2nd personal plural GEN). Here why the elder "
+        "says nu is unknown to me.",
     ),
 }
 

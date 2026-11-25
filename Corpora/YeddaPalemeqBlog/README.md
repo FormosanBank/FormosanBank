@@ -274,6 +274,13 @@ them:
      holds exactly 668 distinct sentence IDs.
    - It deletes every `PHON` and every `FORM kindOf="standard"` the snapshot
      carries; the later shared steps regenerate them.
+   - It puts back the spaces in 1,127 word glosses (`gloss_whitespace_repairs.tsv`).
+     The scraper that made the snapshot dropped the space on each side of an
+     italic word (`the root iskan'eat'` for the blog's `the root is kan 'eat'`).
+     Each row holds the snapshot's gloss and the fixed scraper's reading of the
+     blog HTML downloaded on 2026-11-25. The build refuses a row whose two glosses
+     differ once all whitespace is removed, so this step can change spacing only.
+     Rows are checked like the other repair tables (apply, skip, or stop).
    - The reviewed repairs below live in tables in `CodeAndDocs/`, one per kind:
      `source_variants.tsv`, `issue_repairs.tsv`, `source_translation_repairs.tsv`
      and `source_word_translation_repairs.tsv`. Every row names the text it
