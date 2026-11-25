@@ -15,9 +15,36 @@ which parts of a post to ignore.
 | `analyze_blog_structure.py` | Parses the cached HTML into FormosanBank XML — sentence segmentation, the W tier, gloss matching, and the per-post exception lists |
 | `download_audio.py` | Resolves the YouTube embeds referenced by each post and writes `AUDIO` elements |
 
-`download_html.py` and `analyze_blog_structure.py` need `beautifulsoup4`, which
-is **not** in the repo `requirements.txt` because nothing in the reproduction
-path imports it. `download_audio.py` installs `yt-dlp` on demand.
+`download_html.py` and `analyze_blog_structure.py` need `beautifulsoup4` (in the
+repo `requirements.txt`). `download_audio.py` installs `yt-dlp` on demand.
+
+To scrape, download the HTML into a gitignored folder, then parse it:
+
+```
+python3 scrape/download_html.py --output-dir Private/html_cache
+python3 scrape/analyze_blog_structure.py --html-dir Private/html_cache --generate-xml
+```
+
+`--generate-xml` writes `XML/Paiwan_Yedda_Blog.xml` and two logs into the
+current folder, so run it from a scratch folder (with an absolute
+`--html-dir`) when comparing against the frozen snapshot.
+
+## Gloss and translation text keeps the blog's spaces
+
+Text that goes into the corpus is read with `visible_text()`: the text a reader
+sees, with whitespace runs collapsed to one space. Until 2026-11-25 the scraper
+used BeautifulSoup's `get_text(strip=True)`, which trims each text fragment and
+joins the fragments with nothing, so every space next to an italic word was
+lost (`the root is <i>kan </i>'eat'` → `the root iskan'eat'`). The frozen
+snapshot was made by that version. `tests/test_scrape_text.py` checks the
+extraction on three real posts saved under `tests/fixtures/blog_posts/`.
+
+The rules that were written against the glued text (the `a;LIG` repair, the five
+"X or Y" headword rules such as `taortua`, the `tja-(k)/'(a)ma` headword) now
+compare with whitespace removed, so they fire on the same glosses as before.
+The other "X or Y" headwords (`kama or ama`, `nua or na`, …) still match no word,
+as before. Text used only to *locate* blocks in a post (the yellow-text ignore
+list, next-block search keys) still uses `get_text(strip=True)`, unchanged.
 
 ## Re-scraping does not reproduce the snapshot
 
