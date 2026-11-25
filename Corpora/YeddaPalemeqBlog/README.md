@@ -274,7 +274,15 @@ them:
      holds exactly 668 distinct sentence IDs.
    - It deletes every `PHON` and every `FORM kindOf="standard"` the snapshot
      carries; the later shared steps regenerate them.
-   - It splits `S24_1`, `S483_1` and `S535_1` into `_1` and `_1b` records (one
+   - The reviewed repairs below live in tables in `CodeAndDocs/`, one per kind:
+     `source_variants.tsv`, `issue_repairs.tsv`, `source_translation_repairs.tsv`
+     and `source_word_translation_repairs.tsv`. Every row names the text it
+     expects to find. For each row the build applies the repair when that text
+     is there; skips it, printing `Skipped, repaired text already present: …`,
+     when the repaired text is already there; and otherwise stops, naming the
+     table and the row. `tests/test_repair_tables.py` provokes all three cases.
+   - It checks that `S24_1`, `S483_1` and `S535_1` still print the source text
+     listed in `source_variants.tsv`, then splits them into `_1` and `_1b` records (one
      per alternative), removes their audio, rewrites the original FORM of each,
      drops the word for the other alternative (for `S24_1`, rewrites word 5 and
      its morpheme instead), glosses the remaining alternative word (`male
@@ -285,14 +293,15 @@ them:
    - It checks that `S652653654_2`'s original FORM is exactly
      `pai, maya manu seman-neka-aravac tua zuma.` (the build fails otherwise)
      and writes the reason the tiers will differ into that FORM's `notes`.
-   - It replaces the sentence translation of the nine sentences in its
-     `ISSUE_REPAIRS` table (`S493_1`, `S491_1`, `S481_1`, `S413_1`, `S412_1`,
+   - It replaces the sentence translation of the nine sentences in
+     `issue_repairs.tsv` (`S493_1`, `S491_1`, `S481_1`, `S413_1`, `S412_1`,
      `S305_1`, `S169_1`, `S159_1`, `S62_1`), keeping the frozen text in
      `notes` as `Frozen scrape target: …`.
-   - It writes the 24 sentence translations of `SOURCE_TRANSLATION_REPAIRS`
-     (restored or completed from the live blog), again keeping any frozen text
-     in `notes`, and adds the 41 word glosses of
-     `SOURCE_WORD_TRANSLATION_REPAIRS` to words that had none, with
+   - It writes the 24 sentence translations of `source_translation_repairs.tsv`
+     (restored or completed from the live blog; an empty `expected_translation`
+     means the snapshot has none there), again keeping any frozen text in
+     `notes`, and adds the 41 word glosses of
+     `source_word_translation_repairs.tsv` to words that had none, with
      `notes="Restored from the live source after frozen-scrape review."`.
    - It requires exactly 671 distinct sentence IDs, indents the tree, applies
      `gloss_to_notes.tsv` (each row must match the word's form and its exact

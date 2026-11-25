@@ -45,85 +45,55 @@ GLOSS_TO_NOTES_TABLE = ROOT / "gloss_to_notes.tsv"
 UNCERTAIN_GLOSS_TABLE = ROOT / "uncertain_glosses.tsv"
 UNCLEAR_SENTINEL = "<UNCLEAR/>"
 
-
-ISSUE_REPAIRS = {
-    "S493_1": (
-        "target_linguistic_analysis",
-        "Where is the soup spoon? I use it to serve soup. Where is my pen?",
-        "separated_free_translation_from_word_gloss",
-        "The source page has three free-translation sentences followed by a separately labeled word gloss.",
-    ),
-    "S491_1": (
-        "target_annotation_gloss",
-        "In the past herding cattles was considered a taboo.",
-        "separated_free_translation_from_word_gloss",
-        "The source page labels this sentence as the free translation and lists the analysis under Word gloss.",
-    ),
-    "S481_1": (
-        "target_linguistic_analysis",
-        "The kid is eating.",
-        "separated_free_translation_from_word_gloss",
-        "The source page labels this sentence as the free translation and lists the analysis under Word gloss.",
-    ),
-    "S413_1": (
-        "target_linguistic_analysis",
-        "I saw our elders.",
-        "separated_free_translation_from_word_gloss",
-        "The source page labels this sentence as the free translation and lists the analysis under Word gloss.",
-    ),
-    "S412_1": (
-        "target_linguistic_analysis",
-        "I saw you and your girlfriend.",
-        "separated_free_translation_from_word_gloss",
-        "The source page labels this sentence as the free translation and lists the analysis under Word gloss.",
-    ),
-    "S305_1": (
-        "non_formosan_script_in_source",
-        "稲葉浩志いなばこうし is very handsome!",
-        "retained_source_code_switching",
-        "The source sentence and translation intentionally name Japanese singer Inaba Koshi in Kanji and Hiragana.",
-    ),
-    "S169_1": (
-        "obvious_alignment_mismatch",
-        "What is nose-flute? That is something our ancestors create to make sound.",
-        "restored_omitted_translation_line",
-        "The source page prints two Paiwan sentences and two English translation lines; the frozen scrape retained only the first translation.",
-    ),
-    "S159_1": (
-        "target_linguistic_analysis",
-        "We do not see horses in our place.",
-        "moved_source_analysis_to_notes",
-        "The source prints patient focus in parentheses after the free translation; the full source target is retained in notes.",
-    ),
-    "S62_1": (
-        "obvious_alignment_mismatch",
-        "Let's sing. Let all of us dance. Everybody, come play. Come, everybody, let's play swing.",
-        "restored_omitted_translation_lines",
-        "The source page prints four Paiwan lines and four English translation lines; the frozen scrape retained only the first translation.",
-    ),
-}
+# Reviewed repairs to the frozen snapshot, one table each (maintainer,
+# 2026-11-25: chose "Yes, as proposed" for "tables + three-way check"). Every
+# row names the text it expects to find. Per row the build applies the repair
+# when that text is there, skips it (and says so) when the repaired text is
+# already there, and stops, naming the row, when neither is.
+# Sentence translations restored or separated after the frozen-scrape review.
+ISSUE_REPAIRS_TABLE = ROOT / "issue_repairs.tsv"
+ISSUE_REPAIRS_HEADER = [
+    "s_id", "rule", "expected_translation", "repaired_translation",
+    "resolution", "evidence",
+]
+# Sentences printed with alternatives (qali/drava, ...), emitted as two records.
+# The split itself is code (split_alternatives); this table holds the source
+# text it expects and the audit metadata.
+VARIANTS_TABLE = ROOT / "source_variants.tsv"
+VARIANTS_HEADER = [
+    "source_s_id", "output_s_ids", "source_form", "resolution", "evidence",
+]
+# Sentence translations taken from the live source; an empty
+# expected_translation means the snapshot has no translation there.
+SOURCE_TRANSLATION_TABLE = ROOT / "source_translation_repairs.tsv"
+SOURCE_TRANSLATION_HEADER = [
+    "s_id", "expected_translation", "translation", "resolution", "evidence",
+]
+# Word glosses taken from the live source for words the snapshot leaves unglossed.
+SOURCE_WORD_TRANSLATION_TABLE = ROOT / "source_word_translation_repairs.tsv"
+SOURCE_WORD_TRANSLATION_HEADER = ["w_id", "form", "source_head", "translation"]
 
 
-VARIANTS = {
-    "S24_1": {
-        "output_ids": "S24_1;S24_1b",
-        "source_form": "a kipaparangez tua mareka qali/drava maru tjalja semeljecan a tja kava nu kaljavuceleljan.",
-        "resolution": "split_qali_drava",
-        "evidence": "The source glossary defines qali as male friend and drava as female friend.",
-    },
-    "S483_1": {
-        "output_ids": "S483_1;S483_1b",
-        "source_form": "liyaw a talem ni kama a abar (yasi).",
-        "resolution": "split_abar_yasi",
-        "evidence": "The source sentence presents yasi as the parenthetical alternative to abar.",
-    },
-    "S535_1": {
-        "output_ids": "S535_1;S535_1b",
-        "source_form": "izua tucu a kinarupurupung, tjangtjang / siyak, asaw na vurasi 'ata runi.",
-        "resolution": "split_tjangtjang_siyak",
-        "evidence": "The source sentence presents tjangtjang and siyak as alternatives.",
-    },
-}
+def read_table(path: Path, header: list[str]) -> list[dict[str, str]]:
+    with path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t", quoting=csv.QUOTE_NONE)
+        if reader.fieldnames != header:
+            raise SystemExit(f"{path.name}: unexpected header {reader.fieldnames}")
+        return list(reader)
+
+
+def stop(table: Path, row_id: str, found: str) -> None:
+    raise SystemExit(
+        f"{table.name}: row {row_id} finds neither its expected text nor its "
+        f"repaired text; found {found!r}"
+    )
+
+
+SKIPPED: list[str] = []
+
+
+def skipped(table: Path, row_id: str) -> None:
+    SKIPPED.append(f"{table.name} {row_id}")
 
 
 # The one sentence whose source text carries segmentation hyphens in running
@@ -139,252 +109,6 @@ SOURCE_SEGMENTATION_NOTE = (
     "markers belong on the W and M tiers, so the standard tier drops them; the "
     "original keeps the source surface.",
 )
-
-
-SOURCE_TRANSLATION_REPAIRS = {
-    "S664665_1": (
-        "restored_omitted_source_translation",
-        "thus, hence, thereupon, consequently, accordingly, as a result",
-        "The live source defines the standalone pai entry with this English gloss.",
-    ),
-    "S545_1": (
-        "restored_omitted_source_translation",
-        "like this, as follows",
-        "The live source gives this definition beside the maya tucu example.",
-    ),
-    "S545_2": (
-        "restored_omitted_source_translation",
-        "like that, that is the way",
-        "The live source gives this definition beside the maya tuazua example.",
-    ),
-    "S545_3": (
-        "restored_omitted_source_translation",
-        "the same as",
-        "The live source gives this definition beside the namaya example.",
-    ),
-    "S545_4": (
-        "restored_omitted_source_translation",
-        "alright then, if it is this way",
-        "The live source gives this definition beside the ui, nu maya example.",
-    ),
-    "S545_5": (
-        "restored_omitted_source_translation",
-        "don't leave!",
-        "The live source gives this definition beside the maya vaik example.",
-    ),
-    "S545_6": (
-        "restored_omitted_source_translation",
-        "there is no restriction on it.",
-        "The live source gives this definition beside the inika pumaya example.",
-    ),
-    "S545_7": (
-        "restored_omitted_source_translation",
-        "I don't care; it doesn't matter",
-        "The live source gives this definition beside the pumayan example.",
-    ),
-    "S545_8": (
-        "restored_omitted_source_translation",
-        "not yet! wait a bit!",
-        "The live source gives this definition beside the mayanan example.",
-    ),
-    "S538_1": (
-        "separated_free_translation_from_word_gloss",
-        "Clouded-leopard roars, then the little girl got scared, and look, she "
-        "runs to hide in the hut. There is a lot of bamboos here.",
-        "The live source gives two free translations and labels qau: bamboo "
-        "separately before the second example.",
-    ),
-    "S168_1": (
-        "restored_omitted_translation_lines",
-        "How many are you as a family? How many siblings do you have? How many "
-        "friends do you have?",
-        "The live source prints three Paiwan questions and three English lines.",
-    ),
-    "S170_1": (
-        "restored_omitted_translation_lines",
-        "What are you doing? I am studying the Paiwan language.",
-        "The live source prints two Paiwan sentences and two English lines.",
-    ),
-    "S85_1": (
-        "restored_omitted_translation_lines",
-        "Do not hurt others. Do not abuse our own.",
-        "The live source prints two Paiwan clauses and two English lines.",
-    ),
-    "S78_1": (
-        "restored_omitted_translation_lines",
-        "Let us all sing, Hope we will have fun. Let us dance together, We are "
-        "all Paiwan.",
-        "The live source prints four Paiwan lines and four English lines.",
-    ),
-    "S71_1": (
-        "restored_omitted_translation_lines",
-        "Do you know what's happening with COVID-19 in the United States now? "
-        "How are the people, those who are infected? Those who have died of "
-        "COVID-19 in the United States amount to 85,905.",
-        "The live source prints three questions or statements and three English lines.",
-    ),
-    "S39_1": (
-        "restored_truncated_source_translation",
-        "The custom that we take naming people seriously has a very long history.",
-        "The frozen scrape stopped at a source line break inside the English sentence.",
-    ),
-    "S38_1": (
-        "restored_truncated_source_translation",
-        "There are many different indigenous peoples here in Taiwan.",
-        "The frozen scrape stopped at a source line break inside the English sentence.",
-    ),
-    "S37_1": (
-        "restored_omitted_translation_lines",
-        "Where are you from? (polite) Who are you? (unexpected and annoyed)",
-        "The live source prints two Paiwan questions and two English lines.",
-    ),
-    "S35_1": (
-        "restored_omitted_translation_lines",
-        "I am a child of Paiwan in Taiwan. My skin is dark too, but I didn't "
-        "accuse Director-General Tedros (of being a nigger). Please do not "
-        "mislead the world, DG Tedros. Come to visit our village in Taiwan. "
-        "Thank you.",
-        "The live source prints five Paiwan lines and five English lines; the "
-        "source bracketed aside is normalized to parentheses.",
-    ),
-    "S34_1": (
-        "restored_omitted_translation_lines",
-        "What is this? This is a book. What is this? This is pineapple. What is "
-        "this? This is a telephone. What is this? This is a river.",
-        "The live source prints four Paiwan pairs and four English pairs.",
-    ),
-    "S21_1": (
-        "restored_omitted_translation_lines",
-        "What can I do if you don't want me? I can do nothing if you don't want "
-        "me, my love. Whether far away or close by, my love, I will not forget "
-        "about you.",
-        "The live source prints three song lines and three English lines.",
-    ),
-    "S19_1": (
-        "restored_omitted_translation_lines",
-        "kuliw: Is it difficult to learn the Paiwan language? yedda: Yes, I find "
-        "it difficult to speak Paiwan because I don't get to use the language "
-        "of Paiwan often.",
-        "The live source prints both speakers in Paiwan and English.",
-    ),
-    "S9_1": (
-        "restored_omitted_translation_lines",
-        "As the sun sets, it becomes dark on earth. As it darkens on earth, "
-        "crickets start to sing. As crickets sing, the moon shows her face. As "
-        "the moon appears, the Owl wakes up.",
-        "The live source prints four Paiwan lines and four English lines.",
-    ),
-    "Sunknown_1": (
-        "restored_omitted_translation_lines",
-        "What happened with you? Why are you crying by yourself?",
-        "The live source prints two Paiwan questions and two English lines.",
-    ),
-}
-
-
-SOURCE_WORD_TRANSLATION_REPAIRS = {
-    "S623_1W2": ("'uyulj or quyulj", "bundle"),
-    "S592_1W9": ("'i-valit or ki-valit", "to get change"),
-    "S592_1W10": ("a'en or aken", "I, 1st person SIN NOM"),
-    "S569_1W25": ("kata or katua", "with, and"),
-    "S551552553_1W7": ("tua or ta", "OBL"),
-    "S535_1W11": ("'ata or kata", "and"),
-    "S535_1bW11": ("'ata or kata", "and"),
-    "S510_1W4": ("kama or ama", "father, or male elder"),
-    "S507_1W10": ("na or nua", "of, GEN"),
-    "S506_1W5": ("alay or kala", "thin thread"),
-    "S502_1W2": ("sa-(a)ladi or pa-sa-(a)ladji", "I don't want to."),
-    "S500_1W5": (
-        "qata or 'ata",
-        "sglass bead. Another word is mulimulitan, which really refers to the "
-        "most significant and precious bead among all glass beads. However, in "
-        "Ferrel (p. 55), he had drungaljisan 'glass bead, specific type from "
-        "Dutch trade. I could not find drung in any dictionary, but aljis is "
-        "tooth, and -an is the end marker for nominalization.",
-    ),
-    "S499_1W4": (
-        "ta-tiyaw or ka-tiyaw",
-        "yesterday. ta- or ka- 'prefix which indicates past time'.",
-    ),
-    "S493_1W1": ("ainu or inu", "where"),
-    "S493_1W7": ("siyaw or siav", "soup"),
-    "S493_1W8": ("ainu or inu", "where"),
-    "S491_1W6": (
-        "'a-si-cuai-yan or kasicuaiyan",
-        "from a long time ago. The root is cuai 'long'.",
-    ),
-    "S478_1W27": (
-        "'ivavadaqan or ki-va-va-daq-an",
-        "were asking, AV. The root is vadaq 'ask, question' in RED.",
-    ),
-    "S448_1W1": (
-        "avan or mavan",
-        "is, 'be' verb. In the study of Paiwan, the common knowledge is there "
-        "is no 'be' verb.",
-    ),
-    "S412_1W4": ("kata or katua", "and, conjunction (CONJ)"),
-    "S404_1W9": ("ka-ta or ka-tua", "and"),
-    "S401_1W8": ("nua or na", "of, genitive (GEN) case marker"),
-    "S374_1W6": (
-        "kenamain*",
-        "breakfast. I don't know how to break the word until the root kan. How?",
-    ),
-    "S368_1W3": (
-        "aken or a'en",
-        "I, 1st person singular nominative (NOM)",
-    ),
-    "S362_1W5": ("katua or kata", "and"),
-    "S361_1W5": ("aken or a'en", "I, 1st person singular NOM"),
-    "S346_1W3": (
-        "a'en or aken",
-        "I, 1st person singular nominative (NOM)",
-    ),
-    "S346_1W5": (
-        "a'en or aken",
-        "I, 1st person singular nominative (NOM)",
-    ),
-    "S318_1W9": ("tua or ta", "oblique (OBL) case marker"),
-    "S316_1W2": (
-        "a'en or aken",
-        "I, 1st person singular nominative (NOM)",
-    ),
-    "S309_1W10": (
-        "kata or katua",
-        "and. This is also like a combination of the OBL ta or tua and ka. But "
-        "I don't claim authority here.",
-    ),
-    "S303_1W4": (
-        "a'en or aken",
-        "I, 1st person singular nominative (NOM)",
-    ),
-    "S303_1W6": ("'ivadaq or kivadaq", "ask"),
-    "S303_1W13": (
-        "lingaw or lingav",
-        "time. In our dialect, we use more /w/ than /v/ in the ending of a word.",
-    ),
-    "S303_1W15": (
-        "i-caqu-an-an or kicaquan-an",
-        "learn or study. The root is caqu 'talen, knowledge'. I listened for "
-        "many times and I am sure Mom Naluku has the extra ending -an, which I "
-        "do not know how to explain. Why did she use a undergoer voice (UV) "
-        "case marker with the nominative subject case marker ti?",
-    ),
-    "S303_1W27": (
-        "i-caqu-an-an or kicaquan-an",
-        "learn or study. The root is caqu 'talen, knowledge'. I listened for "
-        "many times and I am sure Mom Naluku has the extra ending -an, which I "
-        "do not know how to explain. Why did she use a undergoer voice (UV) "
-        "case marker with the nominative subject case marker ti?",
-    ),
-    "S281_1W5": ("tua / ta", "oblique (OBL) case marker"),
-    "S275_1W1": ("titjen / itjen", "we inclusive (INCL)"),
-    "S275_1W5": ("titjen / itjen", "we inclusive (INCL)"),
-    "S154_1W6": ("tua or ta", "oblique (OBL) case marker"),
-    "S39_1W4": (
-        "ka-kuda- (a)n",
-        "custom, culture, rule. The root is kuda 'rule, what'.",
-    ),
-}
 
 
 def sha256(path: Path) -> str:
@@ -477,6 +201,31 @@ def replace_with_variants(
     root.remove(source)
     for offset, variant in enumerate(variants):
         root.insert(index + offset, variant)
+
+
+def check_variant_sources(root: ET.Element) -> dict[str, dict[str, str]]:
+    """Each sentence split_alternatives splits must still print its listed text.
+
+    There is no "already split" case to skip: a split sentence no longer
+    carries the source text, so it stops here.
+    """
+    variants = {}
+    for row in read_table(VARIANTS_TABLE, VARIANTS_HEADER):
+        found = original_form(find_sentence(root, row["source_s_id"])).text or ""
+        if found != row["source_form"]:
+            stop(VARIANTS_TABLE, row["source_s_id"], found)
+        variants[row["source_s_id"]] = {
+            "output_ids": row["output_s_ids"],
+            "source_form": row["source_form"],
+            "resolution": row["resolution"],
+            "evidence": row["evidence"],
+        }
+    if sorted(variants) != ["S24_1", "S483_1", "S535_1"]:
+        raise SystemExit(
+            f"{VARIANTS_TABLE.name}: split_alternatives splits S24_1, S483_1 and "
+            f"S535_1; the table lists {sorted(variants)}"
+        )
+    return variants
 
 
 def split_alternatives(root: ET.Element) -> None:
@@ -572,24 +321,30 @@ def split_alternatives(root: ET.Element) -> None:
 
 def repair_issue_rows(root: ET.Element) -> list[dict[str, str]]:
     rows = []
-    for finding, (sentence_id, values) in enumerate(ISSUE_REPAIRS.items(), 1):
-        rule, repaired, resolution, evidence = values
+    table = read_table(ISSUE_REPAIRS_TABLE, ISSUE_REPAIRS_HEADER)
+    for finding, row in enumerate(table, 1):
+        sentence_id = row["s_id"]
         sentence = find_sentence(root, sentence_id)
         translations = sentence.findall("TRANSL")
         if len(translations) != 1:
             raise RuntimeError(f"Expected one source translation in {sentence_id}")
         translation = translations[0]
         frozen = translation.text or ""
-        translation.text = repaired
-        translation.set("notes", f"Frozen scrape target: {frozen}")
+        if frozen == row["expected_translation"]:
+            translation.text = row["repaired_translation"]
+            translation.set("notes", f"Frozen scrape target: {frozen}")
+        elif frozen == row["repaired_translation"]:
+            skipped(ISSUE_REPAIRS_TABLE, sentence_id)
+        else:
+            stop(ISSUE_REPAIRS_TABLE, sentence_id, frozen)
         rows.append(
             {
                 "finding": str(finding),
-                "rule": rule,
+                "rule": row["rule"],
                 "s_id": sentence_id,
-                "resolution": resolution,
+                "resolution": row["resolution"],
                 "source_url": sentence.get("source", ""),
-                "evidence": evidence,
+                "evidence": row["evidence"],
             }
         )
     return rows
@@ -597,7 +352,8 @@ def repair_issue_rows(root: ET.Element) -> list[dict[str, str]]:
 
 def restore_source_translations(root: ET.Element) -> list[dict[str, str]]:
     rows = []
-    for sentence_id, (resolution, text, evidence) in SOURCE_TRANSLATION_REPAIRS.items():
+    for row in read_table(SOURCE_TRANSLATION_TABLE, SOURCE_TRANSLATION_HEADER):
+        sentence_id, text = row["s_id"], row["translation"]
         sentence = find_sentence(root, sentence_id)
         translations = sentence.findall("TRANSL")
         if len(translations) > 1:
@@ -605,34 +361,39 @@ def restore_source_translations(root: ET.Element) -> list[dict[str, str]]:
                 f"Expected at most one source translation in {sentence_id}"
             )
         frozen = translations[0].text or "" if translations else ""
-        for existing in translations:
-            sentence.remove(existing)
-        note = (
-            f"Frozen scrape target: {frozen}"
-            if frozen
-            else "Restored from the live source after frozen-scrape review."
-        )
-        translation = ET.Element(
-            "TRANSL",
-            {
-                XML_LANG: "eng",
-                "notes": note,
-            },
-        )
-        translation.text = text
-        first_word = next(
-            (index for index, child in enumerate(sentence) if child.tag == "W"),
-            len(sentence),
-        )
-        sentence.insert(first_word, translation)
+        if frozen == text and translations:
+            skipped(SOURCE_TRANSLATION_TABLE, sentence_id)
+        elif frozen != row["expected_translation"]:
+            stop(SOURCE_TRANSLATION_TABLE, sentence_id, frozen)
+        else:
+            for existing in translations:
+                sentence.remove(existing)
+            note = (
+                f"Frozen scrape target: {frozen}"
+                if frozen
+                else "Restored from the live source after frozen-scrape review."
+            )
+            translation = ET.Element(
+                "TRANSL",
+                {
+                    XML_LANG: "eng",
+                    "notes": note,
+                },
+            )
+            translation.text = text
+            first_word = next(
+                (index for index, child in enumerate(sentence) if child.tag == "W"),
+                len(sentence),
+            )
+            sentence.insert(first_word, translation)
         rows.append(
             {
                 "s_id": sentence_id,
-                "resolution": resolution,
+                "resolution": row["resolution"],
                 "source_url": sentence.get("source", ""),
                 "frozen_translation": frozen,
                 "translation": text,
-                "evidence": evidence,
+                "evidence": row["evidence"],
             }
         )
     return rows
@@ -641,20 +402,29 @@ def restore_source_translations(root: ET.Element) -> list[dict[str, str]]:
 def restore_source_word_translations(root: ET.Element) -> list[dict[str, str]]:
     rows = []
     note = "Restored from the live source after frozen-scrape review."
-    for word_id, (source_head, text) in SOURCE_WORD_TRANSLATION_REPAIRS.items():
+    for row in read_table(SOURCE_WORD_TRANSLATION_TABLE, SOURCE_WORD_TRANSLATION_HEADER):
+        word_id, text = row["w_id"], row["translation"]
         sentence_id = word_id.rsplit("W", 1)[0]
         sentence = find_sentence(root, sentence_id)
         word = find_word(sentence, word_id)
-        if word.findall("TRANSL"):
-            raise RuntimeError(f"Expected no source word translation in {word_id}")
-        add_word_translation(word, text, note)
+        if (original_form(word).text or "") != row["form"]:
+            raise SystemExit(
+                f"{SOURCE_WORD_TRANSLATION_TABLE.name}: {word_id} is not {row['form']!r}"
+            )
+        existing = [t.text or "" for t in word.findall("TRANSL")]
+        if not existing:
+            add_word_translation(word, text, note)
+        elif existing == [text]:
+            skipped(SOURCE_WORD_TRANSLATION_TABLE, word_id)
+        else:
+            stop(SOURCE_WORD_TRANSLATION_TABLE, word_id, " | ".join(existing))
         rows.append(
             {
                 "s_id": sentence_id,
                 "w_id": word_id,
                 "resolution": "restored_exact_live_word_gloss",
                 "source_url": sentence.get("source", ""),
-                "source_head": source_head,
+                "source_head": row["source_head"],
                 "translation": text,
             }
         )
@@ -812,6 +582,7 @@ def write_audits(
     translation_rows: list[dict[str, str]],
     word_translation_rows: list[dict[str, str]],
     unclear_rows: list[dict[str, str]],
+    variants: dict[str, dict[str, str]],
 ) -> None:
     AUDIT.mkdir(parents=True, exist_ok=True)
     write_tsv(
@@ -821,7 +592,7 @@ def write_audits(
     )
     coverage = []
     for sentence_id in source_ids:
-        variant = VARIANTS.get(sentence_id)
+        variant = variants.get(sentence_id)
         coverage.append(
             {
                 "source_s_id": sentence_id,
@@ -851,7 +622,7 @@ def write_audits(
             "evidence": values["evidence"],
             "audio_disposition": "omitted_shared_multi_alternative_recording",
         }
-        for sentence_id, values in VARIANTS.items()
+        for sentence_id, values in variants.items()
     ]
     write_tsv(
         AUDIT / "source_variant_review.tsv",
@@ -937,6 +708,7 @@ def main() -> None:
         raise SystemExit("Frozen source snapshot must contain 668 unique sentence IDs")
 
     strip_derived_tiers(root)
+    variants = check_variant_sources(root)
     split_alternatives(root)
     annotate_source_segmentation(root)
     issue_rows = repair_issue_rows(root)
@@ -957,8 +729,11 @@ def main() -> None:
     )
     tree.write(OUTPUT, encoding="utf-8", xml_declaration=True)
     write_audits(
-        source_ids, issue_rows, translation_rows, word_translation_rows, unclear_rows
+        source_ids, issue_rows, translation_rows, word_translation_rows, unclear_rows,
+        variants,
     )
+    for row in SKIPPED:
+        print(f"Skipped, repaired text already present: {row}")
     print(
         f"Built 671 source-backed pre-QC records from {len(source_ids)} frozen records."
     )
