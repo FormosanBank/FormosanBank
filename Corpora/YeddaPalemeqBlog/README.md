@@ -237,23 +237,18 @@ shared validators (`validate_xml`, `validate_text`, `validate_glosses`,
 `orthography_detector`, `validate_port_readiness`, and finally
 `scripts/adjudicate_qc.py`, which fails unless every finding matches the
 reviewed inventory by exact rule counts. `PYTHON` and `OUTPUT_DIR` (default: a
-fresh temp path) are optional. Twenty-three corpus regression tests cover
-source hashes, source coverage, reviewed repairs, stable tier shape,
-per-sentence M-tier consistency, standard-tier accent removal, unknown-gloss
-`<UNCLEAR/>` handling, and canonical XML identity.
+fresh temp path) are optional. The 42 corpus regression tests cover
+source hashes, source coverage, reviewed repairs and their checked tables,
+the whitespace-only gloss repairs, the scraper's text extraction, stable tier
+shape, per-sentence M-tier consistency, standard-tier accent removal,
+unknown-gloss `<UNCLEAR/>` handling, and canonical XML identity.
 
-The reviewed inventory has zero structural, text, or gloss HARD findings and
-9,913 SOFT finding occurrences, all source-backed — including one file-level
-V148 recording that 16 sentences are bare phrase entries the blog never broke
-into words. It was first reviewed on 2026-09-04 (`CodeAndDocs/QC_STATUS.md`).
-Run on 2026-10-18 with the tools at the commit in `provenance.json`, the
-validators still report zero HARD findings, but four SOFT rules newer than that
-review report 72 findings the inventory does not list (V135 ×69, V153 ×1,
-V158 ×1, V163 ×1),
-and port readiness reports one P004 warning (the development source commit
-named above is not reachable in this repository, which is expected: dev repos
-are private); `adjudicate_qc.py` therefore stops at its first check. Those findings
-have not been reviewed.
+The validators report zero structural, text, or gloss HARD findings, and
+`adjudicate_qc.py` accepts 8,637 SOFT finding occurrences, among them one
+file-level V148 recording that 16 sentences are bare phrase entries the blog
+never broke into words (reviewed 2026-09-04, `CodeAndDocs/QC_STATUS.md`). Four
+newer rules are listed in its expected counts as found in the 2026-11-25 build,
+without a one-by-one review: V135 ×69, V153 ×1, V158 ×1, V163 ×1.
 
 ### What each step does
 

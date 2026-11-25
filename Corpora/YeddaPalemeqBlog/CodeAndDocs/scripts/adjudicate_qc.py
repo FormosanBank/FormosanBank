@@ -19,16 +19,29 @@ from pathlib import Path
 # V122 was 2,389 until 2026-10-17, when the ruled gloss_to_notes.tsv moved
 # S640_1W6's gloss -- whose "(2nd personal plural GEN)" gave one '(' and one
 # ')' finding -- into TRANSL/@notes, which V122 does not read.
-EXPECTED_TEXT = Counter({"V116": 18, "V122": 2387})
+# 2026-11-25 (maintainer chose "Update to the final build's counts"): V122 is
+# 1,039 since the standard gloss tier was removed (#366) and earlier changes
+# took it below 2,387; V135 (69 sentences whose original and standard FORM end
+# in different punctuation) and V158 (S189_1, a space before '!' in the
+# standard FORM) were never listed here. These are recorded as found in the
+# 2026-11-25 build; they have not been reviewed one by one.
+EXPECTED_TEXT = Counter({"V116": 18, "V122": 1039, "V135": 69, "V158": 1})
 # V064 is one finding per morpheme without a gloss. fix_m_tier.py removes the
 # 1,165 mirror morphemes of the unparsed sentences, so the inventory falls from
 # 7,657 to 6,492 without any gloss being invented or lost.
-EXPECTED_GLOSS = Counter({"V060": 2, "V062": 274, "V064": 6492, "V065": 731})
+# V153 (one file-level finding: 930 words whose prose gloss "claims" a
+# different number of morphemes than the form) was never listed here; Yedda's
+# glosses are prose, not gloss codes. Recorded as found on 2026-11-25.
+EXPECTED_GLOSS = Counter(
+    {"V060": 2, "V062": 274, "V064": 6492, "V065": 731, "V153": 1}
+)
 # One file-level V148 covering the 16 sentences the blog gives as bare phrase
 # entries with no word breakdown (S268_1, S269_1, S378_1-S381_1, S393_1,
 # S533_1, S545_1-S545_8). They carry no W tier in a file where other sentences
 # do. Source-backed and present in the predecessor; nothing to segment.
-EXPECTED_XML = Counter({"V148": 1})
+# V163: S644645_1 keeps its AUDIO while its original FORM prints the
+# alternative 'g(e)'. Recorded as found on 2026-11-25, not reviewed.
+EXPECTED_XML = Counter({"V148": 1, "V163": 1})
 EXPECTED_DUPLICATES = {
     (
         "aicu a sapui katua zaljum mamaw a kinamasanpazangalan tua tja nasi.",
