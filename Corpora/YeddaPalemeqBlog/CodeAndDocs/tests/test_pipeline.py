@@ -57,10 +57,31 @@ class YeddaPipelineTests(unittest.TestCase):
         for element in self.root.iter():
             if element.tag not in {"S", "W", "M"}:
                 continue
-            self.assertEqual(len(element.findall("FORM[@kindOf='original']")), 1)
-            self.assertEqual(len(element.findall("FORM[@kindOf='standard']")), 1)
+            # one base per tier (POL-028); ver="alt" variants come from word_alternates.tsv
+            for tier in ("original", "standard"):
+                forms = element.findall(f"FORM[@kindOf='{tier}']")
+                self.assertEqual(sum(f.get("ver") is None for f in forms), 1)
+                self.assertTrue(all(f.get("ver") in (None, "alt") for f in forms))
             self.assertEqual(len(element.findall("PHON[@kindOf='original']")), 1)
             self.assertEqual(len(element.findall("PHON[@kindOf='standard']")), 1)
+
+    def test_x_or_y_headword_spellings_are_variants(self) -> None:
+        rows = read_tsv(ROOT / "word_alternates.tsv")
+        self.assertEqual(len(rows), 8)
+        variants = 0
+        for element in self.root.iter():
+            if element.tag in {"S", "W", "M"}:
+                variants += sum(
+                    f.get("ver") == "alt" for f in element.findall("FORM[@kindOf='original']")
+                )
+        self.assertEqual(variants, 8 + 6)  # 8 words; 6 of them also on their single morpheme
+        for row in rows:
+            word = self.root.find(f".//W[@id='{row['w_id']}']")
+            alts = [
+                (f.get("kindOf"), f.text) for f in word.findall("FORM") if f.get("ver") == "alt"
+            ]
+            self.assertEqual(alts, [("original", row["alternate"]), ("standard", row["alternate"])])
+            self.assertEqual(len(word.findall("PHON[@kindOf='original']")), 1)
 
     def test_source_alternatives_are_explicit(self) -> None:
         expected = {
@@ -150,8 +171,8 @@ class YeddaPipelineTests(unittest.TestCase):
 
     def test_live_source_word_gloss_repairs_are_applied(self) -> None:
         rows = read_tsv(AUDIT / "source_word_translation_review.tsv")
-        self.assertEqual(len(rows), 41)
-        self.assertEqual(len({row["w_id"] for row in rows}), 41)
+        self.assertEqual(len(rows), 49)
+        self.assertEqual(len({row["w_id"] for row in rows}), 49)
         for row in rows:
             word = self.root.find(f".//W[@id='{row['w_id']}']")
             self.assertIsNotNone(word)

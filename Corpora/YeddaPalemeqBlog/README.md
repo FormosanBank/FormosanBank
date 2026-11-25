@@ -89,7 +89,8 @@ in its `FORM/@notes`.
 
 A 2026-08-23 audit matched all 668 frozen source URLs against all 846 posts in
 the live Blogger feed. It restored 24 sentence-level translation blocks and 41
-exact word glosses across 31 pages. Phrase-level definitions were not assigned
+exact word glosses across 31 pages; 8 more word glosses from two-spelling
+list headwords were added on 2026-11-25. Phrase-level definitions were not assigned
 to individual words, and genuinely absent word or morpheme glosses remain
 absent. Two duplicate sentence groups come from separate posts with distinct
 source URLs and audio.
@@ -278,7 +279,7 @@ them:
      Rows are checked like the other repair tables (apply, skip, or stop).
    - The reviewed repairs below live in tables in `CodeAndDocs/`, one per kind:
      `source_variants.tsv`, `issue_repairs.tsv`, `source_translation_repairs.tsv`
-     and `source_word_translation_repairs.tsv`. Every row names the text it
+     and `source_word_translation_repairs.tsv`, `word_alternates.tsv`, `word_gloss_corrections.tsv` and `sentence_translation_notes.tsv`. Every row names the text it
      expects to find. For each row the build applies the repair when that text
      is there; skips it, printing `Skipped, repaired text already present: …`,
      when the repaired text is already there; and otherwise stops, naming the
@@ -302,9 +303,21 @@ them:
    - It writes the 24 sentence translations of `source_translation_repairs.tsv`
      (restored or completed from the live blog; an empty `expected_translation`
      means the snapshot has none there), again keeping any frozen text in
-     `notes`, and adds the 41 word glosses of
+     `notes`, and adds the 49 word glosses of
      `source_word_translation_repairs.tsv` to words that had none, with
      `notes="Restored from the live source after frozen-scrape review."`.
+     Most come from list items headed with two spellings (`kama or ama:
+     father`), which the scraper cannot match to the word in the sentence.
+   - For 8 of those words it adds the list item's other spelling as a variant,
+     `FORM kindOf="original" ver="alt"` (POL-028), on the word and on its single
+     morpheme where that morpheme spells the whole word (`word_alternates.tsv`;
+     `tu` / `tua`, `kasiw` / `kasiv`, …). `standardize.py` adds the standard-tier
+     variant; the pronunciation tier spells the base form only.
+   - It corrects one word gloss the frozen scrape took from the wrong list item
+     (`word_gloss_corrections.tsv`: `S618619_2W4` `a`, "subject case marker" →
+     "LIG"), and puts a phrase gloss that has no single word to sit on into the
+     sentence translation's `notes` (`sentence_translation_notes.tsv`: `S237_1`,
+     "tucu a qadaw or tucu a vuaq: today").
    - It requires exactly 671 distinct sentence IDs, indents the tree, applies
      `gloss_to_notes.tsv` (each row must match the word's form and its exact
      gloss, or the build stops), then `uncertain_glosses.tsv`: 8 word glosses

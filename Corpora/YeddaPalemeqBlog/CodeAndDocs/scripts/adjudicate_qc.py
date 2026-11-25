@@ -32,8 +32,10 @@ EXPECTED_TEXT = Counter({"V116": 18, "V122": 1039, "V135": 69, "V158": 1})
 # V153 (one file-level finding: 930 words whose prose gloss "claims" a
 # different number of morphemes than the form) was never listed here; Yedda's
 # glosses are prose, not gloss codes. Recorded as found on 2026-11-25.
+# V065 731 -> 723: eight words glossed from "X or Y" list headwords
+# (maintainer, 2026-11-25, X-or-Y headword page).
 EXPECTED_GLOSS = Counter(
-    {"V060": 2, "V062": 274, "V064": 6492, "V065": 731, "V153": 1}
+    {"V060": 2, "V062": 274, "V064": 6492, "V065": 723, "V153": 1}
 )
 # One file-level V148 covering the 16 sentences the blog gives as bare phrase
 # entries with no word breakdown (S268_1, S269_1, S378_1-S381_1, S393_1,

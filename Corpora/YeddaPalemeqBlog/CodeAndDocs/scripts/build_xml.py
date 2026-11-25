@@ -72,6 +72,19 @@ SOURCE_TRANSLATION_HEADER = [
 # Word glosses taken from the live source for words the snapshot leaves unglossed.
 SOURCE_WORD_TRANSLATION_TABLE = ROOT / "source_word_translation_repairs.tsv"
 SOURCE_WORD_TRANSLATION_HEADER = ["w_id", "form", "source_head", "translation"]
+# Second spellings the source gives in an "X or Y" (or "X / Y") list headword,
+# written as POL-028 variants: FORM kindOf="original" ver="alt" on the word, and
+# on its single morpheme when that morpheme spells the whole word. standardize.py
+# derives the standard-tier variant. Maintainer, 2026-11-25: "That should be
+# handled through our normal lexical alternate scheme."
+WORD_ALTERNATES_TABLE = ROOT / "word_alternates.tsv"
+WORD_ALTERNATES_HEADER = ["w_id", "form", "alternate", "source_head"]
+# Word glosses the frozen scrape attached to the wrong list item.
+WORD_GLOSS_CORRECTIONS_TABLE = ROOT / "word_gloss_corrections.tsv"
+WORD_GLOSS_CORRECTIONS_HEADER = ["w_id", "form", "expected_gloss", "corrected_gloss", "evidence"]
+# Notes added to a sentence translation (e.g. a phrase gloss with no word to sit on).
+SENTENCE_NOTES_TABLE = ROOT / "sentence_translation_notes.tsv"
+SENTENCE_NOTES_HEADER = ["s_id", "expected_translation", "note"]
 
 
 # Word glosses whose spaces the old scraper dropped at italics (its
@@ -140,12 +153,15 @@ def find_word(sentence: ET.Element, word_id: str) -> ET.Element:
 
 
 def original_form(element: ET.Element) -> ET.Element:
+    # The base: the one original FORM without ver (POL-028); ver="alt" variants
+    # are added by add_word_alternates.
     forms = [
-        form for form in element.findall("FORM") if form.get("kindOf") == "original"
+        form for form in element.findall("FORM")
+        if form.get("kindOf") == "original" and form.get("ver") is None
     ]
     if len(forms) != 1:
         raise RuntimeError(
-            f"Expected one original FORM under {element.tag} {element.get('id')}"
+            f"Expected one base original FORM under {element.tag} {element.get('id')}"
         )
     return forms[0]
 
@@ -474,6 +490,67 @@ def restore_source_word_translations(root: ET.Element) -> list[dict[str, str]]:
     return rows
 
 
+def correct_word_glosses(root: ET.Element) -> None:
+    for row in read_table(WORD_GLOSS_CORRECTIONS_TABLE, WORD_GLOSS_CORRECTIONS_HEADER):
+        word_id = row["w_id"]
+        word = find_word(find_sentence(root, word_id.rsplit("W", 1)[0]), word_id)
+        if (original_form(word).text or "") != row["form"]:
+            raise SystemExit(f"{WORD_GLOSS_CORRECTIONS_TABLE.name}: {word_id} is not {row['form']!r}")
+        translations = word.findall("TRANSL")
+        found = " | ".join(t.text or "" for t in translations)
+        if len(translations) != 1 or len(translations[0]):
+            stop(WORD_GLOSS_CORRECTIONS_TABLE, word_id, found)
+        if found == row["expected_gloss"]:
+            translations[0].text = row["corrected_gloss"]
+        elif found == row["corrected_gloss"]:
+            skipped(WORD_GLOSS_CORRECTIONS_TABLE, word_id)
+        else:
+            stop(WORD_GLOSS_CORRECTIONS_TABLE, word_id, found)
+
+
+def add_variant_form(element: ET.Element, text: str) -> None:
+    base = original_form(element)
+    variant = ET.Element("FORM", {"kindOf": "original", "ver": "alt"})
+    variant.text = text
+    element.insert(list(element).index(base) + 1, variant)
+
+
+def add_word_alternates(root: ET.Element) -> int:
+    added = 0
+    for row in read_table(WORD_ALTERNATES_TABLE, WORD_ALTERNATES_HEADER):
+        word_id, alt = row["w_id"], row["alternate"]
+        word = find_word(find_sentence(root, word_id.rsplit("W", 1)[0]), word_id)
+        if (original_form(word).text or "") != row["form"]:
+            raise SystemExit(f"{WORD_ALTERNATES_TABLE.name}: {word_id} is not {row['form']!r}")
+        present = [f.text for f in word.findall("FORM[@kindOf='original']") if f.get("ver")]
+        if present == [alt]:
+            skipped(WORD_ALTERNATES_TABLE, word_id)
+            continue
+        if present:
+            stop(WORD_ALTERNATES_TABLE, word_id, " | ".join(t or "" for t in present))
+        add_variant_form(word, alt)
+        morphemes = word.findall("M")
+        if len(morphemes) == 1 and (original_form(morphemes[0]).text or "") == row["form"]:
+            add_variant_form(morphemes[0], alt)
+        added += 1
+    return added
+
+
+def add_sentence_translation_notes(root: ET.Element) -> None:
+    for row in read_table(SENTENCE_NOTES_TABLE, SENTENCE_NOTES_HEADER):
+        sentence_id = row["s_id"]
+        translations = find_sentence(root, sentence_id).findall("TRANSL")
+        if len(translations) != 1 or (translations[0].text or "") != row["expected_translation"]:
+            stop(SENTENCE_NOTES_TABLE, sentence_id, " | ".join(t.text or "" for t in translations))
+        current = translations[0].get("notes")
+        if current == row["note"]:
+            skipped(SENTENCE_NOTES_TABLE, sentence_id)
+        elif current is not None:
+            stop(SENTENCE_NOTES_TABLE, sentence_id, f"notes={current!r}")
+        else:
+            translations[0].set("notes", row["note"])
+
+
 def read_placeholder_table(path: Path) -> set[tuple[str, str]]:
     """Return the (gloss, lang) pairs ruled to carry `?` placeholders."""
     with path.open(encoding="utf-8", newline="") as handle:
@@ -710,7 +787,7 @@ def write_audits(
         "- Source records omitted: 0\n"
         "- Audit issue findings reviewed: 9/9\n"
         "- Live-source sentence translation repairs: 24\n"
-        "- Exact live-source word glosses restored: 41\n"
+        "- Exact live-source word glosses restored: 49\n"
         "- Unresolved source or issue findings: 0\n"
         "- Shared recordings omitted from split alternatives: 3\n\n"
         "All other original FORM, W, M, and word-gloss content is carried from "
@@ -758,6 +835,9 @@ def main() -> None:
     issue_rows = repair_issue_rows(root)
     translation_rows = restore_source_translations(root)
     word_translation_rows = restore_source_word_translations(root)
+    correct_word_glosses(root)
+    alternates = add_word_alternates(root)
+    add_sentence_translation_notes(root)
     output_ids = [sentence.get("id", "") for sentence in root.findall("S")]
     if len(output_ids) != 671 or len(set(output_ids)) != 671:
         raise SystemExit("Canonical pre-QC output must contain 671 unique sentence IDs")
@@ -777,6 +857,7 @@ def main() -> None:
         variants,
     )
     print(f"Word glosses with their spaces put back: {spaced}")
+    print(f"Words given a second spelling from an \"X or Y\" headword: {alternates}")
     for row in SKIPPED:
         print(f"Skipped, repaired text already present: {row}")
     print(

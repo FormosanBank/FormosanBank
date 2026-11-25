@@ -5,7 +5,7 @@
 - Source records omitted: 0
 - Audit issue findings reviewed: 9/9
 - Live-source sentence translation repairs: 24
-- Exact live-source word glosses restored: 41
+- Exact live-source word glosses restored: 49
 - Unresolved source or issue findings: 0
 - Shared recordings omitted from split alternatives: 3
 
