@@ -55,8 +55,6 @@ the bottom with their ruling.
   (labels map regardless), but the marker-vs-case-bearing distinction
   should be kept in mind when reading counts (cia ≫ mas because pronouns
   and determiners are frequent).
-- **Tsou NAF/非主焦 ×437/431 and NAV ×14** — the preverbal auxiliaries
-  (i, o, os, oho); undecided, needs its own ruling (voice audit page).
 - **Kavalan 非主焦/NAF ×32 (suffix -a with genitive agent)** — RULED to
   stay undecided (maintainer, 2026-11-12). What we know: every token is
   V-a + a 屬格 clitic (kita 1IPL ×24, ka 1SG ×7, one 未來-marked);
@@ -254,6 +252,14 @@ the bottom with their ruling.
 
 ## Resolved
 
+- **Tsou NAF/非主焦 and NAV — the preverbal auxiliaries (i, o, os, oho)** (resolved 2026-11-12, entry moved
+  2026-11-26). RULED (maintainer 2026-11-12): "Sounds like NAF->NAF. This is how grammar and our sources handle
+  auxiliaries for Tsou. This should be explained in our dictionary." (registered in `supplementary_codes.tsv`).
+  Until 2026-11-26 the Atayal-only rule `NAF&-i → OV` also matched the Tsou auxiliary morpheme *i*, turning 305 of
+  these words into OV; it is now scoped to Atayal. On 2026-11-26 all 443 Tsou words whose NTU English label is NAF
+  or NAV read NAF on the English standard tier: 415 labelled AUX by NTU, 5 i-si/i-he auxiliaries without the AUX
+  label, and 23 words with adverbial meanings (na'na 'very' ×7, aka 'always' ×3, …), whose status is open on the
+  2026-11-26 Tsou voice-gloss audit page.
 - **HPS (inc)/(exc), (name)/(place); NTU IN/EX, 包含/排除; Yedda ligature** (resolved 2026-11-16, unvoiced-verbs
   audit round 8): HPS inc → INCL ("INCL (Leipzig; nothing to register)"), exc → EXCL ("Yes, exc → EXCL
   (Leipzig)"), whole-gloss (name)/(place) → PN ("A: standard tier → PN; original unchanged"); NTU IN → INCL for
