@@ -40,7 +40,7 @@ provenance.
 - 671 canonical sentence records after three source-defined alternative splits, plus 2 written out from a word gloss and 1 from splitting post 502 (674)
 - 5,643 W elements and 6,492 M elements
 - 5,593 TRANSL elements
-- 665 AUDIO references
+- 664 AUDIO references
 - Canonical XML SHA-256:
   `0cde9e06456a58aea259d3283fa6edd944bf474de25e776f230cd6910d0651ac`
 
@@ -84,7 +84,8 @@ each the author pronounces both alternatives in turn — as audio for either
 single record it would be wrong, and as audio for a sentence containing both it
 would be ungrammatical. FormosanBank does not carry ungrammatical sentences, so
 the recording is dropped rather than the sentence being kept in its
-both-alternatives form. The three files stay available as declared extras of
+both-alternatives form. Post 502's recording is dropped for the same reason
+when that post is split in two (below). The three files stay available as declared extras of
 the public audio dataset (see "Audio" below); each affected record states this
 in its `FORM/@notes`.
 
@@ -105,7 +106,9 @@ than renumbering unrelated records.
 
 Run `download_audio_data.sh` from this directory to download the referenced
 public YouTube audio through the central FormosanBank downloader. Downloaded
-audio is not tracked. The 665 referenced files total 4,217.7 seconds; the three
+audio is not tracked. 664 files are referenced. The duration total in
+`statistics/audio_durations.csv` (4,217.7 seconds) was computed for 665, before
+`S502_1.wav` was dropped, and needs `QC/utilities/refresh_audio_stats.py`. The
 shared alternative recordings are declared public dataset extras and excluded
 from corpus totals.
 
@@ -330,7 +333,8 @@ them:
      `saladji a kemim.` (`sa-ladji`) and `S502_2` `pasaladji a kemim.`
      (`pa-sa-ladji`, marked in its `notes` as built from her word list). Both get
      "I don't want to." on that word and all three of her translation lines
-     ("Forget i" corrected to "Forget it"); the recording stays on `S502_1`.
+     ("Forget i" corrected to "Forget it"). The recording pronounces all three lines,
+     so, as for the three alternative splits, it is dropped from both.
    - It requires exactly 674 distinct sentence IDs, indents the tree, applies
      `gloss_to_notes.tsv` (each row must match the word's form and its exact
      gloss, or the build stops), then `uncertain_glosses.tsv`: 8 word glosses

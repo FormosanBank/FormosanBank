@@ -585,9 +585,10 @@ def add_sentences_from_glosses(root: ET.Element) -> int:
 # as `I don't want to`. `kemim` and `a` are parsed and glossed the same way for
 # both Ss."; round 4: sa-ladji (to match the word), the second record marked as
 # built from her word list, both records with all three translation lines and
-# "Forget i" -> "Forget it". The recording stays on S502_1 until the maintainer
-# confirms what it contains. Asserted, not searched: if the source changes, the
-# build stops.
+# "Forget i" -> "Forget it". The recording pronounces all three lines, so it fits
+# neither record and is dropped from both (maintainer, 2026-11-26: "It does
+# include the words, so remove the recording from both."), as for the three
+# alternative splits. Asserted, not searched: if the source changes, the build stops.
 S502_SOURCE = "saladji. pasaladji. saladji a kemim."
 S502_WORDS = ["saladji", "pasaladji", "saladji", "a", "k<em>im"]
 S502_TRANSLATION = (
@@ -643,6 +644,7 @@ def split_s502(root: ET.Element) -> None:
         word = copy.deepcopy(original)
         rename_descendant_ids(word, original.get("id"), f"S502_1W{index}")
         source.append(word)
+    remove_audio(source)
     set_original_form(source, "saladji a kemim.")
     translations[0].text = S502_TRANSLATION
     add_word_translation(saladji, "I don't want to.")

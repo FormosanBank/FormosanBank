@@ -107,8 +107,9 @@ class YeddaPipelineTests(unittest.TestCase):
             self.assertEqual(words[0].find("FORM[@kindOf='original']").text, "-".join(pieces))
             self.assertEqual(words[0].find("TRANSL").text, "I don't want to.")
             self.assertEqual([m.find("FORM[@kindOf='original']").text for m in words[0].findall("M")], pieces)
-        self.assertIsNotNone(self.sentence("S502_1").find("AUDIO"))
-        self.assertIsNone(self.sentence("S502_2").find("AUDIO"))
+        for sentence_id in ("S502_1", "S502_2"):  # the recording pronounces all three lines
+            self.assertIsNone(self.sentence(sentence_id).find("AUDIO"))
+            self.assertIsNone(self.sentence(sentence_id).get("audio_url"))
 
     def test_source_alternatives_are_explicit(self) -> None:
         expected = {
