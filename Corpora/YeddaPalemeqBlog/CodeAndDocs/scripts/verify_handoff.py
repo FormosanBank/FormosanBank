@@ -46,8 +46,8 @@ def main() -> None:
         "source_hash": sha256(SOURCE) == EXPECTED_SOURCE_SHA256,
         "xml_hash": sha256(XML) == manifest["xml_sha256"],
         "counts": current_counts == manifest["counts"],
-        "sentence_count": len(sentences) == 671,
-        "unique_sentence_ids": len(set(sentence_ids)) == 671 and "" not in sentence_ids,
+        "sentence_count": len(sentences) == 673,
+        "unique_sentence_ids": len(set(sentence_ids)) == 673 and "" not in sentence_ids,
         "source_coverage": len(coverage) == 668,
         "no_source_omissions": all(row["status"] != "omitted" for row in coverage),
         "three_expansions": sum(

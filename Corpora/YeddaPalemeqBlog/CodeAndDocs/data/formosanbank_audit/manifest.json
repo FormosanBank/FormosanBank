@@ -3,7 +3,7 @@
   "audit_sha256": {
     "issue_1_review.tsv": "95e1e2be0bfa7aa17f6e435ba8b4fa0462eed6a2f8f89bda7e33c21b3d70e6ac",
     "source_coverage.tsv": "03254f3e4ce90dbdef6c097fe3d26286fb04154615a877968b1aa815d66b3ce8",
-    "source_review_summary.md": "116890faa153df6fd863ba2c116abce192a3430354a4d0444acca6da0b9167c9",
+    "source_review_summary.md": "cf1766438c602838dfbcfcc189fcc9a25e6665144a04acfe131e78cdc1f69f05",
     "source_translation_review.tsv": "157da7b133df8eb34ae38aba03d22a487bdc7cb5606de19ef88940c80bb5acb5",
     "source_variant_review.tsv": "5e10207af8adf60ec68339424de99989a7361581e5b891365ce2c4266d494373",
     "source_word_translation_review.tsv": "8182ea8090a4c271233826ef229f737e180879a69d0ab19980f551b6323849b9",
@@ -11,10 +11,10 @@
   },
   "counts": {
     "AUDIO": 665,
-    "FORM": 25778,
+    "FORM": 25782,
     "M": 6492,
-    "PHON": 25612,
-    "S": 671,
+    "PHON": 25616,
+    "S": 673,
     "TRANSL": 5593,
     "W": 5643
   },
@@ -25,5 +25,5 @@
   "source_snapshot_sha256": "e18d0aa67893278cb7754e9725e68a81075760961391b3db941eca7d873ddba6",
   "source_word_translations_repaired": 49,
   "unresolved_findings": 0,
-  "xml_sha256": "5c10ac3d141748b1602d0f94400141390d35014064ea643ccc1ed274c88531f5"
+  "xml_sha256": "a56e998e58d05dd0f68d5759a27a20c77e46c84c17a03f6c70cb9b5648125eb4"
 }

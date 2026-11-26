@@ -79,7 +79,7 @@ def main() -> None:
     if len(xml_paths) != 1:
         raise SystemExit(f"Expected one canonical XML file, got {len(xml_paths)}")
     root = ET.parse(xml_paths[0]).getroot()
-    if len(root.findall("S")) != 671:
+    if len(root.findall("S")) != 673:
         raise SystemExit("Canonical sentence count changed")
 
     xml_rows = read_csv(run_dir / "validate_xml_findings.csv")

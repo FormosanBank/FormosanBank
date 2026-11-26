@@ -52,8 +52,8 @@ class YeddaPipelineTests(unittest.TestCase):
 
     def test_canonical_tier_shape(self) -> None:
         sentences = self.root.findall("S")
-        self.assertEqual(len(sentences), 671)
-        self.assertEqual(len({sentence.get("id") for sentence in sentences}), 671)
+        self.assertEqual(len(sentences), 673)
+        self.assertEqual(len({sentence.get("id") for sentence in sentences}), 673)
         for element in self.root.iter():
             if element.tag not in {"S", "W", "M"}:
                 continue
@@ -82,6 +82,18 @@ class YeddaPipelineTests(unittest.TestCase):
             ]
             self.assertEqual(alts, [("original", row["alternate"]), ("standard", row["alternate"])])
             self.assertEqual(len(word.findall("PHON[@kindOf='original']")), 1)
+
+    def test_sentences_written_out_from_a_word_gloss(self) -> None:
+        expected = {
+            "S507_2": "nu mevulung a caucau, madjeleanga a malim tua ngadan nua caucau.",
+            "S507_3": "nu mevulung a caucau, madjeleanga a madraudraw tua ngadan nua caucau.",
+        }
+        ids = [s.get("id") for s in self.root.findall("S")]
+        self.assertEqual(ids[ids.index("S507_1") + 1 : ids.index("S507_1") + 3], ["S507_2", "S507_3"])
+        for sentence_id, text in expected.items():
+            sentence = self.sentence(sentence_id)
+            self.assertEqual(sentence.find("FORM[@kindOf='original']").text, text)
+            self.assertEqual(sentence.findall("W") + sentence.findall("TRANSL") + sentence.findall("AUDIO"), [])
 
     def test_source_alternatives_are_explicit(self) -> None:
         expected = {

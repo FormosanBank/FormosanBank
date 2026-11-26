@@ -85,6 +85,12 @@ WORD_GLOSS_CORRECTIONS_HEADER = ["w_id", "form", "expected_gloss", "corrected_gl
 # Notes added to a sentence translation (e.g. a phrase gloss with no word to sit on).
 SENTENCE_NOTES_TABLE = ROOT / "sentence_translation_notes.tsv"
 SENTENCE_NOTES_HEADER = ["s_id", "expected_translation", "note"]
+# Sentences the author writes inside a word gloss (alternatives she spells out),
+# added as their own records with an original FORM only: no gloss, no
+# translation, no audio. Maintainer, 2026-11-26: "there's are two additional
+# sentences here that we should include, unglossed and untranslated".
+SENTENCES_FROM_GLOSSES_TABLE = ROOT / "sentences_from_glosses.tsv"
+SENTENCES_FROM_GLOSSES_HEADER = ["s_id", "after_s_id", "form", "notes"]
 
 
 # Word glosses whose spaces the old scraper dropped at italics (its
@@ -551,6 +557,26 @@ def add_sentence_translation_notes(root: ET.Element) -> None:
             translations[0].set("notes", row["note"])
 
 
+def add_sentences_from_glosses(root: ET.Element) -> int:
+    added = 0
+    for row in read_table(SENTENCES_FROM_GLOSSES_TABLE, SENTENCES_FROM_GLOSSES_HEADER):
+        existing = root.find(f"S[@id='{row['s_id']}']")
+        if existing is not None:
+            if (original_form(existing).text or "") == row["form"]:
+                skipped(SENTENCES_FROM_GLOSSES_TABLE, row["s_id"])
+                continue
+            stop(SENTENCES_FROM_GLOSSES_TABLE, row["s_id"], original_form(existing).text or "")
+        after = find_sentence(root, row["after_s_id"])
+        sentence = ET.Element("S", {"id": row["s_id"]})
+        if after.get("source"):
+            sentence.set("source", after.get("source"))
+        form = ET.SubElement(sentence, "FORM", {"kindOf": "original", "notes": row["notes"]})
+        form.text = row["form"]
+        root.insert(list(root).index(after) + 1, sentence)
+        added += 1
+    return added
+
+
 def read_placeholder_table(path: Path) -> set[tuple[str, str]]:
     """Return the (gloss, lang) pairs ruled to carry `?` placeholders."""
     with path.open(encoding="utf-8", newline="") as handle:
@@ -784,6 +810,7 @@ def write_audits(
         "# Yedda source review summary\n\n"
         "- Frozen source records: 668\n"
         "- Canonical records after three source-defined alternative expansions: 671\n"
+        "- Sentences written out from the author's word glosses: 2 (total 673)\n"
         "- Source records omitted: 0\n"
         "- Audit issue findings reviewed: 9/9\n"
         "- Live-source sentence translation repairs: 24\n"
@@ -838,9 +865,10 @@ def main() -> None:
     correct_word_glosses(root)
     alternates = add_word_alternates(root)
     add_sentence_translation_notes(root)
+    from_glosses = add_sentences_from_glosses(root)
     output_ids = [sentence.get("id", "") for sentence in root.findall("S")]
-    if len(output_ids) != 671 or len(set(output_ids)) != 671:
-        raise SystemExit("Canonical pre-QC output must contain 671 unique sentence IDs")
+    if len(output_ids) != 673 or len(set(output_ids)) != 673:
+        raise SystemExit("Canonical pre-QC output must contain 673 unique sentence IDs")
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     ET.indent(tree, space="  ")
@@ -861,7 +889,8 @@ def main() -> None:
     for row in SKIPPED:
         print(f"Skipped, repaired text already present: {row}")
     print(
-        f"Built 671 source-backed pre-QC records from {len(source_ids)} frozen records."
+        f"Built 673 records from {len(source_ids)} frozen records "
+        f"({from_glosses} written out from the author's word glosses)."
     )
 
 

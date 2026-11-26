@@ -2,6 +2,7 @@
 
 - Frozen source records: 668
 - Canonical records after three source-defined alternative expansions: 671
+- Sentences written out from the author's word glosses: 2 (total 673)
 - Source records omitted: 0
 - Audit issue findings reviewed: 9/9
 - Live-source sentence translation repairs: 24

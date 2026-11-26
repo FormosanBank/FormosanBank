@@ -27,7 +27,8 @@ Yedda Palemeq, a Paiwan speaker and linguist, maintained a
 [blog](https://yeddapalemeq.blogspot.com/) with short Southern Paiwan examples,
 English translations, prose word explanations, and recordings. The corpus
 contains 668 source records represented as 671 sentences after three
-source-defined alternative splits. Some examples also occur in independently
+source-defined alternative splits, plus 2 sentences the author writes out
+inside a word gloss (673 in all). Some examples also occur in independently
 sourced FormosanBank collections; they are retained here with their blog
 provenance.
 
@@ -36,9 +37,9 @@ provenance.
 #### Corpus inventory
 
 - 668 frozen source records
-- 671 canonical sentence records after three source-defined alternative splits
+- 671 canonical sentence records after three source-defined alternative splits, plus 2 written out from a word gloss (673)
 - 5,643 W elements and 6,492 M elements
-- 5,585 TRANSL elements
+- 5,593 TRANSL elements
 - 665 AUDIO references
 - Canonical XML SHA-256:
   `0cde9e06456a58aea259d3283fa6edd944bf474de25e776f230cd6910d0651ac`
@@ -95,7 +96,7 @@ to individual words, and genuinely absent word or morpheme glosses remain
 absent. Two duplicate sentence groups come from separate posts with distinct
 source URLs and audio.
 
-All 671 published sentence IDs are stable against the predecessor. W and M IDs
+The 671 sentence IDs from the source records are stable against the predecessor; `S507_2` and `S507_3` are the two written out from a word gloss. W and M IDs
 are deterministically derived from their source sentence and reviewed
 segmentation. The three alternative expansions use explicit suffixes rather
 than renumbering unrelated records.
@@ -318,7 +319,13 @@ them:
      "LIG"), and puts a phrase gloss that has no single word to sit on into the
      sentence translation's `notes` (`sentence_translation_notes.tsv`: `S237_1`,
      "tucu a qadaw or tucu a vuaq: today").
-   - It requires exactly 671 distinct sentence IDs, indents the tree, applies
+   - It adds the 2 sentences of `sentences_from_glosses.tsv` after `S507_1`:
+     the alternatives the author spells out in her gloss of `ma-alim`
+     ("If we use malim or madraudraw, the main part of the utterance will be
+     madjeleanga a malim/madraudraw tua ngadan nua caucau"), each with an
+     original FORM only (no gloss, translation or audio) and the gloss quoted in
+     its `notes`.
+   - It requires exactly 673 distinct sentence IDs, indents the tree, applies
      `gloss_to_notes.tsv` (each row must match the word's form and its exact
      gloss, or the build stops), then `uncertain_glosses.tsv`: 8 word glosses
      where the author's `?` marks doubt about the gloss she gives (`LIG?`,
