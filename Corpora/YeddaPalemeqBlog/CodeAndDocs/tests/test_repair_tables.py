@@ -207,14 +207,14 @@ class XorYHeadwordTests(unittest.TestCase):
     def test_apply_then_second_pass_skips(self) -> None:
         root = self.built()
         bx.correct_word_glosses(root)
-        self.assertEqual(bx.add_word_alternates(root), 46)
+        self.assertEqual(bx.add_word_alternates(root), 72)
         bx.add_sentence_translation_notes(root)
         self.assertEqual(bx.SKIPPED, [])
         before = ET.tostring(root)
         bx.correct_word_glosses(root)
         self.assertEqual(bx.add_word_alternates(root), 0)
         bx.add_sentence_translation_notes(root)
-        self.assertEqual(len(bx.SKIPPED), 1 + 46 + 1)
+        self.assertEqual(len(bx.SKIPPED), 1 + 72 + 1)
         self.assertEqual(ET.tostring(root), before)
 
     def test_unexpected_text_stops(self) -> None:
