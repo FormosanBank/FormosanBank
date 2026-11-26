@@ -119,7 +119,7 @@ the bottom with their ruling.
     - left out by the maintainer's round-1 answers (11): `pinavelian`, `pinaquzip`, `tja-kuda-in`, `s<in>i-pu-aljak-an`, `kinsa`, `tja-si-ka-ma-nguaq`, `pa-cu-cun-an`, `kuda-kuda-in`, `kiljivak-an`, `kuda-kuda-in`, `veric-an`
     - she calls them nominalizations (11): `si-qa-qivu-an`, `si-vecik-an`, `ka-calisi-yan`, `s<in>kez-an`, `q<in>um-an`, `pu-alju-an`, `p<en>a-calivat-an`, `v<in>arung-an`, `lja-k<in>a-luljay-an`, `p<in>a-cun-an`, `p<in>u-aljak-an`
     - left out by the maintainer's round-3 answers (7): `u-cevung-i`, `icaquanan`, `siniljaui`, `sinatjezan`, `qavai-n`, `d<em><in>udu`, `su-qeljev-i`
-    - still undecided (2): `ma-alim`, `u-qaca-nga`
+    - left out by the maintainer's round-4 answers (2): `ma-alim`, `u-qaca-nga`
     - also left out by rule: repeat tokens with no gloss at all, and voices known only from HundredPaiwanStories
 - **RauDong NF ×658 "nominal affix"** (and VF) — surfaced by the
   gloss-dictionary gate 2026-11-11; not Leipzig, needs a decision.
