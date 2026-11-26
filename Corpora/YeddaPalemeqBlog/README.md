@@ -270,6 +270,15 @@ them:
    - It refuses to run unless the snapshot's SHA-256 is
      `e18d0aa67893278cb7754e9725e68a81075760961391b3db941eca7d873ddba6` and it
      holds exactly 668 distinct sentence IDs.
+   - The snapshot's word and morpheme forms are the scrape's: it matched each
+     word-list headword to the word as the sentence spells it. Where the author
+     marks an unpronounced *a* (one *a* directly before another) with `(a)` in a
+     segmentation, the forms therefore have neither the brackets nor the *a*,
+     on both tiers: her `k<in>ud(a)-an` is the word `k<in>ud-an` with the
+     morphemes `k-ud` + `-in-` + `an`, and `ka-kuda-(a)n` is `ka-kuda-n` with
+     `ka` + `kuda` + `n`. This covers 60 words. Her headword itself (the text
+     before the colon in her word list) is not kept in the XML; the post it comes
+     from is the sentence's `source`.
    - It deletes every `PHON` and every `FORM kindOf="standard"` the snapshot
      carries; the later shared steps regenerate them.
    - It puts back the spaces in 1,127 word glosses (`gloss_whitespace_repairs.tsv`).
