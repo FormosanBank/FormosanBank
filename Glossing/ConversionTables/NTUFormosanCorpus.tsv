@@ -167,7 +167,7 @@ RA	21	UNDECIDED		undocumented; definition needed
 KONG	20	UNDECIDED		undocumented; definition needed		
 MATI	20	UNDECIDED		undocumented; definition needed		
 MIN	20	UNDECIDED		undocumented; definition needed		
-EXHORT	20	CONVERT	HORT	"approved on the derivational decision page 2026-11-15 (card M4) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""		
+EXHORT	20	KEEP	EXHORT	"maintainer 2026-11-26 (chat): ""For exhortative, we should now do exhortative->EXHORT. That applies to NTU as well. If NTU had things glossed as ""exhortative/hortative"" this would go to ""EXHORT/HORT"". Dehortative->DEHORT. If Blust uses ""hortative"" anywhere, that would be hortative->HORT."" (was CONVERT HORT from the 2026-11-15 analogue sweep)"		
 1IP	19	UNDECIDED		undocumented; definition needed	zho twin: 1IPL×2	
 INAN	19	UNDECIDED		undocumented; definition needed	zho twin: 無生命×17; 非生命×2	
 SAKA	18	UNDECIDED		undocumented; definition needed		
@@ -180,7 +180,7 @@ WOD	16	UNDECIDED		undocumented; definition needed	zho twin: 想要×15
 KUA	16	UNDECIDED		undocumented; definition needed		
 OPT	16	CONVERT	OPT	"approved on the derivational decision page 2026-11-15 (card M7) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	zho twin: 祈願×16	
 KAMA	16	UNDECIDED		undocumented; definition needed		
-HOR	16	CONVERT	HORT	"approved on the derivational decision page 2026-11-15 (card M4) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	zho twin: 勸告式×8; 勸告×4	
+HOR	16	CONVERT	HORT	"approved on the derivational decision page 2026-11-15 (card M4) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages.""; maintainer 2026-11-26, Thao page card H1: ""HORT"""	zho twin: 勸告式×8; 勸告×4	
 TE	16	UNDECIDED		undocumented; definition needed		
 AFRED	15	UNDECIDED		undocumented; definition needed	zho twin: 主焦重疊×13	
 KAFA	15	UNDECIDED		undocumented; definition needed	zho twin: K主焦A×11; K主格A×2	
@@ -715,7 +715,7 @@ T主焦A	15	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng t
 啊	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: FIL×8	
 補語連接詞	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COMP×12	
 非事實	12	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NFAC×10	
-勸告式	12	CONVERT	HORT	"approved on the derivational decision page 2026-11-15 (card M4) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	eng twin: HOR×8	
+勸告式	12	CONVERT	HORT	"approved on the derivational decision page 2026-11-15 (card M4) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages.""; maintainer 2026-11-26, Thao page card H1: ""HORT"""	eng twin: HOR×8	
 連擊詞	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: LNK×10	
 受惠焦	10	CONVERT	OV	benefactive (pairs BF; cf. s44 受惠焦點 ruling) → OV (2026-11-11)	eng twin: BF×10	
 工具格	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INS×10	
@@ -729,3 +729,5 @@ T主焦A	15	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng t
 EX	118	CONVERT	EXCL	maintainer 2026-11-16 (unvoiced-verbs audit round 8, ntu_in_ex_r8): "Approved EXCEPT for the -in/=en suffix in Kanakanavu, which should be glossed as #IN." Rukai only; zho twin 排除 114/118	eng tier, inside 1P(EX)	
 排除式	6	CONVERT	EXCL	maintainer 2026-11-16 (unvoiced-verbs audit round 8, ntu_in_ex_r8): "Approved EXCEPT for the -in/=en suffix in Kanakanavu, which should be glossed as #IN."	symmetric with 包含式	
 再現	1	CONVERT		"card B 2026-11-15: ""Let's do REC->ITER, 重現->ITER except for when they gloss 'arup, which gets glossed RECP."" Grammar: ma-...-n = tens circumfix (十倍數), PDF 63 — variant spelling of 重現, Kanakanavu-only"		"Kanakanavu→MULT (card B 2026-11-15: ""Let's do REC->ITER, 重現->ITER except for when they gloss 'arup, which gets glossed RECP."" Grammar: ma-...-n = tens circumfix (十倍數), PDF 63) | switched ITER->MULT per maintainer 2026-11-15: ""I would have chosen MULT."""
+勸告	3	CONVERT	HORT	"maintainer 2026-11-26, Thao page card H1 (Rukai HOR / 勸告式 / 勸告): ""HORT"""	Rukai Wutai, zho only; eng twin HOR (1SG.BN.HOR / 第一人稱單數.附著主格.勸告)	
+規勸	6	CONVERT	HORT	"maintainer 2026-11-26, Thao page card H2: ""HORT"" (expert question: Sung doc item 9)"	Seediq Tegudaya, zho only (受事／處所焦點.規勸 etc.)	
