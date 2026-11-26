@@ -34,6 +34,9 @@ mkdir -p "$REPORTS"
 # 4. Standard tier.
 "$PY" "$FB/QC/utilities/standardize.py" --corpora_path "$CORPUS_ROOT/XML" \
     --remove_accents
+# Corpus-local, between 4 and 5: the author's unpronounced "(a)" leaves the
+# standard tier (maintainer's ruling, 2026-11-26; see the script).
+"$PY" "$HERE/scripts/strip_unpronounced_a.py" --corpora_path "$CORPUS_ROOT/XML"
 # 5. Phonology.
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$CORPUS_ROOT/XML" \
     --orthography Ortho113

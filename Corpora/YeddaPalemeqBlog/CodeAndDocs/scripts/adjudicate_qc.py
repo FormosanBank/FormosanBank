@@ -25,7 +25,7 @@ from pathlib import Path
 # in different punctuation) and V158 (S189_1, a space before '!' in the
 # standard FORM) were never listed here. These are recorded as found in the
 # 2026-11-25 build; they have not been reviewed one by one.
-EXPECTED_TEXT = Counter({"V116": 18, "V122": 1043, "V135": 69, "V158": 1})
+EXPECTED_TEXT = Counter({"V116": 18, "V122": 1041, "V135": 69, "V158": 1})
 # V064 is one finding per morpheme without a gloss. fix_m_tier.py removes the
 # 1,165 mirror morphemes of the unparsed sentences, so the inventory falls from
 # 7,657 to 6,492 without any gloss being invented or lost.
@@ -40,8 +40,10 @@ EXPECTED_TEXT = Counter({"V116": 18, "V122": 1043, "V135": 69, "V158": 1})
 # The prose dictionary (Paiwan_Yedda_Blog_Dictionary.xml, 24 entries, 2026-11-26):
 # V065 +24 (an entry's meaning is on the entry, not its word), V064 +38 (pieces
 # her note does not gloss), V062 +6, V122 +4 (slashes in translations).
+# Then (2026-11-26) the two (a)n entries spelled out as variants (V064 +4, V065 +2)
+# and the unpronounced (a) removed from S415_1's standard FORM (V122 -2).
 EXPECTED_GLOSS = Counter(
-    {"V060": 2, "V062": 281, "V064": 6535, "V065": 745, "V153": 1}
+    {"V060": 2, "V062": 281, "V064": 6539, "V065": 747, "V153": 1}
 )
 # One file-level V148 covering the 16 sentences the blog gives as bare phrase
 # entries with no word breakdown (S268_1, S269_1, S378_1-S381_1, S393_1,

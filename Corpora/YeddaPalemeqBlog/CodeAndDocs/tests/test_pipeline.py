@@ -114,7 +114,7 @@ class YeddaPipelineTests(unittest.TestCase):
     def test_prose_dictionary(self) -> None:
         table = read_tsv(ROOT / "prose_dictionary.tsv")
         built = [row for row in table if not row["hold"]]
-        self.assertEqual((len(table), len(built)), (26, 24))
+        self.assertEqual((len(table), len(built)), (26, 26))
         root = ET.parse(XML.parent / "Paiwan_Yedda_Blog_Dictionary.xml").getroot()
         entries = {s.get("id"): s for s in root.findall("S")}
         self.assertEqual(sorted(entries), sorted(row["entry_id"] for row in built))
@@ -125,7 +125,21 @@ class YeddaPipelineTests(unittest.TestCase):
             [("me", "AV"), ("qaca", "grow up")],
         )
         for row in table:
-            self.assertEqual("(" in row["form"], bool(row["hold"]))
+            self.assertNotIn("(", row["form"] + row["word_form"] + row["morphemes"])
+        garden = entries["YD0018"]
+        self.assertEqual([(f.get("ver"), f.text) for f in garden.findall("FORM[@kindOf='original']")],
+                         [(None, "puhanaan"), ("alt", "puhanan")])
+
+    def test_unpronounced_a_leaves_the_standard_tier(self) -> None:
+        sentence = self.sentence("S415_1")
+        original = sentence.find("FORM[@kindOf='original']").text
+        standard = sentence.find("FORM[@kindOf='standard']").text
+        self.assertIn("aya (a) patarevan", original)
+        self.assertIn("aya patarevan", standard)
+        self.assertIn("aja pataRəvan", sentence.find("PHON[@kindOf='standard']").text)
+        for form in self.root.iter("FORM"):
+            if form.get("kindOf") == "standard":
+                self.assertNotIn("(a)", form.text or "")
 
     def test_source_alternatives_are_explicit(self) -> None:
         expected = {

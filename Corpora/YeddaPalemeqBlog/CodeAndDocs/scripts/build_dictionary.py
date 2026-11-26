@@ -16,6 +16,7 @@ data for the voice analyses and are not written to the XML.
 from __future__ import annotations
 
 import csv
+import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -28,6 +29,24 @@ HEADER = [
     "source_word_id", "source_word", "voice", "mood", "voice_basis", "hold",
 ]
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
+ALT = re.compile(r"^(.*?) \[alt (.+)\]$")
+
+
+def forms(cell: str) -> tuple[str, str | None]:
+    """'puhanaan [alt puhanan]' -> base and POL-028 variant (both readings of her
+    optional (a); maintainer, 2026-11-26: "Spell out both readings as variants")."""
+    match = ALT.match(cell)
+    return (match.group(1), match.group(2)) if match else (cell, None)
+
+
+def add_forms(parent: ET.Element, cell: str, notes: str | None = None) -> None:
+    base, alt = forms(cell)
+    attrs = {"kindOf": "original"}
+    if notes:
+        attrs["notes"] = notes
+    ET.SubElement(parent, "FORM", attrs).text = base
+    if alt:
+        ET.SubElement(parent, "FORM", {"kindOf": "original", "ver": "alt"}).text = alt
 
 
 def main() -> None:
@@ -71,19 +90,15 @@ def main() -> None:
         entry = ET.SubElement(text, "S", {"id": entry_id})
         if sentences[sentence_id].get("source"):
             entry.set("source", sentences[sentence_id].get("source"))
-        form = ET.SubElement(entry, "FORM", {
-            "kindOf": "original",
-            "notes": f"From the author's gloss of {row['source_word']} ({row['source_word_id']})",
-        })
-        form.text = row["form"]
+        add_forms(entry, row["form"], f"From the author's gloss of {row['source_word']} ({row['source_word_id']})")
         translation = ET.SubElement(entry, "TRANSL", {XML_LANG: "eng"})
         translation.text = row["translation"]
         word = ET.SubElement(entry, "W", {"id": f"{entry_id}W1"})
-        ET.SubElement(word, "FORM", {"kindOf": "original"}).text = row["word_form"]
+        add_forms(word, row["word_form"])
         for index, piece in enumerate(row["morphemes"].split(" | "), 1):
             morph_form, _, gloss = piece.partition("=")
             morpheme = ET.SubElement(word, "M", {"id": f"{entry_id}W1M{index}"})
-            ET.SubElement(morpheme, "FORM", {"kindOf": "original"}).text = morph_form
+            add_forms(morpheme, morph_form)
             if gloss:
                 ET.SubElement(morpheme, "TRANSL", {XML_LANG: "eng"}).text = gloss
     tree = ET.ElementTree(text)

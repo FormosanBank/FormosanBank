@@ -353,8 +353,8 @@ them:
    translation, her segmentation as morphemes, a piece glossed only where her
    note glosses it, and a note naming the word whose gloss it comes from. The
    table's voice and mood columns are for the voice analyses and are not written
-   to the XML. Two rows (`pu-hana-(a)n`, `ka-kesa-(a)n`) are held back: their
-   optional-letter parentheses fail V121.
+   to the XML. Her optional `(a)` in `pu-hana-(a)n` and `ka-kesa-(a)n` is spelled
+   out as both readings, `pu-hana-an` with the variant `pu-hana-n` (POL-028).
 2. **Manual edits:** none. `generate_xml.sh` calls
    `QC/cleaning/apply_manual_edits.py`, which finds no
    `CodeAndDocs/manual_edits.xml` and does nothing.
@@ -382,6 +382,10 @@ them:
    with null units removed) with the combining acute, breve and macron removed (except letters the language's reference attests; none for
    Paiwan), and the C012 step removing segmentation hyphens in sentences that
    still have an `M` tier. No conversion table is used.
+   Then `scripts/strip_unpronounced_a.py` removes the author's `(a)` from the
+   standard tier. She writes it where one *a* follows another and is not
+   pronounced (`aya (a) patarevan` in `S415_1`). The original tier keeps her
+   text, and the standard pronunciation is made from the edited form.
 6. **`QC/utilities/add_phonology.py --corpora_path XML --orthography
    Ortho113`** writes both `PHON` tiers from the original and standard FORMs
    using the Ortho113 tables in `Orthographies/`.
