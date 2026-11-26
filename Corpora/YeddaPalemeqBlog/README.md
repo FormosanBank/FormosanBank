@@ -106,11 +106,9 @@ than renumbering unrelated records.
 
 Run `download_audio_data.sh` from this directory to download the referenced
 public YouTube audio through the central FormosanBank downloader. Downloaded
-audio is not tracked. 664 files are referenced. The duration total in
-`statistics/audio_durations.csv` (4,217.7 seconds) was computed for 665, before
-`S502_1.wav` was dropped, and needs `QC/utilities/refresh_audio_stats.py`. The
-shared alternative recordings are declared public dataset extras and excluded
-from corpus totals.
+audio is not tracked. The 664 referenced files total 4,211.7 seconds; the
+shared alternative recordings and post 502's recording are declared public
+dataset extras and excluded from corpus totals.
 
 ## Statistics
 
