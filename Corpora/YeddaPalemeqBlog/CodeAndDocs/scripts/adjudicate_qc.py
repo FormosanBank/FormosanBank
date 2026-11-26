@@ -34,8 +34,11 @@ EXPECTED_TEXT = Counter({"V116": 18, "V122": 1039, "V135": 69, "V158": 1})
 # glosses are prose, not gloss codes. Recorded as found on 2026-11-25.
 # V065 731 -> 723: eight words glossed from "X or Y" list headwords
 # (maintainer, 2026-11-25, X-or-Y headword page).
+# Splitting post 502 into S502_1/S502_2 (2026-11-26): V064 +5 and V062 +1 (the
+# copied morphemes of a and k<em>im), V065 723 -> 721 (both saladji were unglossed;
+# the one kept is now glossed, the other is gone).
 EXPECTED_GLOSS = Counter(
-    {"V060": 2, "V062": 274, "V064": 6492, "V065": 723, "V153": 1}
+    {"V060": 2, "V062": 275, "V064": 6497, "V065": 721, "V153": 1}
 )
 # One file-level V148 covering the 16 sentences the blog gives as bare phrase
 # entries with no word breakdown (S268_1, S269_1, S378_1-S381_1, S393_1,
@@ -79,7 +82,7 @@ def main() -> None:
     if len(xml_paths) != 1:
         raise SystemExit(f"Expected one canonical XML file, got {len(xml_paths)}")
     root = ET.parse(xml_paths[0]).getroot()
-    if len(root.findall("S")) != 673:
+    if len(root.findall("S")) != 674:
         raise SystemExit("Canonical sentence count changed")
 
     xml_rows = read_csv(run_dir / "validate_xml_findings.csv")

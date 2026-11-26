@@ -28,7 +28,7 @@ Yedda Palemeq, a Paiwan speaker and linguist, maintained a
 English translations, prose word explanations, and recordings. The corpus
 contains 668 source records represented as 671 sentences after three
 source-defined alternative splits, plus 2 sentences the author writes out
-inside a word gloss (673 in all). Some examples also occur in independently
+inside a word gloss and one more from splitting post 502 (674 in all). Some examples also occur in independently
 sourced FormosanBank collections; they are retained here with their blog
 provenance.
 
@@ -37,7 +37,7 @@ provenance.
 #### Corpus inventory
 
 - 668 frozen source records
-- 671 canonical sentence records after three source-defined alternative splits, plus 2 written out from a word gloss (673)
+- 671 canonical sentence records after three source-defined alternative splits, plus 2 written out from a word gloss and 1 from splitting post 502 (674)
 - 5,643 W elements and 6,492 M elements
 - 5,593 TRANSL elements
 - 665 AUDIO references
@@ -325,7 +325,13 @@ them:
      madjeleanga a malim/madraudraw tua ngadan nua caucau"), each with an
      original FORM only (no gloss, translation or audio) and the gloss quoted in
      its `notes`.
-   - It requires exactly 673 distinct sentence IDs, indents the tree, applies
+   - It splits `S502_1` (`saladji. pasaladji. saladji a kemim.`, with one word-list
+     item "sa-(a)ladi or pa-sa-(a)ladji: I don't want to.") into `S502_1`
+     `saladji a kemim.` (`sa-ladji`) and `S502_2` `pasaladji a kemim.`
+     (`pa-sa-ladji`, marked in its `notes` as built from her word list). Both get
+     "I don't want to." on that word and all three of her translation lines
+     ("Forget i" corrected to "Forget it"); the recording stays on `S502_1`.
+   - It requires exactly 674 distinct sentence IDs, indents the tree, applies
      `gloss_to_notes.tsv` (each row must match the word's form and its exact
      gloss, or the build stops), then `uncertain_glosses.tsv`: 8 word glosses
      where the author's `?` marks doubt about the gloss she gives (`LIG?`,

@@ -577,6 +577,83 @@ def add_sentences_from_glosses(root: ET.Element) -> int:
     return added
 
 
+# Post 502 prints saladji. / pasaladji. / saladji a kemim. as one record, with one
+# word-list item "sa-(a)ladi or pa-sa-(a)ladji: I don't want to." Maintainer,
+# 2026-11-26: "The S FORM should be `saladji a kemim.` with saladji parsed
+# `sa-ladi` and glossed as `I don't want to` THen there should be a second S, the
+# the FORM `pasaladji a kemim.` with pasaladji parsed as `pa-sa-ladji` and glossed
+# as `I don't want to`. `kemim` and `a` are parsed and glossed the same way for
+# both Ss."; round 4: sa-ladji (to match the word), the second record marked as
+# built from her word list, both records with all three translation lines and
+# "Forget i" -> "Forget it". The recording stays on S502_1 until the maintainer
+# confirms what it contains. Asserted, not searched: if the source changes, the
+# build stops.
+S502_SOURCE = "saladji. pasaladji. saladji a kemim."
+S502_WORDS = ["saladji", "pasaladji", "saladji", "a", "k<em>im"]
+S502_TRANSLATION = (
+    "No, I don't want to. No, I don't want to. Forget it, don't bother trying to find it."
+)
+S502_FROZEN_TRANSLATION = (
+    "No, I don't want to. No, I don't want to. Forget i, don't bother trying to find it."
+)
+S502_2_NOTE = (
+    "Sentence built from the author's word list for post 502 (\"sa-(a)ladi or "
+    "pa-sa-(a)ladji: I don't want to.\"), which glosses saladji a kemim. and "
+    "pasaladji alike; the post prints saladji. pasaladji. saladji a kemim."
+)
+
+
+def _morphemes(word: ET.Element, word_id: str, pieces: list[str]) -> None:
+    for morpheme in word.findall("M"):
+        word.remove(morpheme)
+    for index, piece in enumerate(pieces, 1):
+        morpheme = ET.SubElement(word, "M", {"id": f"{word_id}M{index}"})
+        form = ET.SubElement(morpheme, "FORM", {"kindOf": "original"})
+        form.text = piece
+
+
+def split_s502(root: ET.Element) -> None:
+    source = find_sentence(root, "S502_1")
+    text = original_form(source).text or ""
+    if text == "saladji a kemim." and root.find("S[@id='S502_2']") is not None:
+        skipped(Path("split_s502"), "S502_1")
+        return
+    if text != S502_SOURCE:
+        raise SystemExit(f"Unexpected S502_1 source surface: {text!r}")
+    words = source.findall("W")
+    if [original_form(w).text for w in words] != S502_WORDS:
+        raise SystemExit("Unexpected S502_1 words")
+    translations = source.findall("TRANSL")
+    if len(translations) != 1 or translations[0].text != S502_FROZEN_TRANSLATION:
+        raise SystemExit("Unexpected S502_1 translation")
+    saladji, pasaladji, _, a_word, kemim = words
+    second = ET.Element("S", {"id": "S502_2", "source": source.get("source", "")})
+    form = ET.SubElement(second, "FORM", {"kindOf": "original", "notes": S502_2_NOTE})
+    form.text = "pasaladji a kemim."
+    translation = ET.SubElement(second, "TRANSL", {XML_LANG: "eng"})
+    translation.text = S502_TRANSLATION
+    for index, original in enumerate((pasaladji, a_word, kemim), 1):
+        word = copy.deepcopy(original)
+        rename_descendant_ids(word, original.get("id"), f"S502_2W{index}")
+        second.append(word)
+    # S502_1 keeps saladji (W1), then a and k<em>im renumbered W2, W3
+    for word in words[1:]:
+        source.remove(word)
+    for index, original in ((2, a_word), (3, kemim)):
+        word = copy.deepcopy(original)
+        rename_descendant_ids(word, original.get("id"), f"S502_1W{index}")
+        source.append(word)
+    set_original_form(source, "saladji a kemim.")
+    translations[0].text = S502_TRANSLATION
+    add_word_translation(saladji, "I don't want to.")
+    _morphemes(saladji, "S502_1W1", ["sa", "ladji"])
+    set_original_form(saladji, "sa-ladji")  # a segmented W spells its segmentation
+    pasaladji_word = second.find("W[@id='S502_2W1']")
+    _morphemes(pasaladji_word, "S502_2W1", ["pa", "sa", "ladji"])
+    set_original_form(pasaladji_word, "pa-sa-ladji")
+    root.insert(list(root).index(source) + 1, second)
+
+
 def read_placeholder_table(path: Path) -> set[tuple[str, str]]:
     """Return the (gloss, lang) pairs ruled to carry `?` placeholders."""
     with path.open(encoding="utf-8", newline="") as handle:
@@ -810,7 +887,7 @@ def write_audits(
         "# Yedda source review summary\n\n"
         "- Frozen source records: 668\n"
         "- Canonical records after three source-defined alternative expansions: 671\n"
-        "- Sentences written out from the author's word glosses: 2 (total 673)\n"
+        "- Sentences written out from the author's word glosses: 2; post 502 split in two (total 674)\n"
         "- Source records omitted: 0\n"
         "- Audit issue findings reviewed: 9/9\n"
         "- Live-source sentence translation repairs: 24\n"
@@ -866,9 +943,10 @@ def main() -> None:
     alternates = add_word_alternates(root)
     add_sentence_translation_notes(root)
     from_glosses = add_sentences_from_glosses(root)
+    split_s502(root)
     output_ids = [sentence.get("id", "") for sentence in root.findall("S")]
-    if len(output_ids) != 673 or len(set(output_ids)) != 673:
-        raise SystemExit("Canonical pre-QC output must contain 673 unique sentence IDs")
+    if len(output_ids) != 674 or len(set(output_ids)) != 674:
+        raise SystemExit("Canonical pre-QC output must contain 674 unique sentence IDs")
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     ET.indent(tree, space="  ")
@@ -889,7 +967,7 @@ def main() -> None:
     for row in SKIPPED:
         print(f"Skipped, repaired text already present: {row}")
     print(
-        f"Built 673 records from {len(source_ids)} frozen records "
+        f"Built 674 records from {len(source_ids)} frozen records "
         f"({from_glosses} written out from the author's word glosses)."
     )
 

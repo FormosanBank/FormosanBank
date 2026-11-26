@@ -52,8 +52,8 @@ class YeddaPipelineTests(unittest.TestCase):
 
     def test_canonical_tier_shape(self) -> None:
         sentences = self.root.findall("S")
-        self.assertEqual(len(sentences), 673)
-        self.assertEqual(len({sentence.get("id") for sentence in sentences}), 673)
+        self.assertEqual(len(sentences), 674)
+        self.assertEqual(len({sentence.get("id") for sentence in sentences}), 674)
         for element in self.root.iter():
             if element.tag not in {"S", "W", "M"}:
                 continue
@@ -94,6 +94,21 @@ class YeddaPipelineTests(unittest.TestCase):
             sentence = self.sentence(sentence_id)
             self.assertEqual(sentence.find("FORM[@kindOf='original']").text, text)
             self.assertEqual(sentence.findall("W") + sentence.findall("TRANSL") + sentence.findall("AUDIO"), [])
+
+    def test_post_502_is_two_sentences(self) -> None:
+        expected = {"S502_1": ("saladji a kemim.", ["sa", "ladji"]), "S502_2": ("pasaladji a kemim.", ["pa", "sa", "ladji"])}
+        for sentence_id, (text, pieces) in expected.items():
+            sentence = self.sentence(sentence_id)
+            self.assertEqual(sentence.find("FORM[@kindOf='original']").text, text)
+            self.assertEqual(sentence.find("TRANSL").text,
+                             "No, I don't want to. No, I don't want to. Forget it, don't bother trying to find it.")
+            words = sentence.findall("W")
+            self.assertEqual([w.find("FORM[@kindOf='original']").text for w in words][1:], ["a", "k<em>im"])
+            self.assertEqual(words[0].find("FORM[@kindOf='original']").text, "-".join(pieces))
+            self.assertEqual(words[0].find("TRANSL").text, "I don't want to.")
+            self.assertEqual([m.find("FORM[@kindOf='original']").text for m in words[0].findall("M")], pieces)
+        self.assertIsNotNone(self.sentence("S502_1").find("AUDIO"))
+        self.assertIsNone(self.sentence("S502_2").find("AUDIO"))
 
     def test_source_alternatives_are_explicit(self) -> None:
         expected = {
@@ -185,8 +200,9 @@ class YeddaPipelineTests(unittest.TestCase):
         rows = read_tsv(AUDIT / "source_word_translation_review.tsv")
         self.assertEqual(len(rows), 49)
         self.assertEqual(len({row["w_id"] for row in rows}), 49)
+        moved = {"S502_1W2": "S502_2W1"}  # pasaladji, moved when post 502 was split in two
         for row in rows:
-            word = self.root.find(f".//W[@id='{row['w_id']}']")
+            word = self.root.find(f".//W[@id='{moved.get(row['w_id'], row['w_id'])}']")
             self.assertIsNotNone(word)
             translation = word.find(f"TRANSL[@{XML_LANG}='eng']")
             self.assertIsNotNone(translation)
@@ -232,7 +248,7 @@ class YeddaPipelineTests(unittest.TestCase):
                     )
                 stripped += 1
         self.assertEqual(stripped, 161)
-        self.assertEqual(len(self.root.findall(".//M")), 6492)
+        self.assertEqual(len(self.root.findall(".//M")), 6497)  # 6492 + 5 from splitting post 502
 
     def test_standard_tier_strips_source_accents(self) -> None:
         """--remove_accents flattens the diacritics on two quoted Mandarin terms.
