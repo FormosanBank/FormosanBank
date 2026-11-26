@@ -8,8 +8,8 @@ x(CODE)	RULE7-PARENS	maintainer 2026-11-15 (unvoiced-verbs audit, unv_notation_r
 [()\[\]（）]	INVESTIGATE	maintainer rules-review 2026-11-11: 'parentheses and square brackets probably shouldn't be in the glosses and should be investigated where they occur' — occurrences: parens ~886 tokens ((Mandarin) ×94, 1P(IN)/1P(EX) clusivity ~160, rest in residue); square brackets: none found; fullwidth ／ in 受事／處所焦點 strings
 1P\((IN|EX)\)	PENDING-RULING	parenthesized clusivity person codes (~160 tokens in residue) — target shape undecided (ties to the clusivity decision)
 …	RESIDUE	anything else unsegmentable is copied verbatim and listed in the residue report
-NAF&-i	CONTEXT-CONVERT→OV	maintainer-confirmed 2026-11-12 (c5 case-by-case): pa-spung-i (jid 15058) = the paper's expert-checked IF assignment → OV; the other NAF words (san/kasau/agan, no -i morpheme) stay unmapped
-非主焦&-i	CONTEXT-CONVERT→OV	zho twin of the NAF&-i rule (same token)
+NAF@Atayal&-i	CONTEXT-CONVERT→OV	maintainer-confirmed 2026-11-12 (c5 case-by-case): pa-spung-i (jid 15058) = the paper's expert-checked IF assignment → OV; the other NAF words (san/kasau/agan, no -i morpheme) stay unmapped. Scoped to Atayal 2026-11-26 (maintainer: "since that was meant to be scoped to Atayal, yes please scope to Atayal"): unscoped, the -i pattern also matched the Tsou auxiliary morpheme i (i-si, i-he …), turning Tsou NAF into OV against the 2026-11-12 Tsou NAF->NAF ruling
+非主焦@Atayal&-i	CONTEXT-CONVERT→OV	zho twin of the NAF@Atayal&-i rule (same token; scoped to Atayal 2026-11-26, same reason)
 bad&='aewhaey	CONTEXT-ADD→AV	maintainer 2026-11-15 (unvoiced-verbs audit, unv_same_stem_r3): "Only when the stem is voice-glossed at least 3 times AND at least twice as often as it is not voice-glossed."
 bad&='aewhay	CONTEXT-ADD→AV	maintainer 2026-11-15 (unvoiced-verbs audit, unv_same_stem_r3): "Only when the stem is voice-glossed at least 3 times AND at least twice as often as it is not voice-glossed."
 many&='akoy	CONTEXT-ADD→AV	maintainer 2026-11-15 (unvoiced-verbs audit, unv_same_stem_r3): "Only when the stem is voice-glossed at least 3 times AND at least twice as often as it is not voice-glossed."
