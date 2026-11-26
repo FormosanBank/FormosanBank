@@ -82,6 +82,8 @@ value alone — the permission behind it is documented here and nowhere else.
 
 ## Notes and caveats
 
+**Blust labels whole words, not morphemes.** His grammatical labels (e.g. `[PF1s/c]`, `[C/PF]`) describe a whole word and do not say which affix carries which category. In each example sentence, the word the example illustrates carries his label as a word-level gloss, with the codes joined by `.`: `[PF1s/c]` → `PF.1s.c`, `[C/PF]` → `C.PF`. **The `.` does not mean the categories sit in one morpheme**: *k–in–alawa–ik* `PF.1s.c` "was made by me" has two affixes (*-in-*, *-ik*). Where Blust gives a word two alternative readings with a semicolon, the gloss writes them with `/`, which means "or" (`[AF; F]` → `AF/F`, *malhinuna* "speak; will speak"). The morphemes (M tier, from his hyphens) carry no glosses. His label as printed is kept in the gloss's `notes`.
+
 **Morpheme boundaries are part of the text.** Blust prints morpheme boundaries in the dictionary examples but not in the interlinear texts, and those hyphens are carried through into the standardized tier. This corpus therefore tokenizes differently from the other Thao material in FormosanBank, and word counts are not directly comparable. The sentences are also segmented into word and morpheme tiers.
 
 ## Reproduction and processing
