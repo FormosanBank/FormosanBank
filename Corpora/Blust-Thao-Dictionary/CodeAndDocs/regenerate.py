@@ -234,6 +234,19 @@ def canonical_build(
     # a review page; same-form-rulings.json records the verdicts.
     run([str(python), str(ROOT / "CodeAndDocs" / "apply_same_form_rulings.py"),
          "--path", str(output_dir)])
+    # 7. Standard gloss tier (POL-036, additive) for Blust's labels on the
+    # illustrated words. Only the examples files: the five texts keep exactly
+    # the interlinear glosses Blust printed (maintainer, 2026-11-26: "the texts
+    # come with their own glossing. Don't regloss them.").
+    for examples in sorted(output_dir.glob("blust_2003_thao_examples_*.xml")):
+        run([str(python),
+             str(formosanbank / "QC" / "glossing" / "apply_gloss_standard.py"),
+             "--path", str(examples),
+             "--table", str(formosanbank / "Glossing" / "ConversionTables"
+                            / "Blust-Thao-Dictionary.tsv"),
+             "--rules", str(formosanbank / "Glossing" / "ConversionTables"
+                            / "Blust-Thao-Dictionary.rules.tsv"),
+             "--write"])
     for warning in (
         xml_root / "cleaner_warnings.csv",
         xml_root / "standardize_warnings.csv",
