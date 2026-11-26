@@ -46,8 +46,8 @@ def main() -> None:
         "source_hash": sha256(SOURCE) == EXPECTED_SOURCE_SHA256,
         "xml_hash": sha256(XML) == manifest["xml_sha256"],
         "counts": current_counts == manifest["counts"],
-        "sentence_count": len(sentences) == 671,
-        "unique_sentence_ids": len(set(sentence_ids)) == 671 and "" not in sentence_ids,
+        "sentence_count": len(sentences) == 674,
+        "unique_sentence_ids": len(set(sentence_ids)) == 674 and "" not in sentence_ids,
         "source_coverage": len(coverage) == 668,
         "no_source_omissions": all(row["status"] != "omitted" for row in coverage),
         "three_expansions": sum(
@@ -57,8 +57,10 @@ def main() -> None:
         "issue_review": len(issue_rows) == 9,
         "variant_review": len(variants) == 3,
         "translation_review": len(translations) == 24,
-        "word_translation_review": len(word_translations) == 41,
-        "tier_shape": current_counts["FORM"] == current_counts["PHON"],
+        "word_translation_review": len(word_translations) == 49,
+        # one PHON per tier, spelling the base FORM; ver="alt" variants have no PHON (POL-028)
+        "tier_shape": sum(1 for f in root.iter("FORM") if f.get("ver") is None)
+        == current_counts["PHON"],
         "no_final_xml": not (ROOT.parent / "Final_XML").exists(),
     }
     errors = [name for name, passed in checks.items() if not passed]

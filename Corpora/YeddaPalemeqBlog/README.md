@@ -27,7 +27,8 @@ Yedda Palemeq, a Paiwan speaker and linguist, maintained a
 [blog](https://yeddapalemeq.blogspot.com/) with short Southern Paiwan examples,
 English translations, prose word explanations, and recordings. The corpus
 contains 668 source records represented as 671 sentences after three
-source-defined alternative splits. Some examples also occur in independently
+source-defined alternative splits, plus 2 sentences the author writes out
+inside a word gloss and one more from splitting post 502 (674 in all). Some examples also occur in independently
 sourced FormosanBank collections; they are retained here with their blog
 provenance.
 
@@ -36,10 +37,10 @@ provenance.
 #### Corpus inventory
 
 - 668 frozen source records
-- 671 canonical sentence records after three source-defined alternative splits
+- 671 canonical sentence records after three source-defined alternative splits, plus 2 written out from a word gloss and 1 from splitting post 502 (674)
 - 5,643 W elements and 6,492 M elements
-- 5,585 TRANSL elements
-- 665 AUDIO references
+- 5,593 TRANSL elements
+- 664 AUDIO references
 - Canonical XML SHA-256:
   `0cde9e06456a58aea259d3283fa6edd944bf474de25e776f230cd6910d0651ac`
 
@@ -83,18 +84,20 @@ each the author pronounces both alternatives in turn — as audio for either
 single record it would be wrong, and as audio for a sentence containing both it
 would be ungrammatical. FormosanBank does not carry ungrammatical sentences, so
 the recording is dropped rather than the sentence being kept in its
-both-alternatives form. The three files stay available as declared extras of
+both-alternatives form. Post 502's recording is dropped for the same reason
+when that post is split in two (below). The three files stay available as declared extras of
 the public audio dataset (see "Audio" below); each affected record states this
 in its `FORM/@notes`.
 
 A 2026-08-23 audit matched all 668 frozen source URLs against all 846 posts in
 the live Blogger feed. It restored 24 sentence-level translation blocks and 41
-exact word glosses across 31 pages. Phrase-level definitions were not assigned
+exact word glosses across 31 pages; 8 more word glosses from two-spelling
+list headwords were added on 2026-11-25. Phrase-level definitions were not assigned
 to individual words, and genuinely absent word or morpheme glosses remain
 absent. Two duplicate sentence groups come from separate posts with distinct
 source URLs and audio.
 
-All 671 published sentence IDs are stable against the predecessor. W and M IDs
+The 671 sentence IDs from the source records are stable against the predecessor; `S507_2` and `S507_3` are the two written out from a word gloss. W and M IDs
 are deterministically derived from their source sentence and reviewed
 segmentation. The three alternative expansions use explicit suffixes rather
 than renumbering unrelated records.
@@ -103,9 +106,9 @@ than renumbering unrelated records.
 
 Run `download_audio_data.sh` from this directory to download the referenced
 public YouTube audio through the central FormosanBank downloader. Downloaded
-audio is not tracked. The 665 referenced files total 4,217.7 seconds; the three
-shared alternative recordings are declared public dataset extras and excluded
-from corpus totals.
+audio is not tracked. The 664 referenced files total 4,211.7 seconds; the
+shared alternative recordings and post 502's recording are declared public
+dataset extras and excluded from corpus totals.
 
 ## Statistics
 
@@ -267,6 +270,15 @@ them:
    - It refuses to run unless the snapshot's SHA-256 is
      `e18d0aa67893278cb7754e9725e68a81075760961391b3db941eca7d873ddba6` and it
      holds exactly 668 distinct sentence IDs.
+   - The snapshot's word and morpheme forms are the scrape's: it matched each
+     word-list headword to the word as the sentence spells it. Where the author
+     marks an unpronounced *a* (one *a* directly before another) with `(a)` in a
+     segmentation, the forms therefore have neither the brackets nor the *a*,
+     on both tiers: her `k<in>ud(a)-an` is the word `k<in>ud-an` with the
+     morphemes `k-ud` + `-in-` + `an`, and `ka-kuda-(a)n` is `ka-kuda-n` with
+     `ka` + `kuda` + `n`. This covers 60 words. Her headword itself (the text
+     before the colon in her word list) is not kept in the XML; the post it comes
+     from is the sentence's `source`.
    - It deletes every `PHON` and every `FORM kindOf="standard"` the snapshot
      carries; the later shared steps regenerate them.
    - It puts back the spaces in 1,127 word glosses (`gloss_whitespace_repairs.tsv`).
@@ -278,7 +290,7 @@ them:
      Rows are checked like the other repair tables (apply, skip, or stop).
    - The reviewed repairs below live in tables in `CodeAndDocs/`, one per kind:
      `source_variants.tsv`, `issue_repairs.tsv`, `source_translation_repairs.tsv`
-     and `source_word_translation_repairs.tsv`. Every row names the text it
+     and `source_word_translation_repairs.tsv`, `word_alternates.tsv`, `word_gloss_corrections.tsv` and `sentence_translation_notes.tsv`. Every row names the text it
      expects to find. For each row the build applies the repair when that text
      is there; skips it, printing `Skipped, repaired text already present: …`,
      when the repaired text is already there; and otherwise stops, naming the
@@ -302,10 +314,35 @@ them:
    - It writes the 24 sentence translations of `source_translation_repairs.tsv`
      (restored or completed from the live blog; an empty `expected_translation`
      means the snapshot has none there), again keeping any frozen text in
-     `notes`, and adds the 41 word glosses of
+     `notes`, and adds the 49 word glosses of
      `source_word_translation_repairs.tsv` to words that had none, with
      `notes="Restored from the live source after frozen-scrape review."`.
-   - It requires exactly 671 distinct sentence IDs, indents the tree, applies
+     Most come from list items headed with two spellings (`kama or ama:
+     father`), which the scraper cannot match to the word in the sentence.
+   - For 72 words glossed from such items (46 through the repair tables, 26 through the scraper's five hard-coded pairs) it adds the other spelling as a variant,
+     `FORM kindOf="original" ver="alt"` (POL-028), on the word and on its single
+     morpheme where that morpheme spells the whole word (`word_alternates.tsv`;
+     `tu` / `tua`, `kasiw` / `kasiv`, …). `standardize.py` adds the standard-tier
+     variant; the pronunciation tier spells the base form only.
+   - It corrects one word gloss the frozen scrape took from the wrong list item
+     (`word_gloss_corrections.tsv`: `S618619_2W4` `a`, "subject case marker" →
+     "LIG"), and puts a phrase gloss that has no single word to sit on into the
+     sentence translation's `notes` (`sentence_translation_notes.tsv`: `S237_1`,
+     "tucu a qadaw or tucu a vuaq: today").
+   - It adds the 2 sentences of `sentences_from_glosses.tsv` after `S507_1`:
+     the alternatives the author spells out in her gloss of `ma-alim`
+     ("If we use malim or madraudraw, the main part of the utterance will be
+     madjeleanga a malim/madraudraw tua ngadan nua caucau"), each with an
+     original FORM only (no gloss, translation or audio) and the gloss quoted in
+     its `notes`.
+   - It splits `S502_1` (`saladji. pasaladji. saladji a kemim.`, with one word-list
+     item "sa-(a)ladi or pa-sa-(a)ladji: I don't want to.") into `S502_1`
+     `saladji a kemim.` (`sa-ladji`) and `S502_2` `pasaladji a kemim.`
+     (`pa-sa-ladji`, marked in its `notes` as built from her word list). Both get
+     "I don't want to." on that word and all three of her translation lines
+     ("Forget i" corrected to "Forget it"). The recording pronounces all three lines,
+     so, as for the three alternative splits, it is dropped from both.
+   - It requires exactly 674 distinct sentence IDs, indents the tree, applies
      `gloss_to_notes.tsv` (each row must match the word's form and its exact
      gloss, or the build stops), then `uncertain_glosses.tsv`: 8 word glosses
      where the author's `?` marks doubt about the gloss she gives (`LIG?`,
@@ -318,6 +355,15 @@ them:
      `source_coverage.tsv`, `issue_1_review.tsv`, `source_variant_review.tsv`,
      `source_translation_review.tsv`, `source_word_translation_review.tsv` and
      `source_review_summary.md`.
+1b. **`scripts/build_dictionary.py`** writes the forms the author glosses only in
+   her notes ("[pa-veli] means to sell, AV", "Grow up in AV form is meqaca") to a
+   second file, `XML/Paiwan/Paiwan_Yedda_Blog_Dictionary.xml`, from the reviewed
+   table `prose_dictionary.tsv`: one record per form, her meaning as its
+   translation, her segmentation as morphemes, a piece glossed only where her
+   note glosses it, and a note naming the word whose gloss it comes from. The
+   table's voice and mood columns are for the voice analyses and are not written
+   to the XML. Her optional `(a)` in `pu-hana-(a)n` and `ka-kesa-(a)n` is spelled
+   out as both readings, `pu-hana-an` with the variant `pu-hana-n` (POL-028).
 2. **Manual edits:** none. `generate_xml.sh` calls
    `QC/cleaning/apply_manual_edits.py`, which finds no
    `CodeAndDocs/manual_edits.xml` and does nothing.
