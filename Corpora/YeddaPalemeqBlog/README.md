@@ -382,10 +382,6 @@ them:
    with null units removed) with the combining acute, breve and macron removed (except letters the language's reference attests; none for
    Paiwan), and the C012 step removing segmentation hyphens in sentences that
    still have an `M` tier. No conversion table is used.
-   Then `scripts/strip_unpronounced_a.py` removes the author's `(a)` from the
-   standard tier. She writes it where one *a* follows another and is not
-   pronounced (`aya (a) patarevan` in `S415_1`). The original tier keeps her
-   text, and the standard pronunciation is made from the edited form.
 6. **`QC/utilities/add_phonology.py --corpora_path XML --orthography
    Ortho113`** writes both `PHON` tiers from the original and standard FORMs
    using the Ortho113 tables in `Orthographies/`.

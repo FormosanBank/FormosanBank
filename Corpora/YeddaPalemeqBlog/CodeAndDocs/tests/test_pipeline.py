@@ -130,17 +130,6 @@ class YeddaPipelineTests(unittest.TestCase):
         self.assertEqual([(f.get("ver"), f.text) for f in garden.findall("FORM[@kindOf='original']")],
                          [(None, "puhanaan"), ("alt", "puhanan")])
 
-    def test_unpronounced_a_leaves_the_standard_tier(self) -> None:
-        sentence = self.sentence("S415_1")
-        original = sentence.find("FORM[@kindOf='original']").text
-        standard = sentence.find("FORM[@kindOf='standard']").text
-        self.assertIn("aya (a) patarevan", original)
-        self.assertIn("aya patarevan", standard)
-        self.assertIn("aja pataRəvan", sentence.find("PHON[@kindOf='standard']").text)
-        for form in self.root.iter("FORM"):
-            if form.get("kindOf") == "standard":
-                self.assertNotIn("(a)", form.text or "")
-
     def test_source_alternatives_are_explicit(self) -> None:
         expected = {
             "S24_1": "a kipaparangez tua mareka qali maru tjalja semeljecan a tja kava nu kaljavuceleljan.",
