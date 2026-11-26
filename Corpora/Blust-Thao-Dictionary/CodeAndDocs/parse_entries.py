@@ -394,6 +394,7 @@ class Sense:
     printed_page: int = 0
     notes: list = field(default_factory=list)
     cross_references: list = field(default_factory=list)
+    example_labels: dict = field(default_factory=dict)
 
     def render(self, headword: str) -> dict:
         rendered = [
@@ -407,8 +408,11 @@ class Sense:
                 # its entry opened on: a long entry runs over several, and
                 # 2,389 of 8,214 examples were inheriting the wrong one.
                 "printed_page": page,
+                # Only an example Blust labels on its own carries this key.
+                **({"label": self.example_labels[index]}
+                   if index in self.example_labels else {}),
             }
-            for t, e, cited, page in self.examples
+            for index, (t, e, cited, page) in enumerate(self.examples)
             if _render(t) or _render(e)
         ]
         definition, comparisons = _lift_comparisons(
@@ -421,8 +425,8 @@ class Sense:
             # immediately after the form, so it wins over anything already in
             # the label slot. That happens once: p.375 sense 8 prints
             # `f-in-ariw [AFc; PFc] bought ...` with the label split across two
-            # spans, and a stray `[PF]` from elsewhere on the page had taken the
-            # slot.
+            # spans. (The [PF]s on p.376 that used to take the slot are the
+            # examples' own labels; they now go on the examples.)
             label = f"[{leading.group(1)}]"
             definition = definition[leading.end():]
         if definition and not NOT_ONLY_PUNCTUATION.search(definition):
@@ -782,7 +786,15 @@ class Parser:
             if match and span.x0 <= margin + 10.0:
                 self._new_sense(int(match.group(1)), match.group(2))
             elif LABEL.match(stripped) and self.sense is not None:
-                self.sense.label = stripped
+                if self.mode == "example" and self.sense.examples:
+                    # A label printed inside an example belongs to that
+                    # example, not to the sense: p.376 prints [PF] after each
+                    # of the six examples of f-in-ariw [AFc; PFc], saying
+                    # which reading each one is. Sent to the sense slot it
+                    # was overwritten by the definition's own label and lost.
+                    self.sense.example_labels[len(self.sense.examples) - 1] = stripped
+                else:
+                    self.sense.label = stripped
             elif NOTE_MARKER.match(stripped):
                 if self.sense is None:
                     self._new_sense()
