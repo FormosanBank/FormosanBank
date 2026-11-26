@@ -111,6 +111,22 @@ class YeddaPipelineTests(unittest.TestCase):
             self.assertIsNone(self.sentence(sentence_id).find("AUDIO"))
             self.assertIsNone(self.sentence(sentence_id).get("audio_url"))
 
+    def test_prose_dictionary(self) -> None:
+        table = read_tsv(ROOT / "prose_dictionary.tsv")
+        built = [row for row in table if not row["hold"]]
+        self.assertEqual((len(table), len(built)), (26, 24))
+        root = ET.parse(XML.parent / "Paiwan_Yedda_Blog_Dictionary.xml").getroot()
+        entries = {s.get("id"): s for s in root.findall("S")}
+        self.assertEqual(sorted(entries), sorted(row["entry_id"] for row in built))
+        meqaca = entries["YD0001"]
+        self.assertEqual(meqaca.find("FORM[@kindOf='original']").text, "meqaca")
+        self.assertEqual(
+            [(m.find("FORM[@kindOf='original']").text, m.findtext("TRANSL")) for m in meqaca.iter("M")],
+            [("me", "AV"), ("qaca", "grow up")],
+        )
+        for row in table:
+            self.assertEqual("(" in row["form"], bool(row["hold"]))
+
     def test_source_alternatives_are_explicit(self) -> None:
         expected = {
             "S24_1": "a kipaparangez tua mareka qali maru tjalja semeljecan a tja kava nu kaljavuceleljan.",

@@ -346,6 +346,15 @@ them:
      `source_coverage.tsv`, `issue_1_review.tsv`, `source_variant_review.tsv`,
      `source_translation_review.tsv`, `source_word_translation_review.tsv` and
      `source_review_summary.md`.
+1b. **`scripts/build_dictionary.py`** writes the forms the author glosses only in
+   her notes ("[pa-veli] means to sell, AV", "Grow up in AV form is meqaca") to a
+   second file, `XML/Paiwan/Paiwan_Yedda_Blog_Dictionary.xml`, from the reviewed
+   table `prose_dictionary.tsv`: one record per form, her meaning as its
+   translation, her segmentation as morphemes, a piece glossed only where her
+   note glosses it, and a note naming the word whose gloss it comes from. The
+   table's voice and mood columns are for the voice analyses and are not written
+   to the XML. Two rows (`pu-hana-(a)n`, `ka-kesa-(a)n`) are held back: their
+   optional-letter parentheses fail V121.
 2. **Manual edits:** none. `generate_xml.sh` calls
    `QC/cleaning/apply_manual_edits.py`, which finds no
    `CodeAndDocs/manual_edits.xml` and does nothing.

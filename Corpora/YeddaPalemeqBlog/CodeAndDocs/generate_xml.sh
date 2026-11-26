@@ -19,6 +19,9 @@ mkdir -p "$REPORTS"
 
 # 1. Corpus-local generator: frozen snapshot + reviewed repairs -> original tier.
 "$PY" "$HERE/scripts/build_xml.py"
+# Corpus-local, after 1: forms the author glosses only in her notes -> a second
+# file, Paiwan_Yedda_Blog_Dictionary.xml (prose_dictionary.tsv; see the README).
+"$PY" "$HERE/scripts/build_dictionary.py"
 # 2. Recorded hand edits (CodeAndDocs/manual_edits.xml), re-applied before any cleaning.
 "$PY" "$FB/QC/cleaning/apply_manual_edits.py" --corpora_path "$CORPUS_ROOT/XML" \
     --manual_file "$HERE/manual_edits.xml"

@@ -25,7 +25,7 @@ from pathlib import Path
 # in different punctuation) and V158 (S189_1, a space before '!' in the
 # standard FORM) were never listed here. These are recorded as found in the
 # 2026-11-25 build; they have not been reviewed one by one.
-EXPECTED_TEXT = Counter({"V116": 18, "V122": 1039, "V135": 69, "V158": 1})
+EXPECTED_TEXT = Counter({"V116": 18, "V122": 1043, "V135": 69, "V158": 1})
 # V064 is one finding per morpheme without a gloss. fix_m_tier.py removes the
 # 1,165 mirror morphemes of the unparsed sentences, so the inventory falls from
 # 7,657 to 6,492 without any gloss being invented or lost.
@@ -37,8 +37,11 @@ EXPECTED_TEXT = Counter({"V116": 18, "V122": 1039, "V135": 69, "V158": 1})
 # Splitting post 502 into S502_1/S502_2 (2026-11-26): V064 +5 and V062 +1 (the
 # copied morphemes of a and k<em>im), V065 723 -> 721 (both saladji were unglossed;
 # the one kept is now glossed, the other is gone).
+# The prose dictionary (Paiwan_Yedda_Blog_Dictionary.xml, 24 entries, 2026-11-26):
+# V065 +24 (an entry's meaning is on the entry, not its word), V064 +38 (pieces
+# her note does not gloss), V062 +6, V122 +4 (slashes in translations).
 EXPECTED_GLOSS = Counter(
-    {"V060": 2, "V062": 275, "V064": 6497, "V065": 721, "V153": 1}
+    {"V060": 2, "V062": 281, "V064": 6535, "V065": 745, "V153": 1}
 )
 # One file-level V148 covering the 16 sentences the blog gives as bare phrase
 # entries with no word breakdown (S268_1, S269_1, S378_1-S381_1, S393_1,
@@ -79,8 +82,10 @@ def main() -> None:
     xml_root = args.xml_root.resolve()
 
     xml_paths = sorted(xml_root.rglob("*.xml"))
-    if len(xml_paths) != 1:
-        raise SystemExit(f"Expected one canonical XML file, got {len(xml_paths)}")
+    names = sorted(path.name for path in xml_paths)
+    if names != ["Paiwan_Yedda_Blog.xml", "Paiwan_Yedda_Blog_Dictionary.xml"]:
+        raise SystemExit(f"Expected the blog and prose-dictionary XML files, got {names}")
+    xml_paths = [path for path in xml_paths if path.name == "Paiwan_Yedda_Blog.xml"]
     root = ET.parse(xml_paths[0]).getroot()
     if len(root.findall("S")) != 674:
         raise SystemExit("Canonical sentence count changed")
