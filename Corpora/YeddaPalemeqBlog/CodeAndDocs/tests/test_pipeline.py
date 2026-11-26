@@ -67,14 +67,14 @@ class YeddaPipelineTests(unittest.TestCase):
 
     def test_x_or_y_headword_spellings_are_variants(self) -> None:
         rows = read_tsv(ROOT / "word_alternates.tsv")
-        self.assertEqual(len(rows), 8)
+        self.assertEqual(len(rows), 46)
         variants = 0
         for element in self.root.iter():
             if element.tag in {"S", "W", "M"}:
                 variants += sum(
                     f.get("ver") == "alt" for f in element.findall("FORM[@kindOf='original']")
                 )
-        self.assertEqual(variants, 8 + 6)  # 8 words; 6 of them also on their single morpheme
+        self.assertEqual(variants, 46 + 37)  # 46 words; 37 of them also on their single morpheme
         for row in rows:
             word = self.root.find(f".//W[@id='{row['w_id']}']")
             alts = [

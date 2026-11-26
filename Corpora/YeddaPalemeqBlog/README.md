@@ -308,7 +308,7 @@ them:
      `notes="Restored from the live source after frozen-scrape review."`.
      Most come from list items headed with two spellings (`kama or ama:
      father`), which the scraper cannot match to the word in the sentence.
-   - For 8 of those words it adds the list item's other spelling as a variant,
+   - For 46 words glossed from such items it adds the item's other spelling as a variant,
      `FORM kindOf="original" ver="alt"` (POL-028), on the word and on its single
      morpheme where that morpheme spells the whole word (`word_alternates.tsv`;
      `tu` / `tua`, `kasiw` / `kasiv`, …). `standardize.py` adds the standard-tier
