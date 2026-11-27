@@ -1687,3 +1687,71 @@ def test_V164_word_or_marker_not_flagged(form):
 
 def test_V164_one_finding_per_offending_W():
     assert [f.location for f in _v164("ka", ".", "ta", ",")] == ["W=W1", "W=W3"]
+
+
+# ---------------------------------------------------------------------------
+# '~' (reduplication, Leipzig Rule 10) is a morpheme boundary for V061 and V153
+# (maintainer 2026-11-27: "Yes, please fix V153 and V061."). HPS shapes.
+# ---------------------------------------------------------------------------
+
+
+def test_V061_tilde_with_matching_M_clean():
+    """W FORM 'kuda~kuda-en' (reduplicant + stem + suffix = 3) with 3 M -> no finding."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">kuda~kuda-en</FORM>
+        <W id="W1">
+          <FORM kindOf="original">kuda~kuda-en</FORM>
+          <M id="M1"><FORM>kuda</FORM></M>
+          <M id="M2"><FORM>kuda</FORM></M>
+          <M id="M3"><FORM>en</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v061_M_count_matches_form_segmentation, xml)
+    assert findings == [], f"expected no V061 finding; got {findings!r}"
+
+
+def test_V061_tilde_with_too_few_M_emits_SOFT():
+    """W FORM 'tsua~tsuay' (2 morphemes) with 1 M -> one finding."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">tsua~tsuay</FORM>
+        <W id="W1">
+          <FORM kindOf="original">tsua~tsuay</FORM>
+          <M id="M1"><FORM>tsuay</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v061_M_count_matches_form_segmentation, xml)
+    assert len(findings) == 1 and "(2)" in findings[0].message, findings
+
+
+def test_V153_tilde_counts_on_both_sides(tmp_path):
+    """'kuda~kuda-en' (3) glossed 'red~do.what-pf' (3): no finding."""
+    body = ('<S id="S1"><FORM kindOf="original">kuda~kuda-en</FORM>'
+            + _w("W1", "kuda~kuda-en", {"eng": "red~do.what-pf"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V153" not in proc.stdout + proc.stderr
+
+
+def test_V153_gloss_that_lost_the_reduplicant_is_flagged(tmp_path):
+    """'kuda~kuda-en' is three morphemes; 'do.what-pf' claims two."""
+    body = ('<S id="S1"><FORM kindOf="original">kuda~kuda-en</FORM>'
+            + _w("W1", "kuda~kuda-en", {"eng": "do.what-pf"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V153" in proc.stdout + proc.stderr
+
+
+def test_V153_tilde_only_form_is_checked(tmp_path):
+    """'tsua~tsuay' (2, no '-' at all) glossed 'long.time' (1) is now checked and flagged."""
+    body = ('<S id="S1"><FORM kindOf="original">tsua~tsuay</FORM>'
+            + _w("W1", "tsua~tsuay", {"eng": "long.time"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V153" in proc.stdout + proc.stderr
+
+
+def test_V153_cjk_placeholder_tilde_is_not_a_boundary(tmp_path):
+    """'把~抓住' means "catch ~" (gloss_scrape._gloss_notation_text): two pieces, not three."""
+    body = ('<S id="S1"><FORM kindOf="original">pa-alap</FORM>'
+            + _w("W1", "pa-alap", {"zho": "使動-把~抓住"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V153" not in proc.stdout + proc.stderr

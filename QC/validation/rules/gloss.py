@@ -90,8 +90,9 @@ def _count_morphemes_from_form(form_text: str) -> int:
 
     Rules:
     - Each ``<...>`` group is one infix morpheme.
-    - After removing the infix groups, split the remainder on ``-`` and
-      ``=`` to get the remaining morpheme segments.
+    - After removing the infix groups, split the remainder on ``-``, ``=``
+      and ``~`` (reduplication, Leipzig Rule 10; 2026-11-27) to get the
+      remaining morpheme segments.
     - Total = number of infix groups + number of non-empty segments.
 
     Examples:
@@ -100,12 +101,13 @@ def _count_morphemes_from_form(form_text: str) -> int:
         'k-anak-an' -> 3
         'ma=luhay'  -> 2
         'k<um>ita'  -> 2  (infix 'um' + root 'kita')
+        'kuda~kuda-en' -> 3  (reduplicant + stem + suffix)
     """
     if not form_text:
         return 0
     infixes = re.findall(r'<[^>]+>', form_text)
     remainder = re.sub(r'<[^>]+>', '', form_text)
-    segments = re.split(r'[-=]', remainder)
+    segments = re.split(r'[-=~]', remainder)
     return len(infixes) + len([s for s in segments if s])
 
 
@@ -240,7 +242,7 @@ def v061_M_count_matches_form_segmentation(
 ) -> list[Finding]:
     """V061 SOFT: count of <M> children of W should match the number of
     morphemes implied by the W's FORM segmentation markers
-    (``-``, ``=``, ``<...>``).
+    (``-``, ``=``, ``~``, ``<...>``).
 
     Exception: a monomorphemic W with 0 M children is acceptable —
     morpheme markup is optional when there is only one morpheme.
@@ -918,22 +920,30 @@ def _pref_form_text(el) -> str:
 
 
 def _morphemes_implied(form: str) -> int:
-    """Morphemes a form's own markers imply: 'ka-kaun-un' -> 3, 'h<m>uwa' -> 2."""
+    """Morphemes a form's own markers imply: 'ka-kaun-un' -> 3, 'h<m>uwa' -> 2, 'kuda~kuda-en' -> 3."""
     stripped = (form or "").strip()
     if not stripped:
         return 0
     infixes = len(_INFIX_GLOSS.findall(stripped))
     rest = _INFIX_GLOSS.sub("", stripped)
-    pieces = [p for p in re.split(r"[-=]", rest)
+    pieces = [p for p in re.split(r"[-=~]", rest)
               if p and (_LATIN.search(p) or _HAN.search(p) or any(c.isdigit() for c in p)
                         or "\u2205" in p)]
     return max(1, len(pieces)) + infixes
 
 
+# A '~' between two CJK characters is an open-argument placeholder in Chinese teaching glosses ('把~抓住' "catch ~"),
+# not reduplication (the same exception as gloss_scrape._gloss_notation_text).
+_CJK_PLACEHOLDER_TILDE = re.compile(r"(?<=[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])~(?=[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])")
+# V153 checks a word whose form carries a segmentation marker ('~' since 2026-11-27).
+_V153_GATE = r"[-=<~]"
+
+
 def _gloss_pieces(gloss: str) -> int:
-    """Morphemes a gloss claims: [-=] pieces plus one per angle-bracket infix."""
-    return (len([p for p in re.split(r"[-=]", gloss or "") if p.strip()])
-            + len(_INFIX_GLOSS.findall(gloss or "")))
+    """Morphemes a gloss claims: [-=~] pieces plus one per angle-bracket infix ('~' = reduplication, 2026-11-27)."""
+    gloss = _CJK_PLACEHOLDER_TILDE.sub("", gloss or "")
+    return (len([p for p in re.split(r"[-=~]", gloss) if p.strip()])
+            + len(_INFIX_GLOSS.findall(gloss)))
 
 
 def gloss_languages(tree: etree._ElementTree) -> set:
@@ -982,7 +992,7 @@ def v153_gloss_pieces_match_morphemes(
     example = ""
     for w in tree.iter("W"):
         form = _pref_form_text(w)
-        if not re.search(r"[-=<]", form):
+        if not re.search(_V153_GATE, form):
             continue
         n = _morphemes_implied(form)
         for t in w.findall("TRANSL"):

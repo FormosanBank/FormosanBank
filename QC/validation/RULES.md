@@ -103,7 +103,7 @@ the validator names on its `Details:` line, never to the terminal.
 | Rule | Mnemonic | Severity | Scope | Checks |
 | --- | --- | --- | --- | --- |
 | V060 | `W_count_matches_word_count` | SOFT | file | count of <W> children of S should match the number of whitespace-delimited words in the S's FORM[@kindOf="original"]. |
-| V061 | `M_count_matches_form_segmentation` | SOFT | file | count of <M> children of W should match the number of morphemes implied by the W's FORM segmentation markers (``-``, ``=``, ``<...>``). |
+| V061 | `M_count_matches_form_segmentation` | SOFT | file | count of <M> children of W should match the number of morphemes implied by the W's FORM segmentation markers (``-``, ``=``, ``~``, ``<...>``). |
 | V062 | `infix_M_needs_angle_gloss` | SOFT | file | an M whose FORM has infix shape ('-X-') should have a parent W with a TRANSL containing an angle-bracket gloss (e.g., '<AV>'). |
 | V063 | `W_FORM_retains_segmentation` | — | file | when an S-level FORM[@kindOf='original'] carries more than 3 segmentation markers (``-``, ``=``, ``<``, ``>``), the W children's FORMs (both ``original`` and ``standard`` tiers) must collectively retain at least N/2 such markers each. |
 | V064 | `every_M_has_TRANSL` | SOFT | file | every M element should have at least one TRANSL child. |
