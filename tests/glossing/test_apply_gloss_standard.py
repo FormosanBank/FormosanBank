@@ -922,3 +922,77 @@ def test_next_word_context_pattern(tmp_path):
     assert g["w7"][("standard",)] == "NOM-that"
     assert g["w9"][("standard",)] == "NOM"      # sentence-final: s2's first word does not count
     assert g["w2"][("standard",)] == "go<AV>"   # other words unaffected
+
+
+# ---- ATOMS→ / ATOMS-KEEP (maintainer 2026-11-27, pronoun glosses page round 2, card t1: "Yes, add it, tests
+# first"): a run of period-joined atoms inside a gloss piece becomes one label, or is kept exactly as written ----
+
+def test_atoms_rule_joins_period_joined_atoms_inside_any_piece(tmp_path):
+    # RauDong shape: person and number as two atoms, inside a longer gloss (Leipzig Rule 5: 3SG, not 3.SG)
+    d, t, r = make_r7_corpus(tmp_path, [
+        _w("w1", "za", "3.S.GEN"),          # at the start of a piece -> 3SG.GEN
+        _w("w2", "ku", "AF-1.P.NOM"),       # in the second piece -> AV-1PL.NOM
+        _w("w3", "ta", "3.S"),              # the whole gloss -> 3SG
+        _w("w4", "su", "13.S"),             # no partial-atom match: 13 is not 3
+        _w("w5", "si", "3.SX"),             # no partial-atom match: SX is not S
+        _w("w6", "ni", "3-S"),              # not period-joined: no match
+    ])
+    with open(r, "a", encoding="utf-8") as h:
+        h.write("3.S\tATOMS→3SG\tperson-number\n1.P\tATOMS→1PL\tperson-number\n")
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    assert m_standards(d) == {"w1m1": ["3SG.GEN"], "w2m1": ["AV-1PL.NOM"], "w3m1": ["3SG"],
+                              "w4m1": ["13.S"], "w5m1": ["3.SX"], "w6m1": ["3-S"]}
+
+
+def test_atoms_keep_leaves_the_matched_atoms_unconverted(tmp_path):
+    # NTU shape: "I" converts on its own, but not inside the fixed expression I.wonder (card p7)
+    d, t, r = make_r7_corpus(tmp_path, [
+        _w("w1", "aku", "I"),
+        _w("w2", "aku", "AF-I.wonder"),
+        _w("w3", "aku", "I-AF"),
+    ])
+    with open(t, "a", encoding="utf-8") as h:
+        h.write("I\t3\tCONVERT\t1SG\ttest\t\t\n")
+    with open(r, "a", encoding="utf-8") as h:
+        h.write("I.wonder\tATOMS-KEEP\tfixed expression\n")
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    assert m_standards(d) == {"w1m1": ["1SG"], "w2m1": ["AV-I.wonder"], "w3m1": ["1SG-AV"]}
+
+
+def test_atoms_replacement_is_not_converted_again(tmp_path):
+    # the label is final: a table row for one of its atoms does not touch it
+    d, t, r = make_r7_corpus(tmp_path, [_w("w1", "madju", "f-pl-3rd.pers")])
+    with open(t, "a", encoding="utf-8") as h:
+        h.write("f\t1\tCONVERT\tNOM\ttest\t\t\npl\t1\tCONVERT\tPL\ttest\t\t\n3\t1\tCONVERT\tWRONG\ttest\t\t\n")
+    with open(r, "a", encoding="utf-8") as h:
+        h.write("3rd.pers\tATOMS→3\tHPS third person\n")
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    assert m_standards(d) == {"w1m1": ["NOM-PL-3"]}
+
+
+def test_atoms_rule_after_embedded_code_handles_a_pronoun_parenthesis(tmp_path):
+    # HPS shape: you(s) / f.you(p) -> 2SG / NOM.2PL; your(s) (possessive, card p5: keep) is untouched
+    d, t, r = make_r7_corpus(tmp_path, [
+        _w("w1", "sun", "you(s)"), _w("w2", "mun", "f.you(p)"), _w("w3", "su", "your(s)"),
+        _w("w4", "su", "obl-you(s)")])
+    with open(t, "a", encoding="utf-8") as h:
+        h.write("f\t1\tCONVERT\tNOM\ttest\t\t\nobl\t1\tCONVERT\tOBL\ttest\t\t\n")
+    with open(r, "a", encoding="utf-8") as h:
+        h.write("(?<=\\byou)\\((s|p)\\)\tEMBEDDED-CODE\tpronoun number\n"
+                "you.s\tATOMS→2SG\t\nyou.p\tATOMS→2PL\t\n")
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    assert m_standards(d) == {"w1m1": ["2SG"], "w2m1": ["NOM.2PL"], "w3m1": ["your(s)"], "w4m1": ["OBL-2SG"]}
+
+
+def test_rules_without_atoms_lines_convert_exactly_as_before(tmp_path):
+    # the keyword is opt-in: a corpus whose rules file has no ATOMS line is unaffected (the bank-wide byte-identity
+    # check of every corpus was run on 2026-11-27 and is reported in the commit)
+    words = [_w("w1", "za", "3.S.GEN"), _w("w2", "aku", "AF-I.wonder"), _w("w3", "x", "AF.eat")]
+    d, t, r = make_r7_corpus(tmp_path, words)
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    assert m_standards(d) == {"w1m1": ["3.S.GEN"], "w2m1": ["AV-I.wonder"], "w3m1": ["eat(AV)"]}

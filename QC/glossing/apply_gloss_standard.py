@@ -42,6 +42,12 @@ lexical gloss; the 3,684 on affixes/auxiliaries stay as they are"):
   * ``<gloss>&=<stem>  CONTEXT-ADD→<V>`` rules add a voice the source leaves unglossed: on a word whose
     form (lower case, = clitics removed) is <stem> and which carries no voice code at all, the morpheme
     whose original gloss is exactly <gloss> gets ``(<V>)`` in every standard tier.
+A rules file may declare ``<a.b>  ATOMS→<X>`` (maintainer 2026-11-27, pronoun glosses page round 2, card t1: "Yes,
+add it, tests first"): wherever the atoms a, b (more than one, written joined by periods) stand next to each other
+joined by periods inside a gloss piece, they become the single label X, which is not converted again (RauDong
+``3.S.GEN`` -> ``3SG.GEN``; HPS ``3rd.pers`` -> ``3``). ``<a.b>  ATOMS-KEEP`` leaves such a run exactly as written
+(``I.wonder`` stays while ``I`` converts). Atoms match whole and literally; longer runs are tried first; a rules file
+without these lines converts exactly as before.
 A rules file may also declare ``<exact gloss>  WHOLE-GLOSS→<CODE>``: a gloss (or gloss segment) that is exactly
 ``<exact gloss>`` (after stripping outer whitespace) becomes ``<CODE>`` (maintainer, 2026-11-16, unvoiced-verbs audit
 whole_gloss_rule_r8: "Yes"), e.g. Yedda ``ligature (LIG)`` -> LNK, HPS ``(name)`` -> PN. The pattern is literal text,
@@ -234,6 +240,7 @@ class Rules:
         self.infix_gloss_brackets = False
         self.add_rules: dict[tuple[str, str], str] = {}     # (word stem, morpheme gloss) -> voice
         self.whole_gloss: dict[str, str] = {}               # exact whole gloss -> standard
+        self.atom_runs: list[tuple[tuple[str, ...], str | None]] = []   # ATOMS→X / ATOMS-KEEP (None)
         self.twin_voice: set[tuple[str, str]] = set()      # (form core, language) for TWIN-VOICE
         with open(path, newline="", encoding="utf-8") as handle:
             for row in csv.DictReader(handle, delimiter="\t"):
@@ -243,6 +250,13 @@ class Rules:
                 if add and "&=" in pat:
                     gloss, stem = pat.rsplit("&=", 1)
                     self.add_rules[(stem.strip().lower(), gloss.strip())] = add.group(1)
+                    continue
+                atoms_to = re.fullmatch(r"ATOMS→(\S+)", repl)
+                if atoms_to or repl == "ATOMS-KEEP":
+                    run = tuple(pat.strip().split("."))
+                    if len(run) < 2 or not all(run):
+                        raise SystemExit(f"{path}: ATOMS rule needs two or more period-joined atoms: {pat!r}")
+                    self.atom_runs.append((run, atoms_to.group(1) if atoms_to else None))
                     continue
                 whole = re.fullmatch(r"WHOLE-GLOSS→(\S+)", repl)
                 if whole:
@@ -292,6 +306,7 @@ class Rules:
         # RULE7-PARENS mask in convert_gloss.
         self.embedded_res = [re.compile(p) for p in embedded]
         self.context_atoms = {a for a, _f, _t, _l in self.context_rules}
+        self.atom_runs_sorted = sorted(self.atom_runs, key=lambda r: -len(r[0]))
         sep = "|".join(self.separators) or r"\."
         self.split_re = re.compile(f"({sep})")
         self.residue_re = re.compile(f"[{re.escape(self.residue_chars)}]") \
@@ -343,19 +358,35 @@ def convert_gloss(gloss: str, table: Table, rules: Rules, language: str,
             # the atom, which preserves the documented Yedda UV fallback.
         return table.standard_for(atom, language)
 
+    def convert_tokens(tokens: list[str]) -> str:
+        """tokens alternate atom, separator, atom, ... (split_re.split). ATOMS runs first (longest first): a run of
+        atoms joined by '.' becomes its label, or stays as written (ATOMS-KEEP); every other atom converts alone."""
+        out, i = [], 0
+        while i < len(tokens):
+            if i % 2 == 0 and tokens[i]:
+                for run, label in rules.atom_runs_sorted:
+                    k = len(run)
+                    span = tokens[i:i + 2 * k - 1]
+                    if len(span) == 2 * k - 1 and tuple(span[0::2]) == run and all(x == "." for x in span[1::2]):
+                        out.append("".join(span) if label is None else label)
+                        i += 2 * k - 1
+                        break
+                else:
+                    out.append(std_atom(tokens[i]))
+                    i += 1
+                continue
+            out.append(tokens[i])
+            i += 1
+        return "".join(out)
+
     def convert_flat(text: str) -> str:
         out = []
         for part in (re.split(r"(<[^<>]+>)", text)
                      if rules.keep_brackets else [text]):
             if part.startswith("<") and part.endswith(">") and rules.keep_brackets:
-                inner = part[1:-1]
-                pieces = [std_atom(a) if i % 2 == 0 and a else a
-                          for i, a in enumerate(rules.split_re.split(inner))]
-                out.append("<" + "".join(pieces) + ">")
+                out.append("<" + convert_tokens(rules.split_re.split(part[1:-1])) + ">")
             else:
-                pieces = [std_atom(a) if i % 2 == 0 and a else a
-                          for i, a in enumerate(rules.split_re.split(part))]
-                out.append("".join(pieces))
+                out.append(convert_tokens(rules.split_re.split(part)))
         return "".join(out)
 
     if rules.residue_re and rules.residue_re.search(gloss):
