@@ -82,6 +82,8 @@ value alone — the permission behind it is documented here and nowhere else.
 
 ## Notes and caveats
 
+**Blust labels whole words, not morphemes.** His grammatical labels (e.g. `[PF1s/c]`, `[C/PF]`) describe a whole word and do not say which affix carries which category. In each example sentence, the word the example illustrates carries his label as a word-level gloss, with the codes joined by `.`: `[PF1s/c]` → `PF.1s.c`, `[C/PF]` → `C.PF`. **The `.` does not mean the categories sit in one morpheme**: *k–in–alawa–ik* `PF.1s.c` "was made by me" has two affixes (*-in-*, *-ik*). Where Blust gives a word two alternative readings with a semicolon, the gloss writes them with `/`, which means "or" (`[AF; F]` → `AF/F`, *malhinuna* "speak; will speak"). The morphemes (M tier, from his hyphens) carry no glosses. His label as printed is kept in the gloss's `notes`.
+
 **Morpheme boundaries are part of the text.** Blust prints morpheme boundaries in the dictionary examples but not in the interlinear texts, and those hyphens are carried through into the standardized tier. This corpus therefore tokenizes differently from the other Thao material in FormosanBank, and word counts are not directly comparable. The sentences are also segmented into word and morpheme tiers.
 
 ## Reproduction and processing
@@ -239,8 +241,16 @@ folder, in this order:
      for the English); an optional `(x)` token, expanded into two S, the
      English splitting in step only when it pairs.
    - A W tier (and an M tier where a word carries `-` boundaries) is added only
-     when the FORM contains none of `( ) / ~ [ ]`. A W or M here carries no
-     TRANSL.
+     when the FORM contains none of `( ) / ~ [ ]`. A token with no letter or
+     digit gets no W. Blust's em dash, which separates words, is written with
+     a space on each side, so the cleaner's dash-to-hyphen change cannot join
+     two words into one.
+   - The word an example illustrates gets Blust's grammatical label as its
+     original-tier gloss (a W-level `TRANSL`), when that word is the labelled
+     form itself: the codes are joined with `.`, a semicolon becomes `/`, and
+     the label as printed goes in `TRANSL/@notes` (`[PF1s/c]` → `PF.1s.c`).
+     The label is the example's own where Blust prints one after the example
+     (six on p. 376), otherwise its sense's. No other W, and no M, has a gloss.
 3. **`QC/cleaning/apply_manual_edits.py --corpora_path <tmp>/XML --manual_file
    <tmp>/no-manual-edits.xml`.** That file does not exist, so nothing is
    applied: this corpus records no hand edits.
@@ -270,7 +280,13 @@ folder, in this order:
    recorded glosses no longer match the build is refused and printed, not
    applied. It also warns if any of the 4 groups listed as settled by a rule
    has come back.
-10. **Finish.** Deletes `cleaner_warnings.csv` and `standardize_warnings.csv`
+10. **`QC/glossing/apply_gloss_standard.py --path <each examples file>
+    --table Glossing/ConversionTables/Blust-Thao-Dictionary.tsv --rules
+    Glossing/ConversionTables/Blust-Thao-Dictionary.rules.tsv --write`.** Adds
+    the standard gloss tier to the label glosses (`PF.1s.c` → `PV.1SG.COMPL`;
+    a bare `F` on a *ma-* form → `FUT.AV`). Only the examples files: the five
+    texts keep exactly the interlinear glosses Blust printed.
+11. **Finish.** Deletes `cleaner_warnings.csv` and `standardize_warnings.csv`
     from the temporary tree. With `--check`, compares every XML file byte for
     byte with `XML/Thao/` and exits 1 on any difference; otherwise copies the
     tree to `XML/.Thao-canonical-build` and swaps it in as `XML/Thao/`.
