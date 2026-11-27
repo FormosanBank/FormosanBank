@@ -195,7 +195,10 @@ class XorYHeadwordTests(unittest.TestCase):
         bx.SKIPPED.clear()
 
     def built(self) -> ET.Element:
+        # the build's order (build_xml.main): whitespace repairs come before the word gloss corrections
         root = fresh_root()
+        bx.repair_gloss_whitespace(root)
+        bx.SKIPPED.clear()
         bx.check_variant_sources(root)
         bx.split_alternatives(root)
         bx.annotate_source_segmentation(root)
@@ -214,7 +217,7 @@ class XorYHeadwordTests(unittest.TestCase):
         bx.correct_word_glosses(root)
         self.assertEqual(bx.add_word_alternates(root), 0)
         bx.add_sentence_translation_notes(root)
-        self.assertEqual(len(bx.SKIPPED), 1 + 72 + 1)
+        self.assertEqual(len(bx.SKIPPED), len(bx.read_table(bx.WORD_GLOSS_CORRECTIONS_TABLE, bx.WORD_GLOSS_CORRECTIONS_HEADER)) + 72 + 1)
         self.assertEqual(ET.tostring(root), before)
 
     def test_unexpected_text_stops(self) -> None:
