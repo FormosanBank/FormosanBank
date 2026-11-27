@@ -60,6 +60,16 @@ def mapped_atoms(table_path):
                 for atom in ATOM_SPLIT.split(target):
                     if atom:
                         yield lang, atom
+    # the labels of the rules file's ATOMS→ lines (2026-11-27) are mapped-to codes too
+    rules = table_path.with_name(table_path.stem + ".rules.tsv")
+    if rules.exists():
+        with rules.open(encoding="utf-8") as handle:
+            for row in csv.DictReader(handle, delimiter="\t"):
+                label = (row.get("replacement") or "").strip()
+                if label.startswith("ATOMS→"):
+                    for atom in ATOM_SPLIT.split(label[len("ATOMS→"):]):
+                        if atom:
+                            yield None, atom
 
 
 def test_every_corpus_has_language_rows():
