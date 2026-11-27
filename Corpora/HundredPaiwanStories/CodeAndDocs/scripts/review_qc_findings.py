@@ -50,14 +50,17 @@ ACCEPTED_GAP_MORPHEME = "M=078S4W19M0c"
 # sentence FORM was the "(?)" annotation, now moved to a notes attribute by
 # scripts/apply_manual_corrections.py before standardize.py runs.
 # The standard gloss tier (apply_gloss_standard.py) copies the source's
-# parenthesised pronoun glosses -- f.you(s), we(INCL) -- and adds Rule 7
-# voice parentheses -- say(AV), leave(AV).
+# parenthesised possessive pronouns -- your(s), our(INCL) -- and adds Rule 7
+# voice parentheses -- say(AV), leave(AV). Since 2026-11-27 the personal
+# pronouns are person-number labels (you(s) -> 2SG, we(inc) -> 1PL.INCL;
+# pronoun glosses page NSfDfqWnj1j6R3vhD2ei3x), so 1,816 fewer parentheses on
+# each standard tier.
 EXPECTED_V122_TIERS = {
     "M.TRANSL.original": 3790,
-    "M.TRANSL.standard": 3940,
+    "M.TRANSL.standard": 2124,
     "S.TRANSL.unspecified": 448,
     "W.TRANSL.original": 3790,
-    "W.TRANSL.standard": 2386,
+    "W.TRANSL.standard": 570,
 }
 INFIX_FORM = re.compile(r"^-[^-]+-$")
 INTERNAL_DASH = re.compile(r"(?<=[^-])-(?=[^-])")
