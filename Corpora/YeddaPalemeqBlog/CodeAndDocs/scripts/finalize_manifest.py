@@ -39,7 +39,7 @@ def main() -> None:
         "alternative_expansions": 3,
         "issue_findings_reviewed": 9,
         "source_sentence_translations_repaired": 24,
-        "source_word_translations_repaired": 41,
+        "source_word_translations_repaired": 49,
         "unresolved_findings": 0,
         "audit_sha256": audit_hashes,
     }

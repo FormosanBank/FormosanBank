@@ -52,15 +52,83 @@ class YeddaPipelineTests(unittest.TestCase):
 
     def test_canonical_tier_shape(self) -> None:
         sentences = self.root.findall("S")
-        self.assertEqual(len(sentences), 671)
-        self.assertEqual(len({sentence.get("id") for sentence in sentences}), 671)
+        self.assertEqual(len(sentences), 674)
+        self.assertEqual(len({sentence.get("id") for sentence in sentences}), 674)
         for element in self.root.iter():
             if element.tag not in {"S", "W", "M"}:
                 continue
-            self.assertEqual(len(element.findall("FORM[@kindOf='original']")), 1)
-            self.assertEqual(len(element.findall("FORM[@kindOf='standard']")), 1)
+            # one base per tier (POL-028); ver="alt" variants come from word_alternates.tsv
+            for tier in ("original", "standard"):
+                forms = element.findall(f"FORM[@kindOf='{tier}']")
+                self.assertEqual(sum(f.get("ver") is None for f in forms), 1)
+                self.assertTrue(all(f.get("ver") in (None, "alt") for f in forms))
             self.assertEqual(len(element.findall("PHON[@kindOf='original']")), 1)
             self.assertEqual(len(element.findall("PHON[@kindOf='standard']")), 1)
+
+    def test_x_or_y_headword_spellings_are_variants(self) -> None:
+        rows = read_tsv(ROOT / "word_alternates.tsv")
+        self.assertEqual(len(rows), 72)
+        variants = 0
+        for element in self.root.iter():
+            if element.tag in {"S", "W", "M"}:
+                variants += sum(
+                    f.get("ver") == "alt" for f in element.findall("FORM[@kindOf='original']")
+                )
+        self.assertEqual(variants, 72 + 63)  # 72 words; 63 of them also on their single morpheme
+        for row in rows:
+            word = self.root.find(f".//W[@id='{row['w_id']}']")
+            alts = [
+                (f.get("kindOf"), f.text) for f in word.findall("FORM") if f.get("ver") == "alt"
+            ]
+            self.assertEqual(alts, [("original", row["alternate"]), ("standard", row["alternate"])])
+            self.assertEqual(len(word.findall("PHON[@kindOf='original']")), 1)
+
+    def test_sentences_written_out_from_a_word_gloss(self) -> None:
+        expected = {
+            "S507_2": "nu mevulung a caucau, madjeleanga a malim tua ngadan nua caucau.",
+            "S507_3": "nu mevulung a caucau, madjeleanga a madraudraw tua ngadan nua caucau.",
+        }
+        ids = [s.get("id") for s in self.root.findall("S")]
+        self.assertEqual(ids[ids.index("S507_1") + 1 : ids.index("S507_1") + 3], ["S507_2", "S507_3"])
+        for sentence_id, text in expected.items():
+            sentence = self.sentence(sentence_id)
+            self.assertEqual(sentence.find("FORM[@kindOf='original']").text, text)
+            self.assertEqual(sentence.findall("W") + sentence.findall("TRANSL") + sentence.findall("AUDIO"), [])
+
+    def test_post_502_is_two_sentences(self) -> None:
+        expected = {"S502_1": ("saladji a kemim.", ["sa", "ladji"]), "S502_2": ("pasaladji a kemim.", ["pa", "sa", "ladji"])}
+        for sentence_id, (text, pieces) in expected.items():
+            sentence = self.sentence(sentence_id)
+            self.assertEqual(sentence.find("FORM[@kindOf='original']").text, text)
+            self.assertEqual(sentence.find("TRANSL").text,
+                             "No, I don't want to. No, I don't want to. Forget it, don't bother trying to find it.")
+            words = sentence.findall("W")
+            self.assertEqual([w.find("FORM[@kindOf='original']").text for w in words][1:], ["a", "k<em>im"])
+            self.assertEqual(words[0].find("FORM[@kindOf='original']").text, "-".join(pieces))
+            self.assertEqual(words[0].find("TRANSL").text, "I don't want to.")
+            self.assertEqual([m.find("FORM[@kindOf='original']").text for m in words[0].findall("M")], pieces)
+        for sentence_id in ("S502_1", "S502_2"):  # the recording pronounces all three lines
+            self.assertIsNone(self.sentence(sentence_id).find("AUDIO"))
+            self.assertIsNone(self.sentence(sentence_id).get("audio_url"))
+
+    def test_prose_dictionary(self) -> None:
+        table = read_tsv(ROOT / "prose_dictionary.tsv")
+        built = [row for row in table if not row["hold"]]
+        self.assertEqual((len(table), len(built)), (26, 26))
+        root = ET.parse(XML.parent / "Paiwan_Yedda_Blog_Dictionary.xml").getroot()
+        entries = {s.get("id"): s for s in root.findall("S")}
+        self.assertEqual(sorted(entries), sorted(row["entry_id"] for row in built))
+        meqaca = entries["YD0001"]
+        self.assertEqual(meqaca.find("FORM[@kindOf='original']").text, "meqaca")
+        self.assertEqual(
+            [(m.find("FORM[@kindOf='original']").text, m.findtext("TRANSL")) for m in meqaca.iter("M")],
+            [("me", "AV"), ("qaca", "grow up")],
+        )
+        for row in table:
+            self.assertNotIn("(", row["form"] + row["word_form"] + row["morphemes"])
+        garden = entries["YD0018"]
+        self.assertEqual([(f.get("ver"), f.text) for f in garden.findall("FORM[@kindOf='original']")],
+                         [(None, "puhanaan"), ("alt", "puhanan")])
 
     def test_source_alternatives_are_explicit(self) -> None:
         expected = {
@@ -150,10 +218,11 @@ class YeddaPipelineTests(unittest.TestCase):
 
     def test_live_source_word_gloss_repairs_are_applied(self) -> None:
         rows = read_tsv(AUDIT / "source_word_translation_review.tsv")
-        self.assertEqual(len(rows), 41)
-        self.assertEqual(len({row["w_id"] for row in rows}), 41)
+        self.assertEqual(len(rows), 49)
+        self.assertEqual(len({row["w_id"] for row in rows}), 49)
+        moved = {"S502_1W2": "S502_2W1"}  # pasaladji, moved when post 502 was split in two
         for row in rows:
-            word = self.root.find(f".//W[@id='{row['w_id']}']")
+            word = self.root.find(f".//W[@id='{moved.get(row['w_id'], row['w_id'])}']")
             self.assertIsNotNone(word)
             translation = word.find(f"TRANSL[@{XML_LANG}='eng']")
             self.assertIsNotNone(translation)
@@ -199,7 +268,7 @@ class YeddaPipelineTests(unittest.TestCase):
                     )
                 stripped += 1
         self.assertEqual(stripped, 161)
-        self.assertEqual(len(self.root.findall(".//M")), 6492)
+        self.assertEqual(len(self.root.findall(".//M")), 6497)  # 6492 + 5 from splitting post 502
 
     def test_standard_tier_strips_source_accents(self) -> None:
         """--remove_accents flattens the diacritics on two quoted Mandarin terms.

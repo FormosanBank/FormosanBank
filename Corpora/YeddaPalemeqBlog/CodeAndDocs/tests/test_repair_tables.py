@@ -75,7 +75,7 @@ class RepairTableTests(unittest.TestCase):
         root = self.build_to_repairs()
         self.assertEqual(len(bx.repair_issue_rows(root)), 9)
         self.assertEqual(len(bx.restore_source_translations(root)), 24)
-        self.assertEqual(len(bx.restore_source_word_translations(root)), 41)
+        self.assertEqual(len(bx.restore_source_word_translations(root)), 49)
         self.assertEqual(bx.SKIPPED, [])
 
     def test_second_pass_skips_every_row(self) -> None:
@@ -87,7 +87,7 @@ class RepairTableTests(unittest.TestCase):
         bx.repair_issue_rows(root)
         bx.restore_source_translations(root)
         bx.restore_source_word_translations(root)
-        self.assertEqual(len(bx.SKIPPED), 9 + 24 + 41)
+        self.assertEqual(len(bx.SKIPPED), 9 + 24 + 49)
         self.assertEqual(ET.tostring(root), before)
 
     def test_issue_repair_stops_on_unexpected_text(self) -> None:
@@ -183,3 +183,49 @@ class GlossWhitespaceTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class XorYHeadwordTests(unittest.TestCase):
+    """word_alternates / word_gloss_corrections / sentence_translation_notes: apply, skip, stop."""
+
+    def setUp(self) -> None:
+        bx.SKIPPED.clear()
+
+    def tearDown(self) -> None:
+        bx.SKIPPED.clear()
+
+    def built(self) -> ET.Element:
+        root = fresh_root()
+        bx.check_variant_sources(root)
+        bx.split_alternatives(root)
+        bx.annotate_source_segmentation(root)
+        bx.repair_issue_rows(root)
+        bx.restore_source_translations(root)
+        bx.restore_source_word_translations(root)
+        return root
+
+    def test_apply_then_second_pass_skips(self) -> None:
+        root = self.built()
+        bx.correct_word_glosses(root)
+        self.assertEqual(bx.add_word_alternates(root), 72)
+        bx.add_sentence_translation_notes(root)
+        self.assertEqual(bx.SKIPPED, [])
+        before = ET.tostring(root)
+        bx.correct_word_glosses(root)
+        self.assertEqual(bx.add_word_alternates(root), 0)
+        bx.add_sentence_translation_notes(root)
+        self.assertEqual(len(bx.SKIPPED), 1 + 72 + 1)
+        self.assertEqual(ET.tostring(root), before)
+
+    def test_unexpected_text_stops(self) -> None:
+        root = self.built()
+        word = bx.find_word(bx.find_sentence(root, "S618619_2"), "S618619_2W4")
+        word.find("TRANSL").text = "SOMETHING ELSE"
+        with self.assertRaisesRegex(SystemExit, "word_gloss_corrections.tsv: row S618619_2W4 "):
+            bx.correct_word_glosses(root)
+        bx.add_variant_form(bx.find_word(bx.find_sentence(root, "S631_1"), "S631_1W4"), "OTHER")
+        with self.assertRaisesRegex(SystemExit, "word_alternates.tsv: row S631_1W4 "):
+            bx.add_word_alternates(root)
+        bx.find_sentence(root, "S237_1").find("TRANSL").set("notes", "another note")
+        with self.assertRaisesRegex(SystemExit, "sentence_translation_notes.tsv: row S237_1 "):
+            bx.add_sentence_translation_notes(root)
