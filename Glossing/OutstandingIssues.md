@@ -282,6 +282,12 @@ the bottom with their ruling.
 
 ## Resolved
 
+- **Glosses that are only the source's "?" had no standard twin** (maintainer 2026-11-27, Paiwan plan page
+  4ianLHbinfCpaEQEsZG96b, card r7b: "Yes, fix it, tests first"). apply_gloss_standard skipped a gloss with no text of its
+  own, so a gloss holding only `<UNCLEAR/>` got no standard TRANSL. It now gets one, holding the same `<UNCLEAR/>`:
+  2,550 in 8 corpora (NTU 2,089, HPS 356, Wild-Lehmann 25, RauDong 22, Nowbucyang 21, Kavalan-Chang 19, Seediq-Chang 17,
+  Sakizaya 1); the 61 of those whose original carried no kindOf are stamped kindOf="original", as the tool does for
+  every gloss it standardizes.
 - **HPS `red~stem` in word glosses** (maintainer 2026-11-27, HPS gloss abbreviations page JmCfWcQZsGwM2UE9KXM1dL,
   card b1: "Apply, tests first"): `~` is a separator in the HPS rules file (Leipzig Rule 10), so `red~being` → `RED~being`
   like the morpheme glosses. 1,188 word glosses; 4 also convert a ruled code behind the `~` (`red~remove` → `RED~REV`,

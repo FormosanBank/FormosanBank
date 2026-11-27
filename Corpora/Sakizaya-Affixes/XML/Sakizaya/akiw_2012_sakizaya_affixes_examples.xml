@@ -1630,7 +1630,10 @@
                 <FORM kindOf="original">∅</FORM>
                 <FORM kindOf="standard">∅</FORM>
                 <PHON kindOf="standard">∅</PHON>
-                <TRANSL xml:lang="zho">
+                <TRANSL xml:lang="zho" kindOf="original">
+                    <UNCLEAR />
+                </TRANSL>
+            <TRANSL xml:lang="zho" kindOf="standard">
                     <UNCLEAR />
                 </TRANSL>
             </M>

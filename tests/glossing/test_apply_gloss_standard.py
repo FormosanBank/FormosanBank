@@ -274,8 +274,25 @@ def test_unclear_children_preserved_and_segments_converted(tmp_path):
     assert "<UNCLEAR />-eat-AV" in std["w1"].replace("<UNCLEAR/>", "<UNCLEAR />")
     # interior UNCLEAR kept, atoms on BOTH sides converted (LF→LV before it)
     assert "LV-" in std["w2"] and "=go-AV" in std["w2"] and "UNCLEAR" in std["w2"]
-    # pure-UNCLEAR gloss: no standard tier is added (nothing to convert)
-    assert "w3" not in std
+    # pure-UNCLEAR gloss: the standard tier copies it (maintainer 2026-11-27, Paiwan plan page card r7b, "Yes, fix it,
+    # tests first": the standard tier is always complete)
+    assert std["w3"].replace("<UNCLEAR/>", "<UNCLEAR />").split(">", 1)[1].startswith("<UNCLEAR />")
+    assert "".join(ET.fromstring(std["w3"]).itertext()).strip() == ""
+
+
+def test_pure_unclear_morpheme_gloss_gets_a_standard_copy(tmp_path):
+    # HPS shape: ka-ka-si-uljay-an, the first two morphemes glossed only "?" (<UNCLEAR/>) in the source
+    d, t, r = make_r7_corpus(tmp_path, [
+        '<W id="w1"><FORM kindOf="original">ka-si</FORM>'
+        '<M id="w1m1"><FORM kindOf="original">ka</FORM><TRANSL xml:lang="eng" kindOf="original"><UNCLEAR/></TRANSL></M>'
+        '<M id="w1m2"><FORM kindOf="original">si</FORM><TRANSL xml:lang="eng" kindOf="original">AF</TRANSL></M></W>'])
+    p = run(d, t, r)
+    assert p.returncode == 0, p.stderr
+    root = ET.parse(d / "a.xml").getroot()
+    m = {mm.get("id"): {tr.get("kindOf"): tr for tr in mm.findall("TRANSL")} for mm in root.iter("M")}
+    assert "standard" in m["w1m1"], "a morpheme glossed only <UNCLEAR/> gets a standard gloss"
+    assert [c.tag for c in m["w1m1"]["standard"]] == ["UNCLEAR"] and not (m["w1m1"]["standard"].text or "").strip()
+    assert m["w1m2"]["standard"].text == "AV"
 
 
 def test_variant_ver_transl_standardized_with_ver(tmp_path):

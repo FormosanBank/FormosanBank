@@ -530,7 +530,9 @@ def _process_element(parent, table, rules, write, stats, residue, language,
         # segment, keep the children in place.
         segments = [("text", transl.text or "")] + \
                    [(child, child.tail or "") for child in transl]
-        has_content = any(s.strip() for _, s in segments)
+        # A gloss that is only <UNCLEAR/> (the source's "?") is content too: its standard twin copies it (maintainer
+        # 2026-11-27, Paiwan plan page card r7b, "Yes, fix it, tests first"; the standard tier is always complete).
+        has_content = any(s.strip() for _, s in segments) or any(child.tag == "UNCLEAR" for child in transl)
         if kind == "standard" or lang not in GLOSS_LANGS or not has_content:
             continue
         if kind is None and not ver:
