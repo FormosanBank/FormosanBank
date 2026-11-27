@@ -432,6 +432,9 @@ def add_word_tier(sentence: ET.Element, sentence_id: str, form_text: str) -> Non
     # parsing gives every W at least one M (one M = "analysed as
     # monomorphemic"), and a sentence that carries none takes no M at all.
     parsed = any(SEGMENTATION.search(token) for token in tokens)
+    # A token with no letter or digit (Blust's em dash, written with spaces) is
+    # punctuation, not a word: no W for it.
+    tokens = [token for token in tokens if re.search(r"\w", token)]
     for number, token in enumerate(tokens, start=1):
         word = ET.SubElement(
             sentence, "W", {"id": f"{sentence_id}-w{number:03d}"}

@@ -20,9 +20,15 @@ modified (POL-036, POL-062).
   languages does not depend on taking a stand on its characterization.
 - **Language-specific codes** default to the usage of the language's reference
   grammar, overridable in favor of cross-language consistency where feasible.
-- *Proposed, not yet ruled*: verbs in moods where two voices collapse are
-  glossed with a pair notation (e.g. `PV/LV`) rather than left unglossed —
-  such tokens are excluded from voice *analysis* but must still be glossed.
+- **`.` means "both"; `/` means "or".** A dot joins categories that all hold of
+  the form: `PV.COMPL` is patient voice *and* completive. A slash joins
+  alternatives the gloss does not decide between: `PV/LV` where a mood merges
+  two voices, `PST/PFV` where one source code covers both, `AV/FUT` where a
+  source gives two readings of the same word. Such forms are still glossed,
+  never left blank.
+- **A dot does not mean one morpheme.** Where a source labels a whole word
+  without segmenting it (Blust's Thao dictionary), the word's codes are
+  dot-joined in its word-level gloss, however many affixes carry them.
 
 ## Voice on forms with no voice affix (Leipzig Rule 7)
 

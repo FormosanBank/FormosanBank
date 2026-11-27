@@ -175,11 +175,43 @@ class TestEntryXML(unittest.TestCase):
             self.assertFalse(
                 self.NOTATION.search(form.text), f"{sentence.get('id')}: {form.text!r}"
             )
+            # A token with no letter or digit is punctuation (Blust's em dash,
+            # written with spaces), not a word.
             self.assertEqual(
                 len(sentence.findall("W")),
-                len(form.text.split()),
+                len([t for t in form.text.split() if re.search(r"\w", t)]),
                 sentence.get("id"),
             )
+
+    def test_blust_labels_are_word_glosses_on_the_labelled_form(self):
+        """Each glossed word carries Blust's label as printed (notes) and its
+        dot-joined form (text), and only words that are the labelled form."""
+        import build_entry_xml as B
+        glossed = 0
+        for sentence in self.dictionary_s:
+            for word in sentence.findall("W"):
+                gloss = word.find('TRANSL[@kindOf="original"]')
+                if gloss is None:
+                    continue
+                glossed += 1
+                self.assertEqual(gloss.text, B.label_gloss(gloss.get("notes")),
+                                 word.get("id"))
+                self.assertIsNotNone(word.find('TRANSL[@kindOf="standard"]'),
+                                     word.get("id"))
+        self.assertGreater(glossed, 5000)
+
+    def test_the_p376_examples_carry_their_own_pf(self):
+        """Blust prints [PF] after each of the six f-in-ariw examples."""
+        found = []
+        for sentence in self.dictionary_s:
+            if not sentence.get("id", "").startswith("blust-ex-p0376-e00"):
+                continue
+            for word in sentence.findall("W"):
+                gloss = word.find('TRANSL[@kindOf="original"]')
+                form = word.find('FORM[@kindOf="original"]').text
+                if gloss is not None and form.replace("-", "") == "finariw":
+                    found.append((gloss.text, gloss.get("notes")))
+        self.assertEqual(found, [("PF", "[PF]")] * 6)
 
     def test_the_morpheme_tier_is_all_or_nothing(self):
         # POL-023 reads the M tier per sentence.

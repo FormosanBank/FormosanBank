@@ -589,7 +589,10 @@ def build_examples_part(start, end, entries, counter) -> tuple[str, ET.ElementTr
                     if example.get("source_note"):
                         attributes["notes"] = f"Source note: {example['source_note']}"
                     form = ET.SubElement(sentence, "FORM", attributes)
-                    form.text = normalize_blust_quotes(reading, set())
+                    # Blust's em dash is punctuation between words; written with
+                    # spaces so the shared cleaner's dash -> hyphen cannot glue
+                    # two words into one (maintainer, 2026-11-26).
+                    form.text = EM_DASH.sub(" \u2014 ", normalize_blust_quotes(reading, set())).strip()
                     if alternate:
                         variant = ET.SubElement(
                             sentence, "FORM", {"kindOf": "original", "ver": "alt"}
@@ -605,6 +608,22 @@ def build_examples_part(start, end, entries, counter) -> tuple[str, ET.ElementTr
                     add_word_tier_if_segmentable(
                         sentence, sentence.get("id"), form.text
                     )
+                    label = example.get("label") or sense.get("label")
+                    if label and example.get("exemplifies") and _bare(
+                        example["exemplifies"]
+                    ) != _bare(sense_form(sense, entry["headword"])):
+                        # The bolded word is not the form the label belongs to
+                        # (qalhuqtu-an under a sense labelled [F]): the label
+                        # is not Blust's for that word, so no gloss.
+                        GLOSS_STATS["not_the_sense_form"] += 1
+                        label = None
+                    if label and example.get("exemplifies"):
+                        GLOSS_STATS["examples_with_label"] += 1
+                        count = gloss_illustrated_word(
+                            sentence, example["exemplifies"], label
+                        )
+                        GLOSS_STATS["glossed_words"] += count
+                        GLOSS_STATS["not_a_word"] += count == 0
                     # A Thao question quoted inside an "answer to ..."
                     # parenthetical is a sentence with a translation, not a
                     # note. It gets its own S, sharing the host's locator
@@ -672,6 +691,66 @@ def add_word_tier_if_segmentable(sentence, sentence_id, form_text):
     return True
 
 
+# Blust's grammatical label as a word-level gloss (maintainer, 2026-11-26).
+# His codes, legend §9.6 (printed p. 276); longest first so IT3 wins over IT.
+LABEL_CODE = re.compile(r"AF|PF|LF|AB|IC|IN|IT3|IT4|IT|MV|1s|c|C|D|e|E|F|i|I|L|p|R|S")
+EM_DASH = re.compile(r"\s*\u2014\s*")
+
+
+def label_gloss(label: str) -> str:
+    """[PF1s/c] -> PF.1s.c ; [AF; F] -> AF/F ; [C/PF] -> C.PF.
+
+    Blust labels a whole word, so its codes are joined with "." whether he
+    fused them or put a slash between them ("." = both). A semicolon gives
+    alternative readings and becomes "/" ("or"). A piece that is not made
+    entirely of legend codes (atemporal, AF?, C2, LF2c) is kept as written.
+    """
+    readings = []
+    for reading in label.strip().strip("[]").split(";"):
+        atoms = []
+        for part in reading.split("/"):
+            part = part.strip()
+            if not part:
+                continue
+            codes = LABEL_CODE.findall(part)
+            if codes and "".join(codes) == part:
+                atoms.extend(codes)
+            else:
+                atoms.append(part)
+        if atoms:
+            readings.append(".".join(atoms))
+    return "/".join(readings)
+
+
+def _bare(token: str) -> str:
+    return re.sub(r"[-\u2013]", "", token.strip(_EDGE)).lower()
+
+
+def gloss_illustrated_word(sentence, exemplifies: str, label: str) -> int:
+    """Put Blust's label on the word the example illustrates (and nowhere else).
+
+    Only the illustrated word is glossed (maintainer, 2026-11-26: "Illustrated
+    only"); the label as printed is kept in the gloss's notes. Returns how many
+    words were glossed (0 when the illustrated form is not a word of this
+    reading)."""
+    target = _bare(exemplifies)
+    glossed = 0
+    for word in sentence.findall("W"):
+        form = word.find("FORM")
+        if form is None or _bare(form.text or "") != target:
+            continue
+        translation = ET.Element(
+            "TRANSL", {XML_LANG: "eng", "kindOf": "original", "notes": label.strip()}
+        )
+        translation.text = label_gloss(label)
+        word.insert(list(word).index(form) + 1, translation)
+        glossed += 1
+    return glossed
+
+
+GLOSS_STATS = {"examples_with_label": 0, "glossed_words": 0, "not_a_word": 0, "not_the_sense_form": 0}
+
+
 CONTROL = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]")
 
 
@@ -697,6 +776,13 @@ def write_all(output_dir: Path) -> None:
         tree.write(output_dir / name, encoding="utf-8", xml_declaration=True)
         with (output_dir / name).open("a", encoding="utf-8") as handle:
             handle.write("\n")
+    print(
+        "Blust labels as word glosses: {examples_with_label} labelled examples, "
+        "{glossed_words} words glossed, {not_a_word} where the illustrated form "
+        "is not a word of the sentence, {not_the_sense_form} not glossed because "
+        "the illustrated form is not the labelled form".format(**GLOSS_STATS),
+        file=sys.stderr,
+    )
 
 
 def main() -> int:

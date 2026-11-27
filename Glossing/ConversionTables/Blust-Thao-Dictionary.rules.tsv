@@ -1,0 +1,11 @@
+pattern	replacement	description
+\.	KEEP-SEPARATOR	"period joins Blust's codes on a whole word (""."" = both; maintainer 2026-11-26) — split, look up each atom"
+/	KEEP-SEPARATOR	"slash = alternative readings (""/"" = or; Blust's semicolon, maintainer 2026-11-26) — split, look up each atom"
+F&kikalhi&ak$	CONTEXT-CONVERT→FUT	ma–kikalhi–ak [F/LF1s] already names a voice: plain FUT (F1 covers bare F only)
+F&parfu&an$	CONTEXT-CONVERT→FUT	ma–parfu–an [F/LF] already names a voice: plain FUT (F1 covers bare F only)
+F&tusi&k$	CONTEXT-CONVERT→FUT	ma–tusi–k [F/PF1s] already names a voice: plain FUT (F1 covers bare F only)
+F&shkash	CONTEXT-CONVERT→FUT	ma–shkash [AF/F] already names a voice: plain FUT (F1 covers bare F only)
+F&malhinuna-	CONTEXT-CONVERT→FUT.AV	"malhinuna [AF; F] ""speak; will speak"": maintainer 2026-11-26, card A1 ""AV/FUT.AV"""
+F&mataqaz-	CONTEXT-CONVERT→FUT.AV	"mataqaz [AF; F]: maintainer 2026-11-26, card A1 ""AV/FUT.AV"""
+F&^ma	CONTEXT-CONVERT→FUT.AV	"maintainer 2026-11-26, Thao page: F1 ""Count as AV"" + ""Actually standardize the gloss to FUT.AV. Only for Blust, and only for `ma-` when glossed as bare `F`.""; F2 ""Yes, same as bare F"""
+…	RESIDUE	anything unsegmentable is copied verbatim and listed in the residue report
