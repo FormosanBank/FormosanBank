@@ -326,10 +326,10 @@ them:
      variant; the pronunciation tier spells the base form only.
    - It corrects one word gloss the frozen scrape took from the wrong list item
      (`word_gloss_corrections.tsv`: `S618619_2W4` `a`, "subject case marker" →
-     "LIG"), and four English typos of the author's own, so these glosses differ
+     "LIG"), and five English typos of the author's own, so these glosses differ
      from the blog: *distrub* (twice in `S646647_2W3`), *tatoo* (`S443_1W4`),
-     *destory* (`S330_1W7`) and *towrads* (`S48_1W4`) → *disturb*, *tattoo*,
-     *destroy*, *towards* (the maintainer, 2026-11-27: "Fix those typos in the
+     *destory* (`S330_1W7`), *destoryed* (`S329_1W2`) and *towrads* (`S48_1W4`) →
+     *disturb*, *tattoo*, *destroy*, *destroyed*, *towards* (the maintainer, 2026-11-27: "Fix those typos in the
      original tier of Yedda's corpus."). It also puts a phrase gloss that has
      no single word to sit on into the sentence translation's `notes` (`sentence_translation_notes.tsv`: `S237_1`,
      "tucu a qadaw or tucu a vuaq: today").
