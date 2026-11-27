@@ -6,6 +6,25 @@ the bottom with their ruling.
 
 ## Open
 
+- **Pronouns left as words** (2026-11-27, pronoun glosses page NSfDfqWnj1j6R3vhD2ei3x; the conversion to person-number
+  labels is in Resolved). Kept as the source wrote them, undecided:
+  - bare *you*, number not stated (HPS, Wakelin 41, NTU, …): "you (number not stated) -> undecided, goes on todo";
+  - possessive pronouns (*my, your(s), his, our(INCL), their*; 我的, 你的, 他的 …): "These all go on undecided list, keep
+    their original forms.";
+  - Wakelin *her* (30): object or possessive, not decidable without reading each;
+  - Wakelin *you(pl)*: Wakelin's rules record "( ) in data, probable discrepancy" for parentheses, so "(pl)" may not be
+    a number marker;
+  - English pronoun words in NTU, ILCAA-Kanakanavu, Sakizaya-Affixes, Song-Kanakanavu-Grammar and Nowbucyang: mostly
+    not pronouns. `I` / `i` gloss a morpheme *i* (NTU 120 `I` + 8 `i` of form *i*, 3 of form *'i*; ILCAA 95; Sakizaya 3; Song 3;
+    Nowbucyang 1), and NTU's `HE` / `ME` / `US` are Tsou *-he*, Kanakanavu *me-* and *padaka* 美國. NTU's other `I` forms are
+    still to check: *smani* 14, *zaka* 8, *aka* 5, *wo* 2, *'ecikia* 2, …;
+  - 21 glosses that hold a pronoun but are copied whole because of an unhandled parenthesis (NTU and Song
+    `=一下(客氣)=你.主格`, Song `=我.主格（`, Wakelin `(spend.the.night)-we`, `we-incl(EA)`, …; see "Parentheses
+    other than Rule 7").
+- **NTU Kanakanavu *=kita* labelled exclusive 4 times** (2026-11-27): the same form is inclusive 5 times in NTU and
+  inclusive throughout ILCAA (*=kita* 49) and Wild-Lehmann (*kita* 9). Converted as written (`1PL.EXCL`); to ask the NTU
+  maintainer.
+
 - **NTU Bunun misspelled linker labels, deferred** (maintainer 2026-11-24, linker-or-conjunction page, card bunun_typos:
   "Defer with the other low-frequency anomalies"): 8 Bunun *tu* words with eng LNK whose zho gloss is 連擊詞 ×5 (row
   UNDECIDED), 聯繫詞 ×1, 連繫詞詞 ×1, 繫詞 ×1 (no rows) — copied verbatim on the zho standard tier.
@@ -210,6 +229,8 @@ the bottom with their ruling.
   (Rule 4, periods). For case in the Chang grammars the maintainer ruled period notation ("We will need our
   standardization to convert to use period notation (他.GEN) during standardization"). Open: keep the source's
   brackets for non-voice codes, or write them with periods everywhere (we.INCL, 1P.INCL)?
+  For pronoun clusivity this is settled (2026-11-27, pronoun glosses page round 2, "Periods: 1PL.INCL / 1PL.EXCL"):
+  HPS we(INCL) is now 1PL.INCL; HPS our(INCL) (possessive, kept as written) and the other non-voice codes remain open.
 - **Affixes glossed as themselves in words with no voice code** (2026-11-17, maintainer on the unvoiced-verbs
   audit, round 10: "Leave as glossed; list them (with the tables) in OutstandingIssues for the source
   maintainers"). 994 words carry no voice code anywhere but contain a morpheme glossed as itself (e.g. Sakizaya
@@ -260,6 +281,26 @@ the bottom with their ruling.
   'this sweet potato (topic)' with *a icu* as two words, unglossed.
 
 ## Resolved
+
+- **Glosses that are only the source's "?" had no standard twin** (maintainer 2026-11-27, Paiwan plan page
+  4ianLHbinfCpaEQEsZG96b, card r7b: "Yes, fix it, tests first"). apply_gloss_standard skipped a gloss with no text of its
+  own, so a gloss holding only `<UNCLEAR/>` got no standard TRANSL. It now gets one, holding the same `<UNCLEAR/>`:
+  2,550 in 8 corpora (NTU 2,089, HPS 356, Wild-Lehmann 25, RauDong 22, Nowbucyang 21, Kavalan-Chang 19, Seediq-Chang 17,
+  Sakizaya 1); the 61 of those whose original carried no kindOf are stamped kindOf="original", as the tool does for
+  every gloss it standardizes.
+- **HPS `red~stem` in word glosses** (maintainer 2026-11-27, HPS gloss abbreviations page JmCfWcQZsGwM2UE9KXM1dL,
+  card b1: "Apply, tests first"): `~` is a separator in the HPS rules file (Leipzig Rule 10), so `red~being` → `RED~being`
+  like the morpheme glosses. 1,188 word glosses; 4 also convert a ruled code behind the `~` (`red~remove` → `RED~REV`,
+  `red~past.era` → `RED~PST.era` ×2, `red~af` → `RED~AV`).
+- **Pronouns as person-number labels** (maintainer 2026-11-27, chat: "I prefer 2SG and 2PL to you.SG and you.PL. Same for
+  1SG and 1PL and 3SG and 3PL. Can we apply anywhere we've standardized differently so far?"; pronoun glosses page
+  NSfDfqWnj1j6R3vhD2ei3x: p1 short codes "Apply", p2 RauDong "Apply", p4 English words "Otherwise approved", p6 Chinese
+  tiers "Apply", p7 and p8 "Agree", round 2 p3b "Periods: 1PL.INCL / 1PL.EXCL (Recommended)" and t1 "Yes, add it, tests
+  first"). 20,051 standard glosses in 15 corpora: 1S/2S/3S/1P/2P/3P → 1SG/…/3PL (NTU, Amis-Pa-Verbs, Huteson-Rukai);
+  RauDong 3.S → 3SG (ATOMS→, new rule); clusivity → 1PL.INCL / 1PL.EXCL (NTU 1P(IN)/1PI, ILCAA 1INCL, Wild-Lehmann
+  1PI/1PE, Naomi-Tsukida 1PLIN/1PLEX, HPS we(inc)/we(exc), Chinese 含/除/包含式/排除); English pronoun words in HPS, Wakelin and
+  Li-Conjunction-Thao (where they gloss pronoun forms); 我/你/他/她/我們/你們/他們/咱們 in 7 Chinese tiers; HPS 3rd.pers → 3.
+  Pronouns inside a lexical gloss stay words (thank.you). Left as words: see Open, "Pronouns left as words".
 
 - **Tsou NAF/非主焦 and NAV — the preverbal auxiliaries (i, o, os, oho)** (resolved 2026-11-12, entry moved
   2026-11-26). RULED (maintainer 2026-11-12): "Sounds like NAF->NAF. This is how grammar and our sources handle

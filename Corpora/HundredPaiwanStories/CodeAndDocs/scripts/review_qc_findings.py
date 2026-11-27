@@ -31,7 +31,9 @@ ROOT = Path(__file__).resolve().parents[1]
 # this corpus's rebuild; a HARD finding from any rule other than the one
 # accepted G001 always fails.
 EXPECTED_COUNTS = {
-    "V061": 1302,
+    # V061 counts `~` as a morpheme boundary since 2026-11-27 (maintainer: "Yes, please fix V153 and V061."), so the
+    # 1,302 reduplicated words it used to report are gone; any V061 finding is now a real M-count mismatch.
+    "V061": 0,
     "V064": 1,
     "V122": 8028,
     "G001": 1,
@@ -50,14 +52,17 @@ ACCEPTED_GAP_MORPHEME = "M=078S4W19M0c"
 # sentence FORM was the "(?)" annotation, now moved to a notes attribute by
 # scripts/apply_manual_corrections.py before standardize.py runs.
 # The standard gloss tier (apply_gloss_standard.py) copies the source's
-# parenthesised pronoun glosses -- f.you(s), we(INCL) -- and adds Rule 7
-# voice parentheses -- say(AV), leave(AV).
+# parenthesised possessive pronouns -- your(s), our(INCL) -- and adds Rule 7
+# voice parentheses -- say(AV), leave(AV). Since 2026-11-27 the personal
+# pronouns are person-number labels (you(s) -> 2SG, we(inc) -> 1PL.INCL;
+# pronoun glosses page NSfDfqWnj1j6R3vhD2ei3x), so 1,816 fewer parentheses on
+# each standard tier.
 EXPECTED_V122_TIERS = {
     "M.TRANSL.original": 3790,
-    "M.TRANSL.standard": 3940,
+    "M.TRANSL.standard": 2124,
     "S.TRANSL.unspecified": 448,
     "W.TRANSL.original": 3790,
-    "W.TRANSL.standard": 2386,
+    "W.TRANSL.standard": 570,
 }
 INFIX_FORM = re.compile(r"^-[^-]+-$")
 INTERNAL_DASH = re.compile(r"(?<=[^-])-(?=[^-])")
@@ -419,7 +424,7 @@ def review(
         "findings_by_validator": by_validator,
         "infix_root_gap_morphemes": len(gap_morphemes),
         "review": {
-            "V061": f"all {counts['V061']:,} are reduplicated W forms using the canonical tilde marker",
+            "V061": "none: V061 counts the reduplication marker ~ as a morpheme boundary (2026-11-27)",
             "V122": f"all {counts['V122']:,} are preserved source TRANSL and W/M FORM notation",
             "G010": f"all {counts['G010']:,} are source hyphens kept in the original tier; the standard tier carries none",
             "V064": "the single unglossed M is 078S4W19M0c, the -i the source leaves without a gloss",
@@ -503,7 +508,7 @@ Reviewed rules:
 {below_lines}
 ## Reviewed soft findings
 
-- V061: {review_notes["V061"]}. The validator does not split `~` when estimating the M count.
+- V061: {review_notes["V061"]}.
 - G010: {review_notes["G010"]}. V133 does not fire: no standard FORM contains a hyphen.
 - V122: {review_notes["V122"]}. No sentence FORM carries a parenthesis: the source’s "(?)" annotation is recorded in a notes attribute instead. Parentheses are balanced after the recorded 057S3 punctuation repair. The occurrences comprise {tiers["S.TRANSL.unspecified"]:,} in source free translations, {tiers["W.TRANSL.original"]:,} in source W glosses, and {tiers["M.TRANSL.original"]:,} in source M glosses.
 

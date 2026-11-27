@@ -6,7 +6,7 @@
     "W": 24556
   },
   "validator_findings": {
-    "V061": 1302,
+    "V061": 0,
     "V064": 1,
     "V122": 8028,
     "G001": 1,
@@ -19,7 +19,7 @@
       "SOFT": 8094
     },
     "gloss": {
-      "SOFT": 1346
+      "SOFT": 44
     },
     "scrape": {
       "HARD": 1,
@@ -29,17 +29,17 @@
   },
   "infix_root_gap_morphemes": 1370,
   "review": {
-    "V061": "all 1,302 are reduplicated W forms using the canonical tilde marker",
+    "V061": "none: V061 counts the reduplication marker ~ as a morpheme boundary (2026-11-27)",
     "V122": "all 8,028 are preserved source TRANSL and W/M FORM notation",
     "G010": "all 153 are source hyphens kept in the original tier; the standard tier carries none",
     "V064": "the single unglossed M is 078S4W19M0c, the -i the source leaves without a gloss",
     "G002": "078S4W19 has 4 Ms and 3 source gloss units for the same reason",
     "V122_by_tier": {
       "M.TRANSL.original": 3790,
-      "M.TRANSL.standard": 3940,
+      "M.TRANSL.standard": 2124,
       "S.TRANSL.unspecified": 448,
       "W.TRANSL.original": 3790,
-      "W.TRANSL.standard": 2386
+      "W.TRANSL.standard": 570
     }
   },
   "hard_findings": 1,

@@ -51,7 +51,7 @@ NAF	944	UNDECIDED		maintainer 2026-11-11 (affix page c5): adopt case-by-case han
 INV	928	KEEP	INV	"maintainer row-review 2026-11-11: ""approved for invisible""; zho twin 不可見 ×916"	zho twin: 不可見×916	
 BG	852	CONVERT	GEN	maintainer 2026-11-17 (case page Rukai note #3/#4): "BN->NOM" / "BG, 附著屬格 -> GEN; FO, 自由斜格 -> OBL. Please point this out in notes and caveats for this corpus." All tokens are Rukai (dru)	zho twin: 附著屬格×779; 附著主格×9 — bound genitive	
 COND	850	KEEP	COND	Leipzig: listed; standard tier keeps it	zho twin: 條件詞×840; 連接詞×4	
-1S	840	UNDECIDED		undocumented; definition needed	zho twin: 第一人稱單數×765; 第一人稱單數主格×2	
+1S	840	CONVERT	1SG	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p1: chose "Apply"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)	zho twin: 第一人稱單數×765; 第一人稱單數主格×2	
 Q	839	KEEP	Q	Leipzig: listed; standard tier keeps it	zho twin: 疑問×710; 疑問詞×41	
 受事焦點	819	CONVERT	PV	full form of 受焦 (same code); voice standard PV	"maintainer 2026-11-15 (unvoiced-verbs audit, card unv_conversion_r2): ""go ahead and update and make a PR""; full form missed by the 2026-11-11 inventory; NTU Grammar section (+ Stories, Sentences)"	
 1EPL	811	UNDECIDED		undocumented; definition needed	zho twin: 1IPL×2	
@@ -69,12 +69,12 @@ CAUS	539	KEEP	CAUS	Leipzig: listed; standard tier keeps it	zho twin: 使役×484
 2PL	514	KEEP	2PL	Leipzig: legal composition; kept	zho twin: 2SG×2	
 AY	496	UNDECIDED		undocumented; definition needed		
 HAN	462	UNDECIDED		undocumented; definition needed		
-3S	454	UNDECIDED		undocumented; definition needed	zho twin: 第三人稱單數×408; 第一人稱單數×2	
+3S	454	CONVERT	3SG	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p1: chose "Apply"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)	zho twin: 第三人稱單數×408; 第一人稱單數×2	
 PV	437	KEEP	PV	voice: undocumented spelling of PF; same standard	zho twin: 受焦×407; 受格×4 | row-approved 2026-11-11	
 NHUM	435	UNDECIDED		undocumented; definition needed	zho twin: 非人×274	
 KAN	412	UNDECIDED		undocumented; definition needed	zho twin: 轉述×6; 不確定×4	
 REFL	411	KEEP	REFL	Leipzig: listed; standard tier keeps it	zho twin: 反身×369; 主動×4	
-2S	394	UNDECIDED		undocumented; definition needed	zho twin: 第二人稱單數×354; 第二人稱複數×4	
+2S	394	CONVERT	2SG	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p1: chose "Apply"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)	zho twin: 第二人稱單數×354; 第二人稱複數×4	
 IF	392	CONVERT	OV	voice: NTU point D referential/instrumental = the variable 4th voice; maintainer 2026-11-11: OV	zho twin: 工焦×291; 工具焦×65 | row-approved 2026-11-11	
 NCM	360	CONVERT	PN	maintainer vocabulary ruling v5 (per your note: fold name markers into PN; your button said PNM — flagged for confirmation) 2026-11-11	zho twin: 人名標記×42; 類別詞×20 | row-approved 2026-11-11	
 REC	332	CONVERT	RECP	NTU point F.iv departure; back to Leipzig RECP per maintainer 2026-11-11	zho twin: 交互×182; 重現×65	"Kanakanavu→MULT (card B 2026-11-15: ""Let's do REC->ITER, 重現->ITER except for when they gloss 'arup, which gets glossed RECP."" Grammar: ma-...-n = 十倍數 tens circumfix, 表3.12 PDF 63; ⟨n⟩ is the numeral multiplicative; ⚠ the 1 'arup token is wrongly ITER until the form-conditioned exception is implementable) | switched ITER->MULT per maintainer 2026-11-15: ""I would have chosen MULT."""
@@ -107,7 +107,7 @@ QA	141	UNDECIDED		undocumented; definition needed
 A	133	KEEP	A	Leipzig: listed; standard tier keeps it	zho twin: 名物化×2; A學校×2	
 BF	120	CONVERT	OV	maintainer row-review 2026-11-11: benefactive voice (zho twins 予焦×61/與焦×20/受惠焦×10) → OV per the 4th-voice ruling	zho twin: 予焦×61; 與焦×20	
 T	114	UNDECIDED		undocumented; definition needed		
-3P	108	UNDECIDED		undocumented; definition needed	zho twin: 第三人稱複數×98; 第三人稱單數×4	
+3P	108	CONVERT	3PL	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p1: chose "Apply"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)	zho twin: 第三人稱複數×98; 第三人稱單數×4	
 RECP	104	KEEP	RECP	Leipzig: listed; standard tier keeps it	zho twin: 互相×91; 相互×4	
 ASP	96	UNDECIDED		undocumented; definition needed	zho twin: 動貌×90; 語助詞×4	
 變成	95	KEEP		lexical gloss elsewhere; Bunun/Kanakanavu tokens ruled on sep19/sep20		"Bunun→COS (sep19/sep20 2026-11-15: ""Needs to be mapped to COS, and then made separator."" / ""convert 'become' to COS in gloss."") Kanakanavu→COS (same)"
@@ -128,7 +128,7 @@ HAW	64	UNDECIDED		undocumented; definition needed
 IMPFV	64	CONVERT	IPFV	approved on the derivational decision page 2026-11-15 (card M8)	zho twin: 未完成×61; 未完成貌×2	
 LV	58	KEEP	LV	"maintainer row-review 2026-11-11: ""This is locative voice (LV)"""	zho twin: 處焦×48; 受焦×2	
 IV	58	CONVERT	OV	"maintainer row-review 2026-11-11: ""This is OV… listed as instrumental voice, but we're converting"""	zho twin: 工焦×50; 公教×2	
-2P	58	UNDECIDED		undocumented; definition needed	zho twin: 第二人稱複數×52; 第二人稱×2	
+2P	58	CONVERT	2PL	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p1: chose "Apply"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)	zho twin: 第二人稱複數×52; 第二人稱×2	
 ANA	58	UNDECIDED		undocumented; definition needed		
 ARI	50	UNDECIDED		undocumented; definition needed		
 MAKA	48	UNDECIDED		undocumented; definition needed	zho twin: 當MAKA×2	
@@ -176,7 +176,7 @@ MG	16	UNDECIDED		undocumented; definition needed	zho twin: 主焦×2
 HE	16	UNDECIDED		undocumented; definition needed		
 KIN	16	UNDECIDED		undocumented; definition needed		
 WOD	16	UNDECIDED		undocumented; definition needed	zho twin: 想要×15	
-1P	16	UNDECIDED		undocumented; definition needed	zho twin: 第一人稱複數×13	
+1P	16	CONVERT	1PL	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p1: chose "Apply"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)	zho twin: 第一人稱複數×13	
 KUA	16	UNDECIDED		undocumented; definition needed		
 OPT	16	CONVERT	OPT	"approved on the derivational decision page 2026-11-15 (card M7) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	zho twin: 祈願×16	
 KAMA	16	UNDECIDED		undocumented; definition needed		
@@ -441,7 +441,7 @@ ORR	2	CONVERT	IRR	"approved on the derivational decision page 2026-11-15 (card M
 TUTUTUTUT	2	UNDECIDED		undocumented; definition needed		
 CIS	2	UNDECIDED		undocumented; definition needed		
 PFVCLF	2	UNDECIDED		undocumented; definition needed	zho twin: 完成貌量詞×2	
-1PI	2	UNDECIDED		undocumented; definition needed		
+1PI	2	CONVERT	1PL.INCL	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p3b: chose "Periods: 1PL.INCL / 1PL.EXCL (Recommended)"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)		
 CL	2	UNDECIDED		undocumented; definition needed		
 EVID	2	UNDECIDED		undocumented; definition needed	zho twin: 據說×1	
 IU	2	UNDECIDED		undocumented; definition needed		
@@ -607,7 +607,7 @@ AFCA	1	UNDECIDED		undocumented; definition needed	zho twin: 主焦CA×1
 第一人稱單數	862	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: 1S×765; 1SG×21	
 條件詞	840	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: COND×840	
 附著屬格	840	CONVERT	GEN	maintainer 2026-11-17 (case page Rukai note #3/#4): "BN->NOM" / "BG, 附著屬格 -> GEN; FO, 自由斜格 -> OBL. Please point this out in notes and caveats for this corpus." All tokens are Rukai (dru)	eng twin: BG×779; BN×10	
-我	790	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: I×8	
+我	790	CONVERT	1SG	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p6: chose "Apply, with the map shown"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)	eng twin: I×8	
 地名	784	CONVERT	PN	maintainer vocabulary ruling v6 pn-only + g4 2026-11-11	eng twin: PN×748	
 Ca重疊	782	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: CA×22	
 祈使	761	CONVERT	IMP	"approved on the derivational decision page 2026-11-15 (card M3) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	eng twin: IMP×573	
@@ -729,5 +729,11 @@ T主焦A	15	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng t
 EX	118	CONVERT	EXCL	maintainer 2026-11-16 (unvoiced-verbs audit round 8, ntu_in_ex_r8): "Approved EXCEPT for the -in/=en suffix in Kanakanavu, which should be glossed as #IN." Rukai only; zho twin 排除 114/118	eng tier, inside 1P(EX)	
 排除式	6	CONVERT	EXCL	maintainer 2026-11-16 (unvoiced-verbs audit round 8, ntu_in_ex_r8): "Approved EXCEPT for the -in/=en suffix in Kanakanavu, which should be glossed as #IN."	symmetric with 包含式	
 再現	1	CONVERT		"card B 2026-11-15: ""Let's do REC->ITER, 重現->ITER except for when they gloss 'arup, which gets glossed RECP."" Grammar: ma-...-n = tens circumfix (十倍數), PDF 63 — variant spelling of 重現, Kanakanavu-only"		"Kanakanavu→MULT (card B 2026-11-15: ""Let's do REC->ITER, 重現->ITER except for when they gloss 'arup, which gets glossed RECP."" Grammar: ma-...-n = tens circumfix (十倍數), PDF 63) | switched ITER->MULT per maintainer 2026-11-15: ""I would have chosen MULT."""
+你	572	CONVERT	2SG	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p6: chose "Apply, with the map shown"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)		
+他	767	CONVERT	3SG	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p6: chose "Apply, with the map shown"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)		
+她	22	CONVERT	3SG	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p6: chose "Apply, with the map shown"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)		
+我們	183	CONVERT	1PL	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p6: chose "Apply, with the map shown"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)		
+你們	52	CONVERT	2PL	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p6: chose "Apply, with the map shown"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)		
+他們	132	CONVERT	3PL	maintainer 2026-11-27, pronoun glosses page (NSfDfqWnj1j6R3vhD2ei3x), card p6: chose "Apply, with the map shown"; "I prefer 2SG and 2PL to you.SG and you.PL. Same for 1SG and 1PL and 3SG and 3PL." (chat)		
 勸告	3	CONVERT	HORT	"maintainer 2026-11-26, Thao page card H1 (Rukai HOR / 勸告式 / 勸告): ""HORT"""	Rukai Wutai, zho only; eng twin HOR (1SG.BN.HOR / 第一人稱單數.附著主格.勸告)	
 規勸	6	CONVERT	HORT	"maintainer 2026-11-26, Thao page card H2: ""HORT"" (expert question: Sung doc item 9)"	Seediq Tegudaya, zho only (受事／處所焦點.規勸 etc.)	

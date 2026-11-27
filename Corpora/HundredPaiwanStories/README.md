@@ -292,10 +292,10 @@ validators do not break this corpus's rebuild:
 
 - **Any HARD finding** other than the accepted `G001` on `078S4W19` fails,
   whatever rule it comes from.
-- **Reviewed rules** (`V061`, `V064`, `V122`, `G001`, `G002`, `G010`; `G003`
-  must report nothing): every finding must be explained against the XML (for
-  example, each `V061` must be a reduplicated word), and a count above the
-  reviewed one fails. A count below it is reported in `qc-summary.md`, not
+- **Reviewed rules** (`V064`, `V122`, `G001`, `G002`, `G010`; `V061` and
+  `G003` must report nothing): every finding must be explained against the XML,
+  and a count above the reviewed one fails. A count below it is reported in
+  `qc-summary.md`, not
   failed: the gate's XML-derived checks (element inventory, parentheses,
   hyphen-free standard tier, the unglossed morpheme) still hold the data
   itself, so a lower count means the validator now reports less.
