@@ -282,6 +282,10 @@ the bottom with their ruling.
 
 ## Resolved
 
+- **HPS `red~stem` in word glosses** (maintainer 2026-11-27, HPS gloss abbreviations page JmCfWcQZsGwM2UE9KXM1dL,
+  card b1: "Apply, tests first"): `~` is a separator in the HPS rules file (Leipzig Rule 10), so `red~being` → `RED~being`
+  like the morpheme glosses. 1,188 word glosses; 4 also convert a ruled code behind the `~` (`red~remove` → `RED~REV`,
+  `red~past.era` → `RED~PST.era` ×2, `red~af` → `RED~AV`).
 - **Pronouns as person-number labels** (maintainer 2026-11-27, chat: "I prefer 2SG and 2PL to you.SG and you.PL. Same for
   1SG and 1PL and 3SG and 3PL. Can we apply anywhere we've standardized differently so far?"; pronoun glosses page
   NSfDfqWnj1j6R3vhD2ei3x: p1 short codes "Apply", p2 RauDong "Apply", p4 English words "Otherwise approved", p6 Chinese
