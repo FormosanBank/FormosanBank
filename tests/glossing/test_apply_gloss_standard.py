@@ -460,23 +460,29 @@ def test_redo_changed_replaces_tool_made_and_keeps_hand_made_standards(tmp_path)
 
 def test_whole_gloss_rule_converts_only_an_exact_whole_gloss(tmp_path):
     # maintainer 2026-11-16 (unvoiced-verbs audit, whole_gloss_rule_r8): "Yes" to a rule that replaces one exact
-    # whole gloss. Shapes are real: HPS "(name)", "(name)-(name)"; Yedda "ligature (LIG)".
+    # whole gloss. Shapes are real: HPS "(name)", "(name)-(name)", "go<perf>-(place)-nom"; Yedda "ligature (LIG)".
+    # Since 2026-11-28 it also replaces one exact piece between separators (maintainer, PERF/NMLZ page card
+    # hps_pieces: "Approve the shared-tool change; rebuild HPS (2 word glosses change)").
     d, t, r = make_r7_corpus(tmp_path, [
         _w("w1", "Tjukutjuku", "(name)"),                 # exact match: -> PN
-        _w("w2", "Kuɫe-Pulelelelengan", "(name)-(name)"),  # not the whole gloss: residue, copied as is
+        _w("w2", "Kuɫe-Pulelelelengan", "(name)-(name)"),  # each piece exactly (name): -> PN-PN
         _w("w3", "a", "ligature (LIG)"),                  # exact match, with a space inside: -> LNK
         _w("w4", "a", "ligature (LIG)?"),                 # one character more: residue, copied as is
         _w("w5", "kui", "(place)"),                       # no rule for it: residue, copied as is
+        _w("w6", "s&lt;in&gt;a-Takaw-an", "go&lt;x&gt;-(name)-y"),   # one piece between hyphens, beside an infix: -> go<x>-PN-y
+        _w("w7", "Takaw-an", "x(name)-y"),                # (name) inside a piece, not the whole piece: residue
     ])
     with open(r, "a", encoding="utf-8") as h:
         h.write("(name)\tWHOLE-GLOSS→PN\tHPS names\nligature (LIG)\tWHOLE-GLOSS→LNK\tYedda prose gloss\n")
     p = run(d, t, r)
     assert p.returncode == 0, p.stderr
-    assert m_standards(d) == {"w1m1": ["PN"], "w2m1": ["(name)-(name)"], "w3m1": ["LNK"],
-                              "w4m1": ["ligature (LIG)?"], "w5m1": ["(place)"]}
+    assert m_standards(d) == {"w1m1": ["PN"], "w2m1": ["PN-PN"], "w3m1": ["LNK"],
+                              "w4m1": ["ligature (LIG)?"], "w5m1": ["(place)"],
+                              "w6m1": ["go<x>-PN-y"], "w7m1": ["x(name)-y"]}
     root = ET.parse(d / "a.xml").getroot()
     assert [tr.text for tr in root.iter("TRANSL") if tr.get("kindOf") == "original"] == \
-        ["(name)", "(name)-(name)", "ligature (LIG)", "ligature (LIG)?", "(place)"]   # POL-036: originals untouched
+        ["(name)", "(name)-(name)", "ligature (LIG)", "ligature (LIG)?", "(place)",
+         "go<x>-(name)-y", "x(name)-y"]   # POL-036: originals untouched
 # ---- LGR Rule 7 parens + notes-attribute parens (maintainer 2026-11-15:
 # "these should remain Rule 7. But that also means our gloss standardizer
 # needs to handle such cases appropriately."; card P3 "drop") ----

@@ -56,13 +56,15 @@ ACCEPTED_GAP_MORPHEME = "M=078S4W19M0c"
 # voice parentheses -- say(AV), leave(AV). Since 2026-11-27 the personal
 # pronouns are person-number labels (you(s) -> 2SG, we(inc) -> 1PL.INCL;
 # pronoun glosses page NSfDfqWnj1j6R3vhD2ei3x), so 1,816 fewer parentheses on
-# each standard tier.
+# each standard tier. Since 2026-11-28 a (name)/(place) piece of a longer word gloss is PN too
+# (go<perf>-(place)-nom -> go<PFV>-PN-NMLZ, (name)-(name) -> PN-PN; PERF/NMLZ page card hps_pieces),
+# so 6 fewer parentheses on the word standard tier.
 EXPECTED_V122_TIERS = {
     "M.TRANSL.original": 3790,
     "M.TRANSL.standard": 2124,
     "S.TRANSL.unspecified": 448,
     "W.TRANSL.original": 3790,
-    "W.TRANSL.standard": 570,
+    "W.TRANSL.standard": 564,
 }
 INFIX_FORM = re.compile(r"^-[^-]+-$")
 INTERNAL_DASH = re.compile(r"(?<=[^-])-(?=[^-])")

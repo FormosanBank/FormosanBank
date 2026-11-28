@@ -321,13 +321,20 @@ def convert_gloss(gloss: str, table: Table, rules: Rules, language: str,
     new=False reproduces the behavior before the 2026-11-15 voice Rule 7 rules
     (RULE7-PARENS, the Rule 4 -> Rule 7 voice restyle; used by --redo-changed).
 
-    Order: an exact WHOLE-GLOSS match; NOTE-PARENS chunks moved to the note;
+    Order: an exact WHOLE-GLOSS match (whole gloss, else each piece between separators); NOTE-PARENS chunks moved
+    to the note;
     RULE7-PARENS code-only groups after a gloss (masked; with -SPACED, also
     after whitespace, which is dropped); the residue check on what is left;
     conversion; the voice restyle."""
     if gloss.strip() in rules.whole_gloss:
         return rules.whole_gloss[gloss.strip()], False, ""
     original = gloss
+    if rules.whole_gloss:
+        # A WHOLE-GLOSS text that is exactly one piece between separators converts too, before the residue check
+        # (maintainer 2026-11-28, PERF/NMLZ page card hps_pieces: "Approve the shared-tool change; rebuild HPS
+        # (2 word glosses change)"): HPS go<perf>-(place)-nom -> go<PFV>-PN-NMLZ, (name)-(name) -> PN-PN.
+        parts = rules.split_re.split(gloss)
+        gloss = "".join(rules.whole_gloss.get(p.strip(), p) if i % 2 == 0 else p for i, p in enumerate(parts))
     note = ""
     for cre in rules.embedded_res:   # 他（屬格） → 他.屬格 (before the Rule 7 mask)
         gloss = cre.sub(lambda m: "." + m.group(1), gloss)
