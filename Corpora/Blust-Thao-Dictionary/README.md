@@ -86,6 +86,8 @@ value alone — the permission behind it is documented here and nowhere else.
 
 **Morpheme boundaries are part of the text.** Blust prints morpheme boundaries in the dictionary examples but not in the interlinear texts, and those hyphens are carried through into the standardized tier. This corpus therefore tokenizes differently from the other Thao material in FormosanBank, and word counts are not directly comparable. The sentences are also segmented into word and morpheme tiers.
 
+FormosanBank's standard tier also drops Blust's stress accents. These sometimes distinguish homographs with different meanings. They remain on the original tier.
+
 ## Reproduction and processing
 
 ### How to reproduce
