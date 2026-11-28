@@ -355,7 +355,7 @@ PEV	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2
 LP	2	UNDECIDED		undocumented; definition needed	zho twin: 處焦×1	
 MT	2	UNDECIDED		undocumented; definition needed		
 TG	2	UNDECIDED		undocumented; definition needed		
-PERF	2	UNDECIDED		undocumented; definition needed	zho twin: 完成×2	
+PERF	2	CONVERT	PFV	maintainer 2026-11-28 (chat): "Yes, I want PERF->PFV. (Obviously, don't remove the <>s!)" — both tokens are Seediq Tegudaya infix -n-, glossed <PFV> in 7 other -n- tokens of the same text	zho twin: 完成×2	
 PAR	2	UNDECIDED		undocumented; definition needed	zho twin: 助詞×2	
 PFP	2	UNDECIDED		undocumented; definition needed	zho twin: 介紹P×2	
 FUF	2	CONVERT	FUT	"approved on the derivational decision page 2026-11-15 (card M5) + analogue sweep per maintainer 2026-11-15: ""we should be looking for the analogous items in other corpora and languages."""	zho twin: 未來×2	
@@ -371,9 +371,10 @@ PFVRED	2	UNDECIDED		undocumented; definition needed	zho twin: 完成重疊×2
 PAN	2	UNDECIDED		undocumented; definition needed		
 QUES	2	UNDECIDED		undocumented; definition needed	zho twin: 疑問×2	
 DET	2	KEEP	DET	Leipzig: listed; standard tier keeps it	zho twin: 限定×2	
-NMLLZ	2	UNDECIDED		undocumented; definition needed	zho twin: 名物化×2	
+NMLLZ	2	CONVERT	NMLZ	maintainer 2026-11-28, PERF/NMLZ page (KQHXChMvyCr5Y2tGqvQHhQ) card ntu_nmllz: chose "Convert NMLLZ → NMLZ (2 glosses)" — Rukai Wutai suffix ane, zho 名物化	zho twin: 名物化×2	
 PARAMIA	2	UNDECIDED		undocumented; definition needed		
-NMA	2	UNDECIDED		undocumented; definition needed	zho twin: 名物化×2	
+NMA	2	CONVERT	NMLZ	maintainer 2026-11-28, PERF/NMLZ page (KQHXChMvyCr5Y2tGqvQHhQ) card ntu_nma: chose "Convert NMA → NMLZ (2 glosses)" — Rukai Wutai suffix ane, zho 名物化	zho twin: 名物化×2	
+NMLZㄇㄩ	2	CONVERT	NMLZ	maintainer 2026-11-28, PERF/NMLZ page (KQHXChMvyCr5Y2tGqvQHhQ) card ntu_zhuyin: chose "Add a row: NMLZㄇㄩ → NMLZ (2 glosses)" — NMLZ with stray Zhuyin letters; Rukai Wutai suffix ane	zho twin: 名物化×2	
 RLSRED	2	UNDECIDED		undocumented; definition needed	zho twin: 實現重疊×1	
 YARA	2	UNDECIDED		undocumented; definition needed		
 DAU	2	UNDECIDED		undocumented; definition needed		
@@ -721,7 +722,7 @@ T主焦A	15	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng t
 工具格	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: INS×10	
 屬人	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: HUM×8	
 工焦完成貌	10	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: IFPFV×7	
-名物話	8	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: NMZ×6	
+名物話	8	CONVERT	NMLZ	maintainer 2026-11-28, PERF/NMLZ page (KQHXChMvyCr5Y2tGqvQHhQ) card ntu_mingwuhua: chose "Convert 名物話 → NMLZ (8 glosses)" — a typo of 名物化; eng twins NMZ/NMLZ	eng twin: NMZ×6	
 關係化	6	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: REL×6	
 轉述	6	UNDECIDED		zho-tier code; Latin target per g4 pending decision	eng twin: KAN×6	
 原因焦點	8	CONVERT	OV	s25 ruling (原因焦點 'reason focus' rides the instrument-voice sia- prefix; folds into the 4th voice) + OV ruling (2026-11-11)	zho tier only; eng twin RF/RsnV below pair threshold	

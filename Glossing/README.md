@@ -57,8 +57,9 @@ as they are".
   `<AV>talk` for r-em-eŋaw. Set for Naomi-Tsukida only, whose source writes these with hyphens; the other
   corpora's sources already bracket them.
 - A rules file may also replace one exact whole gloss: `<exact gloss>  WHOLE-GLOSS→<CODE>` (maintainer,
-  2026-11-16: "Yes"). Only a gloss that is exactly that text converts; the pattern is literal, not a regular
-  expression. In use: HundredPaiwanStories `(name)` and `(place)` → `PN` ("A: standard tier → PN; original
+  2026-11-16: "Yes"). Only a gloss, or one piece of a gloss between separators, that is exactly that text converts
+  (pieces since 2026-11-28, maintainer: "Approve the shared-tool change; rebuild HPS (2 word glosses change)":
+  `go<perf>-(place)-nom` → `go<PFV>-PN-NMLZ`); the pattern is literal, not a regular expression. In use: HundredPaiwanStories `(name)` and `(place)` → `PN` ("A: standard tier → PN; original
   unchanged"); YeddaPalemeqBlog `ligature (LIG)` → `LNK` ("LNK, as ruled on 2026-11-11 (no new code)").
 - `validate_text` rule V122 (parentheses and slashes) skips these brackets (maintainer, 2026-11-16: "exempt any
   gloss registered gloss code (including Leipzig codes) found inside parentheses when there is also other content
